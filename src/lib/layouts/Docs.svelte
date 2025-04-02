@@ -46,6 +46,7 @@
     import { GITHUB_REPO_LINK, GITHUB_STARS } from '$lib/constants';
     import { page } from '$app/stores';
     import { getAppwriteDashboardUrl } from '$lib/utils/dashboard';
+    import { Button, Icon, InlineTag } from '$lib/components/ui';
 
     export let variant: DocsLayoutVariant = 'default';
     export let isReferences = false;
@@ -105,20 +106,19 @@
             </a>
         </div>
         <div class="web-mobile-header-end">
-            <a href={getAppwriteDashboardUrl()} class="web-button web-is-only-desktop">
-                <span class="text-sub-body font-medium">Go to Console</span>
-            </a>
-            <button
-                class="web-button is-text"
-                aria-label="open navigation"
-                on:click={toggleSidenav}
+            <Button
+                href={getAppwriteDashboardUrl()}
+                class="text-sub-body hidden font-medium md:flex"
             >
+                Go to Console
+            </Button>
+            <Button variant="text" aria-label="open navigation" onclick={toggleSidenav}>
                 {#if $layoutState.showSidenav}
                     <span aria-hidden="true" class="web-icon-close"></span>
                 {:else}
                     <span aria-hidden="true" class="web-icon-hamburger-menu"></span>
                 {/if}
-            </button>
+            </Button>
         </div>
     </section>
     <header
@@ -171,16 +171,16 @@
             </div>
             <div class="web-main-header-end">
                 <div class="flex gap-2">
-                    <a
+                    <Button
                         href={GITHUB_REPO_LINK}
                         target="_blank"
                         rel="noopener noreferrer"
-                        class="web-button is-text"
+                        variant="text"
                     >
-                        <span class="web-icon-star" aria-hidden="true"></span>
-                        <span class="text">Star on GitHub</span>
-                        <span class="web-inline-tag text-sub-body">{GITHUB_STARS}</span>
-                    </a>
+                        <Icon icon="star" aria-hidden="true" />
+                        Star on GitHub
+                        <InlineTag>{GITHUB_STARS}</InlineTag>
+                    </Button>
                     <IsLoggedIn />
                 </div>
             </div>

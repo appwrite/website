@@ -149,7 +149,7 @@
                     <Button
                         href="/contact-us/enterprise"
                         variant="secondary"
-                        class="web-u-cross-child-end w-full md:w-fit"
+                        class="web-u-cross-child-end w-full! md:w-fit"
                         target="_blank"
                         rel="noopener noreferrer"
                         onclick={() =>
