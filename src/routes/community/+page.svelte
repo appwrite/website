@@ -1,4 +1,4 @@
-<script lang="ts" context="module">
+<script lang="ts" module>
     export const events: EventCardProps[] = [
         {
             href: 'https://discord.com/events/564160730845151244/1279026334496067669/1286356126924800000',
@@ -43,6 +43,8 @@
 </script>
 
 <script lang="ts">
+    import { preventDefault } from 'svelte/legacy';
+
     import { Carousel } from '$lib/components';
     import FloatingHeads from '$lib/components/FloatingHeads.svelte';
     import FooterNav from '$lib/components/FooterNav.svelte';
@@ -59,7 +61,7 @@
     import type { ProjectCardProps } from './ProjectCard.svelte';
     import ProjectCard from './ProjectCard.svelte';
 
-    export let data;
+    let { data } = $props();
 
     const projects: ProjectCardProps[] = [
         {
@@ -103,11 +105,11 @@
         { metric: '800+', description: 'Contributors' }
     ];
 
-    let name = '';
-    let email = '';
-    let submitted = false;
-    let error: string | undefined;
-    let submitting = false;
+    let name = $state('');
+    let email = $state('');
+    let submitted = $state(false);
+    let error: string | undefined = $state();
+    let submitting = $state(false);
 
     async function submit() {
         submitting = true;
@@ -423,9 +425,9 @@
             <div class="web-big-padding-section-level-2">
                 <section class="web-u-sep-block-start web-u-padding-block-start-64 container">
                     <Carousel size="big">
-                        <svelte:fragment slot="header">
+                        {#snippet header()}
                             <h4 class="text-label text-primary">Upcoming Events</h4>
-                        </svelte:fragment>
+                        {/snippet}
                         {#each events as event}
                             <li>
                                 <EventCard
@@ -630,7 +632,10 @@
                         {:else}
                             <form
                                 method="post"
-                                on:submit|preventDefault={submit}
+                                onsubmit={(e) => {
+                                    e.preventDefault();
+                                    submit();
+                                }}
                                 class="flex flex-col gap-4"
                             >
                                 <div class="flex flex-col gap-1">
