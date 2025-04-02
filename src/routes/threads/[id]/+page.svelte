@@ -9,7 +9,7 @@
     import PreFooter from '../PreFooter.svelte';
     import MessageCard from './MessageCard.svelte';
 
-    export let data;
+    let { data } = $props();
 
     const title = data.title + ' - Threads' + TITLE_SUFFIX;
     const description = DEFAULT_DESCRIPTION;
