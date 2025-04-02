@@ -1,4 +1,3 @@
-import { sentrySvelteKit } from '@sentry/sveltekit';
 import dynamicImport from 'vite-plugin-dynamic-import';
 import { sveltekit } from '@sveltejs/kit/vite';
 import { defineConfig } from 'vitest/config';
@@ -8,13 +7,6 @@ import manifestSRI from 'vite-plugin-manifest-sri';
 
 export default defineConfig({
     plugins: [
-        sentrySvelteKit({
-            adapter: 'node',
-            sourceMapsUploadOptions: {
-                org: 'appwrite',
-                project: 'website'
-            }
-        }),
         enhancedImages(),
         sveltekit(),
         dynamicImport({
