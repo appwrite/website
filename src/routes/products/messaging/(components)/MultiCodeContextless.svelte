@@ -29,7 +29,7 @@
     type CopyStatusType = keyof typeof CopyStatus;
     type CopyStatusValue = (typeof CopyStatus)[CopyStatusType];
 
-    let copyText = $state<CopyStatusValue>(CopyStatus.Copy);
+    let copyText: CopyStatusValue = CopyStatus.Copy;
     async function handleCopy() {
         await copy(content);
 

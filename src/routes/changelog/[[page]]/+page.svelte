@@ -62,8 +62,7 @@
                     </ul>
 
                     {#if data.nextPage}
-                        <button class="web-button is-secondary" onclick={loadMore}
-                            >Load more</button
+                        <button class="web-button is-secondary" onclick={loadMore}>Load more</button
                         >
                     {/if}
                 </div>

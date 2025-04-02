@@ -1,3 +1,7 @@
+<!-- @migration-task Error while migrating Svelte code: Cannot use `export let` in runes mode — use `$props()` instead
+https://svelte.dev/e/legacy_export_invalid -->
+<!-- @migration-task Error while migrating Svelte code: Cannot use `export let` in runes mode — use `$props()` instead
+https://svelte.dev/e/legacy_export_invalid -->
 <script lang="ts">
     import { Select, Tooltip } from '$lib/components';
     import { getCodeHtml, type Language } from '$lib/utils/code';
@@ -29,7 +33,7 @@
     type CopyStatusType = keyof typeof CopyStatus;
     type CopyStatusValue = (typeof CopyStatus)[CopyStatusType];
 
-    let copyText = $state<CopyStatusValue>(CopyStatus.Copy);
+    let copyText: CopyStatusValue = CopyStatus.Copy;
 
     async function handleCopy() {
         await copy(content);

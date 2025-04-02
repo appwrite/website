@@ -74,7 +74,7 @@
 </svelte:head>
 
 <!-- binding for fuse -->
-<Fuse list={data.list} options={fuseOptions} bind:query={query} bind:result />
+<Fuse list={data.list} options={fuseOptions} bind:query bind:result />
 <Main>
     <header class="web-u-sep-block-end web-u-padding-block-end-0 relative overflow-hidden pb-0">
         <div class="hero web-u-padding-block-end-0 relative container">

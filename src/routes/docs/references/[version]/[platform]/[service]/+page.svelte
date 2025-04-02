@@ -119,13 +119,14 @@
     });
 
     // cleaned service description without Markdown links.
-    let serviceDescription = $derived((data.service?.description ?? '').replace(
-        /\[([^\]]+)]\([^)]+\)/g,
-        '$1'
-    ));
+    let serviceDescription = $derived(
+        (data.service?.description ?? '').replace(/\[([^\]]+)]\([^)]+\)/g, '$1')
+    );
 
     // the service description up to the first full stop, providing sufficient information.
-    let shortenedDescription = $derived(serviceDescription.substring(0, serviceDescription.indexOf('.') + 1));
+    let shortenedDescription = $derived(
+        serviceDescription.substring(0, serviceDescription.indexOf('.') + 1)
+    );
 
     let platformBindingForSelect = $derived($page.params.platform as Platform);
     let platform = $derived(($preferredPlatform ?? $page.params.platform) as Platform);

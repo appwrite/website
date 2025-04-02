@@ -21,14 +21,16 @@
     let customizing = $state(false);
     let variant: TicketVariant = $state(data.ticket.variant ?? 'default');
 
-    let modified = $derived(!dequal(
-        {
-            name: data.ticket?.name,
-            tribe: data.ticket?.tribe,
-            showGitHub: data.ticket?.show_contributions
-        },
-        { name, tribe, showGitHub }
-    ));
+    let modified = $derived(
+        !dequal(
+            {
+                name: data.ticket?.name,
+                tribe: data.ticket?.tribe,
+                showGitHub: data.ticket?.show_contributions
+            },
+            { name, tribe, showGitHub }
+        )
+    );
 
     async function saveTicket() {
         const ticketId = data.ticket?.$id;
@@ -57,13 +59,15 @@
 
     const ticketUrl = `${$page.url.origin}/init-0/tickets/${data.ticket.$id}`;
     const { copied, copy } = createCopy(ticketUrl);
-    let twitterText = $derived(encodeURIComponent(
-        [
-            `Join Init and celebrate everything new with @appwrite`,
-            ``,
-            `Claim your ticket. ${ticketUrl}`
-        ].join('\n')
-    ));
+    let twitterText = $derived(
+        encodeURIComponent(
+            [
+                `Join Init and celebrate everything new with @appwrite`,
+                ``,
+                `Claim your ticket. ${ticketUrl}`
+            ].join('\n')
+        )
+    );
 </script>
 
 <svelte:head>

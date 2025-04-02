@@ -22,14 +22,16 @@
     let customizing = $state(false);
     let saving = $state(false);
 
-    let modified = $derived(!dequal(
-        {
-            name: originalName,
-            title: originalTitle,
-            showGitHub: originalShowGitHub
-        },
-        { name, title, showGitHub }
-    ));
+    let modified = $derived(
+        !dequal(
+            {
+                name: originalName,
+                title: originalTitle,
+                showGitHub: originalShowGitHub
+            },
+            { name, title, showGitHub }
+        )
+    );
 
     async function saveTicket() {
         if (!modified) return;

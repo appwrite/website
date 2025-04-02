@@ -1,5 +1,5 @@
 <script lang="ts">
-    import type { Snippet } from "svelte";
+    import type { Snippet } from 'svelte';
 
     let carousel: HTMLElement;
 
@@ -10,12 +10,7 @@
         children: Snippet;
     }
 
-    let {
-        size = 'default',
-        gap = 32,
-        header,
-        children
-    }: Props = $props();
+    let { size = 'default', gap = 32, header, children }: Props = $props();
     let scroll = 0;
 
     function calculateScrollAmount(prev = false) {
