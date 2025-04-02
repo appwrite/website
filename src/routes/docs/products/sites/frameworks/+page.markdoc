@@ -1,0 +1,72 @@
+---
+layout: article
+title: Frameworks
+description: Discover which frameworks are supported out-of-the-box by Appwrite Sites.
+---
+
+Appwrite Sites allows web apps developed with a variety of frameworks to be hosted and served to your users.
+
+{% table %}
+- &nbsp; {% width=48 %}
+- Framework
+- Hosting Method
+- Starter available?
+
+---
+
+- {% icon icon="nextjs" size="l" /%}
+- **Next.js**
+- `SSR` `Static`
+- `Yes`
+
+---
+
+- {% icon icon="nuxt" size="l" /%}
+- **Nuxt**
+- `SSR` `Static`
+- `Yes`
+
+---
+
+- {% icon icon="svelte" size="l" /%}
+- **SvelteKit**
+- `SSR` `Static`
+- `Yes`
+
+---
+
+- {% icon icon="angular" size="l" /%}
+- **Angular**
+- `SSR` `Static`
+- `Yes`
+
+---
+
+- {% icon icon="astro" size="l" /%}
+- **Astro**
+- `SSR` `Static`
+- `Yes`
+
+---
+
+- {% only_dark %}{% icon_image src="/images/platforms/dark/remix.svg" alt="Remix logo" size="l" /%}{% /only_dark %}
+{% only_light %}{% icon_image src="/images/platforms/light/remix.svg" alt="Remix logo" size="l" /%}{% /only_light %}
+- **Remix**
+- `SSR` `Static`
+- `Yes`
+
+---
+
+- {% icon icon="flutter" size="l" /%}
+- **Flutter**
+- `Static`
+- `Yes`
+
+---
+
+- {% icon icon="js" size="l" /%}
+- **Other**
+- `Static`
+- `Yes`
+
+{% /table %}

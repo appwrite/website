@@ -263,76 +263,82 @@
         "className": "web-icon-refine",
         "unicode": "&#59948;"
     },
-    "rest": {
+    "remix": {
         "encodedCode": "\\ea2d",
         "prefix": "web-icon",
-        "className": "web-icon-rest",
+        "className": "web-icon-remix",
         "unicode": "&#59949;"
     },
-    "search": {
+    "rest": {
         "encodedCode": "\\ea2e",
         "prefix": "web-icon",
-        "className": "web-icon-search",
+        "className": "web-icon-rest",
         "unicode": "&#59950;"
     },
-    "sendgrid": {
+    "search": {
         "encodedCode": "\\ea2f",
         "prefix": "web-icon",
-        "className": "web-icon-sendgrid",
+        "className": "web-icon-search",
         "unicode": "&#59951;"
     },
-    "star": {
+    "sendgrid": {
         "encodedCode": "\\ea30",
         "prefix": "web-icon",
-        "className": "web-icon-star",
+        "className": "web-icon-sendgrid",
         "unicode": "&#59952;"
     },
-    "system": {
+    "star": {
         "encodedCode": "\\ea31",
         "prefix": "web-icon",
-        "className": "web-icon-system",
+        "className": "web-icon-star",
         "unicode": "&#59953;"
     },
-    "textmagic": {
+    "system": {
         "encodedCode": "\\ea32",
         "prefix": "web-icon",
-        "className": "web-icon-textmagic",
+        "className": "web-icon-system",
         "unicode": "&#59954;"
     },
-    "tiktok": {
+    "textmagic": {
         "encodedCode": "\\ea33",
         "prefix": "web-icon",
-        "className": "web-icon-tiktok",
+        "className": "web-icon-textmagic",
         "unicode": "&#59955;"
     },
-    "twitter": {
+    "tiktok": {
         "encodedCode": "\\ea34",
         "prefix": "web-icon",
-        "className": "web-icon-twitter",
+        "className": "web-icon-tiktok",
         "unicode": "&#59956;"
     },
-    "vue": {
+    "twitter": {
         "encodedCode": "\\ea35",
         "prefix": "web-icon",
-        "className": "web-icon-vue",
+        "className": "web-icon-twitter",
         "unicode": "&#59957;"
     },
-    "x": {
+    "vue": {
         "encodedCode": "\\ea36",
         "prefix": "web-icon",
-        "className": "web-icon-x",
+        "className": "web-icon-vue",
         "unicode": "&#59958;"
     },
-    "ycombinator": {
+    "x": {
         "encodedCode": "\\ea37",
         "prefix": "web-icon",
-        "className": "web-icon-ycombinator",
+        "className": "web-icon-x",
         "unicode": "&#59959;"
     },
-    "youtube": {
+    "ycombinator": {
         "encodedCode": "\\ea38",
         "prefix": "web-icon",
-        "className": "web-icon-youtube",
+        "className": "web-icon-ycombinator",
         "unicode": "&#59960;"
+    },
+    "youtube": {
+        "encodedCode": "\\ea39",
+        "prefix": "web-icon",
+        "className": "web-icon-youtube",
+        "unicode": "&#59961;"
     }
 }
