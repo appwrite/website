@@ -10,26 +10,26 @@
         TicketDetails
     } from '$routes/init/(components)/ticket/index.js';
 
-    export let data;
+    let { data } = $props();
 
     let originalName = data.ticket?.name ?? '';
-    let name = originalName;
+    let name = $state(originalName);
     let originalTitle = data.ticket?.title ?? '';
-    let title = originalTitle;
+    let title = $state(originalTitle);
     let originalShowGitHub = data.ticket?.show_contributions ?? true;
-    let showGitHub = originalShowGitHub;
+    let showGitHub = $state(originalShowGitHub);
 
-    let customizing = false;
-    let saving = false;
+    let customizing = $state(false);
+    let saving = $state(false);
 
-    $: modified = !dequal(
+    let modified = $derived(!dequal(
         {
             name: originalName,
             title: originalTitle,
             showGitHub: originalShowGitHub
         },
         { name, title, showGitHub }
-    );
+    ));
 
     async function saveTicket() {
         if (!modified) return;

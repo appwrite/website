@@ -15,7 +15,7 @@
     import { writable } from 'svelte/store';
     import type { Integration } from './+page';
 
-    export let data;
+    let { data } = $props();
 
     const title = 'Integrations' + TITLE_SUFFIX;
     const description =
@@ -29,26 +29,22 @@
         distance: 500
     };
 
-    let result: ResultType<Integration> = [];
+    let result: ResultType<Integration> = $state([]);
 
-    let hasQuery: boolean;
-    let query = writable(decodeURIComponent($page.url.searchParams.get('search') ?? ''));
-
-    $: query.subscribe((value) => {
-        hasQuery = value.length > 0;
-    });
+    let query = $state(decodeURIComponent($page.url.searchParams.get('search') ?? ''));
+    let hasQuery = $derived(query.length > 0);
 
     // platform filters
     const platforms = ['All', ...data.platforms];
 
-    let activePlatform = 'All';
+    let activePlatform = $state('All');
 
     // categories
-    let activeCategory: string | null = null;
+    let activeCategory: string | null = $state(null);
 
     const handleQuery = (e: Event) => {
         const value = (e.currentTarget as HTMLInputElement).value;
-        query.set(value);
+        query = value;
     };
 
     onMount(() => {
@@ -78,7 +74,7 @@
 </svelte:head>
 
 <!-- binding for fuse -->
-<Fuse list={data.list} options={fuseOptions} bind:query={$query} bind:result />
+<Fuse list={data.list} options={fuseOptions} bind:query={query} bind:result />
 <Main>
     <header class="web-u-sep-block-end web-u-padding-block-end-0 relative overflow-hidden pb-0">
         <div class="hero web-u-padding-block-end-0 relative container">
@@ -136,11 +132,13 @@
                                 label="Search"
                                 name="search"
                                 placeholder="Search"
-                                bind:value={$query}
+                                bind:value={query}
                                 autocomplete="off"
-                                on:input={handleQuery}
+                                oninput={handleQuery}
                             >
-                                <span class="web-icon-search" aria-hidden="true" slot="icon"></span>
+                                {#snippet icon()}
+                                    <span class="web-icon-search" aria-hidden="true"></span>
+                                {/snippet}
                             </Input>
                         </section>
                         <section class="flex flex-col">
@@ -162,7 +160,7 @@
                                                     }
                                                 )}
                                                 class:active-tag={activePlatform === platform}
-                                                on:click={() => (activePlatform = platform)}
+                                                onclick={() => (activePlatform = platform)}
                                                 >{platform}</button
                                             >
                                         </li>
@@ -181,7 +179,7 @@
                                     <select
                                         class="web-input-text w-full appearance-none"
                                         disabled={hasQuery}
-                                        on:change={(e) =>
+                                        onchange={(e) =>
                                             goto(`#${e.currentTarget.value.toLowerCase()}`)}
                                     >
                                         {#each data.categories as category}
@@ -213,8 +211,7 @@
                                                     href={`#${category.slug}`}
                                                     class="web-link"
                                                     class:is-pink={category.slug === activeCategory}
-                                                    on:click={() =>
-                                                        activeCategory === category.slug}
+                                                    onclick={() => activeCategory === category.slug}
                                                     >{category.heading}</a
                                                 >
                                             </li>
@@ -233,7 +230,7 @@
                                         <h2 class="text-label text-primary">Search results</h2>
                                         <p class="text-description">
                                             {result.length > 0 ? result.length : 'No'} results found
-                                            for "{$query}"
+                                            for "{query}"
                                         </p>
                                     </header>
                                     <div class="l-max-size-list-cards flex flex-col gap-8">
@@ -531,7 +528,7 @@
         scroll-margin-top: f.pxToRem(120);
     }
     .l-max-size-list-cards {
-        &:where(:has(> ul > li:nth-child(10))) {
+        &:where(:global(:has(> ul > li:nth-child(10)))) {
             position: relative;
 
             &::before {
@@ -560,7 +557,7 @@
         }
     }
 
-    :where(:target) {
+    :where(:global(:target)) {
         .l-max-size-list-cards {
             overflow: visible;
             max-block-size: none;

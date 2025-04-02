@@ -2,9 +2,9 @@
     import { globToTutorial } from '$lib/utils/tutorials.js';
     import { setContext } from 'svelte';
 
-    export let data;
+    let { data, children } = $props();
     const tutorials = globToTutorial(data);
     setContext('tutorials', tutorials);
 </script>
 
-<slot />
+{@render children()}

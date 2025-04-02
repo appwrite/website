@@ -11,24 +11,24 @@
     import Form from './form.svelte';
     import type { TicketVariant } from '../constants';
 
-    export let data;
+    let { data } = $props();
 
-    let name = data.ticket?.name ?? '';
+    let name = $state(data.ticket?.name ?? '');
     const id = data.ticket?.id ?? 0;
-    let tribe: string | undefined = data.ticket?.tribe ?? undefined;
-    let showGitHub = data.ticket?.show_contributions ?? true;
-    let drawerOpen = false;
-    let customizing = false;
-    let variant: TicketVariant = data.ticket.variant ?? 'default';
+    let tribe: string | undefined = $state(data.ticket?.tribe ?? undefined);
+    let showGitHub = $state(data.ticket?.show_contributions ?? true);
+    let drawerOpen = $state(false);
+    let customizing = $state(false);
+    let variant: TicketVariant = $state(data.ticket.variant ?? 'default');
 
-    $: modified = !dequal(
+    let modified = $derived(!dequal(
         {
             name: data.ticket?.name,
             tribe: data.ticket?.tribe,
             showGitHub: data.ticket?.show_contributions
         },
         { name, tribe, showGitHub }
-    );
+    ));
 
     async function saveTicket() {
         const ticketId = data.ticket?.$id;
@@ -57,13 +57,13 @@
 
     const ticketUrl = `${$page.url.origin}/init-0/tickets/${data.ticket.$id}`;
     const { copied, copy } = createCopy(ticketUrl);
-    $: twitterText = encodeURIComponent(
+    let twitterText = $derived(encodeURIComponent(
         [
             `Join Init and celebrate everything new with @appwrite`,
             ``,
             `Claim your ticket. ${ticketUrl}`
         ].join('\n')
-    );
+    ));
 </script>
 
 <svelte:head>
@@ -78,7 +78,7 @@
     <div class="hero">
         {#if customizing}
             <div style:margin-block-start="0.625rem">
-                <button class="web-link is-secondary u-cross-center" on:click={goBack}>
+                <button class="web-link is-secondary u-cross-center" onclick={goBack}>
                     <span class="web-icon-chevron-left" aria-hidden="true"></span>
 
                     <span>Back</span>
@@ -110,14 +110,14 @@
 
                 <div class="info">
                     <button
-                        on:click={() => (customizing = true)}
+                        onclick={() => (customizing = true)}
                         class="web-button is-full-width u-margin-block-start-32"
                     >
                         <span class="text">Customize ticket</span>
                     </button>
 
                     <div class="u-flex u-cross-center u-gap-16 u-margin-block-start-16">
-                        <button class="web-button is-full-width is-secondary" on:click={copy}>
+                        <button class="web-button is-full-width is-secondary" onclick={copy}>
                             <div class="web-icon-{$copied ? 'check' : 'copy'} text-primary"></div>
                             <span class="text">Copy ticket URL</span>
                         </button>
@@ -155,7 +155,7 @@
 
     {#if customizing}
         <div class="drawer" data-state={drawerOpen ? 'open' : 'closed'}>
-            <button on:click={() => (drawerOpen = !drawerOpen)}>
+            <button onclick={() => (drawerOpen = !drawerOpen)}>
                 <div class="inner">
                     <span class="text-label text-primary">Ticket Editor</span>
                     <span class="web-icon-chevron-down"></span>
