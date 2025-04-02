@@ -38,7 +38,7 @@
                         class="web-icon-button web-is-only-mobile"
                         aria-label="previous page"
                     >
-                        <span class="icon-cheveron-left" aria-hidden="true" />
+                        <span class="icon-cheveron-left" aria-hidden="true"></span>
                     </a>
                 {/if}
                 <ul class="web-metadata text-caption">
@@ -56,13 +56,13 @@
                             <span
                                 class="icon-cheveron-left web-u-font-size-24 text-primary web-is-not-mobile"
                                 aria-hidden="true"
-                            />
+                            ></span>
                         </a>
                     {/if}
                     <h1 class="text-title font-aeonik-pro text-primary">{title}</h1>
                 </div>
             </div>
-            <div class="web-article-header-end" />
+            <div class="web-article-header-end"></div>
         </header>
         <div class="web-article-content" class:web-reduced-article-size={$reducedArticleSize}>
             <slot />

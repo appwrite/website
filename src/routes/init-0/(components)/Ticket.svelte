@@ -224,7 +224,7 @@
                     {#each c as row}
                         <div class="row">
                             {#each row as level, j}
-                                <div style:--index={row.length - j} data-level={level} />
+                                <div style:--index={row.length - j} data-level={level}></div>
                             {/each}
                         </div>
                     {/each}
@@ -243,8 +243,8 @@
                     />
                 </clipPath>
             </svg>
-            <div class="shine" />
-            <div class="glare" />
+            <div class="shine"></div>
+            <div class="glare"></div>
         </div>
     </div>
 </div>

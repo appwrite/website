@@ -210,7 +210,7 @@
                                                     <span
                                                         class="icon-cheveron-down web-u-pointer-events-none absolute top-[11px] right-2"
                                                         aria-hidden="true"
-                                                    />
+                                                    ></span>
                                                 </div>
                                             </li>
                                             <li class="web-form-item flex-col gap-1">
@@ -239,7 +239,7 @@
                                                     id="use-case"
                                                     placeholder="Describe your use case and how our Enterprise Plan can support it"
                                                     bind:value={useCase}
-                                                />
+                                                ></textarea>
                                             </li>
                                         </ul>
                                     </div>

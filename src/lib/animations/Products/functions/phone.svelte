@@ -33,7 +33,7 @@
 <div data-theme-ignore class="inner-phone light">
     <div class="header">
         <p class="title">Upgrade plan</p>
-        <span class="icon-menu" aria-label="menu" />
+        <span class="icon-menu" aria-label="menu"></span>
     </div>
 
     <div class="plan">

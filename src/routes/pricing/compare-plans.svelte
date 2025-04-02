@@ -584,7 +584,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="web-u-stretch-sep-full-screen" />
+                    <div class="web-u-stretch-sep-full-screen"></div>
 
                     {#each tables as table}
                         {@const isOpen = $value?.includes(table.title)}
@@ -617,7 +617,7 @@
                                     <span
                                         class="icon-cheveron-down web-is-only-mobile web-u-inline-block"
                                         aria-hidden="true"
-                                    />
+                                    ></span>
                                 </button>
                             </caption>
 
@@ -635,10 +635,10 @@
                                                             use:melt={trigger}
                                                             class="icon-info"
                                                             aria-hidden="true"
-                                                        />
-                                                        <svelte:fragment slot="tooltip">
+                                                        ></button>
+                                                        {#snippet tooltip()}
                                                             {row.info}
-                                                        </svelte:fragment>
+                                                        {/snippet}
                                                     </Tooltip>
                                                 {/if}
                                             </div>

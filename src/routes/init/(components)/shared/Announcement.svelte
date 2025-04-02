@@ -22,7 +22,7 @@
             style:color="#fff"
         >
             <span class="text">Announcement</span>
-            <span class="web-icon-arrow-right" />
+            <span class="web-icon-arrow-right"></span>
         </div>
     </div>
     <div class="illustration">

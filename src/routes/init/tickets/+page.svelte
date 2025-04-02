@@ -76,7 +76,7 @@
                 </hgroup>
                 <div class="buttons">
                     <button class="web-button" on:click={loginGithub}>
-                        <div class="web-icon-github" />
+                        <div class="web-icon-github"></div>
                         <span class="text">Register with GitHub</span>
                     </button>
                 </div>

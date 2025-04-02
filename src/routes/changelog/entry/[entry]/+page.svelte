@@ -1,15 +1,15 @@
 <script lang="ts">
+    import { page } from '$app/stores';
     import { FooterNav, MainFooter, Tooltip } from '$lib/components';
     import PreFooter from '$lib/components/PreFooter.svelte';
+    import { type SocialShareOption, socialSharingOptions } from '$lib/constants';
     import { Main } from '$lib/layouts';
+    import { copy } from '$lib/utils/copy';
     import { formatDate } from '$lib/utils/date';
     import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
     import { CHANGELOG_TITLE_SUFFIX } from '$routes/titles';
-    import { type SocialShareOption, socialSharingOptions } from '$lib/constants';
-    import { page } from '$app/stores';
-    import { copy } from '$lib/utils/copy';
 
-    export let data;
+    let { data } = $props();
 
     const seo = {
         title: data.title,
@@ -21,12 +21,15 @@
 
     const sharingOptions = socialSharingOptions.filter((option) => option.label !== 'YCombinator');
 
-    enum CopyStatus {
-        Copy = 'Copy URL',
-        Copied = 'Copied'
-    }
+    const CopyStatus = {
+        Copy: 'Copy',
+        Copied: 'Copied!'
+    } as const;
+    type CopyStatusType = keyof typeof CopyStatus;
+    type CopyStatusValue = (typeof CopyStatus)[CopyStatusType];
 
-    let copyText = CopyStatus.Copy;
+    let copyText = $state<CopyStatusValue>(CopyStatus.Copy);
+
     async function handleCopy() {
         const blogPostUrl = encodeURI(`https://appwrite.io${$page.url.pathname}`);
 
@@ -70,14 +73,14 @@
     <div class="web-big-padding-section">
         <div class="pt-10">
             <div class="web-big-padding-section-level-2">
-                <div class="container wrapper max-w-[42.5rem]" style="--container-size:42.5rem">
+                <div class="wrapper container max-w-[42.5rem]" style="--container-size:42.5rem">
                     <article class="web-main-article">
                         <header class="web-main-article-header">
                             <a
                                 class="web-link web-u-color-text-secondary items-baseline"
                                 href="/changelog"
                             >
-                                <span class="web-icon-chevron-left" aria-hidden="true" />
+                                <span class="web-icon-chevron-left" aria-hidden="true"></span>
                                 <span>Back to Changelog</span>
                             </a>
                             <ul class="web-metadata text-caption">
@@ -111,7 +114,7 @@
                                                         <span
                                                             class={sharingOption.icon}
                                                             aria-hidden="true"
-                                                        />
+                                                        ></span>
                                                     </a>
                                                 {:else}
                                                     <button
@@ -122,15 +125,15 @@
                                                         <span
                                                             class={sharingOption.icon}
                                                             aria-hidden="true"
-                                                        />
+                                                        ></span>
                                                     </button>
                                                 {/if}
 
-                                                <svelte:fragment slot="tooltip">
+                                                {#snippet tooltip()}
                                                     {sharingOption.type === 'copy'
                                                         ? copyText
                                                         : `Share on ${sharingOption.label}`}
-                                                </svelte:fragment>
+                                                {/snippet}
                                             </Tooltip>
                                         </li>
                                     {/each}

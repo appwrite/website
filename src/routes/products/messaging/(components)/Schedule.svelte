@@ -18,12 +18,12 @@
 </script>
 
 <Step title="Step 3: Schedule">
-    <div class="blur" />
+    <div class="blur"></div>
     <div class="wrapper">
         <div class="calendar" use:melt={$calendar}>
             <header>
                 <button class="web-icon-button" use:melt={$prevButton}>
-                    <div class="web-icon-chevron-left" />
+                    <div class="web-icon-chevron-left"></div>
                 </button>
                 <div class="flex items-center gap-4">
                     <div class="text-label text-primary" use:melt={$heading}>
@@ -38,7 +38,7 @@
                     </button>
                 </div>
                 <button class="web-icon-button" use:melt={$nextButton}>
-                    <div class="web-icon-chevron-right" />
+                    <div class="web-icon-chevron-right"></div>
                 </button>
             </header>
 

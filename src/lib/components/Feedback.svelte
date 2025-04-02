@@ -80,7 +80,7 @@
                             feedbackType = 'positive';
                         }}
                     >
-                        <span class="icon-thumb-up" />
+                        <span class="icon-thumb-up"></span>
                     </button>
                     <button
                         class="web-radio-button"
@@ -91,7 +91,7 @@
                         }}
                     >
                         <!-- TODO: fix the icon name on pink -->
-                        <span class="icon-thumb-dowm" />
+                        <span class="icon-thumb-dowm"></span>
                     </button>
                 </div>
             </div>
@@ -107,7 +107,7 @@
                             rel="noopener noreferrer"
                             class="web-link flex items-baseline gap-1"
                         >
-                            <span class="icon-pencil-alt contents" aria-hidden="true" />
+                            <span class="icon-pencil-alt contents" aria-hidden="true"></span>
                             <span>Update on GitHub</span>
                         </a>
                     </li>
@@ -133,7 +133,7 @@
                     id="message"
                     placeholder="Write your message"
                     bind:value={comment}
-                />
+                ></textarea>
                 <label for="message" class="mt-2">
                     <span class="text-primary">Email</span>
                 </label>
