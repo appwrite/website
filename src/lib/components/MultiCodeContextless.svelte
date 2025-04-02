@@ -22,7 +22,7 @@
         }
     });
 
- const CopyStatus = {
+    const CopyStatus = {
         Copy: 'Copy',
         Copied: 'Copied!'
     } as const;
@@ -76,10 +76,10 @@
                 <li class="buttons-list-item" style="padding-inline-start: 13px">
                     <Tooltip>
                         <button
-                        on:click={handleCopy}
-                        class="web-icon-button"
-                        aria-label="copy code from code-snippet"
-                        ><span class="web-icon-copy" aria-hidden="true"></span></button
+                            on:click={handleCopy}
+                            class="web-icon-button"
+                            aria-label="copy code from code-snippet"
+                            ><span class="web-icon-copy" aria-hidden="true"></span></button
                         >
                         {#snippet tooltip()}
                             <span>

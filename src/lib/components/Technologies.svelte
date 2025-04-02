@@ -85,10 +85,9 @@
                     />
                 </a>
             </li>
-               {#snippet tooltip()}
-                            {platform.name}
-                        {/snippet}
-
+            {#snippet tooltip()}
+                {platform.name}
+            {/snippet}
         </Tooltip>
     {/each}
 </ul>

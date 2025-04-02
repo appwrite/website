@@ -81,8 +81,8 @@
 {/if}
 
 {#if tooltip && $open && !disabled}
-<div use:melt={$content} class="web-tooltip text-sub-body" transition:fly={flyParams}>
-    <div use:melt={$arrow}></div>
-    {@render tooltip()}
-</div>
+    <div use:melt={$content} class="web-tooltip text-sub-body" transition:fly={flyParams}>
+        <div use:melt={$arrow}></div>
+        {@render tooltip()}
+    </div>
 {/if}

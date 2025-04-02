@@ -130,11 +130,9 @@
                                                 {/if}
 
                                                 {#snippet tooltip()}
-                                            
                                                     {sharingOption.type === 'copy'
                                                         ? copyText
                                                         : `Share on ${sharingOption.label}`}
-                                                
                                                 {/snippet}
                                             </Tooltip>
                                         </li>
