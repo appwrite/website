@@ -1,3 +1,7 @@
+<!-- @migration-task Error while migrating Svelte code: Cannot use `export let` in runes mode — use `$props()` instead
+https://svelte.dev/e/legacy_export_invalid -->
+<!-- @migration-task Error while migrating Svelte code: Cannot use `export let` in runes mode — use `$props()` instead
+https://svelte.dev/e/legacy_export_invalid -->
 <script lang="ts">
     import { Select, Tooltip } from '$lib/components';
     import { getCodeHtml, type Language } from '$lib/utils/code';
@@ -26,8 +30,11 @@
         Copy: 'Copy',
         Copied: 'Copied!'
     } as const;
+    type CopyStatusType = keyof typeof CopyStatus;
+    type CopyStatusValue = (typeof CopyStatus)[CopyStatusType];
 
-    let copyText = CopyStatus.Copy;
+    let copyText: CopyStatusValue = CopyStatus.Copy;
+
     async function handleCopy() {
         await copy(content);
 
@@ -78,9 +85,11 @@
                             aria-label="copy code from code-snippet"
                             ><span class="web-icon-copy" aria-hidden="true"></span></button
                         >
-                        <svelte:fragment slot="tooltip">
-                            {copyText}
-                        </svelte:fragment>
+                        {#snippet tooltip()}
+                            <span>
+                                {copyText}
+                            </span>
+                        {/snippet}
                     </Tooltip>
                 </li>
             </ul>

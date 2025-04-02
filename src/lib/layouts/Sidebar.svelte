@@ -72,7 +72,9 @@
                         {#if expandable && !$layoutState.showSidenav}
                             <Tooltip placement="right">
                                 <SidebarNavButton groupItem={navGroup} />
-                                <svelte:fragment slot="tooltip">{navGroup.label}</svelte:fragment>
+                                {#snippet tooltip()}
+                                    <span>{navGroup.label}</span>
+                                {/snippet}
                             </Tooltip>
                         {:else}
                             <SidebarNavButton groupItem={navGroup} />
@@ -89,9 +91,9 @@
                                     {#if expandable && !$layoutState.showSidenav}
                                         <Tooltip placement="right">
                                             <SidebarNavButton {groupItem} />
-                                            <svelte:fragment slot="tooltip"
-                                                >{groupItem.label}</svelte:fragment
-                                            >
+                                            {#snippet tooltip()}
+                                                <span>{groupItem.label}</span>
+                                            {/snippet}
                                         </Tooltip>
                                     {:else}
                                         <SidebarNavButton {groupItem} />

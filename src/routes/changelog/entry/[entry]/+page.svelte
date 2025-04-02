@@ -9,7 +9,7 @@
     import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
     import { CHANGELOG_TITLE_SUFFIX } from '$routes/titles';
 
-    export let data;
+    let { data } = $props();
 
     const seo = {
         title: data.title,
@@ -25,8 +25,11 @@
         Copy: 'Copy',
         Copied: 'Copied!'
     } as const;
+    type CopyStatusType = keyof typeof CopyStatus;
+    type CopyStatusValue = (typeof CopyStatus)[CopyStatusType];
 
-    let copyText = CopyStatus.Copy;
+    let copyText = $state<CopyStatusValue>(CopyStatus.Copy);
+
     async function handleCopy() {
         const blogPostUrl = encodeURI(`https://appwrite.io${$page.url.pathname}`);
 
@@ -126,11 +129,11 @@
                                                     </button>
                                                 {/if}
 
-                                                <svelte:fragment slot="tooltip">
+                                                {#snippet tooltip()}
                                                     {sharingOption.type === 'copy'
                                                         ? copyText
                                                         : `Share on ${sharingOption.label}`}
-                                                </svelte:fragment>
+                                                {/snippet}
                                             </Tooltip>
                                         </li>
                                     {/each}
