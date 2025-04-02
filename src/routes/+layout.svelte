@@ -1,5 +1,6 @@
 <script lang="ts" context="module">
     import { derived, writable } from 'svelte/store';
+    import { loadReoScript } from 'reodotdev';
 
     export type Theme = 'dark' | 'light' | 'system';
     export const currentTheme = (function () {
@@ -128,6 +129,15 @@
             }
         });
     }
+
+    if (!dev && browser) {
+        const clientID = '144fa7eaa4904e8';
+
+        const reoPromise = loadReoScript({ clientID });
+        reoPromise.then((Reo: any) => {
+            Reo.init({ clientID });
+        });
+    }
 </script>
 
 <svelte:window on:scroll={handleScroll} />
@@ -135,6 +145,7 @@
     {#if !dev}
         <!--suppress JSUnresolvedLibraryURL -->
         <script defer data-domain="appwrite.io" src="https://plausible.io/js/script.js"></script>
+
         <!-- ZoomInfo snippet -->
         <script>
             window[
@@ -177,22 +188,6 @@
                     : window.addEventListener('load', function () {
                           document.body.appendChild(zi);
                       });
-        </script>
-
-        <!-- Reo.dev -->
-        <script type="text/javascript">
-            !(function () {
-                var e, t, n;
-                (e = '144fa7eaa4904e8'),
-                    (t = function () {
-                        Reo.init({ clientID: '144fa7eaa4904e8' });
-                    }),
-                    ((n = document.createElement('script')).src =
-                        'https://static.reo.dev/' + e + '/reo.js'),
-                    (n.defer = !0),
-                    (n.onload = t),
-                    document.head.appendChild(n);
-            })();
         </script>
     {/if}
 
