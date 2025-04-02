@@ -9,7 +9,7 @@
     import { CHANGELOG_KEY } from '../utils';
     import { TITLE_SUFFIX } from '$routes/titles';
 
-    export let data;
+    let { data } = $props();
 
     const seo = {
         title: 'Changelog' + TITLE_SUFFIX,
@@ -55,14 +55,14 @@
                             <li>
                                 <div class="web-dot"></div>
                                 <ChangelogEntry {entry}>
-                                    <svelte:component this={entry.component} />
+                                    <entry.component />
                                 </ChangelogEntry>
                             </li>
                         {/each}
                     </ul>
 
                     {#if data.nextPage}
-                        <button class="web-button is-secondary" on:click={loadMore}
+                        <button class="web-button is-secondary" onclick={loadMore}
                             >Load more</button
                         >
                     {/if}

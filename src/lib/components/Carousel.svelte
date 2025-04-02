@@ -1,8 +1,21 @@
 <script lang="ts">
+    import type { Snippet } from "svelte";
+
     let carousel: HTMLElement;
 
-    export let size: 'default' | 'medium' | 'big' = 'default';
-    export let gap = 32;
+    interface Props {
+        size?: 'default' | 'medium' | 'big';
+        gap?: number;
+        header: Snippet;
+        children: Snippet;
+    }
+
+    let {
+        size = 'default',
+        gap = 32,
+        header,
+        children
+    }: Props = $props();
     let scroll = 0;
 
     function calculateScrollAmount(prev = false) {
@@ -32,8 +45,8 @@
         });
     }
 
-    let isEnd = false;
-    let isStart = true;
+    let isEnd = $state(false);
+    let isStart = $state(true);
 
     function handleScroll() {
         isStart = carousel.scrollLeft <= 0;
@@ -43,13 +56,13 @@
 
 <div>
     <div class="mt-2 flex flex-wrap items-center">
-        <slot name="header" />
+        {@render header()}
         <div class="nav ml-auto flex items-end gap-3">
             <button
                 class="web-icon-button"
                 aria-label="Move carousel backward"
                 disabled={isStart}
-                on:click={prev}
+                onclick={prev}
             >
                 <span class="web-icon-arrow-left" aria-hidden="true"></span>
             </button>
@@ -57,7 +70,7 @@
                 class="web-icon-button"
                 aria-label="Move carousel forward"
                 disabled={isEnd}
-                on:click={next}
+                onclick={next}
             >
                 <span class="web-icon-arrow-right" aria-hidden="true"></span>
             </button>
@@ -71,9 +84,9 @@
             class:is-big={size === 'big'}
             style:gap="{gap}px"
             bind:this={carousel}
-            on:scroll={handleScroll}
+            onscroll={handleScroll}
         >
-            <slot />
+            {@render children()}
         </ul>
     </div>
 </div>

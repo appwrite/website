@@ -9,7 +9,7 @@
     import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
     import { CHANGELOG_TITLE_SUFFIX } from '$routes/titles';
 
-    export let data;
+    let { data } = $props();
 
     const seo = {
         title: data.title,
