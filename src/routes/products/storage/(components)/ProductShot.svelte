@@ -1,5 +1,6 @@
 <script lang="ts">
     import Switch from '$lib/components/Switch.svelte';
+    import { Button, Icon } from '$lib/components/ui';
     import { classNames } from '$lib/utils/classnames';
     import { writable } from 'svelte/store';
 
@@ -159,10 +160,10 @@
         <tfoot>
             <tr>
                 <td colspan={headings.length + 1} class="py-2 pl-4 md:py-4">
-                    <button class="web-button is-small is-text">
-                        <span class="icon-plus web-u-color-text-primary" aria-hidden="true"></span>
-                        <span class="text">Add role</span>
-                    </button>
+                    <Button variant="text" class="is-small">
+                        <Icon icon="plus" aria-hidden="true"></Icon>
+                        Add role
+                    </Button>
                 </td>
             </tr>
         </tfoot>

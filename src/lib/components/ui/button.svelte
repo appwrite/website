@@ -13,7 +13,9 @@
                 primary: [''],
                 secondary: ['is-secondary'],
                 text: ['is-text'],
-                transparent: ['is-transparent']
+                transparent: ['is-transparent'],
+                small: ['is-small'],
+                icon: ['is-icon', 'is-text']
             }
         }
     });
