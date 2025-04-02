@@ -32,7 +32,7 @@ importers:
         version: 0.26.0
       '@appwrite.io/repo':
         specifier: github:appwrite/appwrite#feat-sites-docs
-        version: https://codeload.github.com/appwrite/appwrite/tar.gz/55ae1fb94504b82a8537ff438eef5434fa996cdc
+        version: https://codeload.github.com/appwrite/appwrite/tar.gz/979fd63148371c2cce073c3a4660591aa90134ab
       '@eslint/compat':
         specifier: ^1.2.7
         version: 1.2.7(eslint@9.22.0(jiti@2.4.2))
