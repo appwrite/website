@@ -72,7 +72,7 @@
             items: [
                 {
                     label: 'Sites API',
-                    href: '/docs/references/cloud/client-web/sites'
+                    href: '/docs/references/cloud/server-nodejs/sites'
                 }
             ]
         }
