@@ -87,7 +87,7 @@
                             href="/docs/products/storage/buckets"
                             target="_blank"
                             rel="noopener noreferrer"
-                            class="web-button is-secondary mt-4 mx-auto !w-full md:!w-fit"
+                            class="web-button is-secondary mx-auto mt-4 !w-full md:!w-fit"
                         >
                             <span>Learn more</span>
                         </a>

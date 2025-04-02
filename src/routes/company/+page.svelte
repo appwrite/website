@@ -34,7 +34,7 @@
     <div class="web-big-padding-section relative">
         <div class="relative py-10">
             <div class="web-big-padding-section-level-2" style:margin-block="8rem">
-                <section class="container web-u-padding-block-end-0">
+                <section class="web-u-padding-block-end-0 container">
                     <div
                         class="web-hero"
                         style="--hero-max-inline-size:62.125rem; --hero-gap:1.125rem;"
@@ -389,7 +389,7 @@
                                         target="_blank"
                                         rel="noopener noreferrer"
                                     >
-                                        <span class="web-icon-github" aria-hidden="true" />
+                                        <span class="web-icon-github" aria-hidden="true"></span>
                                     </a>
                                 </li>
                                 <li>
@@ -400,7 +400,7 @@
                                         target="_blank"
                                         rel="noopener noreferrer"
                                     >
-                                        <span class="web-icon-twitter" aria-hidden="true" />
+                                        <span class="web-icon-twitter" aria-hidden="true"></span>
                                     </a>
                                 </li>
                             </ul>
@@ -418,7 +418,7 @@
                                         target="_blank"
                                         rel="noopener noreferrer"
                                     >
-                                        <span class="web-icon-github" aria-hidden="true" />
+                                        <span class="web-icon-github" aria-hidden="true"></span>
                                     </a>
                                 </li>
                                 <li>
@@ -429,7 +429,7 @@
                                         target="_blank"
                                         rel="noopener noreferrer"
                                     >
-                                        <span class="web-icon-twitter" aria-hidden="true" />
+                                        <span class="web-icon-twitter" aria-hidden="true"></span>
                                     </a>
                                 </li>
                             </ul>
@@ -437,7 +437,7 @@
                         <li class="flex flex-col">
                             <h6 class="text-body text-primary font-medium">Gilad Engel</h6>
                             <p class="text-body font-medium">Angel Investor</p>
-                            <ul class="mt-auto flex gap-2 pt-4" />
+                            <ul class="mt-auto flex gap-2 pt-4"></ul>
                         </li>
                         <li class="flex flex-col">
                             <h6 class="text-body text-primary font-medium">Krishna Visvanathan</h6>
@@ -452,7 +452,7 @@
                                         target="_blank"
                                         rel="noopener noreferrer"
                                     >
-                                        <span class="web-icon-github" aria-hidden="true" />
+                                        <span class="web-icon-github" aria-hidden="true"></span>
                                     </a>
                                 </li>
                             </ul>
@@ -469,7 +469,7 @@
                                         target="_blank"
                                         rel="noopener noreferrer"
                                     >
-                                        <span class="web-icon-github" aria-hidden="true" />
+                                        <span class="web-icon-github" aria-hidden="true"></span>
                                     </a>
                                 </li>
                             </ul>
@@ -487,7 +487,7 @@
                                         target="_blank"
                                         rel="noopener noreferrer"
                                     >
-                                        <span class="web-icon-github" aria-hidden="true" />
+                                        <span class="web-icon-github" aria-hidden="true"></span>
                                     </a>
                                 </li>
                             </ul>
@@ -505,7 +505,7 @@
                                         target="_blank"
                                         rel="noopener noreferrer"
                                     >
-                                        <span class="web-icon-github" aria-hidden="true" />
+                                        <span class="web-icon-github" aria-hidden="true"></span>
                                     </a>
                                 </li>
                             </ul>
@@ -523,7 +523,7 @@
                                         target="_blank"
                                         rel="noopener noreferrer"
                                     >
-                                        <span class="web-icon-twitter" aria-hidden="true" />
+                                        <span class="web-icon-twitter" aria-hidden="true"></span>
                                     </a>
                                 </li>
                             </ul>

@@ -140,7 +140,7 @@ async function getLoggedInUser(request) {
 <section class="light bg-greyscale-50 py-4 md:py-20">
     <div class="container flex flex-col gap-6 md:flex-row">
         <div class="mb-10 flex max-w-lg flex-col">
-            <span class="web-badges text-micro font-aeonik-fono mr-auto ml-0 uppercase !text-white"
+            <span class="web-badges text-micro font-aeonik-fono mr-auto ml-0 !text-white uppercase"
                 >SSR_</span
             >
             <h2 class="text-title text-primary font-aeonik-pro my-4">
@@ -170,7 +170,9 @@ async function getLoggedInUser(request) {
                                 />
                             </a>
                         </li>
-                        <svelte:fragment slot="tooltip">{platform.name}</svelte:fragment>
+                        {#snippet tooltip()}
+                            {platform.name}
+                        {/snippet}
                     </Tooltip>
                 {/each}
             </ul>

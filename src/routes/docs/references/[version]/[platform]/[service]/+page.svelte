@@ -27,13 +27,13 @@
     import Response from './(components)/Response.svelte';
     import RateLimits from './(components)/RateLimits.svelte';
 
-    export let data;
+    let { data } = $props();
 
     setContext<LayoutContext>('headings', writable({}));
 
     const headings = getContext<LayoutContext>('headings');
 
-    let selected: string | undefined = undefined;
+    let selected: string | undefined = $state(undefined);
     headings.subscribe((n) => {
         const noVisible = Object.values(n).every((n) => !n.visible);
         if (selected && noVisible) {
@@ -119,21 +119,22 @@
     });
 
     // cleaned service description without Markdown links.
-    $: serviceDescription = (data.service?.description ?? '').replace(
-        /\[([^\]]+)]\([^)]+\)/g,
-        '$1'
+    let serviceDescription = $derived(
+        (data.service?.description ?? '').replace(/\[([^\]]+)]\([^)]+\)/g, '$1')
     );
 
     // the service description up to the first full stop, providing sufficient information.
-    $: shortenedDescription = serviceDescription.substring(0, serviceDescription.indexOf('.') + 1);
+    let shortenedDescription = $derived(
+        serviceDescription.substring(0, serviceDescription.indexOf('.') + 1)
+    );
 
-    $: platformBindingForSelect = $page.params.platform as Platform;
-    $: platform = ($preferredPlatform ?? $page.params.platform) as Platform;
-    $: platformType = platform.startsWith('client-') ? 'CLIENT' : 'SERVER';
-    $: serviceName = serviceMap[data.service?.name];
-    $: title = serviceName + API_REFERENCE_TITLE_SUFFIX;
-    $: description = shortenedDescription;
-    $: ogImage = DEFAULT_HOST + '/images/open-graph/docs.png';
+    let platformBindingForSelect = $derived($page.params.platform as Platform);
+    let platform = $derived(($preferredPlatform ?? $page.params.platform) as Platform);
+    let platformType = $derived(platform.startsWith('client-') ? 'CLIENT' : 'SERVER');
+    let serviceName = $derived(serviceMap[data.service?.name]);
+    let title = $derived(serviceName + API_REFERENCE_TITLE_SUFFIX);
+    let description = $derived(shortenedDescription);
+    let ogImage = $derived(DEFAULT_HOST + '/images/open-graph/docs.png');
 </script>
 
 <svelte:head>
@@ -233,7 +234,7 @@
                 {#if data.methods.length === 0}
                     <div class="web-article-content-grid-6-4-column-2 flex flex-col gap-8">
                         <div class="web-inline-info">
-                            <span class="icon-info" aria-hidden="true" />
+                            <span class="icon-info" aria-hidden="true"></span>
                             <h5 class="text-sub-body text-primary font-medium">
                                 No endpoint found for this version and platform
                             </h5>
@@ -302,16 +303,16 @@
             use:clickOutside={() => ($layoutState.showReferences = false)}
         >
             {#if data.methods.length > 0}
-                <button class="web-icon-button" id="refOpen" on:click={toggleReferences}>
-                    <span class="icon-menu-alt-4" aria-hidden="true" />
+                <button class="web-icon-button" id="refOpen" onclick={toggleReferences}>
+                    <span class="icon-menu-alt-4" aria-hidden="true"></span>
                 </button>
                 <div class="web-references-menu-content">
                     <div
                         class="web-references-menu-header mt-6 flex items-center justify-between gap-4"
                     >
                         <h5 class="web-references-menu-title text-micro uppercase">On This Page</h5>
-                        <button class="web-icon-button" id="refClose" on:click={toggleReferences}>
-                            <span class="icon-x" aria-hidden="true" />
+                        <button class="web-icon-button" id="refClose" onclick={toggleReferences}>
+                            <span class="icon-x" aria-hidden="true"></span>
                         </button>
                     </div>
                     <ul class="web-references-menu-list">
@@ -327,7 +328,7 @@
                     </ul>
                     <div class="border-greyscale-900/4 web-u-padding-block-20 border-t">
                         <button class="web-link inline-flex items-center gap-2" use:scrollToTop>
-                            <span class="web-icon-arrow-up" aria-hidden="true" />
+                            <span class="web-icon-arrow-up" aria-hidden="true"></span>
                             <span class="text-caption">Back to top</span>
                         </button>
                     </div>

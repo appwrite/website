@@ -25,14 +25,14 @@ return res.json({ success: true });`.trim();
 
 <div use:portal={{ target: '#code-bottom' }} class="bottom">
     {#if $state.submit !== 'idle'}
-        <span class="web-icon-github" in:fade />
+        <span class="web-icon-github" in:fade></span>
     {/if}
     {#if $state.submit === 'loading'}
         <span in:fade>Pushing to GitHub...</span>
-        <div class="loader is-small" in:fade />
+        <div class="loader is-small" in:fade></div>
     {:else if $state.submit === 'success'}
         <span>Deployed to Appwrite Cloud</span>
-        <span class="web-icon-check" />
+        <span class="web-icon-check"></span>
     {/if}
 </div>
 

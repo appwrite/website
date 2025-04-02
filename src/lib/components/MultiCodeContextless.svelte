@@ -1,9 +1,13 @@
+<!-- @migration-task Error while migrating Svelte code: Cannot use `export let` in runes mode — use `$props()` instead
+https://svelte.dev/e/legacy_export_invalid -->
+<!-- @migration-task Error while migrating Svelte code: Cannot use `export let` in runes mode — use `$props()` instead
+https://svelte.dev/e/legacy_export_invalid -->
 <script lang="ts">
-    import { platformMap } from '$lib/utils/references';
-    import { writable } from 'svelte/store';
+    import { Select, Tooltip } from '$lib/components';
     import { getCodeHtml, type Language } from '$lib/utils/code';
     import { copy } from '$lib/utils/copy';
-    import { Select, Tooltip } from '$lib/components';
+    import { platformMap } from '$lib/utils/references';
+    import { writable } from 'svelte/store';
 
     export let selected: Language = 'js';
     export let data: { language: string; content: string; platform?: string }[] = [];
@@ -22,11 +26,15 @@
         }
     });
 
-    enum CopyStatus {
-        Copy = 'Copy',
-        Copied = 'Copied!'
-    }
-    let copyText = CopyStatus.Copy;
+    const CopyStatus = {
+        Copy: 'Copy',
+        Copied: 'Copied!'
+    } as const;
+    type CopyStatusType = keyof typeof CopyStatus;
+    type CopyStatusValue = (typeof CopyStatus)[CopyStatusType];
+
+    let copyText: CopyStatusValue = CopyStatus.Copy;
+
     async function handleCopy() {
         await copy(content);
 
@@ -75,11 +83,13 @@
                             on:click={handleCopy}
                             class="web-icon-button"
                             aria-label="copy code from code-snippet"
-                            ><span class="web-icon-copy" aria-hidden="true" /></button
+                            ><span class="web-icon-copy" aria-hidden="true"></span></button
                         >
-                        <svelte:fragment slot="tooltip">
-                            {copyText}
-                        </svelte:fragment>
+                        {#snippet tooltip()}
+                            <span>
+                                {copyText}
+                            </span>
+                        {/snippet}
                     </Tooltip>
                 </li>
             </ul>

@@ -147,7 +147,7 @@
             <slot />
         </ul>
     </div>
-    <div class="shadow" />
+    <div class="shadow"></div>
 </div>
 
 {#if showBullets}

@@ -8,22 +8,22 @@
     import MainFooter from '$lib/components/MainFooter.svelte';
     import ThreadCard from './ThreadCard.svelte';
 
+    import Input from '$lib/components/ui/input.svelte';
     import PreFooter from './PreFooter.svelte';
     import TagsDropdown from './TagsDropdown.svelte';
     import { getThreads } from './helpers';
-    import Input from '$lib/components/ui/Input.svelte';
 
     const title = 'Threads' + TITLE_SUFFIX;
     const description =
         "Appwrite's Threads page showcases our community interactions on Discord. Join the conversation, ask questions, or assist other members with their issues.";
     const ogImage = DEFAULT_HOST + '/images/open-graph/website.png';
 
-    export let data;
+    let { data } = $props();
 
-    let threads = data.threads;
+    let threads = $state(data.threads);
 
     let searching = false; // Do some sick animation
-    let query = '';
+    let query = $state('');
 
     const handleSearch = async (value: string) => {
         query = value;
@@ -84,7 +84,7 @@
         'REST API'
     ];
 
-    let selectedTags: string[] = [];
+    let selectedTags: string[] = $state([]);
 
     function toggleTag(tag: string) {
         if (selectedTags.includes(tag)) {
@@ -149,7 +149,7 @@
                                     <button
                                         class="web-btn-tag"
                                         class:is-selected={selectedTags?.includes(tag)}
-                                        on:click={() => toggleTag(tag)}
+                                        onclick={() => toggleTag(tag)}
                                     >
                                         {tag}
                                     </button>
@@ -170,7 +170,7 @@
                                 class="web-icon-search z-[5]"
                                 aria-hidden="true"
                                 style="inset-block-start:0.9rem"
-                            />
+                            ></span>
 
                             <input
                                 class="web-input-button relative z-1 !pl-10"
@@ -200,7 +200,7 @@
                                 <span class="text-body font-medium">No support threads found</span>
                                 <button
                                     class="web-button"
-                                    on:click={() => {
+                                    onclick={() => {
                                         query = '';
                                         handleSearch('');
                                     }}>Clear search</button

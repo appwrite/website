@@ -178,6 +178,22 @@
                           document.body.appendChild(zi);
                       });
         </script>
+
+        <!-- Reo.dev -->
+        <script type="text/javascript">
+            !(function () {
+                var e, t, n;
+                (e = '144fa7eaa4904e8'),
+                    (t = function () {
+                        Reo.init({ clientID: '144fa7eaa4904e8' });
+                    }),
+                    ((n = document.createElement('script')).src =
+                        'https://static.reo.dev/' + e + '/reo.js'),
+                    (n.defer = !0),
+                    (n.onload = t),
+                    document.head.appendChild(n);
+            })();
+        </script>
     {/if}
 
     <!-- canonical url -->

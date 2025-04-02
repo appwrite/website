@@ -27,7 +27,7 @@
         >
             <header class="mb-3 flex items-center justify-between">
                 <button class="web-icon-button">
-                    <div class="web-icon-chevron-left" />
+                    <div class="web-icon-chevron-left"></div>
                 </button>
 
                 <div class="font-aeonik-pro text-primary" use:melt={$heading}>
@@ -35,7 +35,7 @@
                 </div>
 
                 <button class="web-icon-button">
-                    <div class="web-icon-chevron-right" />
+                    <div class="web-icon-chevron-right"></div>
                 </button>
             </header>
 

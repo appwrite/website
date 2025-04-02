@@ -4,11 +4,11 @@
     import { visible } from '$lib/actions/visible';
     import { Tooltip } from '$lib/components';
     import { classNames } from '$lib/utils/classnames';
+    import { getAppwriteDashboardUrl } from '$lib/utils/dashboard';
     import { getScrollDir } from '$lib/utils/getScrollDir';
     import { createAccordion, melt } from '@melt-ui/svelte';
     import { writable } from 'svelte/store';
     import { fly } from 'svelte/transition';
-    import { getAppwriteDashboardUrl } from '$lib/utils/dashboard';
 
     type Table = {
         title: string;
@@ -188,28 +188,28 @@
                     free: '500K',
                     pro: '1750K',
                     scale: '1750K',
-                    enterprise: 'Unlimited'
+                    enterprise: 'Custom'
                 },
                 {
                     title: 'Writes',
                     free: '250K',
                     pro: '750K',
                     scale: '750K',
-                    enterprise: 'Unlimited'
+                    enterprise: 'Custom'
                 },
                 {
-                    title: 'Aditional reads',
+                    title: 'Additional reads',
                     free: '-',
                     pro: '$0.060 per 100k reads',
                     scale: '$0.060 per 100k reads',
-                    enterprise: 'Unlimited'
+                    enterprise: 'Custom'
                 },
                 {
-                    title: 'Aditional writes',
+                    title: 'Additional writes',
                     free: '-',
                     pro: '$0.10 per 100k writes',
                     scale: '$0.10 per 100k writes',
-                    enterprise: 'Unlimited'
+                    enterprise: 'Custom'
                 },
                 {
                     title: 'Backups',
@@ -584,7 +584,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="web-u-stretch-sep-full-screen" />
+                    <div class="web-u-stretch-sep-full-screen"></div>
 
                     {#each tables as table}
                         {@const isOpen = $value?.includes(table.title)}
@@ -617,7 +617,7 @@
                                     <span
                                         class="icon-cheveron-down web-is-only-mobile web-u-inline-block"
                                         aria-hidden="true"
-                                    />
+                                    ></span>
                                 </button>
                             </caption>
 
@@ -635,10 +635,10 @@
                                                             use:melt={trigger}
                                                             class="icon-info"
                                                             aria-hidden="true"
-                                                        />
-                                                        <svelte:fragment slot="tooltip">
+                                                        ></button>
+                                                        {#snippet tooltip()}
                                                             {row.info}
-                                                        </svelte:fragment>
+                                                        {/snippet}
                                                     </Tooltip>
                                                 {/if}
                                             </div>

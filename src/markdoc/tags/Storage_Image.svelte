@@ -2,22 +2,43 @@
     import { storage } from '$lib/appwrite';
     import Image from '../nodes/Image.svelte';
 
-    export let file_id: string;
-    export let bucket_id: string = 'images';
-    export let alt: string = '';
-    export let title: string = '';
-    export let width: number = 0;
-    export let height: number = 0;
-    export let gravity: string = 'center';
-    export let quality: number = 90;
-    export let border_width: number = 0;
-    export let border_color: string = 'CDCA30';
-    export let border_radius: number = 0;
-    export let opacity: number = 1;
-    export let rotation: number = 0;
-    export let background_color: string = '000000';
-    export let output: string = 'webp';
-    export let just_img: boolean = false;
+    interface Props {
+        file_id: string;
+        bucket_id?: string;
+        alt?: string;
+        title?: string;
+        width?: number;
+        height?: number;
+        gravity?: string;
+        quality?: number;
+        border_width?: number;
+        border_color?: string;
+        border_radius?: number;
+        opacity?: number;
+        rotation?: number;
+        background_color?: string;
+        output?: string;
+        just_img?: boolean;
+    }
+
+    const {
+        file_id,
+        bucket_id = 'images',
+        alt = '',
+        title = '',
+        width = 0,
+        height = 0,
+        gravity = 'center',
+        quality = 90,
+        border_width = 0,
+        border_color = 'CDCA30',
+        border_radius = 0,
+        opacity = 1,
+        rotation = 0,
+        background_color = '000000',
+        output = 'webp',
+        just_img = false
+    }: Props = $props();
 
     const src = storage
         .getFilePreview(

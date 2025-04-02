@@ -12,11 +12,11 @@
                 <div
                     class="line"
                     style={`--delay:${randomDelay()}ms;--height:${getRandomHeight()}px;`}
-                />
+                ></div>
                 <div
                     class="line"
                     style={`--delay:${randomDelay()}ms;--height:${getRandomHeight()}px;`}
-                />
+                ></div>
             </div>
         {/each}
     </div>

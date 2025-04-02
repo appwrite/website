@@ -4,22 +4,22 @@
     >
         <ul class="flex flex-col items-center gap-4">
             <li
-                class="font-aeonik-fono text-caption text-primary w-fit rounded-full bg-white/6 py-1 px-2 text-center opacity-60"
+                class="font-aeonik-fono text-caption text-primary w-fit rounded-full bg-white/6 px-2 py-1 text-center opacity-60"
             >
                 buckets.*.files.*.delete
             </li>
             <li
-                class="font-aeonik-fono text-caption text-primary w-fit rounded-full bg-white/6 py-1 px-2 text-center"
+                class="font-aeonik-fono text-caption text-primary w-fit rounded-full bg-white/6 px-2 py-1 text-center"
             >
                 databases.*.collections.*.create
             </li>
             <li
-                class="font-aeonik-fono text-caption text-primary w-fit rounded-full bg-white/6 py-1 px-2 text-center opacity-60"
+                class="font-aeonik-fono text-caption text-primary w-fit rounded-full bg-white/6 px-2 py-1 text-center opacity-60"
             >
                 functions.*.executions.*.delete
             </li>
             <li
-                class="font-aeonik-fono text-caption text-primary w-fit rounded-full bg-white/6 py-1 px-2 text-center opacity-40"
+                class="font-aeonik-fono text-caption text-primary w-fit rounded-full bg-white/6 px-2 py-1 text-center opacity-40"
             >
                 teams.*.memberships.*.create
             </li>
