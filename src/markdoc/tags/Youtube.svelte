@@ -1,5 +1,5 @@
 <script lang="ts">
-    import Video from '$routes/init/(components)/Video.svelte';
+    import Video from '$lib/components/shared/video/player.svelte';
 
     interface Props {
         src: string;
