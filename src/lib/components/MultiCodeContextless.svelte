@@ -30,11 +30,11 @@
         Copy: 'Copy',
         Copied: 'Copied!'
     } as const;
-
     type CopyStatusType = keyof typeof CopyStatus;
     type CopyStatusValue = (typeof CopyStatus)[CopyStatusType];
 
-    let copyText = $state<CopyStatusValue>(CopyStatus.Copy);
+    let copyText: CopyStatusValue = CopyStatus.Copy;
+
     async function handleCopy() {
         await copy(content);
 
@@ -90,7 +90,9 @@
                             ><span class="web-icon-copy" aria-hidden="true"></span></button
                         >
                         {#snippet tooltip()}
-                            {copyText}
+                            <span>
+                                {copyText}
+                            </span>
                         {/snippet}
                     </Tooltip>
                 </li>

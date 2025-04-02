@@ -77,7 +77,7 @@
                             <Tooltip placement="right">
                                 <SidebarNavButton groupItem={navGroup} />
                                 {#snippet tooltip()}
-                                    {navGroup.label}
+                                    <span>{navGroup.label}</span>
                                 {/snippet}
                             </Tooltip>
                         {:else}
@@ -96,7 +96,7 @@
                                         <Tooltip placement="right">
                                             <SidebarNavButton {groupItem} />
                                             {#snippet tooltip()}
-                                                {groupItem.label}
+                                                <span>{groupItem.label}</span>
                                             {/snippet}
                                         </Tooltip>
                                     {:else}

@@ -57,7 +57,9 @@
 
                     <Tooltip placement="bottom">
                         <Switch bind:checked={showGitHub} />
-                        <svelte:fragment slot="tooltip">Show GitHub contributions</svelte:fragment>
+                        {#snippet tooltip()}
+                            Show GitHub contributions
+                        {/snippet}
                     </Tooltip>
                 </div>
             {:else}

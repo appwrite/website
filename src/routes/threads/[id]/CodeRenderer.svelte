@@ -22,7 +22,11 @@
         Copied: 'Copied!'
     } as const;
 
-    let copyText = CopyStatus.Copy;
+    type CopyStatusType = keyof typeof CopyStatus;
+    type CopyStatusValue = (typeof CopyStatus)[CopyStatusType];
+
+    let copyText: CopyStatusValue = CopyStatus.Copy;
+
     async function handleCopy() {
         await copy(text);
 
@@ -78,19 +82,18 @@
                 <ul class="buttons-list flex gap-2">
                     <li class="buttons-list-item ps-5">
                         <Tooltip>
-                            <button
-                                slot="asChild"
-                                let:trigger
-                                use:melt={trigger}
-                                on:click={handleCopy}
-                                class="web-icon-button"
-                                aria-label="copy code from code-snippet"
-                            >
-                                <span class="web-icon-copy" aria-hidden="true"></span>
-                            </button>
-                            <svelte:fragment slot="tooltip">
-                                {copyText}
-                            </svelte:fragment>
+                            {#snippet asChild(trigger)}
+                                <button
+                                    on:click={handleCopy}
+                                    class="web-icon-button"
+                                    aria-label="copy code from code-snippet"
+                                >
+                                    <span class="web-icon-copy" aria-hidden="true"></span>
+                                </button>
+                            {/snippet}
+                            {#snippet tooltip()}
+                                <span>{copyText}</span>
+                            {/snippet}
                         </Tooltip>
                     </li>
                 </ul>
