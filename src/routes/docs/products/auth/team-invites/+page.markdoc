@@ -91,7 +91,7 @@ val response = teams.createMembership(
 ```
 {% /multicode %}
 
-# Accept invitations
+## Accept invitations
 
 For client-side email invites, users must accept the invitation to join the team. The acceptance flow:
 1. User receives an email with an invitation link containing a secret token
