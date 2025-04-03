@@ -1,8 +1,6 @@
 export const GITHUB_STARS = '47K';
 export const GITHUB_REPO_LINK = 'https://github.com/appwrite/appwrite';
 export const BANNER_KEY: Banners = 'discord-banner-01'; // Change key to force banner to show again
-export const SENTRY_DSN =
-    'https://27d41dc8bb67b596f137924ab8599e59@o1063647.ingest.us.sentry.io/4507497727000576';
 
 export const BLOG_POSTS_PER_PAGE = 12;
 

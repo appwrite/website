@@ -6,7 +6,7 @@
     import Tabs from '$markdoc/tags/Tabs.svelte';
     import TabsItem from '$markdoc/tags/TabsItem.svelte';
 
-    export let data;
+    let { data } = $props();
 </script>
 
 <svelte:head>
