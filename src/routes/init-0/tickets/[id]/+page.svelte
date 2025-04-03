@@ -7,7 +7,7 @@
     import TicketPreview from '$routes/init-0/(components)/TicketPreview.svelte';
     import Ticket from '../../(components)/Ticket.svelte';
 
-    export let data;
+    let { data } = $props();
 
     let firstName = data.ticket?.name?.split(/\s/)[0] ?? '';
     const ogImage = `${$page.url.origin}/init-0/tickets/${data.ticket.$id}/og`;
@@ -56,8 +56,8 @@
                     <a class="web-button" href="/init-0/tickets">
                         <span class="text">Get my Init ticket</span>
                     </a>
-                    <button class="web-button is-secondary" on:click={copy}>
-                        <span class="web-icon-{$copied ? 'check' : 'copy'} text-primary" />
+                    <button class="web-button is-secondary" onclick={copy}>
+                        <span class="web-icon-{$copied ? 'check' : 'copy'} text-primary"></span>
 
                         <span class="text">Copy ticket URL</span>
                     </button>

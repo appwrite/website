@@ -57,12 +57,14 @@
 
                     <Tooltip placement="bottom">
                         <Switch bind:checked={showGitHub} />
-                        <svelte:fragment slot="tooltip">Show GitHub contributions</svelte:fragment>
+                        {#snippet tooltip()}
+                            Show GitHub contributions
+                        {/snippet}
                     </Tooltip>
                 </div>
             {:else}
                 <button class="web-button is-secondary" on:click={loginGithub}>
-                    <div class="web-icon-github text-primary" />
+                    <div class="web-icon-github text-primary"></div>
                     <span class="text">Log in to GitHub</span>
                 </button>
             {/if}
@@ -89,7 +91,7 @@
 
         <div class="action-buttons flex gap-2">
             <button class="web-button is-secondary" on:click={copy}>
-                <div class="web-icon-{$copied ? 'check' : 'copy'} text-primary" />
+                <div class="web-icon-{$copied ? 'check' : 'copy'} text-primary"></div>
                 <span class="text">Copy URL</span>
             </button>
             <a
@@ -97,7 +99,7 @@
                 href="https://twitter.com/intent/tweet?text={twitterText}"
                 target="_blank"
             >
-                <div class="web-icon-x text-primary" />
+                <div class="web-icon-x text-primary"></div>
                 <span class="text">Share</span>
             </a>
         </div>

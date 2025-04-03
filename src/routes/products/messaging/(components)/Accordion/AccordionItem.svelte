@@ -14,7 +14,7 @@
 <div use:melt={$item(index.toString())}>
     <button use:melt={$trigger(index.toString())}>
         <slot name="trigger" />
-        <div class="web-icon-chevron-down text-primary" />
+        <div class="web-icon-chevron-down text-primary"></div>
     </button>
     {#if $isSelected(index.toString())}
         <div use:melt={$content(index.toString())} transition:slide={{ duration: 250 }}>

@@ -8,20 +8,20 @@
     import { beforeNavigate, goto } from '$app/navigation';
     import { createDebounce } from '$lib/utils/debounce';
 
-    export let data;
+    let { data } = $props();
 
     const featured = data.featured;
     const categories = data.filteredCategories.sort((a, b) => a.name.localeCompare(b.name));
 
-    $: isFirstPage = data.currentPage === 1;
+    let isFirstPage = $derived(data.currentPage === 1);
 
-    $: isLastPage = data.currentPage === data.totalPages;
+    let isLastPage = $derived(data.currentPage === data.totalPages);
 
-    $: currentPageRange = data.navigation || [];
+    let currentPageRange = $derived(data.navigation || []);
 
-    let query = '';
-    let isEnd = false;
-    let isStart = true;
+    let query = $state('');
+    let isEnd = $state(false);
+    let isStart = $state(true);
     let categoriesElement: HTMLElement;
 
     let articlesHeader: HTMLElement;
@@ -41,7 +41,7 @@
         });
     });
 
-    let selectedCategory = $page.url.searchParams.get('category') ?? 'Latest';
+    let selectedCategory = $state($page.url.searchParams.get('category') ?? 'Latest');
 
     const handleSearch = async () => {
         const searchQuery = query.toLowerCase();
@@ -70,7 +70,7 @@
         });
     };
 
-    $: navigationLink = (pageNumber: number): string => {
+    let navigationLink = $derived((pageNumber: number): string => {
         const currentUrl = $page.url;
         const url = new URL(`/blog/${pageNumber}`, currentUrl);
 
@@ -79,7 +79,7 @@
         }
 
         return url.toString();
-    };
+    });
 
     const { debounce, reset } = createDebounce();
 
@@ -271,14 +271,14 @@
                         >
                             <ul
                                 class="categories flex gap-2 overflow-x-auto"
-                                on:scroll={handleScroll}
+                                onscroll={handleScroll}
                                 bind:this={categoriesElement}
                             >
                                 <li class="flex items-center">
                                     <button
                                         class="web-interactive-tag web-caption-400 cursor-pointer"
                                         class:is-selected={selectedCategory === 'Latest'}
-                                        on:click={() => {
+                                        onclick={() => {
                                             selectedCategory = 'Latest';
                                             handleSearch();
                                         }}
@@ -292,7 +292,7 @@
                                         <button
                                             class="web-interactive-tag web-caption-400 cursor-pointer"
                                             class:is-selected={selectedCategory === category.name}
-                                            on:click={() => {
+                                            onclick={() => {
                                                 selectedCategory = category.name;
                                                 handleSearch();
                                             }}
@@ -311,7 +311,7 @@
                                 class="web-icon-search z-[5]"
                                 aria-hidden="true"
                                 style="inset-block-start: 0.65rem;"
-                            />
+                            ></span>
                             <input
                                 class="web-input-button relative z-1 w-full"
                                 type="text"
@@ -351,7 +351,7 @@
 
                                 <button
                                     class="web-button is-secondary"
-                                    on:click={() => {
+                                    onclick={() => {
                                         query = '';
                                         selectedCategory = 'Latest';
                                         handleSearch();
@@ -373,12 +373,14 @@
                                     href={navigationLink(data.currentPage - 1)}
                                     class:navigation-button-active={!isFirstPage}
                                 >
-                                    <span class="web-icon-chevron-left" style="font-size: 20px" />
+                                    <span class="web-icon-chevron-left" style="font-size: 20px"
+                                    ></span>
                                     Previous
                                 </a>
                             {:else}
                                 <span class="navigation-button flex">
-                                    <span class="web-icon-chevron-left" style="font-size: 20px" />
+                                    <span class="web-icon-chevron-left" style="font-size: 20px"
+                                    ></span>
                                     Previous
                                 </span>
                             {/if}
@@ -406,12 +408,14 @@
                                     class:navigation-button-active={!isLastPage}
                                 >
                                     Next
-                                    <span class="web-icon-chevron-right" style="font-size: 20px" />
+                                    <span class="web-icon-chevron-right" style="font-size: 20px"
+                                    ></span>
                                 </a>
                             {:else}
                                 <span class="navigation-button flex">
                                     Next
-                                    <span class="web-icon-chevron-right" style="font-size: 20px" />
+                                    <span class="web-icon-chevron-right" style="font-size: 20px"
+                                    ></span>
                                 </span>
                             {/if}
                         </ul>

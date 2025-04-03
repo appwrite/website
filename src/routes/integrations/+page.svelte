@@ -1,21 +1,21 @@
 <script lang="ts">
-    import { Main } from '$lib/layouts';
-    import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
-    import { TITLE_SUFFIX } from '$routes/titles';
+    import { browser } from '$app/environment';
+    import { goto } from '$app/navigation';
+    import { page } from '$app/stores';
+    import { autoHash } from '$lib/actions/autoHash';
     import FooterNav from '$lib/components/FooterNav.svelte';
     import MainFooter from '$lib/components/MainFooter.svelte';
+    import Input from '$lib/components/ui/input.svelte';
     import { type ResultType, Fuse } from '$lib/integrations';
-    import { writable } from 'svelte/store';
-    import { autoHash } from '$lib/actions/autoHash';
-    import type { Integration } from './+page';
-    import { goto } from '$app/navigation';
-    import { onDestroy, onMount } from 'svelte';
-    import { browser } from '$app/environment';
+    import { Main } from '$lib/layouts';
     import { classNames } from '$lib/utils/classnames';
-    import Input from '$lib/components/ui/Input.svelte';
-    import { page } from '$app/stores';
+    import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
+    import { TITLE_SUFFIX } from '$routes/titles';
+    import { onDestroy, onMount } from 'svelte';
+    import { writable } from 'svelte/store';
+    import type { Integration } from './+page';
 
-    export let data;
+    let { data } = $props();
 
     const title = 'Integrations' + TITLE_SUFFIX;
     const description =
@@ -29,26 +29,22 @@
         distance: 500
     };
 
-    let result: ResultType<Integration> = [];
+    let result: ResultType<Integration> = $state([]);
 
-    let hasQuery: boolean;
-    let query = writable(decodeURIComponent($page.url.searchParams.get('search') ?? ''));
-
-    $: query.subscribe((value) => {
-        hasQuery = value.length > 0;
-    });
+    let query = $state(decodeURIComponent($page.url.searchParams.get('search') ?? ''));
+    let hasQuery = $derived(query.length > 0);
 
     // platform filters
     const platforms = ['All', ...data.platforms];
 
-    let activePlatform = 'All';
+    let activePlatform = $state('All');
 
     // categories
-    let activeCategory: string | null = null;
+    let activeCategory: string | null = $state(null);
 
     const handleQuery = (e: Event) => {
         const value = (e.currentTarget as HTMLInputElement).value;
-        query.set(value);
+        query = value;
     };
 
     onMount(() => {
@@ -78,10 +74,10 @@
 </svelte:head>
 
 <!-- binding for fuse -->
-<Fuse list={data.list} options={fuseOptions} bind:query={$query} bind:result />
+<Fuse list={data.list} options={fuseOptions} bind:query bind:result />
 <Main>
     <header class="web-u-sep-block-end web-u-padding-block-end-0 relative overflow-hidden pb-0">
-        <div class="container hero web-u-padding-block-end-0 relative">
+        <div class="hero web-u-padding-block-end-0 relative container">
             <img
                 src="/images/pages/integration/integration-bg-top-1.png"
                 alt=""
@@ -136,11 +132,13 @@
                                 label="Search"
                                 name="search"
                                 placeholder="Search"
-                                bind:value={$query}
+                                bind:value={query}
                                 autocomplete="off"
-                                on:input={handleQuery}
+                                oninput={handleQuery}
                             >
-                                <span class="web-icon-search" aria-hidden="true" slot="icon" />
+                                {#snippet icon()}
+                                    <span class="web-icon-search" aria-hidden="true"></span>
+                                {/snippet}
                             </Input>
                         </section>
                         <section class="flex flex-col">
@@ -162,7 +160,7 @@
                                                     }
                                                 )}
                                                 class:active-tag={activePlatform === platform}
-                                                on:click={() => (activePlatform = platform)}
+                                                onclick={() => (activePlatform = platform)}
                                                 >{platform}</button
                                             >
                                         </li>
@@ -181,7 +179,7 @@
                                     <select
                                         class="web-input-text w-full appearance-none"
                                         disabled={hasQuery}
-                                        on:change={(e) =>
+                                        onchange={(e) =>
                                             goto(`#${e.currentTarget.value.toLowerCase()}`)}
                                     >
                                         {#each data.categories as category}
@@ -199,7 +197,7 @@
                                     <span
                                         class="icon-cheveron-down web-u-pointer-events-none absolute top-[11px] right-2"
                                         aria-hidden="true"
-                                    />
+                                    ></span>
                                 </div>
 
                                 <ul class="hidden flex-col gap-4 sm:flex" class:disabled={hasQuery}>
@@ -213,8 +211,7 @@
                                                     href={`#${category.slug}`}
                                                     class="web-link"
                                                     class:is-pink={category.slug === activeCategory}
-                                                    on:click={() =>
-                                                        activeCategory === category.slug}
+                                                    onclick={() => activeCategory === category.slug}
                                                     >{category.heading}</a
                                                 >
                                             </li>
@@ -233,7 +230,7 @@
                                         <h2 class="text-label text-primary">Search results</h2>
                                         <p class="text-description">
                                             {result.length > 0 ? result.length : 'No'} results found
-                                            for "{$query}"
+                                            for "{query}"
                                         </p>
                                     </header>
                                     <div class="l-max-size-list-cards flex flex-col gap-8">
@@ -259,7 +256,7 @@
                                                             <span
                                                                 class="icon-arrow-right ml-auto"
                                                                 aria-hidden="true"
-                                                            />
+                                                            ></span>
                                                         </div>
 
                                                         <h4 class="text-primary">
@@ -376,7 +373,7 @@
                                                                         <span
                                                                             class="icon-arrow-right ml-auto"
                                                                             aria-hidden="true"
-                                                                        />
+                                                                        ></span>
                                                                     </div>
 
                                                                     <h4 class="text-primary">
@@ -531,7 +528,7 @@
         scroll-margin-top: f.pxToRem(120);
     }
     .l-max-size-list-cards {
-        &:where(:has(> ul > li:nth-child(10))) {
+        &:where(:global(:has(> ul > li:nth-child(10)))) {
             position: relative;
 
             &::before {
@@ -560,7 +557,7 @@
         }
     }
 
-    :where(:target) {
+    :where(:global(:target)) {
         .l-max-size-list-cards {
             overflow: visible;
             max-block-size: none;
