@@ -2,8 +2,9 @@
     import { type Theme, currentTheme } from '$routes/+layout.svelte';
 
     import Select, { type SelectOption } from './Select.svelte';
+    import { Select as S } from '$lib/components/ui';
 
-    const options: SelectOption<Theme>[] = [
+    const options = [
         {
             value: 'dark',
             label: 'Dark',
@@ -23,3 +24,4 @@
 </script>
 
 <Select {options} bind:value={$currentTheme} placement="top" />
+<S {options} bind:value={$currentTheme} />

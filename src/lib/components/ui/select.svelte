@@ -1,21 +1,32 @@
 <script lang="ts">
-    import { Select } from 'melt/builders';
+    import { Select, type SelectProps } from 'melt/builders';
 
     type Props = {
         options: Array<{
             label: string;
             value: string;
+            icon: string;
         }>;
-    };
+        defaultValue?: string;
+        value?: string;
+    } & SelectProps<string>;
 
-    const { options }: Props = $props();
+    const {
+        options,
+        value = $bindable(),
+        defaultValue = 'Select a value',
+        ...rest
+    }: Props = $props();
     type Option = (typeof options)[number];
 
-    const select = new Select<Option['value']>();
+    const select = new Select<Option['value']>({
+        value,
+        ...rest
+    });
 </script>
 
 <button {...select.trigger}>
-    {select.value ?? 'Select an anime'}
+    {select.value ?? defaultValue}
 </button>
 
 <div {...select.content}>
