@@ -15,8 +15,8 @@ importers:
         specifier: ^1.14.0
         version: 1.15.1
       melt:
-        specifier: ^0.28.0
-        version: 0.28.0(@floating-ui/dom@1.6.13)(svelte@5.25.6)
+        specifier: ^0.28.2
+        version: 0.28.2(@floating-ui/dom@1.6.13)(svelte@5.25.6)
       posthog-js:
         specifier: ^1.210.2
         version: 1.230.4
@@ -2726,8 +2726,8 @@ packages:
   meilisearch@0.37.0:
     resolution: {integrity: sha512-LdbK6JmRghCawrmWKJSEQF0OiE82md+YqJGE/U2JcCD8ROwlhTx0KM6NX4rQt0u0VpV0QZVG9umYiu3CSSIJAQ==}
 
-  melt@0.28.0:
-    resolution: {integrity: sha512-kiqaTgNB/IkADmUfJZKROqQ3z+isal8LjLhckQANqjfjggIosHM8M7RO3Og7IQ12zK06nLnwanL80SuTPhblrw==}
+  melt@0.28.2:
+    resolution: {integrity: sha512-55DGQ4B3bHKnDnK1ECJ46D+xythNKvuil60k0RXWJ3eEY5XsGjT6WZPVpRooYLfMlAki2J7JCWglCMYzvXwxVw==}
     peerDependencies:
       '@floating-ui/dom': ^1.6.0
       svelte: ^5.0.0
@@ -6407,7 +6407,7 @@ snapshots:
     transitivePeerDependencies:
       - encoding
 
-  melt@0.28.0(@floating-ui/dom@1.6.13)(svelte@5.25.6):
+  melt@0.28.2(@floating-ui/dom@1.6.13)(svelte@5.25.6):
     dependencies:
       '@floating-ui/dom': 1.6.13
       jest-axe: 9.0.0
