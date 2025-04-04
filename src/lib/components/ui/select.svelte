@@ -1,5 +1,7 @@
 <script lang="ts">
+    import { classNames } from '$lib/utils/classnames';
     import { Select, type SelectProps } from 'melt/builders';
+    import type { HTMLButtonAttributes, SvelteHTMLElements } from 'svelte/elements';
 
     type Props = {
         options: Array<{
@@ -25,7 +27,10 @@
     });
 </script>
 
-<button {...select.trigger}>
+<button
+    class="web-select is-colored text-primary relative flex h-8 min-w-[145px] cursor-pointer items-center text-sm leading-[1] select-none [all:unset]"
+    {...select.trigger}
+>
     {select.value ?? defaultValue}
 </button>
 

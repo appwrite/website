@@ -1,6 +1,7 @@
 <script lang="ts" context="module">
     import { derived, writable } from 'svelte/store';
     import { loadReoScript } from 'reodotdev';
+    import { ThemeProvider } from '$lib/providers/theme';
 
     export type Theme = 'dark' | 'light' | 'system';
     export const currentTheme = (function () {
@@ -201,7 +202,7 @@
 >
 
 <slot />
-<SvelteTheme />
+<ThemeProvider />
 
 <style lang="scss">
     :global(html) {
