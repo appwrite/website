@@ -1,15 +1,14 @@
-import type { Theme } from '.';
 import { MEDIA } from './constants';
 
-export const getTheme = (key: string, fallback?: string): Theme | undefined => {
+export const getTheme = (key: string, fallback?: string): string | undefined => {
 	if (typeof window === 'undefined') return undefined;
-	let theme: Theme | undefined = undefined;
+	let theme: string | undefined = undefined;
 	try {
-		theme = localStorage.getItem(key) as Theme || undefined;
+		theme = localStorage.getItem(key) as string || undefined;
 	} catch (e) {
 		// Unsupported
 	}
-	return theme || fallback as Theme;
+	return theme || fallback as string;
 };
 
 export const disableAnimation = () => {
@@ -33,11 +32,11 @@ export const disableAnimation = () => {
 };
 
 export const getSystemTheme = (e?: MediaQueryList): string => {
-	if (!e) {
+	if (!e && typeof window !== 'undefined') {
 		e = window.matchMedia(MEDIA);
 	}
 
-	const isDark = e.matches;
+	const isDark = e?.matches;
 	const systemTheme = isDark ? 'dark' : 'light';
 	return systemTheme;
 };

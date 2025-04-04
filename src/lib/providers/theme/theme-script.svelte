@@ -1,13 +1,12 @@
 <script lang="ts">
     import { MEDIA } from './constants';
-    import { type Theme } from '.';
 
     interface Props {
         forcedTheme?: string;
         storageKey?: string;
         attribute?: string;
         enableSystem?: boolean;
-        defaultTheme?: Theme;
+        defaultTheme?: string;
         value?: { [themeName: string]: string };
         attrs: string[];
     }
@@ -22,46 +21,64 @@
         attrs
     }: Props = $props();
 
-    // These are minified via Terser and then updated by hand, don't recommend
+    const getThemeUpdate = (name: string, literal?: boolean) => {
+        const themeName = value?.[name] || name;
+        const val = literal ? themeName : `'${themeName}'`;
 
-    const updateDOM = (name: string, literal?: boolean) => {
-        name = value?.[name] || name;
-        const val = literal ? name : `'${name}'`;
-
+        // Set both attribute and color-scheme
         if (attribute === 'class') {
-            return `d.add(${val})${`;document.documentElement.style.setProperty('color-scheme', ${val})`}`;
+            return `d.add(${val});document.documentElement.style.setProperty('color-scheme', ${val})`;
         }
-
-        return `d.setAttribute('${attribute}', ${val})${`;document.documentElement.style.setProperty('color-scheme', ${val})`}`;
+        return `d.setAttribute('${attribute}', ${val});document.documentElement.style.setProperty('color-scheme', ${val})`;
     };
 
     let defaultSystem = $derived(defaultTheme === 'system');
-    // Code-golfing the amount of characters in the script
-    let optimization = $derived(
+    let classListPrep = $derived(
         attribute === 'class'
-            ? `var d=document.documentElement.classList;${`d.remove(${attrs
+            ? `var d=document.documentElement.classList;d.remove(${attrs
                   .map((t: string) => `'${t}'`)
-                  .join(',')})`};`
+                  .join(',')});`
             : `var d=document.documentElement;`
     );
 
-    // Encapsulate script tag into string to not mess with the compiler
+    // Script implementation varies based on configuration
     let themeScript = $derived(
-        `<${'script'}>${
-            forcedTheme
-                ? `!function(){${optimization}${updateDOM(forcedTheme)}}()`
-                : enableSystem
-                  ? `!function(){try {${optimization}var e=localStorage.getItem('${storageKey}');${
-                        !defaultSystem ? updateDOM(defaultTheme) + ';' : ''
-                    }if("system"===e||(!e&&${defaultSystem})){var t="${MEDIA}",m=window.matchMedia(t);if(m.media!==t||m.matches){${updateDOM(
-                        'dark'
-                    )}}else{${updateDOM('light')}}}else if(e){ ${
-                        value ? `var x=${JSON.stringify(value)};` : ''
-                    }${updateDOM(value ? 'x[e]' : 'e', true)}}}catch(e){}}()`
-                  : `!function(){try{${optimization}var e=localStorage.getItem("${storageKey}");if(e){${
-                        value ? `var x=${JSON.stringify(value)};` : ''
-                    }${updateDOM(value ? 'x[e]' : 'e', true)}}else{${updateDOM(defaultTheme)};}}catch(t){}}();`
-        }</${'script'}>`
+        `<${'script'}>
+            (function() {
+                ${classListPrep}
+                ${
+                    forcedTheme
+                        ? getThemeUpdate(forcedTheme)
+                        : enableSystem
+                          ? `try {
+                            var storedTheme = localStorage.getItem('${storageKey}');
+                            ${!defaultSystem ? `${getThemeUpdate(defaultTheme)};` : ''}
+                            
+                            if ("system" === storedTheme || (!storedTheme && ${defaultSystem})) {
+                                var mediaQuery = "${MEDIA}";
+                                var mql = window.matchMedia(mediaQuery);
+                                if (mql.media !== mediaQuery || mql.matches) {
+                                    ${getThemeUpdate('dark')}
+                                } else {
+                                    ${getThemeUpdate('light')}
+                                }
+                            } else if (storedTheme) {
+                                ${value ? `var themeMapping = ${JSON.stringify(value)};` : ''}
+                                ${getThemeUpdate(value ? 'themeMapping[storedTheme]' : 'storedTheme', true)}
+                            }
+                        } catch(e) { console.error("Theme initialization error:", e); }`
+                          : `try {
+                            var storedTheme = localStorage.getItem("${storageKey}");
+                            if (storedTheme) {
+                                ${value ? `var themeMapping = ${JSON.stringify(value)};` : ''}
+                                ${getThemeUpdate(value ? 'themeMapping[storedTheme]' : 'storedTheme', true)}
+                            } else {
+                                ${getThemeUpdate(defaultTheme)};
+                            }
+                        } catch(e) { console.error("Theme initialization error:", e); }`
+                }
+            })();
+        </${'script'}>`
     );
 </script>
 

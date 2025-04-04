@@ -1,8 +1,7 @@
 <script lang="ts">
     import { colorSchemes, MEDIA } from './constants';
     import { disableAnimation, getSystemTheme, getTheme } from './helpers';
-    import { themeStore, setTheme } from './index';
-
+    import { themeStore, setTheme, setResolvedTheme, setSystemTheme, setThemes } from './index';
     import ThemeScript from './theme-script.svelte';
     import { browser } from '$app/environment';
 
@@ -32,97 +31,108 @@
         value = undefined
     }: Props = $props();
 
+    // Initialize theme state
     const initialTheme = getTheme(storageKey, defaultTheme);
+    const systemTheme = enableSystem ? getSystemTheme() : undefined;
 
     themeStore.set({
         theme: initialTheme,
         forcedTheme,
-        resolvedTheme: initialTheme === 'system' ? getTheme(storageKey) : initialTheme,
+        resolvedTheme: initialTheme === 'system' ? systemTheme : initialTheme,
         themes: enableSystem ? [...themes, 'system'] : themes,
-        systemTheme: (enableSystem ? getTheme(storageKey) : undefined) as
-            | 'light'
-            | 'dark'
-            | undefined
+        systemTheme
     });
 
     let theme = $derived($themeStore.theme);
     let resolvedTheme = $derived($themeStore.resolvedTheme);
-
     const attrs = !value ? themes : Object.values(value);
 
+    // Handle system theme changes
     const handleMediaQuery = (e?: MediaQueryList) => {
-        const systemTheme = getSystemTheme(e) as string;
-        $themeStore.resolvedTheme = systemTheme;
-        $themeStore.systemTheme = systemTheme;
+        const newSystemTheme = getSystemTheme(e);
+        setSystemTheme(newSystemTheme);
+        setResolvedTheme(newSystemTheme);
 
-        if (theme === 'system' && !forcedTheme) changeTheme(systemTheme, false, true);
+        // Only update DOM if currently using system theme
+        if (theme === 'system' && !forcedTheme) {
+            changeTheme(newSystemTheme, false, true);
+        }
     };
 
-    const changeTheme = (theme?: string, updateStorage?: boolean, updateDOM?: boolean) => {
-        if (!theme) return;
-        let name = value?.[theme] || theme;
+    // Core theme change function
+    const changeTheme = (newTheme?: string, updateStorage = true, updateDOM = true) => {
+        if (!newTheme) return;
 
-        const enable = disableTransitionOnChange && updateDOM ? disableAnimation() : null;
+        // Handle animation disabling if needed
+        const enableAnimations = disableTransitionOnChange && updateDOM ? disableAnimation() : null;
 
+        // Update localStorage if needed
         if (updateStorage) {
             try {
-                localStorage.setItem(storageKey, theme);
+                localStorage.setItem(storageKey, newTheme);
             } catch (e) {
-                // Unsupported
+                // Ignore storage errors
             }
         }
 
-        if (theme === 'system' && enableSystem) {
+        // Determine the actual theme value to apply
+        let themeName = value?.[newTheme] || newTheme;
+        if (newTheme === 'system' && enableSystem) {
             const resolved = getSystemTheme();
-            name = value?.[resolved] || resolved;
+            themeName = value?.[resolved] || resolved;
         }
 
+        // Update DOM if needed and in browser context
         if (updateDOM && browser) {
-            const d = document.body;
+            const target = document.body;
 
             if (attribute === 'class') {
-                d.classList.remove(...(attrs as string[]));
-                d.classList.add(name);
+                // Remove all possible theme classes then add the current one
+                target.classList.remove(...attrs);
+                target.classList.add(themeName);
             } else {
-                d.setAttribute(attribute, name);
+                target.setAttribute(attribute, themeName);
             }
-            enable?.();
+
+            // Re-enable animations if they were disabled
+            enableAnimations?.();
         }
     };
 
-    const mediaHandler = (...args: any) => handleMediaQuery(...args);
+    // Event handlers
+    const mediaHandler = (e: MediaQueryList) => handleMediaQuery(e);
 
     const storageHandler = (e: StorageEvent) => {
         if (e.key !== storageKey) return;
-        setTheme((e.newValue as string) || (defaultTheme as string));
+        setTheme((e.newValue as string) || defaultTheme);
     };
 
+    // Setup and teardown for window events
     const onWindow = (window: Window) => {
         const media = window.matchMedia(MEDIA);
-        // Use modern event listener approach
-        media.addEventListener('change', mediaHandler);
+        media.addEventListener('change', () => mediaHandler(media));
         mediaHandler(media);
 
-        window.addEventListener('storage', storageHandler);
+        if (browser) {
+            window.addEventListener('storage', storageHandler);
+        }
         return {
             destroy() {
                 window.removeEventListener('storage', storageHandler);
-                media.removeEventListener('change', mediaHandler);
+                media.removeEventListener('change', () => mediaHandler(media));
             }
         };
     };
 
+    // Update color-scheme CSS property when theme changes
     $effect(() => {
         if (enableColorScheme && browser) {
             let colorScheme =
-                // If theme is forced to light or dark, use that
                 forcedTheme && colorSchemes.includes(forcedTheme)
                     ? forcedTheme
-                    : // If regular theme is light or dark
-                      theme && colorSchemes.includes(theme)
+                    : theme && colorSchemes.includes(theme)
                       ? theme
-                      : // If theme is system, use the resolved version
-                        theme === 'system'
+                      : theme === 'system'
                         ? resolvedTheme || null
                         : null;
 
@@ -130,12 +140,11 @@
         }
     });
 
+    // Apply theme changes when theme store updates
     $effect(() => {
-        if (forcedTheme) {
-            changeTheme(theme, true, false);
-        } else {
-            changeTheme(theme, true, true); // Add true for updateDOM parameter
-        }
+        // If theme is forced, update storage but not DOM (script handles it)
+        // Otherwise update both
+        changeTheme(theme, true, !forcedTheme);
     });
 </script>
 
