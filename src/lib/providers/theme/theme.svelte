@@ -1,19 +1,19 @@
 <script lang="ts">
     import { colorSchemes, MEDIA } from './constants';
     import { disableAnimation, getSystemTheme, getTheme } from './helpers';
-    import { themeStore, setTheme, type Theme } from './index';
+    import { themeStore, setTheme } from './index';
 
     import ThemeScript from './theme-script.svelte';
     import { browser } from '$app/environment';
 
     interface Props {
-        forcedTheme?: Theme;
+        forcedTheme?: string;
         disableTransitionOnChange?: boolean;
         enableSystem?: boolean;
         enableColorScheme?: boolean;
         storageKey?: string;
         themes?: string[];
-        defaultTheme?: Theme;
+        defaultTheme?: string;
         attribute?: string | 'class';
         value?: {
             [themeName: string]: string;
@@ -51,13 +51,14 @@
     const attrs = !value ? themes : Object.values(value);
 
     const handleMediaQuery = (e?: MediaQueryList) => {
-        const systemTheme = getSystemTheme(e) as Theme;
+        const systemTheme = getSystemTheme(e) as string;
         $themeStore.resolvedTheme = systemTheme;
+        $themeStore.systemTheme = systemTheme;
 
-        if (theme === 'system' && !forcedTheme) changeTheme(systemTheme, false);
+        if (theme === 'system' && !forcedTheme) changeTheme(systemTheme, false, true);
     };
 
-    const changeTheme = (theme?: Theme, updateStorage?: boolean, updateDOM?: boolean) => {
+    const changeTheme = (theme?: string, updateStorage?: boolean, updateDOM?: boolean) => {
         if (!theme) return;
         let name = value?.[theme] || theme;
 
@@ -77,7 +78,7 @@
         }
 
         if (updateDOM && browser) {
-            const d = document.documentElement;
+            const d = document.body;
 
             if (attribute === 'class') {
                 d.classList.remove(...(attrs as string[]));
@@ -93,20 +94,20 @@
 
     const storageHandler = (e: StorageEvent) => {
         if (e.key !== storageKey) return;
-        setTheme((e.newValue as Theme) || (defaultTheme as Theme));
+        setTheme((e.newValue as string) || (defaultTheme as string));
     };
 
     const onWindow = (window: Window) => {
         const media = window.matchMedia(MEDIA);
-        // Intentionally use deprecated listener methods to support iOS & old browsers
-        media.addListener(mediaHandler);
+        // Use modern event listener approach
+        media.addEventListener('change', mediaHandler);
         mediaHandler(media);
 
         window.addEventListener('storage', storageHandler);
         return {
             destroy() {
                 window.removeEventListener('storage', storageHandler);
-                media.removeListener(mediaHandler);
+                media.removeEventListener('change', mediaHandler);
             }
         };
     };
@@ -133,7 +134,7 @@
         if (forcedTheme) {
             changeTheme(theme, true, false);
         } else {
-            changeTheme(theme);
+            changeTheme(theme, true, true); // Add true for updateDOM parameter
         }
     });
 </script>

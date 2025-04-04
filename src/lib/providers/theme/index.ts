@@ -1,25 +1,34 @@
-import { writable } from 'svelte/store';
 
-export type Theme = 'dark' | 'light' | 'system';	
+  import { writable } from 'svelte/store';
 
-export interface ThemeStore {
-	themes: string[];
-	forcedTheme?: Theme;
-	theme?: Theme;
-	resolvedTheme?: string;
-	systemTheme?: Omit<Theme, 'system'>;
-}
+  export interface ThemeStore {
+    themes: string[];
+    forcedTheme?: string;
+    theme?: string;
+    resolvedTheme?: string;
+    systemTheme?: string;
+  }
 
-export const setTheme = (theme?: Theme): void =>
-	themeStore.update((store) => ({ ...store, theme }));
-
-export const themeStore = writable<ThemeStore>({
-	themes: [],
-	forcedTheme: undefined,
-	theme: undefined,
-	resolvedTheme: undefined,
-	systemTheme: undefined
-});
+  // Create the theme store
+  export const themeStore = writable<ThemeStore>({
+    themes: ['light', 'dark'],
+    forcedTheme: undefined,
+    theme: undefined,
+    resolvedTheme: undefined,
+    systemTheme: undefined
+  });
 
 
-export { default as ThemeProvider } from './theme.svelte'
+  export const setTheme = (theme?: string) => 
+    themeStore.update((store) => ({ ...store, theme }));
+
+  export const setResolvedTheme = (resolvedTheme?: string) => 
+    themeStore.update((store) => ({ ...store, resolvedTheme }));
+
+  export const setSystemTheme = (systemTheme?: string) => 
+    themeStore.update((store) => ({ ...store, systemTheme }));
+
+  export const setThemes = (themes: string[]) => 
+    themeStore.update((store) => ({ ...store, themes }));
+
+  export { default as ThemeProvider } from './theme.svelte';

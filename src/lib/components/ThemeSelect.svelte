@@ -1,8 +1,7 @@
 <script lang="ts">
     import Select, { type SelectOption } from './Select.svelte';
     import { Select as Select2 } from '$lib/components/ui';
-    import { themeStore, setTheme, type Theme } from '$lib/providers/theme';
-    import { get } from 'svelte/store';
+    import { themeStore, setTheme } from '$lib/providers/theme';
 
     const options = [
         {
@@ -28,6 +27,6 @@
     {options}
     bind:value={$themeStore.theme}
     onValueChange={(e) => {
-        setTheme(e as Theme);
+        setTheme(e);
     }}
 />

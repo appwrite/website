@@ -37,7 +37,7 @@
 <div {...select.content}>
     {#each options as option}
         <div {...select.getOption(option.value)}>
-            {option}
+            {option.label}
         </div>
     {/each}
 </div>

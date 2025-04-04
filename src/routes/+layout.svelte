@@ -132,7 +132,7 @@
 >
 
 <slot />
-<ThemeProvider />
+<ThemeProvider attribute="class" disableTransitionOnChange />
 
 <style lang="scss">
     :global(html) {
