@@ -211,9 +211,9 @@
     <div class="events">
         <div class="container">
             <Carousel size="big">
-                <svelte:fragment slot="header">
+                {#snippet header()}
                     <h2 class="text-label text-primary">Upcoming Events</h2>
-                </svelte:fragment>
+                {/snippet}
                 {#each events as event}
                     <li>
                         <EventCard
@@ -318,7 +318,7 @@
         overflow-x: clip;
 
         h1 {
-            img {
+            :global(img) {
                 inline-size: 13.9375rem;
             }
         }
@@ -500,7 +500,7 @@
                     align-items: center;
                     text-align: center;
 
-                    .web-button {
+                    :global(.web-button) {
                         width: 100%;
                     }
                 }

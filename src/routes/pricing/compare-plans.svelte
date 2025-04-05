@@ -629,12 +629,7 @@
                                                 {row.title}
                                                 {#if row.info}
                                                     <Tooltip placement="top">
-                                                        <button
-                                                            slot="asChild"
-                                                            let:trigger
-                                                            use:melt={trigger}
-                                                            class="icon-info"
-                                                            aria-hidden="true"
+                                                        <button class="icon-info" aria-hidden="true"
                                                         ></button>
                                                         {#snippet tooltip()}
                                                             {row.info}

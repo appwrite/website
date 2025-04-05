@@ -44,7 +44,7 @@
     import { isMac } from '$lib/utils/platform';
     import { getContext, setContext } from 'svelte';
     import { GITHUB_REPO_LINK, GITHUB_STARS } from '$lib/constants';
-    import { page } from '$app/stores';
+    import { page } from '$app/state';
     import { getAppwriteDashboardUrl } from '$lib/utils/dashboard';
 
     export let variant: DocsLayoutVariant = 'default';
@@ -67,7 +67,7 @@
         }));
     });
 
-    const key = $page.route.id?.includes('tutorials') ? TUT_CTX_KEY : CTX_KEY;
+    const key = page.route.id?.includes('tutorials') ? TUT_CTX_KEY : CTX_KEY;
     setContext(key, true);
 
     const handleKeydown = (e: KeyboardEvent) => {

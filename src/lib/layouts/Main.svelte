@@ -18,7 +18,7 @@
     import ProductsMobileSubmenu from '$lib/components/ProductsMobileSubmenu.svelte';
     import { trackEvent } from '$lib/actions/analytics';
     import MainNav from '$lib/components/MainNav.svelte';
-    import { page } from '$app/stores';
+    import { page } from '$app/state';
     import { getAppwriteDashboardUrl } from '$lib/utils/dashboard';
 
     export let omitMainId = false;
@@ -190,7 +190,7 @@
         class:is-special-padding={!BANNER_KEY.startsWith('init-banner-')}
         style={BANNER_KEY === 'init-banner-02' ? 'padding-inline: 0' : ''}
     >
-        <!-- {#if !$page.data.isStickyNav}
+        <!-- {#if !page.data.isStickyNav}
             {#if BANNER_KEY.startsWith('init-banner-')}
                 <InitBanner />
             {:else}

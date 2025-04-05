@@ -48,9 +48,11 @@
             <div class="bg-greyscale-850 rounded-md p-4">
                 <table class="w-full">
                     <thead class="text-secondary mt-4 text-left font-mono text-[0.5rem]">
-                        {#each ['Timestamp', 'Function', 'Status'] as th}
-                            <th class="pb-2">{th}</th>
-                        {/each}
+                        <tr>
+                            {#each ['Timestamp', 'Function', 'Status'] as th}
+                                <th class="pb-2">{th}</th>
+                            {/each}
+                        </tr>
                     </thead>
 
                     <tbody>

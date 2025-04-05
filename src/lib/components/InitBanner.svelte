@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { page } from '$app/stores';
+    import { page } from '$app/state';
     import { onMount } from 'svelte';
 
     let mounted = false;
@@ -28,7 +28,7 @@
     const randomDelay = () => Math.floor(Math.random() * 750);
 </script>
 
-<div class="banner" class:hidden={$page.url.pathname.includes('init')}>
+<div class="banner" class:hidden={page.url.pathname.includes('init')}>
     <div class="content text-primary">
         <div class="headings">
             <span style:font-weight="500"
