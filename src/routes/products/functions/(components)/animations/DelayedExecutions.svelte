@@ -26,16 +26,16 @@
             use:melt={$calendar}
         >
             <header class="mb-3 flex items-center justify-between">
-                <button class="web-icon-button">
-                    <div class="web-icon-chevron-left"></div>
+                <button class="web-icon-button" aria-label="Previous">
+                    <span class="web-icon-chevron-left"></span>
                 </button>
 
                 <div class="font-aeonik-pro text-primary" use:melt={$heading}>
                     {$headingValue}
                 </div>
 
-                <button class="web-icon-button">
-                    <div class="web-icon-chevron-right"></div>
+                <button class="web-icon-button" aria-label="Next">
+                    <span class="web-icon-chevron-right"></span>
                 </button>
             </header>
 

@@ -1,6 +1,6 @@
 <script lang="ts" context="module">
     import { derived, writable } from 'svelte/store';
-    import { loadReoScript } from 'reodotdev';
+    import { loadReoScript, type Reo } from '$lib/reodotdev';
 
     export type Theme = 'dark' | 'light' | 'system';
     export const currentTheme = (function () {
@@ -134,8 +134,8 @@
         const clientID = '144fa7eaa4904e8';
 
         const reoPromise = loadReoScript({ clientID });
-        reoPromise.then((Reo: any) => {
-            Reo.init({ clientID });
+        reoPromise.then((reo: Reo) => {
+            reo.init({ clientID });
         });
     }
 </script>

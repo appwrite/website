@@ -32,9 +32,12 @@
         >
             <header class="grid w-full grid-cols-12 items-center px-4 py-2">
                 <div class="col-span-2 flex gap-1">
-                    <button class="size-2 rounded-full bg-[#EC6A5E]"></button>
-                    <button class="size-2 rounded-full bg-[#F5BF4F]"></button>
-                    <button class="size-2 rounded-full bg-[#6d9e66]"></button>
+                    <button class="size-2 rounded-full bg-[#EC6A5E]" aria-label="Close window"
+                    ></button>
+                    <button class="size-2 rounded-full bg-[#F5BF4F]" aria-label="Minimize window"
+                    ></button>
+                    <button class="size-2 rounded-full bg-[#6d9e66]" aria-label="Enter full screen"
+                    ></button>
                 </div>
                 <div
                     class="col-span-6 col-start-4 flex h-6 w-full items-center rounded-full bg-[#232325]/94 px-2 backdrop-blur-lg"

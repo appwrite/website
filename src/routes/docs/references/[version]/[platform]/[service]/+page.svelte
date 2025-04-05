@@ -303,7 +303,12 @@
             use:clickOutside={() => ($layoutState.showReferences = false)}
         >
             {#if data.methods.length > 0}
-                <button class="web-icon-button" id="refOpen" onclick={toggleReferences}>
+                <button
+                    class="web-icon-button"
+                    id="refOpen"
+                    onclick={toggleReferences}
+                    aria-label="Toggle references"
+                >
                     <span class="icon-menu-alt-4" aria-hidden="true"></span>
                 </button>
                 <div class="web-references-menu-content">
@@ -311,7 +316,12 @@
                         class="web-references-menu-header mt-6 flex items-center justify-between gap-4"
                     >
                         <h5 class="web-references-menu-title text-micro uppercase">On This Page</h5>
-                        <button class="web-icon-button" id="refClose" onclick={toggleReferences}>
+                        <button
+                            class="web-icon-button"
+                            id="refClose"
+                            onclick={toggleReferences}
+                            aria-label="Toggle references"
+                        >
                             <span class="icon-x" aria-hidden="true"></span>
                         </button>
                     </div>

@@ -120,7 +120,7 @@
                                                     <button
                                                         class="web-icon-button"
                                                         aria-label={sharingOption.label}
-                                                        on:click={() => handleCopy()}
+                                                        onclick={() => handleCopy()}
                                                     >
                                                         <span
                                                             class={sharingOption.icon}
@@ -147,7 +147,11 @@
                         {/if}
 
                         <div class="web-article-content mt-8">
-                            <svelte:component this={data.component} />
+                            <!-- <svelte:component> is deprecated -->
+                            {#if data.component}
+                                {@const DataComponent = data.component}
+                                <DataComponent />
+                            {/if}
                         </div>
                     </article>
                 </div>

@@ -27,9 +27,9 @@
         {/each}
     </div>
 
-    <button class="add-btn">
+    <div class="add-btn">
         <span class="web-icon-plus"></span>
-    </button>
+    </div>
 
     <div class="overlay" id="overlay-{$elId}">
         <div class="drawer" id="drawer-{$elId}">
