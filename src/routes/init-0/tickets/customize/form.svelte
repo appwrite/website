@@ -25,7 +25,7 @@
 <script lang="ts">
     import { browser, dev } from '$app/environment';
     import { goto } from '$app/navigation';
-    import { page } from '$app/stores';
+    import { page } from '$app/state';
     import { appwriteInit } from '$lib/appwrite/init';
     import { Switch } from '$lib/components';
     import { loginGithub } from '$routes/init-0/helpers';
@@ -39,7 +39,7 @@
     export let tribe: string | null = null;
     export let showGitHub = true;
     export let variant: TicketVariant = 'default';
-    $: ({ ticket } = $page.data as PageData);
+    $: ({ ticket } = page.data as PageData);
 
     const variants: TicketVariant[] = ['default', 'pink', 'rainbow'] as const;
 </script>
@@ -135,7 +135,7 @@
         Sign in with your Appwrite account and see the magic happen in your ticket.
     </p>
     <a
-        href={getAppwriteDashboardUrl(`/login?forceRedirect=${$page.url.origin}/init-0/tickets`)}
+        href={getAppwriteDashboardUrl(`/login?forceRedirect=${page.url.origin}/init-0/tickets`)}
         class="web-button is-full-width is-secondary u-margin-block-start-24"
     >
         <div class="web-icon-appwrite text-primary"></div>

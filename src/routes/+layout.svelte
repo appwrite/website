@@ -50,7 +50,8 @@
     import '$icons/output/web-icon.css';
 
     import { browser, dev } from '$app/environment';
-    import { navigating, page, updated } from '$app/stores';
+    import { page, updated } from '$app/state';
+    import { navigating } from '$app/stores';
     import { onMount } from 'svelte';
     import { loggedIn } from '$lib/utils/console';
     import { beforeNavigate } from '$app/navigation';
@@ -68,9 +69,9 @@
     const tracked = new Set();
 
     onMount(() => {
-        saveReferrerAndUtmSource($page.url);
+        saveReferrerAndUtmSource(page.url);
 
-        const initialTheme = $page.route.id?.startsWith('/docs') ? getPreferredTheme() : 'dark';
+        const initialTheme = page.route.id?.startsWith('/docs') ? getPreferredTheme() : 'dark';
 
         applyTheme(initialTheme);
 
@@ -95,7 +96,7 @@
         if (window) {
             tracked.clear();
         }
-        if ($updated && !willUnload && to?.url) {
+        if (updated && !willUnload && to?.url) {
             location.href = to.url.href;
         }
     });
@@ -105,8 +106,7 @@
         document.body.dataset.loggedIn = '';
     }
 
-    $: canonicalUrl =
-        $page.url.origin.replace(/^https?:\/\/www\./, 'https://') + $page.url.pathname;
+    $: canonicalUrl = page.url.origin.replace(/^https?:\/\/www\./, 'https://') + page.url.pathname;
 
     function handleScroll() {
         const scrollY = window.scrollY;
@@ -116,9 +116,9 @@
         thresholds.forEach((threshold) => {
             if (scrollPercentage >= threshold && !tracked.has(threshold)) {
                 const pageName =
-                    $page.url.pathname.slice(1) === ''
+                    page.url.pathname.slice(1) === ''
                         ? 'home'
-                        : $page.url.pathname.slice(1).replace(/\//g, '-');
+                        : page.url.pathname.slice(1).replace(/\//g, '-');
 
                 const eventName = `${pageName}_scroll-depth_${threshold * 100}prct_scroll`;
                 tracked.add(threshold);

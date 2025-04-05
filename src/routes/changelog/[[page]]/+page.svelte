@@ -5,7 +5,7 @@
     import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
     import { onMount } from 'svelte';
     import ChangelogEntry from '../ChangelogEntry.svelte';
-    import { page } from '$app/stores';
+    import { page } from '$app/state';
     import { CHANGELOG_KEY } from '../utils';
     import { TITLE_SUFFIX } from '$routes/titles';
 
@@ -23,7 +23,7 @@
     }
 
     onMount(() => {
-        localStorage.setItem(CHANGELOG_KEY, $page.data.changelogEntries.toString());
+        localStorage.setItem(CHANGELOG_KEY, page.data.changelogEntries.toString());
     });
 </script>
 

@@ -1,6 +1,6 @@
 <script lang="ts">
     import { Article, FooterNav, MainFooter } from '$lib/components';
-    import { page } from '$app/stores';
+    import { page } from '$app/state';
     import { Main } from '$lib/layouts';
     import { getContext } from 'svelte';
     import { TITLE_SUFFIX } from '$routes/titles';
@@ -19,7 +19,7 @@
     const posts = getContext<PostsData[]>('posts');
     const authors = getContext<AuthorData[]>('authors');
     const author = authors.find(
-        (p) => $page.url.pathname.substring($page.url.pathname.lastIndexOf('/') + 1) === p.slug
+        (p) => page.url.pathname.substring(page.url.pathname.lastIndexOf('/') + 1) === p.slug
     );
 
     const seoTitle = name + TITLE_SUFFIX;

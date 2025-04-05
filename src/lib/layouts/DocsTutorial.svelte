@@ -5,7 +5,7 @@
     import type { TocItem } from './DocsArticle.svelte';
     import Heading from '$markdoc/nodes/Heading.svelte';
     import { onMount, tick } from 'svelte';
-    import { page } from '$app/stores';
+    import { page } from '$app/state';
 
     export let toc: Array<TocItem>;
     export let back: string;
@@ -50,13 +50,13 @@
     async function preSelectItemOnInit() {
         await tick();
 
-        if (!$page.url.hash) return;
+        if (!page.url.hash) return;
         const tocItem = toc.slice(1);
 
         // no sub-items, return.
         if (!tocItem.length) return;
 
-        const pageHash = $page.url.hash.replace('#', '');
+        const pageHash = page.url.hash.replace('#', '');
         const tocItemHref = tocItem[0].href.replace('#', '');
 
         if (pageHash !== tocItemHref) return;

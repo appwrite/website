@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { page } from '$app/stores';
+    import { page } from '$app/state';
     import { FooterNav, MainFooter, Tooltip } from '$lib/components';
     import PreFooter from '$lib/components/PreFooter.svelte';
     import { type SocialShareOption, socialSharingOptions } from '$lib/constants';
@@ -31,7 +31,7 @@
     let copyText = $state<CopyStatusValue>(CopyStatus.Copy);
 
     async function handleCopy() {
-        const blogPostUrl = encodeURI(`https://appwrite.io${$page.url.pathname}`);
+        const blogPostUrl = encodeURI(`https://appwrite.io${page.url.pathname}`);
 
         await copy(blogPostUrl);
 
@@ -42,7 +42,7 @@
     }
 
     function getShareLink(shareOption: SocialShareOption): string {
-        const blogPostUrl = encodeURI(`https://appwrite.io${$page.url.pathname}`);
+        const blogPostUrl = encodeURI(`https://appwrite.io${page.url.pathname}`);
         const shareableLink = shareOption.link
             .replace('{TITLE}', seo.title + '.')
             .replace('{URL}', blogPostUrl);

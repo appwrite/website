@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { page } from '$app/stores';
+    import { page } from '$app/state';
     import { FooterNav, MainFooter } from '$lib/components';
     import { Main } from '$lib/layouts';
     import { onMount } from 'svelte';
@@ -8,8 +8,8 @@
     let error: string | undefined;
 
     onMount(async () => {
-        const email = $page.url.searchParams.get('email');
-        const key = $page.url.searchParams.get('key');
+        const email = page.url.searchParams.get('email');
+        const key = page.url.searchParams.get('key');
         const response = await fetch(`${PUBLIC_GROWTH_ENDPOINT}/newsletter/verify`, {
             method: 'POST',
             headers: {
