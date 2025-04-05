@@ -50,8 +50,8 @@
     import '$icons/output/web-icon.css';
 
     import { browser, dev } from '$app/environment';
-    import { page, updated } from '$app/state';
-    import { navigating } from '$app/stores';
+    import { page } from '$app/state';
+    import { navigating, updated } from '$app/stores';
     import { onMount } from 'svelte';
     import { loggedIn } from '$lib/utils/console';
     import { beforeNavigate } from '$app/navigation';
@@ -96,7 +96,9 @@
         if (window) {
             tracked.clear();
         }
-        if (updated && !willUnload && to?.url) {
+
+        // TODO: thejessewinton, the `updated` from `svelte/state` creates an infinite refresh loop on docs references pages!
+        if ($updated && !willUnload && to?.url) {
             location.href = to.url.href;
         }
     });
