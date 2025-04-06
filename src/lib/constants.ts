@@ -1,5 +1,33 @@
-export const GITHUB_STARS = '47K';
-export const GITHUB_REPO_LINK = 'https://github.com/appwrite/appwrite';
+type SocialStats = {
+    [K in 'GITHUB' | 'DISCORD' | 'TWITTER' | 'YOUTUBE']: {
+        STAT: string;
+        LINK: string;
+        EXTRA?: Record<string, string> | undefined;
+    };
+};
+
+export const SOCIAL_STATS: SocialStats = {
+    GITHUB: {
+        STAT: '48K',
+        LINK: 'https://github.com/appwrite/appwrite',
+        EXTRA: {
+            COMMITS: '24K+'
+        }
+    },
+    DISCORD: {
+        STAT: '22K+',
+        LINK: '/discord'
+    },
+    TWITTER: {
+        STAT: '128K+',
+        LINK: 'https://twitter.com/intent/follow?screen_name=appwrite'
+    },
+    YOUTUBE: {
+        STAT: '11K+',
+        LINK: 'https://www.youtube.com/c/appwrite?sub_confirmation=1'
+    }
+};
+
 export const BANNER_KEY: Banners = 'discord-banner-01'; // Change key to force banner to show again
 
 export const BLOG_POSTS_PER_PAGE = 12;

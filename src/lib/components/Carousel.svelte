@@ -56,7 +56,7 @@
         {/if}
         <div class="nav ml-auto flex items-end gap-3">
             <button
-                class="web-icon-button"
+                class="web-icon-button cursor-pointer"
                 aria-label="Move carousel backward"
                 disabled={isStart}
                 onclick={prev}
@@ -64,7 +64,7 @@
                 <span class="web-icon-arrow-left" aria-hidden="true"></span>
             </button>
             <button
-                class="web-icon-button"
+                class="web-icon-button cursor-pointer"
                 aria-label="Move carousel forward"
                 disabled={isEnd}
                 onclick={next}

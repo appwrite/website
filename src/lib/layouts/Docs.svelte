@@ -43,7 +43,7 @@
     import { Search, IsLoggedIn } from '$lib/components';
     import { isMac } from '$lib/utils/platform';
     import { getContext, setContext } from 'svelte';
-    import { GITHUB_REPO_LINK, GITHUB_STARS } from '$lib/constants';
+    import { SOCIAL_STATS } from '$lib/constants';
     import { page } from '$app/state';
     import { getAppwriteDashboardUrl } from '$lib/utils/dashboard';
 
@@ -172,14 +172,14 @@
             <div class="web-main-header-end">
                 <div class="flex gap-2">
                     <a
-                        href={GITHUB_REPO_LINK}
+                        href={SOCIAL_STATS.GITHUB.LINK}
                         target="_blank"
                         rel="noopener noreferrer"
                         class="web-button is-text"
                     >
                         <span class="web-icon-star" aria-hidden="true"></span>
                         <span class="text">Star on GitHub</span>
-                        <span class="web-inline-tag text-sub-body">{GITHUB_STARS}</span>
+                        <span class="web-inline-tag text-sub-body">{SOCIAL_STATS.GITHUB.STAT}</span>
                     </a>
                     <IsLoggedIn />
                 </div>
