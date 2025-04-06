@@ -92,12 +92,12 @@
 
     const metrics = [
         { metric: `${SOCIAL_STATS.GITHUB.STAT}+`, description: 'GitHub Stars' },
-        { metric: '3K+', description: 'Pull Requests' },
-        { metric: '21K+', description: 'Commits' },
+        { metric: '4.5K+', description: 'Pull Requests' },
+        { metric: `${SOCIAL_STATS.GITHUB.EXTRA?.COMMITS}`, description: 'Commits' },
         { metric: '3K+', description: 'Issues' },
         { metric: '500+', description: 'Open Issues' },
-        { metric: '2.5K+', description: 'Closed Issues' },
-        { metric: '3.5K+', description: 'Forks' },
+        { metric: '3.3K+', description: 'Closed Issues' },
+        { metric: '4.3K+', description: 'Forks' },
         { metric: '800+', description: 'Contributors' }
     ];
 
