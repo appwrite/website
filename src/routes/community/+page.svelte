@@ -91,14 +91,14 @@
     ];
 
     const metrics = [
-        { metric: `${SOCIAL_STATS.GITHUB.STAT}+`, description: 'GitHub Stars' },
-        { metric: '4.5K+', description: 'Pull Requests' },
-        { metric: `${SOCIAL_STATS.GITHUB.EXTRA?.COMMITS}`, description: 'Commits' },
-        { metric: '3K+', description: 'Issues' },
-        { metric: '500+', description: 'Open Issues' },
-        { metric: '3.3K+', description: 'Closed Issues' },
-        { metric: '4.3K+', description: 'Forks' },
-        { metric: '800+', description: 'Contributors' }
+        { metric: SOCIAL_STATS.GITHUB.STAT, description: 'GitHub Stars' },
+        { metric: SOCIAL_STATS.GITHUB.EXTRA!.PULL_REQUESTS, description: 'Pull Requests' },
+        { metric: SOCIAL_STATS.GITHUB.EXTRA!.COMMITS, description: 'Commits' },
+        { metric: SOCIAL_STATS.GITHUB.EXTRA!.ISSUES, description: 'Issues' },
+        { metric: SOCIAL_STATS.GITHUB.EXTRA!.OPEN_ISSUES, description: 'Open Issues' },
+        { metric: SOCIAL_STATS.GITHUB.EXTRA!.CLOSED_ISSUES, description: 'Closed Issues' },
+        { metric: SOCIAL_STATS.GITHUB.EXTRA!.FORKS, description: 'Forks' },
+        { metric: SOCIAL_STATS.GITHUB.EXTRA!.CONTRIBUTORS, description: 'Contributors' }
     ];
 
     let name = $state('');

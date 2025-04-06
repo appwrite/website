@@ -11,7 +11,13 @@ export const SOCIAL_STATS: SocialStats = {
         STAT: '48K',
         LINK: 'https://github.com/appwrite/appwrite',
         EXTRA: {
-            COMMITS: '24K+'
+            COMMITS: '24K+',
+            PULL_REQUESTS: '4.5K+',
+            ISSUES: '3K+',
+            OPEN_ISSUES: '500+',
+            CLOSED_ISSUES: '3.3K+',
+            FORKS: '4.3K+',
+            CONTRIBUTORS: '800+'
         }
     },
     DISCORD: {
