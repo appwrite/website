@@ -7,6 +7,7 @@
     import Calendar from '../../../(assets)/icons/calendar.svg';
     import Messages from '../../../(assets)/icons/messages.svg';
     import Settings from '../../../(assets)/icons/settings.svg';
+    import GridPaper from '../../grid-paper.svelte';
 
     let container: HTMLElement;
 
@@ -103,8 +104,8 @@
                     <span class="w-10 text-sm font-semibold text-white"
                         >{format(new Date(), 'h:mm')}</span
                     >
-                    <div class="h-7 w-[114px] rounded-full bg-black" />
-                    <div class="h-4 w-12 rounded-full bg-black" />
+                    <div class="h-7 w-[114px] rounded-full bg-black"></div>
+                    <div class="h-4 w-12 rounded-full bg-black"></div>
                 </div>
                 <div
                     class="text-micro grid flex-1 grid-cols-4 grid-rows-24 place-items-center gap-6 px-9 pt-16"
@@ -115,7 +116,7 @@
                         <div
                             class="bg-accent text-micro absolute -top-1 -right-1 flex size-4 items-center justify-center rounded-full"
                             bind:this={icon}
-                        />
+                        ></div>
 
                         <img src={Email} alt="" class="size-9" />
                     </div>
@@ -130,13 +131,14 @@
                     {#each Array.from({ length: 12 }) as _, index}
                         <div
                             class="size-[62px] shrink-0 rounded-2xl bg-gradient-to-br from-white/10 to-white/3 shadow-sm shadow-black/5"
-                        />
+                        ></div>
                     {/each}
                 </div>
             </div>
         </div>
-        <div
+        <GridPaper class="absolute inset-0" />
+        <!-- <div
             class="absolute inset-0 -z-10 h-full w-full bg-transparent bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:60px_60px]"
-        />
+        /> -->
     </div>
 </div>

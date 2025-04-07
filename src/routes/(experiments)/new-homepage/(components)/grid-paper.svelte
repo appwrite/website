@@ -4,18 +4,18 @@
     import type { SvelteHTMLElements } from 'svelte/elements';
 
     type Props = {
-        children: Snippet;
+        children?: Snippet;
     } & SvelteHTMLElements['div'];
 
     const { children, class: className, ...rest }: Props = $props();
 </script>
 
-<div class={classNames('grid-paper', 'bg-size-(--grid-size)', className)} {...rest}>
+<div class={classNames('paper', className)} {...rest}>
     {@render children?.()}
 </div>
 
 <style>
-    .grid-paper {
+    .paper {
         --grid-size: 42px;
         --grid-strength: 1px;
         --grid-dash: 4px;

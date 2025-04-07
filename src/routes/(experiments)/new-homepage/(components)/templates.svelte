@@ -1,5 +1,6 @@
 <script lang="ts">
     import { classNames } from '$lib/utils/classnames';
+    import GridPaper from './grid-paper.svelte';
 
     const templates = [
         {
@@ -60,16 +61,15 @@
     <div class="flex flex-nowrap gap-4 pl-36">
         {#each templates as template}
             <div class="relative z-5 basis-[33vw] rounded-2xl bg-white/90 p-2 drop-shadow-xl">
-                <div
-                    style:--height="11.25rem"
-                    class="grid-paper border-smooth relative z-5 flex h-(--height) w-full grow items-center justify-center rounded-xl border"
+                <GridPaper
+                    class="border-smooth relative z-5 flex h-[11.25rem] w-full grow items-center justify-center rounded-xl border"
                 >
                     <div
                         class="relative z-20 flex size-[5.375rem] items-center justify-center rounded-xl bg-white/90 p-4 drop-shadow-2xl"
                     >
                         {@html template.icon}
                     </div>
-                </div>
+                </GridPaper>
 
                 <div class="text-primary flex items-center justify-between px-2 pt-3 pb-1">
                     <span class="text-body font-medium">{template.label}</span>
@@ -79,41 +79,3 @@
         {/each}
     </div>
 </div>
-
-<style>
-    .grid-paper {
-        --grid-size: 42px;
-        --grid-strength: 1px;
-        --grid-dash: 4px;
-        --grid-gap: 8px;
-        --grid-color: var(--color-smooth);
-        --paper-color: hsl(240, 9%, 94%);
-
-        background-color: var(--paper-color);
-        background-position: center center;
-        background-size:
-            var(--grid-gap) var(--grid-gap),
-            var(--grid-size) var(--grid-size);
-        background-image:
-            linear-gradient(
-                to bottom,
-                transparent var(--grid-dash),
-                var(--paper-color) var(--grid-dash)
-            ),
-            linear-gradient(
-                to right,
-                var(--grid-color) var(--grid-strength),
-                transparent var(--grid-strength)
-            ),
-            linear-gradient(
-                to right,
-                transparent var(--grid-dash),
-                var(--paper-color) var(--grid-dash)
-            ),
-            linear-gradient(
-                to bottom,
-                var(--grid-color) var(--grid-strength),
-                transparent var(--grid-strength)
-            );
-    }
-</style>
