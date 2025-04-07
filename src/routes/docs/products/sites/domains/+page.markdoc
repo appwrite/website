@@ -19,19 +19,30 @@ The domain usually has this format.
 https://64d4d22db370ae41a32e.sites.appwrite.global
 ```
 
+## Branch and Commit URLs
+
+Additional to the site URL, Appwrite also generates a URL for the branch and commit that your site has been deployed from. The branch URL will remain consistent for all deployments made for code pushed to a specific branch, whereas the commit URL will be updated every time a new deployment is made via the Git integration (i.e. when code is pushed to your repo).
+
+![Branch and Commit URLs](https://warm-tray-285.notion.site/image/attachment%3Aaffbf4bd-be7f-481a-a6ec-4db9e1d49785%3Aimage.png?table=block&id=1cefb53f-e82d-805c-bcbe-f7784ac2ad8f&spaceId=cf760f55-c352-4759-b494-006b8b294dbb&width=1420&userId=&cache=v2)
+
+To find the branch and commit URLs of any deployment:
+
+1. Navigate to your site on Appwrite Console.
+2. Head to the **Deployments** tab and click on any deployment.
+3. In the **Domains** section, click on the **+2** next to the mentioned domain.
+
 # Add a custom domain
 
 ![Add custom domain](https://warm-tray-285.notion.site/image/attachment%3A96cb70d5-c8af-48f6-aa33-dd6cceac77d4%3Aimage.png?table=block&id=1c3fb53f-e82d-80f5-a450-ea3de6ce914f&spaceId=cf760f55-c352-4759-b494-006b8b294dbb&width=1420&userId=&cache=v2)
 
 1. Navigate to your site in the Appwrite Console.
-2. Head to the **Domains** tab.
-3. Click on **Add domain**.
-4. Input your domain and select one of the following:
+2. Head to the **Domains** tab and click on **Add domain**.
+3. Input your domain and select one of the following:
     - **Active deployment**: Points the domain to the latest deployed version
     - **Git branch**: Points the domain to a specific branch on your repository
     - **Redirect**: Forwards all traffic from this domain to another URL
-5. Copy the specified **CNAME** record and add it to your domain registrar.
-6. Return to the Site settings and wait for verification status.
+4. Copy the specified **CNAME** record and add it to your domain registrar.
+5. Return to the Site settings and wait for verification status.
 
 DNS records can take up to 48 hours to propagate. Once verified, the domain is ready to use.
 
