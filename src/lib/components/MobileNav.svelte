@@ -5,6 +5,7 @@
     import type { NavLink } from './MainNav.svelte';
     import { getAppwriteDashboardUrl } from '$lib/utils/dashboard';
     import { Button, InlineTag, Icon } from '$lib/components/ui';
+    import { GithubStats } from '$lib/components/shared';
 
     export let open = false;
     export let links: NavLink[];
@@ -42,17 +43,7 @@
             </section>
         </div>
         <div class="web-side-nav-mobile-footer-buttons">
-            <Button
-                href={SOCIAL_STATS.GITHUB.LINK}
-                target="_blank"
-                rel="noopener noreferrer"
-                variant="text"
-                class="w-full! md:w-fit"
-            >
-                <Icon icon="star" aria-hidden="true" />
-                Star on GitHub
-                <InlineTag>{SOCIAL_STATS.GITHUB.STAT}</InlineTag>
-            </Button>
+            <GithubStats class="w-full! md:w-fit" />
         </div>
     </div>
 </nav>

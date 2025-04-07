@@ -56,6 +56,8 @@
     import ProjectCard from './ProjectCard.svelte';
 
     import { SOCIAL_STATS } from '$lib/constants';
+    import { Button, Icon } from '$lib/components/ui';
+    import InlineTag from '$lib/components/ui/inline-tag.svelte';
 
     let { data } = $props();
 
@@ -167,26 +169,25 @@
                                 worldwide.
                             </p>
                             <div class="mt-8 flex flex-wrap gap-3">
-                                <a
+                                <Button
                                     href={SOCIAL_STATS.DISCORD.LINK}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    class="web-button is-full-width-mobile"
+                                    class="is-full-width-mobile"
                                 >
                                     <span class="text">Join our Discord</span>
-                                </a>
-                                <a
+                                </Button>
+                                <Button
+                                    variant="secondary"
                                     href={SOCIAL_STATS.GITHUB.LINK}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    class="web-button is-secondary is-full-width-mobile"
+                                    class="is-full-width-mobile"
                                 >
-                                    <span aria-hidden="true" class="web-icon-star"></span>
+                                    <Icon icon="star" aria-hidden="true" />
                                     <span>Star on GitHub</span>
-                                    <span class="web-inline-tag text-sub-body"
-                                        >{SOCIAL_STATS.GITHUB.STAT}</span
-                                    >
-                                </a>
+                                    <InlineTag>{SOCIAL_STATS.GITHUB.STAT}</InlineTag>
+                                </Button>
                             </div>
                         </div>
                     </div>

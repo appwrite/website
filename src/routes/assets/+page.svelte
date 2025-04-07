@@ -86,10 +86,10 @@
                                 various platforms and materials.
                             </p>
 
-                            <a href="/assets.zip" download class="web-button">
-                                <span class="web-icon-download" aria-hidden="true"></span>
+                            <Button href="/assets.zip" download>
+                                <Icon icon="download" aria-hidden="true" />
                                 <span>Download assets</span>
-                            </a>
+                            </Button>
                         </section>
 
                         <section id={getSectionId(Section.NAMING)}>

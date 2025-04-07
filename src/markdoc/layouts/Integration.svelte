@@ -7,6 +7,7 @@
     import type { Integration } from '$routes/integrations/+page';
     import { isHeaderHidden } from '$lib/layouts/Main.svelte';
     import { integrationCategoryDescriptions } from '$lib/constants';
+    import { Button, Icon } from '$lib/components/ui';
 
     export let title: Integration['title'];
     export let images: Integration['images'];
@@ -50,10 +51,10 @@
         <div class="dark container">
             <div class="web-integrations-top-section">
                 <div class="web-carousel-wrapper">
-                    <a href="/integrations" class="web-button is-text mb-12">
-                        <span class="icon-cheveron-left" aria-hidden="true"></span>
+                    <Button variant="text" href="/integrations" class="mb-12">
+                        <Icon icon="chevron-left" aria-hidden="true" />
                         <span>Back to catalog</span>
-                    </a>
+                    </Button>
 
                     {#if images.length > 1}
                         <Root>
@@ -168,12 +169,9 @@
                             Join our Technology Partners program to integrate your solutions with
                             Appwrite’s API, enhancing functionality and expanding your reach.
                         </p>
-                        <a
-                            href="/integrations/technology-partner"
-                            class="web-button is-primary mt-4 self-center"
-                        >
+                        <Button href="/integrations/technology-partner" class="mt-4 self-center">
                             <span class="text">Get Started</span>
-                        </a>
+                        </Button>
                     </section>
                 </div>
             </div>
