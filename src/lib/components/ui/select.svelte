@@ -1,7 +1,5 @@
 <script lang="ts">
-    import { classNames } from '$lib/utils/classnames';
     import { Select, type SelectProps } from 'melt/builders';
-    import type { HTMLButtonAttributes, SvelteHTMLElements } from 'svelte/elements';
 
     type Props = {
         options: Array<{
@@ -16,25 +14,30 @@
     const {
         options,
         value = $bindable(),
+        onValueChange,
         defaultValue = 'Select a value',
         ...rest
     }: Props = $props();
-    type Option = (typeof options)[number];
 
-    const select = new Select<Option['value']>({
+    const select = new Select<Props['options'][number]['value']>({
         value,
+        sameWidth: true,
+        forceVisible: false,
         ...rest
     });
 </script>
 
 <button
-    class="web-select is-colored text-primary relative flex h-8 min-w-[145px] cursor-pointer items-center text-sm leading-[1] select-none [all:unset]"
+    class="border-gradient text-primary relative flex h-8 min-w-[145px] cursor-pointer items-center text-sm leading-[1] select-none"
     {...select.trigger}
 >
     {select.value ?? defaultValue}
 </button>
 
-<div {...select.content}>
+<div
+    class="text-primary relative box-border flex max-w-xs flex-col gap-2 overflow-y-auto rounded-xl p-1 text-sm leading-[1.2] select-none"
+    {...select.content}
+>
     {#each options as option}
         <div {...select.getOption(option.value)}>
             {option.label}
