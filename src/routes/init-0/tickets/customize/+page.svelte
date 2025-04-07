@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { page } from '$app/stores';
+    import { page } from '$app/state';
     import FooterNav from '$lib/components/FooterNav.svelte';
     import MainFooter from '$lib/components/MainFooter.svelte';
     import Main from '$lib/layouts/Main.svelte';
@@ -57,7 +57,7 @@
         saveTicket();
     }
 
-    const ticketUrl = `${$page.url.origin}/init-0/tickets/${data.ticket.$id}`;
+    const ticketUrl = `${page.url.origin}/init-0/tickets/${data.ticket.$id}`;
     const { copied, copy } = createCopy(ticketUrl);
     let twitterText = $derived(
         encodeURIComponent(

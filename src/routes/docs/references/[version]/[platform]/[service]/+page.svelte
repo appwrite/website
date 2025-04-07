@@ -1,6 +1,6 @@
 <script lang="ts">
     import { goto } from '$app/navigation';
-    import { page } from '$app/stores';
+    import { page } from '$app/state';
     import { MainFooter, Select } from '$lib/components';
     import { DEFAULT_HOST } from '$lib/utils/metadata';
     import { layoutState, toggleReferences } from '$lib/layouts/Docs.svelte';
@@ -48,7 +48,7 @@
     });
 
     function selectPlatform(event: CustomEvent<unknown>) {
-        const { version, service } = $page.params;
+        const { version, service } = page.params;
         const platform = event.detail as Platform;
 
         // except nodejs, all other server sided need to be saved as without `server-` prefix
@@ -68,7 +68,7 @@
     }
 
     function selectVersion(event: CustomEvent<unknown>) {
-        const { platform, service } = $page.params;
+        const { platform, service } = page.params;
         const version = event.detail as Version;
         preferredVersion.set(version);
         goto(`/docs/references/${version}/${platform}/${service}`, {
@@ -97,9 +97,9 @@
 
     onMount(() => {
         preferredPlatform.set(platform);
-        preferredVersion.set($page.params.version as Version);
+        preferredVersion.set(page.params.version as Version);
 
-        const isSame = $preferredPlatform === $page.params.platform;
+        const isSame = $preferredPlatform === page.params.platform;
         const hasPlatformPrefix =
             $preferredPlatform.startsWith('client-') || $preferredPlatform.startsWith('server-');
 
@@ -109,7 +109,7 @@
                 ? $preferredPlatform
                 : `server-${$preferredPlatform}`;
 
-            goto(`/docs/references/${$preferredVersion}/${platformMode}/${$page.params.service}`, {
+            goto(`/docs/references/${$preferredVersion}/${platformMode}/${page.params.service}`, {
                 noScroll: true,
                 replaceState: false
             });
@@ -128,8 +128,8 @@
         serviceDescription.substring(0, serviceDescription.indexOf('.') + 1)
     );
 
-    let platformBindingForSelect = $derived($page.params.platform as Platform);
-    let platform = $derived(($preferredPlatform ?? $page.params.platform) as Platform);
+    let platformBindingForSelect = $derived(page.params.platform as Platform);
+    let platform = $derived(($preferredPlatform ?? page.params.platform) as Platform);
     let platformType = $derived(platform.startsWith('client-') ? 'CLIENT' : 'SERVER');
     let serviceName = $derived(serviceMap[data.service?.name]);
     let title = $derived(serviceName + API_REFERENCE_TITLE_SUFFIX);
@@ -153,10 +153,10 @@
     <meta name="twitter:image" content={ogImage} />
     <meta name="twitter:card" content="summary_large_image" />
 
-    {#if $page.params.version !== 'cloud'}
+    {#if page.params.version !== 'cloud'}
         <link
             rel="canonical"
-            href={`https://appwrite.io/docs/references/cloud/${$page.params.platform}/${$page.params.service}`}
+            href={`https://appwrite.io/docs/references/cloud/${page.params.platform}/${page.params.service}`}
         />
     {/if}
 </svelte:head>
@@ -202,7 +202,7 @@
                         <Select
                             nativeMobile
                             on:change={selectVersion}
-                            value={$page.params.version}
+                            value={page.params.version}
                             options={[
                                 { value: 'cloud', label: 'Cloud' },
                                 ...versions.map((version) => ({
@@ -303,7 +303,12 @@
             use:clickOutside={() => ($layoutState.showReferences = false)}
         >
             {#if data.methods.length > 0}
-                <button class="web-icon-button" id="refOpen" onclick={toggleReferences}>
+                <button
+                    class="web-icon-button"
+                    id="refOpen"
+                    onclick={toggleReferences}
+                    aria-label="Toggle references"
+                >
                     <span class="icon-menu-alt-4" aria-hidden="true"></span>
                 </button>
                 <div class="web-references-menu-content">
@@ -311,7 +316,12 @@
                         class="web-references-menu-header mt-6 flex items-center justify-between gap-4"
                     >
                         <h5 class="web-references-menu-title text-micro uppercase">On This Page</h5>
-                        <button class="web-icon-button" id="refClose" onclick={toggleReferences}>
+                        <button
+                            class="web-icon-button"
+                            id="refClose"
+                            onclick={toggleReferences}
+                            aria-label="Toggle references"
+                        >
                             <span class="icon-x" aria-hidden="true"></span>
                         </button>
                     </div>

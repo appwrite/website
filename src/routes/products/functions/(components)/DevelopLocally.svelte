@@ -30,9 +30,12 @@
         >
             <header class="grid h-12 w-full grid-cols-12 items-center pl-2">
                 <div class="col-span-2 flex gap-1">
-                    <button class="size-2 rounded-full bg-[#EC6A5E]"></button>
-                    <button class="size-2 rounded-full bg-[#F5BF4F]"></button>
-                    <button class="size-2 rounded-full bg-[#6d9e66]"></button>
+                    <button class="size-2 rounded-full bg-[#EC6A5E]" aria-label="Close window"
+                    ></button>
+                    <button class="size-2 rounded-full bg-[#F5BF4F]" aria-label="Minimize window"
+                    ></button>
+                    <button class="size-2 rounded-full bg-[#6d9e66]" aria-label="Enter full screen"
+                    ></button>
                 </div>
                 <div
                     class="bg-offset col-span-6 col-start-4 flex h-6 w-full flex-1 items-center justify-center rounded-full backdrop-blur-lg"
@@ -96,9 +99,11 @@
                                 <div
                                     class="text-primary text-micro grid grid-cols-3 place-items-center items-center divide-x divide-black/8 rounded-md border border-black/8 bg-[#19191C]/4 text-center"
                                 >
-                                    <button class="web-icon-minus size-6"></button>
+                                    <button class="web-icon-minus size-6" aria-label="Remove item"
+                                    ></button>
                                     <span class="flex size-6 items-center justify-center">1</span>
-                                    <button class="web-icon-plus size-6"></button>
+                                    <button class="web-icon-plus size-6" aria-label="Add item"
+                                    ></button>
                                 </div>
                             </div>
                         {/each}
