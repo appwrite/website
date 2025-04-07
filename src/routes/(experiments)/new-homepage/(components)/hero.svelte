@@ -7,9 +7,9 @@
     <div
         class="gradient-background absolute top-0 left-0 z-0 h-screen w-full -translate-x-[25%] translate-y-8 rotate-25 overflow-hidden blur-3xl"
         style:--speed="500ms"
-    />
+    ></div>
 
-    <div class="container relative grid grid-cols-1 place-items-center gap-8 md:grid-cols-2">
+    <div class="relative container grid grid-cols-1 place-items-center gap-8 md:grid-cols-2">
         <div
             class="animate-blur-in flex flex-col gap-4 [animation-delay:150ms] [animation-duration:1000ms]"
         >
