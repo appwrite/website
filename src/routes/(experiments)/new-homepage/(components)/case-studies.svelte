@@ -4,7 +4,6 @@
     import Avatar from '../(assets)/images/avatar.png';
 
     import { createToggleGroup, melt } from '@melt-ui/svelte';
-    import { spring } from 'motion';
 
     const studies = [
         {
