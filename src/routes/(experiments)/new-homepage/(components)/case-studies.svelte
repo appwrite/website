@@ -4,6 +4,7 @@
     import Avatar from '../(assets)/images/avatar.png';
 
     import { createToggleGroup, melt } from '@melt-ui/svelte';
+    import { spring } from 'motion';
 
     const studies = [
         {
@@ -39,8 +40,7 @@
     ];
 
     const {
-        elements: { root, item },
-        helpers: { isPressed }
+        elements: { root, item }
     } = createToggleGroup({
         type: 'single',
         defaultValue: '0',
@@ -51,16 +51,16 @@
 <div
     class={classNames(
         'relative flex min-h-[60vh] items-center justify-center overflow-hidden',
-        'before:absolute before:inset-0 before:top-0 before:left-0 before:-z-10 before:block before:h-full before:bg-[radial-gradient(circle_at_120%_-50%,_hsla(248,_99%,_70%,_0.3)_0,_transparent_40%)] before:blur-2xl',
-        'after:absolute after:inset-0 after:top-0 after:right-0 after:-z-10 after:mt-auto after:mb-0 after:block after:h-full after:bg-[radial-gradient(circle_at_-15%_125%,_hsla(343,_98%,_60%,_0.2)_0px,_transparent_40%)] after:blur-2xl'
+        'from-0% before:absolute before:inset-0 before:top-0 before:left-0 before:-z-10 before:block before:h-full before:bg-radial-[circle_at_120%_-50%] before:from-purple-500/30 before:to-transparent before:to-40% before:blur-2xl',
+        'after:from-accent/20 after:absolute after:inset-0 after:top-0 after:right-0 after:-z-10 after:mt-auto after:mb-0 after:block after:h-full after:bg-radial-[circle_at_-15%_125%] after:from-0% after:to-transparent after:to-40% after:blur-2xl'
     )}
 >
     <div class="container flex h-full items-center gap-4" use:melt={$root}>
         {#each studies as study, i}
             <div
                 class={classNames(
-                    'data-[state="on"]:border-smooth grid h-[425px] cursor-pointer place-content-center place-items-center overflow-hidden rounded-2xl border border-transparent py-6 px-12 backdrop-blur-3xl transition-all duration-400 ease-in-out [grid-template-areas:"stack"]',
-                    'group/card hover:bg-black/24 data-[state="on"]:[flex-basis:70%] data-[state="on"]:bg-black/24 data-[state="off"]:[flex-basis:15%] data-[state="off"]:bg-black/16'
+                    'data-[state="on"]:border-smooth grid h-[425px] cursor-pointer place-content-center place-items-center overflow-hidden rounded-2xl border border-transparent px-12 py-6 backdrop-blur-3xl transition-all duration-400 ease-in-out [grid-template-areas:"stack"]',
+                    'group/card hover:bg-black/24 data-[state="off"]:[flex-basis:15%] data-[state="off"]:bg-black/16 data-[state="on"]:[flex-basis:70%] data-[state="on"]:bg-black/24'
                 )}
                 role="figure"
                 use:melt={$item(i.toString())}
@@ -100,7 +100,7 @@
                             <a href={study.url} class="text-primary group flex items-center gap-2"
                                 >Read customer story <span
                                     class="web-icon-arrow-right transition-transform group-hover:translate-x-0.5"
-                                /></a
+                                ></span></a
                             >
                         </div>
                     </div>
@@ -109,9 +109,3 @@
         {/each}
     </div>
 </div>
-
-<style>
-    :root {
-        --spring: cubic-bezier(1, -0.4, 0.35, 0.95);
-    }
-</style>

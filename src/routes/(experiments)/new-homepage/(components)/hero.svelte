@@ -5,7 +5,7 @@
 
 <div class="relative flex min-h-[80vh] flex-col items-center md:flex-row">
     <div
-        class="gradient-background absolute top-0 left-0 z-0 h-screen w-full -translate-x-[25%] translate-y-8 rotate-25 overflow-hidden blur-3xl"
+        class="gradient-background animate-lighting absolute top-0 left-0 z-0 h-screen w-full -translate-x-[25%] translate-y-8 rotate-25 overflow-hidden bg-radial blur-3xl"
         style:--speed="500ms"
     ></div>
 
@@ -14,7 +14,7 @@
             class="animate-blur-in flex flex-col gap-4 [animation-delay:150ms] [animation-duration:1000ms]"
         >
             <GradientText
-                ><h1 class="text-hero font-aeonik-pro text-pretty">
+                ><h1 class="text-display font-aeonik-pro text-pretty">
                     Backend APIs, Frontend hosting<span class="text-accent">_</span>
                 </h1></GradientText
             >
@@ -28,19 +28,6 @@
 </div>
 
 <style>
-    @keyframes lighting {
-        0% {
-            opacity: 0;
-            clip-path: inset(5%);
-            transform: scale(111.11%);
-        }
-        100% {
-            opacity: 1;
-            clip-path: inset(0);
-            transform: scale(1);
-        }
-    }
-
     .gradient-background {
         background-position: 0 0 0 0;
         background-image:
@@ -59,6 +46,5 @@
                 rgba(253, 54, 110, 0.16) 0%,
                 rgba(253, 54, 110, 0) 70%
             );
-        animation: lighting 1.25s ease-out forwards;
     }
 </style>

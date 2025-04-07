@@ -14,9 +14,6 @@ importers:
       h3:
         specifier: ^1.14.0
         version: 1.15.1
-      melt:
-        specifier: ^0.28.2
-        version: 0.28.2(@floating-ui/dom@1.6.13)(svelte@5.25.6)
       posthog-js:
         specifier: ^1.210.2
         version: 1.230.4
@@ -135,6 +132,9 @@ importers:
       meilisearch:
         specifier: ^0.37.0
         version: 0.37.0(encoding@0.1.13)
+      melt:
+        specifier: ^0.28.2
+        version: 0.28.2(@floating-ui/dom@1.6.13)(svelte@5.25.6)
       motion:
         specifier: ^12.6.3
         version: 12.6.3

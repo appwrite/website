@@ -63,7 +63,7 @@
     class="border-smooth col-span-12 flex flex-col rounded-2xl border bg-white/2 p-2 md:col-span-5"
     bind:this={container}
 >
-    <div class="space-y-3 pt-2 px-3 pb-4">
+    <div class="space-y-3 px-3 pt-2 pb-4">
         <div class="flex items-center gap-2">
             <img src="/images/icons/illustrated/dark/realtime.png" alt="Realtime" class="size-7" />
             <h3 class="font-aeonik-pro text-label text-primary">Realtime</h3>
@@ -117,7 +117,7 @@
                 </defs>
             </svg>
             <div
-                class="bg-mint-500 absolute right-0 bottom-0 rounded-r-md rounded-bl-md py-0.5 px-2 font-medium text-black"
+                class="bg-mint-500 absolute right-0 bottom-0 rounded-r-md rounded-bl-md px-2 py-0.5 font-medium text-black"
             >
                 <span>Sara</span>
             </div>
@@ -151,7 +151,7 @@
                 </defs>
             </svg>
             <div
-                class="absolute right-0 bottom-0 rounded-r-md rounded-bl-md bg-blue-500 py-0.5 px-2 font-medium text-white"
+                class="absolute right-0 bottom-0 rounded-r-md rounded-bl-md bg-blue-500 px-2 py-0.5 font-medium text-white"
             >
                 <span>Aditya</span>
             </div>
@@ -187,7 +187,7 @@
                 </defs>
             </svg>
             <div
-                class="bg-accent absolute right-0 bottom-0 rounded-r-md rounded-bl-md py-0.5 px-2 font-medium text-white"
+                class="bg-accent absolute right-0 bottom-0 rounded-r-md rounded-bl-md px-2 py-0.5 font-medium text-white"
             >
                 <span>Walter</span>
             </div>
@@ -195,7 +195,7 @@
 
         <div
             class="absolute inset-0 -z-10 h-full w-full bg-transparent [background-image:linear-gradient(to_right,#80808012_1px,transparent_1px,transparent_10px,#80808012_1px,transparent_10px),_linear-gradient(to_bottom,#80808012_1px,transparent_1px,transparent_10px,#80808012_1px,transparent_10px)] bg-[size:60px_60px]"
-        />
+        ></div>
     </div>
 </div>
 
