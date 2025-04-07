@@ -107,7 +107,7 @@
                             class={classNames(
                                 'absolute inset-0 opacity-0 transition-opacity group-hover:opacity-100',
                                 'bg-gradient-to-tl from-transparent to-transparent',
-                                'hover:from-[var(--primary-color,_#fff)]/4 hover:to-[var(--secondary-color,_transparent)]/10'
+                                'hover:from-(--primary-color,_#fff)/4 hover:to-(--secondary-color,_transparent)/10'
                             )}
                         >
                             <Noise opacity={0.1} />

@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
     import {
         DEFAULT_DESCRIPTION,
         DEFAULT_HOST,

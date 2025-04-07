@@ -62,7 +62,7 @@
             <div class="relative z-5 basis-[33vw] rounded-2xl bg-white/90 p-2 drop-shadow-xl">
                 <div
                     style:--height="11.25rem"
-                    class="grid-paper border-smooth relative z-5 flex h-[var(--height)] w-full grow items-center justify-center rounded-xl border"
+                    class="grid-paper border-smooth relative z-5 flex h-(--height) w-full grow items-center justify-center rounded-xl border"
                 >
                     <div
                         class="relative z-20 flex size-[5.375rem] items-center justify-center rounded-xl bg-white/90 p-4 drop-shadow-2xl"
@@ -73,7 +73,7 @@
 
                 <div class="text-primary flex items-center justify-between px-2 pt-3 pb-1">
                     <span class="text-body font-medium">{template.label}</span>
-                    <span class="web-icon-arrow-right -rotate-45" />
+                    <span class="web-icon-arrow-right -rotate-45"></span>
                 </div>
             </div>
         {/each}

@@ -54,7 +54,7 @@
 
 <div
     class={classNames(
-        'group relative flex size-4 translate-x-[var(--x-mobile)] translate-y-[var(--y)] cursor-pointer items-center justify-center opacity-0 [animation-delay:var(--delay)] md:translate-x-[var(--x-desktop)]',
+        'group relative flex size-4 translate-x-(--x-mobile) translate-y-(--y) cursor-pointer items-center justify-center opacity-0 [animation-delay:var(--delay)] md:translate-x-(--x-desktop)',
         { 'animate-fade-in': animate }
     )}
     use:melt={$trigger}
@@ -67,11 +67,11 @@
 >
     <span
         class="bg-accent absolute inline-flex h-full w-full rounded-full opacity-75 group-hover:animate-ping group-data-[active=true]:animate-ping"
-    />
-    <span class="bg-accent absolute inline-flex h-full w-full rounded-full" />
+    ></span>
+    <span class="bg-accent absolute inline-flex h-full w-full rounded-full"></span>
     <span
         class="absolute size-1/2 rounded-full bg-white transition-all group-hover:scale-110 group-data-[active=true]:size-2/3"
-    />
+    ></span>
 </div>
 
 {#if $open}
