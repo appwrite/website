@@ -1,7 +1,7 @@
 <script lang="ts">
     import { browser } from '$app/environment';
     import { goto } from '$app/navigation';
-    import { page } from '$app/stores';
+    import { page } from '$app/state';
     import { autoHash } from '$lib/actions/autoHash';
     import FooterNav from '$lib/components/FooterNav.svelte';
     import MainFooter from '$lib/components/MainFooter.svelte';
@@ -31,7 +31,7 @@
 
     let result: ResultType<Integration> = $state([]);
 
-    let query = $state(decodeURIComponent($page.url.searchParams.get('search') ?? ''));
+    let query = $state(decodeURIComponent(page.url.searchParams.get('search') ?? ''));
     let hasQuery = $derived(query.length > 0);
 
     // platform filters

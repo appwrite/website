@@ -131,12 +131,20 @@
 <div class="embla web-carousel relative overflow-hidden">
     {#if showArrows}
         {#if hasPrev}
-            <button class="web-carousel-button web-carousel-button-start" on:click={onPrev}>
+            <button
+                class="web-carousel-button web-carousel-button-start"
+                on:click={onPrev}
+                aria-label="Previous slide"
+            >
                 <span class="web-icon-arrow-left" aria-hidden="true"></span>
             </button>
         {/if}
         {#if hasNext}
-            <button class="web-carousel-button web-carousel-button-end" on:click={onNext}>
+            <button
+                class="web-carousel-button web-carousel-button-end"
+                on:click={onNext}
+                aria-label="Next slide"
+            >
                 <span class="web-icon-arrow-right" aria-hidden="true"></span>
             </button>
         {/if}

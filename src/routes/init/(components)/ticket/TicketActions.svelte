@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { page } from '$app/stores';
+    import { page } from '$app/state';
     import { Switch } from '$lib/components';
     import { createCopy } from '$lib/utils/copy';
     import { loginGithub } from '$routes/init/helpers';
@@ -14,9 +14,9 @@
     export let modified = false;
     export let saving = false;
     export let saveTicket: () => void;
-    let { ticket } = $page.data;
+    let { ticket } = page.data;
 
-    const ticketUrl = `${$page.url.origin}/init/tickets/${ticket?.$id}`;
+    const ticketUrl = `${page.url.origin}/init/tickets/${ticket?.$id}`;
     const shareTextOptions = [
         `Join us during the week of August 19–23 to celebrate everything new with @appwrite. Claim your ticket here 👇 ${ticketUrl}`,
         `Come celebrate everything new with @appwrite from August 19–23! Don't miss out on the latest features and updates. Get your ticket ASAP! 📅 ${ticketUrl}`,

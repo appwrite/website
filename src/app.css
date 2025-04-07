@@ -179,39 +179,39 @@
     /* Font sizes */
     --text-x-micro: 0.625rem;
     --text-x-micro--line-height: 0.875rem;
-    --text-x-micro--tracking: var(--tracking-tighter);
+    --text-x-micro--letter-spacing: var(--tracking-tighter);
     --text-micro: 0.75rem;
     --text-micro--line-height: 1rem;
-    --text-micro--tracking: var(--tracking-tighter);
+    --text-micro--letter-spacing: var(--tracking-tighter);
     --text-caption: 0.875rem;
     --text-caption--line-height: 1.375rem;
-    --text-caption--tracking: var(--tracking-tight);
+    --text-caption--letter-spacing: var(--tracking-tight);
     --text-sub-body: clamp(0.875rem, 2vw, 1rem);
     --text-sub-body--line-height: 1.375rem;
-    --text-sub-body--tracking: var(--tracking-tight);
+    --text-sub-body--letter-spacing: var(--tracking-tight);
     --text-body: clamp(1rem, 2.5vw, 1.125rem);
     --text-body--line-height: clamp(1.375rem, 3vw, 1.625rem);
-    --text-body--tracking: var(--tracking-tight);
+    --text-body--letter-spacing: var(--tracking-tight);
     --text-paragraph-md: 1rem;
     --text-paragraph-md--line-height: 1.625rem;
-    --text-paragraph-md--tracking: var(--tracking-tight);
+    --text-paragraph-md--letter-spacing: var(--tracking-tight);
     --text-paragraph-lg: 1.125rem;
     --text-paragraph-lg--line-height: 1.75rem;
-    --text-paragraph-lg--tracking: var(--tracking-tight);
+    --text-paragraph-lg--letter-spacing: var(--tracking-tight);
     --text-description: clamp(1.125rem, 3vw, 1.25rem);
     --text-description--line-height: clamp(1.625rem, 3.5vw, 1.75rem);
-    --text-description--tracking: var(--tracking-tighter);
+    --text-description--letter-spacing: var(--tracking-tighter);
     --text-label: 1.5rem;
     --text-label--line-height: 1.75rem;
     --text-title: clamp(2rem, 5vw, 2.5rem);
     --text-title--line-height: clamp(2.125rem, 5.5vw, 2.75rem);
-    --text-title--tracking: var(--tracking-squeezed);
+    --text-title--letter-spacing: var(--tracking-squeezed);
     --text-display: clamp(3rem, 7vw, 4rem);
     --text-display--line-height: clamp(3.125rem, 7.5vw, 4.25rem);
-    --text-display--tracking: var(--tracking-compressed);
+    --text-display--letter-spacing: var(--tracking-compressed);
     --text-headline: clamp(3.5rem, 8vw, 5.5rem);
     --text-headline--line-height: clamp(3.5rem, 8.5vw, 5.75rem);
-    --text-headline--tracking: var(--tracking-compressed);
+    --text-headline--letter-spacing: var(--tracking-compressed);
 
     /* Letter spacing */
     --tracking-*: initial;
@@ -223,11 +223,14 @@
     --tracking-loose: 0.08em;
 }
 
-@layer components {
-    .container {
-        @apply mx-auto box-content max-w-[75rem] px-5;
-    }
+@utility container {
+    margin-inline: auto;
+    padding-inline: 1.25rem;
+    box-sizing: content-box;
+    max-width: 75rem;
+}
 
+@layer components {
     .mask {
         mask-image: linear-gradient(
             to var(--mask-direction, top),
