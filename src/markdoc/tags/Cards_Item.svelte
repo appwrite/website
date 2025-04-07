@@ -6,7 +6,7 @@
         icon?: string;
         image?: string;
         title: string;
-        children: Snippet;
+        children?: Snippet;
     }
 
     const { href, icon = '', image = '', title, children }: Props = $props();
@@ -27,9 +27,11 @@
                 {title}
             </h4>
         </header>
-        <p class="text-sub-body mt-1" style:margin-block="0">
-            {@render children()}
-        </p>
+        {#if children}
+            <p class="text-sub-body mt-1" style:margin-block="0">
+                {@render children()}
+            </p>
+        {/if}
     </a>
 </li>
 
