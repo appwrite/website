@@ -153,7 +153,7 @@
         {#each pins as pin}
             <button
                 class={classNames(
-                    'grow text-nowrap rounded-full border-0.5 bg-gradient-to-br py-1 px-4 text-white backdrop-blur-lg transition-colors',
+                    'border-0.5 grow rounded-full bg-gradient-to-br px-4 py-1 text-nowrap text-white backdrop-blur-lg transition-colors',
                     {
                         'from-accent to-accent/50 border-accent':
                             activeRegion === slugify(pin.city),
@@ -166,7 +166,7 @@
         {/each}
     </div>
     <div
-        class="container relative mx-auto flex h-full w-[250vw] flex-col justify-center overflow-scroll py-10 transition-all delay-250 duration-250 md:w-fit md:flex-row md:overflow-auto md:py-0"
+        class="relative container mx-auto flex h-full w-[250vw] flex-col justify-center overflow-scroll py-10 transition-all delay-250 duration-250 md:w-fit md:flex-row md:overflow-auto md:py-0"
         use:useMousePosition
         use:useInView
         data-active-marker={hasActiveMarker}
@@ -175,7 +175,7 @@
             class="map relative w-full origin-bottom overflow-scroll transition-all [scrollbar-width:none]"
         >
             <div
-                class="absolute inset-0 [mask-image:url('/images/regions/map.svg')] [mask-repeat:no-repeat] [mask-size:contain]"
+                class="absolute inset-0 [mask-image:url('/images/regions/map.svg')] [mask-size:contain] [mask-repeat:no-repeat]"
             >
                 <div
                     class="gradient overlay relative block aspect-square size-40 rounded-full blur-3xl transition-opacity"

@@ -113,7 +113,7 @@
     class="border-smooth col-span-12 flex flex-col rounded-2xl border bg-white/2 p-2 md:col-span-5"
     bind:this={container}
 >
-    <div class="space-y-3 pt-2 px-3 pb-4">
+    <div class="space-y-3 px-3 pt-2 pb-4">
         <div class="flex items-center gap-2">
             <img src="/images/icons/illustrated/dark/storage.png" alt="Storage" class="size-7" />
             <h3 class="font-aeonik-pro text-label text-primary">Storage</h3>
@@ -129,7 +129,7 @@
         <div
             class="web-code-snippet absolute -right-4 bottom-8 z-10 overflow-hidden rounded-l-xl bg-[#232325] p-1"
         >
-            <div class="py-3 px-4">Node.js</div>
+            <div class="px-4 py-3">Node.js</div>
             <div
                 class="web-code-snippet-content z-10 rounded-l-[10px] bg-gradient-to-br from-black/48 to-transparent p-3"
             >

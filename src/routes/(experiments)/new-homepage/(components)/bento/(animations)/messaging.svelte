@@ -53,7 +53,7 @@
     class="border-smooth group col-span-12 flex flex-col rounded-2xl border bg-white/2 p-2 md:col-span-7"
     bind:this={container}
 >
-    <div class="space-y-3 pt-2 px-3 pb-4">
+    <div class="space-y-3 px-3 pt-2 pb-4">
         <div class="flex items-center gap-2">
             <img
                 src="/images/icons/illustrated/dark/messaging.png"
@@ -72,7 +72,7 @@
         class="relative flex h-[26.25rem] items-center justify-center overflow-clip rounded-xl bg-black/24 px-8"
     >
         <div
-            class="light absolute top-14 z-10 flex h-[90px] w-[466px] items-center justify-between gap-3 rounded-[28px] bg-white/80 py-2 px-3 shadow-[-8px_4px_32px_rgba(0,0,0,0.24)] backdrop-blur-xl"
+            class="light absolute top-14 z-10 flex h-[90px] w-[466px] items-center justify-between gap-3 rounded-[28px] bg-white/80 px-3 py-2 shadow-[-8px_4px_32px_rgba(0,0,0,0.24)] backdrop-blur-xl"
             style="transform: translateY(-15px); opacity: 0; filter: blur(4px);"
             bind:this={notification}
         >
@@ -93,13 +93,13 @@
             </div>
         </div>
         <div
-            class="light mask mt-20 flex h-full w-[400px] flex-col rounded-t-[58px] border-t border-x border-white/12 bg-white/8 backdrop-blur-2xl"
+            class="light mask mt-20 flex h-full w-[400px] flex-col rounded-t-[58px] border-x border-t border-white/12 bg-white/8 backdrop-blur-2xl"
             style:--mask-height="175px"
             style:transform="translateY(15px)"
             bind:this={device}
         >
             <div class="m-3 flex-1 rounded-t-[48px] bg-[#19191C]">
-                <div class="flex items-center justify-between pt-4 px-8">
+                <div class="flex items-center justify-between px-8 pt-4">
                     <span class="w-10 text-sm font-semibold text-white"
                         >{format(new Date(), 'h:mm')}</span
                     >
@@ -107,7 +107,7 @@
                     <div class="h-4 w-12 rounded-full bg-black" />
                 </div>
                 <div
-                    class="text-micro grid flex-1 grid-cols-4 grid-rows-24 place-items-center gap-6 pt-16 px-9"
+                    class="text-micro grid flex-1 grid-cols-4 grid-rows-24 place-items-center gap-6 px-9 pt-16"
                 >
                     <div
                         class="relative flex size-[62px] shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-white/10 to-white/3 shadow-sm shadow-black/5"

@@ -83,7 +83,7 @@
         <div
             class={classNames(
                 'w-full overflow-clip',
-                'backdrop-blur-3xl [mask-mode:alpha] max-md:[mask-image:linear-gradient(to_right,rgba(0,0,0,0)_0%,_rgba(255,255,255,1)_50%,_rgba(0,0,0,0)_100%)]'
+                '[mask-mode:alpha] backdrop-blur-3xl max-md:[mask-image:linear-gradient(to_right,rgba(0,0,0,0)_0%,_rgba(255,255,255,1)_50%,_rgba(0,0,0,0)_100%)]'
             )}
         >
             <div

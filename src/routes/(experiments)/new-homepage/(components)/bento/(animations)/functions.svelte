@@ -162,7 +162,7 @@
     class="border-smooth col-span-12 flex flex-col rounded-2xl border bg-white/2 p-2 md:col-span-7"
     bind:this={container}
 >
-    <div class="space-y-3 pt-2 px-3 pb-4">
+    <div class="space-y-3 px-3 pt-2 pb-4">
         <div class="flex items-center gap-2">
             <img
                 src="/images/icons/illustrated/dark/functions.png"
@@ -181,7 +181,7 @@
         class="relative flex h-[26.25rem] items-center justify-between overflow-clip rounded-xl bg-black/24 px-8"
     >
         <div
-            class="flex flex-1 flex-col items-center gap-3 overflow-clip text-center [mask-image:linear-gradient(to_top,rgba(0,0,0,0)_0%,_rgba(255,255,255,1)_50%,_rgba(0,0,0,0)_100%)] [mask-mode:alpha]"
+            class="flex flex-1 flex-col items-center gap-3 overflow-clip [mask-image:linear-gradient(to_top,rgba(0,0,0,0)_0%,_rgba(255,255,255,1)_50%,_rgba(0,0,0,0)_100%)] [mask-mode:alpha] text-center"
             style:max-height={`calc(${platforms.length} * var(--spacing-4))`}
         >
             <div
@@ -196,7 +196,7 @@
                             aria-hidden={index !== 0}
                         >
                             <div
-                                class="h-full w-full rounded-2xl bg-[#232325]/90 py-1 px-3 text-white/80"
+                                class="h-full w-full rounded-2xl bg-[#232325]/90 px-3 py-1 text-white/80"
                             >
                                 {command}
                             </div>

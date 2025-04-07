@@ -62,7 +62,7 @@
                         <span class="text-description text-secondary">{name}</span>
                         {#if label}
                             <span
-                                class="bg-accent-200 text-caption rounded-lg py-0.5 px-1.5 font-medium text-white"
+                                class="bg-accent-200 text-caption rounded-lg px-1.5 py-0.5 font-medium text-white"
                                 >{label}</span
                             >
                         {/if}

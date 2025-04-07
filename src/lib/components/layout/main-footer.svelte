@@ -97,7 +97,7 @@
     class="border-smooth relative border-t"
     class:web-u-sep-block-start={!noBorder}
 >
-    <div class="container web-footer-nav">
+    <div class="web-footer-nav container">
         <img
             class="web-logo"
             src="/images/logos/appwrite.svg"

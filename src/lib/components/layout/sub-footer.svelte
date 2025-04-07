@@ -4,7 +4,7 @@
 </script>
 
 <footer
-    class="border-smooth container text-secondary text-micro relative mt-12 flex items-center justify-between gap-4 border-t py-6"
+    class="border-smooth text-secondary text-micro relative container mt-12 flex items-center justify-between gap-4 border-t py-6"
 >
     <ul class="flex items-center gap-2">
         {#each socials as social}
