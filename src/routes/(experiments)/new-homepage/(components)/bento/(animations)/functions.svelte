@@ -18,6 +18,7 @@
     import Go from '../../../(assets)/icons/go.svg';
     import React from '../../../(assets)/icons/react.svg';
     import { isMobile } from '$lib/utils/is-mobile';
+    import GridPaper from '../../grid-paper.svelte';
 
     const platforms = [
         Python,
@@ -230,9 +231,7 @@
             {/each}
         </div>
 
-        <div
-            class="absolute inset-0 -z-10 h-full w-full bg-transparent bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:60px_60px]"
-        />
+        <GridPaper class="absolute inset-0 bg-size-[calc(100%/13)]" />
     </div>
 </div>
 

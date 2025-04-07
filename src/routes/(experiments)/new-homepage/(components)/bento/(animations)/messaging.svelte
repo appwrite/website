@@ -94,8 +94,7 @@
             </div>
         </div>
         <div
-            class="light mask mt-20 flex h-full w-[400px] flex-col rounded-t-[58px] border-x border-t border-white/12 bg-white/8 backdrop-blur-2xl"
-            style:--mask-height="175px"
+            class="light mt-20 flex h-full w-[400px] flex-col rounded-t-[58px] border-x border-t border-white/12 bg-white/8 mask-b-from-60% mask-b-to-100% backdrop-blur-2xl"
             style:transform="translateY(15px)"
             bind:this={device}
         >
@@ -136,9 +135,6 @@
                 </div>
             </div>
         </div>
-        <GridPaper class="absolute inset-0" />
-        <!-- <div
-            class="absolute inset-0 -z-10 h-full w-full bg-transparent bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:60px_60px]"
-        /> -->
+        <GridPaper class="absolute inset-0 -z-10 bg-size-[calc(100%/13)]" />
     </div>
 </div>

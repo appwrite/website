@@ -5,6 +5,7 @@
     import { animate, hover, inView, type AnimationSequence } from 'motion';
     import { isMobile } from '$lib/utils/is-mobile';
     import { getCodeHtml } from '$lib/utils/code';
+    import GridPaper from '../../grid-paper.svelte';
 
     let container: HTMLElement;
     let imageComponent: HTMLElement;
@@ -153,7 +154,7 @@
                             '-bottom-0.5': i === 2 || i === 3
                         }
                     )}
-                />
+                ></div>
             {/each}
 
             <img
@@ -165,11 +166,9 @@
             />
             <div
                 class="absolute inset-0 -z-10 h-full w-full bg-transparent bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:60px_60px]"
-            />
+            ></div>
         </div>
 
-        <div
-            class="absolute inset-0 -z-10 h-full w-full bg-transparent bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:60px_60px]"
-        />
+        <GridPaper class="absolute inset-0 bg-size-[calc(100%/9)]" />
     </div>
 </div>

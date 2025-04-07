@@ -7,6 +7,7 @@
     import TopRight from '../../../(assets)/images/top-right.svg';
     import BottomLeft from '../../../(assets)/images/bottom-left.svg';
     import BottomRight from '../../../(assets)/images/bottom-right.svg';
+    import GridPaper from '../../grid-paper.svelte';
 
     let container: HTMLElement;
 
@@ -193,9 +194,7 @@
             </div>
         </div>
 
-        <div
-            class="absolute inset-0 -z-10 h-full w-full bg-transparent [background-image:linear-gradient(to_right,#80808012_1px,transparent_1px,transparent_10px,#80808012_1px,transparent_10px),_linear-gradient(to_bottom,#80808012_1px,transparent_1px,transparent_10px,#80808012_1px,transparent_10px)] bg-[size:60px_60px]"
-        ></div>
+        <GridPaper class="absolute inset-0 bg-size-[calc(100%/9)]" />
     </div>
 </div>
 

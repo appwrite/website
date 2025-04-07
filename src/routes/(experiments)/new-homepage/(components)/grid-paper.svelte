@@ -10,44 +10,13 @@
     const { children, class: className, ...rest }: Props = $props();
 </script>
 
-<div class={classNames('paper', className)} {...rest}>
+<div
+    class={classNames(
+        'bg-[url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+CiAgPHBhdGggZD0iTSA2NCAwIEwgNjQgNjQgTCAwIDY0IiBmaWxsPSJub25lIiBzdHJva2U9IiM0NDQ0NDQiIHN0cm9rZS13aWR0aD0iMSIgc3Ryb2tlLW9wYWNpdHk9IjAuNCIgc3Ryb2tlLWRhc2hhcnJheT0iMyA2IiBzdHJva2UtbGluZWNhcD0ic3F1YXJlIi8+Cjwvc3ZnPg==")]',
+        'bg-size-[calc(100%/10)] bg-center bg-repeat',
+        className
+    )}
+    {...rest}
+>
     {@render children?.()}
 </div>
-
-<style>
-    .paper {
-        --grid-size: 42px;
-        --grid-strength: 1px;
-        --grid-dash: 4px;
-        --grid-gap: 8px;
-        --grid-color: var(--color-smooth);
-        --paper-color: hsl(240, 9%, 94%);
-
-        background-color: var(--paper-color);
-        background-position: center center;
-        background-size:
-            var(--grid-gap) var(--grid-gap),
-            var(--grid-size) var(--grid-size);
-        background-image:
-            linear-gradient(
-                to bottom,
-                transparent var(--grid-dash),
-                var(--paper-color) var(--grid-dash)
-            ),
-            linear-gradient(
-                to right,
-                var(--grid-color) var(--grid-strength),
-                transparent var(--grid-strength)
-            ),
-            linear-gradient(
-                to right,
-                transparent var(--grid-dash),
-                var(--paper-color) var(--grid-dash)
-            ),
-            linear-gradient(
-                to bottom,
-                var(--grid-color) var(--grid-strength),
-                transparent var(--grid-strength)
-            );
-    }
-</style>

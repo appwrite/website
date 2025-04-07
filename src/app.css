@@ -264,7 +264,7 @@
     }
 }
 
-@utility mask {
+/* @utility mask {
     mask-image: linear-gradient(
         to var(--mask-direction, top),
         transparent,
@@ -272,7 +272,7 @@
         black calc(100% - var(--mask-height, 32px)),
         black
     );
-}
+} */
 
 :root,
 .light {
