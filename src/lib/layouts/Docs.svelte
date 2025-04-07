@@ -46,6 +46,7 @@
     import { SOCIAL_STATS } from '$lib/constants';
     import { page } from '$app/state';
     import { getAppwriteDashboardUrl } from '$lib/utils/dashboard';
+    import { Button, Icon, InlineTag } from '$lib/components/ui';
 
     export let variant: DocsLayoutVariant = 'default';
     export let isReferences = false;
@@ -105,20 +106,16 @@
             </a>
         </div>
         <div class="web-mobile-header-end">
-            <a href={getAppwriteDashboardUrl()} class="web-button web-is-only-desktop">
+            <Button href={getAppwriteDashboardUrl()} class="hidden md:flex">
                 <span class="text-sub-body font-medium">Go to Console</span>
-            </a>
-            <button
-                class="web-button is-text"
-                aria-label="open navigation"
-                on:click={toggleSidenav}
-            >
+            </Button>
+            <Button variant="text" aria-label="open navigation" onclick={toggleSidenav}>
                 {#if $layoutState.showSidenav}
-                    <span aria-hidden="true" class="web-icon-close"></span>
+                    <Icon aria-hidden="true" icon="close"></Icon>
                 {:else}
-                    <span aria-hidden="true" class="web-icon-hamburger-menu"></span>
+                    <Icon aria-hidden="true" icon="hamburger-menu"></Icon>
                 {/if}
-            </button>
+            </Button>
         </div>
     </section>
     <header
@@ -171,16 +168,16 @@
             </div>
             <div class="web-main-header-end">
                 <div class="flex gap-2">
-                    <a
+                    <Button
+                        variant="text"
                         href={SOCIAL_STATS.GITHUB.LINK}
                         target="_blank"
                         rel="noopener noreferrer"
-                        class="web-button is-text"
                     >
-                        <span class="web-icon-star" aria-hidden="true"></span>
+                        <Icon icon="star" aria-hidden="true"></Icon>
                         <span class="text">Star on GitHub</span>
-                        <span class="web-inline-tag text-sub-body">{SOCIAL_STATS.GITHUB.STAT}</span>
-                    </a>
+                        <InlineTag>{SOCIAL_STATS.GITHUB.STAT}</InlineTag>
+                    </Button>
                     <IsLoggedIn />
                 </div>
             </div>

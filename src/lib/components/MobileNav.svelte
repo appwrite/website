@@ -4,6 +4,7 @@
     import { SOCIAL_STATS } from '$lib/constants';
     import type { NavLink } from './MainNav.svelte';
     import { getAppwriteDashboardUrl } from '$lib/utils/dashboard';
+    import { Button, InlineTag, Icon } from '$lib/components/ui';
 
     export let open = false;
     export let links: NavLink[];
@@ -18,10 +19,10 @@
 <nav class="web-side-nav web-is-not-desktop" class:hidden={!open}>
     <div class="web-side-nav-wrapper ps-4 pe-4">
         <div class="flex items-center gap-2 px-4">
-            <a href={getAppwriteDashboardUrl('/register')} class="web-button is-secondary flex-1">
+            <Button href={getAppwriteDashboardUrl('/register')} variant="secondary" class="flex-1">
                 Sign up
-            </a>
-            <IsLoggedIn classes="flex-1" />
+            </Button>
+            <IsLoggedIn class="flex-1" />
         </div>
         <div class="web-side-nav-scroll">
             <section>
@@ -41,16 +42,17 @@
             </section>
         </div>
         <div class="web-side-nav-mobile-footer-buttons">
-            <a
+            <Button
                 href={SOCIAL_STATS.GITHUB.LINK}
                 target="_blank"
                 rel="noopener noreferrer"
-                class="web-button is-text web-u-inline-width-100-percent-mobile"
+                variant="text"
+                class="w-full! md:w-fit"
             >
-                <span class="web-icon-star" aria-hidden="true"></span>
-                <span class="text">Star on GitHub</span>
-                <span class="web-inline-tag text-sub-body">{SOCIAL_STATS.GITHUB.STAT}</span>
-            </a>
+                <Icon icon="star" aria-hidden="true" />
+                Star on GitHub
+                <InlineTag>{SOCIAL_STATS.GITHUB.STAT}</InlineTag>
+            </Button>
         </div>
     </div>
 </nav>

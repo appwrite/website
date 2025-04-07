@@ -53,7 +53,7 @@
                     <Button
                         variant="secondary"
                         href={getAppwriteDashboardUrl('/register')}
-                        class="web-u-cross-child-end w-full! md:w-fit"
+                        class="web-u-cross-child-end w-full! flex-3 md:w-fit"
                         onclick={() =>
                             trackEvent({
                                 plausible: {
@@ -119,7 +119,7 @@
                     <Button
                         variant="secondary"
                         href={getAppwriteDashboardUrl('/console?type=create&plan=tier-2')}
-                        class="web-u-cross-child-end w-full! md:w-fit"
+                        class="web-u-cross-child-end w-full! flex-3 md:w-fit"
                         target="_blank"
                         rel="noopener noreferrer"
                         onclick={() =>
@@ -149,7 +149,7 @@
                     <Button
                         href="/contact-us/enterprise"
                         variant="secondary"
-                        class="web-u-cross-child-end w-full! md:w-fit"
+                        class="web-u-cross-child-end w-full! flex-3 md:w-fit"
                         target="_blank"
                         rel="noopener noreferrer"
                         onclick={() =>
@@ -170,10 +170,6 @@
 <style lang="scss">
     .web-strip-plans-info {
         flex-basis: 5rem !important;
-    }
-
-    .web-strip-plans .web-button {
-        flex: 3;
     }
 
     .web-strip-plans-item-wrapper {

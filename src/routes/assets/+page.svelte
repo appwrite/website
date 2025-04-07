@@ -2,6 +2,7 @@
     import { visible } from '$lib/actions';
     import TocNav from '$lib/components/TocNav.svelte';
     import TocRoot from '$lib/components/TocRoot.svelte';
+    import { Button, Icon } from '$lib/components/ui';
     import { Main } from '$lib/layouts';
 
     import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
@@ -133,28 +134,22 @@
                                             alt="Appwrite logo with black text"
                                         />
                                         <div class="buttons">
-                                            <a
-                                                class="web-button is-secondary"
+                                            <Button
+                                                variant="secondary"
                                                 href="/assets/logotype/white.svg"
                                                 download
                                             >
-                                                <span
-                                                    class="web-icon-download"
-                                                    aria-label="download"
-                                                ></span>
+                                                <Icon icon="download" aria-label="download" />
                                                 <span>SVG</span>
-                                            </a>
-                                            <a
-                                                class="web-button is-secondary"
+                                            </Button>
+                                            <Button
+                                                variant="secondary"
                                                 href="/assets/logotype/white.png"
                                                 download
                                             >
-                                                <span
-                                                    class="web-icon-download"
-                                                    aria-label="download"
-                                                ></span>
+                                                <Icon icon="download" aria-label="download" />
                                                 <span>PNG</span>
-                                            </a>
+                                            </Button>
                                         </div>
                                     </div>
                                     <div
@@ -167,28 +162,22 @@
                                             alt="Appwrite logo with white text"
                                         />
                                         <div class="buttons">
-                                            <a
-                                                class="web-button is-secondary"
+                                            <Button
+                                                variant="secondary"
                                                 href="/assets/logotype/black.svg"
                                                 download
                                             >
-                                                <span
-                                                    class="web-icon-download"
-                                                    aria-label="download"
-                                                ></span>
+                                                <Icon icon="download" aria-label="download" />
                                                 <span>SVG</span>
-                                            </a>
-                                            <a
-                                                class="web-button is-secondary"
+                                            </Button>
+                                            <Button
+                                                variant="secondary"
                                                 href="/assets/logotype/black.png"
                                                 download
                                             >
-                                                <span
-                                                    class="web-icon-download"
-                                                    aria-label="download"
-                                                ></span>
+                                                <Icon icon="download" aria-label="download" />
                                                 <span>PNG</span>
-                                            </a>
+                                            </Button>
                                         </div>
                                     </div>
                                 </div>
@@ -242,28 +231,22 @@
                                             alt="Appwrite's logomark"
                                         />
                                         <div class="buttons">
-                                            <a
-                                                class="web-button is-secondary"
+                                            <Button
+                                                variant="secondary"
                                                 href="/assets/logomark/logo.svg"
                                                 download
                                             >
-                                                <span
-                                                    class="web-icon-download"
-                                                    aria-label="download"
-                                                ></span>
+                                                <Icon icon="download" aria-label="download" />
                                                 <span>SVG</span>
-                                            </a>
-                                            <a
-                                                class="web-button is-secondary"
+                                            </Button>
+                                            <Button
+                                                variant="secondary"
                                                 href="/assets/logomark/logo.png"
                                                 download
                                             >
-                                                <span
-                                                    class="web-icon-download"
-                                                    aria-label="download"
-                                                ></span>
+                                                <Icon icon="download" aria-label="download" />
                                                 <span>PNG</span>
-                                            </a>
+                                            </Button>
                                         </div>
                                     </div>
                                     <div
@@ -276,28 +259,22 @@
                                             alt="Appwrite's logomark"
                                         />
                                         <div class="buttons">
-                                            <a
-                                                class="web-button is-secondary"
+                                            <Button
+                                                variant="secondary"
                                                 href="/assets/logomark/logo.svg"
                                                 download
                                             >
-                                                <span
-                                                    class="web-icon-download"
-                                                    aria-label="download"
-                                                ></span>
+                                                <Icon icon="download" aria-label="download" />
                                                 <span>SVG</span>
-                                            </a>
-                                            <a
-                                                class="web-button is-secondary"
+                                            </Button>
+                                            <Button
+                                                variant="secondary"
                                                 href="/assets/logomark/logo.png"
                                                 download
                                             >
-                                                <span
-                                                    class="web-icon-download"
-                                                    aria-label="download"
-                                                ></span>
+                                                <Icon icon="download" aria-label="download" />
                                                 <span>PNG</span>
-                                            </a>
+                                            </Button>
                                         </div>
                                     </div>
                                 </div>
@@ -391,28 +368,22 @@
                                             alt="Dashboard"
                                         />
                                         <div class="buttons visuals">
-                                            <a
-                                                class="web-button is-secondary"
+                                            <Button
+                                                variant="secondary"
                                                 href="/assets/visuals/dashboard.jpg"
                                                 download
                                             >
-                                                <span
-                                                    class="web-icon-download"
-                                                    aria-label="download"
-                                                ></span>
+                                                <Icon icon="download" aria-label="download" />
                                                 <span>JPG</span>
-                                            </a>
-                                            <a
-                                                class="web-button is-secondary"
+                                            </Button>
+                                            <Button
+                                                variant="secondary"
                                                 href={'/assets/visuals/dashboard.png'}
                                                 download
                                             >
-                                                <span
-                                                    class="web-icon-download"
-                                                    aria-label="download"
-                                                ></span>
+                                                <Icon icon="download" aria-label="download" />
                                                 <span>PNG</span>
-                                            </a>
+                                            </Button>
                                         </div>
                                     </div>
                                     <div class="media-wrapper">
@@ -422,28 +393,22 @@
                                             alt="Appwrite Auth"
                                         />
                                         <div class="buttons visuals">
-                                            <a
-                                                class="web-button is-secondary"
+                                            <Button
+                                                variant="secondary"
                                                 href="/assets/visuals/auth.jpg"
                                                 download
                                             >
-                                                <span
-                                                    class="web-icon-download"
-                                                    aria-label="download"
-                                                ></span>
+                                                <Icon icon="download" aria-label="download" />
                                                 <span>JPG</span>
-                                            </a>
-                                            <a
-                                                class="web-button is-secondary"
+                                            </Button>
+                                            <Button
+                                                variant="secondary"
                                                 href={'/assets/visuals/auth.png'}
                                                 download
                                             >
-                                                <span
-                                                    class="web-icon-download"
-                                                    aria-label="download"
-                                                ></span>
+                                                <Icon icon="download" aria-label="download" />
                                                 <span>PNG</span>
-                                            </a>
+                                            </Button>
                                         </div>
                                     </div>
                                     <div class="media-wrapper">
@@ -453,28 +418,22 @@
                                             alt="Appwrite Databases"
                                         />
                                         <div class="buttons visuals">
-                                            <a
-                                                class="web-button is-secondary"
+                                            <Button
+                                                variant="secondary"
                                                 href="/assets/visuals/databases.jpg"
                                                 download
                                             >
-                                                <span
-                                                    class="web-icon-download"
-                                                    aria-label="download"
-                                                ></span>
+                                                <Icon icon="download" aria-label="download" />
                                                 <span>JPG</span>
-                                            </a>
-                                            <a
-                                                class="web-button is-secondary"
+                                            </Button>
+                                            <Button
+                                                variant="secondary"
                                                 href={'/assets/visuals/databases.png'}
                                                 download
                                             >
-                                                <span
-                                                    class="web-icon-download"
-                                                    aria-label="download"
-                                                ></span>
+                                                <Icon icon="download" aria-label="download" />
                                                 <span>PNG</span>
-                                            </a>
+                                            </Button>
                                         </div>
                                     </div>
 
@@ -485,28 +444,22 @@
                                             alt="Appwrite Storage"
                                         />
                                         <div class="buttons visuals">
-                                            <a
-                                                class="web-button is-secondary"
+                                            <Button
+                                                variant="secondary"
                                                 href="/assets/visuals/storage.jpg"
                                                 download
                                             >
-                                                <span
-                                                    class="web-icon-download"
-                                                    aria-label="download"
-                                                ></span>
+                                                <Icon icon="download" aria-label="download" />
                                                 <span>JPG</span>
-                                            </a>
-                                            <a
-                                                class="web-button is-secondary"
+                                            </Button>
+                                            <Button
+                                                variant="secondary"
                                                 href={'/assets/visuals/storage.png'}
                                                 download
                                             >
-                                                <span
-                                                    class="web-icon-download"
-                                                    aria-label="download"
-                                                ></span>
+                                                <Icon icon="download" aria-label="download" />
                                                 <span>PNG</span>
-                                            </a>
+                                            </Button>
                                         </div>
                                     </div>
 
@@ -517,28 +470,22 @@
                                             alt="Appwrite Functions"
                                         />
                                         <div class="buttons visuals">
-                                            <a
-                                                class="web-button is-secondary"
+                                            <Button
+                                                variant="secondary"
                                                 href="/assets/visuals/functions.jpg"
                                                 download
                                             >
-                                                <span
-                                                    class="web-icon-download"
-                                                    aria-label="download"
-                                                ></span>
+                                                <Icon icon="download" aria-label="download" />
                                                 <span>JPG</span>
-                                            </a>
-                                            <a
-                                                class="web-button is-secondary"
+                                            </Button>
+                                            <Button
+                                                variant="secondary"
                                                 href={'/assets/visuals/functions.png'}
                                                 download
                                             >
-                                                <span
-                                                    class="web-icon-download"
-                                                    aria-label="download"
-                                                ></span>
+                                                <Icon icon="download" aria-label="download" />
                                                 <span>PNG</span>
-                                            </a>
+                                            </Button>
                                         </div>
                                     </div>
                                     <div class="media-wrapper">
@@ -548,28 +495,22 @@
                                             alt="Appwrite Messaging"
                                         />
                                         <div class="buttons visuals">
-                                            <a
-                                                class="web-button is-secondary"
+                                            <Button
+                                                variant="secondary"
                                                 href="/assets/visuals/messaging.jpg"
                                                 download
                                             >
-                                                <span
-                                                    class="web-icon-download"
-                                                    aria-label="download"
-                                                ></span>
+                                                <Icon icon="download" aria-label="download" />
                                                 <span>JPG</span>
-                                            </a>
-                                            <a
-                                                class="web-button is-secondary"
+                                            </Button>
+                                            <Button
+                                                variant="secondary"
                                                 href={'/assets/visuals/messaging.png'}
                                                 download
                                             >
-                                                <span
-                                                    class="web-icon-download"
-                                                    aria-label="download"
-                                                ></span>
+                                                <Icon icon="download" aria-label="download" />
                                                 <span>PNG</span>
-                                            </a>
+                                            </Button>
                                         </div>
                                     </div>
                                 </div>
