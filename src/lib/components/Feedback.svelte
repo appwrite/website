@@ -1,6 +1,6 @@
 <script lang="ts">
     import { onMount } from 'svelte';
-    import { page } from '$app/stores';
+    import { page } from '$app/state';
     import { fade } from 'svelte/transition';
     import { loggedIn, user } from '$lib/utils/console';
     import { PUBLIC_GROWTH_ENDPOINT } from '$env/static/public';
@@ -28,7 +28,7 @@
             body: JSON.stringify({
                 email,
                 type: feedbackType,
-                route: $page.route.id,
+                route: page.route.id,
                 comment,
                 metaFields: {
                     userId
@@ -102,7 +102,7 @@
                     {/if}
                     <li>
                         <a
-                            href={`https://github.com/appwrite/website/tree/main/src/routes${$page.route.id}`}
+                            href={`https://github.com/appwrite/website/tree/main/src/routes${page.route.id}`}
                             target="_blank"
                             rel="noopener noreferrer"
                             class="web-link flex items-baseline gap-1"

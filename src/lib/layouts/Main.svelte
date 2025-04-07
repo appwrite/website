@@ -9,7 +9,7 @@
 <script lang="ts">
     import { browser } from '$app/environment';
     import { MobileNav, IsLoggedIn } from '$lib/components';
-    import { BANNER_KEY, GITHUB_REPO_LINK, GITHUB_STARS } from '$lib/constants';
+    import { BANNER_KEY, SOCIAL_STATS } from '$lib/constants';
     import { isVisible } from '$lib/utils/isVisible';
     import { createScrollInfo } from '$lib/utils/scroll';
     import { addEventListener } from '@melt-ui/svelte/internal/helpers';
@@ -18,7 +18,7 @@
     import ProductsMobileSubmenu from '$lib/components/ProductsMobileSubmenu.svelte';
     import { trackEvent } from '$lib/actions/analytics';
     import MainNav from '$lib/components/MainNav.svelte';
-    import { page } from '$app/stores';
+    import { page } from '$app/state';
     import { getAppwriteDashboardUrl } from '$lib/utils/dashboard';
 
     export let omitMainId = false;
@@ -185,7 +185,25 @@
             </button>
         </div>
     </section>
-    <header class="web-main-header is-special-padding {resolvedTheme} is-transparent">
+    <header
+        class="web-main-header is-special-padding {resolvedTheme} is-transparent"
+        class:is-special-padding={!BANNER_KEY.startsWith('init-banner-')}
+        style={BANNER_KEY === 'init-banner-02' ? 'padding-inline: 0' : ''}
+    >
+        <!-- {#if !page.data.isStickyNav}
+            {#if BANNER_KEY.startsWith('init-banner-')}
+                <InitBanner />
+            {:else}
+                <AnnouncementBanner>
+                    <a href="/discord" target="_blank" rel="noopener noreferrer">
+                        <span class="text-caption font-medium">We are having lots of fun on</span>
+                        <span class="web-icon-discord" aria-hidden="true" />
+                        <span class="text-caption font-medium">Discord. Come and join us!</span>
+                    </a>
+                </AnnouncementBanner>
+            {/if}
+        {/if} -->
+
         <div
             class="web-main-header-wrapper"
             class:is-special-padding={BANNER_KEY.startsWith('init-banner-')}
@@ -211,7 +229,7 @@
             </div>
             <div class="web-main-header-end">
                 <a
-                    href={GITHUB_REPO_LINK}
+                    href={SOCIAL_STATS.GITHUB.LINK}
                     target="_blank"
                     rel="noopener noreferrer"
                     class="web-button is-text web-u-inline-width-100-percent-mobile"
@@ -223,7 +241,7 @@
                 >
                     <span class="web-icon-star" aria-hidden="true"></span>
                     <span class="text">Star on GitHub</span>
-                    <span class="web-inline-tag text-sub-body">{GITHUB_STARS}</span>
+                    <span class="web-inline-tag text-sub-body">{SOCIAL_STATS.GITHUB.STAT}</span>
                 </a>
                 <IsLoggedIn />
             </div>

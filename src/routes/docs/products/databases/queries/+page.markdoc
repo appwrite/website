@@ -135,6 +135,11 @@ query {
     }
 }
 ```
+```http
+GET /v1/databases/<DATABASE_ID>/collections/<COLLECTION_ID>/documents?queries[]=%7B%22method%22%3A%22equal%22%2C%22attribute%22%3A%22title%22%2C%22values%22%3A%5B%22Avatar%22%2C%22Lord%20of%20the%20Rings%22%5D%7D&queries[]=%7B%22method%22%3A%22greaterThan%22%2C%22attribute%22%3A%22year%22%2C%22values%22%3A%5B1999%5D%7D HTTP/1.1
+Content-Type: application/json
+X-Appwrite-Project: <PROJECT_ID>
+```
 {% /multicode %}
 
 # Query operators {% #query-operators %}
@@ -164,6 +169,9 @@ Query::select(["name", "title"])
 ```
 ```swift
 Query.select(["name", "title"])
+```
+```http
+{"method":"select","values":["name","title"]}
 ```
 {% /multicode %}
 
@@ -195,6 +203,9 @@ Query::equal("title", ["Iron Man"])
 ```swift
 Query.equal("title", value: ["Iron Man"])
 ```
+```http
+{"method":"equal","attribute":"title","values":["Iron Man"]}
+```
 {% /multicode %}
 
 ### Not equal {% #not-equal %}
@@ -222,6 +233,9 @@ Query::notEqual("title", ["Iron Man"])
 ```
 ```swift
 Query.notEqual("title", value: ["Iron Man"])
+```
+```http
+{"method":"notEqual","attribute":"title","values":["Iron Man"]}
 ```
 {% /multicode %}
 
@@ -251,6 +265,9 @@ Query::lessThan("score", 10)
 ```swift
 Query.lessThan("score", value: 10)
 ```
+```http
+{"method":"lessThan","attribute":"score","values":[10]}
+```
 {% /multicode %}
 
 ### Less than or equal {% #less-than-equal %}
@@ -278,6 +295,9 @@ Query::lessThanEqual("score", 10)
 ```
 ```swift
 Query.lessThanEqual("score", value: 10)
+```
+```http
+{"method":"lessThanEqual","attribute":"score","values":[10]}
 ```
 {% /multicode %}
 
@@ -307,6 +327,9 @@ Query::greaterThan("score", 10)
 ```swift
 Query.greaterThan("score", value: 10)
 ```
+```http
+{"method":"greaterThan","attribute":"score","values":[10]}
+```
 {% /multicode %}
 
 ### Greater than or equal {% #greater-than-equal %}
@@ -335,6 +358,9 @@ Query::greaterThanEqual("score", 10)
 ```swift
 Query.greaterThanEqual("score", value: 10)
 ```
+```http
+{"method":"greaterThanEqual","attribute":"score","values":[10]}
+```
 {% /multicode %}
 
 ### Between {% #between %}
@@ -362,6 +388,9 @@ Query::between("price", 5, 10)
 ```
 ```swift
 Query.between("price", start: 5, end: 10)
+```
+```http
+{"method":"between","attribute":"price","values":[5,10]}
 ```
 {% /multicode %}
 
@@ -393,6 +422,9 @@ Query::isNull("name")
 ```swift
 Query.isNull("name")
 ```
+```http
+{"method":"isNull","attribute":"name"}
+```
 {% /multicode %}
 
 ### Is not null {% #is-not-null %}
@@ -420,6 +452,9 @@ Query::isNotNull("name")
 ```
 ```swift
 Query.isNotNull("name")
+```
+```http
+{"method":"isNotNull","attribute":"name"}
 ```
 {% /multicode %}
 
@@ -451,6 +486,9 @@ Query::startsWith("name", "Once upon a time")
 ```swift
 Query.startsWith("name", value: "Once upon a time")
 ```
+```http
+{"method":"startsWith","attribute":"name","values":["Once upon a time"]}
+```
 {% /multicode %}
 
 ### Ends with {% #ends-with %}
@@ -478,6 +516,9 @@ Query::endsWith("name", "happily ever after.")
 ```
 ```swift
 Query.endsWith("name", value: "happily ever after.")
+```
+```http
+{"method":"endsWith","attribute":"name","values":["happily ever after."]}
 ```
 {% /multicode %}
 
@@ -535,6 +576,13 @@ Query.contains("ingredients", value: ['apple', 'banana'])
 // For strings
 Query.contains("name", value: "Tom")
 ```
+```http
+# For arrays
+{"method":"contains","attribute":"ingredients","values":["apple","banana"]}
+
+# For strings
+{"method":"contains","attribute":"name","values":["Tom"]}
+```
 {% /multicode %}
 
 ### Search {% #search %}
@@ -562,6 +610,9 @@ Query::search("text", "key words")
 ```
 ```swift
 Query.search("text", value: "key words")
+```
+```http
+{"method":"search","attribute":"text","values":["key words"]}
 ```
 {% /multicode %}
 
@@ -614,6 +665,9 @@ Query.and([
     Query.greaterThan("size", value: 5)
 ])
 ```
+```http
+{"method":"and","values":[{"method":"lessThan","attribute":"size","values":[10]},{"method":"greaterThan","attribute":"size","values":[5]}]}
+```
 {% /multicode %}
 
 ### OR {% #or %}
@@ -663,6 +717,9 @@ Query.or([
     Query.greaterThan("size", value: 10)
 ])
 ```
+```http
+{"method":"or","values":[{"method":"lessThan","attribute":"size","values":[5]},{"method":"greaterThan","attribute":"size","values":[10]}]}
+```
 {% /multicode %}
 
 ## Ordering {% #ordering %}
@@ -693,6 +750,9 @@ Query::orderDesc("attribute")
 ```swift
 Query.orderDesc("attribute")
 ```
+```http
+{"method":"orderDesc","attribute":"attribute"}
+```
 {% /multicode %}
 
 ### Order ascending {% #order-asc %}
@@ -720,6 +780,9 @@ Query::orderAsc("attribute")
 ```
 ```swift
 Query.orderAsc("attribute")
+```
+```http
+{"method":"orderAsc","attribute":"attribute"}
 ```
 {% /multicode %}
 
@@ -751,6 +814,9 @@ Query::limit(25)
 ```swift
 Query.limit(25)
 ```
+```http
+{"method":"limit","values":[25]}
+```
 {% /multicode %}
 
 ### Offset {% #offset %}
@@ -778,6 +844,9 @@ Query::offset(0)
 ```
 ```swift
 Query.offset(0)
+```
+```http
+{"method":"offset","values":[0]}
 ```
 {% /multicode %}
 
@@ -807,6 +876,9 @@ Query::cursorAfter("62a7...f620")
 ```swift
 Query.cursorAfter("62a7...f620")
 ```
+```http
+{"method":"cursorAfter","values":["62a7...f620"]}
+```
 {% /multicode %}
 
 ### Cursor before {% #cursor-before %}
@@ -834,6 +906,9 @@ Query::cursorBefore("62a7...a600")
 ```
 ```swift
 Query.cursorBefore("62a7...a600")
+```
+```http
+{"method":"cursorBefore","values":["62a7...a600"]}
 ```
 {% /multicode %}
 
@@ -895,6 +970,9 @@ results = databases.list_documents(
         ])
     ]
 )
+```
+```http
+{"method":"or","values":[{"method":"and","values":[{"method":"equal","attribute":"category","values":["books"]},{"method":"lessThan","attribute":"price","values":[20]}]},{"method":"and","values":[{"method":"equal","attribute":"category","values":["magazines"]},{"method":"lessThan","attribute":"price","values":[10]}]}]}
 ```
 {% /multicode %}
 

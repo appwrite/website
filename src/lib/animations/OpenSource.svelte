@@ -2,7 +2,7 @@
     import { toScale, type Scale } from '$lib/utils/toScale';
     import { spring, type AnimationListOptions, type SpringOptions } from 'motion';
     import { animation, createScrollHandler, scroll, type Animation } from '.';
-    import { GITHUB_REPO_LINK, GITHUB_STARS } from '$lib/constants';
+    import { SOCIAL_STATS } from '$lib/constants';
 
     const springOptions: SpringOptions = {
         stiffness: 58.78,
@@ -180,7 +180,7 @@
 
         <div class="cards-wrapper">
             <a
-                href="/discord"
+                href={SOCIAL_STATS.DISCORD.LINK}
                 target="_blank"
                 rel="noopener noreferrer"
                 class="web-card is-white web-u-min-block-size-320 oss-card flex flex-col"
@@ -193,13 +193,15 @@
                         aria-label="Discord"
                     ></span>
                 </div>
-                <div class="text-title font-aeonik-pro mt-auto">17k+ Discord Members</div>
+                <div class="text-title font-aeonik-pro mt-auto">
+                    {SOCIAL_STATS.DISCORD.STAT} Discord Members
+                </div>
             </a>
 
             <a
                 class="web-card is-white web-u-min-block-size-320 oss-card flex flex-col"
                 id="oss-github"
-                href={GITHUB_REPO_LINK}
+                href={SOCIAL_STATS.GITHUB.LINK}
             >
                 <div class="flex flex-col justify-between gap-8">
                     <span
@@ -209,12 +211,12 @@
                     ></span>
                 </div>
                 <div class="text-title font-aeonik-pro mt-auto">
-                    {GITHUB_STARS}+ GitHub Stars
+                    {SOCIAL_STATS.GITHUB.STAT} GitHub Stars
                 </div>
             </a>
 
             <a
-                href="https://twitter.com/appwrite"
+                href={SOCIAL_STATS.TWITTER.LINK}
                 class="web-card is-white web-u-min-block-size-320 oss-card flex flex-col"
                 id="oss-twitter"
             >
@@ -225,11 +227,13 @@
                         aria-label="Twitter"
                     ></span>
                 </div>
-                <div class="text-title font-aeonik-pro mt-auto">128k+ Twitter Followers</div>
+                <div class="text-title font-aeonik-pro mt-auto">
+                    {SOCIAL_STATS.TWITTER.STAT} Twitter Followers
+                </div>
             </a>
 
             <a
-                href="https://www.youtube.com/@Appwrite"
+                href={SOCIAL_STATS.YOUTUBE.LINK}
                 class="web-card is-white web-u-min-block-size-320 oss-card flex flex-col"
                 id="oss-youtube"
             >
@@ -240,13 +244,15 @@
                         aria-label="YouTube"
                     ></span>
                 </div>
-                <div class="text-title font-aeonik-pro mt-auto">7k+ Youtube Subscribers</div>
+                <div class="text-title font-aeonik-pro mt-auto">
+                    {SOCIAL_STATS.YOUTUBE.STAT} Youtube Subscribers
+                </div>
             </a>
 
             <a
                 class="web-card is-white web-u-min-block-size-320 oss-card flex flex-col"
                 id="oss-commits"
-                href={GITHUB_REPO_LINK}
+                href={SOCIAL_STATS.GITHUB.LINK}
             >
                 <div class="flex flex-col justify-between gap-8">
                     <span
@@ -255,7 +261,9 @@
                         aria-label="GitHub"
                     ></span>
                 </div>
-                <div class="text-title font-aeonik-pro mt-auto">21k+ Code Commits</div>
+                <div class="text-title font-aeonik-pro mt-auto">
+                    {SOCIAL_STATS.GITHUB.EXTRA?.COMMITS} Code Commits
+                </div>
             </a>
         </div>
     </div>

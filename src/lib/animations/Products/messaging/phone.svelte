@@ -34,9 +34,9 @@
             </div>
         {/each}
     </div>
-    <button class="add-btn">
+    <div class="add-btn">
         <span class="web-icon-plus"></span>
-    </button>
+    </div>
 </div>
 
 <style lang="scss">
