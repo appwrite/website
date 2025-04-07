@@ -6,11 +6,11 @@
     interface Props {
         size?: 'default' | 'medium' | 'big';
         gap?: number;
-        header: Snippet;
+        header?: Snippet;
         children: Snippet;
     }
 
-    let { size = 'default', gap = 32, header, children }: Props = $props();
+    const { size = 'default', gap = 32, header, children }: Props = $props();
     let scroll = 0;
 
     function calculateScrollAmount(prev = false) {
@@ -51,10 +51,12 @@
 
 <div>
     <div class="mt-2 flex flex-wrap items-center">
-        {@render header()}
+        {#if header}
+            {@render header()}
+        {/if}
         <div class="nav ml-auto flex items-end gap-3">
             <button
-                class="web-icon-button"
+                class="web-icon-button cursor-pointer"
                 aria-label="Move carousel backward"
                 disabled={isStart}
                 onclick={prev}
@@ -62,7 +64,7 @@
                 <span class="web-icon-arrow-left" aria-hidden="true"></span>
             </button>
             <button
-                class="web-icon-button"
+                class="web-icon-button cursor-pointer"
                 aria-label="Move carousel forward"
                 disabled={isEnd}
                 onclick={next}
