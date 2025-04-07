@@ -10,7 +10,7 @@
 
     let { data } = $props();
 
-    type MappedTutorial = (typeof data.tutorials)[number];
+    type MappedTutorial = (typeof data.tutorials)[number]['tutorials'][number];
 
     const iconMap: Record<string, string> = {
         'react native': 'icon-react-native',

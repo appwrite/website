@@ -1,9 +1,9 @@
 <script lang="ts" context="module">
-    import { loadReoScript } from 'reodotdev';
+    import { type Reo, loadReoScript } from '$lib/reodotdev';
     import { derived, writable } from 'svelte/store';
 
     export type Theme = 'dark' | 'light' | 'system';
-    export const currentTheme = (function () {
+    export const currentTheme = (() => {
         const store = writable<Theme>(getPreferredTheme());
 
         const set: typeof store.set = (value) => {
@@ -50,7 +50,8 @@
     import '$icons/output/web-icon.css';
 
     import { browser, dev } from '$app/environment';
-    import { navigating, page, updated } from '$app/stores';
+    import { page } from '$app/state';
+    import { navigating, updated } from '$app/stores';
     import { onMount } from 'svelte';
     import { loggedIn } from '$lib/utils/console';
     import { beforeNavigate } from '$app/navigation';
@@ -68,7 +69,9 @@
     const tracked = new Set();
 
     onMount(() => {
-        const initialTheme = $page.route.id?.startsWith('/docs') ? getPreferredTheme() : 'dark';
+        saveReferrerAndUtmSource(page.url);
+
+        const initialTheme = page.route.id?.startsWith('/docs') ? getPreferredTheme() : 'dark';
 
         applyTheme(initialTheme);
 
@@ -88,13 +91,15 @@
             }
         });
 
-        saveReferrerAndUtmSource($page.url);
+        saveReferrerAndUtmSource(page.url);
     });
 
     beforeNavigate(({ willUnload, to }) => {
         if (window) {
             tracked.clear();
         }
+
+        // TODO: thejessewinton, the `updated` from `svelte/state` creates an infinite refresh loop on docs references pages!
         if ($updated && !willUnload && to?.url) {
             location.href = to.url.href;
         }
@@ -105,8 +110,7 @@
         document.body.dataset.loggedIn = '';
     }
 
-    $: canonicalUrl =
-        $page.url.origin.replace(/^https?:\/\/www\./, 'https://') + $page.url.pathname;
+    $: canonicalUrl = page.url.origin.replace(/^https?:\/\/www\./, 'https://') + page.url.pathname;
 
     function handleScroll() {
         const scrollY = window.scrollY;
@@ -116,9 +120,9 @@
         thresholds.forEach((threshold) => {
             if (scrollPercentage >= threshold && !tracked.has(threshold)) {
                 const pageName =
-                    $page.url.pathname.slice(1) === ''
+                    page.url.pathname.slice(1) === ''
                         ? 'home'
-                        : $page.url.pathname.slice(1).replace(/\//g, '-');
+                        : page.url.pathname.slice(1).replace(/\//g, '-');
 
                 const eventName = `${pageName}_scroll-depth_${threshold * 100}prct_scroll`;
                 tracked.add(threshold);
@@ -134,8 +138,8 @@
         const clientID = '144fa7eaa4904e8';
 
         const reoPromise = loadReoScript({ clientID });
-        reoPromise.then((Reo: any) => {
-            Reo.init({ clientID });
+        reoPromise.then((reo: Reo) => {
+            reo.init({ clientID });
         });
     }
 </script>
@@ -196,7 +200,7 @@
 </svelte:head>
 
 <a
-    class="bg-mint-500 focus:pointer-events-all pointer-events-none absolute inset-y-0 z-9999 block px-5 py-3 text-black underline opacity-0 focus:relative focus:opacity-1"
+    class="bg-mint-500 focus:pointer-events-all z-9999 focus:opacity-1 pointer-events-none absolute inset-y-0 block px-5 py-3 text-black underline opacity-0 focus:relative"
     href="#main">Skip to content</a
 >
 

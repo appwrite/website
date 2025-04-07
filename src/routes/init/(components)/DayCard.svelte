@@ -125,7 +125,7 @@
                 height: 100%;
             }
 
-            a {
+            :global(a) {
                 margin-top: auto;
                 margin-bottom: 24px;
             }

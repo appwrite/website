@@ -210,8 +210,8 @@
 
 @utility container {
     margin-inline: auto;
-    padding-inline: calc(var(--spacing) * 5);
-    box-sizing: box-content;
+    padding-inline: 1.25rem;
+    box-sizing: content-box;
     max-width: 75rem;
 }
 

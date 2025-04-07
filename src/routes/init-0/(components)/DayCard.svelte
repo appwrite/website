@@ -20,7 +20,7 @@
 
 {#if hasReleased}
     <div class="day">
-        <div class="circle" aria-hidden></div>
+        <div class="circle" aria-hidden="true"></div>
         <span class="text-micro text-primary uppercase"
             >Day {number}<span class="web-u-color-text-accent">_</span></span
         >

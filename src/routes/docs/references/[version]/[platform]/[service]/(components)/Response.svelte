@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { page } from '$app/stores';
+    import { page } from '$app/state';
     import type { SDKMethod } from '$lib/utils/specs';
 
     export let method: SDKMethod;
@@ -23,7 +23,7 @@
                                     <li>
                                         <a
                                             class="web-link"
-                                            href={`/docs/references/${$page.params.version}/models/${model.id}`}
+                                            href={`/docs/references/${page.params.version}/models/${model.id}`}
                                         >
                                             {model.name}
                                         </a>
