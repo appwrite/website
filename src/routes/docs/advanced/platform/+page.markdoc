@@ -110,4 +110,10 @@ Learn about Appwrite's different compute add-ons.
 {% cards_item href="/docs/advanced/platform/phone-otp" title="Phone OTP" %}
 Learn how Appwrite handles SMS-based OTP authentication.
 {% /cards_item %}
+{% cards_item href="/docs/advanced/platform/image-transformations" title="Image Transformations" %}
+Learn how to transform images dynamically with Appwrite.
+{% /cards_item %}
+{% cards_item href="/docs/advanced/platform/database-reads-and-writes" title="Database Reads and Writes" %}
+Learn how Appwrite handles database reads and writes.
+{% /cards_item %}
 {% /cards %}

@@ -3,7 +3,6 @@
     import { melt, createCollapsible } from '@melt-ui/svelte';
     import { slide } from 'svelte/transition';
     import { products, sublinks } from './ProductsSubmenu.svelte';
-    import { dev } from '$app/environment';
     import { trackEvent } from '$lib/actions/analytics';
 
     export let label: string;
@@ -24,18 +23,18 @@
                 class={classNames('web-icon-chevron-down transition-transform', {
                     'rotate-180': $open
                 })}
-            /></button
+            ></span></button
         >
     </div>
 
     <div>
         {#if $open}
-            <div use:melt={$content} transition:slide class="py-3 px-4">
+            <div use:melt={$content} transition:slide class="px-2 py-3">
                 <div class="flex flex-col gap-2">
                     {#each products as product}
                         <a
                             href={product.href}
-                            class="group flex gap-3 rounded-xl p-2 text-white outline-none transition-colors focus:bg-white/8"
+                            class="group flex gap-3 rounded-xl p-2 text-white transition-colors outline-none focus:bg-white/8"
                             on:click={() =>
                                 trackEvent({
                                     plausible: {
@@ -58,7 +57,7 @@
 
                                     {#if product.beta}
                                         <span
-                                            class="text-caption bg-accent/24 ml-1 rounded py-1 px-2 font-medium text-white"
+                                            class="text-caption bg-accent/24 ml-1 rounded px-2 py-1 font-medium text-white"
                                             >Coming soon</span
                                         >
                                     {/if}
@@ -70,24 +69,23 @@
                         </a>
                     {/each}
                 </div>
-                {#if dev}
-                    <div class="mt-8">
-                        <span
-                            class="font-aeonik-fono tracking-loose text-secondary block text-xs uppercase"
-                            >This is a title<span class="text-accent">_</span></span
-                        >
-                        <div class="mt-3 space-y-3">
-                            {#each sublinks as sublink}
-                                <a
-                                    href={sublink.href}
-                                    class="text-caption text-primary flex items-center gap-2"
-                                >
-                                    {sublink.label} <span class="web-icon-chevron-right" />
-                                </a>
-                            {/each}
-                        </div>
+
+                <div class="mt-8">
+                    <span
+                        class="font-aeonik-fono tracking-loose text-secondary block text-xs uppercase"
+                        >Compare Appwrite<span class="text-accent">_</span></span
+                    >
+                    <div class="mt-3 space-y-3">
+                        {#each sublinks as sublink}
+                            <a
+                                href={sublink.href}
+                                class="text-caption text-primary flex items-center gap-2"
+                            >
+                                {sublink.label} <span class="web-icon-chevron-right"></span>
+                            </a>
+                        {/each}
                     </div>
-                {/if}
+                </div>
             </div>
         {/if}
     </div>

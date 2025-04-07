@@ -7,7 +7,7 @@
     import ComparePlans from './compare-plans.svelte';
     import Faq from './faq.svelte';
     import BG from './bg.png?enhanced';
-    import { PUBLIC_APPWRITE_DASHBOARD } from '$env/static/public';
+    import { getAppwriteDashboardUrl } from '$lib/utils/dashboard';
 
     const title = 'Pricing' + TITLE_SUFFIX;
     const description = 'Explore our straightforward pricing plans that scale with your project.';
@@ -95,7 +95,7 @@
                                                 applications.
                                             </p>
                                             <a
-                                                href="{PUBLIC_APPWRITE_DASHBOARD}/register"
+                                                href={getAppwriteDashboardUrl('/register')}
                                                 class="web-button is-secondary is-full-width mt-8"
                                             >
                                                 <span class="text-sub-body font-medium"
@@ -115,7 +115,7 @@
                                                 </li>
                                                 <li>
                                                     <span
-                                                        >1 Database, 1 Bucket, 3 Functions per
+                                                        >1 Database, 1 Bucket, 5 Functions per
                                                         project</span
                                                     >
                                                 </li>
@@ -161,7 +161,9 @@
                                                 functionality and resources to scale.
                                             </p>
                                             <a
-                                                href="https://cloud.appwrite.io/console?type=create&plan=tier-1"
+                                                href={getAppwriteDashboardUrl(
+                                                    '/console?type=create&plan=tier-1'
+                                                )}
                                                 class="web-button is-full-width mt-11"
                                                 target="_blank"
                                                 rel="noopener noreferrer"
@@ -225,7 +227,9 @@
                                                 projects and need more control and support.
                                             </p>
                                             <a
-                                                href="https://cloud.appwrite.io/console?type=create&plan=tier-2"
+                                                href={getAppwriteDashboardUrl(
+                                                    '/console?type=create&plan=tier-2'
+                                                )}
                                                 class="web-button is-secondary is-full-width mt-10"
                                                 target="_blank"
                                                 rel="noopener noreferrer"
@@ -312,7 +316,7 @@
                             >
                                 Enterprises
                                 <div
-                                    class="web-inline-tag is-pink text-caption py-1! px-2! font-normal"
+                                    class="web-inline-tag is-pink text-caption px-2! py-1! font-normal"
                                 >
                                     Coming soon
                                 </div>
@@ -347,7 +351,7 @@
 
         <div class="dark relative overflow-hidden pt-10">
             <div class="web-big-padding-section-level-2 relative">
-                <div class="container relative" style:z-index="10">
+                <div class="relative container" style:z-index="10">
                     <section class="web-grid-4-6">
                         <header>
                             <div class="text-display font-aeonik-pro text-primary">FAQ</div>

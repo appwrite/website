@@ -1,11 +1,17 @@
 <script lang="ts">
+    import { trackEvent } from '$lib/actions/analytics';
     import OpenSource from '$lib/animations/OpenSource.svelte';
     import Products from '$lib/animations/Products/Products.svelte';
     import ProductsMobile from '$lib/animations/Products/ProductsMobile.svelte';
+    import AppwriteIn100Seconds from '$lib/components/AppwriteIn100Seconds.svelte';
     import PreFooter from '$lib/components/PreFooter.svelte';
     import Technologies from '$lib/components/Technologies.svelte';
+    import Badge from '$lib/components/ui/badge.svelte';
+    import GradientText from '$lib/components/ui/gradient-text.svelte';
+    import Hero from '$lib/components/ui/hero.svelte';
     import { Main } from '$lib/layouts';
     import { isMobileNavOpen } from '$lib/layouts/Main.svelte';
+    import { getAppwriteDashboardUrl } from '$lib/utils/dashboard';
     import {
         DEFAULT_DESCRIPTION,
         DEFAULT_HOST,
@@ -16,13 +22,7 @@
     import FooterNav from '../lib/components/FooterNav.svelte';
     import MainFooter from '../lib/components/MainFooter.svelte';
     import DeveloperCard from './DeveloperCard.svelte';
-    import { PUBLIC_APPWRITE_DASHBOARD } from '$env/static/public';
     import CoverImage from './dashboard.webp';
-    import Hero from '$lib/components/ui/Hero.svelte';
-    import GradientText from '$lib/components/ui/GradientText.svelte';
-    import Badge from '$lib/components/ui/Badge.svelte';
-    import { trackEvent } from '$lib/actions/analytics';
-    import AppwriteIn100Seconds from '$lib/components/AppwriteIn100Seconds.svelte';
 
     const title = 'Appwrite - Build like a team of hundreds';
     const description = DEFAULT_DESCRIPTION;
@@ -133,15 +133,17 @@
             <div class="my-12 lg:my-[7.5rem]">
                 <section class="container pb-0">
                     <a
-                        href="/blog/post/introducing-new-compute-capabilities-appwrite-functions"
+                        href="/blog/post/what-is-mcp"
                         class="web-hero-banner-button mb-4"
                         on:click={() => trackEvent({ plausible: { name: 'Banner button click' } })}
                     >
-                        <span class="web-icon-star shrink-0" aria-hidden="true" />
+                        <span class="web-icon-star shrink-0" aria-hidden="true"></span>
                         <span class="text-caption shrink-0 font-medium">New</span>
-                        <div class="web-hero-banner-button-sep" />
-                        <span class="text-caption web-u-trim-1">New compute options available</span>
-                        <span class="web-icon-arrow-right shrink-0" aria-hidden="true" />
+                        <div class="web-hero-banner-button-sep"></div>
+                        <span class="text-caption web-u-trim-1"
+                            >Announcing new Appwrite MCP server</span
+                        >
+                        <span class="web-icon-arrow-right shrink-0" aria-hidden="true"></span>
                     </a>
                     <Hero>
                         <GradientText slot="title"
@@ -157,7 +159,7 @@
                         </svelte:fragment>
                         <div class="mt-8 flex flex-col gap-4 sm:flex-row" slot="cta">
                             <a
-                                href={PUBLIC_APPWRITE_DASHBOARD}
+                                href={getAppwriteDashboardUrl()}
                                 class="web-button w-full lg:w-fit"
                                 on:click={() =>
                                     trackEvent({
@@ -168,13 +170,24 @@
                                 Start building
                             </a>
 
-                            <AppwriteIn100Seconds />
+                            <a
+                                href="/contact-us/enterprise"
+                                class="web-button is-secondary w-full lg:w-fit">Request a demo</a
+                            >
+
+                            <!-- <AppwriteIn100Seconds /> -->
                         </div>
                     </Hero>
                 </section>
             </div>
             <div class="mb-12 lg:my-[7.5rem]">
-                <section class="web-u-padding-block-0 container" style="--container-size:78.75rem">
+                <section
+                    class="web-u-padding-block-0 relative container"
+                    style="--container-size:78.75rem"
+                >
+                    <div class="absolute top-1/2 left-1/2 z-10 -translate-1/2">
+                        <AppwriteIn100Seconds />
+                    </div>
                     <div class="web-media-container">
                         <img
                             class="block"
@@ -458,9 +471,9 @@
                 />
             </div>
             <div class="py-[7.5rem]">
-                <div class="container relative">
+                <div class="relative container">
                     <section class="web-hero is-align-start">
-                        <span class="web-badges text-micro uppercase !text-white">SDKs_</span>
+                        <span class="web-badges text-micro !text-white uppercase">SDKs_</span>
                         <h2 class="text-display font-aeonik-pro text-primary max-w-[600px]">
                             Code the way you want
                         </h2>
@@ -494,10 +507,10 @@
                         />
                     </div>
                 </div>
-                <div class="container relative">
+                <div class="relative container">
                     <div class="grid md:grid-cols-2">
                         <section class="web-hero is-align-start">
-                            <span class="web-badges text-micro uppercase !text-white">Scale_</span>
+                            <span class="web-badges text-micro !text-white uppercase">Scale_</span>
                             <h2 class="text-display font-aeonik-pro text-primary max-w-[600px]">
                                 We scale for you
                             </h2>

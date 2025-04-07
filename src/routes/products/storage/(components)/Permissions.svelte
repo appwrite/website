@@ -15,7 +15,7 @@
             </p>
             <a
                 href="/docs/products/storage/permissions"
-                class="web-button is-secondary mt-4 mx-auto !w-full md:!w-fit">Learn more</a
+                class="web-button is-secondary mx-auto mt-4 !w-full md:!w-fit">Learn more</a
             >
         </div>
     </div>

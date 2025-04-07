@@ -1,8 +1,9 @@
 <script lang="ts">
     import { afterNavigate } from '$app/navigation';
     import { IsLoggedIn } from '$lib/components';
-    import { GITHUB_REPO_LINK, GITHUB_STARS } from '$lib/constants';
+    import { SOCIAL_STATS } from '$lib/constants';
     import type { NavLink } from './MainNav.svelte';
+    import { getAppwriteDashboardUrl } from '$lib/utils/dashboard';
 
     export let open = false;
     export let links: NavLink[];
@@ -17,7 +18,7 @@
 <nav class="web-side-nav web-is-not-desktop" class:hidden={!open}>
     <div class="web-side-nav-wrapper ps-4 pe-4">
         <div class="flex items-center gap-2 px-4">
-            <a href="https://cloud.appwrite.io/register" class="web-button is-secondary flex-1">
+            <a href={getAppwriteDashboardUrl('/register')} class="web-button is-secondary flex-1">
                 Sign up
             </a>
             <IsLoggedIn classes="flex-1" />
@@ -41,14 +42,14 @@
         </div>
         <div class="web-side-nav-mobile-footer-buttons">
             <a
-                href={GITHUB_REPO_LINK}
+                href={SOCIAL_STATS.GITHUB.LINK}
                 target="_blank"
                 rel="noopener noreferrer"
                 class="web-button is-text web-u-inline-width-100-percent-mobile"
             >
-                <span class="web-icon-star" aria-hidden="true" />
+                <span class="web-icon-star" aria-hidden="true"></span>
                 <span class="text">Star on GitHub</span>
-                <span class="web-inline-tag text-sub-body">{GITHUB_STARS}</span>
+                <span class="web-inline-tag text-sub-body">{SOCIAL_STATS.GITHUB.STAT}</span>
             </a>
         </div>
     </div>

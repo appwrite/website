@@ -8,6 +8,7 @@
                 title: string;
                 step?: number;
                 visible: boolean;
+                level?: number;
             }
         >
     >;
@@ -20,7 +21,7 @@
     import type { TocItem } from '$lib/layouts/DocsArticle.svelte';
     import { DOCS_TITLE_SUFFIX, OVERVIEW_TITLE_SUFFIX } from '$routes/titles';
     import { getContext, setContext } from 'svelte';
-    import { page } from '$app/stores';
+    import { page } from '$app/state';
 
     export let title: string;
     export let description: string;
@@ -53,12 +54,13 @@
             title: heading.title,
             href: `#${id}`,
             step: heading.step,
-            selected: selected === id
+            selected: selected === id,
+            level: heading.level
         });
         return carry;
     }, []);
 
-    const isProductsPage = /^\/docs\/products\/[^/]+$/.test($page.route.id.toString());
+    const isProductsPage = /^\/docs\/products\/[^/]+$/.test(page.route.id!.toString());
 
     let seoTitle = title + DOCS_TITLE_SUFFIX;
     if (isProductsPage) seoTitle = title + OVERVIEW_TITLE_SUFFIX;

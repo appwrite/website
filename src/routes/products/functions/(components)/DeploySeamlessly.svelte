@@ -11,7 +11,7 @@
             <h2 class="text-title text-primary font-aeonik-pro my-4 text-pretty">
                 Deploy seamlessly<br /> with no effort
             </h2>
-            <p class="text-body text-secondary text-pretty font-medium">
+            <p class="text-body text-secondary font-medium text-pretty">
                 Appwrite offers to deploy functions directly from Git repositories to track changes
                 within your development workflow seamlessly.
             </p>
@@ -30,11 +30,14 @@
         <div
             class="window bg-offset hidden aspect-[6.87/4.2] flex-col pb-4 backdrop-blur-lg md:col-span-7 md:col-start-6 md:flex md:scale-100"
         >
-            <header class="grid w-full grid-cols-12 items-center py-2 px-4">
+            <header class="grid w-full grid-cols-12 items-center px-4 py-2">
                 <div class="col-span-2 flex gap-1">
-                    <button class="size-2 rounded-full bg-[#EC6A5E]" />
-                    <button class="size-2 rounded-full bg-[#F5BF4F]" />
-                    <button class="size-2 rounded-full bg-[#6d9e66]" />
+                    <button class="size-2 rounded-full bg-[#EC6A5E]" aria-label="Close window"
+                    ></button>
+                    <button class="size-2 rounded-full bg-[#F5BF4F]" aria-label="Minimize window"
+                    ></button>
+                    <button class="size-2 rounded-full bg-[#6d9e66]" aria-label="Enter full screen"
+                    ></button>
                 </div>
                 <div
                     class="col-span-6 col-start-4 flex h-6 w-full items-center rounded-full bg-[#232325]/94 px-2 backdrop-blur-lg"

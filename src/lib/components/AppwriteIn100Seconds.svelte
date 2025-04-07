@@ -19,15 +19,16 @@
             posthog: { name: 'intro-video-btn_hero_click' }
         });
     }}
-    class="web-button is-secondary cursor-pointer"
+    class="web-button cursor-pointer transition-opacity hover:opacity-90 active:scale-95"
+    style:box-shadow="0 2px 40px rgba(0, 0, 0, 0.5)"
 >
-    <span class="web-icon-play" style:color="unset" />
+    <span class="web-icon-play"></span>
     <span>Appwrite in 100 seconds</span>
 </button>
 
 {#if $open}
     <div use:melt={$portalled}>
-        <div use:melt={$overlay} class="overlay" transition:fade={{ duration: 150 }} />
+        <div use:melt={$overlay} class="overlay" transition:fade={{ duration: 150 }}></div>
 
         <div
             class="web-media content"
@@ -40,7 +41,7 @@
                 frameborder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 allowfullscreen
-            />
+            ></iframe>
         </div>
     </div>
 {/if}

@@ -91,7 +91,7 @@
         <div id="form" class="overflow-hidden p-0 pt-10">
             <div class="relative pt-[7.5rem]">
                 <div class="relative">
-                    <div class="container relative">
+                    <div class="relative container">
                         <!-- before submit -->
                         <div class="web-grid-1-1-opt-2 e-u-row-gap-0 relative z-[1] gap-8">
                             <div>
@@ -142,10 +142,8 @@
                                                         target="_blank"
                                                         rel="noopener noreferrer"
                                                     >
-                                                        <span
-                                                            class={social.icon}
-                                                            aria-hidden="true"
-                                                        />
+                                                        <span class={social.icon} aria-hidden="true"
+                                                        ></span>
                                                     </a>
                                                 </li>
                                             {/each}
@@ -153,7 +151,7 @@
                                     </section>
                                     <div
                                         class="web-is-only-mobile web-u-margin-block-start-40 web-u-padding-block-start-40 web-u-sep-block-start"
-                                    />
+                                    ></div>
                                 </div>
                             </div>
                             {#if !submitted}

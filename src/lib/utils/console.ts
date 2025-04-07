@@ -11,11 +11,11 @@ client.setEndpoint(PUBLIC_APPWRITE_ENDPOINT).setProject('console');
 const account = new Account(client);
 const teams = new Teams(client);
 
-enum BillingPlan {
-    STARTER = 'tier-0',
-    PRO = 'tier-1',
-    SCALE = 'tier-2'
-}
+const BillingPlan = {
+    STARTER: 'tier-0',
+    PRO: 'tier-1',
+    SCALE: 'tier-2'
+} as const;
 
 export async function createSource(
     ref: string | null,
@@ -49,7 +49,7 @@ export async function isProUser() {
     try {
         const orgs = await teams.list([Query.equal('billingPlan', BillingPlan.PRO)]);
         return orgs?.teams?.length > 1;
-    } catch (e) {
+    } catch {
         return false;
     }
 }

@@ -2,13 +2,13 @@
     import { browser } from '$app/environment';
     import { Tabs } from '$lib/UI';
     import { visible } from '$lib/actions/visible';
-    import { isHeaderHidden } from '$lib/layouts/Main.svelte';
+    import { Tooltip } from '$lib/components';
+    import { classNames } from '$lib/utils/classnames';
+    import { getAppwriteDashboardUrl } from '$lib/utils/dashboard';
     import { getScrollDir } from '$lib/utils/getScrollDir';
     import { createAccordion, melt } from '@melt-ui/svelte';
     import { writable } from 'svelte/store';
     import { fly } from 'svelte/transition';
-    import { classNames } from '$lib/utils/classnames';
-    import { Tooltip } from '$lib/components';
 
     type Table = {
         title: string;
@@ -129,7 +129,7 @@
                     free: '1 hour',
                     pro: '7 days',
                     scale: '28 days',
-                    enterprise: '90 days'
+                    enterprise: 'Custom'
                 },
                 {
                     title: 'Budget caps and alerts',
@@ -198,11 +198,32 @@
                     enterprise: 'Unlimited'
                 },
                 {
-                    title: 'Reads & Writes',
-                    free: 'Unlimited',
-                    pro: 'Unlimited',
-                    scale: 'Unlimited',
-                    enterprise: 'Unlimited'
+                    title: 'Reads',
+                    free: '500K',
+                    pro: '1750K',
+                    scale: '1750K',
+                    enterprise: 'Custom'
+                },
+                {
+                    title: 'Writes',
+                    free: '250K',
+                    pro: '750K',
+                    scale: '750K',
+                    enterprise: 'Custom'
+                },
+                {
+                    title: 'Additional reads',
+                    free: '-',
+                    pro: '$0.060 per 100k reads',
+                    scale: '$0.060 per 100k reads',
+                    enterprise: 'Custom'
+                },
+                {
+                    title: 'Additional writes',
+                    free: '-',
+                    pro: '$0.10 per 100k writes',
+                    scale: '$0.10 per 100k writes',
+                    enterprise: 'Custom'
                 },
                 {
                     title: 'Backups',
@@ -246,10 +267,17 @@
                 },
                 {
                     title: 'Image transformations',
-                    free: 'Unlimited',
-                    pro: 'Unlimited',
-                    scale: 'Unlimited',
-                    enterprise: 'Unlimited'
+                    free: '-',
+                    pro: '100 origin images / month',
+                    scale: '100 origin images / month',
+                    enterprise: 'Custom'
+                },
+                {
+                    title: 'Additional transformations',
+                    free: '-',
+                    pro: '$5 per 1000 origin images',
+                    scale: '$5 per 1000 origin images',
+                    enterprise: 'Custom'
                 }
             ]
         },
@@ -258,7 +286,7 @@
             rows: [
                 {
                     title: 'Functions',
-                    free: '3 per project',
+                    free: '5 per project',
                     pro: 'Unlimited',
                     scale: 'Unlimited',
                     enterprise: 'Unlimited'
@@ -576,7 +604,7 @@
                             <div class="flex flex-col items-center justify-between gap-2">
                                 <h4 class="text-sub-body text-primary font-medium">Free</h4>
                                 <a
-                                    href="https://cloud.appwrite.io/register"
+                                    href={getAppwriteDashboardUrl('/register')}
                                     class="web-button is-secondary !w-full"
                                 >
                                     <span class="text-sub-body font-medium">Start building</span>
@@ -588,7 +616,9 @@
                                 <h4 class="text-sub-body text-primary font-medium">Pro</h4>
                                 <a
                                     class="web-button !w-full"
-                                    href="https://cloud.appwrite.io/console?type=create&plan=tier-1"
+                                    href={getAppwriteDashboardUrl(
+                                        '/console?type=create&plan=tier-1'
+                                    )}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                 >
@@ -601,7 +631,9 @@
                                 <h4 class="text-sub-body text-primary font-medium">Scale</h4>
                                 <a
                                     class="web-button is-secondary !w-full"
-                                    href="https://cloud.appwrite.io/console?type=create&plan=tier-2"
+                                    href={getAppwriteDashboardUrl(
+                                        '/console?type=create&plan=tier-2'
+                                    )}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                 >
@@ -621,7 +653,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="web-u-stretch-sep-full-screen" />
+                    <div class="web-u-stretch-sep-full-screen"></div>
 
                     {#each tables as table}
                         {@const isOpen = $value?.includes(table.title)}
@@ -654,7 +686,7 @@
                                     <span
                                         class="icon-cheveron-down web-is-only-mobile web-u-inline-block"
                                         aria-hidden="true"
-                                    />
+                                    ></span>
                                 </button>
                             </caption>
 
@@ -666,16 +698,11 @@
                                                 {row.title}
                                                 {#if row.info}
                                                     <Tooltip placement="top">
-                                                        <button
-                                                            slot="asChild"
-                                                            let:trigger
-                                                            use:melt={trigger}
-                                                            class="icon-info"
-                                                            aria-hidden="true"
-                                                        />
-                                                        <svelte:fragment slot="tooltip">
+                                                        <button class="icon-info" aria-hidden="true"
+                                                        ></button>
+                                                        {#snippet tooltip()}
                                                             {row.info}
-                                                        </svelte:fragment>
+                                                        {/snippet}
                                                     </Tooltip>
                                                 {/if}
                                             </div>

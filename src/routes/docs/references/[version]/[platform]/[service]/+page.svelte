@@ -1,6 +1,6 @@
 <script lang="ts">
     import { goto } from '$app/navigation';
-    import { page } from '$app/stores';
+    import { page } from '$app/state';
     import { MainFooter, Select } from '$lib/components';
     import { DEFAULT_HOST } from '$lib/utils/metadata';
     import { layoutState, toggleReferences } from '$lib/layouts/Docs.svelte';
@@ -11,8 +11,8 @@
         preferredPlatform,
         preferredVersion,
         serviceMap,
-        versions,
-        type Version
+        type Version,
+        versions
     } from '$lib/utils/references';
     import type { LayoutContext } from '$markdoc/layouts/Article.svelte';
     import { Fence, Heading } from '$markdoc/nodes/_Module.svelte';
@@ -27,13 +27,13 @@
     import Response from './(components)/Response.svelte';
     import RateLimits from './(components)/RateLimits.svelte';
 
-    export let data;
+    let { data } = $props();
 
     setContext<LayoutContext>('headings', writable({}));
 
     const headings = getContext<LayoutContext>('headings');
 
-    let selected: string | undefined = undefined;
+    let selected: string | undefined = $state(undefined);
     headings.subscribe((n) => {
         const noVisible = Object.values(n).every((n) => !n.visible);
         if (selected && noVisible) {
@@ -48,16 +48,27 @@
     });
 
     function selectPlatform(event: CustomEvent<unknown>) {
-        const { version, service } = $page.params;
+        const { version, service } = page.params;
         const platform = event.detail as Platform;
-        preferredPlatform.set(platform);
+
+        // except nodejs, all other server sided need to be saved as without `server-` prefix
+        const isServerSide =
+            !platform.startsWith('client-') && !platform.startsWith('server-nodejs');
+
+        let correctPlatform = platform;
+        if (isServerSide) {
+            correctPlatform = platform.replaceAll(`server-`, ``) as Platform;
+        }
+
+        preferredPlatform.set(correctPlatform as Platform);
+
         goto(`/docs/references/${version}/${platform}/${service}`, {
             noScroll: true
         });
     }
 
     function selectVersion(event: CustomEvent<unknown>) {
-        const { platform, service } = $page.params;
+        const { platform, service } = page.params;
         const version = event.detail as Version;
         preferredVersion.set(version);
         goto(`/docs/references/${version}/${platform}/${service}`, {
@@ -65,26 +76,65 @@
         });
     }
 
+    /**
+     * Ensures consistency between documentation and the references page
+     * by correctly handling server-side language prefixes.
+     *
+     * In normal code blocks, server-side languages are named without
+     * a `server-` prefix, unlike client languages, which use `client-`.
+     *
+     * However, the references page follows a `client-` / `server-` prefix
+     * convention. This function standardizes the naming to maintain consistency.
+     */
+    function handleServerSideLanguage() {
+        // nodejs has a `server-` prefix.
+        const needsServerPrefix =
+            !platform.startsWith('client-') && !platform.startsWith('server-');
+        if (needsServerPrefix && document.referrer) {
+            platformBindingForSelect = `server-${platform}` as Platform;
+        }
+    }
+
     onMount(() => {
-        preferredVersion.set($page.params.version as Version);
-        preferredPlatform.set($page.params.platform as Platform);
+        preferredPlatform.set(platform);
+        preferredVersion.set(page.params.version as Version);
+
+        const isSame = $preferredPlatform === page.params.platform;
+        const hasPlatformPrefix =
+            $preferredPlatform.startsWith('client-') || $preferredPlatform.startsWith('server-');
+
+        /* `document.referrer` = don't redirect if the page was opened via a direct url hit */
+        if (!isSame && document.referrer) {
+            const platformMode = hasPlatformPrefix
+                ? $preferredPlatform
+                : `server-${$preferredPlatform}`;
+
+            goto(`/docs/references/${$preferredVersion}/${platformMode}/${page.params.service}`, {
+                noScroll: true,
+                replaceState: false
+            });
+        }
+
+        handleServerSideLanguage();
     });
 
     // cleaned service description without Markdown links.
-    $: serviceDescription = (data.service?.description ?? '').replace(
-        /\[([^\]]+)]\([^)]+\)/g,
-        '$1'
+    let serviceDescription = $derived(
+        (data.service?.description ?? '').replace(/\[([^\]]+)]\([^)]+\)/g, '$1')
     );
 
     // the service description up to the first full stop, providing sufficient information.
-    $: shortenedDescription = serviceDescription.substring(0, serviceDescription.indexOf('.') + 1);
+    let shortenedDescription = $derived(
+        serviceDescription.substring(0, serviceDescription.indexOf('.') + 1)
+    );
 
-    $: platform = $page.params.platform as Platform;
-    $: platformType = platform.startsWith('client-') ? 'CLIENT' : 'SERVER';
-    $: serviceName = serviceMap[data.service?.name];
-    $: title = serviceName + API_REFERENCE_TITLE_SUFFIX;
-    $: description = shortenedDescription;
-    $: ogImage = DEFAULT_HOST + '/images/open-graph/docs.png';
+    let platformBindingForSelect = $derived(page.params.platform as Platform);
+    let platform = $derived(($preferredPlatform ?? page.params.platform) as Platform);
+    let platformType = $derived(platform.startsWith('client-') ? 'CLIENT' : 'SERVER');
+    let serviceName = $derived(serviceMap[data.service?.name]);
+    let title = $derived(serviceName + API_REFERENCE_TITLE_SUFFIX);
+    let description = $derived(shortenedDescription);
+    let ogImage = $derived(DEFAULT_HOST + '/images/open-graph/docs.png');
 </script>
 
 <svelte:head>
@@ -103,10 +153,10 @@
     <meta name="twitter:image" content={ogImage} />
     <meta name="twitter:card" content="summary_large_image" />
 
-    {#if $page.params.version !== 'cloud'}
+    {#if page.params.version !== 'cloud'}
         <link
             rel="canonical"
-            href={`https://appwrite.io/docs/references/cloud/${$page.params.platform}/${$page.params.service}`}
+            href={`https://appwrite.io/docs/references/cloud/${page.params.platform}/${page.params.service}`}
         />
     {/if}
 </svelte:head>
@@ -125,7 +175,7 @@
                         <Select
                             --min-width="10rem"
                             id="platform"
-                            value={platform}
+                            value={platformBindingForSelect}
                             on:change={selectPlatform}
                             options={[
                                 ...Object.values(Platform)
@@ -152,7 +202,7 @@
                         <Select
                             nativeMobile
                             on:change={selectVersion}
-                            value={$page.params.version}
+                            value={page.params.version}
                             options={[
                                 { value: 'cloud', label: 'Cloud' },
                                 ...versions.map((version) => ({
@@ -184,7 +234,7 @@
                 {#if data.methods.length === 0}
                     <div class="web-article-content-grid-6-4-column-2 flex flex-col gap-8">
                         <div class="web-inline-info">
-                            <span class="icon-info" aria-hidden="true" />
+                            <span class="icon-info" aria-hidden="true"></span>
                             <h5 class="text-sub-body text-primary font-medium">
                                 No endpoint found for this version and platform
                             </h5>
@@ -253,16 +303,26 @@
             use:clickOutside={() => ($layoutState.showReferences = false)}
         >
             {#if data.methods.length > 0}
-                <button class="web-icon-button" id="refOpen" on:click={toggleReferences}>
-                    <span class="icon-menu-alt-4" aria-hidden="true" />
+                <button
+                    class="web-icon-button"
+                    id="refOpen"
+                    onclick={toggleReferences}
+                    aria-label="Toggle references"
+                >
+                    <span class="icon-menu-alt-4" aria-hidden="true"></span>
                 </button>
                 <div class="web-references-menu-content">
                     <div
                         class="web-references-menu-header mt-6 flex items-center justify-between gap-4"
                     >
                         <h5 class="web-references-menu-title text-micro uppercase">On This Page</h5>
-                        <button class="web-icon-button" id="refClose" on:click={toggleReferences}>
-                            <span class="icon-x" aria-hidden="true" />
+                        <button
+                            class="web-icon-button"
+                            id="refClose"
+                            onclick={toggleReferences}
+                            aria-label="Toggle references"
+                        >
+                            <span class="icon-x" aria-hidden="true"></span>
                         </button>
                     </div>
                     <ul class="web-references-menu-list">
@@ -278,7 +338,7 @@
                     </ul>
                     <div class="border-greyscale-900/4 web-u-padding-block-20 border-t">
                         <button class="web-link inline-flex items-center gap-2" use:scrollToTop>
-                            <span class="web-icon-arrow-up" aria-hidden="true" />
+                            <span class="web-icon-arrow-up" aria-hidden="true"></span>
                             <span class="text-caption">Back to top</span>
                         </button>
                     </div>

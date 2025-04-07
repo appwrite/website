@@ -120,6 +120,11 @@
                     icon: 'icon-sparkles'
                 },
                 {
+                    label: 'MCP Server',
+                    href: '/docs/tooling/mcp',
+                    icon: 'web-icon-mcp'
+                },
+                {
                     label: 'The Appwriter',
                     href: '/docs/tooling/appwriter',
                     icon: 'icon-text'

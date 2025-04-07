@@ -14,12 +14,12 @@
     {#each objectKeys($state.controls) as provider, i}
         {@const isLast = i === objectKeys($state.controls).length - 1}
         <div>
-            <span class={getIcon(provider)} />
+            <span class={getIcon(provider)}></span>
             <span>{provider}</span>
             <Switch bind:checked={$state.controls[provider]} />
         </div>
         {#if !isLast}
-            <div class="sep" />
+            <div class="sep"></div>
         {/if}
     {/each}
 </div>

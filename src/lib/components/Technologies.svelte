@@ -85,7 +85,9 @@
                     />
                 </a>
             </li>
-            <svelte:fragment slot="tooltip">{platform.name}</svelte:fragment>
+            {#snippet tooltip()}
+                {platform.name}
+            {/snippet}
         </Tooltip>
     {/each}
 </ul>
