@@ -9,6 +9,7 @@
     import Pink from './bg.png';
     import { getReferrerAndUtmSource } from '$lib/utils/utm';
     import { PUBLIC_GROWTH_ENDPOINT } from '$env/static/public';
+    import { Button } from '$lib/components/ui';
 
     let email = '';
     let name = '';
@@ -109,12 +110,13 @@
                                                 team will try to get back to you as soon as
                                                 possible.
                                             </p>
-                                            <a
+                                            <Button
+                                                variant="secondary"
                                                 href="/integrations"
-                                                class="web-button is-secondary web-u-margin-block-end-32"
+                                                class="mb-8"
                                             >
                                                 <span>Back to integrations</span>
-                                            </a>
+                                            </Button>
                                         </section>
                                     {:else}
                                         <section class="flex flex-col gap-5">
@@ -336,13 +338,13 @@
                                                 {error}
                                             {/if}
                                         </p>
-                                        <button
+                                        <Button
                                             type="submit"
                                             disabled={submitting}
-                                            class="web-button web-u-inline-width-100-percent-mobile-break1 self-center"
+                                            class="web-u-inline-width-100-percent-mobile-break1 self-center"
                                         >
                                             <span>Submit</span>
-                                        </button>
+                                        </Button>
                                     </div>
                                 </form>
                             {/if}

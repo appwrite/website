@@ -9,6 +9,7 @@
     import { getReferrerAndUtmSource } from '$lib/utils/utm';
     import LogoList from '$lib/components/LogoList.svelte';
     import Scale from '$routes/(experiments)/new-homepage/(components)/scale.svelte';
+    import { Button } from '$lib/components/ui';
 
     let email = '';
     let firstName = '';
@@ -102,12 +103,9 @@
                                             successfully. Our team will get back to you as soon as
                                             possible.
                                         </p>
-                                        <a
-                                            href="/pricing"
-                                            class="web-button is-secondary web-u-margin-block-end-32"
-                                        >
+                                        <Button variant="secondary" href="/pricing" class="mb-8">
                                             <span>Back to pricing</span>
-                                        </a>
+                                        </Button>
                                     </section>
                                 {:else}
                                     <section class="flex flex-col gap-5">
@@ -253,13 +251,13 @@
                                                 {error}
                                             {/if}
                                         </p>
-                                        <button
+                                        <Button
                                             type="submit"
                                             disabled={submitting}
-                                            class="web-button u-cross-child-center web-u-inline-width-100-percent-mobile-break1 cursor-pointer"
+                                            class="u-cross-child-center web-u-inline-width-100-percent-mobile-break1 cursor-pointer"
                                         >
                                             <span>Submit</span>
-                                        </button>
+                                        </Button>
                                     </div>
                                 </form>
                             {/if}

@@ -15,6 +15,8 @@
 </script>
 
 <script lang="ts">
+    import { Button } from '$lib/components/ui';
+
     type $$Props = EventCardProps;
 
     export let href: $$Props['href'];
@@ -57,9 +59,9 @@
             {description}
         </p>
         <div class="mbs-auto flex flex-wrap gap-2 pt-4">
-            <button class="web-button is-secondary" disabled={hasPast}>
+            <Button variant="secondary" disabled={hasPast}>
                 <span>{buttonText}</span>
-            </button>
+            </Button>
         </div>
     </div>
 </a>

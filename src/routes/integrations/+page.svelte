@@ -14,6 +14,7 @@
     import { onDestroy, onMount } from 'svelte';
     import { writable } from 'svelte/store';
     import type { Integration } from './+page';
+    import { Button } from '$lib/components/ui';
 
     let { data } = $props();
 
@@ -388,12 +389,13 @@
                                                         {/if}
                                                     {/each}
                                                 </ul>
-                                                <a
+                                                <Button
+                                                    variant="text"
                                                     href={`#${category.toLowerCase()}`}
-                                                    class="l-float-button web-button is-text"
+                                                    class="l-float-button"
                                                 >
                                                     <span>Show more</span>
-                                                </a>
+                                                </Button>
                                             </div>
                                         </section>
                                     {/if}
@@ -429,12 +431,9 @@
                             Join our Technology Partners program to integrate your solutions with
                             Appwrite’s API, enhancing functionality and expanding your reach.
                         </p>
-                        <a
-                            href="/integrations/technology-partner"
-                            class="web-button is-primary mt-4 self-center"
-                        >
+                        <Button href="/integrations/technology-partner" class="mt-4 self-center">
                             <span class="text">Get Started</span>
-                        </a>
+                        </Button>
                     </section>
                 </div>
             </div>

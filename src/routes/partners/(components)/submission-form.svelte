@@ -1,5 +1,6 @@
 <script lang="ts">
     import { PUBLIC_GROWTH_ENDPOINT } from '$env/static/public';
+    import { Button } from '$lib/components/ui';
     import { socials } from '$lib/constants';
     import { classNames } from '$lib/utils/classnames';
     import { getReferrerAndUtmSource } from '$lib/utils/utm';
@@ -149,13 +150,13 @@
                         <a href="/privacy" class="web-link">Privacy Policy</a> and
                         <a href="/terms" class="web-link">Terms of Service</a> apply.-->
                     </p>
-                    <button
+                    <Button
                         type="submit"
-                        class="web-button web-u-inline-width-100-percent-mobile-break1 cursor-pointer self-center"
+                        class="web-u-inline-width-100-percent-mobile-break1 cursor-pointer self-center"
                         disabled={submitting}
                     >
                         <span>Submit application</span>
-                    </button>
+                    </Button>
                 </div>
             </form>
         </div>
