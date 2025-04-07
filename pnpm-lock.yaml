@@ -36,6 +36,12 @@ importers:
       '@appwrite.io/repo':
         specifier: github:appwrite/appwrite#feat-multi-region-docs
         version: https://codeload.github.com/appwrite/appwrite/tar.gz/4d81a901cbc48b94a720392a2611da028ea934b9
+      '@eslint/compat':
+        specifier: ^1.2.7
+        version: 1.2.7(eslint@9.22.0(jiti@2.4.2))
+      '@eslint/js':
+        specifier: ^9.21.0
+        version: 9.22.0
       '@fingerprintjs/fingerprintjs':
         specifier: ^4.5.1
         version: 4.6.1
@@ -254,8 +260,8 @@ packages:
   '@appwrite.io/pink@0.26.0':
     resolution: {integrity: sha512-iPeGE56pauzxuIXt15ZswjKCErwp3QdF3XOlJZfyYY7J2nirra85JNTL+3lWuFIf8yYWL7NbvCjhf8ig79TgwA==}
 
-  '@appwrite.io/repo@https://codeload.github.com/appwrite/appwrite/tar.gz/923dc9661f2c49d561df23c9dc5d9da1fdedc61a':
-    resolution: {tarball: https://codeload.github.com/appwrite/appwrite/tar.gz/923dc9661f2c49d561df23c9dc5d9da1fdedc61a}
+  '@appwrite.io/repo@https://codeload.github.com/appwrite/appwrite/tar.gz/4d81a901cbc48b94a720392a2611da028ea934b9':
+    resolution: {tarball: https://codeload.github.com/appwrite/appwrite/tar.gz/4d81a901cbc48b94a720392a2611da028ea934b9}
     version: 0.0.0
 
   '@babel/runtime@7.26.10':
@@ -3926,81 +3932,6 @@ snapshots:
       the-new-css-reset: 1.11.3
 
   '@appwrite.io/repo@https://codeload.github.com/appwrite/appwrite/tar.gz/4d81a901cbc48b94a720392a2611da028ea934b9': {}
-
-  '@babel/code-frame@7.26.2':
-    dependencies:
-      '@babel/helper-validator-identifier': 7.25.9
-      js-tokens: 4.0.0
-      picocolors: 1.1.1
-
-  '@babel/compat-data@7.26.5': {}
-
-  '@babel/core@7.26.7':
-    dependencies:
-      '@ampproject/remapping': 2.3.0
-      '@babel/code-frame': 7.26.2
-      '@babel/generator': 7.26.5
-      '@babel/helper-compilation-targets': 7.26.5
-      '@babel/helper-module-transforms': 7.26.0(@babel/core@7.26.7)
-      '@babel/helpers': 7.26.7
-      '@babel/parser': 7.26.7
-      '@babel/template': 7.25.9
-      '@babel/traverse': 7.26.7
-      '@babel/types': 7.26.7
-      convert-source-map: 2.0.0
-      debug: 4.4.0
-      gensync: 1.0.0-beta.2
-      json5: 2.2.3
-      semver: 6.3.1
-    transitivePeerDependencies:
-      - supports-color
-
-  '@babel/generator@7.26.5':
-    dependencies:
-      '@babel/parser': 7.26.7
-      '@babel/types': 7.26.7
-      '@jridgewell/gen-mapping': 0.3.8
-      '@jridgewell/trace-mapping': 0.3.25
-      jsesc: 3.1.0
-
-  '@babel/helper-compilation-targets@7.26.5':
-    dependencies:
-      '@babel/compat-data': 7.26.5
-      '@babel/helper-validator-option': 7.25.9
-      browserslist: 4.24.4
-      lru-cache: 5.1.1
-      semver: 6.3.1
-
-  '@babel/helper-module-imports@7.25.9':
-    dependencies:
-      '@babel/traverse': 7.26.7
-      '@babel/types': 7.26.7
-    transitivePeerDependencies:
-      - supports-color
-
-  '@babel/helper-module-transforms@7.26.0(@babel/core@7.26.7)':
-    dependencies:
-      '@babel/core': 7.26.7
-      '@babel/helper-module-imports': 7.25.9
-      '@babel/helper-validator-identifier': 7.25.9
-      '@babel/traverse': 7.26.7
-    transitivePeerDependencies:
-      - supports-color
-
-  '@babel/helper-string-parser@7.25.9': {}
-
-  '@babel/helper-validator-identifier@7.25.9': {}
-
-  '@babel/helper-validator-option@7.25.9': {}
-
-  '@babel/helpers@7.26.7':
-    dependencies:
-      '@babel/template': 7.25.9
-      '@babel/types': 7.26.7
-
-  '@babel/parser@7.26.7':
-    dependencies:
-      '@babel/types': 7.26.7
 
   '@babel/runtime@7.26.10':
     dependencies:
