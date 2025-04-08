@@ -8,7 +8,11 @@ Appwrite offers multiple endpoints to access its services, each designed to opti
 
 # Edge {% #edge %}
 
-The **`appwrite.network`** domain provides geo-balanced endpoints that route traffic to the nearest edge node based on the user's geographic location. These endpoints will be available in Q2 2025. Currently, you can use the `appwrite.run` domains to run functions in your region of choice.
+The **`appwrite.network`** domain provides geo-balanced endpoints that route traffic to the nearest edge node based on the user's geographic location.
+
+{% info title="Availability" %}
+The `appwrite.network` endpoints will be available in Q2 2025. Currently, you can use the `appwrite.run` domains to run functions in your region of choice.
+{% /info %}
 
 The edge network endpoints are designed for:
 - **Latency-sensitive operations**: Quickly serving cached content, routing requests, or performing lightweight edge computations.
