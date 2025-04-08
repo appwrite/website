@@ -16,7 +16,7 @@
     class={className}
     variant="secondary"
 >
-    <Icon icon="star" aria-hidden="true" />
+    <Icon name="star" aria-hidden="true" />
     <span class="text">Star on GitHub</span>
     <InlineTag>{SOCIAL_STATS.GITHUB.STAT}</InlineTag>
 </Button>

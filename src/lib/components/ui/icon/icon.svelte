@@ -3,14 +3,12 @@
     import type { SvelteHTMLElements } from 'svelte/elements';
     import type { IconType } from './types';
 
-    type $$Props = {
-        icon?: IconType;
+    type Props = SvelteHTMLElements['span'] & {
         class?: string;
-    } & SvelteHTMLElements['span'];
+        name?: IconType;
+    };
 
-    let className: $$Props['class'] = '';
-    export { className as class };
-    export let icon: $$Props['icon'] = 'arrow-right';
+    const { class: className = '', name = 'arrow-right', ...rest }: Props = $props();
 </script>
 
-<span class={classNames(`web-icon-${icon}`, className)} {...$$restProps}></span>
+<span class={classNames(`web-icon-${name}`, className)} {...rest}></span>

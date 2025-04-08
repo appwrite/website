@@ -12,6 +12,7 @@
         "download-contributors": "node ./scripts/download-contributor-data.js",
         "format": "prettier --write .",
         "format:check": "prettier --check .",
+        "generate:icons": "pnpx svgo -rf src/icons/svg -o src/icons/optimized",
         "icons:build": "node ./src/icons/build.js",
         "icons:generate": "node ./src/icons/optimize.js && node ./src/icons/build.js",
         "icons:optimize": "node ./src/icons/optimize.js",

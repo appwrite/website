@@ -179,9 +179,9 @@
                 onclick={() => ($isMobileNavOpen = !$isMobileNavOpen)}
             >
                 {#if $isMobileNavOpen}
-                    <Icon aria-hidden="true" icon="close" />
+                    <Icon aria-hidden="true" name="close" />
                 {:else}
-                    <Icon aria-hidden="true" icon="hamburger-menu" />
+                    <Icon aria-hidden="true" name="hamburger-menu" />
                 {/if}
             </Button>
         </div>
@@ -241,7 +241,7 @@
                             posthog: { name: 'github-stars_nav_click' }
                         })}
                 >
-                    <Icon icon="star" aria-hidden="true" />
+                    <Icon name="star" aria-hidden="true" />
                     <span class="text">Star on GitHub</span>
                     <InlineTag>{SOCIAL_STATS.GITHUB.STAT}</InlineTag>
                 </Button>

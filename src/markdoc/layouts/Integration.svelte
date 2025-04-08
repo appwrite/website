@@ -52,7 +52,7 @@
             <div class="web-integrations-top-section">
                 <div class="web-carousel-wrapper">
                     <Button variant="text" href="/integrations" class="mb-12">
-                        <Icon icon="chevron-left" aria-hidden="true" />
+                        <Icon name="chevron-left" aria-hidden="true" />
                         <span>Back to catalog</span>
                     </Button>
 

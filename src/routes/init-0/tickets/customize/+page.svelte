@@ -123,7 +123,7 @@
 
                     <div class="u-flex u-cross-center u-gap-16 u-margin-block-start-16">
                         <Button variant="secondary" class="is-full-width" onclick={copy}>
-                            <Icon icon={$copied ? 'check' : 'copy'} class="text-primary" />
+                            <Icon name={$copied ? 'check' : 'copy'} class="text-primary" />
                             <span class="text">Copy ticket URL</span>
                         </Button>
                         <Button
@@ -132,7 +132,7 @@
                             href="https://twitter.com/intent/tweet?text={twitterText}"
                             target="_blank"
                         >
-                            <Icon icon="x" class="text-primary" />
+                            <Icon name="x" class="text-primary" />
                             <span class="text">Share your ticket</span>
                         </Button>
                     </div>

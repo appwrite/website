@@ -68,7 +68,7 @@
                         target="_blank"
                     >
                         {#if item.cta.icon}
-                            <Icon icon={item.cta.icon} />
+                            <Icon name={item.cta.icon} />
                         {/if}
                         {item.cta.label}</Button
                     >

@@ -54,7 +54,7 @@
                             variant="icon"
                         >
                             <Icon
-                                icon="chevron-left"
+                                name="chevron-left"
                                 class="text-primary hidden text-[24px] md:flex"
                                 aria-hidden="true"
                             />

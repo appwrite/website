@@ -184,7 +184,7 @@
                                     rel="noopener noreferrer"
                                     class="is-full-width-mobile"
                                 >
-                                    <Icon icon="star" aria-hidden="true" />
+                                    <Icon name="star" aria-hidden="true" />
                                     <span>Star on GitHub</span>
                                     <InlineTag>{SOCIAL_STATS.GITHUB.STAT}</InlineTag>
                                 </Button>
@@ -286,7 +286,7 @@
                                     class="mt-8"
                                     variant="secondary"
                                 >
-                                    <Icon icon="github" aria-hidden="true" />
+                                    <Icon name="github" aria-hidden="true" />
                                     <span class="">View all Open Issues</span>
                                 </Button>
                             </div>

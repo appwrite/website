@@ -87,7 +87,7 @@
                             </p>
 
                             <Button href="/assets.zip" download>
-                                <Icon icon="download" aria-hidden="true" />
+                                <Icon name="download" aria-hidden="true" />
                                 <span>Download assets</span>
                             </Button>
                         </section>
@@ -139,7 +139,7 @@
                                                 href="/assets/logotype/white.svg"
                                                 download
                                             >
-                                                <Icon icon="download" aria-label="download" />
+                                                <Icon name="download" aria-label="download" />
                                                 <span>SVG</span>
                                             </Button>
                                             <Button
@@ -147,7 +147,7 @@
                                                 href="/assets/logotype/white.png"
                                                 download
                                             >
-                                                <Icon icon="download" aria-label="download" />
+                                                <Icon name="download" aria-label="download" />
                                                 <span>PNG</span>
                                             </Button>
                                         </div>
@@ -167,7 +167,7 @@
                                                 href="/assets/logotype/black.svg"
                                                 download
                                             >
-                                                <Icon icon="download" aria-label="download" />
+                                                <Icon name="download" aria-label="download" />
                                                 <span>SVG</span>
                                             </Button>
                                             <Button
@@ -175,7 +175,7 @@
                                                 href="/assets/logotype/black.png"
                                                 download
                                             >
-                                                <Icon icon="download" aria-label="download" />
+                                                <Icon name="download" aria-label="download" />
                                                 <span>PNG</span>
                                             </Button>
                                         </div>
@@ -236,7 +236,7 @@
                                                 href="/assets/logomark/logo.svg"
                                                 download
                                             >
-                                                <Icon icon="download" aria-label="download" />
+                                                <Icon name="download" aria-label="download" />
                                                 <span>SVG</span>
                                             </Button>
                                             <Button
@@ -244,7 +244,7 @@
                                                 href="/assets/logomark/logo.png"
                                                 download
                                             >
-                                                <Icon icon="download" aria-label="download" />
+                                                <Icon name="download" aria-label="download" />
                                                 <span>PNG</span>
                                             </Button>
                                         </div>
@@ -264,7 +264,7 @@
                                                 href="/assets/logomark/logo.svg"
                                                 download
                                             >
-                                                <Icon icon="download" aria-label="download" />
+                                                <Icon name="download" aria-label="download" />
                                                 <span>SVG</span>
                                             </Button>
                                             <Button
@@ -272,7 +272,7 @@
                                                 href="/assets/logomark/logo.png"
                                                 download
                                             >
-                                                <Icon icon="download" aria-label="download" />
+                                                <Icon name="download" aria-label="download" />
                                                 <span>PNG</span>
                                             </Button>
                                         </div>
@@ -373,7 +373,7 @@
                                                 href="/assets/visuals/dashboard.jpg"
                                                 download
                                             >
-                                                <Icon icon="download" aria-label="download" />
+                                                <Icon name="download" aria-label="download" />
                                                 <span>JPG</span>
                                             </Button>
                                             <Button
@@ -381,7 +381,7 @@
                                                 href={'/assets/visuals/dashboard.png'}
                                                 download
                                             >
-                                                <Icon icon="download" aria-label="download" />
+                                                <Icon name="download" aria-label="download" />
                                                 <span>PNG</span>
                                             </Button>
                                         </div>
@@ -398,7 +398,7 @@
                                                 href="/assets/visuals/auth.jpg"
                                                 download
                                             >
-                                                <Icon icon="download" aria-label="download" />
+                                                <Icon name="download" aria-label="download" />
                                                 <span>JPG</span>
                                             </Button>
                                             <Button
@@ -406,7 +406,7 @@
                                                 href={'/assets/visuals/auth.png'}
                                                 download
                                             >
-                                                <Icon icon="download" aria-label="download" />
+                                                <Icon name="download" aria-label="download" />
                                                 <span>PNG</span>
                                             </Button>
                                         </div>
@@ -423,7 +423,7 @@
                                                 href="/assets/visuals/databases.jpg"
                                                 download
                                             >
-                                                <Icon icon="download" aria-label="download" />
+                                                <Icon name="download" aria-label="download" />
                                                 <span>JPG</span>
                                             </Button>
                                             <Button
@@ -431,7 +431,7 @@
                                                 href={'/assets/visuals/databases.png'}
                                                 download
                                             >
-                                                <Icon icon="download" aria-label="download" />
+                                                <Icon name="download" aria-label="download" />
                                                 <span>PNG</span>
                                             </Button>
                                         </div>
@@ -449,7 +449,7 @@
                                                 href="/assets/visuals/storage.jpg"
                                                 download
                                             >
-                                                <Icon icon="download" aria-label="download" />
+                                                <Icon name="download" aria-label="download" />
                                                 <span>JPG</span>
                                             </Button>
                                             <Button
@@ -457,7 +457,7 @@
                                                 href={'/assets/visuals/storage.png'}
                                                 download
                                             >
-                                                <Icon icon="download" aria-label="download" />
+                                                <Icon name="download" aria-label="download" />
                                                 <span>PNG</span>
                                             </Button>
                                         </div>
@@ -475,7 +475,7 @@
                                                 href="/assets/visuals/functions.jpg"
                                                 download
                                             >
-                                                <Icon icon="download" aria-label="download" />
+                                                <Icon name="download" aria-label="download" />
                                                 <span>JPG</span>
                                             </Button>
                                             <Button
@@ -483,7 +483,7 @@
                                                 href={'/assets/visuals/functions.png'}
                                                 download
                                             >
-                                                <Icon icon="download" aria-label="download" />
+                                                <Icon name="download" aria-label="download" />
                                                 <span>PNG</span>
                                             </Button>
                                         </div>
@@ -500,7 +500,7 @@
                                                 href="/assets/visuals/messaging.jpg"
                                                 download
                                             >
-                                                <Icon icon="download" aria-label="download" />
+                                                <Icon name="download" aria-label="download" />
                                                 <span>JPG</span>
                                             </Button>
                                             <Button
@@ -508,7 +508,7 @@
                                                 href={'/assets/visuals/messaging.png'}
                                                 download
                                             >
-                                                <Icon icon="download" aria-label="download" />
+                                                <Icon name="download" aria-label="download" />
                                                 <span>PNG</span>
                                             </Button>
                                         </div>

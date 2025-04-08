@@ -102,7 +102,7 @@
             }}
             disabled={!browser}
         >
-            <Icon icon="github" class="text-primary" />
+            <Icon name="github" class="text-primary" />
             <span class="text">(DEBUG) Log-out of GitHub</span>
         </Button>
     {/if}
@@ -112,7 +112,7 @@
         Sign in with your GitHub account and see the magic happen in your ticket.
     </p>
     <Button class="is-full-width u-margin-block-start-24" onclick={loginGithub} variant="secondary">
-        <Icon icon="github" class="text-primary" />
+        <Icon name="github" class="text-primary" />
         <span class="text">Log in to GitHub account</span>
     </Button>
 {/if}
@@ -138,7 +138,7 @@
         href={getAppwriteDashboardUrl(`/login?forceRedirect=${page.url.origin}/init-0/tickets`)}
         class="is-full-width u-margin-block-start-24"
     >
-        <Icon icon="appwrite" class="text-primary" />
+        <Icon name="appwrite" class="text-primary" />
         <span class="text">Log in to Appwrite account</span>
     </Button>
 {/if}

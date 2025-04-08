@@ -135,7 +135,7 @@
                             aria-label="previous page"
                         >
                             <Icon
-                                icon="chevron-left"
+                                name="chevron-left"
                                 class="text-primary text-2xl"
                                 aria-hidden="true"
                             />
@@ -171,7 +171,7 @@
                                 href={prevStep.href}
                                 class="previous-step-anchor"
                             >
-                                <Icon icon="chevron-left" aria-hidden="true" />
+                                <Icon name="chevron-left" aria-hidden="true" />
                                 <span class="web-sub-body-500">
                                     Step {prevStep.step}<span class="web-is-not-mobile"
                                         >: {getCorrectTitle(prevStep, 1)}</span
@@ -276,13 +276,6 @@
 <style>
     .web-article-header {
         margin-block-end: 2rem;
-        padding-inline-start: unset;
-    }
-
-    .previous-step-anchor {
-        border: unset;
-        outline: unset;
-        background: unset;
         padding-inline-start: unset;
     }
 

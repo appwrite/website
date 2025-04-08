@@ -161,7 +161,7 @@
             <tr>
                 <td colspan={headings.length + 1} class="py-2 pl-4 md:py-4">
                     <Button variant="text" class="is-small">
-                        <Icon icon="plus" aria-hidden="true"></Icon>
+                        <Icon name="plus" aria-hidden="true"></Icon>
                         Add role
                     </Button>
                 </td>

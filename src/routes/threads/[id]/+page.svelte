@@ -59,7 +59,7 @@
             </div>
             <div class="buttons">
                 <Button href={discordLink}>
-                    <Icon icon="discord"></Icon>
+                    <Icon name="discord"></Icon>
                     View on Discord
                 </Button>
             </div>
@@ -84,7 +84,7 @@
                         Reply to this thread by joining our Discord
                     </p>
                     <Button class="mt-6" href={discordLink}>
-                        <Icon icon="discord"></Icon>
+                        <Icon name="discord"></Icon>
                         Reply on Discord
                     </Button>
                 </div>

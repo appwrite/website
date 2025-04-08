@@ -111,9 +111,9 @@
             </Button>
             <Button variant="text" aria-label="open navigation" onclick={toggleSidenav}>
                 {#if $layoutState.showSidenav}
-                    <Icon aria-hidden="true" icon="close"></Icon>
+                    <Icon aria-hidden="true" name="close"></Icon>
                 {:else}
-                    <Icon aria-hidden="true" icon="hamburger-menu"></Icon>
+                    <Icon aria-hidden="true" name="hamburger-menu"></Icon>
                 {/if}
             </Button>
         </div>
@@ -174,7 +174,7 @@
                         target="_blank"
                         rel="noopener noreferrer"
                     >
-                        <Icon icon="star" aria-hidden="true"></Icon>
+                        <Icon name="star" aria-hidden="true"></Icon>
                         <span class="text">Star on GitHub</span>
                         <InlineTag>{SOCIAL_STATS.GITHUB.STAT}</InlineTag>
                     </Button>

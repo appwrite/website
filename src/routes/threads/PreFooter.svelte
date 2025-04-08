@@ -13,7 +13,7 @@
                     Get community support by joining our Discord server.
                 </p>
                 <Button class="mt-6" href="https://appwrite.io/discord">
-                    <Icon icon="discord"></Icon>
+                    <Icon name="discord"></Icon>
                     Join Discord
                 </Button>
             </div>

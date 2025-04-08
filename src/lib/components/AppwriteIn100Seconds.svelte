@@ -23,9 +23,8 @@
     }}
 >
     Appwrite in 100 seconds
-    {#snippet icon()}
-        <Icon icon="play" />
-    {/snippet}
+
+    <Icon name="play" />
 </Button>
 {#if $open}
     <div use:melt={$portalled}>
