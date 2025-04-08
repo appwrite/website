@@ -55,3 +55,7 @@ Edges are optimized to reduce latency and improve user experience by processing 
 - Optimization: The edge network planned locations are strategically designed with fewer, high-capacity edges to maximize cache efficiency and achieve higher cache-hit ratios.
 
 Edges enhance Appwrite's ability to deliver fast, reliable experiences by optimizing interactions and reducing latency for end-users. Together with regions, they create a robust infrastructure designed for modern, globally distributed applications.
+
+{% info title="Self-Hosting?" %}
+Appwrite's self-hosted deployments operate in a single region by default. The geo-distributed edge network with its routing features is available to Cloud users. For edge infrastructure in self-hosted environments or multi-region setups, please [contact us](/contact-us/enterprise) to explore enterprise options.
+{% /info %}

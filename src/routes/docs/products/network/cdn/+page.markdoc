@@ -21,6 +21,10 @@ Appwrite's CDN (Content Delivery Network) is a globally distributed system desig
 - Content optimization: Appwrite's CDN uses advanced compression algorithms to reduce data transfer sizes, further improving delivery times.
 - High availability: Distributed edge nodes and redundant routing ensure that content remains accessible even during regional outages or high traffic loads.
 
+{% info title="Self-Hosting?" %}
+Appwrite's self-hosted setup is optimized for local content delivery in single-region environments. Cloud users benefit from the global CDN with 120+ points of presence worldwide. If your self-hosted deployment requires distributed CDN capabilities, please [contact us](/contact-us/enterprise) to discuss custom solutions.
+{% /info %}
+
 # Design {% #design %}
 
 - Caching strategy: Configurable cache policies for control over TTL and content invalidation.
