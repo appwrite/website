@@ -33,13 +33,9 @@
 
     const headings = getContext<LayoutContext>('headings');
 
-<<<<<<< HEAD
-    let selected: string | undefined = undefined;
+    let selected: string | undefined = $state(undefined);
     let selectedMenuItem: HTMLElement;
 
-=======
-    let selected: string | undefined = $state(undefined);
->>>>>>> main
     headings.subscribe((n) => {
         const noVisible = Object.values(n).every((n) => !n.visible);
         if (selected && noVisible) {
@@ -150,15 +146,6 @@
         serviceDescription.substring(0, serviceDescription.indexOf('.') + 1)
     );
 
-<<<<<<< HEAD
-    $: platformBindingForSelect = $page.params.platform as Platform;
-    $: platform = ($preferredPlatform ?? $page.params.platform) as Platform;
-    $: platformType = platform.startsWith('client-') ? 'CLIENT' : 'SERVER';
-    $: serviceName = serviceMap[data.service?.name];
-    $: title = serviceName + API_REFERENCE_TITLE_SUFFIX;
-    $: description = shortenedDescription;
-    $: ogImage = DEFAULT_HOST + '/images/open-graph/docs.png';
-
     // Add this function to determine the operation type and its order
     function getOperationOrder(methodTitle: string): number {
         const title = methodTitle.toLowerCase();
@@ -195,7 +182,7 @@
             }
         };
     }
-=======
+
     let platformBindingForSelect = $derived(page.params.platform as Platform);
     let platform = $derived(($preferredPlatform ?? page.params.platform) as Platform);
     let platformType = $derived(platform.startsWith('client-') ? 'CLIENT' : 'SERVER');
@@ -203,7 +190,6 @@
     let title = $derived(serviceName + API_REFERENCE_TITLE_SUFFIX);
     let description = $derived(shortenedDescription);
     let ogImage = $derived(DEFAULT_HOST + '/images/open-graph/docs.png');
->>>>>>> main
 </script>
 
 <svelte:head>
