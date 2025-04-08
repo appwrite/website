@@ -52,6 +52,11 @@ Appwrite's network is designed to provide a balance between centralized compute 
 
 This setup separates heavy backend processing in regions from latency-sensitive tasks at the edge, enabling efficient handling of global workloads with minimal performance trade-offs.
 
+{% info title="Self-Hosting?" %}
+Appwrite's self-hosted setup is designed and optimized for straightforward, single-region environments—making it an ideal choice for small to medium-scale workloads.
+All Cloud users have access to the Appwrite Network. If you need to scale your self-hosted deployment or require additional solutions, please [contact us](https://appwrite.io/contact-us/enterprise).
+{% /info %}
+
 # Features {% #features %}
 
 {% cards %}
