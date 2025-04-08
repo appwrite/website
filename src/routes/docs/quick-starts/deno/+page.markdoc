@@ -1,13 +1,15 @@
 ---
 layout: article
 title: Start with Deno
-description: Dive into our step-by-step guide on integrating Appwrite with your Deno server backend application. Get your backend up and running quickly with this tutorial.
+description: Learn how to integrate Appwrite with your Deno server and get your backend up and running quickly.
 difficulty: beginner
 readtime: 5
 back: /docs/quick-starts
 ---
-Learn how to setup your first Deno project powered by Appwrite.
-{% section #step-1 step=1 title="Create project" %}
+
+Learn how to set up your first Deno project in Appwrite.
+
+{% section #step-1 step=1 title="Setting up in the Console" %}
 Head to the [Appwrite Console](https://cloud.appwrite.io/console).
 
 If this is your first time using Appwrite, create an account and create your first project.
@@ -19,200 +21,337 @@ If this is your first time using Appwrite, create an account and create your fir
 ![Create project screen](/images/docs/quick-starts/create-project.png)
 {% /only_light %}
 
-Then, under **Integrate with your server**, add an **API Key** with the following scopes.
+Next, click **Functions** > **Create Function**, and select **Deno** as the runtime.
 
 {% only_dark %}
-![Create project screen](/images/docs/quick-starts/dark/integrate-server.png)
+![Create Function screen](/images/docs/quick-starts/dark/create-function.png)
 {% /only_dark %}
 {% only_light %}
-![Create project screen](/images/docs/quick-starts/integrate-server.png)
+![Create Function screen](/images/docs/quick-starts/create-function.png)
 {% /only_light %}
 
-| Category  {% width=120 %} | Required scopes       | Purpose |
-|-----------|-----------------------|---------|
-| Database  | `databases.write`     | Allows API key to create, update, and delete [databases](/docs/products/databases/databases). |
-|           | `collections.write`   | Allows API key to create, update, and delete [collections](/docs/products/databases/collections). |
-|           | `attributes.write`    | Allows API key to create, update, and delete [attributes](/docs/products/databases/collections#attributes). |
-|           | `documents.read`      | Allows API key to read [documents](/docs/products/databases/documents). |
-|           | `documents.write`     | Allows API key to create, update, and delete [documents](/docs/products/databases/documents). |
+In the page that opens, give your function a name and an ID. You can leave the ID blank, and Appwrite will generate a unique one for you.
 
-Other scopes are optional.
+{% only_dark %}
+![Create Function screen](/images/docs/quick-starts/dark/configure-deno-function.png)
+{% /only_dark %}
+{% only_light %}
+![Create Function screen](/images/docs/quick-starts/configure-deno-function.png)
+{% /only_light %}
+
+Click **Next** to set up your function permissions. Configure the Execute permissions and Function scopes as needed, then click **Next** to set up Deployment.
+
+{% only_dark %}
+![Create Function screen](/images/docs/quick-starts/dark/execute-permissions.png)
+{% /only_dark %}
+{% only_light %}
+![Create Function screen](/images/docs/quick-starts/execute-permissions.png)
+{% /only_light %}
+
+Here, you can choose to create a new repository, add to an existing one, or connect later.
+
+{% only_dark %}
+![Create Function screen](/images/docs/quick-starts/dark/configure-deployment.png)
+{% /only_dark %}
+{% only_light %}
+![Create Function screen](/images/docs/quick-starts/configure-deployment.png)
+{% /only_light %}
+
+When you're done, click **Create**. This will create and deploy a new Deno function in your project. In the Function Deployments page, you'll see the URL to access your function.
+
+{% only_dark %}
+![Create Function screen](/images/docs/quick-starts/dark/deployments-page.png)
+{% /only_dark %}
+{% only_light %}
+![Create Function screen](/images/docs/quick-starts/deployments-page.png)
+{% /only_light %}
+
+Click the link to test your Deno function.
 
 {% /section %}
-{% section #step-2 step=2 title="Create Deno project" %}
-Create a Deno CLI application.
+
+{% section #step-2 step=2 title="Setting up locally" %}
+If you prefer setting up your Deno function locally, you can use the Appwrite CLI to do so.
+
+First, install the Appwrite CLI globally using npm:
 
 ```sh
-mkdir my-app
-cd my-app
-echo "console.log('Hello, Deno!');" > mod.ts
+npm install -g appwrite-cli@latest
 ```
+
+Once the CLI is installed, log into your Appwrite account:
+
+```sh
+appwrite login
+```
+
+Next, create a new project:
+
+```sh
+appwrite init project
+```
+
+This will guide you through setting up your Appwrite project locally.
 
 {% /section %}
-{% section #step-3 step=3 title="Install Appwrite" %}
 
-Install the Deno Appwrite SDK by importing it `deno.land/x` at the top of your file.
+{% section #step-3 step=3 title="Create a Deno function locally" %}
+Now, create a Deno function locally by running the following command:
 
+```sh
+appwrite init function
 ```
-// import all as sdk
-import * as sdk from "https://deno.land/x/appwrite@10.0.1/mod.ts";
 
-// import only what you need
-import { Client, ... other imports } from "https://deno.land/x/appwrite/mod.ts";
-```
+You’ll be prompted to enter a name and ID for your function. Select **Deno** as the runtime when asked to choose a runtime.
+
+When you're done, Appwrite will generate a new Deno function with a `main.ts` file. The `main.ts` file contains boilerplate code for your function. It includes the Appwrite SDK and a basic structure for handling requests and responses.
 
 {% /section %}
-{% section #step-4 step=4 title="Import Appwrite" %}
 
-Find your project ID in the **Settings** page. Also, click on the **View API Keys** button to find the API key that was created earlier.
+{% section #step-4 step=4 title="Set up your Deno function" %}
 
-{% only_dark %}
-![Project settings screen](/images/docs/quick-starts/dark/project-id.png)
-{% /only_dark %}
-{% only_light %}
-![Project settings screen](/images/docs/quick-starts/project-id.png)
-{% /only_light %}
-
-Open `mod.ts` in your IDE and initialize the Appwrite Client. Replace `<PROJECT_ID>` with your project ID and `<YOUR_API_KEY>` with your API key.
+Next, modify your `main.ts` file to add the necessary Appwrite SDK modules and client initialization. You will replace the default code with the following to set up your Deno function:
 
 ```ts
-import { Client, ID, Databases, Models } from "https://deno.land/x/appwrite/mod.ts";
+import { Client, Databases, ID, Models } from "https://deno.land/x/appwrite@7.0.0/mod.ts"
 
-const client: Client = new Client();
+// Initialize the Appwrite client
+const client = new Client()
+  .setEndpoint(Deno.env.get("APPWRITE_FUNCTION_API_ENDPOINT") ?? '')
+  .setProject(Deno.env.get("APPWRITE_FUNCTION_PROJECT_ID") ?? '')
+  .setKey(Deno.env.get("APPWRITE_API_KEY") ?? '')
 
-client
-    .setEndpoint("https://cloud.appwrite.io/v1")
-    .setProject("<PROJECT_ID>")
-    .setKey("<YOUR_API_KEY>");
-```
+const databases = new Databases(client)
 
-{% /section %}
-{% section #step-5 step=5 title="Initialize database" %}
+// Declare variables to hold the database and collection
+let todoDatabase: Models.Database | null = null
+let todoCollection: Models.Collection | null = null
 
-Once the Appwrite Client is initialized, create a function to configure a todo collection.
-
-```ts
-const databases: Databases = new Databases(client);
-
-var todoDatabase: Models.Database;
-var todoCollection: Models.Collection;
-
+// Define the Todo interface
 interface Todo {
-    title: string;
-    description: string;
-    isComplete?: boolean;
-}
-
-async function prepareDatabase(): Promise<void> {
-    todoDatabase = await databases.create(
-        ID.unique(),
-        'TodosDB'
-    );
-
-    todoCollection = await databases.createCollection(
-        todoDatabase.$id,
-        ID.unique(),
-        'Todos'
-    );
-
-    await databases.createStringAttribute(
-        todoDatabase.$id,
-        todoCollection.$id,
-        'title',
-        255,
-        true
-    );
-
-    await databases.createStringAttribute(
-        todoDatabase.$id,
-        todoCollection.$id,
-        'description',
-        255, false,
-        'This is a test description'
-    );
-    await databases.createBooleanAttribute(
-        todoDatabase.$id,
-        todoCollection.$id,
-        'isComplete',
-        true
-    );
+  title: string;
+  description?: string
+  isComplete?: boolean
 }
 ```
 
 {% /section %}
-{% section #step-6 step=6 title="Add documents" %}
-Create a function to add some mock data into your new collection.
+
+{% section #step-5 step=5 title="Prepare the database" %}
+
+Create a function to prepare your database and collection. This function will be called as part of the main function:
 
 ```ts
-async function seedDatabase(): Promise<void> {
-    const testTodo1: Todo = {
+async function prepareDatabase(): Promise<void> {
+  todoDatabase = await databases.create(ID.unique(), 'TodosDB')
+
+  todoCollection = await databases.createCollection(
+    todoDatabase.$id,
+    ID.unique(),
+    'Todos'
+  )
+
+  await databases.createStringAttribute(
+    todoDatabase.$id,
+    todoCollection.$id,
+    'title',
+    255,
+    true
+  )
+
+  await databases.createStringAttribute(
+    todoDatabase.$id,
+    todoCollection.$id,
+    'description',
+    255,
+    false
+  )
+
+  await databases.createBooleanAttribute(
+    todoDatabase.$id,
+    todoCollection.$id,
+    'isComplete',
+    false
+  )
+}
+```
+
+{% /section %}
+
+{% section #step-6 step=6 title="Define your functionalities" %}
+
+Now, create functions for the different operations:
+
+- **Add a Todo:**
+
+  ```ts
+  async function addTodo(todo: Todo): Promise<void> {
+    if (!todoDatabase || !todoCollection) return
+    await databases.createDocument(
+      todoDatabase.$id,
+      todoCollection.$id,
+      ID.unique(),
+      todo
+    )
+  }
+  ```
+
+- **Get Todos:**
+
+  ```ts
+  async function getTodos(): Promise<Models.DocumentList<Todo>> {
+    if (!todoDatabase || !todoCollection) return { total: 0, documents: [] }
+    const todos = await databases.listDocuments<Todo>(
+      todoDatabase.$id,
+      todoCollection.$id
+    )
+    return todos
+  }
+  ```
+
+- **Seed Database:**
+
+  ```ts
+  async function seedDatabase(): Promise<void> {
+    const todos: Todo[] = [
+      {
         title: 'Buy apples',
         description: 'At least 2KGs',
-        isComplete: true
-    };
-
-    const testTodo2: Todo = {
-        title: 'Wash the apples',
-        isComplete: true
-    };
-
-    const testTodo3: Todo = {
-        title: 'Cut the apples',
-        description: 'Don\'t forget to pack them in a box',
         isComplete: false
-    };
+      },
+      {
+        title: 'Wash apples',
+        isComplete: true
+      },
+      {
+        title: 'Cut apples',
+        description: 'Don\'t forget to pack them',
+        isComplete: false
+      }
+    ]
 
-    await databases.createDocument(
-        todoDatabase.$id,
-        todoCollection.$id,
-        ID.unique(),
-        testTodo1
-    );
-    await databases.createDocument(
-        todoDatabase.$id,
-        todoCollection.$id,
-        ID.unique(),
-        testTodo2
-    );
-    await databases.createDocument(
-        todoDatabase.$id,
-        todoCollection.$id,
-        ID.unique(),
-        testTodo3
-    );
-}
-```
+    for (const todo of todos) {
+      await addTodo(todo)
+    }
+  }
+  ```
+
+- **Run All Tasks:**
+
+  ```ts
+  async function runAllTasks(): Promise<void> {
+    await prepareDatabase()
+    await seedDatabase()
+    const todos = await getTodos()
+    console.log('Todos seeded and retrieved:', todos)
+  }
+  ```
 
 {% /section %}
-{% section #step-7 step=7 title="Retrieve documents" %}
 
-Create a function to retrieve the mock todo data and a function to execute the requests in order.
-Run the functions to by calling `runAllTasks();`.
+{% section #step-7 step=7 title="Handle routes in the main function" %}
+
+Update your main function to handle different routes:
 
 ```ts
-async function getTodos(): Promise<void> {
-    const todos = await databases.listDocuments(
-        todoDatabase.$id,
-        todoCollection.$id
-    );
+export default async ({ req, res, log, error }: any) => {
+  try {
+    // Prepare the database on first run
+    if (!todoDatabase || !todoCollection) {
+      await prepareDatabase()
+    }
 
-    todos.documents.forEach((todo: Todo) => {
-        console.log(`Title: ${todo.title}\nDescription: ${todo.description}\nIs Todo Complete: ${todo.isComplete}\n\n`);
-    });
-}
+    if (req.path === '/addTodo') {
+      const { title, description, isComplete } = req.body
+      const newTodo: Todo = { title, description, isComplete }
+      await addTodo(newTodo)
+      return res.json({ message: 'Todo added successfully' })
+    }
 
-async function runAllTasks(): Promise<void> {
-    await prepareDatabase();
-    await seedDatabase();
-    await getTodos();
+    if (req.path === '/getTodos') {
+      const todos = await getTodos()
+      return res.json({ todos: todos.documents })
+    }
+
+    if (req.path === '/seedDatabase') {
+      await seedDatabase()
+      return res.json({ message: 'Database seeded successfully' })
+    }
+
+    if (req.path === '/runAllTasks') {
+      await runAllTasks()
+      return res.json({
+        message: 'All tasks completed successfully'
+      })
+    }
+
+    return res.json({ message: 'Invalid route' })
+  } catch (err) {
+    error('Error: ' + err.message)
+    return res.json({ message: 'An error occurred', error: err.message })
+  }
 }
-runAllTasks();
 ```
 
 {% /section %}
 
-{% section #step-8 step=8 title="All set" %}
+{% section #step-8 step=8 title="Test your routes locally" %}
 
-Run your project with `deno mod.ts` and view the response in your console.
+To test your project locally, run the following command:
+
+```bash
+appwrite run function
+```
+
+You should see a prompt asking you to select a function. Select your Deno function.
+This will start a local server where you can test your routes.
+
+You can test different routes using `curl` or any API testing tool.
+For example, if your function is running on `http://localhost:3000`, you can test the following routes:
+
+- **Add a Todo:**
+
+  ```bash
+  curl -X POST -H "Content-Type: application/json" -d '{"title": "New Task", "description": "Task description", "isComplete": false}' "http://localhost:3000/addTodo"
+  ```
+
+- **Get Todos:**
+
+  ```bash
+  curl "http://localhost:3000/getTodos"
+  ```
+
+- **Seed Database:**
+
+  ```bash
+  curl "http://localhost:3000/seedDatabase"
+  ```
+
+- **Run All Tasks:**
+
+  ```bash
+  curl "http://localhost:3000/runAllTasks"
+  ```
+
+{% /section %}
+
+{% section #step-9 step=9 title="Deploy your function" %}
+
+Once you've tested the function locally and ensured it's working correctly, deploy it to your Appwrite cloud instance:
+
+```bash
+appwrite push function
+```
+
+You'll see a prompt asking you which function you want to deploy. Select your Deno function.
+With that successful, you can go back to the [Appwrite Console](https://cloud.appwrite.io/console) to see your function details, including the deployed endpoint.
+
+{% /section %}
+
+{% section #step-10 step=10 title="All set" %}
+
+You've now set up your Deno function with Appwrite, complete with routes for adding todos, getting todos, seeding the database, and running all tasks.
+
+You can integrate this function into your application or continue building upon it to add more features.
 
 {% /section %}
