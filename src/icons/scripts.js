@@ -21,14 +21,14 @@ const generateIconsSprite = () => {
     files.forEach((file) => {
         if (!file.endsWith('.svg')) return;
 
-        const filePath = resolve(src, file);
+        const filePath = resolve(optimized, file);
         const fileName = basename(file, '.svg');
         const svgContent = readFileSync(filePath, 'utf8');
 
         const svgMatch = svgContent.match(/<svg[^>]*>([\s\S]*?)<\/svg>/i);
 
         if (svgMatch && svgMatch[1]) {
-            const innerContent = svgMatch[1].trim();
+            const innerContent = svgMatch[1].trim().replace(/fill="[^"]*"/g, 'fill="currentColor"');
             const viewBoxMatch = svgContent.match(/viewBox=['"]([^'"]*)['"]/i);
             const viewBox = viewBoxMatch ? viewBoxMatch[1] : '0 0 24 24';
 
@@ -46,7 +46,7 @@ const generateIconsSprite = () => {
 
 const generateIconType = () => {
     try {
-        const files = readdirSync(src);
+        const files = readdirSync(optimized);
 
         const fileNames = files
             .filter((file) => extname(file) !== '')
@@ -72,7 +72,10 @@ export const optimizeSVG = async () => {
 
 export const generateIcons = async () => {
     try {
-        await optimizeSVG();
+        await optimizeSVG().then(() => {
+            generateIconsSprite();
+            generateIconType();
+        });
         console.log('Icons generated successfully!');
     } catch (error) {
         console.error('Error generating icons:', error);
