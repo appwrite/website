@@ -8,7 +8,7 @@ const optimized = resolve(process.cwd(), 'src/icons/optimized');
 const output = resolve(process.cwd(), 'src/lib/components/ui/icon');
 
 const generateIconsSprite = () => {
-    const files = readdirSync(src);
+    const files = readdirSync(optimized);
     const outputDir = resolve(`${output}/sprite`);
     const spriteOutputPath = resolve(outputDir, 'sprite.svelte');
 
@@ -57,13 +57,12 @@ const generateIconType = () => {
         writeFileSync(`${output}/types.ts`, typeDefinition);
 
         console.log(`Type generated successfully at ${output}`);
-        console.log(`Generated type: ${typeDefinition}`);
     } catch (error) {
         console.error('Error generating filename type:', error);
     }
 };
 
-const optimizeSVG = async () => {
+export const optimizeSVG = async () => {
     const fixer = new SVGFixer(src, optimized, {
         showProgressBar: true
     });
@@ -73,10 +72,7 @@ const optimizeSVG = async () => {
 
 export const generateIcons = async () => {
     try {
-        await optimizeSVG().then(() => {
-            generateIconsSprite();
-            generateIconType();
-        });
+        await optimizeSVG();
         console.log('Icons generated successfully!');
     } catch (error) {
         console.error('Error generating icons:', error);

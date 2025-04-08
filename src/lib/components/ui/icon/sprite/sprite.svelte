@@ -107,6 +107,12 @@
   <symbol id="message" viewBox="0 0 24 24">
     <path stroke="#000" stroke-linejoin="round" stroke-width="1.2" d="M4 12.516V4h12v8.516h-5.2L6.8 16v-3.484z"/>
   </symbol>
+  <symbol id="microsoft" viewBox="0 0 24 24">
+    <rect x="12.8182" y="12.8182" width="8.18182" height="8.18182" fill="#C4C6D7"/>
+<rect x="3" y="12.8182" width="8.18182" height="8.18182" fill="#C4C6D7"/>
+<rect x="12.8182" y="3" width="8.18182" height="8.18182" fill="#C4C6D7"/>
+<rect x="3" y="3" width="8.18182" height="8.18182" fill="#C4C6D7"/>
+  </symbol>
   <symbol id="minus" viewBox="0 0 24 24">
     <path stroke="#19191C" stroke-linecap="round" stroke-width="1.2" d="M6 10h8"/>
   </symbol>
