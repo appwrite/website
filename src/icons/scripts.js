@@ -1,7 +1,10 @@
 import { basename, extname, resolve } from 'path';
 import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from 'fs';
+// @ts-ignore
+import SVGFixer from 'oslllo-svg-fixer';
 
-const src = resolve(process.cwd(), 'src/icons/optimized');
+const src = resolve(process.cwd(), 'src/icons/svg');
+const optimized = resolve(process.cwd(), 'src/icons/optimized');
 const output = resolve(process.cwd(), 'src/lib/components/ui/icon');
 
 const generateIconsSprite = () => {
@@ -60,10 +63,20 @@ const generateIconType = () => {
     }
 };
 
-export const generateIcons = () => {
+const optimizeSVG = async () => {
+    const fixer = new SVGFixer(src, optimized, {
+        showProgressBar: true
+    });
+
+    await fixer.fix();
+};
+
+export const generateIcons = async () => {
     try {
-        generateIconsSprite();
-        generateIconType();
+        await optimizeSVG().then(() => {
+            generateIconsSprite();
+            generateIconType();
+        });
         console.log('Icons generated successfully!');
     } catch (error) {
         console.error('Error generating icons:', error);
