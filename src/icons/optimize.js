@@ -1,3 +1,3 @@
-import { optimizeSVG } from './scripts.js';
+import { generateIcons } from './scripts.js';
 
-optimizeSVG();
+generateIcons();

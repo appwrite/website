@@ -1,17 +1,12 @@
-// @ts-expect-error missing types
-import SVGFixer from 'oslllo-svg-fixer';
-import svgtofont from 'svgtofont';
 import { basename, extname, resolve } from 'path';
 import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from 'fs';
 
-const src = resolve(process.cwd(), 'src/icons/svg');
-const optimized = resolve(process.cwd(), 'src/icons/optimized');
-const dist = resolve(process.cwd(), 'src/icons/output');
-const outputPath = resolve(process.cwd(), 'src/lib/components/ui/icon');
+const src = resolve(process.cwd(), 'src/icons/optimized');
+const output = resolve(process.cwd(), 'src/lib/components/ui/icon');
 
-const generateIconSprite = () => {
-    const files = readdirSync(optimized);
-    const outputDir = resolve(`${outputPath}`);
+const generateIconsSprite = () => {
+    const files = readdirSync(src);
+    const outputDir = resolve(`${output}`);
     const spriteOutputPath = resolve(outputDir, 'sprite.svelte');
 
     if (!existsSync(outputDir)) {
@@ -23,11 +18,10 @@ const generateIconSprite = () => {
     files.forEach((file) => {
         if (!file.endsWith('.svg')) return;
 
-        const filePath = resolve(optimized, file);
+        const filePath = resolve(src, file);
         const fileName = basename(file, '.svg');
         const svgContent = readFileSync(filePath, 'utf8');
 
-        // Extract the SVG content (everything between <svg> and </svg>)
         const svgMatch = svgContent.match(/<svg[^>]*>([\s\S]*?)<\/svg>/i);
 
         if (svgMatch && svgMatch[1]) {
@@ -35,15 +29,12 @@ const generateIconSprite = () => {
             const viewBoxMatch = svgContent.match(/viewBox=['"]([^'"]*)['"]/i);
             const viewBox = viewBoxMatch ? viewBoxMatch[1] : '0 0 24 24';
 
-            // Add symbol with the extracted content
             spriteContent += `  <symbol id="${fileName}" stroke="currentColor" viewBox="${viewBox}">\n    ${innerContent}\n  </symbol>\n`;
         }
     });
 
-    // Close the sprite
     spriteContent += '</svg>';
 
-    // Write the sprite file
     writeFileSync(spriteOutputPath, spriteContent);
     console.log(`Created SVG sprite at ${spriteOutputPath}`);
 
@@ -52,7 +43,7 @@ const generateIconSprite = () => {
 
 const generateIconType = () => {
     try {
-        const files = readdirSync(optimized);
+        const files = readdirSync(src);
 
         const fileNames = files
             .filter((file) => extname(file) !== '')
@@ -60,45 +51,21 @@ const generateIconType = () => {
 
         const typeDefinition = `export type IconType = ${fileNames.map((name) => `"${name}"`).join(' | ')};`;
 
-        writeFileSync(`${outputPath}/types.ts`, typeDefinition);
+        writeFileSync(`${output}/types.ts`, typeDefinition);
 
-        console.log(`Type generated successfully at ${outputPath}`);
+        console.log(`Type generated successfully at ${output}`);
         console.log(`Generated type: ${typeDefinition}`);
     } catch (error) {
         console.error('Error generating filename type:', error);
     }
 };
 
-export const optimizeSVG = async () => {
-    const fixer = new SVGFixer(src, optimized, {
-        showProgressBar: true
-    });
-
-    await fixer.fix();
-};
-
-export const generateIcons = async () => {
-    await svgtofont({
-        classNamePrefix: 'web-icon',
-        src: optimized,
-        dist: dist,
-        fontName: 'web-icon',
-        styleTemplates: resolve(process.cwd(), 'src/icons/templates'),
-        css: {
-            fontSize: '20px'
-        },
-        outSVGReact: false,
-        svgicons2svgfont: {
-            centerHorizontally: true,
-            centerVertically: true,
-            fixedWidth: true,
-            fontHeight: 1000,
-            normalize: true,
-            descent: 200
-        },
-        emptyDist: true,
-        generateInfoData: true
-    })
-        .then(() => generateIconSprite())
-        .then(() => generateIconType());
+export const generateIcons = () => {
+    try {
+        generateIconsSprite();
+        generateIconType();
+        console.log('Icons generated successfully!');
+    } catch (error) {
+        console.error('Error generating icons:', error);
+    }
 };
