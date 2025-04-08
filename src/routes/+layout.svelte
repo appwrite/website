@@ -1,5 +1,6 @@
 <script lang="ts" context="module">
     import { derived, writable } from 'svelte/store';
+    import { loadReoScript, type Reo } from '$lib/reodotdev';
 
     export type Theme = 'dark' | 'light' | 'system';
     export const currentTheme = (function () {
@@ -49,7 +50,8 @@
     import '$icons/output/web-icon.css';
 
     import { browser, dev } from '$app/environment';
-    import { navigating, page, updated } from '$app/stores';
+    import { page } from '$app/state';
+    import { navigating, updated } from '$app/stores';
     import { onMount } from 'svelte';
     import { loggedIn } from '$lib/utils/console';
     import { beforeNavigate } from '$app/navigation';
@@ -67,9 +69,9 @@
     const tracked = new Set();
 
     onMount(() => {
-        saveReferrerAndUtmSource($page.url);
+        saveReferrerAndUtmSource(page.url);
 
-        const initialTheme = $page.route.id?.startsWith('/docs') ? getPreferredTheme() : 'dark';
+        const initialTheme = page.route.id?.startsWith('/docs') ? getPreferredTheme() : 'dark';
 
         applyTheme(initialTheme);
 
@@ -94,6 +96,8 @@
         if (window) {
             tracked.clear();
         }
+
+        // TODO: thejessewinton, the `updated` from `svelte/state` creates an infinite refresh loop on docs references pages!
         if ($updated && !willUnload && to?.url) {
             location.href = to.url.href;
         }
@@ -104,8 +108,7 @@
         document.body.dataset.loggedIn = '';
     }
 
-    $: canonicalUrl =
-        $page.url.origin.replace(/^https?:\/\/www\./, 'https://') + $page.url.pathname;
+    $: canonicalUrl = page.url.origin.replace(/^https?:\/\/www\./, 'https://') + page.url.pathname;
 
     function handleScroll() {
         const scrollY = window.scrollY;
@@ -115,9 +118,9 @@
         thresholds.forEach((threshold) => {
             if (scrollPercentage >= threshold && !tracked.has(threshold)) {
                 const pageName =
-                    $page.url.pathname.slice(1) === ''
+                    page.url.pathname.slice(1) === ''
                         ? 'home'
-                        : $page.url.pathname.slice(1).replace(/\//g, '-');
+                        : page.url.pathname.slice(1).replace(/\//g, '-');
 
                 const eventName = `${pageName}_scroll-depth_${threshold * 100}prct_scroll`;
                 tracked.add(threshold);
@@ -128,6 +131,15 @@
             }
         });
     }
+
+    if (!dev && browser) {
+        const clientID = '144fa7eaa4904e8';
+
+        const reoPromise = loadReoScript({ clientID });
+        reoPromise.then((reo: Reo) => {
+            reo.init({ clientID });
+        });
+    }
 </script>
 
 <svelte:window on:scroll={handleScroll} />
@@ -135,6 +147,7 @@
     {#if !dev}
         <!--suppress JSUnresolvedLibraryURL -->
         <script defer data-domain="appwrite.io" src="https://plausible.io/js/script.js"></script>
+
         <!-- ZoomInfo snippet -->
         <script>
             window[
@@ -177,22 +190,6 @@
                     : window.addEventListener('load', function () {
                           document.body.appendChild(zi);
                       });
-        </script>
-
-        <!-- Reo.dev -->
-        <script type="text/javascript">
-            !(function () {
-                var e, t, n;
-                (e = '144fa7eaa4904e8'),
-                    (t = function () {
-                        Reo.init({ clientID: '144fa7eaa4904e8' });
-                    }),
-                    ((n = document.createElement('script')).src =
-                        'https://static.reo.dev/' + e + '/reo.js'),
-                    (n.defer = !0),
-                    (n.onload = t),
-                    document.head.appendChild(n);
-            })();
         </script>
     {/if}
 

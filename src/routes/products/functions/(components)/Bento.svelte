@@ -12,7 +12,7 @@
         <div
             class="mx-auto flex max-w-[350px] flex-col justify-center gap-4 md:items-center md:text-center"
         >
-            <h2 class="font-aeonik-pro text-primary text-pretty text-4xl">
+            <h2 class="font-aeonik-pro text-primary text-4xl text-pretty">
                 Execute functions<br /> with ease
             </h2>
             <p>Execute your functions effortlessly through the Appwrite console, SDKs, or API.</p>

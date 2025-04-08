@@ -5,11 +5,11 @@
     import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
     import { onMount } from 'svelte';
     import ChangelogEntry from '../ChangelogEntry.svelte';
-    import { page } from '$app/stores';
+    import { page } from '$app/state';
     import { CHANGELOG_KEY } from '../utils';
     import { TITLE_SUFFIX } from '$routes/titles';
 
-    export let data;
+    let { data } = $props();
 
     const seo = {
         title: 'Changelog' + TITLE_SUFFIX,
@@ -23,7 +23,7 @@
     }
 
     onMount(() => {
-        localStorage.setItem(CHANGELOG_KEY, $page.data.changelogEntries.toString());
+        localStorage.setItem(CHANGELOG_KEY, page.data.changelogEntries.toString());
     });
 </script>
 
@@ -48,22 +48,21 @@
     <div class="web-big-padding-section">
         <div class="pt-10">
             <div class="web-big-padding-section-level-2">
-                <div class="container wrapper">
+                <div class="wrapper container">
                     <h1 class="text-display font-aeonik-pro text-primary">Changelog</h1>
                     <ul>
                         {#each data.entries as entry}
                             <li>
-                                <div class="web-dot" />
+                                <div class="web-dot"></div>
                                 <ChangelogEntry {entry}>
-                                    <svelte:component this={entry.component} />
+                                    <entry.component />
                                 </ChangelogEntry>
                             </li>
                         {/each}
                     </ul>
 
                     {#if data.nextPage}
-                        <button class="web-button is-secondary" on:click={loadMore}
-                            >Load more</button
+                        <button class="web-button is-secondary" onclick={loadMore}>Load more</button
                         >
                     {/if}
                 </div>

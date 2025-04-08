@@ -24,7 +24,7 @@
 
 <div class="relative bg-right-top bg-no-repeat pt-20 pb-12 md:py-40">
     <section
-        class="container relative grid grid-cols-1 items-center justify-between gap-x-16 gap-y-12 md:grid-cols-2"
+        class="relative container grid grid-cols-1 items-center justify-between gap-x-16 gap-y-12 md:grid-cols-2"
     >
         <div class="max-w-md">
             <h2 class="text-title font-aeonik-pro text-primary">

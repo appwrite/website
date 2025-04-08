@@ -1,6 +1,6 @@
 <script lang="ts">
     import { onMount } from 'svelte';
-    import { page } from '$app/stores';
+    import { page } from '$app/state';
     import { fade } from 'svelte/transition';
     import { loggedIn, user } from '$lib/utils/console';
     import { PUBLIC_GROWTH_ENDPOINT } from '$env/static/public';
@@ -28,7 +28,7 @@
             body: JSON.stringify({
                 email,
                 type: feedbackType,
-                route: $page.route.id,
+                route: page.route.id,
                 comment,
                 metaFields: {
                     userId
@@ -80,7 +80,7 @@
                             feedbackType = 'positive';
                         }}
                     >
-                        <span class="icon-thumb-up" />
+                        <span class="icon-thumb-up"></span>
                     </button>
                     <button
                         class="web-radio-button"
@@ -91,7 +91,7 @@
                         }}
                     >
                         <!-- TODO: fix the icon name on pink -->
-                        <span class="icon-thumb-dowm" />
+                        <span class="icon-thumb-dowm"></span>
                     </button>
                 </div>
             </div>
@@ -102,12 +102,12 @@
                     {/if}
                     <li>
                         <a
-                            href={`https://github.com/appwrite/website/tree/main/src/routes${$page.route.id}`}
+                            href={`https://github.com/appwrite/website/tree/main/src/routes${page.route.id}`}
                             target="_blank"
                             rel="noopener noreferrer"
                             class="web-link flex items-baseline gap-1"
                         >
-                            <span class="icon-pencil-alt contents" aria-hidden="true" />
+                            <span class="icon-pencil-alt contents" aria-hidden="true"></span>
                             <span>Update on GitHub</span>
                         </a>
                     </li>
@@ -133,7 +133,7 @@
                     id="message"
                     placeholder="Write your message"
                     bind:value={comment}
-                />
+                ></textarea>
                 <label for="message" class="mt-2">
                     <span class="text-primary">Email</span>
                 </label>

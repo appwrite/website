@@ -316,7 +316,7 @@
                             >
                                 Enterprises
                                 <div
-                                    class="web-inline-tag is-pink text-caption py-1! px-2! font-normal"
+                                    class="web-inline-tag is-pink text-caption px-2! py-1! font-normal"
                                 >
                                     Coming soon
                                 </div>
@@ -351,7 +351,7 @@
 
         <div class="dark relative overflow-hidden pt-10">
             <div class="web-big-padding-section-level-2 relative">
-                <div class="container relative" style:z-index="10">
+                <div class="relative container" style:z-index="10">
                     <section class="web-grid-4-6">
                         <header>
                             <div class="text-display font-aeonik-pro text-primary">FAQ</div>

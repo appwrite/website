@@ -24,7 +24,7 @@
 <script lang="ts">
     import { clickOutside } from '$lib/actions/clickOutside';
     import { Tooltip, IsLoggedIn } from '$lib/components';
-    import { GITHUB_REPO_LINK, GITHUB_STARS } from '$lib/constants';
+    import { SOCIAL_STATS } from '$lib/constants';
     import { layoutState, toggleSidenav } from './Docs.svelte';
     import SidebarNavButton from './SidebarNavButton.svelte';
 
@@ -52,14 +52,14 @@
             class="web-input-text web-is-not-desktop"
             on:click={() => ($layoutState.showSearch = true)}
         >
-            <span class="web-icon-search" />
+            <span class="web-icon-search"></span>
             <span class="text">Search in docs</span>
         </button>
         <div class="web-side-nav-scroll">
             {#if parent}
                 <section class="web-side-nav-wrapper-parent">
                     <a href={parent.href} aria-label="go back">
-                        <span class="icon-cheveron-left" aria-hidden="true" />
+                        <span class="icon-cheveron-left" aria-hidden="true"></span>
                     </a>
                     <span class="web-side-nav-wrapper-parent-title text-micro uppercase"
                         >{parent.label}</span
@@ -72,7 +72,9 @@
                         {#if expandable && !$layoutState.showSidenav}
                             <Tooltip placement="right">
                                 <SidebarNavButton groupItem={navGroup} />
-                                <svelte:fragment slot="tooltip">{navGroup.label}</svelte:fragment>
+                                {#snippet tooltip()}
+                                    <span>{navGroup.label}</span>
+                                {/snippet}
                             </Tooltip>
                         {:else}
                             <SidebarNavButton groupItem={navGroup} />
@@ -89,9 +91,9 @@
                                     {#if expandable && !$layoutState.showSidenav}
                                         <Tooltip placement="right">
                                             <SidebarNavButton {groupItem} />
-                                            <svelte:fragment slot="tooltip"
-                                                >{groupItem.label}</svelte:fragment
-                                            >
+                                            {#snippet tooltip()}
+                                                <span>{groupItem.label}</span>
+                                            {/snippet}
                                         </Tooltip>
                                     {:else}
                                         <SidebarNavButton {groupItem} />
@@ -110,21 +112,21 @@
                 style:margin-bottom="1rem"
                 aria-label="toggle nav"
             >
-                <span class="icon-cheveron-right" aria-hidden="true" />
+                <span class="icon-cheveron-right" aria-hidden="true"></span>
             </button>
         {/if}
         <div class="web-side-nav-mobile-footer-buttons">
             <IsLoggedIn />
 
             <a
-                href={GITHUB_REPO_LINK}
+                href={SOCIAL_STATS.GITHUB.LINK}
                 target="_blank"
                 rel="noopener noreferrer"
                 class="web-button is-text web-u-inline-width-100-percent-mobile"
             >
-                <span class="web-icon-star" aria-hidden="true" />
+                <span class="web-icon-star" aria-hidden="true"></span>
                 <span class="text">Star on GitHub</span>
-                <span class="web-inline-tag text-sub-body">{GITHUB_STARS}</span>
+                <span class="web-inline-tag text-sub-body">{SOCIAL_STATS.GITHUB.STAT}</span>
             </a>
         </div>
     </div>

@@ -2,7 +2,6 @@
     import { classNames } from '$lib/utils/classnames';
     import { trackEvent } from '$lib/actions/analytics';
     import { browser } from '$app/environment';
-    import { page } from '$app/stores';
     import { getAppwriteDashboardUrl } from '$lib/utils/dashboard';
 
     export let classes = '';

@@ -14,7 +14,7 @@
 <div data-theme-ignore class="inner-phone light">
     <div class="header">
         <p class="title">Your tasks</p>
-        <span class="icon-menu" aria-label="menu" />
+        <span class="icon-menu" aria-label="menu"></span>
     </div>
 
     <div class="date">Today</div>
@@ -27,9 +27,9 @@
         {/each}
     </div>
 
-    <button class="add-btn">
-        <span class="web-icon-plus" />
-    </button>
+    <div class="add-btn">
+        <span class="web-icon-plus"></span>
+    </div>
 
     <div class="overlay" id="overlay-{$elId}">
         <div class="drawer" id="drawer-{$elId}">
@@ -50,7 +50,7 @@
     <div class="drop-zone">
         <span id="upload-text-{$elId}"> Drop media here </span>
         <div class="loading-overlay" id="upload-loading-{$elId}">
-            <div class="loader" />
+            <div class="loader"></div>
         </div>
     </div>
     <img id="upload-img-{$elId}" src="/images/animations/storage-2.png" alt="" />

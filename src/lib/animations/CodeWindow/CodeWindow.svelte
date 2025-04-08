@@ -5,16 +5,16 @@
 
 <div class="code-console">
     <div class="header">
-        <div class="ellipse" />
-        <div class="ellipse-2" />
-        <div class="ellipse-3" />
+        <div class="ellipse"></div>
+        <div class="ellipse-2"></div>
+        <div class="ellipse-3"></div>
     </div>
     <div class="block">
         <AutoBox>
             <slot {Code} />
         </AutoBox>
     </div>
-    <div id="code-bottom" />
+    <div id="code-bottom"></div>
 </div>
 
 <style lang="scss">

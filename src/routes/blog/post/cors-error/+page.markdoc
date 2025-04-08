@@ -74,7 +74,7 @@ However, if you are still running into issues, I’ll keep an ongoing list of ot
 
 - Disabled CORS in browser.  (I’ve seen people have this issue with browser extensions)
 
-## Aditional resources
+## Additional resources
 Visit our documentation, Discord server, YouTube channel, or Threads page to find more resources on this topic.
 
 {% arrow_link href="https://appwrite.io/docs/advanced/security/abuse-protection/" %}

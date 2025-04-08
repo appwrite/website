@@ -43,8 +43,8 @@
     import { Search, IsLoggedIn } from '$lib/components';
     import { isMac } from '$lib/utils/platform';
     import { getContext, setContext } from 'svelte';
-    import { GITHUB_REPO_LINK, GITHUB_STARS } from '$lib/constants';
-    import { page } from '$app/stores';
+    import { SOCIAL_STATS } from '$lib/constants';
+    import { page } from '$app/state';
     import { getAppwriteDashboardUrl } from '$lib/utils/dashboard';
 
     export let variant: DocsLayoutVariant = 'default';
@@ -67,7 +67,7 @@
         }));
     });
 
-    const key = $page.route.id?.includes('tutorials') ? TUT_CTX_KEY : CTX_KEY;
+    const key = page.route.id?.includes('tutorials') ? TUT_CTX_KEY : CTX_KEY;
     setContext(key, true);
 
     const handleKeydown = (e: KeyboardEvent) => {
@@ -114,9 +114,9 @@
                 on:click={toggleSidenav}
             >
                 {#if $layoutState.showSidenav}
-                    <span aria-hidden="true" class="web-icon-close" />
+                    <span aria-hidden="true" class="web-icon-close"></span>
                 {:else}
-                    <span aria-hidden="true" class="web-icon-hamburger-menu" />
+                    <span aria-hidden="true" class="web-icon-hamburger-menu"></span>
                 {/if}
             </button>
         </div>
@@ -155,7 +155,7 @@
                         class="web-input-button web-u-flex-basis-400"
                         on:click={() => ($layoutState.showSearch = true)}
                     >
-                        <span class="web-icon-search" aria-hidden="true" />
+                        <span class="web-icon-search" aria-hidden="true"></span>
                         <span class="text">Search in docs</span>
 
                         <div class="ml-auto flex gap-1">
@@ -172,14 +172,14 @@
             <div class="web-main-header-end">
                 <div class="flex gap-2">
                     <a
-                        href={GITHUB_REPO_LINK}
+                        href={SOCIAL_STATS.GITHUB.LINK}
                         target="_blank"
                         rel="noopener noreferrer"
                         class="web-button is-text"
                     >
-                        <span class="web-icon-star" aria-hidden="true" />
+                        <span class="web-icon-star" aria-hidden="true"></span>
                         <span class="text">Star on GitHub</span>
-                        <span class="web-inline-tag text-sub-body">{GITHUB_STARS}</span>
+                        <span class="web-inline-tag text-sub-body">{SOCIAL_STATS.GITHUB.STAT}</span>
                     </a>
                     <IsLoggedIn />
                 </div>

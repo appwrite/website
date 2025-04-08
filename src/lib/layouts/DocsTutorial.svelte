@@ -5,7 +5,7 @@
     import type { TocItem } from './DocsArticle.svelte';
     import Heading from '$markdoc/nodes/Heading.svelte';
     import { onMount, tick } from 'svelte';
-    import { page } from '$app/stores';
+    import { page } from '$app/state';
 
     export let toc: Array<TocItem>;
     export let back: string;
@@ -50,13 +50,13 @@
     async function preSelectItemOnInit() {
         await tick();
 
-        if (!$page.url.hash) return;
+        if (!page.url.hash) return;
         const tocItem = toc.slice(1);
 
         // no sub-items, return.
         if (!tocItem.length) return;
 
-        const pageHash = $page.url.hash.replace('#', '');
+        const pageHash = page.url.hash.replace('#', '');
         const tocItemHref = tocItem[0].href.replace('#', '');
 
         if (pageHash !== tocItemHref) return;
@@ -113,7 +113,7 @@
                         class="web-icon-button web-is-only-mobile"
                         aria-label="previous page"
                     >
-                        <span class="icon-cheveron-left" aria-hidden="true" />
+                        <span class="icon-cheveron-left" aria-hidden="true"></span>
                     </a>
                 {/if}
                 <ul class="web-metadata web-caption-400">
@@ -136,7 +136,7 @@
                             <span
                                 class="icon-cheveron-left web-u-font-size-24 web-u-color-text-primary"
                                 aria-hidden="true"
-                            />
+                            ></span>
                         </a>
                     {/if}
                     <h1 class="web-title {currentStep === 1 ? 'lg:-ml-5' : ''}">
@@ -144,7 +144,7 @@
                     </h1>
                 </div>
             </div>
-            <div class="web-article-header-end" />
+            <div class="web-article-header-end"></div>
         </header>
         <div class="web-article-content">
             <section class="web-article-content-section">
@@ -165,7 +165,7 @@
                     <div class="web-u-padding-block-start-32 flex justify-between">
                         {#if prevStep}
                             <a href={prevStep.href} class="web-button is-text previous-step-anchor">
-                                <span class="icon-cheveron-left" aria-hidden="true" />
+                                <span class="icon-cheveron-left" aria-hidden="true"></span>
                                 <span class="web-sub-body-500">
                                     Step {prevStep.step}<span class="web-is-not-mobile"
                                         >: {getCorrectTitle(prevStep, 1)}</span
@@ -184,7 +184,7 @@
                                         >: {nextStep.title}</span
                                     >
                                 </span>
-                                <span class="icon-cheveron-right" aria-hidden="true" />
+                                <span class="icon-cheveron-right" aria-hidden="true"></span>
                             </a>
                         {/if}
                     </div>
@@ -256,7 +256,7 @@
                 </ol>
                 <div class="border-greyscale-900/4 border-t pt-5">
                     <button class="web-link inline-flex items-center gap-2" use:scrollToTop>
-                        <span class="web-icon-arrow-up" aria-hidden="true" />
+                        <span class="web-icon-arrow-up" aria-hidden="true"></span>
                         <span class="text-caption">Back to top</span>
                     </button>
                 </div>

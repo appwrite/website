@@ -9,7 +9,7 @@
     import PreFooter from '../PreFooter.svelte';
     import MessageCard from './MessageCard.svelte';
 
-    export let data;
+    let { data } = $props();
 
     const title = data.title + ' - Threads' + TITLE_SUFFIX;
     const description = DEFAULT_DESCRIPTION;
@@ -36,17 +36,17 @@
 </svelte:head>
 
 <Main>
-    <div class="container web-u-padding-block-end-0">
+    <div class="web-u-padding-block-end-0 container">
         <div class="header">
             <div>
                 <a class="web-link is-secondary items-baseline" href="/threads">
-                    <span class="web-icon-chevron-left" aria-hidden="true" />
+                    <span class="web-icon-chevron-left" aria-hidden="true"></span>
                     <span>Back</span>
                 </a>
                 <h1 class="text-title font-aeonik-pro text-primary">{data.title}</h1>
                 <ul class="tags">
                     <li class="web-tag">
-                        <span class="web-icon-arrow-up" />
+                        <span class="web-icon-arrow-up"></span>
                         <span class="text">{data.vote_count}</span>
                     </li>
                     {#each data.tags ?? [] as tag}
@@ -58,7 +58,7 @@
             </div>
             <div class="buttons">
                 <a class="web-button" href={discordLink}>
-                    <span class="web-icon-discord" />
+                    <span class="web-icon-discord"></span>
                     <span class="text">View on Discord</span>
                 </a>
             </div>
@@ -83,7 +83,7 @@
                         Reply to this thread by joining our Discord
                     </p>
                     <a class="web-button mt-6" href={discordLink}>
-                        <span class="web-icon-discord" />
+                        <span class="web-icon-discord"></span>
                         <span class="text">Reply on Discord</span>
                     </a>
                 </div>

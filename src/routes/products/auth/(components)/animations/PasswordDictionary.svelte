@@ -1,5 +1,5 @@
 <script lang="ts">
-    import Input from '$lib/components/ui/Input.svelte';
+    import Input from '$lib/components/ui/input.svelte';
     import { classNames } from '$lib/utils/classnames';
 
     const options = [
@@ -114,7 +114,7 @@
                         >{option}</span
                     >{/if}
             {/each}
-            <div class="mask absolute inset-0 z-0 backdrop-blur-md" />
+            <div class="mask absolute inset-0 z-0 backdrop-blur-md"></div>
         </div>
 
         <div class="gradient absolute inset-0 z-10 flex items-center justify-center">
