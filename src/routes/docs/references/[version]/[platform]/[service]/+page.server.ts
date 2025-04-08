@@ -21,10 +21,8 @@ export const load: PageServerLoad = async ({ params }) => {
     const version = params.version === 'cloud' ? '1.6.x' : params.version;
 
     if (!versions.includes(version)) error(404, 'Invalid version');
-    if (!services.includes(service as ServiceValue)) error(404, 'Invalid service');
     if (!platforms.includes(platform as Platform)) error(404, 'Invalid platform');
+    if (!services.includes(service as ServiceValue)) error(404, 'Invalid service');
 
-    const data = await getService(version, platform, service);
-
-    return data;
+    return getService(version, platform, service);
 };
