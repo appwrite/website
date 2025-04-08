@@ -2,12 +2,53 @@
 import SVGFixer from 'oslllo-svg-fixer';
 import svgtofont from 'svgtofont';
 import { basename, extname, resolve } from 'path';
-import { readdirSync, writeFileSync } from 'fs';
+import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from 'fs';
 
 const src = resolve(process.cwd(), 'src/icons/svg');
 const optimized = resolve(process.cwd(), 'src/icons/optimized');
 const dist = resolve(process.cwd(), 'src/icons/output');
-const outputPath = resolve(process.cwd(), 'src/lib/components/ui/icon/types.ts');
+const outputPath = resolve(process.cwd(), 'src/lib/components/ui/icon');
+
+const generateIconSprite = () => {
+    const files = readdirSync(optimized);
+    const outputDir = resolve(`${outputPath}`);
+    const spriteOutputPath = resolve(outputDir, 'sprite.svelte');
+
+    if (!existsSync(outputDir)) {
+        mkdirSync(outputDir, { recursive: true });
+    }
+
+    let spriteContent = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="display: none;">\n`;
+
+    files.forEach((file) => {
+        if (!file.endsWith('.svg')) return;
+
+        const filePath = resolve(optimized, file);
+        const fileName = basename(file, '.svg');
+        const svgContent = readFileSync(filePath, 'utf8');
+
+        // Extract the SVG content (everything between <svg> and </svg>)
+        const svgMatch = svgContent.match(/<svg[^>]*>([\s\S]*?)<\/svg>/i);
+
+        if (svgMatch && svgMatch[1]) {
+            const innerContent = svgMatch[1].trim();
+            const viewBoxMatch = svgContent.match(/viewBox=['"]([^'"]*)['"]/i);
+            const viewBox = viewBoxMatch ? viewBoxMatch[1] : '0 0 24 24';
+
+            // Add symbol with the extracted content
+            spriteContent += `  <symbol id="${fileName}" stroke="currentColor" viewBox="${viewBox}">\n    ${innerContent}\n  </symbol>\n`;
+        }
+    });
+
+    // Close the sprite
+    spriteContent += '</svg>';
+
+    // Write the sprite file
+    writeFileSync(spriteOutputPath, spriteContent);
+    console.log(`Created SVG sprite at ${spriteOutputPath}`);
+
+    return spriteOutputPath;
+};
 
 const generateIconType = () => {
     try {
@@ -19,7 +60,7 @@ const generateIconType = () => {
 
         const typeDefinition = `export type IconType = ${fileNames.map((name) => `"${name}"`).join(' | ')};`;
 
-        writeFileSync(outputPath, typeDefinition);
+        writeFileSync(`${outputPath}/types.ts`, typeDefinition);
 
         console.log(`Type generated successfully at ${outputPath}`);
         console.log(`Generated type: ${typeDefinition}`);
@@ -57,5 +98,7 @@ export const generateIcons = async () => {
         },
         emptyDist: true,
         generateInfoData: true
-    }).then(() => generateIconType());
+    })
+        .then(() => generateIconSprite())
+        .then(() => generateIconType());
 };
