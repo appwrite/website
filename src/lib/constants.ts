@@ -1,3 +1,5 @@
+import type { IconType } from "./components/ui";
+
 type SocialStats = {
     [K in 'GITHUB' | 'DISCORD' | 'TWITTER' | 'YOUTUBE']: {
         STAT: string;
@@ -47,13 +49,13 @@ export const BLOG_POSTS_PER_PAGE = 12;
 type Banners = 'discord-banner-01' | 'init-banner-02' | 'pricing-banner-01';
 
 export type Social = {
-    icon: string;
+    icon: IconType;
     label: string;
     link: string;
 };
 
 export type SocialShareOption = {
-    icon: string;
+    icon: IconType;
     label: string;
     link: string;
     type: 'link' | 'copy';
@@ -115,25 +117,25 @@ export const integrationCategoryDescriptions: IntegrationCategory[] = [
 
 export const socialSharingOptions: Array<SocialShareOption> = [
     {
-        icon: 'web-icon-x',
+        icon: 'x',
         label: 'Twitter',
         link: 'https://x.com/intent/post?text={TITLE}\n&url={URL}',
         type: 'link'
     },
     {
-        icon: 'web-icon-linkedin',
+        icon: 'linkedin',
         label: 'LinkedIn',
         link: 'https://www.linkedin.com/sharing/share-offsite?text={TITLE}\n&url={URL}',
         type: 'link'
     },
     {
-        icon: 'web-icon-ycombinator',
+        icon: 'ycombinator',
         label: 'YCombinator',
         link: 'https://news.ycombinator.com/submitlink?t={TITLE}\n&u={URL}',
         type: 'link'
     },
     {
-        icon: 'web-icon-copy',
+        icon: 'copy',
         label: 'Copy',
         link: '',
         type: 'copy'
@@ -142,47 +144,47 @@ export const socialSharingOptions: Array<SocialShareOption> = [
 
 export const socials: Array<Social> = [
     {
-        icon: 'web-icon-discord',
+        icon: 'discord',
         label: 'Discord',
         link: 'https://appwrite.io/discord'
     },
     {
-        icon: 'web-icon-github',
+        icon: 'github',
         label: 'Github',
         link: 'https://github.com/appwrite'
     },
     {
-        icon: 'web-icon-x',
+        icon: 'x',
         label: 'Twitter',
         link: 'https://twitter.com/intent/follow?screen_name=appwrite'
     },
     {
-        icon: 'web-icon-linkedin',
+        icon: 'linkedin',
         label: 'LinkedIn',
         link: 'https://linkedin.com/company/appwrite'
     },
     {
-        icon: 'web-icon-youtube',
+        icon: 'youtube',
         label: 'YouTube',
         link: 'https://youtube.com/c/appwrite?sub_confirmation=1'
     },
     {
-        icon: 'web-icon-daily-dev',
+        icon: 'daily-dev',
         label: 'Daily.dev',
         link: 'https://app.daily.dev/squads/appwrite'
     },
     {
-        icon: 'web-icon-bluesky',
+        icon: 'bluesky',
         label: 'Bluesky',
         link: 'https://bsky.app/profile/appwrite.io'
     },
     {
-        icon: 'web-icon-tiktok',
+        icon: 'tiktok',
         label: 'Tiktok',
         link: 'https://tiktok.com/@appwrite'
     },
     {
-        icon: 'web-icon-instagram',
+        icon: 'instagram',
         label: 'Instagram',
         link: 'https://instagram.com/appwrite.io'
     }

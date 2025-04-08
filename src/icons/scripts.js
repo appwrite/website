@@ -6,7 +6,7 @@ const output = resolve(process.cwd(), 'src/lib/components/ui/icon');
 
 const generateIconsSprite = () => {
     const files = readdirSync(src);
-    const outputDir = resolve(`${output}`);
+    const outputDir = resolve(`${output}/sprite`);
     const spriteOutputPath = resolve(outputDir, 'sprite.svelte');
 
     if (!existsSync(outputDir)) {
@@ -29,7 +29,7 @@ const generateIconsSprite = () => {
             const viewBoxMatch = svgContent.match(/viewBox=['"]([^'"]*)['"]/i);
             const viewBox = viewBoxMatch ? viewBoxMatch[1] : '0 0 24 24';
 
-            spriteContent += `  <symbol id="${fileName}" stroke="currentColor" viewBox="${viewBox}">\n    ${innerContent}\n  </symbol>\n`;
+            spriteContent += `  <symbol id="${fileName}" viewBox="${viewBox}">\n    ${innerContent}\n  </symbol>\n`;
         }
     });
 

@@ -6,7 +6,7 @@
     import AppwriteIn100Seconds from '$lib/components/AppwriteIn100Seconds.svelte';
     import PreFooter from '$lib/components/PreFooter.svelte';
     import Technologies from '$lib/components/Technologies.svelte';
-    import { Button } from '$lib/components/ui';
+    import { Button, Icon } from '$lib/components/ui';
     import Badge from '$lib/components/ui/badge.svelte';
     import GradientText from '$lib/components/ui/gradient-text.svelte';
     import Hero from '$lib/components/ui/hero.svelte';
@@ -135,10 +135,10 @@
                 <section class="container pb-0">
                     <a
                         href="/blog/post/what-is-mcp"
-                        class="web-hero-banner-button mb-4"
+                        class="web-hero-banner-button mb-4 flex items-center! gap-1"
                         on:click={() => trackEvent({ plausible: { name: 'Banner button click' } })}
                     >
-                        <span class="web-icon-star shrink-0" aria-hidden="true"></span>
+                        <Icon name="star" class="shrink-0 fill-white" aria-hidden="true"></Icon>
                         <span class="text-caption shrink-0 font-medium">New</span>
                         <div class="web-hero-banner-button-sep"></div>
                         <span class="text-caption web-u-trim-1"
