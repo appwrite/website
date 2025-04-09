@@ -1,5 +1,6 @@
 <script lang="ts">
     import { classNames } from '$lib/utils/classnames';
+    import Button from '$lib/components/ui/button.svelte';
 
     type $$Props = {
         eyebrow: {
@@ -56,13 +57,13 @@
             </p>
 
             <div class="flex flex-col items-center gap-2 md:flex-row">
-                <a href={cta.url} class="web-button !w-full md:!w-fit">
+                <Button href={cta.url} class="!w-full md:!w-fit">
                     {cta.label}
-                </a>
+                </Button>
                 {#if secondaryCta}
-                    <a href={secondaryCta.url} class="web-button is-secondary !w-full md:!w-fit">
+                    <Button variant="secondary" href={secondaryCta.url} class="!w-full md:!w-fit">
                         {secondaryCta.label}
-                    </a>
+                    </Button>
                 {/if}
             </div>
         </div>

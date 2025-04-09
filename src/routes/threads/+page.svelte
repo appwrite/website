@@ -1,14 +1,14 @@
 <script lang="ts">
     import { Main } from '$lib/layouts';
     import { createDebounce } from '$lib/utils/debounce';
-    import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
+    import { DEFAULT_HOST } from '$lib/utils/metadata';
     import { TITLE_SUFFIX } from '$routes/titles';
+    import { Button } from '$lib/components/ui';
 
     import FooterNav from '$lib/components/FooterNav.svelte';
     import MainFooter from '$lib/components/MainFooter.svelte';
     import ThreadCard from './ThreadCard.svelte';
 
-    import Input from '$lib/components/ui/input.svelte';
     import PreFooter from './PreFooter.svelte';
     import TagsDropdown from './TagsDropdown.svelte';
     import { getThreads } from './helpers';
@@ -198,12 +198,11 @@
                             <div class="web-card is-normal has-border-gradient empty-card">
                                 <enhanced:img class="img" src="./(assets)/empty-state.png" alt="" />
                                 <span class="text-body font-medium">No support threads found</span>
-                                <button
-                                    class="web-button"
+                                <Button
                                     onclick={() => {
                                         query = '';
                                         handleSearch('');
-                                    }}>Clear search</button
+                                    }}>Clear search</Button
                                 >
                             </div>
                         {/each}

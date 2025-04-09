@@ -1,5 +1,6 @@
 <script lang="ts">
     import Tooltip from '$lib/components/Tooltip.svelte';
+    import { Button } from '$lib/components/ui';
     import { classNames } from '$lib/utils/classnames';
     import Templates from '../(assets)/templates.png';
 
@@ -72,9 +73,10 @@
     <div class="container mt-20 space-y-8">
         <div class="flex items-center justify-between">
             <h2 class="text-label text-primary font-aeonik-pro">Explore templates</h2>
-            <a
+            <Button
+                variant="secondary"
                 href="/docs/products/functions/templates"
-                class="web-button is-secondary !hidden md:!block">View all templates</a
+                class="!hidden md:!block">View all templates</Button
             >
         </div>
         <div class="grid grid-cols-1 gap-4 md:grid-cols-3">
@@ -119,10 +121,10 @@
                 </div>
             {/each}
 
-            <a
+            <Button
+                variant="secondary"
                 href="/docs/products/functions/templates"
-                class="web-button is-secondary block !w-full md:!hidden md:!w-fit"
-                >View all templates</a
+                class="block !w-full md:!hidden md:!w-fit">View all templates</Button
             >
         </div>
     </div>
