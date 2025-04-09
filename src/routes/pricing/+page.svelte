@@ -8,6 +8,7 @@
     import Faq from './faq.svelte';
     import BG from './bg.png?enhanced';
     import { getAppwriteDashboardUrl } from '$lib/utils/dashboard';
+    import { Button } from '$lib/components/ui';
 
     const title = 'Pricing' + TITLE_SUFFIX;
     const description = 'Explore our straightforward pricing plans that scale with your project.';
@@ -94,14 +95,15 @@
                                                 A great fit for passion projects and small
                                                 applications.
                                             </p>
-                                            <a
+                                            <Button
+                                                variant="secondary"
                                                 href={getAppwriteDashboardUrl('/register')}
-                                                class="web-button is-secondary is-full-width mt-8"
+                                                class="is-full-width mt-8"
                                             >
                                                 <span class="text-sub-body font-medium"
                                                     >Start building</span
                                                 >
-                                            </a>
+                                            </Button>
                                         </header>
                                         <div class="web-pricing-cards-content">
                                             <ul class="web-checked-list-circle">
@@ -160,18 +162,18 @@
                                                 For production applications that need powerful
                                                 functionality and resources to scale.
                                             </p>
-                                            <a
+                                            <Button
                                                 href={getAppwriteDashboardUrl(
                                                     '/console?type=create&plan=tier-1'
                                                 )}
-                                                class="web-button is-full-width mt-11"
+                                                class="is-full-width mt-11"
                                                 target="_blank"
                                                 rel="noopener noreferrer"
                                             >
                                                 <span class="text-sub-body font-medium"
                                                     >Start building</span
                                                 >
-                                            </a>
+                                            </Button>
                                         </header>
                                         <div class="web-pricing-cards-content">
                                             <p>Everything in Free, plus:</p>
@@ -226,18 +228,19 @@
                                                 For teams that handle more complex and large
                                                 projects and need more control and support.
                                             </p>
-                                            <a
+                                            <Button
+                                                variant="secondary"
                                                 href={getAppwriteDashboardUrl(
                                                     '/console?type=create&plan=tier-2'
                                                 )}
-                                                class="web-button is-secondary is-full-width mt-10"
+                                                class="is-full-width mt-10"
                                                 target="_blank"
                                                 rel="noopener noreferrer"
                                             >
                                                 <span class="text-sub-body font-medium"
                                                     >Start building</span
                                                 >
-                                            </a>
+                                            </Button>
                                         </header>
                                         <div class="web-pricing-cards-content">
                                             <p>Everything in Pro, plus:</p>
@@ -280,14 +283,15 @@
                                                 For enterprises that need more power and premium
                                                 support.
                                             </p>
-                                            <a
+                                            <Button
+                                                variant="secondary"
                                                 href="/contact-us/enterprise"
-                                                class="web-button is-secondary is-full-width mt-10"
+                                                class="is-full-width mt-10"
                                                 rel="noopener noreferrer"
                                             >
                                                 <!-- <span class="web-sub-body-500">Start trial</span> -->
                                                 <span class="web-sub-body-500">Contact us</span>
-                                            </a>
+                                            </Button>
                                         </header>
                                         <div class="web-pricing-cards-content">
                                             <p>Everything in Scale, plus:</p>
@@ -325,7 +329,8 @@
                                 Large scale projects seeking greater performance, collaboration and
                                 security.
                             </p>
-                            <a href="/contact-us" class="web-button is-secondary mt-8">Contact us</a
+                            <Button variant="secondary" href="/contact-us" class="mt-8"
+                                >Contact us</Button
                             >
                         </div>
                         <div class="cta-card w-full p-6">
@@ -338,9 +343,10 @@
                                 We support open-source teams with free access to Pro and Scale
                                 plans.
                             </p>
-                            <a
+                            <Button
+                                variant="secondary"
                                 href="/docs/advanced/platform/oss"
-                                class="web-button is-secondary mt-8">Learn More</a
+                                class="mt-8">Learn More</Button
                             >
                         </div>
                     </div>

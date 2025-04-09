@@ -1,5 +1,7 @@
 <script lang="ts">
     import CommunitySupportChat from '$lib/components/CommunitySupportChat.svelte';
+    import DiscordLink from '$lib/components/shared/discord-link.svelte';
+    import { Button } from '$lib/components/ui';
 </script>
 
 <div class="container grid items-center gap-8 md:grid-cols-2">
@@ -12,13 +14,7 @@
             products. Gain access to a wealth of knowledge, support, and shared experiences needed
             to grow and advance your tech career.
         </p>
-        <a
-            href="/discord"
-            class="web-button is-secondary text-accent mt-10 !w-full py-1 !whitespace-normal md:!w-fit"
-        >
-            <span class="web-icon-discord"></span>
-            Join our Discord</a
-        >
+        <DiscordLink class="text-accent mt-10 !w-full py-1 !whitespace-normal md:!w-fit" />
     </div>
 
     <div class="px-4">

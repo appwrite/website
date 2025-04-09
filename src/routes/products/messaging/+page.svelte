@@ -10,6 +10,7 @@
     import MultiCodeContextless from '$lib/components/MultiCodeContextless.svelte';
     import { Platform } from '$lib/utils/references';
     import { getAppwriteDashboardUrl } from '$lib/utils/dashboard';
+    import { Button } from '$lib/components/ui';
 
     const title = 'Messaging' + TITLE_SUFFIX;
     const description =
@@ -269,9 +270,9 @@ messaging.create_email(
                         directly to your users.
                     </p>
                     <div class="hero-buttons mt-8 flex items-center gap-2">
-                        <a class="web-button" href={getAppwriteDashboardUrl()}>Get started</a>
-                        <a class="web-button is-secondary" href="/docs/products/messaging"
-                            >Documentation</a
+                        <Button href={getAppwriteDashboardUrl()}>Get started</Button>
+                        <Button variant="secondary" href="/docs/products/messaging"
+                            >Documentation</Button
                         >
                     </div>
                 </div>

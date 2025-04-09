@@ -1,97 +1,59 @@
-<script lang="ts">
-    import { classNames } from '$lib/utils/classnames';
-    import { emptyMeltElement, melt, type AnyMeltElement } from '@melt-ui/svelte';
-    import { cva, type VariantProps } from 'cva';
-    import type { Action } from 'svelte/action';
-    import type { HTMLAnchorAttributes, HTMLButtonAttributes } from 'svelte/elements';
-    import { createBubbler } from 'svelte/legacy';
-    import InlineTag from './inline-tag.svelte';
-
+<script lang="ts" module>
     // TODO: replace _button.scss with Tailwind classes for long-term maintainability
     const button = cva(['web-button'], {
         variants: {
             variant: {
                 primary: [''],
                 secondary: ['is-secondary'],
-                text: ['is-text']
+                text: ['is-text'],
+                transparent: ['is-transparent'],
+                small: ['is-small'],
+                icon: ['is-icon', 'is-text']
             }
         }
     });
 
-    type ButtonProps =
+    export type Variant = VariantProps<typeof button>['variant'];
+</script>
+
+<script lang="ts">
+    import { classNames } from '$lib/utils/classnames';
+    import { type VariantProps, cva } from 'cva';
+    import type { Snippet } from 'svelte';
+    import type { Action } from 'svelte/action';
+    import type { HTMLAnchorAttributes, HTMLButtonAttributes } from 'svelte/elements';
+    import { trackEvent, type TrackEventArgs } from '$lib/actions/analytics';
+
+    type ButtonOrAnchorProps =
         | (HTMLButtonAttributes & { href?: undefined })
         | (HTMLAnchorAttributes & { href: string });
 
-    type $$Props = ButtonProps &
-        VariantProps<typeof button> & {
-            use?:
-                | Action<HTMLButtonElement | HTMLAnchorElement, any>
-                | [Action<HTMLButtonElement | HTMLAnchorElement, any>, any];
-        } & { element?: AnyMeltElement };
-
-    interface Props {
-        href?: $$Props['href'];
-        variant?: $$Props['variant'];
-        use?: $$Props['use'];
-        element?: AnyMeltElement | undefined;
-        icon?: import('svelte').Snippet;
-        children: import('svelte').Snippet;
-        tag?: import('svelte').Snippet;
-        [key: string]: any;
-    }
+    type Props = {
+        action?: Action;
+        children: Snippet;
+        events?: TrackEventArgs;
+    } & VariantProps<typeof button> &
+        ButtonOrAnchorProps;
 
     const {
-        href = undefined,
-        variant = 'primary',
-        use = undefined,
-        element = undefined,
-        icon,
+        href,
+        variant,
+        action = () => {},
         children,
-        tag,
+        class: classes,
+        events,
         ...rest
     }: Props = $props();
-    let meltElement = $derived(element ?? emptyMeltElement);
-
-    const { class: classes, href: _ } = rest;
 
     const buttonClasses = classNames(button({ variant }), classes);
-
-    const applyAction = (node: HTMLButtonElement | HTMLAnchorElement) => {
-        if (!use) return { destroy: () => {} };
-
-        if (typeof use === 'function') {
-            return use(node);
-        } else if (Array.isArray(use)) {
-            const [action, params] = use;
-            return action(node, params);
-        }
-
-        return { destroy: () => {} };
-    };
 </script>
 
 {#if href}
-    <a {...rest} {href} class={buttonClasses} use:melt={$meltElement} use:applyAction>
-        {#if icon}
-            {@render icon()}
-        {/if}
+    <a use:action {href} class={buttonClasses} {...rest as HTMLAnchorAttributes}>
         {@render children()}
-        {#if tag}
-            <InlineTag>
-                {@render tag()}
-            </InlineTag>
-        {/if}
     </a>
 {:else}
-    <button {...rest} class={buttonClasses} use:melt={$meltElement} use:applyAction>
-        {#if icon}
-            {@render icon()}
-        {/if}
+    <button use:action class={buttonClasses} {...rest as HTMLButtonAttributes}>
         {@render children()}
-        {#if tag}
-            <InlineTag>
-                {@render tag()}
-            </InlineTag>
-        {/if}
     </button>
 {/if}

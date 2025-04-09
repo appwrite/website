@@ -1,6 +1,7 @@
 <script lang="ts">
     import { page } from '$app/state';
     import { MainFooter } from '$lib/components';
+    import { Button } from '$lib/components/ui';
     import { Docs } from '$lib/layouts';
     import Sidebar from './Sidebar.svelte';
 </script>
@@ -21,9 +22,9 @@
                         documentation.
                     </p>
                 {/if}
-                <a href="/docs" class="web-button is-secondary mt-3 self-center">
+                <Button variant="secondary" href="/docs" class="mt-3 self-center">
                     <span>Back to docs</span>
-                </a>
+                </Button>
             </div>
         </div>
     </div>
