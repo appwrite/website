@@ -102,7 +102,6 @@
         const isSame = $preferredPlatform === page.params.platform;
         const hasPlatformPrefix =
             $preferredPlatform.startsWith('client-') || $preferredPlatform.startsWith('server-');
-
         /* `document.referrer` = don't redirect if the page was opened via a direct url hit */
         if (!isSame && document.referrer) {
             const platformMode = hasPlatformPrefix
@@ -129,7 +128,7 @@
     );
 
     let platformBindingForSelect = $derived(page.params.platform as Platform);
-    let platform = $derived(($preferredPlatform ?? page.params.platform) as Platform);
+    let platform = $derived(/**$preferredPlatform ?? */ page.params.platform as Platform);
     let platformType = $derived(platform.startsWith('client-') ? 'CLIENT' : 'SERVER');
     let serviceName = $derived(serviceMap[data.service?.name]);
     let title = $derived(serviceName + API_REFERENCE_TITLE_SUFFIX);
