@@ -2,6 +2,7 @@
     import { getLocalTimeZone, today } from '@internationalized/date';
     import { createCalendar, melt } from '@melt-ui/svelte';
     import Step from './Step.svelte';
+    import { Button } from '$lib/components/ui';
 
     const curr = today(getLocalTimeZone());
 
@@ -29,13 +30,13 @@
                     <div class="text-label text-primary" use:melt={$heading}>
                         {$headingValue}
                     </div>
-                    <button
-                        class="web-button is-secondary"
-                        on:click={() => value.set(curr)}
+                    <Button
+                        variant="secondary"
+                        onclick={() => value.set(curr)}
                         style="height: min-content; padding-block: 0 !important;"
                     >
                         Today
-                    </button>
+                    </Button>
                 </div>
                 <button class="web-icon-button" use:melt={$nextButton}>
                     <div class="web-icon-chevron-right"></div>

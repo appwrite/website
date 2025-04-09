@@ -5,6 +5,7 @@
     import Beaker from '../(assets)/beaker.svg';
     import Checkmark from '../(assets)/checkmark.svg';
     import { getAppwriteDashboardUrl } from '$lib/utils/dashboard';
+    import { Button } from '$lib/components/ui';
 
     const items = [
         {
@@ -46,13 +47,14 @@
         </p>
 
         <div class="flex w-full flex-col items-center justify-center gap-4 md:flex-row">
-            <a class="web-button !w-full md:!w-fit" href={educationSignUp}>Sign up now</a>
-            <a
-                class="web-button is-secondary !w-full !whitespace-normal md:!w-fit"
+            <Button class="!w-full md:!w-fit" href={educationSignUp}>Sign up now</Button>
+            <Button
+                variant="secondary"
+                class="!w-full !whitespace-normal md:!w-fit"
                 href="https://github.com/education"
             >
                 <span class="web-icon-github !text-white"></span>
-                GitHub Education</a
+                GitHub Education</Button
             >
         </div>
     </div>

@@ -1,4 +1,5 @@
 <script>
+    import { Button } from '$lib/components/ui';
     import { classNames } from '$lib/utils/classnames';
     import Puzzle from './puzzle.svelte';
 </script>
@@ -25,11 +26,8 @@
             </p>
 
             <div class="flex flex-col items-center gap-2 md:flex-row">
-                <!-- <button class="web-button is-secondary !w-full md:!w-fit"
-                    >Find an Expert</button
-                > -->
-                <a href="#become-a-partner" class="web-button is-secondary !w-full md:!w-fit"
-                    >Become a Partner</a
+                <Button variant="secondary" href="#become-a-partner" class="!w-full md:!w-fit"
+                    >Become a Partner</Button
                 >
             </div>
         </div>

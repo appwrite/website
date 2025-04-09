@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { Button } from '$lib/components/ui';
     import { classNames } from '$lib/utils/classnames';
     import Window from '../(assets)/deploy-window.png';
 </script>
@@ -16,9 +17,10 @@
                 within your development workflow seamlessly.
             </p>
 
-            <a
+            <Button
+                variant="secondary"
                 href="/docs/products/functions/deployments"
-                class="web-button is-secondary mt-8 !w-full md:!w-fit">Learn more</a
+                class="mt-8 !w-full md:!w-fit">Learn more</Button
             >
         </div>
 

@@ -8,6 +8,7 @@
     import Experience from '../(assets)/icons/experience.svg';
     import Expert from '../(assets)/icons/expert.svg';
     import Ship from '../(assets)/icons/ship.svg';
+    import { Button } from '$lib/components/ui';
 
     const items = [
         {
@@ -172,7 +173,9 @@
         </div>
     </div>
 
-    <a href="#become-a-partner" class="web-button is-secondary mx-auto mt-20">Become a partner</a>
+    <Button variant="secondary" href="#become-a-partner" class="mx-auto mt-20"
+        >Become a partner</Button
+    >
 </div>
 
 <div class="border-smooth flex flex-col items-center pt-24 pb-24">
@@ -196,5 +199,7 @@
         </div>
     </div>
 
-    <a href="#become-a-partner" class="web-button is-secondary mx-auto mt-20">Become a partner</a>
+    <Button href="#become-a-partner" variant="secondary" class="mx-auto mt-20"
+        >Become a partner</Button
+    >
 </div>

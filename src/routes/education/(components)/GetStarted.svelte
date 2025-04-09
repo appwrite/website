@@ -1,11 +1,20 @@
 <script lang="ts">
+    import { Button, Icon, type IconType } from '$lib/components/ui';
     import Badge from '$lib/components/ui/badge.svelte';
     import { classNames } from '$lib/utils/classnames';
     import { getAppwriteDashboardUrl } from '$lib/utils/dashboard';
 
     const educationSignUp = getAppwriteDashboardUrl('/console/education');
 
-    const items = [
+    const items: Array<{
+        label: string;
+        description: string;
+        cta: {
+            url: string;
+            label: string;
+            icon?: IconType;
+        };
+    }> = [
         {
             label: 'Enroll to the GitHub Student Developer Pack',
             description: 'Sign up for the Student Developer pack and explore the benefits.',
@@ -52,15 +61,16 @@
                         <h3 class="text-primary text-pretty">{item.label}</h3>
                         <p class="text-secondary text-pretty">{item.description}</p>
                     </div>
-                    <a
-                        class="web-button is-secondary text-accent mt-auto mb-0 !w-full md:!w-fit"
+                    <Button
+                        variant="secondary"
+                        class="text-accent mt-auto mb-0 !w-full md:!w-fit"
                         href={item.cta.url}
                         target="_blank"
                     >
                         {#if item.cta.icon}
-                            <span class="web-icon-{item.cta.icon}"></span>
+                            <Icon name={item.cta.icon} />
                         {/if}
-                        {item.cta.label}</a
+                        {item.cta.label}</Button
                     >
                 </div>
             {/each}

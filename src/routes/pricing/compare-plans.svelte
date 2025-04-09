@@ -3,6 +3,7 @@
     import { Tabs } from '$lib/UI';
     import { visible } from '$lib/actions/visible';
     import { Tooltip } from '$lib/components';
+    import { Button } from '$lib/components/ui';
     import { classNames } from '$lib/utils/classnames';
     import { getAppwriteDashboardUrl } from '$lib/utils/dashboard';
     import { getScrollDir } from '$lib/utils/getScrollDir';
@@ -534,19 +535,20 @@
                         <div class="web-mini-card">
                             <div class="flex flex-col items-center justify-between gap-2">
                                 <h4 class="text-sub-body text-primary font-medium">Free</h4>
-                                <a
+                                <Button
+                                    variant="secondary"
                                     href={getAppwriteDashboardUrl('/register')}
-                                    class="web-button is-secondary !w-full"
+                                    class="!w-full"
                                 >
                                     <span class="text-sub-body font-medium">Start building</span>
-                                </a>
+                                </Button>
                             </div>
                         </div>
                         <div class="web-mini-card">
                             <div class="flex flex-col items-center justify-between gap-2">
                                 <h4 class="text-sub-body text-primary font-medium">Pro</h4>
-                                <a
-                                    class="web-button !w-full"
+                                <Button
+                                    class="!w-full"
                                     href={getAppwriteDashboardUrl(
                                         '/console?type=create&plan=tier-1'
                                     )}
@@ -554,14 +556,15 @@
                                     rel="noopener noreferrer"
                                 >
                                     <span class="text-sub-body font-medium">Start building</span>
-                                </a>
+                                </Button>
                             </div>
                         </div>
                         <div class="web-mini-card">
                             <div class="flex flex-col items-center justify-between gap-2">
                                 <h4 class="text-sub-body text-primary font-medium">Scale</h4>
-                                <a
-                                    class="web-button is-secondary !w-full"
+                                <Button
+                                    variant="secondary"
+                                    class="!w-full"
                                     href={getAppwriteDashboardUrl(
                                         '/console?type=create&plan=tier-2'
                                     )}
@@ -569,18 +572,19 @@
                                     rel="noopener noreferrer"
                                 >
                                     <span class="text-sub-body font-medium">Start building</span>
-                                </a>
+                                </Button>
                             </div>
                         </div>
                         <div class="web-mini-card">
                             <div class="flex flex-col items-center justify-between gap-2">
                                 <h4 class="text-sub-body text-primary font-medium">Enterprise</h4>
-                                <a
-                                    class="web-button is-secondary !w-full"
+                                <Button
+                                    variant="secondary"
+                                    class="!w-full"
                                     href="/contact-us/enterprise"
                                 >
                                     <span class="text-sub-body font-medium">Contact</span>
-                                </a>
+                                </Button>
                             </div>
                         </div>
                     </div>
