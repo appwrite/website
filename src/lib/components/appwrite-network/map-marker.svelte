@@ -5,7 +5,7 @@
     import { cubicInOut } from 'svelte/easing';
     import { fly } from 'svelte/transition';
 
-    type $$Props = {
+    interface Props {
         city: string;
         code: string;
         index: number;
@@ -15,19 +15,19 @@
         class?: string;
         animate?: boolean;
         isOpen: boolean;
-    };
+    }
 
-    let className: $$Props['class'] = '';
-
-    export let city: $$Props['city'];
-    export let code: $$Props['code'];
-    export let available: $$Props['available'] = false;
-    export let x: $$Props['x'] = 0;
-    export let y: $$Props['y'] = 0;
-    export let index: $$Props['index'] = 0;
-    export let animate: $$Props['animate'] = false;
-    export let isOpen: $$Props['isOpen'] = false;
-    export { className as class };
+    const {
+        city,
+        code,
+        index = 0,
+        x = 0,
+        y = 0,
+        available = false,
+        class: className = '',
+        animate = false,
+        isOpen = false
+    }: Props = $props();
 
     const {
         elements: { trigger, content },
@@ -47,9 +47,9 @@
         forceVisible: true
     });
 
-    $: {
+    $effect(() => {
         open.set(isOpen);
-    }
+    });
 </script>
 
 <div
@@ -67,11 +67,11 @@
 >
     <span
         class="bg-accent absolute inline-flex h-full w-full rounded-full opacity-75 group-hover:animate-ping group-data-[active=true]:animate-ping"
-    />
-    <span class="bg-accent absolute inline-flex h-full w-full rounded-full" />
+    ></span>
+    <span class="bg-accent absolute inline-flex h-full w-full rounded-full"></span>
     <span
         class="absolute size-1/2 rounded-full bg-white transition-all group-hover:scale-110 group-data-[active=true]:size-2/3"
-    />
+    ></span>
 </div>
 
 {#if $open}

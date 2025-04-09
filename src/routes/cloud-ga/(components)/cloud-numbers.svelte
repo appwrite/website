@@ -5,7 +5,7 @@
     import { inView } from 'motion';
     import { classNames } from '$lib/utils/classnames';
 
-    let featuredNumbers: Array<{ number: number; label: string; suffix?: string }> = [
+    let featuredNumbers: Array<{ number: number; label: string; suffix?: string }> = $state([
         { number: 0, label: 'GitHub Stars', suffix: 'k+' },
         { number: 0, label: 'Pull Requests', suffix: 'k+' },
         { number: 0, label: 'Commits', suffix: 'k+' },
@@ -14,7 +14,7 @@
         { number: 0, label: 'Closed Issues', suffix: 'k+' },
         { number: 0, label: 'Forks', suffix: 'k' },
         { number: 0, label: 'Contributors', suffix: 'k+' }
-    ];
+    ]);
 
     const numbers = [32, 8, 15, 2.5, 625, 1.9, 4.9, 20];
 
@@ -24,7 +24,7 @@
         });
     };
 
-    let animate: boolean = false;
+    let animate: boolean = $state(false);
 
     const useInView = (node: HTMLElement) => {
         inView(
@@ -46,7 +46,7 @@
 >
     <div class="mx-auto flex w-full max-w-6xl flex-col justify-center">
         <Grid rows={2} bottomBorder>
-            <Cell column={2} columnStart={1} class="py-12 px-8 md:py-20">
+            <Cell column={2} columnStart={1} class="px-8 py-12 md:py-20">
                 <h2
                     data-animate={animate}
                     class="text-title text-primary font-aeonik-pro before:bg-accent text-pretty before:absolute before:left-0 before:mt-2.5 before:h-6 before:w-px before:origin-top before:scale-y-0 before:transition-transform before:duration-700 data-[animate=true]:before:scale-y-100"
@@ -68,7 +68,9 @@
                     class="grid grid-cols-1 place-content-between gap-y-4 md:grid-cols-2 lg:grid-cols-4"
                 >
                     {#each featuredNumbers as { number, label, suffix }}
-                        <div class="number-card mx-2 rounded-2xl bg-[#232325]/90 p-4">
+                        <div
+                            class="border-gradient relative mx-2 rounded-2xl bg-[#232325]/90 p-4 before:rounded-2xl after:rounded-2xl"
+                        >
                             <h3 class="text-title text-primary text-pretty">
                                 <NumberFlow value={number} {suffix} />
                             </h3>

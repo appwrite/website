@@ -4,8 +4,8 @@
     import { slugify } from '$lib/utils/slugify';
     import { classNames } from '$lib/utils/classnames';
 
-    let mouse = { x: 0, y: 0 };
-    let animate: boolean = true;
+    let mouse = $state({ x: 0, y: 0 });
+    let animate: boolean = $state(true);
 
     const useMousePosition = (node: HTMLElement) => {
         const handleMouseMove = (event: MouseEvent) => {
@@ -93,8 +93,8 @@
     ];
 
     let activeMarker: HTMLElement | null = null;
-    let activeRegion: string | null = null;
-    let hasActiveMarker: boolean = false;
+    let activeRegion: string | null = $state(null);
+    let hasActiveMarker: boolean = $state(false);
 
     const handleSetActiveMarker = async (region: string) => {
         const activeRegionString = slugify(region);
@@ -155,7 +155,7 @@
                             activeRegion !== slugify(pin.city)
                     }
                 )}
-                on:click={() => handleSetActiveMarker(pin.city)}>{pin.city}</button
+                onclick={() => handleSetActiveMarker(pin.city)}>{pin.city}</button
             >
         {/each}
     </div>
@@ -172,7 +172,11 @@
                 class="absolute inset-0 [mask-image:url('/images/regions/map.svg')] [mask-size:contain] [mask-repeat:no-repeat]"
             >
                 <div
-                    class="gradient overlay relative block aspect-square size-40 rounded-full blur-3xl transition-opacity"
+                    class={classNames(
+                        'relative block aspect-square size-40 blur-3xl transition-opacity',
+                        'from-accent bg-radial-[circle_at_center] via-white/70 to-white/70',
+                        'transform-[translate3d(calc(var(--mouse-x,_-100%)_*_1_-_16rem),_calc(var(--mouse-y,_-100%)_*_1_-_24rem),0)]'
+                    )}
                     style:--mouse-x="{mouse.x}px"
                     style:--mouse-y="{mouse.y}px"
                 ></div>
@@ -188,19 +192,3 @@
         </div>
     </div>
 </div>
-
-<style>
-    .gradient {
-        background: radial-gradient(
-            circle at center,
-            var(--color-accent),
-            hsla(0, 0%, 100%, 0.7),
-            hsla(0, 0%, 100%, 0.7)
-        );
-        transform: translate3d(
-            calc(var(--mouse-x, -100%) * 1 - 16rem),
-            calc(var(--mouse-y, -100%) * 1 - 24rem),
-            0
-        );
-    }
-</style>

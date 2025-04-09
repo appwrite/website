@@ -1,6 +1,5 @@
 @import 'tailwindcss';
 @import './styles/typography.css';
-@variant dark (&:is(.dark *));
 
 @theme {
     /* Colors */
@@ -235,25 +234,27 @@
     max-width: 75rem;
 }
 
+@utility tab-* {
+    tab-size: --value(--tab-size- *);
+}
+
 @utility border-gradient {
     --border-gradient-before: linear-gradient(
         180deg,
-        rgba(255, 255, 255, 0.16) 0%,
+        rgba(255, 255, 255, 0.12) 0%,
         rgba(255, 255, 255, 0) 100%
     );
     --border-gradient-after: linear-gradient(
         180deg,
-        rgba(255, 255, 255, 0.12) 0%,
+        rgba(255, 255, 255, 0) 0%,
         rgba(255, 255, 255, 0) 125.11%
     );
-    --border-radius: 0.5rem;
 
     &::before,
     &::after {
         content: '';
         position: absolute;
         inset: 0;
-        border-radius: var(--border-radius);
         border: 1px solid transparent;
         mask:
             linear-gradient(#fff 0 0) padding-box,
@@ -269,16 +270,6 @@
     &::after {
         background: var(--border-gradient-after) border-box;
     }
-}
-
-@utility mask {
-    mask-image: linear-gradient(
-        to var(--mask-direction, top),
-        transparent,
-        black var(--mask-height, 32px),
-        black calc(100% - var(--mask-height, 32px)),
-        black
-    );
 }
 
 :root,
