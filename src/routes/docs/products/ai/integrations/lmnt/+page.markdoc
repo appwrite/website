@@ -216,7 +216,7 @@ import Speech from 'lmnt-node';
 Next, add code to validate the body of the request and initialize the Appwrite SDK also within `main.js` following the previously added GET handler:
 
 ```js
-const endpoint = process.env.APPWRITE_ENDPOINT ?? "https://cloud.appwrite.io/v1";
+const endpoint = process.env.APPWRITE_ENDPOINT ?? "https://<REGION>.cloud.appwrite.io/v1";
 
 const client = new Client()
   .setEndpoint(endpoint)
