@@ -1,11 +1,4 @@
-<script lang="ts">
-    import { classNames } from '$lib/utils/classnames';
-    import { type VariantProps, cva } from 'cva';
-    import type { Snippet } from 'svelte';
-    import type { Action } from 'svelte/action';
-    import type { HTMLAnchorAttributes, HTMLButtonAttributes } from 'svelte/elements';
-    import { trackEvent, type TrackEventArgs } from '$lib/actions/analytics';
-
+<script lang="ts" module>
     // TODO: replace _button.scss with Tailwind classes for long-term maintainability
     const button = cva(['web-button'], {
         variants: {
@@ -19,6 +12,17 @@
             }
         }
     });
+
+    export type Variant = VariantProps<typeof button>['variant'];
+</script>
+
+<script lang="ts">
+    import { classNames } from '$lib/utils/classnames';
+    import { type VariantProps, cva } from 'cva';
+    import type { Snippet } from 'svelte';
+    import type { Action } from 'svelte/action';
+    import type { HTMLAnchorAttributes, HTMLButtonAttributes } from 'svelte/elements';
+    import { trackEvent, type TrackEventArgs } from '$lib/actions/analytics';
 
     type ButtonOrAnchorProps =
         | (HTMLButtonAttributes & { href?: undefined })
