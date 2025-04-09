@@ -47,6 +47,10 @@
         forceVisible: true
     });
 
+    $effect(() => {
+        console.log(isOpen);
+    });
+
     open.set(isOpen);
 </script>
 
