@@ -2,7 +2,7 @@
     import Grid from './grid-system/grid.svelte';
     import Cell from './grid-system/cell.svelte';
     import { inView } from 'motion';
-    import Map from '$lib/components/regions-map/map.svelte';
+    import Map from '$lib/components/appwrite-network/map.svelte';
 
     let animate: boolean = false;
 
@@ -16,7 +16,7 @@
 <div class="relative h-full">
     <div class="mx-auto flex w-full max-w-6xl flex-col justify-center" use:useInView>
         <Grid rows={2} bottomBorder>
-            <Cell column={2} columnStart={1} class="py-12 px-8 md:py-20">
+            <Cell column={2} columnStart={1} class="px-8 py-12 md:py-20">
                 <div class="space-y-4">
                     <span
                         class="font-aeonik-fono text-secondary text-micro tracking-loose uppercase"

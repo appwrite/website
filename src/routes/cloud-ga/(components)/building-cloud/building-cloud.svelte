@@ -27,7 +27,7 @@
 <div class="relative h-full">
     <div class="mx-auto flex w-full max-w-6xl flex-col justify-center">
         <Grid bottomBorder>
-            <Cell column={2} columnStart={1} class="py-12 px-8 md:py-20">
+            <Cell column={2} columnStart={1} class="px-8 py-12 md:py-20">
                 <h2
                     class="font-aeonik-pro text-title text-primary before:bg-accent text-pretty before:absolute before:left-0 before:mt-2.5 before:h-6 before:w-px"
                 >
@@ -56,7 +56,7 @@
                 </div>
             </Cell>
 
-            <Cell column={4} columnStart={1} class="py-12 px-4 md:py-20">
+            <Cell column={4} columnStart={1} class="px-4 py-12 md:py-20">
                 <div class="chart bg-card bg-blur-lg relative h-[400px] overflow-hidden pt-8 pl-8">
                     <h2 class="text-primary text-description max-w-[250px]">
                         Our DevEx commitment with Appwrite Cloud
@@ -93,7 +93,7 @@
                             >
                                 <div
                                     class="from-accent/12 to-accent/8 absolute inset-0 bg-gradient-to-br opacity-0 transition-opacity duration-500 group-hover:opacity-100"
-                                />
+                                ></div>
                                 {index}</span
                             >
                             <span class="font-medium">{mission}</span>
