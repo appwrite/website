@@ -4,6 +4,7 @@
     import Avatar from '../(assets)/images/avatar.png';
 
     import { createToggleGroup, melt } from '@melt-ui/svelte';
+    import Icon from '$lib/components/ui/icon';
 
     const studies = [
         {
@@ -97,9 +98,10 @@
                             </div>
 
                             <a href={study.url} class="text-primary group flex items-center gap-2"
-                                >Read customer story <span
-                                    class="web-icon-arrow-right transition-transform group-hover:translate-x-0.5"
-                                ></span></a
+                                >Read customer story <Icon
+                                    name="arrow-right"
+                                    class="transition-transform group-hover:translate-x-0.5"
+                                ></Icon></a
                             >
                         </div>
                     </div>
