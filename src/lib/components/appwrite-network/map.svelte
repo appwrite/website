@@ -4,42 +4,14 @@
     import { slugify } from '$lib/utils/slugify';
     import { classNames } from '$lib/utils/classnames';
 
+    // State
     let mouse = $state({ x: 0, y: 0 });
-    let animate: boolean = $state(true);
+    let animate = $state(true);
+    let activeRegion = $state<string | null>(null);
+    let hasActiveMarker = $state(false);
+    let activeMarker: HTMLElement | null = null;
 
-    const useMousePosition = (node: HTMLElement) => {
-        const handleMouseMove = (event: MouseEvent) => {
-            mouse = {
-                x: event.clientX,
-                y: event.clientY
-            };
-        };
-
-        inView(
-            node,
-            () => {
-                node.addEventListener('mousemove', handleMouseMove);
-            },
-            { amount: 'all' }
-        );
-
-        return {
-            destroy() {
-                node.removeEventListener('mousemove', handleMouseMove);
-            }
-        };
-    };
-
-    const useInView = (node: HTMLElement) => {
-        inView(
-            node,
-            () => {
-                animate = true;
-            },
-            { amount: 'all' }
-        );
-    };
-
+    // Data
     const pins = [
         {
             x: 1.25,
@@ -79,27 +51,82 @@
         {
             x: 51,
             y: 19,
-            city: 'Signapore',
+            city: 'Singapore',
             code: 'SGP',
             available: false
         },
         {
             x: 62,
             y: 29,
-            city: 'Syndey',
+            city: 'Sydney',
             code: 'AUS',
             available: false
         }
     ];
 
-    let activeMarker: HTMLElement | null = null;
-    let activeRegion: string | null = $state(null);
-    let hasActiveMarker: boolean = $state(false);
+    // Actions
+    const useMousePosition = (node: HTMLElement) => {
+        const handleMouseMove = (event: MouseEvent) => {
+            mouse = {
+                x: event.clientX,
+                y: event.clientY
+            };
+        };
 
-    const handleSetActiveMarker = async (region: string) => {
-        const activeRegionString = slugify(region);
+        inView(
+            node,
+            () => {
+                node.addEventListener('mousemove', handleMouseMove);
+            },
+            { amount: 'all' }
+        );
 
-        if (activeRegion === activeRegionString) {
+        return {
+            destroy() {
+                node.removeEventListener('mousemove', handleMouseMove);
+            }
+        };
+    };
+
+    const useInView = (node: HTMLElement) => {
+        inView(
+            node,
+            () => {
+                animate = true;
+            },
+            { amount: 'all' }
+        );
+    };
+
+    // Scroll marker into view and observe intersection
+    const scrollMarkerIntoView = (marker: HTMLElement): Promise<void> => {
+        return new Promise<void>((resolve) => {
+            marker.scrollIntoView({
+                behavior: 'smooth',
+                block: 'nearest',
+                inline: 'center'
+            });
+
+            const observer = new IntersectionObserver(
+                (entries) => {
+                    if (entries[0].intersectionRatio > 0.5) {
+                        observer.disconnect();
+                        resolve();
+                    }
+                },
+                { threshold: [0, 0.25, 0.5, 0.75, 1] }
+            );
+
+            observer.observe(marker);
+        });
+    };
+
+    // Handle marker click
+    const handleSetActiveMarker = async (city: string) => {
+        const citySlug = slugify(city);
+
+        // Toggle off if already active
+        if (activeRegion === citySlug) {
             hasActiveMarker = false;
             activeMarker = null;
             activeRegion = null;
@@ -107,35 +134,11 @@
         }
 
         hasActiveMarker = true;
-
-        activeMarker = document.querySelector(`[data-region="${activeRegionString}"]`);
+        activeMarker = document.querySelector(`[data-region="${citySlug}"]`);
 
         if (activeMarker) {
-            return new Promise<void>((resolve) => {
-                activeMarker!.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'nearest',
-                    inline: 'center'
-                });
-
-                const observer = new IntersectionObserver(
-                    (entries) => {
-                        const entry = entries[0];
-
-                        // Only update if the marker is more than 50% in view
-                        if (entry.intersectionRatio > 0.5) {
-                            activeRegion = activeRegionString;
-                            observer.disconnect();
-                            resolve();
-                        }
-                    },
-                    {
-                        threshold: [0, 0.25, 0.5, 0.75, 1]
-                    }
-                );
-
-                observer.observe(activeMarker!);
-            });
+            await scrollMarkerIntoView(activeMarker);
+            activeRegion = citySlug;
         }
     };
 </script>
@@ -147,18 +150,20 @@
         {#each pins as pin}
             <button
                 class={classNames(
-                    'border-0.5 grow rounded-full bg-gradient-to-br px-4 py-1 text-nowrap text-white backdrop-blur-lg transition-colors',
+                    'border-gradient grow rounded-full bg-gradient-to-br px-4 py-1 text-nowrap text-white backdrop-blur-lg transition-colors before:rounded-full after:rounded-full',
                     {
-                        'from-accent to-accent/50 border-accent':
-                            activeRegion === slugify(pin.city),
-                        'from-greyscale-800/30 to-greyscale-700/30 border-greyscale-700/20':
+                        'from-accent to-accent/50': activeRegion === slugify(pin.city),
+                        'from-greyscale-800/30 to-greyscale-700/30':
                             activeRegion !== slugify(pin.city)
                     }
                 )}
-                onclick={() => handleSetActiveMarker(pin.city)}>{pin.city}</button
+                onclick={() => handleSetActiveMarker(pin.city)}
             >
+                {pin.city}
+            </button>
         {/each}
     </div>
+
     <div
         class="relative container mx-auto flex h-full w-[250vw] flex-col justify-center overflow-scroll py-10 transition-all delay-250 duration-250 md:w-fit md:flex-row md:overflow-auto md:py-0"
         use:useMousePosition
@@ -169,11 +174,11 @@
             class="map relative w-full origin-bottom overflow-scroll transition-all [scrollbar-width:none]"
         >
             <div
-                class="absolute inset-0 [mask-image:url('/images/regions/map.svg')] [mask-size:contain] [mask-repeat:no-repeat]"
+                class="absolute inset-0 mask-[image:url('/images/regions/map.svg')] mask-contain mask-no-repeat"
             >
                 <div
                     class={classNames(
-                        'relative block aspect-square size-40 blur-3xl transition-opacity',
+                        'relative block aspect-square size-40 rounded-full blur-3xl transition-opacity',
                         'from-accent bg-radial-[circle_at_center] via-white/70 to-white/70',
                         'transform-[translate3d(calc(var(--mouse-x,_-100%)_*_1_-_16rem),_calc(var(--mouse-y,_-100%)_*_1_-_24rem),0)]'
                     )}
@@ -181,11 +186,11 @@
                     style:--mouse-y="{mouse.y}px"
                 ></div>
             </div>
+
             <img src="/images/regions/map.svg" class="opacity-10" alt="Map of the world" />
+
             <div class="absolute inset-0 flex w-full">
-                {#each pins.map((pin) => {
-                    return { ...pin, isOpen: activeRegion === slugify(pin.city) };
-                }) as pin, index}
+                {#each pins.map( (pin) => ({ ...pin, isOpen: activeRegion === slugify(pin.city) }) ) as pin, index}
                     <MapMarker {...pin} {animate} {index} />
                 {/each}
             </div>

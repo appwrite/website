@@ -57,7 +57,9 @@
             </Cell>
 
             <Cell column={4} columnStart={1} class="px-4 py-12 md:py-20">
-                <div class="chart bg-card bg-blur-lg relative h-[400px] overflow-hidden pt-8 pl-8">
+                <div
+                    class="border-gradient bg-card bg-blur-lg relative h-[400px] overflow-hidden pt-8 pl-8"
+                >
                     <h2 class="text-primary text-description max-w-[250px]">
                         Our DevEx commitment with Appwrite Cloud
                     </h2>
@@ -104,20 +106,3 @@
         </Grid>
     </div>
 </div>
-
-<style lang="scss">
-    @use '$scss/abstract/mixins/border-gradient' as gradients;
-
-    .chart {
-        @include gradients.border-gradient;
-        --p-radius: 16px;
-
-        border-radius: var(--p-radius);
-        --m-border-radius: var(--p-radius);
-        --m-border-gradient-before: linear-gradient(
-            180deg,
-            rgba(255, 255, 255, 0.12) 0%,
-            rgba(255, 255, 255, 0) 125.11%
-        );
-    }
-</style>

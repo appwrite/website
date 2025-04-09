@@ -47,9 +47,7 @@
         forceVisible: true
     });
 
-    $effect(() => {
-        open.set(isOpen);
-    });
+    open.set(isOpen);
 </script>
 
 <div
@@ -66,7 +64,7 @@
     data-active={isOpen}
 >
     <span
-        class="bg-accent absolute inline-flex h-full w-full rounded-full opacity-75 group-hover:animate-ping group-data-[active=true]:animate-ping"
+        class="bg-accent absolute inline-flex h-10 w-10 rounded-full opacity-75 group-hover:animate-ping group-data-[active=true]:animate-ping"
     ></span>
     <span class="bg-accent absolute inline-flex h-full w-full rounded-full"></span>
     <span
