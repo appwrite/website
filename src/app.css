@@ -234,10 +234,6 @@
     max-width: 75rem;
 }
 
-@utility tab-* {
-    tab-size: --value(--tab-size- *);
-}
-
 @utility border-gradient {
     --border-gradient-before: linear-gradient(
         180deg,
