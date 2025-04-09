@@ -1,3 +1,7 @@
+<script>
+    import { Button, Icon } from '$lib/components/ui';
+</script>
+
 <div class="wrapper">
     <img src="/images/bgs/pre-footer.png" alt="" class="web-pre-footer-bg -z-1" />
     <div class="container">
@@ -8,19 +12,17 @@
                 <p class="text-body text-primary mt-4">
                     Get community support by joining our Discord server.
                 </p>
-                <a class="web-button mt-6" href="https://appwrite.io/discord">
-                    <span class="web-icon-discord"></span>
-                    <span class="text">Join Discord</span>
-                </a>
+                <Button class="mt-6" href="https://appwrite.io/discord">
+                    <Icon name="discord"></Icon>
+                    Join Discord
+                </Button>
             </div>
             <div class="cardy">
                 <h3 class="text-label text-primary">Get premium support</h3>
                 <p class="text-body text-primary mt-4">
                     Join Appwrite Pro and get email support from our team.
                 </p>
-                <a class="web-button mt-6" href="https://appwrite.io/pricing">
-                    <span class="text">Learn more</span>
-                </a>
+                <Button class="mt-6" href="https://appwrite.io/pricing">Learn more</Button>
             </div>
         </div>
     </div>

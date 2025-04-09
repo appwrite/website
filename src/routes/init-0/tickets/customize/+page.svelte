@@ -10,6 +10,7 @@
     import Ticket from '../../(components)/Ticket.svelte';
     import Form from './form.svelte';
     import type { TicketVariant } from '../constants';
+    import { Button, Icon } from '$lib/components/ui';
 
     let { data } = $props();
 
@@ -121,18 +122,19 @@
                     </button>
 
                     <div class="u-flex u-cross-center u-gap-16 u-margin-block-start-16">
-                        <button class="web-button is-full-width is-secondary" onclick={copy}>
-                            <div class="web-icon-{$copied ? 'check' : 'copy'} text-primary"></div>
+                        <Button variant="secondary" class="is-full-width" onclick={copy}>
+                            <Icon name={$copied ? 'check' : 'copy'} class="text-primary" />
                             <span class="text">Copy ticket URL</span>
-                        </button>
-                        <a
-                            class="web-button is-full-width is-secondary"
+                        </Button>
+                        <Button
+                            variant="secondary"
+                            class="is-full-width"
                             href="https://twitter.com/intent/tweet?text={twitterText}"
                             target="_blank"
                         >
-                            <div class="web-icon-x text-primary"></div>
+                            <Icon name="x" class="text-primary" />
                             <span class="text">Share your ticket</span>
-                        </a>
+                        </Button>
                     </div>
                 </div>
             </div>

@@ -4,6 +4,7 @@
     import FooterNav from '$lib/components/FooterNav.svelte';
     import { TITLE_SUFFIX } from '$routes/titles';
     import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
+    import { Button } from '$lib/components/ui';
 
     const title = 'Company' + TITLE_SUFFIX;
     const description =
@@ -65,14 +66,14 @@
                             <h2 class="text-display font-aeonik-pro text-primary">
                                 Designed for and by developers
                             </h2>
-                            <a
+                            <Button
                                 href="https://appwrite.careers"
-                                class="web-button web-u-inline-width-100-percent-mobile-break1 self-start"
+                                class="web-u-inline-width-100-percent-mobile-break1 self-start"
                                 target="_blank"
                                 rel="noopener noreferrer"
                             >
                                 <span>Join the team</span>
-                            </a>
+                            </Button>
                         </div>
 
                         <div class="text-description flex flex-col gap-4">
@@ -547,14 +548,15 @@
                         <p class="text-primary web-u-opacity-64">
                             Find your next career at Appwrite and join a team of remote workers.
                         </p>
-                        <a
+                        <Button
+                            variant="transparent"
                             href="https://appwrite.careers"
                             target="_blank"
                             rel="noopener noreferrer"
-                            class="web-button is-transparent mt-4 self-center"
+                            class="mt-4 self-center"
                         >
                             <span>Careers</span>
-                        </a>
+                        </Button>
                     </div>
                     <FooterNav />
                     <MainFooter />

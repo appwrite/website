@@ -8,6 +8,7 @@
     import GradientBackground from './bg.png';
     import { PUBLIC_GROWTH_ENDPOINT } from '$env/static/public';
     import { getReferrerAndUtmSource } from '$lib/utils/utm';
+    import { Button } from '$lib/components/ui';
 
     let personName = '';
     let personEmail = '';
@@ -96,12 +97,9 @@
                                             Your application has been sent. Our team will try to get
                                             back to you as soon as possible.
                                         </p>
-                                        <a
-                                            href="/"
-                                            class="web-button is-secondary web-u-margin-block-end-32"
-                                        >
+                                        <Button variant="secondary" href="/" class="mb-8">
                                             <span>Back to homepage</span>
-                                        </a>
+                                        </Button>
                                     </section>
                                 {:else}
                                     <section class="flex flex-col gap-5">
@@ -242,13 +240,13 @@
                                             {error}
                                         {/if}
                                     </p>
-                                    <button
+                                    <Button
                                         type="submit"
-                                        class="web-button web-u-inline-width-100-percent-mobile-break1 cursor-pointer self-center"
+                                        class="web-u-inline-width-100-percent-mobile-break1 cursor-pointer self-center"
                                         disabled={submitting}
                                     >
                                         <span>Submit</span>
-                                    </button>
+                                    </Button>
                                 </div>
                             </form>
                         {/if}

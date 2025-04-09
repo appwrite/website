@@ -6,6 +6,7 @@
     import AppwriteIn100Seconds from '$lib/components/AppwriteIn100Seconds.svelte';
     import PreFooter from '$lib/components/PreFooter.svelte';
     import Technologies from '$lib/components/Technologies.svelte';
+    import { Button } from '$lib/components/ui';
     import Badge from '$lib/components/ui/badge.svelte';
     import GradientText from '$lib/components/ui/gradient-text.svelte';
     import Hero from '$lib/components/ui/hero.svelte';
@@ -158,21 +159,22 @@
                             and languages of your choice.
                         </svelte:fragment>
                         <div class="mt-8 flex flex-col gap-4 sm:flex-row" slot="cta">
-                            <a
+                            <Button
                                 href={getAppwriteDashboardUrl()}
-                                class="web-button w-full lg:w-fit"
-                                on:click={() =>
+                                class="w-full lg:w-fit"
+                                onclick={() =>
                                     trackEvent({
                                         plausible: { name: 'Get started in hero' },
                                         posthog: { name: 'get-started-btn_hero_click' }
                                     })}
                             >
                                 Start building
-                            </a>
+                            </Button>
 
-                            <a
+                            <Button
+                                variant="secondary"
                                 href="/contact-us/enterprise"
-                                class="web-button is-secondary w-full lg:w-fit">Request a demo</a
+                                class="w-full lg:w-fit">Request a demo</Button
                             >
 
                             <!-- <AppwriteIn100Seconds /> -->
@@ -482,11 +484,11 @@
                             you can code with the language you want at any time.
                         </p>
                         <Technologies />
-                        <a
+                        <Button
                             href="/docs/sdks"
-                            class="web-button is-secondary"
-                            on:click={() => trackEvent({ plausible: { name: 'Explore all SDKs' } })}
-                            >Explore all SDKs</a
+                            variant="secondary"
+                            onclick={() => trackEvent({ plausible: { name: 'Explore all SDKs' } })}
+                            >Explore all SDKs</Button
                         >
                     </section>
                 </div>

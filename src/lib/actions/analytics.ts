@@ -55,10 +55,12 @@ const analytics = Analytics({
     plugins: [plausible('appwrite.io')]
 });
 
-export const trackEvent = async (platforms: {
+export type TrackEventArgs = {
     plausible?: { name: string; data?: object };
     posthog?: { name: string };
-}) => {
+};
+
+export const trackEvent = async (platforms: TrackEventArgs) => {
     if (!isTrackingAllowed()) {
         return;
     }
