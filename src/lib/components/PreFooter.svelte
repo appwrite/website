@@ -2,10 +2,6 @@
     import { trackEvent } from '$lib/actions/analytics';
     import { getAppwriteDashboardUrl } from '$lib/utils/dashboard';
     import { Button } from '$lib/components/ui';
-
-    const action = (node: HTMLElement) => {
-        console.log(node, 'mounted');
-    };
 </script>
 
 <img
