@@ -15,21 +15,19 @@
     import MainFooter from '$lib/components/MainFooter.svelte';
     import FooterNav from '$lib/components/FooterNav.svelte';
     import { TITLE_SUFFIX } from '$routes/titles';
-    import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
+    import { DEFAULT_HOST } from '$lib/utils/metadata';
 
     import { PUBLIC_GROWTH_ENDPOINT } from '$env/static/public';
     import Faq from './faq.svelte';
+    import { getReferrerAndUtmSource } from '$lib/utils/utm';
+    import CommunitySupportChat from '$lib/components/CommunitySupportChat.svelte';
+    import { trackEvent } from '$lib/actions/analytics';
+    import { Button } from '$lib/components/ui';
 
     const title = 'Startups' + TITLE_SUFFIX;
-    const description = DEFAULT_DESCRIPTION;
+    const description =
+        "Get $20,000 in cloud credits to fulfill all your startup's backend needs. Apply for Appwrite's Startups Program today.";
     const ogImage = DEFAULT_HOST + '/images/open-graph/website.png';
-
-    const infiniteScroll = (node: HTMLElement) => {
-        if (window.matchMedia('prefers-reduced-motion').matches) return;
-        const content = node.querySelector('.inner') as HTMLElement;
-        content.innerHTML += content?.innerHTML;
-        node.dataset.animated = 'true';
-    };
 
     let personName: string;
     let personEmail: string;
@@ -58,8 +56,14 @@
                 personName,
                 personEmail,
                 companyName,
-                companyUrl: companyUrl.startsWith('http') ? companyUrl : `https://${companyUrl}`
+                companyUrl: companyUrl.startsWith('http') ? companyUrl : `https://${companyUrl}`,
+                ...getReferrerAndUtmSource()
             })
+        });
+
+        trackEvent({
+            plausible: { name: 'startups-form_submit' },
+            posthog: { name: 'startups-form_submit' }
         });
 
         submitting = false;
@@ -130,6 +134,24 @@
             'eddie-jaoude'
         ),
         testimonial(
+            'David Forster',
+            'Creator // Open Mind',
+            'Appwrite saved us a lot of money in comparison to Firebase since the amount of users grew quite fast and we needed a quick switch. I am still surprised how easy the implementation into Flutter was.',
+            'david-forster'
+        ),
+        testimonial(
+            'Marius Bolik',
+            'CTO // mySHOEFITTER',
+            'The integrated user authentication and the ease of creating data structures have undoubtedly saved us several weeks worth of time.',
+            'marius-bolik2'
+        ),
+        testimonial(
+            "Ryan O'Conner",
+            'Founder // K-Collect',
+            'For me, Appwrite is the perfect backend solution. All you have to do is sign up, and your backend is ready to go. I have never seen such an innovative and easy-to-understand backend solution before!',
+            'ryan-oconner'
+        ),
+        testimonial(
             'Diego Ferreyra',
             '@diego_ferreyra1',
             "Loving it. I've been a web developer for 20+ years and I've never gotten from 0 lines to actual useful coding so fast. 100% recommend.",
@@ -140,6 +162,12 @@
             '@alexparton',
             "I just migrated a project from Firebase to Appwrite: Authentication, Users, Databases and Storage. And I can't be more in love with it.",
             'alejandro-morales'
+        ),
+        testimonial(
+            'Marius Bolik',
+            'CTO // mySHOEFITTER',
+            'The integrated user authentication and the ease of creating data structures have undoubtedly saved us several weeks worth of time.',
+            'marius-bolik2'
         ),
         testimonial(
             'Jonas Janssen',
@@ -175,7 +203,7 @@
     <div class="web-big-padding-section relative overflow-hidden">
         <div class="relative py-10">
             <div class="web-big-padding-section-level-2 e-u-margin-block-128-desktop">
-                <section class="container web-u-padding-block-end-0">
+                <section class="web-u-padding-block-end-0 container">
                     <div
                         class="web-hero"
                         style="--hero-max-inline-size:49.375rem; --hero-gap:1.125rem;"
@@ -187,12 +215,10 @@
                             class="text-description web-u-max-width-640 e-u-padding-inline-32-desktop mx-auto"
                         >
                             The Appwrite Startups Program supports your startup with a complete
-                            backend for you to build your products. You will receive
-                            $20,000 Cloud credits for Appwrite Scale for 12 months.
+                            backend for you to build your products. You will receive $20,000 Cloud
+                            credits for Appwrite Scale for 12 months.
                         </p>
-                        <button on:click={scrollToForm} class="web-button mt-3 mx-auto">
-                            Apply now
-                        </button>
+                        <Button onclick={scrollToForm} class="mx-auto mt-3">Apply now</Button>
                     </div>
                 </section>
             </div>
@@ -276,7 +302,13 @@
                                         </p>
                                     </div>
                                     <div>
-                                        <div class="web-card is-white flex flex-col gap-5">
+                                        <a
+                                            href="/blog/post/customer-stories-myshoefitter"
+                                            class="web-card is-white group flex flex-col gap-5"
+                                        >
+                                            <div class="border-card">
+                                                <div class="glow"></div>
+                                            </div>
                                             <p class="aw-sub-body-500">
                                                 The integrated user authentication and the ease of
                                                 creating data structures have undoubtedly saved us
@@ -299,7 +331,13 @@
                                                     CTO // mySHOEFITTER
                                                 </div>
                                             </div>
-                                        </div>
+                                            <span
+                                                class="text-sub-body text-primary flex items-center gap-1"
+                                                >Read customer story <span
+                                                    class="web-icon-arrow-right transition-transform group-hover:translate-x-1"
+                                                ></span></span
+                                            >
+                                        </a>
                                     </div>
                                 </div>
 
@@ -337,9 +375,13 @@
                                             the transition through different stages of your business
                                             growth.
                                         </p>
-                                        <div
-                                            class="web-card is-white web-u-margin-block-start-64 e-mt-4-mobile gap-5"
+                                        <a
+                                            href="/blog/post/case-study-kcollect"
+                                            class="web-card group is-white web-u-margin-block-start-64 e-mt-4-mobile gap-5"
                                         >
+                                            <div class="border-card">
+                                                <div class="glow"></div>
+                                            </div>
                                             <p class="aw-sub-body-500">{ryanOconner.text}</p>
                                             <div class="web-user-box">
                                                 <img
@@ -358,7 +400,13 @@
                                                     {ryanOconner.handle}
                                                 </div>
                                             </div>
-                                        </div>
+                                            <span
+                                                class="text-sub-body text-primary flex items-center gap-1"
+                                                >Read customer story <span
+                                                    class="web-icon-arrow-right transition-transform group-hover:translate-x-1"
+                                                ></span></span
+                                            >
+                                        </a>
                                     </div>
                                 </div>
                                 <div class="web-is-only-mobile">
@@ -440,145 +488,7 @@
                                         <div
                                             class="web-chat web-u-max-width-580 web-u-margin-block-start-40-mobile"
                                         >
-                                            <ul class="web-chat-list">
-                                                <li class="web-chat-item is-user-a">
-                                                    <div class="web-chat-message">
-                                                        <div class="web-user-box">
-                                                            <img
-                                                                class="web-user-box-image"
-                                                                src="/images/community/avatars/walter.avif"
-                                                                height="40"
-                                                                width="40"
-                                                                alt="Avatar of Walter"
-                                                            />
-                                                            <div
-                                                                class="web-user-box-name flex gap-2"
-                                                            >
-                                                                <span
-                                                                    class="text-sub-body font-medium"
-                                                                    >Walter O'Brien</span
-                                                                >
-                                                                <time
-                                                                    class="text-caption web-u-color-text-tertiary"
-                                                                    >8:32 AM</time
-                                                                >
-                                                            </div>
-                                                            <div
-                                                                class="web-user-box-content text-caption text-primary"
-                                                            >
-                                                                Hello devs! I am getting a CORS
-                                                                error when sending a request to the
-                                                                backend. Can you help me?
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li class="web-chat-item is-user-b">
-                                                    <div class="web-chat-message">
-                                                        <div class="web-user-box">
-                                                            <img
-                                                                class="web-user-box-image"
-                                                                src="/images/avatars/steven.avif"
-                                                                width="48"
-                                                                height="48"
-                                                                alt="Avatar of Steven"
-                                                            />
-                                                            <div
-                                                                class="web-user-box-name flex gap-2"
-                                                            >
-                                                                <span
-                                                                    class="text-sub-body font-medium"
-                                                                    >Steven</span
-                                                                >
-                                                                <time
-                                                                    class="text-caption web-u-color-text-tertiary"
-                                                                    >8:38 AM</time
-                                                                >
-                                                            </div>
-                                                            <div
-                                                                class="web-user-box-content text-caption text-primary"
-                                                            >
-                                                                Hey Louis! Is this the message you
-                                                                get
-                                                                <a
-                                                                    class="web-link is-pink"
-                                                                    href="/blog/post/cors-error"
-                                                                    target="_blank"
-                                                                    >"Access blocked by CORS policy"</a
-                                                                >?
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li class="web-chat-item is-user-a">
-                                                    <div class="web-chat-message">
-                                                        <div class="web-user-box">
-                                                            <img
-                                                                class="web-user-box-image"
-                                                                src="/images/community/avatars/walter.avif"
-                                                                height="40"
-                                                                width="40"
-                                                                alt="Avatar of Walter"
-                                                            />
-                                                            <div
-                                                                class="web-user-box-name flex gap-2"
-                                                            >
-                                                                <span
-                                                                    class="text-sub-body font-medium"
-                                                                    >Walter O'Brien</span
-                                                                >
-                                                                <time
-                                                                    class="text-caption web-u-color-text-tertiary"
-                                                                    >9:05 AM</time
-                                                                >
-                                                            </div>
-                                                            <div
-                                                                class="web-user-box-content text-caption text-primary"
-                                                            >
-                                                                Yes!
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li class="web-chat-item is-user-b">
-                                                    <div class="web-chat-message">
-                                                        <div class="web-user-box">
-                                                            <img
-                                                                class="web-user-box-image"
-                                                                src="/images/avatars/steven.avif"
-                                                                width="48"
-                                                                height="48"
-                                                                alt="Avatar of Steven"
-                                                            />
-                                                            <div
-                                                                class="web-user-box-name flex gap-2"
-                                                            >
-                                                                <span
-                                                                    class="text-sub-body font-medium"
-                                                                    >Steven</span
-                                                                >
-                                                                <time
-                                                                    class="text-caption web-u-color-text-tertiary"
-                                                                    >9:08 AM</time
-                                                                >
-                                                            </div>
-                                                            <div
-                                                                class="web-user-box-content text-caption text-primary"
-                                                            >
-                                                                You should be able to debug this
-                                                                with a few steps. Just follow this
-                                                                blog:
-                                                                <a
-                                                                    class="web-link is-pink"
-                                                                    href="/blog/post/cors-error"
-                                                                    target="_blank"
-                                                                    >https://appwrite.io/blog/post/cors-error</a
-                                                                >. Let me know if this helps 🙂
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                            </ul>
+                                            <CommunitySupportChat />
                                         </div>
                                     </div>
                                     <div class="web-mx-auto-mobile ml-auto flex flex-col gap-4">
@@ -591,9 +501,13 @@
                                             wealth of knowledge, support, and shared experiences to
                                             help navigate the challenges of startup growth.
                                         </p>
-                                        <div
-                                            class="web-card is-white web-u-margin-block-start-64 e-mt-4-mobile gap-5"
+                                        <a
+                                            href="/blog/post/case-study-myshoefitter"
+                                            class="web-card group is-white web-u-margin-block-start-64 e-mt-4-mobile gap-5"
                                         >
+                                            <div class="border-card">
+                                                <div class="glow"></div>
+                                            </div>
                                             <p class="aw-sub-body-500">{mariusBolik.text}</p>
                                             <div class="web-user-box">
                                                 <img
@@ -612,7 +526,13 @@
                                                     {mariusBolik.handle}
                                                 </div>
                                             </div>
-                                        </div>
+                                            <span
+                                                class="text-sub-body text-primary flex items-center gap-1"
+                                                >Read customer story <span
+                                                    class="web-icon-arrow-right transition-transform group-hover:translate-x-1"
+                                                ></span></span
+                                            >
+                                        </a>
                                     </div>
                                 </div>
                             </li>
@@ -629,7 +549,7 @@
                 >
                     Focus on building your product
                 </h4>
-                <div class="scroll-carousel" use:infiniteScroll>
+                <div class="scroll-carousel">
                     <ul class="inner gap-8">
                         {#each testimonials as t}
                             <li>
@@ -665,7 +585,7 @@
             <div class="is-margin-replace-padding relative pt-[7.5rem]">
                 <div class="relative">
                     <div class="web-big-padding-section-level-2">
-                        <div class="container relative">
+                        <div class="relative container">
                             <img
                                 class="web-is-only-desktop absolute"
                                 style="inset-inline-end:-650px; inset-block-start:-200px; max-width:none; max-height:none;"
@@ -723,7 +643,7 @@
                                         </section>
                                         <div
                                             class="web-is-only-mobile web-u-margin-block-start-40 web-u-padding-block-start-40 web-u-sep-block-start"
-                                        />
+                                        ></div>
                                     </div>
                                 </div>
                                 {#if submitted}
@@ -731,7 +651,7 @@
                                         class="web-u-max-width-380 web-u-max-inline-size-none-mobile relative z-[1] mx-auto flex flex-col gap-2 text-center"
                                     >
                                         <h6
-                                            class="text-label e-mobile-fix-1 flex items-center justify-center gap-2"
+                                            class="text-label flex items-center justify-center gap-2"
                                         >
                                             <img
                                                 class="shrink-0"
@@ -746,10 +666,11 @@
                                             Our team will review your application and get back to
                                             you soon.
                                         </p>
-                                        <button
-                                            on:click={resetForm}
-                                            class="web-button is-secondary is-full-width-mobile blockmt-4 mx-auto"
-                                            >Back to form</button
+                                        <Button
+                                            onclick={resetForm}
+                                            variant="secondary"
+                                            class="mx-auto mt-4 block w-full! md:w-fit"
+                                            >Back to form</Button
                                         >
                                     </div>
                                 {:else}
@@ -818,12 +739,13 @@
                                                     {error}
                                                 {/if}
                                             </p>
-                                            <button
+                                            <Button
                                                 type="submit"
-                                                class="web-button web-u-inline-width-100-percent-mobile-break1 self-center"
+                                                disabled={submitting}
+                                                class="web-u-inline-width-100-percent-mobile-break1 self-center"
                                             >
-                                                <span>Apply</span>
-                                            </button>
+                                                Apply
+                                            </Button>
                                         </div>
                                     </form>
                                 {/if}
@@ -831,7 +753,7 @@
                         </div>
                     </div>
                     <div class="web-big-padding-section-level-2 relative">
-                        <div class="container relative" style:z-index="10">
+                        <div class="relative container" style:z-index="10">
                             <section class="web-grid-4-6">
                                 <header>
                                     <div class="text-display font-aeonik-pro text-primary">FAQ</div>
@@ -878,12 +800,64 @@
             } /* items */
         }
     }
-    :global([data-animated]).scroll-carousel {
-        overflow: hidden;
 
-        .inner {
-            padding-inline: 0;
-            animation: scroll 40s linear infinite;
+    .border-card {
+        position: absolute;
+        inset: 0;
+        border: 1px solid transparent;
+        mask-clip: padding-box, border-box;
+        mask-composite: intersect;
+        border-radius: inherit;
+        mask-image: linear-gradient(transparent, transparent), linear-gradient(#000, #000);
+
+        &:hover {
+            .glow {
+                opacity: 1;
+            }
+        }
+
+        .glow {
+            opacity: 0;
+            transition: opacity 0.25s ease-out;
+            position: absolute;
+            inset: 0;
+            width: 60px;
+            aspect-ratio: 1/1;
+            offset-path: rect(0 auto auto 0 round 60px);
+            offset-distance: 0;
+            offset-rotate: auto;
+            animation: glow 6s infinite linear forwards;
+            background-color: var(--color-pink-200);
+            box-shadow:
+                var(--color-pink-200) 0px 0px 60px 30px,
+                var(--color-pink-200) 0px 0px 100px 60px,
+                var(--color-pink-200) 0px 0px 140px 90px;
+        }
+
+        @keyframes glow {
+            0% {
+                offset-distance: 0;
+            }
+            100% {
+                offset-distance: 100%;
+            }
+        }
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+        .scroll-carousel {
+            overflow: hidden;
+
+            &:hover {
+                .inner {
+                    animation-play-state: paused;
+                }
+            }
+
+            .inner {
+                padding-inline: 0;
+                animation: scroll 40s linear infinite;
+            }
         }
     }
 
@@ -939,11 +913,6 @@
             inset-inline-end: 0; /*transform:translateX(50px);*/
             inset-block-start: 100px;
             opacity: 0.4;
-        }
-    }
-    @media #{devices.$break1} {
-        .e-mobile-fix-1 {
-            display: block;
         }
     }
 

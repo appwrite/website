@@ -473,7 +473,7 @@ You'll find these properties in the context object.
 | req      | Contains request information like method, body, and headers. See full examples [in the request section](#request).                                     |
 | res      | Contains methods to build a response and return information. See full examples [in the response section](#response).                                     |
 | log()    | Method to log information to the Appwrite Console, end users will not be able to see these logs. See full examples [in the logging section](#logging). |
-| error()  | Methoc to log errors to the Appwrite Console, end users will not be able to see these errors. See full examples [in the logging section](#logging).    |
+| error()  | Method to log errors to the Appwrite Console, end users will not be able to see these errors. See full examples [in the logging section](#logging).    |
 
 {% info title="Depreciation notice" %}
 Use `req.bodyText` instead of `req.bodyRaw`. Use `res.text` instead of `res.send`. Use `req.bodyText` or `req.bodyJson` instead of `req.body` depending on the expected input data type.
@@ -575,8 +575,8 @@ return function ($context) {
 import json
 
 def main(context):
-    context.log(context.req.bodyText)              # Raw request body, contains request data
-    context.log(json.dumps(context.req.bodyJson))  # Object from parsed JSON request body, otherwise string
+    context.log(context.req.body_text)             # Raw request body, contains request data
+    context.log(json.dumps(context.req.body_json)) # Object from parsed JSON request body, otherwise string
     context.log(json.dumps(context.req.headers))   # String key-value pairs of all request headers, keys are lowercase
     context.log(context.req.scheme)                # Value of the x-forwarded-proto header, usually http or https
     context.log(context.req.method)                # Request method, such as GET, POST, PUT, DELETE, PATCH, etc.
@@ -593,8 +593,8 @@ def main(context):
 require 'json'
                 
 def main(context)
-    context.log(context.req.bodyText)                 #  Raw request body, contains request data
-    context.log(JSON.generate(context.req.bodyJson))  # Object from parsed JSON request body, otherwise string
+    context.log(context.req.body_text)                #  Raw request body, contains request data
+    context.log(JSON.generate(context.req.body_json)) # Object from parsed JSON request body, otherwise string
     context.log(JSON.generate(context.req.headers))   # String key-value pairs of all request headers, keys are lowercase
     context.log(context.req.scheme)                   # Value of the x-forwarded-proto header, usually http or https
     context.log(context.req.method)                   # Request method, such as GET, POST, PUT, DELETE, PATCH, etc.
@@ -602,7 +602,7 @@ def main(context)
     context.log(context.req.host)                     # Hostname from the host header, such as awesome.appwrite.io
     context.log(context.req.port)                     # Port from the host header, for example 8000
     context.log(context.req.path)                     # Path part of URL, for example /v1/hooks
-    context.log(context.req.queryString)              # Raw query params string. For example "limit=12&offset=50"
+    context.log(context.req.query_string)             # Raw query params string. For example "limit=12&offset=50"
     context.log(JSON.generate(context.req.query))     # Parsed query params. For example, req.query.limit
 
     return context.res.text("All the request parameters are logged to the Appwrite Console.")

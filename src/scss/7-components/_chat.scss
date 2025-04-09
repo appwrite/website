@@ -21,6 +21,22 @@
     @media #{$break1} {
       
     }
+
+    /* reversed arrow on replies */
+    &.reply {
+      &::before {
+        rotate: 180deg;
+        inset-block-end: auto;
+        inset-block-start: pxToRem(-16);
+        background-color: var(--border-color);
+      }
+
+      &::after {
+        rotate: 180deg;
+        inset-block-start: pxToRem(-14.5);
+        inset-block-end: auto;
+      }
+    }
   }
 
   /* user 'b' messages */

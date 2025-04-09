@@ -6,7 +6,8 @@ date: 2023-10-18
 cover: /images/blog/defying-the-laws-of-web-animations/cover.png
 timeToRead: 10
 author: thomas-g-lopes
-category: website
+category: tutorial
+callToAction: true
 ---
 
 If you're a frontend developer, you know that one of the scariest tasks you can receive is coding a complex web animation. If you're not a frontend developer, I bet that sounds even harder.
@@ -172,8 +173,6 @@ The video above showcases both Motion and Svelte transitions in action. The tabl
 	</div>
 {/if}
 ```
-
-{% call_to_action /%}
 
 ## Transitioning between sections
 

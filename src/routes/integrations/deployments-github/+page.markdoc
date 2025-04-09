@@ -7,7 +7,7 @@ featured: false
 isPartner: true
 isNew: true
 cover: /images/integrations/deployments-github/cover.png
-category: Deployments
+category: deployments
 product: 
     avatar: '/images/integrations/avatars/github.png'
     vendor: GitHub

@@ -1,6 +1,7 @@
 <script lang="ts">
     import { Carousel } from '$lib/components';
     import Technologies from '$lib/components/Technologies.svelte';
+    import { Button } from '$lib/components/ui';
     import Docs from '$lib/layouts/Docs.svelte';
     import { DEFAULT_HOST } from '$lib/utils/metadata';
     import { TITLE_SUFFIX } from '$routes/titles';
@@ -96,9 +97,9 @@
                 quick start guide.
             </p>
             <Technologies />
-            <a href="/docs/sdks" class="web-button is-secondary" style:align-self="start">
+            <Button href="/docs/sdks" class="self-start" variant="secondary">
                 <span class="text-sub-body font-medium">Explore all technologies</span>
-            </a>
+            </Button>
             <div class="web-is-not-mobile spline-wrapper absolute">
                 <img
                     class="web-u-only-dark"
@@ -117,7 +118,7 @@
                     style="position: absolute;"
                 />
             </div>
-            <div class="bg-overlay" />
+            <div class="bg-overlay"></div>
         </section>
         <section>
             <h2 class="text-title font-aeonik-pro text-primary max-w-[600px]">Show me some code</h2>
@@ -383,10 +384,6 @@
         @media (min-width: 1280px) {
             padding-inline-start: 3rem; // 48px
         }
-    }
-
-    .bg-blur {
-        inset-block-start: -100px;
     }
 
     .tech-hero {

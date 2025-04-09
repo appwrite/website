@@ -72,23 +72,14 @@
                 <header class="web-grid-120-1fr-auto-header">
                     <h1 class="text-title font-aeonik-pro text-primary">{title}</h1>
                 </header>
-                <button
-                    class="toc-btn web-u-padding-20 web-u-margin-inline-20-negative text-primary web-is-only-mobile web-u-sep-block
-                web-u-filter-blur-8 sticky mt-6 flex
-                w-full items-center justify-between"
-                    style:--inset-block-start="4.5rem"
-                    style:inline-size="100vw"
-                    style:background-color="hsl(var(--p-body-bg-color) / 0.1)"
-                    style:translate="0 {$isHeaderHidden ? '-4.5rem' : '0'}"
-                    style:z-index="1"
-                    on:click={() => (showToc = !showToc)}
-                >
-                    <span class="text-description">Table of contents</span>
-                    <span class="icon-menu-alt-4" aria-hidden="true" />
-                </button>
-                <TocNav />
+
+                <TocNav bind:showToc />
+
                 <main class="web-grid-120-1fr-auto-main /web-is-mobile-closed" id="main">
-                    <div class="web-content is-count-headers" class:web-is-mobile-closed={showToc}>
+                    <div
+                        class="web-content is-count-headers"
+                        class:web-is-mobile-closed={showToc && !showToc}
+                    >
                         <!-- svelte-ignore a11y-hidden -->
                         <h2 aria-hidden="true">Introduction</h2>
                         <slot />
@@ -107,7 +98,20 @@
         opacity: 0;
     }
 
-    .toc-btn {
-        transition: translate 0.3s ease;
+    @media (max-width: 768px) {
+        .container {
+            padding-left: 0;
+            padding-right: 0;
+        }
+
+        header {
+            padding-block-end: unset;
+        }
+
+        header,
+        main {
+            padding-left: var(--spacing-5, 1.25rem);
+            padding-right: var(--spacing-5, 1.25rem);
+        }
     }
 </style>

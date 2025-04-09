@@ -3,7 +3,7 @@
     import { melt, type Dialog } from '@melt-ui/svelte';
     import { fade, scale } from 'svelte/transition';
 
-    export let src: string = 'https://www.youtube.com/embed/XxbJw8PrIkc?si=kOEzUREP0KZoFDY7'; // TODO: REMOVE THIS BEFORE MERGING, THIS IS MOCK DATA
+    export let src: string;
 
     export let dialog: Dialog;
 
@@ -26,8 +26,7 @@
 </script>
 
 <div use:melt={$portalled}>
-    <div use:melt={$overlay} class="overlay" transition:fade={{ duration: 150 }} />
-
+    <div use:melt={$overlay} class="overlay" transition:fade={{ duration: 150 }}></div>
     <div
         class="web-media content"
         use:melt={$content}
@@ -40,7 +39,7 @@
                 frameborder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 allowfullscreen
-            />
+            ></iframe>
         {/key}
     </div>
 </div>

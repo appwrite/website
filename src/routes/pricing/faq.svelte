@@ -2,6 +2,7 @@
     import { browser } from '$app/environment';
     import { createAccordion, melt } from '@melt-ui/svelte';
     import { slide } from 'svelte/transition';
+    import { createFaqSchema, getInlinedScriptTag } from '$lib/utils/metadata';
 
     export let items: {
         question: string;
@@ -73,6 +74,11 @@
     });
 </script>
 
+<svelte:head>
+    <!-- eslint-disable-next-line svelte/no-at-html-tags-->
+    {@html getInlinedScriptTag(createFaqSchema(items))}
+</svelte:head>
+
 <ul class="collapsible w-full divide-y divide-white/5" use:melt={$root} id="faq">
     {#each items as faqItem, index (index)}
         <li class="collapsible-item">
@@ -95,7 +101,7 @@
                                 class="icon text-primary self-start transition-transform"
                                 class:rotate-180={$isSelected(`${index}`)}
                             >
-                                <span class="icon-cheveron-down" aria-hidden="true" />
+                                <span class="icon-cheveron-down" aria-hidden="true"></span>
                             </div>
                         </button>
                     </h3>
@@ -120,7 +126,7 @@
                             {faqItem.question}
                         </span>
                         <div class="icon text-primary">
-                            <span class="icon-cheveron-down" aria-hidden="true" />
+                            <span class="icon-cheveron-down" aria-hidden="true"></span>
                         </div>
                     </summary>
 

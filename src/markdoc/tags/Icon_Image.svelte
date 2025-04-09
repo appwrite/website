@@ -1,7 +1,11 @@
 <script lang="ts">
-    export let src: string;
-    export let alt: string;
-    export let size: string = 's';
+    interface Props {
+        src: string;
+        alt: string;
+        size?: string;
+    }
+
+    const { src, alt, size = 's' }: Props = $props();
 
     const sizes: Record<string, string> = {
         s: '16px',
@@ -19,4 +23,5 @@
     height={sizes[size]}
     style:width={sizes[size]}
     style:vertical-align="middle"
+    style:min-width={sizes[size]}
 />

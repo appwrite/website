@@ -7,7 +7,8 @@
     import ComparePlans from './compare-plans.svelte';
     import Faq from './faq.svelte';
     import BG from './bg.png?enhanced';
-    import { PUBLIC_APPWRITE_DASHBOARD } from '$env/static/public';
+    import { getAppwriteDashboardUrl } from '$lib/utils/dashboard';
+    import { Button } from '$lib/components/ui';
 
     const title = 'Pricing' + TITLE_SUFFIX;
     const description = 'Explore our straightforward pricing plans that scale with your project.';
@@ -45,17 +46,25 @@
 
 <Main>
     <div class="web-big-padding-section mt-2">
-        <div class="dark pt-10">
+        <div class="dark pt-8">
             <div class="web-big-padding-section-level-2">
                 <section class="container">
                     <div class="web-hero">
                         <h1
-                            class="text-display font-aeonik-pro web-u-max-width-700 web-u-opacity-90 web-u-mobile-align-text-center self-center"
+                            class="text-display font-aeonik-pro web-u-max-width-900 web-u-opacity-90 web-u-mobile-align-text-center self-center"
                             style="background: linear-gradient(90deg, #F47298 0%, #E4E1E5 61.98%, #E4E4E7 100%);
                                 -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; padding-block-end:2px;"
                         >
-                            Simple, transparent pricing with no surprises
+                            Straightforward pricing for any project
                         </h1>
+                        <p
+                            class="text-description max-w-sm self-center text-center opacity-90"
+                            style="background: linear-gradient(90deg, #F47298 0%, #E4E1E5 61.98%, #E4E4E7 100%);
+                                -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; padding-block-end:2px;"
+                        >
+                            Start building for free and upgrade your plan as your project and team
+                            grows.
+                        </p>
                     </div>
                 </section>
             </div>
@@ -70,34 +79,35 @@
                                 >
                                     <div class="web-pricing-cards-item">
                                         <header class="web-pricing-cards-header">
-                                            <h2 id="starter" class="text-label font-aeonik-pro">
+                                            <h2
+                                                id="starter"
+                                                class="text-label text-primary font-aeonik-pro"
+                                            >
                                                 Free
                                             </h2>
                                             <div
-                                                class="text-title font-aeonik-pro text-primary mt-2"
+                                                class="text-title font-aeonik-pro text-primary mt-12 -mb-6"
                                             >
                                                 $0
                                             </div>
                                             <div class="mt-1">&nbsp;</div>
                                             <p class="text-body mt-4 h-[5rem] font-medium">
-                                                For personal hobby projects and students.
+                                                A great fit for passion projects and small
+                                                applications.
                                             </p>
-                                            <a
-                                                href="{PUBLIC_APPWRITE_DASHBOARD}/register"
-                                                class="web-button is-secondary is-full-width mt-8"
+                                            <Button
+                                                variant="secondary"
+                                                href={getAppwriteDashboardUrl('/register')}
+                                                class="is-full-width mt-8"
                                             >
                                                 <span class="text-sub-body font-medium"
                                                     >Start building</span
                                                 >
-                                            </a>
+                                            </Button>
                                         </header>
                                         <div class="web-pricing-cards-content">
                                             <ul class="web-checked-list-circle">
-                                                <li>
-                                                    <span>Unlimited projects</span>
-                                                </li>
-                                                <li><span>Never paused</span></li>
-                                                <li><span>10GB bandwidth</span></li>
+                                                <li><span>5GB bandwidth</span></li>
                                                 <li><span>2GB storage</span></li>
                                                 <li><span>750K executions</span></li>
                                                 <li><span>75K monthly active users</span></li>
@@ -107,7 +117,7 @@
                                                 </li>
                                                 <li>
                                                     <span
-                                                        >1 Database, 3 Buckets, 5 Functions per
+                                                        >1 Database, 1 Bucket, 5 Functions per
                                                         project</span
                                                     >
                                                 </li>
@@ -117,39 +127,53 @@
                                 </article>
                             </li>
                             <li>
-                                <article
-                                    class="web-card is-transparent is-transparent-pink has-border-gradient h-full"
-                                    style="background: linear-gradient(180deg, rgba(255, 255, 255, 0.04) 63.19%, rgba(255, 255, 255, 0.00) 100%);"
+                                <div
+                                    class="web-card is-transparent has-border-gradient is-transparent-pink -m-1 h-full p-1! backdrop-blur-none!"
+                                    style:--m-border-radius="1.25rem"
                                 >
-                                    <div class="web-pricing-cards-item">
+                                    <article
+                                        class="web-card is-transparent is-transparent-pink has-border-gradient h-full"
+                                        style="background: linear-gradient(180deg, rgba(253, 54, 110, 0.12) 38.59%, rgba(253, 54, 110, 0) 99.04%);"
+                                    >
                                         <header class="web-pricing-cards-header">
                                             <header class="flex gap-3">
-                                                <h2 id="pro" class="text-label font-aeonik-pro">
+                                                <h2
+                                                    id="pro"
+                                                    class="text-label text-primary font-aeonik-pro"
+                                                >
                                                     Pro
                                                 </h2>
-                                                <div class="web-inline-tag is-pink">Popular</div>
+                                                <div class="web-inline-tag is-pink">
+                                                    Most popular
+                                                </div>
                                             </header>
-                                            <div
-                                                class="text-title font-aeonik-pro text-primary mt-2"
-                                            >
-                                                $15
+                                            <div class="mt-4 flex flex-col gap-2">
+                                                <span class="-mb-4">From</span>
+                                                <div class="flex items-end gap-2">
+                                                    <div
+                                                        class="text-title font-aeonik-pro text-primary mt-3"
+                                                    >
+                                                        $15
+                                                    </div>
+                                                    <div class="mt-1">/month</div>
+                                                </div>
                                             </div>
-                                            <div class="mt-1">per member/month</div>
                                             <p class="text-body mt-4 h-[5rem] font-medium">
-                                                For pro developers and teams that need to scale
-                                                their products.
+                                                For production applications that need powerful
+                                                functionality and resources to scale.
                                             </p>
-                                            <a
-                                                href="https://cloud.appwrite.io/console?type=createPro"
-                                                class="web-button is-full-width mt-8"
+                                            <Button
+                                                href={getAppwriteDashboardUrl(
+                                                    '/console?type=create&plan=tier-1'
+                                                )}
+                                                class="is-full-width mt-11"
                                                 target="_blank"
                                                 rel="noopener noreferrer"
                                             >
-                                                <!-- <span class="text-sub-body font-medium">Start trial</span> -->
                                                 <span class="text-sub-body font-medium"
                                                     >Start building</span
                                                 >
-                                            </a>
+                                            </Button>
                                         </header>
                                         <div class="web-pricing-cards-content">
                                             <p>Everything in Free, plus:</p>
@@ -171,8 +195,8 @@
                                                 </li>
                                             </ul>
                                         </div>
-                                    </div>
-                                </article>
+                                    </article>
+                                </div>
                             </li>
                             <li>
                                 <article
@@ -181,27 +205,42 @@
                                 >
                                     <div class="web-pricing-cards-item">
                                         <header class="web-pricing-cards-header">
-                                            <h2 id="scale" class="text-label font-aeonik-pro">
+                                            <h2
+                                                id="scale"
+                                                class="text-label text-primary font-aeonik-pro"
+                                            >
                                                 Scale
                                             </h2>
-                                            <div
-                                                class="text-title font-aeonik-pro text-primary mt-2"
-                                            >
-                                                $599
+
+                                            <div class="mt-4 flex flex-col gap-2">
+                                                <span class="-mb-4">From</span>
+                                                <div class="flex items-end gap-2">
+                                                    <div
+                                                        class="text-title font-aeonik-pro text-primary mt-3"
+                                                    >
+                                                        $599
+                                                    </div>
+                                                    <div class="mt-1">/month</div>
+                                                </div>
                                             </div>
-                                            <div class="mt-1">per organization/month</div>
+
                                             <p class="text-body mt-4 h-[5rem] font-medium">
-                                                For scaling teams and agencies that need dedicated
-                                                support.
+                                                For teams that handle more complex and large
+                                                projects and need more control and support.
                                             </p>
-                                            <button
-                                                class="web-button is-secondary is-full-width mt-8"
-                                                disabled
+                                            <Button
+                                                variant="secondary"
+                                                href={getAppwriteDashboardUrl(
+                                                    '/console?type=create&plan=tier-2'
+                                                )}
+                                                class="is-full-width mt-10"
+                                                target="_blank"
+                                                rel="noopener noreferrer"
                                             >
                                                 <span class="text-sub-body font-medium"
-                                                    >Coming soon</span
+                                                    >Start building</span
                                                 >
-                                            </button>
+                                            </Button>
                                         </header>
                                         <div class="web-pricing-cards-content">
                                             <p>Everything in Pro, plus:</p>
@@ -228,27 +267,31 @@
                                 >
                                     <div class="web-pricing-cards-item">
                                         <header class="web-pricing-cards-header">
-                                            <h2 id="enterprise" class="text-label font-aeonik-pro">
+                                            <h2
+                                                id="enterprise"
+                                                class="text-label text-primary font-aeonik-pro"
+                                            >
                                                 Enterprise
                                             </h2>
                                             <div
-                                                class="text-title font-aeonik-pro text-primary mt-2"
+                                                class="text-title font-aeonik-pro text-primary mt-10 -mb-6"
                                             >
                                                 Custom
                                             </div>
-                                            <div class="mt-1">per organization/month</div>
+                                            <div class="mt-1">&nbsp;</div>
                                             <p class="text-body mt-4 h-[5rem] font-medium">
                                                 For enterprises that need more power and premium
                                                 support.
                                             </p>
-                                            <a
+                                            <Button
+                                                variant="secondary"
                                                 href="/contact-us/enterprise"
-                                                class="web-button is-secondary is-full-width mt-8"
+                                                class="is-full-width mt-10"
                                                 rel="noopener noreferrer"
                                             >
                                                 <!-- <span class="web-sub-body-500">Start trial</span> -->
                                                 <span class="web-sub-body-500">Contact us</span>
-                                            </a>
+                                            </Button>
                                         </header>
                                         <div class="web-pricing-cards-content">
                                             <p>Everything in Scale, plus:</p>
@@ -270,53 +313,43 @@
                         </ul>
                     </div>
 
-                    <!--                    <ul class="web-grid-1-1-opt-2 mt-20 gap-8">-->
-                    <!--                        <li>-->
-                    <!--                            <article-->
-                    <!--                                class="web-card is-transparent has-border-gradient min-h-full"-->
-                    <!--                                style="background:rgba(35, 35, 37, 0.90);"-->
-                    <!--                            >-->
-                    <!--                                <header class="flex gap-3">-->
-                    <!--                                    <h3 id="enterprises" class="text-body text-primary font-medium">-->
-                    <!--                                        Enterprises-->
-                    <!--                                    </h3>-->
-                    <!--                                    <div class="web-inline-tag is-pink">Coming Soon</div>-->
-                    <!--                                </header>-->
-                    <!--                                <p class="mt-2">-->
-                    <!--                                    Large scale projects seeking greater performance, collaboration-->
-                    <!--                                    and security.-->
-                    <!--                                </p>-->
-                    <!--                                <a href="/contact-us" class="web-button is-secondary mt-8">-->
-                    <!--                                    <span>Contact us</span>-->
-                    <!--                                </a>-->
-                    <!--                            </article>-->
-                    <!--                        </li>-->
-                    <!--                        <li>-->
-                    <!--                            <article-->
-                    <!--                                class="web-card is-transparent has-border-gradient min-h-full"-->
-                    <!--                                style="background:rgba(35, 35, 37, 0.90);"-->
-                    <!--                            >-->
-                    <!--                                <header class="flex gap-3">-->
-                    <!--                                    <h3-->
-                    <!--                                        id="open-source-teams"-->
-                    <!--                                        class="text-body text-primary font-medium"-->
-                    <!--                                    >-->
-                    <!--                                        Open-source teams-->
-                    <!--                                    </h3>-->
-                    <!--                                </header>-->
-                    <!--                                <p class="mt-2">-->
-                    <!--                                    We support OSS maintainers with a free Pro Plan. Read our-->
-                    <!--                                    announcement blog to find out more.-->
-                    <!--                                </p>-->
-                    <!--                                <a-->
-                    <!--                                    href="/docs/advanced/platform/oss"-->
-                    <!--                                    class="web-button is-secondary mt-8"-->
-                    <!--                                >-->
-                    <!--                                    <span>Learn more</span>-->
-                    <!--                                </a>-->
-                    <!--                            </article>-->
-                    <!--                        </li>-->
-                    <!--                    </ul>-->
+                    <div class="mt-24 grid grid-cols-1 place-items-center gap-4 md:grid-cols-2">
+                        <div class="cta-card w-full p-6">
+                            <h6
+                                class="text-body text-primary mb-2 flex items-center gap-3 font-medium"
+                            >
+                                Enterprises
+                                <div
+                                    class="web-inline-tag is-pink text-caption px-2! py-1! font-normal"
+                                >
+                                    Coming soon
+                                </div>
+                            </h6>
+                            <p class="text-body text-secondary font-medium">
+                                Large scale projects seeking greater performance, collaboration and
+                                security.
+                            </p>
+                            <Button variant="secondary" href="/contact-us" class="mt-8"
+                                >Contact us</Button
+                            >
+                        </div>
+                        <div class="cta-card w-full p-6">
+                            <h6
+                                class="text-body text-primary mb-2 flex items-center gap-3 font-medium"
+                            >
+                                Open Source
+                            </h6>
+                            <p class="text-body text-secondary font-medium">
+                                We support open-source teams with free access to Pro and Scale
+                                plans.
+                            </p>
+                            <Button
+                                variant="secondary"
+                                href="/docs/advanced/platform/oss"
+                                class="mt-8">Learn More</Button
+                            >
+                        </div>
+                    </div>
                 </section>
             </div>
         </div>
@@ -324,7 +357,7 @@
 
         <div class="dark relative overflow-hidden pt-10">
             <div class="web-big-padding-section-level-2 relative">
-                <div class="container relative" style:z-index="10">
+                <div class="relative container" style:z-index="10">
                     <section class="web-grid-4-6">
                         <header>
                             <div class="text-display font-aeonik-pro text-primary">FAQ</div>
@@ -345,6 +378,8 @@
 </Main>
 
 <style lang="scss">
+    @use '$scss/abstract/mixins/border-gradient' as gradients;
+
     .web-card {
         --web-color-border: 240, 4%, 18%;
         --p-card-padding: 1.25rem;
@@ -360,9 +395,17 @@
         grid-template-columns: repeat(4, 1fr);
     }
 
-    .web-pricing-cards-list .web-main-body-500 {
-        height: 78px;
-        --p-font-size: unset !important;
-        --p-line-height: var(--web-line-height-sm);
+    .cta-card {
+        @include gradients.border-gradient;
+        --p-radius: 16px;
+
+        background-color: hsl(var(--web-color-card));
+        border-radius: var(--p-radius);
+        --m-border-radius: var(--p-radius);
+        --m-border-gradient-before: linear-gradient(
+            180deg,
+            rgba(255, 255, 255, 0.12) 0%,
+            rgba(255, 255, 255, 0) 125.11%
+        );
     }
 </style>

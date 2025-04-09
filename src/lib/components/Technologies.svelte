@@ -75,7 +75,7 @@
                 <a
                     href={platform.href}
                     class="web-icon-button web-box-icon has-border-gradient"
-                    on:click={() => trackEvent(`${platform.name} clicked`)}
+                    on:click={() => trackEvent({ plausible: { name: `${platform.name} clicked` } })}
                 >
                     <img
                         src={platform.image}
@@ -85,7 +85,9 @@
                     />
                 </a>
             </li>
-            <svelte:fragment slot="tooltip">{platform.name}</svelte:fragment>
+            {#snippet tooltip()}
+                {platform.name}
+            {/snippet}
         </Tooltip>
     {/each}
 </ul>

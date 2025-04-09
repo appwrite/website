@@ -204,7 +204,7 @@ func main() async throws{
             databaseId: "<DATABASE_ID>",
             collectionId: "<COLLECTION_ID>",
             queries: [
-                Query.equal("title", "Hamlet")
+                Query.equal("title", value: "Hamlet")
             ]
         )
     } catch {
@@ -237,5 +237,6 @@ suspend fun main() {
     }
 }
 ```
+
 {% /multicode %}
 {% /section %}

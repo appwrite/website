@@ -8,6 +8,7 @@
 </script>
 
 <script lang="ts">
+    import { classNames } from '$lib/utils/classnames';
     import { createSelect, melt, type CreateSelectProps } from '@melt-ui/svelte';
     import { createEventDispatcher } from 'svelte';
     import { fly, type FlyParams } from 'svelte/transition';
@@ -21,10 +22,15 @@
     export let id: string | undefined = undefined;
     export let preventScroll = false;
     export let placement: NonNullable<CreateSelectProps['positioning']>['placement'] = 'bottom';
+    let className: string = '';
+
+    export { className as class };
 
     const dispatch = createEventDispatcher<{
         change: unknown;
     }>();
+
+    export let initialLabel: string = 'Select an option';
 
     const {
         elements: { trigger, menu, option: optionEl, group: groupEl, groupLabel },
@@ -83,7 +89,7 @@
 </script>
 
 <button
-    class="web-select is-colored"
+    class={classNames('web-select is-colored', className)}
     {id}
     class:web-is-not-mobile={nativeMobile}
     use:melt={$trigger}
@@ -91,11 +97,11 @@
 >
     <div class="physical-select">
         {#if selectedOption?.icon}
-            <span class={selectedOption.icon} aria-hidden="true" />
+            <span class={selectedOption.icon} aria-hidden="true"></span>
         {/if}
-        <span>{$selectedLabel}</span>
+        <span>{$selectedLabel || initialLabel}</span>
     </div>
-    <span class="icon-cheveron-{$open ? 'up' : 'down'}" aria-hidden="true" />
+    <span class="icon-cheveron-{$open ? 'up' : 'down'}" aria-hidden="true"></span>
 </button>
 
 {#if $open}
@@ -113,9 +119,9 @@
                     {#each group.options as option}
                         <button class="web-select-option" use:melt={$optionEl(option)}>
                             {#if option.icon}
-                                <span class={option.icon} aria-hidden="true" />
+                                <span class={option.icon} aria-hidden="true"></span>
                             {/if}
-                            <span style:text-transform="capitalize">{option.label}</span>
+                            <span>{option.label}</span>
                         </button>
                     {/each}
                 </div>
@@ -128,7 +134,7 @@
                     {#each group.options as option}
                         <button class="web-select-option" use:melt={$optionEl(option)}>
                             {#if option.icon}
-                                <span class={option.icon} aria-hidden="true" />
+                                <span class={option.icon} aria-hidden="true"></span>
                             {/if}
                             <span style:text-transform="capitalize">{option.label}</span>
                         </button>
@@ -144,7 +150,7 @@
     style:display={nativeMobile ? undefined : 'none'}
 >
     {#if selectedOption?.icon}
-        <span class={selectedOption.icon} aria-hidden="true" />
+        <span class={selectedOption.icon} aria-hidden="true"></span>
     {/if}
     <select {id} bind:value>
         {#each groups as group}
@@ -166,7 +172,7 @@
             {/if}
         {/each}
     </select>
-    <span class="icon-cheveron-{$open ? 'up' : 'down'}" aria-hidden="true" />
+    <span class="icon-cheveron-{$open ? 'up' : 'down'}" aria-hidden="true"></span>
 </div>
 
 <style lang="scss">

@@ -1,7 +1,7 @@
 ---
 layout: article
 title: Start with Web
-description: Build JavaScript or Typescript web apps with Appwrite and learn how to use our powerful backend to add authentication, user management, file storage, and more.
+description: Build JavaScript or Typescript web apps with Appwrite. Add authentication, user management, file storage, and more. Read our guide to get started!
 difficulty: beginner
 readtime: 3
 back: /docs/quick-starts
@@ -20,8 +20,8 @@ Head to the [Appwrite Console](https://cloud.appwrite.io/console).
 
 If this is your first time using Appwrite, create an account and create your first project.
 
-Then, under **Add a platform**, add a **Web app**. 
-The **Hostname** should be `localhost` or the domain on which you're hosting your web app. 
+Then, under **Add a platform**, add a **Web app**.
+The **Hostname** should be `localhost` or the domain on which you're hosting your web app.
 
 {% only_dark %}
 ![Add a platform](/images/docs/quick-starts/dark/add-platform.png)
@@ -33,19 +33,22 @@ The **Hostname** should be `localhost` or the domain on which you're hosting you
 You can skip optional steps.
 
 {% /section %}
-{% section #step-2 step=2 title="Create project" %}
+{% section #step-2 step=2 title="Install Appwrite" %}
 You can install the Appwrite Web SDK using a package manager.
 ```sh
 npm install appwrite@14.0.1
 ```
 
-You can also add the Appwrite Web SDK using CDN with a script tag.
+You can also add the Appwrite Web SDK using CDN by adding a script tag to your HTML file. The SDK will be available globally through the `Appwrite` namespace.
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/appwrite@14.0.1"></script>
+<script src="https://cdn.jsdelivr.net/npm/appwrite@17.0.0"></script>
 ```
 {% /section %}
-{% section #step-3 step=3 title="Import Appwrite" %}
+{% section #step-3 step=3 title="Initialize Appwrite" %}
+
+If you installed via npm, you can import `Client` and `Account` from the Appwrite SDK.
+
 ```client-web
 import { Client, Account } from 'appwrite';
 
@@ -57,6 +60,19 @@ client
 
 export const account = new Account(client);
 export { ID } from 'appwrite';
+```
+
+If you're using CDN, the library loads directly in your browser as a global object, so you access it through Appwrite instead of imports.
+
+```js
+const client = new Appwrite.Client()
+
+client
+    .setEndpoint('https://cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>') // Replace with your project ID
+
+export const account = new Appwrite.Account(client)
+export const databases = new Appwrite.Databases(client)
 ```
 {% /section %}
 
@@ -109,7 +125,7 @@ const ideas = response.documents as Idea[];
 {% /section %}
 
 {% section #step-6 step=6 title="All set" %}
-The Appwrite SDK works with your favorite Web frameworks. 
+The Appwrite SDK works with your favorite Web frameworks.
 
 Learn to use Appwrite by adding authentication to a simple web app.
 {% cards %}

@@ -206,7 +206,7 @@ func main() async throws {
             databaseId: "<DATABASE_ID>",
             collectionId: "<COLLECTION_ID>",
             queries: [
-                Query.equal("title", "Avatar")
+                Query.equal("title", value: "Avatar")
             ]
         )
     } catch {

@@ -1,5 +1,6 @@
 import { OpenAPIV3 } from 'openapi-types';
-import { Platform, type Service } from './references';
+import { Platform, type ServiceValue } from './references';
+import { error } from '@sveltejs/kit';
 
 export type SDKMethod = {
     'rate-limit': number;
@@ -59,10 +60,13 @@ export interface Property {
     } & OpenAPIV3.ReferenceObject;
 }
 
-export enum ModelType {
-    REST = 'REST',
-    GRAPHQL = 'GraphQL'
-}
+export const ModelType = {
+    REST: 'REST',
+    GRAPHQL: 'GraphQL'
+} as const;
+
+type ModelTypeType = keyof typeof ModelType;
+type ModelTypeValue = (typeof ModelType)[ModelTypeType];
 
 function getExamples(version: string) {
     switch (version) {
@@ -195,30 +199,28 @@ export function getSchema(id: string, api: OpenAPIV3.Document): OpenAPIV3.Schema
     if (schema) {
         return schema;
     }
-    throw new Error(`Schema doesn't exist for id: ${id}`);
+
+    /**
+     * It is better to show a `404` if no schema exists for a given `id`,
+     * rather than a 500 internal server error which is, misleading in cases like this.
+     *
+     * It is quite possible that the user just wandered around here with a wrong docs link!
+     */
+    error(404, { message: `Not found` });
 }
 
 const specs = import.meta.glob(
-    '$appwrite/app/config/specs/open-api3*-(client|server|console).json',
-    {
-        query: '?raw',
-        import: 'default'
-    }
+    '$appwrite/app/config/specs/open-api3*-(client|server|console).json'
 );
-async function getSpec(version: string, platform: string) {
+
+export async function getApi(version: string, platform: string): Promise<OpenAPIV3.Document> {
     const isClient = platform.startsWith('client-');
     const isServer = platform.startsWith('server-');
     const target = `/node_modules/@appwrite.io/repo/app/config/specs/open-api3-${version}-${
         isServer ? 'server' : isClient ? 'client' : 'console'
     }.json`;
-    return specs[target]();
-}
 
-export async function getApi(version: string, platform: string): Promise<OpenAPIV3.Document> {
-    const raw = await getSpec(version, platform);
-    const api = JSON.parse(raw);
-
-    return api;
+    return specs[target]() as unknown as OpenAPIV3.Document;
 }
 
 const descriptions = import.meta.glob(
@@ -229,16 +231,14 @@ const descriptions = import.meta.glob(
     }
 );
 
-export async function getDescription(service: string): Promise<string> {
+export async function getDescription(service: string) {
     const target = `/src/routes/docs/references/[version]/[platform]/[service]/descriptions/${service}.md`;
 
     if (!(target in descriptions)) {
         throw new Error('Missing service description');
     }
 
-    const description = descriptions[target]();
-
-    return description;
+    return descriptions[target]() as unknown as string;
 }
 
 export async function getService(
@@ -247,7 +247,7 @@ export async function getService(
     service: string
 ): Promise<{
     service: {
-        name: Service;
+        name: ServiceValue;
         description: string;
     };
     methods: SDKMethod[];
@@ -265,7 +265,7 @@ export async function getService(
 
     const data: Awaited<ReturnType<typeof getService>> = {
         service: {
-            name: service as Service,
+            name: service as ServiceValue,
             description: await getDescription(service)
         },
         methods: []
@@ -327,9 +327,11 @@ export async function getService(
             continue;
         }
 
+        const demo = (await examples[path]()) as unknown as string;
+
         data.methods.push({
             id: operation['x-appwrite'].method,
-            demo: await examples[path](),
+            demo: demo ?? '',
             title: operation.summary ?? '',
             description: operation.description ?? '',
             parameters: parameters ?? [],
@@ -370,9 +372,9 @@ export function resolveReference(
 
 export const generateExample = (
     schema: OpenAPIV3.SchemaObject,
-    api: OpenAPIV3.Document<{}>,
-    modelType: ModelType = ModelType.REST
-): Object => {
+    api: OpenAPIV3.Document<object>,
+    modelType: ModelTypeValue = ModelType.REST
+): object => {
     const properties = Object.keys(schema.properties ?? {}).map((key) => {
         const name = key;
         const fields = schema.properties?.[key];

@@ -32,11 +32,11 @@
                 { label: 'Solid', href: '/docs/quick-starts/solid' }
             ],
             Products: [
-                { label: 'Auth', href: '/docs/products/auth' },
+                { label: 'Auth', href: '/products/auth' },
                 { label: 'Databases', href: '/docs/products/databases' },
-                { label: 'Functions', href: '/docs/products/functions' },
+                { label: 'Functions', href: '/products/functions' },
                 { label: 'Messaging', href: '/products/messaging' },
-                { label: 'Storage', href: '/docs/products/storage' },
+                { label: 'Storage', href: '/products/storage' },
                 { label: 'Realtime', href: '/docs/apis/realtime' }
             ],
             Learn: [
@@ -69,7 +69,8 @@
             Programs: [
                 { label: 'Heroes', href: '/heroes' },
                 { label: 'Startups', href: '/startups' },
-                { label: 'Students', href: '/students' }
+                { label: 'Education', href: '/education' },
+                { label: 'Partners', href: '/partners' }
             ],
             About: [
                 { label: 'Company', href: '/company' },
@@ -128,7 +129,7 @@
                             class="web-icon-chevron-down web-u-transition"
                             class:web-u-rotate-180={$isSelected(title)}
                             style:font-size="1rem"
-                        />
+                        ></span>
                     </button>
                 </h5>
                 {#if $isSelected(title)}

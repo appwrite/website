@@ -3,8 +3,7 @@
 @layer pink, css-variables, resets, fonts, icons, animations, elements, pinkcomponents, sequences, grids, pages, pinkutilities;
 
 @layer pink {
-
-  @import '@appwrite.io/pink-icons';
+  @include meta.load-css('pink-icons');
 }
 
 @layer css-variables {

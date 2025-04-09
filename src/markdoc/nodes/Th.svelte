@@ -9,7 +9,7 @@
     style:width={width ? `${width}px` : undefined}
     style:min-inline-size={width ? 'unset' : undefined}
     role="columnheader"
-    class="py-[0.5625rem] px-3"
+    class="min-w-44 px-3 py-[0.5625rem]"
     {align}
 >
     <span class="text-sm leading-[1.375rem] text-[hsl(var(--web-color-primary))]">

@@ -8,6 +8,10 @@ OAuth authentication allows users to log in using accounts from other popular se
 
 When using OAuth to authenticate, the authentication request is initiated from the client application. The user is then redirected to an OAuth 2 provider to complete the authentication step, and finally, the user is redirected back to the client application.
 
+{% info title="Identities and OAuth2" %}
+OAuth2 login creates an **identity** in Appwrite, allowing users to connect multiple providers to a single account. Learn more in [Identities](/docs/products/auth/identities).
+{% /info %}
+
 # Configure OAuth 2 login {% #configure %}
 
 Before using OAuth 2 login, you need to enable and configure an OAuth 2 login provider.
@@ -52,6 +56,23 @@ account.createOAuth2Session(
 {% /tabsitem %}
 
 {% tabsitem #flutter title="Flutter" %}
+
+For Android, add the following activity inside the `<application>` tag in your `AndroidManifest.xml`. Replace `<PROJECT_ID>` with your actual Appwrite project ID.
+
+```xml
+<!-- Add this inside the <application> tag, along side the existing <activity> tags -->
+<activity android:exported="true" android:name="com.linusu.flutter_web_auth_2.CallbackActivity" >
+  <intent-filter android:label="flutter_web_auth_2">
+    <action android:name="android.intent.action.VIEW" />
+    <category android:name="android.intent.category.DEFAULT" />
+    <category android:name="android.intent.category.BROWSABLE" />
+    <data android:scheme="appwrite-callback-[PROJECT_ID]" />
+  </intent-filter>
+</activity>
+```
+
+No other configuration is required for iOS.
+
 ```client-flutter
 import 'package:appwrite/appwrite.dart';
 import 'package:appwrite/enums.dart';
@@ -64,7 +85,7 @@ final account = Account(client);
 
 // Go to OAuth provider login page
 await account.createOAuth2Session(
-    provider: 'OAuthProvider.github',
+    provider: OAuthProvider.github,
     scopes: ['repo', 'user']
 );
 ```
@@ -138,7 +159,7 @@ import io.appwrite.Client
 import io.appwrite.services.Account
 import io.appwrite.enums.OAuthProvider
 
-val client = Client()
+val client = Client(context)                     // Activity or application context
     .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
     .setProject("<PROJECT_ID>")                  // Your project ID
 
@@ -149,6 +170,57 @@ account.createOAuth2Session(
     provider = OAuthProvider.GITHUB,
     scopes = listOf('repo', 'user')
 )
+```
+{% /tabsitem %}
+
+{% tabsitem #react-native title="React Native" %}
+If using Expo, set the URL scheme in your `app.json` file.
+
+```json
+{
+  "expo": {
+    "scheme": "myapp"
+  }
+}
+```
+
+```client-react-native
+import { Client, Account, OAuthProvider } from "appwrite";
+import { makeRedirectUri } from 'expo-auth-session'
+import * as WebBrowser from 'expo-web-browser';
+
+const client = new Client()
+    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('<PROJECT_ID>');                 // Your project ID
+
+const account = new Account(client);
+
+// Create a deep link that works across Expo environments
+// Ensure localhost is used for the hostname to validation error for success/failure URLs
+const deepLink = new URL(makeRedirectUri({preferLocalhost: true}));
+if (!deepLink.hostname) {
+    deepLink.hostname = 'localhost';
+}
+const scheme = `${deepLink.protocol}//`; // e.g. 'exp://' or 'playground://'
+
+// Start OAuth flow
+const loginUrl = await account.createOAuth2Token(
+    provider,
+    `${deepLink}`,
+    `${deepLink}`,
+);
+
+// Open loginUrl and listen for the scheme redirect
+const result = await WebBrowser.openAuthSessionAsync(`${loginUrl}`, scheme);
+
+// Extract credentials from OAuth redirect URL
+const url = new URL(result.url);
+const secret = url.searchParams.get('secret');
+const userId = url.searchParams.get('userId');
+
+// Create session with OAuth credentials
+await account.createSession(userId, secret);
+// Redirect as needed
 ```
 {% /tabsitem %}
 {% /tabs %}
@@ -162,6 +234,10 @@ You can optionally configure `success` or `failure` redirect links on web to han
 After authenticating a user through their OAuth 2 provider, you can fetch their profile information such as their avatar image or name. To do this you can use the access token from the OAuth 2 provider and make API calls to the provider.
 
 After creating an OAuth 2 session, you can fetch the session to get information about the provider.
+
+{% info title="Tip" %}
+Replace `[SESSION_ID]` with either `"current"` to get or update the active session, or with a specific session ID.
+{% /info %}
 
 {% multicode %}
 ```client-web

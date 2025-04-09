@@ -65,7 +65,7 @@ Cloudinary is a cloud service that focuses on managing media assets, especially 
 | **FEATURE** | **STORAGE** | **CLOUDINARY** |
 | --- | --- | --- |
 | Deployment | Self-hosted or cloud-hosted | Cloud |
-| Free plan | 2GB storage, 10GB bandwidth | 25GB storage/bandwidth |
+| Free plan | 2GB storage, 5GB bandwidth | 25GB storage/bandwidth |
 | Paid plan | $15 per member/month for increased bandwidth, users and storage | $89 to $224 per month for increased users and credits |
 | Open source | Yes ✅ | No ❌ |
 | Support | Discord and email, dedicated channels for startups | Community and email, paid support options |

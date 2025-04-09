@@ -46,7 +46,6 @@
                 },
                 {
                     label: 'Backups',
-                    new: true,
                     href: '/docs/products/databases/backups'
                 }
             ]

@@ -1,0 +1,42 @@
+---
+layout: post
+title: Memberships privacy is now available for all Appwrite plans
+description: Appwrite now offers memberships privacy for all plans, making it easier to protect your members' personal information.
+date: 2024-12-10
+cover: /images/blog/memberships-privacy-announcement/cover.png
+timeToRead: 4
+author: ebenezer-don
+category: product, announcement
+---
+
+Protecting user data is fundamental to building secure and reliable applications. We're excited to announce that memberships privacy is now available on all Appwrite plans, enabling you to safeguard your members' personal information effectively.
+
+# Why memberships privacy matters
+
+Many applications don't require members' personal details to be visible to other users or team members. In collaborative environments, for instance, exposing information like email addresses or multi-factor authentication status may be unnecessary and potentially risky. This feature ensures you can implement appropriate privacy controls while maintaining full application functionality.
+
+# What you can do with memberships privacy
+
+Memberships privacy allows you to designate specific membership details as private, giving you precise control over information sharing within your app. You can now configure the following details as private:
+- userName: The member's name
+- userEmail: The member's email address
+- mfa: Whether the member has enabled multi-factor authentication
+
+When set to private, these details remain hidden in team or project workflows unless specifically required.
+
+# How to configure memberships privacy
+
+Implementing memberships privacy is straightforward:
+1. Open your Appwrite Console
+2. Navigate to Auth > Security > Memberships privacy
+3. Select which details (userName, userEmail, or mfa) should be private
+
+This setup ensures sensitive information remains protected where unnecessary.
+
+Have questions or feedback about this feature? Join us on [Discord](https://appwrite.io/discord) - we look forward to hearing how you'll use memberships privacy to enhance your applications' security.
+
+# More resources
+
+- [Memberships privacy documentation](https://appwrite.io/docs/products/auth/security#memberships-privacy)
+- [Introducing database backups](https://appwrite.io/blog/post/introducing-database-backups)
+- [WebP support now available for Safari on all devices](https://appwrite.io/blog/post/webp-support-for-safari)

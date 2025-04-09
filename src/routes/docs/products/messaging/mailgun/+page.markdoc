@@ -191,7 +191,7 @@ import 'package:dart_appwrite/dart_appwrite.dart';
 import 'package:dart_appwrite/enums.dart';
 import 'package:dart_appwrite/models.dart';
 
-void main() { // Init SDK
+void main() async { // Init SDK
   Client client = Client();
   Messaging messaging = Messaging(client);
 
@@ -201,7 +201,7 @@ void main() { // Init SDK
     .setKey('<API_KEY>') // Your secret API key
   ;
 
-  Future result = messaging.createEmail(
+  Future result = await messaging.createEmail(
     messageId:'<MESSAGE_ID>' ,
     subject:'<SUBJECT>' ,
     content:'<CONTENT>' ,

@@ -29,7 +29,9 @@
     >
         <img {src} {alt} />
     </button>
-    <svelte:fragment slot="tooltip">{alt}</svelte:fragment>
+    {#snippet tooltip()}
+        {alt}
+    {/snippet}
 </Tooltip>
 
 <style lang="scss">

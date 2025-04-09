@@ -2,8 +2,7 @@
     import FooterNav from '$lib/components/FooterNav.svelte';
     import MainFooter from '$lib/components/MainFooter.svelte';
     import Main from '$lib/layouts/Main.svelte';
-    import { Ticket } from '../(components)/ticket';
-    import { getMockContributions, loginGithub } from '../helpers';
+    import { loginGithub } from '../helpers';
     import { buildOpenGraphImage } from '$lib/utils/metadata';
     import TicketScroll from '../(components)/TicketScroll.svelte';
 
@@ -77,7 +76,7 @@
                 </hgroup>
                 <div class="buttons">
                     <button class="web-button" on:click={loginGithub}>
-                        <div class="web-icon-github" />
+                        <div class="web-icon-github"></div>
                         <span class="text">Register with GitHub</span>
                     </button>
                 </div>
@@ -156,7 +155,8 @@
                 backdrop-filter: blur(6px);
                 background-color: hsl(var(--web-color-background) / 50%);
                 mask-composite: intersect;
-                mask-image: linear-gradient(
+                mask-image:
+                    linear-gradient(
                         to top,
                         transparent,
                         rgba(0, 0, 0, 1) 25%,

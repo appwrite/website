@@ -8,12 +8,12 @@
         <summary
             class="collapsible-button flex cursor-pointer list-none appearance-none items-center justify-between marker:hidden [&::-webkit-details-marker]:hidden"
         >
-            <span class="text">{title}</span>
+            <span class="text-primary text-sub-body font-medium">{title}</span>
             <div class="icon text-primary transition-transform group-[&[open]]:rotate-180">
-                <span class="icon-cheveron-down" aria-hidden="true" />
+                <span class="icon-cheveron-down" aria-hidden="true"></span>
             </div>
         </summary>
-        <div class="collapsible-content flex flex-col">
+        <div class="collapsible-content text-secondary text-sub-body flex flex-col">
             <slot />
         </div>
     </details>

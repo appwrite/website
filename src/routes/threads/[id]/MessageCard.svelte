@@ -53,10 +53,6 @@
         overflow: hidden;
     }
 
-    .text-sub-body font-medium {
-        font-size: 1rem !important;
-    }
-
     .header {
         display: flex;
         justify-content: space-between;

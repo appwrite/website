@@ -20,4 +20,5 @@
     export { default as Youtube } from './Youtube.svelte';
     export { default as Call_To_Action } from './Call_To_Action.svelte';
     export { default as Regions_Map } from './Regions_Map.svelte';
+    export { default as Storage_Image } from './Storage_Image.svelte';
 </script>

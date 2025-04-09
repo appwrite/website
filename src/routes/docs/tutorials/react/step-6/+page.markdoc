@@ -4,8 +4,16 @@ title: Add database
 description: Add a database to your React application using Appwrite Web SDK.
 step: 6
 ---
+# Create database {% #create-database %}
+To store your ideas, you need to create a database first.
+
+1. Go to the Databases section in your Appwrite Console
+2. Click *Create Database*
+3. Give it a name and ID. For this tutorial, we'll use `Ideas Tracker` as the name and `ideas-tracker` as the ID.
+4. You'll need to remember the database ID as you'll need it later.
+
 # Create collection {% #create-collection %}
-In Appwrite, data is stored as a collection of documents. Create a collection in the [Appwrite Console](https://cloud.appwrite.io/) to store our ideas. 
+In Appwrite, data is stored as a collection of documents. Create a collection in the [Appwrite Console](https://cloud.appwrite.io/) to store our ideas.
 
 {% only_dark %}
 ![Create project screen](/images/docs/tutorials/dark/idea-tracker-collection.png)
@@ -58,28 +66,40 @@ export function IdeasProvider(props) {
   const [ideas, setIdeas] = useState([]);
 
   async function add(idea) {
-    const response = await databases.createDocument(
-      IDEAS_DATABASE_ID,
-      IDEAS_COLLECTION_ID,
-      ID.unique(),
-      idea
-    );
-    setIdeas((ideas) => [response, ...ideas].slice(0, 10));
+    try {
+      const response = await databases.createDocument(
+        IDEAS_DATABASE_ID,
+        IDEAS_COLLECTION_ID,
+        ID.unique(),
+        idea
+      );
+      setIdeas((ideas) => [response, ...ideas].slice(0, 10));
+    } catch (err) {
+      console.log(err) // handle error or show user a message
+    }
   }
 
   async function remove(id) {
-    await databases.deleteDocument(IDEAS_DATABASE_ID, IDEAS_COLLECTION_ID, id);
-    setIdeas((ideas) => ideas.filter((idea) => idea.$id !== id));
-    await init(); // Refetch ideas to ensure we have 10 items
+    try {
+      await databases.deleteDocument(IDEAS_DATABASE_ID, IDEAS_COLLECTION_ID, id);
+      setIdeas((ideas) => ideas.filter((idea) => idea.$id !== id));
+      await init();
+    } catch (err) {
+      console.log(err)
+    }
   }
 
   async function init() {
-    const response = await databases.listDocuments(
-      IDEAS_DATABASE_ID,
-      IDEAS_COLLECTION_ID,
-      [Query.orderDesc("$createdAt"), Query.limit(10)]
-    );
-    setIdeas(response.documents);
+    try {
+      const response = await databases.listDocuments(
+        IDEAS_DATABASE_ID,
+        IDEAS_COLLECTION_ID,
+        [Query.orderDesc("$createdAt"), Query.limit(10)]
+      );
+      setIdeas(response.documents);
+    } catch (err) {
+      console.log(err)
+    }
   }
 
   useEffect(() => {

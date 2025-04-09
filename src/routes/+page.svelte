@@ -1,21 +1,29 @@
 <script lang="ts">
+    import { trackEvent } from '$lib/actions/analytics';
     import OpenSource from '$lib/animations/OpenSource.svelte';
     import Products from '$lib/animations/Products/Products.svelte';
     import ProductsMobile from '$lib/animations/Products/ProductsMobile.svelte';
+    import AppwriteIn100Seconds from '$lib/components/AppwriteIn100Seconds.svelte';
     import PreFooter from '$lib/components/PreFooter.svelte';
     import Technologies from '$lib/components/Technologies.svelte';
+    import { Button } from '$lib/components/ui';
+    import Badge from '$lib/components/ui/badge.svelte';
+    import GradientText from '$lib/components/ui/gradient-text.svelte';
+    import Hero from '$lib/components/ui/hero.svelte';
     import { Main } from '$lib/layouts';
     import { isMobileNavOpen } from '$lib/layouts/Main.svelte';
-    import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
+    import { getAppwriteDashboardUrl } from '$lib/utils/dashboard';
+    import {
+        DEFAULT_DESCRIPTION,
+        DEFAULT_HOST,
+        getInlinedScriptTag,
+        organizationJsonSchema,
+        softwareAppSchema
+    } from '$lib/utils/metadata';
     import FooterNav from '../lib/components/FooterNav.svelte';
     import MainFooter from '../lib/components/MainFooter.svelte';
     import DeveloperCard from './DeveloperCard.svelte';
-    import { PUBLIC_APPWRITE_DASHBOARD } from '$env/static/public';
-    import CoverImage from './dashboard.png';
-    import Hero from '$lib/components/ui/Hero.svelte';
-    import GradientText from '$lib/components/ui/GradientText.svelte';
-    import Badge from '$lib/components/ui/Badge.svelte';
-    import { trackEvent } from '$lib/actions/analytics';
+    import CoverImage from './dashboard.webp';
 
     const title = 'Appwrite - Build like a team of hundreds';
     const description = DEFAULT_DESCRIPTION;
@@ -75,13 +83,17 @@
     <meta property="og:image:height" content="630" />
     <meta name="twitter:image" content={ogImage} />
     <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- eslint-disable-next-line svelte/no-at-html-tags-->
+    {@html getInlinedScriptTag(softwareAppSchema())}
+
+    <!-- eslint-disable-next-line svelte/no-at-html-tags-->
+    {@html getInlinedScriptTag(organizationJsonSchema())}
 </svelte:head>
 
 <div
     style:position="absolute"
-    style:top="0"
-    style:width="100vw"
-    style:height="100vh"
+    style:inset="0"
     style:overflow="hidden"
     class:web-u-hide-mobile={$isMobileNavOpen}
 >
@@ -92,7 +104,7 @@
         <enhanced:img
             style="width:1466px; height:804px; transform:rotate(150.348deg); opacity: 0.65; filter: blur(127.5px);
 		max-block-size: unset; max-inline-size: unset;"
-            src="./top-page-dark.png"
+            src="./top-page-dark.webp"
             alt=""
         />
     </div>
@@ -103,7 +115,7 @@
     style="top: 22rem; left: 54%; translate: calc(-50% - 900px); width: 75.9375rem;"
     class:web-u-hide-mobile={$isMobileNavOpen}
 >
-    <img src="/images/bgs/hero-lines-1.png" alt="" />
+    <img src="/images/bgs/hero-lines-1.webp" alt="" />
 </div>
 
 <div
@@ -112,7 +124,7 @@
     class:web-u-hide-mobile={$isMobileNavOpen}
 >
     <div style="left: 0;">
-        <img src="/images/bgs/hero-lines-2.png" alt="" />
+        <img src="/images/bgs/hero-lines-2.webp" alt="" />
     </div>
 </div>
 
@@ -122,18 +134,17 @@
             <div class="my-12 lg:my-[7.5rem]">
                 <section class="container pb-0">
                     <a
-                        href="/blog/post/introducing-database-backups"
+                        href="/blog/post/what-is-mcp"
                         class="web-hero-banner-button mb-4"
-                        on:click={() => trackEvent('Banner button click')}
+                        on:click={() => trackEvent({ plausible: { name: 'Banner button click' } })}
                     >
-                        <span class="web-icon-star shrink-0" aria-hidden="true" />
+                        <span class="web-icon-star shrink-0" aria-hidden="true"></span>
                         <span class="text-caption shrink-0 font-medium">New</span>
-                        <div class="web-hero-banner-button-sep" />
+                        <div class="web-hero-banner-button-sep"></div>
                         <span class="text-caption web-u-trim-1"
-                            >Introducing Database Backups</span
+                            >Announcing new Appwrite MCP server</span
                         >
-
-                        <span class="web-icon-arrow-right shrink-0" aria-hidden="true" />
+                        <span class="web-icon-arrow-right shrink-0" aria-hidden="true"></span>
                     </a>
                     <Hero>
                         <GradientText slot="title"
@@ -147,19 +158,38 @@
                             Functions, Storage, and Messaging to your projects using the frameworks
                             and languages of your choice.
                         </svelte:fragment>
-                        <a
-                            href={PUBLIC_APPWRITE_DASHBOARD}
-                            class="web-button mt-8 w-full lg:w-fit"
-                            slot="cta"
-                            on:click={() => trackEvent('Get started in hero')}
-                        >
-                            Get started
-                        </a>
+                        <div class="mt-8 flex flex-col gap-4 sm:flex-row" slot="cta">
+                            <Button
+                                href={getAppwriteDashboardUrl()}
+                                class="w-full lg:w-fit"
+                                onclick={() =>
+                                    trackEvent({
+                                        plausible: { name: 'Get started in hero' },
+                                        posthog: { name: 'get-started-btn_hero_click' }
+                                    })}
+                            >
+                                Start building
+                            </Button>
+
+                            <Button
+                                variant="secondary"
+                                href="/contact-us/enterprise"
+                                class="w-full lg:w-fit">Request a demo</Button
+                            >
+
+                            <!-- <AppwriteIn100Seconds /> -->
+                        </div>
                     </Hero>
                 </section>
             </div>
             <div class="mb-12 lg:my-[7.5rem]">
-                <section class="container web-u-padding-block-0" style="--container-size:78.75rem">
+                <section
+                    class="web-u-padding-block-0 relative container"
+                    style="--container-size:78.75rem"
+                >
+                    <div class="absolute top-1/2 left-1/2 z-10 -translate-1/2">
+                        <AppwriteIn100Seconds />
+                    </div>
                     <div class="web-media-container">
                         <img
                             class="block"
@@ -443,9 +473,9 @@
                 />
             </div>
             <div class="py-[7.5rem]">
-                <div class="container relative">
+                <div class="relative container">
                     <section class="web-hero is-align-start">
-                        <span class="web-badges text-micro uppercase !text-white">SDKs_</span>
+                        <span class="web-badges text-micro !text-white uppercase">SDKs_</span>
                         <h2 class="text-display font-aeonik-pro text-primary max-w-[600px]">
                             Code the way you want
                         </h2>
@@ -454,10 +484,11 @@
                             you can code with the language you want at any time.
                         </p>
                         <Technologies />
-                        <a
+                        <Button
                             href="/docs/sdks"
-                            class="web-button is-secondary"
-                            on:click={() => trackEvent('Explore all SDKs')}>Explore all SDKs</a
+                            variant="secondary"
+                            onclick={() => trackEvent({ plausible: { name: 'Explore all SDKs' } })}
+                            >Explore all SDKs</Button
                         >
                     </section>
                 </div>
@@ -478,10 +509,10 @@
                         />
                     </div>
                 </div>
-                <div class="container relative">
+                <div class="relative container">
                     <div class="grid md:grid-cols-2">
                         <section class="web-hero is-align-start">
-                            <span class="web-badges text-micro uppercase !text-white">Scale_</span>
+                            <span class="web-badges text-micro !text-white uppercase">Scale_</span>
                             <h2 class="text-display font-aeonik-pro text-primary max-w-[600px]">
                                 We scale for you
                             </h2>

@@ -1,9 +1,9 @@
 <script lang="ts">
     import { Article, FooterNav, MainFooter } from '$lib/components';
-    import { page } from '$app/stores';
+    import { page } from '$app/state';
     import { Main } from '$lib/layouts';
     import { getContext } from 'svelte';
-    import { BLOG_TITLE_SUFFIX } from '$routes/titles';
+    import { TITLE_SUFFIX } from '$routes/titles';
     import type { PostsData, AuthorData } from '$routes/blog/content';
     import { DEFAULT_HOST } from '$lib/utils/metadata';
     import FloatingHead from '$lib/components/FloatingHead.svelte';
@@ -19,10 +19,10 @@
     const posts = getContext<PostsData[]>('posts');
     const authors = getContext<AuthorData[]>('authors');
     const author = authors.find(
-        (p) => $page.url.pathname.substring($page.url.pathname.lastIndexOf('/') + 1) === p.slug
+        (p) => page.url.pathname.substring(page.url.pathname.lastIndexOf('/') + 1) === p.slug
     );
 
-    const seoTitle = name + BLOG_TITLE_SUFFIX;
+    const seoTitle = name + TITLE_SUFFIX;
     const description = bio;
     const ogImage = DEFAULT_HOST + '/images/open-graph/blog.png';
 </script>
@@ -127,7 +127,7 @@
                                     target="_blank"
                                     rel="noopener noreferrer"
                                 >
-                                    <span class="web-icon-github" aria-hidden="true" />
+                                    <span class="web-icon-github" aria-hidden="true"></span>
                                 </a>
                             </li>
                         {/if}
@@ -140,7 +140,7 @@
                                     target="_blank"
                                     rel="noopener noreferrer"
                                 >
-                                    <span class="web-icon-x" aria-hidden="true" />
+                                    <span class="web-icon-x" aria-hidden="true"></span>
                                 </a>
                             </li>
                         {/if}
@@ -153,7 +153,7 @@
                                     target="_blank"
                                     rel="noopener noreferrer"
                                 >
-                                    <span class="web-icon-linkedin" aria-hidden="true" />
+                                    <span class="web-icon-linkedin" aria-hidden="true"></span>
                                 </a>
                             </li>
                         {/if}

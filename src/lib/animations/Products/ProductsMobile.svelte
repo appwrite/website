@@ -5,7 +5,7 @@
 
 <div class="outside">
     <div class="wrapper">
-        <span class="web-badges text-micro uppercase !text-white">Products_</span>
+        <span class="web-badges text-micro !text-white uppercase">Products_</span>
 
         <h2 class="text-display font-aeonik-pro text-primary mt-4">
             Your backend, minus the hassle
@@ -60,7 +60,7 @@
             </p>
         </div>
     </div>
-    <div class="img-overlay" />
+    <div class="img-overlay"></div>
 </div>
 
 <style lang="scss">
@@ -108,10 +108,6 @@
                 display: flex;
                 align-items: center;
                 gap: 0.75rem;
-
-                .web-label {
-                    margin-block-start: 0.25rem;
-                }
             }
 
             h4 {

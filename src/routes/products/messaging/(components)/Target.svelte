@@ -2,7 +2,6 @@
     import { clamp } from '$lib/utils/clamp';
     import { withPrevious } from '$lib/utils/withPrevious';
     import { withRaf } from '$lib/utils/withRaf';
-    import { get } from 'svelte/store';
     import Accordion from './Accordion/Accordion.svelte';
     import AccordionItem from './Accordion/AccordionItem.svelte';
     import Checkbox from './Checkbox.svelte';
@@ -11,6 +10,7 @@
     import { onMount } from 'svelte';
     import { inView } from 'motion';
     import { sleep } from '$lib/animations';
+    import { Button } from '$lib/components/ui';
 
     /* Variables & Contstants */
     const width = 2000;
@@ -362,7 +362,7 @@
                 <span style="font-size: 14px; color: #6C6C71;"
                     >{users.filter((u) => !!u.devices.some((d) => d.checked)).length} Users selected</span
                 >
-                <button class="web-button">Add</button>
+                <Button>Add</Button>
             </div>
         </div>
     </div>

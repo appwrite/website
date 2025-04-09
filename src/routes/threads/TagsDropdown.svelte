@@ -12,7 +12,7 @@
 <DropdownMenu let:open let:menu let:trigger>
     <button class="web-btn-tag" use:melt={trigger}>
         <span class="text">More</span>
-        <span class="web-icon-chevron-down web-u-font-size-16" />
+        <span class="web-icon-chevron-down web-u-font-size-16"></span>
     </button>
 
     {#if open}
@@ -34,7 +34,7 @@
                         >
                             <div class="checkbox">
                                 {#if checked}
-                                    <span class="web-icon-check" />
+                                    <span class="web-icon-check"></span>
                                 {/if}
                             </div>
                             {tag}

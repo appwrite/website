@@ -30,7 +30,7 @@ export type PostsData = {
     slug: string;
     featured?: boolean;
     unlisted?: boolean;
-    callToAction: {
+    callToAction?: {
         heading?: string;
         label?: string;
         url?: string;

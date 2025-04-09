@@ -3,10 +3,11 @@
     import { isInPolicy } from '$markdoc/layouts/Policy.svelte';
     import { getContext, hasContext } from 'svelte';
     import { isInTable } from './Table.svelte';
-    import { isInDocs } from '$lib/layouts/Docs.svelte';
+    import { isInDocs, isInTutorialDocs } from '$lib/layouts/Docs.svelte';
 
     const noParagraph = hasContext('no-paragraph') ? getContext('no-paragraph') : false;
     const inDocs = isInDocs();
+    const inTutorialDocs = isInTutorialDocs();
     const inPolicy = isInPolicy();
     const inChangelog = isInChangelog();
     const inTable = isInTable();
@@ -18,6 +19,7 @@
         if (inDocs) return 'text-paragraph-md mb-8';
         if (inPolicy) return 'text-paragraph-md mb-4';
         if (inTable) return 'text-paragraph-md';
+        if (inTutorialDocs) return 'text-paragraph-md mb-2';
         if (inChangelog) return 'text-paragraph-lg mb-4 font-normal';
         return 'text-paragraph-lg mb-8';
     })();

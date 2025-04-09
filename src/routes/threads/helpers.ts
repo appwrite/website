@@ -1,10 +1,9 @@
 import {
     PUBLIC_APPWRITE_COL_MESSAGES_ID,
     PUBLIC_APPWRITE_COL_THREADS_ID,
-    PUBLIC_APPWRITE_DB_MAIN_ID,
-    PUBLIC_APPWRITE_FN_TLDR_ID
+    PUBLIC_APPWRITE_DB_MAIN_ID
 } from '$env/static/public';
-import { databases, functions } from '$lib/appwrite';
+import { databases } from '$lib/appwrite';
 import { Query } from '@appwrite.io/console';
 import type { DiscordMessage, DiscordThread } from './types';
 

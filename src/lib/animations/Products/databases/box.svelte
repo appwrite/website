@@ -14,7 +14,7 @@
     {#each $state.tasks.slice(0, $state.tableSlice) as task (task.id)}
         <div class="row" transition:slide={{ duration: 150 }} animate:flip={{ duration: 150 }}>
             <div class="copy-button">
-                <span class="web-icon-copy" />
+                <span class="web-icon-copy"></span>
                 <span>{task.id}</span>
             </div>
             <span class="truncated">{task.title}</span>

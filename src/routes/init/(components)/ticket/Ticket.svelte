@@ -144,8 +144,8 @@
                     <Lockup fill={false} animate={!disableEffects} />
                 {/if}
             </div>
-            <div class="shine" />
-            <div class="noise" />
+            <div class="shine"></div>
+            <div class="noise"></div>
             {#if !disableEffects}
                 <Lines />
             {/if}
@@ -161,7 +161,7 @@
                         {#each c as row}
                             <div class="row">
                                 {#each row as level, j}
-                                    <div style:--index={row.length - j} data-level={level} />
+                                    <div style:--index={row.length - j} data-level={level}></div>
                                 {/each}
                             </div>
                         {/each}
@@ -171,14 +171,14 @@
             <div class="details">
                 <span>{`Ticket Number: #${id?.toString().padStart(6, '0')}`}</span>
             </div>
-            <div class="shine" />
-            <div class="noise" />
+            <div class="shine"></div>
+            <div class="noise"></div>
         </div>
     </div>
 </div>
 
 <style lang="scss">
-    @use '$scss/abstract' as *;
+    @use '$scss/abstract/functions' as f;
     $base-width: 22;
 
     .wrapper {
@@ -231,7 +231,7 @@
         grid-template-columns: repeat(12, minmax(0, 1fr));
         gap: 4px;
         overflow: hidden;
-        border-radius: pxToRem(16);
+        border-radius: f.pxToRem(16);
         aspect-ratio: 2 / 1;
         animation: fade 1s ease-out;
         transition: transform 100ms;
@@ -245,7 +245,7 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
-            border-radius: pxToRem(8);
+            border-radius: f.pxToRem(8);
             line-height: 1;
             position: relative;
             overflow: hidden;
@@ -270,7 +270,7 @@
                 justify-content: space-between;
                 width: fit-content;
                 gap: 4px;
-                padding: pxToRem(24) 0;
+                padding: f.pxToRem(24) 0;
                 left: 80%;
 
                 span {
@@ -288,17 +288,17 @@
                 --delay: 700ms;
                 display: flex;
                 flex-direction: column;
-                gap: pxToRem(4);
+                gap: f.pxToRem(4);
                 width: 60%;
-                margin: pxToRem(16);
-                border-radius: pxToRem(16);
+                margin: f.pxToRem(16);
+                border-radius: f.pxToRem(16);
 
                 &[data-remove-delay] {
                     --delay: 0ms;
                 }
 
                 .row {
-                    gap: pxToRem(4);
+                    gap: f.pxToRem(4);
                     display: flex;
 
                     div {
@@ -307,13 +307,13 @@
                         height: var(--size);
                         flex-shrink: 0;
 
-                        @media screen and (min-width: 768px) {
-                            --size: 8px;
-                        }
-
                         border-radius: calc(var(--size) / 4);
                         animation: fade-in 500ms ease calc(calc(75ms * var(--index)) + var(--delay))
                             forwards;
+
+                        @media screen and (min-width: 768px) {
+                            --size: 8px;
+                        }
 
                         &[data-level] {
                             --bg-color: var(--web-color-accent);
@@ -358,9 +358,9 @@
             grid-column: span 9 / span 9;
             height: 100%;
             background: #000;
-            padding: pxToRem(20);
+            padding: f.pxToRem(20);
             position: relative;
-            border-radius: pxToRem(16);
+            border-radius: f.pxToRem(16);
             overflow: hidden;
 
             .text-label {
@@ -384,9 +384,5 @@
                 }
             }
         }
-    }
-    .text-title font-aeonik-pro {
-        font-size: clamp(20px, 1vw, 24px);
-        line-height: 1;
     }
 </style>

@@ -1,8 +1,9 @@
 <script lang="ts">
     import { Main } from '$lib/layouts';
     import { createDebounce } from '$lib/utils/debounce';
-    import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
+    import { DEFAULT_HOST } from '$lib/utils/metadata';
     import { TITLE_SUFFIX } from '$routes/titles';
+    import { Button } from '$lib/components/ui';
 
     import FooterNav from '$lib/components/FooterNav.svelte';
     import MainFooter from '$lib/components/MainFooter.svelte';
@@ -11,18 +12,18 @@
     import PreFooter from './PreFooter.svelte';
     import TagsDropdown from './TagsDropdown.svelte';
     import { getThreads } from './helpers';
-    import Input from '$lib/components/ui/Input.svelte';
 
     const title = 'Threads' + TITLE_SUFFIX;
-    const description = DEFAULT_DESCRIPTION;
+    const description =
+        "Appwrite's Threads page showcases our community interactions on Discord. Join the conversation, ask questions, or assist other members with their issues.";
     const ogImage = DEFAULT_HOST + '/images/open-graph/website.png';
 
-    export let data;
+    let { data } = $props();
 
-    let threads = data.threads;
+    let threads = $state(data.threads);
 
     let searching = false; // Do some sick animation
-    let query = '';
+    let query = $state('');
 
     const handleSearch = async (value: string) => {
         query = value;
@@ -83,7 +84,7 @@
         'REST API'
     ];
 
-    let selectedTags: string[] = [];
+    let selectedTags: string[] = $state([]);
 
     function toggleTag(tag: string) {
         if (selectedTags.includes(tag)) {
@@ -148,7 +149,7 @@
                                     <button
                                         class="web-btn-tag"
                                         class:is-selected={selectedTags?.includes(tag)}
-                                        on:click={() => toggleTag(tag)}
+                                        onclick={() => toggleTag(tag)}
                                     >
                                         {tag}
                                     </button>
@@ -169,7 +170,7 @@
                                 class="web-icon-search z-[5]"
                                 aria-hidden="true"
                                 style="inset-block-start:0.9rem"
-                            />
+                            ></span>
 
                             <input
                                 class="web-input-button relative z-1 !pl-10"
@@ -197,12 +198,11 @@
                             <div class="web-card is-normal has-border-gradient empty-card">
                                 <enhanced:img class="img" src="./(assets)/empty-state.png" alt="" />
                                 <span class="text-body font-medium">No support threads found</span>
-                                <button
-                                    class="web-button"
-                                    on:click={() => {
+                                <Button
+                                    onclick={() => {
                                         query = '';
                                         handleSearch('');
-                                    }}>Clear search</button
+                                    }}>Clear search</Button
                                 >
                             </div>
                         {/each}

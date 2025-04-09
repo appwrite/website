@@ -1,9 +1,9 @@
 <script lang="ts">
-    import { platformMap } from '$lib/utils/references';
-    import { writable } from 'svelte/store';
+    import { Select, Tooltip } from '$lib/components';
     import { getCodeHtml, type Language } from '$lib/utils/code';
     import { copy } from '$lib/utils/copy';
-    import { Select, Tooltip } from '$lib/components';
+    import { platformMap } from '$lib/utils/references';
+    import { writable } from 'svelte/store';
 
     export let selected: Language = 'js';
     export let data: { language: string; content: string; platform?: string }[] = [];
@@ -22,11 +22,14 @@
         }
     });
 
-    enum CopyStatus {
-        Copy = 'Copy',
-        Copied = 'Copied!'
-    }
-    let copyText = CopyStatus.Copy;
+    const CopyStatus = {
+        Copy: 'Copy',
+        Copied: 'Copied!'
+    } as const;
+    type CopyStatusType = keyof typeof CopyStatus;
+    type CopyStatusValue = (typeof CopyStatus)[CopyStatusType];
+
+    let copyText: CopyStatusValue = CopyStatus.Copy;
     async function handleCopy() {
         await copy(content);
 
@@ -48,7 +51,7 @@
 </script>
 
 <section
-    class="dark web-code-snippet"
+    class="dark web-code-snippet !max-w-[90vw] md:!max-w-3xl md:min-w-3xl"
     aria-label="code-snippet panel"
     style={`width: ${width ? width / 16 + 'rem' : 'inherit'}; height: ${
         height ? height / 16 + 'rem' : 'inherit'
@@ -63,8 +66,8 @@
             </div>
         </div>
         <div class="web-code-snippet-header-end">
-            <ul class="buttons-list flex gap-3">
-                <li class="buttons-list-item flex self-center">
+            <ul class="buttons-list divide-greyscale-750 flex gap-3 divide-x">
+                <li class="buttons-list-item flex self-center pr-6">
                     <Select bind:value={selected} bind:options />
                 </li>
                 <li class="buttons-list-item" style="padding-inline-start: 13px">
@@ -73,11 +76,13 @@
                             on:click={handleCopy}
                             class="web-icon-button"
                             aria-label="copy code from code-snippet"
-                            ><span class="web-icon-copy" aria-hidden="true" /></button
+                            ><span class="web-icon-copy" aria-hidden="true"></span></button
                         >
-                        <svelte:fragment slot="tooltip">
-                            {copyText}
-                        </svelte:fragment>
+                        {#snippet tooltip()}
+                            <span>
+                                {copyText}
+                            </span>
+                        {/snippet}
                     </Tooltip>
                 </li>
             </ul>

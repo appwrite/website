@@ -8,15 +8,15 @@
     const rateTime = method['rate-time'];
     const rateLimit = method['rate-limit'];
 
-    enum RateKeys {
-        'ip' = 'IP',
-        'userId' = 'USER ID',
-        'url' = 'URL',
-        'phone' = 'PHONE',
-        'token' = 'TOKEN',
-        'method' = 'METHOD',
-        'email' = 'EMAIL'
-    }
+    const RateKeys = {
+        ip: 'IP',
+        userId: 'USER ID',
+        url: 'URL',
+        phone: 'PHONE',
+        token: 'TOKEN',
+        method: 'METHOD',
+        email: 'EMAIL'
+    } as const;
 
     function hasMultipleKeys(keys: string | string[]): keys is string[] {
         if (Array.isArray(keys)) {

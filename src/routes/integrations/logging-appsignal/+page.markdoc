@@ -1,20 +1,20 @@
 ---
 layout: integration
 title: Logging with AppSignal
-description: Store logs and track issues on your Appwrite instance
+description: Monitor application health in real time, store logs and track issues on your Appwrite instance with the help of AppSignal intergration.
 date: 2024-07-30
 featured: false
 isPartner: true
 isNew: true
 cover: /images/integrations/logging-appsignal/cover.png
 category: logging
-product: 
+product:
     avatar: '/images/integrations/avatars/appsignal.png'
     vendor: AppSignal
     description: 'AppSignal is a comprehensive monitoring and error-tracking tool designed for developers to gain insights into the performance of their applications.'
-platform: 
+platform:
     - 'Self-hosted'
-images: 
+images:
     - /images/integrations/logging-appsignal/cover.png
     - /images/integrations/logging-appsignal/api-key.png
     - /images/integrations/logging-appsignal/errors-list.png
@@ -39,14 +39,23 @@ First, [sign up on AppSignal](https://appsignal.com/users/sign_up) and create yo
 
 ## Step 2: Add AppSignal provider to your Appwrite instance
 
-For this step, you must [self-host Appwrite](https://appwrite.io/docs/advanced/self-hosting) if you haven’t already.
+For this step, you must [self-host Appwrite](https://appwrite.io/docs/advanced/self-hosting) if you haven't already.
 
-Visit the `.env` file created for your Appwrite instance and update the following environment variables:
+The Appwrite logging configuration uses a DSN format that follows the pattern `appsignal://API_KEY/`. Use your AppSignal Push API key as the API_KEY in the DSN.
 
+Visit the `.env` file created for your Appwrite instance and update the following environment variable:
+
+```bash
+_APP_LOGGING_CONFIG=appsignal://API_KEY/
+```
+
+{% info title="Using Appwrite < 1.5.6?" %}
+For versions prior to 1.5.6, use the old syntax format:
 ```bash
 _APP_LOGGING_PROVIDER=appSignal
 _APP_LOGGING_CONFIG=APPSIGNAL_API_KEY
 ```
+{% /info %}
 
 After that, run the following Docker Compose commands in your terminal to restart your Appwrite containers and verify if the changes have been successfully applied:
 

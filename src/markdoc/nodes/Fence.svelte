@@ -1,28 +1,45 @@
 <script lang="ts">
-    import '$scss/hljs.css';
-    import { getCodeHtml, type Language } from '$lib/utils/code';
-    import { getContext, hasContext } from 'svelte';
-    import { platformMap } from '$lib/utils/references';
     import { Tooltip } from '$lib/components';
+    import { isInTutorialDocs } from '$lib/layouts/Docs.svelte';
+    import { getCodeHtml, type Language } from '$lib/utils/code';
     import { copy } from '$lib/utils/copy';
-    import type { CodeContext } from '../tags/MultiCode.svelte';
+    import { platformMap } from '$lib/utils/references';
+    import '$scss/hljs.css';
     import { melt } from '@melt-ui/svelte';
+    import { getContext, hasContext } from 'svelte';
+    import type { CodeContext } from '../tags/MultiCode.svelte';
 
-    export let content: string;
-    export let toCopy: string | undefined = undefined;
-    export let language: Language;
-    export let process: boolean;
-    export let withLineNumbers = true;
-    export let badge: string | null = null;
+    interface Props {
+        content: string;
+        toCopy?: string | undefined;
+        language: Language;
+        process: boolean;
+        withLineNumbers?: boolean;
+        badge?: string | null;
+    }
 
+    let {
+        content,
+        toCopy = undefined,
+        language,
+        process,
+        withLineNumbers = true,
+        badge = null
+    }: Props = $props();
+
+    const inTutorialDocs = isInTutorialDocs();
     const insideMultiCode = hasContext('multi-code');
     const selected = insideMultiCode ? getContext<CodeContext>('multi-code').selected : null;
 
-    enum CopyStatus {
-        Copy = 'Copy',
-        Copied = 'Copied!'
-    }
-    let copyText = CopyStatus.Copy;
+    const CopyStatus = {
+        Copy: 'Copy',
+        Copied: 'Copied!'
+    } as const;
+    type CopyStatusType = keyof typeof CopyStatus;
+    type CopyStatusValue = (typeof CopyStatus)[CopyStatusType];
+
+    let copyText = $state<CopyStatusValue>(CopyStatus.Copy);
+
     async function handleCopy() {
         await copy(toCopy ?? content);
 
@@ -48,11 +65,11 @@
         });
     }
 
-    $: result = process
-        ? getCodeHtml({ content, language: language ?? 'sh', withLineNumbers })
-        : content;
+    let result = $derived(
+        process ? getCodeHtml({ content, language: language ?? 'sh', withLineNumbers }) : content
+    );
 
-    $: badgeValue = badge ?? platformMap[language];
+    let badgeValue = $derived(badge ?? platformMap[language]);
 </script>
 
 {#if insideMultiCode}
@@ -61,7 +78,11 @@
         {@html result}
     {/if}
 {:else}
-    <section class="dark web-code-snippet" aria-label="code-snippet panel">
+    <section
+        class="dark web-code-snippet"
+        class:no-top-margin={inTutorialDocs}
+        aria-label="code-snippet panel"
+    >
         <header class="web-code-snippet-header">
             <div class="web-code-snippet-header-start">
                 {#if badgeValue}
@@ -74,19 +95,19 @@
                 <ul class="buttons-list flex gap-2">
                     <li class="buttons-list-item ps-5">
                         <Tooltip>
-                            <button
-                                slot="asChild"
-                                let:trigger
-                                use:melt={trigger}
-                                on:click={handleCopy}
-                                class="web-icon-button"
-                                aria-label="copy code from code-snippet"
-                            >
-                                <span class="web-icon-copy" aria-hidden="true" />
-                            </button>
-                            <svelte:fragment slot="tooltip">
+                            {#snippet asChild({ trigger })}
+                                <button
+                                    use:melt={trigger}
+                                    onclick={handleCopy}
+                                    class="web-icon-button"
+                                    aria-label="copy code from code-snippet"
+                                >
+                                    <span class="web-icon-copy" aria-hidden="true"></span>
+                                </button>
+                            {/snippet}
+                            {#snippet tooltip()}
                                 {copyText}
-                            </svelte:fragment>
+                            {/snippet}
                         </Tooltip>
                     </li>
                 </ul>
@@ -98,3 +119,9 @@
         </div>
     </section>
 {/if}
+
+<style>
+    .no-top-margin {
+        margin-top: unset !important;
+    }
+</style>

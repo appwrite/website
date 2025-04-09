@@ -1,13 +1,13 @@
 ---
 layout: article
 title: Platform
-description: Appwrite is a development platform designed to adapt you unique use cases. Appwrite provides features that help you maintain, scale, and integrate Appwrite with other platforms.
+description: Appwrite is a development platform designed to adapt to your unique use cases. It provides features that help you maintain and scale your application.
 ---
 
 Appwrite is a development platform designed to adapt your unique use cases.
 Appwrite provides features that help you maintain, scale, and integrate Appwrite with other platforms.
 
-# Integration
+# Integration {% #integration %}
 
 Appwrite is designed to integrate with both frontend and backend apps.
 Learn about advanced integrations and API response codes.
@@ -28,7 +28,7 @@ Learn about response codes and errors returned by Appwrite APIs.
 {% /cards_item %}
 {% /cards %}
 
-# Access control
+# Access control {% #access-control %}
 
 Appwrite is secure by default and provides tools for you to manage
 access control and prevent abuse.
@@ -51,7 +51,7 @@ Create and manage API keys use by Server SDKs.
 {% /cards_item %}
 {% /cards %}
 
-# Plans
+# Plans {% #plans %}
 
 Learn which plan best suits your organization and how to manage billing.
 
@@ -81,7 +81,7 @@ Appwrite provides special plans for open source projects.
 {% /cards_item %}
 {% /cards %}
 
-# Configuration
+# Configuration {% #configuration %}
 
 Configure custom domains and customize communication templates.
 
@@ -96,5 +96,24 @@ Add a custom domain for your Appwrite APIs.
    href="/docs/advanced/platform/message-templates"
    title="Message templates" %}
 Create custom branding and messages when you communicate with users.
+{% /cards_item %}
+{% /cards %}
+
+# Add Ons {% #add-ons %}
+
+Learn about additional features and functionalities that Appwrite offers.
+
+{% cards %}
+{% cards_item href="/docs/advanced/platform/compute" title="Compute" %}
+Learn about Appwrite's different compute add-ons.
+{% /cards_item %}
+{% cards_item href="/docs/advanced/platform/phone-otp" title="Phone OTP" %}
+Learn how Appwrite handles SMS-based OTP authentication.
+{% /cards_item %}
+{% cards_item href="/docs/advanced/platform/image-transformations" title="Image Transformations" %}
+Learn how to transform images dynamically with Appwrite.
+{% /cards_item %}
+{% cards_item href="/docs/advanced/platform/database-reads-and-writes" title="Database Reads and Writes" %}
+Learn how Appwrite handles database reads and writes.
 {% /cards_item %}
 {% /cards %}

@@ -2,6 +2,7 @@
     import { browser } from '$app/environment';
     import { createAccordion, melt } from '@melt-ui/svelte';
     import { slide } from 'svelte/transition';
+    import { createFaqSchema, getInlinedScriptTag } from '$lib/utils/metadata';
 
     export let items: {
         question: string;
@@ -25,11 +26,15 @@
         },
         {
             question: 'Who is eligible to apply?',
-            answer: "We welcome early-stage startups as well as startups established within the last decade. So whether you are still looking to build your backend or want to switch to Appwrite, we welcome you to join."
+            answer: 'We welcome early-stage startups as well as startups established within the last decade. So whether you are still looking to build your backend or want to switch to Appwrite, we welcome you to join.'
         },
         {
             question: 'What are the limits of the Scale plan?',
             answer: 'The Appwrite Scale plan has ample room for growth and can handle production applications of all sizes. We have set generous limits to ensure most applications can grow comfortably within those limits without incurring high bills. Please review our <a class="web-link underline" href="/pricing">pricing page</a> for a full overview of the Scale plan limits.'
+        },
+        {
+            question: 'Are OTP SMS costs covered by Appwrite?',
+            answer: 'All Appwrite plans include 10 free SMS messages per month, which allows you to test and implement OTP functionality without immediate costs. After this, you will have to pay the costs for SMS OTP. Please refer to our <a class="web-link underline" href="/docs/advanced/platform/phone-otp#rates">rates page</a> for a breakdown of the pricing, including rates by region and specific SMS costs.'
         },
         {
             question: 'What happens if we scale overnight?',
@@ -37,11 +42,11 @@
         },
         {
             question: "What's included in the Appwrite for Startups program?",
-            answer: 'Startups joining the program get access to everything Appwrite Scale offers. This includes Cloud credits, unlimited team members, and premium email support. In addition, we provide you with special swag, and you get a program manager and a private Discord channel. Read more about it in our <a class="web-link underline" href="/blog/post/announcing-appwrite-startups-program">announcement</a>.'
+            answer: 'Startups joining the program get access to everything Appwrite Scale offers. This includes Cloud credits, unlimited team members, and premium email support. In addition, we provide you with special swag, and you get a program manager and a private Slack channel. Read more about it in our <a class="web-link underline" href="/blog/post/announcing-appwrite-startups-program">announcement</a>.'
         },
         {
             question: 'What kind of support do we get?',
-            answer: 'When building with Appwrite, you have access to one of the most active communities that can help you when you have questions. As part of the Startup program, we also provide you with a private Discord channel where you get access to our support team, and you will have a dedicated program manager for non-technical questions.'
+            answer: 'When building with Appwrite, you have access to one of the most active communities that can help you when you have questions. As part of the Startup program, we also provide you with a private Slack channel where you get access to our support team, and you will have a dedicated program manager for non-technical questions.'
         },
         {
             question:
@@ -73,6 +78,11 @@
     });
 </script>
 
+<svelte:head>
+    <!-- eslint-disable-next-line svelte/no-at-html-tags-->
+    {@html getInlinedScriptTag(createFaqSchema(items))}
+</svelte:head>
+
 <ul
     class="collapsible w-full divide-y divide-white/5"
     style="--p-toggle-border-color: var(--web-color-smooth);"
@@ -100,7 +110,7 @@
                                 class="icon text-primary self-start transition-transform"
                                 class:rotate-180={$isSelected(`${index}`)}
                             >
-                                <span class="icon-cheveron-down" aria-hidden="true" />
+                                <span class="icon-cheveron-down" aria-hidden="true"></span>
                             </div>
                         </button>
                     </h3>
@@ -125,7 +135,7 @@
                             {faqItem.question}
                         </span>
                         <div class="icon text-primary">
-                            <span class="icon-cheveron-down" aria-hidden="true" />
+                            <span class="icon-cheveron-down" aria-hidden="true"></span>
                         </div>
                     </summary>
 

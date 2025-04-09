@@ -8,11 +8,12 @@ timeToRead: 6
 author: ebenezer-don
 category: tutorial
 featured: false
+callToAction: true
 ---
 
 While the command line interface can seem intimidating on the surface, it's actually a very useful tool that gives you control over your code in ways that GUIs often don't. If you can get comfortable with even a few git commands, you'll find yourself being more productive.
 
-In this guide, we'll cover 15 Git command line tips that will help make your workflow smoother, faster, and flexible, whether you're working solo or with a team.
+In this guide, we'll cover 15 essential git commands you should know as a developer, however, if you're looking for more advanced commands, you can check out these [10 new Git commands you should start using today](https://appwrite.io/blog/post/10-git-commands-you-should-start-using?dofollow=true).
 
 
 # 1. git init - start a new repository
@@ -214,12 +215,13 @@ If something goes wrong, `reflog` can provide a trail to recover lost changes, m
 
 # Conclusion
 
-These 15 Git command line tips lay a strong foundation for both solo projects and team-based workflows. Mastering these basics ensures that you'll work efficiently, minimize errors, and maintain a clean project history. Over time, as you get comfortable with each command, your confidence in managing code will grow.
+These 15 Git command line tips lay a strong foundation for both solo projects and team-based workflows. Mastering these basics ensures that you'll work efficiently, minimize errors, and maintain a clean project history.
+Over time, as you get comfortable with each command, your confidence in managing code will grow, and you'll be able to easily add these [10 new Git commands](https://appwrite.io/blog/post/10-git-commands-you-should-start-using?dofollow=true) to your workflow.
 
 Git's power is in its flexibility, and learning the command line lets you tap into that fully. Practice them, apply them, and let them become second nature for a smoother development experience.
 
 # More resources
 
 - [How to implement Sign in with GitHub](https://appwrite.io/blog/post/implement-sign-in-with-github)
+- [10 new Git commands you should start using today](https://appwrite.io/blog/post/10-git-commands-you-should-start-using?dofollow=true)
 - [Building a currency converter API with Deno 2 and Appwrite](https://appwrite.io/blog/post/build-a-currency-converter-with-deno)
-- [Local serverless function development with the new Appwrite CLI](https://appwrite.io/blog/post/functions-local-development-guide)
