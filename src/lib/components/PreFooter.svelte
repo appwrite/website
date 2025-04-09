@@ -1,11 +1,61 @@
 <script lang="ts">
     import { trackEvent } from '$lib/actions/analytics';
     import { getAppwriteDashboardUrl } from '$lib/utils/dashboard';
-    import { Button } from '$lib/components/ui';
+    import { Button, type Variant } from '$lib/components/ui';
 
-    const action = (node: HTMLElement) => {
-        console.log(node, 'mounted');
-    };
+    const plans: Array<{
+        name: string;
+        price: string;
+        description: string;
+        variable?: boolean;
+        tag?: string;
+        buttonText: string;
+        buttonLink: string;
+        buttonVariant: Variant;
+        eventName: string;
+    }> = [
+        {
+            name: 'Free',
+            price: '$0',
+            description: 'A great fit for passion projects and small applications.',
+            buttonText: 'Get started',
+            buttonLink: getAppwriteDashboardUrl('/register'),
+            buttonVariant: 'secondary',
+            eventName: 'Get started Free plan'
+        },
+        {
+            name: 'Pro',
+            price: '$15',
+            variable: true,
+            tag: 'Most Popular',
+            description:
+                'For production applications that need powerful functionality and resources to scale.',
+            buttonText: 'Start building',
+            buttonLink: getAppwriteDashboardUrl('/console?type=create&plan=tier-1'),
+            buttonVariant: 'primary',
+            eventName: 'Get started Pro plan'
+        },
+        {
+            name: 'Scale',
+            price: '$599',
+            variable: true,
+            description:
+                'For teams that handle more complex and large projects and need more control and support.',
+            buttonText: 'Start building',
+            buttonLink: getAppwriteDashboardUrl('/console?type=create&plan=tier-2'),
+            buttonVariant: 'secondary',
+            eventName: 'Get started Scale plan'
+        },
+        {
+            name: 'Enterprise',
+            price: 'Custom',
+            description: 'For enterprises that need more power and premium support.',
+            buttonText: 'Contact us',
+            buttonLink: '/contact-us/enterprise',
+            buttonVariant: 'secondary',
+            eventName: 'Get started Enterprise plan'
+        }
+    ];
 </script>
 
 <img
@@ -40,129 +90,49 @@
         </header>
 
         <ul class="web-strip-plans -mt-8">
-            <li class="web-strip-plans-item web-strip-plans-container-query">
-                <div class="web-strip-plans-item-wrapper">
-                    <div class="web-strip-plans-plan">
-                        <h4 class="title text-description">Free</h4>
-                        <div class="text-title font-aeonik-pro text-primary">$0</div>
-                        <div class="info text-caption font-medium"></div>
-                    </div>
-                    <p class="web-strip-plans-info text-caption font-medium">
-                        A great fit for passion projects and small applications.
-                    </p>
-                    <Button
-                        variant="secondary"
-                        href={getAppwriteDashboardUrl('/register')}
-                        class="web-u-cross-child-end w-full! flex-3 md:w-fit"
-                        onclick={() =>
-                            trackEvent({
-                                plausible: {
-                                    name: 'Get started Free plan'
-                                }
-                            })}
-                    >
-                        <span class="text" style:padding-inline="0.5rem">Get started</span>
-                    </Button>
-                </div>
-            </li>
-            <li class="web-strip-plans-item web-strip-plans-container-query">
-                <div class="web-strip-plans-item-wrapper">
-                    <div class="web-strip-plans-plan">
-                        <div class="flex gap-3">
-                            <h4 class="title text-description">Pro</h4>
-                            <div class="web-inline-tag is-pink text-sub-body">Most popular</div>
-                        </div>
-                        <div class="mt-4 flex flex-col">
-                            <span>From</span>
-                            <div class="flex items-end gap-2">
-                                <div class="text-title font-aeonik-pro text-primary">$15</div>
-                                <div class="info text-caption font-medium">/month</div>
+            {#each plans as plan}
+                <li class="web-strip-plans-item web-strip-plans-container-query">
+                    <div class="place-item-end grid grid-cols-1 gap-6 md:grid-cols-3">
+                        <div class="flex flex-col">
+                            <div class="flex gap-3">
+                                <h4 class="title text-description">{plan.name}</h4>
+                                {#if plan.tag}<div class="web-inline-tag is-pink text-sub-body">
+                                        Most popular
+                                    </div>{/if}
+                            </div>
+
+                            <div class="mt-4 flex flex-col">
+                                {#if plan.variable}<span>From</span>{/if}
+                                <div class="flex items-end gap-2">
+                                    <div class="text-title font-aeonik-pro text-primary">
+                                        {plan.price}
+                                    </div>
+                                    {#if plan.variable}
+                                        <div class="info text-caption font-medium">/month</div>
+                                    {/if}
+                                </div>
                             </div>
                         </div>
+                        <p class="web-strip-plans-info text-caption self-end font-medium">
+                            {plan.description}
+                        </p>
+                        <Button
+                            variant={plan.buttonVariant}
+                            href={plan.buttonLink}
+                            class="w-full! flex-3 self-end md:w-fit"
+                            onclick={() =>
+                                trackEvent({
+                                    plausible: {
+                                        name: plan.eventName
+                                    }
+                                })}
+                        >
+                            <span class="text" style:padding-inline="0.5rem">{plan.buttonText}</span
+                            >
+                        </Button>
                     </div>
-                    <p class="web-strip-plans-info text-caption font-medium">
-                        For production applications that need powerful functionality and resources
-                        to scale.
-                    </p>
-                    <Button
-                        href={getAppwriteDashboardUrl('/console?type=create&plan=tier-1')}
-                        class="web-u-cross-child-end w-full! md:w-fit"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        onclick={() =>
-                            trackEvent({
-                                plausible: {
-                                    name: 'Get started Pro plan'
-                                }
-                            })}
-                    >
-                        <span class="text">Start building</span>
-                    </Button>
-                </div>
-            </li>
-            <li class="web-strip-plans-item web-strip-plans-container-query">
-                <div class="web-strip-plans-item-wrapper">
-                    <div class="web-strip-plans-plan">
-                        <h4 class="text-description text-primary">Scale</h4>
-                        <div class="mt-4 flex flex-col">
-                            <span>From</span>
-                            <div class="flex items-end gap-2">
-                                <div class="text-title font-aeonik-pro text-primary">$599</div>
-                                <div class="info text-caption font-medium">/month</div>
-                            </div>
-                        </div>
-                    </div>
-                    <p class="web-strip-plans-info text-caption font-medium">
-                        For teams that handle more complex and large projects and need more control
-                        and support.
-                    </p>
-                    <Button
-                        variant="secondary"
-                        href={getAppwriteDashboardUrl('/console?type=create&plan=tier-2')}
-                        class="web-u-cross-child-end w-full! flex-3 md:w-fit"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        onclick={() =>
-                            trackEvent({
-                                plausible: {
-                                    name: 'Get started Scale plan'
-                                }
-                            })}
-                    >
-                        <span class="text">Start building</span>
-                    </Button>
-                </div>
-            </li>
-            <li class="web-strip-plans-item web-strip-plans-container-query">
-                <div class="web-strip-plans-item-wrapper">
-                    <div class="web-strip-plans-plan">
-                        <h4 class="text-description text-primary">Enterprise</h4>
-                        <div class="mt-4 flex flex-col">
-                            <div class="flex items-end gap-2">
-                                <div class="text-title font-aeonik-pro text-primary">Custom</div>
-                            </div>
-                        </div>
-                    </div>
-                    <p class="web-strip-plans-info text-caption font-medium">
-                        For enterprises that need more power and premium support.
-                    </p>
-                    <Button
-                        href="/contact-us/enterprise"
-                        variant="secondary"
-                        class="web-u-cross-child-end w-full! flex-3 md:w-fit"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        onclick={() =>
-                            trackEvent({
-                                plausible: {
-                                    name: 'Get started Scale plan'
-                                }
-                            })}
-                    >
-                        <span class="text" style:padding-inline="0.5rem">Contact us</span>
-                    </Button>
-                </div>
-            </li>
+                </li>
+            {/each}
         </ul>
     </section>
 </div>
