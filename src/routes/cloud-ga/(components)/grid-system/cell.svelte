@@ -7,14 +7,14 @@
     export let horizontalCenter: boolean = false;
     export let verticalCenter: boolean = false;
 
-    let classNames: string = '';
-    export { classNames as class };
+    let className: string = '';
+    export { className as class };
 </script>
 
 <div
     class={classNames(
         'relative md:col-span-[var(--column)] md:col-start-[var(--col-start)] md:row-span-[var(--row)]',
-        classNames
+        className
     )}
     style:--row={row}
     style:--column={column}

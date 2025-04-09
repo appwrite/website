@@ -3,9 +3,9 @@
 
     export let animate: boolean = false;
 
-    let classNames = '';
+    let className = '';
 
-    export { classNames as class };
+    export { className as class };
 </script>
 
 <svg
@@ -13,7 +13,7 @@
     height="400"
     viewBox="0 0 1166 400"
     fill="none"
-    class={classNames('graph max-w-full', classNames)}
+    class={classNames('graph max-w-full', className)}
     xmlns="http://www.w3.org/2000/svg"
     style:animation-play-state={animate ? 'running' : 'paused'}
 >

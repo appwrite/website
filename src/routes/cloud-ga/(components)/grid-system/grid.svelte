@@ -5,9 +5,9 @@
     export let rows: number = 4;
     export let bottomBorder: boolean = false;
 
-    let classNames: string = '';
+    let className: string = '';
 
-    export { classNames as class };
+    export { className as class };
 </script>
 
 <div
@@ -15,7 +15,7 @@
         'grid h-full w-full auto-rows-min grid-cols-1 grid-rows-[1fr] md:grid-cols-[repeat(var(--columns),_1fr)]',
         'border-smooth border-dashed md:border-l',
         'relative',
-        classNames
+        className
     )}
     class:border-b={bottomBorder}
     style:--columns={columns}
@@ -34,7 +34,7 @@
                 )}
                 style:--x={x}
                 style:--y={y}
-            />
+            ></div>
         {/each}
     </div>
     <slot />

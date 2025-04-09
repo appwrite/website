@@ -2,17 +2,17 @@
     import { classNames } from '$lib/utils/classnames';
 
     export let delay: number = 0;
-    let classNames: string = '';
+    let className: string = '';
     export let align: 'left' | 'right' = 'left';
     export let animate: boolean = false;
 
-    export { classNames as class };
+    export { className as class };
 </script>
 
 <div
     class={classNames(
         'text-caption text-primary relative z-10 flex items-start gap-x-4 px-4 font-medium opacity-0 [animation-delay:var(--delay)]',
-        classNames,
+        className,
         {
             'animate-text': animate
         }
@@ -35,11 +35,11 @@
         >
             <span
                 class="bg-accent absolute inline-flex h-full w-full rounded-full opacity-75 group-hover:animate-ping"
-            />
-            <span class="bg-accent absolute inline-flex h-full w-full rounded-full" />
+            ></span>
+            <span class="bg-accent absolute inline-flex h-full w-full rounded-full"></span>
             <span
                 class="absolute size-1/2 rounded-full bg-white transition-transform group-hover:scale-110"
-            />
+            ></span>
         </div>
     </div>
     <span class="text-caption -mt-1 font-medium">
