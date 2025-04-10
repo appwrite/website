@@ -2,8 +2,7 @@
     import { classNames } from '$lib/utils/classnames';
     import { slugify } from '$lib/utils/slugify';
     import { melt, createTooltip } from '@melt-ui/svelte';
-    import { cubicInOut } from 'svelte/easing';
-    import { fly } from 'svelte/transition';
+    import { Tooltip } from 'bits-ui';
 
     interface Props {
         city: string;
@@ -29,59 +28,40 @@
         isOpen = false
     }: Props = $props();
 
-    const {
-        elements: { trigger, content },
-        states: { open }
-    } = createTooltip({
-        escapeBehavior: 'ignore',
-        positioning: {
-            placement: 'top-start',
-            offset: {
-                crossAxis: 20,
-                mainAxis: 20
-            }
-        },
-        openDelay: 0,
-        closeDelay: 0,
-        closeOnPointerDown: false,
-        forceVisible: true
-    });
+    let open = $state(isOpen);
 
     $effect(() => {
-        console.log(isOpen);
+        if (isOpen) {
+            open = true;
+        } else {
+            open = false;
+        }
     });
-
-    open.set(isOpen);
 </script>
 
-<div
-    class={classNames(
-        'group relative flex size-4 translate-x-[var(--x-mobile)] translate-y-[var(--y)] cursor-pointer items-center justify-center opacity-0 [animation-delay:var(--delay)] md:translate-x-[var(--x-desktop)]',
-        { 'animate-fade-in': animate }
-    )}
-    use:melt={$trigger}
-    style:--x-desktop="{x}vw"
-    style:--x-mobile="{x * 3.25}vw"
-    style:--y="{y}vh"
-    style:--delay="{index * 100}ms"
-    data-region={slugify(city)}
-    data-active={isOpen}
->
-    <span
-        class="bg-accent absolute inline-flex h-10 w-10 rounded-full opacity-75 group-hover:animate-ping group-data-[active=true]:animate-ping"
-    ></span>
-    <span class="bg-accent absolute inline-flex h-full w-full rounded-full"></span>
-    <span
-        class="absolute size-1/2 rounded-full bg-white transition-all group-hover:scale-110 group-data-[active=true]:size-2/3"
-    ></span>
-</div>
-
-{#if $open}
-    <div
-        use:melt={$content}
-        transition:fly={{ duration: 200, easing: cubicInOut, y: 6 }}
+<Tooltip.Root bind:open>
+    <Tooltip.Trigger
         class={classNames(
-            'from-card/75 to-greyscale-800/75 flex w-[190px] flex-col gap-2 rounded-[10px] border border-white/3 bg-gradient-to-tl p-2 backdrop-blur-sm',
+            'group relative flex size-3 translate-x-(--x-mobile) translate-y-(--y) cursor-pointer items-center justify-center opacity-0 [animation-delay:var(--delay)] md:translate-x-(--x-desktop)',
+            { 'animate-fade-in': animate }
+        )}
+        style="--x-desktop:{x}vw;--x-mobile:{x * 3.25}vw;--y:{y}vh;--delay:{index * 100}ms"
+        data-region={slugify(city)}
+        data-active={isOpen}
+    >
+        <span
+            class="from-accent/20 to-accent/10 border-gradient ease-spring absolute inline-flex h-5 w-5 rounded-full bg-gradient-to-b opacity-0 transition-opacity group-hover:animate-ping group-hover:opacity-75 before:rounded-full"
+            style:animation-duration="1.5s"
+        ></span>
+        <span class="bg-accent absolute inline-flex h-full w-full rounded-full"></span>
+        <span class="absolute size-1/2 rounded-full bg-white/80 transition-all"></span>
+    </Tooltip.Trigger>
+
+    <Tooltip.Content
+        sideOffset={12}
+        class={classNames(
+            'from-card/75 to-greyscale-800/75 border-gradient flex w-[190px] flex-col gap-2 rounded-[10px] bg-gradient-to-tl p-2 backdrop-blur-sm before:rounded-[10px] after:rounded-[10px]',
+            'data-[state="closed"]:animate-menu-out data-[state="instant-open"]:animate-menu-in data-[state="delayed-open"]:animate-menu-in',
             className
         )}
     >
@@ -102,5 +82,5 @@
                 <span class="text-micro -tracking-tight">Planned</span>
             </div>
         {/if}
-    </div>
-{/if}
+    </Tooltip.Content>
+</Tooltip.Root>

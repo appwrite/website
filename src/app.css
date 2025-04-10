@@ -84,18 +84,20 @@
     --color-badge-border-dark: #39393c;
 
     /* Easings */
-    --easing-bounce: linear(0, 0.063, 0.25 18.2%, 1 36.4%, 0.813, 0.75, 0.813, 1, 0.938, 1, 1);
-    --easing-spring: linear(0, 0.938 16.7%, 1.149 24.3%, 1.154 29.9%, 0.977 51%, 1);
+    --ease-bounce: linear(0, 0.063, 0.25 18.2%, 1 36.4%, 0.813, 0.75, 0.813, 1, 0.938, 1, 1);
+    --ease-spring: linear(0, 0.938 16.7%, 1.149 24.3%, 1.154 29.9%, 0.977 51%, 1);
 
     /* Animations */
     --animate-scale-in: scale-in 200ms ease-out forwards;
     --animate-caret-blink: caret-blink 1s ease-in-out infinite;
     --animate-text:
-        fade 0.75s ease-in-out both, blur 0.75s ease-in-out both, up 0.75s ease-in-out both;
+        fade-in 0.75s ease-in-out both, blur 0.75s ease-in-out both, up 0.75s ease-in-out both;
     --animate-scroll: scroll 60s linear infinite;
     --animate-fade-in: fade-in 0.5s ease-in-out both;
     --animate-marquee: marquee var(--speed, 30s) linear infinite var(--direction, forwards);
     --animate-lighting: lighting 1.25s ease-out forwards;
+    --animate-menu-in: menu-in 250ms ease-in-out forwards;
+    --animate-menu-out: menu-out 250ms ease-in-out forwards;
 
     /* Keyframes */
     @keyframes scale-in {
@@ -171,6 +173,32 @@
             opacity: 1;
             clip-path: inset(0);
             transform: scale(1);
+        }
+    }
+
+    @keyframes menu-in {
+        0% {
+            opacity: 0;
+            filter: blur(2px);
+            transform: translateY(8px);
+        }
+        100% {
+            opacity: 1;
+            filter: blur(0px);
+            transform: translateY(0px);
+        }
+    }
+
+    @keyframes menu-out {
+        0% {
+            opacity: 1;
+            filter: blur(0px);
+            transform: translateY(0px);
+        }
+        100% {
+            opacity: 0;
+            filter: blur(2px);
+            transform: translateY(8px);
         }
     }
 

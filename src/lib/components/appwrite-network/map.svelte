@@ -3,6 +3,7 @@
     import MapMarker from './map-marker.svelte';
     import { slugify } from '$lib/utils/slugify';
     import { classNames } from '$lib/utils/classnames';
+    import { Tooltip } from 'bits-ui';
 
     // State
     let mouse = $state({ x: 0, y: 0 });
@@ -180,7 +181,7 @@
                     class={classNames(
                         'relative block aspect-square size-40 rounded-full blur-3xl transition-opacity',
                         'from-accent bg-radial-[circle_at_center] via-white/70 to-white/70',
-                        'transform-[translate3d(calc(var(--mouse-x,_-100%)_*_1_-_16rem),_calc(var(--mouse-y,_-100%)_*_1_-_24rem),0)]'
+                        'transform-[translate3d(calc(var(--mouse-x,_-100%)_*_1_-_16rem),_calc(var(--mouse-y,_-100%)_*_1_-_28rem),0)]'
                     )}
                     style:--mouse-x="{mouse.x}px"
                     style:--mouse-y="{mouse.y}px"
@@ -190,9 +191,15 @@
             <img src="/images/regions/map.svg" class="opacity-10" alt="Map of the world" />
 
             <div class="absolute inset-0 flex w-full">
-                {#each pins.map( (pin) => ({ ...pin, isOpen: activeRegion === slugify(pin.city) }) ) as pin, index}
-                    <MapMarker {...pin} {animate} {index} />
-                {/each}
+                <Tooltip.Provider
+                    delayDuration={0}
+                    skipDelayDuration={500}
+                    disableCloseOnTriggerClick
+                >
+                    {#each pins.map( (pin) => ({ ...pin, isOpen: activeRegion === slugify(pin.city) }) ) as pin, index}
+                        <MapMarker {...pin} {animate} {index} />
+                    {/each}
+                </Tooltip.Provider>
             </div>
         </div>
     </div>
