@@ -4,44 +4,84 @@ title: Webhooks
 description: Leverage webhooks in the Appwrite platform for real-time updates. Learn how to configure, manage, and integrate webhooks to keep your applications in sync.
 ---
 
-Webhooks allow you to build or set up integrations which subscribe to certain events on Appwrite. When one of those events is triggered, we'll send an HTTP POST payload to the webhook's configured URL. Webhooks can be used to purge cache from CDN, calculate data or send a Slack notification. You're only limited by your imagination.
+Webhooks let you automate tasks and trigger workflows in your own systems when something happens in Appwrite. Think of them as event listeners — when a specific event fires in Appwrite, it sends an HTTP POST request to a URL you choose.
 
-# Add your webhook {% #addWebhook %}
+You can use webhooks to purge a CDN cache, send a Slack notification, log an event to your internal systems, or kick off a background job. You decide how to respond to those events.
 
-You can set your webhook by adding it from your Appwrite project dashboard. You can access your webhooks settings from your project dashboard or on the left navigation panel. Click the 'Add Webhook' button and choose your webhook name and the events that should trigger it. You can also set an optional basic HTTP authentication username and password to protect your endpoint from unauthorized access.
+# Add Your Webhook {% #addWebhook %}
 
-# Payload {% #payload %}
+To add a webhook, go to your Appwrite project dashboard:
 
-Each event type has a specific payload format with the relevant event information. All event payloads mirror the payloads for the API payload which parallel to the [event types](/docs/advanced/platform/events).
+1. Open your project.
+2. Click **Webhooks** from the left-hand navigation.
+3. Click **Add Webhook**.
+4. Provide a name for your webhook.
+5. Choose the events you want this webhook to listen to.
+6. Optionally, set Basic HTTP authentication credentials (username and password) to protect your endpoint.
+
+This helps ensure only Appwrite can post to your URL.
+
+# Payload Format {% #payload %}
+
+Every event has its own structured payload that mirrors the corresponding [API response](/docs/advanced/platform/events). This consistency makes it easy to reuse your existing request handlers or data parsers.
+
+For example, if you're listening to the `account.create` event, the payload will match what you'd get from the `GET /account` endpoint.
+
+```json
+{
+  "event": "account.create",
+  "payload": {
+    "$id": "user123",
+    "email": "user@example.com",
+    "name": "John Doe"
+  }
+}
+```
 
 # Headers {% #headers %}
 
-HTTP requests made to your webhook's configured URL endpoint will contain several special headers.
+Appwrite includes several HTTP headers in each webhook request to give you more context and help with debugging and verification:
 
 | Header | Description |
 |--------|-------------|
-| X-Appwrite-Webhook-Id | The ID of the Webhook who triggered the event. |
-| X-Appwrite-Webhook-Events | Names of the events that triggered this delivery. |
-| X-Appwrite-Webhook-Name | Name of the webhook as specified in your app settings and [events list](/docs/advanced/platform/events). |
-| X-Appwrite-Webhook-User-Id | The user ID of the user who triggered the event. Returns an empty string if an API key triggered the event. Note that events like `account.create` or `account.sessions.create` are performed by guest users and will not return any user ID. If you still need the user ID for these events, you can find it in the event payload. |
-| X-Appwrite-Webhook-Project-Id | The ID of the project who owns the Webhook and API call. |
-| X-Appwrite-Webhook-Signature | The HMAC-SHA1 signature of the payload. This is used to verify the authenticity of the payload. |
-| User-Agent | Each request made by Appwrite will be 'Appwrite-Server'. |
+| `X-Appwrite-Webhook-Id` | The unique ID of the webhook that triggered the event. |
+| `X-Appwrite-Webhook-Events` | A comma-separated list of event names that fired. |
+| `X-Appwrite-Webhook-Name` | The name you gave this webhook in your project settings. |
+| `X-Appwrite-Webhook-User-Id` | The user ID of the user who triggered the event. Empty if triggered by an API key. |
+| `X-Appwrite-Webhook-Project-Id` | The ID of the project where the event occurred. |
+| `X-Appwrite-Webhook-Signature` | HMAC-SHA1 signature of the request body, used for verification. |
+| `User-Agent` | Always set to `Appwrite-Server`. |
 
-# Verification {% #verification %}
+# Verifying Payload Authenticity {% #verification %}
 
-Webhooks can be verified by using the [X-Appwrite-Webhook-Signature](/docs/advanced/platform/webhooks#headers) header.
-This is the HMAC-SHA1 signature of the payload. You can find the signature key in your webhooks properties in the dashboard.
-To generate this hash you append the payload to the end of webhook URL (make sure there are no spaces in between) and then use the HMAC-SHA1 algorithm to generate the signature.
-After you've generated the signature, compare it to the `X-Appwrite-Webhook-Signature` header value.
-If they match, the payload is valid and you can trust it came from your Appwrite instance.
+To verify that the request really came from Appwrite, use the `X-Appwrite-Webhook-Signature` header.
 
+Here’s how to do it:
+
+1. Get the **Webhook Secret Key** from your project dashboard.
+2. Use the raw request body (exactly as received) and compute an HMAC-SHA1 hash using your webhook's secret key.
+3. Compare your generated hash with the value of the `X-Appwrite-Webhook-Signature` header.
+
+In Node.js, this might look like:
+
+```js
+const crypto = require('crypto');
+
+function isValidSignature(secret, payload, signature) {
+  const hash = crypto.createHmac('sha1', secret).update(payload).digest('hex');
+  return hash === signature;
+}
+```
+
+If they match, the request is legitimate.
+
+For quick testing, you can use tools like [Beeceptor](https://beeceptor.com/) or [Typed Webhook](https://typedwebhook.tools/) to capture webhook requests and inspect payloads in real-time.
 
 # Events {% #events %}
 
-Appwrite has events that fire when a resource changes.
-These events cover all Appwrite resources and can reflect create, update, and delete actions.
-You can specify one or many events to subscribe to with webhooks.
+Appwrite fires events for resource changes, including create, update, and delete actions.
+
+You can subscribe to events from various Appwrite services, including:
 
 {% accordion %}
 {% accordion_item title="Authentication events" %}
