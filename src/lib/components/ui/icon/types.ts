@@ -1,4 +1,4 @@
-export type Icon =
+export type IconType =
     | 'apple'
     | 'appwrite'
     | 'arrow-down'

@@ -1,9 +1,9 @@
 <script lang="ts" context="module">
+    import { type Reo, loadReoScript } from '$lib/reodotdev';
     import { derived, writable } from 'svelte/store';
-    import { loadReoScript, type Reo } from '$lib/reodotdev';
 
     export type Theme = 'dark' | 'light' | 'system';
-    export const currentTheme = (function () {
+    export const currentTheme = (() => {
         const store = writable<Theme>(getPreferredTheme());
 
         const set: typeof store.set = (value) => {
@@ -90,6 +90,8 @@
                 applyTheme('dark');
             }
         });
+
+        saveReferrerAndUtmSource(page.url);
     });
 
     beforeNavigate(({ willUnload, to }) => {
@@ -197,33 +199,15 @@
     <link rel="canonical" href={canonicalUrl} />
 </svelte:head>
 
-<a class="skip" href="#main">Skip to content</a>
+<a
+    class="bg-mint-500 focus:pointer-events-all pointer-events-none absolute inset-y-0 z-9999 block px-5 py-3 text-black underline opacity-0 focus:relative focus:opacity-1"
+    href="#main">Skip to content</a
+>
 
 <slot />
 
 <style lang="scss">
     :global(html) {
         color-scheme: dark;
-    }
-
-    .skip {
-        position: absolute;
-        inset-block-start: 0;
-        z-index: 9999;
-
-        display: block;
-        background-color: hsl(var(--web-color-mint-500));
-        color: hsl(var(--web-color-black));
-        text-decoration: underline;
-        opacity: 0;
-
-        padding: 0.75rem 1.25rem;
-        pointer-events: none;
-    }
-
-    .skip:focus {
-        opacity: 1;
-        position: relative;
-        pointer-events: all;
     }
 </style>

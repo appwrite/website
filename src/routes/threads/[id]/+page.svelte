@@ -2,6 +2,7 @@
     import { Main } from '$lib/layouts';
     import { DEFAULT_DESCRIPTION } from '$lib/utils/metadata';
     import { TITLE_SUFFIX } from '$routes/titles';
+    import { Button, Icon } from '$lib/components/ui';
 
     import FooterNav from '$lib/components/FooterNav.svelte';
     import MainFooter from '$lib/components/MainFooter.svelte';
@@ -57,10 +58,10 @@
                 </ul>
             </div>
             <div class="buttons">
-                <a class="web-button" href={discordLink}>
-                    <span class="web-icon-discord"></span>
-                    <span class="text">View on Discord</span>
-                </a>
+                <Button href={discordLink}>
+                    <Icon name="discord"></Icon>
+                    View on Discord
+                </Button>
             </div>
         </div>
 
@@ -82,10 +83,10 @@
                     <p class="text-sub-body mt-4 font-medium">
                         Reply to this thread by joining our Discord
                     </p>
-                    <a class="web-button mt-6" href={discordLink}>
-                        <span class="web-icon-discord"></span>
-                        <span class="text">Reply on Discord</span>
-                    </a>
+                    <Button class="mt-6" href={discordLink}>
+                        <Icon name="discord"></Icon>
+                        Reply on Discord
+                    </Button>
                 </div>
             </div>
             <div class="related">

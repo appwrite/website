@@ -2,6 +2,7 @@
     import Phone from '../(assets)/phone.png';
     import PhoneMobile from '../(assets)/phone-mobile.png';
     import { getAppwriteDashboardUrl } from '$lib/utils/dashboard';
+    import { Button } from '$lib/components/ui';
 </script>
 
 <div
@@ -24,12 +25,12 @@
             </p>
 
             <div class="flex flex-col items-center gap-2 md:flex-row">
-                <a href={getAppwriteDashboardUrl()} class="web-button !w-full md:!w-fit">
+                <Button href={getAppwriteDashboardUrl()} class="!w-full md:!w-fit">
                     Get started
-                </a>
-                <a href="/docs/products/auth" class="web-button is-secondary !w-full md:!w-fit">
+                </Button>
+                <Button href="/docs/products/auth" variant="secondary" class="!w-full md:!w-fit">
                     Documentation
-                </a>
+                </Button>
             </div>
         </div>
         <img

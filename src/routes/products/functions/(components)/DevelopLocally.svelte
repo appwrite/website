@@ -3,6 +3,7 @@
     import Hat from '../(assets)/hat.png';
     import Shirt from '../(assets)/shirt.png';
     import Window from '../(assets)/checkout-window.png';
+    import { Button } from '$lib/components/ui';
 
     const products = [
         {
@@ -176,9 +177,10 @@
                 over your development.
             </p>
 
-            <a
+            <Button
+                variant="secondary"
                 href="/docs/products/functions/develop-locally"
-                class="web-button is-secondary mt-8 !w-full md:!w-fit">Learn more</a
+                class="mt-8 !w-full md:!w-fit">Learn more</Button
             >
         </div>
     </div>

@@ -1,5 +1,6 @@
 <script lang="ts">
     import { PUBLIC_APPWRITE_DASHBOARD } from '$env/static/public';
+    import { Button } from '$lib/components/ui';
     import { classNames } from '$lib/utils/classnames';
 
     interface Props {
@@ -52,6 +53,6 @@
         {/each}
     </ul>
     <div class="flex flex-col gap-2 md:flex-row">
-        <a href={url} class="web-button max-sm:w-full!">{cta}</a>
+        <Button href={url} class="max-sm:w-full!">{cta}</Button>
     </div>
 </div>
