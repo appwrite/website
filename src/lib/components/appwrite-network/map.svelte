@@ -5,65 +5,69 @@
     import { classNames } from '$lib/utils/classnames';
     import { Tooltip } from 'bits-ui';
 
-    // State
+    const showDebugInfo = false;
+
+    const pins = {
+        regions: [
+            {
+                lat: 37.77,
+                lng: -122.42,
+                city: 'San Francisco',
+                code: 'SFO',
+                available: false
+            },
+            {
+                lat: 40.71,
+                lng: -74.01,
+                city: 'New York City',
+                code: 'NYC',
+                available: false
+            },
+            {
+                lat: 52.37,
+                lng: 4.9,
+                city: 'Amsterdam',
+                code: 'AMS',
+                available: false
+            },
+            {
+                lat: 50.11,
+                lng: 8.68,
+                city: 'Frankfurt',
+                code: 'GER',
+                available: true
+            },
+            {
+                lat: 12.97,
+                lng: 77.59,
+                city: 'Bangalore',
+                code: 'IND',
+                available: false
+            },
+            {
+                lat: 1.35,
+                lng: 103.82,
+                city: 'Singapore',
+                code: 'SGP',
+                available: false
+            },
+            {
+                lat: -33.87,
+                lng: 151.21,
+                city: 'Sydney',
+                code: 'AUS',
+                available: false
+            }
+        ]
+    } as const;
+
     let mouse = $state({ x: 0, y: 0 });
     let animate = $state(true);
     let activeRegion = $state<string | null>(null);
     let hasActiveMarker = $state(false);
     let activeMarker: HTMLElement | null = null;
 
-    // Data
-    const pins = [
-        {
-            x: 1.25,
-            y: 8,
-            city: 'San Francisco',
-            code: 'SFO',
-            available: false
-        },
-        {
-            x: 12,
-            y: 7,
-            city: 'New York City',
-            code: 'NYC',
-            available: false
-        },
-        {
-            x: 28,
-            y: 5.5,
-            city: 'Frankfurt',
-            code: 'GER',
-            available: true
-        },
-        {
-            x: 28,
-            y: 4.5,
-            city: 'Amsterdam',
-            code: 'AMS',
-            available: false
-        },
-        {
-            x: 44.5,
-            y: 15,
-            city: 'Bangalore',
-            code: 'IND',
-            available: false
-        },
-        {
-            x: 51,
-            y: 19,
-            city: 'Singapore',
-            code: 'SGP',
-            available: false
-        },
-        {
-            x: 62,
-            y: 29,
-            city: 'Sydney',
-            code: 'AUS',
-            available: false
-        }
-    ];
+    let activeSegment = $state<keyof typeof pins>('regions');
 
     // Actions
     const useMousePosition = (node: HTMLElement) => {
@@ -148,7 +152,7 @@
     <div
         class="sticky left-0 z-10 mb-8 flex w-screen gap-2 overflow-scroll px-8 [scrollbar-width:none] md:hidden"
     >
-        {#each pins as pin}
+        {#each pins[activeSegment] as pin}
             <button
                 class={classNames(
                     'border-gradient grow rounded-full bg-gradient-to-br px-4 py-1 text-nowrap text-white backdrop-blur-lg transition-colors before:rounded-full after:rounded-full',
@@ -196,8 +200,8 @@
                     skipDelayDuration={500}
                     disableCloseOnTriggerClick
                 >
-                    {#each pins.map( (pin) => ({ ...pin, isOpen: activeRegion === slugify(pin.city) }) ) as pin, index}
-                        <MapMarker {...pin} {animate} {index} />
+                    {#each pins[activeSegment].map( (pin) => ({ ...pin, isOpen: activeRegion === slugify(pin.city) }) ) as pin, index}
+                        <MapMarker {...pin} {animate} {index} {showDebugInfo} />
                     {/each}
                 </Tooltip.Provider>
             </div>

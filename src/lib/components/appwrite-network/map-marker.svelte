@@ -1,31 +1,32 @@
 <script lang="ts">
     import { classNames } from '$lib/utils/classnames';
     import { slugify } from '$lib/utils/slugify';
-    import { melt, createTooltip } from '@melt-ui/svelte';
     import { Tooltip } from 'bits-ui';
 
     interface Props {
         city: string;
         code: string;
         index: number;
-        x: number;
-        y: number;
+        lat: number;
+        lng: number;
         available?: boolean;
         class?: string;
         animate?: boolean;
         isOpen: boolean;
+        showDebugInfo?: boolean;
     }
 
     const {
         city,
         code,
         index = 0,
-        x = 0,
-        y = 0,
+        lat,
+        lng,
         available = false,
         class: className = '',
         animate = false,
-        isOpen = false
+        isOpen = false,
+        showDebugInfo = false
     }: Props = $props();
 
     let open = $state(isOpen);
@@ -37,15 +38,19 @@
             open = false;
         }
     });
+
+    // Calculate x and y based on lat/lng
+    const x = $derived(((lng + 180) / 360) * 100);
+    const y = $derived((-(lat - 90) / 180) * 100);
 </script>
 
 <Tooltip.Root bind:open>
     <Tooltip.Trigger
         class={classNames(
-            'group relative flex size-3 translate-x-(--x-mobile) translate-y-(--y) cursor-pointer items-center justify-center opacity-0 [animation-delay:var(--delay)] md:translate-x-(--x-desktop)',
+            'group absolute flex size-3 cursor-pointer items-center justify-center opacity-0 [animation-delay:var(--delay)]',
             { 'animate-fade-in': animate }
         )}
-        style="--x-desktop:{x}vw;--x-mobile:{x * 3.25}vw;--y:{y}vh;--delay:{index * 100}ms"
+        style="left:{x}%; top:{y}%; --delay:{index * 100}ms; transform: translate(-50%, -50%);"
         data-region={slugify(city)}
         data-active={isOpen}
     >
@@ -84,3 +89,13 @@
         {/if}
     </Tooltip.Content>
 </Tooltip.Root>
+
+{#if showDebugInfo}
+    <div
+        class="absolute z-50 rounded bg-black/50 p-1 text-xs text-white"
+        style="left:{x}%; top:calc({y}% + 12px); transform: translateX(-50%);"
+    >
+        <div>Lat: {lat.toFixed(2)}, Lng: {lng.toFixed(2)}</div>
+        <div>Position: {x}%, {y}%</div>
+    </div>
+{/if}
