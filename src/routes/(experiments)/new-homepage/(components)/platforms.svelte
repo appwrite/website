@@ -20,52 +20,57 @@
     import { Tooltip } from 'bits-ui';
 
     const platforms = [
-        { name: 'js', icon: Javascript, href: '/quickstarts/javascript', primary: '#FFCA28' },
         {
-            name: 'flutter',
+            name: 'JS',
+            icon: Javascript,
+            href: '/quickstarts/javascript',
+            primary: '#FFCA28'
+        },
+        {
+            name: 'Flutter',
             icon: Flutter,
             href: '/quickstarts/flutter',
             primary: '#00569E',
             secondary: '#47C5FB'
         },
-        { name: 'node', icon: Node, href: '/quickstarts/node', primary: '#8CC84B' },
+        { name: 'Node.js', icon: Node, href: '/quickstarts/node', primary: '#8CC84B' },
         {
-            name: 'python',
+            name: 'Python',
             icon: Python,
             href: '/quickstarts/python',
             primary: '#F9C600',
             secondary: '#327EBD'
         },
-        { name: 'ios', icon: Apple, href: '/quickstarts/ios', primary: '#fff' },
-        { name: 'android', icon: Android, href: '/quickstarts/android', primary: '#3DDC84' },
+        { name: 'iOS', icon: Apple, href: '/quickstarts/ios', primary: '#fff' },
+        { name: 'Android', icon: Android, href: '/quickstarts/android', primary: '#3DDC84' },
         {
-            name: 'dart',
+            name: 'Dart',
             icon: Dart,
             href: '/quickstarts/dart',
             primary: '#01579B',
             secondary: '#29B6F6'
         },
-        { name: 'php', icon: Php, href: '/quickstarts/php', primary: '#8892BF' },
+        { name: 'PHP', icon: Php, href: '/quickstarts/php', primary: '#8892BF' },
         {
-            name: 'ruby',
+            name: 'Ruby',
             icon: Ruby,
             href: '/quickstarts/ruby',
             primary: '#791C12',
             secondary: '#9E120B'
         },
-        { name: 'deno', icon: Deno, href: '/quickstarts/deno', primary: '#fff' },
-        { name: '.net', icon: Net, href: '/quickstarts/dotnet', primary: '#512BD4' },
-        { name: 'go', icon: Go, href: '/quickstarts/go', primary: '#fff' },
+        { name: 'Deno', icon: Deno, href: '/quickstarts/deno', primary: '#fff' },
+        { name: '.NET', icon: Net, href: '/quickstarts/dotnet', primary: '#512BD4' },
+        { name: 'Go', icon: Go, href: '/quickstarts/go', primary: '#fff' },
         {
-            name: 'swift',
+            name: 'Swift',
             icon: Swift,
             href: '/quickstarts/swift',
             primary: '#F88A36',
             secondary: '#FD2020'
         },
-        { name: 'react', icon: React, href: '/quickstarts/react', primary: '#53C1DE' },
+        { name: 'React', icon: React, href: '/quickstarts/react', primary: '#53C1DE' },
         {
-            name: 'kotlin',
+            name: 'Kotlin',
             icon: Kotlin,
             href: '/quickstarts/kotlin',
             primary: '#6D74E1',
@@ -90,7 +95,7 @@
             <div
                 class="divide-smooth animate-marquee flex w-max flex-1 grow flex-nowrap divide-dashed [animation-duration:80s] md:w-full md:divide-x md:[animation-play-state:paused]"
             >
-                <Tooltip.Provider delayDuration={0}>
+                <Tooltip.Provider delayDuration={0} disableCloseOnTriggerClick>
                     {#each platforms as platform, i}
                         <Tooltip.Root>
                             <div
@@ -122,10 +127,13 @@
                                     sideOffset={8}
                                     side="top"
                                     class={classNames(
-                                        'rounded-md border-0! bg-gradient-to-tl from-(--primary-color,_#fff)/4 to-(--secondary-color,_transparent)/10 px-2.5 py-1 text-sm',
-                                        'data-[state=instant-open]:animate-scale-in'
+                                        'text-primary bg-greyscale-900 relative rounded-md border-0! px-2.5 py-1 text-sm',
+                                        'data-[state="closed"]:animate-menu-out data-[state="instant-open"]:animate-menu-in data-[state="delayed-open"]:animate-menu-in'
                                     )}
-                                    >Platform Name
+                                    >{platform.name}
+                                    <div
+                                        class="absolute inset-0 rounded-md bg-gradient-to-tl from-(--primary-color,_#fff)/4 to-(--secondary-color,_transparent)/10"
+                                    ></div>
                                     <Tooltip.Arrow class="text-(--primary-color)/4" />
                                 </Tooltip.Content>
                             </div>
