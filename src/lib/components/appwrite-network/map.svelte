@@ -4,6 +4,7 @@
     import { slugify } from '$lib/utils/slugify';
     import { classNames } from '$lib/utils/classnames';
     import { Tooltip } from 'bits-ui';
+    import MapNav from './map-nav.svelte';
 
     const showDebugInfo = false;
 
@@ -208,3 +209,5 @@
         </div>
     </div>
 </div>
+
+<MapNav />
