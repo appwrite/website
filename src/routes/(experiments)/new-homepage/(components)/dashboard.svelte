@@ -1,6 +1,5 @@
 <div
-    style:--mask-height="450px"
-    class="bg-smooth animate-fade-in mask inset-y-0 right-0 mt-20 h-full rounded-tl-2xl border-t border-l border-white/10 pt-2 pl-2 backdrop-blur-2xl md:absolute md:w-[48vw]"
+    class="bg-smooth animate-fade-in inset-y-0 right-0 mt-20 h-full rounded-tl-2xl border-t border-l border-white/10 mask-b-from-0% mask-b-to-95% pt-2 pl-2 backdrop-blur-2xl md:absolute md:w-[48vw]"
 >
     <div class="bg-greyscale-900 h-full overflow-hidden rounded-tl-xl">
         <div id="top-nav">

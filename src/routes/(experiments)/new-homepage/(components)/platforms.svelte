@@ -17,6 +17,7 @@
     import React from '../(assets)/icons/react.svg';
     import GradientText from '$lib/components/fancy/gradient-text.svelte';
     import Noise from '$lib/components/fancy/noise.svelte';
+    import { Tooltip } from 'bits-ui';
 
     const platforms = [
         { name: 'js', icon: Javascript, href: '/quickstarts/javascript', primary: '#FFCA28' },
@@ -35,7 +36,7 @@
             primary: '#F9C600',
             secondary: '#327EBD'
         },
-        { name: 'ios', icon: Apple, href: '/quickstarts/ios' },
+        { name: 'ios', icon: Apple, href: '/quickstarts/ios', primary: '#fff' },
         { name: 'android', icon: Android, href: '/quickstarts/android', primary: '#3DDC84' },
         {
             name: 'dart',
@@ -82,38 +83,55 @@
         </GradientText>
         <div
             class={classNames(
-                'w-full overflow-clip',
-                '[mask-mode:alpha] backdrop-blur-3xl max-md:[mask-image:linear-gradient(to_right,rgba(0,0,0,0)_0%,_rgba(255,255,255,1)_50%,_rgba(0,0,0,0)_100%)]'
+                'w-full overflow-clip md:overflow-visible',
+                'mask-alpha backdrop-blur-3xl max-md:mask-r-from-0% max-md:mask-r-to-99%'
             )}
         >
             <div
                 class="divide-smooth animate-marquee flex w-max flex-1 grow flex-nowrap divide-dashed [animation-duration:80s] md:w-full md:divide-x md:[animation-play-state:paused]"
             >
-                {#each platforms as platform, i}
-                    <button
-                        class="first-of-type:border-smooth group animate-fade-in last-of-type:border-smooth relative flex h-16 w-16 items-center justify-center first-of-type:border-l first-of-type:border-dashed last-of-type:border-r last-of-type:border-dashed md:w-full"
-                        style:--primary-color={platform.primary}
-                        style:--secondary-color={platform.secondary}
-                        style:animation-delay="{i * 25}ms"
-                        aria-hidden={i < platforms.length - 1}
-                    >
-                        <img
-                            src={platform.icon}
-                            alt={platform.name}
-                            class="h-8 w-auto grayscale transition-all duration-500 group-hover:grayscale-0"
-                        />
+                <Tooltip.Provider delayDuration={0}>
+                    {#each platforms as platform, i}
+                        <Tooltip.Root>
+                            <div
+                                class="contents"
+                                style="--primary-color:{platform.primary};--secondary-color:{platform.secondary};--animation-delay:{i *
+                                    25}ms"
+                            >
+                                <Tooltip.Trigger
+                                    class="first-of-type:border-smooth group animate-fade-in last-of-type:border-smooth relative flex h-16 w-16 items-center justify-center first-of-type:border-l first-of-type:border-dashed last-of-type:border-r last-of-type:border-dashed md:w-full"
+                                    aria-hidden={i < platforms.length - 1}
+                                >
+                                    <img
+                                        src={platform.icon}
+                                        alt={platform.name}
+                                        class="h-8 w-auto grayscale transition-all duration-500 group-hover:grayscale-0"
+                                    />
 
-                        <div
-                            class={classNames(
-                                'absolute inset-0 opacity-0 transition-opacity group-hover:opacity-100',
-                                'bg-gradient-to-tl from-transparent to-transparent',
-                                'hover:from-(--primary-color,_#fff)/4 hover:to-(--secondary-color,_transparent)/10'
-                            )}
-                        >
-                            <Noise opacity={0.1} />
-                        </div>
-                    </button>
-                {/each}
+                                    <div
+                                        class={classNames(
+                                            'absolute inset-0 opacity-0 transition-opacity group-hover:opacity-100',
+                                            'bg-gradient-to-tl from-transparent to-transparent',
+                                            'hover:from-(--primary-color,_#fff)/4 hover:to-(--secondary-color,_transparent)/10'
+                                        )}
+                                    >
+                                        <Noise opacity={0.1} />
+                                    </div>
+                                </Tooltip.Trigger>
+                                <Tooltip.Content
+                                    sideOffset={8}
+                                    side="top"
+                                    class={classNames(
+                                        'rounded-md border-0! bg-gradient-to-tl from-(--primary-color,_#fff)/4 to-(--secondary-color,_transparent)/10 px-2.5 py-1 text-sm',
+                                        'data-[state=instant-open]:animate-scale-in'
+                                    )}
+                                    >Platform Name
+                                    <Tooltip.Arrow class="text-(--primary-color)/4" />
+                                </Tooltip.Content>
+                            </div>
+                        </Tooltip.Root>
+                    {/each}
+                </Tooltip.Provider>
             </div>
         </div>
     </div>
