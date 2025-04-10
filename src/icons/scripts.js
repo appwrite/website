@@ -31,9 +31,7 @@ const generateIconSprite = () => {
         const svgMatch = svgContent.match(/<svg[^>]*>([\s\S]*?)<\/svg>/i);
 
         if (svgMatch && svgMatch[1]) {
-            const innerContent = svgMatch[1]
-                .trim()
-                .replace(/fill=['"]([^'"]*)['"]/g, 'fill="currentColor"');
+            const innerContent = svgMatch[1].trim();
             const viewBoxMatch = svgContent.match(/viewBox=['"]([^'"]*)['"]/i);
             const viewBox = viewBoxMatch ? viewBoxMatch[1] : '0 0 24 24';
 
@@ -76,10 +74,7 @@ export const optimizeSVG = async () => {
         showProgressBar: true
     });
 
-    await fixer
-        .fix()
-        .then(() => generateIconSprite())
-        .then(() => generateIconType());
+    await fixer.fix();
 };
 
 export const generateIcons = async () => {
@@ -103,5 +98,7 @@ export const generateIcons = async () => {
         },
         emptyDist: true,
         generateInfoData: true
-    });
+    })
+        .then(() => generateIconSprite())
+        .then(() => generateIconType());
 };
