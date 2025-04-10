@@ -11,7 +11,7 @@ const outputPath = resolve(process.cwd(), 'src/lib/components/ui/icon');
 
 const generateIconSprite = () => {
     const files = readdirSync(optimized);
-    const outputDir = resolve(`${outputPath}`);
+    const outputDir = resolve(`${outputPath}/sprite`);
     const spriteOutputPath = resolve(outputDir, 'sprite.svelte');
 
     if (!existsSync(outputDir)) {
