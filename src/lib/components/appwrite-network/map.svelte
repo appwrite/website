@@ -8,7 +8,25 @@
 
     const showDebugInfo = false;
 
-    const pins = {
+    const pins = $state({
+        'pop-locations': [
+            {
+                lat: 40.71,
+                lng: -74.01,
+                city: 'New York City',
+                code: 'NYC',
+                available: false
+            }
+        ],
+        edges: [
+            {
+                lat: 37.77,
+                lng: -122.42,
+                city: 'San Francisco',
+                code: 'SFO',
+                available: false
+            }
+        ],
         regions: [
             {
                 lat: 37.77,
@@ -60,7 +78,9 @@
                 available: false
             }
         ]
-    } as const;
+    });
+
+    type PinSegment = keyof typeof pins;
 
     let mouse = $state({ x: 0, y: 0 });
     let animate = $state(true);
@@ -68,7 +88,11 @@
     let hasActiveMarker = $state(false);
     let activeMarker: HTMLElement | null = null;
 
-    let activeSegment = $state<keyof typeof pins>('regions');
+    let activeSegment = $state<string>('pop-locations');
+
+    $effect(() => {
+        console.log(pins[activeSegment as PinSegment]);
+    });
 
     // Actions
     const useMousePosition = (node: HTMLElement) => {
@@ -153,7 +177,7 @@
     <div
         class="sticky left-0 z-10 mb-8 flex w-screen gap-2 overflow-scroll px-8 [scrollbar-width:none] md:hidden"
     >
-        {#each pins[activeSegment] as pin}
+        {#each pins[activeSegment as PinSegment] as pin}
             <button
                 class={classNames(
                     'border-gradient grow rounded-full bg-gradient-to-br px-4 py-1 text-nowrap text-white backdrop-blur-lg transition-colors before:rounded-full after:rounded-full',
@@ -201,7 +225,7 @@
                     skipDelayDuration={500}
                     disableCloseOnTriggerClick
                 >
-                    {#each pins[activeSegment].map( (pin) => ({ ...pin, isOpen: activeRegion === slugify(pin.city) }) ) as pin, index}
+                    {#each pins[activeSegment as PinSegment].map( (pin) => ({ ...pin, isOpen: activeRegion === slugify(pin.city) }) ) as pin, index}
                         <MapMarker {...pin} {animate} {index} {showDebugInfo} />
                     {/each}
                 </Tooltip.Provider>
@@ -210,4 +234,4 @@
     </div>
 </div>
 
-<MapNav />
+<MapNav onValueChange={(value) => (activeSegment = value)} />
