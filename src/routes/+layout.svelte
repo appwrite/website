@@ -57,6 +57,7 @@
     import { beforeNavigate } from '$app/navigation';
     import { trackEvent } from '$lib/actions/analytics';
     import { saveReferrerAndUtmSource } from '$lib/utils/utm';
+    import { Sprite } from '$lib/components/ui/icon/sprite';
 
     function applyTheme(theme: Theme) {
         const resolvedTheme = theme === 'system' ? getSystemTheme() : theme;
@@ -205,6 +206,7 @@
 >
 
 <slot />
+<Sprite />
 
 <style lang="scss">
     :global(html) {
