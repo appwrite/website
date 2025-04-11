@@ -140,7 +140,7 @@
                 <div class="pointer-events-none absolute inset-0 z-50">
                     {#each stats as stat, i}
                         <div
-                            class="border-accent absolute top-[var(--top)] left-[calc(var(--left)_+_1px)] h-2 w-2 -translate-1/2 rounded-full border bg-white"
+                            class="border-accent absolute top-(--top) left-[calc(var(--left)_+_1px)] h-2 w-2 -translate-1/2 rounded-full border bg-white"
                             style:--top={`${stat.top}%`}
                             style:--left="{i * 25}%"
                         ></div>
