@@ -19,6 +19,12 @@
     const title = 'Appwrite - Backend APIs, Frontend hosting';
     const description = DEFAULT_DESCRIPTION;
     const ogImage = `${DEFAULT_HOST}/images/open-graph/website.png`;
+
+    let mountedCount = $state(0);
+
+    $effect(() => {
+        mountedCount++;
+    });
 </script>
 
 <svelte:head>

@@ -182,7 +182,7 @@
         class="relative flex h-[26.25rem] items-center justify-between overflow-clip rounded-xl bg-black/24 px-8"
     >
         <div
-            class="flex flex-1 flex-col items-center gap-3 overflow-clip [mask-image:linear-gradient(to_top,rgba(0,0,0,0)_0%,_rgba(255,255,255,1)_50%,_rgba(0,0,0,0)_100%)] [mask-mode:alpha] text-center"
+            class="flex flex-1 flex-col items-center gap-3 overflow-clip mask-t-from-0% mask-t-to-5% mask-linear-180 mask-alpha text-center"
             style:max-height={`calc(${platforms.length} * var(--spacing-4))`}
         >
             <div

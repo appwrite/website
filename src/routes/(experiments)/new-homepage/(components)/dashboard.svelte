@@ -1,5 +1,18 @@
+<script lang="ts">
+    import { animate, stagger } from 'motion';
+
+    $effect(() => {
+        animate('.header', { opacity: [0, 1] });
+        animate(
+            '.nav-item',
+            { y: [4, 0], filter: ['blur(4px)', 'blur(0px)'], opacity: [0, 1] },
+            { delay: stagger(0.125) }
+        );
+    });
+</script>
+
 <div
-    class="bg-smooth animate-fade-in inset-y-0 right-0 mt-20 h-full rounded-tl-2xl border-t border-l border-white/10 mask-b-from-0% mask-b-to-95% pt-2 pl-2 backdrop-blur-2xl md:absolute md:w-[48vw]"
+    class="bg-smooth inset-y-0 right-0 mt-20 h-full rounded-tl-2xl border-t border-l border-white/10 mask-b-from-0% pt-2 pl-2 backdrop-blur-2xl md:absolute md:w-[48vw]"
 >
     <div class="bg-greyscale-900 h-full overflow-hidden rounded-tl-xl">
         <div id="top-nav">
@@ -88,7 +101,7 @@
                         fill="white"
                         fill-opacity="0.08"
                     />
-                    <g id="overview" class="nav-item" style:--delay="0s">
+                    <g id="overview" class="nav-item">
                         <path
                             d="M22.0781 29.1954C22.0781 28.8801 22.3338 28.6244 22.6492 28.6244H23.7913C24.1067 28.6244 24.3624 28.8801 24.3624 29.1954V32.0507C24.3624 32.3661 24.1067 32.6218 23.7913 32.6218H22.6492C22.3338 32.6218 22.0781 32.3661 22.0781 32.0507V29.1954Z"
                             fill="#ADADB0"
@@ -107,7 +120,7 @@
                             fill="#EDEDF0"
                         />
                     </g>
-                    <g id="auth" class="nav-item" style:--delay="0.125s">
+                    <g id="auth" class="nav-item">
                         <rect
                             x="11.4219"
                             y="48.9497"
@@ -145,7 +158,7 @@
                             fill="#EDEDF0"
                         />
                     </g>
-                    <g id="databases" class="nav-item" style:--delay="0.25s">
+                    <g id="databases" class="nav-item">
                         <path
                             d="M22.6484 95.8376V97.5507C22.6484 98.4969 24.4381 99.2639 26.6459 99.2639C28.8536 99.2639 30.6433 98.4969 30.6433 97.5507V95.8376C30.6433 96.7837 28.8536 97.5507 26.6459 97.5507C24.4381 97.5507 22.6484 96.7837 22.6484 95.8376Z"
                             fill="#97979B"
@@ -163,7 +176,7 @@
                             fill="#EDEDF0"
                         />
                     </g>
-                    <g id="functions" class="nav-item" style:--delay="0.375s">
+                    <g id="functions" class="nav-item">
                         <g clip-path="url(#functions-icon)">
                             <path
                                 fill-rule="evenodd"
@@ -177,7 +190,7 @@
                             fill="#EDEDF0"
                         />
                     </g>
-                    <g id="storage" class="nav-item" style:--delay="0.5s">
+                    <g id="storage" class="nav-item">
                         <path
                             d="M22.0781 158.482C22.0781 157.851 22.5895 157.34 23.2202 157.34H26.0756L27.2177 158.482H30.073C30.7038 158.482 31.2151 158.993 31.2151 159.624V163.05C31.2151 163.681 30.7038 164.193 30.073 164.193H23.2202C22.5895 164.193 22.0781 163.681 22.0781 163.05V158.482Z"
                             fill="#97979B"
@@ -1204,44 +1217,3 @@
         </div>
     </div>
 </div>
-
-<style>
-    .header {
-        opacity: 0;
-        position: relative;
-        z-index: 1;
-        animation: header 0.5s ease-in-out forwards;
-    }
-
-    @keyframes header {
-        from {
-            opacity: 0;
-            transform: translateY(4px) translateZ(200px);
-            filter: blur(8px);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0) translateZ(0);
-            filter: blur(0);
-        }
-    }
-
-    .nav-item {
-        opacity: 0;
-        animation: nav-item 0.5s ease-in-out forwards;
-        animation-delay: var(--delay);
-    }
-
-    @keyframes nav-item {
-        from {
-            opacity: 0;
-            transform: translateY(4px);
-            filter: blur(4px);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-            filter: blur(0);
-        }
-    }
-</style>
