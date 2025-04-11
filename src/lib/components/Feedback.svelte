@@ -129,13 +129,14 @@
             <div class="flex flex-col gap-2">
                 <label for="message">
                     <span class="text-primary">
-                        What did you {feedbackType === 'negative' ? 'dislike' : 'like'}? (optional)
+                        What did you {feedbackType === 'negative' ? 'dislike' : 'like'}?
                     </span>
                 </label>
                 <textarea
                     class="web-input-text"
                     id="message"
                     placeholder="Write your message"
+                    required
                     bind:value={comment}
                 ></textarea>
                 <label for="message" class="mt-2">
