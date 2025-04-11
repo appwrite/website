@@ -3,7 +3,7 @@
 </script>
 
 <script lang="ts">
-    import { dequal } from 'dequal/lite';
+    import { isDeepEqual } from 'remeda';
 
     import Sites from '../../(assets)/stickers/sites.webp';
     import Flutter from '../../(assets)/stickers/flutter.webp';
@@ -15,31 +15,41 @@
     import { enhance } from '$app/forms';
     import { classNames } from '$lib/utils/classnames';
     import TicketCard from '../(components)/ticket-card.svelte';
-    import { Icon } from '$lib/components/ui';
+    import { Button, Icon } from '$lib/components/ui';
 
     let { data } = $props();
 
-    let originalName = $state(data.ticket?.name ?? '');
-    let name = $derived(originalName.split(' ')[0]);
-    let originalTitle = $state(data.ticket?.title ?? '');
-    let derivedTitle = $derived(originalTitle);
-    let originalSticker = $state(data.ticket.sticker);
-    let sticker = $derived(originalSticker);
-    let editing = $state(false);
+    let originalTicketData = $state({
+        name: data.ticket?.name ?? '',
+        title: data.ticket?.title ?? '',
+        sticker: data.ticket.sticker
+    });
 
-    let saving: boolean = $state(false);
-    let saved: boolean = $state(false);
+    let updatedTicketData = $derived({
+        name: originalTicketData.name.split(' ')[0],
+        title: originalTicketData.title,
+        sticker: originalTicketData.sticker
+    });
 
-    let modified = $derived(
-        !dequal(
-            {
-                name: originalName,
-                title: originalTitle,
-                sticker: originalSticker
-            },
-            { name, derivedTitle, sticker }
-        )
-    );
+    let formState = $state({
+        editing: false,
+        saving: false,
+        saved: false
+    });
+
+    let isModified = $derived(!isDeepEqual(originalTicketData, updatedTicketData));
+
+    $effect(() => {
+        if (formState.saved) {
+            const timeout = setTimeout(() => {
+                formState.saved = false;
+            }, 2000);
+
+            return () => {
+                clearTimeout(timeout);
+            };
+        }
+    });
 </script>
 
 <svelte:head>
@@ -52,7 +62,7 @@
 
 <Window class="container my-10">
     {#snippet link()}
-        <a href="/init" class="group flex gap-1 uppercase">
+        <a href="/init" class="group flex items-center gap-2 uppercase">
             <Icon name="chevron-left" class="transition-transform group-hover:-translate-x-0.5" />
             Back</a
         >
@@ -73,19 +83,13 @@
                 method="POST"
                 class="mt-4 flex flex-1 flex-col gap-4"
                 use:enhance={async () => {
-                    saving = true;
+                    formState.saving = true;
 
                     return async ({ result, update }) => {
                         if (result.type === 'success') {
-                            originalName = name;
-                            originalTitle = derivedTitle;
-                            originalSticker = sticker;
-                            saved = true;
-                            saving = false;
-
-                            const timeout = setTimeout(() => {
-                                saved = false;
-                            }, 3000);
+                            originalTicketData = updatedTicketData;
+                            formState.saved = true;
+                            formState.saving = false;
                         }
                         update({ reset: false });
                     };
@@ -98,9 +102,9 @@
                         >First name</label
                     >
                     <input
-                        bind:value={name}
-                        onfocus={() => (editing = true)}
-                        onblur={() => (editing = false)}
+                        bind:value={originalTicketData.name}
+                        onfocus={() => (formState.editing = true)}
+                        onblur={() => (formState.editing = false)}
                         type="text"
                         name="name"
                         class="bg-smooth border-offset w-full appearance-none rounded-lg border p-2"
@@ -113,7 +117,7 @@
                         >Title</label
                     >
                     <input
-                        bind:value={derivedTitle}
+                        bind:value={originalTicketData.title}
                         type="text"
                         name="title"
                         class="bg-smooth border-offset w-full appearance-none rounded-lg border p-2"
@@ -131,7 +135,9 @@
                         <div
                             class={classNames(
                                 'relative flex aspect-square w-full items-center justify-center rounded-[2px] border-black bg-black outline-2 outline-[var(--color-offset)] outline-dashed',
-                                sticker === null ? 'outline-white' : 'outline-[var(--color-offset)]'
+                                originalTicketData.sticker === null
+                                    ? 'outline-white'
+                                    : 'outline-[var(--color-offset)]'
                             )}
                         >
                             <input
@@ -139,7 +145,7 @@
                                 class="absolute inset-0 appearance-none border-none"
                                 name="sticker"
                                 value=""
-                                onclick={() => (sticker = null)}
+                                onclick={() => (originalTicketData.sticker = null)}
                             />
                             <div
                                 class="text-tertiary font-aeonik-fono tracking-loose text-micro bg-smooth flex size-[calc(100%_-_6px)] items-center justify-center rounded-[1px] p-1 uppercase"
@@ -152,7 +158,7 @@
                             <div
                                 class={classNames(
                                     'relative flex aspect-square w-full items-center justify-center rounded-sm bg-black outline-2 [outline-offset:-1px] transition outline-dashed',
-                                    sticker === i
+                                    originalTicketData.sticker === i
                                         ? 'outline-white'
                                         : 'outline-[var(--color-offset)]'
                                 )}
@@ -162,7 +168,7 @@
                                     class="absolute inset-0 appearance-none border-none"
                                     name="sticker"
                                     value={i}
-                                    onclick={() => (sticker = i)}
+                                    onclick={() => (originalTicketData.sticker = i)}
                                 />
                                 <div
                                     class="bg-smooth flex size-[calc(100%_-_6px)] items-center justify-center rounded-[1px] p-1"
@@ -173,33 +179,41 @@
                         {/each}
                     </div>
                 </div>
-                <button
-                    type="submit"
-                    class="web-button is-secondary w-full!"
-                    disabled={!modified || saving}
-                >
-                    {#if saving}
+                <Button type="submit" class="w-full!" variant="secondary">
+                    {#if formState.saving}
                         Saving
-                    {:else if saved}
+                    {:else if formState.saved}
                         Saved
                     {:else}
                         Save
                     {/if}
-                </button>
+                </Button>
             </form>
         </div>
         <div
             class="bg-smooth relative flex w-full flex-col items-center justify-center gap-8 rounded-xl p-4 outline-2 [outline-offset:-2px] outline-[var(--color-offset)] outline-dashed md:col-span-9 md:flex-row"
         >
             <div class="flex flex-col items-center gap-4 uppercase">
-                <TicketCard {...data.ticket} {name} title={derivedTitle} {editing} disableEffects />
+                <TicketCard
+                    {...data.ticket}
+                    name={originalTicketData.name}
+                    title={originalTicketData.title}
+                    editing={formState.editing}
+                    disableEffects
+                />
                 <span
                     class="font-aeonik-fono tracking-loose text-x-micro text-primary transition-opacity peer-hover:opacity-0"
                     >Front</span
                 >
             </div>
             <div class="flex flex-col items-center gap-4 uppercase">
-                <TicketCard {...data.ticket} {sticker} disableEffects flipped {stickerPack} />
+                <TicketCard
+                    {...data.ticket}
+                    sticker={updatedTicketData.sticker}
+                    disableEffects
+                    flipped
+                    {stickerPack}
+                />
                 <span
                     class="font-aeonik-fono tracking-loose text-x-micro text-primary transition duration-300 peer-hover:opacity-0 peer-hover:blur-sm"
                     >Back</span

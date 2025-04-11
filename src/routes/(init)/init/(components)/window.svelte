@@ -21,7 +21,8 @@
 >
     <div class="flex items-center justify-between px-1.5 pt-1 pb-2">
         {#if link}
-            <span class="font-aeonik-fono tracking-loose text-micro text-primary pl-2 uppercase"
+            <span
+                class="font-aeonik-fono tracking-loose text-micro text-primary flex pl-2 uppercase"
                 >{@render link()}</span
             >
         {:else}

@@ -16,6 +16,7 @@ export type IconType =
     | 'close'
     | 'command'
     | 'copy'
+    | 'customize'
     | 'daily-dev'
     | 'dark'
     | 'discord'
