@@ -198,6 +198,7 @@
                     {...data.ticket}
                     name={originalTicketData.name}
                     title={originalTicketData.title}
+                    sticker={originalTicketData.sticker}
                     editing={formState.editing}
                     disableEffects
                 />
