@@ -1,6 +1,6 @@
+import { error } from '@sveltejs/kit';
 import { OpenAPIV3 } from 'openapi-types';
 import { Platform, type ServiceValue } from './references';
-import { error } from '@sveltejs/kit';
 
 export type SDKMethod = {
     'rate-limit': number;
@@ -10,6 +10,7 @@ export type SDKMethod = {
     title: string;
     description: string;
     demo: string;
+    group: string;
     parameters: Array<{
         name: string;
         description: string;
@@ -34,6 +35,7 @@ type SDKMethodModel = {
 type AppwriteOperationObject = OpenAPIV3.OperationObject & {
     'x-appwrite': {
         method: string;
+        group: string;
         weight: number;
         cookies: boolean;
         type: string;
@@ -261,7 +263,7 @@ export async function getService(
         platform === Platform.ClientAndroidKotlin || platform === Platform.ServerKotlin;
     const isAndroid = isAndroidJava || isAndroidKotlin;
     const isAndroidServer = platform === Platform.ServerJava || platform === Platform.ServerKotlin;
-    const api = await getApi(version, platform);
+    const api = await getApi('latest', platform);
 
     const data: Awaited<ReturnType<typeof getService>> = {
         service: {
@@ -331,7 +333,8 @@ export async function getService(
 
         data.methods.push({
             id: operation['x-appwrite'].method,
-            demo: demo ?? '',
+            group: operation['x-appwrite'].group,
+            demo: typeof demo === 'string' ? demo : '',
             title: operation.summary ?? '',
             description: operation.description ?? '',
             parameters: parameters ?? [],
