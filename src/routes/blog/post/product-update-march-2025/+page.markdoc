@@ -3,7 +3,7 @@ layout: post
 title: "March product update: Product Hunt launch, Appwrite MCP server, and faster backups."
 description: Get a full recap of products, features and programs we released in the month of March.
 date: 2025-04-11
-cover: /images/blog/product-update-feb-2025/cover-image.png
+cover: /images/blog/product-update-march-2025/cover-image.png
 timeToRead: 10
 author: dennis-ivy
 category: product
@@ -11,63 +11,81 @@ featured: false
 callToAction: true
 ---
 
-Welcome back to the February product update. From shipping Appwrite 1.6.1 to upgrading our usage metrics system, we have some interesting things to share with you. Let’s dive in!
+Welcome back to the March product update. Here’s what happened the past month:
 
-![The Appwrite 1.6.1](/images/blog/product-update-feb-2025/new-version.png)
+- Launched the Appwrite MCP server
+- Key optimizations to Appwrite cloud backups
+- Update to budget limits in Appwrite Cloud
 
-# Appwrite 1.6.1 is now available
+Plus, we've got something exciting to share with you. Let’s dive in.
 
-We released Appwrite 1.6.1, packed with features, fixes and improvements to your Appwrite self-hosted instance.
+![Product Hunt announcement](/images/blog/product-update-march-2025/ph.png)
 
-Some of the notable updates include:
+# Big announcement coming soon
 
-- Improved compatibility for webp requests.
-- Additional function runtime versions such as Node 22, Dart 3.5, and Bun 1.1.
-- A real-time heartbeat to keep real-time connections alive.
+We’ve got a major announcement on the way. This time, we’re bringing the heat to Product Hunt. The Appwrite community is the first to know!
 
-These updates focus on performance, stability, and expanded functionality.
+Visit our ‘Coming Soon’ page and click Notify Me to get an email when we go live. We can't wait to share what we’ve been working on.
 
-[View the changelog](https://appwrite.io/changelog/entry/2025-02-06)
+[Coming soon](https://www.producthunt.com/products/appwrite)
 
-# Usage metrics system improvements
+![Appwrite MCP server](/images/blog/product-update-march-2025/mcp.png)
 
-We’ve improved the usage metric system to include OPTIONS requests and 4XX responses, which were previously omitted.
+# Appwrite MCP server
 
-So now you can have a clearer traffic overview, making it easy to track requests, identify issues, and optimize performance.
+Did you know that Appwrite has launched its own MCP server? This means you can now let AI agents like Cursor or Windsurf analyze database records, access the User API, or perform actions directly on your Appwrite project.
 
-[Learn more](https://appwrite.io/docs/advanced/platform/pro#check-resource-usage)
+Not sure where to start? No worries, we’ve got you covered.
 
-![Community recognitions](/images/blog/product-update-feb-2025/community.png)
+- [Appwrite MCP documentation](https://appwrite.io/docs/tooling/mcp)
+- [Appwrite MCP server practical applications](https://www.youtube.com/watch?v=83rNS6W2Nu8)
+- [Learn more about MCP and how it works under the hood](https://appwrite.io/blog/post/what-is-mcp)
+
+The Appwrite MCP server opens up infinite possibilities, and this is just the beginning. We can't wait to see how you’ll use it in your projects.
+
+![Cloud improvements](/images/blog/product-update-march-2025/cloud.png)
+
+# Appwrite Cloud backups are now faster
+
+Appwrite Cloud backups are now significantly faster. We’ve made key optimizations to our infrastructure, reducing backup times by up to 7x. With quicker data recovery and improved reliability, you can spend less time waiting and more time building.
+
+[Learn more](https://appwrite.io/changelog/entry/2025-03-27)
+
+# Update to budget limits in Appwrite Cloud
+
+We’ve improved budget limits in Appwrite Cloud to give you better control over your organization’s scaling.
+
+Now, setting the budget to 0 means your organization will not exceed its allocated resources, while null will explicitly disable the budget. This update ensures clearer budget management and better control over scaling.
+
+[Learn more](https://appwrite.io/changelog/entry/2025-03-19)
+
+![Community recognitions](/images/blog/product-update-march-2025/community.png)
 
 # Community recognitions
 
-We’re excited to feature Anvos by ReveredInsan this month as part of our Monthly Community Recognitions.
+This month, we’re excited to feature Geohash as part of our Monthly Community recognitions.
 
-Anvos enables AI agents to interact with your platform through direct workflow access, eliminating unreliable UI automation.
+The Geohash application demonstrates how to implement geolocation-based user search with Appwrite.
 
-A big shout-out to [ReveredInsan](https://x.com/kanlanc). Check out their product, Anvos, [here](https://www.anvos.io/).
+A big shout-out to [Clément](https://github.com/clementg13). Check out their product, Geohash, [here](https://github.com/clementg13/Appwrite-Nearby-GeoLocation).
 
 If you'd like to participate in next month's Community Recognitions, [join our Discord server](https://appwrite.io/discord) to showcase your project.
 
 # Engineering resources
 
 **Read** 
-- [Customer story: StoreAlert](https://appwrite.io/blog/post/customer-story-storealert)
-- [Setting up route protection in React Native](https://appwrite.io/blog/post/setting-up-route-protection-in-react-native)
-- [Self-hosting Appwrite with Coolify](https://appwrite.io/blog/post/self-hosting-appwrite-with-coolify)
-
-**Build**  
-- [React Native Authentication with Expo Router](https://www.youtube.com/watch?v=JUU_XzdbzN0)
-- [Add phone Authentication to any app](https://www.youtube.com/watch?v=5YRct08TI8A)
-- [Adding magic link auth shouldn’t be hard](https://www.youtube.com/watch?v=mqgNmx9YE5w)
-- [Building a Full-Stack SuperBowl Web App with Vanilla JS and Appwrite](https://medium.com/@bgw26/building-a-full-stack-superbowl-web-app-with-vanilla-js-and-appwrite-authentication-storage-and-4a36ea642d38)
+- [Lynx by ByteDance vs React Native](https://appwrite.io/blog/post/bytedance-lynx-vs-react-native)
+- [What exactly is MCP, and why is it trending?](https://appwrite.io/blog/post/what-is-mcp)
+- [Image transformation with Appwrite Storage](https://appwrite.io/blog/post/image-transformation-with-appwrite-storage)
+- [Building a backendless application with Angular and Appwrite](https://angular.love/building-a-backendless-application-with-angular-appwrite)
 
 **Watch**  
-- [React Native crash course](https://youtu.be/bCpFbERgj7s?feature=shared)
-
+- [Appwrite vs Supabase performance results](https://youtu.be/zWLfLxq2Ws4?si=7NaoZPb-JbDpNVfG)
+- [Appwrite MCP server practical examples](https://youtu.be/83rNS6W2Nu8?si=gJUMP4VisK_kG0nE)
+- [Appwrite MCP server setup with Cursor](https://www.youtube.com/watch?v=Qzikjm5H7wM)
 
 # What's to come
 
-That’s a wrap! February was a short month, but we will be back with a lot of great updates in the coming weeks!
+That’s a wrap for March. We have a lot to come in the coming weeks, starting with new Cloud regions!
 
 Follow us on [X](https://x.com/appwrite) and check our [Changelog](https://appwrite.io/changelog) regularly, as we will release more information in the coming weeks.
