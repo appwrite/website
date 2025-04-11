@@ -13,7 +13,7 @@
 
 <div
     class={classNames(
-        'relative md:col-span-[var(--column)] md:col-start-[var(--col-start)] md:row-span-[var(--row)]',
+        'relative md:col-span-(--column) md:col-start-(--col-start) md:row-span-(--row)',
         className
     )}
     style:--row={row}

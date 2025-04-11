@@ -9,6 +9,12 @@
         index: number;
         lat: number;
         lng: number;
+        bounds: {
+            north: number;
+            south: number;
+            west: number;
+            east: number;
+        };
         available?: boolean;
         class?: string;
         animate?: boolean;
@@ -22,6 +28,7 @@
         index = 0,
         lat,
         lng,
+        bounds,
         available = false,
         class: className = '',
         animate = false,
@@ -39,9 +46,8 @@
         }
     });
 
-    // Calculate x and y based on lat/lng
-    const x = $derived(((lng + 180) / 360) * 100);
-    const y = $derived((-(lat - 90) / 180) * 100);
+    const x = $derived(((lng - bounds.west) / (bounds.east - bounds.west)) * 100);
+    const y = $derived(((bounds.north - lat) / (bounds.north - bounds.south)) * 100);
 </script>
 
 <Tooltip.Root bind:open>
@@ -96,6 +102,6 @@
         style="left:{x}%; top:calc({y}% + 12px); transform: translateX(-50%);"
     >
         <div>Lat: {lat.toFixed(2)}, Lng: {lng.toFixed(2)}</div>
-        <div>Position: {x}%, {y}%</div>
+        <div>Position: {x.toFixed(2)}%, {y.toFixed(2)}%</div>
     </div>
 {/if}

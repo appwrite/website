@@ -8,6 +8,25 @@
 
     const showDebugInfo = false;
 
+    const MAP_BOUNDS = {
+        west: -220, // Left edge of map (Pacific Ocean)
+        east: 180, // Right edge of map (Pacific Ocean)
+        north: 70, // Top edge of map (Arctic)
+        south: -55 // Bottom edge of map (Antarctica)
+    };
+
+    const MAP_WIDTH = 1111;
+    const MAP_HEIGHT = 336;
+
+    // Function to convert lat/long to x/y coordinates on the map
+    function latLngToPoint(lat: number, lng: number): { x: number; y: number } {
+        // Simple equirectangular projection
+        const x = ((lng - MAP_BOUNDS.west) / (MAP_BOUNDS.east - MAP_BOUNDS.west)) * MAP_WIDTH;
+        const y = ((MAP_BOUNDS.north - lat) / (MAP_BOUNDS.north - MAP_BOUNDS.south)) * MAP_HEIGHT;
+
+        return { x, y };
+    }
+
     const pins = $state({
         'pop-locations': [
             {
@@ -88,13 +107,12 @@
     let hasActiveMarker = $state(false);
     let activeMarker: HTMLElement | null = null;
 
-    let activeSegment = $state<string>('pop-locations');
+    let activeSegment = $state<string>('regions');
 
     $effect(() => {
         console.log(pins[activeSegment as PinSegment]);
     });
 
-    // Actions
     const useMousePosition = (node: HTMLElement) => {
         const handleMouseMove = (event: MouseEvent) => {
             mouse = {
@@ -128,7 +146,6 @@
         );
     };
 
-    // Scroll marker into view and observe intersection
     const scrollMarkerIntoView = (marker: HTMLElement): Promise<void> => {
         return new Promise<void>((resolve) => {
             marker.scrollIntoView({
@@ -219,17 +236,12 @@
 
             <img src="/images/regions/map.svg" class="opacity-10" alt="Map of the world" />
 
-            <div class="absolute inset-0 flex w-full">
-                <Tooltip.Provider
-                    delayDuration={0}
-                    skipDelayDuration={500}
-                    disableCloseOnTriggerClick
-                >
-                    {#each pins[activeSegment as PinSegment].map( (pin) => ({ ...pin, isOpen: activeRegion === slugify(pin.city) }) ) as pin, index}
-                        <MapMarker {...pin} {animate} {index} {showDebugInfo} />
-                    {/each}
-                </Tooltip.Provider>
-            </div>
+            <Tooltip.Provider delayDuration={0} skipDelayDuration={500} disableCloseOnTriggerClick>
+                {#each pins[activeSegment as PinSegment].map( (pin) => ({ ...pin, isOpen: activeRegion === slugify(pin.city), position:  // Calculate x/y position from lat/lng
+                        latLngToPoint(pin.lat, pin.lng) }) ) as pin, index}
+                    <MapMarker {...pin} {animate} {index} bounds={MAP_BOUNDS} {showDebugInfo} />
+                {/each}
+            </Tooltip.Provider>
         </div>
     </div>
 </div>

@@ -58,13 +58,13 @@
                         {#each lines as line}
                             <div
                                 class={classNames(
-                                    'animate-drop h-[var(--height)] w-px bg-gradient-to-t to-transparent',
+                                    'animate-drop h-(--height) w-px bg-gradient-to-t to-transparent',
                                     line.from
                                 )}
                                 style:--speed="2s"
                                 style:animation-delay="{Math.random() * 2}s"
                                 style:--height="{line.height}px"
-                            />
+                            ></div>
                         {/each}
                     </div>
                 </Cell>
