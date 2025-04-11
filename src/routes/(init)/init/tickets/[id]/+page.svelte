@@ -50,7 +50,7 @@
             class="border-offset divide-offset grid place-items-center divide-y-2 divide-dashed border-r-2 border-l-2 border-dashed md:col-span-6 md:border-r-0"
         >
             <div class="row-span-2 h-full w-full px-8" />
-            <div class="row-span-8 flex h-full w-full items-center py-6 px-8 md:px-12">
+            <div class="row-span-8 flex h-full w-full items-center px-8 py-6 md:px-12">
                 <div class="flex flex-1 flex-col gap-2">
                     <h2 class="text-display font-aeonik-pro text-primary">
                         {#if data.isCurrentUsersTicket}

@@ -24,7 +24,7 @@
     </svg>
 
     <span
-        class="mask line-clamp-1 text-ellipsis px-2"
+        class="mask line-clamp-1 px-2 text-ellipsis"
         style:--mask-direction="left"
         style:--mask-height="100px"
     >

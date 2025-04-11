@@ -253,7 +253,7 @@
     </div>
     <div
         class={classNames(
-            'bg-offset text-primary text-caption pointer-events-none absolute flex items-center gap-1 rounded-md py-0.5 px-3 font-medium opacity-0 backdrop-blur-2xl transition-opacity group-hover:opacity-100',
+            'bg-offset text-primary text-caption pointer-events-none absolute flex items-center gap-1 rounded-md px-3 py-0.5 font-medium opacity-0 backdrop-blur-2xl transition-opacity group-hover:opacity-100',
             {
                 hidden: disableEffects
             }

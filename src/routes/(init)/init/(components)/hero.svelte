@@ -19,7 +19,7 @@
 
 <div
     class={classNames(
-        'container relative -mb-10 flex min-h-[50vh] w-full flex-col items-center justify-center gap-8 py-20 px-0 md:min-h-[80vh]',
+        'relative container -mb-10 flex min-h-[50vh] w-full flex-col items-center justify-center gap-8 px-0 py-20 md:min-h-[80vh]',
         'before:border-offset before:absolute before:inset-0 before:z-0 before:border-r-2 before:border-l-2 before:border-dashed',
         'before:[mask-image:linear-gradient(to_top,transparent,black_150px,black_calc(100%_-_150px),black)]'
     )}

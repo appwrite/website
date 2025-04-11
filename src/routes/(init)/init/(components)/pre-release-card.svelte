@@ -29,7 +29,7 @@
             )}
         >
             <div
-                class="font-aeonik-fono text-primary relative flex items-center rounded-full bg-black py-1.5 px-4 text-center text-xl uppercase outline-2 outline-[var(--color-offset)] outline-dashed"
+                class="font-aeonik-fono text-primary relative flex items-center rounded-full bg-black px-4 py-1.5 text-center text-xl uppercase outline-2 outline-[var(--color-offset)] outline-dashed"
             >
                 {#if $hours > 24}
                     <p>

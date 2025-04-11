@@ -8,12 +8,12 @@
 
 <div
     class={classNames(
-        'bg-smooth container relative z-10 mx-auto flex flex-col rounded-2xl p-1 backdrop-blur-2xl',
+        'bg-smooth relative z-10 container mx-auto flex flex-col rounded-2xl p-1 backdrop-blur-2xl',
         'before:absolute before:inset-x-0 before:top-0 before:h-px before:bg-linear-to-r before:from-transparent before:via-white/30 before:to-transparent',
         className
     )}
 >
-    <div class="flex items-center justify-between pt-1 px-1.5 pb-2">
+    <div class="flex items-center justify-between px-1.5 pt-1 pb-2">
         {#if $$slots.link}
             <span class="font-aeonik-fono tracking-loose text-micro text-primary pl-2 uppercase"
                 ><slot name="link" /></span

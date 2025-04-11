@@ -29,12 +29,12 @@
 
     <div>
         {#if $open}
-            <div use:melt={$content} transition:slide class="py-3 px-4">
+            <div use:melt={$content} transition:slide class="px-4 py-3">
                 <div class="flex flex-col gap-2">
                     {#each products as product}
                         <a
                             href={product.href}
-                            class="group flex gap-3 rounded-xl p-2 text-white outline-none transition-colors focus:bg-white/8"
+                            class="group flex gap-3 rounded-xl p-2 text-white transition-colors outline-none focus:bg-white/8"
                         >
                             <div
                                 class="flex size-12 shrink-0 items-center justify-center rounded-lg border border-white/12 bg-white/6"
@@ -51,7 +51,7 @@
 
                                     {#if product.beta}
                                         <span
-                                            class="text-caption bg-accent/24 ml-1 rounded py-1 px-2 font-medium text-white"
+                                            class="text-caption bg-accent/24 ml-1 rounded px-2 py-1 font-medium text-white"
                                             >Coming soon</span
                                         >
                                     {/if}

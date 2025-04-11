@@ -68,7 +68,7 @@
                     class="bg-smooth relative grid grid-cols-1 place-items-center justify-between px-4 md:min-h-[50vh] md:grid-cols-12"
                 >
                     <div
-                        class="border-offset relative z-10 col-span-5 flex h-full flex-col justify-center gap-4 border-x-2 border-none py-8 px-4 md:border-dashed md:p-8"
+                        class="border-offset relative z-10 col-span-5 flex h-full flex-col justify-center gap-4 border-x-2 border-none px-4 py-8 md:border-dashed md:p-8"
                     >
                         <h2 class="text-display font-aeonik-pro text-primary">
                             {title}<span class="text-accent">_</span>
@@ -109,13 +109,13 @@
                             <a href={url} class="group block cursor-pointer">
                                 <div
                                     class={classNames(
-                                        'bg-smooth group-hover:bg-offset relative mx-4 -mb-0.5 flex flex-col justify-between py-4 px-4 transition md:mx-8 md:flex-row',
+                                        'bg-smooth group-hover:bg-offset relative mx-4 -mb-0.5 flex flex-col justify-between px-4 py-4 transition md:mx-8 md:flex-row',
                                         'before:border-offset before:absolute before:inset-y-0 before:left-0 before:-mr-px before:block before:w-0.5 before:border-l-2 before:border-dashed',
                                         'after:border-offset after:absolute after:inset-y-0 after:right-0 after:-ml-px after:block after:w-0.5 after:border-r-2 after:border-dashed'
                                     )}
                                 >
                                     <div class="text-primary flex flex-col gap-4 md:flex-row">
-                                        <span class="bg-smooth w-fit rounded-[4px] py-0.5 px-2"
+                                        <span class="bg-smooth w-fit rounded-[4px] px-2 py-0.5"
                                             >{type}</span
                                         >
                                         <span class="font-aeonik-pro text-label">{title}</span>
