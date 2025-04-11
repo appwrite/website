@@ -19,12 +19,6 @@
     const title = 'Appwrite - Backend APIs, Frontend hosting';
     const description = DEFAULT_DESCRIPTION;
     const ogImage = `${DEFAULT_HOST}/images/open-graph/website.png`;
-
-    let mountedCount = $state(0);
-
-    $effect(() => {
-        mountedCount++;
-    });
 </script>
 
 <svelte:head>
@@ -43,19 +37,16 @@
     <meta name="twitter:image" content={ogImage} />
     <meta name="twitter:card" content="summary_large_image" />
 
-    <!-- eslint-disable-next-line svelte/no-at-html-tags-->
     {@html getInlinedScriptTag(softwareAppSchema())}
-
-    <!-- eslint-disable-next-line svelte/no-at-html-tags-->
     {@html getInlinedScriptTag(organizationJsonSchema())}
 </svelte:head>
 
 <Hero />
 <Platforms />
 <Bento />
-<CaseStudies />
+<!-- <CaseStudies />
 <Features />
 <NetworkMap />
 <Templates />
-<Scale />
+<Scale /> -->
 <Pricing />

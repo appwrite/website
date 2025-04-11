@@ -1,9 +1,11 @@
 <script lang="ts">
+    import { Button } from '$lib/components/ui';
+
     const plans: Array<{
         name: string;
         price: string;
         description: string;
-        label?: string;
+        tag?: string;
         subtitle?: string;
     }> = [
         {
@@ -14,7 +16,7 @@
         {
             name: 'Pro',
             price: '$15',
-            label: 'Popular',
+            tag: 'Popular',
             description: 'For pro developers and teams that need to scale their products.',
             subtitle: 'per member/month'
         },
@@ -37,26 +39,25 @@
     <div class="container flex w-full flex-col items-center justify-center gap-10">
         <div
             class="gradient-background absolute bottom-0 left-0 z-0 h-screen w-full -translate-x-[25%] translate-y-8 rotate-25 overflow-hidden blur-3xl"
-            style:--speed="500ms"
-        />
+        ></div>
 
         <div
             class="animate-fade-in relative flex w-full flex-col items-center justify-between gap-8 [animation-delay:150ms] [animation-duration:1000ms] md:flex-row"
         >
-            <h2 class="text-sub-display text-primary font-aeonik-pro max-w-xl text-pretty">
+            <h2 class="text-title text-primary font-aeonik-pro max-w-xl text-pretty">
                 Start building like a team of hundreds today<span class="text-accent">_</span>
             </h2>
 
             <div class="flex gap-4">
-                <a href="/" class="web-button">Get started</a>
-                <a href="/" class="web-button is-secondary">View pricing plans</a>
+                <Button href="/">Get started</Button>
+                <Button href="/" variant="secondary">View pricing plans</Button>
             </div>
         </div>
 
         <div
-            class="border-smooth divide-smooth grid w-full grid-cols-1 place-content-center place-items-center gap-8 divide-x divide-dashed rounded-xl border bg-white/2 py-10 backdrop-blur-lg md:grid-cols-2 lg:grid-cols-4"
+            class="border-gradient divide-smooth grid w-full grid-cols-1 place-content-center place-items-center gap-8 divide-x divide-dashed rounded-xl bg-white/2 px-4 py-10 backdrop-blur-lg before:rounded-xl after:rounded-xl md:grid-cols-2 lg:grid-cols-4"
         >
-            {#each plans as { name, price, label, subtitle, description }}
+            {#each plans as { name, price, tag: label, subtitle, description }}
                 <div class="flex min-h-40 w-full flex-col gap-1 px-4">
                     <div class="flex items-center gap-4">
                         <span class="text-description text-secondary">{name}</span>

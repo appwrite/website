@@ -1,6 +1,5 @@
 <script lang="ts">
-    import { onMount } from 'svelte';
-    import { animate, hover, inView, type AnimationSequence } from 'motion';
+    import { hover, inView } from 'motion';
 
     import Python from '../../../(assets)/icons/python.svg';
     import Node from '../../../(assets)/icons/node.svg';
@@ -17,8 +16,8 @@
     import Net from '../../../(assets)/icons/net.svg';
     import Go from '../../../(assets)/icons/go.svg';
     import React from '../../../(assets)/icons/react.svg';
-    import { isMobile } from '$lib/utils/is-mobile';
     import GridPaper from '../../grid-paper.svelte';
+    import { isMobile } from '$lib/utils/is-mobile';
 
     const platforms = [
         Python,
@@ -38,7 +37,7 @@
         React
     ];
 
-    let commands = [
+    const commands = [
         'GenerateReport',
         'SendEmail',
         'UpdateProfile',
@@ -46,116 +45,64 @@
         'CreateInvoice'
     ];
 
-    let activeCommand: number | null = null;
-
-    const seededShuffle = <T,>(array: T[], seed: number) => {
-        const shuffledArray = [...array];
-
-        const random = (seed: number) => {
-            const x = Math.sin(seed) * 10000;
-            return x - Math.floor(x);
-        };
-
-        for (let i = shuffledArray.length - 1; i > 0; i--) {
-            const j = Math.floor(random(seed + i) * (i + 1));
-            [shuffledArray[i], shuffledArray[j]] = [shuffledArray[j], shuffledArray[i]];
-        }
-
-        return shuffledArray;
-    };
-
     let container: HTMLElement;
+    let step: number = $state(0);
 
-    const marqueeCount: number = 3;
-    let marqueeRefs: Array<HTMLElement> = Array.from({ length: marqueeCount });
+    const FunctionsState = {
+        Stale: 0,
+        Generate: 1,
+        Send: 2,
+        Update: 3,
+        Delete: 4,
+        Create: 5
+    } as const;
 
-    let commandElement: HTMLElement;
-
-    onMount(() => {
-        const platformsTo: AnimationSequence = [];
-
-        for (let marqueeIndex = 0; marqueeIndex < marqueeCount; marqueeIndex++) {
-            const isMiddleMarquee = marqueeIndex === 1;
-            const direction = isMiddleMarquee ? 1 : -1;
-
-            Array.from({ length: platforms.length + 1 }).forEach((_, index) => {
-                const yValue = `${(direction * (index * 50)) / platforms.length}%`;
-
-                platformsTo.push([
-                    marqueeRefs[marqueeIndex],
-                    { y: yValue },
-                    {
-                        at: index + 0.25,
-                        type: 'spring',
-                        duration: 0.5
-                    }
-                ]);
-            });
+    $effect(() => {
+        let timeout: NodeJS.Timeout;
+        switch (step) {
+            case FunctionsState.Stale:
+                console.log('stale');
+                timeout = setTimeout(() => {
+                    step = FunctionsState.Generate;
+                }, 3000);
+                return () => clearTimeout(timeout);
+            case FunctionsState.Generate:
+                console.log('generate');
+                timeout = setTimeout(() => {
+                    step = FunctionsState.Send;
+                }, 3000);
+                return () => clearTimeout(timeout);
+            case FunctionsState.Send:
+                console.log('send');
+                timeout = setTimeout(() => {
+                    step = FunctionsState.Update;
+                }, 3000);
+                return () => clearTimeout(timeout);
+            case FunctionsState.Update:
+                console.log('update');
+                timeout = setTimeout(() => {
+                    step = FunctionsState.Delete;
+                }, 3000);
+                return () => clearTimeout(timeout);
+            case FunctionsState.Delete:
+                console.log('delete');
+                timeout = setTimeout(() => {
+                    step = FunctionsState.Create;
+                }, 3000);
+                return () => clearTimeout(timeout);
+            case FunctionsState.Create:
+                console.log('create');
+                timeout = setTimeout(() => {
+                    step = FunctionsState.Stale;
+                }, 3000);
+                return () => clearTimeout(timeout);
+            default:
+                console.log('stale');
+                timeout = setTimeout(() => {
+                    step = FunctionsState.Generate;
+                }, 3000);
+                return () => clearTimeout(timeout);
         }
-
-        const commandsTo: AnimationSequence = [];
-
-        Array.from({ length: commands.length + 1 }).forEach((_, index) => {
-            const yValue = `-${(index * 50) / commands.length}%`;
-            commandsTo.push([
-                commandElement,
-                { y: yValue },
-                { at: index, type: 'spring', duration: 0.5 }
-            ]);
-
-            const centerItemIndex = index + 2;
-
-            if (index < commands.length) {
-                const commandItemElements = document.querySelectorAll('.command-item');
-
-                commandsTo.push([
-                    commandItemElements[centerItemIndex],
-                    {
-                        backgroundPosition: ['0% center', '100% center']
-                    },
-                    { at: index + 0.4, duration: 0.8, ease: 'backOut' }
-                ]);
-
-                commandsTo.push([
-                    commandItemElements[centerItemIndex],
-                    {
-                        backgroundColor: 'rgba(0,0,0,0)',
-                        boxShadow: 'none'
-                    },
-                    { at: index + 1, duration: 0.3, ease: 'easeOut' }
-                ]);
-            }
-        });
-
-        hover(container, () => {
-            const interval = setInterval(
-                () => {
-                    activeCommand = activeCommand ? (activeCommand + 1) % commands.length : 3;
-                },
-                2000 + commands.length * 100
-            );
-
-            const platformsAnimation = animate(platformsTo, {
-                repeat: Infinity,
-                repeatType: 'loop',
-                repeatDelay: 0,
-                duration: platforms.length * 2.5
-            });
-
-            const commandAnimation = animate(commandsTo, {
-                repeat: Infinity,
-                repeatType: 'loop',
-                repeatDelay: 0,
-                duration: commands.length * 2.5
-            });
-
-            return () => {
-                activeCommand = null;
-                clearInterval(interval);
-                platformsAnimation.pause();
-                commandAnimation.pause();
-            };
-        });
     });
 </script>
 
@@ -179,16 +126,12 @@
         </p>
     </div>
     <div
-        class="relative flex h-[26.25rem] items-center justify-between overflow-clip rounded-xl bg-black/24 px-8"
+        class="relative flex h-105 items-center justify-between overflow-clip rounded-xl bg-black/24 px-8"
     >
         <div
             class="flex flex-1 flex-col items-center gap-3 overflow-clip mask-t-from-0% mask-t-to-5% mask-linear-180 mask-alpha text-center"
-            style:max-height={`calc(${platforms.length} * var(--spacing-4))`}
         >
-            <div
-                class="flex h-[max-content] flex-col items-center gap-3 pt-3"
-                bind:this={commandElement}
-            >
+            <div class="flex h-max flex-col items-center gap-3 pt-3">
                 {#each Array.from({ length: 2 }) as _, index}
                     {#each commands as command, i}
                         <div
@@ -209,11 +152,11 @@
         <div
             class="relative flex h-full gap-4 overflow-clip [mask-image:linear-gradient(to_top,rgba(0,0,0,0)_0%,_rgba(255,255,255,1)_50%,_rgba(0,0,0,0)_100%)] [mask-mode:alpha]"
         >
-            {#each Array.from({ length: marqueeCount }) as _, i}
-                {@const shuffledPlatforms = seededShuffle(platforms, i * i)}
-                <div class="flex h-[max-content] flex-col gap-3 pt-3" bind:this={marqueeRefs[i]}>
+            {#each Array.from({ length: 3 }) as _, i}
+                <div class="flex h-max flex-col gap-3 pt-3">
                     {#each Array.from({ length: 2 }) as _, index}
-                        {#each shuffledPlatforms as platform}
+                        {@const platformShuffled = i === 1 ? platforms.reverse() : platforms}
+                        {#each platformShuffled as platform}
                             <div
                                 class="flex size-16 shrink-0 items-center justify-center rounded-xl bg-[#232325]/90"
                                 aria-hidden={index !== 0}

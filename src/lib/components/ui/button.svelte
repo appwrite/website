@@ -42,6 +42,7 @@
         children,
         class: classes,
         events,
+        type,
         ...rest
     }: Props = $props();
 
