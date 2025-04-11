@@ -1,13 +1,12 @@
 <script lang="ts">
     import NumberFlow, { type Format } from '@number-flow/svelte';
 
-    type $$Props = {
+    interface Props {
         value: number;
         format?: Format;
-    };
+    }
 
-    export let value: $$Props['value'] = 0;
-    export let format: $$Props['format'] = { notation: 'compact', minimumIntegerDigits: 2 };
+    let { value = 0, format = { notation: 'compact', minimumIntegerDigits: 2 } }: Props = $props();
 </script>
 
 <NumberFlow class="text-center" {format} {value} />

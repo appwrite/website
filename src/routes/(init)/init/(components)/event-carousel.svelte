@@ -1,6 +1,7 @@
 <script lang="ts">
     import embla from 'embla-carousel-svelte';
     import type { EmblaCarouselType, EmblaOptionsType, EmblaPluginType } from 'embla-carousel';
+    import { Button, Icon } from '$lib/components/ui';
 
     let emblaApi: EmblaCarouselType;
 
@@ -45,20 +46,20 @@
     <div class="container flex w-full items-center justify-between">
         <h2 class="font-aeonik-pro text-primary text-label">Upcoming Events</h2>
         <nav class="flex gap-1">
-            <button
+            <Button
                 class="bg-smooth size-8 cursor-pointer rounded-xl transition active:scale-95"
-                on:click={onPrev}
+                onclick={onPrev}
                 disabled={!hasPrev}
             >
-                <span class="web-icon-arrow-left" aria-hidden="true"></span>
-            </button>
-            <button
+                <Icon name="arrow-left" aria-hidden="true"></Icon>
+            </Button>
+            <Button
                 class="bg-smooth size-8 cursor-pointer rounded-xl transition active:scale-95"
-                on:click={onNext}
+                onclick={onNext}
                 disabled={!hasNext}
             >
-                <span class="web-icon-arrow-right" aria-hidden="true"></span>
-            </button>
+                <Icon name="arrow-right" aria-hidden="true"></Icon>
+            </Button>
         </nav>
     </div>
 
@@ -72,7 +73,7 @@
                 {#each Array.from({ length: 8 }) as _}
                     <div
                         class="embla__slide bg-card/90 mr-4 h-[180px] min-w-0 [flex:0_0_33%] rounded-lg"
-                    />
+                    ></div>
                 {/each}
             </div>
         </div>

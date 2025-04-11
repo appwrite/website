@@ -5,23 +5,24 @@
     import Counter from './counter.svelte';
     import { format } from 'date-fns';
 
-    type $$Props = {
+    interface Props {
         release: Date;
         index: number;
-    };
+    }
 
-    export let release: $$Props['release'];
-    export let index: $$Props['index'];
+    let { release, index }: Props = $props();
 
     const { days, hours, minutes, seconds } = createCountdown(release);
 </script>
 
 <div class="relative h-fit pb-8">
     <Window class="aspect-[4/1]">
-        <div slot="title" class="text-micro flex items-center gap-1 text-white">
-            Day {index} <span class="text-accent">/</span>
-            {format(release, 'MMM-dd-yyyy')}
-        </div>
+        {#snippet title()}
+            <div class="text-micro flex items-center gap-1 text-white">
+                Day {index} <span class="text-accent">/</span>
+                {format(release, 'MMM-dd-yyyy')}
+            </div>
+        {/snippet}
 
         <div
             class={classNames(

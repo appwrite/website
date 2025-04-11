@@ -1,9 +1,15 @@
 <script lang="ts">
     import { classNames } from '$lib/utils/classnames';
+    import type { Snippet } from 'svelte';
 
-    let className: string = '';
+    interface Props {
+        class?: string;
+        link?: Snippet;
+        title?: Snippet;
+        children: Snippet;
+    }
 
-    export { className as class };
+    let { class: className = '', link, title, children }: Props = $props();
 </script>
 
 <div
@@ -14,9 +20,9 @@
     )}
 >
     <div class="flex items-center justify-between px-1.5 pt-1 pb-2">
-        {#if $$slots.link}
+        {#if link}
             <span class="font-aeonik-fono tracking-loose text-micro text-primary pl-2 uppercase"
-                ><slot name="link" /></span
+                >{@render link()}</span
             >
         {:else}
             <svg
@@ -35,10 +41,12 @@
             </svg>
         {/if}
 
-        <span
-            class="font-aeonik-fono tracking-loose text-micro text-primary mx-auto block text-center uppercase"
-            ><slot name="title" /></span
-        >
+        {#if title}
+            <span
+                class="font-aeonik-fono tracking-loose text-micro text-primary mx-auto block text-center uppercase"
+                >{@render title()}</span
+            >
+        {/if}
 
         <svg
             width="20"
@@ -66,5 +74,5 @@
         </svg>
     </div>
 
-    <slot />
+    {@render children()}
 </div>

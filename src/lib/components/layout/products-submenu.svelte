@@ -72,6 +72,7 @@
     import { classNames } from '$lib/utils/classnames';
     import { createDropdownMenu, melt } from '@melt-ui/svelte';
     import { trackEvent } from '$lib/actions/analytics';
+    import { Icon } from '$lib/components/ui';
 
     const {
         elements: { trigger, menu, item, overlay },
@@ -98,7 +99,7 @@
         class={classNames('web-icon-chevron-down block transition-transform', {
             'rotate-180': $open
         })}
-    />
+    ></span>
 </button>
 
 <div
@@ -168,10 +169,8 @@
                             class="font-aeonik-fono tracking-loose text-secondary block text-xs uppercase"
                             >Customer stories<span class="text-accent">_</span></span
                         >
-                        <a
-                            href="/blog/category/case-studies"
-                            class="text-primary text-caption flex items-center gap-2"
-                            >See more <span class="web-icon-chevron-right" /></a
+                        <button class="text-primary text-caption flex items-center gap-2"
+                            >See more <Icon name="chevron-right" /></button
                         >
                     </header>
 
@@ -198,7 +197,8 @@
                                     href={sublink.href}
                                     class="text-caption text-primary flex items-center gap-2"
                                 >
-                                    {sublink.label} <span class="web-icon-chevron-right" />
+                                    {sublink.label}
+                                    <Icon name="chevron-right" />
                                 </a>
                             {/each}
                         </div>
@@ -210,5 +210,5 @@
     <div
         use:melt={$overlay}
         class="data-[state=closed]:animate-fade-out fixed inset-0 bg-black/60"
-    />
+    ></div>
 </div>

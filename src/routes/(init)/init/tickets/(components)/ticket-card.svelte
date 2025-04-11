@@ -1,21 +1,16 @@
+<!-- @migration-task Error while migrating Svelte code: Encountered an export declaration pattern that is not supported for automigration. -->
 <script lang="ts">
     import { classNames } from '$lib/utils/classnames';
     import Lockup from '../../(components)/lockup.svelte';
     import type { ContributionsMatrix } from '../../(utils)/contributions';
     import type { TicketData } from '../../(utils)/tickets';
-    import { spring } from 'svelte/motion';
+    import { Spring } from 'svelte/motion';
     import TicketUrl from './ticket-url.svelte';
     import { initDates } from '../../+page.svelte';
 
-    let coords = spring(
-        { x: 0, y: 0 },
-        {
-            stiffness: 0.05,
-            damping: 0.25
-        }
-    );
+    let coords = $state({ x: 0, y: 0 });
 
-    type $$Props = Omit<TicketData, 'contributions'> & {
+    type Props = Omit<TicketData, 'contributions'> & {
         disableEffects?: boolean;
         flipped?: boolean;
         stickerPack?: string[];
@@ -24,7 +19,7 @@
         contributions?: NonNullable<Awaited<Promise<ContributionsMatrix>>>[number];
     };
 
-    export let {
+    let {
         name,
         id,
         title,
@@ -36,7 +31,7 @@
         sticker,
         stickerPack,
         ...props
-    } = $$props as $$Props;
+    }: Props = $props();
 
     const firstName = name?.split(' ')[0];
 
@@ -66,7 +61,7 @@
             const leftX = mouseX - bounds.x;
             const topY = mouseY - bounds.y;
 
-            coords.set({ x: leftX, y: topY });
+            coords = { x: leftX, y: topY };
 
             const center: CenterPoint = {
                 x: leftX - bounds.width / 2,
@@ -122,7 +117,7 @@
     class={classNames('group peer relative perspective-[1500px]', {
         'hover:cursor-none': !disableEffects
     })}
-    on:click={handleFlip}
+    onclick={handleFlip}
 >
     <div use:tilt class="size-full rounded-2xl transition-all duration-300 ease-out">
         <div
@@ -185,7 +180,7 @@
 
                     <div
                         class="absolute inset-0 top-0 min-h-full w-full bg-[radial-gradient(rgba(255,255,255,0.24)_1px,transparent_1px)] [background-size:60px_60px]"
-                    />
+                    ></div>
                 </div>
             </div>
             <!-- back of the ticket -->
@@ -237,7 +232,7 @@
                                                     'opacity-80': level === 4
                                                 }
                                             )}
-                                        />
+                                        ></div>
                                     </div>
                                 {/each}
                             </div>
@@ -248,7 +243,7 @@
             <!-- that sweet sweet glow-->
             <div
                 class="glow pointer-events-none absolute inset-0 z-10 overflow-hidden rounded-2xl"
-            />
+            ></div>
         </div>
     </div>
     <div
@@ -258,8 +253,8 @@
                 hidden: disableEffects
             }
         )}
-        style:left="{$coords.x}px"
-        style:top="{$coords.y}px"
+        style:left="{coords.x}px"
+        style:top="{coords.y}px"
     >
         <svg
             width="20"

@@ -4,10 +4,15 @@
     import PlayIcon from '../(assets)/icons/play.svg';
     import Poster from '../(assets)/poster.png';
     import VideoDialog from '$lib/components/shared/video-dialog.svelte';
+    interface Props {
+        [key: string]: any;
+    }
+
+    let { ...props }: Props = $props();
 
     type $$Props = NonNullable<DayProps['links']>[number];
 
-    let { title, poster, type, url } = $$props as $$Props;
+    let { title, poster, type, url } = props as $$Props;
 
     const icon = type === 'discord' ? DiscordIcon : PlayIcon;
 </script>

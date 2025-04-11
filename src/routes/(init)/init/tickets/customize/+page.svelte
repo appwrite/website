@@ -1,4 +1,4 @@
-<script lang="ts" context="module">
+<script lang="ts" module>
     export const stickerPack = [Sites, Flutter, Templates, Formats, Tokens];
 </script>
 
@@ -15,27 +15,30 @@
     import { enhance } from '$app/forms';
     import { classNames } from '$lib/utils/classnames';
     import TicketCard from '../(components)/ticket-card.svelte';
+    import { Icon } from '$lib/components/ui';
 
-    export let data;
+    let { data } = $props();
 
-    let originalName = data.ticket?.name ?? '';
-    let name = originalName.split(' ')[0];
-    let originalTitle = data.ticket?.title ?? '';
-    let title = originalTitle;
-    let originalSticker = data.ticket.sticker;
-    let sticker = originalSticker;
-    let editing = false;
+    let originalName = $state(data.ticket?.name ?? '');
+    let name = $derived(originalName.split(' ')[0]);
+    let originalTitle = $state(data.ticket?.title ?? '');
+    let derivedTitle = $derived(originalTitle);
+    let originalSticker = $state(data.ticket.sticker);
+    let sticker = $derived(originalSticker);
+    let editing = $state(false);
 
-    let saving: boolean = false;
-    let saved: boolean = false;
+    let saving: boolean = $state(false);
+    let saved: boolean = $state(false);
 
-    $: modified = !dequal(
-        {
-            name: originalName,
-            title: originalTitle,
-            sticker: originalSticker
-        },
-        { name, title, sticker }
+    let modified = $derived(
+        !dequal(
+            {
+                name: originalName,
+                title: originalTitle,
+                sticker: originalSticker
+            },
+            { name, derivedTitle, sticker }
+        )
     );
 </script>
 
@@ -48,11 +51,16 @@
 </svelte:head>
 
 <Window class="container my-10">
-    <a href="/init" slot="link" class="group flex gap-1 uppercase">
-        <span class="web-icon-chevron-left transition-transform group-hover:-translate-x-0.5" />
-        Back</a
-    >
-    <div slot="title" class="">Init Ticket<span class="text-accent">_</span></div>
+    {#snippet link()}
+        <a href="/init" class="group flex gap-1 uppercase">
+            <Icon name="chevron-left" class="transition-transform group-hover:-translate-x-0.5" />
+            Back</a
+        >
+    {/snippet}
+    {#snippet title()}
+        <div>Init Ticket<span class="text-accent">_</span></div>
+    {/snippet}
+
     <div class="grid grid-cols-1 p-0.5 md:grid-cols-12">
         <div class="col-span-3 flex flex-col p-4">
             <h3
@@ -64,12 +72,13 @@
             <form
                 method="POST"
                 class="mt-4 flex flex-1 flex-col gap-4"
-                use:enhance={() => {
+                use:enhance={async () => {
                     saving = true;
+
                     return async ({ result, update }) => {
                         if (result.type === 'success') {
                             originalName = name;
-                            originalTitle = title;
+                            originalTitle = derivedTitle;
                             originalSticker = sticker;
                             saved = true;
                             saving = false;
@@ -77,8 +86,6 @@
                             const timeout = setTimeout(() => {
                                 saved = false;
                             }, 3000);
-
-                            return () => clearTimeout(timeout);
                         }
                         update({ reset: false });
                     };
@@ -92,8 +99,8 @@
                     >
                     <input
                         bind:value={name}
-                        on:focus={() => (editing = true)}
-                        on:blur={() => (editing = false)}
+                        onfocus={() => (editing = true)}
+                        onblur={() => (editing = false)}
                         type="text"
                         name="name"
                         class="bg-smooth border-offset w-full appearance-none rounded-lg border p-2"
@@ -106,7 +113,7 @@
                         >Title</label
                     >
                     <input
-                        bind:value={title}
+                        bind:value={derivedTitle}
                         type="text"
                         name="title"
                         class="bg-smooth border-offset w-full appearance-none rounded-lg border p-2"
@@ -132,7 +139,7 @@
                                 class="absolute inset-0 appearance-none border-none"
                                 name="sticker"
                                 value=""
-                                on:click={() => (sticker = null)}
+                                onclick={() => (sticker = null)}
                             />
                             <div
                                 class="text-tertiary font-aeonik-fono tracking-loose text-micro bg-smooth flex size-[calc(100%_-_6px)] items-center justify-center rounded-[1px] p-1 uppercase"
@@ -155,7 +162,7 @@
                                     class="absolute inset-0 appearance-none border-none"
                                     name="sticker"
                                     value={i}
-                                    on:click={() => (sticker = i)}
+                                    onclick={() => (sticker = i)}
                                 />
                                 <div
                                     class="bg-smooth flex size-[calc(100%_-_6px)] items-center justify-center rounded-[1px] p-1"
@@ -185,7 +192,7 @@
             class="bg-smooth relative flex w-full flex-col items-center justify-center gap-8 rounded-xl p-4 outline-2 [outline-offset:-2px] outline-[var(--color-offset)] outline-dashed md:col-span-9 md:flex-row"
         >
             <div class="flex flex-col items-center gap-4 uppercase">
-                <TicketCard {...data.ticket} {name} {title} {editing} disableEffects />
+                <TicketCard {...data.ticket} {name} title={derivedTitle} {editing} disableEffects />
                 <span
                     class="font-aeonik-fono tracking-loose text-x-micro text-primary transition-opacity peer-hover:opacity-0"
                     >Front</span

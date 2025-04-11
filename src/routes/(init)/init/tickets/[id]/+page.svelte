@@ -1,6 +1,7 @@
 <script lang="ts">
     import { page } from '$app/stores';
     import Spinner from '$lib/components/shared/spinner.svelte';
+    import { Icon } from '$lib/components/ui';
     import { createCopy } from '$lib/utils/copy';
     import TicketCard from '../(components)/ticket-card.svelte';
     import { loginGithub } from '../../(utils)/github';
@@ -49,7 +50,7 @@
         <div
             class="border-offset divide-offset grid place-items-center divide-y-2 divide-dashed border-r-2 border-l-2 border-dashed md:col-span-6 md:border-r-0"
         >
-            <div class="row-span-2 h-full w-full px-8" />
+            <div class="row-span-2 h-full w-full px-8"></div>
             <div class="row-span-8 flex h-full w-full items-center px-8 py-6 md:px-12">
                 <div class="flex flex-1 flex-col gap-2">
                     <h2 class="text-display font-aeonik-pro text-primary">
@@ -79,7 +80,7 @@
                                 {#if claiming}
                                     <Spinner />
                                 {:else}
-                                    <span class="web-icon-github text-primary" />
+                                    <Icon name="github" class="text-primary" />
                                 {/if}Register with GitHub</button
                             >
                             <a href="/init" class="web-button is-secondary w-1/2!">Go to Init</a>
@@ -87,7 +88,7 @@
                     </div>
                 </div>
             </div>
-            <div class="row-span-2 h-full w-full px-8" />
+            <div class="row-span-2 h-full w-full px-8"></div>
         </div>
         <div
             class="border-offset flex flex-col items-center justify-center border-x-2 border-dashed bg-black/24 py-8 md:col-span-6"

@@ -1,4 +1,4 @@
-<script lang="ts" context="module">
+<script lang="ts" module>
     export type DayProps = {
         illustration: string;
         release: Date;
@@ -33,17 +33,31 @@
     import { classNames } from '$lib/utils/classnames';
     import MediaCard from './media-card.svelte';
 
-    export let release: DayProps['release'];
-    export let illustration: DayProps['illustration'];
-    export let content: DayProps['content'] = [];
-    export let announcementVideo: DayProps['announcementVideo'] = undefined;
-    export let links: DayProps['links'] = [];
-    export let title: DayProps['title'];
-    export let description: DayProps['description'];
-    export let url: DayProps['url'];
-    export let index: DayProps['index'];
+    interface Props {
+        release: DayProps['release'];
+        illustration: DayProps['illustration'];
+        content?: DayProps['content'];
+        announcementVideo?: DayProps['announcementVideo'];
+        links?: DayProps['links'];
+        title: DayProps['title'];
+        description: DayProps['description'];
+        url: DayProps['url'];
+        index: DayProps['index'];
+    }
 
-    let now = new Date();
+    let {
+        release,
+        illustration,
+        content = [],
+        announcementVideo = undefined,
+        links = [],
+        title,
+        description,
+        url,
+        index
+    }: Props = $props();
+
+    let now = $state(new Date());
     let interval = setInterval(() => {
         if (hasReleased) {
             clearInterval(interval);
@@ -52,16 +66,18 @@
         now = new Date();
     }, 1000);
 
-    $: hasReleased = now >= release;
+    let hasReleased = $derived(now >= release);
 </script>
 
 {#if hasReleased}
     <div class="scroll-mt-10 space-y-4 pb-8" id="day-{index}">
         <Window>
-            <div slot="title" class="text-micro flex items-center gap-1 text-white">
-                Day {index} <span class="text-accent">/</span>
-                {format(release, 'EEEE, MMM d')}
-            </div>
+            {#snippet title()}
+                <div class="text-micro flex items-center gap-1 text-white">
+                    Day {index} <span class="text-accent">/</span>
+                    {format(release, 'EEEE, MMM d')}
+                </div>
+            {/snippet}
 
             <div class="border-smooth overflow-hidden rounded-xl border-2">
                 <div
@@ -85,7 +101,7 @@
                                 >Announcement
                                 <span
                                     class="web-icon-arrow-right transition-transform group-hover:translate-x-0.5"
-                                />
+                                ></span>
                             </a>
                         {/if}
                     </div>
@@ -124,7 +140,7 @@
                                         {label ?? 'Read article'}
                                         <span
                                             class="web-icon-arrow-right transition-transform group-hover:translate-x-0.5"
-                                        />
+                                        ></span>
                                     </div>
                                 </div>
                             </a>

@@ -8,8 +8,12 @@
     import Badge from './badge.svelte';
     import Lockup from './lockup.svelte';
 
-    export let claimed: boolean = false;
-    let claiming: boolean = false;
+    interface Props {
+        claimed?: boolean;
+    }
+
+    let { claimed = false }: Props = $props();
+    let claiming: boolean = $state(false);
 
     const handleLogin = () => {
         claiming = true;
@@ -66,14 +70,14 @@
                     >
                 {:else}
                     <button
-                        on:click={handleLogin}
+                        onclick={handleLogin}
                         class="web-button flex items-center gap-4"
                         disabled={claiming}
                     >
                         {#if claiming}
                             <Spinner />
                         {:else}
-                            <span class="web-icon-github text-primary" />
+                            <span class="web-icon-github text-primary"></span>
                         {/if}Claim your ticket</button
                     >
                 {/if}

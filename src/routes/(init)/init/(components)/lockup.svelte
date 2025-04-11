@@ -1,9 +1,11 @@
 <script lang="ts">
     import { classNames } from '$lib/utils/classnames';
 
-    let classes: string = '';
+    interface Props {
+        class?: string;
+    }
 
-    export { classes as class };
+    let { class: classes = '' }: Props = $props();
 </script>
 
 <svg
@@ -22,7 +24,7 @@
     <g class="bottom-layer" filter="url(#k)">
         <g clip-path="url(#o)">
             <foreignObject x="57.3418" y="95.6592" width="677.969" height="304.417">
-                <div style="backdrop-filter:blur(12px);height:100%;width:100%" />
+                <div style="backdrop-filter:blur(12px);height:100%;width:100%"></div>
             </foreignObject>
         </g>
         <path
@@ -53,7 +55,7 @@
     <g class="middle-layer" filter="url(#j)">
         <g clip-path="url(#n)">
             <foreignObject x="33.209" y="51.125" width="676.902" height="305.375">
-                <div style="backdrop-filter:blur(12px);height:100%;width:100%" />
+                <div style="backdrop-filter:blur(12px);height:100%;width:100%"></div>
             </foreignObject>
         </g>
         <path
@@ -307,7 +309,7 @@
         </g>
         <g clip-path="url(#m)">
             <foreignObject x="8.07422" y="7.59277" width="676.842" height="305.49">
-                <div style="backdrop-filter:blur(12px);height:100%;width:100%" />
+                <div style="backdrop-filter:blur(12px);height:100%;width:100%"></div>
             </foreignObject>
         </g>
         <g fill="url(#b)" filter="url(#f)">

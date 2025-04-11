@@ -1,5 +1,9 @@
 <script lang="ts">
-    export let docId: string;
+    interface Props {
+        docId: string;
+    }
+
+    let { docId }: Props = $props();
 
     const copyUrl = `https://appwrite.io/init/tickets/${docId}`;
 </script>

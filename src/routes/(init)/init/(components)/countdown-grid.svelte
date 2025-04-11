@@ -4,13 +4,19 @@
     import type { DayProps } from './day.svelte';
     import Window from './window.svelte';
 
-    export let days: Array<Omit<DayProps, 'index'>> = [];
+    interface Props {
+        days?: Array<Omit<DayProps, 'index'>>;
+    }
+
+    let { days = [] }: Props = $props();
 </script>
 
 <div class={classNames('relative')}>
     <div class="container">
         <Window>
-            <span slot="title">Init_Schedule</span>
+            {#snippet title()}
+                <span>Init_Schedule</span>
+            {/snippet}
             <div
                 class="bg-smooth border-smooth grid grid-cols-1 gap-4 rounded-xl border p-4 md:grid-cols-5"
             >

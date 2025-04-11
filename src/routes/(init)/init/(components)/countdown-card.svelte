@@ -7,10 +7,14 @@
 
     type $$Props = Pick<DayProps, 'illustration' | 'release' | 'index' | 'title'>;
 
-    export let illustration: $$Props['illustration'] = '';
-    export let release: $$Props['release'];
-    export let index: $$Props['index'];
-    export let title: $$Props['title'];
+    interface Props {
+        illustration?: $$Props['illustration'];
+        release: $$Props['release'];
+        index: $$Props['index'];
+        title: $$Props['title'];
+    }
+
+    const { illustration = '', release, index, title }: Props = $props();
 
     const { days, hours, minutes, seconds, hasReleased } = createCountdown(release);
 </script>
