@@ -64,10 +64,10 @@
 <NavigationMenu.Root>
     <NavigationMenu.List class="flex items-center gap-8">
         <NavigationMenu.Item>
-            <NavigationMenu.Trigger class="flex items-center gap-3"
+            <NavigationMenu.Trigger class="group flex items-center gap-3"
                 >Products <Icon
                     name="chevron-down"
-                    class="relative size-4 transition-transform duration-200 group-data-[state=open]:rotate-90"
+                    class="relative size-4 transition-transform duration-200 group-data-[state=open]:-rotate-180"
                     aria-hidden="true"
                 /></NavigationMenu.Trigger
             >
@@ -75,7 +75,7 @@
                 class="data-[motion=from-end]:animate-enter-from-right data-[motion=from-start]:animate-enter-from-left data-[motion=to-end]:animate-exit-to-right data-[motion=to-start]:animate-exit-to-left w-full sm:w-auto"
             >
                 <ul
-                    class="grid gap-3 p-3 sm:w-[600px] sm:p-6 md:w-[800px] md:grid-cols-3 lg:w-[1000px]"
+                    class="grid gap-3 p-3 sm:w-[400px] sm:p-6 md:w-[600px] md:grid-cols-2 lg:w-[800px]"
                 >
                     {#each products as component (component.name)}
                         {@render ListItem({
@@ -96,21 +96,11 @@
         <NavigationMenu.Item>
             <NavigationMenu.Link href="/contact/enterprise">Enterprise</NavigationMenu.Link>
         </NavigationMenu.Item>
-        <NavigationMenu.Indicator
-            class={classNames(
-                'top-full z-10 flex h-2.5 items-end justify-center overflow-hidden opacity-100 transition-all duration-200',
-                'data-[state=hidden]:animate-fade-out data-[state=visible]:animate-fade-in data-[state=hidden]:opacity-0'
-            )}
-        >
-            <div
-                class="bg-primary relative top-[70%] size-2.5 rotate-[45deg] rounded-tl-[2px]"
-            ></div>
-        </NavigationMenu.Indicator>
     </NavigationMenu.List>
     <div class="absolute top-full left-0 flex w-full justify-center perspective-[2000px]">
         <NavigationMenu.Viewport
             class={classNames(
-                'bg-greyscale-850 border-gradient relative w-full origin-[top_center] overflow-hidden rounded-md shadow-lg transition-[width,_height,_opacity] duration-200 before:rounded-md after:rounded-md',
+                'bg-greyscale-850 border-smooth relative w-full origin-[top_center] rounded-md border opacity-100 shadow-lg backdrop-blur-2xl transition-[width,_height] duration-200 before:rounded-md after:rounded-md',
                 'data-[state=open]:animate-scale-in data-[state=closed]:hidden',
                 'h-(--bits-navigation-menu-viewport-height) sm:w-(--bits-navigation-menu-viewport-width)'
             )}
