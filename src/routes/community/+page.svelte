@@ -56,6 +56,8 @@
     import ProjectCard from './ProjectCard.svelte';
 
     import { SOCIAL_STATS } from '$lib/constants';
+    import { Button, Icon } from '$lib/components/ui';
+    import InlineTag from '$lib/components/ui/inline-tag.svelte';
 
     let { data } = $props();
 
@@ -167,26 +169,25 @@
                                 worldwide.
                             </p>
                             <div class="mt-8 flex flex-wrap gap-3">
-                                <a
+                                <Button
                                     href={SOCIAL_STATS.DISCORD.LINK}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    class="web-button is-full-width-mobile"
+                                    class="is-full-width-mobile"
                                 >
                                     <span class="text">Join our Discord</span>
-                                </a>
-                                <a
+                                </Button>
+                                <Button
+                                    variant="secondary"
                                     href={SOCIAL_STATS.GITHUB.LINK}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    class="web-button is-secondary is-full-width-mobile"
+                                    class="is-full-width-mobile"
                                 >
-                                    <span aria-hidden="true" class="web-icon-star"></span>
+                                    <Icon name="star" aria-hidden="true" />
                                     <span>Star on GitHub</span>
-                                    <span class="web-inline-tag text-sub-body"
-                                        >{SOCIAL_STATS.GITHUB.STAT}</span
-                                    >
-                                </a>
+                                    <InlineTag>{SOCIAL_STATS.GITHUB.STAT}</InlineTag>
+                                </Button>
                             </div>
                         </div>
                     </div>
@@ -237,14 +238,15 @@
                                 start contributing.
                             </p>
                             <div class="mt-8 flex flex-wrap justify-center gap-3">
-                                <a
+                                <Button
                                     href="{SOCIAL_STATS.GITHUB.LINK}/graphs/contributors"
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    class="web-button is-secondary is-full-width-mobile"
+                                    variant="secondary"
+                                    class="is-full-width-mobile"
                                 >
                                     <span>View all contributors</span>
-                                </a>
+                                </Button>
                             </div>
                         </div>
                     </div>
@@ -277,15 +279,16 @@
                                 <p class="text-body mt-1 font-medium">
                                     Anyone can join and help Appwrite become better.
                                 </p>
-                                <a
+                                <Button
                                     href="{SOCIAL_STATS.GITHUB.LINK}/issues"
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    class="web-button is-secondary mt-8"
+                                    class="mt-8"
+                                    variant="secondary"
                                 >
-                                    <span class="web-icon-github" aria-hidden="true"></span>
+                                    <Icon name="github" aria-hidden="true" />
                                     <span class="">View all Open Issues</span>
-                                </a>
+                                </Button>
                             </div>
                             <div class="flex-1">
                                 <table class="web-table-line">
@@ -455,14 +458,15 @@
                             Visit our showcase website built with Appwrite to find inspiration for
                             your projects or to showcase what you have built.
                         </p>
-                        <a
+                        <Button
+                            variant="secondary"
                             href="https://builtwith.appwrite.io"
                             target="_blank"
                             rel="noopener noreferrer"
-                            class="web-button is-secondary mt-4 self-center"
+                            class="mt-4 self-center"
                         >
                             <span>View all projects</span>
-                        </a>
+                        </Button>
                     </div>
                     <ul class="web-grid-3-desktop-1-mobile web-u-margin-block-start-64">
                         {#each projects as project}
@@ -660,9 +664,7 @@
                                         bind:value={email}
                                     />
                                 </div>
-                                <button type="submit" class="web-button" disabled={submitting}
-                                    >Sign up</button
-                                >
+                                <Button type="submit" disabled={submitting}>Sign up</Button>
                                 {#if error}
                                     <span class="text">
                                         Something went wrong. Please try again later.

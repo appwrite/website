@@ -7,6 +7,7 @@
     import { createDebounce } from '$lib/utils/debounce';
     import { goto, onNavigate } from '$app/navigation';
     import { Article, FooterNav, MainFooter } from '$lib/components';
+    import { Button } from '$lib/components/ui';
 
     let { data } = $props();
 
@@ -238,9 +239,9 @@
                                         </div>
                                     </div>
                                 </div>
-                                <a href={featured.href} class="web-button is-secondary mt-auto">
+                                <Button variant="secondary" href={featured.href} class="mt-auto">
                                     <span>Read article</span>
-                                </a>
+                                </Button>
                             </div>
                         </article>
                     {/if}
@@ -344,15 +345,15 @@
                                     No results found for "{query ? query : selectedCategory}"
                                 </p>
 
-                                <button
-                                    class="web-button is-secondary"
+                                <Button
+                                    variant="secondary"
                                     onclick={() => {
                                         query = '';
                                         selectedCategory = 'Latest';
                                         handleSearch();
                                     }}
                                     >Clear search
-                                </button>
+                                </Button>
                             </div>
                         {/each}
                     </ul>

@@ -5,6 +5,7 @@
     import collaboration from '../(assets)/collaboration.svg';
     import customization from '../(assets)/customization.svg';
     import transparency from '../(assets)/transparency.svg';
+    import { DiscordLink, GithubStats } from '$lib/components/shared';
 
     const items = [
         {
@@ -66,23 +67,8 @@
             <div
                 class="mx-auto mt-2 flex w-full flex-col items-center justify-center gap-2 md:flex-row"
             >
-                <a
-                    href={SOCIAL_STATS.GITHUB.LINK}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="web-button is-secondary h-10 !w-full md:!w-fit"
-                >
-                    <span class="web-icon-star" aria-hidden="true"></span>
-                    <span class="text">Star on GitHub</span>
-                    <span class="web-inline-tag text-sub-body">{SOCIAL_STATS.GITHUB.STAT}</span>
-                </a>
-                <a
-                    class="web-button is-secondary h-10 !w-full md:!w-fit"
-                    href="https://appwrite.io/discord"
-                >
-                    <span class="web-icon-discord"></span>
-                    <span class="text">Join Discord</span>
-                </a>
+                <GithubStats class="h-10 !w-full md:!w-fit" />
+                <DiscordLink class="h-10 !w-full md:!w-fit" />
             </div>
         </div>
 

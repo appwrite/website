@@ -6,6 +6,8 @@
     import Heading from '$markdoc/nodes/Heading.svelte';
     import { onMount, tick } from 'svelte';
     import { page } from '$app/state';
+    import { Button, Icon } from '$lib/components/ui';
+    import { classNames } from '$lib/utils/classnames';
 
     export let toc: Array<TocItem>;
     export let back: string;
@@ -126,18 +128,18 @@
                 </ul>
                 <div class="u-cross-center relative flex">
                     {#if back}
-                        <a
+                        <Button
                             href={back}
-                            class="
-						web-button is-text is-only-icon web-u-cross-center
-						web-is-not-mobile -translate-x-1/2"
+                            variant="text"
+                            class="is-only-icon web-u-cross-center web-is-not-mobile -translate-x-1/2"
                             aria-label="previous page"
                         >
-                            <span
-                                class="icon-cheveron-left web-u-font-size-24 web-u-color-text-primary"
+                            <Icon
+                                name="chevron-left"
+                                class="text-primary text-2xl"
                                 aria-hidden="true"
-                            ></span>
-                        </a>
+                            />
+                        </Button>
                     {/if}
                     <h1 class="web-title {currentStep === 1 ? 'lg:-ml-5' : ''}">
                         {firstStepItem?.title}
@@ -164,20 +166,26 @@
 
                     <div class="web-u-padding-block-start-32 flex justify-between">
                         {#if prevStep}
-                            <a href={prevStep.href} class="web-button is-text previous-step-anchor">
-                                <span class="icon-cheveron-left" aria-hidden="true"></span>
+                            <Button
+                                variant="text"
+                                href={prevStep.href}
+                                class="previous-step-anchor"
+                            >
+                                <Icon name="chevron-left" aria-hidden="true" />
                                 <span class="web-sub-body-500">
                                     Step {prevStep.step}<span class="web-is-not-mobile"
                                         >: {getCorrectTitle(prevStep, 1)}</span
                                     >
                                 </span>
-                            </a>
+                            </Button>
                         {/if}
                         {#if nextStep}
-                            <a
+                            <Button
+                                variant="secondary"
                                 href={nextStep.href}
-                                class="web-button is-secondary"
-                                style:margin-left={prevStep ? undefined : 'auto'}
+                                class={classNames({
+                                    'ml-auto': prevStep
+                                })}
                             >
                                 <span class="web-sub-body-500">
                                     Step {nextStep.step}<span class="web-is-not-mobile"
@@ -185,7 +193,7 @@
                                     >
                                 </span>
                                 <span class="icon-cheveron-right" aria-hidden="true"></span>
-                            </a>
+                            </Button>
                         {/if}
                     </div>
                 </section>
@@ -268,13 +276,6 @@
 <style>
     .web-article-header {
         margin-block-end: 2rem;
-        padding-inline-start: unset;
-    }
-
-    .previous-step-anchor {
-        border: unset;
-        outline: unset;
-        background: unset;
         padding-inline-start: unset;
     }
 

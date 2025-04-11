@@ -1,5 +1,6 @@
 <script lang="ts">
     import Tooltip from '$lib/components/Tooltip.svelte';
+    import { Button, Icon } from '$lib/components/ui';
     import { createDialog, melt } from '@melt-ui/svelte';
     import { getContext, hasContext } from 'svelte';
     import { quadInOut } from 'svelte/easing';
@@ -44,9 +45,9 @@
         <img {src} {alt} {title} loading="lazy" class="aspect-video w-full" />
         <div class="abs">
             <Tooltip closeOnPointerDown>
-                <button class="web-button is-secondary cursor-pointer" use:melt={$trigger}>
+                <Button variant="secondary" class="cursor-pointer" action={trigger}>
                     <span class="icon-arrow-expand" aria-hidden="true"></span>
-                </button>
+                </Button>
                 {#snippet tooltip()}
                     Expand
                 {/snippet}

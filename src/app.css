@@ -27,9 +27,9 @@
     --color-pink-700: hsl(var(--color-pink-hue) 65% 36%);
 
     /* red */
-    --color-red-200: calc(hsl(var(--color-red-hue) - 2) 100% 92%);
+    --color-red-200: hsl(calc(var(--color-red-hue) - 2) 100% 92%);
     --color-red-500: hsl(var(--color-red-hue) 100% 61%);
-    --color-red-700: calc(hsl(var(--color-red-hue) - 3) 82% 39%);
+    --color-red-700: hsl(calc(var(--color-red-hue) - 3) 82% 39%);
 
     /* orange */
     --color-orange-200: hsl(var(--color-orange-hue) 100% 88%);
@@ -38,23 +38,23 @@
 
     /* mint */
     --color-mint-200: hsl(var(--color-mint-hue) 56% 88%);
-    --color-mint-500: calc(hsl(var(--color-mint-hue) + 1) 54% 69%);
-    --color-mint-700: calc(hsl(var(--color-mint-hue) + 2) 24% 41%);
+    --color-mint-500: hsl(calc(var(--color-mint-hue) + 1), 54%, 69%);
+    --color-mint-700: hsl(calc(var(--color-mint-hue) + 2), 24%, 41%);
 
     /* purple */
     --color-purple-200: hsl(var(--color-purple-hue) 100% 88%);
-    --color-purple-500: calc(hsl(var(--color-purple-hue) - 1) 99% 70%);
-    --color-purple-700: calc(hsl(var(--color-purple-hue) - 1) 42% 42%);
+    --color-purple-500: hsl(calc(var(--color-purple-hue) - 1), 99%, 70%);
+    --color-purple-700: hsl(calc(var(--color-purple-hue) - 1), 42%, 42%);
 
     /* yellow */
     --color-yellow-200: hsl(var(--color-yellow-hue) 100% 88%);
     --color-yellow-500: hsl(var(--color-yellow-hue) 99% 70%);
-    --color-yellow-700: calc(hsl(var(--color-yellow-hue) + 1) 42% 42%);
+    --color-yellow-700: hsl(calc(var(--color-yellow-hue) + 1), 42%, 42%);
 
     /* blue */
     --color-blue-200: hsl(var(--color-blue-hue) 100% 88%);
-    --color-blue-500: calc(hsl(var(--color-blue-hue) - 1) 99% 70%);
-    --color-blue-700: calc(hsl(var(--color-blue-hue) - 1) 42% 42%);
+    --color-blue-500: hsl(calc(var(--color-blue-hue) - 1), 99%, 70%);
+    --color-blue-700: hsl(calc(var(--color-blue-hue) - 1), 42%, 42%);
 
     /* green */
     --color-green-700: #0a714f;
@@ -92,6 +92,7 @@
     --animate-scroll: scroll 60s linear infinite;
     --animate-fade-in: fade-in 0.5s ease-in-out both;
     --animate-marquee: marquee var(--speed, 30s) linear infinite var(--direction, forwards);
+    --animate-lighting: lighting 1.25s ease-out forwards;
 
     /* Keyframes */
     @keyframes scale-in {
@@ -157,6 +158,19 @@
         }
     }
 
+    @keyframes lighting {
+        0% {
+            opacity: 0;
+            clip-path: inset(5%);
+            transform: scale(111.11%);
+        }
+        100% {
+            opacity: 1;
+            clip-path: inset(0);
+            transform: scale(1);
+        }
+    }
+
     /* Fonts */
     --font-sans: 'Inter', arial, sans-serif;
     --font-mono: 'Fira Code', monospace;
@@ -214,20 +228,53 @@
 @utility container {
     margin-inline: auto;
     padding-inline: 1.25rem;
-    box-sizing: content-box;
     max-width: 75rem;
 }
 
-@layer components {
-    .mask {
-        mask-image: linear-gradient(
-            to var(--mask-direction, top),
-            transparent,
-            black var(--mask-height, 32px),
-            black calc(100% - var(--mask-height, 32px)),
-            black
-        );
+@utility border-gradient {
+    --border-gradient-before: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.16) 0%,
+        rgba(255, 255, 255, 0) 100%
+    );
+    --border-gradient-after: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.12) 0%,
+        rgba(255, 255, 255, 0) 125.11%
+    );
+    --border-radius: 0.5rem;
+
+    &::before,
+    &::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        border-radius: var(--border-radius);
+        border: 1px solid transparent;
+        mask:
+            linear-gradient(#fff 0 0) padding-box,
+            linear-gradient(#fff 0 0);
+        mask-composite: exclude;
+        pointer-events: none;
     }
+
+    &::before {
+        background: var(--border-gradient-before) border-box;
+    }
+
+    &::after {
+        background: var(--border-gradient-after) border-box;
+    }
+}
+
+@utility mask {
+    mask-image: linear-gradient(
+        to var(--mask-direction, top),
+        transparent,
+        black var(--mask-height, 32px),
+        black calc(100% - var(--mask-height, 32px)),
+        black
+    );
 }
 
 :root,
