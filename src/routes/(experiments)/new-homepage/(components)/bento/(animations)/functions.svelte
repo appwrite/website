@@ -64,37 +64,37 @@
                 console.log('stale');
                 timeout = setTimeout(() => {
                     step = FunctionsState.Generate;
-                }, 3000);
+                }, 500);
                 return () => clearTimeout(timeout);
             case FunctionsState.Generate:
                 console.log('generate');
                 timeout = setTimeout(() => {
                     step = FunctionsState.Send;
-                }, 3000);
+                }, 2000);
                 return () => clearTimeout(timeout);
             case FunctionsState.Send:
                 console.log('send');
                 timeout = setTimeout(() => {
                     step = FunctionsState.Update;
-                }, 3000);
+                }, 1000);
                 return () => clearTimeout(timeout);
             case FunctionsState.Update:
                 console.log('update');
                 timeout = setTimeout(() => {
                     step = FunctionsState.Delete;
-                }, 3000);
+                }, 200);
                 return () => clearTimeout(timeout);
             case FunctionsState.Delete:
                 console.log('delete');
                 timeout = setTimeout(() => {
                     step = FunctionsState.Create;
-                }, 3000);
+                }, 100);
                 return () => clearTimeout(timeout);
             case FunctionsState.Create:
                 console.log('create');
                 timeout = setTimeout(() => {
                     step = FunctionsState.Stale;
-                }, 3000);
+                }, 800);
                 return () => clearTimeout(timeout);
             default:
                 console.log('stale');

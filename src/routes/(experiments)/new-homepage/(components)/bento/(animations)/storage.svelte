@@ -2,7 +2,7 @@
     import { classNames } from '$lib/utils/classnames';
     import { onMount } from 'svelte';
     import Image from '../../../(assets)/images/storage.webp';
-    import { animate, hover, inView, type AnimationSequence } from 'motion';
+    import { animate, hover, inView, type AnimationSequence, motionValue, transform } from 'motion';
     import { isMobile } from '$lib/utils/is-mobile';
     import { getCodeHtml } from '$lib/utils/code';
     import GridPaper from '../../grid-paper.svelte';
@@ -11,11 +11,11 @@
     let imageComponent: HTMLElement;
     let image: HTMLElement;
 
-    $: width = 232;
-    $: height = 158;
-    $: borderRadius = 4;
+    let width = $state(232);
+    let height = $state(158);
+    let borderRadius = $state(4);
 
-    $: content = `const result = storage.getFilePreview(
+    const content = `const result = storage.getFilePreview(
 	 'photos',     // bucket ID
 	 'sunset.heic',// file ID
 	 ${width},          // width
@@ -25,7 +25,7 @@
 	 'heic'        // output heic format
 ;`;
 
-    $: snippet = getCodeHtml({
+    const snippet = getCodeHtml({
         content,
         language: 'javascript',
         withLineNumbers: true

@@ -1,5 +1,4 @@
 <script lang="ts" module>
-    // TODO: replace _button.scss with Tailwind classes for long-term maintainability
     const button = cva(['web-button'], {
         variants: {
             variant: {
@@ -42,7 +41,6 @@
         children,
         class: classes,
         events,
-        type,
         ...rest
     }: Props = $props();
 
