@@ -1,4 +1,4 @@
-<script lang="ts" context="module">
+<script lang="ts" module>
     import { navigating } from '$app/stores';
     import { writable } from 'svelte/store';
 
@@ -40,6 +40,8 @@
 </script>
 
 <script lang="ts">
+    import { run } from 'svelte/legacy';
+
     import { Search, IsLoggedIn } from '$lib/components';
     import { isMac } from '$lib/utils/platform';
     import { getContext, setContext } from 'svelte';
@@ -48,8 +50,13 @@
     import { getAppwriteDashboardUrl } from '$lib/utils/dashboard';
     import { Button, Icon, InlineTag } from '$lib/components/ui';
 
-    export let variant: DocsLayoutVariant = 'default';
-    export let isReferences = false;
+    interface Props {
+        variant?: DocsLayoutVariant;
+        isReferences?: boolean;
+        children?: import('svelte').Snippet;
+    }
+
+    let { variant = 'default', isReferences = false, children }: Props = $props();
 
     const variantClasses: Record<DocsLayoutVariant, string> = {
         default: 'web-grid-side-nav max-w-[90rem] mx-auto',
@@ -57,8 +64,11 @@
         'two-side-navs': 'web-grid-two-side-navs'
     };
 
-    $: variantClass = variantClasses[variant];
-    $: $layoutState.currentVariant = variant;
+    let variantClass = $derived(variantClasses[variant]);
+
+    $effect(() => {
+        $layoutState.currentVariant = variant;
+    });
 
     navigating.subscribe(() => {
         layoutState.update((n) => ({
@@ -83,9 +93,9 @@
     };
 </script>
 
-<svelte:window on:keydown={handleKeydown} />
+<svelte:window onkeydown={handleKeydown} />
 
-<div class="relative">
+<div class="relative" data-variant={$layoutState.currentVariant}>
     <section class="web-mobile-header is-transparent">
         <div class="web-mobile-header-start">
             <a href="/" aria-label="homepage">
@@ -150,7 +160,7 @@
                 <div class="web-u-margin-inline-start-48 flex flex-1">
                     <button
                         class="web-input-button web-u-flex-basis-400"
-                        on:click={() => ($layoutState.showSearch = true)}
+                        onclick={() => ($layoutState.showSearch = true)}
                     >
                         <span class="web-icon-search" aria-hidden="true"></span>
                         <span class="text">Search in docs</span>
@@ -188,7 +198,7 @@
         class:is-open={$layoutState.showSidenav}
         style:--container-size={variant === 'default' ? 'var(--container-size-large)' : undefined}
     >
-        <slot />
+        {@render children?.()}
     </div>
 </div>
 
