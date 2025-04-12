@@ -6,6 +6,7 @@
     import Gold from '../(assets)/icons/gold.png';
     import Silver from '../(assets)/icons/silver.png';
     import { clamp } from '$lib/utils/clamp';
+    import { Button } from '$lib/components/ui';
 
     let animate: boolean = false;
 
@@ -57,8 +58,8 @@
             </div>
 
             <div class="mt-3 flex flex-col items-center gap-2 md:flex-row">
-                <a href="#become-a-partner" class="web-button is-secondary !w-full md:!w-fit"
-                    >Become a Partner</a
+                <Button variant="secondary" href="#become-a-partner" class="!w-full md:!w-fit"
+                    >Become a Partner</Button
                 >
             </div>
         </div>

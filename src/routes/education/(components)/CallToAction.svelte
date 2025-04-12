@@ -1,4 +1,5 @@
 <script>
+    import { Button } from '$lib/components/ui';
     import { classNames } from '$lib/utils/classnames';
     import { getAppwriteDashboardUrl } from '$lib/utils/dashboard';
 
@@ -21,7 +22,7 @@
                 Develop your developer skills with Appwrite Pro, join a vibrant community of
                 open-source contributors, and start building with a vast array of frameworks.
             </p>
-            <a href={educationSignUp} class="web-button mt-4 !w-full md:!w-fit">Sign up</a>
+            <Button href={educationSignUp} class="mt-4 !w-full md:!w-fit">Sign up</Button>
         </div>
     </div>
 </div>

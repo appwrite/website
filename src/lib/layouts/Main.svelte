@@ -20,6 +20,7 @@
     import MainNav from '$lib/components/MainNav.svelte';
     import { page } from '$app/state';
     import { getAppwriteDashboardUrl } from '$lib/utils/dashboard';
+    import { Button, Icon, InlineTag } from '$lib/components/ui';
 
     export let omitMainId = false;
     let theme: 'light' | 'dark' | null = 'dark';
@@ -168,21 +169,21 @@
         </div>
         <div class="web-mobile-header-end">
             {#if !$isMobileNavOpen}
-                <a href={getAppwriteDashboardUrl()} class="web-button">
+                <Button href={getAppwriteDashboardUrl()}>
                     <span class="text">Start building</span>
-                </a>
+                </Button>
             {/if}
-            <button
-                class="web-button is-text"
+            <Button
+                variant="text"
                 aria-label="open navigation"
-                on:click={() => ($isMobileNavOpen = !$isMobileNavOpen)}
+                onclick={() => ($isMobileNavOpen = !$isMobileNavOpen)}
             >
                 {#if $isMobileNavOpen}
-                    <span aria-hidden="true" class="web-icon-close"></span>
+                    <Icon aria-hidden="true" name="close" />
                 {:else}
-                    <span aria-hidden="true" class="web-icon-hamburger-menu"></span>
+                    <Icon aria-hidden="true" name="hamburger-menu" />
                 {/if}
-            </button>
+            </Button>
         </div>
     </section>
     <header
@@ -228,21 +229,22 @@
                 <MainNav initialized={$initialized} links={navLinks} />
             </div>
             <div class="web-main-header-end">
-                <a
+                <Button
+                    variant="text"
                     href={SOCIAL_STATS.GITHUB.LINK}
                     target="_blank"
                     rel="noopener noreferrer"
-                    class="web-button is-text web-u-inline-width-100-percent-mobile"
-                    on:click={() =>
+                    class="web-u-inline-width-100-percent-mobile"
+                    onclick={() =>
                         trackEvent({
                             plausible: { name: 'Star on GitHub in header' },
                             posthog: { name: 'github-stars_nav_click' }
                         })}
                 >
-                    <span class="web-icon-star" aria-hidden="true"></span>
+                    <Icon name="star" aria-hidden="true" />
                     <span class="text">Star on GitHub</span>
-                    <span class="web-inline-tag text-sub-body">{SOCIAL_STATS.GITHUB.STAT}</span>
-                </a>
+                    <InlineTag>{SOCIAL_STATS.GITHUB.STAT}</InlineTag>
+                </Button>
                 <IsLoggedIn />
             </div>
         </div>

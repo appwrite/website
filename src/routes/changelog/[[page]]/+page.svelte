@@ -8,6 +8,7 @@
     import { page } from '$app/state';
     import { CHANGELOG_KEY } from '../utils';
     import { TITLE_SUFFIX } from '$routes/titles';
+    import { Button } from '$lib/components/ui';
 
     let { data } = $props();
 
@@ -62,7 +63,10 @@
                     </ul>
 
                     {#if data.nextPage}
-                        <button class="web-button is-secondary" onclick={loadMore}>Load more</button
+                        <Button
+                            class="mx-auto mt-20 min-w-44"
+                            variant="secondary"
+                            onclick={loadMore}>Load more</Button
                         >
                     {/if}
                 </div>
@@ -125,12 +129,6 @@
                 translate: -50% var(--dot-offset);
             }
         }
-    }
-
-    button {
-        margin-block-start: 5rem;
-        margin-inline: auto;
-        min-inline-size: 10.9375rem;
     }
 
     @media screen and (max-width: 512px) {
