@@ -142,6 +142,10 @@
         serviceDescription.substring(0, serviceDescription.indexOf('.') + 1)
     );
 
+    /**
+     * Determines the order of operations based on the method title.
+     * For eg. Create account, Get account, List accounts, Update account, Delete account.
+     */
     function getOperationOrder(methodTitle: string): number {
         const title = methodTitle.toLowerCase();
         if (title.startsWith('create')) return 1;
@@ -152,6 +156,9 @@
         return 5; // Other operations
     }
 
+    /**
+     * Sorts methods by their operation order and title
+     */
     function sortMethods(methods: any[]) {
         return methods.sort((a, b) => {
             const orderA = getOperationOrder(a.title);
@@ -161,6 +168,20 @@
             }
             return orderA - orderB;
         });
+    }
+
+    /**
+     * Groups methods by their group attribute, null group goes to '' for ordering
+     */
+    function groupMethodsByGroup(methods: any[]) {
+        return methods.reduce((acc, method) => {
+            const groupKey = method.group || '';
+            if (!acc[groupKey]) {
+                acc[groupKey] = [];
+            }
+            acc[groupKey].push(method);
+            return acc;
+        }, {});
     }
 
     function bindSelectedRef(node: HTMLElement, isSelected: boolean) {
@@ -292,15 +313,7 @@
                     </div>
                 {/if}
             </section>
-            {#each Object.entries(data.methods.reduce((acc, method) => {
-                    // Group methods by their group attribute
-                    const groupKey = method.group || '';
-                    if (!acc[groupKey]) {
-                        acc[groupKey] = [];
-                    }
-                    acc[groupKey].push(method);
-                    return acc;
-                }, {})).sort(([a], [b]) => a.localeCompare(b)) as [group, methods]}
+            {#each Object.entries(groupMethodsByGroup(data.methods)) as [group, methods]}
                 {#each sortMethods(methods) as method (method.id)}
                     <section class="web-article-content-grid-6-4">
                         <div class="web-article-content-grid-6-4-column-1 flex flex-col gap-8">
@@ -387,15 +400,7 @@
                         </button>
                     </div>
                     <ul class="web-references-menu-list">
-                        {#each Object.entries(data.methods.reduce((acc, method) => {
-                                // Group methods by their group attribute
-                                const groupKey = method.group || '';
-                                if (!acc[groupKey]) {
-                                    acc[groupKey] = [];
-                                }
-                                acc[groupKey].push(method);
-                                return acc;
-                            }, {})).sort(([a], [b]) => a.localeCompare(b)) as [group, methods]}
+                        {#each Object.entries(groupMethodsByGroup(data.methods)) as [group, methods]}
                             <li class="web-references-menu-group">
                                 {#if group !== ''}
                                     <h6 class="text-micro text-greyscale-500 mb-2 uppercase">

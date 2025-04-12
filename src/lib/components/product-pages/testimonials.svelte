@@ -42,7 +42,7 @@
     <div class="group light flex w-fit gap-4">
         {#each Array.from({ length: 4 }) as _, i}
             <div
-                class="animate-scroll group-hover:[animation-play-state:paused;] flex items-center gap-8"
+                class="animate-scroll flex items-center gap-8 group-hover:[animation-play-state:paused;]"
                 aria-hidden={i !== 0}
             >
                 {#each testimonials as testimonial}
