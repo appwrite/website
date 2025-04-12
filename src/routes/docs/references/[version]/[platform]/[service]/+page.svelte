@@ -46,16 +46,13 @@
                 selected = key;
                 setTimeout(() => {
                     if (selectedMenuItem) {
-                        // First scroll the item into view
                         selectedMenuItem.scrollIntoView({ behavior: 'smooth', block: 'center' });
 
-                        // Get the parent scrollable container (the menu)
                         const menuContainer = selectedMenuItem.closest(
                             '.web-references-menu-content'
                         );
                         if (menuContainer) {
-                            // Add some offset to position the item higher in the viewport
-                            const offset = 100; // Adjust this value as needed
+                            const offset = 100; // offset to position the item higher in the viewport
                             menuContainer.scrollTop = menuContainer.scrollTop - offset;
                         }
                     }
@@ -145,7 +142,6 @@
         serviceDescription.substring(0, serviceDescription.indexOf('.') + 1)
     );
 
-    // Add this function to determine the operation type and its order
     function getOperationOrder(methodTitle: string): number {
         const title = methodTitle.toLowerCase();
         if (title.startsWith('create')) return 1;
@@ -156,7 +152,6 @@
         return 5; // Other operations
     }
 
-    // Add this function to sort methods within each group
     function sortMethods(methods: any[]) {
         return methods.sort((a, b) => {
             const orderA = getOperationOrder(a.title);
@@ -298,12 +293,14 @@
                 {/if}
             </section>
             {#each Object.entries(data.methods.reduce((acc, method) => {
-                    if (!acc[method.group]) {
-                        acc[method.group] = [];
+                    // Group methods by their group attribute
+                    const groupKey = method.group || '';
+                    if (!acc[groupKey]) {
+                        acc[groupKey] = [];
                     }
-                    acc[method.group].push(method);
+                    acc[groupKey].push(method);
                     return acc;
-                }, {})) as [_group, methods]}
+                }, {})).sort(([a], [b]) => a.localeCompare(b)) as [group, methods]}
                 {#each sortMethods(methods) as method (method.id)}
                     <section class="web-article-content-grid-6-4">
                         <div class="web-article-content-grid-6-4-column-1 flex flex-col gap-8">
@@ -392,16 +389,19 @@
                     <ul class="web-references-menu-list">
                         {#each Object.entries(data.methods.reduce((acc, method) => {
                                 // Group methods by their group attribute
-                                if (!acc[method.group]) {
-                                    acc[method.group] = [];
+                                const groupKey = method.group || '';
+                                if (!acc[groupKey]) {
+                                    acc[groupKey] = [];
                                 }
-                                acc[method.group].push(method);
+                                acc[groupKey].push(method);
                                 return acc;
-                            }, {})) as [group, methods]}
+                            }, {})).sort(([a], [b]) => a.localeCompare(b)) as [group, methods]}
                             <li class="web-references-menu-group">
-                                <h6 class="text-micro text-greyscale-500 mb-2 uppercase">
-                                    {group}
-                                </h6>
+                                {#if group !== ''}
+                                    <h6 class="text-micro text-greyscale-500 mb-2 uppercase">
+                                        {group}
+                                    </h6>
+                                {/if}
                                 <ul class="flex flex-col gap-2">
                                     {#each sortMethods(methods) as method}
                                         <li class="web-references-menu-item">

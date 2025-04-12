@@ -10,7 +10,7 @@ export type SDKMethod = {
     title: string;
     description: string;
     demo: string;
-    group: string;
+    group?: string;
     parameters: Array<{
         name: string;
         description: string;
@@ -35,7 +35,7 @@ type SDKMethodModel = {
 type AppwriteOperationObject = OpenAPIV3.OperationObject & {
     'x-appwrite': {
         method: string;
-        group: string;
+        group?: string;
         weight: number;
         cookies: boolean;
         type: string;
