@@ -347,6 +347,17 @@ export async function getService(
         });
     }
 
+    // Sort methods by weight from x-appwrite metadata
+    data.methods.sort((a, b) => {
+        const aPath = api.paths[a.url] as OpenAPIV3.PathItemObject;
+        const bPath = api.paths[b.url] as OpenAPIV3.PathItemObject;
+        const aMethod = a.method.toLowerCase() as Lowercase<OpenAPIV3.HttpMethods>;
+        const bMethod = b.method.toLowerCase() as Lowercase<OpenAPIV3.HttpMethods>;
+        const aWeight = ((aPath?.[aMethod] as AppwriteOperationObject)?.['x-appwrite']?.weight ?? 0);
+        const bWeight = ((bPath?.[bMethod] as AppwriteOperationObject)?.['x-appwrite']?.weight ?? 0);
+        return aWeight - bWeight;
+    });
+
     return data;
 }
 
