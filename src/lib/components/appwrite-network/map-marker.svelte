@@ -69,7 +69,7 @@
     <Tooltip.Content
         sideOffset={12}
         class={classNames(
-            'from-card/75 to-greyscale-800/75 border-gradient relative z-10 flex w-[190px] flex-col gap-2 rounded-[10px] bg-gradient-to-tl p-2 backdrop-blur-sm before:rounded-[10px] after:rounded-[10px]',
+            'from-card/75 to-greyscale-800/75 border-gradient relative z-100 flex w-[190px] flex-col gap-2 rounded-[10px] bg-gradient-to-tl p-2 backdrop-blur-sm before:rounded-[10px] after:rounded-[10px]',
             'data-[state="closed"]:animate-menu-out data-[state="instant-open"]:animate-menu-in data-[state="delayed-open"]:animate-menu-in',
             className
         )}
@@ -80,7 +80,7 @@
         >
         {#if available}
             <div
-                class="text-caption flex h-5 items-center justify-center place-self-start rounded-md bg-[#10B981]/16 p-1 text-center text-[#0A714F]"
+                class="text-caption flex h-5 items-center justify-center place-self-start rounded-md bg-[#10B981]/24 p-1 text-center text-[#B4F8E2]"
             >
                 <span class="text-micro -tracking-tight">Available now</span>
             </div>

@@ -21,10 +21,6 @@
     let height: number = $state(0);
     let width: number = $state(0);
 
-    $effect(() => {
-        console.log({ width, height });
-    });
-
     let activeRegion = $state<string | null>(null);
     let activeMarker: HTMLElement | null = null;
     let activeSegment = $state<string>('pop-locations');
@@ -72,22 +68,6 @@
     };
 </script>
 
-<div class="absolute top-20 left-0 flex flex-col gap-4">
-    {#each Object.entries(MAP_BOUNDS) as [bound, value]}
-        <input
-            type="number"
-            onchange={(e) => {
-                MAP_BOUNDS[bound as keyof typeof MAP_BOUNDS] = e.currentTarget.valueAsNumber;
-            }}
-            {value}
-        />
-    {/each}
-</div>
-
-<pre>
-    {JSON.stringify(MAP_BOUNDS, null, 4)}
-</pre>
-
 <div class="w-full overflow-scroll [scrollbar-width:none]">
     <div
         class="sticky left-0 z-10 mb-8 flex w-screen gap-2 overflow-scroll px-8 [scrollbar-width:none] md:hidden"
@@ -115,7 +95,7 @@
         use:mousePosition
     >
         <div
-            class="map animate-enter relative w-full origin-bottom overflow-scroll transition-all [scrollbar-width:none]"
+            class="map relative w-full origin-bottom overflow-scroll transition-all [scrollbar-width:none]"
             bind:clientWidth={width}
             bind:clientHeight={height}
         >
@@ -135,7 +115,7 @@
 
             <img
                 src="/images/regions/map.svg"
-                class="pointer-events-none opacity-10"
+                class="pointer-events-none relative -z-10 opacity-10"
                 draggable="false"
                 alt="Map of the world"
             />
