@@ -36,7 +36,7 @@
     class="flex flex-col items-center justify-center gap-12"
 >
     <Tabs.List
-        class="border-gradient bg-card relative grid w-full max-w-xl grid-cols-3 place-content-center gap-3 rounded-full p-1 drop-shadow-md before:rounded-full after:rounded-full"
+        class="border-smooth bg-card relative grid w-full max-w-xl grid-cols-1 place-content-center gap-3 p-1 drop-shadow-md md:grid-cols-3 md:rounded-full md:border"
     >
         {#each navItems as { label, icon, value }}
             <Tabs.Trigger

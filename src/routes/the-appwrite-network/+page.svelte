@@ -3,6 +3,7 @@
     import { InlineTag } from '$lib/components/ui';
     import GradientText from '$lib/components/ui/gradient-text.svelte';
     import { Main } from '$lib/layouts';
+    import { classNames } from '$lib/utils/classnames';
     import {
         DEFAULT_DESCRIPTION,
         DEFAULT_HOST,
@@ -40,38 +41,23 @@
 </svelte:head>
 
 <Main>
-    <div class="container">
-        <div class="mt-12 flex flex-col items-center">
-            <span
-                class="bg-accent/4 border-accent/36 text-primary relative -mb-8 rounded-full border px-4 py-1 text-sm"
-                >Introducing</span
-            >
-            <h1 class="text-display mx-auto inline-block py-12 text-center">
-                <GradientText>The Appwrite Network</GradientText>
-            </h1>
-        </div>
+    <div class="container mt-20 flex flex-col items-center">
+        <span
+            class="bg-accent/4 border-accent/36 text-primary relative -mb-8 rounded-full border px-4 py-1 text-sm"
+            >Introducing</span
+        >
+        <h1 class="text-display font-aeonik-pro mx-auto inline-block py-12 text-center">
+            <GradientText>The Appwrite Network</GradientText>
+        </h1>
+    </div>
+    <div
+        class={classNames(
+            'animate-lighting absolute top-0 left-0 -z-10 h-screen w-full -translate-x-[25%] translate-y-8 rotate-25 overflow-hidden blur-3xl',
+            'bg-[image:radial-gradient(ellipse_390px_50px_at_10%_30%,_rgba(254,_149,_103,_0.2)_0%,_rgba(254,_149,_103,_0)_70%),_radial-gradient(ellipse_1100px_170px_at_15%_40%,rgba(253,_54,_110,_0.08)_0%,_rgba(253,_54,_110,_0)_70%),_radial-gradient(ellipse_1200px_180px_at_30%_30%,_rgba(253,_54,_110,_0.08)_0%,_rgba(253,_54,_110,_0)_70%)]',
+            'bg-position-[0%_0%]'
+        )}
+    ></div>
+    <div class="mb-20">
         <Map />
     </div>
 </Main>
-
-<style>
-    .hero {
-        --first-gradient: radial-gradient(
-            ellipse 390px 50px at 10% 30%,
-            rgba(254, 149, 103, 0.4) 0%,
-            rgba(254, 149, 103, 0) 70%
-        );
-        --second-gradient: radial-gradient(
-            ellipse 1100px 170px at 15% 40%,
-            rgba(253, 54, 110, 0.16) 0%,
-            rgba(253, 54, 110, 0) 70%
-        );
-        --third-gradient: radial-gradient(
-            ellipse 1200px 180px at 30% 30%,
-            rgba(253, 54, 110, 0.16) 0%,
-            rgba(253, 54, 110, 0) 70%
-        );
-
-        background-image: var(--first-gradient), var(--second-gradient), var(--third-gradient);
-    }
-</style>

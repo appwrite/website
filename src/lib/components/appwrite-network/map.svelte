@@ -30,7 +30,7 @@
     // Vertical scaling factor due to Y-axis compression
     const verticalScale = 0.65;
 
-    export function latLongToSvgPosition({ latitude, longitude }: Coordinates): PixelPosition {
+    function latLongToSvgPosition({ latitude, longitude }: Coordinates): PixelPosition {
         const x = ((longitude - MAP_BOUNDS.east) / (MAP_BOUNDS.west - MAP_BOUNDS.east)) * svgWidth;
 
         const normalizedLat = (MAP_BOUNDS.south - latitude) / (MAP_BOUNDS.south - MAP_BOUNDS.north);
@@ -38,6 +38,7 @@
 
         return { x, y };
     }
+
     const pins = $state({
         'pop-locations': [
             {
