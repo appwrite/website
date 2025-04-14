@@ -122,7 +122,13 @@
 
             <Tooltip.Provider delayDuration={0} skipDelayDuration={500} disableCloseOnTriggerClick>
                 {#each pins[activeSegment as PinSegment].map( (pin) => ({ ...pin, isOpen: activeRegion === slugify(pin.city), position: latLongToSvgPosition( { latitude: pin.lat, longitude: pin.lng, width, height } ) }) ) as pin, index}
-                    <MapMarker {...pin} animate={$animate} {index} bounds={MAP_BOUNDS} />
+                    <MapMarker
+                        {...pin}
+                        position={pin.position}
+                        animate={$animate}
+                        {index}
+                        bounds={MAP_BOUNDS}
+                    />
                 {/each}
             </Tooltip.Provider>
         </div>

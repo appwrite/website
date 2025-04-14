@@ -9,6 +9,10 @@
         index: number;
         lat: number;
         lng: number;
+        position: {
+            x: number;
+            y: number;
+        };
         bounds: {
             north: number;
             south: number;
@@ -28,6 +32,7 @@
         lat,
         lng,
         bounds,
+        position,
         available = false,
         class: className = '',
         animate = false,
@@ -54,7 +59,7 @@
             'group absolute flex size-3 cursor-pointer items-center justify-center opacity-0 [animation-delay:var(--delay)]',
             { 'animate-fade-in': animate }
         )}
-        style="left:{x}%; top:{y}%; --delay:{index * 10}ms;"
+        style="left:{position.x}px; top:{position.y}px; --delay:{index * 10}ms;"
         data-region={slugify(city)}
         data-active={isOpen}
     >

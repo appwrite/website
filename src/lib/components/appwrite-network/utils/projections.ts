@@ -31,18 +31,3 @@ export const latLongToSvgPosition = ({
 
     return { x, y };
 };
-
-export const svgPositionToLatLong = ({
-    width,
-    height,
-    ...position
-}: PixelPosition & { width: number; height: number }) => {
-    const longitude = MAP_BOUNDS.west + (position.x / width) * (MAP_BOUNDS.east - MAP_BOUNDS.west);
-    const normalizedY = position.y / height;
-    const latRatio =
-        normalizedY > 0.5 ? normalizedY * 1.02 - 0.01 : Math.pow(normalizedY / 0.96, 1 / 0.95);
-
-    const latitude = MAP_BOUNDS.north - latRatio * (MAP_BOUNDS.north - MAP_BOUNDS.south);
-
-    return { latitude, longitude };
-};
