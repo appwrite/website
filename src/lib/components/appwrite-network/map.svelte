@@ -1,7 +1,7 @@
 <script lang="ts" module>
     export const MAP_BOUNDS = $state({
         west: -132,
-        east: 200,
+        east: 185,
         north: 65,
         south: -65
     });
@@ -18,8 +18,10 @@
     import { pins, type PinSegment } from './data/pins';
     import { latLongToSvgPosition } from './utils/projections';
 
-    let height: number = $state(0);
-    let width: number = $state(0);
+    let dimensions = $state({
+        width: 0,
+        height: 0
+    });
 
     let activeRegion = $state<string | null>(null);
     let activeMarker: HTMLElement | null = null;
@@ -96,8 +98,8 @@
     >
         <div
             class="map relative w-full origin-bottom overflow-scroll transition-all [scrollbar-width:none]"
-            bind:clientWidth={width}
-            bind:clientHeight={height}
+            bind:clientWidth={dimensions.width}
+            bind:clientHeight={dimensions.height}
         >
             <div
                 class="absolute inset-0 mask-[image:url('/images/regions/map.svg')] mask-contain mask-no-repeat"
@@ -121,7 +123,7 @@
             />
 
             <Tooltip.Provider delayDuration={0} skipDelayDuration={500} disableCloseOnTriggerClick>
-                {#each pins[activeSegment as PinSegment].map( (pin) => ({ ...pin, isOpen: activeRegion === slugify(pin.city), position: latLongToSvgPosition( { latitude: pin.lat, longitude: pin.lng, width, height } ) }) ) as pin, index}
+                {#each pins[activeSegment as PinSegment].map( (pin) => ({ ...pin, isOpen: activeRegion === slugify(pin.city), position: latLongToSvgPosition( { latitude: pin.lat, longitude: pin.lng, ...dimensions } ) }) ) as pin, index}
                     <MapMarker
                         {...pin}
                         position={pin.position}
