@@ -36,15 +36,16 @@
     class="flex flex-col items-center justify-center gap-12"
 >
     <Tabs.List
-        class="border-smooth bg-card relative grid w-full max-w-xl grid-cols-1 place-content-center gap-3 p-1 drop-shadow-md md:grid-cols-3 md:rounded-full md:border"
+        class="border-smooth animate-fade-in bg-card relative grid w-full max-w-xl grid-cols-1 place-content-center gap-3 p-1 drop-shadow-md md:grid-cols-3 md:rounded-full md:border"
     >
-        {#each navItems as { label, icon, value }}
+        {#each navItems as { label, icon, value }, index}
             <Tabs.Trigger
                 {value}
                 class={classNames(
-                    'text-caption text-primary bg-smooth border-smooth flex h-8 items-center justify-center gap-2 rounded-full border font-medium outline-0 transition-colors',
+                    'text-caption animate-text text-primary bg-smooth border-smooth flex h-8 items-center justify-center gap-2 rounded-full border font-medium outline-0 transition-colors',
                     'group data-[state="active"]:bg-accent/4 data-[state="active"]:border-accent/36 data-[state="active"]:text-white'
                 )}
+                style="animation-delay:{index * 75}ms;"
             >
                 <Icon name={icon} class="group-data-[state='active']:text-accent" />
                 {label}</Tabs.Trigger

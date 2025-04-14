@@ -68,22 +68,6 @@
     };
 </script>
 
-<div class="absolute top-20 left-0 flex flex-col gap-4">
-    {#each Object.entries(MAP_BOUNDS) as [bound, value]}
-        <input
-            type="number"
-            onchange={(e) => {
-                MAP_BOUNDS[bound as keyof typeof MAP_BOUNDS] = e.currentTarget.valueAsNumber;
-            }}
-            {value}
-        />
-    {/each}
-</div>
-
-<pre>
-    {JSON.stringify(MAP_BOUNDS, null, 4)}
-</pre>
-
 <div class="w-full overflow-scroll [scrollbar-width:none]">
     <div
         class="sticky left-0 z-10 mb-8 flex w-screen gap-2 overflow-scroll px-8 [scrollbar-width:none] md:hidden"
@@ -106,12 +90,12 @@
     </div>
 
     <div
-        class="relative container mx-auto flex h-full w-[250vw] flex-col justify-center overflow-scroll py-10 transition-all delay-250 duration-250 md:w-fit md:flex-row md:overflow-auto md:py-0"
+        class="relative container mx-auto flex h-full w-[250vw] flex-col justify-center overflow-scroll px-0 py-10 transition-all delay-250 duration-250 md:w-fit md:flex-row md:overflow-auto md:py-0"
         use:inView
         use:mousePosition
     >
         <div
-            class="map relative w-full origin-bottom overflow-scroll transition-all [scrollbar-width:none]"
+            class="map animate-text relative w-full origin-bottom overflow-scroll transition-all [scrollbar-width:none]"
             bind:clientWidth={width}
             bind:clientHeight={height}
         >
@@ -129,7 +113,12 @@
                 ></div>
             </div>
 
-            <img src="/images/regions/map.svg" class="opacity-10" alt="Map of the world" />
+            <img
+                src="/images/regions/map.svg"
+                class="pointer-events-none opacity-10"
+                draggable="false"
+                alt="Map of the world"
+            />
 
             <Tooltip.Provider delayDuration={0} skipDelayDuration={500} disableCloseOnTriggerClick>
                 {#each pins[activeSegment as PinSegment].map( (pin) => ({ ...pin, isOpen: activeRegion === slugify(pin.city), position: latLongToSvgPosition( { latitude: pin.lat, longitude: pin.lng, width, height } ) }) ) as pin, index}

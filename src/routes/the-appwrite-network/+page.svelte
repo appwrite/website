@@ -12,9 +12,11 @@
         softwareAppSchema
     } from '$lib/utils/metadata';
 
-    const title = 'Appwrite - Build like a team of hundreds';
+    const title = 'The Appwrite Network';
     const description = DEFAULT_DESCRIPTION;
     const ogImage = `${DEFAULT_HOST}/images/open-graph/website.png`;
+
+    const heading = 'The Appwrite Network';
 </script>
 
 <svelte:head>
@@ -44,14 +46,20 @@
     <div class="container mt-20 flex flex-col items-center">
         <a
             href="/"
-            class="bg-accent/4 group border-accent/36 text-primary relative -mb-8 flex items-center gap-2 rounded-full border px-4 py-1 text-sm"
+            class="bg-accent/4 animate-text group border-accent/36 text-primary relative -mb-8 flex items-center gap-2 rounded-full border px-4 py-1 text-sm"
+            style:animation-delay="250ms"
             >Read the announcement <Icon
                 name="arrow-right"
                 class="transition group-hover:translate-x-0.5"
             /></a
         >
         <h1 class="text-display font-aeonik-pro mx-auto inline-block py-12 text-center">
-            <GradientText>The Appwrite Network</GradientText>
+            {#each heading.split(' ') as word, i}
+                <GradientText
+                    class="animate-text mr-2 inline-block"
+                    style="animation-delay:{i * 75}ms">{word}</GradientText
+                >
+            {/each}
         </h1>
     </div>
     <div
