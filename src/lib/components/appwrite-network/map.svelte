@@ -32,16 +32,22 @@
     const verticalScale = 0.65;
 
     function latLongToSvgPosition({ latitude, longitude }: Coordinates): PixelPosition {
-        // Constrain latitude to visible map bounds first
-        const clampedLat = Math.max(MAP_BOUNDS.south, Math.min(MAP_BOUNDS.north, latitude));
+        // Handle longitude wrapping
+        let adjustedLongitude = longitude;
+        if (adjustedLongitude < MAP_BOUNDS.west) {
+            adjustedLongitude += 360; // Wrap around for coordinates like -170
+        }
 
-        // Calculate X position
-        const normalizedLong = (longitude - MAP_BOUNDS.west) / (MAP_BOUNDS.east - MAP_BOUNDS.west);
+        // Calculate X position - note the order is important here
+        // We need to normalize from west to east (the visible portion)
+        const normalizedLong =
+            (adjustedLongitude - MAP_BOUNDS.west) / (MAP_BOUNDS.east - MAP_BOUNDS.west);
         const x = normalizedLong * width;
 
-        // Calculate Y position with vertical scaling
-        const normalizedLat =
-            (MAP_BOUNDS.north - clampedLat) / (MAP_BOUNDS.north - MAP_BOUNDS.south);
+        // For Y position, we need to invert the normalization since SVG Y increases downward
+        const normalizedLat = (MAP_BOUNDS.north - latitude) / (MAP_BOUNDS.north - MAP_BOUNDS.south);
+
+        // Apply the vertical scaling factor to compress the Y axis
         const y = normalizedLat * height * verticalScale + (height * (1 - verticalScale)) / 2;
 
         return { x, y };
