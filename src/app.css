@@ -90,6 +90,8 @@
     --animate-fade-in: fade-in 0.5s ease-in-out both;
     --animate-marquee: marquee var(--speed, 30s) linear infinite var(--direction, forwards);
     --animate-lighting: lighting 1.25s ease-out forwards;
+    --animate-menu-in: menu-in 0.25s ease-out forwards;
+    --animate-menu-out: menu-out 0.25s ease-out forwards;
 
     /* Keyframes */
     @keyframes scale-in {
@@ -165,6 +167,32 @@
             opacity: 1;
             clip-path: inset(0);
             transform: scale(1);
+        }
+    }
+
+    @keyframes menu-in {
+        0% {
+            opacity: 0;
+            filter: blur(2px);
+            transform: translateY(8px);
+        }
+        100% {
+            opacity: 1;
+            filter: blur(0px);
+            transform: translateY(0px);
+        }
+    }
+
+    @keyframes menu-out {
+        0% {
+            opacity: 1;
+            filter: blur(0px);
+            transform: translateY(0px);
+        }
+        100% {
+            opacity: 0;
+            filter: blur(2px);
+            transform: translateY(8px);
         }
     }
 
