@@ -29,9 +29,6 @@
         city,
         code,
         index = 0,
-        lat,
-        lng,
-        bounds,
         position,
         available = false,
         class: className = '',
@@ -48,9 +45,6 @@
             open = false;
         }
     });
-
-    const x = $derived(((lng - bounds.west) / (bounds.east - bounds.west)) * 100);
-    const y = $derived(((bounds.north - lat) / (bounds.north - bounds.south)) * 100);
 </script>
 
 <Tooltip.Root bind:open>
