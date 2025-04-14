@@ -807,8 +807,7 @@
             <img src="/images/regions/map.svg" class="opacity-10" alt="Map of the world" />
 
             <Tooltip.Provider delayDuration={0} skipDelayDuration={500} disableCloseOnTriggerClick>
-                {#each pins[activeSegment as PinSegment].map( (pin) => ({ ...pin, isOpen: activeRegion === slugify(pin.city), // Calculate x/y position from lat/lng
-                        position: latLongToSvgPosition( { latitude: pin.lat, longitude: pin.lng } ) }) ) as pin, index}
+                {#each pins[activeSegment as PinSegment].map( (pin) => ({ ...pin, isOpen: activeRegion === slugify(pin.city), position: latLongToSvgPosition( { latitude: pin.lat, longitude: pin.lng } ) }) ) as pin, index}
                     <MapMarker {...pin} {animate} {index} bounds={MAP_BOUNDS} {showDebugInfo} />
                 {/each}
             </Tooltip.Provider>
