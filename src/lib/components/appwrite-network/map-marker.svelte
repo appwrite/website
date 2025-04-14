@@ -56,7 +56,7 @@
             'group absolute flex size-3 cursor-pointer items-center justify-center opacity-0 [animation-delay:var(--delay)]',
             { 'animate-fade-in': animate }
         )}
-        style="left:{x}%; top:{y}%; --delay:{index * 100}ms; transform: translate(-50%, -50%);"
+        style="left:{x}%; top:{y}%; --delay:{index * 10}ms; transform: translate(-50%, -50%);"
         data-region={slugify(city)}
         data-active={isOpen}
     >
@@ -71,7 +71,7 @@
     <Tooltip.Content
         sideOffset={12}
         class={classNames(
-            'from-card/75 to-greyscale-800/75 border-gradient flex w-[190px] flex-col gap-2 rounded-[10px] bg-gradient-to-tl p-2 backdrop-blur-sm before:rounded-[10px] after:rounded-[10px]',
+            'from-card/75 to-greyscale-800/75 border-gradient relative z-10 flex w-[190px] flex-col gap-2 rounded-[10px] bg-gradient-to-tl p-2 backdrop-blur-sm before:rounded-[10px] after:rounded-[10px]',
             'data-[state="closed"]:animate-menu-out data-[state="instant-open"]:animate-menu-in data-[state="delayed-open"]:animate-menu-in',
             className
         )}
