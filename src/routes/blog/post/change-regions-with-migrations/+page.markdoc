@@ -12,7 +12,7 @@ featured: false
 
 With the launch of the **Appwrite Network**, Appwrite Cloud now gives you the ability to choose where your project is hosted. This means that you can bring your backend closer to your users, reducing latency, improving responsiveness, and aligning with local data residency laws if needed.
 
-But what if you've already built and launched your app in one region, and now you need to move it to another? While there's currently no simple toggle to switch regions, you can still move everything over by creating a new project in your target region and using Appwrite's built-in migration tool to transfer your data and configurations from one Cloud region to another.
+But what if you've already built and launched your app in one region, and now you need to move it to another? Currently, there's no simple toggle to switch regions, but Appwrite provides a built-in migration tool that allows you to create a new project in your target region and move your data and services to it.
 
 In this guide, we'll walk through the process of migrating your Appwrite Cloud project to a new region, along with the steps to take after the migration is complete.
 
