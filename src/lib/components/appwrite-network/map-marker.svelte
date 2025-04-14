@@ -69,7 +69,7 @@
     <Tooltip.Content
         sideOffset={12}
         class={classNames(
-            'from-card/75 to-greyscale-800/75 border-gradient relative z-100 flex w-[190px] flex-col gap-2 rounded-[10px] bg-gradient-to-tl p-2 backdrop-blur-sm before:rounded-[10px] after:rounded-[10px]',
+            'bg-card/90 border-gradient relative z-100 flex w-[190px] flex-col gap-2 rounded-[10px] p-2 backdrop-blur-lg before:rounded-[10px] after:rounded-[10px]',
             'data-[state="closed"]:animate-menu-out data-[state="instant-open"]:animate-menu-in data-[state="delayed-open"]:animate-menu-in',
             className
         )}
