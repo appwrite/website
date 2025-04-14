@@ -1,710 +1,34 @@
+<script lang="ts" module>
+    export const MAP_BOUNDS = $state({
+        west: -132,
+        east: 178,
+        north: 65,
+        south: -65
+    });
+</script>
+
 <script lang="ts">
-    import { inView } from 'motion';
     import MapMarker from './map-marker.svelte';
     import { slugify } from '$lib/utils/slugify';
     import { classNames } from '$lib/utils/classnames';
     import { Tooltip } from 'bits-ui';
     import MapNav from './map-nav.svelte';
-
-    const showDebugInfo = false;
-
-    type Coordinates = {
-        latitude: number;
-        longitude: number;
-    };
-
-    type PixelPosition = {
-        x: number;
-        y: number;
-    };
+    import { useMousePosition } from '$lib/actions/mouse-position';
+    import { useAnimateInView } from '$lib/actions/animate-in-view';
+    import { pins, type PinSegment } from './data/pins';
+    import { latLongToSvgPosition } from './utils/projections';
 
     let height: number = $state(0);
     let width: number = $state(0);
 
-    const MAP_BOUNDS = $state({
-        west: -117,
-        east: 207,
-        north: 67, // Reduced from 70 to exclude north pole
-        south: -83 // Increased from -55 to exclude Antarctica
-    });
-
-    // Vertical scaling factor due to Y-axis compression
-    const verticalScale = 0.65;
-
-    function latLongToSvgPosition({ latitude, longitude }: Coordinates): PixelPosition {
-        // Handle longitude wrapping
-        let adjustedLongitude = longitude;
-        if (adjustedLongitude < MAP_BOUNDS.west) {
-            adjustedLongitude += 360; // Wrap around for coordinates like -170
-        }
-
-        // Calculate X position - note the order is important here
-        // We need to normalize from west to east (the visible portion)
-        const normalizedLong =
-            (adjustedLongitude - MAP_BOUNDS.west) / (MAP_BOUNDS.east - MAP_BOUNDS.west);
-        const x = normalizedLong * width;
-
-        // For Y position, we need to invert the normalization since SVG Y increases downward
-        const normalizedLat = (MAP_BOUNDS.north - latitude) / (MAP_BOUNDS.north - MAP_BOUNDS.south);
-
-        // Apply the vertical scaling factor to compress the Y axis
-        const y = normalizedLat * height * verticalScale + (height * (1 - verticalScale)) / 2;
-
-        return { x, y };
-    }
-
-    const pins = $state({
-        'pop-locations': [
-            {
-                lat: 39.04,
-                lng: -77.49,
-                city: 'Ashburn',
-                code: 'ASH',
-                available: true
-            },
-            {
-                lat: 33.75,
-                lng: -84.39,
-                city: 'Atlanta',
-                code: 'ATL',
-                available: true
-            },
-            {
-                lat: 42.36,
-                lng: -71.06,
-                city: 'Boston',
-                code: 'BOS',
-                available: true
-            },
-            {
-                lat: 51.05,
-                lng: -114.07,
-                city: 'Calgary',
-                code: 'CAL',
-                available: true
-            },
-            {
-                lat: 41.88,
-                lng: -87.63,
-                city: 'Chicago',
-                code: 'CHI',
-                available: true
-            },
-            {
-                lat: 39.96,
-                lng: -82.99,
-                city: 'Columbus',
-                code: 'COL',
-                available: true
-            },
-            {
-                lat: 32.78,
-                lng: -96.8,
-                city: 'Dallas',
-                code: 'DAL',
-                available: true
-            },
-            {
-                lat: 39.74,
-                lng: -104.99,
-                city: 'Denver',
-                code: 'DEN',
-                available: true
-            },
-            {
-                lat: 42.33,
-                lng: -83.05,
-                city: 'Detroit',
-                code: 'DET',
-                available: true
-            },
-            {
-                lat: 21.31,
-                lng: -157.86,
-                city: 'Honolulu',
-                code: 'HNL',
-                available: true
-            },
-            {
-                lat: 29.76,
-                lng: -95.37,
-                city: 'Houston',
-                code: 'HOU',
-                available: true
-            },
-            {
-                lat: 30.33,
-                lng: -81.66,
-                city: 'Jacksonville',
-                code: 'JAX',
-                available: true
-            },
-            {
-                lat: 39.1,
-                lng: -94.58,
-                city: 'Kansas City',
-                code: 'KC',
-                available: true
-            },
-            {
-                lat: 34.05,
-                lng: -118.24,
-                city: 'Los Angeles',
-                code: 'LA',
-                available: true
-            },
-            {
-                lat: 25.77,
-                lng: -80.19,
-                city: 'Miami',
-                code: 'MIA',
-                available: true
-            },
-            {
-                lat: 44.98,
-                lng: -93.27,
-                city: 'Minneapolis',
-                code: 'MIN',
-                available: true
-            },
-            {
-                lat: 45.5,
-                lng: -73.57,
-                city: 'Montreal',
-                code: 'MTL',
-                available: true
-            },
-            {
-                lat: 40.71,
-                lng: -74.01,
-                city: 'New York',
-                code: 'NYC',
-                available: true
-            },
-            {
-                lat: 33.45,
-                lng: -112.07,
-                city: 'Phoenix',
-                code: 'PHX',
-                available: true
-            },
-            {
-                lat: 45.52,
-                lng: -122.68,
-                city: 'Portland',
-                code: 'PDX',
-                available: true
-            },
-            {
-                lat: 37.34,
-                lng: -121.89,
-                city: 'San Jose',
-                code: 'SJ',
-                available: true
-            },
-            {
-                lat: 47.61,
-                lng: -122.33,
-                city: 'Seattle',
-                code: 'SEA',
-                available: true
-            },
-            {
-                lat: 38.63,
-                lng: -90.2,
-                city: 'St Louis',
-                code: 'STL',
-                available: true
-            },
-            {
-                lat: 43.65,
-                lng: -79.38,
-                city: 'Toronto',
-                code: 'TOR',
-                available: true
-            },
-            {
-                lat: 49.28,
-                lng: -123.12,
-                city: 'Vancouver',
-                code: 'VAN',
-                available: true
-            },
-            {
-                lat: 4.71,
-                lng: -74.07,
-                city: 'Bogota',
-                code: 'BOG',
-                available: true
-            },
-            {
-                lat: -34.61,
-                lng: -58.38,
-                city: 'Buenos Aires',
-                code: 'BUE',
-                available: true
-            },
-            {
-                lat: -25.43,
-                lng: -49.27,
-                city: 'Curitiba',
-                code: 'CUR',
-                available: true
-            },
-            {
-                lat: -3.73,
-                lng: -38.52,
-                city: 'Fortaleza',
-                code: 'FOR',
-                available: true
-            },
-            {
-                lat: -12.05,
-                lng: -77.04,
-                city: 'Lima',
-                code: 'LIM',
-                available: true
-            },
-            {
-                lat: -23.55,
-                lng: -46.63,
-                city: 'São Paulo',
-                code: 'SAO',
-                available: true
-            },
-            {
-                lat: -33.45,
-                lng: -70.67,
-                city: 'Santiago',
-                code: 'SCL',
-                available: true
-            },
-            {
-                lat: -22.91,
-                lng: -43.17,
-                city: 'Rio de Janeiro',
-                code: 'RIO',
-                available: true
-            },
-            {
-                lat: 52.37,
-                lng: 4.89,
-                city: 'Amsterdam',
-                code: 'AMS',
-                available: true
-            },
-            {
-                lat: 55.68,
-                lng: 12.57,
-                city: 'Copenhagen',
-                code: 'CPH',
-                available: true
-            },
-            {
-                lat: 50.85,
-                lng: 4.35,
-                city: 'Brussels',
-                code: 'BRU',
-                available: true
-            },
-            {
-                lat: 53.35,
-                lng: -6.26,
-                city: 'Dublin',
-                code: 'DUB',
-                available: true
-            },
-            {
-                lat: 50.11,
-                lng: 8.68,
-                city: 'Frankfurt',
-                code: 'FRA',
-                available: true
-            },
-            {
-                lat: 60.17,
-                lng: 24.94,
-                city: 'Helsinki',
-                code: 'HEL',
-                available: true
-            },
-            {
-                lat: 38.72,
-                lng: -9.14,
-                city: 'Lisbon',
-                code: 'LIS',
-                available: true
-            },
-            {
-                lat: 51.51,
-                lng: -0.13,
-                city: 'London',
-                code: 'LON',
-                available: true
-            },
-            {
-                lat: 40.42,
-                lng: -3.7,
-                city: 'Madrid',
-                code: 'MAD',
-                available: true
-            },
-            {
-                lat: 53.48,
-                lng: -2.24,
-                city: 'Manchester',
-                code: 'MAN',
-                available: true
-            },
-            {
-                lat: 43.3,
-                lng: 5.37,
-                city: 'Marseille',
-                code: 'MRS',
-                available: true
-            },
-            {
-                lat: 45.46,
-                lng: 9.19,
-                city: 'Milan',
-                code: 'MIL',
-                available: true
-            },
-            {
-                lat: 48.14,
-                lng: 11.58,
-                city: 'Munich',
-                code: 'MUN',
-                available: true
-            },
-            {
-                lat: 59.91,
-                lng: 10.75,
-                city: 'Oslo',
-                code: 'OSL',
-                available: true
-            },
-            {
-                lat: 38.12,
-                lng: 13.36,
-                city: 'Palermo',
-                code: 'PAL',
-                available: true
-            },
-            {
-                lat: 48.86,
-                lng: 2.35,
-                city: 'Paris',
-                code: 'PAR',
-                available: true
-            },
-            {
-                lat: 41.9,
-                lng: 12.5,
-                city: 'Rome',
-                code: 'ROM',
-                available: true
-            },
-            {
-                lat: 42.7,
-                lng: 23.32,
-                city: 'Sofia',
-                code: 'SOF',
-                available: true
-            },
-            {
-                lat: 59.33,
-                lng: 18.07,
-                city: 'Stockholm',
-                code: 'STO',
-                available: true
-            },
-            {
-                lat: 48.21,
-                lng: 16.37,
-                city: 'Vienna',
-                code: 'VIE',
-                available: true
-            },
-            {
-                lat: 5.56,
-                lng: -0.2,
-                city: 'Accra',
-                code: 'ACC',
-                available: true
-            },
-            {
-                lat: -33.93,
-                lng: 18.42,
-                city: 'Cape Town',
-                code: 'CPT',
-                available: true
-            },
-            {
-                lat: -26.2,
-                lng: 28.05,
-                city: 'Johannesburg',
-                code: 'JHB',
-                available: true
-            },
-            {
-                lat: 13.75,
-                lng: 100.5,
-                city: 'Bangkok',
-                code: 'BKK',
-                available: true
-            },
-            {
-                lat: 13.08,
-                lng: 80.28,
-                city: 'Chennai',
-                code: 'CHE',
-                available: true
-            },
-            {
-                lat: 25.27,
-                lng: 55.3,
-                city: 'Dubai',
-                code: 'DXB',
-                available: true
-            },
-            {
-                lat: 25.12,
-                lng: 56.33,
-                city: 'Fujairah',
-                code: 'FUJ',
-                available: true
-            },
-            {
-                lat: 22.32,
-                lng: 114.17,
-                city: 'Hong Kong',
-                code: 'HK',
-                available: true
-            },
-            {
-                lat: 17.38,
-                lng: 78.48,
-                city: 'Hyderabad',
-                code: 'HYD',
-                available: true
-            },
-            {
-                lat: 22.57,
-                lng: 88.36,
-                city: 'Kolkata',
-                code: 'KOL',
-                available: true
-            },
-            {
-                lat: 3.14,
-                lng: 101.69,
-                city: 'Kuala Lumpur',
-                code: 'KL',
-                available: true
-            },
-            {
-                lat: 14.6,
-                lng: 120.98,
-                city: 'Manila',
-                code: 'MNL',
-                available: true
-            },
-            {
-                lat: 19.08,
-                lng: 72.88,
-                city: 'Mumbai',
-                code: 'MUM',
-                available: true
-            },
-            {
-                lat: 28.61,
-                lng: 77.21,
-                city: 'New Delhi',
-                code: 'DEL',
-                available: true
-            },
-            {
-                lat: 34.69,
-                lng: 135.5,
-                city: 'Osaka',
-                code: 'OSA',
-                available: true
-            },
-            {
-                lat: 37.57,
-                lng: 126.98,
-                city: 'Seoul',
-                code: 'SEL',
-                available: true
-            },
-            {
-                lat: 1.35,
-                lng: 103.82,
-                city: 'Singapore',
-                code: 'SIN',
-                available: true
-            },
-            {
-                lat: 35.69,
-                lng: 139.69,
-                city: 'Tokyo',
-                code: 'TYO',
-                available: true
-            },
-            {
-                lat: -34.93,
-                lng: 138.6,
-                city: 'Adelaide',
-                code: 'ADL',
-                available: true
-            },
-            {
-                lat: -36.85,
-                lng: 174.76,
-                city: 'Auckland',
-                code: 'AKL',
-                available: true
-            },
-            {
-                lat: -27.47,
-                lng: 153.03,
-                city: 'Brisbane',
-                code: 'BNE',
-                available: true
-            },
-            {
-                lat: -43.53,
-                lng: 172.64,
-                city: 'Christchurch',
-                code: 'CHC',
-                available: true
-            },
-            {
-                lat: -37.81,
-                lng: 144.96,
-                city: 'Melbourne',
-                code: 'MEL',
-                available: true
-            },
-            {
-                lat: -31.95,
-                lng: 115.86,
-                city: 'Perth',
-                code: 'PER',
-                available: true
-            },
-            {
-                lat: -33.87,
-                lng: 151.21,
-                city: 'Sydney',
-                code: 'SYD',
-                available: true
-            },
-            {
-                lat: -41.29,
-                lng: 174.78,
-                city: 'Wellington',
-                code: 'WLG',
-                available: true
-            }
-        ],
-        edges: [
-            {
-                lat: 37.77,
-                lng: -122.42,
-                city: 'San Francisco',
-                code: 'SFO',
-                available: true
-            },
-            {
-                lat: 48.86,
-                lng: 2.35,
-                city: 'Paris',
-                code: 'FRA',
-                available: true
-            },
-            {
-                lat: -33.87,
-                lng: 151.21,
-                city: 'Sydney',
-                code: 'AUS',
-                available: true
-            }
-        ],
-        regions: [
-            {
-                lat: 37.77,
-                lng: -122.42,
-                city: 'San Francisco',
-                code: 'SFO',
-                available: true
-            },
-            {
-                lat: 48.86,
-                lng: 2.35,
-                city: 'Paris',
-                code: 'FRA',
-                available: true
-            },
-            {
-                lat: -33.87,
-                lng: 151.21,
-                city: 'Sydney',
-                code: 'AUS',
-                available: true
-            }
-        ]
-    });
-
-    type PinSegment = keyof typeof pins;
-
-    let mouse = $state({ x: 0, y: 0 });
-    let animate = $state(true);
     let activeRegion = $state<string | null>(null);
-    let hasActiveMarker = $state(false);
     let activeMarker: HTMLElement | null = null;
-
     let activeSegment = $state<string>('pop-locations');
 
-    $effect(() => {
-        console.log(pins[activeSegment as PinSegment]);
-    });
+    const { action: mousePosition, position } = useMousePosition();
+    const { action: inView, animate } = useAnimateInView({});
 
-    const useMousePosition = (node: HTMLElement) => {
-        const handleMouseMove = (event: MouseEvent) => {
-            mouse = {
-                x: event.clientX,
-                y: event.clientY
-            };
-        };
-
-        inView(
-            node,
-            () => {
-                node.addEventListener('mousemove', handleMouseMove);
-            },
-            { amount: 'all' }
-        );
-
-        return {
-            destroy() {
-                node.removeEventListener('mousemove', handleMouseMove);
-            }
-        };
-    };
-
-    const useInView = (node: HTMLElement) => {
-        inView(
-            node,
-            () => {
-                animate = true;
-            },
-            { amount: 'all' }
-        );
-    };
-
-    const scrollMarkerIntoView = (marker: HTMLElement): Promise<void> => {
+    const scrollMarkerIntoView = (marker: HTMLElement) => {
         return new Promise<void>((resolve) => {
             marker.scrollIntoView({
                 behavior: 'smooth',
@@ -726,19 +50,15 @@
         });
     };
 
-    // Handle marker click
     const handleSetActiveMarker = async (city: string) => {
         const citySlug = slugify(city);
 
-        // Toggle off if already active
         if (activeRegion === citySlug) {
-            hasActiveMarker = false;
             activeMarker = null;
             activeRegion = null;
             return;
         }
 
-        hasActiveMarker = true;
         activeMarker = document.querySelector(`[data-region="${citySlug}"]`);
 
         if (activeMarker) {
@@ -748,21 +68,21 @@
     };
 </script>
 
-<div class="absolute">
+<div class="absolute top-20 left-0 flex flex-col gap-4">
     {#each Object.entries(MAP_BOUNDS) as [bound, value]}
         <input
-            {value}
             type="number"
-            step="1"
-            class="w-full"
-            name="val"
-            onchange={(e) =>
-                (MAP_BOUNDS[bound as 'north' | 'south' | 'east' | 'west'] =
-                    e.currentTarget.valueAsNumber)}
+            onchange={(e) => {
+                MAP_BOUNDS[bound as keyof typeof MAP_BOUNDS] = e.currentTarget.valueAsNumber;
+            }}
+            {value}
         />
-        <label for="val">{bound}: {value}</label>
     {/each}
 </div>
+
+<pre>
+    {JSON.stringify(MAP_BOUNDS, null, 4)}
+</pre>
 
 <div class="w-full overflow-scroll [scrollbar-width:none]">
     <div
@@ -787,9 +107,8 @@
 
     <div
         class="relative container mx-auto flex h-full w-[250vw] flex-col justify-center overflow-scroll py-10 transition-all delay-250 duration-250 md:w-fit md:flex-row md:overflow-auto md:py-0"
-        use:useMousePosition
-        use:useInView
-        data-active-marker={hasActiveMarker}
+        use:inView
+        use:mousePosition
     >
         <div
             class="map relative w-full origin-bottom overflow-scroll transition-all [scrollbar-width:none]"
@@ -805,16 +124,16 @@
                         'from-accent bg-radial-[circle_at_center] via-white/70 to-white/70',
                         'transform-[translate3d(calc(var(--mouse-x,_-100%)_*_1_-_16rem),_calc(var(--mouse-y,_-100%)_*_1_-_28rem),0)]'
                     )}
-                    style:--mouse-x="{mouse.x}px"
-                    style:--mouse-y="{mouse.y}px"
+                    style:--mouse-x="{$position.x}px"
+                    style:--mouse-y="{$position.y}px"
                 ></div>
             </div>
 
             <img src="/images/regions/map.svg" class="opacity-10" alt="Map of the world" />
 
             <Tooltip.Provider delayDuration={0} skipDelayDuration={500} disableCloseOnTriggerClick>
-                {#each pins[activeSegment as PinSegment].map( (pin) => ({ ...pin, isOpen: activeRegion === slugify(pin.city), position: latLongToSvgPosition( { latitude: pin.lat, longitude: pin.lng } ) }) ) as pin, index}
-                    <MapMarker {...pin} {animate} {index} bounds={MAP_BOUNDS} {showDebugInfo} />
+                {#each pins[activeSegment as PinSegment].map( (pin) => ({ ...pin, isOpen: activeRegion === slugify(pin.city), position: latLongToSvgPosition( { latitude: pin.lat, longitude: pin.lng, width, height } ) }) ) as pin, index}
+                    <MapMarker {...pin} animate={$animate} {index} bounds={MAP_BOUNDS} />
                 {/each}
             </Tooltip.Provider>
         </div>

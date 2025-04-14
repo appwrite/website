@@ -19,7 +19,6 @@
         class?: string;
         animate?: boolean;
         isOpen: boolean;
-        showDebugInfo?: boolean;
     }
 
     const {
@@ -32,8 +31,7 @@
         available = false,
         class: className = '',
         animate = false,
-        isOpen = false,
-        showDebugInfo = false
+        isOpen = false
     }: Props = $props();
 
     let open = $state(isOpen);
@@ -95,13 +93,3 @@
         {/if}
     </Tooltip.Content>
 </Tooltip.Root>
-
-{#if showDebugInfo}
-    <div
-        class="absolute z-50 rounded bg-black/50 p-1 text-xs text-white"
-        style="left:{x}%; top:calc({y}% + 12px); transform: translateX(-50%);"
-    >
-        <div>Lat: {lat.toFixed(2)}, Lng: {lng.toFixed(2)}</div>
-        <div>Position: {x.toFixed(2)}%, {y.toFixed(2)}%</div>
-    </div>
-{/if}
