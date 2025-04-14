@@ -46,7 +46,7 @@
     <div class="container mt-20 flex flex-col items-center">
         <a
             href="/"
-            class="bg-accent/4 animate-text group border-accent/36 text-primary relative -mb-8 flex items-center gap-2 rounded-full border px-4 py-1 text-sm"
+            class="bg-accent/4 animate-enter group border-accent/36 text-primary relative -mb-8 flex items-center gap-2 rounded-full border px-4 py-1 text-sm"
             style:animation-delay="250ms"
             >Read the announcement <Icon
                 name="arrow-right"
@@ -56,7 +56,7 @@
         <h1 class="text-display font-aeonik-pro mx-auto inline-block py-12 text-center">
             {#each heading.split(' ') as word, i}
                 <GradientText
-                    class="animate-text mr-2 inline-block"
+                    class="animate-enter mr-2 inline-block"
                     style="animation-delay:{i * 75}ms">{word}</GradientText
                 >
             {/each}

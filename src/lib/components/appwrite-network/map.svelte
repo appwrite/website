@@ -95,7 +95,7 @@
         use:mousePosition
     >
         <div
-            class="map animate-text relative w-full origin-bottom overflow-scroll transition-all [scrollbar-width:none]"
+            class="map animate-enter relative w-full origin-bottom overflow-scroll transition-all [scrollbar-width:none]"
             bind:clientWidth={width}
             bind:clientHeight={height}
         >

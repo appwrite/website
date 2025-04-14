@@ -84,7 +84,7 @@
     /* Animations */
     --animate-scale-in: scale-in 200ms ease-out forwards;
     --animate-caret-blink: caret-blink 1s ease-in-out infinite;
-    --animate-text:
+    --animate-enter:
         fade-in 0.75s ease-in-out both, blur 0.75s ease-in-out both, up 0.75s ease-in-out both;
     --animate-scroll: scroll 60s linear infinite;
     --animate-fade-in: fade-in 0.5s ease-in-out both;
