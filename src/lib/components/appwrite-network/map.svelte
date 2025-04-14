@@ -21,6 +21,10 @@
     let height: number = $state(0);
     let width: number = $state(0);
 
+    $effect(() => {
+        console.log({ width, height });
+    });
+
     let activeRegion = $state<string | null>(null);
     let activeMarker: HTMLElement | null = null;
     let activeSegment = $state<string>('pop-locations');
@@ -67,6 +71,22 @@
         }
     };
 </script>
+
+<div class="absolute top-20 left-0 flex flex-col gap-4">
+    {#each Object.entries(MAP_BOUNDS) as [bound, value]}
+        <input
+            type="number"
+            onchange={(e) => {
+                MAP_BOUNDS[bound as keyof typeof MAP_BOUNDS] = e.currentTarget.valueAsNumber;
+            }}
+            {value}
+        />
+    {/each}
+</div>
+
+<pre>
+    {JSON.stringify(MAP_BOUNDS, null, 4)}
+</pre>
 
 <div class="w-full overflow-scroll [scrollbar-width:none]">
     <div
