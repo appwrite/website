@@ -1,5 +1,7 @@
 <script lang="ts">
     import Map from '$lib/components/appwrite-network/map.svelte';
+    import { InlineTag } from '$lib/components/ui';
+    import GradientText from '$lib/components/ui/gradient-text.svelte';
     import { Main } from '$lib/layouts';
     import {
         DEFAULT_DESCRIPTION,
@@ -38,5 +40,16 @@
 </svelte:head>
 
 <Main>
-    <Map />
+    <div class="container">
+        <div class="mt-12 flex flex-col items-center">
+            <span
+                class="bg-accent/4 border-accent/36 text-primary relative -mb-8 rounded-full border px-4 py-1 text-sm"
+                >Introducing</span
+            >
+            <h1 class="text-display mx-auto inline-block py-12 text-center">
+                <GradientText>The Appwrite Network</GradientText>
+            </h1>
+        </div>
+        <Map />
+    </div>
 </Main>
