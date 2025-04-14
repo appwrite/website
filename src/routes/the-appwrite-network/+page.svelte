@@ -53,3 +53,25 @@
         <Map />
     </div>
 </Main>
+
+<style>
+    .hero {
+        --first-gradient: radial-gradient(
+            ellipse 390px 50px at 10% 30%,
+            rgba(254, 149, 103, 0.4) 0%,
+            rgba(254, 149, 103, 0) 70%
+        );
+        --second-gradient: radial-gradient(
+            ellipse 1100px 170px at 15% 40%,
+            rgba(253, 54, 110, 0.16) 0%,
+            rgba(253, 54, 110, 0) 70%
+        );
+        --third-gradient: radial-gradient(
+            ellipse 1200px 180px at 30% 30%,
+            rgba(253, 54, 110, 0.16) 0%,
+            rgba(253, 54, 110, 0) 70%
+        );
+
+        background-image: var(--first-gradient), var(--second-gradient), var(--third-gradient);
+    }
+</style>
