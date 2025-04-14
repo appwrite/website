@@ -70,7 +70,7 @@
 
 <div class="w-full overflow-scroll [scrollbar-width:none]">
     <div
-        class="sticky left-0 z-10 mb-8 flex w-screen gap-2 overflow-scroll px-8 [scrollbar-width:none] md:hidden"
+        class="sticky left-0 z-10 mb-8 hidden w-screen gap-2 overflow-scroll px-8 [scrollbar-width:none]"
     >
         {#each pins[activeSegment as PinSegment] as pin}
             <button
