@@ -1,6 +1,6 @@
 <script lang="ts">
     import Map from '$lib/components/appwrite-network/map.svelte';
-    import { InlineTag } from '$lib/components/ui';
+    import { InlineTag, Icon } from '$lib/components/ui';
     import GradientText from '$lib/components/ui/gradient-text.svelte';
     import { Main } from '$lib/layouts';
     import { classNames } from '$lib/utils/classnames';
@@ -42,9 +42,13 @@
 
 <Main>
     <div class="container mt-20 flex flex-col items-center">
-        <span
-            class="bg-accent/4 border-accent/36 text-primary relative -mb-8 rounded-full border px-4 py-1 text-sm"
-            >Introducing</span
+        <a
+            href="/blog/post/appwrite-network"
+            class="bg-accent/4 group border-accent/36 text-primary relative -mb-8 flex items-center gap-2 rounded-full border px-4 py-1 text-sm"
+            >Read the announcement <Icon
+                name="arrow-right"
+                class="transition group-hover:translate-x-0.5"
+            /></a
         >
         <h1 class="text-display font-aeonik-pro mx-auto inline-block py-12 text-center">
             <GradientText>The Appwrite Network</GradientText>

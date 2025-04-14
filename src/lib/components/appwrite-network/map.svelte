@@ -18,23 +18,31 @@
         y: number;
     };
 
-    const svgWidth = 1200;
-    const svgHeight = 390;
+    let height: number = $state(0);
+    let width: number = $state(0);
 
     const MAP_BOUNDS = $state({
-        west: -100,
-        east: 180, // Right edge of map (Pacific Ocean)
-        north: 70, // Top edge of map (Arctic)
-        south: -55 // Bottom edge of map (Antarctica)
+        west: -117,
+        east: 207,
+        north: 67, // Reduced from 70 to exclude north pole
+        south: -83 // Increased from -55 to exclude Antarctica
     });
+
     // Vertical scaling factor due to Y-axis compression
     const verticalScale = 0.65;
 
     function latLongToSvgPosition({ latitude, longitude }: Coordinates): PixelPosition {
-        const x = ((longitude - MAP_BOUNDS.east) / (MAP_BOUNDS.west - MAP_BOUNDS.east)) * svgWidth;
+        // Constrain latitude to visible map bounds first
+        const clampedLat = Math.max(MAP_BOUNDS.south, Math.min(MAP_BOUNDS.north, latitude));
 
-        const normalizedLat = (MAP_BOUNDS.south - latitude) / (MAP_BOUNDS.south - MAP_BOUNDS.north);
-        const y = normalizedLat * svgHeight * verticalScale + (svgHeight * (1 - verticalScale)) / 2;
+        // Calculate X position
+        const normalizedLong = (longitude - MAP_BOUNDS.west) / (MAP_BOUNDS.east - MAP_BOUNDS.west);
+        const x = normalizedLong * width;
+
+        // Calculate Y position with vertical scaling
+        const normalizedLat =
+            (MAP_BOUNDS.north - clampedLat) / (MAP_BOUNDS.north - MAP_BOUNDS.south);
+        const y = normalizedLat * height * verticalScale + (height * (1 - verticalScale)) / 2;
 
         return { x, y };
     }
@@ -734,6 +742,22 @@
     };
 </script>
 
+<div class="absolute">
+    {#each Object.entries(MAP_BOUNDS) as [bound, value]}
+        <input
+            {value}
+            type="number"
+            step="1"
+            class="w-full"
+            name="val"
+            onchange={(e) =>
+                (MAP_BOUNDS[bound as 'north' | 'south' | 'east' | 'west'] =
+                    e.currentTarget.valueAsNumber)}
+        />
+        <label for="val">{bound}: {value}</label>
+    {/each}
+</div>
+
 <div class="w-full overflow-scroll [scrollbar-width:none]">
     <div
         class="sticky left-0 z-10 mb-8 flex w-screen gap-2 overflow-scroll px-8 [scrollbar-width:none] md:hidden"
@@ -763,6 +787,8 @@
     >
         <div
             class="map relative w-full origin-bottom overflow-scroll transition-all [scrollbar-width:none]"
+            bind:clientWidth={width}
+            bind:clientHeight={height}
         >
             <div
                 class="absolute inset-0 mask-[image:url('/images/regions/map.svg')] mask-contain mask-no-repeat"
@@ -781,8 +807,8 @@
             <img src="/images/regions/map.svg" class="opacity-10" alt="Map of the world" />
 
             <Tooltip.Provider delayDuration={0} skipDelayDuration={500} disableCloseOnTriggerClick>
-                {#each pins[activeSegment as PinSegment].map( (pin) => ({ ...pin, isOpen: activeRegion === slugify(pin.city), // Calculate x/y position from lat/lng
-                        position: latLongToSvgPosition( { latitude: pin.lat, longitude: pin.lng } ) }) ) as pin, index}
+                {#each pins[activeSegment as PinSegment].map( (pin) => ({ ...pin, isOpen: activeRegion === slugify(pin.city), position:  // Calculate x/y position from lat/lng
+                        latLongToSvgPosition( { latitude: pin.lat, longitude: pin.lng } ) }) ) as pin, index}
                     <MapMarker {...pin} {animate} {index} bounds={MAP_BOUNDS} {showDebugInfo} />
                 {/each}
             </Tooltip.Provider>
