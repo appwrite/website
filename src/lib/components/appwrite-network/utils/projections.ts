@@ -16,18 +16,13 @@ export const latLongToSvgPosition = ({
     width,
     height
 }: Coordinates & { width: number; height: number }) => {
-    let adjustedLong = longitude;
-    if (longitude < MAP_BOUNDS.west) {
-        adjustedLong += 360;
-    } else if (longitude > MAP_BOUNDS.east) {
-        adjustedLong -= 360;
-    }
+    const { west, east, north, south } = MAP_BOUNDS;
 
-    const x = ((adjustedLong - MAP_BOUNDS.west) / (MAP_BOUNDS.east - MAP_BOUNDS.west)) * width;
-    const latRatio = (MAP_BOUNDS.north - latitude) / (MAP_BOUNDS.north - MAP_BOUNDS.south);
+    const lngRatio = (longitude - west) / (east - west);
+    const latRatio = (north - latitude) / (north - south);
 
-    const adjustedLatRatio = Math.pow(latRatio, 0.95) * 0.96 + latRatio * 0.04;
-    const y = adjustedLatRatio * height;
+    const x = Math.max(0, Math.min(1, lngRatio)) * 100; // % instead of px
+    const y = Math.max(0, Math.min(1, latRatio)) * 100;
 
     return { x, y };
 };
