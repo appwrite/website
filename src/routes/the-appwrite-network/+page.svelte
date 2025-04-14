@@ -43,7 +43,7 @@
 <Main>
     <div class="container mt-20 flex flex-col items-center">
         <a
-            href="/blog/post/appwrite-network"
+            href="/"
             class="bg-accent/4 group border-accent/36 text-primary relative -mb-8 flex items-center gap-2 rounded-full border px-4 py-1 text-sm"
             >Read the announcement <Icon
                 name="arrow-right"
