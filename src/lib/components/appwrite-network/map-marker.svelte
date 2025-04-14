@@ -56,7 +56,7 @@
             'group absolute flex size-3 cursor-pointer items-center justify-center opacity-0 [animation-delay:var(--delay)]',
             { 'animate-fade-in': animate }
         )}
-        style="left:{x}%; top:{y}%; --delay:{index * 10}ms; transform: translate(-50%, -50%);"
+        style="left:{x}%; top:{y}%; --delay:{index * 10}ms;"
         data-region={slugify(city)}
         data-active={isOpen}
     >
