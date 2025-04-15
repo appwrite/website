@@ -13,7 +13,7 @@ callToAction: true
 
 We are happy to announce the launch of the Appwrite Network, a network of cloud regions and edge locations (edges) to improve Appwrite Cloud availability, performance, and compliance with local regulations. This will provide Appwrite developers and teams with the best tools and infrastructure to build, deploy, and scale your applications. This brings us closer to the Appwrite mission of making software development more accessible and enjoyable for all developers.
 
-Starting today, all Pro users have access to three regions of choice, including our two new regions in **New York City** ('NYC'), and **Sydney** ('SYD') that are joining our first region in **Frankfurt** ('FRA'). In the next few weeks, this will be available to all Cloud users, with more regions to come in the next few weeks.
+Starting today, all Pro users have access to three regions of choice, including our two new regions in **New York City** ('NYC'), and **Sydney** ('SYD') that are joining our first region in **Frankfurt** ('FRA'). In the next few weeks, this will be available to all Cloud users, with more regions to come.
 
 # The plan
 
@@ -80,7 +80,7 @@ Each region will also function as an edge for other regions, enhancing network c
 
 # Global CDN with integrated DDoS protection
 
-All Appwrite’s Cloud projects are served from Appwrite’s built-in CDN. Our new global CDN is designed to serve your content rapidly and reliably worldwide. By leveraging a network of strategically located points of presence (PoPs), the CDN ensures that every user request is delivered from the closest possible location, drastically reducing latency and enhancing the overall user experience.
+All Appwrite’s Cloud projects are served by Appwrite’s built-in CDN. Our new global CDN is designed to serve your content rapidly and reliably worldwide. By leveraging a network of strategically located points of presence (PoPs), the CDN ensures that every user request is delivered from the closest possible location, drastically reducing latency and enhancing the overall user experience.
 
 Moreover, the CDN includes integrated DDoS protection that combines standard traffic analysis, rate limiting, and filtering techniques to help mitigate potential threats in real time. This balanced approach helps maintain solid performance while providing a reliable level of security for your applications.
 
