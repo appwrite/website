@@ -116,21 +116,15 @@
             </div>
 
             <img
-                src="/images/regions/map.svg"
+                src="/images/appwrite-network/map.svg"
                 class="pointer-events-none relative -z-10 opacity-10"
                 draggable="false"
                 alt="Map of the world"
             />
 
             <Tooltip.Provider delayDuration={0} skipDelayDuration={500} disableCloseOnTriggerClick>
-                {#each pins[activeSegment as PinSegment].map( (pin) => ({ ...pin, isOpen: activeRegion === slugify(pin.city), position: latLongToSvgPosition( { latitude: pin.lat, longitude: pin.lng, ...dimensions } ) }) ) as pin, index}
-                    <MapMarker
-                        {...pin}
-                        position={pin.position}
-                        animate={$animate}
-                        {index}
-                        bounds={MAP_BOUNDS}
-                    />
+                {#each pins[activeSegment as PinSegment].map( (pin) => ({ ...pin, isOpen: activeRegion === slugify(pin.city) }) ) as pin, index}
+                    <MapMarker {index} animate={$animate} bounds={MAP_BOUNDS} {...pin} />
                 {/each}
             </Tooltip.Provider>
         </div>

@@ -2,6 +2,7 @@
     import { classNames } from '$lib/utils/classnames';
     import { slugify } from '$lib/utils/slugify';
     import { Tooltip } from 'bits-ui';
+    import { latLongToSvgPosition } from './utils/projections';
 
     interface Props {
         city: string;
@@ -9,10 +10,6 @@
         index: number;
         lat: number;
         lng: number;
-        position: {
-            x: number;
-            y: number;
-        };
         bounds: {
             north: number;
             south: number;
@@ -29,12 +26,15 @@
         city,
         code,
         index = 0,
-        position,
+        lat,
+        lng,
         available = false,
         class: className = '',
         animate = false,
         isOpen = false
     }: Props = $props();
+
+    const position = $derived(latLongToSvgPosition({ latitude: lat, longitude: lng }));
 
     let open = $state(isOpen);
 
@@ -46,7 +46,7 @@
 <Tooltip.Root bind:open>
     <Tooltip.Trigger
         class={classNames(
-            'group absolute flex size-3 cursor-pointer items-center justify-center opacity-0 [animation-delay:var(--delay)]',
+            'group absolute flex size-2 cursor-pointer items-center justify-center opacity-0 [animation-delay:var(--delay)]',
             { 'animate-fade-in': animate }
         )}
         style="left:{position.x}%; top:{position.y}%; --delay:{index * 10}ms;"

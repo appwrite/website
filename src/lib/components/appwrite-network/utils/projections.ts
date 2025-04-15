@@ -5,12 +5,7 @@ type Coordinates = {
     longitude: number;
 };
 
-export const latLongToSvgPosition = ({
-    latitude,
-    longitude,
-    width,
-    height
-}: Coordinates & { width: number; height: number }) => {
+export const latLongToSvgPosition = ({ latitude, longitude }: Coordinates) => {
     const { west, east, north, south } = MAP_BOUNDS;
 
     // Handle longitude wrapping for coordinates crossing the date line
