@@ -11,12 +11,10 @@
     import MapMarker from './map-marker.svelte';
     import { slugify } from '$lib/utils/slugify';
     import { classNames } from '$lib/utils/classnames';
-    import { Tooltip } from 'bits-ui';
     import MapNav from './map-nav.svelte';
     import { useMousePosition } from '$lib/actions/mouse-position';
     import { useAnimateInView } from '$lib/actions/animate-in-view';
     import { pins, type PinSegment } from './data/pins';
-    import { latLongToSvgPosition } from './utils/projections';
     import MapTooltip from './map-tooltip.svelte';
 
     let dimensions = $state({
@@ -123,15 +121,13 @@
                 alt="Map of the world"
             />
 
-            {#each pins[activeSegment as PinSegment].map( (pin) => ({ ...pin, isOpen: activeRegion === slugify(pin.city), position: latLongToSvgPosition( { latitude: pin.lat, longitude: pin.lng, ...dimensions } ) }) ) as pin, index}
+            {#each pins[activeSegment as PinSegment].map( (pin) => ({ ...pin, isOpen: activeRegion === slugify(pin.city) }) ) as pin, index}
                 <MapMarker {...pin} animate={$animate} {index} bounds={MAP_BOUNDS} />
             {/each}
         </div>
     </div>
 </div>
-
 <MapTooltip coords={$position} />
-
 <MapNav onValueChange={(value) => (activeSegment = value)} />
 
 <style>
