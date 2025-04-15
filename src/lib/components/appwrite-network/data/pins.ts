@@ -66,8 +66,8 @@ export const pins = {
             available: true
         },
         {
-            lat: 21.31,
-            lng: -157.86,
+            lat: 28.31,
+            lng: -125.86,
             city: 'Honolulu',
             code: 'HNL',
             available: true
