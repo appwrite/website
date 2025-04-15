@@ -69,7 +69,7 @@
     };
 </script>
 
-<div class="-mt-8 w-full overflow-x-hidden [scrollbar-width:none]">
+<div class="-mt-8 w-full overflow-x-scroll [scrollbar-width:none] md:overflow-x-hidden">
     <div
         class="sticky left-0 z-10 mb-8 hidden w-screen gap-2 overflow-scroll px-8 [scrollbar-width:none]"
     >
@@ -96,7 +96,7 @@
         use:mousePosition
     >
         <div
-            class="relative w-full origin-bottom -translate-x-16 transform-[perspective(25px)_rotateX(1deg)_scale3d(1.4,_1.4,_1)] transition-all [scrollbar-width:none]"
+            class="relative w-full origin-bottom transform-[perspective(25px)_rotateX(1deg)_scale3d(1.4,_1.4,_1)] transition-all [scrollbar-width:none]"
             bind:clientWidth={dimensions.width}
             bind:clientHeight={dimensions.height}
         >
