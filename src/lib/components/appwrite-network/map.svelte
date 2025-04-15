@@ -70,26 +70,6 @@
 </script>
 
 <div class="-mt-8 w-full overflow-x-scroll [scrollbar-width:none] md:overflow-x-hidden">
-    <div
-        class="sticky left-0 z-10 mb-8 hidden w-screen gap-2 overflow-scroll px-8 [scrollbar-width:none]"
-    >
-        {#each pins[activeSegment as PinSegment] as pin}
-            <button
-                class={classNames(
-                    'border-gradient grow rounded-full bg-gradient-to-br px-4 py-1 text-nowrap text-white backdrop-blur-lg transition-colors before:rounded-full after:rounded-full',
-                    {
-                        'from-accent to-accent/50': activeRegion === slugify(pin.city),
-                        'from-greyscale-800/30 to-greyscale-700/30':
-                            activeRegion !== slugify(pin.city)
-                    }
-                )}
-                onclick={() => handleSetActiveMarker(pin.city)}
-            >
-                {pin.city}
-            </button>
-        {/each}
-    </div>
-
     <div class="sticky left-0 mx-auto max-w-[calc(100vw_-_calc(var(--spacing)_*-2))]">
         <select
             class="web-input-text mx-auto appearance-none"
