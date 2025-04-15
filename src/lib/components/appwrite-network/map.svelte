@@ -16,7 +16,6 @@
     import { useAnimateInView } from '$lib/actions/animate-in-view';
     import { pins, type PinSegment } from './data/pins';
     import MapTooltip from './map-tooltip.svelte';
-    import { dev } from '$app/environment';
 
     let dimensions = $state({
         width: 0,
@@ -68,23 +67,7 @@
             activeRegion = citySlug;
         }
     };
-
-    const debug = true;
 </script>
-
-{#if dev && debug}
-    <div class="absolute z-1000 flex flex-col gap-4">
-        {#each Object.entries(MAP_BOUNDS) as [key, value]}
-            <input
-                type="number"
-                onchange={(e) =>
-                    (MAP_BOUNDS[key as keyof typeof MAP_BOUNDS] = e.currentTarget.valueAsNumber)}
-                {value}
-            />
-        {/each}
-        <pre>{JSON.stringify(MAP_BOUNDS, null, 4)}</pre>
-    </div>
-{/if}
 
 <div class="-mt-8 w-full overflow-x-hidden [scrollbar-width:none]">
     <div
@@ -113,7 +96,7 @@
         use:mousePosition
     >
         <div
-            class="relative w-full max-w-screen origin-bottom transform-[perspective(25px)_rotateX(0.75deg)_scale3d(1.4,_1.4,_1)] transition-all [scrollbar-width:none]"
+            class="relative w-full max-w-screen origin-bottom -translate-x-16 transform-[perspective(25px)_rotateX(1deg)_scale3d(1.4,_1.4,_1)] transition-all [scrollbar-width:none]"
             bind:clientWidth={dimensions.width}
             bind:clientHeight={dimensions.height}
         >
