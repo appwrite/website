@@ -62,7 +62,7 @@ Building a fully fledged network from scratch is not a decision we take lightly.
 
 # Regions vs Edges vs PoPs
 
-![Regions vs Edges vs PoPs](/images/blog/the-appwrite-network/regions-edges.png)
+![Regions vs Edges vs PoPs](/images/blog/the-appwrite-network/regions-edges-pops.png)
 
 In Appwrite, Regions are where all your core data and services live. This includes your databases, auth, functions, messaging, and storage. Regions are the source of truth, handling heavy workloads and ensuring your application runs reliably while keeping your data compliant with local regulations.
 
