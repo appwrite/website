@@ -91,12 +91,12 @@
     </div>
 
     <div
-        class="relative container mx-auto flex h-full w-[250vw] flex-col justify-center overflow-scroll px-0 py-10 transition-all delay-250 duration-250 md:w-fit md:flex-row md:overflow-auto md:py-0"
+        class="relative container mx-auto flex h-full w-[250vw] flex-col justify-center overflow-scroll px-0 py-10 transition-all delay-250 duration-250 [scrollbar-width:none] md:w-fit md:flex-row md:overflow-auto md:py-0"
         use:inView
         use:mousePosition
     >
         <div
-            class="relative w-full origin-bottom transform-[perspective(20px)_rotateX(1deg)] overflow-scroll transition-all [scrollbar-width:none]"
+            class="relative w-full origin-bottom transform-[perspective(20px)_rotateX(1deg)_scale3d(1.5,_1.5,_1)] overflow-scroll transition-all [scrollbar-width:none]"
             bind:clientWidth={dimensions.width}
             bind:clientHeight={dimensions.height}
         >
