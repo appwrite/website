@@ -17,8 +17,8 @@ export const latLongToSvgPosition = ({ latitude, longitude }: Coordinates) => {
     const clampedLngRatio = Math.max(0, Math.min(1, lngRatio));
     const clampedLatRatio = Math.max(0, Math.min(1, latRatio));
 
-    const x = clampedLngRatio * MAP_WIDTH;
-    const y = (1 - clampedLatRatio) * MAP_HEIGHT;
+    const x = clampedLngRatio * 100;
+    const y = (1 - clampedLatRatio) * 100;
 
-    return { x, y };
+    return { x, y }; // percentages, e.g., { x: 42.3, y: 71.8 }
 };

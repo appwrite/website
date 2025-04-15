@@ -47,7 +47,7 @@
         'group absolute z-10 flex size-2 cursor-pointer items-center justify-center opacity-0 [animation-delay:var(--delay)]',
         { 'animate-fade-in': animate }
     )}
-    style="left: {position.x}px; top: {position.y}px;--delay: {index * 10}ms;"
+    style="left: {position.x}%; top: {position.y}%;--delay: {index * 10}ms;"
     data-region={slugify(city)}
     onmouseenter={handleSetActiveMarker}
     onfocus={handleSetActiveMarker}
