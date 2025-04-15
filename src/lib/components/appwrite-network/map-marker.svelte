@@ -39,11 +39,7 @@
     let open = $state(isOpen);
 
     $effect(() => {
-        if (isOpen) {
-            open = true;
-        } else {
-            open = false;
-        }
+        open = isOpen;
     });
 </script>
 
