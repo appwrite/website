@@ -33,7 +33,7 @@
 <Tabs.Root
     value={navItems[0].value}
     {onValueChange}
-    class="-mt-20 flex flex-col items-center justify-center gap-12"
+    class="-mt-8 flex flex-col items-center justify-center gap-12"
 >
     <Tabs.List
         class="border-smooth animate-fade-in bg-card relative grid w-full max-w-xl grid-cols-1 place-content-center gap-3 p-1 px-8 drop-shadow-md md:grid-cols-3 md:rounded-full md:border md:px-1"
