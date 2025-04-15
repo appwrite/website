@@ -46,7 +46,7 @@
     <div class="relative max-w-screen overflow-hidden">
         <div class="container mt-20 flex flex-col items-center">
             <a
-                href="/"
+                href="/blog/post/the-appwrite-network"
                 class="bg-accent/4 animate-enter group border-accent/36 text-primary relative -mb-8 flex items-center gap-2 rounded-full border px-4 py-1 text-sm"
                 style:animation-delay="250ms"
                 >Read the announcement <Icon

@@ -5,11 +5,6 @@ type Coordinates = {
     longitude: number;
 };
 
-type PixelPosition = {
-    x: number;
-    y: number;
-};
-
 export const latLongToSvgPosition = ({
     latitude,
     longitude,
@@ -18,11 +13,18 @@ export const latLongToSvgPosition = ({
 }: Coordinates & { width: number; height: number }) => {
     const { west, east, north, south } = MAP_BOUNDS;
 
-    const lngRatio = (longitude - west) / (east - west);
+    // Handle longitude wrapping for coordinates crossing the date line
+    let lng = longitude;
+    if (lng < west) lng += 360;
+    else if (lng > east) lng -= 360;
+
+    // Calculate position as percentage of the map bounds
+    const lngRatio = (lng - west) / (east - west);
     const latRatio = (north - latitude) / (north - south);
 
-    const x = Math.max(0, Math.min(1, lngRatio)) * 100; // % instead of px
-    const y = Math.max(0, Math.min(1, latRatio)) * 100;
+    // Convert to percentages clamped between 0-100
+    const x = Math.max(0, Math.min(100, lngRatio * 100));
+    const y = Math.max(0, Math.min(100, latRatio * 100));
 
     return { x, y };
 };

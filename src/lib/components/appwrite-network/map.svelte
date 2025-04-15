@@ -1,8 +1,8 @@
 <script lang="ts" module>
     export const MAP_BOUNDS = $state({
-        west: -132,
-        east: 185,
-        north: 65,
+        west: -130,
+        east: 180,
+        north: 70,
         south: -65
     });
 </script>

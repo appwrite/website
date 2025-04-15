@@ -42,12 +42,12 @@
             <Tabs.Trigger
                 {value}
                 class={classNames(
-                    'text-caption animate-enter text-primary bg-smooth border-smooth flex h-8 items-center justify-center gap-2 rounded-full border font-medium outline-0 transition-colors',
+                    'text-caption animate-enter text-primary bg-smooth border-smooth flex h-8 cursor-pointer items-center justify-center gap-2 rounded-full border font-medium outline-0 transition-colors hover:border-white/12',
                     'group data-[state="active"]:bg-accent/4 data-[state="active"]:border-accent/36 data-[state="active"]:text-white'
                 )}
                 style="animation-delay:{index * 75}ms;"
             >
-                <Icon name={icon} class="group-data-[state='active']:text-accent" />
+                <Icon name={icon} class="group-data-[state='active']:text-accent -ml-2" />
                 {label}</Tabs.Trigger
             >
         {/each}
