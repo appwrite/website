@@ -96,7 +96,7 @@
         use:mousePosition
     >
         <div
-            class="relative w-full max-w-screen origin-bottom -translate-x-16 transform-[perspective(25px)_rotateX(1deg)_scale3d(1.4,_1.4,_1)] transition-all [scrollbar-width:none]"
+            class="relative w-full origin-bottom -translate-x-16 transform-[perspective(25px)_rotateX(1deg)_scale3d(1.4,_1.4,_1)] transition-all [scrollbar-width:none]"
             bind:clientWidth={dimensions.width}
             bind:clientHeight={dimensions.height}
         >
@@ -116,7 +116,7 @@
 
             <img
                 src="/images/appwrite-network/map.svg"
-                class="pointer-events-none relative -z-10 max-h-[525px] w-full opacity-10"
+                class="pointer-events-none relative -z-10 w-full opacity-10 md:max-h-[525px]"
                 draggable="false"
                 alt="Map of the world"
             />
