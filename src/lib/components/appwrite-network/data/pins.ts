@@ -199,7 +199,7 @@ export const pins = {
             available: true
         },
         {
-            lat: -3.73,
+            lat: -8.73,
             lng: -38.52,
             city: 'Fortaleza',
             code: 'FOR',
@@ -255,8 +255,8 @@ export const pins = {
             available: true
         },
         {
-            lat: 53.35,
-            lng: -6.26,
+            lat: 55.35,
+            lng: -10.26,
             city: 'Dublin',
             code: 'DUB',
             available: true
@@ -276,8 +276,8 @@ export const pins = {
             available: true
         },
         {
-            lat: 38.72,
-            lng: -9.14,
+            lat: 40.72,
+            lng: -12.14,
             city: 'Lisbon',
             code: 'LIS',
             available: true
@@ -290,7 +290,7 @@ export const pins = {
             available: true
         },
         {
-            lat: 40.42,
+            lat: 46.42,
             lng: -3.7,
             city: 'Madrid',
             code: 'MAD',
@@ -325,8 +325,8 @@ export const pins = {
             available: true
         },
         {
-            lat: 59.91,
-            lng: 10.75,
+            lat: 62.91,
+            lng: 8.75,
             city: 'Oslo',
             code: 'OSL',
             available: true
@@ -507,7 +507,7 @@ export const pins = {
             available: true
         },
         {
-            lat: -36.85,
+            lat: -39.85,
             lng: 174.76,
             city: 'Auckland',
             code: 'AKL',
@@ -521,8 +521,8 @@ export const pins = {
             available: true
         },
         {
-            lat: -43.53,
-            lng: 172.64,
+            lat: -48.53,
+            lng: 150.64,
             city: 'Christchurch',
             code: 'CHC',
             available: true
@@ -549,8 +549,8 @@ export const pins = {
             available: true
         },
         {
-            lat: -41.29,
-            lng: 174.78,
+            lat: -45.29,
+            lng: 158.78,
             city: 'Wellington',
             code: 'WLG',
             available: true
