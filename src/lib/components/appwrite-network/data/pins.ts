@@ -180,7 +180,8 @@ export const pins = {
             lng: -74.07,
             city: 'Bogota',
             code: 'BOG',
-            available: true
+            available: true,
+            x: -0.5
         },
         {
             lat: -34.61,
@@ -556,16 +557,16 @@ export const pins = {
     ],
     edges: [
         {
-            lat: 37.77,
-            lng: -122.42,
-            city: 'San Francisco',
-            code: 'SFO',
+            lat: 40.71,
+            lng: -74.01,
+            city: 'New York',
+            code: 'NYC',
             available: true
         },
         {
-            lat: 48.86,
-            lng: 2.35,
-            city: 'Paris',
+            lat: 50.11,
+            lng: 8.68,
+            city: 'Frankfurt',
             code: 'FRA',
             available: true
         },
@@ -579,19 +580,20 @@ export const pins = {
     ],
     regions: [
         {
-            lat: 37.77,
-            lng: -122.42,
-            city: 'San Francisco',
-            code: 'SFO',
+            lat: 40.71,
+            lng: -74.01,
+            city: 'New York',
+            code: 'NYC',
             available: true
         },
         {
-            lat: 48.86,
-            lng: 2.35,
-            city: 'Paris',
+            lat: 50.11,
+            lng: 8.68,
+            city: 'Frankfurt',
             code: 'FRA',
             available: true
         },
+
         {
             lat: -33.87,
             lng: 151.21,
