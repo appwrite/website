@@ -56,7 +56,7 @@
     aria-label={city}
 >
     <span
-        class="from-accent/20 to-accent/10 border-gradient ease-spring absolute inline-flex h-5 w-5 rounded-full bg-gradient-to-b opacity-0 transition-opacity group-hover:animate-ping group-hover:opacity-75 before:rounded-full"
+        class="from-accent/20 to-accent/10 border-gradient ease-spring pointer-events-none absolute inline-flex h-5 w-5 rounded-full bg-gradient-to-b opacity-0 transition-opacity group-hover:animate-ping group-hover:opacity-75 before:rounded-full"
         style:animation-duration="1.5s"
     ></span>
     <span class="bg-accent absolute inline-flex h-full w-full rounded-full"></span>

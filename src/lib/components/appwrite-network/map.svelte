@@ -113,7 +113,7 @@
         use:mousePosition
     >
         <div
-            class="relative w-full origin-bottom transform-[perspective(20px)_rotateX(1deg)_scale3d(1.5,_1.5,_1)] overflow-scroll transition-all [scrollbar-width:none]"
+            class="relative w-full origin-bottom -translate-y-20 transform-[perspective(20px)_rotateX(1deg)_scale3d(1.5,_1.5,_1)] overflow-scroll transition-all [scrollbar-width:none]"
             bind:clientWidth={dimensions.width}
             bind:clientHeight={dimensions.height}
         >
