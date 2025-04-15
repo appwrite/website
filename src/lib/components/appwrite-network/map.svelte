@@ -90,6 +90,17 @@
         {/each}
     </div>
 
+    <div class="sticky left-0 mx-auto max-w-[calc(100vw_-_calc(var(--spacing)_*-2))]">
+        <select
+            class="web-input-text mx-auto appearance-none"
+            onchange={(e) => handleSetActiveMarker(e.currentTarget.value)}
+        >
+            {#each pins[activeSegment as PinSegment] as pin}
+                <option value={pin.city}>{pin.city}-({pin.code})</option>
+            {/each}
+        </select>
+    </div>
+
     <div
         class="relative mx-auto h-full w-[250vw] [scrollbar-width:none] md:w-fit"
         use:inView
