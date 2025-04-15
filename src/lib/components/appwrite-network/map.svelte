@@ -96,7 +96,7 @@
         use:mousePosition
     >
         <div
-            class="map relative w-full origin-bottom overflow-scroll transition-all [scrollbar-width:none]"
+            class="relative w-full origin-bottom transform-[perspective(20px)_rotateX(1deg)] overflow-scroll transition-all [scrollbar-width:none]"
             bind:clientWidth={dimensions.width}
             bind:clientHeight={dimensions.height}
         >
@@ -121,7 +121,7 @@
                 alt="Map of the world"
             />
 
-            {#each pins[activeSegment as PinSegment].map( (pin) => ({ ...pin, isOpen: activeRegion === slugify(pin.city) }) ) as pin, index}
+            {#each pins[activeSegment as PinSegment] as pin, index}
                 <MapMarker {...pin} animate={$animate} {index} bounds={MAP_BOUNDS} />
             {/each}
         </div>
@@ -129,9 +129,3 @@
 </div>
 <MapTooltip coords={$position} />
 <MapNav onValueChange={(value) => (activeSegment = value)} />
-
-<style>
-    .map {
-        transform: perspective(20px) rotateX(1deg) scale3d(1.5, 1.5, 1);
-    }
-</style>

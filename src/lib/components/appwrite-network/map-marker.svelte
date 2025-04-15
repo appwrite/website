@@ -19,19 +19,9 @@
         available: boolean;
         class?: string;
         animate?: boolean;
-        isOpen: boolean;
     }
 
-    const {
-        city,
-        code,
-        index = 0,
-        lat,
-        lng,
-        available,
-        animate = false,
-        isOpen = false
-    }: Props = $props();
+    const { city, code, index = 0, lat, lng, available, animate = false }: Props = $props();
 
     const position = $derived(latLongToSvgPosition({ latitude: lat, longitude: lng }));
 
@@ -44,12 +34,11 @@
     };
 
     const handleResetActiveMarker = () => {
-        console.log('reset');
-        // tooltipData.set({
-        //     city: null,
-        //     code: null,
-        //     available: null
-        // });
+        tooltipData.set({
+            city: null,
+            code: null,
+            available: null
+        });
     };
 </script>
 
@@ -60,10 +49,9 @@
     )}
     style="left: {position.x}%; top: {position.y}%;--delay: {index * 10}ms;"
     data-region={slugify(city)}
-    data-active={isOpen}
     onmouseenter={handleSetActiveMarker}
     onfocus={handleSetActiveMarker}
-    onmouseout={handleResetActiveMarker}
+    onmouseleave={handleResetActiveMarker}
     onblur={handleResetActiveMarker}
     aria-label={city}
 >

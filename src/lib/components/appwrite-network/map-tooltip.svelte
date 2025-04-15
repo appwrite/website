@@ -28,7 +28,7 @@
     <div
         class="pointer-events-none absolute"
         style:left="{coords.x + 10}px"
-        style:top="{coords.y - 25}px"
+        style:top="{coords.y + 20}px"
     >
         <div
             class={classNames(
