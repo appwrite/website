@@ -49,6 +49,7 @@
     )}
     style="left: {position.x}%; top: {position.y}%;--delay: {index * 10}ms;"
     data-region={slugify(city)}
+    data-is-active={slugify($tooltipData.city ?? '') === slugify(city)}
     onmouseenter={handleSetActiveMarker}
     onfocus={handleSetActiveMarker}
     onmouseleave={handleResetActiveMarker}
@@ -56,7 +57,7 @@
     aria-label={city}
 >
     <span
-        class="from-accent/20 to-accent/10 border-gradient ease-spring pointer-events-none absolute inline-flex h-5 w-5 rounded-full bg-gradient-to-b opacity-0 transition-opacity group-hover:animate-ping group-hover:opacity-75 before:rounded-full"
+        class="from-accent/20 to-accent/10 border-gradient ease-spring pointer-events-none absolute inline-flex h-5 w-5 rounded-full bg-gradient-to-b opacity-0 transition-opacity group-hover:animate-ping group-hover:opacity-75 group-[data-is-active=true]:animate-ping before:rounded-full"
         style:animation-duration="1.5s"
     ></span>
     <span class="bg-accent absolute inline-flex h-full w-full rounded-full"></span>

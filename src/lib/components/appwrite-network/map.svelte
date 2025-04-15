@@ -70,7 +70,9 @@
 </script>
 
 <div class="-mt-8 w-full overflow-x-scroll [scrollbar-width:none] md:overflow-x-hidden">
-    <div class="sticky left-0 mx-auto max-w-[calc(100vw_-_calc(var(--spacing)_*-2))]">
+    <div
+        class="sticky left-0 mx-auto block max-w-[calc(100vw_-_calc(var(--spacing)_*-2))] md:hidden"
+    >
         <select
             class="web-input-text mx-auto appearance-none"
             onchange={(e) => handleSetActiveMarker(e.currentTarget.value)}
