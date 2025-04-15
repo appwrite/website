@@ -1,6 +1,6 @@
 <script lang="ts" module>
     export const MAP_BOUNDS = $state({
-        west: -130,
+        west: -120,
         east: 180,
         north: 70,
         south: -65
@@ -124,7 +124,14 @@
 
             <Tooltip.Provider delayDuration={0} skipDelayDuration={500} disableCloseOnTriggerClick>
                 {#each pins[activeSegment as PinSegment].map( (pin) => ({ ...pin, isOpen: activeRegion === slugify(pin.city) }) ) as pin, index}
-                    <MapMarker {index} animate={$animate} bounds={MAP_BOUNDS} {...pin} />
+                    <MapMarker
+                        {index}
+                        animate={$animate}
+                        bounds={MAP_BOUNDS}
+                        {...pin}
+                        offsetX={pin.offsetX ?? 0}
+                        offsetY={pin.offsetY ?? 0}
+                    />
                 {/each}
             </Tooltip.Provider>
         </div>

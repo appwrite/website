@@ -5,7 +5,9 @@ export const pins = {
             lng: -77.49,
             city: 'Ashburn',
             code: 'ASH',
-            available: true
+            available: true,
+            offsetX: 10,
+            offsetY: -10
         },
         {
             lat: 33.75,
@@ -180,8 +182,7 @@ export const pins = {
             lng: -74.07,
             city: 'Bogota',
             code: 'BOG',
-            available: true,
-            x: -0.5
+            available: true
         },
         {
             lat: -34.61,
@@ -561,7 +562,9 @@ export const pins = {
             lng: -74.01,
             city: 'New York',
             code: 'NYC',
-            available: true
+            available: true,
+            offsetX: 10,
+            offsetY: -10
         },
         {
             lat: 50.11,
@@ -584,7 +587,9 @@ export const pins = {
             lng: -74.01,
             city: 'New York',
             code: 'NYC',
-            available: true
+            available: true,
+            offsetX: 10,
+            offsetY: -10
         },
         {
             lat: 50.11,

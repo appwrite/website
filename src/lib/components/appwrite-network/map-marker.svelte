@@ -20,6 +20,8 @@
         class?: string;
         animate?: boolean;
         isOpen: boolean;
+        offsetX?: number;
+        offsetY?: number;
     }
 
     const {
@@ -31,7 +33,9 @@
         available = false,
         class: className = '',
         animate = false,
-        isOpen = false
+        isOpen = false,
+        offsetX = 0,
+        offsetY = 0
     }: Props = $props();
 
     const position = $derived(latLongToSvgPosition({ latitude: lat, longitude: lng }));
@@ -49,7 +53,14 @@
             'group absolute flex size-2 cursor-pointer items-center justify-center opacity-0 [animation-delay:var(--delay)]',
             { 'animate-fade-in': animate }
         )}
-        style="left:{position.x}%; top:{position.y}%; --delay:{index * 10}ms;"
+        style="
+      left: {position.x}%;
+      top: {position.y}%;
+      --delay: {index * 10}ms;
+      --offset-x: {offsetX}px;
+      --offset-y: {offsetY}px;
+      transform: translate(calc(var(--offset-x) - 50%), calc(var(--offset-y) - 50%)); /* Center with translate */
+    "
         data-region={slugify(city)}
         data-active={isOpen}
     >
@@ -69,10 +80,10 @@
             className
         )}
     >
-        <span class="text-primary text-caption w-fit"
-            >{city}
-            ({code})</span
-        >
+        <span class="text-primary text-caption w-fit">
+            {city}
+            ({code})
+        </span>
         {#if available}
             <div
                 class="text-caption flex h-5 items-center justify-center place-self-start rounded-md bg-[#10B981]/24 p-1 text-center text-[#B4F8E2]"
