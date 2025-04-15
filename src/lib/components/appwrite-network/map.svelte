@@ -17,14 +17,12 @@
     import { useAnimateInView } from '$lib/actions/animate-in-view';
     import { pins, type PinSegment } from './data/pins';
     import { latLongToSvgPosition } from './utils/projections';
-    import { dev } from '$app/environment';
+    import MapTooltip from './map-tooltip.svelte';
 
     let dimensions = $state({
         width: 0,
         height: 0
     });
-
-    let debug = $state(true);
 
     let activeRegion = $state<string | null>(null);
     let activeMarker: HTMLElement | null = null;
@@ -73,20 +71,6 @@
     };
 </script>
 
-{#if dev && debug}
-    <div class="absolute z-1000 flex flex-col gap-4">
-        {#each Object.entries(MAP_BOUNDS) as [key, value]}
-            <input
-                type="number"
-                onchange={(e) =>
-                    (MAP_BOUNDS[key as keyof typeof MAP_BOUNDS] = e.currentTarget.valueAsNumber)}
-                {value}
-            />
-        {/each}
-        <pre>{JSON.stringify(MAP_BOUNDS, null, 4)}</pre>
-    </div>
-{/if}
-
 <div class="w-full overflow-scroll [scrollbar-width:none]">
     <div
         class="sticky left-0 z-10 mb-8 hidden w-screen gap-2 overflow-scroll px-8 [scrollbar-width:none]"
@@ -109,7 +93,7 @@
     </div>
 
     <div
-        class="relative mx-auto flex h-full w-[250vw] flex-col justify-center px-0 transition-all delay-250 duration-250 md:flex-row md:py-0"
+        class="relative container mx-auto flex h-full w-[250vw] flex-col justify-center overflow-scroll px-0 py-10 transition-all delay-250 duration-250 md:w-fit md:flex-row md:overflow-auto md:py-0"
         use:inView
         use:mousePosition
     >
@@ -138,18 +122,15 @@
                 draggable="false"
                 alt="Map of the world"
             />
-            {#each pins[activeSegment as PinSegment].map( (pin) => ({ ...pin, isOpen: activeRegion === slugify(pin.city) }) ) as pin, index}
-                <MapMarker
-                    {index}
-                    mouse={$position}
-                    animate={$animate}
-                    bounds={MAP_BOUNDS}
-                    {...pin}
-                />
+
+            {#each pins[activeSegment as PinSegment].map( (pin) => ({ ...pin, isOpen: activeRegion === slugify(pin.city), position: latLongToSvgPosition( { latitude: pin.lat, longitude: pin.lng, ...dimensions } ) }) ) as pin, index}
+                <MapMarker {...pin} animate={$animate} {index} bounds={MAP_BOUNDS} />
             {/each}
         </div>
     </div>
 </div>
+
+<MapTooltip coords={$position} />
 
 <MapNav onValueChange={(value) => (activeSegment = value)} />
 

@@ -16,17 +16,23 @@
             west: number;
             east: number;
         };
-        mouse: {
-            x: number;
-            y: number;
-        };
         available?: boolean;
         class?: string;
         animate?: boolean;
         isOpen: boolean;
     }
 
-    const { city, code, index = 0, lat, lng, animate = false, isOpen = false }: Props = $props();
+    const {
+        city,
+        code,
+        index = 0,
+        lat,
+        lng,
+        available = false,
+        class: className = '',
+        animate = false,
+        isOpen = false
+    }: Props = $props();
 
     const position = $derived(latLongToSvgPosition({ latitude: lat, longitude: lng }));
 
