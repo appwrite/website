@@ -33,7 +33,7 @@
         ...props
     }: Props = $props();
 
-    const firstName = name?.split(' ')[0];
+    const firstName = name?.split(' ')[0].trim();
 
     const handleFlip = () => {
         if (disableEffects) return;
