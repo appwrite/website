@@ -11,11 +11,9 @@ featured: true
 callToAction: true
 ---
 
-# Announcing the Appwrite Network: Appwrite’s vision for a global cloud infrastructure
-
 We are happy to announce the launch of the Appwrite Network, a network of cloud regions and edge locations (edges) to improve Appwrite Cloud availability, performance, and compliance with local regulations. This will provide Appwrite developers and teams with the best tools and infrastructure to build, deploy, and scale your applications. This brings us closer to the Appwrite mission of making software development more accessible and enjoyable for all developers.
 
-Starting today, all Pro users have access to 3 regions of choice, including our two new regions in **New York City** ('NYC'), and **Sydney** ('SYD') that are joining our first region in **Frankfurt** ('FRA'). In the next few weeks, this will be available to all Cloud users, with more regions to come in the next few weeks.
+Starting today, all Pro users have access to three regions of choice, including our two new regions in **New York City** ('NYC'), and **Sydney** ('SYD') that are joining our first region in **Frankfurt** ('FRA'). In the next few weeks, this will be available to all Cloud users, with more regions to come in the next few weeks.
 
 # The plan
 
