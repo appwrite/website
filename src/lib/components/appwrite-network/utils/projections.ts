@@ -1,5 +1,8 @@
 import { MAP_BOUNDS } from '../map.svelte';
 
+const MAP_WIDTH = 1048.25;
+const MAP_HEIGHT = 525;
+
 type Coordinates = {
     latitude: number;
     longitude: number;
@@ -11,11 +14,11 @@ export const latLongToSvgPosition = ({ latitude, longitude }: Coordinates) => {
     const lngRatio = (longitude - west) / (east - west);
     const latRatio = (latitude - south) / (north - south);
 
-    const x = Math.max(0, Math.min(1, lngRatio)) * 100;
-    const y = Math.max(0, Math.min(1, 1 - latRatio)) * 100;
+    const clampedLngRatio = Math.max(0, Math.min(1, lngRatio));
+    const clampedLatRatio = Math.max(0, Math.min(1, latRatio));
 
-    return {
-        x,
-        y
-    };
+    const x = clampedLngRatio * MAP_WIDTH;
+    const y = (1 - clampedLatRatio) * MAP_HEIGHT;
+
+    return { x, y };
 };

@@ -1,9 +1,9 @@
 <script lang="ts" module>
     export const MAP_BOUNDS = $state({
-        west: -137,
-        east: 165,
-        north: 80,
-        south: -60
+        west: -138,
+        east: 167,
+        north: 74,
+        south: -62
     });
 </script>
 
@@ -16,6 +16,7 @@
     import { useAnimateInView } from '$lib/actions/animate-in-view';
     import { pins, type PinSegment } from './data/pins';
     import MapTooltip from './map-tooltip.svelte';
+    import { dev } from '$app/environment';
 
     let dimensions = $state({
         width: 0,
@@ -69,6 +70,19 @@
     };
 </script>
 
+{#if dev}
+    <div class="absolute z-1000 flex flex-col gap-4">
+        {#each Object.entries(MAP_BOUNDS) as [key, value]}
+            <input
+                type="number"
+                onchange={(e) =>
+                    (MAP_BOUNDS[key as keyof typeof MAP_BOUNDS] = e.currentTarget.valueAsNumber)}
+                {value}
+            />
+        {/each}
+        <pre>{JSON.stringify(MAP_BOUNDS, null, 4)}</pre>
+    </div>
+{/if}
 <div class="-mt-8 w-full overflow-x-scroll [scrollbar-width:none] md:overflow-x-hidden">
     <div
         class="sticky left-0 mx-auto block max-w-[calc(100vw_-_calc(var(--spacing)_*-2))] md:hidden"
