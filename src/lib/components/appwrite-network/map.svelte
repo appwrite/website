@@ -86,7 +86,7 @@
     </div>
 {/if}
 
-<div class="w-full overflow-scroll [scrollbar-width:none]">
+<div class="-mt-8 w-full overflow-scroll [scrollbar-width:none]">
     <div
         class="sticky left-0 z-10 mb-8 hidden w-screen gap-2 overflow-scroll px-8 [scrollbar-width:none]"
     >
@@ -108,12 +108,12 @@
     </div>
 
     <div
-        class="relative container mx-auto flex h-full w-[250vw] flex-col justify-center overflow-scroll px-0 py-10 transition-all delay-250 duration-250 [scrollbar-width:none] md:w-fit md:flex-row md:overflow-auto md:py-0"
+        class="relative mx-auto flex h-full w-[250vw] flex-col justify-center px-0 py-10 transition-all delay-250 duration-250 [scrollbar-width:none] md:w-fit md:flex-row md:py-0"
         use:inView
         use:mousePosition
     >
         <div
-            class="relative w-full origin-bottom -translate-y-20 transform-[perspective(20px)_rotateX(1deg)_scale3d(1.5,_1.5,_1)] overflow-scroll transition-all [scrollbar-width:none]"
+            class="relative w-full origin-bottom transform-[perspective(25px)_rotateX(0.75deg)_scale3d(1.4,_1.4,_1)] overflow-scroll transition-all [scrollbar-width:none]"
             bind:clientWidth={dimensions.width}
             bind:clientHeight={dimensions.height}
         >
@@ -133,7 +133,7 @@
 
             <img
                 src="/images/appwrite-network/map.svg"
-                class="pointer-events-none relative -z-10 opacity-10"
+                class="pointer-events-none relative -z-10 max-h-[550px] w-full object-cover opacity-10"
                 draggable="false"
                 alt="Map of the world"
             />
