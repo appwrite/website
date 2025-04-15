@@ -258,6 +258,7 @@
                                                     class="web-input-text w-full"
                                                     bind:value={socialHandles}
                                                     placeholder="List your social media handles or profile URLs"
+                                                    maxlength="512"
                                                 ></textarea>
                                             </li>
                                         </ul>
