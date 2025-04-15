@@ -3,7 +3,7 @@ layout: post
 title: The Appwrite Network announcement
 description: Announcing more regions for Cloud, and many more to come with the introduction of the Appwrite Network
 date: 2025-04-15
-cover: /images/blog/10-git-commands-you-should-start-using/cover.png
+cover: /images/blog/the-appwrite-network/network-cover-image.png
 timeToRead: 05
 author: christy-jacob
 category: product
@@ -33,7 +33,7 @@ The Appwrite Cloud beta journey began with a single region in Frankfurt, which a
 | London (`LON`)        | In plans              | Yes    | Yes  | TBD           |
 | Toronto (`TOR`)       | In plans              | Yes    | Yes  | TBD           |
 
-
+![Overview of all the regions](/images/blog/the-appwrite-network/cloud-regions.png)
 
 # Addressing the latency problem
 
@@ -63,6 +63,8 @@ Building a fully fledged network from scratch is not a decision we take lightly.
 **5. It’s fun**: At the core of Appwrite, we are geeks who love technology and building stuff from scratch, so you don’t have to. Building a network is not just a business decision but also a passion. It's an opportunity to push the boundaries of what's possible and share that excitement with the Appwrite community of developers.
 
 # Regions vs Edges vs PoPs
+
+![Regions vs Edges vs PoPs](/images/blog/the-appwrite-network/regions-edges.png)
 
 In Appwrite, Regions are where all your core data and services live. This includes your databases, auth, functions, messaging, and storage. Regions are the source of truth, handling heavy workloads and ensuring your application runs reliably while keeping your data compliant with local regulations.
 
