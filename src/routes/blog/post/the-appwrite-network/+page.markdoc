@@ -86,7 +86,7 @@ Moreover, the CDN includes integrated DDoS protection that combines standard tra
 
 # Web application firewall (WAF)
 
-Our [Web Application Firewall](/docs/products/network/waf) (WAF) is now available exclusively to enterprise customers, providing a crucial protective layer for your applications. Operating at Layer 7, the WAF inspects and filters all HTTP/HTTPS traffic in real time, effectively blocking common web vulnerabilities such as SQL injection, XSS, and CSRF, while also mitigating application-level DDoS attacks.
+Our [Web Application Firewall](/docs/products/network/waf) (WAF) is now available exclusively to enterprise customers, providing a crucial protective layer for your applications. Operating at OSI Layer 7, the WAF inspects and filters all HTTP/HTTPS traffic in real time, effectively blocking common web vulnerabilities such as SQL injection, XSS, and CSRF, while also mitigating application-level DDoS attacks.
 
 Customizable rulesets allow you to tailor the WAF to your application's specific needs, with detailed analysis of request headers, payloads, and query strings to identify and neutralize threats before they reach your infrastructure. Setup and configuration are managed through your dedicated Appwrite success manager, ensuring that the WAF adapts to evolving security challenges and compliance requirements. To learn more about our enterprise plan, you can [contact us](/contact-us/enterprise).
 
