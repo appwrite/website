@@ -22,4 +22,4 @@ Before following this tutorial, have the following prepared:
 
 
 If you're inspired and wish to follow along, make sure you've followed [Start with React](https://appwrite.io/docs/quick-starts/react) first.
-Clone the [demos-for-react](https://github.com/appwrite/demos-for-react/tree/main/nextjs) examples and follow along with the source code.
+Clone the [demos-for-react](https://github.com/appwrite/demos-for-react/tree/master/nextjs/server-side-rendering) example and follow along with the source code.
