@@ -1,26 +1,56 @@
 <script lang="ts">
-    import { page } from '$app/stores';
+    import { page } from '$app/state';
     import Spinner from '$lib/components/shared/spinner.svelte';
+
     import { Button, Icon } from '$lib/components/ui';
     import { createCopy } from '$lib/utils/copy';
     import TicketCard from '../(components)/ticket-card.svelte';
     import { loginGithub } from '../../(utils)/github';
     import { stickerPack } from '../customize/+page.svelte';
+    import { initDates } from '../../+page.svelte';
 
-    export let data;
+    const { data } = $props();
 
     let firstName = data.ticket?.name?.split(/\s/)[0] ?? '';
     let id = data.ticket?.id.toString().padStart(6, '0');
-    const ogImage = `${$page.url.origin}/init/tickets/${data.ticket.$id}/og`;
+    const ticketUrl = `${page.url.origin}/init/tickets/${data.ticket.$id}`;
+    const ogImage = `${ticketUrl}/og`;
 
-    const { copied, copy } = createCopy($page.url.href);
+    const { copied, copy } = createCopy(page.url.href);
 
-    let claiming: boolean = false;
+    let claiming = $state<boolean>(false);
 
     const handleLogin = () => {
         claiming = true;
         loginGithub();
     };
+
+    const shareTextOptions = [
+        `Join us during the week of ${initDates} to celebrate everything new with @appwrite. Claim your ticket here 👇 ${ticketUrl}`,
+        `Come celebrate everything new with @appwrite from ${initDates}! Don't miss out on the latest features and updates. Get your ticket ASAP! 📅 ${ticketUrl}`,
+        `Don't miss out on init @appwrite from ${initDates}. Get your ticket now and join us for a week of innovation. 🚀 ${ticketUrl}`,
+        `Join us ${initDates} to explore everything new with @appwrite. Reserve your spot and be the first to know about the latest features 📌 ${ticketUrl}`,
+        `Join the fun! We're celebrating everything new with @appwrite from ${initDates}. Secure your ticket here 🎟️ ${ticketUrl}`,
+        `We're celebrating everything new with @appwrite from ${initDates}. Come join us and see what's in store. Get your ticket 🗓️ ${ticketUrl}`,
+        `Join us for an incredible week of exploring everything new with @appwrite, ${initDates}. Get your ticket here ✨ ${ticketUrl}`,
+        `Join us ${initDates} to see everything new with @appwrite. Claim your ticket and be the first to experience the FRESH updates 👇 ${ticketUrl}`,
+        `Let's celebrate everything new with @appwrite from ${initDates}. Grab your ticket and join us for a week full of surprises 🎁 ${ticketUrl}`,
+        `Be part of everything new with @appwrite from ${initDates}. Get your ticket here: ${ticketUrl}`,
+        `Join the fun! ${initDates}, let's check out everything new with @appwrite together. Get your ticket and don't miss out 🎟️ ${ticketUrl}`,
+        `I'm attending init @appwrite from ${initDates}. Come along and experience the latest features with us. Get your ticket 🎫 ${ticketUrl}`,
+        `Don't miss out on the fun! Join us at @appwrite init from ${initDates}. Get your ticket here 🔥 ${ticketUrl}`,
+        `My ticket looks so good! I'll be at @appwrite init from ${initDates}. Join us and be the first to explore the updates 🌐 ${ticketUrl}`,
+        `Spot my GitHub contribution graph! 🔥 Let's explore everything new with @appwrite from ${initDates}. Secure your spot right away! ${ticketUrl}`,
+        `I'm excited for everything new with @appwrite ${initDates}. Come check out all the cool stuff with me! ${ticketUrl}`,
+        `It's finally happening! Grab your ticket here and don't miss out on everything new with @appwrite from ${initDates} 🚀 ${ticketUrl}`,
+        `Join us for a week of everything new with @appwrite, ${initDates}. Get your ticket here: ${ticketUrl}`,
+        `Don't miss out on everything new with @appwrite from ${initDates}. Get your ticket here: 💡 ${ticketUrl}`,
+        `Let's check out everything new with @appwrite from ${initDates}. Secure your ticket and join us for a week full of awesomeness! 🎉 ${ticketUrl}`
+    ];
+
+    let twitterText = $state(
+        encodeURIComponent(shareTextOptions[Math.floor(Math.random() * shareTextOptions.length)])
+    );
 </script>
 
 <svelte:head>
@@ -86,7 +116,7 @@
                             <Button
                                 class="text-primary w-1/2! active:scale-98"
                                 variant="secondary"
-                                href="/init/tickets/customize"
+                                href={`https://twitter.com/intent/tweet?text=${twitterText}`}
                             >
                                 <Icon name="x" />
                                 Share
@@ -126,35 +156,3 @@
         </div>
     </div>
 </div>
-<!-- <button
-                        class="text-primary flex cursor-pointer items-center gap-2 transition active:scale-98"
-                        onclick={copy}
-                    >
-                        <svg
-                            width="21"
-                            height="20"
-                            viewBox="0 0 21 20"
-                            fill="none"
-                            xmlns="http://www.w3.org/2000/svg"
-                        >
-                            <path
-                                d="M12.15 7H6.35C5.78995 7 5.50992 7 5.29601 7.10899C5.10785 7.20487 4.95487 7.35785 4.85899 7.54601C4.75 7.75992 4.75 8.03995 4.75 8.6V14.4C4.75 14.9601 4.75 15.2401 4.85899 15.454C4.95487 15.6422 5.10785 15.7951 5.29601 15.891C5.50992 16 5.78995 16 6.35 16H12.15C12.7101 16 12.9901 16 13.204 15.891C13.3922 15.7951 13.5451 15.6422 13.641 15.454C13.75 15.2401 13.75 14.9601 13.75 14.4V8.6C13.75 8.03995 13.75 7.75992 13.641 7.54601C13.5451 7.35785 13.3922 7.20487 13.204 7.10899C12.9901 7 12.7101 7 12.15 7Z"
-                                stroke="#E4E4E7"
-                                stroke-width="1.2"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                            />
-                            <path
-                                d="M7.75 5.125V5C7.75 4.44772 8.19772 4 8.75 4H15.75C16.3023 4 16.75 4.44772 16.75 5V12C16.75 12.5523 16.3023 13 15.75 13H15.625"
-                                stroke="#E4E4E7"
-                                stroke-width="1.2"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                            />
-                        </svg>
-                        {#if $copied}
-                            Copied
-                        {:else}
-                            Copy ticket URL
-                        {/if}</button
-                    > -->
