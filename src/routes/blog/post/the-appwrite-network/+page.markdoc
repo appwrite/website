@@ -21,7 +21,7 @@ Starting today, all Pro users have access to three regions of choice, including 
 
 The Appwrite Cloud beta journey began with a single region in Frankfurt, which allowed us to focus on delivering the highest quality and performance on a smaller scale. As we approach the General Availability (GA) of Appwrite Cloud, and with a growing number of developers, projects, and organizations on the platform, we are excited to share the plans to expand the network to include additional regions and edges across the globe.
 
-| Region              | Status                | Region | Edge | Timeline      |
+| Location              | Status                | Region | Edge | Timeline      |
 |---------------------|-----------------------|--------|------|---------------|
 | Frankfurt (`FRA`)     | Ready and operational | Yes    | Yes  | Available Now |
 | Sydney (`SYD`)        | Ready and operational | Yes    | Yes  | Available Now |
