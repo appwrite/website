@@ -53,6 +53,7 @@ export type IconType =
     | 'star'
     | 'system'
     | 'textmagic'
+    | 'ticket'
     | 'tiktok'
     | 'twitter'
     | 'vue'

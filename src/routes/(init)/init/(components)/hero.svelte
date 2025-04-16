@@ -1,6 +1,6 @@
 <script lang="ts">
     import Spinner from '$lib/components/shared/spinner.svelte';
-    import VideoDialog from '$lib/components/shared/video-dialog.svelte';
+    import VideoDialog from '$lib/components/shared/dialog.svelte';
     import { Button, Icon } from '$lib/components/ui';
     import { classNames } from '$lib/utils/classnames';
     import { loginGithub } from '../(utils)/github';
@@ -11,9 +11,10 @@
 
     interface Props {
         claimed?: boolean;
+        ticketId?: string;
     }
 
-    let { claimed = false }: Props = $props();
+    let { claimed = false, ticketId }: Props = $props();
     let claiming: boolean = $state(false);
 
     const handleLogin = () => {
@@ -39,9 +40,9 @@
 
             <nav class="mt-4 flex w-full flex-col items-center justify-center gap-4 md:flex-row">
                 {#if claimed}
-                    <Button href="/init/tickets/customize">
-                        <Icon name="customize" /> Customize your ticket</Button
-                    >
+                    <Button href={`/init/tickets/${ticketId}`}>
+                        <Icon name="ticket" />Your Init ticket
+                    </Button>
                 {:else}
                     <Button onclick={handleLogin} disabled={claiming}>
                         {#if claiming}

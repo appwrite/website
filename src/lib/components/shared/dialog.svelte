@@ -1,6 +1,13 @@
 <script lang="ts">
     import { fade, scale } from 'svelte/transition';
     import { createDialog, melt } from '@melt-ui/svelte';
+    import type { Snippet } from 'svelte';
+
+    type Props = {
+        url: string;
+        title?: string;
+        children: Snippet;
+    };
 
     const {
         elements: { portalled, trigger, content, overlay },
@@ -10,12 +17,11 @@
         preventScroll: true
     });
 
-    export let url: string = '';
-    export let title: string = 'YouTube video player';
+    const { url, title = 'YouTube video player', children }: Props = $props();
 </script>
 
 <div use:melt={$trigger} class="contents cursor-pointer">
-    <slot />
+    {@render children()}
 </div>
 
 {#if $open}
@@ -24,7 +30,7 @@
             use:melt={$overlay}
             class="fixed inset-0 top-0 z-1000 bg-black/50 transition ease-out"
             transition:fade={{ duration: 150 }}
-        />
+        ></div>
 
         <div
             class="web-media content fixed z-1000 block aspect-video max-h-[75vh] w-[80%] object-contain"
@@ -38,7 +44,7 @@
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 allowfullscreen
                 class="block aspect-video h-full w-full"
-            />
+            ></iframe>
         </div>
     </div>
 {/if}

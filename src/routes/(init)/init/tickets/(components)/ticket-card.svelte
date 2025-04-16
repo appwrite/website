@@ -1,10 +1,8 @@
-<!-- @migration-task Error while migrating Svelte code: Encountered an export declaration pattern that is not supported for automigration. -->
 <script lang="ts">
     import { classNames } from '$lib/utils/classnames';
     import Lockup from '../../(components)/lockup.svelte';
     import type { ContributionsMatrix } from '../../(utils)/contributions';
     import type { TicketData } from '../../(utils)/tickets';
-    import { Spring } from 'svelte/motion';
     import TicketUrl from './ticket-url.svelte';
     import { initDates } from '../../+page.svelte';
 
@@ -119,7 +117,13 @@
     })}
     onclick={handleFlip}
 >
-    <div use:tilt class="size-full rounded-2xl transition-all duration-300 ease-out">
+    <div
+        use:tilt
+        class="size-full [transform:rotate3d(var(--y),_var(--x),_0,_var(--distance))] rounded-2xl transition-all duration-300 ease-out"
+        style:--y={coords.y / 100}
+        style:--x={coords.x / 100}
+        style:--distance={Math.log(Math.sqrt(coords.x ** 2 + coords.y ** 2)) * 2}
+    >
         <div
             class={classNames(
                 'group relative z-10 mx-auto flex aspect-[3.65/5.72] max-w-xs min-w-xs flex-col gap-1 rounded-3xl bg-[#27272A] p-1 shadow-lg transition-transform transform-3d',

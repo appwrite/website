@@ -169,7 +169,7 @@
     <meta name="twitter:card" content="summary_large_image" />
 </svelte:head>
 
-<Hero claimed={data.claimed} />
+<Hero ticketId={data.ticketId} claimed={data.claimed} />
 
 {#if today >= base}
     <CountdownGrid {days} />
