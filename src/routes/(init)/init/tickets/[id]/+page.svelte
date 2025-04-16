@@ -85,6 +85,13 @@
             <div class="row-span-2 h-full w-full px-8"></div>
             <div class="row-span-8 flex h-full w-full items-center px-8 py-6 md:px-12">
                 <div class="flex flex-1 flex-col gap-2">
+                    <a href="/init" class="text-primary group mb-2 flex items-center gap-2">
+                        <Icon
+                            name="arrow-left"
+                            class="transition-transform group-hover:-translate-x-0.5"
+                        />
+                        Back to Init</a
+                    >
                     <h2 class="text-display font-aeonik-pro text-primary">
                         {#if data.isCurrentUsersTicket}
                             Here's your Init ticket
