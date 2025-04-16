@@ -25,8 +25,8 @@ The process of implementing offline sync in Appwrite-powered apps (and in genera
 
 2. **Working offline**: While offline, users can either read previously synced data or make changes (create, update, or delete data) in the local data store.
 
-3. **Detecting connectivity**: The app monitors network status. As soon as connectivity is restored, a sync operation is triggered with the Appwrite database.
+3. **Detecting connectivity**: The app monitors network status. As soon as connectivity is restored, a sync operation is triggered between the local data store and the Appwrite database.
 
 5. **Two-way synchronization**: Local changes are *"pushed"* to the Appwrite database and new changes from the database are *"pulled"* into the local store. This process is called **push-pull replication**.
 
-6. **Conflict resolution**: If the same data was changed both locally and on the server, the system must prioritise one of the two operations. Various strategies can be implemented to mitigate this issue, such as *"last write wins"* or *manual user conflict resolution*.
+6. **Conflict resolution**: If the same data was changed both locally and on the server, the system must prioritise one of the two operations. Various strategies can be implemented to mitigate this issue, such as *last write wins* or *manual user conflict resolution*.
