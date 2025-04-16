@@ -76,7 +76,9 @@
 </svelte:head>
 
 <div class="container">
-    <div class="grid min-h-[80vh] grid-cols-1 md:grid-cols-12">
+    <div
+        class="border-offset grid min-h-[80vh] grid-cols-1 border-b-2 border-dashed md:grid-cols-12"
+    >
         <div
             class="border-offset divide-offset grid place-items-center divide-y-2 divide-dashed border-r-2 border-l-2 border-dashed md:col-span-6 md:border-r-0"
         >
@@ -117,6 +119,7 @@
                                 class="text-primary w-1/2! active:scale-98"
                                 variant="secondary"
                                 href={`https://twitter.com/intent/tweet?text=${twitterText}`}
+                                target="_blank"
                             >
                                 <Icon name="x" />
                                 Share
