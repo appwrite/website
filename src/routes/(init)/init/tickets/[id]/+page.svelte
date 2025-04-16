@@ -71,7 +71,7 @@
                     <div class="mt-4 flex items-center gap-4">
                         {#if data.isCurrentUsersTicket}
                             <Button
-                                class="w-full! active:scale-98"
+                                class="w-1/2! active:scale-98"
                                 variant="secondary"
                                 onclick={copy}
                             >
@@ -84,7 +84,7 @@
                                 {/if}
                             </Button>
                             <Button
-                                class="text-primary w-full! active:scale-98"
+                                class="text-primary w-1/2! active:scale-98"
                                 variant="secondary"
                                 href="/init/tickets/customize"
                             >
