@@ -73,11 +73,24 @@
                             <Button
                                 class="w-full! active:scale-98"
                                 variant="secondary"
+                                onclick={copy}
+                            >
+                                {#if $copied}
+                                    <Icon name="check" />
+                                    Copied!
+                                {:else}
+                                    <Icon name="customize" />
+                                    Copy ticket URL
+                                {/if}
+                            </Button>
+                            <Button
+                                class="text-primary w-full! active:scale-98"
+                                variant="secondary"
                                 href="/init/tickets/customize"
                             >
-                                <Icon name="customize" />
-                                Customize your ticket</Button
-                            >
+                                <Icon name="x" />
+                                Share
+                            </Button>
                         {:else}
                             <Button onclick={handleLogin} class="w-1/2!" disabled={claiming}>
                                 {#if claiming}
@@ -99,6 +112,17 @@
             class="border-offset flex flex-col items-center justify-center border-x-2 border-dashed bg-black/24 py-8 md:col-span-6"
         >
             <TicketCard {stickerPack} {...data.ticket} />
+
+            {#if data.isCurrentUsersTicket}
+                <Button
+                    class="mt-8 active:scale-98"
+                    variant="secondary"
+                    href="/init/tickets/customize"
+                >
+                    <Icon name="customize" />
+                    Customize ticket
+                </Button>
+            {/if}
         </div>
     </div>
 </div>

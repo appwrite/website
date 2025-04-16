@@ -7,7 +7,7 @@ export const copyToClipboard = async (value: string) => {
     return data;
 };
 
-export const createCopy = (value: string) => {
+export const createCopy = (value: string, delay: number = 3000) => {
     const copied = writable<boolean>(false);
 
     let timeout: NodeJS.Timeout | undefined = undefined;
@@ -16,7 +16,7 @@ export const createCopy = (value: string) => {
         if (timeout) clearTimeout(timeout);
         copied.set(true);
         copyToClipboard(value);
-        timeout = setTimeout(() => copied.set(false), 1000);
+        timeout = setTimeout(() => copied.set(false), delay);
 
         return () => {
             if (timeout) clearTimeout(timeout);
