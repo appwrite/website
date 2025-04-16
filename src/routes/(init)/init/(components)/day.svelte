@@ -32,20 +32,9 @@
     import Window from './window.svelte';
     import { classNames } from '$lib/utils/classnames';
     import MediaCard from './media-card.svelte';
+    import { onDestroy } from 'svelte';
 
-    interface Props {
-        release: DayProps['release'];
-        illustration: DayProps['illustration'];
-        content?: DayProps['content'];
-        announcementVideo?: DayProps['announcementVideo'];
-        links?: DayProps['links'];
-        title: DayProps['title'];
-        description: DayProps['description'];
-        url: DayProps['url'];
-        index: DayProps['index'];
-    }
-
-    let {
+    const {
         release,
         illustration,
         content = [],
@@ -55,16 +44,20 @@
         description,
         url,
         index
-    }: Props = $props();
+    }: DayProps = $props();
 
     let now = $state(new Date());
-    let interval = setInterval(() => {
+    const interval = setInterval(() => {
         if (hasReleased) {
             clearInterval(interval);
             return;
         }
         now = new Date();
     }, 1000);
+
+    onDestroy(() => {
+        clearInterval(interval);
+    });
 
     let hasReleased = $derived(now >= release);
 </script>
@@ -105,7 +98,9 @@
                             </a>
                         {/if}
                     </div>
-                    <div class="col-span-7 max-h-[50vh] overflow-hidden">
+                    <div
+                        class="col-span-7 flex max-h-[50vh] items-center justify-center overflow-hidden"
+                    >
                         <img
                             src={illustration}
                             alt="key illustration"
