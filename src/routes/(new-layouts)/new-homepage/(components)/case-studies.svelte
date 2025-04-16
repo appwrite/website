@@ -88,9 +88,15 @@
                     )}
                 >
                     <img src={study.logo} alt={study.headline} />
-                    <span class="text-title font-aeonik-pro text-primary"
-                        >{study.headline}<span class="text-accent">_</span></span
-                    >
+                    {#if value === i.toString()}
+                        <span class="text-title font-aeonik-pro text-primary flex flex-wrap gap-2"
+                            >{#each study.headline.split(' ') as word, i}
+                                <span class="animate-enter" style:animation-delay="{i * 25}ms">
+                                    {word}
+                                </span>
+                            {/each}</span
+                        >
+                    {/if}
 
                     <div class="border-smooth mt-8 border-t border-dashed pt-8">
                         <div class="text-primary text-sub-body max-w-[60%] font-medium">
