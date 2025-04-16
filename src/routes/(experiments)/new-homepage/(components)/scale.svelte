@@ -1,7 +1,7 @@
 <script lang="ts">
     import { classNames } from '$lib/utils/classnames';
     import NumberFlow from '@number-flow/svelte';
-    import { inView } from 'motion';
+    import { inView } from 'motion-legacy';
     import { onDestroy } from 'svelte';
 
     const animationDuration = 3;

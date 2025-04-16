@@ -5,13 +5,13 @@
         class?: string;
     }
 
-    let { class: classes = '' }: Props = $props();
+    const { class: className = '' }: Props = $props();
 </script>
 
 <svg
     viewBox="0 0 750 420"
     fill="none"
-    class={classNames('lockup mx-auto w-full overflow-hidden', classes)}
+    class={classNames('lockup mx-auto w-full overflow-hidden', className)}
 >
     <g class="background-layer">
         <path
@@ -19,6 +19,7 @@
             fill="#000"
             stroke="url(#e)"
             stroke-dasharray="4 4"
+            class="bg"
         />
     </g>
     <g class="bottom-layer" filter="url(#k)">
@@ -542,18 +543,9 @@
         --duration: 0.75s;
         --delay: 1s;
 
-        @keyframes background-layer {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
-
         .background-layer {
             opacity: 0;
-            animation: background-layer var(--duration) ease-in-out forwards 2.75s;
+            animation: fade-in var(--duration) ease-in-out forwards 2.75s;
         }
 
         @keyframes grid-lines {
