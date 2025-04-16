@@ -2,6 +2,7 @@
     import TicketCard from '../tickets/(components)/ticket-card.svelte';
     import Avatar from '../(assets)/avatar.png';
     import { classNames } from '$lib/utils/classnames';
+    import { Button } from '$lib/components/ui';
 </script>
 
 <div class="container grid min-h-[65vh] w-full grid-cols-1 place-items-center py-20 md:grid-cols-2">
@@ -12,7 +13,7 @@
         <p class="text-secondary text-body mb-8">
             Create, customize and share your ticket to get the chance to win exclusive Init swag.
         </p>
-        <a href="/init/tickets/customize" class="web-button is-secondary">Claim your ticket</a>
+        <Button href="/init/tickets/customize" variant="secondary">Claim your ticket</Button>
     </div>
     <div class="relative flex w-full items-center">
         <div style:transform="rotate(4deg)" class="absolute right-40 z-0">

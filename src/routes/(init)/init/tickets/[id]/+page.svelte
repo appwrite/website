@@ -1,7 +1,7 @@
 <script lang="ts">
     import { page } from '$app/stores';
     import Spinner from '$lib/components/shared/spinner.svelte';
-    import { Icon } from '$lib/components/ui';
+    import { Button, Icon } from '$lib/components/ui';
     import { createCopy } from '$lib/utils/copy';
     import TicketCard from '../(components)/ticket-card.svelte';
     import { loginGithub } from '../../(utils)/github';
@@ -70,20 +70,18 @@
                     </p>
                     <div class="mt-4 flex items-center gap-4">
                         {#if data.isCurrentUsersTicket}
-                            <a class="web-button w-full!" href="/init">Go to Init</a>
+                            <Button class="w-full!" href="/init">Go to Init</Button>
                         {:else}
-                            <button
-                                on:click={handleLogin}
-                                class="web-button flex w-1/2! items-center gap-4"
-                                disabled={claiming}
-                            >
+                            <Button onclick={handleLogin} class="w-1/2!" disabled={claiming}>
                                 {#if claiming}
                                     <Spinner />
                                 {:else}
                                     <Icon name="github" class="text-primary" />
-                                {/if}Register with GitHub</button
+                                {/if}Register with GitHub</Button
                             >
-                            <a href="/init" class="web-button is-secondary w-1/2!">Go to Init</a>
+                            <Button href="/init" variant="secondary" class="w-1/2!"
+                                >Go to Init</Button
+                            >
                         {/if}
                     </div>
                 </div>
@@ -97,13 +95,14 @@
 
             {#if data.isCurrentUsersTicket}
                 <nav class="mt-8 flex items-center gap-4">
-                    <a
-                        class="web-button is-secondary active:scale-98"
-                        href="/init/tickets/customize">Customize ticket</a
+                    <Button
+                        class="active:scale-98"
+                        variant="secondary"
+                        href="/init/tickets/customize">Customize ticket</Button
                     >
                     <button
                         class="text-primary flex cursor-pointer items-center gap-2 transition active:scale-98"
-                        on:click={copy}
+                        onclick={copy}
                     >
                         <svg
                             width="21"
