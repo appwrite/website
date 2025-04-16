@@ -40,6 +40,15 @@
     ];
 
     let value = $state<string>('0');
+
+    const getValue = () => {
+        return value;
+    };
+
+    const setValue = (newValue: string) => {
+        if (!newValue.length) return;
+        value = newValue;
+    };
 </script>
 
 <div
@@ -49,7 +58,11 @@
         'after:from-accent/20 after:absolute after:inset-0 after:top-0 after:right-0 after:-z-10 after:mt-auto after:mb-0 after:block after:h-full after:bg-radial-[circle_at_-15%_125%] after:from-0% after:to-transparent after:to-40% after:blur-2xl'
     )}
 >
-    <ToggleGroup.Root {value} type="single" class="container flex h-full items-center gap-4">
+    <ToggleGroup.Root
+        bind:value={getValue, setValue}
+        type="single"
+        class="container flex h-full items-center gap-4"
+    >
         {#each studies as study, i}
             <ToggleGroup.Item
                 value={i.toString()}

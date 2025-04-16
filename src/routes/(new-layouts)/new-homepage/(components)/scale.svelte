@@ -6,7 +6,7 @@
 
     const animationDuration = 3;
 
-    let stats = [
+    const stats = $state([
         {
             number: 0,
             suffix: '+',
@@ -31,11 +31,11 @@
             description: 'total compute time',
             top: 46.75
         }
-    ];
+    ]);
 
     const numbers = [12, 900, 1, 999];
 
-    let animate: boolean = false;
+    let animate = $state<boolean>(false);
 
     let timeoutIds: Array<NodeJS.Timeout> = [];
     const updateNumbers = () => {

@@ -58,6 +58,7 @@
     import { trackEvent } from '$lib/actions/analytics';
     import { saveReferrerAndUtmSource } from '$lib/utils/utm';
     import { Sprite } from '$lib/components/ui/icon/sprite';
+    import { setTheme, ThemeProvider } from '$lib/providers/theme';
 
     function applyTheme(theme: Theme) {
         const resolvedTheme = theme === 'system' ? getSystemTheme() : theme;
@@ -206,6 +207,7 @@
 >
 
 <slot />
+<ThemeProvider />
 <Sprite />
 
 <style lang="scss">
