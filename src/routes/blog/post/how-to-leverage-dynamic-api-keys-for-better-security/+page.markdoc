@@ -65,7 +65,7 @@ To define scopes in the Appwrite console, navigate to your function's settings a
 
 ```jsx
 const client = new Client()
-  .setEndpoint('https://cloud.appwrite.io/v1') // Hardcoded API endpoint
+  .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Hardcoded API endpoint
   .setProject(process.env.APPWRITE_FUNCTION_PROJECT_ID)
   .setKey(process.env.APPWRITE_API_KEY) // Static API key
 ```

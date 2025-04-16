@@ -70,7 +70,7 @@ import { Client, Account, ID } from 'react-native-appwrite';
 const client = new Client();
 
 client
-    .setEndpoint('http://cloud.appwrite.io/v1') // Your Appwrite Endpoint
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your Appwrite Endpoint
     .setProject('455x34dfkj') // Your project ID
     .setPlatform('com.example.myappwriteapp'); // Your application ID or bundle ID
 

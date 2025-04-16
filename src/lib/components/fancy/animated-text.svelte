@@ -15,7 +15,7 @@
 <span class={classNames('relative overflow-hidden', className)}>
     {#each words as word, i}
         <span
-            class="animate-text mr-2 inline-block"
+            class="animate-enter mr-2 inline-block"
             style:animation-delay="{i * 75}ms
             ">{word}</span
         >

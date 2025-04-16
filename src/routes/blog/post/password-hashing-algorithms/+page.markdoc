@@ -80,7 +80,7 @@ Appwrite Authentication also leverages password hashing algorithms to allow deve
 import { Client, Account, ID } from "appwrite";
 
 const client = new Client()
-    .setEndpoint('https://cloud.appwrite.io/v1')
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
     .setProject('<PROJECT_ID>');
 
 const account = new Account(client);
