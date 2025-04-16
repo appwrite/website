@@ -70,7 +70,14 @@
                     </p>
                     <div class="mt-4 flex items-center gap-4">
                         {#if data.isCurrentUsersTicket}
-                            <Button class="w-full!" href="/init">Go to Init</Button>
+                            <Button
+                                class="w-full! active:scale-98"
+                                variant="secondary"
+                                href="/init/tickets/customize"
+                            >
+                                <Icon name="customize" />
+                                Customize your ticket</Button
+                            >
                         {:else}
                             <Button onclick={handleLogin} class="w-1/2!" disabled={claiming}>
                                 {#if claiming}
@@ -92,15 +99,10 @@
             class="border-offset flex flex-col items-center justify-center border-x-2 border-dashed bg-black/24 py-8 md:col-span-6"
         >
             <TicketCard {stickerPack} {...data.ticket} />
-
-            {#if data.isCurrentUsersTicket}
-                <nav class="mt-8 flex items-center gap-4">
-                    <Button
-                        class="active:scale-98"
-                        variant="secondary"
-                        href="/init/tickets/customize">Customize ticket</Button
-                    >
-                    <button
+        </div>
+    </div>
+</div>
+<!-- <button
                         class="text-primary flex cursor-pointer items-center gap-2 transition active:scale-98"
                         onclick={copy}
                     >
@@ -131,9 +133,4 @@
                         {:else}
                             Copy ticket URL
                         {/if}</button
-                    >
-                </nav>
-            {/if}
-        </div>
-    </div>
-</div>
+                    > -->

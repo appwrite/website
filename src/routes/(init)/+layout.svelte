@@ -1,6 +1,4 @@
 <script lang="ts">
-    import SiteHeader from '$lib/components/layout/site-header.svelte';
-    import SiteFooter from '$lib/components/layout/site-footer.svelte';
     import Lockup from './init/(components)/lockup.svelte';
     import { isStarted } from './init/+page.svelte';
     import type { Snippet } from 'svelte';

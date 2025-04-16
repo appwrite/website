@@ -6,14 +6,13 @@ import { getInitUser } from '../../(utils)/auth';
 export const ssr = true;
 
 export const load = async ({ params }) => {
-    const { id } = params;
     try {
         const user = await getInitUser();
 
         const userTicket = await getTicketDocByUser(user);
-        const isCurrentUsersTicket = userTicket.$id === id;
+        const isCurrentUsersTicket = userTicket.$id === params.id;
 
-        const ticket = await getTicketDocById(id);
+        const ticket = await getTicketDocById(params.id);
 
         return {
             ticket,
