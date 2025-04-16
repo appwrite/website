@@ -271,6 +271,28 @@
                             <p class="text-sub-body mt-1">Respond to server events in realtime.</p>
                         </a>
                     </li>
+                    <li>
+                        <a href="/docs/products/network" class="web-card is-normal">
+                            <img
+                                src="/images/icons/illustrated/dark/network.png"
+                                alt=""
+                                class="web-u-only-dark"
+                                width="40"
+                                height="40"
+                            />
+                            <img
+                                src="/images/icons/illustrated/light/network.png"
+                                alt=""
+                                class="web-u-only-light"
+                                width="40"
+                                height="40"
+                            />
+                            <h4 class="text-sub-body text-primary mt-2 font-medium">Network</h4>
+                            <p class="text-sub-body mt-1">
+                                Global infrastructure for serverless compute.
+                            </p>
+                        </a>
+                    </li>
                 </ul>
             </div>
         </section>

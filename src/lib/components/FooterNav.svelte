@@ -37,7 +37,8 @@
                 { label: 'Functions', href: '/products/functions' },
                 { label: 'Messaging', href: '/products/messaging' },
                 { label: 'Storage', href: '/products/storage' },
-                { label: 'Realtime', href: '/docs/apis/realtime' }
+                { label: 'Realtime', href: '/docs/apis/realtime' },
+                { label: 'The Appwrite Network', href: '/docs/products/network' }
             ],
             Learn: [
                 { label: 'Docs', href: '/docs' },

@@ -87,7 +87,7 @@ A relationship attribute with the key `reviews` is added to the movies collectio
 const { Client, Databases } = require('node-appwrite');
 
 const client = new Client()
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
     .setProject('<PROJECT_ID>');               // Your project ID
 
 const databases = new Databases(client);
@@ -110,7 +110,7 @@ use \Appwrite\Client;
 use \Appwrite\Services\Databases;
 
 $client = (new Client())
-    ->setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
+    ->setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
     ->setProject('<PROJECT_ID>');               // Your project ID
 
 $databases = new Databases($client);
@@ -133,7 +133,7 @@ from appwrite.client import Client
 from appwrite.services.databases import Databases
 
 client = (Client()
-    .set_endpoint('https://cloud.appwrite.io/v1')     # Your API Endpoint
+    .set_endpoint('https://<REGION>.cloud.appwrite.io/v1')     # Your API Endpoint
     .set_project('<PROJECT_ID>'))                   # Your project ID
 
 databases = Databases(client)
@@ -157,7 +157,7 @@ require 'appwrite'
 include Appwrite
 
 client = Client.new
-    .set_endpoint('https://cloud.appwrite.io/v1')# Your API Endpoint
+    .set_endpoint('https://<REGION>.cloud.appwrite.io/v1')# Your API Endpoint
     .set_project('<PROJECT_ID>')               # Your project ID
 
 databases = Databases.new(client)
@@ -179,7 +179,7 @@ databases.create_relationship_attribute(
 import { Client, Databases } from "https://deno.land/x/appwrite/mod.ts";
 
 const client = new Client()
-    .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
     .setProject("<PROJECT_ID>");               // Your project ID
 
 const databases = new Databases(client);
@@ -201,7 +201,7 @@ databases.createRelationshipAttribute(
 import 'package:appwrite/appwrite.dart';
 
 final client = Client()
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
     .setProject('<PROJECT_ID>');               // Your project ID
 
 final databases = Databases(client);
@@ -224,7 +224,7 @@ import io.appwrite.Client
 import io.appwrite.services.Databases
 
 val client = Client()
-    .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
     .setProject("<PROJECT_ID>")                // Your project ID
 
 val databases = Databases(client)
@@ -246,7 +246,7 @@ databases.createRelationshipAttribute(
 import Appwrite
 
 let client = Client()
-    .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
     .setProject("<PROJECT_ID>")                // Your project ID
 
 let databases = Databases(client)
@@ -271,7 +271,7 @@ using Appwrite;
 using Appwrite.Services;
 
 var client = new Client()
-    .SetEndpoint("https://cloud.appwrite.io/v1")
+    .SetEndpoint("https://<REGION>.cloud.appwrite.io/v1")
     .SetProject("<PROJECT_ID>");
 
 var databases = new Databases(client);
@@ -303,7 +303,7 @@ You can create both the **parent** and **child** at once in a relationship by ne
 const { Client, Databases, ID } = require('node-appwrite');
 
 const client = new Client()
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
     .setProject('<PROJECT_ID>');               // Your project ID
 
 const databases = new Databases(client);
@@ -327,7 +327,7 @@ await databases.createDocument(
 import 'package:appwrite/appwrite.dart';
 
 final client = Client()
-    .setEndpoint('https://cloud.appwrite.io/v1')  // Your API Endpoint
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')  // Your API Endpoint
     .setProject('<PROJECT_ID>');                // Your project ID
 
 final databases = Databases(client);
@@ -351,7 +351,7 @@ await databases.createDocument(
 import Appwrite
 
 let client = Client()
-    .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
     .setProject("<PROJECT_ID>")                // Your project ID
 
 let databases = Database(client: client)
@@ -377,7 +377,7 @@ import io.appwrite.services.Database
 import io.appwrite.ID
 
 val client = Client()
-    .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
     .setProject("<PROJECT_ID>")                // Your project ID
 
 val databases = Database(client)
@@ -412,7 +412,7 @@ Here's an example connecting reviews to a movie.
 const { Client, Databases, ID } = require('node-appwrite');
 
 const client = new Client()
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
     .setProject('<PROJECT_ID>');               // Your project ID
 
 const databases = new Databases(client);
@@ -436,7 +436,7 @@ await databases.createDocument(
 import 'package:appwrite/appwrite.dart';
 
 final client = Client()
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint    
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint    
     .setProject('<PROJECT_ID>');               // Your project ID  
 
 final databases = Databases(client);
@@ -460,7 +460,7 @@ await databases.createDocument(
 import Appwrite
 
 let client = Client()
-    .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint        
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint        
     .setProject("<PROJECT_ID>")                // Your project ID      
 
 let databases = Database(client: client)
@@ -486,7 +486,7 @@ import io.appwrite.services.Database
 import io.appwrite.ID
 
 val client = Client()
-    .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint    
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint    
     .setProject("<PROJECT_ID>")                // Your project ID  
 
 val databases = Database(client)
@@ -520,7 +520,7 @@ Relationships can be updated by updating the relationship attribute.
 const { Client, Databases } = require('node-appwrite');
 
 const client = new Client()
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
     .setProject('<PROJECT_ID>');               // Your project ID
 
 const databases = new Databases(client);
@@ -544,7 +544,7 @@ await databases.updateDocument(
 import 'package:appwrite/appwrite.dart';
 
 final client = Client()
-    .setEndpoint('https://cloud.appwrite.io/v1')
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
     .setProject('<PROJECT_ID>');
 
 final databases = Databases(client);
@@ -568,7 +568,7 @@ await databases.updateDocument(
 import Appwrite
 
 let client = Client()
-    .setEndpoint("https://cloud.appwrite.io/v1")
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
     .setProject("<PROJECT_ID>")
 
 let databases = Database(client: client)
@@ -593,7 +593,7 @@ import io.appwrite.Client
 import io.appwrite.services.Database
 
 val client = Client()
-    .setEndpoint("https://cloud.appwrite.io/v1")
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
     .setProject("<PROJECT_ID>")
 
 val databases = Database(client)
@@ -639,7 +639,7 @@ If the on-delete behavior is **cascade**, deleting the parent documents also del
 const { Client, Databases } = require('node-appwrite');
 
 const client = new Client()
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
     .setProject('<PROJECT_ID>');               // Your project ID
 
 const databases = new Databases(client);
@@ -655,7 +655,7 @@ await databases.deleteDocument(
 import 'package:appwrite/appwrite.dart';
 
 final client = Client()
-    .setEndpoint('https://cloud.appwrite.io/v1')
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
     .setProject('<PROJECT_ID>');
 
 final databases = Databases(client);
@@ -671,7 +671,7 @@ await databases.deleteDocument(
 import Appwrite
 
 let client = Client()
-    .setEndpoint("https://cloud.appwrite.io/v1")
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
     .setProject("<PROJECT_ID>")
 
 let databases = Database(client: client)
@@ -688,7 +688,7 @@ import io.appwrite.Client
 import io.appwrite.services.Database
 
 val client = Client()
-    .setEndpoint("https://cloud.appwrite.io/v1")
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
     .setProject("<PROJECT_ID>")
 
 val databases = Database(client)
@@ -715,7 +715,7 @@ You can also provide explicit permissions to the child document if they should b
 const { Client, Databases, ID } = require('node-appwrite');
 
 const client = new Client()
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
     .setProject('<PROJECT_ID>');               // Your project ID
 
 const databases = new Databases(client);
@@ -743,7 +743,7 @@ await databases.createDocument(
 import 'package:appwrite/appwrite.dart';
 
 final client = Client()
-    .setEndpoint('https://cloud.appwrite.io/v1')
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
     .setProject('<PROJECT_ID>');
 
 final databases = Databases(client);
@@ -771,7 +771,7 @@ await databases.createDocument(
 import Appwrite
 
 let client = Client()
-    .setEndpoint("https://cloud.appwrite.io/v1")
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
     .setProject("<PROJECT_ID>")
 
 let databases = Database(client: client)
@@ -799,7 +799,7 @@ databases.createDocument(
 import Appwrite
 
 let client = Client()
-    .setEndpoint("https://cloud.appwrite.io/v1")
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
     .setProject("<PROJECT_ID>")
 
 let databases = Database(client: client)

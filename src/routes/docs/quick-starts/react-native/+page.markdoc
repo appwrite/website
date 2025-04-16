@@ -103,7 +103,7 @@ let account: Account;
 
 client = new Client();
 client
-  .setEndpoint('https://cloud.appwrite.io/v1')
+  .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
   .setProject('66e943139f030e2feaf8')   // Your Project ID
   .setPlatform('com.example.my-app');   // Your package name / bundle identifier
 
