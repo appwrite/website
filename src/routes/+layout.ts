@@ -1,4 +1,3 @@
-
 import { getAllChangelogEntries } from './changelog/utils';
 
 export const trailingSlash = 'never';
