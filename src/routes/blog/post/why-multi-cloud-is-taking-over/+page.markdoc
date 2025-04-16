@@ -7,6 +7,7 @@ cover: /images/blog/why-multi-cloud-is-taking-over/cover.png
 timeToRead: 4
 author: aditya-oberai
 category: product
+callToAction: true
 ---
 
 Choosing the right cloud provider can be challenging, which is why more businesses are turning to **multi-cloud,** using services from multiple cloud providers instead of relying on just one.
