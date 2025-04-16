@@ -2,7 +2,7 @@
 layout: post
 title: "Announcing the Appwrite Network: Appwrite’s vision for a global cloud infrastructure"
 description: Announcing more regions for Cloud, and many more to come with the introduction of the Appwrite Network.
-date: 2025-04-15
+date: 2025-04-16
 cover: /images/blog/the-appwrite-network/network-cover-image.png
 timeToRead: 05
 author: christy-jacob
@@ -15,11 +15,13 @@ We are happy to announce the launch of the Appwrite Network, a network of cloud 
 
 Starting today, all Pro users have access to three regions of choice, including our two new regions in **New York City** ('NYC'), and **Sydney** ('SYD') that are joining our first region in **Frankfurt** ('FRA'). In the next few weeks, this will be available to all Cloud users, with more regions to come.
 
+![Overview of all the regions](/images/blog/the-appwrite-network/cloud-regions.png)
+
 # The plan
 
 The Appwrite Cloud beta journey began with a single region in Frankfurt, which allowed us to focus on delivering the highest quality and performance on a smaller scale. As we approach the General Availability (GA) of Appwrite Cloud, and with a growing number of developers, projects, and organizations on the platform, we are excited to share the plans to expand the network to include additional regions and edges across the globe.
 
-| Region              | Status                | Region | Edge | Timeline      |
+| Location              | Status                | Region | Edge | Timeline      |
 |---------------------|-----------------------|--------|------|---------------|
 | Frankfurt (`FRA`)     | Ready and operational | Yes    | Yes  | Available Now |
 | Sydney (`SYD`)        | Ready and operational | Yes    | Yes  | Available Now |
@@ -31,7 +33,6 @@ The Appwrite Cloud beta journey began with a single region in Frankfurt, which a
 | London (`LON`)        | In plans              | Yes    | Yes  | TBD           |
 | Toronto (`TOR`)       | In plans              | Yes    | Yes  | TBD           |
 
-![Overview of all the regions](/images/blog/the-appwrite-network/cloud-regions.png)
 
 # Addressing the latency problem
 
@@ -70,7 +71,7 @@ Edges are about speed. They process requests closer to your users using smart ge
 
 Our global CDN leverages strategically positioned Points of Presence (PoPs) to cache and deliver your content from locations nearest to your users, ensuring rapid load times and enhanced performance.
 
-In short, a region hosts your data, and the edge executes your functions close to your users. Both regions and edges take advantage of the Appwrite CDN to optimize delivery and security. 
+In short, a region hosts your data, and the edge executes your functions close to your users. Both regions and edges take advantage of the Appwrite CDN to optimize delivery and security.
 
 # Data storage and global availability
 
@@ -94,5 +95,5 @@ Customizable rulesets allow you to tailor the WAF to your application's specific
 
 We welcome you to visit the docs to learn more about the [Appwrite Network](/docs/products/network) and how Appwrite handle's other topics like [secure transportation](/docs/products/network/tls), [compression](/docs/products/network/compression), [caching](/docs/products/network/caching) and more.
 
-We are excited about the future of the Appwrite network and the endless possibilities it will unlock for developers worldwide. Stay tuned for more updates as we continue to build and expand the network. Thank you for being part of the Appwrite community and for your ongoing support. Together, we are building the future of cloud platforms designed for developers. 
+We are excited about the future of the Appwrite network and the endless possibilities it will unlock for developers worldwide. Stay tuned for more updates as we continue to build and expand the network. Thank you for being part of the Appwrite community and for your ongoing support. Together, we are building the future of cloud platforms designed for developers.
 
