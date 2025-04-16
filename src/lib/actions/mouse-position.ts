@@ -20,7 +20,7 @@ export const useMousePosition = () => {
             () => {
                 node.addEventListener('mousemove', handleMouseMove);
             },
-            { amount: 'all' }
+            { amount: 'any' }
         );
 
         return {
