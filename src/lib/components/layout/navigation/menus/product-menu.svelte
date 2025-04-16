@@ -1,5 +1,7 @@
 <script lang="ts">
-    import MenuWrapper, { NavItem } from './menu-wrapper.svelte';
+    import { NavigationMenu } from 'bits-ui';
+    import MenuWrapper from './menu-wrapper.svelte';
+    import { classNames } from '$lib/utils/classnames';
 
     const products: { name: string; href: string; description: string }[] = [
         {
@@ -36,13 +38,17 @@
 </script>
 
 <MenuWrapper>
-    <ul class="grid gap-3 p-3 sm:w-[400px] sm:p-6 md:w-[600px] md:grid-cols-2 lg:w-[800px]">
-        {#each products as product (product.name)}
-            {@render NavItem({
-                href: product.href,
-                label: product.name,
-                content: product.description
-            })}
+    <div class="grid gap-3 p-3 sm:w-[400px] sm:p-6 md:w-[600px] md:grid-cols-2 lg:w-[800px]">
+        {#each products as product}
+            <NavigationMenu.Link
+                class="hover:bg-muted hover:text-accent-foreground focus:bg-muted focus:text-accent-foreground block space-y-1 rounded-md p-3 leading-none no-underline outline-hidden transition-colors select-none"
+                href={product.href}
+            >
+                <div class="text-sm leading-none font-medium">{product.name}</div>
+                <p class="text-muted-foreground line-clamp-2 text-sm leading-snug">
+                    {product.description}
+                </p>
+            </NavigationMenu.Link>
         {/each}
-    </ul>
+    </div>
 </MenuWrapper>

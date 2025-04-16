@@ -6,11 +6,13 @@
     import ProductMenu from './menus/product-menu.svelte';
     import { Icon } from '$lib/components/ui';
 
-    type NavItem = {
-        label: string;
-        href?: string;
-        menu?: Component;
-    };
+    type NavItem =
+        | ({ label: string; href: string } & { menu?: never })
+        | {
+              label: string;
+              menu: Component;
+              href?: never;
+          };
 
     export const navItems: Array<NavItem> = [
         { label: 'Products', menu: ProductMenu },
@@ -35,9 +37,9 @@
 <NavigationMenu.Root class={className} {...rest}>
     <NavigationMenu.List class="flex items-center gap-8">
         {#each navItems as item}
-            {#if item.menu}
-                {@const Menu = item.menu}
-                <NavigationMenu.Item>
+            <NavigationMenu.Item class="hover:text-accent transition-colors">
+                {#if item.menu}
+                    {@const Submenu = item.menu}
                     <NavigationMenu.Trigger class="group flex items-center gap-3"
                         >{item.label}
                         <Icon
@@ -46,13 +48,11 @@
                             aria-hidden="true"
                         /></NavigationMenu.Trigger
                     >
-                    <Menu />
-                </NavigationMenu.Item>
-            {:else}
-                <NavigationMenu.Item>
-                    <NavigationMenu.Link href={item.href ?? ''}>{item.label}</NavigationMenu.Link>
-                </NavigationMenu.Item>
-            {/if}
+                    <Submenu />
+                {:else}
+                    <NavigationMenu.Link href={item.href}>{item.label}</NavigationMenu.Link>
+                {/if}
+            </NavigationMenu.Item>
         {/each}
     </NavigationMenu.List>
     <div class="absolute top-full left-0 flex w-full justify-center perspective-[2000px]">
