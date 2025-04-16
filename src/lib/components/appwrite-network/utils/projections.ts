@@ -1,30 +1,24 @@
 import { MAP_BOUNDS } from '../map.svelte';
 
+const MAP_WIDTH = 1048.25;
+const MAP_HEIGHT = 525;
+
 type Coordinates = {
     latitude: number;
     longitude: number;
 };
 
-export const latLongToSvgPosition = ({
-    latitude,
-    longitude,
-    width,
-    height
-}: Coordinates & { width: number; height: number }) => {
+export const latLongToSvgPosition = ({ latitude, longitude }: Coordinates) => {
     const { west, east, north, south } = MAP_BOUNDS;
 
-    // Handle longitude wrapping for coordinates crossing the date line
-    let lng = longitude;
-    if (lng < west) lng += 360;
-    else if (lng > east) lng -= 360;
+    const lngRatio = (longitude - west) / (east - west);
+    const latRatio = (latitude - south) / (north - south);
 
-    // Calculate position as percentage of the map bounds
-    const lngRatio = (lng - west) / (east - west);
-    const latRatio = (north - latitude) / (north - south);
+    const clampedLngRatio = Math.max(0, Math.min(1, lngRatio));
+    const clampedLatRatio = Math.max(0, Math.min(1, latRatio));
 
-    // Convert to percentages clamped between 0-100
-    const x = Math.max(0, Math.min(100, lngRatio * 100));
-    const y = Math.max(0, Math.min(100, latRatio * 100));
+    const x = clampedLngRatio * 100;
+    const y = (1 - clampedLatRatio) * 100;
 
-    return { x, y };
+    return { x, y }; // percentages, e.g., { x: 42.3, y: 71.8 }
 };
