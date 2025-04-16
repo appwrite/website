@@ -5,7 +5,7 @@ description: Integrate Stripe with Appwrite to accept payments, store orders, ma
 date: 2024-07-30
 featured: false
 isPartner: true
-isNew: true
+isNew: false
 cover: /images/integrations/stripe-payments/cover.png
 category: payments
 product: 
