@@ -2,11 +2,12 @@
 layout: post
 title: How to reduce cloud latency
 description: Learn how to reduce cloud latency and improve the performance of your apps and services.
-date: 2025-04-15
+date: 2025-04-17
 cover: /images/blog/how-to-reduce-cloud-latency/cover.png
 timeToRead: 9
 author: christy-jacob
-category: performance
+category: Tutorial
+callToAction: true
 ---
 
 Whether users are streaming a video, loading a webpage, or interacting with an app, they expect things to work fast. One key factor that affects the speed of cloud services is *cloud latency —* the delay between a user's request and the cloud's response. But why does this matter, and how can reducing latency make your apps and services faster and more efficient?
@@ -72,3 +73,4 @@ Ultimately, prioritizing speed ensures that your app not only meets but exceeds 
 - [Why multi-cloud is taking over](/blog/why-multi-cloud-is-taking-over?doFollow=true)
 - [How to optimize your Appwrite project for cost and performance](/blog/post/how-to-optimize-your-appwrite-project?doFollow=true)
 - [How to stop unexpected cloud bills before they happen](/blog/post/budget-caps-stop-unexpected-cloud-bills?doFollow=true)
+- [The Appwrite Network docs](/docs/products/network?doFollow=true)
