@@ -1,5 +1,7 @@
-<script>
-    import MainNavigation from './main-navigation.svelte';
+<script lang="ts">
+    import { Button } from '../ui';
+    import HamburgerMenu from './navigation/hamburger-menu.svelte';
+    import PrimaryNav from './navigation/primary-nav.svelte';
 </script>
 
 <header
@@ -15,8 +17,10 @@
                 width="130"
             /></a
         >
-        <MainNavigation />
 
-        <button class="web-button">Start building for free</button>
+        <PrimaryNav class="hidden md:block" />
+        <Button class="hidden! md:flex!">Start building for free</Button>
+
+        <HamburgerMenu class="block md:hidden" />
     </div>
 </header>

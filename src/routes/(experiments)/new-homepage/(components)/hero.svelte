@@ -7,7 +7,8 @@
 <div class="relative flex min-h-[80vh] flex-col items-center md:flex-row">
     <div
         class={classNames(
-            'hero animate-lighting absolute top-0 left-0 z-0 h-screen w-full -translate-x-[25%] translate-y-8 rotate-25 overflow-hidden blur-3xl',
+            'animate-lighting absolute top-0 left-0 -z-10 h-screen w-[200vw] -translate-x-[25%] translate-y-8 rotate-25 overflow-hidden blur-3xl md:w-full',
+            'bg-[image:radial-gradient(ellipse_390px_50px_at_10%_30%,_rgba(254,_149,_103,_0.2)_0%,_rgba(254,_149,_103,_0)_70%),_radial-gradient(ellipse_1100px_170px_at_15%_40%,rgba(253,_54,_110,_0.08)_0%,_rgba(253,_54,_110,_0)_70%),_radial-gradient(ellipse_1200px_180px_at_30%_30%,_rgba(253,_54,_110,_0.08)_0%,_rgba(253,_54,_110,_0)_70%)]',
             'bg-position-[0%_0%]'
         )}
         style:--speed="500ms"
@@ -30,25 +31,3 @@
     </div>
     <Dashboard />
 </div>
-
-<style>
-    .hero {
-        --first-gradient: radial-gradient(
-            ellipse 390px 50px at 10% 30%,
-            rgba(254, 149, 103, 0.4) 0%,
-            rgba(254, 149, 103, 0) 70%
-        );
-        --second-gradient: radial-gradient(
-            ellipse 1100px 170px at 15% 40%,
-            rgba(253, 54, 110, 0.16) 0%,
-            rgba(253, 54, 110, 0) 70%
-        );
-        --third-gradient: radial-gradient(
-            ellipse 1200px 180px at 30% 30%,
-            rgba(253, 54, 110, 0.16) 0%,
-            rgba(253, 54, 110, 0) 70%
-        );
-
-        background-image: var(--first-gradient), var(--second-gradient), var(--third-gradient);
-    }
-</style>

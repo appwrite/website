@@ -57,53 +57,53 @@
         Create: 5
     } as const;
 
-    $effect(() => {
-        let timeout: NodeJS.Timeout;
-        switch (step) {
-            case FunctionsState.Stale:
-                console.log('stale');
-                timeout = setTimeout(() => {
-                    step = FunctionsState.Generate;
-                }, 500);
-                return () => clearTimeout(timeout);
-            case FunctionsState.Generate:
-                console.log('generate');
-                timeout = setTimeout(() => {
-                    step = FunctionsState.Send;
-                }, 2000);
-                return () => clearTimeout(timeout);
-            case FunctionsState.Send:
-                console.log('send');
-                timeout = setTimeout(() => {
-                    step = FunctionsState.Update;
-                }, 1000);
-                return () => clearTimeout(timeout);
-            case FunctionsState.Update:
-                console.log('update');
-                timeout = setTimeout(() => {
-                    step = FunctionsState.Delete;
-                }, 200);
-                return () => clearTimeout(timeout);
-            case FunctionsState.Delete:
-                console.log('delete');
-                timeout = setTimeout(() => {
-                    step = FunctionsState.Create;
-                }, 100);
-                return () => clearTimeout(timeout);
-            case FunctionsState.Create:
-                console.log('create');
-                timeout = setTimeout(() => {
-                    step = FunctionsState.Stale;
-                }, 800);
-                return () => clearTimeout(timeout);
-            default:
-                console.log('stale');
-                timeout = setTimeout(() => {
-                    step = FunctionsState.Generate;
-                }, 3000);
-                return () => clearTimeout(timeout);
-        }
-    });
+    // $effect(() => {
+    //     let timeout: NodeJS.Timeout;
+    //     switch (step) {
+    //         case FunctionsState.Stale:
+    //             console.log('stale');
+    //             timeout = setTimeout(() => {
+    //                 step = FunctionsState.Generate;
+    //             }, 500);
+    //             return () => clearTimeout(timeout);
+    //         case FunctionsState.Generate:
+    //             console.log('generate');
+    //             timeout = setTimeout(() => {
+    //                 step = FunctionsState.Send;
+    //             }, 2000);
+    //             return () => clearTimeout(timeout);
+    //         case FunctionsState.Send:
+    //             console.log('send');
+    //             timeout = setTimeout(() => {
+    //                 step = FunctionsState.Update;
+    //             }, 1000);
+    //             return () => clearTimeout(timeout);
+    //         case FunctionsState.Update:
+    //             console.log('update');
+    //             timeout = setTimeout(() => {
+    //                 step = FunctionsState.Delete;
+    //             }, 200);
+    //             return () => clearTimeout(timeout);
+    //         case FunctionsState.Delete:
+    //             console.log('delete');
+    //             timeout = setTimeout(() => {
+    //                 step = FunctionsState.Create;
+    //             }, 100);
+    //             return () => clearTimeout(timeout);
+    //         case FunctionsState.Create:
+    //             console.log('create');
+    //             timeout = setTimeout(() => {
+    //                 step = FunctionsState.Stale;
+    //             }, 800);
+    //             return () => clearTimeout(timeout);
+    //         default:
+    //             console.log('stale');
+    //             timeout = setTimeout(() => {
+    //                 step = FunctionsState.Generate;
+    //             }, 3000);
+    //             return () => clearTimeout(timeout);
+    //     }
+    // });
 </script>
 
 <div
