@@ -874,4 +874,5 @@ You can find the source code for this application in our [GitHub repo](https://g
 Learn more about RxDB and Appwrite:
 
 - [RxDB docs for Appwrite](https://rxdb.info/replication-appwrite.html#do-other-things-with-the-replication-state)
+- [Appwrite offline sync docs](/docs/products/databases/offline)
 - [RxDB in the Integrations catalog](/integrations/replication-rxdb)

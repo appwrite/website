@@ -172,5 +172,6 @@ With that, your RxDB integration is configured and you can use other relevant Rx
 If you would like to learn more about RxDB and Appwrite Databases, we have some resources that you should visit:
 
 - [RxDB docs for Appwrite](https://rxdb.info/replication-appwrite.html)
+- [Appwrite offline sync docs](/docs/products/databases/offline)
 - [Build an offline-first journal app with RxDB and Appwrite](/blog/post/offline-first-journal)
 - [Offline-first journal demo app on GitHub](https://github.com/appwrite-community/offline-journal)
