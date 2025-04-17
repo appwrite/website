@@ -3,7 +3,7 @@ import Phone from './phone.svelte';
 import { safeAnimate, sleep } from '$lib/animations';
 import { createResettable } from '$lib/utils/resettable';
 import { getElSelector } from '../Products.svelte';
-import { animate } from 'motion';
+import { animate } from 'motion-legacy';
 
 type Task = {
     title: string;

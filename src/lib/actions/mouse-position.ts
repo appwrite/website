@@ -1,4 +1,4 @@
-import { inView } from 'motion';
+import { inView } from 'motion-legacy';
 import { type Writable, writable } from 'svelte/store';
 
 export const useMousePosition = () => {

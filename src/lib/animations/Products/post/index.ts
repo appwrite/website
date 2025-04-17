@@ -1,6 +1,6 @@
 import { safeAnimate } from '$lib/animations';
 import { createResettable } from '$lib/utils/resettable';
-import { animate } from 'motion';
+import { animate } from 'motion-legacy';
 import { getElSelector } from '../Products.svelte';
 
 const requests = createResettable(0);

@@ -5,7 +5,7 @@
 
     type Props = SvelteHTMLElements['svg'] & {
         class?: string;
-        name?: IconType;
+        name: IconType;
     };
 
     const {
@@ -14,7 +14,7 @@
         height = 20,
         width = 20,
         class: className = '',
-        name = 'arrow-right',
+        name,
         ...rest
     }: Props = $props();
 </script>
