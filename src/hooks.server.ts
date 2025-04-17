@@ -123,4 +123,12 @@ const bannerRewriter: Handle = async ({ event, resolve }) => {
     return response;
 };
 
-export const handle = sequence(redirecter, bannerRewriter, securityheaders);
+const fontPreloader: Handle = async ({ event, resolve }) => {
+    return resolve(event, {
+        preload: ({ type }) => {
+            return type === 'font' || type === 'js' || type === 'css';
+        }
+    });
+};
+
+export const handle = sequence(fontPreloader, redirecter, bannerRewriter, securityheaders);
