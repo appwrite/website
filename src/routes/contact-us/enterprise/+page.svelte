@@ -8,7 +8,7 @@
     import { PUBLIC_GROWTH_ENDPOINT } from '$env/static/public';
     import { getReferrerAndUtmSource } from '$lib/utils/utm';
     import LogoList from '$lib/components/LogoList.svelte';
-    import Scale from '$routes/(new-layouts)/new-homepage/(components)/scale.svelte';
+    import Scale from '$routes/(marketing)/new-homepage/(components)/scale.svelte';
     import { Button } from '$lib/components/ui';
 
     let email = '';
