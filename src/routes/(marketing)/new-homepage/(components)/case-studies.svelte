@@ -83,22 +83,32 @@
 
                 <div
                     class={classNames(
-                        'invisible space-y-4 opacity-0 transition-opacity delay-400 [grid-area:stack]',
-                        'group-[&[data-state=on]]/card:visible group-[&[data-state=on]]/card:opacity-100'
+                        'invisible space-y-4 opacity-0 blur-sm transition-opacity delay-400 [grid-area:stack]',
+                        'group-[&[data-state=on]]/card:visible group-[&[data-state=on]]/card:opacity-100 group-[&[data-state=on]]/card:blur-none'
                     )}
                 >
                     <img src={study.logo} alt={study.headline} />
                     {#if value === i.toString()}
-                        <span class="text-title font-aeonik-pro text-primary flex flex-wrap gap-2"
+                        <span
+                            class="text-title font-aeonik-pro text-primary relative flex flex-wrap gap-2"
                             >{#each study.headline.split(' ') as word, i}
-                                <span class="animate-enter" style:animation-delay="{i * 25}ms">
-                                    {word}
+                                <span class="relative overflow-hidden">
+                                    <span
+                                        class="animate-enter inline-flex"
+                                        style:animation-delay="{i * 50}ms"
+                                    >
+                                        {word}
+                                    </span>
                                 </span>
                             {/each}</span
                         >
                     {/if}
 
-                    <div class="border-smooth mt-8 border-t border-dashed pt-8">
+                    <div
+                        class={classNames('border-smooth mt-8 border-t border-dashed pt-8', {
+                            'animate-fade-in [animation-delay:500ms]': value === i.toString()
+                        })}
+                    >
                         <div class="text-primary text-sub-body max-w-[60%] font-medium">
                             "{study.blurb}"
                         </div>

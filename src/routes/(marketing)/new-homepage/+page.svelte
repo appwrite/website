@@ -16,6 +16,7 @@
     import Pricing from './(components)/pricing.svelte';
     import Scale from './(components)/scale.svelte';
     import Templates from './(components)/templates.svelte';
+    import { Main } from '$lib/layouts';
 
     const title = 'Appwrite - Backend APIs, Frontend hosting';
     const description = DEFAULT_DESCRIPTION;
@@ -42,13 +43,15 @@
     {@html getInlinedScriptTag(organizationJsonSchema())}
 </svelte:head>
 
-<Hero />
-<Platforms />
-<Bento />
-<CaseStudies />
-<Features />
-<TheAppwriteNetwork />
+<Main>
+    <Hero />
+    <Platforms />
+    <Bento />
+    <CaseStudies />
+    <Features />
+    <TheAppwriteNetwork />
 
-<Templates />
-<Scale />
-<Pricing />
+    <Templates />
+    <Scale />
+    <Pricing />
+</Main>
