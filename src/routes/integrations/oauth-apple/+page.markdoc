@@ -5,7 +5,7 @@ description: Authenticate users with an existing Apple account
 date: 2024-07-30
 featured: false
 isPartner: true
-isNew: true
+isNew: false
 cover: /images/integrations/oauth-apple/cover.png
 category: auth
 product: 

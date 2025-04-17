@@ -5,7 +5,7 @@ description: Connect Sentry to your self-hosted Appwrite instance for improved e
 date: 2024-07-30
 featured: false
 isPartner: true
-isNew: true
+isNew: false
 cover: /images/integrations/logging-sentry/cover.png
 category: logging
 product:
