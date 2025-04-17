@@ -1,18 +1,5 @@
 <script lang="ts">
-    import { trackEvent } from '$lib/actions/analytics';
-    import OpenSource from '$lib/animations/OpenSource.svelte';
-    import Products from '$lib/animations/Products/Products.svelte';
-    import ProductsMobile from '$lib/animations/Products/ProductsMobile.svelte';
-    import AppwriteIn100Seconds from '$lib/components/AppwriteIn100Seconds.svelte';
-    import PreFooter from '$lib/components/PreFooter.svelte';
-    import Technologies from '$lib/components/Technologies.svelte';
-    import { Button } from '$lib/components/ui';
-    import Badge from '$lib/components/ui/badge.svelte';
-    import GradientText from '$lib/components/ui/gradient-text.svelte';
-    import Hero from '$lib/components/ui/hero.svelte';
     import { Main } from '$lib/layouts';
-    import { isMobileNavOpen } from '$lib/layouts/Main.svelte';
-    import { getAppwriteDashboardUrl } from '$lib/utils/dashboard';
     import {
         DEFAULT_DESCRIPTION,
         DEFAULT_HOST,
@@ -20,10 +7,6 @@
         organizationJsonSchema,
         softwareAppSchema
     } from '$lib/utils/metadata';
-    import FooterNav from '../lib/components/FooterNav.svelte';
-    import MainFooter from '../lib/components/MainFooter.svelte';
-    import DeveloperCard from './DeveloperCard.svelte';
-    import CoverImage from './dashboard.webp';
 
     const title = 'Appwrite - Build like a team of hundreds';
     const description = DEFAULT_DESCRIPTION;
