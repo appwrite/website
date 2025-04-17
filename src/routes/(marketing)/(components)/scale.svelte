@@ -37,42 +37,42 @@
 
     let animate = $state<boolean>(false);
 
-    // let timeoutIds: Array<NodeJS.Timeout> = [];
-    // const updateNumbers = () => {
-    //     stats.forEach((stat, index) => {
-    //         const timeoutId = setTimeout(
-    //             () => {
-    //                 stats[index] = { ...stat, number: numbers[index] };
-    //             },
-    //             ((index * animationDuration) / numbers.length) * 500
-    //         );
+    let timeoutIds: Array<NodeJS.Timeout> = [];
+    const updateNumbers = () => {
+        stats.forEach((stat, index) => {
+            const timeoutId = setTimeout(
+                () => {
+                    stats[index] = { ...stat, number: numbers[index] };
+                },
+                ((index * animationDuration) / numbers.length) * 500
+            );
 
-    //         timeoutIds.push(timeoutId);
-    //     });
-    // };
+            timeoutIds.push(timeoutId);
+        });
+    };
 
-    // const useInView = (node: HTMLElement) => {
-    //     inView(
-    //         node,
-    //         () => {
-    //             animate = true;
-    //             updateNumbers();
-    //         },
-    //         { amount: 0.5 }
-    //     );
-    // };
+    const useInView = (node: HTMLElement) => {
+        inView(
+            node,
+            () => {
+                animate = true;
+                updateNumbers();
+            },
+            { amount: 0.5 }
+        );
+    };
 
-    // const clearAllTimeouts = () => {
-    //     timeoutIds.forEach((timeoutId) => {
-    //         clearTimeout(timeoutId);
-    //     });
+    const clearAllTimeouts = () => {
+        timeoutIds.forEach((timeoutId) => {
+            clearTimeout(timeoutId);
+        });
 
-    //     timeoutIds = [];
-    // };
+        timeoutIds = [];
+    };
 
-    // onDestroy(() => {
-    //     clearAllTimeouts();
-    // });
+    onDestroy(() => {
+        clearAllTimeouts();
+    });
 </script>
 
 <div class="border-smooth relative flex min-h-[70vh] flex-col gap-4 border-y bg-black/8 py-20">
@@ -115,7 +115,7 @@
     >
         <div class="relative container h-full">
             <div class="absolute inset-0 z-100 grid grid-cols-4">
-                <!-- {#each stats as stat, i}
+                {#each stats as stat, i}
                     <div
                         class="mask border-smooth h-full overflow-auto border-l"
                         style:--mask-direction="bottom"
@@ -132,16 +132,16 @@
                             >
                         </div>
                     </div>
-                {/each} -->
+                {/each}
 
                 <div class="pointer-events-none absolute inset-0 z-50">
-                    <!-- {#each stats as stat, i}
+                    {#each stats as stat, i}
                         <div
                             class="border-accent absolute top-(--top) left-[calc(var(--left)_+_1px)] h-2 w-2 -translate-1/2 rounded-full border bg-white"
                             style:--top={`${stat.top}%`}
                             style:--left="{i * 25}%"
                         ></div>
-                    {/each} -->
+                    {/each}
                 </div>
             </div>
         </div>
