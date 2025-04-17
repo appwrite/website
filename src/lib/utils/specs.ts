@@ -263,7 +263,7 @@ export async function getService(
         platform === Platform.ClientAndroidKotlin || platform === Platform.ServerKotlin;
     const isAndroid = isAndroidJava || isAndroidKotlin;
     const isAndroidServer = platform === Platform.ServerJava || platform === Platform.ServerKotlin;
-    const api = await getApi('latest', platform);
+    const api = await getApi(version, platform);
 
     const data: Awaited<ReturnType<typeof getService>> = {
         service: {

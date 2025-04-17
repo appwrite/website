@@ -35,7 +35,7 @@ importers:
         version: 0.26.0
       '@appwrite.io/repo':
         specifier: github:appwrite/appwrite#feat-group
-        version: https://codeload.github.com/appwrite/appwrite/tar.gz/3ed87a8ab9227f9e13724b41b116d8a70a7adb31
+        version: https://codeload.github.com/appwrite/appwrite/tar.gz/0f8e1db0447480735d083f2da2494141a99ce10b
       '@eslint/compat':
         specifier: ^1.2.7
         version: 1.2.7(eslint@9.22.0(jiti@2.4.2))
@@ -260,8 +260,8 @@ packages:
   '@appwrite.io/pink@0.26.0':
     resolution: {integrity: sha512-iPeGE56pauzxuIXt15ZswjKCErwp3QdF3XOlJZfyYY7J2nirra85JNTL+3lWuFIf8yYWL7NbvCjhf8ig79TgwA==}
 
-  '@appwrite.io/repo@https://codeload.github.com/appwrite/appwrite/tar.gz/3ed87a8ab9227f9e13724b41b116d8a70a7adb31':
-    resolution: {tarball: https://codeload.github.com/appwrite/appwrite/tar.gz/3ed87a8ab9227f9e13724b41b116d8a70a7adb31}
+  '@appwrite.io/repo@https://codeload.github.com/appwrite/appwrite/tar.gz/0f8e1db0447480735d083f2da2494141a99ce10b':
+    resolution: {tarball: https://codeload.github.com/appwrite/appwrite/tar.gz/0f8e1db0447480735d083f2da2494141a99ce10b}
     version: 0.0.0
 
   '@babel/runtime@7.26.10':
@@ -3931,7 +3931,7 @@ snapshots:
       normalize.css: 8.0.1
       the-new-css-reset: 1.11.3
 
-  '@appwrite.io/repo@https://codeload.github.com/appwrite/appwrite/tar.gz/3ed87a8ab9227f9e13724b41b116d8a70a7adb31': {}
+  '@appwrite.io/repo@https://codeload.github.com/appwrite/appwrite/tar.gz/0f8e1db0447480735d083f2da2494141a99ce10b': {}
 
   '@babel/runtime@7.26.10':
     dependencies:
