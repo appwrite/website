@@ -5,7 +5,7 @@ description: Translate text between languages
 date: 2024-07-30
 featured: false
 isPartner: true
-isNew: true
+isNew: false
 cover: /images/integrations/ai-hugging-face-language-translation/cover.png
 category: ai
 product: 

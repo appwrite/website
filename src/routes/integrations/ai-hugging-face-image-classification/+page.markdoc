@@ -5,7 +5,7 @@ description: Understand and label the contents of images
 date: 2024-07-30
 featured: false
 isPartner: true
-isNew: true
+isNew: false
 cover: /images/integrations/ai-hugging-face-image-classification/cover.png
 category: ai
 product: 

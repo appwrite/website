@@ -5,7 +5,7 @@ description: Store data in your Upstash vector database and query it for similar
 date: 2024-07-30
 featured: false
 isPartner: true
-isNew: true
+isNew: false
 cover: /images/integrations/query-upstash/cover.png
 category: databases
 product: 
