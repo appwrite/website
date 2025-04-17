@@ -42,7 +42,7 @@
         ></div>
 
         <div
-            class="animate-fade-in relative flex w-full flex-col items-center justify-between gap-8 [animation-delay:150ms] [animation-duration:1000ms] md:flex-row"
+            class="animate-fade-in relative flex w-full flex-col justify-between gap-8 [animation-delay:150ms] [animation-duration:1000ms] md:flex-row md:items-center"
         >
             <h2 class="text-title text-primary font-aeonik-pro max-w-xl text-pretty">
                 Start building like a team of hundreds today<span class="text-accent">_</span>

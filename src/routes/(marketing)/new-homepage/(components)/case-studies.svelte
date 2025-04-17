@@ -5,6 +5,7 @@
     import { ToggleGroup } from 'bits-ui';
 
     import Icon from '$lib/components/ui/icon';
+    import { animate, stagger } from 'motion';
 
     const studies = [
         {
@@ -49,6 +50,21 @@
         if (!newValue.length) return;
         value = newValue;
     };
+
+    $effect(() => {
+        console.log(value);
+        animate(
+            '.active .word',
+            {
+                y: [36, 0]
+            },
+            {
+                duration: 0.25,
+                delay: stagger(0.025),
+                ease: 'circOut'
+            }
+        );
+    });
 </script>
 
 <div
@@ -61,14 +77,14 @@
     <ToggleGroup.Root
         bind:value={getValue, setValue}
         type="single"
-        class="container flex h-full items-center gap-4"
+        class="container flex h-full flex-col items-center gap-4 md:flex-row"
     >
         {#each studies as study, i}
             <ToggleGroup.Item
                 value={i.toString()}
                 class={classNames(
-                    'data-[state="on"]:border-smooth grid h-[425px] cursor-pointer place-content-center place-items-center overflow-hidden rounded-2xl border border-transparent px-12 py-6 backdrop-blur-3xl transition-all duration-400 ease-in-out [grid-template-areas:"stack"]',
-                    'group/card text-left! hover:bg-black/24 data-[state="off"]:[flex-basis:15%] data-[state="off"]:bg-black/16 data-[state="on"]:[flex-basis:70%] data-[state="on"]:bg-black/24'
+                    'data-[state="on"]:border-smooth grid cursor-pointer place-content-center place-items-center overflow-hidden rounded-2xl border border-transparent px-12 py-6 backdrop-blur-3xl transition-all duration-400 ease-in-out [grid-template-areas:"stack"] max-sm:data-[state="off"]:h-[125px] max-sm:data-[state="on"]:h-[425px] md:h-[425px]',
+                    'group/card text-left! hover:bg-black/24 data-[state="off"]:bg-black/16 data-[state="on"]:[flex-basis:70%] data-[state="on"]:bg-black/24 md:data-[state="off"]:[flex-basis:15%]'
                 )}
             >
                 <img
@@ -88,38 +104,37 @@
                     )}
                 >
                     <img src={study.logo} alt={study.headline} />
-                    {#if value === i.toString()}
-                        <span
-                            class="text-title font-aeonik-pro text-primary relative flex flex-wrap gap-2"
-                            >{#each study.headline.split(' ') as word, i}
-                                <span class="relative overflow-hidden">
-                                    <span
-                                        class="animate-enter inline-flex"
-                                        style:animation-delay="{i * 50}ms"
-                                    >
-                                        {word}
-                                    </span>
+
+                    <span
+                        class="text-title font-aeonik-pro text-primary relative flex flex-wrap gap-2"
+                        class:active={value === i.toString()}
+                        >{#each study.headline.split(' ') as word, i}
+                            <span class="relative overflow-clip">
+                                <span class="word inline-flex">
+                                    {word}
                                 </span>
-                            {/each}</span
-                        >
-                    {/if}
+                            </span>
+                        {/each}</span
+                    >
 
                     <div
                         class={classNames('border-smooth mt-8 border-t border-dashed pt-8', {
                             'animate-fade-in [animation-delay:500ms]': value === i.toString()
                         })}
                     >
-                        <div class="text-primary text-sub-body max-w-[60%] font-medium">
+                        <div class="text-primary text-sub-body font-medium md:max-w-[60%]">
                             "{study.blurb}"
                         </div>
 
-                        <div class="mt-4 flex justify-between">
+                        <div class="mt-4 flex flex-col justify-between md:flex-row">
                             <div class="flex gap-2">
                                 <img src={study.avatar} alt={study.headline} class="size-6" />
                                 <span class="text-caption">{study.name}, {study.title}</span>
                             </div>
 
-                            <a href={study.url} class="text-primary group flex items-center gap-2"
+                            <a
+                                href={study.url}
+                                class="text-primary group mt-4 flex items-center gap-2 md:mt-0"
                                 >Read customer story <Icon
                                     name="arrow-right"
                                     class="transition-transform group-hover:translate-x-0.5"
