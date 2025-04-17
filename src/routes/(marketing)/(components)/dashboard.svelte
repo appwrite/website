@@ -35,7 +35,11 @@
             { y: [4, 0], filter: ['blur(4px)', 'blur(0px)'], opacity: [0, 1] },
             { delay: stagger(0.125) }
         );
-        animate('.chart', { scaleY: [0, 1] }, { duration: 0.25, delay: stagger(0.01) });
+        animate(
+            '.chart',
+            { scaleY: [0, 1], transformOrigin: 'bottom' },
+            { duration: 0.25, delay: stagger(0.01) }
+        );
     });
 </script>
 
