@@ -16,12 +16,23 @@ This capability is crucial for building resilient and responsive applications, e
 
 # Integrate offline sync in your apps
 
+{% only_light %}
 {% cards %}
 
-{% cards_item href="/integrations/replication-rxdb" title="RxDB" image="/images/integrations/avatars/rxdb.png" %}
+{% cards_item href="/integrations/replication-rxdb" title="RxDB" image="/images/docs/databases/offline/logos/rxdb.svg" %}
 {% /cards_item %}
 
 {% /cards %}
+{% /only_light %}
+
+{% only_dark %}
+{% cards %}
+
+{% cards_item href="/integrations/replication-rxdb" title="RxDB" image="/images/docs/databases/offline/logos/dark/rxdb.svg" %}
+{% /cards_item %}
+
+{% /cards %}
+{% /only_dark %}
 
 # How does offline sync work?
 
