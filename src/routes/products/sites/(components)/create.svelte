@@ -31,17 +31,17 @@
     >
 
     <div
-        class="mask border-smooth flex aspect-video w-full flex-col rounded-t-3xl border bg-gradient-to-br from-white/10 via-white/5 to-white/10 pt-2 px-2 backdrop-blur-xl"
+        class="mask border-smooth flex aspect-video w-full flex-col rounded-t-3xl border bg-gradient-to-br from-white/10 via-white/5 to-white/10 px-2 pt-2 backdrop-blur-xl"
         style:--mask-height="450px"
     >
-        <div class="flex-1 rounded-t-2xl bg-[#19191C] pt-16 px-8 md:px-16">
+        <div class="flex-1 rounded-t-2xl bg-[#19191C] px-8 pt-16 md:px-16">
             <header class="flex flex-col justify-between gap-4 pb-10 md:flex-row md:items-center">
                 <h2 class="text-primary font-aeonik-pro text-label">Create Site</h2>
 
                 <div
-                    class="border-greyscale-800 flex min-w-[250px] items-center gap-1.5 rounded-lg border py-0.5 px-1.5"
+                    class="border-greyscale-800 flex min-w-[250px] items-center gap-1.5 rounded-lg border px-1.5 py-0.5"
                 >
-                    <span class="web-icon-search text-secondary" />
+                    <span class="web-icon-search text-secondary"></span>
                     <input
                         class="text-secondary placeholder:text-secondary text-micro w-full appearance-none border-none"
                         type="text"
@@ -66,7 +66,7 @@
         </div>
     </div>
 
-    <div class="relative z-10 -mt-24 mx-auto flex max-w-2xl flex-col gap-4 pl-12 text-center">
+    <div class="relative z-10 mx-auto -mt-24 flex max-w-2xl flex-col gap-4 pl-12 text-center">
         <h2 class="text-title text-primary font-aeonik-pro">
             Clone a template or import a repository
         </h2>

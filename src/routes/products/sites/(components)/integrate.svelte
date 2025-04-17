@@ -1,4 +1,6 @@
 <script lang="ts">
+    import { onDestroy, onMount } from 'svelte';
+
     import Auth from '../(assets)/icons/auth.svg';
     import Databases from '../(assets)/icons/databases.svg';
     import Functions from '../(assets)/icons/functions.svg';
@@ -7,14 +9,12 @@
     import Messaging from '../(assets)/icons/messaging.svg';
     import { classNames } from '$lib/utils/classnames';
 
-    import DefaultSlide from '../(assets)/slides/default.svg';
     import AuthSlide from '../(assets)/slides/auth.svg';
     import DatabasesSlide from '../(assets)/slides/databases.svg';
     import FunctionsSlide from '../(assets)/slides/functions.svg';
     import StorageSlide from '../(assets)/slides/storage.svg';
     import RealtimeSlide from '../(assets)/slides/realtime.svg';
     import MessagingSlide from '../(assets)/slides/messaging.svg';
-    import { onDestroy, onMount } from 'svelte';
 
     const products = [
         {
@@ -149,7 +149,7 @@
                             {#each Array.from({ length: 3 }) as _}
                                 <div
                                     class="size-2 flex-1 shrink cursor-pointer rounded-full bg-[#D9D9D9] transition hover:opacity-75"
-                                />
+                                ></div>
                             {/each}
                         </div>
                         <div class="flex-1 rounded-2xl bg-[#19191C]">

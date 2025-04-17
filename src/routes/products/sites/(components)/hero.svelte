@@ -30,7 +30,7 @@
             <h1 class="font-aeonik-pro text-display text-primary text-pretty">
                 Your frontend and backend together, finally
             </h1>
-            <p class="text-description text-secondary text-pretty font-medium">
+            <p class="text-description text-secondary font-medium text-pretty">
                 Host, manage, and scale your frontend directly from Appwrite, alongside your
                 backend.
             </p>

@@ -3,7 +3,7 @@
         <div
             class="absolute z-10 flex size-4 items-center justify-center rounded-full border border-white/16 bg-gradient-to-tl from-transparent to-white/32"
         >
-            <div class="size-1 rounded-full bg-white" />
+            <div class="size-1 rounded-full bg-white"></div>
         </div>
     </div>
     <div class="flex min-h-[100vh] w-full flex-col gap-24">

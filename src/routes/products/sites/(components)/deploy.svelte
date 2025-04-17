@@ -79,17 +79,17 @@
     >
 
     <div
-        class="mask border-smooth flex aspect-video w-full flex-col rounded-t-3xl border bg-gradient-to-br from-white/10 via-white/5 to-white/10 pt-2 px-2 backdrop-blur-xl"
+        class="mask border-smooth flex aspect-video w-full flex-col rounded-t-3xl border bg-gradient-to-br from-white/10 via-white/5 to-white/10 px-2 pt-2 backdrop-blur-xl"
         style:--mask-height="400px"
     >
-        <div class="flex-1 rounded-t-2xl bg-[#1D1D21] pt-16 px-8 md:px-16">
+        <div class="flex-1 rounded-t-2xl bg-[#1D1D21] px-8 pt-16 md:px-16">
             <header class="flex flex-col justify-between gap-4 pb-10 md:flex-row md:items-center">
                 <h2 class="text-primary font-aeonik-pro text-label">Create Site</h2>
 
                 <div
-                    class="border-greyscale-800 flex size-8 items-center justify-center gap-1.5 rounded-md border py-0.5 px-1.5"
+                    class="border-greyscale-800 flex size-8 items-center justify-center gap-1.5 rounded-md border px-1.5 py-0.5"
                 >
-                    <span class="web-icon-close text-secondary" />
+                    <span class="web-icon-close text-secondary"></span>
                 </div>
             </header>
             <div class="grid flex-1 grid-cols-12 gap-8">
@@ -113,14 +113,14 @@
 
                             <h2 class="text-primary text-sm font-medium">Homepage</h2>
                             <div
-                                class="border-smooth text-micro text-secondary block rounded-lg border bg-[#19191C] py-1 px-2 font-mono"
+                                class="border-smooth text-micro text-secondary block rounded-lg border bg-[#19191C] px-2 py-1 font-mono"
                             >
                                 6620f370e612829af25a
                             </div>
                         </div>
 
                         <button
-                            class="border-smooth text-secondary block rounded-[10px] border bg-[#19191C] py-1.5 px-2 text-sm font-medium"
+                            class="border-smooth text-secondary block rounded-[10px] border bg-[#19191C] px-2 py-1.5 text-sm font-medium"
                             >Change</button
                         >
                     </div>
@@ -136,7 +136,7 @@
                                     Deployment logs
                                 </h2>
                                 <span
-                                    class="text-secondary text-micro rounded-lg bg-white/8 py-0.5 px-1.5"
+                                    class="text-secondary text-micro rounded-lg bg-white/8 px-1.5 py-0.5"
                                     >Building</span
                                 >
                             </div>
@@ -179,7 +179,7 @@
         </div>
     </div>
 
-    <div class="relative z-10 -mt-24 mx-auto flex max-w-md flex-col gap-4 pl-12 text-center">
+    <div class="relative z-10 mx-auto -mt-24 flex max-w-md flex-col gap-4 pl-12 text-center">
         <h2 class="text-title text-primary font-aeonik-pro">Deploy your site</h2>
         <p class="text-secondary text-description">
             Deploy your Site directly from the Appwrite Console
