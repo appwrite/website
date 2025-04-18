@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { onDestroy, onMount } from 'svelte';
+    import { onDestroy, onMount, type Component, type Snippet } from 'svelte';
 
     import Auth from '../(assets)/icons/auth.svg';
     import Databases from '../(assets)/icons/databases.svg';
@@ -16,70 +16,78 @@
     import RealtimeSlide from '../(assets)/slides/realtime.svg';
     import MessagingSlide from '../(assets)/slides/messaging.svg';
 
-    const products = [
+    const products: Array<{ label: string; icon: string; line: Snippet; image: string }> = [
         {
             label: 'Auth',
             icon: Auth,
-            line: `<svg width="98" height="75" viewBox="0 0 98 75" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M0 1H35.3623C41.9897 1 47.3623 6.37258 47.3623 13V62C47.3623 68.6274 52.7349 74 59.3623 74H98" class="group-hover:stroke-white group-focus-within:stroke-white transition stroke-smooth" stroke-dasharray="4 4"/>
+            line: (
+                isActive: boolean
+            ) => `<svg width="98" height="75" viewBox="0 0 98 75" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M0 1H35.3623C41.9897 1 47.3623 6.37258 47.3623 13V62C47.3623 68.6274 52.7349 74 59.3623 74H98" class="group-hover:stroke-white ${isActive && 'stroke-white'} group-focus-within:stroke-white transition stroke-smooth" stroke-dasharray="4 4"/>
                    </svg>`,
             image: AuthSlide
         },
         {
             label: 'Databases',
             icon: Databases,
-            line: `<svg width="98" height="2" viewBox="0 0 98 2" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M0 1L98 1.00001" class="group-hover:stroke-white group-focus-within:stroke-white transition stroke-smooth" stroke-dasharray="4 4"/>
+            line: (
+                isActive: boolean
+            ) => `<svg width="98" height="2" viewBox="0 0 98 2" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M0 1L98 1.00001" class="group-hover:stroke-white group-focus-within:stroke-white ${isActive && 'stroke-white'}  transition stroke-smooth" stroke-dasharray="4 4"/>
                    </svg>`,
             image: DatabasesSlide
         },
         {
             label: 'Functions',
             icon: Functions,
-            line: `<svg width="98" height="75" viewBox="0 0 98 75" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M0 74H35.3623C41.9897 74 47.3623 68.6274 47.3623 62V13C47.3623 6.37258 52.7349 0.999998 59.3623 0.999998H98" class="group-hover:stroke-white group-focus-within:stroke-white transition stroke-smooth" stroke-dasharray="4 4"/>
+            line: (
+                isActive: boolean
+            ) => `<svg width="98" height="75" viewBox="0 0 98 75" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M0 74H35.3623C41.9897 74 47.3623 68.6274 47.3623 62V13C47.3623 6.37258 52.7349 0.999998 59.3623 0.999998H98" class="group-hover:stroke-white ${isActive && 'stroke-white'} group-focus-within:stroke-white transition stroke-smooth" stroke-dasharray="4 4"/>
                    </svg>`,
             image: FunctionsSlide
         },
         {
             label: 'Storage',
             icon: Storage,
-            line: `<svg width="98" height="75" viewBox="0 0 98 75" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M98 1H62.6377C56.0103 1 50.6377 6.37258 50.6377 13V62C50.6377 68.6274 45.2651 74 38.6377 74H-9.53674e-07" class="group-hover:stroke-white group-focus-within:stroke-white transition stroke-smooth" stroke-dasharray="4 4"/>
+            line: (
+                isActive: boolean
+            ) => `<svg width="98" height="75" viewBox="0 0 98 75" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M98 1H62.6377C56.0103 1 50.6377 6.37258 50.6377 13V62C50.6377 68.6274 45.2651 74 38.6377 74H-9.53674e-07" class="group-hover:stroke-white ${isActive && 'stroke-white'} group-focus-within:stroke-white transition stroke-smooth" stroke-dasharray="4 4"/>
                    </svg>`,
             image: StorageSlide
         },
         {
             label: 'Realtime',
             icon: Realtime,
-            line: `<svg width="98" height="2" viewBox="0 0 98 2" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M0 1L98 1.00001" class="group-hover:stroke-white group-focus-within:stroke-white transition stroke-smooth" stroke-dasharray="4 4"/>
+            line: (
+                isActive: boolean
+            ) => `<svg width="98" height="2" viewBox="0 0 98 2" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M0 1L98 1.00001" class="group-hover:stroke-white group-focus-within:stroke-white ${isActive && 'stroke-white'} transition stroke-smooth" stroke-dasharray="4 4"/>
                    </svg>`,
             image: RealtimeSlide
         },
         {
             label: 'Messaging',
             icon: Messaging,
-            line: `<svg width="98" height="75" viewBox="0 0 98 75" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M98 74H62.6377C56.0103 74 50.6377 68.6274 50.6377 62V13C50.6377 6.37258 45.2651 0.999998 38.6377 0.999998H-9.53674e-07" class="group-hover:stroke-white group-focus-within:stroke-white transition stroke-smooth" stroke-dasharray="4 4"/>
+            line: (
+                isActive: boolean
+            ) => `<svg width="98" height="75" viewBox="0 0 98 75" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M98 74H62.6377C56.0103 74 50.6377 68.6274 50.6377 62V13C50.6377 6.37258 45.2651 0.999998 38.6377 0.999998H-9.53674e-07" class="group-hover:stroke-white ${isActive && 'stroke-white'} group-focus-within:stroke-white transition stroke-smooth" stroke-dasharray="4 4"/>
                    </svg>`,
             image: MessagingSlide
         }
     ];
 
-    $: activeIndex = 0;
-    $: activeSlide = products[activeIndex].image;
-    let paused: boolean = false;
+    let activeIndex = $state(0);
+    let paused = $state<boolean>(false);
 
     const autoCycle = () => {
         if (paused) return;
         activeIndex = (activeIndex + 1) % products.length;
     };
 
-    const controller = new AbortController();
-    const { signal } = controller;
-
-    let intervalId: number;
+    let interval = $state<NodeJS.Timeout>();
 
     const handleSetActive = (index: number) => {
         paused = true;
@@ -90,13 +98,12 @@
         paused = false;
     };
 
-    onMount(() => {
-        intervalId = setInterval(autoCycle, 5000, { signal });
-    });
+    $effect(() => {
+        interval = setInterval(autoCycle, 5000);
 
-    onDestroy(() => {
-        clearInterval(intervalId);
-        controller.abort();
+        return () => {
+            clearInterval(interval);
+        };
     });
 </script>
 
@@ -110,10 +117,10 @@
                     <div class="group relative mr-auto ml-0 flex w-full items-center">
                         <button
                             class="bg-card border-smooth mr-[100px] ml-auto flex cursor-pointer items-center gap-2 rounded-xl border py-2 pr-4 pl-3 backdrop-blur-md"
-                            on:mouseover={() => handleSetActive(index)}
-                            on:focus={() => handleSetActive(index)}
-                            on:mouseout={() => handleMouseOut()}
-                            on:blur={() => handleMouseOut()}
+                            onmouseover={() => handleSetActive(index)}
+                            onfocus={() => handleSetActive(index)}
+                            onmouseout={() => handleMouseOut()}
+                            onblur={() => handleMouseOut()}
                         >
                             <img src={product.icon} alt={product.label} class="h-6 w-6" />
                             {product.label}
@@ -124,7 +131,7 @@
                                 'bottom-1/2': index === 2
                             })}
                         >
-                            {@html product.line}
+                            {@html product.line(activeIndex === index)}
                         </div>
                     </div>
                 {/each}
@@ -152,12 +159,22 @@
                                 ></div>
                             {/each}
                         </div>
-                        <div class="flex-1 rounded-2xl bg-[#19191C]">
-                            <img
-                                src={activeSlide}
-                                class="animate-fade-in h-full w-full rounded-2xl"
-                                alt=""
-                            />
+                        <div class="relative flex-1 overflow-hidden rounded-2xl bg-[#19191C]">
+                            {#each products as product, i}
+                                <img
+                                    src={product.image}
+                                    class={classNames(
+                                        'absolute inset-0 h-full w-full rounded-2xl transition-all duration-500',
+                                        'scale-102 opacity-0 blur-md',
+                                        {
+                                            'scale-100 opacity-100 blur-none': i === activeIndex,
+                                            invisible: i !== activeIndex
+                                        }
+                                    )}
+                                    aria-hidden={i !== activeIndex}
+                                    alt=""
+                                />
+                            {/each}
                         </div>
                     </div>
                 </div>
@@ -170,10 +187,10 @@
                     <div class="group relative mr-0 ml-auto flex w-full items-center">
                         <button
                             class="bg-card border-smooth mr-auto ml-[100px] flex cursor-pointer items-center gap-2 rounded-xl border py-2 pr-4 pl-3 backdrop-blur-md"
-                            on:mouseover={() => handleSetActive(index)}
-                            on:focus={() => handleSetActive(index)}
-                            on:mouseout={() => handleMouseOut()}
-                            on:blur={() => handleMouseOut()}
+                            onmouseover={() => handleSetActive(index)}
+                            onfocus={() => handleSetActive(index)}
+                            onmouseout={() => handleMouseOut()}
+                            onblur={() => handleMouseOut()}
                         >
                             <img src={product.icon} alt={product.label} class="h-6 w-6" />
                             {product.label}
@@ -184,7 +201,7 @@
                                 'bottom-1/2': i === 2
                             })}
                         >
-                            {@html product.line}
+                            {@html product.line(activeIndex === index)}
                         </div>
                     </div>
                 {/each}
