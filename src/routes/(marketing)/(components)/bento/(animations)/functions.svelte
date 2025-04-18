@@ -18,6 +18,7 @@
     import React from '../../../(assets)/icons/react.svg';
     import GridPaper from '../../grid-paper.svelte';
     import { isMobile } from '$lib/utils/is-mobile';
+    import { classNames } from '$lib/utils/classnames';
 
     const platforms = [
         Python,
@@ -50,8 +51,6 @@
     let commandQueue: HTMLElement;
     let step: number = $state(0);
     let activeCommand = $state<null | number>(null);
-    let activePlatform = $state<null | number>(null);
-    let sdkQueueRefs: Array<HTMLElement> = [];
 
     const FunctionsState = {
         Stale: 0,
@@ -84,7 +83,7 @@
         if (!shouldAnimate) return;
 
         let timeout: NodeJS.Timeout;
-        const timeoutDuration = 4000;
+        const timeoutDuration = 2500;
         switch (step) {
             case FunctionsState.Stale:
                 timeout = setTimeout(() => {
@@ -100,7 +99,6 @@
                         type: 'spring',
                         onComplete: () => {
                             activeCommand = 13;
-                            activePlatform = 2;
                         }
                     }
                 );
@@ -229,7 +227,7 @@
             <div class="flex h-max flex-col items-center gap-3 pt-3" bind:this={commandQueue}>
                 {#each [...commands, ...commands, ...commands, ...commands] as command, i}
                     <div
-                        class="command-item text-caption relative w-fit shrink-0 overflow-hidden rounded-2xl border border-transparent font-mono text-sm text-white"
+                        class="background-gradient text-caption relative w-fit shrink-0 overflow-hidden rounded-2xl border border-transparent font-mono text-sm text-white"
                         style:--spread="{command.length * 2.25}px"
                         class:active={i === activeCommand && shouldAnimate}
                         aria-hidden={i !== 0}
@@ -247,23 +245,27 @@
             class="relative flex h-full gap-4 overflow-y-clip [mask-image:linear-gradient(to_top,rgba(0,0,0,0)_0%,_rgba(255,255,255,1)_50%,_rgba(0,0,0,0)_100%)] [mask-mode:alpha]"
         >
             {#each Array.from({ length: 3 }) as _, i}
-                <div class="flex h-max flex-col gap-3 pt-3" bind:this={sdkQueueRefs[i]}>
-                    {#each Array.from({ length: 4 }) as _, index}
+                <div class="flex h-max flex-col gap-3 pt-3">
+                    {#each Array.from({ length: 4 }) as _}
                         {@const platformShuffled = i === 1 ? platforms.reverse() : platforms}
                         {#each platformShuffled as platform, i}
                             <div
-                                class="platform-item relative flex size-16 shrink-0 items-center justify-center rounded-xl border border-transparent transition-all"
-                                style:--to="-45deg"
-                                aria-hidden={index !== 0}
-                                class:border-smooth!={i === activePlatform}
+                                class={classNames(
+                                    'background-gradient relative flex size-16 shrink-0 items-center justify-center rounded-xl border border-transparent transition-all duration-1000'
+                                )}
+                                style:--spread="15px"
+                                class:platform={shouldAnimate && i === 2}
                             >
-                                <img
-                                    src={platform}
-                                    alt=""
-                                    role="presentation"
-                                    class="h-10 grayscale"
-                                />
-                                {i}
+                                <div
+                                    class="flex h-full w-full items-center justify-center rounded-xl bg-[#232325] text-white/80"
+                                >
+                                    <img
+                                        src={platform}
+                                        alt=""
+                                        role="presentation"
+                                        class="h-10 grayscale"
+                                    />
+                                </div>
                             </div>
                         {/each}
                     {/each}
@@ -276,7 +278,7 @@
 </div>
 
 <style>
-    .command-item {
+    .background-gradient {
         --base-color: transparent;
         --base-gradient-color: white;
 
@@ -292,10 +294,6 @@
             auto;
     }
 
-    .command-item.active {
-        animation: badge 750ms linear forwards;
-    }
-
     @keyframes badge {
         from {
             background-position: 0% center;
@@ -303,5 +301,31 @@
         to {
             background-position: 100% center;
         }
+    }
+
+    .background-gradient.active {
+        animation: badge 750ms linear forwards;
+    }
+
+    @keyframes platform {
+        0% {
+            background-position: 0% center;
+        }
+        20% {
+            background-position: 100% center;
+        }
+        40% {
+            background-position: 100% center;
+        }
+        80% {
+            background-position: 100% center;
+        }
+        100% {
+            background-position: 100% center;
+        }
+    }
+
+    .background-gradient.platform {
+        animation: platform 3000ms linear both infinite;
     }
 </style>
