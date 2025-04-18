@@ -1,6 +1,6 @@
 <script>
     import { PUBLIC_APPWRITE_DASHBOARD } from '$env/static/public';
-    import Frameworks from '$lib/components/marketing/frameworks.svelte';
+    import Platforms from '$lib/components/marketing/platforms.svelte';
     import { classNames } from '$lib/utils/classnames';
 
     import Illustration from '../(assets)/images/illustration.png';
@@ -47,5 +47,5 @@
         </div>
         <img src={Illustration} alt="Illustration" class="col-span-7" />
     </div>
-    <Frameworks class="mt-auto mb-0 w-full" headline="Host your favorite web frameworks" />
+    <Platforms class="mt-auto mb-0 w-full" headline="Host your favorite web frameworks" />
 </div>

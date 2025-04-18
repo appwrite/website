@@ -1,5 +1,5 @@
 <script lang="ts">
-    import Frameworks from '$lib/components/marketing/frameworks.svelte';
+    import Frameworks from '$lib/components/marketing/platforms.svelte';
     import OpenSourceAlternative from '$lib/components/marketing/open-source-alternative.svelte';
     import Testimonials from '$lib/components/marketing/testimonials.svelte';
     import Main from '$lib/layouts/Main.svelte';
