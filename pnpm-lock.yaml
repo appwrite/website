@@ -8,9 +8,6 @@ importers:
 
   .:
     dependencies:
-      '@number-flow/svelte':
-        specifier: ^0.3.3
-        version: 0.3.5(svelte@5.25.6)
       h3:
         specifier: ^1.14.0
         version: 1.15.1
@@ -51,6 +48,9 @@ importers:
       '@melt-ui/svelte':
         specifier: ^0.86.5
         version: 0.86.6(svelte@5.25.6)
+      '@number-flow/svelte':
+        specifier: ^0.3.7
+        version: 0.3.7(svelte@5.25.6)
       '@playwright/test':
         specifier: ^1.50.0
         version: 1.51.0
@@ -952,8 +952,8 @@ packages:
     engines: {node: ^12.13.0 || ^14.15.0 || >=16.0.0}
     deprecated: This functionality has been moved to @npmcli/fs
 
-  '@number-flow/svelte@0.3.5':
-    resolution: {integrity: sha512-jA2rXHrUBfnpDx55L/bcwywLLUTJqNe5WX7C5QpWrvzxZtSdgzhBWgOOcRRHT8XWiVwfJlo6f9LCO3unlFd9BA==}
+  '@number-flow/svelte@0.3.7':
+    resolution: {integrity: sha512-FusxKvImj13+15N+pQrrGsu8cNTQ0BCUWxshNUpPU4opFufVpHO+RMxsYrtZ7xloVL/TjDLpO+SWjrxxx7iPJg==}
     peerDependencies:
       svelte: ^4 || ^5
 
@@ -2938,8 +2938,8 @@ packages:
   nth-check@2.1.1:
     resolution: {integrity: sha512-lqjrjmaOoAnWfMmBPL+XNnynZh2+swxiX3WUE0s4yEHI6m+AwrK2UZOimIRl3X/4QctVqS8AiZjFqyOGrMXb/w==}
 
-  number-flow@0.5.5:
-    resolution: {integrity: sha512-oE+gyA3S0ar8un2dg80TlEi3hjvi/UnTewHl2bu9dGKMxU7nT8VTUdIf1X7NbRLslqyyTyxdSmIAv/QJhaq1pw==}
+  number-flow@0.5.7:
+    resolution: {integrity: sha512-P83Y9rBgN3Xpz5677YDNtuQHZpIldw6WXeWRg0+edrfFthhV7QqRdABas5gtu07QPLvbA8XhfO69rIvbKRzYIg==}
 
   object-assign@4.1.1:
     resolution: {integrity: sha512-rJgTQnkUnH1sFw8yT6VSU3zD3sWmu6sZhIseY8VX+GRu3P6F7Fu+JNDoXfklElbLJSnc3FUQHVe4cU5hj+BcUg==}
@@ -4615,10 +4615,10 @@ snapshots:
       mkdirp: 1.0.4
       rimraf: 3.0.2
 
-  '@number-flow/svelte@0.3.5(svelte@5.25.6)':
+  '@number-flow/svelte@0.3.7(svelte@5.25.6)':
     dependencies:
       esm-env: 1.2.2
-      number-flow: 0.5.5
+      number-flow: 0.5.7
       svelte: 5.25.6
 
   '@parcel/watcher-android-arm64@2.5.1':
@@ -6619,7 +6619,7 @@ snapshots:
     dependencies:
       boolbase: 1.0.0
 
-  number-flow@0.5.5:
+  number-flow@0.5.7:
     dependencies:
       esm-env: 1.2.2
 

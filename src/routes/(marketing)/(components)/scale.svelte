@@ -1,7 +1,6 @@
 <script lang="ts">
     import { classNames } from '$lib/utils/classnames';
-    import NumberFlow from '@number-flow/svelte';
-    import { inView } from 'motion';
+    import { animate, inView } from 'motion';
     import { onDestroy } from 'svelte';
 
     const animationDuration = 3;
@@ -34,30 +33,20 @@
     ]);
 
     const numbers = [12, 900, 1, 999];
-
-    let animate = $state<boolean>(false);
-
     let timeoutIds: Array<NodeJS.Timeout> = [];
-
-    const updateNumbers = () => {
-        stats.forEach((stat, index) => {
-            const timeoutId = setTimeout(
-                () => {
-                    stats[index] = { ...stat, number: numbers[index] };
-                },
-                ((index * animationDuration) / numbers.length) * 500
-            );
-
-            timeoutIds.push(timeoutId);
-        });
-    };
 
     const useInView = (node: HTMLElement) => {
         inView(
             node,
             () => {
-                animate = true;
-                updateNumbers();
+                stats.forEach((stat, index) => {
+                    animate(0, numbers[index], {
+                        ease: 'circOut',
+                        duration: 0.75,
+
+                        onUpdate: (latest) => (stat.number = +latest.toFixed(1))
+                    });
+                });
             },
             { amount: 0.5 }
         );
@@ -101,11 +90,11 @@
         {#each stats as stat, i}
             <div class="h-full overflow-auto pl-6">
                 <div class={classNames('relative')} style:top={`${(4 - i) * 18}%`}>
-                    <NumberFlow
+                    <span
                         class="text-description text-primary border-accent relative -left-px z-10 border-l pl-4 font-medium"
-                        value={stat.number}
-                        suffix={stat.suffix}
-                    />
+                    >
+                        {stat.number}{stat.suffix}</span
+                    >
                     <span class="text-body text-secondary block pl-4">{stat.description}</span>
                 </div>
             </div>
@@ -113,9 +102,8 @@
     </div>
 
     <div
-        class="swipe mask absolute inset-0 hidden md:block"
+        class="swipe absolute inset-0 hidden md:block"
         style:--animation-duration={`${animationDuration}s`}
-        style:--mask-height="50px"
     >
         <div class="relative container h-full">
             <div class="absolute inset-0 z-100 grid grid-cols-4">
@@ -126,11 +114,10 @@
                         style:--mask-height={`${(4 - i) * 25}%`}
                     >
                         <div class={classNames('relative')} style:top={`${(4 - i) * 18}%`}>
-                            <NumberFlow
+                            <span
                                 class="text-description text-primary border-accent relative -left-px z-10 border-l pl-4 font-medium"
-                                value={stat.number}
-                                suffix={stat.suffix}
-                            />
+                                >{stat.number}{stat.suffix}</span
+                            >
                             <span class="text-body text-secondary block pl-4"
                                 >{stat.description}</span
                             >
