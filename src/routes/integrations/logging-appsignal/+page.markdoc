@@ -5,7 +5,7 @@ description: Monitor application health in real time, store logs and track issue
 date: 2024-07-30
 featured: false
 isPartner: true
-isNew: true
+isNew: false
 cover: /images/integrations/logging-appsignal/cover.png
 category: logging
 product:

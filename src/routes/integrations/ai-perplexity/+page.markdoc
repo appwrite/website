@@ -5,7 +5,7 @@ description: Send text prompts to Perplexity and receive text generations
 date: 2024-07-30
 featured: false
 isPartner: true
-isNew: true
+isNew: false
 cover: /images/integrations/ai-perplexity/cover.png
 category: ai
 product: 
