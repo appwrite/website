@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { FooterNav, MainFooter, PreFooter } from '$lib/components';
     import OpenSourceAlternative from '$lib/components/marketing/open-source-alternative.svelte';
     import Testimonials from '$lib/components/marketing/testimonials.svelte';
     import Main from '$lib/layouts/Main.svelte';
@@ -43,4 +44,11 @@
     </div>
     <OpenSourceAlternative />
     <Testimonials />
+    <div class="relative pt-20">
+        <div class="container">
+            <PreFooter />
+            <FooterNav />
+            <MainFooter />
+        </div>
+    </div>
 </Main>

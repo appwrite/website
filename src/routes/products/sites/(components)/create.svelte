@@ -1,8 +1,23 @@
 <script lang="ts">
+    import { write } from '$lib/animations';
+    import { inView } from 'motion';
     import Dashboard from '../(assets)/dashboards/create-dashboard.svg';
+
+    let eyebrow = $state('');
+    let container: HTMLElement;
+
+    const writeEyebrow = async () => {
+        await write('Create', (v) => (eyebrow = v), 500);
+    };
+
+    $effect(() => {
+        inView(container, () => {
+            writeEyebrow();
+        });
+    });
 </script>
 
-<div class="flex h-fit flex-1 gap-3">
+<div class="flex h-fit flex-1 gap-3" bind:this={container}>
     <div class="sticky inset-y-0 top-0 left-0 flex h-full justify-center bg-transparent">
         <div
             class="border-gradient absolute z-10 flex size-4 items-center justify-center rounded-full bg-gradient-to-tl from-transparent to-white/32"
@@ -12,7 +27,7 @@
     </div>
     <div class="flex w-full flex-col gap-8 md:px-8">
         <span class="text-primary text-micro font-aeonik-fono uppercase"
-            >Create<span class="text-accent">_</span></span
+            >{eyebrow}<span class="text-accent">_</span></span
         >
 
         <div

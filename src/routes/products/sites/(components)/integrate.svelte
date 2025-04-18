@@ -8,6 +8,7 @@
     import Realtime from '../(assets)/icons/realtime.svg';
     import Messaging from '../(assets)/icons/messaging.svg';
     import { classNames } from '$lib/utils/classnames';
+    import { inView } from 'motion';
 
     import AuthSlide from '../(assets)/slides/auth.svg';
     import DatabasesSlide from '../(assets)/slides/databases.svg';
@@ -15,6 +16,7 @@
     import StorageSlide from '../(assets)/slides/storage.svg';
     import RealtimeSlide from '../(assets)/slides/realtime.svg';
     import MessagingSlide from '../(assets)/slides/messaging.svg';
+    import { write } from '$lib/animations';
 
     const products: Array<{
         label: string;
@@ -110,9 +112,22 @@
             clearInterval(interval);
         };
     });
+
+    let eyebrow = $state('');
+    let container: HTMLElement;
+
+    const writeEyebrow = async () => {
+        await write('Integrate', (v) => (eyebrow = v), 500);
+    };
+
+    $effect(() => {
+        inView(container, () => {
+            writeEyebrow();
+        });
+    });
 </script>
 
-<div class="my-12 flex h-fit flex-1 gap-3">
+<div class="my-12 flex h-fit flex-1 gap-3" bind:this={container}>
     <div class="sticky inset-y-0 top-0 left-0 flex h-full justify-center bg-transparent">
         <div
             class="border-gradient absolute z-10 flex size-4 items-center justify-center rounded-full bg-gradient-to-tl from-transparent to-white/32"
@@ -122,7 +137,7 @@
     </div>
     <div class="mx-auto flex w-full flex-col gap-16 bg-center md:px-8">
         <span class="text-primary text-micro font-aeonik-fono uppercase"
-            >Integrate<span class="text-accent">_</span></span
+            >{eyebrow}<span class="text-accent">_</span></span
         >
         <div
             class="relative grid grid-cols-1 place-items-center [background:_radial-gradient(50%_50%_at_50%_50%,_rgba(253,_54,_110,_0.1)_0%,_rgba(253,_54,_110,_0)_100%)] md:grid-cols-12"
