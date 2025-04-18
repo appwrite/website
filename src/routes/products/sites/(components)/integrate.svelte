@@ -114,14 +114,24 @@
 
 <div class="my-40 flex flex-col gap-16 bg-center">
     <div
-        class="relative grid grid-cols-12 place-items-center [background:_radial-gradient(50%_50%_at_50%_50%,_rgba(253,_54,_110,_0.1)_0%,_rgba(253,_54,_110,_0)_100%)]"
+        class="relative grid grid-cols-1 place-items-center [background:_radial-gradient(50%_50%_at_50%_50%,_rgba(253,_54,_110,_0.1)_0%,_rgba(253,_54,_110,_0)_100%)] md:grid-cols-12"
     >
-        <div class="col-span-3 w-full">
-            <div class="text-body flex flex-col items-end gap-12 font-medium text-white">
+        <!-- left side -->
+        <div class="col-span-3 mb-8 w-full">
+            <div
+                class="text-body flex items-end gap-2 font-medium text-white md:flex-col md:gap-12"
+            >
                 {#each products.slice(0, 3) as product, index}
-                    <div class="group relative mr-auto ml-0 flex w-full items-center">
+                    {@const isActive = index === activeIndex}
+                    <div class="group relative mr-auto ml-0 flex w-fit items-center md:w-full">
                         <button
-                            class="bg-card border-smooth mr-[100px] ml-auto flex cursor-pointer items-center gap-2 rounded-xl border py-2 pr-4 pl-3 backdrop-blur-md"
+                            class={classNames(
+                                'bg-card border-smooth ml-auto flex cursor-pointer items-center gap-2 rounded-xl border py-2 pr-4 pl-3 backdrop-blur-md transition-all md:mr-[100px]',
+                                {
+                                    'bg-accent/12 border-accent/36 md:border-smooth md:bg-card':
+                                        isActive
+                                }
+                            )}
                             onmouseover={() => handleSetActive(index)}
                             onfocus={() => handleSetActive(index)}
                             onmouseout={() => handleMouseOut()}
@@ -131,17 +141,18 @@
                             {product.label}
                         </button>
                         <div
-                            class={classNames('absolute right-0', {
+                            class={classNames('absolute right-0 hidden md:block', {
                                 'top-1/2': index === 0,
                                 'bottom-1/2': index === 2
                             })}
                         >
-                            {@html product.line(activeIndex === index)}
+                            {@html product.line(isActive)}
                         </div>
                     </div>
                 {/each}
             </div>
         </div>
+        <!-- window -->
         <div
             class="window col-span-6 flex aspect-[6.5/4.5] w-full items-center justify-center rounded-[48px] border border-dashed border-transparent p-3"
             style:animation-delay="0.6s"
@@ -166,17 +177,18 @@
                         </div>
                         <div class="relative flex-1 overflow-hidden rounded-2xl bg-[#19191C]">
                             {#each products as product, i}
+                                {@const isActive = i === activeIndex}
                                 <img
                                     src={product.image}
                                     class={classNames(
-                                        'absolute inset-0 h-full w-full rounded-2xl transition-all duration-500',
+                                        'absolute inset-0 h-full w-full rounded-2xl transition-all duration-500 ease-out',
                                         'scale-102 opacity-0 blur-md',
                                         {
-                                            'scale-100 opacity-100 blur-none': i === activeIndex,
-                                            invisible: i !== activeIndex
+                                            'scale-100 opacity-100 blur-none': isActive,
+                                            invisible: !isActive
                                         }
                                     )}
-                                    aria-hidden={i !== activeIndex}
+                                    aria-hidden={!isActive}
                                     alt=""
                                 />
                             {/each}
@@ -185,13 +197,22 @@
                 </div>
             </div>
         </div>
-        <div class="col-span-3 w-full">
-            <div class="text-body flex flex-col gap-12 font-medium text-white">
+        <!-- right side -->
+        <div class="col-span-3 mt-8 w-full md:mt-0">
+            <div class="text-body flex gap-2 font-medium text-white md:flex-col md:gap-12">
                 {#each products.slice(3) as product, i}
                     {@const index = i + 3}
-                    <div class="group relative mr-0 ml-auto flex w-full items-center">
+                    {@const isActive = index === activeIndex}
+                    <div class="group relative mr-0 ml-auto flex w-fit items-center md:w-full">
                         <button
-                            class="bg-card border-smooth mr-auto ml-[100px] flex cursor-pointer items-center gap-2 rounded-xl border py-2 pr-4 pl-3 backdrop-blur-md"
+                            class={classNames(
+                                'bg-card border-smooth mr-auto flex cursor-pointer items-center gap-2 rounded-xl border py-2 pr-4 pl-3 backdrop-blur-md transition-all md:ml-[100px]',
+                                {
+                                    'bg-accent/12 border-accent/36 md:border-smooth md:bg-card':
+                                        isActive
+                                }
+                            )}
+                            onclick={() => handleSetActive(index)}
                             onmouseover={() => handleSetActive(index)}
                             onfocus={() => handleSetActive(index)}
                             onmouseout={() => handleMouseOut()}
@@ -201,12 +222,12 @@
                             {product.label}
                         </button>
                         <div
-                            class={classNames('absolute left-0', {
+                            class={classNames('absolute left-0 hidden md:block', {
                                 'top-1/2': i === 0,
                                 'bottom-1/2': i === 2
                             })}
                         >
-                            {@html product.line(activeIndex === index)}
+                            {@html product.line(isActive)}
                         </div>
                     </div>
                 {/each}
