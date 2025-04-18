@@ -15,8 +15,14 @@
     import StorageSlide from '../(assets)/slides/storage.svg';
     import RealtimeSlide from '../(assets)/slides/realtime.svg';
     import MessagingSlide from '../(assets)/slides/messaging.svg';
+    import type { SvelteHTMLElements } from 'svelte/elements';
 
-    const products: Array<{ label: string; icon: string; line: Snippet; image: string }> = [
+    const products: Array<{
+        label: string;
+        icon: string;
+        line: (isActive: boolean) => string;
+        image: string;
+    }> = [
         {
             label: 'Auth',
             icon: Auth,
