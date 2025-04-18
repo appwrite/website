@@ -1,5 +1,4 @@
 <script lang="ts">
-    import Frameworks from '$lib/components/marketing/platforms.svelte';
     import OpenSourceAlternative from '$lib/components/marketing/open-source-alternative.svelte';
     import Testimonials from '$lib/components/marketing/testimonials.svelte';
     import Main from '$lib/layouts/Main.svelte';
@@ -39,8 +38,8 @@
         <Steps>
             <Create />
             <Deploy />
+            <Integrate />
         </Steps>
-        <Integrate />
     </div>
     <OpenSourceAlternative />
     <Testimonials />

@@ -1,5 +1,5 @@
 <script lang="ts">
-    import Spinner from '$lib/components/shared/spinner.svelte';
+    import Dashboard from '../(assets)/dashboards/deploy-dashboard.svg';
 
     const logs = [
         {
@@ -73,116 +73,30 @@
     ];
 </script>
 
-<div class="flex w-full flex-col gap-8 md:px-8">
-    <span class="text-primary text-micro font-aeonik-fono uppercase"
-        >Deploy<span class="text-accent">_</span></span
-    >
-
-    <div
-        class="mask border-smooth flex aspect-video w-full flex-col rounded-t-3xl border bg-gradient-to-br from-white/10 via-white/5 to-white/10 px-2 pt-2 backdrop-blur-xl"
-        style:--mask-height="400px"
-    >
-        <div class="flex-1 rounded-t-2xl bg-[#1D1D21] px-8 pt-16 md:px-16">
-            <header class="flex flex-col justify-between gap-4 pb-10 md:flex-row md:items-center">
-                <h2 class="text-primary font-aeonik-pro text-label">Create Site</h2>
-
-                <div
-                    class="border-greyscale-800 flex size-8 items-center justify-center gap-1.5 rounded-md border px-1.5 py-0.5"
-                >
-                    <span class="web-icon-close text-secondary"></span>
-                </div>
-            </header>
-            <div class="grid flex-1 grid-cols-12 gap-8">
-                <div class="col-span-8 flex flex-1 flex-col gap-8">
-                    <div
-                        class="border-smooth flex items-center justify-between gap-3 rounded-lg border p-4"
-                    >
-                        <div class="flex items-center gap-3">
-                            <svg
-                                width="20"
-                                height="21"
-                                viewBox="0 0 20 21"
-                                fill="none"
-                                xmlns="http://www.w3.org/2000/svg"
-                            >
-                                <path
-                                    d="M9.47605 2.56412C9.44164 2.56725 9.33216 2.57819 9.23363 2.58601C6.9611 2.79087 4.83245 4.01689 3.48426 5.90126C2.73353 6.94901 2.25337 8.1375 2.07195 9.39635C2.00782 9.83578 2 9.96557 2 10.5614C2 11.1572 2.00782 11.287 2.07195 11.7264C2.50674 14.7305 4.64477 17.2544 7.54448 18.1896C8.06373 18.3569 8.61114 18.4711 9.23363 18.5399C9.47605 18.5665 10.524 18.5665 10.7664 18.5399C11.8409 18.421 12.7511 18.1552 13.6489 17.697C13.7865 17.6266 13.8131 17.6079 13.7943 17.5922C13.7818 17.5828 13.1953 16.7962 12.4915 15.8455L11.2121 14.1175L9.60899 11.7452C8.72688 10.441 8.00117 9.37446 7.99492 9.37446C7.98866 9.3729 7.98241 10.4269 7.97928 11.7139C7.97459 13.9673 7.97302 14.058 7.94487 14.1112C7.9042 14.1878 7.87292 14.2191 7.80723 14.2535C7.75719 14.2785 7.71339 14.2832 7.47722 14.2832H7.20665L7.1347 14.2379C7.08778 14.2082 7.05337 14.1691 7.02991 14.1237L6.99707 14.0533L7.0002 10.9179L7.00489 7.78095L7.05337 7.71996C7.0784 7.68712 7.13157 7.6449 7.16911 7.62457C7.23324 7.59329 7.25826 7.59017 7.52884 7.59017C7.8479 7.59017 7.90108 7.60268 7.98397 7.69338C8.00743 7.7184 8.87547 9.02573 9.91398 10.6005C10.9525 12.1752 12.3726 14.3254 13.0702 15.381L14.337 17.2998L14.4012 17.2576C14.9689 16.8885 15.5695 16.3631 16.045 15.8157C17.0569 14.6538 17.7091 13.237 17.9281 11.7264C17.9922 11.287 18 11.1572 18 10.5614C18 9.96557 17.9922 9.83578 17.9281 9.39635C17.4933 6.3923 15.3552 3.86833 12.4555 2.93318C11.9441 2.76741 11.3998 2.65326 10.7898 2.58445C10.6397 2.56881 9.60587 2.55161 9.47605 2.56412ZM12.7511 7.40251C12.8262 7.44004 12.8872 7.51198 12.9091 7.58704C12.9216 7.6277 12.9247 8.49717 12.9216 10.4566L12.9169 13.2683L12.4211 12.5083L11.9238 11.7483V9.70442C11.9238 8.38301 11.93 7.64021 11.9394 7.60424C11.9644 7.51667 12.0192 7.44786 12.0942 7.4072C12.1584 7.37436 12.1818 7.37123 12.4274 7.37123C12.6588 7.37123 12.6995 7.37436 12.7511 7.40251Z"
-                                    fill="white"
-                                />
-                            </svg>
-
-                            <h2 class="text-primary text-sm font-medium">Homepage</h2>
-                            <div
-                                class="border-smooth text-micro text-secondary block rounded-lg border bg-[#19191C] px-2 py-1 font-mono"
-                            >
-                                6620f370e612829af25a
-                            </div>
-                        </div>
-
-                        <button
-                            class="border-smooth text-secondary block rounded-[10px] border bg-[#19191C] px-2 py-1.5 text-sm font-medium"
-                            >Change</button
-                        >
-                    </div>
-
-                    <div class="border-smooth col-span-4 aspect-video flex-1 rounded-lg border p-2">
-                        <span class="text-micro text-secondary -mt-4 block w-fit bg-[#1D1D21] px-2"
-                            >Deploy</span
-                        >
-
-                        <div class="flex items-center justify-between px-2">
-                            <div class="flex items-center gap-2">
-                                <h2 class="text-primary py-4 text-sm font-medium">
-                                    Deployment logs
-                                </h2>
-                                <span
-                                    class="text-secondary text-micro rounded-lg bg-white/8 px-1.5 py-0.5"
-                                    >Building</span
-                                >
-                            </div>
-
-                            <span class="text-secondary flex items-center gap-2 font-mono text-sm">
-                                32s <Spinner class="size-4" paused />
-                            </span>
-                        </div>
-
-                        <div class="mask mx-2 flex flex-col bg-[#19191C] p-2">
-                            {#each [...logs, ...logs] as { time, message }}
-                                <div
-                                    class="flex items-center gap-2 px-2 font-mono text-sm leading-6"
-                                >
-                                    <span class="text-secondary">{time}</span>
-                                    <span class="text-primary line-clamp-1 font-medium"
-                                        >{message}</span
-                                    >
-                                </div>
-                            {/each}
-                        </div>
-                    </div>
-                </div>
-                <div class="border-smooth col-span-4 h-fit rounded-lg border p-4">
-                    <ul class="flex flex-col gap-4">
-                        {#each details as { eyebrow, label, icon }}
-                            <li class="flex flex-col gap-1">
-                                <span class="text-micro text-secondary">{eyebrow}</span>
-                                <div class="flex items-center gap-1">
-                                    {#if icon}
-                                        {@html icon}
-                                    {/if}
-                                    <span class="text-primary text-sm font-medium">{label}</span>
-                                </div>
-                            </li>
-                        {/each}
-                    </ul>
-                </div>
-            </div>
+<div class="flex h-fit flex-1 gap-3">
+    <div class="sticky inset-y-0 top-0 left-0 flex h-full justify-center bg-transparent">
+        <div
+            class="border-gradient absolute z-10 flex size-4 items-center justify-center rounded-full bg-gradient-to-tl from-transparent to-white/32"
+        >
+            <div class="size-1 rounded-full bg-white"></div>
         </div>
     </div>
+    <div class="flex w-full flex-col gap-8 md:px-8">
+        <span class="text-primary text-micro font-aeonik-fono uppercase"
+            >Deploy<span class="text-accent">_</span></span
+        >
 
-    <div class="relative z-10 mx-auto -mt-24 flex max-w-md flex-col gap-4 pl-12 text-center">
-        <h2 class="text-title text-primary font-aeonik-pro">Deploy your site</h2>
-        <p class="text-secondary text-description">
-            Deploy your Site directly from the Appwrite Console
-        </p>
+        <div
+            class="border-smooth flex aspect-video w-full flex-col rounded-t-3xl border bg-gradient-to-br from-white/10 via-white/5 to-white/10 mask-b-from-0% px-2 pt-2 backdrop-blur-xl"
+        >
+            <img src={Dashboard} class="h-full w-full rounded-t-2xl" alt="Deployment dashboard" />
+        </div>
+
+        <div class="relative z-10 mx-auto -mt-24 flex max-w-md flex-col gap-4 text-center">
+            <h2 class="text-title text-primary font-aeonik-pro">Deploy your site</h2>
+            <p class="text-secondary text-description">
+                Deploy your Site directly from the Appwrite Console
+            </p>
+        </div>
     </div>
 </div>
