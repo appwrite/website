@@ -82,61 +82,73 @@
         if (!shouldAnimate) return;
 
         let timeout: NodeJS.Timeout;
+        const timeoutDuration = 4000;
         switch (step) {
             case FunctionsState.Stale:
                 timeout = setTimeout(() => {
                     step = FunctionsState.Generate;
-                }, 2000);
+                }, timeoutDuration);
                 animate(
                     commandQueue,
                     { y: '-20%' },
                     { duration: 0.75, delay: 0.25, type: 'spring' }
                 );
-                sdkQueueRefs.forEach((ref, i) => {
-                    animate(
-                        ref,
-                        {
-                            y:
-                                i === 0 || i % 2
-                                    ? `-${25 / platforms.length}%`
-                                    : `${25 / platforms.length}%`
-                        },
-                        { duration: 0.75, delay: 0.25 + i, type: 'spring' }
-                    );
-                });
-
                 return () => clearTimeout(timeout);
             case FunctionsState.Generate:
                 timeout = setTimeout(() => {
                     step = FunctionsState.Send;
-                }, 2000);
-                animate(commandQueue, { y: '-100px' }, { duration: 0.75, type: 'spring' });
+                }, timeoutDuration);
+                animate(
+                    commandQueue,
+                    { y: '20%' },
+                    { duration: 0.75, delay: 0.25, type: 'spring' }
+                );
                 return () => clearTimeout(timeout);
             case FunctionsState.Send:
                 timeout = setTimeout(() => {
                     step = FunctionsState.Update;
-                }, 1000);
-                animate(commandQueue, { y: '20%' }, { duration: 0.75, type: 'spring' });
+                }, timeoutDuration);
+                animate(
+                    commandQueue,
+                    { y: '-10%' },
+                    { duration: 0.75, delay: 0.25, type: 'spring' }
+                );
                 return () => clearTimeout(timeout);
             case FunctionsState.Update:
                 timeout = setTimeout(() => {
                     step = FunctionsState.Delete;
-                }, 200);
+                }, timeoutDuration);
+                animate(commandQueue, { y: '0%' }, { duration: 0.75, delay: 0.25, type: 'spring' });
                 return () => clearTimeout(timeout);
             case FunctionsState.Delete:
                 timeout = setTimeout(() => {
                     step = FunctionsState.Create;
-                }, 100);
+                }, timeoutDuration);
+                animate(
+                    commandQueue,
+                    { y: '30%' },
+                    { duration: 0.75, delay: 0.25, type: 'spring' }
+                );
                 return () => clearTimeout(timeout);
             case FunctionsState.Create:
                 timeout = setTimeout(() => {
                     step = FunctionsState.Stale;
-                }, 800);
+                }, timeoutDuration);
+                animate(
+                    commandQueue,
+                    { y: '50%' },
+                    { duration: 0.75, delay: 0.25, type: 'spring' }
+                );
                 return () => clearTimeout(timeout);
             default:
                 timeout = setTimeout(() => {
                     step = FunctionsState.Generate;
-                }, 3000);
+                }, timeoutDuration);
+                animate(
+                    commandQueue,
+                    { y: '-10%' },
+                    { duration: 0.75, delay: 0.25, type: 'spring' }
+                );
                 return () => clearTimeout(timeout);
         }
     });
@@ -173,6 +185,7 @@
                         <div
                             class="command-item text-caption relative w-fit shrink-0 overflow-hidden rounded-2xl border border-transparent font-mono text-sm text-white"
                             style:--spread="{command.length * 2.25}px"
+                            class:active={index + i * step}
                             aria-hidden={index !== 0}
                         >
                             <div
@@ -229,6 +242,10 @@
         background-size:
             250% 150%,
             auto;
+    }
+
+    .command-item.active {
+        animation: badge 300ms linear forwards;
     }
 
     @keyframes badge {
