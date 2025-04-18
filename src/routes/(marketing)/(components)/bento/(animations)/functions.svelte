@@ -49,6 +49,8 @@
     let container: HTMLElement;
     let commandQueue: HTMLElement;
     let step: number = $state(0);
+    let activeCommand = $state<null | number>(null);
+    let activePlatform = $state<null | number>(null);
     let sdkQueueRefs: Array<HTMLElement> = [];
 
     const FunctionsState = {
@@ -88,11 +90,21 @@
                 timeout = setTimeout(() => {
                     step = FunctionsState.Generate;
                 }, timeoutDuration);
+
                 animate(
                     commandQueue,
                     { y: '-20%' },
-                    { duration: 0.75, delay: 0.25, type: 'spring' }
+                    {
+                        duration: 0.75,
+                        delay: 0.25,
+                        type: 'spring',
+                        onComplete: () => {
+                            activeCommand = 13;
+                            activePlatform = 2;
+                        }
+                    }
                 );
+
                 return () => clearTimeout(timeout);
             case FunctionsState.Generate:
                 timeout = setTimeout(() => {
@@ -101,8 +113,14 @@
                 animate(
                     commandQueue,
                     { y: '20%' },
-                    { duration: 0.75, delay: 0.25, type: 'spring' }
+                    {
+                        duration: 0.75,
+                        delay: 0.25,
+                        type: 'spring',
+                        onComplete: () => (activeCommand = 5)
+                    }
                 );
+
                 return () => clearTimeout(timeout);
             case FunctionsState.Send:
                 timeout = setTimeout(() => {
@@ -111,14 +129,28 @@
                 animate(
                     commandQueue,
                     { y: '-10%' },
-                    { duration: 0.75, delay: 0.25, type: 'spring' }
+                    {
+                        duration: 0.75,
+                        delay: 0.25,
+                        type: 'spring',
+                        onComplete: () => (activeCommand = 11)
+                    }
                 );
                 return () => clearTimeout(timeout);
             case FunctionsState.Update:
                 timeout = setTimeout(() => {
                     step = FunctionsState.Delete;
                 }, timeoutDuration);
-                animate(commandQueue, { y: '0%' }, { duration: 0.75, delay: 0.25, type: 'spring' });
+                animate(
+                    commandQueue,
+                    { y: '0%' },
+                    {
+                        duration: 0.75,
+                        delay: 0.25,
+                        type: 'spring',
+                        onComplete: () => (activeCommand = 9)
+                    }
+                );
                 return () => clearTimeout(timeout);
             case FunctionsState.Delete:
                 timeout = setTimeout(() => {
@@ -127,7 +159,12 @@
                 animate(
                     commandQueue,
                     { y: '30%' },
-                    { duration: 0.75, delay: 0.25, type: 'spring' }
+                    {
+                        duration: 0.75,
+                        delay: 0.25,
+                        type: 'spring',
+                        onComplete: () => (activeCommand = 3)
+                    }
                 );
                 return () => clearTimeout(timeout);
             case FunctionsState.Create:
@@ -137,7 +174,12 @@
                 animate(
                     commandQueue,
                     { y: '50%' },
-                    { duration: 0.75, delay: 0.25, type: 'spring' }
+                    {
+                        duration: 0.75,
+                        delay: 0.25,
+                        type: 'spring',
+                        onComplete: () => (activeCommand = 0)
+                    }
                 );
                 return () => clearTimeout(timeout);
             default:
@@ -147,7 +189,12 @@
                 animate(
                     commandQueue,
                     { y: '-10%' },
-                    { duration: 0.75, delay: 0.25, type: 'spring' }
+                    {
+                        duration: 0.75,
+                        delay: 0.25,
+                        type: 'spring',
+                        onComplete: () => (activeCommand = 9)
+                    }
                 );
                 return () => clearTimeout(timeout);
         }
@@ -180,35 +227,35 @@
             class="flex flex-1 flex-col items-center gap-3 overflow-clip [mask-image:linear-gradient(to_top,rgba(0,0,0,0)_0%,_rgba(255,255,255,1)_50%,_rgba(0,0,0,0)_100%)] [mask-mode:alpha] text-center"
         >
             <div class="flex h-max flex-col items-center gap-3 pt-3" bind:this={commandQueue}>
-                {#each Array.from({ length: 4 }) as _, index}
-                    {#each commands as command, i}
+                {#each [...commands, ...commands, ...commands, ...commands] as command, i}
+                    <div
+                        class="command-item text-caption relative w-fit shrink-0 overflow-hidden rounded-2xl border border-transparent font-mono text-sm text-white"
+                        style:--spread="{command.length * 2.25}px"
+                        class:active={i === activeCommand && shouldAnimate}
+                        aria-hidden={i !== 0}
+                    >
                         <div
-                            class="command-item text-caption relative w-fit shrink-0 overflow-hidden rounded-2xl border border-transparent font-mono text-sm text-white"
-                            style:--spread="{command.length * 2.25}px"
-                            class:active={index + i * step}
-                            aria-hidden={index !== 0}
+                            class="h-full w-full rounded-2xl bg-[#232325]/90 px-3 py-1 text-white/80"
                         >
-                            <div
-                                class="h-full w-full rounded-2xl bg-[#232325]/90 px-3 py-1 text-white/80"
-                            >
-                                {command}
-                            </div>
+                            {command}
                         </div>
-                    {/each}
+                    </div>
                 {/each}
             </div>
         </div>
         <div
-            class="relative flex h-full gap-4 overflow-clip [mask-image:linear-gradient(to_top,rgba(0,0,0,0)_0%,_rgba(255,255,255,1)_50%,_rgba(0,0,0,0)_100%)] [mask-mode:alpha]"
+            class="relative flex h-full gap-4 overflow-y-clip [mask-image:linear-gradient(to_top,rgba(0,0,0,0)_0%,_rgba(255,255,255,1)_50%,_rgba(0,0,0,0)_100%)] [mask-mode:alpha]"
         >
             {#each Array.from({ length: 3 }) as _, i}
                 <div class="flex h-max flex-col gap-3 pt-3" bind:this={sdkQueueRefs[i]}>
                     {#each Array.from({ length: 4 }) as _, index}
                         {@const platformShuffled = i === 1 ? platforms.reverse() : platforms}
-                        {#each platformShuffled as platform}
+                        {#each platformShuffled as platform, i}
                             <div
-                                class="flex size-16 shrink-0 items-center justify-center rounded-xl bg-[#232325]/90"
+                                class="platform-item relative flex size-16 shrink-0 items-center justify-center rounded-xl border border-transparent transition-all"
+                                style:--to="-45deg"
                                 aria-hidden={index !== 0}
+                                class:border-smooth!={i === activePlatform}
                             >
                                 <img
                                     src={platform}
@@ -216,6 +263,7 @@
                                     role="presentation"
                                     class="h-10 grayscale"
                                 />
+                                {i}
                             </div>
                         {/each}
                     {/each}
@@ -245,7 +293,7 @@
     }
 
     .command-item.active {
-        animation: badge 300ms linear forwards;
+        animation: badge 750ms linear forwards;
     }
 
     @keyframes badge {

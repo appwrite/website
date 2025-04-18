@@ -326,12 +326,12 @@
 
 @utility border-gradient {
     --border-gradient-before: linear-gradient(
-        180deg,
+        var(--to, 180deg),
         rgba(255, 255, 255, 0.16) 0%,
         rgba(255, 255, 255, 0) 100%
     );
     --border-gradient-after: linear-gradient(
-        180deg,
+        var(--to, 180deg),
         rgba(255, 255, 255, 0.12) 0%,
         rgba(255, 255, 255, 0) 125.11%
     );
