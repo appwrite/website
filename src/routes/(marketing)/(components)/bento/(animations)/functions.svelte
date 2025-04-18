@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { hover, inView } from 'motion';
+    import { animate, hover, inView } from 'motion';
 
     import Python from '../../../(assets)/icons/python.svg';
     import Node from '../../../(assets)/icons/node.svg';
@@ -45,8 +45,11 @@
         'CreateInvoice'
     ];
 
+    let shouldAnimate = $state<boolean>(false);
     let container: HTMLElement;
+    let commandQueue: HTMLElement;
     let step: number = $state(0);
+    let sdkQueueRefs: Array<HTMLElement> = [];
 
     const FunctionsState = {
         Stale: 0,
@@ -57,53 +60,86 @@
         Create: 5
     } as const;
 
-    // $effect(() => {
-    //     let timeout: NodeJS.Timeout;
-    //     switch (step) {
-    //         case FunctionsState.Stale:
-    //             console.log('stale');
-    //             timeout = setTimeout(() => {
-    //                 step = FunctionsState.Generate;
-    //             }, 500);
-    //             return () => clearTimeout(timeout);
-    //         case FunctionsState.Generate:
-    //             console.log('generate');
-    //             timeout = setTimeout(() => {
-    //                 step = FunctionsState.Send;
-    //             }, 2000);
-    //             return () => clearTimeout(timeout);
-    //         case FunctionsState.Send:
-    //             console.log('send');
-    //             timeout = setTimeout(() => {
-    //                 step = FunctionsState.Update;
-    //             }, 1000);
-    //             return () => clearTimeout(timeout);
-    //         case FunctionsState.Update:
-    //             console.log('update');
-    //             timeout = setTimeout(() => {
-    //                 step = FunctionsState.Delete;
-    //             }, 200);
-    //             return () => clearTimeout(timeout);
-    //         case FunctionsState.Delete:
-    //             console.log('delete');
-    //             timeout = setTimeout(() => {
-    //                 step = FunctionsState.Create;
-    //             }, 100);
-    //             return () => clearTimeout(timeout);
-    //         case FunctionsState.Create:
-    //             console.log('create');
-    //             timeout = setTimeout(() => {
-    //                 step = FunctionsState.Stale;
-    //             }, 800);
-    //             return () => clearTimeout(timeout);
-    //         default:
-    //             console.log('stale');
-    //             timeout = setTimeout(() => {
-    //                 step = FunctionsState.Generate;
-    //             }, 3000);
-    //             return () => clearTimeout(timeout);
-    //     }
-    // });
+    $effect(() => {
+        hover(container, () => {
+            if (isMobile()) return;
+            shouldAnimate = true;
+
+            return () => {
+                shouldAnimate = false;
+            };
+        });
+
+        inView(container, () => {
+            if (!isMobile()) return;
+            shouldAnimate = true;
+
+            return () => {
+                shouldAnimate = true;
+            };
+        });
+
+        if (!shouldAnimate) return;
+
+        let timeout: NodeJS.Timeout;
+        switch (step) {
+            case FunctionsState.Stale:
+                timeout = setTimeout(() => {
+                    step = FunctionsState.Generate;
+                }, 2000);
+                animate(
+                    commandQueue,
+                    { y: '-20%' },
+                    { duration: 0.75, delay: 0.25, type: 'spring' }
+                );
+                sdkQueueRefs.forEach((ref, i) => {
+                    animate(
+                        ref,
+                        {
+                            y:
+                                i === 0 || i % 2
+                                    ? `-${25 / platforms.length}%`
+                                    : `${25 / platforms.length}%`
+                        },
+                        { duration: 0.75, delay: 0.25 + i, type: 'spring' }
+                    );
+                });
+
+                return () => clearTimeout(timeout);
+            case FunctionsState.Generate:
+                timeout = setTimeout(() => {
+                    step = FunctionsState.Send;
+                }, 2000);
+                animate(commandQueue, { y: '-100px' }, { duration: 0.75, type: 'spring' });
+                return () => clearTimeout(timeout);
+            case FunctionsState.Send:
+                timeout = setTimeout(() => {
+                    step = FunctionsState.Update;
+                }, 1000);
+                animate(commandQueue, { y: '20%' }, { duration: 0.75, type: 'spring' });
+                return () => clearTimeout(timeout);
+            case FunctionsState.Update:
+                timeout = setTimeout(() => {
+                    step = FunctionsState.Delete;
+                }, 200);
+                return () => clearTimeout(timeout);
+            case FunctionsState.Delete:
+                timeout = setTimeout(() => {
+                    step = FunctionsState.Create;
+                }, 100);
+                return () => clearTimeout(timeout);
+            case FunctionsState.Create:
+                timeout = setTimeout(() => {
+                    step = FunctionsState.Stale;
+                }, 800);
+                return () => clearTimeout(timeout);
+            default:
+                timeout = setTimeout(() => {
+                    step = FunctionsState.Generate;
+                }, 3000);
+                return () => clearTimeout(timeout);
+        }
+    });
 </script>
 
 <div
@@ -129,10 +165,10 @@
         class="relative flex h-105 items-center justify-between overflow-clip rounded-xl bg-black/24 px-8"
     >
         <div
-            class="flex flex-1 flex-col items-center gap-3 overflow-clip mask-t-from-0% mask-t-to-5% mask-linear-180 mask-alpha text-center"
+            class="flex flex-1 flex-col items-center gap-3 overflow-clip [mask-image:linear-gradient(to_top,rgba(0,0,0,0)_0%,_rgba(255,255,255,1)_50%,_rgba(0,0,0,0)_100%)] [mask-mode:alpha] text-center"
         >
-            <div class="flex h-max flex-col items-center gap-3 pt-3">
-                {#each Array.from({ length: 2 }) as _, index}
+            <div class="flex h-max flex-col items-center gap-3 pt-3" bind:this={commandQueue}>
+                {#each Array.from({ length: 4 }) as _, index}
                     {#each commands as command, i}
                         <div
                             class="command-item text-caption relative w-fit shrink-0 overflow-hidden rounded-2xl border border-transparent font-mono text-sm text-white"
@@ -153,8 +189,8 @@
             class="relative flex h-full gap-4 overflow-clip [mask-image:linear-gradient(to_top,rgba(0,0,0,0)_0%,_rgba(255,255,255,1)_50%,_rgba(0,0,0,0)_100%)] [mask-mode:alpha]"
         >
             {#each Array.from({ length: 3 }) as _, i}
-                <div class="flex h-max flex-col gap-3 pt-3">
-                    {#each Array.from({ length: 2 }) as _, index}
+                <div class="flex h-max flex-col gap-3 pt-3" bind:this={sdkQueueRefs[i]}>
+                    {#each Array.from({ length: 4 }) as _, index}
                         {@const platformShuffled = i === 1 ? platforms.reverse() : platforms}
                         {#each platformShuffled as platform}
                             <div
