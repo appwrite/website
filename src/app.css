@@ -83,23 +83,38 @@
 
     /* Animations */
     --animate-scale-in: scale-in 200ms ease-out forwards;
+    --animate-scale-out: scale-out 200ms ease-out forwards;
     --animate-caret-blink: caret-blink 1s ease-in-out infinite;
     --animate-enter:
-        fade-in 0.75s ease-in-out both, blur 0.75s ease-in-out both, up 0.75s ease-in-out both;
+        fade-in 0.25s ease-out both, blur 0.25s ease-out both, up 0.25s ease-in-out both;
     --animate-scroll: scroll 60s linear infinite;
     --animate-fade-in: fade-in 0.5s ease-in-out both;
+    --animate-fade-out: fade-out 0.5s ease-in-out both;
     --animate-marquee: marquee var(--speed, 30s) linear infinite var(--direction, forwards);
     --animate-lighting: lighting 1.25s ease-out forwards;
     --animate-menu-in: menu-in 0.25s ease-out forwards;
     --animate-menu-out: menu-out 0.25s ease-out forwards;
+    --animate-enter-from-left: enter-from-left 0.2s ease;
+    --animate-enter-from-right: enter-from-right 0.2s ease;
+    --animate-exit-to-left: exit-to-left 0.2s ease;
+    --animate-exit-to-right: exit-to-right 0.2s ease;
 
     /* Keyframes */
     @keyframes scale-in {
         0% {
-            transform: scale(0);
+            transform: rotateX(-10deg) scale(0.9);
         }
         100% {
-            transform: scale(1);
+            transform: rotateX(0) scale(1);
+        }
+    }
+
+    @keyframes scale-out {
+        0% {
+            transform: rotateX(0) scale(1);
+        }
+        100% {
+            transform: rotateX(-10deg) scale(0.9);
         }
     }
 
@@ -126,7 +141,7 @@
 
     @keyframes up {
         0% {
-            transform: translateY(8px);
+            transform: translateY(36px);
         }
         100% {
             transform: translateY(0px);
@@ -139,6 +154,15 @@
         }
         100% {
             opacity: 1;
+        }
+    }
+
+    @keyframes fade-out {
+        0% {
+            opacity: 1;
+        }
+        100% {
+            opacity: 0;
         }
     }
 
@@ -193,6 +217,50 @@
             opacity: 0;
             filter: blur(2px);
             transform: translateY(8px);
+        }
+    }
+
+    @keyframes enter-from-right {
+        from {
+            opacity: 0;
+            transform: translateX(200px);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    @keyframes enter-from-left {
+        from {
+            opacity: 0;
+            transform: translateX(-200px);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    @keyframes exit-to-right {
+        from {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        to {
+            opacity: 0;
+            transform: translateX(200px);
+        }
+    }
+
+    @keyframes exit-to-left {
+        from {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        to {
+            opacity: 0;
+            transform: translateX(-200px);
         }
     }
 
@@ -258,12 +326,12 @@
 
 @utility border-gradient {
     --border-gradient-before: linear-gradient(
-        180deg,
+        var(--to, 180deg),
         rgba(255, 255, 255, 0.16) 0%,
         rgba(255, 255, 255, 0) 100%
     );
     --border-gradient-after: linear-gradient(
-        180deg,
+        var(--to, 180deg),
         rgba(255, 255, 255, 0.12) 0%,
         rgba(255, 255, 255, 0) 125.11%
     );
@@ -290,16 +358,6 @@
     &::after {
         background: var(--border-gradient-after) border-box;
     }
-}
-
-@utility mask {
-    mask-image: linear-gradient(
-        to var(--mask-direction, top),
-        transparent,
-        black var(--mask-height, 32px),
-        black calc(100% - var(--mask-height, 32px)),
-        black
-    );
 }
 
 :root,

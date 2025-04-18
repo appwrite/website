@@ -1,6 +1,5 @@
 <script lang="ts">
     import { sleep, unwrite, write } from '$lib/animations';
-    import { SOCIAL_STATS } from '$lib/constants';
     import { onMount } from 'svelte';
     import collaboration from '../(assets)/collaboration.svg';
     import customization from '../(assets)/customization.svg';

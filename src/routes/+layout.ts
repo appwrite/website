@@ -1,17 +1,9 @@
-import { browser } from '$app/environment';
-import { PUBLIC_POSTHOG_API_KEY } from '$env/static/public';
-import posthog from 'posthog-js';
+import { getAllChangelogEntries } from './changelog/utils';
 
-export const load = async ({ data }) => {
-    if (browser && PUBLIC_POSTHOG_API_KEY) {
-        posthog.init(PUBLIC_POSTHOG_API_KEY, {
-            api_host: 'https://eu.i.posthog.com',
-            persistence: 'memory',
-            bootstrap: {
-                distinctID: data.distinctId
-            }
-        });
-    }
+export const trailingSlash = 'never';
 
-    return data;
+export const load = async () => {
+    return {
+        changelogEntries: (await getAllChangelogEntries()).length
+    };
 };
