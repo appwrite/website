@@ -6,7 +6,7 @@
 
     const animationDuration = 3;
 
-    const stats = [
+    let stats = $state([
         {
             number: 0,
             suffix: '+',
@@ -31,13 +31,14 @@
             description: 'total compute time',
             top: 46.75
         }
-    ];
+    ]);
 
     const numbers = [12, 900, 1, 999];
 
     let animate = $state<boolean>(false);
 
     let timeoutIds: Array<NodeJS.Timeout> = [];
+
     const updateNumbers = () => {
         stats.forEach((stat, index) => {
             const timeoutId = setTimeout(
@@ -75,7 +76,10 @@
     });
 </script>
 
-<div class="border-smooth relative flex min-h-[70vh] flex-col gap-4 border-y bg-black/8 py-20">
+<div
+    class="border-smooth relative flex min-h-[70vh] flex-col gap-4 border-y bg-black/8 py-20"
+    use:useInView
+>
     <div class="relative z-10 container w-fit md:w-full">
         <div class="max-w-xl">
             <h2 class="text-primary font-aeonik-pro text-5xl tracking-tighter text-pretty">
@@ -94,7 +98,7 @@
     </div>
 
     <div class="mt-12 block space-y-8 md:hidden">
-        <!-- {#each stats as stat, i}
+        {#each stats as stat, i}
             <div class="h-full overflow-auto pl-6">
                 <div class={classNames('relative')} style:top={`${(4 - i) * 18}%`}>
                     <NumberFlow
@@ -105,7 +109,7 @@
                     <span class="text-body text-secondary block pl-4">{stat.description}</span>
                 </div>
             </div>
-        {/each} -->
+        {/each}
     </div>
 
     <div
