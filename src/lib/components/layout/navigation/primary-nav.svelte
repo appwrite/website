@@ -18,7 +18,7 @@
         { label: 'Products', menu: ProductMenu },
         {
             label: 'Docs',
-            href: '/docs'
+            menu: ProductMenu
         },
         {
             label: 'Pricing',
@@ -58,7 +58,7 @@
     <div class="absolute top-full left-0 flex w-full justify-center perspective-[2000px]">
         <NavigationMenu.Viewport
             class={classNames(
-                'bg-greyscale-850 border-smooth relative w-full origin-[top_center] rounded-b-md border-x border-b opacity-100 shadow-lg backdrop-blur-2xl transition-[width,_height] duration-200 before:rounded-md after:rounded-md',
+                'bg-greyscale-850 border-smooth relative w-full origin-[top_center] overflow-hidden rounded-b-md border-x border-b opacity-100 shadow-lg backdrop-blur-2xl transition-[width,_height] duration-200 before:rounded-md after:rounded-md',
                 'data-[state=open]:animate-scale-in data-[state=closed]:hidden',
                 'h-(--bits-navigation-menu-viewport-height) sm:w-(--bits-navigation-menu-viewport-width)'
             )}
