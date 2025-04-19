@@ -16,6 +16,7 @@
     --color-secondary: var(--color-secondary);
     --color-accent: var(--color-secondary);
     --color-smooth: var(--color-smooth);
+    --color-card: var(--color-card);
 
     /* pink */
     --color-pink-200: hsl(var(--color-pink-hue) 98% 84%);
@@ -325,6 +326,7 @@
     --color-badge-bg: var(--color-badge-bg-light);
     --color-badge-border: var(--color-badge-border-light);
     --color-smooth: hsl(var(--color-greyscale-hue) 6%, 10%, 0.04);
+    --color-card: hsl(var(--color-greyscale-hue) 3%, 14%, 0.9);
 }
 
 .dark {

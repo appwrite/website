@@ -116,11 +116,11 @@ const securityheaders: Handle = async ({ event, resolve }) => {
     return response;
 };
 
-const bannerRewriter: Handle = async ({ event, resolve }) => {
-    const response = await resolve(event, {
-        transformPageChunk: ({ html }) => html.replace('%aw_banner_key%', BANNER_KEY)
-    });
-    return response;
-};
+// const bannerRewriter: Handle = async ({ event, resolve }) => {
+//     const response = await resolve(event, {
+//         transformPageChunk: ({ html }) => html.replace('%aw_banner_key%', BANNER_KEY)
+//     });
+//     return response;
+// };
 
-export const handle = sequence(redirecter, bannerRewriter, securityheaders);
+export const handle = sequence(redirecter, securityheaders);
