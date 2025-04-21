@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { animate, hover, inView } from 'motion';
+    import { animate, hover, inView, motionValue, type AnimationSequence } from 'motion';
 
     import Python from '../../../(assets)/icons/python.svg';
     import Node from '../../../(assets)/icons/node.svg';
@@ -46,156 +46,51 @@
         'CreateInvoice'
     ];
 
-    let shouldAnimate = $state<boolean>(false);
     let container: HTMLElement;
     let commandQueue: HTMLElement;
-    let step: number = $state(0);
-    let activeCommand = $state<null | number>(null);
+    let motionVal = motionValue<number | null>(null);
+    let activeCommand = $state<number | null>(null);
 
-    const FunctionsState = {
-        Stale: 0,
-        Generate: 1,
-        Send: 2,
-        Update: 3,
-        Delete: 4,
-        Create: 5
-    } as const;
+    motionVal.on('change', (value) => {
+        if (value === null) return;
+        activeCommand = value;
+    });
 
     $effect(() => {
+        const delayDuration = 2.5;
+
+        const toSequence: AnimationSequence = [
+            [commandQueue, { y: '-20%' }],
+            [motionVal, 13, { delay: 1.25 }],
+            [commandQueue, { y: '20%' }, { at: delayDuration, type: 'spring', duration: 0.75 }],
+            [
+                commandQueue,
+                { y: '-10%' },
+                { at: delayDuration * 2, type: 'spring', duration: 0.75 }
+            ],
+            [commandQueue, { y: '0%' }, { at: delayDuration * 3, type: 'spring', duration: 0.75 }],
+            [commandQueue, { y: '30%' }, { at: delayDuration * 4, type: 'spring', duration: 0.75 }],
+            [commandQueue, { y: '50%' }, { at: delayDuration * 5, type: 'spring', duration: 0.75 }],
+            [commandQueue, { y: '-10%' }, { at: delayDuration * 6, type: 'spring', duration: 0.75 }]
+        ];
+
         hover(container, () => {
             if (isMobile()) return;
-            shouldAnimate = true;
+            const sequence = animate(toSequence);
 
             return () => {
-                shouldAnimate = false;
+                sequence.pause();
             };
         });
 
         inView(container, () => {
             if (!isMobile()) return;
-            shouldAnimate = true;
+            const sequence = animate(toSequence);
 
             return () => {
-                shouldAnimate = true;
+                sequence.pause();
             };
         });
-
-        if (!shouldAnimate) return;
-
-        let timeout: NodeJS.Timeout;
-        const timeoutDuration = 2500;
-        switch (step) {
-            case FunctionsState.Stale:
-                timeout = setTimeout(() => {
-                    step = FunctionsState.Generate;
-                }, timeoutDuration);
-
-                animate(
-                    commandQueue,
-                    { y: '-20%' },
-                    {
-                        duration: 0.75,
-                        delay: 0.25,
-                        type: 'spring',
-                        onComplete: () => {
-                            activeCommand = 13;
-                        }
-                    }
-                );
-
-                return () => clearTimeout(timeout);
-            case FunctionsState.Generate:
-                timeout = setTimeout(() => {
-                    step = FunctionsState.Send;
-                }, timeoutDuration);
-                animate(
-                    commandQueue,
-                    { y: '20%' },
-                    {
-                        duration: 0.75,
-                        delay: 0.25,
-                        type: 'spring',
-                        onComplete: () => (activeCommand = 5)
-                    }
-                );
-
-                return () => clearTimeout(timeout);
-            case FunctionsState.Send:
-                timeout = setTimeout(() => {
-                    step = FunctionsState.Update;
-                }, timeoutDuration);
-                animate(
-                    commandQueue,
-                    { y: '-10%' },
-                    {
-                        duration: 0.75,
-                        delay: 0.25,
-                        type: 'spring',
-                        onComplete: () => (activeCommand = 11)
-                    }
-                );
-                return () => clearTimeout(timeout);
-            case FunctionsState.Update:
-                timeout = setTimeout(() => {
-                    step = FunctionsState.Delete;
-                }, timeoutDuration);
-                animate(
-                    commandQueue,
-                    { y: '0%' },
-                    {
-                        duration: 0.75,
-                        delay: 0.25,
-                        type: 'spring',
-                        onComplete: () => (activeCommand = 9)
-                    }
-                );
-                return () => clearTimeout(timeout);
-            case FunctionsState.Delete:
-                timeout = setTimeout(() => {
-                    step = FunctionsState.Create;
-                }, timeoutDuration);
-                animate(
-                    commandQueue,
-                    { y: '30%' },
-                    {
-                        duration: 0.75,
-                        delay: 0.25,
-                        type: 'spring',
-                        onComplete: () => (activeCommand = 3)
-                    }
-                );
-                return () => clearTimeout(timeout);
-            case FunctionsState.Create:
-                timeout = setTimeout(() => {
-                    step = FunctionsState.Stale;
-                }, timeoutDuration);
-                animate(
-                    commandQueue,
-                    { y: '50%' },
-                    {
-                        duration: 0.75,
-                        delay: 0.25,
-                        type: 'spring',
-                        onComplete: () => (activeCommand = 0)
-                    }
-                );
-                return () => clearTimeout(timeout);
-            default:
-                timeout = setTimeout(() => {
-                    step = FunctionsState.Generate;
-                }, timeoutDuration);
-                animate(
-                    commandQueue,
-                    { y: '-10%' },
-                    {
-                        duration: 0.75,
-                        delay: 0.25,
-                        type: 'spring',
-                        onComplete: () => (activeCommand = 9)
-                    }
-                );
-                return () => clearTimeout(timeout);
-        }
     });
 </script>
 
@@ -229,13 +124,14 @@
                     <div
                         class="background-gradient text-caption relative w-fit shrink-0 overflow-hidden rounded-2xl border border-transparent font-mono text-sm text-white"
                         style:--spread="{command.length * 2.25}px"
-                        class:active={i === activeCommand && shouldAnimate}
+                        class:active={i === activeCommand}
                         aria-hidden={i !== 0}
                     >
                         <div
                             class="h-full w-full rounded-2xl bg-[#232325]/90 px-3 py-1 text-white/80"
                         >
                             {command}
+                            {i}
                         </div>
                     </div>
                 {/each}
@@ -254,7 +150,7 @@
                                     'background-gradient relative flex size-16 shrink-0 items-center justify-center rounded-xl border border-transparent transition-all duration-1000'
                                 )}
                                 style:--spread="15px"
-                                class:platform={shouldAnimate && i === 2}
+                                class:platform={i === 2}
                             >
                                 <div
                                     class="flex h-full w-full items-center justify-center rounded-xl bg-[#232325] text-white/80"

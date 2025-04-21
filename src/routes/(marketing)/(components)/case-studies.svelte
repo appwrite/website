@@ -52,7 +52,6 @@
     };
 
     $effect(() => {
-        console.log(value);
         animate(
             '.active .word',
             {
