@@ -24,7 +24,7 @@
         "optimize": "node ./scripts/optimize-assets.js",
         "optimize:all": "node ./scripts/optimize-all.js"
     },
-    "packageManager": "pnpm@10.8.1",
+    "packageManager": "pnpm@10.9.0",
     "dependencies": {
         "h3": "^1.14.0",
         "posthog-js": "^1.210.2",
