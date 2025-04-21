@@ -8,6 +8,7 @@
     import Messages from '../../../(assets)/icons/messages.svg';
     import Settings from '../../../(assets)/icons/settings.svg';
     import GridPaper from '../../grid-paper.svelte';
+    import Noise from '$lib/components/fancy/noise.svelte';
 
     let container: HTMLElement;
 
@@ -94,11 +95,11 @@
             </div>
         </div>
         <div
-            class="light mt-20 flex h-full w-[400px] flex-col rounded-t-[58px] border-x border-t border-white/12 bg-white/8 mask-b-from-60% mask-b-to-100% backdrop-blur-2xl"
+            class="light mt-20 flex h-full w-[375px] flex-col rounded-t-[58px] border-x border-t border-white/12 bg-white/8 mask-b-from-60% mask-b-to-100% backdrop-blur-2xl"
             style:transform="translateY(15px)"
             bind:this={device}
         >
-            <div class="m-3 flex-1 rounded-t-[48px] bg-[#19191C]">
+            <div class="m-2 flex-1 rounded-t-[48px] bg-[#19191C]">
                 <div class="flex items-center justify-between px-8 pt-4">
                     <span class="w-10 text-sm font-semibold text-white"
                         >{format(new Date(), 'h:mm')}</span

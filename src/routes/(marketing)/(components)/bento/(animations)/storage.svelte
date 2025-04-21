@@ -1,8 +1,7 @@
 <script lang="ts">
     import { classNames } from '$lib/utils/classnames';
-    import { onMount } from 'svelte';
     import Image from '../../../(assets)/images/storage.webp';
-    import { animate, hover, inView, type AnimationSequence, motionValue, transform } from 'motion';
+    import { animate, hover, type AnimationSequence } from 'motion';
     import { isMobile } from '$lib/utils/is-mobile';
     import { getCodeHtml } from '$lib/utils/code';
     import GridPaper from '../../grid-paper.svelte';
@@ -11,11 +10,16 @@
     let imageComponent: HTMLElement;
     let image: HTMLElement;
 
-    let width = $state(232);
-    let height = $state(158);
-    let borderRadius = $state(4);
+    let w = 232;
+    let width = $state(w);
 
-    const content = `const result = storage.getFilePreview(
+    let h = 158;
+    let height = $state(h);
+
+    let br = 4;
+    let borderRadius = $state(br);
+
+    const content = $derived(`const result = storage.getFilePreview(
 	 'photos',     // bucket ID
 	 'sunset.heic',// file ID
 	 ${width},          // width
@@ -23,90 +27,45 @@
 	 '90',         // slight compression
 	 ${borderRadius},            // border radius
 	 'heic'        // output heic format
-;`;
+;`);
 
-    const snippet = getCodeHtml({
-        content,
-        language: 'javascript',
-        withLineNumbers: true
-    });
+    const snippet = $derived(
+        getCodeHtml({
+            content,
+            language: 'javascript',
+            withLineNumbers: true
+        })
+    );
 
-    onMount(() => {
+    $effect(() => {
         const startingSequence: AnimationSequence = [
             [
-                imageComponent,
-                { scale: 1, width: '232px', height: '158px' },
-                { duration: 0.25, at: 0, type: 'spring' }
+                image,
+                { width: 285 },
+                {
+                    onUpdate: (latest) => {
+                        console.log(latest);
+                        width = +latest.toFixed();
+                    }
+                }
             ],
-            [image, { borderRadius: '4px' }, { duration: 0.25 }]
+            [
+                h,
+                182,
+                {
+                    onUpdate: (latest) => (height = +latest.toFixed())
+                }
+            ]
         ];
 
-        const animationSequence = () => {
-            animate(width, 285, {
-                duration: 0.35,
-                type: 'spring',
-                onUpdate: (latest) => (width = Math.round(latest))
-            });
-
-            animate(height, 182, {
-                duration: 0.35,
-                type: 'spring',
-                onUpdate: (latest) => (height = Math.round(latest))
-            });
-
-            animate(
-                imageComponent,
-                {
-                    width: '285px',
-                    height: '182px'
-                },
-                {
-                    duration: 0.25,
-                    delay: 0.25,
-                    type: 'spring'
-                }
-            );
-
-            animate(borderRadius, 12, {
-                duration: 0.25,
-                ease: 'linear',
-                onUpdate: (latest) => (borderRadius = Math.round(latest))
-            });
-
-            animate(
-                image,
-                {
-                    borderRadius: '12px'
-                },
-                {
-                    duration: 0.25,
-                    ease: 'linear'
-                }
-            );
-        };
-
-        inView(
-            container,
-            () => {
-                if (!isMobile()) return;
-                animationSequence();
-
-                return () => {
-                    animate(startingSequence);
-                };
-            },
-            { amount: 'all' }
-        );
-
         hover(container, () => {
-            if (isMobile()) return;
-
-            animationSequence();
-
-            return () => {
-                animate(startingSequence);
-            };
+            animate(startingSequence);
         });
+
+        //animate(width, 285, { duration: 0.1 });
+        //animate(height, 182);
+
+        // animate(height, 182);
     });
 </script>
 

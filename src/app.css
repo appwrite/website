@@ -87,10 +87,11 @@
     --animate-caret-blink: caret-blink 1s ease-in-out infinite;
     --animate-enter:
         fade-in 0.25s ease-out both, blur 0.25s ease-out both, up 0.25s ease-in-out both;
-    --animate-scroll: scroll 60s linear infinite;
+    --animate-scroll-deprecate: scroll-deprecate 60s linear infinite;
     --animate-fade-in: fade-in 0.5s ease-in-out both;
     --animate-fade-out: fade-out 0.5s ease-in-out both;
-    --animate-marquee: marquee var(--speed, 30s) linear infinite var(--direction, forwards);
+    --animate-scroll-x: scroll-x var(--speed, 30s) linear infinite var(--direction, forwards);
+    --animate-scroll-y: scroll-y 60s linear infinite forwards;
     --animate-lighting: lighting 1.25s ease-out forwards;
     --animate-menu-in: menu-in 0.25s ease-out forwards;
     --animate-menu-out: menu-out 0.25s ease-out forwards;
@@ -166,7 +167,7 @@
         }
     }
 
-    @keyframes scroll {
+    @keyframes scroll-deprecate {
         0% {
             transform: translateX(0);
         }
@@ -175,9 +176,15 @@
         }
     }
 
-    @keyframes marquee {
+    @keyframes scroll-x {
         to {
             transform: translateX(-50%);
+        }
+    }
+
+    @keyframes scroll-y {
+        to {
+            transform: translateY(-50%);
         }
     }
 

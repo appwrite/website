@@ -1,7 +1,7 @@
 <script lang="ts">
     import { classNames } from '$lib/utils/classnames';
     import NumberFlow from '@number-flow/svelte';
-    import { inView } from 'motion';
+    import { inView, animate } from 'motion';
     import { onDestroy } from 'svelte';
 
     const animationDuration = 3;
@@ -35,9 +35,10 @@
 
     const numbers = [12, 1000, 50, 300];
 
-    let animate: boolean = false;
+    let shouldAnimate: boolean = false;
 
     let timeoutIds: Array<NodeJS.Timeout> = [];
+
     const updateNumbers = () => {
         stats.forEach((stat, index) => {
             const timeoutId = setTimeout(
@@ -55,8 +56,14 @@
         inView(
             node,
             () => {
-                animate = true;
-                updateNumbers();
+                stats.forEach((stat, index) => {
+                    animate(0, numbers[index], {
+                        ease: 'circOut',
+                        duration: 0.75,
+
+                        onUpdate: (latest) => (stat.number = +latest.toFixed(1))
+                    });
+                });
             },
             { amount: 0.5 }
         );
@@ -100,11 +107,10 @@
         {#each stats as stat, i}
             <div class="h-full overflow-auto pl-6">
                 <div class={classNames('relative')} style:top={`${(4 - i) * 18}%`}>
-                    <NumberFlow
+                    <span
                         class="text-description text-primary border-accent relative -left-px z-10 border-l pl-4 font-medium"
-                        value={stat.number}
-                        suffix={stat.suffix}
-                    />
+                        >{stat.number}{stat.suffix}</span
+                    >
                     <span class="text-body text-secondary block pl-4">{stat.description}</span>
                 </div>
             </div>
@@ -125,11 +131,10 @@
                         style:--mask-height={`${(4 - i) * 25}%`}
                     >
                         <div class={classNames('relative')} style:top={`${(4 - i) * 18}%`}>
-                            <NumberFlow
+                            <span
                                 class="text-description text-primary border-accent relative -left-px z-10 border-l pl-4 font-medium"
-                                value={stat.number}
-                                suffix={stat.suffix}
-                            />
+                                >{stat.number}{stat.suffix}</span
+                            >
                             <span class="text-body text-secondary block pl-4"
                                 >{stat.description}</span
                             >

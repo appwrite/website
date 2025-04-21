@@ -93,7 +93,7 @@
             )}
         >
             <div
-                class="divide-smooth animate-marquee flex w-max flex-1 grow flex-nowrap divide-dashed [animation-duration:80s] md:w-full md:divide-x md:[animation-play-state:paused]"
+                class="divide-smooth animate-scroll-x flex w-max flex-1 grow flex-nowrap divide-dashed [animation-duration:80s] md:w-full md:divide-x md:[animation-play-state:paused]"
             >
                 <Tooltip.Provider delayDuration={0} disableCloseOnTriggerClick>
                     {#each platforms as platform, i}
