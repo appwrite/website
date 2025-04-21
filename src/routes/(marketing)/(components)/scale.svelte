@@ -6,7 +6,7 @@
 
     const animationDuration = 3;
 
-    let stats = [
+    let stats = $state([
         {
             number: 0,
             suffix: '+',
@@ -31,7 +31,7 @@
             description: 'projects',
             top: 46.75
         }
-    ];
+    ]);
 
     const numbers = [12, 1000, 50, 300];
 
@@ -39,29 +39,18 @@
 
     let timeoutIds: Array<NodeJS.Timeout> = [];
 
-    const updateNumbers = () => {
-        stats.forEach((stat, index) => {
-            const timeoutId = setTimeout(
-                () => {
-                    stats[index] = { ...stat, number: numbers[index] };
-                },
-                ((index * animationDuration) / numbers.length) * 500
-            );
-
-            timeoutIds.push(timeoutId);
-        });
-    };
-
     const useInView = (node: HTMLElement) => {
+        shouldAnimate = true;
         inView(
             node,
             () => {
+                if (!shouldAnimate) return;
                 stats.forEach((stat, index) => {
                     animate(0, numbers[index], {
                         ease: 'circOut',
                         duration: 0.75,
 
-                        onUpdate: (latest) => (stat.number = +latest.toFixed(1))
+                        onUpdate: (latest) => (stat.number = +latest.toFixed())
                     });
                 });
             },
