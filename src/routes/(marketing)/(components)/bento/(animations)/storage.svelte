@@ -1,8 +1,7 @@
 <script lang="ts">
     import { classNames } from '$lib/utils/classnames';
     import Image from '../../../(assets)/images/storage.webp';
-    import { animate, hover, type AnimationSequence } from 'motion';
-    import { isMobile } from '$lib/utils/is-mobile';
+    import { animate, hover, motionValue, type AnimationSequence } from 'motion';
     import { getCodeHtml } from '$lib/utils/code';
     import GridPaper from '../../grid-paper.svelte';
 
@@ -10,11 +9,8 @@
     let imageComponent: HTMLElement;
     let image: HTMLElement;
 
-    let w = 232;
-    let width = $state(w);
-
-    let h = 158;
-    let height = $state(h);
+    let width = $state(232);
+    let height = $state(158);
 
     let br = 4;
     let borderRadius = $state(br);
@@ -38,34 +34,15 @@
     );
 
     $effect(() => {
-        const startingSequence: AnimationSequence = [
-            [
-                image,
-                { width: 285 },
-                {
-                    onUpdate: (latest) => {
-                        console.log(latest);
-                        width = +latest.toFixed();
-                    }
-                }
-            ],
-            [
-                h,
-                182,
-                {
-                    onUpdate: (latest) => (height = +latest.toFixed())
-                }
-            ]
+        const sequence: AnimationSequence = [
+            [imageComponent, { width: [232, 285], height: [158, 210] }, { at: 0 }],
+            [imageComponent, { width: 320, height: 320 }, { at: 1.25 }],
+            [image, { borderRadius: 16 }, { at: 1.5 }]
         ];
 
         hover(container, () => {
-            animate(startingSequence);
+            animate(sequence);
         });
-
-        //animate(width, 285, { duration: 0.1 });
-        //animate(height, 182);
-
-        // animate(height, 182);
     });
 </script>
 
@@ -87,11 +64,11 @@
         class="relative flex h-[26.25rem] justify-between overflow-clip rounded-xl bg-black/24 p-8"
     >
         <div
-            class="web-code-snippet absolute -right-4 bottom-8 z-10 overflow-hidden rounded-l-xl bg-[#232325] p-1"
+            class="web-code-snippet text-micro absolute -right-4 bottom-8 z-10 max-h-[244px] max-w-[340px] overflow-hidden rounded-l-xl bg-[#232325] p-1 leading-2"
         >
             <div class="px-4 py-3">Node.js</div>
             <div
-                class="web-code-snippet-content z-10 rounded-l-[10px] bg-gradient-to-br from-black/48 to-transparent p-3"
+                class="web-code-snippet-content *:text-micro! z-10 overflow-hidden rounded-l-[10px] bg-gradient-to-br from-black/48 to-transparent p-3"
             >
                 {@html snippet}
             </div>
@@ -120,7 +97,7 @@
                 src={Image}
                 alt="Storage"
                 class="h-full w-full object-cover"
-                style:border-radius="4px"
+                style:border-radius="{br}px"
                 bind:this={image}
             />
             <div
