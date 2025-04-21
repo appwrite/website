@@ -117,9 +117,9 @@
     <div
         class="relative flex h-[26.25rem] items-center justify-between overflow-clip rounded-xl bg-black/24 px-8"
     >
-        <div class="grid h-full w-full grid-cols-2 place-items-center">
+        <div class="grid h-full w-full grid-cols-1 place-items-center md:grid-cols-2">
             <div
-                class="divide-smooth border-smooth flex aspect-square w-[200px] flex-col justify-center divide-y rounded-2xl border bg-[#232325]/90 p-2"
+                class="divide-smooth border-smooth absolute top-6 right-2 z-10 flex aspect-square w-[200px] flex-col justify-center divide-y rounded-2xl border bg-[#232325]/90 p-2 md:relative"
             >
                 {#each platforms as platform}
                     <div class="flex items-center justify-between p-2">
