@@ -5,13 +5,13 @@
     import Google from '../../../(assets)/logos/google.svg';
     import Apple from '../../../(assets)/logos/apple.svg';
     import Microsoft from '../../../(assets)/logos/microsoft.svg';
-    import Switch from '$lib/components/Switch.svelte';
-    import { onMount } from 'svelte';
+    import Switch from '$lib/components/ui/switch.svelte';
+
     import { isMobile } from '$lib/utils/is-mobile';
     import { classNames } from '$lib/utils/classnames';
     import GridPaper from '../../grid-paper.svelte';
 
-    $: platforms = [
+    let platforms = $state([
         {
             label: 'GitHub',
             icon: Github,
@@ -32,16 +32,13 @@
             icon: Microsoft,
             enabled: false
         }
-    ];
-
-    let enabled = motionValue(0);
-    let name = "Walter O'Brian";
+    ]);
 
     const inputs = [
         {
             label: 'Your name',
             name: 'name',
-            value: name
+            value: "Walter O'Brian"
         },
         {
             label: 'Email',
@@ -57,26 +54,35 @@
 
     let container: HTMLElement;
 
-    onMount(() => {
-        const from: AnimationSequence = [[enabled, 0, {}]];
+    $effect(() => {
+        const from = () => {
+            platforms = platforms.map((platform) => {
+                return {
+                    ...platform,
+                    enabled: false
+                };
+            });
+        };
 
-        const to: AnimationSequence = [
-            [name, 'Actually Walter', { duration: 0.2 }],
-            [enabled, 1, { duration: 0.25 }]
-        ];
+        const to = () => {
+            const randomIndex = Math.floor(Math.random() * platforms.length);
 
-        enabled.on('change', () => {
-            platforms[1].enabled = !!enabled.get();
-        });
+            platforms = platforms.map((platform, index) => {
+                return {
+                    ...platform,
+                    enabled: index === randomIndex
+                };
+            });
+        };
 
         inView(
             container,
             () => {
                 if (!isMobile()) return;
-                animate(to);
+                to();
 
                 return () => {
-                    animate(from);
+                    from();
                 };
             },
             { amount: 'all' }
@@ -84,10 +90,10 @@
 
         hover(container, () => {
             if (isMobile()) return;
-            animate(to);
+            to();
 
             return () => {
-                animate(from);
+                from();
             };
         });
     });
@@ -122,13 +128,22 @@
                             <span class="text-micro">{platform.label}</span>
                         </button>
 
-                        <Switch checked={platform.enabled} />
+                        <Switch
+                            checked={platform.enabled}
+                            onCheckedChange={(v) => {
+                                platforms = platforms.map((p) => {
+                                    if (p.label === platform.label) {
+                                        return { ...p, enabled: v };
+                                    }
+                                    return p;
+                                });
+                            }}
+                        />
                     </div>
                 {/each}
             </div>
             <div
-                class="mask border-smooth mt-20 flex h-full w-full flex-col rounded-t-[40px] border-x border-t bg-[#232325]/90"
-                style:--mask-height="350px"
+                class="border-smooth mt-20 flex h-full w-full flex-col rounded-t-[40px] border-x border-t bg-[#232325]/90 mask-b-from-60%"
             >
                 <div class="relative mx-2 mt-2 flex-1 rounded-t-4xl bg-[#19191C] px-3 pt-4">
                     <form class="mt-8 flex flex-col gap-3">
@@ -140,7 +155,7 @@
                                 <input
                                     type="text"
                                     name={input.name}
-                                    class="border-smooth text-micro w-full rounded-lg bg-[#19191C] px-3 py-2 text-white"
+                                    class="border-smooth text-micro w-full rounded-lg border bg-[#19191C] px-3 py-2 text-white"
                                     placeholder={input.placeholder}
                                     value={input.value ?? null}
                                 />
@@ -152,29 +167,34 @@
                         >
                     </form>
 
-                    {#each platforms as platform}
-                        <div class="absolute inset-x-3">
-                            <span class="text-x-micro text-secondary my-3 block text-center"
-                                >or sign up with</span
-                            >
-                            <button
-                                class={classNames(
-                                    'text-micro border-smooth flex w-full items-center justify-center gap-3 rounded-lg border py-2 font-medium text-white transition',
-                                    platform.enabled
-                                        ? 'translate-none opacity-100'
-                                        : 'translate-y-2 opacity-0'
-                                )}
-                            >
-                                <img
-                                    src={platform.icon}
-                                    alt="{platform.label} Icon"
-                                    class="size-4"
-                                />
+                    <span
+                        class={classNames('text-x-micro text-secondary my-3 block text-center', {
+                            'opacity-0': platforms.every((platform) => !platform.enabled)
+                        })}>or sign up with</span
+                    >
 
-                                {platform.label}</button
-                            >
-                        </div>
-                    {/each}
+                    <div class="absolute inset-x-3 flex flex-col gap-3">
+                        {#each platforms as platform}
+                            {#if platform.enabled}
+                                <button
+                                    class={classNames(
+                                        'animate-fade-in text-micro border-smooth flex w-full items-center justify-center gap-3 rounded-lg border py-2 font-medium text-white transition',
+                                        platform.enabled
+                                            ? 'translate-none opacity-100'
+                                            : 'translate-y-2 opacity-0'
+                                    )}
+                                >
+                                    <img
+                                        src={platform.icon}
+                                        alt="{platform.label} Icon"
+                                        class="size-4"
+                                    />
+
+                                    {platform.label}</button
+                                >
+                            {/if}
+                        {/each}
+                    </div>
                 </div>
             </div>
         </div>
