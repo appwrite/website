@@ -109,6 +109,7 @@
             "@parcel/watcher",
             "core-js",
             "esbuild",
+            "rolldown",
             "sharp",
             "svelte-preprocess",
             "ttf2woff2"
