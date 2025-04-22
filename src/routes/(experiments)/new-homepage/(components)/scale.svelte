@@ -15,25 +15,25 @@
         },
         {
             number: 0,
-            suffix: 'TB',
+            suffix: '+ TB',
             description: 'of data served',
             top: 78.25
         },
         {
             number: 0,
-            suffix: 'M',
-            description: 'end users',
+            suffix: 'B',
+            description: 'requests',
             top: 62.5
         },
         {
             number: 0,
-            suffix: '+',
-            description: 'total compute time',
+            suffix: 'K',
+            description: 'projects',
             top: 46.75
         }
     ];
 
-    const numbers = [12, 900, 1, 999];
+    const numbers = [12, 1000, 50, 300];
 
     let animate: boolean = false;
 

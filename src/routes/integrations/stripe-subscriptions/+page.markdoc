@@ -5,7 +5,7 @@ description: Integrate Stripe subscriptions with Appwrite to accept and manage r
 date: 2024-07-30
 featured: true
 isPartner: true
-isNew: true
+isNew: false
 cover: /images/integrations/stripe-subscriptions/cover.png
 category: payments
 product: 

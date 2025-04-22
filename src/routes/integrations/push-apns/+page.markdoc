@@ -5,7 +5,7 @@ description: Integrate Apple Push Notification Service (APNs) with Appwrite Mess
 date: 2024-07-30
 featured: false
 isPartner: true
-isNew: true
+isNew: false
 cover: /images/integrations/push-apns/cover.png
 category: messaging
 product: 
