@@ -37,6 +37,8 @@ jobs:
               run: pnpm format:check
     tests:
         runs-on: ubuntu-latest
+        env:
+            ROLLDOWN_OPTIONS_VALIDATION: loose
         steps:
             - uses: actions/checkout@v4
               with:
