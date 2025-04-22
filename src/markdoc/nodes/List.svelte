@@ -30,20 +30,11 @@
             gap: 0.25rem;
         }
 
-        :global(li:before:not(ol ul li)) {
-            content: counter(numeric-list) '.  ';
-            padding-inline-end: 0;
-        }
-
         :global(.in-policy) {
             padding-inline-start: 1.5rem;
             margin-block-end: 0;
         }
 
-        :global(.in-policy li:before:not(ol ul li)) {
-            content: counter(numeric-list-level-2, lower-latin) '.  ';
-            padding-inline-end: 0;
-        }
     }
 
     .in-changelog {

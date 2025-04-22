@@ -102,10 +102,14 @@
         "vitest": "^3.1.1"
     },
     "pnpm": {
+        "overrides": {
+            "vite": "npm:rolldown-vite@latest"
+        },
         "onlyBuiltDependencies": [
             "@parcel/watcher",
             "core-js",
             "esbuild",
+            "rolldown",
             "sharp",
             "svelte-preprocess",
             "ttf2woff2"
