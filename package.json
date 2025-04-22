@@ -70,7 +70,7 @@
         "fuse.js": "^7.0.0",
         "globals": "^15.14.0",
         "highlight.js": "^11.11.1",
-        "jsdom": "^26.0.0",
+        "linkedom": "^0.18.9",
         "markdown-it": "^14.1.0",
         "meilisearch": "^0.37.0",
         "melt": "^0.29.2",

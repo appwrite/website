@@ -30,7 +30,7 @@ export const load = async () => {
 
 const updateSchema = zfd.formData({
     name: zfd.text(),
-    title: zfd.text(),
+    title: zfd.text().nullish(),
     sticker: zfd.text().nullish()
 });
 

@@ -1,5 +1,5 @@
 import { APPWRITE_DB_INIT_ID, APPWRITE_COL_INIT_ID } from '$env/static/private';
-import { JSDOM } from 'jsdom';
+import { DOMParser, parseHTML } from 'linkedom';
 
 import { appwriteInitServer } from './appwrite.server';
 import type { TicketData } from './tickets';
@@ -63,8 +63,8 @@ export const getTicketContributions = async (id: string) => {
 
         const res = await fetch(`https://github.com/users/${gh_user}/contributions`);
         const html = await res.text();
-        const root = new JSDOM(html);
-        const table = root.window.document.querySelector('table.ContributionCalendar-grid');
+        const root = parseHTML(html, 'text/html');
+        const table = root.document.querySelector('table.ContributionCalendar-grid');
 
         if (!table) return null;
 

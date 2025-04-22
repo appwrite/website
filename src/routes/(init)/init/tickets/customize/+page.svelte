@@ -108,6 +108,7 @@
                         type="text"
                         name="name"
                         class="bg-smooth border-offset w-full appearance-none rounded-lg border p-2"
+                        required
                     />
                 </div>
                 <div class="flex flex-col gap-2">
@@ -121,6 +122,7 @@
                         type="text"
                         name="title"
                         class="bg-smooth border-offset w-full appearance-none rounded-lg border p-2"
+                        required
                     />
                 </div>
 

@@ -10,7 +10,7 @@ type SendToUserListArgs = {
 };
 
 const sendToUserList = async ({ name, email, userId }: SendToUserListArgs) => {
-    await fetch('https://growth.appwrite.io/v1/mailinglists/init-2.0', {
+    await fetch('https://growth.appwrite.io/v1/mailinglists/init-3.0', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
