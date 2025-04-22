@@ -34,14 +34,22 @@
     );
 
     $effect(() => {
-        const sequence: AnimationSequence = [
+        const from: AnimationSequence = [
+            [imageComponent, { width: [285, 232], height: [210, 158] }, { at: 0 }],
+            [image, { borderRadius: 4 }, { at: 1.5 }]
+        ];
+
+        const to: AnimationSequence = [
             [imageComponent, { width: [232, 285], height: [158, 210] }, { at: 0 }],
-            [imageComponent, { width: 320, height: 320 }, { at: 1.25 }],
             [image, { borderRadius: 16 }, { at: 1.5 }]
         ];
 
         hover(container, () => {
-            animate(sequence);
+            animate(to);
+
+            return () => {
+                animate(from);
+            };
         });
     });
 </script>
@@ -64,7 +72,7 @@
         class="relative flex h-[26.25rem] justify-between overflow-clip rounded-xl bg-black/24 p-8"
     >
         <div
-            class="web-code-snippet text-micro absolute -right-4 bottom-8 z-10 max-h-[244px] max-w-[340px] overflow-hidden rounded-l-xl bg-[#232325] p-1 leading-2"
+            class="web-code-snippet text-micro absolute -right-10 bottom-8 z-10 max-w-[340px] overflow-hidden rounded-l-xl bg-[#232325] p-1 leading-2"
         >
             <div class="px-4 py-3">Node.js</div>
             <div

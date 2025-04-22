@@ -128,17 +128,7 @@
                             <span class="text-micro">{platform.label}</span>
                         </button>
 
-                        <Switch
-                            checked={platform.enabled}
-                            onCheckedChange={(v) => {
-                                platforms = platforms.map((p) => {
-                                    if (p.label === platform.label) {
-                                        return { ...p, enabled: v };
-                                    }
-                                    return p;
-                                });
-                            }}
-                        />
+                        <Switch checked={platform.enabled} value={platform.label} />
                     </div>
                 {/each}
             </div>
