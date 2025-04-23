@@ -1,18 +1,18 @@
 ---
 layout: article
-title: Site hosting
-description: Explore how hosting works on Appwrite Sites.
+title: Rendering
+description: Explore how sites are rendered on Appwrite Sites.
 ---
 
 There are two rendering methods you can use to host your web app on Appwrite Sites.
 
 {% cards %}
 
-{% cards_item href="/docs/products/sites/site-hosting/static" title="Static" %}
+{% cards_item href="/docs/products/sites/rendering/static" title="Static" %}
 Host a static site or SPA
 {% /cards_item %}
 
-{% cards_item href="/docs/products/sites/site-hosting/ssr" title="Server Side Rendering" %}
+{% cards_item href="/docs/products/sites/rendering/ssr" title="Server Side Rendering" %}
 Host an SSR web app
 {% /cards_item %}
 

@@ -25,8 +25,8 @@
             label: 'Concepts',
             items: [
                 {
-                    label: 'Site hosting',
-                    href: '/docs/products/sites/site-hosting'
+                    label: 'Rendering',
+                    href: '/docs/products/sites/rendering'
                 },
                 {
                     label: 'Deployments',
