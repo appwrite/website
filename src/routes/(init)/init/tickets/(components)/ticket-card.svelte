@@ -148,7 +148,7 @@
                         />
                         <div class="flex flex-col gap-1">
                             <h3
-                                class="text-primary font-aeonik-pro line-clamp-2 text-[2rem] leading-8"
+                                class="text-primary font-aeonik-pro line-clamp-1 text-[1.75rem] leading-8 overflow-ellipsis"
                             >
                                 {name}<span
                                     class={classNames('text-accent', {
