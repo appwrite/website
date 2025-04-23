@@ -146,9 +146,9 @@
                             alt="{firstName}'s Avatar"
                             class="size-16 rounded outline-2 outline-offset-1 outline-[var(--color-offset)] outline-dashed"
                         />
-                        <div class="flex flex-col gap-1">
+                        <div class="flex flex-col flex-wrap gap-1">
                             <h3
-                                class="text-primary font-aeonik-pro line-clamp-1 text-[1.75rem] leading-8 overflow-ellipsis"
+                                class="text-primary font-aeonik-pro max-w-[10ch] overflow-hidden pb-1 text-[2rem] leading-8 overflow-ellipsis whitespace-nowrap"
                             >
                                 {name}<span
                                     class={classNames('text-accent', {

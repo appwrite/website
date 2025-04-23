@@ -84,14 +84,13 @@
                 class="mt-4 flex flex-1 flex-col gap-4"
                 use:enhance={async () => {
                     formState.saving = true;
-
                     return async ({ result, update }) => {
                         if (result.type === 'success') {
                             originalTicketData = updatedTicketData;
                             formState.saved = true;
                             formState.saving = false;
                         }
-                        update({ reset: false });
+                        // update({ reset: false });
                     };
                 }}
             >
