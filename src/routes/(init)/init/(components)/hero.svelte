@@ -53,7 +53,7 @@
                     >
                 {/if}
                 <Button
-                    href="https://producthunt.com"
+                    href="https://www.producthunt.com/products/appwrite"
                     variant="secondary"
                     target="_blank"
                     rel="noopener"
