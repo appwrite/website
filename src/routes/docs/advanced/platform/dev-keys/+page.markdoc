@@ -7,7 +7,7 @@ description: Test your applications in your development environment with Appwrit
 Dev keys are secrets used by Appwrite [Server SDKs](/docs/sdks#server) to prove their identity. Unlike API keys, they are meant to be used specifically in development environments, where they hold several developer experience-related benefits:
 
 - Appwrite rate limits are bypassed
-- Configurable expiration date (1 day, 7 days, 30 days)
+- Configurable expiration date with 1 day, 7 days, 30 day options as well as manual date selection
 - All services are permitted by default (no manual selection of scopes)
 
 {% info title="Important note" %}
