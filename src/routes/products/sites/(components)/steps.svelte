@@ -10,7 +10,7 @@
     let indicator: HTMLElement;
 
     $effect(() => {
-        scroll(animate(indicator, { scaleY: [0, 1] }), {
+        scroll((progress, info) => console.log(info), {
             target: indicator,
             offset: ['start 160px', 'end end']
         });
