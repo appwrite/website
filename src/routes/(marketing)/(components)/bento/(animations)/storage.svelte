@@ -1,19 +1,18 @@
 <script lang="ts">
     import { classNames } from '$lib/utils/classnames';
     import Image from '../../../(assets)/images/storage.webp';
-    import { animate, hover, motionValue, type AnimationSequence } from 'motion';
+    import { animate, hover, inView, motionValue, type AnimationSequence } from 'motion';
     import { getCodeHtml } from '$lib/utils/code';
     import GridPaper from '../../grid-paper.svelte';
+    import { isMobile } from '$lib/utils/is-mobile';
 
     let container: HTMLElement;
     let imageComponent: HTMLElement;
     let image: HTMLElement;
 
-    let width = $state(232);
-    let height = $state(158);
-
-    let br = 4;
-    let borderRadius = $state(br);
+    let width = $state('232');
+    let height = $state('158');
+    let borderRadius = $state('4');
 
     const content = $derived(`const result = storage.getFilePreview(
 	 'photos',     // bucket ID
@@ -35,20 +34,74 @@
 
     $effect(() => {
         const from: AnimationSequence = [
-            [imageComponent, { width: [285, 232], height: [210, 158] }, { at: 0 }],
-            [image, { borderRadius: 4 }, { at: 1.5 }]
+            [imageComponent, { width: [285, 232], height: [210, 158] }],
+            [image, { borderRadius: [8, 4] }]
         ];
 
         const to: AnimationSequence = [
-            [imageComponent, { width: [232, 285], height: [158, 210] }, { at: 0 }],
-            [image, { borderRadius: 16 }, { at: 1.5 }]
+            [imageComponent, { width: [232, 285], height: [158, 210] }],
+            [image, { borderRadius: [4, 8] }]
         ];
 
-        hover(container, () => {
+        const toSequence = () => {
+            animate(232, 285, {
+                onUpdate: (latest) => {
+                    width = latest.toFixed();
+                }
+            });
+            animate(158, 210, {
+                onUpdate: (latest) => {
+                    height = latest.toFixed();
+                }
+            });
+            animate(4, 8, {
+                onUpdate: (latest) => {
+                    borderRadius = latest.toFixed();
+                }
+            });
             animate(to);
+        };
+
+        const fromSequence = () => {
+            animate(285, 232, {
+                onUpdate: (latest) => {
+                    width = latest.toFixed();
+                }
+            });
+            animate(210, 158, {
+                onUpdate: (latest) => {
+                    height = latest.toFixed();
+                }
+            });
+            animate(8, 4, {
+                onUpdate: (latest) => {
+                    borderRadius = latest.toFixed();
+                }
+            });
+            animate(from);
+        };
+
+        inView(
+            container,
+            () => {
+                if (!isMobile()) return;
+                toSequence();
+
+                return () => {
+                    fromSequence();
+                };
+            },
+            {
+                amount: 'all'
+            }
+        );
+
+        hover(container, () => {
+            if (isMobile()) return;
+            toSequence();
 
             return () => {
-                animate(from);
+                fromSequence();
             };
         });
     });
@@ -105,7 +158,7 @@
                 src={Image}
                 alt="Storage"
                 class="h-full w-full object-cover"
-                style:border-radius="{br}px"
+                style:border-radius="4px"
                 bind:this={image}
             />
             <div

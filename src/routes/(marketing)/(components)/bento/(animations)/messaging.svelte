@@ -74,7 +74,7 @@
         class="relative flex h-[26.25rem] items-center justify-center overflow-clip rounded-xl bg-black/24 px-8"
     >
         <div
-            class="light absolute top-14 z-10 flex h-[90px] w-[466px] items-center justify-between gap-3 rounded-[28px] bg-white/80 px-3 py-2 shadow-[-8px_4px_32px_rgba(0,0,0,0.24)] backdrop-blur-xl"
+            class="light absolute top-14 z-10 flex h-[90px] w-[466px] scale-75 items-center justify-between gap-3 rounded-[28px] bg-white/80 px-3 py-2 shadow-[-8px_4px_32px_rgba(0,0,0,0.24)] backdrop-blur-xl md:scale-100"
             style="transform: translateY(-15px); opacity: 0; filter: blur(4px);"
             bind:this={notification}
         >
@@ -111,7 +111,7 @@
                     class="text-micro grid flex-1 grid-cols-4 grid-rows-24 place-items-center gap-6 px-9 pt-16"
                 >
                     <div
-                        class="relative flex size-[62px] shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-white/10 to-white/3 shadow-sm shadow-black/5"
+                        class="relative flex size-[55px] shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-white/10 to-white/3 shadow-sm shadow-black/5 md:size-[62px]"
                     >
                         <div
                             class="bg-accent text-micro absolute -top-1 -right-1 flex size-4 items-center justify-center rounded-full"
@@ -122,7 +122,7 @@
                     </div>
                     {#each [Messages, Settings, Calendar] as icon}
                         <div
-                            class="flex size-[62px] shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-white/10 to-white/3 shadow-sm shadow-black/5"
+                            class="flex size-[55px] shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-white/10 to-white/3 shadow-sm shadow-black/5 md:size-[62px]"
                         >
                             <img src={icon} alt="" class="size-9" />
                         </div>
@@ -130,7 +130,7 @@
 
                     {#each Array.from({ length: 12 }) as _, index}
                         <div
-                            class="size-[62px] shrink-0 rounded-2xl bg-gradient-to-br from-white/10 to-white/3 shadow-sm shadow-black/5"
+                            class="size-[55px] shrink-0 rounded-2xl bg-gradient-to-br from-white/10 to-white/3 shadow-sm shadow-black/5 md:size-[62px]"
                         ></div>
                     {/each}
                 </div>

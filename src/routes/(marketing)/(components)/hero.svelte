@@ -4,7 +4,9 @@
     import Dashboard from './dashboard.svelte';
 </script>
 
-<div class="relative flex min-h-[80vh] flex-col items-center md:flex-row">
+<div
+    class="relative flex min-h-[80vh] max-w-screen flex-col items-center overflow-hidden md:flex-row"
+>
     <div
         class={classNames(
             'animate-lighting absolute top-0 left-0 -z-10 h-screen w-[200vw] -translate-x-[25%] translate-y-8 rotate-25 overflow-hidden blur-3xl md:w-full',

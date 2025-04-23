@@ -47,25 +47,32 @@
     ];
 
     let container: HTMLElement;
-    let shouldAnimate = $state<boolean>(false);
-    let activeCommand = $state<number | null>(null);
+    let commandQueue: HTMLElement;
+    let activeCommand = $state<number | null>(0);
+
+    let yValue = $derived(commands.length * (activeCommand ?? 0) + 12);
 
     $effect(() => {
         hover(container, () => {
+            activeCommand = Math.floor(Math.random() * commands.length * 4);
             if (isMobile()) return;
 
-            shouldAnimate = true;
+            animate(commandQueue, { y: yValue }, { duration: 0.25 });
+
             return () => {
-                shouldAnimate = false;
+                activeCommand = null;
+                animate(commandQueue, { y: 0 }, { duration: 0.25 });
             };
         });
 
         inView(container, () => {
             if (!isMobile()) return;
+            activeCommand = Math.floor(Math.random() * commands.length * 4);
 
-            shouldAnimate = true;
+            animate(commandQueue, { y: yValue }, { duration: 0.5 });
+
             return () => {
-                shouldAnimate = false;
+                animate(commandQueue, { y: 0 }, { duration: 0.5 });
             };
         });
     });
@@ -96,8 +103,8 @@
         <div
             class="flex flex-1 flex-col items-center gap-3 overflow-clip mask-linear-[to_top,_transparent_0%,_white_50%,_transparent_100%] mask-alpha text-center"
         >
-            <div class="flex h-max flex-col items-center gap-3 pt-3">
-                {#each Array.from({ length: 4 }) as _}
+            <div class="flex h-max flex-col items-center gap-3 pt-3" bind:this={commandQueue}>
+                {#each Array.from({ length: 4 }) as _, index}
                     {#each commands as command, i}
                         <div
                             class="text-caption relative w-fit shrink-0 overflow-hidden rounded-2xl border border-transparent font-mono text-sm text-white"
@@ -116,12 +123,7 @@
             class="relative flex h-full gap-4 overflow-clip mask-linear-[to_top,_transparent_0%,_white_50%,_transparent_100%] mask-alpha"
         >
             {#each Array.from({ length: 3 }) as _, i}
-                <div
-                    class={classNames('flex h-max flex-col gap-3 pt-3 [animation-duration:60s]', {
-                        'animate-scroll-y': shouldAnimate,
-                        '[animation-direction:reverse]': i === 1
-                    })}
-                >
+                <div class={classNames('flex h-max flex-col gap-3 pt-3')}>
                     {#each Array.from({ length: 4 }) as _}
                         {#each platforms as platform, i}
                             <div
