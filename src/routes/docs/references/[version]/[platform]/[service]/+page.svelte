@@ -44,20 +44,6 @@
         for (const key in n) {
             if (n[key].visible) {
                 selected = key;
-                setTimeout(() => {
-                    if (selectedMenuItem) {
-                        selectedMenuItem.scrollIntoView({ behavior: 'smooth', block: 'center' });
-
-                        const menuContainer = selectedMenuItem.closest(
-                            '.web-references-menu-content'
-                        );
-                        if (menuContainer) {
-                            const offset = 100; // offset to position the item higher in the viewport
-                            menuContainer.scrollTop = menuContainer.scrollTop - offset;
-                        }
-                    }
-                }, 0);
-                break;
             }
         }
     });
