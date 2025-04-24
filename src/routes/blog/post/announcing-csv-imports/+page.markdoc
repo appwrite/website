@@ -15,9 +15,9 @@ We're introducing a new way to populate your Appwrite databases: **document impo
 
 Built on top of Appwrite's migration APIs, this feature makes it easy to bring in large datasets, seed collections, or migrate structured data using only a CSV file.
 
-Useful for migrating user data from external systems, importing inventory records, seeding test environments, or onboarding structured content such as FAQs.
+The CSV document import is useful for migrating user data from external systems, importing inventory records, seeding test environments, or onboarding structured content such as FAQs.
 
-## How it works
+# How it works
 
 To get started, create a collection and define its attributes in the Appwrite Console. Your CSV file should follow a standard format:
 
@@ -40,12 +40,10 @@ The import system performs per-row validation and runs as a background task, all
 
 ## Automate with API and SDKs
 
-You can also trigger imports programmatically using the Appwrite API or SDKs. This is useful for scripted workflows, automated CI/CD pipelines, or admin dashboards.
+You can also trigger imports using the Appwrite API or SDKs. This is useful for scripted workflows, automated CI/CD pipelines, or admin dashboards.
 
 All you need is a CSV file in your project's storage and the target collection ID. The rest is handled by Appwrite's import system.
 
----
-&nbsp;
 
 ## Availability and resources
 
