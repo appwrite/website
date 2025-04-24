@@ -1,6 +1,6 @@
+import { error } from '@sveltejs/kit';
 import { OpenAPIV3 } from 'openapi-types';
 import { Platform, type ServiceValue } from './references';
-import { error } from '@sveltejs/kit';
 
 export type SDKMethod = {
     'rate-limit': number;
@@ -10,6 +10,7 @@ export type SDKMethod = {
     title: string;
     description: string;
     demo: string;
+    group?: string;
     parameters: Array<{
         name: string;
         description: string;
@@ -34,6 +35,7 @@ type SDKMethodModel = {
 type AppwriteOperationObject = OpenAPIV3.OperationObject & {
     'x-appwrite': {
         method: string;
+        group?: string;
         weight: number;
         cookies: boolean;
         type: string;
@@ -336,7 +338,8 @@ export async function getService(
 
         data.methods.push({
             id: operation['x-appwrite'].method,
-            demo: demo ?? '',
+            group: operation['x-appwrite'].group,
+            demo: typeof demo === 'string' ? demo : '',
             title: operation.summary ?? '',
             description: operation.description ?? '',
             parameters: parameters ?? [],
@@ -348,6 +351,17 @@ export async function getService(
             'rate-key': operation['x-appwrite']['rate-key']
         });
     }
+
+    // Sort methods by weight from x-appwrite metadata
+    data.methods.sort((a, b) => {
+        const aPath = api.paths[a.url] as OpenAPIV3.PathItemObject;
+        const bPath = api.paths[b.url] as OpenAPIV3.PathItemObject;
+        const aMethod = a.method.toLowerCase() as Lowercase<OpenAPIV3.HttpMethods>;
+        const bMethod = b.method.toLowerCase() as Lowercase<OpenAPIV3.HttpMethods>;
+        const aWeight = (aPath?.[aMethod] as AppwriteOperationObject)?.['x-appwrite']?.weight ?? 0;
+        const bWeight = (bPath?.[bMethod] as AppwriteOperationObject)?.['x-appwrite']?.weight ?? 0;
+        return aWeight - bWeight;
+    });
 
     return data;
 }

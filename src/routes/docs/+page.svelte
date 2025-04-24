@@ -1,6 +1,7 @@
 <script lang="ts">
     import { Carousel } from '$lib/components';
     import Technologies from '$lib/components/Technologies.svelte';
+    import { Button } from '$lib/components/ui';
     import Docs from '$lib/layouts/Docs.svelte';
     import { DEFAULT_HOST } from '$lib/utils/metadata';
     import { TITLE_SUFFIX } from '$routes/titles';
@@ -96,9 +97,9 @@
                 quick start guide.
             </p>
             <Technologies />
-            <a href="/docs/sdks" class="web-button is-secondary" style:align-self="start">
+            <Button href="/docs/sdks" class="self-start" variant="secondary">
                 <span class="text-sub-body font-medium">Explore all technologies</span>
-            </a>
+            </Button>
             <div class="web-is-not-mobile spline-wrapper absolute">
                 <img
                     class="web-u-only-dark"
@@ -268,6 +269,28 @@
                             />
                             <h4 class="text-sub-body text-primary mt-2 font-medium">Realtime</h4>
                             <p class="text-sub-body mt-1">Respond to server events in realtime.</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/docs/products/network" class="web-card is-normal">
+                            <img
+                                src="/images/icons/illustrated/dark/network.png"
+                                alt=""
+                                class="web-u-only-dark"
+                                width="40"
+                                height="40"
+                            />
+                            <img
+                                src="/images/icons/illustrated/light/network.png"
+                                alt=""
+                                class="web-u-only-light"
+                                width="40"
+                                height="40"
+                            />
+                            <h4 class="text-sub-body text-primary mt-2 font-medium">Network</h4>
+                            <p class="text-sub-body mt-1">
+                                Global infrastructure for serverless compute.
+                            </p>
                         </a>
                     </li>
                 </ul>

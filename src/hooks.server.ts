@@ -1,16 +1,8 @@
-import * as Sentry from '@sentry/sveltekit';
 import type { Handle } from '@sveltejs/kit';
 import redirects from './redirects.json';
 import { sequence } from '@sveltejs/kit/hooks';
-import { BANNER_KEY, SENTRY_DSN } from '$lib/constants';
+import { BANNER_KEY } from '$lib/constants';
 import { dev } from '$app/environment';
-
-Sentry.init({
-    enabled: !dev,
-    dsn: SENTRY_DSN,
-    tracesSampleRate: 1,
-    allowUrls: [/appwrite\.io/]
-});
 
 const redirectMap = new Map(redirects.map(({ link, redirect }) => [link, redirect]));
 
@@ -131,5 +123,4 @@ const bannerRewriter: Handle = async ({ event, resolve }) => {
     return response;
 };
 
-export const handle = sequence(Sentry.sentryHandle(), redirecter, bannerRewriter, securityheaders);
-export const handleError = Sentry.handleErrorWithSentry();
+export const handle = sequence(redirecter, bannerRewriter, securityheaders);

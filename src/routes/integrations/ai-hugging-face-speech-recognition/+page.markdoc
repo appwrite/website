@@ -5,7 +5,7 @@ description: Process speech audio into text
 date: 2024-07-30
 featured: false
 isPartner: true
-isNew: true
+isNew: false
 cover: /images/integrations/ai-hugging-face-speech-recognition/cover.png
 category: ai
 product: 

@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { page } from '$app/stores';
+    import { page } from '$app/state';
     import { Article, FooterNav, MainFooter } from '$lib/components';
     import { Main } from '$lib/layouts';
     import { DEFAULT_HOST } from '$lib/utils/metadata';
@@ -10,7 +10,7 @@
     export let name: string;
     export let description: string;
 
-    const pageSlug = $page.url.pathname.substring($page.url.pathname.lastIndexOf('/') + 1);
+    const pageSlug = page.url.pathname.substring(page.url.pathname.lastIndexOf('/') + 1);
     const authors = getContext<AuthorData[]>('authors');
     const postsList = getContext<PostsData[]>('posts');
     const posts = postsList.filter((post) => post.category.includes(pageSlug));

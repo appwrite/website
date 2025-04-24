@@ -1,15 +1,16 @@
 <script lang="ts">
-    import { page } from '$app/stores';
+    import { page } from '$app/state';
     import { FooterNav, MainFooter } from '$lib/components';
     import { Main } from '$lib/layouts';
     import { onMount } from 'svelte';
     import { PUBLIC_GROWTH_ENDPOINT } from '$env/static/public';
+    import { Button } from '$lib/components/ui';
 
     let error: string | undefined;
 
     onMount(async () => {
-        const email = $page.url.searchParams.get('email');
-        const key = $page.url.searchParams.get('key');
+        const email = page.url.searchParams.get('email');
+        const key = page.url.searchParams.get('key');
         const response = await fetch(`${PUBLIC_GROWTH_ENDPOINT}/newsletter/verify`, {
             method: 'POST',
             headers: {
@@ -48,9 +49,9 @@
                             Your email has been verified successfully.
                         {/if}
                     </p>
-                    <a href="/" class="web-button is-secondary mt-3 self-center">
-                        <span>Back to homepage</span>
-                    </a>
+                    <Button href="/" variant="secondary" class="mt-3 self-center">
+                        Back to homepage
+                    </Button>
                 </div>
             </div>
         </div>

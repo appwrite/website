@@ -25,7 +25,7 @@
 <script lang="ts">
     import { browser, dev } from '$app/environment';
     import { goto } from '$app/navigation';
-    import { page } from '$app/stores';
+    import { page } from '$app/state';
     import { appwriteInit } from '$lib/appwrite/init';
     import { Switch } from '$lib/components';
     import { loginGithub } from '$routes/init-0/helpers';
@@ -34,12 +34,13 @@
     import type { PageData } from './$types';
     import TribeToggle from './tribe-toggle.svelte';
     import { getAppwriteDashboardUrl } from '$lib/utils/dashboard';
+    import { Button, Icon } from '$lib/components/ui';
 
     export let name = '';
     export let tribe: string | null = null;
     export let showGitHub = true;
     export let variant: TicketVariant = 'default';
-    $: ({ ticket } = $page.data as PageData);
+    $: ({ ticket } = page.data as PageData);
 
     const variants: TicketVariant[] = ['default', 'pink', 'rainbow'] as const;
 </script>
@@ -92,30 +93,28 @@
     </div>
 
     {#if dev}
-        <button
-            class="web-button is-full-width is-secondary u-margin-block-start-24"
-            on:click={async () => {
+        <Button
+            variant="secondary"
+            class="is-full-width u-margin-block-start-24"
+            onclick={async () => {
                 await appwriteInit.account.deleteSession('current');
                 goto('/init-0/tickets');
             }}
             disabled={!browser}
         >
-            <div class="web-icon-github text-primary"></div>
+            <Icon name="github" class="text-primary" />
             <span class="text">(DEBUG) Log-out of GitHub</span>
-        </button>
+        </Button>
     {/if}
 {:else}
     <h2 class="text-sub-body text-primary font-medium">Integrate your GitHub account</h2>
     <p class="text-sub-body font-medium" style:margin-block-start="0.25rem">
         Sign in with your GitHub account and see the magic happen in your ticket.
     </p>
-    <button
-        class="web-button is-full-width is-secondary u-margin-block-start-24"
-        on:click={loginGithub}
-    >
-        <div class="web-icon-github text-primary"></div>
+    <Button class="is-full-width u-margin-block-start-24" onclick={loginGithub} variant="secondary">
+        <Icon name="github" class="text-primary" />
         <span class="text">Log in to GitHub account</span>
-    </button>
+    </Button>
 {/if}
 
 <hr />
@@ -134,13 +133,14 @@
     <p class="text-sub-body font-medium" style:margin-block-start="0.25rem">
         Sign in with your Appwrite account and see the magic happen in your ticket.
     </p>
-    <a
-        href={getAppwriteDashboardUrl(`/login?forceRedirect=${$page.url.origin}/init-0/tickets`)}
-        class="web-button is-full-width is-secondary u-margin-block-start-24"
+    <Button
+        variant="secondary"
+        href={getAppwriteDashboardUrl(`/login?forceRedirect=${page.url.origin}/init-0/tickets`)}
+        class="is-full-width u-margin-block-start-24"
     >
-        <div class="web-icon-appwrite text-primary"></div>
+        <Icon name="appwrite" class="text-primary" />
         <span class="text">Log in to Appwrite account</span>
-    </a>
+    </Button>
 {/if}
 <hr />
 

@@ -1,9 +1,10 @@
 <script lang="ts">
     import { onMount } from 'svelte';
-    import { page } from '$app/stores';
+    import { page } from '$app/state';
     import { fade } from 'svelte/transition';
     import { loggedIn, user } from '$lib/utils/console';
     import { PUBLIC_GROWTH_ENDPOINT } from '$env/static/public';
+    import { Button } from '$lib/components/ui';
 
     export let date: string | undefined = undefined;
     let showFeedback = false;
@@ -28,7 +29,7 @@
             body: JSON.stringify({
                 email,
                 type: feedbackType,
-                route: $page.route.id,
+                route: page.route.id,
                 comment,
                 metaFields: {
                     userId
@@ -75,7 +76,7 @@
                     <button
                         class="web-radio-button"
                         aria-label="helpful"
-                        on:click={() => {
+                        onclick={() => {
                             showFeedback = feedbackType !== 'positive';
                             feedbackType = 'positive';
                         }}
@@ -85,7 +86,7 @@
                     <button
                         class="web-radio-button"
                         aria-label="unhelpful"
-                        on:click={() => {
+                        onclick={() => {
                             showFeedback = feedbackType !== 'negative';
                             feedbackType = 'negative';
                         }}
@@ -102,7 +103,7 @@
                     {/if}
                     <li>
                         <a
-                            href={`https://github.com/appwrite/website/tree/main/src/routes${$page.route.id}`}
+                            href={`https://github.com/appwrite/website/tree/main/src/routes${page.route.id}`}
                             target="_blank"
                             rel="noopener noreferrer"
                             class="web-link flex items-baseline gap-1"
@@ -117,7 +118,10 @@
     </header>
     {#if showFeedback}
         <form
-            on:submit|preventDefault={handleSubmit}
+            onsubmit={(e) => {
+                e.preventDefault();
+                handleSubmit();
+            }}
             class="web-card is-normal"
             style="--card-padding:1rem"
             out:fade={{ duration: 450 }}
@@ -125,13 +129,14 @@
             <div class="flex flex-col gap-2">
                 <label for="message">
                     <span class="text-primary">
-                        What did you {feedbackType === 'negative' ? 'dislike' : 'like'}? (optional)
+                        What did you {feedbackType === 'negative' ? 'dislike' : 'like'}?
                     </span>
                 </label>
                 <textarea
                     class="web-input-text"
                     id="message"
                     placeholder="Write your message"
+                    required
                     bind:value={comment}
                 ></textarea>
                 <label for="message" class="mt-2">
@@ -158,12 +163,8 @@
             {/if}
 
             <div class="mt-4 flex justify-end gap-2">
-                <button class="web-button is-text" on:click={() => (showFeedback = false)}>
-                    <span>Cancel</span>
-                </button>
-                <button type="submit" class="web-button" disabled={submitting || !email}>
-                    <span>Submit</span>
-                </button>
+                <Button variant="text" onclick={() => (showFeedback = false)}>Cancel</Button>
+                <Button type="submit" disabled={submitting || !email}>Submit</Button>
             </div>
         </form>
     {/if}

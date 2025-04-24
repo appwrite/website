@@ -22,6 +22,7 @@
     import { getReferrerAndUtmSource } from '$lib/utils/utm';
     import CommunitySupportChat from '$lib/components/CommunitySupportChat.svelte';
     import { trackEvent } from '$lib/actions/analytics';
+    import { Button } from '$lib/components/ui';
 
     const title = 'Startups' + TITLE_SUFFIX;
     const description =
@@ -217,9 +218,7 @@
                             backend for you to build your products. You will receive $20,000 Cloud
                             credits for Appwrite Scale for 12 months.
                         </p>
-                        <button on:click={scrollToForm} class="web-button mx-auto mt-3">
-                            Apply now
-                        </button>
+                        <Button onclick={scrollToForm} class="mx-auto mt-3">Apply now</Button>
                     </div>
                 </section>
             </div>
@@ -667,10 +666,11 @@
                                             Our team will review your application and get back to
                                             you soon.
                                         </p>
-                                        <button
-                                            on:click={resetForm}
-                                            class="web-button is-secondary is-full-width-mobile blockmt-4 mx-auto"
-                                            >Back to form</button
+                                        <Button
+                                            onclick={resetForm}
+                                            variant="secondary"
+                                            class="mx-auto mt-4 block w-full! md:w-fit"
+                                            >Back to form</Button
                                         >
                                     </div>
                                 {:else}
@@ -739,13 +739,13 @@
                                                     {error}
                                                 {/if}
                                             </p>
-                                            <button
+                                            <Button
                                                 type="submit"
                                                 disabled={submitting}
-                                                class="web-button web-u-inline-width-100-percent-mobile-break1 self-center"
+                                                class="web-u-inline-width-100-percent-mobile-break1 self-center"
                                             >
-                                                <span>Apply</span>
-                                            </button>
+                                                Apply
+                                            </Button>
                                         </div>
                                     </form>
                                 {/if}

@@ -1,4 +1,4 @@
-<script lang="ts" context="module">
+<script lang="ts" module>
     export type NavLink = {
         label: string;
         href: string;
@@ -24,13 +24,18 @@
 <script lang="ts">
     import { clickOutside } from '$lib/actions/clickOutside';
     import { Tooltip, IsLoggedIn } from '$lib/components';
-    import { GITHUB_REPO_LINK, GITHUB_STARS } from '$lib/constants';
+    import { Button, Icon, InlineTag } from '$lib/components/ui';
+    import { SOCIAL_STATS } from '$lib/constants';
     import { layoutState, toggleSidenav } from './Docs.svelte';
     import SidebarNavButton from './SidebarNavButton.svelte';
 
-    export let expandable = false;
-    export let navigation: NavTree;
-    export let parent: NavParent | undefined = undefined;
+    interface Props {
+        expandable?: boolean;
+        navigation: NavTree;
+        parent?: NavParent | undefined;
+    }
+
+    let { expandable = false, navigation, parent = undefined }: Props = $props();
 
     function isNavLink(item: NavLink | NavGroup): item is NavLink {
         return 'href' in item;
@@ -50,7 +55,7 @@
     <div class="web-side-nav-wrapper">
         <button
             class="web-input-text web-is-not-desktop"
-            on:click={() => ($layoutState.showSearch = true)}
+            onclick={() => ($layoutState.showSearch = true)}
         >
             <span class="web-icon-search"></span>
             <span class="text">Search in docs</span>
@@ -72,7 +77,9 @@
                         {#if expandable && !$layoutState.showSidenav}
                             <Tooltip placement="right">
                                 <SidebarNavButton groupItem={navGroup} />
-                                <svelte:fragment slot="tooltip">{navGroup.label}</svelte:fragment>
+                                {#snippet tooltip()}
+                                    <span>{navGroup.label}</span>
+                                {/snippet}
                             </Tooltip>
                         {:else}
                             <SidebarNavButton groupItem={navGroup} />
@@ -89,9 +96,9 @@
                                     {#if expandable && !$layoutState.showSidenav}
                                         <Tooltip placement="right">
                                             <SidebarNavButton {groupItem} />
-                                            <svelte:fragment slot="tooltip"
-                                                >{groupItem.label}</svelte:fragment
-                                            >
+                                            {#snippet tooltip()}
+                                                <span>{groupItem.label}</span>
+                                            {/snippet}
                                         </Tooltip>
                                     {:else}
                                         <SidebarNavButton {groupItem} />
@@ -105,7 +112,7 @@
         </div>
         {#if expandable}
             <button
-                on:click={toggleSidenav}
+                onclick={toggleSidenav}
                 class="web-icon-button ml-auto"
                 style:margin-bottom="1rem"
                 aria-label="toggle nav"
@@ -116,16 +123,17 @@
         <div class="web-side-nav-mobile-footer-buttons">
             <IsLoggedIn />
 
-            <a
-                href={GITHUB_REPO_LINK}
+            <Button
+                variant="text"
+                href={SOCIAL_STATS.GITHUB.LINK}
                 target="_blank"
                 rel="noopener noreferrer"
-                class="web-button is-text web-u-inline-width-100-percent-mobile"
+                class="web-u-inline-width-100-percent-mobile"
             >
-                <span class="web-icon-star" aria-hidden="true"></span>
+                <Icon class="star" aria-hidden="true"></Icon>
                 <span class="text">Star on GitHub</span>
-                <span class="web-inline-tag text-sub-body">{GITHUB_STARS}</span>
-            </a>
+                <InlineTag>{SOCIAL_STATS.GITHUB.STAT}</InlineTag>
+            </Button>
         </div>
     </div>
 </nav>

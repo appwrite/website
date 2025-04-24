@@ -2,6 +2,7 @@
     import { PUBLIC_APPWRITE_DASHBOARD } from '$env/static/public';
     import { trackEvent } from '$lib/actions/analytics';
     import { Tooltip } from '$lib/components';
+    import { Button } from '$lib/components/ui';
     import { Framework, Platform } from '$lib/utils/references';
     import MultiFrameworkCode from './MultiFrameworkCode.svelte';
 
@@ -170,11 +171,13 @@ async function getLoggedInUser(request) {
                                 />
                             </a>
                         </li>
-                        <svelte:fragment slot="tooltip">{platform.name}</svelte:fragment>
+                        {#snippet tooltip()}
+                            {platform.name}
+                        {/snippet}
                     </Tooltip>
                 {/each}
             </ul>
-            <a href="/docs/sdks#server" class="web-button is-secondary mt-8">Learn more</a>
+            <Button variant="secondary" href="/docs/sdks#server" class="mt-8">Learn more</Button>
         </div>
 
         <MultiFrameworkCode data={codeSnippets} selected={Framework.NextJs} />

@@ -1,16 +1,24 @@
 <script lang="ts">
     import { classNames } from '$lib/utils/classnames';
     import type { SvelteHTMLElements } from 'svelte/elements';
-    import type { Icon } from './types';
+    import type { IconType } from './types';
 
-    type $$Props = {
-        icon?: Icon;
+    type Props = SvelteHTMLElements['svg'] & {
         class?: string;
-    } & SvelteHTMLElements['span'];
+        name?: IconType;
+    };
 
-    let className: $$Props['class'] = '';
-    export { className as class };
-    export let icon: $$Props['icon'] = 'arrow-right';
+    const {
+        xmlns = 'http://www.w3.org/2000/svg',
+        viewBox = '0 0 24 24',
+        height = 20,
+        width = 20,
+        class: className = '',
+        name = 'arrow-right',
+        ...rest
+    }: Props = $props();
 </script>
 
-<span class={classNames(`web-icon-${icon}`, className)} {...$$restProps}></span>
+<svg class={className} {xmlns} {height} {width} {viewBox} {...rest}>
+    <use xlink:href="#{name}" />
+</svg>

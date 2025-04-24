@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { page } from '$app/stores';
+    import { page } from '$app/state';
     import { FooterNav, MainFooter, Tooltip } from '$lib/components';
     import PreFooter from '$lib/components/PreFooter.svelte';
     import { type SocialShareOption, socialSharingOptions } from '$lib/constants';
@@ -9,7 +9,7 @@
     import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
     import { CHANGELOG_TITLE_SUFFIX } from '$routes/titles';
 
-    export let data;
+    let { data } = $props();
 
     const seo = {
         title: data.title,
@@ -25,10 +25,13 @@
         Copy: 'Copy',
         Copied: 'Copied!'
     } as const;
+    type CopyStatusType = keyof typeof CopyStatus;
+    type CopyStatusValue = (typeof CopyStatus)[CopyStatusType];
 
-    let copyText = CopyStatus.Copy;
+    let copyText = $state<CopyStatusValue>(CopyStatus.Copy);
+
     async function handleCopy() {
-        const blogPostUrl = encodeURI(`https://appwrite.io${$page.url.pathname}`);
+        const blogPostUrl = encodeURI(`https://appwrite.io${page.url.pathname}`);
 
         await copy(blogPostUrl);
 
@@ -39,7 +42,7 @@
     }
 
     function getShareLink(shareOption: SocialShareOption): string {
-        const blogPostUrl = encodeURI(`https://appwrite.io${$page.url.pathname}`);
+        const blogPostUrl = encodeURI(`https://appwrite.io${page.url.pathname}`);
         const shareableLink = shareOption.link
             .replace('{TITLE}', seo.title + '.')
             .replace('{URL}', blogPostUrl);
@@ -117,7 +120,7 @@
                                                     <button
                                                         class="web-icon-button"
                                                         aria-label={sharingOption.label}
-                                                        on:click={() => handleCopy()}
+                                                        onclick={() => handleCopy()}
                                                     >
                                                         <span
                                                             class={sharingOption.icon}
@@ -126,11 +129,11 @@
                                                     </button>
                                                 {/if}
 
-                                                <svelte:fragment slot="tooltip">
+                                                {#snippet tooltip()}
                                                     {sharingOption.type === 'copy'
                                                         ? copyText
                                                         : `Share on ${sharingOption.label}`}
-                                                </svelte:fragment>
+                                                {/snippet}
                                             </Tooltip>
                                         </li>
                                     {/each}
@@ -144,7 +147,11 @@
                         {/if}
 
                         <div class="web-article-content mt-8">
-                            <svelte:component this={data.component} />
+                            <!-- <svelte:component> is deprecated -->
+                            {#if data.component}
+                                {@const DataComponent = data.component}
+                                <DataComponent />
+                            {/if}
                         </div>
                     </article>
                 </div>

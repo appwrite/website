@@ -19,6 +19,7 @@
     import { writable } from 'svelte/store';
     import { Feedback } from '$lib/components';
     import TableOfContents from '$lib/components/blog/table-of-contents.svelte';
+    import { Button, Icon } from '$lib/components/ui';
 
     export let title: string;
     export let toc: Array<TocItem>;
@@ -46,18 +47,18 @@
                 </ul>
                 <div class="relative flex items-center">
                     {#if back}
-                        <a
+                        <Button
                             href={back}
-                            class="
-                        web-button is-text is-icon web-items-center web-u-size-40
-                        web-u-translate-x-negative absolute top-0"
+                            class="web-u-translate-x-negative absolute top-0 size-10 items-center"
                             aria-label="previous page"
+                            variant="icon"
                         >
-                            <span
-                                class="icon-cheveron-left web-u-font-size-24 text-primary web-is-not-mobile"
+                            <Icon
+                                name="chevron-left"
+                                class="text-primary hidden text-[24px] md:flex"
                                 aria-hidden="true"
-                            ></span>
-                        </a>
+                            />
+                        </Button>
                     {/if}
                     <h1 class="text-title font-aeonik-pro text-primary">{title}</h1>
                 </div>

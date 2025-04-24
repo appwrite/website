@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { Button } from '$lib/components/ui';
     import { classNames } from '$lib/utils/classnames';
 
     const items = [
@@ -28,14 +29,15 @@
                 Appwrite is a 100% open source project, giving you the flexibility and support you
                 need to get your project started.
             </p>
-            <a
+            <Button
+                variant="secondary"
                 href="/"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="web-button is-secondary mx-auto mt-4 !w-full md:!w-fit"
+                class="mx-auto mt-4 !w-full md:!w-fit"
             >
                 <span>Join the community</span>
-            </a>
+            </Button>
         </div>
     </div>
 </div>

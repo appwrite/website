@@ -8,9 +8,9 @@
         'Follow a simple tutorial to get started with Appwrite in your preferred framework quickly and easily.';
     const ogImage = DEFAULT_HOST + '/images/open-graph/docs.png';
 
-    export let data;
+    let { data } = $props();
 
-    type MappedTutorial = (typeof data.tutorials)[number];
+    type MappedTutorial = (typeof data.tutorials)[number]['tutorials'][number];
 
     const iconMap: Record<string, string> = {
         'react native': 'icon-react-native',

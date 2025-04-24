@@ -5,7 +5,7 @@ description: Authenticate users with an existing Discord account
 date: 2024-07-30
 featured: false
 isPartner: true
-isNew: true
+isNew: false
 cover: /images/integrations/oauth-discord/cover.png
 category: auth
 product: 

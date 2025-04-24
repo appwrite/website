@@ -1,4 +1,4 @@
-export type Icon =
+export type IconType =
     | 'apple'
     | 'appwrite'
     | 'arrow-down'
@@ -21,6 +21,7 @@ export type Icon =
     | 'discord'
     | 'divider-vertical'
     | 'download'
+    | 'edge'
     | 'ext-link'
     | 'firebase'
     | 'github'
@@ -41,8 +42,10 @@ export type Icon =
     | 'platform'
     | 'play'
     | 'plus'
+    | 'pop-locations'
     | 'product-hunt'
     | 'refine'
+    | 'regions'
     | 'rest'
     | 'search'
     | 'sendgrid'

@@ -1,43 +1,41 @@
-<script lang="ts" context="module">
+<script lang="ts" module>
+    import type { EventCardProps } from './EventCard.svelte';
+
+    const baseEvent = {
+        location: 'Discord',
+        title: 'Office Hours: Ask me anything!',
+        description:
+            'Join us for another round of Office Hours, where we answer your questions and geek out on everything tech and Appwrite!',
+        buttonText: 'View event'
+    };
+
     export const events: EventCardProps[] = [
         {
-            href: 'https://discord.com/events/564160730845151244/1279026334496067669/1286356126924800000',
+            ...baseEvent,
+            href: 'https://discord.com/events/564160730845151244/1279026334496067669/1357434273753338106',
             cover: {
-                src: '/images/community/events/19sept-office-hours.png',
+                src: '/images/community/events/office-hours.png',
                 alt: ''
             },
-            date: '2024-09-19',
-            location: 'Discord',
-            title: 'Office Hours: Ask me anything!',
-            description:
-                'Join us for another round of Office Hours, where we answer your questions and geek out on everything tech and Appwrite!',
-            buttonText: 'View event'
+            date: '2025-04-10'
         },
         {
-            href: 'https://discord.com/events/564160730845151244/1279026334496067669/1288892841984000000',
+            ...baseEvent,
+            href: 'https://discord.com/events/564160730845151244/1279026334496067669/1362457578700800000',
             cover: {
-                src: '/images/community/events/26sept-office-hours.png',
+                src: '/images/community/events/office-hours-2.png',
                 alt: ''
             },
-            date: '2024-09-26',
-            location: 'Discord',
-            title: 'Office Hours: Ask me anything!',
-            description:
-                'Join us for another round of Office Hours, where we answer your questions and geek out on everything tech and Appwrite!',
-            buttonText: 'View event'
+            date: '2025-04-17'
         },
         {
-            href: 'https://discord.com/events/564160730845151244/1279026334496067669/1291429557043200000',
+            ...baseEvent,
+            href: 'https://discord.com/events/564160730845151244/1279026334496067669/1364994293760000000',
             cover: {
-                src: '/images/community/events/3oct-office-hours.png',
+                src: '/images/community/events/office-hours-3.png',
                 alt: ''
             },
-            date: '2024-10-03',
-            location: 'Discord',
-            title: 'Office Hours: Ask me anything!',
-            description:
-                'Join us for another round of Office Hours, where we answer your questions and geek out on everything tech and Appwrite!',
-            buttonText: 'View event'
+            date: '2025-04-24'
         }
     ];
 </script>
@@ -50,16 +48,18 @@
     import MetricCard from '$lib/components/MetricCard.svelte';
     import { newsletter } from '$lib/components/Newsletter.svelte';
     import PreFooter from '$lib/components/PreFooter.svelte';
-    import { GITHUB_REPO_LINK, GITHUB_STARS } from '$lib/constants';
     import { Main } from '$lib/layouts';
     import { DEFAULT_HOST } from '$lib/utils/metadata';
     import { TITLE_SUFFIX } from '$routes/titles';
-    import type { EventCardProps } from './EventCard.svelte';
     import EventCard from './EventCard.svelte';
     import type { ProjectCardProps } from './ProjectCard.svelte';
     import ProjectCard from './ProjectCard.svelte';
 
-    export let data;
+    import { SOCIAL_STATS } from '$lib/constants';
+    import { Button, Icon } from '$lib/components/ui';
+    import InlineTag from '$lib/components/ui/inline-tag.svelte';
+
+    let { data } = $props();
 
     const projects: ProjectCardProps[] = [
         {
@@ -93,21 +93,21 @@
     ];
 
     const metrics = [
-        { metric: `${GITHUB_STARS}+`, description: 'GitHub Stars' },
-        { metric: '3K+', description: 'Pull Requests' },
-        { metric: '21K+', description: 'Commits' },
-        { metric: '3K+', description: 'Issues' },
-        { metric: '500+', description: 'Open Issues' },
-        { metric: '2.5K+', description: 'Closed Issues' },
-        { metric: '3.5K+', description: 'Forks' },
-        { metric: '800+', description: 'Contributors' }
+        { metric: SOCIAL_STATS.GITHUB.STAT, description: 'GitHub Stars' },
+        { metric: SOCIAL_STATS.GITHUB.EXTRA!.PULL_REQUESTS, description: 'Pull Requests' },
+        { metric: SOCIAL_STATS.GITHUB.EXTRA!.COMMITS, description: 'Commits' },
+        { metric: SOCIAL_STATS.GITHUB.EXTRA!.ISSUES, description: 'Issues' },
+        { metric: SOCIAL_STATS.GITHUB.EXTRA!.OPEN_ISSUES, description: 'Open Issues' },
+        { metric: SOCIAL_STATS.GITHUB.EXTRA!.CLOSED_ISSUES, description: 'Closed Issues' },
+        { metric: SOCIAL_STATS.GITHUB.EXTRA!.FORKS, description: 'Forks' },
+        { metric: SOCIAL_STATS.GITHUB.EXTRA!.CONTRIBUTORS, description: 'Contributors' }
     ];
 
-    let name = '';
-    let email = '';
-    let submitted = false;
-    let error: string | undefined;
-    let submitting = false;
+    let name = $state('');
+    let email = $state('');
+    let submitted = $state(false);
+    let error: string | undefined = $state();
+    let submitting = $state(false);
 
     async function submit() {
         submitting = true;
@@ -169,24 +169,25 @@
                                 worldwide.
                             </p>
                             <div class="mt-8 flex flex-wrap gap-3">
-                                <a
-                                    href="/discord"
+                                <Button
+                                    href={SOCIAL_STATS.DISCORD.LINK}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    class="web-button is-full-width-mobile"
+                                    class="is-full-width-mobile"
                                 >
                                     <span class="text">Join our Discord</span>
-                                </a>
-                                <a
-                                    href={GITHUB_REPO_LINK}
+                                </Button>
+                                <Button
+                                    variant="secondary"
+                                    href={SOCIAL_STATS.GITHUB.LINK}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    class="web-button is-secondary is-full-width-mobile"
+                                    class="is-full-width-mobile"
                                 >
-                                    <span aria-hidden="true" class="web-icon-star"></span>
+                                    <Icon name="star" aria-hidden="true" />
                                     <span>Star on GitHub</span>
-                                    <span class="web-inline-tag text-sub-body">{GITHUB_STARS}</span>
-                                </a>
+                                    <InlineTag>{SOCIAL_STATS.GITHUB.STAT}</InlineTag>
+                                </Button>
                             </div>
                         </div>
                     </div>
@@ -237,14 +238,15 @@
                                 start contributing.
                             </p>
                             <div class="mt-8 flex flex-wrap justify-center gap-3">
-                                <a
-                                    href="{GITHUB_REPO_LINK}/graphs/contributors"
+                                <Button
+                                    href="{SOCIAL_STATS.GITHUB.LINK}/graphs/contributors"
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    class="web-button is-secondary is-full-width-mobile"
+                                    variant="secondary"
+                                    class="is-full-width-mobile"
                                 >
                                     <span>View all contributors</span>
-                                </a>
+                                </Button>
                             </div>
                         </div>
                     </div>
@@ -277,15 +279,16 @@
                                 <p class="text-body mt-1 font-medium">
                                     Anyone can join and help Appwrite become better.
                                 </p>
-                                <a
-                                    href="{GITHUB_REPO_LINK}/issues"
+                                <Button
+                                    href="{SOCIAL_STATS.GITHUB.LINK}/issues"
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    class="web-button is-secondary mt-8"
+                                    class="mt-8"
+                                    variant="secondary"
                                 >
-                                    <span class="web-icon-github" aria-hidden="true"></span>
+                                    <Icon name="github" aria-hidden="true" />
                                     <span class="">View all Open Issues</span>
-                                </a>
+                                </Button>
                             </div>
                             <div class="flex-1">
                                 <table class="web-table-line">
@@ -423,9 +426,9 @@
             <div class="web-big-padding-section-level-2">
                 <section class="web-u-sep-block-start web-u-padding-block-start-64 container">
                     <Carousel size="big">
-                        <svelte:fragment slot="header">
+                        {#snippet header()}
                             <h4 class="text-label text-primary">Upcoming Events</h4>
-                        </svelte:fragment>
+                        {/snippet}
                         {#each events as event}
                             <li>
                                 <EventCard
@@ -455,14 +458,15 @@
                             Visit our showcase website built with Appwrite to find inspiration for
                             your projects or to showcase what you have built.
                         </p>
-                        <a
+                        <Button
+                            variant="secondary"
                             href="https://builtwith.appwrite.io"
                             target="_blank"
                             rel="noopener noreferrer"
-                            class="web-button is-secondary mt-4 self-center"
+                            class="mt-4 self-center"
                         >
                             <span>View all projects</span>
-                        </a>
+                        </Button>
                     </div>
                     <ul class="web-grid-3-desktop-1-mobile web-u-margin-block-start-64">
                         {#each projects as project}
@@ -489,7 +493,7 @@
                         <ul class="web-multi-columns-1" style:--p-col-gap="-1rem">
                             <li>
                                 <a
-                                    href="/discord"
+                                    href={SOCIAL_STATS.DISCORD.LINK}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     class="web-card is-white web-u-min-block-size-320 flex flex-col"
@@ -503,13 +507,13 @@
                                         ></span>
                                     </div>
                                     <div class="text-title font-aeonik-pro mt-auto">
-                                        17K+ members
+                                        {SOCIAL_STATS.DISCORD.STAT} members
                                     </div>
                                 </a>
                             </li>
                             <li>
                                 <a
-                                    href="https://twitter.com/intent/follow?screen_name=appwrite"
+                                    href={SOCIAL_STATS.TWITTER.LINK}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     class="web-card is-white web-u-min-block-size-320 flex flex-col"
@@ -523,13 +527,13 @@
                                         ></span>
                                     </div>
                                     <div class="text-title font-aeonik-pro mt-auto">
-                                        128K+ followers
+                                        {SOCIAL_STATS.TWITTER.STAT} followers
                                     </div>
                                 </a>
                             </li>
                             <li>
                                 <a
-                                    href={GITHUB_REPO_LINK}
+                                    href={SOCIAL_STATS.GITHUB.LINK}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     class="web-card is-white web-u-min-block-size-320 flex flex-col"
@@ -543,13 +547,13 @@
                                         ></span>
                                     </div>
                                     <div class="text-title font-aeonik-pro mt-auto">
-                                        {GITHUB_STARS}+ stargazers
+                                        {SOCIAL_STATS.GITHUB.STAT} stargazers
                                     </div>
                                 </a>
                             </li>
                             <li>
                                 <a
-                                    href="https://www.youtube.com/c/appwrite?sub_confirmation=1"
+                                    href={SOCIAL_STATS.YOUTUBE.LINK}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     class="web-card is-white web-u-min-block-size-320 flex flex-col"
@@ -563,7 +567,7 @@
                                         ></span>
                                     </div>
                                     <div class="text-title font-aeonik-pro mt-auto">
-                                        4K+ subscribers
+                                        {SOCIAL_STATS.YOUTUBE.STAT} subscribers
                                     </div>
                                 </a>
                             </li>
@@ -630,7 +634,10 @@
                         {:else}
                             <form
                                 method="post"
-                                on:submit|preventDefault={submit}
+                                onsubmit={(e) => {
+                                    e.preventDefault();
+                                    submit();
+                                }}
                                 class="flex flex-col gap-4"
                             >
                                 <div class="flex flex-col gap-1">
@@ -657,9 +664,7 @@
                                         bind:value={email}
                                     />
                                 </div>
-                                <button type="submit" class="web-button" disabled={submitting}
-                                    >Sign up</button
-                                >
+                                <Button type="submit" disabled={submitting}>Sign up</Button>
                                 {#if error}
                                     <span class="text">
                                         Something went wrong. Please try again later.

@@ -1,17 +1,17 @@
 <script lang="ts">
-    import { page } from '$app/stores';
+    import { page } from '$app/state';
     import FooterNav from '$lib/components/FooterNav.svelte';
     import MainFooter from '$lib/components/MainFooter.svelte';
     import Main from '$lib/layouts/Main.svelte';
     import { createCopy } from '$lib/utils/copy';
     import { TicketPreview, Ticket } from '$routes/init/(components)/ticket';
 
-    export let data;
+    let { data } = $props();
 
     let firstName = data.ticket?.name?.split(/\s/)[0] ?? '';
-    const ogImage = `${$page.url.origin}/init/tickets/${data.ticket.$id}/og`;
+    const ogImage = `${page.url.origin}/init/tickets/${data.ticket.$id}/og`;
 
-    const { copied, copy } = createCopy($page.url.href);
+    const { copied, copy } = createCopy(page.url.href);
 </script>
 
 <svelte:head>
@@ -52,7 +52,7 @@
                     <a class="web-button" href="/init/tickets">
                         <span class="text">Get my ticket</span>
                     </a>
-                    <button class="web-button is-secondary" on:click={copy}>
+                    <button class="web-button is-secondary" onclick={copy}>
                         <span class="web-icon-{$copied ? 'check' : 'copy'} text-primary"></span>
 
                         <span class="text">Copy ticket URL</span>
