@@ -23,9 +23,23 @@ To get started, create a collection and define its attributes in the Appwrite Co
 
 - The first row must be a header containing attribute names that match your collection
 - Each subsequent row represents a document, with values separated by commas
-- You can include the `$id` column to assign custom document IDs
+- You can optionally include the `$id` column to assign custom document IDs
+
+![Collections screen](/images/blog/announcing-csv-imports/csv-import.png)
 
 All required attributes must be present in the CSV, and Appwrite will validate each row before importing it.
+
+For example, if your collection contains attributes like `title`, `author`, `year`, and `available`, a valid CSV file would look like this:
+
+```text
+$id,title,author,year,available
+f3k91x8b2q,Harry Potter and the Sorcerer's Stone,J.K. Rowling,1997,true
+mz7lq3dp5c,The Fellowship of the Ring,J.R.R. Tolkien,1954,true
+x0v4p8ncq2,To Kill a Mockingbird,Harper Lee,1960,false
+kq9nmv13ru,The Great Gatsby,F. Scott Fitzgerald,1925,true
+p8lw39xsd1,Catch-22,Joseph Heller,1961,true
+v42cj0quxp,Pride and Prejudice,Jane Austen,1813,true
+```
 
 ## Uploading your CSV file
 
@@ -51,3 +65,9 @@ CSV imports are now available on **Appwrite Cloud** and in the latest self-hoste
 
 To learn more, check out the [official documentation](https://appwrite.io/docs/products/databases/csv-imports).
 If you have any questions or feedback, we'd love to hear from you in the [Appwrite Discord community](https://discord.gg/appwrite).
+
+# Further reading
+
+- [Introducing Database Backups](https://appwrite.io/blog/post/introducing-database-backups?doFollow=true)
+- [Best database pagination technique](https://appwrite.io/blog/post/best-pagination-technique?doFollow=true)
+- [How to plan and execute database migration successfully with the new Appwrite CLI](https://appwrite.io/blog/post/how-to-execute-database-migration-with-appwrite-cli?doFollow=true)
