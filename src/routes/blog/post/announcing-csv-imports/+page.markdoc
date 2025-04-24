@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Announcing: Document imports from CSV files"
-description: Learn how to import documents into your Appwrite collections using a simple CSV file — a new feature built on top of our powerful migration APIs.
+description: Learn how to import documents into your Appwrite collections using a simple CSV file, a new feature built on top of Appwrite's migration APIs.
 date: 2025-04-20
 # update this cover later, once available!
 cover: /images/blog/planetscale-databases-alternative/cover.png
