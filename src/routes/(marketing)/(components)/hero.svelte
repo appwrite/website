@@ -21,7 +21,7 @@
         >
             <GradientText class="animate-fade-in">
                 <h1 class="text-display font-aeonik-pro text-pretty">
-                    Backend APIs, Frontend hosting<span class="text-accent">_</span>
+                    Build like a team of hundreds<span class="text-accent">_</span>
                 </h1>
             </GradientText>
 
