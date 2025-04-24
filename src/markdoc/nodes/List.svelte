@@ -34,7 +34,6 @@
             padding-inline-start: 1.5rem;
             margin-block-end: 0;
         }
-
     }
 
     .in-changelog {
