@@ -8,11 +8,9 @@
 
     import Badge from './badge.svelte';
     import Lockup from './lockup.svelte';
+    import { type PageData } from '../$types';
 
-    interface Props {
-        claimed?: boolean;
-        ticketId?: string;
-    }
+    type Props = {} & Omit<PageData, 'changelogEntries'>;
 
     let { claimed, ticketId }: Props = $props();
     let claiming: boolean = $state(false);
