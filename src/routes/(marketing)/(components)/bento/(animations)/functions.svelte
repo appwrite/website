@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { animate, hover, inView, motionValue, type AnimationSequence } from 'motion';
+    import { animate, hover, inView } from 'motion';
 
     import Python from '../../../(assets)/icons/python.svg';
     import Node from '../../../(assets)/icons/node.svg';
@@ -52,10 +52,52 @@
     $effect(() => {
         hover(container, () => {
             if (isMobile()) return;
+
+            animate(
+                '.platforms',
+                { y: 'var(--y)' },
+                {
+                    duration: 60,
+                    ease: 'linear'
+                }
+            );
+
+            return () => {
+                animate(
+                    '.platforms',
+                    { y: 'var(--y-start)' },
+                    {
+                        duration: 1,
+                        ease: 'easeOut',
+                        type: 'spring'
+                    }
+                );
+            };
         });
 
         inView(container, () => {
             if (!isMobile()) return;
+
+            animate(
+                '.platforms',
+                { y: 'var(--y)' },
+                {
+                    duration: 60,
+                    ease: 'linear'
+                }
+            );
+
+            return () => {
+                animate(
+                    '.platforms',
+                    { y: 'var(--y-start)' },
+                    {
+                        duration: 1,
+                        ease: 'easeOut',
+                        type: 'spring'
+                    }
+                );
+            };
         });
     });
 </script>
@@ -86,18 +128,16 @@
             class="flex flex-1 flex-col items-center gap-3 overflow-clip mask-linear-[to_top,_transparent_0%,_white_50%,_transparent_100%] mask-alpha text-center"
         >
             <div class="flex h-max flex-col items-center gap-3 pt-3">
-                {#each Array.from({ length: 4 }) as _, index}
-                    {#each commands as command, i}
+                {#each commands as command, i}
+                    <div
+                        class="text-caption relative w-fit shrink-0 overflow-hidden rounded-2xl border border-transparent font-mono text-sm text-white"
+                    >
                         <div
-                            class="text-caption relative w-fit shrink-0 overflow-hidden rounded-2xl border border-transparent font-mono text-sm text-white"
+                            class="h-full w-full rounded-2xl bg-[#232325]/90 px-3 py-1 text-white/80"
                         >
-                            <div
-                                class="h-full w-full rounded-2xl bg-[#232325]/90 px-3 py-1 text-white/80"
-                            >
-                                {command}
-                            </div>
+                            {command}
                         </div>
-                    {/each}
+                    </div>
                 {/each}
             </div>
         </div>
@@ -105,7 +145,15 @@
             class="relative flex h-full gap-4 overflow-clip mask-linear-[to_top,_transparent_0%,_white_50%,_transparent_100%] mask-alpha"
         >
             {#each Array.from({ length: 3 }) as _, i}
-                <div class={classNames('flex h-max flex-col gap-3 pt-3')}>
+                {@const index = i + 1}
+                <div
+                    class={classNames('platforms flex h-max flex-col gap-3 pt-3', {
+                        'hidden md:flex': index === 3
+                    })}
+                    style:--y={index % 2 ? '-50%' : '20%'}
+                    style:--y-start={index % 2 ? 'none' : '-70%'}
+                    style:transform={index % 2 ? 'translateY(none)' : 'translateY(-70%)'}
+                >
                     {#each Array.from({ length: 4 }) as _}
                         {#each platforms as platform, i}
                             <div
