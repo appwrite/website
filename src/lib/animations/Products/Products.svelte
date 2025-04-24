@@ -1,11 +1,11 @@
 <script lang="ts" context="module">
+    import type { EnhancedImgAttributes } from '@sveltejs/enhanced-img';
     import AuthShot from './(assets)/auth-shot.png?enhanced';
     import DatabasesShot from './(assets)/db-shot.png?enhanced';
     import FunctionsShot from './(assets)/fn-shot.png?enhanced';
-    import StorageShot from './(assets)/storage-shot.png?enhanced';
-    import RealtimeShot from './(assets)/realtime-shot.png?enhanced';
     import MessagingShot from './(assets)/messaging-shot.png?enhanced';
-    import type { EnhancedImgAttributes } from '@sveltejs/enhanced-img';
+    import RealtimeShot from './(assets)/realtime-shot.png?enhanced';
+    import StorageShot from './(assets)/storage-shot.png?enhanced';
 
     export const elId = writable(0);
 
@@ -146,19 +146,19 @@
     import ScrollIndicator from '../scroll-indicator.svelte';
     import { Auth, authController } from './auth';
 
-    import AnimatedBox from './AnimatedBox.svelte';
-    import { tick } from 'svelte';
-    import CodeWindow from '../CodeWindow/CodeWindow.svelte';
-    import { Databases, databasesController } from './databases';
+    import { anyify } from '$lib/utils/anyify';
     import { objectKeys } from '$lib/utils/object';
+    import { tick } from 'svelte';
     import { get, writable } from 'svelte/store';
-    import { Storage, storageController } from './storage';
+    import CodeWindow from '../CodeWindow/CodeWindow.svelte';
+    import AnimatedBox from './AnimatedBox.svelte';
+    import { Databases, databasesController } from './databases';
     import { Functions, functionsController } from './functions';
-    import { Realtime, realtimeController } from './realtime';
     import { Messaging, messagingController } from './messaging';
     import { postController } from './post';
     import Post from './post/post.svelte';
-    import { anyify } from '$lib/utils/anyify';
+    import { Realtime, realtimeController } from './realtime';
+    import { Storage, storageController } from './storage';
 
     /* Basic Animation setup */
     let scrollInfo = {
@@ -425,7 +425,7 @@
         padding-inline: 1.25rem;
 
         width: 100%;
-        height: 60vh;
+        height: 100vh;
 
         > .main-text {
             position: absolute;
