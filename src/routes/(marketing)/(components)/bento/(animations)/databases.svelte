@@ -123,10 +123,33 @@
             };
         });
 
-        inView(container, () => {
-            if (!isMobile()) return;
-            console.log('in view');
-        });
+        inView(
+            container,
+            () => {
+                if (!isMobile()) return;
+                animate(
+                    '.product-table',
+                    {
+                        y: ['var(--y)', 'calc(var(--y) - var(--y-offset))'],
+                        x: ['var(--x)', 'calc(var(--x) - var(--x-offset))']
+                    },
+                    {
+                        type: 'spring',
+                        duration: 0.5,
+                        delay: stagger(0.02)
+                    }
+                );
+
+                return () => {
+                    animate(
+                        '.product-table',
+                        { y: 'var(--y)', x: 'var(--x)' },
+                        { type: 'spring', duration: 0.5 }
+                    );
+                };
+            },
+            { amount: 'all' }
+        );
     });
 </script>
 
@@ -149,10 +172,11 @@
             >
         </p>
     </div>
-    <div class="relative flex flex-1 flex-col overflow-hidden rounded-xl bg-black/24 px-8">
+    <div
+        class="relative flex min-h-[425px] flex-1 flex-col overflow-hidden rounded-xl bg-black/24 px-8"
+    >
         <div
-            class="border-smooth mask absolute -z-3 mt-12 flex aspect-[4/2] w-full flex-col rounded-2xl border bg-[#232325]/90 shadow-[4px_8px_20px_rgba(0,0,0,0.2)] backdrop-blur-md"
-            style:--mask-height="200px"
+            class="border-smooth -z-3 mt-6 flex aspect-[4/2] w-full min-w-[450px] flex-col overflow-clip rounded-2xl border bg-[#232325]/90 mask-b-from-60% mask-b-to-100% shadow-[4px_8px_20px_rgba(0,0,0,0.2)] backdrop-blur-md md:mt-12"
         >
             <h3 class="text-caption text-primary px-3 py-2">Products</h3>
             <div class="border-smooth mx-1 mt-auto mb-1 flex-1 rounded-xl border">
@@ -237,7 +261,7 @@
                 {@const keys = Object.keys(products[0])}
 
                 <div
-                    class="border-smooth product-table absolute right-8 bottom-8 flex aspect-[4/2] min-w-[275px] flex-col rounded-2xl border bg-[#232325]/90 shadow-[4px_8px_20px_rgba(0,0,0,0.2)] backdrop-blur-md"
+                    class="border-smooth product-table absolute right-8 bottom-8 flex aspect-[4/2] flex-col rounded-2xl border bg-[#232325]/90 shadow-[4px_8px_20px_rgba(0,0,0,0.2)] backdrop-blur-md md:min-w-[275px]"
                     style:opacity={1 - i * 0.01}
                     style:z-index={i}
                     style:--y="{-i * 15}px"

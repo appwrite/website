@@ -1,5 +1,6 @@
 <script lang="ts">
     import { Button } from '$lib/components/ui';
+    import { classNames } from '$lib/utils/classnames';
 
     const plans: Array<{
         name: string;
@@ -35,10 +36,16 @@
     ];
 </script>
 
-<div class="relative flex min-h-[75vh] items-center justify-center py-20">
+<div
+    class="relative flex min-h-[75vh] max-w-screen items-center justify-center overflow-hidden py-20"
+>
     <div class="container flex w-full flex-col items-center justify-center gap-10">
         <div
-            class="gradient-background absolute bottom-0 left-0 z-0 h-screen w-full -translate-x-[25%] translate-y-8 rotate-25 overflow-hidden blur-3xl"
+            class={classNames(
+                'animate-lighting absolute top-0 left-0 -z-10 h-screen w-[200vw] -translate-x-[25%] translate-y-8 rotate-25 overflow-hidden blur-3xl md:w-full',
+                'bg-[image:radial-gradient(ellipse_390px_50px_at_10%_30%,_rgba(254,_149,_103,_0.2)_0%,_rgba(254,_149,_103,_0)_70%),_radial-gradient(ellipse_1100px_170px_at_15%_40%,rgba(253,_54,_110,_0.08)_0%,_rgba(253,_54,_110,_0)_70%),_radial-gradient(ellipse_1200px_180px_at_30%_30%,_rgba(253,_54,_110,_0.08)_0%,_rgba(253,_54,_110,_0)_70%)]',
+                'bg-position-[0%_0%]'
+            )}
         ></div>
 
         <div
@@ -55,10 +62,10 @@
         </div>
 
         <div
-            class="border-gradient divide-smooth grid w-full grid-cols-1 place-content-center place-items-center gap-8 divide-x divide-dashed rounded-xl bg-white/2 px-4 py-10 backdrop-blur-lg before:rounded-xl after:rounded-xl md:grid-cols-2 lg:grid-cols-4"
+            class="border-gradient divide-smooth grid w-full grid-cols-1 place-content-center place-items-center gap-8 divide-y divide-dashed rounded-xl bg-white/2 px-4 py-10 backdrop-blur-lg before:rounded-xl after:rounded-xl md:grid-cols-2 md:divide-x md:divide-y-0 lg:grid-cols-4"
         >
             {#each plans as { name, price, tag: label, subtitle, description }}
-                <div class="flex min-h-40 w-full flex-col gap-1 px-4">
+                <div class="flex min-h-40 w-full flex-col gap-1 px-4 pb-8 md:pb-0">
                     <div class="flex items-center gap-4">
                         <span class="text-description text-secondary">{name}</span>
                         {#if label}
@@ -80,39 +87,3 @@
         </div>
     </div>
 </div>
-
-<style>
-    @keyframes lighting {
-        0% {
-            opacity: 0;
-            clip-path: inset(5%);
-            transform: scale(111.11%);
-        }
-        100% {
-            opacity: 1;
-            clip-path: inset(0);
-            transform: scale(1);
-        }
-    }
-
-    .gradient-background {
-        background-position: 0 0 0 0;
-        background-image:
-            radial-gradient(
-                ellipse 390px 50px at 10% 60%,
-                rgba(254, 149, 103, 0.4) 0%,
-                rgba(254, 149, 103, 0) 70%
-            ),
-            radial-gradient(
-                ellipse 1100px 170px at 15% 70%,
-                rgba(253, 54, 110, 0.16) 0%,
-                rgba(253, 54, 110, 0) 70%
-            ),
-            radial-gradient(
-                ellipse 1200px 180px at 30% 60%,
-                rgba(253, 54, 110, 0.16) 0%,
-                rgba(253, 54, 110, 0) 70%
-            );
-        animation: lighting 1.25s ease-out forwards;
-    }
-</style>
