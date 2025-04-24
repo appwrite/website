@@ -32,10 +32,10 @@
         "sharp": "^0.33.5"
     },
     "devDependencies": {
-        "@appwrite.io/console": "^0.6.4",
+        "@appwrite.io/console": "https://pkg.pr.new/appwrite/appwrite/@appwrite.io/console@7773939",
         "@appwrite.io/pink": "~0.26.0",
         "@appwrite.io/pink-icons": "~0.26.0",
-        "@appwrite.io/repo": "github:appwrite/appwrite#feat-multi-region-docs",
+        "@appwrite.io/repo": "github:appwrite/appwrite#feat-sites-docs",
         "@eslint/compat": "^1.2.7",
         "@eslint/js": "^9.21.0",
         "@fingerprintjs/fingerprintjs": "^4.5.1",

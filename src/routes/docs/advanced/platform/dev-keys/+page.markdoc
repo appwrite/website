@@ -1,0 +1,23 @@
+---
+layout: article
+title: Dev keys
+description: Test your applications in your development environment with Appwrite Dev keys.
+---
+
+Dev keys are secrets used by Appwrite [Server SDKs](/docs/sdks#server) to prove their identity. Unlike API keys, they are meant to be used specifically in development environments, where they hold several developer experience-related benefits:
+
+- Appwrite rate limits are bypassed
+- Configurable expiration date with 1 day, 7 days, 30 day options as well as manual date selection
+- All services are permitted by default (no manual selection of scopes)
+
+{% info title="Important note" %}
+Dev keys should never be used in production environments, only in development environments, as they allow the app to consume all Appwrite services and can bypass rate limits, making your app more susceptible to security breaches. For production environments, please using [API keys](/docs/advanced/platform/api-keys).
+{% /info %}
+
+# Create dev key {% #create-dev-key %}
+
+![Create dev key](https://warm-tray-285.notion.site/image/attachment%3A3f828ec4-bc08-4a72-8222-b146240b0f7a%3Aimage.png?table=block&id=1defb53f-e82d-807a-bddd-e4090a66f714&spaceId=cf760f55-c352-4759-b494-006b8b294dbb&width=2000&userId=&cache=v2)
+
+To create a new API key, navigate to **Overview** > **Integration** > **Dev keys** and click **Create Dev key**.
+
+If you need to replace your dev key, create a new key, update your app credentials and, once ready, delete your old key.

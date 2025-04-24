@@ -1,0 +1,54 @@
+---
+layout: article
+title: Server Site Rendering
+description: Learn how to host SSR web apps on Appwrite Sites.
+---
+
+Server Side Rendering (SSR) apps generate HTML content dynamically on the server for each request and send fully rendered pages to the browser. This approach improves performance for the initial load and enhances SEO since search engines can easily index the content. While SSR can be slightly slower than static apps due to server-side processing, it provides a good balance between performance and interactivity.
+
+# Configuring your Appwrite Site to use SSR
+
+When Appwrite builds your site for the first time, it scans your project's configuration files to determine whether the website should be rendered as static pages or using SSR.
+
+If you need to manually update these settings, here are the steps to do so:
+
+1. Navigate to your site in the Appwrite Console and head to the **Settings** tab > **Build settings** section
+2. Select the **Server side rendering** checkbox (you may need to update your project codebase depending on your framework option)
+3. Confirm that the appropriate install command, build command, and output directory are set
+4. Click on the **Update** button and redeploy your site.
+
+## Enabling SSR builds on your web app
+
+To enable SSR builds for your web app, you may need to make some additional updates in case of the following frameworks:
+
+{% tabs %}
+
+{% tabsitem #analog title="Analog" %}
+Set `ssr: true` in `analog` plugin in the `vite.config.ts` file.
+{% /tabsitem %}
+
+{% tabsitem #angular title="Angular" %}
+Ensure the `src/server.ts` file uses `@angular/ssr/node` package.
+{% /tabsitem %}
+
+{% tabsitem #nextjs title="Next.js" %}
+Ensure you don't set `output` in the `next.config.js`.
+{% /tabsitem %}
+
+{% tabsitem #nuxt title="Nuxt" %}
+Set build command to `npm run build` in site settings.
+{% /tabsitem %}
+
+{% tabsitem #sveltekit title="SvelteKit" %}
+Use `@sveltejs/adapter-node` adapter in the `svelte.config.js` file.
+{% /tabsitem %}
+
+{% tabsitem #astro title="Astro" %}
+Use `@astrojs/node` adapter in the `astro.config.mjs` file.
+{% /tabsitem %}
+
+{% tabsitem #remix title="Remix" %}
+Ensure the `entry.server.tsx` file uses `@remix-run/node` package.
+{% /tabsitem %}
+
+{% /tabs %}
