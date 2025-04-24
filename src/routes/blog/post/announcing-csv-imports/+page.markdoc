@@ -13,7 +13,7 @@ featured: false
 
 We're introducing a new way to populate your Appwrite databases: **document imports from CSV files**.
 
-Built on top of Appwrite's migration APIs, this feature makes it easy to bring in large datasets, seed collections, or migrate structured data—using nothing more than a CSV file.
+Built on top of Appwrite's migration APIs, this feature makes it easy to bring in large datasets, seed collections, or migrate structured data using only a CSV file.
 
 Useful for migrating user data from external systems, importing inventory records, seeding test environments, or onboarding structured content such as FAQs.
 
