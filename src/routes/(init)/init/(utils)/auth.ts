@@ -67,11 +67,11 @@ export const getGithubUser = async () => {
             .then((res) => {
                 return res.json() as Promise<GithubUser>;
             })
-            .then((n) => ({
-                login: n.login,
-                name: n.name,
-                email: n.email,
-                avatar_url: n.avatar_url
+            .then((user) => ({
+                login: user.login,
+                name: user.name,
+                email: user.email,
+                avatar_url: user.avatar_url
             }));
 
         if (!res.login) {
