@@ -14,7 +14,7 @@
         ticketId?: string;
     }
 
-    let { claimed = false, ticketId }: Props = $props();
+    let { claimed, ticketId }: Props = $props();
     let claiming: boolean = $state(false);
 
     const handleLogin = () => {

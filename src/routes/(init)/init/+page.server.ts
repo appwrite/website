@@ -5,12 +5,16 @@ export const prerender = false;
 
 export const load = async () => {
     const user = await getInitUser();
-
-    if (!user.github?.login) return;
     const ticket = await getTicketDocByUser(user);
+
+    if (!ticket || !user.github?.login) {
+        return {
+            claimed: false
+        };
+    }
 
     return {
         ticketId: ticket.$id,
-        claimed: await getUserHasTicket(user.github.login)
+        claimed: true
     };
 };
