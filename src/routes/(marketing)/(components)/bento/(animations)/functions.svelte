@@ -47,33 +47,15 @@
     ];
 
     let container: HTMLElement;
-    let commandQueue: HTMLElement;
-    let activeCommand = $state<number | null>(0);
-
-    let yValue = $derived(commands.length * (activeCommand ?? 0) + 12);
+    let platformQueue: HTMLElement;
 
     $effect(() => {
         hover(container, () => {
-            activeCommand = Math.floor(Math.random() * commands.length * 4);
             if (isMobile()) return;
-
-            animate(commandQueue, { y: yValue }, { duration: 0.25 });
-
-            return () => {
-                activeCommand = null;
-                animate(commandQueue, { y: 0 }, { duration: 0.25 });
-            };
         });
 
         inView(container, () => {
             if (!isMobile()) return;
-            activeCommand = Math.floor(Math.random() * commands.length * 4);
-
-            animate(commandQueue, { y: yValue }, { duration: 0.5 });
-
-            return () => {
-                animate(commandQueue, { y: 0 }, { duration: 0.5 });
-            };
         });
     });
 </script>
@@ -103,7 +85,7 @@
         <div
             class="flex flex-1 flex-col items-center gap-3 overflow-clip mask-linear-[to_top,_transparent_0%,_white_50%,_transparent_100%] mask-alpha text-center"
         >
-            <div class="flex h-max flex-col items-center gap-3 pt-3" bind:this={commandQueue}>
+            <div class="flex h-max flex-col items-center gap-3 pt-3">
                 {#each Array.from({ length: 4 }) as _, index}
                     {#each commands as command, i}
                         <div

@@ -1,6 +1,8 @@
 <script lang="ts">
     import { classNames } from '$lib/utils/classnames';
+    import { isMobile } from '$lib/utils/is-mobile';
     import GridPaper from '../../grid-paper.svelte';
+    import { animate, hover, inView, stagger, transform } from 'motion';
 
     const collections = [
         {
@@ -37,29 +39,100 @@
 
     const [collectionKeys] = collections.map((collection) => Object.keys(collection));
 
-    const products = [
-        {
-            ID: 3397,
-            name: 'Turtlenecks',
-            barcode: 'TRTL'
-        },
-        {
-            ID: 2224,
-            name: 'Pullovers',
-            barcode: 'PLOV'
-        },
-        {
-            ID: 5689,
-            name: 'Zip-up',
-            barcode: 'ZPUP'
-        }
-    ];
+    const productSets = {
+        Sweaters: [
+            {
+                ID: 3397,
+                name: 'Turtlenecks',
+                barcode: 'TRTL'
+            },
+            {
+                ID: 2224,
+                name: 'Pullovers',
+                barcode: 'PLOV'
+            },
+            {
+                ID: 5689,
+                name: 'Zip-up',
+                barcode: 'ZPUP'
+            }
+        ],
+        Pants: [
+            {
+                ID: 3397,
+                name: 'Shorts',
+                barcode: 'SHRT'
+            },
+            {
+                ID: 2224,
+                name: 'Chinos',
+                barcode: 'CHNO'
+            },
+            {
+                ID: 5689,
+                name: 'Jeans',
+                barcode: 'JEAN'
+            }
+        ],
+        Shoes: [
+            {
+                ID: 3397,
+                name: 'Sambas',
+                barcode: 'SMBA'
+            },
+            {
+                ID: 2224,
+                name: 'Chuck 70s',
+                barcode: 'CHKS'
+            },
+            {
+                ID: 5689,
+                name: 'Loafers',
+                barcode: 'LFRS'
+            }
+        ]
+    };
 
-    const [productKeys] = products.map((product) => Object.keys(product));
+    const products = Object.values(productSets).flat();
+
+    let container: HTMLElement;
+
+    $effect(() => {
+        hover(container, () => {
+            if (isMobile()) return;
+
+            animate(
+                '.product-table',
+                {
+                    y: ['var(--y)', 'calc(var(--y) - var(--y-offset))'],
+                    x: ['var(--x)', 'calc(var(--x) - var(--x-offset))']
+                },
+                {
+                    type: 'spring',
+                    duration: 0.5,
+                    delay: stagger(0.02)
+                }
+            );
+
+            return () => {
+                animate(
+                    '.product-table',
+                    { y: 'var(--y)', x: 'var(--x)' },
+                    { type: 'spring', duration: 0.5 }
+                );
+            };
+        });
+
+        inView(container, () => {
+            if (!isMobile()) return;
+            console.log('in view');
+        });
+    });
 </script>
 
 <div
     class="border-smooth col-span-12 flex flex-col rounded-2xl border bg-white/2 p-2 md:col-span-6"
+    bind:this={container}
 >
     <div class="space-y-3 px-3 pt-2 pb-4">
         <div class="flex items-center gap-2">
@@ -159,26 +232,32 @@
                 </table>
             </div>
         </div>
-        <div class="mt-0 mb-auto h-full w-full flex-1">
-            {#each Array.from({ length: 3 }) as _, i}
+        <div class="mt-0 mb-auto flex h-full w-full flex-col gap-8">
+            {#each Object.entries(productSets).reverse() as [key, products], i}
+                {@const keys = Object.keys(products[0])}
+
                 <div
-                    class="border-smooth absolute right-20 bottom-16 flex aspect-[4/2] min-w-[275px] flex-col rounded-2xl border bg-[#232325]/90 shadow-[4px_8px_20px_rgba(0,0,0,0.2)] backdrop-blur-md"
-                    style:transform={`translateY(${i * 15}px) translateX(${i * 25}px)`}
+                    class="border-smooth product-table absolute right-8 bottom-8 flex aspect-[4/2] min-w-[275px] flex-col rounded-2xl border bg-[#232325]/90 shadow-[4px_8px_20px_rgba(0,0,0,0.2)] backdrop-blur-md"
                     style:opacity={1 - i * 0.01}
-                    style:z-index={-i}
+                    style:z-index={i}
+                    style:--y="{-i * 15}px"
+                    style:--x="{-i * 25}px"
+                    style:--y-offset="{i * 10}px"
+                    style:--x-offset="{i * 25}px"
+                    style:transform="translateY(var(--y)) translateX(var(--x))"
                 >
-                    <h3 class="text-caption text-primary px-3 py-2">Sweaters</h3>
+                    <h3 class="text-caption text-primary px-3 py-2">{key}</h3>
                     <div class="border-smooth mx-1 mt-auto mb-1 flex-1 rounded-xl border">
                         <table class="table w-full p-2.5">
                             <thead>
                                 <tr
                                     class="bg-greyscale-900 border-smooth text-primary text-micro w-full border-b font-normal"
                                 >
-                                    {#each productKeys as heading}
+                                    {#each keys as key}
                                         <th
                                             class="p-2 text-left first-of-type:rounded-tl-xl last-of-type:rounded-tr-xl"
                                         >
-                                            <span class="inline">{heading}</span>
+                                            <span class="inline">{key}</span>
                                             <svg
                                                 width="16"
                                                 height="17"

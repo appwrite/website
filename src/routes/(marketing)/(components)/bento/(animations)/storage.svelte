@@ -59,7 +59,11 @@
                     borderRadius = latest.toFixed();
                 }
             });
-            animate(to);
+            const animation = animate(to);
+
+            return () => {
+                animation.stop();
+            };
         };
 
         const fromSequence = () => {
@@ -78,7 +82,11 @@
                     borderRadius = latest.toFixed();
                 }
             });
-            animate(from);
+            const animation = animate(from);
+
+            return () => {
+                animation.stop();
+            };
         };
 
         inView(
