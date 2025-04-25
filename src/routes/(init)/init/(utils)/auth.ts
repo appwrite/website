@@ -4,7 +4,7 @@ import { appwriteInitServer } from './appwrite.server';
 import { PUBLIC_APPWRITE_PROJECT_INIT_ID } from '$env/static/public';
 import type { Cookies } from '@sveltejs/kit';
 
-export const cookieKey = `a_session_${PUBLIC_APPWRITE_PROJECT_INIT_ID}`;
+export const cookieKey = `init_session_${PUBLIC_APPWRITE_PROJECT_INIT_ID}`;
 
 export const createInitSession = async (userId: string, secret: string, cookies: Cookies) => {
     if (!userId || !secret) {
@@ -87,7 +87,7 @@ export const getGithubUser = async () => {
 };
 
 export async function getAppwriteUser(): Promise<AppwriteUser | null> {
-    return await appwriteInit.account
+    return await appwriteInitServer.account
         .get()
         .then((res) => res)
         .catch(() => null);
