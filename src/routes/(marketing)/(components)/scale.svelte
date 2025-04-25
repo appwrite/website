@@ -130,11 +130,11 @@
             </div>
         </div>
 
-        {#each stats as _}
+        {#each stats as _, i}
             <div
-                class="border-accent absolute top-0 h-2 w-2 rounded-full border bg-white"
+                class="border-accent absolute top-0 left-0 z-10 h-2 w-2 rounded-full border bg-white"
                 style:offset-path="path('M1728 186L0 749.5')"
-                style:offset-distance="40%"
+                style:offset-distance={`${i * (100 / stats.length)}%`}
             ></div>
         {/each}
 
