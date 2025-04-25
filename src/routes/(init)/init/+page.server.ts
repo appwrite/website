@@ -1,5 +1,5 @@
 import { getInitUser } from './(utils)/auth';
-import { getTicketDocByUser, getUserHasTicket } from './(utils)/tickets';
+import { getTicketDocByUser } from './(utils)/tickets';
 
 export const prerender = false;
 

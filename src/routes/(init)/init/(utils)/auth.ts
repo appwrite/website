@@ -105,7 +105,16 @@ export const getInitUser = async () => {
 };
 
 export const isLoggedIn = async () => {
-    const user = await getInitUser();
+    try {
+        const user = await getInitUser();
 
-    return !!user.github;
+        if (user.github && !user.appwrite) {
+            console.warn('GitHub authenticated but Appwrite session missing');
+        }
+
+        return !!user.github;
+    } catch (error) {
+        console.error('Error checking login status:', error);
+        return false;
+    }
 };
