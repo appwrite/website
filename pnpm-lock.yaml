@@ -36,9 +36,6 @@ importers:
       '@appwrite.io/repo':
         specifier: github:appwrite/appwrite#feat-multi-region-docs
         version: https://codeload.github.com/appwrite/appwrite/tar.gz/4d81a901cbc48b94a720392a2611da028ea934b9
-      '@dittmann/adapter-node-rolldown':
-        specifier: ^5.2.2
-        version: 5.2.2(@oxc-project/runtime@0.65.0)(@sveltejs/kit@2.20.2(@sveltejs/vite-plugin-svelte@5.0.3(rolldown-vite@6.3.3(@types/node@22.13.10)(esbuild@0.25.2)(jiti@2.4.2)(sass@1.85.1)(typescript@5.8.2)(yaml@2.7.0))(svelte@5.25.6))(rolldown-vite@6.3.3(@types/node@22.13.10)(esbuild@0.25.2)(jiti@2.4.2)(sass@1.85.1)(typescript@5.8.2)(yaml@2.7.0))(svelte@5.25.6))(typescript@5.8.2)
       '@eslint/compat':
         specifier: ^1.2.7
         version: 1.2.7(eslint@9.22.0(jiti@2.4.2))
@@ -61,8 +58,8 @@ importers:
         specifier: ^1.50.0
         version: 1.51.0
       '@sveltejs/adapter-node':
-        specifier: link:/Users/torstendittmann/Documents/GitHub/TorstenDittmann/kit/packages/adapter-node
-        version: link:../../TorstenDittmann/kit/packages/adapter-node
+        specifier: npm:@dittmann/adapter-node-rolldown@latest
+        version: '@dittmann/adapter-node-rolldown@5.2.2(@oxc-project/runtime@0.65.0)(@sveltejs/kit@2.20.2(@sveltejs/vite-plugin-svelte@5.0.3(rolldown-vite@6.3.3(@types/node@22.13.10)(esbuild@0.25.2)(jiti@2.4.2)(sass@1.85.1)(typescript@5.8.2)(yaml@2.7.0))(svelte@5.25.6))(rolldown-vite@6.3.3(@types/node@22.13.10)(esbuild@0.25.2)(jiti@2.4.2)(sass@1.85.1)(typescript@5.8.2)(yaml@2.7.0))(svelte@5.25.6))(typescript@5.8.2)'
       '@sveltejs/enhanced-img':
         specifier: ^0.4.4
         version: 0.4.4(rolldown-vite@6.3.3(@types/node@22.13.10)(esbuild@0.25.2)(jiti@2.4.2)(sass@1.85.1)(typescript@5.8.2)(yaml@2.7.0))(rollup@4.35.0)(svelte@5.25.6)
