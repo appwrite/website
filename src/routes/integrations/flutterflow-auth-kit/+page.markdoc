@@ -51,21 +51,26 @@ Here’s what you’ll need to have ready:
 
 ## Step 1: Setting up your Appwrite project
 
-Let’s start by getting your Appwrite project ready:
+Let’s start by setting up your Appwrite project (you can use a new or an existing one):
 
 1. Head over to the [Appwrite Console](https://cloud.appwrite.io/).
-2. Create a new project (give it a name that makes sense for your app).
-3. Select "Add Platform" from the **Platforms** tab.
-4. For each target platform, provide the required information as shown below:
+2. Select your project (or create a new one).
+3. Add a **Flutter app** as a platform.
+4. In the platform setup, choose the platforms you want to support under Flutter App - Web, Android, and/or iOS - and enter the required values as shown below:
 
-| Platform       | Required Info                                     |
-|----------------|---------------------------------------------------|
-| Web app / FlutterFlow Web Testing        | Hostnames: `localhost`, `*.web.app`, `*.run.app` |
-| Android app    | Package name (e.g. `com.company.appname`)         |
-| Apple app (iOS)| Bundle ID (e.g. `com.company.appname`)            |
-| Flutter app    | Choose one or more supported platforms (Web, iOS, Android) and enter appropriate identifiers |
 
-📌 **Save your Project ID** – you’ll need it in the next step.
+| Platform | Required Info |
+|----------|----------------|
+| Web      | Hostnames: `localhost`, `*.web.app`, `*.run.app` (Used for FlutterFlow Web Testing) |
+| Android  | Package Name (e.g. `com.company.appname`) |
+| iOS      | Bundle ID (e.g. `com.company.appname`) |
+
+5. Go to **Settings > Overview** to copy the following values:
+- **API Endpoint**
+- **Project ID**
+
+📌 You’ll need these in the next step to configure the authentication library.
+
 
 ## Step 2: Adding the authentication library
 
@@ -98,7 +103,7 @@ Once the library is added, you can configure it without writing any code:
 2. Under the **Appwrite Authentication Kit** entry, click on **View Details**.
 3. Update the environment values directly in the panel that opens:
    
-- API Endpoint: `https://cloud.appwrite.io/v1`
+- API Endpoint: `Your Appwrite Project Endpoint`
 - Project ID: `Your Appwrite Project ID`
 
 Note: This view opens automatically the first time a user adds the library - making it super easy to update values right away.
