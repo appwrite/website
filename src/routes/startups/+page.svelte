@@ -723,6 +723,7 @@
                                                         required
                                                         class="web-input-text"
                                                         type="text"
+                                                        pattern="^(https:\/\/www\.|https:\/\/)?([a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)+)[a-zA-Z0-9\-\._~:\/\?#[\]@!\$&'\(\)\*\+,;=.]*$"
                                                         name="company-website"
                                                         placeholder="https://company.com"
                                                         aria-label="Company website"
