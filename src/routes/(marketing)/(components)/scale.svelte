@@ -49,7 +49,6 @@
                     animate(0, numbers[index], {
                         ease: 'circOut',
                         duration: 0.75,
-
                         onUpdate: (latest) => (stat.number = +latest.toFixed())
                     });
                 });
@@ -83,10 +82,10 @@
                 >
             </h2>
             <p class="text-secondary border-accent mt-5 border-l-2 pr-28 pl-2 font-medium">
-                <span class="text-accent">“</span>Appwrite has supported our recent growth in every
+                <span class="text-accent">"</span>Appwrite has supported our recent growth in every
                 step of the way,
                 <span class="text-primary">without any failures or outages</span><span
-                    class="text-accent">”</span
+                    class="text-accent">"</span
                 >
             </p>
         </div>
@@ -128,55 +127,47 @@
             </div>
         </div>
 
-        {#each stats as stat, i}
-            <div
-                class="border-accent absolute h-2 w-2 -translate-1/2 rounded-full border bg-white"
-                style:offset-path="path('M1728 1L0 563.5H1728V1Z')"
-                style:offset-position="{i * 25}% 0"
-                style:offset-anchor="center"
-            ></div>
-        {/each}
-
-        {@render Graph()}
+        <svg
+            class="absolute bottom-0 h-auto w-full"
+            fill="none"
+            viewBox="0 0 1728 563"
+            xmlns="http://www.w3.org/2000/svg"
+            preserveAspectRatio="none"
+        >
+            <path d="M0 563.5L1728 1V563.5H0Z" fill="url(#b)" stroke="url(#a)" />
+            <circle cx="169" cy="508" r="4" fill="white" fill-opacity="0.9" stroke="#FD366E" />
+            <circle cx="517" cy="396" r="4" fill="white" fill-opacity="0.9" stroke="#FD366E" />
+            <circle cx="865" cy="282" r="4" fill="white" fill-opacity="0.9" stroke="#FD366E" />
+            <circle cx="1212" cy="170" r="4" fill="white" fill-opacity="0.9" stroke="#FD366E" />
+            <defs>
+                <linearGradient
+                    id="b"
+                    x1="-467"
+                    x2="1787"
+                    y1="753"
+                    y2="24.5"
+                    gradientUnits="userSpaceOnUse"
+                >
+                    <stop stop-color="#FD366E" stop-opacity=".16" offset="0" />
+                    <stop stop-color="#FD366E" stop-opacity="0" offset="1" />
+                </linearGradient>
+                <linearGradient
+                    id="a"
+                    x1="-94"
+                    x2="1730.1"
+                    y1="578"
+                    y2="7.8097"
+                    gradientUnits="userSpaceOnUse"
+                >
+                    <stop stop-color="#FD366E" offset="0" />
+                    <stop stop-color="#FD366E" stop-opacity=".48" offset=".21402" />
+                    <stop stop-color="#FD366E" stop-opacity=".2" offset=".7712" />
+                    <stop stop-color="#FD366E" stop-opacity="0" offset="1" />
+                </linearGradient>
+            </defs>
+        </svg>
     </div>
 </div>
-
-{#snippet Graph()}
-    <svg
-        class="absolute bottom-0"
-        fill="none"
-        viewBox="0 0 1728 563"
-        xmlns="http://www.w3.org/2000/svg"
-    >
-        <path d="M1728 1L0 563.5H1728V1Z" fill="url(#b)" stroke="url(#a)" />
-        <defs>
-            <linearGradient
-                id="b"
-                x1="-467"
-                x2="1787"
-                y1="753"
-                y2="24.5"
-                gradientUnits="userSpaceOnUse"
-            >
-                <stop stop-color="#FD366E" stop-opacity=".16" offset="0" />
-                <stop stop-color="#FD366E" stop-opacity="0" offset="1" />
-            </linearGradient>
-            <linearGradient
-                id="a"
-                x1="-94"
-                x2="1730.1"
-                y1="578"
-                y2="7.8097"
-                gradientUnits="userSpaceOnUse"
-            >
-                <stop stop-color="#FD366E" offset="0" />
-                <stop stop-color="#FD366E" stop-opacity=".48" offset=".21402" />
-                <stop stop-color="#FD366E" stop-opacity=".2" offset=".7712" />
-                <stop stop-color="#FD366E" stop-opacity="0" offset="1" />
-            </linearGradient>
-        </defs>
-    </svg>
-{/snippet}
 
 <style>
     .swipe {
