@@ -114,6 +114,7 @@
                 {#each stats as stat, i}
                     <div
                         class="border-smooth h-full overflow-auto border-l border-dashed [mask-image:_linear-gradient(to_bottom,_transparent,_black_var(--mask-height),_black_calc(100%_-_var(--mask-height)),_black)]"
+                        style:--mask-height={`${(4 - i) * 25}%`}
                     >
                         <div class={classNames('relative')} style:top={`${(4 - i) * 18}%`}>
                             <span
