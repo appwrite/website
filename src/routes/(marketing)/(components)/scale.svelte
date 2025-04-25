@@ -113,7 +113,7 @@
             <div class="absolute inset-0 z-100 grid grid-cols-4">
                 {#each stats as stat, i}
                     <div
-                        class="border-smooth h-full overflow-auto border-l border-dashed [mask-image:linear-gradient(to_bottom,rgba(0,0,0,0)_0%,_rgba(255,255,255,1)_50%,_rgba(0,0,0,0)_100%)]"
+                        class="border-smooth h-full overflow-auto border-l border-dashed [mask-image:_linear-gradient(to_bottom,_transparent,_black_var(--mask-height),_black_calc(100%_-_var(--mask-height)),_black)]"
                     >
                         <div class={classNames('relative')} style:top={`${(4 - i) * 18}%`}>
                             <span
