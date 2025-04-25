@@ -11,7 +11,8 @@
     import Faq from './(components)/FAQ.svelte';
 
     const title = 'Education' + TITLE_SUFFIX;
-    const description = "Students, here's your chance to expand your skillset without spending a penny. Sign up for Appwrite Education program to get access to our Pro plan.";
+    const description =
+        "Students, here's your chance to expand your skillset without spending a penny. Sign up for Appwrite Education program to get access to our Pro plan.";
     const ogImage = DEFAULT_HOST + '/images/open-graph/website.png';
 </script>
 

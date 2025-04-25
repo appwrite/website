@@ -34,6 +34,8 @@ Once you've cloned the Appwrite website repo, running the following command to i
 pnpm i
 ```
 
+**Locate the `.env.example` file in the root directory and rename it to `.env`.** This file contains the required environment variables for the project to function properly.
+
 Then, run the following command to start a development server.
 
 ```sh
@@ -60,11 +62,11 @@ doc-548-submit-a-pull-request-section-to-contribution-guide
 
 When `TYPE` can be:
 
--   **feat** - is a new feature
--   **doc** - documentation only changes
--   **cicd** - changes related to CI/CD system
--   **fix** - a bug fix
--   **refactor** - code change that neither fixes a bug nor adds a feature
+- **feat** - is a new feature
+- **doc** - documentation only changes
+- **cicd** - changes related to CI/CD system
+- **fix** - a bug fix
+- **refactor** - code change that neither fixes a bug nor adds a feature
 
 **All PRs must include a commit message with a description of the changes made!**
 

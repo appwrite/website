@@ -5,15 +5,17 @@
     import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
     import { onMount } from 'svelte';
     import ChangelogEntry from '../ChangelogEntry.svelte';
-    import { page } from '$app/stores';
+    import { page } from '$app/state';
     import { CHANGELOG_KEY } from '../utils';
     import { TITLE_SUFFIX } from '$routes/titles';
+    import { Button } from '$lib/components/ui';
 
-    export let data;
+    let { data } = $props();
 
     const seo = {
         title: 'Changelog' + TITLE_SUFFIX,
-        description: "Explore Appwrite's changelog to stay on top of all the product updates and track our journey.",
+        description:
+            "Explore Appwrite's changelog to stay on top of all the product updates and track our journey.",
         ogImage: `${DEFAULT_HOST}/images/open-graph/website.png`
     };
 
@@ -22,7 +24,7 @@
     }
 
     onMount(() => {
-        localStorage.setItem(CHANGELOG_KEY, $page.data.changelogEntries.toString());
+        localStorage.setItem(CHANGELOG_KEY, page.data.changelogEntries.toString());
     });
 </script>
 
@@ -47,22 +49,24 @@
     <div class="web-big-padding-section">
         <div class="pt-10">
             <div class="web-big-padding-section-level-2">
-                <div class="container wrapper">
+                <div class="wrapper container">
                     <h1 class="text-display font-aeonik-pro text-primary">Changelog</h1>
                     <ul>
                         {#each data.entries as entry}
                             <li>
-                                <div class="web-dot" />
+                                <div class="web-dot"></div>
                                 <ChangelogEntry {entry}>
-                                    <svelte:component this={entry.component} />
+                                    <entry.component />
                                 </ChangelogEntry>
                             </li>
                         {/each}
                     </ul>
 
                     {#if data.nextPage}
-                        <button class="web-button is-secondary" on:click={loadMore}
-                            >Load more</button
+                        <Button
+                            class="mx-auto mt-20 min-w-44"
+                            variant="secondary"
+                            onclick={loadMore}>Load more</Button
                         >
                     {/if}
                 </div>
@@ -125,12 +129,6 @@
                 translate: -50% var(--dot-offset);
             }
         }
-    }
-
-    button {
-        margin-block-start: 5rem;
-        margin-inline: auto;
-        min-inline-size: 10.9375rem;
     }
 
     @media screen and (max-width: 512px) {

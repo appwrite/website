@@ -37,12 +37,12 @@
 
 <div class="wrapper" bind:this={wrapper}>
     <div class="interface">
-        <div class="bg" />
+        <div class="bg"></div>
 
         <div class="circles">
-            <div class="circle" />
-            <div class="circle" style="left: 16px;" />
-            <div class="circle" style="left: 32px;" />
+            <div class="circle"></div>
+            <div class="circle" style="left: 16px;"></div>
+            <div class="circle" style="left: 32px;"></div>
         </div>
         <div class="screenbg-wrapper">
             <div class="screenbg" style:--bg="url('{GridSvg}')">
@@ -104,12 +104,12 @@
                 </svg>
             </div>
 
-            <div class="blur" bind:this={blur} />
+            <div class="blur" bind:this={blur}></div>
         </div>
     </div>
     <div class="render-line" bind:this={renderLine}>
-        <div class="tick" />
-        <div class="line" />
+        <div class="tick"></div>
+        <div class="line"></div>
     </div>
 </div>
 

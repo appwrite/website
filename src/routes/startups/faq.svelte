@@ -2,6 +2,7 @@
     import { browser } from '$app/environment';
     import { createAccordion, melt } from '@melt-ui/svelte';
     import { slide } from 'svelte/transition';
+    import { createFaqSchema, getInlinedScriptTag } from '$lib/utils/metadata';
 
     export let items: {
         question: string;
@@ -30,6 +31,10 @@
         {
             question: 'What are the limits of the Scale plan?',
             answer: 'The Appwrite Scale plan has ample room for growth and can handle production applications of all sizes. We have set generous limits to ensure most applications can grow comfortably within those limits without incurring high bills. Please review our <a class="web-link underline" href="/pricing">pricing page</a> for a full overview of the Scale plan limits.'
+        },
+        {
+            question: 'Are OTP SMS costs covered by Appwrite?',
+            answer: 'All Appwrite plans include 10 free SMS messages per month, which allows you to test and implement OTP functionality without immediate costs. After this, you will have to pay the costs for SMS OTP. Please refer to our <a class="web-link underline" href="/docs/advanced/platform/phone-otp#rates">rates page</a> for a breakdown of the pricing, including rates by region and specific SMS costs.'
         },
         {
             question: 'What happens if we scale overnight?',
@@ -73,6 +78,11 @@
     });
 </script>
 
+<svelte:head>
+    <!-- eslint-disable-next-line svelte/no-at-html-tags-->
+    {@html getInlinedScriptTag(createFaqSchema(items))}
+</svelte:head>
+
 <ul
     class="collapsible w-full divide-y divide-white/5"
     style="--p-toggle-border-color: var(--web-color-smooth);"
@@ -100,7 +110,7 @@
                                 class="icon text-primary self-start transition-transform"
                                 class:rotate-180={$isSelected(`${index}`)}
                             >
-                                <span class="icon-cheveron-down" aria-hidden="true" />
+                                <span class="icon-cheveron-down" aria-hidden="true"></span>
                             </div>
                         </button>
                     </h3>
@@ -125,7 +135,7 @@
                             {faqItem.question}
                         </span>
                         <div class="icon text-primary">
-                            <span class="icon-cheveron-down" aria-hidden="true" />
+                            <span class="icon-cheveron-down" aria-hidden="true"></span>
                         </div>
                     </summary>
 

@@ -1,21 +1,21 @@
 <script lang="ts">
-    import { page } from '$app/stores';
+    import { page } from '$app/state';
     import { Article, FooterNav, MainFooter } from '$lib/components';
     import { Main } from '$lib/layouts';
     import { DEFAULT_HOST } from '$lib/utils/metadata';
     import type { AuthorData, PostsData } from '$routes/blog/content';
-    import { BLOG_TITLE_SUFFIX } from '$routes/titles';
+    import { TITLE_SUFFIX } from '$routes/titles';
     import { getContext } from 'svelte';
 
     export let name: string;
     export let description: string;
 
-    const pageSlug = $page.url.pathname.substring($page.url.pathname.lastIndexOf('/') + 1);
+    const pageSlug = page.url.pathname.substring(page.url.pathname.lastIndexOf('/') + 1);
     const authors = getContext<AuthorData[]>('authors');
     const postsList = getContext<PostsData[]>('posts');
     const posts = postsList.filter((post) => post.category.includes(pageSlug));
 
-    const seoTitle = name + BLOG_TITLE_SUFFIX;
+    const seoTitle = name + TITLE_SUFFIX;
     const ogImage = DEFAULT_HOST + '/images/open-graph/blog.png';
 </script>
 
@@ -41,7 +41,7 @@
         <div class="web-big-padding-section-level-2">
             <div class="container">
                 <a class="web-link web-u-color-text-secondary items-baseline" href="/blog">
-                    <span class="web-icon-chevron-left" aria-hidden="true" />
+                    <span class="web-icon-chevron-left" aria-hidden="true"></span>
                     <span>Back to blog</span>
                 </a>
                 <div class="web-category-header mt-6">

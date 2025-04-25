@@ -1,6 +1,6 @@
-import { OpenAPIV3 } from 'openapi-types';
-import { Platform, type Service } from './references';
 import { error } from '@sveltejs/kit';
+import { OpenAPIV3 } from 'openapi-types';
+import { Platform, type ServiceValue } from './references';
 
 export type SDKMethod = {
     'rate-limit': number;
@@ -10,6 +10,7 @@ export type SDKMethod = {
     title: string;
     description: string;
     demo: string;
+    group?: string;
     parameters: Array<{
         name: string;
         description: string;
@@ -34,6 +35,7 @@ type SDKMethodModel = {
 type AppwriteOperationObject = OpenAPIV3.OperationObject & {
     'x-appwrite': {
         method: string;
+        group?: string;
         weight: number;
         cookies: boolean;
         type: string;
@@ -60,10 +62,13 @@ export interface Property {
     } & OpenAPIV3.ReferenceObject;
 }
 
-export enum ModelType {
-    REST = 'REST',
-    GRAPHQL = 'GraphQL'
-}
+export const ModelType = {
+    REST: 'REST',
+    GRAPHQL: 'GraphQL'
+} as const;
+
+type ModelTypeType = keyof typeof ModelType;
+type ModelTypeValue = (typeof ModelType)[ModelTypeType];
 
 function getExamples(version: string) {
     switch (version) {
@@ -217,7 +222,7 @@ export async function getApi(version: string, platform: string): Promise<OpenAPI
         isServer ? 'server' : isClient ? 'client' : 'console'
     }.json`;
 
-    return specs[target]();
+    return specs[target]() as unknown as OpenAPIV3.Document;
 }
 
 const descriptions = import.meta.glob(
@@ -228,14 +233,14 @@ const descriptions = import.meta.glob(
     }
 );
 
-export async function getDescription(service: string): Promise<string> {
+export async function getDescription(service: string) {
     const target = `/src/routes/docs/references/[version]/[platform]/[service]/descriptions/${service}.md`;
 
     if (!(target in descriptions)) {
         throw new Error('Missing service description');
     }
 
-    return descriptions[target]();
+    return descriptions[target]() as unknown as string;
 }
 
 export async function getService(
@@ -244,7 +249,7 @@ export async function getService(
     service: string
 ): Promise<{
     service: {
-        name: Service;
+        name: ServiceValue;
         description: string;
     };
     methods: SDKMethod[];
@@ -262,7 +267,7 @@ export async function getService(
 
     const data: Awaited<ReturnType<typeof getService>> = {
         service: {
-            name: service as Service,
+            name: service as ServiceValue,
             description: await getDescription(service)
         },
         methods: []
@@ -324,11 +329,12 @@ export async function getService(
             continue;
         }
 
-        const demo = await examples[path]();
+        const demo = (await examples[path]()) as unknown as string;
 
         data.methods.push({
             id: operation['x-appwrite'].method,
-            demo: demo ?? '',
+            group: operation['x-appwrite'].group,
+            demo: typeof demo === 'string' ? demo : '',
             title: operation.summary ?? '',
             description: operation.description ?? '',
             parameters: parameters ?? [],
@@ -340,6 +346,17 @@ export async function getService(
             'rate-key': operation['x-appwrite']['rate-key']
         });
     }
+
+    // Sort methods by weight from x-appwrite metadata
+    data.methods.sort((a, b) => {
+        const aPath = api.paths[a.url] as OpenAPIV3.PathItemObject;
+        const bPath = api.paths[b.url] as OpenAPIV3.PathItemObject;
+        const aMethod = a.method.toLowerCase() as Lowercase<OpenAPIV3.HttpMethods>;
+        const bMethod = b.method.toLowerCase() as Lowercase<OpenAPIV3.HttpMethods>;
+        const aWeight = (aPath?.[aMethod] as AppwriteOperationObject)?.['x-appwrite']?.weight ?? 0;
+        const bWeight = (bPath?.[bMethod] as AppwriteOperationObject)?.['x-appwrite']?.weight ?? 0;
+        return aWeight - bWeight;
+    });
 
     return data;
 }
@@ -370,7 +387,7 @@ export function resolveReference(
 export const generateExample = (
     schema: OpenAPIV3.SchemaObject,
     api: OpenAPIV3.Document<object>,
-    modelType: ModelType = ModelType.REST
+    modelType: ModelTypeValue = ModelType.REST
 ): object => {
     const properties = Object.keys(schema.properties ?? {}).map((key) => {
         const name = key;

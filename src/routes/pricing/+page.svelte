@@ -7,7 +7,8 @@
     import ComparePlans from './compare-plans.svelte';
     import Faq from './faq.svelte';
     import BG from './bg.png?enhanced';
-    import { PUBLIC_APPWRITE_DASHBOARD } from '$env/static/public';
+    import { getAppwriteDashboardUrl } from '$lib/utils/dashboard';
+    import { Button } from '$lib/components/ui';
 
     const title = 'Pricing' + TITLE_SUFFIX;
     const description = 'Explore our straightforward pricing plans that scale with your project.';
@@ -54,14 +55,15 @@
                             style="background: linear-gradient(90deg, #F47298 0%, #E4E1E5 61.98%, #E4E4E7 100%);
                                 -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; padding-block-end:2px;"
                         >
-                            Pricing
+                            Straightforward pricing for any project
                         </h1>
                         <p
                             class="text-description max-w-sm self-center text-center opacity-90"
                             style="background: linear-gradient(90deg, #F47298 0%, #E4E1E5 61.98%, #E4E4E7 100%);
                                 -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; padding-block-end:2px;"
                         >
-                            Appwrite offers simple and transparent pricing plans with no surprises.
+                            Start building for free and upgrade your plan as your project and team
+                            grows.
                         </p>
                     </div>
                 </section>
@@ -93,14 +95,15 @@
                                                 A great fit for passion projects and small
                                                 applications.
                                             </p>
-                                            <a
-                                                href="{PUBLIC_APPWRITE_DASHBOARD}/register"
-                                                class="web-button is-secondary is-full-width mt-8"
+                                            <Button
+                                                variant="secondary"
+                                                href={getAppwriteDashboardUrl('/register')}
+                                                class="is-full-width mt-8"
                                             >
                                                 <span class="text-sub-body font-medium"
                                                     >Start building</span
                                                 >
-                                            </a>
+                                            </Button>
                                         </header>
                                         <div class="web-pricing-cards-content">
                                             <ul class="web-checked-list-circle">
@@ -114,7 +117,7 @@
                                                 </li>
                                                 <li>
                                                     <span
-                                                        >1 Database, 1 Bucket, 3 Functions per
+                                                        >1 Database, 1 Bucket, 5 Functions per
                                                         project</span
                                                     >
                                                 </li>
@@ -159,16 +162,18 @@
                                                 For production applications that need powerful
                                                 functionality and resources to scale.
                                             </p>
-                                            <a
-                                                href="https://cloud.appwrite.io/console?type=create&plan=tier-1"
-                                                class="web-button is-full-width mt-11"
+                                            <Button
+                                                href={getAppwriteDashboardUrl(
+                                                    '/console?type=create&plan=tier-1'
+                                                )}
+                                                class="is-full-width mt-11"
                                                 target="_blank"
                                                 rel="noopener noreferrer"
                                             >
                                                 <span class="text-sub-body font-medium"
                                                     >Start building</span
                                                 >
-                                            </a>
+                                            </Button>
                                         </header>
                                         <div class="web-pricing-cards-content">
                                             <p>Everything in Free, plus:</p>
@@ -223,16 +228,19 @@
                                                 For teams that handle more complex and large
                                                 projects and need more control and support.
                                             </p>
-                                            <a
-                                                href="https://cloud.appwrite.io/console?type=create&plan=tier-2"
-                                                class="web-button is-secondary is-full-width mt-10"
+                                            <Button
+                                                variant="secondary"
+                                                href={getAppwriteDashboardUrl(
+                                                    '/console?type=create&plan=tier-2'
+                                                )}
+                                                class="is-full-width mt-10"
                                                 target="_blank"
                                                 rel="noopener noreferrer"
                                             >
                                                 <span class="text-sub-body font-medium"
                                                     >Start building</span
                                                 >
-                                            </a>
+                                            </Button>
                                         </header>
                                         <div class="web-pricing-cards-content">
                                             <p>Everything in Pro, plus:</p>
@@ -275,14 +283,15 @@
                                                 For enterprises that need more power and premium
                                                 support.
                                             </p>
-                                            <a
+                                            <Button
+                                                variant="secondary"
                                                 href="/contact-us/enterprise"
-                                                class="web-button is-secondary is-full-width mt-10"
+                                                class="is-full-width mt-10"
                                                 rel="noopener noreferrer"
                                             >
                                                 <!-- <span class="web-sub-body-500">Start trial</span> -->
                                                 <span class="web-sub-body-500">Contact us</span>
-                                            </a>
+                                            </Button>
                                         </header>
                                         <div class="web-pricing-cards-content">
                                             <p>Everything in Scale, plus:</p>
@@ -311,7 +320,7 @@
                             >
                                 Enterprises
                                 <div
-                                    class="web-inline-tag is-pink text-caption py-1! px-2! font-normal"
+                                    class="web-inline-tag is-pink text-caption px-2! py-1! font-normal"
                                 >
                                     Coming soon
                                 </div>
@@ -320,7 +329,8 @@
                                 Large scale projects seeking greater performance, collaboration and
                                 security.
                             </p>
-                            <a href="/contact-us" class="web-button is-secondary mt-8">Contact us</a
+                            <Button variant="secondary" href="/contact-us" class="mt-8"
+                                >Contact us</Button
                             >
                         </div>
                         <div class="cta-card w-full p-6">
@@ -333,9 +343,10 @@
                                 We support open-source teams with free access to Pro and Scale
                                 plans.
                             </p>
-                            <a
+                            <Button
+                                variant="secondary"
                                 href="/docs/advanced/platform/oss"
-                                class="web-button is-secondary mt-8">Learn More</a
+                                class="mt-8">Learn More</Button
                             >
                         </div>
                     </div>
@@ -346,7 +357,7 @@
 
         <div class="dark relative overflow-hidden pt-10">
             <div class="web-big-padding-section-level-2 relative">
-                <div class="container relative" style:z-index="10">
+                <div class="relative container" style:z-index="10">
                     <section class="web-grid-4-6">
                         <header>
                             <div class="text-display font-aeonik-pro text-primary">FAQ</div>

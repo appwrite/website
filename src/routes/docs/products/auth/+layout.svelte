@@ -47,6 +47,10 @@
                 {
                     label: 'Tokens',
                     href: '/docs/products/auth/tokens'
+                },
+                {
+                    label: 'Identities',
+                    href: '/docs/products/auth/identities'
                 }
             ]
         },
@@ -94,8 +98,12 @@
                     href: '/docs/products/auth/mfa'
                 },
                 {
-                    label: 'Verify user',
+                    label: 'User verification',
                     href: '/docs/products/auth/verify-user'
+                },
+                {
+                    label: 'Team invites',
+                    href: '/docs/products/auth/team-invites'
                 }
             ]
         },

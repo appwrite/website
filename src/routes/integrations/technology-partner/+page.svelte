@@ -9,6 +9,7 @@
     import Pink from './bg.png';
     import { getReferrerAndUtmSource } from '$lib/utils/utm';
     import { PUBLIC_GROWTH_ENDPOINT } from '$env/static/public';
+    import { Button } from '$lib/components/ui';
 
     let email = '';
     let name = '';
@@ -20,11 +21,14 @@
     let productUrl = '';
     let extraDetails = '';
     let hasCreatedIntegration = false;
-    let error: string | undefined;
+
     let submitted = false;
+    let submitting = false;
+    let error: string | undefined;
 
     async function handleSubmit() {
         error = undefined;
+        submitting = true;
 
         const response = await fetch(`${PUBLIC_GROWTH_ENDPOINT}/conversations/technology-partner`, {
             method: 'POST',
@@ -45,6 +49,9 @@
                 ...getReferrerAndUtmSource()
             })
         });
+
+        submitting = false;
+
         if (response.status >= 400) {
             error = response.status >= 500 ? 'Server Error.' : 'Error submitting form.';
             return;
@@ -54,7 +61,8 @@
     }
 
     const title = 'Become a Technology Partner' + TITLE_SUFFIX;
-    const description = "Want to integrate your app with Appwrite's API? Apply to our Technology Partners program by filling a short form.";
+    const description =
+        "Want to integrate your app with Appwrite's API? Apply to our Technology Partners program by filling a short form.";
     const ogImage = DEFAULT_HOST + '/images/open-graph/website.png';
 </script>
 
@@ -84,7 +92,7 @@
         <div id="form" class="overflow-hidden p-0 pt-10">
             <div class="relative pt-[7.5rem]">
                 <div class="relative">
-                    <div class="container relative">
+                    <div class="relative container">
                         <!-- before submit -->
                         <div class="web-grid-1-1-opt-2 e-u-row-gap-0 relative z-[1] gap-8">
                             <div>
@@ -102,18 +110,19 @@
                                                 team will try to get back to you as soon as
                                                 possible.
                                             </p>
-                                            <a
+                                            <Button
+                                                variant="secondary"
                                                 href="/integrations"
-                                                class="web-button is-secondary web-u-margin-block-end-32"
+                                                class="mb-8"
                                             >
                                                 <span>Back to integrations</span>
-                                            </a>
+                                            </Button>
                                         </section>
                                     {:else}
                                         <section class="flex flex-col gap-5">
-                                            <h4 class="text-display font-aeonik-pro text-primary">
+                                            <h1 class="text-display font-aeonik-pro text-primary">
                                                 Become a Technology Partner
-                                            </h4>
+                                            </h1>
                                             <p class="text-description">
                                                 Apply to our Technology Partners Program by filling
                                                 out this form. Our team will reach out to you to
@@ -135,10 +144,8 @@
                                                         target="_blank"
                                                         rel="noopener noreferrer"
                                                     >
-                                                        <span
-                                                            class={social.icon}
-                                                            aria-hidden="true"
-                                                        />
+                                                        <span class={social.icon} aria-hidden="true"
+                                                        ></span>
                                                     </a>
                                                 </li>
                                             {/each}
@@ -146,7 +153,7 @@
                                     </section>
                                     <div
                                         class="web-is-only-mobile web-u-margin-block-start-40 web-u-padding-block-start-40 web-u-sep-block-start"
-                                    />
+                                    ></div>
                                 </div>
                             </div>
                             {#if !submitted}
@@ -331,12 +338,13 @@
                                                 {error}
                                             {/if}
                                         </p>
-                                        <button
+                                        <Button
                                             type="submit"
-                                            class="web-button web-u-inline-width-100-percent-mobile-break1 self-center"
+                                            disabled={submitting}
+                                            class="web-u-inline-width-100-percent-mobile-break1 self-center"
                                         >
                                             <span>Submit</span>
-                                        </button>
+                                        </Button>
                                     </div>
                                 </form>
                             {/if}

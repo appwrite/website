@@ -165,7 +165,7 @@ While still in beta, Appwrite Cloud has limited support for Cloud runtimes. As w
 * {% icon icon="python" size="l" /%}
 * [Python](https://hub.docker.com/r/openruntimes/python/tags)
 * `python-3.9`
-* `python-3.12`
+`python-3.12`
 * x86 / arm64 / armv7 / armv8
 ---
 * {% icon icon="python" size="l" /%}
@@ -182,13 +182,13 @@ While still in beta, Appwrite Cloud has limited support for Cloud runtimes. As w
 * {% icon icon="php" size="l" /%}
 * [PHP](https://hub.docker.com/r/openruntimes/php/tags)
 * `php-8.0`
-* `php-8.3`
+`php-8.3`
 * x86 / arm64 / armv7 / armv8
 ---
 * {% icon icon="ruby" size="l" /%}
 * [Ruby](https://hub.docker.com/r/openruntimes/ruby/tags)
 * `ruby-3.0`
-* `ruby-3.3`
+`ruby-3.3`
 * x86 / arm64 / armv7 / armv8
 ---
 {% /table %}

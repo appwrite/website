@@ -50,21 +50,21 @@
 </script>
 
 <div class="wrapper">
-    <div class="container messaging-1" bind:this={messaging1}>
-        <div class="box1" />
-        <div class="box2" />
-        <div class="box3" />
+    <div class="messaging-1 container" bind:this={messaging1}>
+        <div class="box1"></div>
+        <div class="box2"></div>
+        <div class="box3"></div>
         <div class="circle">
-            <div class="circle-inner" />
+            <div class="circle-inner"></div>
         </div>
     </div>
 
-    <div class="container messaging-2" bind:this={messaging2}>
-        <div class="box1" />
-        <div class="box2" />
-        <div class="box3" />
+    <div class="messaging-2 container" bind:this={messaging2}>
+        <div class="box1"></div>
+        <div class="box2"></div>
+        <div class="box3"></div>
         <div class="circle">
-            <div class="circle-inner" />
+            <div class="circle-inner"></div>
             <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="40"
@@ -79,7 +79,7 @@
                     fill="#E4E4E7"
                 />
             </svg>
-            <div class="dot" bind:this={dot} />
+            <div class="dot" bind:this={dot}></div>
         </div>
     </div>
 </div>

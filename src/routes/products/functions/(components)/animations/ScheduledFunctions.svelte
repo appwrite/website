@@ -49,7 +49,7 @@
         <div class="flex gap-2">
             <div class="flex flex-col gap-1">
                 <div
-                    class="text-primary bg-greyscale-850 pointer-events-none relative flex size-12 items-center justify-center space-x-4 rounded-lg border border-white/10 text-center text-xl shadow-lg shadow-black/5 outline-none transition-all duration-500"
+                    class="text-primary bg-greyscale-850 pointer-events-none relative flex size-12 items-center justify-center space-x-4 rounded-lg border border-white/10 text-center text-xl shadow-lg shadow-black/5 transition-all duration-500 outline-none"
                 >
                     <span>5</span>
                 </div>
@@ -57,7 +57,7 @@
             </div>
             <div class="flex flex-col gap-1">
                 <div
-                    class="text-primary bg-greyscale-850 pointer-events-none relative flex size-12 items-center justify-center space-x-4 rounded-lg border border-white/10 text-center text-2xl shadow-lg shadow-black/5 outline-none transition-all duration-500"
+                    class="text-primary bg-greyscale-850 pointer-events-none relative flex size-12 items-center justify-center space-x-4 rounded-lg border border-white/10 text-center text-2xl shadow-lg shadow-black/5 transition-all duration-500 outline-none"
                 >
                     <span class="block pt-[10px]">*</span>
                 </div>
@@ -65,7 +65,7 @@
             </div>
             <div class="flex flex-col gap-1">
                 <div
-                    class="text-primary bg-greyscale-850 pointer-events-none relative flex size-12 items-center justify-center space-x-4 rounded-lg border border-white/10 text-center text-2xl shadow-lg shadow-black/5 outline-none transition-all duration-500"
+                    class="text-primary bg-greyscale-850 pointer-events-none relative flex size-12 items-center justify-center space-x-4 rounded-lg border border-white/10 text-center text-2xl shadow-lg shadow-black/5 transition-all duration-500 outline-none"
                 >
                     <span class="block pt-[10px]">*</span>
                 </div>
@@ -73,7 +73,7 @@
             </div>
             <div class="flex flex-col gap-1">
                 <div
-                    class="text-primary bg-greyscale-850 pointer-events-none relative flex size-12 items-center justify-center space-x-4 rounded-lg border border-white shadow-lg shadow-black/5 outline-none transition-all duration-500"
+                    class="text-primary bg-greyscale-850 pointer-events-none relative flex size-12 items-center justify-center space-x-4 rounded-lg border border-white shadow-lg shadow-black/5 transition-all duration-500 outline-none"
                 >
                     <span class="h-[20px] w-px bg-white"></span>
                 </div>
@@ -81,7 +81,7 @@
             </div>
             <div class="flex flex-col gap-1">
                 <div
-                    class="text-primary bg-greyscale-850 pointer-events-none relative flex size-12 items-center justify-center space-x-4 rounded-lg border border-white/10 text-center text-2xl shadow-lg shadow-black/5 outline-none transition-all duration-500"
+                    class="text-primary bg-greyscale-850 pointer-events-none relative flex size-12 items-center justify-center space-x-4 rounded-lg border border-white/10 text-center text-2xl shadow-lg shadow-black/5 transition-all duration-500 outline-none"
                 >
                     <span class="block pt-[10px]">*</span>
                 </div>

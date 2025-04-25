@@ -5,7 +5,7 @@ description: Connect Lemon Squeezy to Appwrite to handle payments, manage orders
 date: 2024-07-30
 featured: false
 isPartner: true
-isNew: true
+isNew: false
 cover: /images/integrations/lemon-squeezy-payments/cover.png
 category: payments
 product: 

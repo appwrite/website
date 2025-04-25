@@ -25,7 +25,7 @@
                     icon: 'icon-cog'
                 },
                 {
-                    label: 'API reference',
+                    label: 'API references',
                     href: '/docs/references',
                     icon: 'icon-document',
                     isParent: true
@@ -64,6 +64,13 @@
                     href: '/docs/products/storage',
                     icon: 'icon-folder',
                     isParent: true
+                },
+                {
+                    label: 'Network',
+                    href: '/docs/products/network',
+                    icon: 'icon-share',
+                    isParent: true,
+                    new: true
                 },
                 {
                     label: 'AI',
@@ -111,6 +118,11 @@
                     label: 'Assistant',
                     href: '/docs/tooling/assistant',
                     icon: 'icon-sparkles'
+                },
+                {
+                    label: 'MCP Server',
+                    href: '/docs/tooling/mcp',
+                    icon: 'web-icon-mcp'
                 },
                 {
                     label: 'The Appwriter',

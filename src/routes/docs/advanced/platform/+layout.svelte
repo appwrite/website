@@ -1,6 +1,7 @@
 <script lang="ts">
     import Docs from '$lib/layouts/Docs.svelte';
     import Sidebar, { type NavParent, type NavTree } from '$lib/layouts/Sidebar.svelte';
+    import { isNewUntil } from '$lib/utils/date';
 
     const parent: NavParent = {
         href: '/docs',
@@ -20,7 +21,6 @@
                     href: '/docs/advanced/platform/shortcuts'
                 },
                 {
-                    new: true,
                     label: 'Roles',
                     href: '/docs/advanced/platform/roles'
                 }
@@ -40,6 +40,11 @@
                 {
                     label: 'Response codes',
                     href: '/docs/advanced/platform/response-codes'
+                },
+                {
+                    label: 'Error handling',
+                    new: isNewUntil('10 Mar 2025'),
+                    href: '/docs/advanced/platform/error-handling'
                 }
             ]
         },
@@ -93,14 +98,24 @@
             label: 'Add ons',
             items: [
                 {
-                    new: true,
                     label: 'Compute',
+                    new: isNewUntil('28 Feb 2025'),
                     href: '/docs/advanced/platform/compute'
                 },
                 {
-                    new: true,
                     label: 'Phone OTP',
+                    new: isNewUntil('28 Feb 2025'),
                     href: '/docs/advanced/platform/phone-otp'
+                },
+                {
+                    new: isNewUntil('15 Apr 2025'),
+                    label: 'Image Transformations',
+                    href: '/docs/advanced/platform/image-transformations'
+                },
+                {
+                    new: isNewUntil('30 Apr 2025'),
+                    label: 'Database Reads and Writes',
+                    href: '/docs/advanced/platform/database-reads-and-writes'
                 }
             ]
         },
@@ -125,9 +140,14 @@
                     href: '/docs/advanced/platform/release-policy'
                 },
                 {
-                    new: true,
+                    new: isNewUntil('28 Feb 2025'),
                     label: 'Fair use',
                     href: '/docs/advanced/platform/fair-use-policy'
+                },
+                {
+                    new: isNewUntil('28 Feb 2025'),
+                    label: 'Abuse',
+                    href: '/docs/advanced/platform/abuse'
                 }
             ]
         }

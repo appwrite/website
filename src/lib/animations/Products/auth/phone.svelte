@@ -47,7 +47,7 @@
                     animate:flip={{ duration: 250 }}
                 >
                     <div class="inner">
-                        <span class="web-icon-{provider.toLowerCase()}" />
+                        <span class="web-icon-{provider.toLowerCase()}"></span>
                         <span>{provider}</span>
                     </div>
                 </button>

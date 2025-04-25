@@ -1,33 +1,33 @@
 <script>
-    import { PUBLIC_APPWRITE_DASHBOARD } from '$env/static/public';
     import { classNames } from '$lib/utils/classnames';
     import Logos from './Logos.svelte';
     import ChatIcon from '../(assets)/chat-icon.svg';
     import Beaker from '../(assets)/beaker.svg';
     import Checkmark from '../(assets)/checkmark.svg';
+    import { getAppwriteDashboardUrl } from '$lib/utils/dashboard';
+    import { Button } from '$lib/components/ui';
 
     const items = [
         {
             label: 'Develop your skills',
             description:
-                'Get access to Appwrite’s Pro plan and build your entire backend with Appwrite.',
+                'Get access to Appwrite Cloud and build your entire backend with Appwrite.',
             icon: Checkmark
         },
         {
             label: 'Build with any framework',
             description:
-                'Get free access to build with Appwrite Pro, valid throughout your student career.',
+                'Get free access to build with Appwrite’s Education plan, valid throughout your student career.',
             icon: Beaker
         },
         {
             label: 'Join a vibrant community',
-            description:
-                'Get community support and dedicated email support from the Appwrite team.',
+            description: 'Get community support in the Appwrite Discord server.',
             icon: ChatIcon
         }
     ];
 
-    const educationSignUp = `${PUBLIC_APPWRITE_DASHBOARD}/console/education`;
+    const educationSignUp = getAppwriteDashboardUrl('/console/education');
 </script>
 
 <section
@@ -35,29 +35,30 @@
         'gridLine horizontal relative mt-8 grid h-full min-h-[50vh] w-full place-items-center md:mt-32 md:grid-cols-[10%_1fr_10%] lg:grid-cols-[20%_1fr_20%] xl:grid-cols-3'
     )}
 >
-    <div class="pattern relative hidden h-full w-full md:block" />
+    <div class="pattern relative hidden h-full w-full md:block"></div>
     <div
-        class="gridLine vertical from-accent/5 relative flex h-full w-full flex-1 basis-[calc(100vw_/_3)] flex-col items-center justify-center gap-8 to-transparent py-10 px-8 text-center md:bg-gradient-to-t"
+        class="gridLine vertical from-accent/5 relative flex h-full w-full flex-1 basis-[calc(100vw_/_3)] flex-col items-center justify-center gap-8 to-transparent px-8 py-10 text-center md:bg-gradient-to-t"
     >
         <Logos />
         <h1 class="font-aeonik-pro text-5xl text-white">Build your next project with Appwrite</h1>
         <p class="text-secondary font-medium">
             Join the Appwrite Education program in collaboration with the GitHub Student Developer
-            Pack. Students receive Appwrite Cloud for free throughout their studies.
+            Pack. Students access Appwrite Cloud for free throughout their studies.
         </p>
 
         <div class="flex w-full flex-col items-center justify-center gap-4 md:flex-row">
-            <a class="web-button !w-full md:!w-fit" href={educationSignUp}>Sign up now</a>
-            <a
-                class="web-button is-secondary !w-full !whitespace-normal md:!w-fit"
+            <Button class="!w-full md:!w-fit" href={educationSignUp}>Sign up now</Button>
+            <Button
+                variant="secondary"
+                class="!w-full !whitespace-normal md:!w-fit"
                 href="https://github.com/education"
             >
-                <span class="web-icon-github !text-white" />
-                GitHub Education</a
+                <span class="web-icon-github !text-white"></span>
+                GitHub Education</Button
             >
         </div>
     </div>
-    <div class="pattern relative hidden h-full w-full md:block" />
+    <div class="pattern relative hidden h-full w-full md:block"></div>
 </section>
 
 <div

@@ -8,6 +8,7 @@
     import Experience from '../(assets)/icons/experience.svg';
     import Expert from '../(assets)/icons/expert.svg';
     import Ship from '../(assets)/icons/ship.svg';
+    import { Button } from '$lib/components/ui';
 
     const items = [
         {
@@ -50,9 +51,9 @@
 
     const whys = [
         {
-            title: 'Great experience',
+            title: 'Developer experience',
             description:
-                'Appwrite is built for developers and provides a world class experience. Never worry about scaling or security again.',
+                'Appwrite is built for and by developers, with a strong focus on your experience. Never worry about scaling or security again.',
             icon: Experience
         },
         {
@@ -62,9 +63,8 @@
             icon: Ship
         },
         {
-            title: 'Expert team',
-            description:
-                'Get support from the Appwrite team to build highly customizable applications for your clients.',
+            title: 'All in one platform',
+            description: 'All the APIs a developer needs in one place. And more to come.',
             icon: Expert
         }
     ];
@@ -81,7 +81,7 @@
     <div class="hidden w-full lg:block">
         <div class="border-smooth relative w-full border-t border-dashed">
             <div
-                class="container divide-smooth hidden grid-cols-3 gap-px divide-x divide-dashed lg:grid"
+                class="divide-smooth container hidden grid-cols-3 gap-px divide-x divide-dashed lg:grid"
             >
                 {#each items.slice(0, 3) as item}
                     <div
@@ -96,7 +96,7 @@
         </div>
         <div class="border-smooth relative w-full border-y border-dashed">
             <div
-                class="container divide-smooth hidden grid-cols-3 gap-px divide-x divide-dashed lg:grid"
+                class="divide-smooth container hidden grid-cols-3 gap-px divide-x divide-dashed lg:grid"
             >
                 {#each items.slice(3, items.length) as item}
                     <div
@@ -114,7 +114,7 @@
     <div class="hidden w-full md:block lg:hidden">
         <div class="border-smooth relative w-full border-t border-dashed">
             <div
-                class="container divide-smooth hidden grid-cols-2 gap-px divide-x divide-dashed md:grid"
+                class="divide-smooth container hidden grid-cols-2 gap-px divide-x divide-dashed md:grid"
             >
                 {#each items.slice(0, 2) as item}
                     <div
@@ -129,7 +129,7 @@
         </div>
         <div class="border-smooth relative w-full border-y border-dashed">
             <div
-                class="container divide-smooth hidden grid-cols-2 gap-px divide-x divide-dashed md:grid"
+                class="divide-smooth container hidden grid-cols-2 gap-px divide-x divide-dashed md:grid"
             >
                 {#each items.slice(2, 4) as item}
                     <div
@@ -144,7 +144,7 @@
         </div>
         <div class="border-smooth relative w-full border-b border-dashed">
             <div
-                class="container divide-smooth hidden grid-cols-2 gap-px divide-x divide-dashed md:grid"
+                class="divide-smooth container hidden grid-cols-2 gap-px divide-x divide-dashed md:grid"
             >
                 {#each items.slice(4, items.length) as item}
                     <div
@@ -161,7 +161,7 @@
 
     <div class="block w-full md:hidden">
         <div class="border-smooth relative w-full border-y border-dashed">
-            <div class="container divide-smooth grid grid-cols-1 gap-px divide-y divide-dashed">
+            <div class="divide-smooth container grid grid-cols-1 gap-px divide-y divide-dashed">
                 {#each items as item}
                     <div class="bg-greyscale-900 relative flex flex-col gap-4 p-8">
                         <img src={item.icon} alt="{item.title} Icon" class="size-12" />
@@ -173,7 +173,9 @@
         </div>
     </div>
 
-    <a href="#become-a-partner" class="web-button is-secondary mt-20 mx-auto">Become a partner</a>
+    <Button variant="secondary" href="#become-a-partner" class="mx-auto mt-20"
+        >Become a partner</Button
+    >
 </div>
 
 <div class="border-smooth flex flex-col items-center pt-24 pb-24">
@@ -183,7 +185,7 @@
 
     <div class="border-smooth relative w-full border-y border-dashed">
         <div
-            class="container divide-smooth grid grid-cols-1 gap-px divide-dashed max-md:divide-y md:grid-cols-3 md:divide-x"
+            class="divide-smooth container grid grid-cols-1 gap-px divide-dashed max-md:divide-y md:grid-cols-3 md:divide-x"
         >
             {#each whys as why}
                 <div
@@ -197,5 +199,7 @@
         </div>
     </div>
 
-    <a href="#become-a-partner" class="web-button is-secondary mt-20 mx-auto">Become a partner</a>
+    <Button href="#become-a-partner" variant="secondary" class="mx-auto mt-20"
+        >Become a partner</Button
+    >
 </div>

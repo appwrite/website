@@ -5,7 +5,7 @@ description: Store files in Amazon S3 instead of your local storage device
 date: 2024-07-30
 featured: false
 isPartner: true
-isNew: true
+isNew: false
 cover: /images/integrations/storage-s3/cover.png
 category: storage
 product: 

@@ -69,7 +69,7 @@ For example, your `.env` might look something similar to this.
 
 ```text
 APPWRITE_KEY=<YOUR_API_KEY>
-PUBLIC_APPWRITE_ENDPOINT=https://cloud.appwrite.io/v1
+PUBLIC_APPWRITE_ENDPOINT=https://<REGION>.cloud.appwrite.io/v1
 PUBLIC_APPWRITE_PROJECT=<PROJECT_ID>
 ```
 

@@ -1,5 +1,6 @@
 <script lang="ts">
     import Tooltip from '$lib/components/Tooltip.svelte';
+    import { Button } from '$lib/components/ui';
     import { classNames } from '$lib/utils/classnames';
     import Templates from '../(assets)/templates.png';
 
@@ -51,13 +52,13 @@
 <section class="light bg-greyscale-50 pt-12 pb-20">
     <div class="container flex flex-col justify-between gap-8 md:flex-row">
         <div class="mb-10 flex max-w-sm flex-col">
-            <span class="web-badges text-micro font-aeonik-fono mr-auto ml-0 uppercase !text-white"
+            <span class="web-badges text-micro font-aeonik-fono mr-auto ml-0 !text-white uppercase"
                 >Getting Started_</span
             >
             <h2 class="text-title text-primary font-aeonik-pro mt-8 mb-4 text-pretty">
                 Add functionality within seconds
             </h2>
-            <p class="text-body text-secondary block text-pretty font-medium">
+            <p class="text-body text-secondary block font-medium text-pretty">
                 Appwrite offers a wide variety of ready-to-use templates to speed up development.
             </p>
         </div>
@@ -72,9 +73,10 @@
     <div class="container mt-20 space-y-8">
         <div class="flex items-center justify-between">
             <h2 class="text-label text-primary font-aeonik-pro">Explore templates</h2>
-            <a
+            <Button
+                variant="secondary"
                 href="/docs/products/functions/templates"
-                class="web-button is-secondary !hidden md:!block">View all templates</a
+                class="!hidden md:!block">View all templates</Button
             >
         </div>
         <div class="grid grid-cols-1 gap-4 md:grid-cols-3">
@@ -108,9 +110,9 @@
                                             +{hiddenRuntimes.length}
                                         </span>
                                     </li>
-                                    <svelte:fragment slot="tooltip">
+                                    {#snippet tooltip()}
                                         <span class="text-micro">{hiddenRuntimes.join(', ')}</span>
-                                    </svelte:fragment>
+                                    {/snippet}
                                 </Tooltip>
                             {/if}
                         </ul>
@@ -119,10 +121,10 @@
                 </div>
             {/each}
 
-            <a
+            <Button
+                variant="secondary"
                 href="/docs/products/functions/templates"
-                class="web-button is-secondary block !w-full md:!hidden md:!w-fit"
-                >View all templates</a
+                class="block !w-full md:!hidden md:!w-fit">View all templates</Button
             >
         </div>
     </div>

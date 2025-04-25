@@ -15,7 +15,7 @@
     {#each $state.messages.slice(0, $state.tableSlice) as task (task.id)}
         <div class="row" transition:slide={{ duration: 150 }} animate:flip={{ duration: 150 }}>
             <div class="copy-button">
-                <span class="web-icon-copy" />
+                <span class="web-icon-copy"></span>
                 <span>{task.id}</span>
             </div>
             <div class="icon-button">
@@ -27,9 +27,9 @@
 
             <div class="status-indicator">
                 {#if task.status === 'sending'}
-                    <div class="loader is-small" in:fade />
+                    <div class="loader is-small" in:fade></div>
                 {:else}
-                    <span class="web-icon-check" />
+                    <span class="web-icon-check"></span>
                 {/if}
             </div>
         </div>

@@ -18,13 +18,13 @@
                 <button
                     class="text-micro flex flex-1 items-center justify-center gap-1 rounded-md border border-[#E2E8F0] py-1 font-medium text-[#0F172A]"
                 >
-                    <span class="web-icon-google !text-sm" />
+                    <span class="web-icon-google !text-sm"></span>
                     Google</button
                 >
                 <button
                     class="text-micro flex flex-1 items-center justify-center gap-1 rounded-md border border-[#E2E8F0] py-1 font-medium text-[#0F172A]"
                 >
-                    <span class="web-icon-github !text-sm" />
+                    <span class="web-icon-github !text-sm"></span>
                     GitHub</button
                 >
             </div>
@@ -39,7 +39,7 @@
                     id="email"
                     placeholder="Email address"
                     autocomplete="off"
-                    class="text-micro flex h-7 rounded-lg border border-[#d8d8db] py-2 px-3 -tracking-tight"
+                    class="text-micro flex h-7 rounded-lg border border-[#d8d8db] px-3 py-2 -tracking-tight"
                 />
 
                 <input
@@ -48,7 +48,7 @@
                     id="password"
                     placeholder="Password"
                     autocomplete="off"
-                    class="text-micro flex h-7 rounded-lg border border-[#d8d8db] py-2 px-3 -tracking-tight"
+                    class="text-micro flex h-7 rounded-lg border border-[#d8d8db] px-3 py-2 -tracking-tight"
                 />
             </div>
             <button

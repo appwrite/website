@@ -26,11 +26,11 @@
                 </p>
                 <div class="web-card-link u-flex u-cross-center" style:margin-block-start="1.25rem">
                     <span class="text">Announcement</span>
-                    <span class="web-icon-arrow-right" />
+                    <span class="web-icon-arrow-right"></span>
                 </div>
             </div>
             <img src={enumPng} alt="" />
-            <div class="circle" />
+            <div class="circle"></div>
         </a>
         <a
             href="/blog/post/announcing-two-factor-authentication"
@@ -44,11 +44,11 @@
                 </p>
                 <div class="web-card-link u-flex u-cross-center" style:margin-block-start="1.25rem">
                     <span class="text">Announcement</span>
-                    <span class="web-icon-arrow-right" />
+                    <span class="web-icon-arrow-right"></span>
                 </div>
             </div>
             <img src={twoFa} alt="" />
-            <div class="circle" />
+            <div class="circle"></div>
         </a>
         <a
             href="https://discord.com/events/564160730845151244/1209117412247609354"
@@ -61,7 +61,7 @@
                 <h3 class="text-label text-primary">Event: Safety</h3>
                 <div class="web-card-link u-flex u-cross-center">
                     <span class="text">Join</span>
-                    <span class="web-icon-arrow-right" />
+                    <span class="web-icon-arrow-right"></span>
                 </div>
             </div>
             <img
@@ -80,7 +80,7 @@
                     <h3 class="text-label text-primary" style="max-width: 300px">Release video</h3>
                     <div class="web-card-link u-flex u-cross-center">
                         <span class="text">Watch</span>
-                        <span class="web-icon-arrow-right" />
+                        <span class="web-icon-arrow-right"></span>
                     </div>
                 </div>
                 <Video
@@ -100,7 +100,7 @@
             <h3 class="text-label text-primary">Enum Documentation</h3>
             <div class="web-card-link u-flex u-cross-center">
                 <span class="text">Learn more</span>
-                <span class="web-icon-arrow-right" />
+                <span class="web-icon-arrow-right"></span>
             </div>
         </a>
         <a
@@ -111,7 +111,7 @@
             <h3 class="text-label text-primary">2FA Documentation</h3>
             <div class="web-card-link u-flex u-cross-center">
                 <span class="text">Learn more</span>
-                <span class="web-icon-arrow-right" />
+                <span class="web-icon-arrow-right"></span>
             </div>
         </a>
     </div>

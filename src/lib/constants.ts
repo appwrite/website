@@ -1,8 +1,40 @@
-export const GITHUB_STARS = '47K';
-export const GITHUB_REPO_LINK = 'https://github.com/appwrite/appwrite';
+type SocialStats = {
+    [K in 'GITHUB' | 'DISCORD' | 'TWITTER' | 'YOUTUBE']: {
+        STAT: string;
+        LINK: string;
+        EXTRA?: Record<string, string> | undefined;
+    };
+};
+
+export const SOCIAL_STATS: SocialStats = {
+    GITHUB: {
+        STAT: '48K',
+        LINK: 'https://github.com/appwrite/appwrite',
+        EXTRA: {
+            COMMITS: '24K+',
+            PULL_REQUESTS: '4.5K+',
+            ISSUES: '3K+',
+            OPEN_ISSUES: '500+',
+            CLOSED_ISSUES: '3.3K+',
+            FORKS: '4.3K+',
+            CONTRIBUTORS: '800+'
+        }
+    },
+    DISCORD: {
+        STAT: '22K+',
+        LINK: '/discord'
+    },
+    TWITTER: {
+        STAT: '128K+',
+        LINK: 'https://twitter.com/intent/follow?screen_name=appwrite'
+    },
+    YOUTUBE: {
+        STAT: '11K+',
+        LINK: 'https://www.youtube.com/c/appwrite?sub_confirmation=1'
+    }
+};
+
 export const BANNER_KEY: Banners = 'discord-banner-01'; // Change key to force banner to show again
-export const SENTRY_DSN =
-    'https://27d41dc8bb67b596f137924ab8599e59@o1063647.ingest.us.sentry.io/4507497727000576';
 
 export const BLOG_POSTS_PER_PAGE = 12;
 
@@ -127,16 +159,31 @@ export const socials: Array<Social> = [
     {
         icon: 'web-icon-linkedin',
         label: 'LinkedIn',
-        link: 'https://www.linkedin.com/company/appwrite'
+        link: 'https://linkedin.com/company/appwrite'
     },
     {
         icon: 'web-icon-youtube',
         label: 'YouTube',
-        link: 'https://www.youtube.com/c/appwrite?sub_confirmation=1'
+        link: 'https://youtube.com/c/appwrite?sub_confirmation=1'
     },
     {
         icon: 'web-icon-daily-dev',
         label: 'Daily.dev',
         link: 'https://app.daily.dev/squads/appwrite'
+    },
+    {
+        icon: 'web-icon-bluesky',
+        label: 'Bluesky',
+        link: 'https://bsky.app/profile/appwrite.io'
+    },
+    {
+        icon: 'web-icon-tiktok',
+        label: 'Tiktok',
+        link: 'https://tiktok.com/@appwrite'
+    },
+    {
+        icon: 'web-icon-instagram',
+        label: 'Instagram',
+        link: 'https://instagram.com/appwrite.io'
     }
 ];

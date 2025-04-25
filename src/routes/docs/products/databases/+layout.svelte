@@ -41,12 +41,15 @@
                     href: '/docs/products/databases/permissions'
                 },
                 {
+                    label: 'Offline Sync',
+                    href: '/docs/products/databases/offline'
+                },
+                {
                     label: 'Relationships',
                     href: '/docs/products/databases/relationships'
                 },
                 {
                     label: 'Backups',
-                    new: true,
                     href: '/docs/products/databases/backups'
                 }
             ]
