@@ -1,5 +1,5 @@
 import { preprocessMeltUI, sequence } from '@melt-ui/pp';
-import nodeAdapter from '@sveltejs/adapter-node';
+import nodeAdapter from '@dittmann/adapter-node-rolldown';
 import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 import { dirname, join } from 'path';
 import { markdoc } from 'svelte-markdoc-preprocess';
@@ -32,7 +32,9 @@ const config = {
     ]),
     extensions: ['.markdoc', '.svelte', '.md'],
     kit: {
-        adapter: nodeAdapter(),
+        adapter: nodeAdapter({
+            precompress: false
+        }),
         version: {
             pollInterval: 60 * 1000
         },
