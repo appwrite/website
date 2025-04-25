@@ -107,18 +107,13 @@
     </div>
 
     <div
-        class="swipe mask absolute inset-0 hidden md:block"
+        class="swipe absolute inset-0 hidden md:block"
         style:--animation-duration={`${animationDuration}s`}
-        style:--mask-height="50px"
     >
         <div class="relative container h-full">
             <div class="absolute inset-0 z-100 grid grid-cols-4">
                 {#each stats as stat, i}
-                    <div
-                        class="mask border-smooth h-full overflow-auto border-l"
-                        style:--mask-direction="bottom"
-                        style:--mask-height={`${(4 - i) * 25}%`}
-                    >
+                    <div class="border-smooth h-full overflow-auto border-l">
                         <div class={classNames('relative')} style:top={`${(4 - i) * 18}%`}>
                             <span
                                 class="text-description text-primary border-accent relative -left-px z-10 border-l pl-4 font-medium"
@@ -130,70 +125,54 @@
                         </div>
                     </div>
                 {/each}
-
-                <div class="pointer-events-none absolute inset-0 z-50">
-                    {#each stats as stat, i}
-                        <div
-                            class="border-accent absolute top-[var(--top)] left-[calc(var(--left)_+_1px)] h-2 w-2 -translate-1/2 rounded-full border bg-white"
-                            style:--top={`${stat.top}%`}
-                            style:--left="{i * 25}%"
-                        ></div>
-                    {/each}
-                </div>
             </div>
         </div>
-        <div
-            class="from-accent/15 absolute inset-0 bg-gradient-to-tr to-transparent"
-            style="clip-path: polygon(0 100%, 100% 25%, 100% 100%, 0 100%);"
-        ></div>
-        <div
-            class="from-accent absolute inset-0 bg-gradient-to-r to-transparent"
-            style="clip-path: polygon(0 100%, 100% 25%, 100% 25.1%, 0 100.1%);"
-        ></div>
+
+        {#each stats as stat, i}
+            <div
+                class="border-accent absolute h-2 w-2 -translate-1/2 rounded-full border bg-white"
+                style:offset-path="path('M1728 1L0 563.5H1728V1Z')"
+                style:offset-position="{i * 25}% 0"
+                style:offset-anchor="center"
+            ></div>
+        {/each}
+
+        {@render Graph()}
     </div>
 </div>
 
 {#snippet Graph()}
     <svg
-        width="1728"
-        height="563"
-        viewBox="0 0 1728 563"
+        class="absolute bottom-0"
         fill="none"
+        viewBox="0 0 1728 563"
         xmlns="http://www.w3.org/2000/svg"
     >
-        <path
-            d="M1728 1L0 563.5H1728V1Z"
-            fill="url(#paint0_linear_941_109375)"
-            stroke="url(#paint1_linear_941_109375)"
-        />
-        <circle cx="264" cy="477" r="4" fill="white" fill-opacity="0.9" stroke="#FD366E" />
-        <circle cx="572" cy="377" r="4" fill="white" fill-opacity="0.9" stroke="#FD366E" />
-        <circle cx="880" cy="277" r="4" fill="white" fill-opacity="0.9" stroke="#FD366E" />
-        <circle cx="1188" cy="177" r="4" fill="white" fill-opacity="0.9" stroke="#FD366E" />
+        <path d="M1728 1L0 563.5H1728V1Z" fill="url(#b)" stroke="url(#a)" />
         <defs>
             <linearGradient
-                id="paint0_linear_941_109375"
+                id="b"
                 x1="-467"
-                y1="753"
                 x2="1787"
-                y2="24.5001"
+                y1="753"
+                y2="24.5"
                 gradientUnits="userSpaceOnUse"
             >
-                <stop stop-color="#FD366E" stop-opacity="0.16" />
-                <stop offset="1" stop-color="#FD366E" stop-opacity="0" />
+                <stop stop-color="#FD366E" stop-opacity=".16" offset="0" />
+                <stop stop-color="#FD366E" stop-opacity="0" offset="1" />
             </linearGradient>
             <linearGradient
-                id="paint1_linear_941_109375"
+                id="a"
                 x1="-94"
+                x2="1730.1"
                 y1="578"
-                x2="1730.13"
-                y2="7.80966"
+                y2="7.8097"
                 gradientUnits="userSpaceOnUse"
             >
-                <stop stop-color="#FD366E" />
-                <stop offset="0.214023" stop-color="#FD366E" stop-opacity="0.48" />
-                <stop offset="0.7712" stop-color="#FD366E" stop-opacity="0.2" />
-                <stop offset="1" stop-color="#FD366E" stop-opacity="0" />
+                <stop stop-color="#FD366E" offset="0" />
+                <stop stop-color="#FD366E" stop-opacity=".48" offset=".21402" />
+                <stop stop-color="#FD366E" stop-opacity=".2" offset=".7712" />
+                <stop stop-color="#FD366E" stop-opacity="0" offset="1" />
             </linearGradient>
         </defs>
     </svg>
@@ -203,16 +182,6 @@
     .swipe {
         animation: wipe-in var(--animation-duration) ease-in-out;
     }
-
-    @keyframes mask-wipe {
-        0% {
-            transform: translateX(0);
-        }
-        100% {
-            transform: translateX(100%);
-        }
-    }
-
     @keyframes wipe-in {
         0% {
             clip-path: polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%);
