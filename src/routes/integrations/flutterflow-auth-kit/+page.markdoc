@@ -55,7 +55,7 @@ Let’s start by setting up your Appwrite project (you can use a new or an exist
 
 1. Head over to the [Appwrite Console](https://cloud.appwrite.io/).
 2. Select your project (or create a new one).
-3. Add a **Flutter app** as a platform.
+3. Under **Add a platform**, add a **Flutter** platform.
 4. In the platform setup, choose the platforms you want to support under Flutter App - Web, Android, and/or iOS - and enter the required values as shown below:
 
 
