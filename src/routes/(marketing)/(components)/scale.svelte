@@ -71,7 +71,7 @@
 </script>
 
 <div
-    class="border-smooth relative flex min-h-[70vh] flex-col gap-4 border-y bg-black/8 py-20"
+    class="border-smooth relative flex min-h-[750px] flex-col gap-4 border-y bg-black/8 py-20"
     use:useInView
 >
     <div class="relative z-10 container w-fit md:w-full">
@@ -112,7 +112,9 @@
         <div class="relative container h-full">
             <div class="absolute inset-0 z-100 grid grid-cols-4">
                 {#each stats as stat, i}
-                    <div class="border-smooth h-full overflow-auto border-l">
+                    <div
+                        class="border-smooth h-full overflow-auto border-l border-dashed [mask-image:linear-gradient(to_bottom,rgba(0,0,0,0)_0%,_rgba(255,255,255,1)_50%,_rgba(0,0,0,0)_100%)]"
+                    >
                         <div class={classNames('relative')} style:top={`${(4 - i) * 18}%`}>
                             <span
                                 class="text-description text-primary border-accent relative -left-px z-10 border-l pl-4 font-medium"
@@ -127,6 +129,14 @@
             </div>
         </div>
 
+        {#each stats as _}
+            <div
+                class="border-accent absolute top-0 h-2 w-2 rounded-full border bg-white"
+                style:offset-path="path('M1728 186L0 749.5')"
+                style:offset-distance="40%"
+            ></div>
+        {/each}
+
         <svg
             class="absolute bottom-0 h-auto w-full"
             fill="none"
@@ -135,10 +145,6 @@
             preserveAspectRatio="none"
         >
             <path d="M0 563.5L1728 1V563.5H0Z" fill="url(#b)" stroke="url(#a)" />
-            <circle cx="169" cy="508" r="4" fill="white" fill-opacity="0.9" stroke="#FD366E" />
-            <circle cx="517" cy="396" r="4" fill="white" fill-opacity="0.9" stroke="#FD366E" />
-            <circle cx="865" cy="282" r="4" fill="white" fill-opacity="0.9" stroke="#FD366E" />
-            <circle cx="1212" cy="170" r="4" fill="white" fill-opacity="0.9" stroke="#FD366E" />
             <defs>
                 <linearGradient
                     id="b"
