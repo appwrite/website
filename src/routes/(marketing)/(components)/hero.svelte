@@ -20,7 +20,7 @@
             class="animate-blur-in flex flex-col gap-4 [animation-delay:150ms] [animation-duration:1000ms]"
         >
             <GradientText class="animate-fade-in">
-                <h1 class="text-display font-aeonik-pro text-pretty">
+                <h1 class="font-aeonik-pro text-hero text-pretty">
                     Build like a team of hundreds<span class="text-accent">_</span>
                 </h1>
             </GradientText>

@@ -27,8 +27,9 @@
 {#if $tooltipData.city}
     <div
         class="pointer-events-none absolute"
-        style:left="{coords.x - 50}px"
-        style:top="{coords.y - 50}px"
+        style:left="{coords.x + 100}px"
+        style:top="{coords.y - 20}px"
+        style:transform="translate(-50%, -100%)"
     >
         <div
             class={classNames(

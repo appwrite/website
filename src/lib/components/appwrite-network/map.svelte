@@ -16,12 +16,6 @@
     import { useAnimateInView } from '$lib/actions/animate-in-view';
     import { pins, type PinSegment } from './data/pins';
     import MapTooltip from './map-tooltip.svelte';
-    import { dev } from '$app/environment';
-
-    let dimensions = $state({
-        width: 0,
-        height: 0
-    });
 
     let activeRegion = $state<string | null>(null);
     let activeMarker: HTMLElement | null = null;
@@ -92,8 +86,6 @@
         >
             <div
                 class="relative w-full origin-bottom transform-[perspective(25px)_rotateX(1deg)_scale3d(1.4,_1.4,_1)] transition-all [scrollbar-width:none]"
-                bind:clientWidth={dimensions.width}
-                bind:clientHeight={dimensions.height}
             >
                 <div
                     class="absolute inset-0 mask-[image:url('/images/appwrite-network/map.svg')] mask-contain mask-no-repeat"
