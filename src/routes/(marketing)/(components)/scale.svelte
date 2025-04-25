@@ -41,20 +41,16 @@
 
     const useInView = (node: HTMLElement) => {
         shouldAnimate = true;
-        inView(
-            node,
-            () => {
-                if (!shouldAnimate) return;
-                stats.forEach((stat, index) => {
-                    animate(0, numbers[index], {
-                        ease: 'circOut',
-                        duration: 0.75,
-                        onUpdate: (latest) => (stat.number = +latest.toFixed())
-                    });
+        inView(node, () => {
+            if (!shouldAnimate) return;
+            stats.forEach((stat, index) => {
+                animate(0, numbers[index], {
+                    ease: 'circOut',
+                    duration: 0.75,
+                    onUpdate: (latest) => (stat.number = +latest.toFixed())
                 });
-            },
-            { amount: 0.5 }
-        );
+            });
+        });
     };
 
     const clearAllTimeouts = () => {
@@ -130,15 +126,16 @@
             </div>
         </div>
 
-        {#each stats as _, i}
-            <div
-                class="dot border-accent absolute top-0 left-0 z-10 h-2 w-2 rounded-full border bg-white"
-                style:offset-distance={`${i * (100 / stats.length) + 12.5}%`}
-            ></div>
-        {/each}
-
+        <div class="absolute inset-0">
+            {#each stats as _, i}
+                <div
+                    class="dot border-accent absolute top-0 left-0 z-10 h-2 w-2 rounded-full border bg-white"
+                    style:offset-distance={`${i * (100 / stats.length) + 12.5}%`}
+                ></div>
+            {/each}
+        </div>
         <svg
-            class="absolute bottom-0 h-auto w-full"
+            class="absolute inset-x-0 bottom-0 h-auto"
             fill="none"
             viewBox="0 0 1728 563"
             xmlns="http://www.w3.org/2000/svg"
