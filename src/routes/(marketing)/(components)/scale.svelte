@@ -143,13 +143,61 @@
             </div>
         </div>
         <div
-            class="from-accent/15 absolute inset-0 bg-gradient-to-tr to-transparent [clip-path:polygon(0_100%,_100%_25%,_100%_100%,_0_100%)]"
+            class="from-accent/15 absolute inset-0 bg-gradient-to-tr to-transparent"
+            style="clip-path: polygon(0 100%, 100% 25%, 100% 100%, 0 100%);"
         ></div>
         <div
-            class="from-accent absolute inset-0 bg-gradient-to-r to-transparent [clip-path:polygon(0_100%,_100%_25%,_100%_25.1%,_0_100.1%)]"
+            class="from-accent absolute inset-0 bg-gradient-to-r to-transparent"
+            style="clip-path: polygon(0 100%, 100% 25%, 100% 25.1%, 0 100.1%);"
         ></div>
     </div>
 </div>
+
+{#snippet Graph()}
+    <svg
+        width="1728"
+        height="563"
+        viewBox="0 0 1728 563"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+    >
+        <path
+            d="M1728 1L0 563.5H1728V1Z"
+            fill="url(#paint0_linear_941_109375)"
+            stroke="url(#paint1_linear_941_109375)"
+        />
+        <circle cx="264" cy="477" r="4" fill="white" fill-opacity="0.9" stroke="#FD366E" />
+        <circle cx="572" cy="377" r="4" fill="white" fill-opacity="0.9" stroke="#FD366E" />
+        <circle cx="880" cy="277" r="4" fill="white" fill-opacity="0.9" stroke="#FD366E" />
+        <circle cx="1188" cy="177" r="4" fill="white" fill-opacity="0.9" stroke="#FD366E" />
+        <defs>
+            <linearGradient
+                id="paint0_linear_941_109375"
+                x1="-467"
+                y1="753"
+                x2="1787"
+                y2="24.5001"
+                gradientUnits="userSpaceOnUse"
+            >
+                <stop stop-color="#FD366E" stop-opacity="0.16" />
+                <stop offset="1" stop-color="#FD366E" stop-opacity="0" />
+            </linearGradient>
+            <linearGradient
+                id="paint1_linear_941_109375"
+                x1="-94"
+                y1="578"
+                x2="1730.13"
+                y2="7.80966"
+                gradientUnits="userSpaceOnUse"
+            >
+                <stop stop-color="#FD366E" />
+                <stop offset="0.214023" stop-color="#FD366E" stop-opacity="0.48" />
+                <stop offset="0.7712" stop-color="#FD366E" stop-opacity="0.2" />
+                <stop offset="1" stop-color="#FD366E" stop-opacity="0" />
+            </linearGradient>
+        </defs>
+    </svg>
+{/snippet}
 
 <style>
     .swipe {

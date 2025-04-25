@@ -73,7 +73,7 @@
                 class="web-input-text mx-auto appearance-none"
                 onchange={(e) => handleSetActiveMarker(e.currentTarget.value)}
             >
-                {#each pins[activeSegment as PinSegment] as pin}
+                {#each pins[activeSegment as PinSegment].pins as pin}
                     <option value={pin.city}>{pin.city}-({pin.code})</option>
                 {/each}
             </select>
@@ -108,7 +108,7 @@
                     alt="Map of the world"
                 />
 
-                {#each pins[activeSegment as PinSegment] as pin, index}
+                {#each pins[activeSegment as PinSegment].pins as pin, index}
                     <MapMarker {...pin} animate={$animate} {index} bounds={MAP_BOUNDS} />
                 {/each}
             </div>
@@ -117,4 +117,7 @@
     <MapTooltip coords={$position} />
 
     <MapNav onValueChange={(value) => (activeSegment = value)} />
+    <div class="mx-auto mt-8 max-w-md text-center">
+        <span class="text-center">{pins[activeSegment as PinSegment].description}</span>
+    </div>
 </div>
