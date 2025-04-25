@@ -5,9 +5,11 @@
     import Site from '../../../(assets)/images/site.png';
     import { classNames } from '$lib/utils/classnames';
     import Spinner from '../../spinner.svelte';
+    import { unwrite, write } from '$lib/animations';
 
     let container: HTMLElement;
     let seconds = $state<number>(32);
+    let lastLine = $state<string>('');
 
     const text = [
         {
@@ -38,10 +40,6 @@
         {
             timestamp: '18:31:22.938',
             content: 'Appwrite CLI 37.6.1'
-        },
-        {
-            timestamp: '18:31:23.305',
-            content: 'Installing dependencies...'
         }
     ];
 
@@ -58,6 +56,8 @@
                 duration: 44
             });
 
+            write('Installing dependencies...', (v) => (lastLine = v), 500);
+
             return () => {
                 shouldAnimate = false;
                 animation.stop();
@@ -65,18 +65,22 @@
                     onUpdate: (latest) => (seconds = +latest.toFixed()),
                     duration: 0.25
                 });
+                unwrite('Installing dependencies...', (v) => (lastLine = v), 500);
             };
         });
 
         inView(
             container,
             () => {
+                if (!isMobile()) return;
                 shouldAnimate = true;
 
                 const animation = animate(32, 60, {
                     onUpdate: (latest) => (seconds = +latest.toFixed()),
                     duration: 44
                 });
+
+                write('Installing dependencies...', (v) => (lastLine = v), 500);
 
                 return () => {
                     shouldAnimate = false;
@@ -85,6 +89,7 @@
                         onUpdate: (latest) => (seconds = +latest.toFixed()),
                         duration: 0.25
                     });
+                    unwrite('Installing dependencies...', (v) => (lastLine = v), 500);
                 };
             },
             { amount: 'all' }
@@ -152,6 +157,10 @@
                             >
                         </div>
                     {/each}
+                    <div class="flex flex-nowrap gap-2">
+                        <span class="text-secondary block">18:31:23.305</span>
+                        <span class="text-primary block flex-nowrap">{lastLine}</span>
+                    </div>
                 </div>
             </div>
         </div>
