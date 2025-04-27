@@ -1,6 +1,6 @@
 <script lang="ts">
-    import {isNewUntil} from '$lib/utils/date';
     import Docs from '$lib/layouts/Docs.svelte';
+    import { isNewUntil } from '$lib/utils/date';
     import Sidebar, { type NavParent, type NavTree } from '$lib/layouts/Sidebar.svelte';
 
     const parent: NavParent = {
@@ -57,7 +57,7 @@
                     label: 'CSV Imports',
                     href: '/docs/products/databases/csv-imports',
                     // TODO: change/extend the date later!
-                    new: isNewUntil('24 May 2025'),
+                    new: isNewUntil('24 May 2025')
                 }
             ]
         },

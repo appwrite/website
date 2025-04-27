@@ -23,7 +23,10 @@ To get started, create a collection and define its attributes in the Appwrite Co
 
 - The first row must be a header containing attribute names that match your collection
 - Each subsequent row represents a document, with values separated by commas
-- You can optionally include the `$id` column to assign custom document IDs
+
+{% info title="Good to know" %}
+You can optionally include the `$id` column to assign custom document IDs.
+{% /info %}
 
 ![Collections screen](/images/blog/announcing-csv-imports/csv-import.png)
 
@@ -63,7 +66,7 @@ All you need is a CSV file in your project's storage and the target collection I
 
 CSV imports are now available on **Appwrite Cloud** and in the latest self-hosted release.
 
-To learn more, check out the [official documentation](https://appwrite.io/docs/products/databases/csv-imports).
+To learn more, check out the [official documentation](/docs/products/databases/csv-imports).
 If you have any questions or feedback, we'd love to hear from you in the [Appwrite Discord community](https://discord.gg/appwrite).
 
 # Further reading

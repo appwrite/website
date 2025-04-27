@@ -14,12 +14,9 @@ To get started, create a collection in your database and define its attributes. 
 
 Each column in the CSV should map to an attribute key in your collection, and each row should represent a new document.
 
+{% info title="Good to know" %}
 You can optionally include the `$id` column to define custom document IDs. If not provided, Appwrite will generate unique IDs for each document automatically.
-
-{% info title="Note" %}
-All required attributes must be present in the CSV. Each row is validated before being imported.
 {% /info %}
-
 For example, if your collection has the following required attributes:
 
 - `title` (string)
@@ -36,6 +33,11 @@ mz7lq3dp5c,The Fellowship of the Ring,J.R.R. Tolkien,1954,true
 x0v4p8ncq2,To Kill a Mockingbird,Harper Lee,1960,false
 ```
 
+{% info title="Note" %}
+All required attributes must be present in the CSV. Each row is validated before being imported.
+{% /info %}
+
+
 # Import documents from the Console {% #import-console %}
 
 To import documents using the Appwrite Console:
@@ -45,40 +47,238 @@ To import documents using the Appwrite Console:
 3. Click on the **Import CSV** button in the action area
 4. Upload a new CSV file or choose an existing file from your Storage bucket
 
+{% only_dark %}
+![CSV import screen](/images/docs/databases/dark/csv-import.png)
+{% /only_dark %}
+{% only_light %}
+![CSV import screen](/images/docs/databases/csv-import.png)
+{% /only_light %}
+
 CSV imports run as background tasks. The Console displays a floating progress bar while the import is active.
 
 # Import documents using the API {% #import-api %}
 
 You can also trigger imports using the Appwrite API or SDKs.
 
-### Endpoint
+{% multicode %}
+
 ```http
 POST https://<REGION>.cloud.appwrite.io/v1/migrations/csv
 X-Appwrite-Project: "<PROJECT_ID>"
 Content-Type: application/json
+
+{
+  "bucketId": "<BUCKET_ID>",
+  "fileId": "<FILE_ID>",
+  "resourceId": "<DATABASE_ID>:<COLLECTION_ID>"
+}
 ```
 
-### Required parameters
-- `bucketId` — The ID of the bucket where the CSV file is stored
-- `fileId` — The ID of the uploaded CSV file in your storage
-- `resourceId` — The compound ID in the format `<DATABASE_ID>:<COLLECTION_ID>`
+```server-nodejs
+const sdk = require('node-appwrite');
 
-### Example using the Server SDK:
-```js
-import { Client, Migrations } from 'node-appwrite';
+// Init SDK
+const client = new sdk.Client();
+const migrations = new sdk.Migrations(client);
 
-const client = new Client()
-  .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
-  .setProject('<PROJECT_ID>');
+client
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('<PROJECT_ID>') // Your project ID
+    .setKey('919c2d18fb5d4...a2ae413da83346ad2') // Your secret API key
+;
 
-const migrations = new Migrations(client);
+const promise = migrations.createCsvMigration('<BUCKET_ID>', '<FILE_ID>', '<DATABASE_ID>:<COLLECTION_ID>');
 
-await migrations.createCsvMigration(
-  '<BUCKET_ID>',
-  '<FILE_ID>',
-  '<DATABASE_ID>:<COLLECTION_ID>'
+promise.then(function (response) {
+    console.log(response);
+}, function (error) {
+    console.log(error);
+});
+```
+
+```deno
+import * as sdk from "https://deno.land/x/appwrite/mod.ts";
+
+// Init SDK
+let client = new sdk.Client();
+let migrations = new sdk.Migrations(client);
+
+client
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('<PROJECT_ID>') // Your project ID
+    .setKey('919c2d18fb5d4...a2ae413da83346ad2') // Your secret API key
+;
+
+let promise = migrations.createCsvMigration('<BUCKET_ID>', '<FILE_ID>', '<DATABASE_ID>:<COLLECTION_ID>');
+
+promise.then(function (response) {
+    console.log(response);
+}, function (error) {
+    console.log(error);
+});
+```
+
+```php
+<?php
+
+use Appwrite\Client;
+use Appwrite\Services\Migrations;
+
+$client = new Client();
+
+$client
+    ->setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
+    ->setProject('<PROJECT_ID>') // Your project ID
+    ->setKey('919c2d18fb5d4...a2ae413da83346ad2') // Your secret API key
+;
+
+$migrations = new Migrations($client);
+
+$result = $migrations->createCsvMigration('<BUCKET_ID>', '<FILE_ID>', '<DATABASE_ID>:<COLLECTION_ID>');
+```
+
+```python
+from appwrite.client import Client
+from appwrite.services.migrations import Migrations
+
+client = Client()
+
+(client
+  .set_endpoint('https://<REGION>.cloud.appwrite.io/v1') # Your API Endpoint
+  .set_project('<PROJECT_ID>') # Your project ID
+  .set_key('919c2d18fb5d4...a2ae413da83346ad2') # Your secret API key
+)
+
+migrations = Migrations(client)
+
+result = migrations.create_csv_migration('<BUCKET_ID>', '<FILE_ID>', '<DATABASE_ID>:<COLLECTION_ID>')
+```
+
+```ruby
+require 'Appwrite'
+
+include Appwrite
+
+client = Client.new
+    .set_endpoint('https://<REGION>.cloud.appwrite.io/v1') # Your API Endpoint
+    .set_project('<PROJECT_ID>') # Your project ID
+    .set_key('919c2d18fb5d4...a2ae413da83346ad2') # Your secret API key
+
+migrations = Migrations.new(client)
+
+response = migrations.create_csv_migration(bucket_id: '<BUCKET_ID>', file_id: '<FILE_ID>', resource_id: '<DATABASE_ID>:<COLLECTION_ID>')
+
+puts response.inspect
+```
+
+```csharp
+using Appwrite;
+using Appwrite.Services;
+using Appwrite.Models;
+
+var client = new Client()
+    .SetEndPoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
+    .SetProject("<PROJECT_ID>") // Your project ID
+    .SetKey("919c2d18fb5d4...a2ae413da83346ad2"); // Your secret API key
+
+var migrations = new Migrations(client);
+
+var result = await migrations.CreateCsvMigration(
+    bucketId: "<BUCKET_ID>",
+    fileId: "<FILE_ID>",
+    resourceId: "<DATABASE_ID>:<COLLECTION_ID>"
 );
 ```
+
+```dart
+import 'package:dart_appwrite/dart_appwrite.dart';
+
+void main() {
+  Client client = Client();
+  Migrations migrations = Migrations(client);
+
+  client
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('<PROJECT_ID>') // Your project ID
+    .setKey('919c2d18fb5d4...a2ae413da83346ad2') // Your secret API key
+  ;
+
+  Future result = migrations.createCsvMigration(
+    bucketId: '<BUCKET_ID>',
+    fileId: '<FILE_ID>',
+    resourceId: '<DATABASE_ID>:<COLLECTION_ID>',
+  );
+
+  result.then((response) {
+    print(response);
+  }).catchError((error) {
+    print(error.response);
+  });
+}
+```
+
+```kotlin
+import io.appwrite.Client
+import io.appwrite.services.Migrations
+
+val client = Client(context)
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
+    .setProject("<PROJECT_ID>") // Your project ID
+    .setKey("919c2d18fb5d4...a2ae413da83346ad2") // Your secret API key
+
+val migrations = Migrations(client)
+
+val response = migrations.createCsvMigration(
+    bucketId = "<BUCKET_ID>",
+    fileId = "<FILE_ID>",
+    resourceId = "<DATABASE_ID>:<COLLECTION_ID>"
+)
+```
+
+```java
+import io.appwrite.Client;
+import io.appwrite.coroutines.CoroutineCallback;
+import io.appwrite.services.Migrations;
+
+Client client = new Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
+    .setProject("<PROJECT_ID>") // Your project ID
+    .setKey("919c2d18fb5d4...a2ae413da83346ad2"); // Your secret API key
+
+Migrations migrations = new Migrations(client);
+
+migrations.createCsvMigration(
+    "<BUCKET_ID>",
+    "<FILE_ID>",
+    "<DATABASE_ID>:<COLLECTION_ID>",
+    new CoroutineCallback<>((result, error) -> {
+        if (error != null) {
+            error.printStackTrace();
+            return;
+        }
+        System.out.println(result);
+    })
+);
+```
+
+```swift
+import Appwrite
+
+let client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
+    .setProject("<PROJECT_ID>") // Your project ID
+    .setKey("919c2d18fb5d4...a2ae413da83346ad2") // Your secret API key
+
+let migrations = Migrations(client)
+
+let migration = try await migrations.createCsvMigration(
+    bucketId: "<BUCKET_ID>",
+    fileId: "<FILE_ID>",
+    resourceId: "<DATABASE_ID>:<COLLECTION_ID>"
+)
+```
+
+{% /multicode %}
 
 # Additional resources {% #additional-resources %}
 
