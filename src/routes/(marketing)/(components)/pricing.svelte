@@ -37,7 +37,7 @@
 </script>
 
 <div
-    class="relative flex min-h-[75vh] max-w-screen items-center justify-center overflow-hidden py-20"
+    class="relative -mt-6 flex min-h-[75vh] max-w-screen items-center justify-center overflow-hidden py-20"
 >
     <div class="container flex w-full flex-col items-center justify-center gap-10">
         <div

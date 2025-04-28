@@ -126,14 +126,14 @@
             </div>
         </div>
 
-        <div class="absolute inset-0">
+        <!-- <div class="absolute inset-0">
             {#each stats as _, i}
                 <div
                     class="dot border-accent absolute top-0 left-0 z-10 h-2 w-2 rounded-full border bg-white"
                     style:offset-distance={`${i * (100 / stats.length) + 12.5}%`}
                 ></div>
             {/each}
-        </div>
+        </div> -->
         <svg
             class="absolute inset-x-0 bottom-0 h-auto"
             fill="none"
@@ -173,8 +173,12 @@
 </div>
 
 <style>
+    :root {
+        --path-width: 1200px;
+        --path-height: 358px;
+    }
     .dot {
-        offset-path: path('M1200 358L0 749.5');
+        offset-path: path('M var(--path-width) var(--path-height) L 0 749.5');
     }
     .swipe {
         animation: wipe-in var(--animation-duration) ease-in-out;
