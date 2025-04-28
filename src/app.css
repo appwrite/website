@@ -207,7 +207,7 @@
     /* Font sizes */
     --text-x-micro: 0.625rem;
     --text-x-micro--line-height: 0.875rem;
-    --text-x-micro--letter-spacing: var(--tracking-tighter);
+    --text-x-micro--letter-spacing: var(--tracking-loose);
     --text-micro: 0.75rem;
     --text-micro--line-height: 1rem;
     --text-micro--letter-spacing: var(--tracking-tighter);
