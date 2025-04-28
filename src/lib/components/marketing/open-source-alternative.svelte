@@ -1,11 +1,13 @@
 <script lang="ts">
     import { sleep, unwrite, write } from '$lib/animations';
-    import { onMount } from 'svelte';
+
     import collaboration from './(assets)/icons/collaboration.svg';
     import customization from './(assets)/icons/customization.svg';
     import transparency from './(assets)/icons/transparency.svg';
     import DiscordLink from '../shared/discord-link.svelte';
     import GithubStats from '../shared/github-stats.svelte';
+    import type { SvelteHTMLElements } from 'svelte/elements';
+    import { classNames } from '$lib/utils/classnames';
 
     const items = [
         {
@@ -25,10 +27,18 @@
         }
     ];
 
-    const platforms = ['Auth0', 'Firebase', 'Supabase', 'NHost'];
+    type Props = {
+        platforms?: Array<string>;
+    } & SvelteHTMLElements['div'];
 
-    let activeIndex = 0;
-    let activePlatform = platforms[activeIndex];
+    const {
+        platforms = ['Auth0', 'Firebase', 'Supabase', 'NHost'],
+        class: className,
+        ...rest
+    }: Props = $props();
+
+    let activeIndex = $state<number>(0);
+    let activePlatform = $derived(platforms[activeIndex]);
 
     const rotatePlatforms = async () => {
         while (true) {
@@ -40,12 +50,12 @@
         }
     };
 
-    onMount(() => {
+    $effect(() => {
         rotatePlatforms();
     });
 </script>
 
-<section class="light bg-greyscale-50 pt-32 pb-40">
+<div class={classNames('light bg-greyscale-50 pt-32 pb-40', className)} {...rest}>
     <div class="container overflow-x-hidden">
         <div class="mx-auto mb-20 flex max-w-2xl flex-col items-center gap-y-4 text-center">
             <h2 class="md:text-display text-title text-primary font-aeonik-pro">
@@ -82,4 +92,4 @@
             {/each}
         </div>
     </div>
-</section>
+</div>

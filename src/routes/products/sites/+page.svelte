@@ -42,8 +42,11 @@
             <Integrate />
         </Steps>
     </div>
-    <OpenSourceAlternative />
-    <Testimonials />
+    <div class="light bg-[#EDEDF0] pb-8">
+        <OpenSourceAlternative platforms={['Vercel', 'Netlify', 'Sevalla']} />
+        <Testimonials />
+    </div>
+
     <div class="relative pt-20">
         <div class="container">
             <PreFooter />

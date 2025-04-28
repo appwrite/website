@@ -24,6 +24,9 @@
             style:transform="scaleY(0)"
             class="from-accent via-accent absolute inset-y-0 left-0 mt-5 h-full w-px origin-top bg-gradient-to-b via-80% to-transparent to-99%"
         ></div>
+        <div
+            class="from-smooth via-smooth absolute inset-y-0 left-0 mt-5 h-full w-px origin-top bg-gradient-to-b via-80% to-transparent to-99%"
+        ></div>
     </div>
     <div class="flex min-h-[100vh] w-full flex-col gap-24">
         {@render children()}
