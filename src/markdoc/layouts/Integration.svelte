@@ -87,7 +87,7 @@
             </div>
         </div>
     </div>
-    <div class="py-10">
+    <div class="pt-10">
         <div class="container">
             <article class="web-u-gap-60-not-mobile web-u-gap-40-mobile flex flex-col">
                 <div class="l-grid-2-1 web-u-row-gap-56 web-u-gap-40-mobile">
