@@ -207,7 +207,7 @@
                                     <img
                                         src={product.image}
                                         class={classNames(
-                                            'absolute inset-0 h-full w-full rounded-2xl transition-all duration-500 ease-out',
+                                            'absolute inset-0 aspect-[6.5/4.5] h-full w-full rounded-2xl object-cover transition-all duration-500 ease-out',
                                             'scale-102 opacity-0 blur-md',
                                             {
                                                 'scale-100 opacity-100 blur-none': isActive,
