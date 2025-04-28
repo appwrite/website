@@ -19,7 +19,7 @@
 </script>
 
 <div
-    class="bg-smooth absolute inset-y-0 right-0 mt-20 h-full scale-50 rounded-tl-2xl border-t border-l border-white/10 mask-b-from-0% pt-2 pl-2 backdrop-blur-2xl md:w-[48vw] md:scale-100"
+    class="bg-smooth absolute inset-y-0 right-0 mt-20 h-full scale-75 rounded-tl-2xl border-t border-l border-white/10 mask-b-from-0% pt-2 pl-2 backdrop-blur-2xl md:w-[48vw] md:scale-100"
 >
     <div class="bg-greyscale-900 h-full overflow-hidden rounded-tl-xl">
         <div id="top-nav">
