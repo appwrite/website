@@ -2,6 +2,7 @@
     import { PUBLIC_APPWRITE_DASHBOARD } from '$env/static/public';
     import { trackEvent } from '$lib/actions/analytics';
     import { Tooltip } from '$lib/components';
+    import { Button } from '$lib/components/ui';
     import { Framework, Platform } from '$lib/utils/references';
     import MultiFrameworkCode from './MultiFrameworkCode.svelte';
 
@@ -140,7 +141,7 @@ async function getLoggedInUser(request) {
 <section class="light bg-greyscale-50 py-4 md:py-20">
     <div class="container flex flex-col gap-6 md:flex-row">
         <div class="mb-10 flex max-w-lg flex-col">
-            <span class="web-badges text-micro font-aeonik-fono mr-auto ml-0 uppercase !text-white"
+            <span class="web-badges text-micro font-aeonik-fono mr-auto ml-0 !text-white uppercase"
                 >SSR_</span
             >
             <h2 class="text-title text-primary font-aeonik-pro my-4">
@@ -159,7 +160,8 @@ async function getLoggedInUser(request) {
                             <a
                                 href={platform.href}
                                 class="platform flex size-14 items-center justify-center rounded-lg bg-white p-2"
-                                on:click={() => trackEvent(`${platform.name} clicked`)}
+                                on:click={() =>
+                                    trackEvent({ plausible: { name: `${platform.name} clicked` } })}
                             >
                                 <img
                                     src={platform.image}
@@ -169,11 +171,13 @@ async function getLoggedInUser(request) {
                                 />
                             </a>
                         </li>
-                        <svelte:fragment slot="tooltip">{platform.name}</svelte:fragment>
+                        {#snippet tooltip()}
+                            {platform.name}
+                        {/snippet}
                     </Tooltip>
                 {/each}
             </ul>
-            <a href="/docs/sdks#server" class="web-button is-secondary mt-8">Learn more</a>
+            <Button variant="secondary" href="/docs/sdks#server" class="mt-8">Learn more</Button>
         </div>
 
         <MultiFrameworkCode data={codeSnippets} selected={Framework.NextJs} />

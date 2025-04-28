@@ -1,20 +1,24 @@
 <script lang="ts">
-    import { platformMap } from '$lib/utils/references';
-    import { writable } from 'svelte/store';
+    import { Select, Tooltip } from '$lib/components';
     import { getCodeHtml, type Language } from '$lib/utils/code';
     import { copy } from '$lib/utils/copy';
-    import { Select, Tooltip } from '$lib/components';
+    import { platformMap } from '$lib/utils/references';
+    import { writable } from 'svelte/store';
 
-    export let selected: Language = 'js';
-    export let data: { language: string; content: string; platform?: string }[] = [];
-    export let width: number | null = null;
-    export let height: number | null = null;
+    interface Props {
+        selected?: Language;
+        data?: { language: string; content: string; platform?: string }[];
+        width?: number | null;
+        height?: number | null;
+    }
 
-    $: snippets = writable(new Set(data.map((d) => d.language)));
+    let { selected = $bindable('js'), data = [], width = null, height = null }: Props = $props();
 
-    $: content = data.find((d) => d.language === selected)?.content ?? '';
+    let snippets = $derived(writable(new Set(data.map((d) => d.language))));
 
-    $: platform = data.find((d) => d.language === selected)?.platform ?? '';
+    let content = $derived(data.find((d) => d.language === selected)?.content ?? '');
+
+    let platform = $derived(data.find((d) => d.language === selected)?.platform ?? '');
 
     snippets?.subscribe((n) => {
         if (selected === null && n.size > 0) {
@@ -22,11 +26,15 @@
         }
     });
 
-    enum CopyStatus {
-        Copy = 'Copy',
-        Copied = 'Copied!'
-    }
-    let copyText = CopyStatus.Copy;
+    const CopyStatus = {
+        Copy: 'Copy',
+        Copied: 'Copied!'
+    } as const;
+    type CopyStatusType = keyof typeof CopyStatus;
+    type CopyStatusValue = (typeof CopyStatus)[CopyStatusType];
+
+    let copyText: CopyStatusValue = CopyStatus.Copy;
+
     async function handleCopy() {
         await copy(content);
 
@@ -36,15 +44,19 @@
         }, 1000);
     }
 
-    $: result = getCodeHtml({
-        content,
-        language: selected ?? 'sh',
-        withLineNumbers: true
-    });
-    $: options = Array.from($snippets).map((language) => ({
-        value: language,
-        label: platformMap[language]
-    }));
+    let result = $derived(
+        getCodeHtml({
+            content,
+            language: selected ?? 'sh',
+            withLineNumbers: true
+        })
+    );
+    let options = $derived(
+        Array.from($snippets).map((language) => ({
+            value: language,
+            label: platformMap[language]
+        }))
+    );
 </script>
 
 <section
@@ -72,24 +84,33 @@
                 <li class="buttons-list-item" style="padding-inline-start: 13px">
                     <Tooltip>
                         <button
-                            on:click={handleCopy}
+                            onclick={handleCopy}
                             class="web-icon-button"
                             aria-label="copy code from code-snippet"
-                            ><span class="web-icon-copy" aria-hidden="true" /></button
+                            ><span class="web-icon-copy" aria-hidden="true"></span></button
                         >
-                        <svelte:fragment slot="tooltip">
-                            {copyText}
-                        </svelte:fragment>
+                        {#snippet tooltip()}
+                            <span>
+                                {copyText}
+                            </span>
+                        {/snippet}
                     </Tooltip>
                 </li>
             </ul>
         </div>
     </header>
     <div
-        class="web-code-snippet-content"
+        class="web-code-snippet-content overflow-auto"
         style={`height: ${height ? height / 16 + 'rem' : 'inherit'}`}
     >
         <!-- eslint-disable-next-line svelte/no-at-html-tags -->
         {@html result}
     </div>
 </section>
+
+<style>
+    /* system breaks the corners */
+    .overflow-auto::-webkit-scrollbar {
+        display: none;
+    }
+</style>

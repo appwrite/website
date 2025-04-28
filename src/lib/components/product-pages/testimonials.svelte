@@ -10,7 +10,9 @@
         {
             name: 'David Forster',
             copy: `We really loved working with Appwrite for launching our bootstrapped "Open Mind" App. I am still surprised how easy the implementation into Flutter was.`,
-            image: '/images/testimonials/david-forster.png'
+            image: '/images/testimonials/david-forster.png',
+            title: 'Founder',
+            company: 'Open Mind'
         },
         {
             name: 'Marius Bolik',
@@ -40,7 +42,7 @@
     <div class="group light flex w-fit gap-4">
         {#each Array.from({ length: 4 }) as _, i}
             <div
-                class="animate-scroll flex items-center gap-8 group-hover:[animation-play-state:paused;]"
+                class="animate-scroll group-hover:[animation-play-state:paused;] flex items-center gap-8"
                 aria-hidden={i !== 0}
             >
                 {#each testimonials as testimonial}
@@ -61,9 +63,11 @@
                                 <span class="text-secondary text-sub-body block font-medium">
                                     {testimonial.name}
                                 </span>
-                                <span class="text-sub-body text-secondary block"
-                                    >{testimonial.title} // {testimonial.company}</span
-                                >
+                                {#if testimonial.title}
+                                    <span class="text-sub-body text-secondary block">
+                                        {testimonial.title} // {testimonial.company}
+                                    </span>
+                                {/if}
                             </div>
                         </div>
                     </div>

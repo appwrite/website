@@ -19,7 +19,7 @@
                         target="_blank"
                         rel="noopener noreferrer"
                     >
-                        <span class={social.icon} aria-hidden="true" />
+                        <span class={social.icon} aria-hidden="true"></span>
                     </a>
                 </li>
             {/each}
@@ -28,7 +28,7 @@
             <div>Copyright © {year} Appwrite</div>
 
             <iframe
-                class="status w-fit max-w-[230px]"
+                class="status w-full md:w-fit md:max-w-[230px]"
                 title="Appwrite Status"
                 src="https://status.appwrite.online/badge?theme=dark"
                 height="35"
@@ -36,7 +36,7 @@
                 scrolling="no"
                 style:color-scheme="none"
                 style:margin-top="-4px"
-            />
+            ></iframe>
 
             <ul class="flex gap-4">
                 <li><a class="web-link" href="/terms">Terms</a></li>
@@ -58,7 +58,7 @@
                             target="_blank"
                             rel="noopener noreferrer"
                         >
-                            <span class={social.icon} aria-hidden="true" />
+                            <span class={social.icon} aria-hidden="true"></span>
                         </a>
                     </li>
                 {/each}

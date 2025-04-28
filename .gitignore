@@ -3,6 +3,7 @@ node_modules
 /build
 /.svelte-kit
 /.idea
+/.zed
 /package
 .env
 .env.*
@@ -20,3 +21,4 @@ terraform/**/.t*
 terraform/**/.env
 terraform/**/**/*.tfstate*
 /.cache
+/test-results

@@ -1,16 +1,18 @@
 <script lang="ts" context="module">
+    import type { Component } from 'svelte';
+
     export type NavLink = {
         label: string;
         href?: string;
         showBadge?: boolean;
-        submenu?: ComponentType;
-        mobileSubmenu?: ComponentType;
+        submenu?: Component<{ label: string }>;
+        mobileSubmenu?: Component<{ label: string }>;
     };
 </script>
 
 <script lang="ts">
     import { classNames } from '$lib/utils/classnames';
-    import type { ComponentType } from 'svelte';
+    import { trackEvent } from '$lib/actions/analytics';
 
     export let initialized = false;
 
@@ -22,7 +24,7 @@
         {#each links as link}
             <li class="web-main-header-nav-item text-primary hover:text-accent">
                 {#if link.submenu}
-                    <button
+                    <div
                         class="web-main-header-nav-item-button"
                         aria-haspopup="true"
                         aria-expanded="false"
@@ -30,7 +32,7 @@
                         data-submenu-button
                     >
                         <svelte:component this={link.submenu} label={link.label} />
-                    </button>
+                    </div>
                 {:else}
                     <a
                         class={classNames(
@@ -39,6 +41,12 @@
                         href={link.href}
                         data-initialized={initialized ? '' : undefined}
                         data-badge={link.showBadge ? '' : undefined}
+                        on:click={() => {
+                            trackEvent({
+                                plausible: { name: `${link.label} in header` },
+                                posthog: { name: `${link.label.toLowerCase()}_nav_click` }
+                            });
+                        }}
                         >{link.label}
                     </a>
                 {/if}

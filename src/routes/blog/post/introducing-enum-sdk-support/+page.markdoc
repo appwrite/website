@@ -6,7 +6,7 @@ date: 2024-02-28
 cover: /images/blog/enum-announcement.png
 timeToRead: 4
 author: jake-barnby
-category: product
+category: product, announcement
 featured: false
 ---
 We are excited to announce a significant enhancement to the development experience across all Appwrite client and server-side SDKs, Enums SDK Support.
@@ -29,7 +29,7 @@ Bringing along benefits such as massively reducing friction when using routes th
 import { Client, Account, OAuthProvider } from "appwrite";
 
 const client = new Client()
-    .setEndpoint('https://cloud.appwrite.io/v1')
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
     .setProject('<PROJECT_ID>');
 
 const account = new Account(client);

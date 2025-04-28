@@ -55,13 +55,13 @@
                             </div>
                         {/each}
                     </div>
-                    <div class="vertical-sep" />
-                    <span class="icon-menu" />
+                    <div class="vertical-sep"></div>
+                    <span class="icon-menu"></span>
                 </div>
             </div>
             <div class="row">
                 <div class="search">
-                    <span class="web-icon-search" />
+                    <span class="web-icon-search"></span>
                     <span class="text"> Search </span>
                 </div>
                 <div class="flow gap-8">
@@ -81,11 +81,11 @@
                     <div class="title">
                         <span class="text capitalize">{col}</span>
                         <span class="tgl-inline-tag">{tasks.length}</span>
-                        <span class="icon-dots-horizontal" />
+                        <span class="icon-dots-horizontal"></span>
                     </div>
                     <div class="flow-v mbs-8 gap-12">
                         <button class="dashed-btn" id="add-{col}-{$elId}">
-                            <span class="icon-plus" />
+                            <span class="icon-plus"></span>
                             <span class="text">New Task</span>
                         </button>
                         {#each tasks as task (task.title)}
@@ -112,7 +112,7 @@
                     </div>
                 </div>
                 {#if !isLast}
-                    <div class="vertical-sep" />
+                    <div class="vertical-sep"></div>
                 {/if}
             {/each}
         </div>

@@ -49,9 +49,9 @@ Create ordered (numbered) and unordered (bulleted) lists using 1., \*, or -.
 **Unordered List**:
 
 ```md
--   Apple
--   Banana
--   Cherry
+- Apple
+- Banana
+- Cherry
 ```
 
 #### Links
@@ -130,18 +130,18 @@ Alternatively, use markdoc tables.
 ```md
 {% table %}
 
--   Heading 1
--   Heading 2
+- Heading 1
+- Heading 2
 
 ---
 
--   Row 1 Cell 1
--   Row 1 Cell 2
+- Row 1 Cell 1
+- Row 1 Cell 2
 
 ---
 
--   Row 2 Cell 1
--   Row 2 cell 2
+- Row 2 Cell 1
+- Row 2 cell 2
 
 {% /table %}
 ```
@@ -296,7 +296,7 @@ Configure FCM for push notification to Android and Apple devices.
 
 #### Accordions
 
-Use accordions to reduce page size and collapse information that's not important when a reader is skilling the page.
+Use accordions to reduce page size and collapse information that's not important when a reader is scrolling the page.
 
 ```
 {% accordion %}

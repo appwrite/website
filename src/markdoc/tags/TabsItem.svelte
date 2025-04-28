@@ -1,20 +1,19 @@
 <script lang="ts">
-    import { getContext } from 'svelte';
-    import type { TabsContext } from './Tabs.svelte';
-
-    export let id: string;
-    export let title: string;
+    import { getContext, type Snippet } from 'svelte';
+    import { type TabsContext, type TabsItemProps } from './Tabs.svelte';
 
     const ctx = getContext<TabsContext>('tabs');
 
-    const { content } = $ctx;
+    const { id, title, children }: TabsItemProps & { children: Snippet } = $props();
 
-    ctx.update((n) => {
-        n.triggers.set(id, title);
-        return n;
+    $effect(() => {
+        ctx.update((context) => {
+            context.triggers.push({ id, title });
+            return context;
+        });
     });
 </script>
 
-<div class="web-u-sep-block-start pt-4" {...$content(id)} use:content>
-    <slot />
+<div class="border-smooth border-t pt-4" {...$ctx.tabs.getContent(id)}>
+    {@render children()}
 </div>

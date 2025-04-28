@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { Button } from '$lib/components/ui';
     import { Platform } from '$lib/utils/references';
     import MultiCodeContextless from '$routes/products/messaging/(components)/MultiCodeContextless.svelte';
 
@@ -473,8 +474,10 @@ public class Handler {
                 /> compatibility in your projects.
             </p>
 
-            <a href="/docs/sdks#server" class="web-button is-secondary mt-8 !w-full md:!w-fit"
-                >Learn more</a
+            <Button
+                variant="secondary"
+                href="/docs/products/functions/runtimes"
+                class="mt-8 !w-full md:!w-fit">Learn more</Button
             >
         </div>
 

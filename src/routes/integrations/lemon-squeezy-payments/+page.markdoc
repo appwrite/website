@@ -1,11 +1,11 @@
 ---
 layout: integration
 title: Payments with Lemon Squeezy
-description: Receive payments and store paid orders
+description: Connect Lemon Squeezy to Appwrite to handle payments, manage orders, generate invoices, and simplify your operations.
 date: 2024-07-30
 featured: false
 isPartner: true
-isNew: true
+isNew: false
 cover: /images/integrations/lemon-squeezy-payments/cover.png
 category: payments
 product: 

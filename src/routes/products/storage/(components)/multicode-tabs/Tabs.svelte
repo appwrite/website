@@ -27,7 +27,7 @@
 </script>
 
 <div {...$root} use:root>
-    <div class="flex gap-4 overflow-scroll">
+    <div class="flex gap-4 overflow-auto">
         <ul class="flex items-center gap-2" {...$list} use:list>
             {#each $ctx.triggers.entries() as [id, title]}
                 <li
@@ -39,7 +39,7 @@
                     )}
                 >
                     <button
-                        class="cursor-pointer py-1 px-2 text-xs font-light outline-none md:text-sm"
+                        class="cursor-pointer px-2 py-1 text-xs font-light outline-none md:text-sm"
                         class:is-selected={$value === id}
                         {...$trigger(id)}
                         use:trigger>{title}</button

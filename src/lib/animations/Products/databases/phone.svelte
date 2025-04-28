@@ -9,7 +9,7 @@
 <div data-theme-ignore class="inner-phone light">
     <div class="header">
         <p class="title">Your tasks</p>
-        <span class="icon-menu" aria-label="menu" />
+        <span class="icon-menu" aria-label="menu"></span>
     </div>
 
     <div class="date">Today</div>
@@ -22,9 +22,9 @@
         {/each}
     </div>
 
-    <button class="add-btn">
-        <span class="web-icon-plus" />
-    </button>
+    <div class="add-btn">
+        <span class="web-icon-plus"></span>
+    </div>
 </div>
 
 <style lang="scss">

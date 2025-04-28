@@ -6,6 +6,8 @@
     import { DEFAULT_HOST } from '$lib/utils/metadata';
     import type { Integration } from '$routes/integrations/+page';
     import { isHeaderHidden } from '$lib/layouts/Main.svelte';
+    import { integrationCategoryDescriptions } from '$lib/constants';
+    import { Button, Icon } from '$lib/components/ui';
 
     export let title: Integration['title'];
     export let images: Integration['images'];
@@ -19,6 +21,9 @@
     //const title = 'Integrations' + TITLE_SUFFIX;
     //const ogImage = DEFAULT_HOST + '/images/open-graph/website.png';
     const ogImage = DEFAULT_HOST + cover;
+    const categoryHeading = integrationCategoryDescriptions.find(
+        (key) => key.slug === category.toLowerCase()
+    )?.heading;
 </script>
 
 <svelte:head>
@@ -43,13 +48,13 @@
         class="web-u-sep-block-end pb-0"
         style="background-color:rgba(23, 23, 26, 1); margin-block-end: 2.5rem"
     >
-        <div class="container dark">
+        <div class="dark container">
             <div class="web-integrations-top-section">
                 <div class="web-carousel-wrapper">
-                    <a href="/integrations" class="web-button is-text mb-12">
-                        <span class="icon-cheveron-left" aria-hidden="true"></span>
+                    <Button variant="text" href="/integrations" class="mb-12">
+                        <Icon name="chevron-left" aria-hidden="true" />
                         <span>Back to catalog</span>
-                    </a>
+                    </Button>
 
                     {#if images.length > 1}
                         <Root>
@@ -129,7 +134,7 @@
                             <div class="web-u-sep-block-end"></div>
                             <div class="flex justify-between gap-2">
                                 <dt>Category</dt>
-                                <dd class="text-primary">{category}</dd>
+                                <dd class="text-primary">{categoryHeading}</dd>
                             </div>
                         </dl>
                     </div>
@@ -164,12 +169,9 @@
                             Join our Technology Partners program to integrate your solutions with
                             Appwrite’s API, enhancing functionality and expanding your reach.
                         </p>
-                        <a
-                            href="/integrations/technology-partner"
-                            class="web-button is-primary mt-4 self-center"
-                        >
+                        <Button href="/integrations/technology-partner" class="mt-4 self-center">
                             <span class="text">Get Started</span>
-                        </a>
+                        </Button>
                     </section>
                 </div>
             </div>

@@ -43,7 +43,7 @@
                         <span class="font-aeonik-pro text-[18px] font-light text-white"
                             >Walter O'Brien</span
                         >
-                        <span class="bg-greyscale-700/60 rounded-full py-1 px-2 font-mono text-xs"
+                        <span class="bg-greyscale-700/60 rounded-full px-2 py-1 font-mono text-xs"
                             >637a40ba7</span
                         >
                     </div>
@@ -60,7 +60,7 @@
                 <div class="bg-greyscale-850 flex flex-1 flex-col pt-4 pl-4">
                     <div class="bg-greyscale-800 flex flex-1 flex-col rounded-tl-2xl">
                         <div
-                            class="border-y-greyscale-600/40 flex justify-between gap-8 border-b py-4 px-6"
+                            class="border-y-greyscale-600/40 flex justify-between gap-8 border-b px-6 py-4"
                         >
                             {#each ['Client', 'Location'] as heading}
                                 <span class="basis-1/2 font-mono text-xs uppercase">{heading}</span>
@@ -69,7 +69,7 @@
                         <div class="divide-greyscale-600/40 flex flex-1 flex-col divide-y">
                             {#each sessionData as data}
                                 <div
-                                    class="flex flex-1 items-center justify-between py-2 px-6 text-xs"
+                                    class="flex flex-1 items-center justify-between px-6 py-2 text-xs"
                                 >
                                     <div class="flex h-8 basis-2/3 items-center gap-2 text-left">
                                         <img src={data.icon} alt={data.device} class="size-8" />

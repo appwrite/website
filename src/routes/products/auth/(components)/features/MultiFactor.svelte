@@ -3,7 +3,7 @@
 </script>
 
 <div
-    class="gradient flex flex-col items-center justify-center gap-4 rounded-2xl py-6 px-4 text-center backdrop-blur-[32px] md:max-w-xs md:rounded-2xl md:p-8"
+    class="gradient flex flex-col items-center justify-center gap-4 rounded-2xl px-4 py-6 text-center backdrop-blur-[32px] md:max-w-xs md:rounded-2xl md:p-8"
 >
     <div class="space-y-1">
         <h3 class="text-description text-primary">Verify your identity</h3>
@@ -15,7 +15,7 @@
         {#each Array.from({ length: 6 }).map(() => Math.floor(Math.random() * 10)) as number, i}
             <div
                 class={classNames(
-                    'text-primary bg-greyscale-850 pointer-events-none relative flex size-10 items-center justify-center space-x-4 rounded-lg border border-white/10 text-center text-lg shadow-lg shadow-black/5 outline-none transition-all duration-500',
+                    'text-primary bg-greyscale-850 pointer-events-none relative flex size-10 items-center justify-center space-x-4 rounded-lg border border-white/10 text-center text-lg shadow-lg shadow-black/5 transition-all duration-500 outline-none',
                     {
                         'border-accent shadow-accent/10 shadow-md': i === 3
                     }

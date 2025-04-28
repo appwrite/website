@@ -39,27 +39,19 @@ First, register for remote notifications in your app delegate's `application(_:d
 ```swift
 func application(
     _ application: UIApplication,
-    didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil
+    didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil
 ) -> Bool {
-    // Register for remote notifications
     UNUserNotificationCenter.current().delegate = self
-
-    let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
-    UNUserNotificationCenter.current().requestAuthorization(
-        options: authOptions,
-        completionHandler: { granted, error in
+    UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { granted, _ in
+        if granted {
             DispatchQueue.main.async {
-                if granted {
-                    application.registerForRemoteNotifications()
-                }
+                application.registerForRemoteNotifications()
             }
         }
-    )
-
+    }
     return true
 }
 ```
-
 
 Next, create a handler for when the app receives the push notification device token.
 ```swift
@@ -67,14 +59,11 @@ func application(
     _ application: UIApplication,
     didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data
 ) {
-    // register device
-    var token = deviceToken.map { String(format: "%.2hhx", $0) }.joined()
-
-    // Save the token to be used later
-    UserDefaults.standard.set(token, forKey: "apnsToken")
+    /* store this `token` */
+    let token = deviceToken.map { String(format: "%.2hhx", $0) }.joined()
 }
-
 ```
+
 Since the token is saved in `UserDefaults`, you can access it from anywhere in your app.
 With this saved `apnsToken`, you can create a push target with Appwrite when the user logs in.
 Each push target is associated with an account, heres an example with an email password login.
@@ -82,31 +71,13 @@ The same logic applies to all types of login methods.
 ```swift
 func login() async {
     do {
-        let session = try await account.createEmailPasswordSession(
-            email: username,
-            password: password
-        )
+        let session = try await account.createEmailPasswordSession(email: username, password: password)
 
-        guard let token = UserDefaults.standard.string(forKey: "apnsToken") else {
-            return
-        }
+        let token = /* Retrieve the stored push token */
 
-        guard let target = try? await account.createPushTarget(
-            targetId: ID.unique(),
-            identifier: token
-        ) else {
-            return
-        }
-
-        UserDefaults.standard.set(target.id, forKey: "targetId")
-
-        DispatchQueue.main.async {
-            self.response = String(describing: session.toMap())
-        }
+        try await account.createPushTarget(targetId: ID.unique(), identifier: token)
     } catch {
-        DispatchQueue.main.async {
-            self.response = error.localizedDescription
-        }
+        print("Login failed: \(error.localizedDescription)")
     }
 }
 ```
@@ -122,23 +93,15 @@ initialize Firebase in your main activity and fetch the FCM registration token.
 ```kotlin
 class MainActivity : AppCompatActivity() {
     override fun onCreate() {
-        // ... other logic
-
         // Initialize Firebase
         FirebaseApp.initializeApp(this)
 
         // Set the FCM token
         FirebaseMessaging.getInstance().token.addOnCompleteListener(OnCompleteListener { task ->
-            if (!task.isSuccessful) {
-                Log.w(TAG, "Fetching FCM registration token failed", task.exception)
-                return@OnCompleteListener
+            if (task.isSuccessful) {
+                /* store this `token` */
+                val token = task.result
             }
-
-            // Get new FCM registration token and save it in prefs to be used later.
-            val token = task.result
-            val prefs = getSharedPreferences("example", MODE_PRIVATE)
-
-            prefs.edit().putString("fcmToken", token).apply()
         })
     }
 }
@@ -151,45 +114,19 @@ For example, when the user logs in with email and password, your app
 can register itself as a target after handling the login.
 
 ```kotlin
-fun onLogin(
-    email: String,
-    password: String,
-    token: String?,
-) {
+fun login(email: String, password: String) {
     viewModelScope.launch {
         try {
-            // Log in the user
-            val session = account.createEmailPasswordSession(
-                email,
-                password
-            )
+            val session = account.createEmailPasswordSession(email, password)
 
-            // If a token exists, register a push target with Appwrite.
-            if (token != null) {
-                val target = account.createPushTarget(ID.unique(), token)
+            let token = /* Retrieve the stored push token */
 
-                _target.postValue(Event(target))
-            }
-
-            _response.postValue(Event(session.toJson()))
+            /* store the `target.id` */
+            val target = account.createPushTarget(ID.unique(), token)
         } catch (e: AppwriteException) {
-            _error.postValue(Event(e))
+            Log.e("Login", "Failed: ${e.message}")
         }
     }
-}
-```
-
-The FCM token that we defined in `sharedPreferenes` will be passed into the `onLogin` handler
-to create the push target.
-```kotlin
- binding.login.setOnClickListener{
-    viewModel.onLogin(
-        binding.email.text.toString(),
-        binding.password.text.toString(),
-        context
-            ?.getSharedPreferences("example", Context.MODE_PRIVATE)
-            ?.getString("fcmToken", null) ?: null
-    )
 }
 ```
 
@@ -201,33 +138,13 @@ the FCM token is updated.
 
 ```kotlin
 class MessagingService : FirebaseMessagingService() {
-
-    companion object {
-        var account: Account? = null
-    }
-
-    // This is called when FCM token is updated.
     override fun onNewToken(token: String) {
         super.onNewToken(token)
 
-        val prefs = getSharedPreferences("example", MODE_PRIVATE)
-
-        prefs.edit().putString("fcmToken", token).apply()
-
-        if (account == null) {
-            return
-        }
-
-        val targetId = prefs.getString("targetId", null)
-
+        /* store the `token` */
+        /* If the user is logged in, update the push target */
         runBlocking {
-            if (targetId == null) {
-                val target = account!!.createPushTarget(ID.unique(), token)
-
-                prefs.edit().putString("targetId", target.id).apply()
-            } else {
-                account!!.updatePushTarget(targetId, token)
-            }
+            account?.updatePushTarget(/* retrieve saved `target.id` */, token)
         }
     }
 }
@@ -263,108 +180,56 @@ implement the messaging delegate protocol, and register for remote notifications
 ```swift
 func application(
     _ application: UIApplication,
-    didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil
+    didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil
 ) -> Bool {
-    // initialize Firebase
     FirebaseApp.configure()
-
-    // Set the messaging delegate
     Messaging.messaging().delegate = self
-
-    // Register for remote notifications
     UNUserNotificationCenter.current().delegate = self
 
-    let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
-    UNUserNotificationCenter.current().requestAuthorization(
-        options: authOptions,
-        completionHandler: { granted, error in
+    UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { granted, _ in
+        if granted {
             DispatchQueue.main.async {
-                if granted {
-                    application.registerForRemoteNotifications()
-                }
+                application.registerForRemoteNotifications()
             }
         }
-    )
-
+    }
     return true
 }
 ```
 Your APNS token can change, so you need to handle the token refresh event and update the target with Appwrite Messaging.
 Implement `didReceiveRegistrationToken`, which is called when the FCM token is updated.
 ```swift
-func messaging(
-    _ messaging: FirebaseMessaging.Messaging,
-    didReceiveRegistrationToken fcmToken: String?
-) {
-    guard let fcmToken = fcmToken else {
-        return
-    }
-
-    // Save the token to be used later
-    UserDefaults.standard.set(fcmToken , forKey: "fcmToken")
-
-    // Get the current Appwrite targetId from UserDefaults
-    let targetId = UserDefaults.standard.string(forKey: "targetId")
+func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
+    /* store the fcmToken */
+    guard let fcmToken = fcmToken else { return }
 
     Task {
         do {
             _ = try await account.get()
+            try await account.createPushTarget(targetId: ID.unique(), identifier: fcmToken)
         } catch {
-            return // if not logged in, don't update the target
-        }
-
-        // if targetId is nil, create a new target
-        if targetId == nil {
-            let target = try? await account.createPushTarget(
-                targetId: ID.unique(),
-                identifier: fcmToken
-            )
-
-            UserDefaults.standard.set(target?.id , forKey: "targetId")
-        } else {
-            // if targetId exists for the Appwrite Account, update the target
-            _ = try? await account.updatePushTarget(
-                targetId: targetId!,
-                identifier: fcmToken
-            )
+            print("Failed to create push target: \(error.localizedDescription)")
         }
     }
 }
 ```
 Since the token is saved in `UserDefaults`, you can access it from anywhere in your app.
 With this saved `fcmToken`, you can create a push target with Appwrite when the user logs in.
-Each push target is associated with an account, heres an example with an email password login.
+Each push target is associated with an account, here's an example with an email password login.
 The same logic applies to all types of login methods.
 ```swift
 func login() async {
     do {
-        let session = try await account.createEmailPasswordSession(
-            email: username,
-            password: password
-        )
+        let session = try await account.createEmailPasswordSession(email: username, password: password)
 
-        guard let token = UserDefaults.standard.string(forKey: "fcmToken") else {
-            return
-        }
+        let token = /* Retrieve stored push token */
 
-        guard let target = try? await account.createPushTarget(
-            targetId: ID.unique(),
-            identifier: token
-        ) else {
-            return
-        }
-
-        UserDefaults.standard.set(target.id, forKey: "targetId")
-
-        DispatchQueue.main.async {
-            self.response = String(describing: session.toMap())
-        }
+        let target = try await account.createPushTarget(targetId: ID.unique(), identifier: token)
     } catch {
-        DispatchQueue.main.async {
-            self.response = error.localizedDescription
-        }
+        print("Login failed: \(error.localizedDescription)")
     }
 }
+
 ```
 
 If you have disabled method swizzling, or you are building a SwiftUI app,
@@ -473,7 +338,7 @@ const client = new sdk.Client();
 const messaging = new sdk.Messaging(client);
 
 client
-    .setEndpoint('https://cloud.appwrite.io/v1')    // Your API Endpoint
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')    // Your API Endpoint
     .setProject('<PROJECT_ID>')                    // Your project ID
     .setKey('919c2d18fb5d4...a2ae413da83346ad2')    // Your secret API key
 ;
@@ -505,7 +370,7 @@ let client = new sdk.Client();
 let messaging = new sdk.Messaging(client);
 
 client
-    .setEndpoint('https://cloud.appwrite.io/v1')    // Your API Endpoint
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')    // Your API Endpoint
     .setProject('<PROJECT_ID>')                    // Your project ID
     .setKey('919c2d18fb5d4...a2ae413da83346ad2')    // Your secret API key
 ;
@@ -537,7 +402,7 @@ use Appwrite\Services\Messaging;
 $client = new Client();
 
 $client
-    ->setEndpoint('https://cloud.appwrite.io/v1')   // Your API Endpoint
+    ->setEndpoint('https://<REGION>.cloud.appwrite.io/v1')   // Your API Endpoint
     ->setProject('<PROJECT_ID>')                   // Your project ID
     ->setKey('919c2d18fb5d4...a2ae413da83346ad2')   // Your secret API key
 ;
@@ -569,7 +434,7 @@ from appwrite.services.messaging import Messaging
 client = Client()
 
 (client
-  .set_endpoint('https://cloud.appwrite.io/v1') # Your API Endpoint
+  .set_endpoint('https://<REGION>.cloud.appwrite.io/v1') # Your API Endpoint
   .set_project('<PROJECT_ID>')                 # Your project ID
   .set_key('919c2d18fb5d4...a2ae413da83346ad2') # Your secret API key
 )
@@ -600,7 +465,7 @@ require 'appwrite'
 include Appwrite
 
 client = Client.new
-    .set_endpoint('https://cloud.appwrite.io/v1')   # Your API Endpoint
+    .set_endpoint('https://<REGION>.cloud.appwrite.io/v1')   # Your API Endpoint
     .set_project('<PROJECT_ID>')                   # Your project ID
     .set_key('919c2d18fb5d4...a2ae413da83346ad2')   # Your secret API key
 
@@ -632,7 +497,7 @@ using Appwrite.Services;
 using Appwrite.Models;
 
 var client = new Client()
-    .SetEndPoint("https://cloud.appwrite.io/v1")    // Your API Endpoint
+    .SetEndPoint("https://<REGION>.cloud.appwrite.io/v1")    // Your API Endpoint
     .SetProject("<PROJECT_ID>")                    // Your project ID
     .SetKey("919c2d18fb5d4...a2ae413da83346ad2");   // Your secret API key
 
@@ -665,7 +530,7 @@ void main() async {   // Init SDK
   Messaging messaging = Messaging(client);
 
   client
-    .setEndpoint('https://cloud.appwrite.io/v1')    // Your API Endpoint
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')    // Your API Endpoint
     .setProject('<PROJECT_ID>')                    // Your project ID
     .setKey('919c2d18fb5d4...a2ae413da83346ad2')    // Your secret API key
   ;
@@ -701,7 +566,7 @@ import io.appwrite.Client
 import io.appwrite.services.Messaging
 
 val client = Client(context)
-    .setEndpoint("https://cloud.appwrite.io/v1")    // Your API Endpoint
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")    // Your API Endpoint
     .setProject("<PROJECT_ID>")                    // Your project ID
     .setKey("919c2d18fb5d4...a2ae413da83346ad2")    // Your secret API key
 
@@ -731,7 +596,7 @@ import io.appwrite.coroutines.CoroutineCallback;
 import io.appwrite.services.Messaging;
 
 Client client = new Client()
-    .setEndpoint("https://cloud.appwrite.io/v1")    // Your API Endpoint
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")    // Your API Endpoint
     .setProject("<PROJECT_ID>")                    // Your project ID
     .setKey("919c2d18fb5d4...a2ae413da83346ad2");   // Your secret API key
 
@@ -767,7 +632,7 @@ messaging.createPush(
 import Appwrite
 
 let client = Client()
-    .setEndpoint("https://cloud.appwrite.io/v1")  // Your API Endpoint
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")  // Your API Endpoint
     .setProject("<PROJECT_ID>")                  // Your project ID
     .setKey("919c2d18fb5d4...a2ae413da83346ad2")  // Your secret API key
 

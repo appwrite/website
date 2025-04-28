@@ -209,7 +209,7 @@ Next add code to validate the body of the request and initialize the Appwrite SD
 
 ```js
 const client = new Client()
-  .setEndpoint(process.env.APPWRITE_ENDPOINT ?? "https://cloud.appwrite.io/v1")
+  .setEndpoint(process.env.APPWRITE_ENDPOINT ?? "https://<REGION>.cloud.appwrite.io/v1")
   .setProject(process.env.APPWRITE_FUNCTION_PROJECT_ID)
   .setKey(process.env.APPWRITE_API_KEY);
 
@@ -259,7 +259,7 @@ const storage = new Storage(client);
 const file = await storage.createFile(
   process.env.APPWRITE_BUCKET_ID,
   ID.unique(),
-  InputFile.fromBlob(await response.blob(), "audio.mp3"),
+  InputFile.fromBuffer(await response.blob(), "audio.mp3"),
   [Permission.read(Role.any())],
 );
 ```

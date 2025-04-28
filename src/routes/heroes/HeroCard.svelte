@@ -45,7 +45,7 @@
                     rel="noopener noreferrer"
                     aria-label="GitHub profile"
                 >
-                    <span class="web-icon-github" aria-hidden="true" />
+                    <span class="web-icon-github" aria-hidden="true"></span>
                 </a>
             </li>
             <li>
@@ -56,7 +56,7 @@
                     rel="noopener noreferrer"
                     aria-label="X profile"
                 >
-                    <span class="web-icon-x" aria-hidden="true" />
+                    <span class="web-icon-x" aria-hidden="true"></span>
                 </a>
             </li>
             <li>
@@ -67,7 +67,7 @@
                     rel="noopener noreferrer"
                     aria-label="LinkedIn profile"
                 >
-                    <span class="web-icon-linkedin" aria-hidden="true" />
+                    <span class="web-icon-linkedin" aria-hidden="true"></span>
                 </a>
             </li>
         </ul>

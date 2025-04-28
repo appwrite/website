@@ -80,6 +80,7 @@ services:
             - PUBLIC_APPWRITE_COL_THREADS_ID
             - PUBLIC_APPWRITE_COL_MESSAGES_ID
             - PUBLIC_APPWRITE_FN_TLDR_ID
+            - PUBLIC_POSTHOG_API_KEY
         deploy:
             <<: *x-update-config
             mode: replicated
@@ -119,23 +120,23 @@ services:
             - TIME_BETWEEN_RUNS=3600
             - UNUSED_TIME=6h
 
-    sematext-agent:
-        image: sematext/agent:latest
-        environment:
-            REGION: EU
-            INFRA_TOKEN: $SEMATEXT_TOKEN
-        deploy:
-            mode: global
-            restart_policy:
-                condition: any
+    resource-monitor:
+        image: ghcr.io/appwrite/monitoring:0.1.0
+        entrypoint: monitoring
+        command:
+            - '--url=${_APP_BETTER_STACK_INCIDENT_URL}'
+            - '--interval=60'
+            - '--cpu-limit=85'
+            - '--memory-limit=80'
+            - '--disk-limit=85'
+        hostname: '{{.Node.Hostname}}'
+        <<: *x-logging
         volumes:
-            - /:/hostfs:ro
-            - /etc/passwd:/etc/passwd:ro
-            - /etc/group:/etc/group:ro
-            - /sys:/host/sys:ro
-            - /dev:/hostfs/dev:ro
-            - /var/run:/var/run
-            - /sys/kernel/debug:/sys/kernel/debug
+            - /mnt:/mnt:ro
+        deploy:
+            <<: *x-update-config
+            endpoint_mode: dnsrr
+            mode: global
 
 networks:
     cloud:

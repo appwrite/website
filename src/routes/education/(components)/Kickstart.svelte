@@ -10,14 +10,14 @@
             Kickstart your developer journey with Appwrite
         </h2>
         <p class="font-medium">
-            Earn free credits through GitHub Education to build your next project on Appwrite Cloud.
+            Earn free access through GitHub Education to build your next project on Appwrite Cloud.
             Sign up for the GitHub Student Developer Pack to receive Appwrite Cloud for the duration
             of your studies.
         </p>
 
         <p class="font-medium">
-            This credit is available only for new users who are verified through the GitHub program
-            as students. The credit is valid until you graduate from GitHub Education.
+            This credit is available only for users who are verified through the GitHub program as
+            students. The plan is valid until you graduate from GitHub Education.
         </p>
     </div>
     <img src={Kickstart} alt="Kickstart" class="mx-auto" />

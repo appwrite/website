@@ -1,11 +1,11 @@
 ---
 layout: integration
 title: Payments with Stripe
-description: Receive payments and store paid orders
+description: Integrate Stripe with Appwrite to accept payments, store orders, manage invoices, and streamline your business operations.
 date: 2024-07-30
 featured: false
 isPartner: true
-isNew: true
+isNew: false
 cover: /images/integrations/stripe-payments/cover.png
 category: payments
 product: 

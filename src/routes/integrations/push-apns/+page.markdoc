@@ -1,11 +1,11 @@
 ---
 layout: integration
 title: Push notifications with APNs
-description: Send customized notifications to your users
+description: Integrate Apple Push Notification Service (APNs) with Appwrite Messaging to send remote notifications to your users' Apple devices.
 date: 2024-07-30
 featured: false
 isPartner: true
-isNew: true
+isNew: false
 cover: /images/integrations/push-apns/cover.png
 category: messaging
 product: 

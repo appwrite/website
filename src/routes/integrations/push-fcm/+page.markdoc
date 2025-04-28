@@ -1,11 +1,11 @@
 ---
 layout: integration
 title: Push notifications with FCM
-description: Send customized notifications to your users
+description: Integrate Firebase Cloud Messaging (FCM) with Appwrite to send push notifications to iOS, Android and web applications.
 date: 2024-07-30
 featured: false
 isPartner: true
-isNew: true
+isNew: false
 cover: /images/integrations/push-fcm/cover.png
 category: messaging
 product: 

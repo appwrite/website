@@ -49,7 +49,7 @@ Implementing MFA to add extra layers of security to your app.
 {% /cards %}
 
 # Flexible permissions {% #flexible-permissions %}
-When users sign up using Appwrite, their identity is automatically attached to a robust permissions system. 
+When users sign up using Appwrite, their identity is automatically attached to a robust permissions system.
 Appwrite Authentication provides permissions for individual users and groups of users through [teams](/docs/products/auth/teams) and [labels](/docs/products/auth/labels).
 
 # Built in preferences {% #built-in-preferences %}

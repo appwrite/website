@@ -15,7 +15,7 @@
 
     const client = new MeiliSearch({
         host: 'https://search.appwrite.org',
-        apiKey: 'd7e83e21c0daf2a471ef4c463c7872e55b91b0cd02e2d20e9c6f6f1c4cd09ed3'
+        apiKey: '10a5fea149bfaff21ef4d7cbe7f8a09d4fab404d6c3510279a365e065f8955a7'
     });
     const index = client.index<Props>('website');
 
@@ -70,12 +70,12 @@
     const recommended: Hits<Props> = [
         {
             uid: 'recommended-references-account',
-            url: '/docs/references/cloud/client-web/databases',
+            url: '/docs/references/cloud/client-web/account',
             h1: 'API reference',
-            h2: 'Databases'
+            h2: 'Account'
         },
         {
-            uid: 'recommended-references-teans',
+            uid: 'recommended-references-teams',
             url: '/docs/references/cloud/client-web/teams',
             h1: 'API reference',
             h2: 'Teams'
@@ -160,11 +160,12 @@
     on:click={handleExit}
 >
     <div class="web-input-text-search-wrapper web-u-margin-inline-20 w-full max-w-[680px]">
-        <span class="web-icon-search z-[5]" aria-hidden="true" style="inset-block-start:0.9rem" />
-        <div id="searchbox" />
+        <span class="web-icon-search z-[5]" aria-hidden="true" style="inset-block-start:0.9rem"
+        ></span>
+        <div id="searchbox"></div>
 
         <input
-            class="web-input-button relative z-1 !rounded-b-none !pl-10"
+            class="web-input-button bg-greyscale-800/75! relative z-1 !rounded-b-none !pl-10"
             type="text"
             id="search"
             bind:value
@@ -222,7 +223,7 @@
                                         </div>
                                         {#if hit.p}
                                             <div
-                                                class="web-u-color-text-secondary w-full overflow-hidden text-ellipsis whitespace-nowrap text-left"
+                                                class="web-u-color-text-secondary w-full overflow-hidden text-left text-ellipsis whitespace-nowrap"
                                             >
                                                 {hit.p}
                                             </div>

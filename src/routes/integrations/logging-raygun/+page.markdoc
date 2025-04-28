@@ -1,11 +1,11 @@
 ---
 layout: integration
 title: Logging with Raygun
-description: Store logs and track issues on your Appwrite instance
+description: Integrate Raygun, an application performane monitoring (APM) tool with Appwrite to diagnose and fix errors quicker.
 date: 2024-07-30
 featured: false
 isPartner: true
-isNew: true
+isNew: false
 cover: /images/integrations/logging-raygun/cover.png
 category: logging
 product:
@@ -33,20 +33,29 @@ To implement the Raygun provider for logging, there are several steps you must c
 
 ## Step 1: Sign up for Raygun
 
-First, [sign up on Raygun](https://app.raygun.com/signup?product=cr) (pick **Crash Reporting** as the product you’re most interested in) and create your first application. Head to **Application settings** from the left-side navbar and copy your **API Key**.
+First, [sign up on Raygun](https://app.raygun.com/signup?product=cr) (pick **Crash Reporting** as the product you're most interested in) and create your first application. Head to **Application settings** from the left-side navbar and copy your **API Key**.
 
 ![API key](/images/integrations/logging-raygun/api-key.png)
 
 ## Step 2: Add Raygun provider to your Appwrite instance
 
-For this step, you must [self-host Appwrite](https://appwrite.io/docs/advanced/self-hosting) if you haven’t already.
+For this step, you must [self-host Appwrite](https://appwrite.io/docs/advanced/self-hosting) if you haven't already.
 
-Visit the `.env` file created for your Appwrite instance and update the following environment variables:
+The Appwrite logging configuration uses a DSN format that follows the pattern `raygun://API_KEY/`. Use your Raygun API key in the DSN.
 
+Visit the `.env` file created for your Appwrite instance and update the following environment variable:
+
+```bash
+_APP_LOGGING_CONFIG=raygun://API_KEY/
+```
+
+{% info title="Using Appwrite < 1.5.6?" %}
+For versions prior to 1.5.6, use the old syntax format:
 ```bash
 _APP_LOGGING_PROVIDER=raygun
 _APP_LOGGING_CONFIG=RAYGUN_API_KEY
 ```
+{% /info %}
 
 After that, run the following Docker Compose commands in your terminal to restart your Appwrite containers and verify if the changes have been successfully applied:
 

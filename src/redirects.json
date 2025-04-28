@@ -140,10 +140,6 @@
         "redirect": "/docs/products/auth/users"
     },
     {
-        "link": "/docs/authentication-server",
-        "redirect": "/docs/authentication-server"
-    },
-    {
         "link": "/docs/authentication-security",
         "redirect": "/docs/products/auth/security"
     },
@@ -265,7 +261,7 @@
     },
     {
         "link": "/docs/debugging",
-        "redirect": "/docs/advanced/self-hosting/debugging"
+        "redirect": "/docs/advanced/self-hosting/debug"
     },
     {
         "link": "/docs/upgrade",
@@ -468,10 +464,6 @@
         "redirect": "/docs/references/cloud/models/collection"
     },
     {
-        "link": "/docs/models/attribute",
-        "redirect": "/docs/references/cloud/models/attribute"
-    },
-    {
         "link": "/docs/models/index",
         "redirect": "/docs/references/cloud/models/index"
     },
@@ -660,10 +652,6 @@
         "redirect": "/docs/tooling/appwriter"
     },
     {
-        "link": "/careers",
-        "redirect": "https://appwrite.careers"
-    },
-    {
         "link": "/policy/terms",
         "redirect": "/terms"
     },
@@ -671,8 +659,41 @@
         "link": "/policy/privacy",
         "redirect": "/privacy"
     },
+
     {
-        "link": "/cli/install.sh",
-        "redirect": "https://raw.githubusercontent.com/appwrite/sdk-for-cli/master/install.sh"
+        "link": "/case-studies",
+        "redirect": "/customer-stories"
+    },
+    {
+        "link": "/blog/category/case-studies",
+        "redirect": "/blog/category/customer-stories"
+    },
+    {
+        "link": "/blog/post/case-study-smartbee",
+        "redirect": "/blog/post/customer-stories-smartbee"
+    },
+    {
+        "link": "/blog/post/case-study-kcollect",
+        "redirect": "/blog/post/customer-stories-kcollect"
+    },
+    {
+        "link": "/blog/post/case-study-majik-kids",
+        "redirect": "/blog/post/customer-stories-majik-kids"
+    },
+    {
+        "link": "/blog/post/case-study-myshoefitter",
+        "redirect": "/blog/post/customer-stories-myshoefitter"
+    },
+    {
+        "link": "/blog/post/case-study-open-mind",
+        "redirect": "/blog/post/customer-stories-open-mind"
+    },
+    {
+        "link": "/blog/post/case-study-langx",
+        "redirect": "/blog/post/customer-stories-langx"
+    },
+    {
+        "link": "/blog/post/case-study-undo",
+        "redirect": "/blog/post/customer-stories-undo"
     }
 ]

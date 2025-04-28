@@ -37,7 +37,8 @@
                 { label: 'Functions', href: '/products/functions' },
                 { label: 'Messaging', href: '/products/messaging' },
                 { label: 'Storage', href: '/products/storage' },
-                { label: 'Realtime', href: '/docs/apis/realtime' }
+                { label: 'Realtime', href: '/docs/apis/realtime' },
+                { label: 'The Appwrite Network', href: '/docs/products/network' }
             ],
             Learn: [
                 { label: 'Docs', href: '/docs' },
@@ -69,7 +70,8 @@
             Programs: [
                 { label: 'Heroes', href: '/heroes' },
                 { label: 'Startups', href: '/startups' },
-                { label: 'Education', href: '/education' }
+                { label: 'Education', href: '/education' },
+                { label: 'Partners', href: '/partners' }
             ],
             About: [
                 { label: 'Company', href: '/company' },
@@ -128,7 +130,7 @@
                             class="web-icon-chevron-down web-u-transition"
                             class:web-u-rotate-180={$isSelected(title)}
                             style:font-size="1rem"
-                        />
+                        ></span>
                     </button>
                 </h5>
                 {#if $isSelected(title)}

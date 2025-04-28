@@ -6,301 +6,19 @@ description: Harness the power of querying with Appwrite Databases. Discover var
 
 Many list endpoints in Appwrite allow you to filter, sort, and paginate results using queries. Appwrite provides a common set of syntax to build queries.
 
-# Query Class {% #query-class %}
+# Query class {% #query-class %}
 
-Appwrite SDKs provide a `Query` class to help you build queries. The `Query` class has a method for each type of supported query.
+Appwrite SDKs provide a `Query` class to help you build queries. The `Query` class has methods for each type of supported query operation.
 
-{% tabs %}
-{% tabsitem #nodejs title="Node.js" %}
-| Example                 | Description                                                                                                           |
-|------------------------------------|-----------------------------------------------------------------------------------------------------------------------|
-| `Query.select(["name", "title"])`  | Select which attributes should be returned from a document.                                                            |
-| `Query.and([Query.lessThan("size", 10), Query.greaterThan("size", 5)])`  | Returns document if it matches all of the nested sub-queries in the array passed in. |
-| `Query.or([Query.lessThan("size", 5), Query.greaterThan("size", 10)])`  | Returns document if it matches any of the nested sub-queries in the array passed in. |
-| `Query.equal("title", ["Iron Man"])` | Returns document if attribute is equal to any value in the provided array.                                             |
-| `Query.notEqual("title", ["Iron Man"])` | Returns document if attribute is not equal to any value in the provided array.                                        |
-| `Query.lessThan("score", 10)`      | Returns document if attribute is less than the provided value.                                                         |
-| `Query.lessThanEqual("score", 10)` | Returns document if attribute is less than or equal to the provided value.                                             |
-| `Query.greaterThan("score", 10)`   | Returns document if attribute is greater than the provided value.                                                      |
-| `Query.greaterThanEqual("score", 10)` | Returns document if attribute is greater than or equal to the provided value.                                         |
-| `Query.between("price", 5, 10)`    | Returns document if attribute value falls between the two values. The boundary values are inclusive and can be strings or numbers. |
-| `Query.isNull("name")`             | Returns documents where attribute value is null.                                                                      |
-| `Query.isNotNull("name")`          | Returns documents where attribute value is **not** null.                                                              |
-| `Query.startsWith("name", "Once upon a time")` | Returns documents if a string attributes starts with a substring.                                                     |
-| `Query.endsWith("name", "happily ever after.")` | Returns documents if a string attributes ends with a substring.                                                       |
-| `Query.contains("ingredients", ['apple', 'banana'])` | Returns documents if a the array attribute contains the specified elements.                                                       |
-| `Query.contains("name", "Tom")` | Returns documents if a string attributes is like the pattern specified.                                                       |
-| `Query.search("text", "key words")` | Searches string attributes for provided keywords. Requires a [full-text index](/docs/products/databases/collections#indexes) on queried attributes. |
-| `Query.orderDesc("attribute")`     | Orders results in descending order by attribute. Attribute must be indexed. Pass in an empty string to return in natural order. |
-| `Query.orderAsc("attribute")`      | Orders results in ascending order by attribute. Attribute must be indexed. Pass in an empty string to return in natural order. |
-| `Query.limit(25)`                  | Limits the number of results returned by the query. Used for [pagination](/docs/products/databases/pagination). If the limit query is not used, the limit defaults to 25 results. |
-| `Query.offset(0)`                  | Offset the results returned by skipping some of the results. Used for [pagination](/docs/products/databases/pagination). |
-| `Query.cursorAfter("62a7...f620")` | Places the cursor after the specified resource ID. Used for [pagination](/docs/products/databases/pagination).         |
-| `Query.cursorBefore("62a7...a600")` | Places the cursor before the specified resource ID. Used for [pagination](/docs/products/databases/pagination).   |
-{% /tabsitem %}
-
-{% tabsitem #php title="PHP" %}
-| Example                 | Description                                                                                                           |
-|------------------------------------|-----------------------------------------------------------------------------------------------------------------------|
-| `Query::select(["name", "title"])`  | Select which attributes should be returned from a document.                                                            |
-| `Query::or([Query::lessThan("size", 5), Query::greaterThan("size", 10)])`  | Returns document if it matches any of the nested sub-queries in the array passed in. |
-| `Query::and([Query::lessThan("size", 10), Query::greaterThan("size", 5)])`  | Returns document if it matches all of the nested sub-queries in the array passed in. |
-| `Query::equal("title", ["Iron Man"])` | Returns document if attribute is equal to any value in the provided array.                                             |
-| `Query::notEqual("title", ["Iron Man"])` | Returns document if attribute is not equal to any value in the provided array.                                        |
-| `Query::lessThan("score", 10)`      | Returns document if attribute is less than the provided value.                                                         |
-| `Query::lessThanEqual("score", 10)` | Returns document if attribute is less than or equal to the provided value.                                             |
-| `Query::greaterThan("score", 10)`   | Returns document if attribute is greater than the provided value.                                                      |
-| `Query::greaterThanEqual("score", 10)` | Returns document if attribute is greater than or equal to the provided value.                                         |
-| `Query::between("price", 5, 10)`    | Returns document if attribute value falls between the two values. The boundary values are inclusive and can be strings or numbers. |
-| `Query::isNull("name")`             | Returns documents where attribute value is null.                                                                      |
-| `Query::isNotNull("name")`          | Returns documents where attribute value is **not** null.                                                              |
-| `Query::startsWith("name", "Once upon a time")` | Returns documents if a string attributes starts with a substring.                                                     |
-| `Query::endsWith("name", "happily ever after.")` | Returns documents if a string attributes ends with a substring.                                                       |
-| `Query::contains("ingredients", ['apple', 'banana'])` | Returns documents if a the array attribute contains the specified elements.                                                       |
-| `Query::contains("name", "Tom")` | Returns documents if a string attributes is like the pattern specified.                                                       |
-| `Query::search("text", "key words")` | Searches string attributes for provided keywords. Requires a [full-text index](/docs/products/databases/collections#indexes) on queried attributes. |
-| `Query::orderDesc("attribute")`     | Orders results in descending order by attribute. Attribute must be indexed. Pass in an empty string to return in natural order. |
-| `Query::orderAsc("attribute")`      | Orders results in ascending order by attribute. Attribute must be indexed. Pass in an empty string to return in natural order. |
-| `Query::limit(25)`                  | Limits the number of results returned by the query. Used for [pagination](/docs/products/databases/pagination). If the limit query is not used, the limit defaults to 25 results. |
-| `Query::offset(0)`                  | Offset the results returned by skipping some of the results. Used for [pagination](/docs/products/databases/pagination). |
-| `Query::cursorAfter("62a7...f620")` | Places the cursor after the specified resource ID. Used for [pagination](/docs/products/databases/pagination).         |
-| `Query::cursorBefore("62a7...a600")` | Places the cursor before the specified resource ID. Used for [pagination](/docs/products/databases/pagination).   |
-{% /tabsitem %}
-
-{% tabsitem #python title="Python" %}
-| Example                 | Description                                                                                                           |
-|------------------------------------|-----------------------------------------------------------------------------------------------------------------------|
-| `Query.select(["name", "title"])`  | Select which attributes should be returned from a document.                                                            |
-| `Query.or([Query.less_than("size", 5), Query.greater_than("size", 10)])`  | Returns document if it matches any of the nested sub-queries in the array passed in. |
-| `Query.and([Query.less_than("size", 10), Query.greater_than("size", 5)])`  | Returns document if it matches all of the nested sub-queries in the array passed in. |
-| `Query.equal("title", ["Iron Man"])` | Returns document if attribute is equal to any value in the provided array.                                             |
-| `Query.not_equal("title", ["Iron Man"])` | Returns document if attribute is not equal to any value in the provided array.                                        |
-| `Query.less_than("score", 10)`      | Returns document if attribute is less than the provided value.                                                         |
-| `Query.less_than_equal("score", 10)` | Returns document if attribute is less than or equal to the provided value.                                             |
-| `Query.greater_than("score", 10)`   | Returns document if attribute is greater than the provided value.                                                      |
-| `Query.greater_than_equal("score", 10)` | Returns document if attribute is greater than or equal to the provided value.                                         |
-| `Query.between("price", 5, 10)`    | Returns document if attribute value falls between the two values. The boundary values are inclusive and can be strings or numbers. |
-| `Query.is_null("name")`             | Returns documents where attribute value is null.                                                                      |
-| `Query.is_not_null("name")`          | Returns documents where attribute value is **not** null.                                                              |
-| `Query.starts_with("name", "Once upon a time")` | Returns documents if a string attributes starts with a substring.                                                     |
-| `Query.ends_with("name", "happily ever after.")` | Returns documents if a string attributes ends with a substring.                                                       |
-| `Query.contains("ingredients", ['apple', 'banana'])` | Returns documents if a the array attribute contains the specified elements.                                                       |
-| `Query.contains("name", "Tom")` | Returns documents if a string attributes is like the pattern specified.                                                       |
-| `Query.search("text", "key words")` | Searches string attributes for provided keywords. Requires a [full-text index](/docs/products/databases/collections#indexes) on queried attributes. |
-| `Query.order_desc("attribute")`     | Orders results in descending order by attribute. Attribute must be indexed. Pass in an empty string to return in natural order. |
-| `Query.order_asc("attribute")`      | Orders results in ascending order by attribute. Attribute must be indexed. Pass in an empty string to return in natural order. |
-| `Query.limit(25)`                  | Limits the number of results returned by the query. Used for [pagination](/docs/products/databases/pagination). If the limit query is not used, the limit defaults to 25 results. |
-| `Query.offset(0)`                  | Offset the results returned by skipping some of the results. Used for [pagination](/docs/products/databases/pagination). |
-| `Query.cursor_after("62a7...f620")` | Places the cursor after the specified resource ID. Used for [pagination](/docs/products/databases/pagination).         |
-| `Query.cursor_before("62a7...a600")` | Places the cursor before the specified resource ID. Used for [pagination](/docs/products/databases/pagination).   |
-{% /tabsitem %}
-
-{% tabsitem #ruby title="Ruby" %}
-| Example                 | Description                                                                                                           |
-|------------------------------------|-----------------------------------------------------------------------------------------------------------------------|
-| `Query.select(["name", "title"])`  | Select which attributes should be returned from a document.                                                            |
-| `Query.or([Query.less_than("size", 5), Query.greater_than("size", 10)])`  | Returns document if it matches any of the nested sub-queries in the array passed in. |
-| `Query.and([Query.less_than("size", 10), Query.greater_than("size", 5)])`  | Returns document if it matches all of the nested sub-queries in the array passed in. |
-| `Query.equal("title", ["Iron Man"])` | Returns document if attribute is equal to any value in the provided array.                                             |
-| `Query.not_equal("title", ["Iron Man"])` | Returns document if attribute is not equal to any value in the provided array.                                        |
-| `Query.less_than("score", 10)`      | Returns document if attribute is less than the provided value.                                                         |
-| `Query.less_than_equal("score", 10)` | Returns document if attribute is less than or equal to the provided value.                                             |
-| `Query.greater_than("score", 10)`   | Returns document if attribute is greater than the provided value.                                                      |
-| `Query.greater_than_equal("score", 10)` | Returns document if attribute is greater than or equal to the provided value.                                         |
-| `Query.between("price", 5, 10)`    | Returns document if attribute value falls between the two values. The boundary values are inclusive and can be strings or numbers. |
-| `Query.is_null("name")`             | Returns documents where attribute value is null.                                                                      |
-| `Query.is_not_null("name")`          | Returns documents where attribute value is **not** null.                                                              |
-| `Query.starts_with("name", "Once upon a time")` | Returns documents if a string attributes starts with a substring.                                                     |
-| `Query.ends_with("name", "happily ever after.")` | Returns documents if a string attributes ends with a substring.                                                       |
-| `Query.contains("ingredients", ['apple', 'banana'])` | Returns documents if a the array attribute contains the specified elements.                                                       |
-| `Query.contains("name", "Tom")` | Returns documents if a string attributes is like the pattern specified.                                                       |
-| `Query.search("text", "key words")` | Searches string attributes for provided keywords. Requires a [full-text index](/docs/products/databases/collections#indexes) on queried attributes. |
-| `Query.order_desc("attribute")`     | Orders results in descending order by attribute. Attribute must be indexed. Pass in an empty string to return in natural order. |
-| `Query.order_asc("attribute")`      | Orders results in ascending order by attribute. Attribute must be indexed. Pass in an empty string to return in natural order. |
-| `Query.limit(25)`                  | Limits the number of results returned by the query. Used for [pagination](/docs/products/databases/pagination). If the limit query is not used, the limit defaults to 25 results. |
-| `Query.offset(0)`                  | Offset the results returned by skipping some of the results. Used for [pagination](/docs/products/databases/pagination). |
-| `Query.cursor_after("62a7...f620")` | Places the cursor after the specified resource ID. Used for [pagination](/docs/products/databases/pagination).         |
-| `Query.cursor_before("62a7...a600")` | Places the cursor before the specified resource ID. Used for [pagination](/docs/products/databases/pagination).   |
-{% /tabsitem %}
-
-{% tabsitem #deno title="Deno" %}
-| Example                 | Description                                                                                                           |
-|------------------------------------|-----------------------------------------------------------------------------------------------------------------------|
-| `Query.select(["name", "title"])`  | Select which attributes should be returned from a document.                                                            |
-| `Query.and([Query.lessThan("size", 10), Query.greaterThan("size", 5)])`  | Returns document if it matches all of the nested sub-queries in the array passed in. |
-| `Query.or([Query.lessThan("size", 5), Query.greaterThan("size", 10)])`  | Returns document if it matches any of the nested sub-queries in the array passed in. |
-| `Query.equal("title", ["Iron Man"])` | Returns document if attribute is equal to any value in the provided array.                                             |
-| `Query.notEqual("title", ["Iron Man"])` | Returns document if attribute is not equal to any value in the provided array.                                        |
-| `Query.lessThan("score", 10)`      | Returns document if attribute is less than the provided value.                                                         |
-| `Query.lessThanEqual("score", 10)` | Returns document if attribute is less than or equal to the provided value.                                             |
-| `Query.greaterThan("score", 10)`   | Returns document if attribute is greater than the provided value.                                                      |
-| `Query.greaterThanEqual("score", 10)` | Returns document if attribute is greater than or equal to the provided value.                                         |
-| `Query.between("price", 5, 10)`    | Returns document if attribute value falls between the two values. The boundary values are inclusive and can be strings or numbers. |
-| `Query.isNull("name")`             | Returns documents where attribute value is null.                                                                      |
-| `Query.isNotNull("name")`          | Returns documents where attribute value is **not** null.                                                              |
-| `Query.startsWith("name", "Once upon a time")` | Returns documents if a string attributes starts with a substring.                                                     |
-| `Query.endsWith("name", "happily ever after.")` | Returns documents if a string attributes ends with a substring.                                                       |
-| `Query.contains("ingredients", ['apple', 'banana'])` | Returns documents if a the array attribute contains the specified elements.                                                       |
-| `Query.contains("name", "Tom")` | Returns documents if a string attributes is like the pattern specified.                                                       |
-| `Query.search("text", "key words")` | Searches string attributes for provided keywords. Requires a [full-text index](/docs/products/databases/collections#indexes) on queried attributes. |
-| `Query.orderDesc("attribute")`     | Orders results in descending order by attribute. Attribute must be indexed. Pass in an empty string to return in natural order. |
-| `Query.orderAsc("attribute")`      | Orders results in ascending order by attribute. Attribute must be indexed. Pass in an empty string to return in natural order. |
-| `Query.limit(25)`                  | Limits the number of results returned by the query. Used for [pagination](/docs/products/databases/pagination). If the limit query is not used, the limit defaults to 25 results. |
-| `Query.offset(0)`                  | Offset the results returned by skipping some of the results. Used for [pagination](/docs/products/databases/pagination). |
-| `Query.cursorAfter("62a7...f620")` | Places the cursor after the specified resource ID. Used for [pagination](/docs/products/databases/pagination).         |
-| `Query.cursorBefore("62a7...a600")` | Places the cursor before the specified resource ID. Used for [pagination](/docs/products/databases/pagination).   |
-{% /tabsitem %}
-
-{% tabsitem #dart title="Dart" %}
-| Example                 | Description                                                                                                           |
-|------------------------------------|-----------------------------------------------------------------------------------------------------------------------|
-| `Query.select(["name", "title"])`  | Select which attributes should be returned from a document.                                                            |
-| `Query.and([Query.lessThan("size", 10), Query.greaterThan("size", 5)])`  | Returns document if it matches all of the nested sub-queries in the array passed in. |
-| `Query.or([Query.lessThan("size", 5), Query.greaterThan("size", 10)])`  | Returns document if it matches any of the nested sub-queries in the array passed in. |
-| `Query.equal("title", ["Iron Man"])` | Returns document if attribute is equal to any value in the provided array.                                             |
-| `Query.notEqual("title", ["Iron Man"])` | Returns document if attribute is not equal to any value in the provided array.                                        |
-| `Query.lessThan("score", 10)`      | Returns document if attribute is less than the provided value.                                                         |
-| `Query.lessThanEqual("score", 10)` | Returns document if attribute is less than or equal to the provided value.                                             |
-| `Query.greaterThan("score", 10)`   | Returns document if attribute is greater than the provided value.                                                      |
-| `Query.greaterThanEqual("score", 10)` | Returns document if attribute is greater than or equal to the provided value.                                         |
-| `Query.between("price", 5, 10)`    | Returns document if attribute value falls between the two values. The boundary values are inclusive and can be strings or numbers. |
-| `Query.isNull("name")`             | Returns documents where attribute value is null.                                                                      |
-| `Query.isNotNull("name")`          | Returns documents where attribute value is **not** null.                                                              |
-| `Query.startsWith("name", "Once upon a time")` | Returns documents if a string attributes starts with a substring.                                                     |
-| `Query.endsWith("name", "happily ever after.")` | Returns documents if a string attributes ends with a substring.                                                       |
-| `Query.contains("ingredients", ['apple', 'banana'])` | Returns documents if a the array attribute contains the specified elements.                                                       |
-| `Query.contains("name", "Tom")` | Returns documents if a string attributes is like the pattern specified.                                                       |
-| `Query.search("text", "key words")` | Searches string attributes for provided keywords. Requires a [full-text index](/docs/products/databases/collections#indexes) on queried attributes. |
-| `Query.orderDesc("attribute")`     | Orders results in descending order by attribute. Attribute must be indexed. Pass in an empty string to return in natural order. |
-| `Query.orderAsc("attribute")`      | Orders results in ascending order by attribute. Attribute must be indexed. Pass in an empty string to return in natural order. |
-| `Query.limit(25)`                  | Limits the number of results returned by the query. Used for [pagination](/docs/products/databases/pagination). If the limit query is not used, the limit defaults to 25 results. |
-| `Query.offset(0)`                  | Offset the results returned by skipping some of the results. Used for [pagination](/docs/products/databases/pagination). |
-| `Query.cursorAfter("62a7...f620")` | Places the cursor after the specified resource ID. Used for [pagination](/docs/products/databases/pagination).         |
-| `Query.cursorBefore("62a7...a600")` | Places the cursor before the specified resource ID. Used for [pagination](/docs/products/databases/pagination).   |
-{% /tabsitem %}
-
-{% tabsitem #swift title="Swift" %}
-| Example                 | Description                                                                                                           |
-|------------------------------------|-----------------------------------------------------------------------------------------------------------------------|
-| `Query.select(["name", "title"])`  | Select which attributes should be returned from a document.                                                            |
-| `Query.and([Query.lessThan("size", 10), Query.greaterThan("size", 5)])`  | Returns document if it matches all of the nested sub-queries in the array passed in. |
-| `Query.or([Query.lessThan("size", 5), Query.greaterThan("size", 10)])`  | Returns document if it matches any of the nested sub-queries in the array passed in. |
-| `Query.equal("title", ["Iron Man"])` | Returns document if attribute is equal to any value in the provided array.                                             |
-| `Query.notEqual("title", ["Iron Man"])` | Returns document if attribute is not equal to any value in the provided array.                                        |
-| `Query.lessThan("score", 10)`      | Returns document if attribute is less than the provided value.                                                         |
-| `Query.lessThanEqual("score", 10)` | Returns document if attribute is less than or equal to the provided value.                                             |
-| `Query.greaterThan("score", 10)`   | Returns document if attribute is greater than the provided value.                                                      |
-| `Query.greaterThanEqual("score", 10)` | Returns document if attribute is greater than or equal to the provided value.                                         |
-| `Query.between("price", 5, 10)`    | Returns document if attribute value falls between the two values. The boundary values are inclusive and can be strings or numbers. |
-| `Query.isNull("name")`             | Returns documents where attribute value is null.                                                                      |
-| `Query.isNotNull("name")`          | Returns documents where attribute value is **not** null.                                                              |
-| `Query.startsWith("name", "Once upon a time")` | Returns documents if a string attributes starts with a substring.                                                     |
-| `Query.endsWith("name", "happily ever after.")` | Returns documents if a string attributes ends with a substring.                                                       |
-| `Query.contains("ingredients", ['apple', 'banana'])` | Returns documents if a the array attribute contains the specified elements.                                                       |
-| `Query.contains("name", "Tom")` | Returns documents if a string attributes is like the pattern specified.                                                       |
-| `Query.search("text", "key words")` | Searches string attributes for provided keywords. Requires a [full-text index](/docs/products/databases/collections#indexes) on queried attributes. |
-| `Query.orderDesc("attribute")`     | Orders results in descending order by attribute. Attribute must be indexed. Pass in an empty string to return in natural order. |
-| `Query.orderAsc("attribute")`      | Orders results in ascending order by attribute. Attribute must be indexed. Pass in an empty string to return in natural order. |
-| `Query.limit(25)`                  | Limits the number of results returned by the query. Used for [pagination](/docs/products/databases/pagination). If the limit query is not used, the limit defaults to 25 results. |
-| `Query.offset(0)`                  | Offset the results returned by skipping some of the results. Used for [pagination](/docs/products/databases/pagination). |
-| `Query.cursorAfter("62a7...f620")` | Places the cursor after the specified resource ID. Used for [pagination](/docs/products/databases/pagination).         |
-| `Query.cursorBefore("62a7...a600")` | Places the cursor before the specified resource ID. Used for [pagination](/docs/products/databases/pagination).   |
-{% /tabsitem %}
-
-{% tabsitem #dotnet title=".NET" %}
-| Example                 | Description                                                                                                           |
-|------------------------------------|-----------------------------------------------------------------------------------------------------------------------|
-| `Query.select(["name", "title"])`  | Select which attributes should be returned from a document.                                                            |
-| `Query.and([Query.lessThan("size", 10), Query.greaterThan("size", 5)])`  | Returns document if it matches all of the nested sub-queries in the array passed in. |
-| `Query.or([Query.lessThan("size", 5), Query.greaterThan("size", 10)])`  | Returns document if it matches any of the nested sub-queries in the array passed in. |
-| `Query.equal("title", ["Iron Man"])` | Returns document if attribute is equal to any value in the provided array.                                             |
-| `Query.notEqual("title", ["Iron Man"])` | Returns document if attribute is not equal to any value in the provided array.                                        |
-| `Query.lessThan("score", 10)`      | Returns document if attribute is less than the provided value.                                                         |
-| `Query.lessThanEqual("score", 10)` | Returns document if attribute is less than or equal to the provided value.                                             |
-| `Query.greaterThan("score", 10)`   | Returns document if attribute is greater than the provided value.                                                      |
-| `Query.greaterThanEqual("score", 10)` | Returns document if attribute is greater than or equal to the provided value.                                         |
-| `Query.between("price", 5, 10)`    | Returns document if attribute value falls between the two values. The boundary values are inclusive and can be strings or numbers. |
-| `Query.isNull("name")`             | Returns documents where attribute value is null.                                                                      |
-| `Query.isNotNull("name")`          | Returns documents where attribute value is **not** null.                                                              |
-| `Query.startsWith("name", "Once upon a time")` | Returns documents if a string attributes starts with a substring.                                                     |
-| `Query.endsWith("name", "happily ever after.")` | Returns documents if a string attributes ends with a substring.                                                       |
-| `Query.contains("ingredients", ['apple', 'banana'])` | Returns documents if a the array attribute contains the specified elements.                                                       |
-| `Query.contains("name", "Tom")` | Returns documents if a string attributes is like the pattern specified.                                                       |
-| `Query.search("text", "key words")` | Searches string attributes for provided keywords. Requires a [full-text index](/docs/products/databases/collections#indexes) on queried attributes. |
-| `Query.orderDesc("attribute")`     | Orders results in descending order by attribute. Attribute must be indexed. Pass in an empty string to return in natural order. |
-| `Query.orderAsc("attribute")`      | Orders results in ascending order by attribute. Attribute must be indexed. Pass in an empty string to return in natural order. |
-| `Query.limit(25)`                  | Limits the number of results returned by the query. Used for [pagination](/docs/products/databases/pagination). If the limit query is not used, the limit defaults to 25 results. |
-| `Query.offset(0)`                  | Offset the results returned by skipping some of the results. Used for [pagination](/docs/products/databases/pagination). |
-| `Query.cursorAfter("62a7...f620")` | Places the cursor after the specified resource ID. Used for [pagination](/docs/products/databases/pagination).         |
-| `Query.cursorBefore("62a7...a600")` | Places the cursor before the specified resource ID. Used for [pagination](/docs/products/databases/pagination).   |
-{% /tabsitem %}
-
-{% tabsitem #kotlin title="Kotlin" %}
-| Example                 | Description                                                                                                           |
-|------------------------------------|-----------------------------------------------------------------------------------------------------------------------|
-| `Query.select(["name", "title"])`  | Select which attributes should be returned from a document.                                                            |
-| `Query.and([Query.lessThan("size", 10), Query.greaterThan("size", 5)])`  | Returns document if it matches all of the nested sub-queries in the array passed in. |
-| `Query.or([Query.lessThan("size", 5), Query.greaterThan("size", 10)])`  | Returns document if it matches any of the nested sub-queries in the array passed in. |
-| `Query.equal("title", ["Iron Man"])` | Returns document if attribute is equal to any value in the provided array.                                             |
-| `Query.notEqual("title", ["Iron Man"])` | Returns document if attribute is not equal to any value in the provided array.                                        |
-| `Query.lessThan("score", 10)`      | Returns document if attribute is less than the provided value.                                                         |
-| `Query.lessThanEqual("score", 10)` | Returns document if attribute is less than or equal to the provided value.                                             |
-| `Query.greaterThan("score", 10)`   | Returns document if attribute is greater than the provided value.                                                      |
-| `Query.greaterThanEqual("score", 10)` | Returns document if attribute is greater than or equal to the provided value.                                         |
-| `Query.between("price", 5, 10)`    | Returns document if attribute value falls between the two values. The boundary values are inclusive and can be strings or numbers. |
-| `Query.isNull("name")`             | Returns documents where attribute value is null.                                                                      |
-| `Query.isNotNull("name")`          | Returns documents where attribute value is **not** null.                                                              |
-| `Query.startsWith("name", "Once upon a time")` | Returns documents if a string attributes starts with a substring.                                                     |
-| `Query.endsWith("name", "happily ever after.")` | Returns documents if a string attributes ends with a substring.                                                       |
-| `Query.contains("ingredients", ['apple', 'banana'])` | Returns documents if a the array attribute contains the specified elements.                                                       |
-| `Query.contains("name", "Tom")` | Returns documents if a string attributes is like the pattern specified.                                                       |
-| `Query.search("text", "key words")` | Searches string attributes for provided keywords. Requires a [full-text index](/docs/products/databases/collections#indexes) on queried attributes. |
-| `Query.orderDesc("attribute")`     | Orders results in descending order by attribute. Attribute must be indexed. Pass in an empty string to return in natural order. |
-| `Query.orderAsc("attribute")`      | Orders results in ascending order by attribute. Attribute must be indexed. Pass in an empty string to return in natural order. |
-| `Query.limit(25)`                  | Limits the number of results returned by the query. Used for [pagination](/docs/products/databases/pagination). If the limit query is not used, the limit defaults to 25 results. |
-| `Query.offset(0)`                  | Offset the results returned by skipping some of the results. Used for [pagination](/docs/products/databases/pagination). |
-| `Query.cursorAfter("62a7...f620")` | Places the cursor after the specified resource ID. Used for [pagination](/docs/products/databases/pagination).         |
-| `Query.cursorBefore("62a7...a600")` | Places the cursor before the specified resource ID. Used for [pagination](/docs/products/databases/pagination).   |
-{% /tabsitem %}
-
-{% tabsitem #java title="Java" %}
-| Example                 | Description                                                                                                           |
-|------------------------------------|-----------------------------------------------------------------------------------------------------------------------|
-| `Query.select(["name", "title"])`  | Select which attributes should be returned from a document.                                                            |
-| `Query.and([Query.lessThan("size", 10), Query.greaterThan("size", 5)])`  | Returns document if it matches all of the nested sub-queries in the array passed in. |
-| `Query.or([Query.lessThan("size", 5), Query.greaterThan("size", 10)])`  | Returns document if it matches any of the nested sub-queries in the array passed in. |
-| `Query.equal("title", ["Iron Man"])` | Returns document if attribute is equal to any value in the provided array.                                             |
-| `Query.notEqual("title", ["Iron Man"])` | Returns document if attribute is not equal to any value in the provided array.                                        |
-| `Query.lessThan("score", 10)`      | Returns document if attribute is less than the provided value.                                                         |
-| `Query.lessThanEqual("score", 10)` | Returns document if attribute is less than or equal to the provided value.                                             |
-| `Query.greaterThan("score", 10)`   | Returns document if attribute is greater than the provided value.                                                      |
-| `Query.greaterThanEqual("score", 10)` | Returns document if attribute is greater than or equal to the provided value.                                         |
-| `Query.between("price", 5, 10)`    | Returns document if attribute value falls between the two values. The boundary values are inclusive and can be strings or numbers. |
-| `Query.isNull("name")`             | Returns documents where attribute value is null.                                                                      |
-| `Query.isNotNull("name")`          | Returns documents where attribute value is **not** null.                                                              |
-| `Query.startsWith("name", "Once upon a time")` | Returns documents if a string attributes starts with a substring.                                                     |
-| `Query.endsWith("name", "happily ever after.")` | Returns documents if a string attributes ends with a substring.                                                       |
-| `Query.contains("ingredients", ['apple', 'banana'])` | Returns documents if a the array attribute contains the specified elements.                                                       |
-| `Query.contains("name", "Tom")` | Returns documents if a string attributes is like the pattern specified.                                                       |
-| `Query.search("text", "key words")` | Searches string attributes for provided keywords. Requires a [full-text index](/docs/products/databases/collections#indexes) on queried attributes. |
-| `Query.orderDesc("attribute")`     | Orders results in descending order by attribute. Attribute must be indexed. Pass in an empty string to return in natural order. |
-| `Query.orderAsc("attribute")`      | Orders results in ascending order by attribute. Attribute must be indexed. Pass in an empty string to return in natural order. |
-| `Query.limit(25)`                  | Limits the number of results returned by the query. Used for [pagination](/docs/products/databases/pagination). If the limit query is not used, the limit defaults to 25 results. |
-| `Query.offset(0)`                  | Offset the results returned by skipping some of the results. Used for [pagination](/docs/products/databases/pagination). |
-| `Query.cursorAfter("62a7...f620")` | Places the cursor after the specified resource ID. Used for [pagination](/docs/products/databases/pagination).         |
-| `Query.cursorBefore("62a7...a600")` | Places the cursor before the specified resource ID. Used for [pagination](/docs/products/databases/pagination).   |
-{% /tabsitem %}
-{% /tabs %}
-
-# Building Queries {% #building-queries %}
+# Building queries {% #building-queries %}
 
 Queries are passed to an endpoint through the `queries` parameter as an array of query strings, which can be generated using the `Query` class.
 
-Each query method is logically separated via `AND` operations. For `OR` operation, pass multiple values into the query method separated by commas. 
+Each query method is logically separated via `AND` operations. For `OR` operation, pass multiple values into the query method separated by commas.
 For example `Query.equal('title', ['Avatar', 'Lord of the Rings'])` will fetch the movies `Avatar` or `Lord of the Rings`.
 
 {% info title="Default pagination behavior" %}
-By default, results are limited to the **first 25 items**. 
+By default, results are limited to the **first 25 items**.
 You can change this through [pagination](/docs/products/databases/pagination).
 {% /info %}
 
@@ -310,7 +28,7 @@ You can change this through [pagination](/docs/products/databases/pagination).
 import { Client, Databases, Query } from "appwrite";
 
 const client = new Client()
-    .setEndpoint('https://cloud.appwrite.io/v1')
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
     .setProject('<PROJECT_ID>');
 
 const databases = new Databases(client);
@@ -329,7 +47,7 @@ import 'package:appwrite/appwrite.dart';
 
 void main() async {
     final client = Client()
-        .setEndpoint('https://cloud.appwrite.io/v1')
+        .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
         .setProject('<PROJECT_ID>');
 
     final databases = Databases(client);
@@ -337,7 +55,7 @@ void main() async {
     try {
         final documents = await databases.listDocuments(
             '<DATABASE_ID>',
-            '[COLLECTION_ID]',
+            '<COLLECTION_ID>',
             [
                 Query.equal('title', ['Avatar', 'Lord of the Rings']),
                 Query.greaterThan('year', 1999)
@@ -354,7 +72,7 @@ import AppwriteModels
 
 func main() async throws {
     let client = Client()
-        .setEndpoint("https://cloud.appwrite.io/v1")
+        .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
         .setProject("<PROJECT_ID>")
 
     let databases = Databases(client)
@@ -380,7 +98,7 @@ import io.appwrite.services.Databases
 
 suspend fun main() {
     val client = Client(applicationContext)
-        .setEndpoint('https://cloud.appwrite.io/v1')
+        .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
         .setProject('<PROJECT_ID>');
 
     val databases = Databases(client)
@@ -404,7 +122,7 @@ query {
     databasesListDocuments(
         databaseId: "<DATABASE_ID>",
         collectionId: "<COLLECTION_ID>"
-        queries: [ 
+        queries: [
             "{\"method\":\"equal\",\"attribute\":\"title\",\"values\":[\"Avatar\",\"Lord of the Rings\"]}",
             "{\"method\":\"greaterThan\",\"attribute\":\"year\",\"values\":[1999]}"
         ]
@@ -417,4 +135,847 @@ query {
     }
 }
 ```
+```http
+GET /v1/databases/<DATABASE_ID>/collections/<COLLECTION_ID>/documents?queries[]=%7B%22method%22%3A%22equal%22%2C%22attribute%22%3A%22title%22%2C%22values%22%3A%5B%22Avatar%22%2C%22Lord%20of%20the%20Rings%22%5D%7D&queries[]=%7B%22method%22%3A%22greaterThan%22%2C%22attribute%22%3A%22year%22%2C%22values%22%3A%5B1999%5D%7D HTTP/1.1
+Content-Type: application/json
+X-Appwrite-Project: <PROJECT_ID>
+```
 {% /multicode %}
+
+# Query operators {% #query-operators %}
+
+## Select {% #select %}
+
+The `select` operator allows you to specify which attributes should be returned from a document. This is useful for optimizing response size and only retrieving the data you need.
+
+{% multicode %}
+```client-web
+Query.select(["name", "title"])
+```
+```client-flutter
+Query.select(["name", "title"])
+```
+```python
+Query.select(["name", "title"])
+```
+```ruby
+Query.select(["name", "title"])
+```
+```deno
+Query.select(["name", "title"])
+```
+```php
+Query::select(["name", "title"])
+```
+```swift
+Query.select(["name", "title"])
+```
+```http
+{"method":"select","values":["name","title"]}
+```
+{% /multicode %}
+
+## Comparison operators {% #comparison %}
+
+### Equal {% #equal %}
+
+Returns document if attribute is equal to any value in the provided array.
+
+{% multicode %}
+```client-web
+Query.equal("title", ["Iron Man"])
+```
+```client-flutter
+Query.equal("title", ["Iron Man"])
+```
+```python
+Query.equal("title", ["Iron Man"])
+```
+```ruby
+Query.equal("title", ["Iron Man"])
+```
+```deno
+Query.equal("title", ["Iron Man"])
+```
+```php
+Query::equal("title", ["Iron Man"])
+```
+```swift
+Query.equal("title", value: ["Iron Man"])
+```
+```http
+{"method":"equal","attribute":"title","values":["Iron Man"]}
+```
+{% /multicode %}
+
+### Not equal {% #not-equal %}
+
+Returns document if attribute is not equal to any value in the provided array.
+
+{% multicode %}
+```client-web
+Query.notEqual("title", ["Iron Man"])
+```
+```client-flutter
+Query.notEqual("title", ["Iron Man"])
+```
+```python
+Query.not_equal("title", ["Iron Man"])
+```
+```ruby
+Query.not_equal("title", ["Iron Man"])
+```
+```deno
+Query.notEqual("title", ["Iron Man"])
+```
+```php
+Query::notEqual("title", ["Iron Man"])
+```
+```swift
+Query.notEqual("title", value: ["Iron Man"])
+```
+```http
+{"method":"notEqual","attribute":"title","values":["Iron Man"]}
+```
+{% /multicode %}
+
+### Less than {% #less-than %}
+
+Returns document if attribute is less than the provided value.
+
+{% multicode %}
+```client-web
+Query.lessThan("score", 10)
+```
+```client-flutter
+Query.lessThan("score", 10)
+```
+```python
+Query.less_than("score", 10)
+```
+```ruby
+Query.less_than("score", 10)
+```
+```deno
+Query.lessThan("score", 10)
+```
+```php
+Query::lessThan("score", 10)
+```
+```swift
+Query.lessThan("score", value: 10)
+```
+```http
+{"method":"lessThan","attribute":"score","values":[10]}
+```
+{% /multicode %}
+
+### Less than or equal {% #less-than-equal %}
+
+Returns document if attribute is less than or equal to the provided value.
+
+{% multicode %}
+```client-web
+Query.lessThanEqual("score", 10)
+```
+```client-flutter
+Query.lessThanEqual("score", 10)
+```
+```python
+Query.less_than_equal("score", 10)
+```
+```ruby
+Query.less_than_equal("score", 10)
+```
+```deno
+Query.lessThanEqual("score", 10)
+```
+```php
+Query::lessThanEqual("score", 10)
+```
+```swift
+Query.lessThanEqual("score", value: 10)
+```
+```http
+{"method":"lessThanEqual","attribute":"score","values":[10]}
+```
+{% /multicode %}
+
+### Greater than {% #greater-than %}
+
+Returns document if attribute is greater than the provided value.
+
+{% multicode %}
+```client-web
+Query.greaterThan("score", 10)
+```
+```client-flutter
+Query.greaterThan("score", 10)
+```
+```python
+Query.greater_than("score", 10)
+```
+```ruby
+Query.greater_than("score", 10)
+```
+```deno
+Query.greaterThan("score", 10)
+```
+```php
+Query::greaterThan("score", 10)
+```
+```swift
+Query.greaterThan("score", value: 10)
+```
+```http
+{"method":"greaterThan","attribute":"score","values":[10]}
+```
+{% /multicode %}
+
+### Greater than or equal {% #greater-than-equal %}
+
+Returns document if attribute is greater than or equal to the provided value.
+
+{% multicode %}
+```client-web
+Query.greaterThanEqual("score", 10)
+```
+```client-flutter
+Query.greaterThanEqual("score", 10)
+```
+```python
+Query.greater_than_equal("score", 10)
+```
+```ruby
+Query.greater_than_equal("score", 10)
+```
+```deno
+Query.greaterThanEqual("score", 10)
+```
+```php
+Query::greaterThanEqual("score", 10)
+```
+```swift
+Query.greaterThanEqual("score", value: 10)
+```
+```http
+{"method":"greaterThanEqual","attribute":"score","values":[10]}
+```
+{% /multicode %}
+
+### Between {% #between %}
+
+Returns document if attribute value falls between the two values. The boundary values are inclusive and can be strings or numbers.
+
+{% multicode %}
+```client-web
+Query.between("price", 5, 10)
+```
+```client-flutter
+Query.between("price", 5, 10)
+```
+```python
+Query.between("price", 5, 10)
+```
+```ruby
+Query.between("price", 5, 10)
+```
+```deno
+Query.between("price", 5, 10)
+```
+```php
+Query::between("price", 5, 10)
+```
+```swift
+Query.between("price", start: 5, end: 10)
+```
+```http
+{"method":"between","attribute":"price","values":[5,10]}
+```
+{% /multicode %}
+
+## Null checks {% #null-checks %}
+
+### Is null {% #is-null %}
+
+Returns documents where attribute value is null.
+
+{% multicode %}
+```client-web
+Query.isNull("name")
+```
+```client-flutter
+Query.isNull("name")
+```
+```python
+Query.is_null("name")
+```
+```ruby
+Query.is_null("name")
+```
+```deno
+Query.isNull("name")
+```
+```php
+Query::isNull("name")
+```
+```swift
+Query.isNull("name")
+```
+```http
+{"method":"isNull","attribute":"name"}
+```
+{% /multicode %}
+
+### Is not null {% #is-not-null %}
+
+Returns documents where attribute value is **not** null.
+
+{% multicode %}
+```client-web
+Query.isNotNull("name")
+```
+```client-flutter
+Query.isNotNull("name")
+```
+```python
+Query.is_not_null("name")
+```
+```ruby
+Query.is_not_null("name")
+```
+```deno
+Query.isNotNull("name")
+```
+```php
+Query::isNotNull("name")
+```
+```swift
+Query.isNotNull("name")
+```
+```http
+{"method":"isNotNull","attribute":"name"}
+```
+{% /multicode %}
+
+## String operations {% #string-operations %}
+
+### Starts with {% #starts-with %}
+
+Returns documents if a string attribute starts with a substring.
+
+{% multicode %}
+```client-web
+Query.startsWith("name", "Once upon a time")
+```
+```client-flutter
+Query.startsWith("name", "Once upon a time")
+```
+```python
+Query.starts_with("name", "Once upon a time")
+```
+```ruby
+Query.starts_with("name", "Once upon a time")
+```
+```deno
+Query.startsWith("name", "Once upon a time")
+```
+```php
+Query::startsWith("name", "Once upon a time")
+```
+```swift
+Query.startsWith("name", value: "Once upon a time")
+```
+```http
+{"method":"startsWith","attribute":"name","values":["Once upon a time"]}
+```
+{% /multicode %}
+
+### Ends with {% #ends-with %}
+
+Returns documents if a string attribute ends with a substring.
+
+{% multicode %}
+```client-web
+Query.endsWith("name", "happily ever after.")
+```
+```client-flutter
+Query.endsWith("name", "happily ever after.")
+```
+```python
+Query.ends_with("name", "happily ever after.")
+```
+```ruby
+Query.ends_with("name", "happily ever after.")
+```
+```deno
+Query.endsWith("name", "happily ever after.")
+```
+```php
+Query::endsWith("name", "happily ever after.")
+```
+```swift
+Query.endsWith("name", value: "happily ever after.")
+```
+```http
+{"method":"endsWith","attribute":"name","values":["happily ever after."]}
+```
+{% /multicode %}
+
+### Contains {% #contains %}
+
+Returns documents if the array attribute contains the specified elements or if a string attribute contains the specified substring.
+
+{% multicode %}
+```client-web
+// For arrays
+Query.contains("ingredients", ['apple', 'banana'])
+
+// For strings
+Query.contains("name", "Tom")
+```
+```client-flutter
+// For arrays
+Query.contains("ingredients", ['apple', 'banana'])
+
+// For strings
+Query.contains("name", "Tom")
+```
+```python
+# For arrays
+Query.contains("ingredients", ['apple', 'banana'])
+
+# For strings
+Query.contains("name", "Tom")
+```
+```ruby
+# For arrays
+Query.contains("ingredients", ['apple', 'banana'])
+
+# For strings
+Query.contains("name", "Tom")
+```
+```deno
+// For arrays
+Query.contains("ingredients", ['apple', 'banana'])
+
+// For strings
+Query.contains("name", "Tom")
+```
+```php
+// For arrays
+Query::contains("ingredients", ['apple', 'banana'])
+
+// For strings
+Query::contains("name", "Tom")
+```
+```swift
+// For arrays
+Query.contains("ingredients", value: ['apple', 'banana'])
+
+// For strings
+Query.contains("name", value: "Tom")
+```
+```http
+# For arrays
+{"method":"contains","attribute":"ingredients","values":["apple","banana"]}
+
+# For strings
+{"method":"contains","attribute":"name","values":["Tom"]}
+```
+{% /multicode %}
+
+### Search {% #search %}
+
+Searches string attributes for provided keywords. Requires a [full-text index](/docs/products/databases/collections#indexes) on queried attributes.
+
+{% multicode %}
+```client-web
+Query.search("text", "key words")
+```
+```client-flutter
+Query.search("text", "key words")
+```
+```python
+Query.search("text", "key words")
+```
+```ruby
+Query.search("text", "key words")
+```
+```deno
+Query.search("text", "key words")
+```
+```php
+Query::search("text", "key words")
+```
+```swift
+Query.search("text", value: "key words")
+```
+```http
+{"method":"search","attribute":"text","values":["key words"]}
+```
+{% /multicode %}
+
+## Logical operators {% #logical-operators %}
+
+### AND {% #and %}
+
+Returns document if it matches all of the nested sub-queries in the array passed in.
+
+{% multicode %}
+```client-web
+Query.and([
+    Query.lessThan("size", 10),
+    Query.greaterThan("size", 5)
+])
+```
+```client-flutter
+Query.and([
+    Query.lessThan("size", 10),
+    Query.greaterThan("size", 5)
+])
+```
+```python
+Query.and_queries([
+    Query.less_than("size", 10),
+    Query.greater_than("size", 5)
+])
+```
+```ruby
+Query.and([
+    Query.less_than("size", 10),
+    Query.greater_than("size", 5)
+])
+```
+```deno
+Query.and([
+    Query.lessThan("size", 10),
+    Query.greaterThan("size", 5)
+])
+```
+```php
+Query::and([
+    Query::lessThan("size", 10),
+    Query::greaterThan("size", 5)
+])
+```
+```swift
+Query.and([
+    Query.lessThan("size", value: 10),
+    Query.greaterThan("size", value: 5)
+])
+```
+```http
+{"method":"and","values":[{"method":"lessThan","attribute":"size","values":[10]},{"method":"greaterThan","attribute":"size","values":[5]}]}
+```
+{% /multicode %}
+
+### OR {% #or %}
+
+Returns document if it matches any of the nested sub-queries in the array passed in.
+
+{% multicode %}
+```client-web
+Query.or([
+    Query.lessThan("size", 5),
+    Query.greaterThan("size", 10)
+])
+```
+```client-flutter
+Query.or([
+    Query.lessThan("size", 5),
+    Query.greaterThan("size", 10)
+])
+```
+```python
+Query.or_queries([
+    Query.less_than("size", 5),
+    Query.greater_than("size", 10)
+])
+```
+```ruby
+Query.or([
+    Query.less_than("size", 5),
+    Query.greater_than("size", 10)
+])
+```
+```deno
+Query.or([
+    Query.lessThan("size", 5),
+    Query.greaterThan("size", 10)
+])
+```
+```php
+Query::or([
+    Query::lessThan("size", 5),
+    Query::greaterThan("size", 10)
+])
+```
+```swift
+Query.or([
+    Query.lessThan("size", value: 5),
+    Query.greaterThan("size", value: 10)
+])
+```
+```http
+{"method":"or","values":[{"method":"lessThan","attribute":"size","values":[5]},{"method":"greaterThan","attribute":"size","values":[10]}]}
+```
+{% /multicode %}
+
+## Ordering {% #ordering %}
+
+### Order descending {% #order-desc %}
+
+Orders results in descending order by attribute. Attribute must be indexed.
+
+{% multicode %}
+```client-web
+Query.orderDesc("attribute")
+```
+```client-flutter
+Query.orderDesc("attribute")
+```
+```python
+Query.order_desc("attribute")
+```
+```ruby
+Query.order_desc("attribute")
+```
+```deno
+Query.orderDesc("attribute")
+```
+```php
+Query::orderDesc("attribute")
+```
+```swift
+Query.orderDesc("attribute")
+```
+```http
+{"method":"orderDesc","attribute":"attribute"}
+```
+{% /multicode %}
+
+### Order ascending {% #order-asc %}
+
+Orders results in ascending order by attribute. Attribute must be indexed.
+
+{% multicode %}
+```client-web
+Query.orderAsc("attribute")
+```
+```client-flutter
+Query.orderAsc("attribute")
+```
+```python
+Query.order_asc("attribute")
+```
+```ruby
+Query.order_asc("attribute")
+```
+```deno
+Query.orderAsc("attribute")
+```
+```php
+Query::orderAsc("attribute")
+```
+```swift
+Query.orderAsc("attribute")
+```
+```http
+{"method":"orderAsc","attribute":"attribute"}
+```
+{% /multicode %}
+
+## Pagination {% #pagination %}
+
+### Limit {% #limit %}
+
+Limits the number of results returned by the query. Used for [pagination](/docs/products/databases/pagination).
+
+{% multicode %}
+```client-web
+Query.limit(25)
+```
+```client-flutter
+Query.limit(25)
+```
+```python
+Query.limit(25)
+```
+```ruby
+Query.limit(25)
+```
+```deno
+Query.limit(25)
+```
+```php
+Query::limit(25)
+```
+```swift
+Query.limit(25)
+```
+```http
+{"method":"limit","values":[25]}
+```
+{% /multicode %}
+
+### Offset {% #offset %}
+
+Offset the results returned by skipping some of the results. Used for [pagination](/docs/products/databases/pagination).
+
+{% multicode %}
+```client-web
+Query.offset(0)
+```
+```client-flutter
+Query.offset(0)
+```
+```python
+Query.offset(0)
+```
+```ruby
+Query.offset(0)
+```
+```deno
+Query.offset(0)
+```
+```php
+Query::offset(0)
+```
+```swift
+Query.offset(0)
+```
+```http
+{"method":"offset","values":[0]}
+```
+{% /multicode %}
+
+### Cursor after {% #cursor-after %}
+
+Places the cursor after the specified resource ID. Used for [pagination](/docs/products/databases/pagination).
+
+{% multicode %}
+```client-web
+Query.cursorAfter("62a7...f620")
+```
+```client-flutter
+Query.cursorAfter("62a7...f620")
+```
+```python
+Query.cursor_after("62a7...f620")
+```
+```ruby
+Query.cursor_after("62a7...f620")
+```
+```deno
+Query.cursorAfter("62a7...f620")
+```
+```php
+Query::cursorAfter("62a7...f620")
+```
+```swift
+Query.cursorAfter("62a7...f620")
+```
+```http
+{"method":"cursorAfter","values":["62a7...f620"]}
+```
+{% /multicode %}
+
+### Cursor before {% #cursor-before %}
+
+Places the cursor before the specified resource ID. Used for [pagination](/docs/products/databases/pagination).
+
+{% multicode %}
+```client-web
+Query.cursorBefore("62a7...a600")
+```
+```client-flutter
+Query.cursorBefore("62a7...a600")
+```
+```python
+Query.cursor_before("62a7...a600")
+```
+```ruby
+Query.cursor_before("62a7...a600")
+```
+```deno
+Query.cursorBefore("62a7...a600")
+```
+```php
+Query::cursorBefore("62a7...a600")
+```
+```swift
+Query.cursorBefore("62a7...a600")
+```
+```http
+{"method":"cursorBefore","values":["62a7...a600"]}
+```
+{% /multicode %}
+
+# Complex queries {% #complex-queries %}
+
+You can create complex queries by combining AND and OR operations. For example, to find items that are either books under $20 or magazines under $10:
+
+{% multicode %}
+```client-web
+const results = await databases.listDocuments(
+    '<DATABASE_ID>',
+    '<COLLECTION_ID>',
+    [
+        Query.or([
+            Query.and([
+                Query.equal('category', ['books']),
+                Query.lessThan('price', 20)
+            ]),
+            Query.and([
+                Query.equal('category', ['magazines']),
+                Query.lessThan('price', 10)
+            ])
+        ])
+    ]
+);
+```
+```client-flutter
+final results = await databases.listDocuments(
+    '<DATABASE_ID>',
+    '<COLLECTION_ID>',
+    [
+        Query.or([
+            Query.and([
+                Query.equal('category', ['books']),
+                Query.lessThan('price', 20)
+            ]),
+            Query.and([
+                Query.equal('category', ['magazines']),
+                Query.lessThan('price', 10)
+            ])
+        ])
+    ]
+);
+```
+```python
+results = databases.list_documents(
+    database_id='<DATABASE_ID>',
+    collection_id='<COLLECTION_ID>',
+    queries=[
+        Query.or_queries([
+            Query.and_queries([
+                Query.equal('category', ['books']),
+                Query.less_than('price', 20)
+            ]),
+            Query.and_queries([
+                Query.equal('category', ['magazines']),
+                Query.less_than('price', 10)
+            ])
+        ])
+    ]
+)
+```
+```http
+{"method":"or","values":[{"method":"and","values":[{"method":"equal","attribute":"category","values":["books"]},{"method":"lessThan","attribute":"price","values":[20]}]},{"method":"and","values":[{"method":"equal","attribute":"category","values":["magazines"]},{"method":"lessThan","attribute":"price","values":[10]}]}]}
+```
+{% /multicode %}
+
+This example demonstrates how to combine `OR` and `AND` operations. The query uses `Query.or()` to match either condition: books under $20 OR magazines under $10.
+Each condition within the OR is composed of two AND conditions - one for the category and one for the price threshold. The database will return documents that match either of these combined conditions.
+

@@ -16,14 +16,14 @@ This allows anyone to create and read files in this bucket.
 
 # Create file {% #create-file %}
 
-To upload a file, add this to your web, Flutter, Apple, or Android app.
+To upload a file, add this to your app. For web apps, you can use the File object directly. For Node.js apps, use the InputFile class.
 
 {% multicode %}
   ```client-web
   import { Client, Storage } from "appwrite";
 
   const client = new Client()
-      .setEndpoint('https://cloud.appwrite.io/v1')
+      .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
       .setProject('<PROJECT_ID>');
 
   const storage = new Storage(client);
@@ -41,12 +41,32 @@ To upload a file, add this to your web, Flutter, Apple, or Android app.
   });
   ```
 
+  ```server-nodejs
+  const sdk = require('node-appwrite');
+  const { InputFile } = require('node-appwrite/file');
+
+  const client = new sdk.Client()
+      .setEndpoint('https://cloud.appwrite.io/v1')
+      .setProject('<PROJECT_ID>')
+      .setKey('<API_KEY>');
+
+  const storage = new sdk.Storage(client);
+
+  // If running in a browser environment, you can use File directly
+  const browserFile = new File(['hello'], 'hello.txt');
+  await storage.createFile('[BUCKET_ID]', ID.unique(), browserFile);
+
+  // If running in Node.js, use InputFile
+  const nodeFile = InputFile.fromPath('/path/to/file.jpg', 'file.jpg');
+  await storage.createFile('[BUCKET_ID]', ID.unique(), nodeFile);
+  ```
+
   ```client-flutter
   import 'package:appwrite/appwrite.dart';
 
   void main() { // Init SDK
     final client = Client()
-      .setEndpoint('https://cloud.appwrite.io/v1')
+      .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
       .setProject('<PROJECT_ID>');
 
     final storage = Storage(client);
@@ -63,7 +83,7 @@ To upload a file, add this to your web, Flutter, Apple, or Android app.
 
   func main() async throws {
       let client = Client()
-        .setEndpoint("https://cloud.appwrite.io/v1")
+        .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
         .setProject("<PROJECT_ID>")
 
       let storage = Storage(client)
@@ -84,7 +104,7 @@ To upload a file, add this to your web, Flutter, Apple, or Android app.
 
   suspend fun main() {
       val client = Client(applicationContext)
-          .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
+          .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
           .setProject("<PROJECT_ID>") // Your project ID
 
       val storage = Storage(client)
@@ -135,7 +155,7 @@ const client = new Client();
 const storage = new Storage(client);
 
 client
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
     .setProject('<PROJECT_ID>') // Your project ID
 ;
 
@@ -151,7 +171,7 @@ void main() { // Init SDK
   Storage storage = Storage(client);
 
   client
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
     .setProject('<PROJECT_ID>') // Your project ID
   ;
   // downloading file
@@ -186,7 +206,7 @@ import Appwrite
 
 func main() async throws {
     let client = Client()
-      .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
+      .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
       .setProject("<PROJECT_ID>") // Your project ID
     let storage = Storage(client)
     let byteBuffer = try await storage.getFileDownload(
@@ -211,7 +231,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val client = Client(applicationContext)
-            .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
+            .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
             .setProject("<PROJECT_ID>") // Your project ID
 
         val storage = Storage(client)

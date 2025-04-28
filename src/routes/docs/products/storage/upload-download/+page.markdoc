@@ -15,11 +15,11 @@ When you are in the **Files** tab, you can click **Add File** and select a file 
 You can also upload files programmatically using our SDKs:
 
 {% multicode %}
-  ```js
+  ```client-web
   import { Client, Storage } from "appwrite";
 
   const client = new Client()
-      .setEndpoint('https://cloud.appwrite.io/v1')
+      .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
       .setProject('<PROJECT_ID>');
 
   const storage = new Storage(client);
@@ -37,12 +37,32 @@ You can also upload files programmatically using our SDKs:
   });
   ```
 
-  ```dart
+  ```server-nodejs
+  const sdk = require('node-appwrite');
+  const { InputFile } = require('node-appwrite/file');
+
+  const client = new sdk.Client()
+      .setEndpoint('https://cloud.appwrite.io/v1')
+      .setProject('<PROJECT_ID>')
+      .setKey('<API_KEY>');
+
+  const storage = new sdk.Storage(client);
+
+  // If running in a browser environment, you can use File directly
+  const browserFile = new File(['hello'], 'hello.txt');
+  await storage.createFile('[BUCKET_ID]', ID.unique(), browserFile);
+
+  // If running in Node.js, use InputFile
+  const nodeFile = InputFile.fromPath('/path/to/file.jpg', 'file.jpg');
+  await storage.createFile('[BUCKET_ID]', ID.unique(), nodeFile);
+  ```
+
+  ```client-flutter
   import 'package:appwrite/appwrite.dart';
 
   void main() { // Init SDK
     final client = Client()
-      .setEndpoint('https://cloud.appwrite.io/v1')
+      .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
       .setProject('<PROJECT_ID>');
 
     final storage = Storage(client);
@@ -61,7 +81,7 @@ You can also upload files programmatically using our SDKs:
 
   suspend fun main() {
       val client = Client(applicationContext)
-          .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
+          .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
           .setProject("<PROJECT_ID>") // Your project ID
 
       val storage = Storage(client)
@@ -79,7 +99,7 @@ You can also upload files programmatically using our SDKs:
 
   func main() async throws {
       let client = Client()
-        .setEndpoint("https://cloud.appwrite.io/v1")
+        .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
         .setProject("<PROJECT_ID>")
 
       let storage = Storage(client)
@@ -126,7 +146,7 @@ If you're using an Appwrite SDK, this is handled automatically.
 If you're not using an SDK, you can [learn more about REST API file handling](/docs/apis/rest#files).
 
 # InputFile {% #input-file %}
-Every language and platform handles file inputs differently. This section documents the expected input type of each SDK. Where applicable, Appwrite provides an `InputFile` class to accept multiple file sources, like paths, buffers, streams, or plain text.
+Every language and platform handles file inputs differently. This section documents the expected input type of each SDK. Where applicable, Appwrite provides an `InputFile` class to accept multiple file sources, like paths, buffers, or plain text.
 
 # Client SDKs {% #client-sdks %}
 
@@ -182,16 +202,17 @@ The Appwrite Apple SDK expects an `InputFile` class for file inputs.
 
 {% tabs %}
 {% tabsitem #nodejs title="Node.js" %}
-The Appwrite NodeJS SDK expects an `InputFile` class for file inputs.
+In browser environments, you can use the `File` object directly. For Node.js environments, import the `InputFile` class from 'node-appwrite/file'.
+
+When using `InputFile`, the following methods are available:
 
 | Method                                     | Description                                                  |
 | ------------------------------------------ | ------------------------------------------------------------ |
 | `InputFile.fromPath(filePath, filename)`     | Used to upload files from a provided path.                  |
-| `InputFile.fromBuffer(buffer, filename)`     | Used to upload files from a [Buffer](https://nodejs.org/api/buffer.html#buffer) object. |
-| `InputFile.fromBlob(blob, filename)`         | Used to upload files from a [Blob](https://developer.mozilla.org/en-US/docs/Web/API/Blob) object. |
-| `InputFile.fromStream(stream, filename, size)` | Used to upload files from a [Readable Stream](https://nodejs.org/api/stream.html#readable-streams) object. |
+| `InputFile.fromBuffer(buffer, filename)`     | Used to upload files from a [Buffer](https://nodejs.org/api/buffer.html#buffer) or [Blob](https://developer.mozilla.org/en-US/docs/Web/API/Blob) object. |
 | `InputFile.fromPlainText(content, filename)`  | Used to upload files in plain text. Expects a string encoded in UTF-8. |
 {% /tabsitem %}
+
 {% tabsitem #php title="PHP" %}
 
 The Appwrite PHP SDK expects an `InputFile` class for file inputs.
@@ -262,19 +283,18 @@ The Appwrite Swift SDK expects an `InputFile` class for file inputs.
 | `InputFile.fromBuffer(_ buffer: ByteBuffer, filename: String, mimeType: String)` | Used to upload files from a [NIO Buffer](https://swiftinit.org/reference/swift-nio/niocore/bytebuffer) object. Specify the file [MIME type](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types) using the `mimeType` param. |
 {% /tabsitem %}
 
-{% tabsitem #dotnet title=".Net" %}
+{% tabsitem #dotnet title=".NET" %}
 The Appwrite .NET SDK expects an `InputFile` class for file inputs.
 
 | Method                                     | Description                                                  |
 | ------------------------------------------ | ------------------------------------------------------------ |
 | `InputFile.FromPath(string path)`           | Used to upload files from a provided path.                  |
-| `InputFile.FromStream(Stream stream, string filename, string mimeType)` | Used to upload files from a [Stream](https://learn.microsoft.com/en-us/dotnet/api/system.io.stream?view=net-7.0) object. Specify the file [MIME type](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types) using the `mimeType` param. |
 | `InputFile.FromBytes(byte[] bytes, string filename, string mimeType)` | Used to upload files from an array of bytes. Specify the file [MIME type](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types) using the `mimeType` param. |
 {% /tabsitem %}
 {% /tabs %}
 
 # Get file {% #get-file %}
-To get a metadata about a.file, use the `getFile` method.
+To get a metadata about a file, use the `getFile` method.
 
 {% multicode %}
 ```client-web
@@ -285,7 +305,7 @@ const client = new Client();
 const storage = new Storage(client);
 
 client
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
     .setProject('<PROJECT_ID>') // Your project ID
 ;
 
@@ -305,7 +325,7 @@ void main() { // Init SDK
   Storage storage = Storage(client);
 
   client
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
     .setProject('<PROJECT_ID>') // Your project ID
   ;
   // downloading file
@@ -340,7 +360,7 @@ import Appwrite
 
 func main() async throws {
     let client = Client()
-      .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
+      .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
       .setProject("<PROJECT_ID>") // Your project ID
     let storage = Storage(client)
     let byteBuffer = try await storage.getFile(
@@ -365,7 +385,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val client = Client(applicationContext)
-            .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
+            .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
             .setProject("<PROJECT_ID>") // Your project ID
 
         val storage = Storage(client)
@@ -392,7 +412,7 @@ const client = new Client();
 const storage = new Storage(client);
 
 client
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
     .setProject('<PROJECT_ID>') // Your project ID
 ;
 
@@ -408,7 +428,7 @@ void main() { // Init SDK
   Storage storage = Storage(client);
 
   client
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
     .setProject('<PROJECT_ID>') // Your project ID
   ;
   // downloading file
@@ -443,7 +463,7 @@ import Appwrite
 
 func main() async throws {
     let client = Client()
-      .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
+      .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
       .setProject("<PROJECT_ID>") // Your project ID
     let storage = Storage(client)
     let byteBuffer = try await storage.getFileDownload(
@@ -468,7 +488,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val client = Client(applicationContext)
-            .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
+            .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
             .setProject("<PROJECT_ID>") // Your project ID
 
         val storage = Storage(client)
@@ -495,7 +515,7 @@ const client = new Client();
 const storage = new Storage(client);
 
 client
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
     .setProject('<PROJECT_ID>') // Your project ID
 ;
 
@@ -511,7 +531,7 @@ void main() { // Init SDK
   Storage storage = Storage(client);
 
   client
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
     .setProject('<PROJECT_ID>') // Your project ID
   ;
   // downloading file
@@ -546,7 +566,7 @@ import Appwrite
 
 func main() async throws {
     let client = Client()
-      .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
+      .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
       .setProject("<PROJECT_ID>") // Your project ID
     let storage = Storage(client)
     let byteBuffer = try await storage.getFilePreview(
@@ -571,7 +591,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val client = Client(applicationContext)
-            .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
+            .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
             .setProject("<PROJECT_ID>") // Your project ID
 
         val storage = Storage(client)
@@ -599,7 +619,7 @@ const client = new Client();
 const storage = new Storage(client);
 
 client
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
     .setProject('<PROJECT_ID>') // Your project ID
 ;
 
@@ -615,7 +635,7 @@ void main() { // Init SDK
   Storage storage = Storage(client);
 
   client
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
     .setProject('<PROJECT_ID>') // Your project ID
   ;
   // downloading file
@@ -650,7 +670,7 @@ import Appwrite
 
 func main() async throws {
     let client = Client()
-      .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
+      .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
       .setProject("<PROJECT_ID>") // Your project ID
     let storage = Storage(client)
     let byteBuffer = try await storage.getFileView(
@@ -675,7 +695,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val client = Client(applicationContext)
-            .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
+            .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
             .setProject("<PROJECT_ID>") // Your project ID
 
         val storage = Storage(client)

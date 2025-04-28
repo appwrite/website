@@ -49,21 +49,21 @@
 <div id="enum-anim" class="component">
     <div class="window">
         <div class="buttons">
-            <div class="circle" />
-            <div class="circle" />
-            <div class="circle" />
+            <div class="circle"></div>
+            <div class="circle"></div>
+            <div class="circle"></div>
         </div>
-        <div class="window-bg" />
+        <div class="window-bg"></div>
 
         <div class="lines">
             <!-- eslint-disable-next-line @typescript-eslint/no-unused-vars -->
             {#each { length: 4 } as _}
                 <div class="line">
                     <div class="diamond-wrapper">
-                        <div class="diamond" />
+                        <div class="diamond"></div>
                     </div>
-                    <div class="equals" />
-                    <div class="rectangle" />
+                    <div class="equals"></div>
+                    <div class="rectangle"></div>
                 </div>
             {/each}
         </div>

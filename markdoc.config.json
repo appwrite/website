@@ -9,7 +9,8 @@
             "watch": true
         },
         "partials": {
-            "auth-security.md": "./src/partials/auth-security.md"
+            "auth-security.md": "./src/partials/auth-security.md",
+            "prohibited-activities.md": "./src/partials/prohibited-activities.md"
         }
     }
 ]

@@ -6,10 +6,10 @@
     import MainFooter from '../../../lib/components/MainFooter.svelte';
     import { socials } from '$lib/constants';
     import { anyify } from '$lib/utils/anyify';
-    //import BlobPink from "$routes/startups/(assets)/blob-pink.svg";
-    // import BlobPinkMobile from "$routes/startups/(assets)/blob-pink-mobile.svg";
     import Pink from './bg.png';
+    import { getReferrerAndUtmSource } from '$lib/utils/utm';
     import { PUBLIC_GROWTH_ENDPOINT } from '$env/static/public';
+    import { Button } from '$lib/components/ui';
 
     let email = '';
     let name = '';
@@ -20,29 +20,38 @@
     let linkToDocumentation = '';
     let productUrl = '';
     let extraDetails = '';
-    let subject = '';
-    let message = '';
     let hasCreatedIntegration = false;
-    let error: string | undefined;
+
     let submitted = false;
+    let submitting = false;
+    let error: string | undefined;
 
     async function handleSubmit() {
         error = undefined;
-        message = `Name of representative: ${name}\n\nWork Email: ${email}\n\nCompany Name: ${companyName}\n\nCompany Size: ${companySize}\n\nCompany Website: ${companyWebsite}\n\nIntegration status: ${integrationStatus}\n\nLink to Documentation: ${linkToDocumentation}\n\nLink to product/company assets: ${productUrl}\n\nDetails: ${extraDetails}`;
-        subject = `Technology Partner Application: ${companyName}`;
+        submitting = true;
 
-        const response = await fetch(`${PUBLIC_GROWTH_ENDPOINT}/feedback`, {
+        const response = await fetch(`${PUBLIC_GROWTH_ENDPOINT}/conversations/technology-partner`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
+                name,
                 email,
-                firstName: name,
-                subject,
-                message
+                companyName,
+                companySize,
+                companyWebsite,
+                integrationStatus,
+                integrationDocs:
+                    linkToDocumentation || 'N/A' /* fallback when integrationStatus is !== yes */,
+                brandAssets: productUrl,
+                extraDetails,
+                ...getReferrerAndUtmSource()
             })
         });
+
+        submitting = false;
+
         if (response.status >= 400) {
             error = response.status >= 500 ? 'Server Error.' : 'Error submitting form.';
             return;
@@ -52,7 +61,8 @@
     }
 
     const title = 'Become a Technology Partner' + TITLE_SUFFIX;
-    const description = DEFAULT_DESCRIPTION;
+    const description =
+        "Want to integrate your app with Appwrite's API? Apply to our Technology Partners program by filling a short form.";
     const ogImage = DEFAULT_HOST + '/images/open-graph/website.png';
 </script>
 
@@ -82,7 +92,7 @@
         <div id="form" class="overflow-hidden p-0 pt-10">
             <div class="relative pt-[7.5rem]">
                 <div class="relative">
-                    <div class="container relative">
+                    <div class="relative container">
                         <!-- before submit -->
                         <div class="web-grid-1-1-opt-2 e-u-row-gap-0 relative z-[1] gap-8">
                             <div>
@@ -100,18 +110,19 @@
                                                 team will try to get back to you as soon as
                                                 possible.
                                             </p>
-                                            <a
+                                            <Button
+                                                variant="secondary"
                                                 href="/integrations"
-                                                class="web-button is-secondary web-u-margin-block-end-32"
+                                                class="mb-8"
                                             >
                                                 <span>Back to integrations</span>
-                                            </a>
+                                            </Button>
                                         </section>
                                     {:else}
                                         <section class="flex flex-col gap-5">
-                                            <h4 class="text-display font-aeonik-pro text-primary">
+                                            <h1 class="text-display font-aeonik-pro text-primary">
                                                 Become a Technology Partner
-                                            </h4>
+                                            </h1>
                                             <p class="text-description">
                                                 Apply to our Technology Partners Program by filling
                                                 out this form. Our team will reach out to you to
@@ -133,10 +144,8 @@
                                                         target="_blank"
                                                         rel="noopener noreferrer"
                                                     >
-                                                        <span
-                                                            class={social.icon}
-                                                            aria-hidden="true"
-                                                        />
+                                                        <span class={social.icon} aria-hidden="true"
+                                                        ></span>
                                                     </a>
                                                 </li>
                                             {/each}
@@ -144,7 +153,7 @@
                                     </section>
                                     <div
                                         class="web-is-only-mobile web-u-margin-block-start-40 web-u-padding-block-start-40 web-u-sep-block-start"
-                                    />
+                                    ></div>
                                 </div>
                             </div>
                             {#if !submitted}
@@ -203,7 +212,7 @@
 
                                                 <div class="relative">
                                                     <select
-                                                        class="web-input-text"
+                                                        class="web-input-text w-full appearance-none"
                                                         id="companySize"
                                                         bind:value={companySize}
                                                     >
@@ -217,7 +226,7 @@
                                                         <option>5000+ employees</option>
                                                     </select>
                                                     <span
-                                                        class="icon-cheveron-down web-u-pointer-events-none absolute top-2 right-2"
+                                                        class="icon-cheveron-down web-u-pointer-events-none absolute top-[11px] right-2"
                                                         aria-hidden="true"
                                                     ></span>
                                                 </div>
@@ -246,7 +255,7 @@
                                                 >
                                                 <div class="relative">
                                                     <select
-                                                        class="web-input-text"
+                                                        class="web-input-text w-full appearance-none"
                                                         id="integration"
                                                         bind:value={integrationStatus}
                                                         on:change={(e) =>
@@ -268,7 +277,7 @@
                                                         >
                                                     </select>
                                                     <span
-                                                        class="icon-cheveron-down web-u-pointer-events-none absolute top-2 right-2"
+                                                        class="icon-cheveron-down web-u-pointer-events-none absolute top-[11px] right-2"
                                                         aria-hidden="true"
                                                     ></span>
                                                 </div>
@@ -329,12 +338,13 @@
                                                 {error}
                                             {/if}
                                         </p>
-                                        <button
+                                        <Button
                                             type="submit"
-                                            class="web-button web-u-inline-width-100-percent-mobile-break1 self-center"
+                                            disabled={submitting}
+                                            class="web-u-inline-width-100-percent-mobile-break1 self-center"
                                         >
                                             <span>Submit</span>
-                                        </button>
+                                        </Button>
                                     </div>
                                 </form>
                             {/if}

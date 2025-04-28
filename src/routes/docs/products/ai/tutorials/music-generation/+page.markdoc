@@ -58,7 +58,7 @@ class AppwriteService {
     const client = new Client();
     client
       .setEndpoint(
-        process.env.APPWRITE_ENDPOINT ?? 'https://cloud.appwrite.io/v1'
+        process.env.APPWRITE_ENDPOINT ?? 'https://<REGION>.cloud.appwrite.io/v1'
       )
       .setProject(process.env.APPWRITE_FUNCTION_PROJECT_ID)
       .setKey(process.env.APPWRITE_API_KEY);
@@ -68,7 +68,7 @@ class AppwriteService {
   }
 
   async createFile(bucketId, blob) {
-    const file = await InputFile.fromBlob(blob, 'audio.flac');
+    const file = await InputFile.fromBuffer(blob, 'audio.flac');
     return await this.storage.createFile(bucketId, ID.unique(), file);
   }
 }

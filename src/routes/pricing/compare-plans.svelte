@@ -2,12 +2,14 @@
     import { browser } from '$app/environment';
     import { Tabs } from '$lib/UI';
     import { visible } from '$lib/actions/visible';
-    import { isHeaderHidden } from '$lib/layouts/Main.svelte';
+    import { Tooltip } from '$lib/components';
+    import { Button } from '$lib/components/ui';
+    import { classNames } from '$lib/utils/classnames';
+    import { getAppwriteDashboardUrl } from '$lib/utils/dashboard';
     import { getScrollDir } from '$lib/utils/getScrollDir';
     import { createAccordion, melt } from '@melt-ui/svelte';
     import { writable } from 'svelte/store';
     import { fly } from 'svelte/transition';
-    import { classNames } from '$lib/utils/classnames';
 
     type Table = {
         title: string;
@@ -23,7 +25,7 @@
 
     const cols = ['free', 'pro', 'scale', 'enterprise'] as const;
 
-    const tables = [
+    const tables: Array<Table> = [
         {
             title: 'Resources',
             rows: [
@@ -82,14 +84,14 @@
                     enterprise: 'Never'
                 },
                 {
-                    title: 'Organization Members',
+                    title: 'Organization members',
                     free: '1',
                     pro: '1',
                     scale: 'Unlimited',
                     enterprise: 'Unlimited'
                 },
                 {
-                    title: 'Additional Organization members',
+                    title: 'Additional members',
                     free: '-',
                     pro: '$15 per member',
                     scale: '$0',
@@ -98,13 +100,6 @@
                 {
                     title: 'Connected websites and apps',
                     free: '3 per project',
-                    pro: 'Unlimited',
-                    scale: 'Unlimited',
-                    enterprise: 'Unlimited'
-                },
-                {
-                    title: 'Custom domains',
-                    free: 'Unlimited',
                     pro: 'Unlimited',
                     scale: 'Unlimited',
                     enterprise: 'Unlimited'
@@ -135,7 +130,7 @@
                     free: '1 hour',
                     pro: '7 days',
                     scale: '28 days',
-                    enterprise: '90 days'
+                    enterprise: 'Custom'
                 },
                 {
                     title: 'Budget caps and alerts',
@@ -161,6 +156,13 @@
                     free: '-',
                     pro: '$3 per 1,000 users',
                     scale: '$3 per 1,000 users',
+                    enterprise: 'Custom'
+                },
+                {
+                    title: 'Phone OTP',
+                    free: '10 SMS / month',
+                    pro: '<a href="/docs/advanced/platform/phone-otp#rates" class="underline">View rates</a>',
+                    scale: '<a href="/docs/advanced/platform/phone-otp#rates" class="underline">View rates</a>',
                     enterprise: 'Custom'
                 },
                 {
@@ -197,11 +199,32 @@
                     enterprise: 'Unlimited'
                 },
                 {
-                    title: 'Reads & Writes',
-                    free: 'Unlimited',
-                    pro: 'Unlimited',
-                    scale: 'Unlimited',
-                    enterprise: 'Unlimited'
+                    title: 'Reads',
+                    free: '500K',
+                    pro: '1750K',
+                    scale: '1750K',
+                    enterprise: 'Custom'
+                },
+                {
+                    title: 'Writes',
+                    free: '250K',
+                    pro: '750K',
+                    scale: '750K',
+                    enterprise: 'Custom'
+                },
+                {
+                    title: 'Additional reads',
+                    free: '-',
+                    pro: '$0.060 per 100k reads',
+                    scale: '$0.060 per 100k reads',
+                    enterprise: 'Custom'
+                },
+                {
+                    title: 'Additional writes',
+                    free: '-',
+                    pro: '$0.10 per 100k writes',
+                    scale: '$0.10 per 100k writes',
+                    enterprise: 'Custom'
                 },
                 {
                     title: 'Backups',
@@ -220,7 +243,7 @@
                 {
                     title: 'Dedicated databases',
                     free: '-',
-                    pro: 'Coming Soon',
+                    pro: 'Coming soon',
                     scale: 'Coming soon',
                     enterprise: 'Coming soon'
                 }
@@ -231,7 +254,7 @@
             rows: [
                 {
                     title: 'Buckets',
-                    free: '3 per project',
+                    free: '1 per project',
                     pro: 'Unlimited',
                     scale: 'Unlimited',
                     enterprise: 'Unlimited'
@@ -245,10 +268,17 @@
                 },
                 {
                     title: 'Image transformations',
-                    free: 'Unlimited',
-                    pro: 'Unlimited',
-                    scale: 'Unlimited',
-                    enterprise: 'Unlimited'
+                    free: '-',
+                    pro: '100 origin images / month',
+                    scale: '100 origin images / month',
+                    enterprise: 'Custom'
+                },
+                {
+                    title: 'Additional transformations',
+                    free: '-',
+                    pro: '$5 per 1000 origin images',
+                    scale: '$5 per 1000 origin images',
+                    enterprise: 'Custom'
                 }
             ]
         },
@@ -270,10 +300,31 @@
                     enterprise: 'Custom'
                 },
                 {
+                    title: 'GB-hours',
+                    free: '100 GB-hour / month',
+                    pro: '1,000 GB-hour / month',
+                    scale: '1,000 GB-hour / month',
+                    enterprise: 'Custom'
+                },
+                {
+                    title: 'Additional GB-hours',
+                    free: '-',
+                    pro: '$0.09 per GB-hour',
+                    scale: '$0.09 per GB-hour',
+                    enterprise: 'Custom'
+                },
+                {
+                    title: 'Compute options',
+                    free: '0.5 CPUs - 512MB RAM',
+                    pro: 'Up to 4 CPUs - 4GB RAM',
+                    scale: 'Up to 4 CPUs - 4GB RAM',
+                    enterprise: 'Custom'
+                },
+                {
                     title: 'Additional executions',
                     free: '-',
-                    pro: '$2 per 1 Million',
-                    scale: '$2 per 1 Million',
+                    pro: '$2 per 1m',
+                    scale: '$2 per 1m',
                     enterprise: 'Custom'
                 },
                 {
@@ -297,7 +348,7 @@
                     enterprise: 'Custom'
                 },
                 {
-                    title: 'Additional concurrent connections',
+                    title: 'Additional connections',
                     free: '-',
                     pro: '$5 per 1,000',
                     scale: '$5 per 1,000',
@@ -309,6 +360,68 @@
                     pro: 'Unlimited',
                     scale: 'Unlimited',
                     enterprise: 'Unlimited'
+                }
+            ]
+        },
+        {
+            title: 'Network',
+            rows: [
+                {
+                    title: 'Edge compute',
+                    free: true,
+                    pro: true,
+                    scale: true,
+                    enterprise: true
+                },
+                {
+                    title: 'DDoS mitigation',
+                    free: true,
+                    pro: true,
+                    scale: true,
+                    enterprise: true
+                },
+                {
+                    title: 'Content delivery network',
+                    free: true,
+                    pro: true,
+                    scale: true,
+                    enterprise: true
+                },
+                {
+                    title: 'Content compression',
+                    info: 'Support for brotli, zstd and gzip for text compression and webp for image compression',
+                    free: true,
+                    pro: true,
+                    scale: true,
+                    enterprise: true
+                },
+                {
+                    title: 'TLS encryption',
+                    free: true,
+                    pro: true,
+                    scale: true,
+                    enterprise: true
+                },
+                {
+                    title: 'Logs',
+                    free: '-',
+                    pro: '-',
+                    scale: 'Coming soon',
+                    enterprise: 'Coming soon'
+                },
+                {
+                    title: 'Firewall',
+                    free: '-',
+                    pro: '-',
+                    scale: '-',
+                    enterprise: 'Custom rules'
+                },
+                {
+                    title: 'WAF',
+                    free: '-',
+                    pro: '-',
+                    scale: '-',
+                    enterprise: 'Custom rules'
                 }
             ]
         },
@@ -347,22 +460,15 @@
                     title: 'Custom organization roles',
                     free: '-',
                     pro: '-',
-                    scale: 'Coming Soon',
-                    enterprise: 'Coming Soon'
-                },
-                {
-                    title: 'Network logs',
-                    free: '-',
-                    pro: '-',
-                    scale: 'Coming Soon',
-                    enterprise: 'Coming Soon'
+                    scale: 'Coming soon',
+                    enterprise: 'Coming soon'
                 },
                 {
                     title: 'Activity logs',
                     free: '-',
                     pro: '-',
-                    scale: 'Coming Soon',
-                    enterprise: 'Coming Soon'
+                    scale: 'Coming soon',
+                    enterprise: 'Coming soon'
                 }
             ]
         },
@@ -467,8 +573,7 @@
                     </div>
 
                     <div
-                        class="web-is-not-mobile web-u-grid-auto-column-1fr is-with-footer-border web-u-padding-inline-8 web-u-margin-inline-8-negative web-u-filter-blur-8 web-u-container-query-inline sticky z-10 gap-8"
-                        style:top={$isHeaderHidden ? '0px' : '70px'}
+                        class="web-is-not-mobile web-u-grid-auto-column-1fr is-with-footer-border web-u-padding-inline-8 web-u-margin-inline-8-negative web-u-filter-blur-8 web-u-container-query-inline sticky top-[70px] z-10 gap-8 [padding-block:20px]!"
                         style:transition="inset-block-start 0.3s ease"
                     >
                         <div
@@ -499,48 +604,60 @@
                         <div class="web-mini-card">
                             <div class="flex flex-col items-center justify-between gap-2">
                                 <h4 class="text-sub-body text-primary font-medium">Free</h4>
-                                <a
-                                    href="https://cloud.appwrite.io/register"
-                                    class="web-button is-secondary !w-full"
+                                <Button
+                                    variant="secondary"
+                                    href={getAppwriteDashboardUrl('/register')}
+                                    class="!w-full"
                                 >
                                     <span class="text-sub-body font-medium">Start building</span>
-                                </a>
+                                </Button>
                             </div>
                         </div>
                         <div class="web-mini-card">
                             <div class="flex flex-col items-center justify-between gap-2">
                                 <h4 class="text-sub-body text-primary font-medium">Pro</h4>
-                                <a
-                                    class="web-button !w-full"
-                                    href="https://cloud.appwrite.io/console?type=createPro"
+                                <Button
+                                    class="!w-full"
+                                    href={getAppwriteDashboardUrl(
+                                        '/console?type=create&plan=tier-1'
+                                    )}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                 >
                                     <span class="text-sub-body font-medium">Start building</span>
-                                </a>
+                                </Button>
                             </div>
                         </div>
                         <div class="web-mini-card">
                             <div class="flex flex-col items-center justify-between gap-2">
                                 <h4 class="text-sub-body text-primary font-medium">Scale</h4>
-                                <button class="web-button is-secondary !w-full" disabled>
-                                    <span class="text-sub-body font-medium">Coming soon</span>
-                                </button>
+                                <Button
+                                    variant="secondary"
+                                    class="!w-full"
+                                    href={getAppwriteDashboardUrl(
+                                        '/console?type=create&plan=tier-2'
+                                    )}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    <span class="text-sub-body font-medium">Start building</span>
+                                </Button>
                             </div>
                         </div>
                         <div class="web-mini-card">
                             <div class="flex flex-col items-center justify-between gap-2">
                                 <h4 class="text-sub-body text-primary font-medium">Enterprise</h4>
-                                <a
-                                    class="web-button is-secondary !w-full"
+                                <Button
+                                    variant="secondary"
+                                    class="!w-full"
                                     href="/contact-us/enterprise"
                                 >
                                     <span class="text-sub-body font-medium">Contact</span>
-                                </a>
+                                </Button>
                             </div>
                         </div>
                     </div>
-                    <div class="web-u-stretch-sep-full-screen" />
+                    <div class="web-u-stretch-sep-full-screen"></div>
 
                     {#each tables as table}
                         {@const isOpen = $value?.includes(table.title)}
@@ -573,7 +690,7 @@
                                     <span
                                         class="icon-cheveron-down web-is-only-mobile web-u-inline-block"
                                         aria-hidden="true"
-                                    />
+                                    ></span>
                                 </button>
                             </caption>
 
@@ -583,17 +700,15 @@
                                         <th class="text-caption font-medium">
                                             <div class="flex items-center gap-1 text-left">
                                                 {row.title}
-                                                <!-- {#if row.info}
+                                                {#if row.info}
                                                     <Tooltip placement="top">
-                                                        <span
-                                                            class="icon-info"
-                                                            aria-hidden="true"
-                                                        />
-                                                        <svelte:fragment slot="tooltip">
+                                                        <button class="icon-info" aria-hidden="true"
+                                                        ></button>
+                                                        {#snippet tooltip()}
                                                             {row.info}
-                                                        </svelte:fragment>
+                                                        {/snippet}
                                                     </Tooltip>
-                                                {/if} -->
+                                                {/if}
                                             </div>
                                         </th>
                                         {#each cols as col, index}
@@ -607,7 +722,7 @@
                                                 class:is-selected={col === tab}
                                             >
                                                 {#if typeof row[col] === 'string'}
-                                                    {row[col]}
+                                                    {@html row[col]}
                                                 {:else}
                                                     <img
                                                         class="mx-auto self-center"
@@ -632,6 +747,10 @@
     .web-u-grid-auto-column-1fr {
         grid-auto-columns: max-content;
         grid-template-columns: repeat(5, 2fr);
+    }
+
+    .web-mini-card {
+        padding-inline-start: inherit !important;
     }
 
     .web-label {

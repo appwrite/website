@@ -5,9 +5,9 @@ description: Manage versions and deploy Appwrite Functions
 date: 2024-07-30
 featured: false
 isPartner: true
-isNew: true
+isNew: false
 cover: /images/integrations/deployments-github/cover.png
-category: Deployments
+category: deployments
 product: 
     avatar: '/images/integrations/avatars/github.png'
     vendor: GitHub

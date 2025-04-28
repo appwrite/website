@@ -4,10 +4,12 @@
         href: string;
         step?: number;
         selected?: boolean;
+        level?: number;
         children?: Array<{
             title: string;
             href: string;
             selected: boolean;
+            level?: number;
         }>;
     };
 </script>
@@ -16,7 +18,8 @@
     import { setContext } from 'svelte';
     import { writable } from 'svelte/store';
     import { Feedback } from '$lib/components';
-    import { scrollToTop } from '$lib/actions/scrollToTop';
+    import TableOfContents from '$lib/components/blog/table-of-contents.svelte';
+    import { Button, Icon } from '$lib/components/ui';
 
     export let title: string;
     export let toc: Array<TocItem>;
@@ -36,7 +39,7 @@
                         class="web-icon-button web-is-only-mobile"
                         aria-label="previous page"
                     >
-                        <span class="icon-cheveron-left" aria-hidden="true" />
+                        <span class="icon-cheveron-left" aria-hidden="true"></span>
                     </a>
                 {/if}
                 <ul class="web-metadata text-caption">
@@ -44,23 +47,23 @@
                 </ul>
                 <div class="relative flex items-center">
                     {#if back}
-                        <a
+                        <Button
                             href={back}
-                            class="
-                        web-button is-text is-icon web-items-center web-u-size-40
-                        web-u-translate-x-negative absolute top-0"
+                            class="web-u-translate-x-negative absolute top-0 size-10 items-center"
                             aria-label="previous page"
+                            variant="icon"
                         >
-                            <span
-                                class="icon-cheveron-left web-u-font-size-24 text-primary web-is-not-mobile"
+                            <Icon
+                                name="chevron-left"
+                                class="text-primary hidden text-[24px] md:flex"
                                 aria-hidden="true"
                             />
-                        </a>
+                        </Button>
                     {/if}
                     <h1 class="text-title font-aeonik-pro text-primary">{title}</h1>
                 </div>
             </div>
-            <div class="web-article-header-end" />
+            <div class="web-article-header-end"></div>
         </header>
         <div class="web-article-content" class:web-reduced-article-size={$reducedArticleSize}>
             <slot />
@@ -70,45 +73,7 @@
         <aside class="web-references-menu ps-6">
             <div class="web-references-menu-content">
                 {#if toc && toc.length > 0}
-                    <div class="flex items-center justify-between gap-4">
-                        <h5 class="web-references-menu-title text-micro uppercase">On This Page</h5>
-                    </div>
-                    <ol class="web-references-menu-list">
-                        {#each toc as parent (parent.href)}
-                            <li class="web-references-menu-item">
-                                <a
-                                    href={parent.href}
-                                    class="web-references-menu-link"
-                                    class:is-selected={parent.selected}
-                                >
-                                    {#if parent?.step}
-                                        <span class="web-numeric-badge">{parent.step}</span>
-                                    {/if}
-                                    <span class="text-caption">{parent.title}</span>
-                                </a>
-                                {#if parent.children}
-                                    <ol class="web-references-menu-list mt-4 ml-8">
-                                        {#each parent.children as child}
-                                            <li class="web-references-menu-item">
-                                                <a
-                                                    href={child.href}
-                                                    class="web-references-menu-link"
-                                                >
-                                                    <span class="text-caption">{child.title}</span>
-                                                </a>
-                                            </li>
-                                        {/each}
-                                    </ol>
-                                {/if}
-                            </li>
-                        {/each}
-                    </ol>
-                    <div class="border-greyscale-900/4 border-t pt-5">
-                        <button class="web-link inline-flex items-center gap-2" use:scrollToTop>
-                            <span class="web-icon-arrow-up" aria-hidden="true" />
-                            <span class="text-caption">Back to top</span>
-                        </button>
-                    </div>
+                    <TableOfContents heading="On This Page" {toc} />
                 {/if}
             </div>
         </aside>

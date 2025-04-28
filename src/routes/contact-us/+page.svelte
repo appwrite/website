@@ -6,16 +6,22 @@
     import MainFooter from '../../lib/components/MainFooter.svelte';
     import { socials } from '$lib/constants';
     import { PUBLIC_GROWTH_ENDPOINT } from '$env/static/public';
+    import { getReferrerAndUtmSource } from '$lib/utils/utm';
+    import { Button } from '$lib/components/ui';
 
     let email = '';
     let firstName = '';
     let subject = '';
     let message = '';
-    let error: string | undefined;
+
     let submitted = false;
+    let submitting = false;
+    let error: string | undefined;
 
     async function handleSubmit() {
         error = undefined;
+        submitting = true;
+
         const response = await fetch(`${PUBLIC_GROWTH_ENDPOINT}/feedback`, {
             method: 'POST',
             headers: {
@@ -25,9 +31,13 @@
                 email,
                 firstName,
                 subject,
-                message
+                message,
+                ...getReferrerAndUtmSource()
             })
         });
+
+        submitting = false;
+
         if (response.status >= 400) {
             error = response.status >= 500 ? 'Server Error.' : 'Error submitting form.';
             return;
@@ -37,7 +47,8 @@
     }
 
     const title = 'Contact us' + TITLE_SUFFIX;
-    const description = DEFAULT_DESCRIPTION;
+    const description =
+        'Fill in this short form to get in touch with the Appwrite team. Questions, feature requests or bug reports - all input is welcome!';
     const ogImage = DEFAULT_HOST + '/images/open-graph/website.png';
 </script>
 
@@ -83,12 +94,9 @@
                                             your feedback, our team will try to get back to you as
                                             soon as possible.
                                         </p>
-                                        <a
-                                            href="/"
-                                            class="web-button is-secondary web-u-margin-block-end-32"
-                                        >
+                                        <Button href="/" variant="secondary" class="mb-8">
                                             <span>Back to homepage</span>
-                                        </a>
+                                        </Button>
                                     </section>
                                 {:else}
                                     <section class="flex flex-col gap-5">
@@ -115,7 +123,8 @@
                                                     target="_blank"
                                                     rel="noopener noreferrer"
                                                 >
-                                                    <span class={social.icon} aria-hidden="true" />
+                                                    <span class={social.icon} aria-hidden="true"
+                                                    ></span>
                                                 </a>
                                             </li>
                                         {/each}
@@ -123,7 +132,7 @@
                                 </section>
                                 <div
                                     class="web-is-only-mobile web-u-margin-block-start-40 web-u-padding-block-start-40 web-u-sep-block-start"
-                                />
+                                ></div>
                             </div>
                         </div>
                         {#if !submitted}
@@ -175,7 +184,7 @@
                                                 placeholder="Your message"
                                                 aria-label="Message"
                                                 bind:value={message}
-                                            />
+                                            ></textarea>
                                         </li>
                                     </ul>
                                 </div>
@@ -195,12 +204,13 @@
 										>
 										and <a class="web-link" href="/terms" target="_blank" rel="noopener noreferrer">Terms of Service</a> apply.
 									</p> -->
-                                    <button
+                                    <Button
                                         type="submit"
-                                        class="web-button web-u-inline-width-100-percent-mobile-break1 self-center"
+                                        disabled={submitting}
+                                        class="web-u-inline-width-100-percent-mobile-break1 self-center"
                                     >
                                         <span>Submit</span>
-                                    </button>
+                                    </Button>
                                 </div>
                             </form>
                         {/if}
