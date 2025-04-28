@@ -10,17 +10,15 @@
     let indicator: HTMLElement;
 
     $effect(() => {
-        scroll((progress, info) => console.log(info), {
+        scroll(animate(indicator, { scaleY: [0, 1] }), {
             target: indicator,
             offset: ['start 160px', 'end end']
         });
     });
 </script>
 
-<div class="relative flex h-fit gap-3">
-    <div
-        class="absolute inset-y-0 top-0 -left-[0.5px] -mt-1 flex w-px justify-center bg-transparent"
-    >
+<div class="relative container flex h-fit gap-3">
+    <div class="absolute inset-y-0 top-0 left-4.75 -mt-1 flex w-px justify-center bg-transparent">
         <div
             bind:this={indicator}
             style:transform="scaleY(0)"
