@@ -152,7 +152,7 @@
                         <div class="group relative mr-auto ml-0 flex w-fit items-center md:w-full">
                             <button
                                 class={classNames(
-                                    'bg-card border-smooth ml-auto flex cursor-pointer items-center gap-2 rounded-xl border py-2 pr-4 pl-3 backdrop-blur-md transition-all md:mr-[100px]',
+                                    'bg-card border-smooth ml-auto flex cursor-pointer items-center gap-2 rounded-xl border py-2 pr-4 pl-3 backdrop-blur-md transition-all hover:bg-white/8 md:mr-[100px]',
                                     {
                                         'bg-accent/12 border-accent/36 md:border-smooth md:bg-card':
                                             isActive
@@ -232,7 +232,7 @@
                         <div class="group relative mr-0 ml-auto flex w-fit items-center md:w-full">
                             <button
                                 class={classNames(
-                                    'bg-card border-smooth mr-auto flex cursor-pointer items-center gap-2 rounded-xl border py-2 pr-4 pl-3 backdrop-blur-md transition-all md:ml-[100px]',
+                                    'bg-card border-smooth mr-auto flex cursor-pointer items-center gap-2 rounded-xl border py-2 pr-4 pl-3 backdrop-blur-md transition-all hover:bg-white/8 md:ml-[100px]',
                                     {
                                         'bg-accent/12 border-accent/36 md:border-smooth md:bg-card':
                                             isActive

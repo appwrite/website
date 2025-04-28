@@ -17,7 +17,7 @@
     });
 </script>
 
-<div class="relative flex h-fit gap-3 md:container">
+<div class="relative mt-40 mb-30 flex h-fit gap-3 md:container">
     <div
         class="absolute inset-y-0 top-0 -left-[0.5px] -mt-1 flex w-px justify-center bg-transparent md:left-4.75"
     >

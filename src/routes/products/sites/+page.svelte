@@ -7,6 +7,7 @@
     import { TITLE_SUFFIX } from '$routes/titles';
     import Create from './(components)/create.svelte';
     import Deploy from './(components)/deploy.svelte';
+    import Features from './(components)/features.svelte';
     import Hero from './(components)/hero.svelte';
     import Integrate from './(components)/integrate.svelte';
     import Steps from './(components)/steps.svelte';
@@ -41,13 +42,14 @@
             <Deploy />
             <Integrate />
         </Steps>
+        <Features />
     </div>
     <div class="light bg-[#EDEDF0] pb-8">
         <OpenSourceAlternative platforms={['Vercel', 'Netlify', 'Sevalla']} />
         <Testimonials />
     </div>
 
-    <div class="relative pt-20">
+    <div class="relative -mt-6 max-w-screen overflow-hidden pt-20">
         <div class="container">
             <PreFooter />
             <FooterNav />

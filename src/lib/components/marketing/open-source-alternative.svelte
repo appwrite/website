@@ -45,7 +45,7 @@
             await write(platforms[activeIndex], (v) => (activePlatform = v), 500);
             await sleep(5000);
             await unwrite(platforms[activeIndex], (v) => (activePlatform = v), 500);
-            activeIndex = (activeIndex + 1) % platforms.length;
+            await write(platforms[activeIndex + 1], (v) => (activePlatform = v), 500);
             await sleep(500);
         }
     };
