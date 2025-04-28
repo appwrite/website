@@ -17,8 +17,10 @@
     });
 </script>
 
-<div class="relative container flex h-fit gap-3">
-    <div class="absolute inset-y-0 top-0 left-4.75 -mt-1 flex w-px justify-center bg-transparent">
+<div class="relative flex h-fit gap-3 md:container">
+    <div
+        class="absolute inset-y-0 top-0 -left-[0.5px] -mt-1 flex w-px justify-center bg-transparent md:left-4.75"
+    >
         <div
             bind:this={indicator}
             style:transform="scaleY(0)"
