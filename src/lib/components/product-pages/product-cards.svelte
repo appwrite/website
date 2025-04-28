@@ -32,14 +32,11 @@
         }
     } as const;
 
-    export let exclude:
-        | 'messaging'
-        | 'functions'
-        | 'databases'
-        | 'storage'
-        | 'auth'
-        | 'realtime'
-        | undefined = undefined;
+    type Props = {
+        exclude?: 'messaging' | 'functions' | 'databases' | 'storage' | 'auth' | 'realtime';
+    };
+
+    const { exclude }: Props = $props();
 
     const products = Object.entries(allProducts)
         .filter(([key]) => key !== exclude)

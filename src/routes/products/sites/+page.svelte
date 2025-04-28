@@ -2,6 +2,7 @@
     import { FooterNav, MainFooter, PreFooter } from '$lib/components';
     import OpenSourceAlternative from '$lib/components/marketing/open-source-alternative.svelte';
     import Testimonials from '$lib/components/marketing/testimonials.svelte';
+    import ProductCards from '$lib/components/product-pages/product-cards.svelte';
     import Main from '$lib/layouts/Main.svelte';
     import { DEFAULT_HOST } from '$lib/utils/metadata';
     import { TITLE_SUFFIX } from '$routes/titles';
@@ -44,10 +45,12 @@
         </Steps>
         <Features />
     </div>
-    <div class="light bg-[#EDEDF0] pb-8">
+    <div class="light -mb-4 bg-[#EDEDF0] pb-8">
         <OpenSourceAlternative platforms={['Vercel', 'Netlify', 'Sevalla']} />
         <Testimonials />
     </div>
+
+    <ProductCards />
 
     <div class="relative -mt-6 max-w-screen overflow-hidden pt-20">
         <div class="container">
