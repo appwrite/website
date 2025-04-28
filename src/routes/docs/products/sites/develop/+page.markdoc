@@ -15,7 +15,7 @@ Appwrite allows you to host both statically-generated and server-rendered websit
 You can configure your preferred site hosting method through the following steps:
 
 1. Navigate to your site on Appwrite Console.
-2. Head to the **Settings** tab > **Environment variables** section.
+2. Head to the **Settings** tab > **Build settings** section.
 3. Select the SSR or the Static checkbox.
 4. Confirm that the appropriate install command, build command, and output directory are set.
 5. (For SPAs) Add a fallback file.
