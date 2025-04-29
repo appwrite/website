@@ -10,25 +10,9 @@ You can further give special rights to parts of a team using team roles.
 
 The invited user can [accept the invitation](/docs/references/cloud/client-web/teams#updateMembershipStatus) to gain access. If the user's ever removed from the team, they'll lose access again.
 
-# Common use cases {% #use-cases %}
-
-## Multi-tenancy
-
-Appwrite Teams is an excellent solution for implementing multi-tenancy, allowing you to create a team for each organization, company, or tenant to handle multi-organization apps with built-in data isolation.
-
-With Appwrite Teams, you can:
-- Create a team for each organization/tenant in your SaaS application
-- Use team-based permissions to ensure users can only access their organization's data
-- Use team roles to set up different access levels within each organization (admin, member, viewer, etc.)
-- Scale to support unlimited organizations without code changes
-
-## Other common uses for teams
-
-- **Collaborative workspaces**: Create teams for project collaborators, each with specific roles and permissions
-- **Family plans**: Group family members together for subscription services
-- **Educational platforms**: Organize students and teachers into classroom teams
-- **Business departments**: Separate company functions like Marketing, Sales, and Engineering
-- **Event management**: Create teams for event organizers, speakers, and attendees
+{% arrow_link href="/docs/products/auth/multi-tenancy" %}
+Learn about using Teams for Multi-tenancy
+{% /arrow_link %}
 
 # Create team {% #create %}
 For example, we can create a team called `teachers` with roles `maths`, `sciences`, `arts`, and `literature`.
