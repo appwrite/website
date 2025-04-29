@@ -22,7 +22,7 @@
             </h3>
             <div class="web-card-link flex items-center" style:margin-top="8px">
                 <span class="text">{label}</span>
-                <span class="web-icon-arrow-right" />
+                <span class="web-icon-arrow-right"></span>
             </div>
         </div>
         <div class="slot-wrapper">
@@ -37,7 +37,7 @@
             </h3>
             <div class="web-card-link flex items-center">
                 <span class="text">{label}</span>
-                <span class="web-icon-arrow-right" />
+                <span class="web-icon-arrow-right"></span>
             </div>
         </div>
         <div class="slot-wrapper">

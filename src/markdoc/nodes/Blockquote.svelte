@@ -1,11 +1,16 @@
 <script lang="ts">
-    import { setContext } from 'svelte';
+    import { setContext, type Snippet } from 'svelte';
+    interface Props {
+        children: Snippet;
+    }
+
+    const { children }: Props = $props();
 
     setContext('no-paragraph', true);
 </script>
 
 <blockquote class="web-blockquote">
     <p class="text-description">
-        <slot />
+        {@render children()}
     </p>
 </blockquote>

@@ -7,6 +7,7 @@
     import { socials } from '$lib/constants';
     import { PUBLIC_GROWTH_ENDPOINT } from '$env/static/public';
     import { getReferrerAndUtmSource } from '$lib/utils/utm';
+    import { Button } from '$lib/components/ui';
 
     let email = '';
     let firstName = '';
@@ -93,12 +94,9 @@
                                             your feedback, our team will try to get back to you as
                                             soon as possible.
                                         </p>
-                                        <a
-                                            href="/"
-                                            class="web-button is-secondary web-u-margin-block-end-32"
-                                        >
+                                        <Button href="/" variant="secondary" class="mb-8">
                                             <span>Back to homepage</span>
-                                        </a>
+                                        </Button>
                                     </section>
                                 {:else}
                                     <section class="flex flex-col gap-5">
@@ -125,7 +123,8 @@
                                                     target="_blank"
                                                     rel="noopener noreferrer"
                                                 >
-                                                    <span class={social.icon} aria-hidden="true" />
+                                                    <span class={social.icon} aria-hidden="true"
+                                                    ></span>
                                                 </a>
                                             </li>
                                         {/each}
@@ -133,7 +132,7 @@
                                 </section>
                                 <div
                                     class="web-is-only-mobile web-u-margin-block-start-40 web-u-padding-block-start-40 web-u-sep-block-start"
-                                />
+                                ></div>
                             </div>
                         </div>
                         {#if !submitted}
@@ -185,7 +184,7 @@
                                                 placeholder="Your message"
                                                 aria-label="Message"
                                                 bind:value={message}
-                                            />
+                                            ></textarea>
                                         </li>
                                     </ul>
                                 </div>
@@ -205,13 +204,13 @@
 										>
 										and <a class="web-link" href="/terms" target="_blank" rel="noopener noreferrer">Terms of Service</a> apply.
 									</p> -->
-                                    <button
+                                    <Button
                                         type="submit"
                                         disabled={submitting}
-                                        class="web-button web-u-inline-width-100-percent-mobile-break1 self-center"
+                                        class="web-u-inline-width-100-percent-mobile-break1 self-center"
                                     >
                                         <span>Submit</span>
-                                    </button>
+                                    </Button>
                                 </div>
                             </form>
                         {/if}

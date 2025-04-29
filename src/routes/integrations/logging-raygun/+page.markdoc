@@ -5,7 +5,7 @@ description: Integrate Raygun, an application performane monitoring (APM) tool w
 date: 2024-07-30
 featured: false
 isPartner: true
-isNew: true
+isNew: false
 cover: /images/integrations/logging-raygun/cover.png
 category: logging
 product:

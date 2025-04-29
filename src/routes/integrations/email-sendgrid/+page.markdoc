@@ -5,7 +5,7 @@ description: Send customized emails to your users
 date: 2024-07-30
 featured: false
 isPartner: true
-isNew: true
+isNew: false
 cover: /images/integrations/email-sendgrid/cover.png
 category: messaging
 product: 

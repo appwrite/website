@@ -144,8 +144,8 @@
                     <Lockup fill={false} animate={!disableEffects} />
                 {/if}
             </div>
-            <div class="shine" />
-            <div class="noise" />
+            <div class="shine"></div>
+            <div class="noise"></div>
             {#if !disableEffects}
                 <Lines />
             {/if}
@@ -161,7 +161,7 @@
                         {#each c as row}
                             <div class="row">
                                 {#each row as level, j}
-                                    <div style:--index={row.length - j} data-level={level} />
+                                    <div style:--index={row.length - j} data-level={level}></div>
                                 {/each}
                             </div>
                         {/each}
@@ -171,8 +171,8 @@
             <div class="details">
                 <span>{`Ticket Number: #${id?.toString().padStart(6, '0')}`}</span>
             </div>
-            <div class="shine" />
-            <div class="noise" />
+            <div class="shine"></div>
+            <div class="noise"></div>
         </div>
     </div>
 </div>

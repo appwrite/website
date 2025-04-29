@@ -1,18 +1,31 @@
 <script lang="ts">
     import { PUBLIC_APPWRITE_DASHBOARD } from '$env/static/public';
+    import { Button } from '$lib/components/ui';
     import { classNames } from '$lib/utils/classnames';
 
-    export let title: string = 'Start building with Appwrite today';
-    export let description: string = 'Build with the frameworks and languages you want.';
-    export let point1: string = 'Built in security';
-    export let point2: string = 'Scalable infrastructure';
-    export let point3: string = 'No vendor lock in';
-    export let point4: string = 'Highly customizable backend';
-    export let cta: string = 'Get started';
+    interface Props {
+        title?: string;
+        description?: string;
+        point1?: string;
+        point2?: string;
+        point3?: string;
+        point4?: string;
+        cta?: string;
+        url?: string;
+    }
+
+    const {
+        title = 'Start building with Appwrite today',
+        description = 'Build with the frameworks and languages you want.',
+        point1 = 'Built in security',
+        point2 = 'Scalable infrastructure',
+        point3 = 'No vendor lock in',
+        point4 = 'Highly customizable backend',
+        cta = 'Get started',
+        url = PUBLIC_APPWRITE_DASHBOARD
+    }: Props = $props();
 
     let benefits: Array<string> = [point1, point2, point3, point4];
-
-    export let url: string = PUBLIC_APPWRITE_DASHBOARD;
 </script>
 
 <div
@@ -40,6 +53,6 @@
         {/each}
     </ul>
     <div class="flex flex-col gap-2 md:flex-row">
-        <a href={url} class="web-button max-sm:w-full!">{cta}</a>
+        <Button href={url} class="max-sm:w-full!">{cta}</Button>
     </div>
 </div>

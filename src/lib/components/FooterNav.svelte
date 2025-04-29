@@ -37,15 +37,16 @@
                 { label: 'Functions', href: '/products/functions' },
                 { label: 'Messaging', href: '/products/messaging' },
                 { label: 'Storage', href: '/products/storage' },
-                { label: 'Realtime', href: '/docs/apis/realtime' }
+                { label: 'Realtime', href: '/docs/apis/realtime' },
+                { label: 'Network', href: '/docs/products/network' }
             ],
             Learn: [
+                { label: 'Blog', href: '/blog' },
                 { label: 'Docs', href: '/docs' },
                 { label: 'Integrations', href: '/integrations' },
                 { label: 'Community', href: '/community' },
                 { label: 'Init', href: '/init' },
                 { label: 'Threads', href: '/threads' },
-                { label: 'Blog', href: '/blog' },
                 { label: 'Changelog', href: '/changelog' },
                 {
                     label: 'Roadmap',
@@ -129,7 +130,7 @@
                             class="web-icon-chevron-down web-u-transition"
                             class:web-u-rotate-180={$isSelected(title)}
                             style:font-size="1rem"
-                        />
+                        ></span>
                     </button>
                 </h5>
                 {#if $isSelected(title)}

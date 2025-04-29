@@ -6,6 +6,7 @@
     import type { HeroCardProps } from './HeroCard.svelte';
     import HeroCard from './HeroCard.svelte';
     import FloatingHead from '$lib/components/FloatingHead.svelte';
+    import { Button } from '$lib/components/ui';
 
     const title = 'Heroes' + TITLE_SUFFIX;
     const description =
@@ -148,7 +149,7 @@
     <div class="web-big-padding-section">
         <div class="py-10">
             <div class="web-big-padding-section-level-2">
-                <section class="container hero web-u-padding-block-end-0">
+                <section class="hero web-u-padding-block-end-0 container">
                     <div>
                         <h1 class="text-display font-aeonik-pro text-primary">Appwrite Heroes</h1>
                         <p class="text-body mt-5 font-medium">
@@ -156,14 +157,15 @@
                             build with Appwrite, help us support you by joining the Appwrite Heroes
                             program and becoming a leader in our developer community.
                         </p>
-                        <a
+                        <Button
+                            variant="secondary"
                             href="https://7nxwryuitoy.typeform.com/heroes-apply"
                             target="_blank"
                             rel="noopener noreferrer"
-                            class="web-button is-secondary mt-8"
+                            class="mt-8"
                         >
                             <span class="text">Become a Hero</span>
-                        </a>
+                        </Button>
                     </div>
                     <div>
                         <img src="/images/heroes/bg.png" width="" alt="" />
@@ -343,18 +345,19 @@
                             Have you been actively providing value for the Appwrite community? Apply
                             now to join our hero program! Applications open every three months.
                         </p>
-                        <a
+                        <Button
+                            variant="transparent"
                             href="https://7nxwryuitoy.typeform.com/heroes-apply"
                             target="_blank"
                             rel="noopener noreferrer"
-                            class="web-button is-transparent is-full-width-mobile mt-5 self-center"
+                            class="is-full-width-mobile mt-6 self-center"
                         >
                             Become a Hero
-                        </a>
+                        </Button>
                     </div>
                 </div>
                 <div class="web-big-padding-section-level-2 relative">
-                    <div class="container relative">
+                    <div class="relative container">
                         <FooterNav noBorder />
                         <MainFooter />
                     </div>
@@ -524,10 +527,6 @@
 
             .text-description {
                 margin-block-start: 1.25rem;
-            }
-
-            .web-button {
-                margin-block-start: 1.5rem;
             }
         }
     }

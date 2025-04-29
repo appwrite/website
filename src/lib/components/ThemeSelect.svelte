@@ -1,6 +1,5 @@
 <script lang="ts">
     import { type Theme, currentTheme } from '$routes/+layout.svelte';
-
     import Select, { type SelectOption } from './Select.svelte';
 
     const options: SelectOption<Theme>[] = [

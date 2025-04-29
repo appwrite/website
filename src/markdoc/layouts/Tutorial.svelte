@@ -52,7 +52,8 @@
             title: heading.title,
             href: `#${id}`,
             step: heading.step,
-            selected: selected === id
+            selected: selected === id,
+            level: heading.level
         });
         return carry;
     }, []);

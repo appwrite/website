@@ -15,6 +15,8 @@
 </script>
 
 <script lang="ts">
+    import { Button } from '$lib/components/ui';
+
     type $$Props = EventCardProps;
 
     export let href: $$Props['href'];
@@ -35,11 +37,11 @@
     <div class="web-grid-articles-item-content is-no-gap">
         <ul class="u-flex u-flex-wrap web-u-list-inline-dot-sep">
             <li class="u-flex u-cross-baseline u-gap-4">
-                <span class="web-icon-calendar web-u-color-text-tertiary" aria-hidden="true" />
+                <span class="web-icon-calendar web-u-color-text-tertiary" aria-hidden="true"></span>
                 <time class="">{date}</time>
             </li>
             <li class="u-flex u-cross-baseline u-gap-4">
-                <span class="web-icon-location web-u-color-text-tertiary" aria-hidden="true" />
+                <span class="web-icon-location web-u-color-text-tertiary" aria-hidden="true"></span>
                 <span class="">{location}</span>
             </li>
         </ul>
@@ -53,9 +55,9 @@
             {description}
         </p>
         <div class="u-flex u-flex-wrap u-gap-8 u-padding-block-start-16 mbs-auto">
-            <button class="web-button is-secondary">
+            <Button variant="secondary">
                 <span>{buttonText}</span>
-            </button>
+            </Button>
         </div>
     </div>
 </a>

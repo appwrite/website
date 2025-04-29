@@ -1,13 +1,18 @@
 <script lang="ts">
     import Tooltip from '$lib/components/Tooltip.svelte';
+    import { Button, Icon } from '$lib/components/ui';
     import { createDialog, melt } from '@melt-ui/svelte';
     import { getContext, hasContext } from 'svelte';
-    import { fade, scale } from 'svelte/transition';
     import { quadInOut } from 'svelte/easing';
+    import { fade, scale } from 'svelte/transition';
 
-    export let src: string;
-    export let alt: string;
-    export let title: string;
+    interface Props {
+        src: string;
+        alt: string;
+        title: string;
+    }
+
+    let { src, alt, title }: Props = $props();
 
     const inTable = hasContext('in-table') ? getContext('in-table') : false;
     const isAudio = /\.(wav|mp3|m4a|ogg)$/i.test(src);
@@ -25,7 +30,7 @@
     };
 </script>
 
-<svelte:window on:scroll={handleScroll} />
+<svelte:window onscroll={handleScroll} />
 
 {#if inTable || isAudio}
     {#if isAudio}
@@ -40,17 +45,19 @@
         <img {src} {alt} {title} loading="lazy" class="aspect-video w-full" />
         <div class="abs">
             <Tooltip closeOnPointerDown>
-                <button class="web-button is-secondary cursor-pointer" use:melt={$trigger}>
-                    <span class="icon-arrow-expand" aria-hidden="true" />
-                </button>
-                <svelte:fragment slot="tooltip">Expand</svelte:fragment>
+                <Button variant="secondary" class="cursor-pointer" action={trigger}>
+                    <span class="icon-arrow-expand" aria-hidden="true"></span>
+                </Button>
+                {#snippet tooltip()}
+                    Expand
+                {/snippet}
             </Tooltip>
         </div>
     </div>
 
     {#if $open}
         <div use:melt={$portalled}>
-            <div use:melt={$overlay} class="overlay" transition:fade={{ duration: 350 }} />
+            <div use:melt={$overlay} class="overlay" transition:fade={{ duration: 350 }}></div>
 
             <img
                 class="web-media content"

@@ -50,8 +50,8 @@
                         'before:bg-greyscale-300 before:absolute before:top-0 before:left-0 before:h-6 before:w-px before:rounded-full before:opacity-0 before:transition-opacity',
                         {
                             'font-medium': parent.level && parent.level === 1,
-                            'ps-6': parent.level && parent.level === 2,
-                            'ps-12': parent.level && parent.level >= 3,
+                            'pl-12': parent.level && parent.level === 2,
+                            'ps-16': parent.level && parent.level >= 3,
                             'before:opacity-100': parent.selected
                         }
                     )}
@@ -92,7 +92,7 @@
             out:fade
             in:fade
         >
-            <span class="web-icon-arrow-up transition group-hover:-translate-y-0.5" />
+            <span class="web-icon-arrow-up transition group-hover:-translate-y-0.5"></span>
             Back to Top
         </button>
     {/if}

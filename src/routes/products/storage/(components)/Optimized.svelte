@@ -1,3 +1,7 @@
+<script>
+    import { Button } from '$lib/components/ui';
+</script>
+
 <section class="container grid grid-cols-1 place-items-center gap-16 pt-12 md:grid-cols-2 md:pt-20">
     <div class="hidden md:block">
         <img src="/images/pages/storage/product-shot-3.png" width="687" alt="" />
@@ -9,12 +13,13 @@
             optimized upload times.
         </p>
         <div class="mt-8 flex gap-2">
-            <a
+            <Button
+                variant="secondary"
                 href="/docs/products/storage/images"
-                class="web-button is-secondary !w-full md:!w-fit"
+                class="!w-full md:!w-fit"
             >
                 <span class="text">Learn more</span>
-            </a>
+            </Button>
         </div>
     </div>
     <div class="block md:hidden">

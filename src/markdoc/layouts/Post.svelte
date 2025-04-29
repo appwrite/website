@@ -12,7 +12,7 @@
     import type { AuthorData, PostsData } from '$routes/blog/content';
     import { TITLE_SUFFIX } from '$routes/titles';
     import { getContext, setContext } from 'svelte';
-    import { page } from '$app/stores';
+    import { page } from '$app/state';
     import CTA from '$lib/components/BlogCta.svelte';
     import PostMeta from '$lib/components/blog/post-meta.svelte';
     import Breadcrumbs from '$lib/components/blog/breadcrumbs.svelte';
@@ -74,7 +74,7 @@
 
     callToAction ??= true;
 
-    const currentURL = `https://appwrite.io${$page.url.pathname}`;
+    const currentURL = `https://appwrite.io${page.url.pathname}`;
 </script>
 
 <svelte:head>

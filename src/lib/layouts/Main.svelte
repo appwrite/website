@@ -9,7 +9,7 @@
 <script lang="ts">
     import { browser } from '$app/environment';
     import { MobileNav, IsLoggedIn } from '$lib/components';
-    import { BANNER_KEY, GITHUB_REPO_LINK, GITHUB_STARS } from '$lib/constants';
+    import { BANNER_KEY, SOCIAL_STATS } from '$lib/constants';
     import { isVisible } from '$lib/utils/isVisible';
     import { createScrollInfo } from '$lib/utils/scroll';
     import { addEventListener } from '@melt-ui/svelte/internal/helpers';
@@ -18,8 +18,9 @@
     import ProductsMobileSubmenu from '$lib/components/ProductsMobileSubmenu.svelte';
     import { trackEvent } from '$lib/actions/analytics';
     import MainNav from '$lib/components/MainNav.svelte';
-    import { page } from '$app/stores';
+    import { page } from '$app/state';
     import { getAppwriteDashboardUrl } from '$lib/utils/dashboard';
+    import { Button, Icon, InlineTag } from '$lib/components/ui';
 
     export let omitMainId = false;
     let theme: 'light' | 'dark' | null = 'dark';
@@ -168,21 +169,21 @@
         </div>
         <div class="web-mobile-header-end">
             {#if !$isMobileNavOpen}
-                <a href={getAppwriteDashboardUrl()} class="web-button">
+                <Button href={getAppwriteDashboardUrl()}>
                     <span class="text">Start building</span>
-                </a>
+                </Button>
             {/if}
-            <button
-                class="web-button is-text"
+            <Button
+                variant="text"
                 aria-label="open navigation"
-                on:click={() => ($isMobileNavOpen = !$isMobileNavOpen)}
+                onclick={() => ($isMobileNavOpen = !$isMobileNavOpen)}
             >
                 {#if $isMobileNavOpen}
-                    <span aria-hidden="true" class="web-icon-close" />
+                    <Icon aria-hidden="true" name="close" />
                 {:else}
-                    <span aria-hidden="true" class="web-icon-hamburger-menu" />
+                    <Icon aria-hidden="true" name="hamburger-menu" />
                 {/if}
-            </button>
+            </Button>
         </div>
     </section>
     <header
@@ -190,7 +191,7 @@
         class:is-special-padding={!BANNER_KEY.startsWith('init-banner-')}
         style={BANNER_KEY === 'init-banner-02' ? 'padding-inline: 0' : ''}
     >
-        <!-- {#if !$page.data.isStickyNav}
+        <!-- {#if !page.data.isStickyNav}
             {#if BANNER_KEY.startsWith('init-banner-')}
                 <InitBanner />
             {:else}
@@ -228,21 +229,22 @@
                 <MainNav initialized={$initialized} links={navLinks} />
             </div>
             <div class="web-main-header-end">
-                <a
-                    href={GITHUB_REPO_LINK}
+                <Button
+                    variant="text"
+                    href={SOCIAL_STATS.GITHUB.LINK}
                     target="_blank"
                     rel="noopener noreferrer"
-                    class="web-button is-text web-u-inline-width-100-percent-mobile"
-                    on:click={() =>
+                    class="web-u-inline-width-100-percent-mobile"
+                    onclick={() =>
                         trackEvent({
                             plausible: { name: 'Star on GitHub in header' },
                             posthog: { name: 'github-stars_nav_click' }
                         })}
                 >
-                    <span class="web-icon-star" aria-hidden="true" />
+                    <Icon name="star" aria-hidden="true" />
                     <span class="text">Star on GitHub</span>
-                    <span class="web-inline-tag text-sub-body">{GITHUB_STARS}</span>
-                </a>
+                    <InlineTag>{SOCIAL_STATS.GITHUB.STAT}</InlineTag>
+                </Button>
                 <IsLoggedIn />
             </div>
         </div>

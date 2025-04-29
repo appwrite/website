@@ -1,5 +1,6 @@
 <script lang="ts">
     import { PUBLIC_GROWTH_ENDPOINT } from '$env/static/public';
+    import { Button } from '$lib/components/ui';
     import { socials } from '$lib/constants';
     import { classNames } from '$lib/utils/classnames';
     import { getReferrerAndUtmSource } from '$lib/utils/utm';
@@ -136,7 +137,7 @@
                             placeholder="Your message..."
                             aria-label="Message"
                             bind:value={message}
-                        />
+                        ></textarea>
                     </div>
                 </div>
 
@@ -149,18 +150,18 @@
                         <a href="/privacy" class="web-link">Privacy Policy</a> and
                         <a href="/terms" class="web-link">Terms of Service</a> apply.-->
                     </p>
-                    <button
+                    <Button
                         type="submit"
-                        class="web-button web-u-inline-width-100-percent-mobile-break1 cursor-pointer self-center"
+                        class="web-u-inline-width-100-percent-mobile-break1 cursor-pointer self-center"
                         disabled={submitting}
                     >
                         <span>Submit application</span>
-                    </button>
+                    </Button>
                 </div>
             </form>
         </div>
     {:else}
-        <div class="container animate-fade-in mx-auto flex max-w-sm flex-col gap-4 text-center">
+        <div class="animate-fade-in container mx-auto flex max-w-sm flex-col gap-4 text-center">
             <div class="border-smooth mb-6 flex flex-col gap-4 border-b pb-8">
                 <h2 class="text-display text-primary font-aeonik-pro">Thank you for applying</h2>
                 <p class="text-body text-secondary font-medium">
@@ -180,7 +181,7 @@
                                 target="_blank"
                                 rel="noopener noreferrer"
                             >
-                                <span class={social.icon} aria-hidden="true" />
+                                <span class={social.icon} aria-hidden="true"></span>
                             </a>
                         </li>
                     {/each}

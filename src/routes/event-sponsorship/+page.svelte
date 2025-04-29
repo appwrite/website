@@ -6,6 +6,7 @@
     import { PUBLIC_GROWTH_ENDPOINT } from '$env/static/public';
     import { getReferrerAndUtmSource } from '$lib/utils/utm';
     import { FooterNav, MainFooter } from '$lib/components';
+    import { Button } from '$lib/components/ui';
 
     let name = '';
     let email = '';
@@ -111,12 +112,9 @@
                                                 sponsorship. We will get back to you in a couple of
                                                 days.
                                             </p>
-                                            <a
-                                                href="/"
-                                                class="web-button is-secondary web-u-margin-block-end-32"
-                                            >
+                                            <Button variant="secondary" href="/" class="mb-8">
                                                 <span>Back to home</span>
-                                            </a>
+                                            </Button>
                                         </section>
                                     {:else}
                                         <section class="flex flex-col gap-5">
@@ -245,7 +243,7 @@
                                                     <span
                                                         class="icon-cheveron-down web-u-pointer-events-none absolute top-[11px] right-2"
                                                         aria-hidden="true"
-                                                    />
+                                                    ></span>
                                                 </div>
                                             </li>
                                             <li
@@ -260,7 +258,8 @@
                                                     class="web-input-text w-full"
                                                     bind:value={socialHandles}
                                                     placeholder="List your social media handles or profile URLs"
-                                                />
+                                                    maxlength="512"
+                                                ></textarea>
                                             </li>
                                         </ul>
                                     </div>
@@ -274,13 +273,13 @@
                                                 {error}
                                             {/if}
                                         </p>
-                                        <button
+                                        <Button
                                             type="submit"
                                             disabled={submitting}
-                                            class="web-button u-cross-child-center web-u-inline-width-100-percent-mobile-break1 cursor-pointer"
+                                            class="u-cross-child-center web-u-inline-width-100-percent-mobile-break1 cursor-pointer"
                                         >
                                             <span>Submit</span>
-                                        </button>
+                                        </Button>
                                     </div>
                                 </form>
                             {/if}

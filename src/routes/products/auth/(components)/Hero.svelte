@@ -2,10 +2,11 @@
     import Phone from '../(assets)/phone.png';
     import PhoneMobile from '../(assets)/phone-mobile.png';
     import { getAppwriteDashboardUrl } from '$lib/utils/dashboard';
+    import { Button } from '$lib/components/ui';
 </script>
 
 <div
-    class="box-content flex items-center bg-[url(/images/bgs/mobile-auth-hero.png)] bg-cover bg-bottom pt-20 px-5 pb-20 md:bg-[url(/images/bgs/auth-hero.png)] md:bg-center md:pt-32 md:pb-40 lg:px-8 xl:px-16"
+    class="box-content flex items-center bg-[url(/images/bgs/mobile-auth-hero.png)] bg-cover bg-bottom px-5 pt-20 pb-20 md:bg-[url(/images/bgs/auth-hero.png)] md:bg-center md:pt-32 md:pb-40 lg:px-8 xl:px-16"
 >
     <div class="mx-auto grid max-w-[75rem] items-center gap-16 md:grid-cols-2">
         <div class="space-y-4">
@@ -24,12 +25,12 @@
             </p>
 
             <div class="flex flex-col items-center gap-2 md:flex-row">
-                <a href={getAppwriteDashboardUrl()} class="web-button !w-full md:!w-fit">
+                <Button href={getAppwriteDashboardUrl()} class="!w-full md:!w-fit">
                     Get started
-                </a>
-                <a href="/docs/products/auth" class="web-button is-secondary !w-full md:!w-fit">
+                </Button>
+                <Button href="/docs/products/auth" variant="secondary" class="!w-full md:!w-fit">
                     Documentation
-                </a>
+                </Button>
             </div>
         </div>
         <img
