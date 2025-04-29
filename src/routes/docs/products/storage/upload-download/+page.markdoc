@@ -25,7 +25,7 @@ You can also upload files programmatically using our SDKs:
   const storage = new Storage(client);
 
   const promise = storage.createFile(
-      '[BUCKET_ID]',
+      '<BUCKET_ID>',
       ID.unique(),
       document.getElementById('uploader').files[0]
   );
@@ -50,11 +50,11 @@ You can also upload files programmatically using our SDKs:
 
   // If running in a browser environment, you can use File directly
   const browserFile = new File(['hello'], 'hello.txt');
-  await storage.createFile('[BUCKET_ID]', ID.unique(), browserFile);
+  await storage.createFile('<BUCKET_ID>', ID.unique(), browserFile);
 
   // If running in Node.js, use InputFile
   const nodeFile = InputFile.fromPath('/path/to/file.jpg', 'file.jpg');
-  await storage.createFile('[BUCKET_ID]', ID.unique(), nodeFile);
+  await storage.createFile('<BUCKET_ID>', ID.unique(), nodeFile);
   ```
 
   ```client-flutter
@@ -68,7 +68,7 @@ You can also upload files programmatically using our SDKs:
     final storage = Storage(client);
 
     final file = await storage.createFile(
-      bucketId: '[BUCKET_ID]',
+      bucketId: '<BUCKET_ID>',
       fileId: ID.unique(),
       file: InputFile.fromPath(path: './path-to-files/image.jpg', filename: 'image.jpg'),
     );
@@ -87,7 +87,7 @@ You can also upload files programmatically using our SDKs:
       val storage = Storage(client)
 
       val file = storage.createFile(
-          bucketId = "[BUCKET_ID]",
+          bucketId = "<BUCKET_ID>",
           fileId = ID.unique(),
           file = File("./path-to-files/image.jpg"),
       )
@@ -132,7 +132,7 @@ You can also upload files programmatically using our SDKs:
       let storage = Storage(client)
 
       let file = try await storage.createFile(
-          bucketId: "[BUCKET_ID]",
+          bucketId: "<BUCKET_ID>",
           fileId: ID.unique(),
           file: InputFile.fromBuffer(yourByteBuffer,
               filename: "image.jpg",
@@ -151,7 +151,7 @@ You can also upload files programmatically using our SDKs:
   --cec8e8123c05ba25
   Content-Disposition: form-data; name="operations"
 
-  { "query": "mutation CreateFile($bucketId: String!, $fileId: String!, $file: InputFile!) { storageCreateFile(bucketId: $bucketId, fileId: $fileId, file: $file) { id } }", "variables": { "bucketId": "[BUCKET_ID]", "fileId": "[FILE_ID]", "file": null } }
+  { "query": "mutation CreateFile($bucketId: String!, $fileId: String!, $file: InputFile!) { storageCreateFile(bucketId: $bucketId, fileId: $fileId, file: $file) { id } }", "variables": { "bucketId": "<BUCKET_ID>", "fileId": "[FILE_ID]", "file": null } }
   --cec8e8123c05ba25
   Content-Disposition: form-data; name="map"
 
@@ -185,7 +185,7 @@ For example, for the input tag `<input type="file" id="uploader">`, you would ca
 
 ```js
 const promise = storage.createFile(
-    '[BUCKET_ID]',
+    '<BUCKET_ID>',
     ID.unique(),
     document.getElementById('uploader').files[0]
 );
@@ -391,7 +391,7 @@ client
     .setProject('<PROJECT_ID>') // Your project ID
 ;
 
-const promise = storage.getFile('[BUCKET_ID]', '[FILE_ID]');
+const promise = storage.getFile('<BUCKET_ID>', '[FILE_ID]');
 
 promise.then(function (response) {
     console.log(response); // Success
@@ -412,7 +412,7 @@ void main() { // Init SDK
   ;
   // downloading file
   Future result = storage.getFile(
-    bucketId: '[BUCKET_ID]',
+    bucketId: '<BUCKET_ID>',
     fileId: '[FILE_ID]',
   ).then((bytes) {
     final file = File('path_to_file/filename.ext');
@@ -425,7 +425,7 @@ void main() { // Init SDK
 //displaying image preview
 FutureBuilder(
   future: storage.getFile(
-    bucketId: '[BUCKET_ID]',
+    bucketId: '<BUCKET_ID>',
     fileId: '[FILE_ID]',
   ), //works for both public file and private file, for private files you need to be logged in
   builder: (context, snapshot) {
@@ -448,7 +448,7 @@ func main() async throws {
       let storage = Storage(client)
 
       let byteBuffer = try await storage.getFile(
-          bucketId: "[BUCKET_ID]",
+          bucketId: "<BUCKET_ID>",
           fileId: "[FILE_ID]"
       )
 
@@ -475,7 +475,7 @@ class MainActivity : AppCompatActivity() {
         val storage = Storage(client)
 
         val result = storage.getFile(
-            bucketId = "[BUCKET_ID]",
+            bucketId = "<BUCKET_ID>",
             fileId = "[FILE_ID]"
         )
         println(result); // Resource URL
@@ -491,7 +491,7 @@ const client = new Client()
 
 const storage = new Storage(client);
 
-const promise = storage.getFile('[BUCKET_ID]', '[FILE_ID]');
+const promise = storage.getFile('<BUCKET_ID>', '[FILE_ID]');
 
 promise.then(function (response) {
     console.log(response); // Success
@@ -517,7 +517,7 @@ client
     .setProject('<PROJECT_ID>') // Your project ID
 ;
 
-const result = storage.getFileDownload('[BUCKET_ID]', '[FILE_ID]');
+const result = storage.getFileDownload('<BUCKET_ID>', '[FILE_ID]');
 
 console.log(result); // Resource URL
 ```
@@ -534,7 +534,7 @@ void main() { // Init SDK
   ;
   // downloading file
   Future result = storage.getFileDownload(
-    bucketId: '[BUCKET_ID]',
+    bucketId: '<BUCKET_ID>',
     fileId: '[FILE_ID]',
   ).then((bytes) {
     final file = File('path_to_file/filename.ext');
@@ -547,7 +547,7 @@ void main() { // Init SDK
 //displaying image preview
 FutureBuilder(
   future: storage.getFileDownload(
-    bucketId: '[BUCKET_ID]',
+    bucketId: '<BUCKET_ID>',
     fileId: '[FILE_ID]',
   ), //works for both public file and private file, for private files you need to be logged in
   builder: (context, snapshot) {
@@ -568,7 +568,7 @@ func main() async throws {
       .setProject("<PROJECT_ID>") // Your project ID
     let storage = Storage(client)
     let byteBuffer = try await storage.getFileDownload(
-        bucketId: "[BUCKET_ID]",
+        bucketId: "<BUCKET_ID>",
         fileId: "[FILE_ID]"
     )
 
@@ -595,7 +595,7 @@ class MainActivity : AppCompatActivity() {
         val storage = Storage(client)
 
         val result = storage.getFileDownload(
-            bucketId = "[BUCKET_ID]",
+            bucketId = "<BUCKET_ID>",
             fileId = "[FILE_ID]"
         )
         println(result); // Resource URL
@@ -633,7 +633,7 @@ client
     .setProject('<PROJECT_ID>') // Your project ID
 ;
 
-const result = storage.getFilePreview('[BUCKET_ID]', '[FILE_ID]');
+const result = storage.getFilePreview('<BUCKET_ID>', '[FILE_ID]');
 
 console.log(result); // Resource URL
 ```
@@ -650,7 +650,7 @@ void main() { // Init SDK
   ;
   // downloading file
   Future result = storage.getFilePreview(
-    bucketId: '[BUCKET_ID]',
+    bucketId: '<BUCKET_ID>',
     fileId: '[FILE_ID]',
   ).then((bytes) {
     final file = File('path_to_file/filename.ext');
@@ -663,7 +663,7 @@ void main() { // Init SDK
 //displaying image preview
 FutureBuilder(
   future: storage.getFilePreview(
-    bucketId: '[BUCKET_ID]',
+    bucketId: '<BUCKET_ID>',
     fileId: '[FILE_ID]',
   ), //works for both public file and private file, for private files you need to be logged in
   builder: (context, snapshot) {
@@ -684,7 +684,7 @@ func main() async throws {
       .setProject("<PROJECT_ID>") // Your project ID
     let storage = Storage(client)
     let byteBuffer = try await storage.getFilePreview(
-        bucketId: "[BUCKET_ID]",
+        bucketId: "<BUCKET_ID>",
         fileId: "[FILE_ID]"
     )
 
@@ -711,7 +711,7 @@ class MainActivity : AppCompatActivity() {
         val storage = Storage(client)
 
         val result = storage.getFilePreview(
-            bucketId = "[BUCKET_ID]",
+            bucketId = "<BUCKET_ID>",
             fileId = "[FILE_ID]"
         )
         println(result); // Resource URL
@@ -757,7 +757,7 @@ client
     .setProject('<PROJECT_ID>') // Your project ID
 ;
 
-const result = storage.getFileView('[BUCKET_ID]', '[FILE_ID]');
+const result = storage.getFileView('<BUCKET_ID>', '[FILE_ID]');
 
 console.log(result); // Resource URL
 ```
@@ -774,7 +774,7 @@ void main() { // Init SDK
   ;
   // downloading file
   Future result = storage.getFileView(
-    bucketId: '[BUCKET_ID]',
+    bucketId: '<BUCKET_ID>',
     fileId: '[FILE_ID]',
   ).then((bytes) {
     final file = File('path_to_file/filename.ext');
@@ -787,7 +787,7 @@ void main() { // Init SDK
 //displaying image preview
 FutureBuilder(
   future: storage.getFileView(
-    bucketId: '[BUCKET_ID]',
+    bucketId: '<BUCKET_ID>',
     fileId: '[FILE_ID]',
   ), //works for both public file and private file, for private files you need to be logged in
   builder: (context, snapshot) {
@@ -808,7 +808,7 @@ func main() async throws {
       .setProject("<PROJECT_ID>") // Your project ID
     let storage = Storage(client)
     let byteBuffer = try await storage.getFileView(
-        bucketId: "[BUCKET_ID]",
+        bucketId: "<BUCKET_ID>",
         fileId: "[FILE_ID]"
     )
 
@@ -835,7 +835,7 @@ class MainActivity : AppCompatActivity() {
         val storage = Storage(client)
 
         val result = storage.getFileView(
-            bucketId = "[BUCKET_ID]",
+            bucketId = "<BUCKET_ID>",
             fileId = "[FILE_ID]"
         )
         println(result); // Resource URL
