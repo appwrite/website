@@ -42,11 +42,11 @@
 <Main>
     <div
         class={classNames(
-            'grid-bg border-smooth relative flex items-center border-b py-28 px-5 lg:px-8 xl:px-16',
+            'grid-bg border-smooth relative flex items-center border-b px-5 py-28 lg:px-8 xl:px-16',
             'before:from-accent/20 before:absolute before:inset-0 before:-z-1 before:bg-linear-to-tr before:via-transparent before:via-40% before:to-transparent'
         )}
     >
-        <div class="container relative w-full pb-0">
+        <div class="relative container w-full pb-0">
             <div class="flex flex-col gap-7">
                 <a href="/partners" class="text-caption text-primary group flex gap-2">
                     <span class="web-icon-arrow-left transition group-hover:-translate-x-1" />
@@ -79,7 +79,7 @@
                                 <dd class="flex flex-wrap gap-2">
                                     {#each frameworks as framework}
                                         <div
-                                            class="text-primary text-caption bg-smooth rounded-full py-1 px-3"
+                                            class="text-primary text-caption bg-smooth rounded-full px-3 py-1"
                                         >
                                             {framework}
                                         </div>
@@ -94,7 +94,7 @@
                                 <dd class="flex flex-wrap gap-2">
                                     {#each capabilities as capability}
                                         <div
-                                            class="text-primary text-caption bg-smooth rounded-full py-1 px-3"
+                                            class="text-primary text-caption bg-smooth rounded-full px-3 py-1"
                                         >
                                             {capability}
                                         </div>
@@ -126,7 +126,7 @@
                                 </dt>
                                 <dd>
                                     <div
-                                        class="text-primary text-caption rounded bg-white/24 py-0.5 px-2"
+                                        class="text-primary text-caption rounded bg-white/24 px-2 py-0.5"
                                     >
                                         {partnerLevel}
                                     </div>
@@ -149,7 +149,7 @@
                                 <dd class="flex flex-wrap gap-2">
                                     {#each languages as language}
                                         <div
-                                            class="text-primary text-caption bg-smooth rounded-full py-1 px-3"
+                                            class="text-primary text-caption bg-smooth rounded-full px-3 py-1"
                                         >
                                             {language}
                                         </div>

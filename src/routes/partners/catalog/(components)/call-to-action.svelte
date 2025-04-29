@@ -10,7 +10,7 @@
         'after:absolute after:top-0 after:right-0 after:z-0 after:hidden after:h-80 after:w-1/2 after:bg-[radial-gradient(at_100%_0%,_hsla(177,_53%,_69%,_0.1)_0px,_transparent_73%,_transparent_100%)] after:md:block md:after:block'
     )}
 >
-    <div class="container relative grid grid-cols-1 place-items-center md:grid-cols-2">
+    <div class="relative container grid grid-cols-1 place-items-center md:grid-cols-2">
         <section class="flex flex-col gap-4">
             <h2 class="text-display font-aeonik-pro text-primary max-w-[600px]">
                 Become a Technology Partner
