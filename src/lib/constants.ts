@@ -117,7 +117,7 @@ export const partnerCategoryDescriptions: SearchableCategory[] = [
     {
         slug: 'agency',
         heading: 'Agency',
-        description: 'Agencies that use Appwrite'
+        description: 'Agencies that build software for their clients using Appwrite'
     }
 ];
 

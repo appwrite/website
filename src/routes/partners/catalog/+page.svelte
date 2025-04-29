@@ -158,8 +158,9 @@
                                         {/each}
                                         <option value={null}> Select category </option>
                                     </select>
-                                    <span
-                                        class="icon-cheveron-down web-u-pointer-events-none absolute top-[11px] right-2"
+                                    <Icon
+                                        name="chevron-down"
+                                        class="web-u-pointer-events-none absolute top-[11px] right-2"
                                         aria-hidden="true"
                                     />
                                 </div>
@@ -218,8 +219,9 @@
                                                                 height="32"
                                                             />
 
-                                                            <span
-                                                                class="icon-arrow-right ml-auto"
+                                                            <Icon
+                                                                name="arrow-right"
+                                                                class="ml-auto"
                                                                 aria-hidden="true"
                                                             />
                                                         </div>
@@ -335,8 +337,9 @@
                                                                             width="32"
                                                                             height="32"
                                                                         />
-                                                                        <span
-                                                                            class="icon-arrow-right ml-auto"
+                                                                        <Icon
+                                                                            name="arrow-right"
+                                                                            class="ml-auto"
                                                                             aria-hidden="true"
                                                                         />
                                                                     </div>
@@ -345,7 +348,9 @@
                                                                         {integration.title}
                                                                     </h4>
 
-                                                                    <p class="text-sub-body mt-1">
+                                                                    <p
+                                                                        class="text-sub-body mt-1 line-clamp-2"
+                                                                    >
                                                                         {integration.description}
                                                                     </p>
                                                                 </a>

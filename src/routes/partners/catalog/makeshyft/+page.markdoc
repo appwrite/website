@@ -6,11 +6,11 @@ date: 2025-03-21
 featured: true
 partnerLevel: Silver
 isNew: true
-cover: /images/integrations/makeshyft/cover.png
+cover: /images/partners/covers/makeshyft.png
 category: agency
 website: https://mohesu.com/
 product: 
-    avatar: '/images/integrations/avatars/makeshyft.png'
+    avatar: '/images/partners/avatars/makeshyft.png'
     vendor: SimbaLabs
     description: MakeShyft is a software company currently transitioning from client work to B2C & B2B software products.  Our goal is to build productivity, communication and collaboration tools.  We have big goals and dreams and we're just getting started.
 frameworks: 

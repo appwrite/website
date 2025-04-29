@@ -6,11 +6,11 @@ date: 2025-03-21
 featured: false
 partnerLevel: Silver
 isNew: true
-cover: /images/integrations/simbalabs/cover.png
+cover: /images/partners/covers/simbalabs.png
 category: agency
 website: www.simbalabs.co.za
 product: 
-    avatar: '/images/integrations/avatars/simbalabs.png'
+    avatar: '/images/partners/avatars/simbalabs.png'
     vendor: SimbaLabs
     description: 'We are a web engineering company focused on making scalable, efficient web and mobile experiences.'
 frameworks: 
