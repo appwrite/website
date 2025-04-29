@@ -104,7 +104,7 @@
                         <img
                             src={illustration}
                             alt="key illustration"
-                            class="size-[320px] md:size-[600px]"
+                            class="size-[320px] md:size-[500px]"
                         />
                     </div>
                 </div>

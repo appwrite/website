@@ -1,13 +1,13 @@
 <script lang="ts" module>
-    export const stickerPack = [Sites, Flutter, Templates, Formats, Tokens];
+    export const stickerPack = [Sites, Flutter, DevKeys, Formats, Tokens];
 </script>
 
 <script lang="ts">
     import { isDeepEqual } from 'remeda';
 
+    import DevKeys from '../../(assets)/stickers/devkeys.webp';
     import Sites from '../../(assets)/stickers/sites.webp';
     import Flutter from '../../(assets)/stickers/flutter.webp';
-    import Templates from '../../(assets)/stickers/templates.webp';
     import Formats from '../../(assets)/stickers/formats.webp';
     import Tokens from '../../(assets)/stickers/tokens.webp';
     import Window from '../../(components)/window.svelte';

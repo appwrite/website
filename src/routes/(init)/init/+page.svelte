@@ -1,5 +1,5 @@
 <script lang="ts" module>
-    const base = new Date('2025-05-05T13:00:00.000Z');
+    const base = new Date('2025-04-05T13:00:00.000Z');
 
     export const isStarted = new Date() >= base;
     export const initDates = `${format(base, 'MMM d')} - ${format(addDays(base, 4), 'd')}`;
@@ -13,7 +13,7 @@
     import Sites from './(assets)/illustrations/sites.svg';
     import Flutter from './(assets)/illustrations/flutter.svg';
     import Formats from './(assets)/illustrations/formats.svg';
-    import Templates from './(assets)/illustrations/templates.svg';
+    import DevKeys from './(assets)/illustrations/devkeys.svg';
     import Tokens from './(assets)/illustrations/tokens.svg';
     import { addDays, format } from 'date-fns';
     import Day, { type DayProps } from './(components)/day.svelte';
@@ -89,7 +89,7 @@
         {
             title: 'Key',
             release: addDays(base, 2),
-            illustration: Templates,
+            illustration: DevKeys,
             description:
                 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sed lacus lectus. Nunc gravida arcu posuere odio sagittis, ac congue lacus placerat.',
             url: '/',
