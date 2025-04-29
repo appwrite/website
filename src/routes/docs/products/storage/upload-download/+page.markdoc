@@ -104,7 +104,7 @@ You can also upload files programmatically using our SDKs:
   const storage = new Storage(client);
 
   const promise = storage.createFile(
-      '[BUCKET_ID]',
+      '<BUCKET_ID>',
       ID.unique(),
       {
           name: 'image.jpg',
