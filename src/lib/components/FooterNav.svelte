@@ -38,15 +38,15 @@
                 { label: 'Messaging', href: '/products/messaging' },
                 { label: 'Storage', href: '/products/storage' },
                 { label: 'Realtime', href: '/docs/apis/realtime' },
-                { label: 'The Appwrite Network', href: '/docs/products/network' }
+                { label: 'Network', href: '/docs/products/network' }
             ],
             Learn: [
+                { label: 'Blog', href: '/blog' },
                 { label: 'Docs', href: '/docs' },
                 { label: 'Integrations', href: '/integrations' },
                 { label: 'Community', href: '/community' },
                 { label: 'Init', href: '/init' },
                 { label: 'Threads', href: '/threads' },
-                { label: 'Blog', href: '/blog' },
                 { label: 'Changelog', href: '/changelog' },
                 {
                     label: 'Roadmap',

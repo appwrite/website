@@ -319,11 +319,6 @@
                                 class="text-body text-primary mb-2 flex items-center gap-3 font-medium"
                             >
                                 Enterprises
-                                <div
-                                    class="web-inline-tag is-pink text-caption px-2! py-1! font-normal"
-                                >
-                                    Coming soon
-                                </div>
                             </h6>
                             <p class="text-body text-secondary font-medium">
                                 Large scale projects seeking greater performance, collaboration and
