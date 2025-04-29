@@ -127,7 +127,7 @@ To upload a file, add this to your app. For web apps, you can use the File objec
   const storage = new Storage(client);
 
   const promise = storage.createFile(
-      '[BUCKET_ID]',
+      '<BUCKET_ID>',
       ID.unique(),
       {
           name: 'image.jpg',
