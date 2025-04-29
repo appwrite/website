@@ -12,10 +12,12 @@
     import { onDestroy, onMount } from 'svelte';
     import { browser } from '$app/environment';
     import { classNames } from '$lib/utils/classnames';
-    import Input from '$lib/components/ui/Input.svelte';
-    import { page } from '$app/stores';
+
+    import { page } from '$app/state';
     import Hero from './(components)/hero.svelte';
     import CallToAction from './(components)/call-to-action.svelte';
+    import Input from '$lib/components/ui/input.svelte';
+    import Icon from '$lib/components/ui/icon';
 
     export let data;
 
@@ -34,7 +36,7 @@
     let result: ResultType<Partner> = [];
 
     let hasQuery: boolean;
-    let query = writable(decodeURIComponent($page.url.searchParams.get('search') ?? ''));
+    let query = writable(decodeURIComponent(page.url.searchParams.get('search') ?? ''));
 
     $: query.subscribe((value) => {
         hasQuery = value.length > 0;
@@ -96,9 +98,11 @@
                                 placeholder="Search"
                                 bind:value={$query}
                                 autocomplete="off"
-                                on:input={handleQuery}
+                                oninput={handleQuery}
                             >
-                                <span class="web-icon-search" aria-hidden="true" slot="icon" />
+                                {#snippet icon()}
+                                    <Icon name="search" aria-hidden="true" />
+                                {/snippet}
                             </Input>
                         </section>
                         <section class="flex flex-col">

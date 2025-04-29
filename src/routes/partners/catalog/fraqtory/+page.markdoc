@@ -1,0 +1,56 @@
+---
+layout: partner
+title: Fraqtory
+description: Transform your startup vision into reality with custom software and Fractional CTO services, tailored to accelerate growth and success.
+date: 2025-03-21
+featured: false
+partnerLevel: Silver
+isNew: true
+cover: /images/integrations/fraqtory/cover.png
+category: agency
+website: 
+product: 
+    avatar: '/images/integrations/avatars/fraqtory.png'
+    vendor: Fraqtory
+    description: Transform your startup vision into reality with custom software and Fractional CTO services, tailored to accelerate growth and success.
+frameworks: 
+    - Javascript
+    - Typescript
+    - React
+    - Next.js
+    - Flutter
+    - React Native
+    - PHP,
+    - Java
+    - Kotlin
+    - Python
+    - C
+    - .NET
+    - Spring Boot
+    - Laravel
+    - MySQL
+    - PostgreSQL
+capabilities:
+    - Fractional CTO
+    - Software House
+    - Mobile App Development
+    - Web App Development
+regions:
+    - Africa
+    - Europe
+    - South America
+    - Mid America
+    - North America
+languages: 
+    - English
+---
+
+# Overview
+
+Transform your startup vision into reality with custom software and Fractional CTO services, tailored to accelerate growth and success.
+
+# Services
+
+We use Appwrite to accelerate the development of new technology for our clients, primarily tech-based startups. It also enables us to rapidly build MVPs and event platforms, ensuring speed and efficiency in execution.
+
+Our ideal projects involve collaborating with startups that need to develop innovative solutions from the ground up, mainly focusing on computer vision, full-stack and cloud computing areas.

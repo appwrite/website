@@ -1,0 +1,43 @@
+---
+layout: partner
+title: Mohesu Enterprises
+description: Mohesu specializes in creating bespoke digital solutions—from responsive websites and mobile applications to comprehensive managed cloud services, AI & machine learning solutions, and digital marketing strategies. Their approach emphasizes clean, user-friendly interfaces and scalable, customizable technology stacks utilizing frameworks like Next.js, Flutter, and Angular with Appwrite.
+date: 2025-03-21
+featured: false
+partnerLevel: Silver
+isNew: true
+cover: /images/integrations/mohesu/cover.png
+category: agency
+website: https://mohesu.com/
+product: 
+    avatar: '/images/integrations/avatars/mohesu.png'
+    vendor: SimbaLabs
+    description: 'Mohesu specializes in creating bespoke digital solutions—from responsive websites and mobile applications to comprehensive managed cloud services, AI & machine learning solutions, and digital marketing strategies. Their approach emphasizes clean, user-friendly interfaces and scalable, customizable technology stacks utilizing frameworks like Next.js, Flutter, and Angular with Appwrite.'
+frameworks: 
+    - Flutter
+    - NextJS
+    - Angular
+    - Remix
+    - Express.js
+    - Dart
+    - Typescript
+    - Javascript
+    - Python
+capabilities:
+    - AI
+    - Web 
+    - Mobile
+regions:
+    - India
+languages: 
+    - English
+---
+
+# Overview
+
+Mohesu specializes in creating bespoke digital solutions—from responsive websites and mobile applications to comprehensive managed cloud services, AI & machine learning solutions, and digital marketing strategies. Their approach emphasizes clean, user-friendly interfaces and scalable, customizable technology stacks utilizing frameworks like Next.js, Flutter, and Angular with Appwrite.
+
+# Services
+We specialize in web and mobile app development, managed cloud services, as well as SEO and digital marketing to help you build, scale, and grow your digital presence.
+
+We rely on Appwrite as the backend server for our web and mobile applications, ensuring secure, scalable, and efficient development.

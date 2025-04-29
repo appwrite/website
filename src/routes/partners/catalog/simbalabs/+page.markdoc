@@ -1,0 +1,43 @@
+---
+layout: partner
+title: SimbaLabs
+description: We are a web engineering company focused on making scalable, efficient web and mobile experiences.
+date: 2025-03-21
+featured: false
+partnerLevel: Silver
+isNew: true
+cover: /images/integrations/simbalabs/cover.png
+category: agency
+website: www.simbalabs.co.za
+product: 
+    avatar: '/images/integrations/avatars/simbalabs.png'
+    vendor: SimbaLabs
+    description: 'We are a web engineering company focused on making scalable, efficient web and mobile experiences.'
+frameworks: 
+    - Javascript
+    - Python
+    - Swift
+capabilities:
+    - AI
+    - Web 
+    - Mobile
+regions:
+    - Africa
+    - Asia
+    - Australia
+    - New Zealand
+    - Europe
+    - Latin America
+    - Middle East
+    - North America
+languages: 
+    - English
+---
+
+# Overview
+
+We are a web engineering company focused on making scalable, efficient web and mobile experiences.
+
+# Services
+
+We build AI, web, and mobile applications for clients. We use Appwrite Databases, Functions, Auth & Storage to build innovative, scalable AI, web, and mobile apps.
