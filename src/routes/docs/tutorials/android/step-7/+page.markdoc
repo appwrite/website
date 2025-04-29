@@ -106,7 +106,7 @@ fun IdeasScreen(
                 Column(modifier = Modifier.padding(16.dp)) {
                     Text(text = idea.data["title"]?.toString() ?: "", fontWeight = FontWeight(700))
                     Text(text = idea.data["description"]?.toString() ?: "")
-                    if (user?.id === idea.data["userId"])
+                    if (user?.id == idea.data["userId"])
                         Button(onClick = { onRemove(idea.id) }) {
                             Text("Remove")
                         }

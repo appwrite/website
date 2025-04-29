@@ -239,8 +239,9 @@
                                                 >
                                                 <input
                                                     required
+                                                    pattern="^(https:\/\/www\.|https:\/\/)?([a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)+)[a-zA-Z0-9\-\._~:\/\?#[\]@!\$&'\(\)\*\+,;=.]*$"
                                                     class="web-input-text"
-                                                    type="url"
+                                                    type="text"
                                                     placeholder="https://appwrite.io"
                                                     id="companyWebsite"
                                                     bind:value={companyWebsite}
