@@ -320,7 +320,7 @@
         }
 
         &.active {
-            animation: var(--transition-timing-function-spring) right-piece 1.333s forwards;
+            animation: var(--easing-spring) right-piece 1.333s forwards;
         }
     }
 
@@ -343,7 +343,7 @@
         }
 
         &.active {
-            animation: var(--transition-timing-function-spring) left-piece 1.333s forwards;
+            animation: var(--easing-.333s forwards;
         }
     }
 
