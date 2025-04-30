@@ -9,6 +9,10 @@ back: /docs/quick-starts
 
 Learn how to setup your first Android project powered by Appwrite and the [Appwrite Android SDK](https://github.com/appwrite/sdk-for-android).
 
+{% info title="Using Java?" %}
+Check out the [Start with Android (Java)](/docs/quick-starts/android-java) guide.
+{% /info %}
+
 {% section #step-1 step=1 title="Create Android project" %}
 Open Android Studio and click **New Project** to create a new project.
 
