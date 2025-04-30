@@ -11,7 +11,7 @@ You can further give special rights to parts of a team using team roles.
 The invited user can [accept the invitation](/docs/references/cloud/client-web/teams#updateMembershipStatus) to gain access. If the user's ever removed from the team, they'll lose access again.
 
 {% arrow_link href="/docs/products/auth/multi-tenancy" %}
-Learn about using Teams for Multi-tenancy
+Learn about using Teams for multi-tenancy
 {% /arrow_link %}
 
 # Create team {% #create %}
