@@ -106,8 +106,8 @@ void main() { // Init SDK
 //displaying image preview
 FutureBuilder(
   future: storage.getFilePreview(
-    bucketId: '[BUCKET_ID]',
-    fileId: '[FILE_ID]',
+    bucketId: '<BUCKET_ID>',
+    fileId: '<FILE_ID>',
   ), //works for both public file and private file, for private files you need to be logged in
   builder: (context, snapshot) {
     return snapshot.hasData && snapshot.data != null
@@ -182,6 +182,44 @@ class MainActivity : AppCompatActivity() {
         println(result); // Resource URL
     }
 }
+```
+```client-react-native
+import { Client, Storage, ImageGravity } from 'react-native-appwrite';
+import { Image } from 'react-native';
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>');
+
+const storage = new Storage(client);
+
+// Get image with transformations
+const result = storage.getFilePreview(
+    'photos',           // bucket ID
+    'sunset.png',       // file ID
+    1800,               // width, will be resized using this value
+    0,                  // height, ignored when 0
+    ImageGravity.Center,// crop center
+    90,                 // slight compression
+    5,                  // border width
+    'CDCA30',           // border color
+    15,                 // border radius
+    1,                  // full opacity
+    0,                  // no rotation
+    'FFFFFF',           // background color
+    'jpg'               // output jpg format
+);
+
+console.log(result); // Resource URL
+
+// Usage in a component
+const ImagePreview = () => (
+    <Image
+        source={{ uri: result.toString() }}
+        style={{ width: 300, height: 200 }}
+        resizeMode="contain"
+    />
+);
 ```
 
 {% /multicode %}
