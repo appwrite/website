@@ -200,7 +200,8 @@ const document = await databases.createDocument(
         title: 'Q2 Invoice',
         amount: 2500.00,
         customer: 'Example Customer',
-        status: 'pending'
+        status: 'pending',
+        tenant_id: 'example_corp'
     },
     [
         // All Example Corp team members can read
@@ -229,7 +230,8 @@ final document = await databases.createDocument(
         'title': 'Q2 Invoice',
         'amount': 2500.00,
         'customer': 'Example Customer',
-        'status': 'pending'
+        'status': 'pending',
+        'tenant_id': 'example_corp'
     },
     permissions: [
         // All Example Corp team members can read
@@ -258,7 +260,8 @@ let document = try await databases.createDocument(
         "title": "Q2 Invoice",
         "amount": 2500.00,
         "customer": "Example Customer",
-        "status": "pending"
+        "status": "pending",
+        "tenant_id": "example_corp"
     ],
     permissions: [
         // All Example Corp team members can read
@@ -291,7 +294,8 @@ val document = databases.createDocument(
         "title" to "Q2 Invoice",
         "amount" to 2500.00,
         "customer" to "Example Customer",
-        "status" to "pending"
+        "status" to "pending",
+        "tenant_id" to "example_corp"
     ),
     permissions = listOf(
         // All Example Corp team members can read
