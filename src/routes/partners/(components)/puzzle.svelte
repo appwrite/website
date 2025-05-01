@@ -343,7 +343,7 @@
         }
 
         &.active {
-            animation: var(--easing-.333s forwards;
+            animation: var(--easing-spring) left-piece 1.333s forwards;
         }
     }
 
