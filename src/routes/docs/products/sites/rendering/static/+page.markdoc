@@ -8,6 +8,8 @@ Static apps, also known as static websites, consist of pre-built HTML, CSS, and 
 
 Since the pages are pre-generated, static apps offer incredibly fast load times. However, they lack dynamic interactivity and are best suited for use cases like personal portfolios, documentation sites, and landing pages.
 
+All static content served from Appwrite's [CDN](/docs/products/network/cdn) is optimized using advanced compression algorithms to reduce data transfer sizes and then served from your user's nearest edge location.
+
 # Configuring your Appwrite Site to use static hosting
 
 When Appwrite builds your site for the first time, it scans your project's configuration files to determine whether the website should be rendered as static pages or using SSR.
@@ -17,7 +19,7 @@ If you need to manually update these settings, here are the steps to do so:
 1. Navigate to your site in the Appwrite Console and head to the **Settings** tab > **Build settings** section
 2. Select the **Static site** checkbox (you may need to update your project codebase depending on your framework option)
 3. Confirm that the appropriate install command, build command, and output directory are set
-4. Click on the **Update** button and redeploy your site.
+4. Click on the **Update** button and redeploy your site
 
 ## Enabling static builds on your web app {% #enabling-static-builds %}
 
