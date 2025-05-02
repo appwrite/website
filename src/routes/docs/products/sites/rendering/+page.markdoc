@@ -13,7 +13,7 @@ Host a static site or SPA
 {% /cards_item %}
 
 {% cards_item href="/docs/products/sites/rendering/ssr" title="Server Side Rendering" %}
-Host an SSR web app
+Host an SSR site
 {% /cards_item %}
 
 {% /cards %}
