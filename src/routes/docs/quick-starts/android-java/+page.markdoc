@@ -52,11 +52,11 @@ You can skip optional steps.
 {% section #step-3 step=3 title="Add the Appwrite SDK" %}
 To add the Appwrite SDK for Android as a dependency, add the following to your app-level **build.gradle** file inside the **dependencies** block.
 
-```java
+```groovy
 implementation "io.appwrite:sdk-for-android:7.0.0"
 ```
 
-In order to allow creating OAuth sessions, the following activity needs to be added inside the `<application>` tag, along side the existing `<activity>` tags in your [AndroidManifest.xml](https://github.com/appwrite/playground-for-flutter/blob/master/android/app/src/main/AndroidManifest.xml).
+In order to allow creating OAuth sessions, the following activity needs to be added inside the `<application>` tag, along side the existing `<activity>` tags in your [AndroidManifest.xml](https://github.com/appwrite/playground-for-android/blob/master/app/src/main/AndroidManifest.xml).
 Be sure to replace the **<PROJECT_ID>** string with your actual Appwrite project ID.
 You can find your Appwrite project ID in you project settings screen in your Appwrite Console.
 
@@ -106,10 +106,11 @@ import io.appwrite.models.User;
 import io.appwrite.services.Account;
 
 public class AppwriteHelper {
-    private static Client client;
-    private static Account account;
+    private static AppwriteHelper instance;
+    private Client client;
+    private Account account;
 
-    public static void init(Context context) {
+    private AppwriteHelper(Context context) {
         client = new Client(context)
                 .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
                 .setProject("<PROJECT_ID>");
@@ -117,12 +118,19 @@ public class AppwriteHelper {
         account = new Account(client);
     }
 
+    public static synchronized AppwriteHelper getInstance(Context context) {
+        if (instance == null) {
+            instance = new AppwriteHelper(context.getApplicationContext());
+        }
+        return instance;
+    }
+
     public interface AuthCallback<T> {
         void onSuccess(T result);
         void onError(Exception error);
     }
 
-    public static void login(String email, String password, final AuthCallback<Session> callback) {
+    public void login(String email, String password, final AuthCallback<Session> callback) {
         account.createEmailPasswordSession(email, password, new CoroutineCallback<>(result -> {
             callback.onSuccess(result);
             return null;
@@ -132,7 +140,7 @@ public class AppwriteHelper {
         }));
     }
 
-    public static void register(String email, String password, final AuthCallback<User<Map<String, Object>>> callback) {
+    public void register(String email, String password, final AuthCallback<User<Map<String, Object>>> callback) {
         account.create(
                 ID.unique(),
                 email,
@@ -148,7 +156,7 @@ public class AppwriteHelper {
         );
     }
 
-    public static void logout(final AuthCallback<Object> callback) {
+    public void logout(final AuthCallback<Object> callback) {
         account.deleteSession("current", new CoroutineCallback<>(result -> {
             callback.onSuccess(result);
             return null;
@@ -264,13 +272,14 @@ public class MainActivity extends AppCompatActivity {
     private Button buttonRegister;
     private TextView textViewStatus;
     private Button buttonLogout;
+    private AppwriteHelper appwrite;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         // Initialize Appwrite
-        AppwriteHelper.init(getApplicationContext());
+        appwrite = AppwriteHelper.getInstance(getApplicationContext());
 
         setContentView(R.layout.activity_main);
 
@@ -297,7 +306,7 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
-        AppwriteHelper.login(email, password, new AppwriteHelper.AuthCallback<Session>() {
+        appwrite.login(email, password, new AppwriteHelper.AuthCallback<Session>() {
             @Override
             public void onSuccess(Session result) {
                 runOnUiThread(() -> {
@@ -325,7 +334,7 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
-        AppwriteHelper.register(email, password, new AppwriteHelper.AuthCallback<User<Map<String, Object>>>() {
+        appwrite.register(email, password, new AppwriteHelper.AuthCallback<User<Map<String, Object>>>() {
             @Override
             public void onSuccess(User<Map<String, Object>> result) {
                 runOnUiThread(() -> {
@@ -344,7 +353,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void logout() {
-        AppwriteHelper.logout(new AppwriteHelper.AuthCallback<Object>() {
+        appwrite.logout(new AppwriteHelper.AuthCallback<Object>() {
             @Override
             public void onSuccess(Object result) {
                 runOnUiThread(() -> {
