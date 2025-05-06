@@ -24,7 +24,6 @@ const sendToUserList = async ({ name, email, userId }: SendToUserListArgs) => {
 };
 
 export const getTicketDocByUser = async (user: User) => {
-    // Extract commonly used properties with fallbacks
     const githubLogin = user.github?.login;
     const githubEmail = user.github?.email;
     const githubName = user.github?.name;
@@ -67,11 +66,8 @@ export const getTicketDocByUser = async (user: User) => {
     if (!githubAccount?.total) {
         const countQuery = await appwriteInitServer.databases.listDocuments(
             APPWRITE_DB_INIT_ID,
-            APPWRITE_COL_INIT_ID,
-            [Query.limit(1), Query.orderAsc('id'), Query.offset(0)]
+            APPWRITE_COL_INIT_ID
         );
-
-        const nextId = (countQuery.total > 0 ? countQuery.documents[0].id : 0) + 1;
 
         const newDoc = await appwriteInitServer.databases.createDocument(
             APPWRITE_DB_INIT_ID,
@@ -81,7 +77,7 @@ export const getTicketDocByUser = async (user: User) => {
                 aw_email: appwriteEmail,
                 gh_user: githubLogin,
                 avatar_url: githubAvatar,
-                id: nextId,
+                id: countQuery.total + 1,
                 name: firstName,
                 title: ''
             }

@@ -4,7 +4,9 @@ import { cookieKey } from './init/(utils)/auth';
 export const load = async ({ cookies }) => {
     const session = cookies.get(cookieKey);
 
-    if (session) {
-        appwriteInit.client.setSession(session);
+    if (!session) {
+        throw new Error('No Init session created');
     }
+
+    appwriteInit.client.setSession(session);
 };
