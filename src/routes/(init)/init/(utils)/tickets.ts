@@ -1,4 +1,4 @@
-import { APPWRITE_DB_INIT_ID, APPWRITE_COL_INIT_ID } from '$env/static/private';
+import { APPWRITE_DB_INIT_ID, APPWRITE_COL_INIT_ID, NODE_ENV } from '$env/static/private';
 import { appwriteInitServer } from '../(utils)/appwrite.server';
 import { Query, ID, type Models } from 'appwrite';
 import type { User } from './auth';
@@ -60,10 +60,8 @@ export const createNewTicket = async (user: User) => {
     const appwriteEmail = user.appwrite?.email;
     const appwriteName = user.appwrite?.name;
 
-    console.log({ github: user.github });
-
     // Send request details to user list for growth in production
-    if (githubEmail) {
+    if (NODE_ENV === 'product' && githubEmail) {
         sendToUserList({
             name: appwriteName ?? githubName ?? githubEmail,
             email: appwriteEmail ?? githubEmail,
