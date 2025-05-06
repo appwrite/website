@@ -7,7 +7,8 @@ cover: /images/blog/what-is-mcp/cover.png
 timeToRead: 7
 author: ebenezer-don
 category: tutorial
-featured: true
+featured: false
+callToAction: true
 ---
 
 If you've ever tried using an AI assistant for something practical, like pulling real data from your work files, checking a database, or sending a message, then you've probably hit a frustrating wall.

@@ -1,28 +1,24 @@
 import { MAP_BOUNDS } from '../map.svelte';
 
+const MAP_WIDTH = 1048.25;
+const MAP_HEIGHT = 525;
+
 type Coordinates = {
     latitude: number;
     longitude: number;
 };
 
-type PixelPosition = {
-    x: number;
-    y: number;
-};
-
-export const latLongToSvgPosition = ({
-    latitude,
-    longitude,
-    width,
-    height
-}: Coordinates & { width: number; height: number }) => {
+export const latLongToSvgPosition = ({ latitude, longitude }: Coordinates) => {
     const { west, east, north, south } = MAP_BOUNDS;
 
     const lngRatio = (longitude - west) / (east - west);
-    const latRatio = (north - latitude) / (north - south);
+    const latRatio = (latitude - south) / (north - south);
 
-    const x = Math.max(0, Math.min(1, lngRatio)) * 100; // % instead of px
-    const y = Math.max(0, Math.min(1, latRatio)) * 100;
+    const clampedLngRatio = Math.max(0, Math.min(1, lngRatio));
+    const clampedLatRatio = Math.max(0, Math.min(1, latRatio));
 
-    return { x, y };
+    const x = clampedLngRatio * 100;
+    const y = (1 - clampedLatRatio) * 100;
+
+    return { x, y }; // percentages, e.g., { x: 42.3, y: 71.8 }
 };

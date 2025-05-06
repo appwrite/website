@@ -5,7 +5,7 @@ description: Integrate Firebase Cloud Messaging (FCM) with Appwrite to send push
 date: 2024-07-30
 featured: false
 isPartner: true
-isNew: true
+isNew: false
 cover: /images/integrations/push-fcm/cover.png
 category: messaging
 product: 

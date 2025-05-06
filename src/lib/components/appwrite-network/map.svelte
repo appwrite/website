@@ -1,9 +1,9 @@
 <script lang="ts" module>
     export const MAP_BOUNDS = $state({
-        west: -132,
-        east: 185,
-        north: 65,
-        south: -65
+        west: -138,
+        east: 167,
+        north: 74,
+        south: -62
     });
 </script>
 
@@ -11,12 +11,12 @@
     import MapMarker from './map-marker.svelte';
     import { slugify } from '$lib/utils/slugify';
     import { classNames } from '$lib/utils/classnames';
-    import { Tooltip } from 'bits-ui';
     import MapNav from './map-nav.svelte';
     import { useMousePosition } from '$lib/actions/mouse-position';
     import { useAnimateInView } from '$lib/actions/animate-in-view';
     import { pins, type PinSegment } from './data/pins';
-    import { latLongToSvgPosition } from './utils/projections';
+    import MapTooltip from './map-tooltip.svelte';
+    import { dev } from '$app/environment';
 
     let dimensions = $state({
         width: 0,
@@ -70,39 +70,32 @@
     };
 </script>
 
-<div class="w-full overflow-scroll [scrollbar-width:none]">
+<div class="-mt-8 w-full overflow-x-scroll [scrollbar-width:none] md:overflow-x-hidden">
     <div
-        class="sticky left-0 z-10 mb-8 hidden w-screen gap-2 overflow-scroll px-8 [scrollbar-width:none]"
+        class="sticky left-0 mx-auto block max-w-[calc(100vw_-_calc(var(--spacing)_*-2))] md:hidden"
     >
-        {#each pins[activeSegment as PinSegment] as pin}
-            <button
-                class={classNames(
-                    'border-gradient grow rounded-full bg-gradient-to-br px-4 py-1 text-nowrap text-white backdrop-blur-lg transition-colors before:rounded-full after:rounded-full',
-                    {
-                        'from-accent to-accent/50': activeRegion === slugify(pin.city),
-                        'from-greyscale-800/30 to-greyscale-700/30':
-                            activeRegion !== slugify(pin.city)
-                    }
-                )}
-                onclick={() => handleSetActiveMarker(pin.city)}
-            >
-                {pin.city}
-            </button>
-        {/each}
+        <select
+            class="web-input-text mx-auto appearance-none"
+            onchange={(e) => handleSetActiveMarker(e.currentTarget.value)}
+        >
+            {#each pins[activeSegment as PinSegment] as pin}
+                <option value={pin.city}>{pin.city}-({pin.code})</option>
+            {/each}
+        </select>
     </div>
 
     <div
-        class="relative container mx-auto flex h-full w-[250vw] flex-col justify-center overflow-scroll px-0 py-10 transition-all delay-250 duration-250 md:w-fit md:flex-row md:overflow-auto md:py-0"
+        class="relative mx-auto h-full w-[250vw] [scrollbar-width:none] md:w-fit"
         use:inView
         use:mousePosition
     >
         <div
-            class="map relative w-full origin-bottom overflow-scroll transition-all [scrollbar-width:none]"
+            class="relative w-full origin-bottom transform-[perspective(25px)_rotateX(1deg)_scale3d(1.4,_1.4,_1)] transition-all [scrollbar-width:none]"
             bind:clientWidth={dimensions.width}
             bind:clientHeight={dimensions.height}
         >
             <div
-                class="absolute inset-0 mask-[image:url('/images/regions/map.svg')] mask-contain mask-no-repeat"
+                class="absolute inset-0 mask-[image:url('/images/appwrite-network/map.svg')] mask-contain mask-no-repeat"
             >
                 <div
                     class={classNames(
@@ -116,25 +109,17 @@
             </div>
 
             <img
-                src="/images/regions/map.svg"
-                class="pointer-events-none relative -z-10 opacity-10"
+                src="/images/appwrite-network/map.svg"
+                class="pointer-events-none relative -z-10 w-full opacity-10 md:max-h-[525px]"
                 draggable="false"
                 alt="Map of the world"
             />
 
-            <Tooltip.Provider delayDuration={0} skipDelayDuration={500} disableCloseOnTriggerClick>
-                {#each pins[activeSegment as PinSegment].map( (pin) => ({ ...pin, isOpen: activeRegion === slugify(pin.city), position: latLongToSvgPosition( { latitude: pin.lat, longitude: pin.lng, ...dimensions } ) }) ) as pin, index}
-                    <MapMarker
-                        {...pin}
-                        position={pin.position}
-                        animate={$animate}
-                        {index}
-                        bounds={MAP_BOUNDS}
-                    />
-                {/each}
-            </Tooltip.Provider>
+            {#each pins[activeSegment as PinSegment] as pin, index}
+                <MapMarker {...pin} animate={$animate} {index} bounds={MAP_BOUNDS} />
+            {/each}
         </div>
     </div>
 </div>
-
+<MapTooltip coords={$position} />
 <MapNav onValueChange={(value) => (activeSegment = value)} />
