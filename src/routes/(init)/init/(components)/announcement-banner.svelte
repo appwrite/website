@@ -12,9 +12,9 @@
     <div class="md:basis-1/3">
         <Badge class="ml-0">Init is coming <span class="text-accent">/</span> {initDates}</Badge>
     </div>
-    <div class="md:basis-1/3">
+    <a href="/init" class="md:basis-1/3">
         <img class="mx-auto mt-2 hidden max-w-[200px] md:block" src={Lockup} alt="Appwrite" />
-    </div>
+    </a>
     <div class="mr-0 ml-auto justify-self-end text-right">
         <a href="/init" class="text-primary group mr-0 ml-auto flex items-center gap-2 text-right"
             >Register now <Icon

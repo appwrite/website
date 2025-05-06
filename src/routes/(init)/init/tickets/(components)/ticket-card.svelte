@@ -5,6 +5,7 @@
     import type { TicketData } from '../../(utils)/tickets';
     import TicketUrl from './ticket-url.svelte';
     import { initDates } from '../../+page.svelte';
+    import LockupImage from '../../(assets)/lockup.png';
 
     let coords = $state({ x: 0, y: 0 });
 
@@ -137,6 +138,7 @@
                         class="mt-3 ml-2 h-4 w-auto self-start"
                     />
                     <div class="flex flex-1 items-center">
+                        <img src={LockupImage} alt="Init logo" class="block w-full md:hidden" />
                         <Lockup class="w-full" />
                     </div>
 
