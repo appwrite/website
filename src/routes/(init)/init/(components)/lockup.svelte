@@ -20,13 +20,12 @@
             }
         ],
         [
-            '.bottom-layer > path',
+            '.bottom-layer',
             {
-                stroke: ['#303033', 'rgba(0,0,0,0)'],
-                fill: ['rgba(0,0,0,0)', 'rgba(0,0,0,1)']
+                opacity: [1, 0]
             },
             {
-                delay: 1.25,
+                delay: 0.75,
                 duration: 0.75
             }
         ]
@@ -40,7 +39,7 @@
 <svg
     viewBox="0 0 750 420"
     fill="none"
-    class={classNames('lockup mx-auto w-full overflow-hidden', className)}
+    class={classNames('lockup mx-auto hidden w-full overflow-hidden md:block', className)}
 >
     <g class="background-layer">
         <path
@@ -562,9 +561,9 @@
             y2="355.76"
             gradientUnits="userSpaceOnUse"
         >
-            <stop stop-color="#fff" stop-opacity=".4" offset="0" />
-            <stop stop-color="#fff" stop-opacity=".4" offset=".52344" />
-            <stop stop-color="#fff" stop-opacity="0" offset="1" />
+            <stop stop-color="#7F7F7F" offset="0" />
+            <stop stop-color="#8B8B8B" offset=".59" />
+            <stop stop-color="#393939" offset="1" />
         </linearGradient>
         <linearGradient id="d" x1="306" x2="303" y1="32" y2="300.5" gradientUnits="userSpaceOnUse">
             <stop stop-color="#fff" stop-opacity=".8" offset="0" />
@@ -629,10 +628,6 @@
         .middle-layer {
             opacity: 0;
             animation: middle-layer var(--duration) ease-in-out forwards var(--delay);
-        }
-
-        .bottom-layer > path {
-            backdrop-filter: blur(8px);
         }
     }
 </style>

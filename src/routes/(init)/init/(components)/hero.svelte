@@ -5,6 +5,7 @@
     import { classNames } from '$lib/utils/classnames';
     import { loginGithub } from '../(utils)/github';
     import { initDates } from '../+page.svelte';
+    import LockupImage from '../(assets)/lockup.png';
 
     import Badge from './badge.svelte';
     import Lockup from './lockup.svelte';
@@ -31,7 +32,10 @@
     )}
 >
     <Badge>{initDates}</Badge>
-    <div class="relative z-10 mx-auto w-5/8"><Lockup /></div>
+    <div class="relative z-10 mx-auto px-4 md:w-5/8">
+        <img src={LockupImage} alt="Init logo" class="block w-full md:hidden" />
+        <Lockup />
+    </div>
     <div class="relative z-10 flex w-full max-w-lg flex-col items-center justify-center gap-8">
         <div class="text flex flex-col gap-4 [animation-delay:0.75s]">
             <p class="text-description text-secondary block max-w-lg text-center">
