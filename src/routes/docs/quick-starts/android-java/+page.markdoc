@@ -246,7 +246,7 @@ First, update your `activity_main.xml` layout file:
 Now update your `MainActivity.java` file with the following code:
 
 ```java
-package YOUR_ROOT_PACKAGE_HERE;
+package <YOUR_ROOT_PACKAGE_HERE>;
 
 import android.os.Bundle;
 import android.util.Log;
