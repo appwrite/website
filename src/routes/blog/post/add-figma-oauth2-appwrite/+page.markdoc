@@ -42,7 +42,7 @@ You'll be asked to fill in a few details:
 
 Once you save the app, Figma will show your **Client ID** and **Client Secret**. These are the credentials you'll need to complete the setup in Appwrite.
 
-![Figma Client ID and Secret](/images/blog/add-figma-oauth2-appwrite/figma-client-id-info.png)
+![Figma Client ID and Secret](/images/blog/add-figma-oauth2-appwrite/figma-client-info.png)
 
 Take a moment to copy both values. The **Client Secret** is shown only once, so make sure to save it somewhere you can reference later.
 
