@@ -16,6 +16,7 @@
     import { classNames } from '$lib/utils/classnames';
     import TicketCard from '../(components)/ticket-card.svelte';
     import { Button, Icon } from '$lib/components/ui';
+    import { initDates } from '../../+page.svelte';
 
     let { data } = $props();
 
@@ -54,7 +55,7 @@
     <title>Customize Your Ticket - Appwrite</title>
     <meta
         name="description"
-        content="Join Init December 5th-9th. Register today and claim your ticket."
+        content="Join Init {initDates}. Register today and claim your ticket."
     />
 </svelte:head>
 

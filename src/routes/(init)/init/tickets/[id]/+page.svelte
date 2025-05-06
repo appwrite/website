@@ -104,8 +104,8 @@
                     </h2>
 
                     <p class="text-body text-secondary mt-2 font-medium">
-                        Register today and claim your Init launch week ticket and get the chance to
-                        win prizes.
+                        Thank you for registering for Init. Share your ticket on social media to
+                        enter the raffle to win limited edition swag.
                     </p>
                     <div class="mt-4 flex items-center gap-4">
                         {#if data.isCurrentUsersTicket}
