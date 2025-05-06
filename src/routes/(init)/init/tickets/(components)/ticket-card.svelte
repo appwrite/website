@@ -217,7 +217,7 @@
                         </div>
 
                         {#if contributions}
-                            <div class="grid w-full grid-cols-52 grid-rows-7 gap-0.5">
+                            <div class="grid h-10 w-full grid-cols-52 grid-rows-7 gap-0.5">
                                 {#await contributions then c}
                                     {#each c as l, i}
                                         {#each l as level}
