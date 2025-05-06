@@ -21,6 +21,7 @@
     import { page } from '$app/state';
     import { getAppwriteDashboardUrl } from '$lib/utils/dashboard';
     import { Button, Icon, InlineTag } from '$lib/components/ui';
+    import AnnouncementBanner from '$routes/(init)/init/(components)/announcement-banner.svelte';
 
     export let omitMainId = false;
     let theme: 'light' | 'dark' | null = 'dark';
@@ -186,6 +187,12 @@
             </Button>
         </div>
     </section>
+
+    <div class="border-smooth border-b">
+        <div class="is-special-padding mx-auto">
+            <AnnouncementBanner />
+        </div>
+    </div>
     <header
         class="web-main-header is-special-padding {resolvedTheme} is-transparent"
         class:is-special-padding={!BANNER_KEY.startsWith('init-banner-')}

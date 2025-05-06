@@ -1,5 +1,5 @@
 <script lang="ts" module>
-    const base = new Date('2025-04-05T13:00:00.000Z');
+    const base = new Date('2025-05-15T13:00:00.000Z');
 
     export const isStarted = new Date() >= base;
     export const initDates = `${format(base, 'MMM d')} - ${format(addDays(base, 4), 'd')}`;
