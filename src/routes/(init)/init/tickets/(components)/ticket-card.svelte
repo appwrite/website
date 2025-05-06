@@ -232,6 +232,7 @@
                                                             'opacity-80': level === 4
                                                         }
                                                     )}
+                                                    style:--delay="{i * 0.0075}s"
                                                 ></div>
                                             </div>
                                         {/each}
@@ -278,11 +279,11 @@
 
 <style>
     .contribution {
-        --bg-color: 0, 0%, 100%;
-        animation: fade-contributions 0.5s ease-in-out forwards;
+        --bg-color: 0 0% 100%;
+        animation: contributions 0.5s var(--delay) ease-in-out forwards;
     }
 
-    @keyframes fade-contributions {
+    @keyframes contributions {
         from {
             background: hsla(var(--bg-color) / 0);
         }
