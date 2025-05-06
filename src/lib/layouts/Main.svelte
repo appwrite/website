@@ -146,6 +146,12 @@
 </script>
 
 <div class="relative">
+    <div class="border-smooth relative z-10 border-b bg-[#19191C]">
+        <div class="is-special-padding mx-auto">
+            <AnnouncementBanner />
+        </div>
+    </div>
+
     <section
         class="web-mobile-header {resolvedTheme}"
         class:is-transparent={browser && !$isMobileNavOpen}
@@ -188,11 +194,6 @@
         </div>
     </section>
 
-    <div class="border-smooth relative z-10 border-b bg-[#19191C]">
-        <div class="is-special-padding mx-auto">
-            <AnnouncementBanner />
-        </div>
-    </div>
     <header class="web-main-header is-special-padding {resolvedTheme} is-transparent">
         <div
             class="web-main-header-wrapper"
