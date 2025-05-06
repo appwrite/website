@@ -60,8 +60,10 @@ export const createNewTicket = async (user: User) => {
     const appwriteEmail = user.appwrite?.email;
     const appwriteName = user.appwrite?.name;
 
+    console.log({ github: user.github });
+
     // Send request details to user list for growth in production
-    if (process.env.NODE_ENV === 'production' && githubEmail) {
+    if (githubEmail) {
         sendToUserList({
             name: appwriteName ?? githubName ?? githubEmail,
             email: appwriteEmail ?? githubEmail,
@@ -69,7 +71,7 @@ export const createNewTicket = async (user: User) => {
         });
     }
 
-    const [githubAccount, appwriteAccount] = await Promise.all([
+    const [githubTicket, appwriteTicket] = await Promise.all([
         githubLogin
             ? appwriteInitServer.databases.listDocuments(
                   APPWRITE_DB_INIT_ID,
@@ -89,26 +91,28 @@ export const createNewTicket = async (user: User) => {
     const getFirstName = (fullName?: string) => fullName?.split(' ')[0] ?? undefined;
     const firstName = getFirstName(appwriteName) ?? getFirstName(githubName);
 
-    const countQuery = await appwriteInitServer.databases.listDocuments(
-        APPWRITE_DB_INIT_ID,
-        APPWRITE_COL_INIT_ID
-    );
+    if (!githubTicket || !appwriteTicket) {
+        const countQuery = await appwriteInitServer.databases.listDocuments(
+            APPWRITE_DB_INIT_ID,
+            APPWRITE_COL_INIT_ID
+        );
 
-    const newDoc = await appwriteInitServer.databases.createDocument(
-        APPWRITE_DB_INIT_ID,
-        APPWRITE_COL_INIT_ID,
-        ID.unique(),
-        {
-            aw_email: appwriteEmail,
-            gh_user: githubLogin,
-            avatar_url: githubAvatar,
-            id: countQuery.total + 1,
-            name: firstName,
-            title: ''
-        }
-    );
+        const newDoc = await appwriteInitServer.databases.createDocument(
+            APPWRITE_DB_INIT_ID,
+            APPWRITE_COL_INIT_ID,
+            ID.unique(),
+            {
+                aw_email: appwriteEmail,
+                gh_user: githubLogin,
+                avatar_url: githubAvatar,
+                id: countQuery.total + 1,
+                name: firstName,
+                title: ''
+            }
+        );
 
-    return newDoc as unknown as TicketDoc;
+        return newDoc as unknown as TicketDoc;
+    }
 };
 
 export const getTicketDocById = async (id: string) => {

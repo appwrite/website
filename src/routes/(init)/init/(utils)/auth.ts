@@ -53,9 +53,10 @@ export interface GithubUser {
 export const getGithubUser = async () => {
     try {
         const identitiesList = await appwriteInit.account.listIdentities();
+
         if (!identitiesList.total) return null;
         const identity = identitiesList.identities[0];
-        const { providerAccessToken, provider } = identity;
+        const { providerAccessToken, provider, providerEmail } = identity;
         if (provider !== 'github') return null;
 
         const res = await fetch('https://api.github.com/user', {
@@ -70,7 +71,7 @@ export const getGithubUser = async () => {
             .then((user) => ({
                 login: user.login,
                 name: user.name,
-                email: user.email,
+                email: providerEmail,
                 avatar_url: user.avatar_url
             }));
 
