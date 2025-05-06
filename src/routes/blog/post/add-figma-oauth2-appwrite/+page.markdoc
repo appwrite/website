@@ -34,15 +34,15 @@ Click **"Create a new app"** in the top right.
 
 You'll be asked to fill in a few details:
 
-- **Name** – This will be shown to users during login.
-- **Website** – A link to your app or landing page.
-- **Logo** – Optional, but it helps users recognize your app in the consent screen.
+- **Name** - This will be shown to users during login.
+- **Website** - A link to your app or landing page.
+- **Logo** - Optional, but it helps users recognize your app in the consent screen.
 
-![Screenshot 2025-04-24 at 23.14.36.png](attachment:768117ed-e967-49b5-8f2e-c85d7373ddc8:Screenshot_2025-04-24_at_23.14.36.png)
+![Figma Create App](/images/blog/add-figma-oauth2-appwrite/figma-create-app.png)
 
 Once you save the app, Figma will show your **Client ID** and **Client Secret**. These are the credentials you'll need to complete the setup in Appwrite.
 
-![Screenshot 2025-04-24 at 23.19.02.png](attachment:cbeea554-a78b-4a05-9682-f89f4dabf21e:4ecee42c-47aa-4f0f-ab2f-25de5b0f0d2b.png)
+![Figma Client ID and Secret](/images/blog/add-figma-oauth2-appwrite/figma-client-id-info.png)
 
 Take a moment to copy both values. The **Client Secret** is shown only once, so make sure to save it somewhere you can reference later.
 
@@ -70,7 +70,7 @@ Copy the Redirect URI and return to your Figma app configuration. Under **OAuth 
 
 Once that's done, head back to Appwrite, paste in your **Client ID** and **Client Secret**, enable the toggle, and click **Update**.
 
-![Screenshot 2025-04-24 at 23.13.06.png](attachment:97321ecd-39f2-4d59-9166-9800c1892b99:Screenshot_2025-04-24_at_23.13.06.png)
+![Appwrite Figma Provider](/images/blog/add-figma-oauth2-appwrite/appwrite-figma-oauth-screen.png)
 
 At this point, Figma is connected to your Appwrite backend.
 
