@@ -1,6 +1,6 @@
 import { redirect } from '@sveltejs/kit';
 
-import { getTicketDocByUser } from '../../(utils)/tickets';
+import { createNewTicket, getTicketByUser } from '../../(utils)/tickets';
 import { getTicketContributions } from '../../(utils)/contributions';
 import { cookieKey, getInitUser, type GithubUser } from '../../(utils)/auth';
 import type { Actions } from './$types';
@@ -12,12 +12,15 @@ import { Query } from 'node-appwrite';
 
 export const load = async () => {
     const user = await getInitUser();
+    const ticket = await getTicketByUser(user);
 
     if (!user.github) {
         redirect(307, '/init');
     }
 
-    const ticket = await getTicketDocByUser(user);
+    if (!ticket) {
+        await createNewTicket(user);
+    }
 
     return {
         ticket,

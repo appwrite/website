@@ -1,4 +1,4 @@
-import { getTicketDocById, getTicketDocByUser } from '../../(utils)/tickets';
+import { getTicketDocById, getTicketByUser } from '../../(utils)/tickets';
 import { error } from '@sveltejs/kit';
 import { getTicketContributions } from '../../(utils)/contributions';
 import { getInitUser } from '../../(utils)/auth';
@@ -9,7 +9,7 @@ export const load = async ({ params }) => {
     try {
         const user = await getInitUser();
 
-        const userTicket = await getTicketDocByUser(user);
+        const userTicket = await getTicketByUser(user);
         const isCurrentUsersTicket = userTicket.$id === params.id;
 
         const ticket = await getTicketDocById(params.id);
