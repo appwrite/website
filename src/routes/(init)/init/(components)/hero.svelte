@@ -17,7 +17,9 @@
 
     const handleLogin = () => {
         claiming = true;
-        loginGithub();
+        loginGithub().then(() => {
+            console.log('create ticket here');
+        });
     };
 </script>
 

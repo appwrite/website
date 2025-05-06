@@ -18,10 +18,6 @@ export const load = async () => {
         redirect(307, '/init');
     }
 
-    if (!ticket) {
-        await createNewTicket(user);
-    }
-
     return {
         ticket,
         user,
