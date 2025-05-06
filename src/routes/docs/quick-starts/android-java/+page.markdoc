@@ -92,7 +92,7 @@ Find your project's ID in the **Settings** page.
 Create a new file `AppwriteHelper.java` and add the following code to it, replacing `<PROJECT_ID>` with your project ID.
 
 ```java
-package YOUR_ROOT_PACKAGE_HERE;
+package <YOUR_ROOT_PACKAGE_HERE>;
 
 import android.content.Context;
 
