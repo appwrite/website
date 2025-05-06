@@ -87,12 +87,14 @@ export const getGithubUser = async () => {
     }
 };
 
-export async function getAppwriteUser(): Promise<AppwriteUser | null> {
-    return await appwriteInitServer.account
+export const getAppwriteUser = async (): Promise<AppwriteUser | null> => {
+    const appwriteUser = await appwriteInit.account
         .get()
         .then((res) => res)
-        .catch(() => null);
-}
+        .catch((e) => null);
+
+    return appwriteUser;
+};
 
 export type User = {
     github: GithubUser | null;

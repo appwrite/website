@@ -10,17 +10,21 @@ type SendToUserListArgs = {
 };
 
 const sendToUserList = async ({ name, email, userId }: SendToUserListArgs) => {
-    await fetch('https://growth.appwrite.io/v1/mailinglists/init-3.0', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            email,
-            name,
-            userId
-        })
-    });
+    try {
+        await fetch('https://growth.appwrite.io/v1/mailinglists/init-3.0', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                email,
+                name,
+                userId
+            })
+        });
+    } catch (e) {
+        console.error('Error sending to user list', e);
+    }
 };
 
 export const getTicketByUser = async (user: User) => {
@@ -61,8 +65,8 @@ export const createNewTicket = async (user: User) => {
     const appwriteName = user.appwrite?.name;
 
     // Send request details to user list for growth in production
-    if (NODE_ENV === 'product' && githubEmail) {
-        sendToUserList({
+    if (NODE_ENV === 'production' && githubEmail && appwriteId) {
+        await sendToUserList({
             name: appwriteName ?? githubName ?? githubEmail,
             email: appwriteEmail ?? githubEmail,
             userId: appwriteId ?? ''
@@ -89,7 +93,7 @@ export const createNewTicket = async (user: User) => {
     const getFirstName = (fullName?: string) => fullName?.split(' ')[0] ?? undefined;
     const firstName = getFirstName(appwriteName) ?? getFirstName(githubName);
 
-    if (!githubTicket || !appwriteTicket) {
+    if (!githubTicket?.total || !appwriteTicket?.total) {
         const countQuery = await appwriteInitServer.databases.listDocuments(
             APPWRITE_DB_INIT_ID,
             APPWRITE_COL_INIT_ID
