@@ -37,8 +37,6 @@
         saved: false
     });
 
-    let isModified = $derived(!isDeepEqual(originalTicketData, updatedTicketData));
-
     $effect(() => {
         if (formState.saved) {
             const timeout = setTimeout(() => {
@@ -211,6 +209,7 @@
             <div class="flex flex-col items-center gap-4 uppercase">
                 <TicketCard
                     {...data.ticket}
+                    contributions={data.streamed.contributions}
                     sticker={updatedTicketData.sticker}
                     disableEffects
                     flipped

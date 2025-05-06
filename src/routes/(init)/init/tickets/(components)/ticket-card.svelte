@@ -14,7 +14,7 @@
         stickerPack?: string[];
         editing?: boolean;
         $id?: string;
-        contributions?: NonNullable<Awaited<Promise<ContributionsMatrix>>>[number];
+        contributions?: Promise<ContributionsMatrix>;
     };
 
     let {
@@ -218,21 +218,24 @@
 
                         {#if contributions}
                             <div class="grid w-full grid-cols-52 grid-rows-7 gap-0.5">
-                                {#each contributions as level, i}
-                                    <div class="flex gap-1">
-                                        <div
-                                            class={classNames(
-                                                'size-1 shrink-0 rounded-[1px] bg-white',
-                                                {
-                                                    'opacity-20': level === 1,
-                                                    'opacity-40': level === 2,
-                                                    'opacity-64': level === 3,
-                                                    'opacity-80': level === 4
-                                                }
-                                            )}
-                                        ></div>
-                                    </div>
-                                {/each}
+                                {#await contributions then c}
+                                    {#each c as l, i}
+                                        {#each l as level}
+                                            <div class="flex gap-1">
+                                                <div
+                                                    class={classNames(
+                                                        'size-1 shrink-0 rounded-[1px] bg-white',
+                                                        {
+                                                            'opacity-20': level === 1,
+                                                            'opacity-40': level === 2,
+                                                            'opacity-64': level === 3,
+                                                            'opacity-80': level === 4
+                                                        }
+                                                    )}
+                                                ></div>
+                                            </div>
+                                        {/each}
+                                    {/each}{/await}
                             </div>
                         {/if}
                     </div>

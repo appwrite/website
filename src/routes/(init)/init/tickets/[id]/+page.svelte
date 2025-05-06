@@ -151,7 +151,11 @@
         <div
             class="border-offset flex flex-col items-center justify-center border-x-2 border-dashed bg-black/24 py-8 md:col-span-6"
         >
-            <TicketCard {stickerPack} {...data.ticket} />
+            <TicketCard
+                {stickerPack}
+                {...data.ticket}
+                contributions={data.streamed.contributions}
+            />
 
             {#if data.isCurrentUsersTicket}
                 <Button

@@ -5,7 +5,7 @@ import { appwriteInitServer } from './appwrite.server';
 import type { TicketData } from './tickets';
 import { z } from 'zod';
 
-const contributionsSchema = z.array(z.array(z.number())).nullable();
+const contributionsSchema = z.array(z.array(z.number()));
 export type ContributionsMatrix = z.infer<typeof contributionsSchema>;
 
 const normalizeContributionMatrix = (matrix: number[][]) => {
@@ -51,7 +51,7 @@ export const getTicketContributions = async (id: string) => {
             id
         )) as unknown as TicketData;
 
-        if (!gh_user) return null;
+        if (!gh_user) return [];
 
         if (contributions?.length) {
             matrix = contributions.reduce((acc: number[][], curr: number, i: number) => {
@@ -66,7 +66,7 @@ export const getTicketContributions = async (id: string) => {
         const root = parseHTML(html, 'text/html');
         const table = root.document.querySelector('table.ContributionCalendar-grid');
 
-        if (!table) return null;
+        if (!table) return [];
 
         const rows = table.querySelectorAll('tbody tr');
         const maxCols = rows[0].querySelectorAll('[role="gridcell"]').length;
