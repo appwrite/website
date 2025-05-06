@@ -14,7 +14,7 @@ Figma's API opens up some interesting doors, such as automating workflows, synci
 
 We'll cover both the configuration and the actual login flow, then show how to securely access Figma's API on behalf of the user. You won't need any server-side code because Appwrite handles the OAuth2 flow for you, and sessions are maintained like any other login provider.
 
-## Understanding the OAuth flow in Appwrite
+# Understanding the OAuth flow in Appwrite
 
 When a user attempts to sign in with Figma, Appwrite starts a standard OAuth2 flow:
 
@@ -26,7 +26,7 @@ When a user attempts to sign in with Figma, Appwrite starts a standard OAuth2 fl
 
 The access token is used to make requests to Figma's API. Appwrite also stores the refresh token and allows you to renew the access token when it expires. This is optional and only necessary if you continue to use Figma's API beyond the initial login.
 
-## Creating your OAuth app in Figma
+# Creating your OAuth app in Figma
 
 To connect your Appwrite project to Figma, the first step is to register your app on the [Figma Developer Portal](https://www.figma.com/developers/apps). This allows you to request access to a user's Figma data through OAuth2.
 
@@ -50,7 +50,7 @@ Now that the app is registered, find it in your list of apps and click to open i
 
 Keep this tab open. We'll come right back to it.
 
-## Enabling Figma as a provider in Appwrite
+# Enabling Figma as a provider in Appwrite
 
 Now let's switch over to Appwrite.
 
@@ -74,7 +74,7 @@ Once that's done, head back to Appwrite, paste in your **Client ID** and **Clien
 
 At this point, Figma is connected to your Appwrite backend.
 
-## Logging in from your frontend
+# Logging in from your frontend
 
 Once Figma is enabled as a provider, you can trigger a login using the Appwrite SDK. Here's an example using the JavaScript SDK in a React app:
 
@@ -99,7 +99,7 @@ function signInWithFigma() {
 
 This will redirect the user to Figma's consent screen. Once they log in and approve access, they'll be returned to your app with an active Appwrite session.
 
-## Calling the Figma API (if needed)
+# Calling the Figma API (if needed)
 
 If your app just needs Figma for login, you don't have to think about the Figma token again. Appwrite already pulled the identity info (name, email, etc.) when the session was created.
 
@@ -128,13 +128,13 @@ async function getFigmaFiles() {
 
 The `updateSession()` call silently refreshes the Figma token using the stored refresh token. Your user remains logged in to your app, so they won't see any interruptions.
 
-## What happens when the Figma token expires?
+# What happens when the Figma token expires?
 
 Appwrite keeps the user logged in with their Appwrite session. Even after Figma's access token expires, your app's session remains valid. The only thing that stops working is the ability to make requests to Figma's API.
 
 So if your app never talks to Figma again, you don't have to refresh anything. But if you need to access the API after the token has expired, calling `updateSession()` is the way to renew it.
 
-## Common issues to watch for
+# Common issues to watch for
 
 **Redirect URI mismatch**
 If the redirect URI you added in Figma doesn't match exactly what Appwrite is using, including protocol, port, or trailing slashes, Figma will reject the login with a `redirect_uri mismatch` error.
@@ -148,7 +148,7 @@ That's expected if the token has expired. Just call `updateSession('current')` b
 **Scope mismatch**
 Make sure the scopes you request in `createOAuth2Session()` match what you enabled in Figma. Otherwise, Figma will block the request.
 
-## Logging out
+# Logging out
 
 To log the user out and remove access to their Figma account:
 
@@ -158,7 +158,7 @@ await account.deleteSession('current')
 
 This clears both the Appwrite session and the associated access and refresh tokens.
 
-## Final thoughts
+# Final thoughts
 
 You don't need a custom backend to support "Sign in with Figma." Appwrite gives you a simple way to plug in Figma as an OAuth2 provider, handle authentication, and optionally access the Figma API, all with session management handled for you.
 
@@ -166,7 +166,7 @@ If you're only using Figma for sign-in, your work is done once the session is cr
 
 If you have any questions or run into any issues, feel free to reach out to the team through the [Appwrite Discord server](https://appwrite.io/discord).
 
-## Further reading
+# Further reading
 
 - [Appwrite OAuth2 docs](https://appwrite.io/docs/client/auth#oauth2)
 - [Figma API docs](https://www.figma.com/developers/api)
