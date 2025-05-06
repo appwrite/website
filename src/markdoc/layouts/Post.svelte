@@ -119,7 +119,7 @@
 </svelte:head>
 
 <Main>
-    <div class="py-10">
+    <div class="pt-10">
         <div class="container">
             <Breadcrumbs {title} />
             <article class="grid grid-cols-1 gap-4 lg:grid-cols-12">
