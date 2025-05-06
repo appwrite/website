@@ -224,7 +224,7 @@
                                             <div class="flex gap-1">
                                                 <div
                                                     class={classNames(
-                                                        'size-1 shrink-0 rounded-[1px] bg-white',
+                                                        'contribution size-1 shrink-0 rounded-[1px]',
                                                         {
                                                             'opacity-20': level === 1,
                                                             'opacity-40': level === 2,
@@ -275,3 +275,19 @@
         Flip
     </div>
 </button>
+
+<style>
+    .contribution {
+        --bg-color: 0, 0%, 100%;
+        animation: fade-contributions 0.5s ease-in-out forwards;
+    }
+
+    @keyframes fade-contributions {
+        from {
+            background: hsla(var(--bg-color) / 0);
+        }
+        to {
+            background: hsla(var(--bg-color) / 1);
+        }
+    }
+</style>
