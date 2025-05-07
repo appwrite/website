@@ -5,15 +5,13 @@ import { createInitServerClient } from '../(utils)/appwrite';
 import { createNewTicket, getTicketByUser } from '../(utils)/tickets';
 
 export const load = async ({ url, cookies, locals }) => {
-    const { account } = createInitServerClient();
-
     const secret = url.searchParams.get('secret');
     const userId = url.searchParams.get('userId');
 
     const createTicket = await createNewTicket(locals.initUser);
 
     if (userId || secret) {
-        const session = await account.createSession(userId!, secret!);
+        const session = await locals.account.createSession(userId!, secret!);
 
         cookies.set(cookieKey, session.secret, {
             sameSite: 'strict',
