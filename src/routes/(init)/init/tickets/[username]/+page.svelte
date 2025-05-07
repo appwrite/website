@@ -5,9 +5,9 @@
     import { Button, Icon } from '$lib/components/ui';
     import { createCopy } from '$lib/utils/copy';
     import TicketCard from '../(components)/ticket-card.svelte';
-    import { loginGithub } from '../../(utils)/github';
     import { stickerPack } from '../customize/+page.svelte';
     import { initDates } from '../../+page.svelte';
+    import { enhance } from '$app/forms';
 
     const { data } = $props();
 
@@ -19,11 +19,6 @@
     const { copied, copy } = createCopy(page.url.href);
 
     let claiming = $state<boolean>(false);
-
-    const handleLogin = () => {
-        claiming = true;
-        loginGithub();
-    };
 
     const shareTextOptions = [
         `Join us during the week of ${initDates} to celebrate everything new with @appwrite. Claim your ticket here 👇 ${ticketUrl}`,
@@ -132,13 +127,22 @@
                                 Share
                             </Button>
                         {:else}
-                            <Button onclick={handleLogin} class="w-1/2!" disabled={claiming}>
-                                {#if claiming}
-                                    <Spinner />
-                                {:else}
-                                    <Icon name="github" class="text-primary" />
-                                {/if}Register with GitHub</Button
+                            <form
+                                action="?/oauth"
+                                method="post"
+                                use:enhance={async () => {
+                                    claiming = true;
+                                }}
                             >
+                                <Button class="w-1/2!" disabled={claiming}>
+                                    {#if claiming}
+                                        <Spinner />
+                                    {:else}
+                                        <Icon name="github" class="text-primary" />
+                                    {/if}Claim your TIcket</Button
+                                >
+                            </form>
+
                             <Button href="/init" variant="secondary" class="w-1/2!"
                                 >Go to Init</Button
                             >

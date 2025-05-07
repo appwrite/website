@@ -1,6 +1,5 @@
 // See https://kit.svelte.dev/docs/types#app
 
-import type { getInitUser } from '$routes/(init)/init/(utils)/auth';
 import type { Account } from 'node-appwrite';
 
 // for information about these interfaces

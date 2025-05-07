@@ -1,20 +1,25 @@
 import { redirect } from '@sveltejs/kit';
 
-import { createInitSession, isLoggedIn } from '../(utils)/auth';
-import { getTicketByUser } from '../(utils)/tickets';
+import { cookieKey } from '../(utils)/auth';
+import { createInitServerClient } from '../(utils)/appwrite';
 
 export const load = async ({ url, cookies, locals }) => {
+    const { account } = createInitServerClient();
     const secret = url.searchParams.get('secret');
     const userId = url.searchParams.get('userId');
 
-    const ticket = await getTicketByUser(locals.initUser);
-
-    if (secret && userId && !ticket) {
-        await createInitSession(userId, secret, cookies);
-        redirect(307, '/init/tickets/create');
-    } else if (await isLoggedIn()) {
-        redirect(307, '/init/tickets/customize');
+    if (!userId || !secret) {
+        throw new Error('Missing userId or secret');
     }
 
-    redirect(307, '/init');
+    const session = await account.createSession(userId, secret);
+
+    cookies.set(cookieKey, session.secret, {
+        sameSite: 'strict',
+        expires: new Date(session.expire),
+        secure: true,
+        path: '/'
+    });
+
+    redirect(307, '/init/tickets/create');
 };

@@ -2,7 +2,6 @@ import { APPWRITE_COL_INIT_ID, APPWRITE_DB_INIT_ID } from '$env/static/private';
 import sharp from 'sharp';
 import { getTicketSvg } from '../../../(utils)/get-ticket-svg.js';
 import { getTicketDocByUsername, type TicketData } from '$routes/(init)/init/(utils)/tickets.js';
-import { appwriteInitServer } from '$routes/(init)/init/(utils)/appwrite.server.js';
 
 export const GET = async ({ params }) => {
     const ticket = await getTicketDocByUsername(params.username);

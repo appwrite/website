@@ -1,7 +1,7 @@
 import { APPWRITE_DB_INIT_ID, APPWRITE_COL_INIT_ID, NODE_ENV } from '$env/static/private';
-import { appwriteInitServer } from '../(utils)/appwrite.server';
 import { Query, ID, type Models } from 'appwrite';
 import type { User } from './auth';
+import { createInitServerClient } from './appwrite';
 
 type SendToUserListArgs = {
     name: string;
@@ -28,15 +28,14 @@ const sendToUserList = async ({ name, email, userId }: SendToUserListArgs) => {
 };
 
 export const getTicketByUser = async (user: User) => {
+    const { databases } = createInitServerClient();
     const githubLogin = user.github?.login;
 
     if (!githubLogin) return null;
 
-    const githubAccount = await appwriteInitServer.databases.listDocuments(
-        APPWRITE_DB_INIT_ID,
-        APPWRITE_COL_INIT_ID,
-        [Query.equal('gh_user', githubLogin)]
-    );
+    const githubAccount = await databases.listDocuments(APPWRITE_DB_INIT_ID, APPWRITE_COL_INIT_ID, [
+        Query.equal('gh_user', githubLogin)
+    ]);
 
     const githubDoc = githubAccount?.documents[0] as unknown as TicketDoc;
 
@@ -46,6 +45,7 @@ export const getTicketByUser = async (user: User) => {
 };
 
 export const createNewTicket = async (user: User) => {
+    const { databases } = createInitServerClient();
     const githubLogin = user.github?.login;
     const githubEmail = user.github?.email;
     const githubName = user.github?.name;
@@ -65,22 +65,17 @@ export const createNewTicket = async (user: User) => {
     }
 
     if (!githubLogin) return;
-    const githubTicket = await appwriteInitServer.databases.listDocuments(
-        APPWRITE_DB_INIT_ID,
-        APPWRITE_COL_INIT_ID,
-        [Query.equal('gh_user', githubLogin)]
-    );
+    const githubTicket = await databases.listDocuments(APPWRITE_DB_INIT_ID, APPWRITE_COL_INIT_ID, [
+        Query.equal('gh_user', githubLogin)
+    ]);
 
     const getFirstName = (fullName?: string) => fullName?.split(' ')[0] ?? undefined;
     const firstName = getFirstName(appwriteName) ?? getFirstName(githubName);
 
     if (!githubTicket?.total) {
-        const countQuery = await appwriteInitServer.databases.listDocuments(
-            APPWRITE_DB_INIT_ID,
-            APPWRITE_COL_INIT_ID
-        );
+        const countQuery = await databases.listDocuments(APPWRITE_DB_INIT_ID, APPWRITE_COL_INIT_ID);
 
-        const newDoc = await appwriteInitServer.databases.createDocument(
+        const newDoc = await databases.createDocument(
             APPWRITE_DB_INIT_ID,
             APPWRITE_COL_INIT_ID,
             ID.unique(),
@@ -99,11 +94,10 @@ export const createNewTicket = async (user: User) => {
 };
 
 export const getTicketDocByUsername = async (username: string) => {
-    const tickets = await appwriteInitServer.databases.listDocuments(
-        APPWRITE_DB_INIT_ID,
-        APPWRITE_COL_INIT_ID,
-        [Query.equal('gh_user', username)]
-    );
+    const { databases } = createInitServerClient();
+    const tickets = await databases.listDocuments(APPWRITE_DB_INIT_ID, APPWRITE_COL_INIT_ID, [
+        Query.equal('gh_user', username)
+    ]);
 
     return tickets.documents[0] as unknown as TicketDoc;
 };

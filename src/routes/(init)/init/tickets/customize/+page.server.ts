@@ -3,9 +3,9 @@ import { redirect } from '@sveltejs/kit';
 import { getTicketByUser } from '../../(utils)/tickets';
 import { getTicketContributions } from '../../(utils)/contributions';
 import type { Actions } from './$types';
-import { appwriteInitServer } from '../../(utils)/appwrite.server';
 import { APPWRITE_COL_INIT_ID, APPWRITE_DB_INIT_ID } from '$env/static/private';
 import { Query } from 'node-appwrite';
+import { createInitServerClient } from '../../(utils)/appwrite';
 
 export const load = async ({ locals }) => {
     const ticket = await getTicketByUser(locals.initUser);
@@ -25,9 +25,10 @@ export const load = async ({ locals }) => {
 
 export const actions = {
     default: async ({ request, locals }) => {
+        const { databases } = createInitServerClient();
         const data = await request.formData();
 
-        const documentsList = await appwriteInitServer.databases.listDocuments(
+        const documentsList = await databases.listDocuments(
             APPWRITE_DB_INIT_ID,
             APPWRITE_COL_INIT_ID,
             [Query.equal('gh_user', locals.initUser.github!.login)]
@@ -37,15 +38,10 @@ export const actions = {
 
         const document = documentsList.documents[0];
 
-        await appwriteInitServer.databases.updateDocument(
-            APPWRITE_DB_INIT_ID,
-            APPWRITE_COL_INIT_ID,
-            document.$id,
-            {
-                name: data.get('name'),
-                title: data.get('title'),
-                sticker: Number(data.get('sticker'))
-            }
-        );
+        await databases.updateDocument(APPWRITE_DB_INIT_ID, APPWRITE_COL_INIT_ID, document.$id, {
+            name: data.get('name'),
+            title: data.get('title'),
+            sticker: Number(data.get('sticker'))
+        });
     }
 } satisfies Actions;

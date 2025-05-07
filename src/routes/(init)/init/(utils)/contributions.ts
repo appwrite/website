@@ -1,9 +1,9 @@
 import { APPWRITE_DB_INIT_ID, APPWRITE_COL_INIT_ID } from '$env/static/private';
 import { DOMParser, parseHTML } from 'linkedom';
 
-import { appwriteInitServer } from './appwrite.server';
 import type { TicketData } from './tickets';
 import { z } from 'zod';
+import { createInitServerClient } from './appwrite';
 
 const contributionsSchema = z.array(z.array(z.number()));
 export type ContributionsMatrix = z.infer<typeof contributionsSchema>;
@@ -42,10 +42,11 @@ const normalizeContributionMatrix = (matrix: number[][]) => {
 };
 
 export const getTicketContributions = async (id: string) => {
+    const { databases } = createInitServerClient();
     try {
         let matrix: ContributionsMatrix = [];
 
-        const { gh_user, contributions } = (await appwriteInitServer.databases.getDocument(
+        const { gh_user, contributions } = (await databases.getDocument(
             APPWRITE_DB_INIT_ID,
             APPWRITE_COL_INIT_ID,
             id
@@ -85,14 +86,9 @@ export const getTicketContributions = async (id: string) => {
             matrix[c] = matrix[c].reverse();
         }
 
-        await appwriteInitServer.databases.updateDocument(
-            APPWRITE_DB_INIT_ID,
-            APPWRITE_COL_INIT_ID,
-            id,
-            {
-                contributions: normalizeContributionMatrix(matrix).flat()
-            }
-        );
+        await databases.updateDocument(APPWRITE_DB_INIT_ID, APPWRITE_COL_INIT_ID, id, {
+            contributions: normalizeContributionMatrix(matrix).flat()
+        });
 
         return await contributionsSchema.parseAsync(normalizeContributionMatrix(matrix));
     } catch (e) {
