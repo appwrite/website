@@ -132,18 +132,11 @@ const bannerRewriter: Handle = async ({ event, resolve }) => {
 const initSession: Handle = async ({ event, resolve }) => {
     const session = await createInitSessionClient(event.cookies);
 
-    if (!session) {
-        const response = await resolve(event);
-
-        return response;
-    }
-
     const getGithubUser = async () => {
         try {
-            const identitiesList = await session.account.listIdentities();
-            console.log({ identitiesList });
+            const identitiesList = await session?.account.listIdentities();
 
-            if (!identitiesList.total) return null;
+            if (!identitiesList?.total) return null;
             const identity = identitiesList.identities[0];
             const { providerAccessToken, provider, providerEmail } = identity;
             if (provider !== 'github') return null;
@@ -165,7 +158,7 @@ const initSession: Handle = async ({ event, resolve }) => {
                 }));
 
             if (!res.login) {
-                await session.account.deleteSession('current');
+                await session?.account.deleteSession('current');
                 return null;
             }
 
@@ -177,12 +170,12 @@ const initSession: Handle = async ({ event, resolve }) => {
     };
 
     const getAppwriteUser = async (): Promise<AppwriteUser | null> => {
-        const appwriteUser = await session.account
+        const appwriteUser = await session?.account
             .get()
             .then((res) => res)
             .catch((e) => null);
 
-        return appwriteUser;
+        return appwriteUser || null;
     };
 
     const getInitUser = async () => {
@@ -191,7 +184,6 @@ const initSession: Handle = async ({ event, resolve }) => {
         return { github, appwrite };
     };
 
-    event.locals.initSession = await session?.account.get();
     event.locals.initUser = await getInitUser();
 
     const response = await resolve(event);

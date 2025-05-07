@@ -133,8 +133,9 @@
                                 use:enhance={async () => {
                                     claiming = true;
                                 }}
+                                class="w-1/2"
                             >
-                                <Button class="w-1/2!" disabled={claiming}>
+                                <Button class="w-full!" disabled={claiming}>
                                     {#if claiming}
                                         <Spinner />
                                     {:else}

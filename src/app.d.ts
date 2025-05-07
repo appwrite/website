@@ -21,7 +21,7 @@ declare global {
                 } | null;
                 appwrite: AppwriteUser | null;
             };
-            initSession: Models.User<Models.Preferences>;
+            account: Models.User<Models.Preferences>;
             nonce: string;
         }
     }
