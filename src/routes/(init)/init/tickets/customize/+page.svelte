@@ -46,8 +46,6 @@
         sticker: originalTicketData.sticker
     });
 
-    const isModified = $state(() => !isDeepEqual(originalTicketData, updatedTicketData));
-
     let formState = $state({
         editing: false,
         saving: false,
