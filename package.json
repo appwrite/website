@@ -107,8 +107,7 @@
         "vite-plugin-image-optimizer": "^1.1.8",
         "vite-plugin-manifest-sri": "^0.2.0",
         "vitest": "^3.1.1",
-        "zod": "^3.24.2",
-        "zod-form-data": "^2.0.7"
+        "zod": "^3.24.2"
     },
     "pnpm": {
         "onlyBuiltDependencies": [
