@@ -6,14 +6,15 @@
     type CustomizationDrawerProps = {
         children: Snippet;
         open: boolean;
+        onOpenChange: (open: boolean) => void;
     };
 
-    let { children, open }: CustomizationDrawerProps = $props();
+    let { children, open, onOpenChange }: CustomizationDrawerProps = $props();
 </script>
 
 <svelte:window onresize={() => (open = false)} />
 
-<Drawer.Root {open} onOpenChange={(open) => (open = !open)}>
+<Drawer.Root {open} {onOpenChange}>
     <Drawer.Trigger
         >{#snippet children()}
             <Button class="active:scale-98" variant="secondary">

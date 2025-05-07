@@ -21,7 +21,7 @@ export const load = async () => {
         ticket,
         user,
         streamed: {
-            contributions: getTicketContributions(ticket.$id)
+            contributions: getTicketContributions(ticket!.$id)
         }
     };
 };
