@@ -29,7 +29,6 @@
             form.requestSubmit();
             formState.drawerClosed = true;
             originalTicketData = updatedTicketData;
-            formState.saved = true;
             formState.saving = false;
         },
         { minQuietPeriodMs: 1000 }
@@ -50,20 +49,7 @@
     let formState = $state({
         editing: false,
         saving: false,
-        saved: false,
         drawerClosed: true
-    });
-
-    $effect(() => {
-        if (formState.saved) {
-            const timeout = setTimeout(() => {
-                formState.saved = false;
-            }, 2000);
-
-            return () => {
-                clearTimeout(timeout);
-            };
-        }
     });
 </script>
 
@@ -251,8 +237,6 @@
         <Button type="submit" class="w-full!" variant="secondary">
             {#if formState.saving}
                 Saving
-            {:else if formState.saved}
-                Saved
             {:else}
                 Save
             {/if}
