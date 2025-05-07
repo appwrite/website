@@ -8,6 +8,18 @@ Appwrite Sites allows you to host and deploy web applications directly within th
 
 While we recommend you create deployments through [automatic Git deployments](/docs/products/sites/deploy-from-git), you can also create deployments manually.
 
+# CLI  {% #cli %} 
+
+{% partial file="cli-sites.md" /%}
+
+## Configure CLI deployments {% #configure-cli-deployments %}
+If you need to target a different project, API endpoint, change the path or entry point of your site, or update any of the other configuration options, 
+you can do so by editing the `appwrite.json` file.
+
+{% arrow_link href="/docs/tooling/command-line/sites#appwritejson" %}
+Learn more about appwrite.json
+{% /arrow_link %}
+
 # Manual Deployment
 
 You can upload your sites to be deployed using the Appwrite Console. The example below shows a skeleton SvelteKit app.
