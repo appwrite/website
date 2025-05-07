@@ -1,11 +1,11 @@
 <script lang="ts">
     interface Props {
-        docId: string;
+        username: string;
     }
 
-    let { docId }: Props = $props();
+    let { username }: Props = $props();
 
-    const copyUrl = `https://appwrite.io/init/tickets/${docId}`;
+    const copyUrl = `https://appwrite.io/init/tickets/${username}`;
 </script>
 
 <div

@@ -146,11 +146,13 @@
 </script>
 
 <div class="relative">
-    <div class="border-smooth relative z-10 border-b bg-[#19191C]">
-        <div class="is-special-padding mx-auto">
-            <AnnouncementBanner />
+    {#if !page.url.pathname.includes('/init')}
+        <div class="border-smooth relative z-10 border-b bg-[#19191C]">
+            <div class="is-special-padding mx-auto">
+                <AnnouncementBanner />
+            </div>
         </div>
-    </div>
+    {/if}
 
     <section
         class="web-mobile-header {resolvedTheme}"

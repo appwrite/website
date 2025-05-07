@@ -1,10 +1,9 @@
 import { redirect } from '@sveltejs/kit';
 
-import { createNewTicket, getTicketByUser } from '../../(utils)/tickets';
+import { getTicketByUser } from '../../(utils)/tickets';
 import { getTicketContributions } from '../../(utils)/contributions';
 import { cookieKey, getInitUser, type GithubUser } from '../../(utils)/auth';
 import type { Actions } from './$types';
-import { zfd } from 'zod-form-data';
 import { appwriteInit } from '../../(utils)/appwrite';
 import { appwriteInitServer } from '../../(utils)/appwrite.server';
 import { APPWRITE_COL_INIT_ID, APPWRITE_DB_INIT_ID } from '$env/static/private';
@@ -27,15 +26,9 @@ export const load = async () => {
     };
 };
 
-const updateSchema = zfd.formData({
-    name: zfd.text(),
-    title: zfd.text().nullish(),
-    sticker: zfd.text().nullish()
-});
-
 export const actions = {
     default: async ({ request, cookies }) => {
-        const data = await updateSchema.parseAsync(await request.formData());
+        const data = await request.formData();
         const secret = cookies.get(cookieKey);
 
         if (!secret) return;
@@ -70,8 +63,9 @@ export const actions = {
             APPWRITE_COL_INIT_ID,
             document.$id,
             {
-                ...data,
-                sticker: Number(data.sticker)
+                name: data.get('name'),
+                title: data.get('title'),
+                sticker: Number(data.get('sticker'))
             }
         );
     }

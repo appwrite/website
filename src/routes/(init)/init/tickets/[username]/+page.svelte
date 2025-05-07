@@ -13,7 +13,7 @@
 
     let firstName = data.ticket?.name?.split(/\s/)[0] ?? '';
     let id = data.ticket?.id.toString().padStart(6, '0');
-    const ticketUrl = `${page.url.origin}/init/tickets/${data.ticket.$id}`;
+    const ticketUrl = `${page.url.origin}/init/tickets/${data.ticket.gh_user}`;
     const ogImage = `${ticketUrl}/og`;
 
     const { copied, copy } = createCopy(page.url.href);

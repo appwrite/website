@@ -14,7 +14,7 @@ export const load = async () => {
     }
 
     return {
-        ticketId: ticket.$id,
+        ticketId: ticket.gh_user,
         claimed: true
     };
 };

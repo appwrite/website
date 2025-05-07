@@ -49,9 +49,8 @@ export const getTicketByUser = async (user: User) => {
     ]);
 
     const githubDoc = githubAccount?.documents[0] as unknown as TicketDoc;
-    const appwriteDoc = appwriteAccount?.documents[0] as unknown as TicketDoc;
 
-    return githubDoc ?? appwriteDoc;
+    return githubDoc;
 };
 
 export const createNewTicket = async (user: User) => {
@@ -73,27 +72,17 @@ export const createNewTicket = async (user: User) => {
         });
     }
 
-    const [githubTicket, appwriteTicket] = await Promise.all([
-        githubLogin
-            ? appwriteInitServer.databases.listDocuments(
-                  APPWRITE_DB_INIT_ID,
-                  APPWRITE_COL_INIT_ID,
-                  [Query.equal('gh_user', githubLogin)]
-              )
-            : null,
-        appwriteEmail
-            ? appwriteInitServer.databases.listDocuments(
-                  APPWRITE_DB_INIT_ID,
-                  APPWRITE_COL_INIT_ID,
-                  [Query.equal('aw_email', appwriteEmail)]
-              )
-            : null
-    ]);
+    if (!githubLogin) return;
+    const githubTicket = await appwriteInitServer.databases.listDocuments(
+        APPWRITE_DB_INIT_ID,
+        APPWRITE_COL_INIT_ID,
+        [Query.equal('gh_user', githubLogin)]
+    );
 
     const getFirstName = (fullName?: string) => fullName?.split(' ')[0] ?? undefined;
     const firstName = getFirstName(appwriteName) ?? getFirstName(githubName);
 
-    if (!githubTicket?.total || !appwriteTicket?.total) {
+    if (!githubTicket?.total) {
         const countQuery = await appwriteInitServer.databases.listDocuments(
             APPWRITE_DB_INIT_ID,
             APPWRITE_COL_INIT_ID
@@ -117,18 +106,20 @@ export const createNewTicket = async (user: User) => {
     }
 };
 
-export const getTicketDocById = async (id: string) => {
-    return (await appwriteInitServer.databases.getDocument(
+export const getTicketDocByUsername = async (username: string) => {
+    const tickets = await appwriteInitServer.databases.listDocuments(
         APPWRITE_DB_INIT_ID,
         APPWRITE_COL_INIT_ID,
-        id
-    )) as unknown as Omit<TicketData, 'contributions'>;
+        [Query.equal('gh_user', username)]
+    );
+
+    return tickets.documents[0] as unknown as TicketDoc;
 };
 
 export type TicketData = Pick<Models.Document, '$id'> & {
     name: string;
     title?: string;
-    gh_user?: string;
+    gh_user: string;
     aw_email?: string;
     avatar_url?: string;
     id: number;

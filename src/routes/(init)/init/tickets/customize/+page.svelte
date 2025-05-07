@@ -120,7 +120,6 @@
                         type="text"
                         name="title"
                         class="bg-smooth border-offset w-full appearance-none rounded-lg border p-2"
-                        required
                     />
                 </div>
 
