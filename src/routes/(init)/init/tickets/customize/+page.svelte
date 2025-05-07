@@ -199,7 +199,7 @@
             <div
                 class="bg-smooth border-offset grid h-full flex-1 grid-cols-3 place-items-center gap-4 overflow-y-scroll rounded-lg border p-4 md:grid-cols-2"
             >
-                <div
+                <label
                     class={classNames(
                         'relative flex aspect-square w-full items-center justify-center rounded-[2px] border-black bg-black outline-2 outline-[var(--color-offset)] outline-dashed',
                         originalTicketData.sticker === null
@@ -212,17 +212,18 @@
                         class="absolute inset-0 appearance-none border-none"
                         name="sticker"
                         value=""
-                        onclick={() => (originalTicketData.sticker = null)}
+                        checked={originalTicketData.sticker === null}
+                        onchange={() => (originalTicketData.sticker = null)}
                     />
                     <div
                         class="text-tertiary font-aeonik-fono tracking-loose text-micro bg-smooth flex size-[calc(100%_-_6px)] items-center justify-center rounded-[1px] p-1 uppercase"
                     >
                         None
                     </div>
-                </div>
+                </label>
 
                 {#each stickerPack as s, i}
-                    <div
+                    <label
                         class={classNames(
                             'relative flex aspect-square w-full items-center justify-center rounded-sm bg-black outline-2 [outline-offset:-1px] transition outline-dashed',
                             originalTicketData.sticker === i
@@ -235,14 +236,15 @@
                             class="absolute inset-0 appearance-none border-none"
                             name="sticker"
                             value={i}
-                            onclick={() => (originalTicketData.sticker = i)}
+                            checked={originalTicketData.sticker === i}
+                            onchange={() => (originalTicketData.sticker = i)}
                         />
                         <div
                             class="bg-smooth flex size-[calc(100%_-_6px)] items-center justify-center rounded-[1px] p-1"
                         >
                             <img src={s} alt="Sticker" class="size-fit" />
                         </div>
-                    </div>
+                    </label>
                 {/each}
             </div>
         </div>
