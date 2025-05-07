@@ -19,7 +19,10 @@ export const GET = async ({ params }) => {
 
     return new Response(pngBuffer, {
         headers: {
-            'Content-Type': 'image/png'
+            'Content-Type': 'image/png',
+            'Cache-Control': 'public, max-age=31536000, immutable',
+            'Content-Disposition': `inline; filename="${params.username}.png"`,
+            'Content-Length': pngBuffer.byteLength.toString()
         }
     });
 };
