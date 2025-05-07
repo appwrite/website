@@ -37,7 +37,7 @@
 </svelte:head>
 
 <Main>
-    <div class="py-10">
+    <div class="pt-10">
         <div class="web-big-padding-section-level-2">
             <div class="container">
                 <a class="web-link web-u-color-text-secondary items-baseline" href="/blog">
