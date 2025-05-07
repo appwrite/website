@@ -104,6 +104,10 @@
                 {
                     label: 'Team invites',
                     href: '/docs/products/auth/team-invites'
+                },
+                {
+                    label: 'Multi-tenancy',
+                    href: '/docs/products/auth/multi-tenancy'
                 }
             ]
         },
