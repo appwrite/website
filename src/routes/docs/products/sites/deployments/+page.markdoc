@@ -50,19 +50,3 @@ After updating the configuration, redeploy your site for changes to take effect.
 3. Redeploy by clicking the triple-dots beside a deployment and hitting the **Redeploy** button.
 
 Redeployment behavior varies depending on how the initial deployment was created.
-
-# Instant rollback
-
-If a site needs to be reverted to a previously functional state for any reason (runtime errors, security flaw, etc.), you can head to the **Overview** tab of your site, click on the **Instant Rollback** button. 
-
-![Instant rollback](https://warm-tray-285.notion.site/image/attachment%3A781eee0c-2921-4baa-bb73-803120bde625%3Aimage.png?table=block&id=1c4fb53f-e82d-8021-b0bb-f69dfd2c7ba1&spaceId=cf760f55-c352-4759-b494-006b8b294dbb&width=1420&userId=&cache=v2)
-
-This will allow you to select a previously active, ready deployment to promote to currently active state.
-
-# Preview deployments
-
-If you create a new Pull Request on the GitHub repo for your site, Appwrite Sites will create a preview deployment that you can view and test before promoting to production.
-
-To access this preview deployment, navigate to the **Deployments** tab of your site and click on the **Visit** button. Appwrite Sites will then verify whether you are authorized to access the Appwrite project in which the site is deployed and allow you to access this preview accordingly.
-
-![Preview deployment](https://warm-tray-285.notion.site/image/attachment%3A670b195b-e4e5-4a38-bcdf-9d77f7cf417a%3Aimage.png?table=block&id=1b9fb53f-e82d-80ed-8e6d-d88d0442412e&spaceId=cf760f55-c352-4759-b494-006b8b294dbb&width=1420&userId=&cache=v2)

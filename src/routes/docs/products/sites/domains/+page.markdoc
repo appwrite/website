@@ -25,7 +25,7 @@ Additional to the site URL, Appwrite also generates a URL for the branch and com
 
 ![Branch and Commit URLs](https://warm-tray-285.notion.site/image/attachment%3Aaffbf4bd-be7f-481a-a6ec-4db9e1d49785%3Aimage.png?table=block&id=1cefb53f-e82d-805c-bcbe-f7784ac2ad8f&spaceId=cf760f55-c352-4759-b494-006b8b294dbb&width=1420&userId=&cache=v2)
 
-To find the branch and commit URLs of any deployment:
+To find the branch and commit URLs of any deployment, follow these steps:
 
 1. Navigate to your site on Appwrite Console.
 2. Head to the **Deployments** tab and click on any deployment.

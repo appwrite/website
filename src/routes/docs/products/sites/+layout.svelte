@@ -33,6 +33,14 @@
                     href: '/docs/products/sites/deployments'
                 },
                 {
+                    label: 'Previews',
+                    href: '/docs/products/sites/previews'
+                },
+                {
+                    label: 'Instant rollbacks',
+                    href: '/docs/products/sites/instant-rollbacks'
+                },
+                {
                     label: 'Logs',
                     href: '/docs/products/sites/logs'
                 },
