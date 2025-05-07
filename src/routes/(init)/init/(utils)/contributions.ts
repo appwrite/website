@@ -78,7 +78,9 @@ export const getTicketContributions = async (id: string) => {
             for (let r = 0; r < rows.length; r++) {
                 const cells = rows[r].querySelectorAll('[role="gridcell"]');
                 if (c >= cells.length) continue;
-                matrix[c].push(Number(cells[c].getAttribute('data-level')));
+                const dataLevel = cells[c].getAttribute('data-level');
+                if (dataLevel === '0') continue;
+                matrix[c].push(Number(dataLevel));
             }
             matrix[c] = matrix[c].reverse();
         }
