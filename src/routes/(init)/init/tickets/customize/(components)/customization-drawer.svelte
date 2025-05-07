@@ -16,7 +16,7 @@
 
 <Drawer.Root {open} {onOpenChange}>
     <Drawer.Trigger
-        >{#snippet children()}
+        >{#snippet child()}
             <Button class="active:scale-98" variant="secondary">
                 <Icon name="customize" />
                 Customize
