@@ -6,11 +6,7 @@ description: Learn how to setup and deploy SvelteKit apps on Appwrite Sites.
 
 {% section #step-1 step=1 title="Create SvelteKit app" %}
 
-{% info title="Important note" %}
-You can skip this step if you have developed a SvelteKit app already.
-
-If you prefer, you can also directly setup our [SvelteKit starter template](/docs/products/sites/templates) instead.
-{% /info %}
+First, you must either create a SvelteKit app or setup the [SvelteKit starter template](https://github.com/appwrite/templates-for-sites).
 
 Open your terminal, and run the following command.
 

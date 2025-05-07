@@ -6,11 +6,7 @@ description: Learn how to setup and deploy Next.js apps on Appwrite Sites.
 
 {% section #step-1 step=1 title="Create Next.js app" %}
 
-{% info title="Important note" %}
-You can skip this step if you have developed a Next.js app already.
-
-If you prefer, you can also directly setup our [Next.js starter template](/docs/products/sites/templates) instead.
-{% /info %}
+First, you must either create a Next.js app or setup the [Next.js starter template](https://github.com/appwrite/templates-for-sites).
 
 Open your terminal, and run the following command.
 

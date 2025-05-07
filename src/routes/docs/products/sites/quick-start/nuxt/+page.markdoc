@@ -6,11 +6,7 @@ description: Learn how to setup and deploy Nuxt apps on Appwrite Sites.
 
 {% section #step-1 step=1 title="Create Nuxt app" %}
 
-{% info title="Important note" %}
-You can skip this step if you have developed a Nuxt app already.
-
-If you prefer, you can also directly setup our [Nuxt starter template](/docs/products/sites/templates) instead.
-{% /info %}
+First, you must either create a Nuxt app or setup the [Nuxt starter template](https://github.com/appwrite/templates-for-sites).
 
 Open your terminal, and run the following command.
 

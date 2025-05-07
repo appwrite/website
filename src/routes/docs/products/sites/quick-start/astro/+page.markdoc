@@ -6,11 +6,7 @@ description: Learn how to setup and deploy Astro apps on Appwrite Sites.
 
 {% section #step-1 step=1 title="Create Astro app" %}
 
-{% info title="Important note" %}
-You can skip this step if you have developed an Astro app already.
-
-If you prefer, you can also directly setup our [Astro starter template](/docs/products/sites/templates) instead.
-{% /info %}
+First, you must either create an Astro app or setup the [Astro starter template](https://github.com/appwrite/templates-for-sites).
 
 Open your terminal, and run the following command.
 
