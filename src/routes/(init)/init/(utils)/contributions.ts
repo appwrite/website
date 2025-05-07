@@ -44,7 +44,7 @@ const normalizeContributionMatrix = (matrix: number[][]) => {
 export const getTicketContributions = async (id: string) => {
     const { databases } = createInitServerClient();
     try {
-        let matrix: ContributionsMatrix = [];
+        let matrix: number[][] = [];
 
         const { gh_user, contributions } = (await databases.getDocument(
             APPWRITE_DB_INIT_ID,
@@ -83,6 +83,23 @@ export const getTicketContributions = async (id: string) => {
                 matrix[c].push(Number(dataLevel));
             }
             matrix[c] = matrix[c].reverse();
+        }
+
+        matrix = matrix.map((col) => col.filter((val) => val !== 0));
+
+        matrix = matrix.map((col) => {
+            if (col.length > 7) return col.slice(0, 7);
+            if (col.length < 7) return [...col, ...Array(7 - col.length).fill(0)];
+            return col;
+        });
+
+        if (matrix.length > 52) {
+            matrix = matrix.slice(0, 52);
+        } else if (matrix.length < 52) {
+            const emptyCol = Array(7).fill(0);
+            while (matrix.length < 52) {
+                matrix.push([...emptyCol]);
+            }
         }
 
         await databases.updateDocument(APPWRITE_DB_INIT_ID, APPWRITE_COL_INIT_ID, id, {
