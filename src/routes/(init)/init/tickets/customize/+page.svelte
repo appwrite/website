@@ -3,7 +3,7 @@
 </script>
 
 <script lang="ts">
-    import { funnel, isDeepEqual } from 'remeda';
+    import { funnel } from 'remeda';
 
     import DevKeys from '../../(assets)/stickers/devkeys.webp';
     import Sites from '../../(assets)/stickers/sites.webp';

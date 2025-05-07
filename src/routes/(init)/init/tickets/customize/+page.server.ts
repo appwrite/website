@@ -12,14 +12,14 @@ import { Query } from 'node-appwrite';
 export const load = async () => {
     const user = await getInitUser();
     const ticket = await getTicketByUser(user);
+    const isCurrentUsersTicket = ticket?.gh_user === user.github?.login;
 
-    if (!user.github) {
+    if (!user.github || !isCurrentUsersTicket) {
         redirect(307, '/init');
     }
 
     return {
         ticket,
-        user,
         streamed: {
             contributions: getTicketContributions(ticket!.$id)
         }
