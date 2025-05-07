@@ -1,15 +1,12 @@
 import { getTicketDocByUsername, getTicketByUser } from '../../(utils)/tickets';
 import { error, redirect } from '@sveltejs/kit';
 import { getTicketContributions } from '../../(utils)/contributions';
-import { getInitUser } from '../../(utils)/auth';
 
 export const ssr = true;
 
-export const load = async ({ params }) => {
+export const load = async ({ params, locals }) => {
     try {
-        const user = await getInitUser();
-
-        const isCurrentUsersTicket = user.github?.login === params.username;
+        const isCurrentUsersTicket = locals.initUser.github?.login === params.username;
         const ticket = await getTicketDocByUsername(params.username);
 
         return {

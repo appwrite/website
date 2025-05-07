@@ -2,19 +2,17 @@ import { redirect } from '@sveltejs/kit';
 
 import { getTicketByUser } from '../../(utils)/tickets';
 import { getTicketContributions } from '../../(utils)/contributions';
-import { cookieKey, getInitUser, type GithubUser } from '../../(utils)/auth';
 import type { Actions } from './$types';
 import { appwriteInit } from '../../(utils)/appwrite';
 import { appwriteInitServer } from '../../(utils)/appwrite.server';
 import { APPWRITE_COL_INIT_ID, APPWRITE_DB_INIT_ID } from '$env/static/private';
 import { Query } from 'node-appwrite';
 
-export const load = async () => {
-    const user = await getInitUser();
-    const ticket = await getTicketByUser(user);
-    const isCurrentUsersTicket = ticket?.gh_user === user.github?.login;
+export const load = async ({ locals }) => {
+    const ticket = await getTicketByUser(locals.initUser);
+    const isCurrentUsersTicket = ticket?.gh_user === locals.initUser.github?.login;
 
-    if (!user.github || !isCurrentUsersTicket) {
+    if (!locals.initUser.github || !isCurrentUsersTicket) {
         redirect(307, '/init');
     }
 
@@ -27,31 +25,13 @@ export const load = async () => {
 };
 
 export const actions = {
-    default: async ({ request, cookies }) => {
+    default: async ({ request, locals }) => {
         const data = await request.formData();
-        const secret = cookies.get(cookieKey);
-
-        if (!secret) return;
-
-        const identitiesList = await appwriteInit.account.listIdentities();
-
-        if (!identitiesList.total) return;
-
-        const { providerAccessToken } = identitiesList.identities[0];
-
-        const res = await fetch('https://api.github.com/user', {
-            method: 'GET',
-            headers: {
-                Authorization: `Bearer ${providerAccessToken}`
-            }
-        });
-
-        const user = (await res.json()) as GithubUser;
 
         const documentsList = await appwriteInitServer.databases.listDocuments(
             APPWRITE_DB_INIT_ID,
             APPWRITE_COL_INIT_ID,
-            [Query.equal('gh_user', user.login)]
+            [Query.equal('gh_user', locals.initUser.github!.login)]
         );
 
         if (!documentsList.total) return;

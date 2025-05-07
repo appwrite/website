@@ -3,6 +3,7 @@ import redirects from './redirects.json';
 import { sequence } from '@sveltejs/kit/hooks';
 import { BANNER_KEY } from '$lib/constants';
 import { dev } from '$app/environment';
+import { getInitUser } from '$routes/(init)/init/(utils)/auth';
 
 const redirectMap = new Map(redirects.map(({ link, redirect }) => [link, redirect]));
 
@@ -22,7 +23,7 @@ const redirecter: Handle = async ({ event, resolve }) => {
 
 const securityheaders: Handle = async ({ event, resolve }) => {
     const nonce = Buffer.from(crypto.randomUUID()).toString('base64');
-    (event.locals as { nonce: string }).nonce = nonce;
+    event.locals.nonce = nonce;
 
     const response = await resolve(event, {
         transformPageChunk: ({ html }) => {
@@ -123,4 +124,12 @@ const bannerRewriter: Handle = async ({ event, resolve }) => {
     return response;
 };
 
-export const handle = sequence(redirecter, bannerRewriter, securityheaders);
+const initSession: Handle = async ({ event, resolve }) => {
+    event.locals.initUser = await getInitUser();
+
+    const response = await resolve(event);
+
+    return response;
+};
+
+export const handle = sequence(redirecter, bannerRewriter, securityheaders, initSession);
