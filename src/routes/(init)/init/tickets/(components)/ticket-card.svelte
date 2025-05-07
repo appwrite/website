@@ -160,7 +160,7 @@
                             </h3>
                             {#if title}
                                 <span
-                                    class="text-secondary font-aeonik-pro text-x-micro tracking-loose relative w-fit uppercase"
+                                    class="text-secondary font-aeonik-pro text-x-micro tracking-loose relative w-fit max-w-[32ch] overflow-hidden overflow-ellipsis whitespace-nowrap uppercase"
                                     >{title}
                                 </span>
                             {/if}
