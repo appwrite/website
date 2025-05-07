@@ -13,7 +13,7 @@
 
 <svelte:window onresize={() => (open = false)} />
 
-<Drawer.Root {open}>
+<Drawer.Root {open} onOpenChange={(open) => (open = !open)}>
     <Drawer.Trigger
         >{#snippet children()}
             <Button class="active:scale-98" variant="secondary">
@@ -25,9 +25,11 @@
 
     <Drawer.Portal>
         <Drawer.Content
-            class="bg-greyscale-900 fixed inset-x-0 bottom-0 z-20 flex max-h-[65%] flex-col overflow-hidden rounded-t-2xl p-6"
+            class="bg-greyscale-900 fixed inset-0 top-50 isolate z-20 flex max-h-svh flex-col rounded-t-2xl p-6"
         >
-            <div class="mx-auto flex w-full max-w-md flex-col rounded-t-[10px] p-4">
+            <div
+                class="mx-auto flex h-fit max-h-screen w-full max-w-md flex-col rounded-t-[10px] p-4"
+            >
                 {@render children()}
             </div>
         </Drawer.Content>
