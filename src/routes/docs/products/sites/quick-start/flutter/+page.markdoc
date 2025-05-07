@@ -6,7 +6,6 @@ description: Learn how to setup and deploy Flutter Web apps on Appwrite Sites.
 
 {% section #step-1 step=1 title="Create Flutter Web app" %}
 
-{% info title="Important note" %}
 First, you must either create a Flutter Web app or setup the [Flutter Web starter template](https://github.com/appwrite/templates-for-sites).
 
 Open your terminal, and run the following command.
