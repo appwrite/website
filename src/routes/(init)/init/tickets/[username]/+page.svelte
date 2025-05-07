@@ -83,7 +83,7 @@
             class="border-offset divide-offset grid place-items-center divide-y-2 divide-dashed border-r-2 border-l-2 border-dashed md:col-span-6 md:border-r-0"
         >
             <div class="row-span-2 hidden h-full w-full px-8 md:block"></div>
-            <div class="row-span-8 flex h-full w-full items-center px-8 py-6 md:px-12">
+            <div class="row-span-8 flex h-full w-full items-center px-4 py-6 md:px-12">
                 <div class="flex flex-1 flex-col gap-2">
                     <a href="/init" class="text-primary group mb-2 flex items-center gap-2">
                         <Icon
@@ -149,7 +149,7 @@
             <div class="row-span-2 h-full w-full px-8"></div>
         </div>
         <div
-            class="border-offset flex flex-col items-center justify-center border-x-2 border-dashed bg-black/24 py-8 md:col-span-6"
+            class="border-offset flex flex-col items-center justify-center border-x-2 border-dashed bg-black/24 px-4 py-8 md:col-span-6"
         >
             <TicketCard
                 {stickerPack}
