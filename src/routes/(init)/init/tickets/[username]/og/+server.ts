@@ -18,9 +18,9 @@ export const GET = async ({ params }) => {
         .toFormat('png')
         .toBuffer();
 
-    return new Response(svgBuffer, {
+    return new Response(pngBuffer, {
         headers: {
-            'Content-Type': 'text/xml'
+            'Content-Type': 'image/png'
         }
     });
 };

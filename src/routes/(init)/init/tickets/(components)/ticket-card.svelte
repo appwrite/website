@@ -198,7 +198,7 @@
                                     <img
                                         src={stickerPack[sticker]}
                                         alt="Sticker"
-                                        class="h-auto w-3/4"
+                                        class="h-auto w-7/8"
                                     />
                                 </div>
                             </div>

@@ -107,7 +107,7 @@
                         Thank you for registering for Init. Share your ticket on social media to
                         enter the raffle to win limited edition swag.
                     </p>
-                    <div class="mt-4 flex items-center gap-4">
+                    <div class="mt-8 flex items-center gap-4">
                         {#if data.isCurrentUsersTicket}
                             <Button
                                 class="w-1/2! active:scale-98"

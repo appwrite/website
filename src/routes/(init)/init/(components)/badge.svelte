@@ -12,7 +12,7 @@
 
 <span
     class={classNames(
-        'font-aeonik-fono text-micro text-primary rounded-full bg-black px-3 py-0.5 uppercase outline-2 [outline-offset:-1px] outline-[var(--color-offset)] outline-dashed',
+        'font-aeonik-fono text-micro text-primary rounded-full bg-black px-1.5 py-1 uppercase outline-2 [outline-offset:-1px] outline-[var(--color-offset)] outline-dashed',
         className
     )}
 >
