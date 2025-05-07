@@ -208,7 +208,7 @@
                         class="border-offset mt-auto mb-0 rounded-md border-2 border-dashed bg-black p-2"
                     >
                         <div
-                            class="text-primary font-aeonik-fono tracking-loose text-x-micro border-offset mb-2 flex items-center justify-between border-b pb-2 uppercase"
+                            class="font-aeonik-fono tracking-loose text-x-micro border-offset mb-2 flex items-center justify-between border-b pb-2 uppercase"
                         >
                             <span>Init / {initDates}</span>
                             <span
