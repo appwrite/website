@@ -1,10 +1,21 @@
 import { PUBLIC_APPWRITE_ENDPOINT, PUBLIC_APPWRITE_PROJECT_INIT_ID } from '$env/static/public';
 import { Client, Account } from 'appwrite';
+import type { RequestEvent } from '../$types';
+import { cookieKey } from './auth';
+import type { Cookies } from '@sveltejs/kit';
 
-const client = new Client();
-client.setEndpoint(PUBLIC_APPWRITE_ENDPOINT).setProject(PUBLIC_APPWRITE_PROJECT_INIT_ID);
+export const createInitSessionClient = (cookies: Cookies) => {
+    const client = new Client();
+    client.setEndpoint(PUBLIC_APPWRITE_ENDPOINT).setProject(PUBLIC_APPWRITE_PROJECT_INIT_ID);
 
-export const appwriteInit = {
-    client,
-    account: new Account(client)
+    const session = cookies.get(cookieKey);
+    if (!session) {
+        throw new Error('No user session');
+    }
+
+    client.setSession(session);
+
+    return {
+        account: new Account(client)
+    };
 };

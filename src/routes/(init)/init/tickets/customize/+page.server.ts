@@ -3,7 +3,6 @@ import { redirect } from '@sveltejs/kit';
 import { getTicketByUser } from '../../(utils)/tickets';
 import { getTicketContributions } from '../../(utils)/contributions';
 import type { Actions } from './$types';
-import { appwriteInit } from '../../(utils)/appwrite';
 import { appwriteInitServer } from '../../(utils)/appwrite.server';
 import { APPWRITE_COL_INIT_ID, APPWRITE_DB_INIT_ID } from '$env/static/private';
 import { Query } from 'node-appwrite';

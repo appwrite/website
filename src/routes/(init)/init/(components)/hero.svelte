@@ -3,23 +3,18 @@
     import VideoDialog from '$lib/components/shared/dialog.svelte';
     import { Button, Icon } from '$lib/components/ui';
     import { classNames } from '$lib/utils/classnames';
-    import { loginGithub } from '../(utils)/github';
     import { initDates } from '../+page.svelte';
     import LockupImage from '../(assets)/lockup.png';
 
     import Badge from './badge.svelte';
     import Lockup from './lockup.svelte';
     import { type PageData } from '../$types';
+    import { enhance } from '$app/forms';
 
     type Props = {} & Omit<PageData, 'changelogEntries'>;
 
     let { claimed, ticketId }: Props = $props();
     let claiming: boolean = $state(false);
-
-    const handleLogin = () => {
-        claiming = true;
-        loginGithub();
-    };
 </script>
 
 <div
@@ -46,13 +41,21 @@
                         <Icon name="ticket" />Your Init ticket
                     </Button>
                 {:else}
-                    <Button onclick={handleLogin} disabled={claiming}>
-                        {#if claiming}
-                            <Spinner />
-                        {:else}
-                            <Icon name="github" />
-                        {/if}Claim your ticket</Button
+                    <form
+                        action="?/oauth"
+                        method="post"
+                        use:enhance={async () => {
+                            claiming = true;
+                        }}
                     >
+                        <Button type="submit" disabled={claiming}>
+                            {#if claiming}
+                                <Spinner />
+                            {:else}
+                                <Icon name="github" />
+                            {/if}Claim your ticket</Button
+                        >
+                    </form>
                 {/if}
                 <Button
                     href="https://www.producthunt.com/products/appwrite"

@@ -1,4 +1,3 @@
-import { appwriteInit } from '../(utils)/appwrite';
 import { type AppwriteUser } from '$lib/utils/console';
 import { appwriteInitServer } from './appwrite.server';
 import { PUBLIC_APPWRITE_PROJECT_INIT_ID } from '$env/static/public';
@@ -52,7 +51,7 @@ export interface GithubUser {
 
 export const getGithubUser = async () => {
     try {
-        const identitiesList = await appwriteInit.account.listIdentities();
+        const identitiesList = await appwriteInitServer.account.listIdentities();
 
         if (!identitiesList.total) return null;
         const identity = identitiesList.identities[0];
@@ -76,7 +75,7 @@ export const getGithubUser = async () => {
             }));
 
         if (!res.login) {
-            await appwriteInit.account.deleteSession('current');
+            await appwriteInitServer.account.deleteSession('current');
             return null;
         }
 
@@ -88,7 +87,7 @@ export const getGithubUser = async () => {
 };
 
 export const getAppwriteUser = async (): Promise<AppwriteUser | null> => {
-    const appwriteUser = await appwriteInit.account
+    const appwriteUser = await appwriteInitServer.account
         .get()
         .then((res) => res)
         .catch((e) => null);

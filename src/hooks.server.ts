@@ -1,9 +1,10 @@
-import type { Handle } from '@sveltejs/kit';
+import type { Handle, RequestEvent } from '@sveltejs/kit';
 import redirects from './redirects.json';
 import { sequence } from '@sveltejs/kit/hooks';
 import { BANNER_KEY } from '$lib/constants';
 import { dev } from '$app/environment';
-import { getInitUser } from '$routes/(init)/init/(utils)/auth';
+import { cookieKey, getInitUser } from '$routes/(init)/init/(utils)/auth';
+import { createInitSessionClient } from '$routes/(init)/init/(utils)/appwrite';
 
 const redirectMap = new Map(redirects.map(({ link, redirect }) => [link, redirect]));
 
@@ -125,7 +126,10 @@ const bannerRewriter: Handle = async ({ event, resolve }) => {
 };
 
 const initSession: Handle = async ({ event, resolve }) => {
+    const { account } = createInitSessionClient(event.cookies);
+
     event.locals.initUser = await getInitUser();
+    event.locals.initSession = await account.get();
 
     const response = await resolve(event);
 
