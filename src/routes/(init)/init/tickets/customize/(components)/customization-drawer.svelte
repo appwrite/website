@@ -29,7 +29,7 @@
             class="bg-greyscale-900 fixed inset-0 top-50 isolate z-20 flex max-h-svh flex-col rounded-t-2xl p-6"
         >
             <div
-                class="mx-auto flex h-fit max-h-screen w-full max-w-md flex-col rounded-t-[10px] p-4"
+                class="mx-auto flex h-fit max-h-screen w-full max-w-md flex-col overflow-scroll rounded-t-[10px] p-4"
             >
                 {@render children()}
             </div>
