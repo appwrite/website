@@ -9,8 +9,7 @@ export const load = async ({ params }) => {
     try {
         const user = await getInitUser();
 
-        const userTicket = await getTicketByUser(user);
-        const isCurrentUsersTicket = userTicket?.gh_user === params.username;
+        const isCurrentUsersTicket = user.github?.login === params.username;
         const ticket = await getTicketDocByUsername(params.username);
 
         return {
