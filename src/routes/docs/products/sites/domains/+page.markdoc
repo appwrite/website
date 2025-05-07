@@ -16,7 +16,7 @@ Each deployed site can have its own domain, which can be Appwrite-generated or c
 The domain usually has this format.
 
 ```bash
-https://64d4d22db370ae41a32e.sites.appwrite.global
+https://64d4d22db370ae41a32e.sites.appwrite.network
 ```
 
 ## Branch and Commit URLs
