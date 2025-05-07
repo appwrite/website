@@ -1,17 +1,18 @@
 ---
 layout: article
 title: Dev keys
-description: Test your applications in your development environment with Appwrite Dev keys.
+description: Bypass Appwrite rate limits and CORS errors in your development environment with Appwrite Dev keys.
 ---
 
-Dev keys are secrets used by Appwrite [Server SDKs](/docs/sdks#server) to prove their identity. Unlike API keys, they are meant to be used specifically in development environments, where they hold several developer experience-related benefits:
+Dev keys are secrets used by Appwrite [Client SDKs](/docs/sdks#client) to prove their identity. They are meant to be used specifically in development environments, where they hold several developer experience-related benefits:
 
-- Appwrite rate limits are bypassed
+- Appwrite rate limits and CORS errors are bypassed
 - Configurable expiration date with 1 day, 7 days, 30 day options as well as manual date selection
-- All services are permitted by default (no manual selection of scopes)
+
+This is highly beneficial in scenarios where you are repeatedly sending the same requests to Appwrite in a short period of time, such as manual or E2E testing and checks in your CI/CD pipeline.
 
 {% info title="Important note" %}
-Dev keys should never be used in production environments, only in development environments, as they allow the app to consume all Appwrite services and can bypass rate limits, making your app more susceptible to security breaches. For production environments, please using [API keys](/docs/advanced/platform/api-keys).
+Dev keys should never be used in production environments, only in development environments, as they can make your app more susceptible to abuse and security breaches.
 {% /info %}
 
 # Create dev key {% #create-dev-key %}
@@ -19,5 +20,63 @@ Dev keys should never be used in production environments, only in development en
 ![Create dev key](https://warm-tray-285.notion.site/image/attachment%3A3f828ec4-bc08-4a72-8222-b146240b0f7a%3Aimage.png?table=block&id=1defb53f-e82d-807a-bddd-e4090a66f714&spaceId=cf760f55-c352-4759-b494-006b8b294dbb&width=2000&userId=&cache=v2)
 
 To create a new API key, navigate to **Overview** > **Integration** > **Dev keys** and click **Create Dev key**.
+
+You can then implement the dev key while initializing the Appwrite client in your app.
+
+{% multicode %}
+```client-web
+import { Client } from "appwrite";
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<YOUR_PROJECT_ID>')
+    .setDevKey('<YOUR_DEV_KEY>'); // Your dev key
+```
+
+```client-flutter
+import 'package:appwrite/appwrite.dart';
+
+Client client = Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<YOUR_PROJECT_ID>')
+    .setDevKey('<YOUR_DEV_KEY>'); // Your dev key
+```
+
+```client-react-native
+import { Client } from "appwrite";
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<YOUR_PROJECT_ID>')
+    .setDevKey('<YOUR_DEV_KEY>'); // Your dev key
+```
+
+```client-apple
+import Appwrite
+
+let client = Client()
+    .setEndpoint("https://cloud.appwrite.io/v1")
+    .setProject("<YOUR_PROJECT_ID>")
+    .setDevKey("<YOUR_DEV_KEY>") // Your dev key
+```
+
+```client-android-kotlin
+import io.appwrite.Client
+
+val client = Client(context)
+    .setEndpoint("https://cloud.appwrite.io/v1")
+    .setProject("<YOUR_PROJECT_ID>")
+    .setDevKey("<YOUR_DEV_KEY>") // Your dev key
+```
+
+```client-android-java
+import io.appwrite.Client;
+
+Client client = new Client(context)
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<YOUR_PROJECT_ID>")
+    .setDevKey("<YOUR_DEV_KEY>"); // Your dev key
+```
+{% /multicode %}
 
 If you need to replace your dev key, create a new key, update your app credentials and, once ready, delete your old key.
