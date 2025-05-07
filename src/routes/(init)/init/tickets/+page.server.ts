@@ -6,6 +6,7 @@ import { createNewTicket, getTicketByUser } from '../(utils)/tickets';
 
 export const load = async ({ url, cookies, locals }) => {
     const { account } = createInitServerClient();
+
     const secret = url.searchParams.get('secret');
     const userId = url.searchParams.get('userId');
 

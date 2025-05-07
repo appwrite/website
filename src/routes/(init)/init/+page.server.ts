@@ -3,6 +3,7 @@ import { getTicketByUser } from './(utils)/tickets';
 import { OAuthProvider } from 'appwrite';
 import { Account, Client } from 'node-appwrite';
 import { PUBLIC_APPWRITE_ENDPOINT, PUBLIC_APPWRITE_PROJECT_INIT_ID } from '$env/static/public';
+import { loginGithub } from './(utils)/auth';
 
 export const prerender = false;
 
@@ -23,20 +24,7 @@ export const load = async ({ locals }) => {
 
 export const actions = {
     oauth: async (event) => {
-        const client = new Client();
-        client.setEndpoint(PUBLIC_APPWRITE_ENDPOINT).setProject(PUBLIC_APPWRITE_PROJECT_INIT_ID);
-
-        const githubInit = {
-            account: new Account(client)
-        };
-
-        const redirectUrl = await githubInit.account.createOAuth2Token(
-            OAuthProvider.Github,
-            `${event.url.origin}/init/tickets?success=1`,
-            `${event.url.origin}/init/tickets?error=1`,
-            ['read:user']
-        );
-
+        const redirectUrl = await loginGithub(event.url);
         redirect(302, redirectUrl);
     }
 } satisfies Actions;
