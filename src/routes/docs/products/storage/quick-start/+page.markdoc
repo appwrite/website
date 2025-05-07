@@ -117,6 +117,33 @@ To upload a file, add this to your app. For web apps, you can use the File objec
   }
   ```
 
+  ```client-react-native
+  import { Client, Storage, ID } from 'react-native-appwrite';
+
+  const client = new Client()
+      .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+      .setProject('<PROJECT_ID>');
+
+  const storage = new Storage(client);
+
+  const promise = storage.createFile(
+      '<BUCKET_ID>',
+      ID.unique(),
+      {
+          name: 'image.jpg',
+          type: 'image/jpeg',
+          size: 1234567,
+          uri: 'file:///path/to/file.jpg',
+      }
+  );
+
+  promise.then(function (response) {
+      console.log(response); // Success
+  }, function (error) {
+      console.log(error); // Failure
+  });
+  ```
+
   ```http
   POST /v1/storage/buckets/{bucketId}/files HTTP/1.1
   Content-Type: multipart/form-data; boundary="cec8e8123c05ba25"
@@ -243,5 +270,19 @@ class MainActivity : AppCompatActivity() {
         println(result); // Resource URL
     }
 }
+```
+
+```client-react-native
+import { Client, Storage } from 'react-native-appwrite';
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>');
+
+const storage = new Storage(client);
+
+const result = storage.getFileDownload('<BUCKET_ID>', '<FILE_ID>');
+
+console.log(result); // Resource URL
 ```
 {% /multicode %}

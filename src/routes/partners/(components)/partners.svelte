@@ -100,7 +100,7 @@
 
 <style>
     .animate {
-        animation: card-in 1200ms var(--transition-timing-function-spring) forwards;
+        animation: card-in 1200ms var(--easing-spring) forwards;
     }
     @keyframes card-in {
         0% {
