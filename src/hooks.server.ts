@@ -185,7 +185,6 @@ const initSession: Handle = async ({ event, resolve }) => {
     };
 
     event.locals.initUser = await getInitUser();
-    event.locals.account = await session?.account.get();
 
     const response = await resolve(event);
 

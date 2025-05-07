@@ -8,22 +8,19 @@ export const load = async ({ url, cookies, locals }) => {
     const secret = url.searchParams.get('secret');
     const userId = url.searchParams.get('userId');
 
-    const createTicket = await createNewTicket(locals.initUser);
+    const { account } = createInitServerClient();
 
-    if (userId || secret) {
-        const session = await locals.account.createSession(userId!, secret!);
+    if (!userId || !secret) redirect(307, '/init');
 
-        cookies.set(cookieKey, session.secret, {
-            sameSite: 'strict',
-            expires: new Date(session.expire),
-            secure: true,
-            path: '/'
-        });
+    const session = await account.createSession(userId, secret);
 
-        redirect(307, '/init/tickets/customize');
-    } else if (!createTicket) {
-        redirect(307, '/init/tickets/customize');
-    } else {
-        redirect(307, '/init');
-    }
+    await createNewTicket(locals.initUser);
+    cookies.set(cookieKey, session.secret, {
+        sameSite: 'strict',
+        expires: new Date(session.expire),
+        secure: true,
+        path: '/'
+    });
+
+    redirect(307, '/init/tickets/create');
 };
