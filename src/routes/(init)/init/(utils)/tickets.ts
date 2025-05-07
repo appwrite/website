@@ -2,6 +2,7 @@ import { APPWRITE_DB_INIT_ID, APPWRITE_COL_INIT_ID, NODE_ENV } from '$env/static
 import { Query, ID, type Models } from 'appwrite';
 import type { User } from './auth';
 import { createInitServerClient } from './appwrite';
+import { redirect } from '@sveltejs/kit';
 
 type SendToUserListArgs = {
     name: string;
@@ -75,22 +76,19 @@ export const createNewTicket = async (user: User) => {
     if (!githubTicket?.total) {
         const countQuery = await databases.listDocuments(APPWRITE_DB_INIT_ID, APPWRITE_COL_INIT_ID);
 
-        const newDoc = await databases.createDocument(
-            APPWRITE_DB_INIT_ID,
-            APPWRITE_COL_INIT_ID,
-            ID.unique(),
-            {
-                aw_email: appwriteEmail,
-                gh_user: githubLogin,
-                avatar_url: githubAvatar,
-                id: countQuery.total + 1,
-                name: firstName,
-                title: ''
-            }
-        );
+        await databases.createDocument(APPWRITE_DB_INIT_ID, APPWRITE_COL_INIT_ID, ID.unique(), {
+            aw_email: appwriteEmail,
+            gh_user: githubLogin,
+            avatar_url: githubAvatar,
+            id: countQuery.total + 1,
+            name: firstName,
+            title: ''
+        });
 
-        return newDoc as unknown as TicketDoc;
+        redirect(307, '/init/tickets/customize');
     }
+
+    redirect(307, '/init');
 };
 
 export const getTicketDocByUsername = async (username: string) => {

@@ -27,8 +27,8 @@ export const loginGithub = async (url: RequestEvent['url']) => {
 
     const redirectUrl = await githubInit.account.createOAuth2Token(
         OAuthProvider.Github,
-        `${url.origin}/init/tickets?success=1`,
-        `${url.origin}/init/tickets?error=1`,
+        `${url.origin}/init/tickets/validate-session?success=1`,
+        `${url.origin}/init/tickets/validate-session?error=1`,
         ['read:user']
     );
 
