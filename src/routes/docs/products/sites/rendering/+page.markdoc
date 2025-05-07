@@ -4,7 +4,7 @@ title: Rendering
 description: Explore how sites are rendered on Appwrite Sites.
 ---
 
-There are two rendering methods you can use to host your web app on Appwrite Sites.
+There are two rendering strategies you can use to host your web app on Appwrite Sites.
 
 {% cards %}
 
