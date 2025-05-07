@@ -54,3 +54,9 @@ Ensure the `entry.server.tsx` file uses `@remix-run/node` package.
 {% /tabsitem %}
 
 {% /tabs %}
+
+# Appwrite-specific environment variables
+
+You can [access several environment variables](/docs/products/sites/develop#accessing-environment-variables) pertaining to your Appwrite project in SSR apps.
+
+{% partial file="sites-env-vars.md" /%}
