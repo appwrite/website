@@ -16,8 +16,7 @@ export const load = async ({ url, cookies, locals }) => {
 
     await createNewTicket(locals.initUser);
     cookies.set(cookieKey, session.secret, {
-        sameSite: 'strict',
-        expires: new Date(session.expire),
+        httpOnly: true,
         secure: true,
         path: '/'
     });
