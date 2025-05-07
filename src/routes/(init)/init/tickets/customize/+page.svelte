@@ -18,6 +18,7 @@
     import { Button, Icon } from '$lib/components/ui';
     import { initDates } from '../../+page.svelte';
     import CustomizationDrawer from './(components)/customization-drawer.svelte';
+    import { goto } from '$app/navigation';
 
     let { data } = $props();
 
@@ -154,10 +155,7 @@
             formState.saving = true;
             return async ({ result }) => {
                 if (result.type === 'success') {
-                    formState.drawerClosed = true;
-                    originalTicketData = updatedTicketData;
-                    formState.saved = true;
-                    formState.saving = false;
+                    goto(`/init/tickets/${data.ticket?.gh_user}`);
                 }
             };
         }}

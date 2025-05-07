@@ -19,10 +19,10 @@
         className
     )}
 >
-    <div class="flex items-center justify-between px-1.5 pt-1 pb-2">
+    <div class="relative flex items-center justify-between px-1.5 pt-1 pb-2">
         {#if link}
             <span
-                class="font-aeonik-fono tracking-loose text-micro text-primary flex pl-2 uppercase"
+                class="font-aeonik-fono tracking-loose text-micro text-primary absolute flex pl-2 uppercase"
                 >{@render link()}</span
             >
         {:else}
