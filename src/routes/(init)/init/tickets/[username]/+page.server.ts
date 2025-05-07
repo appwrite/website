@@ -1,5 +1,5 @@
 import { getTicketDocByUsername, getTicketByUser } from '../../(utils)/tickets';
-import { error } from '@sveltejs/kit';
+import { error, redirect } from '@sveltejs/kit';
 import { getTicketContributions } from '../../(utils)/contributions';
 import { getInitUser } from '../../(utils)/auth';
 
@@ -10,8 +10,7 @@ export const load = async ({ params }) => {
         const user = await getInitUser();
 
         const userTicket = await getTicketByUser(user);
-        const isCurrentUsersTicket = userTicket.gh_user === params.username;
-
+        const isCurrentUsersTicket = userTicket?.gh_user === params.username;
         const ticket = await getTicketDocByUsername(params.username);
 
         return {

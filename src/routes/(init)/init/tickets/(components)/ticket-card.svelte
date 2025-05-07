@@ -204,44 +204,60 @@
                             </div>
                         {/if}
                     </div>
-                    <div
-                        class="border-offset mt-auto mb-0 rounded-md border-2 border-dashed bg-black p-2"
-                    >
-                        <div
-                            class="font-aeonik-fono tracking-loose text-x-micro border-offset mb-2 flex items-center justify-between border-b pb-2 uppercase"
-                        >
-                            <span>Init / {initDates}</span>
-                            <span
-                                >Ticket <span class="text-accent">#</span>{id
-                                    .toString()
-                                    .padStart(6, '0')}</span
-                            >
-                        </div>
 
-                        {#if contributions}
-                            <div class="grid h-10 w-full grid-cols-52 grid-rows-7 gap-0.5">
-                                {#await contributions then c}
-                                    {#each c as l, i}
-                                        {#each l as level}
-                                            <div class="flex gap-1">
-                                                <div
-                                                    class={classNames(
-                                                        'contribution size-1 shrink-0 rounded-[1px]',
-                                                        {
-                                                            'opacity-20': level === 1,
-                                                            'opacity-40': level === 2,
-                                                            'opacity-64': level === 3,
-                                                            'opacity-80': level === 4
-                                                        }
-                                                    )}
-                                                    style:--delay="{i * 0.0075}s"
-                                                ></div>
-                                            </div>
+                    {#if contributions}
+                        {#await contributions then c}
+                            {#if c}
+                                <div
+                                    class="border-offset mt-auto mb-0 rounded-md border-2 border-dashed bg-black p-2"
+                                >
+                                    <div
+                                        class="font-aeonik-fono tracking-loose text-x-micro border-offset flex items-center justify-between border-b pb-2 uppercase"
+                                    >
+                                        <span>Init / {initDates}</span>
+                                        <span>
+                                            Ticket <span class="text-accent">#</span>{id
+                                                .toString()
+                                                .padStart(6, '0')}
+                                        </span>
+                                    </div>
+                                    <div
+                                        class="mt-2 grid h-10 w-full grid-cols-52 grid-rows-7 gap-0.5"
+                                    >
+                                        {#each c as l, i}
+                                            {#each l as level}
+                                                <div class="flex gap-1">
+                                                    <div
+                                                        class={classNames(
+                                                            'contribution size-1 shrink-0 rounded-[1px]',
+                                                            {
+                                                                'opacity-20': level === 1,
+                                                                'opacity-40': level === 2,
+                                                                'opacity-64': level === 3,
+                                                                'opacity-80': level === 4
+                                                            }
+                                                        )}
+                                                        style:--delay="{i * 0.0075}s"
+                                                    ></div>
+                                                </div>
+                                            {/each}
                                         {/each}
-                                    {/each}{/await}
-                            </div>
-                        {/if}
-                    </div>
+                                    </div>
+                                </div>
+                            {:else}
+                                <div
+                                    class="font-aeonik-fono tracking-loose border-offset text-x-micro relative z-10 mt-auto mb-0 flex items-center justify-between rounded-lg border-2 border-dashed bg-black p-2 uppercase"
+                                >
+                                    <span>Init / {initDates}</span>
+                                    <span
+                                        >Ticket <span class="text-accent">#</span>{id
+                                            .toString()
+                                            .padStart(6, '0')}</span
+                                    >
+                                </div>
+                            {/if}
+                        {/await}
+                    {/if}
                 </div>
             </div>
             <!-- that sweet sweet glow-->
