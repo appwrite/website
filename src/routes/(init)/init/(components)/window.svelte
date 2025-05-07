@@ -48,31 +48,6 @@
                 >{@render title()}</span
             >
         {/if}
-
-        <svg
-            width="20"
-            height="20"
-            viewBox="0 0 20 20"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-        >
-            <rect
-                x="5.5498"
-                y="4.64645"
-                width="14"
-                height="1"
-                transform="rotate(45 5.5498 4.64645)"
-                fill="#E4E4E7"
-            />
-            <rect
-                x="4.5498"
-                y="14.6465"
-                width="14"
-                height="1"
-                transform="rotate(-45 4.5498 14.6465)"
-                fill="#E4E4E7"
-            />
-        </svg>
     </div>
 
     {@render children()}

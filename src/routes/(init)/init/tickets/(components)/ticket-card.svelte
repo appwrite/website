@@ -190,10 +190,10 @@
                     <div class="relative aspect-square">
                         {#if sticker !== null && typeof sticker !== 'undefined' && stickerPack && sticker in stickerPack}
                             <div
-                                class="flex aspect-square size-full items-stretch overflow-hidden rounded-[1px] border-black bg-black outline-2 [outline-offset:-1px] outline-[var(--color-offset)] outline-dashed"
+                                class="flex aspect-square size-full items-stretch overflow-hidden rounded-[6px] border-black bg-black outline-2 [outline-offset:-1px] outline-[var(--color-offset)] outline-dashed"
                             >
                                 <div
-                                    class="bg-smooth m-0.5 flex flex-1 items-center justify-center rounded-[1px] border border-white/32"
+                                    class="bg-smooth m-1 flex flex-1 items-center justify-center rounded-[2.5px] border border-white/32"
                                 >
                                     <img
                                         src={stickerPack[sticker]}

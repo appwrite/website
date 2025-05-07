@@ -23,24 +23,14 @@ const getLetterIndex = (chunks: Array<Array<string>>, letter: string) => {
     return null;
 };
 
-const avatars = [
-    'http://localhost:5173/images/avatars/aditya.png',
-    'http://localhost:5173/images/avatars/arman.png',
-    'http://localhost:5173/images/avatars/jesse.png',
-    'http://localhost:5173/images/avatars/chen.png',
-    'http://localhost:5173/images/avatars/damodar.png'
-];
-
 const alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('');
 const chunks = splitArrayIntoEvenChunks(alphabet, 9);
 
-const convertImageToDataUri = async (name: string, avatarUrl?: string) => {
+const convertImageToDataUri = async (name: string, avatarUrl: string) => {
     const firstLetter = name.split('')[0].toLowerCase();
-    const avatar = avatars[getLetterIndex(chunks, firstLetter) ?? 0];
-
     try {
         // Fetch the image
-        const response = await fetch(avatarUrl ?? avatar);
+        const response = await fetch(avatarUrl);
 
         if (!response.ok) {
             throw new Error(`Failed to fetch image: ${response.statusText}`);
@@ -64,9 +54,16 @@ const convertImageToDataUri = async (name: string, avatarUrl?: string) => {
 
 export const getTicketSvg = async (ticket: TicketData) => {
     const ticketNumber = getTicketNumber(ticket);
-    const firstName = ticket.name.split(' ')[0];
-    const title = ticket.title?.toUpperCase();
-    const avatar = await convertImageToDataUri(ticket.name, ticket.avatar_url);
+    const name = ticket.name.split(' ')[0];
+    const defaultTitle = ticket.title?.toUpperCase();
+    const avatar = await convertImageToDataUri(ticket.name, ticket.avatar_url!);
+
+    const firstName = name.length > 12 ? `${name.slice(0, 12)}...` : name;
+    const title =
+        defaultTitle && defaultTitle?.length > 24
+            ? `${defaultTitle.slice(0, 24)}...`
+            : defaultTitle;
+    const xValue = `${firstName.length * 15}`;
 
     return `
 <svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -814,14 +811,14 @@ ${avatar ? `<image href="${avatar}" x="665.652" y="458.026" width="55.9006" heig
 </g>
 </g>
 <text transform="translate(736.251 463.469) rotate(4.63183)" fill="#E4E4E7" xml:space="preserve" style="white-space: pre" font-family="Aeonik Pro" font-size="29.8137" letter-spacing="-0.014em"><tspan x="0" y="27.6522">${firstName}</tspan></text>
-<text transform="translate(736.251 463.469) rotate(4.63183)" fill="#FD366E" xml:space="preserve" style="white-space: pre" font-family="Aeonik Pro" font-size="29.8137" letter-spacing="-0.014em"><tspan x="80.5314" y="27.6522">_</tspan></text>
+<text transform="translate(736.251 463.469) rotate(4.63183)" fill="#FD366E" xml:space="preserve" style="white-space: pre" font-family="Aeonik Pro" font-size="29.8137" letter-spacing="-0.014em"><tspan x="${xValue}" y="27.6522">_</tspan></text>
 ${title ? `<text transform="translate(732.903 504.787) rotate(4.63183)" fill="#ADADB0" xml:space="preserve" style="white-space: pre; text-transform: uppercase;" font-family="Aeonik Fono" font-size="11.1801" letter-spacing="0.08em"><tspan x="0" y="11.5342">${title}</tspan></text>` : null}
 
 </g>
 <rect x="685.556" y="79.6719" width="331.677" height="487.267" rx="10.7143" transform="rotate(4.63184 685.556 79.6719)" stroke="white" stroke-opacity="0.08" stroke-width="0.931677"/>
 </g>
-<rect x="64" y="530" width="212" height="55" rx="16" fill="black"/>
-<rect x="63" y="529" width="214" height="57" rx="17" stroke="white" stroke-opacity="0.1" stroke-width="2" stroke-dasharray="4 4"/>
+<rect x="64" y="530" width="238" height="55" rx="16" fill="black"/>
+<rect x="63" y="529" width="240" height="57" rx="17" stroke="white" stroke-opacity="0.1" stroke-width="2" stroke-dasharray="4 4"/>
 <text transform="translate(78 544)" fill="#E4E4E7" xml:space="preserve" style="white-space: pre" font-family="Aeonik Fono" font-size="23.2422" letter-spacing="0em"><tspan x="0" y="21.7646">INIT </tspan><tspan x="70.8841" y="21.7646"> ${initDates.toUpperCase()}</tspan></text>
 <text transform="translate(78 544)" fill="#FD366E" xml:space="preserve" style="white-space: pre" font-family="Aeonik Fono" font-size="23.2422" letter-spacing="0em"><tspan x="61.6236" y="21.7646">/</tspan></text>
 </g>

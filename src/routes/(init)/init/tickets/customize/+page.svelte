@@ -32,6 +32,8 @@
         sticker: originalTicketData.sticker
     });
 
+    const isModified = $state(() => !isDeepEqual(originalTicketData, updatedTicketData));
+
     let formState = $state({
         editing: false,
         saving: false,
@@ -49,6 +51,8 @@
             };
         }
     });
+
+    // debounce and autosave in the onchange handler
 </script>
 
 <svelte:head>
