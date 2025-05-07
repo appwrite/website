@@ -7,7 +7,7 @@ export const load = async () => {
     const user = await getInitUser();
     const ticket = await getTicketByUser(user);
 
-    if (!ticket || !user.github?.login) {
+    if (!ticket) {
         return {
             claimed: false
         };

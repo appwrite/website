@@ -29,26 +29,18 @@ const sendToUserList = async ({ name, email, userId }: SendToUserListArgs) => {
 
 export const getTicketByUser = async (user: User) => {
     const githubLogin = user.github?.login;
-    const appwriteEmail = user.appwrite?.email;
 
-    const [githubAccount, appwriteAccount] = await Promise.all([
-        githubLogin
-            ? appwriteInitServer.databases.listDocuments(
-                  APPWRITE_DB_INIT_ID,
-                  APPWRITE_COL_INIT_ID,
-                  [Query.equal('gh_user', githubLogin)]
-              )
-            : null,
-        appwriteEmail
-            ? appwriteInitServer.databases.listDocuments(
-                  APPWRITE_DB_INIT_ID,
-                  APPWRITE_COL_INIT_ID,
-                  [Query.equal('aw_email', appwriteEmail)]
-              )
-            : null
-    ]);
+    if (!githubLogin) return null;
+
+    const githubAccount = await appwriteInitServer.databases.listDocuments(
+        APPWRITE_DB_INIT_ID,
+        APPWRITE_COL_INIT_ID,
+        [Query.equal('gh_user', githubLogin)]
+    );
 
     const githubDoc = githubAccount?.documents[0] as unknown as TicketDoc;
+
+    if (!githubDoc) return null;
 
     return githubDoc;
 };
