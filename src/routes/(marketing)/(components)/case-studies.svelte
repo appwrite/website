@@ -1,6 +1,7 @@
 <script lang="ts">
     import { PUBLIC_APPWRITE_DASHBOARD } from '$env/static/public';
     import { Button } from '$lib/components/ui';
+    import MasonryGrid from 'svelte-masonry';
     import { classNames } from '$lib/utils/classnames';
 
     const testimonials = [
@@ -62,12 +63,37 @@
                 >Start building for free</Button
             >
         </div>
-        <div class="mt-12 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+        <MasonryGrid>
+            {#each testimonials as testimonial}
+                <div class="animate-fade-in border-smooth bg-card h-fit rounded-2xl border p-5">
+                    {testimonial.copy}
+
+                    <div class="mt-4 flex items-center gap-3">
+                        <img
+                            src={testimonial.image}
+                            class="size-12 rounded-full"
+                            alt="{testimonial.company} Logo"
+                        />
+                        <div>
+                            <span class="text-secondary text-sub-body block font-medium">
+                                {testimonial.name}
+                            </span>
+                            {#if testimonial.title}
+                                <span class="text-sub-body text-secondary block">
+                                    {testimonial.title} // {testimonial.company}
+                                </span>
+                            {/if}
+                        </div>
+                    </div>
+                </div>
+            {/each}
+        </MasonryGrid>
+        <!-- <div class="mt-12 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
             {#each testimonials as testimonial}
                 <div class="border-smooth bg-card h-fit rounded-2xl border p-5">
                     {testimonial.copy}
                 </div>
             {/each}
-        </div>
+        </div> -->
     </div>
 </div>
