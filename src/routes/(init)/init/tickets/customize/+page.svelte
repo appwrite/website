@@ -27,8 +27,6 @@
         () => {
             formState.saving = true;
             form.requestSubmit();
-            formState.drawerClosed = true;
-            originalTicketData = updatedTicketData;
         },
         { minQuietPeriodMs: 2500 }
     );
@@ -56,7 +54,7 @@
         if (formState.saved) {
             const timeout = setTimeout(() => {
                 formState.saved = false;
-            }, 1000);
+            }, 2000);
 
             return () => {
                 clearTimeout(timeout);
@@ -152,8 +150,10 @@
         use:enhance={async () => {
             formState.saving = true;
             return async ({ result }) => {
-                formState.saved = true;
-                formState.saving = false;
+                if (result.type === 'success') {
+                    formState.saved = true;
+                    formState.saving = false;
+                }
             };
         }}
     >
