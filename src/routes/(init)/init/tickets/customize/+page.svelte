@@ -18,7 +18,6 @@
     import { Button, Icon } from '$lib/components/ui';
     import { initDates } from '../../+page.svelte';
     import CustomizationDrawer from './(components)/customization-drawer.svelte';
-    import { goto } from '$app/navigation';
 
     let { data } = $props();
 

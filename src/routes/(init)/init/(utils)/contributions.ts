@@ -110,7 +110,17 @@ export const getTicketContributions = async (id: string) => {
             contributions: normalizeContributionMatrix(matrix).flat()
         });
 
-        return await contributionsSchema.parseAsync(normalizeContributionMatrix(matrix));
+        const normalized = matrix.map((week) =>
+            week.map((day) => (day === 0 ? 0 : Math.min(Math.max(Math.round(day), 0), 4)))
+        );
+
+        const finalMatrix = normalizeContributionMatrix(matrix);
+
+        if (finalMatrix.flat().every((val) => val === 0)) {
+            return [];
+        }
+
+        return await contributionsSchema.parseAsync(normalizeContributionMatrix(normalized));
     } catch (e) {
         console.error(e);
         return [];

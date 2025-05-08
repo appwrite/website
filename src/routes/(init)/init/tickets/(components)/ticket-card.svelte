@@ -207,7 +207,7 @@
 
                     {#if contributions}
                         {#await contributions then c}
-                            {#if c}
+                            {#if c.length}
                                 <div
                                     class="border-offset mt-auto mb-0 rounded-md border-2 border-dashed bg-black p-2"
                                 >
