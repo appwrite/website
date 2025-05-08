@@ -154,9 +154,7 @@
         use:enhance={async () => {
             formState.saving = true;
             return async ({ result }) => {
-                if (result.type === 'success') {
-                    goto(`/init/tickets/${data.ticket?.gh_user}`);
-                }
+                formState.saved = true;
             };
         }}
     >

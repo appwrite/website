@@ -85,8 +85,12 @@ export const getTicketContributions = async (id: string) => {
             matrix[c] = matrix[c].reverse();
         }
 
-        matrix = matrix.map((col) => col.filter((val) => val !== 0));
+        // Check if all contributions are zero
+        const allZero = matrix.flat().every((val) => val === 0);
+        if (allZero) return [];
 
+        // ... rest of your code
+        matrix = matrix.map((col) => col.filter((val) => val !== 0));
         matrix = matrix.map((col) => {
             if (col.length > 7) return col.slice(0, 7);
             if (col.length < 7) return [...col, ...Array(7 - col.length).fill(0)];
