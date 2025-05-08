@@ -94,7 +94,6 @@
         "svelte-check": "^4.0.0",
         "svelte-markdoc-preprocess": "3.0.0",
         "svelte-markdown": "^0.4.1",
-        "svelte-masonry": "^0.1.5",
         "svgtofont": "^4.2.3",
         "tailwind-merge": "^3.0.2",
         "tailwindcss": "^4.1.4",

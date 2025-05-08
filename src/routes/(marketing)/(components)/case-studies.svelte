@@ -1,46 +1,63 @@
 <script lang="ts">
     import { PUBLIC_APPWRITE_DASHBOARD } from '$env/static/public';
     import { Button } from '$lib/components/ui';
-    import MasonryGrid from 'svelte-masonry';
     import { classNames } from '$lib/utils/classnames';
+    import Masonry from '$lib/components/ui/masonry.svelte';
 
     const testimonials = [
         {
-            name: 'Ryan O’Conner',
-            copy: `The switch to using Appwrite brought infinite value that I'm still discovering today, but a major impact that it made was the amount of time and stress that it saved me as it simply just works.`,
-            image: '/images/testimonials/ryan-oconner.png',
-            title: 'Founder',
-            company: 'K-Collect'
-        },
-        {
-            name: 'David Forster',
-            copy: `We really loved working with Appwrite for launching our bootstrapped "Open Mind" App. I am still surprised how easy the implementation into Flutter was.`,
-            image: '/images/testimonials/david-forster.png',
-            title: 'Founder',
-            company: 'Open Mind'
-        },
-        {
             name: 'Marius Bolik',
-            copy: `The integrated user authentication and the ease of creating data structures have undoubtedly saved us several weeks' worth of time.`,
+            copy: `Not only is the software an absolute game-changer, but the team is always there when you need them. The integrated user authentication and the ease of creating data structures have undoubtedly saved us several weeks' worth of time.`,
             image: '/images/testimonials/marius-bolik2.png',
             title: 'CTO',
             company: 'mySHOEFITTER'
         },
         {
-            name: 'Sergio Ponguta',
-            copy: `Just go for it, don’t think twice. Try Appwrite, and you will love it!`,
-            image: '/images/testimonials/smartbee.png',
+            name: 'David Forster',
+            copy: `Working with Appwrite saved us a lot of money in comparison to Firebase since the amount of users grew quite fast and we needed a quick switch. I am still surprised how easy the implementation into Flutter was.`,
+            image: '/images/testimonials/david-forster.png',
             title: 'Founder',
-            company: 'Smart Bee'
+            company: 'Open Mind'
         },
         {
-            name: 'Phil McClusky',
-            copy: 'Just like a Swiss Army Knife, you can choose and use the tools that you need with Appwrite.',
-            image: '/images/testimonials/majik.png',
-            title: 'Developer',
-            company: 'Majik Kids'
+            name: 'Ryan O’Conner',
+            copy: `The switch to using Appwrite brought infinite value that I'm still discovering today, but a major impact that it made was the amount of time and stress that it saved me as it simply just works. There's no struggling with writing backend code and working with databases, as that's already taken care of.`,
+            image: '/images/testimonials/ryan-oconner.png',
+            title: 'Founder',
+            company: 'K-Collect'
+        },
+        {
+            name: 'Hassan Ahmed',
+            copy: `A special thanks to Appwrite for providing robust features and seamless functionality that allow us to focus on what matters most—empowering merchants with real-time insights and control over their store operations.`,
+            image: '/images/testimonials/smartbee.png',
+            title: 'Fullstack Developer',
+            company: 'DevKind'
+        },
+        {
+            name: 'Jonas Janssen',
+            copy: `Thanks to Appwrite and advances in technology, we were able to get an MVP out in 2/3 months with 1 developer.`,
+            image: '/images/testimonials/smartbee.png',
+            title: 'Founder',
+            company: 'UNDO'
+        },
+        {
+            name: 'Xue',
+            copy: `With its comprehensive suite of services including authentication, database management, storage, and serverless functions, Appwrite emerged as an ideal choice for my needs.`,
+            image: '/images/testimonials/smartbee.png',
+            title: 'Founder',
+            company: 'LangX'
+        },
+        {
+            name: 'Petto',
+            copy: `Simplifying app development is a significant need in the industry, and your efforts to abstract complexity, reduce repetitive tasks, and make the development process more enjoyable are highly commendable.`,
+            image: '/images/testimonials/smartbee.png',
+            title: '@gipetto'
         }
     ];
+
+    let [minColWidth, maxColWidth, gap] = [200, 800, 20];
+    let width = $state(0),
+        height = $state(0);
 </script>
 
 <div
@@ -63,9 +80,13 @@
                 >Start building for free</Button
             >
         </div>
-        <MasonryGrid>
+        <div class="mt-8 columns-1 [column-gap:20px] md:columns-2 lg:columns-3">
             {#each testimonials as testimonial}
-                <div class="animate-fade-in border-smooth bg-card h-fit rounded-2xl border p-5">
+                <div
+                    class={classNames(
+                        'border-smooth bg-card mb-5 h-fit [break-inside:avoid] rounded-2xl border p-5 last-of-type:col-start-2'
+                    )}
+                >
                     {testimonial.copy}
 
                     <div class="mt-4 flex items-center gap-3">
@@ -78,22 +99,24 @@
                             <span class="text-secondary text-sub-body block font-medium">
                                 {testimonial.name}
                             </span>
-                            {#if testimonial.title}
-                                <span class="text-sub-body text-secondary block">
-                                    {testimonial.title} // {testimonial.company}
-                                </span>
-                            {/if}
+
+                            <span class="text-sub-body text-secondary block">
+                                {testimonial.title}
+                                {#if testimonial.company}
+                                    // {testimonial.company}
+                                {/if}
+                            </span>
                         </div>
                     </div>
                 </div>
             {/each}
-        </MasonryGrid>
-        <!-- <div class="mt-12 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-            {#each testimonials as testimonial}
-                <div class="border-smooth bg-card h-fit rounded-2xl border p-5">
-                    {testimonial.copy}
-                </div>
-            {/each}
-        </div> -->
+        </div>
     </div>
 </div>
+
+<style>
+    .masonry {
+        columns: 3;
+        column-gap: 32px;
+    }
+</style>
