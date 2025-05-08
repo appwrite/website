@@ -13,7 +13,7 @@ callToAction: true
 Welcome back to the April product update. Last month, we dropped some big updates:
 
 - The Appwrite Network is now live
-- Appwrite authentication kit library for FlutterFlow.
+- Appwrite authentication kit library for FlutterFlow
 - RxDB Integration is here
 
 So let’s dive in.
@@ -24,7 +24,7 @@ So let’s dive in.
 
 In April, we launched the Appwrite Network, our vision for a globally distributed cloud regions and edge locations. 
 
-With the launch of two new cloud regions(NYC and SYD) and more to come soon, you can choose where your data sits and optimise it for reduced latency and improved performance.
+With the launch of two new cloud regions (New York City and Sydney) and more to come soon, you can choose where your data sits and optimise it for reduced latency and improved performance.
 
 So you can now create your projects in:
 
@@ -64,7 +64,7 @@ So now it's easier than ever to build real-world apps that stay in sync online a
 
 ![PH coming soon](/images/blog/product-update-april-2025/PH-comingsoon.png)
 
-We teased it last time and now it's almost here. We’ve got a big announcement very soon.
+We teased it last time, and now it's almost here. We’ve got a big announcement very soon.
 
 No spoilers (yet), but all we can say is that this announcement will change the way you build with Appwrite. 
 
