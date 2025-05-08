@@ -66,17 +66,17 @@
 </script>
 
 <div
-    class="border-smooth bg-black/8 relative flex min-h-[750px] flex-col gap-4 border-y py-20"
+    class="border-smooth relative flex min-h-[750px] flex-col gap-4 border-y bg-black/8 py-20"
     use:useInView
 >
-    <div class="container relative z-10 w-fit md:w-full">
+    <div class="relative z-10 container w-fit md:w-full">
         <div class="max-w-xl">
-            <h2 class="text-primary font-aeonik-pro text-pretty text-5xl tracking-tighter">
+            <h2 class="text-primary font-aeonik-pro text-5xl tracking-tighter text-pretty">
                 Thousands of developers <span class="text-secondary">scale with Appwrite</span><span
                     class="text-accent">_</span
                 >
             </h2>
-            <p class="text-secondary border-accent mt-5 border-l-2 pl-2 pr-28 font-medium">
+            <p class="text-secondary border-accent mt-5 border-l-2 pr-28 pl-2 font-medium">
                 <span class="text-accent">"</span>Appwrite has supported our recent growth in every
                 step of the way,
                 <span class="text-primary">without any failures or outages</span><span
@@ -104,8 +104,8 @@
         class="swipe absolute inset-0 hidden md:block"
         style:--animation-duration={`${animationDuration}s`}
     >
-        <div class="container relative h-full">
-            <div class="z-100 absolute inset-0 grid grid-cols-4">
+        <div class="relative container h-full">
+            <div class="absolute inset-0 z-100 grid grid-cols-4">
                 {#each stats as stat, i}
                     <div
                         class="border-smooth h-full overflow-auto border-l border-dashed [mask-image:_linear-gradient(to_bottom,_transparent,_black_var(--mask-height),_black_calc(100%_-_var(--mask-height)),_black)]"
