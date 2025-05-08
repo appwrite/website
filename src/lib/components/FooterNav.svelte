@@ -96,7 +96,7 @@
 
 <nav
     aria-label="Footer"
-    class="web-footer-nav relative mt-24"
+    class="web-footer-nav relative container mt-24"
     class:web-u-sep-block-start={!noBorder}
 >
     <img class="web-logo" src="/images/logos/appwrite.svg" alt="appwrite" height="24" width="130" />
