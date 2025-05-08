@@ -91,12 +91,12 @@
         {/snippet}
 
         <div class="grid grid-cols-1 p-0.5 md:grid-cols-12">
-            <div class="col-span-3 flex flex-col p-4">
+            <div class="col-span-12 flex flex-col p-4 lg:col-span-3">
                 <div
-                    class="border-offset flex items-center justify-between border-b border-dashed pb-4"
+                    class="border-offset flex w-full items-center justify-between border-b border-dashed pb-4"
                 >
                     <h3 class="text-primary font-aeonik-pro text-label">Customize ticket</h3>
-                    <div class="block md:hidden">
+                    <div class="block lg:hidden">
                         <CustomizationDrawer
                             open={!formState.drawerClosed}
                             onOpenChange={() => (formState.drawerClosed = !formState.drawerClosed)}
@@ -106,12 +106,12 @@
                     </div>
                 </div>
 
-                <div class="hidden md:block">
+                <div class="hidden lg:block">
                     {@render Form()}
                 </div>
             </div>
             <div
-                class="bg-smooth relative flex w-full flex-col items-center justify-center gap-8 rounded-xl p-4 outline-2 [outline-offset:-2px] outline-[var(--color-offset)] outline-dashed md:col-span-9 md:flex-row"
+                class="bg-smooth relative flex w-full flex-col items-center justify-center gap-8 rounded-xl p-4 outline-2 [outline-offset:-2px] outline-[var(--color-offset)] outline-dashed md:col-span-12 md:flex-row lg:col-span-9"
             >
                 <div class="flex flex-col items-center gap-4 uppercase">
                     <TicketCard
