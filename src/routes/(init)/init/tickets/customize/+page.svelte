@@ -25,13 +25,12 @@
 
     const debouncer = funnel(
         () => {
+            formState.saving = true;
             form.requestSubmit();
             formState.drawerClosed = true;
             originalTicketData = updatedTicketData;
-            formState.saved = true;
-            formState.saving = false;
         },
-        { minQuietPeriodMs: 1000 }
+        { minQuietPeriodMs: 2500 }
     );
 
     let originalTicketData = $state({
@@ -57,7 +56,7 @@
         if (formState.saved) {
             const timeout = setTimeout(() => {
                 formState.saved = false;
-            }, 2000);
+            }, 1000);
 
             return () => {
                 clearTimeout(timeout);
@@ -154,6 +153,7 @@
             formState.saving = true;
             return async ({ result }) => {
                 formState.saved = true;
+                formState.saving = false;
             };
         }}
     >
@@ -211,6 +211,7 @@
                         value=""
                         checked={originalTicketData.sticker === null}
                         onchange={() => (originalTicketData.sticker = null)}
+                        oninput={() => debouncer.call()}
                     />
                     <div
                         class="text-tertiary font-aeonik-fono tracking-loose text-micro bg-smooth flex size-[calc(100%_-_6px)] items-center justify-center rounded-[1px] p-1 uppercase"
@@ -235,6 +236,7 @@
                             value={i}
                             checked={originalTicketData.sticker === i}
                             onchange={() => (originalTicketData.sticker = i)}
+                            oninput={() => debouncer.call()}
                         />
                         <div
                             class="bg-smooth flex size-[calc(100%_-_6px)] items-center justify-center rounded-[1px] p-1"
@@ -245,7 +247,12 @@
                 {/each}
             </div>
         </div>
-        <Button type="submit" class="w-full!" variant="secondary">
+        <Button
+            type="submit"
+            class="w-full!"
+            variant="secondary"
+            disabled={formState.saving || formState.saved}
+        >
             {#if formState.saving}
                 Saving
             {:else if formState.saved}
