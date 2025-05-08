@@ -5,7 +5,7 @@ import {
     type MotionKeyframesDefinition,
     type AnimationOptionsWithOverrides,
     animate
-} from 'motion';
+} from 'motion-legacy';
 
 export function animation(
     elementOrSelector: ElementOrSelector,

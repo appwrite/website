@@ -7,22 +7,28 @@ export const copyToClipboard = async (value: string) => {
     return data;
 };
 
-export function createCopy(value: string) {
-    const copied = writable(false);
+export const createCopy = (value: string, delay: number = 3000) => {
+    const copied = writable<boolean>(false);
 
-    let timeout: ReturnType<typeof setTimeout> | undefined = undefined;
-    function handleCopy() {
+    let timeout: NodeJS.Timeout | undefined = undefined;
+
+    const handleCopy = async () => {
         if (timeout) clearTimeout(timeout);
         copied.set(true);
         copyToClipboard(value);
-        timeout = setTimeout(() => copied.set(false), 1000);
-    }
+        timeout = setTimeout(() => copied.set(false), delay);
+
+        return () => {
+            if (timeout) clearTimeout(timeout);
+            copied.set(false);
+        };
+    };
 
     return {
         copied,
         copy: handleCopy
     };
-}
+};
 
 export const handleCopy = (value: string, duration: number = 1000) => {
     const copied = writable<boolean>(false);
