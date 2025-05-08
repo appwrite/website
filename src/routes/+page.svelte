@@ -134,7 +134,7 @@
             <div class="my-12 lg:my-[7.5rem]">
                 <section class="container pb-0">
                     <a
-                        href="/blog/post/the-appwrite-network"
+                        href="/blog/post/init-may-2025"
                         class="web-hero-banner-button mb-4"
                         on:click={() => trackEvent({ plausible: { name: 'Banner button click' } })}
                     >
@@ -142,7 +142,7 @@
                         <span class="text-caption shrink-0 font-medium">New</span>
                         <div class="web-hero-banner-button-sep"></div>
                         <span class="text-caption web-u-trim-1"
-                            >Announcing The Appwrite Network</span
+                            >Announcing Init: a new era begins</span
                         >
                         <span class="web-icon-arrow-right shrink-0" aria-hidden="true"></span>
                     </a>
