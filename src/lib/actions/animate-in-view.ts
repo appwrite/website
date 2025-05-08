@@ -1,4 +1,4 @@
-import { inView, type InViewOptions } from 'motion';
+import { inView, type InViewOptions } from 'motion-legacy';
 import { writable } from 'svelte/store';
 
 export const useAnimateInView = ({ options }: { options?: InViewOptions }) => {
