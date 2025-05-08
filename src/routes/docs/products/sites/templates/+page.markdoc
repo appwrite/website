@@ -48,15 +48,6 @@ When a PR is made to the branch, a new deployment is built and a preview URL bec
 
 Appwrite Sites uses environment variables to pass constants and secrets to your sites. You can provide information like API keys and other secrets in this step.
 
-### Configure domain name
+## Configure domain name
 
 Configure the subdomain of the Appwrite Site to be deployed. Once deployment completes, your application will be available to access on this domain. You can also [add a custom domain](/docs/products/sites/domains#add-a-custom-domain) to this site later.
-
-# Available templates
-
-| Template name | Description | Frameworks |
-| --- | --- | --- |
-| **Starter** | A starter website that can use the Appwrite SDK | `Angular` `Astro` `Flutter` `Next.js` `Nuxt` `React` `Remix` `SvelteKit` `Vanilla JS` `Vue.js` |
-| **Event** | A hackathon event website with user authentication and submissions | `Next.js` |
-| **Portfolio** | An individual's portfolio | `Next.js` |
-| **OneLink** | A Linktree alternative | `Nuxt` |
