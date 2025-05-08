@@ -65,7 +65,7 @@ export const createNewTicket = async (user: User) => {
     const firstName = getFirstName(appwriteName) ?? getFirstName(githubName);
 
     if (!githubTicket?.total) {
-        // Send request details to user list for growth in production
+        // Send request details to user list for growth in production if a ticket doens't exist
         if (NODE_ENV === 'production' && githubEmail && appwriteId) {
             await sendToUserList({
                 name: appwriteName ?? githubName ?? githubEmail,
