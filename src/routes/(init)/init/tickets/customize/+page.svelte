@@ -239,7 +239,7 @@
                         <div
                             class="bg-smooth flex size-[calc(100%_-_6px)] items-center justify-center rounded-[1px] p-1"
                         >
-                            <img src={s} alt="Sticker" class="size-fit" />
+                            <img src={s} alt="Sticker" class="size-16 md:size-20" />
                         </div>
                     </label>
                 {/each}
