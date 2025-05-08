@@ -197,7 +197,7 @@
                 >Sticker Pack</span
             >
             <div
-                class="bg-smooth border-offset grid h-full flex-1 grid-cols-3 place-items-center gap-4 overflow-y-scroll rounded-lg border p-4 md:grid-cols-2"
+                class="bg-smooth border-offset grid h-full flex-1 grid-cols-3 place-items-center gap-4 overflow-y-scroll rounded-lg border p-4 lg:grid-cols-2"
             >
                 <label
                     class={classNames(

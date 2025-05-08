@@ -17,8 +17,8 @@
     >
         {@render children()}
         {#if page.url.pathname.includes('/init/tickets') && !isStarted}
-            <div class="overflow-y-hidden">
-                <Lockup class="-mb-[24rem] w-full" />
+            <div class="hidden overflow-y-hidden md:block">
+                <Lockup class="-mb-[16rem] w-full lg:-mb-[24rem]" />
             </div>
         {/if}
     </div>
