@@ -84,11 +84,9 @@ export const createNewTicket = async (user: User) => {
             name: firstName,
             title: ''
         });
-
-        redirect(307, '/init/tickets/customize');
     }
 
-    redirect(307, '/init');
+    redirect(307, '/init/tickets/customize');
 };
 
 export const getTicketDocByUsername = async (username: string) => {
