@@ -56,40 +56,6 @@
                 name: 'Zip-up',
                 barcode: 'ZPUP'
             }
-        ],
-        Pants: [
-            {
-                ID: 3397,
-                name: 'Shorts',
-                barcode: 'SHRT'
-            },
-            {
-                ID: 2224,
-                name: 'Chinos',
-                barcode: 'CHNO'
-            },
-            {
-                ID: 5689,
-                name: 'Jeans',
-                barcode: 'JEAN'
-            }
-        ],
-        Shoes: [
-            {
-                ID: 3397,
-                name: 'Sambas',
-                barcode: 'SMBA'
-            },
-            {
-                ID: 2224,
-                name: 'Chuck 70s',
-                barcode: 'CHKS'
-            },
-            {
-                ID: 5689,
-                name: 'Loafers',
-                barcode: 'LFRS'
-            }
         ]
     };
 
@@ -101,52 +67,15 @@
         hover(container, () => {
             if (isMobile()) return;
 
-            animate(
-                '.product-table',
-                {
-                    y: ['var(--y)', 'calc(var(--y) - var(--y-offset))'],
-                    x: ['var(--x)', 'calc(var(--x) - var(--x-offset))']
-                },
-                {
-                    type: 'spring',
-                    duration: 0.5,
-                    delay: stagger(0.02)
-                }
-            );
-
-            return () => {
-                animate(
-                    '.product-table',
-                    { y: 'var(--y)', x: 'var(--x)' },
-                    { type: 'spring', duration: 0.5 }
-                );
-            };
+            return () => {};
         });
 
         inView(
             container,
             () => {
                 if (!isMobile()) return;
-                animate(
-                    '.product-table',
-                    {
-                        y: ['var(--y)', 'calc(var(--y) - var(--y-offset))'],
-                        x: ['var(--x)', 'calc(var(--x) - var(--x-offset))']
-                    },
-                    {
-                        type: 'spring',
-                        duration: 0.5,
-                        delay: stagger(0.02)
-                    }
-                );
 
-                return () => {
-                    animate(
-                        '.product-table',
-                        { y: 'var(--y)', x: 'var(--x)' },
-                        { type: 'spring', duration: 0.5 }
-                    );
-                };
+                return () => {};
             },
             { amount: 'all' }
         );
@@ -172,9 +101,7 @@
             >
         </p>
     </div>
-    <div
-        class="relative flex min-h-[425px] flex-1 flex-col overflow-hidden rounded-xl bg-black/24 px-8"
-    >
+    <div class="relative flex h-85 flex-1 flex-col overflow-hidden rounded-xl bg-black/24 px-8">
         <div
             class="border-smooth -z-3 mt-6 flex aspect-[4/2] w-full min-w-[450px] flex-col overflow-clip rounded-2xl border bg-[#232325]/90 mask-b-from-60% mask-b-to-100% shadow-[4px_8px_20px_rgba(0,0,0,0.2)] backdrop-blur-md md:mt-12"
         >

@@ -98,7 +98,7 @@
 </script>
 
 <div
-    class="border-smooth group col-span-12 flex flex-col rounded-2xl border bg-white/2 p-2"
+    class="border-smooth group col-span-12 flex flex-col rounded-2xl border bg-white/2 p-2 md:col-span-7"
     bind:this={container}
 >
     <div class="space-y-3 px-3 pt-2 pb-4">
@@ -112,10 +112,10 @@
         </p>
     </div>
     <div
-        class="relative flex min-h-[425px] flex-1 flex-col overflow-hidden rounded-xl bg-black/24 px-3 md:px-8"
+        class="relative flex h-85 flex-1 flex-col overflow-hidden rounded-xl bg-black/24 px-3 md:px-8"
     >
         <div
-            class="mx-auto mt-6 flex w-full flex-col overflow-hidden rounded-[1.25rem] bg-[#232325]/90 mask-b-from-60% mask-b-to-100% px-1 pb-1 backdrop-blur-md md:mt-12 md:max-w-1/2"
+            class="mx-auto mt-6 flex w-full flex-col overflow-hidden rounded-[1.25rem] bg-[#232325]/90 mask-b-from-60% mask-b-to-100% px-1 pb-1 backdrop-blur-md md:mt-12"
         >
             <div class="flex h-8 w-full items-center gap-1 pl-2">
                 {#each Array.from({ length: 3 }) as _}
@@ -123,11 +123,15 @@
                 {/each}
             </div>
 
-            <img src={Site} alt="Site screen" class="rounded-2xl" />
+            <img
+                src={Site}
+                alt="Site screen"
+                class="max-h-64 rounded-2xl object-cover object-top"
+            />
         </div>
 
         <div
-            class="border-smooth absolute -right-12 bottom-8 z-1 mx-auto flex w-full max-w-[450px] flex-col overflow-hidden rounded-[1.25rem] border bg-[#1D1D21] px-2 pb-2 md:right-32"
+            class="border-smooth absolute right-0 bottom-8 z-1 mx-auto flex w-full max-w-[450px] flex-col overflow-hidden rounded-[1.25rem] border bg-[#1D1D21] px-2 pb-2 md:-right-24"
         >
             <div class="flex h-10 w-full items-center gap-6 px-2 md:justify-between">
                 <div class="flex items-center gap-2">

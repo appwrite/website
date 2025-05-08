@@ -75,7 +75,7 @@
         </p>
     </div>
     <div
-        class="relative flex h-[26.25rem] items-center justify-center overflow-hidden rounded-xl bg-black/24 px-8"
+        class="relative flex h-85 items-center justify-center overflow-hidden rounded-xl bg-black/24 px-8"
     >
         <div class="grid aspect-square grid-cols-2 place-items-center">
             <img src={TopLeft} alt="Top Left" class="relative top-4 left-9" />

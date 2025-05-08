@@ -1,103 +1,24 @@
 <script lang="ts">
     import { classNames } from '$lib/utils/classnames';
     import Image from '../../../(assets)/images/storage.webp';
-    import { animate, hover, inView, motionValue, type AnimationSequence } from 'motion';
-    import { getCodeHtml } from '$lib/utils/code';
+    import { animate, hover, inView, type AnimationSequence } from 'motion';
     import GridPaper from '../../grid-paper.svelte';
     import { isMobile } from '$lib/utils/is-mobile';
 
     let container: HTMLElement;
-    let imageComponent: HTMLElement;
     let image: HTMLElement;
 
-    let width = $state('232');
-    let height = $state('158');
-    let borderRadius = $state('4');
-
-    const content = $derived(`const result = storage.getFilePreview(
-	 'photos',     // bucket ID
-	 'sunset.heic',// file ID
-	 ${width},          // width
-	 ${height},          // height
-	 '90',         // slight compression
-	 ${borderRadius},            // border radius
-	 'heic'        // output heic format
-;`);
-
-    const snippet = $derived(
-        getCodeHtml({
-            content,
-            language: 'javascript',
-            withLineNumbers: true
-        })
-    );
-
     $effect(() => {
-        const from: AnimationSequence = [
-            [imageComponent, { width: [285, 232], height: [210, 158] }],
-            [image, { borderRadius: [8, 4] }]
-        ];
+        const from: AnimationSequence = [[image, { borderRadius: [8, 4] }]];
 
-        const to: AnimationSequence = [
-            [imageComponent, { width: [232, 285], height: [158, 210] }],
-            [image, { borderRadius: [4, 8] }]
-        ];
-
-        const toSequence = () => {
-            animate(232, 285, {
-                onUpdate: (latest) => {
-                    width = latest.toFixed();
-                }
-            });
-            animate(158, 210, {
-                onUpdate: (latest) => {
-                    height = latest.toFixed();
-                }
-            });
-            animate(4, 8, {
-                onUpdate: (latest) => {
-                    borderRadius = latest.toFixed();
-                }
-            });
-            const animation = animate(to);
-
-            return () => {
-                animation.stop();
-            };
-        };
-
-        const fromSequence = () => {
-            animate(285, 232, {
-                onUpdate: (latest) => {
-                    width = latest.toFixed();
-                }
-            });
-            animate(210, 158, {
-                onUpdate: (latest) => {
-                    height = latest.toFixed();
-                }
-            });
-            animate(8, 4, {
-                onUpdate: (latest) => {
-                    borderRadius = latest.toFixed();
-                }
-            });
-            const animation = animate(from);
-
-            return () => {
-                animation.stop();
-            };
-        };
+        const to: AnimationSequence = [[image, { borderRadius: [4, 8] }]];
 
         inView(
             container,
             () => {
                 if (!isMobile()) return;
-                toSequence();
 
-                return () => {
-                    fromSequence();
-                };
+                return () => {};
             },
             {
                 amount: 'all'
@@ -106,17 +27,14 @@
 
         hover(container, () => {
             if (isMobile()) return;
-            toSequence();
 
-            return () => {
-                fromSequence();
-            };
+            return () => {};
         });
     });
 </script>
 
 <div
-    class="border-smooth col-span-12 flex flex-col rounded-2xl border bg-white/2 p-2 md:col-span-5"
+    class="border-smooth col-span-12 flex flex-col rounded-2xl border bg-white/2 p-2 md:col-span-4"
     bind:this={container}
 >
     <div class="space-y-3 px-3 pt-2 pb-4">
@@ -130,24 +48,9 @@
         </p>
     </div>
     <div
-        class="relative flex h-[26.25rem] justify-between overflow-clip rounded-xl bg-black/24 p-8"
+        class="relative flex h-85 items-center justify-center overflow-clip rounded-xl bg-black/24 p-8"
     >
-        <div
-            class="web-code-snippet text-micro absolute -right-10 bottom-8 z-10 max-w-[340px] overflow-hidden rounded-l-xl bg-[#232325] p-1 leading-2"
-        >
-            <div class="px-4 py-3">Node.js</div>
-            <div
-                class="web-code-snippet-content *:text-micro! z-10 overflow-hidden rounded-l-[10px] bg-gradient-to-br from-black/48 to-transparent p-3"
-            >
-                {@html snippet}
-            </div>
-        </div>
-        <div
-            class="relative origin-top-left border border-white/50 p-1"
-            style:width="232px"
-            style:height="158px"
-            bind:this={imageComponent}
-        >
+        <div class="relative h-fit border border-white/50 p-1">
             {#each [1, 2, 3, 4] as _, i}
                 <div
                     class={classNames(
@@ -165,8 +68,7 @@
             <img
                 src={Image}
                 alt="Storage"
-                class="h-full w-full object-cover"
-                style:border-radius="4px"
+                class="object-cove rounded grayscale"
                 bind:this={image}
             />
             <div
