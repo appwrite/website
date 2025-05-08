@@ -2,7 +2,7 @@
     import Step from './Step.svelte';
     import Marker from '../(assets)/marker.svg';
     import MarkerActive from '../(assets)/marker-active.svg';
-    import { inView } from 'motion';
+    import { inView } from 'motion-legacy';
     import { onMount } from 'svelte';
     import { sleep, write } from '$lib/animations';
 

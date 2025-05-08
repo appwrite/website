@@ -16,6 +16,8 @@
     --color-secondary: var(--color-secondary);
     --color-accent: var(--color-secondary);
     --color-smooth: var(--color-smooth);
+    --color-subtle: var(--color-subtle);
+    --color-tertiary: var(--color-tertiary);
     --color-card: var(--color-card);
 
     /* pink */
@@ -318,21 +320,28 @@
     --color-yellow-hue: 42;
     --color-blue-hue: 217;
     --color-greyscale-hue: 240;
+    --color-primary-bg: var(--color-greyscale-25);
 
     /* base */
     --color-primary: var(--color-greyscale-900);
     --color-secondary: var(--color-greyscale-700);
     --color-accent: var(--color-pink-600);
+    --carousel-gradient: transparent;
     --color-badge-bg: var(--color-badge-bg-light);
     --color-badge-border: var(--color-badge-border-light);
     --color-smooth: hsl(var(--color-greyscale-hue) 6%, 10%, 0.04);
-    --color-card: hsl(var(--color-greyscale-hue) 3%, 14%, 0.9);
+    --color-card: var(--color-greyscale-850);
+    --color-tertiary: hsl(var(--color-greyscale-600));
+    --color-offset: hsl(var(--color-greyscale-hue) 2%, 11%, 0.94);
+    --color-subtle: var(--color-greyscale-850);
 }
 
 .dark {
     --color-primary: var(--color-greyscale-100);
     --color-secondary: var(--color-greyscale-300);
-    --color-badge-bg: var(--color-badge-bg-dark);
-    --color-badge-border: var(--color-badge-border-dark);
+    --carousel-gradient: 23, 23, 26;
+    --color-primary-bg: var(--color-greyscale-900);
     --color-smooth: hsl(0 0%, 100%, 0.06);
+    --color-tertiary: hsl(var(--color-greyscale-600));
+    --color-offset: hsl(0 0% 100% / 0.1);
 }

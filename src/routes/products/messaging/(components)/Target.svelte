@@ -8,7 +8,7 @@
     import { dequal } from 'dequal/lite';
     import Step from './Step.svelte';
     import { onMount } from 'svelte';
-    import { inView } from 'motion';
+    import { inView } from 'motion-legacy';
     import { sleep } from '$lib/animations';
     import { Button } from '$lib/components/ui';
 
