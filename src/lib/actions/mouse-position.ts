@@ -1,5 +1,5 @@
-import { hover, inView } from 'motion';
-import { type Writable, writable } from 'svelte/store';
+import { hover } from 'motion';
+import { writable } from 'svelte/store';
 
 export const useMousePosition = () => {
     let position = writable<{ x: number; y: number }>({
