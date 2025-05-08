@@ -26,7 +26,7 @@ appwrite pull collections
 
 # appwrite.json {% #appwritejson %}
 
-After [initializing](/docs/tooling/command-line/installation#initialization) your Appwrite project and pulling your existing buckets, your `appwrite.json` file should look similar to the following:
+After [initializing](/docs/tooling/command-line/installation#initialization) your Appwrite project and pulling your existing collections, your `appwrite.json` file should look similar to the following:
 
 ```json
 {

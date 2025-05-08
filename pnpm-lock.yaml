@@ -22,8 +22,8 @@ importers:
         version: 0.33.5
     devDependencies:
       '@appwrite.io/console':
-        specifier: ^0.6.4
-        version: 0.6.4
+        specifier: https://pkg.pr.new/appwrite/appwrite/@appwrite.io/console@7773939
+        version: https://pkg.pr.new/appwrite/appwrite/@appwrite.io/console@7773939
       '@appwrite.io/pink':
         specifier: ~0.26.0
         version: 0.26.0
@@ -31,8 +31,8 @@ importers:
         specifier: ~0.26.0
         version: 0.26.0
       '@appwrite.io/repo':
-        specifier: github:appwrite/appwrite#1.6.x
-        version: https://codeload.github.com/appwrite/appwrite/tar.gz/8b23d4bab1057eea089fa301b756495b7d207bfd
+        specifier: github:appwrite/appwrite#feat-sites-docs
+        version: https://codeload.github.com/appwrite/appwrite/tar.gz/979fd63148371c2cce073c3a4660591aa90134ab
       '@eslint/compat':
         specifier: ^1.2.7
         version: 1.2.8(eslint@9.24.0(jiti@2.4.2))
@@ -278,8 +278,9 @@ packages:
   '@analytics/type-utils@0.6.2':
     resolution: {integrity: sha512-TD+xbmsBLyYy/IxFimW/YL/9L2IEnM7/EoV9Aeh56U64Ify8o27HJcKjo38XY9Tcn0uOq1AX3thkKgvtWvwFQg==}
 
-  '@appwrite.io/console@0.6.4':
-    resolution: {integrity: sha512-0LPeeHR3fLQpTiX/AjguXqHYRgjMLf2lxie5TevBPxMssi1tcipctTGmj0YMyjWxQKD05NBmgvkJwAXEsm9rRA==}
+  '@appwrite.io/console@https://pkg.pr.new/appwrite/appwrite/@appwrite.io/console@7773939':
+    resolution: {tarball: https://pkg.pr.new/appwrite/appwrite/@appwrite.io/console@7773939}
+    version: 1.2.1
 
   '@appwrite.io/pink-icons@0.26.0':
     resolution: {integrity: sha512-abLQdT0zlDkEEwvgU1ymFq0ztxuRerwx7t1oeUGFgXlm9gXrxt6nce2f5GRqg9Rb7hM3F3nyc1ds8zRRWHQOyw==}
@@ -287,8 +288,8 @@ packages:
   '@appwrite.io/pink@0.26.0':
     resolution: {integrity: sha512-iPeGE56pauzxuIXt15ZswjKCErwp3QdF3XOlJZfyYY7J2nirra85JNTL+3lWuFIf8yYWL7NbvCjhf8ig79TgwA==}
 
-  '@appwrite.io/repo@https://codeload.github.com/appwrite/appwrite/tar.gz/8b23d4bab1057eea089fa301b756495b7d207bfd':
-    resolution: {tarball: https://codeload.github.com/appwrite/appwrite/tar.gz/8b23d4bab1057eea089fa301b756495b7d207bfd}
+  '@appwrite.io/repo@https://codeload.github.com/appwrite/appwrite/tar.gz/979fd63148371c2cce073c3a4660591aa90134ab':
+    resolution: {tarball: https://codeload.github.com/appwrite/appwrite/tar.gz/979fd63148371c2cce073c3a4660591aa90134ab}
     version: 0.0.0
 
   '@asamuzakjp/css-color@3.1.2':
@@ -4226,7 +4227,7 @@ snapshots:
 
   '@analytics/type-utils@0.6.2': {}
 
-  '@appwrite.io/console@0.6.4': {}
+  '@appwrite.io/console@https://pkg.pr.new/appwrite/appwrite/@appwrite.io/console@7773939': {}
 
   '@appwrite.io/pink-icons@0.26.0': {}
 
@@ -4236,7 +4237,7 @@ snapshots:
       normalize.css: 8.0.1
       the-new-css-reset: 1.11.3
 
-  '@appwrite.io/repo@https://codeload.github.com/appwrite/appwrite/tar.gz/8b23d4bab1057eea089fa301b756495b7d207bfd': {}
+  '@appwrite.io/repo@https://codeload.github.com/appwrite/appwrite/tar.gz/979fd63148371c2cce073c3a4660591aa90134ab': {}
 
   '@asamuzakjp/css-color@3.1.2':
     dependencies:

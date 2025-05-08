@@ -1,0 +1,20 @@
+---
+layout: article
+title: Previews
+description: Preview site deployments to test changes before promoting to production.
+---
+
+If you create a new Pull Request on the GitHub repo for your site, Appwrite Sites will create a preview deployment that you can view and test before promoting to production.
+
+# Visit preview deployments
+
+To access a preview deployment, follow these steps:
+
+1. Navigate to your site on Appwrite Console.
+2. Under the **Deployments** tab, click on a ready deployment.
+3. Click on the **Visit** button.
+
+![Preview deployment](https://warm-tray-285.notion.site/image/attachment%3A670b195b-e4e5-4a38-bcdf-9d77f7cf417a%3Aimage.png?table=block&id=1b9fb53f-e82d-80ed-8e6d-d88d0442412e&spaceId=cf760f55-c352-4759-b494-006b8b294dbb&width=1420&userId=&cache=v2)
+
+Appwrite Sites will then verify whether you are authorized to access the Appwrite project in which the site is deployed and allow you to access this preview accordingly.
+

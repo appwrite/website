@@ -1,0 +1,21 @@
+---
+layout: article
+title: Instant rollbacks
+description: Safely revert a site to a previous deployment using instant rollbacks.
+---
+
+If a site needs to be reverted to a previously functional state for any reason (runtime errors, security flaw, etc.), you can roll your site back to an existing ready deployment.
+
+Instant rollbacks don't delete, modify,or re-deploy your code. Instead, they simply change which deployment is being served to visitors. This makes rollbacks near-instantaneous, with zero downtime.
+
+# Use instant rollbacks
+
+To use the instant rollback feature, follow these steps:
+
+1. Navigate to your site on Appwrite Console.
+2. Under the **Overview** tab, click on the **Instant Rollback** button.
+3. Once the modal opens, click on the **Rollback** button.
+
+![Instant rollback](https://warm-tray-285.notion.site/image/attachment%3A781eee0c-2921-4baa-bb73-803120bde625%3Aimage.png?table=block&id=1c4fb53f-e82d-8021-b0bb-f69dfd2c7ba1&spaceId=cf760f55-c352-4759-b494-006b8b294dbb&width=1420&userId=&cache=v2)
+
+This will allow you to select a previously active, ready deployment to promote to currently active state.

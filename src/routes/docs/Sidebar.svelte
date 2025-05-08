@@ -60,6 +60,13 @@
                     isParent: true
                 },
                 {
+                    label: 'Sites',
+                    href: '/docs/products/sites',
+                    icon: 'icon-globe-alt',
+                    isParent: true,
+                    new: true
+                },
+                {
                     label: 'Storage',
                     href: '/docs/products/storage',
                     icon: 'icon-folder',
@@ -69,8 +76,7 @@
                     label: 'Network',
                     href: '/docs/products/network',
                     icon: 'icon-share',
-                    isParent: true,
-                    new: true
+                    isParent: true
                 },
                 {
                     label: 'AI',

@@ -152,39 +152,42 @@
 .web-icon-refine:before {
     content: '\ea2c';
 }
-.web-icon-rest:before {
+.web-icon-remix:before {
     content: '\ea2d';
 }
-.web-icon-search:before {
+.web-icon-rest:before {
     content: '\ea2e';
 }
-.web-icon-sendgrid:before {
+.web-icon-search:before {
     content: '\ea2f';
 }
-.web-icon-star:before {
+.web-icon-sendgrid:before {
     content: '\ea30';
 }
-.web-icon-system:before {
+.web-icon-star:before {
     content: '\ea31';
 }
-.web-icon-textmagic:before {
+.web-icon-system:before {
     content: '\ea32';
 }
-.web-icon-tiktok:before {
+.web-icon-textmagic:before {
     content: '\ea33';
 }
-.web-icon-twitter:before {
+.web-icon-tiktok:before {
     content: '\ea34';
 }
-.web-icon-vue:before {
+.web-icon-twitter:before {
     content: '\ea35';
 }
-.web-icon-x:before {
+.web-icon-vue:before {
     content: '\ea36';
 }
-.web-icon-ycombinator:before {
+.web-icon-x:before {
     content: '\ea37';
 }
-.web-icon-youtube:before {
+.web-icon-ycombinator:before {
     content: '\ea38';
+}
+.web-icon-youtube:before {
+    content: '\ea39';
 }

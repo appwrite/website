@@ -37,6 +37,10 @@
                     href: '/docs/tooling/command-line/functions'
                 },
                 {
+                    label: 'Sites',
+                    href: '/docs/tooling/command-line/sites'
+                },
+                {
                     label: 'Teams',
                     href: '/docs/tooling/command-line/teams'
                 },

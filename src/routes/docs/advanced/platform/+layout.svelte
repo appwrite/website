@@ -62,6 +62,10 @@
                 {
                     label: 'API keys',
                     href: '/docs/advanced/platform/api-keys'
+                },
+                {
+                    label: 'Dev keys',
+                    href: '/docs/advanced/platform/dev-keys'
                 }
             ]
         },
