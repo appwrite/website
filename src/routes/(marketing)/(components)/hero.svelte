@@ -7,7 +7,9 @@
     import Dashboard from './dashboard.svelte';
 </script>
 
-<div class="relative flex min-h-[80vh] max-w-screen items-center overflow-hidden py-12 md:py-0">
+<div
+    class="relative flex min-h-[50vh] max-w-screen items-center overflow-hidden py-12 md:py-0 lg:min-h-[80vh]"
+>
     <div
         class={classNames(
             'animate-lighting absolute top-0 left-0 -z-10 h-screen w-[200vw] -translate-x-[25%] translate-y-8 rotate-25 overflow-hidden blur-3xl md:w-full',
@@ -17,10 +19,10 @@
     ></div>
 
     <div
-        class="relative container mx-auto flex h-full flex-1 place-items-center items-center justify-between gap-8"
+        class="relative container mx-auto grid h-full grid-cols-1 place-items-center gap-24 md:grid-cols-2"
     >
-        <!-- <div
-            class="animate-blur-in flex w-fit flex-col gap-4 pl-8 [animation-delay:150ms] [animation-duration:1000ms] lg:pl-20 xl:pl-40"
+        <div
+            class="animate-blur-in flex flex-col gap-4 [animation-delay:150ms] [animation-duration:1000ms] md:ml-12 lg:ml-0"
         >
             <GradientText class="animate-fade-in">
                 <h1 class="font-aeonik-pro text-hero text-pretty">
@@ -33,11 +35,13 @@
                 to use backend APIs and host your frontend on one platform.
             </p>
 
-            <div class="flex flex-col gap-2 md:flex-row">
-                <Button href={PUBLIC_APPWRITE_DASHBOARD}>Start building for free</Button>
+            <div class="flex flex-col gap-2 lg:flex-row">
+                <Button href={PUBLIC_APPWRITE_DASHBOARD} class="w-full! lg:w-fit!"
+                    >Start building for free</Button
+                >
                 <AppwriteIn100Seconds />
             </div>
-        </div> -->
+        </div>
         <Dashboard />
     </div>
 </div>
