@@ -8,6 +8,7 @@
     import GithubStats from '../shared/github-stats.svelte';
     import type { SvelteHTMLElements } from 'svelte/elements';
     import { classNames } from '$lib/utils/classnames';
+    import { onMount } from 'svelte';
 
     const items = [
         {
@@ -38,36 +39,39 @@
     }: Props = $props();
 
     let activeIndex = $state<number>(0);
-    let activePlatform = $derived(platforms[activeIndex]);
+    let activePlatformText = $state<string>('');
 
     const rotatePlatforms = async () => {
         while (true) {
-            await write(platforms[activeIndex], (v) => (activePlatform = v), 500);
+            await write(platforms[activeIndex], (v) => (activePlatformText = v), 500);
+
             await sleep(5000);
-            await unwrite(platforms[activeIndex], (v) => (activePlatform = v), 500);
+
+            await unwrite(platforms[activeIndex], (v) => (activePlatformText = v), 250);
+
             await sleep(500);
-            await write(platforms[activeIndex + 1], (v) => (activePlatform = v), 500);
-            await sleep(500);
+
+            activeIndex = (activeIndex + 1) % platforms.length;
         }
     };
 
-    $effect(() => {
+    onMount(() => {
         rotatePlatforms();
     });
 </script>
 
 <div class={classNames('light bg-greyscale-50 pt-40 pb-40', className)} {...rest}>
     <div class="container overflow-x-hidden">
-        <div class="mx-auto mb-20 flex max-w-2xl flex-col items-center gap-y-4 text-center">
-            <h2 class="text-display /text-title text-primary font-aeonik-pro">
+        <div class="mx-auto mb-20 flex max-w-2xl flex-col items-center gap-4 text-center">
+            <h2 class="text-display text-primary font-aeonik-pro">
                 Open source <br class="hidden md:block" />alternative to
 
                 <div
                     class="relative inline-flex bg-[linear-gradient(-146deg,_#FD376F,_#19191D_47%,_#19191D)] bg-clip-text pb-2 text-transparent"
                 >
-                    {activePlatform}{' '}
+                    {activePlatformText}
                     <div
-                        class="animate-caret-blink absolute top-1/2 -right-2 bottom-0 block h-[75%] w-px -translate-y-1/2 bg-[linear-gradient(-146deg,_#FD376F,_#19191D_47%,_#19191D)]"
+                        class="animate-caret-blink -right-2 bottom-0 mt-1 ml-2 block h-full min-h-14 w-px bg-[linear-gradient(-146deg,_#FD376F,_#19191D_47%,_#19191D)]"
                     ></div>
                 </div>
             </h2>
@@ -78,8 +82,8 @@
             <div
                 class="mx-auto mt-2 flex w-full flex-col items-center justify-center gap-2 md:flex-row"
             >
-                <GithubStats class="w-full" />
-                <DiscordLink class="w-full" />
+                <GithubStats class="w-full! md:w-fit!" />
+                <DiscordLink class="w-full! md:w-fit!" />
             </div>
         </div>
 
