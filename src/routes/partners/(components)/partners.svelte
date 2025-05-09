@@ -1,6 +1,6 @@
 <script lang="ts">
     import { classNames } from '$lib/utils/classnames';
-    import { inView } from 'motion';
+    import { inView } from 'motion-legacy';
 
     import Platinum from '../(assets)/icons/platinum.png';
     import Gold from '../(assets)/icons/gold.png';
