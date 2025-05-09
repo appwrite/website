@@ -13,8 +13,9 @@
 </script>
 
 <Button
-    class="cursor-pointer shadow-[0_2px_40px_rgba(0,0,0,0.5)] transition-opacity hover:opacity-90 active:scale-95"
+    class="w-full! cursor-pointer shadow-[0_2px_40px_rgba(0,0,0,0.5)] transition-opacity hover:opacity-90 active:scale-95 lg:w-fit!"
     action={trigger}
+    variant="secondary"
     onclick={() => {
         trackEvent({
             plausible: { name: 'Appwrite in 100 seconds' },
@@ -22,9 +23,8 @@
         });
     }}
 >
-    Appwrite in 100 seconds
-
     <Icon name="play" />
+    Appwrite in 100 seconds
 </Button>
 {#if $open}
     <div use:melt={$portalled}>

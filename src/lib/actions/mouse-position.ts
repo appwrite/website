@@ -1,5 +1,5 @@
-import { inView } from 'motion-legacy';
-import { type Writable, writable } from 'svelte/store';
+import { hover } from 'motion';
+import { writable } from 'svelte/store';
 
 export const useMousePosition = () => {
     let position = writable<{ x: number; y: number }>({
@@ -9,19 +9,19 @@ export const useMousePosition = () => {
 
     const action = (node: HTMLElement) => {
         const handleMouseMove = (event: MouseEvent) => {
+            // Get the bounding rectangle of the element
+            const rect = node.getBoundingClientRect();
+
+            // Calculate position relative to the element
             position.set({
-                x: event.clientX,
-                y: event.clientY
+                x: event.clientX - rect.left,
+                y: event.clientY - rect.top
             });
         };
 
-        inView(
-            node,
-            () => {
-                node.addEventListener('mousemove', handleMouseMove);
-            },
-            { amount: 'any' }
-        );
+        hover(node, () => {
+            node.addEventListener('mousemove', handleMouseMove);
+        });
 
         return {
             destroy() {

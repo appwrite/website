@@ -129,6 +129,14 @@ const bannerRewriter: Handle = async ({ event, resolve }) => {
     return response;
 };
 
+const fontPreloader: Handle = async ({ event, resolve }) => {
+    return resolve(event, {
+        preload: ({ type }) => {
+            return type === 'font' || type === 'js' || type === 'css';
+        }
+    });
+};
+
 const initSession: Handle = async ({ event, resolve }) => {
     const session = await createInitSessionClient(event.cookies);
 
@@ -191,4 +199,10 @@ const initSession: Handle = async ({ event, resolve }) => {
     return response;
 };
 
-export const handle = sequence(redirecter, bannerRewriter, securityheaders, initSession);
+export const handle = sequence(
+    redirecter,
+    fontPreloader,
+    bannerRewriter,
+    securityheaders,
+    initSession
+);
