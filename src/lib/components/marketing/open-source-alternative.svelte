@@ -61,11 +61,12 @@
 </script>
 
 <div class={classNames('light bg-greyscale-50 pt-40 pb-40', className)} {...rest}>
-    <div class="container overflow-x-hidden">
+    <div class="container overflow-x-hidden max-md:px-5!">
         <div class="mx-auto mb-20 flex max-w-2xl flex-col items-center gap-4 text-center">
             <h2 class="text-display text-primary font-aeonik-pro">
                 Open source <br class="hidden md:block" />alternative to
 
+                <br class="block md:hidden" />
                 <div
                     class="relative inline-flex bg-[linear-gradient(-146deg,_#FD376F,_#19191D_47%,_#19191D)] bg-clip-text pb-2 text-transparent"
                 >
