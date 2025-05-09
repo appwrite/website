@@ -7,9 +7,7 @@
     import Dashboard from './dashboard.svelte';
 </script>
 
-<div
-    class="relative flex min-h-[80vh] max-w-screen flex-col items-center overflow-hidden py-12 md:flex-row md:py-0"
->
+<div class="relative min-h-[80vh] max-w-screen overflow-hidden py-12 md:py-0">
     <div
         class={classNames(
             'animate-lighting absolute top-0 left-0 -z-10 h-screen w-[200vw] -translate-x-[25%] translate-y-8 rotate-25 overflow-hidden blur-3xl md:w-full',
@@ -18,9 +16,11 @@
         )}
     ></div>
 
-    <div class="relative container grid grid-cols-1 place-items-center gap-8 md:grid-cols-2">
+    <div
+        class="relative flex flex-col place-items-center items-center justify-between gap-8 md:flex-row"
+    >
         <div
-            class="animate-blur-in flex flex-col gap-4 [animation-delay:150ms] [animation-duration:1000ms]"
+            class="animate-blur-in flex w-fit flex-col gap-4 pl-8 [animation-delay:150ms] [animation-duration:1000ms] lg:pl-20 xl:pl-40"
         >
             <GradientText class="animate-fade-in">
                 <h1 class="font-aeonik-pro text-hero text-pretty">

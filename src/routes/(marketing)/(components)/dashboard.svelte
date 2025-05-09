@@ -21,9 +21,9 @@
 
 <div
     class={classNames(
-        'bg-smooth relative h-full rounded-tl-2xl border-t border-l border-white/10 pt-2 pl-2 backdrop-blur-2xl md:w-[50vw]',
+        'bg-smooth relative h-full rounded-tl-2xl border-t border-l border-white/10 pt-2 pl-2 backdrop-blur-2xl md:top-10',
         'mask-b-from-0% mask-b-to-70% md:mask-b-to-100%',
-        '-right-40 md:-right-22'
+        'max-[375px]:-right-[58vw] max-md:-right-[20vw] min-[414px]:-right-[49vw] min-[430px]:-right-[44vw] min-[525px]:-right-[20vw] min-[735px]:-right-[5vw] md:right-0'
     )}
 >
     <div class="bg-greyscale-900 h-full overflow-hidden rounded-tl-xl">
