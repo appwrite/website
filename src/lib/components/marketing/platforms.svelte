@@ -101,11 +101,11 @@
         <div
             class={classNames(
                 'w-full overflow-clip md:overflow-visible',
-                'mask-alpha backdrop-blur-3xl max-md:mask-r-from-0% max-md:mask-r-to-99%'
+                'mask-r-from-75% mask-r-to-99% mask-l-from-75% mask-l-to-99% mask-alpha backdrop-blur-3xl md:mask-none'
             )}
         >
             <div
-                class="divide-smooth animate-marquee flex w-max flex-1 grow flex-nowrap divide-dashed [animation-duration:80s] md:w-full md:divide-x md:[animation-play-state:paused]"
+                class="divide-smooth animate-scroll-x flex w-max flex-1 grow flex-nowrap divide-dashed md:w-full md:[animation:none] md:divide-x md:[animation-play-state:paused]"
             >
                 <Tooltip.Provider delayDuration={0} disableCloseOnTriggerClick>
                     {#each platforms as platform, i}
@@ -116,7 +116,12 @@
                                     25}ms"
                             >
                                 <Tooltip.Trigger
-                                    class="first-of-type:border-smooth group animate-fade-in last-of-type:border-smooth relative flex h-16 w-16 items-center justify-center first-of-type:border-l first-of-type:border-dashed last-of-type:border-r last-of-type:border-dashed md:w-full"
+                                    class={classNames(
+                                        'border-smooth group animate-fade-in relative mt-4 flex h-16 w-16 items-center justify-center border-dashed md:mt-0 md:w-full lg:border-r',
+                                        {
+                                            'lg:border-l': i === 0
+                                        }
+                                    )}
                                     aria-hidden={i < platforms.length - 1}
                                 >
                                     <img

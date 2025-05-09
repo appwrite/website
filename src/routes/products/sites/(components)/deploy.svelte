@@ -96,7 +96,7 @@
             <div class="size-1 rounded-full bg-white"></div>
         </div>
     </div>
-    <div class="flex w-full flex-col gap-8 md:px-8">
+    <div class="flex w-full flex-col gap-8 md:pl-8">
         <span class="text-primary text-micro font-aeonik-fono uppercase"
             >{eyebrow}<span class="text-accent">_</span></span
         >

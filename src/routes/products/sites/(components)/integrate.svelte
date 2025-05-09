@@ -133,7 +133,7 @@
             <div class="size-1 rounded-full bg-white"></div>
         </div>
     </div>
-    <div class="mx-auto flex w-full flex-col gap-16 bg-center md:px-8">
+    <div class="mx-auto flex w-full flex-col gap-16 bg-center md:pl-8">
         <span class="text-primary text-micro font-aeonik-fono uppercase"
             >{eyebrow}<span class="text-accent">_</span></span
         >
