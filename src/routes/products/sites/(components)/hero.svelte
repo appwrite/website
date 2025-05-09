@@ -16,7 +16,7 @@
     <div
         class="container mx-auto grid w-full grid-cols-1 place-items-center gap-16 py-20 md:grid-cols-12"
     >
-        <div class="col-span-5 flex flex-col gap-8">
+        <div class="col-span-5 flex flex-col gap-6">
             <div class="flex items-center gap-2">
                 <img
                     src="/images/icons/illustrated/dark/sites.png"
@@ -28,7 +28,7 @@
                 </span>
             </div>
             <h1 class="font-aeonik-pro text-display text-primary text-pretty">
-                Your frontend and backend together, finally
+                The open-source Vercel alternative
             </h1>
             <p class="text-description text-secondary font-medium text-pretty">
                 Host, manage, and scale your frontend directly from Appwrite, alongside your

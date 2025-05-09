@@ -47,10 +47,10 @@
     </div>
     <div class="light -mb-4 bg-[#EDEDF0] pb-8">
         <OpenSourceAlternative platforms={['Vercel', 'Netlify', 'Sevalla']} />
-        <Testimonials />
+        <Testimonials class="mb-20" />
     </div>
 
-    <ProductCards />
+    <ProductCards exclude="sites" />
 
     <div class="relative -mt-6 max-w-screen overflow-hidden pt-20">
         <div class="container">

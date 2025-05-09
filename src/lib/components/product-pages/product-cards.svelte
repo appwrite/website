@@ -29,11 +29,30 @@
             description: 'Manage your files project, using convenient APIs and utilities.',
             icon: '/images/icons/illustrated/dark/storage.png',
             url: '/products/storage'
+        },
+        sites: {
+            title: 'Sites',
+            description: 'The open-source Vercel alternative.',
+            icon: '/images/icons/illustrated/dark/sites.png',
+            url: '/products/sites'
+        },
+        realtime: {
+            title: 'Realtime',
+            description: 'Realtime copy goes here.',
+            icon: '/images/icons/illustrated/dark/realtime.png',
+            url: '/docs/realtime'
         }
     } as const;
 
     type Props = {
-        exclude?: 'messaging' | 'functions' | 'databases' | 'storage' | 'auth' | 'realtime';
+        exclude?:
+            | 'messaging'
+            | 'functions'
+            | 'databases'
+            | 'storage'
+            | 'auth'
+            | 'realtime'
+            | 'sites';
     };
 
     const { exclude }: Props = $props();

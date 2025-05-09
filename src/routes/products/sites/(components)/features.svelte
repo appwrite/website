@@ -22,7 +22,7 @@
     ];
 </script>
 
-<div class="border-smooth container mx-auto border-y border-dashed py-12">
+<div class="border-smooth container mx-auto mb-20 border-y border-dashed py-12">
     <div class="grid w-full grid-cols-1 md:grid-cols-3 md:place-items-center">
         {#each items as { icon, label, description }}
             <div

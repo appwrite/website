@@ -191,4 +191,4 @@ const initSession: Handle = async ({ event, resolve }) => {
     return response;
 };
 
-export const handle = sequence(redirecter, bannerRewriter, securityheaders, initSession);
+export const handle = sequence(redirecter, securityheaders, initSession);

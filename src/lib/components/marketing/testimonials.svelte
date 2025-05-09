@@ -1,4 +1,6 @@
 <script lang="ts">
+    import { classNames } from '$lib/utils/classnames';
+
     const testimonials = [
         {
             name: 'Ryan O’Conner',
@@ -36,10 +38,15 @@
             company: 'Majik Kids'
         }
     ];
+
+    type Props = {
+        class?: string;
+    };
+    const { class: className }: Props = $props();
 </script>
 
-<div class="relative w-full max-w-[100vw] overflow-hidden">
-    <div class="group light flex w-fit gap-4">
+<div class={classNames('relative w-full max-w-[100vw] overflow-hidden', className)}>
+    <div class="group light flex w-fit gap-8">
         {#each Array.from({ length: 4 }) as _, i}
             <div
                 class="animate-scroll group-hover:[animation-play-state:paused;] flex items-center gap-8"

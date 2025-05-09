@@ -1,6 +1,4 @@
 <script lang="ts">
-    import { onDestroy, onMount, type Component, type Snippet } from 'svelte';
-
     import Auth from '../(assets)/icons/auth.svg';
     import Databases from '../(assets)/icons/databases.svg';
     import Functions from '../(assets)/icons/functions.svg';
@@ -260,9 +258,9 @@
                 </div>
             </div>
         </div>
-        <div class="mx-auto flex flex-col gap-2 text-center">
-            <h2 class="text-primary text-title font-aeonik-pro">Integrate your backend</h2>
-            <p class="text-secondary mx-auto">
+        <div class="mx-auto flex flex-col gap-4 text-center">
+            <h2 class="text-title text-primary font-aeonik-pro">Integrate your backend</h2>
+            <p class="text-secondary text-description mx-auto font-medium">
                 Integrate your frontend easily with our backend products:<br /> Auth, Databases, Functions,
                 Messaging, Storage and Realtime.
             </p>
