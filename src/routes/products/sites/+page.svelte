@@ -8,6 +8,7 @@
     import { TITLE_SUFFIX } from '$routes/titles';
     import Create from './(components)/create.svelte';
     import Deploy from './(components)/deploy.svelte';
+    import Faq from './(components)/faq.svelte';
     import Features from './(components)/features.svelte';
     import Hero from './(components)/hero.svelte';
     import Integrate from './(components)/integrate.svelte';
@@ -50,6 +51,7 @@
         <Testimonials class="mb-20" />
     </div>
 
+    <Faq />
     <ProductCards exclude="sites" />
 
     <div class="relative -mt-6 max-w-screen overflow-hidden pt-20">

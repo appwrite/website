@@ -88,10 +88,12 @@
             </div>
         </div>
 
-        <div class="grid w-full grid-cols-1 md:grid-cols-3 md:place-items-center">
+        <div
+            class="divide-smooth grid w-full grid-cols-1 divide-y divide-dashed md:grid-cols-3 md:place-items-center md:divide-y-0"
+        >
             {#each items as item}
                 <div
-                    class="border-smooth text-center font-medium last-of-type:border-0 md:border-r md:px-10"
+                    class="border-smooth py-10 text-center font-medium last-of-type:border-0 md:border-r md:px-10 md:py-0"
                 >
                     <img src={item.icon} alt={item.title} class="mx-auto" />
                     <h3 class="text-sub-body text-primary mt-4 font-medium">{item.title}</h3>
