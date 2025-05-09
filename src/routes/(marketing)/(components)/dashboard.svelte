@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { classNames } from '$lib/utils/classnames';
     import { animate, stagger } from 'motion';
 
     $effect(() => {
@@ -19,7 +20,11 @@
 </script>
 
 <div
-    class="bg-smooth absolute inset-y-0 right-0 mt-20 h-full scale-75 rounded-tl-2xl border-t border-l border-white/10 mask-b-from-0% pt-2 pl-2 backdrop-blur-2xl md:w-[48vw] md:scale-100"
+    class={classNames(
+        'bg-smooth relative h-full rounded-tl-2xl border-t border-l border-white/10 pt-2 pl-2 backdrop-blur-2xl md:w-[50vw]',
+        'mask-b-from-0% mask-b-to-70% md:mask-b-to-100%',
+        '-right-40 md:-right-22'
+    )}
 >
     <div class="bg-greyscale-900 h-full overflow-hidden rounded-tl-xl">
         <div id="top-nav">

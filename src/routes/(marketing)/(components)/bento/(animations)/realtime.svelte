@@ -93,7 +93,7 @@
         <div
             class="cursor pointer-events-none absolute aspect-square h-12 w-[4.25rem]"
             style:right="100px"
-            style:bottom="75px"
+            style:bottom="20px"
             style:--y="-12px"
             style:--x="-6px"
             style:--duration="2.5s"
@@ -127,7 +127,7 @@
         <div
             class="cursor pointer-events-none absolute aspect-square h-12 w-[5.25rem]"
             style:left="140px"
-            style:bottom="125px"
+            style:bottom="85px"
             style:--y="8px"
             style:--x="-5px"
             style:--duration="4s"

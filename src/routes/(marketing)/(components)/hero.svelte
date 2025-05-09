@@ -1,11 +1,14 @@
 <script lang="ts">
+    import { PUBLIC_APPWRITE_DASHBOARD } from '$env/static/public';
+    import AppwriteIn100Seconds from '$lib/components/AppwriteIn100Seconds.svelte';
     import GradientText from '$lib/components/fancy/gradient-text.svelte';
+    import { Button } from '$lib/components/ui';
     import { classNames } from '$lib/utils/classnames';
     import Dashboard from './dashboard.svelte';
 </script>
 
 <div
-    class="relative flex min-h-[80vh] max-w-screen flex-col items-center overflow-hidden md:flex-row"
+    class="relative flex min-h-[80vh] max-w-screen flex-col items-center overflow-hidden py-12 md:flex-row md:py-0"
 >
     <div
         class={classNames(
@@ -29,7 +32,12 @@
                 Appwrite’s open-source platform empowers you to build applications faster with ready
                 to use backend APIs and host your frontend on one platform.
             </p>
+
+            <div class="flex flex-col gap-2 md:flex-row">
+                <Button href={PUBLIC_APPWRITE_DASHBOARD}>Start building for free</Button>
+                <AppwriteIn100Seconds />
+            </div>
         </div>
+        <Dashboard />
     </div>
-    <Dashboard />
 </div>
