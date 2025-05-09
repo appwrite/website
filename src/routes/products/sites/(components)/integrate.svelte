@@ -134,7 +134,7 @@
         </div>
     </div>
     <div class="mx-auto flex w-full flex-col gap-16 bg-center md:pl-8">
-        <span class="text-primary text-micro font-aeonik-fono uppercase"
+        <span class="text-primary text-micro font-aeonik-fono uppercase max-sm:ml-2"
             >{eyebrow}<span class="text-accent">_</span></span
         >
         <div
@@ -143,14 +143,16 @@
             <!-- left side -->
             <div class="col-span-3 mb-8 w-full">
                 <div
-                    class="text-body flex items-end gap-2 font-medium text-white md:flex-col md:gap-12"
+                    class="text-body flex items-center gap-2 font-medium text-white max-sm:justify-center md:flex-col md:items-end md:gap-8 lg:gap-12"
                 >
                     {#each products.slice(0, 3) as product, index}
                         {@const isActive = index === activeIndex}
-                        <div class="group relative mr-auto ml-0 flex w-fit items-center md:w-full">
+                        <div
+                            class="group relative ml-0 flex w-fit items-center md:mr-auto md:w-full"
+                        >
                             <button
                                 class={classNames(
-                                    'bg-card border-smooth ml-auto flex cursor-pointer items-center gap-2 rounded-xl border py-2 pr-4 pl-3 backdrop-blur-md transition-all hover:bg-white/8 md:mr-[100px]',
+                                    'bg-card border-smooth flex cursor-pointer items-center gap-2 rounded-xl border py-2 pr-4 pl-3 backdrop-blur-md transition-all hover:bg-white/8 md:mr-[100px] md:ml-auto',
                                     {
                                         'bg-accent/12 border-accent/36 md:border-smooth md:bg-card':
                                             isActive
@@ -178,15 +180,15 @@
             </div>
             <!-- window -->
             <div
-                class="window col-span-6 flex aspect-[6.5/4.75] w-full items-center justify-center rounded-[48px] border border-dashed border-transparent p-3 md:aspect-[6.5/4.5]"
+                class="window col-span-6 flex aspect-[6.5/4] w-full items-center justify-center rounded-[48px] border-dashed border-transparent md:aspect-[6.5/4.5] md:border md:p-3"
                 style:animation-delay="0.6s"
             >
                 <div
-                    class="window flex h-full flex-1 rounded-[40px] border border-dashed border-transparent p-3"
+                    class="window flex h-full flex-1 rounded-[40px] border-dashed border-transparent md:border md:p-3"
                     style:animation-delay="0.4s"
                 >
                     <div
-                        class="window flex h-full flex-1 rounded-[28px] border border-dashed border-transparent p-3"
+                        class="window flex h-full flex-1 rounded-[28px] border-dashed border-transparent md:border md:p-3"
                         style:animation-delay="0.2s"
                     >
                         <div
@@ -223,14 +225,18 @@
             </div>
             <!-- right side -->
             <div class="col-span-3 mt-8 w-full md:mt-0">
-                <div class="text-body flex gap-2 font-medium text-white md:flex-col md:gap-12">
+                <div
+                    class="text-body flex gap-2 font-medium text-white max-sm:justify-center md:flex-col md:gap-8 lg:gap-12"
+                >
                     {#each products.slice(3) as product, i}
                         {@const index = i + 3}
                         {@const isActive = index === activeIndex}
-                        <div class="group relative mr-0 ml-auto flex w-fit items-center md:w-full">
+                        <div
+                            class="group relative mr-0 flex w-fit items-center md:ml-auto md:w-full"
+                        >
                             <button
                                 class={classNames(
-                                    'bg-card border-smooth mr-auto flex cursor-pointer items-center gap-2 rounded-xl border py-2 pr-4 pl-3 backdrop-blur-md transition-all hover:bg-white/8 md:ml-[100px]',
+                                    'bg-card border-smooth flex cursor-pointer items-center gap-2 rounded-xl border py-2 pr-4 pl-3 backdrop-blur-md transition-all hover:bg-white/8 md:mr-auto md:ml-[100px]',
                                     {
                                         'bg-accent/12 border-accent/36 md:border-smooth md:bg-card':
                                             isActive

@@ -144,7 +144,7 @@
                                     sideOffset={8}
                                     side="top"
                                     class={classNames(
-                                        'text-primary bg-greyscale-900 relative rounded-md border-0! px-2.5 py-1 text-sm',
+                                        'text-primary bg-greyscale-900 relative hidden rounded-md border-0! px-2.5 py-1 text-sm md:block',
                                         'data-[state="closed"]:animate-menu-out data-[state="instant-open"]:animate-menu-in data-[state="delayed-open"]:animate-menu-in'
                                     )}
                                     >{platform.name}

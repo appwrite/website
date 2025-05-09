@@ -90,6 +90,9 @@
     --animate-enter:
         fade-in 0.75s ease-in-out both, blur 0.75s ease-in-out both, up 0.75s ease-in-out both;
     --animate-scroll: scroll 60s linear infinite;
+    --animate-scroll-x: scroll-x var(--speed, 30s) linear infinite var(--direction, forwards);
+    --animate-scroll-y: scroll-y 60s linear infinite forwards;
+
     --animate-fade-in: fade-in 0.5s ease-in-out both;
     --animate-marquee: marquee var(--speed, 30s) linear infinite var(--direction, forwards);
     --animate-lighting: lighting 1.25s ease-out forwards;
@@ -199,6 +202,18 @@
         }
     }
 
+    @keyframes scroll-x {
+        to {
+            transform: translateX(-50%);
+        }
+    }
+
+    @keyframes scroll-y {
+        to {
+            transform: translateY(-50%);
+        }
+    }
+
     /* Fonts */
     --font-sans: 'Inter', arial, sans-serif;
     --font-mono: 'Fira Code', monospace;
@@ -255,7 +270,7 @@
 
 @utility container {
     margin-inline: auto;
-    padding-inline: 1.25rem;
+    padding-inline: 2.5rem;
     max-width: 75rem;
 }
 

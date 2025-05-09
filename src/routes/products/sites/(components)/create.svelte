@@ -26,12 +26,12 @@
         </div>
     </div>
     <div class="flex w-full flex-col gap-8 md:pl-8">
-        <span class="text-primary text-micro font-aeonik-fono uppercase"
+        <span class="text-primary text-micro font-aeonik-fono uppercase max-sm:ml-2"
             >{eyebrow}<span class="text-accent">_</span></span
         >
 
         <div
-            class="border-smooth flex aspect-video w-full flex-col rounded-t-3xl border bg-gradient-to-br from-white/10 via-white/5 to-white/10 mask-b-from-0% px-2 pt-2 backdrop-blur-xl"
+            class="border-smooth flex aspect-video w-full flex-col rounded-t-3xl border bg-gradient-to-br from-white/10 via-white/5 to-white/10 mask-b-from-0% mask-b-to-85% px-2 pt-2 backdrop-blur-xl"
         >
             <img
                 src={Dashboard}

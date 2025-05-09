@@ -59,7 +59,7 @@
 <div class={classNames('light bg-greyscale-50 pt-40 pb-40', className)} {...rest}>
     <div class="container overflow-x-hidden">
         <div class="mx-auto mb-20 flex max-w-2xl flex-col items-center gap-y-4 text-center">
-            <h2 class="md:text-display text-title text-primary font-aeonik-pro">
+            <h2 class="text-display /text-title text-primary font-aeonik-pro">
                 Open source <br class="hidden md:block" />alternative to
 
                 <div
@@ -78,8 +78,8 @@
             <div
                 class="mx-auto mt-2 flex w-full flex-col items-center justify-center gap-2 md:flex-row"
             >
-                <GithubStats />
-                <DiscordLink />
+                <GithubStats class="w-full" />
+                <DiscordLink class="w-full" />
             </div>
         </div>
 
