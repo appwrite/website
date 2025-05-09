@@ -7,7 +7,7 @@
     import Dashboard from './dashboard.svelte';
 </script>
 
-<div class="relative min-h-[80vh] max-w-screen overflow-hidden py-12 md:py-0">
+<div class="relative flex min-h-[80vh] max-w-screen items-center overflow-hidden py-12 md:py-0">
     <div
         class={classNames(
             'animate-lighting absolute top-0 left-0 -z-10 h-screen w-[200vw] -translate-x-[25%] translate-y-8 rotate-25 overflow-hidden blur-3xl md:w-full',
@@ -17,9 +17,9 @@
     ></div>
 
     <div
-        class="relative flex flex-col place-items-center items-center justify-between gap-8 md:flex-row"
+        class="relative container mx-auto flex h-full flex-1 place-items-center items-center justify-between gap-8"
     >
-        <div
+        <!-- <div
             class="animate-blur-in flex w-fit flex-col gap-4 pl-8 [animation-delay:150ms] [animation-duration:1000ms] lg:pl-20 xl:pl-40"
         >
             <GradientText class="animate-fade-in">
@@ -37,7 +37,7 @@
                 <Button href={PUBLIC_APPWRITE_DASHBOARD}>Start building for free</Button>
                 <AppwriteIn100Seconds />
             </div>
-        </div>
+        </div> -->
         <Dashboard />
     </div>
 </div>
