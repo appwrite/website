@@ -152,7 +152,7 @@
                         >
                             <button
                                 class={classNames(
-                                    'bg-card border-smooth flex cursor-pointer items-center gap-2 rounded-xl border py-2 pr-4 pl-3 backdrop-blur-md transition-all hover:bg-white/8 md:mr-[100px] md:ml-auto',
+                                    'bg-card border-smooth md:text-caption flex cursor-pointer items-center gap-2 rounded-xl border py-2 pr-4 pl-3 text-sm backdrop-blur-md transition-all hover:bg-white/8 md:mr-[100px] md:ml-auto',
                                     {
                                         'bg-accent/12 border-accent/36 md:border-smooth md:bg-card':
                                             isActive
@@ -163,7 +163,11 @@
                                 onmouseout={() => handleMouseOut()}
                                 onblur={() => handleMouseOut()}
                             >
-                                <img src={product.icon} alt={product.label} class="h-6 w-6" />
+                                <img
+                                    src={product.icon}
+                                    alt={product.label}
+                                    class="size-4 md:size-6"
+                                />
                                 {product.label}
                             </button>
                             <div
@@ -236,7 +240,7 @@
                         >
                             <button
                                 class={classNames(
-                                    'bg-card border-smooth flex cursor-pointer items-center gap-2 rounded-xl border py-2 pr-4 pl-3 backdrop-blur-md transition-all hover:bg-white/8 md:mr-auto md:ml-[100px]',
+                                    'bg-card border-smooth md:text-caption flex cursor-pointer items-center gap-2 rounded-xl border py-2 pr-4 pl-3 text-sm backdrop-blur-md transition-all hover:bg-white/8 md:mr-auto md:ml-[100px]',
                                     {
                                         'bg-accent/12 border-accent/36 md:border-smooth md:bg-card':
                                             isActive
@@ -248,7 +252,11 @@
                                 onmouseout={() => handleMouseOut()}
                                 onblur={() => handleMouseOut()}
                             >
-                                <img src={product.icon} alt={product.label} class="h-6 w-6" />
+                                <img
+                                    src={product.icon}
+                                    alt={product.label}
+                                    class="size-4 md:size-6"
+                                />
                                 {product.label}
                             </button>
                             <div
