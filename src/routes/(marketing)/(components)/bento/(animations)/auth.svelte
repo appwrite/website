@@ -48,7 +48,7 @@
     >
         <div class="flex h-full w-full items-center justify-center">
             <div
-                class="border-smooth flex w-3/4 flex-col rounded-[40px] border bg-[#232325]/90 md:w-1/2"
+                class="border-smooth flex w-[264px] flex-col rounded-[40px] border bg-[#232325]/90"
             >
                 <div class="relative m-2 flex-1 rounded-4xl bg-[#19191C] p-4">
                     <form class="flex flex-col gap-3">
@@ -74,7 +74,7 @@
                         </div>
 
                         <button
-                            class="text-micro w-full rounded-lg bg-[#7C67FE] py-2 font-medium text-white"
+                            class="text-micro w-full rounded-lg bg-white py-2 font-medium text-[#19191C]"
                             >Sign up</button
                         >
                     </form>
