@@ -151,7 +151,16 @@
                     >
                         {#each items as { href, label, target, rel }}
                             <li>
-                                <a class="web-link" {href} {target} {rel}>{label}</a>
+                                <a
+                                    class="web-link"
+                                    {href}
+                                    {target}
+                                    {rel}
+                                    onclick={() =>
+                                        trackEvent(
+                                            `footer-${label.toLowerCase().replace(' ', '_')}-click`
+                                        )}>{label}</a
+                                >
                             </li>
                         {/each}
                     </ul>

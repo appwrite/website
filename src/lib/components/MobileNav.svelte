@@ -6,6 +6,7 @@
     import { getAppwriteDashboardUrl } from '$lib/utils/dashboard';
     import { Button, InlineTag, Icon } from '$lib/components/ui';
     import { GithubStats } from '$lib/components/shared';
+    import { trackEvent } from '$lib/actions/analytics';
 
     export let open = false;
     export let links: NavLink[];
@@ -33,7 +34,14 @@
                             {#if mobileSubmenu}
                                 <svelte:component this={mobileSubmenu} {label} />
                             {:else}
-                                <a class="web-side-nav-button" {href}>
+                                <a
+                                    class="web-side-nav-button"
+                                    {href}
+                                    onclick={() =>
+                                        trackEvent(
+                                            `mobile-nav-${label.toLowerCase().replace(' ', '_')}-click`
+                                        )}
+                                >
                                     <span class="text-caption">{label}</span>
                                 </a>
                             {/if}

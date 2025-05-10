@@ -1,5 +1,6 @@
 <script lang="ts">
     import type { SDKMethod } from '$lib/utils/specs';
+    import { trackEvent } from '$lib/actions/analytics';
 
     export let method: SDKMethod;
     export let platformType: string;
@@ -98,7 +99,11 @@
             </div>
         </div>
         <div class="">
-            <a href="/docs/advanced/platform/rate-limits" class="u-link text-primary">
+            <a
+                href="/docs/advanced/platform/rate-limits"
+                class="u-link text-primary"
+                onclick={() => trackEvent(`docs-learn_more_rate_limits-click`)}
+            >
                 <span>Learn more about rate limits</span>
                 <span class="web-icon-arrow-right" aria-hidden="true"></span>
             </a>

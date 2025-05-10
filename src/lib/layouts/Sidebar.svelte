@@ -28,6 +28,7 @@
     import { SOCIAL_STATS } from '$lib/constants';
     import { layoutState, toggleSidenav } from './Docs.svelte';
     import SidebarNavButton from './SidebarNavButton.svelte';
+    import { trackEvent } from '$lib/actions/analytics';
 
     interface Props {
         expandable?: boolean;
@@ -63,7 +64,14 @@
         <div class="web-side-nav-scroll">
             {#if parent}
                 <section class="web-side-nav-wrapper-parent">
-                    <a href={parent.href} aria-label="go back">
+                    <a
+                        href={parent.href}
+                        aria-label="go back"
+                        onclick={() =>
+                            trackEvent(
+                                `docs-sidebar-${parent.label.toLowerCase().replace(' ', '_')}-click`
+                            )}
+                    >
                         <span class="icon-cheveron-left" aria-hidden="true"></span>
                     </a>
                     <span class="web-side-nav-wrapper-parent-title text-micro uppercase"
