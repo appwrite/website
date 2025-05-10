@@ -22,7 +22,7 @@
         { number: 0, label: 'Top OSS GitHub projects' }
     ];
 
-    const numbers = [650, 45, 900, 300];
+    const numbers = [650, 48, 900, 300];
 
     const updateNumbers = () => {
         items = items.map((item, index) => {

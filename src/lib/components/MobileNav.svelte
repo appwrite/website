@@ -6,6 +6,7 @@
     import { getAppwriteDashboardUrl } from '$lib/utils/dashboard';
     import { Button, InlineTag, Icon } from '$lib/components/ui';
     import { GithubStats } from '$lib/components/shared';
+    import { trackEvent } from '$lib/actions/analytics';
 
     export let open = false;
     export let links: NavLink[];
@@ -20,7 +21,12 @@
 <nav class="web-side-nav web-is-not-desktop" class:hidden={!open}>
     <div class="web-side-nav-wrapper ps-4 pe-4">
         <div class="flex items-center gap-2 px-4">
-            <Button href={getAppwriteDashboardUrl('/register')} variant="secondary" class="flex-1">
+            <Button
+                href={getAppwriteDashboardUrl('/register')}
+                variant="secondary"
+                class="flex-1"
+                event="mobile_nav-sign_up-click"
+            >
                 Sign up
             </Button>
             <IsLoggedIn class="flex-1" />
@@ -33,7 +39,14 @@
                             {#if mobileSubmenu}
                                 <svelte:component this={mobileSubmenu} {label} />
                             {:else}
-                                <a class="web-side-nav-button" {href}>
+                                <a
+                                    class="web-side-nav-button"
+                                    {href}
+                                    onclick={() =>
+                                        trackEvent(
+                                            `mobile-nav-${label.toLowerCase().replace(' ', '_')}-click`
+                                        )}
+                                >
                                     <span class="text-caption">{label}</span>
                                 </a>
                             {/if}

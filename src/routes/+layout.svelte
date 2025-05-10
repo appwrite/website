@@ -127,10 +127,7 @@
 
                 const eventName = `${pageName}_scroll-depth_${threshold * 100}prct_scroll`;
                 tracked.add(threshold);
-                trackEvent({
-                    plausible: { name: eventName },
-                    posthog: { name: eventName }
-                });
+                trackEvent(eventName);
             }
         });
     }

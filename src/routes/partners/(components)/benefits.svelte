@@ -173,8 +173,11 @@
         </div>
     </div>
 
-    <Button variant="secondary" href="#become-a-partner" class="mx-auto mt-20"
-        >Become a partner</Button
+    <Button
+        variant="secondary"
+        class="mx-auto mt-20"
+        href="#become-a-partner"
+        event="partners-become_a_partner_benefits-click">Become a partner</Button
     >
 </div>
 

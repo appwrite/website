@@ -75,7 +75,10 @@
                 <a
                     href={platform.href}
                     class="web-icon-button web-box-icon has-border-gradient"
-                    on:click={() => trackEvent({ plausible: { name: `${platform.name} clicked` } })}
+                    onclick={() =>
+                        trackEvent(
+                            `technologies-${platform.name.replace(' ', '-').toLowerCase()}-click`
+                        )}
                 >
                     <img
                         src={platform.image}

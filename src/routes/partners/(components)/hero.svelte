@@ -26,8 +26,11 @@
             </p>
 
             <div class="flex flex-col items-center gap-2 md:flex-row">
-                <Button variant="secondary" href="#become-a-partner" class="!w-full md:!w-fit"
-                    >Become a Partner</Button
+                <Button
+                    variant="secondary"
+                    href="#become-a-partner"
+                    class="!w-full md:!w-fit"
+                    event="partners-become_a_partner_hero-click">Become a Partner</Button
                 >
             </div>
         </div>

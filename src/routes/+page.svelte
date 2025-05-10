@@ -136,7 +136,7 @@
                     <a
                         href="/blog/post/init-may-2025"
                         class="web-hero-banner-button mb-4"
-                        on:click={() => trackEvent({ plausible: { name: 'Banner button click' } })}
+                        onclick={() => trackEvent('main-banner-button-click')}
                     >
                         <span class="web-icon-star shrink-0" aria-hidden="true"></span>
                         <span class="text-caption shrink-0 font-medium">New</span>
@@ -162,11 +162,7 @@
                             <Button
                                 href={getAppwriteDashboardUrl()}
                                 class="w-full lg:w-fit"
-                                onclick={() =>
-                                    trackEvent({
-                                        plausible: { name: 'Get started in hero' },
-                                        posthog: { name: 'get-started-btn_hero_click' }
-                                    })}
+                                event="main-get_started_btn_hero-click"
                             >
                                 Start building
                             </Button>
@@ -174,6 +170,7 @@
                             <Button
                                 variant="secondary"
                                 href="/contact-us/enterprise"
+                                event="main-contact_enterprise_btn_hero-click"
                                 class="w-full lg:w-fit">Request a demo</Button
                             >
 
@@ -487,8 +484,7 @@
                         <Button
                             href="/docs/sdks"
                             variant="secondary"
-                            onclick={() => trackEvent({ plausible: { name: 'Explore all SDKs' } })}
-                            >Explore all SDKs</Button
+                            event="main-explore_all_sdks-click">Explore all SDKs</Button
                         >
                     </section>
                 </div>

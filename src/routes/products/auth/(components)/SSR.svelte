@@ -159,9 +159,9 @@ async function getLoggedInUser(request) {
                         <li>
                             <a
                                 href={platform.href}
+                                onclick={() =>
+                                    trackEvent(`products-auth-docs_ssr_${platform.name}-click`)}
                                 class="platform flex size-14 items-center justify-center rounded-lg bg-white p-2"
-                                on:click={() =>
-                                    trackEvent({ plausible: { name: `${platform.name} clicked` } })}
                             >
                                 <img
                                     src={platform.image}
@@ -177,7 +177,12 @@ async function getLoggedInUser(request) {
                     </Tooltip>
                 {/each}
             </ul>
-            <Button variant="secondary" href="/docs/sdks#server" class="mt-8">Learn more</Button>
+            <Button
+                variant="secondary"
+                href="/docs/sdks#server"
+                class="mt-8"
+                event="products-auth-server_sdks-click">Learn more</Button
+            >
         </div>
 
         <MultiFrameworkCode data={codeSnippets} selected={Framework.NextJs} />

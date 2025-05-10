@@ -61,10 +61,7 @@
             })
         });
 
-        trackEvent({
-            plausible: { name: 'startups-form_submit' },
-            posthog: { name: 'startups-form_submit' }
-        });
+        trackEvent('startups-form-submit');
 
         submitting = false;
 

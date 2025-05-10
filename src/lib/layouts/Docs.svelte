@@ -116,7 +116,11 @@
             </a>
         </div>
         <div class="web-mobile-header-end">
-            <Button href={getAppwriteDashboardUrl()} class="hidden md:flex">
+            <Button
+                href={getAppwriteDashboardUrl()}
+                class="hidden md:flex"
+                event="docs-go_to_console-click"
+            >
                 <span class="text-sub-body font-medium">Go to Console</span>
             </Button>
             <Button variant="text" aria-label="open navigation" onclick={toggleSidenav}>

@@ -37,6 +37,7 @@
             <Button
                 href="/docs/advanced/platform/permissions"
                 variant="secondary"
+                event="products-auth-permissions_learn_more-click"
                 class="mt-2 !w-full md:!w-fit">Learn more</Button
             >
         </div>
