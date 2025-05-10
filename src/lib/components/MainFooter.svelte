@@ -99,7 +99,7 @@
                         href="https://appwrite.online"
                         target="_blank"
                         rel="noopener noreferrer"
-                        onclick={() => trackEvent(`footer-appwrite-status-click`)}>Status</a
+                        onclick={() => trackEvent(`footer-appwrite_status-click`)}>Status</a
                     >
                 </li>
                 <!-- <li>

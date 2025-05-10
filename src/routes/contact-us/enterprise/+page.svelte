@@ -49,7 +49,7 @@
             })
         });
 
-        trackEvent('enterprise-contact-form-submit');
+        trackEvent('contact-form-enterprise-submit');
 
         submitting = false;
         if (response.status >= 400) {

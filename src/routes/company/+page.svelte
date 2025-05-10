@@ -67,7 +67,7 @@
                                 Designed for and by developers
                             </h2>
                             <Button
-                                event="company-careers-click"
+                                event="company-careers-join_the_team-click"
                                 href="https://appwrite.careers"
                                 class="web-u-inline-width-100-percent-mobile-break1 self-start"
                                 target="_blank"
@@ -550,6 +550,7 @@
                             Find your next career at Appwrite and join a team of remote workers.
                         </p>
                         <Button
+                            event="company-careers-click"
                             variant="transparent"
                             href="https://appwrite.careers"
                             target="_blank"

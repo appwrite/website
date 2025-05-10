@@ -14,7 +14,7 @@
 
 <Button
     href={getAppwriteDashboardUrl()}
-    event={{ name: 'get-started-btn-nav-click' }}
+    event="main-get_started_btn_nav-click"
     class={classNames('web-u-inline-width-100-percent-mobile', className)}
 >
     <span class="hidden group-[&[data-logged-in]]/body:block" aria-hidden={!isLoggedIn}

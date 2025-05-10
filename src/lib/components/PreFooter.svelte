@@ -74,7 +74,7 @@
             variant="transparent"
             class="self-center"
             href={getAppwriteDashboardUrl()}
-            event={{ name: 'footer-plans-get-started' }}
+            event="footer-plans-get_started-click"
         >
             <span class="text">Get started</span>
         </Button>

@@ -178,7 +178,7 @@
         </div>
         <div class="web-mobile-header-end">
             {#if !$isMobileNavOpen}
-                <Button href={getAppwriteDashboardUrl()}>
+                <Button href={getAppwriteDashboardUrl()} event="main-start_building_btn-click">
                     <span class="text">Start building</span>
                 </Button>
             {/if}
@@ -227,7 +227,6 @@
                     target="_blank"
                     rel="noopener noreferrer"
                     class="web-u-inline-width-100-percent-mobile"
-                    event={{ name: 'github-stars-nav-click' }}
                 >
                     <Icon name="star" aria-hidden="true" />
                     <span class="text">Star on GitHub</span>

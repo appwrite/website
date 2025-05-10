@@ -59,7 +59,7 @@
             {description}
         </p>
         <div class="mbs-auto flex flex-wrap gap-2 pt-4">
-            <Button variant="secondary" disabled={hasPast} event="community-events-click">
+            <Button variant="secondary" disabled={hasPast}>
                 <span>{buttonText}</span>
             </Button>
         </div>

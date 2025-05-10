@@ -102,7 +102,7 @@
             <a
                 href="/docs/advanced/platform/rate-limits"
                 class="u-link text-primary"
-                onclick={() => trackEvent(`docs-learn_more_rate_limits-click`)}
+                onclick={() => trackEvent(`docs-rate_limits_learn_more-click`)}
             >
                 <span>Learn more about rate limits</span>
                 <span class="web-icon-arrow-right" aria-hidden="true"></span>

@@ -13,7 +13,7 @@
 
 <Button
     action={trigger}
-    event={'intro-video-btn_hero_click'}
+    event="intro-video-btn_hero-click"
     class="cursor-pointer shadow-[0_2px_40px_rgba(0,0,0,0.5)] transition-opacity hover:opacity-90 active:scale-95"
 >
     Appwrite in 100 seconds

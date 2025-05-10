@@ -100,7 +100,7 @@
                                                 variant="secondary"
                                                 class="is-full-width mt-8"
                                                 href={getAppwriteDashboardUrl('/register')}
-                                                event={{ name: 'pricing-cards-free-click' }}
+                                                event="pricing-cards-free-click"
                                             >
                                                 <span class="text-sub-body font-medium"
                                                     >Start building</span
@@ -171,7 +171,7 @@
                                                 class="is-full-width mt-11"
                                                 target="_blank"
                                                 rel="noopener noreferrer"
-                                                event={{ name: 'pricing-cards-pro-click' }}
+                                                event="pricing-cards-pro-click"
                                             >
                                                 <span class="text-sub-body font-medium"
                                                     >Start building</span
@@ -236,7 +236,7 @@
                                                 href={getAppwriteDashboardUrl(
                                                     '/console?type=create&plan=tier-2'
                                                 )}
-                                                event={{ name: 'pricing-cards-scale-click' }}
+                                                event="pricing-cards-scale-click"
                                                 class="is-full-width mt-10"
                                                 target="_blank"
                                                 rel="noopener noreferrer"
@@ -292,7 +292,7 @@
                                                 href="/contact-us/enterprise"
                                                 class="is-full-width mt-10"
                                                 rel="noopener noreferrer"
-                                                event={{ name: 'pricing-cards-enterprise-click' }}
+                                                event="pricing-cards-enterprise-click"
                                             >
                                                 <!-- <span class="web-sub-body-500">Start trial</span> -->
                                                 <span class="web-sub-body-500">Contact us</span>
@@ -333,8 +333,7 @@
                                 class="mt-8"
                                 variant="secondary"
                                 href="/contact-us"
-                                event={{ name: 'pricing-cards-alternate-enterprise-click' }}
-                                >Contact us</Button
+                                event="pricing-cards-alternate_enterprise-click">Contact us</Button
                             >
                         </div>
                         <div class="cta-card w-full p-6">
@@ -350,6 +349,7 @@
                             <Button
                                 variant="secondary"
                                 href="/docs/advanced/platform/oss"
+                                event="pricing-cards-oss_learn_more-click"
                                 class="mt-8">Learn More</Button
                             >
                         </div>

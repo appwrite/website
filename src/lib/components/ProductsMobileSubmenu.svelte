@@ -36,7 +36,7 @@
                             href={product.href}
                             onclick={() =>
                                 trackEvent(
-                                    `products-mobile-submenu-${product.name.toLowerCase()}-click`
+                                    `products-mobile_submenu-${product.name.toLowerCase()}-click`
                                 )}
                             class="group flex gap-3 rounded-xl p-2 text-white transition-colors outline-none focus:bg-white/8"
                         >

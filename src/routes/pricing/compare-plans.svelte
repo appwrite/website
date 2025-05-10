@@ -623,7 +623,7 @@
                                     variant="secondary"
                                     class="!w-full"
                                     href={getAppwriteDashboardUrl('/register')}
-                                    event={{ name: 'pricing-compare-free-click' }}
+                                    event="pricing-compare-free-click"
                                 >
                                     <span class="text-sub-body font-medium">Start building</span>
                                 </Button>
@@ -638,7 +638,7 @@
                                         '/console?type=create&plan=tier-1'
                                     )}
                                     target="_blank"
-                                    event={{ name: 'pricing-compare-pro-click' }}
+                                    event="pricing-compare-pro-click"
                                     rel="noopener noreferrer"
                                 >
                                     <span class="text-sub-body font-medium">Start building</span>
@@ -654,7 +654,7 @@
                                     href={getAppwriteDashboardUrl(
                                         '/console?type=create&plan=tier-2'
                                     )}
-                                    event={{ name: 'pricing-compare-scale-click' }}
+                                    event="pricing-compare-scale-click"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                 >
@@ -669,7 +669,7 @@
                                     variant="secondary"
                                     class="!w-full"
                                     href="/contact-us/enterprise"
-                                    event={{ name: 'pricing-compare-enterprise-click' }}
+                                    event="pricing-compare-enterprise-click"
                                 >
                                     <span class="text-sub-body font-medium">Contact</span>
                                 </Button>

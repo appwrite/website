@@ -21,7 +21,12 @@
 <nav class="web-side-nav web-is-not-desktop" class:hidden={!open}>
     <div class="web-side-nav-wrapper ps-4 pe-4">
         <div class="flex items-center gap-2 px-4">
-            <Button href={getAppwriteDashboardUrl('/register')} variant="secondary" class="flex-1">
+            <Button
+                href={getAppwriteDashboardUrl('/register')}
+                variant="secondary"
+                class="flex-1"
+                event="mobile_nav-sign_up-click"
+            >
                 Sign up
             </Button>
             <IsLoggedIn class="flex-1" />

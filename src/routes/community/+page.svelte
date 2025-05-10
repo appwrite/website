@@ -115,7 +115,7 @@
         error = undefined;
         const response = await newsletter(name, email);
 
-        trackEvent('community-insights-subscribe-submit');
+        trackEvent('community-insights_subscribe-submit');
 
         submitting = false;
         if (response.status >= 400) {
@@ -468,7 +468,7 @@
                             target="_blank"
                             rel="noopener noreferrer"
                             class="mt-4 self-center"
-                            event="community-built-with-appwrite-click"
+                            event="community-builtwith_appwrite-click"
                         >
                             <span>View all projects</span>
                         </Button>

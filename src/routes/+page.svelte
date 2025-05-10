@@ -162,7 +162,7 @@
                             <Button
                                 href={getAppwriteDashboardUrl()}
                                 class="w-full lg:w-fit"
-                                onclick={() => trackEvent('get-started-btn-hero-click')}
+                                event="main-get_started_btn_hero-click"
                             >
                                 Start building
                             </Button>
@@ -170,6 +170,7 @@
                             <Button
                                 variant="secondary"
                                 href="/contact-us/enterprise"
+                                event="main-contact_enterprise_btn_hero-click"
                                 class="w-full lg:w-fit">Request a demo</Button
                             >
 
@@ -483,8 +484,7 @@
                         <Button
                             href="/docs/sdks"
                             variant="secondary"
-                            onclick={() => trackEvent('main-explore-all-sdks-click')}
-                            >Explore all SDKs</Button
+                            event="main-explore_all_sdks-click">Explore all SDKs</Button
                         >
                     </section>
                 </div>
