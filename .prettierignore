@@ -12,3 +12,15 @@ pnpm-lock.yaml
 package-lock.json
 yarn.lock
 *.scss
+
+# Assets
+*.jpg
+*.png
+*.webp
+*.avif
+
+# Media
+*.mp3
+*.wav
+*.mp4
+*.mpv
