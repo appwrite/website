@@ -57,6 +57,7 @@
 
     import { SOCIAL_STATS } from '$lib/constants';
     import { Button, Icon } from '$lib/components/ui';
+    import { trackEvent } from '$lib/actions/analytics';
     import InlineTag from '$lib/components/ui/inline-tag.svelte';
 
     let { data } = $props();
@@ -113,6 +114,9 @@
         submitting = true;
         error = undefined;
         const response = await newsletter(name, email);
+
+        trackEvent('community-insights-subscribe-submit');
+
         submitting = false;
         if (response.status >= 400) {
             error = response.status >= 500 ? 'Server Error.' : 'Error submitting form.';
@@ -464,6 +468,7 @@
                             target="_blank"
                             rel="noopener noreferrer"
                             class="mt-4 self-center"
+                            event="community-built-with-appwrite-click"
                         >
                             <span>View all projects</span>
                         </Button>

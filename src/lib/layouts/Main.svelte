@@ -227,11 +227,7 @@
                     target="_blank"
                     rel="noopener noreferrer"
                     class="web-u-inline-width-100-percent-mobile"
-                    onclick={() =>
-                        trackEvent({
-                            plausible: { name: 'Star on GitHub in header' },
-                            posthog: { name: 'github-stars_nav_click' }
-                        })}
+                    event={{ name: 'github-stars-nav-click' }}
                 >
                     <Icon name="star" aria-hidden="true" />
                     <span class="text">Star on GitHub</span>

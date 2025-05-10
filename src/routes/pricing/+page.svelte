@@ -9,6 +9,7 @@
     import BG from './bg.png?enhanced';
     import { getAppwriteDashboardUrl } from '$lib/utils/dashboard';
     import { Button } from '$lib/components/ui';
+    import { trackEvent } from '$lib/actions/analytics';
 
     const title = 'Pricing' + TITLE_SUFFIX;
     const description = 'Explore our straightforward pricing plans that scale with your project.';
@@ -97,8 +98,9 @@
                                             </p>
                                             <Button
                                                 variant="secondary"
-                                                href={getAppwriteDashboardUrl('/register')}
                                                 class="is-full-width mt-8"
+                                                href={getAppwriteDashboardUrl('/register')}
+                                                event={{ name: 'pricing-cards-free-click' }}
                                             >
                                                 <span class="text-sub-body font-medium"
                                                     >Start building</span
@@ -169,6 +171,7 @@
                                                 class="is-full-width mt-11"
                                                 target="_blank"
                                                 rel="noopener noreferrer"
+                                                event={{ name: 'pricing-cards-pro-click' }}
                                             >
                                                 <span class="text-sub-body font-medium"
                                                     >Start building</span
@@ -233,6 +236,7 @@
                                                 href={getAppwriteDashboardUrl(
                                                     '/console?type=create&plan=tier-2'
                                                 )}
+                                                event={{ name: 'pricing-cards-scale-click' }}
                                                 class="is-full-width mt-10"
                                                 target="_blank"
                                                 rel="noopener noreferrer"
@@ -288,6 +292,7 @@
                                                 href="/contact-us/enterprise"
                                                 class="is-full-width mt-10"
                                                 rel="noopener noreferrer"
+                                                event={{ name: 'pricing-cards-enterprise-click' }}
                                             >
                                                 <!-- <span class="web-sub-body-500">Start trial</span> -->
                                                 <span class="web-sub-body-500">Contact us</span>
@@ -324,7 +329,11 @@
                                 Large scale projects seeking greater performance, collaboration and
                                 security.
                             </p>
-                            <Button variant="secondary" href="/contact-us" class="mt-8"
+                            <Button
+                                class="mt-8"
+                                variant="secondary"
+                                href="/contact-us"
+                                event={{ name: 'pricing-cards-alternate-enterprise-click' }}
                                 >Contact us</Button
                             >
                         </div>
@@ -348,6 +357,7 @@
                 </section>
             </div>
         </div>
+
         <ComparePlans />
 
         <div class="dark relative overflow-hidden pt-10">

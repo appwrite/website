@@ -67,6 +67,7 @@
                                 Designed for and by developers
                             </h2>
                             <Button
+                                event="company-careers-click"
                                 href="https://appwrite.careers"
                                 class="web-u-inline-width-100-percent-mobile-break1 self-start"
                                 target="_blank"

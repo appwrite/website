@@ -1,9 +1,9 @@
 <script lang="ts">
-    import { classNames } from '$lib/utils/classnames';
-    import { melt, createCollapsible } from '@melt-ui/svelte';
     import { slide } from 'svelte/transition';
-    import { products, sublinks } from './ProductsSubmenu.svelte';
+    import { classNames } from '$lib/utils/classnames';
     import { trackEvent } from '$lib/actions/analytics';
+    import { melt, createCollapsible } from '@melt-ui/svelte';
+    import { products, sublinks } from './ProductsSubmenu.svelte';
 
     export let label: string;
 
@@ -34,13 +34,11 @@
                     {#each products as product}
                         <a
                             href={product.href}
+                            onclick={() =>
+                                trackEvent(
+                                    `products-mobile-submenu-${product.name.toLowerCase()}-click`
+                                )}
                             class="group flex gap-3 rounded-xl p-2 text-white transition-colors outline-none focus:bg-white/8"
-                            on:click={() =>
-                                trackEvent({
-                                    plausible: {
-                                        name: `${product.name} in products submenu`
-                                    }
-                                })}
                         >
                             <div
                                 class="flex size-12 shrink-0 items-center justify-center rounded-lg border border-white/12 bg-white/6"

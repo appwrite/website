@@ -136,7 +136,7 @@
                     <a
                         href="/blog/post/init-may-2025"
                         class="web-hero-banner-button mb-4"
-                        on:click={() => trackEvent({ plausible: { name: 'Banner button click' } })}
+                        onclick={() => trackEvent('main-banner-button-click')}
                     >
                         <span class="web-icon-star shrink-0" aria-hidden="true"></span>
                         <span class="text-caption shrink-0 font-medium">New</span>
@@ -162,11 +162,7 @@
                             <Button
                                 href={getAppwriteDashboardUrl()}
                                 class="w-full lg:w-fit"
-                                onclick={() =>
-                                    trackEvent({
-                                        plausible: { name: 'Get started in hero' },
-                                        posthog: { name: 'get-started-btn_hero_click' }
-                                    })}
+                                onclick={() => trackEvent('get-started-btn-hero-click')}
                             >
                                 Start building
                             </Button>
@@ -487,7 +483,7 @@
                         <Button
                             href="/docs/sdks"
                             variant="secondary"
-                            onclick={() => trackEvent({ plausible: { name: 'Explore all SDKs' } })}
+                            onclick={() => trackEvent('main-explore-all-sdks-click')}
                             >Explore all SDKs</Button
                         >
                     </section>

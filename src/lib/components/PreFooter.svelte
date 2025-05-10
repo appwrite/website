@@ -1,7 +1,6 @@
 <script lang="ts">
-    import { trackEvent } from '$lib/actions/analytics';
-    import { getAppwriteDashboardUrl } from '$lib/utils/dashboard';
     import { Button, type Variant } from '$lib/components/ui';
+    import { getAppwriteDashboardUrl } from '$lib/utils/dashboard';
 
     const plans: Array<{
         name: string;
@@ -21,7 +20,7 @@
             buttonText: 'Get started',
             buttonLink: getAppwriteDashboardUrl('/register'),
             buttonVariant: 'secondary',
-            eventName: 'Get started Free plan'
+            eventName: 'footer-plans-free-click'
         },
         {
             name: 'Pro',
@@ -33,7 +32,7 @@
             buttonText: 'Start building',
             buttonLink: getAppwriteDashboardUrl('/console?type=create&plan=tier-1'),
             buttonVariant: 'primary',
-            eventName: 'Get started Pro plan'
+            eventName: 'footer-plans-pro-click'
         },
         {
             name: 'Scale',
@@ -44,7 +43,7 @@
             buttonText: 'Start building',
             buttonLink: getAppwriteDashboardUrl('/console?type=create&plan=tier-2'),
             buttonVariant: 'secondary',
-            eventName: 'Get started Scale plan'
+            eventName: 'footer-plans-scale-click'
         },
         {
             name: 'Enterprise',
@@ -53,7 +52,7 @@
             buttonText: 'Contact us',
             buttonLink: '/contact-us/enterprise',
             buttonVariant: 'secondary',
-            eventName: 'Get started Enterprise plan'
+            eventName: 'footer-plans-enterprise-click'
         }
     ];
 </script>
@@ -73,9 +72,9 @@
         </h2>
         <Button
             variant="transparent"
-            href={getAppwriteDashboardUrl()}
             class="self-center"
-            onclick={() => trackEvent({ plausible: { name: 'Get started in pre footer' } })}
+            href={getAppwriteDashboardUrl()}
+            event={{ name: 'footer-plans-get-started' }}
         >
             <span class="text">Get started</span>
         </Button>
@@ -117,15 +116,9 @@
                             {plan.description}
                         </p>
                         <Button
+                            event={plan.eventName}
                             variant={plan.buttonVariant}
-                            href={plan.buttonLink}
                             class="w-full! flex-3 self-end md:w-fit"
-                            onclick={() =>
-                                trackEvent({
-                                    plausible: {
-                                        name: plan.eventName
-                                    }
-                                })}
                         >
                             <span class="text" style:padding-inline="0.5rem">{plan.buttonText}</span
                             >

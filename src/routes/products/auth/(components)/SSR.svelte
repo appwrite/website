@@ -159,9 +159,8 @@ async function getLoggedInUser(request) {
                         <li>
                             <a
                                 href={platform.href}
+                                onclick={() => trackEvent(`auth-docs-ssr-${platform.name}-click`)}
                                 class="platform flex size-14 items-center justify-center rounded-lg bg-white p-2"
-                                on:click={() =>
-                                    trackEvent({ plausible: { name: `${platform.name} clicked` } })}
                             >
                                 <img
                                     src={platform.image}

@@ -606,8 +606,9 @@
                                 <h4 class="text-sub-body text-primary font-medium">Free</h4>
                                 <Button
                                     variant="secondary"
-                                    href={getAppwriteDashboardUrl('/register')}
                                     class="!w-full"
+                                    href={getAppwriteDashboardUrl('/register')}
+                                    event={{ name: 'pricing-compare-free-click' }}
                                 >
                                     <span class="text-sub-body font-medium">Start building</span>
                                 </Button>
@@ -622,6 +623,7 @@
                                         '/console?type=create&plan=tier-1'
                                     )}
                                     target="_blank"
+                                    event={{ name: 'pricing-compare-pro-click' }}
                                     rel="noopener noreferrer"
                                 >
                                     <span class="text-sub-body font-medium">Start building</span>
@@ -637,6 +639,7 @@
                                     href={getAppwriteDashboardUrl(
                                         '/console?type=create&plan=tier-2'
                                     )}
+                                    event={{ name: 'pricing-compare-scale-click' }}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                 >
@@ -651,6 +654,7 @@
                                     variant="secondary"
                                     class="!w-full"
                                     href="/contact-us/enterprise"
+                                    event={{ name: 'pricing-compare-enterprise-click' }}
                                 >
                                     <span class="text-sub-body font-medium">Contact</span>
                                 </Button>
