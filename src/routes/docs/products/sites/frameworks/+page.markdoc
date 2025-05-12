@@ -89,4 +89,4 @@ This means you can focus on building your application while Appwrite handles the
 Even with "unsupported" frameworks, Appwrite will attempt to detect the correct build configuration. If your preferred framework isn't officially supported, you can still deploy it to Appwrite Sites using:
 
 1. **Manual configuration**: You can specify a custom install command, build command, and output directory in your build setting by selecting the **Other** framework option.
-2. **Static builds**: Most JavaScript frameworks can generate static builds that work with Appwrite Sites.
+2. **Static builds**: Most JavaScript frameworks (and some non-JavaScript ones) can generate static builds that work with Appwrite Sites.
