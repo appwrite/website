@@ -8,6 +8,7 @@ date: 2025-05-29
 author: veeresh-mulge
 callToAction: true
 unlisted: true
+category: open-source
 ---
 
 Time and time again, we've seen that startups that change and adapt to market needs are the ones who win big. However, with startups using traditional software products, it becomes increasingly difficult to pivot. High costs, vendor lock-in, limited control, and flexibility can hold them back to do so.
@@ -73,6 +74,6 @@ Sentry is an open-source alternative to Raygun. An error tracking and monitoring
 Appwrite is an open-source alternative to Firebase. A backend-as-a-service (BaaS) platform that simplifies the development of web and mobile applications. It provides developers with tools for user authentication, databases, file storage, and real-time capabilities, all through easy-to-use APIs.
 
 # Conclusion
-In conclusion, open-source products gives your startup the flexibility, control, and cost savings you need to scale and innovate. 
+In conclusion, open-source products gives your startup the flexibility, control, and cost savings you need to scale and innovate.
 
 Choose an open-source tech stack for your startup that offers a smarter way to build and grow without the limitations of traditional software.
