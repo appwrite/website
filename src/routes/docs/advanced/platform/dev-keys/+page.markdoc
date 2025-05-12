@@ -17,9 +17,14 @@ Dev keys should never be used in production environments, only in development en
 
 # Create dev key {% #create-dev-key %}
 
-![Create dev key](https://warm-tray-285.notion.site/image/attachment%3A3f828ec4-bc08-4a72-8222-b146240b0f7a%3Aimage.png?table=block&id=1defb53f-e82d-807a-bddd-e4090a66f714&spaceId=cf760f55-c352-4759-b494-006b8b294dbb&width=2000&userId=&cache=v2)
-
 To create a new API key, navigate to **Overview** > **Integration** > **Dev keys** and click **Create Dev key**.
+
+{% only_dark %}
+![Create dev key](/images/docs/dev-keys/dark.png)
+{% /only_dark %}
+{% only_light %}
+![Create dev key](/images/docs/dev-keys/light.png)
+{% /only_light %}
 
 You can then implement the dev key while initializing the Appwrite client in your app.
 

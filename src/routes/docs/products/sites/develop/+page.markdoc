@@ -18,8 +18,15 @@ You can configure your preferred rendering strategy through the following steps:
 2. Head to the **Settings** tab > **Build settings** section.
 3. Select the SSR or the Static checkbox.
 4. Confirm that the appropriate install command, build command, and output directory are set.
-5. (For SPAs) Add a fallback file.
+5. *(For SPAs)* Add a fallback file.
 6. Click on the **Update** button and redeploy your site.
+
+{% only_dark %}
+![Rendering strategy](/images/docs/sites/dark/build-settings-rendering-ssr.png)
+{% /only_dark %}
+{% only_light %}
+![Rendering strategy](/images/docs/sites/build-settings-rendering-ssr.png)
+{% /only_light %}
 
 # **Accessing environment variables**
 
@@ -32,6 +39,13 @@ To set static environment variables, follow these steps:
 3. Click on the **Create variable** button and add the key and value of the environment variable.
 4. Select the **Secret** checkbox if you want to prevent any team member from reading the value of the environment variable after creation.
 5. Click on the **Create** button and redeploy the site.
+
+{% only_dark %}
+![Environment variables](/images/docs/sites/dark/env-variables.png)
+{% /only_dark %}
+{% only_light %}
+![Environment variables](/images/docs/sites/env-variables.png)
+{% /only_light %}
 
 You can also configure global variables that apply to all your sites in the **Settings** of your project.
 
@@ -57,6 +71,13 @@ Each request made to a path on an Appwrite Site has a set time limit, after whic
 2. Head to the **Settings** tab > **Timeout** section.
 3. Add an appropriate time limit (in seconds).
 
+{% only_dark %}
+![Timeout](/images/docs/sites/dark/timeout.png)
+{% /only_dark %}
+{% only_light %}
+![Timeout](/images/docs/sites/timeout.png)
+{% /only_light %}
+
 The default timeout is set at `15 seconds` and the maximum value possible is `30 seconds`.
 
 # Project dependencies
@@ -66,6 +87,13 @@ To install your dependencies before your site is built, you should add the relev
 1. Navigate to your site on Appwrite Console.
 2. Head to the **Settings** tab > **Build settings** section.
 3. Confirm that the appropriate install command is set.
+
+{% only_dark %}
+![Install command](/images/docs/sites/dark/build-settings-install-command.png)
+{% /only_dark %}
+{% only_light %}
+![Install command](/images/docs/sites/build-settings-install-command.png)
+{% /only_light %}
 
 Make sure to include dependency files like `package.json` in your site's configured root directory. Do not include the dependency folders like `node_modules` in your site’s root directory. The dependencies installed for your local OS may not work in the site's environment.
 

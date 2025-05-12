@@ -14,7 +14,12 @@ To access a preview deployment, follow these steps:
 2. Under the **Deployments** tab, click on a ready deployment.
 3. Click on the **Visit** button.
 
-![Preview deployment](https://warm-tray-285.notion.site/image/attachment%3A670b195b-e4e5-4a38-bcdf-9d77f7cf417a%3Aimage.png?table=block&id=1b9fb53f-e82d-80ed-8e6d-d88d0442412e&spaceId=cf760f55-c352-4759-b494-006b8b294dbb&width=1420&userId=&cache=v2)
+{% only_dark %}
+![Preview deployment](/images/docs/sites/dark/preview-deployment.png)
+{% /only_dark %}
+{% only_light %}
+![Preview deployment](/images/docs/sites/preview-deployment.png)
+{% /only_light %}
 
 Appwrite Sites will then verify whether you are authorized to access the Appwrite project in which the site is deployed and allow you to access this preview accordingly.
 

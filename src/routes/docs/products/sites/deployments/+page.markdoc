@@ -23,7 +23,12 @@ Throughout the life cycle of a deployment, it can have any of the following stat
 
 When you build a deployment, the logs generated will be saved for debugging purposes. You can find these build logs by navigating to the **Deployments** tab of your site, clicking the three-dots menu beside a deployment, and clicking **Logs**.
 
-![image.png](https://warm-tray-285.notion.site/image/attachment%3Aa646a7a8-031e-47f7-9f27-0e4b3b884ab7%3Aimage.png?table=block&id=1b9fb53f-e82d-80a8-aaed-e58baab47c91&spaceId=cf760f55-c352-4759-b494-006b8b294dbb&width=1420&userId=&cache=v2)
+{% only_dark %}
+![Deployment logs](/images/docs/sites/dark/deployment-logs.png)
+{% /only_dark %}
+{% only_light %}
+![Deployment logs](/images/docs/sites/deployment-logs.png)
+{% /only_light %}
 
 # Create deployment
 
@@ -33,13 +38,27 @@ To manually trigger a deployment of your app from the Appwrite Console, you can 
 - **CLI**: Lets you run a [CLI command](/docs/products/sites/deploy-manually#cli) in your site's directory
 - **Manual**: Lets you upload a [.tar.gz file](/docs/products/sites/deploy-manually#manual-deployment) containing your site's build output
 
-# Update deployment
-
-Some site settings require redeploying your site to be reflected in your active deployment. When you update a site by changing its **Git repository**, **Build settings**, and **Environment variables**, you must redeploy your site before those changes take effect.
+{% only_dark %}
+![Create deployment](/images/docs/sites/dark/create-deployment.png)
+{% /only_dark %}
+{% only_light %}
+![Create deployment](/images/docs/sites/create-deployment.png)
+{% /only_light %}
 
 # Cancel deployment
 
 If a site is being deployed and you wish to stop this deployment, you can head to the **Deployments** tab of your site, click on the three-dots menu, and click on the **Cancel** button.
+
+{% only_dark %}
+![Cancel deployment](/images/docs/sites/dark/cancel-deployment.png)
+{% /only_dark %}
+{% only_light %}
+![Cancel deployment](/images/docs/sites/cancel-deployment.png)
+{% /only_light %}
+
+# Update deployment
+
+Some site settings require redeploying your site to be reflected in your active deployment. When you update a site by changing its **Git repository**, **Build settings**, and **Environment variables**, you must redeploy your site before those changes take effect.
 
 # Redeploy
 
@@ -48,6 +67,13 @@ After updating the configuration, redeploy your site for changes to take effect.
 1. Navigate to your site on Appwrite Console.
 2. Under the **Deployments** tab, find the status of the current active deployment.
 3. Redeploy by clicking the triple-dots beside a deployment and hitting the **Redeploy** button.
+
+{% only_dark %}
+![Redeploy](/images/docs/sites/dark/redeploy.png)
+{% /only_dark %}
+{% only_light %}
+![Redeploy](/images/docs/sites/redeploy.png)
+{% /only_light %}
 
 Redeployment behavior varies depending on how the initial deployment was created.
 

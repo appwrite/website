@@ -23,7 +23,12 @@ In your site's **Logs** tab, you will see a table of your recent logs. The foll
 
 When you click on a log, you will be shown a set of log details.
 
-![image.png](https://warm-tray-285.notion.site/image/attachment%3Abca21f73-292d-4425-b6a5-04b850f6a7cb%3Aimage.png?table=block&id=1b9fb53f-e82d-80ff-9ade-da48aeb1c286&spaceId=cf760f55-c352-4759-b494-006b8b294dbb&width=1420&userId=&cache=v2)
+{% only_dark %}
+![Log details](/images/docs/sites/dark/log-details.png)
+{% /only_dark %}
+{% only_light %}
+![Log details](/images/docs/sites/log-details.png)
+{% /only_light %}
 
 You can find both request and response information, including parameters and headers.
 
@@ -35,11 +40,18 @@ If your app uses **SSR hosting** on Appwrite Sites, you can also observe `consol
 
 # Disable logs
 
-You can optionally disable execution logs for your site, which will exclude `console.log` and `console.error` outputs from the response logs and make site responses slightly faster. Here are the steps to disable execution logs:
+You can optionally disable execution logs for your site, which will exclude `console.log` and `console.error` outputs from the response logs and make site responses slightly faster. Here are the steps to disable logs:
 
 1. Navigate to your site on Appwrite Console.
 2. Under the **Settings** tab, find the **Logging** section.
 3. Disable logs and click on the **Update** button.
+
+{% only_dark %}
+![Logging settings](/images/docs/sites/dark/logging-settings.png)
+{% /only_dark %}
+{% only_light %}
+![Logging settings](/images/docs/sites/logging-settings.png)
+{% /only_light %}
 
 # Log retention
 

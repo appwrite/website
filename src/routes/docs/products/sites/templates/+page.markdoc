@@ -10,7 +10,12 @@ Appwrite provides a variety of Site Templates to help you jump-start your web ap
 
 You can find all available templates by navigating to the Appwrite Console under your project > **Sites** > **Templates**.
 
-![image.png](https://warm-tray-285.notion.site/image/attachment%3A4be49224-fb3c-4a1e-8cc8-3d091317d6a4%3Aimage.png?table=block&id=1b9fb53f-e82d-80c0-8d20-ee458cf83e83&spaceId=cf760f55-c352-4759-b494-006b8b294dbb&width=1420&userId=&cache=v2)
+{% only_dark %}
+![Site templates](/images/docs/sites/dark/site-templates.png)
+{% /only_dark %}
+{% only_light %}
+![Site templates](/images/docs/sites/site-templates.png)
+{% /only_light %}
 
 You can filter sites by searching, filter by use case, or filter by framework. Click **Create site** to create a site from a template.
 
