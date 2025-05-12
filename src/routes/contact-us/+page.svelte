@@ -8,6 +8,7 @@
     import { PUBLIC_GROWTH_ENDPOINT } from '$env/static/public';
     import { getReferrerAndUtmSource } from '$lib/utils/utm';
     import { Button } from '$lib/components/ui';
+    import { trackEvent } from '$lib/actions/analytics';
 
     let email = '';
     let firstName = '';
@@ -35,6 +36,8 @@
                 ...getReferrerAndUtmSource()
             })
         });
+
+        trackEvent('contact-form-submit');
 
         submitting = false;
 

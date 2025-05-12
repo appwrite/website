@@ -56,15 +56,6 @@ export const createNewTicket = async (user: User) => {
     const appwriteEmail = user.appwrite?.email;
     const appwriteName = user.appwrite?.name;
 
-    // Send request details to user list for growth in production
-    if (NODE_ENV === 'production' && githubEmail && appwriteId) {
-        await sendToUserList({
-            name: appwriteName ?? githubName ?? githubEmail,
-            email: appwriteEmail ?? githubEmail,
-            userId: appwriteId ?? ''
-        });
-    }
-
     if (!githubLogin) return;
     const githubTicket = await databases.listDocuments(APPWRITE_DB_INIT_ID, APPWRITE_COL_INIT_ID, [
         Query.equal('gh_user', githubLogin)
@@ -74,6 +65,15 @@ export const createNewTicket = async (user: User) => {
     const firstName = getFirstName(appwriteName) ?? getFirstName(githubName);
 
     if (!githubTicket?.total) {
+        // Send request details to user list for growth in production if a ticket doens't exist
+        if (NODE_ENV === 'production' && githubEmail && appwriteId) {
+            await sendToUserList({
+                name: appwriteName ?? githubName ?? githubEmail,
+                email: appwriteEmail ?? githubEmail,
+                userId: appwriteId ?? ''
+            });
+        }
+
         const countQuery = await databases.listDocuments(APPWRITE_DB_INIT_ID, APPWRITE_COL_INIT_ID);
 
         await databases.createDocument(APPWRITE_DB_INIT_ID, APPWRITE_COL_INIT_ID, ID.unique(), {
@@ -84,11 +84,9 @@ export const createNewTicket = async (user: User) => {
             name: firstName,
             title: ''
         });
-
-        redirect(307, '/init/tickets/customize');
     }
 
-    redirect(307, '/init');
+    redirect(307, '/init/tickets/customize');
 };
 
 export const getTicketDocByUsername = async (username: string) => {

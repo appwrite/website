@@ -1,6 +1,7 @@
 <script context="module" lang="ts">
     import { PUBLIC_GROWTH_ENDPOINT } from '$env/static/public';
     import { Button } from '$lib/components/ui';
+    import { trackEvent } from '$lib/actions/analytics';
 
     export async function newsletter(name: string, email: string) {
         const response = await fetch(`${PUBLIC_GROWTH_ENDPOINT}/newsletter/subscribe`, {
@@ -167,7 +168,11 @@
                                     bind:value={email}
                                 />
                             </div>
-                            <Button type="submit" disabled={submitting}>Sign up</Button>
+                            <Button
+                                type="submit"
+                                disabled={submitting}
+                                event="newsletter-subscribe-submit">Sign up</Button
+                            >
                             {#if error}
                                 <span class="text">
                                     Something went wrong. Please try again later.
