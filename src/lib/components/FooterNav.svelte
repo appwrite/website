@@ -1,6 +1,7 @@
 <script lang="ts">
-    import { createAccordion, melt } from '@melt-ui/svelte';
     import { slide } from 'svelte/transition';
+    import { trackEvent } from '$lib/actions/analytics';
+    import { createAccordion, melt } from '@melt-ui/svelte';
 
     export let noBorder = false;
 
@@ -111,7 +112,16 @@
                 <ul class="web-footer-nav-secondary-list text-sub-body">
                     {#each items as { href, label, target, rel }}
                         <li>
-                            <a class="web-link" {href} {target} {rel}>{label}</a>
+                            <a
+                                class="web-link"
+                                {href}
+                                {target}
+                                {rel}
+                                onclick={() =>
+                                    trackEvent(
+                                        `footer-${label.toLowerCase().replace(' ', '_')}-click`
+                                    )}>{label}</a
+                            >
                         </li>
                     {/each}
                 </ul>
@@ -141,7 +151,16 @@
                     >
                         {#each items as { href, label, target, rel }}
                             <li>
-                                <a class="web-link" {href} {target} {rel}>{label}</a>
+                                <a
+                                    class="web-link"
+                                    {href}
+                                    {target}
+                                    {rel}
+                                    onclick={() =>
+                                        trackEvent(
+                                            `footer-${label.toLowerCase().replace(' ', '_')}-click`
+                                        )}>{label}</a
+                                >
                             </li>
                         {/each}
                     </ul>

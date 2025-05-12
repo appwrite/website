@@ -86,7 +86,7 @@
                                 various platforms and materials.
                             </p>
 
-                            <Button href="/assets.zip" download>
+                            <Button href="/assets.zip" event="assets-download-click">
                                 <Icon name="download" aria-hidden="true" />
                                 <span>Download assets</span>
                             </Button>

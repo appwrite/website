@@ -11,6 +11,8 @@
 </script>
 
 <script lang="ts">
+    import { trackEvent } from '$lib/actions/analytics';
+
     type $$Props = ProjectCardProps;
 
     export let title: $$Props['title'];
@@ -25,6 +27,7 @@
     {href}
     target="_blank"
     rel="noopener noreferrer"
+    onclick={() => trackEvent(`community-project-${title.toLowerCase().replace(' ', '_')}-click`)}
 >
     <div class="p-3">
         <h3 class="text-body text-primary font-medium">{title}</h3>
