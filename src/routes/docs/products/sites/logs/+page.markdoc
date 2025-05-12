@@ -38,7 +38,7 @@ If your app uses **SSR hosting** on Appwrite Sites, you can also observe `consol
 You can optionally disable execution logs for your site, which will exclude `console.log` and `console.error` outputs from the response logs and make site responses slightly faster. Here are the steps to disable execution logs:
 
 1. Navigate to your site on Appwrite Console.
-2. Under the **Settings** tab, find the **Execution logs** section.
+2. Under the **Settings** tab, find the **Logging** section.
 3. Disable logs and click on the **Update** button.
 
 # Log retention
