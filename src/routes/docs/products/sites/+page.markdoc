@@ -19,4 +19,22 @@ Appwrite Sites lets you host any web application with ease. However, to make thi
 ![Create first site](/images/docs/sites/build-settings-rendering-ssr.png)
 {% /only_light %}
 
-[Quick start >](/docs/products/sites/quick-start)
+Try out some of our most popular framework quick-starts:
+
+{% cards %}
+
+{% cards_item href="/docs/products/sites/quick-start/nextjs" title="Next.js" icon="icon-nextjs" %}
+{% /cards_item %}
+
+{% cards_item href="/docs/products/sites/quick-start/nuxt" title="Nuxt" icon="icon-nuxt" %}
+{% /cards_item %}
+
+{% cards_item href="/docs/products/sites/quick-start/sveltekit" title="SvelteKit" icon="icon-svelte" %}
+{% /cards_item %}
+
+{% cards_item href="/docs/products/sites/quick-start/astro" title="Astro" icon="icon-angular" %}
+{% /cards_item %}
+
+{% /cards %}
+
+Or, [setup your first site using your favorite framework>](/docs/products/sites/quick-start)

@@ -29,13 +29,13 @@ Learn how to quickly setup a web app developed using any of the following framew
 
 {% cards %}
 
-{% cards_item href="/docs/products/sites/quick-start/sveltekit" title="SvelteKit" icon="icon-svelte" %}
-{% /cards_item %}
-
 {% cards_item href="/docs/products/sites/quick-start/nextjs" title="Next.js" icon="icon-nextjs" %}
 {% /cards_item %}
 
 {% cards_item href="/docs/products/sites/quick-start/nuxt" title="Nuxt" icon="icon-nuxt" %}
+{% /cards_item %}
+
+{% cards_item href="/docs/products/sites/quick-start/sveltekit" title="SvelteKit" icon="icon-svelte" %}
 {% /cards_item %}
 
 {% cards_item href="/docs/products/sites/quick-start/angular" title="Angular" icon="icon-angular" %}
@@ -67,7 +67,7 @@ Use your first site as a springboard to explore the flexible and powerful featur
 
 {% cards %}
 
-{% cards_item href="/docs/products/sites/templates" title="Template" %}
+{% cards_item href="/docs/products/sites/templates" title="Templates" %}
 Get a template site up and running with a single click.
 {% /cards_item %}
 
