@@ -329,7 +329,7 @@ You can discover the available enums in each SDK at the source.
 ---
 * {% only_dark %}{% icon_image src="/images/platforms/dark/apple.svg" alt="Apple logo" size="m" /%}{% /only_dark %}
 {% only_light %}{% icon_image src="/images/platforms/apple.svg" alt="Apple logo" size="m" /%}{% /only_light %}
-* Apple SDK `5.0.0`
+* Apple SDK `9.0.1`
 * [appwrite/sdk-for-apple](https://github.com/appwrite/sdk-for-apple/tree/dev/Sources/AppwriteEnums)
 *
 ---
