@@ -1,21 +1,33 @@
 <script lang="ts">
     import TicketCard from '../tickets/(components)/ticket-card.svelte';
     import Avatar from '../(assets)/avatar.png';
+    import InitGiveaway from '../(assets)/init-giveaway.png';
     import { classNames } from '$lib/utils/classnames';
     import { Button } from '$lib/components/ui';
+    import { Media } from '$lib/UI';
 </script>
 
 <div class="container grid min-h-[65vh] w-full grid-cols-1 place-items-center py-20 md:grid-cols-2">
-    <div>
-        <h2 class="text-title text-primary font-aeonik-pro mb-4">
-            Get a ticket and enter<br /> our Init giveaway
-        </h2>
-        <p class="text-secondary text-body mb-8">
-            Create, customize and share your ticket to get the chance to win exclusive Init swag.
-        </p>
-        <Button href="/init/tickets/customize" variant="secondary">Claim your ticket</Button>
+    <div class="flex flex-col gap-12">
+        <Media
+            src={InitGiveaway}
+            alt="Init giveaway"
+            class="web-media max-h-[304px] max-w-[467px]"
+        />
+
+        <div>
+            <h2 class="text-title text-primary font-aeonik-pro mb-4">
+                Get a ticket and<br />enter our giveaway
+            </h2>
+            <p class="text-secondary text-body mb-6">
+                Create, customize and share your ticket to get the chance to win exclusive Init
+                swag.
+            </p>
+            <Button href="/init/tickets/customize" variant="secondary">Claim your ticket</Button>
+        </div>
     </div>
-    <div class="relative flex w-full items-center">
+
+    <div class="relative flex w-full scale-[1.073] items-center">
         <div style:transform="rotate(4deg)" class="absolute right-40 z-0">
             <TicketCard
                 $id="1"

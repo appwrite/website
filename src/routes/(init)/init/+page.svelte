@@ -182,5 +182,6 @@
     </div>
 
     <EventCarousel />
-    <Giveaway />
 {/if}
+
+<Giveaway />
