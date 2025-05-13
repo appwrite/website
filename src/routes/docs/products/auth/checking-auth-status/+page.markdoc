@@ -8,7 +8,7 @@ One of the first things your application needs to do when starting up is to chec
 
 # Check auth with `account.get()`
 
-The recommended approach for checking authentication status is to use the account.get() method when your application starts:
+The recommended approach for checking authentication status is to use the `account.get()` method when your application starts:
 
 {% multicode %}
 ```client-web
