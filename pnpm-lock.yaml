@@ -31,8 +31,8 @@ importers:
         specifier: ~0.26.0
         version: 0.26.0
       '@appwrite.io/repo':
-        specifier: github:appwrite/appwrite#feat-sites-docs
-        version: https://codeload.github.com/appwrite/appwrite/tar.gz/979fd63148371c2cce073c3a4660591aa90134ab
+        specifier: github:appwrite/appwrite#1.7.x
+        version: https://codeload.github.com/appwrite/appwrite/tar.gz/33d46508279f4a029920b53c3d48f8e588033c02
       '@eslint/compat':
         specifier: ^1.2.7
         version: 1.2.8(eslint@9.24.0(jiti@2.4.2))
@@ -288,8 +288,8 @@ packages:
   '@appwrite.io/pink@0.26.0':
     resolution: {integrity: sha512-iPeGE56pauzxuIXt15ZswjKCErwp3QdF3XOlJZfyYY7J2nirra85JNTL+3lWuFIf8yYWL7NbvCjhf8ig79TgwA==}
 
-  '@appwrite.io/repo@https://codeload.github.com/appwrite/appwrite/tar.gz/979fd63148371c2cce073c3a4660591aa90134ab':
-    resolution: {tarball: https://codeload.github.com/appwrite/appwrite/tar.gz/979fd63148371c2cce073c3a4660591aa90134ab}
+  '@appwrite.io/repo@https://codeload.github.com/appwrite/appwrite/tar.gz/33d46508279f4a029920b53c3d48f8e588033c02':
+    resolution: {tarball: https://codeload.github.com/appwrite/appwrite/tar.gz/33d46508279f4a029920b53c3d48f8e588033c02}
     version: 0.0.0
 
   '@asamuzakjp/css-color@3.1.2':
@@ -3068,6 +3068,7 @@ packages:
   node-domexception@1.0.0:
     resolution: {integrity: sha512-/jKZoMpw0F8GRwl4/eLROPA3cfcXtLApP0QzLmUT/HuPCZWyB7IY9ZrMeKw2O/nFIqPQB3PVM9aYm0F312AXDQ==}
     engines: {node: '>=10.5.0'}
+    deprecated: Use your platform's native DOMException instead
 
   node-fetch-native-with-agent@1.7.2:
     resolution: {integrity: sha512-5MaOOCuJEvcckoz7/tjdx1M6OusOY6Xc5f459IaruGStWnKzlI1qpNgaAwmn4LmFYcsSlj+jBMk84wmmRxfk5g==}
@@ -4237,7 +4238,7 @@ snapshots:
       normalize.css: 8.0.1
       the-new-css-reset: 1.11.3
 
-  '@appwrite.io/repo@https://codeload.github.com/appwrite/appwrite/tar.gz/979fd63148371c2cce073c3a4660591aa90134ab': {}
+  '@appwrite.io/repo@https://codeload.github.com/appwrite/appwrite/tar.gz/33d46508279f4a029920b53c3d48f8e588033c02': {}
 
   '@asamuzakjp/css-color@3.1.2':
     dependencies:
