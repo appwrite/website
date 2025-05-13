@@ -109,7 +109,7 @@ Your site's dependencies should be managed by the package manager of each langua
 
 ---
 
-- {% icon icon="nextjs" size="l" /%}
+- {% icon icon="nextjs" size="m" /%}
 - **Next.js**
 - `npm`
 - `npm install`
@@ -118,7 +118,7 @@ Your site's dependencies should be managed by the package manager of each langua
 
 ---
 
-- {% icon icon="nuxt" size="l" /%}
+- {% icon icon="nuxt" size="m" /%}
 - **Nuxt**
 - `npm`
 - `npm install` or `yarn install`
@@ -127,7 +127,7 @@ Your site's dependencies should be managed by the package manager of each langua
 
 ---
 
-- {% icon icon="svelte" size="l" /%}
+- {% icon icon="svelte" size="m" /%}
 - **SvelteKit**
 - `npm`
 - `npm install`
@@ -136,7 +136,7 @@ Your site's dependencies should be managed by the package manager of each langua
 
 ---
 
-- {% icon icon="angular" size="l" /%}
+- {% icon icon="angular" size="m" /%}
 - **Angular**
 - `npm`
 - `npm install`
@@ -145,7 +145,7 @@ Your site's dependencies should be managed by the package manager of each langua
 
 ---
 
-- {% icon icon="astro" size="l" /%}
+- {% icon icon="astro" size="m" /%}
 - **Astro**
 - `npm`
 - `npm install`
@@ -154,8 +154,8 @@ Your site's dependencies should be managed by the package manager of each langua
 
 ---
 
-- {% only_dark %}{% icon_image src="/images/platforms/dark/remix.svg" alt="Remix logo" size="l" /%}{% /only_dark %}
-{% only_light %}{% icon_image src="/images/platforms/light/remix.svg" alt="Remix logo" size="l" /%}{% /only_light %}
+- {% only_dark %}{% icon_image src="/images/platforms/dark/remix.svg" alt="Remix logo" size="m" /%}{% /only_dark %}
+{% only_light %}{% icon_image src="/images/platforms/light/remix.svg" alt="Remix logo" size="m" /%}{% /only_light %}
 - **Remix**
 - `npm`
 - `npm install`
@@ -164,7 +164,7 @@ Your site's dependencies should be managed by the package manager of each langua
 
 ---
 
-- {% icon icon="flutter" size="l" /%}
+- {% icon icon="flutter" size="m" /%}
 - **Flutter**
 - `pub`
 - (Empty)
@@ -173,7 +173,7 @@ Your site's dependencies should be managed by the package manager of each langua
 
 ---
 
-- {% icon icon="js" size="l" /%}
+- {% icon icon="js" size="m" /%}
 - **Other JavaScript**
 - `npm`
 - (Empty)

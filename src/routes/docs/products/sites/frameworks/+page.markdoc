@@ -25,51 +25,51 @@ This means you can focus on building your application while Appwrite handles the
 
 ---
 
-- {% icon icon="nextjs" size="l" /%}
+- {% icon icon="nextjs" size="m" /%}
 - [**Next.js**](/docs/products/sites/quick-start/nextjs)
 - `SSR` `Static`
 
 ---
 
-- {% icon icon="nuxt" size="l" /%}
+- {% icon icon="nuxt" size="m" /%}
 - [**Nuxt**](/docs/products/sites/quick-start/nuxt)
 - `SSR` `Static`
 
 ---
 
-- {% icon icon="svelte" size="l" /%}
+- {% icon icon="svelte" size="m" /%}
 - [**SvelteKit**](/docs/products/sites/quick-start/sveltekit)
 - `SSR` `Static`
 
 ---
 
-- {% icon icon="angular" size="l" /%}
+- {% icon icon="angular" size="m" /%}
 - [**Angular**](/docs/products/sites/quick-start/angular)
 - `SSR` `Static`
 
 ---
 
-- {% icon icon="astro" size="l" /%}
+- {% icon icon="astro" size="m" /%}
 - [**Astro**](/docs/products/sites/quick-start/astro)
 - `SSR` `Static`
 
 ---
 
-- {% only_dark %}{% icon_image src="/images/platforms/dark/remix.svg" alt="Remix logo" size="l" /%}{% /only_dark %}
-{% only_light %}{% icon_image src="/images/platforms/light/remix.svg" alt="Remix logo" size="l" /%}{% /only_light %}
+- {% only_dark %}{% icon_image src="/images/platforms/dark/remix.svg" alt="Remix logo" size="m" /%}{% /only_dark %}
+{% only_light %}{% icon_image src="/images/platforms/light/remix.svg" alt="Remix logo" size="m" /%}{% /only_light %}
 - [**Remix**](/docs/products/sites/quick-start/remix)
 - `SSR` `Static`
 
 ---
 
-- {% icon icon="flutter" size="l" /%}
+- {% icon icon="flutter" size="m" /%}
 - [**Flutter Web**](/docs/products/sites/quick-start/flutter)
 - `Static`
 
 ---
 
-- {% icon icon="js" size="l" /%}
-- [**Other**](/docs/products/sites/quick-start/vanilla)
+- {% icon icon="js" size="m" /%}
+- [**Other JavaScript**](/docs/products/sites/quick-start/vanilla)
 - `Static`
 
 ---
