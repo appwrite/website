@@ -98,7 +98,7 @@
                     href: '/docs/products/auth/mfa'
                 },
                 {
-                    label: 'Checking auth status',
+                    label: 'Auth status check',
                     href: '/docs/products/auth/checking-auth-status'
                 },
                 {
