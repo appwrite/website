@@ -6,7 +6,7 @@ description: Learn how to check a user's authentication status in your Appwrite 
 
 One of the first things your application needs to do when starting up is to check if the user is authenticated. This is an important step in creating a great user experience, as it determines whether to show login screens or protected content.
 
-# Check auth with account.get()
+# Check auth with `account.get()`
 
 The recommended approach for checking authentication status is to use the account.get() method when your application starts:
 
