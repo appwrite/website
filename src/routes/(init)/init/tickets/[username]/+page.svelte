@@ -145,7 +145,7 @@
                                                 <Spinner />
                                             {:else}
                                                 <Icon name="github" class="text-primary" />
-                                            {/if}Claim your TIcket</Button
+                                            {/if}Claim your Ticket</Button
                                         >
                                     </form>
 

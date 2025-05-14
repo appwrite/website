@@ -152,8 +152,9 @@
                     </p>
                     <Button
                         type="submit"
-                        class="web-u-inline-width-100-percent-mobile-break1 cursor-pointer self-center"
                         disabled={submitting}
+                        event="partners-application-submit"
+                        class="web-u-inline-width-100-percent-mobile-break1 cursor-pointer self-center"
                     >
                         <span>Submit application</span>
                     </Button>

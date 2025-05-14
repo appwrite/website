@@ -178,7 +178,7 @@
         </div>
         <div class="web-mobile-header-end">
             {#if !$isMobileNavOpen}
-                <Button href={getAppwriteDashboardUrl()}>
+                <Button href={getAppwriteDashboardUrl()} event="main-start_building_btn-click">
                     <span class="text">Start building</span>
                 </Button>
             {/if}
@@ -227,11 +227,6 @@
                     target="_blank"
                     rel="noopener noreferrer"
                     class="web-u-inline-width-100-percent-mobile"
-                    onclick={() =>
-                        trackEvent({
-                            plausible: { name: 'Star on GitHub in header' },
-                            posthog: { name: 'github-stars_nav_click' }
-                        })}
                 >
                     <Icon name="star" aria-hidden="true" />
                     <span class="text">Star on GitHub</span>

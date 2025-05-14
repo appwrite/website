@@ -169,7 +169,11 @@
                             Join our Technology Partners program to integrate your solutions with
                             Appwrite’s API, enhancing functionality and expanding your reach.
                         </p>
-                        <Button href="/integrations/technology-partner" class="mt-4 self-center">
+                        <Button
+                            href="/integrations/technology-partner"
+                            class="mt-4 self-center"
+                            event="integrations-technology_partner-click"
+                        >
                             <span class="text">Get Started</span>
                         </Button>
                     </section>

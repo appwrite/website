@@ -10,16 +10,19 @@
     import { createAccordion, melt } from '@melt-ui/svelte';
     import { writable } from 'svelte/store';
     import { fly } from 'svelte/transition';
+    import { trackEvent } from '$lib/actions/analytics';
+
+    type Row = string | true | { text: string; url: string; event: string };
 
     type Table = {
         title: string;
         rows: {
             title: string;
             info?: string;
-            free: string | true;
-            pro: string | true;
-            scale: string | true;
-            enterprise: string | true;
+            free: Row;
+            pro: Row;
+            scale: Row;
+            enterprise: Row;
         }[];
     };
 
@@ -161,8 +164,16 @@
                 {
                     title: 'Phone OTP',
                     free: '10 SMS / month',
-                    pro: '<a href="/docs/advanced/platform/phone-otp#rates" class="underline">View rates</a>',
-                    scale: '<a href="/docs/advanced/platform/phone-otp#rates" class="underline">View rates</a>',
+                    pro: {
+                        text: 'View rates',
+                        url: '/docs/advanced/platform/phone-otp#rates',
+                        event: 'pricing-pro-view_phone_otp_rates-click'
+                    },
+                    scale: {
+                        text: 'View rates',
+                        url: '/docs/advanced/platform/phone-otp#rates',
+                        event: 'pricing-scale-view_phone_otp_rates-click'
+                    },
                     enterprise: 'Custom'
                 },
                 {
@@ -532,6 +543,10 @@
 
     let scrollDir = 'down';
     let shouldShowTable = false;
+
+    function getItemAsRow(item: any): Row {
+        return item as Row;
+    }
 </script>
 
 <svelte:window on:scroll={() => (scrollDir = getScrollDir())} />
@@ -606,8 +621,9 @@
                                 <h4 class="text-sub-body text-primary font-medium">Free</h4>
                                 <Button
                                     variant="secondary"
-                                    href={getAppwriteDashboardUrl('/register')}
                                     class="!w-full"
+                                    href={getAppwriteDashboardUrl('/register')}
+                                    event="pricing-compare-free-click"
                                 >
                                     <span class="text-sub-body font-medium">Start building</span>
                                 </Button>
@@ -622,6 +638,7 @@
                                         '/console?type=create&plan=tier-1'
                                     )}
                                     target="_blank"
+                                    event="pricing-compare-pro-click"
                                     rel="noopener noreferrer"
                                 >
                                     <span class="text-sub-body font-medium">Start building</span>
@@ -637,6 +654,7 @@
                                     href={getAppwriteDashboardUrl(
                                         '/console?type=create&plan=tier-2'
                                     )}
+                                    event="pricing-compare-scale-click"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                 >
@@ -651,6 +669,7 @@
                                     variant="secondary"
                                     class="!w-full"
                                     href="/contact-us/enterprise"
+                                    event="pricing-compare-enterprise-click"
                                 >
                                     <span class="text-sub-body font-medium">Contact</span>
                                 </Button>
@@ -723,6 +742,15 @@
                                             >
                                                 {#if typeof row[col] === 'string'}
                                                     {@html row[col]}
+                                                {:else if typeof row[col] === 'object'}
+                                                    {@const rowItem = getItemAsRow(row[col])}
+                                                    <a
+                                                        href={rowItem.url}
+                                                        class="underline"
+                                                        on:click={() => trackEvent(rowItem.event)}
+                                                    >
+                                                        {rowItem.text}
+                                                    </a>
                                                 {:else}
                                                     <img
                                                         class="mx-auto self-center"
