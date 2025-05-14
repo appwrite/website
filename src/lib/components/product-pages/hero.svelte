@@ -57,11 +57,20 @@
             </p>
 
             <div class="flex flex-col items-center gap-2 md:flex-row">
-                <Button href={cta.url} class="!w-full md:!w-fit">
+                <Button
+                    href={cta.url}
+                    class="!w-full md:!w-fit"
+                    event={`product-hero-${eyebrow.label.toLocaleLowerCase().replace(' ', '_')}-click`}
+                >
                     {cta.label}
                 </Button>
                 {#if secondaryCta}
-                    <Button variant="secondary" href={secondaryCta.url} class="!w-full md:!w-fit">
+                    <Button
+                        variant="secondary"
+                        href={secondaryCta.url}
+                        class="!w-full md:!w-fit"
+                        event={`product-hero-${secondaryCta.label.toLocaleLowerCase().replace(' ', '_')}-click`}
+                    >
                         {secondaryCta.label}
                     </Button>
                 {/if}
