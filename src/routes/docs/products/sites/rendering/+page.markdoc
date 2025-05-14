@@ -49,4 +49,4 @@ When deciding between static and SSR for your Appwrite Sites project, consider t
 - You want to reduce client-side JavaScript load
 - You're using a supported SSR framework (Next.js, Nuxt, etc.)
 
-Many modern applications use a hybrid approach, leveraging static generation for stable content and SSR for dynamic pages. Some frameworks (like Next.js, Nuxt, and SvelteKit support) both approaches within the same application.
+Many modern applications use a hybrid approach, leveraging static generation for stable content and SSR for dynamic pages. Some frameworks (like Next.js, Nuxt, and SvelteKit support) both approaches within the same application. The SSR rendering strategy in Appwrite Sites supports such applications.
