@@ -6,7 +6,7 @@ description: Safely revert a site to a previous deployment using instant rollbac
 
 If a site needs to be reverted to a previously functional state for any reason (runtime errors, security flaw, etc.), you can roll your site back to an existing ready deployment.
 
-Instant rollbacks don't delete, modify,or re-deploy your code. Instead, they simply change which deployment is being served to visitors. This makes rollbacks near-instantaneous, with zero downtime.
+Instant rollbacks don't delete, modify, or re-deploy your code. Instead, they simply change which deployment is being served to visitors. This makes rollbacks near-instantaneous, with zero downtime.
 
 # Use instant rollbacks
 
