@@ -17,7 +17,7 @@ Dev keys should never be used in production environments, only in development en
 
 # Create dev key {% #create-dev-key %}
 
-To create a new API key, navigate to **Overview** > **Integration** > **Dev keys** and click **Create Dev key**.
+To create a new API key, navigate to **Overview** > **Integrations** > **Dev keys** and click **Create Dev key**.
 
 {% only_dark %}
 ![Create dev key](/images/docs/dev-keys/dark.png)
