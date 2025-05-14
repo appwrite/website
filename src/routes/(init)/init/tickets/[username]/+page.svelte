@@ -8,6 +8,9 @@
     import { stickerPack } from '../customize/+page.svelte';
     import { initDates } from '../../+page.svelte';
     import { enhance } from '$app/forms';
+    import InitGiveaway from '$routes/(init)/init/(assets)/init-giveaway.png';
+    import { Media } from '$lib/UI';
+    import { FooterNav, MainFooter } from '$lib/components';
 
     const { data } = $props();
 
@@ -70,108 +73,189 @@
     <meta name="twitter:card" content="summary_large_image" />
 </svelte:head>
 
-<div class="container">
-    <div
-        class="border-offset grid min-h-[80vh] grid-cols-1 border-b-2 border-dashed md:grid-cols-12"
-    >
-        <div
-            class="border-offset divide-offset grid place-items-center divide-y-2 divide-dashed border-r-2 border-l-2 border-dashed md:col-span-6 md:border-r-0"
-        >
-            <div class="row-span-2 hidden h-full w-full px-8 md:block"></div>
-            <div class="row-span-8 flex h-full w-full items-center px-4 py-6 md:px-12">
-                <div class="flex flex-1 flex-col gap-2">
-                    <a href="/init" class="text-primary group mb-2 flex items-center gap-2">
-                        <Icon
-                            name="arrow-left"
-                            class="transition-transform group-hover:-translate-x-0.5"
-                        />
-                        Back to Init</a
-                    >
-                    <h2 class="text-display font-aeonik-pro text-primary">
-                        {#if data.isCurrentUsersTicket}
-                            Here's your Init ticket
-                        {:else}
-                            {data.ticket.name.split(' ')[0]}'s ticket
-                        {/if}
-                        <span class="text-display font-aeonik-pro text-primary"
-                            ><span class="text-accent">#</span>{id}</span
-                        >
-                    </h2>
-
-                    <p class="text-body text-secondary mt-2 font-medium">
-                        Thank you for registering for Init. Share your ticket on social media to
-                        enter the raffle to win limited edition swag.
-                    </p>
-                    <div class="mt-8 flex items-center gap-4">
-                        {#if data.isCurrentUsersTicket}
-                            <Button
-                                class="w-1/2! active:scale-98"
-                                variant="secondary"
-                                onclick={copy}
+<div class="border-offset size-full border-dashed">
+    <div class="outer-container border-offset border-b-2 border-dashed">
+        <div class="container">
+            <div class="border-offset grid min-h-[80vh] grid-cols-1 md:grid-cols-12">
+                <div
+                    class="border-offset divide-offset grid place-items-center border-r-2 border-l-2 border-dashed md:col-span-6 md:border-r-0"
+                >
+                    <div
+                        class="extended-borders-top row-span-2 hidden h-full w-full px-8 md:block"
+                    ></div>
+                    <div class="flex h-full w-full items-center px-4 py-6 md:px-12">
+                        <div class="flex flex-1 flex-col gap-2">
+                            <a href="/init" class="text-primary group mb-2 flex items-center gap-2">
+                                <Icon
+                                    name="arrow-left"
+                                    class="transition-transform group-hover:-translate-x-0.5"
+                                />
+                                Back to Init</a
                             >
-                                {#if $copied}
-                                    <Icon name="check" />
-                                    Copied!
+                            <h2 class="text-display font-aeonik-pro text-primary">
+                                {#if data.isCurrentUsersTicket}
+                                    Here's your Init ticket
                                 {:else}
-                                    <Icon name="customize" />
-                                    Copy ticket URL
+                                    {data.ticket.name.split(' ')[0]}'s ticket
                                 {/if}
-                            </Button>
-                            <Button
-                                class="text-primary w-1/2! active:scale-98"
-                                variant="secondary"
-                                href={`https://twitter.com/intent/tweet?text=${twitterText}`}
-                                target="_blank"
-                            >
-                                <Icon name="x" />
-                                Share
-                            </Button>
-                        {:else}
-                            <form
-                                action="?/oauth"
-                                method="post"
-                                use:enhance={async () => {
-                                    claiming = true;
-                                }}
-                                class="w-1/2"
-                            >
-                                <Button class="w-full!" disabled={claiming}>
-                                    {#if claiming}
-                                        <Spinner />
-                                    {:else}
-                                        <Icon name="github" class="text-primary" />
-                                    {/if}Claim your TIcket</Button
+                                <span class="text-display font-aeonik-pro text-primary"
+                                    ><span class="text-accent">#</span>{id}</span
                                 >
-                            </form>
+                            </h2>
 
-                            <Button href="/init" variant="secondary" class="w-1/2!"
-                                >Go to Init</Button
-                            >
-                        {/if}
+                            <p class="text-body text-secondary mt-2 font-medium">
+                                Thank you for registering for Init. Share your ticket on social
+                                media to enter the raffle to win limited edition swag.
+                            </p>
+                            <div class="mt-8 flex items-center gap-4">
+                                {#if data.isCurrentUsersTicket}
+                                    <Button
+                                        class="w-1/2! active:scale-98"
+                                        variant="secondary"
+                                        onclick={copy}
+                                    >
+                                        {#if $copied}
+                                            <Icon name="check" />
+                                            Copied!
+                                        {:else}
+                                            <Icon name="customize" />
+                                            Copy ticket URL
+                                        {/if}
+                                    </Button>
+                                    <Button
+                                        class="text-primary w-1/2! active:scale-98"
+                                        variant="secondary"
+                                        href={`https://twitter.com/intent/tweet?text=${twitterText}`}
+                                        target="_blank"
+                                    >
+                                        <Icon name="x" />
+                                        Share
+                                    </Button>
+                                {:else}
+                                    <form
+                                        action="?/oauth"
+                                        method="post"
+                                        use:enhance={async () => {
+                                            claiming = true;
+                                        }}
+                                        class="w-1/2"
+                                    >
+                                        <Button class="w-full!" disabled={claiming}>
+                                            {#if claiming}
+                                                <Spinner />
+                                            {:else}
+                                                <Icon name="github" class="text-primary" />
+                                            {/if}Claim your TIcket</Button
+                                        >
+                                    </form>
+
+                                    <Button href="/init" variant="secondary" class="w-1/2!"
+                                        >Go to Init</Button
+                                    >
+                                {/if}
+                            </div>
+                        </div>
                     </div>
+                    <div class="extended-borders-bottom row-span-2 h-full w-full px-8"></div>
+                </div>
+
+                <div
+                    class="border-offset flex flex-col items-center justify-center border-x-2 border-dashed bg-black/24 px-4 py-8 md:col-span-6"
+                >
+                    <TicketCard
+                        {stickerPack}
+                        {...data.ticket}
+                        contributions={data.streamed.contributions}
+                    />
+
+                    {#if data.isCurrentUsersTicket}
+                        <Button
+                            class="mt-8 active:scale-98"
+                            variant="secondary"
+                            href="/init/tickets/customize"
+                        >
+                            <Icon name="customize" />
+                            Customize ticket
+                        </Button>
+                    {/if}
                 </div>
             </div>
-            <div class="row-span-2 h-full w-full px-8"></div>
         </div>
-        <div
-            class="border-offset flex flex-col items-center justify-center border-x-2 border-dashed bg-black/24 px-4 py-8 md:col-span-6"
-        >
-            <TicketCard
-                {stickerPack}
-                {...data.ticket}
-                contributions={data.streamed.contributions}
-            />
+    </div>
 
-            {#if data.isCurrentUsersTicket}
-                <Button
-                    class="mt-8 active:scale-98"
-                    variant="secondary"
-                    href="/init/tickets/customize"
+    <div class="container mt-[87px] flex flex-col">
+        <div class="mb-[87px] flex justify-between">
+            <div>
+                <h2 class="text-title text-primary font-aeonik-pro mb-4">
+                    Get your ticket and<br />enter our giveaway
+                </h2>
+                <p class="text-secondary text-body mb-6">
+                    Create, customize and share your ticket to<br />get the chance to win exclusive
+                    Init swag.
+                </p>
+                <Button href="/init/tickets/customize" variant="secondary">Claim your ticket</Button
                 >
-                    <Icon name="customize" />
-                    Customize ticket
-                </Button>
-            {/if}
+            </div>
+
+            <Media
+                src={InitGiveaway}
+                alt="Init giveaway"
+                class="web-media max-h-[370px] max-w-[568px]"
+            />
+        </div>
+
+        <div class="footer-section extended-borders-footer">
+            <FooterNav />
+
+            <MainFooter />
         </div>
     </div>
 </div>
+
+<style lang="scss">
+    .extended-borders-top,
+    .extended-borders-bottom,
+    .extended-borders-footer {
+        z-index: 0;
+        position: relative;
+    }
+
+    .extended-borders-top::after {
+        content: '';
+        position: absolute;
+        left: -100%;
+        right: 0;
+        bottom: 0;
+        height: 0;
+        border-top: 2px dashed var(--color-offset);
+        pointer-events: none;
+        z-index: -1;
+    }
+
+    .extended-borders-bottom::before {
+        content: '';
+        position: absolute;
+        left: -100%;
+        right: 0;
+        top: 0;
+        height: 0;
+        border-top: 2px dashed var(--color-offset);
+        pointer-events: none;
+        z-index: -1;
+    }
+
+    .extended-borders-footer::before {
+        content: '';
+        left: -100%;
+        right: -100%;
+        position: absolute;
+        border-top: 2px dashed var(--color-offset);
+    }
+
+    .footer-section {
+        & :global(.web-footer-nav) {
+            border: none;
+            padding-block-start: unset;
+        }
+    }
+</style>

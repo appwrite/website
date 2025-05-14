@@ -27,7 +27,7 @@
         </div>
     </div>
 
-    <div class="relative flex w-full scale-[1.073] items-center">
+    <div class="relative me-8 flex w-full scale-[1.073] items-center">
         <div style:transform="rotate(4deg)" class="absolute right-40 z-0">
             <TicketCard
                 $id="1"
