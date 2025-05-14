@@ -12,7 +12,12 @@ You can create and execute your first Appwrite Site in minutes.
 
 Before deploying your web app with Git, create a new Site attached to your GitHub repository.
 
-![Create Site from GitHub repo](https://warm-tray-285.notion.site/image/attachment%3A59cff292-50e7-4bc9-b38a-497cc71eb780%3Aimage.png?table=block&id=1bafb53f-e82d-808e-a703-d7730947593f&spaceId=cf760f55-c352-4759-b494-006b8b294dbb&width=1420&userId=&cache=v2)
+{% only_dark %}
+![Create site wizard](/images/docs/sites/dark/create-site-wizard.png)
+{% /only_dark %}
+{% only_light %}
+![Create site wizard](/images/docs/sites/create-site-wizard.png)
+{% /only_light %}
 
 1. In the Appwrite Console's sidebar, click **Sites**.
 2. Click on the **Create site** button.

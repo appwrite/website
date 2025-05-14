@@ -16,7 +16,7 @@ Appwrite Sites lets you host any web application with ease. However, to make thi
 ![Create first site](/images/docs/sites/dark/create-first-site.png)
 {% /only_dark %}
 {% only_light %}
-![Create first site](/images/docs/sites/build-settings-rendering-ssr.png)
+![Create first site](/images/docs/sites/create-first-site.png)
 {% /only_light %}
 
 Try out one of our most popular framework quick-starts:

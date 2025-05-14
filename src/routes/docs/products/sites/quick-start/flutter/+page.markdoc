@@ -36,7 +36,12 @@ Head to the **Sites** page in your Appwrite project, click on the **Create site*
 
 Connect your GitHub account and select the repository you intend to deploy.
 
-![Create a site](https://warm-tray-285.notion.site/image/attachment%3A59cff292-50e7-4bc9-b38a-497cc71eb780%3Aimage.png?table=block&id=1bafb53f-e82d-808e-a703-d7730947593f&spaceId=cf760f55-c352-4759-b494-006b8b294dbb&width=1420&userId=&cache=v2)
+{% only_dark %}
+![Create site wizard](/images/docs/sites/dark/create-site-wizard.png)
+{% /only_dark %}
+{% only_light %}
+![Create site wizard](/images/docs/sites/create-site-wizard.png)
+{% /only_light %}
 
 1. Select the **production branch** and **root directory** from your repo.
 2. Verify that the **correct framework** is selected. In case an incorrect framework is visible, pick **Flutter Web** from the drop-down list. 
