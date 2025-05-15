@@ -184,7 +184,7 @@
     </div>
 
     <div class="container mt-[44px] flex flex-col md:mt-[87px]">
-        <div class="mb-[87px] flex flex-col-reverse gap-4 md:flex md:justify-between">
+        <div class="mb-[87px] flex flex-col-reverse gap-4 md:flex-row md:justify-between">
             <div>
                 <h2 class="text-title text-primary font-aeonik-pro md:mb-4">
                     Get your ticket and<br />enter our giveaway
