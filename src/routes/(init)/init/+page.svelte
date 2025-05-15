@@ -194,32 +194,32 @@
 </div>
 
 <style lang="scss">
-  .extended-borders-footer {
-    z-index: 0;
-    position: relative;
-  }
-  .extended-borders-footer::before {
-    content: '';
-    position: absolute;
-    border-top: 2px dashed var(--color-offset);
-    pointer-events: none;
-    z-index: -1;
-    height: 0;
-
-    @media (min-width: 768px) {
-      left: -100%;
-      right: -100%;
+    .extended-borders-footer {
+        z-index: 0;
+        position: relative;
     }
-  }
+    .extended-borders-footer::before {
+        content: '';
+        position: absolute;
+        border-top: 2px dashed var(--color-offset);
+        pointer-events: none;
+        z-index: -1;
+        height: 0;
 
-  .footer-section {
-    & :global(.web-footer-nav) {
-      border-block-start: none;
-      margin-block-start: unset;
-
-      @media (max-width: 768px) {
-        border-block-start: solid 0.0625rem hsl(var(--web-color-smooth));
-      }
+        @media (min-width: 768px) {
+            left: -100%;
+            right: -100%;
+        }
     }
-  }
+
+    .footer-section {
+        & :global(.web-footer-nav) {
+            border-block-start: none;
+            margin-block-start: unset;
+
+            @media (max-width: 768px) {
+                border-block-start: solid 0.0625rem hsl(var(--web-color-smooth));
+            }
+        }
+    }
 </style>
