@@ -4,7 +4,7 @@ title: Deploy manually
 description: Learn to deploy Appwrite Sites manually via the Appwrite Console.
 ---
 
-Appwrite Sites allows you to host and deploy web applications directly within the Appwrite platform. Each site can have many deployments, which can be thought of as versions of the web application.
+Appwrite Sites allows you to host and deploy websites directly within the Appwrite platform. Each site can have many deployments, which can be thought of as versions of the web application.
 
 While we recommend you create deployments through [automatic Git deployments](/docs/products/sites/deploy-from-git), you can also create deployments manually by uploading the source code to the Appwrite Console.
 

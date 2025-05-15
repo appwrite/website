@@ -40,7 +40,7 @@ Group users to share access to documents, files, and functions.
 Scalable and robust database backed by your favorite technologies.
 {% /cards_item %}
 {% cards_item href="/docs/references/cloud/server-nodejs/sites" title="Sites" %}
-Build and deploy web applications on the internet at scale.
+Build and deploy websites on the internet at scale.
 {% /cards_item %}
 {% cards_item href="/docs/references/cloud/client-web/storage" title="Storage" %}
 Securely store files with advanced compression, encryption and image transformations.

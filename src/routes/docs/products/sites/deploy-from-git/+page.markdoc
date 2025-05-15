@@ -4,7 +4,7 @@ title: Deploy from Git
 description: Learn to version and update your Appwrite Sites' code with deployments.
 ---
 
-Appwrite Sites allows you to host and deploy web applications directly within the Appwrite platform. Each site can have many deployments, which can be thought of as versions of the web application.
+Appwrite Sites allows you to host and deploy websites directly within the Appwrite platform. Each site can have many deployments, which can be thought of as versions of the web application.
 
 With Appwrite Sites, you can seamlessly deploy updates from Git repositories, enabling you to track changes to your web app as part of your development workflow. This versioning approach ensures that your site stays up-to-date and your deployment process is fully integrated with your source control, streamlining collaboration and updates.
 
