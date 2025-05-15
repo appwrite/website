@@ -32,7 +32,7 @@ When you click on a log, you will be shown a set of log details.
 
 You can find both request and response information, including parameters and headers.
 
-{% info title="Reponse logs for SSR apps" %}
+{% info title="Response logs for SSR apps" %}
 
 If your app uses **SSR hosting** on Appwrite Sites, you can also observe `console.log` and `console.error` outputs in the response logs.
 
@@ -40,7 +40,7 @@ If your app uses **SSR hosting** on Appwrite Sites, you can also observe `consol
 
 # Disable logs
 
-You can optionally disable execution logs for your site, which will exclude `console.log` and `console.error` outputs from the response logs and make site responses slightly faster. Here are the steps to disable logs:
+You can optionally disable logging for your site, which will exclude `console.log` and `console.error` outputs from the response logs and make site responses slightly faster. Here are the steps to disable logs:
 
 1. Navigate to your site on Appwrite Console.
 2. Under the **Settings** tab, find the **Logging** section.
