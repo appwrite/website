@@ -8,7 +8,7 @@ User verification in Appwrite allows you to verify user email addresses and phon
 
 # Verify email {% #verify-email %}
 
-To verify a user's email, first ensure the user is logged in. Then send a verification email with a redirect URL. The verification secrets will be appended as query parameters to the redirect URL.
+To verify a user's email, first ensure the user is logged in so that the verification email can be sent to the user who created the account. Then, send the verification email specifying a redirect URL. The verification secrets will be appended as query parameters to the redirect URL.
 
 {% multicode %}
 ```client-web
