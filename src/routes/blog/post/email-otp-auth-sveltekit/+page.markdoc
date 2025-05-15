@@ -42,7 +42,7 @@ docker run -it --rm \
     --volume /var/run/docker.sock:/var/run/docker.sock \
     --volume "$(pwd)"/appwrite:/usr/src/code/appwrite:rw \
     --entrypoint="install" \
-    appwrite/appwrite:1.6.1
+    appwrite/appwrite:1.6.2
 ```
 
 Once that is done, [set up email delivery](https://appwrite.io/docs/advanced/self-hosting/email) on your self-hosted Appwrite instance. This can be done by visiting your `appwrite` directory and updating the `.env` file in a similar manner as follows:
