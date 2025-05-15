@@ -1,0 +1,52 @@
+---
+layout: article
+title: File tokens
+description: Easily share files with external users using file tokens.
+difficulty: beginner
+readtime: 10
+---
+
+File tokens are a type of token that allow you to share files publicly with anyone. By using file tokens, you can let any external user access your file without having to configure bucket or file permissions. File tokens can either be set to expire on a specific date or work indefinitely.
+
+# Create file tokens
+
+To create a file token, you must have at least one file [uploaded](/docs/products/storage/upload-download) to a [storage bucket](/docs/products/storage/buckets).
+
+{% tabs %}
+{% tabsitem #console title="Console" %}
+
+Head to the **Storage** page, open a file inside a bucket, scroll down to the **File tokens** section, and click on the **Create file token** button.
+
+{% /tabsitem %}
+
+{% tabsitem #server-sdk title="Server SDK" %}
+
+You can create file tokens programmatically using a [Server SDK](/docs/sdks#server). Appwrite [Server SDKs](/docs/sdks#server) require an [API key](/docs/advanced/platform/api-keys) with the `tokens.write` scope enabled.
+
+```js
+const sdk = require('node-appwrite');
+
+// Init SDK
+const client = new sdk.Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('<PROJECT_ID>') // Your project ID
+    .setKey('919c2d18fb5d4...a2ae413da83346ad2'); // Your secret API key
+
+const tokens = new sdk.Tokens(client);
+
+const promise = tokens.createFileToken('[BUCKET_ID]', '[FILE_ID]', '[EXPIRY]');
+
+promise.then(function (response) {
+    console.log(response);
+}, function (error) {
+    console.log(error);
+});
+```
+
+The created token can then be used along with the [view file](/docs/references/cloud/server-nodejs/storage#getFileView), [preview file](/docs/references/cloud/server-nodejs/storage#getFilePreview), and [download file](/docs/references/cloud/server-nodejs/storage#getFileDownload) endpoints.
+{% /tabsitem %}
+{% /tabs %}
+
+# Expiry
+
+File tokens can either be set to expire at a certain date or never expire.
