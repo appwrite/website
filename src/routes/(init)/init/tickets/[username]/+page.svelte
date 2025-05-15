@@ -183,13 +183,13 @@
         </div>
     </div>
 
-    <div class="container mt-[87px] flex flex-col">
-        <div class="mb-[87px] flex justify-between">
+    <div class="container mt-[44px] flex flex-col md:mt-[87px]">
+        <div class="mb-[87px] flex flex-col-reverse gap-4 md:flex md:justify-between">
             <div>
-                <h2 class="text-title text-primary font-aeonik-pro mb-4">
+                <h2 class="text-title text-primary font-aeonik-pro md:mb-4">
                     Get your ticket and<br />enter our giveaway
                 </h2>
-                <p class="text-secondary text-body mb-6">
+                <p class="text-secondary text-body mb-10 md:mb-6">
                     Create, customize and share your ticket to<br />get the chance to win exclusive
                     Init swag.
                 </p>
@@ -200,7 +200,7 @@
             <Media
                 src={InitGiveaway}
                 alt="Init giveaway"
-                class="web-media max-h-[370px] max-w-[568px]"
+                class="web-media mb-12 md:mb-0 md:max-h-[370px] md:max-w-[568px]"
             />
         </div>
 
@@ -220,42 +220,48 @@
         position: relative;
     }
 
-    .extended-borders-top::after {
+    .extended-borders-top::after,
+    .extended-borders-bottom::before,
+    .extended-borders-footer::before {
         content: '';
         position: absolute;
-        left: -100%;
-        right: 0;
-        bottom: 0;
-        height: 0;
         border-top: 2px dashed var(--color-offset);
         pointer-events: none;
         z-index: -1;
+        height: 0;
+    }
+
+    .extended-borders-top::after {
+        right: 0;
+        bottom: 0;
+        left: -100%;
     }
 
     .extended-borders-bottom::before {
-        content: '';
-        position: absolute;
-        left: -100%;
-        right: 0;
         top: 0;
-        height: 0;
-        border-top: 2px dashed var(--color-offset);
-        pointer-events: none;
-        z-index: -1;
+        right: 0;
+        left: -100%;
+
+        @media (max-width: 768px) {
+            right: -100% !important;
+        }
     }
 
-    .extended-borders-footer::before {
-        content: '';
-        left: -100%;
-        right: -100%;
-        position: absolute;
-        border-top: 2px dashed var(--color-offset);
+    @media (min-width: 768px) {
+        .extended-borders-footer::before {
+            left: -100%;
+            right: -100%;
+        }
     }
 
     .footer-section {
         & :global(.web-footer-nav) {
-            border: none;
-            padding-block-start: unset;
+            border-block-start: none;
+            margin-block-start: unset;
+
+            @media (max-width: 768px) {
+                border-block-start: solid 0.0625rem hsl(var(--web-color-smooth));
+            }
         }
     }
 </style>

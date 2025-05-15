@@ -7,12 +7,14 @@
     import { Media } from '$lib/UI';
 </script>
 
-<div class="container grid min-h-[65vh] w-full grid-cols-1 place-items-center py-20 md:grid-cols-2">
+<div
+    class="container grid min-h-[65vh] w-full grid-cols-1 place-items-center py-5 md:grid-cols-2 md:py-20"
+>
     <div class="flex flex-col gap-12">
         <Media
             src={InitGiveaway}
             alt="Init giveaway"
-            class="web-media max-h-[304px] max-w-[467px]"
+            class="web-media md:max-h-[304px] md:max-w-[467px]"
         />
 
         <div>
@@ -27,7 +29,9 @@
         </div>
     </div>
 
-    <div class="relative me-8 flex w-full scale-[1.073] items-center">
+    <div
+        class="relative me-8 hidden w-full items-center gap-4 md:me-0 md:flex md:scale-[1.073] md:gap-0"
+    >
         <div style:transform="rotate(4deg)" class="absolute right-40 z-0">
             <TicketCard
                 $id="1"
