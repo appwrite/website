@@ -35,7 +35,7 @@ When you build a deployment, the logs generated will be saved for debugging purp
 To manually trigger a deployment of your app from the Appwrite Console, you can head to the **Deployments** tab of your site, click on the **Create deployment** button, and select one of the following:
 
 - **Git**: Lets you select a branch on your connected Git repo and whether you would like to activate the build post-deployment
-- **CLI**: Lets you run a [CLI command](/docs/products/sites/deploy-manually#cli) in your site's directory
+- **CLI**: Lets you run a [CLI command](/docs/products/sites/deploy-from-cli#cli) in your site's directory
 - **Manual**: Lets you upload a [.tar.gz file](/docs/products/sites/deploy-manually#manual-deployment) containing your site's build output
 
 {% only_dark %}

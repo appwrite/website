@@ -70,6 +70,10 @@
                     href: '/docs/products/sites/deploy-from-git'
                 },
                 {
+                    label: 'Deploy from CLI',
+                    href: '/docs/products/sites/deploy-from-cli'
+                },
+                {
                     label: 'Deploy manually',
                     href: '/docs/products/sites/deploy-manually'
                 }

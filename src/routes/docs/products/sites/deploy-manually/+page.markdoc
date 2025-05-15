@@ -1,24 +1,12 @@
 ---
 layout: article
 title: Deploy manually
-description: Learn to deploy Appwrite Sites manually from the Appwrite CLI or the Appwrite Console.
+description: Learn to deploy Appwrite Sites manually via the Appwrite Console.
 ---
 
 Appwrite Sites allows you to host and deploy web applications directly within the Appwrite platform. Each site can have many deployments, which can be thought of as versions of the web application.
 
-While we recommend you create deployments through [automatic Git deployments](/docs/products/sites/deploy-from-git), you can also create deployments manually.
-
-# CLI  {% #cli %} 
-
-{% partial file="cli-sites.md" /%}
-
-## Configure CLI deployments {% #configure-cli-deployments %}
-If you need to target a different project, API endpoint, change the path or entry point of your site, or update any of the other configuration options, 
-you can do so by editing the `appwrite.json` file.
-
-{% arrow_link href="/docs/tooling/command-line/sites#appwritejson" %}
-Learn more about appwrite.json
-{% /arrow_link %}
+While we recommend you create deployments through [automatic Git deployments](/docs/products/sites/deploy-from-git), you can also create deployments manually by uploading the source code to the Appwrite Console.
 
 # Manual Deployment
 
