@@ -32,7 +32,7 @@ When you push a commit to the production branch, usually `main`, a new deployme
 
 ## Commits to other branches
 
-When you push a commit to a branch other than the production branch, a new deployment is created, but it is not activated. A preview link is generated to test this deployment; however, only authorized users, i.e., members of your Appwrite organization, can access this link.
+When you push a commit to a branch other than the production branch, a new deployment is created, but it is not activated. A [preview link](/docs/products/sites/previews) is generated to test this deployment; however, only authorized users, i.e., members of your Appwrite organization, can access this link.
 
 # Git configuration
 
