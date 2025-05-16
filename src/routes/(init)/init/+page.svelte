@@ -197,6 +197,8 @@
     .extended-borders-footer {
         z-index: 0;
         position: relative;
+        max-width: 100vw;
+        overflow: hidden;
     }
     .extended-borders-footer::before {
         content: '';
@@ -207,8 +209,7 @@
         height: 0;
 
         @media (min-width: 768px) {
-            left: -100%;
-            right: -100%;
+            inset: 0;
         }
     }
 
