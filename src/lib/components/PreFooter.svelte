@@ -1,5 +1,4 @@
 <script lang="ts">
-    import { trackEvent } from '$lib/actions/analytics';
     import { Button, type Variant } from '$lib/components/ui';
     import { getAppwriteDashboardUrl } from '$lib/utils/dashboard';
 
@@ -127,7 +126,7 @@
                     <div class="grid grid-cols-1 gap-8 md:grid-cols-4">
                         {#each plans as plan, index}
                             <div
-                                class="grid h-full grid-rows-[auto_auto_auto_2fr_auto] md:px-4 pb-6 md:pb-0
+                                class="grid h-full grid-rows-[auto_auto_auto_2fr_auto] pb-6 md:px-4 md:pb-0
                    {index !== 3
                                     ? 'border-offset border-b border-dashed md:border-e md:border-b-0'
                                     : ''}"
