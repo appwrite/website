@@ -57,6 +57,11 @@
                     href: `${prefix}/databases`
                 },
                 {
+                    label: 'Sites',
+                    icon: 'icon-globe-alt',
+                    href: `${prefix}/sites`
+                },
+                {
                     label: 'Storage',
                     icon: 'icon-folder',
                     href: `${prefix}/storage`

@@ -31,6 +31,10 @@
                 {
                     label: 'Permissions',
                     href: '/docs/products/storage/permissions'
+                },
+                {
+                    label: 'File tokens',
+                    href: '/docs/products/storage/file-tokens'
                 }
             ]
         },

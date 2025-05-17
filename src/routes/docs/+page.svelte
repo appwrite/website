@@ -222,6 +222,32 @@
                     </li>
                     <li>
                         <a
+                            href="/docs/products/sites"
+                            class="web-card is-normal"
+                            onclick={() => trackEvent(`docs-products_sites-click`)}
+                        >
+                            <img
+                                src="/images/icons/illustrated/dark/sites.png"
+                                alt=""
+                                class="web-u-only-dark"
+                                width="40"
+                                height="40"
+                            />
+                            <img
+                                src="/images/icons/illustrated/light/sites.png"
+                                alt=""
+                                class="web-u-only-light"
+                                width="40"
+                                height="40"
+                            />
+                            <h4 class="text-sub-body text-primary mt-2 font-medium">Sites</h4>
+                            <p class="text-sub-body mt-1">
+                                Deploy websites on the internet at scale.
+                            </p>
+                        </a>
+                    </li>
+                    <li>
+                        <a
                             href="/docs/products/messaging"
                             class="web-card is-normal"
                             onclick={() => trackEvent(`docs-products_messaging-click`)}
