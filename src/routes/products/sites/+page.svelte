@@ -52,7 +52,7 @@
         <Network />
         <OpenSourceAlternative platforms={['Vercel', 'Netlify', 'Sevalla']} />
         <Testimonials class="mb-20" />
-        <Scale theme="light" />
+        <Scale alternateInfo theme="light" />
     </div>
 
     <Faq />

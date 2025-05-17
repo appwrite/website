@@ -3,6 +3,7 @@
     import NumberFlow from '@number-flow/svelte';
     import { inView } from 'motion-legacy';
     import { onDestroy } from 'svelte';
+    import KCollectTestimonialImage from '../../../products/sites/kcollect-ryan-testimonial.png';
 
     const animationDuration = 3;
 
@@ -33,18 +34,46 @@
         }
     ];
 
+    let alternateStats = [
+        {
+            number: 0,
+            suffix: 'K+',
+            description: 'Github stars',
+            top: 93.75
+        },
+        {
+            number: 0,
+            suffix: '+',
+            description: 'PoP locations',
+            top: 78.25
+        },
+        {
+            number: 0,
+            suffix: 'K+',
+            description: 'developers',
+            top: 62.5
+        },
+        {
+            number: 0,
+            suffix: 'B+',
+            description: 'monthly database operations',
+            top: 46.75
+        }
+    ];
+
     const numbers = [12, 1000, 50, 300];
+    const alternateNumbers = [50, 300, 300, 200];
 
     let animate: boolean = false;
 
     let timeoutIds: Array<NodeJS.Timeout> = [];
     const updateNumbers = () => {
-        stats.forEach((stat, index) => {
+        correctStats.forEach((stat, index) => {
             const timeoutId = setTimeout(
                 () => {
-                    stats[index] = { ...stat, number: numbers[index] };
+                    correctStats[index] = { ...stat, number: correctNumbers[index] };
                 },
-                ((index * animationDuration) / numbers.length) * 500
+                ((index * animationDuration) / correctNumbers.length) * 500
             );
 
             timeoutIds.push(timeoutId);
@@ -75,6 +104,33 @@
     });
 
     export let theme: 'light' | 'dark' = 'dark';
+    export let alternateInfo: boolean = false;
+
+    const correctStats = alternateInfo ? alternateStats : stats;
+    const correctNumbers = alternateInfo ? alternateNumbers : numbers;
+    const testimonial = {
+        name: 'Ryan O’Conner',
+        copy: `The switch to using Appwrite brought infinite value that I'm still discovering today, but a major impact that it made was the amount of time and stress that it saved me as it simply just works.`,
+        image: KCollectTestimonialImage,
+        title: 'Founder',
+        company: 'K-Collect'
+    };
+
+    const getCorrectText = () => {
+        if (!alternateInfo) {
+            return {
+                partOne: 'Appwrite has supported our recent growth in every step of the way,',
+                partTwo: 'without any failures or outages.'
+            };
+        } else {
+            return {
+                partOne: 'The switch to using Appwrite brought',
+                partTwo: "infinite value that I'm still discovering today."
+            };
+        }
+    };
+
+    const text = getCorrectText();
 </script>
 
 <div
@@ -92,17 +148,32 @@
                 >
             </h2>
             <p class="text-secondary border-accent mt-5 border-l-2 pr-28 pl-2 font-medium">
-                <span class="text-accent">“</span>Appwrite has supported our recent growth in every
-                step of the way,
-                <span class="text-primary">without any failures or outages</span><span
-                    class="text-accent">”</span
-                >
+                <span class="text-accent">“</span>{text.partOne}
+                <span class="text-primary">{text.partTwo}</span><span class="text-accent">”</span>
             </p>
+
+            {#if alternateInfo}
+                <div class="mt-4 flex items-center gap-3">
+                    <img
+                        src={testimonial.image}
+                        class="size-6 rounded-full"
+                        alt="{testimonial.company} Logo"
+                    />
+                    <div class="flex gap-1">
+                        <span class="text-primary text-sub-body block font-medium">
+                            {testimonial.name},
+                        </span>
+                        <span class="text-sub-body text-secondary block"
+                            >{testimonial.title} at {testimonial.company}</span
+                        >
+                    </div>
+                </div>
+            {/if}
         </div>
     </div>
 
     <div class="mt-12 block space-y-8 md:hidden">
-        {#each stats as stat, i}
+        {#each correctStats as stat, i}
             <div class="h-full overflow-auto pl-6">
                 <div class={classNames('relative')} style:top={`${(4 - i) * 18}%`}>
                     <NumberFlow
@@ -123,7 +194,7 @@
     >
         <div class="relative container h-full">
             <div class="absolute inset-0 z-100 grid grid-cols-4">
-                {#each stats as stat, i}
+                {#each correctStats as stat, i}
                     <div
                         class="mask border-smooth h-full overflow-auto border-l"
                         style:--mask-direction="bottom"
@@ -143,7 +214,7 @@
                 {/each}
 
                 <div class="pointer-events-none absolute inset-0 z-50">
-                    {#each stats as stat, i}
+                    {#each correctStats as stat, i}
                         <div
                             class="border-accent absolute top-[var(--top)] left-[calc(var(--left)_+_1px)] h-2 w-2 -translate-1/2 rounded-full border bg-white"
                             style:--top={`${stat.top}%`}
