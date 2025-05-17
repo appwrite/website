@@ -10,6 +10,8 @@
 
     import CountdownGrid from './(components)/countdown-grid.svelte';
     import Poster from './(assets)/poster.png';
+    import PosterFutureAppwrite from './(assets)/posterFutureOfAppwrite.png';
+    import PosterDeploy from './(assets)/posterDeploy.png';
     import Sites from './(assets)/illustrations/sites.svg';
     import Flutter from './(assets)/illustrations/flutter.svg';
     import Formats from './(assets)/illustrations/formats.svg';
@@ -64,13 +66,13 @@
                 {
                     title: 'Product demo',
                     type: 'video',
-                    poster: '',
+                    poster: PosterDeploy,
                     url: 'https://youtu.be/VtDe6hDw91k'
                 },
                 {
                     title: 'YouTube Live',
                     type: 'video',
-                    poster: '',
+                    poster: PosterFutureAppwrite,
                     url: 'https://www.youtube.com/watch?v=1g8tuogsp7A'
                 }
             ]
