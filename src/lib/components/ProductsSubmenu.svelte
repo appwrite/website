@@ -44,6 +44,12 @@
             icon: '/images/icons/illustrated/dark/messaging.png'
         },
         {
+            name: 'Sites',
+            href: '/products/sites',
+            description: 'The open-source Vercel alternative.',
+            icon: '/images/icons/illustrated/dark/sites.png'
+        },
+        {
             name: 'Realtime',
             href: '/docs/apis/realtime',
             description: 'Subscribe and react to any event.',

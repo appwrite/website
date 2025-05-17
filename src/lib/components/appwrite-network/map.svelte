@@ -16,7 +16,6 @@
     import { useAnimateInView } from '$lib/actions/animate-in-view';
     import { pins, type PinSegment } from './data/pins';
     import MapTooltip from './map-tooltip.svelte';
-    import { dev } from '$app/environment';
 
     let dimensions = $state({
         width: 0,
@@ -68,6 +67,10 @@
             activeRegion = citySlug;
         }
     };
+
+    type Props = { theme: 'light' | 'dark' };
+
+    const { theme = 'dark' }: Props = $props();
 </script>
 
 <div class="-mt-8 w-full overflow-x-scroll [scrollbar-width:none] md:overflow-x-hidden">
@@ -108,18 +111,22 @@
                 ></div>
             </div>
 
+            <!-- TODO: reusing the same image but inverted! use a variable -->
             <img
-                src="/images/appwrite-network/map.svg"
-                class="pointer-events-none relative -z-10 w-full opacity-10 md:max-h-[525px]"
                 draggable="false"
                 alt="Map of the world"
+                src="/images/appwrite-network/map.svg"
+                style:filter={theme === 'light' ? 'invert()' : undefined}
+                class="pointer-events-none relative -z-10 w-full opacity-10 md:max-h-[525px]"
             />
 
-            {#each pins[activeSegment as PinSegment] as pin, index}
+            {#each pins[activeSegment] as pin, index}
                 <MapMarker {...pin} animate={$animate} {index} bounds={MAP_BOUNDS} />
             {/each}
         </div>
     </div>
 </div>
-<MapTooltip coords={$position} />
-<MapNav onValueChange={(value) => (activeSegment = value)} />
+
+<MapTooltip {theme} coords={$position} />
+
+<MapNav {theme} onValueChange={(value) => (activeSegment = value)} />
