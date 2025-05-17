@@ -17,7 +17,8 @@
     import Scale from '$routes/(experiments)/new-homepage/(components)/scale.svelte';
 
     const title = 'Sites' + TITLE_SUFFIX;
-    const description = 'Appwrite Sites is very cool';
+    const description =
+        'Develop, deploy, and scale your web applications directly from Appwrite, alongside your backend.';
     const ogImage = DEFAULT_HOST + '/images/open-graph/website.png';
 </script>
 
