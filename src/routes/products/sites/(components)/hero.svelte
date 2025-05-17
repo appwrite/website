@@ -28,11 +28,11 @@
                 </span>
             </div>
             <h1 class="font-aeonik-pro text-display text-primary text-pretty">
-                The open-source Vercel alternative
+                All in one web platform
             </h1>
             <p class="text-description text-secondary font-medium text-pretty">
-                Host, manage, and scale your frontend directly from Appwrite, alongside your
-                backend.
+                Develop, deploy, and scale your web applications directly from Appwrite, alongside
+                your backend.
             </p>
 
             <div class="flex flex-col items-center gap-2 md:flex-row">
