@@ -18,7 +18,7 @@ Each site automatically receives a unique Appwrite-generated domain that's ready
 The domain usually has this format:
 
 ```bash
-https://64d4d22db370ae41a32e.sites.appwrite.network
+https://64d4d22db370ae41a32e.appwrite.network
 ```
 
 ## Branch and Commit URLs
