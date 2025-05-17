@@ -63,7 +63,7 @@
                     target="_blank"
                     rel="noopener"
                 >
-                    Follow on Product Hunt
+                    Support on Product Hunt
                 </Button>
             </nav>
         </div>
