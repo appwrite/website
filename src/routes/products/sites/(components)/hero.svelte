@@ -28,7 +28,7 @@
                 </span>
             </div>
             <h1 class="font-aeonik-pro text-display text-primary text-pretty">
-                All in one web platform
+                The open-source Vercel alternative
             </h1>
             <p class="text-description text-secondary font-medium text-pretty">
                 Develop, deploy, and scale your web applications directly from Appwrite, alongside
