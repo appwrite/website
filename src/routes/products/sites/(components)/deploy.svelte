@@ -110,7 +110,7 @@
         <div class="relative z-10 mx-auto -mt-24 flex max-w-md flex-col gap-4 text-center">
             <h2 class="text-title text-primary font-aeonik-pro">Deploy your site</h2>
             <p class="text-secondary text-description font-medium">
-                Deploy your Site directly from the Appwrite Console
+                Easily deploy your website and web apps using Git, CLI, or manually. Monitor your deployment logs to ensure a stable connection with the Appwrite network.
             </p>
         </div>
     </div>
