@@ -73,10 +73,15 @@
     onDestroy(() => {
         clearAllTimeouts();
     });
+
+    export let theme: 'light' | 'dark' = 'dark';
 </script>
 
 <div
-    class="border-smooth relative flex min-h-[70vh] flex-col gap-4 border-y bg-black/8 py-20"
+    class={classNames(
+        'relative flex min-h-[70vh] flex-col gap-4',
+        theme === 'dark' ? 'border-smooth border-y bg-black/8 py-20' : ''
+    )}
     use:useInView
 >
     <div class="relative z-10 container w-fit md:w-full">

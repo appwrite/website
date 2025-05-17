@@ -13,6 +13,8 @@
     import Hero from './(components)/hero.svelte';
     import Integrate from './(components)/integrate.svelte';
     import Steps from './(components)/steps.svelte';
+    import Network from './(components)/network.svelte';
+    import Scale from '$routes/(experiments)/new-homepage/(components)/scale.svelte';
 
     const title = 'Sites' + TITLE_SUFFIX;
     const description = 'Appwrite Sites is very cool';
@@ -47,8 +49,10 @@
         <Features />
     </div>
     <div class="light -mb-4 bg-[#EDEDF0] pb-8">
+        <Network />
         <OpenSourceAlternative platforms={['Vercel', 'Netlify', 'Sevalla']} />
         <Testimonials class="mb-20" />
+        <Scale theme="light" />
     </div>
 
     <Faq />
