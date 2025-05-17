@@ -32,27 +32,27 @@
 
     let days: Array<Omit<DayProps, 'index'>> = [
         {
-            title: 'Feature',
+            title: 'Sites',
             release: base,
             illustration: Sites,
             description:
-                'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sed lacus lectus. Nunc gravida arcu posuere odio sagittis, ac congue lacus placerat.',
-            url: '/',
+                'Introducing the open-source Vercel alternative. A new Appwrite product that lets you deploy and host your websites and web apps right inside Appwrite.',
+            url: 'https://www.youtube-nocookie.com/embed/31udvDQ5I4Y',
             content: [
-                { title: 'Serverless functions 101: best practices', url: '/', type: 'Blog' },
+                { title: 'Announcing Appwrite Sites', url: '/blog/post/announcing-appwrite-sites', type: 'Blog' },
                 {
-                    title: 'Local serverless function development with the new Appwrite CLI',
-                    url: '/',
+                    title: 'How to host web apps with Appwrite Sites',
+                    url: '/blog/post/',
                     type: 'Blog'
                 },
                 {
-                    title: 'Local development',
-                    url: '/',
+                    title: 'Appwrite Sites',
+                    url: '/docs/products/sites',
                     type: 'Docs'
                 }
             ],
             announcementVideo: {
-                url: 'https://www.youtube.com/watch?v=31udvDQ5I4Y',
+                url: 'https://www.youtube-nocookie.com/embed/31udvDQ5I4Y',
                 title: 'Announcement Video',
                 poster: Poster
             },
@@ -61,44 +61,44 @@
                     title: 'Product demo',
                     type: 'video',
                     poster: '',
-                    url: 'https://www.youtube-nocookie.com/embed/31udvDQ5I4Y'
+                    url: 'https://youtu.be/VtDe6hDw91k'
                 },
-                { title: 'Discord Stage', type: 'discord', poster: '', url: 'https://discord.com' }
+                { title: 'YouTube Live', type: 'video', poster: '', url: 'https://www.youtube.com/watch?v=1g8tuogsp7A' }
             ]
         },
         {
-            title: 'Feature',
+            title: 'Hosting for Flutter Web',
             release: addDays(base, 1),
-            illustration: Flutter,
+            illustration: Hosting Flutter,
             description:
-                'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sed lacus lectus. Nunc gravida arcu posuere odio sagittis, ac congue lacus placerat.',
+                'Appwrite and Flutter have always worked well together, and now, you can deploy your Flutter web apps directly from Appwrite Sites.',
             url: '/',
             content: [
-                { title: 'Serverless functions 101: best practices', url: '/', type: 'Blog' },
+                { title: 'How to set up the Flutter starter template on Appwrite Sites', url: '/blog/post', type: 'Blog' },
                 {
-                    title: 'Local serverless function development with the new Appwrite CLI',
-                    url: '/',
+                    title: 'Building with Appwrite Sites template',
+                    url: '/blog/post/',
                     type: 'Blog'
                 },
                 {
                     title: 'Local development',
-                    url: '/',
+                    url: '/docs/products/sites/quick-start/flutter',
                     type: 'Docs'
                 }
             ]
         },
         {
-            title: 'Key',
+            title: 'Dev Keys',
             release: addDays(base, 2),
             illustration: DevKeys,
             description:
-                'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sed lacus lectus. Nunc gravida arcu posuere odio sagittis, ac congue lacus placerat.',
+                'Introducing Dev Keys. A new Appwrite feature that lets you bypass rate limits *during local development*. No more slowdowns. No more artificial blockers. Just fast, uninterrupted building.',
             url: '/',
             content: [
-                { title: 'Serverless functions 101: best practices', url: '/', type: 'Blog' },
+                { title: 'How do Dev Keys work', url: '/blog/post', type: 'Blog' },
                 {
-                    title: 'Local serverless function development with the new Appwrite CLI',
-                    url: '/',
+                    title: 'Improve your Appwrite developer experience with dev keys',
+                    url: '/blog/docs',
                     type: 'Blog'
                 },
                 {
@@ -109,43 +109,43 @@
             ]
         },
         {
-            title: 'Feature',
+            title: 'New image formats',
             release: addDays(base, 3),
             illustration: Formats,
             description:
-                'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sed lacus lectus. Nunc gravida arcu posuere odio sagittis, ac congue lacus placerat.',
+                'We have added support for two new image formats in Appwrite Storage: HEIC and AVIF. This will give you more tools to manage, manipulate, and serve images the way you need..',
             url: '/',
             content: [
-                { title: 'Serverless functions 101: best practices', url: '/', type: 'Blog' },
+                { title: 'Serverless functions 101: best practices', url: '/blog/post', type: 'Blog' },
                 {
                     title: 'Local serverless function development with the new Appwrite CLI',
                     url: '/',
                     type: 'Blog'
                 },
                 {
-                    title: 'Local development',
-                    url: '/',
+                    title: 'New image formats',
+                    url: '/docs/',
                     type: 'Docs'
                 }
             ]
         },
         {
-            title: 'Feature',
+            title: 'File Tokens',
             release: addDays(base, 4),
             illustration: Tokens,
             description:
-                'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sed lacus lectus. Nunc gravida arcu posuere odio sagittis, ac congue lacus placerat.',
-            url: '/',
+                'Introducing File Tokens. This feature lets you share files easily and securely, without modifying permissions or changing project access. Just generate a token and share the link.',
+            url: 'https://youtu.be/S-o_xIYofLg',
             content: [
-                { title: 'Serverless functions 101: best practices', url: '/', type: 'Blog' },
+                { title: 'Serverless functions 101: best practices', url: '/blog/post/announcing-file-tokens', type: 'Blog' },
                 {
-                    title: 'Local serverless function development with the new Appwrite CLI',
-                    url: '/',
+                    title: 'file tokens',
+                    url: '/blog/post',
                     type: 'Blog'
                 },
                 {
-                    title: 'Local development',
-                    url: '/',
+                    title: 'File Tokens',
+                    url: '/docs/',
                     type: 'Docs'
                 }
             ]
