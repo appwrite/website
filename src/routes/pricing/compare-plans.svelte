@@ -33,7 +33,7 @@
             title: 'Resources',
             rows: [
                 {
-                    title: 'Bandwidth',
+                    title: 'API bandwidth',
                     free: '5GB / month',
                     pro: '300GB / month',
                     scale: '300GB / month',
