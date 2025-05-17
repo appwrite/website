@@ -42,36 +42,6 @@ To find the branch and commit URLs of any deployment, follow these steps:
 
 You can add your own domain to your Appwrite site to provide a branded experience for your users. There are two ways to add a custom domain, depending on whether you're using a subdomain or an apex domain.
 
-## Add a subdomain with CNAME
-
-Subdomains (like `www.example.com` or `app.example.com`) are set up using CNAME records, which point to Appwrite's hostname.
-
-To add a subdomain:
-
-1. Navigate to your site in the Appwrite Console.
-2. Head to the **Domains** tab and click on **Add domain**.
-3. Input your subdomain (e.g., `www.example.com`) and select one of the following:
-    - **Active deployment**: Points the domain to the latest deployed version
-    - **Git branch**: Points the domain to a specific branch on your repository
-    - **Redirect**: Forwards all traffic from this domain to another URL
-4. Copy the specified **CNAME** record and add it to your domain registrar.
-5. Return to the Site settings and wait for verification status.
-
-{% only_dark %}
-![Add domain](/images/docs/sites/dark/add-domain.png)
-{% /only_dark %}
-{% only_light %}
-![Add domain](/images/docs/sites/add-domain.png)
-{% /only_light %}
-
-DNS records can take up to 48 hours to propagate. Once verified, the domain is ready to use.
-
-{% info title="Additional note on domain redirection" %}
-When you redirect an added domain to another URL, any additional path and queries will be ignored.
-
-For example, if a domain `example.com` is set to redirect to `appwrite.io`, `example.com/docs?id=123` will also redirect to `appwrite.io`.
-{% /info %}
-
 ## Add an apex domain with NS records
 
 Apex domains (also known as root domains) are domains without a subdomain prefix, like `example.com` instead of `www.example.com`. Unlike subdomains, apex domains cannot use CNAME records due to DNS protocol limitations.
@@ -81,9 +51,10 @@ To add an apex domain:
 1. Navigate to your site in the Appwrite Console.
 2. Head to the **Domains** tab and click on **Add domain**.
 3. Enter your apex domain (e.g., `example.com`).
-4. Appwrite will provide NS record information.
-5. Go to your domain registrar and update the NS records for your domain to point to `appwrite.zone`.
-6. Return to the Appwrite Console and wait for the verification process to complete.
+4. Select the appropriate domain rule type (Active deployment, Git branch, or Redirect) and configure its settings. See the [Domain rule types](#domain-rule-types) section for details.
+5. Appwrite will provide NS record information.
+6. Go to your domain registrar and update the NS records for your domain to point to `appwrite.zone`.
+7. Return to the Appwrite Console and wait for the verification process to complete.
 
 DNS changes can take up to 48 hours to fully propagate across the internet. During this time, your domain might not be accessible or might show inconsistent behavior.
 
@@ -101,3 +72,62 @@ Appwrite uses a global CDN to serve your sites. To maintain flexibility and avoi
 {% arrow_link href="/docs/products/network/dns" %}
 Learn more about Appwrite DNS server
 {% /arrow_link %}
+
+## Add a subdomain with CNAME
+
+Subdomains (like `www.example.com` or `app.example.com`) are set up using CNAME records, which point to Appwrite's hostname.
+
+To add a subdomain:
+
+1. Navigate to your site in the Appwrite Console.
+2. Head to the **Domains** tab and click on **Add domain**.
+3. Input your subdomain (e.g., `www.example.com`).
+4. Select the appropriate domain rule type (Active deployment, Git branch, or Redirect) and configure its settings. See the [Domain rule types](#domain-rule-types) section for details.
+5. Copy the specified **CNAME** record and add it to your domain registrar.
+6. Return to the Site settings and wait for verification status.
+
+{% only_dark %}
+![Add domain](/images/docs/sites/dark/add-domain.png)
+{% /only_dark %}
+{% only_light %}
+![Add domain](/images/docs/sites/add-domain.png)
+{% /only_light %}
+
+DNS records can take up to 48 hours to propagate. Once verified, the domain is ready to use.
+
+## Domain rule types
+
+When adding a custom domain to your Appwrite site, you'll need to select one of the following rule types that determine how your domain will behave:
+
+### Active deployment
+
+Points your domain to the latest deployed version of your site. This is the most common option for production domains.
+
+- When selected, your domain will always serve the most recent successful deployment
+- Any new deployments will automatically be available on this domain
+
+### Git branch
+
+Points your domain to a specific branch in your repository. This is useful for testing or staging environments.
+
+- When selected, you'll need to choose a specific branch from your connected repository
+- Your domain will always serve the latest successful deployment from that branch
+- This allows you to have different domains for different branches (e.g., staging.example.com for your staging branch)
+
+### Redirect
+
+Forwards all traffic from your domain to another URL. This is useful for domain migrations or creating shortcuts.
+
+- When selected, you'll need to specify the destination URL
+- You can choose from various HTTP status codes for the redirect:
+  - 301 Moved permanently
+  - 302 Found
+  - 303 See other
+  - 307 Temporary redirect
+  - 308 Permanent redirect
+
+{% info title="Path and query parameters in redirects" %}
+When you redirect an added domain to another URL, any additional path and queries will be ignored.
+
+For example, if a domain `example.com` is set to redirect to `appwrite.io`, `example.com/docs?id=123` will also redirect to `appwrite.io`.
+{% /info %}
