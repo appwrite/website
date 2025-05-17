@@ -2,20 +2,34 @@
 layout: article
 title: File tokens
 description: Easily share files with external users using file tokens.
-difficulty: beginner
-readtime: 10
 ---
 
-File tokens are a type of token that allow you to share files publicly with anyone. By using file tokens, you can let any external user access your file without having to configure bucket or file permissions. File tokens can either be set to expire on a specific date or work indefinitely.
+File tokens are a type of secret that allow you to share files publicly with anyone. By using file tokens, you can let any external user access your file without having to configure bucket or file permissions. File tokens can either be set to expire on a specific date or work indefinitely.
 
 # Create file tokens
 
-To create a file token, you must have at least one file [uploaded](/docs/products/storage/upload-download) to a [storage bucket](/docs/products/storage/buckets).
+To create a file token, you must [upload a file](/docs/products/storage/upload-download) to a [storage bucket](/docs/products/storage/buckets).
 
 {% tabs %}
 {% tabsitem #console title="Console" %}
 
 Head to the **Storage** page, open a file inside a bucket, scroll down to the **File tokens** section, and click on the **Create file token** button.
+
+{% only_dark %}
+![Create file token](/images/docs/storage/dark/create-file-token.png)
+{% /only_dark %}
+{% only_light %}
+![Create file token](/images/docs/storage/create-file-token.png)
+{% /only_light %}
+
+You can then click on the three-dots menu, click on **Copy URL** and get the token-based preview, view, and download URLs for the file.
+
+{% only_dark %}
+![Copy file token-based URL](/images/docs/storage/dark/copy-file-token-url.png)
+{% /only_dark %}
+{% only_light %}
+![Copy file token-based URL](/images/docs/storage/copy-file-token-url.png)
+{% /only_light %}
 
 {% /tabsitem %}
 
@@ -26,7 +40,6 @@ You can create file tokens programmatically using a [Server SDK](/docs/sdks#serv
 ```js
 const sdk = require('node-appwrite');
 
-// Init SDK
 const client = new sdk.Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
     .setProject('<PROJECT_ID>') // Your project ID
@@ -34,19 +47,146 @@ const client = new sdk.Client()
 
 const tokens = new sdk.Tokens(client);
 
-const promise = tokens.createFileToken('[BUCKET_ID]', '[FILE_ID]', '[EXPIRY]');
-
-promise.then(function (response) {
-    console.log(response);
-}, function (error) {
-    console.log(error);
-});
+const fileToken = await tokens.createFileToken(
+    '<BUCKET_ID>',
+    '<FILE_ID>',
+    '' // expiry (optional)
+);
 ```
 
-The created token can then be used along with the [view file](/docs/references/cloud/server-nodejs/storage#getFileView), [preview file](/docs/references/cloud/server-nodejs/storage#getFilePreview), and [download file](/docs/references/cloud/server-nodejs/storage#getFileDownload) endpoints.
+The created token can then be used along with Appwrite Storage's [view](/docs/references/cloud/server-nodejs/storage#getFileView), [preview](/docs/references/cloud/server-nodejs/storage#getFilePreview), and [download](/docs/references/cloud/server-nodejs/storage#getFileDownload) endpoints.
 {% /tabsitem %}
 {% /tabs %}
 
-# Expiry
+# List all file tokens
 
-File tokens can either be set to expire at a certain date or never expire.
+You can use the Appwrite Console or one of the Server SDKs to view all created file tokens, their expiry dates and the time each token was last accessed at.
+
+{% tabs %}
+{% tabsitem #console title="Console" %}
+
+Head to the **Storage** page, open a file inside a bucket, and scroll down to the **File tokens** section.
+
+{% only_dark %}
+![List of file tokens](/images/docs/storage/dark/list-file-tokens.png)
+{% /only_dark %}
+{% only_light %}
+![List of file tokens](/images/docs/storage/list-file-tokens.png)
+{% /only_light %}
+
+{% /tabsitem %}
+
+{% tabsitem #server-sdk title="Server SDK" %}
+
+You can list all file tokens programmatically using a [Server SDK](/docs/sdks#server). Appwrite [Server SDKs](/docs/sdks#server) require an [API key](/docs/advanced/platform/api-keys) with the `tokens.read` scope enabled.
+
+```js
+const sdk = require('node-appwrite');
+
+const client = new sdk.Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('<PROJECT_ID>') // Your project ID
+    .setKey('919c2d18fb5d4...a2ae413da83346ad2'); // Your secret API key
+
+const tokens = new sdk.Tokens(client);
+
+const result = await tokens.list(
+    '<BUCKET_ID>', // bucketId
+    '<FILE_ID>', // fileId
+    [] // queries (optional)
+);
+```
+
+Using the token IDs, you can also get data pertaining to an individual file token.
+
+```js
+const result = await tokens.get(
+    '<TOKEN_ID>' // tokenId
+);
+```
+
+{% /tabsitem %}
+{% /tabs %}
+
+# Update file token expiry
+
+File tokens can be set to expire on a specific date or stay active forever. This helps keep your files secure by making sure access ends after a set time.
+
+While the expiry of a file token is set at the time of creation, you can update it later.
+
+{% tabs %}
+{% tabsitem #console title="Console" %}
+
+Head to the **Storage** page, open a file inside a bucket, and scroll down to the **File tokens** section. Click on the three-dots menu next to the created file token and click on **Edit expiry**.
+
+{% only_dark %}
+![Update file token expiry](/images/docs/storage/dark/update-file-token-expiry.png)
+{% /only_dark %}
+{% only_light %}
+![Update file token expiry](/images/docs/storage/update-file-token-expiry.png)
+{% /only_light %}
+
+{% /tabsitem %}
+
+{% tabsitem #server-sdk title="Server SDK" %}
+
+You can update file token expiry programmatically using a [Server SDK](/docs/sdks#server). Appwrite [Server SDKs](/docs/sdks#server) require an [API key](/docs/advanced/platform/api-keys) with the `tokens.write` scope enabled.
+
+```js
+const sdk = require('node-appwrite');
+
+const client = new sdk.Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('<PROJECT_ID>') // Your project ID
+    .setKey('919c2d18fb5d4...a2ae413da83346ad2'); // Your secret API key
+
+const tokens = new sdk.Tokens(client);
+
+const result = await tokens.update(
+    '<TOKEN_ID>', // tokenId
+    '', // expire (optional)
+);
+```
+
+{% /tabsitem %}
+{% /tabs %}
+
+# Delete file tokens
+
+You can use the Appwrite Console or one of the Server SDKs to delete a file token.
+
+{% tabs %}
+{% tabsitem #console title="Console" %}
+
+Head to the **Storage** page, open a file inside a bucket, and scroll down to the **File tokens** section. Click on the three-dots menu next to the created file token and click on **Delete**.
+
+{% only_dark %}
+![Delete file token](/images/docs/storage/dark/delete-file-token.png)
+{% /only_dark %}
+{% only_light %}
+![Delete file token](/images/docs/storage/delete-file-token.png)
+{% /only_light %}
+
+{% /tabsitem %}
+
+{% tabsitem #server-sdk title="Server SDK" %}
+
+You can delete a file token programmatically using a [Server SDK](/docs/sdks#server). Appwrite [Server SDKs](/docs/sdks#server) require an [API key](/docs/advanced/platform/api-keys) with the `tokens.write` scope enabled.
+
+```js
+const sdk = require('node-appwrite');
+
+const client = new sdk.Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('<PROJECT_ID>') // Your project ID
+    .setKey('919c2d18fb5d4...a2ae413da83346ad2'); // Your secret API key
+
+const tokens = new sdk.Tokens(client);
+
+const result = await tokens.delete(
+    '<TOKEN_ID>' // tokenId
+)
+```
+
+{% /tabsitem %}
+{% /tabs %}
