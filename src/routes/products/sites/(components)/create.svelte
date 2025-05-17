@@ -42,10 +42,10 @@
 
         <div class="relative z-10 mx-auto -mt-24 flex max-w-md flex-col gap-4 text-center">
             <h2 class="text-title text-primary font-aeonik-pro">
-                Clone a template or import a repository
+                Clone a template or connect to your Git repository
             </h2>
             <p class="text-secondary text-description font-medium">
-                See a preview of your crafted messages on the Console before sending them.
+                Use one of the pre-built Sites templates or import an existing project using Git.
             </p>
         </div>
     </div>
