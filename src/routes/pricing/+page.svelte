@@ -8,7 +8,7 @@
     import Faq from './faq.svelte';
     import BG from './bg.png?enhanced';
     import { getAppwriteDashboardUrl } from '$lib/utils/dashboard';
-    import { Button } from '$lib/components/ui';
+    import { Button, BadgeTransparent, Icon } from '$lib/components/ui';
     import { trackEvent } from '$lib/actions/analytics';
 
     const title = 'Pricing' + TITLE_SUFFIX;
@@ -56,16 +56,34 @@
                             style="background: linear-gradient(90deg, #F47298 0%, #E4E1E5 61.98%, #E4E4E7 100%);
                                 -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; padding-block-end:2px;"
                         >
-                            Straightforward pricing for any project
+                            Pricing
                         </h1>
                         <p
                             class="text-description max-w-sm self-center text-center opacity-90"
                             style="background: linear-gradient(90deg, #F47298 0%, #E4E1E5 61.98%, #E4E4E7 100%);
                                 -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; padding-block-end:2px;"
                         >
-                            Start building for free and upgrade your plan as your project and team
-                            grows.
+                            Appwrite offers simple and transparent pricing plans with no surprises.
                         </p>
+                        <div class="mt-4 flex flex-col items-center text-white">
+                            <a href="/products/sites">
+                                <BadgeTransparent
+                                    ><img
+                                        src="/images/icons/illustrated/dark/sites.png"
+                                        alt="Sites icon"
+                                        class="h-8 w-8"
+                                    />
+                                    <span class="text-white"
+                                        >Appwrite Sites is free during launch</span
+                                    >
+                                    <Icon name="arrow-right" aria-hidden="true"
+                                    ></Icon></BadgeTransparent
+                                ></a
+                            >
+                            <span class="mt-2 text-sm text-[var(--color-primary)] opacity-64"
+                                >Pricing will be revealed July 1st, 2025</span
+                            >
+                        </div>
                     </div>
                 </section>
             </div>
