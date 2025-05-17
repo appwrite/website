@@ -2,6 +2,11 @@
     import embla from 'embla-carousel-svelte';
     import type { EmblaCarouselType, EmblaOptionsType, EmblaPluginType } from 'embla-carousel';
     import { Button, Icon } from '$lib/components/ui';
+    import EventFutureOfAppwrite from '../(assets)/eventFutureOfAppwrite.png';
+    import EventLiveDemo from '../(assets)/eventLiveDemo.png';
+    import EventBuildingWithFlutter from '../(assets)/eventBuildingWithFlutter.png';
+    import EventClosingParty from '../(assets)/eventClosingParty.png';
+    import EventIndustryPanel from '../(assets)/eventIndustryPanel.png';
 
     let emblaApi: EmblaCarouselType;
 
@@ -40,6 +45,29 @@
             .on('select', togglePrevNextBtnsState)
             .on('reInit', togglePrevNextBtnsState);
     };
+
+    const events = [
+        {
+            poster: EventFutureOfAppwrite,
+            title: 'The future of Eldad'
+        },
+        {
+            poster: EventLiveDemo,
+            title: 'Live demo'
+        },
+        {
+            poster: EventBuildingWithFlutter,
+            title: 'Building with Flutter'
+        },
+        {
+            poster: EventIndustryPanel,
+            title: 'Industry panel'
+        },
+        {
+            poster: EventClosingParty,
+            title: 'Closing party'
+        }
+    ];
 </script>
 
 <div class="border-offset relative min-h-[45vh] border-y-2 border-dashed bg-black/14 py-24">
@@ -70,10 +98,13 @@
             on:emblaInit={onEmblaInit}
         >
             <div class="embla__container flex">
-                {#each Array.from({ length: 8 }) as _}
+                {#each events as _}
                     <div
-                        class="embla__slide bg-card/90 mr-4 h-[180px] min-w-0 [flex:0_0_33%] rounded-lg"
-                    ></div>
+                        class="embla__slide bg-card/90 mr-4 min-w-0 [flex:0_0_33%] items-center rounded-lg p-4"
+                    >
+                        <img src={_.poster} class="m-auto rounded-t" />
+                        <h3 class="mt-0.5 text-base font-medium">{_.title}</h3>
+                    </div>
                 {/each}
             </div>
         </div>
