@@ -19,9 +19,11 @@
             x: number;
             y: number;
         };
+
+        theme: 'light' | 'dark'
     };
 
-    const { coords }: Props = $props();
+    const { coords, theme = 'dark' }: Props = $props();
 </script>
 
 {#if $tooltipData.city}
@@ -32,8 +34,9 @@
     >
         <div
             class={classNames(
-                'bg-card/90 border-gradient relative z-100 flex w-[190px] flex-col gap-2 rounded-[10px] p-2 backdrop-blur-lg before:rounded-[10px] after:rounded-[10px]',
-                'data-[state="closed"]:animate-menu-out data-[state="instant-open"]:animate-menu-in data-[state="delayed-open"]:animate-menu-in'
+                'border-gradient relative z-100 flex w-[190px] flex-col gap-2 rounded-[10px] p-2 backdrop-blur-lg before:rounded-[10px] after:rounded-[10px]',
+                'data-[state="closed"]:animate-menu-out data-[state="instant-open"]:animate-menu-in data-[state="delayed-open"]:animate-menu-in',
+                theme === 'dark' ? 'bg-card/90' : 'bg[var(--card, rgba(255,255,255))]'
             )}
         >
             <span class="text-primary text-caption w-fit">

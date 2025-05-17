@@ -46,9 +46,8 @@
         <Tabs.List
             class={classNames(
                 'border-smooth animate-fade-in relative grid w-full max-w-xl grid-cols-1 place-content-center gap-3 p-1 px-8 drop-shadow-md md:grid-cols-3 md:rounded-full md:border md:px-1',
-                theme === 'light' ? '' : 'bg-card'
+                theme === 'light' ? 'md:bg[var(--card, rgba(255,255,255,0.90))]' : 'md:bg-card'
             )}
-            style={theme === 'light' ? 'background: var(--card, rgba(255,255,255,0.90));' : ''}
         >
             {#each navItems as { label, icon, value }, index}
                 <Tabs.Trigger
@@ -74,7 +73,7 @@
     </Tabs.Root>
 
     {#key selectedTab}
-        <p class="animate-enter">
+        <p class="animate-enter text-caption px-4">
             {getDescription()}
         </p>
     {/key}
