@@ -9,7 +9,7 @@
     import BG from './bg.png?enhanced';
     import { getAppwriteDashboardUrl } from '$lib/utils/dashboard';
     import { Button } from '$lib/components/ui';
-    import { trackEvent } from '$lib/actions/analytics';
+    import Badge from './badge.svelte';
 
     const title = 'Pricing' + TITLE_SUFFIX;
     const description = 'Explore our straightforward pricing plans that scale with your project.';
@@ -56,16 +56,17 @@
                             style="background: linear-gradient(90deg, #F47298 0%, #E4E1E5 61.98%, #E4E4E7 100%);
                                 -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; padding-block-end:2px;"
                         >
-                            Straightforward pricing for any project
+                            Pricing
                         </h1>
                         <p
                             class="text-description max-w-sm self-center text-center opacity-90"
                             style="background: linear-gradient(90deg, #F47298 0%, #E4E1E5 61.98%, #E4E4E7 100%);
                                 -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; padding-block-end:2px;"
                         >
-                            Start building for free and upgrade your plan as your project and team
-                            grows.
+                            Appwrite offers simple and transparent pricing plans with no surprises.
                         </p>
+
+                        <Badge text="Appwrite Sites is free during launch" />
                     </div>
                 </section>
             </div>
