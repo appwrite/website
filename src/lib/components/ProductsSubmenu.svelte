@@ -70,7 +70,6 @@
 </script>
 
 <script lang="ts">
-    import { dev } from '$app/environment';
     import { trackEvent } from '$lib/actions/analytics';
     import { classNames } from '$lib/utils/classnames';
     import { createDropdownMenu, melt } from '@melt-ui/svelte';
@@ -123,12 +122,8 @@
                         <a
                             href={product.href}
                             use:melt={$item}
-                            on:click={() =>
-                                trackEvent({
-                                    plausible: {
-                                        name: `${product.name} in products submenu`
-                                    }
-                                })}
+                            onclick={() =>
+                                trackEvent(`products-submenu-${product.name.toLowerCase()}-click`)}
                             class="group flex gap-3 rounded-xl p-1 text-white transition-colors outline-none focus:bg-white/8"
                         >
                             <div

@@ -10,6 +10,7 @@
     import LogoList from '$lib/components/LogoList.svelte';
     import Scale from '$routes/(experiments)/new-homepage/(components)/scale.svelte';
     import { Button } from '$lib/components/ui';
+    import { trackEvent } from '$lib/actions/analytics';
 
     let email = '';
     let firstName = '';
@@ -47,6 +48,8 @@
                 ...getReferrerAndUtmSource()
             })
         });
+
+        trackEvent('contact-form-enterprise-submit');
 
         submitting = false;
         if (response.status >= 400) {

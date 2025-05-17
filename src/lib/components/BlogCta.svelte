@@ -11,7 +11,9 @@
 >
     <div class="flex max-w-3xs flex-col items-center justify-center gap-5 text-center">
         <h2 class="text-label text-primary font-aeonik-pro">{heading}</h2>
-        <Button href={getAppwriteDashboardUrl()}>{label}</Button>
+        <Button href={getAppwriteDashboardUrl()} event="blog-cta-get_started_btn-click"
+            >{label}</Button
+        >
     </div>
 </div>
 

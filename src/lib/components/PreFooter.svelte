@@ -1,7 +1,7 @@
 <script lang="ts">
     import { trackEvent } from '$lib/actions/analytics';
-    import { getAppwriteDashboardUrl } from '$lib/utils/dashboard';
     import { Button, type Variant } from '$lib/components/ui';
+    import { getAppwriteDashboardUrl } from '$lib/utils/dashboard';
 
     export let format: 'default' | 'alternate' = 'default';
 
@@ -26,7 +26,7 @@
             buttonText: 'Get started',
             buttonLink: getAppwriteDashboardUrl('/register'),
             buttonVariant: 'secondary',
-            eventName: 'Get started Free plan'
+            eventName: 'footer-plans-free-click'
         },
         {
             name: 'Pro',
@@ -40,7 +40,7 @@
             buttonText: 'Start building',
             buttonLink: getAppwriteDashboardUrl('/console?type=create&plan=tier-1'),
             buttonVariant: 'primary',
-            eventName: 'Get started Pro plan'
+            eventName: 'footer-plans-pro-click'
         },
         {
             name: 'Scale',
@@ -53,7 +53,7 @@
             buttonText: 'Start building',
             buttonLink: getAppwriteDashboardUrl('/console?type=create&plan=tier-2'),
             buttonVariant: 'secondary',
-            eventName: 'Get started Scale plan'
+            eventName: 'footer-plans-scale-click'
         },
         {
             name: 'Enterprise',
@@ -64,7 +64,7 @@
             buttonText: 'Contact us',
             buttonLink: '/contact-us/enterprise',
             buttonVariant: 'secondary',
-            eventName: 'Get started Enterprise plan'
+            eventName: 'footer-plans-enterprise-click'
         }
     ];
 
@@ -104,7 +104,7 @@
                     class="self-center"
                     variant="primary"
                     href={getAppwriteDashboardUrl()}
-                    onclick={() => trackEvent({ plausible: { name: 'Get started in pre footer' } })}
+                    event="footer-plans-get_started-click"
                 >
                     <span class="text">Start building for free</span>
                 </Button>
@@ -112,7 +112,7 @@
                     class="self-center"
                     variant="secondary"
                     href="/pricing"
-                    onclick={() => trackEvent({ plausible: { name: 'Get started in pre footer' } })}
+                    event="footer-plans-pricing_url-click"
                 >
                     <span class="text">View Pricing plans</span>
                 </Button>
@@ -173,7 +173,7 @@
                 variant="transparent"
                 href={getAppwriteDashboardUrl()}
                 class="self-center"
-                onclick={() => trackEvent({ plausible: { name: 'Get started in pre footer' } })}
+                event="footer-plans-get_started-click"
             >
                 <span class="text">Get started</span>
             </Button>
@@ -215,15 +215,10 @@
                                 {plan.description}
                             </p>
                             <Button
-                                variant={plan.buttonVariant}
                                 href={plan.buttonLink}
+                                event={plan.eventName}
+                                variant={plan.buttonVariant}
                                 class="w-full! flex-3 self-end md:w-fit"
-                                onclick={() =>
-                                    trackEvent({
-                                        plausible: {
-                                            name: plan.eventName
-                                        }
-                                    })}
                             >
                                 <span class="text" style:padding-inline="0.5rem"
                                     >{plan.buttonText}</span
