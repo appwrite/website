@@ -76,9 +76,9 @@
             ]
         },
         {
-            title: 'Hosting for Flutter Web',
+            title: 'Flutter Web',
             release: addDays(base, 1),
-            illustration: 'Hosting Flutter',
+            illustration: Flutter,
             description:
                 'Appwrite and Flutter have always worked well together, and now, you can deploy your Flutter web apps directly from Appwrite Sites.',
             url: '/',
@@ -122,7 +122,7 @@
             ]
         },
         {
-            title: 'New image formats',
+            title: 'Image formats',
             release: addDays(base, 3),
             illustration: Formats,
             description:
