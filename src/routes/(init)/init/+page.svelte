@@ -39,7 +39,11 @@
                 'Introducing the open-source Vercel alternative. A new Appwrite product that lets you deploy and host your websites and web apps right inside Appwrite.',
             url: 'https://www.youtube-nocookie.com/embed/31udvDQ5I4Y',
             content: [
-                { title: 'Announcing Appwrite Sites', url: '/blog/post/announcing-appwrite-sites', type: 'Blog' },
+                {
+                    title: 'Announcing Appwrite Sites',
+                    url: '/blog/post/announcing-appwrite-sites',
+                    type: 'Blog'
+                },
                 {
                     title: 'How to host web apps with Appwrite Sites',
                     url: '/blog/post/',
@@ -63,18 +67,27 @@
                     poster: '',
                     url: 'https://youtu.be/VtDe6hDw91k'
                 },
-                { title: 'YouTube Live', type: 'video', poster: '', url: 'https://www.youtube.com/watch?v=1g8tuogsp7A' }
+                {
+                    title: 'YouTube Live',
+                    type: 'video',
+                    poster: '',
+                    url: 'https://www.youtube.com/watch?v=1g8tuogsp7A'
+                }
             ]
         },
         {
             title: 'Hosting for Flutter Web',
             release: addDays(base, 1),
-            illustration: Hosting Flutter,
+            illustration: 'Hosting Flutter',
             description:
                 'Appwrite and Flutter have always worked well together, and now, you can deploy your Flutter web apps directly from Appwrite Sites.',
             url: '/',
             content: [
-                { title: 'How to set up the Flutter starter template on Appwrite Sites', url: '/blog/post', type: 'Blog' },
+                {
+                    title: 'How to set up the Flutter starter template on Appwrite Sites',
+                    url: '/blog/post',
+                    type: 'Blog'
+                },
                 {
                     title: 'Building with Appwrite Sites template',
                     url: '/blog/post/',
@@ -116,7 +129,11 @@
                 'We have added support for two new image formats in Appwrite Storage: HEIC and AVIF. This will give you more tools to manage, manipulate, and serve images the way you need..',
             url: '/',
             content: [
-                { title: 'Serverless functions 101: best practices', url: '/blog/post', type: 'Blog' },
+                {
+                    title: 'Serverless functions 101: best practices',
+                    url: '/blog/post',
+                    type: 'Blog'
+                },
                 {
                     title: 'Local serverless function development with the new Appwrite CLI',
                     url: '/',
@@ -137,7 +154,11 @@
                 'Introducing File Tokens. This feature lets you share files easily and securely, without modifying permissions or changing project access. Just generate a token and share the link.',
             url: 'https://youtu.be/S-o_xIYofLg',
             content: [
-                { title: 'Serverless functions 101: best practices', url: '/blog/post/announcing-file-tokens', type: 'Blog' },
+                {
+                    title: 'Serverless functions 101: best practices',
+                    url: '/blog/post/announcing-file-tokens',
+                    type: 'Blog'
+                },
                 {
                     title: 'file tokens',
                     url: '/blog/post',
