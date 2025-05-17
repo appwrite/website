@@ -15,8 +15,8 @@
 
     items = [
         {
-            question: `When will Appwrite's paid plans be available?`,
-            answer: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer viverra nulla sit amet sapien sollicitudin, et rutrum ex auctor. Donec fringilla, tellus vitae vestibulum ullamcorper, lectus leo pellentesque arcu, a hendrerit purus tortor sed odio.'
+            question: `How do I get started with Sites?`,
+            answer: 'Head to the [Appwrite Console](https://cloud.appwrite.io/) and find Appwrite Sites in your project overview. The documentation provides [quick starts](/docs/products/sites/quick-start) to easily get started with your preferred framework. '
         },
         {
             question: 'Can I self-host Appwrite for free?',
