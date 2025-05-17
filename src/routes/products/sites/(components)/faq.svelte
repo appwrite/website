@@ -19,12 +19,16 @@
             answer: 'Head to the [Appwrite Console](https://cloud.appwrite.io/) and find Appwrite Sites in your project overview. The documentation provides [quick starts](/docs/products/sites/quick-start) to easily get started with your preferred framework. '
         },
         {
-            question: 'Can I self-host Appwrite for free?',
-            answer: 'The Education plan has equal usage limits as the Appwrite Pro plan (minus email support). We also have a special channel for Education program members in the Appwrite Discord server for support, which will feature exclusive events, hackathons, etc.'
+            question: 'What does Appwrite Sites cost?',
+            answer: 'Appwrite Sites is free to use until July 1st, 2025. We will inform you before introducing pricing so that you know well beforehand and have no surprises.'
         },
         {
-            question: 'What will happen to my current account when pricing is available?',
-            answer: "Any student enrolled in the GitHub Student Developer Pack can apply for free and receive Appwrite's Education plan until graduation."
+            question: 'Does Appwrite have an Enterprise plan for Appwrite Sites?',
+            answer: ' Yes, we offer a custom plan for Enterprises. Head over to https://appwrite.io/contact-us/enterprise and fill out the form to get in touch about a custom plan.'
+        },
+        {
+            question: 'Can I use Appwrite Sites on the self-hosted version?',
+            answer: "Yes, you can! Appwrite Sites is fully open-source, and you can self-host by following the [documentation](docs/advanced/self-hosting) or by visiting the [Appwrite repository](https://github.com/appwrite/appwrite)."
         }
     ];
 
