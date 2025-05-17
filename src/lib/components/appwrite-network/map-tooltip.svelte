@@ -20,7 +20,7 @@
             y: number;
         };
 
-        theme: 'light' | 'dark'
+        theme: 'light' | 'dark';
     };
 
     const { coords, theme = 'dark' }: Props = $props();
