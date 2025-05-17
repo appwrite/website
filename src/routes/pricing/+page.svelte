@@ -109,7 +109,7 @@
                                         </header>
                                         <div class="web-pricing-cards-content">
                                             <ul class="web-checked-list-circle">
-                                                <li><span>5GB bandwidth</span></li>
+                                                <li><span>5GB API bandwidth</span></li>
                                                 <li><span>2GB storage</span></li>
                                                 <li><span>750K executions</span></li>
                                                 <li><span>75K monthly active users</span></li>
@@ -181,7 +181,7 @@
                                         <div class="web-pricing-cards-content">
                                             <p>Everything in Free, plus:</p>
                                             <ul class="web-checked-list-circle">
-                                                <li><span>300GB bandwidth</span></li>
+                                                <li><span>300GB API bandwidth</span></li>
                                                 <li><span>150GB storage</span></li>
                                                 <li><span>3.5M executions</span></li>
                                                 <li><span>200K monthly active users</span></li>
