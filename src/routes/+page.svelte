@@ -142,7 +142,7 @@
                         <span class="text-caption shrink-0 font-medium">New</span>
                         <div class="web-hero-banner-button-sep"></div>
                         <span class="text-caption web-u-trim-1"
-                            >Announcing Appwrite Sites: the open source Vercel</span
+                            >Announcing Appwrite Sites</span
                         >
                         <span class="web-icon-arrow-right shrink-0" aria-hidden="true"></span>
                     </a>
