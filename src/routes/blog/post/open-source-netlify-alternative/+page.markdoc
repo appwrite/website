@@ -1,6 +1,6 @@
 layout: post
 title: "Appwrite Sites vs Netlify: Choosing the right web hosting platform"
-description: Hosting frontend apps has come a long way, but building for modern use cases often means juggling frontend and backend services across different platforms. This article explores how Appwrite Sites stacks up against Netlify, offering an integrated approach to full-stack deployment without the usual complexity.
+description: This article explores how Appwrite Sites and Netlify compare, offering an integrated approach to full-stack deployment without the usual complexity.
 date: 2025-19-05
 cover: /images/blog/oss-netlify-cover.png
 timeToRead: 8
