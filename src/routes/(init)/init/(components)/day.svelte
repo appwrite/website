@@ -1,6 +1,6 @@
 <script lang="ts" module>
     export type DayProps = {
-        illustration: string;
+        illustration: string | object;
         release: Date;
         title: string;
         description: string;

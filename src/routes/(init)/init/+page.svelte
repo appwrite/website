@@ -20,6 +20,7 @@
     import Hero from './(components)/hero.svelte';
     import Giveaway from './(components)/giveaway.svelte';
     import EventCarousel from './(components)/event-carousel.svelte';
+    import { FooterNav, MainFooter } from '$lib/components';
 
     const title = 'Init - Appwrite';
     const description = 'The start of something new.';
@@ -182,5 +183,44 @@
     </div>
 
     <EventCarousel />
-    <Giveaway />
 {/if}
+
+<Giveaway />
+
+<div class="footer-section extended-borders-footer container">
+    <FooterNav />
+
+    <MainFooter />
+</div>
+
+<style lang="scss">
+    .extended-borders-footer {
+        z-index: 0;
+        position: relative;
+        max-width: 100vw;
+        overflow: hidden;
+    }
+    .extended-borders-footer::before {
+        content: '';
+        position: absolute;
+        border-top: 2px dashed var(--color-offset);
+        pointer-events: none;
+        z-index: -1;
+        height: 0;
+
+        @media (min-width: 768px) {
+            inset: 0;
+        }
+    }
+
+    .footer-section {
+        & :global(.web-footer-nav) {
+            border-block-start: none;
+            margin-block-start: unset;
+
+            @media (max-width: 768px) {
+                border-block-start: solid 0.0625rem hsl(var(--web-color-smooth));
+            }
+        }
+    }
+</style>
