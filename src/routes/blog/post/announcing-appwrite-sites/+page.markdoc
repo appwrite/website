@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Announcing Appwrite Sites: The open source Vercel alternative"
-description: Learn these Git commands to make your workflow smoother, faster, and flexible.
+description: This is Appwrite's biggest release to date, and it will change the way you build with Appwrite forever. Develop, deploy, and scale your applications directly from Appwrite. Your all-in-one cloud platform.
 date: 2025-19-05
 cover: /images/blog/sites-announcement/sites-cover.png
 timeToRead: 6
