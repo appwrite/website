@@ -39,7 +39,7 @@
             illustration: Sites,
             description:
                 'Introducing the open-source Vercel alternative. A new Appwrite product that lets you deploy and host your websites and web apps right inside Appwrite.',
-            url: 'https://www.youtube-nocookie.com/embed/31udvDQ5I4Y',
+            url: 'https://www.youtube-nocookie.com/embed/0cERQxFjTW4',
             content: [
                 {
                     title: 'Announcing Appwrite Sites',
@@ -78,7 +78,7 @@
             ]
         },
         {
-            title: 'Flutter Web',
+            title: 'Hosting for Flutter Web',
             release: addDays(base, 1),
             illustration: Flutter,
             description:
@@ -92,11 +92,11 @@
                 },
                 {
                     title: 'Building with Appwrite Sites template',
-                    url: '/blog/post/',
+                    url: '/blog/post/src/building-with-sites-templates',
                     type: 'Blog'
                 },
                 {
-                    title: 'Local development',
+                    title: 'Hosting for Flutter Web',
                     url: '/docs/products/sites/quick-start/flutter',
                     type: 'Docs'
                 }
@@ -110,35 +110,35 @@
                 'Introducing Dev Keys. A new Appwrite feature that lets you bypass rate limits *during local development*. No more slowdowns. No more artificial blockers. Just fast, uninterrupted building.',
             url: '/',
             content: [
-                { title: 'How do Dev Keys work', url: '/blog/post', type: 'Blog' },
+                { title: 'How do Dev Keys work', url: '/blog/post/', type: 'Blog' },
                 {
                     title: 'Improve your Appwrite developer experience with dev keys',
                     url: '/blog/docs',
                     type: 'Blog'
                 },
                 {
-                    title: 'Local development',
+                    title: 'Dev Keys',
                     url: '/',
                     type: 'Docs'
                 }
             ]
         },
         {
-            title: 'Image formats',
+            title: 'new image formats',
             release: addDays(base, 3),
             illustration: Formats,
             description:
-                'We have added support for two new image formats in Appwrite Storage: HEIC and AVIF. This will give you more tools to manage, manipulate, and serve images the way you need..',
+                'We have added support for two new image formats in Appwrite Storage: HEIC and AVIF. This will give you more tools to manage, manipulate, and serve images the way you need.',
             url: '/',
             content: [
                 {
-                    title: 'Serverless functions 101: best practices',
-                    url: '/blog/post',
+                    title: 'How to use AVIF in Storage',
+                    url: '/blog/pos/avif-in-storage',
                     type: 'Blog'
                 },
                 {
-                    title: 'Local serverless function development with the new Appwrite CLI',
-                    url: '/',
+                    title: 'Improve your Appwrite developer experience with dev keys',
+                    url: '/blog/post/developer-experience-dev-keys',
                     type: 'Blog'
                 },
                 {
@@ -154,7 +154,7 @@
             illustration: Tokens,
             description:
                 'Introducing File Tokens. This feature lets you share files easily and securely, without modifying permissions or changing project access. Just generate a token and share the link.',
-            url: 'https://youtu.be/S-o_xIYofLg',
+            url: 'https://youtu.be/_XU1dftsQag',
             content: [
                 {
                     title: 'Serverless functions 101: best practices',
