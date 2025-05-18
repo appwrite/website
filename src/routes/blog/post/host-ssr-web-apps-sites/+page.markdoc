@@ -15,7 +15,7 @@ When you're building a modern web app, how you serve your content matters. Some 
 
 If you've used platforms like Vercel before, this will feel familiar. You can connect your GitHub repository, choose a branch, and Appwrite will build your app and deploy it to a server.
 
-In this post, we'll show you exactly how to host an SSR-capable web app using Appwrite Sites, from repository connection to framework-specific configurations. Whether you're migrating from Vercel or starting from scratch, this guide will walk you through every step.
+In this post, we'll show you exactly how to host an SSR-capable web app using [Appwrite Sites](/products/sites), from repository connection to framework-specific configurations. Whether you're migrating from Vercel or starting from scratch, this guide will walk you through every step.
 
 # What is SSR, and why does it matter?
 
@@ -154,7 +154,7 @@ If you're not sure what to do for your specific framework, you can find help dir
 
 Just open your deployed site from the Sites dashboard, click on **Settings**, and scroll down to the **Build settings** section. When you select a framework from the dropdown, Appwrite will show instructions for SSR configuration, specific to your chosen stack.
 
-That way, you'll know exactly what needs to change, and how.
+That way, you'll know exactly what needs to change and how.
 
 # Final thoughts
 
@@ -167,7 +167,8 @@ Once you've set that up, Appwrite Sites takes care of the rest, from cloning you
 Try it out, and let us know how it works for your stack.
 
 # More resources
-- [Appwrite Sites docs](/docs/producst/sites)
+- [Appwrite Sites docs](/docs/products/sites)
+- [Building with Sites templates](/blog/post/building-with-sites-templates)
 - [SSR vs CSR with Next.js](/blog/post/csr-vs-ssr-with-nextjs)
 - [Appwrite SSR Authentication](https://www.youtube.com/watch?v=7LN05c-ov_0)
 - [Here's how you do auth with 100% SSR in Next.js](https://www.youtube.com/watch?v=ENnG7GusuO4)
