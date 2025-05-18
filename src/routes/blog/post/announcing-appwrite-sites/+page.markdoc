@@ -10,6 +10,7 @@ category: product,init
 featured: true
 callToAction: true
 ---
+
 You love using Appwrite to power your backend, but when it’s time to actually *ship* your website, you’re bouncing between tools, platforms, and extra accounts. That ends today.
 
 Introducing **Appwrite Sites**.
