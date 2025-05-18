@@ -184,19 +184,19 @@ Since everything runs inside your Appwrite project, the surface area for misconf
 
 | Feature | Appwrite Sites | Netlify |
 | --- | --- | --- |
-| Static hosting | ✅ | ✅ |
-| Server-side rendering | ✅ (containers) | ✅ (functions) |
-| Git-based deployment | ✅ | ✅ |
-| Manual deployment (UI) | ✅ | ❌ |
-| Preview deployments | ✅ (branch, PR, commit) | ✅ |
-| Custom domains | ✅ (CNAME + NS) | ✅ |
-| Environment variables | ✅ (build + runtime, project-wide) | ✅ (scoped by env) |
-| Secrets support | ✅ (Option to hide after creation) | ✅ |
-| Automatic API key injection | ✅ | ❌ |
-| Auth, DB, storage integration | ✅ (native) | ❌ (external required) |
-| SSR console logs | ✅ | Limited |
-| CORS for Appwrite backend | ✅ (auto-trusted) | ❌ (manual config) |
-| Timeout configuration | ✅ (up to 30s, self-configurable) | ✅ (10s default, requires support team on paid plans) |
+| Static hosting | Yes | Yes |
+| Server-side rendering | Yes (containers) | Yes (functions) |
+| Git-based deployment | Yes | Yes |
+| Manual deployment (UI) | Yes | No |
+| Preview deployments | Yes (branch, PR, commit) | Yes |
+| Custom domains | Yes (CNAME + NS) | Yes |
+| Environment variables | Yes (build + runtime, project-wide) | Yes (scoped by env) |
+| Secrets support | Yes (Option to hide after creation) | Yes |
+| Automatic API key injection | Yes | No |
+| Auth, DB, storage integration | Yes (native) | No (external required) |
+| SSR console logs | Yes | Limited |
+| CORS for Appwrite backend | Yes (auto-trusted) | No (manual config) |
+| Timeout configuration | Yes (up to 30s, self-configurable) | Yes (10s default, requires support team on paid plans) |
 
 # Final thoughts
 
