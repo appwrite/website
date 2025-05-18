@@ -4,7 +4,7 @@ title: "Building with Appwrite Sites templates"
 description: 
 date: 2025-19-05
 cover: /images/blog/sites-templates/templates-cover.png
-timeToRead: 6
+timeToRead: 9
 author: ebenezer-don
 category: tutorial
 featured: false
@@ -21,11 +21,11 @@ After signing into your Appwrite console, look at the sidebar on the left. Under
 
 Clicking it opens the Sites page. Here, you will see the **Sites** tab selected by default. Click **Create site** to start the deployment process.
 
-![Screenshot 2025-05-02 at 10.11.26.png](attachment:14940c6d-5cfc-44df-8f67-0511dfbd59fc:Screenshot_2025-05-02_at_10.11.26.png)
+![Sites Concole](/images/blog/sites-templates/sites-templates1.png)
 
 At this point, Appwrite offers two options: **Clone a template** or **Connect a repository**. For this guide, we will focus on cloning a template, which lets you quickly set up a site based on a pre-built project.
 
-![Screenshot 2025-05-02 at 10.09.56.png](attachment:ef05184b-ee4b-4193-918d-5d729ba47924:Screenshot_2025-05-02_at_10.09.56.png)
+![Clone or connect Git](/images/blog/sites-templates/sites-templates2.png)
 
 # Choosing a template
 
@@ -44,7 +44,7 @@ Templates can also be sorted by use case. The available categories include:
 
 You can also use the search bar above the list to find a template by name. For this walkthrough, we'll use the **Store template** under the Ecommerce category, so if you don't see it right away, you can search for it.
 
-![Screenshot 2025-05-02 at 10.12.28.png](/images/blog/sites-templates/.png)
+![Search templates](/images/blog/sites-templates/sites-templates3.png)
 
 Clicking the template will open a new page where you can configure your new site.
 
@@ -54,7 +54,7 @@ Once you have selected the template, you will be prompted to enter basic details
 
 You will need to provide a **Site name** and a **Site ID**. The Site ID becomes part of your site's URL, so it should be lowercase and use hyphens if necessary.
 
-![Screenshot 2025-05-02 at 10.12.59.png](/images/blog/sites-templates/.png)
+![set details](/images/blog/sites-templates/sites-templates4.png)
 
 At this stage, you can choose whether to connect your repository now or later.
 
@@ -89,7 +89,7 @@ You can edit these values if needed, and you can add more environment variables 
 
 Additionally, you can define the domain for your site, using the Appwrite Sites domain.
 
-![Screenshot 2025-05-02 at 10.16.13.png](/images/blog/sites-templates/.png)
+![Configure](/images/blog/sites/templates/sites-templates5.png)
 
 After reviewing your configuration, click **Deploy**.
 
@@ -100,7 +100,7 @@ Once you initiate the deployment, you will be taken to a progress page where you
 The logs will show you the different stages of the build process.
 Depending on the size of your template and the dependencies involved, this process can take anywhere from a few seconds to a few minutes.
 
-![Screenshot 2025-05-02 at 10.18.53.png](/images/blog/sites-templates/.png)
+![Deploy](/images/blog/sites-templates/sites-templates6.png)
 
 When deployment is complete, Appwrite will display a success screen showing:
 
@@ -110,7 +110,7 @@ When deployment is complete, Appwrite will display a success screen showing:
 - Global CDN status (should show **Connected**)
 - DDoS protection status (should show **Connected**)
     
-![Screenshot 2025-05-02 at 10.20.09.png](/images/blog/sites-templates/.png)
+![Build](/images/blog/sites-templates/sites-templates7.png)
     
 You will also see a **Visit site** button that you can click to view your newly deployed website.
 
@@ -132,8 +132,8 @@ Once your site is deployed, you can continue to customize it, link it to a custo
 
 # More resources
 
-- [Appwrite Sites docs](https://www.notion.so/docs/producst/sites)
-- [Appwrite compared to Vercel](https://www.notion.so/blog/post/open-source-vercel-alternative)
+- [Appwrite Sites docs](/docs/producst/sites)
+- [Appwrite compared to Vercel](/blog/post/open-source-vercel-alternative)
 - [Appwrite Sites product tour](https://youtu.be/VtDe6hDw91k)
 - [Appwrite Sites video announcement](https://youtu.be/0cERQxFjTW4)
-- [Appwrite Discord server](https://www.notion.so/discord)
+- [Appwrite Discord server](/discord)
