@@ -57,6 +57,10 @@
             href: '/blog/post/appwrite-compared-to-supabase'
         },
         {
+            label: 'Appwrite vs. Firebase',
+            href: '/blog/post/open-source-firebase-alternative'
+        }
+        {
             label: 'Appwrite vs. Vercel',
             href: '/blog/post/open-source-vercel-alternative'
         }
@@ -177,8 +181,8 @@
                             class="aspect-[3/1] max-w-[7.5rem] shrink-0 rounded-xl object-cover"
                         />
                         <p class="text-pretty">
-                            Empowering Shopify merchants with real-time store monitoring using
-                            StoreAlert
+                            Appwrited helped reduce development time by 60%,
+                            and lower server costs by 40%.
                         </p>
                     </a>
                 </div>
