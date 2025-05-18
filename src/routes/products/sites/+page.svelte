@@ -18,7 +18,7 @@
 
     const title = 'Sites' + TITLE_SUFFIX;
     const description =
-        'Develop, deploy, and scale your web applications directly from Appwrite, alongside your backend.';
+        'Appwrite Sites, the open-source Vercel alternative. Develop, deploy, and scale your web applications directly from Appwrite, alongside your backend.';
     const ogImage = DEFAULT_HOST + '/images/open-graph/website.png';
 </script>
 
