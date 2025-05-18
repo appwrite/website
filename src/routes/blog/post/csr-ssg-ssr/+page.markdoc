@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "SR vs SSG vs SSR: what they are and how to choose"
-description: 
+description: Choosing how your web app renders content, on the client, at build time, or on the server, can have a big impact on performance and user experience. In this post, we'll break down CSR, SSG, and SSR to help you understand how they work and when to use each one effectively.
 date: 2025-19-05
 cover: /images/blog/csr-ssg-ssr.png
 timeToRead: 10
