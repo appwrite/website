@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Appwrite Sites vs Vercel: Choosing the right web hosting platform"
-description: 
+description: Modern developers need more than just fast hosting—they need seamless workflows that support everything from static exports to dynamic server-rendered apps. In this post, we’ll compare Appwrite Sites and Vercel, focusing on how each platform supports today’s full-stack development needs.
 date: 2025-19-05
 cover: /images/blog/oss-vercel-cover.png
 timeToRead: 10
