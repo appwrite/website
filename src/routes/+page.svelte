@@ -134,7 +134,7 @@
             <div class="my-12 lg:my-[7.5rem]">
                 <section class="container pb-0">
                     <a
-                        href="/blog/post/init-may-2025"
+                        href="/blog/post/announcing-appwrite-sites"
                         class="web-hero-banner-button mb-4"
                         onclick={() => trackEvent('main-banner-button-click')}
                     >
@@ -142,7 +142,7 @@
                         <span class="text-caption shrink-0 font-medium">New</span>
                         <div class="web-hero-banner-button-sep"></div>
                         <span class="text-caption web-u-trim-1"
-                            >Announcing Init: a new era begins</span
+                            >Announcing Appwrite Sites: the open-source Vercel</span
                         >
                         <span class="web-icon-arrow-right shrink-0" aria-hidden="true"></span>
                     </a>
@@ -153,10 +153,8 @@
                         >
 
                         <svelte:fragment slot="description">
-                            Build your entire backend within minutes and scale effortlessly using
-                            Appwrite's open-source platform. Add Authentication, Databases,
-                            Functions, Storage, and Messaging to your projects using the frameworks
-                            and languages of your choice.
+                            Build your entire backend within minutes and host your site, all within Appwrite's 
+			    all-in-one platform. Authentication, Databases, Functions, Storage, Messaging, and Hosting.
                         </svelte:fragment>
                         <div class="mt-8 flex flex-col gap-4 sm:flex-row" slot="cta">
                             <Button
