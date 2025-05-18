@@ -6,6 +6,12 @@ description: Easily share files with external users using file tokens.
 
 File tokens are a type of secret that allow you to share files publicly with anyone. By using file tokens, you can let any external user access your file without having to configure bucket or file permissions. File tokens can either be set to expire on a specific date or work indefinitely.
 
+# File tokens vs secure cookies
+
+Currently, Appwrite uses secure cookies to manage sessions for users, which are essential for any Appwrite products with permissions configured. However, because the cookies sent to the users of apps consuming the Appwrite API are considered third-party cookies, certain browsers tend to block them due to their default privacy settings, creating a bad user experience.
+
+One way to circumvent this issue in the past was to connect a custom domain to your Appwrite project, as browsers don't inherently block any cookies returned by subdomains of your app. File tokens offer an alternative, simpler path for file sharing in Appwrite Storage, as they don't depend on the session for authorization to share data.
+
 # Create file tokens
 
 To create a file token, you must [upload a file](/docs/products/storage/upload-download) to a [storage bucket](/docs/products/storage/buckets).
