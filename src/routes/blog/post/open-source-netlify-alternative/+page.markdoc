@@ -14,7 +14,7 @@ Deploying frontend applications has gotten easier over the past decade, but also
 
 Netlify helped kick off a modern approach to hosting, especially for static sites and JAMstack-style architectures. But if you're building an app that also depends on a backend, managing that split becomes a real part of your workflow.
 
-With **Appwrite Sites**, you get an alternative that treats frontend deployment as part of a full-stack environment. Instead of connecting your frontend to a separate backend via API tokens and CORS rules, Sites lives in the same platform as your database, storage, authentication, and functions.
+With [**Appwrite Sites**](products/sites), you get an alternative that treats frontend deployment as part of a full-stack environment. Instead of connecting your frontend to a separate backend via API tokens and CORS rules, Sites lives in the same platform as your database, storage, authentication, and functions.
 
 In this article, we'll break down how **Appwrite Sites** and **Netlify** compare, from framework support and SSR, to environment variables, deployment flows, and the developer experience of hosting modern apps.
 
