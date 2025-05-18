@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "How to host SSR web apps on Appwrite Sites"
-description: 
+description: Delivering the right content at the right time is essential for modern web apps, especially when speed and personalization are priorities. In this post, we’ll walk you through how to deploy server-rendered applications with Appwrite Sites, giving you full control over dynamic rendering and framework-specific setups.
 date: 2025-19-05
 cover: /images/blog/host-ssr-web-cover.png
 timeToRead: 6
