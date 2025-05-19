@@ -18,9 +18,9 @@
 
     const products: Array<{
         label: string;
-        icon: string;
+        icon: unknown;
         line: (isActive: boolean) => string;
-        image: string;
+        image: unknown;
     }> = [
         {
             label: 'Auth',
@@ -92,7 +92,7 @@
         activeIndex = (activeIndex + 1) % products.length;
     };
 
-    let interval = $state<NodeJS.Timeout>();
+    let interval = $state<ReturnType<typeof setInterval>>();
 
     const handleSetActive = (index: number) => {
         paused = true;
@@ -275,7 +275,7 @@
         <div class="mx-auto flex flex-col gap-4 text-center">
             <h2 class="text-title text-primary font-aeonik-pro">Integrate your backend</h2>
             <p class="text-secondary text-description mx-auto font-medium">
-                Easily integrate Appwrite's backend products with your site. Zero configuration
+                Easily integrate Appwrite's backend products with your site.<br />Zero configuration
                 needed.
             </p>
         </div>
