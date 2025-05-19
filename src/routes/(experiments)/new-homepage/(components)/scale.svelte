@@ -213,7 +213,7 @@
                     </div>
                 {/each}
 
-                <div class="pointer-events-none absolute inset-0 z-50">
+                <!-- <div class="pointer-events-none absolute inset-0 z-50">
                     {#each correctStats as stat, i}
                         <div
                             class="border-accent absolute top-[var(--top)] left-[calc(var(--left)_+_1px)] h-2 w-2 -translate-1/2 rounded-full border bg-white"
@@ -221,7 +221,7 @@
                             style:--left="{i * 25}%"
                         ></div>
                     {/each}
-                </div>
+                </div> -->
             </div>
         </div>
         <div
