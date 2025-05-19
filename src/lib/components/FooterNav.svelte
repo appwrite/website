@@ -39,7 +39,8 @@
                 { label: 'Messaging', href: '/products/messaging' },
                 { label: 'Storage', href: '/products/storage' },
                 { label: 'Realtime', href: '/docs/apis/realtime' },
-                { label: 'Network', href: '/docs/products/network' }
+                { label: 'Network', href: '/docs/products/network' },
+                { label: 'Hosting', href: '/docs/products/sites' }
             ],
             Learn: [
                 { label: 'Blog', href: '/blog' },
