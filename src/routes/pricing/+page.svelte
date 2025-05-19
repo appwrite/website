@@ -8,8 +8,8 @@
     import Faq from './faq.svelte';
     import BG from './bg.png?enhanced';
     import { getAppwriteDashboardUrl } from '$lib/utils/dashboard';
-    import { Button } from '$lib/components/ui';
-    import Badge from './badge.svelte';
+    import { Button, BadgeTransparent, Icon } from '$lib/components/ui';
+    import { trackEvent } from '$lib/actions/analytics';
 
     const title = 'Pricing' + TITLE_SUFFIX;
     const description = 'Explore our straightforward pricing plans that scale with your project.';
@@ -65,8 +65,25 @@
                         >
                             Appwrite offers simple and transparent pricing plans with no surprises.
                         </p>
-
-                        <Badge text="Appwrite Sites is free during launch" />
+                        <div class="mt-4 flex flex-col items-center text-white">
+                            <a href="/products/sites">
+                                <BadgeTransparent
+                                    ><img
+                                        src="/images/icons/illustrated/dark/sites.png"
+                                        alt="Sites icon"
+                                        class="h-8 w-8"
+                                    />
+                                    <span class="text-white"
+                                        >Appwrite Sites is free during launch</span
+                                    >
+                                    <Icon name="arrow-right" aria-hidden="true"
+                                    ></Icon></BadgeTransparent
+                                ></a
+                            >
+                            <span class="mt-2 text-sm text-[var(--color-primary)] opacity-64"
+                                >Pricing will be revealed July 1st, 2025</span
+                            >
+                        </div>
                     </div>
                 </section>
             </div>

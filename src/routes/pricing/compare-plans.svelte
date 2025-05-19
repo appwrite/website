@@ -40,7 +40,7 @@
                     enterprise: 'Custom'
                 },
                 {
-                    title: 'Additional bandwidth',
+                    title: 'Additional API bandwidth',
                     free: '-',
                     pro: '$40 per 100GB / month',
                     scale: '$40 per 100GB / month',
