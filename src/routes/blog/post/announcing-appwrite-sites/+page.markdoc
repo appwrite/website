@@ -2,7 +2,7 @@
 layout: post
 title: "Announcing Appwrite Sites: The open source Vercel alternative"
 description: This is Appwrite's biggest release to date, and it will change the way you build with Appwrite forever. Develop, deploy, and scale your applications directly from Appwrite. Your all-in-one cloud platform.
-date: 2025-19-05
+date: 2025-05-19
 cover: /images/blog/sites-announcement/sites-cover.png
 timeToRead: 6
 author: matej-baco
@@ -29,7 +29,7 @@ The best part: **Appwrite is a fully open-source platform to offer both frontend
 
 # Important Sites features
 
-Building Sites as part of the Appwrite ecosystem was a deliberate choice to deliver a seamless experience from crafting your backend to deploying your web apps and websites. To ensure your usage of the platform feels consistent and robust, we set out to match the high standards of other Appwrite products when developing Sites over the past year. 
+Building Sites as part of the Appwrite ecosystem was a deliberate choice to deliver a seamless experience from crafting your backend to deploying your web apps and websites. To ensure your usage of the platform feels consistent and robust, we set out to match the high standards of other Appwrite products when developing Sites over the past year.
 
 We’ve introduced several critical features to elevate the hosting experience. Helping you scale efficiently, keep data secure, and deliver lightning-fast performance.
 
@@ -81,7 +81,7 @@ If you prefer to use Appwrite Sites open-source version, you can visit the [self
 
 # Appwrite Sites pricing
 
-Appwrite Sites is free to use until July 1st, 2025. We will inform you before introducing pricing so that you know well beforehand and have no surprises. 
+Appwrite Sites is free to use until July 1st, 2025. We will inform you before introducing pricing so that you know well beforehand and have no surprises.
 
 # One platform to build, host, scale
 
