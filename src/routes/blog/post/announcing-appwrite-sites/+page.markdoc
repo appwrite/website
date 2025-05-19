@@ -25,7 +25,7 @@ Until now, you had to rely on external platforms like Vercel or Netlify to get y
 
 The best part: **Appwrite is a fully open-source platform to offer both frontend hosting and your entire backend. All under one roof.** From static sites and SSR apps to databases, authentication, storage, messaging and serverless functions, you can now build, deploy, and scale your entire app stack using just Appwrite.
 
-![Sites on console](/images/blog/sites-console.png)
+![Sites on console](/images/blog/sites-announcement/sites-console.png)
 
 # Important Sites features
 
@@ -48,7 +48,7 @@ All this is managed from your Appwrite Console or CLI, and deployable in both [*
 
 # Sites templates: One-Click websites
 
-![site-templates](/images/blog/sites-templates-add.png)
+![site-templates](/images/blog/sites-announcement/sites-templates-add.png)
 
 To make building your website even easier, we created ready-to-use customizable templates that you can deploy with one click, directly from Appwrite. Because not every project needs custom design, and not every team has the time to build from scratch.
 
@@ -58,7 +58,7 @@ From polished landing pages to waitlist forms and simple promo sites, Sites temp
 
 # How to get started with Sites
 
-![create-first-site](images/blogs/create-first-site.png)
+![create-first-site](images/blog/sites-announcement/create-first-site.png)
 
 ## Cloud
 
