@@ -48,8 +48,8 @@
                     type: 'Blog'
                 },
                 {
-                    title: 'How to host web apps with Appwrite Sites',
-                    url: '/blog/post/',
+                    title: 'How to host SSR web apps with Appwrite Sites',
+                    url: '/blog/post/host-ssr-web-apps-sites',
                     type: 'Blog'
                 },
                 {
@@ -60,7 +60,7 @@
                 }
             ],
             announcementVideo: {
-                url: 'https://www.youtube-nocookie.com/embed/31udvDQ5I4Y',
+                url: 'https://www.youtube-nocookie.com/embed/0cERQxFjTW4',
                 title: 'Announcement Video',
                 poster: Poster
             },
