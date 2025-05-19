@@ -89,7 +89,7 @@ You can edit these values if needed, and you can add more environment variables 
 
 Additionally, you can define the domain for your site, using the Appwrite Sites domain.
 
-![Configure](/images/blog/sites/templates/sites-templates5.png)
+![Configure](/images/blog/sites-templates/sites-templates5.png)
 
 After reviewing your configuration, click **Deploy**.
 
