@@ -206,7 +206,7 @@ It's also a good choice if you:
 | --- | --- | --- |
 | Full-stack integration | Yes | No |
 | Static hosting | Yes | Yes |
-| Server-side rendering | Yes (container-based) | Yes (serverless/edge) |
+| Server-side rendering | Yes | Yes |
 | Git-based deployment | Yes | Yes |
 | Manual deployment via UI | Yes (drag-and-drop) | No |
 | Preview deployments | Branch, commit, PR | Branch, commit, PR |
