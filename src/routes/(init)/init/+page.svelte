@@ -1,8 +1,9 @@
 <script lang="ts" module>
-    const base = new Date('2025-05-19T13:00:00.000Z');
+    const base = new Date('2025-05-19T07:00:00.000Z');
+    const otherFeaturesBase = new Date('2025-05-19T13:00:00.000Z');
 
     export const isStarted = new Date() >= base;
-    export const initDates = `${format(base, 'MMM d')} - ${format(addDays(base, 4), 'd')}`;
+    export const initDates = `${format(base, 'MMM d')} - ${format(addDays(otherFeaturesBase, 4), 'd')}`;
 </script>
 
 <script lang="ts">
@@ -52,7 +53,7 @@
                     type: 'Blog'
                 },
                 {
-                    title: 'Appwrite Sites',
+                    title: 'Get started with Appwrite Sites',
                     url: '/docs/products/sites',
                     type: 'Docs',
                     label: 'Visit docs'
@@ -80,7 +81,7 @@
         },
         {
             title: 'Hosting for Flutter Web',
-            release: addDays(base, 1),
+            release: addDays(otherFeaturesBase, 1),
             illustration: Flutter,
             description:
                 'Appwrite and Flutter have always worked well together, and now, you can deploy your Flutter web apps directly from Appwrite Sites.',
@@ -106,7 +107,7 @@
         },
         {
             title: 'Dev Keys',
-            release: addDays(base, 2),
+            release: addDays(otherFeaturesBase, 2),
             illustration: DevKeys,
             description:
                 'Introducing Dev Keys. A new Appwrite feature that lets you bypass rate limits *during local development*. No more slowdowns. No more artificial blockers. Just fast, uninterrupted building.',
@@ -128,7 +129,7 @@
         },
         {
             title: 'new image formats',
-            release: addDays(base, 3),
+            release: addDays(otherFeaturesBase, 3),
             illustration: Formats,
             description:
                 'We have added support for two new image formats in Appwrite Storage: HEIC and AVIF. This will give you more tools to manage, manipulate, and serve images the way you need.',
@@ -154,7 +155,7 @@
         },
         {
             title: 'File Tokens',
-            release: addDays(base, 4),
+            release: addDays(otherFeaturesBase, 4),
             illustration: Tokens,
             description:
                 'Introducing File Tokens. This feature lets you share files easily and securely, without modifying permissions or changing project access. Just generate a token and share the link.',
@@ -210,7 +211,7 @@
         {/each}
     </div>
 
-    <EventCarousel />
+    <!--    <EventCarousel />-->
 {/if}
 
 <Giveaway />

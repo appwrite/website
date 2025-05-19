@@ -181,8 +181,8 @@
                             class="aspect-[3/1] max-w-[7.5rem] shrink-0 rounded-xl object-cover"
                         />
                         <p class="text-pretty">
-                            Appwrited helped reduce development time by 60%,
-                            and lower server costs by 40%.
+                            Appwrited helped reduce development time by 60%, and lower server costs
+                            by 40%.
                         </p>
                     </a>
                 </div>
