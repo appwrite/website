@@ -37,12 +37,12 @@ We've introduced several critical features to elevate the hosting experience. He
 
 - **Static hosting**: Ideal for single-page applications (SPAs), landing pages, documentation sites, and any project that compiles down to static files.
 - **Server-side rendering (SSR)**: Full support for frameworks like Flutter, React, Next.js, Nuxt, SvelteKit, Astro, Remix, and more right out of the box.
-- **[Git integrations](docs/products/sites/deploy-from-git)**: Connect your GitHub repository to enable automatic deployments on every push.
+- **[Git integrations](/docs/products/sites/deploy-from-git)**: Connect your GitHub repository to enable automatic deployments on every push.
 - **Deployment previews**: Get a unique preview URL for each pull request—review, test, and merge with confidence.
 - **Global CDN**: Distribute your content worldwide with a powerful content delivery network to ensure low-latency access from anywhere.
 - **DDoS protection**: Built-in protection mechanisms to help safeguard your apps from denial-of-service attacks.
-- **[The Appwrite Network](docs/products/network)**: Take advantage of a growing number of cloud regions, Points of Presence (PoPs), and edge network capabilities, reducing latency and enhancing performance globally.
-- **[The Appwrite DNS](docs/products/network/dns):** Appwrite provides a dedicated DNS (Domain Name System) service through its `appwrite.zone` nameservers to help you manage domain records for your applications.
+- **[The Appwrite Network](/docs/products/network)**: Take advantage of a growing number of cloud regions, Points of Presence (PoPs), and edge network capabilities, reducing latency and enhancing performance globally.
+- **[The Appwrite DNS](/docs/products/network/dns):** Appwrite provides a dedicated DNS (Domain Name System) service through its `appwrite.zone` nameservers to help you manage domain records for your applications.
 
 All this is managed from your Appwrite Console or CLI, and deployable in both [**Cloud**](https://cloud.appwrite.io/) and **self-hosted** environments.
 
