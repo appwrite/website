@@ -1,19 +1,19 @@
 <script lang="ts">
     import { classNames } from '$lib/utils/classnames';
-    import Python from './(assets)/icons/python.svg';
     import Node from './(assets)/icons/node.svg';
     import Javascript from './(assets)/icons/javascript.svg';
     import Flutter from './(assets)/icons/flutter.svg';
-    import Kotlin from './(assets)/icons/kotlin.svg';
-    import Apple from './(assets)/icons/apple.svg';
-    import Android from './(assets)/icons/android.svg';
-    import Dart from './(assets)/icons/dart.svg';
-    import Php from './(assets)/icons/php.svg';
-    import Ruby from './(assets)/icons/ruby.svg';
+    import Nextjs from './(assets)/icons/nextjs.svg';
+    import Svelte from './(assets)/icons/svelte.svg';
+    import Remix from './(assets)/icons/remix.svg';
+    import Lynx from './(assets)/icons/lynx.svg';
+    import Astro from './(assets)/icons/astro.svg';
+    import Vue from './(assets)/icons/vue.svg';
     import Deno from './(assets)/icons/deno.svg';
-    import Swift from './(assets)/icons/swift.svg';
-    import Net from './(assets)/icons/net.svg';
-    import Go from './(assets)/icons/go.svg';
+    import Angular from './(assets)/icons/angular.svg';
+    import Nuxt from './(assets)/icons/nuxt.svg';
+    import Vite from './(assets)/icons/vite.svg';
+    import ReactNative from './(assets)/icons/react-native.svg';
     import React from './(assets)/icons/react.svg';
     import GradientText from '$lib/components/fancy/gradient-text.svelte';
     import Noise from '$lib/components/fancy/noise.svelte';
@@ -24,58 +24,46 @@
         {
             name: 'JS',
             icon: Javascript,
-            href: '/quickstarts/javascript',
             primary: '#FFCA28'
         },
         {
             name: 'Flutter',
             icon: Flutter,
-            href: '/quickstarts/flutter',
             primary: '#00569E',
             secondary: '#47C5FB'
         },
-        { name: 'Node.js', icon: Node, href: '/quickstarts/node', primary: '#8CC84B' },
+        { name: 'Node.js', icon: Node, primary: '#8CC84B' },
         {
-            name: 'Python',
-            icon: Python,
-            href: '/quickstarts/python',
-            primary: '#F9C600',
-            secondary: '#327EBD'
+            name: 'React Native',
+            icon: ReactNative,
+            primary: '#53C1DE'
         },
-        { name: 'iOS', icon: Apple, href: '/quickstarts/ios', primary: '#fff' },
-        { name: 'Android', icon: Android, href: '/quickstarts/android', primary: '#3DDC84' },
+        { name: 'Next.js', icon: Nextjs, primary: '#000000' },
+        { name: 'Astro', icon: Astro, primary: '#ffffff' },
         {
-            name: 'Dart',
-            icon: Dart,
-            href: '/quickstarts/dart',
-            primary: '#01579B',
-            secondary: '#29B6F6'
+            name: 'Vite',
+            icon: Vite,
+            primary: '#BD34FE'
         },
-        { name: 'PHP', icon: Php, href: '/quickstarts/php', primary: '#8892BF' },
+        { name: 'Svelte', icon: Svelte, primary: '#fc5732' },
         {
-            name: 'Ruby',
-            icon: Ruby,
-            href: '/quickstarts/ruby',
-            primary: '#791C12',
-            secondary: '#9E120B'
+            name: 'Remix',
+            icon: Remix,
+            primary: '#ffffff'
         },
-        { name: 'Deno', icon: Deno, href: '/quickstarts/deno', primary: '#fff' },
-        { name: '.NET', icon: Net, href: '/quickstarts/dotnet', primary: '#512BD4' },
-        { name: 'Go', icon: Go, href: '/quickstarts/go', primary: '#fff' },
+        { name: 'Deno', icon: Deno, primary: '#fff' },
+        { name: 'Vue', icon: Vue, primary: '#41B883', secondary: '#35495E' },
+        { name: 'Angular', icon: Angular, primary: '#C3002F' },
         {
-            name: 'Swift',
-            icon: Swift,
-            href: '/quickstarts/swift',
-            primary: '#F88A36',
-            secondary: '#FD2020'
+            name: 'Nuxt',
+            icon: Nuxt,
+            primary: '#00DC82'
         },
-        { name: 'React', icon: React, href: '/quickstarts/react', primary: '#53C1DE' },
+        { name: 'React', icon: React, primary: '#53C1DE' },
         {
-            name: 'Kotlin',
-            icon: Kotlin,
-            href: '/quickstarts/kotlin',
-            primary: '#6D74E1',
-            secondary: '#E1725C'
+            name: 'Lynx',
+            icon: Lynx,
+            primary: '#78D9EA'
         }
     ];
 
