@@ -64,14 +64,14 @@ From polished landing pages to waitlist forms and simple promo sites, Sites temp
 
 Getting started with Sites Templates takes just a few clicks:
 
-1. In the Appwrite Console's sidebar, click **Sites**.
-2. Click on the **Create site** button.
-3. After clicking on **Connect Git repository**, select your repository.
+1. In the Appwrite Console's sidebar, click **Sites**.
+2. Click on the **Create site** button.
+3. After clicking on **Connect Git repository**, select your repository.
 4. After connecting to GitHub, (optionally) add a name and site ID.
 5. Verify that the correct framework is selected.
 6. Confirm the install command, build command, and output directory in the build settings. To learn more, visit your preferred [framework quick-start](/docs/products/sites/quick-start#framework-quick-starts).
 7. Add any environment variables required by the site.
-8. The site will be created, and a build will begin. Once the build is completed, you'll have created your first site. You can use your site's **domain** to access the deployment.
+8. The site will be created, and a build will begin. Once the build is completed, you'll have created your first site. You can use your site's **domain** to access the deployment.
 
 We have added quick starts for popular frameworks to help you set up faster with your preferred framework, with more to come. As of today you can follow quick starts for [Flutter](/docs/products/sites/quick-start/flutter), [Nuxt](/docs/products/sites/quick-start/sveltekit), [Next.js](/docs/products/sites/quick-start/nextjs), Angular, [SvelteKit](/docs/products/sites/quick-start/sveltekit), [Remix](/docs/products/sites/quick-start/remix), [Astro](/docs/products/sites/quick-start/sveltekit), [Vue.js](/docs/products/sites/quick-start/sveltekit), [React](/docs/products/sites/quick-start/sveltekit), and [Vanilla.JS](/docs/products/sites/quick-start/sveltekit).
 
@@ -92,6 +92,7 @@ Sites will be available on both **Appwrite Cloud** and **self-hosted** deploymen
 Spin up your first site from the Console or [CLI](/docs/tooling/command-line/sites) and go live in minutes. No more stitching platforms together, no more waiting for deploys, just fast, integrated shipping.
 
 # More resources
+
 - [Appwrite Sites docs](/docs/producst/sites)
 - [Appwrite compared to Vercel](/blog/post/open-source-vercel-alternative)
 - [Appwrite Sites product tour](https://youtu.be/VtDe6hDw91k)
