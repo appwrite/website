@@ -44,7 +44,7 @@ We’ve introduced several critical features to elevate the hosting experience. 
 - **[The Appwrite Network](docs/products/network)**: Take advantage of a growing number of cloud regions, Points of Presence (PoPs), and edge network capabilities, reducing latency and enhancing performance globally.
 - **[The Appwrite DNS](docs/products/network/dns):** Appwrite provides a dedicated DNS (Domain Name System) service through its `appwrite.zone` nameservers to help you manage domain records for your applications.
 
-All this is managed from your Appwrite Console or CLI, and deployable in both [**Cloud](**https://cloud.appwrite.io/) and **self-hosted** environments.
+All this is managed from your Appwrite Console or CLI, and deployable in both [**Cloud**](https://cloud.appwrite.io/) and **self-hosted** environments.
 
 # Sites templates: One-Click websites
 
