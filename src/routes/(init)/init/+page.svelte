@@ -60,7 +60,7 @@
                 }
             ],
             announcementVideo: {
-                url: 'https://www.youtube-nocookie.com/embed/31udvDQ5I4Y',
+                url: 'https://www.youtube-nocookie.com/embed/0cERQxFjTW4',
                 title: 'Announcement Video',
                 poster: Poster
             },
