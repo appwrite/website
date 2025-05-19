@@ -59,7 +59,7 @@
         {
             label: 'Appwrite vs. Firebase',
             href: '/blog/post/open-source-firebase-alternative'
-        }
+        },
         {
             label: 'Appwrite vs. Vercel',
             href: '/blog/post/open-source-vercel-alternative'

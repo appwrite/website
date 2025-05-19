@@ -49,7 +49,7 @@
     const events = [
         {
             poster: EventFutureOfAppwrite,
-            title: 'The future of Eldad'
+            title: 'The future of Appwrite'
         },
         {
             poster: EventLiveDemo,

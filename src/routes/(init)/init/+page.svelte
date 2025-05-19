@@ -1,5 +1,5 @@
 <script lang="ts" module>
-    const base = new Date('2025-05-10T13:00:00.000Z');
+    const base = new Date('2025-05-19T13:00:00.000Z');
 
     export const isStarted = new Date() >= base;
     export const initDates = `${format(base, 'MMM d')} - ${format(addDays(base, 4), 'd')}`;
@@ -54,7 +54,8 @@
                 {
                     title: 'Appwrite Sites',
                     url: '/docs/products/sites',
-                    type: 'Docs'
+                    type: 'Docs',
+                    label: 'Visit docs'
                 }
             ],
             announcementVideo: {
@@ -98,7 +99,8 @@
                 {
                     title: 'Hosting for Flutter Web',
                     url: '/docs/products/sites/quick-start/flutter',
-                    type: 'Docs'
+                    type: 'Docs',
+                    label: 'Visit docs'
                 }
             ]
         },
@@ -119,7 +121,8 @@
                 {
                     title: 'Dev Keys',
                     url: '/',
-                    type: 'Docs'
+                    type: 'Docs',
+                    label: 'Visit docs'
                 }
             ]
         },
@@ -144,7 +147,8 @@
                 {
                     title: 'New image formats',
                     url: '/docs/',
-                    type: 'Docs'
+                    type: 'Docs',
+                    label: 'Visit docs'
                 }
             ]
         },
@@ -169,7 +173,8 @@
                 {
                     title: 'File Tokens',
                     url: '/docs/',
-                    type: 'Docs'
+                    type: 'Docs',
+                    label: 'Visit docs'
                 }
             ]
         }

@@ -9,10 +9,9 @@
     }
 
     const { children }: Props = $props();
-    const showLockUp = $state(
+    const showLockUp = $derived(
         page.route.id?.includes('/init/tickets') &&
-            !page.route.id?.includes('/init/tickets/[username]') &&
-            !isStarted
+            !page.route.id?.includes('/init/tickets/[username]')
     );
 </script>
 
