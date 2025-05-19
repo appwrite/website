@@ -7,7 +7,7 @@ description: Bypass Appwrite rate limits and CORS errors in your development env
 Dev keys are secrets used by Appwrite [Client SDKs](/docs/sdks#client) to avoid abuse limits in testing. They are meant to be used specifically in development environments, where they hold several developer experience-related benefits:
 
 - Appwrite rate limits and CORS errors are bypassed
-- Configurable expiration date with 1 day, 7 days, 30 day options as well as manual date selection
+- Configurable expiration date with 1 day, 7 days, and 30 day options
 
 This is highly beneficial in scenarios where you are repeatedly sending the same requests to Appwrite in a short period of time, such as manual or E2E testing and checks in your CI/CD pipeline.
 
@@ -17,7 +17,7 @@ Dev keys should never be used in production environments, only in development en
 
 # Create dev key {% #create-dev-key %}
 
-To create a new Dev key, navigate to **Overview** > **Integrations** > **Dev keys** and click **Create Dev key**.
+To create a new dev key, navigate to **Overview** > **Integrations** > **Dev keys** and click **Create Dev key**.
 
 {% only_dark %}
 ![Create dev key](/images/docs/dev-keys/dark.png)
