@@ -27,7 +27,7 @@ To manage DNS records at the organization level:
 2. Select the **Domains** tab
 3. Here you can view and manage all your DNS records across different projects
 
-This is the central place to manage domain records when you're using Appwrite's DNS service by configuring NS records to point to `appwrite.zone`.
+This is the central place to manage domain records when you're using Appwrite's DNS service by configuring NS records to point to `ns1.appwrite.zone` and `ns2.appwrite.zone`.
 
 ## Service-specific domain management
 
@@ -60,12 +60,12 @@ To use an apex domain (e.g., `example.com`) with Appwrite:
 
 1. Navigate to your domain registrar's DNS settings
 2. Find the NS (nameserver) record settings
-3. Replace the existing nameservers with `appwrite.zone`
+3. Replace the existing nameservers with `ns1.appwrite.zone` and `ns2.appwrite.zone`
 4. Wait for DNS propagation (may take up to 48 hours)
 5. Return to Appwrite Console to verify and configure domain settings
 
 {% info title="DNS delegation" %}
-When you change your NS records to `appwrite.zone`, you're delegating complete DNS management to Appwrite. This means all existing DNS records (like email MX records) will need to be recreated in Appwrite's DNS configuration.
+When you change your NS records to `ns1.appwrite.zone` and `ns2.appwrite.zone`, you're delegating complete DNS management to Appwrite. This means all existing DNS records (like email MX records) will need to be recreated in Appwrite's DNS configuration.
 {% /info %}
 
 # Adding records in Appwrite {% #adding-records %}
