@@ -38,7 +38,7 @@
         },
         realtime: {
             title: 'Realtime',
-            description: 'Realtime copy goes here.',
+            description: 'Subscribe and react to any event using the Realtime API.',
             icon: '/images/icons/illustrated/dark/realtime.png',
             url: '/docs/realtime'
         }
