@@ -89,12 +89,12 @@
             content: [
                 {
                     title: 'How to set up the Flutter starter template on Appwrite Sites',
-                    url: '/blog/post',
+                    url: '/blog/post/',
                     type: 'Blog'
                 },
                 {
                     title: 'Building with Appwrite Sites template',
-                    url: '/blog/post/src/building-with-sites-templates',
+                    url: '/blog/post/building-with-sites-templates',
                     type: 'Blog'
                 },
                 {
