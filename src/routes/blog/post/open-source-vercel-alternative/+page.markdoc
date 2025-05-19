@@ -2,7 +2,7 @@
 layout: post
 title: "Appwrite Sites vs Vercel: Choosing the right web hosting platform"
 description: Looking for an open-source hosting solution? Read this blog to compare Appwrite Sites and Vercel and understand which platform fits your project's needs.
-date: 2025-19-05
+date: 2025-05-19
 cover: /images/blog/oss-vercel-cover.png
 timeToRead: 10
 author: ebenezer-don
@@ -77,7 +77,7 @@ Appwrite Sites offers SSR and static support for a wide range of frameworks, inc
 - Analog
 - Vanilla JS and other static site generators
 
-Each framework comes with its own build recommendations, and Appwrite Sites allows you to customize build and install commands, as well as define the output directory for compatibility. 
+Each framework comes with its own build recommendations, and Appwrite Sites allows you to customize build and install commands, as well as define the output directory for compatibility.
 
 Any static framework works well with Appwrite out of the box. For popular tools like Next.js, Nuxt, and SvelteKit, Appwrite offers presets that auto-configure your build and output settings. If your framework isn’t listed, you can choose “Other” and manually set the commands and output directory.
 

@@ -2,7 +2,7 @@
 layout: post
 title: "Building with Appwrite Sites templates"
 description: To make it easier, and a lot faster to build a website, we have added templates. From e-commerce stores, to documentation, you can get started with a couple of clicks.
-date: 2025-19-05
+date: 2025-05-19
 cover: /images/blog/sites-templates/templates-cover.png
 timeToRead: 9
 author: ebenezer-don
@@ -109,9 +109,9 @@ When deployment is complete, Appwrite will display a success screen showing:
 - The size of the deployment
 - Global CDN status (should show **Connected**)
 - DDoS protection status (should show **Connected**)
-    
+
 ![Build](/images/blog/sites-templates/sites-templates7.png)
-    
+
 You will also see a **Visit site** button that you can click to view your newly deployed website.
 
 # After deployment: Next steps
