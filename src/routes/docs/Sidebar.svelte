@@ -1,5 +1,6 @@
 <script lang="ts">
     import Sidebar, { type NavTree } from '$lib/layouts/Sidebar.svelte';
+    import { isNewUntil } from '$lib/utils/date';
 
     const navigation: NavTree = [
         {
@@ -60,6 +61,13 @@
                     isParent: true
                 },
                 {
+                    label: 'Sites',
+                    href: '/docs/products/sites',
+                    icon: 'icon-globe-alt',
+                    isParent: true,
+                    new: isNewUntil('19 Jul 2025')
+                },
+                {
                     label: 'Storage',
                     href: '/docs/products/storage',
                     icon: 'icon-folder',
@@ -69,8 +77,7 @@
                     label: 'Network',
                     href: '/docs/products/network',
                     icon: 'icon-share',
-                    isParent: true,
-                    new: true
+                    isParent: true
                 },
                 {
                     label: 'AI',
