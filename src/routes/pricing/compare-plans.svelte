@@ -33,14 +33,14 @@
             title: 'Resources',
             rows: [
                 {
-                    title: 'Bandwidth',
+                    title: 'API bandwidth',
                     free: '5GB / month',
                     pro: '300GB / month',
                     scale: '300GB / month',
                     enterprise: 'Custom'
                 },
                 {
-                    title: 'Additional bandwidth',
+                    title: 'Additional API bandwidth',
                     free: '-',
                     pro: '$40 per 100GB / month',
                     scale: '$40 per 100GB / month',
