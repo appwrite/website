@@ -202,26 +202,6 @@ It's also a good choice if you:
 - Prefer to manage authentication, database, storage, and hosting in one place
 - Want rollback support, deployment visibility, and runtime logs built-in
 
-# Appwrite Sites vs Vercel: feature comparison
-
-| **Feature** | **Appwrite Sites** | **Vercel** |
-| --- | --- | --- |
-| Full-stack integration | Yes | No |
-| Static hosting | Yes | Yes |
-| Server-side rendering | Yes | Yes |
-| Git-based deployment | Yes | Yes |
-| Manual deployment via UI | Yes (drag-and-drop) | No |
-| Preview deployments | Branch, commit, PR | Branch, commit, PR |
-| Rollbacks | Yes | Yes |
-| CORS with Appwrite backend | Automatic (trusted by default) | Manual setup |
-| API key injection | Automatic (build + runtime) | Manual setup + rotation |
-| Environment variables | Build + runtime, auto-injected Appwrite vars | Build + runtime, manual |
-| Wide framework support | Yes | Yes |
-| Templates | Yes (multi-framework) | Yes (mostly Next.js) |
-| Timeout configuration | Yes (up to 30s) | Yes |
-| Logging | Build logs, request logs, SSR console output | Build + function logs |
-| Custom domains | Yes | Yes |
-
 # Final thoughts
 
 Both Appwrite Sites and Vercel are great platforms for deploying modern web applications. But they're built for slightly different workflows.
