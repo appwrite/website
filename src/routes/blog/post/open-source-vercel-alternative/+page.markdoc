@@ -107,6 +107,8 @@ Appwrite Sites runs SSR apps in **isolated containers**, which means:
 
 That container-based model gives you more flexibility, especially if you're doing server-side API calls, interacting with Appwrite's SDK, or running custom logic during rendering.
 
+Appwrite Cloud takes care of all the serverless functionality with optimized CDNs, edge capabilities, and autoscaling built in and fully abstracted, so you can focus on your application code rather than infrastructure management.
+
 # Environment variables
 
 Both platforms offer strong environment variable support, with scope control and secrets handling.
