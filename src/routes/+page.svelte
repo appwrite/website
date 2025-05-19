@@ -141,9 +141,7 @@
                         <span class="web-icon-star shrink-0" aria-hidden="true"></span>
                         <span class="text-caption shrink-0 font-medium">New</span>
                         <div class="web-hero-banner-button-sep"></div>
-                        <span class="text-caption web-u-trim-1"
-                            >Announcing Appwrite Sites</span
-                        >
+                        <span class="text-caption web-u-trim-1">Announcing Appwrite Sites</span>
                         <span class="web-icon-arrow-right shrink-0" aria-hidden="true"></span>
                     </a>
                     <Hero>
@@ -153,8 +151,9 @@
                         >
 
                         <svelte:fragment slot="description">
-                            Build your entire backend within minutes and host your site, all within Appwrite's 
-			    all-in-one platform. Authentication, Databases, Functions, Storage, Messaging, and Hosting.
+                            Build your entire backend within minutes and host your site, all within
+                            Appwrite's all-in-one platform. Authentication, Databases, Functions,
+                            Storage, Messaging, and Hosting.
                         </svelte:fragment>
                         <div class="mt-8 flex flex-col gap-4 sm:flex-row" slot="cta">
                             <Button
