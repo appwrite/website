@@ -18,9 +18,9 @@
 
     const products: Array<{
         label: string;
-        icon: unknown;
+        icon: string;
         line: (isActive: boolean) => string;
-        image: unknown;
+        image: string;
     }> = [
         {
             label: 'Auth',
@@ -128,7 +128,7 @@
 <div class="my-12 flex h-fit flex-1 gap-3" bind:this={container}>
     <div class="sticky inset-y-0 top-0 left-0 flex h-full justify-center bg-transparent">
         <div
-            class="border-gradient absolute z-10 flex size-4 items-center justify-center rounded-full bg-gradient-to-tl from-transparent to-white/32 md:-left-7"
+            class="border-gradient absolute z-10 flex size-4 items-center justify-center rounded-full bg-gradient-to-tl from-transparent to-white/32"
         >
             <div class="size-1 rounded-full bg-white"></div>
         </div>
