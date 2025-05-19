@@ -61,7 +61,7 @@
 
     <div class="relative -mt-6 max-w-screen overflow-hidden pt-20">
         <div class="container">
-            <PreFooter format="alternate" />
+            <PreFooter />
             <FooterNav />
             <MainFooter />
         </div>

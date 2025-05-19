@@ -275,7 +275,9 @@
         <div class="mx-auto flex flex-col gap-4 text-center">
             <h2 class="text-title text-primary font-aeonik-pro">Integrate your backend</h2>
             <p class="text-secondary text-description mx-auto font-medium">
-                Easily integrate Appwrite's backend products with your site. Zero configuration needed.
+                Easily integrate Appwrite's backend products with your site. Zero configuration
+                needed.
+            </p>
         </div>
     </div>
 </div>
