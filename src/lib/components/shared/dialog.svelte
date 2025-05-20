@@ -22,17 +22,20 @@
     const { url, title = 'YouTube video player', children, inlineVideo = true }: Props = $props();
 </script>
 
-<div
-    class="contents cursor-pointer"
-    use:melt={inlineVideo ? $trigger : null}
-    onclick={() => {
-        if (!inlineVideo && browser && window) {
-            window.open(url, '_blank');
-        }
-    }}
->
-    {@render children()}
-</div>
+{#if inlineVideo}
+    <div class="contents cursor-pointer" use:melt={$trigger}>
+        {@render children()}
+    </div>
+{:else}
+    <div
+        class="contents cursor-pointer"
+        on:click={() => {
+            if (browser && window) window.open(url, '_blank');
+        }}
+    >
+        {@render children()}
+    </div>
+{/if}
 
 {#if $open}
     <div class="fixed inset-0 z-1000 flex items-center justify-center">
