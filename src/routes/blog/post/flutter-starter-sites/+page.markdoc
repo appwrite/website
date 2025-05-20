@@ -13,7 +13,7 @@ callToAction: true
 
 Most web hosting platforms don't support Flutter Web out of the box, often forcing developers to jump through hoops just to get their apps online. This lack of native support can make deploying Flutter Web projects unnecessarily complex and time-consuming.
 
-Appwrite Sites changes that by offering built-in support for Flutter Web, making it easy to host and scale your applications. Alongside Flutter, Appwrite also provides starter kits for popular frameworks like Next.js, React, Vue, Nuxt, Angular, and SvelteKit. In this blog, you'll learn how to set up the Flutter starter template and deploy it to Appwrite Sites.
+Appwrite Sites changes that by offering built-in support for Flutter Web, making it easy to host and scale your applications. Alongside Flutter, Appwrite also provides starter kits for popular frameworks like Next.js, React, Vue, Nuxt, Angular, and SvelteKit. In this blog, you'll learn how to set up the Flutter starter template and deploy it to [Appwrite Sites](/products/sites).
 
 # Overview of the starter template
 
