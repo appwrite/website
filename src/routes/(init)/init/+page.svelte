@@ -85,7 +85,7 @@
             illustration: Flutter,
             description:
                 'Appwrite and Flutter have always worked well together, and now, you can deploy your Flutter web apps directly from Appwrite Sites.',
-            url: '/',
+            url: '/blog/post/hosting-flutter-web',
             content: [
                 {
                     title: 'How to set up the Flutter starter template on Appwrite Sites',
