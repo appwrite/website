@@ -13,7 +13,7 @@ callToAction: true
 
 Building web applications requires both front-end expertise and back-end infrastructure. Appwrite Sites simplifies this process by providing a platform for deploying, hosting, and scaling web applications.
 
-To ease this process even further, Appwrite Sites offers a variety of starter kits for popular frameworks like Next.js, React, Vue, Nuxt, Angular, SvelteKit, and Flutter. In this blog, you will learn how to set up the Next.js starter template and deploy it to Appwrite Sites.
+To ease this process even further, Appwrite Sites offers a variety of starter kits for popular frameworks like Next.js, React, Vue, Nuxt, Angular, SvelteKit, and Flutter. In this blog, you will learn how to set up the Next.js starter template and deploy it to [Appwrite Sites](/products/sites).
 
 # Overview of the starter template
 
