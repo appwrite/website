@@ -35,7 +35,7 @@ docker run -it --rm \
     --volume /var/run/docker.sock:/var/run/docker.sock \
     --volume "$(pwd)"/appwrite:/usr/src/code/appwrite:rw \
     --entrypoint="install" \
-    appwrite/appwrite:1.6.2
+    appwrite/appwrite:1.7.0
 ```
 {% /tabsitem %}
 
@@ -46,7 +46,7 @@ docker run -it --rm ^
     --volume //var/run/docker.sock:/var/run/docker.sock ^
     --volume "%cd%"/appwrite:/usr/src/code/appwrite:rw ^
     --entrypoint="install" ^
-    appwrite/appwrite:1.6.2
+    appwrite/appwrite:1.7.0
 ```
 ## Powershell
 ```powershell
@@ -54,7 +54,7 @@ docker run -it --rm `
     --volume /var/run/docker.sock:/var/run/docker.sock `
     --volume ${pwd}/appwrite:/usr/src/code/appwrite:rw `
     --entrypoint="install" `
-    appwrite/appwrite:1.6.2
+    appwrite/appwrite:1.7.0
 ```
 {% /tabsitem %}
 {% /tabs %}
@@ -99,6 +99,8 @@ Make these configurations to unlock the full power of Appwrite.
 
 [Configure Appwrite Functions](/docs/advanced/self-hosting/functions)
 
+[Configure Appwrite Sites](/docs/advanced/self-hosting/sites)
+
 [Configure email delivery](/docs/advanced/self-hosting/email)
 
 [Configure SMS delivery](/docs/advanced/self-hosting/sms)
@@ -109,7 +111,7 @@ Make these configurations to unlock the full power of Appwrite.
 
 # Manual (Docker Compose) {% #manual %}
 
-For advanced Docker users, the manual installation might seem more familiar. To set up Appwrite manually, download the Appwrite base [`docker-compose.yml`](https://appwrite.io/install/compose) and [`.env`](https://appwrite.io/install/env) files, then move them inside a directory named `appwrite`. After the download completes, update the different environment variables as you wish in the `.env` file and start the Appwrite stack using the following Docker command:
+For advanced Docker users, the manual installation might seem more familiar. To set up Appwrite manually, download the Appwrite base [`docker-compose.yml`](/install/compose) and [`.env`](/install/env) files, then move them inside a directory named `appwrite`. After the download completes, update the different environment variables as you wish in the `.env` file and start the Appwrite stack using the following Docker command:
 
 ```bash
 docker compose up -d --remove-orphans

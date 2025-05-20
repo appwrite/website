@@ -1,39 +1,37 @@
 ---
 layout: article
-title: Functions
-description: Harness the full power of self-hosted functions with Appwrite. Explore function deployment, management, and integration in your self-hosted environment.
+title: Sites
+description: Harness the full power of self-hosted sites with Appwrite. Explore site deployment, management, and integration in your self-hosted environment.
 ---
 
 {% partial file="configure-github-app" %}
 
-# Configure Function runtimes {% #functions %}
+# Configure Sites runtimes {% #sites %}
 
-Not all function runtimes are enabled by default. Enable the runtimes that you need and disable unused runtimes to save disk space on your server.
-To enable a runtime, add it to the `_APP_FUNCTIONS_RUNTIMES` environment variable as a comma-separated list.
+Not all site runtimes are enabled by default. Enable the runtimes that you need and disable unused runtimes to save disk space on your server.
+To enable a runtime, add it to the `_APP_SITES_RUNTIMES` environment variable as a comma-separated list.
 
-The example below would enable Dart 2.15, .NET 6.0, and Java 18 runtimes.
+The example below would enable Static, Node.js 22, and Flutter 3.29 runtimes.
 
 ```bash
-_APP_FUNCTIONS_RUNTIMES=dart-2.15,dotnet-6.0,java-18.0
+_APP_SITES_RUNTIMES=static-1,node-22,flutter-3.29
 ```
 
-You can find a full list of supported runtimes [here](/docs/products/functions/runtimes#available-runtimes).
-
-You can also configure the maximum timeout that can be set on individual Appwrite Functions. The maximum configurable timeout can be increased by changing the `_APP_FUNCTIONS_TIMEOUT` environment variable. This environment variable changes the configurable maximum but does not alter existing configurations of individual functions.
+You can also configure the maximum timeout that can be set on individual Appwrite Sites. The maximum configurable timeout can be increased by changing the `_APP_SITES_TIMEOUT` environment variable. This environment variable changes the configurable maximum but does not alter existing configurations of individual sites.
 
 {% partial file="update-variables.md" /%}
 
-# SSL certificates for Function domains {% #ssl-certificates %}
+# SSL certificates for Sites domains {% #ssl-certificates %}
 
-Before setting up SSL certificates, ensure you have configured your DNS settings properly. You'll need to create a CNAME record that points your wildcard function domain (e.g. `*.functions.appwrite.myapp.com`) to your Appwrite domain.
+Before setting up SSL certificates, ensure you have configured your DNS settings properly. You'll need to create a CNAME record that points your wildcard domain (e.g. `*.appwrite.myapp.com`) to your Appwrite domain.
 
-Appwrite does not handle certificates for function domains (e.g. `6772722a00331315adc3.functions.appwrite.myapp.com`)
+Appwrite does not handle certificates for sites domains (e.g. `6772722a00331315adc3.appwrite.myapp.com`)
 out of the box, since they require wildcard certificates.
 There are two ways to handle certificate generation.
 
 ## Manual certificate generation
 
-The simplest way to generate certificates for function domains is to use the Appwrite SSL command.
+The simplest way to generate certificates for domains is to use the Appwrite SSL command.
 
 ```bash
 docker compose exec appwrite ssl --domain="6772722a00331315adc3.appwrite.myapp.com"
@@ -46,13 +44,13 @@ If you encounter any issues, you can check the certificate worker logs.
 docker compose logs appwrite-worker-certificates
 ```
 
-Note that you'll need to run this command for each function domain, and repeat it every time you create a new function.
-If you have many functions or frequently create new ones, consider using the automated certificate generation method below.
+Note that you'll need to run this command for each domain, and repeat it every time you create a new 
+If you have many  or frequently create new ones, consider using the automated certificate generation method below.
 
 ## Automated certificate generation
 
 For automated certificate generation, Appwrite uses Traefik's DNS Challenge feature.
-This is required for wildcard certificates (like `*.functions.appwrite.myapp.com`)
+This is required for wildcard certificates (like `*.appwrite.myapp.com`)
 because Let's Encrypt uses the DNS-01 challenge to validate wildcard domain ownership.
 
 ### Using DNS challenge with DigitalOcean
@@ -84,13 +82,12 @@ environment:
 labels:
     # ... existing labels ...
     - traefik.http.routers.appwrite_api_https.tls.certresolver=digitalocean
-    - traefik.http.routers.appwrite_api_https.tls.domains[0].main=$_APP_DOMAIN_FUNCTIONS
-    - traefik.http.routers.appwrite_api_https.tls.domains[0].sans=*.$_APP_DOMAIN_FUNCTIONS
+    - traefik.http.routers.appwrite_api_https.tls.domains[0].main=$_APP_DOMAIN_TARGET
+    - traefik.http.routers.appwrite_api_https.tls.domains[0].sans=*.$_APP_DOMAIN_TARGET
 ```
 
 4. Ensure these environment variables are properly configured in your `.env` file before proceeding:
     - `_APP_SYSTEM_SECURITY_EMAIL_ADDRESS` must be set to a valid email for Let's Encrypt notifications
-    - `_APP_DOMAIN_FUNCTIONS` must be correctly set to your function domain (e.g., `functions.example.com`)
     - `_APP_DOMAIN_DO_TOKEN` must be set to a valid DigitalOcean API token (generate this in the DigitalOcean Console)
 
 5. Apply the changes.
