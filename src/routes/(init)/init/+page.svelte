@@ -128,7 +128,7 @@
             ]
         },
         {
-            title: 'New image formats',
+            title: 'Image formats',
             release: addDays(otherFeaturesBase, 3),
             illustration: Formats,
             description:
