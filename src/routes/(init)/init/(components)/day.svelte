@@ -40,7 +40,7 @@
         content = [],
         announcementVideo = undefined,
         links = [],
-        title,
+        title: featureTitle,
         description,
         url,
         index
@@ -80,7 +80,7 @@
                         class="border-offset relative z-10 col-span-5 flex h-full flex-col justify-center gap-4 border-x-2 border-none px-4 py-8 md:border-dashed md:p-8"
                     >
                         <h2 class="text-display font-aeonik-pro text-primary">
-                            {title}<span class="text-accent">_</span>
+                            {featureTitle}<span class="text-accent">_</span>
                         </h2>
                         <p class="text-secondary text-body max-w-sm font-medium">
                             {description}
@@ -116,7 +116,7 @@
                             'after:border-offset after:-mt-px after:block after:h-0.5 after:w-full after:border-t-2 after:border-dashed'
                         )}
                     >
-                        {#each content as { type, title, url, label }}
+                        {#each content as { type, featureTitle, url, label }}
                             <a href={url} class="group block cursor-pointer">
                                 <div
                                     class={classNames(
@@ -129,7 +129,9 @@
                                         <span class="bg-smooth w-fit rounded-[4px] px-2 py-0.5"
                                             >{type}</span
                                         >
-                                        <span class="font-aeonik-pro text-label">{title}</span>
+                                        <span class="font-aeonik-pro text-label"
+                                            >{featureTitle}</span
+                                        >
                                     </div>
                                     <div class="flex items-center gap-2">
                                         {label ?? 'Read article'}
