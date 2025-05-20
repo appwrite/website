@@ -1,9 +1,9 @@
 ---
 layout: post
-title: "Announcing Hosting for Flutter Web: deploy your Flutter web apps with Appwrite"
-description: 
+title: "Announcing hosting for Flutter web: deploy your Flutter web apps with Appwrite"
+description: Appwrite Sites now supports Flutter web apps. Deploy your Flutter applications directly from your Appwrite project with seamless backend integration.
 date: 2025-05-20
-cover: /images/blog/hosting-flutter-web.png
+cover: /images/blog/hosting-flutter-web/cover.png
 timeToRead: 5
 author: steven
 category: product, init
@@ -40,7 +40,7 @@ Instead of stitching together HTML pages or managing another stack, you can buil
 
 # How to get started
 
-## Step 1: Create Flutter Web app
+## Step 1: Create Flutter web app
 
 First, you must either create a Flutter Web app or set up the [Flutter Web starter template](https://github.com/appwrite/templates-for-sites).
 
