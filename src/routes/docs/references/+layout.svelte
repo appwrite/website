@@ -77,6 +77,11 @@
                     href: `${prefix}/messaging`
                 },
                 {
+                    label: 'Tokens',
+                    icon: 'icon-key',
+                    href: `${prefix}/tokens`
+                },
+                {
                     label: 'Localization',
                     icon: 'icon-location-marker',
                     href: `${prefix}/locale`
