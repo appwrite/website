@@ -14,7 +14,7 @@ Appwrite has long been a powerful backend platform for Flutter developers buildi
 
 This means you can use your existing Dart and Flutter knowledge to create fast, responsive web apps without needing to learn HTML, CSS, or JavaScript. Build once with Flutter and deploy to mobile, desktop, and web. All from a single codebase, all hosted on Appwrite.
 
-# Why Native Flutter Web Support Matters
+# Why native Flutter web support matters
 
 While most web environments are made for Node, Deno, or Bun runtimes, only a few are tailored for the needs of Flutter developers. Appwrite Sites is different. It’s designed with full Flutter web support in mind,  not just as an afterthought. That means native framework detection, optimized build settings, and direct integration with your Appwrite backend products like databases, authentication, storage, and functions.
 
@@ -32,10 +32,10 @@ Instead of stitching together HTML pages or managing another stack, you can buil
 
 # Key features
 
-- **Full Flutter Framework Support**: Sites now recognizes and supports Flutter as a framework during setup.
-- **Auto-Detection**: Flutter web projects are automatically identified.  No manual config required.
-- **Optimized Static Hosting**: Deployed like any other static site, but with Flutter-first optimizations.
-- **GitHub Integration**: Automatically deploy on every push from your GitHub repository.
+- **Full Flutter framework support**: Sites now recognizes and supports Flutter as a framework during setup.
+- **Auto-detection**: Flutter web projects are automatically identified.  No manual config required.
+- **Optimized static hosting**: Deployed like any other static site, but with Flutter-first optimizations.
+- **GitHub integration**: Automatically deploy on every push from your GitHub repository.
 - **Works on Cloud and Self-Hosted**: Whether using Appwrite Cloud or Self-hosting, Sites for Flutter works everywhere.
 
 # How to get started
@@ -58,7 +58,7 @@ flutter create . --platforms web
 
 Push this project to a [GitHub repo](https://github.com/new).
 
-## Step2: Create Appwrite project
+## Step 2: Create Appwrite project
 
 Head to the [Appwrite Console](https://cloud.appwrite.io/).
 
