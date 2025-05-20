@@ -80,7 +80,7 @@
             ]
         },
         {
-            title: 'Hosting for Flutter Web',
+            title: 'Flutter Web',
             release: addDays(otherFeaturesBase, 1),
             illustration: Flutter,
             description:
