@@ -4,7 +4,7 @@ title: Functions
 description: Harness the full power of self-hosted functions with Appwrite. Explore function deployment, management, and integration in your self-hosted environment.
 ---
 
-{% partial file="configure-github-app" %}
+{% partial file="configure-github-app.md" /%}
 
 # Configure Function runtimes {% #functions %}
 

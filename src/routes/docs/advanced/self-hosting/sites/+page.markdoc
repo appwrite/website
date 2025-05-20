@@ -4,7 +4,7 @@ title: Sites
 description: Harness the full power of self-hosted sites with Appwrite. Explore site deployment, management, and integration in your self-hosted environment.
 ---
 
-{% partial file="configure-github-app" %}
+{% partial file="configure-github-app.md" /%}
 
 # Configure Sites runtimes {% #sites %}
 
