@@ -16,9 +16,9 @@ The homepage URL will appear when looking at the public page of your app. It can
 
 GitHub will use **callback URLs** to redirect users back to Appwrite. Set these callback URLs under **Identifying and authorizing users** in the same order as listed below.
 
-| URLs |
-| ---- |
-| `https://[HOSTNAME_OR_IP]/v1/vcs/github/callback` |
+| URLs                                                                          |
+| ----------------------------------------------------------------------------- |
+| `https://[HOSTNAME_OR_IP]/v1/vcs/github/callback`                             |
 | `https://[HOSTNAME_OR_IP]/v1/account/sessions/oauth2/callback/github/console` |
 
 Also, check the **Request user authentication (OAuth) during installation** box.
@@ -52,9 +52,9 @@ Configure these permissions under the **Repository permission** dropdown.
 
 Configure these permissions under the **Account Permission** dropdown.
 
-| Permission     | Access   |
-| -------------- | -------- |
-| Email address  | Read-only|
+| Permission    | Access    |
+| ------------- | --------- |
+| Email address | Read-only |
 
 ## Subscribe to events {% #subscribe-events %}
 
@@ -73,17 +73,17 @@ Check the **Any account** box under **Where can this GitHub App be installed?** 
 
 After creating your app, you'll have to configure the following environment variables.
 
-| Variable                     | Description                                                                                                                                                                                                                                                                                                                                                                               |
-|------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `_APP_DOMAIN`                | Your main Appwrite domain used to access the Appwrite Console. When setting a public suffix domain, Appwrite will attempt to issue a valid SSL certificate automatically. When used with a dev domain, Appwrite will assign a self-signed SSL certificate. If you're using a proxy for **localhost development**, such as [ngrok](https://ngrok.com/), this will be the domain of your localhost proxy. |
-| `_APP_DOMAIN_TARGET`         | A hostname to serve as a CNAME target for your Appwrite custom domains. You can use the same value as used for the Appwrite `_APP_DOMAIN` variable. If you're using a proxy for **localhost development**, such as [ngrok](https://ngrok.com/), this will be the domain of your localhost proxy, such as `dd65-2405-201-4013-d8d7-b4c5-fb73-39f9-285c.ngrok.io`.                 |
-| `_APP_DOMAIN_FUNCTIONS`      | This will be used for system generated [Function Domains](/docs/products/functions/domains). When a function domain is generated, it will be `[UNIQUE_ID].[_APP_DOMAIN_FUNCTIONS]`. If `_APP_DOMAIN_FUNCTIONS` is set to `example.com` for example, the generated domain for functions will be something like `64d4d22db370ae41a32e.example.com`. You can use the same value as used for the Appwrite `_APP_DOMAIN` variable. |
-| `_APP_VCS_GITHUB_APP_NAME`   | Name of your GitHub app. This is the display name you'll see on GitHub and it will be visible in your GitHub app's URL.                                                                                                                                                                                                                                                                  |
-| `_APP_VCS_GITHUB_PRIVATE_KEY`| RSA private key from GitHub wrapped with double quotes and newlines replaced with `\n`. You can generate private keys from GitHub application settings.                                                                                                                                                                                                                                   |
-| `_APP_VCS_GITHUB_APP_ID`     | GitHub application ID. You can find it in your GitHub application details.                                                                                                                                                                                                                                                                                                                 |
-| `_APP_VCS_GITHUB_CLIENT_ID`  | GitHub client ID. You can find it in your GitHub application details.                                                                                                                                                                                                                                                                                                                      |
-| `_APP_VCS_GITHUB_CLIENT_SECRET` | GitHub client secret. You can generate secrets in your GitHub application settings.                                                                                                                                                                                                                                                                                                        |
-| `_APP_VCS_GITHUB_WEBHOOK_SECRET` | GitHub webhook secret. You can configure it in your GitHub application settings under webhook section.                                                                                                                                                                                                                                                                                  |
+| Variable                         | Description                                                                                                                                                                                                                                                                                                                                                                                                                   |
+| -------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `_APP_DOMAIN`                    | Your main Appwrite domain used to access the Appwrite Console. When setting a public suffix domain, Appwrite will attempt to issue a valid SSL certificate automatically. When used with a dev domain, Appwrite will assign a self-signed SSL certificate. If you're using a proxy for **localhost development**, such as [ngrok](https://ngrok.com/), this will be the domain of your localhost proxy.                       |
+| `_APP_DOMAIN_TARGET`             | A hostname to serve as a CNAME target for your Appwrite custom domains. You can use the same value as used for the Appwrite `_APP_DOMAIN` variable. If you're using a proxy for **localhost development**, such as [ngrok](https://ngrok.com/), this will be the domain of your localhost proxy, such as `dd65-2405-201-4013-d8d7-b4c5-fb73-39f9-285c.ngrok.io`.                                                              |
+| `_APP_DOMAIN_FUNCTIONS`          | This will be used for system generated [Function Domains](/docs/products/functions/domains). When a function domain is generated, it will be `[UNIQUE_ID].[_APP_DOMAIN_FUNCTIONS]`. If `_APP_DOMAIN_FUNCTIONS` is set to `example.com` for example, the generated domain for functions will be something like `64d4d22db370ae41a32e.example.com`. You can use the same value as used for the Appwrite `_APP_DOMAIN` variable. |
+| `_APP_VCS_GITHUB_APP_NAME`       | Name of your GitHub app. This is the display name you'll see on GitHub and it will be visible in your GitHub app's URL.                                                                                                                                                                                                                                                                                                       |
+| `_APP_VCS_GITHUB_PRIVATE_KEY`    | RSA private key from GitHub wrapped with double quotes and newlines replaced with `\n`. You can generate private keys from GitHub application settings.                                                                                                                                                                                                                                                                       |
+| `_APP_VCS_GITHUB_APP_ID`         | GitHub application ID. You can find it in your GitHub application details.                                                                                                                                                                                                                                                                                                                                                    |
+| `_APP_VCS_GITHUB_CLIENT_ID`      | GitHub client ID. You can find it in your GitHub application details.                                                                                                                                                                                                                                                                                                                                                         |
+| `_APP_VCS_GITHUB_CLIENT_SECRET`  | GitHub client secret. You can generate secrets in your GitHub application settings.                                                                                                                                                                                                                                                                                                                                           |
+| `_APP_VCS_GITHUB_WEBHOOK_SECRET` | GitHub webhook secret. You can configure it in your GitHub application settings under webhook section.                                                                                                                                                                                                                                                                                                                        |
 
 For example, see below.
 
