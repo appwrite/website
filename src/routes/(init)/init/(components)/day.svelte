@@ -116,7 +116,7 @@
                             'after:border-offset after:-mt-px after:block after:h-0.5 after:w-full after:border-t-2 after:border-dashed'
                         )}
                     >
-                        {#each content as { type, featureTitle, url, label }}
+                        {#each content as { type, title: contentTitle, url, label }}
                             <a href={url} class="group block cursor-pointer">
                                 <div
                                     class={classNames(
@@ -130,7 +130,7 @@
                                             >{type}</span
                                         >
                                         <span class="font-aeonik-pro text-label"
-                                            >{featureTitle}</span
+                                            >{contentTitle}</span
                                         >
                                     </div>
                                     <div class="flex items-center gap-2">
