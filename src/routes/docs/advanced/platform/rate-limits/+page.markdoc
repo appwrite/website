@@ -50,6 +50,18 @@ X-RateLimit-Reset: 1377013266
 }
 ```
 
+# Dev keys {% #dev-keys %}
+
+[Dev keys](/docs/advanced/platform/dev-keys) are a type of secret used by client apps to bypass Appwrite's rate limits in development environments. They are designed to help developers test their applications without being restricted by rate limits.
+
+To use dev keys, client apps add a header `X-Appwrite-Dev-Key` containing the secret to all HTTP requests sent to the Appwrite API.
+
+```http
+X-Appwrite-Dev-Key: 5b0be23...abda7c6
+```
+
+Dev keys should never be included in production applications as they can expose your application to abuse. They are meant for development and testing purposes only.
+
 # Service abuse {% #service-abuse %}
 
 To protect the quality of service from Appwrite, additional rate limits may apply to some actions. For example, rapidly creating content, polling aggressively instead of using webhooks, making API calls with a high concurrency, or repeatedly requesting data that is computationally expensive may result in abuse rate limiting.
