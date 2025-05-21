@@ -73,7 +73,7 @@
     const { theme = 'dark' }: Props = $props();
 </script>
 
-<div class="-mt-8 w-full overflow-x-scroll [scrollbar-width:none] md:overflow-x-hidden">
+<div class="relative -mt-8 w-full overflow-x-scroll [scrollbar-width:none] md:overflow-x-hidden">
     <div
         class="sticky left-0 mx-auto block max-w-[calc(100vw_-_calc(var(--spacing)_*-2))] md:hidden"
     >
@@ -120,13 +120,13 @@
                 class="pointer-events-none relative -z-10 w-full opacity-10 md:max-h-[525px]"
             />
 
-            {#each pins[activeSegment] as pin, index}
+            {#each pins[activeSegment as PinSegment] as pin, index}
                 <MapMarker {...pin} animate={$animate} {index} bounds={MAP_BOUNDS} />
             {/each}
         </div>
     </div>
-</div>
 
-<MapTooltip {theme} coords={$position} />
+    <MapTooltip {theme} coords={$position} />
+</div>
 
 <MapNav {theme} onValueChange={(value) => (activeSegment = value)} />

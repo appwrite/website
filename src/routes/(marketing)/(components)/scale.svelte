@@ -1,9 +1,9 @@
 <script lang="ts">
     import { classNames } from '$lib/utils/classnames';
     import NumberFlow from '@number-flow/svelte';
-    import { inView } from 'motion-legacy';
+    import { inView } from 'motion';
     import { onDestroy } from 'svelte';
-    import KCollectTestimonialImage from '../../../products/sites/kcollect-ryan-testimonial.png';
+    import KCollectTestimonialImage from '../../products/sites/kcollect-ryan-testimonial.png';
 
     const animationDuration = 3;
 

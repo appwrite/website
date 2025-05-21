@@ -1,6 +1,6 @@
 <script lang="ts">
-    import { classNames } from '$lib/utils/classnames';
     import type { SvelteHTMLElements } from 'svelte/elements';
+    import { classNames } from '$lib/utils/classnames';
 
     type Props = {
         invert?: boolean;
