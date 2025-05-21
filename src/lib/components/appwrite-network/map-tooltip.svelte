@@ -1,8 +1,8 @@
 <script lang="ts" module>
     import { classNames } from '$lib/utils/classnames';
-    import { writable } from 'svelte/store';
+    import { animate } from 'motion';
 
-    export const tooltipData = writable<{
+    let tooltipData = $state<{
         city: string | null;
         code: string | null;
         available: boolean | null;
@@ -11,40 +11,76 @@
         code: null,
         available: null
     });
+
+    export const handleSetActiveTooltip = (city: string, code: string, available: boolean) => {
+        if (timeoutId) {
+            clearTimeout(timeoutId);
+            timeoutId = null;
+        }
+
+        tooltipData = {
+            city,
+            code,
+            available
+        };
+    };
+
+    let timeoutId: ReturnType<typeof setTimeout> | null = null;
+
+    export const handleResetActiveTooltip = (delay?: number) => {
+        if (timeoutId) {
+            clearTimeout(timeoutId);
+            timeoutId = null;
+        }
+
+        if (delay) {
+            timeoutId = setTimeout(() => {
+                tooltipData = {
+                    city: null,
+                    code: null,
+                    available: null
+                };
+                timeoutId = null;
+            }, delay);
+        } else {
+            tooltipData = {
+                city: null,
+                code: null,
+                available: null
+            };
+        }
+    };
 </script>
 
 <script lang="ts">
-    type Props = {
-        coords: {
-            x: number;
-            y: number;
-        };
+    interface TooltipProps {
+        x: number;
+        y: number;
+    }
 
-        theme: 'light' | 'dark';
-    };
+    const { x, y }: TooltipProps = $props();
 
-    const { coords, theme = 'dark' }: Props = $props();
+    let city = $state<HTMLElement | null>(null);
+
+    $effect(() => {
+        if (!city) return;
+        animate(city, { y: [-5, 0], filter: ['blur(4px)', '0px'] }, { duration: 0.2 });
+    });
 </script>
 
-{#if $tooltipData.city}
-    <div
-        class="pointer-events-none absolute"
-        style:left="{coords.x + 100}px"
-        style:top="{coords.y - 20}px"
-        style:transform="translate(-50%, -100%)"
-    >
+<div class="pointer-events-none absolute z-10 hidden md:block">
+    {#if tooltipData.city}
         <div
             class={classNames(
-                'border-gradient relative z-100 flex w-[190px] flex-col gap-2 rounded-[10px] p-2 backdrop-blur-lg before:rounded-[10px] after:rounded-[10px]',
-                'data-[state="closed"]:animate-menu-out data-[state="instant-open"]:animate-menu-in data-[state="delayed-open"]:animate-menu-in',
-                theme === 'dark' ? 'bg-card/90' : 'bg[var(--card, rgba(255,255,255))]'
+                'border-gradient relative z-100 flex w-[190px] flex-col gap-2 rounded-[10px] p-2 backdrop-blur-lg before:rounded-[10px] after:rounded-[10px]'
             )}
+            style:transform={`translateX(${x + 125}px) translateY(${y + 200}px)`}
         >
             <span class="text-primary text-caption w-fit">
-                {$tooltipData.city}
-                ({$tooltipData.code})
+                {tooltipData.city}
+                ({tooltipData.code})
             </span>
-            {#if $tooltipData.available}
+            {#if tooltipData.available}
                 <div
                     class="text-caption flex h-5 items-center justify-center place-self-start rounded-md bg-[#10B981]/24 p-1 text-center text-[#B4F8E2]"
                 >
@@ -58,5 +94,5 @@
                 </div>
             {/if}
         </div>
-    </div>
-{/if}
+    {/if}
+</div>

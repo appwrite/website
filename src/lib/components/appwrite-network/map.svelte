@@ -1,30 +1,20 @@
-<script lang="ts" module>
-    export const MAP_BOUNDS = $state({
-        west: -138,
-        east: 167,
-        north: 74,
-        south: -62
-    });
-</script>
-
 <script lang="ts">
-    import MapMarker from './map-marker.svelte';
     import { slugify } from '$lib/utils/slugify';
     import { classNames } from '$lib/utils/classnames';
     import MapNav from './map-nav.svelte';
     import { useMousePosition } from '$lib/actions/mouse-position';
     import { useAnimateInView } from '$lib/actions/animate-in-view';
     import { pins, type PinSegment } from './data/pins';
-    import MapTooltip from './map-tooltip.svelte';
-
-    let dimensions = $state({
-        width: 0,
-        height: 0
-    });
+    import MapTooltip, {
+        handleSetActiveTooltip,
+        handleResetActiveTooltip
+    } from './map-tooltip.svelte';
+    import { createMap } from '$lib/map';
 
     let activeRegion = $state<string | null>(null);
     let activeMarker: HTMLElement | null = null;
     let activeSegment = $state<string>('pop-locations');
+    let activeMarkers = $derived(pins[activeSegment as PinSegment]);
 
     const { action: mousePosition, position } = useMousePosition();
     const { action: inView, animate } = useAnimateInView({});
@@ -68,12 +58,34 @@
         }
     };
 
+    const height = 75;
+    let map: ReturnType<typeof createMap> = $state({
+        points: [],
+        markers: [],
+        base: ''
+    });
+
+    const getMarkers = () => {
+        return activeMarkers;
+    };
+
+    $effect(() => {
+        map = createMap({
+            width: height * 2,
+            height,
+            markers: getMarkers(),
+            skew: 1,
+            baseColor: '#dadadd',
+            markerColor: 'var(--color-accent)'
+        });
+    });
+
     type Props = { theme: 'light' | 'dark' };
 
     const { theme = 'dark' }: Props = $props();
 </script>
 
-<div class="relative -mt-8 w-full overflow-x-scroll [scrollbar-width:none] md:overflow-x-hidden">
+<div class="-mt-8 w-full overflow-x-scroll [scrollbar-width:none] md:overflow-x-hidden">
     <div
         class="sticky left-0 mx-auto block max-w-[calc(100vw_-_calc(var(--spacing)_*-2))] md:hidden"
     >
@@ -88,45 +100,38 @@
     </div>
 
     <div
-        class="relative mx-auto h-full w-[250vw] [scrollbar-width:none] md:w-fit"
+        class="relative mx-auto h-full w-[250vw] [scrollbar-width:none] md:w-full"
         use:inView
         use:mousePosition
     >
         <div
             class="relative w-full origin-bottom transform-[perspective(25px)_rotateX(1deg)_scale3d(1.4,_1.4,_1)] transition-all [scrollbar-width:none]"
-            bind:clientWidth={dimensions.width}
-            bind:clientHeight={dimensions.height}
         >
-            <div
-                class="absolute inset-0 mask-[image:url('/images/appwrite-network/map.svg')] mask-contain mask-no-repeat"
-            >
-                <div
-                    class={classNames(
-                        'relative block aspect-square size-40 rounded-full blur-3xl transition-opacity',
-                        'from-accent bg-radial-[circle_at_center] via-white/70 to-white/70',
-                        'transform-[translate3d(calc(var(--mouse-x,_-100%)_*_1_-_16rem),_calc(var(--mouse-y,_-100%)_*_1_-_28rem),0)]'
-                    )}
-                    style:--mouse-x="{$position.x}px"
-                    style:--mouse-y="{$position.y}px"
-                ></div>
-            </div>
-
-            <!-- TODO: reusing the same image but inverted! use a variable -->
-            <img
-                draggable="false"
-                alt="Map of the world"
-                src="/images/appwrite-network/map.svg"
-                style:filter={theme === 'light' ? 'invert()' : undefined}
-                class="pointer-events-none relative -z-10 w-full opacity-10 md:max-h-[525px]"
-            />
-
-            {#each pins[activeSegment as PinSegment] as pin, index}
-                <MapMarker {...pin} animate={$animate} {index} bounds={MAP_BOUNDS} />
-            {/each}
+            <svg viewBox={`0 0 ${height * 2} ${height}`}>
+                {#each map.points as point}
+                    <circle cx={point.x} cy={point.y} r={point.size} fill={point.color} />
+                {/each}
+                <!-- {#each map.markers as marker}
+                    <g
+                        role="tooltip"
+                        class="animate-fade-in outline-none"
+                        onmouseover={() =>
+                            handleSetActiveTooltip(marker.city, marker.code, marker.available)}
+                        onfocus={() =>
+                            handleSetActiveTooltip(marker.city, marker.code, marker.available)}
+                        onblur={() => handleResetActiveTooltip(250)}
+                        onmouseout={() => handleResetActiveTooltip(250)}
+                        data-region={slugify(marker.city)}
+                    >
+                        <circle cx={marker.x} cy={marker.y} r={marker.size} fill={marker.color} />
+                        <circle cx={marker.x} cy={marker.y} fill="white" />
+                    </g>
+                {/each} -->
+            </svg>
         </div>
     </div>
-
-    <MapTooltip {theme} coords={$position} />
 </div>
+
+<MapTooltip {...$position} />
 
 <MapNav {theme} onValueChange={(value) => (activeSegment = value)} />
