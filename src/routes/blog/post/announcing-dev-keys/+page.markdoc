@@ -48,7 +48,7 @@ Dev Keys solves this issue, letting you auto-refresh and make requests unlimited
 
 CORS errors can be really annoying to deal with, especially during development in cloud-based environments like GitHub Codespaces, Gitpods, or any other platform that gives your app a random domain.
 
-But with Dev Keys, that’s not an issue anymore. Appwrite would temporarily let any host through, so you can build and test with no more CORS headaches. No more whitelisting of random domains in the console. Just plug in the DevKey, and get back to building.
+But with Dev Keys, that’s not an issue anymore. Appwrite would temporarily let any host through, so you can build and test with no more CORS headaches. No more whitelisting of random domains in the console. Just plug in the Dev Key, and get back to building.
 
 # Important features
 
