@@ -2,11 +2,13 @@
     import { fade, scale } from 'svelte/transition';
     import { createDialog, melt } from '@melt-ui/svelte';
     import type { Snippet } from 'svelte';
+    import { browser } from '$app/environment';
 
     type Props = {
         url: string;
         title?: string;
         children: Snippet;
+        inlineVideo?: boolean;
     };
 
     const {
@@ -17,12 +19,23 @@
         preventScroll: true
     });
 
-    const { url, title = 'YouTube video player', children }: Props = $props();
+    const { url, title = 'YouTube video player', children, inlineVideo = true }: Props = $props();
 </script>
 
-<div use:melt={$trigger} class="contents cursor-pointer">
-    {@render children()}
-</div>
+{#if inlineVideo}
+    <div class="contents cursor-pointer" use:melt={$trigger}>
+        {@render children()}
+    </div>
+{:else}
+    <div
+        class="contents cursor-pointer"
+        on:click={() => {
+            if (browser && window) window.open(url, '_blank');
+        }}
+    >
+        {@render children()}
+    </div>
+{/if}
 
 {#if $open}
     <div class="fixed inset-0 z-1000 flex items-center justify-center">

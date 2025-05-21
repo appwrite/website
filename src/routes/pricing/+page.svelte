@@ -9,7 +9,6 @@
     import BG from './bg.png?enhanced';
     import { getAppwriteDashboardUrl } from '$lib/utils/dashboard';
     import { Button, BadgeTransparent, Icon } from '$lib/components/ui';
-    import { trackEvent } from '$lib/actions/analytics';
 
     const title = 'Pricing' + TITLE_SUFFIX;
     const description = 'Explore our straightforward pricing plans that scale with your project.';
@@ -69,7 +68,7 @@
                             <a href="/products/sites">
                                 <BadgeTransparent
                                     ><img
-                                        src="/images/icons/illustrated/dark/sites.png"
+                                        src="/images/icons/illustrated/light/sites.png"
                                         alt="Sites icon"
                                         class="h-8 w-8"
                                     />
@@ -133,7 +132,7 @@
                                                 <li><span>75K monthly active users</span></li>
                                                 <li><span>Community support</span></li>
                                                 <li>
-                                                    <span>Non-removable Appwrite branding</span>
+                                                    <span>Non-removable email branding</span>
                                                 </li>
                                                 <li>
                                                     <span
