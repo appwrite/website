@@ -114,8 +114,8 @@
             url: '/blog/post/announcing-dev-keys',
             content: [
                 {
-                    title: 'Improve your Appwrite developer experience with dev keys',
-                    url: '/blog/post/',
+                    title: 'Improve your Appwrite developer experience with Dev Keys',
+                    url: '/blog/post/improve-devex-dev-keys',
                     type: 'Blog'
                 },
                 {
