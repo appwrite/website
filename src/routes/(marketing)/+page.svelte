@@ -10,6 +10,7 @@
     import Head from '$lib/components/meta/head.svelte';
     import Map from './(components)/map.svelte';
     import Pullquote from '$lib/components/marketing/pullquote.svelte';
+    import { FooterNav, MainFooter } from '$lib/components';
 </script>
 
 <Head title="Appwrite - Backend APIs, Frontend hosting" />
@@ -32,3 +33,8 @@
     <Scale />
     <Pricing />
 </Main>
+
+<div class="container">
+    <FooterNav />
+    <MainFooter />
+</div>
