@@ -111,17 +111,12 @@
             illustration: DevKeys,
             description:
                 'Introducing Dev Keys. A new Appwrite feature that lets you bypass rate limits *during local development*. No more slowdowns. No more artificial blockers. Just fast, uninterrupted building.',
-            url: '/',
+            url: '/blog/post/announcing-dev-keys',
             content: [
-                { title: 'How do Dev Keys work', url: '/blog/post/', type: 'Blog' },
-                {
-                    title: 'Improve your Appwrite developer experience with dev keys',
-                    url: '/blog/docs',
-                    type: 'Blog'
-                },
+                { title: 'Improve your Appwrite developer experience with dev keys', url: '/blog/post/', type: 'Blog' },
                 {
                     title: 'Dev Keys',
-                    url: '/',
+                    url: '/docs/advanced/platform/dev-keys',
                     type: 'Docs',
                     label: 'Visit docs'
                 }
@@ -133,7 +128,7 @@
             illustration: Formats,
             description:
                 'We have added support for two new image formats in Appwrite Storage: HEIC and AVIF. This will give you more tools to manage, manipulate, and serve images the way you need.',
-            url: '/',
+            url: '/blog/post/announcing-new-image-formats',
             content: [
                 {
                     title: 'How to use AVIF in Storage',
@@ -147,7 +142,7 @@
                 },
                 {
                     title: 'New image formats',
-                    url: '/docs/',
+                    url: '/docs/products/storage/images',
                     type: 'Docs',
                     label: 'Visit docs'
                 }
