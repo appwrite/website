@@ -4,6 +4,7 @@
     import { classNames } from '$lib/utils/classnames';
 
     import Illustration from '../(assets)/images/illustration.png';
+    import ProductHuntBadge from '../(assets)/images/producthunt-badge.svelte';
 </script>
 
 <div
@@ -14,7 +15,7 @@
     )}
 >
     <div
-        class="container mx-auto grid w-full grid-cols-1 place-items-center gap-16 py-12 max-md:px-5! md:grid-cols-12 md:py-20"
+        class="container mx-auto grid w-full grid-cols-1 place-items-center gap-x-16 gap-y-8 py-12 max-md:px-5! md:grid-cols-12 md:py-20"
     >
         <div class="col-span-6 flex flex-col gap-6 lg:col-span-5">
             <div class="flex items-center gap-2">
@@ -46,6 +47,13 @@
             </div>
         </div>
         <img src={Illustration} alt="Illustration" class="col-span-6 lg:col-span-7" />
+        <a
+            href="https://www.producthunt.com/posts/appwrite-sites"
+            target="_blank"
+            title="Check Appwrite Sites on ProductHunt"
+            class="col-span-full flex w-full justify-start lg:col-span-7 lg:col-start-6 lg:justify-center"
+            ><div><ProductHuntBadge /></div></a
+        >
     </div>
     <Platforms class="mt-auto mb-0 w-full" headline="Host your favorite web frameworks" />
 </div>
