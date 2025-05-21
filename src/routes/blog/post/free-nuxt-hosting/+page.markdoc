@@ -4,7 +4,7 @@ title: Free Nuxt hosting with Appwrite Sites - Deploy and scale effortlessly
 description: Learn how to deploy your Nuxt app for free with Appwrite Sites.
 date: 2025-05-20
 cover: /images/blog/free-nuxt-hosting/cover.png
-timeToRead: 3
+timeToRead: 6
 author: eldad-fux
 category: tutorial
 unlisted: true
@@ -13,15 +13,15 @@ unlisted: true
 
 Nuxt.js is a powerful framework built on Vue.js that simplifies the development of modern web applications with features like server-side rendering (SSR), static site generation (SSG), and API integrations. While deploying Nuxt applications can be straightforward, selecting the right hosting provider that balances cost, performance, and ease of use can be challenging.
 
-**Appwrite Sites** provides an optimized hosting environment tailored for modern web applications, including Nuxt, with built-in tools for security, scalability, and developer-friendly deployment workflows. This article explores how Appwrite Sites simplifies Nuxt hosting, enhances performance, and compares with other solutions.
+[Appwrite Sites](https://appwrite.io/products/sites) provides an optimized hosting environment tailored for modern web applications, including Nuxt, with built-in tools for security, scalability, and developer-friendly deployment workflows. This article explores how Appwrite Sites simplifies Nuxt hosting, enhances performance, and compares with other solutions.
 
 # Why Appwrite Sites is the perfect hosting solution for Nuxt
 
-### 1. Free hosting with no upfront costs
+## 1. Free hosting with no upfront costs
 
 For developers and startups, hosting expenses can be a concern. Appwrite Sites provides free hosting, allowing developers to test, iterate, and launch their Nuxt applications without financial barriers. As your project scales, Appwrite offers seamless upgrade options to accommodate growing traffic and resources.
 
-### 2. Supports static and server-side rendered Nuxt applications
+## 2. Supports static and server-side rendered Nuxt applications
 
 Nuxt's flexibility allows developers to generate fully static sites or use SSR for dynamic applications. Appwrite Sites supports both models:
 
@@ -30,23 +30,23 @@ Nuxt's flexibility allows developers to generate fully static sites or use SSR f
 
 This flexibility ensures that Nuxt applications of any complexity can be hosted efficiently on Appwrite Sites.
 
-### 3. Global CDN for fast performance
+## 3. Global CDN for fast performance
 
-Performance plays a key role in user experience and SEO. Appwrite Sites uses a globally distributed **Content Delivery Network (CDN)** to cache and serve Nuxt applications efficiently. This reduces latency and ensures optimal performance for users across different locations.
+Performance plays a key role in user experience and SEO. Appwrite Sites uses a globally distributed [Content Delivery Network (CDN)](https://appwrite.io/docs/products/network/cdn) to cache and serve Nuxt applications efficiently. This reduces latency and ensures optimal performance for users across different locations.
 
-### 4. Built-in security and DDoS protection
+## 4. Built-in security and DDoS protection
 
-Security is a major concern when deploying web applications. Appwrite Sites includes **DDoS protection**, safeguarding your Nuxt app from malicious traffic and potential downtime. Additionally, it offers **custom domain management with automatic SSL encryption**, ensuring secure communication between users and your application.
+Security is a major concern when deploying web applications. Appwrite Sites includes [DDoS protection](https://appwrite.io/docs/products/network/ddos), safeguarding your Nuxt app from malicious traffic and potential downtime. Additionally, it offers **custom domain management with automatic SSL encryption**, ensuring secure communication between users and your application.
 
-### 5. Preview deployments for improved collaboration
+## 5. Preview deployments for improved collaboration
 
 Appwrite Sites generates **deployment preview links** for every update, enabling teams to review and test changes in a staging environment before pushing them to production. This workflow enhances collaboration, making it easier to validate updates before they go live.
 
-### 6. Multiple deployment options
+## 6. Multiple deployment options
 
 Deploying a Nuxt application on Appwrite Sites is simple and flexible:
 
-- **Git-based deployments**: Automatically deploy changes when you push to your repository.
+- [Git-based deployments](https://appwrite.io/docs/products/sites/deploy-from-git): Automatically deploy changes when you push to your repository.
 - **CLI-based deployment**: Deploy manually using the Appwrite CLI:
     
     ```bash
@@ -57,7 +57,7 @@ Deploying a Nuxt application on Appwrite Sites is simple and flexible:
 
 Additionally, Appwrite provides **starter templates** to help developers get up and running quickly with minimal setup.
 
-### 7. Integrated backend services for full-stack Nuxt applications
+## 7. Integrated backend services for full-stack Nuxt applications
 
 Nuxt applications often require authentication, databases, and server-side logic. Appwrite Sites seamlessly integrates with **Appwrite Auth**, **Appwrite Databases**, and **Appwrite Functions**, eliminating the need for third-party backend services and simplifying full-stack development.
 
@@ -65,20 +65,20 @@ Nuxt applications often require authentication, databases, and server-side logic
 
 | Feature | Appwrite Sites | Vercel | Netlify |
 | --- | --- | --- | --- |
-| Free hosting | ✅ Yes | ✅ Yes | ✅ Yes |
-| Static site support | ✅ Yes | ✅ Yes | ✅ Yes |
-| SSR support | ✅ Yes | ✅ Yes | ✅ Yes |
-| Global CDN | ✅ Yes | ✅ Yes | ✅ Yes |
-| DDoS protection | ✅ Yes | ✅ Yes | ✅ Yes |
-| Deployment previews | ✅ Yes | ✅ Yes | ✅ Yes |
-| Custom domains | ✅ Yes | ✅ Yes | ✅ Yes |
-| Authentication | ✅ Appwrite Auth | ❌ No | ❌ No |
-| Database | ✅ Appwrite Databases | ❌ Third-party | ❌ Third-party |
-| Serverless functions | ✅ Appwrite Functions | ✅ Cloudflare Workers | ✅ AWS Lambda |
-| Storage | ✅ Appwrite Storage | ✅ Cloudflare R2 | ❌ No |
-| Cloud messaging | ✅ Appwrite Messaging | ❌ No | ❌ No |
-| Realtime database | ✅ Appwrite Realtime | ❌ No | ❌ No |
+| Free hosting | Yes | Yes | Yes |
+| Static site support | Yes | Yes | Yes |
+| SSR support | Yes | Yes | Yes |
+| Global CDN | Yes | Yes | Yes |
+| DDoS protection | Yes | Yes | Yes |
+| Deployment previews | Yes | Yes | Yes |
+| Custom domains | Yes | Yes | Yes |
+| Authentication | Appwrite Auth | No | No |
+| Database | Appwrite Databases | No Third-party | No Third-party |
+| Serverless functions | Appwrite Functions | Cloudflare workers | AWS Lambda |
+| Storage | Appwrite Storage | Cloudflare R2 | No |
+| Cloud messaging | Appwrite Messaging | No | No |
+| Realtime database | Appwrite Realtime | No | No |
 
 Unlike other hosting providers that require third-party integrations for backend services, Appwrite Sites offers an all-in-one platform with built-in authentication, databases, and serverless functions, making deployment and management easier.
 
-For developers seeking an efficient, high-performance hosting solution optimized for Nuxt applications, **Appwrite Sites** is an excellent choice. Start deploying your Nuxt applications today by visiting [**Appwrite Sites**](https://appwrite.io/sites).
+For developers seeking an efficient, high-performance hosting solution optimized for Nuxt applications, Appwrite Sites is an excellent choice. Explore more with our [Nuxt Quick Start Guide](https://appwrite.io/docs/quick-starts/nuxt) and start deploying your Nuxt applications by visiting [Appwrite Sites](https://appwrite.io/sites).
