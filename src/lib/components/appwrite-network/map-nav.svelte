@@ -45,7 +45,7 @@
     >
         <Tabs.List
             class={classNames(
-                'border-smooth animate-fade-in relative grid w-full max-w-xl grid-cols-1 place-content-center gap-3 p-1 px-8 drop-shadow-md md:grid-cols-3 md:rounded-full md:border md:px-1',
+                'border-smooth animate-fade-in relative grid w-full max-w-xl grid-cols-1 place-content-center gap-3 overflow-hidden p-1 px-8 drop-shadow-md md:grid-cols-3 md:rounded-full md:border md:px-1',
                 theme === 'light' ? 'md:bg[var(--card, rgba(255,255,255,0.90))]' : 'md:bg-card'
             )}
         >
@@ -72,9 +72,7 @@
         </Tabs.List>
     </Tabs.Root>
 
-    {#key selectedTab}
-        <p class="animate-enter text-caption px-4">
-            {getDescription()}
-        </p>
-    {/key}
+    <p class="text-caption px-4">
+        {getDescription()}
+    </p>
 </div>
