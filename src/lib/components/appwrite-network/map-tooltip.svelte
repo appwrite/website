@@ -68,18 +68,20 @@
     });
 </script>
 
-<div class="pointer-events-none absolute z-10 hidden md:block">
+<div class="pointer-events-none absolute z-100 hidden md:block">
     {#if tooltipData.city}
         <div
             class={classNames(
                 'border-gradient relative z-100 flex w-[190px] flex-col gap-2 rounded-[10px] p-2 backdrop-blur-lg before:rounded-[10px] after:rounded-[10px]'
             )}
-            style:transform={`translateX(${x + 125}px) translateY(${y + 200}px)`}
+            style:transform={`translateX(${x + 250}px) translateY(${y - 620}px)`}
         >
-            <span class="text-primary text-caption w-fit">
-                {tooltipData.city}
-                ({tooltipData.code})
-            </span>
+            {#key tooltipData.city}
+                <span class="text-primary text-caption w-fit" bind:this={city}>
+                    {tooltipData.city}
+                    ({tooltipData.code})
+                </span>
+            {/key}
             {#if tooltipData.available}
                 <div
                     class="text-caption flex h-5 items-center justify-center place-self-start rounded-md bg-[#10B981]/24 p-1 text-center text-[#B4F8E2]"

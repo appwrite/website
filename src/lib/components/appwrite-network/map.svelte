@@ -2,7 +2,7 @@
     import { slugify } from '$lib/utils/slugify';
     import { classNames } from '$lib/utils/classnames';
     import MapNav from './map-nav.svelte';
-    import { useMousePosition } from '$lib/actions/mouse-position';
+    import { useMousePosition } from '$lib/actions/mouse-position.svelte';
     import { useAnimateInView } from '$lib/actions/animate-in-view';
     import { pins, type PinSegment } from './data/pins';
     import MapTooltip, {
@@ -75,17 +75,13 @@
             height,
             markers: getMarkers(),
             skew: 1,
-            baseColor: '#dadadd',
+            baseColor: 'rgba(255,255,255,.1)',
             markerColor: 'var(--color-accent)'
         });
     });
-
-    type Props = { theme: 'light' | 'dark' };
-
-    const { theme = 'dark' }: Props = $props();
 </script>
 
-<div class="-mt-8 w-full overflow-x-scroll [scrollbar-width:none] md:overflow-x-hidden">
+<div class="relative -mt-8 w-full overflow-x-scroll [scrollbar-width:none]">
     <div
         class="sticky left-0 mx-auto block max-w-[calc(100vw_-_calc(var(--spacing)_*-2))] md:hidden"
     >
@@ -99,19 +95,15 @@
         </select>
     </div>
 
-    <div
-        class="relative mx-auto h-full w-[250vw] [scrollbar-width:none] md:w-full"
-        use:inView
-        use:mousePosition
-    >
+    <div class="relative mx-auto h-full w-[250vw] [scrollbar-width:none] md:w-full" use:inView>
         <div
-            class="relative w-full origin-bottom transform-[perspective(25px)_rotateX(1deg)_scale3d(1.4,_1.4,_1)] transition-all [scrollbar-width:none]"
+            class="relative mx-auto h-fit w-full max-w-5xl origin-bottom transform-[perspective(25px)_rotateX(1deg)_scale3d(1.4,_1.4,_1)] transition-all [scrollbar-width:none]"
         >
-            <svg viewBox={`0 0 ${height * 2} ${height}`}>
+            <svg viewBox={`0 0 ${height * 2} ${height}`} use:mousePosition>
                 {#each map.points as point}
                     <circle cx={point.x} cy={point.y} r={point.size} fill={point.color} />
                 {/each}
-                <!-- {#each map.markers as marker}
+                {#each map.markers as marker}
                     <g
                         role="tooltip"
                         class="animate-fade-in outline-none"
@@ -123,15 +115,25 @@
                         onmouseout={() => handleResetActiveTooltip(250)}
                         data-region={slugify(marker.city)}
                     >
-                        <circle cx={marker.x} cy={marker.y} r={marker.size} fill={marker.color} />
-                        <circle cx={marker.x} cy={marker.y} fill="white" />
+                        <circle
+                            cx={marker.x}
+                            cy={marker.y}
+                            r={marker.size * 1.5}
+                            fill={marker.color}
+                        />
+                        <circle cx={marker.x} cy={marker.y} r={marker.size * 0.5} fill="white" />
+                        <circle
+                            cx={marker.x}
+                            cy={marker.y}
+                            r={marker.size * 4}
+                            fill="transparent"
+                        />
                     </g>
-                {/each} -->
+                {/each}
             </svg>
         </div>
     </div>
+    <MapTooltip {...position()} />
 </div>
 
-<MapTooltip {...$position} />
-
-<MapNav {theme} onValueChange={(value) => (activeSegment = value)} />
+<MapNav onValueChange={(value) => (activeSegment = value)} />
