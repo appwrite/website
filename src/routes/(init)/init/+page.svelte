@@ -113,7 +113,11 @@
                 'Introducing Dev Keys. A new Appwrite feature that lets you bypass rate limits *during local development*. No more slowdowns. No more artificial blockers. Just fast, uninterrupted building.',
             url: '/blog/post/announcing-dev-keys',
             content: [
-                { title: 'Improve your Appwrite developer experience with dev keys', url: '/blog/post/', type: 'Blog' },
+                {
+                    title: 'Improve your Appwrite developer experience with dev keys',
+                    url: '/blog/post/',
+                    type: 'Blog'
+                },
                 {
                     title: 'Dev Keys',
                     url: '/docs/advanced/platform/dev-keys',
