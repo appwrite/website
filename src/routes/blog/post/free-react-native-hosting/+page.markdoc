@@ -4,7 +4,7 @@ title: Free React Native for Web hosting with Appwrite Sites - Simplified deploy
 description: Learn how to deploy your React Native app for free with Appwrite Sites.
 date: 2025-05-20
 cover: /images/blog/free-react-native-hosting/cover.png
-timeToRead: 3
+timeToRead: 6
 author: eldad-fux
 category: tutorial
 unlisted: true
@@ -13,35 +13,35 @@ unlisted: true
 
 React Native for Web enables developers to build cross-platform applications using a single codebase, allowing React Native apps to run seamlessly on web browsers. While this provides a powerful way to extend mobile applications to the web, finding a hosting solution that is cost-effective, scalable, and optimized for React Native for Web can be challenging.
 
-**Appwrite Sites** offers a dedicated hosting platform for modern web applications, including React Native for Web, with built-in features that optimize performance, security, and developer workflows. This article explores how Appwrite Sites enhances the deployment process, integrates with React Native for Web's architecture, and compares with other hosting solutions.
+[Appwrite Sites](https://appwrite.io/products/sites) offers a dedicated hosting platform for modern web applications, including React Native for Web, with built-in features that optimize performance, security, and developer workflows. This article explores how Appwrite Sites enhances the deployment process, integrates with React Native for Web's architecture, and compares with other hosting solutions.
 
 # Why Appwrite Sites is an ideal choice for React Native for Web
 
-### 1. Free hosting with no upfront costs
+## 1. Free hosting with no upfront costs
 
 For startups and independent developers, hosting costs can be a major concern. Appwrite Sites provides free hosting, eliminating financial barriers while maintaining high performance. As your project scales, Appwrite allows you to upgrade seamlessly without any downtime.
 
-### 2. Optimized for web-based React Native applications
+## 2. Optimized for web-based React Native applications
 
 React Native for Web brings mobile-style components and layouts to the browser. Appwrite Sites ensures smooth rendering, asset optimization, and fast content delivery, making it an ideal fit for applications that rely on React Native's component-driven architecture.
 
-### 3. Performance-enhancing global CDN
+## 3. Performance-enhancing global CDN
 
-Speed is critical for both user experience and SEO rankings. Appwrite Sites uses a globally distributed **Content Delivery Network (CDN)** to cache and serve assets efficiently, reducing latency and ensuring optimal performance no matter where users are located.
+Speed is critical for both user experience and SEO rankings. Appwrite Sites uses a globally distributed [Content Delivery Network (CDN)](https://appwrite.io/docs/products/network/cdn) to cache and serve assets efficiently, reducing latency and ensuring optimal performance no matter where users are located.
 
-### 4. Built-in security and DDoS protection
+## 4. Built-in security and DDoS protection
 
-Security is a top priority for web applications. Appwrite Sites includes **DDoS protection**, safeguarding applications from denial-of-service attacks by mitigating malicious traffic. Additionally, it provides **custom domain support with automatic SSL encryption**, ensuring a secure browsing experience for users.
+Security is a top priority for web applications. Appwrite Sites includes [DDoS protection](https://appwrite.io/docs/products/network/ddos), safeguarding applications from denial-of-service attacks by mitigating malicious traffic. Additionally, it provides **custom domain support with automatic SSL encryption**, ensuring a secure browsing experience for users.
 
-### 5. Preview deployments for smoother collaboration
+## 5. Preview deployments for smoother collaboration
 
 Every update to your site generates a **deployment preview link**, making it easy to review changes before going live. This feature streamlines development workflows, allowing developers and stakeholders to verify updates in a staging environment before deploying to production.
 
-### 6. Flexible deployment methods
+## 6. Flexible deployment methods
 
 Appwrite Sites provides multiple ways to deploy your React Native for Web application:
 
-- **Git-based deployments**: Automatically deploy updates when pushing changes to your repository.
+- [Git-based deployments](https://appwrite.io/docs/products/sites/deploy-from-git): Automatically deploy updates when pushing changes to your repository.
 - **CLI-based deployment**: Deploy manually with a single command:
     
     ```bash
@@ -52,7 +52,7 @@ Appwrite Sites provides multiple ways to deploy your React Native for Web applic
 
 Appwrite also provides **starter templates** and example projects to help developers get up and running quickly with minimal configuration.
 
-### 7. Integrated backend services for full-stack React Native applications
+## 7. Integrated backend services for full-stack React Native applications
 
 Many React Native for Web applications require authentication, databases, and cloud functions. Appwrite Sites seamlessly integrates with **Appwrite Auth**, **Appwrite Databases**, and **Appwrite Functions**, eliminating the need for third-party backend providers and streamlining development.
 
@@ -60,20 +60,20 @@ Many React Native for Web applications require authentication, databases, and cl
 
 | Feature | Appwrite Sites | Vercel | Netlify |
 | --- | --- | --- | --- |
-| Free hosting | ✅ Yes | ✅ Yes | ✅ Yes |
-| Static site support | ✅ Yes | ✅ Yes | ✅ Yes |
-| Web-optimized React Native | ✅ Yes | ✅ Yes | ✅ Yes |
-| Global CDN | ✅ Yes | ✅ Yes | ✅ Yes |
-| DDoS protection | ✅ Yes | ✅ Yes | ✅ Yes |
-| Deployment previews | ✅ Yes | ✅ Yes | ✅ Yes |
-| Custom domains | ✅ Yes | ✅ Yes | ✅ Yes |
-| Authentication | ✅ Appwrite Auth | ❌ No | ❌ Deprecated |
-| Database | ✅ Appwrite Databases | ❌ Third-party | ❌ Third-party |
-| Serverless functions | ✅ Appwrite Functions | ✅ Cloudflare workers | ✅ AWS Lambda |
-| Storage | ✅ Appwrite Storage | ✅ Cloudflare R2 | ❌ No |
-| Cloud messaging | ✅ Appwrite Messaging | ❌ No | ❌ No |
-| Realtime database | ✅ Appwrite Realtime | ❌ No | ❌ No |
+| Free hosting | Yes | Yes | Yes |
+| Static site support | Yes | Yes | Yes |
+| Web-optimized React Native | Yes | Yes | Yes |
+| Global CDN | Yes | Yes | Yes |
+| DDoS protection | Yes | Yes | Yes |
+| Deployment previews | Yes | Yes | Yes |
+| Custom domains | Yes | Yes | Yes |
+| Authentication | Appwrite Auth | No | Deprecated |
+| Database | Appwrite Databases | No Third-party | No Third-party |
+| Serverless functions | Appwrite Functions | Cloudflare workers | AWS Lambda |
+| Storage | Appwrite Storage | Cloudflare R2 | No |
+| Cloud messaging | Appwrite Messaging | No | No |
+| Realtime database | Appwrite Realtime | No | No |
 
 Unlike other hosting solutions that require third-party integrations for backend features, Appwrite Sites provides an all-in-one ecosystem with built-in authentication, databases, and serverless functions, reducing complexity and ensuring seamless integration.
 
-For developers looking for a streamlined hosting solution that simplifies deployment and minimizes external dependencies, **Appwrite Sites** is an excellent choice. Start deploying your React Native for Web applications today by visiting [**Appwrite Sites**](https://appwrite.io/sites).
+For developers looking for a streamlined hosting solution that simplifies deployment and minimizes external dependencies, Appwrite Sites is an excellent choice. Explore more with our [React Native Quick Start Guide](https://appwrite.io/docs/quick-starts/react-native) and start deploying your React Native for Web applications by visiting [Appwrite Sites](https://appwrite.io/sites).
