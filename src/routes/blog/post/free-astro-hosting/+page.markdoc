@@ -76,4 +76,4 @@ While Astro focuses on static site generation, many projects require authenticat
 
 Unlike other hosting solutions that require third-party integrations for backend features, Appwrite Sites provides an all-in-one ecosystem with built-in authentication, databases, and serverless functions.
 
-For developers seeking a hassle-free hosting solution that simplifies deployment and minimizes dependencies, Appwrite Sites is a compelling option. Get started with our [Astro Quick Start Guide](https://appwrite.io/docs/quick-starts/astro) and start deploying your Astro applications by visiting [Appwrite Sites](https://appwrite.io/sites).
+For developers seeking a hassle-free hosting solution that simplifies deployment and minimizes dependencies, Appwrite Sites is a compelling option. Explore more with our [Astro Quick Start Guide](https://appwrite.io/docs/quick-starts/astro) and start deploying your Astro applications by visiting [Appwrite Sites](https://appwrite.io/sites).
