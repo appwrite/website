@@ -69,13 +69,19 @@
         return activeMarkers;
     };
 
+    type Props = {
+        theme: 'light' | 'dark';
+    };
+
+    const { theme = 'dark' }: Props = $props();
+
     $effect(() => {
         map = createMap({
             width: height * 2,
             height,
             markers: getMarkers(),
             skew: 1,
-            baseColor: 'rgba(255,255,255,.1)',
+            baseColor: theme === 'dark' ? 'rgba(255,255,255,.1)' : '#dadadd',
             markerColor: 'var(--color-accent)'
         });
     });
@@ -136,4 +142,4 @@
     <MapTooltip {...position()} />
 </div>
 
-<MapNav onValueChange={(value) => (activeSegment = value)} />
+<MapNav {theme} onValueChange={(value) => (activeSegment = value)} />
