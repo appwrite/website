@@ -67,12 +67,12 @@ Many Next.js applications rely on authentication, databases, and cloud functions
 | DDoS protection | Yes | Yes | Yes |
 | Deployment previews | Yes | Yes | Yes |
 | Custom domains | Yes | Yes | Yes |
-| Authentication | Built-in | No | Deprecated |
-| Database | Built-in | No third-party | No third-party |
-| Serverless functions | Built-in | Via Cloudflare | Via AWS Lambda |
-| Storage | Built-in | Via Cloudflare R2 | No |
-| Cloud messaging | Built-in | No | No |
-| Realtime database | Built-in | No | No |
+| Authentication | Appwrite Auth | No | Deprecated  |
+| Database | Appwrite Databases | No third-party | No third-party |
+| Serverless functions | Appwrite Functions | Cloudflare workers | AWS Lambda |
+| Storage | Appwrite Storage | Cloudflare R2 | No |
+| Cloud messaging | Appwrite Messaging | No | No |
+| Realtime database | Appwrite Realtime | No | No |
 
 Unlike other solutions that rely on third-party integrations for authentication, databases, or serverless functions, Appwrite Sites provides these natively, reducing reliance on external services and ensuring better integration within a unified ecosystem.
 
