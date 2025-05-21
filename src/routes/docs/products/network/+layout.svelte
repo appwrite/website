@@ -42,6 +42,10 @@
             label: 'Features',
             items: [
                 {
+                    label: 'DNS',
+                    href: '/docs/products/network/dns'
+                },
+                {
                     label: 'DDoS mitigation',
                     href: '/docs/products/network/ddos'
                 },

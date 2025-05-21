@@ -1,11 +1,13 @@
 <script lang="ts">
     import { classNames } from '$lib/utils/classnames';
-    import { inView, animate } from 'motion';
+    import NumberFlow from '@number-flow/svelte';
+    import { inView } from 'motion-legacy';
     import { onDestroy } from 'svelte';
+    import KCollectTestimonialImage from '../../../products/sites/kcollect-ryan-testimonial.png';
 
     const animationDuration = 3;
 
-    let stats = $state([
+    let stats = [
         {
             number: 0,
             suffix: '+',
@@ -30,26 +32,63 @@
             description: 'projects',
             top: 46.75
         }
-    ]);
+    ];
+
+    let alternateStats = [
+        {
+            number: 0,
+            suffix: 'K+',
+            description: 'Github stars',
+            top: 93.75
+        },
+        {
+            number: 0,
+            suffix: '+',
+            description: 'PoP locations',
+            top: 78.25
+        },
+        {
+            number: 0,
+            suffix: 'K+',
+            description: 'developers',
+            top: 62.5
+        },
+        {
+            number: 0,
+            suffix: 'B+',
+            description: 'monthly database operations',
+            top: 46.75
+        }
+    ];
 
     const numbers = [12, 1000, 50, 300];
+    const alternateNumbers = [50, 300, 300, 200];
 
-    let shouldAnimate: boolean = false;
+    let animate: boolean = false;
 
     let timeoutIds: Array<NodeJS.Timeout> = [];
+    const updateNumbers = () => {
+        correctStats.forEach((stat, index) => {
+            const timeoutId = setTimeout(
+                () => {
+                    correctStats[index] = { ...stat, number: correctNumbers[index] };
+                },
+                ((index * animationDuration) / correctNumbers.length) * 500
+            );
+
+            timeoutIds.push(timeoutId);
+        });
+    };
 
     const useInView = (node: HTMLElement) => {
-        shouldAnimate = true;
-        inView(node, () => {
-            if (!shouldAnimate) return;
-            stats.forEach((stat, index) => {
-                animate(0, numbers[index], {
-                    ease: 'circOut',
-                    duration: 0.75,
-                    onUpdate: (latest) => (stat.number = +latest.toFixed())
-                });
-            });
-        });
+        inView(
+            node,
+            () => {
+                animate = true;
+                updateNumbers();
+            },
+            { amount: 0.5 }
+        );
     };
 
     const clearAllTimeouts = () => {
@@ -63,10 +102,42 @@
     onDestroy(() => {
         clearAllTimeouts();
     });
+
+    export let theme: 'light' | 'dark' = 'dark';
+    export let alternateInfo: boolean = false;
+
+    const correctStats = alternateInfo ? alternateStats : stats;
+    const correctNumbers = alternateInfo ? alternateNumbers : numbers;
+    const testimonial = {
+        name: 'Ryan O’Conner',
+        copy: `The switch to using Appwrite brought infinite value that I'm still discovering today, but a major impact that it made was the amount of time and stress that it saved me as it simply just works.`,
+        image: KCollectTestimonialImage,
+        title: 'Founder',
+        company: 'K-Collect'
+    };
+
+    const getCorrectText = () => {
+        if (!alternateInfo) {
+            return {
+                partOne: 'Appwrite has supported our recent growth in every step of the way,',
+                partTwo: 'without any failures or outages.'
+            };
+        } else {
+            return {
+                partOne: 'The switch to using Appwrite brought',
+                partTwo: "infinite value that I'm still discovering today."
+            };
+        }
+    };
+
+    const text = getCorrectText();
 </script>
 
 <div
-    class="border-smooth relative flex min-h-[750px] flex-col gap-4 border-y bg-black/8 py-20"
+    class={classNames(
+        'relative flex min-h-[70vh] flex-col gap-4',
+        theme === 'dark' ? 'border-smooth border-y bg-black/8 py-20' : ''
+    )}
     use:useInView
 >
     <div class="relative z-10 container w-fit md:w-full">
@@ -77,23 +148,39 @@
                 >
             </h2>
             <p class="text-secondary border-accent mt-5 border-l-2 pr-28 pl-2 font-medium">
-                <span class="text-accent">"</span>Appwrite has supported our recent growth in every
-                step of the way,
-                <span class="text-primary">without any failures or outages</span><span
-                    class="text-accent">"</span
-                >
+                <span class="text-accent">“</span>{text.partOne}
+                <span class="text-primary">{text.partTwo}</span><span class="text-accent">”</span>
             </p>
+
+            {#if alternateInfo}
+                <div class="mt-4 flex items-center gap-3">
+                    <img
+                        src={testimonial.image}
+                        class="size-6 rounded-full"
+                        alt="{testimonial.company} Logo"
+                    />
+                    <div class="flex gap-1">
+                        <span class="text-primary text-sub-body block font-medium">
+                            {testimonial.name},
+                        </span>
+                        <span class="text-sub-body text-secondary block"
+                            >{testimonial.title} at {testimonial.company}</span
+                        >
+                    </div>
+                </div>
+            {/if}
         </div>
     </div>
 
     <div class="mt-12 block space-y-8 md:hidden">
-        {#each stats as stat, i}
+        {#each correctStats as stat, i}
             <div class="h-full overflow-auto pl-6">
                 <div class={classNames('relative')} style:top={`${(4 - i) * 18}%`}>
-                    <span
+                    <NumberFlow
                         class="text-description text-primary border-accent relative -left-px z-10 border-l pl-4 font-medium"
-                        >{stat.number}{stat.suffix}</span
-                    >
+                        value={stat.number}
+                        suffix={stat.suffix}
+                    />
                     <span class="text-body text-secondary block pl-4">{stat.description}</span>
                 </div>
             </div>
@@ -101,87 +188,65 @@
     </div>
 
     <div
-        class="swipe absolute inset-0 hidden md:block"
+        class="swipe mask absolute inset-0 hidden md:block"
         style:--animation-duration={`${animationDuration}s`}
+        style:--mask-height="50px"
     >
         <div class="relative container h-full">
             <div class="absolute inset-0 z-100 grid grid-cols-4">
-                {#each stats as stat, i}
+                {#each correctStats as stat, i}
                     <div
-                        class="border-smooth h-full overflow-auto border-l border-dashed [mask-image:_linear-gradient(to_bottom,_transparent,_black_var(--mask-height),_black_calc(100%_-_var(--mask-height)),_black)]"
+                        class="mask border-smooth h-full overflow-auto border-l"
+                        style:--mask-direction="bottom"
                         style:--mask-height={`${(4 - i) * 25}%`}
                     >
                         <div class={classNames('relative')} style:top={`${(4 - i) * 18}%`}>
-                            <span
+                            <NumberFlow
                                 class="text-description text-primary border-accent relative -left-px z-10 border-l pl-4 font-medium"
-                                >{stat.number}{stat.suffix}</span
-                            >
+                                value={stat.number}
+                                suffix={stat.suffix}
+                            />
                             <span class="text-body text-secondary block pl-4"
                                 >{stat.description}</span
                             >
                         </div>
                     </div>
                 {/each}
+
+                <!-- <div class="pointer-events-none absolute inset-0 z-50">
+                    {#each correctStats as stat, i}
+                        <div
+                            class="border-accent absolute top-[var(--top)] left-[calc(var(--left)_+_1px)] h-2 w-2 -translate-1/2 rounded-full border bg-white"
+                            style:--top={`${stat.top}%`}
+                            style:--left="{i * 25}%"
+                        ></div>
+                    {/each}
+                </div> -->
             </div>
         </div>
-
-        <!-- <div class="absolute inset-0">
-            {#each stats as _, i}
-                <div
-                    class="dot border-accent absolute top-0 left-0 z-10 h-2 w-2 rounded-full border bg-white"
-                    style:offset-distance={`${i * (100 / stats.length) + 12.5}%`}
-                ></div>
-            {/each}
-        </div> -->
-        <svg
-            class="absolute inset-x-0 bottom-0 h-auto"
-            fill="none"
-            viewBox="0 0 1728 563"
-            xmlns="http://www.w3.org/2000/svg"
-            preserveAspectRatio="none"
-        >
-            <path d="M0 563.5L1728 1V563.5H0Z" fill="url(#b)" stroke="url(#a)" />
-            <defs>
-                <linearGradient
-                    id="b"
-                    x1="-467"
-                    x2="1787"
-                    y1="753"
-                    y2="24.5"
-                    gradientUnits="userSpaceOnUse"
-                >
-                    <stop stop-color="#FD366E" stop-opacity=".16" offset="0" />
-                    <stop stop-color="#FD366E" stop-opacity="0" offset="1" />
-                </linearGradient>
-                <linearGradient
-                    id="a"
-                    x1="-94"
-                    x2="1730.1"
-                    y1="578"
-                    y2="7.8097"
-                    gradientUnits="userSpaceOnUse"
-                >
-                    <stop stop-color="#FD366E" offset="0" />
-                    <stop stop-color="#FD366E" stop-opacity=".48" offset=".21402" />
-                    <stop stop-color="#FD366E" stop-opacity=".2" offset=".7712" />
-                    <stop stop-color="#FD366E" stop-opacity="0" offset="1" />
-                </linearGradient>
-            </defs>
-        </svg>
+        <div
+            class="from-accent/15 absolute inset-0 bg-gradient-to-tr to-transparent [clip-path:polygon(0_100%,_100%_25%,_100%_100%,_0_100%)]"
+        ></div>
+        <div
+            class="from-accent absolute inset-0 bg-gradient-to-r to-transparent [clip-path:polygon(0_100%,_100%_25%,_100%_25.1%,_0_100.1%)]"
+        ></div>
     </div>
 </div>
 
 <style>
-    :root {
-        --path-width: 1200px;
-        --path-height: 358px;
-    }
-    .dot {
-        offset-path: path('M var(--path-width) var(--path-height) L 0 749.5');
-    }
     .swipe {
         animation: wipe-in var(--animation-duration) ease-in-out;
     }
+
+    @keyframes mask-wipe {
+        0% {
+            transform: translateX(0);
+        }
+        100% {
+            transform: translateX(100%);
+        }
+    }
+
     @keyframes wipe-in {
         0% {
             clip-path: polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%);

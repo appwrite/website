@@ -1,6 +1,7 @@
 <script lang="ts">
-    import { createAccordion, melt } from '@melt-ui/svelte';
     import { slide } from 'svelte/transition';
+    import { trackEvent } from '$lib/actions/analytics';
+    import { createAccordion, melt } from '@melt-ui/svelte';
 
     export let noBorder = false;
 
@@ -38,7 +39,8 @@
                 { label: 'Messaging', href: '/products/messaging' },
                 { label: 'Storage', href: '/products/storage' },
                 { label: 'Realtime', href: '/docs/apis/realtime' },
-                { label: 'Network', href: '/docs/products/network' }
+                { label: 'Network', href: '/docs/products/network' },
+                { label: 'Hosting', href: '/docs/products/sites' }
             ],
             Learn: [
                 { label: 'Blog', href: '/blog' },
@@ -111,7 +113,16 @@
                 <ul class="web-footer-nav-secondary-list text-sub-body">
                     {#each items as { href, label, target, rel }}
                         <li>
-                            <a class="web-link" {href} {target} {rel}>{label}</a>
+                            <a
+                                class="web-link"
+                                {href}
+                                {target}
+                                {rel}
+                                onclick={() =>
+                                    trackEvent(
+                                        `footer-${label.toLowerCase().replace(' ', '_')}-click`
+                                    )}>{label}</a
+                            >
                         </li>
                     {/each}
                 </ul>
@@ -141,7 +152,16 @@
                     >
                         {#each items as { href, label, target, rel }}
                             <li>
-                                <a class="web-link" {href} {target} {rel}>{label}</a>
+                                <a
+                                    class="web-link"
+                                    {href}
+                                    {target}
+                                    {rel}
+                                    onclick={() =>
+                                        trackEvent(
+                                            `footer-${label.toLowerCase().replace(' ', '_')}-click`
+                                        )}>{label}</a
+                                >
                             </li>
                         {/each}
                     </ul>

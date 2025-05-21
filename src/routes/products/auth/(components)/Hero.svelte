@@ -25,10 +25,19 @@
             </p>
 
             <div class="flex flex-col items-center gap-2 md:flex-row">
-                <Button href={getAppwriteDashboardUrl()} class="!w-full md:!w-fit">
+                <Button
+                    href={getAppwriteDashboardUrl()}
+                    class="!w-full md:!w-fit"
+                    event="products-auth-get_started_btn_hero-click"
+                >
                     Get started
                 </Button>
-                <Button href="/docs/products/auth" variant="secondary" class="!w-full md:!w-fit">
+                <Button
+                    href="/docs/products/auth"
+                    variant="secondary"
+                    class="!w-full md:!w-fit"
+                    event="products-auth-docs-click"
+                >
                     Documentation
                 </Button>
             </div>

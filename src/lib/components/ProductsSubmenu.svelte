@@ -44,6 +44,12 @@
             icon: '/images/icons/illustrated/dark/messaging.png'
         },
         {
+            name: 'Sites',
+            href: '/products/sites',
+            description: 'The open-source Vercel alternative.',
+            icon: '/images/icons/illustrated/dark/sites.png'
+        },
+        {
             name: 'Realtime',
             href: '/docs/apis/realtime',
             description: 'Subscribe and react to any event.',
@@ -59,12 +65,15 @@
         {
             label: 'Appwrite vs. Firebase',
             href: '/blog/post/open-source-firebase-alternative'
+        },
+        {
+            label: 'Appwrite vs. Vercel',
+            href: '/blog/post/open-source-vercel-alternative'
         }
     ];
 </script>
 
 <script lang="ts">
-    import { dev } from '$app/environment';
     import { trackEvent } from '$lib/actions/analytics';
     import { classNames } from '$lib/utils/classnames';
     import { createDropdownMenu, melt } from '@melt-ui/svelte';
@@ -117,12 +126,8 @@
                         <a
                             href={product.href}
                             use:melt={$item}
-                            on:click={() =>
-                                trackEvent({
-                                    plausible: {
-                                        name: `${product.name} in products submenu`
-                                    }
-                                })}
+                            onclick={() =>
+                                trackEvent(`products-submenu-${product.name.toLowerCase()}-click`)}
                             class="group flex gap-3 rounded-xl p-1 text-white transition-colors outline-none focus:bg-white/8"
                         >
                             <div
@@ -182,8 +187,8 @@
                             class="aspect-[3/1] max-w-[7.5rem] shrink-0 rounded-xl object-cover"
                         />
                         <p class="text-pretty">
-                            Empowering Shopify merchants with real-time store monitoring using
-                            StoreAlert
+                            Appwrited helped reduce development time by 60%, and lower server costs
+                            by 40%.
                         </p>
                     </a>
                 </div>

@@ -122,20 +122,12 @@ const securityheaders: Handle = async ({ event, resolve }) => {
     return response;
 };
 
-const bannerRewriter: Handle = async ({ event, resolve }) => {
-    const response = await resolve(event, {
-        transformPageChunk: ({ html }) => html.replace('%aw_banner_key%', BANNER_KEY)
-    });
-    return response;
-};
-
-const fontPreloader: Handle = async ({ event, resolve }) => {
-    return resolve(event, {
-        preload: ({ type }) => {
-            return type === 'font' || type === 'js' || type === 'css';
-        }
-    });
-};
+// const bannerRewriter: Handle = async ({ event, resolve }) => {
+//     const response = await resolve(event, {
+//         transformPageChunk: ({ html }) => html.replace('%aw_banner_key%', BANNER_KEY)
+//     });
+//     return response;
+// };
 
 const initSession: Handle = async ({ event, resolve }) => {
     const session = await createInitSessionClient(event.cookies);
@@ -199,10 +191,4 @@ const initSession: Handle = async ({ event, resolve }) => {
     return response;
 };
 
-export const handle = sequence(
-    redirecter,
-    fontPreloader,
-    bannerRewriter,
-    securityheaders,
-    initSession
-);
+export const handle = sequence(redirecter, securityheaders, initSession);

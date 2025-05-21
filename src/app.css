@@ -89,8 +89,11 @@
     --animate-scale-out: scale-out 200ms ease-out forwards;
     --animate-caret-blink: caret-blink 1s ease-in-out infinite;
     --animate-enter:
-        fade-in 0.25s ease-out both, blur 0.25s ease-out both, up 0.25s ease-in-out both;
-    --animate-scroll-deprecate: scroll-deprecate 60s linear infinite;
+        fade-in 0.75s ease-in-out both, blur 0.75s ease-in-out both, up 0.75s ease-in-out both;
+    --animate-scroll: scroll 60s linear infinite;
+    --animate-scroll-x: scroll-x var(--speed, 30s) linear infinite var(--direction, forwards);
+    --animate-scroll-y: scroll-y 60s linear infinite forwards;
+
     --animate-fade-in: fade-in 0.5s ease-in-out both;
     --animate-fade-out: fade-out 0.5s ease-in-out both;
     --animate-scroll-x: scroll-x var(--speed, 30s) linear infinite var(--direction, forwards);
@@ -284,10 +287,10 @@
     /* Font sizes */
     --text-x-micro: 0.625rem;
     --text-x-micro--line-height: 0.875rem;
-    --text-x-micro--letter-spacing: var(--tracking-tighter);
+    --text-x-micro--letter-spacing: var(--tracking-loose);
     --text-micro: 0.75rem;
     --text-micro--line-height: 1rem;
-    --text-micro--letter-spacing: var(--tracking-tighter);
+    --text-micro--letter-spacing: var(--tracking-loose);
     --text-caption: 0.875rem;
     --text-caption--line-height: 1.375rem;
     --text-caption--letter-spacing: var(--tracking-tight);
@@ -332,9 +335,9 @@
 }
 
 @utility container {
+    max-width: 75rem;
     margin-inline: auto;
     padding-inline: 1.25rem;
-    max-width: 75rem;
 }
 
 @utility border-gradient {

@@ -14,12 +14,12 @@
 
 <div class="group mt-2 w-fit min-w-[190px]">
     {#if type === 'video' || type === 'announcement'}
-        <VideoDialog {url}>
+        <VideoDialog {url} inlineVideo={false}>
             <div
                 class="relative flex aspect-video w-full max-w-[190px] cursor-pointer flex-col items-center rounded-md outline-2 outline-offset-3 outline-[var(--color-offset)] outline-dashed"
             >
                 <img
-                    src={Poster}
+                    src={poster}
                     alt={title}
                     class="absolute inset-0 object-cover transition-opacity group-hover:opacity-75"
                 />
