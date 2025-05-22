@@ -21,6 +21,18 @@ You can also configure the maximum timeout that can be set on individual Appwrit
 
 {% partial file="update-variables.md" /%}
 
+# Add a root domain for Sites {% #root-domain %}
+
+Appwrite allows you to use a root domain as a custom domain for your sites instead of the default Appwrite domain or a subdomain of your custom domain, if you prefer that.
+To add a root domain, you must first configure either one of the following environment variables in your `.env` file:
+
+- `_APP_DOMAIN_TARGET_A`: Set this to the IPv4 address of your server.
+- `_APP_DOMAIN_TARGET_AAAA`: Set this to the IPv6 address of your server.
+
+Ensure that the `_APP_DOMAIN_SITES` environment variable is set to your root domain (e.g., `myapp.com`).
+
+Next, head to your DNS provider and create an A or AAAA record for your root domain pointing to the server's IP address. This will allow Appwrite to serve your sites from the root domain.
+
 # SSL certificates for Sites domains {% #ssl-certificates %}
 
 Before setting up SSL certificates, ensure you have configured your DNS settings properly. You'll need to create a CNAME record that points your wildcard domain (e.g. `*.sites.appwrite.myapp.com`) to your Appwrite domain.
