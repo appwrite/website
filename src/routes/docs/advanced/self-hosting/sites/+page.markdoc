@@ -88,7 +88,7 @@ labels:
 
 4. Ensure these environment variables are properly configured in your `.env` file before proceeding:
     - `_APP_SYSTEM_SECURITY_EMAIL_ADDRESS` must be set to a valid email for Let's Encrypt notifications
-    - `_APP_DOMAIN_SITES` must be correctly set to your function domain (e.g., `sites.example.com`)
+    - `_APP_DOMAIN_SITES` must be correctly set to your site domain (e.g., `sites.example.com`)
     - `_APP_DOMAIN_DO_TOKEN` must be set to a valid DigitalOcean API token (generate this in the DigitalOcean Console)
 
 5. Apply the changes.
