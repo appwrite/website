@@ -9,6 +9,7 @@ _APP_OPENSSL_KEY_V1=your-secret-key
 _APP_DOMAIN=localhost
 _APP_CUSTOM_DOMAIN_DENY_LIST=example.com,test.com,app.example.com
 _APP_DOMAIN_FUNCTIONS=functions.localhost
+_APP_DOMAIN_SITES=sites.localhost
 _APP_DOMAIN_TARGET=localhost
 _APP_DOMAIN_TARGET_CNAME=localhost
 _APP_DOMAIN_TARGET_AAAA=::1
