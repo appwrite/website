@@ -176,7 +176,19 @@ These logs give you immediate visibility into how your app behaves in production
 
 Vercel uses edge functions and CDN caching for content delivery. Static content is served from edge locations, while serverless functions run in regional data centers. Performance varies by plan tier and deployment type.
 
-Appwrite Sites uses a global CDN for static content, and container-based SSR for dynamic apps. You can configure timeouts (up to 30 seconds per request), and performance depends on your framework and hosting mode. Static hosting delivers near-instant responses through CDN caching, while SSR requires container initialization on cold starts but provides consistent performance afterward.
+Appwrite Sites takes a different approach:
+
+- **Static content** is distributed through a global CDN network with edge nodes in multiple geographic regions, minimizing latency for users worldwide.
+
+- **Dynamic SSR apps** run in containers that automatically scale based on traffic patterns. Unlike traditional serverless platforms that create and destroy instances for each request, Appwrite's container infrastructure maintains a pool of containers that scales up during traffic spikes and down during quiet periods.
+
+- **Cold starts** are minimized through container reuse and intelligent pre-warming based on traffic patterns.
+
+- **Request timeouts** can be configured up to 30 seconds per request, compared to more restrictive limits on some serverless platforms.
+
+- **Resource allocation** happens automatically - containers receive more CPU and memory as needed without manual configuration.
+
+This architecture balances serverless operations with container-based execution. The container pool approach can help maintain performance consistency for applications with sustained traffic patterns.
 
 # Security and isolation
 
