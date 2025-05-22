@@ -143,7 +143,7 @@
                 },
                 {
                     title: 'How to use AVIF in Storage',
-                    url: '/blog/pos/avif-in-storage',
+                    url: '/blog/post/avif-in-storage',
                     type: 'Blog'
                 },
                 {
