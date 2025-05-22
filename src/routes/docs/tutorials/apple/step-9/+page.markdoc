@@ -1,0 +1,22 @@
+---
+layout: tutorial
+title: Next Steps
+description: Test your app in Xcode
+step: 10
+---
+
+# Test your project {% #test-project %}
+At the top level menu click on **Product** then **Scheme** and click on **Choose scheme**, you will notice that the active scheme is selected if not click on it to mark it selected then next to it select any iOS Simulator you wish to run the app on then click on play button.
+
+# Delete Appwrite Project in Console {% #delete-appwrite-project-in-console %}
+
+Head to your [Appwrite Console](https://cloud.appwrite.io/console/) and select the project you want to delete then head over to `Settings`
+
+{% only_dark %}
+![Delete Appwrite Project Screenshot](/images/docs/tutorials/dark/delete-appwrite-project.png)
+{% /only_dark %}
+{% only_light %}
+![Delete Appwrite Project Screenshot](/images/docs/tutorials/delete-appwrite-project.png)
+{% /only_light %}
+
+Click on `Delete`, then follow the instruction provided in the dialog to confirm deleting your project on Appwrite Console.
