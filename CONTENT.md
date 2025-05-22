@@ -191,6 +191,8 @@ print('test');
 {% /multicode %}
 </pre>
 
+Remember to use a specific language label if the code is using an Appwrite SDK. Find the [list of available labels here](https://github.com/appwrite/website/blob/41bb6c71a8647016c88393003d3cf6c4edba1f76/src/lib/utils/references.ts#L26).
+
 #### Sections
 
 Use sections when there is a clear step-by-step format to a page. This is used mainly in journey pages and tutorials.
