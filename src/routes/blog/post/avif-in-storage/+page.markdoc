@@ -3,7 +3,7 @@ layout: post
 title: How to use AVIF in Appwrite Storage
 description: Learn how to use AVIF, a new image format that offers better compression without sacrificing image quality, in Appwrite Storage.
 date: 2025-05-22
-cover: /images/blog/how-to-use-avif-in-appwrite-storage/cover.png
+cover: /images/blog/avif-in-storage/cover.png
 timeToRead: 6
 author: ebenezer-don
 category: tutorial
