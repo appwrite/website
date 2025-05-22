@@ -173,6 +173,15 @@ Your site's dependencies should be managed by the package manager of each langua
 
 ---
 
+- {% icon icon="react-native" size="m" /%}
+- **React Native**
+- `npm`
+- `npm install`
+- `npm run build`
+- `./dist`
+
+---
+
 - {% icon icon="js" size="m" /%}
 - **Other JavaScript**
 - `npm`
