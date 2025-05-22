@@ -13,6 +13,8 @@
     import Poster from './(assets)/poster.png';
     import PosterFutureAppwrite from './(assets)/posterFutureOfAppwrite.png';
     import PosterDeploy from './(assets)/posterDeploy.png';
+    import PosterIndustryPanel from './(assets)/posterIndustryPanel.png';
+    import PosterNewImageFormats from './(assets)/posterNewImageFormats.png';
     import Sites from './(assets)/illustrations/sites.svg';
     import Flutter from './(assets)/illustrations/flutter.svg';
     import Formats from './(assets)/illustrations/formats.svg';
@@ -132,16 +134,16 @@
             illustration: Formats,
             description:
                 'We have added support for two new image formats in Appwrite Storage: HEIC and AVIF. This will give you more tools to manage, manipulate, and serve images the way you need.',
-            url: '/blog/post/announcing-new-image-formats',
+            url: '/blog/post/new-image-formats-avif-heic',
             content: [
                 {
-                    title: 'How to use AVIF in Storage',
-                    url: '/blog/pos/avif-in-storage',
+                    title: 'Announcing HEIC and AVIF support: modern image formats now in Appwrite',
+                    url: '/blog/post/new-image-formats-avif-heic',
                     type: 'Blog'
                 },
                 {
-                    title: 'Improve your Appwrite developer experience with dev keys',
-                    url: '/blog/post/developer-experience-dev-keys',
+                    title: 'How to use AVIF in Storage',
+                    url: '/blog/post/avif-in-storage',
                     type: 'Blog'
                 },
                 {
@@ -149,6 +151,19 @@
                     url: '/docs/products/storage/images',
                     type: 'Docs',
                     label: 'Visit docs'
+                }
+            ],
+            announcementVideo: {
+                url: 'https://www.youtube-nocookie.com/embed/2KAwVoJh8a8',
+                title: 'Announcement Video',
+                poster: PosterNewImageFormats
+            },
+            links: [
+                {
+                    title: 'YouTube Live',
+                    type: 'video',
+                    poster: PosterIndustryPanel,
+                    url: 'https://www.youtube.com/watch?v=PfnKyXo2k6o'
                 }
             ]
         },
@@ -175,6 +190,19 @@
                     url: '/docs/',
                     type: 'Docs',
                     label: 'Visit docs'
+                }
+            ],
+            announcementVideo: {
+                url: 'https://www.youtube-nocookie.com/embed/2KAwVoJh8a8',
+                title: 'Announcement Video',
+                poster: Poster
+            },
+            links: [
+                {
+                    title: 'YouTube Live',
+                    type: 'video',
+                    poster: PosterFutureAppwrite,
+                    url: 'https://www.youtube.com/watch?'
                 }
             ]
         }
