@@ -13,6 +13,7 @@
     import Poster from './(assets)/poster.png';
     import PosterFutureAppwrite from './(assets)/posterFutureOfAppwrite.png';
     import PosterDeploy from './(assets)/posterDeploy.png';
+    import PosterIndustryPanel from './(assets)/posterIndustryPanel.png';
     import Sites from './(assets)/illustrations/sites.svg';
     import Flutter from './(assets)/illustrations/flutter.svg';
     import Formats from './(assets)/illustrations/formats.svg';
@@ -154,7 +155,7 @@
             announcementVideo: {
                 url: 'https://www.youtube-nocookie.com/embed/2KAwVoJh8a8',
                 title: 'Announcement Video',
-                poster: Poster
+                poster: PosterIndustryPanel
             },
             links: [
                 {
