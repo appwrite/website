@@ -14,6 +14,7 @@
     import PosterFutureAppwrite from './(assets)/posterFutureOfAppwrite.png';
     import PosterDeploy from './(assets)/posterDeploy.png';
     import PosterIndustryPanel from './(assets)/posterIndustryPanel.png';
+    import PosterNewImageFormats from './(assets)/posterNewImageFormats.png';
     import Sites from './(assets)/illustrations/sites.svg';
     import Flutter from './(assets)/illustrations/flutter.svg';
     import Formats from './(assets)/illustrations/formats.svg';
@@ -155,13 +156,13 @@
             announcementVideo: {
                 url: 'https://www.youtube-nocookie.com/embed/2KAwVoJh8a8',
                 title: 'Announcement Video',
-                poster: PosterIndustryPanel
+                poster: PosterNewImageFormats
             },
             links: [
                 {
                     title: 'YouTube Live',
                     type: 'video',
-                    poster: PosterFutureAppwrite,
+                    poster: PosterIndustryPanel,
                     url: 'https://www.youtube.com/watch?v=PfnKyXo2k6o'
                 }
             ]
