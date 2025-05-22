@@ -9,7 +9,7 @@
     class="web-side-nav-button flex size-10 w-full items-center rounded-lg p-2 whitespace-nowrap"
     class:is-selected={page.url?.pathname === groupItem.href}
     href={groupItem.href}
-    target={groupItem.openInNewTab ? '_blank' : '_self'}
+    target={groupItem.openInNewTab ? '_blank' : undefined}
 >
     {#if groupItem.icon}
         <span class="icon {groupItem.icon}" aria-hidden="true"></span>
