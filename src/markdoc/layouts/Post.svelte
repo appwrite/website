@@ -39,7 +39,9 @@
         | boolean;
     export let lastUpdated: string;
 
-    const posts = getContext<PostsData[]>('posts')?.filter((post) => !post.unlisted);
+    const posts = getContext<PostsData[]>('posts')?.filter(
+        (post) => !(post.unlisted ?? false) && !(post.draft ?? false)
+    );
     const authors = getContext<AuthorData[]>('authors');
     const authorData = authors.find((a) => a.slug === author);
 
