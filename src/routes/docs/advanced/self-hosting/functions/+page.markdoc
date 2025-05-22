@@ -36,7 +36,7 @@ There are two ways to handle certificate generation.
 The simplest way to generate certificates for function domains is to use the Appwrite SSL command.
 
 ```bash
-docker compose exec appwrite ssl --domain="6772722a00331315adc3.appwrite.myapp.com"
+docker compose exec appwrite ssl --domain="6772722a00331315adc3.functions.appwrite.myapp.com"
 ```
 
 The certificate should be generated within a few seconds.

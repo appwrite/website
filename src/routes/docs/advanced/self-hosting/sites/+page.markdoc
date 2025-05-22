@@ -23,9 +23,9 @@ You can also configure the maximum timeout that can be set on individual Appwrit
 
 # SSL certificates for Sites domains {% #ssl-certificates %}
 
-Before setting up SSL certificates, ensure you have configured your DNS settings properly. You'll need to create a CNAME record that points your wildcard domain (e.g. `*.appwrite.myapp.com`) to your Appwrite domain.
+Before setting up SSL certificates, ensure you have configured your DNS settings properly. You'll need to create a CNAME record that points your wildcard domain (e.g. `*.sites.appwrite.myapp.com`) to your Appwrite domain.
 
-Appwrite does not handle certificates for sites domains (e.g. `6772722a00331315adc3.appwrite.myapp.com`)
+Appwrite does not handle certificates for sites domains (e.g. `6772722a00331315adc3.sites.appwrite.myapp.com`)
 out of the box, since they require wildcard certificates.
 There are two ways to handle certificate generation.
 
@@ -34,7 +34,7 @@ There are two ways to handle certificate generation.
 The simplest way to generate certificates for domains is to use the Appwrite SSL command.
 
 ```bash
-docker compose exec appwrite ssl --domain="6772722a00331315adc3.appwrite.myapp.com"
+docker compose exec appwrite ssl --domain="6772722a00331315adc3.sites.appwrite.myapp.com"
 ```
 
 The certificate should be generated within a few seconds.
@@ -88,6 +88,7 @@ labels:
 
 4. Ensure these environment variables are properly configured in your `.env` file before proceeding:
     - `_APP_SYSTEM_SECURITY_EMAIL_ADDRESS` must be set to a valid email for Let's Encrypt notifications
+    - `_APP_DOMAIN_SITES` must be correctly set to your function domain (e.g., `sites.example.com`)
     - `_APP_DOMAIN_DO_TOKEN` must be set to a valid DigitalOcean API token (generate this in the DigitalOcean Console)
 
 5. Apply the changes.
