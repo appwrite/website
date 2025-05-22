@@ -59,7 +59,11 @@ All Cloud users have access to the Appwrite Network. If you need to scale your s
 
 # Features {% #features %}
 
+
 {% cards %}
+{% cards_item href="/docs/products/network/dns" title="Domain Name System" %}
+Provides dedicated nameservers and DNS management for apex domains with SSL certification.
+{% /cards_item %}
 {% cards_item href="/docs/products/network/ddos" title="DDoS mitigation" %}
 Protects against distributed denial-of-service attacks, ensuring uninterrupted access.
 {% /cards_item %}
