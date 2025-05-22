@@ -82,8 +82,8 @@ environment:
 labels:
     # ... existing labels ...
     - traefik.http.routers.appwrite_api_https.tls.certresolver=digitalocean
-    - traefik.http.routers.appwrite_api_https.tls.domains[0].main=$_APP_DOMAIN_TARGET
-    - traefik.http.routers.appwrite_api_https.tls.domains[0].sans=*.$_APP_DOMAIN_TARGET
+    - traefik.http.routers.appwrite_api_https.tls.domains[0].main=$_APP_DOMAIN_TARGET_CNAME
+    - traefik.http.routers.appwrite_api_https.tls.domains[0].sans=*.$_APP_DOMAIN_TARGET_CNAME
 ```
 
 4. Ensure these environment variables are properly configured in your `.env` file before proceeding:
