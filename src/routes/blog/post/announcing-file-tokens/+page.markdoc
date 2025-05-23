@@ -18,7 +18,7 @@ This feature lets you share files easily and securely, without modifying permiss
 
 # Simplifying file access
 
-Appwrite’s File service has always made upload, store, and manage your files easy. But sharing them? That required extra steps.
+Appwrite Storage has always made it easy to upload, store, and manage your files. But sharing them? That required extra steps.
 
 With File Tokens, you can now share files with **anyone**, without needing to:
 
