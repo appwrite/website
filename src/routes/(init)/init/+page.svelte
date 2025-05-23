@@ -15,6 +15,8 @@
     import PosterDeploy from './(assets)/posterDeploy.png';
     import PosterIndustryPanel from './(assets)/posterIndustryPanel.png';
     import PosterNewImageFormats from './(assets)/posterNewImageFormats.png';
+    import PosterFileTokens from './(assets)/posterFileTokens.png';
+    import PosterClosingParty from './(assets)/eventClosingParty.png';
     import Sites from './(assets)/illustrations/sites.svg';
     import Flutter from './(assets)/illustrations/flutter.svg';
     import Formats from './(assets)/illustrations/formats.svg';
@@ -173,36 +175,36 @@
             illustration: Tokens,
             description:
                 'Introducing File Tokens. This feature lets you share files easily and securely, without modifying permissions or changing project access. Just generate a token and share the link.',
-            url: 'https://youtu.be/_XU1dftsQag',
+            url: 'https://www.youtube-nocookie.com/embed/eiwCCjBD3cw',
             content: [
                 {
-                    title: 'Serverless functions 101: best practices',
+                    title: 'Announcing File Tokens: secure file sharing without the hassle',
                     url: '/blog/post/announcing-file-tokens',
                     type: 'Blog'
                 },
                 {
-                    title: 'file tokens',
-                    url: '/blog/post',
+                    title: 'CSR vs SSG vs SSR: what they are and how to choose',
+                    url: '/blog/post/csr-ssg-ssr',
                     type: 'Blog'
                 },
                 {
                     title: 'File Tokens',
-                    url: '/docs/',
+                    url: '/docs/products/storage/file-tokens',
                     type: 'Docs',
                     label: 'Visit docs'
                 }
             ],
             announcementVideo: {
-                url: 'https://www.youtube-nocookie.com/embed/2KAwVoJh8a8',
+                url: 'https://www.youtube-nocookie.com/embed/eiwCCjBD3cw',
                 title: 'Announcement Video',
-                poster: Poster
+                poster: PosterFileTokens
             },
             links: [
                 {
                     title: 'YouTube Live',
                     type: 'video',
-                    poster: PosterFutureAppwrite,
-                    url: 'https://www.youtube.com/watch?'
+                    poster: PosterClosingParty,
+                    url: 'https://www.youtube.com/watch?v=1gvjqV1nq-c?'
                 }
             ]
         }
