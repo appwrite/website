@@ -28,7 +28,7 @@ Open the **Cursor Settings** page, head to the **MCP** tab, and click on the **A
             "env": {
                 "APPWRITE_API_KEY": "<your-api-key>",
                 "APPWRITE_PROJECT_ID": "<your-project-id>",
-                "APPWRITE_ENDPOINT": "https://cloud.appwrite.io/v1" // Optional
+                "APPWRITE_ENDPOINT": "https://<REGION>.cloud.appwrite.io/v1"
             }
         }
     }
