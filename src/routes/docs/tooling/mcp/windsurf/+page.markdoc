@@ -33,7 +33,7 @@ Update the `mcp_config.json` file to include the following:
       "env": {
         "APPWRITE_PROJECT_ID": "your-project-id",
         "APPWRITE_API_KEY": "your-api-key",
-        "APPWRITE_ENDPOINT": "https://cloud.appwrite.io/v1" // Optional
+        "APPWRITE_ENDPOINT": "https://<REGION>.cloud.appwrite.io/v1"
       }
     }
   }
