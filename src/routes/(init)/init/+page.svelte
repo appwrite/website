@@ -173,21 +173,21 @@
             illustration: Tokens,
             description:
                 'Introducing File Tokens. This feature lets you share files easily and securely, without modifying permissions or changing project access. Just generate a token and share the link.',
-            url: 'https://youtu.be/_XU1dftsQag',
+            url: 'https://www.youtube-nocookie.com/embed/eiwCCjBD3cw',
             content: [
                 {
-                    title: 'Serverless functions 101: best practices',
+                    title: 'Announcing File Tokens: secure file sharing without the hassle',
                     url: '/blog/post/announcing-file-tokens',
                     type: 'Blog'
                 },
                 {
-                    title: 'file tokens',
-                    url: '/blog/post',
+                    title: 'CSR vs SSG vs SSR: what they are and how to choose',
+                    url: '/blog/post/csr-ssg-ssr',
                     type: 'Blog'
                 },
                 {
                     title: 'File Tokens',
-                    url: '/docs/',
+                    url: '/docs/products/storage/file-tokens',
                     type: 'Docs',
                     label: 'Visit docs'
                 }
@@ -202,7 +202,7 @@
                     title: 'YouTube Live',
                     type: 'video',
                     poster: PosterFutureAppwrite,
-                    url: 'https://www.youtube.com/watch?'
+                    url: 'https://www.youtube.com/watch?v=1gvjqV1nq-c?'
                 }
             ]
         }
