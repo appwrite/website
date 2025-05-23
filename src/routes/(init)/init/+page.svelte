@@ -1,6 +1,6 @@
 <script lang="ts" module>
     const base = new Date('2025-05-19T07:00:00.000Z');
-    const otherFeaturesBase = new Date('2025-05-10T13:00:00.000Z');
+    const otherFeaturesBase = new Date('2025-05-19T13:00:00.000Z');
 
     export const isStarted = new Date() >= base;
     export const initDates = `${format(base, 'MMM d')} - ${format(addDays(otherFeaturesBase, 4), 'd')}`;
