@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Announcing File Tokens: secure file sharing without the hassle"
-description: File Tokens make sharing files from Appwrite simple, secure, and hassle-free. No need to change permissions, make files public, or invite users—just generate a token and share the link. It’s the fastest way to collaborate externally without compromising control.
+description: File Tokens make sharing files from Appwrite simple, secure, and hassle-free. It’s the fastest way to collaborate externally without compromising control.
 date: 2025-05-23
 cover: /images/blog/file-tokens.png
 timeToRead: 5
