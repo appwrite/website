@@ -93,7 +93,7 @@ If running in production, it might be easier to use a 3rd party SMTP server as i
 
 | Name                                        | Description                                                                                                                                                                                                                         |
 |---------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `_APP_SMS_PROVIDER`  | **version >= 0.15.0** Provider used for delivering SMS for Phone authentication. Use the following format: 'sms://[USER]:[SECRET]@[PROVIDER]'.<br>Ensure `[USER]` and `[SECRET]` are URL encoded if they contain any non-alphanumeric characters.<br>Available providers are twilio, text-magic, telesign, msg91, and vonage. |
+| `_APP_SMS_PROVIDER`  | **version >= 0.15.0** Provider used for delivering SMS for Phone authentication. Use the following format: `sms://<USER>:<SECRET>@<PROVIDER>`. Ensure `<USER>` and `<SECRET>` are URL encoded if they contain any non-alphanumeric characters. Available providers are twilio, text-magic, telesign, msg91, and vonage. |
 | `_APP_SMS_FROM`  | **version >= 0.15.0** Phone number used for sending out messages. Must start with a leading '+' and maximum of 15 digits without spaces (+123456789).                                                                                                      |
 
 # Storage {% #storage %}

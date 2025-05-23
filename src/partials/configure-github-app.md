@@ -18,8 +18,8 @@ GitHub will use **callback URLs** to redirect users back to Appwrite. Set these 
 
 | URLs                                                                          |
 | ----------------------------------------------------------------------------- |
-| `https://[HOSTNAME_OR_IP]/v1/vcs/github/callback`                             |
-| `https://[HOSTNAME_OR_IP]/v1/account/sessions/oauth2/callback/github/console` |
+| `https://<HOSTNAME_OR_IP>/v1/vcs/github/callback`                             |
+| `https://<HOSTNAME_OR_IP>/v1/account/sessions/oauth2/callback/github/console` |
 
 Also, check the **Request user authentication (OAuth) during installation** box.
 
@@ -29,7 +29,7 @@ Check the **Redirect on update** box under the **Post installation** section.
 
 ## Webhook {% #github-webhooks %}
 
-GitHub will notify Appwrite about events like new commits using webhooks. Under **Webhook**, you need to check the **Active** checkbox. You also need to set the **Webhook URL** as `https://[HOSTNAME_OR_IP]/v1/vcs/github/events`.
+GitHub will notify Appwrite about events like new commits using webhooks. Under **Webhook**, you need to check the **Active** checkbox. You also need to set the **Webhook URL** as `https://<HOSTNAME_OR_IP>/v1/vcs/github/events`.
 
 If you're running Appwrite on `localhost`, GitHub can't send requests to Appwrite through webhooks and automatic deployments won't work. You'll need to host Appwrite on a server or use a proxy like [ngrok](https://ngrok.com/) to make Appwrite accessible to GitHub.
 
