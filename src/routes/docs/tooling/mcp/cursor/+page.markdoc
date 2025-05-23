@@ -14,30 +14,26 @@ You must install [uv](https://docs.astral.sh/uv/getting-started/installation/) o
 
 {% section #step-1 step=1 title="Add MCP server" %}
 
-Open the **Cursor Settings** page, head to the **MCP** tab, and click on the **Add new MCP server** button.
+Open the **Cursor Settings** page, head to the **MCP** tab, and click on the **Add new global MCP server** button. This will open an `mcp.json` file in your editor, which you must update to the following:
 
-![Add MCP server](/images/docs/mcp/cursor/cursor-add-mcp.png)
-
-Enter the name as `Appwrite`, select the `command` type, and enter the following command:
-
-{% tabs %}
-{% tabsitem #linux-macos title="MacOS" %}
-
-```sh
-env APPWRITE_API_KEY=your-api-key env APPWRITE_PROJECT_ID=your-project-id uvx mcp-server-appwrite --databases --users
+```json
+{
+    "mcpServers": {
+        "appwrite": {
+            "command": "uvx",
+            "args": [
+                "mcp-server-appwrite",
+                "--users"
+            ],
+            "env": {
+                "APPWRITE_API_KEY": "<your-api-key>",
+                "APPWRITE_PROJECT_ID": "<your-project-id>",
+                "APPWRITE_ENDPOINT": "https://cloud.appwrite.io/v1" // Optional
+            }
+        }
+    }
+}
 ```
-
-
-{% /tabsitem %}
-
-{% tabsitem #windows title="Windows" %}
-
-```cmd
-cmd /c SET APPWRITE_PROJECT_ID=your-project-id && SET APPWRITE_API_KEY=your-api-key && uvx mcp-server-appwrite --databases --users
-```
-
-{% /tabsitem %}
-{% /tabs %}
 
 Once you save the details, Cursor will connect with the MCP server and load all available tools. You may need to restart Cursor if it is unable to start the MCP server.
 
