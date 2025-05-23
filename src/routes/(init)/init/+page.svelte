@@ -195,7 +195,7 @@
                 }
             ],
             announcementVideo: {
-                url: 'https://www.youtube-nocookie.com/embed/2KAwVoJh8a8',
+                url: 'https://www.youtube-nocookie.com/embed/eiwCCjBD3cw',
                 title: 'Announcement Video',
                 poster: PosterFileTokens
             },
