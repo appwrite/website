@@ -21,21 +21,23 @@ You can also configure the maximum timeout that can be set on individual Appwrit
 
 {% partial file="update-variables.md" /%}
 
-# Add a root domain for Sites {% #root-domain %}
+# Add an apex domain for Sites {% #root-domain %}
 
-Appwrite allows you to use a root domain as a custom domain for your sites instead of the default Appwrite domain or a subdomain of your custom domain, if you prefer that.
-To add a root domain, you must first configure either one of the following environment variables in your `.env` file:
+Appwrite allows you to add an apex domain to your instance's configuration so that you can publicly expose your Sites as subdomains .
+To add an apex domain, you must first configure either one of the following environment variables in your `.env` file:
 
 - `_APP_DOMAIN_TARGET_A`: Set this to the IPv4 address of your server.
 - `_APP_DOMAIN_TARGET_AAAA`: Set this to the IPv6 address of your server.
 
-Ensure that the `_APP_DOMAIN_SITES` environment variable is set to your root domain (e.g., `myapp.com`).
+Ensure that the `_APP_DOMAIN_SITES` environment variable is set to `<OPTIONAL_SUBDOMAIN>.<APEX_DOMAIN>`, where `<APEX_DOMAIN>` is the domain you want to use for your sites. For example, if your apex domain is `myapp.com`, you can set `_APP_DOMAIN_SITES` to `myapp.com` or `sites.myapp.com` (or any other such subdomain).
 
-Next, head to your DNS provider and create an A or AAAA record for your root domain pointing to the server's IP address. This will allow Appwrite to serve your sites from the root domain.
+Next, head to your DNS provider and create an A or AAAA record for your root domain pointing to the server's IP address. This will allow Appwrite to serve your sites from the apex domain. 
+
+When a site domain is generated, it will be `[UNIQUE_ID].[_APP_DOMAIN_SITES]`. For example, if `_APP_DOMAIN_SITES` is set to `example.com`, the generated domain for sites will be something like `64d4d22db370ae41a32e.example.com`.
 
 # SSL certificates for Sites domains {% #ssl-certificates %}
 
-Before setting up SSL certificates, ensure you have configured your DNS settings properly. You'll need to create a CNAME record that points your wildcard domain (e.g. `*.sites.appwrite.myapp.com`) to your Appwrite domain.
+Before setting up SSL certificates, ensure you have configured your DNS settings properly. You'll need to create a CNAME, A, or AAAA record that points your wildcard domain (e.g. `*.sites.appwrite.myapp.com`) to your Appwrite domain.
 
 Appwrite does not handle certificates for sites domains (e.g. `6772722a00331315adc3.sites.appwrite.myapp.com`)
 out of the box, since they require wildcard certificates.
