@@ -1,6 +1,6 @@
 <script lang="ts" module>
     const base = new Date('2025-05-19T07:00:00.000Z');
-    const otherFeaturesBase = new Date('2025-05-19T13:00:00.000Z');
+    const otherFeaturesBase = new Date('2025-05-10T13:00:00.000Z');
 
     export const isStarted = new Date() >= base;
     export const initDates = `${format(base, 'MMM d')} - ${format(addDays(otherFeaturesBase, 4), 'd')}`;
@@ -15,6 +15,8 @@
     import PosterDeploy from './(assets)/posterDeploy.png';
     import PosterIndustryPanel from './(assets)/posterIndustryPanel.png';
     import PosterNewImageFormats from './(assets)/posterNewImageFormats.png';
+    import PosterFileTokens from './(assets)/posterFileTokens.png';
+    import PosterClosingParty from './(assets)/eventClosingParty.png';
     import Sites from './(assets)/illustrations/sites.svg';
     import Flutter from './(assets)/illustrations/flutter.svg';
     import Formats from './(assets)/illustrations/formats.svg';
@@ -195,13 +197,13 @@
             announcementVideo: {
                 url: 'https://www.youtube-nocookie.com/embed/2KAwVoJh8a8',
                 title: 'Announcement Video',
-                poster: Poster
+                poster: PosterFileTokens
             },
             links: [
                 {
                     title: 'YouTube Live',
                     type: 'video',
-                    poster: PosterFutureAppwrite,
+                    poster: PosterClosingParty,
                     url: 'https://www.youtube.com/watch?v=1gvjqV1nq-c?'
                 }
             ]
