@@ -70,7 +70,7 @@ docker run -it --rm \
     --volume /var/run/docker.sock:/var/run/docker.sock \
     --volume "$(pwd)"/appwrite:/usr/src/code/appwrite:rw \
     --entrypoint="install" \
-    appwrite/appwrite:1.6.1
+    appwrite/appwrite:1.7.2
 ```
 
 We have a dedicated [self-hosting guide](/docs/advanced/self-hosting) in our docs for more info.

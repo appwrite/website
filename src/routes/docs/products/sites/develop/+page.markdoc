@@ -1,0 +1,192 @@
+---
+layout: article
+title: Develop Appwrite Sites
+description: Master site development with Appwrite.
+---
+
+# Rendering strategies
+
+Appwrite allows you to host both statically-generated and server-rendered websites. 
+
+[Static sites](/docs/products/sites/rendering/static) are websites that are pre-built and served as-is to clients. They do not execute server-side code on each request. They are ideal for use-cases such as [Single Page Applications (SPAs)](/docs/products/sites/rendering/static#running-spas-on-appwrite-sites), documentation sites, personal blogs, and portfolio websites. 
+
+[Server-side rendered (SSR) sites](/docs/products/sites/rendering/ssr) generate content dynamically on the server and send fully rendered pages for each request. They are ideal for use-cases with substantial dynamic content or server-side processing such as e-commerce platforms, social media applications, content management systems (CMS), and real-time collaboration tools.
+
+You can configure your preferred rendering strategy through the following steps:
+
+1. Navigate to your site on Appwrite Console.
+2. Head to the **Settings** tab > **Build settings** section.
+3. Select the SSR or the Static checkbox.
+4. Confirm that the appropriate install command, build command, and output directory are set.
+5. *(For SPAs)* Add a fallback file.
+6. Click on the **Update** button and redeploy your site.
+
+{% only_dark %}
+![Rendering strategy](/images/docs/sites/dark/build-settings-rendering-ssr.png)
+{% /only_dark %}
+{% only_light %}
+![Rendering strategy](/images/docs/sites/build-settings-rendering-ssr.png)
+{% /only_light %}
+
+# **Accessing environment variables**
+
+Appwrite Sites lets you set static environment variables to pass constants and secrets such as API keys, connection strings, etc., to your sites.
+
+To set static environment variables, follow these steps:
+
+1. Navigate to your site on Appwrite Console.
+2. Head to the **Settings** tab > **Environment variables** section.
+3. Click on the **Create variable** button and add the key and value of the environment variable.
+4. Select the **Secret** checkbox if you want to prevent any team member from reading the value of the environment variable after creation.
+5. Click on the **Create** button and redeploy the site.
+
+{% only_dark %}
+![Environment variables](/images/docs/sites/dark/env-variables.png)
+{% /only_dark %}
+{% only_light %}
+![Environment variables](/images/docs/sites/env-variables.png)
+{% /only_light %}
+
+You can also configure global variables that apply to all your sites in the **Settings** of your project.
+
+{% info title="Secret environment variables" %}
+
+Appwrite now allows you create secret environment variables, which are hidden from both the Appwrite Console and API. Once a variable is marked as secret, this action cannot be reversed.
+
+You can mark an environment variable as secret either at the time of creation or after it is created.
+
+{% /info %}
+
+## Appwrite-specific environment variables
+
+Appwrite passes the following environment variables into every deployed site by default.
+
+{% partial file="sites-env-vars.md" /%}
+
+# Timeouts
+
+Each request made to a path on an Appwrite Site has a set time limit, after which the request will timeout. Here are the steps to configure those timeout period:
+
+1. Navigate to your site on Appwrite Console.
+2. Head to the **Settings** tab > **Timeout** section.
+3. Add an appropriate time limit (in seconds).
+
+{% only_dark %}
+![Timeout](/images/docs/sites/dark/timeout.png)
+{% /only_dark %}
+{% only_light %}
+![Timeout](/images/docs/sites/timeout.png)
+{% /only_light %}
+
+The default timeout is set at `15 seconds` and the maximum value possible is `30 seconds`.
+
+# Project dependencies
+
+To install your dependencies before your site is built, you should add the relevant install command to your site’s build settings. Here are the steps to add the install command:
+
+1. Navigate to your site on Appwrite Console.
+2. Head to the **Settings** tab > **Build settings** section.
+3. Confirm that the appropriate install command is set.
+
+{% only_dark %}
+![Install command](/images/docs/sites/dark/build-settings-install-command.png)
+{% /only_dark %}
+{% only_light %}
+![Install command](/images/docs/sites/build-settings-install-command.png)
+{% /only_light %}
+
+Make sure to include dependency files like `package.json` in your site's configured root directory. Do not include the dependency folders like `node_modules` in your site’s root directory. The dependencies installed for your local OS may not work in the site's environment.
+
+Your site's dependencies should be managed by the package manager of each language. We include the following package managers and setup commands by default.
+
+{% table %}
+- &nbsp; {% width=48 %}
+- Framework
+- Default package manager
+- Install command
+- Build command
+- Output directory
+
+---
+
+- {% icon icon="nextjs" size="m" /%}
+- **Next.js**
+- `npm`
+- `npm install`
+- `npm run build`
+- `./.next`
+
+---
+
+- {% icon icon="nuxt" size="m" /%}
+- **Nuxt**
+- `npm`
+- `npm install` or `yarn install`
+- `npm run build` or `yarn build`
+- `./.output`
+
+---
+
+- {% icon icon="svelte" size="m" /%}
+- **SvelteKit**
+- `npm`
+- `npm install`
+- `npm run build`
+- `./build`
+
+---
+
+- {% icon icon="angular" size="m" /%}
+- **Angular**
+- `npm`
+- `npm install`
+- `npm run build`
+- `./dist/angular/browser`
+
+---
+
+- {% icon icon="astro" size="m" /%}
+- **Astro**
+- `npm`
+- `npm install`
+- `npm run build`
+- `./dist`
+
+---
+
+- {% only_dark %}{% icon_image src="/images/platforms/dark/remix.svg" alt="Remix logo" size="m" /%}{% /only_dark %}
+{% only_light %}{% icon_image src="/images/platforms/light/remix.svg" alt="Remix logo" size="m" /%}{% /only_light %}
+- **Remix**
+- `npm`
+- `npm install`
+- `npm run build`
+- `./build`
+
+---
+
+- {% icon icon="flutter" size="m" /%}
+- **Flutter**
+- `pub`
+- (Empty)
+- `flutter build web`
+- `./build/web`
+
+---
+
+- {% icon icon="react-native" size="m" /%}
+- **React Native**
+- `npm`
+- `npm install`
+- `npm run build`
+- `./dist`
+
+---
+
+- {% icon icon="js" size="m" /%}
+- **Other JavaScript**
+- `npm`
+- (Empty)
+- (Empty)
+- `./`
+
+{% /table %}

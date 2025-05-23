@@ -1,6 +1,6 @@
 <script lang="ts">
     import GradientBorderCard from '$lib/components/shared/gradient-border-card.svelte';
-    import { inView } from 'motion';
+    import { inView } from 'motion-legacy';
     import NumberFlow from '@number-flow/svelte';
 
     let items: Array<{ number: number; label: string; suffix?: string }> = [
@@ -22,7 +22,7 @@
         { number: 0, label: 'Top OSS GitHub projects' }
     ];
 
-    const numbers = [650, 45, 900, 300];
+    const numbers = [650, 48, 900, 300];
 
     const updateNumbers = () => {
         items = items.map((item, index) => {

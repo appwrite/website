@@ -61,8 +61,8 @@ function isAppwriteUser(user: unknown): user is AppwriteUser {
     return typeof user === 'object' && user !== null && '$id' in user;
 }
 
-export function getAppwriteUser(): Promise<AppwriteUser | null> {
-    return account
+export async function getAppwriteUser(): Promise<AppwriteUser | null> {
+    return await account
         .get()
         .then((res) => res)
         .catch(() => null);

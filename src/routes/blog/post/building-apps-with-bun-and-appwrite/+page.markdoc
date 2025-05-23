@@ -75,7 +75,7 @@ Installing a self-hosted version of Appwrite is pretty straight-forward, all you
     --volume /var/run/docker.sock:/var/run/docker.sock \
     --volume "$(pwd)"/appwrite:/usr/src/code/appwrite:rw \
     --entrypoint="install" \
-    appwrite/appwrite:1.6.1
+    appwrite/appwrite:1.7.2
 ```
 
 For one-click setups, check out the [installation docs](https://appwrite.io/docs/self-hosting). 

@@ -1,6 +1,6 @@
 <script lang="ts">
     import { toScale, type Scale } from '$lib/utils/toScale';
-    import { spring, type AnimationListOptions, type SpringOptions } from 'motion';
+    import { spring, type AnimationListOptions, type SpringOptions } from 'motion-legacy';
     import { animation, createScrollHandler, scroll, type Animation } from '.';
     import { SOCIAL_STATS } from '$lib/constants';
 

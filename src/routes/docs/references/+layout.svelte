@@ -57,6 +57,11 @@
                     href: `${prefix}/databases`
                 },
                 {
+                    label: 'Sites',
+                    icon: 'icon-globe-alt',
+                    href: `${prefix}/sites`
+                },
+                {
                     label: 'Storage',
                     icon: 'icon-folder',
                     href: `${prefix}/storage`
@@ -70,6 +75,11 @@
                     label: 'Messaging',
                     icon: 'icon-send',
                     href: `${prefix}/messaging`
+                },
+                {
+                    label: 'Tokens',
+                    icon: 'icon-key',
+                    href: `${prefix}/tokens`
                 },
                 {
                     label: 'Localization',
