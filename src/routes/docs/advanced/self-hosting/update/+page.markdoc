@@ -9,11 +9,11 @@ To upgrade your Appwrite server from an older version, you should use the Appwri
 As of version 0.14, Appwrite requires [Docker Compose Version 2](https://docs.docker.com/compose/install/). To upgrade Appwrite, make sure your Docker installation is updated to support Composer V2.
 
 {% info title="A note about migration" %}
+You must [backup your server](https://gist.github.com/Meldiron/47b5851663668102a676aff43c6341f7) data manually before running the migration. It is highly recommended to run the migration process on a dev instance and make sure your application is working well and that you have checked for any breaking changes in the new version [changelog](https://github.com/appwrite/appwrite/tags).
+
 You can migrate to versions that require a migration path and are higher than your current version, such as from 1.5.0 to 1.5.11.
 
 If you're trying to migrate to a next major version such as from `1.5.0` to `1.6.0`, you will first need to migrate to the latest patch version `1.5.11`, then to `1.6.0`.
-
-It is highly recommended to [backup your server](https://gist.github.com/Meldiron/47b5851663668102a676aff43c6341f7) data before running the migration. It is recommended to run the migration process on a dev instance and make sure your application is working well and that you have checked for any breaking changes in the new version [changelog](https://github.com/appwrite/appwrite/tags).
 {% /info %}
 
 The first step is to install the latest version of Appwrite. Head to the directory where you ran your previous Appwrite install command.
