@@ -21,13 +21,13 @@ If you are looking to send custom emails for promotions, news letters, and other
 At this stage, we assume that you have already installed Appwrite. If not, you can follow our [Self Hosting Guide](/docs/advanced/self-hosting) for the installation. Appwrite offers multiple environment variables to customize your server setup to your needs. To configure Appwrite to use your own SMTP server, you need to set the following environment variables in the hidden .env file that comes with your Appwrite installation.
 
 | Environment Variable  | Description                                                                                                           | Default Value           |
-| ----------------------------- | --------------------------------------------------------------------------------------------------------------------- | ------------------------ |
-| _APP_SMTP_HOST                | SMTP server host name address. Use an empty string to disable all mail sending from the server.                     | Empty string             |
-| _APP_SMTP_PORT                | SMTP server TCP port.                                                                                                 | Empty                    |
-| _APP_SMTP_SECURE              | SMTP secure connection protocol. Change to 'tls' if running on a secure connection. Valid values: empty, 'tls', 'ssl'. | Empty                    |
-| _APP_SMTP_USERNAME            | SMTP server user name.                                                                                               | Empty                    |
-| _APP_SMTP_PASSWORD            | SMTP server user password.                                                                                           | Empty                    |
-| _APP_SYSTEM_EMAIL_ADDRESS     | Configured sender email address, seen by recipients.                                                                  | "team@appwrite.io"       |
+| ------------------------------- | --------------------------------------------------------------------------------------------------------------------- | ------------------------ |
+| `_APP_SMTP_HOST`                | SMTP server host name address. Use an empty string to disable all mail sending from the server.                     | Empty string             |
+| `_APP_SMTP_PORT`                | SMTP server TCP port.                                                                                                 | Empty                    |
+| `_APP_SMTP_SECURE`              | SMTP secure connection protocol. Change to 'tls' if running on a secure connection. Valid values: empty, 'tls', 'ssl'. | Empty                    |
+| `_APP_SMTP_USERNAME`            | SMTP server user name.                                                                                               | Empty                    |
+| `_APP_SMTP_PASSWORD`            | SMTP server user password.                                                                                           | Empty                    |
+| `_APP_SYSTEM_EMAIL_ADDRESS`     | Configured sender email address, seen by recipients.                                                                  | "team@appwrite.io"       |
 
 Here's a sample configuration if you're using SendGrid as your SMTP provider:
 
