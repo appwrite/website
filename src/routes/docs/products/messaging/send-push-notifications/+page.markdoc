@@ -85,7 +85,7 @@ func login() async {
 
 {% tabsitem #android-fcm title="FCM for Android" %}
 Before you can send push notifications using FCM, make sure you'd followed the steps to
-[Add Firebase to your Android project](https://firebase.google.com/docs/android/setup).
+[Add Firebase to your Android project](https://firebase.google.com/docs/android/setup) and also followed the step to [Add Messages Receive in Android Application](https://firebase.google.com/docs/cloud-messaging/android/receive).
 
 After adding Firebase to your Android project and adding the `google-services.json` to your project,
 initialize Firebase in your main activity and fetch the FCM registration token.
