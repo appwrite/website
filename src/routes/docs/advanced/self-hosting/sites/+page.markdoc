@@ -11,7 +11,7 @@ description: Harness the full power of self-hosted sites with Appwrite. Explore 
 Not all site runtimes are enabled by default. Enable the runtimes that you need and disable unused runtimes to save disk space on your server.
 To enable a runtime, add it to the `_APP_SITES_RUNTIMES` environment variable as a comma-separated list.
 
-The example below would enable Static, Node.js 22, and Flutter 3.29 runtimes.
+The three runtimes currently available for Sites are the Static, Node.js 22, and Flutter 3.29 runtimes.
 
 ```bash
 _APP_SITES_RUNTIMES=static-1,node-22,flutter-3.29
@@ -23,7 +23,8 @@ You can also configure the maximum timeout that can be set on individual Appwrit
 
 # Add an apex domain for Sites {% #root-domain %}
 
-Appwrite allows you to add an apex domain to your instance's configuration that you can publicly expose your Site on. To add an apex domain, you must first configure either one of the following environment variables in your `.env` file:
+Appwrite allows you to add an apex domain to your instance's configuration that you can publicly expose your Site on.
+To add an apex domain, you must first configure either one of the following environment variables in your `.env` file:
 
 - `_APP_DOMAIN_TARGET_A`: Set this to the IPv4 address of your server.
 - `_APP_DOMAIN_TARGET_AAAA`: Set this to the IPv6 address of your server.
