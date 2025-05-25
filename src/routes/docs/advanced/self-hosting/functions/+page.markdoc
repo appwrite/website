@@ -116,6 +116,6 @@ environment:
     - DO_PROPAGATION_TIMEOUT=1h
 ```
 
-Note: Let's Encrypt has strict rate limits for certificate requests. If you encounter rate limit errors in the logs, you may need to wait a few hours before trying again.
+> Note: Let's Encrypt has strict rate limits for certificate requests. If you encounter rate limit errors in the logs, you may need to wait a few hours before trying again.
 
 For other DNS providers, refer to [Traefik's DNS providers documentation](https://doc.traefik.io/traefik/https/acme/#providers).

@@ -23,18 +23,16 @@ You can also configure the maximum timeout that can be set on individual Appwrit
 
 # Add an apex domain for Sites {% #root-domain %}
 
-Appwrite allows you to add an apex domain to your instance's configuration that you can publicly expose your Site on. 
-
-To add an apex domain, you must first configure either one of the following environment variables in your `.env` file:
+Appwrite allows you to add an apex domain to your instance's configuration that you can publicly expose your Site on. To add an apex domain, you must first configure either one of the following environment variables in your `.env` file:
 
 - `_APP_DOMAIN_TARGET_A`: Set this to the IPv4 address of your server.
 - `_APP_DOMAIN_TARGET_AAAA`: Set this to the IPv6 address of your server.
 
-Make sure to remove any pre-existing values for `_APP_DOMAIN_TARGET_A` and `_APP_DOMAIN_TARGET_AAAA` if they are set, as these can conflict with your current configuration.
-
 Head to the **Domains** tab of your site, and add your apex domain (e.g., `myapp.com`) as a new domain pointed to the active deployment.
 
 Next, head to your DNS provider and create an A or AAAA record for your root domain pointing to the server's IP address. This will allow Appwrite to serve your sites from the apex domain. 
+
+> Note: Make sure to remove any pre-existing values for `_APP_DOMAIN_TARGET_A` and `_APP_DOMAIN_TARGET_AAAA` if they are set, as these can conflict with your current configuration.
 
 # SSL certificates for Sites domains {% #ssl-certificates %}
 
@@ -129,6 +127,6 @@ environment:
     - DO_PROPAGATION_TIMEOUT=1h
 ```
 
-Note: Let's Encrypt has strict rate limits for certificate requests. If you encounter rate limit errors in the logs, you may need to wait a few hours before trying again.
+> Note: Let's Encrypt has strict rate limits for certificate requests. If you encounter rate limit errors in the logs, you may need to wait a few hours before trying again.
 
 For other DNS providers, refer to [Traefik's DNS providers documentation](https://doc.traefik.io/traefik/https/acme/#providers).
