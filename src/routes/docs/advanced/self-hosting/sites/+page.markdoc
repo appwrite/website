@@ -58,7 +58,7 @@ If you encounter any issues, you can check the certificate worker logs.
 docker compose logs appwrite-worker-certificates
 ```
 
-Note that you'll need to run this command for each domain, and repeat it every time you create a new 
+Note that you'll need to run this command for each domain, and repeat it every time you create a new site.
 If you have many  or frequently create new ones, consider using the automated certificate generation method below.
 
 ## Automated certificate generation
