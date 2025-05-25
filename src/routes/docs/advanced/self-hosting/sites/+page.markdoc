@@ -23,17 +23,18 @@ You can also configure the maximum timeout that can be set on individual Appwrit
 
 # Add an apex domain for Sites {% #root-domain %}
 
-Appwrite allows you to add an apex domain to your instance's configuration so that you can publicly expose your Sites as subdomains .
+Appwrite allows you to add an apex domain to your instance's configuration that you can publicly expose your Site on. 
+
 To add an apex domain, you must first configure either one of the following environment variables in your `.env` file:
 
 - `_APP_DOMAIN_TARGET_A`: Set this to the IPv4 address of your server.
 - `_APP_DOMAIN_TARGET_AAAA`: Set this to the IPv6 address of your server.
 
-Ensure that the `_APP_DOMAIN_SITES` environment variable is set to `<OPTIONAL_SUBDOMAIN>.<APEX_DOMAIN>`, where `<APEX_DOMAIN>` is the domain you want to use for your sites. For example, if your apex domain is `myapp.com`, you can set `_APP_DOMAIN_SITES` to `myapp.com` or `sites.myapp.com` (or any other such subdomain).
+Make sure to remove any pre-existing values for `_APP_DOMAIN_TARGET_A` and `_APP_DOMAIN_TARGET_AAAA` if they are set, as these can conflict with your current configuration.
+
+Head to the **Domains** tab of your site, and add your apex domain (e.g., `myapp.com`) as a new domain pointed to the active deployment.
 
 Next, head to your DNS provider and create an A or AAAA record for your root domain pointing to the server's IP address. This will allow Appwrite to serve your sites from the apex domain. 
-
-When a site domain is generated, it will be `[UNIQUE_ID].[_APP_DOMAIN_SITES]`. For example, if `_APP_DOMAIN_SITES` is set to `example.com`, the generated domain for sites will be something like `64d4d22db370ae41a32e.example.com`.
 
 # SSL certificates for Sites domains {% #ssl-certificates %}
 
