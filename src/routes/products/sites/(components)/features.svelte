@@ -17,7 +17,7 @@
         {
             icon: Domains,
             label: 'Custom domains',
-            description: 'Easily connect your own domain name to your Appwrite project for a fully branded experience.'
+            description: 'Easily connect your own domain name to your Appwrite project, site, or function for a fully branded experience.'
         }
     ];
 </script>
