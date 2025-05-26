@@ -7,7 +7,7 @@
         {
             icon: DDOS,
             label: 'DDOS Protection',
-            description: 'Automatically detect and mitigate Distributed Denial-of-Service (DDoS) attacks to ensure your app stays online and responsive, even under heavy load.'
+            description: 'Automatically detect and mitigate Distributed Denial-of-Service (DDoS) attacks to ensure your app stays online and responsive, even under attacks.'
         },
         {
             icon: SSR,
