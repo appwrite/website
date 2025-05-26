@@ -7,17 +7,20 @@
         {
             icon: DDOS,
             label: 'DDOS Protection',
-            description: 'Automatically detect and mitigate Distributed Denial-of-Service (DDoS) attacks to ensure your app stays online and responsive, even under attacks.'
+            description:
+                'Automatically detect and mitigate Distributed Denial-of-Service (DDoS) attacks to ensure your app stays online and responsive, even under attacks.'
         },
         {
             icon: SSR,
             label: 'Server-side rendering',
-            description: 'Deliver dynamic content faster and improve SEO with built-in support for server-side rendering (SSR) in your apps.'
+            description:
+                'Deliver dynamic content faster and improve SEO with built-in support for server-side rendering (SSR) in your apps.'
         },
         {
             icon: Domains,
             label: 'Custom domains',
-            description: 'Easily connect your own domain name to your Appwrite project, site, or function for a fully branded experience.'
+            description:
+                'Easily connect your own domain name to your Appwrite project, site, or function for a fully branded experience.'
         }
     ];
 </script>
