@@ -68,7 +68,7 @@
                             <a href="/products/sites">
                                 <BadgeTransparent
                                     ><img
-                                        src="/images/icons/illustrated/dark/sites.png"
+                                        src="/images/icons/illustrated/light/sites.png"
                                         alt="Sites icon"
                                         class="h-8 w-8"
                                     />

@@ -68,6 +68,12 @@ This means you can focus on building your application while Appwrite handles the
 
 ---
 
+- {% icon icon="react-native" size="m" /%}
+- [**React Native**](/docs/products/sites/quick-start/react-native)
+- `Static`
+
+---
+
 - {% icon icon="js" size="m" /%}
 - [**Other JavaScript**](/docs/products/sites/quick-start/vanilla)
 - `Static`

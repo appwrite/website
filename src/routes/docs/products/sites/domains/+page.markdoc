@@ -53,7 +53,7 @@ To add an apex domain:
 3. Enter your apex domain (e.g., `example.com`).
 4. Select the appropriate domain rule type (Active deployment, Git branch, or Redirect) and configure its settings. See the [Domain rule types](#domain-rule-types) section for details.
 5. Appwrite will provide NS record information.
-6. Go to your domain registrar and update the NS records for your domain to point to `appwrite.zone`.
+6. Go to your domain registrar and update the NS records for your domain to point to `ns1.appwrite.zone` and `ns2.appwrite.zone`.
 7. Return to the Appwrite Console and wait for the verification process to complete.
 
 DNS changes can take up to 48 hours to fully propagate across the internet. During this time, your domain might not be accessible or might show inconsistent behavior.

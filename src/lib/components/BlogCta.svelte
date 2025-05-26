@@ -7,7 +7,7 @@
 </script>
 
 <div
-    class="bg relative mt-12 -mb-16 flex min-h-[12rem] items-center justify-center overflow-hidden border-t border-[hsl(var(--web-color-subtle))] py-12"
+    class="bg relative mt-12 -mb-6 flex min-h-[12rem] items-center justify-center overflow-hidden border-t border-[hsl(var(--web-color-subtle))] py-12"
 >
     <div class="flex max-w-3xs flex-col items-center justify-center gap-5 text-center">
         <h2 class="text-label text-primary font-aeonik-pro">{heading}</h2>

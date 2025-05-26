@@ -41,4 +41,4 @@ Join our growing community around the world! See our official [Blog](https://app
 
 ## License
 
-Appwrite website, docs and blog © 2024 by Appwrite is licensed under [CC BY-NC-ND 4.0](https://creativecommons.org/licenses/by-nc-nd/4.0/).
+Appwrite website, docs and blog © 2025 by Appwrite is licensed under [CC BY-NC-ND 4.0](https://creativecommons.org/licenses/by-nc-nd/4.0/).

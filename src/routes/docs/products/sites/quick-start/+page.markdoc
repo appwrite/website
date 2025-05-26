@@ -19,8 +19,8 @@ Before deploying your web app with Git, create a new Site attached to your GitHu
 ![Create site wizard](/images/docs/sites/create-site-wizard.png)
 {% /only_light %}
 
-1. In the Appwrite Console's sidebar, click **Sites**.
-2. Click on the **Create site** button.
+1. In the Appwrite Console's sidebar, click **Sites**.
+2. Click on the **Create site** button.
 3. After clicking on **Connect Git repository**, select your repository.
 4. After connecting to GitHub, (optionally) add a name and site ID.
 5. Verify that the correct framework is selected.
@@ -59,6 +59,9 @@ Learn how to quickly setup a web app developed using any of the following framew
 {% /cards_item %}
 
 {% cards_item href="/docs/products/sites/quick-start/flutter" title="Flutter" icon="icon-flutter" %}
+{% /cards_item %}
+
+{% cards_item href="/docs/products/sites/quick-start/react-native" title="React Native" icon="icon-react-native" %}
 {% /cards_item %}
 
 {% cards_item href="/docs/products/sites/quick-start/vanilla" title="Vanilla JS" icon="icon-js" %}

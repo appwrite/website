@@ -33,6 +33,6 @@ Appwrite will automatically scale Pro plan projects as they require more resourc
 Budget caps limit the amount of automatic scaling and prevent unexpected bills.
 
 Organization budget caps can be set by navigating to the organization's **Billing** tab, under **Budget cap**, toggle and set a budget cap.
-Appwrite will send emails to warn organization memebers when near the budget cap.
+Appwrite will send emails to warn organization members when near the budget cap.
 
 {% partial file="resource-limits.md" /%}
