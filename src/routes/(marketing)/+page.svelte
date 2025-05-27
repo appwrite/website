@@ -31,7 +31,7 @@
     >
     <CaseStudies />
     <Features />
-    <div class="bg-[#EDEDF0]">
+    <div class="light bg-[#EDEDF0]">
         <Map theme="light" />
         <Scale
             testimonial={{

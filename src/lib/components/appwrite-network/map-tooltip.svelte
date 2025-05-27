@@ -72,7 +72,7 @@
     {#if tooltipData.city}
         <div
             class={classNames(
-                'border-gradient relative z-100 flex w-[190px] flex-col gap-2 rounded-[10px] p-2 backdrop-blur-lg before:rounded-[10px] after:rounded-[10px]'
+                'border-gradient relative z-100 flex w-[190px] flex-col gap-2 rounded-[10px] bg-white p-2 backdrop-blur-lg before:rounded-[10px] after:rounded-[10px] dark:bg-transparent'
             )}
             style:transform={`translateX(${x + 250}px) translateY(${y - 620}px)`}
         >
@@ -84,7 +84,7 @@
             {/key}
             {#if tooltipData.available}
                 <div
-                    class="text-caption flex h-5 items-center justify-center place-self-start rounded-md bg-[#10B981]/24 p-1 text-center text-[#B4F8E2]"
+                    class="text-caption flex h-5 items-center justify-center place-self-start rounded-md bg-[#10B981]/16 p-1 text-center text-[#0A714F] dark:bg-[#10B981]/24 dark:text-[#B4F8E2]"
                 >
                     <span class="text-micro -tracking-tight">Available now</span>
                 </div>
