@@ -30,7 +30,17 @@
     <CaseStudies />
     <Features />
     <Map />
-    <Scale />
+    <Scale
+        testimonial={{
+            name: 'Ryan O’Conner',
+            title: 'Founder',
+            company: 'K-Collect',
+            image: '/images/testimonials/ryan-oconner-testimonial.png'
+        }}
+    >
+        The switch to using Appwrite brought
+        <span class="text-primary">infinite value that I'm still discovering today.</span>
+    </Scale>
     <Pricing />
 </Main>
 

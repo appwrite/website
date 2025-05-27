@@ -43,15 +43,15 @@
     ];
 </script>
 
-<div class="light bg-white py-20">
+<div class="light bg-[#EDEDF0] py-20">
     <div class="container">
-        <section class="">
-            <h2 class="text-title font-aeonik-pro text-primary max-w-[700px]">
-                Self-host your data or take it to the Cloud
+        <section class="flex flex-col items-start md:flex-row">
+            <h2 class="text-title-lg font-aeonik-pro text-primary max-w-[700px] text-pretty">
+                Self-host or take it to the Cloud<span class="text-accent">_</span>
             </h2>
-            <p class="text-secondary mt-5 max-w-[700px] text-xl font-medium">
-                Migrate your data from and to any platform at any time with Appwrite Migrations.
-                With built-in security and privacy for peace of mind.
+            <p class="text-secondary text-description mt-4 max-w-xl font-medium">
+                Migrate your data from and to any platform at any time with Appwrite’s migrations
+                API. With built-in security and privacy for peace of mind.
             </p>
         </section>
         <div class="mt-20 grid grid-cols-1 gap-12 overflow-hidden md:grid-cols-2 lg:grid-cols-4">

@@ -269,7 +269,11 @@
                     </div>
                 </div>
             </div>
-            <Scale />
+            <Scale>
+                Appwrite has supported our recent growth in every step of the way, <span
+                    class="text-primary">without any failures or outages</span
+                >.
+            </Scale>
             <LogoList />
             <div class="container">
                 <FooterNav />

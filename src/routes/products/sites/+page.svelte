@@ -53,7 +53,18 @@
         <Network />
         <OpenSourceAlternative platforms={['Vercel', 'Netlify', 'Sevalla']} />
         <Testimonials class="mb-20" />
-        <Scale alternateInfo theme="light" />
+        <Scale
+            testimonial={{
+                name: 'Ryan O’Conner',
+                title: 'Founder',
+                company: 'K-Collect',
+                image: '/images/testimonials/ryan-oconner-testimonial.png'
+            }}
+            theme="light"
+        >
+            The switch to using Appwrite brought
+            <span class="text-primary">infinite value that I'm still discovering today.</span>
+        </Scale>
     </div>
 
     <Faq />

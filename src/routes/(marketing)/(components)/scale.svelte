@@ -2,83 +2,91 @@
     import { classNames } from '$lib/utils/classnames';
     import NumberFlow from '@number-flow/svelte';
     import { inView } from 'motion';
-    import { onDestroy } from 'svelte';
-    import KCollectTestimonialImage from '../../products/sites/kcollect-ryan-testimonial.png';
+    import { onDestroy, type Snippet } from 'svelte';
 
     const animationDuration = 3;
-
-    let stats = [
-        {
-            number: 0,
-            suffix: '+',
-            description: 'Regions served',
-            top: 93.75
-        },
-        {
-            number: 0,
-            suffix: '+ TB',
-            description: 'of data served',
-            top: 78.25
-        },
-        {
-            number: 0,
-            suffix: 'B',
-            description: 'requests',
-            top: 62.5
-        },
-        {
-            number: 0,
-            suffix: 'K',
-            description: 'projects',
-            top: 46.75
-        }
-    ];
 
     let alternateStats = [
         {
             number: 0,
             suffix: 'K+',
-            description: 'Github stars',
-            top: 93.75
+            description: 'Github stars'
         },
         {
             number: 0,
             suffix: '+',
-            description: 'PoP locations',
-            top: 78.25
+            description: 'PoP locations'
         },
         {
             number: 0,
             suffix: 'K+',
-            description: 'developers',
-            top: 62.5
+            description: 'developers'
         },
         {
             number: 0,
             suffix: 'B+',
-            description: 'monthly database operations',
-            top: 46.75
+            description: 'monthly database operations'
         }
     ];
 
-    const numbers = [12, 1000, 50, 300];
-    const alternateNumbers = [50, 300, 300, 200];
+    type Props = {
+        theme?: 'light' | 'dark';
+        testimonial?: {
+            name: string;
+            title: string;
+            image: string;
+            company: string;
+        };
+        children: Snippet;
+        stats?: Array<{ number: number; suffix: string; description: string }>;
+    };
 
-    let animate: boolean = false;
+    let {
+        theme = 'light',
+        testimonial,
+        children,
+        stats = [
+            {
+                number: 12,
+                suffix: '+',
+                description: 'Regions served'
+            },
+            {
+                number: 1000,
+                suffix: '+ TB',
+                description: 'of data served'
+            },
+            {
+                number: 50,
+                suffix: 'B',
+                description: 'requests'
+            },
+            {
+                number: 300,
+                suffix: 'K',
+                description: 'projects'
+            }
+        ]
+    }: Props = $props();
 
-    let timeoutIds: Array<NodeJS.Timeout> = [];
+    let localStats = $state(stats.map((stat) => ({ ...stat, number: 0 })));
+    const originalNumbers = stats.map((stat) => stat.number);
+
     const updateNumbers = () => {
-        correctStats.forEach((stat, index) => {
+        localStats.forEach((stat, index) => {
             const timeoutId = setTimeout(
                 () => {
-                    correctStats[index] = { ...stat, number: correctNumbers[index] };
+                    localStats[index].number = originalNumbers[index];
                 },
-                ((index * animationDuration) / correctNumbers.length) * 500
+                ((index * animationDuration) / localStats.length) * 800
             );
 
             timeoutIds.push(timeoutId);
         });
     };
+
+    let animate: boolean = false;
+    let timeoutIds: Array<NodeJS.Timeout> = [];
 
     const useInView = (node: HTMLElement) => {
         inView(
@@ -102,35 +110,6 @@
     onDestroy(() => {
         clearAllTimeouts();
     });
-
-    export let theme: 'light' | 'dark' = 'dark';
-    export let alternateInfo: boolean = false;
-
-    const correctStats = alternateInfo ? alternateStats : stats;
-    const correctNumbers = alternateInfo ? alternateNumbers : numbers;
-    const testimonial = {
-        name: 'Ryan O’Conner',
-        copy: `The switch to using Appwrite brought infinite value that I'm still discovering today, but a major impact that it made was the amount of time and stress that it saved me as it simply just works.`,
-        image: KCollectTestimonialImage,
-        title: 'Founder',
-        company: 'K-Collect'
-    };
-
-    const getCorrectText = () => {
-        if (!alternateInfo) {
-            return {
-                partOne: 'Appwrite has supported our recent growth in every step of the way,',
-                partTwo: 'without any failures or outages.'
-            };
-        } else {
-            return {
-                partOne: 'The switch to using Appwrite brought',
-                partTwo: "infinite value that I'm still discovering today."
-            };
-        }
-    };
-
-    const text = getCorrectText();
 </script>
 
 <div
@@ -148,11 +127,12 @@
                 >
             </h2>
             <p class="text-secondary border-accent mt-5 border-l-2 pr-28 pl-2 font-medium">
-                <span class="text-accent">“</span>{text.partOne}
-                <span class="text-primary">{text.partTwo}</span><span class="text-accent">”</span>
+                <span class="text-accent">“</span>{@render children()}<span class="text-accent"
+                    >”</span
+                >
             </p>
 
-            {#if alternateInfo}
+            {#if testimonial}
                 <div class="mt-4 flex items-center gap-3">
                     <img
                         src={testimonial.image}
@@ -173,7 +153,7 @@
     </div>
 
     <div class="mt-12 block space-y-8 md:hidden">
-        {#each correctStats as stat, i}
+        {#each localStats as stat, i}
             <div class="h-full overflow-auto pl-6">
                 <div class={classNames('relative')} style:top={`${(4 - i) * 18}%`}>
                     <NumberFlow
@@ -194,7 +174,7 @@
     >
         <div class="relative container h-full">
             <div class="absolute inset-0 z-100 grid grid-cols-4">
-                {#each correctStats as stat, i}
+                {#each localStats as stat, i}
                     <div
                         class="mask border-smooth h-full overflow-auto border-l"
                         style:--mask-direction="bottom"
@@ -212,16 +192,6 @@
                         </div>
                     </div>
                 {/each}
-
-                <!-- <div class="pointer-events-none absolute inset-0 z-50">
-                    {#each correctStats as stat, i}
-                        <div
-                            class="border-accent absolute top-[var(--top)] left-[calc(var(--left)_+_1px)] h-2 w-2 -translate-1/2 rounded-full border bg-white"
-                            style:--top={`${stat.top}%`}
-                            style:--left="{i * 25}%"
-                        ></div>
-                    {/each}
-                </div> -->
             </div>
         </div>
         <div
