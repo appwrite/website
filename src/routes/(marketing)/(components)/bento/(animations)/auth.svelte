@@ -6,8 +6,12 @@
     import { isMobile } from '$lib/utils/is-mobile';
     import { classNames } from '$lib/utils/classnames';
     import GridPaper from '../../grid-paper.svelte';
+    import { unwrite, write } from '$lib/animations';
 
     let container: HTMLElement;
+
+    let password = $state('');
+    let complete = $state(false);
 
     $effect(() => {
         inView(
@@ -15,7 +19,13 @@
             () => {
                 if (!isMobile()) return;
 
-                return () => {};
+                write('•••••••••••••', (v) => (password = v), 1000).then(() => {
+                    complete = true;
+                });
+                return () => {
+                    complete = false;
+                    unwrite('•••••••••••••', (v) => (password = v));
+                };
             },
             { amount: 'all' }
         );
@@ -23,7 +33,13 @@
         hover(container, () => {
             if (isMobile()) return;
 
-            return () => {};
+            write('•••••••••••••', (v) => (password = v), 1000).then(() => {
+                complete = true;
+            });
+            return () => {
+                complete = false;
+                unwrite('•••••••••••••', (v) => (password = v));
+            };
         });
     });
 </script>
@@ -59,7 +75,7 @@
                                 type="text"
                                 name="email"
                                 class="border-smooth text-micro w-full rounded-lg border bg-[#19191C] px-3 py-2 text-white"
-                                placeholder="Enter Email"
+                                value="walter@acme.dev"
                             />
                         </div>
                         <div class="flex flex-col gap-1">
@@ -69,8 +85,11 @@
                             <input
                                 type="text"
                                 name="password"
-                                class="border-smooth text-micro w-full rounded-lg border bg-[#19191C] px-3 py-2 text-white"
+                                class={classNames(
+                                    'text-micro w-full rounded-lg border border-white/24 bg-[#19191C] px-3 py-2 text-white'
+                                )}
                                 placeholder="Your Password"
+                                value={password}
                             />
                         </div>
 
