@@ -5,6 +5,7 @@
     import { Button } from '$lib/components/ui';
     import { classNames } from '$lib/utils/classnames';
     import Dashboard from './dashboard.svelte';
+    import HeroBanner from './hero-banner.svelte';
 </script>
 
 <div
@@ -24,6 +25,11 @@
         <div
             class="animate-blur-in flex flex-col gap-4 [animation-delay:150ms] [animation-duration:1000ms] md:ml-12 lg:ml-0"
         >
+            <HeroBanner
+                title="Announcing Appwrite Sites"
+                href="/blog/post/announcing-appwrite-sites"
+            />
+
             <GradientText class="animate-fade-in">
                 <h1 class="font-aeonik-pro text-hero text-pretty">
                     Build like a team of hundreds<span class="text-accent">_</span>

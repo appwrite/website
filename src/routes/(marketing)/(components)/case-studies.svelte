@@ -2,7 +2,6 @@
     import { PUBLIC_APPWRITE_DASHBOARD } from '$env/static/public';
     import { Button } from '$lib/components/ui';
     import { classNames } from '$lib/utils/classnames';
-    import Masonry from '$lib/components/ui/masonry.svelte';
 
     const testimonials = [
         {
@@ -74,15 +73,16 @@
     )}
 >
     <div class="container mx-auto">
-        <div class="flex w-full flex-col justify-between py-8 md:flex-row">
+        <div class="flex w-full flex-col items-center justify-between py-8 md:flex-row">
             <h2
                 class="text-description text-secondary font-aeonik-pro max-w-[789px] text-[32px] leading-9 -tracking-[1px] text-pretty"
             >
-                <span class="text-primary">DevKind</span> reduced development time by 60%, and
-                lowered server costs by 40%. LangX handled millions of requests. K-collect reduced
-                infrastructure costs by <span class="text-primary">700%</span>.
+                <span class="text-primary border-accent border-b">DevKind </span>
+                reduced development time by 60%, and lowered server costs by 40%. LangX handled millions
+                of requests. K-collect reduced infrastructure costs by
+                <span class="text-primary">700%</span>.
             </h2>
-            <Button href={PUBLIC_APPWRITE_DASHBOARD} class="self-end" variant="secondary"
+            <Button href={PUBLIC_APPWRITE_DASHBOARD} variant="secondary"
                 >Start building for free</Button
             >
         </div>
@@ -92,7 +92,7 @@
                     <a href={testimonial.href} class="contents">
                         <div
                             class={classNames(
-                                'border-smooth bg-card mb-5 h-fit [break-inside:avoid] rounded-2xl border p-5 last-of-type:col-start-2'
+                                'border-smooth bg-card mb-5 h-fit [break-inside:avoid] rounded-2xl border p-5 transition-shadow duration-300 last-of-type:col-start-2 hover:shadow-[0px_0px_0px_4px_var(--color-offset)]'
                             )}
                         >
                             {testimonial.copy}
@@ -121,7 +121,7 @@
                 {:else}
                     <div
                         class={classNames(
-                            'border-smooth bg-card mb-5 h-fit [break-inside:avoid] rounded-2xl border p-5 last-of-type:col-start-2'
+                            'border-smooth bg-card mb-5 h-fit [break-inside:avoid] rounded-2xl border p-5 transition-shadow duration-300 last-of-type:col-start-2 hover:shadow-[0px_0px_0px_4px_var(--color-offset)]'
                         )}
                     >
                         {testimonial.copy}
