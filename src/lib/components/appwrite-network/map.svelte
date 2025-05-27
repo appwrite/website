@@ -57,7 +57,7 @@
         }
     };
 
-    const radius = 0.3;
+    const radius = 0.4;
     const height = 75;
     const { points, addMarkers } = createMap({
         width: height * 2,
