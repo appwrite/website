@@ -9,19 +9,21 @@
     let image: HTMLElement;
 
     $effect(() => {
-        const from: AnimationSequence = [[image, { borderRadius: 4, filter: 'grayscale(100%)' }]];
+        const from: AnimationSequence = [
+            [image, { borderRadius: '4px', filter: 'grayscale(100%)' }]
+        ];
 
-        const to: AnimationSequence = [[image, { borderRadius: 8, filter: 'grayscale(50%)' }]];
+        const to: AnimationSequence = [[image, { borderRadius: '8px', filter: 'grayscale(50%)' }]];
 
         inView(
             container,
             () => {
                 if (!isMobile()) return;
 
-                animate(to, { duration: 0.25 });
+                animate(to, { duration: 0.2 });
 
                 return () => {
-                    animate(from, { duration: 0.25 });
+                    animate(from, { duration: 0.2 });
                 };
             },
             {
