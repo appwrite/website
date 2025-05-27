@@ -6,29 +6,6 @@
 
     const animationDuration = 3;
 
-    let alternateStats = [
-        {
-            number: 0,
-            suffix: 'K+',
-            description: 'Github stars'
-        },
-        {
-            number: 0,
-            suffix: '+',
-            description: 'PoP locations'
-        },
-        {
-            number: 0,
-            suffix: 'K+',
-            description: 'developers'
-        },
-        {
-            number: 0,
-            suffix: 'B+',
-            description: 'monthly database operations'
-        }
-    ];
-
     type Props = {
         theme?: 'light' | 'dark';
         testimonial?: {
