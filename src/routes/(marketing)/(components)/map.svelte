@@ -19,7 +19,9 @@
             Pick one of our many cloud regions or edges to meet your project's needs and reduce
             latency.
         </p>
-        <Button variant="secondary">More about the Appwrite Network</Button>
+        <Button variant="secondary" href="/the-appwrite-network"
+            >More about the Appwrite Network</Button
+        >
     </div>
     <TheAppwriteNetwork {theme} />
 </div>
