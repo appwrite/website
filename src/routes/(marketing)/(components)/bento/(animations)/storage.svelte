@@ -9,16 +9,20 @@
     let image: HTMLElement;
 
     $effect(() => {
-        const from: AnimationSequence = [[image, { borderRadius: [8, 4] }]];
+        const from: AnimationSequence = [[image, { borderRadius: 4, filter: 'grayscale(100%)' }]];
 
-        const to: AnimationSequence = [[image, { borderRadius: [4, 8] }]];
+        const to: AnimationSequence = [[image, { borderRadius: 8, filter: 'grayscale(50%)' }]];
 
         inView(
             container,
             () => {
                 if (!isMobile()) return;
 
-                return () => {};
+                animate(to, { duration: 0.25 });
+
+                return () => {
+                    animate(from, { duration: 0.25 });
+                };
             },
             {
                 amount: 'all'
@@ -28,14 +32,18 @@
         hover(container, () => {
             if (isMobile()) return;
 
-            return () => {};
+            animate(to, { duration: 0.25 });
+
+            return () => {
+                animate(from, { duration: 0.25 });
+            };
         });
     });
 </script>
 
 <a
     href="/products/storage"
-    class="border-smooth col-span-12 flex flex-col rounded-2xl border bg-white/2 p-2 transition-shadow duration-300 hover:shadow-[0px_0px_0px_4px_var(--color-offset)] focus:shadow-[0px_0px_0px_4px_var(--color-offset)] md:col-span-4"
+    class="border-smooth group col-span-12 flex flex-col rounded-2xl border bg-white/2 p-2 transition-shadow duration-300 hover:shadow-[0px_0px_0px_4px_var(--color-offset)] focus:shadow-[0px_0px_0px_4px_var(--color-offset)] md:col-span-4"
     bind:this={container}
 >
     <div class="space-y-3 px-3 pt-2 pb-4">
@@ -69,8 +77,10 @@
             <img
                 src={Image}
                 alt="Storage"
-                class="object-cove rounded grayscale"
+                class="object-cover transition-all"
                 bind:this={image}
+                style:border-radius="4px"
+                style:filter="grayscale(100%)"
             />
             <div
                 class="absolute inset-0 -z-10 h-full w-full bg-transparent bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:60px_60px]"
