@@ -1,5 +1,4 @@
 <script lang="ts" module>
-    import { classNames } from '$lib/utils/classnames';
     import { animate } from 'motion';
 
     let tooltipData = $state<{
@@ -53,12 +52,14 @@
 </script>
 
 <script lang="ts">
+    import { classNames } from '$lib/utils/classnames';
     interface TooltipProps {
         x: number;
         y: number;
+        theme?: 'light' | 'dark';
     }
 
-    const { x, y }: TooltipProps = $props();
+    const { x, y, theme = 'light' }: TooltipProps = $props();
 
     let city = $state<HTMLElement | null>(null);
 
@@ -68,11 +69,12 @@
     });
 </script>
 
-<div class="pointer-events-none absolute z-100 hidden md:block">
+<div class={classNames('pointer-events-none absolute z-100 hidden md:block', theme)}>
     {#if tooltipData.city}
         <div
             class={classNames(
-                'border-gradient relative z-100 flex w-[190px] flex-col gap-2 rounded-[10px] bg-white p-2 backdrop-blur-lg before:rounded-[10px] after:rounded-[10px] dark:bg-transparent'
+                'border-gradient relative z-100 flex w-[190px] flex-col gap-2 rounded-[10px] p-2 backdrop-blur-lg before:rounded-[10px] after:rounded-[10px]',
+                { 'bg-transparent': theme === 'dark', 'bg-white': theme === 'light' }
             )}
             style:transform={`translateX(${x + 250}px) translateY(${y - 620}px)`}
         >
@@ -84,7 +86,13 @@
             {/key}
             {#if tooltipData.available}
                 <div
-                    class="text-caption flex h-5 items-center justify-center place-self-start rounded-md bg-[#10B981]/16 p-1 text-center text-[#0A714F] dark:bg-[#10B981]/24 dark:text-[#B4F8E2]"
+                    class={classNames(
+                        'text-caption flex h-5 items-center justify-center place-self-start rounded-md p-1 text-center',
+                        {
+                            'bg-[#10B981]/16 text-[#0A714F]': theme === 'light',
+                            'bg-[#10B981]/24 text-[#B4F8E2]': theme === 'dark'
+                        }
+                    )}
                 >
                     <span class="text-micro -tracking-tight">Available now</span>
                 </div>

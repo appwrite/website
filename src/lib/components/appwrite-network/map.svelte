@@ -133,6 +133,6 @@
         </div>
     </div>
 </div>
-<MapTooltip {...position()} />
+<MapTooltip {theme} {...position()} />
 
 <MapNav {theme} onValueChange={(value) => (activeSegment = value)} />

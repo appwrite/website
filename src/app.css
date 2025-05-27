@@ -1,6 +1,6 @@
 @import 'tailwindcss';
 @import './styles/typography.css';
-@variant dark (&:is(.dark *));
+@custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
     /* Colors */
