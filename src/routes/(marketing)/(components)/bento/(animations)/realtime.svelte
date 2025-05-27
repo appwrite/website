@@ -62,7 +62,7 @@
 
 <a
     href="/docs/apis/realtime"
-    class="border-smooth col-span-12 flex flex-col rounded-2xl border bg-white/2 p-2 md:col-span-5"
+    class="border-smooth col-span-12 flex flex-col rounded-2xl border bg-white/2 p-2 transition-shadow duration-300 hover:shadow-[0px_0px_0px_4px_var(--color-offset)] md:col-span-5"
     bind:this={container}
 >
     <div class="space-y-3 px-3 pt-2 pb-4">
