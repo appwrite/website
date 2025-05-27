@@ -63,11 +63,11 @@
         </div>
 
         <div
-            class="border-gradient divide-smooth grid h-75 w-full grid-cols-1 gap-8 divide-y divide-dashed rounded-xl bg-white/2 px-4 py-8 backdrop-blur-lg before:rounded-xl after:rounded-xl md:grid-cols-2 md:divide-x md:divide-y-0 lg:grid-cols-4"
+            class="border-smooth divide-smooth grid min-h-75 w-full grid-cols-1 gap-y-12 divide-y divide-dashed rounded-xl border bg-white/2 px-4 py-8 backdrop-blur-lg md:grid-cols-2 md:divide-y-0 lg:grid-cols-4 lg:divide-x"
         >
             {#each plans as { name, price, tag: label, subtitle, description }}
                 {@const isEnterprise = name === 'Enterprise'}
-                <div class="flex h-full w-full grow flex-col gap-1 px-4 pb-8 md:pb-0">
+                <div class="flex h-full w-full grow flex-col gap-1 px-6 pb-8 md:pb-0">
                     <div class="flex items-center gap-4">
                         <span class="text-description text-secondary">{name}</span>
                         {#if label}

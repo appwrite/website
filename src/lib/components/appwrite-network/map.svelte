@@ -98,6 +98,19 @@
             use:mousePosition
         >
             <svg viewBox={`0 0 ${height * 2} ${height}`}>
+                <defs>
+                    <mask id="map">
+                        {#each points as point}
+                            <ellipse
+                                cx={point.x}
+                                cy={point.y}
+                                rx={radius}
+                                ry={radius * 1.25}
+                                fill="white"
+                            />
+                        {/each}
+                    </mask>
+                </defs>
                 {#each points as point}
                     <ellipse
                         cx={point.x}

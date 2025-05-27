@@ -3,10 +3,8 @@
     import { animate, hover, inView, type AnimationSequence } from 'motion';
     import { onMount } from 'svelte';
 
-    import TopLeft from '../../../(assets)/images/top-left.svg';
     import TopRight from '../../../(assets)/images/top-right.svg';
-    import BottomLeft from '../../../(assets)/images/bottom-left.svg';
-    import BottomRight from '../../../(assets)/images/bottom-right.svg';
+    import Puzzle from '../../../(assets)/images/puzzle.svg';
     import GridPaper from '../../grid-paper.svelte';
 
     let container: HTMLElement;
@@ -21,7 +19,7 @@
                 { y: -20, x: 32, scale: 1, opacity: 0, filter: 'blur(4px)' },
                 { duration: 0.25, at: 0 }
             ],
-            [topRightPiece, { y: -35, x: 40 }, { duration: 0.25, at: 0, type: 'spring' }]
+            [topRightPiece, { y: -36, x: 36 }, { duration: 0.25, at: 0, type: 'spring' }]
         ];
 
         const to: AnimationSequence = [
@@ -78,17 +76,22 @@
     <div
         class="relative flex h-85 items-center justify-center overflow-hidden rounded-xl bg-black/24 px-8"
     >
-        <div class="grid aspect-square grid-cols-2 place-items-center">
-            <img src={TopLeft} alt="Top Left" class="relative top-4 left-9" />
+        <div
+            class="relative grid aspect-square h-[240px] w-[240px] grid-cols-2 grid-rows-2 items-center justify-center"
+        >
             <img
                 src={TopRight}
                 alt="Top Right"
                 bind:this={topRightPiece}
-                class="relative top-9 right-3"
-                style="transform: translateY(-35px) translateX(40px)"
+                style:transform="translateX(36px) translateY(-36px)"
+                class="absolute top-0 right-0 h-[150px] w-[120px]"
             />
-            <img src={BottomLeft} alt="Bottom Left" class="relative bottom-9 left-5" />
-            <img src={BottomRight} alt="Bottom Right" class="relative right-7 bottom-5" />
+
+            <img
+                src={Puzzle}
+                alt="Puzzle Piece"
+                class="absolute inset-0 top-1/2 left-1/2 -translate-1/2"
+            />
         </div>
 
         <div

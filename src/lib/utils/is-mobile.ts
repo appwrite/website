@@ -1,4 +1,7 @@
+import { MediaQuery } from 'svelte/reactivity';
+
 export const isMobile = () => {
-    if (typeof window === 'undefined') return false;
-    return window?.innerWidth < 1024;
+    const mediaQuery = new MediaQuery('(max-width: 767px)');
+
+    return mediaQuery.current;
 };
