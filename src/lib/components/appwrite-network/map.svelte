@@ -9,6 +9,7 @@
         handleResetActiveTooltip
     } from './map-tooltip.svelte';
     import { createMap } from 'svg-dotted-map';
+    import { classNames } from '$lib/utils/classnames';
 
     let activeSegment = $state<string>('pop-locations');
     let activeMarkers = $derived(pins[activeSegment as PinSegment]);
@@ -94,8 +95,9 @@
     <div class="relative mx-auto h-full w-[250vw] [scrollbar-width:none] md:w-full" use:inView>
         <div
             class="relative mx-auto h-fit w-full max-w-5xl origin-bottom transform-[perspective(25px)_rotateX(1deg)_scale3d(1.4,_1.4,_1)] transition-all [scrollbar-width:none]"
+            use:mousePosition
         >
-            <svg viewBox={`0 0 ${height * 2} ${height}`} use:mousePosition>
+            <svg viewBox={`0 0 ${height * 2} ${height}`}>
                 {#each points as point}
                     <ellipse
                         cx={point.x}
@@ -127,23 +129,10 @@
                         />
                     </g>
                 {/each}
-                <defs>
-                    <mask id="map">
-                        {#each points as point}
-                            <ellipse
-                                cx={point.x}
-                                cy={point.y}
-                                rx={radius}
-                                ry={radius * 1.25}
-                                fill={theme === 'dark' ? 'rgba(255,255,255,.1)' : '#dadadd'}
-                            />
-                        {/each}
-                    </mask>
-                </defs>
             </svg>
         </div>
     </div>
-    <MapTooltip {...position()} />
 </div>
+<MapTooltip {...position()} />
 
 <MapNav {theme} onValueChange={(value) => (activeSegment = value)} />
