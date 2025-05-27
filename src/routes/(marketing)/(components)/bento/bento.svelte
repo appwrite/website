@@ -8,40 +8,46 @@
     import Sites from './(animations)/sites.svelte';
     import Storage from './(animations)/storage.svelte';
 
-    const products = {
-        Build: [
-            {
-                label: 'Auth',
-                icon: '/images/icons/illustrated/dark/auth.png'
-            },
-            {
-                label: 'Databases',
-                icon: '/images/icons/illustrated/dark/databases.png'
-            },
-            {
-                label: 'Storage',
-                icon: '/images/icons/illustrated/dark/storage.png'
-            },
-            {
-                label: 'Functions',
-                icon: '/images/icons/illustrated/dark/functions.png'
-            },
-            {
-                label: 'Realtime',
-                icon: '/images/icons/illustrated/dark/realtime.png'
-            },
-            {
-                label: 'Messaging',
-                icon: '/images/icons/illustrated/dark/messaging.png'
-            }
-        ],
-        Deploy: [
-            {
-                label: 'Sites',
-                icon: '/images/icons/illustrated/dark/sites.png'
-            }
-        ]
-    };
+    const build = [
+        {
+            label: 'Auth',
+            icon: '/images/icons/illustrated/dark/auth.png',
+            href: '/products/auth'
+        },
+        {
+            label: 'Databases',
+            icon: '/images/icons/illustrated/dark/databases.png',
+            href: '/docs/products/databases'
+        },
+        {
+            label: 'Storage',
+            icon: '/images/icons/illustrated/dark/storage.png',
+            href: '/products/storage'
+        },
+        {
+            label: 'Functions',
+            icon: '/images/icons/illustrated/dark/functions.png',
+            href: '/products/functions'
+        },
+        {
+            label: 'Realtime',
+            icon: '/images/icons/illustrated/dark/realtime.png',
+            href: '/docs/apis/realtime'
+        },
+        {
+            label: 'Messaging',
+            icon: '/images/icons/illustrated/dark/messaging.png',
+            href: '/products/messaging'
+        }
+    ];
+
+    const deploy = [
+        {
+            label: 'Sites',
+            icon: '/images/icons/illustrated/dark/sites.png',
+            href: '/products/sites'
+        }
+    ];
 </script>
 
 <div class="container py-20">
@@ -50,36 +56,52 @@
             Backend APIs, frontend hosting
         </h2>
 
-        <div class="hidden grid-cols-12 gap-6 lg:grid">
-            {#each Object.entries(products) as [key, group], i}
-                <div
-                    class={classNames(
-                        'bg-card border-smooth text-primary flex h-10 items-center gap-4 rounded-full border border-dashed p-1 text-sm',
-                        {
-                            'col-span-10': i === 0,
-                            'col-span-2': i === 1
-                        }
-                    )}
-                >
-                    <span class="text-micro text-secondary font-aeonik-fono ml-3 uppercase"
-                        >{key}</span
-                    >
-                    <div class="flex h-full w-full gap-2">
-                        {#each group as product}
-                            <div
-                                class="bg-greyscale-800 flex h-full w-full items-center justify-center gap-2 rounded-full px-3 backdrop-blur-lg"
+        <div class="hidden grid-cols-12 gap-8 lg:grid">
+            <div
+                class={classNames(
+                    'bg-card border-smooth text-primary relative col-span-10 flex h-10 items-center gap-4 rounded-full border border-dashed p-1 text-sm',
+                    'after:border-smooth after:absolute after:top-1/2 after:-right-8 after:h-px after:w-8 after:-translate-y-1/2 after:border-b after:border-dashed'
+                )}
+            >
+                <span class="text-micro text-secondary font-aeonik-fono ml-3 uppercase">Build</span>
+                <div class="flex h-full w-full justify-between gap-2">
+                    {#each build as product}
+                        <a
+                            href={product.href}
+                            class="bg-greyscale-800 hover:bg-greyscale-750/50 flex h-full w-fit items-center justify-center gap-2 rounded-full px-3 backdrop-blur-lg transition-opacity"
+                        >
+                            <span
+                                class="text-primary text-caption flex items-center justify-center gap-1 font-medium"
                             >
-                                <span
-                                    class="text-primary text-caption flex items-center justify-center gap-1 font-medium"
-                                >
-                                    <img src={product.icon} alt={product.label} class="size-6" />
-                                    {product.label}</span
-                                >
-                            </div>
-                        {/each}
-                    </div>
+                                <img src={product.icon} alt={product.label} class="size-6" />
+                                {product.label}</span
+                            >
+                        </a>
+                    {/each}
                 </div>
-            {/each}
+            </div>
+
+            <div
+                class="bg-card border-smooth text-primary col-span-2 flex h-10 items-center gap-4 rounded-full border border-dashed p-1 text-sm"
+            >
+                <span class="text-micro text-secondary font-aeonik-fono ml-3 uppercase">Deploy</span
+                >
+                <div class="flex h-full w-full justify-between gap-2">
+                    {#each deploy as product}
+                        <a
+                            href={product.href}
+                            class="bg-greyscale-800 hover:bg-greyscale-750/50 flex h-full w-fit items-center justify-center gap-2 rounded-full px-3 backdrop-blur-lg transition-opacity"
+                        >
+                            <span
+                                class="text-primary text-caption flex items-center justify-center gap-1 font-medium"
+                            >
+                                <img src={product.icon} alt={product.label} class="size-6" />
+                                {product.label}</span
+                            >
+                        </a>
+                    {/each}
+                </div>
+            </div>
         </div>
     </div>
     <div class="grid grid-cols-12 gap-4">

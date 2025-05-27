@@ -23,56 +23,56 @@
         {
             name: 'JS',
             icon: Javascript,
-            href: '/quickstarts/javascript',
+            href: '/docs/quick-starts/web',
             primary: '#FFCA28'
         },
         {
             name: 'Flutter',
             icon: Flutter,
-            href: '/quickstarts/flutter',
+            href: '/docs/quick-starts/flutter',
             primary: '#00569E',
             secondary: '#47C5FB'
         },
-        { name: 'Node.js', icon: Node, href: '/quickstarts/node', primary: '#8CC84B' },
+        { name: 'Node.js', icon: Node, href: '/docs/quick-starts/node', primary: '#8CC84B' },
         {
             name: 'Python',
             icon: Python,
-            href: '/quickstarts/python',
+            href: '/docs/quick-starts/python',
             primary: '#F9C600',
             secondary: '#327EBD'
         },
-        { name: 'iOS', icon: Apple, href: '/quickstarts/ios', primary: '#fff' },
-        { name: 'Android', icon: Android, href: '/quickstarts/android', primary: '#3DDC84' },
+        { name: 'iOS', icon: Apple, href: '/docs/quick-starts/apple', primary: '#fff' },
+        { name: 'Android', icon: Android, href: '/docs/quick-starts/android', primary: '#3DDC84' },
         {
             name: 'Dart',
             icon: Dart,
-            href: '/quickstarts/dart',
+            href: '/docs/quick-starts/dart',
             primary: '#01579B',
             secondary: '#29B6F6'
         },
-        { name: 'PHP', icon: Php, href: '/quickstarts/php', primary: '#8892BF' },
+        { name: 'PHP', icon: Php, href: '/docs/quick-starts/php', primary: '#8892BF' },
         {
             name: 'Ruby',
             icon: Ruby,
-            href: '/quickstarts/ruby',
+            href: '/docs/quick-starts/ruby',
             primary: '#791C12',
             secondary: '#9E120B'
         },
-        { name: 'Deno', icon: Deno, href: '/quickstarts/deno', primary: '#fff' },
-        { name: '.NET', icon: Net, href: '/quickstarts/dotnet', primary: '#512BD4' },
-        { name: 'Go', icon: Go, href: '/quickstarts/go', primary: '#fff' },
+        { name: 'Deno', icon: Deno, href: '/docs/quick-starts/deno', primary: '#fff' },
+        { name: '.NET', icon: Net, href: '/docs/quick-starts/dotnet', primary: '#512BD4' },
+        { name: 'Go', icon: Go, href: '/docs/quick-starts/go', primary: '#fff' },
         {
             name: 'Swift',
             icon: Swift,
-            href: '/quickstarts/swift',
+            href: '/docs/quick-starts/swift',
             primary: '#F88A36',
             secondary: '#FD2020'
         },
-        { name: 'React', icon: React, href: '/quickstarts/react', primary: '#53C1DE' },
+        { name: 'React', icon: React, href: '/docs/quick-starts/react', primary: '#53C1DE' },
         {
             name: 'Kotlin',
             icon: Kotlin,
-            href: '/quickstarts/kotlin',
+            href: '/docs/quick-starts/kotlin',
             primary: '#6D74E1',
             secondary: '#E1725C'
         }
@@ -119,21 +119,23 @@
                                         )}
                                         aria-hidden={i < platforms.length - 1}
                                     >
-                                        <img
-                                            src={platform.icon}
-                                            alt={platform.name}
-                                            class="h-8 w-auto grayscale transition-all duration-500 group-hover:grayscale-0"
-                                        />
+                                        <a href={platform.href} class="contents">
+                                            <img
+                                                src={platform.icon}
+                                                alt={platform.name}
+                                                class="h-8 w-auto grayscale transition-all duration-500 group-hover:grayscale-0"
+                                            />
 
-                                        <div
-                                            class={classNames(
-                                                'absolute inset-0 opacity-0 transition-opacity group-hover:opacity-100',
-                                                'bg-gradient-to-tl from-transparent to-transparent',
-                                                'hover:from-(--primary-color,_#fff)/4 hover:to-(--secondary-color,_transparent)/10'
-                                            )}
-                                        >
-                                            <Noise opacity={0.1} />
-                                        </div>
+                                            <div
+                                                class={classNames(
+                                                    'absolute inset-0 opacity-0 transition-opacity group-hover:opacity-100',
+                                                    'bg-gradient-to-tl from-transparent to-transparent',
+                                                    'hover:from-(--primary-color,_#fff)/4 hover:to-(--secondary-color,_transparent)/10'
+                                                )}
+                                            >
+                                                <Noise opacity={0.1} />
+                                            </div>
+                                        </a>
                                     </Tooltip.Trigger>
                                     <Tooltip.Content
                                         sideOffset={8}

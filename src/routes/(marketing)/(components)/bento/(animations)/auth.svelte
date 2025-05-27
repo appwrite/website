@@ -35,7 +35,7 @@
     <div class="space-y-3 px-3 pt-2 pb-4">
         <div class="flex items-center gap-2">
             <img src="/images/icons/illustrated/dark/auth.png" alt="Auth" class="size-7" />
-            <h3 class="focontainerElement: container-pro text-label text-primary">Auth</h3>
+            <h3 class="font-aeonik-pro text-label text-primary">Auth</h3>
         </div>
         <p class="text-sub-body text-primary max-w-lg font-medium">
             <span class="text-secondary"
@@ -75,7 +75,7 @@
 
                         <button
                             class="text-micro w-full rounded-lg bg-white py-2 font-medium text-[#19191C]"
-                            >Sign up</button
+                            disabled>Sign up</button
                         >
                     </form>
 
@@ -93,6 +93,7 @@
                         class={classNames(
                             'text-micro border-smooth flex w-full items-center justify-center gap-3 rounded-lg border py-2 font-medium text-white transition'
                         )}
+                        disabled
                     >
                         <img src={Google} alt="Google Icon" class="size-4" />
 

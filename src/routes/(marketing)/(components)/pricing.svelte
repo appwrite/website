@@ -1,6 +1,7 @@
 <script lang="ts">
     import { Button } from '$lib/components/ui';
     import { classNames } from '$lib/utils/classnames';
+    import { getAppwriteDashboardUrl } from '$lib/utils/dashboard';
 
     const plans: Array<{
         name: string;
@@ -51,21 +52,22 @@
         <div
             class="animate-fade-in relative flex w-full flex-col justify-between gap-8 [animation-delay:150ms] [animation-duration:1000ms] md:flex-row md:items-center"
         >
-            <h2 class="text-title text-primary font-aeonik-pro max-w-xl text-pretty">
+            <h2 class="text-title-lg text-primary font-aeonik-pro max-w-xl text-pretty">
                 Start building like a team of hundreds today<span class="text-accent">_</span>
             </h2>
 
             <div class="flex gap-4">
-                <Button href="/">Get started</Button>
+                <Button href="/">Start building for free</Button>
                 <Button href="/" variant="secondary">View pricing plans</Button>
             </div>
         </div>
 
         <div
-            class="border-gradient divide-smooth grid w-full grid-cols-1 place-content-center place-items-center gap-8 divide-y divide-dashed rounded-xl bg-white/2 px-4 py-10 backdrop-blur-lg before:rounded-xl after:rounded-xl md:grid-cols-2 md:divide-x md:divide-y-0 lg:grid-cols-4"
+            class="border-gradient divide-smooth grid h-75 w-full grid-cols-1 gap-8 divide-y divide-dashed rounded-xl bg-white/2 px-4 py-8 backdrop-blur-lg before:rounded-xl after:rounded-xl md:grid-cols-2 md:divide-x md:divide-y-0 lg:grid-cols-4"
         >
             {#each plans as { name, price, tag: label, subtitle, description }}
-                <div class="flex min-h-40 w-full flex-col gap-1 px-4 pb-8 md:pb-0">
+                {@const isEnterprise = name === 'Enterprise'}
+                <div class="flex h-full w-full grow flex-col gap-1 px-4 pb-8 md:pb-0">
                     <div class="flex items-center gap-4">
                         <span class="text-description text-secondary">{name}</span>
                         {#if label}
@@ -82,6 +84,13 @@
                         {/if}
                         <p class="text-caption text-secondary mt-auto mb-0 block">{description}</p>
                     </div>
+
+                    <Button
+                        class="mt-8 mb-0 w-full!"
+                        variant={name === 'Pro' ? 'primary' : 'secondary'}
+                        href={isEnterprise ? '/contact-us/enterprise' : getAppwriteDashboardUrl()}
+                        >{isEnterprise ? 'Contact us' : 'Start building'}</Button
+                    >
                 </div>
             {/each}
         </div>
