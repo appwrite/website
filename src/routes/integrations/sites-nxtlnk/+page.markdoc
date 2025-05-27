@@ -1,7 +1,7 @@
 ---
 layout: integration
 title: Deploy Nxtlnk with Sites
-description: Deploy your custom bio links site with Appwrite Sites using the Nxtlnk template. 
+description: Build a custom bio links page with Appwrite Sites
 date: 2025-05-19
 featured: false
 isPartner: true

@@ -1,7 +1,7 @@
 ---
 layout: integration
 title: Deploy Starlight with Sites
-description: Deploy your Starlight documentation site with Appwrite Sites. 
+description: Create a Astro-based documentation site with Appwrite Sites
 date: 2025-05-19
 featured: false
 isPartner: true

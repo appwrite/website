@@ -1,7 +1,7 @@
 ---
 layout: integration
 title: Deploy VuePress with Sites
-description: Deploy your VuePress documentation site with Appwrite Sites. 
+description: Create a Vue-based documentation site with Appwrite Sites
 date: 2025-05-19
 featured: false
 isPartner: true
