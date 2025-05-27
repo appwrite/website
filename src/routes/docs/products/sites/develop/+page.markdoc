@@ -167,9 +167,18 @@ Your site's dependencies should be managed by the package manager of each langua
 - {% icon icon="flutter" size="m" /%}
 - **Flutter**
 - `pub`
-- (Empty)
-- `flutter build web`
+- `flutter pub get`
+- `flutter build web --release -t lib/main.dart`
 - `./build/web`
+
+---
+
+- {% icon icon="react-native" size="m" /%}
+- **React Native**
+- `npm`
+- `npm install`
+- `npm run build`
+- `./dist`
 
 ---
 

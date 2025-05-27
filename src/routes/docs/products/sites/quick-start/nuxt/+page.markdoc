@@ -20,7 +20,12 @@ Push this project to a [GitHub repo](https://github.com/new).
 {% section #step-2 step=2 title="Create Appwrite project" %}
 Head to the [Appwrite Console](https://cloud.appwrite.io).
 
+{% only_dark %}
 ![Create Appwrite project](/images/docs/quick-starts/dark/create-project.png)
+{% /only_dark %}
+{% only_light %}
+![Create Appwrite project](/images/docs/quick-starts/create-project.png)
+{% /only_light %}
 
 If this is your first time using Appwrite, create an account and create your first project.
 {% /section %}

@@ -13,6 +13,10 @@
     import Poster from './(assets)/poster.png';
     import PosterFutureAppwrite from './(assets)/posterFutureOfAppwrite.png';
     import PosterDeploy from './(assets)/posterDeploy.png';
+    import PosterIndustryPanel from './(assets)/posterIndustryPanel.png';
+    import PosterNewImageFormats from './(assets)/posterNewImageFormats.png';
+    import PosterFileTokens from './(assets)/posterFileTokens.png';
+    import PosterClosingParty from './(assets)/eventClosingParty.png';
     import Sites from './(assets)/illustrations/sites.svg';
     import Flutter from './(assets)/illustrations/flutter.svg';
     import Formats from './(assets)/illustrations/formats.svg';
@@ -132,16 +136,16 @@
             illustration: Formats,
             description:
                 'We have added support for two new image formats in Appwrite Storage: HEIC and AVIF. This will give you more tools to manage, manipulate, and serve images the way you need.',
-            url: '/blog/post/announcing-new-image-formats',
+            url: '/blog/post/new-image-formats-avif-heic',
             content: [
                 {
-                    title: 'How to use AVIF in Storage',
-                    url: '/blog/pos/avif-in-storage',
+                    title: 'Announcing HEIC and AVIF support: modern image formats now in Appwrite',
+                    url: '/blog/post/new-image-formats-avif-heic',
                     type: 'Blog'
                 },
                 {
-                    title: 'Improve your Appwrite developer experience with dev keys',
-                    url: '/blog/post/developer-experience-dev-keys',
+                    title: 'How to use AVIF in Storage',
+                    url: '/blog/post/avif-in-storage',
                     type: 'Blog'
                 },
                 {
@@ -149,6 +153,19 @@
                     url: '/docs/products/storage/images',
                     type: 'Docs',
                     label: 'Visit docs'
+                }
+            ],
+            announcementVideo: {
+                url: 'https://www.youtube-nocookie.com/embed/2KAwVoJh8a8',
+                title: 'Announcement Video',
+                poster: PosterNewImageFormats
+            },
+            links: [
+                {
+                    title: 'YouTube Live',
+                    type: 'video',
+                    poster: PosterIndustryPanel,
+                    url: 'https://www.youtube.com/watch?v=PfnKyXo2k6o'
                 }
             ]
         },
@@ -158,23 +175,36 @@
             illustration: Tokens,
             description:
                 'Introducing File Tokens. This feature lets you share files easily and securely, without modifying permissions or changing project access. Just generate a token and share the link.',
-            url: 'https://youtu.be/_XU1dftsQag',
+            url: 'https://www.youtube-nocookie.com/embed/eiwCCjBD3cw',
             content: [
                 {
-                    title: 'Serverless functions 101: best practices',
+                    title: 'Announcing File Tokens: secure file sharing without the hassle',
                     url: '/blog/post/announcing-file-tokens',
                     type: 'Blog'
                 },
                 {
-                    title: 'file tokens',
-                    url: '/blog/post',
+                    title: 'CSR vs SSG vs SSR: what they are and how to choose',
+                    url: '/blog/post/csr-ssg-ssr',
                     type: 'Blog'
                 },
                 {
                     title: 'File Tokens',
-                    url: '/docs/',
+                    url: '/docs/products/storage/file-tokens',
                     type: 'Docs',
                     label: 'Visit docs'
+                }
+            ],
+            announcementVideo: {
+                url: 'https://www.youtube-nocookie.com/embed/eiwCCjBD3cw',
+                title: 'Announcement Video',
+                poster: PosterFileTokens
+            },
+            links: [
+                {
+                    title: 'YouTube Live',
+                    type: 'video',
+                    poster: PosterClosingParty,
+                    url: 'https://www.youtube.com/watch?v=1gvjqV1nq-c?'
                 }
             ]
         }
