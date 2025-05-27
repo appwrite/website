@@ -1,7 +1,7 @@
 ---
 layout: integration
 title: Deploy Docusaurus with Sites
-description: Build a MDX-powered documentation site with Appwrite Sites
+description: Build an MDX-powered documentation site with Appwrite Sites
 date: 2025-05-19
 featured: false
 isPartner: true
