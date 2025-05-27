@@ -1,6 +1,5 @@
 <script lang="ts">
     import { slugify } from '$lib/utils/slugify';
-    import { classNames } from '$lib/utils/classnames';
     import MapNav from './map-nav.svelte';
     import { useMousePosition } from '$lib/actions/mouse-position.svelte';
     import { useAnimateInView } from '$lib/actions/animate-in-view';
@@ -9,17 +8,17 @@
         handleSetActiveTooltip,
         handleResetActiveTooltip
     } from './map-tooltip.svelte';
-    import { createMap } from '$lib/map';
+    import { createMap } from 'svg-dotted-map';
 
-    let activeRegion = $state<string | null>(null);
-    let activeMarker: HTMLElement | null = null;
     let activeSegment = $state<string>('pop-locations');
     let activeMarkers = $derived(pins[activeSegment as PinSegment]);
+    let activeRegion = $state<string | null>(null);
+    let activeMarker: SVGGElement | null = null;
 
     const { action: mousePosition, position } = useMousePosition();
     const { action: inView, animate } = useAnimateInView({});
 
-    const scrollMarkerIntoView = (marker: HTMLElement) => {
+    const scrollMarkerIntoView = (marker: SVGGElement) => {
         return new Promise<void>((resolve) => {
             marker.scrollIntoView({
                 behavior: 'smooth',
@@ -58,33 +57,24 @@
         }
     };
 
+    const radius = 0.3;
     const height = 75;
-    let map: ReturnType<typeof createMap> = $state({
-        points: [],
-        markers: [],
-        base: ''
+    const { points, addMarkers } = createMap({
+        width: height * 2,
+        height,
+        mapSamples: 5000,
+        radius
     });
 
-    const getMarkers = () => {
-        return activeMarkers;
-    };
+    const markers = $derived(
+        addMarkers<{ city: string; code: string; available: boolean }>(activeMarkers)
+    );
 
     type Props = {
         theme: 'light' | 'dark';
     };
 
     const { theme = 'dark' }: Props = $props();
-
-    $effect(() => {
-        map = createMap({
-            width: height * 2,
-            height,
-            markers: getMarkers(),
-            skew: 1,
-            baseColor: theme === 'dark' ? 'rgba(255,255,255,.1)' : '#dadadd',
-            markerColor: 'var(--color-accent)'
-        });
-    });
 </script>
 
 <div class="relative -mt-8 w-full overflow-x-scroll [scrollbar-width:none]">
@@ -106,13 +96,19 @@
             class="relative mx-auto h-fit w-full max-w-5xl origin-bottom transform-[perspective(25px)_rotateX(1deg)_scale3d(1.4,_1.4,_1)] transition-all [scrollbar-width:none]"
         >
             <svg viewBox={`0 0 ${height * 2} ${height}`} use:mousePosition>
-                {#each map.points as point}
-                    <circle cx={point.x} cy={point.y} r={point.size} fill={point.color} />
+                {#each points as point}
+                    <ellipse
+                        cx={point.x}
+                        cy={point.y}
+                        rx={radius}
+                        ry={radius * 1.25}
+                        fill="#dadadd"
+                    />
                 {/each}
-                {#each map.markers as marker}
+                {#each markers as marker}
                     <g
                         role="tooltip"
-                        class="animate-fade-in outline-none"
+                        class="outline-none"
                         onmouseover={() =>
                             handleSetActiveTooltip(marker.city, marker.code, marker.available)}
                         onfocus={() =>
@@ -121,19 +117,9 @@
                         onmouseout={() => handleResetActiveTooltip(250)}
                         data-region={slugify(marker.city)}
                     >
-                        <circle
-                            cx={marker.x}
-                            cy={marker.y}
-                            r={marker.size * 1.5}
-                            fill={marker.color}
-                        />
-                        <circle cx={marker.x} cy={marker.y} r={marker.size * 0.5} fill="white" />
-                        <circle
-                            cx={marker.x}
-                            cy={marker.y}
-                            r={marker.size * 4}
-                            fill="transparent"
-                        />
+                        <circle cx={marker.x} cy={marker.y} r={radius * 1.25} class="fill-accent" />
+                        <circle cx={marker.x} cy={marker.y} r={radius * 0.5} fill="white" />
+                        <circle cx={marker.x} cy={marker.y} r={radius * 4} />
                     </g>
                 {/each}
             </svg>

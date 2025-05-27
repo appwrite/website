@@ -213,6 +213,9 @@ importers:
       svelte-markdown:
         specifier: ^0.4.1
         version: 0.4.1(svelte@5.25.6)
+      svg-dotted-map:
+        specifier: ^2.0.1
+        version: 2.0.1
       svgtofont:
         specifier: ^4.2.3
         version: 4.2.3
@@ -3724,6 +3727,9 @@ packages:
   svelte@5.25.6:
     resolution: {integrity: sha512-RGkaeAXDuJdvhA1fdSM5GgD++vYfJYijZL0uN6kM2s/TRJ663jktBhZlF0qjzAJGR/34PtaeT3G8MKJY1EKeqg==}
     engines: {node: '>=18'}
+
+  svg-dotted-map@2.0.1:
+    resolution: {integrity: sha512-eeI2XzIKm23gmSVr7ASTMNVJvxAvBfyL30tN33Y/DcZCJXvC/Br/cxQp9Ts6jDK/e7fkE5TpZStEfduPqPXrIw==}
 
   svg-pathdata@6.0.3:
     resolution: {integrity: sha512-qsjeeq5YjBZ5eMdFuUa4ZosMLxgr5RZ+F+Y1OrDhuOCEInRMA3x74XdBtggJcj9kOeInz0WE+LgCPDkZFlBYJw==}
@@ -7681,6 +7687,8 @@ snapshots:
       locate-character: 3.0.0
       magic-string: 0.30.17
       zimmerframe: 1.1.2
+
+  svg-dotted-map@2.0.1: {}
 
   svg-pathdata@6.0.3: {}
 
