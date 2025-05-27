@@ -290,7 +290,7 @@
     --text-x-micro--letter-spacing: var(--tracking-loose);
     --text-micro: 0.75rem;
     --text-micro--line-height: 1rem;
-    --text-micro--letter-spacing: var(--tracking-loose);
+    --text-micro--letter-spacing: var(--tracking-compressed);
     --text-caption: 0.875rem;
     --text-caption--line-height: 1.375rem;
     --text-caption--letter-spacing: var(--tracking-tight);

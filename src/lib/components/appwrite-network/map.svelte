@@ -127,6 +127,19 @@
                         />
                     </g>
                 {/each}
+                <defs>
+                    <mask id="map">
+                        {#each points as point}
+                            <ellipse
+                                cx={point.x}
+                                cy={point.y}
+                                rx={radius}
+                                ry={radius * 1.25}
+                                fill={theme === 'dark' ? 'rgba(255,255,255,.1)' : '#dadadd'}
+                            />
+                        {/each}
+                    </mask>
+                </defs>
             </svg>
         </div>
     </div>
