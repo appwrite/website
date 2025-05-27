@@ -21,7 +21,7 @@
 
 <div
     class={classNames(
-        'bg-smooth max-w-screen translate-x-5 overflow-hidden rounded-t-2xl border-x border-t border-white/10 px-2 pt-2 backdrop-blur-2xl md:translate-x-1/4 ',
+        'bg-smooth -mb-72 max-w-screen translate-x-5 overflow-hidden rounded-t-2xl border-x border-t border-white/10 px-2 pt-2 backdrop-blur-2xl md:mb-0 md:translate-x-1/4 ',
         'mask-b-from-0% mask-b-to-70% md:mask-b-to-100%'
     )}
 >
