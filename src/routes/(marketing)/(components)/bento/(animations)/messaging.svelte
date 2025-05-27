@@ -53,7 +53,7 @@
 
 <a
     href="/products/messaging"
-    class="border-smooth group col-span-12 flex flex-col rounded-2xl border bg-white/2 p-2 transition-shadow duration-300 hover:shadow-[0px_0px_0px_4px_var(--color-offset)] focus:shadow-[0px_0px_0px_4px_var(--color-offset)] md:col-span-4"
+    class="border-smooth group col-span-12 flex flex-col rounded-2xl border bg-white/2 p-2 transition-shadow duration-300 hover:shadow-[0px_0px_0px_4px_var(--color-offset)] focus:shadow-[0px_0px_0px_4px_var(--color-offset)] md:col-span-6 lg:col-span-4"
     bind:this={container}
 >
     <div class="space-y-3 px-3 pt-2 pb-4">
@@ -75,7 +75,7 @@
         class="relative flex h-85 items-center justify-center overflow-clip rounded-xl bg-black/24 px-8"
     >
         <div
-            class="light absolute top-14 z-10 flex h-[65px] w-[315px] scale-75 items-center justify-between gap-4 rounded-[20px] bg-white/80 px-3 py-2 shadow-[-8px_4px_32px_rgba(0,0,0,0.24)] backdrop-blur-xl md:scale-100"
+            class="light absolute top-14 z-10 flex h-[65px] w-[315px] items-center justify-between gap-4 rounded-[20px] bg-white/80 px-3 py-2 shadow-[-8px_4px_32px_rgba(0,0,0,0.24)] backdrop-blur-xl md:scale-100"
             style="transform: translateY(-15px); opacity: 0; filter: blur(4px);"
             bind:this={notification}
         >
@@ -109,7 +109,7 @@
                     class="text-micro mt-6 grid flex-1 grid-cols-4 grid-rows-24 place-items-center gap-3 p-6"
                 >
                     <div
-                        class="relative flex shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-white/10 to-white/3 shadow-sm shadow-black/5 md:size-[45px]"
+                        class="relative flex size-[45px] shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-white/10 to-white/3 shadow-sm shadow-black/5"
                     >
                         <div
                             class="bg-accent text-micro absolute -top-1 -right-1 flex size-3 items-center justify-center rounded-full"
@@ -120,7 +120,7 @@
                     </div>
                     {#each [Messages, Settings, Calendar] as icon}
                         <div
-                            class="flex shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-white/10 to-white/3 shadow-sm shadow-black/5 md:size-[45px]"
+                            class="flex size-[45px] shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-white/10 to-white/3 shadow-sm shadow-black/5"
                         >
                             <img src={icon} alt="" class="size-6" />
                         </div>
@@ -128,7 +128,7 @@
 
                     {#each Array.from({ length: 12 }) as _, index}
                         <div
-                            class="shrink-0 rounded-xl bg-gradient-to-br from-white/10 to-white/3 shadow-sm shadow-black/5 md:size-[45px]"
+                            class="size-[45px] shrink-0 rounded-xl bg-gradient-to-br from-white/10 to-white/3 shadow-sm shadow-black/5"
                         ></div>
                     {/each}
                 </div>

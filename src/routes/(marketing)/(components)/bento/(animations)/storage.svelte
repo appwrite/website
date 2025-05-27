@@ -45,7 +45,7 @@
 
 <a
     href="/products/storage"
-    class="border-smooth group col-span-12 flex flex-col rounded-2xl border bg-white/2 p-2 transition-shadow duration-300 hover:shadow-[0px_0px_0px_4px_var(--color-offset)] focus:shadow-[0px_0px_0px_4px_var(--color-offset)] md:col-span-4"
+    class="border-smooth group col-span-12 flex flex-col rounded-2xl border bg-white/2 p-2 transition-shadow duration-300 hover:shadow-[0px_0px_0px_4px_var(--color-offset)] focus:shadow-[0px_0px_0px_4px_var(--color-offset)] md:col-span-6 lg:col-span-4"
     bind:this={container}
 >
     <div class="space-y-3 px-3 pt-2 pb-4">
@@ -61,7 +61,7 @@
     <div
         class="relative flex h-85 items-center justify-center overflow-clip rounded-xl bg-black/24 p-8"
     >
-        <div class="relative h-fit border border-white/50 p-1">
+        <div class="relative h-fit max-h-[98%] overflow-hidden border border-white/50 p-1">
             {#each [1, 2, 3, 4] as _, i}
                 <div
                     class={classNames(
@@ -79,7 +79,7 @@
             <img
                 src={Image}
                 alt="Storage"
-                class="object-cover transition-all"
+                class="object-contain transition-all"
                 bind:this={image}
                 style:border-radius="4px"
                 style:filter="grayscale(100%)"
