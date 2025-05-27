@@ -89,15 +89,9 @@
     });
 </script>
 
-<div
-    class={classNames(
-        'relative flex min-h-[70vh] flex-col gap-4',
-        theme === 'dark' ? 'border-smooth border-y bg-black/8 py-20' : ''
-    )}
-    use:useInView
->
+<div class={classNames('relative flex min-h-[80vh] flex-col gap-4 py-12', theme)} use:useInView>
     <div class="relative z-10 container w-fit md:w-full">
-        <div class="max-w-xl">
+        <div class="mt-12 max-w-xl">
             <h2 class="text-primary font-aeonik-pro text-5xl tracking-tighter text-pretty">
                 Thousands of developers <span class="text-secondary">scale with Appwrite</span><span
                     class="text-accent">_</span
@@ -145,7 +139,7 @@
     </div>
 
     <div
-        class="swipe mask absolute inset-0 hidden md:block"
+        class="swipe mask absolute inset-0 mt-32 hidden md:block"
         style:--animation-duration={`${animationDuration}s`}
         style:--mask-height="50px"
     >

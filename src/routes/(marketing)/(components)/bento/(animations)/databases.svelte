@@ -82,7 +82,8 @@
     });
 </script>
 
-<div
+<a
+    href="/docs/products/databases"
     class="border-smooth col-span-12 flex flex-col rounded-2xl border bg-white/2 p-2 md:col-span-6"
     bind:this={container}
 >
@@ -253,4 +254,4 @@
 
         <GridPaper class="absolute inset-0 -z-10 bg-size-[calc(100%/11)]" />
     </div>
-</div>
+</a>

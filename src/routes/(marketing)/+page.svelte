@@ -29,40 +29,42 @@
     >
     <CaseStudies />
     <Features />
-    <Map />
-    <Scale
-        testimonial={{
-            name: 'Ryan O’Conner',
-            title: 'Founder',
-            company: 'K-Collect',
-            image: '/images/testimonials/ryan-oconner-testimonial.png'
-        }}
-        stats={[
-            {
-                number: 50,
-                suffix: 'K+',
-                description: 'Github stars'
-            },
-            {
-                number: 300,
-                suffix: '+',
-                description: 'PoP locations'
-            },
-            {
-                number: 200,
-                suffix: 'K+',
-                description: 'developers'
-            },
-            {
-                number: 200,
-                suffix: 'B+',
-                description: 'monthly database operations'
-            }
-        ]}
-    >
-        The switch to using Appwrite brought
-        <span class="text-primary">infinite value that I'm still discovering today.</span>
-    </Scale>
+    <div class="bg-[#EDEDF0]">
+        <Map theme="light" />
+        <Scale
+            testimonial={{
+                name: 'Ryan O’Conner',
+                title: 'Founder',
+                company: 'K-Collect',
+                image: '/images/testimonials/ryan-oconner-testimonial.png'
+            }}
+            stats={[
+                {
+                    number: 50,
+                    suffix: 'K+',
+                    description: 'Github stars'
+                },
+                {
+                    number: 300,
+                    suffix: '+',
+                    description: 'PoP locations'
+                },
+                {
+                    number: 200,
+                    suffix: 'K+',
+                    description: 'developers'
+                },
+                {
+                    number: 200,
+                    suffix: 'B+',
+                    description: 'monthly database operations'
+                }
+            ]}
+        >
+            The switch to using Appwrite brought
+            <span class="text-primary">infinite value that I'm still discovering today.</span>
+        </Scale>
+    </div>
     <Pricing />
 </Main>
 

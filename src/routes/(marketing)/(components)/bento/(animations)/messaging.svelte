@@ -51,7 +51,8 @@
     });
 </script>
 
-<div
+<a
+    href="/products/messaging"
     class="border-smooth group col-span-12 flex flex-col rounded-2xl border bg-white/2 p-2 md:col-span-4"
     bind:this={container}
 >
@@ -135,4 +136,4 @@
         </div>
         <GridPaper class="absolute inset-0 -z-10 bg-size-[calc(100%/13)]" />
     </div>
-</div>
+</a>

@@ -1,9 +1,16 @@
 <script lang="ts">
     import TheAppwriteNetwork from '$lib/components/appwrite-network/map.svelte';
     import { Button } from '$lib/components/ui';
+    import { classNames } from '$lib/utils/classnames';
+
+    type Props = {
+        theme?: 'light' | 'dark';
+    };
+
+    const { theme = 'light' }: Props = $props();
 </script>
 
-<div class="py-10">
+<div class={classNames('-mt-6 py-32', theme)}>
     <div class="mb-12 flex flex-col items-center gap-6 text-center">
         <h2 class="text-primary font-aeonik-pro text-5xl">
             The Appwrite Network<span class="text-accent">_</span>
@@ -14,5 +21,5 @@
         </p>
         <Button variant="secondary">More about the Appwrite Network</Button>
     </div>
-    <TheAppwriteNetwork />
+    <TheAppwriteNetwork {theme} />
 </div>

@@ -10,42 +10,48 @@
             copy: `Not only is the software an absolute game-changer, but the team is always there when you need them. The integrated user authentication and the ease of creating data structures have undoubtedly saved us several weeks' worth of time.`,
             image: '/images/testimonials/marius-bolik2.png',
             title: 'CTO',
-            company: 'mySHOEFITTER'
+            company: 'mySHOEFITTER',
+            href: '/blog/post/customer-stories-myshoefitter'
         },
         {
             name: 'David Forster',
             copy: `Working with Appwrite saved us a lot of money in comparison to Firebase since the amount of users grew quite fast and we needed a quick switch. I am still surprised how easy the implementation into Flutter was.`,
             image: '/images/testimonials/david-forster.png',
             title: 'Founder',
-            company: 'Open Mind'
+            company: 'Open Mind',
+            href: '/blog/post/customer-stories-open-mind'
         },
         {
             name: 'Ryan O’Conner',
             copy: `The switch to using Appwrite brought infinite value that I'm still discovering today, but a major impact that it made was the amount of time and stress that it saved me as it simply just works. There's no struggling with writing backend code and working with databases, as that's already taken care of.`,
             image: '/images/testimonials/ryan-oconner.png',
             title: 'Founder',
-            company: 'K-Collect'
+            company: 'K-Collect',
+            href: '/blog/post/customer-stories-kcollect'
         },
         {
             name: 'Hassan Ahmed',
             copy: `A special thanks to Appwrite for providing robust features and seamless functionality that allow us to focus on what matters most—empowering merchants with real-time insights and control over their store operations.`,
             image: '/images/testimonials/smartbee.png',
             title: 'Fullstack Developer',
-            company: 'DevKind'
+            company: 'DevKind',
+            href: '/blog/post/customer-stories-smartbee'
         },
         {
             name: 'Jonas Janssen',
             copy: `Thanks to Appwrite and advances in technology, we were able to get an MVP out in 2/3 months with 1 developer.`,
-            image: '/images/testimonials/smartbee.png',
+            image: '/images/testimonials/undo.png',
             title: 'Founder',
-            company: 'UNDO'
+            company: 'UNDO',
+            href: '/blog/post/customer-stories-undo'
         },
         {
             name: 'Xue',
             copy: `With its comprehensive suite of services including authentication, database management, storage, and serverless functions, Appwrite emerged as an ideal choice for my needs.`,
-            image: '/images/testimonials/smartbee.png',
+            image: '/images/testimonials/langx.png',
             title: 'Founder',
-            company: 'LangX'
+            company: 'LangX',
+            href: '/blog/post/customer-stories-langx'
         },
         {
             name: 'Petto',
@@ -82,33 +88,65 @@
         </div>
         <div class="mt-8 columns-1 [column-gap:20px] md:columns-2 lg:columns-3">
             {#each testimonials as testimonial}
-                <div
-                    class={classNames(
-                        'border-smooth bg-card mb-5 h-fit [break-inside:avoid] rounded-2xl border p-5 last-of-type:col-start-2'
-                    )}
-                >
-                    {testimonial.copy}
+                {#if testimonial.href}
+                    <a href={testimonial.href} class="contents">
+                        <div
+                            class={classNames(
+                                'border-smooth bg-card mb-5 h-fit [break-inside:avoid] rounded-2xl border p-5 last-of-type:col-start-2'
+                            )}
+                        >
+                            {testimonial.copy}
 
-                    <div class="mt-4 flex items-center gap-3">
-                        <img
-                            src={testimonial.image}
-                            class="size-12 rounded-full"
-                            alt="{testimonial.company} Logo"
-                        />
-                        <div>
-                            <span class="text-secondary text-sub-body block font-medium">
-                                {testimonial.name}
-                            </span>
+                            <div class="mt-4 flex items-center gap-3">
+                                <img
+                                    src={testimonial.image}
+                                    class="size-12 rounded-full"
+                                    alt="{testimonial.company} Logo"
+                                />
+                                <div>
+                                    <span class="text-secondary text-sub-body block font-medium">
+                                        {testimonial.name}
+                                    </span>
 
-                            <span class="text-sub-body text-secondary block">
-                                {testimonial.title}
-                                {#if testimonial.company}
-                                    // {testimonial.company}
-                                {/if}
-                            </span>
+                                    <span class="text-sub-body text-secondary block">
+                                        {testimonial.title}
+                                        {#if testimonial.company}
+                                            // {testimonial.company}
+                                        {/if}
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                {:else}
+                    <div
+                        class={classNames(
+                            'border-smooth bg-card mb-5 h-fit [break-inside:avoid] rounded-2xl border p-5 last-of-type:col-start-2'
+                        )}
+                    >
+                        {testimonial.copy}
+
+                        <div class="mt-4 flex items-center gap-3">
+                            <img
+                                src={testimonial.image}
+                                class="size-12 rounded-full"
+                                alt="{testimonial.company} Logo"
+                            />
+                            <div>
+                                <span class="text-secondary text-sub-body block font-medium">
+                                    {testimonial.name}
+                                </span>
+
+                                <span class="text-sub-body text-secondary block">
+                                    {testimonial.title}
+                                    {#if testimonial.company}
+                                        // {testimonial.company}
+                                    {/if}
+                                </span>
+                            </div>
                         </div>
                     </div>
-                </div>
+                {/if}
             {/each}
         </div>
     </div>

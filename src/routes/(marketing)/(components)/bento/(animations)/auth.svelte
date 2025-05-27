@@ -28,7 +28,8 @@
     });
 </script>
 
-<div
+<a
+    href="/products/auth"
     class="border-smooth col-span-12 flex flex-col rounded-2xl border bg-white/2 p-2 md:col-span-6"
     bind:this={container}
 >
@@ -106,4 +107,4 @@
         </div>
         <GridPaper class="absolute inset-0 -z-10 bg-size-[calc(100%/11)]" />
     </div>
-</div>
+</a>

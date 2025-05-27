@@ -97,8 +97,9 @@
     });
 </script>
 
-<div
-    class="border-smooth group col-span-12 flex flex-col rounded-2xl border bg-white/2 p-2 md:col-span-7"
+<a
+    href="/producst/sites"
+    class="border-smooth group col-span-12 flex flex-col rounded-2xl border bg-white/2 p-2 hover:shadow-[0px,0px,0px,4px,var(--color-offset)] md:col-span-7"
     bind:this={container}
 >
     <div class="space-y-3 px-3 pt-2 pb-4">
@@ -171,4 +172,4 @@
 
         <GridPaper class="absolute inset-0 -z-10 bg-size-[calc(100%/23)]" />
     </div>
-</div>
+</a>
