@@ -44,7 +44,7 @@
 </script>
 
 <div class="light bg-[#EDEDF0] py-20">
-    <div class="container">
+    <div class="container mx-auto">
         <section class="flex flex-col items-start md:flex-row">
             <h2 class="text-title-lg font-aeonik-pro text-primary max-w-[700px] text-pretty">
                 Self-host or take it to the Cloud<span class="text-accent">_</span>
@@ -54,9 +54,13 @@
                 API. With built-in security and privacy for peace of mind.
             </p>
         </section>
-        <div class="mt-20 grid grid-cols-1 gap-12 overflow-hidden md:grid-cols-2 lg:grid-cols-4">
+    </div>
+    <div class="mt-20 border-y border-dashed border-black/8">
+        <div class="container grid grid-cols-1 overflow-hidden md:grid-cols-2 lg:grid-cols-4">
             {#each features as box}
-                <div class="text-sub-body relative font-medium">
+                <div
+                    class="text-sub-body relative border-b border-dashed border-black/8 p-8 font-medium last-of-type:border-0 nth-of-type-[4]:border-r-0 nth-of-type-[5]:border-b-0 nth-of-type-[6]:border-b-0 nth-of-type-[7]:border-b-0 nth-of-type-[8]:border-b-0 md:border-r md:px-8"
+                >
                     <img src={box.icon} width="40" height="40" alt="" />
                     <h3 class="text-primary mt-4 flex flex-wrap items-baseline gap-3">
                         {box.label}
