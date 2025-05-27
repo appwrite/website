@@ -102,13 +102,13 @@
                         cy={point.y}
                         rx={radius}
                         ry={radius * 1.25}
-                        fill="#dadadd"
+                        fill={theme === 'dark' ? 'rgba(255,255,255,.1)' : '#dadadd'}
                     />
                 {/each}
                 {#each markers as marker}
                     <g
                         role="tooltip"
-                        class="outline-none"
+                        class="animate-fade-in outline-none"
                         onmouseover={() =>
                             handleSetActiveTooltip(marker.city, marker.code, marker.available)}
                         onfocus={() =>
@@ -118,8 +118,13 @@
                         data-region={slugify(marker.city)}
                     >
                         <circle cx={marker.x} cy={marker.y} r={radius * 1.25} class="fill-accent" />
-                        <circle cx={marker.x} cy={marker.y} r={radius * 0.5} fill="white" />
-                        <circle cx={marker.x} cy={marker.y} r={radius * 4} />
+                        <circle cx={marker.x} cy={marker.y} r={radius * 0.5} class="fill-white" />
+                        <circle
+                            cx={marker.x}
+                            cy={marker.y}
+                            r={radius * 4}
+                            class="fill-transparent"
+                        />
                     </g>
                 {/each}
             </svg>
