@@ -1,5 +1,15 @@
 <script lang="ts">
-    export let title = "Trusted by developers from the world's leading organizations";
+    import { classNames } from '$lib/utils/classnames';
+
+    type Props = {
+        title?: string;
+        class?: string;
+    };
+
+    const {
+        title = "Trusted by developers from the world's leading organizations",
+        class: className
+    }: Props = $props();
 
     const logos = [
         {
@@ -77,7 +87,7 @@
     ];
 </script>
 
-<div class="my-32">
+<div class={classNames('py-32', className)}>
     <div class="container">
         <h2
             class="font-aeonik-pro text-greyscale-100 mx-auto max-w-xl text-center text-4xl leading-10"
