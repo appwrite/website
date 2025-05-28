@@ -62,7 +62,7 @@
     ];
 
     const numbers = [12, 1000, 50, 300];
-    const alternateNumbers = [50, 300, 300, 200];
+    const alternateNumbers = [50, 300, 300, 20];
 
     let animate: boolean = false;
 
