@@ -163,7 +163,7 @@
                 },
                 {
                     title: 'Phone OTP',
-                    free: '10 SMS / month',
+                    free: '-',
                     pro: {
                         text: 'View rates',
                         url: '/docs/advanced/platform/phone-otp#rates',

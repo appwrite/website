@@ -29,10 +29,6 @@ To help prepare for these changes, each team can visit their organization's usag
 
 ![console image](/images/blog/announcing-phone-OTP-pricing/cover.png)
 
-# Free quota available
-
-To ensure that free users can continue exploring the platform and its features, we will provide up to 10 phone OTP login attempts per month at no charge. This will allow you to continue utilizing OTP logins to evaluate Appwrite's capabilities and integration into your workflows.
-
 # We're here to help
 
 If you have any questions about this change or need assistance with adjusting your application, please don't hesitate to contact us at [billing@appwrite.io](mailto:billing@appwrite.io).

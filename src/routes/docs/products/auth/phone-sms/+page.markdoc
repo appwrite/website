@@ -5,7 +5,7 @@ description: Enhance security with SMS and phone authentication in Appwrite. Add
 ---
 
 {% info title="Note" %}
-The first 10 SMS messages each month are free. Thereafter OTPs are billed per message, with rates varying by country. See the [phone OTP rates](/docs/advanced/platform/phone-otp#rates) for more information.
+Paid plans receive 10 free SMS messages each month. Thereafter OTPs are billed per message, with rates varying by country. See the [phone OTP rates](/docs/advanced/platform/phone-otp#rates) for more information.
 {% /info %}
 
 Phone authentication lets users create accounts using their phone numbers and log in through SMS messages.
