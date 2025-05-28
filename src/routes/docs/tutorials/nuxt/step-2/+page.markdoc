@@ -20,7 +20,7 @@ Once the project is created, change your current working directory and install t
 
 ```sh
 cd ideas-tracker
-npm install appwrite@14.0.1
+npm install appwrite@18.1.1
 npm install "@appwrite.io/pink"
 ```
 

@@ -48,5 +48,5 @@ npm install
 Appwrite provides a Web SDK that can be used in your Svelte apps. You can use Appwrite by installing the Web SDK as an NPM package.
 
 ```sh
-npm install appwrite@14.0.1
+npm install appwrite@18.1.1
 ```
