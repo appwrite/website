@@ -20,51 +20,13 @@
         hover(container, () => {
             if (isMobile()) return;
 
-            animate(
-                '.platforms',
-                { y: 'var(--y)' },
-                {
-                    duration: 60,
-                    ease: 'linear'
-                }
-            );
-
-            return () => {
-                animate(
-                    '.platforms',
-                    { y: 'var(--y-start)' },
-                    {
-                        duration: 1,
-                        ease: 'easeOut',
-                        type: 'spring'
-                    }
-                );
-            };
+            return () => {};
         });
 
         inView(container, () => {
             if (!isMobile()) return;
 
-            animate(
-                '.platforms',
-                { y: 'var(--y)' },
-                {
-                    duration: 60,
-                    ease: 'linear'
-                }
-            );
-
-            return () => {
-                animate(
-                    '.platforms',
-                    { y: 'var(--y-start)' },
-                    {
-                        duration: 1,
-                        ease: 'easeOut',
-                        type: 'spring'
-                    }
-                );
-            };
+            return () => {};
         });
     });
 </script>
