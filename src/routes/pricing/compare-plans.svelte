@@ -355,7 +355,7 @@
                     title: 'Concurrent connections',
                     free: '250',
                     pro: '500',
-                    scale: '500',
+                    scale: '750',
                     enterprise: 'Custom'
                 },
                 {
