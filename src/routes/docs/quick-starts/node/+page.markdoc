@@ -54,7 +54,7 @@ npm init
 Install the Node.js Appwrite SDK.
 
 ```sh
-npm install node-appwrite@11.1.1
+npm install node-appwrite@17.0.0
 ```
 {% /section %}
 {% section #step-4 step=4 title="Import Appwrite" %}
