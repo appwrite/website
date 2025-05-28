@@ -10,6 +10,7 @@
     } from './map-tooltip.svelte';
     import { createMap } from 'svg-dotted-map';
     import { classNames } from '$lib/utils/classnames';
+    import Icon from '../ui/icon';
 
     let activeSegment = $state<string>('pop-locations');
     let activeMarkers = $derived(pins[activeSegment as PinSegment]);
@@ -82,14 +83,21 @@
     <div
         class="sticky left-0 mx-auto block max-w-[calc(100vw_-_calc(var(--spacing)_*-2))] md:hidden"
     >
-        <select
-            class="web-input-text mx-auto appearance-none"
-            onchange={(e) => handleSetActiveMarker(e.currentTarget.value)}
-        >
-            {#each pins[activeSegment as PinSegment] as pin}
-                <option value={pin.city}>{pin.city}-({pin.code})</option>
-            {/each}
-        </select>
+        <div class="relative mx-16">
+            <select
+                class="web-input-text w-full appearance-none"
+                id="companySize"
+                onchange={(e) => handleSetActiveMarker(e.currentTarget.value)}
+            >
+                {#each pins[activeSegment as PinSegment] as pin}
+                    <option value={pin.city}>{pin.city}-({pin.code})</option>
+                {/each}
+            </select>
+            <span
+                class="icon-cheveron-down web-u-pointer-events-none absolute top-[11px] right-2"
+                aria-hidden="true"
+            ></span>
+        </div>
     </div>
 
     <div class="relative mx-auto h-full w-[250vw] [scrollbar-width:none] md:w-full" use:inView>
