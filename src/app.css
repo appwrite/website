@@ -38,33 +38,33 @@
 
     /* mint */
     --color-mint-200: hsl(var(--color-mint-hue) 56% 88%);
-    --color-mint-500: hsl(calc(var(--color-mint-hue) + 1), 54%, 69%);
-    --color-mint-700: hsl(calc(var(--color-mint-hue) + 2), 24%, 41%);
+    --color-mint-500: hsl(calc(var(--color-mint-hue) + 1) 54% 69%);
+    --color-mint-700: hsl(calc(var(--color-mint-hue) + 2) 24% 41%);
 
     /* purple */
     --color-purple-200: hsl(var(--color-purple-hue) 100% 88%);
-    --color-purple-500: hsl(calc(var(--color-purple-hue) - 1), 99%, 70%);
-    --color-purple-700: hsl(calc(var(--color-purple-hue) - 1), 42%, 42%);
+    --color-purple-500: hsl(calc(var(--color-purple-hue) - 1) 99% 70%);
+    --color-purple-700: hsl(calc(var(--color-purple-hue) - 1) 42% 42%);
 
     /* yellow */
     --color-yellow-200: hsl(var(--color-yellow-hue) 100% 88%);
     --color-yellow-500: hsl(var(--color-yellow-hue) 99% 70%);
-    --color-yellow-700: hsl(calc(var(--color-yellow-hue) + 1), 42%, 42%);
+    --color-yellow-700: hsl(calc(var(--color-yellow-hue) + 1) 42% 42%);
 
     /* blue */
     --color-blue-200: hsl(var(--color-blue-hue) 100% 88%);
-    --color-blue-500: hsl(calc(var(--color-blue-hue) - 1), 99%, 70%);
-    --color-blue-700: hsl(calc(var(--color-blue-hue) - 1), 42%, 42%);
+    --color-blue-500: hsl(calc(var(--color-blue-hue) - 1) 99% 70%);
+    --color-blue-700: hsl(calc(var(--color-blue-hue) - 1) 42% 42%);
 
     /* green */
     --color-green-700: #0a714f;
 
     /* secondary */
     --color-secondary-100: hsl(var(--color-secondary-hue) 99% 66%);
-    --color-accent-200: hsl(var(--color-secondary-hue), 78%, 60%, 0.32);
+    --color-accent-200: hsl(var(--color-secondary-hue) 78% 60% / 0.32);
 
     /* greyscale */
-    --color-offset: hsl(var(--color-greyscale-hue) 2%, 11%, 0.94);
+    --color-offset: hsl(var(--color-greyscale-hue) 2% 11% / 0.94);
     --color-greyscale-25: hsl(var(--color-greyscale-hue) 11% 98%);
     --color-greyscale-50: hsl(var(--color-greyscale-hue) 11% 94%);
     --color-greyscale-100: hsl(var(--color-greyscale-hue) 6% 90%);
@@ -96,8 +96,6 @@
 
     --animate-fade-in: fade-in 0.5s ease-in-out both;
     --animate-fade-out: fade-out 0.5s ease-in-out both;
-    --animate-scroll-x: scroll-x var(--speed, 30s) linear infinite var(--direction, forwards);
-    --animate-scroll-y: scroll-y 60s linear infinite forwards;
     --animate-lighting: lighting 1.25s ease-out forwards;
     --animate-menu-in: menu-in 0.25s ease-out forwards;
     --animate-menu-out: menu-out 0.25s ease-out forwards;
@@ -403,10 +401,10 @@
     --carousel-gradient: transparent;
     --color-badge-bg: var(--color-badge-bg-light);
     --color-badge-border: var(--color-badge-border-light);
-    --color-smooth: hsl(var(--color-greyscale-hue) 6%, 10%, 0.04);
+    --color-smooth: hsl(var(--color-greyscale-hue) 6% 10% / 0.04);
     --color-card: var(--color-greyscale-850);
     --color-tertiary: hsl(var(--color-greyscale-600));
-    --color-offset: hsl(var(--color-greyscale-hue) 2%, 11%, 0.94);
+    --color-offset: hsl(var(--color-greyscale-hue) 2% 11% / 0.94);
     --color-subtle: var(--color-greyscale-850);
 }
 
@@ -415,7 +413,7 @@
     --color-secondary: var(--color-greyscale-300);
     --carousel-gradient: 23, 23, 26;
     --color-primary-bg: var(--color-greyscale-900);
-    --color-smooth: hsl(0 0%, 100%, 0.06);
+    --color-smooth: hsl(0 0% 100% / 0.06);
     --color-tertiary: hsl(var(--color-greyscale-600));
     --color-offset: hsl(0 0% 100% / 0.1);
 }
