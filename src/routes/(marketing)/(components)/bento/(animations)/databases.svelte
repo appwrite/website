@@ -2,7 +2,7 @@
     import { classNames } from '$lib/utils/classnames';
     import { isMobile } from '$lib/utils/is-mobile';
     import GridPaper from '../../grid-paper.svelte';
-    import { animate, hover, inView, stagger, transform } from 'motion';
+    import { animate, hover, inView, stagger, transform, type AnimationSequence } from 'motion';
 
     const collections = [
         {
@@ -62,6 +62,7 @@
     const products = Object.values(productSets).flat();
 
     let container: HTMLElement;
+    let table: HTMLElement;
 
     $effect(() => {
         hover(container, () => {
@@ -184,7 +185,7 @@
                 </table>
             </div>
         </div>
-        <div class="mt-0 mb-auto flex h-full w-full flex-col gap-8">
+        <div class="mt-0 mb-auto flex h-full w-full flex-col gap-8" bind:this={table}>
             {#each Object.entries(productSets).reverse() as [key, products], i}
                 {@const keys = Object.keys(products[0])}
 
