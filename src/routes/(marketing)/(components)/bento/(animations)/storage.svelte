@@ -61,11 +61,11 @@
     <div
         class="relative flex h-85 items-center justify-center overflow-clip rounded-xl bg-black/24 p-8"
     >
-        <div class="relative h-fit max-h-[98%] overflow-hidden border border-white/50 p-1">
+        <div class="relative h-fit border border-white/50 p-1">
             {#each [1, 2, 3, 4] as _, i}
                 <div
                     class={classNames(
-                        'absolute flex h-1 w-1 items-center justify-center border border-white/24 bg-white/24 backdrop-blur-sm',
+                        'absolute z-10 flex h-1 w-1 items-center justify-center border border-white/24 bg-white/24 backdrop-blur-sm',
                         {
                             '-left-0.5': i === 0 || i === 2,
                             '-top-0.5': i === 0 || i === 1,
@@ -79,7 +79,7 @@
             <img
                 src={Image}
                 alt="Storage"
-                class="object-contain transition-all"
+                class="md:max-w-auto h-full w-full max-w-[350px] overflow-hidden object-contain transition-all"
                 bind:this={image}
                 style:border-radius="4px"
                 style:filter="grayscale(100%)"
