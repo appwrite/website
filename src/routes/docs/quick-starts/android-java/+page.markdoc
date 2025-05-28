@@ -399,4 +399,5 @@ public class MainActivity extends AppCompatActivity {
 
 {% section #step-7 step=7 title="All set" %}
 Run your project by clicking **Run app** in Android Studio.
+
 {% /section %}
