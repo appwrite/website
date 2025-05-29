@@ -1,0 +1,407 @@
+---
+layout: article
+title: Preferences
+description: Learn how to store and manage user preferences in Appwrite. Compare storage options and pick the right approach for your application.
+---
+
+Preferences allow users to customize their experience in your application. You can save settings like theme choice, language selection, or notification preferences. Appwrite provides multiple ways to store these preferences, depending on your needs.
+
+There are four main options for storing user preferences in applications using Appwrite:
+
+# Browser localStorage {% #localstorage %}
+
+The browser's localStorage API is a standard web technology that persists data in the user's browser.
+
+- Device-specific: Settings are only available on the current device
+- Simple key-value storage
+- No server-side processing required
+- Data persists even after browser sessions end
+- Limited to 5MB per origin in most browsers
+
+```javascript
+// Store a preference using the browser's built-in localStorage API
+localStorage.setItem('darkMode', 'true');
+
+// Retrieve a preference
+const darkMode = localStorage.getItem('darkMode');
+```
+
+# User preferences {% #user-preferences %}
+
+Appwrite provides a built-in user preferences system through the Account API, allowing you to store preferences directly on the user object.
+
+- Persists across all user devices
+- Stored as a JSON object
+- Limited to 64kB of data
+- Automatically synced when the user logs in
+- Simple API for updating and retrieving
+
+{% multicode %}
+```client-web
+import { Client, Account } from "appwrite";
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('<PROJECT_ID>');                 // Your project ID
+
+const account = new Account(client);
+
+// Update preferences
+const promise = account.updatePrefs({
+    darkTheme: true,
+    language: 'en',
+    notificationsEnabled: true
+});
+
+promise.then(function (response) {
+    console.log(response); // Success
+}, function (error) {
+    console.log(error); // Failure
+});
+
+// Get preferences
+const getPrefs = account.getPrefs();
+
+getPrefs.then(function (prefs) {
+    console.log(prefs); // { darkTheme: true, language: 'en', notificationsEnabled: true }
+}, function (error) {
+    console.log(error);
+});
+```
+```client-flutter
+import 'package:appwrite/appwrite.dart';
+
+final client = Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('<PROJECT_ID>');                 // Your project ID
+
+final account = Account(client);
+
+// Update preferences
+final user = await account.updatePrefs(
+    prefs: {
+        "darkTheme": true,
+        "language": "en",
+        "notificationsEnabled": true
+    }
+);
+
+// Get preferences
+final prefs = await account.getPrefs();
+```
+```client-apple
+import Appwrite
+
+let client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
+    .setProject("<PROJECT_ID>")                  // Your project ID
+
+let account = Account(client)
+
+// Update preferences
+let user = try await account.updatePrefs(
+    prefs: [
+        "darkTheme": true,
+        "language": "en",
+        "notificationsEnabled": true
+    ]
+)
+
+// Get preferences
+let prefs = try await account.getPrefs()
+```
+```client-android-kotlin
+import io.appwrite.Client
+import io.appwrite.services.Account
+
+val client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
+    .setProject("<PROJECT_ID>")                  // Your project ID
+
+val account = Account(client)
+
+// Update preferences
+val user = account.updatePrefs(
+    prefs = mapOf(
+        "darkTheme" to true,
+        "language" to "en",
+        "notificationsEnabled" to true
+    )
+)
+
+// Get preferences
+val prefs = account.getPrefs()
+```
+```graphql
+# Update preferences
+mutation {
+    accountUpdatePrefs(
+        prefs: "{\"darkTheme\": true, \"language\": \"en\", \"notificationsEnabled\": true}"
+    ) {
+        _id
+        name
+        prefs {
+            data
+        }
+    }
+}
+
+# Get preferences
+query {
+    accountGetPrefs {
+        data
+    }
+}
+```
+{% /multicode %}
+
+{% arrow_link href="/docs/products/auth/accounts" %}
+Learn more about Appwrite Accounts
+{% /arrow_link %}
+
+# Team preferences {% #team-preferences %}
+
+Team preferences let you store settings that apply to an entire team of users, well-suited for collaborative features.
+
+- Shared across all team members
+- Useful for team-wide settings like theme, notification preferences, or feature toggles
+- Stored as a JSON object in the team document
+- Limited to 64kB of data
+
+{% multicode %}
+```client-web
+import { Client, Teams } from "appwrite";
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('<PROJECT_ID>');                 // Your project ID
+
+const teams = new Teams(client);
+
+// Update team preferences
+const promise = teams.updatePrefs(
+    '<TEAM_ID>',
+    {
+        theme: 'corporate',
+        notificationsEnabled: true,
+        defaultView: 'kanban'
+    }
+);
+
+promise.then(function (response) {
+    console.log(response); // Success
+}, function (error) {
+    console.log(error); // Failure
+});
+
+// Get team preferences
+const promise = teams.get('<TEAM_ID>');
+
+promise.then(function (team) {
+    console.log(team.prefs); // Team preferences
+}, function (error) {
+    console.log(error);
+});
+```
+```client-flutter
+import 'package:appwrite/appwrite.dart';
+
+final client = Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('<PROJECT_ID>');                 // Your project ID
+
+final teams = Teams(client);
+
+// Update team preferences
+final team = await teams.updatePrefs(
+    teamId: '<TEAM_ID>',
+    prefs: {
+        "theme": "corporate",
+        "notificationsEnabled": true,
+        "defaultView": "kanban"
+    }
+);
+
+// Get team preferences
+final teamData = await teams.get(
+    teamId: '<TEAM_ID>'
+);
+final prefs = teamData.prefs;
+```
+```client-apple
+import Appwrite
+
+let client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
+    .setProject("<PROJECT_ID>")                  // Your project ID
+
+let teams = Teams(client)
+
+// Update team preferences
+let team = try await teams.updatePrefs(
+    teamId: "<TEAM_ID>",
+    prefs: [
+        "theme": "corporate",
+        "notificationsEnabled": true,
+        "defaultView": "kanban"
+    ]
+)
+
+// Get team preferences
+let teamData = try await teams.get(
+    teamId: "<TEAM_ID>"
+)
+let prefs = teamData.prefs
+```
+```client-android-kotlin
+import io.appwrite.Client
+import io.appwrite.services.Teams
+
+val client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
+    .setProject("<PROJECT_ID>")                  // Your project ID
+
+val teams = Teams(client)
+
+// Update team preferences
+val team = teams.updatePrefs(
+    teamId = "<TEAM_ID>",
+    prefs = mapOf(
+        "theme" to "corporate",
+        "notificationsEnabled" to true,
+        "defaultView" to "kanban"
+    )
+)
+
+// Get team preferences
+val teamData = teams.get(
+    teamId = "<TEAM_ID>"
+)
+val prefs = teamData.prefs
+```
+{% /multicode %}
+
+{% arrow_link href="/docs/products/auth/teams" %}
+Learn more about Appwrite Teams
+{% /arrow_link %}
+
+# Appwrite Databases {% #appwrite-databases %}
+
+For complex preference structures or when storing larger amounts of data, Appwrite Databases offer a flexible solution.
+
+- Schema validation for structured data
+- Support for complex data types and relationships
+- Unlimited storage capacity (subject to project limits)
+- Advanced querying capabilities
+- Fine-grained access control
+
+{% multicode %}
+```client-web
+import { Client, Databases, ID, Query } from "appwrite";
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('<PROJECT_ID>');                 // Your project ID
+
+const databases = new Databases(client);
+
+// Store user preferences in a database
+const promise = databases.createDocument(
+    '<DATABASE_ID>',
+    '<COLLECTION_ID>',
+    ID.unique(),
+    {
+        userId: '<USER_ID>',
+        theme: {
+            mode: 'dark',
+            primaryColor: '#3498db',
+            fontSize: 'medium'
+        },
+        dashboard: {
+            layout: 'grid',
+            widgets: ['calendar', 'tasks', 'notes'],
+            defaultView: 'week'
+        },
+        notifications: {
+            email: true,
+            push: true,
+            frequency: 'daily'
+        }
+    }
+);
+
+// Retrieve user preferences
+const getUserPrefs = databases.listDocuments(
+    '<DATABASE_ID>',
+    '<COLLECTION_ID>',
+    [
+        Query.equal('userId', '<USER_ID>')
+    ]
+);
+```
+```client-flutter
+import 'package:appwrite/appwrite.dart';
+
+final client = Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('<PROJECT_ID>');                 // Your project ID
+
+final databases = Databases(client);
+
+// Store user preferences in a database
+final document = await databases.createDocument(
+    databaseId: '<DATABASE_ID>',
+    collectionId: '<COLLECTION_ID>',
+    documentId: ID.unique(),
+    data: {
+        'userId': '<USER_ID>',
+        'theme': {
+            'mode': 'dark',
+            'primaryColor': '#3498db',
+            'fontSize': 'medium'
+        },
+        'dashboard': {
+            'layout': 'grid',
+            'widgets': ['calendar', 'tasks', 'notes'],
+            'defaultView': 'week'
+        },
+        'notifications': {
+            'email': true,
+            'push': true,
+            'frequency': 'daily'
+        }
+    }
+);
+
+// Retrieve user preferences
+final userPrefs = await databases.listDocuments(
+    databaseId: '<DATABASE_ID>',
+    collectionId: '<COLLECTION_ID>',
+    queries: [
+        Query.equal('userId', '<USER_ID>')
+    ]
+);
+```
+{% /multicode %}
+
+{% arrow_link href="/docs/products/databases" %}
+Learn more about Appwrite Databases
+{% /arrow_link %}
+
+# Choosing the right option {% #choosing-the-right-option %}
+
+This comparison table shows the strengths of each storage option:
+
+| Feature | Browser localStorage | User Preferences | Team Preferences | Appwrite Databases |
+|---------|--------------|------------------|------------------|-------------------|
+| **Storage Location** | Client-side | Server-side | Server-side | Server-side |
+| **Persistence** | Device-specific | Cross-device | Team-wide | Cross-device |
+| **Size Limit** | 5MB per origin | 64kB | 64kB | Unlimited* |
+| **Complexity** | Simple | Simple | Simple | Complex |
+| **Schema Validation** | No | No | No | Yes |
+| **Offline Access** | Yes | No | No | No** |
+| **Syncing Required** | Yes | Automatic | Automatic | Manual |
+| **Query Capabilities** | Basic | Basic | Basic | Advanced |
+
+\* Subject to project limits  
+\** Unless implemented with local caching
