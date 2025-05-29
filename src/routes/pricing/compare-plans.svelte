@@ -163,7 +163,7 @@
                 },
                 {
                     title: 'Phone OTP',
-                    free: '10 SMS / month',
+                    free: '-',
                     pro: {
                         text: 'View rates',
                         url: '/docs/advanced/platform/phone-otp#rates',
@@ -355,7 +355,7 @@
                     title: 'Concurrent connections',
                     free: '250',
                     pro: '500',
-                    scale: '500',
+                    scale: '750',
                     enterprise: 'Custom'
                 },
                 {
