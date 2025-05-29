@@ -43,9 +43,9 @@ Understanding the key differences between Vercel and Appwrite Sites will help yo
 - Domain-level redirects and framework-level path redirects
 {% /table %}
 
-# Migration steps
+# Migration process
 
-Follow these steps to migrate your application from Vercel to Appwrite Sites.
+Follow these steps to move your application from Vercel to Appwrite Sites.
 
 {% section id="create-project" step=1 title="Create an Appwrite project" %}
 Start by setting up a new project in Appwrite:
@@ -70,11 +70,11 @@ Next, create a new site by connecting your existing repository:
 Appwrite will auto-detect your framework. Verify this is correct or select manually from the dropdown menu.
 {% /section %}
 
-## Configure your domain
+# Configure your domain
 
 One of the most significant differences between Vercel and Appwrite is how they handle domain configuration, particularly for apex domains.
 
-## Domain setup comparison
+# Domain setup comparison
 
 {% only_dark %}
 ![Domain configuration](/images/docs/sites/dark/add-domain.png)
@@ -83,7 +83,7 @@ One of the most significant differences between Vercel and Appwrite is how they 
 ![Domain configuration](/images/docs/sites/add-domain.png)
 {% /only_light %}
 
-## Migrating an apex domain
+# Migrating an apex domain
 
 Vercel uses A records for apex domains, while Appwrite uses nameserver (NS) records. This means you'll need to delegate DNS management to Appwrite.
 
@@ -118,7 +118,7 @@ Changing nameservers delegates your entire domain's DNS management to Appwrite. 
 {% /info %}
 {% /section %}
 
-## Migrating a subdomain
+# Migrating a subdomain
 
 For subdomains, both Vercel and Appwrite use CNAME records, making the migration process simpler.
 
@@ -138,7 +138,7 @@ At your domain registrar or DNS provider:
 3. Wait for DNS propagation and verification
 {% /section %}
 
-## Understanding domain rule types
+# Understanding domain rule types
 
 When adding a domain in Appwrite, you can choose from three rule types:
 
@@ -170,7 +170,7 @@ When adding a domain in Appwrite, you can choose from three rule types:
 When using domain-level redirects in Appwrite, path and query parameters are ignored. For example, if you redirect `example.com` to `appwrite.io`, then `example.com/docs?id=123` will redirect to `appwrite.io` (not `appwrite.io/docs?id=123`).
 {% /info %}
 
-## Configure build settings
+# Configure build settings
 
 After setting up your project and domain, you'll need to configure your build settings to match your Vercel configuration.
 
@@ -192,7 +192,7 @@ Navigate to your site > **Settings** > **Build settings** and configure the foll
 {% /only_light %}
 {% /section %}
 
-## Framework defaults
+# Framework defaults
 
 Appwrite automatically detects and applies default settings for popular frameworks:
 
@@ -238,7 +238,7 @@ Appwrite automatically detects and applies default settings for popular framewor
 - `./dist`
 {% /table %}
 
-## Manage environment variables
+# Manage environment variables
 
 Environment variables require special attention during migration, as they control how your application behaves in different environments.
 
@@ -268,7 +268,7 @@ Vercel automatically provides system variables like `VERCEL_URL`. You'll need to
 {% /only_light %}
 {% /section %}
 
-## Appwrite system variables
+# Appwrite system variables
 
 Appwrite automatically injects these variables into your site:
 
@@ -302,7 +302,7 @@ Appwrite automatically injects these variables into your site:
 - Build & Runtime
 {% /table %}
 
-## Handle redirects and rewrites
+# Handle redirects and rewrites
 
 One key difference between Vercel and Appwrite is how they handle redirects and rewrites.
 
@@ -324,7 +324,7 @@ Domain redirects in Appwrite do not preserve path or query parameters. For examp
 {% section id="framework-redirects" step=2 title="Framework-level redirects" %}
 For path-based redirects, use your framework's built-in functionality:
 
-## Next.js
+# Next.js
 ```javascript
 // next.config.js
 module.exports = {
@@ -340,7 +340,7 @@ module.exports = {
 };
 ```
 
-## SvelteKit
+# SvelteKit
 ```javascript
 // src/routes/+layout.server.js
 export function load({ url }) {
@@ -353,7 +353,7 @@ export function load({ url }) {
 }
 ```
 
-## Nuxt
+# Nuxt
 ```javascript
 // nuxt.config.js
 export default {
@@ -372,12 +372,12 @@ export default {
 ```
 {% /section %}
 
-## Configure custom headers
+# Configure custom headers
 
 Vercel allows setting custom headers at the platform level through `vercel.json`. Appwrite Sites supports custom headers through your framework's built-in configuration mechanisms.
 
 {% section id="framework-headers" step=1 title="Framework-specific headers" %}
-## Next.js
+# Next.js
 ```javascript
 // next.config.js
 module.exports = {
@@ -397,7 +397,7 @@ module.exports = {
 };
 ```
 
-## SvelteKit
+# SvelteKit
 ```javascript
 // src/hooks.server.js
 export function handle({ event, resolve }) {
@@ -410,11 +410,11 @@ export function handle({ event, resolve }) {
 }
 ```
 
-## Static sites
+# Static sites
 For static sites without framework support, consider using client-side solutions or framework-specific configuration files if your static site generator supports them.
 {% /section %}
 
-## Migrate serverless functions
+# Migrate serverless functions
 
 There are two approaches to serverless functions when migrating from Vercel to Appwrite:
 
@@ -451,7 +451,7 @@ For standalone serverless functions or more complex use cases:
 
 {% section id="update-endpoints" step=3 title="API endpoints usage" %}
 
-## Framework API routes
+# Framework API routes
 When using framework API routes within Appwrite Sites (with SSR enabled), your endpoints remain the same:
 
 - Vercel: `/api/hello`
@@ -466,7 +466,7 @@ export default function handler(req, res) {
 }
 ```
 
-## Standalone Appwrite Functions
+# Standalone Appwrite Functions
 If you're using standalone Appwrite Functions (outside your site's codebase), you'll need to update your frontend code to use the Appwrite Functions API:
 
 ```javascript
@@ -483,12 +483,12 @@ const response = await functions.createExecution('your-function-id');
 ```
 {% /section %}
 
-## Handle middleware
+# Handle middleware
 
 While Vercel offers platform-level Edge Middleware configured through `vercel.json`, Appwrite Sites fully supports framework-native middleware when using SSR. This means your existing middleware code will continue to work without modification.
 
 {% section id="framework-middleware" step=1 title="Framework-native middleware" %}
-## Next.js
+# Next.js
 ```javascript
 // middleware.js
 export function middleware(request) {
@@ -500,7 +500,7 @@ export const config = {
 };
 ```
 
-## SvelteKit
+# SvelteKit
 ```javascript
 // src/hooks.server.js
 export async function handle({ event, resolve }) {
@@ -511,7 +511,7 @@ export async function handle({ event, resolve }) {
 }
 ```
 
-## Nuxt
+# Nuxt
 ```javascript
 // server/middleware/example.js
 export default defineEventHandler((event) => {
@@ -529,7 +529,7 @@ After completing your migration from Vercel to Appwrite Sites, we recommend:
 3. **Set up CI/CD** - Configure automatic deployments from your repository
 4. **Explore Appwrite services** - Consider integrating with other Appwrite services like Authentication, Databases, and Storage
 
-## Timeouts
+# Timeouts
 
 Vercel has a default build timeout of 45 minutes. Appwrite Sites has a default request timeout of 15 seconds (max 30 seconds) for runtime requests, which is configurable.
 
