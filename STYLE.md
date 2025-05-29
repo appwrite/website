@@ -332,6 +332,13 @@ or a page needs to be sufficiently different from existing pages, follow exisitn
 
 If you are proposing a new type of page, discuss an outline in your PR and ask for the Appwrite team's review.
 
+### Placeholders
+
+Whenever there's a need for a placeholder such as for an ID, use angle brackets (<>) over square brackets ([]) because square brackets can be confused for an array.
+
+- ✅ `client.setEndpoint("https://<REGION>.cloud.appwrite.io")`
+- ❌ `client.setEndpoint("https://[REGION].cloud.appwrite.io")`
+
 ## Code snippets
 
 For quick starts and tutorials, a developer must be able to follow code examples from beginning to end

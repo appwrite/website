@@ -12,10 +12,15 @@ You can create and execute your first Appwrite Site in minutes.
 
 Before deploying your web app with Git, create a new Site attached to your GitHub repository.
 
-![Create Site from GitHub repo](https://warm-tray-285.notion.site/image/attachment%3A59cff292-50e7-4bc9-b38a-497cc71eb780%3Aimage.png?table=block&id=1bafb53f-e82d-808e-a703-d7730947593f&spaceId=cf760f55-c352-4759-b494-006b8b294dbb&width=1420&userId=&cache=v2)
+{% only_dark %}
+![Create site wizard](/images/docs/sites/dark/create-site-wizard.png)
+{% /only_dark %}
+{% only_light %}
+![Create site wizard](/images/docs/sites/create-site-wizard.png)
+{% /only_light %}
 
-1. In the Appwrite Console's sidebar, click **Sites**.
-2. Click on the **Create site** button.
+1. In the Appwrite Console's sidebar, click **Sites**.
+2. Click on the **Create site** button.
 3. After clicking on **Connect Git repository**, select your repository.
 4. After connecting to GitHub, (optionally) add a name and site ID.
 5. Verify that the correct framework is selected.
@@ -29,13 +34,13 @@ Learn how to quickly setup a web app developed using any of the following framew
 
 {% cards %}
 
-{% cards_item href="/docs/products/sites/quick-start/sveltekit" title="SvelteKit" icon="icon-svelte" %}
-{% /cards_item %}
-
 {% cards_item href="/docs/products/sites/quick-start/nextjs" title="Next.js" icon="icon-nextjs" %}
 {% /cards_item %}
 
 {% cards_item href="/docs/products/sites/quick-start/nuxt" title="Nuxt" icon="icon-nuxt" %}
+{% /cards_item %}
+
+{% cards_item href="/docs/products/sites/quick-start/sveltekit" title="SvelteKit" icon="icon-svelte" %}
 {% /cards_item %}
 
 {% cards_item href="/docs/products/sites/quick-start/angular" title="Angular" icon="icon-angular" %}
@@ -56,6 +61,9 @@ Learn how to quickly setup a web app developed using any of the following framew
 {% cards_item href="/docs/products/sites/quick-start/flutter" title="Flutter" icon="icon-flutter" %}
 {% /cards_item %}
 
+{% cards_item href="/docs/products/sites/quick-start/react-native" title="React Native" icon="icon-react-native" %}
+{% /cards_item %}
+
 {% cards_item href="/docs/products/sites/quick-start/vanilla" title="Vanilla JS" icon="icon-js" %}
 {% /cards_item %}
 
@@ -67,7 +75,7 @@ Use your first site as a springboard to explore the flexible and powerful featur
 
 {% cards %}
 
-{% cards_item href="/docs/products/sites/templates" title="Template" %}
+{% cards_item href="/docs/products/sites/templates" title="Templates" %}
 Get a template site up and running with a single click.
 {% /cards_item %}
 

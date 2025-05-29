@@ -21,6 +21,13 @@ If you need to manually update these settings, here are the steps to do so:
 3. Confirm that the appropriate install command, build command, and output directory are set
 4. Click on the **Update** button and redeploy your site
 
+{% only_dark %}
+![Rendering strategy](/images/docs/sites/dark/build-settings-rendering-static.png)
+{% /only_dark %}
+{% only_light %}
+![Rendering strategy](/images/docs/sites/build-settings-rendering-static.png)
+{% /only_light %}
+
 ## Enabling static builds on your web app {% #enabling-static-builds %}
 
 To enable static builds for your web app, you may need to make some additional updates in case of the following frameworks:

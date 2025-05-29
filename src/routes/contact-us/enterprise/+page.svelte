@@ -10,6 +10,7 @@
     import LogoList from '$lib/components/LogoList.svelte';
     import Scale from '$routes/(experiments)/new-homepage/(components)/scale.svelte';
     import { Button } from '$lib/components/ui';
+    import { trackEvent } from '$lib/actions/analytics';
 
     let email = '';
     let firstName = '';
@@ -48,6 +49,8 @@
             })
         });
 
+        trackEvent('contact-form-enterprise-submit');
+
         submitting = false;
         if (response.status >= 400) {
             error = response.status >= 500 ? 'Server Error.' : 'Error submitting form.';
@@ -68,7 +71,7 @@
     <title>{title}</title>
     <meta property="og:title" content={title} />
     <meta name="twitter:title" content={title} />
-    <!-- Desscription -->
+    <!-- Description -->
     <meta name="description" content={description} />
     <meta property="og:description" content={description} />
     <meta name="twitter:description" content={description} />
@@ -217,8 +220,9 @@
                                                 >
                                                 <input
                                                     required
+                                                    pattern="^(https:\/\/www\.|https:\/\/)?([a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)+)[a-zA-Z0-9\-\._~:\/\?#[\]@!\$&'\(\)\*\+,;=.]*$"
                                                     class="web-input-text w-full"
-                                                    type="url"
+                                                    type="text"
                                                     placeholder="https://appwrite.io"
                                                     id="companyWebsite"
                                                     bind:value={companyWebsite}
@@ -265,7 +269,7 @@
                     </div>
                 </div>
             </div>
-            <Scale />
+            <Scale alternateInfo />
             <LogoList />
             <div class="container">
                 <FooterNav />

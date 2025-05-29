@@ -16,6 +16,9 @@
     --color-secondary: var(--color-secondary);
     --color-accent: var(--color-secondary);
     --color-smooth: var(--color-smooth);
+    --color-subtle: var(--color-subtle);
+    --color-tertiary: var(--color-tertiary);
+    --color-card: var(--color-card);
 
     /* pink */
     --color-pink-200: hsl(var(--color-pink-hue) 98% 84%);
@@ -87,6 +90,9 @@
     --animate-enter:
         fade-in 0.75s ease-in-out both, blur 0.75s ease-in-out both, up 0.75s ease-in-out both;
     --animate-scroll: scroll 60s linear infinite;
+    --animate-scroll-x: scroll-x var(--speed, 30s) linear infinite var(--direction, forwards);
+    --animate-scroll-y: scroll-y 60s linear infinite forwards;
+
     --animate-fade-in: fade-in 0.5s ease-in-out both;
     --animate-marquee: marquee var(--speed, 30s) linear infinite var(--direction, forwards);
     --animate-lighting: lighting 1.25s ease-out forwards;
@@ -196,6 +202,18 @@
         }
     }
 
+    @keyframes scroll-x {
+        to {
+            transform: translateX(-100%);
+        }
+    }
+
+    @keyframes scroll-y {
+        to {
+            transform: translateY(-50%);
+        }
+    }
+
     /* Fonts */
     --font-sans: 'Inter', arial, sans-serif;
     --font-mono: 'Fira Code', monospace;
@@ -206,10 +224,10 @@
     /* Font sizes */
     --text-x-micro: 0.625rem;
     --text-x-micro--line-height: 0.875rem;
-    --text-x-micro--letter-spacing: var(--tracking-tighter);
+    --text-x-micro--letter-spacing: var(--tracking-loose);
     --text-micro: 0.75rem;
     --text-micro--line-height: 1rem;
-    --text-micro--letter-spacing: var(--tracking-tighter);
+    --text-micro--letter-spacing: var(--tracking-loose);
     --text-caption: 0.875rem;
     --text-caption--line-height: 1.375rem;
     --text-caption--letter-spacing: var(--tracking-tight);
@@ -251,9 +269,9 @@
 }
 
 @utility container {
+    max-width: 75rem;
     margin-inline: auto;
     padding-inline: 1.25rem;
-    max-width: 75rem;
 }
 
 @utility border-gradient {
@@ -317,20 +335,28 @@
     --color-yellow-hue: 42;
     --color-blue-hue: 217;
     --color-greyscale-hue: 240;
+    --color-primary-bg: var(--color-greyscale-25);
 
     /* base */
     --color-primary: var(--color-greyscale-900);
     --color-secondary: var(--color-greyscale-700);
     --color-accent: var(--color-pink-600);
+    --carousel-gradient: transparent;
     --color-badge-bg: var(--color-badge-bg-light);
     --color-badge-border: var(--color-badge-border-light);
     --color-smooth: hsl(var(--color-greyscale-hue) 6%, 10%, 0.04);
+    --color-card: var(--color-greyscale-850);
+    --color-tertiary: hsl(var(--color-greyscale-600));
+    --color-offset: hsl(var(--color-greyscale-hue) 2%, 11%, 0.94);
+    --color-subtle: var(--color-greyscale-850);
 }
 
 .dark {
     --color-primary: var(--color-greyscale-100);
     --color-secondary: var(--color-greyscale-300);
-    --color-badge-bg: var(--color-badge-bg-dark);
-    --color-badge-border: var(--color-badge-border-dark);
+    --carousel-gradient: 23, 23, 26;
+    --color-primary-bg: var(--color-greyscale-900);
     --color-smooth: hsl(0 0%, 100%, 0.06);
+    --color-tertiary: hsl(var(--color-greyscale-600));
+    --color-offset: hsl(0 0% 100% / 0.1);
 }

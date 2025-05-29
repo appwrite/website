@@ -29,6 +29,10 @@
                     href: '/docs/advanced/self-hosting/functions'
                 },
                 {
+                    label: 'Sites',
+                    href: '/docs/advanced/self-hosting/sites'
+                },
+                {
                     label: 'Email delivery',
                     href: '/docs/advanced/self-hosting/email'
                 },

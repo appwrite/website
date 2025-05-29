@@ -10,7 +10,12 @@ Appwrite provides a variety of Site Templates to help you jump-start your web ap
 
 You can find all available templates by navigating to the Appwrite Console under your project > **Sites** > **Templates**.
 
-![image.png](https://warm-tray-285.notion.site/image/attachment%3A4be49224-fb3c-4a1e-8cc8-3d091317d6a4%3Aimage.png?table=block&id=1b9fb53f-e82d-80c0-8d20-ee458cf83e83&spaceId=cf760f55-c352-4759-b494-006b8b294dbb&width=1420&userId=&cache=v2)
+{% only_dark %}
+![Site templates](/images/docs/sites/dark/site-templates.png)
+{% /only_dark %}
+{% only_light %}
+![Site templates](/images/docs/sites/site-templates.png)
+{% /only_light %}
 
 You can filter sites by searching, filter by use case, or filter by framework. Click **Create site** to create a site from a template.
 
@@ -48,15 +53,6 @@ When a PR is made to the branch, a new deployment is built and a preview URL bec
 
 Appwrite Sites uses environment variables to pass constants and secrets to your sites. You can provide information like API keys and other secrets in this step.
 
-### Configure domain name
+## Configure domain name
 
 Configure the subdomain of the Appwrite Site to be deployed. Once deployment completes, your application will be available to access on this domain. You can also [add a custom domain](/docs/products/sites/domains#add-a-custom-domain) to this site later.
-
-# Available templates
-
-| Template name | Description | Frameworks |
-| --- | --- | --- |
-| **Starter** | A starter website that can use the Appwrite SDK | `Angular` `Astro` `Flutter` `Next.js` `Nuxt` `React` `Remix` `SvelteKit` `Vanilla JS` `Vue.js` |
-| **Event** | A hackathon event website with user authentication and submissions | `Next.js` |
-| **Portfolio** | An individual's portfolio | `Next.js` |
-| **OneLink** | A Linktree alternative | `Nuxt` |

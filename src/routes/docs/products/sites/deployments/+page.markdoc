@@ -23,22 +23,42 @@ Throughout the life cycle of a deployment, it can have any of the following stat
 
 When you build a deployment, the logs generated will be saved for debugging purposes. You can find these build logs by navigating to the **Deployments** tab of your site, clicking the three-dots menu beside a deployment, and clicking **Logs**.
 
-![image.png](https://warm-tray-285.notion.site/image/attachment%3Aa646a7a8-031e-47f7-9f27-0e4b3b884ab7%3Aimage.png?table=block&id=1b9fb53f-e82d-80a8-aaed-e58baab47c91&spaceId=cf760f55-c352-4759-b494-006b8b294dbb&width=1420&userId=&cache=v2)
+{% only_dark %}
+![Deployment logs](/images/docs/sites/dark/deployment-logs.png)
+{% /only_dark %}
+{% only_light %}
+![Deployment logs](/images/docs/sites/deployment-logs.png)
+{% /only_light %}
 
 # Create deployment
 
 To manually trigger a deployment of your app from the Appwrite Console, you can head to the **Deployments** tab of your site, click on the **Create deployment** button, and select one of the following:
 
 - **Git**: Lets you select a branch on your connected Git repo and whether you would like to activate the build post-deployment
-- **Manual**: Lets you upload a [.tar.gz file](/docs/products/sites/deploy-manually#manual-deployment) containing your app's build output
+- **CLI**: Lets you run a [CLI command](/docs/products/sites/deploy-from-cli#cli) in your site's directory
+- **Manual**: Lets you upload a [.tar.gz file](/docs/products/sites/deploy-manually#manual-deployment) containing your site's build output
 
-# Update deployment
-
-Some site settings require redeploying your site to be reflected in your active deployment. When you update a site by changing its **Git repository**, **Build settings**, and **Environment variables**, you must redeploy your site before those changes take effect.
+{% only_dark %}
+![Create deployment](/images/docs/sites/dark/create-deployment.png)
+{% /only_dark %}
+{% only_light %}
+![Create deployment](/images/docs/sites/create-deployment.png)
+{% /only_light %}
 
 # Cancel deployment
 
 If a site is being deployed and you wish to stop this deployment, you can head to the **Deployments** tab of your site, click on the three-dots menu, and click on the **Cancel** button.
+
+{% only_dark %}
+![Cancel deployment](/images/docs/sites/dark/cancel-deployment.png)
+{% /only_dark %}
+{% only_light %}
+![Cancel deployment](/images/docs/sites/cancel-deployment.png)
+{% /only_light %}
+
+# Update deployment
+
+Some site settings require redeploying your site to be reflected in your active deployment. When you update a site by changing its **Git repository**, **Build settings**, and **Environment variables**, you must redeploy your site before those changes take effect.
 
 # Redeploy
 
@@ -48,20 +68,18 @@ After updating the configuration, redeploy your site for changes to take effect.
 2. Under the **Deployments** tab, find the status of the current active deployment.
 3. Redeploy by clicking the triple-dots beside a deployment and hitting the **Redeploy** button.
 
+{% only_dark %}
+![Redeploy](/images/docs/sites/dark/redeploy.png)
+{% /only_dark %}
+{% only_light %}
+![Redeploy](/images/docs/sites/redeploy.png)
+{% /only_light %}
+
 Redeployment behavior varies depending on how the initial deployment was created.
 
-# Instant rollback
+{% info title="Benefits for Pro+ users" %}
+Users subscribed to the Appwrite Pro plan or above receive certain special benefits:
 
-If a site needs to be reverted to a previously functional state for any reason (runtime errors, security flaw, etc.), you can head to the **Overview** tab of your site, click on the **Instant Rollback** button. 
-
-![Instant rollback](https://warm-tray-285.notion.site/image/attachment%3A781eee0c-2921-4baa-bb73-803120bde625%3Aimage.png?table=block&id=1c4fb53f-e82d-8021-b0bb-f69dfd2c7ba1&spaceId=cf760f55-c352-4759-b494-006b8b294dbb&width=1420&userId=&cache=v2)
-
-This will allow you to select a previously active, ready deployment to promote to currently active state.
-
-# Preview deployments
-
-If you create a new Pull Request on the GitHub repo for your site, Appwrite Sites will create a preview deployment that you can view and test before promoting to production.
-
-To access this preview deployment, navigate to the **Deployments** tab of your site and click on the **Visit** button. Appwrite Sites will then verify whether you are authorized to access the Appwrite project in which the site is deployed and allow you to access this preview accordingly.
-
-![Preview deployment](https://warm-tray-285.notion.site/image/attachment%3A670b195b-e4e5-4a38-bcdf-9d77f7cf417a%3Aimage.png?table=block&id=1b9fb53f-e82d-80ed-8e6d-d88d0442412e&spaceId=cf760f55-c352-4759-b494-006b8b294dbb&width=1420&userId=&cache=v2)
+- [Express builds](/changelog/entry/2024-08-10) for quicker deployments, resulting in reduced wait times and smoother workflows
+- Customizable [runtime specifications](/blog/post/introducing-new-compute-capabilities-appwrite-functions), allowing for tailored performance and resource allocation
+{% /info %}

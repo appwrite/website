@@ -33,6 +33,14 @@
                     href: '/docs/products/sites/deployments'
                 },
                 {
+                    label: 'Previews',
+                    href: '/docs/products/sites/previews'
+                },
+                {
+                    label: 'Instant rollbacks',
+                    href: '/docs/products/sites/instant-rollbacks'
+                },
+                {
                     label: 'Logs',
                     href: '/docs/products/sites/logs'
                 },
@@ -60,6 +68,10 @@
                 {
                     label: 'Deploy from Git',
                     href: '/docs/products/sites/deploy-from-git'
+                },
+                {
+                    label: 'Deploy from CLI',
+                    href: '/docs/products/sites/deploy-from-cli'
                 },
                 {
                     label: 'Deploy manually',

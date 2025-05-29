@@ -4,7 +4,7 @@ title: Deploy from Git
 description: Learn to version and update your Appwrite Sites' code with deployments.
 ---
 
-Appwrite Sites allows you to host and deploy web applications directly within the Appwrite platform. Each site can have many deployments, which can be thought of as versions of the web application.
+Appwrite Sites allows you to host and deploy websites directly within the Appwrite platform. Each site can have many deployments, which can be thought of as versions of the web application.
 
 With Appwrite Sites, you can seamlessly deploy updates from Git repositories, enabling you to track changes to your web app as part of your development workflow. This versioning approach ensures that your site stays up-to-date and your deployment process is fully integrated with your source control, streamlining collaboration and updates.
 
@@ -13,6 +13,13 @@ With Appwrite Sites, you can seamlessly deploy updates from Git repositories, en
 The recommended way to manage your Appwrite Sites deployments is to use a version control system like Git. This offers simple versioning and collaboration that will easily fit into the rest of your development workflow.
 
 You can only use Git deployment for Appwrite Sites connected to Git. [Create a new site with GitHub](/docs/products/sites/quick-start) or connect your existing site to a GitHub repository in your site’s **Settings** > **Git repository** > **Connect Git**.
+
+{% only_dark %}
+![Git repository](/images/docs/sites/dark/git-repo.png)
+{% /only_dark %}
+{% only_light %}
+![Git repository](/images/docs/sites/git-repo.png)
+{% /only_light %}
 
 1. Using Git, checkout to the branch you configured as the production branch when creating the Appwrite Site.
 2. Create a new commit.
@@ -25,7 +32,7 @@ When you push a commit to the production branch, usually `main`, a new deployme
 
 ## Commits to other branches
 
-When you push a commit to a branch other than the production branch, a new deployment is created, but it is not activated. A preview link is generated to test this deployment; however, only authorized users, i.e., members of your Appwrite organization, can access this link.
+When you push a commit to a branch other than the production branch, a new deployment is created, but it is not activated. A [preview link](/docs/products/sites/previews) is generated to test this deployment; however, only authorized users, i.e., members of your Appwrite organization, can access this link.
 
 # Git configuration
 
