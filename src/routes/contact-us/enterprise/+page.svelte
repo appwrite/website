@@ -269,7 +269,7 @@
                     </div>
                 </div>
             </div>
-            <Scale />
+            <Scale alternateInfo />
             <LogoList />
             <div class="container">
                 <FooterNav />
