@@ -3,6 +3,7 @@ import type { Language } from './code';
 import { browser } from '$app/environment';
 
 const allVersions = [
+    '1.7.x',
     '1.6.x',
     '1.5.x',
     '1.4.x',
@@ -30,7 +31,9 @@ export const Service = {
     Locale: 'locale',
     Storage: 'storage',
     Teams: 'teams',
-    Users: 'users'
+    Users: 'users',
+    Sites: 'sites',
+    Tokens: 'tokens'
 } as const;
 
 export type ServiceType = typeof Service;
@@ -142,7 +145,9 @@ export const serviceMap: Record<ServiceValue, string> = {
     [Service.Locale]: 'Locale',
     [Service.Storage]: 'Storage',
     [Service.Teams]: 'Teams',
-    [Service.Users]: 'Users'
+    [Service.Users]: 'Users',
+    [Service.Sites]: 'Sites',
+    [Service.Tokens]: 'Tokens'
 };
 
 export const preferredVersion = writable<Version | null>(

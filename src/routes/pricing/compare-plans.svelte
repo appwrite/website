@@ -33,14 +33,14 @@
             title: 'Resources',
             rows: [
                 {
-                    title: 'Bandwidth',
+                    title: 'API bandwidth',
                     free: '5GB / month',
                     pro: '300GB / month',
                     scale: '300GB / month',
                     enterprise: 'Custom'
                 },
                 {
-                    title: 'Additional bandwidth',
+                    title: 'Additional API bandwidth',
                     free: '-',
                     pro: '$40 per 100GB / month',
                     scale: '$40 per 100GB / month',
@@ -163,7 +163,7 @@
                 },
                 {
                     title: 'Phone OTP',
-                    free: '10 SMS / month',
+                    free: '-',
                     pro: {
                         text: 'View rates',
                         url: '/docs/advanced/platform/phone-otp#rates',
@@ -355,7 +355,7 @@
                     title: 'Concurrent connections',
                     free: '250',
                     pro: '500',
-                    scale: '500',
+                    scale: '750',
                     enterprise: 'Custom'
                 },
                 {
