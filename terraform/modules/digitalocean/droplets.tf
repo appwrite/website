@@ -24,7 +24,7 @@ resource "digitalocean_project" "homepage" {
   purpose     = "Web Application"
   environment = "Development"
   resources   = flatten([
-    digitalocean_droplet.leader.urn, 
+    digitalocean_droplet.leader.urn,
     digitalocean_droplet.manager[*].urn,
     digitalocean_droplet.worker[*].urn,
     digitalocean_droplet.nfs.urn
@@ -167,6 +167,10 @@ resource "digitalocean_droplet" "worker" {
       "docker swarm join --token ${data.external.swarm_join_token.result.worker} ${digitalocean_droplet.leader.ipv4_address_private}:2377"
     ])
   }
+
+  lifecycle {
+    create_before_destroy = true
+  }
 }
 
 resource "digitalocean_droplet" "nfs" {
@@ -191,7 +195,7 @@ resource "digitalocean_droplet" "nfs" {
     inline = [
       "ufw allow 2049",
       "ufw reload",
-      "sudo apt update", 
+      "sudo apt update",
       "sudo apt install -y nfs-kernel-server",
       "mkdir -p ${local.mount_nfs}",
       "echo '${local.mount_nfs} ${var.subnet_range}(rw,sync,no_root_squash,no_subtree_check)' >> /etc/exports",
