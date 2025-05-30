@@ -77,7 +77,11 @@
             <h2
                 class="text-description text-secondary font-aeonik-pro max-w-[789px] text-[32px] leading-9 -tracking-[1px] text-pretty"
             >
-                <span class="text-primary border-accent border-b">DevKind </span>
+                <a
+                    href="/blog/post/customer-story-storealert"
+                    class="text-primary border-accent border-b"
+                    >DevKind
+                </a>
                 reduced development time by 60%, and lowered server costs by 40%. LangX handled millions
                 of requests. K-collect reduced infrastructure costs by
                 <span class="text-primary">700%</span>.

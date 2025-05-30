@@ -56,11 +56,11 @@
             Backend APIs, frontend hosting
         </h2>
 
-        <div class="hidden grid-cols-12 gap-8 lg:grid">
+        <div class="hidden justify-between gap-8 md:flex">
             <div
                 class={classNames(
-                    'bg-card border-smooth text-primary relative col-span-10 flex h-10 items-center gap-4 rounded-full border border-dashed p-1 text-sm',
-                    'after:border-smooth after:absolute after:top-1/2 after:-right-8 after:h-px after:w-8 after:-translate-y-1/2 after:border-b after:border-dashed'
+                    'bg-card border-smooth text-primary relative flex h-10 items-center gap-4 rounded-full border border-dashed p-1 text-sm',
+                    'after:border-smooth after:absolute after:top-1/2 after:-right-22 after:h-px after:w-22 after:-translate-y-1/2 after:border-b after:border-dashed'
                 )}
             >
                 <span class="text-micro text-secondary font-aeonik-fono ml-3 uppercase">Build</span>
@@ -82,7 +82,7 @@
             </div>
 
             <div
-                class="bg-card border-smooth text-primary col-span-2 flex h-10 items-center gap-4 rounded-full border border-dashed p-1 text-sm"
+                class="bg-card border-smooth text-primary flex h-10 items-center gap-4 rounded-full border border-dashed p-1 text-sm"
             >
                 <span class="text-micro text-secondary font-aeonik-fono ml-3 uppercase">Deploy</span
                 >
