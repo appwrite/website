@@ -38,7 +38,7 @@
 </script>
 
 <div
-    class="relative -mt-6 flex min-h-[75vh] max-w-screen items-center justify-center overflow-hidden py-20"
+    class="relative -mt-6 flex min-h-[75vh] max-w-screen items-center justify-center overflow-hidden pt-20 pb-10"
 >
     <div class="container flex w-full flex-col items-center justify-center gap-10">
         <div
@@ -63,7 +63,7 @@
         </div>
 
         <div
-            class="border-smooth divide-smooth grid min-h-75 w-full grid-cols-1 gap-y-12 divide-y divide-dashed rounded-xl border bg-white/2 px-4 py-8 backdrop-blur-lg md:grid-cols-2 md:divide-y-0 lg:grid-cols-4 lg:divide-x"
+            class="border-smooth divide-smooth grid min-h-75 w-full grid-cols-1 gap-y-12 divide-y divide-dashed rounded-3xl border bg-white/2 px-4 py-8 backdrop-blur-lg md:grid-cols-2 md:divide-y-0 lg:grid-cols-4 lg:divide-x"
         >
             {#each plans as { name, price, tag: label, subtitle, description }}
                 {@const isEnterprise = name === 'Enterprise'}

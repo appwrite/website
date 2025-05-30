@@ -114,7 +114,7 @@
                         <span class="text-primary text-sub-body block font-medium">
                             {testimonial.name},
                         </span>
-                        <span class="text-sub-body text-secondary block"
+                        <span class="text-sub-body text-secondary block font-medium"
                             >{testimonial.title} at {testimonial.company}</span
                         >
                     </div>
