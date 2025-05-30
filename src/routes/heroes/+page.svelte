@@ -83,7 +83,7 @@
         {
             name: 'Demola Malomo',
             role: 'Software Engineer & Technical Writer',
-            bio: 'Demola Malomo is a software engineer and technical writer from Lagos, Nigeria. He primarily code in JavaScript and TypeScript and has been learning Rust and Go.',
+            bio: 'Demola Malomo is a software engineer and technical writer from Lagos, Nigeria. He primarily codes in JavaScript and TypeScript and has been learning Rust and Go.',
             github: 'https://github.com/Mr-Malomz',
             twitter: 'https://x.com/malomz',
             linkedin: 'https://www.linkedin.com/in/malomoademola/',
