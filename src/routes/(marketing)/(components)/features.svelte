@@ -43,11 +43,11 @@
     ];
 </script>
 
-<div class="light bg-[#EDEDF0] py-20">
+<div class="light bg-[#EDEDF0] pt-40 pb-20">
     <div class="container mx-auto">
         <section class="flex flex-col items-start md:flex-row">
             <h2 class="text-title-lg font-aeonik-pro text-primary max-w-[700px] text-pretty">
-                Self-host or take it to the Cloud<span class="text-accent">_</span>
+                Self-host your data or take it to the Cloud<span class="text-accent">_</span>
             </h2>
             <p class="text-secondary text-description mt-4 max-w-xl font-medium">
                 Migrate your data from and to any platform at any time with Appwrite’s migrations

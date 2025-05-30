@@ -136,8 +136,8 @@
                             handleSetActiveTooltip(marker.city, marker.code, marker.available)}
                         onfocus={() =>
                             handleSetActiveTooltip(marker.city, marker.code, marker.available)}
-                        onblur={() => handleResetActiveTooltip(250)}
-                        onmouseout={() => handleResetActiveTooltip(250)}
+                        onblur={() => handleResetActiveTooltip()}
+                        onmouseout={() => handleResetActiveTooltip()}
                         data-region={slugify(marker.city)}
                     >
                         <circle cx={marker.x} cy={marker.y} r={radius * 1.25} class="fill-accent" />
