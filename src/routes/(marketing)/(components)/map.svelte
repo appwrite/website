@@ -15,7 +15,7 @@
         <h2 class="text-primary font-aeonik-pro text-5xl">
             The Appwrite Network<span class="text-accent">_</span>
         </h2>
-        <p class="text-description text-secondary font-medium md:max-w-[40%]">
+        <p class="text-description text-secondary max-w-[90%] font-medium md:max-w-[40%]">
             Pick one of our many cloud regions or edges to meet your project's needs and reduce
             latency.
         </p>

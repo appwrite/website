@@ -56,9 +56,13 @@
                 Start building like a team of hundreds today<span class="text-accent">_</span>
             </h2>
 
-            <div class="flex gap-4">
-                <Button href="/">Start building for free</Button>
-                <Button href="/" variant="secondary">View pricing plans</Button>
+            <div class="flex flex-col gap-4 md:flex-row">
+                <Button href={getAppwriteDashboardUrl()} class="w-full! md:w-fit!"
+                    >Start building for free</Button
+                >
+                <Button href="/pricing" class="w-full! md:w-fit!" variant="secondary"
+                    >View pricing plans</Button
+                >
             </div>
         </div>
 

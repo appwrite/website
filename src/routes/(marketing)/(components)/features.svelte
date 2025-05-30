@@ -59,7 +59,7 @@
         <div class="container grid grid-cols-1 overflow-hidden md:grid-cols-2 lg:grid-cols-4">
             {#each features as box}
                 <div
-                    class="text-sub-body relative border-b border-dashed border-black/8 p-8 font-medium last-of-type:border-0 nth-of-type-[4]:border-r-0 max-lg:even:border-r-0 md:border-r md:px-8 lg:nth-of-type-[5]:border-b-0 lg:nth-of-type-[6]:border-b-0 lg:nth-of-type-[7]:border-b-0 lg:nth-of-type-[8]:border-b-0"
+                    class="text-sub-body relative border-b border-dashed border-black/8 py-8 font-medium last-of-type:border-0 nth-of-type-[4]:border-r-0 max-lg:even:border-r-0 md:border-r md:px-8 lg:nth-of-type-[5]:border-b-0 lg:nth-of-type-[6]:border-b-0 lg:nth-of-type-[7]:border-b-0 lg:nth-of-type-[8]:border-b-0"
                 >
                     <img src={box.icon} width="40" height="40" alt="" />
                     <h3 class="text-primary mt-4 flex flex-wrap items-baseline gap-3">
