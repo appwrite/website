@@ -102,7 +102,7 @@
 
     <div class="relative mx-auto h-full w-[250vw] [scrollbar-width:none] md:w-full" use:inView>
         <div
-            class="relative mx-auto h-fit w-full max-w-5xl origin-bottom transform-[perspective(25px)_rotateX(1deg)_scale3d(1.4,_1.4,_1)] transition-all [scrollbar-width:none]"
+            class="relative mx-auto h-fit w-full max-w-5xl origin-bottom -translate-x-20 transform-[perspective(25px)_rotateX(1deg)_scale3d(1.2,_1.2,_1)] transition-all [scrollbar-width:none]"
             use:mousePosition
         >
             <svg viewBox={`0 0 ${height * 2} ${height}`}>
