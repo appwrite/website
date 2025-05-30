@@ -102,6 +102,11 @@ export const integrationCategoryDescriptions: IntegrationCategory[] = [
         description: 'Implement search functionalities'
     },
     {
+        slug: 'sites',
+        heading: 'Sites',
+        description: 'Deploy and host web applications'
+    },
+    {
         slug: 'storage',
         heading: 'Storage',
         description: 'Storage for data and media'
