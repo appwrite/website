@@ -1,17 +1,22 @@
 <script lang="ts">
     import { classNames } from '$lib/utils/classnames';
-    import AnimatedText from './animated-text.svelte';
+    import type { Snippet } from 'svelte';
+    import type { SvelteHTMLElements } from 'svelte/elements';
 
-    const className = '';
+    type Props = {
+        class?: string;
+        children: Snippet;
+    } & SvelteHTMLElements['span'];
 
-    export { className as class };
+    const { class: className, children, ...rest }: Props = $props();
 </script>
 
 <span
     class={classNames(
-        '-mb-1 block bg-[linear-gradient(6deg,_#f8a1ba,_#fff_35%)] bg-clip-text pb-1 text-transparent',
+        '-mb-1 block bg-linear-145 from-[#f8a1ba] to-white to-50% bg-clip-text pb-1 text-transparent',
         className
     )}
+    {...rest}
 >
-    <slot />
+    {@render children()}
 </span>
