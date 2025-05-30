@@ -1,4 +1,6 @@
 <script lang="ts" module>
+    import { type VariantProps, cva } from 'cva';
+
     // TODO: replace _button.scss with Tailwind classes for long-term maintainability
     const button = cva(['web-button'], {
         variants: {
@@ -17,12 +19,12 @@
 </script>
 
 <script lang="ts">
-    import { classNames } from '$lib/utils/classnames';
-    import { type VariantProps, cva } from 'cva';
+    import { type VariantProps } from 'cva';
     import type { Snippet } from 'svelte';
     import type { Action } from 'svelte/action';
-    import type { HTMLAnchorAttributes, HTMLButtonAttributes } from 'svelte/elements';
+    import { classNames } from '$lib/utils/classnames';
     import { trackEvent, type TrackEventArgs } from '$lib/actions/analytics';
+    import type { HTMLAnchorAttributes, HTMLButtonAttributes } from 'svelte/elements';
 
     type ButtonOrAnchorProps =
         | (HTMLButtonAttributes & { href?: undefined })
@@ -31,7 +33,7 @@
     type Props = {
         action?: Action;
         children: Snippet;
-        events?: TrackEventArgs;
+        event?: string | TrackEventArgs;
     } & VariantProps<typeof button> &
         ButtonOrAnchorProps;
 
@@ -41,7 +43,7 @@
         action = () => {},
         children,
         class: classes,
-        events,
+        event,
         ...rest
     }: Props = $props();
 
@@ -49,11 +51,11 @@
 </script>
 
 {#if href}
-    <a use:action {href} class={buttonClasses} {...rest as HTMLAnchorAttributes}>
+    <a use:action {href} class={buttonClasses} onclick={() => event && trackEvent(event)} {...rest}>
         {@render children()}
     </a>
 {:else}
-    <button use:action class={buttonClasses} {...rest as HTMLButtonAttributes}>
+    <button use:action class={buttonClasses} onclick={() => event && trackEvent(event)} {...rest}>
         {@render children()}
     </button>
 {/if}

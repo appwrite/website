@@ -134,16 +134,14 @@
             <div class="my-12 lg:my-[7.5rem]">
                 <section class="container pb-0">
                     <a
-                        href="/blog/post/the-appwrite-network"
+                        href="/blog/post/announcing-appwrite-sites"
                         class="web-hero-banner-button mb-4"
-                        on:click={() => trackEvent({ plausible: { name: 'Banner button click' } })}
+                        onclick={() => trackEvent('main-banner-button-click')}
                     >
                         <span class="web-icon-star shrink-0" aria-hidden="true"></span>
                         <span class="text-caption shrink-0 font-medium">New</span>
                         <div class="web-hero-banner-button-sep"></div>
-                        <span class="text-caption web-u-trim-1"
-                            >Announcing The Appwrite Network</span
-                        >
+                        <span class="text-caption web-u-trim-1">Announcing Appwrite Sites</span>
                         <span class="web-icon-arrow-right shrink-0" aria-hidden="true"></span>
                     </a>
                     <Hero>
@@ -153,20 +151,15 @@
                         >
 
                         <svelte:fragment slot="description">
-                            Build your entire backend within minutes and scale effortlessly using
-                            Appwrite's open-source platform. Add Authentication, Databases,
-                            Functions, Storage, and Messaging to your projects using the frameworks
-                            and languages of your choice.
+                            Build your entire backend within minutes and host your site, all within
+                            Appwrite's all-in-one platform. Authentication, Databases, Functions,
+                            Storage, Messaging, and Hosting.
                         </svelte:fragment>
                         <div class="mt-8 flex flex-col gap-4 sm:flex-row" slot="cta">
                             <Button
                                 href={getAppwriteDashboardUrl()}
                                 class="w-full lg:w-fit"
-                                onclick={() =>
-                                    trackEvent({
-                                        plausible: { name: 'Get started in hero' },
-                                        posthog: { name: 'get-started-btn_hero_click' }
-                                    })}
+                                event="main-get_started_btn_hero-click"
                             >
                                 Start building
                             </Button>
@@ -174,6 +167,7 @@
                             <Button
                                 variant="secondary"
                                 href="/contact-us/enterprise"
+                                event="main-contact_enterprise_btn_hero-click"
                                 class="w-full lg:w-fit">Request a demo</Button
                             >
 
@@ -487,8 +481,7 @@
                         <Button
                             href="/docs/sdks"
                             variant="secondary"
-                            onclick={() => trackEvent({ plausible: { name: 'Explore all SDKs' } })}
-                            >Explore all SDKs</Button
+                            event="main-explore_all_sdks-click">Explore all SDKs</Button
                         >
                     </section>
                 </div>

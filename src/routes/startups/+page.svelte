@@ -61,10 +61,7 @@
             })
         });
 
-        trackEvent({
-            plausible: { name: 'startups-form_submit' },
-            posthog: { name: 'startups-form_submit' }
-        });
+        trackEvent('startups-form-submit');
 
         submitting = false;
 
@@ -723,6 +720,7 @@
                                                         required
                                                         class="web-input-text"
                                                         type="text"
+                                                        pattern="^(https:\/\/www\.|https:\/\/)?([a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)+)[a-zA-Z0-9\-\._~:\/\?#[\]@!\$&'\(\)\*\+,;=.]*$"
                                                         name="company-website"
                                                         placeholder="https://company.com"
                                                         aria-label="Company website"

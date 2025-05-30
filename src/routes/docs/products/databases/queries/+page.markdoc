@@ -214,28 +214,28 @@ Returns document if attribute is not equal to any value in the provided array.
 
 {% multicode %}
 ```client-web
-Query.notEqual("title", ["Iron Man"])
+Query.notEqual("title", "Iron Man")
 ```
 ```client-flutter
-Query.notEqual("title", ["Iron Man"])
+Query.notEqual("title", "Iron Man")
 ```
 ```python
-Query.not_equal("title", ["Iron Man"])
+Query.not_equal("title", "Iron Man")
 ```
 ```ruby
-Query.not_equal("title", ["Iron Man"])
+Query.not_equal("title", "Iron Man")
 ```
 ```deno
-Query.notEqual("title", ["Iron Man"])
+Query.notEqual("title", "Iron Man")
 ```
 ```php
-Query::notEqual("title", ["Iron Man"])
+Query::notEqual("title", "Iron Man")
 ```
 ```swift
-Query.notEqual("title", value: ["Iron Man"])
+Query.notEqual("title", value: "Iron Man")
 ```
 ```http
-{"method":"notEqual","attribute":"title","values":["Iron Man"]}
+{"method":"notEqual","attribute":"title","values":"Iron Man"}
 ```
 {% /multicode %}
 

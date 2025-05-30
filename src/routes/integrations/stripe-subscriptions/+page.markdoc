@@ -3,7 +3,7 @@ layout: integration
 title: Subscriptions with Stripe
 description: Integrate Stripe subscriptions with Appwrite to accept and manage recurring payments from your customers.
 date: 2024-07-30
-featured: true
+featured: false
 isPartner: true
 isNew: false
 cover: /images/integrations/stripe-subscriptions/cover.png
