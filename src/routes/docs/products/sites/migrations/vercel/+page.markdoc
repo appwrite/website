@@ -63,29 +63,18 @@ Next, create a new site by connecting your existing repository:
 1. In your Appwrite project, select **Sites** from the sidebar
 2. Click **Create Site**
 3. Select **Connect a repository**
-4. Authenticate with your Git provider (GitHub, GitLab, or Bitbucket)
+4. Authenticate with GitHub
 5. Select the repository containing your Vercel project
-6. Choose your production branch (typically `main` or `master`)
+6. Choose your production branch (typically `main`)
 
 Appwrite will auto-detect your framework. Verify this is correct or select manually from the dropdown menu.
 {% /section %}
 
 # Configure your domain
 
-One of the most significant differences between Vercel and Appwrite is how they handle domain configuration, particularly for apex domains.
-
-# Domain setup comparison
-
-{% only_dark %}
-![Domain configuration](/images/docs/sites/dark/add-domain.png)
-{% /only_dark %}
-{% only_light %}
-![Domain configuration](/images/docs/sites/add-domain.png)
-{% /only_light %}
+One of the differences between Vercel and Appwrite is how they handle domain configuration for apex domains. Vercel uses A records for apex domains, while Appwrite uses nameserver (NS) records. This means you'll need to delegate DNS management to Appwrite.
 
 # Migrating an apex domain
-
-Vercel uses A records for apex domains, while Appwrite uses nameserver (NS) records. This means you'll need to delegate DNS management to Appwrite.
 
 {% section id="prepare-vercel-domain" step=1 title="Prepare your Vercel domain" %}
 Before migrating, document your current Vercel DNS configuration:
@@ -185,10 +174,10 @@ Navigate to your site > **Settings** > **Build settings** and configure the foll
 - **Rendering:** Select the appropriate rendering mode (Static or SSR)
 
 {% only_dark %}
-![Build settings](/images/docs/sites/dark/build-settings.png)
+![Build settings](/images/docs/sites/dark/build-settings-install-command.png)
 {% /only_dark %}
 {% only_light %}
-![Build settings](/images/docs/sites/build-settings.png)
+![Build settings](/images/docs/sites/build-settings-install-command.png)
 {% /only_light %}
 {% /section %}
 
@@ -256,15 +245,15 @@ Vercel automatically provides system variables like `VERCEL_URL`. You'll need to
 
 {% section id="set-env-vars" step=2 title="Set variables in Appwrite" %}
 1. Navigate to your site > **Settings** > **Environment variables**
-2. Click **Add variable**
-3. Enter the key and value for each variable
-4. Toggle **Encrypt** for sensitive variables that should be hidden
+2. Click the **plus (+)** icon to add a new variable
+3. Enter the key and value for each variable. You can optionally import a `.env` file.
+4. Toggle **Secret** for sensitive variables that should be hidden
 
 {% only_dark %}
-![Environment variables](/images/docs/sites/dark/env-vars.png)
+![Environment variables](/images/docs/sites/dark/env-variables.png)
 {% /only_dark %}
 {% only_light %}
-![Environment variables](/images/docs/sites/env-vars.png)
+![Environment variables](/images/docs/sites/env-variables.png)
 {% /only_light %}
 {% /section %}
 
@@ -372,54 +361,12 @@ export default {
 ```
 {% /section %}
 
-# Configure custom headers
-
-Vercel allows setting custom headers at the platform level through `vercel.json`. Appwrite Sites supports custom headers through your framework's built-in configuration mechanisms.
-
-{% section id="framework-headers" step=1 title="Framework-specific headers" %}
-# Next.js
-```javascript
-// next.config.js
-module.exports = {
-  async headers() {
-    return [
-      {
-        source: '/:path*',
-        headers: [
-          {
-            key: 'X-Custom-Header',
-            value: 'header-value',
-          },
-        ],
-      },
-    ];
-  },
-};
-```
-
-# SvelteKit
-```javascript
-// src/hooks.server.js
-export function handle({ event, resolve }) {
-  return resolve(event, {
-    transformPageChunk: ({ html }) => html,
-    preload: {},
-    filterSerializedResponseHeaders: (name) => true,
-    responseHeaders: { 'X-Custom-Header': 'header-value' }
-  });
-}
-```
-
-# Static sites
-For static sites without framework support, consider using client-side solutions or framework-specific configuration files if your static site generator supports them.
-{% /section %}
-
 # Migrate serverless functions
 
 There are two approaches to serverless functions when migrating from Vercel to Appwrite:
 
 {% info title="Framework API routes vs. standalone functions" %}
-When using frameworks like Next.js, Nuxt, or SvelteKit with SSR enabled, your API routes will work natively within Appwrite Sites, just as they do in Vercel. For standalone serverless functions or more complex use cases, you can use Appwrite Functions as a separate service.
+When using frameworks like Next.js, Nuxt, or SvelteKit with SSR enabled, your API routes will work natively within Appwrite Sites, just as they do in Vercel. For standalone serverless functions or more complex use cases, you can use [Appwrite Functions](/docs/functions).
 {% /info %}
 
 {% section id="framework-api-routes" step=1 title="Framework API routes" %}
@@ -440,14 +387,11 @@ For standalone serverless functions or more complex use cases:
 3. Select a runtime that matches your needs (Node.js, Python, PHP, Ruby, etc.)
 4. Create your function code
 5. Deploy your function
-
-{% only_dark %}
-![Appwrite Functions](/images/docs/functions/dark/create-function.png)
-{% /only_dark %}
-{% only_light %}
-![Appwrite Functions](/images/docs/functions/create-function.png)
-{% /only_light %}
 {% /section %}
+
+{% arrow_link href="/docs/products/functions/quick-start" %}
+Learn how to create and deploy functions
+{% /arrow_link %}
 
 {% section id="update-endpoints" step=3 title="API endpoints usage" %}
 
@@ -474,7 +418,7 @@ If you're using standalone Appwrite Functions (outside your site's codebase), yo
 import { Client, Functions } from 'appwrite';
 
 const client = new Client()
-    .setEndpoint('https://cloud.appwrite.io/v1')
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
     .setProject('your-project-id');
 
 const functions = new Functions(client);
@@ -526,19 +470,8 @@ After completing your migration from Vercel to Appwrite Sites, we recommend:
 
 1. **Test thoroughly** - Verify all routes, functionality, and environment-specific features
 2. **Monitor performance** - Check that your site performs as expected on Appwrite
-3. **Set up CI/CD** - Configure automatic deployments from your repository
-4. **Explore Appwrite services** - Consider integrating with other Appwrite services like Authentication, Databases, and Storage
-
-# Timeouts
-
-Vercel has a default build timeout of 45 minutes. Appwrite Sites has a default request timeout of 15 seconds (max 30 seconds) for runtime requests, which is configurable.
-
-To configure the timeout for runtime requests in Appwrite:
-
-1. Navigate to your site > **Settings** > **Timeout**
-2. Set an appropriate time limit (in seconds, max 30)
-
-For build processes, Appwrite Sites provides ample time for your builds to complete. Pro+ users benefit from express builds for quicker deployments and reduced wait times.
+3. **Set up CI/CD** - Appwrite already provides git integration and deployment workflows, but you can also use GitHub Actions or any other CI/CD tool to automate your deployments.
+4. **Explore Appwrite services** - Consider integrating with other Appwrite services like [Authentication](/docs/products/auth), [Databases](/docs/products/databases), and [Storage](/docs/products/storage)
 
 # Conclusion
 
@@ -546,4 +479,4 @@ This guide has outlined the key steps for migrating from Vercel to Appwrite Site
 
 While domain configuration and platform-specific features like middleware require some adaptation, the framework-native approaches detailed in this guide help ensure a smooth transition.
 
-For additional help, refer to the [Appwrite documentation](/docs/products/sites) or reach out to the [Appwrite community](https://appwrite.io/discord).
+For additional help, refer to the [Sites documentation](/docs/products/sites) or reach out to the Appwrite community on [Discord](https://appwrite.io/discord).
