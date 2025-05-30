@@ -37,6 +37,10 @@
                     href: '/docs/products/auth/teams'
                 },
                 {
+                    label: 'Preferences',
+                    href: '/docs/products/auth/preferences'
+                },
+                {
                     label: 'Labels',
                     href: '/docs/products/auth/labels'
                 },
