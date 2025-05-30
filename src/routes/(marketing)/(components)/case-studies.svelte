@@ -73,7 +73,7 @@
     )}
 >
     <div class="container mx-auto">
-        <div class="flex w-full flex-col items-center justify-between py-8 md:flex-row">
+        <div class="flex w-full flex-col justify-between gap-y-8 py-8 md:flex-row md:items-center">
             <h2
                 class="text-description text-secondary font-aeonik-pro max-w-[789px] text-[32px] leading-9 -tracking-[1px] text-pretty"
             >
