@@ -98,7 +98,13 @@
                 </div>
             {:else}
                 <div
-                    class="text-caption text-primary flex h-5 items-center justify-center place-self-start rounded-md bg-black/6 p-1 text-center"
+                    class={classNames(
+                        'text-caption text-primary flex h-5 items-center justify-center place-self-start rounded-md bg-black/6 p-1 text-center',
+                        {
+                            'text-primary bg-black/6': theme === 'light',
+                            'text-primary bg-white/6': theme === 'dark'
+                        }
+                    )}
                 >
                     <span class="text-micro -tracking-tight">Planned</span>
                 </div>
