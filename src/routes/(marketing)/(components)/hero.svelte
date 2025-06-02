@@ -8,9 +8,7 @@
     import HeroBanner from './hero-banner.svelte';
 </script>
 
-<div
-    class="relative flex min-h-[50vh] max-w-screen items-center overflow-hidden py-12 md:py-0 lg:min-h-[700px]"
->
+<div class="relative flex max-w-screen items-center overflow-hidden py-12 md:py-0 lg:min-h-[700px]">
     <div
         class={classNames(
             'animate-lighting absolute top-0 left-0 -z-10 h-screen w-[200vw] -translate-x-[25%] translate-y-8 rotate-25 overflow-hidden blur-3xl md:w-full',

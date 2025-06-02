@@ -51,7 +51,7 @@
 
 <div
     class={classNames(
-        'relative flex min-h-[60vh] items-center justify-center overflow-hidden',
+        'relative -mb-4 flex min-h-[60vh] items-center justify-center overflow-hidden py-8',
         'from-0% before:absolute before:inset-0 before:top-0 before:left-0 before:-z-10 before:block before:h-full before:bg-radial-[circle_at_120%_-50%] before:from-purple-500/30 before:to-transparent before:to-40% before:blur-2xl',
         'after:from-accent/20 after:absolute after:inset-0 after:top-0 after:right-0 after:-z-10 after:mt-auto after:mb-0 after:block after:h-full after:bg-radial-[circle_at_-15%_125%] after:from-0% after:to-transparent after:to-40% after:blur-2xl'
     )}
@@ -66,7 +66,7 @@
                 value={i.toString()}
                 class={classNames(
                     'data-[state="on"]:border-smooth grid cursor-pointer place-content-center place-items-center overflow-hidden rounded-2xl border border-transparent px-12 py-6 backdrop-blur-3xl transition-all duration-400 ease-in-out [grid-template-areas:"stack"] max-sm:data-[state="off"]:h-[125px] max-sm:data-[state="on"]:h-[425px] md:h-[425px]',
-                    'group/card hover:bg-black/24 data-[state="off"]:bg-black/16 data-[state="on"]:[flex-basis:70%] data-[state="on"]:bg-black/24 md:data-[state="off"]:[flex-basis:15%]',
+                    'group/card hover:bg-black/24 data-[state="off"]:bg-black/16 data-[state="on"]:[flex-basis:70%] data-[state="on"]:bg-black/24 md:data-[state="off"]:basis-[15%]',
                     'outline-0 duration-300 hover:shadow-[0px_0px_0px_4px_var(--color-offset)] focus:shadow-[0px_0px_0px_4px_var(--color-offset)]!'
                 )}
             >
@@ -74,7 +74,7 @@
                     src={study.logo}
                     alt={study.headline}
                     class={classNames(
-                        'visible h-7 opacity-100 transition-all [grid-area:stack]',
+                        'visible h-5 px-2 opacity-100 transition-all [grid-area:stack] lg:h-7',
                         'group-[&[data-state=on]]/card:invisible group-[&[data-state=on]]/card:opacity-0',
                         'brightness-50'
                     )}
@@ -111,11 +111,13 @@
                                 <img
                                     src={study.avatar}
                                     alt={study.headline}
-                                    class="size-6 rounded-full"
+                                    class="size-8 rounded-full md:size-6"
                                 />
-                                <span class="text-caption text-primary font-medium"
-                                    >{study.name},
-                                    <span class="text-secondary">{study.title}</span></span
+                                <span
+                                    class="text-caption text-primary text-left font-medium text-pretty"
+                                    >{study.name}<span class="hidden md:inline">,</span>
+                                    <span class="text-secondary block md:inline">{study.title}</span
+                                    ></span
                                 >
                             </div>
 
