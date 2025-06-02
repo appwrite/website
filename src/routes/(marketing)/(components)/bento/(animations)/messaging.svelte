@@ -8,13 +8,11 @@
     import Messages from '../../../(assets)/icons/messages.svg';
     import Settings from '../../../(assets)/icons/settings.svg';
     import GridPaper from '../../grid-paper.svelte';
-    import Noise from '$lib/components/fancy/noise.svelte';
 
     let container: HTMLElement;
 
     let device: HTMLElement;
     let notification: HTMLElement;
-    let icon: HTMLElement;
 
     onMount(() => {
         const from: AnimationSequence = [
@@ -113,7 +111,6 @@
                     >
                         <div
                             class="bg-accent text-micro absolute -top-1 -right-1 flex size-3 items-center justify-center rounded-full"
-                            bind:this={icon}
                         ></div>
 
                         <img src={Email} alt="" class="size-6" />
