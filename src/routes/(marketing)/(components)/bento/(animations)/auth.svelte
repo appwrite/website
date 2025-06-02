@@ -11,7 +11,7 @@
     let container: HTMLElement;
 
     let password = $state('');
-    let complete = $state(false);
+    let button: HTMLButtonElement;
 
     $effect(() => {
         inView(
@@ -20,10 +20,9 @@
                 if (!isMobile()) return;
 
                 write('•••••••••••••', (v) => (password = v), 1000).then(() => {
-                    complete = true;
+                    animate(button, { scale: [1, 0.95, 1] }, { duration: 0.25 });
                 });
                 return () => {
-                    complete = false;
                     unwrite('•••••••••••••', (v) => (password = v));
                 };
             },
@@ -34,10 +33,9 @@
             if (isMobile()) return;
 
             write('•••••••••••••', (v) => (password = v), 1000).then(() => {
-                complete = true;
+                animate(button, { scale: [1, 0.95, 1] }, { duration: 0.25 });
             });
             return () => {
-                complete = false;
                 unwrite('•••••••••••••', (v) => (password = v));
             };
         });
@@ -95,7 +93,8 @@
 
                         <button
                             class="text-micro w-full rounded-lg bg-white py-2 font-medium text-[#19191C]"
-                            disabled>Sign up</button
+                            disabled
+                            bind:this={button}>Sign up</button
                         >
                     </form>
 

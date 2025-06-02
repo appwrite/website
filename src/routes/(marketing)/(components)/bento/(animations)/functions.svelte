@@ -55,22 +55,32 @@
         class="relative flex h-85 items-center justify-between overflow-clip rounded-xl bg-black/24 px-8"
     >
         <div
-            class="flex flex-1 flex-col items-center gap-3 overflow-clip mask-linear-[to_top,_transparent_0%,_white_50%,_transparent_100%] mask-alpha text-center"
+            class={classNames(
+                'flex h-full flex-1 flex-col gap-3 overflow-clip text-center',
+                'mask-linear-[to_top,_transparent_0%,_white_50%,_transparent_100%] mask-alpha '
+            )}
         >
-            <div class="flex h-max flex-col items-center gap-3 pt-3">
-                {#each commands as command, i}
-                    <div
-                        class="text-caption relative w-fit shrink-0 overflow-hidden rounded-2xl border border-transparent p-px font-mono text-sm text-white"
-                    >
-                        <div class="h-full w-full rounded-2xl bg-[#202023] px-3 py-1 text-white/80">
-                            {command}
-                        </div>
+            {#each [1, 2, 3, 4] as _, i}
+                <div
+                    class="animate-scroll-y flex h-max flex-col items-center gap-3 [animation-duration:10s]!"
+                >
+                    {#each commands as command, i}
                         <div
-                            class="absolute inset-0 -z-1 bg-linear-to-l from-white/12 to-transparent"
-                        ></div>
-                    </div>
-                {/each}
-            </div>
+                            class="text-caption relative w-fit shrink-0 overflow-hidden rounded-2xl border border-transparent p-px font-mono text-sm text-white"
+                            aria-hidden={i < commands.length - 1}
+                        >
+                            <div
+                                class="h-full w-full rounded-2xl bg-[#202023] px-3 py-1 text-white/80"
+                            >
+                                {command}
+                            </div>
+                            <div
+                                class="absolute inset-0 -z-1 bg-linear-to-l from-white/12 to-transparent"
+                            ></div>
+                        </div>
+                    {/each}
+                </div>
+            {/each}
         </div>
 
         <GridPaper class="absolute inset-0 bg-size-[calc(100%/13)]" />

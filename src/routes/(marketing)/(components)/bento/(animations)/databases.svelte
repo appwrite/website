@@ -106,7 +106,9 @@
                         y: [12, -5]
                     },
                     {
-                        type: 'spring'
+                        type: 'spring',
+                        damping: 0.25,
+                        duration: 0.25
                     }
                 );
                 shouldAnimate = true;
@@ -119,7 +121,9 @@
                             y: [-5, 12]
                         },
                         {
-                            type: 'spring'
+                            type: 'spring',
+                            damping: 0.25,
+                            duration: 0.25
                         }
                     );
 
