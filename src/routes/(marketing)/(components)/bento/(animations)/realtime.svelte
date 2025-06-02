@@ -28,7 +28,7 @@
                 { opacity: 1, scale: 0.85, filter: 'blur(0)' },
                 { duration: 0.15, at: 0 }
             ],
-            [topRightPiece, { y: 0, x: 0 }, { duration: 0.25, at: 0.25, type: 'spring' }],
+            [topRightPiece, { y: 0.75, x: 0 }, { duration: 0.25, at: 0.25, type: 'spring' }],
             [topRightCursor, { y: 0, x: 0 }, { duration: 0.15, at: 0.2 }],
             [topRightCursor, { scale: 1 }, { duration: 0.25, at: 0.35 }]
         ];
@@ -48,7 +48,6 @@
 
         hover(container, () => {
             if (isMobile()) return;
-
             animate(to);
 
             return () => {
