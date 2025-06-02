@@ -9,8 +9,6 @@
         handleResetActiveTooltip
     } from './map-tooltip.svelte';
     import { createMap } from 'svg-dotted-map';
-    import { classNames } from '$lib/utils/classnames';
-    import Icon from '../ui/icon';
 
     let activeSegment = $state<string>('pop-locations');
     let activeMarkers = $derived(pins[activeSegment as PinSegment]);
@@ -69,7 +67,9 @@
     });
 
     const markers = $derived(
-        addMarkers<{ city: string; code: string; available: boolean }>(activeMarkers)
+        addMarkers<{ city: string; code: string; available?: boolean; date?: string }>(
+            activeMarkers
+        )
     );
 
     type Props = {
@@ -132,9 +132,19 @@
                         role="tooltip"
                         class="animate-fade-in outline-none"
                         onmouseover={() =>
-                            handleSetActiveTooltip(marker.city, marker.code, marker.available)}
+                            handleSetActiveTooltip(
+                                marker.city,
+                                marker.code,
+                                marker.available,
+                                marker.date
+                            )}
                         onfocus={() =>
-                            handleSetActiveTooltip(marker.city, marker.code, marker.available)}
+                            handleSetActiveTooltip(
+                                marker.city,
+                                marker.code,
+                                marker.available,
+                                marker.date
+                            )}
                         onblur={() => handleResetActiveTooltip()}
                         onmouseout={() => handleResetActiveTooltip()}
                         data-region={slugify(marker.city)}

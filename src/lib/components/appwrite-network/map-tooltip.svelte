@@ -4,14 +4,21 @@
     let tooltipData = $state<{
         city: string | null;
         code: string | null;
-        available: boolean | null;
+        available?: boolean | null;
+        date?: string | null;
     }>({
         city: null,
         code: null,
-        available: null
+        available: null,
+        date: null
     });
 
-    export const handleSetActiveTooltip = (city: string, code: string, available: boolean) => {
+    export const handleSetActiveTooltip = (
+        city: string,
+        code: string,
+        available?: boolean,
+        date?: string
+    ) => {
         if (timeoutId) {
             clearTimeout(timeoutId);
             timeoutId = null;
@@ -20,7 +27,8 @@
         tooltipData = {
             city,
             code,
-            available
+            available,
+            date
         };
     };
 
@@ -37,7 +45,8 @@
                 tooltipData = {
                     city: null,
                     code: null,
-                    available: null
+                    available: null,
+                    date: null
                 };
                 timeoutId = null;
             }, delay);
@@ -45,7 +54,8 @@
             tooltipData = {
                 city: null,
                 code: null,
-                available: null
+                available: null,
+                date: null
             };
         }
     };
@@ -84,7 +94,7 @@
                     ({tooltipData.code})
                 </span>
             {/key}
-            {#if typeof tooltipData.available === 'boolean' && tooltipData.available}
+            {#if tooltipData.available}
                 <div
                     class={classNames(
                         'text-caption flex h-5 items-center justify-center place-self-start rounded-md p-1 text-center',
@@ -96,18 +106,6 @@
                 >
                     <span class="text-micro -tracking-tight">Available now</span>
                 </div>
-            {:else if typeof tooltipData.available === 'boolean' && !tooltipData.available}
-                <div
-                    class={classNames(
-                        'text-caption text-primary flex h-5 items-center justify-center place-self-start rounded-md bg-black/6 p-1 text-center',
-                        {
-                            'text-primary bg-black/6': theme === 'light',
-                            'text-primary bg-white/6': theme === 'dark'
-                        }
-                    )}
-                >
-                    <span class="text-micro -tracking-tight">Planned</span>
-                </div>
             {:else}
                 <div
                     class={classNames(
@@ -118,7 +116,7 @@
                         }
                     )}
                 >
-                    <span class="text-micro -tracking-tight">{tooltipData.available}</span>
+                    <span class="text-micro -tracking-tight">{tooltipData.date}</span>
                 </div>
             {/if}
         </div>
