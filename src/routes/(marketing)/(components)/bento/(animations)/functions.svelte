@@ -14,16 +14,31 @@
     ];
 
     let container: HTMLElement;
+    let activeCommand: HTMLElement;
 
     $effect(() => {
         hover(container, () => {
             if (isMobile()) return;
 
-            return () => {};
+            console.log(activeCommand.offsetWidth);
+
+            animate(activeCommand, {
+                width: [activeCommand.offsetWidth, activeCommand.offsetWidth + 50]
+            });
+
+            return () => {
+                animate(activeCommand, {
+                    width: [activeCommand.offsetWidth, activeCommand.offsetWidth - 50]
+                });
+            };
         });
 
         inView(container, () => {
             if (!isMobile()) return;
+
+            animate(activeCommand, {
+                width: activeCommand.offsetWidth + 50
+            });
 
             return () => {};
         });
@@ -60,18 +75,22 @@
             )}
         >
             <div class="flex h-max flex-col items-center gap-3 [animation-duration:10s]!">
-                {#each commands as command, i}
-                    <div
-                        class="text-caption relative w-fit shrink-0 overflow-hidden rounded-2xl border border-transparent p-px font-mono text-sm text-white"
-                        aria-hidden={i < commands.length - 1}
-                    >
-                        <div class="h-full w-full rounded-2xl bg-[#202023] px-3 py-1 text-white/80">
-                            {command}
-                        </div>
-                        <div
-                            class="absolute inset-0 -z-1 bg-linear-to-l from-white/12 to-transparent"
-                        ></div>
+                {#each commands.slice(0, 2) as command, i}
+                    {@render Command({ command })}
+                {/each}
+                <div
+                    class="text-caption relative w-fit shrink-0 overflow-hidden rounded-2xl border border-transparent p-px font-mono text-sm text-white"
+                    bind:this={activeCommand}
+                >
+                    <div class="h-full w-full rounded-2xl bg-[#202023] px-3 py-1 text-white/80">
+                        UpdateProfile
                     </div>
+                    <div
+                        class="absolute inset-0 -z-1 bg-linear-to-l from-white/12 to-transparent"
+                    ></div>
+                </div>
+                {#each commands.slice(3) as command, i}
+                    {@render Command({ command })}
                 {/each}
             </div>
         </div>
@@ -79,3 +98,14 @@
         <GridPaper class="absolute inset-0 bg-size-[calc(100%/13)]" />
     </div>
 </a>
+
+{#snippet Command({ command }: { command: string })}
+    <div
+        class="text-caption relative w-fit shrink-0 overflow-hidden rounded-2xl border border-transparent p-px font-mono text-sm text-white"
+    >
+        <div class="h-full w-full rounded-2xl bg-[#202023] px-3 py-1 text-white/80">
+            {command}
+        </div>
+        <div class="absolute inset-0 -z-1 bg-linear-to-l from-white/12 to-transparent"></div>
+    </div>
+{/snippet}
