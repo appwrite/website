@@ -9,7 +9,7 @@
 </script>
 
 <div
-    class="relative flex min-h-[50vh] max-w-screen items-center overflow-hidden py-12 md:py-0 lg:min-h-[80vh]"
+    class="relative flex min-h-[50vh] max-w-screen items-center overflow-hidden py-12 md:py-0 lg:min-h-[700px]"
 >
     <div
         class={classNames(
@@ -41,7 +41,7 @@
                 to use backend APIs and host your frontend on one platform.
             </p>
 
-            <div class="flex flex-col gap-2 lg:flex-row">
+            <div class="mt-4 flex flex-col gap-2 lg:flex-row">
                 <Button href={PUBLIC_APPWRITE_DASHBOARD} class="w-full! lg:w-fit!"
                     >Start building for free</Button
                 >
