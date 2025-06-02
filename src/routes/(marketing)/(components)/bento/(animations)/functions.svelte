@@ -14,7 +14,6 @@
     ];
 
     let container: HTMLElement;
-    let platformQueue: HTMLElement;
 
     $effect(() => {
         hover(container, () => {
