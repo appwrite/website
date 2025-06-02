@@ -146,12 +146,8 @@
         <div class="relative container h-full">
             <div class="absolute inset-0 z-100 grid grid-cols-4">
                 {#each localStats as stat, i}
-                    <div
-                        class="mask border-smooth h-full overflow-auto border-l"
-                        style:--mask-direction="bottom"
-                        style:--mask-height={`${(4 - i) * 25}%`}
-                    >
-                        <div class={classNames('relative')} style:top={`${(4 - i) * 18}%`}>
+                    <div class="border-smooth h-full overflow-auto border-l">
+                        <div class="relative" style:top={`${(3.25 - i) * 18}%`}>
                             <NumberFlow
                                 class="text-description text-primary border-accent relative -left-px z-10 border-l pl-4 font-medium"
                                 value={stat.number}

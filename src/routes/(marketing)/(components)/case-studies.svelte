@@ -71,7 +71,7 @@
     <div class="container mx-auto">
         <div class="flex w-full flex-col justify-between gap-y-8 py-8 md:flex-row md:items-center">
             <h2
-                class="text-description text-secondary font-aeonik-pro max-w-[780px] text-[32px] leading-9 -tracking-[1px] text-pretty"
+                class="text-description text-secondary font-aeonik-pro max-w-[780px] text-[2rem] leading-9 -tracking-[1px] text-pretty"
             >
                 <a
                     href="/blog/post/customer-story-storealert"
