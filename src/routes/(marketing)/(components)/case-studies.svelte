@@ -1,11 +1,11 @@
 <script lang="ts">
-    import { PUBLIC_APPWRITE_DASHBOARD } from '$env/static/public';
-    import { Button, Icon } from '$lib/components/ui';
+    import { Icon } from '$lib/components/ui';
     import { classNames } from '$lib/utils/classnames';
     import { animate, stagger } from 'motion';
     import { ToggleGroup } from 'bits-ui';
     import DevKind from '../(assets)/logos/devkind.svg';
-    import Avatar from '../(assets)/images/avatar.png';
+    import LangX from '../(assets)/logos/langx.svg';
+    import KCollect from '../(assets)/logos/k-collect.svg';
 
     const studies = [
         {
@@ -18,24 +18,22 @@
             url: '/blog/post/customer-stories-storealert'
         },
         {
-            logo: DevKind,
-            headline:
-                'Product Hunt has leveraged Appwrite to transform logistics and supply chain management for circular businesses',
-            blurb: 'Been a huge supporter of Appwrite for over a year, championing it even at the companies I was working at.',
-            name: 'Terry Lennon',
-            title: 'Engineer at Product Hunt',
-            avatar: Avatar,
-            url: '/case-studies/product-hunt'
+            logo: LangX,
+            headline: 'LangX handled millions of requests using Appwrite',
+            blurb: 'With its comprehensive suite of services Appwrite emerged as an ideal choice for my needs.',
+            name: 'Xue',
+            title: 'Founder at LangX',
+            avatar: '/images/testimonials/xue.webp',
+            url: '/blog/post/customer-stories-langx'
         },
         {
-            logo: DevKind,
-            headline:
-                'Product Hunt has leveraged Appwrite to transform logistics and supply chain management for circular businesses',
-            blurb: 'A special thanks to Appwrite for providing robust features and seamless functionality.',
-            name: 'Hassan Ahmed',
-            title: 'Engineer at DevKind',
-            avatar: Avatar,
-            url: '/blog/post/customer-stories-devkind'
+            logo: KCollect,
+            headline: 'K-collect reduced infrastructure costs by 700%',
+            blurb: 'A major impact that Appwrite made was the amount of time and stress saved.',
+            name: "Ryan O'connor",
+            title: 'Founder at K-collect',
+            avatar: '/images/testimonials/ryan.png',
+            url: '/blog/post/customer-stories-kcollect'
         }
     ];
 
@@ -75,7 +73,7 @@
                     src={study.logo}
                     alt={study.headline}
                     class={classNames(
-                        'visible h-8 opacity-100 transition-all [grid-area:stack]',
+                        'visible h-7 opacity-100 transition-all [grid-area:stack]',
                         'group-[&[data-state=on]]/card:invisible group-[&[data-state=on]]/card:opacity-0',
                         'brightness-50'
                     )}
