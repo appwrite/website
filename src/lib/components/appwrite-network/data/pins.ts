@@ -579,6 +579,48 @@ export const pins = {
             city: 'Sydney',
             code: 'AUS',
             available: true
+        },
+        {
+            lat: 1.35,
+            lng: 103.82,
+            city: 'Singapore',
+            code: 'SIN',
+            available: false
+        },
+        {
+            lat: 37.77,
+            lng: -122.42,
+            city: 'San Francisco',
+            code: 'SFO',
+            available: false
+        },
+        {
+            lat: 12.97,
+            lng: 77.59,
+            city: 'Bangalore',
+            code: 'BLR',
+            available: false
+        },
+        {
+            lat: 52.37,
+            lng: 4.9,
+            city: 'Amsterdam',
+            code: 'AMS',
+            available: false
+        },
+        {
+            lat: 51.51,
+            lng: -0.13,
+            city: 'London',
+            code: 'LON',
+            available: false
+        },
+        {
+            lat: 43.65,
+            lng: -79.38,
+            city: 'Toronto',
+            code: 'TOR',
+            available: false
         }
     ],
     regions: [
@@ -598,13 +640,54 @@ export const pins = {
             code: 'FRA',
             available: true
         },
-
         {
             lat: -33.87,
             lng: 151.21,
             city: 'Sydney',
             code: 'AUS',
             available: true
+        },
+        {
+            lat: 1.35,
+            lng: 103.82,
+            city: 'Singapore',
+            code: 'SIN',
+            available: false
+        },
+        {
+            lat: 37.77,
+            lng: -122.42,
+            city: 'San Francisco',
+            code: 'SFO',
+            available: false
+        },
+        {
+            lat: 12.97,
+            lng: 77.59,
+            city: 'Bangalore',
+            code: 'BLR',
+            available: false
+        },
+        {
+            lat: 52.37,
+            lng: 4.9,
+            city: 'Amsterdam',
+            code: 'AMS',
+            available: false
+        },
+        {
+            lat: 51.51,
+            lng: -0.13,
+            city: 'London',
+            code: 'LON',
+            available: false
+        },
+        {
+            lat: 43.65,
+            lng: -79.38,
+            city: 'Toronto',
+            code: 'TOR',
+            available: false
         }
     ]
 };

@@ -98,7 +98,7 @@
                 </div>
             {:else}
                 <div
-                    class="text-caption flex h-5 items-center justify-center place-self-start rounded-md bg-white/6 p-1 text-center text-white/60"
+                    class="text-caption text-primary flex h-5 items-center justify-center place-self-start rounded-md bg-black/6 p-1 text-center"
                 >
                     <span class="text-micro -tracking-tight">Planned</span>
                 </div>
