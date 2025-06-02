@@ -14,8 +14,8 @@ export const useMousePosition = () => {
 
     const handleMouseMove = (event: MouseEvent) => {
         position = {
-            x: event.offsetX,
-            y: event.offsetY
+            x: event.clientX + 12,
+            y: event.clientY + 12
         };
     };
 
