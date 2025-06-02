@@ -86,7 +86,7 @@
                         {#if subtitle}
                             <span class="text-caption text-secondary">{subtitle}</span>
                         {/if}
-                        <p class="text-caption text-secondary mt-auto mb-0 block">{description}</p>
+                        <p class="text-caption text-secondary mt-4 mb-0 block">{description}</p>
                     </div>
 
                     <Button
