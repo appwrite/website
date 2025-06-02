@@ -4,6 +4,7 @@
     import GridPaper from '../../grid-paper.svelte';
     import { isMobile } from '$lib/utils/is-mobile';
     import { classNames } from '$lib/utils/classnames';
+    import Checkmark from '$lib/components/fancy/checkmark.svelte';
 
     const commands = [
         'GenerateReport',
@@ -15,33 +16,72 @@
 
     let container: HTMLElement;
     let activeCommand: HTMLElement;
+    let complete = $state<boolean>(false);
 
     $effect(() => {
         hover(container, () => {
             if (isMobile()) return;
 
-            console.log(activeCommand.offsetWidth);
-
-            animate(activeCommand, {
-                width: [activeCommand.offsetWidth, activeCommand.offsetWidth + 50]
-            });
+            animate(
+                activeCommand,
+                {
+                    width: [activeCommand.offsetWidth, activeCommand.offsetWidth + 24]
+                },
+                {
+                    onComplete: () => {
+                        complete = true;
+                    }
+                }
+            );
 
             return () => {
-                animate(activeCommand, {
-                    width: [activeCommand.offsetWidth, activeCommand.offsetWidth - 50]
-                });
+                animate(
+                    activeCommand,
+                    {
+                        width: [activeCommand.offsetWidth, activeCommand.offsetWidth - 24]
+                    },
+                    {
+                        onComplete: () => {
+                            complete = false;
+                        }
+                    }
+                );
             };
         });
 
-        inView(container, () => {
-            if (!isMobile()) return;
+        inView(
+            container,
+            () => {
+                if (!isMobile()) return;
 
-            animate(activeCommand, {
-                width: activeCommand.offsetWidth + 50
-            });
+                animate(
+                    activeCommand,
+                    {
+                        width: [activeCommand.offsetWidth, activeCommand.offsetWidth + 24]
+                    },
+                    {
+                        onComplete: () => {
+                            complete = true;
+                        }
+                    }
+                );
 
-            return () => {};
-        });
+                return () => {
+                    animate(
+                        activeCommand,
+                        {
+                            width: [activeCommand.offsetWidth, activeCommand.offsetWidth - 24]
+                        },
+                        {
+                            onComplete: () => {
+                                complete = false;
+                            }
+                        }
+                    );
+                };
+            },
+            { amount: 'all' }
+        );
     });
 </script>
 
@@ -82,8 +122,14 @@
                     class="text-caption relative w-fit shrink-0 overflow-hidden rounded-2xl border border-transparent p-px font-mono text-sm text-white"
                     bind:this={activeCommand}
                 >
-                    <div class="h-full w-full rounded-2xl bg-[#202023] px-3 py-1 text-white/80">
+                    <div
+                        class="flex h-full w-full items-center justify-between gap-2 rounded-2xl bg-[#202023] px-3 py-1 text-left text-white/80"
+                    >
                         UpdateProfile
+
+                        {#if complete}
+                            <Checkmark play class="animate-fade-in size-5 text-[#B4F8E2]" />
+                        {/if}
                     </div>
                     <div
                         class="absolute inset-0 -z-1 bg-linear-to-l from-white/12 to-transparent"
