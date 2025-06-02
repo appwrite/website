@@ -23,7 +23,7 @@
         {
             name: 'Ryan O’Conner',
             copy: `The switch to using Appwrite brought infinite value that I'm still discovering today, but a major impact that it made was the amount of time and stress that it saved me as it simply just works. There's no struggling with writing backend code and working with databases, as that's already taken care of.`,
-            image: '/images/testimonials/ryan-oconner.png',
+            image: '/images/testimonials/ryan.png',
             title: 'Founder',
             company: 'K-Collect',
             href: '/blog/post/customer-stories-kcollect'
@@ -31,15 +31,15 @@
         {
             name: 'Hassan Ahmed',
             copy: `A special thanks to Appwrite for providing robust features and seamless functionality that allow us to focus on what matters most—empowering merchants with real-time insights and control over their store operations.`,
-            image: '/images/testimonials/smartbee.png',
+            image: '/images/testimonials/hassan.jpeg',
             title: 'Fullstack Developer',
             company: 'DevKind',
-            href: '/blog/post/customer-stories-smartbee'
+            href: '/blog/post/customer-stories-devkind'
         },
         {
             name: 'Jonas Janssen',
             copy: `Thanks to Appwrite and advances in technology, we were able to get an MVP out in 2/3 months with 1 developer.`,
-            image: '/images/testimonials/undo.png',
+            image: '/images/testimonials/jonas.jpeg',
             title: 'Founder',
             company: 'UNDO',
             href: '/blog/post/customer-stories-undo'
@@ -47,7 +47,7 @@
         {
             name: 'Xue',
             copy: `With its comprehensive suite of services including authentication, database management, storage, and serverless functions, Appwrite emerged as an ideal choice for my needs.`,
-            image: '/images/testimonials/langx.png',
+            image: '/images/testimonials/xue.webp',
             title: 'Founder',
             company: 'LangX',
             href: '/blog/post/customer-stories-langx'
@@ -55,7 +55,7 @@
         {
             name: 'Petto',
             copy: `Simplifying app development is a significant need in the industry, and your efforts to abstract complexity, reduce repetitive tasks, and make the development process more enjoyable are highly commendable.`,
-            image: '/images/testimonials/smartbee.png',
+            image: '/images/testimonials/petto.png',
             title: '@gipetto'
         }
     ];
