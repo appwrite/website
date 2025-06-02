@@ -89,7 +89,10 @@
     });
 </script>
 
-<div class={classNames('relative flex min-h-[700px] flex-col gap-4 py-12', theme)} use:useInView>
+<div
+    class={classNames('relative -mb-8 flex min-h-[700px] flex-col gap-4 py-12', theme)}
+    use:useInView
+>
     <div class="relative z-10 container w-fit md:w-full">
         <div class="mt-12 max-w-xl">
             <h2 class="text-primary font-aeonik-pro text-5xl tracking-tighter text-pretty">

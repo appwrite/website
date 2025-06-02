@@ -1,4 +1,6 @@
 <script lang="ts">
+    import { page } from '$app/state';
+
     const allProducts = {
         messaging: {
             title: 'Messaging',
@@ -44,21 +46,8 @@
         }
     } as const;
 
-    type Props = {
-        exclude?:
-            | 'messaging'
-            | 'functions'
-            | 'databases'
-            | 'storage'
-            | 'auth'
-            | 'realtime'
-            | 'sites';
-    };
-
-    const { exclude }: Props = $props();
-
     const products = Object.entries(allProducts)
-        .filter(([key]) => key !== exclude)
+        .filter(([key]) => key !== page.url.pathname.replace('/products/', ''))
         .map(([_, value]) => value);
 </script>
 

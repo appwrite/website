@@ -25,13 +25,13 @@
         {
             name: 'Scale',
             price: '$599',
-            description: 'For pro developers and teams that need to scale their products.',
+            description: 'For teams and products that need more control and support.',
             subtitle: 'per organization/month'
         },
         {
             name: 'Enterprise',
             price: 'Custom',
-            description: 'For pro developers and teams that need to scale their products.',
+            description: 'For enterprises that need more power and premium support.',
             subtitle: 'per organization/month'
         }
     ];

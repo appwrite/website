@@ -269,7 +269,7 @@
                     </div>
                 </div>
             </div>
-            <Scale>
+            <Scale theme="dark">
                 Appwrite has supported our recent growth in every step of the way, <span
                     class="text-primary">without any failures or outages</span
                 >.

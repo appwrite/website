@@ -85,7 +85,8 @@
     >
         <div class="relative mx-16">
             <select
-                class="web-input-text mx-auto w-full max-w-[288px] appearance-none"
+                id="map-select"
+                class="web-input-text mx-auto w-full appearance-none"
                 onchange={(e) => handleSetActiveMarker(e.currentTarget.value)}
             >
                 {#each pins[activeSegment as PinSegment] as pin}
@@ -93,7 +94,7 @@
                 {/each}
             </select>
             <span
-                class="icon-cheveron-down web-u-pointer-events-none absolute top-[11px] right-27"
+                class="icon-cheveron-down web-u-pointer-events-none absolute top-[11px] right-2"
                 aria-hidden="true"
             ></span>
         </div>

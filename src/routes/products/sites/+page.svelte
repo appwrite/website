@@ -90,7 +90,7 @@
     </div>
 
     <Faq />
-    <ProductCards exclude="sites" />
+    <ProductCards />
 
     <div class="relative -mt-6 max-w-screen overflow-hidden pt-20">
         <div class="container">
