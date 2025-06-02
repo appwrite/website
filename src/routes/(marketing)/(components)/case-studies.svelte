@@ -11,11 +11,11 @@
         {
             logo: DevKind,
             headline: 'DevKind reduced development time by 60% and lowered server costs by 40%',
-            blurb: 'Been a huge supporter of Appwrite for over a year, championing it even at the companies I was working at.',
-            name: 'Terry Lennon',
-            title: 'Engineer at Product Hunt',
-            avatar: Avatar,
-            url: '/case-studies/product-hunt'
+            blurb: 'A special thanks to Appwrite for providing robust features and seamless functionality.',
+            name: 'Hassan Ahmed',
+            title: 'Engineer at DevKind',
+            avatar: '/images/testimonials/hassan.jpeg',
+            url: '/blog/post/customer-stories-storealert'
         },
         {
             logo: DevKind,
@@ -31,11 +31,11 @@
             logo: DevKind,
             headline:
                 'Product Hunt has leveraged Appwrite to transform logistics and supply chain management for circular businesses',
-            blurb: 'Been a huge supporter of Appwrite for over a year, championing it even at the companies I was working at.',
-            name: 'Terry Lennon',
-            title: 'Engineer at Product Hunt',
+            blurb: 'A special thanks to Appwrite for providing robust features and seamless functionality.',
+            name: 'Hassan Ahmed',
+            title: 'Engineer at DevKind',
             avatar: Avatar,
-            url: '/case-studies/product-hunt'
+            url: '/blog/post/customer-stories-devkind'
         }
     ];
 
@@ -49,20 +49,6 @@
         if (!newValue.length) return;
         value = newValue;
     };
-
-    $effect(() => {
-        animate(
-            '.active .word',
-            {
-                y: [36, 0]
-            },
-            {
-                duration: 0.25,
-                delay: stagger(0.025),
-                ease: 'circOut'
-            }
-        );
-    });
 </script>
 
 <div
@@ -89,7 +75,7 @@
                     src={study.logo}
                     alt={study.headline}
                     class={classNames(
-                        'visible w-20 opacity-100 transition-all [grid-area:stack]',
+                        'visible h-8 opacity-100 transition-all [grid-area:stack]',
                         'group-[&[data-state=on]]/card:invisible group-[&[data-state=on]]/card:opacity-0',
                         'brightness-50'
                     )}
@@ -104,35 +90,39 @@
                     <img src={study.logo} alt={study.headline} class="w-20" />
 
                     <span
-                        class="text-title font-aeonik-pro text-primary relative flex flex-wrap gap-2"
+                        class="text-title font-aeonik-pro text-primary relative flex flex-wrap gap-2 text-left"
                         class:active={value === i.toString()}
-                        >{#each study.headline.split(' ') as word, i}
-                            <span class="relative overflow-clip">
-                                <span class="word inline-flex">
-                                    {word}
-                                </span>
-                            </span>
-                        {/each}</span
                     >
+                        {study.headline}
+                    </span>
 
                     <div
                         class={classNames('border-smooth mt-8 border-t border-dashed pt-8', {
                             'animate-fade-in [animation-delay:500ms]': value === i.toString()
                         })}
                     >
-                        <div class="text-primary text-sub-body font-medium md:max-w-[60%]">
+                        <div
+                            class="text-primary text-sub-body text-left font-medium md:max-w-[60%]"
+                        >
                             "{study.blurb}"
                         </div>
 
                         <div class="mt-4 flex flex-col justify-between md:flex-row">
-                            <div class="flex gap-2">
-                                <img src={study.avatar} alt={study.headline} class="w-20" />
-                                <span class="text-caption">{study.name}, {study.title}</span>
+                            <div class="flex items-center gap-2">
+                                <img
+                                    src={study.avatar}
+                                    alt={study.headline}
+                                    class="size-6 rounded-full"
+                                />
+                                <span class="text-caption text-primary font-medium"
+                                    >{study.name},
+                                    <span class="text-secondary">{study.title}</span></span
+                                >
                             </div>
 
                             <a
                                 href={study.url}
-                                class="text-primary group mt-4 flex items-center gap-2 md:mt-0"
+                                class="text-primary text-sub-body group mt-4 flex items-center gap-2 md:mt-0"
                                 >Read customer story <Icon
                                     name="arrow-right"
                                     class="transition-transform group-hover:translate-x-0.5"
