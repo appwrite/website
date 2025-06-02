@@ -65,7 +65,7 @@
             <ToggleGroup.Item
                 value={i.toString()}
                 class={classNames(
-                    'data-[state="on"]:border-smooth grid cursor-pointer place-content-center place-items-center overflow-hidden rounded-2xl border border-transparent px-12 py-12 backdrop-blur-3xl transition-all duration-400 ease-in-out [grid-template-areas:"stack"] max-sm:data-[state="off"]:h-[125px] max-sm:data-[state="on"]:h-[425px] md:h-[425px]',
+                    'data-[state="on"]:border-smooth align-items-center grid cursor-pointer justify-items-center overflow-hidden rounded-2xl border border-transparent px-12 py-12 backdrop-blur-3xl transition-all duration-400 ease-in-out [grid-template-areas:"stack"] max-sm:data-[state="off"]:h-[125px] max-sm:data-[state="on"]:h-[425px] md:h-[425px]',
                     'group/card hover:bg-black/24 data-[state="off"]:bg-black/16 data-[state="on"]:basis-full data-[state="on"]:bg-black/24 md:data-[state="off"]:basis-[15%] md:data-[state="on"]:basis-[70%]',
                     'outline-0 duration-300 hover:shadow-[0px_0px_0px_4px_var(--color-offset)] focus:shadow-[0px_0px_0px_4px_var(--color-offset)]!'
                 )}
