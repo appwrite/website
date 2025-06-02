@@ -65,8 +65,8 @@
             <ToggleGroup.Item
                 value={i.toString()}
                 class={classNames(
-                    'data-[state="on"]:border-smooth grid cursor-pointer place-content-center place-items-center overflow-hidden rounded-2xl border border-transparent px-12 py-6 backdrop-blur-3xl transition-all duration-400 ease-in-out [grid-template-areas:"stack"] max-sm:data-[state="off"]:h-[125px] max-sm:data-[state="on"]:h-[425px] md:h-[425px]',
-                    'group/card hover:bg-black/24 data-[state="off"]:bg-black/16 data-[state="on"]:[flex-basis:70%] data-[state="on"]:bg-black/24 md:data-[state="off"]:basis-[15%]',
+                    'data-[state="on"]:border-smooth grid cursor-pointer place-content-center place-items-center overflow-hidden rounded-2xl border border-transparent px-12 py-12 backdrop-blur-3xl transition-all duration-400 ease-in-out [grid-template-areas:"stack"] max-sm:data-[state="off"]:h-[125px] max-sm:data-[state="on"]:h-[425px] md:h-[425px]',
+                    'group/card hover:bg-black/24 data-[state="off"]:bg-black/16 data-[state="on"]:basis-full data-[state="on"]:bg-black/24 md:data-[state="off"]:basis-[15%] md:data-[state="on"]:basis-[70%]',
                     'outline-0 duration-300 hover:shadow-[0px_0px_0px_4px_var(--color-offset)] focus:shadow-[0px_0px_0px_4px_var(--color-offset)]!'
                 )}
             >
@@ -106,7 +106,7 @@
                             "{study.blurb}"
                         </div>
 
-                        <div class="mt-4 flex flex-col justify-between md:flex-row">
+                        <div class="mt-4 flex flex-col justify-between gap-4 lg:flex-row">
                             <div class="flex items-center gap-2">
                                 <img
                                     src={study.avatar}
@@ -123,7 +123,7 @@
 
                             <a
                                 href={study.url}
-                                class="text-primary text-sub-body group mt-4 flex items-center gap-2 md:mt-0"
+                                class="text-primary text-sub-body group mt-4 flex items-center gap-2 text-right md:mt-0"
                                 >Read customer story <Icon
                                     name="arrow-right"
                                     class="transition-transform group-hover:translate-x-0.5"
