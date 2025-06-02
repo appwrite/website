@@ -1,170 +1,147 @@
 <script lang="ts">
     import { PUBLIC_APPWRITE_DASHBOARD } from '$env/static/public';
-    import { Button } from '$lib/components/ui';
+    import { Button, Icon } from '$lib/components/ui';
     import { classNames } from '$lib/utils/classnames';
+    import { animate, stagger } from 'motion';
+    import { ToggleGroup } from 'bits-ui';
+    import DevKind from '../(assets)/logos/devkind.svg';
+    import Avatar from '../(assets)/images/avatar.png';
 
-    const testimonials = [
+    const studies = [
         {
-            name: 'Marius Bolik',
-            copy: `Not only is the software an absolute game-changer, but the team is always there when you need them. The integrated user authentication and the ease of creating data structures have undoubtedly saved us several weeks' worth of time.`,
-            image: '/images/testimonials/marius-bolik2.png',
-            title: 'CTO',
-            company: 'mySHOEFITTER',
-            href: '/blog/post/customer-stories-myshoefitter'
+            logo: DevKind,
+            headline: 'DevKind reduced development time by 60% and lowered server costs by 40%',
+            blurb: 'Been a huge supporter of Appwrite for over a year, championing it even at the companies I was working at.',
+            name: 'Terry Lennon',
+            title: 'Engineer at Product Hunt',
+            avatar: Avatar,
+            url: '/case-studies/product-hunt'
         },
         {
-            name: 'David Forster',
-            copy: `Working with Appwrite saved us a lot of money in comparison to Firebase since the amount of users grew quite fast and we needed a quick switch. I am still surprised how easy the implementation into Flutter was.`,
-            image: '/images/testimonials/david-forster.png',
-            title: 'Founder',
-            company: 'Open Mind',
-            href: '/blog/post/customer-stories-open-mind'
+            logo: DevKind,
+            headline:
+                'Product Hunt has leveraged Appwrite to transform logistics and supply chain management for circular businesses',
+            blurb: 'Been a huge supporter of Appwrite for over a year, championing it even at the companies I was working at.',
+            name: 'Terry Lennon',
+            title: 'Engineer at Product Hunt',
+            avatar: Avatar,
+            url: '/case-studies/product-hunt'
         },
         {
-            name: 'Ryan O’Conner',
-            copy: `The switch to using Appwrite brought infinite value that I'm still discovering today, but a major impact that it made was the amount of time and stress that it saved me as it simply just works. There's no struggling with writing backend code and working with databases, as that's already taken care of.`,
-            image: '/images/testimonials/ryan.png',
-            title: 'Founder',
-            company: 'K-Collect',
-            href: '/blog/post/customer-stories-kcollect'
-        },
-        {
-            name: 'Hassan Ahmed',
-            copy: `A special thanks to Appwrite for providing robust features and seamless functionality that allow us to focus on what matters most—empowering merchants with real-time insights and control over their store operations.`,
-            image: '/images/testimonials/hassan.jpeg',
-            title: 'Fullstack Developer',
-            company: 'DevKind',
-            href: '/blog/post/customer-stories-devkind'
-        },
-        {
-            name: 'Jonas Janssen',
-            copy: `Thanks to Appwrite and advances in technology, we were able to get an MVP out in 2/3 months with 1 developer.`,
-            image: '/images/testimonials/jonas.jpeg',
-            title: 'Founder',
-            company: 'UNDO',
-            href: '/blog/post/customer-stories-undo'
-        },
-        {
-            name: 'Xue',
-            copy: `With its comprehensive suite of services including authentication, database management, storage, and serverless functions, Appwrite emerged as an ideal choice for my needs.`,
-            image: '/images/testimonials/xue.webp',
-            title: 'Founder',
-            company: 'LangX',
-            href: '/blog/post/customer-stories-langx'
-        },
-        {
-            name: 'Petto',
-            copy: `Simplifying app development is a significant need in the industry, and your efforts to abstract complexity, reduce repetitive tasks, and make the development process more enjoyable are highly commendable.`,
-            image: '/images/testimonials/petto.png',
-            title: '@gipetto'
+            logo: DevKind,
+            headline:
+                'Product Hunt has leveraged Appwrite to transform logistics and supply chain management for circular businesses',
+            blurb: 'Been a huge supporter of Appwrite for over a year, championing it even at the companies I was working at.',
+            name: 'Terry Lennon',
+            title: 'Engineer at Product Hunt',
+            avatar: Avatar,
+            url: '/case-studies/product-hunt'
         }
     ];
+
+    let value = $state<string>('0');
+
+    const getValue = () => {
+        return value;
+    };
+
+    const setValue = (newValue: string) => {
+        if (!newValue.length) return;
+        value = newValue;
+    };
+
+    $effect(() => {
+        animate(
+            '.active .word',
+            {
+                y: [36, 0]
+            },
+            {
+                duration: 0.25,
+                delay: stagger(0.025),
+                ease: 'circOut'
+            }
+        );
+    });
 </script>
 
 <div
     class={classNames(
-        'border-smooth relative -mb-4 flex items-center justify-center overflow-hidden border-t pt-20 pb-40',
+        'relative flex min-h-[60vh] items-center justify-center overflow-hidden',
         'from-0% before:absolute before:inset-0 before:top-0 before:left-0 before:-z-10 before:block before:h-full before:bg-radial-[circle_at_120%_-50%] before:from-purple-500/30 before:to-transparent before:to-40% before:blur-2xl',
         'after:from-accent/20 after:absolute after:inset-0 after:top-0 after:right-0 after:-z-10 after:mt-auto after:mb-0 after:block after:h-full after:bg-radial-[circle_at_-15%_125%] after:from-0% after:to-transparent after:to-40% after:blur-2xl'
     )}
 >
-    <div class="container mx-auto">
-        <div class="flex w-full flex-col justify-between gap-y-8 py-8 md:flex-row md:items-center">
-            <h2
-                class="text-description text-secondary font-aeonik-pro max-w-[780px] text-[2rem] leading-9 -tracking-[1px] text-pretty"
+    <ToggleGroup.Root
+        bind:value={getValue, setValue}
+        type="single"
+        class="container flex h-full flex-col items-center gap-4 md:flex-row"
+    >
+        {#each studies as study, i}
+            <ToggleGroup.Item
+                value={i.toString()}
+                class={classNames(
+                    'data-[state="on"]:border-smooth grid cursor-pointer place-content-center place-items-center overflow-hidden rounded-2xl border border-transparent px-12 py-6 backdrop-blur-3xl transition-all duration-400 ease-in-out [grid-template-areas:"stack"] max-sm:data-[state="off"]:h-[125px] max-sm:data-[state="on"]:h-[425px] md:h-[425px]',
+                    'group/card hover:bg-black/24 data-[state="off"]:bg-black/16 data-[state="on"]:[flex-basis:70%] data-[state="on"]:bg-black/24 md:data-[state="off"]:[flex-basis:15%]'
+                )}
             >
-                <a
-                    href="/blog/post/customer-story-storealert"
-                    class="text-primary border-smooth hover:border-accent border-b transition-colors"
-                    >DevKind
-                </a>
-                reduced development time by 60%, and lowered server costs by 40%.
-                <a
-                    href="/blog/post/customer-stories-langx"
-                    class="text-primary border-smooth hover:border-accent border-b transition-colors"
-                    >LangX
-                </a>
-                handled millions of requests.
-                <a
-                    href="/blog/post/customer-stories-kcollect"
-                    class="text-primary border-smooth hover:border-accent border-b transition-colors"
-                    >K-collect
-                </a>
-                reduced infrastructure costs by 700%.
-            </h2>
-            <Button href={PUBLIC_APPWRITE_DASHBOARD} variant="secondary"
-                >Start building for free</Button
-            >
-        </div>
-        <div class="mt-8 columns-1 [column-gap:20px] md:columns-2 lg:columns-3">
-            {#each testimonials as testimonial}
-                {#if testimonial.href}
-                    <a href={testimonial.href} class="contents">
-                        <div
-                            class={classNames(
-                                'border-smooth bg-card mb-5 h-fit [break-inside:avoid] rounded-2xl border p-5 transition-shadow duration-300 last-of-type:col-start-2 hover:shadow-[0px_0px_0px_4px_var(--color-offset)]'
-                            )}
-                        >
-                            {testimonial.copy}
+                <img
+                    src={study.logo}
+                    alt={study.headline}
+                    class={classNames(
+                        'visible w-20 opacity-100 transition-all [grid-area:stack]',
+                        'group-[&[data-state=on]]/card:invisible group-[&[data-state=on]]/card:opacity-0',
+                        'brightness-50'
+                    )}
+                />
 
-                            <div class="mt-4 flex items-center gap-3">
-                                <img
-                                    src={testimonial.image}
-                                    class="size-12 rounded-full"
-                                    alt="{testimonial.company} Logo"
-                                />
-                                <div>
-                                    <span class="text-secondary text-sub-body block font-medium">
-                                        {testimonial.name}
-                                    </span>
+                <div
+                    class={classNames(
+                        'invisible space-y-4 opacity-0 blur-sm transition-opacity delay-400 [grid-area:stack]',
+                        'group-[&[data-state=on]]/card:visible group-[&[data-state=on]]/card:opacity-100 group-[&[data-state=on]]/card:blur-none'
+                    )}
+                >
+                    <img src={study.logo} alt={study.headline} class="w-20" />
 
-                                    <span class="text-sub-body text-secondary block">
-                                        {testimonial.title}
-                                        {#if testimonial.company}
-                                            // {testimonial.company}
-                                        {/if}
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                {:else}
-                    <div
-                        class={classNames(
-                            'border-smooth bg-card mb-5 h-fit [break-inside:avoid] rounded-2xl border p-5 transition-shadow duration-300 last-of-type:col-start-2 hover:shadow-[0px_0px_0px_4px_var(--color-offset)]'
-                        )}
+                    <span
+                        class="text-title font-aeonik-pro text-primary relative flex flex-wrap gap-2"
+                        class:active={value === i.toString()}
+                        >{#each study.headline.split(' ') as word, i}
+                            <span class="relative overflow-clip">
+                                <span class="word inline-flex">
+                                    {word}
+                                </span>
+                            </span>
+                        {/each}</span
                     >
-                        {testimonial.copy}
 
-                        <div class="mt-4 flex items-center gap-3">
-                            <img
-                                src={testimonial.image}
-                                class="size-12 rounded-full"
-                                alt="{testimonial.company} Logo"
-                            />
-                            <div>
-                                <span class="text-secondary text-sub-body block font-medium">
-                                    {testimonial.name}
-                                </span>
+                    <div
+                        class={classNames('border-smooth mt-8 border-t border-dashed pt-8', {
+                            'animate-fade-in [animation-delay:500ms]': value === i.toString()
+                        })}
+                    >
+                        <div class="text-primary text-sub-body font-medium md:max-w-[60%]">
+                            "{study.blurb}"
+                        </div>
 
-                                <span class="text-sub-body text-secondary block">
-                                    {testimonial.title}
-                                    {#if testimonial.company}
-                                        // {testimonial.company}
-                                    {/if}
-                                </span>
+                        <div class="mt-4 flex flex-col justify-between md:flex-row">
+                            <div class="flex gap-2">
+                                <img src={study.avatar} alt={study.headline} class="w-20" />
+                                <span class="text-caption">{study.name}, {study.title}</span>
                             </div>
+
+                            <a
+                                href={study.url}
+                                class="text-primary group mt-4 flex items-center gap-2 md:mt-0"
+                                >Read customer story <Icon
+                                    name="arrow-right"
+                                    class="transition-transform group-hover:translate-x-0.5"
+                                ></Icon></a
+                            >
                         </div>
                     </div>
-                {/if}
-            {/each}
-        </div>
-    </div>
+                </div>
+            </ToggleGroup.Item>
+        {/each}
+    </ToggleGroup.Root>
 </div>
-
-<style>
-    .masonry {
-        columns: 3;
-        column-gap: 32px;
-    }
-</style>
