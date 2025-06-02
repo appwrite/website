@@ -59,10 +59,6 @@
             title: '@gipetto'
         }
     ];
-
-    let [minColWidth, maxColWidth, gap] = [200, 800, 20];
-    let width = $state(0),
-        height = $state(0);
 </script>
 
 <div
@@ -75,16 +71,26 @@
     <div class="container mx-auto">
         <div class="flex w-full flex-col justify-between gap-y-8 py-8 md:flex-row md:items-center">
             <h2
-                class="text-description text-secondary font-aeonik-pro max-w-[789px] text-[32px] leading-9 -tracking-[1px] text-pretty"
+                class="text-description text-secondary font-aeonik-pro max-w-[780px] text-[32px] leading-9 -tracking-[1px] text-pretty"
             >
                 <a
                     href="/blog/post/customer-story-storealert"
-                    class="text-primary border-accent border-b"
+                    class="text-primary border-smooth hover:border-accent border-b transition-colors"
                     >DevKind
                 </a>
-                reduced development time by 60%, and lowered server costs by 40%. LangX handled millions
-                of requests. K-collect reduced infrastructure costs by
-                <span class="text-primary">700%</span>.
+                reduced development time by 60%, and lowered server costs by 40%.
+                <a
+                    href="/blog/post/customer-stories-langx"
+                    class="text-primary border-smooth hover:border-accent border-b transition-colors"
+                    >LangX
+                </a>
+                handled millions of requests.
+                <a
+                    href="/blog/post/customer-stories-kcollect"
+                    class="text-primary border-smooth hover:border-accent border-b transition-colors"
+                    >K-collect
+                </a>
+                reduced infrastructure costs by 700%.
             </h2>
             <Button href={PUBLIC_APPWRITE_DASHBOARD} variant="secondary"
                 >Start building for free</Button
