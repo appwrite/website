@@ -76,7 +76,7 @@
                 'border-gradient relative z-100 flex w-[190px] flex-col gap-2 rounded-[10px] p-2 backdrop-blur-lg before:rounded-[10px] after:rounded-[10px]',
                 { 'bg-transparent': theme === 'dark', 'bg-white': theme === 'light' }
             )}
-            style:transform={`translateX(${x}px) translateY(${y - 650}px)`}
+            style:transform={`translateX(${x + 20}px) translateY(${y - 425}px)`}
         >
             {#key tooltipData.city}
                 <span class="text-primary text-caption w-fit" bind:this={city}>
