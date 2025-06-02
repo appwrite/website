@@ -44,7 +44,7 @@
                 {
                     number: 50,
                     suffix: 'K+',
-                    description: 'Github stars'
+                    description: 'GitHub stars'
                 },
                 {
                     number: 300,
