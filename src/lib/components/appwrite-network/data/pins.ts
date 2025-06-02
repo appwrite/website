@@ -585,14 +585,14 @@ export const pins = {
             lng: 103.82,
             city: 'Singapore',
             code: 'SIN',
-            available: false
+            available: 'Q4 2025'
         },
         {
             lat: 37.77,
             lng: -122.42,
             city: 'San Francisco',
             code: 'SFO',
-            available: false
+            available: 'Q4 2025'
         },
         {
             lat: 12.97,
@@ -652,14 +652,14 @@ export const pins = {
             lng: 103.82,
             city: 'Singapore',
             code: 'SIN',
-            available: false
+            available: 'Q4 2025'
         },
         {
             lat: 37.77,
             lng: -122.42,
             city: 'San Francisco',
             code: 'SFO',
-            available: false
+            available: 'Q4 2025'
         },
         {
             lat: 12.97,

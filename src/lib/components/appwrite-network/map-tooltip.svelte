@@ -84,7 +84,7 @@
                     ({tooltipData.code})
                 </span>
             {/key}
-            {#if tooltipData.available}
+            {#if typeof tooltipData.available === 'boolean' && tooltipData.available}
                 <div
                     class={classNames(
                         'text-caption flex h-5 items-center justify-center place-self-start rounded-md p-1 text-center',
@@ -96,7 +96,7 @@
                 >
                     <span class="text-micro -tracking-tight">Available now</span>
                 </div>
-            {:else}
+            {:else if typeof tooltipData.available === 'boolean' && !tooltipData.available}
                 <div
                     class={classNames(
                         'text-caption text-primary flex h-5 items-center justify-center place-self-start rounded-md bg-black/6 p-1 text-center',
@@ -107,6 +107,18 @@
                     )}
                 >
                     <span class="text-micro -tracking-tight">Planned</span>
+                </div>
+            {:else}
+                <div
+                    class={classNames(
+                        'text-caption text-primary flex h-5 items-center justify-center place-self-start rounded-md bg-black/6 p-1 text-center',
+                        {
+                            'text-primary bg-black/6': theme === 'light',
+                            'text-primary bg-white/6': theme === 'dark'
+                        }
+                    )}
+                >
+                    <span class="text-micro -tracking-tight">{tooltipData.available}</span>
                 </div>
             {/if}
         </div>
