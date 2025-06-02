@@ -397,7 +397,7 @@
     /* base */
     --color-primary: var(--color-greyscale-900);
     --color-secondary: var(--color-greyscale-700);
-    --color-accent: var(--color-pink-600);
+    --color-accent: var(--color-pink-500);
     --carousel-gradient: transparent;
     --color-badge-bg: var(--color-badge-bg-light);
     --color-badge-border: var(--color-badge-border-light);
