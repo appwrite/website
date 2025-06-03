@@ -65,7 +65,7 @@
     let variantClass = $derived(variantClasses[variant]);
 
     $effect(() => {
-        $layoutState.currentVariant = isReferences ? 'expanded' : variant;
+        $layoutState.currentVariant = variant;
     });
 
     afterNavigate(() => {
