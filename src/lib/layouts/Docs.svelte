@@ -1,5 +1,4 @@
 <script lang="ts" module>
-    import { navigating } from '$app/stores';
     import { writable } from 'svelte/store';
 
     export type DocsLayoutVariant = 'default' | 'expanded' | 'two-side-navs';
@@ -40,8 +39,6 @@
 </script>
 
 <script lang="ts">
-    import { run } from 'svelte/legacy';
-
     import { Search, IsLoggedIn } from '$lib/components';
     import { isMac } from '$lib/utils/platform';
     import { getContext, setContext } from 'svelte';
@@ -49,6 +46,7 @@
     import { page } from '$app/state';
     import { getAppwriteDashboardUrl } from '$lib/utils/dashboard';
     import { Button, Icon, InlineTag } from '$lib/components/ui';
+    import { afterNavigate } from '$app/navigation';
 
     interface Props {
         variant?: DocsLayoutVariant;
@@ -67,10 +65,10 @@
     let variantClass = $derived(variantClasses[variant]);
 
     $effect(() => {
-        $layoutState.currentVariant = variant;
+        $layoutState.currentVariant = isReferences ? 'expanded' : variant;
     });
 
-    navigating.subscribe(() => {
+    afterNavigate(() => {
         layoutState.update((n) => ({
             ...n,
             showReferences: false,
