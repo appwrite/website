@@ -4,6 +4,7 @@
     import TeamsConsole from '../(assets)/teams-console.png';
     import PermissionsConsole from '../(assets)/permissions-console.png';
     import { classNames } from '$lib/utils/classnames';
+    import { Button } from '$lib/components/ui';
 
     const consoles: Array<{ title: string; copy: string; image: string }> = [
         {
@@ -24,7 +25,7 @@
         <div
             class="mx-auto mb-20 flex max-w-md flex-col items-center justify-center gap-y-4 text-center"
         >
-            <span class="web-badges web-eyebrow text-micro font-aeonik-fono uppercase !text-white"
+            <span class="web-badges web-eyebrow text-micro font-aeonik-fono !text-white uppercase"
                 >Access_</span
             >
             <h2 class="text-title text-primary font-aeonik-pro">
@@ -33,9 +34,11 @@
             <p class="text-body text-secondary font-medium">
                 Create custom roles and level of access to resources such as projects, files, etc.
             </p>
-            <a
+            <Button
                 href="/docs/advanced/platform/permissions"
-                class="web-button is-secondary mt-2 !w-full md:!w-fit">Learn more</a
+                variant="secondary"
+                event="products-auth-permissions_learn_more-click"
+                class="mt-2 !w-full md:!w-fit">Learn more</Button
             >
         </div>
     </div>

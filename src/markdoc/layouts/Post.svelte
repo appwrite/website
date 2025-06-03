@@ -1,7 +1,15 @@
 <script lang="ts">
+    import { page } from '$app/state';
     import { Media } from '$lib/UI';
     import { FooterNav, MainFooter } from '$lib/components';
+    import CTA from '$lib/components/BlogCta.svelte';
+    import Article from '$lib/components/blog/article.svelte';
+    import Breadcrumbs from '$lib/components/blog/breadcrumbs.svelte';
+    import Newsletter from '$lib/components/blog/newsletter.svelte';
+    import PostMeta from '$lib/components/blog/post-meta.svelte';
+    import TableOfContents from '$lib/components/blog/table-of-contents.svelte';
     import { Main } from '$lib/layouts';
+    import type { TocItem } from '$lib/layouts/DocsArticle.svelte';
     import { formatDate } from '$lib/utils/date';
     import {
         createBreadcrumbsSchema,
@@ -12,14 +20,6 @@
     import type { AuthorData, PostsData } from '$routes/blog/content';
     import { TITLE_SUFFIX } from '$routes/titles';
     import { getContext, setContext } from 'svelte';
-    import { page } from '$app/stores';
-    import CTA from '$lib/components/BlogCta.svelte';
-    import PostMeta from '$lib/components/blog/post-meta.svelte';
-    import Breadcrumbs from '$lib/components/blog/breadcrumbs.svelte';
-    import Newsletter from '$lib/components/blog/newsletter.svelte';
-    import TableOfContents from '$lib/components/blog/table-of-contents.svelte';
-    import Article from '$lib/components/blog/article.svelte';
-    import type { TocItem } from '$lib/layouts/DocsArticle.svelte';
     import { writable } from 'svelte/store';
     import type { LayoutContext } from './Article.svelte';
 
@@ -39,7 +39,9 @@
         | boolean;
     export let lastUpdated: string;
 
-    const posts = getContext<PostsData[]>('posts');
+    const posts = getContext<PostsData[]>('posts')?.filter(
+        (post) => !(post.unlisted ?? false) && !(post.draft ?? false)
+    );
     const authors = getContext<AuthorData[]>('authors');
     const authorData = authors.find((a) => a.slug === author);
 
@@ -74,7 +76,7 @@
 
     callToAction ??= true;
 
-    const currentURL = `https://appwrite.io${$page.url.pathname}`;
+    const currentURL = `https://appwrite.io${page.url.pathname}`;
 </script>
 
 <svelte:head>
@@ -119,7 +121,7 @@
 </svelte:head>
 
 <Main>
-    <div class="py-10">
+    <div class="pt-10">
         <div class="container">
             <Breadcrumbs {title} />
             <article class="grid grid-cols-1 gap-4 lg:grid-cols-12">

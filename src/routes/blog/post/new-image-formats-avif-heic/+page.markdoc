@@ -1,0 +1,114 @@
+---
+layout: post
+title: "Announcing HEIC and AVIF support: modern image formats now in Appwrite"
+description: 
+date: 2025-05-22
+cover: /images/blog/new-image-formats.png
+timeToRead: 6
+author: damodar-lohani
+category: product, announcement
+featured: false
+---
+
+We’re excited to share we have added support for two new image formats in Appwrite Storage: **HEIC** and **AVIF.** This will give you more tools to manage, manipulate, and serve images the way you need.
+
+You can generate image previews directly in **.heic** and **.avif** formats, which are natively supported in Appwrite.
+
+No converters. No extra steps. Just fast, flexible image handling built in.
+
+# Native support for next-gen formats
+
+Image performance matters. Whether you're building a high-performance photo app or just optimizing media delivery, modern formats like AVIF and HEIC offer massive benefits: smaller sizes, better quality, and native platform support.
+
+With this update, Appwrite now supports outputting previews in **HEIC** (Apple’s proprietary format) and **AVIF** (a modern open format with excellent compression).
+
+# Why it matters
+
+Previously, if you wanted to serve HEIC or AVIF images from Appwrite, you had to download them, convert them manually, and re-upload or host elsewhere.
+
+Now, the Appwrite Storage preview API can do it all automatically.
+
+This means:
+
+- No more external tools
+- No extra conversion steps
+- No breaking your image pipeline
+
+Just fast, reliable image delivery in the formats you need.
+
+# Built for Apple and beyond
+
+HEIC is Apple’s default image format on iOS. AVIF is increasingly used across modern browsers and devices.
+
+This feature was designed for mobile app developers, especially those targeting iOS and working with native image capture and display. But it’s just as useful for any developer looking to serve modern image formats with better compression and quality.
+
+# How to use it
+
+Use the image preview endpoint as you normally would, just set the desired output format to HEIC or AVIF. It works the same way as existing format conversions like `jpg` or `png`.
+
+You’ll see smaller file sizes, faster load times, and better integration with native apps and devices.
+
+# How to get started
+
+HEIC and AVIF support is available on **Appwrite Cloud** and **self-hosted** installations.
+
+```jsx
+import { Client, Storage, ImageFormat } from "appwrite";
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>');
+
+const storage = new Storage(client);
+
+const resultHeic = storage.getFilePreview(
+    'photos',           // bucket ID
+    'sunset.png',       // file ID
+    1800,               // width, will be resized using this value
+    0,                  // height, ignored when 0
+    'center',           // crop center
+    '90',               // slight compression
+    5,                  // border width
+    'CDCA30',           // border color
+    15,                 // border radius
+    1,                  // full opacity
+    0,                  // no rotation
+    'FFFFFF',           // background color
+    ImageFormat.Heic    // output heic format
+);
+console.log(resultHeic.href);
+
+const resultAvif = storage.getFilePreview(
+    'photos',           // bucket ID
+    'sunset.png',       // file ID
+    1800,               // width, will be resized using this value.
+    0,                  // height, ignored when 0
+    'center',           // crop center
+    '90',               // slight compression
+    5,                  // border width
+    'CDCA30',           // border color
+    15,                 // border radius
+    1,                  // full opacity
+    0,                  // no rotation
+    'FFFFFF',           // background color
+    ImageFormat.Avif    // output avif format
+);
+console.log(resultAvif.href);
+```
+
+[Visit the documentation](/docs/products/storage/images) to learn more.
+
+# Smarter storage for better apps
+
+This feature is part of our ongoing commitment to giving you modern tools that work the way you expect. Whether you're building a media-heavy app, targeting Apple platforms, or just caring about performance, you now have more control and better output without extra overhead.
+
+# More resources
+Take a look at what else we released this week.
+
+- [Appwrite Sites](/blog/post/announcing-appwrite-sites)
+- [Hosting for Flutter web](/blog/post/hosting-flutter-web)
+- [Dev Keys](blog/post/announcing-dev-keys)
+- [Appwrite compared to Vercel](/blog/post/open-source-vercel-alternative)
+- [Appwrite Sites product tour](https://youtu.be/VtDe6hDw91k)
+- [Appwrite Sites video announcement](https://youtu.be/0cERQxFjTW4)
+- [Appwrite Discord server](https://appwrite.io/discord)

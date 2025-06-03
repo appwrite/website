@@ -9,6 +9,8 @@
     import { getReferrerAndUtmSource } from '$lib/utils/utm';
     import LogoList from '$lib/components/LogoList.svelte';
     import Scale from '$routes/(experiments)/new-homepage/(components)/scale.svelte';
+    import { Button } from '$lib/components/ui';
+    import { trackEvent } from '$lib/actions/analytics';
 
     let email = '';
     let firstName = '';
@@ -47,6 +49,8 @@
             })
         });
 
+        trackEvent('contact-form-enterprise-submit');
+
         submitting = false;
         if (response.status >= 400) {
             error = response.status >= 500 ? 'Server Error.' : 'Error submitting form.';
@@ -67,7 +71,7 @@
     <title>{title}</title>
     <meta property="og:title" content={title} />
     <meta name="twitter:title" content={title} />
-    <!-- Desscription -->
+    <!-- Description -->
     <meta name="description" content={description} />
     <meta property="og:description" content={description} />
     <meta name="twitter:description" content={description} />
@@ -102,12 +106,9 @@
                                             successfully. Our team will get back to you as soon as
                                             possible.
                                         </p>
-                                        <a
-                                            href="/pricing"
-                                            class="web-button is-secondary web-u-margin-block-end-32"
-                                        >
+                                        <Button variant="secondary" href="/pricing" class="mb-8">
                                             <span>Back to pricing</span>
-                                        </a>
+                                        </Button>
                                     </section>
                                 {:else}
                                     <section class="flex flex-col gap-5">
@@ -210,7 +211,7 @@
                                                     <span
                                                         class="icon-cheveron-down web-u-pointer-events-none absolute top-[11px] right-2"
                                                         aria-hidden="true"
-                                                    />
+                                                    ></span>
                                                 </div>
                                             </li>
                                             <li class="web-form-item flex-col gap-1">
@@ -219,8 +220,9 @@
                                                 >
                                                 <input
                                                     required
+                                                    pattern="^(https:\/\/www\.|https:\/\/)?([a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)+)[a-zA-Z0-9\-\._~:\/\?#[\]@!\$&'\(\)\*\+,;=.]*$"
                                                     class="web-input-text w-full"
-                                                    type="url"
+                                                    type="text"
                                                     placeholder="https://appwrite.io"
                                                     id="companyWebsite"
                                                     bind:value={companyWebsite}
@@ -239,7 +241,7 @@
                                                     id="use-case"
                                                     placeholder="Describe your use case and how our Enterprise Plan can support it"
                                                     bind:value={useCase}
-                                                />
+                                                ></textarea>
                                             </li>
                                         </ul>
                                     </div>
@@ -253,13 +255,13 @@
                                                 {error}
                                             {/if}
                                         </p>
-                                        <button
+                                        <Button
                                             type="submit"
                                             disabled={submitting}
-                                            class="web-button u-cross-child-center web-u-inline-width-100-percent-mobile-break1 cursor-pointer"
+                                            class="u-cross-child-center web-u-inline-width-100-percent-mobile-break1 cursor-pointer"
                                         >
                                             <span>Submit</span>
-                                        </button>
+                                        </Button>
                                     </div>
                                 </form>
                             {/if}
@@ -267,7 +269,7 @@
                     </div>
                 </div>
             </div>
-            <Scale />
+            <Scale alternateInfo />
             <LogoList />
             <div class="container">
                 <FooterNav />

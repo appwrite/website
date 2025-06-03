@@ -28,7 +28,7 @@ Before using OAuth 2 login, you need to enable and configure an OAuth 2 login pr
 
 To initialize the OAuth 2 login process, use the [Create OAuth 2 Session](/docs/references/cloud/client-web/account#createOAuth2Session) route.
 
-OAuth2 sessions allow you to specify the scope of the access you want to request from the OAuth2 provider. 
+OAuth2 sessions allow you to specify the scope of the access you want to request from the OAuth2 provider.
 The requested scopes describe which resources a session can access.
 
 You can pass the scopes to request through the `scopes` parameter when creating a session.
@@ -40,7 +40,7 @@ The scope is provider-specific and can be found in the provider's documentation.
 import { Client, Account, OAuthProvider } from "appwrite";
 
 const client = new Client()
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
     .setProject('<PROJECT_ID>');                 // Your project ID
 
 const account = new Account(client);
@@ -78,7 +78,7 @@ import 'package:appwrite/appwrite.dart';
 import 'package:appwrite/enums.dart';
 
 final client = Client()
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
     .setProject('<PROJECT_ID>');               // Your project ID
 
 final account = Account(client);
@@ -126,7 +126,7 @@ import Appwrite
 import AppwriteEnums
 
 let client = Client()
-    .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
     .setProject("<PROJECT_ID>")                // Your project ID
 
 let account = Account(client)
@@ -140,7 +140,7 @@ try await account.createOAuth2Session(
 {% /tabsitem %}
 
 {% tabsitem #android title="Android" %}
-For Android, add the following activity inside the `<application>` tag in your `AndroidManifest.xml`. 
+For Android, add the following activity inside the `<application>` tag in your `AndroidManifest.xml`.
 Replace `<PROJECT_ID>` with your actual Appwrite project ID.
 
 ```xml
@@ -160,7 +160,7 @@ import io.appwrite.services.Account
 import io.appwrite.enums.OAuthProvider
 
 val client = Client(context)                     // Activity or application context
-    .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
     .setProject("<PROJECT_ID>")                  // Your project ID
 
 val account = Account(client)
@@ -259,7 +259,7 @@ console.log(session.providerAccessToken);
 import 'package:appwrite/appwrite.dart';
 
 final client = Client()
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
     .setProject('<PROJECT_ID>');               // Your project ID
 
 final account = Account(client);
@@ -277,7 +277,7 @@ print(session.providerAccessToken);
 import Appwrite
 
 let client = Client()
-    .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
     .setProject("<PROJECT_ID>") // Your project ID
 
 let account = Account(client)
@@ -296,7 +296,7 @@ import io.appwrite.Client
 import io.appwrite.services.Account
 
 val client = Client(context)
-    .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
     .setProject("<PROJECT_ID>") // Your project ID
 
 val account = Account(client)
@@ -326,13 +326,13 @@ You can use the `providerAccessToken` to make requests to your OAuth 2 provider.
 
 # Refresh tokens {% #refresh-tokens %}
 
-OAuth 2 sessions expire to protect from security risks. 
+OAuth 2 sessions expire to protect from security risks.
 This means the OAuth 2 session with a provider may expire, even when an Appwrite session remains active.
-OAuth 2 sessions should be refreshed periodically so access tokens don't expire. 
+OAuth 2 sessions should be refreshed periodically so access tokens don't expire.
 
-Check the value of `providerAccessTokenExpiry` to know if the token is expired or is about to expire. 
+Check the value of `providerAccessTokenExpiry` to know if the token is expired or is about to expire.
 You can refresh the provider session by calling the [Update OAuth Session](/docs/references/cloud/client-web/account#updateSession) endpoint whenever your user visits your app.
-Avoid refreshing before every request, which might cause rate limit problems. 
+Avoid refreshing before every request, which might cause rate limit problems.
 
 {% multicode %}
 ```client-web
@@ -348,7 +348,7 @@ promise.then(function (response) {
 import 'package:appwrite/appwrite.dart';
 
 final client = Client()
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
     .setProject('<PROJECT_ID>');                // Your project ID
 
 Account account = Account(client);
@@ -361,7 +361,7 @@ final result = await account.updateSession(
 import Appwrite
 
 let client = Client()
-    .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
     .setProject("<PROJECT_ID>") // Your project ID
 
 let account = Account(client)
@@ -375,7 +375,7 @@ import io.appwrite.Client
 import io.appwrite.services.Account
 
 val client = Client(context)
-    .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
     .setProject("<PROJECT_ID>")                 // Your project ID
 
 val account = Account(client)

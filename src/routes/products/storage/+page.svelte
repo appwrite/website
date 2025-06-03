@@ -15,6 +15,7 @@
     import HeroImage from './(assets)/hero-image.png';
     import ProductCards from '$lib/components/product-pages/product-cards.svelte';
     import Optimized from './(components)/Optimized.svelte';
+    import { Button } from '$lib/components/ui';
 
     const title = 'Storage' + TITLE_SUFFIX;
     const description =
@@ -27,7 +28,7 @@
     <title>{title}</title>
     <meta property="og:title" content={title} />
     <meta name="twitter:title" content={title} />
-    <!-- Desscription -->
+    <!-- Description -->
     <meta name="description" content={description} />
     <meta property="og:description" content={description} />
     <meta name="twitter:description" content={description} />
@@ -83,14 +84,15 @@
                             Organize your buckets and files with ease in your dashboard, as well as
                             manage security, permissions, compression, and more.
                         </p>
-                        <a
+                        <Button
+                            variant="secondary"
                             href="/docs/products/storage/buckets"
                             target="_blank"
                             rel="noopener noreferrer"
-                            class="web-button is-secondary mt-4 mx-auto !w-full md:!w-fit"
+                            class="mx-auto mt-4 !w-full md:!w-fit"
                         >
                             <span>Learn more</span>
-                        </a>
+                        </Button>
                     </div>
                 </div>
             </div>
@@ -169,14 +171,14 @@
                                 Appwrite's Storage APIs allow you to create and update your files,
                                 apply image transformations, and more.
                             </p>
-                            <a
+                            <Button
                                 href="/docs/references/cloud/client-web/storage"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                class="web-button mt-4 !w-full md:!w-fit"
+                                class="mt-4 !w-full md:!w-fit"
                             >
                                 <span>View docs</span>
-                            </a>
+                            </Button>
                         </div>
                         <WhatYouCanDo />
                     </div>

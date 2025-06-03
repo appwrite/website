@@ -1,6 +1,7 @@
 <script lang="ts">
-    import { createAccordion, melt } from '@melt-ui/svelte';
     import { slide } from 'svelte/transition';
+    import { trackEvent } from '$lib/actions/analytics';
+    import { createAccordion, melt } from '@melt-ui/svelte';
 
     export let noBorder = false;
 
@@ -37,15 +38,17 @@
                 { label: 'Functions', href: '/products/functions' },
                 { label: 'Messaging', href: '/products/messaging' },
                 { label: 'Storage', href: '/products/storage' },
-                { label: 'Realtime', href: '/docs/apis/realtime' }
+                { label: 'Realtime', href: '/docs/apis/realtime' },
+                { label: 'Network', href: '/docs/products/network' },
+                { label: 'Hosting', href: '/docs/products/sites' }
             ],
             Learn: [
+                { label: 'Blog', href: '/blog' },
                 { label: 'Docs', href: '/docs' },
                 { label: 'Integrations', href: '/integrations' },
                 { label: 'Community', href: '/community' },
                 { label: 'Init', href: '/init' },
                 { label: 'Threads', href: '/threads' },
-                { label: 'Blog', href: '/blog' },
                 { label: 'Changelog', href: '/changelog' },
                 {
                     label: 'Roadmap',
@@ -95,7 +98,7 @@
 
 <nav
     aria-label="Footer"
-    class="web-footer-nav relative mt-24"
+    class="web-footer-nav relative container mt-24"
     class:web-u-sep-block-start={!noBorder}
 >
     <img class="web-logo" src="/images/logos/appwrite.svg" alt="appwrite" height="24" width="130" />
@@ -110,7 +113,16 @@
                 <ul class="web-footer-nav-secondary-list text-sub-body">
                     {#each items as { href, label, target, rel }}
                         <li>
-                            <a class="web-link" {href} {target} {rel}>{label}</a>
+                            <a
+                                class="web-link"
+                                {href}
+                                {target}
+                                {rel}
+                                onclick={() =>
+                                    trackEvent(
+                                        `footer-${label.toLowerCase().replace(' ', '_')}-click`
+                                    )}>{label}</a
+                            >
                         </li>
                     {/each}
                 </ul>
@@ -129,7 +141,7 @@
                             class="web-icon-chevron-down web-u-transition"
                             class:web-u-rotate-180={$isSelected(title)}
                             style:font-size="1rem"
-                        />
+                        ></span>
                     </button>
                 </h5>
                 {#if $isSelected(title)}
@@ -140,7 +152,16 @@
                     >
                         {#each items as { href, label, target, rel }}
                             <li>
-                                <a class="web-link" {href} {target} {rel}>{label}</a>
+                                <a
+                                    class="web-link"
+                                    {href}
+                                    {target}
+                                    {rel}
+                                    onclick={() =>
+                                        trackEvent(
+                                            `footer-${label.toLowerCase().replace(' ', '_')}-click`
+                                        )}>{label}</a
+                                >
                             </li>
                         {/each}
                     </ul>

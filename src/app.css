@@ -1,4 +1,5 @@
 @import 'tailwindcss';
+@import './styles/typography.css';
 @variant dark (&:is(.dark *));
 
 @theme {
@@ -6,10 +7,18 @@
     --color-*: initial;
 
     /* base */
-    --color-primary: hsl(var(--color-primary));
-    --color-secondary: hsl(var(--color-secondary));
+    --color-black: #000;
+    --color-white: #fff;
+    --color-transparent: transparent;
+
+    /* theme */
+    --color-primary: var(--color-primary);
+    --color-secondary: var(--color-secondary);
     --color-accent: var(--color-secondary);
     --color-smooth: var(--color-smooth);
+    --color-subtle: var(--color-subtle);
+    --color-tertiary: var(--color-tertiary);
+    --color-card: var(--color-card);
 
     /* pink */
     --color-pink-200: hsl(var(--color-pink-hue) 98% 84%);
@@ -18,9 +27,9 @@
     --color-pink-700: hsl(var(--color-pink-hue) 65% 36%);
 
     /* red */
-    --color-red-200: calc(hsl(var(--color-red-hue) - 2) 100% 92%);
+    --color-red-200: hsl(calc(var(--color-red-hue) - 2) 100% 92%);
     --color-red-500: hsl(var(--color-red-hue) 100% 61%);
-    --color-red-700: calc(hsl(var(--color-red-hue) - 3) 82% 39%);
+    --color-red-700: hsl(calc(var(--color-red-hue) - 3) 82% 39%);
 
     /* orange */
     --color-orange-200: hsl(var(--color-orange-hue) 100% 88%);
@@ -29,23 +38,23 @@
 
     /* mint */
     --color-mint-200: hsl(var(--color-mint-hue) 56% 88%);
-    --color-mint-500: calc(hsl(var(--color-mint-hue) + 1) 54% 69%);
-    --color-mint-700: calc(hsl(var(--color-mint-hue) + 2) 24% 41%);
+    --color-mint-500: hsl(calc(var(--color-mint-hue) + 1), 54%, 69%);
+    --color-mint-700: hsl(calc(var(--color-mint-hue) + 2), 24%, 41%);
 
     /* purple */
     --color-purple-200: hsl(var(--color-purple-hue) 100% 88%);
-    --color-purple-500: calc(hsl(var(--color-purple-hue) - 1) 99% 70%);
-    --color-purple-700: calc(hsl(var(--color-purple-hue) - 1) 42% 42%);
+    --color-purple-500: hsl(calc(var(--color-purple-hue) - 1), 99%, 70%);
+    --color-purple-700: hsl(calc(var(--color-purple-hue) - 1), 42%, 42%);
 
     /* yellow */
     --color-yellow-200: hsl(var(--color-yellow-hue) 100% 88%);
     --color-yellow-500: hsl(var(--color-yellow-hue) 99% 70%);
-    --color-yellow-700: calc(hsl(var(--color-yellow-hue) + 1) 42% 42%);
+    --color-yellow-700: hsl(calc(var(--color-yellow-hue) + 1), 42%, 42%);
 
     /* blue */
     --color-blue-200: hsl(var(--color-blue-hue) 100% 88%);
-    --color-blue-500: calc(hsl(var(--color-blue-hue) - 1) 99% 70%);
-    --color-blue-700: calc(hsl(var(--color-blue-hue) - 1) 42% 42%);
+    --color-blue-500: hsl(calc(var(--color-blue-hue) - 1), 99%, 70%);
+    --color-blue-700: hsl(calc(var(--color-blue-hue) - 1), 42%, 42%);
 
     /* green */
     --color-green-700: #0a714f;
@@ -55,9 +64,6 @@
     --color-accent-200: hsl(var(--color-secondary-hue), 78%, 60%, 0.32);
 
     /* greyscale */
-    --color-white: hsl(0 0% 100%);
-    --color-black: hsl(0 0% 0%);
-    --color-transparent: rgba(0, 0, 0, 0);
     --color-offset: hsl(var(--color-greyscale-hue) 2%, 11%, 0.94);
     --color-greyscale-25: hsl(var(--color-greyscale-hue) 11% 98%);
     --color-greyscale-50: hsl(var(--color-greyscale-hue) 11% 94%);
@@ -74,46 +80,24 @@
     --color-greyscale-850: hsl(var(--color-greyscale-hue) 3% 14%);
     --color-greyscale-900: hsl(var(--color-greyscale-hue) 5.7% 10.4%);
 
-    /* utility colors */
-    --color-badge-bg-light: #f2c8d6;
-    --color-badge-border-light: #f69db7;
-    --color-badge-bg-dark: #2c2c2f;
-    --color-badge-border-dark: #39393c;
-
     /* Easings */
-    --transition-timing-function-bounce: linear(
-        0,
-        0.063,
-        0.25 18.2%,
-        1 36.4%,
-        0.813,
-        0.75,
-        0.813,
-        1,
-        0.938,
-        1,
-        1
-    );
-    --transition-timing-function-spring: linear(
-        0,
-        0.938 16.7%,
-        1.149 24.3%,
-        1.154 29.9%,
-        0.977 51%,
-        1
-    );
+    --easing-bounce: linear(0, 0.063, 0.25 18.2%, 1 36.4%, 0.813, 0.75, 0.813, 1, 0.938, 1, 1);
+    --easing-spring: linear(0, 0.938 16.7%, 1.149 24.3%, 1.154 29.9%, 0.977 51%, 1);
 
     /* Animations */
     --animate-scale-in: scale-in 200ms ease-out forwards;
     --animate-caret-blink: caret-blink 1s ease-in-out infinite;
-    --animate-text:
-        fade 0.75s ease-in-out both, blur 0.75s ease-in-out both, up 0.75s ease-in-out both;
+    --animate-enter:
+        fade-in 0.75s ease-in-out both, blur 0.75s ease-in-out both, up 0.75s ease-in-out both;
     --animate-scroll: scroll 60s linear infinite;
+    --animate-scroll-x: scroll-x var(--speed, 30s) linear infinite var(--direction, forwards);
+    --animate-scroll-y: scroll-y 60s linear infinite forwards;
+
     --animate-fade-in: fade-in 0.5s ease-in-out both;
     --animate-marquee: marquee var(--speed, 30s) linear infinite var(--direction, forwards);
-
-    /* Pink polyfills */
-    --transition: 0.2s;
+    --animate-lighting: lighting 1.25s ease-out forwards;
+    --animate-menu-in: menu-in 0.25s ease-out forwards;
+    --animate-menu-out: menu-out 0.25s ease-out forwards;
 
     /* Keyframes */
     @keyframes scale-in {
@@ -179,63 +163,169 @@
         }
     }
 
+    @keyframes lighting {
+        0% {
+            opacity: 0;
+            clip-path: inset(5%);
+            transform: scale(111.11%);
+        }
+        100% {
+            opacity: 1;
+            clip-path: inset(0);
+            transform: scale(1);
+        }
+    }
+
+    @keyframes menu-in {
+        0% {
+            opacity: 0;
+            filter: blur(2px);
+            transform: translateY(8px);
+        }
+        100% {
+            opacity: 1;
+            filter: blur(0px);
+            transform: translateY(0px);
+        }
+    }
+
+    @keyframes menu-out {
+        0% {
+            opacity: 1;
+            filter: blur(0px);
+            transform: translateY(0px);
+        }
+        100% {
+            opacity: 0;
+            filter: blur(2px);
+            transform: translateY(8px);
+        }
+    }
+
+    @keyframes scroll-x {
+        to {
+            transform: translateX(-100%);
+        }
+    }
+
+    @keyframes scroll-y {
+        to {
+            transform: translateY(-50%);
+        }
+    }
+
     /* Fonts */
-    --font-family-sans: 'Inter', arial, sans-serif;
-    --font-family-mono: 'Fira Code', monospace;
-    --font-family-aeonik-fono: 'Aenoik Fono', monospace;
-    --font-family-aeonik-pro: 'Aeonik Pro', var(--font-family-sans);
-    --font-family-archia: 'Archia', arial, sans-serif;
+    --font-sans: 'Inter', arial, sans-serif;
+    --font-mono: 'Fira Code', monospace;
+    --font-aeonik-fono: 'Aenoik Fono', monospace;
+    --font-aeonik-pro: 'Aeonik Pro', var(--font-sans);
+    --font-archia: 'Archia', arial, sans-serif;
 
     /* Font sizes */
-    --font-size-x-micro: 0.625rem;
-    --font-size-x-micro--line-height: 0.875rem;
-    --font-size-x-micro--letter-spacing: var(--letter-spacing-tighter);
-    --font-size-micro: 0.75rem;
-    --font-size-micro--line-height: 1rem;
-    --font-size-micro--letter-spacing: var(--letter-spacing-tighter);
-    --font-size-caption: 0.875rem;
-    --font-size-caption--line-height: 1.375rem;
-    --font-size-caption--letter-spacing: var(--letter-spacing-tight);
-    --font-size-sub-body: clamp(0.875rem, 2vw, 1rem);
-    --font-size-sub-body--line-height: 1.375rem;
-    --font-size-sub-body--letter-spacing: var(--letter-spacing-tight);
-    --font-size-body: clamp(1rem, 2.5vw, 1.125rem);
-    --font-size-body--line-height: clamp(1.375rem, 3vw, 1.625rem);
-    --font-size-body--letter-spacing: var(--letter-spacing-tight);
-    --font-size-paragraph-md: 1rem;
-    --font-size-paragraph-md--line-height: 1.625rem;
-    --font-size-paragraph-md--letter-spacing: var(--letter-spacing-tight);
-    --font-size-paragraph-lg: 1.125rem;
-    --font-size-paragraph-lg--line-height: 1.75rem;
-    --font-size-paragraph-lg--letter-spacing: var(--letter-spacing-tight);
-    --font-size-description: clamp(1.125rem, 3vw, 1.25rem);
-    --font-size-description--line-height: clamp(1.625rem, 3.5vw, 1.75rem);
-    --font-size-description--letter-spacing: var(--letter-spacing-tighter);
-    --font-size-label: 1.5rem;
-    --font-size-label--line-height: 1.75rem;
-    --font-size-title: clamp(2rem, 5vw, 2.5rem);
-    --font-size-title--line-height: clamp(2.125rem, 5.5vw, 2.75rem);
-    --font-size-title--letter-spacing: var(--letter-spacing-squeezed);
-    --font-size-display: clamp(3rem, 7vw, 4rem);
-    --font-size-display--line-height: clamp(3.125rem, 7.5vw, 4.25rem);
-    --font-size-display--letter-spacing: var(--letter-spacing-compressed);
-    --font-size-headline: clamp(3.5rem, 8vw, 5.5rem);
-    --font-size-headline--line-height: clamp(3.5rem, 8.5vw, 5.75rem);
-    --font-size-headline--letter-spacing: var(--letter-spacing-compressed);
+    --text-x-micro: 0.625rem;
+    --text-x-micro--line-height: 0.875rem;
+    --text-x-micro--letter-spacing: var(--tracking-loose);
+    --text-micro: 0.75rem;
+    --text-micro--line-height: 1rem;
+    --text-micro--letter-spacing: var(--tracking-loose);
+    --text-caption: 0.875rem;
+    --text-caption--line-height: 1.375rem;
+    --text-caption--letter-spacing: var(--tracking-tight);
+    --text-sub-body: clamp(0.875rem, 2vw, 1rem);
+    --text-sub-body--line-height: 1.375rem;
+    --text-sub-body--letter-spacing: var(--tracking-tight);
+    --text-body: clamp(1rem, 2.5vw, 1.125rem);
+    --text-body--line-height: clamp(1.375rem, 3vw, 1.625rem);
+    --text-body--letter-spacing: var(--tracking-tight);
+    --text-paragraph-md: 1rem;
+    --text-paragraph-md--line-height: 1.625rem;
+    --text-paragraph-md--letter-spacing: var(--tracking-tight);
+    --text-paragraph-lg: 1.125rem;
+    --text-paragraph-lg--line-height: 1.75rem;
+    --text-paragraph-lg--letter-spacing: var(--tracking-tight);
+    --text-description: clamp(1.125rem, 3vw, 1.25rem);
+    --text-description--line-height: clamp(1.625rem, 3.5vw, 1.75rem);
+    --text-description--letter-spacing: var(--tracking-tighter);
+    --text-label: 1.5rem;
+    --text-label--line-height: 1.75rem;
+    --text-title: clamp(2rem, 5vw, 2.5rem);
+    --text-title--line-height: clamp(2.125rem, 5.5vw, 2.75rem);
+    --text-title--letter-spacing: var(--tracking-squeezed);
+    --text-display: clamp(3rem, 7vw, 4rem);
+    --text-display--line-height: clamp(3.125rem, 7.5vw, 4.25rem);
+    --text-display--letter-spacing: var(--tracking-compressed);
+    --text-headline: clamp(3.5rem, 8vw, 5.5rem);
+    --text-headline--line-height: clamp(3.5rem, 8.5vw, 5.75rem);
+    --text-headline--letter-spacing: var(--tracking-compressed);
 
     /* Letter spacing */
-    --letter-spacing-*: initial;
-    --letter-spacing-compressed: -0.022em;
-    --letter-spacing-squeezed: -0.01em;
-    --letter-spacing-tighter: -0.018em;
-    --letter-spacing-tight: -0.0045em;
-    --letter-spacing-none: 0em;
-    --letter-spacing-loose: 0.08em;
+    --tracking-*: initial;
+    --tracking-compressed: -0.022em;
+    --tracking-squeezed: -0.01em;
+    --tracking-tighter: -0.018em;
+    --tracking-tight: -0.0045em;
+    --tracking-none: 0em;
+    --tracking-loose: 0.08em;
 }
 
-/* Themes */
+@utility container {
+    max-width: 75rem;
+    margin-inline: auto;
+    padding-inline: 1.25rem;
+}
+
+@utility border-gradient {
+    --border-gradient-before: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.16) 0%,
+        rgba(255, 255, 255, 0) 100%
+    );
+    --border-gradient-after: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.12) 0%,
+        rgba(255, 255, 255, 0) 125.11%
+    );
+    --border-radius: 0.5rem;
+
+    &::before,
+    &::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        border-radius: var(--border-radius);
+        border: 1px solid transparent;
+        mask:
+            linear-gradient(#fff 0 0) padding-box,
+            linear-gradient(#fff 0 0);
+        mask-composite: exclude;
+        pointer-events: none;
+    }
+
+    &::before {
+        background: var(--border-gradient-before) border-box;
+    }
+
+    &::after {
+        background: var(--border-gradient-after) border-box;
+    }
+}
+
+@utility mask {
+    mask-image: linear-gradient(
+        to var(--mask-direction, top),
+        transparent,
+        black var(--mask-height, 32px),
+        black calc(100% - var(--mask-height, 32px)),
+        black
+    );
+}
+
 :root,
 .light {
+    /* pink polyfills */
+    --transition: 0.2s;
+
+    /* color hues */
     --color-pink-hue: 343;
     --color-secondary-hue: 351;
     --color-red-hue: 3;
@@ -245,38 +335,28 @@
     --color-yellow-hue: 42;
     --color-blue-hue: 217;
     --color-greyscale-hue: 240;
+    --color-primary-bg: var(--color-greyscale-25);
 
     /* base */
     --color-primary: var(--color-greyscale-900);
     --color-secondary: var(--color-greyscale-700);
     --color-accent: var(--color-pink-600);
+    --carousel-gradient: transparent;
     --color-badge-bg: var(--color-badge-bg-light);
     --color-badge-border: var(--color-badge-border-light);
     --color-smooth: hsl(var(--color-greyscale-hue) 6%, 10%, 0.04);
+    --color-card: var(--color-greyscale-850);
+    --color-tertiary: hsl(var(--color-greyscale-600));
+    --color-offset: hsl(var(--color-greyscale-hue) 2%, 11%, 0.94);
+    --color-subtle: var(--color-greyscale-850);
 }
 
-/* dark theme */
 .dark {
     --color-primary: var(--color-greyscale-100);
     --color-secondary: var(--color-greyscale-300);
-    --color-badge-bg: var(--color-badge-bg-dark);
-    --color-badge-border: var(--color-badge-border-dark);
+    --carousel-gradient: 23, 23, 26;
+    --color-primary-bg: var(--color-greyscale-900);
     --color-smooth: hsl(0 0%, 100%, 0.06);
-}
-
-/* Container */
-@layer components {
-    .container {
-        @apply mx-auto box-content max-w-[75rem] px-5;
-    }
-
-    .mask {
-        mask-image: linear-gradient(
-            to var(--mask-direction, top),
-            transparent,
-            black var(--mask-height, 32px),
-            black calc(100% - var(--mask-height, 32px)),
-            black
-        );
-    }
+    --color-tertiary: hsl(var(--color-greyscale-600));
+    --color-offset: hsl(0 0% 100% / 0.1);
 }

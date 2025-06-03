@@ -1,6 +1,7 @@
 <script lang="ts">
     import { socials } from '$lib/constants';
     import ThemeSelect from './ThemeSelect.svelte';
+    import { trackEvent } from '$lib/actions/analytics';
 
     export let variant: 'homepage' | 'docs' = 'homepage';
 
@@ -19,7 +20,7 @@
                         target="_blank"
                         rel="noopener noreferrer"
                     >
-                        <span class={social.icon} aria-hidden="true" />
+                        <span class={social.icon} aria-hidden="true"></span>
                     </a>
                 </li>
             {/each}
@@ -36,12 +37,30 @@
                 scrolling="no"
                 style:color-scheme="none"
                 style:margin-top="-4px"
-            />
+            ></iframe>
 
             <ul class="flex gap-4">
-                <li><a class="web-link" href="/terms">Terms</a></li>
-                <li><a class="web-link" href="/privacy">Privacy</a></li>
-                <li><a class="web-link" href="/cookies">Cookies</a></li>
+                <li>
+                    <a
+                        class="web-link"
+                        href="/terms"
+                        onclick={() => trackEvent(`footer-terms-click`)}>Terms</a
+                    >
+                </li>
+                <li>
+                    <a
+                        class="web-link"
+                        href="/privacy"
+                        onclick={() => trackEvent(`footer-privacy-click`)}>Privacy</a
+                    >
+                </li>
+                <li>
+                    <a
+                        class="web-link"
+                        href="/cookies"
+                        onclick={() => trackEvent(`footer-cookies-click`)}>Cookies</a
+                    >
+                </li>
             </ul>
         </div>
     </footer>
@@ -58,7 +77,7 @@
                             target="_blank"
                             rel="noopener noreferrer"
                         >
-                            <span class={social.icon} aria-hidden="true" />
+                            <span class={social.icon} aria-hidden="true"></span>
                         </a>
                     </li>
                 {/each}
@@ -68,11 +87,19 @@
             </div>
             <ul class="web-main-footer-grid-1-column-3 web-main-footer-links items-start">
                 <li>
-                    <a href="/discord" target="_blank" rel="noopener noreferrer">Support</a>
+                    <a
+                        href="/discord"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onclick={() => trackEvent(`footer-support-click`)}>Support</a
+                    >
                 </li>
                 <li>
-                    <a href="https://appwrite.online" target="_blank" rel="noopener noreferrer"
-                        >Status</a
+                    <a
+                        href="https://appwrite.online"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onclick={() => trackEvent(`footer-appwrite_status-click`)}>Status</a
                     >
                 </li>
                 <!-- <li>

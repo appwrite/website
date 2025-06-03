@@ -1,5 +1,6 @@
 <script context="module" lang="ts">
     import { PUBLIC_GROWTH_ENDPOINT } from '$env/static/public';
+    import { Button } from '$lib/components/ui';
 
     export const subscribeToNewsletter = async (email: string) => {
         const response = await fetch(`${PUBLIC_GROWTH_ENDPOINT}/newsletter/subscribe`, {
@@ -96,8 +97,10 @@
                             name="email"
                             bind:value={email}
                         />
-                        <button type="submit" class="web-button" disabled={submitting}
-                            >Sign up</button
+                        <Button
+                            type="submit"
+                            disabled={submitting}
+                            event="newsletter-subscribe-submit">Sign up</Button
                         >
                     </div>
 

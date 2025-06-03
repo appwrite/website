@@ -53,7 +53,7 @@ These settings will create a minimal Next.js setup that's perfect for getting st
 Install the JavaScript Appwrite SDK.
 
 ```sh
-npm install appwrite@14.0.1
+npm install appwrite@18.1.1
 ```
 {% /section %}
 {% section #step-4 step=4 title="Define Appwrite service" %}
@@ -74,7 +74,7 @@ import { Client, Account } from 'appwrite';
 export const client = new Client();
 
 client
-    .setEndpoint('https://cloud.appwrite.io/v1')
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
     .setProject('<PROJECT_ID>'); // Replace with your project ID
 
 export const account = new Account(client);

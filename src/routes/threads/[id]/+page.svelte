@@ -2,6 +2,7 @@
     import { Main } from '$lib/layouts';
     import { DEFAULT_DESCRIPTION } from '$lib/utils/metadata';
     import { TITLE_SUFFIX } from '$routes/titles';
+    import { Button, Icon } from '$lib/components/ui';
 
     import FooterNav from '$lib/components/FooterNav.svelte';
     import MainFooter from '$lib/components/MainFooter.svelte';
@@ -9,7 +10,7 @@
     import PreFooter from '../PreFooter.svelte';
     import MessageCard from './MessageCard.svelte';
 
-    export let data;
+    let { data } = $props();
 
     const title = data.title + ' - Threads' + TITLE_SUFFIX;
     const description = DEFAULT_DESCRIPTION;
@@ -36,17 +37,17 @@
 </svelte:head>
 
 <Main>
-    <div class="container web-u-padding-block-end-0">
+    <div class="web-u-padding-block-end-0 container">
         <div class="header">
             <div>
                 <a class="web-link is-secondary items-baseline" href="/threads">
-                    <span class="web-icon-chevron-left" aria-hidden="true" />
+                    <span class="web-icon-chevron-left" aria-hidden="true"></span>
                     <span>Back</span>
                 </a>
                 <h1 class="text-title font-aeonik-pro text-primary">{data.title}</h1>
                 <ul class="tags">
                     <li class="web-tag">
-                        <span class="web-icon-arrow-up" />
+                        <span class="web-icon-arrow-up"></span>
                         <span class="text">{data.vote_count}</span>
                     </li>
                     {#each data.tags ?? [] as tag}
@@ -57,10 +58,10 @@
                 </ul>
             </div>
             <div class="buttons">
-                <a class="web-button" href={discordLink}>
-                    <span class="web-icon-discord" />
-                    <span class="text">View on Discord</span>
-                </a>
+                <Button href={discordLink}>
+                    <Icon name="discord"></Icon>
+                    View on Discord
+                </Button>
             </div>
         </div>
 
@@ -82,10 +83,10 @@
                     <p class="text-sub-body mt-4 font-medium">
                         Reply to this thread by joining our Discord
                     </p>
-                    <a class="web-button mt-6" href={discordLink}>
-                        <span class="web-icon-discord" />
-                        <span class="text">Reply on Discord</span>
-                    </a>
+                    <Button class="mt-6" href={discordLink}>
+                        <Icon name="discord"></Icon>
+                        Reply on Discord
+                    </Button>
                 </div>
             </div>
             <div class="related">

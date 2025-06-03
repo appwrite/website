@@ -36,7 +36,7 @@ You can skip optional steps.
 {% section #step-2 step=2 title="Install Appwrite" %}
 You can install the Appwrite Web SDK using a package manager.
 ```sh
-npm install appwrite@14.0.1
+npm install appwrite@18.1.1
 ```
 
 You can also add the Appwrite Web SDK using CDN by adding a script tag to your HTML file. The SDK will be available globally through the `Appwrite` namespace.
@@ -55,7 +55,7 @@ import { Client, Account } from 'appwrite';
 export const client = new Client();
 
 client
-    .setEndpoint('https://cloud.appwrite.io/v1')
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
     .setProject('<PROJECT_ID>'); // Replace with your project ID
 
 export const account = new Account(client);
@@ -89,7 +89,7 @@ import { type Models } from 'appwrite';
 const client: Client = new Client();
 
 client
-    .setEndpoint('https://cloud.appwrite.io/v1')
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
     .setProject('<PROJECT_ID>'); // Replace with your project ID
 
 export const account: Account = new Account(client);

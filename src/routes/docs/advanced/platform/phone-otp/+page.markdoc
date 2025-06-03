@@ -12,13 +12,13 @@ Appwrite supports SMS-based OTP (One-Time Password) authentication to provide se
 
 # Free messages {% #free-messages %}
 
-All Appwrite plans include **10 free SMS messages** per month, which allows you to test and implement OTP functionality without immediate costs.
+All paid Appwrite plans include **10 free SMS messages** per month, which allows you to test and implement OTP functionality without immediate costs.
 
 In addition you can also use the [Mock phone numbers](/docs/products/auth/security#mock-phone-numbers) feature to continue testing your integrations without incurring additional costs.
 
 # Additional messages {% #additional-messages %}
 
-To send more than 10 SMS messages per month, you need to upgrade to a **paid plan**. For detailed information about the different pricing options and features, please visit the [pricing page](/pricing).
+After the first 10 free SMS messages, you'll be charged per SMS.
 
 The cost for additional messages is calculated based on two factors:
 1. The number of messages sent
@@ -110,7 +110,7 @@ SMS rates vary by country due to differences in telecom infrastructure and regul
 | +98          | Iran                                | $ 0.20            |
 | +964         | Iraq                                | $ 0.23            |
 | +353         | Ireland                             | $ 0.06            |
-| +972         | Israel                              | $ 0.11            |
+| +972         | Israel                              | $ 0.01            |
 | +39          | Italy                               | $ 0.05            |
 | +81          | Japan                               | $ 0.06            |
 | +962         | Jordan                              | $ 0.25            |

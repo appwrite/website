@@ -5,6 +5,7 @@
     import StorageShot from './(assets)/storage-shot.png?enhanced';
     import RealtimeShot from './(assets)/realtime-shot.png?enhanced';
     import MessagingShot from './(assets)/messaging-shot.png?enhanced';
+    import type { EnhancedImgAttributes } from '@sveltejs/enhanced-img';
 
     export const elId = writable(0);
 
@@ -33,7 +34,7 @@
         subtitle: string;
         description: string;
         features: string[];
-        shot?: string;
+        shot?: EnhancedImgAttributes['src'];
     };
     export const infos: { [K in Product]?: ProductInfo } = {
         auth: {
@@ -237,7 +238,7 @@
             >
                 {#if scrollInfo.percentage > -0.1}
                     <span
-                        class="web-badges text-micro uppercase !text-white"
+                        class="web-badges text-micro !text-white uppercase"
                         transition:slide={{ axis: 'x' }}>Products_</span
                     >
 

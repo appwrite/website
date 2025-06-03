@@ -20,13 +20,8 @@ type Model = {
     }>;
 };
 
-type Example = {
-    type: ModelType;
-    example: string;
-};
-
 export const load: PageServerLoad = async ({ params }) => {
-    const version = params.version === 'cloud' ? '1.6.x' : params.version;
+    const version = params.version === 'cloud' ? '1.7.x' : params.version;
     const api = await getApi(version, 'console-web');
     const schema = getSchema(params.model, api);
     const props = Object.entries(schema.properties ?? {});

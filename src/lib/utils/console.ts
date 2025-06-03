@@ -11,11 +11,11 @@ client.setEndpoint(PUBLIC_APPWRITE_ENDPOINT).setProject('console');
 const account = new Account(client);
 const teams = new Teams(client);
 
-enum BillingPlan {
-    STARTER = 'tier-0',
-    PRO = 'tier-1',
-    SCALE = 'tier-2'
-}
+const BillingPlan = {
+    STARTER: 'tier-0',
+    PRO: 'tier-1',
+    SCALE: 'tier-2'
+} as const;
 
 export async function createSource(
     ref: string | null,
@@ -61,8 +61,8 @@ function isAppwriteUser(user: unknown): user is AppwriteUser {
     return typeof user === 'object' && user !== null && '$id' in user;
 }
 
-export function getAppwriteUser(): Promise<AppwriteUser | null> {
-    return account
+export async function getAppwriteUser(): Promise<AppwriteUser | null> {
+    return await account
         .get()
         .then((res) => res)
         .catch(() => null);

@@ -1,12 +1,12 @@
 <script lang="ts" context="module">
-    import type { ComponentType } from 'svelte';
+    import type { Component } from 'svelte';
 
     export type NavLink = {
         label: string;
         href?: string;
         showBadge?: boolean;
-        submenu?: ComponentType;
-        mobileSubmenu?: ComponentType;
+        submenu?: Component<{ label: string }>;
+        mobileSubmenu?: Component<{ label: string }>;
     };
 </script>
 
@@ -41,12 +41,7 @@
                         href={link.href}
                         data-initialized={initialized ? '' : undefined}
                         data-badge={link.showBadge ? '' : undefined}
-                        on:click={() => {
-                            trackEvent({
-                                plausible: { name: `${link.label} in header` },
-                                posthog: { name: `${link.label.toLowerCase()}_nav_click` }
-                            });
-                        }}
+                        onclick={() => trackEvent(`main-nav-${link.label.toLowerCase()}-nav-click`)}
                         >{link.label}
                     </a>
                 {/if}

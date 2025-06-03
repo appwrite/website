@@ -158,7 +158,7 @@ You can skip optional steps.
 Install the Appwrite SDK for Flutter.
 
 ```sh
-flutter pub add appwrite:12.0.3
+flutter pub add appwrite:17.0.0
 ```
 
 {% /section %}
@@ -183,7 +183,7 @@ import 'package:appwrite/models.dart' as models;
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   Client client = Client()
-      .setEndpoint("https://cloud.appwrite.io/v1")
+      .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
       .setProject("<PROJECT_ID>");
   Account account = Account(client);
 

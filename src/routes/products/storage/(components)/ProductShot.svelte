@@ -1,5 +1,6 @@
 <script lang="ts">
     import Switch from '$lib/components/Switch.svelte';
+    import { Button, Icon } from '$lib/components/ui';
     import { classNames } from '$lib/utils/classnames';
     import { writable } from 'svelte/store';
 
@@ -48,10 +49,10 @@
 >
     <section class="web-card e-console-card is-dark flex flex-1 flex-col p-0">
         <header class="e-header-console is-dark flex flex-col gap-4 !pb-0">
-            <div class="flex gap-4 pt-6 px-6">
+            <div class="flex gap-4 px-6 pt-6">
                 <h4 class="text-label text-primary font-aeonik-pro">My Bucket</h4>
                 <div class="tag u-cross-child-end web-u-color-text-secondary">
-                    <code class="web-u-font-size-10 rounded-full bg-white/10 py-1 px-2"
+                    <code class="web-u-font-size-10 rounded-full bg-white/10 px-2 py-1"
                         >637a40ba7a703e3936e2</code
                     >
                 </div>
@@ -101,7 +102,7 @@
     </section>
 </div>
 <div
-    class="relative flex flex-1 flex-col rounded-3xl border border-white/10 bg-white/0.04 backdrop-blur-xl md:top-5 md:mt-16 md:ml-[-80px] md:basis-[602px]"
+    class="bg-white/0.04 relative flex flex-1 flex-col rounded-3xl border border-white/10 backdrop-blur-xl md:top-5 md:mt-16 md:ml-[-80px] md:basis-[602px]"
 >
     <h4 class="text-label text-primary font-aeonik-pro border-b border-white/10 p-6">
         Permissions
@@ -125,7 +126,7 @@
             {#each $permissions as { label, options }, index}
                 <tr>
                     <td
-                        class="text-primary text-micro md:text-caption w-[120px] py-2 px-6 md:w-[200px] md:py-4"
+                        class="text-primary text-micro md:text-caption w-[120px] px-6 py-2 md:w-[200px] md:py-4"
                         >{label}</td
                     >
                     {#each options as option, i}
@@ -149,7 +150,7 @@
                                 />
                                 <span
                                     class="web-icon-check pointer-events-none absolute top-0 left-0 mx-auto block scale-0 !text-[16px] leading-none text-white opacity-0 transition-all duration-100 peer-checked:scale-100 peer-checked:opacity-100 md:!text-[20px]"
-                                />
+                                ></span>
                             </div>
                         </td>
                     {/each}
@@ -159,10 +160,10 @@
         <tfoot>
             <tr>
                 <td colspan={headings.length + 1} class="py-2 pl-4 md:py-4">
-                    <button class="web-button is-small is-text">
-                        <span class="icon-plus web-u-color-text-primary" aria-hidden="true"></span>
-                        <span class="text">Add role</span>
-                    </button>
+                    <Button variant="text" class="is-small">
+                        <Icon name="plus" aria-hidden="true"></Icon>
+                        Add role
+                    </Button>
                 </td>
             </tr>
         </tfoot>

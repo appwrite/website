@@ -30,7 +30,7 @@
 
 <Main>
     <div class="container">
-        <div class="web-grid-120-1fr-auto" />
+        <div class="web-grid-120-1fr-auto"></div>
 
         <header class="web-grid-120-1fr-auto-header">
             <h1 class="text-title font-aeonik-pro text-primary">Support</h1>

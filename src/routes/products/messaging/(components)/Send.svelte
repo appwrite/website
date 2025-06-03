@@ -7,7 +7,7 @@
 <Step title="Step 4: Send" hideLine>
     <div class="wrapper">
         <img src={IphoneSvg} alt="" class="phone" />
-        <div class="img-overlay" />
+        <div class="img-overlay"></div>
 
         <div class="android">
             <img src={AndroidSvg} alt="" class="android" />
@@ -18,7 +18,7 @@
                 Pick one or more channels for you to deliver your message to your user.
             </p>
         </div>
-        <div class="overlay" />
+        <div class="overlay"></div>
     </div>
 </Step>
 

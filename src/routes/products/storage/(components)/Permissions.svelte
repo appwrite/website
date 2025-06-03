@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { Button } from '$lib/components/ui';
     import ProductShot from './ProductShot.svelte';
 </script>
 
@@ -13,9 +14,10 @@
             <p class="text-body max-width-[380px] mx-auto font-medium">
                 Set up file encryption and granular user permissions in your storage infrastructure
             </p>
-            <a
+            <Button
                 href="/docs/products/storage/permissions"
-                class="web-button is-secondary mt-4 mx-auto !w-full md:!w-fit">Learn more</a
+                variant="secondary"
+                class="mx-auto mt-4 !w-full md:!w-fit">Learn more</Button
             >
         </div>
     </div>
