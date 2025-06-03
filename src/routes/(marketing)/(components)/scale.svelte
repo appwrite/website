@@ -55,38 +55,22 @@
                 () => {
                     localStats[index].number = originalNumbers[index];
                 },
-                ((index * animationDuration) / localStats.length) * 800
+                ((index * animationDuration) / localStats.length) * 600
             );
 
             timeoutIds.push(timeoutId);
         });
     };
 
-    let animate: boolean = false;
     let timeoutIds: Array<NodeJS.Timeout> = [];
 
-    const clipPathStart = 100;
-    const clipPathEnd = 25;
-    const slope = (clipPathEnd - clipPathStart) / 100;
-    const fixedOffset = 200;
-
-    const calculateTopOffset = (index: number) => {
-        // Calculate position along the clip path line
-        const x = (index / (stats.length - 1)) * 100;
-        const clipPathY = clipPathStart + ((clipPathEnd - clipPathStart) / 100) * x;
-
-        // Add fixed offset above the clip path line
-        return `calc(${clipPathY}% - ${fixedOffset}px)`;
-    };
-
-    const useInView = (node: HTMLElement) => {
+    const visible = (node: HTMLElement) => {
         inView(
             node,
             () => {
-                animate = true;
                 updateNumbers();
             },
-            { amount: 0.5 }
+            { amount: 0.75 }
         );
     };
 
@@ -105,7 +89,7 @@
 
 <div
     class={classNames('relative -mb-8 flex min-h-[700px] flex-col gap-4 py-12', theme)}
-    use:useInView
+    use:visible
 >
     <div class="relative z-10 container w-fit md:w-full">
         <div class="mt-12 max-w-xl">
@@ -156,16 +140,13 @@
     </div>
 
     <div class="animate-wipe-in absolute inset-0 mt-32 hidden md:block">
-        <div class="relative container h-full">
+        <div class="relative container mx-auto h-full">
             <div class="absolute inset-0 z-100 grid grid-cols-4">
                 {#each localStats as stat, i}
-                    <div
-                        class="border-smooth relative h-full overflow-auto border-l"
-                        style:top={calculateTopOffset(i)}
-                    >
-                        <div class="absolute">
+                    <div class="border-smooth relative h-full overflow-auto border-l">
+                        <div class="absolute bottom-0">
                             <NumberFlow
-                                class="text-description text-primary border-accent relative -left-px z-10 border-l pl-4 font-medium"
+                                class="text-description text-primary border-accent relative z-100 border-l pl-4 font-medium"
                                 value={stat.number}
                                 suffix={stat.suffix}
                             />
