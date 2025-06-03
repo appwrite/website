@@ -1,4 +1,6 @@
 <script lang="ts">
+    import Icon from '$lib/components/ui/icon';
+
     const features = [
         {
             label: 'Self-Hosted',
@@ -67,12 +69,17 @@
         <div class="container grid grid-cols-1 overflow-hidden md:grid-cols-2 lg:grid-cols-4">
             {#each features as box}
                 <a
-                    class="text-sub-body relative border-b border-dashed border-black/8 py-8 font-medium last-of-type:border-0 nth-of-type-[4]:border-r-0 max-lg:even:border-r-0 md:border-r md:px-8 lg:nth-of-type-[5]:border-b-0 lg:nth-of-type-[6]:border-b-0 lg:nth-of-type-[7]:border-b-0 lg:nth-of-type-[8]:border-b-0"
+                    class="text-sub-body group relative border-b border-dashed border-black/8 py-8 font-medium last-of-type:border-0 nth-of-type-[4]:border-r-0 max-lg:even:border-r-0 md:border-r md:px-8 lg:nth-of-type-[5]:border-b-0 lg:nth-of-type-[6]:border-b-0 lg:nth-of-type-[7]:border-b-0 lg:nth-of-type-[8]:border-b-0"
                     href={box.href}
                 >
                     <img src={box.icon} width="40" height="40" alt="" />
-                    <h3 class="text-primary mt-4 flex flex-wrap items-baseline gap-3">
+                    <h3 class="text-primary mt-4 flex flex-wrap items-center gap-0.5">
                         {box.label}
+
+                        <Icon
+                            name="arrow-right"
+                            class="-rotate-45 opacity-0 transition-all group-hover:translate-x-0.25 group-hover:-translate-y-0.25 group-hover:opacity-100"
+                        />
                     </h3>
                     <p class="text-secondary mt-1">
                         {box.description}
