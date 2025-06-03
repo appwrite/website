@@ -39,7 +39,7 @@ MCP is just the standardized way of making this happen. Instead of every AI need
 
 MCP was developed by Anthropic and released as an open standard in November 2024, making it a relatively new but rapidly growing solution.
 
-We've covered everything you need to know about MCP in a recent blog, but let's dive into 5 MCP or AI agents startup opportunities you can start building today.
+We've covered everything you need to know about MCP in a recent [blog](https://appwrite.io/blog/post/what-is-mcp), but let's dive into 5 MCP or AI agents startup opportunities you can start building today.
 
 # 1. MCP App Store
 Create an MCP APP Store, where users can browse and deploy various MCP servers. Think of it like an app store, but for MCP servers. Developers could look through different MCP servers, find the ones they need, and deploy them with just a few clicks.
@@ -63,3 +63,8 @@ AIChangelog tracks everything every AI agent does and why, creating a detailed, 
 MCP changes everything. Before, AI agents were isolated. Now, they connect, collaborate, and scale. This is a huge opportunity to build AI agents and create connected, intelligent solutions that automate tasks, streamline processes, and solve real-world problems.
 
 The Appwrite's Startups Program can help you do that with the tools and support you need to create these AI-driven products. [Apply today](appwrite.io/startups) and start building.
+
+# Further reading
+- [Appwrite MCP documentation](https://appwrite.io/docs/tooling/mcp?doFollow=true)
+- [What exactly is MCP, and why is it trending?](https://appwrite.io/blog/post/what-is-mcp)
+- [Anthropic MCP documentation](https://docs.anthropic.com/en/docs/agents-and-tools/mcp)
