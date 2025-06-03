@@ -35,8 +35,8 @@
             </GradientText>
 
             <p class="text-description text-secondary font-medium">
-                Appwrite’s open-source platform empowers you to build applications faster with ready
-                to use backend APIs and host your frontend on one platform.
+                Appwrite is an open-source, all-in-one development platform. Use built-in backend
+                APIs and web hosting, all from a single platform.
             </p>
 
             <div class="mt-4 flex flex-col gap-2 lg:flex-row">

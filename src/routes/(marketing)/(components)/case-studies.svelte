@@ -51,7 +51,7 @@
 
 <div
     class={classNames(
-        'relative -mb-4 flex min-h-[60vh] items-center justify-center overflow-hidden py-8',
+        'relative -mb-4 flex min-h-[60vh] items-center justify-center overflow-hidden pt-30 pb-40',
         'from-0% before:absolute before:inset-0 before:top-0 before:left-0 before:-z-10 before:block before:h-full before:bg-radial-[circle_at_120%_-50%] before:from-purple-500/30 before:to-transparent before:to-40% before:blur-2xl',
         'after:from-accent/20 after:absolute after:inset-0 after:top-0 after:right-0 after:-z-10 after:mt-auto after:mb-0 after:block after:h-full after:bg-radial-[circle_at_-15%_125%] after:from-0% after:to-transparent after:to-40% after:blur-2xl'
     )}

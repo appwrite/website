@@ -22,9 +22,9 @@
     <LogoList class="border-smooth border-b" />
     <Bento />
     <Pullquote
-        name="Ryan O’Conner"
-        title="Founder, K Collect"
-        avatar="/images/testimonials/ryan-oconner.png"
+        name="Phil McCluskey"
+        title="Development lead, Majik Kids"
+        avatar="/images/testimonials/phil.jpg"
     >
         <span class="text-secondary">Just like a Swiss Army Knife</span> you can choose and use the tools
         that you need with Appwrite.</Pullquote

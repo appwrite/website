@@ -3,42 +3,50 @@
         {
             label: 'Self-Hosted',
             description: 'Own your data or host it on a cloud region of choice.',
-            icon: '/images/icons/gradients/self-hosted.svg'
+            icon: '/images/icons/gradients/self-hosted.svg',
+            href: '/docs/advanced/self-hosting'
         },
         {
             label: 'Encryption',
             description: 'Built-in data encryption both in rest and in transit.',
-            icon: '/images/icons/gradients/lock.svg'
+            icon: '/images/icons/gradients/lock.svg',
+            href: '/docs/advanced/security/encryption'
         },
         {
             label: 'Abuse protection',
             description: 'Protect your APIs from abuse with built-in protection.',
-            icon: '/images/icons/gradients/shield.svg'
+            icon: '/images/icons/gradients/shield.svg',
+            href: '/docs/advanced/security/abuse-protection#rate-limiting'
         },
         {
             label: 'Data migrations',
             description: 'Easily transfer data from 3rd parties or between Cloud and self-hosted.',
-            icon: '/images/icons/gradients/database.svg'
+            icon: '/images/icons/gradients/database.svg',
+            href: '/docs/advanced/migrations'
         },
         {
             label: 'GDPR',
             description: 'Safeguard user data and privacy with provided GDPR regulations.',
-            icon: '/images/icons/gradients/star.svg'
+            icon: '/images/icons/gradients/star.svg',
+            href: '/docs/advanced/security/gdpr'
         },
         {
             label: 'SOC-2',
             description: 'Ensure the highest level of security and privacy protection.',
-            icon: '/images/icons/gradients/soc-2.svg'
+            icon: '/images/icons/gradients/soc-2.svg',
+            href: '/docs/advanced/security/soc2'
         },
         {
             label: 'HIPAA',
             description: 'Protect sensitive user health data.',
-            icon: '/images/icons/gradients/hipaa.svg'
+            icon: '/images/icons/gradients/hipaa.svg',
+            href: '/docs/advanced/security/hipaa'
         },
         {
             label: 'CCPA',
             description: 'Protect sensitive user health data.',
-            icon: '/images/icons/gradients/ccpa.svg'
+            icon: '/images/icons/gradients/ccpa.svg',
+            href: '/docs/advanced/security/ccpa'
         }
     ];
 </script>
@@ -58,8 +66,9 @@
     <div class="mt-20 border-y border-dashed border-black/8">
         <div class="container grid grid-cols-1 overflow-hidden md:grid-cols-2 lg:grid-cols-4">
             {#each features as box}
-                <div
+                <a
                     class="text-sub-body relative border-b border-dashed border-black/8 py-8 font-medium last-of-type:border-0 nth-of-type-[4]:border-r-0 max-lg:even:border-r-0 md:border-r md:px-8 lg:nth-of-type-[5]:border-b-0 lg:nth-of-type-[6]:border-b-0 lg:nth-of-type-[7]:border-b-0 lg:nth-of-type-[8]:border-b-0"
+                    href={box.href}
                 >
                     <img src={box.icon} width="40" height="40" alt="" />
                     <h3 class="text-primary mt-4 flex flex-wrap items-baseline gap-3">
@@ -68,7 +77,7 @@
                     <p class="text-secondary mt-1">
                         {box.description}
                     </p>
-                </div>
+                </a>
             {/each}
         </div>
     </div>

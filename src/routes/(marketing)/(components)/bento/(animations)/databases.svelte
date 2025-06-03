@@ -73,7 +73,9 @@
                     y: [12, -5]
                 },
                 {
-                    type: 'spring'
+                    type: 'spring',
+                    bounce: 0.3,
+                    duration: 0.35
                 }
             );
             shouldAnimate = true;
@@ -86,7 +88,9 @@
                         y: [-5, 12]
                     },
                     {
-                        type: 'spring'
+                        type: 'spring',
+                        bounce: 0.3,
+                        duration: 0.35
                     }
                 );
 
@@ -106,7 +110,9 @@
                         y: [12, -5]
                     },
                     {
-                        type: 'spring'
+                        type: 'spring',
+                        bounce: 0.3,
+                        duration: 0.35
                     }
                 );
                 shouldAnimate = true;
@@ -119,7 +125,9 @@
                             y: [-5, 12]
                         },
                         {
-                            type: 'spring'
+                            type: 'spring',
+                            bounce: 0.3,
+                            duration: 0.35
                         }
                     );
 

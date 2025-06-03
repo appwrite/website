@@ -9,37 +9,49 @@
     let image: HTMLElement;
 
     $effect(() => {
-        const from: AnimationSequence = [
-            [image, { borderRadius: '4px', filter: 'grayscale(100%)' }]
-        ];
+        hover(container, () => {
+            if (isMobile()) return;
 
-        const to: AnimationSequence = [[image, { borderRadius: '8px', filter: 'grayscale(50%)' }]];
+            animate(image, { borderRadius: '12px', filter: 'grayscale(25%)' }, { duration: 0.2 });
+
+            return () => {
+                animate(
+                    image,
+                    {
+                        borderRadius: '4px',
+                        filter: 'grayscale(100%)'
+                    },
+                    { duration: 0.2 }
+                );
+            };
+        });
 
         inView(
             container,
             () => {
                 if (!isMobile()) return;
 
-                animate(to, { duration: 0.2 });
+                animate(
+                    image,
+                    {
+                        borderRadius: '12px',
+                        filter: 'grayscale(25%)'
+                    },
+                    { duration: 0.2 }
+                );
 
                 return () => {
-                    animate(from, { duration: 0.2 });
+                    animate(
+                        image,
+                        { borderRadius: '4px', filter: 'grayscale(100%)' },
+                        { duration: 0.2 }
+                    );
                 };
             },
             {
                 amount: 'all'
             }
         );
-
-        hover(container, () => {
-            if (isMobile()) return;
-
-            animate(to, { duration: 0.25 });
-
-            return () => {
-                animate(from, { duration: 0.25 });
-            };
-        });
     });
 </script>
 
@@ -79,7 +91,7 @@
             <img
                 src={Image}
                 alt="Storage"
-                class="md:max-w-auto h-full w-full max-w-[350px] overflow-hidden object-contain transition-all"
+                class="md:max-w-auto h-full w-full max-w-[350px] overflow-hidden object-cover transition-all"
                 bind:this={image}
                 style:border-radius="4px"
                 style:filter="grayscale(100%)"
