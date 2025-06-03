@@ -103,6 +103,7 @@
     --animate-enter-from-right: enter-from-right 0.2s ease;
     --animate-exit-to-left: exit-to-left 0.2s ease;
     --animate-exit-to-right: exit-to-right 0.2s ease;
+    --animate-wipe-in: wipe-in 2s ease-in-out;
 
     /* Keyframes */
     @keyframes scale-in {
@@ -272,6 +273,15 @@
         to {
             opacity: 0;
             transform: translateX(-200px);
+        }
+    }
+
+    @keyframes wipe-in {
+        0% {
+            clip-path: polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%);
+        }
+        100% {
+            clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
         }
     }
 

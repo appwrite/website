@@ -65,6 +65,20 @@
     let animate: boolean = false;
     let timeoutIds: Array<NodeJS.Timeout> = [];
 
+    const clipPathStart = 100;
+    const clipPathEnd = 25;
+    const slope = (clipPathEnd - clipPathStart) / 100;
+    const fixedOffset = 200;
+
+    const calculateTopOffset = (index: number) => {
+        // Calculate position along the clip path line
+        const x = (index / (stats.length - 1)) * 100;
+        const clipPathY = clipPathStart + ((clipPathEnd - clipPathStart) / 100) * x;
+
+        // Add fixed offset above the clip path line
+        return `calc(${clipPathY}% - ${fixedOffset}px)`;
+    };
+
     const useInView = (node: HTMLElement) => {
         inView(
             node,
@@ -129,7 +143,7 @@
     <div class="mt-12 block space-y-8 md:hidden">
         {#each localStats as stat, i}
             <div class="h-full overflow-auto pl-6">
-                <div class={classNames('relative')} style:top={`${(4 - i) * 18}%`}>
+                <div class="relative">
                     <NumberFlow
                         class="text-description text-primary border-accent relative -left-px z-10 border-l pl-4 font-medium"
                         value={stat.number}
@@ -141,24 +155,23 @@
         {/each}
     </div>
 
-    <div
-        class="swipe mask absolute inset-0 mt-32 hidden md:block"
-        style:--animation-duration={`${animationDuration}s`}
-        style:--mask-height="50px"
-    >
+    <div class="animate-wipe-in absolute inset-0 mt-32 hidden md:block">
         <div class="relative container h-full">
             <div class="absolute inset-0 z-100 grid grid-cols-4">
                 {#each localStats as stat, i}
-                    <div class="border-smooth h-full overflow-auto border-l">
-                        <div class="relative" style:top={`${(3.25 - i) * 18}%`}>
+                    <div
+                        class="border-smooth relative h-full overflow-auto border-l"
+                        style:top={calculateTopOffset(i)}
+                    >
+                        <div class="absolute">
                             <NumberFlow
                                 class="text-description text-primary border-accent relative -left-px z-10 border-l pl-4 font-medium"
                                 value={stat.number}
                                 suffix={stat.suffix}
                             />
-                            <span class="text-body text-secondary block pl-4"
-                                >{stat.description}</span
-                            >
+                            <span class="text-body text-secondary block pl-4">
+                                {stat.description}
+                            </span>
                         </div>
                     </div>
                 {/each}
@@ -172,27 +185,3 @@
         ></div>
     </div>
 </div>
-
-<style>
-    .swipe {
-        animation: wipe-in var(--animation-duration) ease-in-out;
-    }
-
-    @keyframes mask-wipe {
-        0% {
-            transform: translateX(0);
-        }
-        100% {
-            transform: translateX(100%);
-        }
-    }
-
-    @keyframes wipe-in {
-        0% {
-            clip-path: polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%);
-        }
-        100% {
-            clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
-        }
-    }
-</style>
