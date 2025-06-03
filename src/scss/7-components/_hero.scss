@@ -8,7 +8,7 @@
   max-inline-size:var(--p-hero-max-inline-size); margin-inline:auto;
   .#{$p}-sub-title { margin-block-end:pxToRem(4); }
 
-  :where(.#{$p}-title, .#{$p}-display, .#{$p}-headline):not(:frist-child) {
+  :where(.#{$p}-title, .#{$p}-display, .#{$p}-headline):not(:first-child) {
     color:hsl(var(--web-color-primary)); margin-block-start:pxToRem(8);
   }
 
