@@ -77,7 +77,7 @@ PostHog is an open-source alternative to Mixpanel. A product analytics platform 
 Sentry is an open-source alternative to Raygun. An error tracking and monitoring platform that helps developers identify and fix issues in their applications in real-time. It provides detailed error reports making it easier to diagnose and resolve bugs quickly.
 
 ## 10. [Appwrite](https://appwrite.io/)
-Appwrite is an open-source alternative to Firebase. A backend-as-a-service (BaaS) platform that simplifies the development of web and mobile applications. It provides developers with tools for user authentication, databases, file storage, and real-time capabilities, all through easy-to-use APIs.
+Appwrite is an open-source alternative to Vercel. An all-in-one cloud platform that let’s you build, deploy and host your websites and web apps. From static sites and SSR apps to databases, authentication, storage, messaging and serverless functions, you can now build, deploy, and scale your entire app stack using just Appwrite.
 
 # Conclusion
 In conclusion, open-source products gives your startup the flexibility, control, and cost savings you need to scale and innovate.
