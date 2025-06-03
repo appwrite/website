@@ -50,33 +50,63 @@ Most open-source projects have self-hostable versions that allow you to host the
 # 10 open-source product alternatives
 
 ## 1. [n8n](https://n8n.io/)
+
+![n8n](/images/blog/10-open-source-alternatives-to-popular-software-for-startups/n8n.png)
+
 **n8n** is an open-source alternative to **Zapier**. It allows users to automate workflows by connecting various apps and services, similar to Zapier, but with the added advantage of being fully customizable.
 
 ## 2. [Appsmith](https://www.appsmith.com/)
+
+![Appsmith](/images/blog/10-open-source-alternatives-to-popular-software-for-startups/appsmith.png)
+
 Appsmith is an open-source alternative to Retool. It enables you to build custom internal tools quickly by connecting to databases, APIs, and other services. It provides a drag-and-drop interface to design apps, making it easy to create dashboards and workflows.
 
 ## 3. [Documenso](https://documenso.com/)
+
+![Documenso](/images/blog/10-open-source-alternatives-to-popular-software-for-startups/documenso.png)
+
 Documenso is an open-source alternative to Docusign. It is a document management platform designed to help businesses organize, store, and collaborate on documents. It offers features like document indexing, searching, and version control, allowing teams to manage their files efficiently.
 
 ## 4. [Dub.co](https://dub.co/)
+
+![Dub.co](/images/blog/10-open-source-alternatives-to-popular-software-for-startups/dub.co.png)
+
 Dub.co is an open-source alternative to Bitly. It is a link management platform designed for modern marketing teams. It allows users to create branded short links using custom domains, track clicks with detailed analytics, and manage marketing campaigns efficiently.
 
 ## 5. [AppFlowy](https://appflowy.com/)
+
+![AppFlowy](/images/blog/10-open-source-alternatives-to-popular-software-for-startups/AppFlowy.png)
+
 AppFlowy is an open-source alternative to Notion. It provides a flexible workspace for note-taking, project management, and collaboration with features like customizable templates, task tracking, and databases.
 
 ## 6. [Webstudio](https://webstudio.is/)
+
+![Webstudio](/images/blog/10-open-source-alternatives-to-popular-software-for-startups/Webstudio.png)
+
 Webstudio is an open-source alternative to Webflow. An open-source platform for building and managing websites with a focus on simplicity and flexibility. It provides an intuitive drag-and-drop interface, allowing users to design websites without coding.
 
 ## 7. [Typesense](https://typesense.org/)
+
+![Typesense](/images/blog/10-open-source-alternatives-to-popular-software-for-startups/Typesense.png)
+
 Typesense is an open-source alternative to Algolia. A fast and relevant search engine built for developers. It allows you to easily integrate full-text search functionality into your applications with features like typo tolerance, filtering, faceting, and real-time indexing.
 
 ## 8. [PostHog](https://posthog.com/)
+
+![PostHog](/images/blog/10-open-source-alternatives-to-popular-software-for-startups/PostHog.png)
+
 PostHog is an open-source alternative to Mixpanel. A product analytics platform designed to help businesses track user behavior and make data-driven decisions. It provides teams with tools that allow them to gain insights into how users interact with their products.
 
 ## 9. [Sentry](https://sentry.io/welcome/)
+
+![Sentry](/images/blog/10-open-source-alternatives-to-popular-software-for-startups/Sentry.png)
+
 Sentry is an open-source alternative to Raygun. An error tracking and monitoring platform that helps developers identify and fix issues in their applications in real-time. It provides detailed error reports making it easier to diagnose and resolve bugs quickly.
 
 ## 10. [Appwrite](https://appwrite.io/)
+
+![Appwrite](/images/blog/10-open-source-alternatives-to-popular-software-for-startups/Appwrite.png)
+
 Appwrite is an open-source alternative to Vercel. An all-in-one cloud platform that let’s you build, deploy and host your websites and web apps. From static sites and SSR apps to databases, authentication, storage, messaging and serverless functions, you can now build, deploy, and scale your entire app stack using just Appwrite.
 
 # Conclusion
