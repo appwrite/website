@@ -13,31 +13,41 @@
     } = $props();
 
     const navItems = [
-        { label: 'PoP Locations', value: 'pop-locations', icon: 'pop-locations' },
-        { label: 'Edges', value: 'edges', icon: 'edge' },
-        { label: 'Regions', value: 'regions', icon: 'regions' }
-    ] satisfies Array<{ label: string; value: string; icon: IconType }>;
-
-    let selectedTab = $state('pop-locations');
-
-    const getDescription = () => {
-        switch (selectedTab) {
-            case 'pop-locations':
-                return 'Points of presence ensure <50ms ping around the globe.';
-            case 'edges':
-                return 'Edges bring compute closer to users for faster response times.';
-            case 'regions':
-                return 'Regions offer data residency and redundancy across continents.';
-            default:
-                return '';
+        {
+            label: 'PoP Locations',
+            value: 'pop-locations',
+            icon: 'pop-locations',
+            href: '/',
+            description: 'Points of presence ensure <50ms ping around the globe.'
+        },
+        {
+            label: 'Edges',
+            value: 'edges',
+            icon: 'edge',
+            href: '/',
+            description: 'Edges bring compute closer to users for faster response times.'
+        },
+        {
+            label: 'Regions',
+            value: 'regions',
+            icon: 'regions',
+            href: '/',
+            description: 'Regions offer data residency and redundancy across continents.'
         }
-    };
+    ] satisfies Array<{
+        label: string;
+        value: string;
+        icon: IconType;
+        href: string;
+        description: string;
+    }>;
+    let activeIndex = $state(0);
 </script>
 
 <div class="flex flex-col gap-4 text-center">
     <Tabs.Root
         onValueChange={(value) => {
-            selectedTab = value;
+            activeIndex = navItems.findIndex((item) => item.value === value);
             onValueChange(value);
         }}
         value={navItems[0]?.value}
@@ -73,6 +83,16 @@
     </Tabs.Root>
 
     <p class="text-caption text-secondary px-4">
-        {getDescription()}
+        {navItems[activeIndex].description}
+
+        <a
+            class="text-primary group mt-2 flex items-center justify-center gap-0.25 md:hidden"
+            href={navItems[activeIndex].href}
+            >View all {navItems[activeIndex].label}
+            <Icon
+                name="arrow-right"
+                class="-rotate-45 transition-all group-hover:translate-x-0.25 group-hover:-translate-y-0.25 group-hover:opacity-100 group-focus:translate-x-0.25 group-focus:-translate-y-0.25 group-focus:opacity-100 xl:opacity-0"
+            />
+        </a>
     </p>
 </div>
