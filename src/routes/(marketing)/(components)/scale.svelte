@@ -144,7 +144,10 @@
             <div class="absolute inset-0 z-100 grid grid-cols-4">
                 {#each localStats as stat, i}
                     <div class="border-smooth relative h-full overflow-auto border-l border-dashed">
-                        <div class="absolute bottom-0">
+                        <div
+                            class="absolute"
+                            style="bottom: calc(50px + {25 + (75 / 3) * (i / 2)}%)"
+                        >
                             <NumberFlow
                                 class="text-description text-primary border-accent relative -left-px z-100 border-l pl-4 font-medium"
                                 value={stat.number}
