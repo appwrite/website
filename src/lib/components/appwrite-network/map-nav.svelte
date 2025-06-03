@@ -88,7 +88,7 @@
         <a
             class="text-primary group mt-2 flex items-center justify-center gap-0.25 md:hidden"
             href={navItems[activeIndex].href}
-            >View all {navItems[activeIndex].label}
+            >Learn more about {navItems[activeIndex].label}
             <Icon
                 name="arrow-right"
                 class="-rotate-45 transition-all group-hover:translate-x-0.25 group-hover:-translate-y-0.25 group-hover:opacity-100 group-focus:translate-x-0.25 group-focus:-translate-y-0.25 group-focus:opacity-100 xl:opacity-0"
