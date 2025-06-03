@@ -17,7 +17,7 @@
     let activeMarker: SVGGElement | null = null;
 
     const { action: mousePosition, position } = useMousePosition();
-    const { action: inView, animate } = useAnimateInView({});
+    const { action: inView } = useAnimateInView();
 
     const scrollMarkerIntoView = (marker: SVGGElement) => {
         return new Promise<void>((resolve) => {
