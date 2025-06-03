@@ -39,7 +39,7 @@
 </script>
 
 <div
-    class="relative -mt-6 flex min-h-[650px] max-w-screen items-center justify-center overflow-hidden pt-40 pb-10"
+    class="relative -mt-6 -mb-12 flex min-h-[650px] max-w-screen items-center justify-center overflow-hidden pt-40 md:mb-0 md:pb-10"
 >
     <div class="container flex w-full flex-col items-center justify-center gap-10">
         <div
