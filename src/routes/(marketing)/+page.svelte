@@ -19,7 +19,10 @@
 <Main>
     <Hero />
     <Platforms />
-    <LogoList class="border-smooth border-b" />
+    <LogoList
+        class="border-smooth border-b"
+        title="Loved by developers from the world's leading organizations"
+    />
     <Bento />
     <Pullquote
         name="Phil McCluskey"

@@ -70,7 +70,7 @@
             () => {
                 updateNumbers();
             },
-            { amount: 0.75 }
+            { amount: 0.5 }
         );
     };
 
@@ -143,10 +143,10 @@
         <div class="relative container mx-auto h-full">
             <div class="absolute inset-0 z-100 grid grid-cols-4">
                 {#each localStats as stat, i}
-                    <div class="border-smooth relative h-full overflow-auto border-l">
+                    <div class="border-smooth relative h-full overflow-auto border-l border-dashed">
                         <div class="absolute bottom-0">
                             <NumberFlow
-                                class="text-description text-primary border-accent relative z-100 border-l pl-4 font-medium"
+                                class="text-description text-primary border-accent relative -left-px z-100 border-l pl-4 font-medium"
                                 value={stat.number}
                                 suffix={stat.suffix}
                             />

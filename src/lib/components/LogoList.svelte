@@ -89,9 +89,7 @@
 
 <div class={classNames('py-32', className)}>
     <div class="container">
-        <h2
-            class="font-aeonik-pro text-greyscale-100 mx-auto max-w-xl text-center text-4xl leading-10"
-        >
+        <h2 class="font-aeonik-pro text-greyscale-100 mx-auto max-w-2xl text-center text-5xl">
             {title}
         </h2>
         <ul class="grid grid-cols-3 gap-10 pt-20 text-center md:grid-cols-6">
