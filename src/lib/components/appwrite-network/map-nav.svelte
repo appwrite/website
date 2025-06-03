@@ -17,21 +17,21 @@
             label: 'PoP Locations',
             value: 'pop-locations',
             icon: 'pop-locations',
-            href: '/',
+            href: '/docs/products/network/cdn',
             description: 'Points of presence ensure <50ms ping around the globe.'
         },
         {
             label: 'Edges',
             value: 'edges',
             icon: 'edge',
-            href: '/',
+            href: '/docs/products/network/edges#list',
             description: 'Edges bring compute closer to users for faster response times.'
         },
         {
             label: 'Regions',
             value: 'regions',
             icon: 'regions',
-            href: '/',
+            href: '/docs/products/network/regions#list',
             description: 'Regions offer data residency and redundancy across continents.'
         }
     ] satisfies Array<{
