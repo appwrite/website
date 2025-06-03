@@ -53,10 +53,12 @@
     ];
 </script>
 
-<div class="light bg-[#EDEDF0] pt-40 pb-20">
+<div class="light bg-[#EDEDF0] pt-20 pb-12 md:pt-40">
     <div class="container mx-auto">
         <section class="flex flex-col items-start md:flex-row">
-            <h2 class="text-title-lg font-aeonik-pro text-primary max-w-[700px] text-pretty">
+            <h2
+                class="text-title-lg font-aeonik-pro text-primary max-w-[700px] leading-12 text-pretty"
+            >
                 Self-host your data or take it to the Cloud<span class="text-accent">_</span>
             </h2>
             <p class="text-secondary text-description mt-4 max-w-xl font-medium">
@@ -66,10 +68,10 @@
         </section>
     </div>
     <div class="mt-20 border-y border-dashed border-black/8">
-        <div class="container grid grid-cols-1 overflow-hidden md:grid-cols-2 lg:grid-cols-4">
+        <div class="container grid grid-cols-2 overflow-hidden lg:grid-cols-4">
             {#each features as box}
                 <a
-                    class="text-sub-body group relative border-b border-dashed border-black/8 py-8 font-medium last-of-type:border-0 nth-of-type-[4]:border-r-0 max-lg:even:border-r-0 md:border-r md:px-8 lg:nth-of-type-[5]:border-b-0 lg:nth-of-type-[6]:border-b-0 lg:nth-of-type-[7]:border-b-0 lg:nth-of-type-[8]:border-b-0"
+                    class="text-sub-body group relative border-b border-dashed border-black/8 px-4 py-8 font-medium last-of-type:border-0 nth-of-type-[4]:border-r-0 nth-of-type-[7]:border-b-0 max-lg:even:border-r-0 md:border-r lg:nth-of-type-[5]:border-b-0 lg:nth-of-type-[6]:border-b-0 lg:nth-of-type-[8]:border-b-0"
                     href={box.href}
                 >
                     <img src={box.icon} width="40" height="40" alt="" />
@@ -78,7 +80,7 @@
 
                         <Icon
                             name="arrow-right"
-                            class="-rotate-45 opacity-0 transition-all group-hover:translate-x-0.25 group-hover:-translate-y-0.25 group-hover:opacity-100"
+                            class="-rotate-45 transition-all group-hover:translate-x-0.25 group-hover:-translate-y-0.25 group-hover:opacity-100 group-focus:translate-x-0.25 group-focus:-translate-y-0.25 group-focus:opacity-100 xl:opacity-0"
                         />
                     </h3>
                     <p class="text-secondary mt-1">

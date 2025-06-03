@@ -26,7 +26,7 @@
     <Bento />
     <Pullquote
         name="Phil McCluskey"
-        title="Development lead, Majik Kids"
+        title="App Manager, Majik Kids"
         avatar="/images/testimonials/phil.jpg"
     >
         <span class="text-secondary">Just like a Swiss Army Knife</span> you can choose and use the tools

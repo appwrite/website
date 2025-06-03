@@ -21,13 +21,15 @@
         )}
     >
         <h2 class="text-description text-primary font-medium">
-            <span class="text-accent">“</span>
+            <span class="text-accent -mr-1">“</span>
             {@render children?.()}
-            <span class="text-accent">”</span>
+            <span class="text-accent -ml-1">”</span>
         </h2>
         <div class="flex items-center gap-2">
             <img src={avatar} alt={name} class="size-6 rounded-full" />
-            <h5 class="text-caption font-medium">{name}, {title}</h5>
+            <h5 class="text-caption text-primary font-medium">
+                {name}, <span class="text-secondary">{title}</span>
+            </h5>
         </div>
     </blockquote>
 </div>

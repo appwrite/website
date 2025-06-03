@@ -88,7 +88,7 @@
 </script>
 
 <div
-    class={classNames('relative -mb-8 flex min-h-[700px] flex-col gap-4 py-12', theme)}
+    class={classNames('relative -mb-8 flex min-h-[700px] flex-col gap-4 pb-20 md:pb-0', theme)}
     use:visible
 >
     <div class="relative z-10 container w-fit md:w-full">
@@ -98,14 +98,14 @@
                     class="text-accent">_</span
                 >
             </h2>
-            <p class="text-secondary border-accent mt-5 border-l-2 pr-28 pl-2 font-medium">
+            <p class="text-secondary border-accent mt-5 border-l-2 pl-4 font-medium md:pr-28">
                 <span class="text-accent">“</span>{@render children()}<span class="text-accent"
                     >”</span
                 >
             </p>
 
             {#if testimonial}
-                <div class="mt-4 flex items-center gap-3">
+                <div class="mt-4 ml-4 flex items-center gap-3">
                     <img
                         src={testimonial.image}
                         class="size-6 rounded-full"

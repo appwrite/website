@@ -9,6 +9,7 @@
         handleResetActiveTooltip
     } from './map-tooltip.svelte';
     import { createMap } from 'svg-dotted-map';
+    import { Icon } from '../ui';
 
     let activeSegment = $state<string>('pop-locations');
     let activeMarkers = $derived(pins[activeSegment as PinSegment]);
@@ -79,30 +80,10 @@
     const { theme = 'dark' }: Props = $props();
 </script>
 
-<div class="relative -mt-8 w-full overflow-x-scroll [scrollbar-width:none]">
-    <div
-        class="sticky left-0 mx-auto block max-w-[calc(100vw_-_calc(var(--spacing)_*-2))] md:hidden"
-    >
-        <div class="relative mx-16">
-            <select
-                id="map-select"
-                class="web-input-text mx-auto w-full appearance-none"
-                onchange={(e) => handleSetActiveMarker(e.currentTarget.value)}
-            >
-                {#each pins[activeSegment as PinSegment] as pin}
-                    <option value={pin.city}>{pin.city}-({pin.code})</option>
-                {/each}
-            </select>
-            <span
-                class="icon-cheveron-down web-u-pointer-events-none absolute top-[11px] right-2"
-                aria-hidden="true"
-            ></span>
-        </div>
-    </div>
-
-    <div class="relative mx-auto h-full w-[250vw] [scrollbar-width:none] md:w-full" use:inView>
+<div class="relative w-full overflow-x-scroll [scrollbar-width:none]">
+    <div class="relative mx-auto h-full [scrollbar-width:none] md:w-full" use:inView>
         <div
-            class="relative mx-auto h-fit w-full max-w-5xl origin-bottom -translate-x-20 transform-[perspective(25px)_rotateX(1deg)_scale3d(1.2,_1.2,_1)] transition-all [scrollbar-width:none]"
+            class="relative mx-auto my-10 h-fit w-full max-w-5xl origin-bottom transform-[perspective(25px)_rotateX(1deg)_scale3d(1.2,_1.2,_1)] transition-all [scrollbar-width:none] md:my-0 md:-translate-x-20"
             use:mousePosition
         >
             <svg viewBox={`0 0 ${height * 2} ${height}`}>

@@ -20,7 +20,7 @@
 
     let selectedTab = $state('pop-locations');
 
-    function getDescription() {
+    const getDescription = () => {
         switch (selectedTab) {
             case 'pop-locations':
                 return 'Points of presence ensure <50ms ping around the globe.';
@@ -31,7 +31,7 @@
             default:
                 return '';
         }
-    }
+    };
 </script>
 
 <div class="flex flex-col gap-4 text-center">
@@ -45,8 +45,8 @@
     >
         <Tabs.List
             class={classNames(
-                'border-smooth animate-fade-in relative grid w-full max-w-xl grid-cols-1 place-content-center gap-3 overflow-hidden p-1 px-8 drop-shadow-md md:grid-cols-3 md:rounded-full md:border md:px-1',
-                theme === 'light' ? 'md:bg[var(--card, rgba(255,255,255,0.90))]' : 'md:bg-card'
+                'border-smooth animate-fade-in relative grid w-full max-w-xl grid-cols-1 place-content-center gap-3 overflow-hidden p-1 px-8 shadow-[0px_4px_8p_rgba(0,0,0,0.04)] md:grid-cols-3 md:rounded-full md:border md:px-1',
+                theme === 'light' ? 'md:bg-white' : 'md:bg-card'
             )}
         >
             {#each navItems as { label, icon, value }, index}
@@ -72,7 +72,7 @@
         </Tabs.List>
     </Tabs.Root>
 
-    <p class="text-caption px-4">
+    <p class="text-caption text-secondary px-4">
         {getDescription()}
     </p>
 </div>
