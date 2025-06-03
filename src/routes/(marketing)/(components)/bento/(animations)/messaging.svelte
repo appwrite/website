@@ -73,14 +73,14 @@
         class="relative flex h-85 items-center justify-center overflow-clip rounded-xl bg-black/24 px-8"
     >
         <div
-            class="light absolute top-14 z-10 flex h-[65px] w-[315px] items-center justify-between gap-4 rounded-[20px] bg-white/80 px-3 py-2 shadow-[-8px_4px_32px_rgba(0,0,0,0.24)] backdrop-blur-xl md:scale-100"
+            class="light absolute top-14 z-10 flex h-[65px] w-[85%] items-center justify-between gap-4 rounded-[20px] bg-white/80 px-3 py-2 shadow-[-8px_4px_32px_rgba(0,0,0,0.24)] backdrop-blur-xl"
             style="transform: translateY(-15px); opacity: 0; filter: blur(4px);"
             bind:this={notification}
         >
             <div class="flex size-8 shrink-0 items-center justify-center rounded-lg bg-black">
                 <div class="size-3 rounded-full bg-white"></div>
             </div>
-            <div class="text-micro flex flex-col">
+            <div class="max-lg:text-micro text-x-micro flex flex-col">
                 <h2 class="text-primary flex justify-between font-medium">
                     New security measures added <span class="text-secondary/50 mr-1 block">now</span
                     >
@@ -107,7 +107,7 @@
                     class="text-micro mt-6 grid flex-1 grid-cols-4 grid-rows-24 place-items-center gap-3 p-6"
                 >
                     <div
-                        class="relative flex size-[45px] shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-white/10 to-white/3 shadow-sm shadow-black/5"
+                        class="relative flex aspect-square size-full shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-white/10 to-white/3 shadow-sm shadow-black/5"
                     >
                         <div
                             class="bg-accent text-micro absolute -top-1 -right-1 flex size-3 items-center justify-center rounded-full"
@@ -117,7 +117,7 @@
                     </div>
                     {#each [Messages, Settings, Calendar] as icon}
                         <div
-                            class="flex size-[45px] shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-white/10 to-white/3 shadow-sm shadow-black/5"
+                            class="flex aspect-square size-full shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-white/10 to-white/3 shadow-sm shadow-black/5"
                         >
                             <img src={icon} alt="" class="size-6" />
                         </div>
@@ -125,7 +125,7 @@
 
                     {#each Array.from({ length: 12 }) as _, index}
                         <div
-                            class="size-[45px] shrink-0 rounded-xl bg-gradient-to-br from-white/10 to-white/3 shadow-sm shadow-black/5"
+                            class="aspect-square size-full shrink-0 rounded-xl bg-gradient-to-br from-white/10 to-white/3 shadow-sm shadow-black/5"
                         ></div>
                     {/each}
                 </div>
