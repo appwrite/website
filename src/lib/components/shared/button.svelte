@@ -2,7 +2,7 @@
     import { classNames } from '$lib/utils/classnames';
     import type { HTMLButtonAttributes, HTMLAnchorAttributes } from 'svelte/elements';
     import { cva, type VariantProps } from 'cva';
-    import InlineTag from '../ui/InlineTag.svelte';
+    import InlineTag from '../ui/inline-tag.svelte';
 
     const button = cva(
         [

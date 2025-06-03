@@ -26,6 +26,7 @@
     import Request from './(components)/Request.svelte';
     import Response from './(components)/Response.svelte';
     import RateLimits from './(components)/RateLimits.svelte';
+    import type { SDKMethod } from '$lib/utils/specs';
 
     let { data } = $props();
 
@@ -34,7 +35,6 @@
     const headings = getContext<LayoutContext>('headings');
 
     let selected: string | undefined = $state(undefined);
-    let selectedMenuItem: HTMLElement;
 
     headings.subscribe((n) => {
         const noVisible = Object.values(n).every((n) => !n.visible);
@@ -61,7 +61,9 @@
             correctPlatform = platform.replaceAll(`server-`, ``) as Platform;
         }
 
-        preferredPlatform.set(correctPlatform as Platform);
+        if ($preferredPlatform === correctPlatform) return;
+
+        preferredPlatform.set(correctPlatform);
 
         goto(`/docs/references/${version}/${platform}/${service}`, {
             noScroll: true
@@ -71,6 +73,8 @@
     function selectVersion(event: CustomEvent<unknown>) {
         const { platform, service } = page.params;
         const version = event.detail as Version;
+        if ($preferredVersion === version) return;
+
         preferredVersion.set(version);
         goto(`/docs/references/${version}/${platform}/${service}`, {
             noScroll: true
@@ -110,8 +114,7 @@
                 : `server-${$preferredPlatform}`;
 
             goto(`/docs/references/${$preferredVersion}/${platformMode}/${page.params.service}`, {
-                noScroll: true,
-                replaceState: false
+                noScroll: true
             });
         }
 
@@ -145,7 +148,7 @@
     /**
      * Sorts methods by their operation order and title
      */
-    function sortMethods(methods: any[]) {
+    function sortMethods(methods: SDKMethod[]) {
         return methods.sort((a, b) => {
             const orderA = getOperationOrder(a.title);
             const orderB = getOperationOrder(b.title);
@@ -156,11 +159,8 @@
         });
     }
 
-    /**
-     * Groups methods by their group attribute, null group goes to '' for ordering
-     */
-    function groupMethodsByGroup(methods: any[]) {
-        return methods.reduce((acc, method) => {
+    function groupMethodsByGroup(methods: SDKMethod[]) {
+        return methods.reduce<Record<string, SDKMethod[]>>((acc, method) => {
             const groupKey = method.group || '';
             if (!acc[groupKey]) {
                 acc[groupKey] = [];
@@ -168,20 +168,6 @@
             acc[groupKey].push(method);
             return acc;
         }, {});
-    }
-
-    function bindSelectedRef(node: HTMLElement, isSelected: boolean) {
-        if (isSelected) {
-            selectedMenuItem = node;
-        }
-
-        return {
-            update(newIsSelected: boolean) {
-                if (newIsSelected) {
-                    selectedMenuItem = node;
-                }
-            }
-        };
     }
 
     let platformBindingForSelect = $derived(page.params.platform as Platform);
@@ -400,7 +386,6 @@
                                                 href={`#${method.id}`}
                                                 class="web-references-menu-link text-caption"
                                                 class:is-selected={method.id === selected}
-                                                use:bindSelectedRef={method.id === selected}
                                             >
                                                 {method.title}
                                             </a>
