@@ -65,8 +65,8 @@
             <div
                 class="border-smooth flex w-[264px] flex-col rounded-[40px] border bg-[#232325]/90"
             >
-                <div class="relative m-2 flex-1 rounded-4xl bg-[#19191C] p-4">
-                    <form class="flex flex-col gap-3">
+                <div class="pointer-events-none relative m-2 flex-1 rounded-4xl bg-[#19191C] p-4">
+                    <div class="flex flex-col gap-3">
                         <div class="flex flex-col gap-1">
                             <label for="email" class="text-x-micro text-secondary">Email</label>
                             <input
@@ -74,6 +74,7 @@
                                 name="email"
                                 class="border-smooth text-micro w-full rounded-lg border bg-[#19191C] px-3 py-2 text-white"
                                 value="walter@acme.dev"
+                                disabled
                             />
                         </div>
                         <div class="flex flex-col gap-1">
@@ -88,6 +89,7 @@
                                 )}
                                 placeholder="Your Password"
                                 value={password}
+                                disabled
                             />
                         </div>
 
@@ -96,7 +98,7 @@
                             disabled
                             bind:this={button}>Sign up</button
                         >
-                    </form>
+                    </div>
 
                     <span
                         class={classNames(

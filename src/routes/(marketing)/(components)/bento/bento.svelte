@@ -104,7 +104,7 @@
             </div>
         </div>
     </div>
-    <div class="grid grid-cols-12 gap-4">
+    <div class="grid grid-cols-12 gap-8">
         <Auth />
         <Databases />
         <Storage />

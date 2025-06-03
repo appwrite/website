@@ -89,10 +89,10 @@
 
 <div class={classNames('py-32', className)}>
     <div class="container">
-        <h2 class="font-aeonik-pro text-greyscale-100 mx-auto max-w-2xl text-center text-5xl">
+        <h2 class="font-aeonik-pro text-greyscale-100 text-label mx-auto max-w-md text-center">
             {title}
         </h2>
-        <ul class="grid grid-cols-3 gap-10 pt-20 text-center md:grid-cols-6">
+        <ul class="grid grid-cols-3 gap-10 pt-10 text-center md:grid-cols-6">
             {#each logos as { src, alt, width, height }}
                 <li class="grid place-content-center">
                     <img {src} {alt} {width} {height} />
