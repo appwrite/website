@@ -3,6 +3,7 @@
     import NumberFlow from '@number-flow/svelte';
     import { inView } from 'motion';
     import { onDestroy, type Snippet } from 'svelte';
+    import { browser } from '$app/environment';
 
     const animationDuration = 3;
 
@@ -128,12 +129,15 @@
         {#each localStats as stat, i}
             <div class="h-full overflow-auto pl-6">
                 <div class="relative">
-                    <NumberFlow
-                        class="text-description text-primary border-accent relative -left-px z-10 border-l pl-4 font-medium"
-                        value={stat.number}
-                        suffix={stat.suffix}
-                    />
-                    <span class="text-body text-secondary block pl-4">{stat.description}</span>
+                    {#if browser}
+                        <NumberFlow
+                            class="text-description text-primary border-accent relative -left-px z-10 border-l pl-4 font-medium"
+                            value={stat.number}
+                            suffix={stat.suffix}
+                        />
+
+                        <span class="text-body text-secondary block pl-4">{stat.description}</span>
+                    {/if}
                 </div>
             </div>
         {/each}
@@ -148,14 +152,16 @@
                             class="absolute"
                             style="bottom: calc(50px + {25 + (75 / 3) * (i / 2)}%)"
                         >
-                            <NumberFlow
-                                class="text-description text-primary border-accent relative -left-px z-100 border-l pl-4 font-medium"
-                                value={stat.number}
-                                suffix={stat.suffix}
-                            />
-                            <span class="text-body text-secondary block pl-4">
-                                {stat.description}
-                            </span>
+                            {#if browser}
+                                <NumberFlow
+                                    class="text-description text-primary border-accent relative -left-px z-100 border-l pl-4 font-medium"
+                                    value={stat.number}
+                                    suffix={stat.suffix}
+                                />
+                                <span class="text-body text-secondary block pl-4">
+                                    {stat.description}
+                                </span>
+                            {/if}
                         </div>
                     </div>
                 {/each}

@@ -14,7 +14,7 @@
             blurb: 'A special thanks to Appwrite for providing robust features and seamless functionality.',
             name: 'Hassan Ahmed',
             title: 'Engineer at DevKind',
-            avatar: '/images/testimonials/hassan.jpeg',
+            avatar: '/images/testimonials/hassan.png',
             url: '/blog/post/customer-stories-storealert'
         },
         {
