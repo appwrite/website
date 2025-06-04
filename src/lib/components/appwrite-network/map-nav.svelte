@@ -69,7 +69,9 @@
                     )}
                     style="animation-delay:{index * 75}ms;"
                     onclick={() => {
-                        trackEvent(`network-map-nav-${value}-click`);
+                        trackEvent(
+                            `network-map-nav-${value.toLowerCase().replace(' ', '-')}-click`
+                        );
                     }}
                 >
                     <Icon
