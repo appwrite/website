@@ -63,6 +63,7 @@
     <div class="space-y-3 px-3 pt-2 pb-4">
         <div class="flex items-center gap-2">
             <img
+                loading="lazy"
                 src="/images/icons/illustrated/dark/storage.png"
                 alt="Storage icon"
                 class="size-7"
@@ -93,6 +94,7 @@
             {/each}
 
             <img
+                loading="lazy"
                 src={Image}
                 alt="Storage"
                 class="md:max-w-auto h-full w-full max-w-[350px] overflow-hidden object-cover transition-all"

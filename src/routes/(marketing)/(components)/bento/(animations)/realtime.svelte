@@ -65,6 +65,7 @@
     <div class="space-y-3 px-3 pt-2 pb-4">
         <div class="flex items-center gap-2">
             <img
+                loading="lazy"
                 src="/images/icons/illustrated/dark/realtime.png"
                 alt="Realtime icon"
                 class="size-7"
@@ -83,6 +84,7 @@
             class="relative grid aspect-square h-[240px] w-[240px] grid-cols-2 grid-rows-2 items-center justify-center"
         >
             <img
+                loading="lazy"
                 src={TopRight}
                 alt="Top Right"
                 bind:this={topRightPiece}
@@ -91,6 +93,7 @@
             />
 
             <img
+                loading="lazy"
                 src={Puzzle}
                 alt="Puzzle Piece"
                 class="absolute inset-0 top-1/2 left-1/2 -translate-1/2"

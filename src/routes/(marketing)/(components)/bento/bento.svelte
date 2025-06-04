@@ -73,7 +73,12 @@
                             <span
                                 class="text-primary text-caption flex items-center justify-center gap-1 font-medium"
                             >
-                                <img src={product.icon} alt={product.label} class="size-6" />
+                                <img
+                                    loading="lazy"
+                                    src={product.icon}
+                                    alt={product.label}
+                                    class="size-6"
+                                />
                                 {product.label}</span
                             >
                         </a>
@@ -95,7 +100,12 @@
                             <span
                                 class="text-primary text-caption flex items-center justify-center gap-1 font-medium"
                             >
-                                <img src={product.icon} alt={product.label} class="size-6" />
+                                <img
+                                    loading="lazy"
+                                    src={product.icon}
+                                    alt={product.label}
+                                    class="size-6"
+                                />
                                 {product.label}</span
                             >
                         </a>

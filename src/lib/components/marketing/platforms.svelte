@@ -17,7 +17,7 @@
     import React from './(assets)/icons/react.svg';
     import GradientText from '$lib/components/fancy/gradient-text.svelte';
     import Noise from '$lib/components/fancy/noise.svelte';
-    import { Tooltip } from 'bits-ui';
+    // import { Tooltip } from 'bits-ui';
     import type { SvelteHTMLElements } from 'svelte/elements';
 
     const platforms = [
@@ -101,57 +101,40 @@
                         }
                     )}
                 >
-                    <Tooltip.Provider delayDuration={0} disableCloseOnTriggerClick>
-                        {#each platforms as platform, i}
-                            <Tooltip.Root>
-                                <div
-                                    class="contents"
-                                    style="--primary-color:{platform.primary};--secondary-color:{platform.secondary};--animation-delay:{i *
-                                        25}ms"
-                                >
-                                    <Tooltip.Trigger
-                                        class={classNames(
-                                            'border-smooth group animate-fade-in relative mt-4 flex h-16 w-16 items-center justify-center border-dashed md:mt-0 md:w-full lg:border-r',
-                                            {
-                                                'lg:border-l': i === 0
-                                            }
-                                        )}
-                                    >
-                                        <img
-                                            src={platform.icon}
-                                            alt={platform.name}
-                                            class="h-8 w-auto grayscale transition-all duration-500 group-hover:grayscale-0"
-                                            aria-hidden={i < platforms.length - 1}
-                                        />
+                    {#each platforms as platform, i}
+                        <div
+                            class="contents"
+                            style="--primary-color:{platform.primary};--secondary-color:{platform.secondary};--animation-delay:{i *
+                                25}ms"
+                        >
+                            <div
+                                class={classNames(
+                                    'border-smooth group animate-fade-in relative mt-4 flex h-16 w-16 items-center justify-center border-dashed md:mt-0 md:w-full lg:border-r',
+                                    {
+                                        'lg:border-l': i === 0
+                                    }
+                                )}
+                            >
+                                <img
+                                    src={platform.icon}
+                                    alt={platform.name}
+                                    class="h-8 w-auto grayscale transition-all duration-500 group-hover:grayscale-0"
+                                    aria-hidden={i < platforms.length - 1}
+                                />
 
-                                        <div
-                                            class={classNames(
-                                                'absolute inset-0 opacity-0 transition-opacity group-hover:opacity-100',
-                                                'bg-gradient-to-tl from-transparent to-transparent',
-                                                'hover:from-(--primary-color,_#fff)/4 hover:to-(--secondary-color,_transparent)/10'
-                                            )}
-                                            aria-hidden={i < platforms.length - 1}
-                                        >
-                                            <Noise opacity={0.1} />
-                                        </div>
-                                    </Tooltip.Trigger>
-                                    <Tooltip.Content
-                                        sideOffset={8}
-                                        side="top"
-                                        class={classNames(
-                                            'text-primary bg-greyscale-900 relative hidden rounded-md border-0! px-2.5 py-1 text-sm md:block',
-                                            'data-[state="closed"]:animate-menu-out data-[state="instant-open"]:animate-menu-in data-[state="delayed-open"]:animate-menu-in'
-                                        )}
-                                        >{platform.name}
-                                        <div
-                                            class="absolute inset-0 rounded-md bg-gradient-to-tl from-(--primary-color,_#fff)/4 to-(--secondary-color,_transparent)/10"
-                                        ></div>
-                                        <Tooltip.Arrow class="text-(--primary-color)/4" />
-                                    </Tooltip.Content>
+                                <div
+                                    class={classNames(
+                                        'absolute inset-0 opacity-0 transition-opacity group-hover:opacity-100',
+                                        'bg-gradient-to-tl from-transparent to-transparent',
+                                        'hover:from-(--primary-color,_#fff)/4 hover:to-(--secondary-color,_transparent)/10'
+                                    )}
+                                    aria-hidden={i < platforms.length - 1}
+                                >
+                                    <Noise opacity={0.1} />
                                 </div>
-                            </Tooltip.Root>
-                        {/each}
-                    </Tooltip.Provider>
+                            </div>
+                        </div>
+                    {/each}
                 </div>
             {/each}
         </div>

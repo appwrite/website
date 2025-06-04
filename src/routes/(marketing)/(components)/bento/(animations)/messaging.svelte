@@ -57,6 +57,7 @@
     <div class="space-y-3 px-3 pt-2 pb-4">
         <div class="flex items-center gap-2">
             <img
+                loading="lazy"
                 src="/images/icons/illustrated/dark/messaging.png"
                 alt="Messaging icon"
                 class="size-7"
@@ -113,13 +114,13 @@
                             class="bg-accent text-micro absolute -top-1 -right-1 flex size-3 items-center justify-center rounded-full"
                         ></div>
 
-                        <img src={Email} alt="" class="size-6" />
+                        <img loading="lazy" src={Email} alt="" class="size-6" />
                     </div>
                     {#each [Messages, Settings, Calendar] as icon}
                         <div
                             class="flex aspect-square size-full shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-white/10 to-white/3 shadow-sm shadow-black/5"
                         >
-                            <img src={icon} alt="" class="size-6" />
+                            <img loading="lazy" src={icon} alt="" class="size-6" />
                         </div>
                     {/each}
 

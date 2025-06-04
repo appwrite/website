@@ -71,6 +71,7 @@
                 )}
             >
                 <img
+                    loading="lazy"
                     src={study.logo}
                     alt={study.headline}
                     width={100}
@@ -89,6 +90,7 @@
                     )}
                 >
                     <img
+                        loading="lazy"
                         width={100}
                         height={100}
                         src={study.logo}
@@ -117,6 +119,7 @@
                         <div class="mt-4 flex flex-col justify-between gap-4 lg:flex-row">
                             <div class="flex items-center gap-2">
                                 <img
+                                    loading="lazy"
                                     src={study.avatar}
                                     alt={study.headline}
                                     class="size-8 rounded-full md:size-6"

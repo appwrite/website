@@ -147,6 +147,7 @@
     <div class="space-y-3 px-3 pt-2 pb-4">
         <div class="flex items-center gap-2">
             <img
+                loading="lazy"
                 src="/images/icons/illustrated/dark/databases.png"
                 alt="Databases icon"
                 class="size-7"

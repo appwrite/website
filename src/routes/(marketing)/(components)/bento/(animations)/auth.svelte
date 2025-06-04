@@ -49,7 +49,12 @@
 >
     <div class="space-y-3 px-3 pt-2 pb-4">
         <div class="flex items-center gap-2">
-            <img src="/images/icons/illustrated/dark/auth.png" alt="Auth icon" class="size-7" />
+            <img
+                loading="lazy"
+                src="/images/icons/illustrated/dark/auth.png"
+                alt="Auth icon"
+                class="size-7"
+            />
             <h3 class="font-aeonik-pro text-label text-primary">Auth</h3>
         </div>
         <p class="text-sub-body text-primary max-w-lg font-medium">
@@ -116,7 +121,7 @@
                         )}
                         disabled
                     >
-                        <img src={Google} alt="Google Icon" class="size-4" />
+                        <img loading="lazy" src={Google} alt="Google Icon" class="size-4" />
 
                         Google</button
                     >

@@ -108,6 +108,7 @@
             {#if testimonial}
                 <div class="mt-4 ml-4 flex items-center gap-3">
                     <img
+                        loading="lazy"
                         src={testimonial.image}
                         class="size-6 rounded-full"
                         alt="{testimonial.company} Logo"

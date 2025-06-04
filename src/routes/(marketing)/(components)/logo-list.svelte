@@ -118,7 +118,7 @@
                             delay={index * baseDelay + i * 0.1}
                             class="absolute"
                         >
-                            <img {src} {alt} {width} {height} />
+                            <img loading="lazy" {src} {alt} {width} {height} />
                         </AnimatedLogo>
                     {/each}
                 </div>
