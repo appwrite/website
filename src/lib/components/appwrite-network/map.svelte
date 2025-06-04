@@ -9,7 +9,7 @@
         handleResetActiveTooltip
     } from './map-tooltip.svelte';
     import { createMap } from 'svg-dotted-map';
-    import { Icon } from '../ui';
+    import { browser } from '$app/environment';
 
     let activeSegment = $state<string>('pop-locations');
     let activeMarkers = $derived(pins[activeSegment as PinSegment]);
@@ -86,62 +86,74 @@
             class="relative mx-auto my-10 h-fit w-full max-w-5xl origin-bottom transform-[perspective(25px)_rotateX(1deg)_scale3d(1.2,_1.2,_1)] transition-all [scrollbar-width:none] md:my-0 md:-translate-x-20"
             use:mousePosition
         >
-            <svg viewBox={`0 0 ${height * 2} ${height}`}>
-                <defs>
-                    <mask id="map">
-                        {#each points as point}
-                            <ellipse
-                                cx={point.x}
-                                cy={point.y}
-                                rx={radius}
-                                ry={radius * 1.25}
-                                fill="white"
-                            />
-                        {/each}
-                    </mask>
-                </defs>
-                {#each points as point}
-                    <ellipse
-                        cx={point.x}
-                        cy={point.y}
-                        rx={radius}
-                        ry={radius * 1.25}
-                        fill={theme === 'dark' ? 'rgba(255,255,255,.1)' : '#dadadd'}
-                    />
-                {/each}
-                {#each markers as marker}
-                    <g
-                        role="tooltip"
-                        class="animate-fade-in outline-none"
-                        onmouseover={() =>
-                            handleSetActiveTooltip(
-                                marker.city,
-                                marker.code,
-                                marker.available,
-                                marker.date
-                            )}
-                        onfocus={() =>
-                            handleSetActiveTooltip(
-                                marker.city,
-                                marker.code,
-                                marker.available,
-                                marker.date
-                            )}
-                        onblur={() => handleResetActiveTooltip()}
-                        onmouseout={() => handleResetActiveTooltip()}
-                        data-region={slugify(marker.city)}
-                    >
-                        <circle cx={marker.x} cy={marker.y} r={radius * 1.25} class="fill-accent" />
-                        <circle cx={marker.x} cy={marker.y} r={radius * 0.5} class="fill-white" />
-                        <circle
-                            cx={marker.x}
-                            cy={marker.y}
-                            r={radius * 4}
-                            class="fill-transparent"
+            {#if browser}
+                <svg viewBox={`0 0 ${height * 2} ${height}`}>
+                    <defs>
+                        <mask id="map">
+                            {#each points as point}
+                                <ellipse
+                                    cx={point.x}
+                                    cy={point.y}
+                                    rx={radius}
+                                    ry={radius * 1.25}
+                                    fill="white"
+                                />
+                            {/each}
+                        </mask>
+                    </defs>
+                    {#each points as point}
+                        <ellipse
+                            cx={point.x}
+                            cy={point.y}
+                            rx={radius}
+                            ry={radius * 1.25}
+                            fill={theme === 'dark' ? 'rgba(255,255,255,.1)' : '#dadadd'}
                         />
-                    </g>
-                {/each}
-            </svg>
+                    {/each}
+                    {#each markers as marker}
+                        <g
+                            role="tooltip"
+                            class="animate-fade-in outline-none"
+                            onmouseover={() =>
+                                handleSetActiveTooltip(
+                                    marker.city,
+                                    marker.code,
+                                    marker.available,
+                                    marker.date
+                                )}
+                            onfocus={() =>
+                                handleSetActiveTooltip(
+                                    marker.city,
+                                    marker.code,
+                                    marker.available,
+                                    marker.date
+                                )}
+                            onblur={() => handleResetActiveTooltip()}
+                            onmouseout={() => handleResetActiveTooltip()}
+                            data-region={slugify(marker.city)}
+                        >
+                            <circle
+                                cx={marker.x}
+                                cy={marker.y}
+                                r={radius * 1.25}
+                                class="fill-accent"
+                            />
+                            <circle
+                                cx={marker.x}
+                                cy={marker.y}
+                                r={radius * 0.5}
+                                class="fill-white"
+                            />
+                            <circle
+                                cx={marker.x}
+                                cy={marker.y}
+                                r={radius * 4}
+                                class="fill-transparent"
+                            />
+                        </g>
+                    {/each}
+                </svg>
+            {/if}
         </div>
     </div>
 </div>

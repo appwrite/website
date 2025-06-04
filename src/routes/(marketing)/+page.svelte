@@ -35,7 +35,7 @@
     <CaseStudies />
     <Features />
     <div class="light bg-[#EDEDF0]">
-        <!-- <Map theme="light" /> -->
+        <Map theme="light" />
         <Scale
             testimonial={{
                 name: 'Ryan O’Conner',

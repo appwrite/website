@@ -73,6 +73,8 @@
                 <img
                     src={study.logo}
                     alt={study.headline}
+                    width={100}
+                    height={100}
                     class={classNames(
                         'visible h-5 px-2 opacity-100 transition-all [grid-area:stack] lg:h-7',
                         'group-[&[data-state=on]]/card:invisible group-[&[data-state=on]]/card:opacity-0',
@@ -86,7 +88,13 @@
                         'group-[&[data-state=on]]/card:visible group-[&[data-state=on]]/card:opacity-100 group-[&[data-state=on]]/card:blur-none'
                     )}
                 >
-                    <img src={study.logo} alt={study.headline} class="w-20" />
+                    <img
+                        width={100}
+                        height={100}
+                        src={study.logo}
+                        alt={study.headline}
+                        class="w-20"
+                    />
 
                     <span
                         class="text-title font-aeonik-pro text-primary relative flex flex-wrap gap-2 text-left"
