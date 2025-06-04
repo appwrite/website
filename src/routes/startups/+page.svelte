@@ -627,7 +627,7 @@
                                                 <div class="flex gap-4">
                                                     <div class="web-check-bullet mt-1"></div>
                                                     <p class="text-description">
-                                                        Appwrite Cloud Scale for 12 months
+                                                        Appwrite Cloud discount on a paid plan
                                                     </p>
                                                 </div>
                                                 <div class="flex gap-4">
