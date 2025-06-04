@@ -3,6 +3,7 @@
     import type { IconType } from '../ui';
     import Icon from '../ui/icon/icon.svelte';
     import { classNames } from '$lib/utils/classnames';
+    import { trackEvent } from '$lib/actions/analytics';
 
     const {
         onValueChange,
@@ -67,6 +68,9 @@
                         'group data-[state="active"]:bg-accent/4 data-[state="active"]:border-accent/36 data-[state="active"]:text-accent'
                     )}
                     style="animation-delay:{index * 75}ms;"
+                    onclick={() => {
+                        trackEvent(`network-map-nav-${value}-click`);
+                    }}
                 >
                     <Icon
                         name={icon}

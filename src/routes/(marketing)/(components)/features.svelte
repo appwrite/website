@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { trackEvent } from '$lib/actions/analytics';
     import Icon from '$lib/components/ui/icon';
 
     const features = [
@@ -73,6 +74,9 @@
                 <a
                     class="text-sub-body group relative border-b border-dashed border-black/8 px-4 py-8 font-medium last-of-type:border-0 nth-of-type-[4]:border-r-0 nth-of-type-[7]:border-b-0 max-lg:even:border-r-0 md:border-r lg:nth-of-type-[5]:border-b-0 lg:nth-of-type-[6]:border-b-0 lg:nth-of-type-[8]:border-b-0"
                     href={box.href}
+                    onclick={() => {
+                        trackEvent(`feature-${box.label.toLowerCase().replace(' ', '-')}-click`);
+                    }}
                 >
                     <img loading="lazy" src={box.icon} width="40" height="40" alt="" />
                     <h3 class="text-primary mt-4 flex flex-wrap items-center gap-0.5">

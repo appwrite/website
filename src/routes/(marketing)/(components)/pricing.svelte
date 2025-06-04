@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { trackEvent } from '$lib/actions/analytics';
     import Noise from '$lib/components/fancy/noise.svelte';
     import { Button } from '$lib/components/ui';
     import { classNames } from '$lib/utils/classnames';
@@ -10,30 +11,35 @@
         description: string;
         tag?: string;
         subtitle?: string;
+        event: string;
     }> = [
         {
             name: 'Free',
             price: '$0',
-            description: 'For personal hobby projects and students.'
+            description: 'For personal hobby projects and students.',
+            event: 'home-pricing-cards-free-click'
         },
         {
             name: 'Pro',
             price: '$15',
             tag: 'Popular',
             description: 'For pro developers and teams that need to scale their products.',
-            subtitle: 'per member/month'
+            subtitle: 'per member/month',
+            event: 'home-pricing-cards-pro-click'
         },
         {
             name: 'Scale',
             price: '$599',
             description: 'For teams and products that need more control and support.',
-            subtitle: 'per organization/month'
+            subtitle: 'per organization/month',
+            event: 'home-pricing-cards-scale-click'
         },
         {
             name: 'Enterprise',
             price: 'Custom',
             description: 'For enterprises that need more power and premium support.',
-            subtitle: 'per organization/month'
+            subtitle: 'per organization/month',
+            event: 'home-pricing-cards-enterprise-click'
         }
     ];
 </script>
@@ -58,11 +64,20 @@
             </h2>
 
             <div class="mt-4 flex flex-col gap-2 lg:flex-row">
-                <Button href={getAppwriteDashboardUrl()} class="w-full! md:w-fit!"
-                    >Start building for free</Button
+                <Button
+                    href={getAppwriteDashboardUrl()}
+                    class="w-full! md:w-fit!"
+                    onclick={() => {
+                        trackEvent(`pricing-get-started-click`);
+                    }}>Start building for free</Button
                 >
-                <Button href="/pricing" class="w-full! md:w-fit!" variant="secondary"
-                    >View pricing plans</Button
+                <Button
+                    onclick={() => {
+                        trackEvent(`pricing-view-plans-click`);
+                    }}
+                    href="/pricing"
+                    class="w-full! md:w-fit!"
+                    variant="secondary">View pricing plans</Button
                 >
             </div>
         </div>
@@ -70,7 +85,7 @@
         <div
             class="border-smooth divide-smooth grid min-h-75 w-full grid-cols-1 divide-y divide-dashed rounded-3xl border bg-white/2 backdrop-blur-lg md:grid-cols-2 md:gap-y-12 md:divide-y-0 md:px-4 md:py-8 lg:grid-cols-4 lg:divide-x"
         >
-            {#each plans as { name, price, tag: label, subtitle, description }}
+            {#each plans as { name, price, tag: label, subtitle, description, event }}
                 {@const isEnterprise = name === 'Enterprise'}
                 <div class="flex h-full w-full grow flex-col gap-1 px-5 py-5 md:pb-0">
                     <div class="flex items-center gap-2.5">
@@ -96,7 +111,9 @@
                         class="mt-8 mb-0 w-full!"
                         variant={name === 'Pro' ? 'primary' : 'secondary'}
                         href={isEnterprise ? '/contact-us/enterprise' : getAppwriteDashboardUrl()}
-                        >{isEnterprise ? 'Contact us' : 'Start building'}</Button
+                        onclick={() => {
+                            trackEvent(event);
+                        }}>{isEnterprise ? 'Contact us' : 'Start building'}</Button
                     >
                 </div>
             {/each}

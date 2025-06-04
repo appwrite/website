@@ -45,7 +45,7 @@
                     href={PUBLIC_APPWRITE_DASHBOARD}
                     class="w-full! lg:w-fit!"
                     onclick={() => {
-                        trackEvent(`hero-start-building-click`);
+                        trackEvent(`main-get_started_btn_hero-click`);
                     }}>Start building for free</Button
                 >
                 <AppwriteIn100Seconds />
