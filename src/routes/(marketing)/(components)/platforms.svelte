@@ -18,6 +18,7 @@
     import GradientText from '$lib/components/fancy/gradient-text.svelte';
     import Noise from '$lib/components/fancy/noise.svelte';
     import { Tooltip } from 'bits-ui';
+    import { trackEvent } from '$lib/actions/analytics';
 
     const platforms = [
         {
@@ -119,7 +120,14 @@
                                         )}
                                         aria-hidden={i < platforms.length - 1}
                                     >
-                                        <a href={platform.href} class="contents">
+                                        <a
+                                            href={platform.href}
+                                            class="contents"
+                                            onclick={() =>
+                                                trackEvent(
+                                                    `technologies-${platform.name.replace(' ', '-').toLowerCase()}-click`
+                                                )}
+                                        >
                                             <img
                                                 src={platform.icon}
                                                 alt={platform.name}

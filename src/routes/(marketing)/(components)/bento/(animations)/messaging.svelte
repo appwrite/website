@@ -8,6 +8,7 @@
     import Messages from '../../../(assets)/icons/messages.svg';
     import Settings from '../../../(assets)/icons/settings.svg';
     import GridPaper from '../../grid-paper.svelte';
+    import { trackEvent } from '$lib/actions/analytics';
 
     let container: HTMLElement;
 
@@ -52,6 +53,9 @@
 <a
     href="/products/messaging"
     class="border-smooth group col-span-12 flex flex-col rounded-2xl border bg-white/2 p-2 transition-shadow duration-300 hover:shadow-[0px_0px_0px_4px_var(--color-offset)] focus:shadow-[0px_0px_0px_4px_var(--color-offset)] md:col-span-6 lg:col-span-4"
+    onclick={() => {
+        trackEvent(`bento-messaging-click`);
+    }}
     bind:this={container}
 >
     <div class="space-y-3 px-3 pt-2 pb-4">

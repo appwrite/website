@@ -1,5 +1,6 @@
 <script lang="ts">
     import { PUBLIC_APPWRITE_DASHBOARD } from '$env/static/public';
+    import { trackEvent } from '$lib/actions/analytics';
     import AppwriteIn100Seconds from '$lib/components/AppwriteIn100Seconds.svelte';
     import GradientText from '$lib/components/fancy/gradient-text.svelte';
     import { Button } from '$lib/components/ui';
@@ -40,8 +41,12 @@
             </p>
 
             <div class="mt-4 flex flex-col gap-2 lg:flex-row">
-                <Button href={PUBLIC_APPWRITE_DASHBOARD} class="w-full! lg:w-fit!"
-                    >Start building for free</Button
+                <Button
+                    href={PUBLIC_APPWRITE_DASHBOARD}
+                    class="w-full! lg:w-fit!"
+                    onclick={() => {
+                        trackEvent(`hero-start-building-click`);
+                    }}>Start building for free</Button
                 >
                 <AppwriteIn100Seconds />
             </div>

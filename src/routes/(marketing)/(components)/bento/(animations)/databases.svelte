@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { trackEvent } from '$lib/actions/analytics';
     import { classNames } from '$lib/utils/classnames';
     import { isMobile } from '$lib/utils/is-mobile';
     import GridPaper from '../../grid-paper.svelte';
@@ -142,6 +143,9 @@
 <a
     href="/docs/products/databases"
     class="border-smooth col-span-12 flex flex-col rounded-2xl border bg-white/2 p-2 transition-shadow duration-300 hover:shadow-[0px_0px_0px_4px_var(--color-offset)] focus:shadow-[0px_0px_0px_4px_var(--color-offset)] md:col-span-6"
+    onclick={() => {
+        trackEvent(`bento-databases-click`);
+    }}
     bind:this={container}
 >
     <div class="space-y-3 px-3 pt-2 pb-4">
