@@ -7,7 +7,7 @@ step: 3
 Before you can use Appwrite, you need to create the Appwrite `Client` and set the project ID and endpoint.
 The client is then used to create services like `Databases` and `Account`, so they all point to the same Appwrite project.
 
-Create a function to build services you need in a file like `src/lib/server/appwrite.js` and **exporting the instances**.
+Create a function to build services you need in a file like `server/lib/appwrite.js` and **exporting the instances**.
 
 As part of the function, set the current user's session if they are logged in. This is done by accessing the session cookie from the request and calling the `setSession(session)` with the cookie value.
 
@@ -25,9 +25,9 @@ export const SESSION_COOKIE = "my-custom-session";
 
 export function createAdminClient() {
   const client = new Client()
-    .setEndpoint(process.env.APPWRITE_ENDPOINT!)
-    .setProject(process.env.APPWRITE_PROJECT!)
-    .setKey(process.env.APPWRITE_KEY!);
+    .setEndpoint(process.env.PUBLIC_APPWRITE_ENDPOINT)
+    .setProject(process.env.PUBLIC_APPWRITE_PROJECT)
+    .setKey(process.env.APPWRITE_KEY);
 
   return {
     get account() {

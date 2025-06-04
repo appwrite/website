@@ -5,30 +5,53 @@ description: Add authentication to a Nuxt project using Appwrite.
 step: 6
 ---
 
-Now the end-user is able to sign up, we can create the account page. This page will display basic information about the user, and allow the user to log out. Create a new file in the `pages` directory called `account.vue` and add the following code:
+Now the end-user is able to sign up, we can create the account page. This page will display basic information about the user, and allow the user to log out.
+
+To create the account page, we will first need to fetch the user data. We can do this by creating a new API endpoint that retrieves the user information. Create a new `user.get.js` file in the `server/routes/api` directory and add the following code:
+
+```js
+// server/routes/api/user.get.js
+export default defineEventHandler(async (event) => {
+    const user = event.context.user;
+
+    if (!user) {
+        return false;
+    }
+
+    return user;
+})
+```
+
+Create a new file in the `pages` directory called `account.vue` and add the following code:
 
 ```vue
 <!-- pages/account.vue -->
 <script setup>
-const { context } = useEvent();
-const { user } = context;
+// Fetch user data from your API endpoint
+const { data: user } = await useFetch('/api/user')
+
+if (user.value === false) {
+  await navigateTo('/signup')
+}
 </script>
 
 <template>
-	<ul>
-		<li>
-			<strong>Email:</strong> {{ user.email }}
-		</li>
-		<li>
-			<strong>Name:</strong> {{ user.name }}
-		</li>
-		<li>
-			<strong>ID: </strong> {{ user.$id }}
-		</li>
-	</ul>
-	<form method="post" action="/api/signout">
-		<button type="submit">Log out</button>
-	</form>
+  <div v-if="user">
+    <ul>
+      <li>
+        <strong>Email:</strong> {{ user.email }}
+      </li>
+      <li>
+        <strong>Name:</strong> {{ user.name }}
+      </li>
+      <li>
+        <strong>ID: </strong> {{ user.$id }}
+      </li>
+    </ul>
+    <form method="post" action="/api/signout">
+      <button type="submit">Log out</button>
+    </form>
+  </div>
 </template>
 ```
 
