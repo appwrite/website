@@ -56,8 +56,7 @@ const securityheaders: Handle = async ({ event, resolve }) => {
             'https://js.zi-scripts.com',
             'https://ws.zoominfo.com',
             'https://*.cookieyes.com',
-            'https://cdn-cookieyes.com/client_data/7d0de7a43cc518960906cf03/script.js',
-            'https://cdn-cookieyes.com/client_data/7d0de7a43cc518960906cf03/banner.js'
+            'https://cdn-cookieyes.com'
         ]),
         'style-src': "'self' 'unsafe-inline'",
         'img-src': "'self' data: https:",
@@ -82,8 +81,7 @@ const securityheaders: Handle = async ({ event, resolve }) => {
             'https://hemsync.clickagy.com',
             'https://ws.zoominfo.com ',
             'https://*.cookieyes.com',
-            'https://cdn-cookieyes.com/client_data/7d0de7a43cc518960906cf03/script.js',
-            'https://cdn-cookieyes.com/client_data/7d0de7a43cc518960906cf03/banner.js'
+            'https://cdn-cookieyes.com'
         ]),
         'frame-src': join([
             "'self'",
@@ -91,7 +89,8 @@ const securityheaders: Handle = async ({ event, resolve }) => {
             'https://status.appwrite.online',
             'https://www.youtube-nocookie.com',
             'https://player.vimeo.com',
-            'https://hemsync.clickagy.com'
+            'https://hemsync.clickagy.com',
+            'https://cdn-cookieyes.com'
         ])
     };
 
