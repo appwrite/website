@@ -627,13 +627,13 @@
                                                 <div class="flex gap-4">
                                                     <div class="web-check-bullet mt-1"></div>
                                                     <p class="text-description">
-                                                        Appwrite Cloud discount on a paid plan
+                                                        Cloud credits and discounts on a paid plan
                                                     </p>
                                                 </div>
                                                 <div class="flex gap-4">
                                                     <div class="web-check-bullet mt-1"></div>
                                                     <p class="text-description">
-                                                        Priority email support as part of Scale
+                                                        Priority email support
                                                     </p>
                                                 </div>
                                             </div>
