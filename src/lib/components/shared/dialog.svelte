@@ -27,14 +27,14 @@
         {@render children()}
     </div>
 {:else}
-    <div
+    <button
         class="contents cursor-pointer"
-        on:click={() => {
+        onclick={() => {
             if (browser && window) window.open(url, '_blank');
         }}
     >
         {@render children()}
-    </div>
+    </button>
 {/if}
 
 {#if $open}

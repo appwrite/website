@@ -1,20 +1,22 @@
 <script lang="ts">
+    import type { SvelteHTMLElements } from 'svelte/elements';
     import { classNames } from '$lib/utils/classnames';
 
-    interface $$Props {
+    type Props = {
         invert?: boolean;
         opacity?: number;
         grainSize?: number;
         animate?: boolean;
-        class?: string;
-    }
+    } & SvelteHTMLElements['svg'];
 
-    let className: string = '';
-    export let invert: boolean = false;
-    export let opacity: number = 1;
-    export let grainSize: number = 2.5;
-    export let animate: boolean = false;
-    export { className as class };
+    const {
+        invert = false,
+        opacity = 1,
+        grainSize = 2.5,
+        animate = false,
+        class: className = '',
+        ...rest
+    }: Props = $props();
 
     const baseFrequency = grainSize! / 1;
 </script>
@@ -23,9 +25,10 @@
     width="100%"
     height="100%"
     xmlns="http://www.w3.org/2000/svg"
-    class={classNames('pointer-events-none absolute inset-0 rounded-[inherit]', className)}
+    class={classNames('pointer-events-none absolute inset-0', className)}
     style:opacity
     style:filter={invert ? 'invert(1)' : 'none'}
+    {...rest}
 >
     <filter id="noise">
         <feTurbulence
