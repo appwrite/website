@@ -7,7 +7,7 @@ step: 6
 
 Now the end-user is able to sign up, we can create the account page. This page will display basic information about the user, and allow the user to log out.
 
-To create the account page, we will first need to fetch the user data. We can do this by creating a new API endpoint that retrieves the user information. Create a new `user.get.js` file in the `server/routes/api` directory and add the following code:
+Before creating the account page, the route should fetch the user data. Create a new `user.get.js` file in the `server/routes/api` directory and add the following code:
 
 ```js
 // server/routes/api/user.get.js
