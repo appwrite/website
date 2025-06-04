@@ -16,4 +16,4 @@ For the last step, we must remove the welcome page and enable the pages we have 
 </template>
 ```
 
-Replacing `<NuxtWelcome />` with `<NuxtPage />` will allow the user to navigate to the pages we have created so far, such as the sign-up and account pages, instead of the default Nuxt welcome page.
+Replace `<NuxtWelcome />` with `<NuxtPage />` to allow the user to navigate to the pages created so far, such as the sign-up and account pages, instead of the default Nuxt welcome page.
