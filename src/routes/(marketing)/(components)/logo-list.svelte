@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { browser } from '$app/environment';
     import { classNames } from '$lib/utils/classnames';
     import AnimatedLogo from './animated-logo.svelte';
 

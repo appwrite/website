@@ -36,6 +36,12 @@
     });
 </script>
 
-<div bind:this={element} class={classNames('will-change-transform', className)}>
+<div
+    bind:this={element}
+    style:transform="translateY(10px)"
+    style:opacity="0"
+    style:filter="blur(5px)"
+    class={classNames('transition-opacity will-change-transform', className)}
+>
     {@render children()}
 </div>
