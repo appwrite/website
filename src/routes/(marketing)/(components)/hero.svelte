@@ -37,7 +37,7 @@
 
             <p class="text-description text-secondary font-medium">
                 Appwrite is an open-source, all-in-one development platform. Use built-in backend
-                APIs and web hosting, all from a single platform.
+                infrastructure and web hosting, all from a single platform.
             </p>
 
             <div class="mt-4 flex flex-col gap-2 lg:flex-row">
