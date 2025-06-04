@@ -116,12 +116,12 @@
                                                 'lg:border-l': i === 0
                                             }
                                         )}
-                                        aria-hidden={i < platforms.length - 1}
                                     >
                                         <img
                                             src={platform.icon}
                                             alt={platform.name}
                                             class="h-8 w-auto grayscale transition-all duration-500 group-hover:grayscale-0"
+                                            aria-hidden={i < platforms.length - 1}
                                         />
 
                                         <div
@@ -130,6 +130,7 @@
                                                 'bg-gradient-to-tl from-transparent to-transparent',
                                                 'hover:from-(--primary-color,_#fff)/4 hover:to-(--secondary-color,_transparent)/10'
                                             )}
+                                            aria-hidden={i < platforms.length - 1}
                                         >
                                             <Noise opacity={0.1} />
                                         </div>

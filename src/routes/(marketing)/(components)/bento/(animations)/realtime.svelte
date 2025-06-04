@@ -64,7 +64,11 @@
 >
     <div class="space-y-3 px-3 pt-2 pb-4">
         <div class="flex items-center gap-2">
-            <img src="/images/icons/illustrated/dark/realtime.png" alt="Realtime" class="size-7" />
+            <img
+                src="/images/icons/illustrated/dark/realtime.png"
+                alt="Realtime icon"
+                class="size-7"
+            />
             <h3 class="font-aeonik-pro text-label text-primary">Realtime</h3>
         </div>
         <p class="text-sub-body text-primary max-w-lg font-medium">

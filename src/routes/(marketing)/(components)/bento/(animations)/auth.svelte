@@ -49,7 +49,7 @@
 >
     <div class="space-y-3 px-3 pt-2 pb-4">
         <div class="flex items-center gap-2">
-            <img src="/images/icons/illustrated/dark/auth.png" alt="Auth" class="size-7" />
+            <img src="/images/icons/illustrated/dark/auth.png" alt="Auth icon" class="size-7" />
             <h3 class="font-aeonik-pro text-label text-primary">Auth</h3>
         </div>
         <p class="text-sub-body text-primary max-w-lg font-medium">

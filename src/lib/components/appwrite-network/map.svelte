@@ -114,6 +114,7 @@
                         <g
                             role="tooltip"
                             class="animate-fade-in outline-none"
+                            aria-label={`${marker.city} (${marker.code})`}
                             onmouseover={() =>
                                 handleSetActiveTooltip(
                                     marker.city,

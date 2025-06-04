@@ -94,7 +94,7 @@
         <div class="flex items-center gap-2">
             <img
                 src="/images/icons/illustrated/dark/functions.png"
-                alt="Functions"
+                alt="Functions icon"
                 class="size-7"
             />
             <h3 class="font-aeonik-pro text-label text-primary">Functions</h3>
