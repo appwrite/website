@@ -15,20 +15,12 @@ export const useMousePosition = () => {
     const action = (node: HTMLElement | SVGSVGElement) => {
         const handleMouseMove = (event: MouseEvent) => {
             const { clientX, clientY } = event;
-            const tooltipWidth = 190;
-            const rect = node.getBoundingClientRect();
-            let tooltipX = event.clientX - rect.left + 12;
-
-            if (tooltipX + tooltipWidth > window.innerWidth) {
-                tooltipX = clientX - tooltipWidth - 10;
-            }
 
             position = {
-                x: tooltipX,
-                y: event.clientY - rect.top + 12
+                x: clientX - 12, // Remove rect.left
+                y: clientY + -350 // Remove rect.top
             };
         };
-
         hover(node, () => {
             document.addEventListener('mousemove', handleMouseMove);
         });
