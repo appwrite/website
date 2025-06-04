@@ -83,7 +83,7 @@
     <div class="container flex flex-col items-center max-md:pt-4 md:flex-row">
         <GradientText>
             <span class="flex items-center pr-4 text-sm font-medium md:w-full md:max-w-[175px]"
-                >Supporting the tools you work with</span
+                >Designed for the tools you work with</span
             >
         </GradientText>
 

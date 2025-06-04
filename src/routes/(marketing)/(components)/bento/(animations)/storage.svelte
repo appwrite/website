@@ -12,7 +12,7 @@
         hover(container, () => {
             if (isMobile()) return;
 
-            animate(image, { borderRadius: '12px', filter: 'grayscale(25%)' }, { duration: 0.2 });
+            animate(image, { borderRadius: '24px', filter: 'grayscale(25%)' }, { duration: 0.2 });
 
             return () => {
                 animate(
@@ -34,7 +34,7 @@
                 animate(
                     image,
                     {
-                        borderRadius: '12px',
+                        borderRadius: '24px',
                         filter: 'grayscale(25%)'
                     },
                     { duration: 0.2 }

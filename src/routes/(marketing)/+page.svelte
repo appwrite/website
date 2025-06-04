@@ -11,7 +11,7 @@
     import Map from './(components)/map.svelte';
     import Pullquote from '$lib/components/marketing/pullquote.svelte';
     import { FooterNav, MainFooter } from '$lib/components';
-    import LogoList from '$lib/components/LogoList.svelte';
+    import LogoList from './(components)/logo-list.svelte';
 </script>
 
 <Head title="Appwrite - Backend APIs, Frontend hosting" />
