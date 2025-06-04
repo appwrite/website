@@ -1,5 +1,6 @@
 <script lang="ts">
     import { classNames } from '$lib/utils/classnames';
+    import AnimatedLogo from './animated-logo.svelte';
 
     type Props = {
         title?: string;
@@ -69,7 +70,7 @@
         {
             src: '/images/logos/trusted-by/nestle.svg',
             alt: 'Nestle',
-            width: 119,
+            width: 150,
             height: 34
         },
         {
@@ -86,36 +87,42 @@
         }
     ];
 
-    let currentIndex = $state<number>(0);
-    let itemCount = 4;
+    let baseDelay = 2.9;
 
-    const currentLogos = $derived(logos.slice(currentIndex, currentIndex + itemCount));
-
-    $effect(() => {
-        const interval = setInterval(() => {
-            currentIndex = currentIndex + itemCount >= logos.length ? 0 : currentIndex + itemCount;
-        }, 5000);
-
-        return () => {
-            clearInterval(interval);
-        };
-    });
+    const logoGroups = logos.reduce(
+        (groups, logo, index) => {
+            const groupIndex = Math.floor(index / 3);
+            if (!groups[groupIndex]) {
+                groups[groupIndex] = [];
+            }
+            groups[groupIndex].push(logo);
+            return groups;
+        },
+        [] as Array<typeof logos>
+    );
 </script>
 
-<div class={classNames('py-32', className)}>
-    <div class="container">
-        <h2 class="font-aeonik-pro text-greyscale-100 text-label mx-auto max-w-md text-center">
+<div class={classNames('py-12', className)}>
+    <div class="mx-auto max-w-4xl">
+        <h2
+            class="font-aeonik-pro text-greyscale-100 text-description mx-auto max-w-[312px] text-center text-pretty"
+        >
             {title}
         </h2>
-        <ul
-            class="grid gap-10 pt-10 text-center"
-            style:grid-template-columns={`repeat(${itemCount}, minmax(150px, 1fr))`}
-        >
-            {#each currentLogos as { src, alt, width, height }}
-                <li class="grid place-content-center">
-                    <img {src} {alt} {width} {height} />
-                </li>
+        <div class="relative grid grid-cols-2 gap-4 py-10 md:grid-cols-4">
+            {#each logoGroups as group, i}
+                <div class="relative flex aspect-[8/2] flex-col items-center justify-center">
+                    {#each group as { src, alt, width, height }, index}
+                        <AnimatedLogo
+                            repeatDelay={baseDelay * 2}
+                            delay={index * baseDelay + i * 0.1}
+                            class="absolute"
+                        >
+                            <img {src} {alt} {width} {height} />
+                        </AnimatedLogo>
+                    {/each}
+                </div>
             {/each}
-        </ul>
+        </div>
     </div>
 </div>
