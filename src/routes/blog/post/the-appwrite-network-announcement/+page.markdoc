@@ -1,1 +1,78 @@
+---
+layout: post
+title: The Appwrite Network is now available to everyone
+description: Learn these Git commands to make your workflow smoother, faster, and flexible.
+date: 2024-12-12
+cover: /images/blog/the-appwrite-network-announcement/cover1.png
+timeToRead: 10
+author: eldad-fux
+category: announcement
+featured: false
+callToAction: true
+---
 
+# The Appwrite Network is now available to everyone
+
+We’re excited to announce that the **Appwrite Network** is now available to **all Appwrite Cloud users**, including those on the Free, Pro, Scale**,** and Enterprise plans.
+
+When we first introduced the Appwrite Network, we laid the foundation for a globally distributed cloud infrastructure designed to improve application performance, availability, and regulatory compliance. Today, we’re extending that foundation to all developers, regardless of plan.
+
+## What is the Appwrite Network?
+
+The Appwrite Network is a global infrastructure of **regions** and **edge locations** that powers your applications with better speed, reliability, and data control. It enables you to:
+
+- Choose where your **project data is stored**, optimizing for both performance and compliance
+- Run workloads at **edge locations** to reduce latency and improve responsiveness
+- Serve content through a **global CDN** with **integrated DDoS protection**
+
+Whether you're building for local markets or a global user base, the Appwrite Network is designed to deliver a fast and secure experience for your applications.
+
+## Now available to all plans
+
+Previously exclusive to pro users, the Appwrite Network is now available across **free**, **pro**, and **scale** plans. That means every developer using Appwrite Cloud can now deploy in any of the currently available regions:
+
+- **Frankfurt (FRA)** – ready and operational
+- **New York City (NYC)** – ready and operational
+- **Sydney (SYD)** – ready and operational
+
+More regions are on the way, including Singapore, San Francisco, Bangalore, Amsterdam, London, and Toronto.
+
+## Key benefits of the Appwrite Network
+
+### Low latency worldwide
+
+By routing requests through the closest edge locations, the Appwrite Network significantly reduces response times and improves application performance.
+
+### Data sovereignty and regional compliance
+
+You can choose where your core data lives. This not only improves latency for your target audience but also helps ensure compliance with local data protection regulations.
+
+### Global CDN with integrated security
+
+All Appwrite Cloud projects are served via a built-in global CDN, designed to deliver your content quickly and reliably. Integrated DDoS protection helps detect and mitigate threats without sacrificing performance.
+
+### Optional enterprise-grade WAF
+
+Enterprise customers can also take advantage of Appwrite’s Web Application Firewall (WAF), offering real-time HTTP/HTTPS inspection and customizable rulesets to protect against application-layer attacks.
+
+## Understanding regions, edges, and points of presence
+
+- **Regions** are where your application's core services live, including databases, functions, auth, and storage.
+- **Edges** handle compute and request processing closer to your users, ensuring minimal latency and fast interaction.
+- **Points of presence (PoPs)** support our CDN, serving cached content from strategic locations around the world.
+
+This layered approach ensures your application is performant, secure, and accessible across the globe.
+
+## What's coming next
+
+We are continuing to invest in building out the Appwrite Network. In the coming months, you can expect new operational regions in:
+
+- **Singapore** (Q4 2025)
+- **San Francisco** (Q4 2025)
+- **Bangalore, Amsterdam, London, and Toronto** (timeline to be announced)
+
+As the network grows, so will your ability to build fast, reliable, and compliant applications no matter where your users are located.
+
+To learn more about how to use the Appwrite Network in your projects, visit the [Appwrite documentation](https://appwrite.io/docs).
+
+Thank you for being part of the Appwrite community. We're just getting started.
