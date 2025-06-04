@@ -235,8 +235,8 @@
                             <div class="flex flex-col gap-2 text-center">
                                 <h2 class="text-label text-primary">Complete platform</h2>
                                 <p class="text-body font-medium">
-                                    Get discounted access to Appwrite’s paid plans and develop, host, 
-                                    and scale your entire application with Appwrite.
+                                    Get discounted access to Appwrite’s paid plans and develop,
+                                    host, and scale your entire application with Appwrite.
                                 </p>
                             </div>
                         </li>
@@ -250,8 +250,8 @@
                             <div class="flex flex-col gap-2 text-center">
                                 <h2 class="text-label text-primary">Cloud credits</h2>
                                 <p class="text-body font-medium">
-                                    Save on development and cloud costs and reduce risk at an
-                                    early stage.
+                                    Save on development and cloud costs and reduce risk at an early
+                                    stage.
                                 </p>
                             </div>
                         </li>
@@ -265,8 +265,8 @@
                             <div class="flex flex-col gap-2 text-center">
                                 <h2 class="text-label text-primary">Priority support</h2>
                                 <p class="text-body font-medium">
-                                    Get community support and priority support from the
-                                    Appwrite team.
+                                    Get community support and priority support from the Appwrite
+                                    team.
                                 </p>
                             </div>
                         </li>
