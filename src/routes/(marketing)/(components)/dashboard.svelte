@@ -1,22 +1,22 @@
 <script lang="ts">
     import { classNames } from '$lib/utils/classnames';
-    import { animate, stagger } from 'motion';
+    // import { animate, stagger } from 'motion';
 
-    $effect(() => {
-        animate('.header', { opacity: [0, 1] });
-        animate(
-            '.nav-item',
-            { y: [4, 0], filter: ['blur(4px)', 'blur(0px)'], opacity: [0, 1] },
-            { delay: stagger(0.125) }
-        );
-        animate('.number', { filter: ['blur(4px)', 'blur(0px)'], opacity: [0, 1] });
-        animate(
-            '.eyebrow',
-            { y: [4, 0], filter: ['blur(4px)', 'blur(0px)'], opacity: [0, 1] },
-            { delay: stagger(0.125) }
-        );
-        animate('.chart', { scaleY: [0, 1] }, { duration: 0.25, delay: stagger(0.01) });
-    });
+    // $effect(() => {
+    //     animate('.header', { opacity: [0, 1] });
+    //     animate(
+    //         '.nav-item',
+    //         { y: [4, 0], filter: ['blur(4px)', 'blur(0px)'], opacity: [0, 1] },
+    //         { delay: stagger(0.125) }
+    //     );
+    //     animate('.number', { filter: ['blur(4px)', 'blur(0px)'], opacity: [0, 1] });
+    //     animate(
+    //         '.eyebrow',
+    //         { y: [4, 0], filter: ['blur(4px)', 'blur(0px)'], opacity: [0, 1] },
+    //         { delay: stagger(0.125) }
+    //     );
+    //     animate('.chart', { scaleY: [0, 1] }, { duration: 0.25, delay: stagger(0.01) });
+    // });
 </script>
 
 <div
