@@ -15,7 +15,7 @@
             name: 'Hassan Ahmed',
             title: 'Engineer at DevKind',
             avatar: '/images/testimonials/hassan.png',
-            url: '/blog/post/customer-stories-storealert'
+            url: '/blog/post/customer-story-storealert'
         },
         {
             logo: LangX,
