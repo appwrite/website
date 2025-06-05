@@ -75,7 +75,7 @@
         </p>
     </div>
     <div
-        class="relative flex h-85 items-center justify-center overflow-clip rounded-xl bg-black/24 px-8"
+        class="relative mt-auto mb-0 flex h-85 items-center justify-center overflow-clip rounded-xl bg-black/24 px-8"
     >
         <div
             class="light absolute top-14 z-10 flex h-[65px] w-[85%] items-center justify-between gap-4 rounded-[20px] bg-white/80 px-3 py-2 shadow-[-8px_4px_32px_rgba(0,0,0,0.24)] backdrop-blur-xl"
