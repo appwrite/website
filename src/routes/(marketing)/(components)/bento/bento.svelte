@@ -56,7 +56,7 @@
             All the products you need, in one platform
         </h2>
 
-        <div class="hidden justify-between gap-8 md:flex">
+        <div class="hidden justify-between gap-8 lg:flex">
             <div
                 class={classNames(
                     'bg-card border-smooth text-primary relative flex h-10 items-center gap-4 rounded-full border border-dashed p-1 text-sm',
