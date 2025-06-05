@@ -81,6 +81,7 @@
             class="light absolute top-14 z-10 flex h-[65px] w-[85%] items-center justify-between gap-4 rounded-[20px] bg-white/80 px-3 py-2 shadow-[-8px_4px_32px_rgba(0,0,0,0.24)] backdrop-blur-xl"
             style="transform: translateY(-15px); opacity: 0; filter: blur(4px);"
             bind:this={notification}
+            data-theme-ignore
         >
             <div class="flex size-8 shrink-0 items-center justify-center rounded-lg bg-black">
                 <div class="size-3 rounded-full bg-white"></div>
@@ -99,6 +100,7 @@
             class="light mt-20 flex h-full w-[300px] flex-col rounded-t-[42px] border-x border-t border-white/12 bg-white/8 mask-b-from-60% mask-b-to-100% backdrop-blur-2xl"
             style:transform="translateY(15px)"
             bind:this={device}
+            data-theme-ignore
         >
             <div class="m-2 flex-1 rounded-t-[34px] bg-[#19191C]">
                 <div class="flex items-center justify-between px-8 pt-4">
