@@ -107,7 +107,7 @@ Sentry is an open-source alternative to Raygun. An error tracking and monitoring
 
 ![Appwrite](/images/blog/10-open-source-alternatives-to-popular-software-for-startups/Appwrite.png)
 
-Appwrite is an open-source alternative to Vercel. An all-in-one cloud platform that let’s you build, deploy and host your websites and web apps. From static sites and SSR apps to databases, authentication, storage, messaging and serverless functions, you can now build, deploy, and scale your entire app stack using just Appwrite.
+Appwrite is an open-source alternative to Firebase, Vercel and Auth0. An all-in-one development platform that provides you with built-in backend infrastructure and hosting.  It includes everything from auth, databases, and storage to serverless functions and real-time APIs, so you can focus on building, not wiring things together.
 
 # Conclusion
 In conclusion, open-source products gives your startup the flexibility, control, and cost savings you need to scale and innovate.
