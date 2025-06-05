@@ -103,7 +103,7 @@
                             >{price}
 
                             {#if subtitle}
-                                <span class="text-caption text-secondary -ml-2">{subtitle}</span>
+                                <span class="text-caption text-secondary -ml-1">{subtitle}</span>
                             {/if}
                         </span>
 
