@@ -152,6 +152,11 @@
                     new: isNewUntil('28 Feb 2025'),
                     label: 'Abuse',
                     href: '/docs/advanced/platform/abuse'
+                },
+                {
+                    new: isNewUntil('31 July 2025'),
+                    label: 'Support SLA',
+                    href: '/docs/advanced/platform/support-sla'
                 }
             ]
         }
