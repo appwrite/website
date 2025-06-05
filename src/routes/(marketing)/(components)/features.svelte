@@ -54,7 +54,7 @@
     ];
 </script>
 
-<div class="light bg-[#EDEDF0] pt-20 pb-12 md:pt-40">
+<div class="light mt-4 bg-[#EDEDF0] pt-20 pb-12 md:pt-40">
     <div class="container mx-auto">
         <section class="flex flex-col items-start gap-x-20 md:flex-row">
             <h2
