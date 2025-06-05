@@ -77,6 +77,7 @@
     import { trackEvent } from '$lib/actions/analytics';
     import { classNames } from '$lib/utils/classnames';
     import { createDropdownMenu, melt } from '@melt-ui/svelte';
+    import Icon from './ui/icon';
 
     const {
         elements: { trigger, menu, item, overlay },
@@ -171,9 +172,10 @@
                         <a
                             href="/blog/category/customer-stories"
                             class="text-primary text-caption flex items-center gap-2"
-                            >See more <span
-                                class="web-icon-chevron-right transition-transform group-hover:translate-x-0.5"
-                            ></span></a
+                            >Read more customer stories" <Icon
+                                name="chevron-right"
+                                class="transition-transform group-hover:translate-x-0.5"
+                            ></Icon></a
                         >
                     </header>
 

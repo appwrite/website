@@ -14,7 +14,7 @@
     import Integrate from './(components)/integrate.svelte';
     import Steps from './(components)/steps.svelte';
     import Network from './(components)/network.svelte';
-    import Scale from '$routes/(experiments)/new-homepage/(components)/scale.svelte';
+    import Scale from '$routes/(marketing)/(components)/scale.svelte';
 
     const title = 'Sites' + TITLE_SUFFIX;
     const description =
@@ -53,11 +53,44 @@
         <Network />
         <OpenSourceAlternative platforms={['Vercel', 'Netlify', 'Sevalla']} />
         <Testimonials class="mb-20" />
-        <Scale alternateInfo theme="light" />
+        <Scale
+            testimonial={{
+                name: 'Ryan O’Conner',
+                title: 'Founder',
+                company: 'K-Collect',
+                image: '/images/testimonials/ryan-oconner-testimonial.png'
+            }}
+            theme="light"
+            stats={[
+                {
+                    number: 50,
+                    suffix: 'K+',
+                    description: 'GitHub stars'
+                },
+                {
+                    number: 300,
+                    suffix: '+',
+                    description: 'PoP locations'
+                },
+                {
+                    number: 200,
+                    suffix: 'K+',
+                    description: 'developers'
+                },
+                {
+                    number: 200,
+                    suffix: 'B+',
+                    description: 'monthly database operations'
+                }
+            ]}
+        >
+            The switch to using Appwrite brought
+            <span class="text-primary">infinite value that I'm still discovering today.</span>
+        </Scale>
     </div>
 
     <Faq />
-    <ProductCards exclude="sites" />
+    <ProductCards />
 
     <div class="relative -mt-6 max-w-screen overflow-hidden pt-20">
         <div class="container">
