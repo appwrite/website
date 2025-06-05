@@ -88,7 +88,7 @@
         >
             {#each plans as { name, price, tag: label, subtitle, description, event }}
                 {@const isEnterprise = name === 'Enterprise'}
-                <div class="flex h-full w-full grow flex-col gap-1 px-5 py-5 md:pb-0">
+                <div class="flex h-full w-full grow flex-col gap-1 px-5 py-5 md:py-0">
                     <div class="flex items-center gap-2.5">
                         <span class="text-description text-secondary font-medium">{name}</span>
                         {#if label}
