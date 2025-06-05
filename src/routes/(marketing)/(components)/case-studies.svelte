@@ -66,8 +66,8 @@
             <ToggleGroup.Item
                 value={i.toString()}
                 class={classNames(
-                    'data-[state="on"]:border-smooth align-items-center grid justify-items-center overflow-hidden rounded-2xl border border-transparent px-12 py-12 backdrop-blur-3xl transition-all duration-400 ease-in-out [grid-template-areas:"stack"] data-[state=off]:cursor-pointer max-sm:data-[state="off"]:h-[125px] max-sm:data-[state="on"]:h-[425px] md:h-[425px] md:place-content-center md:place-items-center md:items-center md:justify-center',
-                    'group/card hover:bg-black/24 data-[state="off"]:bg-black/16 data-[state="on"]:basis-full data-[state="on"]:bg-black/24 md:data-[state="off"]:basis-[15%] md:data-[state="on"]:basis-[70%]',
+                    'data-[state=on]:border-smooth align-items-center grid justify-items-center overflow-hidden rounded-2xl border border-transparent p-12 backdrop-blur-3xl transition-all duration-400 ease-in-out [grid-template-areas:"stack"] data-[state=off]:cursor-pointer max-sm:data-[state=off]:h-[125px] md:h-[375px] md:place-content-center md:place-items-center md:items-center md:justify-center',
+                    'group/card hover:bg-black/24 data-[state=off]:bg-black/16 data-[state=on]:basis-full data-[state=on]:bg-black/24 md:data-[state=off]:basis-[15%] md:data-[state=on]:basis-[70%]',
                     'outline-0 duration-300 focus:shadow-[0px_0px_0px_4px_var(--color-offset)]! data-[state=off]:hover:shadow-[0px_0px_0px_4px_var(--color-offset)]'
                 )}
             >
@@ -100,7 +100,7 @@
                     />
 
                     <span
-                        class="text-title font-aeonik-pro text-primary relative flex flex-wrap gap-2 text-left"
+                        class="text-title font-aeonik-pro text-primary relative flex flex-wrap gap-2 text-left group-[&[data-state=off]]/card:max-sm:text-nowrap"
                         class:active={value === i.toString()}
                     >
                         {study.headline}
