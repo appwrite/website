@@ -67,7 +67,7 @@
             <div class="mt-4 flex flex-col gap-2 lg:flex-row">
                 <Button
                     href={getAppwriteDashboardUrl()}
-                    class="w-full! md:w-fit!"
+                    class="w-full! lg:w-fit!"
                     onclick={() => {
                         trackEvent(`pricing-get-started-click`);
                     }}>Start building for free</Button
@@ -77,7 +77,7 @@
                         trackEvent(`pricing-view-plans-click`);
                     }}
                     href="/pricing"
-                    class="w-full! md:w-fit!"
+                    class="w-full! lg:w-fit!"
                     variant="secondary">View pricing plans</Button
                 >
             </div>
