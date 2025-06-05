@@ -99,9 +99,13 @@
                         {/if}
                     </div>
                     <div class="flex flex-1 flex-col">
-                        <span class="text-title font-aeonik-pro text-primary">{price}</span>
+                        <span class="text-title font-aeonik-pro text-primary"
+                            >{price}
 
-                        <span class="text-caption text-secondary h-[22px]">{subtitle}</span>
+                            {#if subtitle}
+                                <span class="text-caption text-secondary -ml-1">{subtitle}</span>
+                            {/if}
+                        </span>
 
                         <p class="text-caption text-secondary mt-4 mb-0 block font-medium">
                             {description}
