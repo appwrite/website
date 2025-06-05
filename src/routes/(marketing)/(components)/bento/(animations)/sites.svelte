@@ -122,7 +122,7 @@
         </p>
     </div>
     <div
-        class="relative flex h-85 flex-col items-center justify-center overflow-hidden rounded-xl bg-black/24 px-3 md:flex-1 md:px-8"
+        class="relative mt-auto mb-0 flex h-85 flex-col items-center justify-center overflow-hidden rounded-xl bg-black/24 px-3 md:flex-1 md:px-8"
     >
         <div
             class="mx-auto mt-6 hidden w-full flex-col overflow-hidden rounded-[1.25rem] bg-[#232325]/90 mask-b-from-60% mask-b-to-100% px-1 pb-1 backdrop-blur-md md:mt-12 md:flex"

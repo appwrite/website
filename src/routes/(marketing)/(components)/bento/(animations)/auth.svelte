@@ -68,7 +68,7 @@
         </p>
     </div>
     <div
-        class="relative flex h-85 items-center justify-between overflow-clip rounded-xl bg-black/24 px-8"
+        class="relative mt-auto mb-0 flex h-85 items-center justify-between overflow-clip rounded-xl bg-black/24 px-8"
     >
         <div class="flex h-full w-full items-center justify-center">
             <div
