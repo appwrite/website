@@ -67,9 +67,10 @@
             <ToggleGroup.Item
                 value={i.toString()}
                 class={classNames(
-                    'data-[state=on]:border-smooth align-items-center grid place-items-center justify-items-center overflow-hidden rounded-2xl border border-transparent p-4 backdrop-blur-3xl transition-all duration-400 ease-in-out [grid-template-areas:"stack"] data-[state=off]:cursor-pointer data-[state=on]:p-12 max-sm:data-[state=off]:h-[125px] md:min-h-[375px]',
-                    'group/card hover:bg-black/24 data-[state=off]:bg-black/16 data-[state=on]:basis-full data-[state=on]:bg-black/24 md:data-[state=off]:basis-[15%] md:data-[state=on]:basis-[70%]',
-                    'outline-0 duration-300 data-[state=off]:hover:shadow-[0px_0px_0px_4px_var(--color-offset)] data-[state=off]:focus:shadow-[0px_0px_0px_4px_var(--color-offset)]!'
+                    'align-items-center group/card grid w-full place-items-center justify-items-center overflow-hidden rounded-2xl border border-transparent p-4 backdrop-blur-3xl transition-all duration-400 ease-in-out [grid-template-areas:"stack"] hover:bg-black/24',
+                    'data-[state=off]:basis-[15%] data-[state=off]:cursor-pointer data-[state=off]:bg-black/16 data-[state=off]:hover:shadow-[0px_0px_0px_4px_var(--color-offset)] data-[state=off]:focus:shadow-[0px_0px_0px_4px_var(--color-offset)]',
+                    'data-[state=on]:border-smooth data-[state=on]:basis-full data-[state=on]:bg-black/24 data-[state=on]:p-12',
+                    'outline-0 duration-300'
                 )}
             >
                 <img
@@ -87,7 +88,7 @@
 
                 <div
                     class={classNames(
-                        'invisible absolute space-y-4 opacity-0 blur-sm transition-opacity delay-400 [grid-area:stack]',
+                        'invisible space-y-4 opacity-0 blur-sm transition-opacity delay-400 [grid-area:stack]',
                         'group-[&[data-state=on]]/card:visible group-[&[data-state=on]]/card:opacity-100 group-[&[data-state=on]]/card:blur-none'
                     )}
                 >
