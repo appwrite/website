@@ -55,7 +55,7 @@
                     description: 'PoP locations'
                 },
                 {
-                    number: 200,
+                    number: 300,
                     suffix: 'K+',
                     description: 'developers'
                 },
