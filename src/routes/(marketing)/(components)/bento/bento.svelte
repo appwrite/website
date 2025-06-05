@@ -52,7 +52,7 @@
 
 <div class="container py-20">
     <div class="mx-auto mb-16 flex max-w-5xl flex-col gap-8">
-        <h2 class="text-primary font-aeonik-pro mx-auto max-w-lg text-center text-5xl">
+        <h2 class="text-primary font-aeonik-pro mx-auto max-w-lg text-center text-4xl md:text-5xl">
             All the products you need, in one platform
         </h2>
 
