@@ -15,12 +15,15 @@
     let { selected = $bindable('js'), data = [], width = null, height = null }: Props = $props();
 
     let snippets = $derived(writable(new Set(data.map((d) => d.language))));
+    const getSnippets = () => {
+        return snippets;
+    };
 
     let content = $derived(data.find((d) => d.language === selected)?.content ?? '');
 
     let platform = $derived(data.find((d) => d.language === selected)?.platform ?? '');
 
-    snippets?.subscribe((n) => {
+    getSnippets().subscribe((n) => {
         if (selected === null && n.size > 0) {
             selected = Array.from(n)[0] as Language;
         }
@@ -33,7 +36,7 @@
     type CopyStatusType = keyof typeof CopyStatus;
     type CopyStatusValue = (typeof CopyStatus)[CopyStatusType];
 
-    let copyText: CopyStatusValue = CopyStatus.Copy;
+    let copyText = $state<CopyStatusValue>(CopyStatus.Copy);
 
     async function handleCopy() {
         await copy(content);
@@ -60,7 +63,7 @@
 </script>
 
 <section
-    class="dark web-code-snippet mx-auto lg:!max-w-[90vw]"
+    class="dark web-code-snippet mx-auto w-full lg:!max-w-[90vw]"
     aria-label="code-snippet panel"
     style={`width: ${width ? width / 16 + 'rem' : 'inherit'}; height: ${
         height ? height / 16 + 'rem' : 'inherit'
