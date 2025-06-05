@@ -56,7 +56,7 @@
 
 <div class="light bg-[#EDEDF0] pt-20 pb-12 md:pt-40">
     <div class="container mx-auto">
-        <section class="flex flex-col items-start md:flex-row">
+        <section class="flex flex-col items-start gap-20 md:flex-row">
             <h2
                 class="text-title-lg font-aeonik-pro text-primary max-w-[700px] leading-12 text-pretty"
             >
