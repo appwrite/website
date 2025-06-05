@@ -16,29 +16,30 @@
         {
             name: 'Free',
             price: '$0',
-            description: 'For personal hobby projects and students.',
+            description: 'A great fit for passion projects and small applications.',
             event: 'home-pricing-cards-free-click'
         },
         {
             name: 'Pro',
             price: '$15',
             tag: 'Popular',
-            description: 'For pro developers and teams that need to scale their products.',
-            subtitle: 'per member/month',
+            description:
+                'For production applications that need powerful functionality and resources to scale.',
+            subtitle: '/month',
             event: 'home-pricing-cards-pro-click'
         },
         {
             name: 'Scale',
             price: '$599',
-            description: 'For teams and products that need more control and support.',
-            subtitle: 'per organization/month',
+            description:
+                'For teams that handle more complex and large projects and need more control and support.',
+            subtitle: '/month',
             event: 'home-pricing-cards-scale-click'
         },
         {
             name: 'Enterprise',
             price: 'Custom',
             description: 'For enterprises that need more power and premium support.',
-            subtitle: 'per organization/month',
             event: 'home-pricing-cards-enterprise-click'
         }
     ];
