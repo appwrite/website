@@ -20,7 +20,7 @@
         {
             logo: LangX,
             headline: 'LangX handled millions of requests using Appwrite',
-            blurb: 'With its comprehensive suite of services Appwrite emerged as an ideal choice for my needs.',
+            blurb: 'With its comprehensive suite of services, Appwrite emerged as an ideal choice for my needs.',
             name: 'Xue',
             title: 'Founder at LangX',
             avatar: '/images/testimonials/xue.webp',
@@ -28,10 +28,10 @@
         },
         {
             logo: KCollect,
-            headline: 'K-collect reduced infrastructure costs by 700%',
+            headline: 'K-Collect reduced infrastructure costs by 700%',
             blurb: 'A major impact that Appwrite made was the amount of time and stress saved.',
-            name: "Ryan O'connor",
-            title: 'Founder at K-collect',
+            name: "Ryan O'Connor",
+            title: 'Founder at K-Collect',
             avatar: '/images/testimonials/ryan.png',
             url: '/blog/post/customer-stories-kcollect'
         }
