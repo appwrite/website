@@ -4,7 +4,7 @@ import { join } from "path";
 
 export const GET: RequestHandler = () => {
   try {
-    const contentPath = join(process.cwd(), "src/routes/llms.txt/content.txt");
+    const contentPath = join(process.cwd(), "src/routes/docs/llms.txt/content.txt");
     const llmsContent = readFileSync(contentPath, "utf-8");
 
     return new Response(llmsContent, {
