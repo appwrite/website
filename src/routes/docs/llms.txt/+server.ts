@@ -1,10 +1,13 @@
-import type { RequestHandler } from '@sveltejs/kit';
 import { readFileSync } from 'fs';
-import { join } from 'path';
+import { fileURLToPath } from 'url';
+import { dirname, join } from 'path';
+import type { RequestHandler } from '@sveltejs/kit';
+
+const BASE_DIR = dirname(fileURLToPath(import.meta.url));
 
 export const GET: RequestHandler = () => {
     try {
-        const contentPath = join(process.cwd(), 'src/routes/docs/llms.txt/content.txt');
+        const contentPath = join(BASE_DIR, 'content.txt');
         const llmsContent = readFileSync(contentPath, 'utf-8');
 
         return new Response(llmsContent, {
