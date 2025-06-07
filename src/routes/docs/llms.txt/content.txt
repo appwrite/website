@@ -180,8 +180,6 @@ These enums are available for authenticator type, name, OAuth provider, password
 
 Client SDKsServer SDKs
 
-Client SDKsServer SDKs
-
 You can discover the available enums in each SDK at the source.
 
 |  | Platform | Enums |  |
