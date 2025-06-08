@@ -1,0 +1,73 @@
+---
+layout: tutorial
+title: Set up Appwrite
+description: Learn how to set up Appwrite in your Next.js project
+step: 3
+---
+
+# Create project {% #create-project %}
+
+Head to the [Appwrite Console](https://cloud.appwrite.io/console). If this is your first time using Appwrite, create an account or log in to your existing account. Create a new project named `expanse-tracker`.
+
+{% only_dark %}
+![Create project screen](/images/docs/quick-starts/dark/create-project.png)
+{% /only_dark %}
+{% only_light %}
+![Create project screen](/images/docs/quick-starts/create-project.png)
+{% /only_light %}
+
+Then, under **Add a platform**, add a **Web app**. The **Hostname** should be localhost. 
+
+{% only_dark %}
+![Add a platform](/images/docs/quick-starts/dark/add-platform.png)
+{% /only_dark %}
+{% only_light %}
+![Add a platform](/images/docs/quick-starts/add-platform.png)
+{% /only_light %}
+
+You can skip optional steps.
+
+# Initialize Appwrite SDK {% #init-sdk %}
+
+To use Appwrite in our Next.js app, we'll need to find our project ID. Find your project's ID in the **Settings** page. 
+
+{% only_dark %}
+![Project settings screen](/images/docs/quick-starts/dark/project-id.png)
+{% /only_dark %}
+{% only_light %}
+![Project settings screen](/images/docs/quick-starts/project-id.png)
+{% /only_light %}
+
+First create a file that will hold env variables. Create a new file `.env.local` in the root of your project. Replace `<YOUR_PROJECT_ID>` with your project ID
+
+```js
+// .env.local
+
+NEXT_PUBLIC_APPWRITE_ENDPOINT = https://cloud.appwrite.io/v1
+NEXT_PUBLIC_APPWRITE_PROJECT = <YOUR_PROJECT_ID>
+```
+
+Create a new file `src/config/appwrite.js` to hold our Appwrite related code.
+Only one instance of the `Client()` class should be created per app.
+Add the following code to it.
+
+```js
+// /src/config/appwrite.js
+
+import { Client, Databases, Account } from "appwrite";
+
+export const config = {
+  APPWRITE_ENDPOINT: process.env.NEXT_PUBLIC_APPWRITE_ENDPOINT,
+  APPWRITE_PROJECT: process.env.NEXT_PUBLIC_APPWRITE_PROJECT,
+};
+
+const client = new Client();
+client
+  .setEndpoint(config.APPWRITE_ENDPOINT)
+  .setProject(config.APPWRITE_PROJECT);
+
+export const account = new Account(client);
+export const database = new Databases(client);
+```
+
+Here we are using the Appwrite endpoints and project ID from the `.env.local` file to initialize the Appwrite SDK.
