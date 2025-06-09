@@ -1,9 +1,9 @@
 ---
 layout: post
-title: How Pink Design helped us improve web accessibility in our products.
-description:
+title: How Pink Design helped us improve web accessibility
+description: Appwrite’s open-source UI library drastically improved our web accessibility.
 date: 2022-11-14
-cover: /images/pages/homepage/dashboard.png
+cover: /images/blog/accessibility-in-pink-design/cover.png
 timeToRead: 3
 author: arman
 category: accessibility, design
@@ -41,7 +41,7 @@ People with fine motor control restrictions or disabled hands or arms will be un
 
 It is possible to enhance accessibility through development as well. In collaboration with our engineering team, we decided to incorporate the following into Pink Design:
 
-![Alt text](/images/pages/homepage/dashboard.png "a title")
+![appwrite dashboard](/images/blog/accessibility-in-pink-design/cover.png)
 
 # Define font size in REM
 
@@ -51,8 +51,8 @@ Browsers have a default font size that users can change via the browser setting.
 import { Client, Account } from "appwrite";
 
 const client = new Client()
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('5df5acd0d48c2')                 // Your project ID
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('<PROJECT_ID>')                 // Your project ID
 
 const account = new Account(client);
 

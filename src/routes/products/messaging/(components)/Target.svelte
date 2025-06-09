@@ -2,7 +2,6 @@
     import { clamp } from '$lib/utils/clamp';
     import { withPrevious } from '$lib/utils/withPrevious';
     import { withRaf } from '$lib/utils/withRaf';
-    import { get } from 'svelte/store';
     import Accordion from './Accordion/Accordion.svelte';
     import AccordionItem from './Accordion/AccordionItem.svelte';
     import Checkbox from './Checkbox.svelte';
@@ -11,6 +10,7 @@
     import { onMount } from 'svelte';
     import { inView } from 'motion';
     import { sleep } from '$lib/animations';
+    import { Button } from '$lib/components/ui';
 
     /* Variables & Contstants */
     const width = 2000;
@@ -68,7 +68,12 @@
                     circlePos: [500, 100],
                     textPos: [250, 80]
                 },
-                { checked: false, type: 'SMS', value: '+1 123 456 2890', circlePos: [1520, 700] }
+                {
+                    checked: false,
+                    type: 'SMS',
+                    value: '+1 123 456 2890',
+                    circlePos: [1520, 700]
+                }
             ]
         },
         {
@@ -190,7 +195,7 @@
 <Step title="Step 2: Target">
     <div class="wrapper" bind:this={wrapper}>
         <svg
-            class="is-not-mobile"
+            class="web-is-not-mobile"
             viewBox="0 0 {width} {height}"
             xmlns="http://www.w3.org/2000/svg"
         >
@@ -230,7 +235,7 @@
                 />
 
                 <foreignObject x={textPos[0]} y={textPos[1]} width="360" height="64">
-                    <span class="web-eyebrow web-u-color-text-primary" data-active={$selected[i]}>
+                    <span class="text-micro text-primary uppercase" data-active={$selected[i]}>
                         {device.value}
                     </span>
                 </foreignObject>
@@ -276,7 +281,7 @@
         </svg>
 
         <div class="users-modal">
-            <h3 class="web-label web-u-color-text-primary">Select subscribers</h3>
+            <h3 class="text-label text-primary">Select subscribers</h3>
             <Accordion>
                 <ul class="accordion-items">
                     {#each users as user, i}
@@ -315,10 +320,10 @@
                                             return next;
                                         }}
                                     />
-                                    <span class="web-sub-body-500 web-u-color-text-primary">
+                                    <span class="text-sub-body text-primary font-medium">
                                         {user.name}
                                     </span>
-                                    <span class="web-caption-400">
+                                    <span class="text-caption">
                                         &nbsp;({selectedDevices}/{user.devices.length} targets)
                                     </span>
                                 </div>
@@ -335,7 +340,7 @@
                                             />
                                             <label for="device-{i}-{j}">
                                                 <span class="type">{device.type}</span>
-                                                <span class="web-caption-400">{device.value}</span>
+                                                <span class="text-caption">{device.value}</span>
                                             </label>
                                         </li>
                                     {/each}
@@ -345,7 +350,7 @@
                     {/each}
                 </ul>
             </Accordion>
-            <div class="u-flex u-margin-block-start-20">
+            <div class="mt-5 flex">
                 <span class="web-u-color-text-tertiary" style:font-size="0.75rem">
                     Total results: {users.flatMap((u) => u.devices).length}
                 </span>
@@ -353,20 +358,20 @@
 
             <hr />
 
-            <div class="u-flex u-cross-center u-main-end u-gap-16">
+            <div class="flex items-center justify-end gap-4">
                 <span style="font-size: 14px; color: #6C6C71;"
                     >{users.filter((u) => !!u.devices.some((d) => d.checked)).length} Users selected</span
                 >
-                <button class="web-button">Add</button>
+                <Button>Add</Button>
             </div>
         </div>
     </div>
 
-    <div class="u-flex u-flex-vertical u-cross-center u-gap-24 u-margin-block-start-16 target-text">
-        <h3 class="web-title web-u-color-text-primary u-text-center">
+    <div class="target-text mt-4 flex flex-col items-center gap-6">
+        <h3 class="text-title font-aeonik-pro text-primary text-center">
             Target and group your subscribers
         </h3>
-        <p class="web-description u-text-center" style:max-inline-size="580px">
+        <p class="text-description text-center" style:max-inline-size="580px">
             Segment your users based on topics using list subscriptions to send focused messages.
         </p>
     </div>

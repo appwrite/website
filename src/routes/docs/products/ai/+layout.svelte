@@ -109,12 +109,12 @@
                     href: '/docs/products/ai/integrations/anyscale'
                 },
                 {
-                  label: 'LMNT',
-                  href: '/docs/products/ai/integrations/lmnt'
+                    label: 'LMNT',
+                    href: '/docs/products/ai/integrations/lmnt'
                 },
                 {
-                  label: 'Together AI',
-                  href: '/docs/products/ai/integrations/togetherai'
+                    label: 'Together AI',
+                    href: '/docs/products/ai/integrations/togetherai'
                 },
                 {
                     label: 'fal.ai',

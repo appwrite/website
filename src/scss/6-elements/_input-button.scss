@@ -61,10 +61,10 @@
   background-color: hsl(var(--p-input-bg-color));
   border: solid pxToRem(1) hsl(var(--p-input-border-color));
 
-  display:flex; align-items:center; gap:pxToRem(4);
-  padding-inline:pxToRem(12); padding-block:pxToRem(8);
-  border-radius:pxToRem(8); font-size:pxToRem(14); line-height:1;
-  white-space:nowrap;
+  display:flex !important; align-items:center !important; gap:pxToRem(4) !important;
+  padding-inline:pxToRem(12) !important; padding-block:pxToRem(8) !important;
+  border-radius:pxToRem(8) !important; font-size:pxToRem(14) !important; line-height:1 !important;
+  white-space:nowrap !important;
 
   &::placeholder      { color:hsl(var(--p-input-placeholder-text-color)); }
 
@@ -75,19 +75,19 @@
   &:is(:focus) {
     --p-input-bg-color: var(--p-input-bg-color-focus);
     --p-input-border-color: var(--p-input-border-color-focus);
-    box-shadow: 0 0 0 pxToRem(4) hsl(var(--p-input-focus-box-shadow-color));
+    box-shadow: 0 0 0 pxToRem(4) hsl(var(--p-input-focus-box-shadow-color)) !important;
   }
   &:is(:active) {
     --p-input-bg-color: var(--p-input-bg-color-active);
     --p-input-border-color: var(--p-input-border-color-active);
-    box-shadow: 0 0 0 pxToRem(4) hsl(var(--p-input-focus-box-shadow-color));
-    border-width:pxToRem(1);
+    box-shadow: 0 0 0 pxToRem(4) hsl(var(--p-input-focus-box-shadow-color)) !important;
+    border-width:pxToRem(1) !important;
   }
   &:is(#{$disabled}) {
     --p-input-text-color: var(--p-input-text-color-disabled);
     --p-input-bg-color: var(--p-input-bg-color-disabled);
     --p-input-border-color: var(--p-input-border-color-disabled);
-    opacity: 0.4;
+    opacity: 0.4 !important; 
   }
 
   &-search-wrapper {

@@ -55,7 +55,7 @@ Install the Deno Appwrite SDK by importing it `deno.land/x` at the top of your f
 
 ```
 // import all as sdk
-import * as sdk from "https://deno.land/x/appwrite@10.0.1/mod.ts";
+import * as sdk from "https://deno.land/x/appwrite@15.0.0/mod.ts";
 
 // import only what you need
 import { Client, ... other imports } from "https://deno.land/x/appwrite/mod.ts";
@@ -73,7 +73,7 @@ Find your project ID in the **Settings** page. Also, click on the **View API Key
 ![Project settings screen](/images/docs/quick-starts/project-id.png)
 {% /only_light %}
 
-Open `mod.ts` in your IDE and initialize the Appwrite Client. Replace `<YOUR_PROJECT_ID>` with your project ID and `<YOUR_API_KEY>` with your API key.
+Open `mod.ts` in your IDE and initialize the Appwrite Client. Replace `<PROJECT_ID>` with your project ID and `<YOUR_API_KEY>` with your API key.
 
 ```ts
 import { Client, ID, Databases, Models } from "https://deno.land/x/appwrite/mod.ts";
@@ -81,8 +81,8 @@ import { Client, ID, Databases, Models } from "https://deno.land/x/appwrite/mod.
 const client: Client = new Client();
 
 client
-    .setEndpoint("https://cloud.appwrite.io/v1")
-    .setProject("<YOUR_PROJECT_ID>")
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
     .setKey("<YOUR_API_KEY>");
 ```
 

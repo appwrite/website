@@ -33,7 +33,7 @@ Then, in the `My books` collection, copy the collection ID, and replace `<COLLEC
 import { Client, Databases, ID } from "appwrite";
 
 const client = new Client()
-    .setEndpoint('https://cloud.appwrite.io/v1')
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
     .setProject('<PROJECT_ID>');
 
 const databases = new Databases(client);
@@ -56,7 +56,7 @@ import 'package:appwrite/appwrite.dart';
 
 void main() async {
     final client = Client()
-        .setEndpoint('https://cloud.appwrite.io/v1')
+        .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
         .setProject('<PROJECT_ID>');
 
     final databases = Databases(client);
@@ -79,7 +79,7 @@ import AppwriteModels
 
 func main() async throws {
     let client = Client()
-        .setEndpoint("https://cloud.appwrite.io/v1")
+        .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
         .setProject("<PROJECT_ID>")
 
     let databases = Databases(client)
@@ -102,7 +102,7 @@ import io.appwrite.services.Databases
 
 suspend fun main() {
     val client = Client(applicationContext)
-        .setEndpoint("https://cloud.appwrite.io/v1")
+        .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
         .setProject("<PROJECT_ID>")
 
     val databases = Databases(client)
@@ -146,7 +146,7 @@ Like the previous step, replace `<PROJECT_ID>`, `<DATABASE_ID>`, and`<COLLECTION
 import { Client, Databases, Query } from "appwrite";
 
 const client = new Client()
-    .setEndpoint("https://cloud.appwrite.io/v1")
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
     .setProject("<PROJECT_ID>")
 
 const databases = new Databases(client);
@@ -170,7 +170,7 @@ import 'package:appwrite/appwrite.dart';
 
 void main() async {
     final client = Client()
-        .setEndpoint("https://cloud.appwrite.io/v1")
+        .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
         .setProject("<PROJECT_ID>")
 
     final databases = Databases(client);
@@ -194,7 +194,7 @@ import AppwriteModels
 
 func main() async throws{
     let client = Client()
-        .setEndpoint("https://cloud.appwrite.io/v1")
+        .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
         .setProject("<PROJECT_ID>")
 
     let databases = Databases(client)
@@ -204,7 +204,7 @@ func main() async throws{
             databaseId: "<DATABASE_ID>",
             collectionId: "<COLLECTION_ID>",
             queries: [
-                Query.equal("title", "Hamlet")
+                Query.equal("title", value: "Hamlet")
             ]
         )
     } catch {
@@ -219,7 +219,7 @@ import io.appwrite.services.Databases
 
 suspend fun main() {
     val client = Client(applicationContext)
-        .setEndpoint("https://cloud.appwrite.io/v1")
+        .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
         .setProject("<PROJECT_ID>")
 
     val databases = Databases(client)
@@ -237,5 +237,6 @@ suspend fun main() {
     }
 }
 ```
+
 {% /multicode %}
 {% /section %}

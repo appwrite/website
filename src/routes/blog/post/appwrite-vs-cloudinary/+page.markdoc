@@ -1,0 +1,87 @@
+---
+layout: post
+title: "Appwrite Storage: open-source alternative to Cloudinary"
+description: Get a comprehensive comparison between Appwrite and Cloudinary to decide which platform fits your media and files needs best.
+date: 2024-09-03
+cover: /images/blog/appwrite-competitor-comparison/cover.png
+timeToRead: 5
+author: aditya-oberai
+category: product
+unlisted: true
+---
+Efficient and versatile storage solutions are essential in application development. While Cloudinary is a popular choice for media storage and management, many developers are searching for an open-source alternative that offers greater flexibility.
+
+Appwrite's Storage product provides an open-source alternative to Cloudinary. In this article, we’ll give you a detailed comparison of Appwrite and Cloudinary features so you can understand how each provider will fit your specific needs.
+
+# Appwrite
+
+Appwrite is an open-source backend-as-a-service (BaaS) platform offering essential APIs to build your mobile or web application. In addition to storage, it covers all your other backend needs, such as authentication, database management, serverless functions, and messaging. You can self-host Appwrite or use the Cloud version. Take a look at Appwrite’s source code in [GitHub](https://github.com/appwrite/appwrite).
+
+# Cloudinary
+
+Cloudinary is a cloud service that focuses on managing media assets, especially images and videos. It’s great for automatic media optimization, transformations, responsive delivery, and detailed analytics. If your app deals with lots of media, Cloudinary is a solid choice.
+
+# Appwrite vs. Cloudinary
+
+## File storage
+
+**Storage**:
+
+- **Versatile file storage**: Appwrite offers general-purpose storage capabilities, allowing you to store and manage various types of files, not just media. This makes it a flexible solution for all your storage needs.
+- **Resumable upload:** Appwrite allows you to upload large media files in chunks, which means that if your internet goes down, you can simply resume your upload from where you left off.
+- **Permissions and security**: Set up image encryption and granular user permissions with RBAC.
+
+**Cloudinary**:
+
+- **Media-focused storage**: Cloudinary specializes in storing and managing media files, particularly images and videos. It offers advanced media management features tailored for optimizing and delivering high-quality media content.
+- **Automatic media optimization**: Cloudinary automatically optimizes media files for performance and quality, making it ideal for applications that require heavy media usage.
+
+## File management
+
+**Storage**:
+
+- **Storage dashboard:** Use the dashboard to organize your files and buckets, set permissions, and compress and transform images.
+- **Image previews and transformations:** Preview your images however you want, resize, crop, manage formats and compress with ease.
+
+**Cloudinary:**
+
+- **Transformations and delivery**: Perform on-the-fly transformations, such as resizing, cropping, and applying filters.
+- **Video API:** Cloudinary offers an extensive video API that allows dynamic video transcoding, smart transformation options and monitoring.
+
+## Community and flexibility
+
+**Storage**:
+
+- **Vibrant community**: You can find support, share ideas, and collaborate with others in Appwrite’s active developer community on Discord.
+- **Open-source flexibility**: Appwrite’s open-source SDKs and APIs give you all the necessary building blocks to create a hassle-free backend. There’s no vendor lock-in — so you can get started with your favorite language and framework right away.
+
+**Cloudinary**:
+
+- **Professional support**: Cloudinary provides professional support plans, ensuring you have access to expert assistance when needed.
+- **Community engagement**: Cloudinary also has a strong community and ecosystem, offering resources, forums, and documentation to help you succeed.
+
+# Feature comparison: Appwrite's Storage service vs. Cloudinary
+
+| **FEATURE** | **STORAGE** | **CLOUDINARY** |
+| --- | --- | --- |
+| Deployment | Self-hosted or cloud-hosted | Cloud |
+| Free plan | 2GB storage, 5GB bandwidth | 25GB storage/bandwidth |
+| Paid plan | $15 per member/month for increased bandwidth, users and storage | $89 to $224 per month for increased users and credits |
+| Open source | Yes ✅ | No ❌ |
+| Support | Discord and email, dedicated channels for startups | Community and email, paid support options |
+| Community | Growing open-source community | Large established community |
+| Performance optimization | Uploading in chunks and compression options | Automatic optimization for performance and quality |
+| Image transformations | Resizing, cropping, formatting, | Resizing, cropping, formatting, filters |
+| Video transformations | No ❌ | Yes ✅ |
+| Content-aware cropping with AI | No ❌ | Yes ✅ |
+| File encryption | Yes ✅ | No ❌ |
+| Permissions and roles | Yes ✅ | Yes ✅ |
+| Complete backend | Yes, including databases, authentication, messaging and serverless functions | No, only media storage |
+
+# More resources
+
+If you’d like to learn more about Appwrite, take a look at the resources below.
+
+- [[Docs] Get started with Storage in Appwrite](https://appwrite.io/docs/quick-starts)
+- [Storage docs](https://appwrite.io/docs/products/storage)
+- [[Video] Take a video walk-through Appwrite's features](https://www.youtube.com/watch?v=sSqQDalKc9Y&list=PL-nc7zI7zjsbWN38SyxHVvzi9jLsK5N69)

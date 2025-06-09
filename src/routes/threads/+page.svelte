@@ -1,8 +1,9 @@
 <script lang="ts">
     import { Main } from '$lib/layouts';
     import { createDebounce } from '$lib/utils/debounce';
-    import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
+    import { DEFAULT_HOST } from '$lib/utils/metadata';
     import { TITLE_SUFFIX } from '$routes/titles';
+    import { Button } from '$lib/components/ui';
 
     import FooterNav from '$lib/components/FooterNav.svelte';
     import MainFooter from '$lib/components/MainFooter.svelte';
@@ -13,15 +14,16 @@
     import { getThreads } from './helpers';
 
     const title = 'Threads' + TITLE_SUFFIX;
-    const description = DEFAULT_DESCRIPTION;
+    const description =
+        "Appwrite's Threads page showcases our community interactions on Discord. Join the conversation, ask questions, or assist other members with their issues.";
     const ogImage = DEFAULT_HOST + '/images/open-graph/website.png';
 
-    export let data;
+    let { data } = $props();
 
-    let threads = data.threads;
+    let threads = $state(data.threads);
 
     let searching = false; // Do some sick animation
-    let query = '';
+    let query = $state('');
 
     const handleSearch = async (value: string) => {
         query = value;
@@ -64,13 +66,7 @@
         };
     };
 
-    const tags = [
-        'Web',
-        'Flutter',
-        'GraphQL',
-        'Cloud',
-        'Self Hosted'
-    ];
+    const tags = ['Web', 'Flutter', 'GraphQL', 'Cloud', 'Self Hosted'];
 
     const moreTags = [
         'Tools',
@@ -88,7 +84,7 @@
         'REST API'
     ];
 
-    let selectedTags: string[] = [];
+    let selectedTags: string[] = $state([]);
 
     function toggleTag(tag: string) {
         if (selectedTags.includes(tag)) {
@@ -118,86 +114,95 @@
 </svelte:head>
 
 <Main>
-
     <div class="w-big-padding-section">
-        <div class="web-big-padding-section-level-1">
-            <div class="web-big-padding-section-level-2 u-position-relative u-overflow-hidden web-u-margin-block-0 web-u-sep-block-end">
+        <div>
+            <div
+                class="web-big-padding-section-level-2 web-u-margin-block-0 web-u-sep-block-end relative overflow-hidden py-10"
+            >
                 <div
-                        class="u-position-absolute"
-                        style="pointer-events: none; inset-inline-start: -700px; inset-block-start: 0px;"
+                    class="absolute"
+                    style="pointer-events: none; inset-inline-start: -700px; inset-block-start: 0px;"
                 >
                     <enhanced:img src="./(assets)/bg-red.svg" alt="" />
                 </div>
                 <div
-                        class="u-position-absolute"
-                        style="pointer-events: none; inset-inline-end: -700px; inset-block-start: -400px;"
+                    class="absolute"
+                    style="pointer-events: none; inset-inline-end: -700px; inset-block-start: -400px;"
                 >
                     <enhanced:img src="./(assets)/bg-green.svg" alt="" />
                 </div>
 
-                <div class="web-container">
-                    <h1 class="web-display web-u-color-text-primary web-u-margin-block-80 web-u-padding-block-end-40">Threads</h1>
+                <div class="container">
+                    <h1
+                        class="text-display font-aeonik-pro text-primary web-u-margin-block-80 web-u-padding-block-end-40"
+                    >
+                        Threads
+                    </h1>
                 </div>
-
             </div>
             <div class="web-big-padding-section-level-2 web-u-margin-block-start-24">
-                <div class="web-container">
-                    <div class="u-flex u-flex-wrap u-cross-center u-gap-32">
-                        <ul class="u-flex u-flex-wrap u-gap-8">
+                <div class="container">
+                    <div class="flex flex-wrap items-center gap-8">
+                        <ul class="flex flex-wrap gap-2">
                             {#each tags as tag}
-                                <li class="u-flex u-cross-center">
+                                <li class="flex items-center">
                                     <button
-                                            class="web-btn-tag"
-                                            class:is-selected={selectedTags?.includes(tag)}
-                                            on:click={() => toggleTag(tag)}
+                                        class="web-btn-tag"
+                                        class:is-selected={selectedTags?.includes(tag)}
+                                        onclick={() => toggleTag(tag)}
                                     >
                                         {tag}
                                     </button>
                                 </li>
                             {/each}
                             <li>
-                                <TagsDropdown tags={moreTags} selectedTags={selectedTags ?? []} {toggleTag} />
+                                <TagsDropdown
+                                    tags={moreTags}
+                                    selectedTags={selectedTags ?? []}
+                                    {toggleTag}
+                                />
                             </li>
                         </ul>
                         <div
-                                class="web-input-text-search-wrapper u-width-full-line u-max-width-350 web-u-max-inline-size-none-mobile u-margin-inline-start-auto"
+                            class="web-input-text-search-wrapper web-u-max-inline-size-none-mobile ml-auto w-full max-w-[350px]"
                         >
-                <span
-                        class="web-icon-search u-z-index-5"
-                        aria-hidden="true"
-                        style="inset-block-start:0.9rem"
-                />
+                            <span
+                                class="web-icon-search z-[5]"
+                                aria-hidden="true"
+                                style="inset-block-start:0.9rem"
+                            ></span>
+
                             <input
-                                    class="web-input-button -u-padding-block-0 u-position-relative u-z-index-1"
-                                    type="text"
-                                    id="search"
-                                    placeholder="Search for threads"
-                                    data-hit="-1"
-                                    use:search
-                                    bind:value={query}
+                                class="web-input-button relative z-1 !pl-10"
+                                type="text"
+                                id="search"
+                                placeholder="Search for threads"
+                                data-hit="-1"
+                                use:search
+                                bind:value={query}
+                                style:width="100%"
                             />
                         </div>
                     </div>
 
                     {#if threads.length}
-                        <h2 class="u-margin-block-start-16 web-u-color-text-primary" aria-live="polite">
+                        <h2 class="text-primary mt-4" aria-live="polite">
                             Found {query.length ? threads.length : '5000+'} results.
                         </h2>
                     {/if}
 
-                    <div class="u-flex-vertical u-gap-16 u-margin-block-start-16">
+                    <div class="mt-4 flex flex-col gap-4">
                         {#each threads as thread (thread.$id)}
                             <ThreadCard {thread} {query} />
                         {:else}
                             <div class="web-card is-normal has-border-gradient empty-card">
                                 <enhanced:img class="img" src="./(assets)/empty-state.png" alt="" />
-                                <span class="web-main-body-500">No support threads found</span>
-                                <button
-                                        class="web-button"
-                                        on:click={() => {
-                            query = '';
-                            handleSearch('');
-                        }}>Clear search</button
+                                <span class="text-body font-medium">No support threads found</span>
+                                <Button
+                                    onclick={() => {
+                                        query = '';
+                                        handleSearch('');
+                                    }}>Clear search</Button
                                 >
                             </div>
                         {/each}
@@ -207,8 +212,8 @@
             <div class="web-big-padding-section-level-2 web-u-margin-block-end-0">
                 <PreFooter />
             </div>
-            <div class="web-big-padding-section-level-2 web-u-margin-block-start-100-negative">
-                <div class="web-container">
+            <div class="web-big-padding-section-level-2 -mt-24">
+                <div class="container">
                     <FooterNav />
                     <MainFooter />
                 </div>

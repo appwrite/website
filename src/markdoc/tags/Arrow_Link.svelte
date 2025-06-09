@@ -1,8 +1,13 @@
 <script lang="ts">
     import { isInDocs } from '$lib/layouts/Docs.svelte';
     import { isInChangelog } from '$markdoc/layouts/Changelog.svelte';
+    import type { Snippet } from 'svelte';
+    interface Props {
+        href: string;
+        children: Snippet;
+    }
 
-    export let href: string;
+    const { href, children }: Props = $props();
 
     const isExternal = ['http://', 'https://'].some((prefix) => href.startsWith(prefix));
     const target = isExternal ? '_blank' : undefined;
@@ -11,15 +16,17 @@
     const inChangelog = isInChangelog();
     const inDocs = isInDocs();
 
-    $: classes = (() => {
-        if (inDocs) return 'web-link web-paragraph-md';
-        if (inChangelog) return 'web-link web-paragraph-lg';
-        return '';
-    })();
+    let classes = $derived(
+        (() => {
+            if (inDocs) return 'web-link text-paragraph-md';
+            if (inChangelog) return 'web-link text-paragraph-lg';
+            return '';
+        })()
+    );
 </script>
 
 <a class={classes} data-in-changelog={inChangelog ? '' : undefined} {href} {target} {rel}
-    ><slot /><span class="icon-cheveron-right" style:font-size="16px" /></a
+    >{@render children()}<span class="icon-cheveron-right" style:font-size="16px"></span></a
 >
 
 <style>

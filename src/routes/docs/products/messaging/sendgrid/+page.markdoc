@@ -1,16 +1,16 @@
 ---
 layout: article
-title: Sendgrid
-description: Send emails to your Appwrite users using Sendgrid and Appwrite Messaging.
+title: SendGrid
+description: Send emails to your Appwrite users using SendGrid and Appwrite Messaging.
 back: /docs/
 ---
-Sendgrid lets you send customized email messages to your users.
+SendGrid lets you send customized email messages to your users.
 These emails can be sent immediately or scheduled.
 You can send emails for purposes like reminders, promotions, announcements, and even custom authentication flows.
 
 {% section #add-provider step=1 title="Add provider" %}
 
-To add Sendgrid as a provider, navigate to **Messaging** > **Providers** > {% icon icon="plus" size="m" /%} **Add provider** > **Email**.
+To add SendGrid as a provider, navigate to **Messaging** > **Providers** > {% icon icon="plus" size="m" /%} **Add provider** > **Email**.
 {% only_dark %}
 ![Add a SMTP provider](/images/docs/messaging/providers/sendgrid/dark/add-sendgrid.png)
 {% /only_dark %}
@@ -18,12 +18,12 @@ To add Sendgrid as a provider, navigate to **Messaging** > **Providers** > {% ic
 ![Add a SMTP provider](/images/docs/messaging/providers/sendgrid/add-sendgrid.png)
 {% /only_light %}
 
-Give your provider a name > choose **Sendgrid** > click **Save and continue**.
+Give your provider a name > choose **SendGrid** > click **Save and continue**.
 The provider will be saved to your project, but not enabled until you complete its configuration.
 {% /section %}
 {% section #configure-provider step=2 title="Configure provider" %}
 
-In the **Configure** step, you will need to provide details from your Sendgrid dashboard to connect your Appwrite project.
+In the **Configure** step, you will need to provide details from your SendGrid dashboard to connect your Appwrite project.
 
 {% only_dark %}
 ![Configure SMTP provider](/images/docs/messaging/providers/sendgrid/dark/configure-sendgrid.png)
@@ -31,27 +31,23 @@ In the **Configure** step, you will need to provide details from your Sendgrid d
 {% only_light %}
 ![Configure SMTP provider](/images/docs/messaging/providers/sendgrid/configure-sendgrid.png)
 {% /only_light %}
-You will need to provide the following information from your **Sendgrid dashboard**.
+You will need to provide the following information from your **SendGrid dashboard**.
 
 {% table %}
 * Field name
 *
 ---
 * API key
-* Head to Profile -> API Security -> Add new key.
----
-* Domain
-* Head to Sending -> Domains -> Add new domain.
-Follow [Mailgun's instructions](https://help.mailgun.com/hc/en-us/articles/360026833053-Domain-Verification-Walkthrough) to verify the domain name.
+* Head to Settings -> API Keys -> Create API Key. 
 ---
 * Sender email
-* The provider sends emails from this sender email. The sender email needs to be an email under the configured domain.
+* The provider sends emails from this sender email. The sender email must either be an email under an [authenticated domain](https://www.twilio.com/docs/sendgrid/ui/account-and-settings/how-to-set-up-domain-authentication) or a [verified sender identity](https://www.twilio.com/docs/sendgrid/ui/sending-email/sender-verification).
 ---
 * Sender name
 * The sender name that appears in the emails sent from this provider.
 ---
 * Reply-to email
-* The reply-to email that appears in the emails sent from this provider. The reply-to email needs to be an email under the configured domain.
+* The reply-to email that appears in the emails sent from this provider. The reply-to email must either be an email under an authenticated domain or a verified sender identity.
 ---
 * Reply-to name
 * The reply-to name that appears in the emails sent from this provider.
@@ -90,12 +86,12 @@ const client = new sdk.Client();
 const messaging = new sdk.Messaging(client);
 
 client
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
     .setProject('<PROJECT_ID>') // Your project ID
     .setKey('<API_KEY>') // Your secret API key
 ;
 
-const message - await messaging.createEmail('<MESSAGE_ID>', '<SUBJECT>', '<CONTENT>');
+const message = await messaging.createEmail('<MESSAGE_ID>', '<SUBJECT>', '<CONTENT>');
 ```
 ```deno
 import * as sdk from "https://deno.land/x/appwrite/mod.ts";
@@ -106,7 +102,7 @@ let client = new sdk.Client();
 let messaging = new sdk.Messaging(client);
 
 client
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
     .setProject('<PROJECT_ID>') // Your project ID
     .setKey('<API_KEY>') // Your secret API key
 ;
@@ -123,7 +119,7 @@ use Appwrite\Services\Messaging;
 $client = new Client();
 
 $client
-    ->setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
+    ->setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
     ->setProject('<PROJECT_ID>') // Your project ID
     ->setKey('<API_KEY>') // Your secret API key
 ;
@@ -138,7 +134,7 @@ from appwrite.client import Client
 client = Client()
 
 (client
-  .set_endpoint('https://cloud.appwrite.io/v1') # Your API Endpoint
+  .set_endpoint('https://<REGION>.cloud.appwrite.io/v1') # Your API Endpoint
   .set_project('<PROJECT_ID>') # Your project ID
   .set_key('<API_KEY>') # Your secret API key
 )
@@ -153,7 +149,7 @@ require 'appwrite'
 include Appwrite
 
 client = Client.new
-    .set_endpoint('https://cloud.appwrite.io/v1') # Your API Endpoint
+    .set_endpoint('https://<REGION>.cloud.appwrite.io/v1') # Your API Endpoint
     .set_project('<PROJECT_ID>') # Your project ID
     .set_key('<API_KEY>') # Your secret API key
 
@@ -172,7 +168,7 @@ using Appwrite.Enums;
 using Appwrite.Enums;
 
 var client = new Client()
-    .SetEndPoint("https://cloud.appwrite.io/v1") // Your API Endpoint
+    .SetEndPoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
     .SetProject("<PROJECT_ID>") // Your project ID
     .SetKey("<API_KEY>"); // Your secret API key
 
@@ -188,17 +184,17 @@ import 'package:dart_appwrite/dart_appwrite.dart';
 import 'package:dart_appwrite/enums.dart';
 import 'package:dart_appwrite/models.dart';
 
-void main() { // Init SDK
+void main() async { // Init SDK
   Client client = Client();
   Messaging messaging = Messaging(client);
 
   client
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
     .setProject('<PROJECT_ID>') // Your project ID
     .setKey('<API_KEY>') // Your secret API key
   ;
 
-  Future result = messaging.createEmail(
+  Future result = await messaging.createEmail(
     messageId:'<MESSAGE_ID>' ,
     subject:'<SUBJECT>' ,
     content:'<CONTENT>' ,
@@ -218,7 +214,7 @@ import io.appwrite.coroutines.CoroutineCallback
 import io.appwrite.services.Messaging
 
 val client = Client()
-    .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
     .setProject("<PROJECT_ID>") // Your project ID
     .setKey("<API_KEY>") // Your secret API key
 
@@ -236,7 +232,7 @@ import io.appwrite.coroutines.CoroutineCallback;
 import io.appwrite.services.Messaging;
 
 Client client = new Client()
-    .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
     .setProject("<PROJECT_ID>") // Your project ID
     .setKey("<API_KEY>"); // Your secret API key
 
@@ -260,7 +256,7 @@ messaging.createEmail(
 import Appwrite
 
 let client = Client()
-    .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
     .setProject("<PROJECT_ID>") // Your project ID
     .setKey("<API_KEY>") // Your secret API key
 
@@ -300,17 +296,15 @@ const client = new sdk.Client();
 const messaging = new sdk.Messaging(client);
 
 client
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('<YOUR_PROJECT_ID>') // Your project ID
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('<PROJECT_ID>') // Your project ID
     .setKey('<YOUR_API_KEY>')        // Your secret API key
 ;
 
-const provider = await messaging.updateMailgunProvider(
+const provider = await messaging.updateSendgridProvider(
         '[PROVIDER_ID]',             // providerId
         '[NAME]',                    // name (optional)
         '[API_KEY]',                 // apiKey (optional)
-        '[DOMAIN]',                  // domain (optional)
-        false,                       // isEuRegion (optional)
         false,                       // enabled (optional)
         '[FROM_NAME]',               // fromName (optional)
         'email@example.com',         // fromEmail (optional)
@@ -327,17 +321,15 @@ let client = new sdk.Client();
 let messaging = new sdk.Messaging(client);
 
 client
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('<YOUR_PROJECT_ID>') // Your project ID
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('<PROJECT_ID>') // Your project ID
     .setKey('<YOUR_API_KEY>')        // Your secret API key
 ;
 
-const provider = await messaging.updateMailgunProvider(
+const provider = await messaging.updateSendgridProvider(
         '[PROVIDER_ID]',             // providerId
         '[NAME]',                    // name (optional)
         '[API_KEY]',                 // apiKey (optional)
-        '[DOMAIN]',                  // domain (optional)
-        false,                       // isEuRegion (optional)
         false,                       // enabled (optional)
         '[FROM_NAME]',               // fromName (optional)
         'email@example.com',         // fromEmail (optional)
@@ -354,19 +346,17 @@ use Appwrite\Services\Messaging;
 $client = new Client();
 
 $client
-    ->setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    ->setProject('<YOUR_PROJECT_ID>') // Your project ID
+    ->setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
+    ->setProject('<PROJECT_ID>') // Your project ID
     ->setKey('<YOUR_API_KEY>')        // Your secret API key
 ;
 
 $messaging = new Messaging($client);
 
-$result = $messaging->updateMailgunProvider(
+$result = $messaging->updateSendgridProvider(
     providerId: '[PROVIDER_ID]',
     name: '[NAME]',                   // optional
     apiKey: '[API_KEY]',              // optional
-    domain: '[DOMAIN]',               // optional
-    isEuRegion: false,                // optional
     enabled: false,                   // optional
     fromName: '[FROM_NAME]',          // optional
     fromEmail: 'email@example.com',   // optional
@@ -381,19 +371,17 @@ from appwrite.services.messaging import Messaging
 client = Client()
 
 (client
-  .set_endpoint('https://cloud.appwrite.io/v1') # Your API Endpoint
-  .set_project('<YOUR_PROJECT_ID>')     # Your project ID
+  .set_endpoint('https://<REGION>.cloud.appwrite.io/v1') # Your API Endpoint
+  .set_project('<PROJECT_ID>')     # Your project ID
   .set_key('<YOUR_API_KEY>')            # Your secret API key
 )
 
 messaging = Messaging(client)
 
-result = messaging.update_mailgun_provider(
+result = messaging.update_sendgrid_provider(
     provider_id = '[PROVIDER_ID]',
     name = '[NAME]',                    # optional
     api_key = '[API_KEY]',              # optional
-    domain = '[DOMAIN]',                # optional
-    is_eu_region = False,               # optional
     enabled = False,                    # optional
     from_name = '[FROM_NAME]',          # optional
     from_email = 'email@example.com',   # optional
@@ -407,18 +395,16 @@ require 'appwrite'
 include Appwrite
 
 client = Client.new
-    .set_endpoint('https://cloud.appwrite.io/v1') # Your API Endpoint
-    .set_project('<YOUR_PROJECT_ID>')  # Your project ID
+    .set_endpoint('https://<REGION>.cloud.appwrite.io/v1') # Your API Endpoint
+    .set_project('<PROJECT_ID>')  # Your project ID
     .set_key('<YOUR_API_KEY>')         # Your secret API key
 
 messaging = Messaging.new(client)
 
-response = messaging.update_mailgun_provider(
+response = messaging.update_sendgrid_provider(
     provider_id: '[PROVIDER_ID]',
     name: '[NAME]',                    # optional
     api_key: '[API_KEY]',              # optional
-    domain: '[DOMAIN]',                # optional
-    is_eu_region: false,               # optional
     enabled: false,                    # optional
     from_name: '[FROM_NAME]',          # optional
     from_email: 'email@example.com',   # optional
@@ -434,18 +420,16 @@ using Appwrite.Services;
 using Appwrite.Models;
 
 var client = new Client()
-    .SetEndPoint("https://cloud.appwrite.io/v1") // Your API Endpoint
-    .SetProject("<YOUR_PROJECT_ID>")   // Your project ID
+    .SetEndPoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
+    .SetProject("<PROJECT_ID>")   // Your project ID
     .SetKey("<YOUR_API_KEY>");         // Your secret API key
 
 var messaging = new Messaging(client);
 
-Provider result = await messaging.UpdateMailgunProvider(
+Provider result = await messaging.UpdateSendgridProvider(
     providerId: "[PROVIDER_ID]"
     name: "[NAME]"                     // optional
     apiKey: "[API_KEY]"                // optional
-    domain: "[DOMAIN]"                 // optional
-    isEuRegion: false                  // optional
     enabled: false                     // optional
     fromName: "[FROM_NAME]"            // optional
     fromEmail: "email@example.com"     // optional
@@ -462,17 +446,15 @@ void main() {                         // Init SDK
   Messaging messaging = Messaging(client);
 
   client
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('<YOUR_PROJECT_ID>')  // Your project ID
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('<PROJECT_ID>')  // Your project ID
     .setKey('<YOUR_API_KEY>')         // Your secret API key
   ;
 
-  Future result = messaging.updateMailgunProvider(
+  Future result = messaging.updateSendgridProvider(
     providerId: '[PROVIDER_ID]',
     name: '[NAME]',                   // optional
     apiKey: '[API_KEY]',              // optional
-    domain: '[DOMAIN]',               // optional
-    isEuRegion: false,                // optional
     enabled: false,                   // optional
     fromName: '[FROM_NAME]',          // optional
     fromEmail: 'email@example.com',   // optional
@@ -494,18 +476,16 @@ import io.appwrite.coroutines.CoroutineCallback;
 import io.appwrite.services.Messaging;
 
 Client client = new Client()
-    .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
-    .setProject("<YOUR_PROJECT_ID>") // Your project ID
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
+    .setProject("<PROJECT_ID>") // Your project ID
     .setKey("<YOUR_API_KEY>");       // Your secret API key
 
 Messaging messaging = new Messaging(client);
 
-messaging.updateMailgunProvider(
+messaging.updateSendgridProvider(
     "[PROVIDER_ID]",                 // providerId
     "[NAME]",                        // name (optional)
     "[API_KEY]",                     // apiKey (optional)
-    "[DOMAIN]",                      // domain (optional)
-    false,                           // isEuRegion (optional)
     false,                           // enabled (optional)
     "[FROM_NAME]",                   // fromName (optional)
     "email@example.com",             // fromEmail (optional)
@@ -527,18 +507,16 @@ import io.appwrite.coroutines.CoroutineCallback;
 import io.appwrite.services.Messaging;
 
 Client client = new Client()
-    .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
-    .setProject("<YOUR_PROJECT_ID>") // Your project ID
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
+    .setProject("<PROJECT_ID>") // Your project ID
     .setKey("<YOUR_API_KEY>");       // Your secret API key
 
 Messaging messaging = new Messaging(client);
 
-messaging.updateMailgunProvider(
+messaging.updateSendgridProvider(
     "[PROVIDER_ID]",                 // providerId
     "[NAME]",                        // name (optional)
     "[API_KEY]",                     // apiKey (optional)
-    "[DOMAIN]",                      // domain (optional)
-    false,                           // isEuRegion (optional)
     false,                           // enabled (optional)
     "[FROM_NAME]",                   // fromName (optional)
     "email@example.com",             // fromEmail (optional)
@@ -558,18 +536,16 @@ messaging.updateMailgunProvider(
 import Appwrite
 
 let client = Client()
-    .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
-    .setProject("<YOUR_PROJECT_ID>") // Your project ID
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
+    .setProject("<PROJECT_ID>") // Your project ID
     .setKey("<YOUR_API_KEY>")        // Your secret API key
 
 let messaging = Messaging(client)
 
-let provider = try await messaging.updateMailgunProvider(
+let provider = try await messaging.updateSendgridProvider(
   providerId: "[PROVIDER_ID]",
   name: "[NAME]",                    // optional
   apiKey: "[API_KEY]",               // optional
-  domain: "[DOMAIN]",                // optional
-  isEuRegion: xfalse,                // optional
   enabled: xfalse,                   // optional
   fromName: "[FROM_NAME]",           // optional
   fromEmail: "email@example.com",    // optional

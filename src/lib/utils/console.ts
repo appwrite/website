@@ -2,19 +2,20 @@ import { derived, writable } from 'svelte/store';
 import { browser } from '$app/environment';
 import { Account, Client, Teams } from '@appwrite.io/console';
 import { Query, type Models } from '@appwrite.io/console';
+import { PUBLIC_APPWRITE_ENDPOINT } from '$env/static/public';
 
 const client = new Client();
 
-client.setEndpoint('https://cloud.appwrite.io/v1').setProject('console');
+client.setEndpoint(PUBLIC_APPWRITE_ENDPOINT).setProject('console');
 
 const account = new Account(client);
 const teams = new Teams(client);
 
-enum BillingPlan {
-    STARTER = 'tier-0',
-    PRO = 'tier-1',
-    SCALE = 'tier-2'
-}
+const BillingPlan = {
+    STARTER: 'tier-0',
+    PRO: 'tier-1',
+    SCALE: 'tier-2'
+} as const;
 
 export async function createSource(
     ref: string | null,
@@ -22,6 +23,7 @@ export async function createSource(
     utmSource: string | null,
     utmCampaign: string | null,
     utmMedium: string | null
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
 ): Promise<any> {
     const path = `/console/sources`;
     const params = {
@@ -47,7 +49,7 @@ export async function isProUser() {
     try {
         const orgs = await teams.list([Query.equal('billingPlan', BillingPlan.PRO)]);
         return orgs?.teams?.length > 1;
-    } catch (e) {
+    } catch {
         return false;
     }
 }
@@ -59,8 +61,8 @@ function isAppwriteUser(user: unknown): user is AppwriteUser {
     return typeof user === 'object' && user !== null && '$id' in user;
 }
 
-export function getAppwriteUser(): Promise<AppwriteUser | null> {
-    return account
+export async function getAppwriteUser(): Promise<AppwriteUser | null> {
+    return await account
         .get()
         .then((res) => res)
         .catch(() => null);

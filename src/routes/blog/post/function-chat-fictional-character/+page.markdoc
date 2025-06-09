@@ -6,7 +6,7 @@ date: 2024-04-04
 cover: /images/blog/function-chat-fictional-character/cover.png
 timeToRead: 6
 author: aditya-oberai
-category: functions
+category: tutorial
 ---
 
 Have you ever wondered what it would feel like to interact with your favorite fictional characters, such as Superman, Hermione Granger, Gandalf, or Snow White? As a part of an internal hackathon at Appwrite recently, my team developed an Appwrite Function that you can use to chat with any popular fictional character you like (we really wanted to talk to Batman!)

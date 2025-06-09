@@ -1,58 +1,61 @@
 services:
-  traefik:
-    image: traefik:2.9
-    command:
-      - --log.level=DEBUG
-      - --api.insecure=true
-      - --providers.docker=true
-      - --providers.docker.exposedByDefault=false
-      - --entrypoints.web.address=:80
-      - --entrypoints.websecure.address=:443
-      - --providers.docker.constraints=Label(`traefik.constraint-label-stack`,`homepage`)
-      - --accesslog=true
-    labels:
-      - traefik.http.routers.traefik.middlewares=traefik-compress
-      - traefik.http.middlewares.traefik-compress.compress=true
-    ports:
-      - 80:80
-      - 8080:8080
-    volumes:
-      # - /letsencrypt:/letsencrypt
-      - /var/run/docker.sock:/var/run/docker.sock
-    networks:
-      - homepage
+    traefik:
+        image: traefik:2.9
+        command:
+            - --log.level=DEBUG
+            - --api.insecure=true
+            - --providers.docker=true
+            - --providers.docker.exposedByDefault=false
+            - --entrypoints.web.address=:80
+            - --entrypoints.websecure.address=:443
+            - --providers.docker.constraints=Label(`traefik.constraint-label-stack`,`homepage`)
+            - --accesslog=true
+        labels:
+            - traefik.http.routers.traefik.middlewares=traefik-compress
+            - traefik.http.middlewares.traefik-compress.compress=true
+        ports:
+            - 80:80
+            - 8080:8080
+        volumes:
+            # - /letsencrypt:/letsencrypt
+            - /var/run/docker.sock:/var/run/docker.sock
+        networks:
+            - homepage
 
-  homepage:
-    image: homepage-dev
-    build:
-      context: .
-      args:
-          - PUBLIC_APPWRITE_PROJECT_INIT_ID=$PUBLIC_APPWRITE_PROJECT_INIT_ID
-          - PUBLIC_APPWRITE_PROJECT_ID=$PUBLIC_APPWRITE_PROJECT_ID
-          - PUBLIC_APPWRITE_DB_MAIN_ID=$PUBLIC_APPWRITE_DB_MAIN_ID
-          - PUBLIC_APPWRITE_COL_THREADS_ID=$PUBLIC_APPWRITE_COL_THREADS_ID
-          - PUBLIC_APPWRITE_COL_MESSAGES_ID=$PUBLIC_APPWRITE_COL_MESSAGES_ID
-          - PUBLIC_APPWRITE_FN_TLDR_ID=$PUBLIC_APPWRITE_FN_TLDR_ID
-    restart: always
-    networks:
-      - homepage
-    labels:
-      - traefik.enable=true
-      - traefik.constraint-label-stack=homepage
-      - traefik.docker.network=appwrite
-      - traefik.http.middlewares.appwrite_middlewares.compress=true
-      - traefik.http.services.appwrite_service.loadbalancer.server.port=3000
-      #http
-      - traefik.http.routers.appwrite.entrypoints=web
-      - traefik.http.routers.appwrite.rule=PathPrefix(`/`)
-      - traefik.http.routers.appwrite.service=appwrite_service
-      - traefik.http.routers.appwrite.middlewares=appwrite_middlewares
-      # https
-      - traefik.http.routers.appwrite_secure.entrypoints=websecure
-      - traefik.http.routers.appwrite_secure.rule=PathPrefix(`/`)
-      - traefik.http.routers.appwrite_secure.service=appwrite_service
-      - traefik.http.routers.appwrite_secure.tls=true
-      - traefik.http.routers.appwrite_secure.middlewares=appwrite_middlewares
+    homepage:
+        image: homepage-dev
+        build:
+            context: .
+            args:
+                - PUBLIC_APPWRITE_ENDPOINT=$PUBLIC_APPWRITE_ENDPOINT
+                - PUBLIC_APPWRITE_DASHBOARD=$PUBLIC_APPWRITE_DASHBOARD
+                - PUBLIC_APPWRITE_PROJECT_INIT_ID=$PUBLIC_APPWRITE_PROJECT_INIT_ID
+                - PUBLIC_APPWRITE_PROJECT_ID=$PUBLIC_APPWRITE_PROJECT_ID
+                - PUBLIC_APPWRITE_DB_MAIN_ID=$PUBLIC_APPWRITE_DB_MAIN_ID
+                - PUBLIC_APPWRITE_COL_THREADS_ID=$PUBLIC_APPWRITE_COL_THREADS_ID
+                - PUBLIC_APPWRITE_COL_MESSAGES_ID=$PUBLIC_APPWRITE_COL_MESSAGES_ID
+                - PUBLIC_APPWRITE_FN_TLDR_ID=$PUBLIC_APPWRITE_FN_TLDR_ID
+                - PUBLIC_POSTHOG_API_KEY=$PUBLIC_POSTHOG_API_KEY
+        restart: always
+        networks:
+            - homepage
+        labels:
+            - traefik.enable=true
+            - traefik.constraint-label-stack=homepage
+            - traefik.docker.network=appwrite
+            - traefik.http.middlewares.appwrite_middlewares.compress=true
+            - traefik.http.services.appwrite_service.loadbalancer.server.port=3000
+            #http
+            - traefik.http.routers.appwrite.entrypoints=web
+            - traefik.http.routers.appwrite.rule=PathPrefix(`/`)
+            - traefik.http.routers.appwrite.service=appwrite_service
+            - traefik.http.routers.appwrite.middlewares=appwrite_middlewares
+            # https
+            - traefik.http.routers.appwrite_secure.entrypoints=websecure
+            - traefik.http.routers.appwrite_secure.rule=PathPrefix(`/`)
+            - traefik.http.routers.appwrite_secure.service=appwrite_service
+            - traefik.http.routers.appwrite_secure.tls=true
+            - traefik.http.routers.appwrite_secure.middlewares=appwrite_middlewares
 
 networks:
-  homepage:
+    homepage:

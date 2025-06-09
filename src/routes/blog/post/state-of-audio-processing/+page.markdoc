@@ -5,6 +5,7 @@ description: An overview of the latest developments in audio processing with AI 
 date: 2024-03-27
 cover: /images/blog/state-of-audio-processing/cover.png
 timeToRead: 15
+author: luke-silver
 category: product
 featured: false
 ---
@@ -126,6 +127,9 @@ Appwrite provides a platform to build your own audio processing applications. Wi
 Efficiently convert speech to text
 {% /cards_item %}
 {% cards_item href="/docs/products/ai/tutorials/text-to-speech" title="Text to speech" %}
-Generate music from a text prompt
+Generate lifelike speech from text
+{% /cards_item %}
+{% cards_item href="/docs/products/ai/tutorials/music-generation" title="Music generation" %}
+Create unique musical compositions
 {% /cards_item %}
 {% /cards %}

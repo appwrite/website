@@ -1,7 +1,7 @@
 ---
 layout: article
 title: Realtime
-description: Explore the power of real-time communication with the Appwrite Realtime API. Learn how to build dynamic and interactive applications with real-time data updates.
+description: Want to build dynamic and interactive applications with real-time data updates? Appwrite Realtime API makes it possible, get started with our intro guide.
 ---
 
 Appwrite supports multiple protocols for accessing the server, including [REST](/docs/apis/rest), [GraphQL](/docs/apis/graphql), and [Realtime](/docs/apis/realtime). The Appwrite Realtime allows you to listen to any Appwrite events in realtime using the `subscribe` method.
@@ -15,7 +15,7 @@ This lets you build an interactive and responsive user experience by providing i
 import { Client } from "appwrite";
 
 const client = new Client()
-    .setEndpoint('https://cloud.appwrite.io/v1')
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
     .setProject('<PROJECT_ID>');
 
 // Subscribe to files channel
@@ -31,7 +31,7 @@ client.subscribe('files', response => {
 import 'package:appwrite/appwrite.dart';
 
 final client = Client()
-    .setEndpoint('https://cloud.appwrite.io/v1')
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
     .setProject('<PROJECT_ID>');
 
 final realtime = Realtime(client);
@@ -52,7 +52,7 @@ import Appwrite
 import AppwriteModels
 
 let client = Client()
-    .setEndpoint("https://cloud.appwrite.io/v1")
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
     .setProject("<PROJECT_ID>")
 
 let realtime = Realtime(client)
@@ -71,7 +71,7 @@ import io.appwrite.Client
 import io.appwrite.services.Realtime
 
 val client = Client(context)
-    .setEndpoint("https://cloud.appwrite.io/v1")
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
     .setProject("<PROJECT_ID>")
 
 val realtime = Realtime(client)
@@ -117,7 +117,7 @@ In this example we are subscribing to all updates related to our account by usin
 import { Client } from "appwrite";
 
 const client = new Client()
-    .setEndpoint('https://cloud.appwrite.io/v1')
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
     .setProject('<PROJECT_ID>');
 
 client.subscribe('account', response => {
@@ -130,7 +130,7 @@ client.subscribe('account', response => {
 import 'package:appwrite/appwrite.dart';
 
 final client = Client()
-    .setEndpoint('https://cloud.appwrite.io/v1')
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
     .setProject('<PROJECT_ID>');
 
 final realtime = Realtime(client);
@@ -148,7 +148,7 @@ import Appwrite
 import AppwriteModels
 
 let client = Client()
-    .setEndpoint("https://cloud.appwrite.io/v1")
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
     .setProject("<PROJECT_ID>")
 
 let realtime = Realtime(client)
@@ -164,7 +164,7 @@ import io.appwrite.Client
 import io.appwrite.services.Realtime
 
 val client = Client(context)
-    .setEndpoint("https://cloud.appwrite.io/v1")
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
     .setProject("<PROJECT_ID>")
 
 val realtime = Realtime(client)
@@ -188,7 +188,7 @@ In this example we are listening to the document A and all files by subscribing 
 import { Client } from "appwrite";
 
 const client = new Client()
-    .setEndpoint('https://cloud.appwrite.io/v1')
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
     .setProject('<PROJECT_ID>');
 
 client.subscribe(['collections.A.documents.A', 'files'], response => {
@@ -201,7 +201,7 @@ client.subscribe(['collections.A.documents.A', 'files'], response => {
 import 'package:appwrite/appwrite.dart';
 
 final client = Client()
-    .setEndpoint('https://cloud.appwrite.io/v1')
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
     .setProject('<PROJECT_ID>');
 
 final realtime = Realtime(client);
@@ -219,7 +219,7 @@ import Appwrite
 import AppwriteModels
 
 let client = Client()
-    .setEndpoint("https://cloud.appwrite.io/v1")
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
     .setProject("<PROJECT_ID>")
 
 let realtime = Realtime(client)
@@ -235,7 +235,7 @@ import io.appwrite.Client
 import io.appwrite.services.Realtime
 
 val client = Client(context)
-    .setEndpoint("https://cloud.appwrite.io/v1")
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
     .setProject("<PROJECT_ID>")
 val realtime = Realtime(client)
 
@@ -256,7 +256,7 @@ If you no longer want to receive updates from a subscription, you can unsubscrib
 import { Client } from "appwrite";
 
 const client = new Client()
-    .setEndpoint('https://cloud.appwrite.io/v1')
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
     .setProject('<PROJECT_ID>');
 
 const unsubscribe = client.subscribe('files', response => {
@@ -272,7 +272,7 @@ unsubscribe();
 import 'package:appwrite/appwrite.dart';
 
 final client = Client()
-    .setEndpoint('https://cloud.appwrite.io/v1')
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
     .setProject('<PROJECT_ID>');
 
 final realtime = Realtime(client);
@@ -308,14 +308,14 @@ import io.appwrite.Client
 import io.appwrite.services.Realtime
 
 val client = Client(context)
-    .setEndpoint("https://cloud.appwrite.io/v1")
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
     .setProject("<PROJECT_ID>")
 
 val realtime = Realtime(client)
 
 val subscription = realtime.subscribe("files") {
     // Callback will be executed on changes for all files.
-    print(param.toString())
+    print(it.toString())
 }
 
 // Closes the subscription.
@@ -466,35 +466,35 @@ A list of all channels available you can subscribe to. IDs cannot be wildcards.
 
 The SDK will guess the endpoint of the Realtime API when setting the endpoint of your Appwrite instance. If you are running Appwrite with a custom proxy and changed the route of the Realtime API, you can call the `setEndpointRealtime` method on the Client SDK and set your new endpoint value.
 
-By default the endpoint is `wss://cloud.appwrite.io/v1/realtime`.
+By default the endpoint is `wss://<REGION>.cloud.appwrite.io/v1/realtime`.
 
 {% multicode %}
 ```client-web
 import { Client } from "appwrite";
 const client = new Client();
 
-client.setEndpointRealtime('wss://cloud.appwrite.io/v1/realtime');
+client.setEndpointRealtime('wss://<REGION>.cloud.appwrite.io/v1/realtime');
 ```
 
 ```client-flutter
 import 'package:appwrite/appwrite.dart';
 
 final client = Client();
-client.setEndpointRealtime('wss://cloud.appwrite.io/v1/realtime');
+client.setEndpointRealtime('wss://<REGION>.cloud.appwrite.io/v1/realtime');
 ```
 
 ```client-apple
 import Appwrite
 
 let client = Client()
-client.setEndpointRealtime("wss://cloud.appwrite.io/v1/realtime")
+client.setEndpointRealtime("wss://<REGION>.cloud.appwrite.io/v1/realtime")
 ```
 
 ```client-android-kotlin
 import io.appwrite.Client
 
 val client = Client(context)
-client.setEndpointRealtime("wss://cloud.appwrite.io/v1/realtime")
+client.setEndpointRealtime("wss://<REGION>.cloud.appwrite.io/v1/realtime")
 ```
 
 {% /multicode %}

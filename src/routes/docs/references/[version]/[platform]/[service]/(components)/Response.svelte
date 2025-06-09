@@ -1,29 +1,29 @@
 <script lang="ts">
-    import { page } from '$app/stores';
+    import { page } from '$app/state';
     import type { SDKMethod } from '$lib/utils/specs';
 
     export let method: SDKMethod;
 </script>
 
-<div class="web-card is-transparent u-padding-16">
+<div class="web-card is-transparent p-4">
     <ul>
         {#each method.responses as response}
             {#if response.models}
                 <li>
                     <article>
-                        <header class="u-flex u-cross-baseline u-gap-8">
-                            <span class="web-eyebrow web-u-color-text-primary">
+                        <header class="flex items-baseline gap-2">
+                            <span class="text-micro text-primary uppercase">
                                 {response.code}
                             </span>
-                            <span class="web-caption-400">application/json</span>
+                            <span class="text-caption">{response.contentType ?? 'no content'}</span>
                         </header>
                         {#if response.models.length > 0}
-                            <ul class="web-sub-body-400 u-margin-block-start-16">
+                            <ul class="text-sub-body mt-4">
                                 {#each response.models as model}
                                     <li>
                                         <a
                                             class="web-link"
-                                            href={`/docs/references/${$page.params.version}/models/${model.id}`}
+                                            href={`/docs/references/${page.params.version}/models/${model.id}`}
                                         >
                                             {model.name}
                                         </a>

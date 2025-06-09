@@ -1,12 +1,12 @@
 ---
 layout: post
-title: "Password protection for developers: importance and best practices"
+title: "Password protection for developers: best practices"
 description: Why it is necessary to implement strong password protection policies in your app and best practices to follow.
 date: 2023-10-11
 cover: /images/blog/password-protection.png
 timeToRead: 6
 author: aditya-oberai
-category: authentication, security
+category: security
 ---
 
 Today, we're more connected online than ever before. The internet has made things like shopping, banking, and communicating much easier. This convenience does come at a cost, however. Every important activity we perform on the internet is associated with a digital identity, and this identity is only as secure as we make it.

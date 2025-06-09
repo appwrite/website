@@ -32,8 +32,8 @@ const account = new Account(client);
 const avatars = new Avatars(client);
 
 client
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('<YOUR_PROJECT_ID>') // Your project ID
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('<PROJECT_ID>') // Your project ID
 ;
 ```
 
@@ -46,8 +46,8 @@ void main() { // Init SDK
   Avatars avatars = Avatars(client);
 
   client
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('<YOUR_PROJECT_ID>')             // Your project ID
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('<PROJECT_ID>')             // Your project ID
   ;
 }
 ```
@@ -56,8 +56,8 @@ void main() { // Init SDK
 import Appwrite
 
 let client = Client()
-    .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
-    .setProject("<YOUR_PROJECT_ID>") // Your project ID
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
+    .setProject("<PROJECT_ID>") // Your project ID
 
 let account = Account(client)
 let avatars = Avatars(client)
@@ -68,8 +68,8 @@ import io.appwrite.Client
 import io.appwrite.services.Account
 
 val client = Client(context)
-    .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
-    .setProject("<YOUR_PROJECT_ID>") // Your project ID
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
+    .setProject("<PROJECT_ID>") // Your project ID
 
 val account = Account(client)
 val avatars = Avatars(client)
@@ -300,6 +300,7 @@ const response = await account.updatePhone(
     '+12065550100',  // phone
     'password' // password
 );
+```
 ```client-flutter
 Future result = account.updatePhone(
     phone: '+12065550100',
@@ -344,6 +345,7 @@ Then, initiate verification for the phone number by calling `account.createPhone
 {% multicode %}
 ```client-web
 const response = await account.createPhoneVerification();
+```
 ```client-flutter
 Future result = account.createPhoneVerification();
 
@@ -379,6 +381,7 @@ const response = await account.updatePhoneVerification(
     '<USER_ID>',  // userId
     '<SECRET>' // secret
 );
+```
 ```client-flutter
 Future result = account.updatePhoneVerification(
     userId: '<USER_ID>',
@@ -429,6 +432,7 @@ First, add a TOTP authenticator to the user's account by calling `account.addAut
 const { secret, uri } = await account.createMfaAuthenticator(
     'totp' // type
 );
+```
 ```client-flutter
 Future result = account.createMfaAuthenticator(
     type: 'totp',

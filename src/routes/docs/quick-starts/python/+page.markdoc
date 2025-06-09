@@ -75,7 +75,7 @@ Finally, create a file `my_app.py`.
 Install the Python Appwrite SDK.
 
 ```sh
-pip install appwrite==4.1.0
+pip install appwrite==11.0.0
 ```
 {% /section %}
 {% section #step-4 step=4 title="Import Appwrite" %}
@@ -89,7 +89,7 @@ Find your project ID in the **Settings** page. Also, click on the **View API Key
 ![Project settings screen](/images/docs/quick-starts/project-id.png)
 {% /only_light %}
 
-Open `my_app.py` and initialize the Appwrite Client. Replace `<YOUR_PROJECT_ID>` with your project ID and `<YOUR_API_KEY>` with your API key.
+Open `my_app.py` and initialize the Appwrite Client. Replace `<PROJECT_ID>` with your project ID and `<YOUR_API_KEY>` with your API key.
 
 ```py
 from appwrite.client import Client
@@ -97,8 +97,8 @@ from appwrite.services.databases import Databases
 from appwrite.id import ID
 
 client = Client()
-client.set_endpoint('https://cloud.appwrite.io/v1')
-client.set_project('<YOUR_PROJECT_ID>')
+client.set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
+client.set_project('<PROJECT_ID>')
 client.set_key('<YOUR_API_KEY>')
 ```
 

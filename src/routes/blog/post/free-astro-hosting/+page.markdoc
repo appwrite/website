@@ -1,0 +1,79 @@
+---
+layout: post
+title: Free Astro hosting with Appwrite Sites - Deploy effortlessly
+description: Learn how to deploy your Astro app for free with Appwrite Sites.
+date: 2025-05-20
+cover: /images/blog/free-astro-hosting/cover.png
+timeToRead: 6
+author: eldad-fux
+category: tutorial
+unlisted: true
+
+---
+
+Astro has emerged as a powerful framework for building ultra-fast, content-driven websites by leveraging its hybrid rendering approach and optimized build process. While deploying Astro applications is straightforward, finding a hosting platform that balances cost, scalability, and developer-friendly features can be challenging.
+
+[Appwrite Sites](https://appwrite.io/products/sites) offers a tailored hosting solution for modern web applications, including Astro, with built-in performance, security, and collaboration enhancements. This article explores how Appwrite Sites simplifies deployment, integrates with Astro's capabilities, and compares to other hosting options.
+
+# Why Appwrite Sites is an ideal fit for Astro
+
+## 1. Free hosting with no upfront costs
+
+For developers and small teams, keeping hosting expenses low is important. Appwrite Sites provides free hosting, eliminating financial barriers while ensuring a high-performance infrastructure. This allows you to focus on building and refining your application without worrying about costs as you scale.
+
+## 2. Optimized for static and hybrid rendering
+
+Astro shines with its ability to generate highly optimized static sites while enabling selective hydration for dynamic elements. Appwrite Sites fully supports static exports, ensuring your site benefits from fast, globally cached delivery. Additionally, **Appwrite Functions** can extend Astro's capabilities by adding dynamic backend functionality where necessary.
+
+## 3. Performance-boosting global CDN
+
+Speed is a key factor in both user experience and SEO. Appwrite Sites uses a globally distributed [Content Delivery Network (CDN)](https://appwrite.io/docs/products/network/cdn) to efficiently cache and serve your static assets. This results in reduced latency, faster page loads, and improved site performance across all regions.
+
+## 4. Security-first hosting with built-in DDoS protection
+
+As websites grow, security risks increase. Appwrite Sites comes with [DDoS protection](https://appwrite.io/docs/products/network/ddos), ensuring your application remains online by detecting and mitigating malicious traffic. Additionally, it includes **custom domain management** with automatic SSL encryption, securing your site with minimal setup.
+
+## 5. Preview deployments for streamlined collaboration
+
+Appwrite Sites makes team collaboration easier by generating **deployment preview links** for every update. These previews allow you to test and review changes before going live, providing a seamless workflow for developers and stakeholders to verify updates in a staging environment.
+
+## 6. Flexible deployment options
+
+Deploying an Astro application with Appwrite Sites is straightforward, offering multiple methods to suit different workflows:
+
+- [Git-based deployments](https://appwrite.io/docs/products/sites/deploy-from-git): Automatically push updates from your repository's main branch.
+- **CLI-based deployment**: Deploy manually with a single command:
+    
+    ```bash
+    appwrite deploy site
+    ```
+    
+- **Manual file uploads**: Upload static files directly through the Appwrite Console.
+
+For new users, Appwrite provides **starter templates** and example projects, making it easy to get started with minimal configuration.
+
+## 7. Integrated backend services for enhanced functionality
+
+While Astro focuses on static site generation, many projects require authentication, databases, and serverless functions. Appwrite Sites seamlessly integrates with **Appwrite Auth**, **Appwrite Databases**, and **Appwrite Functions**, eliminating the need for third-party backend services and streamlining development.
+
+# How Appwrite Sites compares to other hosting platforms
+
+| Feature | Appwrite Sites | Vercel | Netlify |
+| --- | --- | --- | --- |
+| Free hosting | Yes | Yes | Yes |
+| Static site support | Yes | Yes | Yes |
+| Hybrid rendering | Yes | Yes | Yes |
+| Global CDN | Yes | Yes | Yes |
+| DDoS protection | Yes | Yes | Yes |
+| Deployment previews | Yes | Yes | Yes |
+| Custom domains | Yes | Yes | Yes |
+| Authentication | Appwrite Auth | No | Deprecated  |
+| Database | Appwrite Databases | No third-party | No third-party |
+| Serverless functions | Appwrite Functions | Cloudflare workers | AWS Lambda |
+| Storage | Appwrite Storage | Cloudflare R2 | No |
+| Cloud messaging | Appwrite Messaging | No | No |
+| Realtime database | Appwrite Realtime | No | No |
+
+Unlike other hosting solutions that require third-party integrations for backend features, Appwrite Sites provides an all-in-one ecosystem with built-in authentication, databases, and serverless functions.
+
+For developers seeking a hassle-free hosting solution that simplifies deployment and minimizes dependencies, Appwrite Sites is a compelling option. Explore more with our [Astro Quick Start Guide](https://appwrite.io/docs/quick-starts/astro) and start deploying your Astro applications by visiting [Appwrite Sites](https://appwrite.io/sites).

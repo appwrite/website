@@ -1,7 +1,7 @@
 ---
 layout: article
 title: Migrations
-description: Learn how to migrate your projects from other vendors to Appwrite Cloud or how to move from self-hosting to Cloud and the other way around using Appwrite Migrations service.
+description: Learn how to use Appwrite Migrations service to move projects from other vendors to Appwrite Cloud or from self-hosting to Cloud and the other way around.
 difficulty: beginner
 readtime: 5
 ---

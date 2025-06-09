@@ -96,8 +96,8 @@ import { Client } from "appwrite";
 const client = new Client();
 
 client
-    .setEndpoint('https://cloud.appwrite.io/v1')    // Your API Endpoint
-    .setProject('<YOUR_PROJECT_ID>')                // Your project ID
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')    // Your API Endpoint
+    .setProject('<PROJECT_ID>')                // Your project ID
 ;
 ```
 ```client-flutter
@@ -106,23 +106,23 @@ import 'package:appwrite/appwrite.dart';
 Client client = Client();
 
 client
-    .setEndpoint('https://cloud.appwrite.io/v1')    // Your API Endpoint
-    .setProject('<YOUR_PROJECT_ID>')                // Your project ID
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')    // Your API Endpoint
+    .setProject('<PROJECT_ID>')                // Your project ID
 ;
 ```
 ```client-apple
 import Appwrite
 
 let client = Client()
-    .setEndpoint("https://cloud.appwrite.io/v1")    // Your API Endpoint
-    .setProject("<YOUR_PROJECT_ID>")                            // Your project ID
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")    // Your API Endpoint
+    .setProject("<PROJECT_ID>")                            // Your project ID
 ```
 ```client-android-kotlin
 import io.appwrite.Client
 
 val client = Client(context)
-    .setEndpoint("https://cloud.appwrite.io/v1")    // Your API Endpoint
-    .setProject("<YOUR_PROJECT_ID>")                // Your project ID
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")    // Your API Endpoint
+    .setProject("<PROJECT_ID>")                // Your project ID
 ```
 {% /multicode %}
 {% /tabsitem %}
@@ -139,8 +139,8 @@ const sdk = require('node-appwrite');
 const client = new sdk.Client();
 
 client
-    .setEndpoint('https://cloud.appwrite.io/v1')                // Your API Endpoint
-    .setProject('<YOUR_PROJECT_ID>')                            // Your project ID
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')                // Your API Endpoint
+    .setProject('<PROJECT_ID>')                            // Your project ID
     .setJWT('<YOUR_API_KEY>')                                   // Your secret JSON Web Token
 ;
 ```
@@ -151,8 +151,8 @@ import * as sdk from "https://deno.land/x/appwrite/mod.ts";
 let client = new sdk.Client();
 
 client
-    .setEndpoint('https://cloud.appwrite.io/v1')                // Your API Endpoint
-    .setProject('<YOUR_PROJECT_ID>')                            // Your project ID
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')                // Your API Endpoint
+    .setProject('<PROJECT_ID>')                            // Your project ID
     .setJWT('<YOUR_API_KEY>')                                   // Your secret JSON Web Token
 ;
 ```
@@ -164,8 +164,8 @@ use Appwrite\Client;
 $client = new Client();
 
 $client
-    ->setEndpoint('https://cloud.appwrite.io/v1')               // Your API Endpoint
-    ->setProject('<YOUR_PROJECT_ID>')                           // Your project ID
+    ->setEndpoint('https://<REGION>.cloud.appwrite.io/v1')               // Your API Endpoint
+    ->setProject('<PROJECT_ID>')                           // Your project ID
     ->setJWT('<YOUR_API_KEY>')                                  // Your secret JSON Web Token
 ;
 ```
@@ -175,8 +175,8 @@ from appwrite.client import Client
 client = Client()
 
 (client
-  .set_endpoint('https://cloud.appwrite.io/v1')                 # Your API Endpoint
-  .set_project('<YOUR_PROJECT_ID>')                             # Your project ID
+  .set_endpoint('https://<REGION>.cloud.appwrite.io/v1')                 # Your API Endpoint
+  .set_project('<PROJECT_ID>')                             # Your project ID
   .set_jwt('<YOUR_API_KEY>')                                    # Your secret JSON Web Token
 )
 ```
@@ -186,8 +186,8 @@ require 'appwrite'
 include Appwrite
 
 client = Client.new
-    .set_endpoint('https://cloud.appwrite.io/v1')               # Your API Endpoint
-    .set_project('<YOUR_PROJECT_ID>')                           # Your project ID
+    .set_endpoint('https://<REGION>.cloud.appwrite.io/v1')               # Your API Endpoint
+    .set_project('<PROJECT_ID>')                           # Your project ID
     .set_jwt('<YOUR_API_KEY>')                                  # Your secret JSON Web Token
 ```
 ```csharp
@@ -195,8 +195,8 @@ using Appwrite;
 using Appwrite.Services;
 
 var client = new Client()
-    .SetEndPoint("https://cloud.appwrite.io/v1")                // Your API Endpoint
-    .SetProject("<YOUR_PROJECT_ID>")                            // Your project ID
+    .SetEndPoint("https://<REGION>.cloud.appwrite.io/v1")                // Your API Endpoint
+    .SetProject("<PROJECT_ID>")                            // Your project ID
     .SetJWT("<YOUR_API_KEY>");                                  // Your secret JSON Web Token
 ```
 ```dart
@@ -206,8 +206,8 @@ void main() {                                                   // Init SDK
   Client client = Client();
 
   client
-    .setEndpoint('https://cloud.appwrite.io/v1')                // Your API Endpoint
-    .setProject('<YOUR_PROJECT_ID>')                            // Your project ID
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')                // Your API Endpoint
+    .setProject('<PROJECT_ID>')                            // Your project ID
     .setJWT('<YOUR_API_KEY>')                                   // Your secret JSON Web Token
   ;
 }
@@ -217,8 +217,8 @@ import io.appwrite.Client;
 import io.appwrite.coroutines.CoroutineCallback;
 
 Client client = new Client()
-    .setEndpoint("https://cloud.appwrite.io/v1")                // Your API Endpoint
-    .setProject("<YOUR_PROJECT_ID>")                            // Your project ID
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")                // Your API Endpoint
+    .setProject("<PROJECT_ID>")                            // Your project ID
     .setJWT("<YOUR_API_KEY>");                                  // Your secret JSON Web Token
 ```
 ```java
@@ -226,16 +226,16 @@ import io.appwrite.Client;
 import io.appwrite.coroutines.CoroutineCallback;
 
 Client client = new Client()
-    .setEndpoint("https://cloud.appwrite.io/v1")                // Your API Endpoint
-    .setProject("<YOUR_PROJECT_ID>")                            // Your project ID
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")                // Your API Endpoint
+    .setProject("<PROJECT_ID>")                            // Your project ID
     .setJWT("<YOUR_API_KEY>");                                  // Your secret JSON Web Token
 ```
 ```swift
 import Appwrite
 
 let client = Client()
-    .setEndpoint("https://cloud.appwrite.io/v1")                // Your API Endpoint
-    .setProject("<YOUR_PROJECT_ID>")                            // Your project ID
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")                // Your API Endpoint
+    .setProject("<PROJECT_ID>")                            // Your project ID
     .setJWT("<YOUR_API_KEY>")                                   // Your secret JSON Web Token
 ```
 {% /multicode %}
@@ -262,8 +262,8 @@ The API key should have the following scope in order to perform authentication:
 import { Client } from "node-appwrite"; // Using the server SDK
 
 const adminClient = new Client()
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('<YOUR_PROJECT_ID>')             // Your project ID
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('<PROJECT_ID>')             // Your project ID
     .setKey('<YOUR_API_KEY>');                   // Your secret API key
 ```
 ```php
@@ -271,8 +271,8 @@ use Appwrite\Client;
 use Appwrite\Services\Account;
 
 $adminClient = (new Client())
-    ->setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    ->setProject('<YOUR_PROJECT_ID>')             // Your project ID
+    ->setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
+    ->setProject('<PROJECT_ID>')             // Your project ID
     ->setKey('<YOUR_API_KEY>');                   // Your secret API key
 
 
@@ -291,8 +291,8 @@ You should create a new client for each request and **never** share the client b
 {% multicode %}
 ```server-nodejs
 const sessionClient = new Client()
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('<YOUR_PROJECT_ID>');            // Your project ID
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('<PROJECT_ID>');            // Your project ID
 
 const session = req.cookies.session; // Get the session cookie from the request
 if (session) {
@@ -301,8 +301,8 @@ if (session) {
 ```
 ```php
 $sessionClient = (new Client())
-    ->setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    ->setProject('<YOUR_PROJECT_ID>');            // Your project ID
+    ->setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
+    ->setProject('<PROJECT_ID>');            // Your project ID
 
 $session = $_COOKIE['session']; // Get the session cookie from the request
 if ($session) {
@@ -366,26 +366,29 @@ Get started with Appwrite and Node.js
 {% cards_item href="/docs/quick-starts/python" title="Python" icon="icon-python" %}
 Get started with Appwrite and Python
 {% /cards_item %}
-{% cards_item href="/docs/quick-starts/dotnet" title=".NET" icon="icon-dotnet" %}
-Get started with Appwrite and .NET
-{% /cards_item %}
 {% cards_item href="/docs/quick-starts/dart" title="Dart" icon="icon-dart" %}
 Get started with Appwrite and Dart
-{% /cards_item %}
-{% cards_item href="/docs/quick-starts/ruby" title="Ruby" icon="icon-ruby" %}
-Get started with Appwrite and Ruby
-{% /cards_item %}
-{% cards_item href="/docs/quick-starts/deno" title="Deno" icon="icon-deno" %}
-Get started with Appwrite and Deno
 {% /cards_item %}
 {% cards_item href="/docs/quick-starts/php" title="PHP" icon="icon-php" %}
 Get started with Appwrite and PHP
 {% /cards_item %}
-{% cards_item href="/docs/quick-starts/kotlin" title="Kotlin" icon="icon-kotlin" %}
-Get started with Appwrite and Kotlin
+{% cards_item href="/docs/quick-starts/ruby" title="Ruby" icon="icon-ruby" %}
+Get started with Appwrite and Ruby
+{% /cards_item %}
+{% cards_item href="/docs/quick-starts/dotnet" title=".NET" icon="icon-dotnet" %}
+Get started with Appwrite and .NET
+{% /cards_item %}
+{% cards_item href="/docs/quick-starts/deno" title="Deno" icon="icon-deno" %}
+Get started with Appwrite and Deno
+{% /cards_item %}
+{% cards_item href="/docs/quick-starts/go" title="Go" icon="icon-go" %}
+Get started with Appwrite and Go
 {% /cards_item %}
 {% cards_item href="/docs/quick-starts/swift" title="Swift" icon="icon-swift" %}
 Get started with Appwrite and Swift
+{% /cards_item %}
+{% cards_item href="/docs/quick-starts/kotlin" title="Kotlin" icon="icon-kotlin" %}
+Get started with Appwrite and Kotlin
 {% /cards_item %}
 {% /cards %}
 

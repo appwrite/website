@@ -1,4 +1,4 @@
-<script lang="ts" context="module">
+<script lang="ts" module>
     import { navigating } from '$app/stores';
     import { writable } from 'svelte/store';
 
@@ -34,26 +34,41 @@
     }
 
     const CTX_KEY = Symbol('docs');
+    const TUT_CTX_KEY = Symbol('tut-docs');
     export const isInDocs = () => getContext<boolean>(CTX_KEY) ?? false;
+    export const isInTutorialDocs = () => getContext<boolean>(TUT_CTX_KEY) ?? false;
 </script>
 
 <script lang="ts">
+    import { run } from 'svelte/legacy';
+
     import { Search, IsLoggedIn } from '$lib/components';
     import { isMac } from '$lib/utils/platform';
     import { getContext, setContext } from 'svelte';
-    import { GITHUB_STARS } from '$lib/constants';
+    import { SOCIAL_STATS } from '$lib/constants';
+    import { page } from '$app/state';
+    import { getAppwriteDashboardUrl } from '$lib/utils/dashboard';
+    import { Button, Icon, InlineTag } from '$lib/components/ui';
 
-    export let variant: DocsLayoutVariant = 'default';
-    export let isReferences = false;
+    interface Props {
+        variant?: DocsLayoutVariant;
+        isReferences?: boolean;
+        children?: import('svelte').Snippet;
+    }
+
+    let { variant = 'default', isReferences = false, children }: Props = $props();
 
     const variantClasses: Record<DocsLayoutVariant, string> = {
-        default: 'web-grid-side-nav web-container u-padding-inline-0',
+        default: 'web-grid-side-nav max-w-[90rem] mx-auto',
         expanded: 'web-grid-huge-navs',
         'two-side-navs': 'web-grid-two-side-navs'
     };
 
-    $: variantClass = variantClasses[variant];
-    $: $layoutState.currentVariant = variant;
+    let variantClass = $derived(variantClasses[variant]);
+
+    $effect(() => {
+        $layoutState.currentVariant = variant;
+    });
 
     navigating.subscribe(() => {
         layoutState.update((n) => ({
@@ -62,7 +77,9 @@
             showSidenav: false
         }));
     });
-    setContext(CTX_KEY, true);
+
+    const key = page.route.id?.includes('tutorials') ? TUT_CTX_KEY : CTX_KEY;
+    setContext(key, true);
 
     const handleKeydown = (e: KeyboardEvent) => {
         if (e.key === 'Escape' && ($layoutState.showReferences || $layoutState.showSidenav)) {
@@ -76,21 +93,21 @@
     };
 </script>
 
-<svelte:window on:keydown={handleKeydown} />
+<svelte:window onkeydown={handleKeydown} />
 
-<div class="u-position-relative">
+<div class="relative" data-variant={$layoutState.currentVariant}>
     <section class="web-mobile-header is-transparent">
         <div class="web-mobile-header-start">
             <a href="/" aria-label="homepage">
                 <img
-                    class="web-logo u-only-dark"
+                    class="web-logo web-u-only-dark"
                     src="/images/logos/appwrite.svg"
                     alt="appwrite"
                     height="24"
                     width="130"
                 />
                 <img
-                    class="web-logo u-only-light"
+                    class="web-logo web-u-only-light"
                     src="/images/logos/appwrite-light.svg"
                     alt="appwrite"
                     height="24"
@@ -99,16 +116,20 @@
             </a>
         </div>
         <div class="web-mobile-header-end">
-            <a href="https://cloud.appwrite.io" class="web-button web-is-only-desktop">
-                <span class="web-sub-body-500">Go to Console</span>
-            </a>
-            <button class="web-button is-text" aria-label="open navigation" on:click={toggleSidenav}>
+            <Button
+                href={getAppwriteDashboardUrl()}
+                class="hidden md:flex"
+                event="docs-go_to_console-click"
+            >
+                <span class="text-sub-body font-medium">Go to Console</span>
+            </Button>
+            <Button variant="text" aria-label="open navigation" onclick={toggleSidenav}>
                 {#if $layoutState.showSidenav}
-                    <span aria-hidden="true" class="web-icon-close" />
+                    <Icon aria-hidden="true" name="close"></Icon>
                 {:else}
-                    <span aria-hidden="true" class="web-icon-hamburger-menu" />
+                    <Icon aria-hidden="true" name="hamburger-menu"></Icon>
                 {/if}
-            </button>
+            </Button>
         </div>
     </section>
     <header
@@ -116,17 +137,17 @@
         class:is-transparent={variant !== 'expanded'}
     >
         <div class="web-main-header-wrapper">
-            <div class="web-main-header-start u-stretch">
+            <div class="web-main-header-start flex-1">
                 <a href="/" aria-label="homepage">
                     <img
-                        class="web-logo u-only-dark"
+                        class="web-logo web-u-only-dark"
                         src="/images/logos/appwrite.svg"
                         alt="appwrite"
                         height="24"
                         width="130"
                     />
                     <img
-                        class="web-logo u-only-light"
+                        class="web-logo web-u-only-light"
                         src="/images/logos/appwrite-light.svg"
                         alt="appwrite"
                         height="24"
@@ -140,15 +161,15 @@
                         </li>
                     </ul>
                 </nav>
-                <div class="u-flex u-stretch web-u-margin-inline-start-48">
+                <div class="web-u-margin-inline-start-48 flex flex-1">
                     <button
                         class="web-input-button web-u-flex-basis-400"
-                        on:click={() => ($layoutState.showSearch = true)}
+                        onclick={() => ($layoutState.showSearch = true)}
                     >
-                        <span class="web-icon-search" aria-hidden="true" />
+                        <span class="web-icon-search" aria-hidden="true"></span>
                         <span class="text">Search in docs</span>
 
-                        <div class="u-flex u-gap-4 u-margin-inline-start-auto">
+                        <div class="ml-auto flex gap-1">
                             {#if isMac()}
                                 <span class="web-kbd" aria-label="command">⌘</span>
                             {:else}
@@ -160,17 +181,17 @@
                 </div>
             </div>
             <div class="web-main-header-end">
-                <div class="u-flex u-gap-8">
-                    <a
-                        href="https://github.com/appwrite/appwrite/stargazers"
+                <div class="flex gap-2">
+                    <Button
+                        variant="text"
+                        href={SOCIAL_STATS.GITHUB.LINK}
                         target="_blank"
                         rel="noopener noreferrer"
-                        class="web-button is-text"
                     >
-                        <span class="web-icon-star" aria-hidden="true" />
+                        <Icon name="star" aria-hidden="true"></Icon>
                         <span class="text">Star on GitHub</span>
-                        <span class="web-inline-tag web-sub-body-400">{GITHUB_STARS}</span>
-                    </a>
+                        <InlineTag>{SOCIAL_STATS.GITHUB.STAT}</InlineTag>
+                    </Button>
                     <IsLoggedIn />
                 </div>
             </div>
@@ -181,7 +202,7 @@
         class:is-open={$layoutState.showSidenav}
         style:--container-size={variant === 'default' ? 'var(--container-size-large)' : undefined}
     >
-        <slot />
+        {@render children?.()}
     </div>
 </div>
 

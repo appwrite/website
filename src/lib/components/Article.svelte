@@ -23,15 +23,22 @@
             />
         </div>
         <div class="web-grid-articles-item-content">
-            <h4 class="web-label web-u-color-text-primary">
+            <h4 class="text-label text-primary">
                 {title}
             </h4>
             <div class="web-author">
-                <div class="u-flex u-cross-center u-gap-8">
-                    <img class="web-author-image" src={avatar} width="24" height="24" alt={author} />
+                <div class="flex items-center gap-2">
+                    <img
+                        class="web-author-image"
+                        loading="lazy"
+                        src={avatar}
+                        width="24"
+                        height="24"
+                        alt={author}
+                    />
                     <div class="web-author-info">
-                        <h4 class="web-sub-body-400 web-u-color-text-primary">{author}</h4>
-                        <ul class="web-metadata web-caption-400 web-is-not-mobile">
+                        <h4 class="text-sub-body text-primary">{author}</h4>
+                        <ul class="web-metadata text-caption web-is-not-mobile">
                             <li>
                                 {formatDate(date)}
                             </li>

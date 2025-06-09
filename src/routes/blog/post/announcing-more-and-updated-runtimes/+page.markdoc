@@ -1,12 +1,12 @@
 ---
 layout: post
-title: Introducing more and updated runtimes to the Appwrite ecosystem
+title: New and Updated Runtimes in the Appwrite Ecosystem
 description: More runtimes, more flexibility. We're happy to add more and updated runtimes to allow you to build with your preferred tech stack.
 date: 2024-03-01
 cover: /images/blog/runtimes.png
 timeToRead: 6
 author: vincent-ge
-category: product
+category: product, announcement
 ---
 
 Previously, we completely reimagined [Functions](https://dev.to/appwrite/serverless-your-way-unleashing-appwrite-functions-true-potential-2l4f) to be more flexible and innovative yet familiar to developers. Now, Appwrite expands and updates the runtime ecosystem available on Appwrite with Bun 1.0.29, Node 21, Ruby 3.3, Deno 1.40, PHP 8.3, Python 3.12, Kotlin 1.9, Java 18, Swift 5.9 and Dart 3.3 support.

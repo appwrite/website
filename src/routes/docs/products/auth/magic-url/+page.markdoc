@@ -15,19 +15,24 @@ Initialize the log in process with the [Create Magic URL Token](/docs/references
 import { Client, Account, ID } from "appwrite";
 
 const client = new Client()
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
     .setProject('<PROJECT_ID>');                 // Your project ID
 
 const account = new Account(client);
 
-const token = await account.createMagicURLToken(ID.unique(), 'email@example.com');
+const token = await account.createMagicURLToken(
+    ID.unique(),
+    'email@example.com',
+    'https://example.com/verify'
+);
 ```
 
 ```graphql
 mutation {
     accountCreateMagicURLToken(
         userId: "ID.unique()",
-        email: "email@example.com"
+        email: "email@example.com",
+        url: "https://example.com/verify"
     ) {
         _id
         _createdAt
@@ -40,9 +45,12 @@ mutation {
 
 {% /multicode %}
 
+The `url` parameter specifies where users will be redirected after clicking the magic link.
+The secret and userId will be automatically appended as query parameters to this URL.
+
 # Login {% #login %}
 
-After receiving your secret from an email, you can create a session.
+After the user clicks the magic link in their email, they will be redirected to your specified URL with the secret and userId as query parameters. Use these parameters to create a session.
 
 {% multicode %}
 
@@ -50,7 +58,7 @@ After receiving your secret from an email, you can create a session.
 import { Client, Account } from "appwrite";
 
 const client = new Client()
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
     .setProject('<PROJECT_ID>');                // Your project ID
 
 const account = new Account(client);

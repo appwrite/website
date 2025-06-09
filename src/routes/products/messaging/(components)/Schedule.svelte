@@ -2,6 +2,7 @@
     import { getLocalTimeZone, today } from '@internationalized/date';
     import { createCalendar, melt } from '@melt-ui/svelte';
     import Step from './Step.svelte';
+    import { Button } from '$lib/components/ui';
 
     const curr = today(getLocalTimeZone());
 
@@ -18,34 +19,34 @@
 </script>
 
 <Step title="Step 3: Schedule">
-    <div class="blur" />
+    <div class="blur"></div>
     <div class="wrapper">
         <div class="calendar" use:melt={$calendar}>
             <header>
                 <button class="web-icon-button" use:melt={$prevButton}>
-                    <div class="web-icon-chevron-left" />
+                    <div class="web-icon-chevron-left"></div>
                 </button>
-                <div class="u-flex u-gap-16 u-cross-center">
-                    <div class="web-label web-u-color-text-primary" use:melt={$heading}>
+                <div class="flex items-center gap-4">
+                    <div class="text-label text-primary" use:melt={$heading}>
                         {$headingValue}
                     </div>
-                    <button
-                        class="web-button is-secondary"
-                        on:click={() => value.set(curr)}
+                    <Button
+                        variant="secondary"
+                        onclick={() => value.set(curr)}
                         style="height: min-content; padding-block: 0 !important;"
                     >
                         Today
-                    </button>
+                    </Button>
                 </div>
                 <button class="web-icon-button" use:melt={$nextButton}>
-                    <div class="web-icon-chevron-right" />
+                    <div class="web-icon-chevron-right"></div>
                 </button>
             </header>
 
             {#each $months as month}
                 <div class="grid" use:melt={$grid}>
                     {#each weekdays as day}
-                        <span class="web-eyebrow">
+                        <span class="text-micro uppercase">
                             {day}
                         </span>
                     {/each}
@@ -68,7 +69,7 @@
             {/each}
         </div>
 
-        <div class="time-picker is-only-desktop">
+        <div class="time-picker web-is-only-desktop">
             {#each { length: 11 } as _, i}
                 <div>
                     <span>{(3 + i).toString().padStart(2, '0')}</span>
@@ -79,8 +80,8 @@
         </div>
     </div>
 
-    <h3 class="web-title web-u-color-text-primary">Schedule your messages</h3>
-    <p class="web-description">Send messages immediately or schedule them for future delivery.</p>
+    <h3 class="text-title font-aeonik-pro text-primary">Schedule your messages</h3>
+    <p class="text-description">Send messages immediately or schedule them for future delivery.</p>
 </Step>
 
 <style lang="scss">

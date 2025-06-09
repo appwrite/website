@@ -1,10 +1,9 @@
 import {
     PUBLIC_APPWRITE_COL_MESSAGES_ID,
     PUBLIC_APPWRITE_COL_THREADS_ID,
-    PUBLIC_APPWRITE_DB_MAIN_ID,
-    PUBLIC_APPWRITE_FN_TLDR_ID
+    PUBLIC_APPWRITE_DB_MAIN_ID
 } from '$env/static/public';
-import { databases, functions } from '$lib/appwrite';
+import { databases } from '$lib/appwrite';
 import { Query } from '@appwrite.io/console';
 import type { DiscordMessage, DiscordThread } from './types';
 
@@ -19,6 +18,17 @@ type FilterThreadsArgs = {
     tags?: string[];
     allTags?: boolean;
 };
+
+export function sanitizeContent(rawContent: string, maxLength: number = 200): string {
+    const cleaned = rawContent.replace(
+        /```(?:\w+)?\n([\s\S]*?)```|```([\s\S]*?)```/g,
+        (_, withLang, withoutLang) => {
+            return (withLang || withoutLang).trim();
+        }
+    );
+
+    return cleaned.length > maxLength ? cleaned.slice(0, maxLength) + '...' : cleaned;
+}
 
 export function filterThreads({ q, threads: threadDocs, tags, allTags }: FilterThreadsArgs) {
     const threads = tags
@@ -111,7 +121,7 @@ export async function getThreadMessages(threadId: string) {
     );
 }
 
-export async function* iterateAllThreads(total: number|undefined = undefined) {
+export async function* iterateAllThreads(total: number | undefined = undefined) {
     let offset = 0;
     const limit = 100;
     while (true) {

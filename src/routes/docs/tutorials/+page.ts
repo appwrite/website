@@ -55,13 +55,14 @@ export async function load() {
 
     const tutorials = Object.entries(
         allTutorials.reduce((acc: { [key: string]: any[] }, item) => {
+            const cat = item.category as string;
             // If the category does not exist in the accumulator, initialize it
-            if (!acc[item.category]) {
-                acc[item.category] = [];
+            if (!acc[cat]) {
+                acc[cat] = [];
             }
 
             // Push the current item into the appropriate category
-            acc[item.category].push(item);
+            acc[cat].push(item);
 
             return acc;
         }, {})

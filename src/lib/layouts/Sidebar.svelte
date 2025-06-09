@@ -1,9 +1,11 @@
-<script lang="ts" context="module">
+<script lang="ts" module>
     export type NavLink = {
         label: string;
         href: string;
         icon?: string;
+        new?: boolean;
         isParent?: boolean;
+        openInNewTab?: boolean;
     };
 
     export type NavGroup = {
@@ -22,13 +24,19 @@
 <script lang="ts">
     import { clickOutside } from '$lib/actions/clickOutside';
     import { Tooltip, IsLoggedIn } from '$lib/components';
-    import { GITHUB_STARS } from '$lib/constants';
+    import { Button, Icon, InlineTag } from '$lib/components/ui';
+    import { SOCIAL_STATS } from '$lib/constants';
     import { layoutState, toggleSidenav } from './Docs.svelte';
     import SidebarNavButton from './SidebarNavButton.svelte';
+    import { trackEvent } from '$lib/actions/analytics';
 
-    export let expandable = false;
-    export let navigation: NavTree;
-    export let parent: NavParent | undefined = undefined;
+    interface Props {
+        expandable?: boolean;
+        navigation: NavTree;
+        parent?: NavParent | undefined;
+    }
+
+    let { expandable = false, navigation, parent = undefined }: Props = $props();
 
     function isNavLink(item: NavLink | NavGroup): item is NavLink {
         return 'href' in item;
@@ -48,18 +56,27 @@
     <div class="web-side-nav-wrapper">
         <button
             class="web-input-text web-is-not-desktop"
-            on:click={() => ($layoutState.showSearch = true)}
+            onclick={() => ($layoutState.showSearch = true)}
         >
-            <span class="web-icon-search" />
+            <span class="web-icon-search"></span>
             <span class="text">Search in docs</span>
         </button>
         <div class="web-side-nav-scroll">
             {#if parent}
                 <section class="web-side-nav-wrapper-parent">
-                    <a href={parent.href} aria-label="go back">
-                        <span class="icon-cheveron-left" aria-hidden="true" />
+                    <a
+                        href={parent.href}
+                        aria-label="go back"
+                        onclick={() =>
+                            trackEvent(
+                                `docs-sidebar-${parent.label.toLowerCase().replace(' ', '_')}-click`
+                            )}
+                    >
+                        <span class="icon-cheveron-left" aria-hidden="true"></span>
                     </a>
-                    <span class="web-side-nav-wrapper-parent-title web-eyebrow">{parent.label}</span>
+                    <span class="web-side-nav-wrapper-parent-title text-micro uppercase"
+                        >{parent.label}</span
+                    >
                 </section>
             {/if}
             {#each navigation as navGroup}
@@ -68,14 +85,16 @@
                         {#if expandable && !$layoutState.showSidenav}
                             <Tooltip placement="right">
                                 <SidebarNavButton groupItem={navGroup} />
-                                <svelte:fragment slot="tooltip">{navGroup.label}</svelte:fragment>
+                                {#snippet tooltip()}
+                                    <span>{navGroup.label}</span>
+                                {/snippet}
                             </Tooltip>
                         {:else}
                             <SidebarNavButton groupItem={navGroup} />
                         {/if}
                     {:else}
                         {#if navGroup.label}
-                            <h2 class="web-side-nav-header web-eyebrow u-un-break-text">
+                            <h2 class="web-side-nav-header text-micro whitespace-nowrap uppercase">
                                 {navGroup.label}
                             </h2>
                         {/if}
@@ -85,9 +104,9 @@
                                     {#if expandable && !$layoutState.showSidenav}
                                         <Tooltip placement="right">
                                             <SidebarNavButton {groupItem} />
-                                            <svelte:fragment slot="tooltip"
-                                                >{groupItem.label}</svelte:fragment
-                                            >
+                                            {#snippet tooltip()}
+                                                <span>{groupItem.label}</span>
+                                            {/snippet}
                                         </Tooltip>
                                     {:else}
                                         <SidebarNavButton {groupItem} />
@@ -101,27 +120,28 @@
         </div>
         {#if expandable}
             <button
-                on:click={toggleSidenav}
-                class="web-icon-button u-margin-inline-start-auto"
+                onclick={toggleSidenav}
+                class="web-icon-button ml-auto"
                 style:margin-bottom="1rem"
                 aria-label="toggle nav"
             >
-                <span class="icon-cheveron-right" aria-hidden="true" />
+                <span class="icon-cheveron-right" aria-hidden="true"></span>
             </button>
         {/if}
         <div class="web-side-nav-mobile-footer-buttons">
             <IsLoggedIn />
 
-            <a
-                href="https://github.com/appwrite/appwrite/stargazers"
+            <Button
+                variant="text"
+                href={SOCIAL_STATS.GITHUB.LINK}
                 target="_blank"
                 rel="noopener noreferrer"
-                class="web-button is-text web-u-inline-width-100-percent-mobile"
+                class="web-u-inline-width-100-percent-mobile"
             >
-                <span class="web-icon-star" aria-hidden="true" />
+                <Icon class="star" aria-hidden="true"></Icon>
                 <span class="text">Star on GitHub</span>
-                <span class="web-inline-tag web-sub-body-400">{GITHUB_STARS}</span>
-            </a>
+                <InlineTag>{SOCIAL_STATS.GITHUB.STAT}</InlineTag>
+            </Button>
         </div>
     </div>
 </nav>

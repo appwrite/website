@@ -14,10 +14,6 @@ Appwrite's plans are applied to an entire organization.
 Get started with a Pro plan organization by visiting the [pricing page](https://appwrite.io/pricing) and click **Start building**
 or create a new organization from the Appwrite Console and select **Pro plan**.
 
-<!-- ## Trial
-Every Appwrite Pro plan organization starts with a **14 day free trial**.
-The first billing period will start after the trial ends. -->{% #trial %}
-
 ## Switch to Free plan {% #switch-to-pro-plan %}
 
 Head to the overview of your organization through the profile menu on the top right of your Appwrite Console.
@@ -37,6 +33,6 @@ Appwrite will automatically scale Pro plan projects as they require more resourc
 Budget caps limit the amount of automatic scaling and prevent unexpected bills.
 
 Organization budget caps can be set by navigating to the organization's **Billing** tab, under **Budget cap**, toggle and set a budget cap.
-Appwrite will send emails to warn organization memebers when near the budget cap.
+Appwrite will send emails to warn organization members when near the budget cap.
 
 {% partial file="resource-limits.md" /%}

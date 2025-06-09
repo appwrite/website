@@ -16,7 +16,7 @@
     grid-template-areas:  ".    header header"
                           "side main .";
     column-gap:pxToRem(55);
-    row-gap:pxToRem(48);
+    row-gap:pxToRem(8);
     padding-block-start:pxToRem(80);
     &-header { }
   }

@@ -7,8 +7,8 @@ The Appwrite CLI can be used in a non-interactive and headless manner, without s
 
 ```sh
 appwrite client \
-    --endpoint https://cloud.appwrite.io/v1 \
-    --projectId [YOUR_PROJECT_ID] \
+    --endpoint https://<REGION>.cloud.appwrite.io/v1 \
+    --project-id [PROJECT_ID] \
     --key YOUR_API_KEY
 ```
 
@@ -20,38 +20,51 @@ In this mode, the CLI can only interact with one project at a time.
 In non-interactive mode, the CLI uses an API key to authenticate. Your API key must have sufficient permissions to execute the commands you plan to use. [Learn more about API Keys](/docs/advanced/platform/api-keys).
 
 # Deployment {% #deployment %}
-Appwrite's deploy commands can also be executed in a non-interactive mode. This applies to both function and collection deployment.
+Appwrite's `push` commands can also be executed in a non-interactive mode. This applies to the following resources: functions, collections, buckets, teams, and messaging topics.
 
-You can deploy a function non-interactively by using the `--yes` option to skip all warnings and specifying which functions you want to deploy.
+You can push a resource non-interactively by using the `--force` option to skip all warnings and specify which resources you want to deploy.
 
-Deploy a single function by ID:
-
-```sh
-appwrite deploy function --functionId [FUNCTION ID] --yes
-```
-
-Deploy all functions:
+To push all available resources:
 
 ```sh
-appwrite deploy function --all --yes
+appwrite push all --all --force
 ```
 
-You can deploy databases, collections, teams, and buckets non-interactively in a similar way by using the `--all` and `--yes` option.
+To push a single function by ID:
+```sh
+appwrite push functions --function-id [FUNCTION ID] --force
+```
 
-Deploy all databases and collections:
+Push all functions:
 
 ```sh
-appwrite deploy collection --all --yes
+appwrite push functions --all --force
 ```
 
-Deploy all teams:
+You can push databases, collections, teams, and buckets non-interactively in a similar way by using the `--all` and `--force` option.
+
+Push all databases and collections:
 
 ```sh
-appwrite deploy team --all --yes
+appwrite push collections --all --force
 ```
 
-Deploy all buckets:
+Push all teams:
 
 ```sh
-appwrite deploy buckets --all --yes
+appwrite push teams --all --force
 ```
+
+Push all buckets:
+
+```sh
+appwrite push buckets --all --force
+```
+
+# CI/CD integrations {% #ci-cd-integrations %}
+
+Use providers like Github actions to create continuous integrations and continuous delivery or deployment (CI/CD).
+
+## Github
+
+You can use [Github actions](https://github.com/appwrite/setup-for-appwrite?tab=readme-ov-file#introduction) to automate your Appwrite CLI commands, allowing you to use them even in non-interactive mode.

@@ -22,17 +22,21 @@
     export let avatar: $$Props['avatar'];
 </script>
 
-<div class="web-card is-white theme-light">
-    <div class="web-social-item u-flex-vertical">
-        <div class="u-flex u-gap-16 u-main-space-between">
+<div class="web-card is-white light">
+    <div class="web-social-item flex flex-col">
+        <div class="flex justify-between gap-4">
             <div class="web-user-box">
                 <img class="web-user-box-image" src={avatar} alt="" />
-                <div class="web-user-box-name web-sub-body-500 web-clr-primary">{name}</div>
-                <div class="web-user-box-username web-sub-body-400">{role}</div>
+                <div class="web-user-box-name text-sub-body web-clr-primary font-medium">
+                    {name}
+                </div>
+                <div class="web-user-box-username text-sub-body">{role}</div>
             </div>
         </div>
-        <p class="web-sub-body-500 web-u-text-color-neutral-700 u-margin-block-start-20">{bio}</p>
-        <ul class="u-flex u-gap-12 u-margin-block-start-32">
+        <p class="text-sub-body web-u-text-color-neutral-700 mt-5 font-medium">
+            {bio}
+        </p>
+        <ul class="mt-8 flex gap-3">
             <li>
                 <a
                     class="web-icon-button"
@@ -41,7 +45,7 @@
                     rel="noopener noreferrer"
                     aria-label="GitHub profile"
                 >
-                    <span class="web-icon-github" aria-hidden="true" />
+                    <span class="web-icon-github" aria-hidden="true"></span>
                 </a>
             </li>
             <li>
@@ -52,7 +56,7 @@
                     rel="noopener noreferrer"
                     aria-label="X profile"
                 >
-                    <span class="web-icon-x" aria-hidden="true" />
+                    <span class="web-icon-x" aria-hidden="true"></span>
                 </a>
             </li>
             <li>
@@ -63,7 +67,7 @@
                     rel="noopener noreferrer"
                     aria-label="LinkedIn profile"
                 >
-                    <span class="web-icon-linkedin" aria-hidden="true" />
+                    <span class="web-icon-linkedin" aria-hidden="true"></span>
                 </a>
             </li>
         </ul>

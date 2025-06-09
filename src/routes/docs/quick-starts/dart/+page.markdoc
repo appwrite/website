@@ -53,7 +53,7 @@ After entering the project directory, remove the `lib/` and `test/` directories.
 Install the Dart Appwrite SDK.
 
 ```sh
-dart pub add dart_appwrite 11.0.2
+dart pub add dart_appwrite:16.0.0
 ```
 {% /section %}
 {% section #step-4 step=4 title="Import Appwrite" %}
@@ -69,7 +69,7 @@ Find your project ID in the **Settings** page.
 
  Also, click on the **View API Keys** button to find the API key that was created earlier. 
 
-Open `bin/my_app.dart` and initialize the Appwrite Client. Replace `<YOUR_PROJECT_ID>` with your project ID and `<YOUR_API_KEY>` with your API key.
+Open `bin/my_app.dart` and initialize the Appwrite Client. Replace `<PROJECT_ID>` with your project ID and `<YOUR_API_KEY>` with your API key.
 
 ```dart
 import 'package:dart_appwrite/dart_appwrite.dart';
@@ -78,8 +78,8 @@ var client = Client();
 
 Future<void> main() async {
   client
-    .setEndpoint("https://cloud.appwrite.io/v1")
-    .setProject("<YOUR_PROJECT_ID>")
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
     .setKey("<YOUR_API_KEY>");
 }
 ```
@@ -200,8 +200,8 @@ Finally, revisit the `main()` function and call the functions created in previou
 ```dart
 Future<void> main() async {
   client
-    .setEndpoint("https://cloud.appwrite.io/v1")
-    .setProject("<YOUR_PROJECT_ID>")
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
     .setKey("<YOUR_API_KEY>");
 
     await prepareDatabase();

@@ -17,22 +17,24 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - name: Checkout the repo
-              uses: actions/checkout@v2
+              uses: actions/checkout@v4
 
             - name: Login to DockerHub
-              uses: docker/login-action@v1
+              uses: docker/login-action@v3
               with:
                   registry: ghcr.io
                   username: ${{ github.actor }}
                   password: ${{ secrets.GITHUB_TOKEN }}
 
             - name: Build and push
-              uses: docker/build-push-action@v2
+              uses: docker/build-push-action@v6
               with:
                   context: .
                   push: true
                   tags: ghcr.io/appwrite/website:${{ env.TAG }}
                   build-args: |
+                      "PUBLIC_APPWRITE_ENDPOINT=${{ vars.PUBLIC_APPWRITE_ENDPOINT }}"
+                      "PUBLIC_APPWRITE_DASHBOARD=${{ vars.PUBLIC_APPWRITE_DASHBOARD }}"
                       "PUBLIC_APPWRITE_PROJECT_ID=${{ vars.PUBLIC_APPWRITE_PROJECT_ID }}"
                       "PUBLIC_APPWRITE_DB_MAIN_ID=${{ vars.PUBLIC_APPWRITE_DB_MAIN_ID }}"
                       "PUBLIC_APPWRITE_COL_THREADS_ID=${{ vars.PUBLIC_APPWRITE_COL_THREADS_ID }}"
@@ -40,6 +42,7 @@ jobs:
                       "PUBLIC_APPWRITE_FN_TLDR_ID=${{ vars.PUBLIC_APPWRITE_FN_TLDR_ID }}"
                       "PUBLIC_APPWRITE_PROJECT_INIT_ID=${{ vars.PUBLIC_APPWRITE_PROJECT_INIT_ID }}"
                       "PUBLIC_GROWTH_ENDPOINT=${{ vars.PUBLIC_GROWTH_ENDPOINT }}"
+                      "PUBLIC_POSTHOG_API_KEY=${{ vars.PUBLIC_POSTHOG_API_KEY }}"
                       "APPWRITE_DB_INIT_ID=${{ secrets.APPWRITE_DB_INIT_ID }}"
                       "APPWRITE_COL_INIT_ID=${{ secrets.APPWRITE_COL_INIT_ID }}"
                       "APPWRITE_API_KEY_INIT=${{ secrets.APPWRITE_API_KEY_INIT }}"
@@ -72,7 +75,7 @@ jobs:
                       echo "_APP_VERSION=${{ env.TAG }}" >> .env
                       echo "_APP_DOMAIN=${{ secrets.STG_APP_DOMAIN }}" >> .env
                       echo "_APP_SYSTEM_SECURITY_EMAIL_ADDRESS=${{ secrets.APP_SYSTEM_SECURITY_EMAIL_ADDRESS }}" >> .env
-                      echo "SEMATEXT_TOKEN=${{ secrets.SEMATEXT_TOKEN }}" >> .env
+                      echo "_APP_BETTER_STACK_INCIDENT_URL=${{ secrets.BETTER_STACK_INCIDENT_URL }}" >> .env
 
                       echo ${{ secrets.GH_REGISTRY_TOKEN }} | docker login ghcr.io --username ${{ env.REGISTRY_USERNAME }} --password-stdin
                       docker-compose -f ${{ env.STACK_FILE }} config

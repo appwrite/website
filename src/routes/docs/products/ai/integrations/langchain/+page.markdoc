@@ -75,7 +75,7 @@ import { getStaticFile } from './utils.js';
 export default async ({ req, res, error }) => {
   if (req.method === 'GET') {
     const html = getStaticFile('index.html');
-    return res.send(html, 200, { 'Content-Type': 'text/html; charset=utf-8' });
+    return res.text(html, 200, { 'Content-Type': 'text/html; charset=utf-8' });
   }
 };
 ```
@@ -262,7 +262,7 @@ export default class AppwriteService {
     const client = new Client();
     client
       .setEndpoint(
-        process.env.APPWRITE_ENDPOINT ?? 'https://cloud.appwrite.io/v1'
+        process.env.APPWRITE_ENDPOINT ?? 'https://<REGION>.cloud.appwrite.io/v1'
       )
       .setProject(process.env.APPWRITE_FUNCTION_PROJECT_ID)
       .setKey(process.env.APPWRITE_API_KEY);

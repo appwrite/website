@@ -51,30 +51,29 @@ We created a **database** and a **collection** for each day of the giveaway in o
 
 Each collection contained two **attributes**:
 
-| Key | Type | Size | Required |
-| --- | --- | --- | --- |
-| discordName | String | 255 | Yes |
-| email | Email | - | Yes |
+| Key         | Type        | Size        | Required    |
+| ----------- | ----------- | ----------- | ----------- |
+| discordName | String      | 255         | Yes         |
+| email       | Email       | -           | Yes         |
 
 To ensure that one user could only be added once for a day’s giveaway, we created an **index** of the `unique` type.
 
-| Key | Type | Attribute | Order |
-| --- | --- | --- | --- |
-| names | unique | discordName | ASC |
+| Key         | Type        | Attribute   | Order       |
+| ----------- | ----------- | ----------- | ----------- |
+| names       | unique      | discordName | ASC         |
 
 Lastly, we added **collection-level permissions** to allow anyone to read data (since the giveaway page was meant to be publicly accessible) and only authenticated users to add data (their Discord username and email address) to the collection.
 
-| Role | Create | Read | Update | Delete |
-| --- | --- | --- | --- | --- |
-| Any |  | Yes |  |  |
-| Users | Yes |  |  |  |
+| Role   | Create | Read   | Update | Delete |
+| ------ | ------ | ------ | ------ | ------ |
+| Any    |        | Yes    |        |        |
+| Users  | Yes    |        |        |        |
 
 ## Setting up the app
 
 Looking at the two primary features, there were three primary challenges we needed to solve to develop this app. To build this app, we used SvelteKit, a framework to build web applications using JavaScript. There are some prerequisites, however, that must be completed before building out the features themselves.
 
 > Note: The code snippets will focus only on the application logic. All CSS and styling-related information will be accessible in the final project repository at the end of the blog.
->
 
 ### Prerequisites
 
@@ -89,7 +88,7 @@ We then entered the application directory, installed the Appwrite Web SDK and Pi
 ```js
 // ./src/lib/constants.js
 
-export const APPWRITE_ENDPOINT = 'https://cloud.appwrite.io/v1';
+export const APPWRITE_ENDPOINT = 'https://<REGION>.cloud.appwrite.io/v1';
 
 export const APPWRITE_PROJECT = '<PROJECT_ID>';
 
@@ -242,7 +241,7 @@ We integrated the `add` function directly into the `success` endpoint for our OA
 
 <NavBar />
 
-<div class="container u-flex-vertical">
+<div class="container flex flex-col">
 	<h1 class="heading-level-1 u-margin-32 u-normal">Success!</h1>
 	<p class="body-text-1 u-margin-32 u-normal">Thanks for participating in the giveaway, {userId}</p>
 </div>
@@ -366,10 +365,10 @@ Using the load function would ensure that this list would be available on our pa
 	});
 </script>
 
-<section class="u-flex-vertical u-gap-16">
+<section class="flex flex-col gap-4">
 	<InitHeading {heading} />
-	<div class="wheel u-flex-vertical">
-		<div class="wheel-container u-flex-vertical"></div>
+	<div class="wheel flex flex-col">
+		<div class="wheel-container flex flex-col"></div>
 	</div>
 	<button class="button is-big" on:click={spin}>Spin The Wheel</button>
 </section>
@@ -384,4 +383,4 @@ The giveaway roulette app was used over 450 times by 230+ different users across
 
 You can find the application’s complete source code at this [GitHub Repo](https://github.com/adityaoberai/InitGiveawayRoulette).
 
-[Join us on Discord](https://appwrite.io/discord) to be the first to get updates and to be part of a vibrant community!
+[Join us on Discord](https://appwrite.io/discord)&nbsp;to be the first to get updates and to be part of a vibrant community!

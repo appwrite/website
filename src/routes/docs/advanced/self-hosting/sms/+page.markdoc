@@ -50,7 +50,7 @@ Appwrite supports a growing list of SMS providers that you can choose from. Choo
 
 # Environment variables {% #environment-variables %}
 
-You will need to configure these [environment variables](https://example.com/docs/environment-variables#phone) and restart your Appwrite containers before you can use phone authentication.
+You will need to configure these [environment variables](https://appwrite.io/docs/environment-variables#phone) and restart your Appwrite containers before you can use phone authentication.
 
 {% info title="URL encode" %}
 Ensure the values you insert in the `_APP_SMS_PROVIDER` placeholders are [URL encoded](https://developer.mozilla.org/en-US/docs/Glossary/Percent-encoding) if they contain any non-alphanumeric characters.
@@ -58,10 +58,10 @@ Ensure the values you insert in the `_APP_SMS_PROVIDER` placeholders are [URL en
 
 | Provider | \_APP\_SMS\_PROVIDER                                | \_APP\_SMS\_FROM        |
 | -------- | -------------------------------------------------- | ----------------------- |
-| Twilio   | `sms://[ACCOUNT SID]:[AUTH TOKEN]@twilio`         | `[TWILIO PHONE NUMBER]` |
-| Textmagic| `sms://[USERNAME]:[API KEY]@text-magic`          | `[PHONE NUMBER OR SENDER ID]` |
-| TeleSign | `sms://[CUSTOMER ID]:[API KEY]@telesign`         | `[TELESIGN PHONE NUMBER]` |
-| MSG91    | `sms://[SENDER ID]:[AUTH KEY]@msg91`             | `[FLOW ID]`            |
-| Vonage   | `sms://[API KEY]:[API SECRET]@vonage`            | `[PHONE NUMBER OR BRAND NAME]` |
+| Twilio   | `sms://<ACCOUNT SID>:<AUTH TOKEN>@twilio`         | `<TWILIO PHONE NUMBER>` |
+| Textmagic| `sms://<USERNAME>:<API KEY>@text-magic`          | `<PHONE NUMBER OR SENDER ID>` |
+| TeleSign | `sms://<CUSTOMER ID>:<API KEY>@telesign`         | `<TELESIGN PHONE NUMBER>` |
+| MSG91    | `sms://<SENDER ID>:<AUTH KEY>@msg91`             | `<FLOW ID>`            |
+| Vonage   | `sms://<API KEY>:<API SECRET>@vonage`            | `<PHONE NUMBER OR BRAND NAME>` |
 
 {% partial file="update-variables.md" /%}

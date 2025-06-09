@@ -26,8 +26,9 @@
     color:hsl(var(--web-color-accent-click)); padding-inline-end:pxToRem(12);
     line-height:var(--web-line-height-md);
   }
-  li {
+  >li {
     display:flex;
+    line-height: var(--web-line-height-md);
     &::before {
       counter-increment: numeric-list;
       content:counter(numeric-list); align-self:start;
@@ -36,7 +37,7 @@
   .#{$p}-numeric-list {
     counter-reset: numeric-list-level-2;
     padding-inline-start: pxToRem(24);
-    li {
+    >li {
       &::before {
         color:revert;
         counter-increment: numeric-list-level-2;
@@ -45,7 +46,7 @@
     }
     .#{$p}-numeric-list {
       counter-reset: numeric-list-level-3;
-      li {
+      >li {
         &::before {
           counter-increment: numeric-list-level-3;
           content:counter(numeric-list-level-3, lower-latin);

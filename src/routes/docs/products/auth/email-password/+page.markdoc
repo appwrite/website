@@ -14,8 +14,7 @@ You can use the Appwrite Client SDKs to create an account using email and passwo
 import { Client, Account, ID } from "appwrite";
 
 const client = new Client()
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('<PROJECT_ID>');               // Your project ID
+    .setProject('<PROJECT_ID>'); // Your project ID
 
 const account = new Account(client);
 
@@ -30,9 +29,30 @@ promise.then(function (response) {
 
 Passwords are hashed with [Argon2](https://github.com/P-H-C/phc-winner-argon2), a resilient and secure password hashing algorithm.
 
+# Login {% #login %}
+
+After an account is created, users can be logged in using the Create Email Session route.
+
+```client-web
+import { Client, Account } from "appwrite";
+
+const client = new Client()
+    .setProject('<PROJECT_ID>'); // Your project ID
+
+const account = new Account(client);
+
+const promise = account.createEmailPasswordSession('email@example.com', 'password');
+
+promise.then(function (response) {
+    console.log(response); // Success
+}, function (error) {
+    console.log(error); // Failure
+});
+```
+
 # Verification {% #verification %}
 
-After an account is created, it can be verified through the account create verification route. The user doesn't need to be verified to log in, but you can restrict resource access to verified users only using permissions through the `user([USER_ID], "verified")` role.
+After logging in, the email can be verified through the account create verification route. The user doesn't need to be verified to log in, but you can restrict resource access to verified users only using permissions through the `user([USER_ID], "verified")` role.
 
 First, send a verification email. Specify a redirect URL which users will be redirected to. The verification secrets will be appended as query parameters to the redirect URL. In this example, the redirect URL is `https://example.com/verify`.
 
@@ -40,17 +60,16 @@ First, send a verification email. Specify a redirect URL which users will be red
 import { Client, Account } from "appwrite";
 
 const client = new Client()
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('5df5acd0d48c2')                 // Your project ID
+    .setProject('<PROJECT_ID>') // Your project ID
 
 const account = new Account(client);
 
-const promise = account.createVerification('https://example.com');
+const promise = account.createVerification('https://example.com/verify');
 
 promise.then(function (response) {
-    console.log(response);
+    console.log(response); // Success
 }, function (error) {
-    console.log(error);
+    console.log(error); // Failure
 });
 ```
 
@@ -62,8 +81,7 @@ Since the secrets are passed in through url params, it will be easiest to perfor
 import { Client, Account } from "appwrite";
 
 const client = new Client()
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('<PROJECT_ID>');                 // Your project ID
+    .setProject('<PROJECT_ID>'); // Your project ID
 
 const account = new Account(client);
 
@@ -72,28 +90,6 @@ const secret = urlParams.get('secret');
 const userId = urlParams.get('userId');
 
 const promise = account.updateVerification(userId, secret);
-
-promise.then(function (response) {
-    console.log(response);
-}, function (error) {
-    console.log(error);
-});
-```
-
-# Login {% #login %}
-
-After you've created your account, users can be logged in using the Create Email Session route.
-
-```client-web
-import { Client, Account } from "appwrite";
-
-const client = new Client()
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('<PROJECT_ID>');                 // Your project ID
-
-const account = new Account(client);
-
-const promise = account.createEmailPasswordSession('email@example.com', 'password');
 
 promise.then(function (response) {
     console.log(response); // Success
@@ -112,10 +108,9 @@ Only redirect URLs to domains added as a platform on your Appwrite Console will 
 import { Client, Account } from "appwrite";
 
 const client = new Client()
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('<PROJECT_ID>');                 // Your project ID
+    .setProject('<PROJECT_ID>'); // Your project ID
 
-const promise = account.createRecovery('email@example.com', 'https://example.com');
+const promise = account.createRecovery('email@example.com', 'https://example.com/recovery');
 
 promise.then(function (response) {
     console.log(response); // Success
@@ -130,13 +125,11 @@ After receiving an email with the secret attached to the redirect link, submit a
 import { Client, Account } from "appwrite";
 
 const client = new Client()
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('<PROJECT_ID>');                 // Your project ID
+    .setProject('<PROJECT_ID>'); // Your project ID
 
 const promise = account.updateRecovery(
     '[USER_ID]',
     '[SECRET]',
-    'password',
     'password'
 );
 

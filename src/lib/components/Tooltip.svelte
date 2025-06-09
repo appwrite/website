@@ -1,12 +1,28 @@
 <script lang="ts">
     import { createTooltip, melt } from '@melt-ui/svelte';
     import type { FloatingConfig } from '@melt-ui/svelte/internal/actions';
+    import { type Snippet } from 'svelte';
     import { fly, type FlyParams } from 'svelte/transition';
 
-    export let placement: NonNullable<FloatingConfig>['placement'] = 'top';
-    export let disabled = false;
-    export let closeOnPointerDown = false;
-    export let disableHoverableContent = false;
+    interface Props {
+        placement?: NonNullable<FloatingConfig>['placement'];
+        disabled?: boolean;
+        closeOnPointerDown?: boolean;
+        disableHoverableContent?: boolean;
+        asChild?: Snippet<[any]>;
+        children?: Snippet;
+        tooltip: Snippet;
+    }
+
+    const {
+        placement = 'top',
+        disabled = false,
+        closeOnPointerDown = false,
+        disableHoverableContent = false,
+        asChild,
+        children,
+        tooltip
+    }: Props = $props();
 
     const {
         elements: { trigger, content, arrow },
@@ -21,50 +37,52 @@
         disableHoverableContent
     });
 
-    $: flyParams = (function getFlyParams() {
-        const params: FlyParams = {
-            duration: 150
-        };
+    let flyParams = $derived(
+        (function getFlyParams() {
+            const params: FlyParams = {
+                duration: 150
+            };
 
-        switch (placement) {
-            case 'top':
-            case 'top-start':
-            case 'top-end':
-                params.y = 4;
-                break;
-            case 'bottom':
-            case 'bottom-start':
-            case 'bottom-end':
-                params.y = -4;
-                break;
+            switch (placement) {
+                case 'top':
+                case 'top-start':
+                case 'top-end':
+                    params.y = 4;
+                    break;
+                case 'bottom':
+                case 'bottom-start':
+                case 'bottom-end':
+                    params.y = -4;
+                    break;
 
-            case 'left':
-            case 'left-start':
-            case 'left-end':
-                params.x = 4;
-                break;
-            case 'right':
-            case 'right-start':
-            case 'right-end':
-                params.x = -4;
-                break;
-        }
+                case 'left':
+                case 'left-start':
+                case 'left-end':
+                    params.x = 4;
+                    break;
+                case 'right':
+                case 'right-start':
+                case 'right-end':
+                    params.x = -4;
+                    break;
+            }
 
-        return params;
-    })();
+            return params;
+        })()
+    );
 </script>
 
-<slot name="asChild" trigger={$trigger} />
-
-{#if !$$slots.asChild}
+{#if asChild}
+    {@render asChild({ trigger: $trigger })}
+{:else if children}
     <span use:melt={$trigger}>
-        <slot />
+        {@render children()}
     </span>
 {/if}
 
-{#if $open && !disabled}
-    <div use:melt={$content} class="web-tooltip web-sub-body-400" transition:fly={flyParams}>
-        <div use:melt={$arrow} />
-        <slot name="tooltip" />
+{#if tooltip && $open && !disabled}
+    <div use:melt={$content} class="web-tooltip text-sub-body" transition:fly={flyParams}>
+        <div use:melt={$arrow}></div>
+        {@render tooltip()}
     </div>
 {/if}

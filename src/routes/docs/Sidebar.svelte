@@ -1,5 +1,6 @@
 <script lang="ts">
     import Sidebar, { type NavTree } from '$lib/layouts/Sidebar.svelte';
+    import { isNewUntil } from '$lib/utils/date';
 
     const navigation: NavTree = [
         {
@@ -25,7 +26,7 @@
                     icon: 'icon-cog'
                 },
                 {
-                    label: 'API reference',
+                    label: 'API references',
                     href: '/docs/references',
                     icon: 'icon-document',
                     isParent: true
@@ -60,9 +61,22 @@
                     isParent: true
                 },
                 {
+                    label: 'Sites',
+                    href: '/docs/products/sites',
+                    icon: 'icon-globe-alt',
+                    isParent: true,
+                    new: isNewUntil('19 Jul 2025')
+                },
+                {
                     label: 'Storage',
                     href: '/docs/products/storage',
                     icon: 'icon-folder',
+                    isParent: true
+                },
+                {
+                    label: 'Network',
+                    href: '/docs/products/network',
+                    icon: 'icon-share',
                     isParent: true
                 },
                 {
@@ -97,7 +111,7 @@
             label: 'Tooling',
             items: [
                 {
-                    label: 'Command Line',
+                    label: 'CLI',
                     href: '/docs/tooling/command-line/installation',
                     icon: 'icon-terminal',
                     isParent: true
@@ -113,7 +127,12 @@
                     icon: 'icon-sparkles'
                 },
                 {
-                    label: "The Appwriter",
+                    label: 'MCP Server',
+                    href: '/docs/tooling/mcp',
+                    icon: 'web-icon-mcp'
+                },
+                {
+                    label: 'The Appwriter',
                     href: '/docs/tooling/appwriter',
                     icon: 'icon-text'
                 }
@@ -127,6 +146,13 @@
                     href: '/docs/advanced/platform',
                     icon: 'web-icon-platform',
                     isParent: true
+                },
+                {
+                    label: 'Integrations',
+                    href: '/integrations',
+                    icon: 'icon-puzzle',
+                    isParent: true,
+                    openInNewTab: true
                 },
                 {
                     label: 'Migrations',

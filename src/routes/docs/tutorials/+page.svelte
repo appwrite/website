@@ -1,15 +1,16 @@
 <script lang="ts">
     import { MainFooter } from '$lib/components';
-    import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
+    import { DEFAULT_HOST } from '$lib/utils/metadata';
     import { DOCS_TITLE_SUFFIX } from '$routes/titles';
 
     const title = 'Tutorials' + DOCS_TITLE_SUFFIX;
-    const description = DEFAULT_DESCRIPTION;
+    const description =
+        'Follow a simple tutorial to get started with Appwrite in your preferred framework quickly and easily.';
     const ogImage = DEFAULT_HOST + '/images/open-graph/docs.png';
 
-    export let data;
+    let { data } = $props();
 
-    type MappedTutorial = (typeof data.tutorials)[number];
+    type MappedTutorial = (typeof data.tutorials)[number]['tutorials'][number];
 
     const iconMap: Record<string, string> = {
         'react native': 'icon-react-native',
@@ -43,7 +44,7 @@
     <title>{title}</title>
     <meta property="og:title" content={title} />
     <meta name="twitter:title" content={title} />
-    <!-- Desscription -->
+    <!-- Description -->
     <meta name="description" content={description} />
     <meta property="og:description" content={description} />
     <meta name="twitter:description" content={description} />
@@ -58,18 +59,18 @@
 <main class="web-main-section" id="main">
     <article class="web-article">
         <header class="web-article-header">
-            <div class="web-article-header-start u-flex-vertical web-u-cross-start">
-                <div class="u-position-relative u-flex u-cross-center">
-                    <h1 class="web-title">Tutorials</h1>
+            <div class="web-article-header-start web-u-cross-start flex flex-col">
+                <div class="relative flex items-center">
+                    <h1 class="text-title font-aeonik-pro">Tutorials</h1>
                 </div>
             </div>
-            <div class="web-article-header-end" />
+            <div class="web-article-header-end"></div>
         </header>
         <div class="web-article-content web-u-gap-80">
             {#each data.tutorials as category}
-                <section class="u-flex-vertical u-gap-24">
-                    <h2 class="web-eyebrow">{category.title}</h2>
-                    <ul class="web-grid-row-4 web-grid-row-4-mobile-2">
+                <section class="flex flex-col gap-6">
+                    <h2 class="text-micro uppercase">{category.title}</h2>
+                    <ul class="web-grid-row-4 web-grid-row-4-mobile-1">
                         {#each category.tutorials as tutorial}
                             <li>
                                 {#if tutorial.draft === true}
@@ -79,29 +80,29 @@
                                         aria-disabled="true"
                                         tabindex="-1"
                                     >
-                                        <header class="u-flex u-cross-baseline u-gap-4">
+                                        <header class="flex items-baseline gap-1">
                                             <span
                                                 class="{getIcon(tutorial)} web-u-font-size-24"
                                                 aria-hidden="true"
-                                            />
-                                            <h3 class="web-sub-body-500 web-u-color-text-primary">
+                                            ></span>
+                                            <h3 class="text-sub-body text-primary font-medium">
                                                 {tutorial.framework}
                                             </h3>
-                                            <span class="badge web-caption-400">Coming Soon</span>
+                                            <span class="badge text-caption">Coming Soon</span>
                                         </header>
                                     </a>
                                 {:else}
                                     <a href={tutorial.href} class="web-card is-normal">
-                                        <header class="u-flex u-cross-baseline u-gap-4">
+                                        <header class="flex items-baseline gap-1">
                                             <span
                                                 class="{getIcon(tutorial)} web-u-font-size-24"
                                                 aria-hidden="true"
-                                            />
-                                            <h3 class="web-sub-body-500 web-u-color-text-primary">
+                                            ></span>
+                                            <h3 class="text-sub-body text-primary font-medium">
                                                 {tutorial.framework}
                                             </h3>
                                         </header>
-                                        <p class="web-sub-body-400 u-margin-block-start-4">
+                                        <p class="text-sub-body mt-1">
                                             {tutorial.title}
                                         </p>
                                     </a>

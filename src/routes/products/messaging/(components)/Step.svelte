@@ -4,9 +4,9 @@
 </script>
 
 <div class="step" data-hideline={hideLine}>
-    <div class="web-dot" />
-    <h2 class="web-eyebrow web-u-color-text-primary step-title">{title}</h2>
-    <div class="u-margin-block-start-32 step-content">
+    <div class="web-dot"></div>
+    <h2 class="text-micro text-primary step-title uppercase">{title}</h2>
+    <div class="step-content mt-8">
         <slot />
     </div>
 </div>

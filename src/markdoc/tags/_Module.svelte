@@ -18,4 +18,7 @@
     export { default as Accordion } from './Accordion.svelte';
     export { default as Accordion_Item } from './Accordion_Item.svelte';
     export { default as Youtube } from './Youtube.svelte';
+    export { default as Call_To_Action } from './Call_To_Action.svelte';
+    export { default as Storage_Image } from './Storage_Image.svelte';
+    export { default as Appwrite_Network_Map } from '../../lib/components/appwrite-network/map.svelte';
 </script>

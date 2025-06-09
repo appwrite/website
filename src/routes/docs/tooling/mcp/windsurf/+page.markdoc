@@ -1,0 +1,59 @@
+---
+layout: article
+title: Windsurf Editor
+description: Add the MCP server to Windsurf Editor
+---
+
+Learn how you can add the Appwrite MCP server to Windsurf Editor.
+
+{% info title="Pre-requisite: Install uv" %}
+
+You must install [uv](https://docs.astral.sh/uv/getting-started/installation/) on your system to use the MCP server.
+
+{% /info %}
+
+{% section #step-1 step=1 title="Add MCP server" %}
+
+Open the **Windsurf Settings** page, head to the **Cascade** tab, find the **Model Context Protocol (MCP) Servers** section, and click on the **View raw config** button.
+
+![Add MCP server](/images/docs/mcp/windsurf/windsurf-add-mcp-server.png)
+
+Update the `mcp_config.json` file to include the following:
+
+```json
+{
+  "mcpServers": {
+    "appwrite": {
+      "command": "uvx",
+      "args": [
+        "mcp-server-appwrite",
+        "--databases",
+        "--users"
+      ],
+      "env": {
+        "APPWRITE_PROJECT_ID": "your-project-id",
+        "APPWRITE_API_KEY": "your-api-key",
+        "APPWRITE_ENDPOINT": "https://<REGION>.cloud.appwrite.io/v1"
+      }
+    }
+  }
+}
+```
+
+Once you save the details, head back to the MCP Servers section in the Windsurf Settings and click on the **Refresh** button.
+
+{% info title="Enable other MCP tools" %}
+
+To enable additional tools, learn more about [command-line arguments](/docs/tooling/mcp#command-line-arguments).
+
+{% /info %}
+
+{% /section %}
+
+{% section #step-2 step=2 title="Test the integration" %}
+
+Open Cascade chat in the Windsurf Editor and add a prompt to query the database.
+
+![Create user in Appwrite project](/images/docs/mcp/windsurf/windsurf-cascade-chat.png)
+
+{% /section %}

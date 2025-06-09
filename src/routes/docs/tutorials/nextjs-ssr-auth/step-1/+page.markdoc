@@ -4,6 +4,7 @@ title: Server-side authentication with Next.js
 description: Add SSR authentication to your Next.js app with Appwrite
 step: 1
 difficulty: beginner
+back: /docs/tutorials
 readtime: 20
 framework: Next.js SSR
 category: Auth

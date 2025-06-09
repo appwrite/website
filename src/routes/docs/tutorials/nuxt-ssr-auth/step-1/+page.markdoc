@@ -4,7 +4,7 @@ title: Server-side authentication with Nuxt
 description: Add SSR authentication to your Nuxt app with Appwrite
 step: 1
 difficulty: beginner
-draft: true
+back: /docs/tutorials
 readtime: 20
 framework: Nuxt SSR
 category: Auth 
@@ -21,4 +21,4 @@ Before following this tutorial, have the following prepared:
 - A basic knowledge of Vue and Nuxt.
 
 If you're inspired and wish to follow along, make sure you've followed [Start with Nuxt](https://appwrite.io/docs/quick-starts/nuxt) first.
-Clone the [demos-for-vue](https://github.com/appwrite/demos-for-vue) examples and follow along with the source code.
+Clone the [nuxt-ssr-auth](https://github.com/appwrite-community/nuxt-ssr-auth) repository and follow along with the source code.

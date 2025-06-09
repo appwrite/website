@@ -64,7 +64,7 @@ Open your `build.gradle.kts` file and implement the following dependency.
 ```groovy
 dependencies {
     ... other dependencies
-    implementation("io.appwrite:sdk-for-kotlin:5.0.1")
+    implementation("io.appwrite:sdk-for-kotlin:9.0.0")
 }
 ```
 
@@ -80,7 +80,7 @@ Find your project ID in the **Settings** page. Also, click on the **View API Key
 ![Project settings screen](/images/docs/quick-starts/project-id.png)
 {% /only_light %}
 
-Open the file `Main.kt` and initialize the Appwrite Client. Replace `<YOUR_PROJECT_ID>` with your project ID and `<YOUR_API_KEY>` with your API key.
+Open the file `Main.kt` and initialize the Appwrite Client. Replace `<PROJECT_ID>` with your project ID and `<YOUR_API_KEY>` with your API key.
 
 ```kotlin
 import io.appwrite.Client
@@ -91,8 +91,8 @@ import io.appwrite.models.Collection
 import kotlinx.coroutines.coroutineScope
 
 val client = Client()
-    .setEndpoint("https://cloud.appwrite.io/v1")
-    .setProject("<YOUR_PROJECT_ID>")
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
     .setKey("<YOUR_API_KEY>");
 ```
 

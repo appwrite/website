@@ -2,7 +2,7 @@
 
 .#{$p}-input-text {
   @mixin input-light-mode {
-    --p-input-placeholder-text-color: var(--web-color-secondary);
+    --p-input-placeholder-text-color: var(--web-color-tertiary);
     --p-input-focus-box-shadow-color: var(--web-color-black) / 0.10;
 
     --p-input-text-color-default: var(--web-color-primary);
@@ -127,7 +127,6 @@
   &.is-reset-input-inside {
     input { all:unset; display:block; inline-size:100%; text-align:left; }
   }
-
 }
 
 textarea.#{$p}-input-text {
@@ -135,6 +134,8 @@ textarea.#{$p}-input-text {
   padding-block: pxToRem(12);
   block-size: pxToRem(154);
 }
+
+select.#{$p}-input-text { block-size: pxToRem(45.5); color:hsl(var(--color-neutral-40)); }
 
 .#{$p}-subscribe-input {
   padding: pxToRem(4); padding-inline-start:pxToRem(16);

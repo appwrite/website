@@ -76,7 +76,7 @@ import { getStaticFile } from './utils.js';
 
 export default async ({ req, res, error }) => {
   if (req.method === 'GET') {
-    return res.send(getStaticFile('index.html'), 200, {
+    return res.text(getStaticFile('index.html'), 200, {
       'Content-Type': 'text/html; charset=utf-8',
     });
   }
@@ -285,7 +285,7 @@ let resJson = await response.json();
 
 // Upload image to Appwrite Storage and return URL
 if (req.body.type === 'image') {
-  const endpoint = process.env.APPWRITE_ENDPOINT || 'https://cloud.appwrite.io/v1'
+  const endpoint = process.env.APPWRITE_ENDPOINT || 'https://<REGION>.cloud.appwrite.io/v1'
 
   const client = new Client()
     .setEndpoint(endpoint)

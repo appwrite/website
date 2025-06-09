@@ -11,6 +11,8 @@
 </script>
 
 <script lang="ts">
+    import { trackEvent } from '$lib/actions/analytics';
+
     type $$Props = ProjectCardProps;
 
     export let title: $$Props['title'];
@@ -18,16 +20,18 @@
     export let image: $$Props['image'];
     export let href: $$Props['href'];
 </script>
+
 <a
-    class="web-card is-white web-u-flex-vertical u-gap-8"
+    class="web-card is-white web-flex flex-col gap-2"
     style="--card-padding: 0.5rem;"
     {href}
     target="_blank"
     rel="noopener noreferrer"
+    onclick={() => trackEvent(`community-project-${title.toLowerCase().replace(' ', '_')}-click`)}
 >
-    <div class="u-padding-12">
-        <h3 class="web-main-body-500 web-u-color-text-primary">{title}</h3>
-        <p class="u-trim-2">
+    <div class="p-3">
+        <h3 class="text-body text-primary font-medium">{title}</h3>
+        <p class="line-clamp-2">
             {description}
         </p>
     </div>

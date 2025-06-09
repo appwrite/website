@@ -1,13 +1,27 @@
 <script lang="ts">
+    import { page } from '$app/state';
     import { Media } from '$lib/UI';
-    import { scroll } from '$lib/animations';
-    import { Article, FooterNav, MainFooter, Newsletter } from '$lib/components';
+    import { FooterNav, MainFooter } from '$lib/components';
+    import CTA from '$lib/components/BlogCta.svelte';
+    import Article from '$lib/components/blog/article.svelte';
+    import Breadcrumbs from '$lib/components/blog/breadcrumbs.svelte';
+    import Newsletter from '$lib/components/blog/newsletter.svelte';
+    import PostMeta from '$lib/components/blog/post-meta.svelte';
+    import TableOfContents from '$lib/components/blog/table-of-contents.svelte';
     import { Main } from '$lib/layouts';
+    import type { TocItem } from '$lib/layouts/DocsArticle.svelte';
     import { formatDate } from '$lib/utils/date';
-    import { DEFAULT_HOST } from '$lib/utils/metadata';
-    import type { AuthorData, CategoryData, PostsData } from '$routes/blog/content';
-    import { BLOG_TITLE_SUFFIX } from '$routes/titles';
-    import { getContext } from 'svelte';
+    import {
+        createBreadcrumbsSchema,
+        createPostSchema,
+        DEFAULT_HOST,
+        getInlinedScriptTag
+    } from '$lib/utils/metadata';
+    import type { AuthorData, PostsData } from '$routes/blog/content';
+    import { TITLE_SUFFIX } from '$routes/titles';
+    import { getContext, setContext } from 'svelte';
+    import { writable } from 'svelte/store';
+    import type { LayoutContext } from './Article.svelte';
 
     export let title: string;
     export let description: string;
@@ -16,30 +30,61 @@
     export let timeToRead: string;
     export let cover: string;
     export let category: string;
+    export let callToAction:
+        | {
+              label: string;
+              url: string;
+              heading: string;
+          }
+        | boolean;
+    export let lastUpdated: string;
 
+    const posts = getContext<PostsData[]>('posts')?.filter(
+        (post) => !(post.unlisted ?? false) && !(post.draft ?? false)
+    );
     const authors = getContext<AuthorData[]>('authors');
     const authorData = authors.find((a) => a.slug === author);
-    const categoriesList = getContext<CategoryData[]>('categories');
-    const categories = getValidCategories();
-    const posts = getContext<PostsData[]>('posts');
 
-    function getValidCategories() {
-        if (!category) return undefined;
-        const cats = category.split(',');
-        return categoriesList.filter((c) =>
-            cats.some((cat) => cat.toLocaleLowerCase() === c.name.toLocaleLowerCase())
-        );
-    }
+    setContext<LayoutContext>('headings', writable({}));
 
-    let readPercentage = 0;
+    const headings = getContext<LayoutContext>('headings');
+
+    let selected: string | undefined = undefined;
+    headings.subscribe((n) => {
+        const noVisible = Object.values(n).every((n) => !n.visible);
+        if (selected && noVisible) {
+            return;
+        }
+        for (const key in n) {
+            if (n[key].visible) {
+                selected = key;
+                break;
+            }
+        }
+    });
+
+    $: entries = Object.entries($headings);
+    $: toc = entries.reduce<Array<TocItem>>((carry, [id, heading]) => {
+        carry.push({
+            title: heading.title,
+            href: `#${id}`,
+            selected: selected === id,
+            level: heading.level
+        });
+        return carry;
+    }, []);
+
+    callToAction ??= true;
+
+    const currentURL = `https://appwrite.io${page.url.pathname}`;
 </script>
 
 <svelte:head>
     <!-- Titles -->
-    <title>{title + BLOG_TITLE_SUFFIX}</title>
+    <title>{title + TITLE_SUFFIX}</title>
     <meta property="og:title" content={title} />
     <meta name="twitter:title" content={title} />
-    <!-- Desscription -->
+    <!-- Description -->
     <meta name="description" content={description} />
     <meta property="og:description" content={description} />
     <meta name="twitter:description" content={description} />
@@ -49,139 +94,75 @@
     <meta property="og:image:height" content="630" />
     <meta name="twitter:image" content={DEFAULT_HOST + cover} />
     <meta name="twitter:card" content="summary_large_image" />
+
+    {#if category}
+        <!-- eslint-disable-next-line svelte/no-at-html-tags-->
+        {@html getInlinedScriptTag(
+            createBreadcrumbsSchema({
+                title,
+                category,
+                url: currentURL
+            })
+        )}
+    {/if}
+
+    <!-- eslint-disable-next-line svelte/no-at-html-tags-->
+    {@html getInlinedScriptTag(
+        createPostSchema(
+            {
+                title: title,
+                cover: cover,
+                date: date,
+                lastUpdated: lastUpdated
+            },
+            authorData
+        )
+    )}
 </svelte:head>
 
 <Main>
-    <div
-        class="web-big-padding-section"
-        use:scroll
-        on:web-scroll={(e) => {
-            readPercentage = e.detail.percentage;
-        }}
-    >
-        <div class="web-big-padding-section">
-            <div class="web-big-padding-section-level-1">
-                <div class="web-big-padding-section-level-2">
-                    <div class="web-container" style="--container-size:42.5rem">
-                        <article class="web-main-article">
-                            <header class="web-main-article-header">
-                                <a
-                                    class="web-link is-secondary web-u-color-text-secondary u-cross-baseline"
-                                    href="/blog"
-                                >
-                                    <span class="web-icon-chevron-left" aria-hidden="true" />
-                                    <span>Back to blog</span>
-                                </a>
-                                <ul class="web-metadata web-caption-400">
-                                    <li>
-                                        <time datetime={date}>{formatDate(date)}</time>
-                                    </li>
-                                    {#if timeToRead}
-                                        <li>{timeToRead} min</li>
-                                    {/if}
-                                </ul>
-                                <h1 class="web-title web-u-color-text-primary">{title}</h1>
-                                {#if description}
-                                    <p class="web-description u-margin-block-start-8">
-                                        {description}
-                                    </p>
-                                {/if}
-                                {#if authorData}
-                                    <div class="web-author u-margin-block-start-16">
-                                        <a
-                                            href={authorData.href}
-                                            class="u-flex u-cross-center u-gap-8"
-                                        >
-                                            {#if authorData.avatar}
-                                                <img
-                                                    class="web-author-image"
-                                                    src={authorData.avatar}
-                                                    alt={authorData.name}
-                                                    loading="lazy"
-                                                    width="44"
-                                                    height="44"
-                                                />
-                                            {/if}
-                                            <div class="u-flex-vertical">
-                                                <h4 class="web-sub-body-400 web-u-color-text-primary">
-                                                    {authorData.name}
-                                                </h4>
-                                                <p class="web-caption-400">{authorData.role}</p>
-                                            </div>
-                                        </a>
-                                        <!-- <ul class="u-flex u-gap-8 u-margin-inline-start-auto u-cross-child-center">
-											{#if authorData.twitter}
-												<li>
-													<a
-														href={authorData.twitter}
-														class="web-icon-button"
-														aria-label="Author twitter"
-														target="_blank" rel="noopener noreferrer"
+    <div class="pt-10">
+        <div class="container">
+            <Breadcrumbs {title} />
+            <article class="grid grid-cols-1 gap-4 lg:grid-cols-12">
+                <div class="border-smooth md:border-r md:pr-12 lg:col-span-9">
+                    <PostMeta {authorData} {title} {timeToRead} {currentURL} {date} {description} />
+                    {#if cover}
+                        <div class="web-media aspect-video">
+                            <Media class="block aspect-video object-cover" src={cover} />
+                        </div>
+                    {/if}
 
-													>
-														<span class="web-icon-x" aria-hidden="true" />
-													</a>
-												</li>
-											{/if}
-											{#if authorData.linkedin}
-												<li>
-													<a
-														href={authorData.linkedin}
-														class="web-icon-button"
-														aria-label="Author LinkedIn"
-														target="_blank" rel="noopener noreferrer"
+                    <div class="web-article-content text-secondary mt-8 flex flex-col gap-8">
+                        {#if lastUpdated}
+                            <span class="text-body last-updated-text font-medium">
+                                Updated:
+                                <time dateTime={lastUpdated}>
+                                    {formatDate(lastUpdated)}
+                                </time>
+                            </span>
+                        {/if}
 
-													>
-														<span class="web-icon-linkedin" aria-hidden="true" />
-													</a>
-												</li>
-											{/if}
-											{#if authorData.github}
-												<li>
-													<a
-														href={authorData.github}
-														class="web-icon-button"
-														aria-label="Author GitHub"
-														target="_blank" rel="noopener noreferrer"
-
-													>
-														<span class="web-icon-github" aria-hidden="true" />
-													</a>
-												</li>
-											{/if}
-										</ul> -->
-                                    </div>
-                                {/if}
-                            </header>
-                            {#if cover}
-                                <div class="web-media-container">
-                                    <Media class="u-block" src={cover} />
-                                </div>
-                            {/if}
-
-                            <div class="web-article-content u-margin-block-start-32">
-                                <slot />
-                            </div>
-                        </article>
-                        <!-- {#if categories?.length}
-							<div class="u-flex u-gap-16">
-								{#each categories as cat}
-									<a href={cat.href} class="web-tag">{cat.name}</a>
-								{/each}
-							</div>
-						{/if} -->
+                        <slot />
                     </div>
                 </div>
-            </div>
+
+                <TableOfContents {toc} />
+            </article>
         </div>
+        {#if typeof callToAction === 'boolean'}
+            <CTA />
+        {:else if typeof callToAction === 'object'}
+            <CTA {...callToAction} />
+        {/if}
     </div>
 
-    <div class="web-big-padding-section-level-1 web-u-sep-block-start">
+    <div class="border-smooth border-t pt-10">
         <div class="web-big-padding-section-level-2">
-            <div class="web-container">
-                <h3 class="web-label web-u-color-text-primary">Read next</h3>
-                <section class="u-margin-block-start-32">
-                    <ul class="web-grid-articles">
+            <div class="container">
+                <h3 class="text-label text-primary">Read next</h3>
+                <section class="mt-8">
+                    <div class="grid grid-cols-1 gap-12 md:grid-cols-3">
                         {#each posts.filter((p) => p.title !== title).slice(0, 3) as post}
                             {@const author = authors.find((a) => a.slug === post.author)}
                             {#if author}
@@ -196,12 +177,12 @@
                                 />
                             {/if}
                         {/each}
-                    </ul>
+                    </div>
                 </section>
             </div>
         </div>
-        <div class="web-big-padding-section-level-2 u-position-relative u-overflow-hidden">
-            <div class="web-container">
+        <div class="relative overflow-hidden pt-[7.5rem]">
+            <div class="container">
                 <Newsletter />
                 <FooterNav />
                 <MainFooter />
@@ -209,16 +190,3 @@
         </div>
     </div>
 </Main>
-
-<div class="progress-bar" style:--percentage="{readPercentage * 100}%" />
-
-<style lang="scss">
-    .progress-bar {
-        position: fixed;
-        top: 0;
-        height: 2px;
-        width: var(--percentage);
-        background: hsl(var(--web-color-accent));
-        z-index: 10000;
-    }
-</style>

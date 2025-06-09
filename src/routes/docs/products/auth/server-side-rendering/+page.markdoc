@@ -46,7 +46,7 @@ Admin clients should only be used if you need to perform admin actions that bypa
 or [unauthenticated requests that bypass rate limits](#rate-limits).
 {% /info %}
 
-To initialize the admin client, we'll need to first [generated an API key](/docs/advanced/platform/api-keys#create-api-key).
+To initialize the admin client, we'll need to first [generate an API key](/docs/advanced/platform/api-keys#create-api-key).
 The API key should have the following scope in order to perform authentication:
 
 | Category  {% width=120 %} | Required scopes    | Purpose |
@@ -58,8 +58,8 @@ The API key should have the following scope in order to perform authentication:
 import { Client } from "node-appwrite"; // Using the server SDK
 
 const adminClient = new Client()
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('<YOUR_PROJECT_ID>')             // Your project ID
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('<PROJECT_ID>')             // Your project ID
     .setKey('<YOUR_API_KEY>');                   // Your secret API key
 ```
 ```php
@@ -67,8 +67,8 @@ use Appwrite\Client;
 use Appwrite\Services\Account;
 
 $adminClient = (new Client())
-    ->setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    ->setProject('<YOUR_PROJECT_ID>')             // Your project ID
+    ->setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
+    ->setProject('<PROJECT_ID>')             // Your project ID
     ->setKey('<YOUR_API_KEY>');                   // Your secret API key
 
 
@@ -87,8 +87,8 @@ You should create a new client for each request and **never** share the client b
 {% multicode %}
 ```server-nodejs
 const sessionClient = new Client()
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('<YOUR_PROJECT_ID>');            // Your project ID
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('<PROJECT_ID>');            // Your project ID
 
 const session = req.cookies.session; // Get the session cookie from the request
 if (session) {
@@ -97,8 +97,8 @@ if (session) {
 ```
 ```php
 $sessionClient = (new Client())
-    ->setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    ->setProject('<YOUR_PROJECT_ID>');            // Your project ID
+    ->setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
+    ->setProject('<PROJECT_ID>');            // Your project ID
 
 $session = $_COOKIE['session']; // Get the session cookie from the request
 if ($session) {
@@ -115,7 +115,7 @@ Create an endpoint using your server's framework of choice that accepts a userna
 Once you have a session object, you can store it in a cookie. This will allow your users make authenticated requests to the Appwrite API from your server.
 
 Use the `secret` property of the session object as the cookie value. The `expire` property of the session object should be used as the cookie's max age.
-Here's an example with Express and PHP, but the same concepts apply to all most frameworks.
+Here's an example with Express and PHP, but the same concepts apply to most frameworks.
 {% multicode %}
 ```server-nodejs
 import express from 'express';
@@ -138,7 +138,7 @@ app.post('/login', async (req, res) => {
             httpOnly: true,
             secure: true,
             sameSite: 'strict',
-            maxAge: sesion.expire
+            expires: new Date(session.expire),
             path: '/',
         });
 
@@ -290,8 +290,8 @@ const client = new sdk.Client();
 const account = new sdk.Account(client);
 
 client
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('5df5acd0d48c2') // Your project ID
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('<PROJECT_ID>') // Your project ID
 ;
 
 const promise = account.createAnonymousSession();
@@ -311,8 +311,8 @@ use Appwrite\Services\Account;
 $client = new Client();
 
 $client
-    ->setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    ->setProject('5df5acd0d48c2') // Your project ID
+    ->setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
+    ->setProject('<PROJECT_ID>') // Your project ID
 ;
 
 $account = new Account($client);
@@ -346,8 +346,8 @@ Create an initial endpoint that redirects the user to the OAuth2 provider's auth
 import { Client, Account, OAuthProvider } from "node-appwrite"; // Using the server SDK
 
 const adminClient = new Client()
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('<YOUR_PROJECT_ID>')             // Your project ID
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('<PROJECT_ID>')             // Your project ID
     .setKey('<API_KEY>');                        // Your secret API key
 
 app.get('/oauth', async (req, res) => {
@@ -369,8 +369,8 @@ use Appwrite\Services\Account;
 use Appwrite\Enums\OAuthProvider;
 
 $adminClient = (new Client())
-    ->setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    ->setProject('<YOUR_PROJECT_ID>')             // Your project ID
+    ->setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
+    ->setProject('<PROJECT_ID>')             // Your project ID
     ->setKey('<API_KEY>');                        // Your secret API key
 
 $account = new Account($adminClient);
@@ -420,8 +420,8 @@ use Appwrite\Client;
 use Appwrite\Services\Account;
 
 $adminClient = (new Client())
-    ->setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    ->setProject('<YOUR_PROJECT_ID>')             // Your project ID
+    ->setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
+    ->setProject('<PROJECT_ID>')             // Your project ID
     ->setKey('<API_KEY>');                        // Your secret API key
 
 $account = new Account($adminClient);

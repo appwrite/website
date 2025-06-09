@@ -6,7 +6,7 @@ date: 2024-03-18
 cover: /images/blog/social-media-auth/cover.png
 timeToRead: 5
 author: aditya-oberai
-category: authentication
+category: security
 ---
 
 Social media authentication has become an integral part of our digital lives, offering a streamlined way to access various online services. We may not even realize it at times; however, logging in with Facebook, X, Linkedin, and other such providers are common authentication methods we come across in most major applications today. There are challenges to using social media providers as authentication methods, though. A [massive Facebook incident in 2021](https://abcnews.go.com/International/facebook-outage-highlights-risks-overdependence-single-tech-giant/story?id=80413709) rendered over a billion people helpless as they lost access to a major part of the internet. Such dependence on major social media providers for essential internet activity can have major drawbacks, too. Therefore, in this blog, let us discuss the pros and cons of social media authentication and the delicate balance of convenience and privacy surrounding it.

@@ -6,7 +6,7 @@ date: 2024-03-04
 cover: /images/blog/a-recap-of-init/the-recap.png
 timeToRead: 12
 author: laura-du-ry
-category: OSS
+category: init
 featured: false
 ---
 
@@ -18,7 +18,7 @@ In this blog, we will recap on what happened during Init and highlight some of o
 
 For months, we have been working on creating all of the elements that make Init come alive. We spent many hours creating and planning the tickets, the website, the videos, the swags, Discord sessions, and all other content.
 
-We did everything in-house, which brought some challenges as we had to learn on the spot, but we had a lot of fun doing it, and the results were beyond our own expectations. We even filmed and produced five videos starring the Appwrite team. For most, it was also the first time being in front of the camera. Here is a [sneak peak of behind-the-scenes footage](https://www.youtube.com/shorts/B9figMEeBlc) of the team working on the Init announcement videos.
+We did everything in-house, which brought some challenges as we had to learn on the spot, but we had a lot of fun doing it, and the results were beyond our own expectations. We even filmed and produced five videos starring the Appwrite team. For most, it was also the first time being in front of the camera. Here is a [sneak peak of behind-the-scenes footage](https://www.instagram.com/reel/C4FvPehvxs5/) of the team working on the Init announcement videos.
 
 ![behind the scenes](/images/blog/a-recap-of-init/init1.png)
 
@@ -77,7 +77,7 @@ We kicked off the first Discord session with Appwrite Hero and Vonage dev advoca
 ### Content list
 
 - [Best practices for sending push notifications](https://appwrite.io/blog/post/push-notifications-best-practices)
-- [How tools like Twilio can simplify messaging for developers](https://appwrite.io/blog/post/simplify-messaging-twilio)
+- [How Twilio simplifies messaging for developers](https://appwrite.io/blog/post/simplify-messaging-twilio)
 - [Product tour video](https://www.youtube.com/watch?v=QdDgPeuBZ1I)
 
 ## Another day

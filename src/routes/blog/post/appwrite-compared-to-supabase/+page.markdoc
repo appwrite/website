@@ -3,10 +3,12 @@ layout: post
 title: "Appwrite vs Supabase: a comparison of Backend-as-a-Service platforms"
 description: Get a comprehensive comparison between Appwrite and Supabase to decide what platform to use for your project's backend.
 date: 2024-03-01
-cover: /images/blog/appwrite-compared-to-supabase/cover.png
+cover: /images/blog/appwrite-competitor-comparison/cover.png
 timeToRead: 7
 author: aditya-oberai
 category: product
+unlisted: true
+callToAction: true
 ---
 
 If you are looking to build a mobile app, website, tool, or any other application that needs a backend, then you also know the daunting tasks that await. This is probably what brought you to this blog in the first place: looking for a solution to take care of your backend. One of these solutions is a Backend-as-a-Service (BaaS). It provides pre-built backend infrastructure and services to simplify app development, handling server-side tasks like data storage, user management, APIs, server maintenance, security, database management, and more. Two of these solutions are Appwrite and Supabase, and although both are solid options for your BaaS, they’re somewhat different.
@@ -172,7 +174,7 @@ Here's a price comparison between Appwrite and Supabase to help you choose the o
 
 # Resources
 
-If you want to learn more about Appwrite, you can find more resources below.
+If you’re looking for an independent comparison of performance, scalability, and ease of use between Appwrite and Supabase, take a look at this [in-depth article by Codigee](https://codigee.com/blog/appwrite-vs-supabase-cloud-vs-self-hosted-performance-comparison). To learn more about Appwrite or try it yourself, check out the resources below.
 
 - [Appwrite documentation](/docs) - Visit Appwrite’s docs to learn how to get started and more about Appwrite’s functionality.
 - [Appwrite Migration API](/docs/advanced/migrations/supabase) - Find out how to transfer your applications from Supabase to Appwrite in just a few steps.

@@ -4,6 +4,7 @@ title: Build an ideas tracker with SvelteKit
 description: Build a SvelteKit project using Appwrite.
 step: 1
 difficulty: beginner
+back: /docs/tutorials
 readtime: 10
 framework: SvelteKit
 category: Web

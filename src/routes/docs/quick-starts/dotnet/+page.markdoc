@@ -59,7 +59,7 @@ cd MyApp
 Install the .NET Appwrite SDK.
 
 ```sh
-dotnet add package Appwrite --version 0.8.1
+dotnet add package Appwrite --version 0.13.0
 ```
 {% /section %}
 {% section #step-4 step=4 title="Import Appwrite" %}
@@ -73,7 +73,7 @@ Find your project ID in the **Settings** page. Also, click on the **View API Key
 ![Project settings screen](/images/docs/quick-starts/project-id.png)
 {% /only_light %}
 
-Open the file `Program.cs` and initialize the Appwrite Client. Replace `<YOUR_PROJECT_ID>` with your project ID and `<YOUR_API_KEY>` with your API key.
+Open the file `Program.cs` and initialize the Appwrite Client. Replace `<PROJECT_ID>` with your project ID and `<YOUR_API_KEY>` with your API key.
 
 ```csharp
 using Appwrite;
@@ -83,8 +83,8 @@ using Appwrite.Services;
 var client = new Client();
 
 client
-    .SetEndpoint("https://cloud.appwrite.io/v1")
-    .SetProject("<YOUR_PROJECT_ID>")
+    .SetEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .SetProject("<PROJECT_ID>")
     .SetKey("<YOUR_API_KEY>");
 ```
 

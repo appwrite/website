@@ -1,7 +1,7 @@
 @use '../abstract' as *;
 
 .#{$p}-footer-nav {
-  display:flex; justify-content:space-between; padding-block:pxToRem(64); font-size:var(--web-font-size-tiny);
+  display:flex; justify-content:space-between; padding-block-start:pxToRem(64); font-size:var(--web-font-size-tiny);
   .web-logo { align-self:start; }
   &-main {
     &-title { margin-block-end:pxToRem(24); }

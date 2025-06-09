@@ -1,14 +1,14 @@
 <script lang="ts">
-    import Video from '$routes/init/(components)/Video.svelte';
+    import Video from '$lib/components/shared/video/player.svelte';
 
-    export let src: string;
-    export let thumbnail: string;    
+    interface Props {
+        src: string;
+        thumbnail: string;
+    }
+
+    const { src, thumbnail }: Props = $props();
 </script>
 
 <div class="web-media">
-    <!-- svelte-ignore a11y-media-has-caption -->
-    <Video
-        {thumbnail}
-        src={src}
-    />
+    <Video {thumbnail} {src} --p-aspect-ratio="16/9" />
 </div>

@@ -6,8 +6,9 @@ date: 2024-01-16
 cover: /images/blog/cors-error/cors_cover.png
 timeToRead: 3
 author: dennis-ivy
-category: engineering
+category: tutorial
 featured: false
+callToAction: true
 ---
 
 I want to address an issue I've seen popping up on Stack Overflow and the Appwrite Discord server and address some of the reasons you may be getting this error, then walk you through some of the steps you can take to try and resolve it as well.
@@ -18,23 +19,23 @@ The error message you'll see in your console when trying to make a request to an
 
 Before we start debugging this, let's talk about what a CORS error is.
 
-Without diving deep into the topic, CORS (Cross-Origin Resource Sharing ) is a mechanism that allows a server to specify which origins can access it. By origins, I mean URLs. 
+Without diving deep into the topic, CORS (Cross-Origin Resource Sharing ) is a mechanism that allows a server to specify which origins can access it. By origins, I mean URLs.
 
 Site A, our server sitting at `myapi.com` won't allow request coming from site B, which is our client app sitting at `myfrontend.com`.
 
-This happens because our server has not added site B, `myfrontend.com`, to its list of allowed origins. 
-Any request coming from a URL that is not listed in our server's allowed origins will be rejected by our CORS policy. 
+This happens because our server has not added site B, `myfrontend.com`, to its list of allowed origins.
+Any request coming from a URL that is not listed in our server's allowed origins will be rejected by our CORS policy.
 The solution in this case would be to simply add `myfrontend.com` to the list of allowed origins.
 
 ![CORS error appwrite](/images/blog/cors-error/cors_example.png)
 
-CORS is crucial because it provides a secure way to make requests across different origins. 
+CORS is crucial because it provides a secure way to make requests across different origins.
 Without CORS, any website would be able to make requests to our server, and this would lead to major problems.
 Imagine a malicious third party making a website `myfr0nt3nd.com` that key logs your user name and password, before making requests to your backend to validate the combination.
 
 # Why you are getting a CORS error
 
-Now let's try to figure this all out in the context of Appwrite and why you may be getting this error. 
+Now let's try to figure this all out in the context of Appwrite and why you may be getting this error.
 I have listed three main reasons. If more arise, I will update the article to include them.
 
 1. Origin not set in Console
@@ -43,7 +44,7 @@ I have listed three main reasons. If more arise, I will update the article to in
 
 ## 1 - Origin not set in Console
 
-First, you'll want to check your Appwrite Console to make sure you have added a hostname and are making a request from the correct hostname. 
+First, you'll want to check your Appwrite Console to make sure you have added a hostname and are making a request from the correct hostname.
 Make sure you have added a platform in your Appwrite console by going to the **Overview** tab, select your platform or adding one if you have none, and then ensure you have added a hostname.
 
 A hostname is simply the domain you will be making the request from. In development, this will most likely be `localhost`. No need to add a port number or protocol here.
@@ -60,20 +61,20 @@ So if you find this is why you were getting a CORS error, you have a few ways of
 
 ## 3 - Incorrect ID on request
 
-This one happens because of an improperly configured request, such as a typo when specifying a project ID. For example, when using the `listDocuments` method, 
+This one happens because of an improperly configured request, such as a typo when specifying a project ID. For example, when using the `listDocuments` method,
 if the project ID is set incorrectly when the client is initialized, you will receive a CORS error.
 
-Without diving into the details about how CORS works, the problem occurs when the browser tries to check if the origin is allowed. 
+Without diving into the details about how CORS works, the problem occurs when the browser tries to check if the origin is allowed.
 The request returns a `40X` response, so the entire CORS check fails.
 
 ## Other things to consider
 
-In most cases, the issues people face have to do with one of the above reasons listed and can be solved with the given suggestions. 
-However, if you are still running into issues, I’ll keep an ongoing list of other possibilities and things to check for. 
+In most cases, the issues people face have to do with one of the above reasons listed and can be solved with the given suggestions.
+However, if you are still running into issues, I’ll keep an ongoing list of other possibilities and things to check for.
 
 - Disabled CORS in browser.  (I’ve seen people have this issue with browser extensions)
 
-## Aditional resources
+## Additional resources
 Visit our documentation, Discord server, YouTube channel, or Threads page to find more resources on this topic.
 
 {% arrow_link href="https://appwrite.io/docs/advanced/security/abuse-protection/" %}

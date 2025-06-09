@@ -6,7 +6,7 @@ date: 2023-11-14
 cover: /images/blog/pdf-generation/pdf.png
 timeToRead: 5
 author: luke-silver
-category: website
+category: tutorial
 ---
 Appwrite Functions allow you to extend Appwrite's functionality with just a few lines of backend code. Enabling you to build your applications as you imagined. You can start by cloning one of the quick start templates or using a template with pre-built integration to quickly implement features. Function templates are pre-built Appwrite Functions that can be integrated into your Appwrite project with just a few clicks. Using them, you can easily incorporate new features and integrations into your app without writing additional code or managing infrastructure.
 
@@ -62,5 +62,5 @@ We’ve covered the basics, and now it’s your time to shine! With a few change
 For more information about Appwrite and Appwrite Functions:
 
 1. **[Appwrite Function Docs](https://appwrite.io/docs/functions)**: These documents provide more information on how to use Appwrite Functions.
-2. **[Appwrite Cloud](https://appwrite.io/cloud)**: Try our cloud service to get started quickly.
+2. **[Appwrite Cloud](https://cloud.appwrite.io/)**: Try our cloud service to get started quickly.
 3. **[Appwrite Discord](https://discord.com/invite/appwrite)**: Connect with other developers and the Appwrite team for discussion, questions, and collaboration.

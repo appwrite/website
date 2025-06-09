@@ -17,14 +17,14 @@
 
 <a class="web-grid-articles-item is-full-color" {href}>
     <div class="web-grid-articles-item-image">
-        <img src={cover} alt='' loading="lazy" />
+        <img src={cover} alt="" loading="lazy" />
     </div>
     <article class="web-grid-articles-item-content">
         <header class="web-articles-item-header">
-            <h3 class="web-sub-body-500 web-u-color-text-primary">{title}</h3>
+            <h3 class="text-sub-body text-primary font-medium">{title}</h3>
         </header>
         <p
-            class="web-articles-item-paragraph web-sub-body-500 u-trim-2 u-margin-block-start-4"
+            class="web-articles-item-paragraph text-sub-body mt-1 line-clamp-2 font-medium"
             style="word-break: keep-all;"
         >
             {description}

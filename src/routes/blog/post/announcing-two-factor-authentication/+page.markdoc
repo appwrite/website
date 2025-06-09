@@ -6,7 +6,7 @@ date: 2024-02-27
 cover: /images/blog/announcing-2fa.png
 timeToRead: 6
 author: eldad-fux
-category: product
+category: product, announcement
 featured: false
 ---
 
@@ -46,8 +46,8 @@ import { Client, Account } from "appwrite";
 const client = new Client();
 
 client
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('<YOUR_PROJECT_ID>'); // Your project ID
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('<PROJECT_ID>'); // Your project ID
 
 const account = new Account(client);
 

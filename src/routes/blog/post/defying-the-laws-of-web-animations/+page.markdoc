@@ -6,9 +6,9 @@ date: 2023-10-18
 cover: /images/blog/defying-the-laws-of-web-animations/cover.png
 timeToRead: 10
 author: thomas-g-lopes
-category: website
+category: tutorial
+callToAction: true
 ---
-
 
 If you're a frontend developer, you know that one of the scariest tasks you can receive is coding a complex web animation. If you're not a frontend developer, I bet that sounds even harder.
 
@@ -16,16 +16,16 @@ Don't get me wrong, I love web animations! They are an elegant way to show off s
 
 But animating on the web also has its limitations, and the challenges they make you face can be quite daunting. So when our _amazing_ design team shared me previews for the [new animations](/blog/post/designing-the-new-appwrite-website) that I'd be working on, I started thinking they didn't like me very much.
 
-
 I jest, I was super stoked! The animations looked fantastic. But I'm not joking when I say that they were much more challenging than I initially thought.
 
 ## What are we animating?
 
 First things first, what was I supposed to animate? Well, in this article, I'll be mainly talking about this animation, that's present at [Appwrite's homepage](https://appwrite.io).
 
-{% video src="/images/blog/defying-the-laws-of-web-animations/animations.mp4" /%}
+{% video
+   src="/images/blog/defying-the-laws-of-web-animations/animations.mp4" /%}
 
-There's a lot of stuff going on in there! There are multiple sections, each one with possible interactivity, 
+There's a lot of stuff going on in there! There are multiple sections, each one with possible interactivity,
 and there's also animation **between** the sections, where the phone moves positions.
 
 There's a lot to digest here, so let's break this into parts. We need to code:
@@ -151,9 +151,10 @@ In the example above, the `box`element will animate and only after it finished a
 
 But that's not all we used. We also took heavy advantage of Svelte's in-built [transition directives](https://svelte.dev/docs/svelte-transition), which automatically animate elements when they enter or exit the DOM, and also allow us to move surrounding elements that are affected by the new elements, e.g. when entering a list.
 
-{% video src="/images/blog/defying-the-laws-of-web-animations/auth_transitions.mov" /%}
+{% video
+   src="/images/blog/defying-the-laws-of-web-animations/auth_transitions.mov" /%}
 
-The video above showcases both Motion and Svelte transitions in action. The table and code box enter animations are controlled by Motion, while the new user entering the table is animated by Svelte, as well as the OAuth options. 
+The video above showcases both Motion and Svelte transitions in action. The table and code box enter animations are controlled by Motion, while the new user entering the table is animated by Svelte, as well as the OAuth options.
 
 ```html
 <!-- Svelte Animations -->
@@ -175,7 +176,7 @@ The video above showcases both Motion and Svelte transitions in action. The tabl
 
 ## Transitioning between sections
 
-There's one other nifty feature of Motion that I didn't mention: It can seamlessly interrupt ongoing animations. 
+There's one other nifty feature of Motion that I didn't mention: It can seamlessly interrupt ongoing animations.
 
 To illustrate this scenario, imagine you have two animations, one that moves `Box` from a point `x: 0`to `x: 64`, and another that does the opposite. Now, you start the first animation, but in the middle of it you trigger the second animation, when `Box`is at `x: 32`. Ideally, what would happen? To have a seamless transition, it should go from `x: 32`back to `x: 0`. But normally, with CSS keyframes, the `Box`element would jump to `x: 64`, and then animate to `x: 0`.
 
@@ -209,6 +210,7 @@ const box = getElSelector('box'); // #box-1
 Now, even if I start Section 2, and the selector gets updated, the constant `box`is still `#box-1`. The function is running, but trying to animate based on a selector that will not resolve to any element! And we can continue without fear, pretending the async functions have been canceled, defying the laws of what normally is possible within web animations!
 
 But, we also modify [Svelte stores](https://svelte.dev/docs/svelte-store) in our animation functions. How do we avoid clashes there? Well, you may notice this piece of code in one of the earlier snippets:
+
 ```typescript
 const { update } = state.reset();
 ```
@@ -216,6 +218,7 @@ const { update } = state.reset();
 This comes from a custom store I built, called `resettable`. It works similarly to our selector! It has an internal ID, which gets updated whenever we call `reset`. That reset method returns a scoped `update`function, that checks if the current ID of the `resettable` store is the same as the one that got created when we called `reset`. If it's not, it doesn't update the store.
 
 This is what the code looks like:
+
 ```typescript
 const simpleUUID = () => {
     return (

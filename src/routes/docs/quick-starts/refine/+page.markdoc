@@ -48,7 +48,7 @@ If you want to integrate Appwrite into an existing Refine app, simply use this c
 ```sh
 npm install @refinedev/appwrite
 ```
-Then follow [this](https://refine.dev/docs/packages/documentation/data-providers/appwrite) guide.
+Then follow [this guide on the Refine documentation site](https://refine.dev/docs/packages/documentation/data-providers/appwrite).
 
 
 {% /section %}
@@ -68,7 +68,7 @@ Navigate to `src/utility/appwriteClient.ts` and add your API credentials.
 import { Account, Appwrite, Storage } from "@refinedev/appwrite";
 
 const APPWRITE_URL = '<YOUR_API_ENDPOINT>'; // Replace with your Appwrite API Endpoint
-const APPWRITE_PROJECT = "<YOUR_PROJECT_ID>"; // Replace with your project ID
+const APPWRITE_PROJECT = "<PROJECT_ID>"; // Replace with your project ID
 
 const appwriteClient = new Appwrite();
 

@@ -2,6 +2,7 @@
     import { browser } from '$app/environment';
     import { createAccordion, melt } from '@melt-ui/svelte';
     import { slide } from 'svelte/transition';
+    import { createFaqSchema, getInlinedScriptTag } from '$lib/utils/metadata';
 
     export let items: {
         question: string;
@@ -16,16 +17,24 @@
             answer: 'Once you submit the form, our team will evaluate your application. If selected, you will receive an email with a special code to redeem your cloud credits and a detailed how-to guide on applying them. After you redeem your code, you will officially be part of the Startups program and can get started with your project!'
         },
         {
-            question: 'I am already a Pro user. Can I apply?',
-            answer: "We only accept new paying customers. This means that if you currently have a Pro account or had one previously, you're not eligible for the program."
+            question: 'I am a Pro user. Can I apply?',
+            answer: 'Yes, if you are currently on a Free or Pro plan, you can apply for the program.'
+        },
+        {
+            question: 'I am already a Scale user. Can I apply?',
+            answer: "If you are currently on a Scale plan, you can't apply for the program as the program is intended for Startups to help them relieve financial burdens at an early stage. If you're able to pay for a Scale plan, we will consider you ineligible."
         },
         {
             question: 'Who is eligible to apply?',
-            answer: "We're supporting startups established in the last decade with VC funding or bootstrapped/self-funded. If you don't meet these requirements yet but are in the process of meeting them, feel free to reach out so we can see how we can support your startup."
+            answer: 'We welcome early-stage startups as well as startups established within the last decade who are VC backed. So whether you are still looking to build your application or want to switch to Appwrite, we welcome you to join.'
         },
         {
-            question: 'What are the limits of the Pro plan?',
-            answer: 'The Appwrite Pro plan has ample room for growth and can handle production applications of all sizes. We have set generous limits to ensure most applications can grow comfortably within those limits without incurring high bills. Please review our <a class="web-link is-inline" href="/pricing">pricing page</a> for a full overview of the Pro plan limits.'
+            question: 'What are the limits of the Scale plan?',
+            answer: 'The Appwrite Scale plan has ample room for growth and can handle production applications of all sizes. We have set generous limits to ensure most applications can grow comfortably within those limits without incurring high bills. Please review our <a class="web-link underline" href="/pricing">pricing page</a> for a full overview of the Scale plan limits.'
+        },
+        {
+            question: 'Are OTP SMS costs covered by Appwrite?',
+            answer: 'All Appwrite plans include 10 free SMS messages per month, which allows you to test and implement OTP functionality without immediate costs. After this, you will have to pay the costs for SMS OTP. Please refer to our <a class="web-link underline" href="/docs/advanced/platform/phone-otp#rates">rates page</a> for a breakdown of the pricing, including rates by region and specific SMS costs.'
         },
         {
             question: 'What happens if we scale overnight?',
@@ -33,25 +42,25 @@
         },
         {
             question: "What's included in the Appwrite for Startups program?",
-            answer: 'Startups joining the program get access to everything Appwrite Pro offers. This includes Cloud credits, unlimited seats, and premium email support. In addition, we provide you with special swag, and you get a program manager and a private Discord channel. Read more about it in our <a class="web-link is-inline" href="/blog/post/announcing-appwrite-startups-program">announcement</a>.'
+            answer: 'Startups joining the program get access to everything Appwrite Pro or Scale offers. This includes Cloud credits, unlimited team members, and premium email support. In addition, we provide you with special swag, and you get a program manager and a private Slack channel. Read more about it in our <a class="web-link underline" href="/blog/post/announcing-appwrite-startups-program">announcement</a>.'
         },
         {
             question: 'What kind of support do we get?',
-            answer: 'When building with Appwrite, you have access to one of the most active communities that can help you when you have questions. As part of the Startup program, we also provide you with a private Discord channel where you get access to our support team, and you will have a dedicated program manager for non-technical questions.'
+            answer: 'When building with Appwrite, you have access to one of the most active communities that can help you when you have questions. As part of the Startup program, we also provide you with a private Slack channel where you get access to our support team, and you will have a dedicated program manager for non-technical questions.'
         },
         {
             question:
                 'What if we need more resources than what is offered in the Startups program?',
-            answer: 'If you need more resources than Appwrite Pro, we can discuss your needs and create a more tailored and custom plan.'
+            answer: 'If you need more resources than Appwrite Scale, we can discuss your needs and create a more tailored and custom plan.'
         },
         {
             question:
                 'I am already using another backend as a service provider. How do I migrate to Appwrite?',
-            answer: 'We have a <a class="web-link is-inline" href="/docs/advanced/migrations">migration tool</a> to help you transition from other platforms. If you need additional assistance, we are here to help.'
+            answer: 'We have a <a class="web-link underline" href="/docs/advanced/migrations">migration tool</a> to help you transition from other platforms. If you need additional assistance, we are here to help.'
         },
         {
-            question: 'What happens after the 12 months run out?',
-            answer: 'A month before the end of the term, we will re-evaluate your situation together and provide you with a fitting plan. Depending on your situation, this could mean you have to start paying full price, a reduced price, or nothing at all.'
+            question: 'I need to sign a BAA. Can I do this with Appwrite?',
+            answer: 'Yes, we can provide you with this.'
         }
     ];
 
@@ -65,8 +74,13 @@
     });
 </script>
 
+<svelte:head>
+    <!-- eslint-disable-next-line svelte/no-at-html-tags-->
+    {@html getInlinedScriptTag(createFaqSchema(items))}
+</svelte:head>
+
 <ul
-    class="collapsible u-width-full-line"
+    class="collapsible w-full divide-y divide-white/5"
     style="--p-toggle-border-color: var(--web-color-smooth);"
     use:melt={$root}
     id="faq"
@@ -76,20 +90,23 @@
             <!-- Progressive Enhancement for kbd navigation & animations -->
             {#if browser}
                 <div
-                    class="collapsible-wrapper"
+                    class="collapsible-wrapper py-2"
                     use:melt={$item(`${index}`)}
                     {...{ open: $isSelected(`${index}`) ? true : undefined }}
                 >
                     <h3 use:melt={$heading({ level: 3 })}>
                         <button
-                            class="collapsible-button u-width-full-line"
+                            class="flex w-full items-center justify-between gap-2.5 py-6 text-left"
                             use:melt={$trigger(`${index}`)}
                         >
-                            <span class="web-label web-u-color-text-primary">
+                            <span class="text-label font-aeonik-pro text-primary">
                                 {faqItem.question}
                             </span>
-                            <div class="icon web-u-color-text-primary">
-                                <span class="icon-cheveron-down" aria-hidden="true" />
+                            <div
+                                class="icon text-primary self-start transition-transform"
+                                class:rotate-180={$isSelected(`${index}`)}
+                            >
+                                <span class="icon-cheveron-down" aria-hidden="true"></span>
                             </div>
                         </button>
                     </h3>
@@ -100,7 +117,7 @@
                             use:melt={$content(`${index}`)}
                             transition:slide
                         >
-                            <p class="web-main-body-400">
+                            <p class="text-body">
                                 <!-- eslint-disable-next-line svelte/no-at-html-tags -->
                                 {@html faqItem.answer}
                             </p>
@@ -109,17 +126,17 @@
                 </div>
             {:else}
                 <details class="collapsible-wrapper" open={index === 0}>
-                    <summary class="collapsible-button">
-                        <span class="web-label web-u-color-text-primary">
+                    <summary class="collapsible-button appearance-none">
+                        <span class="text-label text-primary">
                             {faqItem.question}
                         </span>
-                        <div class="icon web-u-color-text-primary">
-                            <span class="icon-cheveron-down" aria-hidden="true" />
+                        <div class="icon text-primary">
+                            <span class="icon-cheveron-down" aria-hidden="true"></span>
                         </div>
                     </summary>
 
                     <div class="collapsible-content">
-                        <p class="web-main-body-400">
+                        <p class="text-body">
                             <!-- eslint-disable-next-line svelte/no-at-html-tags -->
                             {@html faqItem.answer}
                         </p>

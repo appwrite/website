@@ -7,15 +7,19 @@
     import Schedule from './(components)/Schedule.svelte';
     import Send from './(components)/Send.svelte';
     import Target from './(components)/Target.svelte';
-    import MultiCodeContextless from './(components)/MultiCodeContextless.svelte';
+    import MultiCodeContextless from '$lib/components/MultiCodeContextless.svelte';
+    import { Platform } from '$lib/utils/references';
+    import { getAppwriteDashboardUrl } from '$lib/utils/dashboard';
+    import { Button } from '$lib/components/ui';
 
     const title = 'Messaging' + TITLE_SUFFIX;
-    const description = DEFAULT_DESCRIPTION;
+    const description =
+        'Appwrite Messaging allows you to communicate with your audience across various mediums. Push notifications, SMS and emails - set up within minutes!';
     const ogImage = DEFAULT_HOST + '/images/open-graph/website.png';
 
     const codeTopic = [
         {
-            language: 'js',
+            language: 'client-web',
             content: `import { Account, Messaging, ID } from "appwrite"
 
 // Fetch target ID
@@ -32,7 +36,7 @@ await messaging.createSubscriber(
 )`
         },
         {
-            language: 'dart',
+            language: 'client-flutter',
             content: `import 'package:appwrite/appwrite.dart';
 
 // Fetch target ID
@@ -49,7 +53,7 @@ await messaging.createSubscriber(
 );`
         },
         {
-            language: 'kotlin',
+            language: 'client-android-kotlin',
             content: `import io.appwrite.services.Account
 import io.appwrite.services.Messaging
 import io.appwrite.ID
@@ -68,7 +72,7 @@ messaging.createSubscriber(
 )`
         },
         {
-            language: 'swift',
+            language: 'client-apple',
             content: `import Appwrite
 
 // Fetch target ID
@@ -88,24 +92,11 @@ try await messaging.createSubscriber(
 
     const codeMessage = [
         {
-            language: 'js',
+            language: 'server-nodejs',
             platform: 'Node.js',
             content: `import { Messaging, ID } from "node-appwrite"
 
 const messaging = Messaging(client);
-await messaging.createPush(
-    ID.unique(),           // Message ID
-    'Breaking update',     // Push title
-    'Hello, world!',       // Push body
-    ['news', 'sport'],       // Topic IDs
-);`
-        },
-        {
-            language: 'ts',
-            platform: 'Deno',
-            content: `import { Messaging, ID } from "https://deno.land/x/appwrite/mod.ts";
-
-const messaging = new Messaging(client);
 await messaging.createPush(
     ID.unique(),           // Message ID
     'Breaking update',     // Push title
@@ -249,7 +240,7 @@ messaging.create_email(
 </svelte:head>
 
 <Main>
-    <div class="web-big-padding-section u-overflow-hidden">
+    <div class="web-big-padding-section overflow-hidden">
         <div class="hero">
             <img
                 src="/images/products/messaging/blur-left.png"
@@ -262,30 +253,26 @@ messaging.create_email(
                 class="blur-right web-u-hide-2800"
             />
 
-            <div class="web-container">
+            <div class="container">
                 <div>
                     <div class="product">
                         <img src="/images/icons/illustrated/dark/messaging.png" alt="" />
-                        <span class="web-eyebrow web-u-color-text-primary">
+                        <span class="text-micro text-primary uppercase">
                             Messaging<span class="web-u-color-text-accent">_</span>
                         </span>
-                        <span class="web-hero-banner-button web-eyebrow">BETA</span>
+                        <span class="web-hero-banner-button text-micro uppercase">BETA</span>
                     </div>
-                    <h1 class="web-display web-u-color-text-primary">
+                    <h1 class="text-display font-aeonik-pro text-primary">
                         Open source messaging service for developers
                     </h1>
-                    <p class="web-description u-margin-block-start-20">
+                    <p class="text-description mt-5">
                         Set up messaging within minutes and send push notifications, emails, and SMS
                         directly to your users.
                     </p>
-                    <div class="u-flex u-items-center u-gap-8 u-margin-block-start-32 hero-buttons">
-                        <a class="web-button" href="https://cloud.appwrite.io" target="_blank"
-                            >Get started</a
-                        >
-                        <a
-                            class="web-button is-secondary"
-                            href="https://appwrite.io/docs/products/messaging"
-                            target="_blank">Documentation</a
+                    <div class="hero-buttons mt-8 flex items-center gap-2">
+                        <Button href={getAppwriteDashboardUrl()}>Get started</Button>
+                        <Button variant="secondary" href="/docs/products/messaging"
+                            >Documentation</Button
                         >
                     </div>
                 </div>
@@ -296,26 +283,26 @@ messaging.create_email(
             </div>
         </div>
 
-        <div class="steps web-container">
+        <div class="steps container">
             <Draft />
             <Target />
             <Schedule />
             <Send />
         </div>
 
-        <div
-            class="web-big-padding-section-level-1 u-position-relative web-white-section theme-light web-u-padding-block-end-0"
-        >
+        <div class="web-white-section light web-u-padding-block-end-0 relative py-10">
             <div class="web-big-padding-section-level-2" style="margin-block-end: 160px">
-                <div class="web-container">
+                <div class="container">
                     <section class="web-hero is-align-start">
-                        <span class="web-badges web-eyebrow">capabilities_</span>
-                        <h2 class="web-display web-u-color-text-primary u-max-width-700">
+                        <span class="web-badges text-micro !text-white uppercase"
+                            >capabilities_</span
+                        >
+                        <h2 class="text-display font-aeonik-pro text-primary max-w-[700px]">
                             All of your messages in one place
                         </h2>
                     </section>
-                    <div class="u-overflow-hidden web-u-margin-block-start-80">
-                        <ul class="web-info-boxes is-desktop-max-out-3 web-sub-body-500">
+                    <div class="mt-20 overflow-hidden">
+                        <ul class="text-sub-body grid grid-cols-1 font-medium md:grid-cols-3">
                             <li class="web-info-boxes-item">
                                 <img
                                     src="/images/icons/gradients/mobile.svg"
@@ -328,15 +315,14 @@ messaging.create_email(
                                     Effortlessly send push notifications for seamless instant
                                     communication.
                                 </p>
-                                <ul class="u-flex u-flex-wrap u-gap-8 u-margin-block-start-16">
+                                <ul class="mt-4 flex flex-wrap gap-2">
                                     <li>
                                         <a
                                             class="web-interactive-tag"
                                             href="/docs/products/messaging/fcm"
-                                            target="_blank"
-                                            rel="noopener noreferrer"
                                         >
-                                            <span class="web-icon-firebase" aria-hidden="true" />
+                                            <span class="web-icon-firebase" aria-hidden="true"
+                                            ></span>
                                             <span class="text">FCM</span>
                                         </a>
                                     </li>
@@ -344,10 +330,8 @@ messaging.create_email(
                                         <a
                                             class="web-interactive-tag"
                                             href="/docs/products/messaging/apns"
-                                            target="_blank"
-                                            rel="noopener noreferrer"
                                         >
-                                            <span class="web-icon-apple" aria-hidden="true" />
+                                            <span class="web-icon-apple" aria-hidden="true"></span>
                                             <span class="text">APNS</span>
                                         </a>
                                     </li>
@@ -365,15 +349,14 @@ messaging.create_email(
                                     Easily send emails for smooth communication and information
                                     sharing.
                                 </p>
-                                <ul class="u-flex u-flex-wrap u-gap-8 u-margin-block-start-16">
+                                <ul class="mt-4 flex flex-wrap gap-2">
                                     <li>
                                         <a
                                             class="web-interactive-tag"
                                             href="/docs/products/messaging/mailgun"
-                                            target="_blank"
-                                            rel="noopener noreferrer"
                                         >
-                                            <span class="web-icon-mailgun" aria-hidden="true" />
+                                            <span class="web-icon-mailgun" aria-hidden="true"
+                                            ></span>
                                             <span class="text">Mailgun</span>
                                         </a>
                                     </li>
@@ -381,10 +364,9 @@ messaging.create_email(
                                         <a
                                             class="web-interactive-tag"
                                             href="/docs/products/messaging/sendgrid"
-                                            target="_blank"
-                                            rel="noopener noreferrer"
                                         >
-                                            <span class="web-icon-sendgrid" aria-hidden="true" />
+                                            <span class="web-icon-sendgrid" aria-hidden="true"
+                                            ></span>
                                             <span class="text">SendGrid</span>
                                         </a>
                                     </li>
@@ -401,15 +383,13 @@ messaging.create_email(
                                 <p class="web-info-boxes-content">
                                     Send SMS for quick updates beyond your app's environment.
                                 </p>
-                                <ul class="u-flex u-flex-wrap u-gap-8 u-margin-block-start-16">
+                                <ul class="mt-4 flex flex-wrap gap-2">
                                     <li>
                                         <a
                                             class="web-interactive-tag"
                                             href="/docs/products/messaging/twilio"
-                                            target="_blank"
-                                            rel="noopener noreferrer"
                                         >
-                                            <span class="icon-twilio" aria-hidden="true" />
+                                            <span class="icon-twilio" aria-hidden="true"></span>
                                             <span class="text">Twilio</span>
                                         </a>
                                     </li>
@@ -417,10 +397,8 @@ messaging.create_email(
                                         <a
                                             class="web-interactive-tag"
                                             href="/docs/products/messaging/vonage"
-                                            target="_blank"
-                                            rel="noopener noreferrer"
                                         >
-                                            <span class="icon-vonage" aria-hidden="true" />
+                                            <span class="icon-vonage" aria-hidden="true"></span>
                                             <span class="text">Vonage</span>
                                         </a>
                                     </li>
@@ -445,22 +423,6 @@ messaging.create_email(
                                 <p class="web-info-boxes-content">
                                     Send realtime alerts to your users within your application.
                                 </p>
-                                <ul class="u-flex u-flex-wrap u-gap-8 u-margin-block-start-16">
-                                    <li>
-                                        <a
-                                            class="web-interactive-tag"
-                                            href="/docs"
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                        >
-                                            <span
-                                                class="web-icon-appwrite u-small web-u-margin-inline-end-4"
-                                                aria-hidden="true"
-                                            />
-                                            <span class="text">Appwrite</span>
-                                        </a>
-                                    </li>
-                                </ul>
                             </li>
                             <li class="web-info-boxes-item">
                                 <img
@@ -476,22 +438,22 @@ messaging.create_email(
                                 <p class="web-info-boxes-content">
                                     Connect chat apps such as Slack, Discord, and WhatsApp.
                                 </p>
-                                <ul class="u-flex u-flex-wrap u-gap-8 u-margin-block-start-16">
+                                <ul class="mt-4 flex flex-wrap gap-2">
                                     <li>
                                         <span class="web-interactive-tag" data-readonly>
-                                            <span class="icon-slack" aria-hidden="true" />
+                                            <span class="icon-slack" aria-hidden="true"></span>
                                             <span class="text">Slack</span>
                                         </span>
                                     </li>
                                     <li>
                                         <span class="web-interactive-tag" data-readonly>
-                                            <span class="icon-discord" aria-hidden="true" />
+                                            <span class="icon-discord" aria-hidden="true"></span>
                                             <span class="text">Discord</span>
                                         </span>
                                     </li>
                                     <li>
                                         <span class="web-interactive-tag" data-readonly>
-                                            <span class="icon-whatsapp" aria-hidden="true" />
+                                            <span class="icon-whatsapp" aria-hidden="true"></span>
                                             <span class="text">WhatsApp</span>
                                         </span>
                                     </li>
@@ -501,81 +463,48 @@ messaging.create_email(
                     </div>
                 </div>
             </div>
-            <!-- <div class="web-big-padding-section-level-2 u-position-relative u-z-index-1 theme-light">
-                <div class="web-container u-position-relative">
-                    <img
-                        class="u-position-absolute u-z-index-1 is-not-mobile"
-                        style="width:1500px; height:auto; max-block-size:none; max-inline-size:none; inset-block-end:-27rem; rotate:145deg; inset-inline-start:-42rem;"
-                        src="/images/messaging/stripes.png"
-                        alt="stripes"
-                    />
-                    <div class="grid-1-1 u-position-relative u-z-index-1">
-                        <section class="web-hero is-align-start">
-                            <span class="web-badges web-eyebrow">PERFORMANCE_</span>
-                            <h2 class="web-display u-max-width-600 web-u-color-text-primary">
-                                Optimized efficiency
-                            </h2>
-                        </section>
-                        <ul
-                            class="web-big-list-info u-margin-inline-start-auto web-u-inline-width-100-percent-mobile-break1 web-u-margin-block-start-48"
-                        >
-                            <li class="web-big-list-info-item">
-                                <div class="web-headline web-u-color-text-primary">500+</div>
-                                <div class="web-description web-u-color-text-secondary">
-                                    messages per second
-                                </div>
-                            </li>
-                            <li class="web-big-list-info-item">
-                                <div class="web-headline web-u-color-text-primary">33k+</div>
-                                <div class="web-description web-u-color-text-secondary">
-                                    messages per minute
-                                </div>
-                            </li>
-                            <li class="web-big-list-info-item">
-                                <div class="web-headline web-u-color-text-primary">9</div>
-                                <div class="web-description web-u-color-text-secondary">
-                                    third party providers
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div> -->
         </div>
 
         <div
-            class="u-position-relative u-z-index-1"
+            class="relative z-[1]"
             style="background-color:hsl(var(--web-color-greyscale-900)); padding-block-start: 40px"
         >
             <div class="web-big-padding-section-level-2">
-                <div class="web-container">
+                <div class="container">
                     <div class="web-hero is-align-start">
-                        <span class="web-badges web-eyebrow">SDKs_</span>
-                        <h2 class="web-display web-u-color-text-primary u-max-width-700">
+                        <span class="web-badges text-micro !text-white uppercase">SDKs_</span>
+                        <h2 class="text-display font-aeonik-pro text-primary max-w-[700px]">
                             Start today with your preferred technologies
                         </h2>
                     </div>
                     <div
-                        class="web-grid-1-1-opt-2 web-u-gap-64 web-u-margin-block-start-64 code-snippets"
+                        class="code-snippets divide-border-primary mt-16 grid grid-cols-1 gap-16 md:grid-cols-2"
                     >
-                        <div class="u-flex-vertical u-gap-8 u-min-width-0">
-                            <h3 class="web-label web-u-color-text-primary">Subscribe to a topic</h3>
-                            <p class="web-description">
+                        <div class="flex min-w-0 flex-col gap-2">
+                            <h3 class="text-label text-primary">Subscribe to a topic</h3>
+                            <p class="text-description">
                                 Subscribe to receive all messages related to a topic.
                             </p>
 
-                            <div
-                                class="u-margin-block-start-16 u-min-width-0"
-                                style="margin-block-end: 94px"
-                            >
-                                <MultiCodeContextless data={codeTopic} height={450} />
+                            <div class="mt-4 min-w-0" style="margin-block-end: 94px">
+                                <MultiCodeContextless
+                                    data={codeTopic}
+                                    selected={Platform.ClientWeb}
+                                    height={450}
+                                />
                             </div>
                         </div>
-                        <div class="u-flex-vertical u-gap-8 u-min-width-0">
-                            <h3 class="web-label web-u-color-text-primary">Send a message</h3>
-                            <p class="web-description">Send a message to all targets on a topic.</p>
-                            <div class="u-margin-block-start-16 u-min-width-0">
-                                <MultiCodeContextless data={codeMessage} height={450} />
+                        <div class="flex min-w-0 flex-col gap-2">
+                            <h3 class="text-label text-primary">Send a message</h3>
+                            <p class="text-description">
+                                Send a message to all targets on a topic.
+                            </p>
+                            <div class="mt-4 min-w-0">
+                                <MultiCodeContextless
+                                    data={codeMessage}
+                                    selected={Platform.ServerNodeJs}
+                                    height={450}
+                                />
                             </div>
                         </div>
                     </div>
@@ -583,42 +512,34 @@ messaging.create_email(
             </div>
         </div>
 
-        <section
-            class="web-big-padding-section-level-1 web-u-sep-block-start web-u-padding-block-start-80"
-        >
-            <div class="web-container">
-                <h4 class="web-label u-text-center web-u-color-text-primary">
-                    Keep exploring our products
-                </h4>
+        <section class="web-u-sep-block-start web-u-padding-block-start-80 py-10">
+            <div class="container">
+                <h4 class="text-label text-primary text-center">Keep exploring our products</h4>
                 <ul
-                    class="u-grid u-gap-32 u-margin-block-start-32"
+                    class="mt-8 grid gap-8"
                     style="grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr))"
                 >
                     <li class="web-u-flex-basis-378">
                         <a
                             class="web-card is-normal"
-                            href="/docs/products/auth"
+                            href="/products/auth"
                             style="background: rgba(255, 255, 255, 0.04);"
-                            target="_blank"
-                            rel="noopener noreferrer"
                         >
                             <div
-                                class="u-flex-vertical u-gap-8 web-u-padding-inline-8 web-u-padding-block-end-8"
+                                class="web-u-padding-inline-8 web-u-padding-block-end-8 flex flex-col gap-2"
                             >
-                                <div class="u-flex u-cross-center u-gap-8">
+                                <div class="flex items-center gap-2">
                                     <img
                                         src="/images/icons/illustrated/dark/auth.png"
                                         alt="auth"
                                         width="32"
                                         height="32"
                                     />
-                                    <h4 class="web-main-body-400 web-u-color-text-primary">Auth</h4>
-                                    <span
-                                        class="web-icon-arrow-right u-margin-inline-start-auto"
-                                        aria-hidden="true"
-                                    />
+                                    <h4 class="text-body text-primary">Auth</h4>
+                                    <span class="web-icon-arrow-right ml-auto" aria-hidden="true"
+                                    ></span>
                                 </div>
-                                <p class="web-sub-body-400">
+                                <p class="text-sub-body">
                                     Build secure authentication and manage your users.
                                 </p>
                             </div>
@@ -627,30 +548,24 @@ messaging.create_email(
                     <li class="web-u-flex-basis-378">
                         <a
                             class="web-card is-normal"
-                            href="/docs/products/functions"
-                            target="_blank"
-                            rel="noopener noreferrer"
+                            href="/products/functions"
                             style="background: rgba(255, 255, 255, 0.04);"
                         >
                             <div
-                                class="u-flex-vertical u-gap-8 web-u-padding-inline-8 web-u-padding-block-end-8"
+                                class="web-u-padding-inline-8 web-u-padding-block-end-8 flex flex-col gap-2"
                             >
-                                <div class="u-flex u-cross-center u-gap-8">
+                                <div class="flex items-center gap-2">
                                     <img
                                         src="/images/icons/illustrated/dark/functions.png"
                                         alt="functions"
                                         width="32"
                                         height="32"
                                     />
-                                    <h4 class="web-main-body-400 web-u-color-text-primary">
-                                        Functions
-                                    </h4>
-                                    <span
-                                        class="web-icon-arrow-right u-margin-inline-start-auto"
-                                        aria-hidden="true"
-                                    />
+                                    <h4 class="text-body text-primary">Functions</h4>
+                                    <span class="web-icon-arrow-right ml-auto" aria-hidden="true"
+                                    ></span>
                                 </div>
-                                <p class="web-sub-body-400">
+                                <p class="text-sub-body">
                                     Scale big and unlock limitless potential with Appwrite
                                     functions.
                                 </p>
@@ -661,29 +576,23 @@ messaging.create_email(
                         <a
                             class="web-card is-normal"
                             href="/docs/products/databases"
-                            target="_blank"
-                            rel="noopener noreferrer"
                             style="background: rgba(255, 255, 255, 0.04);"
                         >
                             <div
-                                class="u-flex-vertical u-gap-8 web-u-padding-inline-8 web-u-padding-block-end-8"
+                                class="web-u-padding-inline-8 web-u-padding-block-end-8 flex flex-col gap-2"
                             >
-                                <div class="u-flex u-cross-center u-gap-8">
+                                <div class="flex items-center gap-2">
                                     <img
                                         src="/images/icons/illustrated/dark/databases.png"
                                         alt=""
                                         width="37"
                                         height="32"
                                     />
-                                    <h4 class="web-main-body-400 web-u-color-text-primary">
-                                        Databases
-                                    </h4>
-                                    <span
-                                        class="web-icon-arrow-right u-margin-inline-start-auto"
-                                        aria-hidden="true"
-                                    />
+                                    <h4 class="text-body text-primary">Databases</h4>
+                                    <span class="web-icon-arrow-right ml-auto" aria-hidden="true"
+                                    ></span>
                                 </div>
-                                <p class="web-sub-body-400">
+                                <p class="text-sub-body">
                                     Store and query structured data, ensuring scalable storage.
                                 </p>
                             </div>
@@ -692,30 +601,24 @@ messaging.create_email(
                     <li class="web-u-flex-basis-378">
                         <a
                             class="web-card is-normal"
-                            href="/docs/products/storage"
-                            target="_blank"
-                            rel="noopener noreferrer"
+                            href="/products/storage"
                             style="background: rgba(255, 255, 255, 0.04);"
                         >
                             <div
-                                class="u-flex-vertical u-gap-8 web-u-padding-inline-8 web-u-padding-block-end-8"
+                                class="web-u-padding-inline-8 web-u-padding-block-end-8 flex flex-col gap-2"
                             >
-                                <div class="u-flex u-cross-center u-gap-8">
+                                <div class="flex items-center gap-2">
                                     <img
                                         src="/images/icons/illustrated/dark/storage.png"
                                         alt="storage"
                                         width="32"
                                         height="32"
                                     />
-                                    <h4 class="web-main-body-400 web-u-color-text-primary">
-                                        Storage
-                                    </h4>
-                                    <span
-                                        class="web-icon-arrow-right u-margin-inline-start-auto"
-                                        aria-hidden="true"
-                                    />
+                                    <h4 class="text-body text-primary">Storage</h4>
+                                    <span class="web-icon-arrow-right ml-auto" aria-hidden="true"
+                                    ></span>
                                 </div>
-                                <p class="web-sub-body-400">
+                                <p class="text-sub-body">
                                     Manage your files' project, using convenient APIs and utilities.
                                 </p>
                             </div>
@@ -725,29 +628,23 @@ messaging.create_email(
                         <a
                             class="web-card is-normal"
                             href="/docs/apis/realtime"
-                            target="_blank"
-                            rel="noopener noreferrer"
                             style="background: rgba(255, 255, 255, 0.04);"
                         >
                             <div
-                                class="u-flex-vertical u-gap-8 web-u-padding-inline-8 web-u-padding-block-end-8"
+                                class="web-u-padding-inline-8 web-u-padding-block-end-8 flex flex-col gap-2"
                             >
-                                <div class="u-flex u-cross-center u-gap-8">
+                                <div class="flex items-center gap-2">
                                     <img
                                         src="/images/icons/illustrated/dark/realtime.png"
                                         alt="realtime"
                                         width="32"
                                         height="32"
                                     />
-                                    <h4 class="web-main-body-400 web-u-color-text-primary">
-                                        Realtime
-                                    </h4>
-                                    <span
-                                        class="web-icon-arrow-right u-margin-inline-start-auto"
-                                        aria-hidden="true"
-                                    />
+                                    <h4 class="text-body text-primary">Realtime</h4>
+                                    <span class="web-icon-arrow-right ml-auto" aria-hidden="true"
+                                    ></span>
                                 </div>
-                                <p class="web-sub-body-400">
+                                <p class="text-sub-body">
                                     Utilize realtime information from all Appwrite services.
                                 </p>
                             </div>
@@ -756,8 +653,8 @@ messaging.create_email(
                 </ul>
             </div>
         </section>
-        <div class="web-big-padding-section-level-2 is-margin-replace-padding u-position-relative">
-            <div class="web-container">
+        <div class="relative pt-[7.5rem]">
+            <div class="container">
                 <PreFooter />
                 <FooterNav />
                 <MainFooter />
@@ -774,7 +671,7 @@ messaging.create_email(
         margin-block-start: -5rem;
         padding-block-start: 5rem;
 
-        .web-container {
+        .container {
             display: grid;
             // grid-template-columns: 580px 700px;
             grid-template-columns: 1fr 1fr;
@@ -897,13 +794,17 @@ messaging.create_email(
         pointer-events: none;
     }
 
+    .web-tag {
+        --p-tag-bg-color: var(--web-color-greyscale-100);
+    }
+
     @media (min-width: 1024px) {
         .hero {
             padding-block-start: 0;
         }
     }
     @media (max-width: 1023px) {
-        .hero .web-container {
+        .hero .container {
             max-width: 750px;
         }
     }

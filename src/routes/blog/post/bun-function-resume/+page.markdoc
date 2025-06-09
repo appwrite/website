@@ -6,7 +6,7 @@ date: 2024-03-07
 cover: /images/blog/bun-function-resume/cover.png
 timeToRead: 7
 author: aditya-oberai
-category: functions
+category: tutorial
 ---
 
 One of the coolest things about Appwrite Functions is that you can now consume them as REST APIs. This means you can send HTTP requests to any path, using common HTTP methods such as `GET` and `POST` to any path on the function and get a response in JSON or any other text-based formats (such as plain text, HTML, and CSV). This has opened up a lot of potential use-cases, one of which is how you can host and share your online resume through an Appwrite Function when applying for a new job. 
@@ -164,7 +164,7 @@ import { getStaticFile } from './utils.js';
 export default async ({ req, res }) => {
   
   if (req.method === 'GET' && req.path === '/') {
-    return res.send(getStaticFile('resume.html'), 200, {
+    return res.text(getStaticFile('resume.html'), 200, {
       'Content-Type': 'text/html; charset=utf-8',
     });
   }

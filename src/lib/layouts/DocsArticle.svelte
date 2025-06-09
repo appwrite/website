@@ -4,117 +4,87 @@
         href: string;
         step?: number;
         selected?: boolean;
+        level?: number;
         children?: Array<{
             title: string;
             href: string;
             selected: boolean;
+            level?: number;
         }>;
     };
 </script>
 
 <script lang="ts">
-    import { scrollToTop } from '$lib/actions/scrollToTop';
-
+    import { setContext } from 'svelte';
+    import { writable } from 'svelte/store';
     import { Feedback } from '$lib/components';
+    import TableOfContents from '$lib/components/blog/table-of-contents.svelte';
+    import { Button, Icon } from '$lib/components/ui';
 
     export let title: string;
     export let toc: Array<TocItem>;
     export let back: string | undefined = undefined;
     export let date: string | undefined = undefined;
+
+    const reducedArticleSize = setContext('articleHasNumericBadge', writable(false));
 </script>
 
-<main class="u-contents" id="main">
-    <article class="web-article u-contents">
+<main class="contents" id="main">
+    <article class="web-article contents">
         <header class="web-article-header">
-            <div class="web-article-header-start u-flex-vertical web-u-cross-start">
+            <div class="web-article-header-start web-u-cross-start flex flex-col">
                 {#if back}
                     <a
                         href={back}
                         class="web-icon-button web-is-only-mobile"
                         aria-label="previous page"
                     >
-                        <span class="icon-cheveron-left" aria-hidden="true" />
+                        <span class="icon-cheveron-left" aria-hidden="true"></span>
                     </a>
                 {/if}
-                <ul class="web-metadata web-caption-400">
+                <ul class="web-metadata text-caption">
                     <slot name="metadata" />
                 </ul>
-                <div class="u-position-relative u-flex u-cross-center">
+                <div class="relative flex items-center">
                     {#if back}
-                        <a
+                        <Button
                             href={back}
-                            class="
-                        web-button is-text is-icon web-u-cross-center web-u-size-40
-                        u-position-absolute u-inset-inline-start-0 web-u-translate-x-negative"
+                            class="web-u-translate-x-negative absolute top-0 size-10 items-center"
                             aria-label="previous page"
+                            variant="icon"
                         >
-                            <span
-                                class="icon-cheveron-left web-u-font-size-24 web-u-color-text-primary web-is-not-mobile"
+                            <Icon
+                                name="chevron-left"
+                                class="text-primary hidden text-[24px] md:flex"
                                 aria-hidden="true"
                             />
-                        </a>
+                        </Button>
                     {/if}
-                    <h1 class="web-title">{title}</h1>
+                    <h1 class="text-title font-aeonik-pro text-primary">{title}</h1>
                 </div>
             </div>
-            <div class="web-article-header-end" />
+            <div class="web-article-header-end"></div>
         </header>
-        <div class="web-article-content">
+        <div class="web-article-content" class:web-reduced-article-size={$reducedArticleSize}>
             <slot />
+
             <Feedback {date} />
         </div>
-        <aside class="web-references-menu web-u-padding-inline-start-24">
+        <aside class="web-references-menu ps-6">
             <div class="web-references-menu-content">
                 {#if toc && toc.length > 0}
-                    <div class="u-flex u-main-space-between u-cross-center u-gap-16">
-                        <h5 class="web-references-menu-title web-eyebrow">On This Page</h5>
-                    </div>
-                    <ol class="web-references-menu-list">
-                        {#each toc as parent (parent.href)}
-                            <li
-                                class="web-references-menu-item"
-                            >
-                                <a
-                                    href={parent.href}
-                                    class="web-references-menu-link"
-                                    class:is-selected={parent.selected}
-                                >
-                                    {#if parent?.step}
-                                        <span class="web-numeric-badge">{parent.step}</span>
-                                    {/if}
-                                    <span class="web-caption-400">{parent.title}</span>
-                                </a>
-                                {#if parent.children}
-                                    <ol
-                                        class="web-references-menu-list u-margin-block-start-16 u-margin-inline-start-32"
-                                    >
-                                        {#each parent.children as child}
-                                            <li class="web-references-menu-item">
-                                                <a
-                                                    href={child.href}
-                                                    class="web-references-menu-link"
-                                                >
-                                                    <span class="web-caption-400">{child.title}</span
-                                                    >
-                                                </a>
-                                            </li>
-                                        {/each}
-                                    </ol>
-                                {/if}
-                            </li>
-                        {/each}
-                    </ol>
-                    <div class="u-sep-block-start u-padding-block-start-20">
-                        <button
-                            class="web-link u-inline-flex u-cross-center u-gap-8"
-                            use:scrollToTop
-                        >
-                            <span class="web-icon-arrow-up" aria-hidden="true" />
-                            <span class="web-caption-400">Back to top</span>
-                        </button>
-                    </div>
+                    <TableOfContents heading="On This Page" {toc} />
                 {/if}
             </div>
         </aside>
     </article>
 </main>
+
+<style>
+    @media (min-width: 1280px) and (max-width: 1330px) {
+        .web-reduced-article-size {
+            /* original/default is 41.5rem */
+            max-inline-size: 40.5rem;
+        }
+    }
+</style>

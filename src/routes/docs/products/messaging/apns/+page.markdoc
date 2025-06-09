@@ -10,7 +10,7 @@ APNs will save the last message for 30 days or less and attempt delivery as soon
 
 {% section #add-provider step=1 title="Add provider" %}
 
-To add APNs as a provider, navigate to **Messaging** > **Providers** > {% icon icon="plus" size="m" /%} **Add provider** > **Push notification**.
+To add APNs as a provider, navigate to **Messaging** > **Providers** > {% icon icon="plus" size="m" /%} **Create provider** > **Push notification**.
 
 {% only_dark %}
 ![Add a FCM provider](/images/docs/messaging/providers/apns/dark/provider.png)
@@ -110,12 +110,12 @@ const client = new sdk.Client();
 const messaging = new sdk.Messaging(client);
 
 client
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('5df5acd0d48c2')                 // Your project ID
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('<PROJECT_ID>')                 // Your project ID
     .setKey('919c2d18fb5d4...a2ae413da83346ad2') // Your secret API key
 ;
 
-const provider = await messaging.updateAPNSProvider(
+const provider = await messaging.updateApnsProvider(
         '[PROVIDER_ID]',                         // providerId
         '[NAME]',                                // name (optional)
         false,                                   // enabled (optional)
@@ -134,12 +134,12 @@ let client = new sdk.Client();
 let messaging = new sdk.Messaging(client);
 
 client
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('5df5acd0d48c2')                 // Your project ID
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('<PROJECT_ID>')                 // Your project ID
     .setKey('919c2d18fb5d4...a2ae413da83346ad2') // Your secret API key
 ;
 
-const provider = await messaging.updateAPNSProvider(
+const provider = await messaging.updateApnsProvider(
         '[PROVIDER_ID]',                         // providerId
         '[NAME]',                                // name (optional)
         false,                                   // enabled (optional)
@@ -158,14 +158,14 @@ use Appwrite\Services\Messaging;
 $client = new Client();
 
 $client
-    ->setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    ->setProject('5df5acd0d48c2')                 // Your project ID
+    ->setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
+    ->setProject('<PROJECT_ID>')                 // Your project ID
     ->setKey('919c2d18fb5d4...a2ae413da83346ad2') // Your secret API key
 ;
 
 $messaging = new Messaging($client);
 
-$result = $messaging->updateAPNSProvider(
+$result = $messaging->updateApnsProvider(
     providerId: '[PROVIDER_ID]',
     name: '[NAME]',                               // optional
     enabled: false,                               // optional
@@ -182,8 +182,8 @@ from appwrite.services.messaging import Messaging
 client = Client()
 
 (client
-  .set_endpoint('https://cloud.appwrite.io/v1') # Your API Endpoint
-  .set_project('5df5acd0d48c2')                 # Your project ID
+  .set_endpoint('https://<REGION>.cloud.appwrite.io/v1') # Your API Endpoint
+  .set_project('<PROJECT_ID>')                 # Your project ID
   .set_key('919c2d18fb5d4...a2ae413da83346ad2') # Your secret API key
 )
 
@@ -205,8 +205,8 @@ require 'appwrite'
 include Appwrite
 
 client = Client.new
-    .set_endpoint('https://cloud.appwrite.io/v1') # Your API Endpoint
-    .set_project('5df5acd0d48c2')                 # Your project ID
+    .set_endpoint('https://<REGION>.cloud.appwrite.io/v1') # Your API Endpoint
+    .set_project('<PROJECT_ID>')                 # Your project ID
     .set_key('919c2d18fb5d4...a2ae413da83346ad2') # Your secret API key
 
 messaging = Messaging.new(client)
@@ -229,13 +229,13 @@ using Appwrite.Services;
 using Appwrite.Models;
 
 var client = new Client()
-    .SetEndPoint("https://cloud.appwrite.io/v1") // Your API Endpoint
-    .SetProject("5df5acd0d48c2")                  // Your project ID
+    .SetEndPoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
+    .SetProject("<PROJECT_ID>")                  // Your project ID
     .SetKey("919c2d18fb5d4...a2ae413da83346ad2"); // Your secret API key
 
 var messaging = new Messaging(client);
 
-Provider result = await messaging.UpdateAPNSProvider(
+Provider result = await messaging.updateApnsProvider(
     providerId: "[PROVIDER_ID]"
     name: "[NAME]"                                // optional
     enabled: false                                // optional
@@ -249,17 +249,17 @@ import 'package:dart_appwrite/dart_appwrite.dart';
 import 'package:dart_appwrite/enums.dart';
 import 'package:dart_appwrite/models.dart';
 
-void main() {                                    // Init SDK
+void main() async {                               // Init SDK
   Client client = Client();
   Messaging messaging = Messaging(client);
 
   client
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('5df5acd0d48c2')                 // Your project ID
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('<PROJECT_ID>')                 // Your project ID
     .setKey('919c2d18fb5d4...a2ae413da83346ad2') // Your secret API key
   ;
 
-  Future result = messaging.updateAPNSProvider(
+  Future result = await messaging.updateApnsProvider(
     providerId: '[PROVIDER_ID]',
     name: '[NAME]',                              // optional
     enabled: false,                              // optional
@@ -283,13 +283,13 @@ import io.appwrite.coroutines.CoroutineCallback;
 import io.appwrite.services.Messaging;
 
 Client client = new Client()
-    .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
-    .setProject("5df5acd0d48c2")                  // Your project ID
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
+    .setProject("<PROJECT_ID>")                  // Your project ID
     .setKey("919c2d18fb5d4...a2ae413da83346ad2"); // Your secret API key
 
 Messaging messaging = new Messaging(client);
 
-messaging.updateAPNSProvider(
+messaging.updateApnsProvider(
     "[PROVIDER_ID]",                              // providerId
     "[NAME]",                                     // name (optional)
     false,                                        // enabled (optional)
@@ -313,13 +313,13 @@ import io.appwrite.coroutines.CoroutineCallback;
 import io.appwrite.services.Messaging;
 
 Client client = new Client()
-    .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
-    .setProject("5df5acd0d48c2")                  // Your project ID
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
+    .setProject("<PROJECT_ID>")                  // Your project ID
     .setKey("919c2d18fb5d4...a2ae413da83346ad2"); // Your secret API key
 
 Messaging messaging = new Messaging(client);
 
-messaging.updateAPNSProvider(
+messaging.updateApnsProvider(
     "[PROVIDER_ID]",                              // providerId
     "[NAME]",                                     // name (optional)
     false,                                        // enabled (optional)
@@ -341,13 +341,13 @@ messaging.updateAPNSProvider(
 import Appwrite
 
 let client = Client()
-    .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
-    .setProject("5df5acd0d48c2")                 // Your project ID
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
+    .setProject("<PROJECT_ID>")                 // Your project ID
     .setKey("919c2d18fb5d4...a2ae413da83346ad2") // Your secret API key
 
 let messaging = Messaging(client)
 
-let provider = try await messaging.updateAPNSProvider(
+let provider = try await messaging.updateApnsProvider(
   providerId: "[PROVIDER_ID]",
   name: "[NAME]",                                // optional
   enabled: xfalse,                               // optional

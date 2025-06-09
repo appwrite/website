@@ -2,14 +2,14 @@
 
 .#{$p}-content {
   --p-section-gap: #{pxToRem(48)};
-  --p-content-gap: #{pxToRem(32)};
+  --p-content-gap: #{pxToRem(24)};
   display:flex; flex-direction:column; gap:var(--p-section-gap);
   section {
     display:flex; flex-direction:column; gap:var(--p-content-gap);
     scroll-snap-align:start; scroll-margin-top:pxToRem(120);
   }
   a:not(.web-button) {
-    @include break-word();   word-break:break-all; 
+    @include break-word();
     &:where(:hover, :focus) { text-decoration:underline; }
   }
 

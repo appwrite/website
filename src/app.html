@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
     <head>
         <meta charset="utf-8" />
@@ -17,22 +17,22 @@
         %sveltekit.head%
     </head>
 
-    <body class="theme-dark" data-sveltekit-preload-data="hover">
+    <body class="dark group/body antialiased" data-sveltekit-preload-data="hover">
         <script>
             // Theme
             const isDocs = window.location.pathname.startsWith('/docs');
             if (isDocs) {
                 const theme = localStorage.getItem('theme');
                 if (theme) {
-                    document.body.classList.remove('theme-dark', 'theme-light');
+                    document.body.classList.remove('dark', 'light');
                     if (theme === 'system') {
                         const systemTheme = window.matchMedia('(prefers-color-scheme: dark)')
                             .matches
                             ? 'dark'
                             : 'light';
-                        document.body.classList.add(`theme-${systemTheme}`);
+                        document.body.classList.add(systemTheme);
                     } else {
-                        document.body.classList.add(`theme-${theme}`);
+                        document.body.classList.add(theme);
                         // Color scheme in html
                         document.documentElement.style.setProperty('color-scheme', theme);
                     }

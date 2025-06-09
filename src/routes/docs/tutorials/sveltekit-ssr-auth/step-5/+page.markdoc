@@ -51,7 +51,7 @@ export const actions = {
     });
 
     // Redirect to the account page.
-    redirect(301, "/account");
+    redirect(302, "/account");
   },
 };
 ```

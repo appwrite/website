@@ -4,6 +4,7 @@ title: Build an ideas tracker with React Native
 description: Learn to build a React Native app with no backend code using an Appwrite backend.
 step: 1
 difficulty: beginner
+back: /docs/tutorials
 readtime: 10
 category: Mobile and native
 framework: React Native

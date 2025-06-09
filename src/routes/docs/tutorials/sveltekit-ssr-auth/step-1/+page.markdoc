@@ -4,6 +4,7 @@ title: Server-side authentication with SvelteKit
 description: Add SSR authentication to your SvelteKit app with Appwrite
 step: 1
 difficulty: beginner
+back: /docs/tutorials
 readtime: 20
 framework: SvelteKit SSR
 category: Auth

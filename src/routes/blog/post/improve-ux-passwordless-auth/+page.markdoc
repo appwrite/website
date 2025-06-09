@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Improving user experience with passwordless authentication
+title: Improving UX with passwordless authentication
 description: Understanding what passwordless authentication is and how it is a game-changer for both user experience and security.
 date: 2024-03-18
 cover: /images/blog/improve-ux-passwordless-auth/cover.png
@@ -9,7 +9,7 @@ author: aditya-oberai
 category: authentication
 ---
 
-Today, as concerns about security and user convenience only grow with digital activity, traditional password-based authentication systems are becoming a relic of the past. In recent times, we have seen a rise in passwordless systems, which are increasingly seeing adoption in both small and big companies alike, such as Expensify (whose transition was also covered in a Forbes [article](https://www.forbes.com/sites/quickerbettertech/2023/05/29/on-technology-expensify-forces-passwordless-on-its-users-and-good-for-them/?sh=397a7b017cac) in 2023. A [survey from Enterprise Strategy Group](https://research.esg-global.com/reportaction/SecuringTheIdentityPerimeterReport/Toc), a division of TechTarget, in 2022 also revealed that:
+Today, as concerns about security and user convenience only grow with digital activity, traditional password-based authentication systems are becoming a relic of the past. In recent times, we have seen a rise in passwordless systems, which are increasingly seeing adoption in both small and big companies alike, such as Expensify (whose transition was also covered in a [Forbes article](https://www.forbes.com/sites/quickerbettertech/2023/05/29/on-technology-expensify-forces-passwordless-on-its-users-and-good-for-them/?sh=397a7b017cac) in 2023. A [survey from Enterprise Strategy Group](https://research.esg-global.com/reportaction/SecuringTheIdentityPerimeterReport/Toc), a division of TechTarget, in 2022 also revealed that:
 
 - 31% of respondents picked passwordless authentication as their top identity-related activity
 - 34% of respondents chose passwordless authentication among their top three identity-related activities
@@ -21,7 +21,7 @@ Therefore, in this blog, we'll explore what passwordless authentication is, the 
 
 # The drawbacks of traditional password-based systems
 
-As per an [article](https://blog.lastpass.com/2023/07/pervasive-password-less-protection-the-solution-to-the-compromised-credentials-crisis) by Lastpass, passwords need to be treated like a user experience today because repeated login attempts, forgotten passwords, mandatory password changes, and looking up passwords in a document or notebook only slow employees down and create friction in their workflow. Traditional password systems, despite their ubiquity, come with significant drawbacks, including:
+[As per an article by Lastpass](https://blog.lastpass.com/2023/07/pervasive-password-less-protection-the-solution-to-the-compromised-credentials-crisis), passwords need to be treated like a user experience today because repeated login attempts, forgotten passwords, mandatory password changes, and looking up passwords in a document or notebook only slow employees down and create friction in their workflow. Traditional password systems, despite their ubiquity, come with significant drawbacks, including:
 
 - **Password fatigue**: Users struggle with remembering numerous passwords for different accounts.
 - **Security risks**: Weak or reused passwords increase vulnerability to hacking and data breaches.
@@ -73,7 +73,7 @@ First, we initialize the login process by sending an email with the magic URL. I
 import { Client, Account, ID } from "appwrite";
 
 const client = new Client()
-    .setEndpoint('https://cloud.appwrite.io/v1')
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
     .setProject('<PROJECT_ID>');
 
 const account = new Account(client);
@@ -103,7 +103,7 @@ First, we initialize the login process by sending an email. If the email has nev
 import { Client, Account, ID } from "appwrite";
 
 const client = new Client()
-    .setEndpoint('https://cloud.appwrite.io/v1')
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
     .setProject('<PROJECT_ID>');
 
 const account = new Account(client);
@@ -138,7 +138,7 @@ First, we initialize the login process by sending an SMS. If the phone number ha
 import 'package:appwrite/appwrite.dart';
 
 final client = Client()
-    .setEndpoint('https://cloud.appwrite.io/v1')
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
     .setProject('<PROJECT_ID>');
 
 final account = Account(client);

@@ -29,13 +29,13 @@
             <div class="author-img">
                 <img src={message.author_avatar} alt="" class="h-full w-full rounded-[inherit]" />
             </div>
-            <span class="web-sub-body-500 web-u-color-text-primary">{message.author}</span>
+            <span class="text-sub-body text-primary font-medium">{message.author}</span>
         </div>
-        <span class="timestamp web-caption-400">
+        <span class="timestamp text-caption">
             {formatTimestamp(message.timestamp)}
         </span>
     </div>
-    <div class="web-sub-body-500 u-margin-block-start-16">
+    <div class="text-sub-body mt-4 font-medium">
         <SvelteMarkdown
             source={message.message}
             renderers={{
@@ -51,10 +51,6 @@
 <style lang="scss">
     .web-card {
         overflow: hidden;
-    }
-
-    .web-sub-body-500 {
-        font-size: 1rem !important;
     }
 
     .header {

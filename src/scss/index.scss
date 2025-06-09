@@ -1,10 +1,9 @@
 @use 'sass:meta';
 
-@layer pink, css-variables, resets, fonts, icons, animations, elements, components, sequences, grids, pages, utilities;
+@layer pink, css-variables, resets, fonts, icons, animations, elements, pinkcomponents, sequences, grids, pages, pinkutilities;
 
 @layer pink {
-  @import '@appwrite.io/pink';
-  @import '@appwrite.io/pink-icons';
+  @include meta.load-css('pink-icons');
 }
 
 @layer css-variables {
@@ -31,7 +30,7 @@
   @include meta.load-css('6-elements');
 }
 
-@layer components {
+@layer pinkcomponents {
   @include meta.load-css('7-components');
 }
 
@@ -47,6 +46,6 @@
   @include meta.load-css('9-pages');
 }
 
-@layer utilities {
+@layer pinkutilities {
   @include meta.load-css('10-utilities');
 }

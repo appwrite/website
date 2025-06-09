@@ -20,7 +20,7 @@ To contribute to the Appwrite website, you need to fork, clone, and run the webs
 
 Start by [forking the repository](https://github.com/appwrite/website/fork), which makes a copy of the repo on your GitHub profile. This allows you to make code changes when you don't have permissions in the main Appwrite website repo.
 
-Then, [clone the respository](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository#cloning-a-repository).
+Then, [clone the repository](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository#cloning-a-repository).
 
 Alternatively, you can develop the website repo in your browser using [Code Spaces](https://github.com/features/codespaces) or [GitPod](https://www.gitpod.io/#https://github.com/appwrite/website).
 
@@ -34,13 +34,15 @@ Once you've cloned the Appwrite website repo, running the following command to i
 pnpm i
 ```
 
+**Locate the `.env.example` file in the root directory and rename it to `.env`.** This file contains the required environment variables for the project to function properly.
+
 Then, run the following command to start a development server.
 
 ```sh
 pnpm run dev
 ```
 
-Before commiting your code changes, make sure the website repo builds by running:
+Before committing your code changes, make sure the website repo builds by running:
 
 ```sh
 pnpm run build

@@ -94,7 +94,7 @@ const client = new sdk.Client();
 const messaging = new sdk.Messaging(client);
 
 client
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
     .setProject('<PROJECT_ID>') // Your project ID
     .setKey('<API_KEY>') // Your secret API key
 ;
@@ -110,7 +110,7 @@ let client = new sdk.Client();
 let messaging = new sdk.Messaging(client);
 
 client
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
     .setProject('<PROJECT_ID>') // Your project ID
     .setKey('<API_KEY>') // Your secret API key
 ;
@@ -126,7 +126,7 @@ use Appwrite\Services\Messaging;
 $client = new Client();
 
 $client
-    ->setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
+    ->setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
     ->setProject('<PROJECT_ID>') // Your project ID
     ->setKey('<API_KEY>') // Your secret API key
 ;
@@ -141,7 +141,7 @@ from appwrite.client import Client
 client = Client()
 
 (client
-  .set_endpoint('https://cloud.appwrite.io/v1') # Your API Endpoint
+  .set_endpoint('https://<REGION>.cloud.appwrite.io/v1') # Your API Endpoint
   .set_project('<PROJECT_ID>') # Your project ID
   .set_key('<API_KEY>') # Your secret API key
 )
@@ -156,7 +156,7 @@ require 'appwrite'
 include Appwrite
 
 client = Client.new
-    .set_endpoint('https://cloud.appwrite.io/v1') # Your API Endpoint
+    .set_endpoint('https://<REGION>.cloud.appwrite.io/v1') # Your API Endpoint
     .set_project('<PROJECT_ID>') # Your project ID
     .set_key('<API_KEY>') # Your secret API key
 
@@ -175,7 +175,7 @@ using Appwrite.Enums;
 using Appwrite.Enums;
 
 var client = new Client()
-    .SetEndPoint("https://cloud.appwrite.io/v1") // Your API Endpoint
+    .SetEndPoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
     .SetProject("<PROJECT_ID>") // Your project ID
     .SetKey("<API_KEY>"); // Your secret API key
 
@@ -191,17 +191,17 @@ import 'package:dart_appwrite/dart_appwrite.dart';
 import 'package:dart_appwrite/enums.dart';
 import 'package:dart_appwrite/models.dart';
 
-void main() { // Init SDK
+void main() async { // Init SDK
   Client client = Client();
   Messaging messaging = Messaging(client);
 
   client
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
     .setProject('<PROJECT_ID>') // Your project ID
     .setKey('<API_KEY>') // Your secret API key
   ;
 
-  Future result = messaging.createEmail(
+  Future result = await messaging.createEmail(
     messageId:'<MESSAGE_ID>' ,
     subject:'<SUBJECT>' ,
     content:'<CONTENT>' ,
@@ -221,7 +221,7 @@ import io.appwrite.coroutines.CoroutineCallback
 import io.appwrite.services.Messaging
 
 val client = Client()
-    .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
     .setProject("<PROJECT_ID>") // Your project ID
     .setKey("<API_KEY>") // Your secret API key
 
@@ -239,7 +239,7 @@ import io.appwrite.coroutines.CoroutineCallback;
 import io.appwrite.services.Messaging;
 
 Client client = new Client()
-    .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
     .setProject("<PROJECT_ID>") // Your project ID
     .setKey("<API_KEY>"); // Your secret API key
 
@@ -263,7 +263,7 @@ messaging.createEmail(
 import Appwrite
 
 let client = Client()
-    .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
     .setProject("<PROJECT_ID>") // Your project ID
     .setKey("<API_KEY>") // Your secret API key
 
@@ -303,7 +303,7 @@ const client = new sdk.Client();
 const messaging = new sdk.Messaging(client);
 
 client
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
     .setProject('<PROJECT_ID>') // Your project ID
     .setKey('<API_KEY>') // Your secret API key
 ;
@@ -377,7 +377,7 @@ use Appwrite\Services\Messaging;
 $client = new Client();
 
 $client
-    ->setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
+    ->setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
     ->setProject('<PROJECT_ID>') // Your project ID
     ->setKey('<API_KEY>') // Your secret API key
 ;
@@ -403,7 +403,7 @@ from appwrite.client import Client
 client = Client()
 
 (client
-  .set_endpoint('https://cloud.appwrite.io/v1') # Your API Endpoint
+  .set_endpoint('https://<REGION>.cloud.appwrite.io/v1') # Your API Endpoint
   .set_project('<PROJECT_ID>') # Your project ID
   .set_key('<API_KEY>') # Your secret API key
 )
@@ -429,7 +429,7 @@ require 'appwrite'
 include Appwrite
 
 client = Client.new
-    .set_endpoint('https://cloud.appwrite.io/v1') # Your API Endpoint
+    .set_endpoint('https://<REGION>.cloud.appwrite.io/v1') # Your API Endpoint
     .set_project('<PROJECT_ID>') # Your project ID
     .set_key('<API_KEY>') # Your secret API key
 
@@ -457,7 +457,7 @@ using Appwrite.Models;
 using Appwrite.Enums;
 
 var client = new Client()
-    .SetEndPoint("https://cloud.appwrite.io/v1") // Your API Endpoint
+    .SetEndPoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
     .SetProject("<PROJECT_ID>") // Your project ID
     .SetKey("<API_KEY>"); // Your secret API key
 
@@ -486,7 +486,7 @@ void main() { // Init SDK
   Messaging messaging = Messaging(client);
 
   client
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
     .setProject('<PROJECT_ID>') // Your project ID
     .setKey('<API_KEY>') // Your secret API key
   ;
@@ -518,7 +518,7 @@ import io.appwrite.coroutines.CoroutineCallback
 import io.appwrite.services.Messaging
 
 val client = Client()
-    .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
     .setProject("<PROJECT_ID>") // Your project ID
     .setKey("<API_KEY>") // Your secret API key
 
@@ -544,7 +544,7 @@ import io.appwrite.coroutines.CoroutineCallback;
 import io.appwrite.services.Messaging;
 
 Client client = new Client()
-    .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
     .setProject("<PROJECT_ID>") // Your project ID
     .setKey("<API_KEY>"); // Your secret API key
 
@@ -575,7 +575,7 @@ messaging.updateSendgridProvider(
 import Appwrite
 
 let client = Client()
-    .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
     .setProject("<PROJECT_ID>") // Your project ID
     .setKey("<API_KEY>") // Your secret API key
 

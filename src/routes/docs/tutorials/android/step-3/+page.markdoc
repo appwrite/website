@@ -42,7 +42,7 @@ To use Appwrite in our Android app, we'll need to find our project ID. Find your
 
 Create a new file `services/Appwrite.kt` to hold our Appwrite related code.
 Only one instance of the `Client` class should be created per app.
-Add the following code to it, replacing `<YOUR_PROJECT_ID>` with your project ID.
+Add the following code to it, replacing `<PROJECT_ID>` with your project ID.
 
 ```kotlin
 package <YOUR_ROOT_PACKAGE_HERE>.services
@@ -51,8 +51,8 @@ import android.content.Context
 import io.appwrite.Client
 
 object Appwrite {
-    private const val ENDPOINT = "https://cloud.appwrite.io/v1"
-    private const val PROJECT_ID = "<YOUR_PROJECT_ID>"
+    private const val ENDPOINT = "https://<REGION>.cloud.appwrite.io/v1"
+    private const val PROJECT_ID = "<PROJECT_ID>"
 
     private lateinit var client: Client
 

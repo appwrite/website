@@ -1,17 +1,19 @@
 ---
 layout: policy
 title: Privacy Policy
+description: Appwrite's privacy policy outlines the purpose and scope of data collection necessary to operate our business and its impact on users.
+
 ---
 This privacy policy (“Privacy Policy”) governs how we, Appwrite Code Ltd. (together, “Appwrite” “we”, “our” or “us”) use, collect and store Personal Data we collect or receive from or about you (“you”) such as in the following use cases:
 
 1. When you make use of, or interact with, our Website (https://appwrite.io/)
-  - When you create an account and when you log in
-  - When you purchase our Cloud plan
-  - When you purchase our products in our Swag Store
-  - When you subscribe to our distribution list(s) / newsletter(s) / blog(s)
-  - When you submit a job application
-  - When you contact us (e.g. customer support, need help, submit a request, when you report a security vulnerability)
-  - When you apply for our fund
+    - When you create an account and when you log in
+    - When you purchase our Cloud plan
+    - When you purchase our products in our Swag Store
+    - When you subscribe to our distribution list(s) / newsletter(s) / blog(s)
+    - When you submit a job application
+    - When you contact us (e.g. customer support, need help, submit a request, when you report a security vulnerability)
+    - When you apply for our fund
 2. When you create an account and when you log into our console
 3. When you attend a marketing event and/or we exchange business cards and you provide us with your Personal Data
 4. When we use the Personal Data of our customers (e.g. contact details)
@@ -33,6 +35,11 @@ What personal data we collect, why we collect it, and how it is used
 ---
 * Specific personal data we collect
 * Address
+* Full name
+* Email address
+* IP address
+* Country
+* Payment details
 ---
 * The purpose of data collection
 * For payment processing purposes
@@ -43,10 +50,11 @@ What personal data we collect, why we collect it, and how it is used
 ---
 * Third parties with whom we share your personal data
 * Stripe
+* DigitalOcean
 {% /table %}
 
 
-#### When you create an account and when you log in
+#### When you create an account and when you log in to one of our services
 
 {% table %}
 *
@@ -60,41 +68,42 @@ What personal data we collect, why we collect it, and how it is used
   - IP address
   - Country
   - User-agent (info about the browser)
-* - Full name
-  - Email address
+* - Phone number
+* - Usage details
 ---
 * The purpose of data collection
 * - To be able to create an account
-  - To be able to log in using two-factor authentication
+  - To be able to log in
   - To be able to enjoy features available to registered users
-  - To collect Informative reason for the administrator.
-  - To better project development (identify reported problem)
+  - To collect Informative reason for the administrator
+  - To identify reported problems during project development
+* - To be able to log in, using two factor authentication via text message
+* - To be able to monitor errors
 * - To send you marketing communications and product updates
 ---
 * Legal basis (GDPR only, if applicable)
 * - Processing is necessary for the performance of a contract to which the data subject is party or in order to take steps at the request of the data subject prior to entering into a contract
   - Legitimate interest (e.g. to allow you to create an account and log-in)
 * Consent
+* Legitimate interest
+* Consent
 ---
 * Third parties with whom we share your personal data
-* 3rd party platforms such as:
-  - Orbit
-  - MSG91 (India only)
-  - Activetrail (Israel only)
-  - Twilio
-* 3rd party platforms such as:
-  - Mailgun
-  - Orbit
   - Userlist
-  - Attio
+* - MSG91 
+  - Activetrail (Israel only)
+  - SMS.to
+* - Sentry.io
+* - Userlist
 ---
 * Consequences of not providing the Personal Data
 * - Cannot create an account
-  - Cannot log in using two-factor authentication
+  - Cannot log in 
   - Cannot enjoy features available to registered users
-  - Cannot collect Informative reason for the administrator.
-  - Cannot better your project development (identify reported problem)
-* Cannot send you marketing communications and product updates
+  - Cannot identify reported problem during your project development process 
+* - Cannot log in using two factor authentication based on phone number
+* - Cannot monitor and solve errors
+* - Cannot sign up using our website forms
 {% /table %}
 
 #### When you purchase products in our Swag Store
@@ -122,11 +131,12 @@ What personal data we collect, why we collect it, and how it is used
 * Third parties with whom we share your personal data
 * 3rd party platforms such as:
   - Shopify
-  - Printful
+  - Swag.com
   - Paypal
+  - Typeform
 ---
 * Consequences of not providing the personal data
-* - Cannot purchase our swag products
+* - Cannot purchase and receive our swag products
   - Cannot customize your experience
 {% /table %}
 
@@ -140,7 +150,7 @@ What personal data we collect, why we collect it, and how it is used
 ---
 * The purpose of data collection
 * - To add you to our mailing list
-  - To send newsletters or other marketing communications.
+  - To send newsletters or other marketing communications
   - To add you to our blog distribution list
 ---
 * Legal basis (GDPR only, if applicable)
@@ -149,8 +159,7 @@ What personal data we collect, why we collect it, and how it is used
 ---
 * Third parties with whom we share your personal data
 * 3rd party platforms such as:
-  - Mailgun
-  - Orbit
+  - Userlist
 ---
 * Consequences of not providing the personal data
 * - Cannot add you to our mailing list
@@ -174,12 +183,12 @@ What personal data we collect, why we collect it, and how it is used
 ---
 * The purpose of data collection
 * - To process your job application
-  - To assess the candidate
-  - To communicate with you for candidacy-related matters
+  - To assess you as a candidate
+  - To communicate about candidacy-related matters
 ---
 * Legal basis (GDPR only, if applicable)
 * - Processing is necessary for the performance of a contract to which the data subject is party or in order to take steps at the request of the data subject prior to entering into a contract
-  - Legitimate interest (e.g. process your job application)
+  - Legitimate interest (e.g. process the job application)
 ---
 * Third parties with whom we share your personal data
 * 3rd party platforms such as:
@@ -189,7 +198,7 @@ What personal data we collect, why we collect it, and how it is used
 * Consequences of not providing the personal data
 * - Cannot process your job application
   - Cannot assess your suitability as a candidate
-  - Cannot communicate with your for candidacy-related matters
+  - Cannot communicate with the you as a candidate
 {% /table %}
 
 ####  When you contact us (e.g. customer support, need help, sign a DPA, submit feedback, request or report a security vulnerability)
@@ -206,6 +215,7 @@ What personal data we collect, why we collect it, and how it is used
 * - To process and answer questions
   - To provide support (e.g., to solve problems)
   - To analyze the security vulnerability report sent by you
+  - To execute a DPA
   - To customize your experience
 ---
 * Legal basis (GDPR only, if applicable)
@@ -222,10 +232,11 @@ What personal data we collect, why we collect it, and how it is used
 * - Cannot assist you and respond your query
   - Cannot provide support
   - Cannot analyze the security vulnerability report sent by you
+  - Cannot execute a DPA with you
   - Cannot customize your experience
 {% /table %}
 
-#### When you apply for our fund
+#### When you apply for our fund / Appwrite programs
 
 {% table %}
 ---
@@ -237,10 +248,9 @@ What personal data we collect, why we collect it, and how it is used
   - Any other data that you decide to supply/provide us
 ---
 * The purpose of data collection
-* - To process and answer questions
-  - To provide support (e.g., to solve problems)
-  - To analyze the security vulnerability report sent by you
-  - To customize your experience
+* - To process your application 
+  - To communicate with you about Appwrite programs
+  - To send you funds and / or project-related communications
 ---
 * Legal basis (GDPR only, if applicable)
 * - Processing is necessary for the performance of a contract to which the data subject is party or in order to take steps at the request of the data subject prior to entering into a contract
@@ -251,10 +261,11 @@ What personal data we collect, why we collect it, and how it is used
   - GitHub
   - OpenCollective
   - Linear
+  - Attio
 ---
 * Consequences of not providing the personal data
 * - Cannot process your fund application
-  - Cannot support open-source projects
+  - Cannot communicate with you about Appwrite programs
   - Cannot send you fund and project related communications
 {% /table %}
 
@@ -265,9 +276,8 @@ What personal data we collect, why we collect it, and how it is used
 * Specific personal data we collect
 * - Full name
   - Email address
-  - Phone number
   - Company name
-  - Job position
+  - Job title
   - Any other data that you decide to supply/provide us
 ---
 * The purpose of data collection
@@ -279,21 +289,19 @@ What personal data we collect, why we collect it, and how it is used
 ---
 * Third parties with whom we share your personal data
 * 3rd party platforms such as:
-  - Userlist
+  - Attio
 ---
 * Consequences of not providing the personal data
 * - Cannot establish a business connection
-  - Cannot send marketing communications
+  - Cannot send you marketing communications
 {% /table %}
 
-#### When you interact with us on our social media profiles (e.g., Facebook, GitHub, Twitter, LinkedIn, Discord)
+#### When you interact with us on our social media profiles (e.g., Facebook, GitHub, Twitter, YouTube, LinkedIn, Discord)
 
 {% table %}
 ---
 * Specific personal data we collect
 * - Full name
-  - Company name
-  - Job Title
   - LinkedIn and Twitter URL
   - Twitter Handle
   - Any other data that you decide to supply/provide us and/or publicly available on your social media account
@@ -306,7 +314,7 @@ What personal data we collect, why we collect it, and how it is used
 ---
 * Third parties with whom we share your personal data
 * 3rd party platforms such as:
-  - Social media platforms (e.g. Facebook, GitHub, Twitter, LinkedIn, Discord)
+  - Social media platforms (e.g. Facebook, GitHub, Twitter, YouTube, LinkedIn, Discord)
 ---
 * Consequences of not providing the personal data
 * Cannot reply and/or respond to your request or question
@@ -403,7 +411,10 @@ We use log files. We use such information to analyze trends, administer the Webs
 
 - **Sentry** - Sentry is a monitoring software and a performance monitoring software. Sentry helps diagnose, fix, and optimize the performance of the Website. Sentry's ability to use and share information collected by Sentry is regulated by their terms of service, available at [Sentry Terms of Service](https://sentry.io/terms/), and their Privacy Policy available at [Sentry Privacy Policy](https://sentry.io/privacy/).
 - **Mixpanel** - Mixpanel is a website that collects information about use of our console. It collects information such as how often users visit this console, what pages they visit when they do so, but not PII. We use the information we get from Mixpanel to maintain and improve the Website and our products. Mixpanel’s ability to use and share information about your visits is restricted by the Terms of Service, available at [Mixpanel Terms of Use](https://mixpanel.com/legal/terms-of-use) and the Mixpanel Privacy Policy, available at [Mixpanel Privacy Policy](https://mixpanel.com/legal/privacy-policy).
-- We reserve the right to remove or add new analytic tools.
+- **ZoomInfo** - ZoomInfo is a data enrichment tool. We use ZoomInfo to associate domain-level account information with general business metadata (such as company name or industry) to support internal reporting and account management. ZoomInfo's ability to use and share information collected by ZoomInfo is regulated by their license terms and conditions, available at [ZoomInfo License Terms and Conditions](https://www.zoominfo.com/legal/ltc), and their Privacy Policy available at [ZoomInfo Privacy Policy](https://www.zoominfo.com/legal/privacy-policy). 
+- **Reo.Dev** - Reo.Dev is an event tracking tool used to collect anonymized usage metrics from our self-hosted console environments. This includes information such as login events and general usage patterns. The data helps us maintain system reliability and inform product decisions. Reo.Dev’s ability to use and share information collected by Reo.Dev is regulated by the Terms of Service, available at [Reo.Dev Terms and Conditions](https://www.reo.dev/terms-of-service) and the Reo.Dev Privacy Policy, available at [Reo.Dev Privacy Policy](https://www.reo.dev/privacy-policy).
+
+We reserve the right to remove or add new analytic tools.
 {% /count_section %}
 
 {% count_section %}

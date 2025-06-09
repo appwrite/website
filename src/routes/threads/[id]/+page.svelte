@@ -2,6 +2,7 @@
     import { Main } from '$lib/layouts';
     import { DEFAULT_DESCRIPTION } from '$lib/utils/metadata';
     import { TITLE_SUFFIX } from '$routes/titles';
+    import { Button, Icon } from '$lib/components/ui';
 
     import FooterNav from '$lib/components/FooterNav.svelte';
     import MainFooter from '$lib/components/MainFooter.svelte';
@@ -9,7 +10,7 @@
     import PreFooter from '../PreFooter.svelte';
     import MessageCard from './MessageCard.svelte';
 
-    export let data;
+    let { data } = $props();
 
     const title = data.title + ' - Threads' + TITLE_SUFFIX;
     const description = DEFAULT_DESCRIPTION;
@@ -25,7 +26,7 @@
     <title>{title}</title>
     <meta property="og:title" content={title} />
     <meta name="twitter:title" content={title} />
-    <!-- Desscription -->
+    <!-- Description -->
     <meta name="description" content={data.seo_description ?? description} />
     <meta property="og:description" content={data.seo_description ?? description} />
     <meta name="twitter:description" content={data.seo_description ?? description} />
@@ -36,17 +37,17 @@
 </svelte:head>
 
 <Main>
-    <div class="web-container web-u-padding-block-end-0">
+    <div class="web-u-padding-block-end-0 container">
         <div class="header">
             <div>
-                <a class="web-link is-secondary u-cross-baseline" href="/threads">
-                    <span class="web-icon-chevron-left" aria-hidden="true" />
+                <a class="web-link is-secondary items-baseline" href="/threads">
+                    <span class="web-icon-chevron-left" aria-hidden="true"></span>
                     <span>Back</span>
                 </a>
-                <h1 class="web-title web-u-color-text-primary">{data.title}</h1>
+                <h1 class="text-title font-aeonik-pro text-primary">{data.title}</h1>
                 <ul class="tags">
                     <li class="web-tag">
-                        <span class="web-icon-arrow-up" />
+                        <span class="web-icon-arrow-up"></span>
                         <span class="text">{data.vote_count}</span>
                     </li>
                     {#each data.tags ?? [] as tag}
@@ -57,10 +58,10 @@
                 </ul>
             </div>
             <div class="buttons">
-                <a class="web-button" href={discordLink}>
-                    <span class="web-icon-discord" />
-                    <span class="text">View on Discord</span>
-                </a>
+                <Button href={discordLink}>
+                    <Icon name="discord"></Icon>
+                    View on Discord
+                </Button>
             </div>
         </div>
 
@@ -71,39 +72,39 @@
                     <MessageCard {message}>
                         {#if isFirst}
                             <div class="web-inline-info web-u-margin-block-start-24">
-                                <div class="web-sub-body-500 web-u-color-text-primary">TL;DR</div>
+                                <div class="text-sub-body text-primary font-medium">TL;DR</div>
                                 {data.tldr}
                             </div>
                         {/if}
                     </MessageCard>
                 {/each}
                 <div class="web-card is-normal has-border-gradient">
-                    <span class="web-sub-body-500 web-u-color-text-primary">Reply</span>
-                    <p class="web-sub-body-500 u-margin-block-start-16">
+                    <span class="text-sub-body text-primary font-medium">Reply</span>
+                    <p class="text-sub-body mt-4 font-medium">
                         Reply to this thread by joining our Discord
                     </p>
-                    <a class="web-button u-margin-block-start-24" href={discordLink}>
-                        <span class="web-icon-discord" />
-                        <span class="text">Reply on Discord</span>
-                    </a>
+                    <Button class="mt-6" href={discordLink}>
+                        <Icon name="discord"></Icon>
+                        Reply on Discord
+                    </Button>
                 </div>
             </div>
             <div class="related">
                 {#if data.related.length}
-                    <h2 class="web-eyebrow web-u-color-text-primary">Recommended threads</h2>
+                    <h2 class="text-micro text-primary uppercase">Recommended threads</h2>
                 {/if}
                 <ul>
                     {#each data.related as thread}
                         <li>
                             <a href="/threads/{thread.$id}" data-sveltekit-reload>
-                                <div class="u-flex u-cross-center">
-                                    <span class="web-sub-body-500 web-u-color-text-primary">
+                                <div class="flex items-center">
+                                    <span class="text-sub-body text-primary font-medium">
                                         {thread.title.length > 40
                                             ? thread.title.slice(0, 40) + '...'
                                             : thread.title}
                                     </span>
                                 </div>
-                                <p class="web-sub-body-400 u-margin-block-start-8">
+                                <p class="text-sub-body mt-2">
                                     {thread.content.length > 160
                                         ? thread.content.slice(0, 160) + '...'
                                         : thread.content}
@@ -117,7 +118,7 @@
     </div>
 
     <PreFooter />
-    <div class="web-container" style="margin-block-start: -7.75rem;">
+    <div class="container" style="margin-block-start: -7.75rem;">
         <FooterNav />
         <MainFooter />
     </div>

@@ -1,15 +1,18 @@
 <script lang="ts">
     import { Carousel } from '$lib/components';
     import Technologies from '$lib/components/Technologies.svelte';
+    import { Button } from '$lib/components/ui';
     import Docs from '$lib/layouts/Docs.svelte';
-    import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
+    import { DEFAULT_HOST } from '$lib/utils/metadata';
     import { TITLE_SUFFIX } from '$routes/titles';
     import MainFooter from '../../lib/components/MainFooter.svelte';
     import CodeCard, { type CodeCardProps } from './CodeCard.svelte';
     import Sidebar from './Sidebar.svelte';
+    import { trackEvent } from '$lib/actions/analytics';
 
     const title = 'Docs' + TITLE_SUFFIX;
-    const description = DEFAULT_DESCRIPTION;
+    const description =
+        'Learn how to build like a team of hundreds. Get started with Authentication, Databases, Storage, Functions, and Messaging in your preferred framework.';
     const ogImage = DEFAULT_HOST + '/images/open-graph/docs.png';
 
     const tutorials: CodeCardProps[] = [
@@ -51,7 +54,7 @@
     <title>{title}</title>
     <meta property="og:title" content={title} />
     <meta name="twitter:title" content={title} />
-    <!-- Desscription -->
+    <!-- Description -->
     <meta name="description" content={description} />
     <meta property="og:description" content={description} />
     <meta name="twitter:description" content={description} />
@@ -66,47 +69,41 @@
 <Docs variant="default">
     <Sidebar />
 
-    <main
-        class="web-main-section u-position-relative web-u-overflow-hidden-break1-to-break3"
-        id="main"
-    >
-        <div class="u-position-absolute web-u-opacity-40-mobile bg-blur">
+    <main class="web-main-section relative overflow-x-hidden" id="main">
+        <div class="absolute translate-x-96">
             <img src="/images/bgs/docs-blur-1.svg" alt="" />
         </div>
 
-        <div
-            class="u-position-absolute u-inset-inline-start-0 u-inset-block-start-16 web-u-opacity-40-mobile"
-            style="    margin-inline-start: -30px;"
-        >
+        <div class="web-u-opacity-40-mobile absolute top-4 left-0">
             <enhanced:img src="./blur-2.png" alt="" />
         </div>
 
-        <section class="web-hero is-align-start u-position-relative e-hero-docs">
-            <h1 class="web-display web-u-color-text-primary u-max-width-600">
+        <section class="web-hero is-align-start e-hero-docs relative">
+            <h1 class="text-display font-aeonik-pro text-primary max-w-[600px]">
                 Learn how to build like a team of hundreds<span class="web-u-color-text-accent"
                     >_
                 </span>
             </h1>
-            <p class="web-description u-max-width-600">
+            <p class="text-description max-w-[600px]">
                 Appwrite helps you build secure and scalable apps, faster. Leverage Appwrite's
                 powerful APIs to stop fighting technologies and start delivering value.
             </p>
         </section>
         <section class="web-hero is-align-start tech-hero">
-            <h2 class="web-title web-u-color-text-primary u-max-width-600">
+            <h2 class="text-title font-aeonik-pro text-primary max-w-[600px]">
                 Get started with your technologies
             </h2>
-            <p class="web-description u-max-width-600">
+            <p class="text-description max-w-[600px]">
                 Start building with your preferred web, mobile, and native frameworks by following a
                 quick start guide.
             </p>
             <Technologies />
-            <a href="/docs/sdks" class="web-button is-secondary" style:align-self="start">
-                <span class="web-sub-body-500">Explore all technologies</span>
-            </a>
-            <div class="u-position-absolute web-is-not-mobile spline-wrapper">
+            <Button href="/docs/sdks" class="self-start" variant="secondary">
+                <span class="text-sub-body font-medium">Explore all technologies</span>
+            </Button>
+            <div class="web-is-not-mobile spline-wrapper absolute">
                 <img
-                    class="u-only-dark"
+                    class="web-u-only-dark"
                     src="/images/animations/tech-dark-transparent.png"
                     width="660"
                     height="660"
@@ -114,7 +111,7 @@
                     style="position: absolute;"
                 />
                 <img
-                    class="u-only-light"
+                    class="web-u-only-light"
                     src="/images/animations/tech-light-transparent.png"
                     width="660"
                     height="660"
@@ -122,11 +119,11 @@
                     style="position: absolute;"
                 />
             </div>
-            <div class="bg-overlay" />
+            <div class="bg-overlay"></div>
         </section>
         <section>
-            <h2 class="web-title web-u-color-text-primary u-max-width-600">Show me some code</h2>
-            <p class="web-description u-max-width-600 u-margin-block-start-16">
+            <h2 class="text-title font-aeonik-pro text-primary max-w-[600px]">Show me some code</h2>
+            <p class="text-description mt-4 max-w-[600px]">
                 If you learn best from code examples, follow one of our tutorials.
             </p>
             <Carousel size="medium">
@@ -138,166 +135,216 @@
             </Carousel>
         </section>
         <section class="web-hero is-align-start is-no-max-width">
-            <h2 class="web-title web-u-color-text-primary u-max-width-600">Explore capabilities</h2>
-            <p class="web-description u-max-width-600">
+            <h2 class="text-title font-aeonik-pro text-primary max-w-[600px]">
+                Explore capabilities
+            </h2>
+            <p class="text-description max-w-[600px]">
                 All the core functionalities you need with a scalable and flexible API. Explore
                 Appwrite's product offerings.
             </p>
-            <div class="u-margin-block-start-24">
+            <div class="mt-6">
                 <ul class="web-grid-row-4 web-grid-row-4-m-1">
                     <li>
-                        <a href="/docs/products/auth" class="web-card is-normal">
+                        <a
+                            href="/docs/products/auth"
+                            class="web-card is-normal"
+                            onclick={() => trackEvent(`docs-products_auth-click`)}
+                        >
                             <img
                                 src="/images/icons/illustrated/dark/auth.png"
                                 alt=""
-                                class="u-only-dark"
-                                width="48"
-                                height="48"
+                                class="web-u-only-dark"
+                                width="40"
+                                height="40"
                             />
                             <img
                                 src="/images/icons/illustrated/light/auth.png"
                                 alt=""
-                                class="u-only-light"
-                                width="48"
-                                height="48"
+                                class="web-u-only-light"
+                                width="40"
+                                height="40"
                             />
-                            <h4
-                                class="web-sub-body-500 web-u-color-text-primary u-margin-block-start-8"
-                            >
-                                Auth
-                            </h4>
-                            <p class="web-sub-body-400 u-margin-block-start-4">
+                            <h4 class="text-sub-body text-primary mt-2 font-medium">Auth</h4>
+                            <p class="text-sub-body mt-1">
                                 Sign in users with multiple OAuth providers.
                             </p>
                         </a>
                     </li>
                     <li>
-                        <a href="/docs/products/databases" class="web-card is-normal">
+                        <a
+                            href="/docs/products/databases"
+                            class="web-card is-normal"
+                            onclick={() => trackEvent(`docs-products_databases-click`)}
+                        >
                             <img
                                 src="/images/icons/illustrated/dark/databases.png"
                                 alt=""
-                                class="u-only-dark"
-                                width="48"
-                                height="48"
+                                class="web-u-only-dark"
+                                width="40"
+                                height="40"
                             />
                             <img
                                 src="/images/icons/illustrated/light/databases.png"
                                 alt=""
-                                class="u-only-light"
-                                width="48"
-                                height="48"
+                                class="web-u-only-light"
+                                width="40"
+                                height="40"
                             />
-                            <h4
-                                class="web-sub-body-500 web-u-color-text-primary u-margin-block-start-8"
-                            >
-                                Databases
-                            </h4>
-                            <p class="web-sub-body-400 u-margin-block-start-4">
-                                Store your application and user data.
-                            </p>
+                            <h4 class="text-sub-body text-primary mt-2 font-medium">Databases</h4>
+                            <p class="text-sub-body mt-1">Store your application and user data.</p>
                         </a>
                     </li>
                     <li>
-                        <a href="/docs/products/functions" class="web-card is-normal">
+                        <a
+                            href="/docs/products/functions"
+                            class="web-card is-normal"
+                            onclick={() => trackEvent(`docs-products_functions-click`)}
+                        >
                             <img
                                 src="/images/icons/illustrated/dark/functions.png"
                                 alt=""
-                                class="u-only-dark"
-                                width="48"
-                                height="48"
+                                class="web-u-only-dark"
+                                width="40"
+                                height="40"
                             />
                             <img
                                 src="/images/icons/illustrated/light/functions.png"
                                 alt=""
-                                class="u-only-light"
-                                width="48"
-                                height="48"
+                                class="web-u-only-light"
+                                width="40"
+                                height="40"
                             />
-                            <h4
-                                class="web-sub-body-500 web-u-color-text-primary u-margin-block-start-8"
-                            >
-                                Functions
-                            </h4>
-                            <p class="web-sub-body-400 u-margin-block-start-4">
+                            <h4 class="text-sub-body text-primary mt-2 font-medium">Functions</h4>
+                            <p class="text-sub-body mt-1">
                                 Extend and customize your server's functionality.
                             </p>
                         </a>
                     </li>
                     <li>
-                        <a href="/docs/products/messaging" class="web-card is-normal">
+                        <a
+                            href="/docs/products/sites"
+                            class="web-card is-normal"
+                            onclick={() => trackEvent(`docs-products_sites-click`)}
+                        >
                             <img
-                                src="/images/icons/illustrated/dark/messaging.png"
+                                src="/images/icons/illustrated/dark/sites.png"
                                 alt=""
-                                class="u-only-dark"
-                                width="48"
-                                height="48"
+                                class="web-u-only-dark"
+                                width="40"
+                                height="40"
                             />
                             <img
-                                src="/images/icons/illustrated/light/messaging.png"
+                                src="/images/icons/illustrated/light/sites.png"
                                 alt=""
-                                class="u-only-light"
-                                width="48"
-                                height="48"
+                                class="web-u-only-light"
+                                width="40"
+                                height="40"
                             />
-                            <h4
-                                class="web-sub-body-500 web-u-color-text-primary u-margin-block-start-8"
-                            >
-                                Messaging
-                            </h4>
-                            <p class="web-sub-body-400 u-margin-block-start-4">
-                                Send and schedule email, sms, and push notifications.
+                            <h4 class="text-sub-body text-primary mt-2 font-medium">Sites</h4>
+                            <p class="text-sub-body mt-1">
+                                Deploy websites on the internet at scale.
                             </p>
                         </a>
                     </li>
                     <li>
-                        <a href="/docs/products/storage" class="web-card is-normal">
+                        <a
+                            href="/docs/products/messaging"
+                            class="web-card is-normal"
+                            onclick={() => trackEvent(`docs-products_messaging-click`)}
+                        >
+                            <img
+                                src="/images/icons/illustrated/dark/messaging.png"
+                                alt=""
+                                class="web-u-only-dark"
+                                width="40"
+                                height="40"
+                            />
+                            <img
+                                src="/images/icons/illustrated/light/messaging.png"
+                                alt=""
+                                class="web-u-only-light"
+                                width="40"
+                                height="40"
+                            />
+                            <h4 class="text-sub-body text-primary mt-2 font-medium">Messaging</h4>
+                            <p class="text-sub-body mt-1">
+                                Send and schedule email, SMS, and push notifications.
+                            </p>
+                        </a>
+                    </li>
+                    <li>
+                        <a
+                            href="/docs/products/storage"
+                            class="web-card is-normal"
+                            onclick={() => trackEvent(`docs-products_storage-click`)}
+                        >
                             <img
                                 src="/images/icons/illustrated/dark/storage.png"
                                 alt=""
-                                class="u-only-dark"
-                                width="48"
-                                height="48"
+                                class="web-u-only-dark"
+                                width="40"
+                                height="40"
                             />
                             <img
                                 src="/images/icons/illustrated/light/storage.png"
                                 alt=""
-                                class="u-only-light"
-                                width="48"
-                                height="48"
+                                class="web-u-only-light"
+                                width="40"
+                                height="40"
                             />
-                            <h4
-                                class="web-sub-body-500 web-u-color-text-primary u-margin-block-start-8"
-                            >
-                                Storage
-                            </h4>
-                            <p class="web-sub-body-400 u-margin-block-start-4">
+                            <h4 class="text-sub-body text-primary mt-2 font-medium">Storage</h4>
+                            <p class="text-sub-body mt-1">
                                 Store images, videos, documents, and files.
                             </p>
                         </a>
                     </li>
                     <li>
-                        <a href="/docs/apis/realtime" class="web-card is-normal">
+                        <a
+                            href="/docs/apis/realtime"
+                            class="web-card is-normal"
+                            onclick={() => trackEvent(`docs-products_realtime-click`)}
+                        >
                             <img
                                 src="/images/icons/illustrated/dark/realtime.png"
                                 alt=""
-                                class="u-only-dark"
-                                width="48"
-                                height="48"
+                                class="web-u-only-dark"
+                                width="40"
+                                height="40"
                             />
                             <img
                                 src="/images/icons/illustrated/light/realtime.png"
                                 alt=""
-                                class="u-only-light"
-                                width="48"
-                                height="48"
+                                class="web-u-only-light"
+                                width="40"
+                                height="40"
                             />
-                            <h4
-                                class="web-sub-body-500 web-u-color-text-primary u-margin-block-start-8"
-                            >
-                                Realtime
-                            </h4>
-                            <p class="web-sub-body-400 u-margin-block-start-4">
-                                Respond to server events in realtime.
+                            <h4 class="text-sub-body text-primary mt-2 font-medium">Realtime</h4>
+                            <p class="text-sub-body mt-1">Respond to server events in realtime.</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a
+                            href="/docs/products/network"
+                            class="web-card is-normal"
+                            onclick={() => trackEvent(`docs-products_network-click`)}
+                        >
+                            <img
+                                src="/images/icons/illustrated/dark/network.png"
+                                alt=""
+                                class="web-u-only-dark"
+                                width="40"
+                                height="40"
+                            />
+                            <img
+                                src="/images/icons/illustrated/light/network.png"
+                                alt=""
+                                class="web-u-only-light"
+                                width="40"
+                                height="40"
+                            />
+                            <h4 class="text-sub-body text-primary mt-2 font-medium">Network</h4>
+                            <p class="text-sub-body mt-1">
+                                Global infrastructure for serverless compute.
                             </p>
                         </a>
                     </li>
@@ -305,60 +352,60 @@
             </div>
         </section>
         <section class="web-hero is-align-start is-no-max-width">
-            <h2 class="web-title web-u-color-text-primary u-max-width-600">
+            <h2 class="text-title font-aeonik-pro text-primary max-w-[600px]">
                 Explore ways to integrate
             </h2>
-            <p class="web-description u-max-width-600">
+            <p class="text-description max-w-[600px]">
                 Choose how you integrate with Appwrite. Explore references for the Appwrite SDK,
                 REST API, GraphQL API, or Realtime API.
             </p>
-            <div class="u-margin-block-start-24">
+            <div class="mt-6">
                 <ul class="web-grid-row-2">
                     <li>
-                        <a href="/docs/sdks" class="web-card is-normal">
-                            <h4
-                                class="web-sub-body-500 web-u-color-text-primary u-margin-block-start-8"
-                            >
-                                SDKs
-                            </h4>
-                            <p class="web-sub-body-400 u-margin-block-start-4">
+                        <a
+                            href="/docs/sdks"
+                            class="web-card is-normal"
+                            onclick={() => trackEvent(`docs-explore_sdks-click`)}
+                        >
+                            <h4 class="text-sub-body text-primary mt-2 font-medium">SDKs</h4>
+                            <p class="text-sub-body mt-1">
                                 Light-weight SDKs for your favorite platforms.
                             </p>
                         </a>
                     </li>
                     <li>
-                        <a href="/docs/apis/rest" class="web-card is-normal">
-                            <h4
-                                class="web-sub-body-500 web-u-color-text-primary u-margin-block-start-8"
-                            >
-                                REST API
-                            </h4>
-                            <p class="web-sub-body-400 u-margin-block-start-4">
+                        <a
+                            href="/docs/apis/rest"
+                            class="web-card is-normal"
+                            onclick={() => trackEvent(`docs-explore_rest_apis-click`)}
+                        >
+                            <h4 class="text-sub-body text-primary mt-2 font-medium">REST API</h4>
+                            <p class="text-sub-body mt-1">
                                 Integrate with HTTP requests without the needing an SDK.
                             </p>
                         </a>
                     </li>
                     <li>
-                        <a href="/docs/apis/graphql" class="web-card is-normal">
-                            <h4
-                                class="web-sub-body-500 web-u-color-text-primary u-margin-block-start-8"
-                            >
-                                GraphQL
-                            </h4>
-                            <p class="web-sub-body-400 u-margin-block-start-4">
+                        <a
+                            href="/docs/apis/graphql"
+                            class="web-card is-normal"
+                            onclick={() => trackEvent(`docs-explore_graphql_apis-click`)}
+                        >
+                            <h4 class="text-sub-body text-primary mt-2 font-medium">GraphQL</h4>
+                            <p class="text-sub-body mt-1">
                                 Leverage GraphQL through our SDKs or integrate directly with REST
                                 endpoints.
                             </p>
                         </a>
                     </li>
                     <li>
-                        <a href="/docs/apis/realtime" class="web-card is-normal">
-                            <h4
-                                class="web-sub-body-500 web-u-color-text-primary u-margin-block-start-8"
-                            >
-                                Realtime
-                            </h4>
-                            <p class="web-sub-body-400 u-margin-block-start-4">
+                        <a
+                            href="/docs/apis/realtime"
+                            class="web-card is-normal"
+                            onclick={() => trackEvent(`docs-explore_realtime_apis-click`)}
+                        >
+                            <h4 class="text-sub-body text-primary mt-2 font-medium">Realtime</h4>
+                            <p class="text-sub-body mt-1">
                                 Respond to auth, databases, storage, and function events in
                                 realtime.
                             </p>
@@ -368,56 +415,58 @@
             </div>
         </section>
         <section class="web-hero is-align-start is-no-max-width">
-            <h2 class="web-title web-u-color-text-primary u-max-width-600">Migrate to Appwrite</h2>
-            <p class="web-description u-max-width-600">
+            <h2 class="text-title font-aeonik-pro text-primary max-w-[600px]">
+                Migrate to Appwrite
+            </h2>
+            <p class="text-description max-w-[600px]">
                 Own your data with automatic data migrations.
             </p>
-            <div class="u-margin-block-start-24">
+            <div class="mt-6">
                 <ul class="web-grid-row-4">
                     <li>
-                        <a href="/docs/advanced/migrations/self-hosted" class="web-card is-normal">
-                            <h4
-                                class="web-sub-body-500 web-u-color-text-primary u-margin-block-start-8"
-                            >
-                                Self-hosted
-                            </h4>
-                            <p class="web-sub-body-400 u-margin-block-start-4">
+                        <a
+                            href="/docs/advanced/migrations/self-hosted"
+                            class="web-card is-normal"
+                            onclick={() => trackEvent(`docs-migrations_self_hosted-click`)}
+                        >
+                            <h4 class="text-sub-body text-primary mt-2 font-medium">Self-hosted</h4>
+                            <p class="text-sub-body mt-1">
                                 Move data from self-hosted to Appwrite Cloud.
                             </p>
                         </a>
                     </li>
                     <li>
-                        <a href="/docs/advanced/migrations/firebase" class="web-card is-normal">
-                            <h4
-                                class="web-sub-body-500 web-u-color-text-primary u-margin-block-start-8"
-                            >
-                                Firebase
-                            </h4>
-                            <p class="web-sub-body-400 u-margin-block-start-4">
+                        <a
+                            href="/docs/advanced/migrations/firebase"
+                            class="web-card is-normal"
+                            onclick={() => trackEvent(`docs-migrations_firebase-click`)}
+                        >
+                            <h4 class="text-sub-body text-primary mt-2 font-medium">Firebase</h4>
+                            <p class="text-sub-body mt-1">
                                 Migrate users and data from Firebase to Appwrite.
                             </p>
                         </a>
                     </li>
                     <li>
-                        <a href="/docs/advanced/migrations/supabase" class="web-card is-normal">
-                            <h4
-                                class="web-sub-body-500 web-u-color-text-primary u-margin-block-start-8"
-                            >
-                                Supabase
-                            </h4>
-                            <p class="web-sub-body-400 u-margin-block-start-4">
+                        <a
+                            href="/docs/advanced/migrations/supabase"
+                            class="web-card is-normal"
+                            onclick={() => trackEvent(`docs-migrations_supabase-click`)}
+                        >
+                            <h4 class="text-sub-body text-primary mt-2 font-medium">Supabase</h4>
+                            <p class="text-sub-body mt-1">
                                 Migrate users and data from Supabase to Appwrite.
                             </p>
                         </a>
                     </li>
                     <li>
-                        <a href="/docs/advanced/migrations/nhost" class="web-card is-normal">
-                            <h4
-                                class="web-sub-body-500 web-u-color-text-primary u-margin-block-start-8"
-                            >
-                                Nhost
-                            </h4>
-                            <p class="web-sub-body-400 u-margin-block-start-4">
+                        <a
+                            href="/docs/advanced/migrations/nhost"
+                            class="web-card is-normal"
+                            onclick={() => trackEvent(`docs-migrations_nhost-click`)}
+                        >
+                            <h4 class="text-sub-body text-primary mt-2 font-medium">Nhost</h4>
+                            <p class="text-sub-body mt-1">
                                 Migrate users and data from NHost to Appwrite.
                             </p>
                         </a>
@@ -446,11 +495,6 @@
         }
     }
 
-    .bg-blur {
-        inset-inline-end: -300px;
-        inset-block-start: -100px;
-    }
-
     .tech-hero {
         @include gradients.border-block-gradient;
 
@@ -477,31 +521,17 @@
             block-size: var(--p-size);
             inset-block-start: -3rem;
             z-index: -1;
-            left: calc(50% - 384px + 600px);
-        }
-
-        .bg-overlay {
-            position: absolute;
-
-            background: linear-gradient(to right, #ffffff00 0%, #ffffff00 400px, #ffffff);
-
-            top: 0;
-            right: 10rem;
-            translate: 100%;
-            width: 100rem;
-            height: 100%;
-            content: '';
-            z-index: 9999;
+            left: calc(50% - 384px + 400px);
         }
     }
 
-    :global(.theme-dark) .tech-hero {
+    :global(.dark) .tech-hero {
         background: linear-gradient(to right, #19191c80, #19191c00);
         backdrop-filter: blur(1rem);
         -webkit-backdrop-filter: blur(1rem);
     }
 
-    :global(.theme-dark) .bg-overlay {
+    :global(.dark) .bg-overlay {
         background: linear-gradient(to right, #19191c00 0%, #19191c 400px, #19191c);
     }
 </style>

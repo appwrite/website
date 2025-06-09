@@ -71,7 +71,7 @@ In the following example, we are creating a document that can be read by anyone,
 import { Client, Databases, Permission, Role } from "appwrite";
 
 const client = new Client()
-    .setEndpoint('https://cloud.appwrite.io/v1')
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
     .setProject('<PROJECT_ID>');
 
 const databases = new Databases(client);
@@ -104,7 +104,7 @@ In the following example, we are creating a document that can be read by members
 import { Client, Databases, Permission, Role } from "appwrite";
 
 const client = new Client()
-    .setEndpoint('https://cloud.appwrite.io/v1')
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
     .setProject('<PROJECT_ID>');
 
 const databases = new Databases(client);
@@ -126,3 +126,139 @@ promise.then(function (response) {
     console.log(error);
 });
 ```
+
+## Example 3 - Private documents {% #example-3-private-documents %}
+
+A common use case is to allow users to create documents that are only accessible to them. Here's how this can be achieved:
+
+### Configure the collection
+First, configure your collection to:
+1. Enable **Document Security** in Collection **Settings**
+2. Grant only **CREATE** permission to **all users** at the collection level
+
+{% info title="Why this setup?" %}
+- **Document Security** enables per-document permissions
+- Collection-level **CREATE** permission allows users to create documents
+- Omitting **READ/UPDATE/DELETE** at collection level prevents users from accessing all documents
+{% /info %}
+
+### Create a document for a user
+When creating documents in your application, set document-level permissions to restrict access to only the creator:
+
+{% multicode %}
+```client-web
+import { Client, Databases, Permission, Role } from "appwrite";
+
+const client = new Client()
+    .setEndpoint('https://cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>');
+
+const databases = new Databases(client);
+
+let promise = databases.createDocument(
+    '<DATABASE_ID>',
+    '<COLLECTION_ID>',
+    { 'title': 'My Private Document' },
+    [
+        Permission.read(Role.user('<USER_ID>')),    // Only this user can read
+        Permission.update(Role.user('<USER_ID>')),  // Only this user can update
+        Permission.delete(Role.user('<USER_ID>'))   // Only this user can delete
+    ]
+);
+
+promise.then(function (response) {
+    console.log(response);
+}, function (error) {
+    console.log(error);
+});
+```
+```client-flutter
+import 'package:appwrite/appwrite.dart';
+
+void main() async {
+    final client = Client()
+        .setEndpoint('https://cloud.appwrite.io/v1')
+        .setProject('<PROJECT_ID>');
+
+    final databases = Databases(client);
+
+    try {
+        final document = await databases.createDocument(
+            databaseId: '<DATABASE_ID>',
+            collectionId: '<COLLECTION_ID>',
+            data: { 'title': 'My Private Document' },
+            permissions: [
+                Permission.read(Role.user('<USER_ID>')),    // Only this user can read
+                Permission.update(Role.user('<USER_ID>')),  // Only this user can update
+                Permission.delete(Role.user('<USER_ID>'))   // Only this user can delete
+            ]
+        );
+    } on AppwriteException catch(e) {
+        print(e);
+    }
+}
+```
+```client-apple
+import Appwrite
+
+func main() async throws {
+    let client = Client()
+        .setEndpoint("https://cloud.appwrite.io/v1")
+        .setProject("<PROJECT_ID>");
+
+    let databases = Databases(client);
+
+    do {
+        let document = try await databases.createDocument(
+            databaseId: "<DATABASE_ID>",
+            collectionId: "<COLLECTION_ID>",
+            data: ["title": "My Private Document"],
+            permissions: [
+                Permission.read(Role.user("<USER_ID>")),    // Only this user can read
+                Permission.update(Role.user("<USER_ID>")),  // Only this user can update
+                Permission.delete(Role.user("<USER_ID>"))   // Only this user can delete
+            ]
+        );
+    } catch {
+        print(error.localizedDescription);
+    }
+}
+```
+```client-android-kotlin
+import io.appwrite.Client
+import io.appwrite.Permission
+import io.appwrite.Role
+import io.appwrite.services.Databases
+import io.appwrite.exceptions.AppwriteException
+
+suspend fun main() {
+    val client = Client(applicationContext)
+        .setEndpoint("https://cloud.appwrite.io/v1")
+        .setProject("<PROJECT_ID>");
+
+    val databases = Databases(client);
+
+    try {
+        val document = databases.createDocument(
+            databaseId = "<DATABASE_ID>",
+            collectionId = "<COLLECTION_ID>",
+            data = mapOf("title" to "My Private Document"),
+            permissions = listOf(
+                Permission.read(Role.user("<USER_ID>")),    // Only this user can read
+                Permission.update(Role.user("<USER_ID>")),  // Only this user can update
+                Permission.delete(Role.user("<USER_ID>"))   // Only this user can delete
+            )
+        );
+    } catch (e: AppwriteException) {
+        Log.e("Appwrite", e.message);
+    }
+}
+```
+{% /multicode %}
+
+{% info title="Understanding the flow" %}
+1. Collection-level **CREATE** permission allows users to create new documents
+2. When a document is created, we set permissions for only the creator
+3. These document-level permissions ensure only the creator can read, update, or delete their documents
+4. Other users can create their own documents but cannot access documents they didn't create
+{% /info %}

@@ -1,7 +1,7 @@
 ---
 layout: article
 title: Execution
-description: Understand serverless function execution in Appwrite. Explore how triggers, events, and data flow enable dynamic execution of your code.
+description: Learn how Appwrite handles serverless function executions. More specifically, execution status, details and function logging.
 ---
 
 Each time an Appwrite Function runs, an **execution** is created.
@@ -17,25 +17,25 @@ Here's the information shown on this table.
 - Column
 - Description
 ---
-- EXECUTION ID
+- Execution ID
 - Unique identifier for each execution
 ---
-- STATUS
+- Status
 - The current status of the execution
 ---
-- CREATED
+- Created
 - Timestamp of when the execution was created
 ---
-- TRIGGER
+- Trigger
 - The [platform event](/docs/advanced/platform/events) that triggered the execution
 ---
-- METHOD
+- Method
 - The HTTP method used to create the execution
 ---
-- PATH
+- Path
 - The URL path the function execution was called with
 ---
-- DURATION
+- Duration
 - The time taken for the execution
 {% /table %}
 
@@ -46,6 +46,12 @@ Each execution can have one of the follow status.
 {% table %}
 - Status
 - description
+---
+- `scheduled`
+- The function execution will trigger later.
+---
+- `waiting`
+- The execution is queued but has not been picked up for processing.
 ---
 - `processing`
 - The function execution has begun and has not finished.

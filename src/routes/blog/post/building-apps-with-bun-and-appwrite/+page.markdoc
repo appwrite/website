@@ -6,7 +6,7 @@ date: 2024-01-10
 cover: /images/blog/building-apps-with-bun-and-appwrite/bun-cover.png
 timeToRead: 9
 author: aditya-oberai
-category: website
+category: tutorial
 ---
 
 If you are a developer, your definition of `bun` must have recently changed. From what we knew to be a round piece of bread, it is now a new runtime in JavaScript, and as Bun claims, it is faster than the rest! In this article, we will find out what Bun really is, how it compares with Node.js and Deno, and how you can build apps with Bun and Appwrite.
@@ -71,11 +71,11 @@ Installing a self-hosted version of Appwrite is pretty straight-forward, all you
 2. Run the command:
 
 ```bash
-docker run -it --rm \
+"\t\t\t\t\tcontent: 'docker run -it --rm \\\n" +
     --volume /var/run/docker.sock:/var/run/docker.sock \
     --volume "$(pwd)"/appwrite:/usr/src/code/appwrite:rw \
     --entrypoint="install" \
-    appwrite/appwrite:1.5.7
+    appwrite/appwrite:1.7.4
 ```
 
 For one-click setups, check out the [installation docs](https://appwrite.io/docs/self-hosting). 
@@ -129,7 +129,7 @@ export default async ({ res }) => {
     </>
   );
 
-  return res.send(renderToString(html), 200, {
+  return res.text(renderToString(html), 200, {
     "Content-Type": "text/html",
   });
 };

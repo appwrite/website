@@ -38,8 +38,8 @@
     >
         <div class="inner">
             <div class="header">
-                <h3 class="web-sub-body-500">Push notification</h3>
-                <div class="web-icon-close" />
+                <h3 class="text-sub-body font-medium">Push notification</h3>
+                <div class="web-icon-close"></div>
             </div>
             <div class="griddy">
                 <div class="sidebar">
@@ -50,10 +50,10 @@
                     </ul>
                 </div>
                 <div class="content">
-                    <h4 class="web-label web-u-color-text-primary">Message</h4>
+                    <h4 class="text-label text-primary">Message</h4>
                     <hr />
 
-                    <label class="web-u-color-text-primary" for="title">Title</label>
+                    <label class="text-primary" for="title">Title</label>
                     <input
                         class="web-input-text"
                         style="max-width: 80%"
@@ -63,39 +63,39 @@
                         bind:value={title}
                         maxlength="48"
                     />
-                    <label class="web-u-color-text-primary" for="message">Message</label>
+                    <label class="text-primary" for="message">Message</label>
                     <textarea
                         class="web-input-text"
                         style="max-width: 80%"
                         id="message"
                         name="message"
                         bind:value={message}
-                    />
+                    ></textarea>
                 </div>
             </div>
         </div>
         <div class="phone">
-            <div class="notch" />
+            <div class="notch"></div>
             <span class="date">Sunday, October 1</span>
             <span class="time">9:41</span>
         </div>
-        <div class="overlay" />
+        <div class="overlay"></div>
 
         <div class="notification">
             <div class="header">
-                <div class="icon-bell" />
+                <div class="icon-bell"></div>
                 <span>APPWRITE</span>
                 <span>now</span>
             </div>
-            <span class="title web-caption-500">{title}</span>
+            <span class="title text-caption font-medium">{title}</span>
             <span class="message">{message}</span>
         </div>
     </div>
     <div class="text">
-        <h3 class="web-title web-u-color-text-primary">
+        <h3 class="text-title font-aeonik-pro text-primary">
             Draft and preview your message before delivering it
         </h3>
-        <p class="web-description u-margin-block-start-24">
+        <p class="text-description mt-6">
             See a preview of your crafted messages on the Console before sending them to your
             audience.
         </p>
@@ -116,7 +116,6 @@
 
         aspect-ratio: 16 / 11;
         position: relative;
-        overflow: hidden;
 
         @media screen and (max-width: 1024px) {
             --m-border-gradient-before: transparent;
