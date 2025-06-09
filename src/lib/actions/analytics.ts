@@ -60,7 +60,6 @@ export const trackEvent = (eventArgs?: string | TrackEventArgs): void => {
     if (!eventArgs || ENV.TEST) return;
 
     const path = page.route.id?.replace(/\(([^()]*)\)/g, '') ?? '';
-    console.log(path);
     const name = typeof eventArgs === 'string' ? eventArgs : eventArgs.name;
     const data = typeof eventArgs === 'string' ? { path } : { ...eventArgs.data, path };
 
