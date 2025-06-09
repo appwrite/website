@@ -465,7 +465,7 @@ This is the future of AI. Local, private, and fast. And what we've done is just 
 
 You can also check out a more complex version of this app that includes chat history and a few other features [here](https://github.com/ebenezerdon/webllm-offline-ai).
 
-The repo for what we built in this guide is available at https://github.com/appwrite-community/simple-webllm-chat.
+The source code for the app we built in this guide is available on [GitHub](https://github.com/appwrite-community/simple-webllm-chat).
 
 ## Further reading
 
