@@ -80,7 +80,7 @@
         </p>
     </div>
     <div
-        class="relative flex h-85 items-center justify-center overflow-clip rounded-xl bg-black/24 p-8"
+        class="relative mt-auto mb-0 flex h-85 items-center justify-center overflow-clip rounded-xl bg-black/24 p-8"
     >
         <div class="relative h-fit border border-white/50 p-1">
             {#each [1, 2, 3, 4] as _, i}

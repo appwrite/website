@@ -166,13 +166,13 @@
                 >
                     <header class="flex items-center justify-between">
                         <span
-                            class="font-aeonik-fono tracking-loose text-secondary block text-xs uppercase"
+                            class="font-aeonik-fono tracking-loose text-primary block text-xs uppercase"
                             >Customer Stories<span class="text-accent">_</span></span
                         >
                         <a
                             href="/blog/category/customer-stories"
-                            class="text-primary text-caption flex items-center gap-2"
-                            >Read more customer stories" <Icon
+                            class="text-secondary text-caption flex items-center"
+                            >Read more customer stories <Icon
                                 name="chevron-right"
                                 class="transition-transform group-hover:translate-x-0.5"
                             ></Icon></a

@@ -82,7 +82,7 @@
         </p>
     </div>
     <div
-        class="relative flex h-85 items-center justify-center overflow-hidden rounded-xl bg-black/24 px-8"
+        class="relative mt-auto mb-0 flex h-85 items-center justify-center overflow-hidden rounded-xl bg-black/24 px-8"
     >
         <div
             class="relative grid aspect-square h-[240px] w-[240px] grid-cols-2 grid-rows-2 items-center justify-center"
