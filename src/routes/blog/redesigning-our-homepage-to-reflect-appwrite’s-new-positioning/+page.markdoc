@@ -1,11 +1,11 @@
 ---
 layout: post
 title: Redesigning our homepage to reflect Appwrite’s new positioning
-description: Learn these Git commands to make your workflow smoother, faster, and flexible.
-date: 2024-12-12
+description: A behind-the-scenes look at how we redesigned the Appwrite homepage to reflect our evolution from a BaaS to an all-in-one open-source development platform.
+date: 2025-06-10
 cover: /images/blog/10-git-commands-you-should-start-using/cover.png
 timeToRead: 10
-author: ebenezer-don
+author: sara-kaandorp
 category: design
 featured: false
 callToAction: true
@@ -29,15 +29,21 @@ We ran a qualitative survey with 50 respondents who closely matched our target a
 
 This validated what we suspected: while the design was polished, the story we told wasn’t fully landing.
 
+![Our old homepage](/images/blog/redesigning-our-homepage-to-reflect-appwrite’s-new-positioning/old-homepage.png)
+
 # Phase 2: Iterating on the story
+
+![Iterations](/images/blog/redesigning-our-homepage-to-reflect-appwrite’s-new-positioning/iterations-top-part.png)
 
 Based on those findings, we created a new homepage design in Figma and ran a second qualitative survey—this time on the proposed design with renewed messaging. The results were encouraging.
 
-## What we heard:
+![New homepage design](/images/blog/redesigning-our-homepage-to-reflect-appwrite’s-new-positioning/new-homepage.png)
 
-- Backend setup clarity: More users grasped what Appwrite offers, though some still wanted more detail on how the setup works.
-- Scalability: Surfaced more often in feedback, indicating stronger visibility.
-- Feature awareness: Users showed deeper engagement with our capabilities.
+## What we improved:
+
+- **Backend setup clarity**: More users grasped what Appwrite offers, though some still wanted more detail on how the setup works.
+- **Scalability**: Surfaced more often in feedback, indicating stronger visibility.
+- **Feature awareness**: Users showed deeper engagement with our capabilities.
 
 # Phase 3: Final design
 
@@ -45,12 +51,17 @@ We simplified our messaging further and focused on showing—not just telling—
 
 - Added components that give a quick visual and conceptual overview of our offering, without requiring visitors to read everything. We honed in on different user behaviors: some people want a fast impression; others want to scroll deep. Our content now supports both. (This is backed by UX research—see Nielsen Norman Group's work on scanning vs. reading behaviors.)
 
+![Summary and deep dive](/images/blog/redesigning-our-homepage-to-reflect-appwrite’s-new-positioning/summary-vs-deepdive1.png)
 
 - Repositioned Appwrite from just a BaaS to a complete platform with Sites, our hosting solution, clearly integrated into the story.
+
 - Selected testimonials strategically—highlighting impact metrics like time saved, cost reduction, and scalability, to build credibility with both developers and founders.
 
+![Summary and deep dive 2](/images/blog/redesigning-our-homepage-to-reflect-appwrite’s-new-positioning/summary-vs-deepdive2.png)
 
 While the main aim was to improve the story that we were trying to convey, we also further improved our visual language. We did a few iterations to further simplify our visuals and worked on an animation style that feels more natural. In our old page, we had animations based on scroll behavior that slightly hijacked user control—something developers disliked. The new animations and microinteractions make the page feel alive without taking away from the main purpose: understanding the story of Appwrite.
+
+![Scene](/images/blog/redesigning-our-homepage-to-reflect-appwrite’s-new-positioning/scene.gif)
 
 With all these changes, we moved into a final design iteration—the version that’s now live.
 
