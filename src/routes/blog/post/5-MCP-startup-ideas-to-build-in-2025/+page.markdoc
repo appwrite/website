@@ -50,16 +50,7 @@ The idea is to simplify the process of integrating different services with LLMs,
 # 2. Incident Tracer
 When your app breaks, whether it's a bug or an outage, an MCP agent traces every log, commit, and Slack message to give you a full incident report in seconds. So, instead of manually digging through logs or trying to piece together what went wrong, the MCP agent automatically collects all the relevant information, creating a detailed report that helps you quickly understand the issue.
 
-{% call_to_action 
-  title = "Build your startup with Appwrite" 
-  description = "An all-in-one development platform for you to develop, host, and scale your products." 
-  point1 = "Cloud credits" 
-  point2 = "Priority support" 
-  point3 = "Ship faster" 
-  point4 = "Built-in security and compliance" 
-  cta = "Apply for the program" 
-  url = "https://appwrite.io/startups" 
-/%}
+{% call_to_action title="Build your startup with Appwrite" description="An all-in-one development platform for you to develop, host, and scale your products." point1="Cloud credits" point2="Priority support" point3="Ship faster" point4="Built-in security and compliance" cta="Apply for the program" url="https://appwrite.io/startups" /%}
 
 # 3. Task Assistant
 An MCP-powered agent that shadows founders, reading emails, meetings, tasks, and documents. It provides daily summaries and suggests the next best actions, acting like your personal Chief of Staff. This allows founders to stay focused on what matters while it keeps track of everything and ensures nothing slips through the cracks.
