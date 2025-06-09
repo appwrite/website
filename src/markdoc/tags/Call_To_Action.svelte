@@ -52,7 +52,7 @@
             </li>
         {/each}
     </ul>
-    <div class="flex flex-col gap-2 md:flex-row">
+    <div class="flex flex-col gap-2 md:flex-row z-[1]">
         <Button href={url} class="max-sm:w-full!">{cta}</Button>
     </div>
 </div>
