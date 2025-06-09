@@ -9,7 +9,7 @@ Using the `useIdeas` hook we can now display the ideas on the page. We will also
 
 Overwrite the contents of `src/pages/Home.jsx` with the following:
 
-```js
+```client-web
 import { useState } from "react";
 import { useUser } from "../lib/context/user";
 import { useIdeas } from "../lib/context/ideas";
@@ -20,6 +20,16 @@ export function Home() {
 
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
+
+  const handleSubmit = async () => {
+    try {
+      await ideas.add({ userId: user.current.$id, title, description });
+      setTitle("");
+      setDescription("");
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
   return (
     <>
@@ -45,9 +55,7 @@ export function Home() {
             />
             <button
               type="button"
-              onClick={() =>
-                ideas.add({ userId: user.current.$id, title, description })
-              }
+              onClick={handleSubmit}
             >
               Submit
             </button>
@@ -78,4 +86,30 @@ export function Home() {
     </>
   );
 }
+```
+
+In `src/App.jsx`, wrap the `main` element with the `IdeasProvider` component.
+
+```client-web
+import { Login } from "./pages/Login";
+import { Home } from "./pages/Home";
+import { UserProvider } from "./lib/context/user";
+import { IdeasProvider } from "./lib/context/ideas";
+
+function App() {
+  const isLoginPage = window.location.pathname === "/login";
+
+  return (
+    <div>
+      <UserProvider>
+        <IdeasProvider>
+          <Navbar />
+          <main>{isLoginPage ? <Login /> : <Home />}</main>
+        </IdeasProvider>
+      </UserProvider>
+    </div>
+  );
+}
+
+export default App;
 ```

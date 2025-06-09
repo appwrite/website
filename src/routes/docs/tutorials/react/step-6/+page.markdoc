@@ -4,6 +4,14 @@ title: Add database
 description: Add a database to your React application using Appwrite Web SDK.
 step: 6
 ---
+# Create database {% #create-database %}
+To store your ideas, you need to create a database first.
+
+1. Go to the Databases section in your Appwrite Console
+2. Click *Create Database*
+3. Give it a name and ID. For this tutorial, we'll use `Ideas Tracker` as the name and `ideas-tracker` as the ID.
+4. You'll need to remember the database ID as you'll need it later.
+
 # Create collection {% #create-collection %}
 In Appwrite, data is stored as a collection of documents. Create a collection in the [Appwrite Console](https://cloud.appwrite.io/) to store our ideas.
 
@@ -14,19 +22,33 @@ In Appwrite, data is stored as a collection of documents. Create a collection in
 ![Create project screen](/images/docs/tutorials/idea-tracker-collection.png)
 {% /only_light %}
 
+## Attributes
+
 Create a new collection with the following attributes:
-| Field       | Type   | Required |
-|-------------|--------|----------|
-| userId      | String | Yes      |
-| title       | String | Yes      |
-| description | String | No       |
+| Field       | Type   | Required | Size   |
+|-------------|--------|----------|--------|
+| userId      | String | Yes      |  50    |
+| title       | String | Yes      |  25    |
+| description | String | No       |  100   |
+
+# Configure permissions {% #configure-permissions %}
+{% only_dark %}
+![Collection permissions screen](/images/docs/tutorials/dark/idea-tracker-permissions.png)
+{% /only_dark %}
+{% only_light %}
+![Collection permissions screen](/images/docs/tutorials/idea-tracker-permissions.png)
+{% /only_light %}
+
+Navigate to the **Settings** tab of your collection, add the role **Any** and check the **Read** box.
+Next, add a **Users** role and give them access to **Create** by checking those boxes.
+These permissions apply to all documents in your new collection.
 
 # Ideas context {% #ideas-context %}
 
 Now that you have a collection to hold ideas, we can read and write to it from our app. Like we did with the user data, we will create a React context to hold our ideas.
 Create a new file `src/lib/context/ideas.jsx` and add the following code to it.
 
-```js
+```client-web
 import { createContext, useContext, useEffect, useState } from "react";
 import { databases } from "../appwrite";
 import { ID, Query } from "appwrite";
@@ -44,28 +66,40 @@ export function IdeasProvider(props) {
   const [ideas, setIdeas] = useState([]);
 
   async function add(idea) {
-    const response = await databases.createDocument(
-      IDEAS_DATABASE_ID,
-      IDEAS_COLLECTION_ID,
-      ID.unique(),
-      idea
-    );
-    setIdeas((ideas) => [response.$id, ...ideas].slice(0, 10));
+    try {
+      const response = await databases.createDocument(
+        IDEAS_DATABASE_ID,
+        IDEAS_COLLECTION_ID,
+        ID.unique(),
+        idea
+      );
+      setIdeas((ideas) => [response, ...ideas].slice(0, 10));
+    } catch (err) {
+      console.log(err) // handle error or show user a message
+    }
   }
 
   async function remove(id) {
-    await databases.deleteDocument(IDEAS_DATABASE_ID, IDEAS_COLLECTION_ID, id);
-    setIdeas((ideas) => ideas.filter((idea) => idea.$id !== id));
-    await init(); // Refetch ideas to ensure we have 10 items
+    try {
+      await databases.deleteDocument(IDEAS_DATABASE_ID, IDEAS_COLLECTION_ID, id);
+      setIdeas((ideas) => ideas.filter((idea) => idea.$id !== id));
+      await init();
+    } catch (err) {
+      console.log(err)
+    }
   }
 
   async function init() {
-    const response = await databases.listDocuments(
-      IDEAS_DATABASE_ID,
-      IDEAS_COLLECTION_ID,
-      [Query.orderDesc("$createdAt"), Query.limit(10)]
-    );
-    setIdeas(response.documents);
+    try {
+      const response = await databases.listDocuments(
+        IDEAS_DATABASE_ID,
+        IDEAS_COLLECTION_ID,
+        [Query.orderDesc("$createdAt"), Query.limit(10)]
+      );
+      setIdeas(response.documents);
+    } catch (err) {
+      console.log(err)
+    }
   }
 
   useEffect(() => {
@@ -79,4 +113,3 @@ export function IdeasProvider(props) {
   );
 }
 ```
-

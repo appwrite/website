@@ -3,16 +3,16 @@
 .#{$p}-table {
   /* color variable mixins */
   @mixin light-mode {
-    --p-table-header-bg-color:    var(--aw-color-white);
-    --p-table-row-bg-odd-color:   var(--aw-color-greyscale-25);
-    --p-table-row-bg-even-color:  var(--aw-color-white);
-    --p-table-border-color:       var(--aw-color-greyscale-50);
+    --p-table-header-bg-color:    var(--web-color-white);
+    --p-table-row-bg-odd-color:   var(--web-color-greyscale-25);
+    --p-table-row-bg-even-color:  var(--web-color-white);
+    --p-table-border-color:       var(--web-color-greyscale-50);
   }
   @mixin dark-mode {
-    --p-table-header-bg-color:    var(--aw-color-greyscale-850);
-    --p-table-row-bg-odd-color:   var(--aw-color-greyscale-900);
-    --p-table-row-bg-even-color:  var(--aw-color-greyscale-850);
-    --p-table-border-color:       var(--aw-color-greyscale-800);
+    --p-table-header-bg-color:    var(--web-color-greyscale-850);
+    --p-table-row-bg-odd-color:   var(--web-color-greyscale-900);
+    --p-table-row-bg-even-color:  var(--web-color-greyscale-850);
+    --p-table-border-color:       var(--web-color-greyscale-800);
   }
 
   table-layout: fixed;
@@ -41,7 +41,27 @@
     }
   }
   &-head-col { padding:pxToRem(12); min-inline-size:pxToRem(180); }
-  &-col      { padding-block:pxToRem(19); padding-inline:pxToRem(12); }
+  &-col      {
+    padding-block:pxToRem(19); padding-inline:pxToRem(12);
+    img { max-inline-size:none; max-block-size:none; }
+    }
+
+    /* state of table with-remove outer style */
+  &-scroll:where(.is-remove-outer-styles) {
+    border-width:0;
+    --p-table-header-bg-color: 0 0 0 / 0;
+    --p-table-row-bg-odd-color: 0 0 0 / 0;
+    --p-table-row-bg-even-color: 0 0 0 / 0;
+    border-block-end:solid pxToRem(1) hsl(var(--p-table-border-color));
+
+    .#{$p}-table {
+      &-row                     {  }
+      &-head-col                { padding-block-start:pxToRem(8); padding-block-end:pxToRem(16); }
+      &-col                     { padding-block:pxToRem(16); }
+      &-head-col:first-child    { padding-inline-start:0; }
+      &-col:first-child         { padding-inline-start:0; }
+    }
+  }
 }
 
 
@@ -49,10 +69,10 @@
 .#{$p}-table-line {
   inline-size:100%;
   &-row {
-    border-block-end:solid pxToRem(1) hsl(var(--aw-color-smooth));
+    border-block-end:solid pxToRem(1) hsl(var(--web-color-smooth));
   }
   &-cell {
-    &:nth-child(n + 2) { padding-inline-start:pxToRem(24); }
+    &:nth-child(n + 2) { padding-inline-start:pxToRem(48); }
   }
 
   &-head {

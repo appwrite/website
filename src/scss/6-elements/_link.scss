@@ -3,37 +3,32 @@
 
 .#{$p}-link {
   --p-link-color-text: var(--p-link-color-text-default);
-  --p-link-color-text-default: var(--aw-color-primary);
-  --p-link-color-text-hover: var(--aw-color-accent-darker);
-  --p-link-color-text-active: var(--aw-color-accent);
-  --p-link-color-text-focus-visible: var(--aw-color-accent-click);
+  --p-link-color-text-default: var(--web-color-primary);
+  --p-link-color-text-hover: var(--web-color-accent-darker);
+  --p-link-color-text-active: var(--web-color-accent);
+  --p-link-color-text-focus-visible: var(--web-color-accent-click);
+  display: inline-block;
 
-  display: inline-flex;
-  gap: pxToRem(4);
-  border-radius: pxToRem(4);
+
+  background-size: 100% 1px;
+
+  text-decoration-thickness: pxToRem(.25);
+  text-underline-offset: pxToRem(5);
+
   color: hsl(var(--p-link-color-text));
-  cursor: pointer;
+  /* display:inline-flex; gap:pxToRem(4); */ /* made issues on long links that break into new line */
+  border-radius:pxToRem(4); cursor:pointer;
 
   &:where(:is(:hover):not(#{$disabled})) { --p-link-color-text:var(--p-link-color-text-hover); }
   &:where(:is(:active):not(#{$disabled})) { --p-link-color-text:var(--p-link-color-text-active); }
   &:where(#{$disabled}) { opacity:0.4; cursor:initial; }
   &:where(:focus-visible) {
-    box-shadow:none;
-    color: hsl(var(--p-link-color-text-focus-visible));
-    outline:pxToRem(1) solid hsl(var(--p-link-color-text-focus-visible));
-    outline-offset: 0.125rem;
+    --p-link-color-text: var(--p-link-color-text-focus-visible);
+    outline:pxToRem(1) solid hsl(var(--p-link-color-text-focus-visible)); outline-offset:0.125rem; box-shadow:none;
   }
 
-  &.is-sm {
-    @extend .#{$p}-caption-400;
-  }
-
-  &.is-inline {
-    text-decoration: underline;
-  }
-
-  &.is-secondary {
-    --p-link-color-text-default: var(--aw-color-secondary);
-  }
+  &.is-inline { text-decoration:underline; }
+  &.is-secondary { --p-link-color-text-default: var(--web-color-secondary); }
+  &.is-pink { --p-link-color-text-default: var(--web-color-accent); }
 }
 

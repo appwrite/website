@@ -3,7 +3,6 @@ import MarkdownIt from 'markdown-it';
 const md = new MarkdownIt('commonmark');
 export function parse(content: string): string {
     const tokens = md.parse(content, null);
-
     return md.renderer.render(
         transform_tokens(tokens),
         {
@@ -20,17 +19,17 @@ function transform_tokens(tokens: ReturnType<typeof md.parse>): ReturnType<typeo
         }
         switch (token.type) {
             case 'paragraph_open':
-                token.attrPush(['class', 'aw-paragraph']);
+                token.attrPush(['class', 'text-paragraph']);
                 break;
             case 'link_open': {
                 const href = token.attrGet('href');
                 if (href?.startsWith('http')) {
                     if (!href.startsWith('https://appwrite.io')) {
-						token.attrPush(['rel', 'noopener noreferrer']);
+                        token.attrPush(['rel', 'noopener noreferrer']);
                         token.attrPush(['target', '_blank']);
                     }
                 }
-                token.attrPush(['class', 'aw-link']);
+                token.attrPush(['class', 'web-link']);
                 break;
             }
         }

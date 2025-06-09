@@ -1,1 +1,1 @@
-<strong class="u-bold"><slot /></strong>
+<strong class="font-bold"><slot /></strong>

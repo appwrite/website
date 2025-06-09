@@ -2,8 +2,15 @@ import { base } from '$app/paths';
 import type { Tutorial } from '$markdoc/layouts/Tutorial.svelte';
 
 const framework_order = ['React', 'Vue', 'SvelteKit', 'Stripe', 'Refine'];
-const category_order = ['Web', 'Mobile and native', 'Server', 'Auth', 'Databases', 'Storage', 'Functions'];
-
+const category_order = [
+    'Web',
+    'Mobile and native',
+    'Server',
+    'Auth',
+    'Databases',
+    'Storage',
+    'Functions'
+];
 
 export async function load() {
     const tutorialsGlob = import.meta.glob('./**/step-1/+page.markdoc', {
@@ -20,7 +27,7 @@ export async function load() {
                 .replace('/+page.markdoc', '')
                 .replace('/step-1', '');
             const tutorialName = slug.slice(slug.lastIndexOf('/') + 1);
-            
+
             return {
                 title: frontmatter.title,
                 framework: frontmatter.framework,
@@ -29,6 +36,7 @@ export async function load() {
                 href: `${base}/docs/tutorials/${tutorialName}`
             };
         })
+        .filter((tutorial) => !tutorial.draft)
         .sort((a, b) => {
             // Sort by framework order
             const frameworkIndexA = framework_order.indexOf(a.framework as string);
@@ -44,23 +52,24 @@ export async function load() {
             // Else, sort by title
             return a.title.toLowerCase().localeCompare(b.title.toLowerCase());
         });
-    
-        const tutorials = Object.entries(
-            allTutorials.reduce((acc: { [key: string]: any[] }, item) => {
-                // If the category does not exist in the accumulator, initialize it
-                if (!acc[item.category]) {
-                    acc[item.category] = [];
-                }
 
-                // Push the current item into the appropriate category
-                acc[item.category].push(item);
+    const tutorials = Object.entries(
+        allTutorials.reduce((acc: { [key: string]: any[] }, item) => {
+            const cat = item.category as string;
+            // If the category does not exist in the accumulator, initialize it
+            if (!acc[cat]) {
+                acc[cat] = [];
+            }
 
-                return acc;
-            }, {})
-        ).map(([title, tutorials]) => ({ title, tutorials }));
-        
-        tutorials.sort((a, b) => category_order.indexOf(a.title) - category_order.indexOf(b.title));
+            // Push the current item into the appropriate category
+            acc[cat].push(item);
+
+            return acc;
+        }, {})
+    ).map(([title, tutorials]) => ({ title, tutorials }));
+
+    tutorials.sort((a, b) => category_order.indexOf(a.title) - category_order.indexOf(b.title));
     return {
-        tutorials,
+        tutorials
     };
 }

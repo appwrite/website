@@ -3,6 +3,7 @@ node_modules
 /build
 /.svelte-kit
 /.idea
+/.zed
 /package
 .env
 .env.*
@@ -12,3 +13,12 @@ vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 package-lock.json
 .tool-versions
+.vscode
+# Sentry Config File
+.sentryclirc
+.history
+terraform/**/.t*
+terraform/**/.env
+terraform/**/**/*.tfstate*
+/.cache
+/test-results

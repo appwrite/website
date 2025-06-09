@@ -6,12 +6,12 @@ date: 2023-11-01
 cover: /images/blog/hf-2023-journey/cover.png
 timeToRead: 5
 author: aditya-oberai
-category: hacktoberfest
+category: hackathon
 ---
 
 **October** is our favorite month of the year because it brings with it **Hacktoberfest**, the largest celebration of open source in the world! And this year, we returned to support DigitalOcean and  **Hacktoberfest 2023** as a sponsor to invest in the upliftment of the open-source world and to rejoice the 10th anniversary of this wonderful initiative. Hacktoberfest brought moments of nostalgia seeing developers from different walks of life join in to take their first steps in the open-source world.
 
-We had an absolute blast interacting with all the new contributors and hosting all the events throughout the month! Our **[Discord server](https://appwrite.io/discord)** was full of **AMAs** and **PR Review parties**, which enabled us to demonstrate our PR review workflow and allowed the community to really appreciate the work that goes into maintaining open-source projects. We were also able to educate new contributors on various facets of open source, usage of tools like Git and GitHub, the process of submitting a PR, communication best practices, and so much more! 
+We had an absolute blast interacting with all the new contributors and hosting all the events throughout the month! Our **[Discord server](https://appwrite.io/discord)** was full of **AMAs** and **PR Review parties**, which enabled us to demonstrate our PR review workflow and allowed the community to really appreciate the work that goes into maintaining open-source projects. We were also able to educate new contributors on various facets of open source, usage of tools like Git and GitHub, the process of submitting a PR, communication best practices, and so much more!
 
 Not only did we see multiple virtual events, but we also hosted an [in-person Hacktoberfest Kickoff meetup](https://photos.app.goo.gl/n5YQjK56CCgqyrj68) in collaboration with DigitalOcean in Bengaluru, India. Overall, this Hacktoberfest was one of the most wholesome and fulfilling experiences for our team, and we cannot wait to share our highlights from this edition.
 
@@ -28,13 +28,13 @@ That one month truly enabled us to lay the foundations of a budding organization
 This Hacktoberfest, we focused on collaborating with our contributors to make impactful contributions. Some of them really stood out to us, and we thought to share them here for you to check out too!
 
 - [Security Scans in the CI pipeline using GitLeaks](https://github.com/appwrite/appwrite/pull/6492)
-        
+
 - [Functions template to implement Sync with MeiliSearch in Kotlin](https://github.com/appwrite/templates/pull/234)
-        
+
 - [Messaging adapter for Postmark](https://github.com/utopia-php/messaging/pull/26)
-        
+
 - [Storage adapter for IBM Cloud Object Storage](https://github.com/utopia-php/storage/pull/90)
-        
+
 - [Unit tests for the Android and Kotlin SDKs](https://github.com/appwrite/sdk-generator/pull/729)
 
 The Appwrite team also participated in a number of livestreams throughout the month.
@@ -58,12 +58,12 @@ All these achievements were made possible through the strong collaboration and a
 
 ## What’s next for Appwrite
 
-We have a lot of exciting features that we’re working towards as we gear up to make **Appwrite Cloud** generally available. Appwrite Cloud is the hosted Appwrite solution managed by our team, so developers like you can focus on building their applications. We’re currently running Appwrite Cloud in Public Beta, so [sign up and start building](https://cloud.appwrite.io/register) as soon as you can! 
+We have a lot of exciting features that we’re working towards as we gear up to make **Appwrite Cloud** generally available. Appwrite Cloud is the hosted Appwrite solution managed by our team, so developers like you can focus on building their applications. We’re currently running Appwrite Cloud in Public Beta, so [sign up and start building](https://cloud.appwrite.io/register) as soon as you can!
 
 Besides that, this Hacktoberfest, one new product that we saw a number of folks contribute to is  **Appwrite Messaging**. Stay tuned for more information on the same.
 
 ## How can you contribute after Hacktoberfest?
 
-Hacktoberfest may be over, but you don’t have to stop contributing! We have **lots of open issues** that you can find on our [GitHub repos](https://github.com/appwrite/appwrite/issues). You can also **write articles**, **create tutorials**, or **build demo apps** and add them to our [Awesome Appwrite repo](https://github.com/appwrite/awesome-appwrite) and the [Built With Appwrite website](https://builtwith.appwrite.io). There are always new ways to support the [community](https://appwrite.io/community), and we truly love all the contributions you make. If you need help with Appwrite or would like to explore some interesting ways to contribute, join us on our [Discord server](https://appwrite.io/discord) and connect with the Appwrite community.
+Hacktoberfest may be over, but you don’t have to stop contributing! We have **lots of open issues** that you can find on our [GitHub repos](https://github.com/appwrite/appwrite/issues). You can also **write articles**, **create tutorials**, or **build demo apps** and add them to our [Awesome Appwrite repo](https://github.com/appwrite/awesome-appwrite) and the [Built With Appwrite website](https://builtwith.appwrite.io). There are always new ways to support the [community](/community), and we truly love all the contributions you make. If you need help with Appwrite or would like to explore some interesting ways to contribute, join us on our [Discord server](https://appwrite.io/discord) and connect with the Appwrite community.
 
 Thank you so much once again for joining us during Hacktoberfest. We hope you enjoyed contributing to open source as much as we do, and we can’t wait to have you all with us next year!

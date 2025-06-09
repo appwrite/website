@@ -21,17 +21,17 @@
   --p-hero-button-shadow-out-color: var(--p-hero-button-shadow-out-color-default);
   --p-hero-button-sep-color: var(--p-hero-button-sep-color-default);
 
-  --p-hero-button-text-color-default: var(--aw-color-pink-500);
-  --p-hero-button-bg-color-default: var(--aw-color-pink-500) / 0.08;
-  --p-hero-button-border-color-default: var(--aw-color-pink-500) / 0.4;
+  --p-hero-button-text-color-default: var(--web-color-pink-500);
+  --p-hero-button-bg-color-default: var(--web-color-pink-500) / 0.08;
+  --p-hero-button-border-color-default: var(--web-color-pink-500) / 0.4;
   --p-hero-button-shadow-out-color-default: var(--transparent);
-  --p-hero-button-sep-color-default: var(--aw-color-black) / 0.08;
+  --p-hero-button-sep-color-default: var(--web-color-black) / 0.08;
 
-  --p-hero-button-bg-color-hover: var(--aw-color-pink-500) / 0.10;
+  --p-hero-button-bg-color-hover: var(--web-color-pink-500) / 0.10;
 
-  --p-hero-button-bg-color-active: var(--aw-color-pink-500) / 0.12;
+  --p-hero-button-bg-color-active: var(--web-color-pink-500) / 0.12;
 
-  --p-hero-button-shadow-out-color-focus: var(--aw-color-pink-500) / 0.24 ;
+  --p-hero-button-shadow-out-color-focus: var(--web-color-pink-500) / 0.24 ;
 
   display:flex; align-items:baseline; gap:pxToRem(4);
   padding-block:pxToRem(4); padding-inline:pxToRem(8); inline-size:fit-content;
@@ -41,6 +41,7 @@
   color:hsl(var(--p-hero-button-text-color));
   box-shadow:0 0 0 pxToRem(4) hsl(var(--p-hero-button-shadow-out-color));
 
+  > * { min-inline-size:0; }
   [class*="icon"] { align-self:center; }
   &-sep {
     inline-size:pxToRem(1); block-size:pxToRem(16); align-self:center;  margin-inline:pxToRem(4);
@@ -59,12 +60,12 @@
   &:disabled { opacity:0.4; }
 
   #{$theme-dark} & {
-    --p-hero-button-text-color-default: var(--aw-color-white);
-    --p-hero-button-bg-color-default: var(--aw-color-pink-500) / 0.08;
-    --p-hero-button-border-color-default: var(--aw-color-pink-500);
+    --p-hero-button-text-color-default: var(--web-color-white);
+    --p-hero-button-bg-color-default: var(--web-color-pink-500) / 0.08;
+    --p-hero-button-border-color-default: var(--web-color-pink-500);
 
-    --p-hero-button-sep-color-default: var(--aw-color-white) / 0.10;
+    --p-hero-button-sep-color-default: var(--web-color-white) / 0.10;
 
-    --p-hero-button-shadow-out-color-focus: var(--aw-color-pink-500) / 0.16;
+    --p-hero-button-shadow-out-color-focus: var(--web-color-pink-500) / 0.16;
   }
 }

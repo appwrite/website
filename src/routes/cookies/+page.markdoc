@@ -2,13 +2,15 @@
 layout: policy
 title: Cookies Policy
 transparentTableCells: true
+description: This cookie policy explains what cookies are, how we use them at Appwrite, and how you can manage and customize your preferences. 
+
 ---
 
 We use in our site [Appwrite (https://appwrite.io/)](https://appwrite.io/) ("**Site**") cookies and similar files or technologies to automatically collect and store information about your computer, device, and Site usage, in order to improve their performance and enhance your user experience. We use the general term "**cookies**" in this policy to refer to these technologies and all such similar technologies that collect information automatically when you are using our Site where this policy is posted. You can find out more about cookies and how to control them in the information below.
 
 If you do not accept the use of these cookies, please disable them using the instructions in this cookie policy or by changing your browser settings so that cookies from this Site cannot be placed on your computer or mobile device. Important: disabling cookies on this Site may impair certain Site features.
 
-In this Cookies Policy, we use the term Appwio "we", "us" and "our") to refer to Appwrite Code Ltd. Our Privacy Policy is available at [Appwrite Privacy Policy (https://appwrite.io/policy/privacy)](https://appwrite.io/policy/privacy).
+In this Cookies Policy, we use the terms "we", "us" and "our" to refer to Appwrite Code Ltd. Our Privacy Policy is available at [Appwrite Privacy Policy (https://appwrite.io/policy/privacy)](https://appwrite.io/policy/privacy).
 
 ## What is a cookie?
 
@@ -138,7 +140,7 @@ The following pages have information on how to change your cookies settings for 
 
 If you use another browser, you can check if the procedure for your browser is mentioned in [this explanatory website](https://allaboutcookies.org/how-to-manage-cookies).
 
-To opt out of being tracked by Google Analytics across all websites, visit [here](https://tools.google.com/dlpage/gaoptout).
+To opt out of being tracked by Google Analytics across all websites, visit the [Google Analytics opt-out page](https://tools.google.com/dlpage/gaoptout).
 
 # Third party websites' cookies
 

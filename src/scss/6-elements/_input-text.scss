@@ -2,60 +2,60 @@
 
 .#{$p}-input-text {
   @mixin input-light-mode {
-    --p-input-placeholder-text-color: var(--aw-color-secondary);
-    --p-input-focus-box-shadow-color: var(--aw-color-black) / 0.10;
+    --p-input-placeholder-text-color: var(--web-color-tertiary);
+    --p-input-focus-box-shadow-color: var(--web-color-black) / 0.10;
 
-    --p-input-text-color-default: var(--aw-color-primary);
-    --p-input-bg-color-default: var(--aw-color-smooth);
-    --p-input-border-color-default: var(--aw-color-offset);
+    --p-input-text-color-default: var(--web-color-primary);
+    --p-input-bg-color-default: var(--web-color-smooth);
+    --p-input-border-color-default: var(--web-color-offset);
 
     --p-input-text-color-hover: var(--p-input-text-color-default);
-    --p-input-bg-color-hover: var(--aw-color-smooth);
-    --p-input-border-color-hover: var(--aw-color-primary);
+    --p-input-bg-color-hover: var(--web-color-smooth);
+    --p-input-border-color-hover: var(--web-color-primary);
 
     --p-input-text-color-active: var(--p-input-text-color-default);
-    --p-input-bg-color-active: var(--aw-color-smooth);
-    --p-input-border-color-active: var(--aw-color-primary);
+    --p-input-bg-color-active: var(--web-color-smooth);
+    --p-input-border-color-active: var(--web-color-primary);
 
-    --p-input-text-color-disabled: var(--aw-color-secondary);
-    --p-input-bg-color-disabled: var(--aw-color-smooth);
-    --p-input-border-color-disabled: var(--aw-color-offset);
+    --p-input-text-color-disabled: var(--web-color-secondary);
+    --p-input-bg-color-disabled: var(--web-color-smooth);
+    --p-input-border-color-disabled: var(--web-color-offset);
 
     --p-input-text-color-focus: var(--p-input-text-color-default);
-    --p-input-bg-color-focus:  var(--aw-color-smooth);
-    --p-input-border-color-focus: var(--aw-color-primary);
+    --p-input-bg-color-focus:  var(--web-color-smooth);
+    --p-input-border-color-focus: var(--web-color-primary);
 
-    //--p-input-text-color-error: var(--aw-color-greyscale-700);
-    //--p-input-bg-color-error: var(--aw-color-white);
-    --p-input-border-color-error: var(--aw-color-red-500);
+    //--p-input-text-color-error: var(--web-color-greyscale-700);
+    //--p-input-bg-color-error: var(--web-color-white);
+    --p-input-border-color-error: var(--web-color-red-500);
   }
   @mixin input-dark-mode {
-    --p-input-focus-box-shadow-color: var(--aw-color-white) / 0.16;
+    --p-input-focus-box-shadow-color: var(--web-color-white) / 0.16;
 
-    --p-input-text-color-default: var(--aw-color-primary);
-    --p-input-bg-color-default: var(--aw-color-smooth);
-    --p-input-border-color-default: var(--aw-color-offset);
-    --p-input-border-color-error-default: var(--aw-color-red-500);
+    --p-input-text-color-default: var(--web-color-primary);
+    --p-input-bg-color-default: var(--web-color-smooth);
+    --p-input-border-color-default: var(--web-color-offset);
+    --p-input-border-color-error-default: var(--web-color-red-500);
 
     --p-input-text-color-hover: var(--p-input-text-color-default);
-    --p-input-bg-color-hover: var(--aw-color-smooth);
-    --p-input-border-color-hover: var(--aw-color-primary);
+    --p-input-bg-color-hover: var(--web-color-smooth);
+    --p-input-border-color-hover: var(--web-color-primary);
 
     --p-input-text-color-active: var(--p-input-text-color-default);
-    --p-input-bg-color-active: var(--aw-color-smooth);
-    --p-input-border-color-active: var(--aw-color-primary);
+    --p-input-bg-color-active: var(--web-color-smooth);
+    --p-input-border-color-active: var(--web-color-primary);
 
-    --p-input-text-color-disabled: var(--aw-color-secondary);
-    --p-input-bg-color-disabled: var(--aw-color-smooth);
-    --p-input-border-color-disabled:var(--aw-color-offset);
+    --p-input-text-color-disabled: var(--web-color-secondary);
+    --p-input-bg-color-disabled: var(--web-color-smooth);
+    --p-input-border-color-disabled:var(--web-color-offset);
 
     --p-input-text-color-focus: var(--p-input-text-color-default);
-    --p-input-bg-color-focus: var(--aw-color-smooth);
-    --p-input-border-color-focus: var(--aw-color-primary);
+    --p-input-bg-color-focus: var(--web-color-smooth);
+    --p-input-border-color-focus: var(--web-color-primary);
 
-    //--p-input-text-color-error: var(--aw-color-greyscale-700);
-    //--p-input-bg-color-error: var(--aw-color-white);
-    --p-input-border-color-error: var(--aw-color-red-500);
+    //--p-input-text-color-error: var(--web-color-greyscale-700);
+    //--p-input-bg-color-error: var(--web-color-white);
+    --p-input-border-color-error: var(--web-color-red-500);
   }
 
   @include input-light-mode();
@@ -78,6 +78,8 @@
   padding-inline:pxToRem(16); padding-block:pxToRem(12);
   border-radius:pxToRem(8); font-size:pxToRem(16); line-height:1;
   white-space:nowrap;
+
+  
 
   &::placeholder      { color:hsl(var(--p-input-placeholder-text-color)); }
 
@@ -125,17 +127,19 @@
   &.is-reset-input-inside {
     input { all:unset; display:block; inline-size:100%; text-align:left; }
   }
-
 }
 
 textarea.#{$p}-input-text {
   padding-inline: pxToRem(16);
   padding-block: pxToRem(12);
+  block-size: pxToRem(154);
 }
+
+select.#{$p}-input-text { block-size: pxToRem(45.5); color:hsl(var(--color-neutral-40)); }
 
 .#{$p}-subscribe-input {
   padding: pxToRem(4); padding-inline-start:pxToRem(16);
-  ::placeholder      { color:hsl(var(--aw-color-primary)); opacity:0.64; }
+  ::placeholder      { color:hsl(var(--web-color-primary)); opacity:0.64; }
 }
 
 .#{$p}-form {

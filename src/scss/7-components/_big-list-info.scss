@@ -2,7 +2,7 @@
 
 .#{$p}-big-list-info {
   display:flex; flex-direction:column; gap:pxToRem(64);
-  &-item { padding-block-start:pxToRem(16); border-block-start:solid 1px hsl(var(--aw-color-smooth));}
-  .text { color:hsl(var(--aw-color-greyscale-300)); }
+  &-item  { padding-block-start:pxToRem(16); border-block-start:solid 1px hsl(var(--web-color-smooth));}
+  .text   { color:hsl(var(--web-color-greyscale-300)); }
   @media #{$break2open} { inline-size:pxToRem(480); max-inline-size:pxToRem(480); }
 }

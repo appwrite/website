@@ -10,47 +10,45 @@
 </script>
 
 <DropdownMenu let:open let:menu let:trigger>
-    <button class="aw-btn-tag" use:melt={trigger}>
+    <button class="web-btn-tag" use:melt={trigger}>
         <span class="text">More</span>
-        <span class="aw-icon-chevron-down" style="font-size: 1rem" />
+        <span class="web-icon-chevron-down web-u-font-size-16"></span>
     </button>
 
     {#if open}
-        <div 
-          class="menu-wrapper aw-card is-normal menu has-border-gradient"
-          style:z-index="1"
-          use:melt={menu}
-          transition:fly={{ y: 8, duration: 250 }}
+        <div
+            class="menu-wrapper web-card is-normal menu has-border-gradient z-1"
+            use:melt={menu}
+            transition:fly={{ y: 8, duration: 250 }}
         >
-          <ul
-          >
-              {#each tags as tag}
-                  {@const checked = selectedTags?.includes(tag)}
-                  <DropdownCheckboxItem let:checkboxItem {checked}>
-                      <li
-                          use:melt={checkboxItem}
-                          on:m-click={(e) => {
-                              e.preventDefault();
-                              toggleTag(tag);
-                          }}
-                      >
-                          <div class="checkbox">
-                              {#if checked}
-                                  <span class="aw-icon-check" />
-                              {/if}
-                          </div>
-                          {tag}
-                      </li>
-                  </DropdownCheckboxItem>
-              {/each}
-          </ul>
+            <ul class="text-sub-body">
+                {#each tags as tag}
+                    {@const checked = selectedTags?.includes(tag)}
+                    <DropdownCheckboxItem let:checkboxItem {checked}>
+                        <li
+                            use:melt={checkboxItem}
+                            on:m-click={(e) => {
+                                e.preventDefault();
+                                toggleTag(tag);
+                            }}
+                        >
+                            <div class="checkbox">
+                                {#if checked}
+                                    <span class="web-icon-check"></span>
+                                {/if}
+                            </div>
+                            {tag}
+                        </li>
+                    </DropdownCheckboxItem>
+                {/each}
+            </ul>
         </div>
     {/if}
 </DropdownMenu>
 
 <style lang="scss">
     .menu-wrapper {
-      --p-card-border-radius: 0.5rem;
+        --p-card-border-radius: 0.5rem;
         padding: 0.75rem;
         backdrop-filter: blur(2px);
         --webkit-backdrop-filter: blur(2px);
@@ -80,12 +78,12 @@
 
         &:hover {
             cursor: pointer;
-            background-color: hsl(var(--aw-color-offset));
+            background-color: hsl(var(--web-color-offset));
         }
     }
 
     .checkbox {
-        --p-checkbox-size: 1.4rem;
+        --p-checkbox-size: 1.25rem;
         width: var(--p-checkbox-size);
         height: var(--p-checkbox-size);
 
@@ -106,8 +104,8 @@
         }
 
         :global([data-state='checked']) & {
-            background-color: hsl(var(--aw-color-primary));
-            border-color: hsl(var(--aw-color-primary));
+            background-color: hsl(var(--web-color-primary));
+            border-color: hsl(var(--web-color-primary));
         }
     }
 </style>

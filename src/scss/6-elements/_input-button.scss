@@ -2,73 +2,69 @@
 
 .#{$p}-input-button {
   @mixin input-light-mode {
-    --p-input-placeholder-text-color: var(--aw-color-secondary);
-    --p-input-focus-box-shadow-color: var(--aw-color-black) / 0.10;
+    --p-input-placeholder-text-color: var(--web-color-secondary);
+    --p-input-focus-box-shadow-color: var(--web-color-black) / 0.10;
 
-    --p-input-text-color-default: var(--aw-color-secondary);
-    --p-input-bg-color-default: var(--aw-color-white);
-    --p-input-border-color-default: var(--aw-color-black) / 0.08;
+    --p-input-text-color-default: var(--web-color-secondary);
+    --p-input-bg-color-default: var(--web-color-white);
+    --p-input-border-color-default: var(--web-color-black) / 0.08;
 
     --p-input-text-color-hover: var(--p-input-text-color-default);
-    --p-input-bg-color-hover: var(--aw-color-greyscale-25);
-    --p-input-border-color-hover: var(--aw-color-black) / 0.08;
+    --p-input-bg-color-hover: var(--web-color-greyscale-25);
+    --p-input-border-color-hover: var(--web-color-black) / 0.08;
 
     --p-input-text-color-active: var(--p-input-text-color-default);
-    --p-input-bg-color-active: var(--aw-color-white);
-    --p-input-border-color-active: var(--aw-color-black) / 0.08;
+    --p-input-bg-color-active: var(--web-color-white);
+    --p-input-border-color-active: var(--web-color-black) / 0.08;
 
     --p-input-text-color-disabled: var(--p-input-text-color-default);
-    --p-input-bg-color-disabled: var(--aw-color-white);
-    --p-input-border-color-disabled: var(--aw-color-black) / 0.08;
+    --p-input-bg-color-disabled: var(--web-color-white);
+    --p-input-border-color-disabled: var(--web-color-black) / 0.08;
 
     --p-input-text-color-focus: var(--p-input-text-color-default);
-    --p-input-bg-color-focus: var(--aw-color-white);
-    --p-input-border-color-focus: var(--aw-color-greyscale-900);
+    --p-input-bg-color-focus: var(--web-color-white);
+    --p-input-border-color-focus: var(--web-color-greyscale-900);
   }
   @mixin input-dark-mode {
-    --p-input-focus-box-shadow-color: var(--aw-color-white) / 0.16;
+    --p-input-focus-box-shadow-color: var(--web-color-white) / 0.16;
 
-    --p-input-text-color-default: var(--aw-color-secondary);
-    --p-input-bg-color-default: var(--aw-color-white) / 0.08;
-    --p-input-border-color-default: var(--aw-color-white) / 0.10;
+    --p-input-text-color-default: var(--web-color-secondary);
+    --p-input-bg-color-default: var(--web-color-white) / 0.08;
+    --p-input-border-color-default: var(--web-color-white) / 0.10;
 
     --p-input-text-color-hover: var(--p-input-text-color-default);
-    --p-input-bg-color-hover: var(--aw-color-white) / 0.12;
-    --p-input-border-color-hover: var(--aw-color-white) / 0.10;
+    --p-input-bg-color-hover: var(--web-color-white) / 0.12;
+    --p-input-border-color-hover: var(--web-color-white) / 0.10;
 
     --p-input-text-color-active: var(--p-input-text-color-default);
-    --p-input-bg-color-active: var(--aw-color-white) / 0.08;
-    --p-input-border-color-active: var(--aw-color-white) / 0.10;
+    --p-input-bg-color-active: var(--web-color-white) / 0.08;
+    --p-input-border-color-active: var(--web-color-white) / 0.10;
 
-    --p-input-text-color-disabled: var(--aw-color-secondary);
-    --p-input-bg-color-disabled: var(--aw-color-white) / 0.08;
-    --p-input-border-color-disabled: var(--aw-color-white) / 0.10;
+    --p-input-text-color-disabled: var(--web-color-secondary);
+    --p-input-bg-color-disabled: var(--web-color-white) / 0.08;
+    --p-input-border-color-disabled: var(--web-color-white) / 0.10;
 
     --p-input-text-color-focus: var(--p-input-text-color-default);
-    --p-input-bg-color-focus: var(--aw-color-white) / 0.08;
-    --p-input-border-color-focus: var(--aw-color-primary);
+    --p-input-bg-color-focus: var(--web-color-white) / 0.08;
+    --p-input-border-color-focus: var(--web-color-primary);
   }
 
-  @include input-light-mode();
   --p-input-text-color: var(--p-input-text-color-default);
   --p-input-bg-color: var(--p-input-bg-color-default);
   --p-input-border-color: var(--p-input-border-color-default);
 
-  #{$theme-dark} & {
-    @include input-dark-mode();
-  }
-  #{$theme-light} & {
-    @include input-light-mode();
-  }
+  @include input-light-mode();
+  #{$theme-dark} &  { @include input-dark-mode(); }
+  #{$theme-light} & { @include input-light-mode(); }
 
   color: hsl(var(--p-input-text-color));
   background-color: hsl(var(--p-input-bg-color));
   border: solid pxToRem(1) hsl(var(--p-input-border-color));
 
-  display:flex; align-items:center; gap:pxToRem(4);
-  padding-inline:pxToRem(12); padding-block:pxToRem(8);
-  border-radius:pxToRem(8); font-size:pxToRem(14); line-height:1;
-  white-space:nowrap;
+  display:flex !important; align-items:center !important; gap:pxToRem(4) !important;
+  padding-inline:pxToRem(12) !important; padding-block:pxToRem(8) !important;
+  border-radius:pxToRem(8) !important; font-size:pxToRem(14) !important; line-height:1 !important;
+  white-space:nowrap !important;
 
   &::placeholder      { color:hsl(var(--p-input-placeholder-text-color)); }
 
@@ -79,19 +75,19 @@
   &:is(:focus) {
     --p-input-bg-color: var(--p-input-bg-color-focus);
     --p-input-border-color: var(--p-input-border-color-focus);
-    box-shadow: 0 0 0 pxToRem(4) hsl(var(--p-input-focus-box-shadow-color));
+    box-shadow: 0 0 0 pxToRem(4) hsl(var(--p-input-focus-box-shadow-color)) !important;
   }
   &:is(:active) {
     --p-input-bg-color: var(--p-input-bg-color-active);
     --p-input-border-color: var(--p-input-border-color-active);
-    box-shadow: 0 0 0 pxToRem(4) hsl(var(--p-input-focus-box-shadow-color));
-    border-width:pxToRem(1);
+    box-shadow: 0 0 0 pxToRem(4) hsl(var(--p-input-focus-box-shadow-color)) !important;
+    border-width:pxToRem(1) !important;
   }
   &:is(#{$disabled}) {
     --p-input-text-color: var(--p-input-text-color-disabled);
     --p-input-bg-color: var(--p-input-bg-color-disabled);
     --p-input-border-color: var(--p-input-border-color-disabled);
-    opacity: 0.4;
+    opacity: 0.4 !important; 
   }
 
   &-search-wrapper {

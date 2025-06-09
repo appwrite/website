@@ -23,19 +23,19 @@
     };
 </script>
 
-<div class="aw-card is-normal has-border-gradient message">
+<div class="web-card is-normal has-border-gradient message">
     <div class="header">
         <div class="author">
             <div class="author-img">
                 <img src={message.author_avatar} alt="" class="h-full w-full rounded-[inherit]" />
             </div>
-            <span class="aw-sub-body-500 aw-u-color-text-primary">{message.author}</span>
+            <span class="text-sub-body text-primary font-medium">{message.author}</span>
         </div>
-        <span class="timestamp aw-caption-400">
+        <span class="timestamp text-caption">
             {formatTimestamp(message.timestamp)}
         </span>
     </div>
-    <div class="aw-sub-body-500" style=" margin-block-start: 1rem;">
+    <div class="text-sub-body mt-4 font-medium">
         <SvelteMarkdown
             source={message.message}
             renderers={{
@@ -49,12 +49,8 @@
 </div>
 
 <style lang="scss">
-    .aw-card {
+    .web-card {
         overflow: hidden;
-    }
-
-    .aw-sub-body-500 {
-        font-size: 1rem !important;
     }
 
     .header {

@@ -1,7 +1,7 @@
 @use '../abstract' as *;
 
 .#{$p}-box-icon {
-  --p-box-icon-bg-color: var(--aw-color-white);
+  --p-box-icon-bg-color: var(--web-color-white);
   --p-box-icon-shadow: 0px 5.352085113525391px 10.704170227050781px 0px rgba(0, 0, 0, 0.02);
 
   background-color: hsl(var(--p-box-icon-bg-color));
@@ -14,7 +14,7 @@
   backdrop-filter:blur(pxToRem(16));
 
   #{$theme-dark} & {
-    --p-box-icon-bg-color: var(--aw-color-greyscale-850);
+    --p-box-icon-bg-color: var(--web-color-greyscale-850);
   }
 
   &.has-border-gradient {

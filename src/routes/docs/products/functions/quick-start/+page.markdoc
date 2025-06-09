@@ -27,7 +27,7 @@ You can find the code used by the starter template in your newly created Git rep
 Each push to your Git repo will trigger a new deployment.
 
 ## Execute {% #execute %} 
-You can execute your Appwrite Function through [many different triggers](/docs/products/functions/execution).
+You can execute your Appwrite Function through [many different triggers](/docs/products/functions/execute).
 The easiest way to execute your first function is to use the Appwrite Console.
 
 {% only_dark %}
@@ -46,12 +46,20 @@ The easiest way to execute your first function is to use the Appwrite Console.
 # Explore {% #explore %}
 Use this your first function as a springboard to explore the flexible and powerful features of Appwrite Functions.
 
-| Explore                                                                 |                                                    |
-|-------------------------------------------------------------------------|----------------------------------------------------|
-| [Develop](/docs/products/functions/development)                | Learn about how to parse request, build responses, and log to Console in Appwrite Functions. |
-| [Response](/docs/products/functions/development#response)       | Learn about function response types, like text, json, html, redirect, and empty responses.|
-| [Deploy](/docs/products/functions/deployment)                | Learn to deploy Appwrite Functions from Git, the CLI, or manual uploads. |
-| [Execute](/docs/products/functions/execution)            | Appwrite Functions can be executed in a variety of ways, like SDK, domains, schedules, events, and more. Learn about executions.  |
-| [Domains](/docs/products/functions/execution#domains)       | Each Appwrite Function can be executed through it's own domain, generated or custom. Learn about domains.  |
-| [Runtime](/docs/products/functions/runtimes)            | Appwrite supports over a dozen runtimes to meet your preferences. Learn about runtimes.  |
-| [Examples](/docs/products/functions/examples)            | Enjoy learning from examples? Take a look at these examples functions.  |
+{% cards %}
+{% cards_item href="/docs/products/functions/templates" title="Template" %}
+Get a template function up and running with a single click.
+{% /cards_item %}
+{% cards_item href="/docs/products/functions/develop" title="Develop" %}
+Learn about developing your own Appwrite Function.
+{% /cards_item %}
+{% cards_item href="/docs/products/functions/deploy-from-git" title="Deploy" %}
+Learn to deploy Appwrite Functions from Git.
+{% /cards_item %}
+{% cards_item href="/docs/products/functions/execute" title="Execute" %}
+Explore the different ways an Appwrite Function can be executed.
+{% /cards_item %}
+{% cards_item href="/docs/products/functions/runtimes" title="Runtimes" %}
+Write Appwrite Functions in your favorite language.
+{% /cards_item %}
+{% /cards %}

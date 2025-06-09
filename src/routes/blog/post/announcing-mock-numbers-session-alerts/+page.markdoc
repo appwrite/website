@@ -1,0 +1,77 @@
+---
+layout: post
+title: "Introducing mock numbers and session alerts in Auth"
+description: In response to popular demand, we're thrilled to announce two significant improvements to Appwrite Auth.
+date: 2024-08-23
+cover: /images/blog/init-day4/cover.png
+timeToRead: 4
+author: luke-silver
+category: init, announcement, product
+featured: false
+---
+We've listened to your feedback and are introducing two new features designed to simplify phone authentication testing and bolster account security.
+
+Mock numbers allow you to set up a list of phone numbers with a predefined, static verification code, which is perfect for app reviews and testing. Session alerts will help your users maintain their account security.
+
+Let's dive in!
+
+# Mock numbers
+
+Mock numbers allow you to configure a list of phone numbers that can sign in with specific, unchanging verification codes. No SMS is actually sent, making this perfect for testing environments and app review scenarios. 
+
+Ready to implement mock numbers in your project? Here's how to get started:
+
+First, configure your mock numbers. You can do it with the Appwrite console (go to your project, and then **Auth > Security**)
+
+![Mock-numbers](/images/blog/init-day4/1.png)
+
+Now, in your Flutter app, you can use these mock numbers for authentication:
+
+```dart
+import 'package:appwrite/appwrite.dart';
+
+Client client = Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>');
+
+Account account = Account(client);
+
+// Create account with phone number
+final userId = ID.unique();
+await account.createPhoneToken(
+    userId: userId,
+    phone: '+1655513432',
+);
+
+// Login with phone number and OTP
+final session = await account.createSessionWithPhone(
+    userId: userId,
+    secret: '123456',
+);
+```
+
+The mock numbers feature will be available for Pro users in 1.6.
+
+# Session alerts
+
+When you sign into your Appwrite Cloud account, you will receive an email telling you about the sign-in, including details about the session. 
+
+End-users won't receive an email if it's their first time signing in, or if they haven't set up an email address.
+
+![Email-session-alert](/images/blog/init-day4/2.png)
+
+This is a security feature that allows you to quickly secure your account if compromised. It's enabled by default for Cloud, and you can enable it for your Appwrite project in the **Auth > Security** menu:
+
+![Session-alert](/images/blog/init-day4/3.png)
+
+# Get started
+
+Mock numbers help you streamline testing and development by providing a controlled environment for phone authentication. By using predefined phone numbers and verification codes, you can rapidly iterate your apps without relying on real phone numbers. 
+
+Session alerts empower users to protect their accounts and help prevent unauthorized access.
+
+If you'd like to try these features out in your application, here are a few resources to get you started:
+
+- [Read the mock numbers documentation](/docs/products/auth/phone-sms)
+- [Join our Discord community](https://discord.gg/appwrite)
+- [Learn about Appwrite Init](https://www.appwrite.io/init)

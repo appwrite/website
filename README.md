@@ -10,14 +10,15 @@ The Appwrite Website repo features the main Appwrite website, including our [hom
 
 The Appwrite Website has been built with the following frameworks:
 
--   [Svelte](https://svelte.dev/)
--   [SvelteKit](https://kit.svelte.dev/)
+- [Svelte](https://svelte.dev/)
+- [SvelteKit](https://kit.svelte.dev/)
 
 ## Development
 
-*If this is your first time setting up the repository, please run `pnpm install` inside the repo's directory.*
+_If this is your first time setting up the repository, please run `pnpm install` inside the repo's directory and create a `.env` file based on `.env.example`._
 
 To get the repo up and running in your local environment, use the following command:
+
 ```bash
 pnpm run dev
 ```
@@ -36,8 +37,8 @@ For security issues, kindly email us at [security@appwrite.io](mailto:security@a
 
 ## Follow Us
 
-Join our growing community around the world! See our official [Blog](https://medium.com/appwrite-io). Follow us on [Twitter](https://twitter.com/appwrite), [Facebook Page](https://www.facebook.com/appwrite.io), [Facebook Group](https://www.facebook.com/groups/appwrite.developers/), and [Dev Community](https://dev.to/appwrite) or join our live [Discord server](https://appwrite.io/discord) for more help, ideas, and discussions.
+Join our growing community around the world! See our official [Blog](https://appwrite.io/blog). Follow us on [X](https://twitter.com/appwrite), [Facebook Page](https://www.facebook.com/appwrite.io), [Facebook Group](https://www.facebook.com/groups/appwrite.developers/), and [Dev Community](https://dev.to/appwrite) or join our live [Discord server](https://appwrite.io/discord) for more help, ideas, and discussions.
 
 ## License
 
-Appwrite website, docs and blog © 2023 by Appwrite is licensed under [CC BY-NC-ND 4.0](https://creativecommons.org/licenses/by-nc-nd/4.0/).
+Appwrite website, docs and blog © 2025 by Appwrite is licensed under [CC BY-NC-ND 4.0](https://creativecommons.org/licenses/by-nc-nd/4.0/).

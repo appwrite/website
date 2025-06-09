@@ -1,8 +1,8 @@
 @use '../abstract' as *;
 
 .#{$p}-btn-tag {
-  --p-tag-text-color: var(--aw-color-primary);
-  --p-tag-bg-color: var(--aw-color-greyscale-100);
+  --p-tag-text-color: var(--web-color-primary);
+  --p-tag-bg-color: var(--web-color-greyscale-100);
   --p-tag-border-color: var(--p-tag-bg-color);
   
 
@@ -13,26 +13,26 @@
   padding-block: pxToRem(4);
   padding-inline: pxToRem(8);
   border-radius: pxToRem(12);
-  font-size: var(--aw-font-size-micro);
-  line-height: var(--aw-line-height-tiny);
+  font-size: var(--web-font-size-micro);
+  line-height: var(--web-line-height-tiny);
 
   #{$theme-dark} & {
-    --p-tag-bg-color: var(--aw-color-greyscale-750);
+    --p-tag-bg-color: var(--web-color-greyscale-750);
 
     &:where(:hover) {
-      --p-tag-bg-color: var(--aw-color-greyscale-700);
+      --p-tag-bg-color: var(--web-color-greyscale-700);
     }
 
     &:where(:active) {
-      --p-tag-bg-color: var(--aw-color-greyscale-800);
+      --p-tag-bg-color: var(--web-color-greyscale-800);
     }
 
     &:where(.is-selected) {
-      --p-tag-border-color: var(--aw-color-white);
+      --p-tag-border-color: var(--web-color-white);
     }
 
     &:where(:disabled) {
-      --p-tag-bg-color: var(--aw-color-greyscale-800);
+      --p-tag-bg-color: var(--web-color-greyscale-800);
     }
   }
 }

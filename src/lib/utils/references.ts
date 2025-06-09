@@ -2,7 +2,18 @@ import { writable } from 'svelte/store';
 import type { Language } from './code';
 import { browser } from '$app/environment';
 
-const allVersions = ['1.4.x', '1.3.x', '1.2.x', '1.1.x', '1.0.x', '0.15.x', 'cloud'] as const;
+const allVersions = [
+    '1.7.x',
+    '1.6.x',
+    '1.5.x',
+    '1.4.x',
+    '1.3.x',
+    '1.2.x',
+    '1.1.x',
+    '1.0.x',
+    '0.15.x',
+    'cloud'
+] as const;
 
 export type Version = (typeof allVersions)[number];
 
@@ -10,39 +21,59 @@ export const versions: Readonly<Array<Omit<Version, 'cloud'>>> = allVersions.fil
     (v) => v !== 'cloud'
 );
 
-export enum Service {
-    Account = 'account',
-    Avatars = 'avatars',
-    Databases = 'databases',
-    Functions = 'functions',
-    Health = 'health',
-    Locale = 'locale',
-    Storage = 'storage',
-    Teams = 'teams',
-    Users = 'users'
-}
+export const Service = {
+    Account: 'account',
+    Avatars: 'avatars',
+    Databases: 'databases',
+    Functions: 'functions',
+    Messaging: 'messaging',
+    Health: 'health',
+    Locale: 'locale',
+    Storage: 'storage',
+    Teams: 'teams',
+    Users: 'users',
+    Sites: 'sites',
+    Tokens: 'tokens'
+} as const;
 
-export enum Platform {
-    ClientWeb = 'client-web',
-    ClientFlutter = 'client-flutter',
-    ClientApple = 'client-apple',
-    ClientAndroidKotlin = 'client-android-kotlin',
-    ClientAndroidJava = 'client-android-java',
-    ClientGraphql = 'client-graphql',
-    ClientRest = 'client-rest',
-    ServerDart = 'server-dart',
-    ServerDeno = 'server-deno',
-    ServerDotNet = 'server-dotnet',
-    ServerNodeJs = 'server-nodejs',
-    ServerPhp = 'server-php',
-    ServerPython = 'server-python',
-    ServerRuby = 'server-ruby',
-    ServerSwift = 'server-swift',
-    ServerKotlin = 'server-kotlin',
-    ServerJava = 'server-java',
-    ServerGraphql = 'server-graphql',
-    ServerRest = 'server-rest'
-}
+export type ServiceType = typeof Service;
+export type ServiceValue = (typeof Service)[keyof typeof Service];
+
+export const Platform = {
+    ClientWeb: 'client-web',
+    ClientFlutter: 'client-flutter',
+    ClientReactNative: 'client-react-native',
+    ClientApple: 'client-apple',
+    ClientAndroidKotlin: 'client-android-kotlin',
+    ClientAndroidJava: 'client-android-java',
+    ClientGraphql: 'client-graphql',
+    ClientRest: 'client-rest',
+    ServerNodeJs: 'server-nodejs',
+    ServerPython: 'server-python',
+    ServerDart: 'server-dart',
+    ServerPhp: 'server-php',
+    ServerRuby: 'server-ruby',
+    ServerDotNet: 'server-dotnet',
+    ServerDeno: 'server-deno',
+    ServerGo: 'server-go',
+    ServerSwift: 'server-swift',
+    ServerKotlin: 'server-kotlin',
+    ServerJava: 'server-java',
+    ServerGraphql: 'server-graphql',
+    ServerRest: 'server-rest'
+} as const;
+
+type PlatformType = typeof Platform;
+export type Platform = (typeof Platform)[keyof typeof Platform];
+
+export const Framework = {
+    NextJs: 'Next.js',
+    SvelteKit: 'SvelteKit',
+    VueJs: 'Vue.js',
+    Nuxt3: 'Nuxt3',
+    Astro: 'Astro',
+    Remix: 'Remix'
+} as const;
 
 export const platformMap: Record<Language | string, string> = {
     [Platform.ClientApple]: 'Apple',
@@ -50,6 +81,7 @@ export const platformMap: Record<Language | string, string> = {
     [Platform.ClientWeb]: 'Web',
     [Platform.ClientAndroidKotlin]: 'Android (Kotlin)',
     [Platform.ClientAndroidJava]: 'Android (Java)',
+    [Platform.ClientReactNative]: 'React Native',
     [Platform.ClientGraphql]: 'GraphQL',
     [Platform.ClientRest]: 'REST',
     [Platform.ServerDart]: 'Dart',
@@ -64,10 +96,11 @@ export const platformMap: Record<Language | string, string> = {
     [Platform.ServerJava]: 'Java',
     [Platform.ServerGraphql]: 'GraphQL',
     [Platform.ServerRest]: 'REST',
+    [Platform.ServerGo]: 'Go',
     sh: 'Shell',
     js: 'JavaScript',
     ts: 'TypeScript',
-    jsx: 'React',	
+    jsx: 'React',
     tsx: 'React',
     typescript: 'TypeScript',
     dart: 'Dart',
@@ -98,33 +131,39 @@ export const platformMap: Record<Language | string, string> = {
     text: 'Text',
     vue: 'Vue',
     svelte: 'Svelte',
-    groovy: 'Groovy'
+    groovy: 'Groovy',
+    go: 'Go'
 };
 
-export const serviceMap: Record<Service, string> = {
+export const serviceMap: Record<ServiceValue, string> = {
     [Service.Account]: 'Account',
     [Service.Avatars]: 'Avatars',
     [Service.Databases]: 'Databases',
     [Service.Functions]: 'Functions',
+    [Service.Messaging]: 'Messaging',
     [Service.Health]: 'Health',
     [Service.Locale]: 'Locale',
     [Service.Storage]: 'Storage',
     [Service.Teams]: 'Teams',
-    [Service.Users]: 'Users'
+    [Service.Users]: 'Users',
+    [Service.Sites]: 'Sites',
+    [Service.Tokens]: 'Tokens'
 };
 
 export const preferredVersion = writable<Version | null>(
     globalThis?.localStorage?.getItem('preferredVersion') as Version
 );
-export const preferredPlatform = writable<Platform | null>(
-    globalThis?.localStorage?.getItem('preferredPlatform') as Platform
+
+export const preferredPlatform = writable<Platform>(
+    (globalThis?.localStorage?.getItem('preferredPlatform') ?? 'client-web') as Platform
 );
 
 if (browser) {
     preferredVersion.subscribe((value) => {
-        if (value) globalThis?.sessionStorage?.setItem('preferredVersion', value);
+        if (value) globalThis?.localStorage?.setItem('preferredVersion', value);
     });
+
     preferredPlatform.subscribe((value) => {
-        if (value) globalThis?.sessionStorage?.setItem('preferredPlatform', value);
+        if (value) globalThis?.localStorage?.setItem('preferredPlatform', value);
     });
 }

@@ -1,9 +1,9 @@
 @use '../abstract' as *;
 body {
-	--p-body-text-color: var(--aw-color-secondary);
-	--p-body-bg-color: var(--aw-color-background-docs);
+	--p-body-text-color: var(--web-color-secondary);
+	--p-body-bg-color: var(--web-color-background-docs);
 
-	font-family: var(--aw-font-family-inter);
+	font-family: var(--web-font-family-inter);
 	font-weight: 400;
 	font-size: 100%; /* default equal to 16px */
 	line-height: 1.5;
@@ -19,4 +19,13 @@ body {
 :where(body) :focus-visible {
 	/* focus styles */
 	box-shadow: var(--focus-box-shadow);
+}
+
+::selection {
+	color: hsl(var(--web-color-black)); -webkit-text-fill-color: hsl(var(--web-color-black));
+	background-color: hsl(var(--web-color-mint-500)); background-clip:revert; -webkit-background-clip:revert;
+}
+
+code {
+	word-break: break-word;
 }

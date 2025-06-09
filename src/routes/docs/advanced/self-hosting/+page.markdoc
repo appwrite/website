@@ -1,14 +1,14 @@
 ---
 layout: article
 title: Self-hosting
-description: Set up your self-hosted Appwrite instance with ease. Follow the installation guide to configure and deploy Appwrite on your infrastructure for complete control.
+description: Set up your self-hosted Appwrite instance easily. Read the installation guide to configure and deploy Appwrite on your infrastructure for complete control.
 ---
 
 Appwrite was designed from the ground up with self-hosting in mind. You can install and run Appwrite on any operating system that can run a [Docker CLI](https://www.docker.com/products/docker-desktop). Self-hosted Appwrite instances can be configured flexibly with access to the same features found on Appwrite Cloud.
 
 # System requirements {% #system-requirements %}
 
-Appwrite is designed to run well on both small and large deployments. The minimum requirements to run Appwrite are as little as **1 CPU core** and **2GB of RAM**, and an operating system that supports Docker.
+Appwrite is designed to run well on both small and large deployments. The minimum requirements to run Appwrite are as little as **2 CPU cores** and **4GB of RAM**, with **2GB of swap memory**, and an operating system that supports Docker.
 
 Appwrite requires [Docker Compose Version 2](https://docs.docker.com/compose/install/). To install Appwrite, make sure your Docker installation is updated to support Composer V2.
 
@@ -35,18 +35,18 @@ docker run -it --rm \
     --volume /var/run/docker.sock:/var/run/docker.sock \
     --volume "$(pwd)"/appwrite:/usr/src/code/appwrite:rw \
     --entrypoint="install" \
-    appwrite/appwrite:1.4.13
+    appwrite/appwrite:1.7.4
 ```
 {% /tabsitem %}
 
 {% tabsitem #windows title="Windows" %}
-## CMD 
+## CMD
 ```cmd
 docker run -it --rm ^
     --volume //var/run/docker.sock:/var/run/docker.sock ^
     --volume "%cd%"/appwrite:/usr/src/code/appwrite:rw ^
     --entrypoint="install" ^
-    appwrite/appwrite:1.4.13
+    appwrite/appwrite:1.7.4
 ```
 ## Powershell
 ```powershell
@@ -54,7 +54,7 @@ docker run -it --rm `
     --volume /var/run/docker.sock:/var/run/docker.sock `
     --volume ${pwd}/appwrite:/usr/src/code/appwrite:rw `
     --entrypoint="install" `
-    appwrite/appwrite:1.4.13
+    appwrite/appwrite:1.7.4
 ```
 {% /tabsitem %}
 {% /tabs %}
@@ -64,7 +64,7 @@ docker run -it --rm `
 In addition to running Appwrite locally, you can also launch Appwrite using a pre-configured setup. This allows you to get up and running with Appwrite quickly without installing Docker on your local machine.
 
 Choose from one of the providers below:
- 
+
 {% table %}
 * &nbsp; {% width=48 %}
 * Provider
@@ -84,6 +84,11 @@ Choose from one of the providers below:
 {% only_light %}{% icon_image src="/images/one-click/akamai.svg" alt="Akamai logo" size="m" /%}{% /only_light %}
 * Akamai Compute
 * [Click to install](https://www.linode.com/marketplace/apps/appwrite/appwrite/)
+---
+* {% only_dark %}{% icon_image src="/images/one-click/dark/aws.svg" alt="AWS logo" size="m" /%}{% /only_dark %}
+{% only_light %}{% icon_image src="/images/one-click/aws.svg" alt="AWS logo" size="m" /%}{% /only_light %}
+* AWS Marketplace
+* [Click to install](https://aws.amazon.com/marketplace/pp/prodview-2hiaeo2px4md6)
 {% /table %}
 
 
@@ -93,6 +98,8 @@ Self-hosting Appwrite gives you more configurable options.
 Make these configurations to unlock the full power of Appwrite.
 
 [Configure Appwrite Functions](/docs/advanced/self-hosting/functions)
+
+[Configure Appwrite Sites](/docs/advanced/self-hosting/sites)
 
 [Configure email delivery](/docs/advanced/self-hosting/email)
 
@@ -104,7 +111,7 @@ Make these configurations to unlock the full power of Appwrite.
 
 # Manual (Docker Compose) {% #manual %}
 
-For advanced Docker users, the manual installation might seem more familiar. To set up Appwrite manually, download the Appwrite base [`docker-compose.yml`](https://appwrite.io/install/compose) and [`.env`](https://appwrite.io/install/env) files, then move them inside a directory named `appwrite`. After the download completes, update the different environment variables as you wish in the `.env` file and start the Appwrite stack using the following Docker command:
+For advanced Docker users, the manual installation might seem more familiar. To set up Appwrite manually, download the Appwrite base [`docker-compose.yml`](/install/compose) and [`.env`](/install/env) files, then move them inside a directory named `appwrite`. After the download completes, update the different environment variables as you wish in the `.env` file and start the Appwrite stack using the following Docker command:
 
 ```bash
 docker compose up -d --remove-orphans

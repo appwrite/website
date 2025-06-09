@@ -2,18 +2,18 @@
 
 .#{$p}-radio-button {
   --p-radio-text-color: var(--p-radio-text-color-default);
-  --p-radio-text-color-default: var(--aw-color-secondary);
-  --p-radio-text-color-hover: var(--aw-color-primary);
-  --p-radio-text-color-active: var(--aw-color-primary);
+  --p-radio-text-color-default: var(--web-color-secondary);
+  --p-radio-text-color-hover: var(--web-color-primary);
+  --p-radio-text-color-active: var(--web-color-primary);
 
   --p-radio-bg-color: var(--p-radio-bg-color-default);
-  --p-radio-bg-color-default: var(--aw-color-greyscale-900) / 0.04;
-  --p-radio-bg-color-hover: var(--aw-color-greyscale-900) / 0.04;
-  --p-radio-bg-color-active: var(--aw-color-black) / 0.08;
+  --p-radio-bg-color-default: var(--web-color-greyscale-900) / 0.04;
+  --p-radio-bg-color-hover: var(--web-color-greyscale-900) / 0.04;
+  --p-radio-bg-color-active: var(--web-color-black) / 0.08;
 
   --p-radio-box-shadow: var(--p-radio-box-shadow-default);
   --p-radio-box-shadow-default: var(--transparent);
-  --p-radio-box-shadow-focus: var(--aw-color-black) / 0.16;
+  --p-radio-box-shadow-focus: var(--web-color-black) / 0.16;
 
   position:relative;
   all:unset; cursor:pointer;
@@ -46,10 +46,10 @@
   }
 
   #{$theme-dark} & {
-    --p-radio-bg-color-default: var(--aw-color-white) / 0.06;
-    --p-radio-bg-color-hover: var(--aw-color-white) / 0.06;
-    --p-radio-bg-color-active: var(--aw-color-white) / 0.10;
+    --p-radio-bg-color-default: var(--web-color-white) / 0.06;
+    --p-radio-bg-color-hover: var(--web-color-white) / 0.06;
+    --p-radio-bg-color-active: var(--web-color-white) / 0.10;
 
-    --p-radio-box-shadow-focus: var(--aw-color-white) / 0.16;
+    --p-radio-box-shadow-focus: var(--web-color-white) / 0.16;
   }
 }

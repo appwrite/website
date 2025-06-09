@@ -1,19 +1,44 @@
 <script lang="ts">
-	import { setContext } from 'svelte';
+    import { setContext, type Snippet } from 'svelte';
 
-	export let href: string;
-	export let title: string;
+    interface Props {
+        href: string;
+        icon?: string;
+        image?: string;
+        title: string;
+        children?: Snippet;
+    }
 
-	setContext('no-paragraph', true);
+    const { href, icon = '', image = '', title, children }: Props = $props();
+
+    setContext('no-paragraph', true);
 </script>
 
 <li>
-	<a {href} class="aw-card is-normal" style:margin-block-end="0">
-		<h4 class="aw-sub-body-500 aw-u-color-text-primary">
-			{title}
-		</h4>
-		<p class="aw-sub-body-400 u-margin-block-start-4" style:margin-block="0">
-			<slot />
-		</p>
-	</a>
+    <a {href} class="web-card is-normal" style:margin-block-end="0">
+        <header class="flex items-center gap-1">
+            {#if icon}
+                <span class="{icon} web-u-font-size-24" aria-hidden="true"></span>
+            {/if}
+            {#if image}
+                <img src={image} alt={title} />
+            {/if}
+            <h4 class="text-sub-body text-primary font-medium">
+                {title}
+            </h4>
+        </header>
+        {#if children}
+            <p class="text-sub-body mt-1" style:margin-block="0">
+                {@render children()}
+            </p>
+        {/if}
+    </a>
 </li>
+
+<style>
+    img {
+        width: 24px;
+        object-fit: contain;
+        object-position: center;
+    }
+</style>

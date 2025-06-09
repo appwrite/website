@@ -1,54 +1,55 @@
 @use '../abstract' as *;
 :root {
-  --aw-font-family-aeonik-pro: 'Aeonik Pro', arial, sans-serif;
-  --aw-font-family-inter: 'Inter', arial, sans-serif;
-  --aw-font-family-aeonik-fono: 'Aenoik Fono', monospace;
-  --aw-font-family-fira-code: 'Fira Code', monospace;
+    --web-font-family-aeonik-pro: 'Aeonik Pro', arial, sans-serif;
+    --web-font-family-inter: 'Inter', arial, sans-serif;
+    --web-font-family-aeonik-fono: 'Aenoik Fono', monospace;
+    --web-font-family-archia: 'Archia', arial, sans-serif;
+    --web-font-family-fira-code: 'Fira Code', monospace;
 }
 :root {
-  --aw-font-size-micro:  #{pxToRem(12)};
-  --aw-font-size-tiny:   #{pxToRem(14)};
-  --aw-font-size-small:  #{pxToRem(16)};
-  --aw-font-size-medium: #{pxToRem(18)};
-  --aw-font-size-large:  #{pxToRem(20)};
-  --aw-font-size-xl:     #{pxToRem(24)};
-  --aw-font-size-xxl:    #{pxToRem(32)};
-  --aw-font-size-xxxl:   #{pxToRem(40)};
-  --aw-font-size-big:    #{pxToRem(48)};
-  --aw-font-size-huge:   #{pxToRem(56)};
-  --aw-font-size-super:  #{pxToRem(64)};
-  --aw-font-size-giant:  #{pxToRem(88)};
-}
-
-:root {
-  --aw-line-height-micro:  #{pxToRem(14)};
-  --aw-line-height-tiny:   #{pxToRem(16)};
-  --aw-line-height-xs:     #{pxToRem(22)};
-  --aw-line-height-sm:     #{pxToRem(26)};
-  --aw-line-height-md:     #{pxToRem(28)};
-  --aw-line-height-lg:     #{pxToRem(34)};
-  --aw-line-height-big:    #{pxToRem(44)};
-  --aw-line-height-xl:     #{pxToRem(50)};
-  --aw-line-height-xxl:    #{pxToRem(56)};
-  --aw-line-height-xxxl:   #{pxToRem(68)};
-  --aw-line-height-xxxxl:  #{pxToRem(88)};
+    --web-font-size-micro: #{pxToRem(12)};
+    --web-font-size-tiny: #{pxToRem(14)};
+    --web-font-size-small: #{pxToRem(16)};
+    --web-font-size-medium: #{pxToRem(18)};
+    --web-font-size-large: #{pxToRem(20)};
+    --web-font-size-xl: #{pxToRem(24)};
+    --web-font-size-xxl: #{pxToRem(32)};
+    --web-font-size-xxxl: #{pxToRem(40)};
+    --web-font-size-big: #{pxToRem(48)};
+    --web-font-size-huge: #{pxToRem(56)};
+    --web-font-size-super: #{pxToRem(64)};
+    --web-font-size-giant: #{pxToRem(88)};
 }
 
 :root {
-  --aw-letter-spacing-compressed:  -0.022em;
-  --aw-letter-spacing-squeezed:    -0.01em;
-  --aw-letter-spacing-tighter:     -0.018em;
-  --aw-letter-spacing-tight:       -0.0045em;
-  --aw-letter-spacing-none:        0em;
-  --aw-letter-spacing-loose:       0.08em;
+    --web-line-height-micro: #{pxToRem(14)};
+    --web-line-height-tiny: #{pxToRem(16)};
+    --web-line-height-xs: #{pxToRem(22)};
+    --web-line-height-sm: #{pxToRem(26)};
+    --web-line-height-md: #{pxToRem(28)};
+    --web-line-height-lg: #{pxToRem(34)};
+    --web-line-height-big: #{pxToRem(44)};
+    --web-line-height-xl: #{pxToRem(50)};
+    --web-line-height-xxl: #{pxToRem(56)};
+    --web-line-height-xxxl: #{pxToRem(68)};
+    --web-line-height-xxxxl: #{pxToRem(88)};
 }
 
 :root {
-  --aw-font-weight-air:     100;
-  --aw-font-weight-thin:    200;
-  --aw-font-weight-light:   300;
-  --aw-font-weight-regular: 400;
-  --aw-font-weight-medium:  500;
-  --aw-font-weight-bold:    600;
-  --aw-font-weight-black:   700;
+    --web-letter-spacing-compressed: -0.022em;
+    --web-letter-spacing-squeezed: -0.01em;
+    --web-letter-spacing-tighter: -0.018em;
+    --web-letter-spacing-tight: -0.0045em;
+    --web-letter-spacing-none: 0em;
+    --web-letter-spacing-loose: 0.08em;
+}
+
+:root {
+    --web-font-weight-air: 100;
+    --web-font-weight-thin: 200;
+    --web-font-weight-light: 300;
+    --web-font-weight-regular: 400;
+    --web-font-weight-medium: 500;
+    --web-font-weight-bold: 600;
+    --web-font-weight-black: 700;
 }

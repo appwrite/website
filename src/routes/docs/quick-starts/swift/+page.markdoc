@@ -63,6 +63,7 @@ Follow the wizard and open your new project.
 
 Install the Swift Appwrite SDK by going to **File** > **Add Packages...** and search for the repo url 
 `https://github.com/appwrite/sdk-for-swift` and select `sdk-for-swift`.
+Specify version as `10.0.0` with rule **Up to Next Major Version**.
 
 {% /section %}
 {% section #step-4 step=4 title="Import Appwrite" %}
@@ -76,7 +77,7 @@ Find your project ID in the **Settings** page. Also, click on the **View API Key
 ![Project settings screen](/images/docs/quick-starts/project-id.png)
 {% /only_light %}
 
-Open the file `main.swift` and initialize the Appwrite Client. Replace `<YOUR_PROJECT_ID>` with your project ID and `<YOUR_API_KEY>` with your API key.
+Open the file `main.swift` and initialize the Appwrite Client. Replace `<PROJECT_ID>` with your project ID and `<YOUR_API_KEY>` with your API key.
 
 ```swift
 import Foundation
@@ -84,8 +85,8 @@ import Appwrite
 import AppwriteModels
 
 let client = Client()
-    .setEndpoint("https://cloud.appwrite.io/v1")
-    .setProject("<YOUR_PROJECT_ID>")
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
     .setKey("<YOUR_API_KEY>")
 ```
 

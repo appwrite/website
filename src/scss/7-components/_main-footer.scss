@@ -1,9 +1,9 @@
 @use '../abstract' as *;
 
 .#{$p}-main-footer {
-  display:flex; justify-content:space-between; gap:pxToRem(16); font-size:pxToRem(14);
-  padding-block:pxToRem(24); border-block-start:solid pxToRem(1) hsl(var(--aw-color-border));
-  font-size:var(--aw-font-size-tiny); color:hsl(var(--aw-color-secondary));
+  display:flex; justify-content:space-between; gap:pxToRem(16);
+  padding-block:pxToRem(24); border-block-start:solid pxToRem(1) hsl(var(--web-color-border));
+  font-size:var(--web-font-size-tiny); color:hsl(var(--web-color-secondary));
 
   &-links {
     display:flex; gap:pxToRem(16);

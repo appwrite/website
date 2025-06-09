@@ -1,10 +1,10 @@
 @use '../../abstract' as *;
 .#{$p}-main-body-500 {
-  --p-font-family: var(--aw-font-family-inter);
-  --p-font-size: var(--aw-font-size-small);
-  --p-line-height: var(--aw-line-height-xs);
-  --p-letter-spacing: var(--aw-letter-spacing-tight);
-  --p-font-weight: var(--aw-font-weight-medium);
+  --p-font-family: var(--web-font-family-inter);
+  --p-font-size: var(--web-font-size-small);
+  --p-line-height: var(--web-line-height-xs);
+  --p-letter-spacing: var(--web-letter-spacing-tight);
+  --p-font-weight: var(--web-font-weight-medium);
 
   font-family: var(--p-font-family);
   font-size: var(--p-font-size);
@@ -13,7 +13,7 @@
   font-weight: var(--p-font-weight);
 
   @media #{$break2open} {
-    --p-font-size: var(--aw-font-size-medium);
-    --p-line-height: var(--aw-line-height-sm);
+    --p-font-size: var(--web-font-size-medium);
+    --p-line-height: var(--web-line-height-sm);
   }
 }

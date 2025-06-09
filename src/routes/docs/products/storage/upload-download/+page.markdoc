@@ -15,17 +15,17 @@ When you are in the **Files** tab, you can click **Add File** and select a file 
 You can also upload files programmatically using our SDKs:
 
 {% multicode %}
-  ```js
+  ```client-web
   import { Client, Storage } from "appwrite";
 
   const client = new Client()
-      .setEndpoint('https://cloud.appwrite.io/v1')
-      .setProject('[PROJECT_ID]');
+      .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+      .setProject('<PROJECT_ID>');
 
   const storage = new Storage(client);
 
   const promise = storage.createFile(
-      '[BUCKET_ID]',
+      '<BUCKET_ID>',
       ID.unique(),
       document.getElementById('uploader').files[0]
   );
@@ -37,55 +37,102 @@ You can also upload files programmatically using our SDKs:
   });
   ```
 
-  ```dart
+  ```server-nodejs
+  const sdk = require('node-appwrite');
+  const { InputFile } = require('node-appwrite/file');
+
+  const client = new sdk.Client()
+      .setEndpoint('https://cloud.appwrite.io/v1')
+      .setProject('<PROJECT_ID>')
+      .setKey('<API_KEY>');
+
+  const storage = new sdk.Storage(client);
+
+  // If running in a browser environment, you can use File directly
+  const browserFile = new File(['hello'], 'hello.txt');
+  await storage.createFile('<BUCKET_ID>', ID.unique(), browserFile);
+
+  // If running in Node.js, use InputFile
+  const nodeFile = InputFile.fromPath('/path/to/file.jpg', 'file.jpg');
+  await storage.createFile('<BUCKET_ID>', ID.unique(), nodeFile);
+  ```
+
+  ```client-flutter
   import 'package:appwrite/appwrite.dart';
 
   void main() { // Init SDK
     final client = Client()
-      .setEndpoint('https://cloud.appwrite.io/v1')
-      .setProject('[PROJECT_ID]');
+      .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+      .setProject('<PROJECT_ID>');
 
     final storage = Storage(client);
 
     final file = await storage.createFile(
-      bucketId: '[BUCKET_ID]',
+      bucketId: '<BUCKET_ID>',
       fileId: ID.unique(),
       file: InputFile.fromPath(path: './path-to-files/image.jpg', filename: 'image.jpg'),
     );
   }
   ```
 
-  ```kotlin
+  ```client-android-kotlin
   import io.appwrite.Client
   import io.appwrite.services.Storage
 
   suspend fun main() {
       val client = Client(applicationContext)
-          .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
-          .setProject("[PROJECT_ID]") // Your project ID
+          .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
+          .setProject("<PROJECT_ID>") // Your project ID
 
       val storage = Storage(client)
 
       val file = storage.createFile(
-          bucketId = "[BUCKET_ID]",
+          bucketId = "<BUCKET_ID>",
           fileId = ID.unique(),
           file = File("./path-to-files/image.jpg"),
       )
   }
   ```
 
-  ```swift
+  ```client-react-native
+  import { Client, Storage, ID } from 'react-native-appwrite';
+
+  const client = new Client()
+      .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+      .setProject('<PROJECT_ID>');
+
+  const storage = new Storage(client);
+
+  const promise = storage.createFile(
+      '<BUCKET_ID>',
+      ID.unique(),
+      {
+          name: 'image.jpg',
+          type: 'image/jpeg',
+          size: 1234567,
+          uri: 'file:///path/to/file.jpg',
+      }
+  );
+
+  promise.then(function (response) {
+      console.log(response); // Success
+  }, function (error) {
+      console.log(error); // Failure
+  });
+  ```
+
+  ```client-apple
   import Appwrite
 
   func main() async throws {
       let client = Client()
-        .setEndpoint("https://cloud.appwrite.io/v1")
-        .setProject("[PROJECT_ID]")
+        .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+        .setProject("<PROJECT_ID>")
 
       let storage = Storage(client)
 
       let file = try await storage.createFile(
-          bucketId: "[BUCKET_ID]",
+          bucketId: "<BUCKET_ID>",
           fileId: ID.unique(),
           file: InputFile.fromBuffer(yourByteBuffer,
               filename: "image.jpg",
@@ -99,12 +146,12 @@ You can also upload files programmatically using our SDKs:
   POST /v1/storage/buckets/{bucketId}/files HTTP/1.1
   Content-Type: multipart/form-data; boundary="cec8e8123c05ba25"
   Content-Length: *Length of your entity body in bytes*
-  X-Appwrite-Project: [PROJECT_ID]
+  X-Appwrite-Project: <PROJECT_ID>
 
   --cec8e8123c05ba25
   Content-Disposition: form-data; name="operations"
 
-  { "query": "mutation CreateFile($bucketId: String!, $fileId: String!, $file: InputFile!) { storageCreateFile(bucketId: $bucketId, fileId: $fileId, file: $file) { id } }", "variables": { "bucketId": "[BUCKET_ID]", "fileId": "[FILE_ID]", "file": null } }
+  { "query": "mutation CreateFile($bucketId: String!, $fileId: String!, $file: InputFile!) { storageCreateFile(bucketId: $bucketId, fileId: $fileId, file: $file) { id } }", "variables": { "bucketId": "<BUCKET_ID>", "fileId": "<FILE_ID>", "file": null } }
   --cec8e8123c05ba25
   Content-Disposition: form-data; name="map"
 
@@ -121,12 +168,12 @@ You can also upload files programmatically using our SDKs:
 {% /multicode %}
 
 # Large files {% #large-files %}
-When you are trying to upload any files above 5MB, you will need to upload them in chunks for better reliability and performance. 
-If you're using an Appwrite SDK, this is handled automatically. 
+When you are trying to upload any files above 5MB, you will need to upload them in chunks for better reliability and performance.
+If you're using an Appwrite SDK, this is handled automatically.
 If you're not using an SDK, you can [learn more about REST API file handling](/docs/apis/rest#files).
 
 # InputFile {% #input-file %}
-Every language and platform handles file inputs differently. This section documents the expected input type of each SDK. Where applicable, Appwrite provides an `InputFile` class to accept multiple file sources, like paths, buffers, streams, or plain text.
+Every language and platform handles file inputs differently. This section documents the expected input type of each SDK. Where applicable, Appwrite provides an `InputFile` class to accept multiple file sources, like paths, buffers, or plain text.
 
 # Client SDKs {% #client-sdks %}
 
@@ -138,7 +185,7 @@ For example, for the input tag `<input type="file" id="uploader">`, you would ca
 
 ```js
 const promise = storage.createFile(
-    '[BUCKET_ID]',
+    '<BUCKET_ID>',
     ID.unique(),
     document.getElementById('uploader').files[0]
 );
@@ -176,22 +223,78 @@ The Appwrite Apple SDK expects an `InputFile` class for file inputs.
 | `InputFile.fromData(_ data: Data, filename: String, mimeType: String)` | Used to upload files from a [Data](https://developer.apple.com/documentation/foundation/data) object. Specify the file [MIME type](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types) using the `mimeType` param. |
 | `InputFile.fromBuffer(_ buffer: ByteBuffer, filename: String, mimeType: String)` | Used to upload files from a [NIO Buffer](https://swiftinit.org/reference/swift-nio/niocore/bytebuffer) object. Specify the file [MIME type](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types) using the `mimeType` param. |
 {% /tabsitem %}
+
+{% tabsitem #react-native title="React Native" %}
+The Appwrite React Native SDK expects a file object with the following properties for file inputs:
+
+| Property | Description |
+| -------- | ----------- |
+| `name` | The name of the file. |
+| `type` | The MIME type of the file. |
+| `size` | The size of the file in bytes. |
+| `uri` | The URI of the file on the device. |
+
+This object structure aligns with what is typically returned from image picker libraries such as `react-native-image-picker`:
+
+```js
+// Example with react-native-image-picker
+import { launchImageLibrary } from 'react-native-image-picker';
+
+const pickImage = async () => {
+  const result = await launchImageLibrary({
+    mediaType: 'photo',
+  });
+
+  if (result.assets && result.assets[0]) {
+    const fileInfo = result.assets[0];
+
+    return {
+      name: fileInfo.fileName,
+      type: fileInfo.type,
+      size: fileInfo.fileSize,
+      uri: fileInfo.uri,
+    };
+  }
+};
+```
+
+You can also use the file picker or document picker from Expo:
+
+```js
+// Example with expo-document-picker
+import * as DocumentPicker from 'expo-document-picker';
+
+const pickDocument = async () => {
+  const result = await DocumentPicker.getDocumentAsync();
+
+  if (result.assets && result.assets[0]) {
+    return {
+      name: result.assets[0].name,
+      type: result.assets[0].mimeType,
+      size: result.assets[0].size,
+      uri: result.assets[0].uri,
+    };
+  }
+};
+```
+{% /tabsitem %}
 {% /tabs %}
 
 # Server SDKs {% #server-sdks %}
 
 {% tabs %}
 {% tabsitem #nodejs title="Node.js" %}
-The Appwrite NodeJS SDK expects an `InputFile` class for file inputs.
+In browser environments, you can use the `File` object directly. For Node.js environments, import the `InputFile` class from 'node-appwrite/file'.
+
+When using `InputFile`, the following methods are available:
 
 | Method                                     | Description                                                  |
 | ------------------------------------------ | ------------------------------------------------------------ |
 | `InputFile.fromPath(filePath, filename)`     | Used to upload files from a provided path.                  |
-| `InputFile.fromBuffer(buffer, filename)`     | Used to upload files from a [Buffer](https://nodejs.org/api/buffer.html#buffer) object. |
-| `InputFile.fromBlob(blob, filename)`         | Used to upload files from a [Blob](https://developer.mozilla.org/en-US/docs/Web/API/Blob) object. |
-| `InputFile.fromStream(stream, filename, size)` | Used to upload files from a [Readable Stream](https://nodejs.org/api/stream.html#readable-streams) object. |
+| `InputFile.fromBuffer(buffer, filename)`     | Used to upload files from a [Buffer](https://nodejs.org/api/buffer.html#buffer) or [Blob](https://developer.mozilla.org/en-US/docs/Web/API/Blob) object. |
 | `InputFile.fromPlainText(content, filename)`  | Used to upload files in plain text. Expects a string encoded in UTF-8. |
 {% /tabsitem %}
+
 {% tabsitem #php title="PHP" %}
 
 The Appwrite PHP SDK expects an `InputFile` class for file inputs.
@@ -209,7 +312,7 @@ The Appwrite Python SDK expects an `InputFile` class for file inputs.
 | ------------------------------------------ | ------------------------------------------------------------ |
 | `InputFile.from_path(path)`                | Used to upload files from a provided path.                  |
 | `InputFile.from_bytes(bytes)`              | Used to upload files from an array of bytes.               |
-{% /tabsitem %} 
+{% /tabsitem %}
 
 {% tabsitem #ruby title="Ruby" %}
 The Appwrite Ruby SDK expects an `InputFile` class for file inputs.
@@ -262,22 +365,21 @@ The Appwrite Swift SDK expects an `InputFile` class for file inputs.
 | `InputFile.fromBuffer(_ buffer: ByteBuffer, filename: String, mimeType: String)` | Used to upload files from a [NIO Buffer](https://swiftinit.org/reference/swift-nio/niocore/bytebuffer) object. Specify the file [MIME type](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types) using the `mimeType` param. |
 {% /tabsitem %}
 
-{% tabsitem #dotnet title=".Net" %}
+{% tabsitem #dotnet title=".NET" %}
 The Appwrite .NET SDK expects an `InputFile` class for file inputs.
 
 | Method                                     | Description                                                  |
 | ------------------------------------------ | ------------------------------------------------------------ |
 | `InputFile.FromPath(string path)`           | Used to upload files from a provided path.                  |
-| `InputFile.FromStream(Stream stream, string filename, string mimeType)` | Used to upload files from a [Stream](https://learn.microsoft.com/en-us/dotnet/api/system.io.stream?view=net-7.0) object. Specify the file [MIME type](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types) using the `mimeType` param. |
 | `InputFile.FromBytes(byte[] bytes, string filename, string mimeType)` | Used to upload files from an array of bytes. Specify the file [MIME type](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types) using the `mimeType` param. |
 {% /tabsitem %}
 {% /tabs %}
 
 # Get file {% #get-file %}
-To get a metadata about a.file, use the `getFile` method.
+To get a metadata about a file, use the `getFile` method.
 
 {% multicode %}
-```js
+```client-web
 import { Client, Storage } from "appwrite";
 
 const client = new Client();
@@ -285,11 +387,11 @@ const client = new Client();
 const storage = new Storage(client);
 
 client
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('5df5acd0d48c2') // Your project ID
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('<PROJECT_ID>') // Your project ID
 ;
 
-const promise = storage.getFile('[BUCKET_ID]', '[FILE_ID]');
+const promise = storage.getFile('<BUCKET_ID>', '<FILE_ID>');
 
 promise.then(function (response) {
     console.log(response); // Success
@@ -297,7 +399,7 @@ promise.then(function (response) {
     console.log(error); // Failure
 });
 ```
-```dart
+```client-flutter
 import 'package:appwrite/appwrite.dart';
 
 void main() { // Init SDK
@@ -305,13 +407,13 @@ void main() { // Init SDK
   Storage storage = Storage(client);
 
   client
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('5df5acd0d48c2') // Your project ID
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('<PROJECT_ID>') // Your project ID
   ;
   // downloading file
   Future result = storage.getFile(
-    bucketId: '[BUCKET_ID]',
-    fileId: '[FILE_ID]',
+    bucketId: '<BUCKET_ID>',
+    fileId: '<FILE_ID>',
   ).then((bytes) {
     final file = File('path_to_file/filename.ext');
     file.writeAsBytesSync(bytes)
@@ -323,8 +425,8 @@ void main() { // Init SDK
 //displaying image preview
 FutureBuilder(
   future: storage.getFile(
-    bucketId: '[BUCKET_ID]',
-    fileId: '[FILE_ID]',
+    bucketId: '<BUCKET_ID>',
+    fileId: '<FILE_ID>',
   ), //works for both public file and private file, for private files you need to be logged in
   builder: (context, snapshot) {
     return snapshot.hasData && snapshot.data != null
@@ -335,23 +437,25 @@ FutureBuilder(
   },
 );
 ```
-```swift
+```client-apple
 import Appwrite
 
 func main() async throws {
     let client = Client()
-      .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
-      .setProject("5df5acd0d48c2") // Your project ID
-    let storage = Storage(client)
-    let byteBuffer = try await storage.getFile(
-        bucketId: "[BUCKET_ID]",
-        fileId: "[FILE_ID]"
-    )
+      .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+      .setProject("<PROJECT_ID>")
 
-    print(String(describing: byteBuffer)
+      let storage = Storage(client)
+
+      let byteBuffer = try await storage.getFile(
+          bucketId: "<BUCKET_ID>",
+          fileId: "<FILE_ID>"
+      )
+
+      print(String(describing: byteBuffer)
 }
 ```
-```kotlin
+```client-android-kotlin
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import kotlinx.coroutines.GlobalScope
@@ -365,20 +469,35 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val client = Client(applicationContext)
-            .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
-            .setProject("5df5acd0d48c2") // Your project ID
+            .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
+            .setProject("<PROJECT_ID>") // Your project ID
 
         val storage = Storage(client)
 
-        GlobalScope.launch {
-            val result = storage.getFile(
-                bucketId = "[BUCKET_ID]",
-                fileId = "[FILE_ID]"
-            )
-            println(result); // Resource URL        
-        }
+        val result = storage.getFile(
+            bucketId = "<BUCKET_ID>",
+            fileId = "<FILE_ID>"
+        )
+        println(result); // Resource URL
     }
 }
+```
+```client-react-native
+import { Client, Storage } from 'react-native-appwrite';
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>');
+
+const storage = new Storage(client);
+
+const promise = storage.getFile('<BUCKET_ID>', '<FILE_ID>');
+
+promise.then(function (response) {
+    console.log(response); // Success
+}, function (error) {
+    console.log(error); // Failure
+});
 ```
 {% /multicode %}
 
@@ -386,7 +505,7 @@ class MainActivity : AppCompatActivity() {
 To download a file, use the `getFileDownload` method.
 
 {% multicode %}
-```js
+```client-web
 import { Client, Storage } from "appwrite";
 
 const client = new Client();
@@ -394,15 +513,15 @@ const client = new Client();
 const storage = new Storage(client);
 
 client
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('5df5acd0d48c2') // Your project ID
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('<PROJECT_ID>') // Your project ID
 ;
 
-const result = storage.getFileDownload('[BUCKET_ID]', '[FILE_ID]');
+const result = storage.getFileDownload('<BUCKET_ID>', '<FILE_ID>');
 
 console.log(result); // Resource URL
 ```
-```dart
+```client-flutter
 import 'package:appwrite/appwrite.dart';
 
 void main() { // Init SDK
@@ -410,13 +529,13 @@ void main() { // Init SDK
   Storage storage = Storage(client);
 
   client
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('5df5acd0d48c2') // Your project ID
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('<PROJECT_ID>') // Your project ID
   ;
   // downloading file
   Future result = storage.getFileDownload(
-    bucketId: '[BUCKET_ID]',
-    fileId: '[FILE_ID]',
+    bucketId: '<BUCKET_ID>',
+    fileId: '<FILE_ID>',
   ).then((bytes) {
     final file = File('path_to_file/filename.ext');
     file.writeAsBytesSync(bytes)
@@ -428,8 +547,8 @@ void main() { // Init SDK
 //displaying image preview
 FutureBuilder(
   future: storage.getFileDownload(
-    bucketId: '[BUCKET_ID]',
-    fileId: '[FILE_ID]',
+    bucketId: '<BUCKET_ID>',
+    fileId: '<FILE_ID>',
   ), //works for both public file and private file, for private files you need to be logged in
   builder: (context, snapshot) {
     return snapshot.hasData && snapshot.data != null
@@ -440,23 +559,23 @@ FutureBuilder(
   },
 );
 ```
-```swift
+```client-apple
 import Appwrite
 
 func main() async throws {
     let client = Client()
-      .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
-      .setProject("5df5acd0d48c2") // Your project ID
+      .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
+      .setProject("<PROJECT_ID>") // Your project ID
     let storage = Storage(client)
     let byteBuffer = try await storage.getFileDownload(
-        bucketId: "[BUCKET_ID]",
-        fileId: "[FILE_ID]"
+        bucketId: "<BUCKET_ID>",
+        fileId: "<FILE_ID>"
     )
 
-    print(String(describing: byteBuffer)
+    print(String(describing: byteBuffer))
 }
 ```
-```kotlin
+```client-android-kotlin
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import kotlinx.coroutines.GlobalScope
@@ -470,20 +589,31 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val client = Client(applicationContext)
-            .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
-            .setProject("5df5acd0d48c2") // Your project ID
+            .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
+            .setProject("<PROJECT_ID>") // Your project ID
 
         val storage = Storage(client)
 
-        GlobalScope.launch {
-            val result = storage.getFileDownload(
-                bucketId = "[BUCKET_ID]",
-                fileId = "[FILE_ID]"
-            )
-            println(result); // Resource URL        
-        }
+        val result = storage.getFileDownload(
+            bucketId = "<BUCKET_ID>",
+            fileId = "<FILE_ID>"
+        )
+        println(result); // Resource URL
     }
 }
+```
+```client-react-native
+import { Client, Storage } from 'react-native-appwrite';
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>');
+
+const storage = new Storage(client);
+
+const result = storage.getFileDownload('<BUCKET_ID>', '<FILE_ID>');
+
+console.log(result); // Resource URL
 ```
 {% /multicode %}
 
@@ -491,7 +621,7 @@ class MainActivity : AppCompatActivity() {
 To get a file preview image , use the `getFilePreview` method.
 
 {% multicode %}
-```js
+```client-web
 import { Client, Storage } from "appwrite";
 
 const client = new Client();
@@ -499,15 +629,15 @@ const client = new Client();
 const storage = new Storage(client);
 
 client
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('5df5acd0d48c2') // Your project ID
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('<PROJECT_ID>') // Your project ID
 ;
 
-const result = storage.getFilePreview('[BUCKET_ID]', '[FILE_ID]');
+const result = storage.getFilePreview('<BUCKET_ID>', '<FILE_ID>');
 
 console.log(result); // Resource URL
 ```
-```dart
+```client-flutter
 import 'package:appwrite/appwrite.dart';
 
 void main() { // Init SDK
@@ -515,13 +645,13 @@ void main() { // Init SDK
   Storage storage = Storage(client);
 
   client
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('5df5acd0d48c2') // Your project ID
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('<PROJECT_ID>') // Your project ID
   ;
   // downloading file
   Future result = storage.getFilePreview(
-    bucketId: '[BUCKET_ID]',
-    fileId: '[FILE_ID]',
+    bucketId: '<BUCKET_ID>',
+    fileId: '<FILE_ID>',
   ).then((bytes) {
     final file = File('path_to_file/filename.ext');
     file.writeAsBytesSync(bytes)
@@ -533,8 +663,8 @@ void main() { // Init SDK
 //displaying image preview
 FutureBuilder(
   future: storage.getFilePreview(
-    bucketId: '[BUCKET_ID]',
-    fileId: '[FILE_ID]',
+    bucketId: '<BUCKET_ID>',
+    fileId: '<FILE_ID>',
   ), //works for both public file and private file, for private files you need to be logged in
   builder: (context, snapshot) {
     return snapshot.hasData && snapshot.data != null
@@ -545,23 +675,23 @@ FutureBuilder(
   },
 );
 ```
-```swift
+```client-apple
 import Appwrite
 
 func main() async throws {
     let client = Client()
-      .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
-      .setProject("5df5acd0d48c2") // Your project ID
+      .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
+      .setProject("<PROJECT_ID>") // Your project ID
     let storage = Storage(client)
     let byteBuffer = try await storage.getFilePreview(
-        bucketId: "[BUCKET_ID]",
-        fileId: "[FILE_ID]"
+        bucketId: "<BUCKET_ID>",
+        fileId: "<FILE_ID>"
     )
 
-    print(String(describing: byteBuffer)
+    print(String(describing: byteBuffer))
 }
 ```
-```kotlin
+```client-android-kotlin
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import kotlinx.coroutines.GlobalScope
@@ -575,20 +705,38 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val client = Client(applicationContext)
-            .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
-            .setProject("5df5acd0d48c2") // Your project ID
+            .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
+            .setProject("<PROJECT_ID>") // Your project ID
 
         val storage = Storage(client)
 
-        GlobalScope.launch {
-            val result = storage.getFilePreview(
-                bucketId = "[BUCKET_ID]",
-                fileId = "[FILE_ID]"
-            )
-            println(result); // Resource URL        
-        }
+        val result = storage.getFilePreview(
+            bucketId = "<BUCKET_ID>",
+            fileId = "<FILE_ID>"
+        )
+        println(result); // Resource URL
     }
 }
+```
+```client-react-native
+import { Client, Storage, ImageGravity } from 'react-native-appwrite';
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>');
+
+const storage = new Storage(client);
+
+const result = storage.getFilePreview(
+    '<BUCKET_ID>',
+    '<FILE_ID>',
+    200,                    // width
+    200,                    // height
+    ImageGravity.Center,    // gravity
+    100                     // quality
+);
+
+console.log(result); // Resource URL
 ```
 {% /multicode %}
 
@@ -597,7 +745,7 @@ class MainActivity : AppCompatActivity() {
 To view a file, use the `getFileView` method.
 
 {% multicode %}
-```js
+```client-web
 import { Client, Storage } from "appwrite";
 
 const client = new Client();
@@ -605,15 +753,15 @@ const client = new Client();
 const storage = new Storage(client);
 
 client
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('5df5acd0d48c2') // Your project ID
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('<PROJECT_ID>') // Your project ID
 ;
 
-const result = storage.getFileView('[BUCKET_ID]', '[FILE_ID]');
+const result = storage.getFileView('<BUCKET_ID>', '<FILE_ID>');
 
 console.log(result); // Resource URL
 ```
-```dart
+```client-flutter
 import 'package:appwrite/appwrite.dart';
 
 void main() { // Init SDK
@@ -621,13 +769,13 @@ void main() { // Init SDK
   Storage storage = Storage(client);
 
   client
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('5df5acd0d48c2') // Your project ID
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('<PROJECT_ID>') // Your project ID
   ;
   // downloading file
   Future result = storage.getFileView(
-    bucketId: '[BUCKET_ID]',
-    fileId: '[FILE_ID]',
+    bucketId: '<BUCKET_ID>',
+    fileId: '<FILE_ID>',
   ).then((bytes) {
     final file = File('path_to_file/filename.ext');
     file.writeAsBytesSync(bytes)
@@ -639,8 +787,8 @@ void main() { // Init SDK
 //displaying image preview
 FutureBuilder(
   future: storage.getFileView(
-    bucketId: '[BUCKET_ID]',
-    fileId: '[FILE_ID]',
+    bucketId: '<BUCKET_ID>',
+    fileId: '<FILE_ID>',
   ), //works for both public file and private file, for private files you need to be logged in
   builder: (context, snapshot) {
     return snapshot.hasData && snapshot.data != null
@@ -651,23 +799,23 @@ FutureBuilder(
   },
 );
 ```
-```swift
+```client-apple
 import Appwrite
 
 func main() async throws {
     let client = Client()
-      .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
-      .setProject("5df5acd0d48c2") // Your project ID
+      .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
+      .setProject("<PROJECT_ID>") // Your project ID
     let storage = Storage(client)
     let byteBuffer = try await storage.getFileView(
-        bucketId: "[BUCKET_ID]",
-        fileId: "[FILE_ID]"
+        bucketId: "<BUCKET_ID>",
+        fileId: "<FILE_ID>"
     )
 
-    print(String(describing: byteBuffer)
+    print(String(describing: byteBuffer))
 }
 ```
-```kotlin
+```client-android-kotlin
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import kotlinx.coroutines.GlobalScope
@@ -681,19 +829,30 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val client = Client(applicationContext)
-            .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
-            .setProject("5df5acd0d48c2") // Your project ID
+            .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
+            .setProject("<PROJECT_ID>") // Your project ID
 
         val storage = Storage(client)
 
-        GlobalScope.launch {
-            val result = storage.getFileView(
-                bucketId = "[BUCKET_ID]",
-                fileId = "[FILE_ID]"
-            )
-            println(result); // Resource URL        
-        }
+        val result = storage.getFileView(
+            bucketId = "<BUCKET_ID>",
+            fileId = "<FILE_ID>"
+        )
+        println(result); // Resource URL
     }
 }
+```
+```client-react-native
+import { Client, Storage } from 'react-native-appwrite';
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>');
+
+const storage = new Storage(client);
+
+const result = storage.getFileView('<BUCKET_ID>', '<FILE_ID>');
+
+console.log(result); // Resource URL
 ```
 {% /multicode %}

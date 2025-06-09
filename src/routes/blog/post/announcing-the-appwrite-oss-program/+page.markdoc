@@ -6,20 +6,20 @@ date: 2023-12-28
 cover: /images/blog/OSS-program.png
 timeToRead: 3
 author: laura-du-ry
-category: OSS
+category: open-source, announcement 
 ---
 
-### Continued support for OSS maintainers
+# Continued support for OSS maintainers
 
 After successfully completing the OSS Fund, we’re excited to announce our newest initiative to support the open-source community and its maintainers, the Appwrite OSS program. 
 
 The OSS program is a dedicated and exclusive program that invites open-source maintainers to become Appwrite Pro, free of charge.
 
-### Become Appwrite Pro with the OSS Program
+# Become Appwrite Pro with the OSS Program
 
 The OSS Program, similar to the OSS Fund, aims to support OSS projects and their maintainers by alleviating financial burdens and promoting growth. By joining, you will receive a free Appwrite Pro subscription and benefit from all its resources and support. This enables you to use Appwrite Pro while pursuing your dream projects without worrying about potential costs and get premimum support. The program has no fixed end date but will be reviewed annually to ensure optimal mutual support.
 
-### OSS and Appwrite Criteria
+# OSS and Appwrite Criteria
 
 To apply for this program, you must adhere to the official criteria for having an open-source project, which is integral to being an acknowledged open-source maintainer. In addition, we have Appwrite criteria that will apply. You will need to provide the following information:
 
@@ -29,10 +29,10 @@ To apply for this program, you must adhere to the official criteria for having a
 - Have an active project that has at least 15 contributions and 100 stars
 - Have a nonprofit or pre-revenue project
 
-### Your application
+# Your application
 
-To apply, you can simply contact us on our [contact page](https://appwrite.io/contact-us). Please add `OSS Program` to the subject line and tell us why you would like to apply in the comment section. Please also share a link to your project's repository. We will review your request as soon as possible and get back to you to go over your application. Please note that Appwrite holds the sole discretion on deciding whether to accept projects.
+To apply, you can simply fill our the [OSS contact](/oss-program) form with your details. We will review your request as soon as possible and get back to you to go over your application. Please note that Appwrite holds the sole discretion on deciding whether to accept projects.
 
-### Just the beginning
+# Just the beginning
 
 At Appwrite, we strongly believe in helping OSS maintainers, and we are humbled to have the opportunity and privilege to contribute to the growth of developers. We’re excited to see many OSS projects join the program. This is only the beginning. As we grow, so shall our support with more funds, more knowledge, and more time. The future is bright. The future is open source.

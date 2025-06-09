@@ -17,7 +17,13 @@ export const getAllChangelogEntries = async () => {
         const slug = filepath.replace(/\.markdoc$/, '').replace('./(entries)/', '');
         const href = `/changelog/entry/${slug}`;
 
-        return { ...frontmatter, component: typedComponent.default, filepath, href, slug };
+        return {
+            ...frontmatter,
+            component: typedComponent.default,
+            filepath,
+            href,
+            slug
+        };
     });
     entries = entries.filter(({ filepath }) => {
         return filepath.includes('(entries)');
@@ -30,7 +36,7 @@ export const getAllChangelogEntries = async () => {
     });
 };
 
-export const CHANGELOG_DEPENDENCY = 'changelog';
+export const CHANGELOG_DEPENDENCY = 'dependency:changelog';
 
 export const CHANGELOG_KEY = 'changelog';
 

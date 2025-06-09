@@ -2,9 +2,13 @@
     export type Tutorial = {
         title: string;
         framework?: string;
+        category?: string;
         step: number;
         href: string;
         draft?: boolean;
+        difficulty?: string;
+        readtime?: string;
+        back: string;
     };
 </script>
 
@@ -20,11 +24,9 @@
 
     export let title: string;
     export let description: string;
-    export let difficulty: string;
-    export let readtime: string;
     export let step: number;
-    export let back: string;
     export let date: string;
+    export let back: string;
 
     setContext<LayoutContext>('headings', writable({}));
 
@@ -50,7 +52,8 @@
             title: heading.title,
             href: `#${id}`,
             step: heading.step,
-            selected: selected === id
+            selected: selected === id,
+            level: heading.level
         });
         return carry;
     }, []);
@@ -64,7 +67,7 @@
     <title>{seoTitle}</title>
     <meta property="og:title" content={seoTitle} />
     <meta name="twitter:title" content={seoTitle} />
-    <!-- Desscription -->
+    <!-- Description -->
     <meta name="description" content={description} />
     <meta property="og:description" content={description} />
     <meta name="twitter:description" content={description} />
@@ -76,15 +79,7 @@
     <meta name="twitter:card" content="summary_large_image" />
 </svelte:head>
 
-<DocsTutorial {title} {back} {toc} {tutorials} {date} currentStep={step}>
-    <svelte:fragment slot="metadata">
-        {#if difficulty}
-            <li>{difficulty}</li>
-        {/if}
-        {#if readtime}
-            <li>{readtime} min</li>
-        {/if}
-    </svelte:fragment>
+<DocsTutorial {toc} {back} {tutorials} {date} currentStep={step}>
     <slot />
 </DocsTutorial>
 <MainFooter variant="docs" />

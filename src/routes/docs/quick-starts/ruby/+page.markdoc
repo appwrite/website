@@ -51,10 +51,10 @@ bundle init
 {% /section %}
 {% section #step-3 step=3 title="Install Appwrite" %}
 
-Install the Ruby Appwrite SDK.
+Install the Ruby Appwrite SDK. Make sure to lock your SDK to version `10.0.0` to avoid breaking changes.
 
 ```sh
-bundle add appwrite
+bundle add appwrite 
 ```
 {% /section %}
 {% section #step-4 step=4 title="Import Appwrite" %}
@@ -68,7 +68,7 @@ Find your project ID in the **Settings** page. Also, click on the **View API Key
 ![Project settings screen](/images/docs/quick-starts/project-id.png)
 {% /only_light %}
 
-Create a new file `app.rb` and initialize the Appwrite Client. Replace `<YOUR_PROJECT_ID>` with your project ID and `<YOUR_API_KEY>` with your API key.
+Create a new file `app.rb` and initialize the Appwrite Client. Replace `<PROJECT_ID>` with your project ID and `<YOUR_API_KEY>` with your API key.
 
 ```ruby
 # Initialize the Appwrite client
@@ -79,8 +79,8 @@ include Appwrite
 client = Client.new()
 
 client
-    .set_endpoint('https://cloud.appwrite.io/v1') # Your Appwrite Endpoint
-    .set_project('<YOUR_PROJECT_ID>') # Your project ID
+    .set_endpoint('https://<REGION>.cloud.appwrite.io/v1') # Your Appwrite Endpoint
+    .set_project('<PROJECT_ID>') # Your project ID
     .set_key('<YOUR_API_KEY>') # Your secret API key
 ```
 

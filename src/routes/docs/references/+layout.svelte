@@ -1,14 +1,22 @@
 <script lang="ts">
-    import { page } from '$app/stores';
+    import { page } from '$app/state';
     import Docs from '$lib/layouts/Docs.svelte';
     import Sidebar, { type NavParent, type NavTree } from '$lib/layouts/Sidebar.svelte';
     import { preferredPlatform, preferredVersion } from '$lib/utils/references';
 
-    $: expandable = !!$page.url.pathname.match(/\/docs\/references\/.*?\/.*?\/.*?\/?/);
+    $: expandable = !!page.url.pathname.match(
+        /\/docs\/references\/.*?\/(client|server).*?\/.*?\/?/
+    );
 
-    $: prefix = `/docs/references/${$preferredVersion ?? $page.params?.version ?? 'cloud'}/${
-        $preferredPlatform ?? $page.params?.platform ?? 'client-web'
-    }`;
+    $: platform = $preferredPlatform ?? page.params?.platform ?? 'client-web';
+
+    /* correct platform prefix for references page */
+    $: resolvedPlatformPrefix = /^server-|^client-/.test(platform)
+        ? platform
+        : `server-${platform}`;
+
+    $: prefix = `/docs/references/${$preferredVersion ?? page.params?.version ?? 'cloud'}/${resolvedPlatformPrefix}`;
+
     $: navigation = [
         {
             label: 'Getting started',
@@ -17,6 +25,11 @@
                     label: 'Overview',
                     href: '/docs/references',
                     icon: 'icon-view-grid'
+                },
+                {
+                    label: 'Quick start',
+                    href: '/docs/references/quick-start',
+                    icon: 'icon-play'
                 }
             ]
         },
@@ -44,6 +57,11 @@
                     href: `${prefix}/databases`
                 },
                 {
+                    label: 'Sites',
+                    icon: 'icon-globe-alt',
+                    href: `${prefix}/sites`
+                },
+                {
                     label: 'Storage',
                     icon: 'icon-folder',
                     href: `${prefix}/storage`
@@ -52,6 +70,16 @@
                     label: 'Functions',
                     icon: 'icon-lightning-bolt',
                     href: `${prefix}/functions`
+                },
+                {
+                    label: 'Messaging',
+                    icon: 'icon-send',
+                    href: `${prefix}/messaging`
+                },
+                {
+                    label: 'Tokens',
+                    icon: 'icon-key',
+                    href: `${prefix}/tokens`
                 },
                 {
                     label: 'Localization',

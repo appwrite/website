@@ -3,12 +3,12 @@
 /* based on Pink Design */
 [type="checkbox"],
 [type="radio"] {
-  --p-icon-color-default:     var(--aw-color-greyscale-100);
-  --p-bg-color-default:       var(--aw-color-greyscale-100);
-  --p-border-color-default:   var(--aw-color-greyscale-100);
+  --p-icon-color-default:     var(--web-color-greyscale-100);
+  --p-bg-color-default:       var(--web-color-greyscale-100);
+  --p-border-color-default:   var(--web-color-greyscale-100);
 
-  --p-bg-color-checked: var(--aw-color-greyscale-750);
-  --p-border-color-checked: var(--aw-color-greyscale-750);
+  --p-bg-color-checked: var(--web-color-greyscale-750);
+  --p-border-color-checked: var(--web-color-greyscale-750);
 
   &:where(.is-checked)   {
     --p-bg-color:     var(--p-bg-color-checked);
@@ -17,11 +17,11 @@
 
   /* Same here to be sure Pink can't override dark-mode */
   #{$theme-dark} & {
-    --p-icon-color-default:     var(--aw-color-greyscale-100);
-    --p-bg-color-default:       var(--aw-color-greyscale-100);
-    --p-border-color-default:   var(--aw-color-greyscale-100);
+    --p-icon-color-default:     var(--web-color-greyscale-100);
+    --p-bg-color-default:       var(--web-color-greyscale-100);
+    --p-border-color-default:   var(--web-color-greyscale-100);
 
-    --p-bg-color-checked: var(--aw-color-greyscale-750);
-    --p-border-color-checked: var(--aw-color-greyscale-750);
+    --p-bg-color-checked: var(--web-color-greyscale-750);
+    --p-border-color-checked: var(--web-color-greyscale-750);
   }
 }

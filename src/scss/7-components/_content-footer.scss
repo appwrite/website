@@ -2,7 +2,7 @@
 
 .#{$p}-content-footer {
   padding-block-start: pxToRem(32);
-  border-block-start: solid pxToRem(1) hsl(var(--aw-color-border));
+  border-block-start: solid pxToRem(1) hsl(var(--web-color-border));
   &-header {
     display:flex; justify-content:space-between;
     &-start { display:flex; gap:pxToRem(16); }

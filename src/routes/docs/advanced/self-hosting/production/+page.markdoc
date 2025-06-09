@@ -15,7 +15,7 @@ You **must** set `_APP_OPENSSL_KEY_V1` immediately after installation of a produ
 Make sure to keep this key in a safe place and never make it publicly accessible.
 
 {% info title="Best practice" %}
-You should always prefer **HTTPS** over HTTP in production environments. This keeps your APIs secure and prevents any redirects from interfering with your requests. 
+You should always prefer **HTTPS** over HTTP in production environments. This keeps your APIs secure and prevents any redirects from interfering with your requests.
 You can force the use of HTTPS with the [_APP_OPTIONS_FORCE_HTTPS](/docs/advanced/self-hosting/environment-variables) environment variable.
 {% /info %}
 
@@ -30,7 +30,7 @@ Appwrite provides three different methods to limit access to your Appwrite Conso
 By default, only the first user can sign up on the Appwrite instance's dashboard. All other users must be added to the dashboard through invitation.
 
 {% arrow_link href="/docs/advanced/self-hosting/environment-variables" %}
-Learn more about environment variables 
+Learn more about environment variables
 {% /arrow_link %}
 
 # Scaling {% #scaling %}
@@ -41,7 +41,7 @@ Each Appwrite instance is composed of many containers, each with its unique job.
 
 If you decide to set up a load balancer to scale a container, make sure **all** communication are routed through the load balancer and not directly to the replicated containers. You can configure communicating between Appwrite containers using Docker environment variables.
 
-Three Appwrite containers are stateful. The MariaDB, Redis, and InfluxDB containers are used for storing data, cache and pub/sub messaging, and usage stats, respectively. To scale these containers, set up a standard cluster (same as you would with any other app using these technologies) according to your needs and performance.
+Two Appwrite containers are stateful. The MariaDB and Redis containers are used for storing data, cache and pub/sub messaging, and usage stats, respectively. To scale these containers, set up a standard cluster (same as you would with any other app using these technologies) according to your needs and performance.
 
 # Rate limits {% #rate-limits %}
 
@@ -50,7 +50,7 @@ If you disabled rate limits during development, make sure you re-enable them whe
 Rate limits are an important mechanism to protect your app. Without rate limits, malicious actors can spam your APIs to perform [denial-of-service type attacks](https://en.wikipedia.org/wiki/Denial-of-service_attack) or brute-force user passwords.
 
 {% arrow_link href="/docs/advanced/self-hosting/environment-variables" %}
-Learn more about environment variables 
+Learn more about environment variables
 {% /arrow_link %}
 
 # Emails {% #emails %}
@@ -64,26 +64,28 @@ You can [change Appwrite's SMTP settings](/docs/advanced/self-hosting/email) and
 Backups are highly recommended for any production environment. Currently, there is no built-in script we provide to do this automatically. You must do the following to back up your Appwrite server data, stats, and files.
 
 1. Create a script to back up and restore the databases holding your Appwrite schemas. Note that trying to back up the database containers using a docker volume backup can result in a corrupted copy of your data. We recommend using the databases' built-in tools for this.
-2. Create a script to back up and restore your InfluxDB stats. If you don't care much about your server stats, you can skip this.
-3. Create a script to back up Appwrite storage volume. There are many online resources explaining different ways to backup a docker volume. When running on multiple servers, it is very recommended to use an attachable storage point. Some cloud providers offer integrated backups to such attachable mount like GCP, AWS, DigitalOcean, and the list continues.
-4. Create a script to back up `.env` and `docker-compose.yml`, which holds secrets and server configuration information.
+1. Create a script to back up Appwrite storage volume. There are many online resources explaining different ways to backup a docker volume. When running on multiple servers, it is very recommended to use an attachable storage point. Some cloud providers offer integrated backups to such attachable mount like GCP, AWS, DigitalOcean, and the list continues.
+1. Create a script to back up `.env` and `docker-compose.yml`, which holds secrets and server configuration information.
 
 {% info title="Docker volume backups" %}
-Do not back up any stateful container using a docker volume backup, such as databases, Redis, or InfluxDB containers. This can result in corruption and **permanent data loss**.
+Do not back up any stateful container using a docker volume backup, such as databases or Redis containers. This can result in corruption and **permanent data loss**.
 {% /info %}
 
 # Errors {% #errors %}
 
 By default, your Appwrite installation comes with error reporting turned off. You can [enable dev mode](/docs/advanced/self-hosting/debug#development-mode) to get access to more verbose error logs and stack traces.
 
-In production, it is highly recommended to turn error reporting off. To do so, make sure the Appwrite container environment variable `_APP_ENV` value from is set to `production` and not `development`.
-
-To monitor errors in production, add a third party monitoring service by setting the `_APP_LOGGING_PROVIDER` and `_APP_LOGGING_CONFIG`.
-
 In production, it is highly recommended to turn error reporting off. To do so, make sure the Appwrite container environment variable `_APP_ENV` is set to `production` and not `development`.
 
+To monitor errors in production, configure the `_APP_LOGGING_CONFIG` environment variable with your provider's DSN. The supported DSN formats are:
+
+- Sentry: `sentry://PUBLIC_KEY@HOST:PORT/PROJECT_ID`
+- LogOwl: `logowl://SERVICE_TICKET@SERVICE_HOST/`
+- Raygun: `raygun://RAYGUN_API_KEY/`
+- AppSignal: `appsignal://API_KEY/`
+
 {% arrow_link href="/docs/advanced/self-hosting/environment-variables" %}
-Learn more about environment variables 
+Learn more about environment variables
 {% /arrow_link %}
 
 # Security {% #security %}

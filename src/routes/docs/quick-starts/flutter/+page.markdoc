@@ -158,7 +158,7 @@ You can skip optional steps.
 Install the Appwrite SDK for Flutter.
 
 ```sh
-flutter pub add appwrite
+flutter pub add appwrite:17.0.0
 ```
 
 {% /section %}
@@ -172,7 +172,7 @@ Find your project's ID in the **Settings** page.
 {% only_light %}
 ![Project settings screen](/images/docs/quick-starts/project-id.png)
 {% /only_light %}
-Open the generated `lib/main.dart` and add the following code to it, replace `<YOUR_PROJECT_ID>` with your project ID.
+Open the generated `lib/main.dart` and add the following code to it, replace `<PROJECT_ID>` with your project ID.
 This imports and initializes Appwrite.
 
 ```dart
@@ -183,8 +183,8 @@ import 'package:appwrite/models.dart' as models;
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   Client client = Client()
-      .setEndpoint("https://cloud.appwrite.io/v1")
-      .setProject("<YOUR_PROJECT_ID>");
+      .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+      .setProject("<PROJECT_ID>");
   Account account = Account(client);
 
   runApp(MaterialApp(
@@ -214,7 +214,7 @@ class MyAppState extends State<MyApp> {
   final TextEditingController nameController = TextEditingController();
 
   Future<void> login(String email, String password) async {
-    await widget.account.createEmailSession(email: email, password: password);
+    await widget.account.createEmailPasswordSession(email: email, password: password);
     final user = await widget.account.get();
     setState(() {
       loggedInUser = user;

@@ -1,16 +1,78 @@
-## Functions events {% #functions-events %}
+{% table %}
 
-| Name                                        | Payload                          | Description                               |
-| ------------------------------------------- | --------------------------------- | ----------------------------------------- |
-| `functions.*`                               | [Function Object](/docs/references/cloud/models/function)     | This event triggers on any functions event. |
-| `functions.*.create`                        | [Function Object](/docs/references/cloud/models/function)     | This event triggers when a function is created. |
-| `functions.*.delete`                        | [Function Object](/docs/references/cloud/models/function)     | This event triggers when a function is deleted. |
-| `functions.*.deployments.*`                | [Deployment Object](/docs/references/cloud/models/deployment) | This event triggers on any deployments event. |
-| `functions.*.deployments.*.create`         | [Deployment Object](/docs/references/cloud/models/deployment) | This event triggers when a deployment is created. |
-| `functions.*.deployments.*.delete`         | [Deployment Object](/docs/references/cloud/models/deployment) | This event triggers when a deployment is deleted. |
-| `functions.*.deployments.*.update`         | [Deployment Object](/docs/references/cloud/models/deployment) | This event triggers when a deployment is updated. |
-| `functions.*.executions.*`                | [Execution Object](/docs/references/cloud/models/execution)   | This event triggers on any executions event. |
-| `functions.*.executions.*.create`         | [Execution Object](/docs/references/cloud/models/execution)   | This event triggers when an execution is created. |
-| `functions.*.executions.*.delete`         | [Execution Object](/docs/references/cloud/models/execution)   | This event triggers when an execution is deleted. |
-| `functions.*.executions.*.update`         | [Execution Object](/docs/references/cloud/models/execution)   | This event triggers when an execution is updated. |
-| `functions.*.update`                      | [Function Object](/docs/references/cloud/models/function)     | This event triggers when a function is updated. |
+- Name
+- Description
+
+---
+
+- `functions.*`
+- This event triggers on any functions event.
+  Returns [Function Object](/docs/references/cloud/models/function)
+
+---
+
+- `functions.*.create`
+- This event triggers when a function is created.
+  Returns [Function Object](/docs/references/cloud/models/function)
+
+---
+
+- `functions.*.delete`
+- This event triggers when a function is deleted.
+  Returns [Function Object](/docs/references/cloud/models/function)
+
+---
+
+- `functions.*.deployments.*`
+- This event triggers on any deployments event.
+  Returns [Deployment Object](/docs/references/cloud/models/deployment)
+
+---
+
+- `functions.*.deployments.*.create`
+- This event triggers when a deployment is created.
+  Returns [Deployment Object](/docs/references/cloud/models/deployment)
+
+---
+
+- `functions.*.deployments.*.delete`
+- This event triggers when a deployment is deleted.
+  Returns [Deployment Object](/docs/references/cloud/models/deployment)
+
+---
+
+- `functions.*.deployments.*.update`
+- This event triggers when a deployment is updated.
+  Returns [Deployment Object](/docs/references/cloud/models/deployment)
+
+---
+
+- `functions.*.executions.*`
+- This event triggers on any executions event.
+  Returns [Execution Object](/docs/references/cloud/models/execution)
+
+---
+
+- `functions.*.executions.*.create`
+- This event triggers when an execution is created.
+  Returns [Execution Object](/docs/references/cloud/models/execution)
+
+---
+
+- `functions.*.executions.*.delete`
+- This event triggers when an execution is deleted.
+  Returns [Execution Object](/docs/references/cloud/models/execution)
+
+---
+
+- `functions.*.executions.*.update`
+- This event triggers when an execution is updated.
+  Returns [Execution Object](/docs/references/cloud/models/execution)
+
+---
+
+- `functions.*.update`
+- This event triggers when a function is updated.
+  Returns [Function Object](/docs/references/cloud/models/function)
+
+{% /table %}

@@ -1,26 +1,36 @@
 ---
 layout: article
 title: Events
-description: Harness the power of events in Appwrite. Explore event-driven architecture, event types, and how to use events to create dynamic and responsive applications.
+description: Harness the power of events in Appwrite. Explore event-driven architecture, event types, and how to use events to create dynamic applications.
 ---
 
-Appwrite provides a variety of events that allows your application to react to changes as they happen. 
-A event will fire when a change occurs in your Appwrite project, like when a new user registers or a new file is uploaded to Appwrite. 
+Appwrite provides a variety of events that allows your application to react to changes as they happen.
+A event will fire when a change occurs in your Appwrite project, like when a new user registers or a new file is uploaded to Appwrite.
 You can subscribe to these events with Appwrite [Functions](/docs/products/functions), [Realtime](/docs/apis/realtime), or [Webhooks](/docs/advanced/platform/webhooks).
 
-You can subscribe to events for specific resources using their ID or subscribe to changes of all resources of the same type by using a wildcard character * instead of an ID. 
-You can also filter for events of specific actions like create, update, or delete. 
+You can subscribe to events for specific resources using their ID or subscribe to changes of all resources of the same type by using a wildcard character * instead of an ID.
+You can also filter for events of specific actions like create, update, or delete.
+
+
 You can find a list of events for Storage, Databases, Functions, and Authentication services below.
 
-
+{% accordion %}
+{% accordion_item title="Authentication" %}
 {% partial file="auth-events.md" /%}
-
+{% /accordion_item %}
+{% accordion_item title="Databases" %}
 {% partial file="databases-events.md" /%}
-
+{% /accordion_item %}
+{% accordion_item title="Storage" %}
 {% partial file="storage-events.md" /%}
-
+{% /accordion_item %}
+{% accordion_item title="Functions" %}
 {% partial file="functions-events.md" /%}
-
+{% /accordion_item %}
+{% accordion_item title="Messaging" %}
+{% partial file="messaging-events.md" /%}
+{% /accordion_item %}
+{% /accordion %}
 
 # Known limitations {% #known-limitations %}
 
@@ -34,26 +44,26 @@ A change to a resource can cause multiple events to fire. For example adding a n
 {
   "events": [
       "databases.default.collections.movies.documents.lion-king.create",
-      "databases.*.collections.*.documents.*.create", 
-      "databases.default.collections.*.documents.lion-king.create", 
-      "databases.*.collections.*.documents.lion-king.create", 
-      "databases.*.collections.movies.documents.lion-king.create", 
-      "databases.default.collections.movies.documents.*.create", 
-      "databases.*.collections.movies.documents.*.create", 
-      "databases.default.collections.*.documents.*.create", 
-      "databases.default.collections.movies.documents.lion-king", 
-      "databases.*.collections.*.documents.*", 
-      "databases.default.collections.*.documents.lion-king", 
-      "databases.*.collections.*.documents.lion-king", 
-      "databases.*.collections.movies.documents.lion-king", 
-      "databases.default.collections.movies.documents.*", 
-      "databases.*.collections.movies.documents.*", 
-      "databases.default.collections.*.documents.*", 
-      "databases.default.collections.movies", 
-      "databases.*.collections.*", 
-      "databases.default.collections.*", 
-      "databases.*.collections.movies", 
-      "databases.default", 
+      "databases.*.collections.*.documents.*.create",
+      "databases.default.collections.*.documents.lion-king.create",
+      "databases.*.collections.*.documents.lion-king.create",
+      "databases.*.collections.movies.documents.lion-king.create",
+      "databases.default.collections.movies.documents.*.create",
+      "databases.*.collections.movies.documents.*.create",
+      "databases.default.collections.*.documents.*.create",
+      "databases.default.collections.movies.documents.lion-king",
+      "databases.*.collections.*.documents.*",
+      "databases.default.collections.*.documents.lion-king",
+      "databases.*.collections.*.documents.lion-king",
+      "databases.*.collections.movies.documents.lion-king",
+      "databases.default.collections.movies.documents.*",
+      "databases.*.collections.movies.documents.*",
+      "databases.default.collections.*.documents.*",
+      "databases.default.collections.movies",
+      "databases.*.collections.*",
+      "databases.default.collections.*",
+      "databases.*.collections.movies",
+      "databases.default",
       "databases.*"
   ]
 }

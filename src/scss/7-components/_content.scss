@@ -2,25 +2,25 @@
 
 .#{$p}-content {
   --p-section-gap: #{pxToRem(48)};
-  --p-content-gap: #{pxToRem(32)};
+  --p-content-gap: #{pxToRem(24)};
   display:flex; flex-direction:column; gap:var(--p-section-gap);
   section {
     display:flex; flex-direction:column; gap:var(--p-content-gap);
     scroll-snap-align:start; scroll-margin-top:pxToRem(120);
   }
-  a:not(.aw-button) {
-    @include break-word();   word-break:break-all; 
+  a:not(.web-button) {
+    @include break-word();
     &:where(:hover, :focus) { text-decoration:underline; }
   }
 
-  a:not(.aw-button):not(.aw-link) {
-    color:hsl(var(--aw-color-primary));
+  a:not(.web-button):not(.web-link) {
+    color:hsl(var(--web-color-primary));
   }
   ul {
     list-style: disc; padding-inline-start:pxToRem(24);
     > li {
       display:list-item; list-style-type:disc;
-      &::marker { content:revert; color:hsl(var(--aw-color-pink-500)); }
+      &::marker { content:revert; color:hsl(var(--web-color-pink-500)); }
     }
   }
   &.is-count-headers {

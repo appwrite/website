@@ -1,7 +1,7 @@
 ---
 layout: article
 title: Environment variables
-description: Customize the behavior of your self-hosted Appwrite instance to your unique needs. Customize SMTP, sms, functions, S3 adaptor, database, and other behaiors.
+description: Customize the behavior of your self-hosted Appwrite instance to your unique needs. Customize SMTP, SMS, functions, S3 adaptor, database, and other behaiors.
 ---
 
 
@@ -29,7 +29,11 @@ docker compose exec appwrite vars
 | `_APP_OPENSSL_KEY_V1` | This is your server private secret key that is used to encrypt all sensitive data on your server. Appwrite server encrypts all secret data on your server like webhooks, HTTP passwords, user sessions, and storage files. The var is not set by default, if you wish to take advantage of Appwrite encryption capabilities you should change it and make sure to **keep it a secret and have a backup for it**. |
 | `_APP_DOMAIN` | Your Appwrite domain address. When setting a public suffix domain, Appwrite will attempt to issue a valid SSL certificate automatically. When used with a dev domain, Appwrite will assign a self-signed SSL certificate. The default value is 'localhost'. |
 | `_APP_DOMAIN_FUNCTIONS` | A domain to use for function preview URLs. Setting to empty turns off function preview URLs. |
-| `_APP_DOMAIN_TARGET` | A DNS A record hostname to serve as a CNAME target for your Appwrite custom domains. You can use the same value as used for the Appwrite '_APP_DOMAIN' variable. The default value is 'localhost'. |
+| `_APP_DOMAIN_SITES` | **version >= 1.7.0** The domain to use for site URLs. Setting to empty turns off site URLs. |
+| `_APP_DOMAIN_TARGET` | **(version >= 1.7.0)** Deprecated since 1.7.0 uses `_APP_DOMAIN_TARGET_CNAME` instead. |
+| `_APP_DOMAIN_TARGET_CNAME` | **version >= 1.7.0** A DNS CNAME record hostname to serve as a CNAME target for your Appwrite custom domains. The default value is 'localhost'. |
+| `_APP_DOMAIN_TARGET_A` | **version >= 1.7.0** A DNS A record hostname to serve as a IPv4 address for your Appwrite custom domains. The default value is '127.0.0.1'. |
+| `_APP_DOMAIN_TARGET_AAAA` | **version >= 1.7.0** A DNS AAAA record hostname to serve as a IPv6 address for your Appwrite custom domains. The default value is '::1'. |
 | `_APP_CONSOLE_WHITELIST_ROOT`| This option allows you to disable the creation of new users on the Appwrite console. When enabled only 1 user will be able to use the registration form. New users can be added by inviting them to your project. By default this option is enabled. |
 | `_APP_CONSOLE_WHITELIST_EMAILS` | This option allows you to limit creation of new users on the Appwrite console. This option is very useful for small teams or sole developers. To enable it, pass a list of allowed email addresses separated by a comma. |
 | `_APP_CONSOLE_WHITELIST_IPS` | This last option allows you to limit creation of users in Appwrite console for users sharing the same set of IP addresses. This option is very useful for team working with a VPN service or a company IP. To enable/activate this option, pass a list of allowed IP addresses separated by a comma. |
@@ -38,11 +42,11 @@ docker compose exec appwrite vars
 | `_APP_SYSTEM_RESPONSE_FORMAT` | Use this environment variable to set the default Appwrite HTTP response format to support an older version of Appwrite. This option is useful to overcome breaking changes between versions. You can also use the `X-Appwrite-Response-Format` HTTP request header to overwrite the response for a specific request. This variable accepts any valid Appwrite version. To use the current version format, leave the value of the variable empty. |
 | `_APP_SYSTEM_SECURITY_EMAIL_ADDRESS` | This is the email address used to issue SSL certificates for custom domains or the user agent in your webhooks payload. |
 | `_APP_USAGE_STATS` | This variable allows you to disable the collection and displaying of usage stats. This value is set to 'enabled' by default, to disable the usage stats set the value to 'disabled'. When disabled, it's recommended to turn off the Worker Usage container to reduce resource usage. |
-| `_APP_LOGGING_PROVIDER` |  **(version >= 0.12.0)** This variable allows you to enable logging errors to 3rd party providers. This value is empty by default, set the value to one of 'sentry', 'raygun', 'appSignal', 'logOwl' to enable the logger. |
-| `_APP_LOGGING_CONFIG`  | **(version >= 0.12.0)** This variable configures authentication to 3rd party error logging providers. If using Sentry, this should be 'SENTRY_API_KEY;SENTRY_APP_ID'. If using Raygun, this should be Raygun API key. If using AppSignal, this should be AppSignal API key. If using LogOwl, this should be LogOwl Service Ticket. |
+| `_APP_LOGGING_PROVIDER` |  Deprecated since 1.6.0, use `_APP_LOGGING_CONFIG` with DSN value instead. This variable allows you to enable logging errors to 3rd party providers. This value is empty by default, set the value to one of \'sentry\', \'raygun\', \'appSignal\', \'logOwl\' to enable the logger. |
+| `_APP_LOGGING_CONFIG`  | This variable allows you to enable logging errors to third party providers. This value is empty by default, set a DSN value to one of the following `sentry://PROJECT_ID:SENTRY_API_KEY@SENTRY_HOST/`, , `logowl://SERVICE_TICKET@SERIVCE_HOST/` `raygun://RAYGUN_API_KEY/`, `appSignal://API_KEY/` to enable the logger. For versions prior `1.5.6` you can use the old syntax. Old syntax: If using Sentry, this should be \'SENTRY_API_KEY;SENTRY_APP_ID\'. If using Raygun, this should be Raygun API key. If using AppSignal, this should be AppSignal API key. If using LogOwl, this should be LogOwl Service Ticket. |
 | `_APP_USAGE_AGGREGATION_INTERVAL` | **(version >= 1.1.0)** Interval value containing the number of seconds that the Appwrite usage process should wait before aggregating stats and syncing it to Database from TimeSeries data. The default value is 30 seconds. Reintroduced in 1.1.0. |
-| `_APP_USAGE_TIMESERIES_INTERVAL` | **(version >= 1.0.0)** Deprecated since 1.1.0 use _APP_USAGE_AGGREGATION_INTERVAL instead. |
-| `_APP_USAGE_DATABASE_INTERVAL` |  **(version >= 1.0.0)** Deprecated since 1.1.0 use _APP_USAGE_AGGREGATION_INTERVAL instead. |
+| `_APP_USAGE_TIMESERIES_INTERVAL` | **(version >= 1.0.0)** Deprecated since 1.1.0 uses `_APP_USAGE_AGGREGATION_INTERVAL` instead. |
+| `_APP_USAGE_DATABASE_INTERVAL` |  **(version >= 1.0.0)** Deprecated since 1.1.0 uses `_APP_USAGE_AGGREGATION_INTERVAL` instead. |
 | `_APP_WORKER_PER_CORE` |  **(version >= 0.13.0)** Internal Worker per core for the API, Realtime and Executor containers. Can be configured to optimize performance. |
 
 
@@ -67,25 +71,7 @@ Appwrite uses MariaDB to persist database data. The DB env vars are used to allo
 | `_APP_DB_SCHEMA`       | MariaDB server database schema. Default value is: `appwrite`.                                    |
 | `_APP_DB_USER`         | MariaDB server user name. Default value is: `user`.                                              |
 | `_APP_DB_PASS`         | MariaDB server user password. Default value is: `password`.                                      |
-| `_APP_DB_ROOT_PASS`    | MariaDB server root password. Default value is: `rootsecretpassword`.                           |
-
-# InfluxDB {% #influxdb %}
-Appwrite uses an InfluxDB server for managing time-series data and server stats. The InfluxDB env vars are used to allow Appwrite server to connect to the InfluxDB container.
-
-| Name                  | Description                                                                                     |
-|-----------------------|-------------------------------------------------------------------------------------------------|
-| `_APP_INFLUXDB_HOST`  | InfluxDB server host name address. Default value is: `influxdb`.                                |
-| `_APP_INFLUXDB_PORT`  | InfluxDB server TCP port. Default value is: `8086`.                                             |
-
-
-# StatsD {% #statsd %}
-
-Appwrite uses a StatsD server for aggregating and sending stats data over a fast UDP connection. The StatsD env vars are used to allow Appwrite server to connect to the StatsD container.
-
-| Name                | Description                                                                         |
-|---------------------|-------------------------------------------------------------------------------------|
-| `_APP_STATSD_HOST`  | StatsD server host name address. Default value is: `telegraf`.                      |
-| `_APP_STATSD_PORT`  | StatsD server TCP port. Default value is: `8125`.                                   |
+| `_APP_DB_ROOT_PASS`    | MariaDB server root password. Default value is: `rootsecretpassword`.                           |                              |
 
 
 # SMTP {% #smtp %}
@@ -107,7 +93,7 @@ If running in production, it might be easier to use a 3rd party SMTP server as i
 
 | Name                                        | Description                                                                                                                                                                                                                         |
 |---------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `_APP_SMS_PROVIDER`  | **version >= 0.15.0** Provider used for delivering SMS for Phone authentication. Use the following format: 'sms://[USER]:[SECRET]@[PROVIDER]'.<br>Ensure `[USER]` and `[SECRET]` are URL encoded if they contain any non-alphanumeric characters.<br>Available providers are twilio, text-magic, telesign, msg91, and vonage. |
+| `_APP_SMS_PROVIDER`  | **version >= 0.15.0** Provider used for delivering SMS for Phone authentication. Use the following format: `sms://<USER>:<SECRET>@<PROVIDER>`. Ensure `<USER>` and `<SECRET>` are URL encoded if they contain any non-alphanumeric characters. Available providers are twilio, text-magic, telesign, msg91, and vonage. |
 | `_APP_SMS_FROM`  | **version >= 0.15.0** Phone number used for sending out messages. Must start with a leading '+' and maximum of 15 digits without spaces (+123456789).                                                                                                      |
 
 # Storage {% #storage %}
@@ -124,6 +110,7 @@ If running in production, it might be easier to use a 3rd party SMTP server as i
 | `_APP_STORAGE_S3_SECRET`                    | **version >= 0.13.0** AWS S3 storage secret key. Required when the storage adapter is set to S3. You can get your secret key from your AWS console.                                                                               |
 | `_APP_STORAGE_S3_REGION`                    | **version >= 0.13.0** AWS S3 storage region. Required when storage adapter is set to S3. You can find your region info for your bucket from AWS console.                                                                          |
 | `_APP_STORAGE_S3_BUCKET`                    | **version >= 0.13.0** AWS S3 storage bucket. Required when storage adapter is set to S3. You can create buckets in your AWS console.                                                                                               |
+| `_APP_STORAGE_S3_ENDPOINT`                  | **version >= 1.7.0** Override the S3 endpoint to use an S3-compatible provider. This should just be the host (without 'https://').                                                                                                |
 | `_APP_STORAGE_DO_SPACES_ACCESS_KEY`         | **version >= 0.13.0** DigitalOcean spaces access key. Required when the storage adapter is set to DOSpaces. You can get your access key from your DigitalOcean console.                                                            |
 | `_APP_STORAGE_DO_SPACES_SECRET`             | **version >= 0.13.0** DigitalOcean spaces secret key. Required when the storage adapter is set to DOSpaces. You can get your secret key from your DigitalOcean console.                                                           |
 | `_APP_STORAGE_DO_SPACES_REGION`             | **version >= 0.13.0** DigitalOcean spaces region. Required when storage adapter is set to DOSpaces. You can find your region info for your space from DigitalOcean console.                                                       |
@@ -159,6 +146,12 @@ If running in production, it might be easier to use a 3rd party SMTP server as i
 | `_APP_DOCKER_HUB_USERNAME`    | **version >= 1.2.0** The username for hub.docker.com. This variable is used to pull images from hub.docker.com. |
 | `_APP_DOCKER_HUB_PASSWORD`    | **version >= 1.2.0** The password for hub.docker.com. This variable is used to pull images from hub.docker.com. |
 | `_APP_FUNCTIONS_MAINTENANCE_INTERVAL`| **version >= 1.4.0** Interval value containing the number of seconds that the executor should wait before checking for inactive runtimes. The default value is 3600 seconds (1 hour). |
+
+# Sites {% #sites %}
+| **Name**                      | **Description** |
+|-------------------------------|-----------------|
+| `_APP_SITES_TIMEOUT` | **version >= 1.7.0** The maximum number of seconds allowed as a timeout value when creating a new site. The default value is 30 seconds. This is the global limit, timeout for individual sites are configured in the site's settings or in appwrite.json. |
+| `_APP_SITES_RUNTIMES` | **version >= 1.7.0** This option allows you to enable or disable runtime environments for sites. Disable unused runtimes to save disk space. To enable sites runtimes, pass a list of enabled environments separated by a comma. |
 
 # VCS (Version Control System) {% #vcs %}
 

@@ -1,42 +1,51 @@
-async function securedCopy(value: string) {
-    try {
-        await navigator.clipboard.writeText(value);
-    } catch {
-        return false;
-    }
+import { writable } from 'svelte/store';
+import { tryCatch } from './try-catch';
 
-    return true;
-}
+export const copyToClipboard = async (value: string) => {
+    const { data } = await tryCatch(navigator.clipboard.writeText(value));
 
-function unsecuredCopy(value: string) {
-    const textArea = document.createElement('textarea');
-    textArea.value = value;
+    return data;
+};
 
-    // Avoid scrolling to bottom
-    textArea.style.top = '0';
-    textArea.style.left = '0';
-    textArea.style.position = 'fixed';
+export const createCopy = (value: string, delay: number = 3000) => {
+    const copied = writable<boolean>(false);
 
-    document.body.appendChild(textArea);
-    textArea.focus();
-    textArea.select();
+    let timeout: NodeJS.Timeout | undefined = undefined;
 
-    let success = true;
-    try {
-        document.execCommand('copy');
-    } catch {
-        success = false;
-    } finally {
-        document.body.removeChild(textArea);
-    }
+    const handleCopy = async () => {
+        if (timeout) clearTimeout(timeout);
+        copied.set(true);
+        copyToClipboard(value);
+        timeout = setTimeout(() => copied.set(false), delay);
 
-    return success;
-}
+        return () => {
+            if (timeout) clearTimeout(timeout);
+            copied.set(false);
+        };
+    };
 
-export async function copy(value: string) {
-    // securedCopy works only in HTTPS environment.
-    // unsecuredCopy works in HTTP and only runs if securedCopy fails.
-    const success = (await securedCopy(value)) || unsecuredCopy(value);
+    return {
+        copied,
+        copy: handleCopy
+    };
+};
 
-    return success;
-}
+export const handleCopy = (value: string, duration: number = 1000) => {
+    const copied = writable<boolean>(false);
+    let timeout: ReturnType<typeof setTimeout> | undefined = undefined;
+
+    const copy = () => {
+        if (timeout) clearTimeout(timeout);
+        copied.set(true);
+        copyToClipboard(value);
+        timeout = setTimeout(() => copied.set(false), duration);
+    };
+
+    return {
+        copied,
+        copy
+    };
+};
+
+// backward compatibility
+export { copyToClipboard as copy };

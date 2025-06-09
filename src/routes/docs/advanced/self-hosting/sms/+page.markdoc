@@ -6,6 +6,12 @@ description: Set up SMS services for your self-hosted Appwrite instance. Discove
 
 Appwrite supports phone authentication, which allows users to create accounts and log in using SMS messages. Appwrite requires an SMS provider to be set up before using Phone authentication.
 
+{% info title="Setting up Appwrite Messaging?" %}
+This page describes how to setup messaging for your self-hosted Appwrite instance to send one-time passwords during phone login.
+
+If you are looking to send custom messages for promotions, reminders, and other purposes, view the [documentation for Appwrite Messaging](/docs/products/messaging) documentation.
+{% /info %}
+
 # SMS providers {% #sms-providers %}
 
 Appwrite supports a growing list of SMS providers that you can choose from. Choose one from the list below and set up an account.
@@ -16,32 +22,27 @@ Appwrite supports a growing list of SMS providers that you can choose from. Choo
 * Create account
 * Get credentials
 ---
-* {% only_dark %}{% icon_image src="/images/sms-providers/dark/twilio.svg" alt="Twilio logo" size="l" /%}{% /only_dark %}
-{% only_light %}{% icon_image src="/images/sms-providers/twilio.svg" alt="Twilio logo" size="l" /%}{% /only_light %}
+* {% icon icon="twilio" size="l" /%}
 * Twilio
 * [Website](https://www.twilio.com)
 * [Documentation](https://www.twilio.com/docs/iam/access-tokens#step-2-api-key)
 ---
-* {% only_dark %}{% icon_image src="/images/sms-providers/dark/textmagic.svg" alt="TextMagic logo" size="l" /%}{% /only_dark %}
-{% only_light %}{% icon_image src="/images/sms-providers/textmagic.svg" alt="TextMagic logo" size="l" /%}{% /only_light %}
-* TextMagic
+* {% icon icon="textmagic" size="l" /%}
+* Textmagic
 * [Website](https://www.textmagic.com)
 * [Documentation](https://www.textmagic.com/docs/api/start/#How-to-obtain-the-API-credentials)
 ---
-* {% only_dark %}{% icon_image src="/images/sms-providers/dark/telesign.svg" alt="Telesign logo" size="l" /%}{% /only_dark %}
-{% only_light %}{% icon_image src="/images/sms-providers/telesign.svg" alt="Telesign logo" size="l" /%}{% /only_light %}
+* {% icon icon="telesign" size="l" /%}
 * Telesign
 * [Website](https://www.telesign.com)
 * [Documentation](https://support.telesign.com/s/article/Find-Customer-ID-and-API-Key)
 ---
-* {% only_dark %}{% icon_image src="/images/sms-providers/dark/msg91.svg" alt="MSG91 logo" size="l" /%}{% /only_dark %}
-{% only_light %}{% icon_image src="/images/sms-providers/msg91.svg" alt="MSG91 logo" size="l" /%}{% /only_light %}
+* {% icon icon="msg91" size="l" /%}
 * MSG91
 * [Website](https://msg91.com)
 * [Documentation](https://msg91.com/help/where-can-i-find-my-authentication-key)
 ---
-* {% only_dark %}{% icon_image src="/images/sms-providers/dark/vonage.svg" alt="Vonage logo" size="l" /%}{% /only_dark %}
-{% only_light %}{% icon_image src="/images/sms-providers/vonage.svg" alt="Vonage logo" size="l" /%}{% /only_light %}
+* {% icon icon="vonage" size="l" /%}
 * Vonage
 * [Website](https://www.vonage.ca/)
 * [Documentation](https://developer.vonage.com/en/account/secret-management)
@@ -49,7 +50,7 @@ Appwrite supports a growing list of SMS providers that you can choose from. Choo
 
 # Environment variables {% #environment-variables %}
 
-You will need to configure these [environment variables](https://example.com/docs/environment-variables#phone) and restart your Appwrite containers before you can use phone authentication.
+You will need to configure these [environment variables](https://appwrite.io/docs/environment-variables#phone) and restart your Appwrite containers before you can use phone authentication.
 
 {% info title="URL encode" %}
 Ensure the values you insert in the `_APP_SMS_PROVIDER` placeholders are [URL encoded](https://developer.mozilla.org/en-US/docs/Glossary/Percent-encoding) if they contain any non-alphanumeric characters.
@@ -57,10 +58,10 @@ Ensure the values you insert in the `_APP_SMS_PROVIDER` placeholders are [URL en
 
 | Provider | \_APP\_SMS\_PROVIDER                                | \_APP\_SMS\_FROM        |
 | -------- | -------------------------------------------------- | ----------------------- |
-| Twilio   | `sms://[ACCOUNT SID]:[AUTH TOKEN]@twilio`         | `[TWILIO PHONE NUMBER]` |
-| TextMagic| `sms://[USERNAME]:[API KEY]@text-magic`          | `[PHONE NUMBER OR SENDER ID]` |
-| TeleSign | `sms://[CUSTOMER ID]:[API KEY]@telesign`         | `[TELESIGN PHONE NUMBER]` |
-| MSG91    | `sms://[SENDER ID]:[AUTH KEY]@msg91`             | `[FLOW ID]`            |
-| Vonage   | `sms://[API KEY]:[API SECRET]@vonage`            | `[PHONE NUMBER OR BRAND NAME]` |
+| Twilio   | `sms://<ACCOUNT SID>:<AUTH TOKEN>@twilio`         | `<TWILIO PHONE NUMBER>` |
+| Textmagic| `sms://<USERNAME>:<API KEY>@text-magic`          | `<PHONE NUMBER OR SENDER ID>` |
+| TeleSign | `sms://<CUSTOMER ID>:<API KEY>@telesign`         | `<TELESIGN PHONE NUMBER>` |
+| MSG91    | `sms://<SENDER ID>:<AUTH KEY>@msg91`             | `<FLOW ID>`            |
+| Vonage   | `sms://<API KEY>:<API SECRET>@vonage`            | `<PHONE NUMBER OR BRAND NAME>` |
 
 {% partial file="update-variables.md" /%}

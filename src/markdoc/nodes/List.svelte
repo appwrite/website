@@ -13,15 +13,15 @@
 
 <svelte:element
     this={ordered ? 'ol' : 'ul'}
-    class:aw-numeric-list={ordered}
-    class:aw-pink-dots={!ordered}
+    class:web-numeric-list={ordered}
+    class:web-pink-dots={!ordered}
     class:in-policy={inPolicy}
     class:in-changelog={inChangelog}><slot /></svelte:element
 >
 
 <style lang="scss">
     .in-policy {
-        gap: 0rem;
+        gap: 0.75rem;
         margin-block-end: 2rem;
     }
 
@@ -30,17 +30,17 @@
             gap: 0.25rem;
         }
 
-        :global(li:before) {
+        :global(li:before:not(ol ul li)) {
             content: counter(numeric-list) '.  ';
             padding-inline-end: 0;
         }
 
         :global(.in-policy) {
-            padding-inline-start: 0.5rem;
+            padding-inline-start: 1.5rem;
             margin-block-end: 0;
         }
 
-        :global(.in-policy li:before) {
+        :global(.in-policy li:before:not(ol ul li)) {
             content: counter(numeric-list-level-2, lower-latin) '.  ';
             padding-inline-end: 0;
         }

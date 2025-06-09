@@ -1,0 +1,21 @@
+---
+layout: post
+title: "WebP support now available for Safari on all devices"
+description: With WebP now supported in Safari, Appwrite developers can use this format on any browser and device.
+date: 2024-10-02
+cover: /images/blog/webp-support-for-safari/cover.png
+timeToRead: 3
+author: eldad-fux
+category: product
+---
+We’re happy to share that Appwrite Cloud users now have full WebP support across all versions of Safari browsers and devices.
+
+When we first introduced this feature in the early versions of Appwrite, Safari didn’t support WebP, which created challenges for developers using this format. To maintain application integrity, we automatically fell back to the PNG format, ensuring cross-browser compatibility but at the cost of larger file sizes and slower load times.
+
+However, as outlined on [Can I use WebP?](https://caniuse.com/webp), Safari has supported WebP for quite some time now. With this update, Appwrite has fully embraced WebP across all Safari browsers and devices, eliminating the need for fallback solutions. This update is now available to all Appwrite Cloud users, making image delivery more efficient across all platforms.
+
+# Why WebP matters
+
+WebP is a modern image format offering superior compression while maintaining high image quality. Compared to traditional formats like JPEG and PNG, WebP can reduce image sizes by up to 30%, resulting in faster page load times, lower bandwidth usage, and an overall better user experience. This is especially critical for developers looking to optimize their applications for performance and scalability.
+
+With WebP now fully supported in Safari, Appwrite developers can take full advantage of this format across all browsers and devices. This improvement will lead to reduced latency, less bandwidth consumption, and cost savings - particularly for Cloud accounts, where efficiency matters most.

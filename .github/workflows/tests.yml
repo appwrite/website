@@ -1,31 +1,105 @@
 name: Tests
 
 on:
-    push:
-        branches: [main]
-    pull_request:
-        branches: [main]
+    pull_request_target:
+        branches: ['**']
+
+permissions: read-all
 
 jobs:
+    format:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+              with:
+                  ref: ${{ github.event.pull_request.head.sha }}
+            - uses: actions/setup-node@v4
+              with:
+                  node-version: 20
+            - name: Install corepack
+              run: npm i -g corepack@latest
+            - name: Install pnpm
+              run: corepack enable
+            - name: Get pnpm store directory
+              shell: bash
+              run: |
+                  echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+            - uses: actions/cache@v4
+              name: Setup pnpm cache
+              with:
+                  path: ${{ env.STORE_PATH }}
+                  key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+                  restore-keys: |
+                      ${{ runner.os }}-pnpm-store-
+            - name: Install dependencies
+              run: pnpm install --frozen-lockfile
+            - name: Check formatting
+              run: pnpm format:check
+    tests:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+              with:
+                  ref: ${{ github.event.pull_request.head.sha }}
+            - uses: actions/setup-node@v4
+              with:
+                  node-version: 20
+            - name: Install corepack
+              run: npm i -g corepack@latest
+            - name: Install pnpm
+              run: corepack enable
+            - name: Get pnpm store directory
+              shell: bash
+              run: |
+                  echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+            - uses: actions/cache@v4
+              name: Setup pnpm cache
+              with:
+                  path: ${{ env.STORE_PATH }}
+                  key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+                  restore-keys: |
+                      ${{ runner.os }}-pnpm-store-
+            - name: Install dependencies
+              run: pnpm install --frozen-lockfile
+            - name: Install playwright dependencies
+              run: pnpm exec playwright install --with-deps chromium
+            - name: Run tests
+              env:
+                  PUBLIC_APPWRITE_ENDPOINT: ${{ vars.PUBLIC_APPWRITE_ENDPOINT }}
+                  PUBLIC_APPWRITE_DASHBOARD: ${{ vars.PUBLIC_APPWRITE_DASHBOARD }}
+                  PUBLIC_APPWRITE_PROJECT_ID: ${{ vars.PUBLIC_APPWRITE_PROJECT_ID }}
+                  PUBLIC_APPWRITE_DB_MAIN_ID: ${{ vars.PUBLIC_APPWRITE_DB_MAIN_ID }}
+                  PUBLIC_APPWRITE_COL_THREADS_ID: ${{ vars.PUBLIC_APPWRITE_COL_THREADS_ID }}
+                  PUBLIC_APPWRITE_COL_MESSAGES_ID: ${{ vars.PUBLIC_APPWRITE_COL_MESSAGES_ID }}
+                  PUBLIC_APPWRITE_FN_TLDR_ID: ${{ vars.PUBLIC_APPWRITE_FN_TLDR_ID }}
+                  PUBLIC_APPWRITE_PROJECT_INIT_ID: ${{ vars.PUBLIC_APPWRITE_PROJECT_INIT_ID }}
+                  PUBLIC_GROWTH_ENDPOINT: ${{ vars.PUBLIC_GROWTH_ENDPOINT }}
+                  PUBLIC_POSTHOG_API_KEY: ${{ vars.PUBLIC_POSTHOG_API_KEY }}
+                  APPWRITE_DB_INIT_ID: ${{ secrets.APPWRITE_DB_INIT_ID }}
+                  APPWRITE_COL_INIT_ID: ${{ secrets.APPWRITE_COL_INIT_ID }}
+                  APPWRITE_API_KEY_INIT: ${{ secrets.APPWRITE_API_KEY_INIT }}
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+              run: pnpm test
     build:
         runs-on: ubuntu-latest
         steps:
-            - uses: actions/checkout@v3
+            - uses: actions/checkout@v4
+              with:
+                  ref: ${{ github.event.pull_request.head.sha }}
             - name: Use Node.js
-              uses: actions/setup-node@v3
+              uses: actions/setup-node@v4
               with:
-                  node-version: 18
-            - uses: pnpm/action-setup@v2
-              name: Install pnpm
-              with:
-                  version: 8
-                  run_install: false
+                  node-version: 20
+            - name: Install corepack
+              run: npm i -g corepack@latest
+            - name: Install pnpm
+              run: corepack enable
             - name: Get pnpm store directory
               shell: bash
               run: |
                   echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
 
-            - uses: actions/cache@v3
+            - uses: actions/cache@v4
               name: Setup pnpm cache
               with:
                   path: ${{ env.STORE_PATH }}
@@ -36,11 +110,19 @@ jobs:
               run: pnpm install --frozen-lockfile
             - name: Build Website
               env:
-                  NODE_OPTIONS: '--max_old_space_size=8192'
-                  PUBLIC_APPWRITE_PROJECT_INIT_ID: ${{ secrets.PUBLIC_APPWRITE_PROJECT_INIT_ID }}
-                  PUBLIC_APPWRITE_PROJECT_ID: ${{ secrets.PUBLIC_APPWRITE_PROJECT_ID }}
-                  PUBLIC_APPWRITE_DB_MAIN_ID: ${{ secrets.PUBLIC_APPWRITE_DB_MAIN_ID }}
-                  PUBLIC_APPWRITE_COL_THREADS_ID: ${{ secrets.PUBLIC_APPWRITE_COL_THREADS_ID }}
-                  PUBLIC_APPWRITE_COL_MESSAGES_ID: ${{ secrets.PUBLIC_APPWRITE_COL_MESSAGES_ID }}
-                  PUBLIC_APPWRITE_FN_TLDR_ID: ${{ secrets.PUBLIC_APPWRITE_FN_TLDR_ID }}
+                  NODE_OPTIONS: '--max_old_space_size=16384'
+                  PUBLIC_APPWRITE_ENDPOINT: ${{ vars.PUBLIC_APPWRITE_ENDPOINT }}
+                  PUBLIC_APPWRITE_DASHBOARD: ${{ vars.PUBLIC_APPWRITE_DASHBOARD }}
+                  PUBLIC_APPWRITE_PROJECT_ID: ${{ vars.PUBLIC_APPWRITE_PROJECT_ID }}
+                  PUBLIC_APPWRITE_DB_MAIN_ID: ${{ vars.PUBLIC_APPWRITE_DB_MAIN_ID }}
+                  PUBLIC_APPWRITE_COL_THREADS_ID: ${{ vars.PUBLIC_APPWRITE_COL_THREADS_ID }}
+                  PUBLIC_APPWRITE_COL_MESSAGES_ID: ${{ vars.PUBLIC_APPWRITE_COL_MESSAGES_ID }}
+                  PUBLIC_APPWRITE_FN_TLDR_ID: ${{ vars.PUBLIC_APPWRITE_FN_TLDR_ID }}
+                  PUBLIC_APPWRITE_PROJECT_INIT_ID: ${{ vars.PUBLIC_APPWRITE_PROJECT_INIT_ID }}
+                  PUBLIC_GROWTH_ENDPOINT: ${{ vars.PUBLIC_GROWTH_ENDPOINT }}
+                  PUBLIC_POSTHOG_API_KEY: ${{ vars.PUBLIC_POSTHOG_API_KEY }}
+                  APPWRITE_DB_INIT_ID: ${{ secrets.APPWRITE_DB_INIT_ID }}
+                  APPWRITE_COL_INIT_ID: ${{ secrets.APPWRITE_COL_INIT_ID }}
+                  APPWRITE_API_KEY_INIT: ${{ secrets.APPWRITE_API_KEY_INIT }}
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
               run: pnpm run build

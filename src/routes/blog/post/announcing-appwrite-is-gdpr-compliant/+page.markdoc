@@ -6,12 +6,12 @@ date: 2024-01-09
 cover: /images/blog/announcing-appwrite-is-gdpr-compliant/GDPR-Announcement.png
 timeToRead: 3
 author: may-ender
-category: GDPR
+category: security, announcement
 ---
 
 We have always kept strict internal policies with regard to personal data and privacy. But to be GDPR compliant, one must undertake the necessary steps and show proof. We have done this and are pleased that we are now certified with the European General Data Protection Regulation (GDPR) standards.
 
-Appwrite developers will no longer have to navigate the complex waters of GDPR compliance – we've got you covered. We have undertaken the necessary measures to protect personal information. Our policies, procedures, and infrastructure have been updated, and we are committed to a continuous improvement cycle as time goes by.
+Appwrite developers will no longer have to navigate the complex waters of GDPR compliance, we've got you covered. We have undertaken the necessary measures to protect personal information. Our policies, procedures, and infrastructure have been updated, and we are committed to a continuous improvement cycle as time goes by.
 
 If you are interested in having a data processing agreement with Appwrite, you can now find our DPA download button in our console. Click and sign it, and the agreement will be implemented.
 
@@ -26,6 +26,6 @@ Here are some technical insights into how we enhance data security:
 
 As always, with Appwrite, developers can continue creating with peace of mind. Your personal data will not be mistreated.
 
-Appwrite is also actively working towards compliance with SOC 2 standards and HIPPA, which will be announced at a later date.
+Appwrite is also [HIPAA](https://appwrite.io/docs/advanced/security/hipaa) and [SOC 2](https://appwrite.io/docs/advanced/security/soc2) compliant as of April 24th, 2024.
 
 Further resources: [Documentation](https://appwrite.io/docs/advanced/security/gdpr), [Privacy policy](https://appwrite.io/privacy) , [Cookie policy](https://appwrite.io/cookies)

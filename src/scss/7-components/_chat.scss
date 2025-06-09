@@ -1,0 +1,61 @@
+@use '../abstract' as *;
+.#{$p}-chat {
+  &-list    { display:flex; flex-direction:column; gap:pxToRem(20); }
+  &-message {
+    position:         relative;
+    padding:          pxToRem(12);
+    max-inline-size:  pxToRem(380);
+    border-radius:    var(--border-radius-medium);
+    background:       hsl(0 0% 99%);
+    backdrop-filter:  blur(#{pxToRem(10)});
+    &::before {
+      position:absolute; inset-inline-start:pxToRem(23); inset-block-start:calc(100%);
+      content:""; display:block; inline-size:pxToRem(23); block-size:pxToRem(16); background-color:inherit;
+      clip-path: polygon(50% 100%, 0 0, 100% 0);
+    }
+    &::after {
+      position:absolute;   inset-inline-start:pxToRem(24); inset-block-start:100%;
+      content:""; display:block; inline-size:pxToRem(21); block-size:pxToRem(15); background-color:inherit;
+      clip-path: polygon(50% 100%, 0 0, 100% 0);
+    }
+    @media #{$break1} {
+      
+    }
+
+    /* reversed arrow on replies */
+    &.reply {
+      &::before {
+        rotate: 180deg;
+        inset-block-end: auto;
+        inset-block-start: pxToRem(-16);
+        background-color: var(--border-color);
+      }
+
+      &::after {
+        rotate: 180deg;
+        inset-block-start: pxToRem(-14.5);
+        inset-block-end: auto;
+      }
+    }
+  }
+
+  /* user 'b' messages */
+  &-item    {
+    &.is-user-b {
+      align-self:end;
+      .#{$p}-chat {
+        &-message {
+          background-color: hsl(calc(var(--web-color-pink-hue) - 13) 26% 91%);
+          border: solid pxToRem(1) hsl(calc(var(--web-color-pink-hue) - 3) 62% 86%);
+          &::before {
+            inset-inline-end:pxToRem(23); inset-inline-start:auto;
+            background-color:hsl(calc(var(--web-color-pink-hue) - 3) 62% 86%);
+          }
+          &::after {
+            inset-inline-end:pxToRem(24); inset-inline-start:auto;
+          }
+        }
+      }
+    }
+  }
+}

@@ -54,7 +54,7 @@ composer init
 Install the PHP Appwrite SDK.
 
 ```sh
-composer require appwrite/appwrite
+composer require appwrite/appwrite:15.0.0
 ```
 {% /section %}
 {% section #step-4 step=4 title="Import Appwrite" %}
@@ -68,7 +68,7 @@ Find your project ID in the **Settings** page. Also, click on the **View API Key
 ![Project settings screen](/images/docs/quick-starts/project-id.png)
 {% /only_light %}
 
-Create a new file `index.php` and initialize the Appwrite Client. Replace `<YOUR_PROJECT_ID>` with your project ID and `<YOUR_API_KEY>` with your API key.
+Create a new file `index.php` and initialize the Appwrite Client. Replace `<PROJECT_ID>` with your project ID and `<YOUR_API_KEY>` with your API key.
 
 ```php
 <?php
@@ -81,8 +81,8 @@ use Appwrite\ID;
 $client = new Client();
 
 $client
-    ->setEndpoint('https://cloud.appwrite.io/v1')
-    ->setProject('<YOUR_PROJECT_ID>')
+    ->setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    ->setProject('<PROJECT_ID>')
     ->setKey('<YOUR_API_KEY>');
 ```
 

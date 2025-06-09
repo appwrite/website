@@ -1,16 +1,13 @@
-import { getApi, getIdFromReference, getSchema, type AppwriteSchemaObject } from '$lib/utils/specs';
+import {
+    getApi,
+    getSchema,
+    type AppwriteSchemaObject,
+    generateExample,
+    type Property,
+    ModelType
+} from '$lib/utils/specs';
 import type { OpenAPIV3 } from 'openapi-types';
 import type { PageServerLoad } from './$types';
-
-// export const entries: EntryGenerator = () => {
-// 	return ['cloud', ...(versions as string[])].flatMap((version) => {
-// 		return platforms.flatMap((platform) => {
-// 			return services.map((service) => {
-// 				return { service, version, platform };
-// 			});
-// 		});
-// 	});
-// };
 
 type Model = {
     title: string;
@@ -18,64 +15,92 @@ type Model = {
         name: string;
         type: string;
         description: string;
-        example: string | boolean | number | object | Array<unknown>;
-        items?: Array<string>;
+        items?: Array<any>;
+        relatedModels?: string;
     }>;
 };
 
 export const load: PageServerLoad = async ({ params }) => {
-    const version = params.version === 'cloud' ? '1.4.x' : params.version;
+    const version = params.version === 'cloud' ? '1.7.x' : params.version;
     const api = await getApi(version, 'console-web');
     const schema = getSchema(params.model, api);
     const props = Object.entries(schema.properties ?? {});
     const model: Model = {
         title: schema.description as string,
         properties: props.map(([name, data]) => {
-            const property = data as AppwriteSchemaObject;
+            const property = data as AppwriteSchemaObject & Property;
             switch (property.type) {
                 case 'array': {
-                    const items = [];
-                    const propItems = property.items as AppwriteSchemaObject;
-                    if (Array.isArray(propItems.anyOf)) {
-                        items.push(
-                            ...propItems.anyOf.map((ref) =>
-                                getIdFromReference(ref as OpenAPIV3.ReferenceObject)
-                            )
+                    let arrayTypes;
+                    if (property.items.hasOwnProperty('$ref')) {
+                        arrayTypes = [(property.items.$ref as string).split('/').pop()];
+                    }
+
+                    if (property.items && 'anyOf' in property.items) {
+                        arrayTypes = (property.items as OpenAPIV3.SchemaObject).anyOf?.map((item) =>
+                            ((item as OpenAPIV3.ReferenceObject).$ref as string).split('/').pop()
                         );
-                    } else {
-                        // items.push(getIdFromReference(propItems as unknown as OpenAPIV3.ReferenceObject));
+                    }
+
+                    return {
+                        name,
+                        type: property.type as string,
+                        description: property.description as string,
+                        relatedModels:
+                            arrayTypes
+                                ?.map((item) => {
+                                    const schema = getSchema(item as string, api);
+                                    const modelLink = `[${schema.description} model](/docs/references/${version}/models/${item})`;
+                                    return modelLink;
+                                })
+                                .join(', ') ?? ''
+                    };
+                }
+                case 'object': {
+                    let arrayTypes;
+                    if (property.items?.hasOwnProperty('$ref')) {
+                        arrayTypes = [(property.items?.$ref as string).split('/').pop()];
+                    }
+
+                    if (property.items && 'oneOf' in property.items) {
+                        arrayTypes = property.items.oneOf?.map((item) =>
+                            (item.$ref as string).split('/').pop()
+                        );
                     }
                     return {
                         name,
                         type: property.type as string,
                         description: property.description as string,
-                        example: '',
-                        items:
-                            (property.items as AppwriteSchemaObject)?.anyOf?.map((ref) => {
-                                const item = getIdFromReference(ref as OpenAPIV3.ReferenceObject);
-                                return item;
-                            }) ?? []
+                        relatedModels:
+                            arrayTypes
+                                ?.map((item) => {
+                                    const schema = getSchema(item as string, api);
+                                    const modelLink = `[${schema.description} model](/docs/references/${version}/models/${item})`;
+                                    return modelLink;
+                                })
+                                .join(', ') ?? ''
                     };
                 }
-
                 default:
                     return {
                         name,
                         type: property.type as string,
-                        description: property.description as string,
-                        example: property['x-example']
+                        description: property.description as string
                     };
             }
         })
     };
 
-    const example = model.properties.reduce<Record<string, unknown>>((carry, property) => {
-        carry[property.name] = property.example;
+    const examples = [];
+    for (const type of Object.values(ModelType)) {
+        examples.push({
+            type,
+            example: generateExample(schema, api, type)
+        });
+    }
 
-        return carry;
-    }, {});
     return {
         model,
-        example
+        examples
     };
 };

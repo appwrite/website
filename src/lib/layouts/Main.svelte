@@ -1,27 +1,27 @@
 <script lang="ts" context="module">
     import { writable } from 'svelte/store';
 
-    export type NavLink = {
-        label: string;
-        href: string;
-        showBadge?: boolean;
-    };
     export const isHeaderHidden = writable(false);
     export const isMobileNavOpen = writable(false);
-
     const initialized = writable(false);
 </script>
 
 <script lang="ts">
     import { browser } from '$app/environment';
-    import { MobileNav } from '$lib/components';
-    import { BANNER_KEY } from '$lib/constants';
+    import { MobileNav, IsLoggedIn } from '$lib/components';
+    import { BANNER_KEY, SOCIAL_STATS } from '$lib/constants';
     import { isVisible } from '$lib/utils/isVisible';
     import { createScrollInfo } from '$lib/utils/scroll';
-    import { hasNewChangelog } from '$routes/changelog/utils';
     import { addEventListener } from '@melt-ui/svelte/internal/helpers';
     import { onMount } from 'svelte';
-    import { page } from '$app/stores';
+    import ProductsSubmenu from '$lib/components/ProductsSubmenu.svelte';
+    import ProductsMobileSubmenu from '$lib/components/ProductsMobileSubmenu.svelte';
+    import { trackEvent } from '$lib/actions/analytics';
+    import MainNav from '$lib/components/MainNav.svelte';
+    import { page } from '$app/state';
+    import { getAppwriteDashboardUrl } from '$lib/utils/dashboard';
+    import { Button, Icon, InlineTag } from '$lib/components/ui';
+    import AnnouncementBanner from '$routes/(init)/init/(components)/announcement-banner.svelte';
 
     export let omitMainId = false;
     let theme: 'light' | 'dark' | null = 'dark';
@@ -46,33 +46,43 @@
     }
 
     function isInViewport(element: Element): boolean {
+        const mobileHeader = document.querySelector('.aw-mobile-header');
+        const isMobile =
+            mobileHeader &&
+            getComputedStyle(mobileHeader).display !== 'none' &&
+            isVisible(mobileHeader, {
+                top: 0,
+                bottom: window.innerHeight,
+                left: 0,
+                right: window.innerWidth
+            });
+        const h = isMobile || 'bannerHidden' in document.body.dataset ? 32 : 64;
+
         return isVisible(element, {
-            top: 32,
-            bottom: 32,
+            top: h,
+            bottom: h,
             left: 0,
             right: window.innerWidth
         });
     }
 
     function getVisibleTheme() {
-        const themes = Array.from(document.querySelectorAll('.theme-dark, .theme-light')).filter(
-            (element) => {
-                const { classList, dataset } = element as HTMLElement;
-                if (
-                    classList.contains('aw-mobile-header') ||
-                    classList.contains('aw-main-header') ||
-                    element === document.body ||
-                    typeof dataset['themeIgnore'] === 'string'
-                ) {
-                    return false;
-                }
-                return true;
+        const themes = Array.from(document.querySelectorAll('.dark, .light')).filter((element) => {
+            const { classList, dataset } = element as HTMLElement;
+            if (
+                classList.contains('web-mobile-header') ||
+                classList.contains('web-main-header') ||
+                element === document.body ||
+                typeof dataset['themeIgnore'] === 'string'
+            ) {
+                return false;
             }
-        );
+            return true;
+        });
 
         for (const theme of themes) {
             if (isInViewport(theme)) {
-                return theme.classList.contains('theme-light') ? 'light' : 'dark';
+                return theme.classList.contains('light') ? 'light' : 'dark';
             }
         }
 
@@ -86,27 +96,23 @@
         return setupThemeObserver();
     });
 
-    let navLinks: NavLink[] = [
+    $: navLinks = [
+        {
+            label: 'Products',
+            submenu: ProductsSubmenu,
+            mobileSubmenu: ProductsMobileSubmenu
+        },
         {
             label: 'Docs',
             href: '/docs'
         },
         {
-            label: 'Community',
-            href: '/community'
-        },
-        {
-            label: 'Blog',
-            href: '/blog'
-        },
-        {
-            label: 'Changelog',
-            href: '/changelog',
-            showBadge: hasNewChangelog() && !$page.url.pathname.includes('/changelog')
-        },
-        {
             label: 'Pricing',
             href: '/pricing'
+        },
+        {
+            label: 'Enterprise',
+            href: '/contact-us/enterprise'
         }
     ];
 
@@ -125,29 +131,44 @@
         return $scrollInfo.deltaDirChange < 200;
     })();
 
-    const hideTopBanner = () => {
-        document.body.dataset.bannerHidden = '';
-        localStorage.setItem(BANNER_KEY, 'true');
-    };
+    function updateSideNav() {
+        if (browser) {
+            const integrationsSide = document.getElementById('integrations-side');
+            if (integrationsSide) {
+                $isHeaderHidden
+                    ? integrationsSide.classList.remove('menu-visible')
+                    : integrationsSide.classList.add('menu-visible');
+            }
+        }
+    }
+
+    $: $isHeaderHidden, updateSideNav();
 </script>
 
-<div class="u-position-relative">
+<div class="relative">
+    <!--{#if !page.url.pathname.includes('/init')}-->
+    <!--    <div class="border-smooth relative z-10 border-b bg-[#19191C]">-->
+    <!--        <div class="is-special-padding mx-auto">-->
+    <!--            <AnnouncementBanner />-->
+    <!--        </div>-->
+    <!--    </div>-->
+    <!--{/if}-->
+
     <section
-        class="aw-mobile-header theme-{resolvedTheme}"
+        class="web-mobile-header {resolvedTheme}"
         class:is-transparent={browser && !$isMobileNavOpen}
-        class:is-hidden={$isHeaderHidden}
     >
-        <div class="aw-mobile-header-start">
+        <div class="web-mobile-header-start">
             <a href="/">
                 <img
-                    class="aw-logo aw-u-only-dark"
+                    class="web-logo web-u-only-dark"
                     src="/images/logos/appwrite.svg"
                     alt="appwrite"
                     height="24"
                     width="130"
                 />
                 <img
-                    class="aw-logo aw-u-only-light"
+                    class="web-logo web-u-only-light"
                     src="/images/logos/appwrite-light.svg"
                     alt="appwrite"
                     height="24"
@@ -155,107 +176,71 @@
                 />
             </a>
         </div>
-        <div class="aw-mobile-header-end">
+        <div class="web-mobile-header-end">
             {#if !$isMobileNavOpen}
-                <a href="https://cloud.appwrite.io" class="aw-button">
-                    <span class="text">Get started</span>
-                </a>
+                <Button href={getAppwriteDashboardUrl()} event="main-start_building_btn-click">
+                    <span class="text">Start building</span>
+                </Button>
             {/if}
-            <button
-                class="aw-button is-text"
+            <Button
+                variant="text"
                 aria-label="open navigation"
-                on:click={() => ($isMobileNavOpen = !$isMobileNavOpen)}
+                onclick={() => ($isMobileNavOpen = !$isMobileNavOpen)}
             >
                 {#if $isMobileNavOpen}
-                    <span aria-hidden="true" class="aw-icon-close" />
+                    <Icon aria-hidden="true" name="close" />
                 {:else}
-                    <span aria-hidden="true" class="aw-icon-hamburger-menu" />
+                    <Icon aria-hidden="true" name="hamburger-menu" />
                 {/if}
-            </button>
+            </Button>
         </div>
     </section>
-    <header
-        class="aw-main-header is-special-padding theme-{resolvedTheme} is-transparent"
-        class:is-hidden={$isHeaderHidden}
-    >
-        <div class="aw-top-banner">
-            <div class="aw-top-banner-content aw-u-color-text-primary">
-                <a href="/blog/post/announcing-appwrite-pro">
-                    <span class="aw-caption-500"
-                        >Appwrite Pro is now available! Get started with $15 credit.</span
-                    >
-                </a>
-                {#if browser}
-                    <button
-                        class="aw-top-banner-button"
-                        aria-label="close discord message"
-                        on:click={hideTopBanner}
-                    >
-                        <span class="aw-icon-close" aria-hidden="true" />
-                    </button>
-                {/if}
-            </div>
-        </div>
 
-        <div class="aw-main-header-wrapper">
-            <div class="aw-main-header-start">
+    <header class="web-main-header is-special-padding {resolvedTheme} is-transparent">
+        <div
+            class="web-main-header-wrapper"
+            class:is-special-padding={BANNER_KEY.startsWith('init-banner-')}
+        >
+            <div class="web-main-header-start">
                 <a href="/">
                     <img
-                        class="aw-logo aw-u-only-dark"
+                        class="web-logo web-u-only-dark"
                         src="/images/logos/appwrite.svg"
                         alt="appwrite"
                         height="24"
                         width="130"
                     />
                     <img
-                        class="aw-logo aw-u-only-light"
+                        class="web-logo web-u-only-light"
                         src="/images/logos/appwrite-light.svg"
                         alt="appwrite"
                         height="24"
                         width="130"
                     />
                 </a>
-                <nav class="aw-main-header-nav" aria-label="Main">
-                    <ul class="aw-main-header-nav-list">
-                        {#each navLinks as navLink}
-                            <li class="aw-main-header-nav-item">
-                                <a
-                                    class="aw-link"
-                                    href={navLink.href}
-                                    data-initialized={$initialized ? '' : undefined}
-                                    data-badge={navLink.showBadge ? '' : undefined}
-                                    >{navLink.label}
-                                </a>
-                            </li>
-                        {/each}
-                    </ul>
-                </nav>
+                <MainNav initialized={$initialized} links={navLinks} />
             </div>
-            <div class="aw-main-header-end">
-                <a
-                    href="https://github.com/appwrite/appwrite/stargazers"
+            <div class="web-main-header-end">
+                <Button
+                    variant="text"
+                    href={SOCIAL_STATS.GITHUB.LINK}
                     target="_blank"
                     rel="noopener noreferrer"
-                    class="aw-button is-text"
+                    class="web-u-inline-width-100-percent-mobile"
                 >
-                    <span aria-hidden="true" class="aw-icon-star" />
+                    <Icon name="star" aria-hidden="true" />
                     <span class="text">Star on GitHub</span>
-                    <span class="aw-inline-tag aw-sub-body-400">38.4K</span>
-                </a>
-                <!--                <a href="https://cloud.appwrite.io/register" class="aw-button is-secondary"-->
-                <!--                    >Sign up</a-->
-                <!--                >-->
-                <a href="https://cloud.appwrite.io" class="aw-button">
-                    <span class="text">Get started</span>
-                </a>
+                    <InlineTag>{SOCIAL_STATS.GITHUB.STAT}</InlineTag>
+                </Button>
+                <IsLoggedIn />
             </div>
         </div>
     </header>
     <MobileNav bind:open={$isMobileNavOpen} links={navLinks} />
 
     <main
-        class="aw-main-section"
-        class:aw-u-hide-mobile={$isMobileNavOpen}
+        class="relative space-y-6"
+        class:web-u-hide-mobile={$isMobileNavOpen}
         id={omitMainId ? undefined : 'main'}
     >
         <slot />
@@ -277,24 +262,7 @@
         }
     }
 
-    [data-badge] {
-        position: relative;
-
-        &::after {
-            content: '';
-            position: absolute;
-            background-color: hsl(var(--aw-color-accent));
-            border-radius: 100%;
-            width: 0.375rem;
-            height: 0.375rem;
-
-            inset-block-start: -2px;
-            inset-inline-end: -4px;
-            translate: 100%;
-        }
-
-        &:not([data-initialized])::after {
-            animation: scale-in 0.2s ease-out;
-        }
+    .is-special-padding {
+        padding-inline: clamp(1.25rem, 4vw, 120rem);
     }
 </style>

@@ -1,10 +1,10 @@
 @use '../abstract' as *;
 
 .#{$p}-select {
-  --p-select-min-width: #{pxToRem(130)};
+  --p-select-min-width: #{pxToRem(145)};
 
   all:unset; display:flex; align-items:center; position:relative; line-height:1; user-select:none; cursor:pointer;
-  color:hsl(var(--aw-color-primary)); font-size:pxToRem(14); min-width: var(--p-select-min-width); height: pxToRem(30);
+  color:hsl(var(--web-color-primary)); font-size:pxToRem(14); min-width: var(--p-select-min-width); height: pxToRem(30);
   
   select, .physical-select {
     all:unset; display:flex; align-items:center;
@@ -34,21 +34,21 @@
     @mixin light-mode() {
       @include border-gradient;
       --m-border-radius: #{pxToRem(8)};
-      --m-border-gradient-before: hsl(var(--aw-color-greyscale-50));
+      --m-border-gradient-before: hsl(var(--web-color-greyscale-50));
 
-      --p-select-bg-color-default: var(--aw-color-white);
-      --p-select-border-color-default: var(--aw-color-black) / 0.06;
+      --p-select-bg-color-default: var(--web-color-white);
+      --p-select-border-color-default: var(--web-color-black) / 0.06;
       --p-select-box-shadow-color-default: var(--transparent);
 
-      --p-select-bg-color-hover: var(--aw-color-greyscale-25);
-      --p-select-border-color-hover: var(--aw-color-black) / 0.06;
+      --p-select-bg-color-hover: var(--web-color-greyscale-25);
+      --p-select-border-color-hover: var(--web-color-black) / 0.06;
 
-      --p-select-bg-color-sctive: var(--aw-color-white);
-      --p-select-border-color-active: var(--aw-color-black) / 0.06;
+      --p-select-bg-color-sctive: var(--web-color-white);
+      --p-select-border-color-active: var(--web-color-black) / 0.06;
 
-      --p-select-bg-color-focus: var(--aw-color-white);
-      --p-select-border-color-focus: var(--aw-color-greyscale-900);
-      --p-select-box-shadow-color-focus: var(--aw-color-black) / 0.10;
+      --p-select-bg-color-focus: var(--web-color-white);
+      --p-select-border-color-focus: var(--web-color-greyscale-900);
+      --p-select-box-shadow-color-focus: var(--web-color-black) / 0.10;
     }
 
     @mixin dark-mode() {
@@ -56,19 +56,19 @@
       --m-border-radius: #{pxToRem(8)};
       --m-border-gradient-before: linear-gradient(180deg, rgba(232, 233, 240, 0.51) -321.25%, rgba(232, 233, 240, 0) 136.25%);
 
-      --p-select-bg-color-default: var(--aw-color-white) / 0.08;
-      --p-select-border-color-default: var(--aw-color-white) / 0.10;
+      --p-select-bg-color-default: var(--web-color-white) / 0.08;
+      --p-select-border-color-default: var(--web-color-white) / 0.10;
       --p-select-box-shadow-color-default: var(--transparent);
 
-      --p-select-bg-color-hover: var(--aw-color-white) / 0.12;
-      --p-select-border-color-hover: var(--aw-color-white) / 0.10;
+      --p-select-bg-color-hover: var(--web-color-white) / 0.12;
+      --p-select-border-color-hover: var(--web-color-white) / 0.10;
 
-      --p-select-bg-color-active: var(--aw-color-white) / 0.08;
-      --p-select-border-color-active: var(--aw-color-white) / 0.10;
+      --p-select-bg-color-active: var(--web-color-white) / 0.08;
+      --p-select-border-color-active: var(--web-color-white) / 0.10;
 
-      --p-select-bg-color-focus: var(--aw-color-white) / 0.08;
-      --p-select-border-color-focus: var(--aw-color-greyscale-100);
-      --p-select-box-shadow-color-focus: var(--aw-color-white) / 0.16;
+      --p-select-bg-color-focus: var(--web-color-white) / 0.08;
+      --p-select-border-color-focus: var(--web-color-greyscale-100);
+      --p-select-box-shadow-color-focus: var(--web-color-white) / 0.16;
     }
 
     @include light-mode();
@@ -115,7 +115,7 @@
 
 .#{$p}-select-menu {
 	all:unset; position:relative; display:flex; flex-direction:column; gap:pxToRem(8);
-    user-select:none; color:hsl(var(--aw-color-primary)); font-size:pxToRem(14);
+    user-select:none; color:hsl(var(--web-color-primary)); font-size:pxToRem(14);
     border-radius:pxToRem(12); line-height:1.2;
     box-sizing:border-box; padding-inline:pxToRem(4); padding-block: pxToRem(4);
     max-block-size:pxToRem(300)!important; overflow-y:auto;
@@ -123,13 +123,13 @@
 
 
   @mixin light-mode() {
-    --p-select-menu-bg-color: var(--aw-color-white);
-    --p-select-menu-border-color: var(--aw-color-black) / 0.06;
+    --p-select-menu-bg-color: var(--web-color-white);
+    --p-select-menu-border-color: var(--web-color-black) / 0.06;
     --p-select-menu-box-shadow-color: var(--transparent);
   }
   @mixin dark-mode() {
-    --p-select-menu-bg-color: var(--aw-color-greyscale-850);
-    --p-select-menu-border-color: var(--aw-color-white) / 0.10;
+    --p-select-menu-bg-color: var(--web-color-greyscale-850);
+    --p-select-menu-border-color: var(--web-color-white) / 0.10;
     --p-select-menu-box-shadow-color: var(--transparent);
   }
   @include light-mode();
@@ -170,10 +170,10 @@
   cursor: pointer;
 
   @mixin light-mode() {
-    --p-select-option-bg-color-hover: var(--aw-color-greyscale-25);
+    --p-select-option-bg-color-hover: var(--web-color-greyscale-25);
   }
   @mixin dark-mode() {
-    --p-select-option-bg-color-hover: var(--aw-color-white) / 0.12;
+    --p-select-option-bg-color-hover: var(--web-color-white) / 0.12;
   }
   @include light-mode();
   #{$theme-dark} & {

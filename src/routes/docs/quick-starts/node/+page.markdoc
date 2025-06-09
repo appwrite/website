@@ -54,12 +54,12 @@ npm init
 Install the Node.js Appwrite SDK.
 
 ```sh
-npm install node-appwrite
+npm install node-appwrite@17.0.0
 ```
 {% /section %}
 {% section #step-4 step=4 title="Import Appwrite" %}
 
-Find your project ID in the **Settings** page. Also, click on the **View API Keys** button to find the API key that was created earlier. 
+Find your project ID in the **Settings** page. Also, click on the **View API Keys** button to find the API key that was created earlier.
 
 {% only_dark %}
 ![Project settings screen](/images/docs/quick-starts/dark/project-id.png)
@@ -68,7 +68,7 @@ Find your project ID in the **Settings** page. Also, click on the **View API Key
 ![Project settings screen](/images/docs/quick-starts/project-id.png)
 {% /only_light %}
 
-Create a new file `app.js` and initialize the Appwrite Client. Replace `<YOUR_PROJECT_ID>` with your project ID and `<YOUR_API_KEY>` with your API key.
+Create a new file `app.js` and initialize the Appwrite Client. Replace `<PROJECT_ID>` with your project ID and `<YOUR_API_KEY>` with your API key.
 
 ```js
 const sdk = require("node-appwrite");
@@ -76,8 +76,8 @@ const sdk = require("node-appwrite");
 const client = new sdk.Client();
 
 client
-    .setEndpoint("https://cloud.appwrite.io/v1")
-    .setProject("<YOUR_PROJECT_ID>")
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
     .setKey("<YOUR_API_KEY>");
 ```
 
@@ -94,36 +94,35 @@ var todoCollection;
 
 async function prepareDatabase() {
     todoDatabase = await databases.create(
-        sdk.ID.unique(), 
+        sdk.ID.unique(),
         'TodosDB'
     );
 
     todoCollection = await databases.createCollection(
-        todoDatabase.$id, 
-        sdk.ID.unique(), 
+        todoDatabase.$id,
+        sdk.ID.unique(),
         'Todos'
     );
 
     await databases.createStringAttribute(
-        todoDatabase.$id, 
-        todoCollection.$id, 
-        'title', 
-        255, 
+        todoDatabase.$id,
+        todoCollection.$id,
+        'title',
+        255,
         true
     );
 
     await databases.createStringAttribute(
-        todoDatabase.$id, 
-        todoCollection.$id, 
-        'description', 
-        255, false, 
+        todoDatabase.$id,
+        todoCollection.$id,
+        'description',
+        255, false,
         'This is a test description'
     );
-    
     await databases.createBooleanAttribute(
-        todoDatabase.$id, 
-        todoCollection.$id, 
-        'isComplete', 
+        todoDatabase.$id,
+        todoCollection.$id,
+        'isComplete',
         true
     );
 }
@@ -153,23 +152,21 @@ async function seedDatabase() {
     };
 
     await databases.createDocument(
-        todoDatabase.$id, 
-        todoCollection.$id, 
-        sdk.ID.unique(), 
+        todoDatabase.$id,
+        todoCollection.$id,
+        sdk.ID.unique(),
         testTodo1
     );
-    
     await databases.createDocument(
-        todoDatabase.$id, 
-        todoCollection.$id, 
-        sdk.ID.unique(), 
+        todoDatabase.$id,
+        todoCollection.$id,
+        sdk.ID.unique(),
         testTodo2
     );
-    
     await databases.createDocument(
-        todoDatabase.$id, 
-        todoCollection.$id, 
-        sdk.ID.unique(), 
+        todoDatabase.$id,
+        todoCollection.$id,
+        sdk.ID.unique(),
         testTodo3
     );
 }
@@ -184,7 +181,7 @@ Run the functions to by calling `runAllTasks();`.
 ```js
 async function getTodos() {
     var todos = await databases.listDocuments(
-        todoDatabase.$id, 
+        todoDatabase.$id,
         todoCollection.$id
     );
 

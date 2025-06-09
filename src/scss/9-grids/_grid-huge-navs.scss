@@ -4,7 +4,7 @@
   --p-grid-huge-navs-padding-inline: #{pxToRem(32)};
   --p-grid-huge-navs-main-header-height: #{pxToRem(73)};
   --p-grid-huge-navs-secondary-header-height: #{pxToRem(116)};
-  --p-grid-huge-navs-secondary-sticky-position: #{pxToRem(189)}; /* 80 + 116 + 24 (margin) */
+  --p-grid-huge-navs-secondary-sticky-position: #{pxToRem(189)}; /* 72 + 116 */
 
   --p-grid-huge-navs-side-nav-width-closed: #{pxToRem(73)};
   --p-grid-huge-navs-side-nav-width-opened: #{pxToRem(280)};
@@ -63,10 +63,10 @@
         display:none; /* hide */
         gap:0;
         padding-inline-start:pxToRem(24);  padding-inline-end:var(--p-grid-huge-navs-padding-inline);
-        border-inline-start:solid pxToRem(1) hsl(var(--aw-color-border));
+        border-inline-start:solid pxToRem(1) hsl(var(--web-color-border));
         background-color:hsl(var(--p-body-bg-color)); inline-size:var(--p-grid-huge-navs-side-nav-width-opened);
       }
-      &-list { margin-block-start:pxToRem(8); }
+      &-list { margin-block-start:pxToRem(8); padding-block-end:pxToRem(24); }
       &.is-open {
         .#{$p}-references-menu-content {
           display:flex; /* show */
@@ -78,7 +78,7 @@
   }
 
   @media #{$break2open} {
-    .#{$p}-side-nav-wrapper { border-inline-end:solid pxToRem(1) hsl(var(--aw-color-border)); }
+    .#{$p}-side-nav-wrapper { border-inline-end:solid pxToRem(1) hsl(var(--web-color-border)); }
     .#{$p}-article {
       &-header  {
         block-size:var(--p-grid-huge-navs-secondary-header-height);
@@ -93,7 +93,7 @@
       &-content { padding-inline:var(--p-grid-huge-navs-padding-inline); }
     }
     .#{$p}-references-menu {
-      border-inline-start:solid pxToRem(1) hsl(var(--aw-color-border));
+      border-inline-start:solid pxToRem(1) hsl(var(--web-color-border));
       &-content { position:sticky; inset-block-start:var(--p-grid-huge-navs-secondary-sticky-position); }
     }
   }
@@ -156,4 +156,8 @@
       }
     }
   }
+  /* work around spacing issue on huge screen between 1920px to 1984px */
+  @media (min-width: 1920px) And (max-width:1940.9px){  .web-article-header { padding-inline-end:32px; }  }
+  @media (min-width: 1941px) And (max-width:1960.9px){  .web-article-header { padding-inline-end:20px; }  }
+  @media (min-width: 1961px) And (max-width:1983.9px){  .web-article-header { padding-inline-end:10px; }  }
 }

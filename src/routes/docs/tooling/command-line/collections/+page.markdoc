@@ -1,0 +1,253 @@
+---
+layout: article
+title: Collections
+description: Efficiently deploy your Appwrite collections using the Command-Line Tool (CLI). 
+---
+
+{% partial file="cli-disclaimer.md" /%}
+
+Create and manage your collections using the CLI commands. The Appwrite CLI also helps you push your project's databases and collections schema from one project to another.
+
+# Initialize collection {% #initialize-collection %}
+
+Create a new collection using the following command:
+
+```sh
+appwrite init collections
+```
+
+# Pull collection {% #pull-collection %}
+
+You can also pull your existing Appwrite collections and databases from the Appwrite Console using the `pull` command in the folder containing your `appwrite.json` file.
+
+```sh
+appwrite pull collections
+```
+
+# appwrite.json {% #appwritejson %}
+
+After [initializing](/docs/tooling/command-line/installation#initialization) your Appwrite project and pulling your existing collections, your `appwrite.json` file should look similar to the following:
+
+```json
+{
+    "projectId": "<PROJECT_ID>",
+    "databases": [
+        {
+            "$id": "<DATABASE_ID>",
+            "name": "songs",
+            "$createdAt": "2023-07-01T18:35:27.802+00:00",
+            "$updatedAt": "2023-08-01T21:41:41.663+00:00",
+            "enabled": true
+        }
+    ],
+    "collections": [
+        {
+            "$id": "<COLLECTION_ID>",
+            "$permissions": [
+                "create(\"any\")",
+                "read(\"any\")",
+                "update(\"any\")",
+                "delete(\"any\")"
+            ],
+            "databaseId": "<DATABASE_ID>",
+            "name": "music",
+            "enabled": true,
+            "documentSecurity": false,
+            "attributes": [
+                {
+                    "key": "userID",
+                    "type": "string",
+                    "status": "available",
+                    "error": "",
+                    "required": false,
+                    "array": false,
+                    "size": 100,
+                    "default": null
+                },
+                {
+                    "key": "name",
+                    "type": "string",
+                    "status": "available",
+                    "error": "",
+                    "required": false,
+                    "array": false,
+                    "size": 100,
+                    "default": null
+                },
+                {
+                    "key": "cloudinaryId",
+                    "type": "string",
+                    "status": "available",
+                    "error": "",
+                    "required": false,
+                    "array": false,
+                    "size": 100,
+                    "default": null
+                },
+                {
+                    "key": "user",
+                    "type": "string",
+                    "status": "available",
+                    "error": "",
+                    "required": false,
+                    "array": false,
+                    "size": 100,
+                    "default": null
+                },
+                {
+                    "key": "audio",
+                    "type": "string",
+                    "status": "available",
+                    "error": "",
+                    "required": false,
+                    "array": false,
+                    "size": 200,
+                    "default": null
+                },
+                {
+                    "key": "genre",
+                    "type": "string",
+                    "status": "available",
+                    "error": "",
+                    "required": false,
+                    "array": false,
+                    "size": 500,
+                    "default": null
+                },
+                {
+                    "key": "artist",
+                    "type": "string",
+                    "status": "available",
+                    "error": "",
+                    "required": false,
+                    "array": false,
+                    "size": 500,
+                    "default": null
+                }
+            ],
+            "indexes": []
+        }
+    ]
+}
+```
+
+# Push collection {% #push-collection %}
+
+{% partial file="cli-push-command.md" /%}
+
+```sh
+appwrite push collections
+```
+
+# Commands {% #commands %}
+
+The databases command allows you to create structured collections of documents, queries, and filter lists of documents. Appwrite database CLI commands generally follow the following syntax:
+
+```sh
+appwrite databases [COMMAND] [OPTIONS]
+```
+
+{% table %}
+* Command
+* Description
+---
+* `list-collections [options]`
+* Get a list of all collections that belong to the provided databaseId. You can use the search parameter to filter your results.
+---
+* `create-collection [options]`
+* Create a new Collection. Before using this route, you should create a new database resource using either a [server integration](https://appwrite.io/docs/server/databases#databasesCreateCollection) API or directly from your database console.
+---  
+* `get-collection [options]`
+* Get a collection by its unique ID. This endpoint response returns a JSON object with the collection metadata.
+---
+* `update-collection [options]`
+* Update a collection by its unique ID.
+---
+* `delete-collection [options]`
+* Delete a collection by its unique ID. Only users with write permissions have access to delete this resource.
+---
+* `list-attributes [options]`
+* List attributes in the collection.
+---
+* `create-boolean-attribute [options]`
+* Create a boolean attribute.
+---
+* `update-boolean-attribute [options]`
+* Update a boolean attribute. Changing the 'default' value will not update already existing documents.
+---
+* `create-datetime-attribute [options]`
+* Create a date time attribute according to the ISO 8601 standard.
+---
+* `update-datetime-attribute [options]`
+* Update a date time attribute. Changing the 'default' value will not update already existing documents.
+---
+* `create-email-attribute [options]`
+* Create an email attribute.
+---
+* `update-email-attribute [options]`
+* Update an email attribute. Changing the 'default' value will not update already existing documents.
+---
+* `create-enum-attribute [options]`
+* Create an enumeration attribute. The 'elements' param acts as a white-list of accepted values for this attribute.
+---
+* `update-enum-attribute [options]`
+* Update an enum attribute. Changing the 'default' value will not update already existing documents.
+---  
+* `create-float-attribute [options]`
+* Create a float attribute. Optionally, minimum and maximum values can be provided.
+---
+* `update-float-attribute [options]`
+* Update a float attribute. Changing the 'default' value will not update already existing documents.
+---  
+* `create-integer-attribute [options]`
+* Create an integer attribute. Optionally, minimum and maximum values can be provided.
+---
+* `update-integer-attribute [options]`
+* Update an integer attribute. Changing the 'default' value will not update already existing documents.
+---
+* `create-ip-attribute [options]`     
+* Create IP address attribute.
+---
+* `update-ip-attribute [options]`
+* Update an ip attribute. Changing the 'default' value will not update already existing documents.
+---
+* `create-relationship-attribute [options]`
+* Create relationship attribute. [Learn more about relationship attributes](https://appwrite.io/docs/databases-relationships#relationship-attributes).
+---
+* `create-string-attribute [options]`
+* Create a string attribute.
+---
+* `update-string-attribute [options]`
+* Update a string attribute. Changing the 'default' value will not update already existing documents.
+---
+* `create-url-attribute [options]`          
+* Create a URL attribute.
+---
+* `update-url-attribute [options]`
+* Update an url attribute. Changing the 'default' value will not update already existing documents.
+---
+* `get-attribute [options]`
+* Get attribute by ID.
+---
+* `delete-attribute [options]` 
+* Deletes an attribute.
+---
+* `update-relationship-attribute [options]`  
+* Update relationship attribute. [Learn more about relationship attributes](https://appwrite.io/docs/databases-relationships#relationship-attributes).
+---
+* `list-indexes [options]`
+* List indexes in the collection.
+---
+* `create-index [options]`
+* Creates an index on the attributes listed. Your index should include all the attributes you will query in a single request. Attributes can be 'key', 'fulltext', and 'unique'.
+---
+* `get-index [options]`
+* Get index by ID.
+---
+* `delete-index [options]`
+* Delete an index.
+---
+* `list-collection-logs [options]`
+* Get the collection activity logs list by its unique ID.
+---
+{% /table %}

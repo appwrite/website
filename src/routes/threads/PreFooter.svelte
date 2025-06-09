@@ -1,32 +1,40 @@
+<script>
+    import { Button, Icon } from '$lib/components/ui';
+</script>
+
 <div class="wrapper">
-    <img src="/images/bgs/pre-footer.png" alt="" class="aw-pre-footer-bg" style="z-index:-1" />
-    <div class="aw-container">
-        <h2 class="aw-display aw-u-color-text-primary">Need support?</h2>
+    <img src="/images/bgs/pre-footer.png" alt="" class="web-pre-footer-bg -z-1" />
+    <div class="container">
+        <h2 class="text-display font-aeonik-pro text-primary">Need support?</h2>
         <div class="cards">
             <div class="cardy">
-                <h3 class="aw-label aw-u-color-text-primary">Join our Discord</h3>
-                <p class="aw-main-body-400 u-margin-block-start-16 aw-u-color-text-primary">
-                    Get community support by joining our Discord server
+                <h3 class="text-label text-primary">Join our Discord</h3>
+                <p class="text-body text-primary mt-4">
+                    Get community support by joining our Discord server.
                 </p>
-                <a class="aw-button u-margin-block-start-24" href="https://appwrite.io/discord">
-                    <span class="aw-icon-discord" />
-                    <span class="text">Join Discord</span>
-                </a>
+                <Button class="mt-6" href="https://appwrite.io/discord">
+                    <Icon name="discord"></Icon>
+                    Join Discord
+                </Button>
             </div>
             <div class="cardy">
-                <h3 class="aw-label aw-u-color-text-primary">Get premium support</h3>
-                <p class="aw-main-body-400 u-margin-block-start-16 aw-u-color-text-primary">
-                    Become a pro user and get email support from our team
+                <h3 class="text-label text-primary">Get premium support</h3>
+                <p class="text-body text-primary mt-4">
+                    Join Appwrite Pro and get email support from our team.
                 </p>
-                <a class="aw-button u-margin-block-start-24" href="https://appwrite.io/pricing">
-                    <span class="text">Learn more</span>
-                </a>
+                <Button
+                    class="mt-6"
+                    href="https://appwrite.io/pricing"
+                    event="threads-pricing_link-click">Learn more</Button
+                >
             </div>
         </div>
     </div>
 </div>
 
 <style lang="scss">
+    @use '$scss/abstract/mixins/border-gradient' as gradients;
+
     .wrapper {
         padding-block: 7.5rem;
         overflow: hidden;
@@ -46,7 +54,7 @@
     }
 
     .cardy {
-        @include border-gradient;
+        @include gradients.border-gradient;
         --m-border-gradient-before: linear-gradient(
             180deg,
             rgba(255, 255, 255, 0.16) 0%,
@@ -59,7 +67,7 @@
         padding: 1.5rem;
     }
 
-    .aw-pre-footer-bg {
+    .web-pre-footer-bg {
         position: absolute;
         top: clamp(300px, 50vw, 50%);
         left: clamp(300px, 50vw, 50%);

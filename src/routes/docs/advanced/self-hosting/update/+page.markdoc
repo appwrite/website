@@ -9,9 +9,9 @@ To upgrade your Appwrite server from an older version, you should use the Appwri
 As of version 0.14, Appwrite requires [Docker Compose Version 2](https://docs.docker.com/compose/install/). To upgrade Appwrite, make sure your Docker installation is updated to support Composer V2.
 
 {% info title="A note about migration" %}
-At present, we support migrations only to the **immediately higher versions**, i.e from `0.6.x` to `0.7.x` and `0.7.x` to `0.8.x` and so on. 
+You can migrate to versions that require a migration path and are higher than your current version, such as from 1.5.0 to 1.5.11.
 
-So if you're trying to migrate from `0.6.0` to `0.8.2`, you will first need to migrate to `0.7.x` and then to `0.8.2`.
+If you're trying to migrate to a next major version such as from `1.5.0` to `1.6.0`, you will first need to migrate to the latest patch version `1.5.11`, then to `1.6.0`.
 
 It is highly recommended to [backup your server](https://gist.github.com/Meldiron/47b5851663668102a676aff43c6341f7) data before running the migration. It is recommended to run the migration process on a dev instance and make sure your application is working well and that you have checked for any breaking changes in the new version [changelog](https://github.com/appwrite/appwrite/tags).
 {% /info %}
@@ -28,6 +28,10 @@ This is the parent directory where you will find the appwrite directory, inside 
 
 # Installing the next version {% #install-next-version %}
 
+{% info title="Parent directory naming" %}
+Your Appwrite installation's parent directory name is expected to be `appwrite`. Changing the directory name will result in a miss-matched docker project names.
+{% /info %}
+
 ## Unix
 
 ```sh
@@ -35,7 +39,7 @@ docker run -it --rm \
     --volume /var/run/docker.sock:/var/run/docker.sock \
     --volume "$(pwd)"/appwrite:/usr/src/code/appwrite:rw \
     --entrypoint="upgrade" \
-    appwrite/appwrite:1.4.13
+    appwrite/appwrite:1.7.4
 ```
 
 ## CMD
@@ -45,7 +49,7 @@ docker run -it --rm ^
     --volume //var/run/docker.sock:/var/run/docker.sock ^
     --volume "%cd%"/appwrite:/usr/src/code/appwrite:rw ^
     --entrypoint="upgrade" ^
-    appwrite/appwrite:1.4.13
+    appwrite/appwrite:1.7.4
 ```
 
 ## PowerShell
@@ -55,10 +59,10 @@ docker run -it --rm `
     --volume /var/run/docker.sock:/var/run/docker.sock `
     --volume ${pwd}/appwrite:/usr/src/code/appwrite:rw `
     --entrypoint="upgrade" `
-    appwrite/appwrite:1.4.13
+    appwrite/appwrite:1.7.4
 ```
 
-This will pull the `docker-compose.yml` file for the new version and perform the installation. 
+This will pull the `docker-compose.yml` file for the new version and perform the installation.
 Once the setup completes, verify that you have the latest version of Appwrite.
 
 ```sh

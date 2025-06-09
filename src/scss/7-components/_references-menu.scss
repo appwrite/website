@@ -1,9 +1,9 @@
 @use '../abstract' as *;
 
 .#{$p}-references-menu {
-  --p-references-menu-header-color-text: var(--aw-color-primary);
-  --p-references-menu-link-color-text: var(--aw-color-secondary);
-  --p-references-menu-link-color-text-selected: var(--aw-color-primary);
+  --p-references-menu-header-color-text: var(--web-color-primary);
+  --p-references-menu-link-color-text: var(--web-color-secondary);
+  --p-references-menu-link-color-text-selected: var(--web-color-primary);
 
   position:relative; z-index:10;
   display:flex; flex-direction:column; padding-inline:pxToRem(16);
@@ -11,20 +11,32 @@
   &-content {
     display:flex; flex-direction:column; gap:pxToRem(24); inline-size:pxToRem(255);
   }
-  &-title { color:hsl(var(--aw-color-primary)); }
+  &-title { color:hsl(var(--web-color-primary)); }
   &-list {
-    @include scroll(); 
+    @include scroll();
     display:flex; flex-direction:column; gap:pxToRem(16);
     padding-block:pxToRem(4);
     padding-inline: pxToRem(4);
-    
+
     &:not(.#{$p}-references-menu-list .#{$p}-references-menu-list) {
       padding-inline-start: pxToRem(28);
       margin-inline-start: pxToRem(-24);
       overflow-y:auto;
     }
   }
-  &-item { padding-inline:pxToRem(-4); }
+  &-item {
+    position:relative; padding-inline:pxToRem(-4);
+    &:has(.is-selected) {
+      &::before {
+        position:absolute; inset-block-start:0; inset-inline-start:pxToRem(-21); content: '';
+        block-size:100%; inline-size:pxToRem(1); background-color: hsl(var(--p-references-menu-link-color-text));
+      }
+    }
+    &:has(.web-references-menu-list)::before { display:none!important; }
+    .web-references-menu-list {
+      ::before { inset-inline-start:pxToRem(-64)}
+    }
+  }
   &-link {
     display:flex; gap:pxToRem(8);
     color:hsl(var(--p-references-menu-link-color-text));

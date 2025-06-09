@@ -1,9 +1,9 @@
 @use '../abstract' as *;
 
 .#{$p}-articles {
-  --p-articles-item-bg-color: var(--aw-color-white);
-  --p-articles-item-title-color: var(--aw-color-greyscale-900);
-  --p-articles-item-paragraph-color: var(--aw-color-greyscale-700);
+  --p-articles-item-bg-color: var(--web-color-white);
+  --p-articles-item-title-color: var(--web-color-greyscale-900);
+  --p-articles-item-paragraph-color: var(--web-color-greyscale-700);
 
   &-list { display:grid; grid-template-columns:repeat(auto-fill, minmax(pxToRem(300), 1fr)); gap:pxToRem(32); }
   &-item {
@@ -15,13 +15,11 @@
     &-image { border-radius:pxToRem(8); max-inline-size:100%; }
   }
 
-  &.is-scroll {
-    overflow-x:scroll;
-  }
+  &.is-scroll { overflow-x:scroll; }
 
   #{$theme-dark} & {
-    --p-articles-item-bg-color: var(--aw-color-greyscale-850) / 0.94;
-    --p-articles-item-title-color: var(--aw-color-greyscale-100);
-    --p-articles-item-paragraph-color: var(--aw-color-greyscale-300);
+    --p-articles-item-bg-color: var(--web-color-greyscale-850) / 0.94;
+    --p-articles-item-title-color: var(--web-color-greyscale-100);
+    --p-articles-item-paragraph-color: var(--web-color-greyscale-300);
   }
 }

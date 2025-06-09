@@ -5,7 +5,7 @@ description: Unlock advanced user management - Appwrite's Account API for seamle
 ---
 
 Appwrite Account API is used for user signup and login in client applications.
-Users can be organized into teams and be given labels, so they can be given different permissions and access different resources. 
+Users can be organized into teams and be given labels, so they can be given different permissions and access different resources.
 Each user's account can also have their own preference object, which you can use to save preferences such as theme, language, and notification settings.
 
 {% partial file="account-vs-user.md" /%}
@@ -27,11 +27,11 @@ You can store user preferences on a user's account using Appwrite's [Update Pref
 Preferences are stored as a key-value JSON object. The maximum allowed size for preferences is 64kB, and an error will be thrown if this limit is exceeded.
 
 {% multicode %}
-```js
+```client-web
 import { Client, Account } from "appwrite";
 
 const client = new Client()
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
     .setProject('<PROJECT_ID>');                 // Your project ID
 
 const account = new Account(client);
@@ -44,11 +44,11 @@ promise.then(function (response) {
     console.log(error); // Failure
 });
 ```
-```dart
+```client-flutter
 import 'package:appwrite/appwrite.dart';
 
 final client = Client()
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
     .setProject('<PROJECT_ID>');                 // Your project ID
 
 final account = Account(client);
@@ -60,37 +60,37 @@ final user = await account.updatePrefs(
     }
 );
 ```
-```kotlin
-import io.appwrite.Client
-import io.appwrite.services.Account
-
-val client = Client()
-    .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
-    .setProject("<PROJECT_ID>")                  // Your project ID
-
-val account = Account(client)
-
-val user = account.updatePrefs(
-    prefs = mapOf(
-        "darkTheme" to true, 
-        "language" to "en"
-    )
-)
-```
-```swift
+```client-apple
 import Appwrite
 
 let client = Client()
-    .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
     .setProject("<PROJECT_ID>")                  // Your project ID
 
 let account = Account(client)
 
 let user = try await account.updatePrefs(
     prefs: [
-        "darkTheme": true, 
+        "darkTheme": true,
         "language": "en"
     ]
+)
+```
+```client-android-kotlin
+import io.appwrite.Client
+import io.appwrite.services.Account
+
+val client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
+    .setProject("<PROJECT_ID>")                  // Your project ID
+
+val account = Account(client)
+
+val user = account.updatePrefs(
+    prefs = mapOf(
+        "darkTheme" to true,
+        "language" to "en"
+    )
 )
 ```
 ```graphql
@@ -111,11 +111,11 @@ mutation {
 After a user's preferences are updated, they can be retrieved using the [get account preferences](/docs/references/cloud/client-web/account#getPrefs) endpoint.
 
 {% multicode %}
-```js 
+```client-web
 import { Client, Account } from "appwrite";
 
 const client = new Client()
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
     .setProject('<PROJECT_ID>');                 // Your project ID
 
 const account = new Account(client);
@@ -128,34 +128,34 @@ promise.then(function (response) {
     console.log(error); // Failure
 });
 ```
-```dart
+```client-flutter
 import 'package:appwrite/appwrite.dart';
 
 final client = Client()
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
     .setProject('<PROJECT_ID>');                 // Your project ID
 
 final account = Account(client);
 
 final prefs = await account.getPrefs();
 ```
-```kotlin
+```client-android-kotlin
 import io.appwrite.Client
 import io.appwrite.services.Account
 
 val client = Client(context)
-    .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
     .setProject("<PROJECT_ID>")                  // Your project ID
 
 val account = Account(client)
 
 val prefs = account.getPrefs()
 ```
-```swift
+```client-apple
 import Appwrite
 
 let client = Client()
-    .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
     .setProject("<PROJECT_ID>")                  // Your project ID
 
 let account = Account(client)
@@ -175,7 +175,6 @@ query {
 
 You can grant permissions to all users using the `Role.users(<STATUS>)` role or
 individual users using the `Role.user(<USER_ID>, <STATUS>)` role.
- 
 | Description                                 | Role                               |
 | ------------------------------------------- | ------------------------------------------- |
 | Verified users   | `Role.users('verified')`|

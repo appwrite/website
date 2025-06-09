@@ -1,8 +1,16 @@
 <script lang="ts">
+    import type { Snippet } from 'svelte';
+
     let carousel: HTMLElement;
 
-    export let size: 'default' | 'medium' | 'big' = 'default';
-    export let gap = 32;
+    interface Props {
+        size?: 'default' | 'medium' | 'big';
+        gap?: number;
+        header?: Snippet;
+        children: Snippet;
+    }
+
+    const { size = 'default', gap = 32, header, children }: Props = $props();
     let scroll = 0;
 
     function calculateScrollAmount(prev = false) {
@@ -32,8 +40,8 @@
         });
     }
 
-    let isEnd = false;
-    let isStart = true;
+    let isEnd = $state(false);
+    let isStart = $state(true);
 
     function handleScroll() {
         isStart = carousel.scrollLeft <= 0;
@@ -42,43 +50,52 @@
 </script>
 
 <div>
-    <div class="u-flex u-flex-wrap u-cross-center u-margin-block-start-8">
-        <slot name="header" />
-        <div class="u-flex u-gap-12 u-cross-end u-margin-inline-start-auto">
+    <div class="mt-2 flex flex-wrap items-center">
+        {#if header}
+            {@render header()}
+        {/if}
+        <div class="nav ml-auto flex items-end gap-3">
             <button
-                class="aw-icon-button"
+                class="web-icon-button cursor-pointer"
                 aria-label="Move carousel backward"
                 disabled={isStart}
-                on:click={() => prev()}
+                onclick={prev}
             >
-                <span class="aw-icon-arrow-left" aria-hidden="true" />
+                <span class="web-icon-arrow-left" aria-hidden="true"></span>
             </button>
             <button
-                class="aw-icon-button"
+                class="web-icon-button cursor-pointer"
                 aria-label="Move carousel forward"
                 disabled={isEnd}
-                on:click={() => next()}
+                onclick={next}
             >
-                <span class="aw-icon-arrow-right" aria-hidden="true" />
+                <span class="web-icon-arrow-right" aria-hidden="true"></span>
             </button>
         </div>
     </div>
 
     <div class="carousel-wrapper" data-state={isStart ? 'start' : isEnd ? 'end' : 'middle'}>
         <ul
-            class="aw-grid-articles u-margin-block-start-32 carousel"
+            class="web-grid-articles carousel mt-8"
             class:is-medium={size === 'medium'}
             class:is-big={size === 'big'}
             style:gap="{gap}px"
             bind:this={carousel}
-            on:scroll={handleScroll}
+            onscroll={handleScroll}
         >
-            <slot />
+            {@render children()}
         </ul>
     </div>
 </div>
 
 <style lang="scss">
+    .nav {
+        button {
+            @media screen and (max-width: 1023.9px) {
+                display: none !important;
+            }
+        }
+    }
     .carousel-wrapper {
         position: relative;
 
@@ -97,7 +114,7 @@
             left: 0;
             background: linear-gradient(
                 to right,
-                hsl(var(--aw-color-background-docs)),
+                hsl(var(--web-color-background-docs)),
                 transparent
             );
         }
@@ -108,7 +125,11 @@
 
         &::after {
             right: 0;
-            background: linear-gradient(to left, hsl(var(--aw-color-background-docs)), transparent);
+            background: linear-gradient(
+                to left,
+                hsl(var(--web-color-background-docs)),
+                transparent
+            );
         }
 
         &[data-state='end']::after {

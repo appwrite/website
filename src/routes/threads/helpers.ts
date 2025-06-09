@@ -1,11 +1,10 @@
 import {
     PUBLIC_APPWRITE_COL_MESSAGES_ID,
     PUBLIC_APPWRITE_COL_THREADS_ID,
-    PUBLIC_APPWRITE_DB_MAIN_ID,
-    PUBLIC_APPWRITE_FN_TLDR_ID
+    PUBLIC_APPWRITE_DB_MAIN_ID
 } from '$env/static/public';
-import { databases, functions } from '$lib/appwrite';
-import { Query } from 'appwrite';
+import { databases } from '$lib/appwrite';
+import { Query } from '@appwrite.io/console';
 import type { DiscordMessage, DiscordThread } from './types';
 
 type Ranked<T> = {
@@ -20,14 +19,25 @@ type FilterThreadsArgs = {
     allTags?: boolean;
 };
 
+export function sanitizeContent(rawContent: string, maxLength: number = 200): string {
+    const cleaned = rawContent.replace(
+        /```(?:\w+)?\n([\s\S]*?)```|```([\s\S]*?)```/g,
+        (_, withLang, withoutLang) => {
+            return (withLang || withoutLang).trim();
+        }
+    );
+
+    return cleaned.length > maxLength ? cleaned.slice(0, maxLength) + '...' : cleaned;
+}
+
 export function filterThreads({ q, threads: threadDocs, tags, allTags }: FilterThreadsArgs) {
     const threads = tags
         ? threadDocs.filter((thread) => {
-              const lowercaseTags = thread.tags?.map((tag) => tag.toLowerCase());
+              const threadTags = thread.tags?.map((tag) => tag);
               if (allTags) {
-                  return tags?.every((tag) => lowercaseTags?.includes(tag.toLowerCase()));
+                  return tags?.every((tag) => threadTags?.includes(tag));
               } else {
-                  return tags?.some((tag) => lowercaseTags?.includes(tag.toLowerCase()));
+                  return tags?.some((tag) => threadTags?.includes(tag));
               }
           })
         : threadDocs;
@@ -69,10 +79,9 @@ type GetThreadsArgs = Omit<FilterThreadsArgs, 'threads'>;
 export async function getThreads({ q, tags, allTags }: GetThreadsArgs) {
     let query = [q ? Query.search('search_meta', q) : undefined, Query.orderDesc('$createdAt')];
 
-    tags = tags?.filter(Boolean).map((tag) => tag.toLowerCase()) ?? [];
-
+    tags = tags?.filter(Boolean).map((tag) => tag) ?? [];
     if (tags.length > 0) {
-        query = [...query, Query.search('tags', tags.join(','))];
+        query = [...query, Query.contains('tags', tags)];
     }
 
     const data = await databases.listDocuments(
@@ -112,7 +121,7 @@ export async function getThreadMessages(threadId: string) {
     );
 }
 
-export async function* iterateAllThreads() {
+export async function* iterateAllThreads(total: number | undefined = undefined) {
     let offset = 0;
     const limit = 100;
     while (true) {
@@ -131,5 +140,9 @@ export async function* iterateAllThreads() {
         }
 
         offset += limit;
+
+        if (total !== undefined && offset >= total) {
+            break;
+        }
     }
 }

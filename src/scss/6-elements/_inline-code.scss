@@ -1,8 +1,8 @@
 @use '../abstract' as *;
 
 .#{$p}-inline-code {
-    --p-inline-code-text-color: var(--aw-color-secondary);
-    --p-inline-code-bg-color: var(--aw-color-smooth);
+    --p-inline-code-text-color: var(--web-color-secondary);
+    --p-inline-code-bg-color: var(--web-color-smooth);
 
     color: hsl(var(--p-inline-code-text-color));
     background-color: hsl(var(--p-inline-code-bg-color));
@@ -11,5 +11,6 @@
     padding-inline: pxToRem(4);
     padding-block: pxToRem(1);
     border-radius: pxToRem(4);
-    font-family: var(--aw-font-family-fira-code);
+    font-family: var(--web-font-family-fira-code);
+    word-break: break-word;
 }

@@ -1,6 +1,12 @@
 <script lang="ts">
     import { afterNavigate } from '$app/navigation';
-    import type { NavLink } from '$lib/layouts/Main.svelte';
+    import { IsLoggedIn } from '$lib/components';
+    import { SOCIAL_STATS } from '$lib/constants';
+    import type { NavLink } from './MainNav.svelte';
+    import { getAppwriteDashboardUrl } from '$lib/utils/dashboard';
+    import { Button, InlineTag, Icon } from '$lib/components/ui';
+    import { GithubStats } from '$lib/components/shared';
+    import { trackEvent } from '$lib/actions/analytics';
 
     export let open = false;
     export let links: NavLink[];
@@ -12,39 +18,45 @@
 
 <svelte:window on:resize={() => open && (open = false)} />
 
-<nav class="aw-side-nav aw-is-not-desktop" class:u-hide={!open}>
-    <div class="aw-side-nav-wrapper aw-u-padding-inline-16">
-        <div class="u-flex items-center u-gap-8">
-            <a href="https://cloud.appwrite.io/register" class="aw-button is-secondary aw-u-flex-1">
+<nav class="web-side-nav web-is-not-desktop" class:hidden={!open}>
+    <div class="web-side-nav-wrapper ps-4 pe-4">
+        <div class="flex items-center gap-2 px-4">
+            <Button
+                href={getAppwriteDashboardUrl('/register')}
+                variant="secondary"
+                class="flex-1"
+                event="mobile_nav-sign_up-click"
+            >
                 Sign up
-            </a>
-
-            <a href="https://cloud.appwrite.io" class="aw-button aw-u-flex-1">Get started</a>
+            </Button>
+            <IsLoggedIn class="flex-1" />
         </div>
-        <div class="aw-side-nav-scroll">
+        <div class="web-side-nav-scroll">
             <section>
                 <ul>
-                    {#each links as { href, label }}
+                    {#each links as { href, label, mobileSubmenu }}
                         <li>
-                            <a class="aw-side-nav-button" {href}>
-                                <span class="aw-caption-400">{label}</span>
-                            </a>
+                            {#if mobileSubmenu}
+                                <svelte:component this={mobileSubmenu} {label} />
+                            {:else}
+                                <a
+                                    class="web-side-nav-button"
+                                    {href}
+                                    onclick={() =>
+                                        trackEvent(
+                                            `mobile-nav-${label.toLowerCase().replace(' ', '_')}-click`
+                                        )}
+                                >
+                                    <span class="text-caption">{label}</span>
+                                </a>
+                            {/if}
                         </li>
                     {/each}
                 </ul>
             </section>
         </div>
-        <div class="aw-side-nav-mobile-footer-buttons">
-            <a
-                href="https://github.com/appwrite/appwrite/stargazers"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="aw-button is-text aw-u-inline-width-100-percent-mobile"
-            >
-                <span class="aw-icon-star" aria-hidden="true" />
-                <span class="text">Star on GitHub</span>
-                <span class="aw-inline-tag aw-sub-body-400">38.4K</span>
-            </a>
+        <div class="web-side-nav-mobile-footer-buttons">
+            <GithubStats class="w-full! md:w-fit" />
         </div>
     </div>
 </nav>

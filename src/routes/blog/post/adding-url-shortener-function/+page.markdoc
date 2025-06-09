@@ -6,7 +6,7 @@ cover: /images/blog/adding-url-shortener/cover.png
 timeToRead: 5
 date: 2023-11-08
 author: haimantika-mitra
-category: functions
+category: tutorial
 featured: false
 ---
 
@@ -20,7 +20,7 @@ In this blog, we’ll learn to build a URL shortener using Appwrite Functions te
 You can find the source code on our [templates GitHub repository](https://github.com/appwrite/templates/tree/main/node/url-shortener).
 
 # Setting up the Template
-To get started, you need to navigate to the functions page on the **[Appwrite](https://appwrite.io/cloud)** console. From there, we will select the **Templates** tab, search for and select the **URL Shortener** function template.
+To get started, you need to navigate to the functions page on the **[Appwrite](https://cloud.appwrite.io/)** console. From there, we will select the **Templates** tab, search for and select the **URL Shortener** function template.
 
 ![Function template](/images/blog/adding-url-shortener/functions.png)
 
@@ -44,7 +44,7 @@ Visit the **Domains** tab on the function page and copy the domain URL to test
 
 Go to the function URL in your web browser, and you'll see a short url like the one shown below.
 
-# Next Steps
+# Next steps
 
 URL shorteners often offer additional features such as tracking click-through rates, providing analytics on link usage, and allowing users to customize the shortened URL to some extent.This Function Template can be extended to perform a lot of functionalities. Some examples are:
 

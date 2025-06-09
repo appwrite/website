@@ -41,7 +41,7 @@ export const useUserSession = () =>  {
     };
 
     const login = async (email: string, password: string): Promise<void> => {
-        const authUser = await account.createEmailSession(email, password); // Open user session in Appwrite
+        const authUser = await account.createEmailPasswordSession(email, password); // Open user session in Appwrite
         current.value = authUser; // Pass user data to current ref
         navigateTo("/");
     };
@@ -139,7 +139,7 @@ The handle submit and submit type are props passed from `pages/login.vue`
 <!-- components/authForm.vue -->
 
 <template>
-  <form
+<form
   class="form u-width-full-line u-max-width-500 u-margin-block-start-16"
   @submit.prevent="handleSubmit"
 >

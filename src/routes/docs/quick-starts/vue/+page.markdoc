@@ -44,7 +44,7 @@ npm init vue@latest my-app && cd my-app
 Install the JavaScript Appwrite SDK.
 
 ```sh
-npm install appwrite
+npm install appwrite@18.1.1
 ```
 {% /section %}
 {% section #step-4 step=4 title="Import Appwrite" %}
@@ -57,16 +57,16 @@ Find your project's ID in the **Settings** page.
 ![Project settings screen](/images/docs/quick-starts/project-id.png)
 {% /only_light %}
 
-Create a new file `src/lib/appwrite.js` and add the following code to it, replace `<YOUR_PROJECT_ID>` with your project ID.
+Create a new file `src/lib/appwrite.js` and add the following code to it, replace `<PROJECT_ID>` with your project ID.
 
-```js
+```client-web
 import { Client, Account} from 'appwrite';
 
 export const client = new Client();
 
 client
-    .setEndpoint('https://cloud.appwrite.io/v1')
-    .setProject('<YOUR_PROJECT_ID>'); // Replace with your project ID
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>'); // Replace with your project ID
 
 export const account = new Account(client);
 export { ID } from 'appwrite';
@@ -107,7 +107,7 @@ const password = ref('');
 const name = ref('');
 
 const login = async (email, password) => {
-  await account.createEmailSession(email, password);
+  await account.createEmailPasswordSession(email, password);
   loggedInUser.value = await account.get();
 };
 

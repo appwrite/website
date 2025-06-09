@@ -1,127 +1,120 @@
 x-logging: &x-logging
-  logging:
-    driver: 'json-file'
-    options:
-      max-file: '5'
-      max-size: '20m'
+    logging:
+        driver: 'json-file'
+        options:
+            max-file: '5'
+            max-size: '20m'
 
 x-update-config: &x-update-config
-  update_config:
-    order: stop-first
-    failure_action: rollback
-    parallelism: 2
-    delay: 5s
-  rollback_config:
-    failure_action: pause
-    monitor: 5s
-    parallelism: 2
-    order: stop-first
+    update_config:
+        order: stop-first
+        failure_action: rollback
+        parallelism: 1
+        delay: 10s
+    rollback_config:
+        failure_action: pause
+        monitor: 5s
+        parallelism: 2
+        order: stop-first
 
 version: '3.8'
 
 services:
-  traefik:
-    image: traefik:2.9
-    <<: *x-logging
-    command:
-      - --log.level=DEBUG
-      - --api.insecure=true
-      - --providers.docker=true
-      - --providers.docker.watch=true
-      - --providers.docker.swarmMode=true
-      - --providers.docker.exposedByDefault=false
-      - --entrypoints.web.address=:80
-      - --entrypoints.websecure.address=:443
-      - --entrypoints.web.http.redirections.entrypoint.to=websecure
-      - --entrypoints.web.http.redirections.entrypoint.scheme=https
-      - --providers.docker.constraints=Label(`traefik.constraint-label-stack`,`appwrite`)
-      - --certificatesresolvers.myresolver.acme.httpchallenge=true
-      - --certificatesresolvers.myresolver.acme.httpchallenge.entrypoint=web
-      - --certificatesresolvers.myresolver.acme.email=$_APP_SYSTEM_SECURITY_EMAIL_ADDRESS
-      - --certificatesresolvers.myresolver.acme.storage=/letsencrypt/${_APP_DOMAIN}.json
-      - --accesslog=true
-    ports:
-      - 80:80
-      - 443:443
-      - 8080:8080
-    volumes:
-      - /letsencrypt:/letsencrypt
-      - /var/run/docker.sock:/var/run/docker.sock
-    networks:
-      - cloud
-    deploy:
-      replicas: 1
-      <<: *x-update-config
-      placement:
-        constraints:
-          - node.role == manager
+    traefik:
+        image: traefik:2.9
+        <<: *x-logging
+        command:
+            - --log.level=DEBUG
+            - --api.insecure=true
+            - --providers.docker=true
+            - --providers.docker.watch=true
+            - --providers.docker.swarmMode=true
+            - --providers.docker.exposedByDefault=false
+            - --entrypoints.web.address=:80
+            - --entrypoints.websecure.address=:443
+            - --entrypoints.web.http.redirections.entrypoint.to=websecure
+            - --entrypoints.web.http.redirections.entrypoint.scheme=https
+            - --providers.docker.constraints=Label(`traefik.constraint-label-stack`,`appwrite`)
+            - --certificatesresolvers.myresolver.acme.httpchallenge=true
+            - --certificatesresolvers.myresolver.acme.httpchallenge.entrypoint=web
+            - --certificatesresolvers.myresolver.acme.email=$_APP_SYSTEM_SECURITY_EMAIL_ADDRESS
+            - --certificatesresolvers.myresolver.acme.storage=/letsencrypt/${_APP_DOMAIN}.json
+            - --accesslog=true
+        ports:
+            - 80:80
+            - 443:443
+            - 8080:8080
+        volumes:
+            - /letsencrypt:/letsencrypt
+            - /var/run/docker.sock:/var/run/docker.sock
+        networks:
+            - cloud
+        deploy:
+            replicas: 3
+            <<: *x-update-config
+            placement:
+                max_replicas_per_node: 1
+                constraints:
+                    - node.role == manager
+                preferences:
+                    - spread: node.role == worker
+            labels:
+                - traefik.http.routers.traefik.middlewares=traefik-compress
+                - traefik.http.middlewares.traefik-compress.compress=true
 
-  server:
-    image: ghcr.io/appwrite/website:$_APP_VERSION
-    <<: *x-logging
-    networks:
-      - cloud
-    environment:
-      - PUBLIC_APPWRITE_PROJECT_INIT_ID
-      - PUBLIC_APPWRITE_PROJECT_ID
-      - PUBLIC_APPWRITE_DB_MAIN_ID
-      - PUBLIC_APPWRITE_COL_THREADS_ID
-      - PUBLIC_APPWRITE_COL_MESSAGES_ID
-      - PUBLIC_APPWRITE_FN_TLDR_ID
-    deploy:
-      <<: *x-update-config
-      mode: replicated
-      replicas: 5
-      placement:
-        max_replicas_per_node: 2
-        constraints:
-          - node.role == worker
-        preferences:
-          - spread: node.role == worker
-      labels:
-        - traefik.enable=true
-        - traefik.constraint-label-stack=appwrite
-        - traefik.http.services.appwrite_api.loadbalancer.server.port=3000
-        #http
-        - traefik.http.routers.appwrite.entrypoints=web
-        - traefik.http.routers.appwrite.rule=Host(`$_APP_DOMAIN`) || Host(`www.$_APP_DOMAIN`)
-        - traefik.http.routers.appwrite.service=appwrite_api
-        # https
-        - traefik.http.routers.appwrite_secure.entrypoints=websecure
-        - traefik.http.routers.appwrite_secure.rule=Host(`$_APP_DOMAIN`) || Host(`www.$_APP_DOMAIN`)
-        - traefik.http.routers.appwrite_secure.service=appwrite_api
-        - traefik.http.routers.appwrite_secure.tls=true
-        - traefik.http.routers.appwrite_secure.tls.certresolver=myresolver
+    server:
+        image: ghcr.io/appwrite/website:$_APP_VERSION
+        <<: *x-logging
+        networks:
+            - cloud
+        environment:
+            - PUBLIC_APPWRITE_PROJECT_INIT_ID
+            - PUBLIC_APPWRITE_PROJECT_ID
+            - PUBLIC_APPWRITE_DB_MAIN_ID
+            - PUBLIC_APPWRITE_COL_THREADS_ID
+            - PUBLIC_APPWRITE_COL_MESSAGES_ID
+            - PUBLIC_APPWRITE_FN_TLDR_ID
+            - PUBLIC_POSTHOG_API_KEY
+        deploy:
+            <<: *x-update-config
+            mode: replicated
+            replicas: 8
+            placement:
+                max_replicas_per_node: 2
+                constraints:
+                    - node.role == worker
+                preferences:
+                    - spread: node.role == worker
+            labels:
+                - traefik.enable=true
+                - traefik.docker.lbswarm=true
+                - traefik.constraint-label-stack=appwrite
+                - traefik.http.services.appwrite_service.loadbalancer.server.port=3000
+                - traefik.http.middlewares.appwrite_middlewares.compress=true
+                #http
+                - traefik.http.routers.appwrite.entrypoints=web
+                - traefik.http.routers.appwrite.rule=Host(`$_APP_DOMAIN`) || Host(`www.$_APP_DOMAIN`)
+                - traefik.http.routers.appwrite.service=appwrite_service
+                - traefik.http.routers.appwrite.middlewares=appwrite_middlewares
+                # https
+                - traefik.http.routers.appwrite_secure.entrypoints=websecure
+                - traefik.http.routers.appwrite_secure.rule=Host(`$_APP_DOMAIN`) || Host(`www.$_APP_DOMAIN`)
+                - traefik.http.routers.appwrite_secure.service=appwrite_service
+                - traefik.http.routers.appwrite_secure.tls=true
+                - traefik.http.routers.appwrite_secure.tls.certresolver=myresolver
+                - traefik.http.routers.appwrite_secure.middlewares=appwrite_middlewares
 
-  janitor:
-    image: appwrite/docker-janitor
-    deploy:
-      mode: global
-    environment:
-      - TIME_BETWEEN_RUNS=600
-      - UNUSED_TIME=10m
-      - RUN_ON_STARTUP=true
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-
-  sematext-agent:
-    image: sematext/agent:latest
-    environment:
-      REGION: EU
-      INFRA_TOKEN: $SEMATEXT_TOKEN
-    deploy:
-      mode: global
-      restart_policy:
-        condition: any
-    volumes:
-      - /:/hostfs:ro
-      - /etc/passwd:/etc/passwd:ro
-      - /etc/group:/etc/group:ro
-      - /sys:/host/sys:ro
-      - /dev:/hostfs/dev:ro
-      - /var/run:/var/run
-      - /sys/kernel/debug:/sys/kernel/debug
+    janitor:
+        image: appwrite/docker-janitor
+        deploy:
+            mode: global
+        environment:
+            - TIME_BETWEEN_RUNS=600
+            - UNUSED_TIME=10m
+            - RUN_ON_STARTUP=true
+        volumes:
+            - /var/run/docker.sock:/var/run/docker.sock
 
 networks:
-  cloud:
-    driver: overlay
+    cloud:
+        driver: overlay

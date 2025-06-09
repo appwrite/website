@@ -55,7 +55,7 @@ Install the Deno Appwrite SDK by importing it `deno.land/x` at the top of your f
 
 ```
 // import all as sdk
-import * as sdk from "https://deno.land/x/appwrite/mod.ts";
+import * as sdk from "https://deno.land/x/appwrite@15.0.0/mod.ts";
 
 // import only what you need
 import { Client, ... other imports } from "https://deno.land/x/appwrite/mod.ts";
@@ -64,7 +64,7 @@ import { Client, ... other imports } from "https://deno.land/x/appwrite/mod.ts";
 {% /section %}
 {% section #step-4 step=4 title="Import Appwrite" %}
 
-Find your project ID in the **Settings** page. Also, click on the **View API Keys** button to find the API key that was created earlier. 
+Find your project ID in the **Settings** page. Also, click on the **View API Keys** button to find the API key that was created earlier.
 
 {% only_dark %}
 ![Project settings screen](/images/docs/quick-starts/dark/project-id.png)
@@ -73,7 +73,7 @@ Find your project ID in the **Settings** page. Also, click on the **View API Key
 ![Project settings screen](/images/docs/quick-starts/project-id.png)
 {% /only_light %}
 
-Open `mod.ts` in your IDE and initialize the Appwrite Client. Replace `<YOUR_PROJECT_ID>` with your project ID and `<YOUR_API_KEY>` with your API key.
+Open `mod.ts` in your IDE and initialize the Appwrite Client. Replace `<PROJECT_ID>` with your project ID and `<YOUR_API_KEY>` with your API key.
 
 ```ts
 import { Client, ID, Databases, Models } from "https://deno.land/x/appwrite/mod.ts";
@@ -81,8 +81,8 @@ import { Client, ID, Databases, Models } from "https://deno.land/x/appwrite/mod.
 const client: Client = new Client();
 
 client
-    .setEndpoint("https://cloud.appwrite.io/v1")
-    .setProject("<YOUR_PROJECT_ID>")
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
     .setKey("<YOUR_API_KEY>");
 ```
 
@@ -105,36 +105,35 @@ interface Todo {
 
 async function prepareDatabase(): Promise<void> {
     todoDatabase = await databases.create(
-        ID.unique(), 
+        ID.unique(),
         'TodosDB'
     );
 
     todoCollection = await databases.createCollection(
-        todoDatabase.$id, 
-        ID.unique(), 
+        todoDatabase.$id,
+        ID.unique(),
         'Todos'
     );
 
     await databases.createStringAttribute(
-        todoDatabase.$id, 
-        todoCollection.$id, 
-        'title', 
-        255, 
+        todoDatabase.$id,
+        todoCollection.$id,
+        'title',
+        255,
         true
     );
 
     await databases.createStringAttribute(
-        todoDatabase.$id, 
-        todoCollection.$id, 
-        'description', 
-        255, false, 
+        todoDatabase.$id,
+        todoCollection.$id,
+        'description',
+        255, false,
         'This is a test description'
     );
-    
     await databases.createBooleanAttribute(
-        todoDatabase.$id, 
-        todoCollection.$id, 
-        'isComplete', 
+        todoDatabase.$id,
+        todoCollection.$id,
+        'isComplete',
         true
     );
 }
@@ -164,23 +163,21 @@ async function seedDatabase(): Promise<void> {
     };
 
     await databases.createDocument(
-        todoDatabase.$id, 
-        todoCollection.$id, 
-        ID.unique(), 
+        todoDatabase.$id,
+        todoCollection.$id,
+        ID.unique(),
         testTodo1
     );
-    
     await databases.createDocument(
-        todoDatabase.$id, 
-        todoCollection.$id, 
-        ID.unique(), 
+        todoDatabase.$id,
+        todoCollection.$id,
+        ID.unique(),
         testTodo2
     );
-    
     await databases.createDocument(
-        todoDatabase.$id, 
-        todoCollection.$id, 
-        ID.unique(), 
+        todoDatabase.$id,
+        todoCollection.$id,
+        ID.unique(),
         testTodo3
     );
 }
@@ -195,7 +192,7 @@ Run the functions to by calling `runAllTasks();`.
 ```ts
 async function getTodos(): Promise<void> {
     const todos = await databases.listDocuments(
-        todoDatabase.$id, 
+        todoDatabase.$id,
         todoCollection.$id
     );
 
@@ -205,7 +202,7 @@ async function getTodos(): Promise<void> {
 }
 
 async function runAllTasks(): Promise<void> {
-    await prepareDatabase();    
+    await prepareDatabase();
     await seedDatabase();
     await getTodos();
 }

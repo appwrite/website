@@ -1,30 +1,49 @@
 @use '../abstract' as *;
 
 .#{$p}-mobile-header {
-  --p-mobile-header-border-color: rgb(0,0,0, 0.1);
+    --p-mobile-header-border-color: rgb(0, 0, 0, 0.1);
 
+    position: sticky;
+    z-index: 120;
+    inset-block-start: 0;
+    background-color: hsl(var(--p-body-bg-color));
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: pxToRem(16);
+    border-block-end: solid 1px var(--p-mobile-header-border-color);
+    padding-inline: pxToRem(20);
+    padding-block: pxToRem(16);
+    transition: transform 0.3s ease;
+    &-start {
+        display: flex;
+        align-items: center;
+    }
+    &-end {
+        display: flex;
+        align-items: center;
+        gap: pxToRem(8);
+    }
+    &.is-transparent {
+        background-color: transparent;
+        -webkit-backdrop-filter: blur(pxToRem(8));
+        backdrop-filter: blur(pxToRem(8));
+    }
+    @media #{$break2open} {
+        display: none;
+    }
 
-  position:sticky; z-index:120; inset-block-start:0; background-color:hsl(var(--p-body-bg-color));
-  display:flex; justify-content:space-between; align-items:center; gap:pxToRem(16);
-  border-block-end: solid 1px var(--p-mobile-header-border-color);
-  padding-inline:pxToRem(20); padding-block:pxToRem(16);
-  &-start { display:flex; align-items: center; }
-  &-end   { display:flex; align-items: center; gap: pxToRem(8) }
-  &.is-transparent { background-color:transparent; -webkit-backdrop-filter:blur(pxToRem(8)); backdrop-filter:blur(pxToRem(8)); }
-  @media #{$break3open} { display:none; }
+    #{$theme-dark} &,
+    &#{$theme-dark} {
+        --p-mobile-header-border-color: rgb(255, 255, 255, 0.1);
+    }
 
-  #{$theme-dark} &,
-  &#{$theme-dark} {
-    --p-mobile-header-border-color: rgb(255,255,255, 0.1);
-  }
+    #{$theme-light} &,
+    &#{$theme-light} {
+        --p-mobile-header-border-color: rgb(0, 0, 0, 0.1);
+    }
 
-  #{$theme-light} &,
-  &#{$theme-light} {
-    --p-mobile-header-border-color: rgb(0,0,0, 0.1);
-  }
-
-  transition: transform 0.3s ease;
-  &.is-hidden {
-    transform: translateY(-100%);
-  }
+    &.is-hidden {
+        transform: translateY(-100%);
+    }
 }

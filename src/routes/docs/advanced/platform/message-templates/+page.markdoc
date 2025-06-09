@@ -71,9 +71,9 @@ Here's an example of using these variables in a template.
 <html>
 
 <head>
-    <style>
+    <!-- <style>
         ... your style here
-    </style>
+    </style> -->
 </head>
 
 <body style="direction: ltr">
@@ -122,7 +122,7 @@ You can send messages in different languages by setting the locale with `client.
 For example, you can send an email verification in French.
 
 {% multicode %}
-```js
+```client-web
 import { Client, Account } from "appwrite";
 
 const client = new Client();
@@ -130,8 +130,8 @@ const client = new Client();
 const account = new Account(client);
 
 client
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('5df5acd0d48c2')                 // Your project ID
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('<PROJECT_ID>')                 // Your project ID
     .setLocale('fr')                             // Your locale
 ;
 
@@ -144,7 +144,7 @@ promise.then(function (response) {
 });
 ```
 
-```dart
+```client-flutter
 import 'package:appwrite/appwrite.dart';
 
 void main() { // Init SDK
@@ -152,8 +152,8 @@ void main() { // Init SDK
   Account account = Account(client);
 
   client
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('5df5acd0d48c2')                 // Your project ID
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('<PROJECT_ID>')                 // Your project ID
     .setLocale('fr')                             // Your locale
   ;
   Future result = account.createVerification('https://example.com');
@@ -167,13 +167,13 @@ void main() { // Init SDK
 }
 ```
 
-```kotlin
+```client-android-kotlin
 import io.appwrite.Client
 import io.appwrite.services.Account
 
 val client = Client(context)
-    .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
-    .setProject("5df5acd0d48c2")                 // Your project ID
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
+    .setProject("<PROJECT_ID>")                 // Your project ID
     .setLocale('fr')                             // Your locale
 
 val account = Account(client)
@@ -181,12 +181,12 @@ val account = Account(client)
 val response = account.createVerification('https://example.com')
 ```
 
-```swift
+```client-apple
 import Appwrite
 
 let client = Client()
-    .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
-    .setProject("5df5acd0d48c2")                 // Your project ID
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
+    .setProject("<PROJECT_ID>")                 // Your project ID
     .setLocale('fr')                             // Your locale
 
 let account = Account(client)

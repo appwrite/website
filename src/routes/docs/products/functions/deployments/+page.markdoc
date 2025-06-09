@@ -1,0 +1,61 @@
+---
+layout: article
+title: Deployments
+description: Efficiently deploy your serverless functions with Appwrite. Explore deployment options, strategies, and best practices for seamless function execution.
+---
+
+Each function can have many deployments, which can be thought of as versions of the mini-application.
+Functions can be created and deployed in different ways to meet your unique development habits. 
+
+# Deployment status {% #deployment-status %}
+Throughout the life cycle of a deployment, it could have the following status.
+
+{% table %}
+* Status 
+* description
+---
+* `active`
+* The deployment is built and currently activated and ready to be executed. A function can have one active deployment and deployment a must be active before being executed.
+---
+* `ready`
+* A deployment is built, but is not activated. `ready` deployments can be activated to replace the current active deployment.
+---
+* `building`
+* A deployment is being built. Check the [build log](#build-logs) for more detailed logs.
+---
+* `processing`
+* The function deployment has begun and has not finished.
+---
+* `waiting`
+* The deployment is queued but has not been picked up for processing.
+---
+* `failed`
+* A deployment was not successful. Check the [build log](#build-logs) for detailed logs for debugging.
+{% /table %}
+
+# Update deployment {% #update-deployment %}
+Some Function settings require redeploying your function to be reflected in your active deployment.
+When you update a function by changing it's **Git settings**, **Build settings**, and **Environment variables**, 
+you need to redeploy your function before they take effect.
+
+# Build logs  {% #build-logs %}
+When you build a deployment, the logs generated will be saved for debugging purposes.
+You can find build logs by navigating to the **deployments** tab of your function, clicking the three-dots menu beside, and click **Logs**.
+
+# Redeploy {% #redeploy %} 
+
+After updating the configuration, redeploy your function for changes to take effect. You can also redeploy to retry failed builds.
+
+1. Navigate to **Functions**.
+2. Open the function you wish to inspect.
+3. Under the **Deployments** tab, find the status of the current active deployment.
+4. Redeploy by clicking the triple-dots beside an execution, and hitting the **Redeploy** button.
+
+Redeployment behavior varies depending on how the initial deployment was created.
+
+{% info title="Benefits for Pro+ users" %}
+Users subscribed to the Appwrite Pro plan or above receive certain special benefits:
+
+- [Express builds](/changelog/entry/2024-08-10) for quicker deployments, resulting in reduced wait times and smoother workflows
+- Customizable [runtime specifications](/blog/post/introducing-new-compute-capabilities-appwrite-functions), allowing for tailored performance and resource allocation
+{% /info %}

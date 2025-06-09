@@ -1,4 +1,5 @@
 import { base } from '$app/paths';
+
 export type CategoryData = {
     name: string;
     description: string;
@@ -16,15 +17,24 @@ export type AuthorData = {
     href: string;
 };
 export type PostsData = {
+    draft: boolean;
     title: string;
     description: string;
     date: Date;
+    lastUpdated: Date;
     cover: string;
     timeToRead: number;
     author: string;
     category: string;
     href: string;
+    slug: string;
     featured?: boolean;
+    unlisted?: boolean;
+    callToAction?: {
+        heading?: string;
+        label?: string;
+        url?: string;
+    };
 };
 
 const postsGlob = import.meta.glob('./post/**/*.markdoc', {
@@ -42,18 +52,24 @@ export const posts = Object.entries(postsGlob)
         const { frontmatter } = postList as {
             frontmatter: PostsData;
         };
+
         const slug = filepath.replace('./', '').replace('/+page.markdoc', '');
         const postName = slug.slice(slug.lastIndexOf('/') + 1);
 
         return {
             title: frontmatter.title,
             description: frontmatter.description,
+            featured: frontmatter.featured,
             date: new Date(frontmatter.date),
+            lastUpdated: new Date(frontmatter.lastUpdated),
             cover: frontmatter.cover,
             timeToRead: frontmatter.timeToRead,
             author: frontmatter.author,
             category: frontmatter.category,
-            href: `${base}/blog/post/${postName}`
+            href: `${base}/blog/post/${postName}`,
+            slug,
+            unlisted: frontmatter.unlisted,
+            draft: frontmatter.draft
         };
     })
     .sort((a, b) => {
@@ -89,3 +105,17 @@ export const categories = Object.values(categoriesGlob).map((categoryList) => {
         href: `${base}/blog/category/${frontmatter.name.toLowerCase()}`
     };
 });
+
+export const normalizeCategory = (str: string) => str?.replace(/\s+/g, '-').toLowerCase();
+
+export const getBlogEntries = () => {
+    const filteredCategories = categories.filter((category) =>
+        posts.some((post) => normalizeCategory(post.category) === normalizeCategory(category.name))
+    );
+
+    return {
+        authors,
+        filteredCategories,
+        posts: posts.filter((post) => !post.unlisted)
+    };
+};

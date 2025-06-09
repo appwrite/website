@@ -1,6 +1,7 @@
 <script lang="ts">
-    import { createAccordion, melt } from '@melt-ui/svelte';
     import { slide } from 'svelte/transition';
+    import { trackEvent } from '$lib/actions/analytics';
+    import { createAccordion, melt } from '@melt-ui/svelte';
 
     export let noBorder = false;
 
@@ -15,42 +16,64 @@
     const links: Record<string, { label: string; href: string; target?: string; rel?: string }[]> =
         {
             'Quick starts': [
-                { label: 'Flutter', href: '/docs/quick-starts/flutter' },
+                { label: 'Web', href: '/docs/quick-starts/web' },
                 { label: 'Next.js', href: '/docs/quick-starts/nextjs' },
+                { label: 'React', href: '/docs/quick-starts/react' },
                 { label: 'Vue.js', href: '/docs/quick-starts/vue' },
+                { label: 'Nuxt', href: '/docs/quick-starts/nuxt' },
                 { label: 'SvelteKit', href: '/docs/quick-starts/sveltekit' },
+                { label: 'Refine', href: '/docs/quick-starts/refine' },
+                { label: 'Angular', href: '/docs/quick-starts/angular' },
+                { label: 'React Native', href: '/docs/quick-starts/react-native' },
+                { label: 'Flutter', href: '/docs/quick-starts/flutter' },
                 { label: 'Apple', href: '/docs/quick-starts/apple' },
                 { label: 'Android', href: '/docs/quick-starts/android' },
-                { label: 'Nuxt', href: '/docs/quick-starts/nuxt' },
-                { label: 'Angular', href: '/docs/quick-starts/angular' },
                 { label: 'Qwik', href: '/docs/quick-starts/qwik' },
-                { label: 'Astro', href: '/docs/quick-starts/astro' }
+                { label: 'Astro', href: '/docs/quick-starts/astro' },
+                { label: 'Solid', href: '/docs/quick-starts/solid' }
             ],
             Products: [
-                { label: 'Auth', href: '/docs/products/auth' },
+                { label: 'Auth', href: '/products/auth' },
                 { label: 'Databases', href: '/docs/products/databases' },
-                { label: 'Functions', href: '/docs/products/functions' },
-                { label: 'Storage', href: '/docs/products/storage' },
+                { label: 'Functions', href: '/products/functions' },
+                { label: 'Messaging', href: '/products/messaging' },
+                { label: 'Storage', href: '/products/storage' },
                 { label: 'Realtime', href: '/docs/apis/realtime' },
+                { label: 'Network', href: '/docs/products/network' },
+                { label: 'Hosting', href: '/docs/products/sites' }
             ],
             Learn: [
-                { label: 'Docs', href: '/docs' },
-                { label: 'Community', href: '/community' },
-                { label: 'Threads', href: '/threads' },
                 { label: 'Blog', href: '/blog' },
+                { label: 'Docs', href: '/docs' },
+                { label: 'Integrations', href: '/integrations' },
+                { label: 'Community', href: '/community' },
+                { label: 'Init', href: '/init' },
+                { label: 'Threads', href: '/threads' },
                 { label: 'Changelog', href: '/changelog' },
+                {
+                    label: 'Roadmap',
+                    href: 'https://github.com/orgs/appwrite/projects',
+                    target: '_blank',
+                    rel: 'noopener noreferrer'
+                },
                 {
                     label: 'Source code',
                     href: 'https://github.com/appwrite',
                     target: '_blank',
                     rel: 'noopener noreferrer'
-                },
-                {
-                    label: 'Status',
-                    href: 'https://appwrite.online',
-                    target: '_blank',
-                    rel: 'noopener noreferrer'
                 }
+                // {
+                //     label: 'Status',
+                //     href: 'https://appwrite.online',
+                //     target: '_blank',
+                //     rel: 'noopener noreferrer'
+                // }
+            ],
+            Programs: [
+                { label: 'Heroes', href: '/heroes' },
+                { label: 'Startups', href: '/startups' },
+                { label: 'Education', href: '/education' },
+                { label: 'Partners', href: '/partners' }
             ],
             About: [
                 { label: 'Company', href: '/company' },
@@ -61,7 +84,6 @@
                     target: '_blank',
                     rel: 'noopener noreferrer'
                 },
-                { label: 'Heroes', href: '/heroes' },
                 {
                     label: 'Store',
                     href: 'https://appwrite.store',
@@ -69,61 +91,77 @@
                     rel: 'noopener noreferrer'
                 },
                 { label: 'Contact us', href: '/contact-us' },
-                { label: 'Assets', href: '/assets' },
-            ],
-            Policies: [
-                { label: 'Terms', href: '/terms' },
-                { label: 'Privacy', href: '/privacy' },
-                { label: 'Cookies', href: '/cookies' }
+                { label: 'Assets', href: '/assets' }
             ]
         };
 </script>
 
-<nav aria-label="Footer"
-    class="aw-footer-nav u-margin-block-start-100 u-position-relative"
-    class:aw-u-sep-block-start={!noBorder}
+<nav
+    aria-label="Footer"
+    class="web-footer-nav relative container mt-24"
+    class:web-u-sep-block-start={!noBorder}
 >
-    <img class="aw-logo" src="/images/logos/appwrite.svg" alt="appwrite" height="24" width="130" />
-    <ul class="aw-footer-nav-main-list" use:melt={$root}>
+    <img class="web-logo" src="/images/logos/appwrite.svg" alt="appwrite" height="24" width="130" />
+    <ul class="web-footer-nav-main-list" use:melt={$root}>
         {#each Object.entries(links) as [title, items]}
-            <li class="aw-footer-nav-main-item aw-is-not-mobile">
-                <h5 class="aw-footer-nav-main-title aw-is-not-mobile aw-caption-500 aw-eyebrow">
+            <li class="web-footer-nav-main-item web-is-not-mobile">
+                <h2
+                    class="web-footer-nav-main-title web-is-not-mobile text-caption font-medium uppercase"
+                >
                     {title}
-                </h5>
-                <ul class="aw-footer-nav-secondary-list aw-sub-body-400">
+                </h2>
+                <ul class="web-footer-nav-secondary-list text-sub-body">
                     {#each items as { href, label, target, rel }}
                         <li>
-                            <a class="aw-link" {href} {target} {rel}>{label}</a>
+                            <a
+                                class="web-link"
+                                {href}
+                                {target}
+                                {rel}
+                                onclick={() =>
+                                    trackEvent(
+                                        `footer-${label.toLowerCase().replace(' ', '_')}-click`
+                                    )}>{label}</a
+                            >
                         </li>
                     {/each}
                 </ul>
             </li>
             <li
-                class="aw-footer-nav-main-item aw-is-only-mobile"
+                class="web-footer-nav-main-item web-is-only-mobile"
                 use:melt={$item({ value: title })}
             >
                 <h5 use:melt={$heading({ level: 5 })}>
                     <button
-                        class="aw-footer-nav-button aw-is-only-mobile"
+                        class="web-footer-nav-button web-is-only-mobile"
                         use:melt={$trigger({ value: title })}
                     >
-                        <span class="aw-caption-500 aw-eyebrow">{title}</span>
+                        <span class="text-caption font-medium uppercase">{title}</span>
                         <span
-                            class="aw-icon-chevron-down aw-u-transition"
-                            class:aw-u-rotate-180={$isSelected(title)}
+                            class="web-icon-chevron-down web-u-transition"
+                            class:web-u-rotate-180={$isSelected(title)}
                             style:font-size="1rem"
-                        />
+                        ></span>
                     </button>
                 </h5>
                 {#if $isSelected(title)}
                     <ul
-                        class="aw-footer-nav-secondary-list aw-sub-body-400"
+                        class="web-footer-nav-secondary-list text-sub-body"
                         use:melt={$content({ value: title })}
                         transition:slide={{ duration: 250 }}
                     >
                         {#each items as { href, label, target, rel }}
                             <li>
-                                <a class="aw-link" {href} {target} {rel}>{label}</a>
+                                <a
+                                    class="web-link"
+                                    {href}
+                                    {target}
+                                    {rel}
+                                    onclick={() =>
+                                        trackEvent(
+                                            `footer-${label.toLowerCase().replace(' ', '_')}-click`
+                                        )}>{label}</a
+                                >
                             </li>
                         {/each}
                     </ul>

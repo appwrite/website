@@ -10,7 +10,7 @@ encrypt more than 363 million websites.
 TLS certificates are generated for all of the following.
 - Appwrite products and endpoints, like Databases, Storage, Authentication, Functions, Messaging, and all other endpoints.
 - [Custom domains](/docs/advanced/platform/custom-domains) that you configure for your Appwrite projects.
-- [Domains for Appwrite Functions](/docs/products/functions/deployment#domains), generated or user provided.
+- [Domains for Appwrite Functions](/docs/products/functions/domains), generated or user provided.
 
 TLS certificates are crucial to ensure all connections between your apps and Appwrite Cloud are encrypted.
 This protects your users from attack vectors like man-in-the-middle and eavesdropping attacks.

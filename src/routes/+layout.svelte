@@ -1,12 +1,16 @@
 <script lang="ts" context="module">
+    import { type Reo, loadReoScript } from '$lib/reodotdev';
+    import { derived, writable } from 'svelte/store';
+
     export type Theme = 'dark' | 'light' | 'system';
-    export const currentTheme = (function () {
+    export const currentTheme = (() => {
         const store = writable<Theme>(getPreferredTheme());
 
         const set: typeof store.set = (value) => {
             store.set(value);
             if (browser) {
                 localStorage.setItem('theme', value);
+                document.documentElement.style.setProperty('color-scheme', value);
             }
         };
 
@@ -41,23 +45,35 @@
 </script>
 
 <script lang="ts">
-    import '$icons/output/aw-icon.css';
+    import '../app.css';
     import '$scss/index.scss';
+    import '$icons/output/web-icon.css';
 
     import { browser, dev } from '$app/environment';
-    import { derived, writable } from 'svelte/store';
-    import { navigating, page } from '$app/stores';
+    import { page } from '$app/state';
+    import { navigating, updated } from '$app/stores';
     import { onMount } from 'svelte';
+    import { loggedIn } from '$lib/utils/console';
+    import { beforeNavigate } from '$app/navigation';
+    import { trackEvent } from '$lib/actions/analytics';
+    import { saveReferrerAndUtmSource } from '$lib/utils/utm';
+    import { Sprite } from '$lib/components/ui/icon/sprite';
+    import { setTheme, ThemeProvider } from '$lib/providers/theme';
 
     function applyTheme(theme: Theme) {
         const resolvedTheme = theme === 'system' ? getSystemTheme() : theme;
-        const className = `theme-${resolvedTheme}`;
-        document.body.classList.remove('theme-dark', 'theme-light');
+        const className = `${resolvedTheme}`;
+        document.body.classList.remove('dark', 'light');
         document.body.classList.add(className);
     }
 
+    const thresholds = [0.25, 0.5, 0.75];
+    const tracked = new Set();
+
     onMount(() => {
-        const initialTheme = $page.route.id?.startsWith('/docs') ? getPreferredTheme() : 'dark';
+        saveReferrerAndUtmSource(page.url);
+
+        const initialTheme = page.route.id?.startsWith('/docs') ? getPreferredTheme() : 'dark';
 
         applyTheme(initialTheme);
 
@@ -69,47 +85,89 @@
             const isDocs = n.to.route.id?.startsWith('/docs');
 
             if (isDocs) {
-                if (!document.body.classList.contains(`theme-${$currentTheme}`)) {
+                if (!document.body.classList.contains(`${$currentTheme}`)) {
                     applyTheme($currentTheme);
                 }
             } else {
                 applyTheme('dark');
             }
         });
+
+        saveReferrerAndUtmSource(page.url);
+    });
+
+    beforeNavigate(({ willUnload, to }) => {
+        if (window) {
+            tracked.clear();
+        }
+
+        // TODO: thejessewinton, the `updated` from `svelte/state` creates an infinite refresh loop on docs references pages!
+        if ($updated && !willUnload && to?.url) {
+            location.href = to.url.href;
+        }
     });
 
     $: if (browser) currentTheme.subscribe((theme) => applyTheme(theme));
-</script>
-
-<svelte:head>
-    {#if !dev}
-        <script defer data-domain="appwrite.io" src="https://plausible.io/js/script.js"></script>
-    {/if}
-</svelte:head>
-
-<a class="skip" href="#main">Skip to content</a>
-
-<slot />
-
-<style lang="scss">
-    .skip {
-        position: absolute;
-        inset-block-start: 0;
-        z-index: 9999;
-
-        display: block;
-        background-color: hsl(var(--aw-color-mint-500));
-        color: hsl(var(--aw-color-black));
-        text-decoration: underline;
-        opacity: 0;
-
-        padding: 0.75rem 1.25rem;
-        pointer-events: none;
+    $: if (browser && $loggedIn) {
+        document.body.dataset.loggedIn = '';
     }
 
-    .skip:focus {
-        opacity: 1;
-        position: relative;
-        pointer-events: all;
+    $: canonicalUrl = page.url.origin.replace(/^https?:\/\/www\./, 'https://') + page.url.pathname;
+
+    function handleScroll() {
+        const scrollY = window.scrollY;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const scrollPercentage = scrollY / docHeight;
+
+        thresholds.forEach((threshold) => {
+            if (scrollPercentage >= threshold && !tracked.has(threshold)) {
+                const pageName =
+                    page.url.pathname.slice(1) === ''
+                        ? 'home'
+                        : page.url.pathname.slice(1).replace(/\//g, '-');
+
+                const eventName = `${pageName}_scroll-depth_${threshold * 100}prct_scroll`;
+                tracked.add(threshold);
+                trackEvent(eventName);
+            }
+        });
+    }
+
+    if (!dev && browser) {
+        const clientID = '144fa7eaa4904e8';
+
+        const reoPromise = loadReoScript({ clientID });
+        reoPromise.then((reo: Reo) => {
+            reo.init({ clientID });
+        });
+    }
+</script>
+
+<svelte:window on:scroll={handleScroll} />
+<svelte:head>
+    {#if !dev}
+        <!--suppress JSUnresolvedLibraryURL -->
+        <script defer data-domain="appwrite.io" src="https://plausible.io/js/script.js"></script>
+
+        <!-- ZoomInfo snippet -->
+        <script defer src="/scripts/zoominfo.js"></script>
+    {/if}
+
+    <!-- canonical url -->
+    <link rel="canonical" href={canonicalUrl} />
+</svelte:head>
+
+<a
+    class="bg-mint-500 focus:pointer-events-all pointer-events-none absolute inset-y-0 z-9999 block px-5 py-3 text-black underline opacity-0 focus:relative focus:opacity-1"
+    href="#main">Skip to content</a
+>
+
+<slot />
+<ThemeProvider />
+<Sprite />
+
+<style lang="scss">
+    :global(html) {
+        color-scheme: dark;
     }
 </style>

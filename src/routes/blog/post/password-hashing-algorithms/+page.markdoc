@@ -1,21 +1,23 @@
 ---
 layout: post
-title: Demystifying password hashing algorithms
-description: What are password hashing algorithms and how they help secure user credentials in your application.
+title: How password hashing algorithms keep your data safe
+description: Learn about password hashing algorithms and how they help secure user credentials in your application.
 date: 2023-10-20
 cover: /images/blog/password-hashing-algorithms.png
 timeToRead: 7
 author: aditya-oberai
-category: authentication, security
+category: security
 ---
 
-In today's digital world, securing sensitive information such as passwords is of paramount importance. Password hashing algorithms play a crucial role in protecting user credentials and ensuring the integrity of authentication systems. In this blog, we will delve into the intricacies of password hashing algorithms, explore their key characteristics, and discuss some of the most widely used and secure algorithms to help you make informed decisions when implementing password storage and verification in your applications.
+In today's digital world, keeping sensitive information like passwords secure is extremely important. Password hashing algorithms are essential for protecting user credentials and ensuring authentication systems are reliable. 
+
+In this blog, we'll break down how password hashing algorithms work, highlight their key features, and review some of the most popular and secure algorithms. This will help you make informed choices when setting up password storage and verification in your applications.
 
 ## What is a password hashing algorithm?
 
-**Password hashing algorithms** are specialized mathematical functions that transform plaintext passwords into unique, fixed-size outputs, known as hashes, which are then stored in databases. Through the use of techniques such as salting, adjustable work factors, and memory hardness, modern password hashing algorithms are designed to thwart attacks and keep user data secure. 
+**Password hashing algorithms** are specialized mathematical functions that transform plain text passwords into unique, fixed-size outputs, known as hashes, which are then stored in databases. Through the use of techniques such as salting, adjustable work factors, and memory hardness, modern password hashing algorithms are designed to prevent attacks like rainbow tables and data breaches.
 
-The mathematical process of password hashing involves applying a hash function to a combination of a password and a salt, iterating the process based on a work factor, and, in some cases, incorporating memory hardness to increase the computational complexity. 
+Password hashing involves using a hash function to combine a password with a unique value called a salt. This process is repeated multiple times based on a set difficulty level. Sometimes, additional memory usage is included to make the process even more complex and secure. 
 
 This function would operate as follows:
 
@@ -34,7 +36,7 @@ The result is a fixed-size hash that is unique, deterministic, and resistant to 
 Password hashing algorithms have certain characteristics:
 
 - **One-way function**  
-Password hashing algorithms should be one-way functions, making it computationally infeasible to reverse-engineer the original password from the hash output, preventing attackers from trying to retrieve user passwords from the stored hashes.
+Password hashing algorithms should be one-way functions, so it's nearly impossible to reverse-engineer the original password from the hash. This prevents attackers from getting user passwords from stored hashes.
 - **Deterministic**  
 A password hashing algorithm must always produce the same hash output for a given input to ensure consistency and reliability.
 - **Fixed-size output**  
@@ -42,13 +44,13 @@ Password hashing algorithms must produce a fixed-size output (hash) regardless o
 - **Slow computation**  
 Unlike general hashing algorithms, which prioritize fast computation, password hashing algorithms should be intentionally slow to compute. This characteristic makes it more time-consuming and resource-intensive for attackers to perform brute-force attacks or attempt to guess passwords using a large number of inputs.
 - **Avalanche effect**  
-A small change in the input should result in a significant change in the hash output, making the new output appear uncorrelated with the old output. This property makes it difficult for attackers to predict the input based on the output or find two different inputs that produce the same output (collision). For example, the SHA-256 hash for `eight` is `c195d2d8756234367242ba7616c5c60369bc25ced2dcb5b92808d31b58ef217a`, but for `right` is `27042f4e6eca7d0b2a7ee4026df2ecfa51d3339e6d122aa099118ecd8563bad9`, despite having only one character different.
+A small change in the input should cause a big change in the hash output, making the new output look unrelated to the old one. This makes it hard for attackers to guess the input from the output or find two inputs that create the same hash (collision). For example, the SHA-256 hash for `eight` is `c195d2d8756234367242ba7616c5c60369bc25ced2dcb5b92808d31b58ef217a`, but for `right` is `27042f4e6eca7d0b2a7ee4026df2ecfa51d3339e6d122aa099118ecd8563bad9`, despite having only one different character.
 - **Pseudorandomness**  
-The output of a password hashing algorithm should appear random and uniformly distributed, making it difficult for attackers to predict patterns or relationships between inputs and their corresponding hash outputs.
+The output of a password hashing algorithm should look random and evenly spread out, so attackers can't find patterns or guess relationships between the inputs and their hash outputs.
 - **Resistance to side-channel attacks**  
-Password hashing algorithms should be designed to resist side-channel attacks, such as timing attacks, where an attacker attempts to gain information about the password or hash by analyzing the time taken to compute the hash.
+Password hashing algorithms should be designed to resist side-channel attacks. An example of this would timing attacks, where an attacker attempts to gain information about the password or hash by analyzing the time taken to compute the hash.
 - **Adjustable work factor**  
-A good password hashing algorithm should allow for an adjustable work factor, also known as a cost factor or iteration count. This increases the algorithm's computational complexity over time as hardware capabilities improve, ensuring that the password hashing process remains secure and resource-intensive for attackers.
+A good password hashing algorithm should let you adjust the work factor, which means increasing the complexity over time as hardware gets better. This keeps the password hashing process secure and too resource-intensive for dictionary attacks.
 - **Memory hardness**  
 Some modern password hashing algorithms are designed to be memory-hard, meaning that they require a significant amount of memory to compute the hash. This characteristic makes it more difficult for attackers to perform parallel attacks using specialized hardware, such as GPUs or ASICs, which have limited memory resources.
 - **Wide adoption and peer review**  
@@ -74,11 +76,11 @@ PBKDF2 is a widely-used password hashing algorithm that iteratively applies a ps
 
 Appwrite Authentication also leverages password hashing algorithms to allow developers to secure their users’ passwords via password hashing algorithms. Appwrite uses the `Argon2id` algorithm to hash the password when a user creates an account from a client-side application. Appwrite’s SDKs offer a simple abstraction for the Appwrite Accounts API to let developers implement this, like the following example:
 
-```js
+```client-web
 import { Client, Account, ID } from "appwrite";
 
 const client = new Client()
-    .setEndpoint('https://cloud.appwrite.io/v1')
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
     .setProject('<PROJECT_ID>');
 
 const account = new Account(client);

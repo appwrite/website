@@ -22,48 +22,52 @@
     export let avatar: $$Props['avatar'];
 </script>
 
-<div class="aw-card is-white theme-light">
-    <div class="aw-social-item u-flex-vertical">
-        <div class="u-flex u-gap-16 u-main-space-between">
-            <div class="aw-user-box">
-                <img class="aw-user-box-image" src={avatar} alt="" />
-                <div class="aw-user-box-name aw-sub-body-500 aw-clr-primary">{name}</div>
-                <div class="aw-user-box-username aw-sub-body-400">{role}</div>
+<div class="web-card is-white light">
+    <div class="web-social-item flex flex-col">
+        <div class="flex justify-between gap-4">
+            <div class="web-user-box">
+                <img class="web-user-box-image" src={avatar} alt="" />
+                <div class="web-user-box-name text-sub-body web-clr-primary font-medium">
+                    {name}
+                </div>
+                <div class="web-user-box-username text-sub-body">{role}</div>
             </div>
         </div>
-        <p class="aw-sub-body-500 aw-u-text-color-neutral-700 u-margin-block-start-20">{bio}</p>
-        <ul class="u-flex u-gap-12 u-margin-block-start-32">
+        <p class="text-sub-body web-u-text-color-neutral-700 mt-5 font-medium">
+            {bio}
+        </p>
+        <ul class="mt-8 flex gap-3">
             <li>
                 <a
-                    class="aw-icon-button"
+                    class="web-icon-button"
                     href={github}
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="GitHub profile"
                 >
-                    <span class="aw-icon-github" aria-hidden="true" />
+                    <span class="web-icon-github" aria-hidden="true"></span>
                 </a>
             </li>
             <li>
                 <a
-                    class="aw-icon-button"
+                    class="web-icon-button"
                     href={twitter}
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="X profile"
                 >
-                    <span class="aw-icon-x" aria-hidden="true" />
+                    <span class="web-icon-x" aria-hidden="true"></span>
                 </a>
             </li>
             <li>
                 <a
-                    class="aw-icon-button"
+                    class="web-icon-button"
                     href={linkedin}
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="LinkedIn profile"
                 >
-                    <span class="aw-icon-linkedin" aria-hidden="true" />
+                    <span class="web-icon-linkedin" aria-hidden="true"></span>
                 </a>
             </li>
         </ul>
@@ -71,7 +75,7 @@
 </div>
 
 <style lang="scss">
-    .aw-card {
+    .web-card {
         --p-card-padding: 1.25rem;
     }
 </style>

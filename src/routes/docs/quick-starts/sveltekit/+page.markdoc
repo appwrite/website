@@ -35,7 +35,7 @@ You can skip optional steps.
 Create a SvelteKit project.
 
 ```sh
-npm create svelte@next my-app && cd my-app && npm install
+npx sv create
 ```
 {% /section %}
 {% section #step-3 step=3 title="Install Appwrite" %}
@@ -43,7 +43,7 @@ npm create svelte@next my-app && cd my-app && npm install
 Install the JavaScript Appwrite SDK.
 
 ```sh
-npm install appwrite
+npm install appwrite@18.1.1
 ```
 {% /section %}
 {% section #step-4 step=4 title="Import Appwrite" %}
@@ -55,16 +55,16 @@ Find your project's ID in the **Settings** page.
 {% only_light %}
 ![Project settings screen](/images/docs/quick-starts/project-id.png)
 {% /only_light %}
-Create a new file `src/lib/appwrite.js` and add the following code to it, replace `<YOUR_PROJECT_ID>` with your project ID.
+Create a new file `src/lib/appwrite.js` and add the following code to it, replace `<PROJECT_ID>` with your project ID.
 
-```js
+```client-web
 import { Client, Account } from 'appwrite';
 
 export const client = new Client();
 
 client
-    .setEndpoint('https://cloud.appwrite.io/v1')
-    .setProject('<YOUR_PROJECT_ID>'); // Replace with your project ID
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>'); // Replace with your project ID
 
 export const account = new Account(client);
 export { ID } from 'appwrite';
@@ -80,7 +80,7 @@ Replace the contents of `src/routes/+page.svelte` with the following code.
     let loggedInUser = null;
 
     async function login(email, password) {
-        await account.createEmailSession(email, password);
+        await account.createEmailPasswordSession(email, password);
         loggedInUser = await account.get();
     }
 

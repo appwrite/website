@@ -1,17 +1,17 @@
-import express from 'express';
-import compression from 'compression'
-import { cache } from './cache.js';
-import { sitemap } from './sitemap.js'
+import { sitemaps } from './sitemap.js';
+import { createServer } from 'node:http';
 import { handler } from '../build/handler.js';
+import { createApp, fromNodeMiddleware, toNodeListener } from 'h3';
 
 async function main() {
-    const app = express();
-    app.use(cache());
-    app.use(compression());
-    app.use(await sitemap());
-    app.use(handler);
-    app.listen(3000, () => {
-        console.log('Listening on http://0.0.0.0:3000');
+    const port = process.env.PORT || 3000;
+    const app = createApp();
+    app.use(['/sitemap.xml', '/sitemaps'], await sitemaps());
+
+    app.use(fromNodeMiddleware(handler));
+    const server = createServer(toNodeListener(app)).listen(port);
+    server.addListener('listening', () => {
+        console.log(`Listening on http://0.0.0.0:${port}`);
     });
 }
 

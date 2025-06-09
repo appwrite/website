@@ -1,16 +1,17 @@
 @use '../abstract' as *;
 
 .#{$p}-button {
-  --m-border-radius: var(--border-radius-small);
+  --m-border-radius: var(--border-radius-small, #{pxToRem(8)});
   --m-border-size: #{pxToRem(1)};
 
-  background: linear-gradient(135deg, hsl(var(--aw-color-pink-500)) 0%, hsl(var(--aw-color-pink-500)) 61%, hsl(var(--aw-color-secondary-100)) 100%);
+  background: linear-gradient(135deg, hsl(var(--web-color-pink-500)) 0%, hsl(var(--web-color-pink-500)) 61%, hsl(var(--web-color-secondary-100)) 100%);
   background-origin: border-box;
   display:flex; inline-size:fit-content; justify-content:center; align-items:center; gap:pxToRem(8);
   padding-inline:pxToRem(14); padding-block:pxToRem(7); min-block-size:pxToRem(40);
   border-radius:var(--m-border-radius); border:solid var(--m-border-size) transparent;
-  text-align:center; transition:var(--transition); user-select:none; color:hsl(var(--aw-color-white)); font-weight: 500;
-  text-decoration: none !important; 
+  text-align:center; transition:var(--transition); user-select:none; color:hsl(var(--web-color-white)); font-weight: 500;
+  text-decoration: none !important;
+  white-space: pre;
 
   [class*="icon"] { line-height:1; }
   .#{$p}-inline-tag { margin-inline-end:pxToRem(-2); background:rgba(255, 255, 255, 0.24); }
@@ -27,7 +28,7 @@
     box-shadow: 0 0 0 pxToRem(4) rgba(253, 54, 110, 0.24);
     #{$theme-dark} {
       box-shadow: 0 0 0 pxToRem(4) rgba(253, 54, 110, 0.48);
-    }   
+    }
   }
   &:where(#{$disabled}) { opacity:0.4; cursor:initial; }
 
@@ -35,23 +36,23 @@
     background-image: none;
     position: relative;
     border-width: 0;
-    
+
     @include border-gradient;
-    
+
     .#{$p}-inline-tag {
       background:rgba(255, 64, 120, 0.10);
-      color:hsl(var(--aw-color-pink-500));
+      color:hsl(var(--web-color-pink-500));
     }
 
-    
+
     @mixin dark-mode {
       background: rgba(253, 54, 110, 0.04);
-      color: hsl(var(--aw-color-greyscale-100));
+      color: hsl(var(--web-color-greyscale-100));
       box-shadow: 0px -6px 10px 0px rgba(253, 54, 110, 0.08) inset;
-      [class*="icon"] { color:hsl(var(--aw-color-pink-500)); }
+      [class*="icon"] { color:hsl(var(--web-color-pink-500)); }
       .#{$p}-inline-tag {
         background:rgba(255, 64, 120, 0.24);
-        color:hsl(var(--aw-color-greyscale-50));
+        color:hsl(var(--web-color-greyscale-50));
       }
 
 
@@ -60,15 +61,15 @@
           rgba(253, 54, 110, 0.48) 0%,
           rgba(253, 54, 110, 0) 180%
         );
-      
-    
-      
+
+
+
         --m-border-gradient-after: radial-gradient(
           42.86% 42.86% at 50.55% -0%,
           rgba(255, 255, 255, 0.2) 0%,
           rgba(255, 255, 255, 0) 100%
         );
-      
+
 
       &:where(:hover):not(:disabled) {
         background: rgba(253, 54, 110, 0.10);
@@ -82,15 +83,15 @@
           rgba(255, 255, 255, 0.20) 0%,
           rgba(255, 255, 255, 0.00) 100%
         );
-          
+
       }
 
       &:where(:active):not(:disabled) {
         background: rgba(253, 54, 110, 0.16);
         box-shadow: 0px -6px 10px 0px rgba(253, 54, 110, 0.08) inset;
-        --m-border-gradient-before: 
+        --m-border-gradient-before:
         linear-gradient(180deg, rgba(253, 54, 110, 0.64) 0%, rgba(253, 54, 110, 0.00) 163.1%);
-        --m-border-gradient-after: 
+        --m-border-gradient-after:
         radial-gradient(42.86% 42.86% at 50.55% 0%, rgba(255, 255, 255, 0.32) 0%, rgba(255, 255, 255, 0.00) 100%);
       }
 
@@ -99,26 +100,26 @@
         box-shadow: 0px 0px 0px 4px rgba(253, 54, 110, 0.16), 0px -6px 10px 0px rgba(253, 54, 110, 0.08) inset;
       }
     }
-   
+
 
     @mixin light-mode {
-      background: rgba(253, 54, 110, 0.08);
+      background: hsla(343, 98%, 60%, 0.08);
       box-shadow: none;
-      color: hsl(var(--aw-color-accent-click));
+      color: hsl(var(--web-color-accent-click));
       .#{$p}-inline-tag {
         background:rgba(255, 64, 120, 0.10);
-        color:hsl(var(--aw-color-pink-500));
+        color:hsl(var(--web-color-pink-500));
       }
 
-      
-        --m-border-gradient-before: 
+
+        --m-border-gradient-before:
         linear-gradient(180deg, rgba(253, 54, 110, 0.19) 0%, rgba(253, 54, 110, 0.48) 100%);
-      
-    
-      
-        --m-border-gradient-after: 
+
+
+
+        --m-border-gradient-after:
         radial-gradient(42.86% 42.86% at 50.55% 0%, rgba(255, 255, 255, 0.20) 0%, rgba(255, 255, 255, 0.00) 100%);
-      
+
 
       &:where(:hover):not(:disabled) {
         background: rgba(253, 54, 110, 0.10);
@@ -133,7 +134,7 @@
       }
     }
     @include light-mode;
-    
+
     #{$theme-dark} & {
       @include dark-mode;
     }
@@ -142,19 +143,19 @@
       @include light-mode;
     }
 
-  
+
   }
   &.is-transparent {
     background: rgba(237, 237, 240, 0.16); border-width:0;
   }
   &.is-text {
-    color:hsl(var(--aw-color-greyscale-700)); background:hsl(var(--transparent)); border-color:transparent;
+    color:hsl(var(--web-color-greyscale-700)); background:hsl(var(--transparent)); border-color:transparent;
     transition: none;
     [class*="icon"] { opacity:0.4; }
     .#{$p}-inline-tag {
       background:rgba(0, 0, 0, 0.08);
-      color:hsl(var(--aw-color-greyscale-900));
-      #{$theme-dark} & { color:hsl(var(--aw-color-greyscale-100)); }
+      color:hsl(var(--web-color-greyscale-900));
+      #{$theme-dark} & { color:hsl(var(--web-color-greyscale-100)); }
     }
     &:where(:focus) {
       box-shadow:none;
@@ -165,7 +166,7 @@
     }
 
     &:where(:hover, :active, [data-highlighted]):where(:not(#{$disabled})) {
-      box-shadow:none; color:hsl(var(--aw-color-greyscale-900));
+      box-shadow:none; color:hsl(var(--web-color-greyscale-900));
 
       -webkit-backdrop-filter: blur(pxToRem(8));
       backdrop-filter: blur(pxToRem(8));
@@ -181,9 +182,9 @@
       .#{$p}-inline-tag { background:rgba(255, 255, 255, 0.12); }
     }
     #{$theme-light} & {
-      color:hsl(var(--aw-color-greyscale-700));
+      color:hsl(var(--web-color-greyscale-700));
       &:where(:hover, :active, [data-highlighted]):where(:not(#{$disabled})) {
-        box-shadow:none; color:hsl(var(--aw-color-greyscale-900));
+        box-shadow:none; color:hsl(var(--web-color-greyscale-900));
         -webkit-backdrop-filter:blur(pxToRem(8));
         backdrop-filter:blur(pxToRem(8));
        // #{$theme-dark} & { color:hsl(var(--color-neutral-0))!important; }
@@ -192,7 +193,7 @@
       &:where(:active):where(:not(#{$disabled})) { background:linear-gradient(135deg, rgba(255, 255, 255, 0.60) 0%, rgba(255, 255, 255, 0.80) 54.74%, rgba(255, 255, 255, 0.60) 100%); }
 
       .#{$p}-inline-tag {
-        background:rgba(0, 0, 0, 0.08); color:hsl(var(--aw-color-greyscale-900));
+        background:rgba(0, 0, 0, 0.08); color:hsl(var(--web-color-greyscale-900));
       }
 
     }
