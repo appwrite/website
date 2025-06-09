@@ -4,7 +4,7 @@ title: Build an offline AI chatbot with WebLLM and WebGPU
 description: Learn how to build an offline AI chatbot with WebLLM and WebGPU.
 date: 2025-06-10
 cover: /images/blog/chatbot-with-webllm-and-webgpu/cover.png
-timeToRead: 11
+timeToRead: 13
 author: ebenezer-don
 category: tutorial
 featured: false
@@ -87,11 +87,11 @@ To begin, create an `index.html` file and paste the following code inside it:
           <option value="SmolLM2-360M-Instruct-q4f32_1-MLC">
             SmolLM2 360M (Very Small)
           </option>
-          <option value="Llama-3.1-8B-Instruct-q4f32_1-MLC">
-            Llama 3.1 8B (Medium)
-          </option>
           <option value="Phi-3.5-mini-instruct-q4f32_1-MLC">
-            Phi 3.5 Mini (Large)
+            Phi 3.5 Mini (Medium)
+          </option>
+          <option value="Llama-3.1-8B-Instruct-q4f32_1-MLC">
+            Llama 3.1 8B (Large)
           </option>
         </select>
         <button id="load-model">Load Model</button>
@@ -126,7 +126,25 @@ In the HTML file, we've created a chat interface with controls for model selecti
 
 ### Model selection
 
-Notice that in the `div` with class `controls`, we have a `select` element for model selection and a `button` for loading the model. These models represent different size/capability tradeoffs: SmolLM2-360M is very small (~580MB) for low-resource devices, Llama-3.1-8B is medium-sized (~6GB) with good multilingual support, and Phi-3.5-mini is larger (~5.5GB) with strong reasoning capabilities. All can run directly in modern browsers with WebGPU support.
+Notice that in the `div` with class `controls`, we have a `select` element for model selection and a `button` for loading the model. Here are the detailed specifications for each model:
+
+| Model        | Parameters   | Q4 file size (MB) | VRAM needed (MB) |
+| ------------ | ------------ | ----------------- | ---------------- |
+| SmolLM2-360M | 360 million  | ~270 MB          | ~380 MB         |
+| Phi-3.5-mini | 3.8 billion  | ~2,400 MB        | ~3,700 MB       |
+| Llama-3.1-8B | 8.03 billion | ~4,900 MB        | ~5,000 MB       |
+
+All models run with a 4,096-token context window when used in WebLLM, due to browser implementation constraints.
+
+When you're deciding which of these models to use in a browser environment with WebLLM, think first about what kind of work you want it to handle.
+
+**SmolLM2-360M** is the smallest by a wide margin, which means it loads quickly and puts the least strain on your device. If you're writing short notes, rewriting text, or making quick coding helpers that run in a browser, this might be all you need.
+
+**Phi-3.5-mini** brings more parameters and more capacity for reasoning, even though it still runs entirely in your browser. It's good for handling multi-step explanations, short document summarisation, or answering questions about moderately long prompts. If you're looking for a balance between size and capability, Phi-3.5-mini has a comfortable middle ground.
+
+**Llama-3.1-8B** is the largest of the three and carries more of the general knowledge and pattern recognition that bigger models can offer. It's more reliable if you're dealing with open-ended dialogue, creative writing, or complex coding tasks. But you'll need more memory, and it still caps out at the same 4,096-token context window as the others when you're using it in WebLLM.
+
+Each of these models trades off size, memory use, and output quality in different ways. So choosing the right one depends on what your hardware can handle and what kind of prompts you plan to work with. All can run directly in modern browsers with WebGPU support.
 
 There are more models available at the [WebLLM repository](https://github.com/mlc-ai/web-llm), ranging from smaller models for mobile devices to larger ones for more capable systems.
 
