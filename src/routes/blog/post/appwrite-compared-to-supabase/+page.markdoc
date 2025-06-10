@@ -139,7 +139,7 @@ Hosting refers to serving web applications over the internet. Appwrite offers na
 
 *Differences:*
 
-- Appwrite includes built-in hosting for static and dynamic sites via Appwrite Sites. Supabase does not offer frontend hosting; you must be dependent on third-party tools like Vercel or Netlify to host your application.
+- Appwrite includes built-in hosting for static and dynamic sites via Appwrite Sites. Supabase does not offer frontend hosting. You must be dependent on third-party tools like Vercel or Netlify to host your application.
 - Appwrite Sites supports server-side rendering out of the box. Supabase depends on the capabilities of the third-party frontend host.
 - With Appwrite, developers can manage everything from frontend and backend to environments, deployments, and monitoring from a single control panel, while Supabase requires using multiple services and dashboards, increasing complexity.
 
