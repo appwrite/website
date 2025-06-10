@@ -123,7 +123,7 @@ Messaging allows you to implement communications in your application. You can us
 
 ## Hosting
 
-Hosting refers to the service that allows developers to deploy and serve web applications to users over the internet. Modern Backend-as-a-Service (BaaS) platforms like Appwrite and Firebase simplify this process by providing integrated tools for deploying static and dynamic content, managing domains, ensuring security, and scaling applications globally.
+Hosting refers to the service that allows developers to deploy and serve web applications to users over the internet. Appwrite offers native hosting as part of its all-in-one platform. That means you can develop, deploy, and scale your application all from a single platform. Firebase requires connecting separate services like Firestore and Cloud Functions.
 
 *Similarities:*
 
@@ -135,7 +135,7 @@ Hosting refers to the service that allows developers to deploy and serve web app
 
 - Appwrite Sites runs in containerized environments with full control over server-side rendering. Firebase Hosting is optimized for static content and uses Google’s managed infrastructure.
 - Appwrite is open-source and self-hostable. Firebase is fully managed by Google with no self-hosting support.
-- Appwrite’s hosting is tightly integrated with its backend tools like databases, auth, storage, and functions, enabling a unified workflow. Firebase requires connecting separate services like Firestore and Cloud Functions.
+- Appwrite is an all-in-one solution that covers everything from hosting and authentication to databases and cloud functions in one platform. Firebase also offers these services but manages them across separate tools, requiring more integration effort.
 
 # Conclusion
 
