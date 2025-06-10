@@ -135,19 +135,13 @@ Self-hosting support essentially means a developer can deploy the application on
 
 ## Hosting
 
-Hosting refers to serving web applications over the internet. Appwrite offers native hosting as part of its all-in-one platform. Supabase, while it provides backend services, does not include frontend hosting.
-
-*Similarities:*
-
-- Both platforms are open source and developer-friendly.
-- Both integrate well with modern frontend frameworks like Next.js, React, and Vue when paired with external hosting.
-- Developers can use custom domains. Appwrite handles this directly, while Supabase setups depend on the external host.
+Hosting refers to serving web applications over the internet. Appwrite offers native hosting as part of its all-in-one platform. That means you can build, deploy and host your application all from a single platform. Supabase, while it provides backend services, does not include frontend hosting.
 
 *Differences:*
 
-- Appwrite includes built-in hosting for static and dynamic sites via Appwrite Sites. Supabase does not offer frontend hosting.
-- Appwrite supports Git, CLI, and manual uploads with features like preview URLs and rollbacks. Supabase requires deploying your frontend separately (e.g. on Vercel or Netlify).
+- Appwrite includes built-in hosting for static and dynamic sites via Appwrite Sites. Supabase does not offer frontend hosting; you must be dependent on third-party tools like Vercel or Netlify to host your application.
 - Appwrite Sites supports server-side rendering out of the box. Supabase depends on the capabilities of the third-party frontend host.
+- With Appwrite, developers can manage everything from frontend and backend to environments, deployments, and monitoring from a single control panel, while Supabase requires using multiple services and dashboards, increasing complexity.
 
 ## Support
 
