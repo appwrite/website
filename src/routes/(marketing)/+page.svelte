@@ -38,7 +38,7 @@
         <Map theme="light" />
         <Scale
             testimonial={{
-                name: 'Ryan O’Conner',
+                name: 'Ryan O’Connor',
                 title: 'Founder',
                 company: 'K-Collect',
                 image: '/images/testimonials/ryan-oconner-testimonial.png'
