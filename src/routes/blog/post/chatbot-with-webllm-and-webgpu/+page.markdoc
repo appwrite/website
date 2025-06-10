@@ -135,11 +135,11 @@ In the HTML file, we've created a chat interface with controls for model selecti
 
 Notice that in the `div` with class `controls`, we have a `select` element for model selection and a `button` for loading the model. Here are the specifications for each model:
 
-| Model        | Parameters   | Q4 file size (MB) | VRAM needed (MB) |
-| ------------ | ------------ | ----------------- | ---------------- |
-| SmolLM2-360M | 360 million  | ~270 MB          | ~380 MB         |
-| Phi-3.5-mini | 3.8 billion  | ~2,400 MB        | ~3,700 MB       |
-| Llama-3.1-8B | 8.03 billion | ~4,900 MB        | ~5,000 MB       |
+| Model        | Parameters   | Q4 file size | VRAM needed |
+| ------------ | ------------ | ------------ | ----------- |
+| SmolLM2-360M | 360 million  | ~270 MB      | ~380 MB     |
+| Phi-3.5-mini | 3.8 billion  | ~2.4 GB      | ~3.7 GB     |
+| Llama-3.1-8B | 8.03 billion | ~4.9 GB      | ~5 GB       |
 
 When you're deciding which of these models to use in a browser environment with WebLLM, think first about what kind of work you want it to handle.
 
