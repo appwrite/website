@@ -8,7 +8,7 @@
     import { PUBLIC_GROWTH_ENDPOINT } from '$env/static/public';
     import { getReferrerAndUtmSource } from '$lib/utils/utm';
     import LogoList from '$lib/components/LogoList.svelte';
-    import Scale from '$routes/(experiments)/new-homepage/(components)/scale.svelte';
+    import Scale from '$routes/(marketing)/(components)/scale.svelte';
     import { Button } from '$lib/components/ui';
     import { trackEvent } from '$lib/actions/analytics';
 
@@ -269,7 +269,11 @@
                     </div>
                 </div>
             </div>
-            <Scale alternateInfo />
+            <Scale theme="dark">
+                Appwrite has supported our recent growth in every step of the way, <span
+                    class="text-primary">without any failures or outages</span
+                >.
+            </Scale>
             <LogoList />
             <div class="container">
                 <FooterNav />

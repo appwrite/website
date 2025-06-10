@@ -1,6 +1,6 @@
 <script lang="ts">
     import GradientBorderCard from '$lib/components/shared/gradient-border-card.svelte';
-    import { inView } from 'motion-legacy';
+    import { inView } from 'motion';
     import NumberFlow from '@number-flow/svelte';
 
     let items: Array<{ number: number; label: string; suffix?: string }> = [

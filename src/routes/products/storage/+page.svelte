@@ -189,7 +189,7 @@
             <OpenSource />
         </div>
 
-        <ProductCards exclude="storage" />
+        <ProductCards />
         <div class="relative pt-20">
             <div class="container">
                 <PreFooter />
