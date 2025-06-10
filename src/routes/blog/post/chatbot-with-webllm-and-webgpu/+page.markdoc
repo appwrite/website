@@ -14,7 +14,7 @@ When you hear "LLM," you probably think of APIs, tokens, and cloud infrastructur
 
 Local LLMs running inside the browser were nearly impossible just a year ago. But thanks to new technologies like WebLLM and WebGPU, you can now load a full language model into memory, run it on your device, and have a real-time conversation, all without a server.
 
-In this guide, we'll build a local chatbot that runs entirely in the browser. No backend. No API keys. By the end, you should have a good understanding of WebLLM and WebGPU, and will have built an app that looks and functions like this:
+In this guide, we'll build a local chatbot that runs entirely in the browser. No backend. No API keys. By the end, you should have a good understanding of [WebLLM](https://webllm.mlc.ai/) and [WebGPU](https://developer.mozilla.org/en-US/docs/Web/API/WebGPU_API), and will have built an app that looks and functions like this:
 
 ![WebLLM and WebGPU chat app demo](/images/blog/chatbot-with-webllm-and-webgpu/webllm-webgpu-chat-app-demo.gif)
 
@@ -46,8 +46,15 @@ In our case, WebGPU lets the browser perform the heavy math required to generate
 Here's what WebGPU does for us:
 
 - **Performance**: Runs faster than JavaScript or even WebAssembly for these workloads
-- **Accessibility**: Available in major browsers like Chrome, Edge, and Firefox (with a flag)
 - **GPU-first**: Designed from the ground up for compute, not just rendering
+- **Accessibility**: Available across different browsers, though support varies by platform. As of 2025:
+
+  - **Chrome/Edge**: Fully supported on Windows, Mac, and ChromeOS since version 113. On Linux, it requires enabling the `chrome://flags/#enable-unsafe-webgpu` flag
+  - **Firefox**: Available in Nightly builds by default, with stable release tentatively planned for Firefox 141
+  - **Safari**: Available in Safari Technology Preview, with support in iOS 18 and visionOS 2 betas via Feature Flags
+  - **Android**: Chrome 121+ supports WebGPU on Android
+
+For production applications, you should include proper WebGPU feature detection and provide fallbacks for unsupported browsers.
 
 Together, WebLLM and WebGPU allow us to do something powerful: load a quantized language model directly in the browser and have real-time chat without any backend server.
 
@@ -126,7 +133,7 @@ In the HTML file, we've created a chat interface with controls for model selecti
 
 ### Model selection
 
-Notice that in the `div` with class `controls`, we have a `select` element for model selection and a `button` for loading the model. Here are the detailed specifications for each model:
+Notice that in the `div` with class `controls`, we have a `select` element for model selection and a `button` for loading the model. Here are the specifications for each model:
 
 | Model        | Parameters   | Q4 file size (MB) | VRAM needed (MB) |
 | ------------ | ------------ | ----------------- | ---------------- |
@@ -234,6 +241,8 @@ if (!navigator.gpu) {
   throw new Error('WebGPU not supported in this browser...')
 }
 ```
+
+This check is crucial because WebGPU availability varies significantly across browsers and platforms. The code will gracefully fail if WebGPU isn't available, allowing you to show appropriate fallback content to users.
 
 Then we download and initialize the model:
 
