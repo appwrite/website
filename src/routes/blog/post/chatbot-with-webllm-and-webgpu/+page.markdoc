@@ -47,7 +47,7 @@ Here's what WebGPU does for us:
 
 - **Performance**: Runs faster than JavaScript or even WebAssembly for these workloads
 - **GPU-first**: Designed from the ground up for compute, not just rendering
-- **Accessibility**: Available across different browsers, though support varies by platform. As of 2025:
+- **Accessibility**: Available across different browsers, though support varies by platform. As of June 2025:
 
   - **Chrome/Edge**: Fully supported on Windows, Mac, and ChromeOS since version 113. On Linux, it requires enabling the `chrome://flags/#enable-unsafe-webgpu` flag
   - **Firefox**: Available in Nightly builds by default, with stable release tentatively planned for Firefox 141
