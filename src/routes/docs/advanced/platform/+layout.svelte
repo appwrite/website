@@ -154,7 +154,7 @@
                     href: '/docs/advanced/platform/abuse'
                 },
                 {
-                    new: isNewUntil('31 Mar 2025'),
+                    new: isNewUntil('31 July 2025'),
                     label: 'Refund',
                     href: '/docs/advanced/platform/refund-policy'
                 }
