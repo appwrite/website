@@ -155,7 +155,7 @@
                 },
                 {
                     new: isNewUntil('31 July 2025'),
-                    label: 'Refund',
+                    label: 'Refund Policy',
                     href: '/docs/advanced/platform/refund-policy'
                 }
             ]
