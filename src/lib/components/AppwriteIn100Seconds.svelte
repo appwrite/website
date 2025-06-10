@@ -1,8 +1,7 @@
 <script lang="ts">
-    import { trackEvent } from '$lib/actions/analytics';
-    import { createDialog, melt } from '@melt-ui/svelte';
     import { fade, scale } from 'svelte/transition';
     import { Button, Icon } from '$lib/components/ui';
+    import { createDialog, melt } from '@melt-ui/svelte';
 
     const {
         elements: { portalled, trigger, content, overlay },
@@ -13,14 +12,10 @@
 </script>
 
 <Button
-    class="cursor-pointer shadow-[0_2px_40px_rgba(0,0,0,0.5)] transition-opacity hover:opacity-90 active:scale-95"
     action={trigger}
-    onclick={() => {
-        trackEvent({
-            plausible: { name: 'Appwrite in 100 seconds' },
-            posthog: { name: 'intro-video-btn_hero_click' }
-        });
-    }}
+    event="intro-video-btn_hero-click"
+    variant="secondary"
+    class="w-full! cursor-pointer shadow-[0_2px_40px_rgba(0,0,0,0.5)] transition-opacity hover:opacity-90 active:scale-95 lg:w-fit!"
 >
     Appwrite in 100 seconds
 
