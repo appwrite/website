@@ -55,7 +55,7 @@
 </script>
 
 <section
-    class="dark web-code-snippet mx-auto lg:!max-w-[90vw]"
+    class="dark web-code-snippet mx-auto w-full lg:!max-w-[90vw]"
     aria-label="code-snippet panel"
     style:width={width ? width / 16 + 'rem' : 'inherit'}
     style:height={height ? height / 16 + 'rem' : 'inherit'}

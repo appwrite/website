@@ -2,7 +2,6 @@
     import { fade, scale } from 'svelte/transition';
     import { createDialog, melt } from '@melt-ui/svelte';
     import type { Snippet } from 'svelte';
-    import { browser } from '$app/environment';
 
     type Props = {
         url: string;
@@ -12,7 +11,7 @@
     };
 
     const {
-        elements: { portalled, trigger, content, overlay },
+        elements: { trigger, content, overlay },
         states: { open }
     } = createDialog({
         forceVisible: true,
