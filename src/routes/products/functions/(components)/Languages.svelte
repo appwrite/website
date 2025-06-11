@@ -2,8 +2,8 @@
     import { Button } from '$lib/components/ui';
     import { Platform } from '$lib/utils/references';
     import MultiCodeContextless from '$routes/products/messaging/(components)/MultiCodeContextless.svelte';
-    import SnippetServerNodejs from './(snippets)/server-nodejs.txt';
-    import SnippetPhp from './(snippets)/server-php.txt';
+    import SnippetNodejs from './(snippets)/nodejs.txt';
+    import SnippetPhp from './(snippets)/php.txt';
     import SnippetPython from './(snippets)/python.txt';
     import SnippetRuby from './(snippets)/ruby.txt';
     import SnippetDeno from './(snippets)/deno.txt';
@@ -18,7 +18,7 @@
         {
             language: 'server-nodejs',
             platform: 'Web',
-            content: SnippetServerNodejs
+            content: SnippetNodejs
         },
         {
             language: 'php',
