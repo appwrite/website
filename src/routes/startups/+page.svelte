@@ -26,7 +26,7 @@
 
     const title = 'Startups' + TITLE_SUFFIX;
     const description =
-        "Get $20,000 in cloud credits to fulfill all your startup's backend needs. Apply for Appwrite's Startups Program today.";
+        "Get cloud credits to fulfill all your startup's backend and hosting needs. Apply for Appwrite's Startups Program today.";
     const ogImage = DEFAULT_HOST + '/images/open-graph/website.png';
 
     let personName: string;
@@ -211,9 +211,9 @@
                         <p
                             class="text-description web-u-max-width-640 e-u-padding-inline-32-desktop mx-auto"
                         >
-                            The Appwrite Startups Program supports your startup with a complete
-                            backend for you to build your products. You will receive $20,000 Cloud
-                            credits for Appwrite Scale for 12 months.
+                            The Appwrite Startups Program supports your startup with an all-in-one
+                            cloud platform for you to build your products. You will receive Cloud
+                            credits and a discount for Appwrite's paid plans.
                         </p>
                         <Button onclick={scrollToForm} class="mx-auto mt-3">Apply now</Button>
                     </div>
@@ -233,10 +233,10 @@
                                 alt=""
                             />
                             <div class="flex flex-col gap-2 text-center">
-                                <h2 class="text-label text-primary">Complete backend</h2>
+                                <h2 class="text-label text-primary">Complete platform</h2>
                                 <p class="text-body font-medium">
-                                    Get access to Appwrite’s Scale plan and build your entire
-                                    backend with Appwrite.
+                                    Get discounted access to Appwrite’s paid plans and develop,
+                                    host, and scale your entire application with Appwrite.
                                 </p>
                             </div>
                         </li>
@@ -250,8 +250,8 @@
                             <div class="flex flex-col gap-2 text-center">
                                 <h2 class="text-label text-primary">Cloud credits</h2>
                                 <p class="text-body font-medium">
-                                    Get Appwrite Cloud Scale for 12 months and reduce risk at an
-                                    early stage.
+                                    Save on development and cloud costs and reduce risk at an early
+                                    stage.
                                 </p>
                             </div>
                         </li>
@@ -265,8 +265,8 @@
                             <div class="flex flex-col gap-2 text-center">
                                 <h2 class="text-label text-primary">Priority support</h2>
                                 <p class="text-body font-medium">
-                                    Get community support and priority email support from the
-                                    Appwrite team.
+                                    Get community support and priority support from the Appwrite
+                                    team.
                                 </p>
                             </div>
                         </li>
@@ -627,13 +627,13 @@
                                                 <div class="flex gap-4">
                                                     <div class="web-check-bullet mt-1"></div>
                                                     <p class="text-description">
-                                                        Appwrite Cloud Scale for 12 months
+                                                        Cloud credits and discounts on a paid plan
                                                     </p>
                                                 </div>
                                                 <div class="flex gap-4">
                                                     <div class="web-check-bullet mt-1"></div>
                                                     <p class="text-description">
-                                                        Priority email support as part of Scale
+                                                        Priority email support
                                                     </p>
                                                 </div>
                                             </div>

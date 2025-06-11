@@ -116,6 +116,7 @@
                             {plan.description}
                         </p>
                         <Button
+                            href={plan.buttonLink}
                             event={plan.eventName}
                             variant={plan.buttonVariant}
                             class="w-full! flex-3 self-end md:w-fit"
