@@ -29,15 +29,15 @@ We ran a qualitative survey with 50 respondents who closely matched our target a
 
 This validated what we suspected: while the design was polished, the story we told wasn’t fully landing.
 
-![Our old homepage](/images/blog/redesigning-our-homepage-to-reflect-appwrite’s-new-positioning/old-homepage.png)
+![Our old homepage](/images/blog/appwrite-homepage-redesign/old-homepage.png)
 
 # Phase 2: Iterating on the story
 
-![Iterations](/images/blog/redesigning-our-homepage-to-reflect-appwrite’s-new-positioning/iterations-top-part.png)
+![Iterations](/images/blog/appwrite-homepage-redesign/iterations-top-part.png)
 
 Based on those findings, we created a new homepage design in Figma and ran a second qualitative survey—this time on the proposed design with renewed messaging. The results were encouraging.
 
-![New homepage design](/images/blog/redesigning-our-homepage-to-reflect-appwrite’s-new-positioning/new-homepage.png)
+![New homepage design](/images/blog/appwrite-homepage-redesign/new-homepage.png)
 
 ## What we improved:
 
@@ -51,17 +51,17 @@ We simplified our messaging further and focused on showing—not just telling—
 
 - Added components that give a quick visual and conceptual overview of our offering, without requiring visitors to read everything. We honed in on different user behaviors: some people want a fast impression; others want to scroll deep. Our content now supports both. (This is backed by UX research—see Nielsen Norman Group's work on scanning vs. reading behaviors.)
 
-![Summary and deep dive](/images/blog/redesigning-our-homepage-to-reflect-appwrite’s-new-positioning/summary-vs-deepdive1.png)
+![Summary and deep dive](/images/blog/appwrite-homepage-redesign/summary-vs-deepdive1.png)
 
 - Repositioned Appwrite from just a BaaS to a complete platform with Sites, our hosting solution, clearly integrated into the story.
 
 - Selected testimonials strategically—highlighting impact metrics like time saved, cost reduction, and scalability, to build credibility with both developers and founders.
 
-![Summary and deep dive 2](/images/blog/redesigning-our-homepage-to-reflect-appwrite’s-new-positioning/summary-vs-deepdive2.png)
+![Summary and deep dive 2](/images/blog/appwrite-homepage-redesign/summary-vs-deepdive2.png)
 
 While the main aim was to improve the story that we were trying to convey, we also further improved our visual language. We did a few iterations to further simplify our visuals and worked on an animation style that feels more natural. In our old page, we had animations based on scroll behavior that slightly hijacked user control—something developers disliked. The new animations and microinteractions make the page feel alive without taking away from the main purpose: understanding the story of Appwrite.
 
-![Scene](/images/blog/redesigning-our-homepage-to-reflect-appwrite’s-new-positioning/scene.gif)
+![Scene](/images/blog/appwrite-homepage-redesign/scene.gif)
 
 With all these changes, we moved into a final design iteration—the version that’s now live.
 
