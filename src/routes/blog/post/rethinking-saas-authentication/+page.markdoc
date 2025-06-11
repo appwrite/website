@@ -28,6 +28,8 @@ Security measures like MFA, device verification, and session management often ad
 
 Technologies like **Single Sign-On (SSO)** help bridge this gap—offering both enhanced security and smoother user experiences.
 
+Take a look at our [developer’s guide to user authentication](https://appwrite.io/blog/post/guide-to-user-authentication) for more in-depth insights.
+
 ## Managing multi-tenant complexity
 
 Multi-tenancy is the backbone of SaaS, but it complicates identity management. Different tenants may need custom sign-in flows, roles, or Identity Provider (IdP) setups.
@@ -70,7 +72,7 @@ Appwrite supports OAuth out of the box, and flexible extensions let you connect 
 
 Static MFA prompts can annoy users. Adaptive MFA adjusts authentication requirements based on risk signals—like device reputation or location.
 
-Appwrite enables dynamic security flows with Cloud Functions and custom verification logic.
+Appwrite enables dynamic security flows with Cloud Functions and custom verification logic. Want to add MFA to your app? We've got you covered in the [docs](https://appwrite.io/docs/products/auth/mfa).
 
 ## Prioritize secure API access
 
@@ -104,5 +106,5 @@ Ready to simplify your SaaS authentication journey? [Deploy Appwrite](https://ap
 
 # Futher reading
 - [Appwrite Authentication docs](https://appwrite.io/docs/products/auth)
-- [Developer's guide to user authentication](https://appwrite.io/blog/post/guide-to-user-authentication)
-- [Appwrite Authentication overview](https://appwrite.io/products/auth)
+- [Setup magic link authentication](https://youtu.be/mqgNmx9YE5w?si=FsCD88afY4Cu_Bdl)
+- [Appwrite Authentication quick-start doc](https://appwrite.io/docs/products/auth/quick-start)
