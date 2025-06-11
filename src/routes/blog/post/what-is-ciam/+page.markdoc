@@ -22,7 +22,7 @@ Unlike traditional IAM systems that focus on internal employees, CIAM is for ext
 
 A comprehensive CIAM solution includes:
 
-- **Registration and authentication:** Simplified sign-up and login processes, including options like social logins, multi-factor authentication (MFA), and single sign-on (SSO).
+- **Registration and authentication:** Simplified sign-up and login processes, including options like social logins, multi-factor authentication (MFA), and single sign-on (SSO). Explore multiple [authentication methods](https://appwrite.io/docs/products/auth) supported by Appwrite.
 - **Profile management:** Customers can update their profile information, preferences, and privacy settings easily.
 - **Consent and privacy management:** CIAM ensures that businesses are compliant with regulations like GDPR and CCPA by capturing and managing customer consents.
 - **Scalability:** Designed to handle millions of users simultaneously without compromising performance.
@@ -57,5 +57,5 @@ Organizations that focus on strong CIAM strategies will better protect customer 
 
 # Further reading
 - [Appwrite Authentication docs](https://appwrite.io/docs/products/auth)
-- [Appwrite vs Auth0: Which is better for a B2C app?](https://appwrite.io/blog/post/appwrite-vs-auth0-b2c)
+- [Appwrite Authentication quick start doc](https://appwrite.io/docs/products/auth/quick-start)
 - [Appwrite Authentication overview](https://appwrite.io/products/auth)
