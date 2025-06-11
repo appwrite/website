@@ -2,17 +2,19 @@
 layout: post
 title: Secure, scalable e-commerce: How Appwrite makes authentication easy
 Description: Learn how Appwrite simplifies secure, scalable authentication for e-commerce platforms.
-date: 2025-06-24
+date: 2025-06-30
 cover: /images/blog/Blog-cover-oss-journey.png
 timeToRead: 06
 author: laura-du-ry
+callToAction: true
+unlisted: true
 ---
 
 Building an e-commerce platform today is more than just creating a catalog and checkout flow. Security, user experience, and scalability are critical, and authentication sits right at the heart of it all. Whether you're launching a small boutique or scaling a global marketplace, handling authentication correctly can make or break your app.
 
 At Appwrite, we believe authentication should be powerful but painless. Let's walk through how Appwrite helps you manage user authentication for e-commerce projects, without adding complexity.
 
-## Why Authentication Matters in E-Commerce
+## Why Authentication matters in E-Commerce
 
 Authentication is more than a login screen. It's about creating trust.
 
@@ -23,7 +25,7 @@ Authentication is more than a login screen. It's about creating trust.
 
 Bad authentication experiences can lead to lost sales, security breaches, and broken trust. That's why it needs to be first-class from day one.
 
-## Authentication Challenges in E-Commerce
+## Authentication challenges in E-Commerce
 
 Building auth for an e-commerce platform isn't as simple as “email and password” anymore. Modern buyers expect:
 
@@ -36,11 +38,11 @@ Building auth for an e-commerce platform isn't as simple as “email and passwor
 
 And that's before you think about scaling to millions of users.
 
-## How Appwrite Simplifies E-Commerce Authentication
+## How Appwrite simplifies E-Commerce authentication
 
 Appwrite provides a secure, fully-featured authentication system out of the box. Here’s what you get:
 
-### 1. **Multiple Sign-In Methods**
+### 1. **Multiple sign-in methods**
 
 Appwrite supports:
 
@@ -55,7 +57,7 @@ You can mix and match depending on your store's needs.
 
 Enhance security by enabling two-factor authentication using TOTP apps like Google Authenticator. No extra backend work required.
 
-### 3. **Self-Service Account Management**
+### 3. **Self-Service account management**
 
 Appwrite provides ready-to-use APIs for users to:
 
@@ -65,23 +67,23 @@ Appwrite provides ready-to-use APIs for users to:
 
 Build beautiful UI components on top without reinventing the wheel.
 
-### 4. **Secure, Scalable Sessions**
+### 4. **Secure, scalable sessions**
 
 Every session is tightly managed and tokenized, making sure your users stay authenticated safely across devices — whether they shop on mobile or desktop.
 
-### 5. **Customizable Authentication Workflows**
+### 5. **Customizable authentication workflows**
 
 Want custom onboarding, email verification, or a loyalty signup flow? Appwrite’s Cloud Functions and webhooks let you extend and customize without touching your core app code.
 
-### 6. **Privacy & Compliance Friendly**
+### 6. **Privacy & compliance friendly**
 
 With built-in features for GDPR compliance, encrypted storage, and fine-grained permissions, Appwrite makes it easier to protect customer data and respect user privacy.
 
-## Real-world axample: Fast checkout with magic URLs
+## Real-world example: Fast checkout with magic URLs
 
 Imagine reducing checkout friction by letting users sign in with a single email link. No passwords, no back-and-forth. Appwrite’s Magic URL flow lets you send users a secure link that signs them in instantly, helping boost conversion rates and customer happiness.
 
-## Getting Started: Your first Auth flow in minutes
+## Getting started: Your first Auth flow in minutes
 
 With Appwrite’s SDKs (for Web, Flutter, iOS, Android, and more), integrating authentication is fast:
 
@@ -98,7 +100,7 @@ const account = new Account(client);
 await account.create('unique-user-id', 'user@example.com', 'password123');
 
 // Login
-await account.createEmailSession('user@example.com', 'password123');
+await account.createEmailPasswordSession('user@example.com', 'password123');
 
 ```
 
