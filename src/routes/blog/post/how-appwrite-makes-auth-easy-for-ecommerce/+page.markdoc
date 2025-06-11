@@ -14,7 +14,7 @@ Building an e-commerce platform today is more than just creating a catalog and c
 
 At Appwrite, we believe authentication should be powerful but painless. Let's walk through how Appwrite helps you manage user authentication for e-commerce projects, without adding complexity.
 
-## Why Authentication matters in E-Commerce
+# Why Authentication matters in E-Commerce
 
 Authentication is more than a login screen. It's about creating trust.
 
@@ -25,7 +25,7 @@ Authentication is more than a login screen. It's about creating trust.
 
 Bad authentication experiences can lead to lost sales, security breaches, and broken trust. That's why it needs to be first-class from day one.
 
-## Authentication challenges in E-Commerce
+# Authentication challenges in E-Commerce
 
 Building auth for an e-commerce platform isn't as simple as “email and password” anymore. Modern buyers expect:
 
@@ -38,11 +38,11 @@ Building auth for an e-commerce platform isn't as simple as “email and passwor
 
 And that's before you think about scaling to millions of users.
 
-## How Appwrite simplifies E-Commerce authentication
+# How Appwrite simplifies E-Commerce authentication
 
 Appwrite provides a secure, fully-featured authentication system out of the box. Here’s what you get:
 
-### 1. **Multiple sign-in methods**
+## 1. **Multiple sign-in methods**
 
 Appwrite supports:
 
@@ -53,11 +53,11 @@ Appwrite supports:
 
 You can mix and match depending on your store's needs.
 
-### 2. **Built-in 2FA**
+## 2. **Built-in 2FA**
 
 Enhance security by enabling two-factor authentication using TOTP apps like Google Authenticator. No extra backend work required.
 
-### 3. **Self-Service account management**
+## 3. **Self-Service account management**
 
 Appwrite provides ready-to-use APIs for users to:
 
@@ -67,23 +67,23 @@ Appwrite provides ready-to-use APIs for users to:
 
 Build beautiful UI components on top without reinventing the wheel.
 
-### 4. **Secure, scalable sessions**
+## 4. **Secure, scalable sessions**
 
 Every session is tightly managed and tokenized, making sure your users stay authenticated safely across devices — whether they shop on mobile or desktop.
 
-### 5. **Customizable authentication workflows**
+## 5. **Customizable authentication workflows**
 
 Want custom onboarding, email verification, or a loyalty signup flow? Appwrite’s Cloud Functions and webhooks let you extend and customize without touching your core app code.
 
-### 6. **Privacy & compliance friendly**
+## 6. **Privacy & compliance friendly**
 
 With built-in features for GDPR compliance, encrypted storage, and fine-grained permissions, Appwrite makes it easier to protect customer data and respect user privacy.
 
-## Real-world example: Fast checkout with magic URLs
+# Real-world example: Fast checkout with magic URLs
 
 Imagine reducing checkout friction by letting users sign in with a single email link. No passwords, no back-and-forth. Appwrite’s Magic URL flow lets you send users a secure link that signs them in instantly, helping boost conversion rates and customer happiness.
 
-## Getting started: Your first Auth flow in minutes
+# Getting started: Your first Auth flow in minutes
 
 With Appwrite’s SDKs (for Web, Flutter, iOS, Android, and more), integrating authentication is fast:
 
@@ -106,7 +106,7 @@ await account.createEmailPasswordSession('user@example.com', 'password123');
 
 That's it. Secure, scalable auth in just a few lines.
 
-## Build E-Commerce your way, with Appwrite
+# Build E-Commerce your way, with Appwrite
 
 Authentication shouldn't slow down your e-commerce dreams. With Appwrite, you can focus on building amazing shopping experiences, not fighting backend complexity.
 
@@ -115,6 +115,7 @@ Whether you are starting a new store or growing a marketplace, Appwrite provides
 Ready to get started? [Deploy Appwrite](https://appwrite.io/cloud) in minutes and launch your next big thing.
 
 # Further reading
+
 - [Appwrite Authentication docs](https://appwrite.io/docs/products/auth)
 - [Appwrite vs Auth0: Which is better for a B2C app?](https://appwrite.io/blog/post/appwrite-vs-auth0-b2c)
 - [Appwrite Authentication overview](https://appwrite.io/products/auth)
