@@ -28,6 +28,8 @@ A comprehensive CIAM solution includes:
 - **Scalability:** Designed to handle millions of users simultaneously without compromising performance.
 - **Security measures:** Features like passwordless authentication, biometric verification, and threat detection protect both customer data and business operations.
 
+{% call_to_action title="Customer identity without the hassle" description="Add secure authentication for your users in just a couple of minutes." point1="Email/Password, SMS, OAuth, and more" point2="Server side rendering" point3="Session control and management" point4="Built-in security and compliance" cta=“Contact sales” url="https://appwrite.io/contact-us/enterprise" /%}
+
 # Why CIAM matters
 
 With growing concerns over data breaches and privacy, customers today demand transparency and control over their personal information. At the same time, businesses must deliver frictionless experiences to remain competitive. CIAM helps organizations meet these expectations by:
