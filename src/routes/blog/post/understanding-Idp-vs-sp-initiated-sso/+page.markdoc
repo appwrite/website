@@ -3,7 +3,7 @@ layout: post
 title: Understanding IdP- vs SP-Initiated SSO
 Description: A quick guide to IdP- vs SP-initiated SSO and when to use each.
 date: 2025-06-18
-cover: /images/blog/Blog-cover-oss-journey.png
+cover: /images/blog/understanding-Idp-vs-sp-initiated-sso/cover.png
 timeToRead: 06
 author: laura-du-ry
 callToAction: true
