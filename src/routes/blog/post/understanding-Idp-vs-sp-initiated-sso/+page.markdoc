@@ -1,1 +1,103 @@
+---
+layout: post
+title: Understanding IdP- vs SP-Initiated SSO
+Description: A quick guide to IdP- vs SP-initiated SSO and when to use each.
+date: 2025-06-18
+cover: /images/blog/Blog-cover-oss-journey.png
+timeToRead: 06
+author: laura-du-ry
+---
 
+In today’s multi-app digital world, Single Sign-On (SSO) has become a cornerstone of smooth, secure user authentication. Although the experience is almost always seamless for users, developers have multiple options for implementing SSO in their applications.
+
+This guide breaks down the differences between **Identity Provider (IdP)-initiated** and **Service Provider (SP)-initiated** SSO, their advantages and trade-offs, and how to choose the best fit for your setup.
+
+## What is IdP-Initiated SSO?
+
+First, a quick refresher: an **Identity Provider (IdP)** manages user identities, validating who a user is before granting access to different applications.
+
+In an IdP-initiated SSO flow, the user’s journey starts at the IdP itself:
+
+### How It Works
+
+1. User logs in to the IdP.
+2. The IdP displays a dashboard of connected applications.
+3. The user selects a service to access.
+4. The IdP sends a secure authentication token (such as a SAML assertion) to the Service Provider (SP).
+5. The SP grants access based on the token.
+
+### Advantages
+
+- **Streamlined access**: Launch multiple services from a single dashboard.
+- **Reduced credential reuse**: Minimizes repeated logins, lowering the risk of compromised credentials.
+- **Centralized control**: Simplifies user monitoring and access management.
+
+### Trade-offs
+
+- **Extra navigation step**: Users must first visit the IdP portal.
+- **Single point of failure**: If the IdP is compromised, multiple services could be at risk.
+- **Integration challenges**: Some services may not fully support IdP-initiated workflows.
+
+## What is SP-Initiated SSO?
+
+**Service Providers (SPs)** are the applications or services users want to access.
+
+In SP-initiated SSO, the process begins when a user attempts to log into an application directly:
+
+### How It Works
+
+1. User tries to access the service.
+2. The service detects no active session and redirects the user to the IdP.
+3. The user authenticates at the IdP.
+4. The IdP sends an authentication token back to the service.
+5. The service grants access.
+
+### Advantages
+
+- **Direct access**: Users can go straight to the service they want.
+- **Seamless integration**: Fits naturally into user-driven workflows.
+- **Flexibility**: Useful for both internal and external users.
+
+### Trade-offs
+
+- **Redirect dependency**: Requires smooth coordination between service and IdP.
+- **Increased setup complexity**: Proper configuration is critical to avoid login issues.
+
+## IdP- vs SP-Initiated SSO: Quick Comparison
+
+| Feature | IdP-Initiated SSO | SP-Initiated SSO |
+| --- | --- | --- |
+| **Starting Point** | Identity Provider portal | Service Provider login page |
+| **User Flow** | Login at IdP, then select services | Attempt service access, then authenticate via IdP |
+| **User Experience** | Best for environments with multiple services | Best for quick, direct service access |
+| **Security Considerations** | Central control but single point of vulnerability | Stronger per-service session security |
+| **Typical Use Cases** | Corporate portals, education hubs | SaaS apps, customer-facing platforms |
+
+## When to Choose IdP-Initiated SSO
+
+- **Organizations with many internal services**: Ideal for centralized portals.
+- **Formal environments**: Where users are accustomed to navigating through a unified dashboard.
+- **Legacy system compatibility**: Easier integration with older systems.
+
+## When to Choose SP-Initiated SSO
+
+- **User-first services**: Where users need to quickly access a single app.
+- **B2B and B2C platforms**: Especially when users might come in via bookmarks, emails, or direct links.
+- **Dynamic environments**: Where new apps are frequently added or removed.
+
+Pro Tip: SP-initiated flows are often complemented by adaptive MFA to enhance security without compromising the user experience.
+
+## When to Use Both Approaches
+
+Many organizations implement both IdP- and SP-initiated SSO to serve different user needs:
+
+- **Employee and partner ecosystems**: Employees might use IdP dashboards while partners or customers prefer direct access.
+- **Hybrid cloud setups**: Supporting a mix of legacy and modern applications.
+- **Adaptive security strategies**: Choosing the flow based on device, location, or user profile.
+
+Choosing the right SSO initiation method,or blending both, can dramatically impact security, user satisfaction, and scalability. Evaluate your platform's user behavior, security posture, and integration needs to pick the best approach for your environment.
+
+# Futher reading
+- [Appwrite Authentication docs](https://appwrite.io/docs/products/auth)
+- [Developer's guide to user authentication](https://appwrite.io/blog/post/guide-to-user-authentication)
+- [Appwrite Authentication overview](https://appwrite.io/products/auth)
