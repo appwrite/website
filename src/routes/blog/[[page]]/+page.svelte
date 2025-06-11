@@ -1,13 +1,13 @@
 <script lang="ts">
-    import { tick } from 'svelte';
-    import { page } from '$app/state';
-    import { Main } from '$lib/layouts';
-    import { TITLE_SUFFIX } from '$routes/titles';
-    import { DEFAULT_HOST } from '$lib/utils/metadata';
-    import { createDebounce } from '$lib/utils/debounce';
     import { goto, onNavigate } from '$app/navigation';
+    import { page } from '$app/state';
     import { Article, FooterNav, MainFooter } from '$lib/components';
     import { Button } from '$lib/components/ui';
+    import { Main } from '$lib/layouts';
+    import { createDebounce } from '$lib/utils/debounce';
+    import { DEFAULT_HOST } from '$lib/utils/metadata';
+    import { TITLE_SUFFIX } from '$routes/titles';
+    import { tick } from 'svelte';
 
     let { data } = $props();
 

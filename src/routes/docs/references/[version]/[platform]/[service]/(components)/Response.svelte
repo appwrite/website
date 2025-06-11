@@ -15,7 +15,7 @@
                             <span class="text-micro text-primary uppercase">
                                 {response.code}
                             </span>
-                            <span class="text-caption">application/json</span>
+                            <span class="text-caption">{response.contentType ?? 'no content'}</span>
                         </header>
                         {#if response.models.length > 0}
                             <ul class="text-sub-body mt-4">

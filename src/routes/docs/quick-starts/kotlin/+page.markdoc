@@ -64,7 +64,7 @@ Open your `build.gradle.kts` file and implement the following dependency.
 ```groovy
 dependencies {
     ... other dependencies
-    implementation("io.appwrite:sdk-for-kotlin:5.0.1")
+    implementation("io.appwrite:sdk-for-kotlin:9.0.0")
 }
 ```
 

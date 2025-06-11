@@ -1,8 +1,14 @@
-import type { Handle } from '@sveltejs/kit';
+import type { Handle, RequestEvent } from '@sveltejs/kit';
 import redirects from './redirects.json';
 import { sequence } from '@sveltejs/kit/hooks';
 import { BANNER_KEY } from '$lib/constants';
 import { dev } from '$app/environment';
+import { type GithubUser } from '$routes/(init)/init/(utils)/auth';
+import {
+    createInitServerClient,
+    createInitSessionClient
+} from '$routes/(init)/init/(utils)/appwrite';
+import type { AppwriteUser } from '$lib/utils/console';
 
 const redirectMap = new Map(redirects.map(({ link, redirect }) => [link, redirect]));
 
@@ -22,7 +28,7 @@ const redirecter: Handle = async ({ event, resolve }) => {
 
 const securityheaders: Handle = async ({ event, resolve }) => {
     const nonce = Buffer.from(crypto.randomUUID()).toString('base64');
-    (event.locals as { nonce: string }).nonce = nonce;
+    event.locals.nonce = nonce;
 
     const response = await resolve(event, {
         transformPageChunk: ({ html }) => {
@@ -31,7 +37,7 @@ const securityheaders: Handle = async ({ event, resolve }) => {
     });
 
     // `true` if deployed via Coolify.
-    const isPreview = !!process.env.COOLIFY_FQDN;
+    const isPreview = !!process.env.COOLIFY_FQDN || process.env.NODE_ENV === 'development';
     // COOLIFY_FQDN already includes `http`.
     const previewDomain = isPreview ? `${process.env.COOLIFY_FQDN}` : null;
     const join = (arr: string[]) => arr.join(' ');
@@ -116,11 +122,66 @@ const securityheaders: Handle = async ({ event, resolve }) => {
     return response;
 };
 
-const bannerRewriter: Handle = async ({ event, resolve }) => {
-    const response = await resolve(event, {
-        transformPageChunk: ({ html }) => html.replace('%aw_banner_key%', BANNER_KEY)
-    });
+const initSession: Handle = async ({ event, resolve }) => {
+    const session = await createInitSessionClient(event.cookies);
+
+    const getGithubUser = async () => {
+        try {
+            const identitiesList = await session?.account.listIdentities();
+
+            if (!identitiesList?.total) return null;
+            const identity = identitiesList.identities[0];
+            const { providerAccessToken, provider, providerEmail } = identity;
+            if (provider !== 'github') return null;
+
+            const res = await fetch('https://api.github.com/user', {
+                method: 'GET',
+                headers: {
+                    Authorization: `Bearer ${providerAccessToken}`
+                }
+            })
+                .then((res) => {
+                    return res.json() as Promise<GithubUser>;
+                })
+                .then((user) => ({
+                    login: user.login,
+                    name: user.name,
+                    email: providerEmail,
+                    avatar_url: user.avatar_url
+                }));
+
+            if (!res.login) {
+                await session?.account.deleteSession('current');
+                return null;
+            }
+
+            return res;
+        } catch (e) {
+            console.error(e);
+            return null;
+        }
+    };
+
+    const getAppwriteUser = async (): Promise<AppwriteUser | null> => {
+        const appwriteUser = await session?.account
+            .get()
+            .then((res) => res)
+            .catch((e) => null);
+
+        return appwriteUser || null;
+    };
+
+    const getInitUser = async () => {
+        const [github, appwrite] = await Promise.all([getGithubUser(), getAppwriteUser()]);
+
+        return { github, appwrite };
+    };
+
+    event.locals.initUser = await getInitUser();
+
+    const response = await resolve(event);
+
     return response;
 };
 
-export const handle = sequence(redirecter, bannerRewriter, securityheaders);
+export const handle = sequence(redirecter, securityheaders, initSession);
