@@ -135,7 +135,7 @@ Self-hosting support essentially means a developer can deploy the application on
 
 ## Hosting
 
-Hosting refers to serving web applications over the internet. Appwrite offers native hosting as part of its all-in-one platform. That means you can develop, deploy, and scale your application all from a single platform. Supabase, while it provides backend services, does not include frontend hosting.
+Appwrite offers native hosting as part of its all-in-one platform. That means you can develop, deploy, and scale your application all from a single platform. Supabase, while it provides backend services, does not include frontend hosting.
 
 *Differences:*
 
