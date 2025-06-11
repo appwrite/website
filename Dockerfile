@@ -1,4 +1,4 @@
-FROM node:22-bullseye as base
+FROM node:22-bullseye AS base
 
 ARG PUBLIC_APPWRITE_ENDPOINT
 ENV PUBLIC_APPWRITE_ENDPOINT ${PUBLIC_APPWRITE_ENDPOINT}
@@ -60,13 +60,13 @@ COPY pnpm-lock.yaml pnpm-lock.yaml
 RUN npm i -g corepack@latest
 RUN corepack enable
 
-FROM base as build
+FROM base AS build
 
 COPY . .
 RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile
 RUN NODE_OPTIONS=--max_old_space_size=16384 ROLLDOWN_OPTIONS_VALIDATION=loose pnpm run build
 
-FROM base as final
+FROM base AS final
 
 # Install fontconfig
 COPY ./local-fonts /usr/share/fonts
