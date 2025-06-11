@@ -8,9 +8,6 @@ importers:
 
   .:
     dependencies:
-      '@number-flow/svelte':
-        specifier: ^0.3.3
-        version: 0.3.7(svelte@5.27.0)
       h3:
         specifier: ^1.14.0
         version: 1.15.1
@@ -51,6 +48,9 @@ importers:
       '@melt-ui/svelte':
         specifier: ^0.86.5
         version: 0.86.6(svelte@5.27.0)
+      '@number-flow/svelte':
+        specifier: ^0.3.3
+        version: 0.3.7(svelte@5.27.0)
       '@playwright/test':
         specifier: ^1.50.0
         version: 1.51.1
