@@ -40,6 +40,8 @@ In an IdP-initiated SSO flow, the user’s journey starts at the IdP itself:
 - **Single point of failure**: If the IdP is compromised, multiple services could be at risk.
 - **Integration challenges**: Some services may not fully support IdP-initiated workflows.
 
+{% call_to_action title="Customer identity without the hassle" description="Add secure authentication for your users in just a couple of minutes." point1="GDPR, HIPAA and SOC 2 compliant" point2="Built-in security" point3="Multi-factor authentication" point4="Integrates with your favourite SDK" cta=“Contact sales” url="https://appwrite.io/contact-us/enterprise" /%}
+
 # What is SP-Initiated SSO?
 
 **Service Providers (SPs)** are the applications or services users want to access.
