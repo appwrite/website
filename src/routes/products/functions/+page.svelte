@@ -16,6 +16,7 @@
     import Testimonials from './(components)/Testimonials.svelte';
     import RegionsMap from './(components)/RegionsMap.svelte';
     import { PUBLIC_APPWRITE_DASHBOARD } from '$env/static/public';
+    import ProductCards from '$lib/components/product-pages/product-cards.svelte';
 
     const title = 'Functions' + TITLE_SUFFIX;
     const description =
@@ -74,148 +75,7 @@
             <OpenSource />
         </div>
 
-        <section class="web-u-sep-block-start -mt-8 py-40">
-            <div class="container">
-                <h4 class="text-label text-primary text-center">Keep exploring our products</h4>
-                <ul
-                    class="mt-8 grid gap-8"
-                    style="grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr))"
-                >
-                    <li class="web-u-flex-basis-378">
-                        <a
-                            class="web-card is-normal"
-                            href="/products/messaging"
-                            style="background: rgba(255, 255, 255, 0.04);"
-                        >
-                            <div
-                                class="web-u-padding-inline-8 web-u-padding-block-end-8 flex flex-col gap-2"
-                            >
-                                <div class="flex items-center gap-2">
-                                    <img
-                                        src="/images/icons/illustrated/dark/messaging.png"
-                                        alt="auth"
-                                        width="32"
-                                        height="32"
-                                    />
-                                    <h4 class="text-body text-primary">Messaging</h4>
-                                    <span class="web-icon-arrow-right ml-auto" aria-hidden="true"
-                                    ></span>
-                                </div>
-                                <p class="text-sub-body">
-                                    Use Appwrite messaging to send email, SMS, and push
-                                    notifications.
-                                </p>
-                            </div>
-                        </a>
-                    </li>
-                    <li class="web-u-flex-basis-378">
-                        <a
-                            class="web-card is-normal"
-                            href="/products/functions"
-                            style="background: rgba(255, 255, 255, 0.04);"
-                        >
-                            <div
-                                class="web-u-padding-inline-8 web-u-padding-block-end-8 flex flex-col gap-2"
-                            >
-                                <div class="flex items-center gap-2">
-                                    <img
-                                        src="/images/icons/illustrated/dark/functions.png"
-                                        alt="functions"
-                                        width="32"
-                                        height="32"
-                                    />
-                                    <h4 class="text-body text-primary">Functions</h4>
-                                    <span class="web-icon-arrow-right ml-auto" aria-hidden="true"
-                                    ></span>
-                                </div>
-                                <p class="text-sub-body">
-                                    Scale big and unlock limitless potential with Appwrite
-                                    functions.
-                                </p>
-                            </div>
-                        </a>
-                    </li>
-                    <li class="web-u-flex-basis-378">
-                        <a
-                            class="web-card is-normal"
-                            href="/docs/products/databases"
-                            style="background: rgba(255, 255, 255, 0.04);"
-                        >
-                            <div
-                                class="web-u-padding-inline-8 web-u-padding-block-end-8 flex flex-col gap-2"
-                            >
-                                <div class="flex items-center gap-2">
-                                    <img
-                                        src="/images/icons/illustrated/dark/databases.png"
-                                        alt=""
-                                        width="37"
-                                        height="32"
-                                    />
-                                    <h4 class="text-body text-primary">Databases</h4>
-                                    <span class="web-icon-arrow-right ml-auto" aria-hidden="true"
-                                    ></span>
-                                </div>
-                                <p class="text-sub-body">
-                                    Store and query structured data, ensuring scalable storage.
-                                </p>
-                            </div>
-                        </a>
-                    </li>
-                    <li class="web-u-flex-basis-378">
-                        <a
-                            class="web-card is-normal"
-                            href="/products/storage"
-                            style="background: rgba(255, 255, 255, 0.04);"
-                        >
-                            <div
-                                class="web-u-padding-inline-8 web-u-padding-block-end-8 flex flex-col gap-2"
-                            >
-                                <div class="flex items-center gap-2">
-                                    <img
-                                        src="/images/icons/illustrated/dark/storage.png"
-                                        alt="storage"
-                                        width="32"
-                                        height="32"
-                                    />
-                                    <h4 class="text-body text-primary">Storage</h4>
-                                    <span class="web-icon-arrow-right ml-auto" aria-hidden="true"
-                                    ></span>
-                                </div>
-                                <p class="text-sub-body">
-                                    Manage your files' project, using convenient APIs and utilities.
-                                </p>
-                            </div>
-                        </a>
-                    </li>
-                    <li class="web-u-flex-basis-378">
-                        <a
-                            class="web-card is-normal"
-                            href="/docs/apis/realtime"
-                            style="background: rgba(255, 255, 255, 0.04);"
-                        >
-                            <div
-                                class="web-u-padding-inline-8 web-u-padding-block-end-8 flex flex-col gap-2"
-                            >
-                                <div class="flex items-center gap-2">
-                                    <img
-                                        src="/images/icons/illustrated/dark/realtime.png"
-                                        alt="realtime"
-                                        width="32"
-                                        height="32"
-                                    />
-                                    <h4 class="text-body text-primary">Realtime</h4>
-                                    <span class="web-icon-arrow-right ml-auto" aria-hidden="true"
-                                    ></span>
-                                </div>
-                                <p class="text-sub-body">
-                                    Utilize realtime information from all Appwrite services.
-                                </p>
-                            </div>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </section>
+        <ProductCards />
         <div class="relative">
             <div class="container">
                 <PreFooter />

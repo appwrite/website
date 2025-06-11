@@ -32,10 +32,10 @@
 <div
     class={classNames(
         'container mb-10 overflow-clip',
-        '[mask-image:linear-gradient(to_right,rgba(0,0,0,0)_0%,_rgba(255,255,255,1)_50%,_rgba(0,0,0,0)_100%)] [mask-mode:alpha] [filter:brightness(1.5)]'
+        '[mask-image:linear-gradient(to_right,rgba(0,0,0,0)_0%,_rgba(255,255,255,1)_50%,_rgba(0,0,0,0)_100%)] mask-alpha [filter:brightness(1.5)]'
     )}
 >
-    <div class="animate-marquee flex w-max gap-4 pl-4 md:[animation-play-state:paused]">
+    <div class="animate-scroll-x flex w-max gap-4 pl-4 md:[animation-play-state:paused]">
         {#each platforms as platform}
             <img src={platform.icon} alt={platform.name} class="size-16" />
         {/each}
