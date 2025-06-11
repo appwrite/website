@@ -14,7 +14,7 @@
     )}
 >
     <div class="container">
-        <div class="flex max-w-3xl flex-col items-center justify-center gap-4 text-center">
+        <div class="flex max-w-3xl flex-col items-center justify-center gap-4 text-center mx-auto">
             <h2 class="text-primary font-aeonik-pro text-4xl md:text-6xl">
                 Start building like a team of hundreds with Appwrite
             </h2>
