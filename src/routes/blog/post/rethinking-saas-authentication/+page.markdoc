@@ -54,6 +54,8 @@ Regulations like GDPR, HIPAA, and SOC 2 demand strict user data protection and a
 
 Appwrite’s built-in encryption, access controls, and regional hosting options make compliance simpler, helping you earn and maintain client trust.
 
+{% call_to_action title="Customer identity without the hassle" description="Add secure authentication for your users in just a couple of minutes." point1="Built-in security and compliance" point2="Multi-factor authentication" point3="Custom roles and permissions" point4="Session control and management" cta=“Contact sales” url="https://appwrite.io/contact-us/enterprise" /%}
+
 # Proven SaaS authentication strategies
 
 ## Go passwordless
