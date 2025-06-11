@@ -55,7 +55,7 @@ You can mix and match depending on your store's needs.
 
 ## 2. **Built-in 2FA**
 
-Enhance security by enabling two-factor authentication using TOTP apps like Google Authenticator. No extra backend work required.
+Enhance security by enabling two-factor authentication using TOTP apps like Google Authenticator. No extra backend work required. Learn more about [MFA](https://appwrite.io/docs/products/auth/mfa)
 
 ## 3. **Self-Service account management**
 
@@ -118,4 +118,6 @@ Ready to get started? [Deploy Appwrite](https://appwrite.io/cloud) in minutes an
 
 - [Appwrite Authentication docs](https://appwrite.io/docs/products/auth)
 - [Appwrite vs Auth0: Which is better for a B2C app?](https://appwrite.io/blog/post/appwrite-vs-auth0-b2c)
-- [Appwrite Authentication overview](https://appwrite.io/products/auth)
+- [OAuth with Google](https://appwrite.io/integrations/oauth-google)
+- [OAuth with Amazon](https://appwrite.io/integrations/oauth-amazon)
+
