@@ -120,7 +120,7 @@ OAuth 2.0 offers different "flows" to accommodate various scenarios. Here's a br
 
 - Smart TVs, IoT devices.
 
-[Appwrite Auth](https://appwrite.io/products/auth) supports all major OAuth2 flows, making it easy to integrate secure authentication into any app
+[Appwrite Auth](/products/auth) supports all major OAuth2 flows, making it easy to integrate secure authentication into any app
 
 # OAuth 2.0 Tokens: Access and refresh
 
