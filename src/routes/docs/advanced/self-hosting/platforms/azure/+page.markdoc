@@ -1,0 +1,662 @@
+---
+layout: article
+title: Azure deployment
+description: Deploy Appwrite on Microsoft Azure using Container Apps, Virtual Machines, or AKS. Learn how to set up a production-ready Appwrite instance with Azure's managed services.
+---
+
+Microsoft Azure provides multiple deployment options for Appwrite, from serverless containers with Azure Container Apps to fully managed Kubernetes with AKS. This guide covers the most effective Azure services for deploying Appwrite.
+
+# Deployment options {% #deployment-options %}
+
+Choose the Azure service that best fits your requirements:
+
+{% table %}
+* Service
+* Best For
+* Complexity
+* Scaling
+---
+* **Container Apps**
+* Serverless containers, microservices
+* Low
+* Automatic
+---
+* **Virtual Machines**
+* Full control, custom configurations
+* Medium
+* Manual
+---
+* **AKS**
+* Container orchestration, enterprise workloads
+* High
+* Automatic
+---
+* **App Service**
+* Web apps, managed platform
+* Low
+* Automatic
+{% /table %}
+
+# Container Apps deployment {% #container-apps %}
+
+Deploy Appwrite using Azure Container Apps for a serverless, fully managed container experience.
+
+## Prerequisites {% #container-apps-prerequisites %}
+
+- Azure account with active subscription
+- Azure CLI installed and authenticated
+- Docker installed locally
+- Resource group and Container Registry
+
+## Setup Azure resources {% #setup-resources %}
+
+**Step 1: Install Azure CLI and login**
+
+```bash
+# Install Azure CLI (macOS)
+brew install azure-cli
+
+# Login to Azure
+az login
+
+# Set default subscription
+az account set --subscription "your-subscription-id"
+```
+
+**Step 2: Create resource group and registry**
+
+```bash
+# Create resource group
+az group create \
+    --name appwrite-rg \
+    --location eastus
+
+# Create Azure Container Registry
+az acr create \
+    --resource-group appwrite-rg \
+    --name appwriteregistry \
+    --sku Basic \
+    --admin-enabled true
+
+# Login to registry
+az acr login --name appwriteregistry
+```
+
+## Prepare container image {% #prepare-image %}
+
+**Step 1: Pull and push Appwrite image**
+
+```bash
+# Get registry login server
+REGISTRY_SERVER=$(az acr show --name appwriteregistry --query loginServer --output tsv)
+
+# Pull official Appwrite image
+docker pull appwrite/appwrite:1.7.4
+
+# Tag for Azure Container Registry
+docker tag appwrite/appwrite:1.7.4 $REGISTRY_SERVER/appwrite:1.7.4
+
+# Push to registry
+docker push $REGISTRY_SERVER/appwrite:1.7.4
+```
+
+## Deploy to Container Apps {% #deploy-container-apps %}
+
+**Step 1: Create Container Apps environment**
+
+```bash
+# Install Container Apps extension
+az extension add --name containerapp
+
+# Create Container Apps environment
+az containerapp env create \
+    --name appwrite-env \
+    --resource-group appwrite-rg \
+    --location eastus
+```
+
+**Step 2: Create Azure Database for MySQL**
+
+```bash
+# Create MySQL server
+az mysql flexible-server create \
+    --resource-group appwrite-rg \
+    --name appwrite-mysql \
+    --location eastus \
+    --admin-user appwriteadmin \
+    --admin-password "YourSecurePassword123!" \
+    --sku-name Standard_B1ms \
+    --tier Burstable \
+    --public-access 0.0.0.0 \
+    --storage-size 20 \
+    --version 8.0.21
+
+# Create database
+az mysql flexible-server db create \
+    --resource-group appwrite-rg \
+    --server-name appwrite-mysql \
+    --database-name appwrite
+```
+
+**Step 3: Deploy Appwrite container**
+
+```bash
+# Get registry credentials
+REGISTRY_USERNAME=$(az acr credential show --name appwriteregistry --query username --output tsv)
+REGISTRY_PASSWORD=$(az acr credential show --name appwriteregistry --query passwords[0].value --output tsv)
+
+# Deploy container app
+az containerapp create \
+    --name appwrite-app \
+    --resource-group appwrite-rg \
+    --environment appwrite-env \
+    --image $REGISTRY_SERVER/appwrite:1.7.4 \
+    --registry-server $REGISTRY_SERVER \
+    --registry-username $REGISTRY_USERNAME \
+    --registry-password $REGISTRY_PASSWORD \
+    --target-port 80 \
+    --ingress external \
+    --min-replicas 1 \
+    --max-replicas 3 \
+    --cpu 1.0 \
+    --memory 2.0Gi \
+    --env-vars \
+        _APP_ENV=production \
+        _APP_WORKER_PER_CORE=6 \
+        _APP_LOCALE=en \
+        _APP_CONSOLE_WHITELIST_ROOT=enabled \
+        _APP_OPTIONS_ABUSE=enabled \
+        _APP_OPTIONS_FORCE_HTTPS=enabled \
+        _APP_OPENSSL_KEY_V1=your-encryption-key \
+        _APP_DB_HOST=appwrite-mysql.mysql.database.azure.com \
+        _APP_DB_PORT=3306 \
+        _APP_DB_SCHEMA=appwrite \
+        _APP_DB_USER=appwriteadmin \
+        _APP_DB_PASS="YourSecurePassword123!"
+
+# Get the application URL
+az containerapp show \
+    --name appwrite-app \
+    --resource-group appwrite-rg \
+    --query properties.configuration.ingress.fqdn \
+    --output tsv
+```
+
+## Configure custom domain {% #container-apps-domain %}
+
+**Step 1: Add custom domain**
+
+```bash
+# Add custom domain to container app
+az containerapp hostname add \
+    --resource-group appwrite-rg \
+    --name appwrite-app \
+    --hostname your-domain.com
+
+# Bind SSL certificate (managed certificate)
+az containerapp ssl upload \
+    --resource-group appwrite-rg \
+    --name appwrite-app \
+    --environment appwrite-env \
+    --hostname your-domain.com \
+    --certificate-file path/to/certificate.pfx \
+    --certificate-password "certificate-password"
+```
+
+**Step 2: Update DNS records**
+
+Add a CNAME record at your DNS provider:
+
+```
+Type: CNAME
+Name: your-subdomain (or @)
+Value: your-app.azurecontainerapps.io
+```
+
+# Virtual Machine deployment {% #virtual-machine %}
+
+Deploy Appwrite on Azure Virtual Machines for maximum control and customization.
+
+## Create VM instance {% #create-vm %}
+
+**Step 1: Create virtual machine**
+
+```bash
+# Create VM with Ubuntu
+az vm create \
+    --resource-group appwrite-rg \
+    --name appwrite-vm \
+    --image Ubuntu2204 \
+    --size Standard_B2s \
+    --admin-username azureuser \
+    --generate-ssh-keys \
+    --custom-data cloud-init.txt
+
+# Create cloud-init.txt file for automatic setup
+cat > cloud-init.txt << 'EOF'
+#cloud-config
+package_upgrade: true
+packages:
+  - docker.io
+  - docker-compose
+  - nginx
+  - certbot
+  - python3-certbot-nginx
+
+runcmd:
+  - systemctl start docker
+  - systemctl enable docker
+  - usermod -aG docker azureuser
+  - curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+  - chmod +x /usr/local/bin/docker-compose
+EOF
+```
+
+**Step 2: Configure networking**
+
+```bash
+# Open required ports
+az vm open-port \
+    --resource-group appwrite-rg \
+    --name appwrite-vm \
+    --port 80 \
+    --priority 1000
+
+az vm open-port \
+    --resource-group appwrite-rg \
+    --name appwrite-vm \
+    --port 443 \
+    --priority 1010
+
+az vm open-port \
+    --resource-group appwrite-rg \
+    --name appwrite-vm \
+    --port 8080 \
+    --priority 1020
+```
+
+## Install Appwrite on VM {% #install-vm %}
+
+**Step 1: Connect to VM**
+
+```bash
+# Get VM public IP
+VM_IP=$(az vm show \
+    --resource-group appwrite-rg \
+    --name appwrite-vm \
+    --show-details \
+    --query publicIps \
+    --output tsv)
+
+# SSH into VM
+ssh azureuser@$VM_IP
+```
+
+**Step 2: Install Appwrite**
+
+```bash
+# Create directory for Appwrite
+sudo mkdir -p /opt/appwrite && cd /opt/appwrite
+
+# Install Appwrite
+sudo docker run -it --rm \
+    --volume /var/run/docker.sock:/var/run/docker.sock \
+    --volume "$(pwd)"/appwrite:/usr/src/code/appwrite:rw \
+    --entrypoint="install" \
+    appwrite/appwrite:1.7.4
+```
+
+Follow the installation prompts:
+- **HTTP Port**: 80
+- **HTTPS Port**: 443
+- **Hostname**: Your VM's public IP or custom domain
+- **Secret Key**: Generate a secure random key
+
+**Step 3: Configure reverse proxy and SSL**
+
+```bash
+# Create Nginx configuration
+sudo tee /etc/nginx/sites-available/appwrite << 'EOF'
+server {
+    listen 80;
+    server_name your-domain.com;
+
+    client_max_body_size 100M;
+
+    location / {
+        proxy_pass http://localhost:8080;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_cache_bypass $http_upgrade;
+    }
+}
+EOF
+
+# Enable site
+sudo ln -s /etc/nginx/sites-available/appwrite /etc/nginx/sites-enabled/
+sudo nginx -t && sudo systemctl restart nginx
+
+# Get SSL certificate
+sudo certbot --nginx -d your-domain.com
+```
+
+# AKS deployment {% #aks %}
+
+Deploy Appwrite on Azure Kubernetes Service for enterprise-grade container orchestration.
+
+## Create AKS cluster {% #create-cluster %}
+
+**Step 1: Create AKS cluster**
+
+```bash
+# Create AKS cluster
+az aks create \
+    --resource-group appwrite-rg \
+    --name appwrite-aks \
+    --node-count 3 \
+    --node-vm-size Standard_D2s_v3 \
+    --enable-addons monitoring \
+    --enable-cluster-autoscaler \
+    --min-count 1 \
+    --max-count 5 \
+    --generate-ssh-keys
+
+# Get credentials
+az aks get-credentials \
+    --resource-group appwrite-rg \
+    --name appwrite-aks
+```
+
+**Step 2: Install ingress controller**
+
+```bash
+# Add ingress-nginx repository
+helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
+helm repo update
+
+# Install ingress controller
+helm install nginx-ingress ingress-nginx/ingress-nginx \
+    --set controller.replicaCount=2 \
+    --set controller.service.type=LoadBalancer
+```
+
+## Deploy Appwrite on AKS {% #deploy-aks %}
+
+**Step 1: Create namespace and secrets**
+
+```bash
+# Create namespace
+kubectl create namespace appwrite
+
+# Create secret for database
+kubectl create secret generic appwrite-db-secret \
+    --from-literal=username=appwriteadmin \
+    --from-literal=password=YourSecurePassword123! \
+    --namespace=appwrite
+```
+
+**Step 2: Deploy Appwrite manifests**
+
+```bash
+# Create deployment and service
+kubectl apply -f - <<EOF
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: appwrite-storage
+  namespace: appwrite
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 50Gi
+  storageClassName: managed-premium
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: appwrite
+  namespace: appwrite
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: appwrite
+  template:
+    metadata:
+      labels:
+        app: appwrite
+    spec:
+      containers:
+      - name: appwrite
+        image: $REGISTRY_SERVER/appwrite:1.7.4
+        ports:
+        - containerPort: 80
+        env:
+        - name: _APP_ENV
+          value: "production"
+        - name: _APP_DOMAIN
+          value: "your-domain.com"
+        - name: _APP_DB_HOST
+          value: "appwrite-mysql.mysql.database.azure.com"
+        - name: _APP_DB_USER
+          valueFrom:
+            secretKeyRef:
+              name: appwrite-db-secret
+              key: username
+        - name: _APP_DB_PASS
+          valueFrom:
+            secretKeyRef:
+              name: appwrite-db-secret
+              key: password
+        volumeMounts:
+        - name: storage
+          mountPath: /storage
+        resources:
+          requests:
+            memory: "1Gi"
+            cpu: "500m"
+          limits:
+            memory: "2Gi"
+            cpu: "1000m"
+      volumes:
+      - name: storage
+        persistentVolumeClaim:
+          claimName: appwrite-storage
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: appwrite-service
+  namespace: appwrite
+spec:
+  selector:
+    app: appwrite
+  ports:
+  - port: 80
+    targetPort: 80
+  type: ClusterIP
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: appwrite-ingress
+  namespace: appwrite
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    nginx.ingress.kubernetes.io/proxy-body-size: "100m"
+spec:
+  tls:
+  - hosts:
+    - your-domain.com
+    secretName: appwrite-tls
+  rules:
+  - host: your-domain.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: appwrite-service
+            port:
+              number: 80
+EOF
+```
+
+# Production considerations {% #production %}
+
+## Security best practices {% #security %}
+
+**Azure Active Directory Integration**
+
+```bash
+# Create service principal for Appwrite
+az ad sp create-for-rbac \
+    --name appwrite-sp \
+    --role contributor \
+    --scopes /subscriptions/your-subscription-id/resourceGroups/appwrite-rg
+```
+
+**Key Vault for secrets management**
+
+```bash
+# Create Key Vault
+az keyvault create \
+    --resource-group appwrite-rg \
+    --name appwrite-keyvault \
+    --location eastus
+
+# Store database password
+az keyvault secret set \
+    --vault-name appwrite-keyvault \
+    --name db-password \
+    --value "YourSecurePassword123!"
+
+# Store encryption key
+az keyvault secret set \
+    --vault-name appwrite-keyvault \
+    --name app-key \
+    --value "your-encryption-key"
+```
+
+**Network Security Groups**
+
+```bash
+# Create NSG for web traffic
+az network nsg create \
+    --resource-group appwrite-rg \
+    --name appwrite-nsg
+
+# Allow HTTP/HTTPS
+az network nsg rule create \
+    --resource-group appwrite-rg \
+    --nsg-name appwrite-nsg \
+    --name AllowWebTraffic \
+    --priority 1000 \
+    --source-address-prefixes '*' \
+    --destination-port-ranges 80 443 \
+    --access Allow \
+    --protocol Tcp
+```
+
+## Monitoring and logging {% #monitoring %}
+
+**Azure Monitor Integration**
+
+```bash
+# Enable Application Insights
+az monitor app-insights component create \
+    --app appwrite-insights \
+    --location eastus \
+    --resource-group appwrite-rg \
+    --application-type web
+```
+
+**Log Analytics Workspace**
+
+```bash
+# Create Log Analytics workspace
+az monitor log-analytics workspace create \
+    --resource-group appwrite-rg \
+    --workspace-name appwrite-logs \
+    --location eastus
+```
+
+## Backup and disaster recovery {% #backup %}
+
+**Database Backups**
+
+```bash
+# Enable automated backups for MySQL
+az mysql flexible-server parameter set \
+    --resource-group appwrite-rg \
+    --server-name appwrite-mysql \
+    --name backup_retention_days \
+    --value 30
+
+# Create manual backup
+az mysql flexible-server backup create \
+    --resource-group appwrite-rg \
+    --server-name appwrite-mysql \
+    --backup-name manual-backup-$(date +%Y%m%d)
+```
+
+**Storage Account for file backups**
+
+```bash
+# Create storage account
+az storage account create \
+    --name appwritebackups \
+    --resource-group appwrite-rg \
+    --location eastus \
+    --sku Standard_LRS
+
+# Create container for backups
+az storage container create \
+    --name backups \
+    --account-name appwritebackups
+```
+
+# Troubleshooting {% #troubleshooting %}
+
+**Common issues and solutions:**
+
+**Container Apps startup issues**
+- Check container logs: `az containerapp logs show --name appwrite-app --resource-group appwrite-rg`
+- Verify environment variables and secrets
+- Ensure registry credentials are correct
+
+**Database connection problems**
+- Check MySQL server firewall rules
+- Verify connection string format
+- Test connectivity from container app environment
+
+**SSL certificate issues**
+- Verify domain ownership
+- Check DNS propagation
+- Ensure certificate is properly bound to hostname
+
+**Performance optimization**
+- Use Azure CDN for static content
+- Implement Azure Cache for Redis
+- Configure auto-scaling rules
+
+# Next steps {% #next-steps %}
+
+After successful deployment:
+
+[Configure email delivery](/docs/advanced/self-hosting/configuration/email) - Set up SMTP using Azure Communication Services
+
+[Set up SSL certificates](/docs/advanced/self-hosting/configuration/tls-certificates) - Configure managed SSL certificates
+
+[Production deployment guide](/docs/advanced/self-hosting/production) - Optimize for production workloads
+
+[Update and maintenance](/docs/advanced/self-hosting/update) - Keep your Appwrite instance up to date

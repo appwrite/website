@@ -1,0 +1,341 @@
+---
+layout: article
+title: Railway deployment
+description: Deploy Appwrite on Railway using Docker with automatic GitHub integration. Learn how to set up a production-ready Appwrite instance with simple configuration.
+---
+
+Railway is a modern cloud platform that simplifies application deployment with automatic builds, zero-config deploys, and seamless Git integration. Railway's Docker support makes it easy to deploy Appwrite with minimal configuration while providing managed databases and automatic scaling.
+
+# Deployment options {% #deployment-options %}
+
+Railway offers two primary ways to deploy Appwrite:
+
+{% table %}
+* Method
+* Best For
+* Complexity
+* Pricing
+---
+* **Single Service**
+* Small projects, development
+* Low
+* Usage-based
+---
+* **Multi-Service with Blueprint**
+* Production apps, microservices
+* Medium
+* Usage-based
+{% /table %}
+
+# Prerequisites {% #prerequisites %}
+
+Before deploying Appwrite on Railway, ensure you have:
+
+- A Railway account (free tier available)
+- A GitHub repository with your Appwrite configuration
+- Basic understanding of Docker and environment variables
+
+# Method 1: Single service deployment {% #single-service %}
+
+This method deploys Appwrite as a single service, suitable for development and small production workloads.
+
+## Step 1: Prepare your repository {% #prepare-repository %}
+
+Create a new repository or use an existing one with the following structure:
+
+```
+appwrite-railway/
+├── docker-compose.yml
+├── .env.example
+├── railway.toml (optional)
+└── README.md
+```
+
+Create a `docker-compose.yml` file based on the official Appwrite setup, but configured for Railway:
+
+```yaml
+version: '3'
+
+services:
+  appwrite:
+    image: appwrite/appwrite:1.5.7
+    container_name: appwrite
+    restart: unless-stopped
+    networks:
+      - appwrite
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - appwrite-uploads:/storage/uploads:rw
+      - appwrite-cache:/storage/cache:rw
+      - appwrite-config:/storage/config:rw
+      - appwrite-certificates:/storage/certificates:rw
+      - appwrite-functions:/storage/functions:rw
+    environment:
+      - _APP_ENV=${_APP_ENV:-production}
+      - _APP_WORKER_PER_CORE=${_APP_WORKER_PER_CORE:-6}
+      - _APP_LOCALE=${_APP_LOCALE:-en}
+      - _APP_CONSOLE_WHITELIST_ROOT=${_APP_CONSOLE_WHITELIST_ROOT:-enabled}
+      - _APP_CONSOLE_WHITELIST_EMAILS=${_APP_CONSOLE_WHITELIST_EMAILS}
+      - _APP_CONSOLE_WHITELIST_IPS=${_APP_CONSOLE_WHITELIST_IPS}
+      - _APP_SYSTEM_EMAIL_NAME=${_APP_SYSTEM_EMAIL_NAME}
+      - _APP_SYSTEM_EMAIL_ADDRESS=${_APP_SYSTEM_EMAIL_ADDRESS}
+      - _APP_SYSTEM_SECURITY_EMAIL_ADDRESS=${_APP_SYSTEM_SECURITY_EMAIL_ADDRESS}
+      - _APP_SYSTEM_RESPONSE_FORMAT=${_APP_SYSTEM_RESPONSE_FORMAT}
+      - _APP_OPTIONS_ABUSE=${_APP_OPTIONS_ABUSE:-enabled}
+      - _APP_OPTIONS_FORCE_HTTPS=${_APP_OPTIONS_FORCE_HTTPS:-enabled}
+      - _APP_OPENSSL_KEY_V1=${_APP_OPENSSL_KEY_V1}
+      - _APP_DOMAIN=${_APP_DOMAIN}
+      - _APP_DOMAIN_TARGET=${_APP_DOMAIN_TARGET}
+      - _APP_REDIS_HOST=redis
+      - _APP_REDIS_PORT=6379
+      - _APP_DB_HOST=mariadb
+      - _APP_DB_PORT=3306
+      - _APP_DB_SCHEMA=appwrite
+      - _APP_DB_USER=${_APP_DB_USER:-appwrite}
+      - _APP_DB_PASS=${_APP_DB_PASS}
+      - _APP_SMTP_HOST=${_APP_SMTP_HOST}
+      - _APP_SMTP_PORT=${_APP_SMTP_PORT}
+      - _APP_SMTP_SECURE=${_APP_SMTP_SECURE}
+      - _APP_SMTP_USERNAME=${_APP_SMTP_USERNAME}
+      - _APP_SMTP_PASSWORD=${_APP_SMTP_PASSWORD}
+      - _APP_USAGE_STATS=${_APP_USAGE_STATS:-enabled}
+      - _APP_INFLUXDB_HOST=influxdb
+      - _APP_INFLUXDB_PORT=8086
+      - _APP_STORAGE_LIMIT=${_APP_STORAGE_LIMIT:-30000000}
+
+  mariadb:
+    image: mariadb:10.7
+    restart: unless-stopped
+    networks:
+      - appwrite
+    volumes:
+      - appwrite-mariadb:/var/lib/mysql:rw
+    environment:
+      - MYSQL_ROOT_PASSWORD=${_APP_DB_ROOT_PASS}
+      - MYSQL_DATABASE=appwrite
+      - MYSQL_USER=${_APP_DB_USER:-appwrite}
+      - MYSQL_PASSWORD=${_APP_DB_PASS}
+    command: 'mysqld --innodb-flush-method=fsync'
+
+  redis:
+    image: redis:7.0-alpine
+    restart: unless-stopped
+    networks:
+      - appwrite
+    volumes:
+      - appwrite-redis:/data:rw
+
+  # clamav:
+  #   image: appwrite/clamav:1.2.0
+  #   restart: unless-stopped
+  #   networks:
+  #     - appwrite
+  #   volumes:
+  #     - appwrite-uploads:/storage/uploads
+
+  influxdb:
+    image: appwrite/influxdb:1.5.0
+    restart: unless-stopped
+    networks:
+      - appwrite
+    volumes:
+      - appwrite-influxdb:/var/lib/influxdb:rw
+
+  telegraf:
+    image: appwrite/telegraf:1.4.0
+    restart: unless-stopped
+    networks:
+      - appwrite
+
+networks:
+  appwrite:
+
+volumes:
+  appwrite-mariadb:
+  appwrite-redis:
+  appwrite-cache:
+  appwrite-uploads:
+  appwrite-certificates:
+  appwrite-functions:
+  appwrite-builds:
+  appwrite-influxdb:
+  appwrite-config:
+```
+
+## Step 2: Deploy on Railway {% #deploy-railway %}
+
+1. **Connect your repository**
+   - Sign up for Railway at [railway.app](https://railway.app)
+   - Click "Deploy from GitHub repo"
+   - Connect your GitHub account and select your repository
+
+2. **Configure the deployment**
+   - Railway will automatically detect your `docker-compose.yml`
+   - Set your domain in the Railway dashboard
+   - Add required environment variables (see configuration section below)
+
+3. **Environment variables**
+   In the Railway dashboard, add these essential environment variables:
+
+   ```bash
+   _APP_ENV=production
+   _APP_DOMAIN=your-app.railway.app
+   _APP_DOMAIN_TARGET=your-app.railway.app
+   _APP_OPENSSL_KEY_V1=your-encryption-key
+   _APP_DB_PASS=your-secure-database-password
+   _APP_DB_ROOT_PASS=your-secure-root-password
+   ```
+
+4. **Deploy**
+   - Click "Deploy" and Railway will build and start your Appwrite instance
+   - Access your deployment at the provided Railway URL
+
+# Method 2: Multi-service deployment {% #multi-service %}
+
+For production deployments, you can deploy each Appwrite component as separate Railway services for better scalability and monitoring.
+
+## Create a Blueprint {% #blueprint %}
+
+Create a `railway.toml` file in your repository:
+
+```toml
+[build]
+builder = "dockercompose"
+
+[deploy]
+numReplicas = 1
+restartPolicyType = "ALWAYS"
+```
+
+Then deploy each service separately:
+- Appwrite main service
+- MariaDB database
+- Redis cache
+- InfluxDB (for analytics)
+
+This approach gives you better control over scaling and resource allocation.
+
+# Configuration {% #configuration %}
+
+Configure these environment variables in Railway's dashboard:
+
+## Required variables {% #required-variables %}
+
+```bash
+_APP_ENV=production
+_APP_DOMAIN=your-app.railway.app
+_APP_DOMAIN_TARGET=your-app.railway.app
+_APP_OPENSSL_KEY_V1=$(openssl rand -base64 128)
+_APP_DB_PASS=strong_password_here
+_APP_DB_ROOT_PASS=strong_root_password_here
+```
+
+## Email configuration {% #email-config %}
+
+To enable email features:
+
+```bash
+_APP_SMTP_HOST=smtp.sendgrid.net
+_APP_SMTP_PORT=587
+_APP_SMTP_SECURE=tls
+_APP_SMTP_USERNAME=apikey
+_APP_SMTP_PASSWORD=your_sendgrid_api_key
+_APP_SYSTEM_EMAIL_NAME=Appwrite
+_APP_SYSTEM_EMAIL_ADDRESS=noreply@yourdomain.com
+```
+
+## Security settings {% #security-settings %}
+
+```bash
+_APP_CONSOLE_WHITELIST_EMAILS=admin@yourdomain.com
+_APP_OPTIONS_FORCE_HTTPS=enabled
+_APP_OPTIONS_ABUSE=enabled
+```
+
+# Persistent storage {% #persistent-storage %}
+
+Railway automatically handles volume persistence for Docker Compose deployments. Your data will persist across deployments.
+
+For additional backup strategies, consider:
+- Regular database exports
+- File storage backups
+- Using Railway's database backup features
+
+# Custom domains {% #custom-domains %}
+
+To use a custom domain:
+
+1. **Add domain in Railway**
+   - Go to your service settings
+   - Click "Add Domain"
+   - Enter your custom domain
+
+2. **Configure DNS**
+   - Add a CNAME record pointing to your Railway deployment
+   - Wait for DNS propagation
+
+3. **Update environment variables**
+   ```bash
+   _APP_DOMAIN=yourdomain.com
+   _APP_DOMAIN_TARGET=yourdomain.com
+   ```
+
+# Scaling and performance {% #scaling %}
+
+Railway provides automatic scaling based on usage:
+
+- **Vertical scaling**: Increase CPU and memory automatically
+- **Horizontal scaling**: Deploy multiple instances (paid plans)
+- **Database optimization**: Use Railway's managed databases for better performance
+
+For high-traffic applications, consider:
+- Using Railway's Redis addon
+- Implementing CDN for static assets
+- Setting up database read replicas
+
+# Troubleshooting {% #troubleshooting %}
+
+## Common issues {% #common-issues %}
+
+**Build failures**
+- Check that your `docker-compose.yml` is valid
+- Ensure all required environment variables are set
+- Review build logs in Railway dashboard
+
+**Database connection errors**
+- Verify database credentials
+- Check that services can communicate (Railway handles networking automatically)
+- Ensure database is properly initialized
+
+**SSL/HTTPS issues**
+- Railway automatically provides SSL certificates
+- Ensure `_APP_OPTIONS_FORCE_HTTPS=enabled`
+- Check domain configuration
+
+## Monitoring {% #monitoring %}
+
+Railway provides built-in monitoring:
+- View logs in real-time
+- Monitor resource usage
+- Set up alerts for downtime
+
+## Support {% #support %}
+
+For Railway-specific issues:
+- Check [Railway documentation](https://docs.railway.app)
+- Visit [Railway Discord community](https://discord.gg/railway)
+- Use Railway's support system
+
+# Next steps {% #next-steps %}
+
+After deploying Appwrite on Railway:
+
+1. **Set up your first project** - Create a project in the Appwrite console
+2. **Configure authentication** - Set up OAuth providers and user management
+3. **Create your database** - Design your data structure and collections
+4. **Deploy your app** - Connect your frontend application to Appwrite
+5. **Monitor usage** - Use Railway's dashboard to monitor performance and costs
+
+Railway's pay-as-you-scale model makes it perfect for growing applications, from prototype to production.

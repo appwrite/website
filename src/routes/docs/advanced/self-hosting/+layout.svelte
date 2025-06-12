@@ -12,57 +12,95 @@
             label: 'Getting started',
             items: [
                 {
-                    label: 'Installation',
+                    label: 'Overview',
                     href: '/docs/advanced/self-hosting/'
+                },
+                {
+                    label: 'Installation',
+                    href: '/docs/advanced/self-hosting/installation'
                 }
             ]
         },
         {
-            label: 'Guides',
+            label: 'Platform deployment',
             items: [
                 {
+                    label: 'AWS',
+                    href: '/docs/advanced/self-hosting/platforms/aws'
+                },
+                {
+                    label: 'DigitalOcean',
+                    href: '/docs/advanced/self-hosting/platforms/digitalocean'
+                },
+                {
+                    label: 'Google Cloud',
+                    href: '/docs/advanced/self-hosting/platforms/google-cloud'
+                },
+                {
+                    label: 'Azure',
+                    href: '/docs/advanced/self-hosting/platforms/azure'
+                },
+                {
                     label: 'Coolify',
-                    href: '/docs/advanced/self-hosting/coolify'
+                    href: '/docs/advanced/self-hosting/platforms/coolify'
                 },
                 {
-                    label: 'Functions',
-                    href: '/docs/advanced/self-hosting/functions'
+                    label: 'Railway',
+                    href: '/docs/advanced/self-hosting/platforms/railway'
                 },
                 {
-                    label: 'Sites',
-                    href: '/docs/advanced/self-hosting/sites'
+                    label: 'Render',
+                    href: '/docs/advanced/self-hosting/platforms/render'
+                }
+            ]
+        },
+        {
+            label: 'Configuration',
+            items: [
+                {
+                    label: 'Environment variables',
+                    href: '/docs/advanced/self-hosting/configuration/environment-variables'
                 },
                 {
                     label: 'Email delivery',
-                    href: '/docs/advanced/self-hosting/email'
+                    href: '/docs/advanced/self-hosting/configuration/email'
                 },
                 {
                     label: 'SMS delivery',
-                    href: '/docs/advanced/self-hosting/sms'
+                    href: '/docs/advanced/self-hosting/configuration/sms'
+                },
+                {
+                    label: 'Functions',
+                    href: '/docs/advanced/self-hosting/configuration/functions'
+                },
+                {
+                    label: 'Sites',
+                    href: '/docs/advanced/self-hosting/configuration/sites'
                 },
                 {
                     label: 'Storage',
-                    href: '/docs/advanced/self-hosting/storage'
+                    href: '/docs/advanced/self-hosting/configuration/storage'
                 },
                 {
-                    label: 'Environment variables',
-                    href: '/docs/advanced/self-hosting/environment-variables'
+                    label: 'TLS certificates',
+                    href: '/docs/advanced/self-hosting/configuration/tls-certificates'
+                }
+            ]
+        },
+        {
+            label: 'Management',
+            items: [
+                {
+                    label: 'Production setup',
+                    href: '/docs/advanced/self-hosting/production'
                 },
                 {
-                    label: 'TLS Certificates',
-                    href: '/docs/advanced/self-hosting/tls-certificates'
+                    label: 'Updates & migration',
+                    href: '/docs/advanced/self-hosting/update'
                 },
                 {
                     label: 'Debugging',
                     href: '/docs/advanced/self-hosting/debug'
-                },
-                {
-                    label: 'Production',
-                    href: '/docs/advanced/self-hosting/production'
-                },
-                {
-                    label: 'Update',
-                    href: '/docs/advanced/self-hosting/update'
                 }
             ]
         }

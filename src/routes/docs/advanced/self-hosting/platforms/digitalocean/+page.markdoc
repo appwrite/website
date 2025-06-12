@@ -1,0 +1,637 @@
+---
+layout: article
+title: DigitalOcean deployment
+description: Deploy Appwrite on DigitalOcean using Droplets, App Platform, or Kubernetes. Learn how to set up a production-ready Appwrite instance with step-by-step instructions.
+---
+
+DigitalOcean offers several ways to deploy Appwrite, from simple Droplet deployments to fully managed Kubernetes clusters. This guide covers the most popular deployment methods with detailed instructions.
+
+# Deployment options {% #deployment-options %}
+
+Choose the deployment method that best fits your needs:
+
+{% table %}
+* Method
+* Best For
+* Complexity
+* Pricing
+---
+* **Droplets**
+* Full control, custom configurations
+* Low
+* Predictable
+---
+* **App Platform**
+* Managed deployment, automatic scaling
+* Medium
+* Usage-based
+---
+* **Kubernetes**
+* Container orchestration, high availability
+* High
+* Resource-based
+---
+* **Marketplace**
+* One-click installation
+* Very Low
+* Fixed
+{% /table %}
+
+# Droplet deployment {% #droplet-deployment %}
+
+Deploy Appwrite on a DigitalOcean Droplet for maximum control and flexibility.
+
+## Prerequisites {% #droplet-prerequisites %}
+
+- DigitalOcean account
+- SSH key pair added to your account
+- Basic familiarity with Linux command line
+
+## Create and configure Droplet {% #create-droplet %}
+
+**Step 1: Launch Droplet**
+
+1. Log in to your [DigitalOcean Control Panel](https://cloud.digitalocean.com/)
+2. Click **Create** → **Droplets**
+3. Choose your configuration:
+   - **Distribution**: Ubuntu 24.04 LTS
+   - **Plan**: Basic (minimum 4GB RAM / 2 vCPUs recommended)
+   - **Datacenter**: Choose region closest to your users
+   - **Authentication**: SSH keys (select your key)
+   - **Hostname**: Choose a descriptive name
+
+4. Click **Create Droplet**
+
+**Step 2: Configure firewall**
+
+1. Navigate to **Networking** → **Firewalls**
+2. Click **Create Firewall**
+3. Add these inbound rules:
+
+{% table %}
+* Type
+* Protocol
+* Port Range
+* Sources
+---
+* SSH
+* TCP
+* 22
+* Your IP address
+---
+* HTTP
+* TCP
+* 80
+* All IPv4, All IPv6
+---
+* HTTPS
+* TCP
+* 443
+* All IPv4, All IPv6
+---
+* Custom
+* TCP
+* 8080
+* All IPv4, All IPv6
+{% /table %}
+
+4. Apply firewall to your Droplet
+
+## Install Appwrite {% #install-appwrite %}
+
+**Step 1: Connect to your Droplet**
+
+```bash
+ssh root@your-droplet-ip
+```
+
+**Step 2: Update system and install Docker**
+
+```bash
+# Update the system
+apt update && apt upgrade -y
+
+# Install Docker using the convenience script
+curl -fsSL https://get.docker.com -o get-docker.sh
+sh get-docker.sh
+
+# Install Docker Compose
+curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+chmod +x /usr/local/bin/docker-compose
+
+# Verify installation
+docker --version
+docker-compose --version
+```
+
+**Step 3: Install Appwrite**
+
+```bash
+# Create directory for Appwrite
+mkdir /opt/appwrite && cd /opt/appwrite
+
+# Run Appwrite installer
+docker run -it --rm \
+    --volume /var/run/docker.sock:/var/run/docker.sock \
+    --volume "$(pwd)"/appwrite:/usr/src/code/appwrite:rw \
+    --entrypoint="install" \
+    appwrite/appwrite:1.7.4
+```
+
+**Installation prompts:**
+- **HTTP Port**: 80
+- **HTTPS Port**: 443
+- **Hostname**: Your domain name or Droplet IP
+- **Secret Key**: Generate a secure random key (save this!)
+
+## Configure domain and SSL {% #droplet-ssl %}
+
+**Step 1: Point domain to Droplet (optional)**
+
+If using a custom domain:
+1. Add an A record pointing to your Droplet's IP address
+2. Wait for DNS propagation (up to 24 hours)
+
+**Step 2: Set up SSL with Let's Encrypt**
+
+```bash
+# Install Certbot
+apt install certbot python3-certbot-nginx -y
+
+# Stop Appwrite temporarily
+cd /opt/appwrite && docker-compose stop
+
+# Install and configure Nginx
+apt install nginx -y
+
+# Create Nginx configuration
+cat > /etc/nginx/sites-available/appwrite << 'EOF'
+server {
+    listen 80;
+    server_name your-domain.com;  # Replace with your domain
+
+    client_max_body_size 100M;
+
+    location / {
+        proxy_pass http://localhost:8080;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_cache_bypass $http_upgrade;
+    }
+}
+EOF
+
+# Enable the site
+ln -s /etc/nginx/sites-available/appwrite /etc/nginx/sites-enabled/
+nginx -t && systemctl restart nginx
+
+# Get SSL certificate
+certbot --nginx -d your-domain.com
+
+# Start Appwrite
+docker-compose start
+```
+
+## Optimize for production {% #droplet-optimization %}
+
+**Enable automatic startup**
+
+```bash
+# Create systemd service
+cat > /etc/systemd/system/appwrite.service << 'EOF'
+[Unit]
+Description=Appwrite Docker Compose
+Requires=docker.service
+After=docker.service
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+WorkingDirectory=/opt/appwrite
+ExecStart=/usr/local/bin/docker-compose up -d
+ExecStop=/usr/local/bin/docker-compose down
+TimeoutStartSec=0
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
+# Enable and start the service
+systemctl enable appwrite.service
+systemctl start appwrite.service
+```
+
+**Set up automated backups**
+
+```bash
+# Create backup script
+cat > /opt/backup-appwrite.sh << 'EOF'
+#!/bin/bash
+BACKUP_DIR="/backups/$(date +%Y-%m-%d)"
+mkdir -p $BACKUP_DIR
+
+# Backup Appwrite data
+cd /opt/appwrite
+docker-compose exec -T appwrite-db mongodump --archive=/tmp/backup.archive
+docker cp appwrite_appwrite-db_1:/tmp/backup.archive $BACKUP_DIR/
+
+# Backup configuration
+cp -r . $BACKUP_DIR/config/
+
+# Cleanup old backups (keep 30 days)
+find /backups -type d -mtime +30 -exec rm -rf {} +
+EOF
+
+chmod +x /opt/backup-appwrite.sh
+
+# Schedule daily backups
+echo "0 2 * * * /opt/backup-appwrite.sh" | crontab -
+```
+
+# App Platform deployment {% #app-platform %}
+
+Deploy Appwrite using DigitalOcean's fully managed App Platform service.
+
+## Prerequisites {% #app-platform-prerequisites %}
+
+- GitHub, GitLab, or Docker Hub account
+- Appwrite source code or Docker image
+
+## Deploy from Docker Hub {% #deploy-docker %}
+
+**Step 1: Create new app**
+
+1. Go to [DigitalOcean App Platform](https://cloud.digitalocean.com/apps)
+2. Click **Create App**
+3. Choose **Docker Hub** as source
+4. Configure the service:
+   - **Repository**: `appwrite/appwrite`
+   - **Tag**: `1.7.4`
+   - **HTTP Port**: `80`
+
+**Step 2: Configure environment variables**
+
+Add these environment variables:
+
+{% table %}
+* Variable
+* Value
+* Description
+---
+* `_APP_ENV`
+* `production`
+* Environment type
+---
+* `_APP_KEY`
+* `your-secret-key`
+* Encryption key (generate secure key)
+---
+* `_APP_DOMAIN`
+* `${APP_DOMAIN}`
+* App domain (auto-populated)
+---
+* `_APP_DOMAIN_TARGET`
+* `${APP_DOMAIN}`
+* Target domain
+---
+* `_APP_SYSTEM_SECURITY_EMAIL_ADDRESS`
+* `admin@your-domain.com`
+* Admin email
+{% /table %}
+
+**Step 3: Add database**
+
+1. In app settings, click **Add Resource**
+2. Choose **Database**
+3. Select **MongoDB**
+4. Choose cluster size and region
+
+**Step 4: Deploy app**
+
+1. Review configuration
+2. Click **Create Resources**
+3. Wait for deployment to complete
+
+## Custom domain setup {% #app-platform-domain %}
+
+**Step 1: Add domain**
+
+1. Go to your app's **Settings** tab
+2. Click **Add Domain**
+3. Enter your domain name
+4. Choose domain type (apex or subdomain)
+
+**Step 2: Configure DNS**
+
+1. Add CNAME record pointing to your app's domain
+2. Wait for verification
+
+**Step 3: Enable SSL**
+
+SSL is automatically enabled for custom domains on App Platform.
+
+# Kubernetes deployment {% #kubernetes %}
+
+Deploy Appwrite on DigitalOcean Kubernetes (DOKS) for container orchestration.
+
+## Prerequisites {% #kubernetes-prerequisites %}
+
+- DigitalOcean CLI (`doctl`) installed
+- `kubectl` installed
+- Docker installed locally
+
+## Create Kubernetes cluster {% #create-cluster %}
+
+**Step 1: Create DOKS cluster**
+
+```bash
+# Install doctl
+snap install doctl
+
+# Authenticate
+doctl auth init
+
+# Create cluster
+doctl kubernetes cluster create appwrite-cluster \
+  --region nyc3 \
+  --version 1.28.2-do.0 \
+  --count 3 \
+  --size s-2vcpu-4gb
+
+# Get cluster credentials
+doctl kubernetes cluster kubeconfig save appwrite-cluster
+```
+
+**Step 2: Install Helm**
+
+```bash
+# Install Helm
+curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
+
+# Add ingress-nginx repository
+helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
+helm repo update
+```
+
+## Deploy Appwrite {% #deploy-kubernetes %}
+
+**Step 1: Create namespace**
+
+```bash
+kubectl create namespace appwrite
+```
+
+**Step 2: Create ConfigMap**
+
+```yaml
+# appwrite-config.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: appwrite-config
+  namespace: appwrite
+data:
+  _APP_ENV: "production"
+  _APP_DOMAIN: "your-domain.com"
+  _APP_DOMAIN_TARGET: "your-domain.com"
+```
+
+**Step 3: Create Secret**
+
+```bash
+kubectl create secret generic appwrite-secret \
+  --from-literal=_APP_KEY="your-secret-key" \
+  --namespace=appwrite
+```
+
+**Step 4: Deploy Appwrite**
+
+```yaml
+# appwrite-deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: appwrite
+  namespace: appwrite
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: appwrite
+  template:
+    metadata:
+      labels:
+        app: appwrite
+    spec:
+      containers:
+      - name: appwrite
+        image: appwrite/appwrite:1.7.4
+        ports:
+        - containerPort: 80
+        envFrom:
+        - configMapRef:
+            name: appwrite-config
+        - secretRef:
+            name: appwrite-secret
+        resources:
+          requests:
+            memory: "512Mi"
+            cpu: "250m"
+          limits:
+            memory: "2Gi"
+            cpu: "1000m"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: appwrite-service
+  namespace: appwrite
+spec:
+  selector:
+    app: appwrite
+  ports:
+  - port: 80
+    targetPort: 80
+  type: ClusterIP
+```
+
+Apply the configuration:
+
+```bash
+kubectl apply -f appwrite-config.yaml
+kubectl apply -f appwrite-deployment.yaml
+```
+
+**Step 5: Configure ingress**
+
+```yaml
+# appwrite-ingress.yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: appwrite-ingress
+  namespace: appwrite
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+spec:
+  tls:
+  - hosts:
+    - your-domain.com
+    secretName: appwrite-tls
+  rules:
+  - host: your-domain.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: appwrite-service
+            port:
+              number: 80
+```
+
+```bash
+kubectl apply -f appwrite-ingress.yaml
+```
+
+# Marketplace deployment {% #marketplace %}
+
+The quickest way to deploy Appwrite on DigitalOcean.
+
+## One-click installation {% #one-click %}
+
+1. Visit the [Appwrite Marketplace page](https://marketplace.digitalocean.com/apps/appwrite)
+2. Click **Create Appwrite Droplet**
+3. Choose your configuration:
+   - **Plan**: Minimum 4GB RAM recommended
+   - **Region**: Select closest to your users
+   - **SSH keys**: Add your SSH key
+4. Click **Create Droplet**
+
+## Post-installation setup {% #marketplace-setup %}
+
+**Step 1: Access Appwrite**
+
+1. Wait for Droplet to finish provisioning
+2. Navigate to `http://your-droplet-ip` in your browser
+3. Complete the initial setup wizard
+
+**Step 2: Configure domain (optional)**
+
+```bash
+# SSH into your Droplet
+ssh root@your-droplet-ip
+
+# Update environment configuration
+cd /root/appwrite
+nano .env
+
+# Update these variables:
+# _APP_DOMAIN=your-domain.com
+# _APP_DOMAIN_TARGET=your-domain.com
+
+# Restart Appwrite
+docker-compose restart
+```
+
+# Monitoring and maintenance {% #monitoring %}
+
+## Set up monitoring {% #setup-monitoring %}
+
+**DigitalOcean Monitoring**
+
+1. Enable monitoring in your Droplet settings
+2. Configure alerts for CPU, memory, and disk usage
+3. Set up uptime monitoring for your domain
+
+**Application monitoring**
+
+```bash
+# Install monitoring agent
+curl -sSL https://repos.insights.digitalocean.com/install.sh | sudo bash
+
+# Configure log shipping
+echo "logs:
+  - name: appwrite
+    path: /opt/appwrite/appwrite/logs/*.log" >> /etc/do-agent/config.yaml
+
+systemctl restart do-agent
+```
+
+## Backup strategies {% #backup-strategies %}
+
+**Automated snapshots**
+
+1. Enable automatic snapshots in Droplet settings
+2. Choose daily or weekly frequency
+3. Set retention period
+
+**Database backups**
+
+```bash
+# Create backup script
+cat > /opt/backup-db.sh << 'EOF'
+#!/bin/bash
+TIMESTAMP=$(date +%Y%m%d_%H%M%S)
+BACKUP_DIR="/backups"
+mkdir -p $BACKUP_DIR
+
+# Backup MongoDB
+docker exec appwrite_appwrite-db_1 mongodump --archive=/tmp/backup_$TIMESTAMP.archive
+docker cp appwrite_appwrite-db_1:/tmp/backup_$TIMESTAMP.archive $BACKUP_DIR/
+
+# Upload to Spaces (optional)
+# s3cmd put $BACKUP_DIR/backup_$TIMESTAMP.archive s3://your-bucket/
+EOF
+
+chmod +x /opt/backup-db.sh
+```
+
+# Troubleshooting {% #troubleshooting %}
+
+## Common issues {% #common-issues %}
+
+**Droplet not accessible**
+- Check firewall rules in DigitalOcean control panel
+- Verify SSH key configuration
+- Ensure Droplet is powered on
+
+**App Platform deployment fails**
+- Check environment variables are correctly set
+- Verify Docker image tag exists
+- Review app logs in control panel
+
+**SSL certificate issues**
+- Ensure domain points to correct IP
+- Check DNS propagation
+- Verify Nginx configuration
+
+**Performance issues**
+- Monitor resource usage in control panel
+- Consider upgrading Droplet size
+- Check for memory leaks in application logs
+
+## Getting help {% #getting-help %}
+
+- [DigitalOcean Community](https://www.digitalocean.com/community/)
+- [DigitalOcean Support](https://cloud.digitalocean.com/support)
+- [Appwrite Discord](https://discord.gg/GSeTUeA)
+
+# Next steps {% #next-steps %}
+
+After successful deployment:
+
+[Configure email delivery](/docs/advanced/self-hosting/configuration/email) - Set up SMTP for notifications
+
+[Enable SMS authentication](/docs/advanced/self-hosting/configuration/sms) - Configure SMS providers
+
+[Set up external storage](/docs/advanced/self-hosting/configuration/storage) - Use DigitalOcean Spaces for file storage
+
+[Production optimization](/docs/advanced/self-hosting/production) - Optimize for production workloads
