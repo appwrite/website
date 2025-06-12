@@ -1,10 +1,10 @@
 ---
 layout: post
-title: Secure, scalable e-commerce: How Appwrite makes authentication easy
+title: "Secure, scalable e-commerce: How Appwrite makes authentication easy"
 description: Learn how Appwrite simplifies secure, scalable authentication for e-commerce platforms.
 date: 2025-06-23
 cover: /images/blog/how-appwrite-makes-auth-easy-for-ecommerce/cover.png
-timeToRead: 06
+timeToRead: 6
 author: laura-du-ry
 callToAction: true
 unlisted: true
