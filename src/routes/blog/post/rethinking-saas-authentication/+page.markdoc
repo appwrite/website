@@ -8,7 +8,7 @@ timeToRead: 6
 author: laura-du-ry
 callToAction: true
 unlisted: true
-product: product
+category: product
 ---
 
 In SaaS, authentication isn’t just a technical requirement—it's a key pillar of product quality, security, and growth. Whether you're guiding new users through onboarding, handling multi-tenant environments, or protecting APIs, how you manage identity can make or break customer trust and loyalty.
