@@ -138,7 +138,7 @@
                 rel="noopener noreferrer"
                 class="web-u-inline-width-100-percent-mobile"
             >
-                <Icon class="star" aria-hidden="true"></Icon>
+                <Icon class="star" aria-hidden />
                 <span class="text">Star on GitHub</span>
                 <InlineTag>{SOCIAL_STATS.GITHUB.STAT}</InlineTag>
             </Button>
