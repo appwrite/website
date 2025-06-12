@@ -11,34 +11,34 @@ unlisted: true
 category: product
 ---
 
-In today’s interconnected app ecosystem, users expect seamless, secure access across services. OAuth 2.0 has emerged as the industry standard for handling secure delegated access, making it a critical protocol for developers to understand.
+In today’s interconnected app ecosystem, users expect seamless, secure access across services. OAuth2 has emerged as the industry standard for handling secure delegated access, making it a critical protocol for developers to understand.
 
-This guide explains OAuth 2.0, how it works, the different flows available, and when to use each one, helping you build secure, scalable authorization experiences.
+This guide explains OAuth2, how it works, the different flows available, and when to use each one, helping you build secure, scalable authorization experiences.
 
-# What is OAuth 2.0?
+# What is OAuth2?
 
-OAuth 2.0 is an open standard for authorization. It allows users to grant limited access to their resources on one service to another service without sharing credentials.
+OAuth2 is an open standard for authorization. It allows users to grant limited access to their resources on one service to another service without sharing credentials.
 
-Rather than handing out a username and password, users authorize apps to act on their behalf using access tokens. OAuth 2.0 ensures that:
+Rather than handing out a username and password, users authorize apps to act on their behalf using access tokens. OAuth2 ensures that:
 
 - Apps never directly handle user credentials.
 - Users retain control over what permissions they grant.
 - Access can be easily revoked.
 
-# Core components of OAuth 2.0
+# Core components of OAuth2
 
 Before diving into the flows, it's important to understand the key players:
 
-- **Resource Owner**: The user who authorizes access to their data.
+- **Resource owner**: The user who authorizes access to their data.
 - **Client**: The application requesting access.
-- **Authorization Server**: Issues access tokens after authenticating the user.
-- **Resource Server**: Hosts the protected resources.
+- **Authorization server**: Issues access tokens after authenticating the user.
+- **Resource server**: Hosts the protected resources.
 
 These components work together to ensure secure authorization across systems.
 
 Refer to the OAuth2 [documentation](/docs/product/auth/oauth2) for complete technical details.
 
-# How OAuth 2.0 works: A simple flow
+# How OAuth2 works: A simple flow
 
 1. **Authorization request**: The client asks the resource owner for permission.
 2. **Authorization grant**: If the user consents, the server issues a grant (authorization code, token, etc.).
@@ -47,9 +47,9 @@ Refer to the OAuth2 [documentation](/docs/product/auth/oauth2) for complete tech
 
 Tokens are typically short-lived and scoped, meaning they only allow the operations the user approved.
 
-# Major OAuth 2.0 flows
+# Major OAuth2 flows
 
-OAuth 2.0 offers different "flows" to accommodate various scenarios. Here's a breakdown of the major ones:
+OAuth2 offers different "flows" to accommodate various scenarios. Here's a breakdown of the major ones:
 
 ## 1. Authorization code flow
 
@@ -123,36 +123,36 @@ OAuth 2.0 offers different "flows" to accommodate various scenarios. Here's a br
 
 [Appwrite Auth](/products/auth) supports all major OAuth2 flows, making it easy to integrate secure authentication into any app
 
-# OAuth 2.0 Tokens: Access and refresh
+# OAuth2 Tokens: Access and refresh
 
-OAuth 2.0 commonly uses two types of tokens:
+OAuth2 commonly uses two types of tokens:
 
 - **Access Token**: Grants access to protected resources.
 - **Refresh Token**: Used to obtain new access tokens without re-authenticating the user.
 
 Tokens are often JWTs (JSON Web Tokens) containing claims about the user and the permissions granted.
 
-# When to Use OAuth 2.0
+# When to Use OAuth2
 
 - **Third-party integrations**: Allowing users to connect external services securely.
 - **APIs**: Protecting APIs from unauthorized access.
 - **Mobile and web Apps**: Enabling secure login and data access without managing credentials.
 - **B2B applications**: Secure service-to-service communication.
 
-# Common OAuth 2.0 pitfalls
+# Common OAuth2 pitfalls
 
 - **Over-scoped tokens**: Granting too many permissions.
 - **Insecure storage**: Storing tokens in insecure locations (e.g., localStorage without encryption).
 - **Ignoring token expiration**: Failing to handle token refresh flows.
 - **Misusing Implicit Flow**: Using legacy flows where better options (PKCE) are available.
 
-# OAuth 2.0: A key enabler of modern security
+# OAuth2: A key enabler of modern security
 
-OAuth 2.0 powers secure, flexible authorization across the modern internet. Understanding its core flows and best practices helps developers build safer, more user-friendly apps.
+OAuth2 powers secure, flexible authorization across the modern internet. Understanding its core flows and best practices helps developers build safer, more user-friendly apps.
 
-Choosing the proper OAuth 2.0 flow based on your application's architecture and user needs is critical to balancing security, usability, and scalability.
+Choosing the proper OAuth2 flow based on your application's architecture and user needs is critical to balancing security, usability, and scalability.
 
-Ready to explore OAuth 2.0 more deeply? Check
+Ready to explore OAuth2 more deeply? Check
 
 - [Appwrite Authentication docs](/docs/products/auth)
 - [Overview of all the OAuth providers](/integrations#auth)
