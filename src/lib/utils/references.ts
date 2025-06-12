@@ -132,7 +132,8 @@ export const platformMap: Record<Language | string, string> = {
     vue: 'Vue',
     svelte: 'Svelte',
     groovy: 'Groovy',
-    go: 'Go'
+    go: 'Go',
+    dockerfile: 'Dockerfile'
 };
 
 export const serviceMap: Record<ServiceValue, string> = {
