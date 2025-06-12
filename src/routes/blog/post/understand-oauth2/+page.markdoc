@@ -8,6 +8,7 @@ timeToRead: 06
 author: laura-du-ry
 callToAction: true
 unlisted: true
+category: product
 ---
 
 In today’s interconnected app ecosystem, users expect seamless, secure access across services. OAuth 2.0 has emerged as the industry standard for handling secure delegated access, making it a critical protocol for developers to understand.
