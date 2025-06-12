@@ -59,6 +59,8 @@ Choosing an open-source solution comes with several benefits:
 - **Extensible platform**: Auth0 offers customization through rules, hooks, and a wide range of SDKs and APIs. However, being a managed service, some aspects may not be as flexible as an open-source solution.
 - **Custom workflows**: Easily create custom authentication workflows and integrate with other services to meet your business needs.
 
+{% call_to_action title="Secure login for your users" description="Appwrite Auth provides a complete open-source solution for you to authenticate your users." point1="You own your data"  point2="Benefit from a complete backend" point3="30+ OAuth providers" point4="Built-in security and compliance" cta="Learn more" url="/products/auth" /%}
+
 ## Community and support
 
 **Auth**:
