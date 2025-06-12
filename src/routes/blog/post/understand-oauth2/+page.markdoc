@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Understanding OAuth 2.0- The backbone of modern authorization
-Description: A quick guide to OAuth 2.0, its flows, and when to use each one.
+description: A quick guide to OAuth 2.0, its flows, and when to use each one.
 date: 2025-06-12
 cover: /images/blog/understand-oauth2/cover.png
 timeToRead: 06
@@ -153,6 +153,6 @@ Choosing the proper OAuth 2.0 flow based on your application's architecture and 
 
 Ready to explore OAuth 2.0 more deeply? Check
 
-- [Appwrite Authentication docs](https://appwrite.io/docs/products/auth)
-- [Overview of all the OAuth providers](https://appwrite.io/integrations#auth)
-- [Appwrite Authentication overview](https://appwrite.io/products/auth)
+- [Appwrite Authentication docs](/docs/products/auth)
+- [Overview of all the OAuth providers](/integrations#auth)
+- [Appwrite Authentication overview](/products/auth)
