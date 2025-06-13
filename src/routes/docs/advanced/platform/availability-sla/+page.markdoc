@@ -40,9 +40,7 @@ If we fail to meet our uptime commitment, affected users may be eligible for ser
 
 # Credit request procedure {% #credit-request-procedure %}
 
-To receive service credits, you must:
-
-Submit a support ticket within **30 days** of the incident via the Appwrite Console, providing relevant data, logs, or screenshots.
+To receive service credits, you must submit a support ticket within **30 days** of the incident via the Appwrite Console, providing relevant data, logs, or screenshots.
 
 # SLA exclusions {% #sla-exclusions %}
 
