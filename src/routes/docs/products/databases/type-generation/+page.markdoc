@@ -1,0 +1,726 @@
+---
+layout: article
+title: Type Generation
+description: Generate types from your Appwrite database schema. Learn how to use the Appwrite CLI to create and manage your types effectively.
+---
+
+The Appwrite CLI provides a simple way to generate types based on your Appwrite database schema. This feature is particularly useful for developers who want to ensure type safety in their applications by generating type definitions that match their database collections and attributes.
+
+To generate types, the CLI reads the database schema from your project's `appwrite.json` file and generates type definitions for each collection. 
+
+## Generating Types
+
+First, ensure you have the [Appwrite CLI](/docs/tooling/command-line/installation#getting-started) installed and your project is [initialised](/docs/tooling/command-line/installation#initialization). Then, run the following command in your terminal to pull collections from your Appwrite project:
+
+```bash
+appwrite pull collections
+```
+
+To generate types, you can use the Appwrite CLI command:
+
+```bash
+appwrite types [options] <output-directory>
+```
+
+The following options are currently available:
+
+| Option | Description |
+|--------|-------------|
+| `--language` or `-l` |  The programming language for which types can be generated. Choices include `ts`, `js`, `php`, `kotlin`, `swift`, `java`, `dart`, `auto`. The CLI will use `auto` as the default option if this option is skipped. |
+| `--help` or `-h` | Displays help information for the command. |
+
+## Example Usage
+
+Suppose you want to generate types for a collection with superhero data with the following schema from your `appwrite.json` file:
+
+```json
+{
+    "projectId": "682ca9a50004cf4b330f",
+    "projectName": "Appwrite project",
+    "databases": [
+        {
+            "$id": "superheroes_db",
+            "name": "Superheroes Database",
+            "enabled": true
+        }
+    ],
+    "collections": [
+        {
+            "$id": "superheroes",
+            "$permissions": [
+                "read(\"any\")"
+            ],
+            "databaseId": "superheroes_db",
+            "name": "Superheroes",
+            "enabled": true,
+            "documentSecurity": false,
+            "attributes": [
+                {
+                    "key": "name",
+                    "type": "string",
+                    "required": true,
+                    "array": false,
+                    "size": 255,
+                    "default": null
+                },
+                {
+                    "key": "alias",
+                    "type": "string",
+                    "required": false,
+                    "array": false,
+                    "size": 255,
+                    "default": null
+                },
+                {
+                    "key": "powers",
+                    "type": "string",
+                    "required": false,
+                    "array": true,
+                    "size": 100,
+                    "default": null
+                },
+                {
+                    "key": "origin",
+                    "type": "string",
+                    "required": false,
+                    "array": false,
+                    "size": 1000,
+                    "default": null
+                },
+                {
+                    "key": "alignment",
+                    "type": "string",
+                    "required": true,
+                    "array": false,
+                    "elements": [
+                        "hero",
+                        "villain",
+                        "antihero",
+                        "neutral"
+                    ],
+                    "format": "enum",
+                    "default": null
+                },
+                {
+                    "key": "power_level",
+                    "type": "integer",
+                    "required": false,
+                    "array": false,
+                    "min": 1,
+                    "max": 100,
+                    "default": null
+                },
+                {
+                    "key": "universe",
+                    "type": "string",
+                    "required": false,
+                    "array": false,
+                    "size": 100,
+                    "default": null
+                },
+                {
+                    "key": "image_url",
+                    "type": "string",
+                    "required": false,
+                    "array": false,
+                    "format": "url",
+                    "default": null
+                },
+                {
+                    "key": "is_active",
+                    "type": "boolean",
+                    "required": true,
+                    "array": false,
+                    "default": null
+                }
+            ]
+        }
+    ]
+}
+```
+
+Here's how you can generate types for this collection across all supported languages:
+
+{% tabs %}
+{% tabsitem #ts title="TypeScript" %}
+Run the following command in your terminal:
+
+```bash
+appwrite types --language ts ./types
+```
+
+This will generate the following types in the `./types` sub-directory of your project:
+
+```ts
+import { Models } from 'appwrite';
+
+export enum Alignment {
+  HERO = "hero",
+  VILLAIN = "villain",
+  ANTIHERO = "antihero",
+  NEUTRAL = "neutral",
+}
+
+export type TestCollection = Models.Document & {
+  number: number;
+}
+
+export type Superheroes = Models.Document & {
+  name: string;
+  alias: string | null;
+  powers: string[] | null;
+  origin: string | null;
+  alignment: Alignment;
+  powerLevel: number | null;
+  universe: string | null;
+  imageUrl: string | null;
+  isActive: boolean;
+}
+```
+{% /tabsitem %}
+
+{% tabsitem #js title="JavaScript" %}
+Run the following command in your terminal:
+
+```bash
+appwrite types --language js ./types
+```
+
+This will generate the following types in the `./types` sub-directory of your project:
+
+```js
+/**
+ * @typedef {import('appwrite').Models.Document} Document
+ */
+
+
+/**
+ * @typedef {Object} Superheroes
+ * @property {string} name
+ * @property {string|null|undefined} alias
+ * @property {string[]|null|undefined} powers
+ * @property {string|null|undefined} origin
+ * @property {"hero"|"villain"|"antihero"|"neutral"} alignment
+ * @property {number|null|undefined} powerLevel
+ * @property {string|null|undefined} universe
+ * @property {string|null|undefined} imageUrl
+ * @property {boolean} isActive
+ */
+```
+{% /tabsitem %}
+
+{% tabsitem #java title="Java" %}
+Run the following command in your terminal:
+
+```bash
+appwrite types --language java ./types
+```
+
+This will generate the following types in the `./types` sub-directory of your project:
+
+```java
+package io.appwrite.models;
+
+import java.util.*;
+public class Superheroes {
+
+    public enum Alignment {
+        hero,
+        villain,
+        antihero,
+        neutral;
+    }
+
+    private String name;
+    private String alias;
+    private List<String> powers;
+    private String origin;
+    private Alignment alignment;
+    private int powerLevel;
+    private String universe;
+    private String imageUrl;
+    private boolean isActive;
+
+    public Superheroes() {
+    }
+
+    public Superheroes(
+        String name,
+        String alias,
+        List<String> powers,
+        String origin,
+        Alignment alignment,
+        int powerLevel,
+        String universe,
+        String imageUrl,
+        boolean isActive
+    ) {
+        this.name = name;
+        this.alias = alias;
+        this.powers = powers;
+        this.origin = origin;
+        this.alignment = alignment;
+        this.powerLevel = powerLevel;
+        this.universe = universe;
+        this.imageUrl = imageUrl;
+        this.isActive = isActive;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getAlias() {
+        return alias;
+    }
+
+    public void setAlias(String alias) {
+        this.alias = alias;
+    }
+
+    public List<String> getPowers() {
+        return powers;
+    }
+
+    public void setPowers(List<String> powers) {
+        this.powers = powers;
+    }
+
+    public String getOrigin() {
+        return origin;
+    }
+
+    public void setOrigin(String origin) {
+        this.origin = origin;
+    }
+
+    public Alignment getAlignment() {
+        return alignment;
+    }
+
+    public void setAlignment(Alignment alignment) {
+        this.alignment = alignment;
+    }
+
+    public int getPowerLevel() {
+        return powerLevel;
+    }
+
+    public void setPowerLevel(int powerLevel) {
+        this.powerLevel = powerLevel;
+    }
+
+    public String getUniverse() {
+        return universe;
+    }
+
+    public void setUniverse(String universe) {
+        this.universe = universe;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
+    public boolean getIsActive() {
+        return isActive;
+    }
+
+    public void setIsActive(boolean isActive) {
+        this.isActive = isActive;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Superheroes that = (Superheroes) obj;
+        return Objects.equals(name, that.name) &&
+              Objects.equals(alias, that.alias) &&
+              Objects.equals(powers, that.powers) &&
+              Objects.equals(origin, that.origin) &&
+              Objects.equals(alignment, that.alignment) &&
+              Objects.equals(powerLevel, that.powerLevel) &&
+              Objects.equals(universe, that.universe) &&
+              Objects.equals(imageUrl, that.imageUrl) &&
+              Objects.equals(isActive, that.isActive);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, alias, powers, origin, alignment, powerLevel, universe, imageUrl, isActive);
+    }
+
+    @Override
+    public String toString() {
+        return "Superheroes{" +
+                "name=" + name +
+                "alias=" + alias +
+                "powers=" + powers +
+                "origin=" + origin +
+                "alignment=" + alignment +
+                "powerLevel=" + powerLevel +
+                "universe=" + universe +
+                "imageUrl=" + imageUrl +
+                "isActive=" + isActive +
+                '}';
+    }
+}
+```
+{% /tabsitem %}
+
+{% tabsitem #php title="PHP" %}
+Run the following command in your terminal:
+
+```bash
+appwrite types --language php ./types
+```
+
+This will generate the following types in the `./types` sub-directory of your project:
+
+```php
+<?php
+namespace Appwrite\Models;
+
+enum Alignment: string {
+  case HERO = 'hero';
+  case VILLAIN = 'villain';
+  case ANTIHERO = 'antihero';
+  case NEUTRAL = 'neutral';
+}
+
+class Superheroes {
+  private string $name;
+  private string|null $alias;
+  private array $powers;
+  private string|null $origin;
+  private Alignment $alignment;
+  private int|null $powerLevel;
+  private string|null $universe;
+  private string|null $imageUrl;
+  private bool $isActive;
+
+  public function __construct(
+    string $name,
+    ?string $alias = null,
+    ?array $powers = null,
+    ?string $origin = null,
+    Alignment $alignment,
+    ?int $powerLevel = null,
+    ?string $universe = null,
+    ?string $imageUrl = null,
+    bool $isActive
+  ) {
+    $this->name = $name;
+    $this->alias = $alias;
+    $this->powers = $powers;
+    $this->origin = $origin;
+    $this->alignment = $alignment;
+    $this->powerLevel = $powerLevel;
+    $this->universe = $universe;
+    $this->imageUrl = $imageUrl;
+    $this->isActive = $isActive;
+  }
+
+  public function getName(): string {
+    return $this->name;
+  }
+
+  public function setName(string $name): void {
+    $this->name = $name;
+  }
+  public function getAlias(): string|null {
+    return $this->alias;
+  }
+
+  public function setAlias(string|null $alias): void {
+    $this->alias = $alias;
+  }
+  public function getPowers(): array {
+    return $this->powers;
+  }
+
+  public function setPowers(array $powers): void {
+    $this->powers = $powers;
+  }
+  public function getOrigin(): string|null {
+    return $this->origin;
+  }
+
+  public function setOrigin(string|null $origin): void {
+    $this->origin = $origin;
+  }
+  public function getAlignment(): Alignment {
+    return $this->alignment;
+  }
+
+  public function setAlignment(Alignment $alignment): void {
+    $this->alignment = $alignment;
+  }
+  public function getPowerLevel(): int|null {
+    return $this->powerLevel;
+  }
+
+  public function setPowerLevel(int|null $powerLevel): void {
+    $this->powerLevel = $powerLevel;
+  }
+  public function getUniverse(): string|null {
+    return $this->universe;
+  }
+
+  public function setUniverse(string|null $universe): void {
+    $this->universe = $universe;
+  }
+  public function getImageUrl(): string|null {
+    return $this->imageUrl;
+  }
+
+  public function setImageUrl(string|null $imageUrl): void {
+    $this->imageUrl = $imageUrl;
+  }
+  public function getIsActive(): bool {
+    return $this->isActive;
+  }
+
+  public function setIsActive(bool $isActive): void {
+    $this->isActive = $isActive;
+  }
+}
+```
+{% /tabsitem %}
+
+{% tabsitem #dart title="Dart" %}
+Run the following command in your terminal:
+
+```bash
+appwrite types --language dart ./types
+```
+
+This will generate the following types in the `./types` sub-directory of your project:
+
+```dart
+enum Alignment {
+  hero,
+  villain,
+  antihero,
+  neutral,
+}
+
+class Superheroes {
+  String name;
+  String? alias;
+  List<String>? powers;
+  String? origin;
+  Alignment alignment;
+  int? powerLevel;
+  String? universe;
+  String? imageUrl;
+  bool isActive;
+
+  Superheroes({
+    required this.name,
+    this.alias,
+    this.powers,
+    this.origin,
+    required this.alignment,
+    this.powerLevel,
+    this.universe,
+    this.imageUrl,
+    required this.isActive,
+  });
+
+  factory Superheroes.fromMap(Map<String, dynamic> map) {
+    return Superheroes(
+      name: map['name'].toString(),
+      alias: map['alias']?.toString() ?? null,
+      powers: List<String>.from(map['powers'] ?? []) ?? [],
+      origin: map['origin']?.toString() ?? null,
+      alignment: Alignment.values.firstWhere((e) => e.name == map['alignment']),
+      powerLevel: map['power_level'] ?? null,
+      universe: map['universe']?.toString() ?? null,
+      imageUrl: map['image_url']?.toString() ?? null,
+      isActive: map['is_active'],
+    );
+  }
+
+  Map<String, dynamic> toMap() {
+    return {
+      "name": name,
+      "alias": alias,
+      "powers": powers,
+      "origin": origin,
+      "alignment": alignment.name,
+      "power_level": powerLevel,
+      "universe": universe,
+      "image_url": imageUrl,
+      "is_active": isActive,
+    };
+  }
+}
+```
+{% /tabsitem %}
+
+{% tabsitem #kotlin title="Kotlin" %}
+Run the following command in your terminal:
+
+```bash
+appwrite types --language kotlin ./types
+```
+
+This will generate the following types in the `./types` sub-directory of your project:
+
+```kotlin
+package io.appwrite.models
+
+enum class Alignment {
+    hero,
+    villain,
+    antihero,
+    neutral
+}
+
+data class Superheroes(
+    val name: String,
+    val alias: String?,
+    val powers: List<String>?,
+    val origin: String?,
+    val alignment: Alignment,
+    val powerLevel: Int?,
+    val universe: String?,
+    val imageUrl: String?,
+    val isActive: Boolean,
+)
+```
+{% /tabsitem %}
+
+{% tabsitem #swift title="Swift" %}
+Run the following command in your terminal:
+
+```bash
+appwrite types --language swift ./types
+```
+
+This will generate the following types in the `./types` sub-directory of your project:
+
+```swift
+import Foundation
+
+public enum Alignment: String, Codable, CaseIterable {
+  case hero = "hero"
+  case villain = "villain"
+  case antihero = "antihero"
+  case neutral = "neutral"
+}
+
+public class Superheroes: Codable {
+    public let name: String
+    public let alias: String?
+    public let powers: [String]?
+    public let origin: String?
+    public let alignment: Alignment
+    public let powerLevel: Int?
+    public let universe: String?
+    public let imageUrl: String?
+    public let isActive: Bool
+
+    enum CodingKeys: String, CodingKey {
+        case name = "name"
+        case alias = "alias"
+        case powers = "powers"
+        case origin = "origin"
+        case alignment = "alignment"
+        case powerLevel = "power_level"
+        case universe = "universe"
+        case imageUrl = "image_url"
+        case isActive = "is_active"
+    }
+
+    init(
+        name: String,
+        alias: String?,
+        powers: [String]?,
+        origin: String?,
+        alignment: Alignment,
+        powerLevel: Int?,
+        universe: String?,
+        imageUrl: String?,
+        isActive: Bool
+    ) {
+        self.name = name
+        self.alias = alias
+        self.powers = powers
+        self.origin = origin
+        self.alignment = alignment
+        self.powerLevel = powerLevel
+        self.universe = universe
+        self.imageUrl = imageUrl
+        self.isActive = isActive
+    }
+
+    public required init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+
+        self.name = try container.decode(String.self, forKey: .name)
+        self.alias = try container.decodeIfPresent(String.self, forKey: .alias)
+        self.powers = try container.decodeIfPresent([String].self, forKey: .powers)
+        self.origin = try container.decodeIfPresent(String.self, forKey: .origin)
+        self.alignment = try container.decode(Alignment.self, forKey: .alignment)
+        self.powerLevel = try container.decodeIfPresent(Int.self, forKey: .powerLevel)
+        self.universe = try container.decodeIfPresent(String.self, forKey: .universe)
+        self.imageUrl = try container.decodeIfPresent(String.self, forKey: .imageUrl)
+        self.isActive = try container.decode(Bool.self, forKey: .isActive)
+    }
+
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+
+        try container.encode(name, forKey: .name)
+        try container.encodeIfPresent(alias, forKey: .alias)
+        try container.encodeIfPresent(powers, forKey: .powers)
+        try container.encodeIfPresent(origin, forKey: .origin)
+        try container.encode(alignment, forKey: .alignment)
+        try container.encodeIfPresent(powerLevel, forKey: .powerLevel)
+        try container.encodeIfPresent(universe, forKey: .universe)
+        try container.encodeIfPresent(imageUrl, forKey: .imageUrl)
+        try container.encode(isActive, forKey: .isActive)
+    }
+
+    public func toMap() -> [String: Any] {
+        return [
+            "name": name as Any,
+            "alias": alias as Any,
+            "powers": powers as Any,
+            "origin": origin as Any,
+            "alignment": alignment as Any,
+            "power_level": powerLevel as Any,
+            "universe": universe as Any,
+            "image_url": imageUrl as Any,
+            "is_active": isActive as Any
+        ]
+    }
+
+    public static func from(map: [String: Any]) -> Superheroes {
+        return Superheroes(
+            name: map["name"] as! String,
+            alias: map["alias"] as? String,
+            powers: map["powers"] as? [String],
+            origin: map["origin"] as? String,
+            alignment: map["alignment"] as! String,
+            powerLevel: map["power_level"] as? Int,
+            universe: map["universe"] as? String,
+            imageUrl: map["image_url"] as? String,
+            isActive: map["is_active"] as! Bool
+        )
+    }
+}
+```
+{% /tabsitem %}
+{% /tabs %}
