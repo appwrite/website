@@ -4,9 +4,9 @@ title: Sites
 description: Harness the full power of self-hosted sites with Appwrite. Explore site deployment, management, and integration in your self-hosted environment.
 ---
 
-{% partial file="configure-github-app.md" /%}
+This guide covers how to configure sites in your self-hosted Appwrite instance. For GitHub repository integration with sites, see the [version control configuration](/docs/advanced/self-hosting/configuration/version-control).
 
-# Configure Sites runtimes {% #sites %}
+# Configure sites runtimes {% #sites %}
 
 Not all site runtimes are enabled by default. Enable the runtimes that you need and disable unused runtimes to save disk space on your server.
 To enable a runtime, add it to the `_APP_SITES_RUNTIMES` environment variable as a comma-separated list.
@@ -21,7 +21,7 @@ You can also configure the maximum timeout that can be set on individual Appwrit
 
 {% partial file="update-variables.md" /%}
 
-# Add an apex domain for Sites {% #root-domain %}
+# Add an apex domain for sites {% #root-domain %}
 
 Appwrite allows you to add an apex domain to your instance's configuration that you can publicly expose your Site on.
 
@@ -42,7 +42,7 @@ Next, head to your DNS provider and create an A or AAAA record for your root dom
 
 > Note: Make sure to remove any pre-existing `A` and `AAAA` records in the DNS settings of your domain, as these can conflict with your current configuration.
 
-# SSL certificates for Sites domains {% #ssl-certificates %}
+# SSL certificates for sites domains {% #ssl-certificates %}
 
 Before setting up SSL certificates, ensure you have configured your DNS settings properly. You'll need to create a CNAME, A, or AAAA record that points your wildcard domain (e.g. `*.sites.appwrite.myapp.com`) to your Appwrite domain.
 
@@ -118,7 +118,7 @@ labels:
 docker compose up -d --force-recreate
 ```
 
-### Troubleshooting DNS Propagation
+### Troubleshooting DNS propagation
 
 If certificate generation fails, first check the Traefik logs to identify the specific issue.
 

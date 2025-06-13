@@ -61,14 +61,10 @@ You can [change Appwrite's SMTP settings](/docs/advanced/self-hosting/email) and
 
 # Backups {% #backups %}
 
-Backups are highly recommended for any production environment. Currently, there is no built-in script we provide to do this automatically. You must do the following to back up your Appwrite server data, stats, and files.
+Backups are highly recommended for any production environment. 
 
-1. Create a script to back up and restore the databases holding your Appwrite schemas. Note that trying to back up the database containers using a docker volume backup can result in a corrupted copy of your data. We recommend using the databases' built-in tools for this.
-1. Create a script to back up Appwrite storage volume. There are many online resources explaining different ways to backup a docker volume. When running on multiple servers, it is very recommended to use an attachable storage point. Some cloud providers offer integrated backups to such attachable mount like GCP, AWS, DigitalOcean, and the list continues.
-1. Create a script to back up `.env` and `docker-compose.yml`, which holds secrets and server configuration information.
-
-{% info title="Docker volume backups" %}
-Do not back up any stateful container using a docker volume backup, such as databases or Redis containers. This can result in corruption and **permanent data loss**.
+{% info title="Backup instructions" %}
+For detailed instructions on implementing database, storage, and configuration backups for your self-hosted instance, see the [backups documentation](/docs/advanced/self-hosting/backups).
 {% /info %}
 
 # Errors {% #errors %}

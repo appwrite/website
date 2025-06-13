@@ -1,0 +1,108 @@
+---
+layout: article
+title: Version Control
+description: Configure version control integration for Functions and Sites in your self-hosted Appwrite instance.
+---
+
+# Configure GitHub app {% #github-app %}
+
+To enable version control features for Functions and Sites in your self-hosted Appwrite instance, you'll need to configure a GitHub App. This enables Appwrite to interact with your GitHub repositories for deploying Functions and Sites.
+
+## Create a GitHub app
+
+Follow these steps to create and configure a GitHub App for your Appwrite instance:
+
+1. Go to your GitHub account settings by clicking on your profile picture and then **Settings**.
+2. Navigate to **Developer settings** > **GitHub Apps** > **New GitHub App**.
+3. Fill in the following details:
+   - **GitHub App name**: Choose a name like "Appwrite Self-hosted"
+   - **Homepage URL**: Your Appwrite console URL (e.g., `https://cloud.yourdomain.com`)
+   - **Webhook URL**: Your Appwrite API URL + `/vcs/github/hook` (e.g., `https://api.yourdomain.com/vcs/github/hook`)
+   - **Webhook secret**: Generate a random string and save it for later
+
+4. Set the following permissions:
+   - **Repository permissions**:
+     - **Contents**: Read & Write
+     - **Metadata**: Read-only
+     - **Pull requests**: Read & Write
+     - **Webhooks**: Read & Write
+
+5. Under "Where can this GitHub App be installed?", select "Any account".
+6. Click "Create GitHub App".
+
+## Set up GitHub app credentials
+
+After creating your GitHub App, you'll need to:
+
+1. Generate a private key for your GitHub App by clicking "Generate a private key" on your GitHub App page.
+2. Save the downloaded `.pem` file securely.
+
+Update your Appwrite `.env` file with the following variables:
+
+```bash
+_APP_VCS_GITHUB_APP_ID=<your-github-app-id>
+_APP_VCS_GITHUB_APP_PRIVATE_KEY=<path-to-your-private-key.pem>
+_APP_VCS_GITHUB_APP_WEBHOOK_SECRET=<your-webhook-secret>
+```
+
+Alternatively, you can add these environment variables directly in your `docker-compose.yml` file:
+
+```yaml
+environment:
+  # Other environment variables...
+  _APP_VCS_GITHUB_APP_ID: <your-github-app-id>
+  _APP_VCS_GITHUB_APP_PRIVATE_KEY: <path-to-your-private-key.pem>
+  _APP_VCS_GITHUB_APP_WEBHOOK_SECRET: <your-webhook-secret>
+```
+
+## Apply changes
+
+After updating your configuration, restart your Appwrite services:
+
+```bash
+docker compose up -d
+```
+
+## Verify the configuration
+
+To verify that your GitHub App is correctly configured:
+
+1. Open the Appwrite Console and navigate to a project.
+2. Go to either the Functions or Sites section.
+3. Try creating a new Function or Site using GitHub as the source.
+4. You should be prompted to install your GitHub App on your repositories.
+
+## Troubleshoot issues
+
+If you encounter issues with your GitHub App integration:
+
+- Ensure your Appwrite instance is publicly accessible, as GitHub needs to send webhook events.
+- Check that the webhook URL is correctly formatted with your domain.
+- Verify the permissions granted to the GitHub App are correct.
+- Check the Appwrite logs for any errors related to GitHub integration:
+
+```bash
+docker compose logs appwrite
+```
+
+# Use common version control settings {% #common-config %}
+
+Both Functions and Sites in Appwrite rely on the same version control system configuration. This centralized approach ensures:
+
+- A unified developer experience across both services
+- Simplified configuration and maintenance
+- Consistent authentication and permissions
+
+## Configure environment variables
+
+The following environment variables control version control behavior for both Functions and Sites:
+
+| Variable | Description | Default |
+|----------|-------------|---------|
+| `_APP_VCS_GITHUB_APP_ID` | Your GitHub App ID | - |
+| `_APP_VCS_GITHUB_APP_PRIVATE_KEY` | Path to your GitHub App's private key | - |
+| `_APP_VCS_GITHUB_APP_WEBHOOK_SECRET` | Secret for validating GitHub webhook events | - |
+| `_APP_VCS_PROVIDER` | Enabled VCS providers (comma-separated) | `github` |
+| `_APP_VCS_GITHUB_APP_INSTALLATION_ID` | Optional installation ID for single-tenant setup | - |
+
+{% partial file="update-variables.md" /%}

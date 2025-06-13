@@ -84,6 +84,10 @@
                 {
                     label: 'TLS certificates',
                     href: '/docs/advanced/self-hosting/configuration/tls-certificates'
+                },
+                {
+                    label: 'Version Control',
+                    href: '/docs/advanced/self-hosting/configuration/version-control'
                 }
             ]
         },
@@ -93,6 +97,10 @@
                 {
                     label: 'Production setup',
                     href: '/docs/advanced/self-hosting/production'
+                },
+                {
+                    label: 'Backups',
+                    href: '/docs/advanced/self-hosting/backups'
                 },
                 {
                     label: 'Updates & migration',
