@@ -59,7 +59,7 @@
                 },
                 {
                     label: 'CSV Imports',
-                    href: '/docs/products/databases/csv-imports',
+                    href: '/docs/products/databases/csv-imports'
                 }
             ]
         },
