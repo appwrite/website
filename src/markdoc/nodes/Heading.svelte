@@ -81,5 +81,5 @@
     class:web-snap-location-references={id && inReferences}
     class="{headingClass} text-primary scroll-m-32 font-medium"
 >
-    <a href={`#${href}`} class="">{@render children()}</a>
+    <a href={`#${id ?? slugify(element?.innerText ?? '')}`} class="">{@render children()}</a>
 </svelte:element>
