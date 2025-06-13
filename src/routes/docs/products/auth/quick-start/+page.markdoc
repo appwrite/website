@@ -280,7 +280,7 @@ export default router;
 ```
 {% /tabsitem %}
 {% tabsitem #vue-router title="Vue router" %}
-You can use [Vue router](https://router.vuejs.org/) wiht a [Pinia store](https://pinia.vuejs.org/) to check if the user is logged in before rendering a route.
+You can use [Vue router](https://router.vuejs.org/) with a [Pinia store](https://pinia.vuejs.org/) to check if the user is logged in before rendering a route.
 
 First, create a simple Pinia store to manage the authentication state.
 ```client-web
