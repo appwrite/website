@@ -54,7 +54,9 @@ const securityheaders: Handle = async ({ event, resolve }) => {
             'https://*.reo.dev',
             'https://plausible.io',
             'https://js.zi-scripts.com',
-            'https://ws.zoominfo.com'
+            'https://ws.zoominfo.com',
+            'https://*.cookieyes.com',
+            'https://cdn-cookieyes.com'
         ]),
         'style-src': "'self' 'unsafe-inline'",
         'img-src': "'self' data: https:",
@@ -77,7 +79,9 @@ const securityheaders: Handle = async ({ event, resolve }) => {
             'https://js.zi-scripts.com',
             'https://aorta.clickagy.com',
             'https://hemsync.clickagy.com',
-            'https://ws.zoominfo.com '
+            'https://ws.zoominfo.com ',
+            'https://*.cookieyes.com',
+            'https://cdn-cookieyes.com'
         ]),
         'frame-src': join([
             "'self'",
@@ -85,7 +89,8 @@ const securityheaders: Handle = async ({ event, resolve }) => {
             'https://status.appwrite.online',
             'https://www.youtube-nocookie.com',
             'https://player.vimeo.com',
-            'https://hemsync.clickagy.com'
+            'https://hemsync.clickagy.com',
+            'https://cdn-cookieyes.com'
         ])
     };
 
