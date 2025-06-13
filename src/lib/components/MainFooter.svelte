@@ -1,6 +1,7 @@
 <script lang="ts">
     import { socials } from '$lib/constants';
     import ThemeSelect from './ThemeSelect.svelte';
+    import { trackEvent } from '$lib/actions/analytics';
 
     export let variant: 'homepage' | 'docs' = 'homepage';
 
@@ -8,7 +9,7 @@
 </script>
 
 {#if variant === 'homepage'}
-    <footer class="web-main-footer relative mt-12">
+    <footer class="web-main-footer relative mt-12 flex flex-col justify-between gap-10 lg:flex-row">
         <ul class="flex gap-2">
             {#each socials as social}
                 <li>
@@ -24,11 +25,11 @@
                 </li>
             {/each}
         </ul>
-        <div class="e-main-footer">
+        <div class="mt-1 grid grid-cols-2 gap-y-4 md:grid-cols-3">
             <div>Copyright © {year} Appwrite</div>
 
             <iframe
-                class="status w-full md:w-fit md:max-w-[230px]"
+                class="w-full md:w-fit md:max-w-[230px]"
                 title="Appwrite Status"
                 src="https://status.appwrite.online/badge?theme=dark"
                 height="35"
@@ -38,10 +39,28 @@
                 style:margin-top="-4px"
             ></iframe>
 
-            <ul class="flex gap-4">
-                <li><a class="web-link" href="/terms">Terms</a></li>
-                <li><a class="web-link" href="/privacy">Privacy</a></li>
-                <li><a class="web-link" href="/cookies">Cookies</a></li>
+            <ul class="flex gap-4 text-right md:justify-end">
+                <li>
+                    <a
+                        class="web-link"
+                        href="/terms"
+                        onclick={() => trackEvent(`footer-terms-click`)}>Terms</a
+                    >
+                </li>
+                <li>
+                    <a
+                        class="web-link"
+                        href="/privacy"
+                        onclick={() => trackEvent(`footer-privacy-click`)}>Privacy</a
+                    >
+                </li>
+                <li>
+                    <a
+                        class="web-link"
+                        href="/cookies"
+                        onclick={() => trackEvent(`footer-cookies-click`)}>Cookies</a
+                    >
+                </li>
             </ul>
         </div>
     </footer>
@@ -66,13 +85,21 @@
             <div class="web-main-footer-grid-1-column-2">
                 <ThemeSelect />
             </div>
-            <ul class="web-main-footer-grid-1-column-3 web-main-footer-links items-start">
+            <ul class="web-main-footer-grid-1-column-3 web-main-footer-links items-end text-right">
                 <li>
-                    <a href="/discord" target="_blank" rel="noopener noreferrer">Support</a>
+                    <a
+                        href="/discord"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onclick={() => trackEvent(`footer-support-click`)}>Support</a
+                    >
                 </li>
                 <li>
-                    <a href="https://appwrite.online" target="_blank" rel="noopener noreferrer"
-                        >Status</a
+                    <a
+                        href="https://appwrite.online"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onclick={() => trackEvent(`footer-appwrite_status-click`)}>Status</a
                     >
                 </li>
                 <!-- <li>
@@ -96,23 +123,6 @@
         .status {
             height: 55px;
             margin-bottom: 6px; /* balancing due to style:margin-top="-4px" & the `iframe` has some spacings too I think */
-        }
-    }
-
-    .e-main-footer {
-        display: flex;
-        @media #{devices.$break1} {
-            flex-direction: column;
-            > * {
-                padding-block: 1rem;
-                &:not(:first-child) {
-                    border-block-start: solid 0.0625rem hsl(var(--web-color-border));
-                }
-            }
-        }
-        @media #{devices.$break2open} {
-            display: flex;
-            gap: 2rem;
         }
     }
 </style>

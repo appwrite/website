@@ -15,7 +15,7 @@ The Appwrite Website has been built with the following frameworks:
 
 ## Development
 
-_If this is your first time setting up the repository, please run `pnpm install` inside the repo's directory._
+_If this is your first time setting up the repository, please run `pnpm install` inside the repo's directory and create a `.env` file based on `.env.example`._
 
 To get the repo up and running in your local environment, use the following command:
 
@@ -41,4 +41,4 @@ Join our growing community around the world! See our official [Blog](https://app
 
 ## License
 
-Appwrite website, docs and blog © 2024 by Appwrite is licensed under [CC BY-NC-ND 4.0](https://creativecommons.org/licenses/by-nc-nd/4.0/).
+Appwrite website, docs and blog © 2025 by Appwrite is licensed under [CC BY-NC-ND 4.0](https://creativecommons.org/licenses/by-nc-nd/4.0/).

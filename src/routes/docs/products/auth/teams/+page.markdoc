@@ -8,7 +8,11 @@ Teams are a good way to allow users to share access to resources.
 For example, in a todo app, a user can [create a team](/docs/references/cloud/client-web/teams#create) for one of their todo lists and [invite another user](/docs/references/cloud/client-web/teams#createMembership) to the team to grant the other user access.
 You can further give special rights to parts of a team using team roles.
 
-The invited user can [accept the invitation](/docs/references/cloud/client-web/teams#updateMembershipStatus) to gain access. If the user's ever removed from the team, they'll lose access again. 
+The invited user can [accept the invitation](/docs/references/cloud/client-web/teams#updateMembershipStatus) to gain access. If the user's ever removed from the team, they'll lose access again.
+
+{% arrow_link href="/docs/products/auth/multi-tenancy" %}
+Learn about using Teams for multi-tenancy
+{% /arrow_link %}
 
 # Create team {% #create %}
 For example, we can create a team called `teachers` with roles `maths`, `sciences`, `arts`, and `literature`.
@@ -24,7 +28,7 @@ const client = new Client();
 const teams = new Teams(client);
 
 client
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
     .setProject('<PROJECT_ID>') // Your project ID
 ;
 
@@ -48,7 +52,7 @@ void main() { // Init SDK
   Teams teams = Teams(client);
 
   client
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
     .setProject('<PROJECT_ID>') // Your project ID
   ;
   Future result = teams.create(
@@ -69,7 +73,7 @@ void main() { // Init SDK
 import Appwrite
 
 let client = Client()
-    .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
     .setProject("<PROJECT_ID>") // Your project ID
 
 let teams = Teams(client)
@@ -85,7 +89,7 @@ import io.appwrite.Client
 import io.appwrite.services.Teams
 
 val client = Client(context)
-    .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
     .setProject("<PROJECT_ID>") // Your project ID
 
 val teams = Teams(client)
@@ -112,7 +116,7 @@ const client = new Client();
 const teams = new Teams(client);
 
 client
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
     .setProject('<PROJECT_ID>') // Your project ID
 ;
 
@@ -136,7 +140,7 @@ void main() { // Init SDK
   Teams teams = Teams(client);
 
   client
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
     .setProject('<PROJECT_ID>') // Your project ID
   ;
   Future result = teams.createMembership(
@@ -157,7 +161,7 @@ void main() { // Init SDK
 import Appwrite
 
 let client = Client()
-    .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
     .setProject("<PROJECT_ID>") // Your project ID
 
 let teams = Teams(client)
@@ -173,7 +177,7 @@ import io.appwrite.Client
 import io.appwrite.services.Teams
 
 val client = Client(context)
-    .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
     .setProject("<PROJECT_ID>") // Your project ID
 
 val teams = Teams(client)
@@ -219,7 +223,7 @@ Learn more about permissions
 
 # Memberships privacy {% #memberships-privacy %}
 
-In certain use cases, your app may not need to share members’ personal information with others. You can safeguard privacy by marking specific membership details as private. To configure this setting, navigate to **Auth** > **Security** > **Memberships privacy**
+In certain use cases, your app may not need to share members' personal information with others. You can safeguard privacy by marking specific membership details as private. To configure this setting, navigate to **Auth** > **Security** > **Memberships privacy**
 
 These details can be made private:
 

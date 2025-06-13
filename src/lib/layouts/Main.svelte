@@ -21,6 +21,7 @@
     import { page } from '$app/state';
     import { getAppwriteDashboardUrl } from '$lib/utils/dashboard';
     import { Button, Icon, InlineTag } from '$lib/components/ui';
+    import AnnouncementBanner from '$routes/(init)/init/(components)/announcement-banner.svelte';
 
     export let omitMainId = false;
     let theme: 'light' | 'dark' | null = 'dark';
@@ -145,6 +146,14 @@
 </script>
 
 <div class="relative">
+    <!--{#if !page.url.pathname.includes('/init')}-->
+    <!--    <div class="border-smooth relative z-10 border-b bg-[#19191C]">-->
+    <!--        <div class="is-special-padding mx-auto">-->
+    <!--            <AnnouncementBanner />-->
+    <!--        </div>-->
+    <!--    </div>-->
+    <!--{/if}-->
+
     <section
         class="web-mobile-header {resolvedTheme}"
         class:is-transparent={browser && !$isMobileNavOpen}
@@ -169,7 +178,7 @@
         </div>
         <div class="web-mobile-header-end">
             {#if !$isMobileNavOpen}
-                <Button href={getAppwriteDashboardUrl()}>
+                <Button href={getAppwriteDashboardUrl()} event="main-start_building_btn-click">
                     <span class="text">Start building</span>
                 </Button>
             {/if}
@@ -186,25 +195,8 @@
             </Button>
         </div>
     </section>
-    <header
-        class="web-main-header is-special-padding {resolvedTheme} is-transparent"
-        class:is-special-padding={!BANNER_KEY.startsWith('init-banner-')}
-        style={BANNER_KEY === 'init-banner-02' ? 'padding-inline: 0' : ''}
-    >
-        <!-- {#if !page.data.isStickyNav}
-            {#if BANNER_KEY.startsWith('init-banner-')}
-                <InitBanner />
-            {:else}
-                <AnnouncementBanner>
-                    <a href="/discord" target="_blank" rel="noopener noreferrer">
-                        <span class="text-caption font-medium">We are having lots of fun on</span>
-                        <span class="web-icon-discord" aria-hidden="true" />
-                        <span class="text-caption font-medium">Discord. Come and join us!</span>
-                    </a>
-                </AnnouncementBanner>
-            {/if}
-        {/if} -->
 
+    <header class="web-main-header is-special-padding {resolvedTheme} is-transparent">
         <div
             class="web-main-header-wrapper"
             class:is-special-padding={BANNER_KEY.startsWith('init-banner-')}
@@ -235,11 +227,6 @@
                     target="_blank"
                     rel="noopener noreferrer"
                     class="web-u-inline-width-100-percent-mobile"
-                    onclick={() =>
-                        trackEvent({
-                            plausible: { name: 'Star on GitHub in header' },
-                            posthog: { name: 'github-stars_nav_click' }
-                        })}
                 >
                     <Icon name="star" aria-hidden="true" />
                     <span class="text">Star on GitHub</span>
@@ -251,7 +238,11 @@
     </header>
     <MobileNav bind:open={$isMobileNavOpen} links={navLinks} />
 
-    <main class:web-u-hide-mobile={$isMobileNavOpen} id={omitMainId ? undefined : 'main'}>
+    <main
+        class="relative space-y-6"
+        class:web-u-hide-mobile={$isMobileNavOpen}
+        id={omitMainId ? undefined : 'main'}
+    >
         <slot />
     </main>
 </div>

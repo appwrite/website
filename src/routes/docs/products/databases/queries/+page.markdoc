@@ -28,7 +28,7 @@ You can change this through [pagination](/docs/products/databases/pagination).
 import { Client, Databases, Query } from "appwrite";
 
 const client = new Client()
-    .setEndpoint('https://cloud.appwrite.io/v1')
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
     .setProject('<PROJECT_ID>');
 
 const databases = new Databases(client);
@@ -47,7 +47,7 @@ import 'package:appwrite/appwrite.dart';
 
 void main() async {
     final client = Client()
-        .setEndpoint('https://cloud.appwrite.io/v1')
+        .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
         .setProject('<PROJECT_ID>');
 
     final databases = Databases(client);
@@ -72,7 +72,7 @@ import AppwriteModels
 
 func main() async throws {
     let client = Client()
-        .setEndpoint("https://cloud.appwrite.io/v1")
+        .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
         .setProject("<PROJECT_ID>")
 
     let databases = Databases(client)
@@ -98,7 +98,7 @@ import io.appwrite.services.Databases
 
 suspend fun main() {
     val client = Client(applicationContext)
-        .setEndpoint('https://cloud.appwrite.io/v1')
+        .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
         .setProject('<PROJECT_ID>');
 
     val databases = Databases(client)
@@ -214,28 +214,28 @@ Returns document if attribute is not equal to any value in the provided array.
 
 {% multicode %}
 ```client-web
-Query.notEqual("title", ["Iron Man"])
+Query.notEqual("title", "Iron Man")
 ```
 ```client-flutter
-Query.notEqual("title", ["Iron Man"])
+Query.notEqual("title", "Iron Man")
 ```
 ```python
-Query.not_equal("title", ["Iron Man"])
+Query.not_equal("title", "Iron Man")
 ```
 ```ruby
-Query.not_equal("title", ["Iron Man"])
+Query.not_equal("title", "Iron Man")
 ```
 ```deno
-Query.notEqual("title", ["Iron Man"])
+Query.notEqual("title", "Iron Man")
 ```
 ```php
-Query::notEqual("title", ["Iron Man"])
+Query::notEqual("title", "Iron Man")
 ```
 ```swift
-Query.notEqual("title", value: ["Iron Man"])
+Query.notEqual("title", value: "Iron Man")
 ```
 ```http
-{"method":"notEqual","attribute":"title","values":["Iron Man"]}
+{"method":"notEqual","attribute":"title","values":"Iron Man"}
 ```
 {% /multicode %}
 

@@ -1,11 +1,10 @@
-import { Analytics, type AnalyticsPlugin } from 'analytics';
-import Plausible from 'plausible-tracker';
-import posthogEvent from 'posthog-js';
-import { get } from 'svelte/store';
-import { page } from '$app/stores';
-
+import { page } from '$app/state';
 import { ENV } from '$lib/system';
 import { browser } from '$app/environment';
+
+import posthogEvent from 'posthog-js';
+import Plausible from 'plausible-tracker';
+import { Analytics, type AnalyticsPlugin } from 'analytics';
 
 type Payload = {
     payload: {
@@ -55,30 +54,20 @@ const analytics = Analytics({
     plugins: [plausible('appwrite.io')]
 });
 
-export type TrackEventArgs = {
-    plausible?: { name: string; data?: object };
-    posthog?: { name: string };
-};
+export type TrackEventArgs = { name: string; data?: object };
 
-export const trackEvent = async (platforms: TrackEventArgs) => {
-    if (!isTrackingAllowed()) {
+export const trackEvent = (eventArgs?: string | TrackEventArgs): void => {
+    if (!eventArgs || ENV.TEST) return;
+
+    const path = page.route.id?.replace(/\(([^()]*)\)/g, '') ?? '';
+    const name = typeof eventArgs === 'string' ? eventArgs : eventArgs.name;
+    const data = typeof eventArgs === 'string' ? { path } : { ...eventArgs.data, path };
+
+    if (ENV.DEV || ENV.PREVIEW) {
+        console.log(`[Analytics] Event:`, name, data);
         return;
     }
 
-    const currentPage = get(page);
-    const path = currentPage.route.id ?? '';
-
-    if (ENV.DEV || ENV.PREVIEW) {
-        console.log(`[Analytics] Event`, platforms.plausible, platforms.posthog);
-    } else {
-        if (platforms.plausible) {
-            await analytics.track(platforms.plausible.name, { ...platforms.plausible.data, path });
-        }
-
-        if (platforms.posthog) {
-            posthogEvent.capture(platforms.posthog.name);
-        }
-    }
+    posthogEvent.capture(name, data);
+    analytics.track(name, data).then();
 };
-
-export const isTrackingAllowed = () => !ENV.TEST;

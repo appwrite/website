@@ -163,7 +163,7 @@
         </div>
     </div>
 
-    <div class="py-10">
+    <div class="pt-10">
         <div class="web-big-padding-section-level-2">
             <div class="container">
                 <h2 class="text-title font-aeonik-pro text-primary">Articles</h2>

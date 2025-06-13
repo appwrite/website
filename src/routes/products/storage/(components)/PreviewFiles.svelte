@@ -1,26 +1,6 @@
 <script lang="ts">
-    import MultiCodeContextless from '$lib/components/MultiCodeContextless.svelte';
-
     import ProductPreview from '../(assets)/product-preview.png';
-    import { Platform } from '$lib/utils/references';
     import { Button } from '$lib/components/ui';
-
-    const snippet = [
-        {
-            content: `const result = storage.getFilePreview(
-	 'photos',           // bucket ID
-	 'sunset.heic',      // file ID
-	 1800,               // width
-	 0,                  // height
-	 '90',               // slight compression
-	 'CDCA30',           // border color
-	 15,                 // border radius
-	 'heic'              // output heic format
-);`,
-            platform: 'Node.js',
-            language: 'server-nodejs'
-        }
-    ];
 </script>
 
 <div class="relative bg-right-top bg-no-repeat pt-20 pb-12 md:py-40">

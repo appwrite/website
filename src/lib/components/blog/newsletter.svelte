@@ -99,7 +99,11 @@
                             name="email"
                             bind:value={email}
                         />
-                        <Button type="submit" disabled={submitting}>Sign up</Button>
+                        <Button
+                            type="submit"
+                            disabled={submitting}
+                            event="newsletter-subscribe-submit">Sign up</Button
+                        >
                     </div>
 
                     {#if error}

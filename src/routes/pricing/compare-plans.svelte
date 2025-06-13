@@ -10,16 +10,19 @@
     import { createAccordion, melt } from '@melt-ui/svelte';
     import { writable } from 'svelte/store';
     import { fly } from 'svelte/transition';
+    import { trackEvent } from '$lib/actions/analytics';
+
+    type Row = string | true | { text: string; url: string; event: string };
 
     type Table = {
         title: string;
         rows: {
             title: string;
             info?: string;
-            free: string | true;
-            pro: string | true;
-            scale: string | true;
-            enterprise: string | true;
+            free: Row;
+            pro: Row;
+            scale: Row;
+            enterprise: Row;
         }[];
     };
 
@@ -30,14 +33,14 @@
             title: 'Resources',
             rows: [
                 {
-                    title: 'Bandwidth',
+                    title: 'API bandwidth',
                     free: '5GB / month',
                     pro: '300GB / month',
                     scale: '300GB / month',
                     enterprise: 'Custom'
                 },
                 {
-                    title: 'Additional bandwidth',
+                    title: 'Additional API bandwidth',
                     free: '-',
                     pro: '$40 per 100GB / month',
                     scale: '$40 per 100GB / month',
@@ -70,14 +73,28 @@
             title: 'Platform',
             rows: [
                 {
-                    title: 'Organization Members',
+                    title: 'Number of projects',
+                    free: 'Unlimited',
+                    pro: 'Unlimited',
+                    scale: 'Unlimited',
+                    enterprise: 'Unlimited'
+                },
+                {
+                    title: 'Projects pausing',
+                    free: 'Never',
+                    pro: 'Never',
+                    scale: 'Never',
+                    enterprise: 'Never'
+                },
+                {
+                    title: 'Organization members',
                     free: '1',
                     pro: '1',
                     scale: 'Unlimited',
                     enterprise: 'Unlimited'
                 },
                 {
-                    title: 'Additional Organization members',
+                    title: 'Additional members',
                     free: '-',
                     pro: '$15 per member',
                     scale: '$0',
@@ -146,9 +163,17 @@
                 },
                 {
                     title: 'Phone OTP',
-                    free: '10 SMS / month',
-                    pro: '<a href="/docs/advanced/platform/phone-otp#rates" class="underline">View rates</a>',
-                    scale: '<a href="/docs/advanced/platform/phone-otp#rates" class="underline">View rates</a>',
+                    free: '-',
+                    pro: {
+                        text: 'View rates',
+                        url: '/docs/advanced/platform/phone-otp#rates',
+                        event: 'pricing-pro-view_phone_otp_rates-click'
+                    },
+                    scale: {
+                        text: 'View rates',
+                        url: '/docs/advanced/platform/phone-otp#rates',
+                        event: 'pricing-scale-view_phone_otp_rates-click'
+                    },
                     enterprise: 'Custom'
                 },
                 {
@@ -229,7 +254,7 @@
                 {
                     title: 'Dedicated databases',
                     free: '-',
-                    pro: 'Coming Soon',
+                    pro: 'Coming soon',
                     scale: 'Coming soon',
                     enterprise: 'Coming soon'
                 }
@@ -309,8 +334,8 @@
                 {
                     title: 'Additional executions',
                     free: '-',
-                    pro: '$2 per 1 Million',
-                    scale: '$2 per 1 Million',
+                    pro: '$2 per 1m',
+                    scale: '$2 per 1m',
                     enterprise: 'Custom'
                 },
                 {
@@ -330,11 +355,11 @@
                     title: 'Concurrent connections',
                     free: '250',
                     pro: '500',
-                    scale: '500',
+                    scale: '750',
                     enterprise: 'Custom'
                 },
                 {
-                    title: 'Additional concurrent connections',
+                    title: 'Additional connections',
                     free: '-',
                     pro: '$5 per 1,000',
                     scale: '$5 per 1,000',
@@ -346,6 +371,68 @@
                     pro: 'Unlimited',
                     scale: 'Unlimited',
                     enterprise: 'Unlimited'
+                }
+            ]
+        },
+        {
+            title: 'Network',
+            rows: [
+                {
+                    title: 'Edge compute',
+                    free: true,
+                    pro: true,
+                    scale: true,
+                    enterprise: true
+                },
+                {
+                    title: 'DDoS mitigation',
+                    free: true,
+                    pro: true,
+                    scale: true,
+                    enterprise: true
+                },
+                {
+                    title: 'Content delivery network',
+                    free: true,
+                    pro: true,
+                    scale: true,
+                    enterprise: true
+                },
+                {
+                    title: 'Content compression',
+                    info: 'Support for brotli, zstd and gzip for text compression and webp for image compression',
+                    free: true,
+                    pro: true,
+                    scale: true,
+                    enterprise: true
+                },
+                {
+                    title: 'TLS encryption',
+                    free: true,
+                    pro: true,
+                    scale: true,
+                    enterprise: true
+                },
+                {
+                    title: 'Logs',
+                    free: '-',
+                    pro: '-',
+                    scale: 'Coming soon',
+                    enterprise: 'Coming soon'
+                },
+                {
+                    title: 'Firewall',
+                    free: '-',
+                    pro: '-',
+                    scale: '-',
+                    enterprise: 'Custom rules'
+                },
+                {
+                    title: 'WAF',
+                    free: '-',
+                    pro: '-',
+                    scale: '-',
+                    enterprise: 'Custom rules'
                 }
             ]
         },
@@ -384,22 +471,15 @@
                     title: 'Custom organization roles',
                     free: '-',
                     pro: '-',
-                    scale: 'Coming Soon',
-                    enterprise: 'Coming Soon'
-                },
-                {
-                    title: 'Network logs',
-                    free: '-',
-                    pro: '-',
-                    scale: 'Coming Soon',
-                    enterprise: 'Coming Soon'
+                    scale: 'Coming soon',
+                    enterprise: 'Coming soon'
                 },
                 {
                     title: 'Activity logs',
                     free: '-',
                     pro: '-',
-                    scale: 'Coming Soon',
-                    enterprise: 'Coming Soon'
+                    scale: 'Coming soon',
+                    enterprise: 'Coming soon'
                 }
             ]
         },
@@ -463,6 +543,10 @@
 
     let scrollDir = 'down';
     let shouldShowTable = false;
+
+    function getItemAsRow(item: any): Row {
+        return item as Row;
+    }
 </script>
 
 <svelte:window on:scroll={() => (scrollDir = getScrollDir())} />
@@ -537,8 +621,9 @@
                                 <h4 class="text-sub-body text-primary font-medium">Free</h4>
                                 <Button
                                     variant="secondary"
-                                    href={getAppwriteDashboardUrl('/register')}
                                     class="!w-full"
+                                    href={getAppwriteDashboardUrl('/register')}
+                                    event="pricing-compare-free-click"
                                 >
                                     <span class="text-sub-body font-medium">Start building</span>
                                 </Button>
@@ -553,6 +638,7 @@
                                         '/console?type=create&plan=tier-1'
                                     )}
                                     target="_blank"
+                                    event="pricing-compare-pro-click"
                                     rel="noopener noreferrer"
                                 >
                                     <span class="text-sub-body font-medium">Start building</span>
@@ -568,6 +654,7 @@
                                     href={getAppwriteDashboardUrl(
                                         '/console?type=create&plan=tier-2'
                                     )}
+                                    event="pricing-compare-scale-click"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                 >
@@ -582,6 +669,7 @@
                                     variant="secondary"
                                     class="!w-full"
                                     href="/contact-us/enterprise"
+                                    event="pricing-compare-enterprise-click"
                                 >
                                     <span class="text-sub-body font-medium">Contact</span>
                                 </Button>
@@ -654,6 +742,15 @@
                                             >
                                                 {#if typeof row[col] === 'string'}
                                                     {@html row[col]}
+                                                {:else if typeof row[col] === 'object'}
+                                                    {@const rowItem = getItemAsRow(row[col])}
+                                                    <a
+                                                        href={rowItem.url}
+                                                        class="underline"
+                                                        on:click={() => trackEvent(rowItem.event)}
+                                                    >
+                                                        {rowItem.text}
+                                                    </a>
                                                 {:else}
                                                     <img
                                                         class="mx-auto self-center"

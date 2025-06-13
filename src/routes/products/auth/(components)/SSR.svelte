@@ -1,117 +1,40 @@
 <script lang="ts">
-    import { PUBLIC_APPWRITE_DASHBOARD } from '$env/static/public';
     import { trackEvent } from '$lib/actions/analytics';
     import { Tooltip } from '$lib/components';
     import { Button } from '$lib/components/ui';
     import { Framework, Platform } from '$lib/utils/references';
     import MultiFrameworkCode from './MultiFrameworkCode.svelte';
+    import SnippetNextJs from './(snippets)/nextjs.txt';
+    import SnippetSvelteKit from './(snippets)/sveltekit.txt';
+    import SnippetAstro from './(snippets)/astro.txt';
+    import SnippetNuxt from './(snippets)/nuxt.txt';
+    import SnippetRemix from './(snippets)/remix.txt';
 
     const codeSnippets = [
         {
             language: Platform.ClientWeb,
             platform: Framework.NextJs,
-            content: `import { Client, Account } from 'node-appwrite'
-import { cookies } from 'next/headers'
-
-async function getLoggedInUser() {
-  const session = cookies().get("custom-session-cookie");  
-  if (!session) return
-
-    const client = new Client()
-    .setEndpoint(process.env.NEXT_PUBLIC_APPWRITE_ENDPOINT)
-    .setProject(process.env.NEXT_PUBLIC_APPWRITE_PROJECT_ID)
-
-    client.setSession(session.value)
-    const account = new Account(client);
-
-    return await account.get()
-}
-  `
+            content: SnippetNextJs
         },
         {
             language: Platform.ClientWeb,
             platform: Framework.SvelteKit,
-            content: `import { Client, Account } from 'node-appwrite'
-
-async function getLoggedInUser() {
-  const session = cookies().get("custom-session-cookie");  
-  if (!session) return
-
-  const client = new Client()
-    .setEndpoint(process.env.PUBLIC_APPWRITE_ENDPOINT)    
-    .setProject(process.env.PUBLIC_APPWRITE_PROJECT_ID)
-
-      client.setSession(session.value)
-      const account = new Account(client);
-
-    return await account.get()
-  }
-`
+            content: SnippetSvelteKit
         },
         {
             language: Platform.ClientWeb,
             platform: Framework.Astro,
-            content: `import { Client, Account } from 'node-appwrite'
-
-async function getLoggedInUser(context) {
-  const session = cookies().get("custom-session-cookie");  
-  if (!session) return
-
-  const client = new Client()
-    .setEndpoint(import.meta.env.PUBLIC_APPWRITE_ENDPOINT)    
-    .setProject(import.meta.env.PUBLIC_APPWRITE_PROJECT_ID)
-
-      client.setSession(session.value)
-      const account = new Account(client);
-
-    return await account.get()
-  }
-`
+            content: SnippetAstro
         },
         {
             language: Platform.ClientWeb,
             platform: Framework.Nuxt3,
-            content: `import { Client, Account } from 'node-appwrite'
-import { H3Event, getCookie } from 'h3'
-
-async function getLoggedInUser(event) {
-  const session = getCookie(event, "custom-session-cookie");  
-  if (!session) return
-
-  const client = new Client()
-    .setEndpoint(process.env.PUBLIC_APPWRITE_ENDPOINT)    
-    .setProject(process.env.PUBLIC_APPWRITE_PROJECT_ID)
-
-      client.setSession(session.value)
-      const account = new Account(client);
-
-    return await account.get()
-  }`
+            content: SnippetNuxt
         },
         {
             language: Platform.ClientWeb,
             platform: Framework.Remix,
-            content: `import { Client, Account } from 'node-appwrite'
-import { createCookie } from '@remix-run/node'
-
-export const customSessionCookie = createCookie("custom-session-cookie", {
-  maxAge: 604800,
-})
-
-async function getLoggedInUser(request) {
-  const cookies = request.headers.get("Cookie")  
-  const session = await customSessionCookie.parse(cookies)  
-  if (!session) return
-
-  const client = new Client()
-    .setEndpoint(process.env.PUBLIC_APPWRITE_ENDPOINT)    
-    .setProject(process.env.PUBLIC_APPWRITE_PROJECT_ID)
-
-      client.setSession(session.value)
-      const account = new Account(client);
-
-    return await account.get()
-  }`
+            content: SnippetRemix
         }
     ];
 
@@ -159,9 +82,9 @@ async function getLoggedInUser(request) {
                         <li>
                             <a
                                 href={platform.href}
+                                onclick={() =>
+                                    trackEvent(`products-auth-docs_ssr_${platform.name}-click`)}
                                 class="platform flex size-14 items-center justify-center rounded-lg bg-white p-2"
-                                on:click={() =>
-                                    trackEvent({ plausible: { name: `${platform.name} clicked` } })}
                             >
                                 <img
                                     src={platform.image}
@@ -177,7 +100,12 @@ async function getLoggedInUser(request) {
                     </Tooltip>
                 {/each}
             </ul>
-            <Button variant="secondary" href="/docs/sdks#server" class="mt-8">Learn more</Button>
+            <Button
+                variant="secondary"
+                href="/docs/sdks#server"
+                class="mt-8"
+                event="products-auth-server_sdks-click">Learn more</Button
+            >
         </div>
 
         <MultiFrameworkCode data={codeSnippets} selected={Framework.NextJs} />

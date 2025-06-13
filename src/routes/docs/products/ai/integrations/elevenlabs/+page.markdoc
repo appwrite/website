@@ -209,7 +209,7 @@ Next add code to validate the body of the request and initialize the Appwrite SD
 
 ```js
 const client = new Client()
-  .setEndpoint(process.env.APPWRITE_ENDPOINT ?? "https://cloud.appwrite.io/v1")
+  .setEndpoint(process.env.APPWRITE_ENDPOINT ?? "https://<REGION>.cloud.appwrite.io/v1")
   .setProject(process.env.APPWRITE_FUNCTION_PROJECT_ID)
   .setKey(process.env.APPWRITE_API_KEY);
 

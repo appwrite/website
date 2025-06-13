@@ -1,5 +1,6 @@
 @import 'tailwindcss';
 @import './styles/typography.css';
+@custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
     /* Colors */
@@ -15,7 +16,9 @@
     --color-secondary: var(--color-secondary);
     --color-accent: var(--color-secondary);
     --color-smooth: var(--color-smooth);
-    --color-card: hsla(var(--color-greyscale-hue) 3% 14% / 90%);
+    --color-subtle: var(--color-subtle);
+    --color-tertiary: var(--color-tertiary);
+    --color-card: var(--color-card);
 
     /* pink */
     --color-pink-200: hsl(var(--color-pink-hue) 98% 84%);
@@ -35,33 +38,33 @@
 
     /* mint */
     --color-mint-200: hsl(var(--color-mint-hue) 56% 88%);
-    --color-mint-500: hsl(calc(var(--color-mint-hue) + 1), 54%, 69%);
-    --color-mint-700: hsl(calc(var(--color-mint-hue) + 2), 24%, 41%);
+    --color-mint-500: hsl(calc(var(--color-mint-hue) + 1) 54% 69%);
+    --color-mint-700: hsl(calc(var(--color-mint-hue) + 2) 24% 41%);
 
     /* purple */
     --color-purple-200: hsl(var(--color-purple-hue) 100% 88%);
-    --color-purple-500: hsl(calc(var(--color-purple-hue) - 1), 99%, 70%);
-    --color-purple-700: hsl(calc(var(--color-purple-hue) - 1), 42%, 42%);
+    --color-purple-500: hsl(calc(var(--color-purple-hue) - 1) 99% 70%);
+    --color-purple-700: hsl(calc(var(--color-purple-hue) - 1) 42% 42%);
 
     /* yellow */
     --color-yellow-200: hsl(var(--color-yellow-hue) 100% 88%);
     --color-yellow-500: hsl(var(--color-yellow-hue) 99% 70%);
-    --color-yellow-700: hsl(calc(var(--color-yellow-hue) + 1), 42%, 42%);
+    --color-yellow-700: hsl(calc(var(--color-yellow-hue) + 1) 42% 42%);
 
     /* blue */
     --color-blue-200: hsl(var(--color-blue-hue) 100% 88%);
-    --color-blue-500: hsl(calc(var(--color-blue-hue) - 1), 99%, 70%);
-    --color-blue-700: hsl(calc(var(--color-blue-hue) - 1), 42%, 42%);
+    --color-blue-500: hsl(calc(var(--color-blue-hue) - 1) 99% 70%);
+    --color-blue-700: hsl(calc(var(--color-blue-hue) - 1) 42% 42%);
 
     /* green */
     --color-green-700: #0a714f;
 
     /* secondary */
     --color-secondary-100: hsl(var(--color-secondary-hue) 99% 66%);
-    --color-accent-200: hsl(var(--color-secondary-hue), 78%, 60%, 0.32);
+    --color-accent-200: hsl(var(--color-secondary-hue) 78% 60% / 0.32);
 
     /* greyscale */
-    --color-offset: hsl(var(--color-greyscale-hue) 2%, 11%, 0.94);
+    --color-offset: hsl(var(--color-greyscale-hue) 2% 11% / 0.94);
     --color-greyscale-25: hsl(var(--color-greyscale-hue) 11% 98%);
     --color-greyscale-50: hsl(var(--color-greyscale-hue) 11% 94%);
     --color-greyscale-100: hsl(var(--color-greyscale-hue) 6% 90%);
@@ -77,35 +80,47 @@
     --color-greyscale-850: hsl(var(--color-greyscale-hue) 3% 14%);
     --color-greyscale-900: hsl(var(--color-greyscale-hue) 5.7% 10.4%);
 
-    /* utility colors */
-    --color-badge-bg-light: #f2c8d6;
-    --color-badge-border-light: #f69db7;
-    --color-badge-bg-dark: #2c2c2f;
-    --color-badge-border-dark: #39393c;
-
     /* Easings */
-    --ease-bounce: linear(0, 0.063, 0.25 18.2%, 1 36.4%, 0.813, 0.75, 0.813, 1, 0.938, 1, 1);
-    --ease-spring: linear(0, 0.938 16.7%, 1.149 24.3%, 1.154 29.9%, 0.977 51%, 1);
+    --easing-bounce: linear(0, 0.063, 0.25 18.2%, 1 36.4%, 0.813, 0.75, 0.813, 1, 0.938, 1, 1);
+    --easing-spring: linear(0, 0.938 16.7%, 1.149 24.3%, 1.154 29.9%, 0.977 51%, 1);
 
     /* Animations */
     --animate-scale-in: scale-in 200ms ease-out forwards;
+    --animate-scale-out: scale-out 200ms ease-out forwards;
     --animate-caret-blink: caret-blink 1s ease-in-out infinite;
-    --animate-text:
+    --animate-enter:
         fade-in 0.75s ease-in-out both, blur 0.75s ease-in-out both, up 0.75s ease-in-out both;
     --animate-scroll: scroll 60s linear infinite;
+    --animate-scroll-x: scroll-x var(--speed, 30s) linear infinite var(--direction, forwards);
+    --animate-scroll-y: scroll-y 30s linear infinite forwards;
+
     --animate-fade-in: fade-in 0.5s ease-in-out both;
-    --animate-marquee: marquee var(--speed, 30s) linear infinite var(--direction, forwards);
+    --animate-fade-out: fade-out 0.5s ease-in-out both;
     --animate-lighting: lighting 1.25s ease-out forwards;
-    --animate-menu-in: menu-in 250ms ease-in-out forwards;
-    --animate-menu-out: menu-out 250ms ease-in-out forwards;
+    --animate-menu-in: menu-in 0.25s ease-out forwards;
+    --animate-menu-out: menu-out 0.25s ease-out forwards;
+    --animate-enter-from-left: enter-from-left 0.2s ease;
+    --animate-enter-from-right: enter-from-right 0.2s ease;
+    --animate-exit-to-left: exit-to-left 0.2s ease;
+    --animate-exit-to-right: exit-to-right 0.2s ease;
+    --animate-wipe-in: wipe-in 2s ease-in-out;
 
     /* Keyframes */
     @keyframes scale-in {
         0% {
-            transform: scale(0);
+            transform: rotateX(-10deg) scale(0.9);
         }
         100% {
-            transform: scale(1);
+            transform: rotateX(0) scale(1);
+        }
+    }
+
+    @keyframes scale-out {
+        0% {
+            transform: rotateX(0) scale(1);
+        }
+        100% {
+            transform: rotateX(-10deg) scale(0.9);
         }
     }
 
@@ -132,7 +147,7 @@
 
     @keyframes up {
         0% {
-            transform: translateY(8px);
+            transform: translateY(36px);
         }
         100% {
             transform: translateY(0px);
@@ -148,7 +163,16 @@
         }
     }
 
-    @keyframes scroll {
+    @keyframes fade-out {
+        0% {
+            opacity: 1;
+        }
+        100% {
+            opacity: 0;
+        }
+    }
+
+    @keyframes scroll-deprecate {
         0% {
             transform: translateX(0);
         }
@@ -157,9 +181,15 @@
         }
     }
 
-    @keyframes marquee {
+    @keyframes scroll-x {
         to {
-            transform: translateX(-50%);
+            transform: translateX(-100%);
+        }
+    }
+
+    @keyframes scroll-y {
+        to {
+            transform: translateY(-100%);
         }
     }
 
@@ -202,6 +232,59 @@
         }
     }
 
+    @keyframes enter-from-right {
+        from {
+            opacity: 0;
+            transform: translateX(200px);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    @keyframes enter-from-left {
+        from {
+            opacity: 0;
+            transform: translateX(-200px);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    @keyframes exit-to-right {
+        from {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        to {
+            opacity: 0;
+            transform: translateX(200px);
+        }
+    }
+
+    @keyframes exit-to-left {
+        from {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        to {
+            opacity: 0;
+            transform: translateX(-200px);
+        }
+    }
+
+    @keyframes wipe-in {
+        0% {
+            clip-path: polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%);
+        }
+        100% {
+            clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+        }
+    }
+
     /* Fonts */
     --font-sans: 'Inter', arial, sans-serif;
     --font-mono: 'Fira Code', monospace;
@@ -239,9 +322,15 @@
     --text-title: clamp(2rem, 5vw, 2.5rem);
     --text-title--line-height: clamp(2.125rem, 5.5vw, 2.75rem);
     --text-title--letter-spacing: var(--tracking-squeezed);
+    --text-title-lg: clamp(2.85rem, 5vw, 3rem);
+    --text-title-lg--line-height: clamp(2.75rem, 5.5vw, 3.5rem);
+    --text-title-lg--letter-spacing: var(--tracking-squeezed);
     --text-display: clamp(3rem, 7vw, 4rem);
     --text-display--line-height: clamp(3.125rem, 7.5vw, 4.25rem);
     --text-display--letter-spacing: var(--tracking-compressed);
+    --text-hero: clamp(3.2rem, 7vw, 4.5rem);
+    --text-hero--line-height: clamp(3.125rem, 7.5vw, 4.25rem);
+    --text-hero--letter-spacing: var(--tracking-compressed);
     --text-headline: clamp(3.5rem, 8vw, 5.5rem);
     --text-headline--line-height: clamp(3.5rem, 8.5vw, 5.75rem);
     --text-headline--letter-spacing: var(--tracking-compressed);
@@ -257,28 +346,30 @@
 }
 
 @utility container {
+    max-width: 75rem;
     margin-inline: auto;
     padding-inline: 1.25rem;
-    max-width: 75rem;
 }
 
 @utility border-gradient {
     --border-gradient-before: linear-gradient(
-        180deg,
-        rgba(255, 255, 255, 0.12) 0%,
+        var(--to, 180deg),
+        rgba(255, 255, 255, 0.16) 0%,
         rgba(255, 255, 255, 0) 100%
     );
     --border-gradient-after: linear-gradient(
-        180deg,
-        rgba(255, 255, 255, 0) 0%,
+        var(--to, 180deg),
+        rgba(255, 255, 255, 0.12) 0%,
         rgba(255, 255, 255, 0) 125.11%
     );
+    --border-radius: 0.5rem;
 
     &::before,
     &::after {
         content: '';
         position: absolute;
         inset: 0;
+        border-radius: var(--border-radius);
         border: 1px solid transparent;
         mask:
             linear-gradient(#fff 0 0) padding-box,
@@ -311,20 +402,28 @@
     --color-yellow-hue: 42;
     --color-blue-hue: 217;
     --color-greyscale-hue: 240;
+    --color-primary-bg: var(--color-greyscale-25);
 
     /* base */
     --color-primary: var(--color-greyscale-900);
     --color-secondary: var(--color-greyscale-700);
-    --color-accent: var(--color-pink-600);
+    --color-accent: var(--color-pink-500);
+    --carousel-gradient: transparent;
     --color-badge-bg: var(--color-badge-bg-light);
     --color-badge-border: var(--color-badge-border-light);
-    --color-smooth: hsl(var(--color-greyscale-hue) 6%, 10%, 0.04);
+    --color-smooth: hsl(var(--color-greyscale-hue) 6% 10% / 0.04);
+    --color-card: var(--color-greyscale-850);
+    --color-tertiary: hsl(var(--color-greyscale-600));
+    --color-offset: hsl(var(--color-greyscale-hue) 2% 11% / 0.94);
+    --color-subtle: var(--color-greyscale-850);
 }
 
 .dark {
     --color-primary: var(--color-greyscale-100);
     --color-secondary: var(--color-greyscale-300);
-    --color-badge-bg: var(--color-badge-bg-dark);
-    --color-badge-border: var(--color-badge-border-dark);
-    --color-smooth: hsl(0 0%, 100%, 0.06);
+    --carousel-gradient: 23, 23, 26;
+    --color-primary-bg: var(--color-greyscale-900);
+    --color-smooth: hsl(0 0% 100% / 0.06);
+    --color-tertiary: hsl(var(--color-greyscale-600));
+    --color-offset: hsl(0 0% 100% / 0.1);
 }

@@ -22,7 +22,11 @@
                 <p class="text-body text-primary mt-4">
                     Join Appwrite Pro and get email support from our team.
                 </p>
-                <Button class="mt-6" href="https://appwrite.io/pricing">Learn more</Button>
+                <Button
+                    class="mt-6"
+                    href="https://appwrite.io/pricing"
+                    event="threads-pricing_link-click">Learn more</Button
+                >
             </div>
         </div>
     </div>

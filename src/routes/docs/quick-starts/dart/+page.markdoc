@@ -53,7 +53,7 @@ After entering the project directory, remove the `lib/` and `test/` directories.
 Install the Dart Appwrite SDK.
 
 ```sh
-dart pub add dart_appwrite:13.0.0
+dart pub add dart_appwrite:16.0.0
 ```
 {% /section %}
 {% section #step-4 step=4 title="Import Appwrite" %}
@@ -78,7 +78,7 @@ var client = Client();
 
 Future<void> main() async {
   client
-    .setEndpoint("https://cloud.appwrite.io/v1")
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
     .setProject("<PROJECT_ID>")
     .setKey("<YOUR_API_KEY>");
 }
@@ -200,7 +200,7 @@ Finally, revisit the `main()` function and call the functions created in previou
 ```dart
 Future<void> main() async {
   client
-    .setEndpoint("https://cloud.appwrite.io/v1")
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
     .setProject("<PROJECT_ID>")
     .setKey("<YOUR_API_KEY>");
 
