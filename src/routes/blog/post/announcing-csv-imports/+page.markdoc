@@ -9,6 +9,7 @@ timeToRead: 5
 author: darshan-pandya
 category: announcement
 featured: false
+draft: true
 ---
 
 We're introducing a new way to populate your Appwrite databases: **document imports from CSV files**.
