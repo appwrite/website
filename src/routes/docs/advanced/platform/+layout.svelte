@@ -155,8 +155,8 @@
                 },
                 {
                     new: isNewUntil('31 July 2025'),
-                    label: 'Availability SLA',
-                    href: '/docs/advanced/platform/availability-sla'
+                    label: 'Uptime SLA',
+                    href: '/docs/advanced/platform/uptime-sla'
                 }
             ]
         }
