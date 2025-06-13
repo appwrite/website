@@ -56,8 +56,6 @@
                 {
                     label: 'CSV Imports',
                     href: '/docs/products/databases/csv-imports',
-                    // TODO: change/extend the date later!
-                    new: isNewUntil('24 May 2025')
                 }
             ]
         },
