@@ -156,12 +156,12 @@ export const preferredVersion = writable<Version | null>(
 );
 
 function getInitialPlatform(): Platform {
-    const stored = globalThis?.localStorage?.getItem('preferredPlatform') ?? 'client-web';
+    const stored = globalThis?.localStorage?.getItem('preferredPlatform') ?? Platform.ClientWeb;
     // return if this platform is valid
     if (VALID_PLATFORMS.has(stored as Platform)) {
         return stored as Platform;
     } else {
-        return 'client-web';
+        return Platform.ClientWeb;
     }
 }
 
