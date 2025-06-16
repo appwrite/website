@@ -41,7 +41,7 @@
                         <Td>{property.name}</Td>
                         <Td>{property.type}</Td>
                         <Td>
-                            {property.description}
+                            {@html parse(property.description)}
                             {#if property.relatedModels}
                                 <!-- eslint-disable-next-line svelte/no-at-html-tags -->
                                 Can be one of: {@html parse(property.relatedModels)}
