@@ -73,6 +73,17 @@ $adminClient = (new Client())
 
 
 ```
+```python
+from appwrite.client import Client
+
+admin_client = (Client()
+                .set_endpoint('https://<REGION>.cloud.appwrite.io/v1') # Your API Endpoint \
+                .set_project('<PROJECT_ID>') # Your project ID
+                .set_key('<YOUR_API_KEY>') # Your secret API key
+            )
+
+
+```
 {% /multicode %}
 
 It is important to use an API key, as this will allow your server requests to bypass [rate limits](/docs/advanced/platform/rate-limits). If you don't use an API key, your server will be rate limited as if it were a client from a single IP address.
@@ -104,6 +115,22 @@ $session = $_COOKIE['session']; // Get the session cookie from the request
 if ($session) {
     $sessionClient->setSession($session);
 }
+```
+
+```python
+from flask import request
+from appwrite.client import Client
+
+session_client = (Client()
+                  .set_endpoint('https://<REGION>.cloud.appwrite.io/v1') # Your API Endpoint
+                  .set_project('<PROJECT_ID>') # Your project ID
+                )
+
+# Get the session cookie from the request
+session = request.cookies.get('session')
+if session:
+    session_client.set_session(session)
+
 ```
 {% /multicode %}
 
@@ -178,6 +205,39 @@ try {
     echo json_encode(['success' => false, 'error' => $e->getMessage()]);
 }
 ```
+```python
+from flask import Flask, request, jsonify, make_response
+
+# Initialize admin client here
+# ...
+
+@app.post('/login')
+def login():
+    body = request.json
+    # Get email and password from request
+    email = body['email']
+    password = body['password']
+
+    try:
+        account = Account(admin_client)
+        
+        # Create the session using the Appwrite client
+        session = account.create_email_password_session(email, password)
+        resp = make_response(jsonify({'success': True}))
+
+        # Set the session cookie
+        resp.set_cookie('session', 
+                        session['secret'], 
+                        httponly=True, 
+                        secure=True, 
+                        samesite='Strict', 
+                        expires=session['expire'], 
+                        path='/'
+                    )
+        return resp
+    except Exception as e:
+        return jsonify({'success': False, 'error': str(e)}), 400
+```
 {% /multicode %}
 
 We also recommend using the `httpOnly`, `secure`, and `sameSite` cookie options to ensure that the cookie is only sent over HTTPS,
@@ -242,6 +302,30 @@ try {
 } catch (Exception $e) {
     echo json_encode(['success' => false, 'error' => $e->getMessage()]);
 }
+```
+```python
+#  Initialize the session client here
+
+@app.get('/user')
+def get_user():
+    #  First, read the session cookie from the request
+    session = request.cookies.get('session')
+
+    # If the session cookie is not present, return an error
+    if not session:
+        return jsonify({'success': False, 'error': 'Unauthorized'}), 401
+    
+    # pass the session cookie to the Appwrite client
+    session_client.set_session(session)
+    account = Account(session_client)
+
+    # Now, you can make authenticated requests to the Appwrite API
+    try:
+        user = account.get()
+        return jsonify({'success': True, 'user': user})
+    except Exception as e:
+        return jsonify({'success': False, 'error': str(e)}), 400
+
 ```
 {% /multicode %}
 
