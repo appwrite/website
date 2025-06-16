@@ -99,10 +99,10 @@
     --animate-lighting: lighting 1.25s ease-out forwards;
     --animate-menu-in: menu-in 0.25s ease-out forwards;
     --animate-menu-out: menu-out 0.25s ease-out forwards;
-    --animate-enter-from-left: enter-from-left 0.2s ease;
-    --animate-enter-from-right: enter-from-right 0.2s ease;
-    --animate-exit-to-left: exit-to-left 0.2s ease;
-    --animate-exit-to-right: exit-to-right 0.2s ease;
+    --animate-enter-from-left: enter-from-left 0.2s ease-in-out;
+    --animate-enter-from-right: enter-from-right 0.2s ease-in-out;
+    --animate-exit-to-left: exit-to-left 0.2s ease-in-out;
+    --animate-exit-to-right: exit-to-right 0.2s ease-in-out;
     --animate-wipe-in: wipe-in 2s ease-in-out;
 
     /* Keyframes */
@@ -235,7 +235,7 @@
     @keyframes enter-from-right {
         from {
             opacity: 0;
-            transform: translateX(200px);
+            transform: translateX(48px);
         }
         to {
             opacity: 1;
@@ -246,7 +246,7 @@
     @keyframes enter-from-left {
         from {
             opacity: 0;
-            transform: translateX(-200px);
+            transform: translateX(-48px);
         }
         to {
             opacity: 1;
@@ -261,7 +261,7 @@
         }
         to {
             opacity: 0;
-            transform: translateX(200px);
+            transform: translateX(48px);
         }
     }
 
@@ -272,7 +272,7 @@
         }
         to {
             opacity: 0;
-            transform: translateX(-200px);
+            transform: translateX(-48px);
         }
     }
 

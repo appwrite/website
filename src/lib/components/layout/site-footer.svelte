@@ -135,7 +135,7 @@
                                 class="web-icon-chevron-down web-u-transition"
                                 class:web-u-rotate-180={$isSelected(title)}
                                 style:font-size="1rem"
-                            />
+                            ></span>
                         </button>
                     </h5>
                     {#if $isSelected(title)}

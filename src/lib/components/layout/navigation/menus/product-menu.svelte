@@ -38,7 +38,7 @@
 </script>
 
 <MenuWrapper>
-    <div class="grid gap-3 p-3 sm:w-[400px] sm:p-6 md:w-[600px] md:grid-cols-2 lg:w-[800px]">
+    <div class="grid gap-3 sm:w-[400px] md:w-[600px] md:grid-cols-2 lg:w-[800px]">
         {#each products as product}
             <NavigationMenu.Link
                 class="hover:bg-muted hover:text-accent-foreground focus:bg-muted focus:text-accent-foreground block space-y-1 rounded-md p-3 leading-none no-underline outline-hidden transition-colors select-none"

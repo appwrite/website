@@ -35,22 +35,19 @@
 </script>
 
 <NavigationMenu.Root class={className} {...rest}>
-    <NavigationMenu.List class="flex items-center gap-8">
+    <NavigationMenu.List class="flex items-center">
         {#each navItems as item}
             <NavigationMenu.Item class="hover:text-accent transition-colors">
                 {#if item.menu}
                     {@const Submenu = item.menu}
-                    <NavigationMenu.Trigger class="group flex items-center gap-3"
+                    <NavigationMenu.Trigger class="group flex items-center gap-3 px-4"
                         >{item.label}
-                        <Icon
-                            name="chevron-down"
-                            class="relative size-4 transition-transform duration-200 group-data-[state=open]:-rotate-180"
-                            aria-hidden="true"
-                        /></NavigationMenu.Trigger
-                    >
+                    </NavigationMenu.Trigger>
                     <Submenu />
                 {:else}
-                    <NavigationMenu.Link href={item.href}>{item.label}</NavigationMenu.Link>
+                    <NavigationMenu.Link href={item.href} class="px-4"
+                        >{item.label}</NavigationMenu.Link
+                    >
                 {/if}
             </NavigationMenu.Item>
         {/each}
