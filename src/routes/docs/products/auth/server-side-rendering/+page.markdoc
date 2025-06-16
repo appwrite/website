@@ -483,6 +483,29 @@ $redirectUrl = $account->createOAuth2Token(
 
 header('Location' . $redirectUrl);
 ```
+```python
+from appwrite.client import Client
+from appwrite.services.account import Account, OAuthProvider
+from flask import Flask, request ,redirect, make_response, jsonify
+
+admin_client = (Client()
+                .set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
+                .set_project('<PROJECT_ID>')
+                .set_key('<API_KEY>')
+            )
+
+@app.get('/oauth')
+def oauth():
+    account = Account(admin_client)
+
+    redirect_url = account.create_o_auth2_token(
+        OAuthProvider.Github,                # Provider
+        'https://example.com/oauth/success', # Success URL
+        'https://example.com/oauth/failure', # Failure URL
+    )
+
+    return redirect(redirect_url)
+```
 {% /multicode %}
 
 Next, create a success callback endpoint that receives the `userId` and `secret` URL parameters, and then calls `createSession` on the server side. This endpoint returns a session object, which you can store in a cookie.
@@ -547,6 +570,38 @@ try {
 } catch (Exception $e) {
     echo json_encode(['success' => false, 'error' => $e->getMessage()]);
 }
+```
+```python
+@app.get('/oauth/success')
+def oauth_success():
+    account = Account(admin_client)
+
+    # Get the userId and secret from the URL parameters
+    user_id = request.args.get('userId')
+    secret = request.args.get('secret')
+
+    try:
+        # Create the session using the Appwrite client
+        session = account.createSession(user_id, secret)
+        
+        # Set the session cookie
+        res = make_response(jsonify({'success': True}))
+        
+        #  Set session cookie
+        res.set_cookie(
+            'session',
+            session['secret'],
+            httponly=True,
+            secure=True,
+            samesite='Strict',
+            max_age=session['expire'],
+            path='/'
+        )
+
+        return res
+
+    except Exception as e:
+        return jsonify({'success': False, 'error': str(e)}), 400
 ```
 {% /multicode %}
 
