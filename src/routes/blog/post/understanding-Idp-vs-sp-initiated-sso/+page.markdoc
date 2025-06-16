@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "Understanding IdP- vs SP-Initiated SSO"
-description: A quick guide to IdP- vs SP-initiated SSO and when to use each.
+title: "Understanding IdP vs SP-Initiated SSO"
+description: A quick guide to IdP vs SP-initiated SSO and when to use each.
 date: 2025-06-16
 cover: /images/blog/understanding-Idp-vs-sp-initiated-sso/cover.png
 timeToRead: 06
@@ -17,7 +17,7 @@ This guide breaks down the differences between **Identity Provider (IdP)-initiat
 
 # What is IdP-Initiated SSO?
 
-First, a quick refresher: an **Identity Provider (IdP)** manages user identities, validating who a user is before granting access to different applications.
+First, a quick refresher: an **Identity Provider (IdP)** manages user identities, validating who a user is before granting access to different applications. Here’s a quick [overview](https://appwrite.io/docs/products/auth/identities) of how Appwrite handles identity and access.
 
 In an IdP-initiated SSO flow, the user’s journey starts at the IdP itself:
 
@@ -27,7 +27,7 @@ In an IdP-initiated SSO flow, the user’s journey starts at the IdP itself:
 2. The IdP displays a dashboard of connected applications.
 3. The user selects a service to access.
 4. The IdP sends a secure authentication token (such as a SAML assertion) to the Service Provider (SP).
-5. The SP grants access based on the token.
+5. The SP grants access based on the [token](https://appwrite.io/docs/products/auth/tokens).
 
 # Advantages
 
@@ -41,7 +41,7 @@ In an IdP-initiated SSO flow, the user’s journey starts at the IdP itself:
 - **Single point of failure**: If the IdP is compromised, multiple services could be at risk.
 - **Integration challenges**: Some services may not fully support IdP-initiated workflows.
 
-{% call_to_action title="Customer identity without the hassle" description="Add secure authentication for your users in just a couple of minutes." point1="GDPR, HIPAA and SOC 2 compliant" point2="Built-in security" point3="Multi-factor authentication" point4="Integrates with your favourite SDK" cta="Contact sales" url="https://appwrite.io/contact-us/enterprise" /%}
+{% call_to_action title="Customer identity without the hassle" description="Add secure authentication for your users in just a couple of minutes." point1="GDPR, HIPAA and SOC 2 compliant" point2="Built-in security" point3="Multi-factor authentication" point4="Integrates with your favourite SDK" cta="Contact sales" url="/contact-us/enterprise" /%}
 
 # What is SP-Initiated SSO?
 
@@ -90,7 +90,7 @@ In SP-initiated SSO, the process begins when a user attempts to log into an appl
 - **B2B and B2C platforms**: Especially when users might come in via bookmarks, emails, or direct links.
 - **Dynamic environments**: Where new apps are frequently added or removed.
 
-Pro tip: SP-initiated flows are often complemented by adaptive MFA to enhance security without compromising the user experience.
+Pro tip: SP-initiated flows are often complemented by [adaptive MFA](https://appwrite.io/docs/products/auth/mfa) to enhance security without compromising the user experience.
 
 # When to use both approaches
 
@@ -98,13 +98,13 @@ Many organizations implement both IdP- and SP-initiated SSO to serve different u
 
 - **Employee and partner ecosystems**: Employees might use IdP dashboards while partners or customers prefer direct access.
 - **Hybrid cloud setups**: Supporting a mix of legacy and modern applications.
-- **Adaptive security strategies**: Choosing the flow based on device, location, or user profile.
+- **Adaptive security strategies**: Choosing the flow based on device, location, or user profile. 
 
-Choosing the right SSO initiation method,or blending both, can dramatically impact security, user satisfaction, and scalability. Evaluate your platform's user behavior, security posture, and integration needs to pick the best approach for your environment.
+Choosing the right SSO initiation method,or blending both, can dramatically impact [security](https://appwrite.io/docs/products/auth/security), user satisfaction, and scalability. Evaluate your platform's user behavior, security posture, and integration needs to pick the best approach for your environment.
 
 # Futher reading
 
-- [Appwrite Authentication docs](https://appwrite.io/docs/products/auth)
-- [Developer's guide to user authentication](https://appwrite.io/blog/post/guide-to-user-authentication)
-- [Appwrite Authentication overview](https://appwrite.io/products/auth)
+- [Appwrite Authentication docs](/docs/products/auth)
+- [Developer's guide to user authentication](/blog/post/guide-to-user-authentication)
+- [Appwrite Authentication overview](/products/auth)
 
