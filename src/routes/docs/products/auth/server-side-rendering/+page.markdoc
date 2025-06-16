@@ -430,6 +430,9 @@ client.setForwardedUserAgent(req.headers['user-agent']);
 <?php
 $client->setForwardedUserAgent($_SERVER['HTTP_USER_AGENT']);
 ```
+```python
+client.set_forwarded_user_agent(request.headers.get('user-agent'))
+```
 {% /multicode %}
 
 # OAuth2 {% #oauth2 %}
