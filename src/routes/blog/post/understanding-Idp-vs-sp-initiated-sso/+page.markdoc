@@ -27,7 +27,7 @@ In an IdP-initiated SSO flow, the user’s journey starts at the IdP itself:
 2. The IdP displays a dashboard of connected applications.
 3. The user selects a service to access.
 4. The IdP sends a secure authentication token (such as a SAML assertion) to the Service Provider (SP).
-5. The SP grants access based on the [token](https://appwrite.io/docs/products/auth/tokens).
+5. The SP grants access based on the [token](/docs/products/auth/tokens).
 
 # Advantages
 
@@ -90,7 +90,7 @@ In SP-initiated SSO, the process begins when a user attempts to log into an appl
 - **B2B and B2C platforms**: Especially when users might come in via bookmarks, emails, or direct links.
 - **Dynamic environments**: Where new apps are frequently added or removed.
 
-Pro tip: SP-initiated flows are often complemented by [adaptive MFA](https://appwrite.io/docs/products/auth/mfa) to enhance security without compromising the user experience.
+Pro tip: SP-initiated flows are often complemented by [adaptive MFA](/docs/products/auth/mfa) to enhance security without compromising the user experience.
 
 # When to use both approaches
 
