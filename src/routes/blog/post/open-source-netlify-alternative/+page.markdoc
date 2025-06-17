@@ -87,6 +87,8 @@ Each framework can be customized with its own build and install commands. If you
 
 If you're using SSR with anything beyond Next.js or Astro, Appwrite Sites provides broader and more consistent support out of the box.
 
+{% call_to_action title="All-in-one development platform" description="Use built-in backend infrastructure and web hosting, all from a single place." point1="Start for free"  point2="Open source" point3="Support for over 13 SDKs" point4="Managed cloud solution" cta="Start building for free" url="https://cloud.appwrite.io/console/register?type=create&plan=tier-1" /%}
+
 # Hosting options: Static vs SSR
 
 Both platforms support static and server-side rendered hosting, but their architectures differ significantly.
