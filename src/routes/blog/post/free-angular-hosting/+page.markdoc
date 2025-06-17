@@ -78,4 +78,4 @@ Many Angular applications require authentication, databases, and backend functio
 
 Unlike other platforms that rely on external integrations for authentication, databases, and backend logic, Appwrite Sites offers a unified ecosystem, reducing complexity and improving performance.
 
-For Angular developers seeking a cost-effective, high-performance hosting solution with built-in backend services, Appwrite Sites is an excellent choice. Explore more with our [Angular Quick Start Guide](https://appwrite.io/docs/quick-starts/angular) and start deploying your Angular applications by visiting [Appwrite Sites](https://appwrite.io/sites).
+For Angular developers seeking a cost-effective, high-performance hosting solution with built-in backend services, Appwrite Sites is an excellent choice. Explore more with our [Angular Quick Start Guide](/docs/quick-starts/angular) and start deploying your Angular applications by visiting [Appwrite Sites](/products/sites).
