@@ -59,7 +59,7 @@ export type TrackEventArgs = { name: string; data?: object };
 export const trackEvent = (eventArgs?: string | TrackEventArgs): void => {
     if (!eventArgs || ENV.TEST) return;
 
-    const path = page.route.id ?? '';
+    const path = page.route.id?.replace(/\(([^()]*)\)/g, '') ?? '';
     const name = typeof eventArgs === 'string' ? eventArgs : eventArgs.name;
     const data = typeof eventArgs === 'string' ? { path } : { ...eventArgs.data, path };
 

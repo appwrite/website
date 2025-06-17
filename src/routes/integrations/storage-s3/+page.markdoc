@@ -8,13 +8,13 @@ isPartner: true
 isNew: false
 cover: /images/integrations/storage-s3/cover.png
 category: storage
-product: 
+product:
     avatar: '/images/integrations/avatars/aws.png'
     vendor: AWS
     description: 'Amazon S3 is an object storage service that offers industry-leading scalability, data availability, security, and performance.'
-platform: 
+platform:
     - 'Self-hosted'
-images: 
+images:
     - /images/integrations/storage-s3/cover.png
     - /images/integrations/storage-s3/bucket.png
     - /images/integrations/storage-s3/access-key.png
@@ -50,10 +50,22 @@ Visit the `.env` file created for your Appwrite instance and update the followin
 
 ```bash
 _APP_STORAGE_DEVICE=s3
-_APP_STORAGE_S3_BUCKET=[BUCKET_NAME]
-_APP_STORAGE_S3_REGION=[AWS_REGION]
-_APP_STORAGE_S3_ACCESS_KEY=[ACCESS_KEY_ID]
-_APP_STORAGE_S3_SECRET=[SECRET_ACCESS_KEY]
+_APP_STORAGE_S3_BUCKET=<BUCKET_NAME>
+_APP_STORAGE_S3_REGION=<AWS_REGION>
+_APP_STORAGE_S3_ACCESS_KEY=<ACCESS_KEY_ID>
+_APP_STORAGE_S3_SECRET=<SECRET_ACCESS_KEY>
+```
+
+Starting from version 1.7.0, you can also use S3-compatible providers by configuring the endpoint:
+
+```bash
+# For path-style requests (bucket in the path)
+_APP_STORAGE_S3_ENDPOINT=<PROVIDER_ENDPOINT> # e.g., s3.amazonaws.com (without https://)
+_APP_STORAGE_S3_BUCKET=<BUCKET_NAME> # bucket name required here
+
+# OR for virtual-hosted-style paths (bucket in the endpoint)
+_APP_STORAGE_S3_ENDPOINT=<BUCKET_NAME>.<PROVIDER_ENDPOINT> # e.g., bucket-name.s3.amazonaws.com
+_APP_STORAGE_S3_BUCKET= # leave this empty when bucket is in the endpoint
 ```
 
 After that, run the following Docker Compose commands in your terminal to restart your Appwrite containers and verify if the changes have been successfully applied:

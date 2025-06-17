@@ -115,6 +115,7 @@
     "pnpm": {
         "onlyBuiltDependencies": [
             "@parcel/watcher",
+            "@tailwindcss/oxide",
             "core-js",
             "esbuild",
             "sharp",

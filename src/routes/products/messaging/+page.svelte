@@ -1,7 +1,7 @@
 <script>
     import { FooterNav, MainFooter, PreFooter } from '$lib/components';
     import Main from '$lib/layouts/Main.svelte';
-    import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
+    import { DEFAULT_HOST } from '$lib/utils/metadata';
     import { TITLE_SUFFIX } from '$routes/titles';
     import Draft from './(components)/Draft.svelte';
     import Schedule from './(components)/Schedule.svelte';
@@ -719,9 +719,6 @@ messaging.create_email(
             @media (max-width: 500px) {
                 flex-direction: column;
                 gap: 1rem;
-                & a {
-                    width: 100%;
-                }
             }
         }
 
