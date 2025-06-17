@@ -38,7 +38,7 @@
         {
             title: 'Innovation',
             description:
-                'Empower your team and elevate your customers' experiences with the newest technology.',
+                'Empower your team and elevate your customers\' experiences with the newest technology.',
             icon: Revenue
         },
         {
