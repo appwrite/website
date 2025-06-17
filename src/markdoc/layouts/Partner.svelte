@@ -49,7 +49,7 @@
         <div class="relative container w-full pb-0">
             <div class="flex flex-col gap-7">
                 <a href="/partners" class="text-caption text-primary group flex gap-2">
-                    <span class="web-icon-arrow-left transition group-hover:-translate-x-1" />
+                    <span class="web-icon-arrow-left transition group-hover:-translate-x-1"></span>
                     Back to Partners Catalog
                 </a>
                 <h1 class="text-headline font-aeonik-pro text-primary">{title}</h1>
