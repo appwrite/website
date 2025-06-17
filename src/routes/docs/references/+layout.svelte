@@ -105,7 +105,5 @@
     };
 </script>
 
-<Docs variant={expandable ? 'expanded' : 'two-side-navs'} isReferences={expandable}>
-    <Sidebar {navigation} {expandable} {parent} />
-    {@render children()}
-</Docs>
+<Sidebar {navigation} {expandable} {parent} />
+{@render children()}

@@ -37,17 +37,15 @@
 <NavigationMenu.Root class={className} {...rest}>
     <NavigationMenu.List class="flex items-center">
         {#each navItems as item}
-            <NavigationMenu.Item class="hover:text-accent transition-colors">
+            <NavigationMenu.Item
+                class="rounded-md px-4 py-2 transition-colors  hover:bg-white/6 hover:text-white"
+            >
                 {#if item.menu}
                     {@const Submenu = item.menu}
-                    <NavigationMenu.Trigger class="group flex items-center gap-3 px-4"
-                        >{item.label}
-                    </NavigationMenu.Trigger>
+                    <NavigationMenu.Trigger>{item.label}</NavigationMenu.Trigger>
                     <Submenu />
                 {:else}
-                    <NavigationMenu.Link href={item.href} class="px-4"
-                        >{item.label}</NavigationMenu.Link
-                    >
+                    <NavigationMenu.Link href={item.href}>{item.label}</NavigationMenu.Link>
                 {/if}
             </NavigationMenu.Item>
         {/each}
