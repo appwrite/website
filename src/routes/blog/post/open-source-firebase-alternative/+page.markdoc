@@ -121,6 +121,22 @@ Messaging allows you to implement communications in your application. You can us
 - Firebase offers the infrastructure to implement push notifications via Firebase Cloud Messaging (FCM). Appwrite doesn’t have its own infrastructure but contains a provider to implement FCM.
 - Firebase offers In-App Messaging to help you engage your app's active users through targeted, contextual messages inside the app. Appwrite does not offer this feature yet but aims to do so in the future.
 
+## Hosting
+
+Hosting refers to the service that allows developers to deploy and serve web applications to users over the internet. Appwrite offers native hosting as part of its all-in-one platform. That means you can develop, deploy, and scale your application all from a single platform. Firebase requires connecting separate services like Firestore and Cloud Functions.
+
+*Similarities:*
+
+- Both Appwrite and Firebase utilize global Content Delivery Networks (CDNs) to ensure low-latency access to hosted content worldwide.
+- Each platform automatically provisions SSL certificates, ensuring that all content is served securely over HTTPS..
+- Both services support popular web frameworks, enabling seamless deployment of applications built with technologies like React, Next.js, and Angular.
+
+*Differences:*
+
+- Appwrite Sites runs in containerized environments with full control over server-side rendering. Firebase Hosting is optimized for static content and uses Google’s managed infrastructure.
+- Appwrite is open-source and self-hostable. Firebase is fully managed by Google with no self-hosting support.
+- Appwrite is an all-in-one solution that covers everything from hosting and authentication to databases and cloud functions in one platform. Firebase also offers these services but manages them across separate tools, requiring more integration effort.
+
 # Conclusion
 
 While both Appwrite and Firebase are great Backend-as-a-Service offerings that support numerous SDKs and integrations, they differ in terms of capabilities and pricing. The choice between Appwrite and Firebase hinges on the specific needs of a project. Appwrite stands out with its open-source nature, self-hosting capabilities, pricing affordability, and emphasis on privacy. The community is very welcoming and is praised for it. Firebase's strength lies in its comprehensive ecosystem, Google support, and maturity.

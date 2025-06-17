@@ -1,0 +1,21 @@
+import { Client, Account } from 'node-appwrite';
+import { createCookie } from '@remix-run/node';
+
+export const customSessionCookie = createCookie('custom-session-cookie', {
+  maxAge: 604800,
+});
+
+async function getLoggedInUser(request) {
+  const cookies = request.headers.get('Cookie');
+  const session = await customSessionCookie.parse(cookies):
+  if (!session) return;
+
+  const client = new Client()
+    .setEndpoint(process.env.PUBLIC_APPWRITE_ENDPOINT)
+    .setProject(process.env.PUBLIC_APPWRITE_PROJECT_ID);
+
+  client.setSession(session.value);
+  const account = new Account(client);
+
+  return await account.get();
+}

@@ -238,10 +238,5 @@
             color: hsl(var(--web-color-primary));
             text-align: center;
         }
-
-        button {
-            margin-block-start: 1.5rem;
-            margin-inline: auto;
-        }
     }
 </style>

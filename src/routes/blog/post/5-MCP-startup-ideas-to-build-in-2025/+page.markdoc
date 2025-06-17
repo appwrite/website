@@ -9,6 +9,7 @@ author: veeresh-mulge
 callToAction: true
 unlisted: true
 category: tutorial
+call_to_action: true
 ---
 
 This has to be the best time in history to start a business. With so many advancements in AI tools and agents, it has never been this easy to build and scale your startup. The next breed of billion-dollar companies will be tiny teams backed by AI agents and workflows.
@@ -39,7 +40,7 @@ MCP is just the standardized way of making this happen. Instead of every AI need
 
 MCP was developed by Anthropic and released as an open standard in November 2024, making it a relatively new but rapidly growing solution.
 
-We've covered everything you need to know about MCP in a recent blog, but let's dive into 5 MCP or AI agents startup opportunities you can start building today.
+We've covered everything you need to know about MCP in a recent [blog](https://appwrite.io/blog/post/what-is-mcp), but let's dive into 5 MCP or AI agents startup opportunities you can start building today.
 
 # 1. MCP App Store
 Create an MCP APP Store, where users can browse and deploy various MCP servers. Think of it like an app store, but for MCP servers. Developers could look through different MCP servers, find the ones they need, and deploy them with just a few clicks.
@@ -48,6 +49,8 @@ The idea is to simplify the process of integrating different services with LLMs,
 
 # 2. Incident Tracer
 When your app breaks, whether it's a bug or an outage, an MCP agent traces every log, commit, and Slack message to give you a full incident report in seconds. So, instead of manually digging through logs or trying to piece together what went wrong, the MCP agent automatically collects all the relevant information, creating a detailed report that helps you quickly understand the issue.
+
+{% call_to_action title="Build your startup with Appwrite" description="An all-in-one development platform for you to develop, host, and scale your products." point1="Cloud credits" point2="Priority support" point3="Ship faster" point4="Built-in security and compliance" cta="Apply for the program" url="https://appwrite.io/startups" /%}
 
 # 3. Task Assistant
 An MCP-powered agent that shadows founders, reading emails, meetings, tasks, and documents. It provides daily summaries and suggests the next best actions, acting like your personal Chief of Staff. This allows founders to stay focused on what matters while it keeps track of everything and ensures nothing slips through the cracks.
@@ -63,3 +66,8 @@ AIChangelog tracks everything every AI agent does and why, creating a detailed, 
 MCP changes everything. Before, AI agents were isolated. Now, they connect, collaborate, and scale. This is a huge opportunity to build AI agents and create connected, intelligent solutions that automate tasks, streamline processes, and solve real-world problems.
 
 The Appwrite's Startups Program can help you do that with the tools and support you need to create these AI-driven products. [Apply today](appwrite.io/startups) and start building.
+
+# Further reading
+- [Appwrite MCP documentation](https://appwrite.io/docs/tooling/mcp?doFollow=true)
+- [What exactly is MCP, and why is it trending?](https://appwrite.io/blog/post/what-is-mcp)
+- [Anthropic MCP documentation](https://docs.anthropic.com/en/docs/agents-and-tools/mcp)

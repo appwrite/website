@@ -38,7 +38,7 @@
         <Map theme="light" />
         <Scale
             testimonial={{
-                name: 'Ryan O’Conner',
+                name: 'Ryan O’Connor',
                 title: 'Founder',
                 company: 'K-Collect',
                 image: '/images/testimonials/ryan-oconner-testimonial.png'
@@ -55,7 +55,7 @@
                     description: 'PoP locations'
                 },
                 {
-                    number: 200,
+                    number: 300,
                     suffix: 'K+',
                     description: 'developers'
                 },

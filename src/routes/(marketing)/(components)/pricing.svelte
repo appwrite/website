@@ -16,29 +16,30 @@
         {
             name: 'Free',
             price: '$0',
-            description: 'For personal hobby projects and students.',
+            description: 'A great fit for passion projects and small applications.',
             event: 'home-pricing-cards-free-click'
         },
         {
             name: 'Pro',
             price: '$15',
             tag: 'Popular',
-            description: 'For pro developers and teams that need to scale their products.',
-            subtitle: 'per member/month',
+            description:
+                'For production applications that need powerful functionality and resources to scale.',
+            subtitle: '/month',
             event: 'home-pricing-cards-pro-click'
         },
         {
             name: 'Scale',
             price: '$599',
-            description: 'For teams and products that need more control and support.',
-            subtitle: 'per organization/month',
+            description:
+                'For teams that handle more complex and large projects and need more control and support.',
+            subtitle: '/month',
             event: 'home-pricing-cards-scale-click'
         },
         {
             name: 'Enterprise',
             price: 'Custom',
             description: 'For enterprises that need more power and premium support.',
-            subtitle: 'per organization/month',
             event: 'home-pricing-cards-enterprise-click'
         }
     ];
@@ -66,7 +67,7 @@
             <div class="mt-4 flex flex-col gap-2 lg:flex-row">
                 <Button
                     href={getAppwriteDashboardUrl()}
-                    class="w-full! md:w-fit!"
+                    class="w-full! lg:w-fit!"
                     onclick={() => {
                         trackEvent(`pricing-get-started-click`);
                     }}>Start building for free</Button
@@ -76,7 +77,7 @@
                         trackEvent(`pricing-view-plans-click`);
                     }}
                     href="/pricing"
-                    class="w-full! md:w-fit!"
+                    class="w-full! lg:w-fit!"
                     variant="secondary">View pricing plans</Button
                 >
             </div>
@@ -87,7 +88,7 @@
         >
             {#each plans as { name, price, tag: label, subtitle, description, event }}
                 {@const isEnterprise = name === 'Enterprise'}
-                <div class="flex h-full w-full grow flex-col gap-1 px-5 py-5 md:pb-0">
+                <div class="flex h-full w-full grow flex-col gap-1 px-5 py-5 md:py-0">
                     <div class="flex items-center gap-2.5">
                         <span class="text-description text-secondary font-medium">{name}</span>
                         {#if label}
@@ -98,9 +99,13 @@
                         {/if}
                     </div>
                     <div class="flex flex-1 flex-col">
-                        <span class="text-title font-aeonik-pro text-primary">{price}</span>
+                        <span class="text-title font-aeonik-pro text-primary"
+                            >{price}
 
-                        <span class="text-caption text-secondary h-[22px]">{subtitle}</span>
+                            {#if subtitle}
+                                <span class="text-caption text-secondary -ml-1">{subtitle}</span>
+                            {/if}
+                        </span>
 
                         <p class="text-caption text-secondary mt-4 mb-0 block font-medium">
                             {description}

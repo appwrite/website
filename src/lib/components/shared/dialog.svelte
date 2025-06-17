@@ -2,7 +2,6 @@
     import { fade, scale } from 'svelte/transition';
     import { createDialog, melt } from '@melt-ui/svelte';
     import type { Snippet } from 'svelte';
-    import { browser } from '$app/environment';
 
     type Props = {
         url: string;
@@ -12,7 +11,7 @@
     };
 
     const {
-        elements: { portalled, trigger, content, overlay },
+        elements: { trigger, content, overlay },
         states: { open }
     } = createDialog({
         forceVisible: true,
@@ -27,14 +26,9 @@
         {@render children()}
     </div>
 {:else}
-    <button
-        class="contents cursor-pointer"
-        onclick={() => {
-            if (browser && window) window.open(url, '_blank');
-        }}
-    >
+    <a href={url} target="_blank" rel="noopener noreferrer" class="contents cursor-pointer">
         {@render children()}
-    </button>
+    </a>
 {/if}
 
 {#if $open}
