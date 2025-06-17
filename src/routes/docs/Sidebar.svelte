@@ -49,6 +49,12 @@
                     isParent: true
                 },
                 {
+                    label: 'Storage',
+                    href: '/docs/products/storage',
+                    icon: 'icon-folder',
+                    isParent: true
+                },
+                {
                     label: 'Functions',
                     href: '/docs/products/functions',
                     icon: 'icon-lightning-bolt',
@@ -66,12 +72,6 @@
                     icon: 'icon-globe-alt',
                     isParent: true,
                     new: isNewUntil('19 Jul 2025')
-                },
-                {
-                    label: 'Storage',
-                    href: '/docs/products/storage',
-                    icon: 'icon-folder',
-                    isParent: true
                 },
                 {
                     label: 'Network',
