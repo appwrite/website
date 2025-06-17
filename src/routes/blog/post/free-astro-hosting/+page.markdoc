@@ -33,6 +33,8 @@ Speed is a key factor in both user experience and SEO. Appwrite Sites uses a glo
 
 As websites grow, security risks increase. Appwrite Sites comes with [DDoS protection](https://appwrite.io/docs/products/network/ddos), ensuring your application remains online by detecting and mitigating malicious traffic. Additionally, it includes **custom domain management** with automatic SSL encryption, securing your site with minimal setup.
 
+{% call_to_action title="Host your Astro app for free with Appwrite Sites" description="Benefit from a complete platform to develop, deploy, and build your websites and web apps." point1="Open source and no vendor lock-in"  point2="Built-in security and DDoS protection" point3="Fully managed cloud solution" point4="Global CDN for improved performance" cta="Get started for free" url="https://cloud.appwrite.io/" /%}
+
 ## 5. Preview deployments for streamlined collaboration
 
 Appwrite Sites makes team collaboration easier by generating **deployment preview links** for every update. These previews allow you to test and review changes before going live, providing a seamless workflow for developers and stakeholders to verify updates in a staging environment.
