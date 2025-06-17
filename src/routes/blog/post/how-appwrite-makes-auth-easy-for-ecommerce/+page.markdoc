@@ -58,7 +58,7 @@ You can mix and match depending on your store's needs.
 
 Enhance security by enabling two-factor authentication using TOTP apps like Google Authenticator. No extra backend work required. Learn more about [MFA](/docs/products/auth/mfa)
 
-{% call_to_action title="Customer identity without the hassle" description="Add secure authentication for your users in just a couple of minutes." point1="Built-in security and compliance" point2="Multiple login methods" point3="Custom authentication flows" point4="Multi-factor authentication" cta="Contact sales" url="https://appwrite.io/contact-us/enterprise" /%}
+{% call_to_action title="Customer identity without the hassle" description="Add secure authentication for your users in just a couple of minutes." point1="Built-in security and compliance" point2="Multiple login methods" point3="Custom authentication flows" point4="Multi-factor authentication" cta="Request a demo" url="https://appwrite.io/contact-us/enterprise" /%}
 
 ## 3. **Self-Service account management**
 
@@ -115,7 +115,7 @@ Authentication shouldn't slow down your e-commerce dreams. With Appwrite, you ca
 
 Whether you are starting a new store or growing a marketplace, Appwrite provides tools for secure and easy authentication. You can use them your way.
 
-Ready to get started? [Deploy Appwrite](https://appwrite.io/cloud) in minutes and launch your next big thing.
+Ready to get started? [Deploy Appwrite](https://cloud.appwrite.io/) in minutes and launch your next big thing.
 
 # Further reading
 
