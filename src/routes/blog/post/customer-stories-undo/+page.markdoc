@@ -33,6 +33,8 @@ UNDŌ is a low barrier-to-entry asset management platform allowing businesses to
 
 The product also includes miscellaneous features such as an AI assistant to get any information about the current state, location, or performance of your assets; automated, repeatable tasks to improve workflows; a physical device for your business that can be used as an on-site assistant for any relevant stakeholders, and more.
 
+{% call_to_action title="All-in-one development platform" description="Use built-in backend infrastructure and web hosting, all from a single place." point1="Start for free"  point2="Open source" point3="Support for over 13 SDKs" point4="Managed cloud solution" cta="Start building for free" url="https://cloud.appwrite.io/console/" /%}
+
 # How UNDŌ was built
 
 After discovering the product-market fit, Jonas rapidly started developing the solution. For the app client, he built micro-frontends using Svelte; however, as the solo developer on the product, he chose to use a [Backend-as-a-Service platform](/blog/post/leveraging-baas-tools-to-scale-faster). Jonas was already aware of Firebase, but the lack of self-hosting support prevented him from adopting it. At this point, he came across other options, such as Supabase; however, he picked [Appwrite](http://appwrite.io) for the following reasons:
