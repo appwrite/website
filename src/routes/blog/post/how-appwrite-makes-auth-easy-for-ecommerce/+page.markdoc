@@ -13,7 +13,7 @@ category: product
 
 Building an e-commerce platform today is more than just creating a catalog and checkout flow. Security, user experience, and scalability are critical, and authentication sits right at the heart of it all. Whether you're launching a small boutique or scaling a global marketplace, handling authentication correctly can make or break your app.
 
-At Appwrite, we believe authentication should be powerful but painless. Let's walk through how Appwrite helps you manage user authentication for e-commerce projects, without adding complexity.
+At Appwrite, we believe authentication should be powerful but painless. Let's walk through how Appwrite helps you manage user [authentication](/products/auth) for e-commerce projects, without adding complexity.
 
 # Why Authentication matters in E-Commerce
 
@@ -24,7 +24,7 @@ Authentication is more than a login screen. It's about creating trust.
 - **Compliance**: Meet privacy regulations like GDPR and CCPA with minimal effort.
 - **Personalization**: Give customers a tailored experience once they're logged in.
 
-Bad authentication experiences can lead to lost sales, security breaches, and broken trust. That's why it needs to be first-class from day one.
+Bad authentication experiences can lead to lost sales, security breaches, and broken trust. That's why it needs to be first-class from day one. Here are some [Auth best practices](/post/guide-to-user-authentication) to follow to secure your app and improve user experience.
 
 # Authentication challenges in E-Commerce
 
@@ -41,7 +41,7 @@ And that's before you think about scaling to millions of users.
 
 # How Appwrite simplifies E-Commerce authentication
 
-Appwrite provides a secure, fully-featured authentication system out of the box. Here’s what you get:
+Appwrite provides a secure,[fully-featured authentication system](https://appwrite.io/docs/products/auth) out of the box. Here’s what you get:
 
 ## 1. **Multiple sign-in methods**
 
@@ -56,7 +56,7 @@ You can mix and match depending on your store's needs.
 
 ## 2. **Built-in 2FA**
 
-Enhance security by enabling two-factor authentication using TOTP apps like Google Authenticator. No extra backend work required. Learn more about [MFA](https://appwrite.io/docs/products/auth/mfa)
+Enhance security by enabling two-factor authentication using TOTP apps like Google Authenticator. No extra backend work required. Learn more about [MFA](/docs/products/auth/mfa)
 
 {% call_to_action title="Customer identity without the hassle" description="Add secure authentication for your users in just a couple of minutes." point1="Built-in security and compliance" point2="Multiple login methods" point3="Custom authentication flows" point4="Multi-factor authentication" cta="Contact sales" url="https://appwrite.io/contact-us/enterprise" /%}
 
@@ -72,7 +72,7 @@ Build beautiful UI components on top without reinventing the wheel.
 
 ## 4. **Secure, scalable sessions**
 
-Every session is tightly managed and tokenized, making sure your users stay authenticated safely across devices — whether they shop on mobile or desktop.
+Every session is tightly managed and tokenized, making sure your users stay authenticated safely across devices, whether they shop on mobile or desktop.
 
 ## 5. **Customizable authentication workflows**
 
@@ -119,9 +119,9 @@ Ready to get started? [Deploy Appwrite](https://appwrite.io/cloud) in minutes an
 
 # Further reading
 
-- [Appwrite Authentication docs](https://appwrite.io/docs/products/auth)
-- [Appwrite vs Auth0: Which is better for a B2C app?](https://appwrite.io/blog/post/appwrite-vs-auth0-b2c)
-- [OAuth with Google](https://appwrite.io/integrations/oauth-google)
-- [OAuth with Amazon](https://appwrite.io/integrations/oauth-amazon)
+- [Appwrite Authentication docs](/docs/products/auth)
+- [Appwrite vs Auth0: Which is better for a B2C app?](/appwrite-vs-auth0-b2c)
+- [OAuth with Google](/integrations/oauth-google)
+- [OAuth with Amazon](/integrations/oauth-amazon)
 
 
