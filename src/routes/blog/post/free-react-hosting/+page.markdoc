@@ -33,6 +33,8 @@ Application speed significantly impacts user experience and SEO. Appwrite Sites 
 
 Security is a crucial consideration for production applications. Appwrite Sites includes [DDoS protection](https://appwrite.io/docs/products/network/ddos), preventing attacks that could compromise your app's availability. Additionally, it offers **custom domain support with automatic SSL encryption**, ensuring secure communication with users.
 
+{% call_to_action title="Host your React app for free with Appwrite Sites" description="Benefit from a complete platform to develop, deploy, and build your websites and web apps." point1="Open source and no vendor lock-in"  point2="Built-in security and DDoS protection" point3="Fully managed cloud solution" point4="Global CDN for improved performance" cta="Get started for free" url="https://cloud.appwrite.io/" /%}
+
 ## 5. Preview deployments for seamless collaboration
 
 Every deployment on Appwrite Sites generates a **preview link**, making it easy to share, review, and test changes before pushing them to production. This workflow simplifies collaboration and enhances the quality assurance process.
