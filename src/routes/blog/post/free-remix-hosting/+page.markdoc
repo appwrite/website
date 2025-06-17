@@ -38,6 +38,8 @@ Speed plays a crucial role in user engagement and SEO rankings. Appwrite Sites u
 
 Security is a priority for production applications. Appwrite Sites includes [DDoS protection](https://appwrite.io/docs/products/network/ddos), helping to mitigate malicious traffic and prevent downtime. Additionally, **custom domain management with automatic SSL encryption** ensures secure communication between users and your application.
 
+{% call_to_action title="Host your Remix app for free with Appwrite Sites" description="Benefit from a complete platform to develop, deploy, and build your websites and web apps." point1="Open source and no vendor lock-in"  point2="Built-in security and DDoS protection" point3="Fully managed cloud solution" point4="Global CDN for improved performance" cta="Get started for free" url="https://cloud.appwrite.io/" /%}
+
 ## 5. Preview deployments for enhanced collaboration
 
 Every update deployed to Appwrite Sites generates a **preview link**, allowing developers and teams to review and test changes in a staging environment before pushing them to production. This simplifies the workflow and improves quality assurance.
