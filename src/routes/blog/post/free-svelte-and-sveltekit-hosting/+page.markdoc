@@ -13,7 +13,7 @@ unlisted: true
 
 Svelte and SvelteKit have gained traction among developers due to their efficient compilation, minimal runtime overhead, and built-in support for server-side rendering (SSR) and static site generation (SSG). While deploying Svelte applications is straightforward, choosing a hosting solution that balances affordability, scalability, and developer-friendly features can be a challenge.
 
-[Appwrite Sites](https://appwrite.io/products/sites) provides a streamlined hosting experience tailored for modern web applications, including Svelte and SvelteKit. It offers features designed to enhance performance, security, and team collaboration. This article explores how Appwrite Sites simplifies deployment, integrates with Svelte's capabilities, and compares to other hosting options.
+[Appwrite Sites](/products/sites) provides a streamlined hosting experience tailored for modern web applications, including Svelte and SvelteKit. It offers features designed to enhance performance, security, and team collaboration. This article explores how Appwrite Sites simplifies deployment, integrates with Svelte's capabilities, and compares to other hosting options.
 
 # Why Appwrite Sites is ideal for Svelte and SvelteKit
 
@@ -27,11 +27,11 @@ SvelteKit supports SSR and SSG, making it versatile for various use cases. Appwr
 
 ## 3. Speed-enhancing global CDN
 
-Fast load times are crucial for user experience and SEO. Appwrite Sites leverages a globally distributed [Content Delivery Network (CDN)](https://appwrite.io/docs/products/network/cdn) to cache and serve static assets efficiently, reducing latency and ensuring optimal performance no matter where your users are located.
+Fast load times are crucial for user experience and SEO. Appwrite Sites leverages a globally distributed [Content Delivery Network (CDN)](/docs/products/network/cdn) to cache and serve static assets efficiently, reducing latency and ensuring optimal performance no matter where your users are located.
 
 ## 4. Built-in security and DDoS protection
 
-Security is paramount for modern web applications. Appwrite Sites includes [DDoS protection](https://appwrite.io/docs/products/network/ddos), safeguarding applications against attacks by monitoring and mitigating malicious traffic. It also offers **custom domain management** with built-in SSL encryption, ensuring secure connections without additional configuration.
+Security is paramount for modern web applications. Appwrite Sites includes [DDoS protection](/docs/products/network/ddos), safeguarding applications against attacks by monitoring and mitigating malicious traffic. It also offers **custom domain management** with built-in SSL encryption, ensuring secure connections without additional configuration.
 
 {% call_to_action title="Host your Svelte app for free with Appwrite Sites" description="Benefit from a complete platform to develop, deploy, and build your websites and web apps." point1="Open source and no vendor lock-in"  point2="Built-in security and DDoS protection" point3="Fully managed cloud solution" point4="Global CDN for improved performance" cta="Get started for free" url="https://cloud.appwrite.io/" /%}
 
@@ -43,7 +43,7 @@ Every update to your site generates a **deployment preview link**, making it eas
 
 Deploying your Svelte or SvelteKit application with Appwrite Sites is simple and flexible:
 
-- [Git-based deployments](https://appwrite.io/docs/products/sites/deploy-from-git): Automatically deploy updates when pushing changes to your main branch.
+- [Git-based deployments](/docs/products/sites/deploy-from-git): Automatically deploy updates when pushing changes to your main branch.
 - **CLI-based deployment**: Deploy manually with a single command:
     
     ```bash
@@ -78,4 +78,4 @@ Many Svelte applications require authentication, databases, and cloud functions.
 
 Unlike other platforms that depend on third-party integrations for authentication, databases, and serverless functions, Appwrite Sites provides these services natively, reducing complexity and ensuring tighter integration.
 
-For developers looking for a streamlined hosting solution that minimizes dependencies while delivering excellent performance, Appwrite Sites is a compelling choice. Explore more with our [SvelteKit Quick Start Guide](https://appwrite.io/docs/quick-starts/sveltekit) and start deploying your Svelte applications by visiting [Appwrite Sites](https://appwrite.io/sites).
+For developers looking for a streamlined hosting solution that minimizes dependencies while delivering excellent performance, Appwrite Sites is a compelling choice. Explore more with our [SvelteKit Quick Start Guide](/docs/quick-starts/sveltekit) and start deploying your Svelte applications by visiting [Appwrite Sites](/products/sites).
