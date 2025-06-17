@@ -29,7 +29,7 @@ Around this simple philosophy, the LangX team has developed various features to 
 - **Profile insights** to let users get a better understanding of their learning habits and progress
 - **Badges** that are given for specific achievements and can be featured on the user’s profile
 
-{% call_to_action title="All-in-one development platform" description="Use built-in backend infrastructure and web hosting, all from a single place." point1="Start for free"  point2="Open source" point3="Support for over 13 SDKs" point4="Managed cloud solution" cta="Start building for free" url="https://cloud.appwrite.io/console/" /%}
+{% call_to_action title="All-in-one development platform" description="Use built-in backend infrastructure and web hosting, all from a single place." point1="Start for free"  point2="Open source" point3="Support for over 13 SDKs" point4="Managed cloud solution" cta="Start building for free" url="https://cloud.appwrite.io/" /%}
 
 # Building the solution
 
