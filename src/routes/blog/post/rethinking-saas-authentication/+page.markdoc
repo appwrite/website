@@ -29,7 +29,7 @@ Security measures like MFA, device verification, and session management often ad
 
 Technologies like **Single Sign-On (SSO)** help bridge this gap—offering both enhanced [security](/docs/products/auth/security) and smoother user experiences.
 
-Take a look at our [developer’s guide to user authentication](https://appwrite.io/blog/post/guide-to-user-authentication) for more in-depth insights.
+Take a look at our [developer’s guide to user authentication](/blog/post/guide-to-user-authentication) for more in-depth insights.
 
 ## Managing multi-tenant complexity
 
