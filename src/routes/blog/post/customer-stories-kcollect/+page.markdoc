@@ -34,7 +34,7 @@ Since K-Collect was building a proprietary server-side solution, it had to maint
 
 To decrease these costs and remove the burden of building an efficient and secure backend, K-Collect started exploring Backend-as-a-Service (BaaS) platforms to implement a solution. They tried various options, including established BaaS platforms like Firebase; however, expensive pricing structures and the lack of transparency in the underlying code prevented them from implementing the same.
 
-{% call_to_action title="All-in-one development platform" description="Use built-in backend infrastructure and web hosting, all from a single place." point1="Start for free"  point2="Open source" point3="Support for over 13 SDKs" point4="Managed cloud solution" cta="Start building for free" url="https://cloud.appwrite.io/console/" /%}
+{% call_to_action title="All-in-one development platform" description="Use built-in backend infrastructure and web hosting, all from a single place." point1="Start for free"  point2="Open source" point3="Support for over 13 SDKs" point4="Managed cloud solution" cta="Start building for free" url="https://cloud.appwrite.io/" /%}
 
 # The power of an entire team
 
