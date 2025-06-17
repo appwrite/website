@@ -41,7 +41,7 @@ And that's before you think about scaling to millions of users.
 
 # How Appwrite simplifies E-Commerce authentication
 
-Appwrite provides a secure,[fully-featured authentication system](https://appwrite.io/docs/products/auth) out of the box. Here’s what you get:
+Appwrite provides a secure,[fully-featured authentication system](/docs/products/auth) out of the box. Here’s what you get:
 
 ## 1. **Multiple sign-in methods**
 
