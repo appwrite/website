@@ -33,6 +33,9 @@ Application speed significantly impacts user experience and search engine rankin
 
 Security is a critical concern for web applications, especially as they scale. Appwrite Sites includes built-in [DDoS protection](https://appwrite.io/docs/products/network/ddos), safeguarding applications from denial-of-service attacks by automatically detecting and mitigating malicious traffic. This ensures uptime and stability without requiring additional security configurations from developers. Additionally, Appwrite Sites integrates **custom domain management**, allowing users to host applications on their own domains with SSL encryption included.
 
+{% call_to_action title="Host your Next.js app for free with Appwrite Sites" description="Benefit from a complete platform to develop, deploy, and build your websites and web apps." point1="Open source and no vendor lock-in"  point2="Built-in security and DDoS protection" point3="Fully managed cloud solution" point4="Global CDN for improved performance" cta="Get started for free" url="https://cloud.appwrite.io/" /%}
+
+
 ## 5. Deployment previews for enhanced collaboration
 
 Appwrite Sites integrates into your development workflow by generating **deployment preview links** for every update. These previews allow you to share changes with your team before pushing to production, improving collaboration and ensuring quality control throughout the development process. This makes it easier to review and test features in staging environments before releasing them to users.
