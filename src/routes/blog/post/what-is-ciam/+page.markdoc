@@ -25,9 +25,9 @@ A comprehensive CIAM solution includes:
 - **Profile management:** Customers can update their profile information, preferences, and privacy settings easily.
 - **Consent and privacy management:** CIAM ensures that businesses are compliant with regulations like GDPR and CCPA by capturing and managing customer consents.
 - **Scalability:** Designed to handle millions of users simultaneously without compromising performance.
-- **Security measures:** Features like passwordless authentication, biometric verification, and threat detection protect both customer data and business operations.
+- **Security measures:** Features like passwordless [authentication](/products/auth), biometric verification, and threat detection protect both customer data and business operations.
 
-{% call_to_action title="Customer identity without the hassle" description="Add secure authentication for your users in just a couple of minutes." point1="Email/Password, SMS, OAuth, and more" point2="Server side rendering" point3="Session control and management" point4="Built-in security and compliance" cta="Contact sales" url="https://appwrite.io/contact-us/enterprise" /%}
+{% call_to_action title="Customer identity without the hassle" description="Add secure authentication for your users in just a couple of minutes." point1="Email/Password, SMS, OAuth, and more" point2="Server side rendering" point3="Session control and management" point4="Built-in security and compliance" cta="Request a demo" url="https://appwrite.io/contact-us/enterprise" /%}
 
 # Why CIAM matters
 
