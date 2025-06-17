@@ -33,6 +33,8 @@ Performance plays a crucial role in user experience and SEO rankings. Appwrite S
 
 Security is critical when hosting production applications. Appwrite Sites provides [DDoS protection](https://appwrite.io/docs/products/network/ddos), preventing malicious traffic from affecting your app's availability. Additionally, it offers **custom domain support with automatic SSL encryption**, ensuring secure communication between users and your application.
 
+{% call_to_action title="Host your Flutter app for free with Appwrite Sites" description="Benefit from a complete platform to develop, deploy, and build your websites and web apps." point1="Open source and no vendor lock-in"  point2="Built-in security and DDoS protection" point3="Fully managed cloud solution" point4="Global CDN for improved performance" cta="Get started for free" url="https://cloud.appwrite.io/" /%}
+
 ## 5. Preview deployments for better collaboration
 
 Every deployment on Appwrite Sites generates a **preview link**, enabling teams to review changes before publishing them to production. This feature streamlines the development process by allowing testing and validation in a staging environment before going live.
