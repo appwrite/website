@@ -13,7 +13,7 @@ unlisted: true
 
 Flutter for Web allows developers to build rich, interactive web applications using the same Dart codebase as their mobile apps. However, finding a hosting platform that supports Flutter's web-optimized build while providing a cost-effective, scalable, and developer-friendly solution can be a challenge.
 
-[Appwrite Sites](https://appwrite.io/products/sites) offers an easy-to-use hosting solution tailored for modern web applications, including Flutter Web, with built-in performance optimizations, security features, and workflow integrations. This article explores how Appwrite Sites simplifies Flutter Web deployment, enhances performance, and compares to other hosting solutions.
+[Appwrite Sites](/products/sites) offers an easy-to-use hosting solution tailored for modern web applications, including Flutter Web, with built-in performance optimizations, security features, and workflow integrations. This article explores how Appwrite Sites simplifies Flutter Web deployment, enhances performance, and compares to other hosting solutions.
 
 # Why Appwrite Sites is a great choice for Flutter Web developers
 
@@ -27,11 +27,11 @@ Flutter Web applications rely on a unique rendering model that outputs HTML, CSS
 
 ## 3. Global CDN for improved performance
 
-Performance plays a crucial role in user experience and SEO rankings. Appwrite Sites leverages a globally distributed [Content Delivery Network (CDN)](https://appwrite.io/docs/products/network/cdn) to cache and serve your application's static assets efficiently, reducing latency and improving load times across different regions.
+Performance plays a crucial role in user experience and SEO rankings. Appwrite Sites leverages a globally distributed [Content Delivery Network (CDN)](/docs/products/network/cdn) to cache and serve your application's static assets efficiently, reducing latency and improving load times across different regions.
 
 ## 4. Built-in security and DDoS protection
 
-Security is critical when hosting production applications. Appwrite Sites provides [DDoS protection](https://appwrite.io/docs/products/network/ddos), preventing malicious traffic from affecting your app's availability. Additionally, it offers **custom domain support with automatic SSL encryption**, ensuring secure communication between users and your application.
+Security is critical when hosting production applications. Appwrite Sites provides [DDoS protection](/docs/products/network/ddos), preventing malicious traffic from affecting your app's availability. Additionally, it offers **custom domain support with automatic SSL encryption**, ensuring secure communication between users and your application.
 
 {% call_to_action title="Host your Flutter app for free with Appwrite Sites" description="Benefit from a complete platform to develop, deploy, and build your websites and web apps." point1="Open source and no vendor lock-in"  point2="Built-in security and DDoS protection" point3="Fully managed cloud solution" point4="Global CDN for improved performance" cta="Get started for free" url="https://cloud.appwrite.io/" /%}
 
@@ -43,7 +43,7 @@ Every deployment on Appwrite Sites generates a **preview link**, enabling teams 
 
 Appwrite Sites provides flexible deployment workflows for Flutter Web applications:
 
-- [Git-based deployments](https://appwrite.io/docs/products/sites/deploy-from-git): Connect your repository to automatically deploy updates with every push.
+- [Git-based deployments](/docs/products/sites/deploy-from-git): Connect your repository to automatically deploy updates with every push.
 - **CLI-based deployment**: Deploy manually with a single command:
     
     ```bash
@@ -77,4 +77,4 @@ Many Flutter applications require backend features like authentication, database
 
 Unlike Firebase and Netlify, Appwrite Sites provides an all-in-one solution with backend services, reducing the need for multiple integrations. It is designed to work seamlessly with Flutter Web applications, offering optimized performance and security while maintaining a simple deployment process.
 
-For developers looking for an efficient, high-performance hosting solution tailored for Flutter Web, Appwrite Sites is a great option. Explore more with our [Flutter Quick Start Guide](https://appwrite.io/docs/quick-starts/flutter) and start deploying your Flutter Web applications by visiting [Appwrite Sites](https://appwrite.io/sites).
+For developers looking for an efficient, high-performance hosting solution tailored for Flutter Web, Appwrite Sites is a great option. Explore more with our [Flutter Quick Start Guide](/docs/quick-starts/flutter) and start deploying your Flutter Web applications by visiting [Appwrite Sites](/products/sites).
