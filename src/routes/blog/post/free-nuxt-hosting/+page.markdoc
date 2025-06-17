@@ -38,6 +38,8 @@ Performance plays a key role in user experience and SEO. Appwrite Sites uses a g
 
 Security is a major concern when deploying web applications. Appwrite Sites includes [DDoS protection](https://appwrite.io/docs/products/network/ddos), safeguarding your Nuxt app from malicious traffic and potential downtime. Additionally, it offers **custom domain management with automatic SSL encryption**, ensuring secure communication between users and your application.
 
+{% call_to_action title="Host your Nuxt app for free with Appwrite Sites" description="Benefit from a complete platform to develop, deploy, and build your websites and web apps." point1="Open source and no vendor lock-in"  point2="Built-in security and DDoS protection" point3="Fully managed cloud solution" point4="Global CDN for improved performance" cta="Get started for free" url="https://cloud.appwrite.io/" /%}
+
 ## 5. Preview deployments for improved collaboration
 
 Appwrite Sites generates **deployment preview links** for every update, enabling teams to review and test changes in a staging environment before pushing them to production. This workflow enhances collaboration, making it easier to validate updates before they go live.
