@@ -33,6 +33,8 @@ Speed is essential for modern applications, impacting both user experience and S
 
 Security is a top priority when deploying web applications. Appwrite Sites includes [DDoS protection](https://appwrite.io/docs/products/network/ddos), mitigating malicious traffic to keep your site online. Additionally, it offers **custom domain support with automatic SSL encryption**, ensuring secure connections and user data protection without requiring extra configuration.
 
+{% call_to_action title="Host your Angular app for free with Appwrite Sites" description="Benefit from a complete platform to develop, deploy, and build your websites and web apps." point1="Open source and no vendor lock-in"  point2="Built-in security and DDoS protection" point3="Fully managed cloud solution" point4="Global CDN for improved performance" cta="Get started for free" url="https://cloud.appwrite.io/" /%}
+
 ## 5. Preview deployments for seamless collaboration
 
 Every update pushed to Appwrite Sites generates a **deployment preview link**, allowing teams to review changes in a staging environment before releasing them to production. This feature simplifies collaboration and helps ensure quality assurance before updates go live.
