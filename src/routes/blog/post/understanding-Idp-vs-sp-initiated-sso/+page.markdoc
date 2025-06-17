@@ -100,7 +100,7 @@ Many organizations implement both IdP- and SP-initiated SSO to serve different u
 - **Hybrid cloud setups**: Supporting a mix of legacy and modern applications.
 - **Adaptive security strategies**: Choosing the flow based on device, location, or user profile. 
 
-Choosing the right SSO initiation method,or blending both, can dramatically impact [security](https://appwrite.io/docs/products/auth/security), user satisfaction, and scalability. Evaluate your platform's user behavior, security posture, and integration needs to pick the best approach for your environment.
+Choosing the right SSO initiation method,or blending both, can dramatically impact [security](/docs/products/auth/security), user satisfaction, and scalability. Evaluate your platform's user behavior, security posture, and integration needs to pick the best approach for your environment.
 
 # Futher reading
 
