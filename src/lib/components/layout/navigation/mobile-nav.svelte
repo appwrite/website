@@ -33,6 +33,11 @@
             name: 'Realtime',
             href: '/docs/apis/realtime',
             description: 'Subscribe and react to any event.'
+        },
+        {
+            name: 'Sites',
+            href: '/products',
+            description: 'The open-source Vercel alternative.'
         }
     ];
 
