@@ -43,7 +43,7 @@ In the initial stages, the team explored many options for their backend. The fir
 
 Marius came across Appwrite while looking for a more stable Backend-as-a-Service solution. He also had a chance to compare Appwrite with other alternatives, such as Supabase. However, he felt more inclined to pick Appwrite over Supabase due to its cleaner and simpler user interface and experience, where, in his words, the passion and love for the product felt more apparent.
 
-{% call_to_action title="All-in-one development platform" description="Use built-in backend infrastructure and web hosting, all from a single place." point1="Start for free"  point2="Open source" point3="Support for over 13 SDKs" point4="Managed cloud solution" cta="Start building for free" url="https://cloud.appwrite.io/console/" /%}
+{% call_to_action title="All-in-one development platform" description="Use built-in backend infrastructure and web hosting, all from a single place." point1="Start for free"  point2="Open source" point3="Support for over 13 SDKs" point4="Managed cloud solution" cta="Start building for free" url="https://cloud.appwrite.io/" /%}
 
 ## How Appwrite fit in their solution
 
