@@ -17,7 +17,7 @@ This guide breaks down the differences between **Identity Provider (IdP)-initiat
 
 # What is IdP-Initiated SSO?
 
-First, a quick refresher: an **Identity Provider (IdP)** manages user identities, validating who a user is before granting access to different applications. Here’s a quick [overview](https://appwrite.io/docs/products/auth/identities) of how Appwrite handles identity and access.
+First, a quick refresher: an **Identity Provider (IdP)** manages user identities, validating who a user is before granting access to different applications. Here’s a quick [overview](/docs/products/auth/identities) of how Appwrite handles identity and access.
 
 In an IdP-initiated SSO flow, the user’s journey starts at the IdP itself:
 
