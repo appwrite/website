@@ -24,7 +24,7 @@ Authentication is more than a login screen. It's about creating trust.
 - **Compliance**: Meet privacy regulations like GDPR and CCPA with minimal effort.
 - **Personalization**: Give customers a tailored experience once they're logged in.
 
-Bad authentication experiences can lead to lost sales, security breaches, and broken trust. That's why it needs to be first-class from day one. Here are some [Auth best practices](/post/guide-to-user-authentication) to follow to secure your app and improve user experience.
+Bad authentication experiences can lead to lost sales, security breaches, and broken trust. That's why it needs to be first-class from day one. Here are some [auth best practices](/post/guide-to-user-authentication) to follow to secure your app and improve user experience.
 
 # Authentication challenges in E-Commerce
 
