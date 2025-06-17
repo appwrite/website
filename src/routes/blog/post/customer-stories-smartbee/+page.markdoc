@@ -28,7 +28,7 @@ For the initial iteration of their MVP, Smartbee started building an online plat
 
 To simplify and accelerate their development process, Sergio started looking for open-source Backend-as-a-Service platforms. He was aware of Firebase in the past; however, Smartbee needed a system that could also be self-hosted in the vicinity of the coal mines. He also came across Supabase; however, their high complexity to self-host turned him away.
 
-{% call_to_action title="All-in-one development platform" description="Use built-in backend infrastructure and web hosting, all from a single place." point1="Start for free"  point2="Open source" point3="Support for over 13 SDKs" point4="Managed cloud solution" cta="Start building for free" url="https://cloud.appwrite.io/console/" /%}
+{% call_to_action title="All-in-one development platform" description="Use built-in backend infrastructure and web hosting, all from a single place." point1="Start for free"  point2="Open source" point3="Support for over 13 SDKs" point4="Managed cloud solution" cta="Start building for free" url="https://cloud.appwrite.io/" /%}
 
 # Architecting their current solution 
 
