@@ -33,6 +33,8 @@ Fast load times are crucial for user experience and SEO. Appwrite Sites leverage
 
 Security is paramount for modern web applications. Appwrite Sites includes [DDoS protection](https://appwrite.io/docs/products/network/ddos), safeguarding applications against attacks by monitoring and mitigating malicious traffic. It also offers **custom domain management** with built-in SSL encryption, ensuring secure connections without additional configuration.
 
+{% call_to_action title="Host your Svelte app for free with Appwrite Sites" description="Benefit from a complete platform to develop, deploy, and build your websites and web apps." point1="Open source and no vendor lock-in"  point2="Built-in security and DDoS protection" point3="Fully managed cloud solution" point4="Global CDN for improved performance" cta="Get started for free" url="https://cloud.appwrite.io/" /%}
+
 ## 5. Preview deployments for smoother collaboration
 
 Every update to your site generates a **deployment preview link**, making it easy to share and review changes before going live. This feature streamlines teamwork, allowing developers and stakeholders to validate updates in a staging environment before final deployment.
