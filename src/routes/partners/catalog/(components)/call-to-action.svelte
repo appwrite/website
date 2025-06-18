@@ -17,8 +17,8 @@
                 Maximize your earnings by providing clients with priority access to Appwrite’s
                 cutting-edge solutions at competitive rates.
             </p>
-            <a href="/contact-us" class="web-button mt-4">
-                <span class="text">Get Started</span>
+            <a href="/partners#become-a-partner" class="web-button mt-4">
+                <span class="text">Become a Partner</span>
             </a>
         </section>
     </div>
