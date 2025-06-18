@@ -8,7 +8,8 @@ partnerLevel: Silver
 isNew: true
 cover: /images/partners/covers/fraqtory.png
 category: agency
-website: 
+website: https://fraqtory.com/
+email: https://fraqtory.com/contact
 product: 
     avatar: '/images/partners/avatars/fraqtory.png'
     vendor: Fraqtory
