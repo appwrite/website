@@ -50,125 +50,79 @@ Deploy Appwrite using Google Cloud Run for a serverless, fully managed experienc
 
 ## Enable required APIs {% #enable-apis %}
 
-```bash
-# Enable necessary Google Cloud APIs
-gcloud services enable run.googleapis.com
-gcloud services enable cloudbuild.googleapis.com
-gcloud services enable artifactregistry.googleapis.com
-gcloud services enable compute.googleapis.com
+Before deployment, enable these Google Cloud APIs in your project:
+- Cloud Run API
+- Cloud Build API
+- Artifact Registry API
+- Compute Engine API
+- Cloud SQL API (if using managed database)
 
-# Set your project ID
-export PROJECT_ID=your-project-id
-gcloud config set project $PROJECT_ID
-```
+You can enable these through the [Google Cloud Console](https://console.cloud.google.com/apis) or using the gcloud CLI. Refer to the [Google Cloud APIs documentation](https://cloud.google.com/apis/docs/getting-started) for current procedures.
 
 ## Prepare container image {% #prepare-image %}
 
-**Step 1: Create Artifact Registry repository**
+**Step 1: Set up container registry**
 
-```bash
-# Create repository for Docker images
-gcloud artifacts repositories create appwrite-repo \
-    --repository-format=docker \
-    --location=us-central1 \
-    --description="Appwrite container repository"
+1. **Create an Artifact Registry repository** for storing your Docker images
+   - Choose Docker format
+   - Select your preferred region (e.g., us-central1)
+   - Configure Docker authentication for the registry
 
-# Configure Docker authentication
-gcloud auth configure-docker us-central1-docker.pkg.dev
-```
+2. **Prepare the Appwrite image**
+   - Pull the official Appwrite image (version 1.7.4 recommended)
+   - Tag it for your Artifact Registry
+   - Push the image to your registry
 
-**Step 2: Build and push Appwrite image**
-
-```bash
-# Pull official Appwrite image
-docker pull appwrite/appwrite:1.7.4
-
-# Tag for Artifact Registry
-docker tag appwrite/appwrite:1.7.4 \
-    us-central1-docker.pkg.dev/$PROJECT_ID/appwrite-repo/appwrite:1.7.4
-
-# Push to registry
-docker push us-central1-docker.pkg.dev/$PROJECT_ID/appwrite-repo/appwrite:1.7.4
-```
+For detailed commands and current syntax, refer to the [Artifact Registry documentation](https://cloud.google.com/artifact-registry/docs).
 
 ## Deploy to Cloud Run {% #deploy-cloud-run %}
 
-**Step 1: Create Cloud SQL instance for database**
+**Step 1: Set up managed database**
 
-```bash
-# Create Cloud SQL instance
-gcloud sql instances create appwrite-db \
-    --database-version=MYSQL_8_0 \
-    --tier=db-f1-micro \
-    --region=us-central1 \
-    --root-password=your-secure-password
+1. **Create a Cloud SQL instance**
+   - Choose MySQL 8.0 as the database version
+   - Select an appropriate machine type for your workload
+   - Configure your preferred region
+   - Set up secure authentication (avoid hardcoded passwords)
 
-# Create database and user
-gcloud sql databases create appwrite --instance=appwrite-db
-gcloud sql users create appwrite \
-    --instance=appwrite-db \
-    --password=your-appwrite-password
-```
+2. **Configure the database**
+   - Create an `appwrite` database
+   - Create a dedicated user with appropriate permissions
+   - Note the connection details for later configuration
 
-**Step 2: Deploy Appwrite service**
+**Step 2: Deploy Appwrite to Cloud Run**
 
-```bash
-# Deploy to Cloud Run
-gcloud run deploy appwrite \
-    --image=us-central1-docker.pkg.dev/$PROJECT_ID/appwrite-repo/appwrite:1.7.4 \
-    --platform=managed \
-    --region=us-central1 \
-    --allow-unauthenticated \
-    --memory=2Gi \
-    --cpu=2 \
-    --port=80 \
-    --set-env-vars=_APP_ENV=production \
-    --set-env-vars=_APP_WORKER_PER_CORE=6 \
-    --set-env-vars=_APP_LOCALE=en \
-    --set-env-vars=_APP_CONSOLE_WHITELIST_ROOT=enabled \
-    --set-env-vars=_APP_OPTIONS_ABUSE=enabled \
-    --set-env-vars=_APP_OPTIONS_FORCE_HTTPS=enabled \
-    --set-env-vars=_APP_OPENSSL_KEY_V1=your-encryption-key \
-    --set-env-vars=_APP_DOMAIN=your-service-url \
-    --set-env-vars=_APP_DOMAIN_TARGET=your-service-url
-```
+1. **Deploy the service** with these recommended specifications:
+   - **Memory**: 2Gi minimum
+   - **CPU**: 2 cores recommended
+   - **Port**: 80
+   - **Scaling**: Configure based on your expected traffic
 
-**Step 3: Configure database connection**
+2. **Configure environment variables** for production:
+   - `_APP_ENV=production`
+   - Database connection settings
+   - Security and feature flags as needed
+   - Use Secret Manager for sensitive values
 
-```bash
-# Get connection name
-gcloud sql instances describe appwrite-db --format="value(connectionName)"
+3. **Set up database connectivity**
+   - Enable Cloud SQL connections for your Cloud Run service
+   - Configure the connection using Cloud SQL Auth Proxy
+   - Test the database connection
 
-# Update Cloud Run service with database connection
-gcloud run services update appwrite \
-    --region=us-central1 \
-    --add-cloudsql-instances=$PROJECT_ID:us-central1:appwrite-db \
-    --set-env-vars=_APP_DB_HOST=/cloudsql/$PROJECT_ID:us-central1:appwrite-db \
-    --set-env-vars=_APP_DB_PORT=3306 \
-    --set-env-vars=_APP_DB_SCHEMA=appwrite \
-    --set-env-vars=_APP_DB_USER=appwrite \
-    --set-env-vars=_APP_DB_PASS=your-appwrite-password
-```
+For current deployment commands and options, see the [Cloud Run documentation](https://cloud.google.com/run/docs).
 
 ## Configure custom domain {% #cloud-run-domain %}
 
 **Step 1: Map custom domain**
 
-1. Go to [Cloud Run Console](https://console.cloud.google.com/run)
-2. Select your `appwrite` service
-3. Click **Manage Custom Domains**
-4. Click **Add Mapping**
-5. Enter your domain and follow verification steps
+1. Navigate to the [Cloud Run Console](https://console.cloud.google.com/run)
+2. Select your Appwrite service
+3. Configure custom domain mapping
+4. Complete domain verification process
 
 **Step 2: Update DNS records**
 
-Add the following DNS records at your domain provider:
-
-```
-Type: CNAME
-Name: your-subdomain (or @)
-Value: ghs.googlehosted.com.
-```
+Configure your DNS provider with the appropriate CNAME records as specified in the Google Cloud Console. SSL certificates are automatically managed by Google Cloud.
 
 # Compute Engine deployment {% #compute-engine %}
 
@@ -178,113 +132,57 @@ Deploy Appwrite on Google Compute Engine VMs for maximum control and customizati
 
 **Step 1: Launch instance**
 
-```bash
-# Create VM instance
-gcloud compute instances create appwrite-vm \
-    --zone=us-central1-a \
-    --machine-type=e2-standard-2 \
-    --network-interface=network-tier=PREMIUM,subnet=default \
-    --maintenance-policy=MIGRATE \
-    --provisioning-model=STANDARD \
-    --scopes=https://www.googleapis.com/auth/cloud-platform \
-    --image-family=ubuntu-2204-lts \
-    --image-project=ubuntu-os-cloud \
-    --boot-disk-size=20GB \
-    --boot-disk-type=pd-standard \
-    --boot-disk-device-name=appwrite-vm \
-    --metadata=startup-script='#!/bin/bash
-        apt-get update
-        apt-get install -y docker.io docker-compose
-        systemctl start docker
-        systemctl enable docker
-        usermod -aG docker $USER'
-```
+1. **Create a VM instance** with these specifications:
+   - **Machine Type**: e2-standard-2 or higher recommended
+   - **Operating System**: Ubuntu 22.04 LTS
+   - **Boot Disk**: 20GB minimum, SSD recommended
+   - **Zone**: Choose based on your target audience location
+
+2. **Configure startup script** to:
+   - Update the system packages
+   - Install Docker and Docker Compose
+   - Configure Docker service and user permissions
 
 **Step 2: Configure firewall rules**
 
-```bash
-# Create firewall rules
-gcloud compute firewall-rules create allow-appwrite-http \
-    --allow tcp:80 \
-    --source-ranges 0.0.0.0/0 \
-    --description "Allow HTTP traffic to Appwrite"
+Create firewall rules to allow traffic on these ports:
+- **HTTP (80)**: Web traffic
+- **HTTPS (443)**: Secure web traffic
+- **Custom (8080)**: Appwrite API access
 
-gcloud compute firewall-rules create allow-appwrite-https \
-    --allow tcp:443 \
-    --source-ranges 0.0.0.0/0 \
-    --description "Allow HTTPS traffic to Appwrite"
-
-gcloud compute firewall-rules create allow-appwrite-api \
-    --allow tcp:8080 \
-    --source-ranges 0.0.0.0/0 \
-    --description "Allow API traffic to Appwrite"
-```
+Refer to the [Compute Engine documentation](https://cloud.google.com/compute/docs) for current instance creation and firewall configuration procedures.
 
 ## Install Appwrite on VM {% #install-vm %}
 
-**Step 1: Connect to VM**
+**Step 1: Connect to your instance**
 
-```bash
-# SSH into your instance
-gcloud compute ssh appwrite-vm --zone=us-central1-a
-```
+Use SSH to connect to your VM instance through the Google Cloud Console or gcloud CLI.
 
 **Step 2: Install and configure Appwrite**
 
-```bash
-# Create Appwrite directory
-sudo mkdir -p /opt/appwrite && cd /opt/appwrite
+1. **Create a directory** for your Appwrite installation
+2. **Run the Appwrite installer** using the official Docker image:
+   - Use the `appwrite/appwrite:1.7.4` image with the install entrypoint
+   - Mount the Docker socket and installation directory
+   - Follow the interactive configuration prompts
 
-# Install Appwrite
-sudo docker run -it --rm \
-    --volume /var/run/docker.sock:/var/run/docker.sock \
-    --volume "$(pwd)"/appwrite:/usr/src/code/appwrite:rw \
-    --entrypoint="install" \
-    appwrite/appwrite:1.7.4
-```
+3. **Configure the installation** with:
+   - **HTTP Port**: 80
+   - **HTTPS Port**: 443
+   - **Hostname**: Your VM's external IP or custom domain
+   - **Security Settings**: Generate secure keys and configure appropriately
 
-Follow the installation prompts:
-- **HTTP Port**: 80
-- **HTTPS Port**: 443
-- **Hostname**: Your VM's external IP or custom domain
-- **Secret Key**: Generate a secure random key
+**Step 3: Set up SSL certificates**
 
-**Step 3: Configure SSL with Let's Encrypt**
+1. **Install Certbot** for Let's Encrypt certificates
+2. **Configure Nginx** as a reverse proxy to handle:
+   - HTTP to HTTPS redirects
+   - SSL termination
+   - Request forwarding to Appwrite
+3. **Obtain and install SSL certificates** using Certbot
+4. **Configure automatic renewal** for certificate maintenance
 
-```bash
-# Install Certbot
-sudo apt update
-sudo apt install certbot nginx -y
-
-# Create Nginx configuration
-sudo tee /etc/nginx/sites-available/appwrite << 'EOF'
-server {
-    listen 80;
-    server_name your-domain.com;
-
-    client_max_body_size 100M;
-
-    location / {
-        proxy_pass http://localhost:8080;
-        proxy_http_version 1.1;
-        proxy_set_header Upgrade $http_upgrade;
-        proxy_set_header Connection 'upgrade';
-        proxy_set_header Host $host;
-        proxy_set_header X-Real-IP $remote_addr;
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        proxy_set_header X-Forwarded-Proto $scheme;
-        proxy_cache_bypass $http_upgrade;
-    }
-}
-EOF
-
-# Enable site and restart Nginx
-sudo ln -s /etc/nginx/sites-available/appwrite /etc/nginx/sites-enabled/
-sudo nginx -t && sudo systemctl restart nginx
-
-# Get SSL certificate
-sudo certbot --nginx -d your-domain.com
-```
+For detailed SSL setup, see the [SSL certificates guide](/docs/advanced/self-hosting/configuration/tls-certificates).
 
 # GKE deployment {% #gke %}
 
@@ -292,186 +190,155 @@ Deploy Appwrite on Google Kubernetes Engine for enterprise-grade container orche
 
 ## Create GKE cluster {% #create-cluster %}
 
-```bash
-# Create GKE cluster
-gcloud container clusters create appwrite-cluster \
-    --zone=us-central1-a \
-    --machine-type=e2-standard-2 \
-    --num-nodes=3 \
-    --enable-autoscaling \
-    --min-nodes=1 \
-    --max-nodes=5 \
-    --enable-autorepair \
-    --enable-autoupgrade
+**Step 1: Set up the cluster**
 
-# Get credentials
-gcloud container clusters get-credentials appwrite-cluster --zone=us-central1-a
-```
+1. **Create a GKE cluster** with these recommended settings:
+   - **Machine Type**: e2-standard-2 or higher
+   - **Node Count**: 3 nodes minimum for high availability
+   - **Auto-scaling**: Enable with appropriate min/max node limits
+   - **Auto-repair and auto-upgrade**: Enable for maintenance automation
 
-## Deploy with Helm {% #helm-deploy %}
+2. **Configure cluster access**
+   - Obtain cluster credentials for kubectl access
+   - Verify connectivity to the cluster
 
-```bash
-# Install Helm
-curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
+**Step 2: Prepare for deployment**
 
-# Add Appwrite Helm repository (if available) or create custom manifests
-kubectl create namespace appwrite
+1. **Install required tools**:
+   - kubectl (Kubernetes CLI)
+   - Helm (package manager)
+   - Any other deployment tools you prefer
 
-# Create persistent volumes and deploy
-kubectl apply -f - <<EOF
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: appwrite-storage
-  namespace: appwrite
-spec:
-  accessModes:
-    - ReadWriteOnce
-  resources:
-    requests:
-      storage: 50Gi
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: appwrite
-  namespace: appwrite
-spec:
-  replicas: 2
-  selector:
-    matchLabels:
-      app: appwrite
-  template:
-    metadata:
-      labels:
-        app: appwrite
-    spec:
-      containers:
-      - name: appwrite
-        image: us-central1-docker.pkg.dev/$PROJECT_ID/appwrite-repo/appwrite:1.7.4
-        ports:
-        - containerPort: 80
-        env:
-        - name: _APP_ENV
-          value: "production"
-        - name: _APP_DOMAIN
-          value: "your-domain.com"
-        volumeMounts:
-        - name: storage
-          mountPath: /storage
-      volumes:
-      - name: storage
-        persistentVolumeClaim:
-          claimName: appwrite-storage
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: appwrite-service
-  namespace: appwrite
-spec:
-  selector:
-    app: appwrite
-  ports:
-  - port: 80
-    targetPort: 80
-  type: LoadBalancer
-EOF
-```
+2. **Create namespace** for Appwrite components
+
+Refer to the [GKE documentation](https://cloud.google.com/kubernetes-engine/docs) for current cluster creation and management procedures.
+
+## Deploy with Kubernetes manifests {% #k8s-deploy %}
+
+**Step 1: Prepare deployment manifests**
+
+Create Kubernetes manifests for:
+- **Persistent Volume Claims** for data storage
+- **Deployments** for Appwrite containers
+- **Services** for internal and external connectivity
+- **ConfigMaps and Secrets** for configuration management
+
+**Step 2: Configure the deployment**
+
+1. **Set resource requirements**:
+   - Memory: 2Gi minimum per replica
+   - CPU: 1 core minimum per replica
+   - Storage: Configure persistent volumes for data
+
+2. **Configure environment variables**:
+   - Production settings
+   - Database connections
+   - Security configurations
+
+3. **Set up load balancing**:
+   - Internal services for inter-component communication
+   - External LoadBalancer or Ingress for public access
+
+For Kubernetes deployment examples and best practices, see the [Kubernetes documentation](https://kubernetes.io/docs/).
 
 # Production considerations {% #production %}
 
 ## Security best practices {% #security %}
 
-**IAM and Service Accounts**
-
-```bash
-# Create service account with minimal permissions
-gcloud iam service-accounts create appwrite-sa \
-    --description="Service account for Appwrite" \
-    --display-name="Appwrite Service Account"
-
-# Grant necessary roles
-gcloud projects add-iam-policy-binding $PROJECT_ID \
-    --member="serviceAccount:appwrite-sa@$PROJECT_ID.iam.gserviceaccount.com" \
-    --role="roles/cloudsql.client"
-```
+**Identity and Access Management**
+- Create dedicated service accounts with minimal required permissions
+- Use Workload Identity for secure access to Google Cloud services
+- Implement proper RBAC policies for cluster access
+- Store sensitive data in Secret Manager rather than environment variables
 
 **Network Security**
+- Create custom VPC networks with appropriate subnet configurations
+- Implement firewall rules following the principle of least privilege
+- Use private clusters for GKE deployments when possible
+- Configure VPC peering for secure database access
 
-```bash
-# Create VPC network
-gcloud compute networks create appwrite-network --subnet-mode=custom
-
-# Create subnet
-gcloud compute networks subnets create appwrite-subnet \
-    --network=appwrite-network \
-    --range=10.0.0.0/24 \
-    --region=us-central1
-```
+**Data Protection**
+- Enable encryption at rest for all storage
+- Use managed SSL certificates for automatic renewal
+- Implement proper backup and disaster recovery procedures
+- Regular security audits and vulnerability assessments
 
 ## Monitoring and logging {% #monitoring %}
 
-**Enable Google Cloud Monitoring**
+**Google Cloud Operations Suite**
+- Enable Cloud Monitoring for infrastructure and application metrics
+- Configure Cloud Logging for centralized log management
+- Set up Error Reporting for application error tracking
+- Use Cloud Trace for performance analysis
 
-```bash
-# Deploy monitoring agent (for Compute Engine)
-curl -sSO https://dl.google.com/cloudagents/add-google-cloud-ops-agent-repo.sh
-sudo bash add-google-cloud-ops-agent-repo.sh --also-install
-```
+**Alerting Policies**
+Configure alerts for:
+- High CPU utilization (>80%)
+- High memory usage (>90%)
+- Service downtime or health check failures
+- Database connection issues
+- Storage capacity warnings
 
-**Set up alerts**
-
-1. Go to [Cloud Monitoring Console](https://console.cloud.google.com/monitoring)
-2. Create alerting policies for:
-   - High CPU utilization (>80%)
-   - High memory usage (>90%)
-   - Service downtime
-   - Database connection failures
+**Performance Monitoring**
+- Monitor response times and throughput
+- Track error rates and success rates
+- Set up uptime checks from multiple regions
+- Monitor resource utilization trends
 
 ## Backup and disaster recovery {% #backup %}
 
 **Database Backups**
+- Enable automated backups for Cloud SQL instances
+- Configure backup retention policies
+- Consider cross-region backup replication for disaster recovery
 
-```bash
-# Enable automated backups for Cloud SQL
-gcloud sql instances patch appwrite-db \
-    --backup-start-time=03:00 \
-    --retained-backups-count=7
-```
+**Application Data Backups**
+- Set up regular backups of file uploads and user data
+- Use Cloud Storage with versioning for backup storage
+- Implement automated backup scheduling
 
-**Storage Backups**
+For detailed backup procedures including database exports, storage volumes, and configuration files, see the [backup documentation](/docs/advanced/self-hosting/backups).
 
-```bash
-# Create Cloud Storage bucket for backups
-gsutil mb gs://$PROJECT_ID-appwrite-backups
-
-# Set up periodic backups (add to cron)
-0 2 * * * gcloud sql export sql appwrite-db gs://$PROJECT_ID-appwrite-backups/backup-$(date +\%Y\%m\%d-\%H\%M\%S).sql --database=appwrite
-```
+**Infrastructure as Code**
+- Use Terraform or Deployment Manager for infrastructure provisioning
+- Version control all configuration and deployment scripts
+- Implement CI/CD pipelines for consistent deployments
+- Maintain disaster recovery documentation
 
 # Troubleshooting {% #troubleshooting %}
 
 **Common issues and solutions:**
 
 **Cloud Run cold starts**
-- Increase minimum instances to avoid cold starts
-- Use Cloud Run always-on CPU allocation
+- Configure minimum instances to reduce cold start latency
+- Optimize container startup time
+- Use CPU allocation settings appropriately
+- Monitor and adjust concurrency settings
 
-**Database connection issues**
+**Database connectivity issues**
 - Verify Cloud SQL Auth Proxy configuration
-- Check VPC network connectivity
-- Ensure service account has proper permissions
+- Check VPC network connectivity and firewall rules
+- Ensure service accounts have proper Cloud SQL permissions
+- Monitor connection pool settings and limits
 
 **SSL certificate problems**
-- Verify domain ownership in Google Search Console
-- Check DNS propagation status
-- Ensure certificate is properly mapped to service
+- Verify domain ownership and DNS configuration
+- Check certificate provisioning status in Google Cloud Console
+- Ensure proper domain mapping to services
+- Monitor certificate expiration and renewal
 
 **Performance optimization**
-- Use Cloud CDN for static assets
-- Implement Cloud SQL read replicas
-- Configure auto-scaling based on metrics
+- Use Cloud CDN for static asset delivery
+- Implement Cloud SQL read replicas for read-heavy workloads
+- Configure appropriate auto-scaling policies
+- Optimize container resource allocation
+- Monitor and tune database performance
+
+**GKE-specific issues**
+- Check node pool capacity and auto-scaling settings
+- Verify persistent volume provisioning and mounting
+- Monitor pod resource limits and requests
+- Check service mesh configuration if applicable
 
 # Next steps {% #next-steps %}
 

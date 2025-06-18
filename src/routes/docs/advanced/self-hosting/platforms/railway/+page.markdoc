@@ -8,7 +8,7 @@ Railway is a modern cloud platform that simplifies application deployment with a
 
 # Deployment options {% #deployment-options %}
 
-Railway offers two primary ways to deploy Appwrite:
+Railway offers flexible deployment approaches for Appwrite:
 
 {% table %}
 * Method
@@ -17,14 +17,19 @@ Railway offers two primary ways to deploy Appwrite:
 * Pricing
 ---
 * **Single Service**
-* Small projects, development
+* Development, small projects
 * Low
 * Usage-based
 ---
-* **Multi-Service with Blueprint**
+* **Multi-Service**
 * Production apps, microservices
 * Medium
 * Usage-based
+---
+* **Managed Services**
+* High availability, enterprise
+* Medium
+* Usage-based + addon costs
 {% /table %}
 
 # Prerequisites {% #prerequisites %}
@@ -32,310 +37,241 @@ Railway offers two primary ways to deploy Appwrite:
 Before deploying Appwrite on Railway, ensure you have:
 
 - A Railway account (free tier available)
-- A GitHub repository with your Appwrite configuration
-- Basic understanding of Docker and environment variables
+- A GitHub repository for your deployment configuration
+- Basic understanding of Docker containers and environment variables
+- A domain name (optional, for custom domains)
 
-# Method 1: Single service deployment {% #single-service %}
+# Deployment methods {% #deployment-methods %}
 
-This method deploys Appwrite as a single service, suitable for development and small production workloads.
+## Method 1: Direct GitHub deployment {% #github-deployment %}
 
-## Step 1: Prepare your repository {% #prepare-repository %}
+**Step 1: Prepare your repository**
 
-Create a new repository or use an existing one with the following structure:
+1. **Create a new repository** or use an existing one
+2. **Add a Docker Compose configuration** based on the official Appwrite setup
+3. **Configure for Railway's environment**:
+   - Use environment variables for all configuration
+   - Set up proper networking between services
+   - Configure persistent volumes for data storage
 
-```
-appwrite-railway/
-├── docker-compose.yml
-├── .env.example
-├── railway.toml (optional)
-└── README.md
-```
+For the current Appwrite Docker Compose template, refer to the [official Appwrite installation guide](/docs/advanced/self-hosting).
 
-Create a `docker-compose.yml` file based on the official Appwrite setup, but configured for Railway:
+**Step 2: Deploy on Railway**
 
-```yaml
-version: '3'
-
-services:
-  appwrite:
-    image: appwrite/appwrite:1.5.7
-    container_name: appwrite
-    restart: unless-stopped
-    networks:
-      - appwrite
-    ports:
-      - "80:80"
-      - "443:443"
-    volumes:
-      - appwrite-uploads:/storage/uploads:rw
-      - appwrite-cache:/storage/cache:rw
-      - appwrite-config:/storage/config:rw
-      - appwrite-certificates:/storage/certificates:rw
-      - appwrite-functions:/storage/functions:rw
-    environment:
-      - _APP_ENV=${_APP_ENV:-production}
-      - _APP_WORKER_PER_CORE=${_APP_WORKER_PER_CORE:-6}
-      - _APP_LOCALE=${_APP_LOCALE:-en}
-      - _APP_CONSOLE_WHITELIST_ROOT=${_APP_CONSOLE_WHITELIST_ROOT:-enabled}
-      - _APP_CONSOLE_WHITELIST_EMAILS=${_APP_CONSOLE_WHITELIST_EMAILS}
-      - _APP_CONSOLE_WHITELIST_IPS=${_APP_CONSOLE_WHITELIST_IPS}
-      - _APP_SYSTEM_EMAIL_NAME=${_APP_SYSTEM_EMAIL_NAME}
-      - _APP_SYSTEM_EMAIL_ADDRESS=${_APP_SYSTEM_EMAIL_ADDRESS}
-      - _APP_SYSTEM_SECURITY_EMAIL_ADDRESS=${_APP_SYSTEM_SECURITY_EMAIL_ADDRESS}
-      - _APP_SYSTEM_RESPONSE_FORMAT=${_APP_SYSTEM_RESPONSE_FORMAT}
-      - _APP_OPTIONS_ABUSE=${_APP_OPTIONS_ABUSE:-enabled}
-      - _APP_OPTIONS_FORCE_HTTPS=${_APP_OPTIONS_FORCE_HTTPS:-enabled}
-      - _APP_OPENSSL_KEY_V1=${_APP_OPENSSL_KEY_V1}
-      - _APP_DOMAIN=${_APP_DOMAIN}
-      - _APP_DOMAIN_TARGET=${_APP_DOMAIN_TARGET}
-      - _APP_REDIS_HOST=redis
-      - _APP_REDIS_PORT=6379
-      - _APP_DB_HOST=mariadb
-      - _APP_DB_PORT=3306
-      - _APP_DB_SCHEMA=appwrite
-      - _APP_DB_USER=${_APP_DB_USER:-appwrite}
-      - _APP_DB_PASS=${_APP_DB_PASS}
-      - _APP_SMTP_HOST=${_APP_SMTP_HOST}
-      - _APP_SMTP_PORT=${_APP_SMTP_PORT}
-      - _APP_SMTP_SECURE=${_APP_SMTP_SECURE}
-      - _APP_SMTP_USERNAME=${_APP_SMTP_USERNAME}
-      - _APP_SMTP_PASSWORD=${_APP_SMTP_PASSWORD}
-      - _APP_USAGE_STATS=${_APP_USAGE_STATS:-enabled}
-      - _APP_INFLUXDB_HOST=influxdb
-      - _APP_INFLUXDB_PORT=8086
-      - _APP_STORAGE_LIMIT=${_APP_STORAGE_LIMIT:-30000000}
-
-  mariadb:
-    image: mariadb:10.7
-    restart: unless-stopped
-    networks:
-      - appwrite
-    volumes:
-      - appwrite-mariadb:/var/lib/mysql:rw
-    environment:
-      - MYSQL_ROOT_PASSWORD=${_APP_DB_ROOT_PASS}
-      - MYSQL_DATABASE=appwrite
-      - MYSQL_USER=${_APP_DB_USER:-appwrite}
-      - MYSQL_PASSWORD=${_APP_DB_PASS}
-    command: 'mysqld --innodb-flush-method=fsync'
-
-  redis:
-    image: redis:7.0-alpine
-    restart: unless-stopped
-    networks:
-      - appwrite
-    volumes:
-      - appwrite-redis:/data:rw
-
-  # clamav:
-  #   image: appwrite/clamav:1.2.0
-  #   restart: unless-stopped
-  #   networks:
-  #     - appwrite
-  #   volumes:
-  #     - appwrite-uploads:/storage/uploads
-
-  influxdb:
-    image: appwrite/influxdb:1.5.0
-    restart: unless-stopped
-    networks:
-      - appwrite
-    volumes:
-      - appwrite-influxdb:/var/lib/influxdb:rw
-
-  telegraf:
-    image: appwrite/telegraf:1.4.0
-    restart: unless-stopped
-    networks:
-      - appwrite
-
-networks:
-  appwrite:
-
-volumes:
-  appwrite-mariadb:
-  appwrite-redis:
-  appwrite-cache:
-  appwrite-uploads:
-  appwrite-certificates:
-  appwrite-functions:
-  appwrite-builds:
-  appwrite-influxdb:
-  appwrite-config:
-```
-
-## Step 2: Deploy on Railway {% #deploy-railway %}
-
-1. **Connect your repository**
-   - Sign up for Railway at [railway.app](https://railway.app)
-   - Click "Deploy from GitHub repo"
+1. **Connect your repository** to Railway:
+   - Sign up at [Railway](https://railway.app)
+   - Choose "Deploy from GitHub repo"
    - Connect your GitHub account and select your repository
 
-2. **Configure the deployment**
-   - Railway will automatically detect your `docker-compose.yml`
-   - Set your domain in the Railway dashboard
-   - Add required environment variables (see configuration section below)
+2. **Configure the deployment**:
+   - Railway automatically detects Docker Compose configurations
+   - Set your deployment domain through the Railway dashboard
+   - Configure environment variables for production settings
 
-3. **Environment variables**
-   In the Railway dashboard, add these essential environment variables:
+3. **Environment configuration**:
+   Set up essential environment variables including:
+   - Production environment settings
+   - Encryption keys and security configurations
+   - Database credentials and connection settings
+   - Domain and URL configurations
+   - SMTP settings for email functionality
 
-   ```bash
-   _APP_ENV=production
-   _APP_DOMAIN=your-app.railway.app
-   _APP_DOMAIN_TARGET=your-app.railway.app
-   _APP_OPENSSL_KEY_V1=your-encryption-key
-   _APP_DB_PASS=your-secure-database-password
-   _APP_DB_ROOT_PASS=your-secure-root-password
-   ```
+For the complete list of required environment variables, see the [environment variables documentation](/docs/advanced/self-hosting/configuration/environment-variables).
 
-4. **Deploy**
-   - Click "Deploy" and Railway will build and start your Appwrite instance
-   - Access your deployment at the provided Railway URL
+**Step 3: Deploy and verify**
 
-# Method 2: Multi-service deployment {% #multi-service %}
+1. **Deploy your application** using Railway's dashboard
+2. **Monitor the build process** through Railway's real-time logs
+3. **Access your deployment** at the provided Railway URL
+4. **Test core functionality** including authentication and database operations
 
-For production deployments, you can deploy each Appwrite component as separate Railway services for better scalability and monitoring.
+## Method 2: Multi-service deployment {% #multi-service %}
 
-## Create a Blueprint {% #blueprint %}
+For production deployments requiring better scalability and resource isolation:
 
-Create a `railway.toml` file in your repository:
+**Service separation approach:**
+- **Main Appwrite service**: Core application functionality
+- **Database service**: MariaDB or MySQL for data storage
+- **Cache service**: Redis for session management and caching
+- **Analytics service**: InfluxDB for usage analytics (optional)
 
-```toml
-[build]
-builder = "dockercompose"
+**Benefits of multi-service deployment:**
+- Independent scaling of components
+- Better resource monitoring and allocation
+- Improved fault isolation
+- Easier maintenance and updates
 
-[deploy]
-numReplicas = 1
-restartPolicyType = "ALWAYS"
-```
+**Configuration steps:**
+1. **Create separate Railway services** for each component
+2. **Configure internal networking** between services
+3. **Set up shared environment variables** across services
+4. **Configure persistent storage** for each data service
 
-Then deploy each service separately:
-- Appwrite main service
-- MariaDB database
-- Redis cache
-- InfluxDB (for analytics)
+For detailed multi-service architecture patterns, refer to the [Railway documentation](https://docs.railway.app) and [production deployment guide](/docs/advanced/self-hosting/production).
 
-This approach gives you better control over scaling and resource allocation.
+## Method 3: Using Railway's managed services {% #managed-services %}
 
-# Configuration {% #configuration %}
+**Database integration:**
+- Use Railway's managed PostgreSQL or MySQL instead of containerized databases
+- Automatic backups and maintenance
+- Better performance and reliability for production workloads
 
-Configure these environment variables in Railway's dashboard:
+**Redis integration:**
+- Use Railway's managed Redis service
+- Automatic scaling and monitoring
+- Reduced container resource usage
 
-## Required variables {% #required-variables %}
+**Configuration approach:**
+1. **Create managed database** and Redis services through Railway
+2. **Update your Appwrite configuration** to use managed service endpoints
+3. **Configure connection credentials** using Railway's service linking
+4. **Deploy your main Appwrite service** with simplified container setup
 
-```bash
-_APP_ENV=production
-_APP_DOMAIN=your-app.railway.app
-_APP_DOMAIN_TARGET=your-app.railway.app
-_APP_OPENSSL_KEY_V1=$(openssl rand -base64 128)
-_APP_DB_PASS=strong_password_here
-_APP_DB_ROOT_PASS=strong_root_password_here
-```
+# Configuration best practices {% #configuration %}
 
-## Email configuration {% #email-config %}
+## Environment variables {% #environment-variables %}
 
-To enable email features:
+**Security settings:**
+Configure production-ready security settings including:
+- Environment mode and debug settings
+- Encryption keys and secrets management
+- HTTPS enforcement and security headers
+- API rate limiting and abuse protection
 
-```bash
-_APP_SMTP_HOST=smtp.sendgrid.net
-_APP_SMTP_PORT=587
-_APP_SMTP_SECURE=tls
-_APP_SMTP_USERNAME=apikey
-_APP_SMTP_PASSWORD=your_sendgrid_api_key
-_APP_SYSTEM_EMAIL_NAME=Appwrite
-_APP_SYSTEM_EMAIL_ADDRESS=noreply@yourdomain.com
-```
+**Database configuration:**
+Set up database connectivity including:
+- Host and port configuration
+- Authentication credentials
+- Connection pooling settings
+- Backup and maintenance schedules
 
-## Security settings {% #security-settings %}
+**Email and notifications:**
+Configure SMTP settings for:
+- User authentication emails
+- System notifications
+- Password reset functionality
+- Security alerts
 
-```bash
-_APP_CONSOLE_WHITELIST_EMAILS=admin@yourdomain.com
-_APP_OPTIONS_FORCE_HTTPS=enabled
-_APP_OPTIONS_ABUSE=enabled
-```
+For comprehensive environment variable documentation, see the [environment variables guide](/docs/advanced/self-hosting/configuration/environment-variables).
 
-# Persistent storage {% #persistent-storage %}
+## Persistent storage {% #storage %}
 
-Railway automatically handles volume persistence for Docker Compose deployments. Your data will persist across deployments.
+**Volume management:**
+- Railway automatically handles volume persistence for Docker Compose deployments
+- Data persists across deployments and container restarts
+- Configure appropriate storage sizes based on your usage patterns
 
-For additional backup strategies, consider:
-- Regular database exports
-- File storage backups
-- Using Railway's database backup features
+**Storage considerations:**
+- File uploads and user-generated content
+- Database data and transaction logs
+- Cache and temporary file storage
+- Backup and recovery requirements
+
+For detailed backup strategies and procedures, see the [backup documentation](/docs/advanced/self-hosting/backups).
 
 # Custom domains {% #custom-domains %}
 
-To use a custom domain:
+**Domain setup process:**
 
-1. **Add domain in Railway**
-   - Go to your service settings
-   - Click "Add Domain"
-   - Enter your custom domain
+1. **Add your domain** in Railway's service settings
+2. **Configure DNS records** at your domain provider:
+   - Add CNAME records pointing to your Railway deployment
+   - Configure any required verification records
+3. **Update environment variables** to reflect your custom domain
+4. **Verify SSL certificate** provisioning and HTTPS configuration
 
-2. **Configure DNS**
-   - Add a CNAME record pointing to your Railway deployment
-   - Wait for DNS propagation
-
-3. **Update environment variables**
-   ```bash
-   _APP_DOMAIN=yourdomain.com
-   _APP_DOMAIN_TARGET=yourdomain.com
-   ```
+**SSL certificates:**
+- Railway automatically provisions SSL certificates for custom domains
+- Certificates are managed and renewed automatically
+- Support for both single domains and wildcard certificates
 
 # Scaling and performance {% #scaling %}
 
-Railway provides automatic scaling based on usage:
+**Automatic scaling features:**
+- **Vertical scaling**: Automatic CPU and memory adjustment based on demand
+- **Horizontal scaling**: Multiple instance deployment for high availability (paid plans)
+- **Resource monitoring**: Built-in metrics and performance tracking
 
-- **Vertical scaling**: Increase CPU and memory automatically
-- **Horizontal scaling**: Deploy multiple instances (paid plans)
-- **Database optimization**: Use Railway's managed databases for better performance
+**Performance optimization:**
+- Use Railway's managed databases for improved performance
+- Implement CDN integration for static asset delivery
+- Configure appropriate caching strategies
+- Monitor and optimize database queries and indexing
 
-For high-traffic applications, consider:
-- Using Railway's Redis addon
-- Implementing CDN for static assets
-- Setting up database read replicas
+**Cost optimization:**
+- Railway's pay-as-you-scale model adjusts costs to actual usage
+- Monitor resource consumption through the dashboard
+- Optimize container resource allocation
+- Use managed services where cost-effective
 
-# Troubleshooting {% #troubleshooting %}
+# Monitoring and troubleshooting {% #monitoring %}
 
-## Common issues {% #common-issues %}
+**Built-in monitoring:**
+- **Real-time logs**: View application and system logs through Railway's dashboard
+- **Resource metrics**: Monitor CPU, memory, and storage usage
+- **Service health**: Track uptime and availability
+- **Performance insights**: Analyze response times and throughput
 
-**Build failures**
-- Check that your `docker-compose.yml` is valid
-- Ensure all required environment variables are set
-- Review build logs in Railway dashboard
+**Common troubleshooting scenarios:**
 
-**Database connection errors**
-- Verify database credentials
-- Check that services can communicate (Railway handles networking automatically)
-- Ensure database is properly initialized
+**Build and deployment issues:**
+- Review build logs for configuration errors
+- Verify all required environment variables are set
+- Check Docker configuration syntax and formatting
+- Ensure proper service dependencies and networking
 
-**SSL/HTTPS issues**
-- Railway automatically provides SSL certificates
-- Ensure `_APP_OPTIONS_FORCE_HTTPS=enabled`
-- Check domain configuration
+**Runtime and connectivity issues:**
+- Monitor application logs for error patterns
+- Verify database connectivity and credentials
+- Check service-to-service communication
+- Validate external API and SMTP configurations
 
-## Monitoring {% #monitoring %}
+**Performance and scaling issues:**
+- Analyze resource utilization patterns
+- Monitor database performance and query efficiency
+- Review caching effectiveness
+- Evaluate scaling configuration and limits
 
-Railway provides built-in monitoring:
-- View logs in real-time
-- Monitor resource usage
-- Set up alerts for downtime
+**Getting help:**
+- Railway provides comprehensive [documentation](https://docs.railway.app)
+- Active [Discord community](https://discord.gg/railway) for support
+- Built-in support system for technical issues
+- Community templates and examples
 
-## Support {% #support %}
+# Production considerations {% #production %}
 
-For Railway-specific issues:
-- Check [Railway documentation](https://docs.railway.app)
-- Visit [Railway Discord community](https://discord.gg/railway)
-- Use Railway's support system
+**Security best practices:**
+- Use Railway's environment variable encryption for sensitive data
+- Implement proper access controls and API security
+- Configure comprehensive logging and monitoring
+- Regular security updates and vulnerability scanning
+
+**Backup and disaster recovery:**
+- Implement automated backup strategies
+- Test backup restoration procedures
+- Configure cross-region redundancy if required
+- Document disaster recovery processes
+
+For comprehensive backup procedures including database exports, file storage, and configuration management, see the [backup documentation](/docs/advanced/self-hosting/backups).
+
+**Performance and reliability:**
+- Use managed services for critical components
+- Implement health checks and monitoring
+- Configure appropriate scaling policies
+- Optimize for your specific usage patterns
 
 # Next steps {% #next-steps %}
 
 After deploying Appwrite on Railway:
 
-1. **Set up your first project** - Create a project in the Appwrite console
-2. **Configure authentication** - Set up OAuth providers and user management
-3. **Create your database** - Design your data structure and collections
-4. **Deploy your app** - Connect your frontend application to Appwrite
-5. **Monitor usage** - Use Railway's dashboard to monitor performance and costs
+[Configure authentication](/docs/products/auth) - Set up user management and OAuth providers
 
-Railway's pay-as-you-scale model makes it perfect for growing applications, from prototype to production.
+[Design your database](/docs/products/databases) - Create collections and configure data relationships
+
+[Set up email delivery](/docs/advanced/self-hosting/configuration/email) - Configure SMTP for user notifications
+
+[Production optimization](/docs/advanced/self-hosting/production) - Optimize your deployment for production workloads
+
+[Monitor and maintain](/docs/advanced/self-hosting/update) - Keep your Appwrite instance updated and secure
+
+Railway's developer-friendly platform and pay-as-you-scale model make it an excellent choice for Appwrite deployments, from development to production scale.

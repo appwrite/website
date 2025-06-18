@@ -27,7 +27,7 @@ Render offers flexible deployment methods for Appwrite:
 * Usage-based
 ---
 * **Blueprint**
-* Multi-service deployment
+* Multi-service deployment, infrastructure as code
 * Medium
 * Usage-based
 {% /table %}
@@ -38,411 +38,239 @@ Before deploying Appwrite on Render, ensure you have:
 
 - A Render account (free tier available)
 - A GitHub repository (for Docker deployment method)
-- Basic understanding of Docker and environment variables
+- Basic understanding of Docker containers and environment variables
 - Domain name (optional, for custom domains)
 
-# Method 1: Deploy from GitHub repository {% #github-deployment %}
+# Deployment methods {% #deployment-methods %}
 
-This method builds Appwrite from a Dockerfile in your repository, giving you full control over the deployment process.
+## Method 1: Deploy from GitHub repository {% #github-deployment %}
 
-## Prepare your repository {% #prepare-repository %}
+This method builds Appwrite from a Dockerfile in your repository, providing full control over the deployment process.
 
-**Step 1: Create repository structure**
+**Step 1: Prepare your repository**
 
-Create a new repository with the following structure:
+1. **Create a repository structure** with the necessary files:
+   - Dockerfile based on the official Appwrite image
+   - Environment variable template
+   - Optional: render.yaml for infrastructure as code
 
-```
-appwrite-render/
-├── Dockerfile
-├── docker-compose.yml
-├── .env.example
-├── render.yaml (optional)
-└── README.md
-```
+2. **Configure the Dockerfile**:
+   - Use the official Appwrite image (version 1.7.4 recommended)
+   - Set appropriate environment variables for production
+   - Configure health checks and port exposure
+   - Set up proper security settings
 
-**Step 2: Create Dockerfile**
+For the current Appwrite Docker configuration, refer to the [official Appwrite installation guide](/docs/advanced/self-hosting).
 
-Create a `Dockerfile` based on the official Appwrite image:
+**Step 2: Set up managed services**
 
-```dockerfile
-FROM appwrite/appwrite:1.7.4
+1. **Create a PostgreSQL database**:
+   - Navigate to Render Dashboard
+   - Create a new PostgreSQL instance
+   - Choose appropriate region and plan
+   - Note connection details for environment configuration
 
-# Set environment variables
-ENV _APP_ENV=production
-ENV _APP_WORKER_PER_CORE=6
-ENV _APP_LOCALE=en
-ENV _APP_CONSOLE_WHITELIST_ROOT=enabled
-ENV _APP_OPTIONS_ABUSE=enabled
-ENV _APP_OPTIONS_FORCE_HTTPS=enabled
+2. **Create a Redis instance**:
+   - Set up Redis for caching and session management
+   - Choose the same region as your database
+   - Configure appropriate plan based on usage needs
 
-# Expose port
-EXPOSE 80
+**Step 3: Deploy the web service**
 
-# Health check
-HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
-  CMD curl -f http://localhost/health || exit 1
+1. **Connect your GitHub repository** to Render
+2. **Configure the web service**:
+   - Set environment to Docker
+   - Specify Dockerfile path
+   - Choose appropriate instance type and region
+   - Configure health check endpoint
 
-# Start Appwrite
-CMD ["php", "/usr/src/code/app/http.php", "-t", "/usr/src/code/public"]
-```
+3. **Set up environment variables**:
+   - Production environment settings
+   - Database connection parameters
+   - Encryption keys and security configurations
+   - Domain and URL settings
+   - SMTP configuration for email functionality
 
-**Step 3: Create environment variables template**
+For a comprehensive list of required environment variables, see the [environment variables documentation](/docs/advanced/self-hosting/configuration/environment-variables).
 
-Create `.env.example` file:
+## Method 2: Deploy pre-built image {% #prebuilt-deployment %}
 
-```bash
-# Required environment variables
-_APP_ENV=production
-_APP_OPENSSL_KEY_V1=your-encryption-key-here
-_APP_DOMAIN=your-app.onrender.com
-_APP_DOMAIN_TARGET=your-app.onrender.com
+Deploy Appwrite using the official Docker image directly from Docker Hub for quick setup.
 
-# Database configuration
-_APP_DB_HOST=postgres-database-host
-_APP_DB_PORT=5432
-_APP_DB_SCHEMA=appwrite
-_APP_DB_USER=appwrite_user
-_APP_DB_PASS=secure_password
+**Quick deployment steps:**
 
-# Redis configuration
-_APP_REDIS_HOST=redis-database-host
-_APP_REDIS_PORT=6379
+1. **Set up managed databases** following the same process as Method 1
+2. **Create a web service** using the pre-built image:
+   - Use the official `appwrite/appwrite:1.7.4` image
+   - Configure the service with appropriate resource allocation
+   - Set up health checks and monitoring
 
-# Email configuration (optional)
-_APP_SYSTEM_EMAIL_NAME=Appwrite
-_APP_SYSTEM_EMAIL_ADDRESS=team@appwrite.io
-_APP_SMTP_HOST=smtp.gmail.com
-_APP_SMTP_PORT=587
-_APP_SMTP_SECURE=tls
-_APP_SMTP_USERNAME=your-email@gmail.com
-_APP_SMTP_PASSWORD=your-app-password
+3. **Configure environment variables** with the same parameters as the repository method
+4. **Deploy and verify** functionality
 
-# Storage configuration
-_APP_STORAGE_LIMIT=30000000
-```
+This method is ideal for users who want to get started quickly without managing custom Docker configurations.
 
-## Deploy on Render {% #deploy-render %}
+## Method 3: Blueprint deployment {% #blueprint-deployment %}
 
-**Step 1: Create PostgreSQL database**
+Use Render Blueprints for infrastructure as code deployment with all services configured together.
 
-1. Log in to your [Render Dashboard](https://dashboard.render.com)
-2. Click **New** → **PostgreSQL**
-3. Configure your database:
-   - **Name**: appwrite-db
-   - **Database**: appwrite
-   - **User**: appwrite_user
-   - **Region**: Choose closest to your users
-   - **Plan**: Select appropriate plan
-4. Click **Create Database**
-5. Note the connection details for later use
+**Blueprint approach:**
 
-**Step 2: Create Redis instance**
+1. **Create a render.yaml file** that defines:
+   - Web service configuration
+   - Database service definitions
+   - Environment variable mappings
+   - Service dependencies and relationships
 
-1. Click **New** → **Redis**
-2. Configure Redis:
-   - **Name**: appwrite-redis
-   - **Region**: Same as your database
-   - **Plan**: Select appropriate plan
-3. Click **Create Redis**
-4. Note the connection URL
+2. **Deploy using Blueprint**:
+   - Push the blueprint file to your repository
+   - Create a new Blueprint in Render Dashboard
+   - Review and apply the configuration
+   - Render automatically creates all services
 
-**Step 3: Deploy web service**
+**Benefits of Blueprint deployment:**
+- Infrastructure as code approach
+- Automatic service linking and environment variable management
+- Easier team collaboration and reproducible deployments
+- Version control for your infrastructure configuration
 
-1. Click **New** → **Web Service**
-2. Connect your GitHub repository
-3. Configure the service:
-   - **Name**: appwrite-app
-   - **Environment**: Docker
-   - **Region**: Same as database
-   - **Branch**: main
-   - **Dockerfile Path**: ./Dockerfile
-   - **Instance Type**: Select based on your needs
+For current Render Blueprint syntax and examples, refer to the [Render documentation](https://render.com/docs/blueprint-spec).
 
-**Step 4: Configure environment variables**
+# Configuration best practices {% #configuration %}
 
-In the Environment section, add these variables:
+## Environment variables {% #environment-variables %}
 
-```bash
-_APP_ENV=production
-_APP_OPENSSL_KEY_V1=your-generated-encryption-key
-_APP_DOMAIN=your-app.onrender.com
-_APP_DOMAIN_TARGET=your-app.onrender.com
-_APP_DB_HOST=<postgres-hostname>
-_APP_DB_PORT=5432
-_APP_DB_SCHEMA=appwrite
-_APP_DB_USER=appwrite_user
-_APP_DB_PASS=<postgres-password>
-_APP_REDIS_HOST=<redis-hostname>
-_APP_REDIS_PORT=6379
-_APP_REDIS_USER=<redis-username>
-_APP_REDIS_PASS=<redis-password>
-_APP_CONSOLE_WHITELIST_ROOT=enabled
-_APP_OPTIONS_ABUSE=enabled
-_APP_OPTIONS_FORCE_HTTPS=enabled
-```
+**Security configuration:**
+- Use Render's secret environment variables for sensitive data
+- Generate strong encryption keys using secure random generators
+- Configure production security settings including HTTPS enforcement
+- Set up proper access controls and API security
 
-**Step 5: Deploy**
+**Database connectivity:**
+- Configure connection parameters for PostgreSQL and Redis
+- Set up appropriate connection pooling
+- Configure backup and maintenance settings
+- Monitor connection limits and performance
 
-1. Click **Create Web Service**
-2. Render will automatically build and deploy your application
-3. Access your app at the provided `.onrender.com` URL
+**Email and notifications:**
+- Set up SMTP configuration for user notifications
+- Configure system email addresses
+- Set up proper email security and authentication
+- Test email delivery functionality
 
-# Method 2: Deploy pre-built image {% #prebuilt-deployment %}
+## Performance optimization {% #performance %}
 
-Deploy Appwrite using the official Docker image directly from Docker Hub.
+**Instance sizing:**
+- Start with appropriate RAM allocation for production workloads
+- Monitor resource usage through Render Dashboard
+- Scale instance types based on traffic patterns and performance metrics
+- Consider database instance sizing for optimal performance
 
-## Quick deployment {% #quick-deploy %}
+**Caching and storage:**
+- Configure Redis for improved caching performance
+- Set up proper static asset delivery
+- Optimize database queries and indexing
+- Consider CDN integration for global content delivery
 
-**Step 1: Create databases**
+# Custom domains {% #custom-domains %}
 
-Follow the same database creation steps from Method 1 to set up PostgreSQL and Redis.
+**Domain setup process:**
 
-**Step 2: Create web service**
+1. **Add your custom domain** in Render's web service settings
+2. **Configure DNS records** at your domain provider:
+   - Add CNAME records pointing to your Render service
+   - Configure any required verification records
+3. **Update environment variables** to reflect your custom domain
+4. **Verify SSL certificate** provisioning and HTTPS configuration
 
-1. In Render Dashboard, click **New** → **Web Service**
-2. Select **Deploy an existing image from a registry**
-3. Configure the service:
-   - **Image URL**: `appwrite/appwrite:1.7.4`
-   - **Name**: appwrite-app
-   - **Region**: Same as your databases
-   - **Instance Type**: Select appropriate size
-
-**Step 3: Configure environment variables**
-
-Add the same environment variables as in Method 1.
-
-**Step 4: Configure health check**
-
-- **Health Check Path**: `/health`
-- **Port**: 80
-
-**Step 5: Deploy**
-
-Click **Create Web Service** and Render will deploy the pre-built image.
-
-# Method 3: Blueprint deployment {% #blueprint-deployment %}
-
-Use a Render Blueprint to deploy all services together with infrastructure as code.
-
-## Create render.yaml {% #create-blueprint %}
-
-Create a `render.yaml` file in your repository:
-
-```yaml
-services:
-  - type: web
-    name: appwrite-app
-    env: docker
-    dockerfilePath: ./Dockerfile
-    healthCheckPath: /health
-    envVars:
-      - key: _APP_ENV
-        value: production
-      - key: _APP_OPENSSL_KEY_V1
-        generateValue: true
-      - key: _APP_DOMAIN
-        fromService:
-          type: web
-          name: appwrite-app
-          property: host
-      - key: _APP_DOMAIN_TARGET
-        fromService:
-          type: web
-          name: appwrite-app
-          property: host
-      - key: _APP_DB_HOST
-        fromDatabase:
-          name: appwrite-db
-          property: host
-      - key: _APP_DB_PORT
-        fromDatabase:
-          name: appwrite-db
-          property: port
-      - key: _APP_DB_SCHEMA
-        value: appwrite
-      - key: _APP_DB_USER
-        fromDatabase:
-          name: appwrite-db
-          property: user
-      - key: _APP_DB_PASS
-        fromDatabase:
-          name: appwrite-db
-          property: password
-      - key: _APP_REDIS_HOST
-        fromDatabase:
-          name: appwrite-redis
-          property: host
-      - key: _APP_REDIS_PORT
-        fromDatabase:
-          name: appwrite-redis
-          property: port
-      - key: _APP_CONSOLE_WHITELIST_ROOT
-        value: enabled
-      - key: _APP_OPTIONS_ABUSE
-        value: enabled
-      - key: _APP_OPTIONS_FORCE_HTTPS
-        value: enabled
-
-databases:
-  - name: appwrite-db
-    databaseName: appwrite
-    user: appwrite_user
-
-  - name: appwrite-redis
-    plan: starter
-```
-
-## Deploy with Blueprint {% #deploy-blueprint %}
-
-1. Push the `render.yaml` file to your repository
-2. In Render Dashboard, click **New** → **Blueprint**
-3. Connect your repository and select the blueprint file
-4. Review the services and click **Apply**
-5. Render will create all services automatically
-
-# Configure custom domain {% #custom-domain %}
-
-**Step 1: Add custom domain**
-
-1. Go to your web service in Render Dashboard
-2. Click **Settings** → **Custom Domains**
-3. Click **Add Custom Domain**
-4. Enter your domain name
-
-**Step 2: Update DNS records**
-
-Add a CNAME record at your DNS provider:
-
-```
-Type: CNAME
-Name: your-subdomain (or @)
-Value: your-app.onrender.com
-```
-
-**Step 3: Update environment variables**
-
-Update these environment variables in your service:
-
-```bash
-_APP_DOMAIN=your-domain.com
-_APP_DOMAIN_TARGET=your-domain.com
-```
+**SSL certificates:**
+- Render automatically provisions SSL certificates for custom domains
+- Certificates are managed and renewed automatically
+- Support for both single domains and subdomains
 
 # Production considerations {% #production %}
 
 ## Security best practices {% #security %}
 
-**Environment Variables Security**
-- Use Render's secret environment variables for sensitive data
-- Generate strong encryption keys using secure random generators
-- Regularly rotate database passwords and API keys
+**Environment and data security:**
+- Use Render's secret environment variables for all sensitive data
+- Implement strong database passwords and regular rotation
+- Configure proper access controls and network security
+- Regular security assessments and updates
 
-**HTTPS Configuration**
-```bash
-# Ensure HTTPS is enforced
-_APP_OPTIONS_FORCE_HTTPS=enabled
-
-# Configure secure headers
-_APP_OPTIONS_ROUTER_PROTECTION=enabled
-```
-
-**Database Security**
-- Use strong passwords for database connections
-- Enable connection limits on your database instances
-- Regularly update database software
-
-## Performance optimization {% #performance %}
-
-**Instance Sizing**
-- Start with at least 1GB RAM for production workloads
-- Monitor CPU and memory usage in Render Dashboard
-- Scale up instance types based on traffic patterns
-
-**Database Optimization**
-```bash
-# Configure connection pooling
-_APP_DB_POOL_MAX=20
-_APP_DB_POOL_MIN=5
-
-# Enable Redis for caching
-_APP_REDIS_USER=default
-_APP_CACHE_ADAPTER=redis
-```
-
-**Static Asset Optimization**
-- Use Render's CDN for static file delivery
-- Configure proper cache headers
-- Optimize image sizes and formats
+**Application security:**
+- Enable HTTPS enforcement and security headers
+- Configure proper authentication and authorization
+- Implement rate limiting and abuse protection
+- Monitor security logs and events
 
 ## Monitoring and logging {% #monitoring %}
 
-**Render Dashboard Metrics**
-- Monitor response times and error rates
-- Set up alerts for high CPU/memory usage
-- Track deployment frequency and success rates
+**Built-in monitoring:**
+- **Dashboard metrics**: Monitor response times, error rates, and resource usage
+- **Application logs**: Access real-time logs and configure retention policies
+- **Health checks**: Set up appropriate health check intervals and endpoints
+- **Alerts**: Configure notifications for critical metrics and downtime
 
-**Application Logs**
-```bash
-# Enable debug logging for troubleshooting
-_APP_OPTIONS_LOGGER_LEVEL=debug
-
-# Configure log retention
-_APP_LOGGING_CONFIG=production
-```
-
-**Health Checks**
-- Configure appropriate health check intervals
-- Monitor database connectivity
+**Performance monitoring:**
+- Track database performance and connection health
+- Monitor memory and CPU utilization patterns
+- Analyze response time trends and bottlenecks
 - Set up external uptime monitoring
 
 ## Backup and disaster recovery {% #backup %}
 
-**Database Backups**
-- Enable automatic daily backups on PostgreSQL
-- Test backup restoration procedures regularly
-- Consider cross-region backup storage
+**Database backups:**
+- Enable automatic daily backups for PostgreSQL
+- Configure backup retention policies
+- Consider cross-region backup storage for disaster recovery
 
-**File Storage Backups**
-```bash
-# Configure S3-compatible storage for uploads
-_APP_STORAGE_ADAPTER=s3
-_APP_STORAGE_S3_BUCKET=your-backup-bucket
-_APP_STORAGE_S3_REGION=us-east-1
-```
+**Application data backups:**
+- Set up regular backups of file uploads and user data
+- Configure proper backup storage and retention
+- Implement automated backup verification
 
-**Environment Backup**
-- Export environment variables regularly
-- Document deployment procedures
-- Maintain infrastructure as code with render.yaml
+For comprehensive backup procedures including database exports, storage volumes, configuration files, and automated scheduling, see the [backup documentation](/docs/advanced/self-hosting/backups).
+
+**Infrastructure as code:**
+- Use render.yaml for reproducible deployments
+- Version control all configuration and deployment scripts
+- Document deployment procedures and disaster recovery plans
+- Implement proper change management processes
 
 # Troubleshooting {% #troubleshooting %}
 
-**Common issues and solutions:**
+**Common deployment issues:**
 
-**Build failures**
-- Check Dockerfile syntax and base image availability
-- Verify all dependencies are properly installed
-- Review build logs in Render Dashboard
+**Build and deployment problems:**
+- Review build logs for configuration errors
+- Verify Dockerfile syntax and base image availability
+- Check environment variable configuration
+- Ensure proper service dependencies
 
-**Database connection issues**
-- Verify database hostname and credentials
+**Database connectivity issues:**
+- Verify database connection parameters and credentials
 - Check network connectivity between services
-- Ensure database is in the same region as web service
+- Monitor database performance and connection limits
+- Ensure services are in the same region for optimal performance
 
-**Memory issues**
-- Monitor memory usage in Render Dashboard
-- Increase instance size if consistently high
-- Optimize database queries and caching
+**Performance and resource issues:**
+- Monitor memory and CPU usage through Render Dashboard
+- Analyze database query performance and optimization
+- Review caching effectiveness and configuration
+- Consider instance size upgrades based on usage patterns
 
-**SSL certificate problems**
-- Verify DNS propagation using online tools
-- Check domain configuration in Render Dashboard
-- Ensure CNAME record points to correct Render URL
+**SSL and domain issues:**
+- Verify DNS propagation and domain configuration
+- Check certificate provisioning status
+- Ensure proper domain mapping in environment variables
+- Monitor certificate renewal processes
 
-**Performance issues**
-- Enable Redis caching for improved performance
-- Optimize database queries and indexes
-- Consider upgrading to larger instance types
+**Getting help:**
+- Render provides comprehensive [documentation](https://render.com/docs)
+- Active community support and forums
+- Built-in support system for technical issues
+- Extensive knowledge base and tutorials
 
 # Next steps {% #next-steps %}
 
@@ -455,3 +283,5 @@ After successful deployment:
 [Production deployment guide](/docs/advanced/self-hosting/production) - Optimize for production workloads
 
 [Update and maintenance](/docs/advanced/self-hosting/update) - Keep your Appwrite instance up to date
+
+Render's developer-friendly platform and automatic infrastructure management make it an excellent choice for Appwrite deployments, offering scalability and reliability for applications of all sizes.

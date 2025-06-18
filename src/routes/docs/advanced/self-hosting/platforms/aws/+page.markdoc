@@ -87,52 +87,30 @@ Deploy Appwrite on a single EC2 instance for development or small production wor
 6. Select or create a key pair
 7. Launch the instance
 
-**Step 2: Connect and install Docker**
+**Step 2: Connect and install prerequisites**
 
-```bash
-# Connect to your instance
-ssh -i your-key.pem ubuntu@your-instance-ip
-
-# Update the system
-sudo apt update && sudo apt upgrade -y
-
-# Install Docker
-curl -fsSL https://get.docker.com -o get-docker.sh
-sudo sh get-docker.sh
-
-# Add user to docker group
-sudo usermod -aG docker ubuntu
-
-# Install Docker Compose
-sudo curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-sudo chmod +x /usr/local/bin/docker-compose
-
-# Logout and login again for group changes to take effect
-exit
-```
+1. **Connect to your instance** using SSH with your key pair
+2. **Update the system** using your package manager
+3. **Install Docker** following the [official Docker installation guide](https://docs.docker.com/engine/install/ubuntu/)
+4. **Install Docker Compose** from the [official releases](https://github.com/docker/compose/releases)
+5. **Add your user to the docker group** to run Docker commands without sudo
+6. **Restart your SSH session** for group changes to take effect
 
 **Step 3: Install Appwrite**
 
-```bash
-# Reconnect to your instance
-ssh -i your-key.pem ubuntu@your-instance-ip
+1. **Create a directory** for your Appwrite installation
+2. **Run the Appwrite installer** using the official Docker image:
+   - Use the `appwrite/appwrite:1.7.4` image with the `install` entrypoint
+   - Mount the Docker socket and your installation directory
+   - Follow the interactive prompts for configuration
 
-# Create directory for Appwrite
-mkdir appwrite && cd appwrite
+3. **Configure the installation** with these recommended settings:
+   - **HTTP Port**: 80
+   - **HTTPS Port**: 443
+   - **Hostname**: Your domain or EC2 public DNS
+   - **Secret Key**: Generate a secure random key
 
-# Install Appwrite
-docker run -it --rm \
-    --volume /var/run/docker.sock:/var/run/docker.sock \
-    --volume "$(pwd)"/appwrite:/usr/src/code/appwrite:rw \
-    --entrypoint="install" \
-    appwrite/appwrite:1.7.4
-```
-
-Follow the installation prompts:
-- **HTTP Port**: 80
-- **HTTPS Port**: 443
-- **Hostname**: Your domain or EC2 public DNS
-- **Secret Key**: Generate a secure random key
+For detailed installation commands, refer to the [Appwrite self-hosting documentation](/docs/advanced/self-hosting).
 
 ## Configure domain and SSL {% #ec2-ssl %}
 
@@ -140,46 +118,17 @@ Follow the installation prompts:
 
 If using a custom domain:
 1. Point your domain's A record to your EC2 public IP
-2. Update your security group to only allow HTTP/HTTPS traffic
+2. Update your security group to restrict HTTP/HTTPS traffic as needed
 
 **Step 2: Configure SSL with Let's Encrypt**
 
-```bash
-# Install Certbot
-sudo apt install certbot python3-certbot-nginx
+1. **Install Certbot** following the [official Certbot instructions](https://certbot.eff.org/)
+2. **Install and configure Nginx** as a reverse proxy
+3. **Create an Nginx configuration** that proxies requests to your Appwrite instance
+4. **Obtain SSL certificates** using Certbot with the nginx plugin
+5. **Update your Appwrite configuration** to work behind the proxy
 
-# Stop Appwrite temporarily
-cd appwrite && docker compose stop
-
-# Install Nginx
-sudo apt install nginx
-
-# Configure Nginx for Appwrite
-sudo tee /etc/nginx/sites-available/appwrite << EOF
-server {
-    listen 80;
-    server_name your-domain.com;
-
-    location / {
-        proxy_pass http://localhost:8080;
-        proxy_set_header Host \$host;
-        proxy_set_header X-Real-IP \$remote_addr;
-        proxy_set_header X-Forwarded-For \$proxy_add_x_forwarded_for;
-        proxy_set_header X-Forwarded-Proto \$scheme;
-    }
-}
-EOF
-
-# Enable the site
-sudo ln -s /etc/nginx/sites-available/appwrite /etc/nginx/sites-enabled/
-sudo nginx -t && sudo systemctl restart nginx
-
-# Get SSL certificate
-sudo certbot --nginx -d your-domain.com
-
-# Start Appwrite
-docker compose start
-```
+For detailed SSL setup instructions, see the [SSL certificates guide](/docs/advanced/self-hosting/configuration/tls-certificates).
 
 # ECS Fargate deployment {% #ecs-fargate %}
 
@@ -189,100 +138,46 @@ Deploy Appwrite using AWS ECS Fargate for a managed, serverless container experi
 
 - AWS CLI configured with appropriate permissions
 - Docker image pushed to Amazon ECR
-- VPC with public subnets
+- VPC with public subnets configured
 
 ## Prepare container image {% #prepare-image %}
 
-**Step 1: Create ECR repository**
+**Step 1: Set up container registry**
 
-```bash
-# Create repository
-aws ecr create-repository --repository-name appwrite
+1. **Create an ECR repository** for your Appwrite image
+2. **Authenticate Docker** with your ECR registry
+3. **Pull the official Appwrite image** (version 1.7.4 recommended)
+4. **Tag and push** the image to your ECR repository
 
-# Get login token
-aws ecr get-login-password --region your-region | docker login --username AWS --password-stdin your-account-id.dkr.ecr.your-region.amazonaws.com
-
-# Pull, tag, and push Appwrite image
-docker pull appwrite/appwrite:1.7.4
-docker tag appwrite/appwrite:1.7.4 your-account-id.dkr.ecr.your-region.amazonaws.com/appwrite:1.7.4
-docker push your-account-id.dkr.ecr.your-region.amazonaws.com/appwrite:1.7.4
-```
+Refer to the [Amazon ECR documentation](https://docs.aws.amazon.com/ecr/) for current command syntax and best practices.
 
 ## Create ECS resources {% #create-ecs %}
 
 **Step 1: Create task definition**
 
-Create a file `appwrite-task.json`:
+Create an ECS task definition with these specifications:
+- **Network Mode**: awsvpc
+- **Compatibility**: FARGATE
+- **CPU**: 1024 (1 vCPU)
+- **Memory**: 2048 MB
+- **Execution Role**: ecsTaskExecutionRole with appropriate permissions
+- **Task Role**: Custom role with required AWS service permissions
 
-```json
-{
-  "family": "appwrite",
-  "networkMode": "awsvpc",
-  "requiresCompatibilities": ["FARGATE"],
-  "cpu": "1024",
-  "memory": "2048",
-  "executionRoleArn": "arn:aws:iam::your-account:role/ecsTaskExecutionRole",
-  "taskRoleArn": "arn:aws:iam::your-account:role/ecsTaskRole",
-  "containerDefinitions": [
-    {
-      "name": "appwrite",
-      "image": "your-account-id.dkr.ecr.your-region.amazonaws.com/appwrite:1.7.4",
-      "portMappings": [
-        {
-          "containerPort": 80,
-          "protocol": "tcp"
-        }
-      ],
-      "environment": [
-        {
-          "name": "_APP_ENV",
-          "value": "production"
-        },
-        {
-          "name": "_APP_SYSTEM_SECURITY_EMAIL_ADDRESS",
-          "value": "admin@your-domain.com"
-        }
-      ],
-      "secrets": [
-        {
-          "name": "_APP_KEY",
-          "valueFrom": "arn:aws:secretsmanager:your-region:your-account:secret:appwrite-key"
-        }
-      ],
-      "logConfiguration": {
-        "logDriver": "awslogs",
-        "options": {
-          "awslogs-group": "/ecs/appwrite",
-          "awslogs-region": "your-region",
-          "awslogs-stream-prefix": "ecs"
-        }
-      }
-    }
-  ]
-}
-```
+**Container Configuration**:
+- **Image**: Your ECR repository URI
+- **Port Mappings**: Container port 80
+- **Environment Variables**: Configure production settings like `_APP_ENV=production`
+- **Secrets**: Store sensitive values in AWS Secrets Manager
+- **Logging**: Configure CloudWatch log groups
 
-**Step 2: Register task definition**
+**Step 2: Create ECS cluster and service**
 
-```bash
-aws ecs register-task-definition --cli-input-json file://appwrite-task.json
-```
+1. **Create an ECS cluster** using the Fargate launch type
+2. **Create a service** with your task definition
+3. **Configure networking** with appropriate subnets and security groups
+4. **Set up load balancing** if running multiple instances
 
-**Step 3: Create ECS service**
-
-```bash
-# Create cluster
-aws ecs create-cluster --cluster-name appwrite-cluster
-
-# Create service
-aws ecs create-service \
-  --cluster appwrite-cluster \
-  --service-name appwrite-service \
-  --task-definition appwrite:1 \
-  --desired-count 1 \
-  --launch-type FARGATE \
-  --network-configuration "awsvpcConfiguration={subnets=[subnet-12345],securityGroups=[sg-12345],assignPublicIp=ENABLED}"
-```
+For current ECS commands and configuration options, see the [Amazon ECS documentation](https://docs.aws.amazon.com/ecs/).
 
 # Lightsail deployment {% #lightsail %}
 
@@ -292,17 +187,16 @@ AWS Lightsail provides a simple way to deploy Appwrite with predictable pricing.
 
 **Step 1: Launch instance**
 
-1. Navigate to [AWS Lightsail Console](https://lightsail.aws.amazon.com/)
+1. Navigate to the [AWS Lightsail Console](https://lightsail.aws.amazon.com/)
 2. Click **Create instance**
 3. Choose **Linux/Unix** platform
 4. Select **Ubuntu 22.04 LTS** blueprint
-5. Choose instance plan (minimum $10/month recommended)
-6. Name your instance and click **Create instance**
+5. Choose instance plan (minimum $10/month recommended for testing)
+6. Name your instance and create it
 
 **Step 2: Configure networking**
 
-1. Go to your instance's **Networking** tab
-2. Add these firewall rules:
+Add firewall rules for these ports:
 
 {% table %}
 * Application
@@ -324,112 +218,95 @@ AWS Lightsail provides a simple way to deploy Appwrite with predictable pricing.
 
 **Step 3: Install Appwrite**
 
-Connect via SSH from the Lightsail console and run:
+1. **Connect via SSH** from the Lightsail console
+2. **Update the system** packages
+3. **Install Docker and Docker Compose** following the same process as EC2 deployment
+4. **Install Appwrite** using the official installer
+5. **Configure your installation** with appropriate settings
 
-```bash
-# Update system
-sudo apt update && sudo apt upgrade -y
-
-# Install Docker
-curl -fsSL https://get.docker.com -o get-docker.sh
-sudo sh get-docker.sh
-sudo usermod -aG docker ubuntu
-
-# Install Docker Compose
-sudo curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-sudo chmod +x /usr/local/bin/docker-compose
-
-# Restart session to apply group changes
-exit
-# Reconnect via SSH
-
-# Install Appwrite
-mkdir appwrite && cd appwrite
-docker run -it --rm \
-    --volume /var/run/docker.sock:/var/run/docker.sock \
-    --volume "$(pwd)"/appwrite:/usr/src/code/appwrite:rw \
-    --entrypoint="install" \
-    appwrite/appwrite:1.7.4
-```
+The installation process is identical to the EC2 deployment method described above.
 
 # Production considerations {% #production %}
 
 ## Security best practices {% #security %}
 
-**Environment Variables**
-- Store sensitive data in AWS Secrets Manager
-- Use IAM roles instead of access keys
-- Enable CloudTrail for audit logging
+**Data Protection**
+- Store sensitive environment variables in AWS Secrets Manager
+- Use IAM roles instead of hardcoded access keys
+- Enable AWS CloudTrail for comprehensive audit logging
 
 **Network Security**
-- Use Application Load Balancer with WAF
-- Implement VPC with private subnets for databases
-- Enable VPC Flow Logs for monitoring
+- Deploy behind an Application Load Balancer with AWS WAF
+- Use VPC with private subnets for database resources
+- Enable VPC Flow Logs for network monitoring
+- Implement least-privilege security group rules
 
 **SSL/TLS Configuration**
-```bash
-# For production, use AWS Certificate Manager
-aws acm request-certificate \
-  --domain-name your-domain.com \
-  --validation-method DNS
-```
+- Use AWS Certificate Manager for SSL certificate management
+- Configure automatic certificate renewal
+- Implement proper HTTPS redirects
 
 ## Monitoring and backup {% #monitoring %}
 
 **CloudWatch Monitoring**
-- Enable Container Insights for ECS
-- Set up CloudWatch alarms for CPU, memory, and disk usage
-- Configure log retention policies
+- Enable Container Insights for ECS deployments
+- Configure CloudWatch alarms for CPU, memory, and disk usage
+- Set up log retention policies to manage costs
+- Monitor application-specific metrics
 
 **Backup Strategy**
-- Use RDS for managed database with automated backups
-- Store file uploads in S3 with versioning enabled
+- Use Amazon RDS for managed database with automated backups
+- Store file uploads in S3 with versioning and lifecycle policies
 - Schedule regular snapshots of EBS volumes
 
-**Example CloudWatch alarm**
-```bash
-aws cloudwatch put-metric-alarm \
-  --alarm-name "AppwriteHighCPU" \
-  --alarm-description "Alarm when CPU exceeds 70%" \
-  --metric-name CPUUtilization \
-  --namespace AWS/ECS \
-  --statistic Average \
-  --period 300 \
-  --threshold 70 \
-  --comparison-operator GreaterThanThreshold \
-  --evaluation-periods 2
-```
+For comprehensive backup procedures including database exports, storage volumes, and configuration files, see the [backup documentation](/docs/advanced/self-hosting/backups).
+
+**Health Checks**
+- Configure load balancer health checks
+- Set up application-level health monitoring
+- Implement automated alerting for service disruptions
 
 ## Scaling considerations {% #scaling %}
 
 **Auto Scaling with ECS**
-- Configure target tracking scaling policies
-- Use Application Load Balancer for traffic distribution
-- Implement health checks
+- Configure target tracking scaling policies based on CPU/memory usage
+- Use Application Load Balancer for traffic distribution across instances
+- Implement proper health checks for scaling decisions
 
 **Database Scaling**
-- Use Amazon RDS with read replicas
-- Consider Amazon DocumentDB for document storage
-- Implement Redis ElastiCache for session storage
+- Use Amazon RDS with read replicas for improved performance
+- Consider Amazon DocumentDB for document storage needs
+- Implement Redis ElastiCache for session storage and caching
+
+**Performance Optimization**
+- Use CloudFront CDN for static asset delivery
+- Implement proper caching strategies
+- Monitor and optimize database queries
 
 # Troubleshooting {% #troubleshooting %}
 
 **Common issues and solutions:**
 
 **Instance not accessible**
-- Check security group rules
-- Verify Elastic IP assignment
-- Confirm target group health in Load Balancer
+- Verify security group rules allow required traffic
+- Check Elastic IP assignment for persistent addressing
+- Confirm target group health status in Load Balancer
 
 **Container startup failures**
-- Check CloudWatch logs
-- Verify environment variables
-- Ensure sufficient memory allocation
+- Review CloudWatch logs for error messages
+- Verify all required environment variables are set
+- Ensure sufficient memory and CPU allocation
 
 **Performance issues**
-- Monitor CloudWatch metrics
-- Check disk I/O and network throughput
-- Consider upgrading instance type
+- Monitor CloudWatch metrics for resource utilization
+- Check disk I/O and network throughput limits
+- Consider upgrading to larger instance types
+- Review application logs for bottlenecks
+
+**Database connectivity issues**
+- Verify security group rules allow database access
+- Check connection string configuration
+- Ensure database credentials are correctly configured
 
 # Next steps {% #next-steps %}
 
