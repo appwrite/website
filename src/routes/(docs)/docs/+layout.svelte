@@ -13,11 +13,10 @@
 </script>
 
 <script lang="ts">
-    import type { Snippet } from 'svelte';
-    import type { LayoutProps } from './(two-side-navs)/$types';
     import SiteHeader from '$lib/components/layout/site-header.svelte';
     import SiteFooter from '$lib/components/layout/site-footer.svelte';
     import Search from '$lib/components/Search.svelte';
+    import type { LayoutProps } from './$types';
 
     const { children }: LayoutProps = $props();
 </script>

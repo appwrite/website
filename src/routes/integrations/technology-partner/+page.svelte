@@ -2,8 +2,8 @@
     import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
     import { Main } from '$lib/layouts';
     import { TITLE_SUFFIX } from '$routes/titles';
-    import FooterNav from '../../../lib/components/FooterNav.svelte';
-    import MainFooter from '../../../lib/components/MainFooter.svelte';
+    import FooterNav from '$lib/components/FooterNav.svelte';
+    import MainFooter from '$lib/components/MainFooter.svelte';
     import { socials } from '$lib/constants';
     import { anyify } from '$lib/utils/anyify';
     import Pink from './bg.png';

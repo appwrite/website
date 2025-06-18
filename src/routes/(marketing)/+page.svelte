@@ -1,17 +1,17 @@
 <script lang="ts">
-    import Bento from './(components)/bento/bento.svelte';
-    import CaseStudies from './(components)/case-studies.svelte';
-    import Features from './(components)/features.svelte';
-    import Hero from './(components)/hero.svelte';
-    import Platforms from './(components)/platforms.svelte';
-    import Pricing from './(components)/pricing.svelte';
-    import Scale from './(components)/scale.svelte';
+    import Bento from './_components/bento/bento.svelte';
+    import CaseStudies from './_components/case-studies.svelte';
+    import Features from './_components/features.svelte';
+    import Hero from './_components/hero.svelte';
+    import Platforms from './_components/platforms.svelte';
+    import Pricing from './_components/pricing.svelte';
+    import Scale from './_components/scale.svelte';
     import { Main } from '$lib/layouts';
     import Head from '$lib/components/meta/head.svelte';
-    import Map from './(components)/map.svelte';
+    import Map from './_components/map.svelte';
     import Pullquote from '$lib/components/marketing/pullquote.svelte';
     import { FooterNav, MainFooter } from '$lib/components';
-    import LogoList from './(components)/logo-list.svelte';
+    import LogoList from './_components/logo-list.svelte';
 </script>
 
 <Head title="Appwrite - Build like a team of hundreds" />

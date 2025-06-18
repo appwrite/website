@@ -3,10 +3,10 @@
     import { trackEvent } from '$lib/actions/analytics';
     import AppwriteIn100Seconds from '$lib/components/AppwriteIn100Seconds.svelte';
     import GradientText from '$lib/components/fancy/gradient-text.svelte';
+    import AnnouncementButton from '$lib/components/shared/announcement-button.svelte';
     import { Button } from '$lib/components/ui';
     import { classNames } from '$lib/utils/classnames';
     import Dashboard from './dashboard.svelte';
-    import HeroBanner from './hero-banner.svelte';
 </script>
 
 <div class="relative flex max-w-screen items-center overflow-hidden py-12 md:py-0 lg:min-h-[700px]">
@@ -24,7 +24,7 @@
         <div
             class="animate-blur-in flex flex-col gap-4 [animation-delay:150ms] [animation-duration:1000ms] md:ml-12 lg:ml-0"
         >
-            <HeroBanner
+            <AnnouncementButton
                 title="Announcing Appwrite Sites"
                 href="/blog/post/announcing-appwrite-sites"
             />

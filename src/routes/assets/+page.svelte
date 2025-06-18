@@ -7,8 +7,8 @@
 
     import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
     import { TITLE_SUFFIX } from '$routes/titles';
-    import FooterNav from '../../lib/components/FooterNav.svelte';
-    import MainFooter from '../../lib/components/MainFooter.svelte';
+    import FooterNav from '$lib/components/FooterNav.svelte';
+    import MainFooter from '$lib/components/MainFooter.svelte';
     import Copy from './Copy.svelte';
 
     const title: string = 'Assets' + TITLE_SUFFIX;
