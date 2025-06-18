@@ -11,15 +11,13 @@
     )}
 >
     <div class="relative container grid grid-cols-1 place-items-center md:grid-cols-2">
-        <section class="flex flex-col gap-4">
-            <h2 class="text-display font-aeonik-pro text-primary max-w-[600px]">
-                Become a Technology Partner
-            </h2>
+        <section class="flex max-w-[540px] flex-col gap-4">
+            <h2 class="text-display font-aeonik-pro text-primary">Become an Appwrite Partner</h2>
             <p class="text-body font-medium">
-                Join our Technology Partners program to integrate your solutions with Appwrite’s
-                API, enhancing functionality and expanding your reach.
+                Maximize your earnings by providing clients with priority access to Appwrite’s
+                cutting-edge solutions at competitive rates.
             </p>
-            <a href="/integrations/technology-partner" class="web-button mt-4">
+            <a href="/contact-us" class="web-button mt-4">
                 <span class="text">Get Started</span>
             </a>
         </section>

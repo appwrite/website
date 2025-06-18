@@ -9,6 +9,7 @@ isNew: true
 cover: /images/partners/covers/makeshyft.png
 category: agency
 website: http://www.makeshyft.com
+email: makeshfty@makeshyft.com
 product: 
     avatar: '/images/partners/avatars/makeshyft.png'
     vendor: SimbaLabs
