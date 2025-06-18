@@ -83,12 +83,10 @@
                 <section>
                     {#if isNavLink(navGroup)}
                         {#if expandable && !$layoutState.showSidenav}
-                            <Tooltip placement="right">
-                                <SidebarNavButton groupItem={navGroup} />
-                                {#snippet tooltip()}
-                                    <span>{navGroup.label}</span>
-                                {/snippet}
-                            </Tooltip>
+                            <SidebarNavButton groupItem={navGroup} />
+                            {#snippet tooltip()}
+                                <span>{navGroup.label}</span>
+                            {/snippet}
                         {:else}
                             <SidebarNavButton groupItem={navGroup} />
                         {/if}
