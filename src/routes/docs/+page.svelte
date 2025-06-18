@@ -9,6 +9,8 @@
     import CodeCard, { type CodeCardProps } from './CodeCard.svelte';
     import Sidebar from './Sidebar.svelte';
     import { trackEvent } from '$lib/actions/analytics';
+    import Platforms from '$routes/(marketing)/(components)/platforms.svelte';
+    import HeroBanner from '$routes/(marketing)/(components)/hero-banner.svelte';
 
     const title = 'Docs' + TITLE_SUFFIX;
     const description =
@@ -79,48 +81,20 @@
         </div>
 
         <section class="web-hero is-align-start e-hero-docs relative">
+            <HeroBanner title="MCP Server" href="/docs/tooling/mcp" />
             <h1 class="text-display font-aeonik-pro text-primary max-w-[600px]">
-                Learn how to build like a team of hundreds<span class="web-u-color-text-accent"
-                    >_
-                </span>
+                Docs<span class="web-u-color-text-accent">_ </span>
             </h1>
             <p class="text-description max-w-[600px]">
                 Appwrite helps you build secure and scalable apps, faster. Leverage Appwrite's
                 powerful APIs to stop fighting technologies and start delivering value.
             </p>
+
+            <Button variant="secondary" href="/docs/quick-starts" class="mt-8"
+                >Quickstart guides</Button
+            >
         </section>
-        <section class="web-hero is-align-start tech-hero">
-            <h2 class="text-title font-aeonik-pro text-primary max-w-[600px]">
-                Get started with your technologies
-            </h2>
-            <p class="text-description max-w-[600px]">
-                Start building with your preferred web, mobile, and native frameworks by following a
-                quick start guide.
-            </p>
-            <Technologies />
-            <Button href="/docs/sdks" class="self-start" variant="secondary">
-                <span class="text-sub-body font-medium">Explore all technologies</span>
-            </Button>
-            <div class="web-is-not-mobile spline-wrapper absolute">
-                <img
-                    class="web-u-only-dark"
-                    src="/images/animations/tech-dark-transparent.png"
-                    width="660"
-                    height="660"
-                    alt=""
-                    style="position: absolute;"
-                />
-                <img
-                    class="web-u-only-light"
-                    src="/images/animations/tech-light-transparent.png"
-                    width="660"
-                    height="660"
-                    alt=""
-                    style="position: absolute;"
-                />
-            </div>
-            <div class="bg-overlay"></div>
-        </section>
+        <Platforms class="p-0!" />
         <section>
             <h2 class="text-title font-aeonik-pro text-primary max-w-[600px]">Show me some code</h2>
             <p class="text-description mt-4 max-w-[600px]">

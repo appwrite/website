@@ -78,15 +78,24 @@
             secondary: '#E1725C'
         }
     ];
+
+    interface PlatformsProps {
+        class?: string;
+        headline?: string;
+    }
+
+    const { headline, class: className }: PlatformsProps = $props();
 </script>
 
-<div class="border-smooth relative z-10 border-y border-dashed">
+<div class={classNames('border-smooth relative z-10 border-y border-dashed', className)}>
     <div class="container flex flex-col items-center max-md:pt-4 md:flex-row">
-        <GradientText>
-            <span class="flex items-center pr-4 text-sm font-medium md:w-full md:max-w-[175px]"
-                >Designed for the tools you work with</span
-            >
-        </GradientText>
+        {#if headline}
+            <GradientText>
+                <span class="flex items-center pr-4 text-sm font-medium md:w-full md:max-w-[175px]"
+                    >{headline}</span
+                >
+            </GradientText>
+        {/if}
 
         <div
             class={classNames(
