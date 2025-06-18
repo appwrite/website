@@ -1,6 +1,6 @@
 <script>
     import Main from '$lib/layouts/Main.svelte';
-    import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
+    import { DEFAULT_HOST } from '$lib/utils/metadata';
     import { TITLE_SUFFIX } from '$routes/titles';
     import Templates from './(components)/Templates.svelte';
 
@@ -14,7 +14,6 @@
     import DevelopLocally from './(components)/DevelopLocally.svelte';
     import DeploySeamlessly from './(components)/DeploySeamlessly.svelte';
     import Testimonials from './(components)/Testimonials.svelte';
-    import RegionsMap from './(components)/RegionsMap.svelte';
     import { PUBLIC_APPWRITE_DASHBOARD } from '$env/static/public';
     import ProductCards from '$lib/components/product-pages/product-cards.svelte';
 

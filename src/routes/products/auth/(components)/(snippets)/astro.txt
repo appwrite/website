@@ -1,0 +1,15 @@
+import { Client, Account } from 'node-appwrite';
+
+async function getLoggedInUser(context) {
+  const session = cookies().get('custom-session-cookie');
+  if (!session) return;
+
+  const client = new Client()
+    .setEndpoint(import.meta.env.PUBLIC_APPWRITE_ENDPOINT)
+    .setProject(import.meta.env.PUBLIC_APPWRITE_PROJECT_ID);
+
+  client.setSession(session.value);
+  const account = new Account(client);
+
+  return account.get();
+}

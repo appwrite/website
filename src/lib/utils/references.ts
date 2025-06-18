@@ -65,6 +65,7 @@ export const Platform = {
 
 type PlatformType = typeof Platform;
 export type Platform = (typeof Platform)[keyof typeof Platform];
+export const VALID_PLATFORMS = new Set(Object.values(Platform));
 
 export const Framework = {
     NextJs: 'Next.js',
@@ -155,9 +156,17 @@ export const preferredVersion = writable<Version | null>(
     globalThis?.localStorage?.getItem('preferredVersion') as Version
 );
 
-export const preferredPlatform = writable<Platform>(
-    (globalThis?.localStorage?.getItem('preferredPlatform') ?? 'client-web') as Platform
-);
+function getInitialPlatform(): Platform {
+    const stored = globalThis?.localStorage?.getItem('preferredPlatform') ?? Platform.ClientWeb;
+    // return if this platform is valid
+    if (VALID_PLATFORMS.has(stored as Platform)) {
+        return stored as Platform;
+    } else {
+        return Platform.ClientWeb;
+    }
+}
+
+export const preferredPlatform = writable<Platform>(getInitialPlatform());
 
 if (browser) {
     preferredVersion.subscribe((value) => {
@@ -165,6 +174,9 @@ if (browser) {
     });
 
     preferredPlatform.subscribe((value) => {
-        if (value) globalThis?.localStorage?.setItem('preferredPlatform', value);
+        // only save the ones for which we have api references.
+        if (value && VALID_PLATFORMS.has(value)) {
+            globalThis?.localStorage?.setItem('preferredPlatform', value);
+        }
     });
 }
