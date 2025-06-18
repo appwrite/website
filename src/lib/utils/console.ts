@@ -28,14 +28,14 @@ const ASCII_ART = `
 
 export function displayHiringMessage() {
     if (browser) {
-        console.log('%c' + ASCII_ART, 'font-family: monospace; white-space: pre;');
+        console.log('%c' + ASCII_ART, 'font-family: monospace; white-space: pre; color: #fd366e;');
         console.log(
-            '%cWe are hiring! 🚀',
-            'font-family: Aeonik Pro, -apple-system, BlinkMacSystemFont, sans-serif; font-size: 20px; font-weight: bold; color: #fd366e;'
+            '%cWe are hiring!',
+            'font-family: Aeonik Pro, -apple-system, BlinkMacSystemFont, sans-serif; font-size: 20px; font-weight: bold;'
         );
         console.log(
             '%cJoin us in building the open-source, all-in-one development platform',
-            'font-family: Inter, -apple-system, BlinkMacSystemFont, sans-serif; font-size: 14px; color: #fd366e;'
+            'font-family: Inter, -apple-system, BlinkMacSystemFont, sans-serif; font-size: 14px;'
         );
         console.log(
             '%cCheck out our open positions at https://appwrite.io/careers',
