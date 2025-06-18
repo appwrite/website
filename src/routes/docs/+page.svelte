@@ -94,8 +94,8 @@
                 >Quickstart guides</Button
             >
         </section>
-        <Platforms class="p-0!" />
-        <section>
+        <Platforms class="mt-12! p-0! max-md:p-0!" />
+        <section class="mt-12!">
             <h2 class="text-title font-aeonik-pro text-primary max-w-[600px]">Show me some code</h2>
             <p class="text-description mt-4 max-w-[600px]">
                 If you learn best from code examples, follow one of our tutorials.
@@ -108,7 +108,7 @@
                 {/each}
             </Carousel>
         </section>
-        <section class="web-hero is-align-start is-no-max-width">
+        <section class="web-hero is-align-start is-no-max-width mt-12!">
             <h2 class="text-title font-aeonik-pro text-primary max-w-[600px]">
                 Explore capabilities
             </h2>
@@ -325,7 +325,7 @@
                 </ul>
             </div>
         </section>
-        <section class="web-hero is-align-start is-no-max-width">
+        <section class="web-hero is-align-start is-no-max-width mt-12!">
             <h2 class="text-title font-aeonik-pro text-primary max-w-[600px]">
                 Explore ways to integrate
             </h2>
@@ -388,7 +388,7 @@
                 </ul>
             </div>
         </section>
-        <section class="web-hero is-align-start is-no-max-width">
+        <section class="web-hero is-align-start is-no-max-width mt-12!">
             <h2 class="text-title font-aeonik-pro text-primary max-w-[600px]">
                 Migrate to Appwrite
             </h2>
@@ -467,45 +467,5 @@
         @media (min-width: 1280px) {
             padding-inline-start: 3rem; // 48px
         }
-    }
-
-    .tech-hero {
-        @include gradients.border-block-gradient;
-
-        --m-border-size: 1px;
-        --m-border-gradient-before: linear-gradient(
-            to right,
-            hsl(var(--web-color-smooth)) 0%,
-            hsl(var(--web-color-smooth)) 90%,
-            transparent
-        );
-
-        max-inline-size: unset;
-        margin-block-start: 2rem;
-        margin-inline-start: -3rem;
-        padding-block: 5rem;
-        padding-inline-start: 3rem;
-
-        position: relative;
-        z-index: 10;
-
-        .spline-wrapper {
-            --p-size: 700px;
-            inline-size: var(--p-size);
-            block-size: var(--p-size);
-            inset-block-start: -3rem;
-            z-index: -1;
-            left: calc(50% - 384px + 400px);
-        }
-    }
-
-    :global(.dark) .tech-hero {
-        background: linear-gradient(to right, #19191c80, #19191c00);
-        backdrop-filter: blur(1rem);
-        -webkit-backdrop-filter: blur(1rem);
-    }
-
-    :global(.dark) .bg-overlay {
-        background: linear-gradient(to right, #19191c00 0%, #19191c 400px, #19191c);
     }
 </style>

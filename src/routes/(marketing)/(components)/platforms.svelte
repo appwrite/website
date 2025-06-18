@@ -88,7 +88,7 @@
 </script>
 
 <div class={classNames('border-smooth relative z-10 border-y border-dashed', className)}>
-    <div class="container flex flex-col items-center max-md:pt-4 md:flex-row">
+    <div class="/max-md:pt-4 container flex flex-col items-center md:flex-row">
         {#if headline}
             <GradientText>
                 <span class="flex items-center pr-4 text-sm font-medium md:w-full md:max-w-[175px]"
@@ -122,7 +122,7 @@
                                 >
                                     <Tooltip.Trigger
                                         class={classNames(
-                                            'border-smooth group animate-fade-in relative mt-4 flex h-16 w-16 items-center justify-center border-dashed md:mt-0 md:w-full lg:border-r',
+                                            'border-smooth group animate-fade-in /mt-4 relative flex h-16 w-16 items-center justify-center border-dashed md:mt-0 md:w-full lg:border-r',
                                             {
                                                 'lg:border-l': i === 0
                                             }
