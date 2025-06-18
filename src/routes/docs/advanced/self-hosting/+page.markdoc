@@ -6,9 +6,40 @@ description: Set up your self-hosted Appwrite instance easily. Read the installa
 
 Appwrite was designed from the ground up with self-hosting in mind. You can install and run Appwrite on any operating system that can run a [Docker CLI](https://www.docker.com/products/docker-desktop). Self-hosted Appwrite instances can be configured flexibly with access to the same features found on Appwrite Cloud.
 
-
 {% info title="Upgrading From Older Versions" %}
 If you are migrating from an older version of Appwrite, you need to follow the [migration instructions](/docs/advanced/self-hosting/update)
+{% /info %}
+
+# Cloud vs Self-hosting {% #cloud-vs-self-hosting %}
+
+Choose the deployment method that fits your needs.
+
+| Feature | Appwrite Cloud | Self-hosting |
+|---------|---------------|--------------|
+| Setup | Zero setup | Manual setup required |
+| Maintenance | Fully managed | You manage updates and scaling |
+| Data control | Managed infrastructure | Full control over data location |
+| Compliance | Built-in compliance | Configure for your requirements |
+| Scaling | Automatic | Manual configuration |
+
+# When to self-host {% #when-to-self-host %}
+
+Self-hosting is ideal when you need data control or have specific compliance requirements.
+
+**Consider self-hosting if:**
+- Your data must stay within specific regions or infrastructure
+- You need custom integrations with existing enterprise systems
+- You operate in air-gapped or restricted environments
+- You have enterprise-scale traffic with dedicated DevOps expertise
+
+**Consider Appwrite Cloud if:**
+- You want to focus on building features, not managing infrastructure
+- You're prototyping or building an MVP
+- Your team lacks extensive DevOps experience
+- You expect self-hosting to save significant costs (it might cost more when factoring in time and expertise)
+
+{% info title="Enterprise self-hosting" %}
+For compliance features and dedicated support, explore [enterprise self-hosting solutions](/contact-us/enterprise).
 {% /info %}
 
 # Quick start {% #quick-start %}
@@ -94,22 +125,6 @@ For the fastest setup, use these pre-configured deployment options:
 Deploy Appwrite on modern PaaS platforms for simplified management:
 
 {% cards %}
-{% cards_item href="/docs/advanced/self-hosting/platforms/aws" title="AWS" %}
-Deploy on AWS using ECS, EC2, or Lightsail with comprehensive security and scaling options.
-{% /cards_item %}
-
-{% cards_item href="/docs/advanced/self-hosting/platforms/digitalocean" title="DigitalOcean" %}
-Simple deployment on DigitalOcean Droplets with excellent developer experience.
-{% /cards_item %}
-
-{% cards_item href="/docs/advanced/self-hosting/platforms/google-cloud" title="Google Cloud" %}
-Leverage Google Cloud's infrastructure with Cloud Run, Compute Engine, or GKE.
-{% /cards_item %}
-
-{% cards_item href="/docs/advanced/self-hosting/platforms/azure" title="Azure" %}
-Deploy on Azure using Container Instances, Virtual Machines, or Azure Kubernetes Service.
-{% /cards_item %}
-
 {% cards_item href="/docs/advanced/self-hosting/platforms/coolify" title="Coolify" %}
 Open-source platform for easy self-hosting with one-click deployments.
 {% /cards_item %}
