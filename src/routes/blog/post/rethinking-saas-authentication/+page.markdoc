@@ -31,9 +31,11 @@ Technologies like **Single Sign-On (SSO)** help bridge this gap—offering both 
 
 Take a look at our [developer’s guide to user authentication](/blog/post/guide-to-user-authentication) for more in-depth insights.
 
+{% call_to_action title="Customer identity without the hassle" description="Add secure authentication for your users in just a couple of minutes." point1="Built-in security and compliance" point2="Multi-factor authentication" point3="Custom roles and permissions" point4="Session control and management" cta="Request a demo" url="https://appwrite.io/contact-us/enterprise" /%}
+
 ## Managing multi-tenant complexity
 
-Multi-tenancy is the backbone of SaaS, but it complicates identity management. Different tenants may need custom sign-in flows, roles, or Identity Provider (IdP) setups.
+Multi-tenancy is the backbone of SaaS, but it complicates identity management. Different tenants may need custom sign-in flows, roles, or [Identity Provider (IdP)](/blog/post/understanding-idp-vs-sp-initiated-sso) setups.
 
 Appwrite’s **Teams API** provides per-tenant identity management—supporting isolation, security, and flexibility at scale.
 
@@ -51,11 +53,9 @@ Appwrite’s architecture is designed for high scalability, keeping authenticati
 
 ## Meeting compliance and privacy expectations
 
-Regulations like GDPR, HIPAA, and SOC 2 demand strict user data protection and auditability.
+Regulations like [GDPR](/docs/advanced/security/gdpr), [HIPAA](/docs/advanced/security/hipaa), and [SOC 2](/docs/advanced/security/soc2) demand strict user data protection and auditability.
 
 Appwrite’s built-in encryption, access controls, and regional hosting options make compliance simpler, helping you earn and maintain client trust.
-
-{% call_to_action title="Customer identity without the hassle" description="Add secure authentication for your users in just a couple of minutes." point1="Built-in security and compliance" point2="Multi-factor authentication" point3="Custom roles and permissions" point4="Session control and management" cta="Request a demo" url="https://appwrite.io/contact-us/enterprise" /%}
 
 # Proven SaaS authentication strategies
 
@@ -85,7 +85,7 @@ Appwrite’s secure session and token handling features make it easier to protec
 
 ## Empower tenants with delegated management
 
-Your customers want control. Appwrite’s Teams API lets tenant admins manage users, permissions, and access policies themselves—reducing your operational load and improving client satisfaction.
+Your customers want control. Appwrite’s Teams API lets tenant admins manage users, permissions, and access policies themselves, reducing your operational load and improving client satisfaction.
 
 # Choosing the right approach to SaaS authentication
 
@@ -97,7 +97,7 @@ When building your auth stack, ask:
 - **Will it scale?** Performance under load and future-proofing are essential.
 - **Can we stay compliant?** Built-in privacy controls save time and headaches.
 
-Appwrite checks every box, giving you a robust, developer-friendly authentication platform without the heavyweight complexity.
+Appwrite checks every box, giving you a robust, developer-friendly [authentication platform](/products/auth) without the heavyweight complexity.
 
 # Ship SaaS authentication smarter with Appwrite
 
