@@ -1,5 +1,6 @@
 <script lang="ts">
     import type { Snippet } from 'svelte';
+    import { onMount, tick } from 'svelte';
 
     let carousel: HTMLElement;
 
@@ -11,42 +12,49 @@
     }
 
     const { size = 'default', gap = 32, header, children }: Props = $props();
-    let scroll = 0;
-
-    function calculateScrollAmount(prev = false) {
-        const direction = prev ? -1 : 1;
-        const carouselSize = carousel?.clientWidth;
-        const childSize = (carousel.childNodes[0] as HTMLUListElement)?.clientWidth + gap;
-
-        scroll = scroll || carouselSize;
-
-        const numberOfItems = Math.floor(carouselSize / childSize);
-        const overflow = scroll % childSize;
-        const amount = numberOfItems * childSize - overflow * direction;
-        scroll += amount * direction;
-        return amount * direction;
-    }
-
-    function next() {
-        carousel.scrollBy({
-            left: calculateScrollAmount(),
-            behavior: 'smooth'
-        });
-    }
-    function prev() {
-        carousel.scrollBy({
-            left: calculateScrollAmount(true),
-            behavior: 'smooth'
-        });
-    }
 
     let isEnd = $state(false);
     let isStart = $state(true);
 
+    function getScrollItemWidth(): number {
+        const firstItem = carousel?.querySelector('li');
+        if (firstItem) {
+            return firstItem.offsetWidth + gap;
+        }
+        return 0;
+    }
+
+    function next() {
+        const scrollAmount = getScrollItemWidth();
+        if (scrollAmount > 0) {
+            carousel.scrollBy({
+                left: scrollAmount,
+                behavior: 'smooth'
+            });
+        }
+    }
+
+    function prev() {
+        const scrollAmount = getScrollItemWidth();
+        if (scrollAmount > 0) {
+            carousel.scrollBy({
+                left: -scrollAmount,
+                behavior: 'smooth'
+            });
+        }
+    }
+
     function handleScroll() {
+        if (!carousel) return;
         isStart = carousel.scrollLeft <= 0;
         isEnd = Math.ceil(carousel.scrollLeft + carousel.offsetWidth) >= carousel.scrollWidth;
     }
+
+    onMount(() => {
+        tick().then(() => {
+            handleScroll();
+        });
+    });
 </script>
 
 <div>
@@ -108,6 +116,7 @@
             height: 100%;
             transition: ease 250ms;
             z-index: 100;
+            pointer-events: none; /* Crucial: ensures clicks go through to carousel content */
         }
 
         &::before {
@@ -138,6 +147,8 @@
     }
 
     .carousel {
+        /* Important for your layout */
+        display: grid; /* Changed from default to allow grid-auto-flow */
         grid-auto-flow: column;
         overflow-x: scroll;
         scroll-snap-type: x proximity;
@@ -151,6 +162,9 @@
     }
 
     .carousel :global(li) {
-        scroll-margin: 48px;
+        scroll-snap-align: start; /* This was on the li in the parent, but should be here */
+        scroll-margin: 48px; /* For padding if snap point is too close to edge */
+        /* You might need to set a min-width on your list items for consistent sizing */
+        /* min-width: 300px; */
     }
 </style>
