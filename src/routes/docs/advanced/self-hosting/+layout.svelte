@@ -91,6 +91,10 @@
                     href: '/docs/advanced/self-hosting/production'
                 },
                 {
+                    label: 'Security',
+                    href: '/docs/advanced/self-hosting/production/security'
+                },
+                {
                     label: 'Scaling',
                     href: '/docs/advanced/self-hosting/production/scaling'
                 },
@@ -105,10 +109,6 @@
                 {
                     label: 'Error monitoring',
                     href: '/docs/advanced/self-hosting/production/errors'
-                },
-                {
-                    label: 'Security',
-                    href: '/docs/advanced/self-hosting/production/security'
                 },
                 {
                     label: 'Backups',

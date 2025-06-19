@@ -12,11 +12,11 @@ This guide assumes you have some basic understanding of Docker and Docker Compos
 
 Before deploying Appwrite to production, ensure you have configured:
 
+- **[Security](/docs/advanced/self-hosting/production/security)** - Implement essential security practices
 - **[Scaling](/docs/advanced/self-hosting/production/scaling)** - Configure horizontal and vertical scaling for your containers
 - **[Rate limits](/docs/advanced/self-hosting/production/rate-limits)** - Enable rate limiting to protect against abuse
 - **[Email delivery](/docs/advanced/self-hosting/production/emails)** - Set up reliable SMTP for production email delivery
 - **[Error monitoring](/docs/advanced/self-hosting/production/errors)** - Configure error tracking and logging
-- **[Security](/docs/advanced/self-hosting/production/security)** - Implement essential security practices
 - **[Backups](/docs/advanced/self-hosting/production/backups)** - Set up regular database and storage backups
 - **[Updates](/docs/advanced/self-hosting/production/updates)** - Plan for version updates and migrations
 - **[Debugging](/docs/advanced/self-hosting/production/debugging)** - Set up monitoring and debugging tools
