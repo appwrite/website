@@ -116,7 +116,7 @@
             height: 100%;
             transition: ease 250ms;
             z-index: 100;
-            pointer-events: none; /* Crucial: ensures clicks go through to carousel content */
+            pointer-events: none; 
         }
 
         &::before {
@@ -147,8 +147,7 @@
     }
 
     .carousel {
-        /* Important for your layout */
-        display: grid; /* Changed from default to allow grid-auto-flow */
+        display: grid; 
         grid-auto-flow: column;
         overflow-x: scroll;
         scroll-snap-type: x proximity;
@@ -162,9 +161,7 @@
     }
 
     .carousel :global(li) {
-        scroll-snap-align: start; /* This was on the li in the parent, but should be here */
-        scroll-margin: 48px; /* For padding if snap point is too close to edge */
-        /* You might need to set a min-width on your list items for consistent sizing */
-        /* min-width: 300px; */
+        scroll-snap-align: start; 
+        scroll-margin: 48px; 
     }
 </style>
