@@ -6,7 +6,7 @@ description: Set up your self-hosted Appwrite instance easily. Read the installa
 
 Appwrite was designed from the ground up with self-hosting in mind. You can install and run Appwrite on any operating system that can run a [Docker CLI](https://www.docker.com/products/docker-desktop). Self-hosted Appwrite instances can be configured flexibly with access to the same features found on Appwrite Cloud.
 
-{% info title="Upgrading From Older Versions" %}
+{% info title="Upgrading from older versions" %}
 If you are migrating from an older version of Appwrite, you need to follow the [migration instructions](/docs/advanced/self-hosting/update)
 {% /info %}
 
@@ -30,13 +30,13 @@ Self-hosting is ideal when you need data control or have specific compliance req
 - Your data must stay within specific regions or infrastructure
 - You need custom integrations with existing enterprise systems
 - You operate in air-gapped or restricted environments
-- You have enterprise-scale traffic with dedicated DevOps expertise
+- You have enterprise-scale traffic and dedicated DevOps expertise
 
-**Consider Appwrite Cloud if:**
+**Stick with Appwrite Cloud if:**
 - You want to focus on building features, not managing infrastructure
 - You're prototyping or building an MVP
 - Your team lacks extensive DevOps experience
-- You expect self-hosting to save significant costs (it might cost more when factoring in time and expertise)
+- You expect self-hosting to save costs (it often costs more when factoring in time and expertise)
 
 {% info title="Enterprise self-hosting" %}
 For compliance features and dedicated support, explore [enterprise self-hosting solutions](/contact-us/enterprise).
