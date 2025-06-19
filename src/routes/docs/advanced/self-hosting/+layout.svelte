@@ -43,14 +43,6 @@
                 {
                     label: 'Coolify',
                     href: '/docs/advanced/self-hosting/platforms/coolify'
-                },
-                {
-                    label: 'Railway',
-                    href: '/docs/advanced/self-hosting/platforms/railway'
-                },
-                {
-                    label: 'Render',
-                    href: '/docs/advanced/self-hosting/platforms/render'
                 }
             ]
         },
