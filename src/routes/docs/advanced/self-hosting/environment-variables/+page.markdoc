@@ -26,11 +26,10 @@ docker compose exec appwrite vars
 | `_APP_LOCALE` | Set your Appwrite's locale. By default, the locale is set to 'en'. |
 | `_APP_OPTIONS_ABUSE` | Allows you to disable abuse checks and API rate limiting. By default, set to 'enabled'. To cancel the abuse checking, set to 'disabled'. It is not recommended to disable this check-in a production environment. |
 | `_APP_OPTIONS_ROUTER_FORCE_HTTPS` | **version >= 1.7.0** Allows you to force HTTPS connection to function and site domains. This feature redirects any HTTP call to HTTPS and adds the `Strict-Transport-Security` header to all HTTP responses. By default, set to `enabled`. To disable, set to `disabled`. This feature will work only when your ports are set to default 80 and 443. |
+| `_APP_OPTIONS_FORCE_HTTPS` | Deprecated since 1.7.0. Allows you to force HTTPS connection to your API. This feature redirects any HTTP call to HTTPS and adds the `Strict-Transport-Security` header to all HTTP responses. By default, set to `enabled`. To disable, set to `disabled`. This feature will work only when your ports are set to default 80 and 443. |
 | `_APP_OPTIONS_FUNCTIONS_FORCE_HTTPS` | Deprecated since 1.7.0. Allows you to force HTTPS connection to function domains. This feature redirects any HTTP call to HTTPS and adds the `Strict-Transport-Security` header to all HTTP responses. By default, set to `enabled`. To disable, set to `disabled`. This feature will work only when your ports are set to default 80 and 443. |
 | `_APP_OPENSSL_KEY_V1` | This is your server private secret key that is used to encrypt all sensitive data on your server. Appwrite server encrypts all secret data on your server like webhooks, HTTP passwords, user sessions, and storage files. The var is not set by default, if you wish to take advantage of Appwrite encryption capabilities you should change it and make sure to **keep it a secret and have a backup for it**. |
 | `_APP_DOMAIN` | Your Appwrite domain address. When setting a public suffix domain, Appwrite will attempt to issue a valid SSL certificate automatically. When used with a dev domain, Appwrite will assign a self-signed SSL certificate. The default value is 'localhost'. |
-| `_APP_DOMAIN_FUNCTIONS` | A domain to use for function preview URLs. The default value is 'functions.localhost'. Setting to empty turns off function preview URLs. |
-| `_APP_DOMAIN_SITES` | **version >= 1.7.0** The domain to use for site preview URLs. The default value is 'sites.localhost'. Setting to empty turns off site URLs. |
 | `_APP_DOMAIN_TARGET` | Deprecated since 1.7.0. A DNS A record hostname to serve as a CNAME target for your Appwrite custom domains. You can use the same value as used for the Appwrite `_APP_DOMAIN` variable. The default value is 'localhost'. |
 | `_APP_DOMAIN_TARGET_CNAME` | **version >= 1.7.0** A domain that can be used as DNS CNAME record to point to instance of Appwrite server. The default value is 'localhost'. |
 | `_APP_DOMAIN_TARGET_A` | **version >= 1.7.0** An IPV4 that can be used as DNS A record to point to instance of Appwrite server. The default value is '127.0.0.1'. |
@@ -50,7 +49,6 @@ docker compose exec appwrite vars
 | `_APP_USAGE_DATABASE_INTERVAL` |  **(version >= 1.0.0)** Deprecated since 1.1.0 uses `_APP_USAGE_AGGREGATION_INTERVAL` instead. |
 | `_APP_WORKER_PER_CORE` |  **(version >= 0.13.0)** Internal Worker per core for the API, Realtime and Executor containers. Can be configured to optimize performance. |
 
-
 # Redis {% #redis %}
 Appwrite uses a Redis server for managing cache, queues and scheduled tasks. The Redis env vars are used to allow Appwrite server to connect to the Redis container.
 
@@ -60,7 +58,6 @@ Appwrite uses a Redis server for managing cache, queues and scheduled tasks. The
 | `_APP_REDIS_PORT`          | Redis server TCP port. Default value is: `6379`.                                                      |
 | `_APP_REDIS_USER`          | Redis server user. This is an optional variable. Default value is an empty string.   |
 | `_APP_REDIS_PASS`          | Redis server password. This is an optional variable. Default value is an empty string.|
-
 
 # Database {% #database %}
 Appwrite uses MariaDB to persist database data. The DB env vars are used to allow Appwrite server to connect to MariaDB.
@@ -73,7 +70,6 @@ Appwrite uses MariaDB to persist database data. The DB env vars are used to allo
 | `_APP_DB_USER`         | MariaDB server user name. Default value is: `user`.                                              |
 | `_APP_DB_PASS`         | MariaDB server user password. Default value is: `password`.                                      |
 | `_APP_DB_ROOT_PASS`    | MariaDB server root password. Default value is: `rootsecretpassword`.                           |                              |
-
 
 # SMTP {% #smtp %}
 
@@ -88,7 +84,6 @@ If running in production, it might be easier to use a 3rd party SMTP server as i
 | `_APP_SMTP_SECURE`    | SMTP secure connection protocol. Empty by default, change to 'tls' if running on a secure connection.                                                            |
 | `_APP_SMTP_USERNAME`  | SMTP server user name. Empty by default.                                                                                                                         |
 | `_APP_SMTP_PASSWORD`  | SMTP server user password. Empty by default.                                                                                                                     |
-
 
 # Phone {% #phone %}
 
@@ -123,11 +118,11 @@ If running in production, it might be easier to use a 3rd party SMTP server as i
 | `_APP_STORAGE_LINODE_ACCESS_KEY`            | **version >= 0.14.2** Linode object storage access key. Required when the storage adapter is set to Linode. You can get your access key from your Linode console.                                                                  |
 | `_APP_STORAGE_LINODE_SECRET`                | **version >= 0.14.2** Linode object storage secret key. Required when the storage adapter is set to Linode
 
-
-
 # Compute (Functions and Sites) {% #compute %}
 | **Name**                      | **Description** |
 |-------------------------------|-----------------|
+| `_APP_DOMAIN_FUNCTIONS` | A domain to use for function preview URLs. The default value is 'functions.localhost'. Setting to empty turns off function preview URLs. |
+| `_APP_DOMAIN_SITES` | **version >= 1.7.0** The domain to use for site preview URLs. The default value is 'sites.localhost'. Setting to empty turns off site URLs. |
 | `_APP_COMPUTE_SIZE_LIMIT`     | **version >= 1.7.0** The maximum size of a function and site deployments in bytes. The default value is 30MB. |
 | `_APP_FUNCTIONS_SIZE_LIMIT`   | Deprecated since 1.7.0. The maximum size deployment in bytes. The default value is 30MB. |
 | `_APP_FUNCTIONS_TIMEOUT`      | **version >= 0.7.0** The maximum number of seconds allowed as a timeout value when creating a new function. The default value is 900 seconds. This is the global limit, timeout for individual functions are configured in the function's settings or in appwrite.json. |
@@ -157,7 +152,7 @@ If running in production, it might be easier to use a 3rd party SMTP server as i
 | `_APP_COMPUTE_MAINTENANCE_INTERVAL`  | **version >= 1.7.0** Interval value containing the number of seconds that the executor should wait before checking for inactive runtimes of functions and sites. The default value is 3600 seconds (1 hour). |
 | `_APP_FUNCTIONS_MAINTENANCE_INTERVAL`| **version >= 1.4.0** Deprecated since 1.7.0. Interval value containing the number of seconds that the executor should wait before checking for inactive runtimes. The default value is 3600 seconds (1 hour). |
 | `_APP_SITES_TIMEOUT` | **version >= 1.7.0** The maximum number of seconds allowed as a timeout value when creating a new site. The default value is 900 seconds. This is the global limit, timeout for individual functions are configured in the sites's settings or in appwrite.json. |
-| `_APP_SITES_RUNTIMES` | **version >= 1.7.0** This option allows you to enable or disable runtime environments for Sites. Disable unused runtimes to save disk space. To enable cloud site runtimes, pass a list of enabled environments separated by a comma. |
+| `_APP_SITES_RUNTIMES` | **version >= 1.7.0** This option allows you to enable or disable runtime environments for Sites. Disable unused runtimes to save disk space. To enable cloud site runtimes, pass a list of enabled environments separated by a comma. [Learn more about runtimes](/docs/advanced/self-hosting/sites#sites) |
 
 # VCS (Version Control System) {% #vcs %}
 
@@ -169,7 +164,6 @@ If running in production, it might be easier to use a 3rd party SMTP server as i
 | `_APP_VCS_GITHUB_CLIENT_ID`     | **version >= 1.4.0** - GitHub client ID. You can find it in your GitHub application details.                    |
 | `_APP_VCS_GITHUB_CLIENT_SECRET` | **version >= 1.4.0** - GitHub client secret. You can generate secrets in your GitHub application settings.    |
 | `_APP_VCS_GITHUB_WEBHOOK_SECRET`| **version >= 1.4.0** - GitHub webhook secret. You can configure it in your GitHub application settings under webhook section. |
-
 
 # Maintenance {% #maintenance %}
 | **Name**                                        | **Description**                                                                                                                                                                    |
