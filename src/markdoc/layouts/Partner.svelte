@@ -78,7 +78,7 @@
                                 {@render children?.()}
                             </div>
                             {#if email}
-                                <Button href={`mailto:${email}`}>Contact {title}</Button>
+                                <Button href={email}>Contact {title}</Button>
                             {/if}
                         </div>
                     </div>
