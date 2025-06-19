@@ -116,7 +116,7 @@
             height: 100%;
             transition: ease 250ms;
             z-index: 100;
-            pointer-events: none; 
+            pointer-events: none;
         }
 
         &::before {
@@ -147,7 +147,7 @@
     }
 
     .carousel {
-        display: grid; 
+        display: grid;
         grid-auto-flow: column;
         overflow-x: scroll;
         scroll-snap-type: x proximity;
@@ -161,7 +161,7 @@
     }
 
     .carousel :global(li) {
-        scroll-snap-align: start; 
-        scroll-margin: 48px; 
+        scroll-snap-align: start;
+        scroll-margin: 48px;
     }
 </style>
