@@ -59,6 +59,7 @@
     import { saveReferrerAndUtmSource } from '$lib/utils/utm';
     import { Sprite } from '$lib/components/ui/icon/sprite';
     import { setTheme, ThemeProvider } from '$lib/providers/theme';
+    import { displayHiringMessage } from '$lib/utils/console';
 
     function applyTheme(theme: Theme) {
         const resolvedTheme = theme === 'system' ? getSystemTheme() : theme;
@@ -71,6 +72,7 @@
     const tracked = new Set();
 
     onMount(() => {
+        displayHiringMessage();
         saveReferrerAndUtmSource(page.url);
 
         const initialTheme = page.route.id?.startsWith('/docs') ? getPreferredTheme() : 'dark';

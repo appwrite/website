@@ -1,43 +1,46 @@
 import { base } from '$app/paths';
 import { groupBy } from 'remeda';
-import type { SearchableCategory } from '$lib/constants';
-import { partnerCategoryDescriptions as categoryDescriptions } from '$lib/constants';
+import {
+    partnerCategoryDescriptions as categoryDescriptions,
+    type SearchableCategory
+} from '$lib/constants';
 
-export type Integration = {
+export type Partner = {
     title: string;
     description: string;
     featured?: boolean;
     cover: string;
-    isNew?: boolean;
-    isPartner?: boolean;
-    platform: string[];
+    partnerLevel: 'Bronze' | 'Silver' | 'Gold' | 'Platinum';
     category: string;
-    product: {
-        avatar: string;
-        vendor: string;
-        description: string;
-    };
+    frameworks: Array<string>;
+    website: string;
     href: string;
-    images: string[];
+    product: {
+        vendor: string;
+        avatar: string;
+        href: string;
+    };
+    capabilities: Array<string>;
+    regions: Array<string>;
+    languages: Array<string>;
 };
 
 export const load = () => {
-    const integrationsGlob = import.meta.glob('./**/*.markdoc', {
+    const partnersGlob = import.meta.glob('./**/*.markdoc', {
         eager: true
     });
 
-    const categories: SearchableCategory[] = [];
+    const categories: Array<SearchableCategory> = [];
     const platforms: string[] = [];
 
-    const integrations = Object.entries(integrationsGlob).map(([filepath, integrationList]) => {
+    const partners = Object.entries(partnersGlob).map(([filepath, integrationList]) => {
         const { frontmatter } = integrationList as {
-            frontmatter: Integration;
+            frontmatter: Partner;
         };
 
         const slug = filepath.replace('./', '').replace('/+page.markdoc', '');
         const integrationName = slug.slice(slug.lastIndexOf('/') + 1);
 
-        frontmatter.platform.map((platform) => platforms.push(platform));
         categories.push(
             categoryDescriptions.find((i) => i.slug === frontmatter.category) ??
                 ({} as SearchableCategory)
@@ -45,13 +48,13 @@ export const load = () => {
 
         return {
             ...frontmatter,
-            href: `${base}/integrations/${integrationName}`
+            href: `${base}/partners/catalog/${integrationName}`
         };
     });
 
-    const groupedIntegrations = groupBy(integrations, (i) => i.category);
+    const groupedPartners = groupBy(partners, (i) => i.category);
 
-    const integrationsWithDescriptions = Object.entries(groupedIntegrations).map(
+    const partnersWithDescriptions = Object.entries(groupedPartners).map(
         ([category, integrations]) => {
             const integrationCategory = categoryDescriptions.find(
                 (key) => key.slug === category.toLowerCase()
@@ -65,9 +68,10 @@ export const load = () => {
         }
     );
 
-    const featuredIntegrations = integrations.filter((i) => i.featured);
+    const featuredIntegrations = partners.filter((i) => i.featured);
 
     const featuredIntegrationsWithCategoryHeadings = Object.entries(featuredIntegrations).map(
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         ([_, integration]) => {
             const integrationCategory = categoryDescriptions.find(
                 (key) => key.slug === integration.category.toLowerCase()
@@ -80,8 +84,8 @@ export const load = () => {
     );
 
     return {
-        integrations: integrationsWithDescriptions,
-        list: integrations,
+        partners: partnersWithDescriptions,
+        list: partners,
         categories: new Set(categories),
         platforms: new Set(platforms),
         featured: featuredIntegrationsWithCategoryHeadings
