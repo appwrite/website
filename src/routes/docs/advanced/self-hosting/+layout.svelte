@@ -96,19 +96,19 @@
             items: [
                 {
                     label: 'Production setup',
-                    href: '/docs/advanced/self-hosting/production'
+                    href: '/docs/advanced/self-hosting/management/production'
                 },
                 {
                     label: 'Backups',
-                    href: '/docs/advanced/self-hosting/backups'
+                    href: '/docs/advanced/self-hosting/management/backups'
                 },
                 {
-                    label: 'Updates & migration',
-                    href: '/docs/advanced/self-hosting/update'
+                    label: 'Updates and migrations',
+                    href: '/docs/advanced/self-hosting/management/updates'
                 },
                 {
                     label: 'Debugging',
-                    href: '/docs/advanced/self-hosting/debug'
+                    href: '/docs/advanced/self-hosting/management/debugging'
                 }
             ]
         }
