@@ -19,8 +19,8 @@ In this blog, we will go in-depth of what Incubators and Accelerators are, what 
 
 Both incubators and accelerators exist to help startups grow, but they do so in slightly different ways:
 
-- **Incubators** are built to nurture early-stage [ideas](https://appwrite.io/blog/post/startups-ideas-for-developers-2024). Their goal is to help founders shape and refine their business models, build their MVPs, and gain traction. Incubators typically operate on an open-ended timeline and may not require startups to have a fully formed product.
-- **Accelerators** are for startups that already have a product or [MVP](https://appwrite.io/blog/post/how-can-you-rapidly-build-an-mvp-for-your-startup) and are ready to grow quickly. These programs usually run for a fixed term (e.g., 3-6 months) and culminate in a pitch or demo day. The goal is to accelerate progress, secure funding, and scale the business.
+- **Incubators** are built to nurture early-stage [ideas](/blog/post/startups-ideas-for-developers-2024). Their goal is to help founders shape and refine their business models, build their MVPs, and gain traction. Incubators typically operate on an open-ended timeline and may not require startups to have a fully formed product.
+- **Accelerators** are for startups that already have a product or [MVP](/blog/post/how-can-you-rapidly-build-an-mvp-for-your-startup) and are ready to grow quickly. These programs usually run for a fixed term (e.g., 3-6 months) and culminate in a pitch or demo day. The goal is to accelerate progress, secure funding, and scale the business.
 
 # The difference between a Startup Incubator and Accelerator
 
@@ -294,4 +294,4 @@ A London-based seed fund and accelerator founded in 2007, known for its strong t
 
 If you’re a founder in the EU (or planning to expand here), exploring the right incubator or accelerator could be the launchpad your startup needs. Take your time, evaluate your fit, and make sure the support matches the stage and ambition of your startup journey.
 
-And no matter which accelerator you choose, the Appwrite Startup Program can complement your journey. As an all-in-one development platform, Appwrite helps you build, deploy, and host your application faster. Startups accepted into the program also get cloud credits and discounts on paid plans. [Apply to the program.](https://appwrite.io/startups)
+And no matter which accelerator you choose, the Appwrite Startup Program can complement your journey. As an all-in-one development platform, Appwrite helps you build, deploy, and host your application faster. Startups accepted into the program also get cloud credits and discounts on paid plans. [Apply to the program.](/startups)
