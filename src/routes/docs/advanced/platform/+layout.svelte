@@ -157,6 +157,11 @@
                     new: isNewUntil('31 July 2025'),
                     label: 'Support SLA',
                     href: '/docs/advanced/platform/support-sla'
+                },
+                {
+                    new: isNewUntil('31 July 2025'),
+                    label: 'Uptime SLA',
+                    href: '/docs/advanced/platform/uptime-sla'
                 }
             ]
         }
