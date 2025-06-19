@@ -99,6 +99,10 @@
                     href: '/docs/advanced/self-hosting/management/production'
                 },
                 {
+                    label: 'Security',
+                    href: '/docs/advanced/self-hosting/security'
+                },
+                {
                     label: 'Backups',
                     href: '/docs/advanced/self-hosting/management/backups'
                 },

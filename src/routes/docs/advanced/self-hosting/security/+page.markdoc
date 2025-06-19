@@ -4,135 +4,38 @@ title: Security
 description: Implement essential security practices for your self-hosted Appwrite instance to protect your data and infrastructure.
 ---
 
-# Security Considerations {% #security-considerations %}
+Securing your self-hosted Appwrite instance is crucial to protect your data and infrastructure. This guide covers the essential security configurations and requirements for production Appwrite deployments.
 
-Securing your self-hosted Appwrite instance is crucial to protect your data and infrastructure. This guide outlines best practices for setting up and maintaining a secure Appwrite deployment.
+# Encryption {% #encryption %}
 
-## Environment Variables {% #environment-variables %}
+Appwrite does not generate a unique encryption key during a default setup. This key encrypts your files and sensitive data like webhook passwords or API keys to keep them secure. To take advantage of this feature, you must generate a unique key and set it as the value of the `_APP_OPENSSL_KEY_V1` environment variable.
 
-Properly configure environment variables to secure your Appwrite instance:
+You **must** set `_APP_OPENSSL_KEY_V1` immediately after installation of a production Appwrite instance. Changing the `_APP_OPENSSL_KEY_V1` variable will cause the loss of existing passwords, OAuth secrets, and API keys.
 
-- Set strong, unique values for all secret variables such as `_APP_SYSTEM_SECURITY_SECRET_KEY`.
-- Never expose sensitive environment variables in code repositories.
-- Consider using a secure environment variable management system for production environments.
-- Rotate secrets periodically according to your organization's security policies.
+Make sure to keep this key in a safe place and never make it publicly accessible.
 
-```bash
-# Example of secure environment variables
-_APP_SYSTEM_SECURITY_SECRET_KEY=your-long-complex-random-string
-_APP_DOMAIN_TARGET=yourdomain.com
-```
+{% info title="Best practice" %}
+You should always prefer **HTTPS** over HTTP in production environments. This keeps your APIs secure and prevents any redirects from interfering with your requests.
+You can force the use of HTTPS with the [_APP_OPTIONS_FORCE_HTTPS](/docs/advanced/self-hosting/environment-variables) environment variable.
+{% /info %}
 
-For a complete list of available environment variables, refer to the [Environment Variables](/docs/advanced/self-hosting/configuration/environment-variables) documentation.
 
-## TLS Certificates {% #tls-certificates %}
+# Console access {% #console-access %}
 
-HTTPS encryption is essential for securing communication between clients and your Appwrite instance:
+Appwrite provides three different methods to limit access to your Appwrite Console.
 
-- Configure TLS certificates for all public-facing endpoints.
-- Use Let's Encrypt for automatic certificate management.
-- Set up proper certificate renewal processes.
-- Ensure proper redirection from HTTP to HTTPS.
+1. Whitelist a group of developers by IP using the `_APP_CONSOLE_WHITELIST_IPS` environment variable.
+2. Whitelist a group of developers by email using the `_APP_CONSOLE_WHITELIST_EMAILS` environment variable.
+3. Only the root user can signup. All other developers must be added through invitations. This is configured using the `_APP_CONSOLE_WHITELIST_ROOT` environment variable.
 
-For detailed instructions on setting up TLS certificates, see the [TLS Certificates](/docs/advanced/self-hosting/configuration/tls-certificates) documentation.
+By default, only the first user can sign up on the Appwrite instance's dashboard. All other users must be added to the dashboard through invitation.
 
-## Network Security {% #network-security %}
+{% arrow_link href="/docs/advanced/self-hosting/environment-variables" %}
+Learn more about environment variables
+{% /arrow_link %}
 
-Protect your Appwrite instance at the network level:
+# Security auditing {% #security-auditing %}
 
-- Place Appwrite behind a reverse proxy in production environments.
-- Implement a firewall to restrict access to only necessary ports:
-  - Port 80/443 for HTTP/HTTPS access
-  - SSH port for administration (use key-based authentication)
-- Set up proper network segmentation to isolate your Appwrite services.
-- Consider using a CDN for additional DDoS protection.
+In addition to the security practices mentioned, it is highly recommended to do regular audits to identify and fix potential security vulnerabilities and performance issues. You can use third-party tools and services that specialize in these areas. These tools can automatically check for vulnerabilities and even offer real-time monitoring.
 
-Example firewall configuration using `ufw` on Ubuntu:
-
-```bash
-sudo ufw allow 80/tcp
-sudo ufw allow 443/tcp
-sudo ufw allow 22/tcp
-sudo ufw enable
-```
-
-## Access Control {% #access-control %}
-
-Implement proper authentication and authorization:
-
-- Enable two-factor authentication for console access.
-- Create separate teams with appropriate permissions for different administrative roles.
-- Regularly audit user access and remove unused accounts.
-- Set up proper API key management with the principle of least privilege.
-- Limit access to the Appwrite console to specific IP addresses when possible.
-
-## Docker Security {% #docker-security %}
-
-Since Appwrite runs in Docker containers, follow these Docker security best practices:
-
-- Keep Docker and all container images updated.
-- Run containers with the principle of least privilege.
-- Use Docker content trust for verifying image integrity.
-- Implement resource limits on containers to prevent DoS attacks.
-- Consider using read-only file systems where possible.
-
-Example of implementing resource limits in `docker-compose.yml`:
-
-```yaml
-services:
-  appwrite:
-    # ...
-    deploy:
-      resources:
-        limits:
-          cpus: '1.0'
-          memory: 1G
-```
-
-## Security Auditing {% #security-auditing %}
-
-Regularly audit your Appwrite deployment:
-
-- Monitor logs for suspicious activities.
-- Conduct periodic security reviews of your configuration.
-- Keep track of all access points to your Appwrite instance.
-- Consider implementing intrusion detection systems.
-- Regularly test your backup and recovery procedures.
-
-## Data Encryption {% #data-encryption %}
-
-Protect sensitive data stored in your Appwrite instance:
-
-- Enable encryption at rest for database and storage.
-- Use secure connection strings for database connections.
-- Consider additional encryption for highly sensitive data.
-- Implement proper key management for encryption keys.
-
-For encryption of specific storage providers, refer to the [Storage Configuration](/docs/advanced/self-hosting/configuration/storage) documentation.
-
-## Regular Updates {% #regular-updates %}
-
-Keep your Appwrite instance and all dependencies up-to-date:
-
-- Subscribe to Appwrite security announcements.
-- Establish a regular schedule for updates.
-- Test updates in a staging environment before production deployment.
-- Have a rollback plan in case updates cause issues.
-
-For update procedures, see the [Updates & Migration](/docs/advanced/self-hosting/update) documentation.
-
-## Security Checklist {% #security-checklist %}
-
-Use this checklist to ensure you've addressed key security concerns:
-
-- [ ] Strong, unique environment variables configured
-- [ ] TLS certificates installed and auto-renewal set up
-- [ ] Network firewall configured
-- [ ] Access control policies implemented
-- [ ] Docker security best practices followed
-- [ ] Log monitoring and alerting configured
-- [ ] Data encryption enabled
-- [ ] Regular update schedule established
-- [ ] Backup and recovery tested
-
-By following these security best practices, you can significantly reduce the risk of security incidents and ensure your self-hosted Appwrite instance remains secure.
+{% partial file="update-variables.md" /%}
