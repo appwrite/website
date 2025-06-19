@@ -14,7 +14,7 @@
         <section class="flex max-w-[540px] flex-col gap-4">
             <h2 class="text-display font-aeonik-pro text-primary">Become an Appwrite Partner</h2>
             <p class="text-body font-medium">
-                Maximize your earnings by providing clients with priority access to Appwrite’s
+                Partner with Appwrite and provide clients with priority access to Appwrite’s
                 cutting-edge solutions at competitive rates.
             </p>
             <a href="/partners#become-a-partner" class="web-button mt-4">
