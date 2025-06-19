@@ -84,27 +84,43 @@
             ]
         },
         {
-            label: 'Management',
+            label: 'Production',
             items: [
                 {
-                    label: 'Production setup',
-                    href: '/docs/advanced/self-hosting/management/production'
+                    label: 'Preparation',
+                    href: '/docs/advanced/self-hosting/production'
+                },
+                {
+                    label: 'Scaling',
+                    href: '/docs/advanced/self-hosting/production/scaling'
+                },
+                {
+                    label: 'Rate limits',
+                    href: '/docs/advanced/self-hosting/production/rate-limits'
+                },
+                {
+                    label: 'Email delivery',
+                    href: '/docs/advanced/self-hosting/production/emails'
+                },
+                {
+                    label: 'Error monitoring',
+                    href: '/docs/advanced/self-hosting/production/errors'
                 },
                 {
                     label: 'Security',
-                    href: '/docs/advanced/self-hosting/security'
+                    href: '/docs/advanced/self-hosting/production/security'
                 },
                 {
                     label: 'Backups',
-                    href: '/docs/advanced/self-hosting/management/backups'
+                    href: '/docs/advanced/self-hosting/production/backups'
                 },
                 {
                     label: 'Updates and migrations',
-                    href: '/docs/advanced/self-hosting/management/updates'
+                    href: '/docs/advanced/self-hosting/production/updates'
                 },
                 {
                     label: 'Debugging',
-                    href: '/docs/advanced/self-hosting/management/debugging'
+                    href: '/docs/advanced/self-hosting/production/debugging'
                 }
             ]
         }

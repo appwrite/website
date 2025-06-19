@@ -1,0 +1,13 @@
+---
+layout: article
+title: Rate limits
+description: Configure rate limiting for your self-hosted Appwrite instance to protect against abuse and attacks.
+---
+
+If you disabled rate limits during development, make sure you re-enable them when moving to production environments. Rate limiting can be enabled by setting the `_APP_OPTIONS_ABUSE` environment variable to `enabled`.
+
+Rate limits are an important mechanism to protect your app. Without rate limits, malicious actors can spam your APIs to perform [denial-of-service type attacks](https://en.wikipedia.org/wiki/Denial-of-service_attack) or brute-force user passwords.
+
+{% arrow_link href="/docs/advanced/self-hosting/configuration/environment-variables" %}
+Learn more about environment variables
+{% /arrow_link %}

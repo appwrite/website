@@ -1,0 +1,13 @@
+---
+layout: article
+title: Scaling
+description: Learn how to scale your self-hosted Appwrite instance horizontally and vertically to handle increased load.
+---
+
+Appwrite is built with scalability in mind. Appwrite can scale both horizontally and vertically.
+
+Each Appwrite instance is composed of many containers, each with its unique job. Appwrite's functions and worker containers are stateless. To scale them, all you need is to replicate them and set up a load balancer to distribute their load.
+
+If you decide to set up a load balancer to scale a container, make sure **all** communication are routed through the load balancer and not directly to the replicated containers. You can configure communicating between Appwrite containers using Docker environment variables.
+
+Two Appwrite containers are stateful. The MariaDB and Redis containers are used for storing data, cache and pub/sub messaging, and usage stats, respectively. To scale these containers, set up a standard cluster (same as you would with any other app using these technologies) according to your needs and performance.
