@@ -1,6 +1,6 @@
 ---
 layout: article
-title: Preferences
+title: Storing user preferences
 description: Learn how to store and manage user preferences in Appwrite. Compare storage options and pick the right approach for your application.
 ---
 
@@ -155,8 +155,8 @@ query {
 ```
 {% /multicode %}
 
-{% arrow_link href="/docs/products/auth/accounts" %}
-Learn more about Appwrite Accounts
+{% arrow_link href="/docs/products/auth/user-preferences" %}
+Learn more about user preferences
 {% /arrow_link %}
 
 # Team preferences {% #team-preferences %}
@@ -278,8 +278,8 @@ val prefs = teams.getPrefs(
 ```
 {% /multicode %}
 
-{% arrow_link href="/docs/products/auth/teams" %}
-Learn more about Appwrite Teams
+{% arrow_link href="/docs/products/auth/user-preferences" %}
+Learn more about team preferences
 {% /arrow_link %}
 
 # Appwrite Databases {% #appwrite-databases %}
@@ -400,5 +400,5 @@ This comparison table shows the strengths of each storage option:
 | **Syncing Required** | Yes | Automatic | Automatic | Automatic |
 | **Query Capabilities** | No | No | No | Yes |
 
-\* Subject to project limits
-\** Unless implemented with local caching
+- \* Subject to project limits
+- \*\* Unless implemented with local caching
