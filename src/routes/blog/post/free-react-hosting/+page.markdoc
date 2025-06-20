@@ -13,7 +13,7 @@ unlisted: true
 
 React is one of the most popular JavaScript libraries for building dynamic, interactive web applications. While deploying React apps is generally straightforward, choosing the right hosting platform that balances cost, performance, and developer-friendly features can be a challenge.
 
-[Appwrite Sites](https://appwrite.io/products/sites) provides an optimized hosting environment tailored for modern web applications, including React, with built-in features that enhance performance, security, and deployment workflows. This article explores how Appwrite Sites simplifies React deployment, improves efficiency, and compares with other hosting solutions.
+[Appwrite Sites](/products/sites) provides an optimized hosting environment tailored for modern web applications, including React, with built-in features that enhance performance, security, and deployment workflows. This article explores how Appwrite Sites simplifies React deployment, improves efficiency, and compares with other hosting solutions.
 
 # Why Appwrite Sites is an excellent choice for React developers
 
@@ -27,11 +27,13 @@ React applications can be built as fully static sites or dynamically rendered ap
 
 ## 3. Performance-focused global CDN
 
-Application speed significantly impacts user experience and SEO. Appwrite Sites leverages a globally distributed [Content Delivery Network (CDN)](https://appwrite.io/docs/products/network/cdn) to ensure React apps load quickly, reduce latency, and deliver a smooth browsing experience worldwide.
+Application speed significantly impacts user experience and SEO. Appwrite Sites leverages a globally distributed [Content Delivery Network (CDN)](/docs/products/network/cdn) to ensure React apps load quickly, reduce latency, and deliver a smooth browsing experience worldwide.
 
 ## 4. Built-in security and DDoS protection
 
-Security is a crucial consideration for production applications. Appwrite Sites includes [DDoS protection](https://appwrite.io/docs/products/network/ddos), preventing attacks that could compromise your app's availability. Additionally, it offers **custom domain support with automatic SSL encryption**, ensuring secure communication with users.
+Security is a crucial consideration for production applications. Appwrite Sites includes [DDoS protection](/docs/products/network/ddos), preventing attacks that could compromise your app's availability. Additionally, it offers **custom domain support with automatic SSL encryption**, ensuring secure communication with users.
+
+{% call_to_action title="Host your React app for free with Appwrite Sites" description="Benefit from a complete platform to develop, deploy, and build your websites and web apps." point1="Open source and no vendor lock-in"  point2="Built-in security and DDoS protection" point3="Fully managed cloud solution" point4="Global CDN for improved performance" cta="Get started for free" url="https://cloud.appwrite.io/" /%}
 
 ## 5. Preview deployments for seamless collaboration
 
@@ -41,7 +43,7 @@ Every deployment on Appwrite Sites generates a **preview link**, making it easy 
 
 Appwrite Sites provides several flexible methods for deploying React applications:
 
-- [Git-based deployments](https://appwrite.io/docs/products/sites/deploy-from-git): Automatically deploy updates when changes are pushed to the main branch.
+- [Git-based deployments](/docs/products/sites/deploy-from-git): Automatically deploy updates when changes are pushed to the main branch.
 - **CLI-based deployment**: Deploy manually with a simple command:
     
     ```bash
@@ -76,4 +78,4 @@ Many React applications require authentication, databases, and serverless functi
 
 Unlike other hosting solutions that depend on third-party integrations for backend functionality, Appwrite Sites provides an all-in-one solution with built-in authentication, databases, and serverless functions, reducing complexity and improving performance.
 
-For developers looking for a hassle-free, high-performance hosting solution tailored for React applications, Appwrite Sites is an excellent choice. Explore more with our [React Quick Start Guide](https://appwrite.io/docs/quick-starts/react) and start deploying your React apps by visiting [Appwrite Sites](https://appwrite.io/sites).
+For developers looking for a hassle-free, high-performance hosting solution tailored for React applications, Appwrite Sites is an excellent choice. Explore more with our [React Quick Start Guide](/docs/quick-starts/react) and start deploying your React apps by visiting [Appwrite Sites](/products/sites).

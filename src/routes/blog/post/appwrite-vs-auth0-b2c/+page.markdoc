@@ -45,6 +45,8 @@ If you're migrating from another platform, Appwrite supports importing user acco
 
 You can also move from [**Appwrite Cloud**](https://cloud.appwrite.io/) to a **self-hosted deployment** later, using the same SDKs and APIs. Your code doesn't change, just the endpoint. That kind of portability is usually locked behind enterprise agreements in other platforms.
 
+{% call_to_action title="Get started with Appwrite Auth Pro" description="The most cost-effective authentication service for B2C applications." point1="Starting at $15 per month"  point2="Resource-based pricing" point3="Up to 200,000 MAUs" point4="Dedicated email support" cta="Start building" url="https://cloud.appwrite.io/console/register?type=create&plan=tier-1" /%}
+
 # What you get in practice
 
 Here's how the two platforms compare on features that matter most for growing B2C apps:
