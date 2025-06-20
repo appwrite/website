@@ -1,4 +1,4 @@
-FROM node:20-bullseye AS base
+FROM node:22-bullseye AS base
 
 ARG PUBLIC_APPWRITE_ENDPOINT
 ENV PUBLIC_APPWRITE_ENDPOINT ${PUBLIC_APPWRITE_ENDPOINT}
@@ -64,7 +64,7 @@ FROM base AS build
 
 COPY . .
 RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile
-RUN NODE_OPTIONS=--max_old_space_size=16384 pnpm run build
+RUN NODE_OPTIONS=--max_old_space_size=16384 ROLLDOWN_OPTIONS_VALIDATION=loose pnpm run build
 
 FROM base AS final
 
