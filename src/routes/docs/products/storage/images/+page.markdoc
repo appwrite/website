@@ -2,8 +2,6 @@
 layout: article
 title: Image transformations
 description: Optimize image storage and processing with Appwrite. Explore image resizing, transformations, and manipulation to deliver rich media experiences in your apps.
-difficulty: beginner
-readtime: 15
 ---
 
 Appwrite provides utilities to manipulate images for previewing images in your apps.
@@ -34,7 +32,7 @@ Below you can find all the different parameters offered by the preview endpoint 
 | opacity       | Set opacity for the output image. Accepts a float value between `0-1`, where `0` makes it transparent. Only works with output formats supporting alpha channels like `png`. |
 | rotation      | Rotate the output image by a degree. Accepts an integer between `-360` to `360`.                                  |
 | background    | Set a background-color. Accepts any valid hex color value without the leading `#`. Only works with output formats supporting alpha channels like `png`. |
-| output        | Set the output image format. If not provided, will use the original image's format. Supported formats are: `jpg`, `jpeg`, `png`, `gif`, and `webp` |
+| output        | Set the output image format. If not provided, will use the original image's format. Supported formats are: `jpg`, `jpeg`, `png`, `gif`, `webp`, `avif`, and `heic` |
 
 # Examples {% #examples %}
 Here are some examples using [Client SDKs](/docs/sdks#client).

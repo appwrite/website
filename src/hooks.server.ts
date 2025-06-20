@@ -37,7 +37,7 @@ const securityheaders: Handle = async ({ event, resolve }) => {
     });
 
     // `true` if deployed via Coolify.
-    const isPreview = !!process.env.COOLIFY_FQDN;
+    const isPreview = !!process.env.COOLIFY_FQDN || process.env.NODE_ENV === 'development';
     // COOLIFY_FQDN already includes `http`.
     const previewDomain = isPreview ? `${process.env.COOLIFY_FQDN}` : null;
     const join = (arr: string[]) => arr.join(' ');
@@ -122,13 +122,6 @@ const securityheaders: Handle = async ({ event, resolve }) => {
     return response;
 };
 
-const bannerRewriter: Handle = async ({ event, resolve }) => {
-    const response = await resolve(event, {
-        transformPageChunk: ({ html }) => html.replace('%aw_banner_key%', BANNER_KEY)
-    });
-    return response;
-};
-
 const initSession: Handle = async ({ event, resolve }) => {
     const session = await createInitSessionClient(event.cookies);
 
@@ -191,4 +184,4 @@ const initSession: Handle = async ({ event, resolve }) => {
     return response;
 };
 
-export const handle = sequence(redirecter, bannerRewriter, securityheaders, initSession);
+export const handle = sequence(redirecter, securityheaders, initSession);
