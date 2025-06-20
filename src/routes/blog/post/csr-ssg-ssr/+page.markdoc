@@ -139,8 +139,8 @@ And the great thing is, if you're using platforms like Appwrite Sites and hybrid
 So if you’re just starting out, don’t stress about choosing the “perfect” rendering mode. Start with the defaults of your framework, and learn when to override them based on what your app needs.
 
 # More resources
-- [Appwrite Sites docs](/docs/product/sites)
-- [Appwrite Sites prodcuts page](/product/sites)
+- [Appwrite Sites docs](/docs/products/sites)
+- [Appwrite Sites prodcuts page](/products/sites)
 - [How to host SSR web apps on Appwrite Sites](blog/post/host-ssr-web-apps-sites)
 - [SSR vs CSR with Next.js](/blog/post/csr-vs-ssr-with-nextjs)
 - [Appwrite SSR Authentication](https://www.youtube.com/watch?v=7LN05c-ov_0)
