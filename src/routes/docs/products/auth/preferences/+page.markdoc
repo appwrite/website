@@ -195,10 +195,10 @@ promise.then(function (response) {
 });
 
 // Get team preferences
-const promise = teams.get('<TEAM_ID>');
+const promise = teams.getPrefs('<TEAM_ID>');
 
-promise.then(function (team) {
-    console.log(team.prefs); // Team preferences
+promise.then(function (prefs) {
+    console.log(prefs); // Team preferences
 }, function (error) {
     console.log(error);
 });
@@ -223,10 +223,9 @@ final team = await teams.updatePrefs(
 );
 
 // Get team preferences
-final teamData = await teams.get(
+final prefs = await teams.getPrefs(
     teamId: '<TEAM_ID>'
 );
-final prefs = teamData.prefs;
 ```
 ```client-apple
 import Appwrite
@@ -248,10 +247,9 @@ let team = try await teams.updatePrefs(
 )
 
 // Get team preferences
-let teamData = try await teams.get(
+let prefs = try await teams.getPrefs(
     teamId: "<TEAM_ID>"
 )
-let prefs = teamData.prefs
 ```
 ```client-android-kotlin
 import io.appwrite.Client
@@ -274,10 +272,9 @@ val team = teams.updatePrefs(
 )
 
 // Get team preferences
-val teamData = teams.get(
+val prefs = teams.getPrefs(
     teamId = "<TEAM_ID>"
 )
-val prefs = teamData.prefs
 ```
 {% /multicode %}
 
