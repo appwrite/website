@@ -127,6 +127,15 @@ You can stop your Appwrite containers by using the following command executed fr
 docker compose stop
 ```
 
+## Install on Arm64 {% #install-arm64 %}
+
+You will have to replace the redis image in the [`docker-compose.yml`](https://appwrite.io/install/compose) file
+
+```yml
+redis:
+    image: arm64v8/redis:7.2.4-alpine
+```
+
 # Uninstall {% #uninstall %}
 
 To stop and remove your Appwrite containers, you can use the following command executed from the same directory as your `docker-compose.yml` file.
