@@ -41,6 +41,10 @@
                     href: '/docs/products/databases/permissions'
                 },
                 {
+                    label: 'Type Generation',
+                    href: '/docs/products/databases/type-generation'
+                },
+                {
                     label: 'Offline Sync',
                     href: '/docs/products/databases/offline'
                 },
