@@ -400,8 +400,8 @@ This comparison table shows the strengths of each storage option:
 | **Complexity** | Simple | Simple | Simple | Complex |
 | **Schema Validation** | No | No | No | Yes |
 | **Offline Access** | Yes | No | No | No** |
-| **Syncing Required** | Yes | Automatic | Automatic | Manual |
-| **Query Capabilities** | Basic | Basic | Basic | Advanced |
+| **Syncing Required** | Yes | Automatic | Automatic | Automatic |
+| **Query Capabilities** | No | No | No | Yes |
 
-\* Subject to project limits  
+\* Subject to project limits
 \** Unless implemented with local caching
