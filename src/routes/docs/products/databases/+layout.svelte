@@ -51,6 +51,10 @@
                 {
                     label: 'Backups',
                     href: '/docs/products/databases/backups'
+                },
+                {
+                    label: 'Bulk Operations',
+                    href: '/docs/products/databases/bulk-operations'
                 }
             ]
         },
