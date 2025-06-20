@@ -145,19 +145,20 @@
                                             </div>
                                         </a>
                                     </Tooltip.Trigger>
-                                    <Tooltip.Content
-                                        sideOffset={8}
-                                        side="top"
-                                        class={classNames(
-                                            'text-primary bg-greyscale-900 relative rounded-md border-0! px-2.5 py-1 text-sm',
-                                            'data-[state="closed"]:animate-menu-out data-[state="instant-open"]:animate-menu-in data-[state="delayed-open"]:animate-menu-in'
-                                        )}
-                                        >{platform.name}
-                                        <div
-                                            class="absolute inset-0 rounded-md bg-gradient-to-tl from-(--primary-color,_#fff)/4 to-(--secondary-color,_transparent)/10"
-                                        ></div>
-                                        <Tooltip.Arrow class="text-(--primary-color)/4" />
-                                    </Tooltip.Content>
+                                    <Tooltip.Portal>
+                                        <Tooltip.Content
+                                            sideOffset={8}
+                                            side="top"
+                                            class={classNames(
+                                                'text-primary bg-greyscale-900 relative rounded-md border-0! px-2.5 py-1 text-sm',
+                                                'data-[state="closed"]:animate-menu-out data-[state="instant-open"]:animate-menu-in data-[state="delayed-open"]:animate-menu-in'
+                                            )}
+                                            >{platform.name}
+                                            <div
+                                                class="absolute inset-0 rounded-md bg-gradient-to-tl from-(--primary-color,_#fff)/4 to-(--secondary-color,_transparent)/10"
+                                            ></div>
+                                        </Tooltip.Content>
+                                    </Tooltip.Portal>
                                 </div>
                             </Tooltip.Root>
                         {/each}
