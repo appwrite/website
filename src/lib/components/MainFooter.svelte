@@ -9,7 +9,7 @@
 </script>
 
 {#if variant === 'homepage'}
-    <footer class="web-main-footer relative mt-12">
+    <footer class="web-main-footer relative mt-12 flex flex-col justify-between gap-10 lg:flex-row">
         <ul class="flex gap-2">
             {#each socials as social}
                 <li>
@@ -25,11 +25,11 @@
                 </li>
             {/each}
         </ul>
-        <div class="e-main-footer">
+        <div class="mt-1 grid grid-cols-2 gap-y-4 md:grid-cols-3">
             <div>Copyright © {year} Appwrite</div>
 
             <iframe
-                class="status w-full md:w-fit md:max-w-[230px]"
+                class="w-full md:w-fit md:max-w-[230px]"
                 title="Appwrite Status"
                 src="https://status.appwrite.online/badge?theme=dark"
                 height="35"
@@ -39,7 +39,7 @@
                 style:margin-top="-4px"
             ></iframe>
 
-            <ul class="flex gap-4">
+            <ul class="flex gap-4 text-right md:justify-end">
                 <li>
                     <a
                         class="web-link"
@@ -85,7 +85,7 @@
             <div class="web-main-footer-grid-1-column-2">
                 <ThemeSelect />
             </div>
-            <ul class="web-main-footer-grid-1-column-3 web-main-footer-links items-start">
+            <ul class="web-main-footer-grid-1-column-3 web-main-footer-links items-end text-right">
                 <li>
                     <a
                         href="/discord"
@@ -123,23 +123,6 @@
         .status {
             height: 55px;
             margin-bottom: 6px; /* balancing due to style:margin-top="-4px" & the `iframe` has some spacings too I think */
-        }
-    }
-
-    .e-main-footer {
-        display: flex;
-        @media #{devices.$break1} {
-            flex-direction: column;
-            > * {
-                padding-block: 1rem;
-                &:not(:first-child) {
-                    border-block-start: solid 0.0625rem hsl(var(--web-color-border));
-                }
-            }
-        }
-        @media #{devices.$break2open} {
-            display: flex;
-            gap: 2rem;
         }
     }
 </style>

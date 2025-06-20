@@ -17,6 +17,33 @@ const BillingPlan = {
     SCALE: 'tier-2'
 } as const;
 
+const ASCII_ART = `
+   _                            _ _       
+  /_\\  _ __  _ ____      ___ __(_) |_ ___ 
+ //_\\\\| '_ \\| '_ \\ \\ /\\ / / '__| | __/ _ \\
+/  _  \\ |_) | |_) \\ V  V /| |  | | ||  __/
+\\_/ \\_/ .__/| .__/ \\_/\\_/ |_|  |_|\\__\\___|
+      |_|   |_|                           
+`;
+
+export function displayHiringMessage() {
+    if (browser) {
+        console.log('%c' + ASCII_ART, 'font-family: monospace; white-space: pre; color: #fd366e;');
+        console.log(
+            '%cWe are hiring!',
+            'font-family: Aeonik Pro, -apple-system, BlinkMacSystemFont, sans-serif; font-size: 20px; font-weight: bold;'
+        );
+        console.log(
+            '%cJoin us in building the open-source, all-in-one development platform',
+            'font-family: Inter, -apple-system, BlinkMacSystemFont, sans-serif; font-size: 14px;'
+        );
+        console.log(
+            '%cCheck out our open positions at https://appwrite.io/careers',
+            'font-family: monospace; color: #666;'
+        );
+    }
+}
+
 export async function createSource(
     ref: string | null,
     referrer: string | null,

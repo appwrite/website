@@ -102,6 +102,10 @@
                     href: '/docs/products/auth/mfa'
                 },
                 {
+                    label: 'Auth status check',
+                    href: '/docs/products/auth/checking-auth-status'
+                },
+                {
                     label: 'User verification',
                     href: '/docs/products/auth/verify-user'
                 },
