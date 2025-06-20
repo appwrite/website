@@ -9,9 +9,10 @@ isNew: true
 cover: /images/partners/covers/mohesu.png
 category: agency
 website: https://mohesu.com/
+email: mailto:contact@mohesu.com
 product: 
     avatar: '/images/partners/avatars/mohesu.png'
-    vendor: SimbaLabs
+    vendor: Mohesu Enterprises
     description: 'Mohesu specializes in creating bespoke digital solutions—from responsive websites and mobile applications to comprehensive managed cloud services, AI & machine learning solutions, and digital marketing strategies. Their approach emphasizes clean, user-friendly interfaces and scalable, customizable technology stacks utilizing frameworks like Next.js, Flutter, and Angular with Appwrite.'
 frameworks: 
     - Flutter
