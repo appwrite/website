@@ -9,7 +9,7 @@ isNew: true
 cover: /images/partners/covers/bld.png
 category: agency
 website: https://blackleafdigital.com/
-email: emailto:contact@blackleafdigital.com
+email: mailto:contact@blackleafdigital.com
 product: 
     avatar: '/images/partners/avatars/bld.png'
     vendor: Black Leave Digital
