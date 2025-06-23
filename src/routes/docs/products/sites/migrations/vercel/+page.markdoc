@@ -4,7 +4,6 @@ title: Migrating from Vercel to Appwrite Sites
 description: A step-by-step guide to migrate your web applications from Vercel to Appwrite Sites.
 ---
 
-
 This guide walks you through migrating from Vercel to Appwrite Sites, covering project setup, configuration, routing, and serverless functionality.
 
 # Prerequisites
