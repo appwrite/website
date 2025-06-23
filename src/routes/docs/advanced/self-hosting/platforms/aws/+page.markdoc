@@ -1,0 +1,321 @@
+---
+layout: article
+title: AWS deployment
+description: Deploy Appwrite on Amazon Web Services using ECS, EC2, or Lightsail. Learn how to set up a production-ready Appwrite instance on AWS with best practices.
+---
+
+Amazon Web Services (AWS) offers multiple ways to deploy Appwrite, from simple single-instance deployments to highly scalable, production-ready architectures. This guide covers the most common deployment scenarios.
+
+# Deployment options {% #deployment-options %}
+
+AWS provides several services suitable for hosting Appwrite:
+
+{% table %}
+* Service
+* Best for
+* Complexity
+* Scaling
+---
+* **EC2**
+* Full control, custom configurations
+* Medium
+* Manual
+---
+* **ECS Fargate**
+* Serverless containers, managed infrastructure
+* Medium
+* Automatic
+---
+* **Lightsail**
+* Simple deployments, predictable pricing
+* Low
+* Limited
+---
+* **ECS on EC2**
+* Cost optimization, custom instance types
+* High
+* Configurable
+{% /table %}
+
+# EC2 deployment {% #ec2-deployment %}
+
+Deploy Appwrite on a single EC2 instance for development or small production workloads.
+
+## Prerequisites {% #ec2-prerequisites %}
+
+- AWS account with appropriate permissions
+- EC2 key pair for SSH access
+- Basic knowledge of AWS security groups
+
+## Launch EC2 instance {% #launch-instance %}
+
+**Step 1: Create instance**
+
+1. Navigate to EC2 Console in your preferred AWS region
+2. Click **Launch Instance**
+3. Choose **Ubuntu Server 22.04 LTS** as your AMI
+4. Select instance type (minimum `t3.medium` recommended)
+5. Configure security group with these rules:
+
+{% table %}
+* Protocol
+* Port Range
+* Source
+* Description
+---
+* HTTP
+* 80
+* 0.0.0.0/0
+* Web traffic
+---
+* HTTPS
+* 443
+* 0.0.0.0/0
+* Secure web traffic
+---
+* SSH
+* 22
+* Your IP
+* SSH access
+---
+* Custom TCP
+* 8080
+* 0.0.0.0/0
+* Appwrite API (temporary)
+{% /table %}
+
+6. Select or create a key pair
+7. Launch the instance
+
+**Step 2: Connect and install prerequisites**
+
+1. **Connect to your instance** using SSH with your key pair
+2. **Update the system** using your package manager
+3. **Install Docker** following the [official Docker installation guide](https://docs.docker.com/engine/install/ubuntu/)
+4. **Install Docker Compose** from the [official releases](https://github.com/docker/compose/releases)
+5. **Add your user to the docker group** to run Docker commands without sudo
+6. **Restart your SSH session** for group changes to take effect
+
+**Step 3: Install Appwrite**
+
+1. **Create a directory** for your Appwrite installation
+2. **Run the Appwrite installer** using the official Docker image:
+   - Use the `appwrite/appwrite:1.7.4` image with the `install` entrypoint
+   - Mount the Docker socket and your installation directory
+   - Follow the interactive prompts for configuration
+
+3. **Configure the installation** with these recommended settings:
+   - **HTTP Port**: 80
+   - **HTTPS Port**: 443
+   - **Hostname**: Your domain or EC2 public DNS
+   - **Secret Key**: Generate a secure random key
+
+For detailed installation commands, refer to the [Appwrite self-hosting documentation](/docs/advanced/self-hosting).
+
+## Configure domain and SSL {% #ec2-ssl %}
+
+**Step 1: Set up domain (optional)**
+
+If using a custom domain:
+1. Point your domain's A record to your EC2 public IP
+2. Update your security group to restrict HTTP/HTTPS traffic as needed
+
+**Step 2: Configure SSL with Let's Encrypt**
+
+1. **Install Certbot** following the [official Certbot instructions](https://certbot.eff.org/)
+2. **Install and configure Nginx** as a reverse proxy
+3. **Create an Nginx configuration** that proxies requests to your Appwrite instance
+4. **Obtain SSL certificates** using Certbot with the nginx plugin
+5. **Update your Appwrite configuration** to work behind the proxy
+
+For detailed SSL setup instructions, see the [SSL certificates guide](/docs/advanced/self-hosting/configuration/tls-certificates).
+
+# ECS Fargate deployment {% #ecs-fargate %}
+
+Deploy Appwrite using AWS ECS Fargate for a managed, serverless container experience.
+
+## Prerequisites {% #ecs-prerequisites %}
+
+- AWS CLI configured with appropriate permissions
+- Docker image pushed to Amazon ECR
+- VPC with public subnets configured
+
+## Prepare container image {% #prepare-image %}
+
+**Step 1: Set up container registry**
+
+1. **Create an ECR repository** for your Appwrite image
+2. **Authenticate Docker** with your ECR registry
+3. **Pull the official Appwrite image** (version 1.7.4 recommended)
+4. **Tag and push** the image to your ECR repository
+
+Refer to the [Amazon ECR documentation](https://docs.aws.amazon.com/ecr/) for current command syntax and best practices.
+
+## Create ECS resources {% #create-ecs %}
+
+**Step 1: Create task definition**
+
+Create an ECS task definition with these specifications:
+- **Network Mode**: awsvpc
+- **Compatibility**: FARGATE
+- **CPU**: 1024 (1 vCPU)
+- **Memory**: 2048 MB
+- **Execution Role**: ecsTaskExecutionRole with appropriate permissions
+- **Task Role**: Custom role with required AWS service permissions
+
+**Container Configuration**:
+- **Image**: Your ECR repository URI
+- **Port Mappings**: Container port 80
+- **Environment Variables**: Configure production settings like `_APP_ENV=production`
+- **Secrets**: Store sensitive values in AWS Secrets Manager
+- **Logging**: Configure CloudWatch log groups
+
+**Step 2: Create ECS cluster and service**
+
+1. **Create an ECS cluster** using the Fargate launch type
+2. **Create a service** with your task definition
+3. **Configure networking** with appropriate subnets and security groups
+4. **Set up load balancing** if running multiple instances
+
+For current ECS commands and configuration options, see the [Amazon ECS documentation](https://docs.aws.amazon.com/ecs/).
+
+# Lightsail deployment {% #lightsail %}
+
+AWS Lightsail provides a simple way to deploy Appwrite with predictable pricing.
+
+## Create Lightsail instance {% #lightsail-instance %}
+
+**Step 1: Launch instance**
+
+1. Navigate to the [AWS Lightsail Console](https://lightsail.aws.amazon.com/)
+2. Click **Create instance**
+3. Choose **Linux/Unix** platform
+4. Select **Ubuntu 22.04 LTS** blueprint
+5. Choose instance plan (minimum $10/month recommended for testing)
+6. Name your instance and create it
+
+**Step 2: Configure networking**
+
+Add firewall rules for these ports:
+
+{% table %}
+* Application
+* Protocol
+* Port Range
+---
+* HTTP
+* TCP
+* 80
+---
+* HTTPS
+* TCP
+* 443
+---
+* Custom
+* TCP
+* 8080
+{% /table %}
+
+**Step 3: Install Appwrite**
+
+1. **Connect via SSH** from the Lightsail console
+2. **Update the system** packages
+3. **Install Docker and Docker Compose** following the same process as EC2 deployment
+4. **Install Appwrite** using the official installer
+5. **Configure your installation** with appropriate settings
+
+The installation process is identical to the EC2 deployment method described above.
+
+# Production considerations {% #production %}
+
+## Security best practices {% #security %}
+
+**Data Protection**
+- Store sensitive environment variables in AWS Secrets Manager
+- Use IAM roles instead of hardcoded access keys
+- Enable AWS CloudTrail for comprehensive audit logging
+
+**Network Security**
+- Deploy behind an Application Load Balancer with AWS WAF
+- Use VPC with private subnets for database resources
+- Enable VPC Flow Logs for network monitoring
+- Implement least-privilege security group rules
+
+**SSL/TLS Configuration**
+- Use AWS Certificate Manager for SSL certificate management
+- Configure automatic certificate renewal
+- Implement proper HTTPS redirects
+
+## Monitoring and backup {% #monitoring %}
+
+**CloudWatch Monitoring**
+- Enable Container Insights for ECS deployments
+- Configure CloudWatch alarms for CPU, memory, and disk usage
+- Set up log retention policies to manage costs
+- Monitor application-specific metrics
+
+**Backup Strategy**
+- Use Amazon RDS for managed database with automated backups
+- Store file uploads in S3 with versioning and lifecycle policies
+- Schedule regular snapshots of EBS volumes
+
+For comprehensive backup procedures including database exports, storage volumes, and configuration files, see the [backup documentation](/docs/advanced/self-hosting/backups).
+
+**Health Checks**
+- Configure load balancer health checks
+- Set up application-level health monitoring
+- Implement automated alerting for service disruptions
+
+## Scaling considerations {% #scaling %}
+
+**Auto Scaling with ECS**
+- Configure target tracking scaling policies based on CPU/memory usage
+- Use Application Load Balancer for traffic distribution across instances
+- Implement proper health checks for scaling decisions
+
+**Database Scaling**
+- Use Amazon RDS with read replicas for improved performance
+- Consider Amazon DocumentDB for document storage needs
+- Implement Redis ElastiCache for session storage and caching
+
+**Performance Optimization**
+- Use CloudFront CDN for static asset delivery
+- Implement proper caching strategies
+- Monitor and optimize database queries
+
+# Troubleshooting {% #troubleshooting %}
+
+**Common issues and solutions:**
+
+**Instance not accessible**
+- Verify security group rules allow required traffic
+- Check Elastic IP assignment for persistent addressing
+- Confirm target group health status in Load Balancer
+
+**Container startup failures**
+- Review CloudWatch logs for error messages
+- Verify all required environment variables are set
+- Ensure sufficient memory and CPU allocation
+
+**Performance issues**
+- Monitor CloudWatch metrics for resource utilization
+- Check disk I/O and network throughput limits
+- Consider upgrading to larger instance types
+- Review application logs for bottlenecks
+
+**Database connectivity issues**
+- Verify security group rules allow database access
+- Check connection string configuration
+- Ensure database credentials are correctly configured
+
+# Next steps {% #next-steps %}
+
+After successful deployment:
+
+[Configure email delivery](/docs/advanced/self-hosting/configuration/email) - Set up SMTP for user notifications
+
+[Set up SSL certificates](/docs/advanced/self-hosting/configuration/tls-certificates) - Secure your deployment with HTTPS
+
+[Production deployment guide](/docs/advanced/self-hosting/production) - Optimize for production workloads
+
+[Update and maintenance](/docs/advanced/self-hosting/update) - Keep your Appwrite instance up to date
