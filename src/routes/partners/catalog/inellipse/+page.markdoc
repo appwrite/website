@@ -6,12 +6,13 @@ date: 2025-03-21
 featured: false
 partnerLevel: Silver
 isNew: true
-cover: /images/integrations/inellipse/cover.png
+cover: /images/partners/covers/makeshyft.png
+avatar: /images/partners/avatars/inellipse.png  
 category: agency
 website: https://www.inellipse.com/
 email: https://www.inellipse.com/contact/index.html
 product: 
-    avatar: '/images/integrations/avatars/inellipse.png'
+    avatar: '/images/partners/avatars/inellipse.png'
     vendor: inellipse
     description: 'Inellipse is a premier software development company specializing in transforming innovative ideas into powerful digital solutions.'
 frameworks: 

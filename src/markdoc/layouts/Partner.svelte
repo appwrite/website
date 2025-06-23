@@ -129,7 +129,7 @@
                                 <dd
                                     class="text-primary text-caption font-medium underline underline-offset-4"
                                 >
-                                    {website}
+                                    <a href={website} target="_blank">{website}</a>
                                 </dd>
                             </div>
 
