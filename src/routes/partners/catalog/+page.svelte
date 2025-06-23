@@ -242,7 +242,7 @@
                                 <section class="flex flex-col gap-8">
                                     <header class="flex flex-col gap-1">
                                         <h2 class="text-label text-primary">Featured</h2>
-                                        <p class="text-description">Top recommended integrations</p>
+                                        <p class="text-description">Recommended Partners</p>
                                     </header>
 
                                     <div>
