@@ -16,8 +16,8 @@
                 </div>
                 <h1 class="text-headline font-aeonik-pro text-primary">Find a Partner</h1>
                 <p class="text-description max-w-xl">
-                    Unlock the full potential of Appwrite by seamlessly integrating your favorite
-                    apps with your projects.
+                    Find the perfect partner to bring your project to life. Whether you're building
+                    an application, from scratch or seeking ongoing maintenance and support.
                 </p>
             </div>
         </div>
