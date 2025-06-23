@@ -100,8 +100,17 @@
         --p-main-header-border-color: rgb(0, 0, 0, 0.1);
     }
 
-    @media  #{$break2},  #{$break1} {
+    @media  #{$break2} {
         display: none;
+    }
+    
+    @media  #{$break1} {
+        [data-variant="two-side-navs"] & {
+            display: none;
+        }
+        [data-variant="expanded"] & {
+            display: none;
+        }
     }
 
     &.is-hidden {
