@@ -159,49 +159,11 @@ Navigate to your site > **Settings** > **Build settings** and configure the foll
 
 # Framework defaults
 
-Appwrite automatically detects and applies default settings for popular frameworks:
+Appwrite automatically detects and applies default settings for popular frameworks like Next.js, Nuxt, SvelteKit, Angular, and Astro.
 
-{% table %}
-- Framework
-- Install command
-- Build command
-- Output directory
-
----
-
-- Next.js
-- `npm install`
-- `npm run build`
-- `./.next`
-
----
-
-- Nuxt
-- `npm install`
-- `npm run build`
-- `./.output`
-
----
-
-- SvelteKit
-- `npm install`
-- `npm run build`
-- `./build`
-
----
-
-- Angular
-- `npm install`
-- `npm run build`
-- `./dist/angular/browser`
-
----
-
-- Astro
-- `npm install`
-- `npm run build`
-- `./dist`
-{% /table %}
+{% arrow_link href="/docs/products/sites/develop#project-dependencies" %}
+Learn more about framework defaults and project dependencies
+{% /arrow_link %}
 
 # Manage environment variables
 
