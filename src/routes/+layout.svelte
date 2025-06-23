@@ -148,6 +148,15 @@
 <svelte:window on:scroll={handleScroll} />
 <svelte:head>
     {#if !dev}
+        <!-- Start cookieyes banner -->
+        <script
+            defer
+            id="cookieyes"
+            type="text/javascript"
+            src="https://cdn-cookieyes.com/client_data/7d0de7a43cc518960906cf03/script.js"
+        ></script>
+        <!-- End cookieyes banner -->
+
         <!--suppress JSUnresolvedLibraryURL -->
         <script defer data-domain="appwrite.io" src="https://plausible.io/js/script.js"></script>
 
