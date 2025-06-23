@@ -14,8 +14,8 @@
         <section class="flex max-w-[540px] flex-col gap-4">
             <h2 class="text-display font-aeonik-pro text-primary">Become an Appwrite Partner</h2>
             <p class="text-body font-medium">
-                Find the perfect partner to bring your project to life. Whether you're building an application, 
-                from scratch or seeking ongoing maintenance and support.
+                Find the perfect partner to bring your project to life. Whether you're building an
+                application, from scratch or seeking ongoing maintenance and support.
             </p>
             <a href="/partners#become-a-partner" class="web-button mt-4">
                 <span class="text">Become a Partner</span>
