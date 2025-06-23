@@ -9,7 +9,7 @@ isNew: true
 cover: /images/integrations/inellipse/cover.png
 category: agency
 website: https://www.inellipse.com/
-email:https://www.inellipse.com/contact/index.html
+email: https://www.inellipse.com/contact/index.html
 product: 
     avatar: '/images/integrations/avatars/inellipse.png'
     vendor: inellipse
