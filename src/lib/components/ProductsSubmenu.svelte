@@ -44,16 +44,16 @@
             icon: '/images/icons/illustrated/dark/messaging.png'
         },
         {
-            name: 'Sites',
-            href: '/products/sites',
-            description: 'The open-source Vercel alternative.',
-            icon: '/images/icons/illustrated/dark/sites.png'
-        },
-        {
             name: 'Realtime',
             href: '/docs/apis/realtime',
             description: 'Subscribe and react to any event.',
             icon: '/images/icons/illustrated/dark/realtime.png'
+        },
+        {
+            name: 'Sites',
+            href: '/products/sites',
+            description: 'The open-source Vercel alternative.',
+            icon: '/images/icons/illustrated/dark/sites.png'
         }
     ];
 
@@ -77,6 +77,7 @@
     import { trackEvent } from '$lib/actions/analytics';
     import { classNames } from '$lib/utils/classnames';
     import { createDropdownMenu, melt } from '@melt-ui/svelte';
+    import Icon from './ui/icon';
 
     const {
         elements: { trigger, menu, item, overlay },
@@ -165,15 +166,16 @@
                 >
                     <header class="flex items-center justify-between">
                         <span
-                            class="font-aeonik-fono tracking-loose text-secondary block text-xs uppercase"
+                            class="font-aeonik-fono tracking-loose text-primary block text-xs uppercase"
                             >Customer Stories<span class="text-accent">_</span></span
                         >
                         <a
                             href="/blog/category/customer-stories"
-                            class="text-primary text-caption flex items-center gap-2"
-                            >See more <span
-                                class="web-icon-chevron-right transition-transform group-hover:translate-x-0.5"
-                            ></span></a
+                            class="text-secondary text-caption flex items-center"
+                            >Read more customer stories <Icon
+                                name="chevron-right"
+                                class="transition-transform group-hover:translate-x-0.5"
+                            ></Icon></a
                         >
                     </header>
 

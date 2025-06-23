@@ -26,7 +26,7 @@
         },
         {
             question: 'Who is eligible to apply?',
-            answer: 'We welcome early-stage startups as well as startups established within the last decade. So whether you are still looking to build your backend or want to switch to Appwrite, we welcome you to join.'
+            answer: 'We welcome early-stage startups as well as startups established within the last decade who are VC backed. So whether you are still looking to build your application or want to switch to Appwrite, we welcome you to join.'
         },
         {
             question: 'What are the limits of the Scale plan?',
@@ -42,7 +42,7 @@
         },
         {
             question: "What's included in the Appwrite for Startups program?",
-            answer: 'Startups joining the program get access to everything Appwrite Scale offers. This includes Cloud credits, unlimited team members, and premium email support. In addition, we provide you with special swag, and you get a program manager and a private Slack channel. Read more about it in our <a class="web-link underline" href="/blog/post/announcing-appwrite-startups-program">announcement</a>.'
+            answer: 'Startups joining the program get access to everything Appwrite Pro or Scale offers. This includes Cloud credits, unlimited team members, and premium email support. In addition, we provide you with special swag, and you get a program manager and a private Slack channel. Read more about it in our <a class="web-link underline" href="/blog/post/announcing-appwrite-startups-program">announcement</a>.'
         },
         {
             question: 'What kind of support do we get?',
@@ -57,10 +57,6 @@
             question:
                 'I am already using another backend as a service provider. How do I migrate to Appwrite?',
             answer: 'We have a <a class="web-link underline" href="/docs/advanced/migrations">migration tool</a> to help you transition from other platforms. If you need additional assistance, we are here to help.'
-        },
-        {
-            question: 'What happens after the 12 months run out?',
-            answer: 'A month before the end of the term, we will re-evaluate your situation together and provide you with a fitting plan. Depending on your situation, this could mean you have to start paying full price, a reduced price, or nothing at all.'
         },
         {
             question: 'I need to sign a BAA. Can I do this with Appwrite?',

@@ -20,7 +20,7 @@
         {
             title: 'Training',
             description:
-                'We provide in depth training and workshops to help you master Appwrite for your clients.',
+                'We provide in-depth training and workshops to help you master Appwrite for your clients.',
             icon: Training
         },
         {
@@ -36,9 +36,9 @@
             icon: EarlyAccess
         },
         {
-            title: 'Revenue share',
+            title: 'Innovation',
             description:
-                'For each client you sell Appwrite to, you will receive a part of the revenue for a whole year.',
+                "Empower your team and elevate your customers' experiences with the newest technology.",
             icon: Revenue
         },
         {
@@ -64,7 +64,7 @@
         },
         {
             title: 'All in one platform',
-            description: 'All the APIs a developer needs in one place. And more to come.',
+            description: 'Everything you need to develop, deploy, and scale your applications.',
             icon: Expert
         }
     ];

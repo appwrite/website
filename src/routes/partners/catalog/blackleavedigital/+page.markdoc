@@ -1,0 +1,45 @@
+---
+layout: partner
+title: Black Leave Digital
+description: Pioneering the future of web design. Where exceptional quality meets innovative solutions.
+date: 2025-06-19
+featured: false
+partnerLevel: Silver
+isNew: true
+cover: /images/partners/covers/bld.png
+category: agency
+website: https://blackleafdigital.com/
+email: mailto:contact@blackleafdigital.com
+product: 
+    avatar: '/images/partners/avatars/bld.png'
+    vendor: Black Leave Digital
+    description: 
+frameworks: 
+    - React
+    - Wordpress
+    - Astro
+    - Svelte
+    - Vue
+    - Render
+capabilities:
+    - Mobile App Development
+    - Web App Development
+    - SEO
+    - Design
+regions:
+    - Europe
+    - South America
+    - Mid America
+    - North America
+languages: 
+    - English
+---
+
+# Overview
+
+Black Leave Digital is a leading digital solutions provider that elevates your brand and online presence through engaging design, seamless interactions, and strategic digital initiatives. We help transform your vision into impactful experiences that resonate and drive measurable results.
+
+# Services
+
+Our expertise spans dynamic web design, impactful graphic design, intuitive user interactions, comprehensive digital strategy, and targeted search engine optimization. We craft solutions designed to captivate your audience, enhance user satisfaction, and maximize your business growth and visibility in today's competitive digital landscape.
+

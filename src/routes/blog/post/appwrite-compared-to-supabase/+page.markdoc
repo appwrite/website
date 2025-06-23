@@ -76,6 +76,8 @@ Storage allows you to manage files in your project. It can store images, videos,
 - Appwrite offers an image manipulation API, including functionalities such as manipulating resolution, image reformatting, caching, and compression, in the free tier. Supabase offers image manipulation only in their paid tiers.
 - Supabase offers a CDN to serve assets via an edge network in their paid tiers.
 
+{% call_to_action title="All-in-one development platform" description="Use built-in backend infrastructure and web hosting, all from a single place." point1="Start for free"  point2="Open source" point3="Support for over 13 SDKs" point4="Managed cloud solution" cta="Start building for free" url="https://cloud.appwrite.io/" /%}
+
 ## Functions
 
 Functions are "self-contained" modules of code that accomplish a specific task. BaaS platforms make it easier for you to extend the services by using functions with code snippets.
@@ -132,6 +134,16 @@ Self-hosting support essentially means a developer can deploy the application on
 - Appwrite offers a [single installation command](/docs/advanced/self-hosting#install-with-docker) with a pre-built configuration to simplify the self-hosting process, making it more straightforward and cohesive. Supabase, on the other hand, expects the developer to manually configure each component during the setup process.
 - Appwrite offers one-click setups for DigitalOcean, Gitpod, and Akamai Compute. Supabase offers the same for DigitalOcean and AWS.
 - Supabase features community-maintained helm charts to self-host using Kubernetes.
+
+## Hosting
+
+Appwrite offers native hosting as part of its all-in-one platform. That means you can develop, deploy, and scale your application all from a single platform. Supabase, while it provides backend services, does not include frontend hosting.
+
+*Differences:*
+
+- Appwrite includes built-in hosting for static and dynamic sites via Appwrite Sites. Supabase does not offer frontend hosting. You must be dependent on third-party tools like Vercel or Netlify to host your application.
+- Appwrite Sites supports server-side rendering out of the box.
+- With Appwrite, developers can manage everything from frontend and backend to environments, deployments, and monitoring from a single control panel, while Supabase requires using multiple services and dashboards, increasing complexity.
 
 ## Support
 

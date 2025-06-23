@@ -9,6 +9,7 @@ author: veeresh-mulge
 callToAction: true
 unlisted: true
 category: tutorial
+call_to_action: true
 ---
 
 Nearly [70% of startups fail](https://www.embroker.com/blog/startup-statistics/) within 2-5 years of starting operations, and while many factors contribute to this, one key factor is developing a product that doesn't align with customer needs.
@@ -66,6 +67,8 @@ Founders often fear that if users don't like the MVP, it will ruin their busines
 ## Underestimating scalability needs
 
 Founders often build an MVP without considering future scalability, resulting in products that cannot scale as user demand grows. Even in the MVP phase, think about scalability. Build a flexible, scalable infrastructure that can handle future growth.
+
+{% call_to_action title="Build your startup with Appwrite" description="An all-in-one development platform for you to develop, host, and scale your products." point1="Cloud credits" point2="Priority support" point3="Ship faster" point4="Built-in security and compliance" cta="Apply for the program" url="https://appwrite.io/startups" /%}
 
 # Examples MVPs that turned into successful products
 

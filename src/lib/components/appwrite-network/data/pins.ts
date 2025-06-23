@@ -5,9 +5,7 @@ export const pins = {
             lng: -77.49,
             city: 'Ashburn',
             code: 'ASH',
-            available: true,
-            offsetX: 10,
-            offsetY: -10
+            available: true
         },
         {
             lat: 33.75,
@@ -562,9 +560,7 @@ export const pins = {
             lng: -74.01,
             city: 'New York',
             code: 'NYC',
-            available: true,
-            offsetX: 10,
-            offsetY: -10
+            available: true
         },
         {
             lat: 50.11,
@@ -579,6 +575,48 @@ export const pins = {
             city: 'Sydney',
             code: 'AUS',
             available: true
+        },
+        {
+            lat: 1.35,
+            lng: 103.82,
+            city: 'Singapore',
+            code: 'SIN',
+            date: 'Q4 2025'
+        },
+        {
+            lat: 37.77,
+            lng: -122.42,
+            city: 'San Francisco',
+            code: 'SFO',
+            date: 'Q4 2025'
+        },
+        {
+            lat: 12.97,
+            lng: 77.59,
+            city: 'Bangalore',
+            code: 'BLR',
+            date: 'Planned'
+        },
+        {
+            lat: 52.37,
+            lng: 4.9,
+            city: 'Amsterdam',
+            code: 'AMS',
+            date: 'Planned'
+        },
+        {
+            lat: 51.51,
+            lng: -0.13,
+            city: 'London',
+            code: 'LON',
+            date: 'Planned'
+        },
+        {
+            lat: 43.65,
+            lng: -79.38,
+            city: 'Toronto',
+            code: 'TOR',
+            date: 'Planned'
         }
     ],
     regions: [
@@ -587,9 +625,7 @@ export const pins = {
             lng: -74.01,
             city: 'New York',
             code: 'NYC',
-            available: true,
-            offsetX: 10,
-            offsetY: -10
+            available: true
         },
         {
             lat: 50.11,
@@ -598,13 +634,54 @@ export const pins = {
             code: 'FRA',
             available: true
         },
-
         {
             lat: -33.87,
             lng: 151.21,
             city: 'Sydney',
             code: 'AUS',
             available: true
+        },
+        {
+            lat: 1.35,
+            lng: 103.82,
+            city: 'Singapore',
+            code: 'SIN',
+            date: 'Q4 2025'
+        },
+        {
+            lat: 37.77,
+            lng: -122.42,
+            city: 'San Francisco',
+            code: 'SFO',
+            date: 'Q4 2025'
+        },
+        {
+            lat: 12.97,
+            lng: 77.59,
+            city: 'Bangalore',
+            code: 'BLR',
+            date: 'Planned'
+        },
+        {
+            lat: 52.37,
+            lng: 4.9,
+            city: 'Amsterdam',
+            code: 'AMS',
+            date: 'Planned'
+        },
+        {
+            lat: 51.51,
+            lng: -0.13,
+            city: 'London',
+            code: 'LON',
+            date: 'Planned'
+        },
+        {
+            lat: 43.65,
+            lng: -79.38,
+            city: 'Toronto',
+            code: 'TOR',
+            date: 'Planned'
         }
     ]
 };

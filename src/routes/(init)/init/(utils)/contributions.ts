@@ -1,9 +1,8 @@
-import { APPWRITE_DB_INIT_ID, APPWRITE_COL_INIT_ID } from '$env/static/private';
-import { DOMParser, parseHTML } from 'linkedom';
-
-import type { TicketData } from './tickets';
+import { APPWRITE_COL_INIT_ID, APPWRITE_DB_INIT_ID } from '$env/static/private';
+import { parseHTML } from 'linkedom';
 import { z } from 'zod';
 import { createInitServerClient } from './appwrite';
+import type { TicketData } from './tickets';
 
 const contributionsSchema = z.array(z.array(z.number()));
 export type ContributionsMatrix = z.infer<typeof contributionsSchema>;
