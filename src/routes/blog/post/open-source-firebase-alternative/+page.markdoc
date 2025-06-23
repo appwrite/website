@@ -74,6 +74,8 @@ Storage allows you to manage files in your project. It can store images, videos,
 - Appwrite Storage offers a dedicated API for [image transformations](/docs/products/storage/images), including functionalities such as manipulating resolution, image reformatting, caching, and compression.
 - Appwrite Storage offers file encryption for increased security as well as gzip and zstd compression for network transfer optimization.
 
+{% call_to_action title="All-in-one development platform" description="Use built-in backend infrastructure and web hosting, all from a single place." point1="Start for free"  point2="Open source" point3="Support for over 13 SDKs" point4="Managed cloud solution" cta="Start building for free" url="https://cloud.appwrite.io/" /%}
+
 ## Functions
 
 Functions are "self-contained" modules of code that accomplish a specific task. BaaS platforms make it easier for you to extend the business logic by using functions with code snippets.

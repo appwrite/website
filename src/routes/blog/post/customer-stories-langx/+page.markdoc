@@ -29,6 +29,8 @@ Around this simple philosophy, the LangX team has developed various features to 
 - **Profile insights** to let users get a better understanding of their learning habits and progress
 - **Badges** that are given for specific achievements and can be featured on the user’s profile
 
+{% call_to_action title="All-in-one development platform" description="Use built-in backend infrastructure and web hosting, all from a single place." point1="Start for free"  point2="Open source" point3="Support for over 13 SDKs" point4="Managed cloud solution" cta="Start building for free" url="https://cloud.appwrite.io/" /%}
+
 # Building the solution
 
 Currently, LangX has been built using Ionic Angular, a cross-platform app framework that allows developers to create web and mobile apps via a single codebase. To accelerate the development process, Xue evaluated various Backend-as-a-Service platforms, including Supabase and Appwrite. Xue preferred Appwrite’s user experience to other options; however, it was Appwrite’s highly active and supportive community that convinced him. He remembers posting a challenge he faced on Appwrite’s Discord server and gaining a resolution in less than 24 hours, solidifying his decision.

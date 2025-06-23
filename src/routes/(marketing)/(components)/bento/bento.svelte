@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
     import { classNames } from '$lib/utils/classnames';
     import Auth from './(animations)/auth.svelte';
     import Databases from './(animations)/databases.svelte';

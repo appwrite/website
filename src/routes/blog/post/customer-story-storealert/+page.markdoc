@@ -42,6 +42,8 @@ Recognizing this gap, Devkind set out to develop a solution designed to give mer
 - **Efficient inventory and catalog management:** Streamlines tracking for stores managing thousands of products, ensuring stock levels are up-to-date and reducing the risk of overselling or stockouts.
 - **Seamless Shopify integration:** Connects directly to Shopify, enabling real-time notifications with a quick and simple installation—no complicated setup required.
 
+{% call_to_action title="All-in-one development platform" description="Use built-in backend infrastructure and web hosting, all from a single place." point1="Start for free"  point2="Open source" point3="Support for over 13 SDKs" point4="Managed cloud solution" cta="Start building for free" url="https://cloud.appwrite.io/" /%}
+
 ## **How Devkind used Appwrite to develop StoreAlert**
 
 > "Our clients rely on us to deliver solutions that not only address issues but also proactively prevent them from occurring."  
