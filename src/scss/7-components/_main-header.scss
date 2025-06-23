@@ -100,7 +100,7 @@
         --p-main-header-border-color: rgb(0, 0, 0, 0.1);
     }
 
-    @media  #{$break1} {
+    @media  #{$break2},  #{$break1} {
         display: none;
     }
 
