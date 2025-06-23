@@ -196,38 +196,9 @@ Vercel automatically provides system variables like `VERCEL_URL`. You'll need to
 {% /section %}
 
 # Appwrite system variables
-
 Appwrite automatically injects these variables into your site:
 
-{% table %}
-- Variable
-- Description
-- Available At
-
----
-
-- `APPWRITE_SITE_API_ENDPOINT`
-- API endpoint of the site
-- Build & Runtime
-
----
-
-- `APPWRITE_SITE_NAME`
-- Name of the site
-- Build & Runtime
-
----
-
-- `APPWRITE_SITE_DEPLOYMENT`
-- Deployment ID
-- Build & Runtime
-
----
-
-- `APPWRITE_SITE_PROJECT_ID`
-- Project ID
-- Build & Runtime
-{% /table %}
+{% partial file="sites-env-vars.md" /%}
 
 # Handle redirects and rewrites
 
