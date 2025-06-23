@@ -126,37 +126,14 @@ At your domain registrar or DNS provider:
 3. Wait for DNS propagation and verification
 {% /section %}
 
-# Understanding domain rule types
+# Domain rule types
 
-When adding a domain in Appwrite, you can choose from three rule types:
+When adding a domain in Appwrite, you can choose from three rule types: Active deployment, Git branch, or Redirect.
 
-{% table %}
-- Rule Type
-- Description
-- Use Case
+{% arrow_link href="/docs/products/sites/domains#domain-rule-types" %}
+Learn more about domain rule types
+{% /arrow_link %}
 
----
-
-- Active deployment
-- Points to the latest successful deployment
-- Production environments
-
----
-
-- Git branch
-- Points to deployments from a specific branch
-- Staging or testing environments
-
----
-
-- Redirect
-- Forwards traffic to another URL
-- Domain migrations or creating shortcuts
-{% /table %}
-
-{% info title="Redirect limitations" %}
-When using domain-level redirects in Appwrite, path and query parameters are ignored. For example, if you redirect `example.com` to `appwrite.io`, then `example.com/docs?id=123` will redirect to `appwrite.io` (not `appwrite.io/docs?id=123`).
-{% /info %}
 
 # Configure build settings
 
