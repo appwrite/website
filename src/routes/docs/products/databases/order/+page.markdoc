@@ -1,30 +1,30 @@
 ---
 layout: article
 title: Order
-description: Understand how to do data ordering in Appwrite Databases. Learn how to order and sort your database records for efficient data retrieval."
+description: Understand how to do data ordering in Appwrite Databases. Learn how to order and sort your database records for efficient data retrieval.
 ---
 
 You can order results returned by Appwrite Databases by using an order query. 
-For best performance, create an [index](/docs/products/databases/collections#indexes) on the column you plan to order by.
+For best performance, create an [index](/docs/products/databases/tables#indexes) on the column you plan to order by.
 
 # Ordering one column {% #one-column %}
 
-When querying using the [listDocuments](/docs/references/cloud/client-web/databases#listDocuments) endpoint, 
-you can specify the order of the documents returned using the `Query.orderAsc()` and `Query.orderDesc()` query methods.
+When querying using the [listRows](/docs/references/cloud/client-web/tables#listRows) endpoint,
+you can specify the order of the rows returned using the `Query.orderAsc()` and `Query.orderDesc()` query methods.
 
 {% multicode %}
 ```client-web
-import { Client, Databases, Query } from "appwrite";
+import { Client, Query, Tables } from "appwrite";
 
 const client = new Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
     .setProject('<PROJECT_ID>');
 
-const databases = new Databases(client);
+const tables = new Tables(client);
 
-databases.listDocuments(
+tables.listRows(
     '<DATABASE_ID>',
-    '[COLLECTION_ID]',
+    '<TABLE_ID>',
     [
         Query.orderAsc('title'),
     ]
@@ -39,12 +39,12 @@ void main() async {
         .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
         .setProject('<PROJECT_ID>');
 
-    final databases = Databases(client);
+    final tables = Tables(client);
 
     try {
-        final documents = await databases.listDocuments(
+        final rows = await tables.listRows(
             databaseId: '<DATABASE_ID>',
-            collectionId: '[COLLECTION_ID]',
+            tableId: '<TABLE_ID>',
             queries: [
                 Query.orderAsc('title')
             ]
@@ -64,12 +64,12 @@ func main() async throws {
         .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
         .setProject('<PROJECT_ID>');
 
-    let databases = Databases(client)
+    let tables = Tables(client)
 
     do {
-        let documents = try await databases.listDocuments(
+        let rows = try await tables.listRows(
             databaseId: "<DATABASE_ID>",
-            collectionId: "<COLLECTION_ID>",
+            tableId: "<TABLE_ID>",
             queries: [
                 Query.orderAsc("title")
             ]
@@ -82,19 +82,19 @@ func main() async throws {
 ```client-android-kotlin
 import io.appwrite.Client
 import io.appwrite.Query
-import io.appwrite.services.Databases
+import io.appwrite.services.Tables
 
 suspend fun main() {
     val client = Client(applicationContext)
         .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
         .setProject('<PROJECT_ID>');
 
-    val databases = Databases(client)
+    val tables = Tables(client)
 
     try {
-        val documents = databases.listDocuments(
+        val rows = tables.listRows(
             databaseId = "<DATABASE_ID>",
-            collectionId = "<COLLECTION_ID>",
+            tableId = "<TABLE_ID>",
             queries = [
                 Query.orderAsc("title")
             ]
@@ -107,13 +107,13 @@ suspend fun main() {
 
 ```graphql
 query {
-    databasesListDocuments(
+    tablesListRows(
         databaseId: "<DATABASE_ID>",
-        collectionId: "<COLLECTION_ID>"
+        tableId: "<TABLE_ID>"
         queries: ["orderAsc(\"title\")"]
     ) {
         total
-        documents {
+        rows {
             _id
             data
         }
@@ -124,20 +124,20 @@ query {
 {% /multicode %}
 
 # Multiple columns {% #multiple-columns %}
-To sort based on multiple attributes, simply provide multiple query methods.
-For better performance, create an index on the first attribute that you order by.
+To sort based on multiple columns, simply provide multiple query methods.
+For better performance, create an index on the first column that you order by.
 
 In the example below, the movies returned will be first sorted by `title` in ascending order, then sorted by `year` in descending order.
 {% multicode %}
 
 ```js
-// Web SDK code example for sorting based on multiple attributes
+// Web SDK code example for sorting based on multiple columns
 // ...
 
-// List documents and sort based on multiple attributes
-databases.listDocuments(
+// List rows and sort based on multiple columns
+tables.listRows(
     '<DATABASE_ID>',
-    '[COLLECTION_ID]',
+    '<TABLE_ID>',
     [
         Query.orderAsc('title'), // Order first by title in ascending order
         Query.orderDesc('year'), // Then, order by year in descending order
@@ -145,14 +145,14 @@ databases.listDocuments(
 );
 ```
 ```dart
-// Flutter SDK code example for sorting based on multiple attributes
+// Flutter SDK code example for sorting based on multiple columns
 // ...
 
-// List documents and sort based on multiple attributes
+// List rows and sort based on multiple columns
 try {
-    final documents = await databases.listDocuments(
+    final rows = await tables.listRows(
         databaseId: '<DATABASE_ID>',
-        collectionId: '[COLLECTION_ID]',
+        tableId: '<TABLE_ID>',
         queries: [
             Query.orderAsc('title'), // Order by title in ascending order
             Query.orderDesc('year')  // Order by year in descending order
@@ -163,14 +163,14 @@ try {
 }
 ```
 ```kotlin
-// Android SDK code example for sorting based on multiple attributes
+// Android SDK code example for sorting based on multiple columns
 // ...
 
-// List documents and sort based on multiple attributes
+// List rows and sort based on multiple columns
 try {
-    val documents = databases.listDocuments(
+    val rows = tables.listRows(
         databaseId = "<DATABASE_ID>",
-        collectionId = "<COLLECTION_ID>",
+        tableId = "<TABLE_ID>",
         queries = [
             Query.orderAsc("title"), // Order by title in ascending order
             Query.orderDesc("year")  // Order by year in descending order
@@ -181,14 +181,14 @@ try {
 }
 ```
 ```swift
-// Apple SDK code example for sorting based on multiple attributes
+// Apple SDK code example for sorting based on multiple columns
 // ...
 
-// List documents and sort based on multiple attributes
+// List rows and sort based on multiple columns
 do {
-    let documents = try await databases.listDocuments(
+    let rows = try await tables.listRows(
         databaseId: "<DATABASE_ID>",
-        collectionId: "<COLLECTION_ID>",
+        tableId: "<TABLE_ID>",
         queries: [
             Query.orderAsc("title"), // Order by title in ascending order
             Query.orderDesc("year")  // Order by year in descending order
@@ -200,13 +200,13 @@ do {
 ```
 ```graphql
 query {
-    databasesListDocuments(
+    tablesListRows(
         databaseId: "<DATABASE_ID>",
-        collectionId: "<COLLECTION_ID>",
+        tableId: "<TABLE_ID>",
         queries: ["orderAsc(\"title\")", "orderDesc(\"year\")"]
     ) {
         total
-        documents {
+        rows {
             _id
             data
         }

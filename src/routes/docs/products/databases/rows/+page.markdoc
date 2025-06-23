@@ -1,32 +1,32 @@
 ---
 layout: article
-title: Documents
-description: Master document management with Appwrite Databases. Learn how to create, update, and query documents within your collections for dynamic data storage.
+title: Rows
+description: Master row management with Appwrite Databases. Learn how to create, update, and query rows within your tables for dynamic data storage.
 ---
-Each piece of data or information in Appwrite Databases is a document.
-Documents have a structure defined by the parent collection.
+Each piece of data or information in Appwrite Databases is a row.
+Rows have a structure defined by the parent table.
 
-# Create documents {% #create-documents %}
+# Create rows {% #create-rows %}
 {% info title="Permissions required" %}
-You must grant **create** permissions to users at the **collection level** before users can create documents.
+You must grant **create** permissions to users at the **table level** before users can create rows.
 [Learn more about permissions](#permissions)
 {% /info %}
 
-In most use cases, you will create documents programmatically.
+In most use cases, you will create rows programmatically.
 
 {% multicode %}
 ```client-web
-import { Client, Databases, ID } from "appwrite";
+import { Client, ID, Tables } from "appwrite";
 
 const client = new Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
     .setProject('<PROJECT_ID>');
 
-const databases = new Databases(client);
+const tables = new Tables(client);
 
-const promise = databases.createDocument(
+const promise = tables.createRow(
     '<DATABASE_ID>',
-    '[COLLECTION_ID]',
+    '<TABLE_ID>',
     ID.unique(),
     {}
 );
@@ -45,13 +45,13 @@ void main() async {
         .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
         .setProject('<PROJECT_ID>');
 
-    final databases = Databases(client);
+    final tables = Tables(client);
 
     try {
-        final document = databases.createDocument(
+        final row = tables.createRow(
             databaseId: '<DATABASE_ID>',
-            collectionId: '[COLLECTION_ID]',
-            documentId: ID.unique(),
+            tableId: '<TABLE_ID>',
+            rowId: ID.unique(),
             data: {}
         );
     } on AppwriteException catch(e) {
@@ -68,13 +68,13 @@ func main() async throws {
         .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
         .setProject("<PROJECT_ID>")
 
-    let databases = Databases(client)
+    let tables = Tables(client)
 
     do {
-        let document = try await databases.createDocument(
+        let row = try await tables.createRow(
             databaseId: "<DATABASE_ID>",
-            collectionId: "<COLLECTION_ID>",
-            documentId: ID.unique(),
+            tableId: "<TABLE_ID>",
+            rowId: ID.unique(),
             data: [:]
         )
     } catch {
@@ -84,20 +84,20 @@ func main() async throws {
 ```
 ```client-android-kotlin
 import io.appwrite.Client
-import io.appwrite.services.Databases
+import io.appwrite.services.Tables
 
 suspend fun main() {
     val client = Client(applicationContext)
         .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
         .setProject("<PROJECT_ID>")
 
-    val databases = Databases(client)
+    val tables = Tables(client)
 
     try {
-        val document = databases.createDocument(
+        val row = tables.createRow(
             databaseId = "<DATABASE_ID>",
-            collectionId = "<COLLECTION_ID>",
-            documentId = ID.unique(),
+            tableId = "<TABLE_ID>",
+            rowId = ID.unique(),
             data = mapOf("a" to "b"),
         )
     } catch (e: Exception) {
@@ -107,14 +107,14 @@ suspend fun main() {
 ```
 ```graphql
 mutation {
-    databasesCreateDocument(
+    tablesCreateRow(
         databaseId: "<DATABASE_ID>",
-        collectionId: "<COLLECTION_ID>",
-        documentId: "[DOCUMENT_ID]",
+        tableId: "<TABLE_ID>",
+        rowId: "<ROW_ID>",
         data: "{}"
     ) {
         _id
-        _collectionId
+        _tableId
         _databaseId
         _createdAt
         _updatedAt
@@ -125,17 +125,17 @@ mutation {
 ```
 {% /multicode %}
 
-During testing, you might prefer to create documents in the Appwrite Console.
-To do so, navigate to the **Documents** tab of your collection and click the **Add document** button.
+During testing, you might prefer to create rows in the Appwrite Console.
+To do so, navigate to the **Rows** tab of your table and click the **Add row** button.
 
-# List documents {% #list-documents %}
+# List rows {% #list-rows %}
 
 {% info title="Permissions required" %}
-You must grant **read** permissions to users at the **collection level** before users can read documents.
+You must grant **read** permissions to users at the **table level** before users can read rows.
 [Learn more about permissions](#permissions)
 {% /info %}
 
-Documents can be retrieved using the [List Document](/docs/references/cloud/client-web/databases#listDocuments) endpoint.
+Rows can be retrieved using the [List Row](/docs/references/cloud/client-web/tables#listRows) endpoint.
 
 Results can be filtered, sorted, and paginated using Appwrite's shared set of query methods.
 You can find a full guide on querying in the [Queries Guide](/docs/products/databases/queries).
@@ -145,17 +145,17 @@ You can change this through [pagination](/docs/products/databases/pagination).
 
 {% multicode %}
 ```client-web
-import { Client, Databases, Query } from "appwrite";
+import { Client, Query, Tables } from "appwrite";
 
 const client = new Client()
     .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
     .setProject("<PROJECT_ID>")
 
-const databases = new Databases(client);
+const tables = new Tables(client);
 
-let promise = databases.listDocuments(
+let promise = tables.listRows(
     "<DATABASE_ID>",
-    "<COLLECTION_ID>",
+    "<TABLE_ID>",
     [
         Query.equal('title', 'Avatar')
     ]
@@ -175,12 +175,12 @@ void main() async {
         .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
         .setProject("<PROJECT_ID>")
 
-    final databases = Databases(client);
+    final tables = Tables(client);
 
     try {
-        final documents = await databases.listDocuments(
+        final rows = await tables.listRows(
             databaseId: '<DATABASE_ID>',
-            collectionId: '[COLLECTION_ID]',
+            tableId: '<TABLE_ID>',
             queries: [
                 Query.equal('title', 'Avatar')
             ]
@@ -199,12 +199,12 @@ func main() async throws {
         .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
         .setProject("<PROJECT_ID>")
 
-    let databases = Databases(client)
+    let tables = Tables(client)
 
     do {
-        let documents = try await databases.listDocuments(
+        let rows = try await tables.listRows(
             databaseId: "<DATABASE_ID>",
-            collectionId: "<COLLECTION_ID>",
+            tableId: "<TABLE_ID>",
             queries: [
                 Query.equal("title", value: "Avatar")
             ]
@@ -217,19 +217,19 @@ func main() async throws {
 ```client-android-kotlin
 import io.appwrite.Client
 import io.appwrite.Query
-import io.appwrite.services.Databases
+import io.appwrite.services.Tables
 
 suspend fun main() {
     val client = Client(applicationContext)
         .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
         .setProject("<PROJECT_ID>")
 
-    val databases = Databases(client)
+    val tables = Tables(client)
 
     try {
-        val documents = databases.listDocuments(
+        val rows = tables.listRows(
             databaseId = "<DATABASE_ID>",
-            collectionId = "<COLLECTION_ID>",
+            tableId = "<TABLE_ID>",
             queries = listOf(
                 Query.equal("title", "Avatar")
             )
@@ -241,13 +241,13 @@ suspend fun main() {
 ```
 ```graphql
 query {
-    databasesListDocuments(
+    tablesListRows(
         databaseId: "<DATABASE_ID>",
-        collectionId: "<COLLECTION_ID>",
+        tableId: "<TABLE_ID>",
         queries: ["equal(\"title\", [\"Avatar\"])"]
     ) {
         total
-        documents {
+        rows {
             _id
             data
         }
@@ -257,10 +257,10 @@ query {
 {% /multicode %}
 
 # Permissions {% #permissions %}
-In Appwrite, permissions can be granted at the collection level and the document level.
-Before a user can create a document, you need to grant create permissions to the user.
+In Appwrite, permissions can be granted at the table level and the row level.
+Before a user can create a row, you need to grant create permissions to the user.
 
-Read, update, and delete permissions can be granted at both the collection and document level.
-Users only need to be granted access at either the collection or document level to access documents.
+Read, update, and delete permissions can be granted at both the table and row level.
+Users only need to be granted access at either the table or row level to access rows.
 
 [Learn about configuring permissions](/docs/products/databases/permissions).

@@ -29,12 +29,12 @@
                     href: '/docs/products/databases/databases'
                 },
                 {
-                    label: 'Collections',
-                    href: '/docs/products/databases/collections'
+                    label: 'Tables',
+                    href: '/docs/products/databases/tables'
                 },
                 {
-                    label: 'Documents',
-                    href: '/docs/products/databases/documents'
+                    label: 'Rows',
+                    href: '/docs/products/databases/rows'
                 },
                 {
                     label: 'Permissions',
