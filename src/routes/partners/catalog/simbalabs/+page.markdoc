@@ -13,7 +13,7 @@ product:
     avatar: '/images/partners/avatars/simbalabs.png'
     vendor: SimbaLabs
     description: 'We are a web engineering company focused on making scalable, efficient web and mobile experiences.'
-frameworks: 
+technologies: 
     - Javascript
     - Python
     - Swift
