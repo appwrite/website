@@ -31,7 +31,7 @@ technologies:
     - Laravel
     - MySQL
     - PostgreSQL
-capabilities:
+services:
     - Fractional CTO
     - Software House
     - Mobile App Development
