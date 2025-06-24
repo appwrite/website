@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Introducing Types Generation: Automate your type definitions with Appwrite"
+title: "Introducing types generation: Automate your type definitions with Appwrite"
 description: "Automatically generate types from your collections with support for multiple languages."
 date: 2025-06-24
 cover: /images/blog/type-generation-feature/cover.png
