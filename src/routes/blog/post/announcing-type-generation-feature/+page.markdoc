@@ -1,1 +1,55 @@
+---
+layout: post
+title: Introducing Types Generation: Automate your type definitions with Appwrite 
+description: Automatically generate types from your collections with support for multiple languages.
+date: 2025-06-24
+cover: /images/blog/type-generation-feature/cover.png
+timeToRead: 4
+author: aditya-oberai
+category: announcement
+---
 
+We're excited to announce Appwrite’s newest SDK feature, **Types Generation**. Designed specifically to enhance your developer experience. Types Generation automates the creation of type definitions directly from your database collections, seamlessly integrating with your preferred programming language.
+
+# Say goodbye to manual mapping
+
+Manually creating and maintaining complex type definitions can be tedious, error-prone, and time-consuming. With Types Generation, Appwrite does the heavy lifting for you. Automatically generate accurate and up-to-date type definitions, ensuring your code always syncs with your database schema.
+
+# Effortless multi-language support
+
+Whether you work with PHP, Swift, Dart, TypeScript, JavaScript, Java, or Kotlin, Types Generation has you covered. Our intelligent system automatically detects your project's language and generates the appropriate type definitions, handling complex scenarios including [Enums](https://appwrite.io/docs/sdks#enums), class relationships, and language-specific semantics. We will continue to add support for more languages over time.
+
+# Simplified workflow, immediate benefits
+
+Using Types Generation is straightforward. Just execute one simple command:
+
+# Simplified workflow, immediate benefits
+
+Using Types Generation is straightforward. Just execute one simple command:
+
+```bash
+appwrite generate types <OUTPUT_DIR_NAME>
+
+```
+
+![Workflow](/images/blog/type-generation-feature/workflow.png)
+
+# Better experience:
+
+- **Time savings**: Eliminate hours of manual work and dedicate your time to building impactful features.
+- **Reduced errors**: Keep your types consistently aligned with your database schema, drastically reducing outdated and mismatched types.
+- **Faster iterations**: Automatically propagate schema changes, allowing for rapid development and seamless collaboration.
+
+# Built with you in mind
+
+Types Generation was built explicitly for developers, addressing key pain points and enhancing your productivity. Whether using Appwrite in a cloud environment or self-hosted, Types Generation fits seamlessly into your workflow.
+
+Many other solutions offer type generation limited to TypeScript, Appwrite expands your capabilities with robust multi-language support, ensuring you have flexibility and comprehensive integration, regardless of your preferred technology stack.
+
+By simplifying integration and reducing friction, Types Generation helps accelerate onboarding and ensures long-term satisfaction, significantly benefiting developer teams and their organizations.
+
+# More resources
+
+- [Visit the documentation to get started]()
+- [Learn about using the Appwrite CLI](https://appwrite.io/blog/post/how-to-execute-database-migration-with-appwrite-cli)
+- [Improve your Appwrite developer experience with dev keys](https://appwrite.io/blog/post/improve-devex-dev-keys)
