@@ -33,7 +33,6 @@ Appwrite provides a built-in user preferences system through the Account API, al
 - Persists across all user devices
 - Stored as a JSON object
 - Limited to 64kB of data
-- Automatically synced when the user logs in
 - Simple API for updating and retrieving
 
 {% multicode %}
