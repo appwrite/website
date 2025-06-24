@@ -21,8 +21,15 @@ Whether you work with PHP, Swift, Dart, TypeScript, JavaScript, Java, or Kotlin,
 
 # Simplified workflow, immediate benefits
 
-Using types generation is straightforward. Just execute one simple command:
+Using types generation is straightforward. 
 
+First, ensure you have the [Appwrite CLI](/docs/tooling/command-line/installation#getting-started) installed and your project is [initialised](/docs/tooling/command-line/installation#initialization). Then, run the following command in your terminal to pull collections from your Appwrite project:
+
+```bash
+appwrite pull collections
+```
+
+To generate types, you can use the Appwrite CLI command:
 ```bash
 appwrite types [options] <output-directory>
 
