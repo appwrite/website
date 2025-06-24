@@ -50,6 +50,6 @@ By simplifying integration and reducing friction, Types Generation helps acceler
 
 # More resources
 
-- [Visit the documentation to get started]()
-- [Learn about using the Appwrite CLI](https://appwrite.io/blog/post/how-to-execute-database-migration-with-appwrite-cli)
-- [Improve your Appwrite developer experience with dev keys](https://appwrite.io/blog/post/improve-devex-dev-keys)
+- [Visit the documentation to get started](/docs/products/databases/type-generation/+page.markdoc)
+- [Learn about using the Appwrite CLI](/blog/post/how-to-execute-database-migration-with-appwrite-cli)
+- [Improve your Appwrite developer experience with dev keys](/blog/post/improve-devex-dev-keys)
