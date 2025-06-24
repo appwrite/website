@@ -7,22 +7,29 @@
         url: string;
         title?: string;
         children: Snippet;
+        inlineVideo?: boolean;
     };
 
     const {
-        elements: { portalled, trigger, content, overlay },
+        elements: { trigger, content, overlay },
         states: { open }
     } = createDialog({
         forceVisible: true,
         preventScroll: true
     });
 
-    const { url, title = 'YouTube video player', children }: Props = $props();
+    const { url, title = 'YouTube video player', children, inlineVideo = true }: Props = $props();
 </script>
 
-<div use:melt={$trigger} class="contents cursor-pointer">
-    {@render children()}
-</div>
+{#if inlineVideo}
+    <div class="contents cursor-pointer" use:melt={$trigger}>
+        {@render children()}
+    </div>
+{:else}
+    <a href={url} target="_blank" rel="noopener noreferrer" class="contents cursor-pointer">
+        {@render children()}
+    </a>
+{/if}
 
 {#if $open}
     <div class="fixed inset-0 z-1000 flex items-center justify-center">

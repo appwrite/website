@@ -1,0 +1,42 @@
+---
+layout: partner
+title: MakeShyft
+description: MakeShyft is a software company currently transitioning from client work to B2C & B2B software products.  Our goal is to build productivity, communication, and collaboration tools.
+date: 2025-03-21
+featured: false
+partnerLevel: Silver
+isNew: true
+cover: /images/partners/covers/makeshyft.png
+category: agency
+website: http://www.makeshyft.com
+email: mailto:makeshfty@makeshyft.com
+product: 
+    avatar: '/images/partners/avatars/makeshyft.png'
+    vendor: MakeShyft
+    description: MakeShyft is a software company currently transitioning from client work to B2C & B2B software products.  Our goal is to build productivity, communication, and collaboration tools.
+frameworks: 
+    - Livecode
+    - Javascript
+    - PHP
+capabilities:
+    - Web 
+regions:
+    - Africa
+    - Asia
+    - Australia
+    - New Zealand
+    - Europe
+    - Latin America
+    - Middle East
+    - North America
+languages: 
+    - English
+---
+
+# Overview
+
+MakeShyft is a software company currently transitioning from client work to B2C & B2B software products.  Our goal is to build productivity, communication and collaboration tools.  We have big goals and dreams and we are just getting started.
+
+# Services
+
+We develop software product. Useful desktop applications that run natively and locally first.

@@ -8,15 +8,15 @@ type SocialStats = {
 
 export const SOCIAL_STATS: SocialStats = {
     GITHUB: {
-        STAT: '48K',
+        STAT: '50K',
         LINK: 'https://github.com/appwrite/appwrite',
         EXTRA: {
-            COMMITS: '24K+',
-            PULL_REQUESTS: '4.5K+',
+            COMMITS: '27K+',
+            PULL_REQUESTS: '4.7K+',
             ISSUES: '3K+',
-            OPEN_ISSUES: '500+',
+            OPEN_ISSUES: '600+',
             CLOSED_ISSUES: '3.3K+',
-            FORKS: '4.3K+',
+            FORKS: '4.4K+',
             CONTRIBUTORS: '800+'
         }
     },
@@ -29,7 +29,7 @@ export const SOCIAL_STATS: SocialStats = {
         LINK: 'https://twitter.com/intent/follow?screen_name=appwrite'
     },
     YOUTUBE: {
-        STAT: '11K+',
+        STAT: '12K+',
         LINK: 'https://www.youtube.com/c/appwrite?sub_confirmation=1'
     }
 };
@@ -59,13 +59,13 @@ export type SocialShareOption = {
     type: 'link' | 'copy';
 };
 
-export type IntegrationCategory = {
+export type SearchableCategory = {
     slug: string;
     heading: string;
     description: string;
 };
 
-export const integrationCategoryDescriptions: IntegrationCategory[] = [
+export const integrationCategoryDescriptions: SearchableCategory[] = [
     {
         slug: 'ai',
         heading: 'AI',
@@ -102,6 +102,11 @@ export const integrationCategoryDescriptions: IntegrationCategory[] = [
         description: 'Implement search functionalities'
     },
     {
+        slug: 'sites',
+        heading: 'Sites',
+        description: 'Deploy and host web applications'
+    },
+    {
         slug: 'storage',
         heading: 'Storage',
         description: 'Storage for data and media'
@@ -110,6 +115,14 @@ export const integrationCategoryDescriptions: IntegrationCategory[] = [
         slug: 'deployments',
         heading: 'Deployments',
         description: 'Seamlessly deploy your code'
+    }
+];
+
+export const partnerCategoryDescriptions: SearchableCategory[] = [
+    {
+        slug: 'agency',
+        heading: 'Agency',
+        description: 'Find an Appwrite Partner agency for your project'
     }
 ];
 

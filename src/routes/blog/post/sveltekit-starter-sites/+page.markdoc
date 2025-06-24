@@ -1,0 +1,78 @@
+---
+layout: post
+title: How to setup the SvelteKit starter template on Appwrite Sites
+description: Learn the process of deploying the SvelteKit starter template on Appwrite Sites.
+date: 2025-05-20
+cover: /images/blog/sveltekit-starter-sites/cover.png
+timeToRead: 5
+author: aditya-oberai
+category: tutorial
+featured: false
+callToAction: true
+---
+
+Building web applications requires both front-end expertise and back-end infrastructure. [Appwrite Sites](/products/sites) simplifies this process by providing a platform for deploying, hosting, and scaling web applications.
+
+To ease this process even further, Appwrite Sites offers a variety of starter kits for popular frameworks like Next.js, React, Vue, Nuxt, Angular, SvelteKit, and Flutter. In this blog, you will learn how to set up the SvelteKit starter template and deploy it to Appwrite Sites.
+
+# Overview of the starter template
+
+[SvelteKit](https://kit.svelte.dev/) is a modern web framework built on top of Svelte that enables fast, server-rendered and client-enhanced web applications with powerful routing, data loading, and deployment features out of the box.
+
+Appwrite's SvelteKit starter template includes:
+
+- A clean, single-page UI
+- Integration with Appwrite's SDK
+- Pre-configured deployment settings for Appwrite Sites' SSR rendering strategy
+
+![Deployed app](/images/blog/sveltekit-starter-sites/deployed.png)
+
+# Deploy the starter template on Appwrite
+
+Firstly, you must head to Appwrite Cloud and [create an account](https://cloud.appwrite.io/console/register) if you haven't already (or [self-host Appwrite 1.7](/docs/advanced/self-hosting)). Next, create your first project, which will lead you to the project overview page.
+
+![Add platform](/images/blog/sveltekit-starter-sites/add-platform.png)
+
+Head to the **Sites** page from the left sidebar, click on the **Create site** button, and select the **Clone a template** option. This will take you to the Appwrite Sites templates listing, where you should search `Svelte starter` and click on the template.
+
+![Starter template](/images/blog/sveltekit-starter-sites/template.png)
+
+After selecting the template, you can choose to connect a GitHub repository now or at a later time. If you choose to connect a repository, ensure you select a production branch (leave the root directory as is). Then, review the preset environment variables, update the domain name if you want, and click on the **Deploy** button. You can watch the deployment logs as the site is built.
+
+![Deployment logs](/images/blog/sveltekit-starter-sites/deployment-logs.png)
+
+{% info title="Alternative method to deploy starter template" %}
+
+As an alternative to the Appwrite console, you can create and deploy websites using the [Appwrite CLI](/docs/products/sites/deploy-manually#cli). Create your SvelteKit starter using the following shell command and configuration:
+
+```bash
+appwrite init sites
+? What would you like to name your site? Svelte starter
+? What ID would you like to have for your site? unique()
+? What framework would you like to use? SvelteKit (sveltekit)
+? What specification would you like to use? 0.5 CPU, 512MB RAM
+```
+
+You can then make any edits to the website and deploy it using the following command:
+
+```bash
+appwrite push sites
+```
+
+{% /info %}
+
+# Test the starter template
+
+After your site has been successfully deployed, Appwrite will show you a **Congratulations** page. You can then either choose to view the site by clicking on the **Visit site** button or view the site configuration (deployments, logs, domains, usage, and settings) by clicking on the **Go to dashboard** button.
+
+![Congratulations](/images/blog/sveltekit-starter-sites/congrats.png)
+
+# Next steps
+
+And with that, the SvelteKit starter kit is deployed to Appwrite Sites. You can explore other templates or deploy any other websites you'd like. 
+
+For more information about Appwrite Sites:
+
+- [Appwrite Sites product docs](/docs/products/sites)
+- [Quick start to deploy any SvelteKit app](/docs/products/sites/quick-start/sveltekit)
+- [Appwrite Discord server](/discord)

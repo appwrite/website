@@ -35,10 +35,11 @@
             Products: [
                 { label: 'Auth', href: '/products/auth' },
                 { label: 'Databases', href: '/docs/products/databases' },
+                { label: 'Storage', href: '/products/storage' },
                 { label: 'Functions', href: '/products/functions' },
                 { label: 'Messaging', href: '/products/messaging' },
-                { label: 'Storage', href: '/products/storage' },
                 { label: 'Realtime', href: '/docs/apis/realtime' },
+                { label: 'Hosting', href: '/docs/products/sites' },
                 { label: 'Network', href: '/docs/products/network' }
             ],
             Learn: [
@@ -90,7 +91,8 @@
                     rel: 'noopener noreferrer'
                 },
                 { label: 'Contact us', href: '/contact-us' },
-                { label: 'Assets', href: '/assets' }
+                { label: 'Assets', href: '/assets' },
+                { label: 'Security', href: '/docs/advanced/security' }
             ]
         };
 </script>

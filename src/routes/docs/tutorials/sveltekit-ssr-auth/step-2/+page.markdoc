@@ -49,5 +49,5 @@ Appwrite provides a Node SDK that can be used in your Svelte apps. You can use A
 The Node SDK is intended for server-side use. If you want to use Appwrite in a client-side application, you should [use the Web SDK instead](/docs/tutorials/sveltekit-csr-auth).
 
 ```sh
-npm install node-appwrite
+npm install node-appwrite@17.0.0
 ```
