@@ -9,7 +9,7 @@ author: chirag-aggarwal
 category: announcement
 ---
 
-We're excited to announce Appwrite’s newest CLI feature, **types Generation**. Designed specifically to enhance your developer experience. Types generation automates the creation of type definitions directly from your database collections, seamlessly integrating with your preferred programming language.
+We're excited to announce Appwrite’s newest CLI feature, **types generation**. Designed specifically to enhance your developer experience. Types generation automates the creation of type definitions directly from your database collections, seamlessly integrating with your preferred programming language.
 
 # Say goodbye to manual mapping
 
