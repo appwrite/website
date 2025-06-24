@@ -36,7 +36,7 @@ client
     .setKey('919c2d18fb5d4...a2ae413da83346ad2') // Your secret API key
 ;
 
-const promise = databases.createCollection('<DATABASE_ID>', '[COLLECTION_ID]', '[NAME]');
+const promise = databases.createCollection('<DATABASE_ID>', '<COLLECTION_ID>', '<NAME>');
 
 promise.then(function (response) {
     console.log(response);
@@ -59,7 +59,7 @@ client
 ;
 
 
-let promise = databases.createCollection('<DATABASE_ID>', '[COLLECTION_ID]', '[NAME]');
+let promise = databases.createCollection('<DATABASE_ID>', '<COLLECTION_ID>', '<NAME>');
 
 promise.then(function (response) {
     console.log(response);
@@ -83,7 +83,7 @@ $client
 
 $databases = new Databases($client);
 
-$result = $databases->createCollection('<DATABASE_ID>', '[COLLECTION_ID]', '[NAME]');
+$result = $databases->createCollection('<DATABASE_ID>', '<COLLECTION_ID>', '<NAME>');
 ```
 ```python
 from appwrite.client import Client
@@ -99,7 +99,7 @@ client = Client()
 
 databases = Databases(client)
 
-result = databases.create_collection('<DATABASE_ID>', '[COLLECTION_ID]', '[NAME]')
+result = databases.create_collection('<DATABASE_ID>', '<COLLECTION_ID>', '<NAME>')
 ```
 ```ruby
 require 'Appwrite'
@@ -113,7 +113,7 @@ client = Client.new
 
 databases = Databases.new(client)
 
-response = databases.create_collection(database_id: '<DATABASE_ID>', collection_id: '[COLLECTION_ID]', name: '[NAME]')
+response = databases.create_collection(database_id: '<DATABASE_ID>', collection_id: '<COLLECTION_ID>', name: '<NAME>')
 
 puts response.inspect
 ```
@@ -149,8 +149,8 @@ void main() { // Init SDK
 
   Future result = databases.createCollection(
     databaseId: '<DATABASE_ID>',
-    collectionId: '[COLLECTION_ID]',
-    name: '[NAME]',
+    collectionId: '<COLLECTION_ID>',
+    name: '<NAME>',
   );
 
   result

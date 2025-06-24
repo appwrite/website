@@ -35,7 +35,7 @@ const tables = new Tables(client);
 
 databases.listRows(
     '<DATABASE_ID>',
-    '[TABLE_ID]',
+    '<TABLE_ID>',
     [
         Query.equal('title', ['Avatar', 'Lord of the Rings']),
         Query.greaterThan('year', 1999)

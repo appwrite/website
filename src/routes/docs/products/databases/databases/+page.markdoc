@@ -31,7 +31,7 @@ client
     .setKey('919c2d18fb5d4...a2ae413da83346ad2') // Your secret API key
 ;
 
-const promise = databases.create('<DATABASE_ID>', '[NAME]');
+const promise = databases.create('<DATABASE_ID>', '<NAME>');
 
 promise.then(function (response) {
     console.log(response);
@@ -54,7 +54,7 @@ client
 ;
 
 
-let promise = databases.create('<DATABASE_ID>', '[NAME]');
+let promise = databases.create('<DATABASE_ID>', '<NAME>');
 
 promise.then(function (response) {
     console.log(response);
@@ -78,7 +78,7 @@ $client
 
 $databases = new Databases($client);
 
-$result = $databases->create('<DATABASE_ID>', '[NAME]');
+$result = $databases->create('<DATABASE_ID>', '<NAME>');
 ```
 ```python
 from appwrite.client import Client
@@ -94,7 +94,7 @@ client = Client()
 
 databases = Databases(client)
 
-result = databases.create('<DATABASE_ID>', '[NAME]')
+result = databases.create('<DATABASE_ID>', '<NAME>')
 ```
 ```ruby
 require 'Appwrite'
@@ -108,7 +108,7 @@ client = Client.new
 
 databases = Databases.new(client)
 
-response = databases.create(database_id: '<DATABASE_ID>', name: '[NAME]')
+response = databases.create(database_id: '<DATABASE_ID>', name: '<NAME>')
 
 puts response.inspect
 ```
@@ -143,7 +143,7 @@ void main() { // Init SDK
 
   Future result = databases.create(
     databaseId: '<DATABASE_ID>',
-    name: '[NAME]',
+    name: '<NAME>',
   );
 
   result

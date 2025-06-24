@@ -32,7 +32,7 @@ const databases = new Databases(client);
 // Page 1
 const page1 = await databases.listDocuments(
     '<DATABASE_ID>',
-    '[COLLECTION_ID]',
+    '<COLLECTION_ID>',
     [
         Query.limit(25),
         Query.offset(0)
@@ -42,7 +42,7 @@ const page1 = await databases.listDocuments(
 // Page 2
 const page2 = await databases.listDocuments(
     '<DATABASE_ID>',
-    '[COLLECTION_ID]',
+    '<COLLECTION_ID>',
     [
         Query.limit(25),
         Query.offset(25)
@@ -61,7 +61,7 @@ void main() async {
 
     final page1 = await databases.listDocuments(
         databaseId: '<DATABASE_ID>',
-        collectionId: '[COLLECTION_ID]',
+        collectionId: '<COLLECTION_ID>',
         queries: [
             Query.limit(25),
             Query.offset(0)
@@ -70,7 +70,7 @@ void main() async {
 
     final page2 = await databases.listDocuments(
         databaseId: '<DATABASE_ID>',
-        collectionId: '[COLLECTION_ID]',
+        collectionId: '<COLLECTION_ID>',
         queries: [
             Query.limit(25),
             Query.offset(25)
@@ -168,7 +168,7 @@ const databases = new Databases(client);
 // Page 1
 const page1 = await databases.listDocuments(
     '<DATABASE_ID>',
-    '[COLLECTION_ID]',
+    '<COLLECTION_ID>',
     [
         Query.limit(25),
     ]
@@ -179,7 +179,7 @@ const lastId = page1.documents[page1.documents.length - 1].$id;
 // Page 2
 const page2 = await databases.listDocuments(
     '<DATABASE_ID>',
-    '[COLLECTION_ID]',
+    '<COLLECTION_ID>',
     [
         Query.limit(25),
         Query.cursorAfter(lastId),
@@ -199,7 +199,7 @@ void main() async {
 
     final page1 = await databases.listDocuments(
         databaseId: '<DATABASE_ID>',
-        collectionId: '[COLLECTION_ID]',
+        collectionId: '<COLLECTION_ID>',
         queries: [
             Query.limit(25)
         ]
@@ -209,7 +209,7 @@ void main() async {
 
     final page2 = await databases.listDocuments(
         databaseId: '<DATABASE_ID>',
-        collectionId: '[COLLECTION_ID]',
+        collectionId: '<COLLECTION_ID>',
         queries: [
             Query.limit(25),
             Query.cursorAfter(lastId)
