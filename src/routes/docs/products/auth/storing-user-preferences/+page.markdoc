@@ -391,14 +391,13 @@ This comparison table shows the strengths of each storage option:
 
 | Feature | Browser localStorage | User Preferences | Team Preferences | Appwrite Databases |
 |---------|--------------|------------------|------------------|-------------------|
-| **Storage Location** | Client-side | Server-side | Server-side | Server-side |
+| **Storage location** | Client-side | Server-side | Server-side | Server-side |
 | **Persistence** | Device-specific | Cross-device | Team-wide | Cross-device |
-| **Size Limit** | 5MB per origin | 64kB | 64kB | Unlimited* |
+| **Size limit** | 5MB per origin | 64kB | 64kB | Unlimited* |
 | **Complexity** | Simple | Simple | Simple | Complex |
-| **Schema Validation** | No | No | No | Yes |
-| **Offline Access** | Yes | No | No | No** |
-| **Syncing Required** | Yes | Automatic | Automatic | Automatic |
-| **Query Capabilities** | No | No | No | Yes |
+| **Schema validation** | No | No | No | Yes |
+| **Offline access** | Yes | No | No | No** |
+| **Query capabilities** | No | No | No | Yes |
 
 - \* Subject to project limits
 - \*\* Unless implemented with local caching
