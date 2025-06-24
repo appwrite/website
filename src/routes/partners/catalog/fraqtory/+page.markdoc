@@ -14,7 +14,7 @@ product:
     avatar: '/images/partners/avatars/fraqtory.png'
     vendor: Fraqtory
     description: Transform your startup vision into reality with custom software and Fractional CTO services, tailored to accelerate growth and success.
-frameworks: 
+technologies: 
     - Javascript
     - Typescript
     - React
