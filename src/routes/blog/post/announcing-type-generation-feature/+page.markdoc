@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Introducing types generation: Automate your type definitions with Appwrite"
+title: "Introducing Types generation: Automate your type definitions with Appwrite"
 description: "Automatically generate types from your collections with support for multiple languages."
 date: 2025-06-24
 cover: /images/blog/type-generation-feature/cover.png
@@ -9,19 +9,19 @@ author: chirag-aggarwal
 category: announcement
 ---
 
-We're excited to announce Appwrite’s newest CLI feature, **types generation**. Designed specifically to enhance your developer experience. Types generation automates the creation of type definitions directly from your database collections, seamlessly integrating with your preferred programming language.
+We're excited to announce Appwrite’s newest CLI feature, **Types generation**. Designed specifically to enhance your developer experience. Types generation automates the creation of type definitions directly from your database collections, seamlessly integrating with your preferred programming language.
 
 # Say goodbye to manual mapping
 
-Manually creating and maintaining complex type definitions can be tedious, error-prone, and time-consuming. With types generation, Appwrite does the heavy lifting for you. Automatically generate accurate and up-to-date type definitions, ensuring your code always syncs with your database schema.
+Manually creating and maintaining complex type definitions can be tedious, error-prone, and time-consuming. With Types generation, Appwrite does the heavy lifting for you. Automatically generate accurate and up-to-date type definitions, ensuring your code always syncs with your database schema.
 
 # Effortless multi-language support
 
-Whether you work with PHP, Swift, Dart, TypeScript, JavaScript, Java, or Kotlin, types generation has you covered. The Appwrite CLI automatically detects your project's language and generates the appropriate type definitions, handling complex scenarios including [Enums](/docs/sdks#enums), class relationships, and language-specific semantics. We will continue to add support for more languages over time.
+Whether you work with PHP, Swift, Dart, TypeScript, JavaScript, Java, or Kotlin, Types generation has you covered. The Appwrite CLI automatically detects your project's language and generates the appropriate type definitions, handling complex scenarios including [Enums](/docs/sdks#enums), class relationships, and language-specific semantics. We will continue to add support for more languages over time.
 
 # Simplified workflow, immediate benefits
 
-Using types generation is straightforward. 
+Using Types generation is straightforward. 
 
 First, ensure you have the [Appwrite CLI](/docs/tooling/command-line/installation#getting-started) installed and your project is [initialised](/docs/tooling/command-line/installation#initialization). Then, run the following command in your terminal to pull collections from your Appwrite project:
 
@@ -45,11 +45,11 @@ appwrite types [options] <output-directory>
 
 # Built with you in mind
 
-Types generation was built explicitly for developers, addressing key pain points and enhancing your productivity. Whether using Appwrite in a cloud environment or self-hosted, types generation fits seamlessly into your workflow.
+Types generation was built explicitly for developers, addressing key pain points and enhancing your productivity. Whether using Appwrite in a cloud environment or self-hosted, Types generation fits seamlessly into your workflow.
 
 Many other solutions offer type generation limited to TypeScript, Appwrite expands your capabilities with robust multi-language support, ensuring you have flexibility and comprehensive integration, regardless of your preferred technology stack.
 
-By simplifying integration and reducing friction, types generation helps accelerate onboarding and ensures long-term satisfaction, significantly benefiting developer teams and their organizations.
+By simplifying integration and reducing friction, Types generation helps accelerate onboarding and ensures long-term satisfaction, significantly benefiting developer teams and their organizations.
 
 # More resources
 
