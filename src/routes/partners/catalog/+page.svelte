@@ -23,7 +23,7 @@
 
     const title = 'Partners' + TITLE_SUFFIX;
     const description =
-        'Connect your favorite apps to Appwrite for one unified tech stack. Explore our catalog of integrations now.';
+        'Find the right Appwrite Partner for your projects. From freelance specialists to multifaceted agencies, there is an Appwrite expert for you.';
     const ogImage = DEFAULT_HOST + '/images/open-graph/website.png';
 
     // search functionality
@@ -242,7 +242,7 @@
                                 <section class="flex flex-col gap-8">
                                     <header class="flex flex-col gap-1">
                                         <h2 class="text-label text-primary">Featured</h2>
-                                        <p class="text-description">Top recommended integrations</p>
+                                        <p class="text-description">Recommended Partners</p>
                                     </header>
 
                                     <div>

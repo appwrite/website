@@ -15,6 +15,7 @@ export type Partner = {
     frameworks: Array<string>;
     website: string;
     href: string;
+    email: string;
     product: {
         vendor: string;
         avatar: string;
