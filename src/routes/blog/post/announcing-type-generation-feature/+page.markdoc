@@ -23,10 +23,6 @@ Whether you work with PHP, Swift, Dart, TypeScript, JavaScript, Java, or Kotlin,
 
 Using Types Generation is straightforward. Just execute one simple command:
 
-# Simplified workflow, immediate benefits
-
-Using Types Generation is straightforward. Just execute one simple command:
-
 ```bash
 appwrite generate types <OUTPUT_DIR_NAME>
 
