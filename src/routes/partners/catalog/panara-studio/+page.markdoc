@@ -13,7 +13,7 @@ product:
     avatar: '/images/partners/avatars/panara.png'
     vendor: Panara Studio
     description: Panara Studio started as a one-person agency in 2021 and has grown into a small team of experts. We've worked with clients from 10+ countries, including startups, early-stage ventures, angel investors, and creators. Collaborate directly with Kamal Panara, the founder and engineer, and our talented professionals.
-frameworks: 
+technologies: 
     - Flutter
     - ReactJS
     - NextJS
@@ -21,7 +21,7 @@ frameworks:
     - Dart
     - Javascript
     - NodeJS
-capabilities:
+services:
     - UI/UX Design
     - Mobile App Development
     - Web App Development
