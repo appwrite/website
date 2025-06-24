@@ -24,7 +24,7 @@ technologies:
     - Typescript
     - Javascript
     - Python
-capabilities:
+services:
     - AI
     - Web 
     - Mobile
