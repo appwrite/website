@@ -15,7 +15,7 @@
 </script>
 
 <script lang="ts">
-    import { getContext, hasContext, onMount, setContext } from 'svelte';
+    import { getContext, hasContext, setContext } from 'svelte';
     import { readable, type Readable, writable } from 'svelte/store';
     import { Feedback } from '$lib/components';
     import TableOfContents from '$lib/components/blog/table-of-contents.svelte';
