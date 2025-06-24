@@ -18,7 +18,7 @@ product:
 technologies:
 - Android
 - iOS
-capabilities:
+services:
     - AI
     - Web 
     - Mobile
