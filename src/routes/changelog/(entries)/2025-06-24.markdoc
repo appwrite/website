@@ -1,1 +1,14 @@
+---
+layout: changelog
+title: "Introducing types generation: Automate your type definitions with Appwrite"
+date: 2025-06-24
+cover: /images/changelog/2025-06-24.png
+---
 
+Manually creating and maintaining complex type definitions can be tedious, error-prone, and time-consuming.
+
+With Types Generation, Appwrite does the heavy lifting for you. Automatically generate accurate and up-to-date type definitions, ensuring your code always syncs with your database schema.
+
+{% arrow_link href="/blog/post/announcing-type-generation-feature" %}
+Read the announcement to learn more
+{% /arrow_link %}
