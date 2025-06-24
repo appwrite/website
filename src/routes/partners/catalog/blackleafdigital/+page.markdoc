@@ -14,7 +14,7 @@ product:
     avatar: '/images/partners/avatars/bld.png'
     vendor: Black Leaf Digital
     description: 
-frameworks: 
+technologies: 
     - React
     - Wordpress
     - Astro
