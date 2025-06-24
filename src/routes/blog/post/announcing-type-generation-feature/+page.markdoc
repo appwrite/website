@@ -17,7 +17,7 @@ Manually creating and maintaining complex type definitions can be tedious, error
 
 # Effortless multi-language support
 
-Whether you work with PHP, Swift, Dart, TypeScript, JavaScript, Java, or Kotlin, Types Generation has you covered. Our intelligent system automatically detects your project's language and generates the appropriate type definitions, handling complex scenarios including [Enums](https://appwrite.io/docs/sdks#enums), class relationships, and language-specific semantics. We will continue to add support for more languages over time.
+Whether you work with PHP, Swift, Dart, TypeScript, JavaScript, Java, or Kotlin, Types Generation has you covered. The Appwrite CLI automatically detects your project's language and generates the appropriate type definitions, handling complex scenarios including [Enums](https://appwrite.io/docs/sdks#enums), class relationships, and language-specific semantics. We will continue to add support for more languages over time.
 
 # Simplified workflow, immediate benefits
 
