@@ -1,18 +1,32 @@
 ---
 layout: article
-title: Documents
-description: Master document management with Appwrite Databases. Learn how to create, update, and query documents within your collections for dynamic data storage.
+title: Start with Databases
+description: Get started with Appwrite Databases. Follow a step-by-step guide to create your first database, define collections, and perform basic data operations.
 ---
-Each piece of data or information in Appwrite Databases is a document.
-Documents have a structure defined by the parent collection.
 
-# Create documents {% #create-documents %}
-{% info title="Permissions required" %}
-You must grant **create** permissions to users at the **collection level** before users can create documents.
-[Learn more about permissions](#permissions)
-{% /info %}
+{% section #create-database step=1 title="Create database" %}
+Head to your [Appwrite Console](https://cloud.appwrite.io/console/) and create a database and name it `Oscar`.
+Optionally, add a custom database ID.
+{% /section %}
 
-In most use cases, you will create documents programmatically.
+{% section #create-collection step=2 title="Create collection" %}
+Create a collection and name it `My books`. Optionally, add a custom collection ID.
+
+Navigate to **Attributes** and create attributes by clicking **Create attribute** and select **String**.
+Attributes define the structure of your collection's documents. Enter **Attribute key** and **Size**. For example, `title` and `100`.
+
+Navigate to **Settings** > **Permissions** and add a new role **Any**.
+Check the **CREATE** and **READ** permissions, so anyone can create and read documents.
+{% /section %}
+
+
+{% section #create-documents step=3 title="Create documents" %}
+To create a document use the `createDocument` method.
+
+In the **Settings** menu, find your project ID and replace `<PROJECT_ID>` in the example.
+
+Navigate to the `Oscar` database, copy the database ID, and replace `<DATABASE_ID>`.
+Then, in the `My books` collection, copy the collection ID, and replace `<COLLECTION_ID>`.
 
 {% multicode %}
 ```client-web
@@ -26,9 +40,9 @@ const databases = new Databases(client);
 
 const promise = databases.createDocument(
     '<DATABASE_ID>',
-    '[COLLECTION_ID]',
+    '<COLLECTION_ID>',
     ID.unique(),
-    {}
+    { "title": "Hamlet" }
 );
 
 promise.then(function (response) {
@@ -50,9 +64,9 @@ void main() async {
     try {
         final document = databases.createDocument(
             databaseId: '<DATABASE_ID>',
-            collectionId: '[COLLECTION_ID]',
+            collectionId: '<COLLECTION_ID>',
             documentId: ID.unique(),
-            data: {}
+            data: { "title": "Hamlet" }
         );
     } on AppwriteException catch(e) {
         print(e);
@@ -75,7 +89,7 @@ func main() async throws {
             databaseId: "<DATABASE_ID>",
             collectionId: "<COLLECTION_ID>",
             documentId: ID.unique(),
-            data: [:]
+            data: ["title" : "hamlet"]
         )
     } catch {
         print(error.localizedDescription)
@@ -98,51 +112,35 @@ suspend fun main() {
             databaseId = "<DATABASE_ID>",
             collectionId = "<COLLECTION_ID>",
             documentId = ID.unique(),
-            data = mapOf("a" to "b"),
+            data = mapOf("title" to "hamlet"),
         )
     } catch (e: Exception) {
         Log.e("Appwrite", "Error: " + e.message)
     }
 }
 ```
-```graphql
-mutation {
-    databasesCreateDocument(
-        databaseId: "<DATABASE_ID>",
-        collectionId: "<COLLECTION_ID>",
-        documentId: "[DOCUMENT_ID]",
-        data: "{}"
-    ) {
-        _id
-        _collectionId
-        _databaseId
-        _createdAt
-        _updatedAt
-        _permissions
-        data
-    }
-}
-```
 {% /multicode %}
 
-During testing, you might prefer to create documents in the Appwrite Console.
-To do so, navigate to the **Documents** tab of your collection and click the **Add document** button.
+The response should look similar to this.
 
-# List documents {% #list-documents %}
+```json
+{
+    "title": "Hamlet",
+    "$id": "65013138dcd8618e80c4",
+    "$permissions": [],
+    "$createdAt": "2023-09-13T03:49:12.905+00:00",
+    "$updatedAt": "2023-09-13T03:49:12.905+00:00",
+    "$databaseId": "650125c64b3c25ce4bc4",
+    "$collectionId": "650125cff227cf9f95ad"
+}
+```
 
-{% info title="Permissions required" %}
-You must grant **read** permissions to users at the **collection level** before users can read documents.
-[Learn more about permissions](#permissions)
-{% /info %}
+{% /section %}
 
-Documents can be retrieved using the [List Document](/docs/references/cloud/client-web/databases#listDocuments) endpoint.
+{% section #list-documents step=4 title="List documents" %}
+To read and query data from your collection, use the `listDocuments` endpoint.
 
-Results can be filtered, sorted, and paginated using Appwrite's shared set of query methods.
-You can find a full guide on querying in the [Queries Guide](/docs/products/databases/queries).
-
-By default, results are limited to the **first 25 items**.
-You can change this through [pagination](/docs/products/databases/pagination).
-
+Like the previous step, replace `<PROJECT_ID>`, `<DATABASE_ID>`, and`<COLLECTION_ID>` with their respective IDs.
 {% multicode %}
 ```client-web
 import { Client, Databases, Query } from "appwrite";
@@ -157,7 +155,7 @@ let promise = databases.listDocuments(
     "<DATABASE_ID>",
     "<COLLECTION_ID>",
     [
-        Query.equal('title', 'Avatar')
+        Query.equal('title', 'Hamlet')
     ]
 );
 
@@ -182,7 +180,7 @@ void main() async {
             databaseId: '<DATABASE_ID>',
             collectionId: '[COLLECTION_ID]',
             queries: [
-                Query.equal('title', 'Avatar')
+                Query.equal('title', 'Hamlet')
             ]
         );
     } on AppwriteException catch(e) {
@@ -194,7 +192,7 @@ void main() async {
 import Appwrite
 import AppwriteModels
 
-func main() async throws {
+func main() async throws{
     let client = Client()
         .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
         .setProject("<PROJECT_ID>")
@@ -206,7 +204,7 @@ func main() async throws {
             databaseId: "<DATABASE_ID>",
             collectionId: "<COLLECTION_ID>",
             queries: [
-                Query.equal("title", value: "Avatar")
+                Query.equal("title", value: "Hamlet")
             ]
         )
     } catch {
@@ -231,7 +229,7 @@ suspend fun main() {
             databaseId = "<DATABASE_ID>",
             collectionId = "<COLLECTION_ID>",
             queries = listOf(
-                Query.equal("title", "Avatar")
+                Query.equal("title", "Hamlet")
             )
         )
     } catch (e: AppwriteException) {
@@ -239,28 +237,6 @@ suspend fun main() {
     }
 }
 ```
-```graphql
-query {
-    databasesListDocuments(
-        databaseId: "<DATABASE_ID>",
-        collectionId: "<COLLECTION_ID>",
-        queries: ["equal(\"title\", [\"Avatar\"])"]
-    ) {
-        total
-        documents {
-            _id
-            data
-        }
-    }
-}
-```
+
 {% /multicode %}
-
-# Permissions {% #permissions %}
-In Appwrite, permissions can be granted at the collection level and the document level.
-Before a user can create a document, you need to grant create permissions to the user.
-
-Read, update, and delete permissions can be granted at both the collection and document level.
-Users only need to be granted access at either the collection or document level to access documents.
-
-[Learn about configuring permissions](/docs/products/databases/permissions).
+{% /section %}

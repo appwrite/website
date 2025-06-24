@@ -259,7 +259,7 @@ This helps prevent accidental data leaks by forcing you to make more concious de
 By default, Appwrite doesn't grant permissions to any users when a new collection is created.
 This means users can't create new documents or read, update, and delete existing documents.
 
-[Learn about configuring permissions](/docs/products/databases/permissions).
+[Learn about configuring permissions](/docs/products/databases/legacy/permissions).
 
 # Attributes {% #attributes %}
 All documents in a collection follow the same structure.
@@ -279,7 +279,7 @@ You can choose between the following types.
 | `ip`         | IP address attribute for IPv4 and IPv6.                          |
 | `email`      | Email address attribute.                                         |
 | `url`        | URL attribute.                                                   |
-| `relationship` | Relationship attribute relates one collection to another. [Learn more about relationships.](/docs/products/databases/relationships) |
+| `relationship` | Relationship attribute relates one collection to another. [Learn more about relationships.](/docs/products/databases/legacy/relationships) |
 
 If an attribute must be populated in all documents, set it as `required`.
 If not, you may optionally set a default value.
@@ -301,6 +301,6 @@ The following indexes are currently supported:
 |------------|--------------------------------------------------------------------------------------------------------------|
 | `key`      | Plain Index to allow queries.                                                                                 |
 | `unique`   | Unique Index to disallow duplicates.                                                                          |
-| `fulltext` | For searching within string attributes. Required for the [search query method](/docs/products/databases/queries#query-class).     |
+| `fulltext` | For searching within string attributes. Required for the [search query method](/docs/products/databases/legacy/queries#query-class).     |
 
 You can create an index by navigating to your collection's **Indexes** tab or by using your favorite [Server SDK](/docs/sdks#server).

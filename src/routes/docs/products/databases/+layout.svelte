@@ -1,4 +1,7 @@
 <script lang="ts">
+    import { setContext } from 'svelte';
+    import { page } from '$app/state';
+    import { writable } from 'svelte/store';
     import Docs from '$lib/layouts/Docs.svelte';
     import Sidebar, { type NavParent, type NavTree } from '$lib/layouts/Sidebar.svelte';
 
@@ -81,6 +84,25 @@
             ]
         }
     ];
+
+    const legacyUrl = page.url.pathname
+        .replace('/products/databases', '/products/databases/legacy')
+        .replace('rows', 'documents')
+        .replace('tables', 'collections');
+
+    const shouldShowSubtitle =
+        !page.url.pathname.includes('offline') && !page.url.pathname.includes('backup');
+
+    if (shouldShowSubtitle) {
+        setContext(
+            'docsSubtitle',
+
+            writable<string>(`
+            <strong>Note:</strong> This is a relatively new API.
+            See the <a class="web-link underline" href="${legacyUrl}">legacy documentation</a> for the previous Collections API and its terminology.
+        `)
+        );
+    }
 </script>
 
 <Docs variant="two-side-navs">
