@@ -1,10 +1,10 @@
 ---
 layout: article
-title: User preferences
+title: Preferences
 description: Store and manage user preferences in Appwrite using Account API and Teams API for individual and shared settings.
 ---
 
-User preferences allow you to store settings like theme choice, language selection, or notification preferences that are specific to individual users or shared across teams.
+Preferences allow you to store settings like theme choice, language selection, or notification preferences that are specific to individual users or shared across teams.
 
 # User preferences {% #user-preferences %}
 
