@@ -1,6 +1,8 @@
 <script lang="ts">
     import { trackEvent } from '$lib/actions/analytics';
     import Icon from '$lib/components/ui/icon';
+    import { classNames } from '$lib/utils/classnames';
+    import type { HTMLAttributes } from 'svelte/elements';
 
     const features = [
         {
@@ -52,9 +54,22 @@
             href: '/docs/advanced/security/ccpa'
         }
     ];
+
+    type FeaturesProps = {
+        theme?: 'light' | 'dark';
+    } & HTMLAttributes<HTMLDivElement>;
+
+    const { theme = 'light', class: classes, ...restProps }: FeaturesProps = $props();
 </script>
 
-<div class="light mt-4 bg-[#EDEDF0] pt-20 pb-12 md:pt-40">
+<div
+    class={classNames(
+        'dark:bg-greyscale-900 mt-4 bg-[#EDEDF0] pt-20 pb-12 md:pt-40',
+        theme,
+        classes
+    )}
+    {...restProps}
+>
     <div class="container mx-auto">
         <section class="flex flex-col items-start gap-x-20 md:flex-row">
             <h2
