@@ -29,9 +29,9 @@ First, ensure you have the [Appwrite CLI](/docs/tooling/command-line/installatio
 appwrite pull collections
 ```
 
-To generate types, you can use the Appwrite CLI command:
+To generate , you can use the Appwrite CLI command:
 ```bash
-appwrite types [options] <output-directory>
+appwrite  [options] <output-directory>
 
 ```
 
