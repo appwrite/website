@@ -38,7 +38,6 @@ export const load = () => {
         const integrationName = slug.slice(slug.lastIndexOf('/') + 1);
 
         frontmatter.platform.map((platform) => platforms.push(platform));
-        console.log(categoryDescriptions.find((i) => i.slug === frontmatter.category));
         categories.push(
             categoryDescriptions.find((i) => i.slug === frontmatter.category) ??
                 ({} as SearchableCategory)
