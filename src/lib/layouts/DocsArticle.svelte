@@ -73,20 +73,16 @@
                     <h1 class="text-title font-aeonik-pro text-primary">{title}</h1>
                 </div>
             </div>
+        </header>
+        <div class="web-article-content" class:web-reduced-article-size={$reducedArticleSize}>
             {#if $headerSectionInfoAlert && $headerSectionInfoAlert.title}
-                <div
-                    class="border-smooth border-t"
-                    style:margin-inline="calc(var(--p-grid-huge-navs-padding-inline) * -1);"
-                ></div>
-
                 <Info title={$headerSectionInfoAlert.title}>
                     <p>
                         {@html $headerSectionInfoAlert.description}
                     </p>
                 </Info>
             {/if}
-        </header>
-        <div class="web-article-content" class:web-reduced-article-size={$reducedArticleSize}>
+
             <slot />
 
             <Feedback {date} />
