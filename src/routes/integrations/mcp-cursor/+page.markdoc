@@ -1,7 +1,7 @@
 ---
 layout: integration
 title: MCP with Cursor
-description: Connect to Appwrite project with the Model Context Protocol within Cursor.
+description: Connect to Appwrite project with the MCP within Cursor.
 date: 2025-06-30
 featured: true
 isPartner: true

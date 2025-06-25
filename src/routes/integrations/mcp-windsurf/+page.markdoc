@@ -1,7 +1,7 @@
 ---
 layout: integration
 title: MCP with Windsurf Editor
-description: Connect to Appwrite project with the Model Context Protocol within Windsurf Editor.
+description: Connect to Appwrite project with the MCP within Windsurf Editor.
 date: 2025-06-30
 featured: false
 isPartner: true

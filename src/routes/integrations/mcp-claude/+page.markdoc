@@ -1,7 +1,7 @@
 ---
 layout: integration
 title: MCP with Claude Desktop
-description: Connect to Appwrite project with the Model Context Protocol within Claude Desktop.
+description: Connect to Appwrite project with the MCP within Claude Desktop.
 date: 2025-06-30
 featured: false
 isPartner: true
