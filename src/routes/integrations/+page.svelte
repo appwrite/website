@@ -20,7 +20,7 @@
 
     const title = 'Integrations' + TITLE_SUFFIX;
     const description =
-        'Connect your favorite apps to Appwrite for one unified tech stack. Explore our catalog of integrations now.';
+        'Connect your favorite apps to Appwrite for a unified tech stack. Explore the Appwrite catalog: a marketplace to find integrations for your projects.';
     const ogImage = DEFAULT_HOST + '/images/open-graph/website.png';
 
     // search functionality
@@ -111,8 +111,8 @@
                         Discover infinite possibilities
                     </h1>
                     <p class="text-description">
-                        Unlock the full potential of Appwrite by seamlessly integrating your
-                        favorite apps with your projects.
+                        Find your favourite apps to integrate with your projects 
+                        in Appwrite's marketplace.
                     </p>
                 </div>
             </div>
