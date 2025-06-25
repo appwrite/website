@@ -12,6 +12,11 @@
             level?: number;
         }>;
     };
+
+    export type HeaderSectionInfoAlert = {
+        title?: string;
+        description?: string;
+    };
 </script>
 
 <script lang="ts">
@@ -20,6 +25,7 @@
     import { Feedback } from '$lib/components';
     import TableOfContents from '$lib/components/blog/table-of-contents.svelte';
     import { Button, Icon } from '$lib/components/ui';
+    import Info from '$markdoc/tags/Info.svelte';
 
     export let title: string;
     export let toc: Array<TocItem>;
@@ -27,14 +33,14 @@
     export let date: string | undefined = undefined;
 
     const reducedArticleSize = setContext('articleHasNumericBadge', writable(false));
-    const docsSubtitle = hasContext('docsSubtitle')
-        ? getContext<Readable<string | null>>('docsSubtitle')
+    const headerSectionInfoAlert = hasContext('headerSectionInfoAlert')
+        ? getContext<Readable<HeaderSectionInfoAlert | null>>('headerSectionInfoAlert')
         : readable(null);
 </script>
 
 <main class="contents" id="main">
     <article class="web-article contents">
-        <header class="web-article-header">
+        <header class="web-article-header flex flex-col">
             <div class="web-article-header-start web-u-cross-start flex flex-col">
                 {#if back}
                     <a
@@ -64,16 +70,21 @@
                         </Button>
                     {/if}
 
-                    <div class="flex flex-col gap-6">
-                        <h1 class="text-title font-aeonik-pro text-primary">{title}</h1>
-
-                        {#if $docsSubtitle}
-                            <p>{@html $docsSubtitle}</p>
-                        {/if}
-                    </div>
+                    <h1 class="text-title font-aeonik-pro text-primary">{title}</h1>
                 </div>
             </div>
-            <div class="web-article-header-end"></div>
+            {#if $headerSectionInfoAlert && $headerSectionInfoAlert.title}
+                <div
+                    class="border-smooth border-t"
+                    style:margin-inline="calc(var(--p-grid-huge-navs-padding-inline) * -1);"
+                ></div>
+
+                <Info title={$headerSectionInfoAlert.title}>
+                    <p>
+                        {@html $headerSectionInfoAlert.description}
+                    </p>
+                </Info>
+            {/if}
         </header>
         <div class="web-article-content" class:web-reduced-article-size={$reducedArticleSize}>
             <slot />

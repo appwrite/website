@@ -4,6 +4,9 @@
     import { writable } from 'svelte/store';
     import Docs from '$lib/layouts/Docs.svelte';
     import Sidebar, { type NavParent, type NavTree } from '$lib/layouts/Sidebar.svelte';
+    import type { HeaderSectionInfoAlert } from '$lib/layouts/DocsArticle.svelte';
+
+    let { children } = $props();
 
     const parent: NavParent = {
         href: '/docs',
@@ -85,27 +88,40 @@
         }
     ];
 
-    const legacyUrl = page.url.pathname
-        .replace('/products/databases', '/products/databases/legacy')
-        .replace('rows', 'documents')
-        .replace('tables', 'collections');
+    const legacyUrl = $derived(
+        page.url.pathname
+            .replace('/products/databases', '/products/databases/legacy')
+            .replace('rows', 'documents')
+            .replace('tables', 'collections')
+    );
 
-    const shouldShowSubtitle =
-        !page.url.pathname.includes('offline') && !page.url.pathname.includes('backup');
+    const shouldShowSubtitle = $derived(
+        // offline doesn't mention legacy
+        !page.url.pathname.includes('offline') &&
+            // backups doesn't mention legacy
+            !page.url.pathname.includes('backups') &&
+            // root layout page doesn't mention legacy
+            !page.url.pathname.endsWith('products/databases')
+    );
 
-    if (shouldShowSubtitle) {
-        setContext(
-            'docsSubtitle',
+    const headerSectionInfoAlert = writable<HeaderSectionInfoAlert | null>(null);
 
-            writable<string>(`
-            <strong>Note:</strong> This is a relatively new API.
-            See the <a class="web-link underline" href="${legacyUrl}">legacy documentation</a> for the previous Collections API and its terminology.
-        `)
-        );
-    }
+    $effect(() => {
+        if (shouldShowSubtitle) {
+            headerSectionInfoAlert.set({
+                title: 'New API',
+                description: `This is a relatively new API. For details on the previous version and its terminology, see the legacy <a class="web-link underline" href="${legacyUrl}">Collections API documentation</a>.`
+            });
+        } else {
+            headerSectionInfoAlert.set(null);
+        }
+    });
+
+    setContext('headerSectionInfoAlert', headerSectionInfoAlert);
 </script>
 
 <Docs variant="two-side-navs">
     <Sidebar {navigation} {parent} />
-    <slot />
+
+    {@render children()}
 </Docs>
