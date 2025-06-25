@@ -1,7 +1,7 @@
 import { base } from '$app/paths';
 import { groupBy } from 'remeda';
 import type { SearchableCategory } from '$lib/constants';
-import { partnerCategoryDescriptions as categoryDescriptions } from '$lib/constants';
+import { integrationCategoryDescriptions as categoryDescriptions } from '$lib/constants';
 
 export type Integration = {
     title: string;
@@ -38,6 +38,7 @@ export const load = () => {
         const integrationName = slug.slice(slug.lastIndexOf('/') + 1);
 
         frontmatter.platform.map((platform) => platforms.push(platform));
+        console.log(categoryDescriptions.find((i) => i.slug === frontmatter.category));
         categories.push(
             categoryDescriptions.find((i) => i.slug === frontmatter.category) ??
                 ({} as SearchableCategory)
