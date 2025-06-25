@@ -51,7 +51,7 @@ You must install [uv](https://docs.astral.sh/uv/getting-started/installation/) o
 
 {% /info %}
 
-To configure the MCP server on Cursor, head to the **Cursor Settings** page, navigate to the **MCP** tag, and click on **Add new global MCP server**. This will open the `mcp.json` file, where you must add the following:
+To configure the MCP server on Cursor, head to the **Cursor Settings** page, navigate to the **MCP** tab, and click on **Add new global MCP server**. This will open the `mcp.json` file, where you must add the following:
 
 ```json
 {
