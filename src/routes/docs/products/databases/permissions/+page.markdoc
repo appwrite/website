@@ -23,6 +23,10 @@ Configure collection level permissions by navigating to **Your collection** > **
 Document level permissions grant access to individual documents.
 If a user has read, create, update, or delete permissions at the document level, the user can access the **individual document**.
 
+{% info title="Does Appwrite support Row Level Security (RLS)?" %}
+Document level security in Appwrite is similar to what is known as Row Level Security (RLS) found in database systems like PostgreSQL. Both concepts allow you to control access to individual records based on user identity and roles. If you're familiar with RLS, you'll find Appwrite's document level security provides similar granular access control.
+{% /info %}
+
 Document level permissions are only applied if Document Security is enabled in the settings of your collection.
 Enable document level permissions by navigating to **Your collection** > **Settings** > **Document security**.
 
