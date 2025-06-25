@@ -20,7 +20,7 @@ For a long time, Auth0 has been a popular solution for handling authentication a
 
 In this blog, we'll explore the top alternatives to Auth0 that offer more control, better pricing, and greater developer freedom.
 
-# [1. Appwrite](https://appwrite.io/products/auth)
+## [1.Appwrite](https://appwrite.io/products/auth)
 
 - **Deployment**: Fully managed cloud service and self-hosted options.
 - **Start for free**
@@ -48,7 +48,7 @@ Appwrite Cloud's Pro plan, with higher limits and advanced features, starts at $
 
 Use Appwrite when you want a fully managed, all-in-one cloud platform with built-in auth, database, storage, serverless functions, and hosting, perfect for teams that want to move fast without stitching together multiple services. And since it's open-source, you always have the option to self-host and retain full data control if needed.
 
-# [2. Frontegg](https://frontegg.com/)
+## [2. Frontegg](https://frontegg.com/)
 
 - **Deployment**: Fully managed cloud service.
 - **Start for free**
@@ -97,7 +97,7 @@ Information is not publicly available.
 
 Use ForgeRock for large enterprises or government-scale projects where security, flexibility, and integration with legacy systems are top priorities. It's overkill for simple apps but good for complex, regulated environments.
 
-# [4. Keycloak](https://www.keycloak.org/)
+## [4. Keycloak](https://www.keycloak.org/)
 
 - **Deployment**: Cloud and self-hosted options.
 - **Start for free**
@@ -122,7 +122,7 @@ While Keycloak is free to use,
 
 Using Keycloak can be great when building an in-house platform or internal tool where an open-source solution can be tailored to your needs.
 
-# [5. FusionAuth](https://fusionauth.io/)
+## [5. FusionAuth](https://fusionauth.io/)
 
 - **Deployment**: Cloud and self-hosted options.
 - **Start for free**
@@ -147,7 +147,7 @@ Cloud plans for FusionAuth start at $37 per month.
 
 Use FusionAuth when you want control and customization in an auth platform without building from scratch.
 
-# [6. Firebase Authentication](https://firebase.google.com/docs/auth)
+## [6. Firebase Authentication](https://firebase.google.com/docs/auth)
 
 - **Deployment**: Cloud only.
 - **Start for free**
@@ -172,7 +172,7 @@ After the free 50,000 MAUs, Firebase Authentication uses a pay-as-you-go model w
 
 Use Firebase Auth if you're already part Firebase ecosystem, using other services offered by Firebase. Good for small apps and startups to build MVPs.
 
-# [7. AWS Cognito](https://docs.aws.amazon.com/cognito/latest/developerguide/what-is-amazon-cognito.html)
+## [7. AWS Cognito](https://docs.aws.amazon.com/cognito/latest/developerguide/what-is-amazon-cognito.html)
 
 - **Deployment**: Cloud only.
 - **Start for free**
@@ -197,7 +197,7 @@ Beyond 50k monthly active users, you must pay according to your resource usage.
 
 AWS Cognito might make more sense if you're already using AWS infrastructure as it tightly integrates with your AWS resources. But, if are not deeply tied into AWS, other alternatives may provide a smoother developer experience.
 
-# [8. Stytch](https://stytch.com/)
+## [8. Stytch](https://stytch.com/)
 
 - **Deployment**: Cloud only.
 - **Start for free**
