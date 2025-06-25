@@ -20,12 +20,12 @@ For a long time, Auth0 has been a popular solution for handling authentication a
 
 In this blog, we'll explore the top alternatives to Auth0 that offer more control, better pricing, and greater developer freedom.
 
-[1.Appwrite](https://appwrite.io/products/auth)
+# 1.Appwrite
 
 - **Deployment**: Fully managed cloud service and self-hosted options.
 - **Start for free**
 
-Appwrite is an open-source, all-in-one development platform with a full authentication system, alongside other backend tools and web hosting capabilities. You can authenticate users securely with multiple login methods, such as Email/Password, SMS, OAuth, Anonymous, Magic URLs, and more. Appwrite is also fully GDPR, SOC-2, HIPAA, and CCPA compliant.
+[Appwrite](/products/auth) is an open-source, all-in-one development platform with a full authentication system, alongside other backend tools and web hosting capabilities. You can authenticate users securely with multiple login methods, such as Email/Password, SMS, OAuth, Anonymous, Magic URLs, and more. Appwrite is also fully GDPR, SOC-2, HIPAA, and CCPA compliant.
 
 ## Features:
 
@@ -48,12 +48,12 @@ Appwrite Cloud's Pro plan, with higher limits and advanced features, starts at $
 
 Use Appwrite when you want a fully managed, all-in-one cloud platform with built-in auth, database, storage, serverless functions, and hosting, perfect for teams that want to move fast without stitching together multiple services. And since it's open-source, you always have the option to self-host and retain full data control if needed.
 
-[2. Frontegg](https://frontegg.com/)
+# 2. Frontegg
 
 - **Deployment**: Fully managed cloud service.
 - **Start for free**
 
-Frontegg is a user management platform that provides pre-built identity and user account features for modern applications. It offers a suite of plug-and-play components (login box, user profile management, admin portals, etc.) that developers can easily integrate, especially for B2B SaaS scenarios. It has out-of-the-box support for complex B2B requirements, multi-tenant user hierarchies, role-based access control, enterprise SSO, and self-service admin dashboards, so you don't have to build those from scratch.
+[Frontegg](https://frontegg.com/) is a user management platform that provides pre-built identity and user account features for modern applications. It offers a suite of plug-and-play components (login box, user profile management, admin portals, etc.) that developers can easily integrate, especially for B2B SaaS scenarios. It has out-of-the-box support for complex B2B requirements, multi-tenant user hierarchies, role-based access control, enterprise SSO, and self-service admin dashboards, so you don't have to build those from scratch.
 
 ## Features
 
@@ -73,11 +73,11 @@ Frontegg offers custom pricing for companies that want to power deep customer id
 
 Use Frontegg if you're building a B2B SaaS application where you need to manage multiple tenants under a single organization instance. Also great for teams who need admin UIs out-of-the-box.
 
-[3. ForegeRock](https://www.pingidentity.com/en.html)
+# 3. ForegeRock
 
 - **Deployment**: Fully managed cloud service.
 
-ForgeRock is a comprehensive enterprise IAM platform designed for large organizations with complex identity and security requirements. It originated from open-source projects (OpenAM, etc.) but is now a commercial suite offering authentication, authorization, user identity management, and identity federation in one package.
+[ForgeRock](https://www.pingidentity.com/en.html) is a comprehensive enterprise IAM platform designed for large organizations with complex identity and security requirements. It originated from open-source projects (OpenAM, etc.) but is now a commercial suite offering authentication, authorization, user identity management, and identity federation in one package.
 
 ## Features
 
@@ -97,12 +97,12 @@ Information is not publicly available.
 
 Use ForgeRock for large enterprises or government-scale projects where security, flexibility, and integration with legacy systems are top priorities. It's overkill for simple apps but good for complex, regulated environments.
 
-[4. Keycloak](https://www.keycloak.org/)
+# 4. Keycloak
 
 - **Deployment**: Cloud and self-hosted options.
 - **Start for free**
 
-Keycloak is a free, open-source identity and access management solution (backed by Red Hat) that you can run on your own infrastructure. It provides all the core authentication features (login, logout, SSO, MFA, social login) and supports standard protocols like OAuth2, OpenID Connect, and SAM.
+[Keycloak](https://www.keycloak.org/) is a free, open-source identity and access management solution (backed by Red Hat) that you can run on your own infrastructure. It provides all the core authentication features (login, logout, SSO, MFA, social login) and supports standard protocols like OAuth2, OpenID Connect, and SAM.
 
 ## Features
 
@@ -122,12 +122,12 @@ While Keycloak is free to use,
 
 Using Keycloak can be great when building an in-house platform or internal tool where an open-source solution can be tailored to your needs.
 
-[5. FusionAuth](https://fusionauth.io/)
+# 5. FusionAuth
 
 - **Deployment**: Cloud and self-hosted options.
 - **Start for free**
 
-FusionAuth is a developer-focused IAM platform that can be deployed on-premises or used as a managed cloud service, offering a flexible alternative to Auth0. It provides all the typical authentication features along with extensive customization and integration options.
+[FusionAuth](https://fusionauth.io/) is a developer-focused IAM platform that can be deployed on-premises or used as a managed cloud service, offering a flexible alternative to Auth0. It provides all the typical authentication features along with extensive customization and integration options.
 
 ## Features
 
@@ -147,12 +147,12 @@ Cloud plans for FusionAuth start at $37 per month.
 
 Use FusionAuth when you want control and customization in an auth platform without building from scratch.
 
-[6. Firebase Authentication](https://firebase.google.com/docs/auth)
+# 6. Firebase Authentication
 
 - **Deployment**: Cloud only.
 - **Start for free**
 
-Firebase authentication is Google's fully managed authentication service that is part of the Firebase app development platform. It enables developers to add user sign-up/login to mobile or web apps very easily using Firebase SDKs, with Google handling the backend and infrastructure.
+[Firebase Authentication](https://firebase.google.com/docs/auth) is Google's fully managed authentication service that is part of the Firebase app development platform. It enables developers to add user sign-up/login to mobile or web apps very easily using Firebase SDKs, with Google handling the backend and infrastructure.
 
 ## Features
 
@@ -172,12 +172,12 @@ After the free 50,000 MAUs, Firebase Authentication uses a pay-as-you-go model w
 
 Use Firebase Auth if you're already part Firebase ecosystem, using other services offered by Firebase. Good for small apps and startups to build MVPs.
 
-[7. AWS Cognito](https://docs.aws.amazon.com/cognito/latest/developerguide/what-is-amazon-cognito.html)
+# 7. AWS Cognito
 
 - **Deployment**: Cloud only.
 - **Start for free**
 
-Amazon Cognito is a fully managed CIAM (Customer Identity and Access Management) service by AWS that lets you add user sign-up, sign-in, and access control to your applications. It's designed to integrate deeply with the AWS ecosystem.
+[Amazon Cognito](https://docs.aws.amazon.com/cognito/latest/developerguide/what-is-amazon-cognito.html) is a fully managed CIAM (Customer Identity and Access Management) service by AWS that lets you add user sign-up, sign-in, and access control to your applications. It's designed to integrate deeply with the AWS ecosystem.
 
 ## Features
 
@@ -197,12 +197,12 @@ Beyond 50k monthly active users, you must pay according to your resource usage.
 
 AWS Cognito might make more sense if you're already using AWS infrastructure as it tightly integrates with your AWS resources. But, if are not deeply tied into AWS, other alternatives may provide a smoother developer experience.
 
-[8. Stytch](https://stytch.com/)
+# 8. Stytch
 
 - **Deployment**: Cloud only.
 - **Start for free**
 
-Stytch is a developer-first authentication platform that emphasizes passwordless security and a rich set of modern auth features. It provides infrastructure for both authentication and fraud prevention, enabling companies to easily implement passkeys, OTPs, magic links, and other user-friendly login experiences via API and SDKs.
+[Stytch](https://stytch.com/) is a developer-first authentication platform that emphasizes passwordless security and a rich set of modern auth features. It provides infrastructure for both authentication and fraud prevention, enabling companies to easily implement passkeys, OTPs, magic links, and other user-friendly login experiences via API and SDKs.
 
 ## Features
 
