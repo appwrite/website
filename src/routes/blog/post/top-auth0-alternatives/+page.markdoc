@@ -222,6 +222,8 @@ Stytch offers pay-as-you-go pricing and enterprise plans.
 
 It's a good choice for consumer apps or fintech products that want to go passwordless or add strong fraud protection easily.
 
+# Auth0 alternatives overview
+
 | Features | Appwrite | Frontegg | ForgeRock | FusionAuth | Keycloack | Firebase Auth | Cognito | Stytch |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Free tier | Yes | Yes | No | Yes | Yes | Yes | Yes | Yes |
