@@ -111,8 +111,8 @@
                         Discover infinite possibilities
                     </h1>
                     <p class="text-description">
-                        Find your favourite apps to integrate with your projects 
-                        in Appwrite's marketplace.
+                        Find your favourite apps to integrate with your projects in Appwrite's
+                        marketplace.
                     </p>
                 </div>
             </div>
