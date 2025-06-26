@@ -12,7 +12,7 @@ website: devkind.com.au
 email: mailto:ali@devkind.com.au
 product: 
     avatar: '/images/partners/avatars/devkind.png'
-    vendor: Black Leaf Digital
+    vendor: Devkind
     description: Devkind is a Melbourne-based web application development agency specializing in crafting robust and scalable digital solutions.
 technologies: 
 - PHP
