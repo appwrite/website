@@ -59,15 +59,27 @@
         <div use:melt={$portalled}>
             <div use:melt={$overlay} class="overlay" transition:fade={{ duration: 350 }}></div>
 
-            <img
-                class="web-media content"
-                use:melt={$content}
-                {src}
-                {alt}
-                {title}
-                loading="lazy"
-                transition:scale={{ duration: 350, start: 0.8, easing: quadInOut }}
-            />
+            <div class="expanded-view">
+                <div class="close-button">
+                    <Tooltip closeOnPointerDown>
+                        <Button variant="secondary" class="cursor-pointer" on:click={() => open.set(false)}>
+                            <span class="icon-close" aria-hidden="true"></span>
+                        </Button>
+                        {#snippet tooltip()}
+                            Close
+                        {/snippet}
+                    </Tooltip>
+                </div>
+                <img
+                    class="web-media content"
+                    use:melt={$content}
+                    {src}
+                    {alt}
+                    {title}
+                    loading="lazy"
+                    transition:scale={{ duration: 350, start: 0.8, easing: quadInOut }}
+                />
+            </div>
         </div>
     {/if}
 {/if}
@@ -123,5 +135,24 @@
         max-width: calc(100% - 2.5rem);
 
         z-index: 1000;
+    }
+
+    .expanded-view {
+        position: relative;
+        width: 100%;
+        height: 100%;
+    }
+
+    .close-button {
+        position: fixed;
+        top: 1rem;
+        right: 1rem;
+        z-index: 1001;
+        opacity: 0.25;
+        transition: var(--transition);
+
+        &:hover {
+            opacity: 1;
+        }
     }
 </style>
