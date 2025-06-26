@@ -82,6 +82,43 @@ const result = await databases.updateDocuments(
 ```
 {% /multicode %}
 
+# Upsert documents {% #upsert-documents %}
+
+{% info title="Permissions required" %}
+You must grant **create** and **update** permissions to users at the **collection level** before users can create documents.
+[Learn more about permissions](/docs/products/databases/permissions)
+{% /info %}
+
+You can upsert multiple documents in a single request using the `upsertDocuments` method.
+
+{% multicode %}
+```server-nodejs
+const sdk = require('node-appwrite');
+
+const client = new sdk.Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>')
+    .setKey('<API_KEY>');
+
+const databases = new sdk.Databases(client);
+
+const result = await databases.upsertDocuments(
+    '<DATABASE_ID>',
+    '[COLLECTION_ID]',
+    [
+        {
+            documentId: sdk.ID.unique(),
+            data: { name: 'New Document 1' }
+        },
+        {
+            documentId: 'document-id-2', // Existing document ID
+            data: { name: 'New Document 2' }
+        }
+    ]
+);
+```
+{% /multicode %}
+
 # Delete documents {% #delete-documents %}
 
 {% info title="Permissions required" %}
@@ -105,10 +142,9 @@ const databases = new sdk.Databases(client);
 const result = await databases.deleteDocuments(
     '<DATABASE_ID>',
     '[COLLECTION_ID]',
-    [
-        'document-id-1',
-        'document-id-2'
-    ]
+    [] // Queries
 );
 ```
 {% /multicode %}
+
+**Note:** When deleting documents, you can specify queries to filter which documents to delete. If no queries are provided, all documents in the collection will be deleted.
