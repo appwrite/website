@@ -73,7 +73,7 @@
                     </svg>
 
                     <span class="text">
-                        Thank you for subscribing! An email has been sent to your inbox.
+                        Thank you for your application. The Appwrite team will be in touch soon.
                     </span>
                 </div>
             {:else}
