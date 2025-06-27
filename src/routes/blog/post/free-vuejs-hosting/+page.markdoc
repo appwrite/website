@@ -13,7 +13,7 @@ unlisted: true
 
 Vue.js is a popular JavaScript framework for building interactive and scalable web applications, offering a balance of simplicity and performance. While deploying Vue applications is straightforward, choosing the right hosting platform that offers cost-effective scalability, security, and developer-friendly features can be a challenge.
 
-[Appwrite Sites](https://appwrite.io/products/sites) provides an optimized hosting environment tailored for modern web applications, including Vue.js, with built-in performance enhancements, security measures, and flexible deployment options. This article explores how Appwrite Sites streamlines Vue hosting, enhances development workflows, and compares to other hosting solutions.
+[Appwrite Sites](/products/sites) provides an optimized hosting environment tailored for modern web applications, including Vue.js, with built-in performance enhancements, security measures, and flexible deployment options. This article explores how Appwrite Sites streamlines Vue hosting, enhances development workflows, and compares to other hosting solutions.
 
 # Why Appwrite Sites is the perfect hosting solution for Vue.js
 
@@ -32,11 +32,14 @@ This flexibility ensures Vue applications of any complexity can be hosted effici
 
 ## 3. Performance-focused global CDN
 
-Performance is crucial for web applications, influencing both user experience and SEO rankings. Appwrite Sites utilizes a globally distributed [Content Delivery Network (CDN)](https://appwrite.io/docs/products/network/cdn) to cache and serve Vue applications efficiently, reducing latency and improving page load times worldwide.
+Performance is crucial for web applications, influencing both user experience and SEO rankings. Appwrite Sites utilizes a globally distributed [Content Delivery Network (CDN)](/docs/products/network/cdn) to cache and serve Vue applications efficiently, reducing latency and improving page load times worldwide.
+
+{% call_to_action title="Host your Vue.js app for free with Appwrite Sites" description="Benefit from a complete platform to develop, deploy, and build your websites and web apps." point1="Open source and no vendor lock-in"  point2="Built-in security and DDoS protection" point3="Fully managed cloud solution" point4="Global CDN for improved performance" cta="Get started for free" url="https://cloud.appwrite.io/" /%}
+
 
 ## 4. Built-in security and DDoS protection
 
-Security is a priority when deploying web applications. Appwrite Sites includes [DDoS protection](https://appwrite.io/docs/products/network/ddos), safeguarding Vue applications from malicious traffic and potential downtime. Additionally, it offers **custom domain support with automatic SSL encryption**, ensuring secure communication between users and your application.
+Security is a priority when deploying web applications. Appwrite Sites includes [DDoS protection](/docs/products/network/ddos), safeguarding Vue applications from malicious traffic and potential downtime. Additionally, it offers **custom domain support with automatic SSL encryption**, ensuring secure communication between users and your application.
 
 ## 5. Preview deployments for enhanced collaboration
 
@@ -46,7 +49,7 @@ Every deployment on Appwrite Sites generates **preview links**, allowing develop
 
 Deploying a Vue application on Appwrite Sites is flexible and straightforward:
 
-- [Git-based deployments](https://appwrite.io/docs/products/sites/deploy-from-git): Automatically deploy changes when pushing to your repository.
+- [Git-based deployments](/docs/products/sites/deploy-from-git): Automatically deploy changes when pushing to your repository.
 - **CLI-based deployment**: Deploy manually using the Appwrite CLI:
     
     ```bash
@@ -81,4 +84,4 @@ Many Vue applications require authentication, databases, and backend logic. Appw
 
 Unlike other hosting platforms that require third-party integrations for backend functionality, Appwrite Sites provides an all-in-one solution with built-in authentication, databases, and serverless functions, making Vue.js deployments easier and more efficient.
 
-For developers looking for a cost-effective, high-performance hosting solution tailored for Vue applications, Appwrite Sites is an excellent choice. Explore more with our [Vue Quick Start Guide](https://appwrite.io/docs/quick-starts/vue) and start deploying your Vue applications by visiting [Appwrite Sites](https://appwrite.io/sites).
+For developers looking for a cost-effective, high-performance hosting solution tailored for Vue applications, Appwrite Sites is an excellent choice. Explore more with our [Vue Quick Start Guide](/docs/quick-starts/vue) and start deploying your Vue applications by visiting [Appwrite Sites](/products/sites).

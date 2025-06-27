@@ -7,7 +7,8 @@
             title: 'Experts',
             description:
                 'For agencies, consultancies, freelancers, and integrators who want to provide a scalable backend solution for their clients. Partner with Appwrite to provide a highly custom solution with the newest technology.',
-            label: 'Coming Soon'
+            href: '/partners/catalog',
+            label: 'Find a Partner'
         },
         {
             title: 'Integrations',

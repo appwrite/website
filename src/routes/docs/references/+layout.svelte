@@ -3,21 +3,25 @@
     import Docs from '$lib/layouts/Docs.svelte';
     import Sidebar, { type NavParent, type NavTree } from '$lib/layouts/Sidebar.svelte';
     import { preferredPlatform, preferredVersion } from '$lib/utils/references';
+    import type { Snippet } from 'svelte';
 
-    $: expandable = !!page.url.pathname.match(
-        /\/docs\/references\/.*?\/(client|server).*?\/.*?\/?/
+    const { children }: { children: Snippet } = $props();
+
+    const expandable = $derived(
+        !!page.url.pathname.match(/\/docs\/references\/.*?\/(client|server).*?\/.*?\/?/)
     );
 
-    $: platform = $preferredPlatform ?? page.params?.platform ?? 'client-web';
+    const platform = $derived($preferredPlatform ?? page.params?.platform ?? 'client-web');
 
-    /* correct platform prefix for references page */
-    $: resolvedPlatformPrefix = /^server-|^client-/.test(platform)
-        ? platform
-        : `server-${platform}`;
+    const resolvedPlatformPrefix = $derived(
+        /^server-|^client-/.test(platform) ? platform : `server-${platform}`
+    );
 
-    $: prefix = `/docs/references/${$preferredVersion ?? page.params?.version ?? 'cloud'}/${resolvedPlatformPrefix}`;
+    const prefix = $derived(
+        `/docs/references/${$preferredVersion ?? page.params?.version ?? 'cloud'}/${resolvedPlatformPrefix}`
+    );
 
-    $: navigation = [
+    const navigation: NavTree = $derived([
         {
             label: 'Getting started',
             items: [
@@ -93,22 +97,7 @@
                 }
             ]
         }
-        // {
-        // 	label: 'Debugging',
-        // 	items: [
-        // 		{
-        // 			icon: 'icon-document-search',
-        // 			label: 'Response codes',
-        // 			href: '/docs/advanced/platform/response-codes'
-        // 		},
-        // 		{
-        // 			icon: 'icon-document-report',
-        // 			label: 'Rate-limits',
-        // 			href: '/docs/advanced/platform/rate-limits'
-        // 		}
-        // 	]
-        // }
-    ] as NavTree;
+    ]);
 
     const parent: NavParent = {
         href: '/docs',
@@ -118,5 +107,5 @@
 
 <Docs variant={expandable ? 'expanded' : 'two-side-navs'} isReferences={expandable}>
     <Sidebar {navigation} {expandable} {parent} />
-    <slot />
+    {@render children()}
 </Docs>

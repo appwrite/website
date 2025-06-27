@@ -1,6 +1,6 @@
 import { base } from '$app/paths';
 import { groupBy } from 'remeda';
-import type { IntegrationCategory } from '$lib/constants';
+import type { SearchableCategory } from '$lib/constants';
 import { integrationCategoryDescriptions as categoryDescriptions } from '$lib/constants';
 
 export type Integration = {
@@ -26,7 +26,7 @@ export const load = () => {
         eager: true
     });
 
-    const categories: IntegrationCategory[] = [];
+    const categories: SearchableCategory[] = [];
     const platforms: string[] = [];
 
     const integrations = Object.entries(integrationsGlob).map(([filepath, integrationList]) => {
@@ -40,7 +40,7 @@ export const load = () => {
         frontmatter.platform.map((platform) => platforms.push(platform));
         categories.push(
             categoryDescriptions.find((i) => i.slug === frontmatter.category) ??
-                ({} as IntegrationCategory)
+                ({} as SearchableCategory)
         );
 
         return {

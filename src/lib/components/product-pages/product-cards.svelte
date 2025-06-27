@@ -1,22 +1,11 @@
 <script lang="ts">
+    import { page } from '$app/state';
     const allProducts = {
-        messaging: {
-            title: 'Messaging',
-            description: 'Use Appwrite messaging to send email, SMS, and push notifications.',
-            icon: '/images/icons/illustrated/dark/messaging.png',
-            url: '/products/messaging'
-        },
         auth: {
             title: 'Auth',
             description: 'Build secure authentication and manage your users.',
             icon: '/images/icons/illustrated/dark/auth.png',
             url: '/products/auth'
-        },
-        functions: {
-            title: 'Functions',
-            description: ' Scale big and unlock limitless potential with Appwrite functions.',
-            icon: '/images/icons/illustrated/dark/functions.png',
-            url: '/products/functions'
         },
         databases: {
             title: 'Databases',
@@ -30,35 +19,35 @@
             icon: '/images/icons/illustrated/dark/storage.png',
             url: '/products/storage'
         },
-        sites: {
-            title: 'Sites',
-            description: 'The open-source Vercel alternative.',
-            icon: '/images/icons/illustrated/dark/sites.png',
-            url: '/products/sites'
+        functions: {
+            title: 'Functions',
+            description: ' Scale big and unlock limitless potential with Appwrite functions.',
+            icon: '/images/icons/illustrated/dark/functions.png',
+            url: '/products/functions'
+        },
+
+        messaging: {
+            title: 'Messaging',
+            description: 'Use Appwrite messaging to send email, SMS, and push notifications.',
+            icon: '/images/icons/illustrated/dark/messaging.png',
+            url: '/products/messaging'
         },
         realtime: {
             title: 'Realtime',
             description: 'Subscribe and react to any event using the Realtime API.',
             icon: '/images/icons/illustrated/dark/realtime.png',
             url: '/docs/realtime'
+        },
+        sites: {
+            title: 'Sites',
+            description: 'The open-source Vercel alternative.',
+            icon: '/images/icons/illustrated/dark/sites.png',
+            url: '/products/sites'
         }
     } as const;
 
-    type Props = {
-        exclude?:
-            | 'messaging'
-            | 'functions'
-            | 'databases'
-            | 'storage'
-            | 'auth'
-            | 'realtime'
-            | 'sites';
-    };
-
-    const { exclude }: Props = $props();
-
     const products = Object.entries(allProducts)
-        .filter(([key]) => key !== exclude)
+        .filter(([key]) => key !== page.url.pathname.replace('/products/', ''))
         .map(([_, value]) => value);
 </script>
 

@@ -9,6 +9,7 @@ author: veeresh-mulge
 callToAction: true
 unlisted: true
 category: tutorial
+call_to_action: true
 ---
 
 With AI advancing at a rapid pace, 2025 is shaping up to be the year of AI agents. We're moving beyond basic chatbots and entering a new era where AI can autonomously solve complex tasks. So, in the near future, fully autonomous AI agents can scope out a project and complete it with all the necessary tools they need and with no help from human partners.
@@ -75,6 +76,8 @@ This will guide your prompt design and ensure that the agent has enough clarity 
 When building agents, start with simple tasks or single-action models and gradually increase complexity. This lets you fine-tune each stage and make sure it works well before you add more complexity.
 
 In the beginning, keep it simple, measure performance, and adjust the agent's behavior as needed before scaling up.
+
+{% call_to_action title="Build your startup with Appwrite" description="An all-in-one development platform for you to develop, host, and scale your products." point1="Cloud credits" point2="Priority support" point3="Ship faster" point4="Built-in security and compliance" cta="Apply for the program" url="https://appwrite.io/startups" /%}
 
 ## Ensure Feedback Mechanisms
 

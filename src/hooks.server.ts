@@ -37,7 +37,7 @@ const securityheaders: Handle = async ({ event, resolve }) => {
     });
 
     // `true` if deployed via Coolify.
-    const isPreview = !!process.env.COOLIFY_FQDN;
+    const isPreview = !!process.env.COOLIFY_FQDN || process.env.NODE_ENV === 'development';
     // COOLIFY_FQDN already includes `http`.
     const previewDomain = isPreview ? `${process.env.COOLIFY_FQDN}` : null;
     const join = (arr: string[]) => arr.join(' ');
@@ -54,7 +54,9 @@ const securityheaders: Handle = async ({ event, resolve }) => {
             'https://*.reo.dev',
             'https://plausible.io',
             'https://js.zi-scripts.com',
-            'https://ws.zoominfo.com'
+            'https://ws.zoominfo.com',
+            'https://*.cookieyes.com',
+            'https://cdn-cookieyes.com'
         ]),
         'style-src': "'self' 'unsafe-inline'",
         'img-src': "'self' data: https:",
@@ -77,7 +79,9 @@ const securityheaders: Handle = async ({ event, resolve }) => {
             'https://js.zi-scripts.com',
             'https://aorta.clickagy.com',
             'https://hemsync.clickagy.com',
-            'https://ws.zoominfo.com '
+            'https://ws.zoominfo.com ',
+            'https://*.cookieyes.com',
+            'https://cdn-cookieyes.com'
         ]),
         'frame-src': join([
             "'self'",
@@ -85,7 +89,8 @@ const securityheaders: Handle = async ({ event, resolve }) => {
             'https://status.appwrite.online',
             'https://www.youtube-nocookie.com',
             'https://player.vimeo.com',
-            'https://hemsync.clickagy.com'
+            'https://hemsync.clickagy.com',
+            'https://cdn-cookieyes.com'
         ])
     };
 
@@ -121,13 +126,6 @@ const securityheaders: Handle = async ({ event, resolve }) => {
 
     return response;
 };
-
-// const bannerRewriter: Handle = async ({ event, resolve }) => {
-//     const response = await resolve(event, {
-//         transformPageChunk: ({ html }) => html.replace('%aw_banner_key%', BANNER_KEY)
-//     });
-//     return response;
-// };
 
 const initSession: Handle = async ({ event, resolve }) => {
     const session = await createInitSessionClient(event.cookies);
