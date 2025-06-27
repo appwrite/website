@@ -15,10 +15,10 @@ product:
     avatar: '/images/partners/avatars/inellipse.png'
     vendor: inellipse
     description: 'Inellipse is a premier software development company specializing in transforming innovative ideas into powerful digital solutions.'
-frameworks:
+technologies:
 - Android
 - iOS
-capabilities:
+services:
     - AI
     - Web 
     - Mobile
