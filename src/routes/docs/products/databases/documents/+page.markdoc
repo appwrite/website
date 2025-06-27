@@ -264,3 +264,11 @@ Read, update, and delete permissions can be granted at both the collection and d
 Users only need to be granted access at either the collection or document level to access documents.
 
 [Learn about configuring permissions](/docs/products/databases/permissions).
+
+# Bulk operations {% #bulk-operations %}
+
+In Appwrite, you can perform bulk operations on documents within a collection. This allows you to create, update, or delete multiple documents in a single request.
+
+As of now, bulk operations can only be performed via the server-side SDKs. The client-side SDKs do not support bulk operations.
+
+[Learn more about bulk operations](/docs/products/databases/bulk-operations).
