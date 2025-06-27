@@ -270,3 +270,9 @@ Choosing an authentication provider is a critical decision that shapes how your 
 While Firebase, Cognito, and Frontegg are solid-managed options, developers wanting more control and flexibility often prefer open-source tools. That's where Appwrite can be a great choice, as an all-in-one development platform that not only handles authentication, but also includes a database, cloud functions, storage, realtime APIs, and hosting.
 
 If you're looking for a platform that gives you modern authentication plus the building blocks to scale your product, check out Appwrite and start building for [free](https://cloud.appwrite.io/console).
+
+
+# More resources 
+- [Appwrite Authentication docs](/docs/products/auth)
+- [Appwrite Authentication quick start doc](/docs/products/auth/quick-start)
+- [Appwrite Authentication overview](/products/auth)
