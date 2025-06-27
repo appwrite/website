@@ -3,17 +3,18 @@ layout: partner
 title: Fraqtory
 description: Transform your startup vision into reality with custom software and Fractional CTO services, tailored to accelerate growth and success.
 date: 2025-03-21
-featured: false
+featured: true
 partnerLevel: Silver
 isNew: true
 cover: /images/partners/covers/fraqtory.png
 category: agency
-website: 
+website: https://fraqtory.com/
+email: https://fraqtory.com/contact
 product: 
     avatar: '/images/partners/avatars/fraqtory.png'
     vendor: Fraqtory
     description: Transform your startup vision into reality with custom software and Fractional CTO services, tailored to accelerate growth and success.
-frameworks: 
+technologies: 
     - Javascript
     - Typescript
     - React
@@ -30,7 +31,7 @@ frameworks:
     - Laravel
     - MySQL
     - PostgreSQL
-capabilities:
+services:
     - Fractional CTO
     - Software House
     - Mobile App Development

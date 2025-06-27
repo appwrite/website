@@ -1,19 +1,20 @@
 ---
 layout: partner
 title: MakeShyft
-description: MakeShyft is a software company currently transitioning from client work to B2C & B2B software products.  Our goal is to build productivity, communication and collaboration tools.  We have big goals and dreams and we're just getting started.
+description: MakeShyft is a software company currently transitioning from client work to B2C & B2B software products.  Our goal is to build productivity, communication, and collaboration tools.
 date: 2025-03-21
-featured: true
+featured: false
 partnerLevel: Silver
 isNew: true
 cover: /images/partners/covers/makeshyft.png
 category: agency
 website: http://www.makeshyft.com
+email: mailto:makeshfty@makeshyft.com
 product: 
     avatar: '/images/partners/avatars/makeshyft.png'
-    vendor: SimbaLabs
-    description: MakeShyft is a software company currently transitioning from client work to B2C & B2B software products.  Our goal is to build productivity, communication and collaboration tools.  We have big goals and dreams and we're just getting started.
-frameworks: 
+    vendor: MakeShyft
+    description: MakeShyft is a software company currently transitioning from client work to B2C & B2B software products.  Our goal is to build productivity, communication, and collaboration tools.
+technologies: 
     - Livecode
     - Javascript
     - PHP
@@ -38,6 +39,4 @@ MakeShyft is a software company currently transitioning from client work to B2C 
 
 # Services
 
-We develop software products, we do not currently accept external projects.
-
-Useful desktop applications that run native and local first.
+We develop software product. Useful desktop applications that run natively and locally first.
