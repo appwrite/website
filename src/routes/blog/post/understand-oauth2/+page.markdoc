@@ -11,7 +11,7 @@ unlisted: true
 category: product
 ---
 
-In today’s interconnected app ecosystem, users expect seamless, secure access across services. OAuth2 has emerged as the industry standard for handling secure delegated access, making it a critical protocol for developers to understand.
+Modern applications rarely operate in isolation. Whether it's logging in with Google or sharing data with a third-party service, users demand interoperability and security. That’s where OAuth2 steps in: a powerful protocol designed to delegate access without compromising user credentials.
 
 This guide explains OAuth2, how it works, the different flows available, and when to use each one, helping you build secure, scalable authorization experiences.
 
@@ -42,7 +42,7 @@ Refer to the OAuth2 [documentation](/docs/product/auth/oauth2) for complete tech
 
 1. **Authorization request**: The client asks the resource owner for permission.
 2. **Authorization grant**: If the user consents, the server issues a grant (authorization code, token, etc.).
-3. **Token request**: The client exchanges the grant for an access token.
+3. **Token request**: The client exchanges the grant for an access [token](/docs/products/auth/tokens).
 4. **Resource access**: The client uses the token to access protected resources.
 
 Tokens are typically short-lived and scoped, meaning they only allow the operations the user approved.
@@ -68,7 +68,7 @@ OAuth2 offers different "flows" to accommodate various scenarios. Here's a break
 
 - Web apps with secure backend servers.
 
-{% call_to_action title="Customer identity without the hassle" description="Add secure authentication for your users in just a couple of minutes." point1="Multiple OAuth providers" point2="Built-in security" point3="Custom roles and permissions" point4="Integrates with your favourite SDK" cta="Contact sales" url="https://appwrite.io/contact-us/enterprise" /%}
+{% call_to_action title="Customer identity without the hassle" description="Add secure authentication for your users in just a couple of minutes." point1="Multiple OAuth providers" point2="Built-in security" point3="Custom roles and permissions" point4="Integrates with your favourite SDK" cta="Request a demo" url="https://appwrite.io/contact-us/enterprise" /%}
 
 
 ## 2. Authorization code flow with PKCE (Proof Key for Code Exchange)
