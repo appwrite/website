@@ -22,7 +22,7 @@ Both allow passwordless login flows with different advantages.
 
 Email OTP authentication is done using a two-step authentication process. The authentication request is initiated from the client application and an email message is sent to the user's email inbox. The email will contain a 6-digit number the user can use to log in.
 
-Send an an email to initiate the authentication process. A **new account** will be created for this email if it has never been used before.
+Send an an email to initiate the authentication process. If the email has never been used, a **new account is generated** using the provided `userId`, then the user will receive an email. If the email is already attached to an account, the **user ID is ignored** and the user will receive an email with the one-time password.
 
 {% multicode %}
 
