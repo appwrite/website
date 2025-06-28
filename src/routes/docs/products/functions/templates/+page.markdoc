@@ -30,7 +30,7 @@ Pick the runtime language you wish the function to be created in, not all runtim
 ## Variables {% #variables %}
 Appwrite Functions uses [environment variables](/docs/products/functions/develop#environment-variables)
 to pass constants and secrets to your Appwrite Functions. You'll provide information like API keys and other
-secrets to integrations in this step. If you need an Appwrite API key, you'll be propted to generate one.
+secrets to integrations in this step. If you need an Appwrite API key, you'll be prompted to generate one.
 
 ## Connect {% #connect %}
 You can choose to clone a new repository to your GitHub profile or organization, or to connect to an existing repository.
