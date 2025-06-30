@@ -21,7 +21,6 @@ const config = {
                 article: absolute('./src/markdoc/layouts/Article.svelte'),
                 tutorial: absolute('./src/markdoc/layouts/Tutorial.svelte'),
                 post: absolute('./src/markdoc/layouts/Post.svelte'),
-                partner: absolute('./src/markdoc/layouts/Partner.svelte'),
                 author: absolute('./src/markdoc/layouts/Author.svelte'),
                 category: absolute('./src/markdoc/layouts/Category.svelte'),
                 policy: absolute('./src/markdoc/layouts/Policy.svelte'),
