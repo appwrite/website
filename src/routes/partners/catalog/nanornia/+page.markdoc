@@ -13,12 +13,12 @@ product:
     avatar: '/images/partners/avatars/nanornia.png'
     vendor: nanornia
     description: 'Nanornia is a digital agency that creates websites, apps, and visual designs. We help businesses of all sizes build professional and user-friendly digital solutions, using both custom development and low-code tools to deliver high-quality results.'
-frameworks: 
+technologies: 
     - Astro
     - Nuxt
     - Vue
     - Flutter
-capabilities:
+services:
     - AI
     - Web 
     - Mobile
