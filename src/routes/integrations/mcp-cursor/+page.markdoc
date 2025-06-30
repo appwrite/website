@@ -9,7 +9,7 @@ isNew: false
 cover: /images/integrations/mcp-cursor/cover.png
 category: mcp
 product: 
-    avatar: '/images/integrations/avatars/hugging-face.png'
+    avatar: '/images/integrations/avatars/cursor.png'
     vendor: Cursor
     description: 'Cursor is an AI-powered code editor based on VS Code, designed for context-aware development and seamless collaboration with large language models.'
 platform: 

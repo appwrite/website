@@ -1,6 +1,6 @@
 ---
 layout: integration
-title: MCP with Windsurf Editor
+title: MCP with Windsurf
 description: Connect to Appwrite project with the MCP within Windsurf Editor.
 date: 2025-06-30
 featured: false
@@ -9,7 +9,7 @@ isNew: false
 cover: /images/integrations/mcp-windsurf/cover.png
 category: mcp
 product: 
-    avatar: '/images/integrations/avatars/hugging-face.png'
+    avatar: '/images/integrations/avatars/windsurf.png'
     vendor: Windsurf
     description: 'Windsurf Editor is an AI-native, agent-powered IDE that enhances developer productivity with AI-driven code generation, debugging, and refactoring capabilities.'
 platform: 

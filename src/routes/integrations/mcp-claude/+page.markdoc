@@ -1,6 +1,6 @@
 ---
 layout: integration
-title: MCP with Claude Desktop
+title: MCP with Claude
 description: Connect to Appwrite project with the MCP within Claude Desktop.
 date: 2025-06-30
 featured: false
@@ -9,7 +9,7 @@ isNew: false
 cover: /images/integrations/mcp-claude/cover.png
 category: mcp
 product: 
-    avatar: '/images/integrations/avatars/hugging-face.png'
+    avatar: '/images/integrations/avatars/claude.png'
     vendor: Anthropic
     description: 'Claude Desktop is a native AI assistant app by Anthropic that brings the Claude large language model to your devices.'
 platform: 
