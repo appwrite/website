@@ -85,6 +85,8 @@ Most static and SPA setups work seamlessly. The only exception is SSR support fo
 
 If you're using a framework outside of Next.js, Appwrite Sites provides a more consistent experience across the board. This is also an advantage for teams that use different frameworks for different parts of their stack.
 
+{% call_to_action title="All-in-one development platform" description="Use built-in backend infrastructure and web hosting, all from a single place." point1="Start for free"  point2="Open source" point3="Support for over 13 SDKs" point4="Managed cloud solution" cta="Start building for free" url="https://cloud.appwrite.io/" /%}
+
 # Hosting options: Static vs SSR
 
 Appwrite Sites supports both **Static/SPA** hosting and **Server-Side Rendering (SSR)**, much like Vercel. But there are a few differences in how they operate.
