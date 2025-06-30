@@ -39,7 +39,7 @@ The following scenarios do **not** qualify for refunds:
 - **Incorrect setup or inactivity:** Customer misconfiguration, failure to complete onboarding, or lack of usage
 - **Expired refund window:** Requests submitted more than 30 days after the transaction date
 - **Third-party limitations:** Issues caused by third-party tools, plugins, or unsupported integrations
-- **Terms of service violations:** Any usage found to be in breach of Appwrite's Terms of Service or Acceptable Use Policy
+- **Terms of service violations:** Any usage found to be in breach of Appwrite's [Terms of Service](/terms) or [Fair use](/docs/advanced/platform/fair-use-policy) policy
 
 # Request process {% #request-process %}
 
@@ -58,4 +58,8 @@ Whenever possible, we will first consider non-monetary solutions such as:
 
 # Policy updates {% #policy-updates %}
 
-Appwrite reserves the right to update this policy to reflect changes in our services or business practices. 
+Appwrite reserves the right to update this policy to reflect changes in our services or business practices at any time.
+
+# Contact us {% #contact-us %}
+
+For questions or further clarification, please [contact our support team](/contact-us). 

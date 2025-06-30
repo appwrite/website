@@ -156,7 +156,7 @@
                 {
                     new: isNewUntil('31 July 2025'),
                     label: 'Refund',
-                    href: '/docs/advanced/platform/refund'
+                    href: '/docs/advanced/platform/refund-policy'
                 }
             ]
         }
