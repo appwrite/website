@@ -41,6 +41,12 @@ After opening the file, add the following info:
 }
 ```
 
+If you are using the **Claude Code** CLI, you can use the following command in your terminal to configure the MCP server in the exact same manner:
+
+```bash
+claude mcp add-json appwrite '{"command":"uvx","args":["mcp-server-appwrite","--users"],"env":{"APPWRITE_PROJECT_ID": "your-project-id", "APPWRITE_API_KEY": "your-api-key", "APPWRITE_ENDPOINT": "https://<REGION>.cloud.appwrite.io/v1"}}'
+```
+
 {% info title="Enable other MCP tools" %}
 
 To enable additional tools, learn more about [command-line arguments](/docs/tooling/mcp#command-line-arguments).

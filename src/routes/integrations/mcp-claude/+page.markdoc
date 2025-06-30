@@ -81,6 +81,14 @@ Once you have updated and saved the `claude_desktop_config.json` file, restart C
 
 ![Claude MCP Tools](/images/docs/mcp/claude/claude-mcp-tools.png)
 
+{% info title="Claude Code" %}
+If you are using the Claude Code CLI, you can use the following command in your terminal to configure the MCP server in the exact same manner:
+
+```bash
+claude mcp add-json appwrite '{"command":"uvx","args":["mcp-server-appwrite","--users"],"env":{"APPWRITE_PROJECT_ID": "your-project-id", "APPWRITE_API_KEY": "your-api-key", "APPWRITE_ENDPOINT": "https://<REGION>.cloud.appwrite.io/v1"}}'
+```
+{% /info %}
+
 ## Step 3: Test the integration
 
 Finally, you can test the integration by asking Claude Desktop to list all the users in your Appwrite project.
