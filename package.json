@@ -24,7 +24,7 @@
         "optimize": "node ./scripts/optimize-assets.js",
         "optimize:all": "node ./scripts/optimize-all.js"
     },
-    "packageManager": "pnpm@10.11.1",
+    "packageManager": "pnpm@10.12.1",
     "dependencies": {
         "h3": "^1.14.0",
         "posthog-js": "^1.210.2",
@@ -115,6 +115,7 @@
     "pnpm": {
         "onlyBuiltDependencies": [
             "@parcel/watcher",
+            "@tailwindcss/oxide",
             "core-js",
             "esbuild",
             "sharp",
