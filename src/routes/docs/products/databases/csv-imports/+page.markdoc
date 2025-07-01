@@ -58,6 +58,6 @@ CSV imports run as background tasks. The Console displays a floating progress ba
 
 # Additional resources {% #additional-resources %}
 
-- [Appwrite CLI for Migrations](/docs/command-line)
+- [Appwrite CLI](/docs/command-line)
 - [Database Permissions](/docs/products/databases/permissions)
 - [Documents API Reference](/docs/references/cloud/client-web/databases)
