@@ -1,32 +1,18 @@
 ---
 layout: article
-title: Start with Databases
-description: Get started with Appwrite Databases. Follow a step-by-step guide to create your first database, define tables, and perform basic data operations.
+title: Rows
+description: Master row management with Appwrite Databases. Learn how to create, update, and query rows within your tables for dynamic data storage.
 ---
+Each piece of data or information in Appwrite Databases is a row.
+Rows have a structure defined by the parent table.
 
-{% section #create-database step=1 title="Create database" %}
-Head to your [Appwrite Console](https://cloud.appwrite.io/console/) and create a database and name it `Oscar`.
-Optionally, add a custom database ID.
-{% /section %}
+# Create rows {% #create-rows %}
+{% info title="Permissions required" %}
+You must grant **create** permissions to users at the **table level** before users can create rows.
+[Learn more about permissions](#permissions)
+{% /info %}
 
-{% section #create-table step=2 title="Create table" %}
-Create a table and name it `My books`. Optionally, add a custom table ID.
-
-Navigate to **Columns** and create columns by clicking **Create column** and select **String**.
-Columns define the structure of your table's rows. Enter **Column key** and **Size**. For example, `title` and `100`.
-
-Navigate to **Settings** > **Permissions** and add a new role **Any**.
-Check the **CREATE** and **READ** permissions, so anyone can create and read rows.
-{% /section %}
-
-
-{% section #create-rows step=3 title="Create rows" %}
-To create a row use the `createRow` method.
-
-In the **Settings** menu, find your project ID and replace `<PROJECT_ID>` in the example.
-
-Navigate to the `Oscar` database, copy the database ID, and replace `<DATABASE_ID>`.
-Then, in the `My books` table, copy the table ID, and replace `<TABLE_ID>`.
+In most use cases, you will create rows programmatically.
 
 {% multicode %}
 ```client-web
@@ -42,7 +28,7 @@ const promise = tables.createRow(
     '<DATABASE_ID>',
     '<TABLE_ID>',
     ID.unique(),
-    { "title": "Hamlet" }
+    {}
 );
 
 promise.then(function (response) {
@@ -66,7 +52,7 @@ void main() async {
             databaseId: '<DATABASE_ID>',
             tableId: '<TABLE_ID>',
             rowId: ID.unique(),
-            data: { "title": "Hamlet" }
+            data: {}
         );
     } on AppwriteException catch(e) {
         print(e);
@@ -89,7 +75,7 @@ func main() async throws {
             databaseId: "<DATABASE_ID>",
             tableId: "<TABLE_ID>",
             rowId: ID.unique(),
-            data: ["title" : "hamlet"]
+            data: [:]
         )
     } catch {
         print(error.localizedDescription)
@@ -112,35 +98,51 @@ suspend fun main() {
             databaseId = "<DATABASE_ID>",
             tableId = "<TABLE_ID>",
             rowId = ID.unique(),
-            data = mapOf("title" to "hamlet"),
+            data = mapOf("a" to "b"),
         )
     } catch (e: Exception) {
         Log.e("Appwrite", "Error: " + e.message)
     }
 }
 ```
-{% /multicode %}
-
-The response should look similar to this.
-
-```json
-{
-    "title": "Hamlet",
-    "$id": "65013138dcd8618e80c4",
-    "$permissions": [],
-    "$createdAt": "2023-09-13T03:49:12.905+00:00",
-    "$updatedAt": "2023-09-13T03:49:12.905+00:00",
-    "$databaseId": "650125c64b3c25ce4bc4",
-    "$tableId": "650125cff227cf9f95ad"
+```graphql
+mutation {
+    tablesCreateRow(
+        databaseId: "<DATABASE_ID>",
+        tableId: "<TABLE_ID>",
+        rowId: "<ROW_ID>",
+        data: "{}"
+    ) {
+        _id
+        _tableId
+        _databaseId
+        _createdAt
+        _updatedAt
+        _permissions
+        data
+    }
 }
 ```
+{% /multicode %}
 
-{% /section %}
+During testing, you might prefer to create rows in the Appwrite Console.
+To do so, navigate to the **Rows** tab of your table and click the **Add row** button.
 
-{% section #list-rows step=4 title="List rows" %}
-To read and query data from your table, use the `listRows` endpoint.
+# List rows {% #list-rows %}
 
-Like the previous step, replace `<PROJECT_ID>`, `<DATABASE_ID>`, and`<TABLE_ID>` with their respective IDs.
+{% info title="Permissions required" %}
+You must grant **read** permissions to users at the **table level** before users can read rows.
+[Learn more about permissions](#permissions)
+{% /info %}
+
+Rows can be retrieved using the [List Row](/docs/references/cloud/client-web/tables#listRows) endpoint.
+
+Results can be filtered, sorted, and paginated using Appwrite's shared set of query methods.
+You can find a full guide on querying in the [Queries Guide](/docs/products/databases/queries).
+
+By default, results are limited to the **first 25 items**.
+You can change this through [pagination](/docs/products/databases/pagination).
+
 {% multicode %}
 ```client-web
 import { Client, Query, Tables } from "appwrite";
@@ -155,7 +157,7 @@ let promise = tables.listRows(
     "<DATABASE_ID>",
     "<TABLE_ID>",
     [
-        Query.equal('title', 'Hamlet')
+        Query.equal('title', 'Avatar')
     ]
 );
 
@@ -180,7 +182,7 @@ void main() async {
             databaseId: '<DATABASE_ID>',
             tableId: '<TABLE_ID>',
             queries: [
-                Query.equal('title', 'Hamlet')
+                Query.equal('title', 'Avatar')
             ]
         );
     } on AppwriteException catch(e) {
@@ -192,7 +194,7 @@ void main() async {
 import Appwrite
 import AppwriteModels
 
-func main() async throws{
+func main() async throws {
     let client = Client()
         .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
         .setProject("<PROJECT_ID>")
@@ -204,7 +206,7 @@ func main() async throws{
             databaseId: "<DATABASE_ID>",
             tableId: "<TABLE_ID>",
             queries: [
-                Query.equal("title", value: "Hamlet")
+                Query.equal("title", value: "Avatar")
             ]
         )
     } catch {
@@ -229,7 +231,7 @@ suspend fun main() {
             databaseId = "<DATABASE_ID>",
             tableId = "<TABLE_ID>",
             queries = listOf(
-                Query.equal("title", "Hamlet")
+                Query.equal("title", "Avatar")
             )
         )
     } catch (e: AppwriteException) {
@@ -237,6 +239,28 @@ suspend fun main() {
     }
 }
 ```
-
+```graphql
+query {
+    tablesListRows(
+        databaseId: "<DATABASE_ID>",
+        tableId: "<TABLE_ID>",
+        queries: ["equal(\"title\", [\"Avatar\"])"]
+    ) {
+        total
+        rows {
+            _id
+            data
+        }
+    }
+}
+```
 {% /multicode %}
-{% /section %}
+
+# Permissions {% #permissions %}
+In Appwrite, permissions can be granted at the table level and the row level.
+Before a user can create a row, you need to grant create permissions to the user.
+
+Read, update, and delete permissions can be granted at both the table and row level.
+Users only need to be granted access at either the table or row level to access rows.
+
+[Learn about configuring permissions](/docs/products/databases/permissions).
