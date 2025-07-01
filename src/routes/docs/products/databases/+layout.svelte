@@ -43,7 +43,8 @@
                 },
                 {
                     label: 'Type Generation',
-                    href: '/docs/products/databases/type-generation'
+                    href: '/docs/products/databases/type-generation',
+                    new: isNewUntil('31 Jul 2025')
                 },
                 {
                     label: 'Offline Sync',
@@ -59,7 +60,8 @@
                 },
                 {
                     label: 'CSV Imports',
-                    href: '/docs/products/databases/csv-imports'
+                    href: '/docs/products/databases/csv-imports',
+                    new: isNewUntil('31 Jul 2025')
                 }
             ]
         },
