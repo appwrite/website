@@ -21,7 +21,9 @@ images:
     - /images/docs/mcp/windsurf/windsurf-cascade-chat.png
 ---
 
-Windsurf Editor is a next-gen IDE that embeds a powerful AI agent called Cascade directly into your coding workflow. Unlike tools limited to autocomplete or single-file assistance, Cascade understands your entire project context and can generate code across files, run terminal commands, debug issues, and even deploy applications, all triggered by natural language prompts. With features like Supercomplete, inline AI chat, memories, and live previews, Windsurf aims to keep you in a deep focus state by eliminating context switching and handling repetitive tasks automatically, while still giving you full control over what gets merged or executed.# How does the integration work?
+Windsurf Editor is a next-gen IDE that embeds a powerful AI agent called Cascade directly into your coding workflow. Unlike tools limited to autocomplete or single-file assistance, Cascade understands your entire project context and can generate code across files, run terminal commands, debug issues, and even deploy applications, all triggered by natural language prompts. With features like Supercomplete, inline AI chat, memories, and live previews, Windsurf aims to keep you in a deep focus state by eliminating context switching and handling repetitive tasks automatically, while still giving you full control over what gets merged or executed.
+
+# How does the integration work?
 
 # How does the integration work?
 
