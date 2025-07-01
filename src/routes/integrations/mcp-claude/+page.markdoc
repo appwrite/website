@@ -2,10 +2,10 @@
 layout: integration
 title: MCP with Claude
 description: Connect to Appwrite project with the MCP within Claude Desktop.
-date: 2025-06-30
+date: 2025-07-01
 featured: false
 isPartner: true
-isNew: false
+isNew: true
 cover: /images/integrations/mcp-claude/cover.png
 category: mcp
 product: 

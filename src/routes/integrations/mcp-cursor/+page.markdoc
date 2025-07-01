@@ -2,10 +2,10 @@
 layout: integration
 title: MCP with Cursor
 description: Connect to Appwrite project with the MCP within Cursor.
-date: 2025-06-30
+date: 2025-07-01
 featured: true
 isPartner: true
-isNew: false
+isNew: true
 cover: /images/integrations/mcp-cursor/cover.png
 category: mcp
 product: 
