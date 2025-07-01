@@ -4,7 +4,7 @@ title: "Announcing: Document imports from CSV files"
 description: Learn how to import documents into your Appwrite collections using a simple CSV file, a new feature built on top of Appwrite's migration APIs.
 date: 2025-07-01
 # update this cover later, once available!
-cover: /images/blog/planetscale-databases-alternative/cover.png
+cover: /images/blog/announcing-csv-imports/cover.png
 timeToRead: 5
 author: darshan-pandya
 category: announcement
@@ -54,13 +54,6 @@ The Console provides a guided interface to help you select the CSV and link it t
 CSV imports are built to scale seamlessly with your data. Whether you're working with a small dataset or importing production-grade records, the system is designed to handle high volumes reliably and efficiently.
 
 The import system performs per-row validation and runs as a background task, allowing it to handle large files efficiently. This ensures reliable performance across a range of scenarios—from lightweight configuration data to large-scale production imports.
-
-## Automate with API and SDKs
-
-You can also trigger imports using the Appwrite API or SDKs. This is useful for scripted workflows, automated CI/CD pipelines, or admin dashboards.
-
-All you need is a CSV file in your project's storage and the target collection ID. The rest is handled by Appwrite's import system.
-
 
 ## Availability and resources
 
