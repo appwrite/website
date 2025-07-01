@@ -25,8 +25,6 @@ Windsurf Editor is a next-gen IDE that embeds a powerful AI agent called Cascade
 
 # How does the integration work?
 
-# How does the integration work?
-
 The Appwrite MCP server integrates with Windsurf Editor's Cascade chat using the Model Context Protocol (MCP), allowing you to connect your Appwrite project to Windsurf Editor. 
 
 This integration enables you to perform various operations on your Appwrite resources, such as creating users, managing databases, and more, directly from the Windsurf Editor using natural language commands.
