@@ -1,7 +1,7 @@
 ---
 layout: integration
-title: Appwrite Authentication Kit
-description: Seamlessly integrate secure user authentication into your FlutterFlow apps—without writing complex code.
+title: Auth Kit for FlutterFlow
+description: Integrate Appwrite Auth into your FlutterFlow apps without writing complex code
 date: 2024-03-01
 featured: true
 isPartner: true
@@ -11,7 +11,7 @@ category: auth
 product:
   avatar: '/images/integrations/avatars/flutterflow.png'
   vendor: FlutterFlow
-  description: 'Appwrite is a secure, open-source backend server for web, mobile, and Flutter developers.'
+  description: 'FlutterFlow is a low-code platform that lets you visually build and deploy mobile and web apps using Flutter.'
 platform: 
     - 'Self-hosted'
     - 'Cloud'
