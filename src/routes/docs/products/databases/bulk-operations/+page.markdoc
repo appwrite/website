@@ -43,6 +43,33 @@ const result = await databases.createDocuments(
     ]
 );
 ```
+
+```server-python
+from appwrite.client import Client
+from appwrite.services.databases import Databases
+
+client = Client()
+client.set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
+client.set_project('<PROJECT_ID>')
+client.set_key('<API_KEY>')
+
+databases = Databases(client)
+
+result = databases.create_documents(
+    database_id = '<DATABASE_ID>',
+    collection_id = '<COLLECTION_ID>',
+    documents = [
+        {
+            'documentId': appwrite.ID.unique(),
+            'data': { 'name': 'Document 1' }
+        },
+        {
+            'documentId': appwrite.ID.unique(),
+            'data': { 'name': 'Document 2' }
+        }
+    ]
+)
+```
 {% /multicode %}
 
 # Update documents {% #update-documents %}
@@ -68,7 +95,7 @@ const databases = new sdk.Databases(client);
 const result = await databases.updateDocuments(
     '<DATABASE_ID>',
     '[COLLECTION_ID]',
-    [
+    {
         {
             documentId: 'document-id-1',
             data: { name: 'Updated Document 1' }
@@ -77,8 +104,35 @@ const result = await databases.updateDocuments(
             documentId: 'document-id-2',
             data: { name: 'Updated Document 2' }
         }
-    ]
+    }
 );
+```
+
+```server-python
+from appwrite.client import Client
+from appwrite.services.databases import Databases
+
+client = Client()
+client.set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
+client.set_project('<PROJECT_ID>')
+client.set_key('<API_KEY>')
+
+databases = Databases(client)
+
+result = databases.update_documents(
+    database_id = '<DATABASE_ID>',
+    collection_id = '<COLLECTION_ID>',
+    data = {
+        {
+            'documentId': 'document-id-1',
+            'data': { 'name': 'New Document 1' }
+        },
+        {
+            'documentId': 'document-id-2',
+            'data': { 'name': 'New Document 2' }
+        }
+    }
+)
 ```
 {% /multicode %}
 
@@ -117,6 +171,33 @@ const result = await databases.upsertDocuments(
     ]
 );
 ```
+
+```server-python
+from appwrite.client import Client
+from appwrite.services.databases import Databases
+
+client = Client()
+client.set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
+client.set_project('<PROJECT_ID>')
+client.set_key('<API_KEY>')
+
+databases = Databases(client)
+
+result = databases.upsert_documents(
+    database_id = '<DATABASE_ID>',
+    collection_id = '<COLLECTION_ID>',
+    documents = [
+        {
+            'documentId': appwrite.ID.unique(),
+            'data': { 'name': 'Document 1' }
+        },
+        {
+            'documentId': 'document-id-2',  # Existing document ID
+            'data': { 'name': 'New Document 2' }
+        }
+    ]
+)
+```
 {% /multicode %}
 
 # Delete documents {% #delete-documents %}
@@ -145,6 +226,32 @@ const result = await databases.deleteDocuments(
     [] // Queries
 );
 ```
+
+```server-python
+from appwrite.client import Client
+from appwrite.services.databases import Databases
+
+client = Client()
+client.set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
+client.set_project('<PROJECT_ID>')
+client.set_key('<API_KEY>')
+
+databases = Databases(client)
+
+result = databases.delete_documents(
+    database_id = '<DATABASE_ID>',
+    collection_id = '<COLLECTION_ID>',
+    queries = []
+)
+```
 {% /multicode %}
 
-**Note:** When deleting documents, you can specify queries to filter which documents to delete. If no queries are provided, all documents in the collection will be deleted.
+{% info title="Queries for deletion" %}
+
+When deleting documents, you must specify queries to filter which documents to delete.
+ 
+If no queries are provided, all documents in the collection will be deleted.
+
+[Learn more about queries](/docs/products/databases/queries).
+
+{% /info %}
