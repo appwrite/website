@@ -131,7 +131,7 @@
         </div>
     </section>
     <header
-        class="web-main-header {isReferences ? 'is-reference' : 'is-docs'}"
+        class="web-main-header hidden lg:block {isReferences ? 'is-reference' : 'is-docs'}"
         class:is-transparent={variant !== 'expanded'}
     >
         <div class="web-main-header-wrapper">
