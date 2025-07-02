@@ -21,8 +21,8 @@
         category,
         description,
         cover,
-        capabilities,
-        frameworks,
+        services,
+        technologies,
         regions,
         languages,
         website,
@@ -87,14 +87,14 @@
                         <dl class="divide-smooth sticky top-32 mt-10 flex flex-col gap-7 divide-y">
                             <div class="flex flex-col justify-between gap-7 pb-7">
                                 <dt class="text-micro font-aeonik-fono tracking-loose uppercase">
-                                    Frameworks
+                                    Technologies
                                 </dt>
                                 <dd class="flex flex-wrap gap-2">
-                                    {#each frameworks as framework}
+                                    {#each technologies as technology}
                                         <div
                                             class="text-primary text-caption bg-smooth rounded-full px-3 py-1"
                                         >
-                                            {framework}
+                                            {technology}
                                         </div>
                                     {/each}
                                 </dd>
@@ -102,14 +102,14 @@
 
                             <div class="flex flex-col justify-between gap-7 pb-7">
                                 <dt class="text-micro font-aeonik-fono tracking-loose uppercase">
-                                    Capabilities
+                                    Services
                                 </dt>
                                 <dd class="flex flex-wrap gap-2">
-                                    {#each capabilities as capability}
+                                    {#each services as service}
                                         <div
                                             class="text-primary text-caption bg-smooth rounded-full px-3 py-1"
                                         >
-                                            {capability}
+                                            {service}
                                         </div>
                                     {/each}
                                 </dd>
