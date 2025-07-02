@@ -91,7 +91,8 @@
                     rel: 'noopener noreferrer'
                 },
                 { label: 'Contact us', href: '/contact-us' },
-                { label: 'Assets', href: '/assets' }
+                { label: 'Assets', href: '/assets' },
+                { label: 'Security', href: '/docs/advanced/security' }
             ]
         };
 </script>

@@ -80,7 +80,7 @@
                                 ></a
                             >
                             <span class="mt-2 text-sm text-[var(--color-primary)] opacity-64"
-                                >Pricing will be revealed July 1st, 2025</span
+                                >Pricing will be revealed August 1st, 2025</span
                             >
                         </div>
                     </div>
