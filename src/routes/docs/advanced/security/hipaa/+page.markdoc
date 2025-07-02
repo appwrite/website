@@ -34,11 +34,11 @@ If you're handling PHI (Protected Health Information), you can implement custom 
 
 Appwrite provides access to different types of logs depending on the context:
 
-**API usage logs**: These are turned off by default, we can give you samples of the data on requests to help debug and troubleshoot issues. If you'd like to have those turned on constantly and transmitted to you or stored on a bucket, this is a separate addon we can provide.
+- **API usage logs**: These are turned off by default, we can give you samples of the data on requests to help debug and troubleshoot issues. If you'd like to have those turned on constantly and transmitted to you or stored on a bucket, this is a separate addon we can provide.
 
-**Function logs**: Each serverless function or hosted sites includes stdout and stderr logs you can access per execution. Those are retained for different periods per plan.
+- **Function logs**: Each serverless function or hosted sites includes stdout and stderr logs you can access per execution. Those are retained for different periods per plan.
 
-**Audit logs**: For users or teams with compliance needs, we provide structured audit logs covering authentication events, permission changes, and other relevant activities directly on your console, under an activity tab in the different products the platform offers. Those are retained for different periods per plan.
+- **Audit logs**: For users or teams with compliance needs, we provide structured audit logs covering authentication events, permission changes, and other relevant activities directly on your console, under an activity tab in the different products the platform offers. Those are retained for different periods per plan.
 
 Please note that while Appwrite Cloud serves as a HIPAA-compliant platform to handle data,
 it is the responsibility of developers to ensure that their application is also compliant with HIPAA regulations.
