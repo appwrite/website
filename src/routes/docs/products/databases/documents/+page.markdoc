@@ -26,7 +26,7 @@ const databases = new Databases(client);
 
 const promise = databases.createDocument(
     '<DATABASE_ID>',
-    '[COLLECTION_ID]',
+    '<COLLECTION_ID>',
     ID.unique(),
     {}
 );
@@ -50,7 +50,7 @@ void main() async {
     try {
         final document = databases.createDocument(
             databaseId: '<DATABASE_ID>',
-            collectionId: '[COLLECTION_ID]',
+            collectionId: '<COLLECTION_ID>',
             documentId: ID.unique(),
             data: {}
         );
@@ -180,7 +180,7 @@ void main() async {
     try {
         final documents = await databases.listDocuments(
             databaseId: '<DATABASE_ID>',
-            collectionId: '[COLLECTION_ID]',
+            collectionId: '<COLLECTION_ID>',
             queries: [
                 Query.equal('title', 'Avatar')
             ]
@@ -276,7 +276,7 @@ const databases = new Databases(client);
 
 const promise = databases.upsertDocument(
     '<DATABASE_ID>',
-    '[COLLECTION_ID]',
+    '<COLLECTION_ID>',
     ID.unique(),
     {}
 );
@@ -300,7 +300,7 @@ void main() async {
     try {
         final document = databases.upsertDocument(
             databaseId: '<DATABASE_ID>',
-            collectionId: '[COLLECTION_ID]',
+            collectionId: '<COLLECTION_ID>',
             documentId: ID.unique(),
             data: {}
         );
