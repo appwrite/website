@@ -144,21 +144,21 @@ the tone and voice remains consistent.
 - All titles, headings, buttons, and labels should be written in **sentence case**. If you're not sure what sentence case should look like, check [APA's style guide](https://apastyle.apa.org/style-grammar-guidelines/capitalization/sentence-case) or check with ChatGPT and other LLMs which reliably converts titles to sentence case.
 - All headings in a docs page begin with `# Heading` then `## Heading` and `### Heading`. Internally, they're converted to H2 to H4 tags.
 - All headings should have an ID label, for example `# Cool heading {% #cool-heading %}` the `#cool-heading` ID will be used to generate the table of contents and add links to the heading.
-- Prefer verbs over gerunds, for example, say "Create documents" not "Creating documents".
+- Prefer verbs to gerunds, for example, say "Create documents" not "Creating documents".
 
 ### Extended Markdoc components
 
-Appwrite's documentation uses extended markdown syntax. You can find all of the available partials types in the [CONTENT.md file](./CONTENT.md).
+Appwrite's documentation uses extended Markdown syntax. You can find all the available partials types in the [CONTENT.md file](./CONTENT.md).
 
 ### Screenshots
 
 - When contributing upload original screenshots. The Appwrite design team will edit the screenshot to be consistent with other screenshots in the docs.
 - Screenshots must be 16:9
-- Screnshots should be taken in a 1400 x 900 view port on 3x DPR in browser developer tools.
+- Screenshots should be taken in a 1400 x 900 view port on 3x DPR in browser developer tools.
 - Use generic and sensible organization, project, and resource names. Avoid names like `test`, `demo`, or `sdlkfj`.
-- All screenshot should be take from a user named Walter O'Brien. You can change the name of your current user by going to your Appwrite Console and clicking the **top right profile icon** > **Your Account** > **Name**.
+- All screenshot should be taken from a user named Walter O'Brien. You can change the name of your current user by going to your Appwrite Console and clicking the **top right profile icon** > **Your Account** > **Name**.
 - Screenshots are stored in the `/images/docs/` folder, in a parent folder that is consistent with the path of the docs that reference the image.
-- All screenshots must be both dark and light mode, with `/path/` holding the lightmode version and `/path/dark/` holding the dark mode version.
+- All screenshots must be both dark and light mode, with `/path/` holding the light-mode version and `/path/dark/` holding the dark mode version.
 - Screenshots should be uploaded as un-edited original. Request help from the Appwrite design team to help you edit and refine your photos according to our guidelines.
 
 ```md

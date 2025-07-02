@@ -149,7 +149,7 @@ import { Client, Databases, Query } from "appwrite";
 
 const client = new Client()
     .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
-    .setProject("<PROJECT_ID>")
+    .setProject("<PROJECT_ID>");
 
 const databases = new Databases(client);
 
