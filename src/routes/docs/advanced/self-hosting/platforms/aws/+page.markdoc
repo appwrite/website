@@ -49,7 +49,7 @@ Deploy Appwrite on a single EC2 instance for development or small production wor
 
 ## Launch EC2 instance {% #launch-instance %}
 
-**Step 1: Create instance**
+{% section #create-instance step=1 title="Create instance" %}
 
 1. Navigate to EC2 Console in your preferred AWS region
 2. Click **Launch Instance**
@@ -59,7 +59,9 @@ Deploy Appwrite on a single EC2 instance for development or small production wor
 6. Select or create a key pair
 7. Launch the instance
 
-**Step 2: Connect and install prerequisites**
+{% /section %}
+
+{% section #connect-install-prerequisites step=2 title="Connect and install prerequisites" %}
 
 1. **Connect to your instance** using SSH with your key pair
 2. **Update the system** using your package manager
@@ -68,21 +70,27 @@ Deploy Appwrite on a single EC2 instance for development or small production wor
 5. **Add your user to the docker group** to run Docker commands without sudo
 6. **Restart your SSH session** for group changes to take effect
 
-**Step 3: Install Appwrite**
+{% /section %}
+
+{% section #install-appwrite step=3 title="Install Appwrite" %}
 
 1. **Create a directory** for your Appwrite installation
 2. **Run the Appwrite installer** using the [Appwrite Docker image](https://hub.docker.com/r/appwrite/appwrite):
 3. **Configure the installation** with these [recommended settings](/docs/advanced/self-hosting/installation)
 
+{% /section %}
+
 ## Configure domain and SSL {% #ec2-ssl %}
 
-**Step 1: Set up domain (optional)**
+{% section #setup-domain step=1 title="Set up domain (optional)" %}
 
 If using a custom domain:
 1. Point your domain's A record to your EC2 public IP
 2. Update your security group to restrict HTTP/HTTPS traffic as needed
 
-**Step 2: Configure SSL with Let's Encrypt**
+{% /section %}
+
+{% section #configure-ssl step=2 title="Configure SSL with Let's Encrypt" %}
 
 1. **Install Certbot** following the [official Certbot instructions](https://certbot.eff.org/)
 2. **Install and configure Nginx** as a reverse proxy
@@ -93,6 +101,8 @@ If using a custom domain:
 {% arrow_link href="/docs/advanced/self-hosting/configuration/tls-certificates" %}
 Learn more about TLS certificates
 {% /arrow_link %}
+
+{% /section %}
 
 # ECS Fargate deployment {% #ecs-fargate %}
 
@@ -106,7 +116,7 @@ Deploy Appwrite using AWS ECS Fargate for a managed, serverless container experi
 
 ## Prepare container image {% #prepare-image %}
 
-**Step 1: Set up container registry**
+{% section #setup-container-registry step=1 title="Set up container registry" %}
 
 1. **Create an ECR repository** for your Appwrite image
 2. **Authenticate Docker** with your ECR registry
@@ -115,9 +125,11 @@ Deploy Appwrite using AWS ECS Fargate for a managed, serverless container experi
 
 Refer to the [Amazon ECR documentation](https://docs.aws.amazon.com/ecr/) for command syntax and best practices.
 
+{% /section %}
+
 ## Create ECS resources {% #create-ecs %}
 
-**Step 1: Create task definition**
+{% section #create-task-definition step=1 title="Create task definition" %}
 
 Create an ECS task definition with these specifications:
 - **Network Mode**: awsvpc
@@ -134,7 +146,9 @@ Create an ECS task definition with these specifications:
 - **Secrets**: Store sensitive values in AWS Secrets Manager
 - **Logging**: Configure [CloudWatch log groups](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using_awslogs.html)
 
-**Step 2: Create ECS cluster and service**
+{% /section %}
+
+{% section #create-ecs-cluster step=2 title="Create ECS cluster and service" %}
 
 1. **Create an ECS cluster** using the Fargate launch type
 2. **Create a service** with your task definition
@@ -143,13 +157,15 @@ Create an ECS task definition with these specifications:
 
 For current ECS commands and configuration options, see the [Amazon ECS documentation](https://docs.aws.amazon.com/ecs/).
 
+{% /section %}
+
 # Lightsail deployment {% #lightsail %}
 
 AWS Lightsail provides a simple way to deploy Appwrite with predictable pricing.
 
 ## Create Lightsail instance {% #lightsail-instance %}
 
-**Step 1: Launch instance**
+{% section #launch-lightsail-instance step=1 title="Launch instance" %}
 
 1. Navigate to the [AWS Lightsail Console](https://lightsail.aws.amazon.com/)
 2. Click **Create instance**
@@ -158,7 +174,9 @@ AWS Lightsail provides a simple way to deploy Appwrite with predictable pricing.
 5. Choose instance plan
 6. Name your instance and create it
 
-**Step 2: Configure networking**
+{% /section %}
+
+{% section #configure-networking step=2 title="Configure networking" %}
 
 Add firewall rules for these ports:
 
@@ -180,13 +198,17 @@ Add firewall rules for these ports:
 * 8080
 {% /table %}
 
-**Step 3: Install Appwrite**
+{% /section %}
+
+{% section #install-appwrite-lightsail step=3 title="Install Appwrite" %}
 
 1. **Connect via SSH** from the Lightsail console
 2. **Update the system** packages
 3. **Install Docker and Docker Compose** following the same process as EC2 deployment
 4. **Install Appwrite** using the [Appwrite Docker image](https://hub.docker.com/r/appwrite/appwrite)
 5. **Configure your installation** with the [recommended settings](/docs/advanced/self-hosting/installation)
+
+{% /section %}
 
 # Production considerations {% #production %}
 
