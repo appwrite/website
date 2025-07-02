@@ -50,13 +50,15 @@ Deploy Appwrite using Azure Container Apps for a serverless, fully managed conta
 
 ## Setup Azure resources {% #setup-resources %}
 
-**Step 1: Install and configure Azure CLI**
+{% section #install-configure-azure-cli step=1 title="Install and configure Azure CLI" %}
 
 1. **Install Azure CLI** for your operating system following the [official installation guide](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli)
 2. **Authenticate with Azure** using your account credentials
 3. **Set your default subscription** if you have multiple subscriptions
 
-**Step 2: Create core Azure resources**
+{% /section %}
+
+{% section #create-core-azure-resources step=2 title="Create core Azure resources" %}
 
 1. **Create a resource group** to organize all related resources
 2. **Create an Azure Container Registry** to store your container images:
@@ -64,25 +66,31 @@ Deploy Appwrite using Azure Container Apps for a serverless, fully managed conta
    - Enable admin access for simplified authentication
 3. **Authenticate Docker** with your container registry
 
+{% /section %}
+
 ## Prepare container image {% #prepare-image %}
 
-**Step 1: Prepare the Appwrite image**
+{% section #prepare-appwrite-image step=1 title="Prepare the Appwrite image" %}
 
-1. **Pull the official Appwrite image** (version 1.7.4 recommended)
+1. **Pull the [Appwrite image](https://hub.docker.com/r/appwrite/appwrite)**
 2. **Tag the image** for your Azure Container Registry
 3. **Push the image** to your registry
 
-For current Azure Container Registry commands and procedures, refer to the [Azure Container Registry documentation](https://docs.microsoft.com/en-us/azure/container-registry/).
+For Azure Container Registry commands and procedures, refer to the [Azure Container Registry documentation](https://docs.microsoft.com/en-us/azure/container-registry/).
+
+{% /section %}
 
 ## Deploy to Container Apps {% #deploy-container-apps %}
 
-**Step 1: Set up the Container Apps environment**
+{% section #setup-container-apps-environment step=1 title="Set up the Container Apps environment" %}
 
 1. **Install the Container Apps extension** for Azure CLI
 2. **Create a Container Apps environment** in your resource group
 3. **Configure the environment** with appropriate settings for your region
 
-**Step 2: Create managed database**
+{% /section %}
+
+{% section #create-managed-database step=2 title="Create managed database" %}
 
 1. **Create an Azure Database for MySQL** flexible server:
    - Choose appropriate SKU based on your workload (Burstable for development)
@@ -90,7 +98,9 @@ For current Azure Container Registry commands and procedures, refer to the [Azur
    - Set up appropriate storage and backup settings
 2. **Create the Appwrite database** within your MySQL server
 
-**Step 3: Deploy the Appwrite container**
+{% /section %}
+
+{% section #deploy-appwrite-container step=3 title="Deploy the Appwrite container" %}
 
 1. **Create the container app** with these specifications:
    - **Image**: Your tagged Appwrite image from the registry
@@ -104,21 +114,27 @@ For current Azure Container Registry commands and procedures, refer to the [Azur
    - Security and feature flags as needed
    - Use Azure Key Vault for sensitive values
 
-For current Container Apps deployment procedures, see the [Azure Container Apps documentation](https://docs.microsoft.com/en-us/azure/container-apps/).
+For Container Apps deployment procedures, see the [Azure Container Apps documentation](https://docs.microsoft.com/en-us/azure/container-apps/).
+
+{% /section %}
 
 ## Configure custom domain {% #container-apps-domain %}
 
-**Step 1: Add custom domain**
+{% section #add-custom-domain step=1 title="Add custom domain" %}
 
 1. **Add your custom domain** to the container app
 2. **Configure DNS verification** as required by Azure
 
-**Step 2: Configure SSL certificates**
+{% /section %}
+
+{% section #configure-ssl-certificates step=2 title="Configure SSL certificates" %}
 
 1. **Set up managed SSL certificates** through Azure
 2. **Update DNS records** at your domain provider with the required CNAME records
 
 SSL certificates are automatically managed by Azure Container Apps for custom domains.
+
+{% /section %}
 
 # Virtual Machine deployment {% #virtual-machine %}
 
@@ -126,7 +142,7 @@ Deploy Appwrite on Azure Virtual Machines for maximum control and customization.
 
 ## Create VM instance {% #create-vm %}
 
-**Step 1: Create and configure virtual machine**
+{% section #create-configure-virtual-machine step=1 title="Create and configure virtual machine" %}
 
 1. **Create a virtual machine** with these specifications:
    - **Image**: Ubuntu 22.04 LTS
@@ -140,7 +156,9 @@ Deploy Appwrite on Azure Virtual Machines for maximum control and customization.
    - Certbot for SSL certificates
    - System updates and security packages
 
-**Step 2: Configure network security**
+{% /section %}
+
+{% section #configure-network-security step=2 title="Configure network security" %}
 
 1. **Configure Network Security Groups** to allow traffic on:
    - Port 22 (SSH)
@@ -148,30 +166,28 @@ Deploy Appwrite on Azure Virtual Machines for maximum control and customization.
    - Port 443 (HTTPS)
    - Port 8080 (Appwrite API, temporarily)
 
-For current VM creation procedures, refer to the [Azure Virtual Machines documentation](https://docs.microsoft.com/en-us/azure/virtual-machines/).
+For VM creation procedures, refer to the [Azure Virtual Machines documentation](https://docs.microsoft.com/en-us/azure/virtual-machines/).
+
+{% /section %}
 
 ## Install Appwrite on VM {% #install-vm %}
 
-**Step 1: Connect to your VM**
+{% section #connect-to-vm step=1 title="Connect to your VM" %}
 
 1. **Obtain your VM's public IP address** from the Azure portal
 2. **Connect via SSH** using your SSH key
 
-**Step 2: Install Appwrite**
+{% /section %}
+
+{% section #install-appwrite-vm step=2 title="Install Appwrite" %}
 
 1. **Create a directory** for your Appwrite installation
-2. **Run the Appwrite installer** using the official Docker image:
-   - Use the `appwrite/appwrite:1.7.4` image with the install entrypoint
-   - Mount the Docker socket and installation directory
-   - Follow the interactive configuration prompts
+2. **Run the Appwrite installer** using the [Appwrite Docker image](https://hub.docker.com/r/appwrite/appwrite)
+3. **Configure the installation** with these [recommended settings](/docs/advanced/self-hosting/installation)
 
-**Installation configuration:**
-- **HTTP Port**: 80
-- **HTTPS Port**: 443
-- **Hostname**: Your VM's public IP or custom domain
-- **Secret Key**: Generate a secure random key
+{% /section %}
 
-**Step 3: Configure reverse proxy and SSL**
+{% section #configure-reverse-proxy-ssl step=3 title="Configure reverse proxy and SSL" %}
 
 1. **Configure Nginx** as a reverse proxy:
    - Create a configuration that forwards requests to Appwrite
@@ -182,13 +198,15 @@ For current VM creation procedures, refer to the [Azure Virtual Machines documen
 
 For detailed SSL setup instructions, see the [SSL certificates guide](/docs/advanced/self-hosting/configuration/tls-certificates).
 
+{% /section %}
+
 # AKS deployment {% #aks %}
 
 Deploy Appwrite on Azure Kubernetes Service for enterprise-grade container orchestration.
 
 ## Create AKS cluster {% #create-cluster %}
 
-**Step 1: Create and configure AKS cluster**
+{% section #create-configure-aks-cluster step=1 title="Create and configure AKS cluster" %}
 
 1. **Create an AKS cluster** with these recommended settings:
    - **Node count**: 3 nodes minimum for high availability
@@ -201,7 +219,9 @@ Deploy Appwrite on Azure Kubernetes Service for enterprise-grade container orche
    - Obtain cluster credentials for kubectl
    - Verify connectivity to the cluster
 
-**Step 2: Install cluster dependencies**
+{% /section %}
+
+{% section #install-cluster-dependencies step=2 title="Install cluster dependencies" %}
 
 1. **Install Helm** package manager for Kubernetes
 2. **Add required Helm repositories**:
@@ -209,11 +229,13 @@ Deploy Appwrite on Azure Kubernetes Service for enterprise-grade container orche
    - cert-manager for SSL certificates (optional)
 3. **Install ingress controller** with appropriate configuration
 
-For current AKS setup procedures, refer to the [Azure Kubernetes Service documentation](https://docs.microsoft.com/en-us/azure/aks/).
+For AKS setup procedures, refer to the [Azure Kubernetes Service documentation](https://docs.microsoft.com/en-us/azure/aks/).
+
+{% /section %}
 
 ## Deploy Appwrite on AKS {% #deploy-aks %}
 
-**Step 1: Prepare Kubernetes manifests**
+{% section #prepare-kubernetes-manifests step=1 title="Prepare Kubernetes manifests" %}
 
 Create the following Kubernetes resources:
 - **Namespace** for organizing Appwrite components
@@ -223,7 +245,9 @@ Create the following Kubernetes resources:
 - **Service** for internal communication
 - **Ingress** for external access
 
-**Step 2: Configure the deployment**
+{% /section %}
+
+{% section #configure-aks-deployment step=2 title="Configure the deployment" %}
 
 1. **Set resource requirements**:
    - Memory: 1Gi minimum, 2Gi recommended
@@ -240,7 +264,9 @@ Create the following Kubernetes resources:
    - Ingress controller for external access
    - SSL termination and certificate management
 
-**Step 3: Deploy and verify**
+{% /section %}
+
+{% section #deploy-verify step=3 title="Deploy and verify" %}
 
 1. **Apply Kubernetes manifests** using kubectl
 2. **Monitor pod status** and logs
@@ -248,6 +274,8 @@ Create the following Kubernetes resources:
 4. **Configure health checks** and monitoring
 
 For Kubernetes deployment examples, see the [official Kubernetes documentation](https://kubernetes.io/docs/).
+
+{% /section %}
 
 # Production considerations {% #production %}
 
@@ -271,7 +299,7 @@ For Kubernetes deployment examples, see the [official Kubernetes documentation](
 - Configure Azure Private Link for secure connectivity
 - Regular security assessments and compliance checks
 
-## Monitoring and logging {% #monitoring %}
+## Monitoring and backup {% #monitoring %}
 
 **Azure Monitor Integration**
 - Enable Application Insights for application performance monitoring
@@ -279,39 +307,19 @@ For Kubernetes deployment examples, see the [official Kubernetes documentation](
 - Set up Azure Monitor alerts for critical metrics
 - Use Azure Service Health for service status monitoring
 
-**Monitoring Policies**
-Configure alerts for:
-- High CPU and memory utilization
-- Database connection issues
-- Application errors and exceptions
-- Storage capacity warnings
-- Security-related events
-
-**Performance Monitoring**
-- Monitor response times and throughput
-- Track error rates and success rates
-- Set up availability tests from multiple regions
-- Monitor resource utilization trends across services
-
-## Backup and disaster recovery {% #backup %}
-
-**Database Backups**
+**Backup Strategy**
 - Enable automated backups for Azure Database for MySQL
 - Configure backup retention policies
-- Consider geo-redundant backup storage for disaster recovery
-
-**Application Data Backups**
 - Set up regular backups of file uploads and user data
 - Use Azure Storage with versioning for backup storage
-- Implement automated backup scheduling
 
-For comprehensive backup procedures including database exports, storage volumes, configuration files, and automated scheduling, see the [backup documentation](/docs/advanced/self-hosting/backups).
+For comprehensive backup procedures including database exports, storage volumes, and configuration files, see the [backup documentation](/docs/advanced/self-hosting/backups).
 
-**Infrastructure as Code**
-- Use Azure Resource Manager templates or Terraform for infrastructure provisioning
-- Version control all configuration and deployment scripts
-- Implement CI/CD pipelines for consistent deployments
-- Maintain disaster recovery documentation
+**Performance Optimization**
+- Use Azure CDN for static content delivery
+- Implement Azure Cache for Redis for session storage
+- Configure appropriate auto-scaling policies
+- Monitor and optimize database performance
 
 # Troubleshooting {% #troubleshooting %}
 
@@ -335,28 +343,17 @@ For comprehensive backup procedures including database exports, storage volumes,
 - Ensure proper domain mapping to services
 - Monitor certificate expiration and renewal processes
 
-**Performance optimization**
+**Performance issues**
 - Use Azure CDN for static content delivery
 - Implement Azure Cache for Redis for session storage
 - Configure appropriate auto-scaling policies
-- Optimize database queries and indexing
-- Monitor and tune resource allocation
-
-**AKS-specific issues**
-- Check pod status and logs using kubectl
-- Verify node pool health and capacity
-- Monitor persistent volume provisioning
-- Review ingress and service configurations
-- Check RBAC permissions and service account configuration
+- Monitor container resource allocation
 
 # Next steps {% #next-steps %}
 
 After successful deployment:
 
-[Configure email delivery](/docs/advanced/self-hosting/configuration/email) - Set up SMTP using Azure Communication Services
-
-[Set up SSL certificates](/docs/advanced/self-hosting/configuration/tls-certificates) - Configure managed SSL certificates
-
-[Production deployment guide](/docs/advanced/self-hosting/production) - Optimize for production workloads
-
-[Update and maintenance](/docs/advanced/self-hosting/update) - Keep your Appwrite instance up to date
+- [Configure email delivery](/docs/advanced/self-hosting/configuration/email) - Set up SMTP using Azure Communication Services
+- [Set up SSL certificates](/docs/advanced/self-hosting/configuration/tls-certificates) - Configure managed SSL certificates
+- [Production deployment guide](/docs/advanced/self-hosting/production) - Optimize for production workloads
+- [Update and maintenance](/docs/advanced/self-hosting/update) - Keep your Appwrite instance up to date
