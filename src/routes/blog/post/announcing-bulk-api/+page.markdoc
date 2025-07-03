@@ -43,7 +43,7 @@ Utilizing the Bulk API is straightforward. You can use it to:
 
 Here is a code example for creating multiple documents in a single request:
 
-```jsx
+
 ```server-nodejs
 const sdk = require('node-appwrite');
 
@@ -69,6 +69,7 @@ const result = await databases.createDocuments(
     ]
 );
 ```
+
 
 # Built for intensive data tasks
 
