@@ -9,11 +9,9 @@ We're excited to introduce another Appwrite Databases feature, **Bulk API**.
 
 Explicitly designed to handle heavy write workloads, Bulk API dramatically improves performance by allowing multiple database operations in a single API call.
 
-That means you can create, update, or delete multiple documents in one go.
-
-Whether you’re importing large datasets, performing batch updates, or cleaning out old records, Bulk API streamlines your workload, drastically cutting down the number of requests and enhancing your application's performance.
+That means you can create, update, or delete multiple documents in one go. Making it super easy to move large volumes of data in and out of Appwrite.
 
 {% arrow_link href="/blog/post/announcing-bulk-api" %}
 Read the announcement to learn more
 {% /arrow_link %}
-`
+
