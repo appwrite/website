@@ -27,6 +27,7 @@ import http from 'highlight.js/lib/languages/http';
 import css from 'highlight.js/lib/languages/css';
 import groovy from 'highlight.js/lib/languages/groovy';
 import ini from 'highlight.js/lib/languages/ini';
+import dockerfile from 'highlight.js/lib/languages/dockerfile';
 import { Platform } from './references';
 import { writable } from 'svelte/store';
 
@@ -65,7 +66,8 @@ const languages = {
     css: css,
     groovy: groovy,
     ini: ini,
-    env: ini
+    env: ini,
+    dockerfile: dockerfile
 } as const satisfies Record<string, LanguageFn>;
 
 const platformAliases: Record<string, keyof typeof languages> = {

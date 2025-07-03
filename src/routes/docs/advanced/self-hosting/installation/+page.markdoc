@@ -1,0 +1,154 @@
+---
+layout: article
+title: Installation
+description: Step-by-step guide to install Appwrite using Docker. Learn how to set up a self-hosted Appwrite instance with Docker Compose on any operating system.
+---
+
+This guide will walk you through installing Appwrite on your server using Docker. Appwrite is designed to run on any operating system that supports Docker.
+
+# System requirements {% #system-requirements %}
+
+Before installing Appwrite, ensure your system meets these minimum requirements:
+
+- **2 CPU cores**
+- **4GB of RAM**
+- **2GB of swap memory**
+- **Operating system** that supports Docker
+- **Docker Compose Version 2**
+
+{% info title="Docker Compose V2 Required" %}
+Appwrite requires Docker Compose Version 2. Make sure your Docker installation supports Composer V2 before proceeding.
+{% /info %}
+
+# Install with Docker {% #install-with-docker %}
+
+The easiest way to install Appwrite is using our Docker installer tool. This automated installer will guide you through the setup process.
+
+Before running the installation command, ensure you have [Docker CLI](https://www.docker.com/products/docker-desktop) installed on your host machine.
+
+## Installation prompts {% #installation-prompts %}
+
+During setup, you'll be prompted to configure:
+
+1. **HTTP and HTTPS ports** - Your Appwrite instance's HTTP and HTTPS ports.
+2. **Secret key** - Your Appwrite instance's secret key used to encrypt sensitive data.
+3. **Main hostname** - Your Appwrite instance's main hostname. Appwrite will generate a certificate using this hostname.
+4. **DNS A record hostname** - Usually the same as your main hostname.
+
+## Installation commands {% #installation-commands %}
+
+{% tabs %}
+{% tabsitem #unix title="macOS and Linux" %}
+Run the following command in your terminal:
+
+```bash
+docker run -it --rm \
+    --volume /var/run/docker.sock:/var/run/docker.sock \
+    --volume "$(pwd)"/appwrite:/usr/src/code/appwrite:rw \
+    --entrypoint="install" \
+    appwrite/appwrite:1.7.4
+```
+{% /tabsitem %}
+
+{% tabsitem #windows title="Windows" %}
+## CMD
+```cmd
+docker run -it --rm ^
+    --volume //var/run/docker.sock:/var/run/docker.sock ^
+    --volume "%cd%"/appwrite:/usr/src/code/appwrite:rw ^
+    --entrypoint="install" ^
+    appwrite/appwrite:1.7.4
+```
+
+## PowerShell
+```powershell
+docker run -it --rm `
+    --volume /var/run/docker.sock:/var/run/docker.sock `
+    --volume ${pwd}/appwrite:/usr/src/code/appwrite:rw `
+    --entrypoint="install" `
+    appwrite/appwrite:1.7.4
+```
+{% /tabsitem %}
+{% /tabs %}
+
+# Manual installation {% #manual-installation %}
+
+For advanced users who prefer manual setup, you can install Appwrite using Docker Compose directly.
+
+## Download configuration files {% #download-configuration %}
+
+Download the required configuration files:
+
+1. Download [`docker-compose.yml`](/install/compose)
+2. Download [`.env`](/install/env)
+3. Create a directory named `appwrite` and move both files inside
+
+## Configure environment {% #configure-environment %}
+
+Edit the `.env` file to customize your installation:
+
+- Update environment variables as needed
+- Set your desired configuration options
+- Ensure all required values are properly set
+
+## Start Appwrite {% #start-appwrite %}
+
+Once configured, start your Appwrite stack:
+
+```bash
+docker compose up -d --remove-orphans
+```
+
+# Post-installation {% #post-installation %}
+
+After installation completes:
+
+1. **Access the Console** - Navigate to your machine's hostname or IP address in your browser
+2. **First-time setup** - Follow the initial setup wizard in the Appwrite Console
+3. **Create your first project** - Set up your development environment
+
+{% info title="Startup Time" %}
+On non-Linux hosts, the server might take a few minutes to start after installation completes. This is normal behavior.
+{% /info %}
+
+# Managing your installation {% #managing-installation %}
+
+## Stop Appwrite {% #stop %}
+
+To stop your Appwrite containers:
+
+```bash
+docker compose stop
+```
+
+## Restart Appwrite {% #restart %}
+
+To restart your Appwrite containers:
+
+```bash
+docker compose start
+```
+
+## Uninstall Appwrite {% #uninstall %}
+
+To completely remove Appwrite and all its data:
+
+```bash
+docker compose down -v
+```
+
+{% info title="Data Loss Warning" %}
+The uninstall command will permanently delete all your Appwrite data. Make sure to backup any important information before running this command.
+{% /info %}
+
+# Next steps {% #next-steps %}
+
+After successfully installing Appwrite, you can:
+
+[Deploy on cloud platforms](/docs/advanced/self-hosting/platforms/aws) - Learn how to deploy on AWS, DigitalOcean, and other cloud providers
+
+[Configure services](/docs/advanced/self-hosting/configuration/email) - Set up email, SMS, storage, and other services
+
+[Production setup](/docs/advanced/self-hosting/production) - Prepare your installation for production use
+
+[Update Appwrite](/docs/advanced/self-hosting/update) - Keep your installation up to date
