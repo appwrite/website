@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Announcing: Bulk API
+title: "Announcing: Bulk API"
 description: Perform multiple database operations in a single API call. Enjoy faster writes and better performance for heavy server-side workloads.
 date: 2025-07-03
 cover: static/images/blog/announcing-bulk-api/cover.png
