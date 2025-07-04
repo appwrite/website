@@ -16,7 +16,7 @@ Create and use [mock phone numbers](/docs/products/auth/security#mock-phone-numb
 
 Phone authentication is done using a two-step authentication process. When using phone authentication, the authentication request is initiated from the client application and an SMS message is sent to the user's phone. The SMS message will contain a secret the user can use to log in.
 
-Send an SMS message to initiate the authentication process. If the phone number has never been used, a **new account is generated** using the provided `userId`, then the user will receive an SMS. If the phone number is already attached to an account, the **user ID is ignored** and the user will receive an SMS with the authentication code.
+Send an SMS message to initiate the authentication process. If the phone number has never been used, a **new account is created** using the provided `userId`, then the user will receive an SMS. If the phone number is already attached to an account, the **user ID is ignored** and the user will receive an SMS with the authentication code.
 
 {% multicode %}
 
