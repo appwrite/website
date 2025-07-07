@@ -1,1 +1,23 @@
+---
+layout: changelog
+title: "Announcing: Database Upsert"
+date: 2025-07-08
+cover: /images/changelog/2025-07-08.png
+---
 
+We’re adding another layer of security to your Appwrite database: Encrypted string attributes.
+
+Now you can mark sensitive fields, like full names, admin notes, or IP addresses, to be encrypted at rest, without writing a single line of encryption logic.
+
+Key Features:
+
+- Server-side AES-128-GCM encryption
+- Non-queryable for added protection
+- Simple setup via Appwrite Console
+
+Available on Appwrite Cloud Pro and Scale plan, and self-hosted. 
+
+{% arrow_link href="/blog/post/announcing-database-upsert" %}
+Read the announcement to learn more
+{% /arrow_link %}
+`
