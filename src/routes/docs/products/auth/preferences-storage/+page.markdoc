@@ -383,20 +383,3 @@ final userPrefs = await databases.listDocuments(
 {% arrow_link href="/docs/products/databases" %}
 Learn more about Appwrite Databases
 {% /arrow_link %}
-
-# Choosing the right option {% #choosing-the-right-option %}
-
-This comparison table shows the strengths of each storage option:
-
-| Feature | Browser localStorage | User Preferences | Team Preferences | Appwrite Databases |
-|---------|--------------|------------------|------------------|-------------------|
-| **Storage location** | Client-side | Server-side | Server-side | Server-side |
-| **Persistence** | Device-specific | Cross-device | Team-wide | Cross-device |
-| **Size limit** | 5MB per origin | 64kB | 64kB | Unlimited* |
-| **Complexity** | Simple | Simple | Simple | Complex |
-| **Schema validation** | No | No | No | Yes |
-| **Offline access** | Yes | No | No | No** |
-| **Query capabilities** | No | No | No | Yes |
-
-- \* Subject to project limits
-- \*\* Unless implemented with local caching
