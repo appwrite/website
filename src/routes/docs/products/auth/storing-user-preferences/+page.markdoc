@@ -164,7 +164,7 @@ Team preferences let you store settings that apply to an entire team of users, w
 
 - Shared across all team members
 - Useful for team-wide settings like theme, notification preferences, or feature toggles
-- Stored as a JSON object in the team document
+- Stored as a JSON object in the team
 - Limited to 64kB of data
 
 {% multicode %}
