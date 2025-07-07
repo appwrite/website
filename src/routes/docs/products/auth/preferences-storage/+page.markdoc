@@ -1,6 +1,6 @@
 ---
 layout: article
-title: Storing user preferences
+title: Preferences storage
 description: Learn how to store and manage user preferences in Appwrite. Compare storage options and pick the right approach for your application.
 ---
 

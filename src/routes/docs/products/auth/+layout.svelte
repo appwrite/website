@@ -118,8 +118,8 @@
                     href: '/docs/products/auth/multi-tenancy'
                 },
                 {
-                    label: 'Storing user preferences',
-                    href: '/docs/products/auth/storing-user-preferences'
+                    label: 'Preferences storage',
+                    href: '/docs/products/auth/preferences-storage'
                 }
             ]
         },
