@@ -11,6 +11,13 @@
             context.triggers.push({ id, title });
             return context;
         });
+
+        return () => {
+            ctx.update((context) => {
+                context.triggers = context.triggers.filter((trigger) => trigger.id !== id);
+                return context;
+            });
+        };
     });
 </script>
 

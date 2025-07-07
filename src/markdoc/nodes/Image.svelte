@@ -42,7 +42,7 @@
     {/if}
 {:else}
     <div class="web-media main">
-        <img {src} {alt} {title} loading="lazy" class="aspect-video w-full" />
+        <img {src} {alt} {title} loading="lazy" class="aspect-video w-full object-cover" />
         <div class="abs">
             <Tooltip closeOnPointerDown>
                 <Button variant="secondary" class="cursor-pointer" action={trigger}>

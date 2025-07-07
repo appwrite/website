@@ -1,0 +1,60 @@
+---
+layout: partner
+title: Devkind
+description: Devkind is a Melbourne-based web application development agency specializing in crafting robust and scalable digital solutions.
+date: 2025-06-25
+featured: false
+partnerLevel: Silver
+isNew: true
+cover: /images/partners/covers/devkind.png
+category: agency
+website: devkind.com.au
+email: mailto:ali@devkind.com.au
+product: 
+    avatar: '/images/partners/avatars/devkind.png'
+    vendor: Devkind
+    description: Devkind is a Melbourne-based web application development agency specializing in crafting robust and scalable digital solutions.
+technologies: 
+- PHP
+- Laravel
+- JavaScript
+- Express.js
+- Adonis
+- Next.js
+- React Native
+- Python
+- Shopify Polaris
+- Chakra UI
+- GraphQL
+- Nest.js
+- PHP Unit
+- Cypress
+- Flask
+- Vue
+- Nuxt.js
+- Astro.js
+
+services:
+    - Mobile App Development
+    - Web App Development
+    - E-commerce solutions
+    - SaaS applications
+regions:
+    - Europe
+    - USA
+    - Australia
+languages: 
+    - English
+---
+
+# Overview
+
+Devkind is a Melbourne-based web application development agency specializing in crafting robust and scalable digital solutions. We offer a full spectrum of services, including web and e-commerce development, AI development, custom API integration, and strategic marketing, to empower businesses across diverse industries. Our expertise ensures cutting-edge digital products that drive growth and enhance online presence.
+
+# Services
+
+We offer end-to-end services in web development, e-commerce solutions, and custom application development, including bespoke SaaS platforms and mobile apps. Our expertise extends to API development, digital marketing, AI integration, and business automation (AaaS), ensuring comprehensive digital transformation for our clients.
+
+We leverage Appwrite to rapidly develop secure and scalable web and mobile applications for our clients. Its robust features for user authentication, real-time databases, file storage, and serverless functions allow us to accelerate development, improve efficiency, and deliver high-performance solutions with reduced time-to-market.
+
+Our ideal projects involve building complex web applications, AI agent creation, scalable e-commerce platforms, and bespoke SaaS solutions for businesses across various industries, including retail, healthcare, and logistics. We excel in projects requiring seamless integrations, robust backend infrastructure, and a focus on optimizing business processes.
