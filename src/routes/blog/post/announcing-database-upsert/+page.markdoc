@@ -1,1 +1,42 @@
+---
+layout: post
+title: "Announcing Database Upsert: Built-in encryption for sensitive fields"
+description: Easily encrypt sensitive string fields at rest, with no manual encryption logic.
+date: 2025-07-07
+cover: /images/blog/announcing-database-upsert/cover.png
+timeToRead: 5
+author: jake-barnby
+category: announcement
+featured: false
+---
 
+Appwrite is secure by default. We build every single product and feature with the highest regard for security. With this in mind, we introduce a new feature to enhance your databases’ security, **Databases Encrypted String Attribute Support**. This critical addition lets you store sensitive data securely, encrypted at rest, directly within Appwrite Databases.
+
+# Built-in security, zero complexity
+
+Previously, storing confidential or sensitive data required manual encryption and decryption. This not only increased complexity but also introduced potential security risks from implementation errors.
+
+With Encrypted String Attribute Support, Appwrite handles encryption transparently. Your data remains secure and encrypted server-side without additional effort or complex custom code.
+
+Encrypted String Attribute is essential if you create secure apps in fintech, healthcare, messaging, and other sectors where security and compliance are paramount. It ensures data protection out of the box, freeing you from manually managing encryption keys. 
+
+# Key security features at a glance
+
+- **Server-side encryption at rest**: Your data is encrypted on the server automatically.
+- **Transparent encryption**: Clients see and interact with encrypted fields just like regular strings.
+- **Zero-effort protection**: No need to implement manual encryption or key management.
+- **Secure by design**: Fields can't be queried, ensuring sensitive data stays protected.
+
+# Setting the security standard
+
+Appwrite delivers comprehensive, secure, and easy-to-use encryption, seamlessly integrated into your workflow.
+
+Available on Appwrite Cloud Pro and Scale plan, and self-hosted. Encrypted String Attribute Support significantly enhances your application's security posture, making Appwrite a trusted choice for handling sensitive data.
+
+With Appwrite, securing confidential data has never been easier.
+
+# More resources
+
+- [Read the documentation to get started](https://appwrite.io/docs)
+- [Explore other advanced database features](https://appwrite.io/blog)
+- [Improve your Appwrite developer experience with dev keys](https://appwrite.io/blog/post/improve-devex-dev-keys)
