@@ -1,6 +1,6 @@
 ---
 layout: partner
-title: Panra Studio
+title: Panara Studio
 description: Panara Studio started as a one-person agency in 2021 and has grown into a small team of experts. We've worked with clients from 10+ countries, including startups, early-stage ventures, angel investors, and creators. Collaborate directly with Kamal Panara, the founder and engineer, and our talented professionals.
 date: 2025-03-21
 featured: false
@@ -13,7 +13,7 @@ product:
     avatar: '/images/partners/avatars/panara.png'
     vendor: Panara Studio
     description: Panara Studio started as a one-person agency in 2021 and has grown into a small team of experts. We've worked with clients from 10+ countries, including startups, early-stage ventures, angel investors, and creators. Collaborate directly with Kamal Panara, the founder and engineer, and our talented professionals.
-frameworks: 
+technologies: 
     - Flutter
     - ReactJS
     - NextJS
@@ -21,7 +21,7 @@ frameworks:
     - Dart
     - Javascript
     - NodeJS
-capabilities:
+services:
     - UI/UX Design
     - Mobile App Development
     - Web App Development
@@ -43,6 +43,6 @@ Panara Studio started as a one-person agency in 2021 and has grown into a small 
 
 # Services
 
-At Panera Studio, we specialize in UI/UX design, mobile app development, and web app development, creating high-quality digital products tailored to your needs. Whether it’s an e-commerce app, e-learning platform, CRM system, or a fully bespoke application, we bring ideas to life with a strong focus on performance, scalability, and user experience.
+At Panara Studio, we specialize in UI/UX design, mobile app development, and web app development, creating high-quality digital products tailored to your needs. Whether it’s an e-commerce app, e-learning platform, CRM system, or a fully bespoke application, we bring ideas to life with a strong focus on performance, scalability, and user experience.
 
 We use Appwrite as the backend foundation for our internal tools, SaaS products, and client projects, ensuring modern, secure, and efficient development every step of the way.
