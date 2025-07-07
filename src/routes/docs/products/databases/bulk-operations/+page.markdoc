@@ -1,0 +1,257 @@
+---
+layout: article
+title: Bulk Operations
+description: Perform bulk operations on documents within your collections for efficient data handling.
+---
+
+Appwrite Databases supports bulk operations for documents, allowing you to create, update, or delete multiple documents in a single request. This can significantly improve performance for apps as it allows you to reduce the number of API calls needed while working with large data sets.
+
+As of now, bulk operations can only be performed via the server-side SDKs. The client-side SDKs do not support bulk operations.
+
+# Create documents {% #create-documents %}
+
+{% info title="Permissions required" %}
+You must grant **create** permissions to users at the **collection level** before users can create documents.
+[Learn more about permissions](/docs/products/databases/permissions)
+{% /info %}
+
+You can create multiple documents in a single request using the `createDocuments` method.
+
+{% multicode %}
+```server-nodejs
+const sdk = require('node-appwrite');
+
+const client = new sdk.Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>')
+    .setKey('<API_KEY>');
+
+const databases = new sdk.Databases(client);
+
+const result = await databases.createDocuments(
+    '<DATABASE_ID>',
+    '[COLLECTION_ID]',
+    [
+        {
+            documentId: sdk.ID.unique(),
+            data: { name: 'Document 1' }
+        },
+        {
+            documentId: sdk.ID.unique(),
+            data: { name: 'Document 2' }
+        }
+    ]
+);
+```
+
+```server-python
+from appwrite.client import Client
+from appwrite.services.databases import Databases
+
+client = Client()
+client.set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
+client.set_project('<PROJECT_ID>')
+client.set_key('<API_KEY>')
+
+databases = Databases(client)
+
+result = databases.create_documents(
+    database_id = '<DATABASE_ID>',
+    collection_id = '<COLLECTION_ID>',
+    documents = [
+        {
+            'documentId': appwrite.ID.unique(),
+            'data': { 'name': 'Document 1' }
+        },
+        {
+            'documentId': appwrite.ID.unique(),
+            'data': { 'name': 'Document 2' }
+        }
+    ]
+)
+```
+{% /multicode %}
+
+# Update documents {% #update-documents %}
+
+{% info title="Permissions required" %}
+You must grant **update** permissions to users at the **collection level** before users can update documents.
+[Learn more about permissions](/docs/products/databases/permissions)
+{% /info %}
+
+You can update multiple documents in a single request using the `updateDocuments` method.
+
+{% multicode %}
+```server-nodejs
+const sdk = require('node-appwrite');
+
+const client = new sdk.Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>')
+    .setKey('<API_KEY>');
+
+const databases = new sdk.Databases(client);
+
+const result = await databases.updateDocuments(
+    '<DATABASE_ID>',
+    '[COLLECTION_ID]',
+    {
+        {
+            documentId: 'document-id-1',
+            data: { name: 'Updated Document 1' }
+        },
+        {
+            documentId: 'document-id-2',
+            data: { name: 'Updated Document 2' }
+        }
+    }
+);
+```
+
+```server-python
+from appwrite.client import Client
+from appwrite.services.databases import Databases
+
+client = Client()
+client.set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
+client.set_project('<PROJECT_ID>')
+client.set_key('<API_KEY>')
+
+databases = Databases(client)
+
+result = databases.update_documents(
+    database_id = '<DATABASE_ID>',
+    collection_id = '<COLLECTION_ID>',
+    data = {
+        {
+            'documentId': 'document-id-1',
+            'data': { 'name': 'New Document 1' }
+        },
+        {
+            'documentId': 'document-id-2',
+            'data': { 'name': 'New Document 2' }
+        }
+    }
+)
+```
+{% /multicode %}
+
+# Upsert documents {% #upsert-documents %}
+
+{% info title="Permissions required" %}
+You must grant **create** and **update** permissions to users at the **collection level** before users can create documents.
+[Learn more about permissions](/docs/products/databases/permissions)
+{% /info %}
+
+You can upsert multiple documents in a single request using the `upsertDocuments` method.
+
+{% multicode %}
+```server-nodejs
+const sdk = require('node-appwrite');
+
+const client = new sdk.Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>')
+    .setKey('<API_KEY>');
+
+const databases = new sdk.Databases(client);
+
+const result = await databases.upsertDocuments(
+    '<DATABASE_ID>',
+    '[COLLECTION_ID]',
+    [
+        {
+            documentId: sdk.ID.unique(),
+            data: { name: 'New Document 1' }
+        },
+        {
+            documentId: 'document-id-2', // Existing document ID
+            data: { name: 'New Document 2' }
+        }
+    ]
+);
+```
+
+```server-python
+from appwrite.client import Client
+from appwrite.services.databases import Databases
+
+client = Client()
+client.set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
+client.set_project('<PROJECT_ID>')
+client.set_key('<API_KEY>')
+
+databases = Databases(client)
+
+result = databases.upsert_documents(
+    database_id = '<DATABASE_ID>',
+    collection_id = '<COLLECTION_ID>',
+    documents = [
+        {
+            'documentId': appwrite.ID.unique(),
+            'data': { 'name': 'Document 1' }
+        },
+        {
+            'documentId': 'document-id-2',  # Existing document ID
+            'data': { 'name': 'New Document 2' }
+        }
+    ]
+)
+```
+{% /multicode %}
+
+# Delete documents {% #delete-documents %}
+
+{% info title="Permissions required" %}
+You must grant **delete** permissions to users at the **collection level** before users can delete documents.
+[Learn more about permissions](/docs/products/databases/permissions)
+{% /info %}
+
+You can delete multiple documents in a single request using the `deleteDocuments` method.
+
+{% multicode %}
+```server-nodejs
+const sdk = require('node-appwrite');
+
+const client = new sdk.Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>')
+    .setKey('<API_KEY>');
+
+const databases = new sdk.Databases(client);
+
+const result = await databases.deleteDocuments(
+    '<DATABASE_ID>',
+    '[COLLECTION_ID]',
+    [] // Queries
+);
+```
+
+```server-python
+from appwrite.client import Client
+from appwrite.services.databases import Databases
+
+client = Client()
+client.set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
+client.set_project('<PROJECT_ID>')
+client.set_key('<API_KEY>')
+
+databases = Databases(client)
+
+result = databases.delete_documents(
+    database_id = '<DATABASE_ID>',
+    collection_id = '<COLLECTION_ID>',
+    queries = []
+)
+```
+{% /multicode %}
+
+{% info title="Queries for deletion" %}
+
+When deleting documents, you must specify queries to filter which documents to delete.
+ 
+If no queries are provided, all documents in the collection will be deleted.
+
+[Learn more about queries](/docs/products/databases/queries).
+
+{% /info %}

@@ -12,7 +12,7 @@ export type Partner = {
     cover: string;
     partnerLevel: 'Bronze' | 'Silver' | 'Gold' | 'Platinum';
     category: string;
-    frameworks: Array<string>;
+    technologies: Array<string>;
     website: string;
     href: string;
     email: string;
@@ -21,7 +21,7 @@ export type Partner = {
         avatar: string;
         href: string;
     };
-    capabilities: Array<string>;
+    services: Array<string>;
     regions: Array<string>;
     languages: Array<string>;
 };

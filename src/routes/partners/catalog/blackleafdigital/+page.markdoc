@@ -14,14 +14,14 @@ product:
     avatar: '/images/partners/avatars/bld.png'
     vendor: Black Leaf Digital
     description: 
-frameworks: 
+technologies: 
     - React
     - Wordpress
     - Astro
     - Svelte
     - Vue
     - Render
-capabilities:
+services:
     - Mobile App Development
     - Web App Development
     - SEO

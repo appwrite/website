@@ -75,6 +75,32 @@ Some additional configuration is required to enable push notifications in your m
 1. Add push notification capability to your app by clicking your root-level app in XCode > **Signing & Capabilities** > {% icon icon="plus" size="m" /%} Capabilities > Search for **Push Notifications**.
 1. If using SwiftUI, disable swizzling by setting `FirebaseAppDelegateProxyEnabled` to `NO` in your `Info.plist`.
 {% /tabsitem %}
+{% tabsitem #fcm-flutter title="Flutter with FCM" %}
+1. Install the [Firebase CLI](https://firebase.google.com/docs/cli) and [FlutterFire CLI](https://pub.dev/packages/flutterfire_cli).
+1. From your Flutter project directory, configure Firebase by running `flutterfire configure`.
+1. Add the Firebase messaging plugin to your Flutter project with `flutter pub add firebase_messaging`.
+1. Add the Firebase core plugin if not already added with `flutter pub add firebase_core`.
+1. Initialize Firebase in your `lib/main.dart` file:
+```dart
+import 'package:flutter/widgets.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  runApp(MyApp());
+}
+```
+1. **For iOS**:
+   - Enable push notifications and background modes in XCode by opening `ios/Runner.xcworkspace` and adding the **Push Notifications** capability and **Background Modes** (Background fetch and Remote notifications)
+   - Upload your APNs authentication key to Firebase console under **Cloud Messaging** settings
+   - Request notification permission at runtime using `FirebaseMessaging.instance.requestPermission()`
+1. **For Android**: FCM requires devices running Android 5.0 or higher with Google Play services installed.
+1. **For Web**: Add a `firebase-messaging-sw.js` file in your `web/` directory that imports the Firebase messaging SDK and handles background messages.
+{% /tabsitem %}
 {% /tabs %}
 
 {% /section %}
