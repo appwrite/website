@@ -1,6 +1,6 @@
 ---
 layout: article
-title: Bulk Operations
+title: Bulk operations
 description: Perform bulk operations on documents within your collections for efficient data handling.
 ---
 
@@ -249,7 +249,7 @@ result = databases.delete_documents(
 {% info title="Queries for deletion" %}
 
 When deleting documents, you must specify queries to filter which documents to delete.
- 
+
 If no queries are provided, all documents in the collection will be deleted.
 
 [Learn more about queries](/docs/products/databases/queries).

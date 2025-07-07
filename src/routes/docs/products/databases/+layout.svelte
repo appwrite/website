@@ -42,12 +42,12 @@
                     href: '/docs/products/databases/permissions'
                 },
                 {
-                    label: 'Type Generation',
+                    label: 'Type generation',
                     href: '/docs/products/databases/type-generation',
                     new: isNewUntil('31 Jul 2025')
                 },
                 {
-                    label: 'Offline Sync',
+                    label: 'Offline sync',
                     href: '/docs/products/databases/offline'
                 },
                 {
@@ -59,12 +59,12 @@
                     href: '/docs/products/databases/backups'
                 },
                 {
-                    label: 'Bulk Operations',
+                    label: 'Bulk operations',
                     href: '/docs/products/databases/bulk-operations',
                     new: isNewUntil('31 Jul 2025')
                 },
                 {
-                    label: 'CSV Imports',
+                    label: 'CSV imports',
                     href: '/docs/products/databases/csv-imports',
                     new: isNewUntil('31 Jul 2025')
                 }
