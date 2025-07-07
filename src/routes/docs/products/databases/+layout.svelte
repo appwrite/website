@@ -1,5 +1,6 @@
 <script lang="ts">
     import Docs from '$lib/layouts/Docs.svelte';
+    import { isNewUntil } from '$lib/utils/date';
     import Sidebar, { type NavParent, type NavTree } from '$lib/layouts/Sidebar.svelte';
 
     const parent: NavParent = {
@@ -42,7 +43,8 @@
                 },
                 {
                     label: 'Type Generation',
-                    href: '/docs/products/databases/type-generation'
+                    href: '/docs/products/databases/type-generation',
+                    new: isNewUntil('31 Jul 2025')
                 },
                 {
                     label: 'Offline Sync',
@@ -55,6 +57,16 @@
                 {
                     label: 'Backups',
                     href: '/docs/products/databases/backups'
+                },
+                {
+                    label: 'Bulk Operations',
+                    href: '/docs/products/databases/bulk-operations',
+                    new: isNewUntil('31 Jul 2025')
+                },
+                {
+                    label: 'CSV Imports',
+                    href: '/docs/products/databases/csv-imports',
+                    new: isNewUntil('31 Jul 2025')
                 }
             ]
         },

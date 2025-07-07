@@ -32,12 +32,17 @@ appwrite pull collections
 To generate types, you can use the Appwrite CLI command:
 ```bash
 appwrite types [options] <output-directory>
+```
 
+To automatically detect the language used in your project, you can skip the `[options]` parameter.
+
+```bash
+appwrite types <output-directory>
 ```
 
 ![Workflow](/images/blog/type-generation-feature/workflow.png)
 
-# Better experience:
+# Better experience
 
 - **Time savings**: Eliminate hours of manual work and dedicate your time to building impactful features.
 - **Reduced errors**: Keep your types consistently aligned with your database schema, drastically reducing outdated and mismatched types.
