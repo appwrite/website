@@ -8,7 +8,7 @@ Preferences allow you to store settings like theme choice, language selection, o
 
 # User preferences {% #user-preferences %}
 
-You can store user preferences on a user's account using Appwrite's [Update Preferences](/docs/references/cloud/client-web/account#updatePrefs) endpoint. You can store preferences such as theme, notification settings, or preferred language so they can be synced across multiple devices.
+You can store user preferences on a user's account using Appwrite's [Update Preferences](/docs/references/cloud/client-web/account#updatePrefs) endpoint.
 
 Preferences are stored as a key-value JSON object. The maximum allowed size for preferences is 64kB, and an error will be thrown if this limit is exceeded.
 
