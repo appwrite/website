@@ -10,33 +10,60 @@ category: announcement
 featured: false
 ---
 
-Appwrite is secure by default. We build every single product and feature with the highest regard for security. With this in mind, we introduce a new feature to enhance your databases’ security, **Databases Encrypted String Attribute Support**. This critical addition lets you store sensitive data securely, encrypted at rest, directly within Appwrite Databases.
+Managing database operations efficiently is crucial for modern application development, where speed and simplicity directly impact productivity. 
 
-# Built-in security, zero complexity
+Therefore, we are introducing Appwrite's latest database enhancement: **Database Upsert.** 
 
-Previously, storing confidential or sensitive data required manual encryption and decryption. This not only increased complexity but also introduced potential security risks from implementation errors.
+Built to optimize the traditional CRUD workflow, Database Upsert effortlessly combines record creation and updating into a single, streamlined action. This new feature significantly reduces the complexity of database interactions, empowering developers to write cleaner code, reduce redundancy, and accelerate application development.
 
-With Encrypted String Attribute Support, Appwrite handles encryption transparently. Your data remains secure and encrypted server-side without additional effort or complex custom code.
+# Eliminate redundant checks
 
-Encrypted String Attribute is essential if you create secure apps in fintech, healthcare, messaging, and other sectors where security and compliance are paramount. It ensures data protection out of the box, freeing you from manually managing encryption keys. 
+Previously, managing documents involved multiple API calls and client-side logic, checking if data existed, handling 404s, and deciding between POST, PUT, or PATCH operations. This process added latency and complexity and introduced potential race conditions.
 
-# Key security features at a glance
+With Database Upsert, the server intelligently manages this logic. It automatically creates a document if it doesn’t exist or updates it if it does, eliminating the need for manual checks.
 
-- **Server-side encryption at rest**: Your data is encrypted on the server automatically.
-- **Transparent encryption**: Clients see and interact with encrypted fields just like regular strings.
-- **Zero-effort protection**: No need to implement manual encryption or key management.
-- **Secure by design**: Fields can't be queried, ensuring sensitive data stays protected.
+# Ideal for multi-client scenarios
 
-# Setting the security standard
+Whether you synchronize mobile data, handle background worker processes, or collect data from IoT devices, Database Upsert ensures data consistency. Its fully atomic nature prevents race conditions, keeping your data accurate and consistent, no matter how many clients interact simultaneously.
 
-Appwrite delivers comprehensive, secure, and easy-to-use encryption, seamlessly integrated into your workflow.
+Immediate benefits:
 
-Available on Appwrite Cloud Pro and Scale plan, and self-hosted. Encrypted String Attribute Support significantly enhances your application's security posture, making Appwrite a trusted choice for handling sensitive data.
+- **Fewer network calls**: Combine GET, POST, and PATCH into a single, efficient API request.
+- **Race-free writes**: Ensure atomic operations that prevent conflicts.
+- **Cleaner, simpler code**: Reduce branching logic and improve readability.
+- **Idempotency**: Safe and easy retries ensure consistent behaviour.
 
-With Appwrite, securing confidential data has never been easier.
+# How it works
+
+Implementing Upsert is straightforward and intuitive:
+
+```
+import { Client, Databases, ID } from "appwrite";
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>');
+
+const databases = new Databases(client);
+
+const result = await databases.upsertDocument(
+    '<DATABASE_ID>',
+    '<COLLECTION_ID>',
+    ID.unique(),
+    {
+	    'name': 'Document 1',
+	    'description': 'Description 1'
+    }
+);
+```
+
+Database Upsert was developed to enhance developer productivity and satisfaction, providing a feature that matches or surpasses competitive solutions. Whether using Appwrite Cloud or a self-hosted setup, Database Upsert integrates smoothly into your development workflow.
+
+This feature simplifies your database interactions, enhancing efficiency, reducing complexity, and empowering you to build faster.
 
 # More resources
 
-- [Read the documentation to get started](https://appwrite.io/docs)
-- [Explore other advanced database features](https://appwrite.io/blog)
-- [Improve your Appwrite developer experience with dev keys](https://appwrite.io/blog/post/improve-devex-dev-keys)
+- [Read the documentation to get started](https://appwrite.io/docs/products/databases/documents)
+- Announcing Bulk API: Handle heavy data workloads with ease
+- Build a personal CRM with SvelteKit and Appwrite Databases
+- Announcing: Document imports from CSV files
