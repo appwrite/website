@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "Announcing Database Upsert: Built-in encryption for sensitive fields"
-description: Easily encrypt sensitive string fields at rest, with no manual encryption logic.
+title: "Announcing Database Upsert: Simplify your database interactions"
+description: A cleaner, faster, and atomic way to manage your documents in Appwrite.
 date: 2025-07-07
 cover: /images/blog/announcing-database-upsert/cover.png
 timeToRead: 5
@@ -10,23 +10,19 @@ category: announcement
 featured: false
 ---
 
-Managing database operations efficiently is crucial for modern application development, where speed and simplicity directly impact productivity. 
+Working with databases often involves small but repetitive decisions like checking if a document exists, choosing between creating or updating, handling errors that come from guessing wrong. These steps are not difficult on their own, but over time they add complexity to your code and friction to your workflow.
 
-Therefore, we are introducing Appwrite's latest database enhancement: **Database Upsert.** 
+To simplify this, we introduce Database Upsert in Appwrite.
 
-Built to optimize the traditional CRUD workflow, Database Upsert effortlessly combines record creation and updating into a single, streamlined action. This new feature significantly reduces the complexity of database interactions, empowering developers to write cleaner code, reduce redundancy, and accelerate application development.
+Upsert allows you to create or update a document using a single API call. If the document does not exist, it is created. If it does, it is updated. You no longer need to write separate logic to check for existence or handle 404 responses. The server handles that for you.
 
-# Eliminate redundant checks
-
-Previously, managing documents involved multiple API calls and client-side logic, checking if data existed, handling 404s, and deciding between POST, PUT, or PATCH operations. This process added latency and complexity and introduced potential race conditions.
-
-With Database Upsert, the server intelligently manages this logic. It automatically creates a document if it doesn’t exist or updates it if it does, eliminating the need for manual checks.
+This change removes the need for client-side conditionals, reduces the number of requests between your app and the database, and helps avoid potential race conditions. It is a small shift in how you interact with the database, but one that can make your code cleaner and your application logic easier to follow.
 
 # Ideal for multi-client scenarios
 
 Whether you synchronize mobile data, handle background worker processes, or collect data from IoT devices, Database Upsert ensures data consistency. Its fully atomic nature prevents race conditions, keeping your data accurate and consistent, no matter how many clients interact simultaneously.
 
-Immediate benefits:
+This brings you immediate benefits such as:
 
 - **Fewer network calls**: Combine GET, POST, and PATCH into a single, efficient API request.
 - **Race-free writes**: Ensure atomic operations that prevent conflicts.
@@ -63,7 +59,7 @@ This feature simplifies your database interactions, enhancing efficiency, reduci
 
 # More resources
 
-- [Read the documentation to get started](https://appwrite.io/docs/products/databases/documents)
-- Announcing Bulk API: Handle heavy data workloads with ease
-- Build a personal CRM with SvelteKit and Appwrite Databases
-- Announcing: Document imports from CSV files
+- [Read the documentation to get started](/docs/products/databases/documents)
+- [Announcing Bulk API: Handle heavy data workloads with ease](/blog/post/announcing-bulk-api)
+- [Build a personal CRM with SvelteKit and Appwrite Databases](/blog/post/build-personal-crm-sveltekit)
+- [Announcing: Document imports from CSV files](/blog/post/announcing-csv-imports)
