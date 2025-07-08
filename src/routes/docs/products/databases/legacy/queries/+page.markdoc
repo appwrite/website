@@ -19,23 +19,23 @@ For example `Query.equal('title', ['Avatar', 'Lord of the Rings'])` will fetch t
 
 {% info title="Default pagination behavior" %}
 By default, results are limited to the **first 25 items**.
-You can change this through [pagination](/docs/products/databases/pagination).
+You can change this through [pagination](/docs/products/databases/legacy/pagination).
 {% /info %}
 
 {% multicode %}
 
 ```client-web
-import { Client, Query, Tables } from "appwrite";
+import { Client, Databases, Query } from "appwrite";
 
 const client = new Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
     .setProject('<PROJECT_ID>');
 
-const tables = new Tables(client);
+const databases = new Databases(client);
 
-databases.listRows(
+databases.listDocuments(
     '<DATABASE_ID>',
-    '<TABLE_ID>',
+    '<COLLECTION_ID>',
     [
         Query.equal('title', ['Avatar', 'Lord of the Rings']),
         Query.greaterThan('year', 1999)
@@ -50,12 +50,12 @@ void main() async {
         .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
         .setProject('<PROJECT_ID>');
 
-    final tables = Tables(client);
+    final databases = Databases(client);
 
     try {
-        final rows = await databases.listRows(
+        final documents = await databases.listDocuments(
             '<DATABASE_ID>',
-            '<TABLE_ID>',
+            '<COLLECTION_ID>',
             [
                 Query.equal('title', ['Avatar', 'Lord of the Rings']),
                 Query.greaterThan('year', 1999)
@@ -75,12 +75,12 @@ func main() async throws {
         .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
         .setProject("<PROJECT_ID>")
 
-    let tables = Tables(client)
+    let databases = Databases(client)
 
     do {
-        let rows = try await databases.listRows(
+        let documents = try await databases.listDocuments(
             databaseId: "<DATABASE_ID>",
-            tableId: "<TABLE_ID>",
+            collectionId: "<COLLECTION_ID>",
             queries: [
                 Query.equal("title", value: ["Avatar", "Lord of the Rings"]),
                 Query.greaterThan("year", value: 1999)
@@ -94,19 +94,19 @@ func main() async throws {
 ```client-android-kotlin
 import io.appwrite.Client
 import io.appwrite.Query
-import io.appwrite.services.Tables
+import io.appwrite.services.Databases
 
 suspend fun main() {
     val client = Client(applicationContext)
         .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
         .setProject('<PROJECT_ID>');
 
-    val tables = Tables(client)
+    val databases = Databases(client)
 
     try {
-        val rows = tables.listRows(
+        val documents = databases.listDocuments(
             databaseId = "<DATABASE_ID>",
-            tableId = "<TABLE_ID>",
+            collectionId = "<COLLECTION_ID>",
             queries = listOf(
                 Query.equal("title", listOf("Avatar", "Lord of the Rings")),
                 Query.greaterThan("year", 1999)
@@ -119,16 +119,16 @@ suspend fun main() {
 ```
 ```graphql
 query {
-    tablesListRows(
+    databasesListDocuments(
         databaseId: "<DATABASE_ID>",
-        tableId: "<TABLE_ID>"
+        collectionId: "<COLLECTION_ID>"
         queries: [
-            "{\"method\":\"equal\",\"column\":\"title\",\"values\":[\"Avatar\",\"Lord of the Rings\"]}",
-            "{\"method\":\"greaterThan\",\"column\":\"year\",\"values\":[1999]}"
+            "{\"method\":\"equal\",\"attribute\":\"title\",\"values\":[\"Avatar\",\"Lord of the Rings\"]}",
+            "{\"method\":\"greaterThan\",\"attribute\":\"year\",\"values\":[1999]}"
         ]
     ) {
         total
-        rows {
+        documents {
             _id
             data
         }
@@ -136,7 +136,7 @@ query {
 }
 ```
 ```http
-GET /v1/databases/<DATABASE_ID>/tables/<TABLE_ID>/rows?queries[]=%7B%22method%22%3A%22equal%22%2C%22column%22%3A%22title%22%2C%22values%22%3A%5B%22Avatar%22%2C%22Lord%20of%20the%20Rings%22%5D%7D&queries[]=%7B%22method%22%3A%22greaterThan%22%2C%22column%22%3A%22year%22%2C%22values%22%3A%5B1999%5D%7D HTTP/1.1
+GET /v1/databases/<DATABASE_ID>/collections/<COLLECTION_ID>/documents?queries[]=%7B%22method%22%3A%22equal%22%2C%22attribute%22%3A%22title%22%2C%22values%22%3A%5B%22Avatar%22%2C%22Lord%20of%20the%20Rings%22%5D%7D&queries[]=%7B%22method%22%3A%22greaterThan%22%2C%22attribute%22%3A%22year%22%2C%22values%22%3A%5B1999%5D%7D HTTP/1.1
 Content-Type: application/json
 X-Appwrite-Project: <PROJECT_ID>
 ```
@@ -146,7 +146,7 @@ X-Appwrite-Project: <PROJECT_ID>
 
 ## Select {% #select %}
 
-The `select` operator allows you to specify which columns should be returned from a row. This is useful for optimizing response size and only retrieving the data you need.
+The `select` operator allows you to specify which attributes should be returned from a document. This is useful for optimizing response size and only retrieving the data you need.
 
 {% multicode %}
 ```client-web
@@ -179,7 +179,7 @@ Query.select(["name", "title"])
 
 ### Equal {% #equal %}
 
-Returns row if column is equal to any value in the provided array.
+Returns document if attribute is equal to any value in the provided array.
 
 {% multicode %}
 ```client-web
@@ -204,13 +204,13 @@ Query::equal("title", ["Iron Man"])
 Query.equal("title", value: ["Iron Man"])
 ```
 ```http
-{"method":"equal","column":"title","values":["Iron Man"]}
+{"method":"equal","attribute":"title","values":["Iron Man"]}
 ```
 {% /multicode %}
 
 ### Not equal {% #not-equal %}
 
-Returns row if column is not equal to any value in the provided array.
+Returns document if attribute is not equal to any value in the provided array.
 
 {% multicode %}
 ```client-web
@@ -235,13 +235,13 @@ Query::notEqual("title", "Iron Man")
 Query.notEqual("title", value: "Iron Man")
 ```
 ```http
-{"method":"notEqual","column":"title","values":"Iron Man"}
+{"method":"notEqual","attribute":"title","values":"Iron Man"}
 ```
 {% /multicode %}
 
 ### Less than {% #less-than %}
 
-Returns row if column is less than the provided value.
+Returns document if attribute is less than the provided value.
 
 {% multicode %}
 ```client-web
@@ -266,13 +266,13 @@ Query::lessThan("score", 10)
 Query.lessThan("score", value: 10)
 ```
 ```http
-{"method":"lessThan","column":"score","values":[10]}
+{"method":"lessThan","attribute":"score","values":[10]}
 ```
 {% /multicode %}
 
 ### Less than or equal {% #less-than-equal %}
 
-Returns row if column is less than or equal to the provided value.
+Returns document if attribute is less than or equal to the provided value.
 
 {% multicode %}
 ```client-web
@@ -297,13 +297,13 @@ Query::lessThanEqual("score", 10)
 Query.lessThanEqual("score", value: 10)
 ```
 ```http
-{"method":"lessThanEqual","column":"score","values":[10]}
+{"method":"lessThanEqual","attribute":"score","values":[10]}
 ```
 {% /multicode %}
 
 ### Greater than {% #greater-than %}
 
-Returns row if column is greater than the provided value.
+Returns document if attribute is greater than the provided value.
 
 {% multicode %}
 ```client-web
@@ -328,13 +328,13 @@ Query::greaterThan("score", 10)
 Query.greaterThan("score", value: 10)
 ```
 ```http
-{"method":"greaterThan","column":"score","values":[10]}
+{"method":"greaterThan","attribute":"score","values":[10]}
 ```
 {% /multicode %}
 
 ### Greater than or equal {% #greater-than-equal %}
 
-Returns row if column is greater than or equal to the provided value.
+Returns document if attribute is greater than or equal to the provided value.
 
 {% multicode %}
 ```client-web
@@ -359,13 +359,13 @@ Query::greaterThanEqual("score", 10)
 Query.greaterThanEqual("score", value: 10)
 ```
 ```http
-{"method":"greaterThanEqual","column":"score","values":[10]}
+{"method":"greaterThanEqual","attribute":"score","values":[10]}
 ```
 {% /multicode %}
 
 ### Between {% #between %}
 
-Returns row if column value falls between the two values. The boundary values are inclusive and can be strings or numbers.
+Returns document if attribute value falls between the two values. The boundary values are inclusive and can be strings or numbers.
 
 {% multicode %}
 ```client-web
@@ -390,7 +390,7 @@ Query::between("price", 5, 10)
 Query.between("price", start: 5, end: 10)
 ```
 ```http
-{"method":"between","column":"price","values":[5,10]}
+{"method":"between","attribute":"price","values":[5,10]}
 ```
 {% /multicode %}
 
@@ -398,7 +398,7 @@ Query.between("price", start: 5, end: 10)
 
 ### Is null {% #is-null %}
 
-Returns rows where column value is null.
+Returns documents where attribute value is null.
 
 {% multicode %}
 ```client-web
@@ -423,13 +423,13 @@ Query::isNull("name")
 Query.isNull("name")
 ```
 ```http
-{"method":"isNull","column":"name"}
+{"method":"isNull","attribute":"name"}
 ```
 {% /multicode %}
 
 ### Is not null {% #is-not-null %}
 
-Returns rows where column value is **not** null.
+Returns documents where attribute value is **not** null.
 
 {% multicode %}
 ```client-web
@@ -454,7 +454,7 @@ Query::isNotNull("name")
 Query.isNotNull("name")
 ```
 ```http
-{"method":"isNotNull","column":"name"}
+{"method":"isNotNull","attribute":"name"}
 ```
 {% /multicode %}
 
@@ -462,7 +462,7 @@ Query.isNotNull("name")
 
 ### Starts with {% #starts-with %}
 
-Returns rows if a string column starts with a substring.
+Returns documents if a string attribute starts with a substring.
 
 {% multicode %}
 ```client-web
@@ -487,13 +487,13 @@ Query::startsWith("name", "Once upon a time")
 Query.startsWith("name", value: "Once upon a time")
 ```
 ```http
-{"method":"startsWith","column":"name","values":["Once upon a time"]}
+{"method":"startsWith","attribute":"name","values":["Once upon a time"]}
 ```
 {% /multicode %}
 
 ### Ends with {% #ends-with %}
 
-Returns rows if a string column ends with a substring.
+Returns documents if a string attribute ends with a substring.
 
 {% multicode %}
 ```client-web
@@ -518,13 +518,13 @@ Query::endsWith("name", "happily ever after.")
 Query.endsWith("name", value: "happily ever after.")
 ```
 ```http
-{"method":"endsWith","column":"name","values":["happily ever after."]}
+{"method":"endsWith","attribute":"name","values":["happily ever after."]}
 ```
 {% /multicode %}
 
 ### Contains {% #contains %}
 
-Returns rows if the array column contains the specified elements or if a string column contains the specified substring.
+Returns documents if the array attribute contains the specified elements or if a string attribute contains the specified substring.
 
 {% multicode %}
 ```client-web
@@ -578,16 +578,16 @@ Query.contains("name", value: "Tom")
 ```
 ```http
 # For arrays
-{"method":"contains","column":"ingredients","values":["apple","banana"]}
+{"method":"contains","attribute":"ingredients","values":["apple","banana"]}
 
 # For strings
-{"method":"contains","column":"name","values":["Tom"]}
+{"method":"contains","attribute":"name","values":["Tom"]}
 ```
 {% /multicode %}
 
 ### Search {% #search %}
 
-Searches string columns for provided keywords. Requires a [full-text index](/docs/products/databases/tables#indexes) on queried columns.
+Searches string attributes for provided keywords. Requires a [full-text index](/docs/products/databases/legacy/collections#indexes) on queried attributes.
 
 {% multicode %}
 ```client-web
@@ -612,7 +612,7 @@ Query::search("text", "key words")
 Query.search("text", value: "key words")
 ```
 ```http
-{"method":"search","column":"text","values":["key words"]}
+{"method":"search","attribute":"text","values":["key words"]}
 ```
 {% /multicode %}
 
@@ -620,7 +620,7 @@ Query.search("text", value: "key words")
 
 ### AND {% #and %}
 
-Returns row if it matches all of the nested sub-queries in the array passed in.
+Returns document if it matches all of the nested sub-queries in the array passed in.
 
 {% multicode %}
 ```client-web
@@ -666,13 +666,13 @@ Query.and([
 ])
 ```
 ```http
-{"method":"and","values":[{"method":"lessThan","column":"size","values":[10]},{"method":"greaterThan","column":"size","values":[5]}]}
+{"method":"and","values":[{"method":"lessThan","attribute":"size","values":[10]},{"method":"greaterThan","attribute":"size","values":[5]}]}
 ```
 {% /multicode %}
 
 ### OR {% #or %}
 
-Returns row if it matches any of the nested sub-queries in the array passed in.
+Returns document if it matches any of the nested sub-queries in the array passed in.
 
 {% multicode %}
 ```client-web
@@ -718,7 +718,7 @@ Query.or([
 ])
 ```
 ```http
-{"method":"or","values":[{"method":"lessThan","column":"size","values":[5]},{"method":"greaterThan","column":"size","values":[10]}]}
+{"method":"or","values":[{"method":"lessThan","attribute":"size","values":[5]},{"method":"greaterThan","attribute":"size","values":[10]}]}
 ```
 {% /multicode %}
 
@@ -726,63 +726,63 @@ Query.or([
 
 ### Order descending {% #order-desc %}
 
-Orders results in descending order by column. Column must be indexed.
+Orders results in descending order by attribute. Attribute must be indexed.
 
 {% multicode %}
 ```client-web
-Query.orderDesc("column")
+Query.orderDesc("attribute")
 ```
 ```client-flutter
-Query.orderDesc("column")
+Query.orderDesc("attribute")
 ```
 ```python
-Query.order_desc("column")
+Query.order_desc("attribute")
 ```
 ```ruby
-Query.order_desc("column")
+Query.order_desc("attribute")
 ```
 ```deno
-Query.orderDesc("column")
+Query.orderDesc("attribute")
 ```
 ```php
-Query::orderDesc("column")
+Query::orderDesc("attribute")
 ```
 ```swift
-Query.orderDesc("column")
+Query.orderDesc("attribute")
 ```
 ```http
-{"method":"orderDesc","column":"column"}
+{"method":"orderDesc","attribute":"attribute"}
 ```
 {% /multicode %}
 
 ### Order ascending {% #order-asc %}
 
-Orders results in ascending order by column. Column must be indexed.
+Orders results in ascending order by attribute. Attribute must be indexed.
 
 {% multicode %}
 ```client-web
-Query.orderAsc("column")
+Query.orderAsc("attribute")
 ```
 ```client-flutter
-Query.orderAsc("column")
+Query.orderAsc("attribute")
 ```
 ```python
-Query.order_asc("column")
+Query.order_asc("attribute")
 ```
 ```ruby
-Query.order_asc("column")
+Query.order_asc("attribute")
 ```
 ```deno
-Query.orderAsc("column")
+Query.orderAsc("attribute")
 ```
 ```php
-Query::orderAsc("column")
+Query::orderAsc("attribute")
 ```
 ```swift
-Query.orderAsc("column")
+Query.orderAsc("attribute")
 ```
 ```http
-{"method":"orderAsc","column":"column"}
+{"method":"orderAsc","attribute":"attribute"}
 ```
 {% /multicode %}
 
@@ -790,7 +790,7 @@ Query.orderAsc("column")
 
 ### Limit {% #limit %}
 
-Limits the number of results returned by the query. Used for [pagination](/docs/products/databases/pagination).
+Limits the number of results returned by the query. Used for [pagination](/docs/products/databases/legacy/pagination).
 
 {% multicode %}
 ```client-web
@@ -821,7 +821,7 @@ Query.limit(25)
 
 ### Offset {% #offset %}
 
-Offset the results returned by skipping some of the results. Used for [pagination](/docs/products/databases/pagination).
+Offset the results returned by skipping some of the results. Used for [pagination](/docs/products/databases/legacy/pagination).
 
 {% multicode %}
 ```client-web
@@ -852,7 +852,7 @@ Query.offset(0)
 
 ### Cursor after {% #cursor-after %}
 
-Places the cursor after the specified resource ID. Used for [pagination](/docs/products/databases/pagination).
+Places the cursor after the specified resource ID. Used for [pagination](/docs/products/databases/legacy/pagination).
 
 {% multicode %}
 ```client-web
@@ -883,7 +883,7 @@ Query.cursorAfter("62a7...f620")
 
 ### Cursor before {% #cursor-before %}
 
-Places the cursor before the specified resource ID. Used for [pagination](/docs/products/databases/pagination).
+Places the cursor before the specified resource ID. Used for [pagination](/docs/products/databases/legacy/pagination).
 
 {% multicode %}
 ```client-web
@@ -918,9 +918,9 @@ You can create complex queries by combining AND and OR operations. For example, 
 
 {% multicode %}
 ```client-web
-const results = await tables.listRows(
+const results = await databases.listDocuments(
     '<DATABASE_ID>',
-    '<TABLE_ID>',
+    '<COLLECTION_ID>',
     [
         Query.or([
             Query.and([
@@ -936,9 +936,9 @@ const results = await tables.listRows(
 );
 ```
 ```client-flutter
-final results = await tables.listRows(
+final results = await databases.listDocuments(
     '<DATABASE_ID>',
-    '<TABLE_ID>',
+    '<COLLECTION_ID>',
     [
         Query.or([
             Query.and([
@@ -954,9 +954,9 @@ final results = await tables.listRows(
 );
 ```
 ```python
-results = tables.list_rows(
+results = databases.list_documents(
     database_id='<DATABASE_ID>',
-    table_id='<TABLE_ID>',
+    collection_id='<COLLECTION_ID>',
     queries=[
         Query.or_queries([
             Query.and_queries([
@@ -972,10 +972,10 @@ results = tables.list_rows(
 )
 ```
 ```http
-{"method":"or","values":[{"method":"and","values":[{"method":"equal","column":"category","values":["books"]},{"method":"lessThan","column":"price","values":[20]}]},{"method":"and","values":[{"method":"equal","column":"category","values":["magazines"]},{"method":"lessThan","column":"price","values":[10]}]}]}
+{"method":"or","values":[{"method":"and","values":[{"method":"equal","attribute":"category","values":["books"]},{"method":"lessThan","attribute":"price","values":[20]}]},{"method":"and","values":[{"method":"equal","attribute":"category","values":["magazines"]},{"method":"lessThan","attribute":"price","values":[10]}]}]}
 ```
 {% /multicode %}
 
 This example demonstrates how to combine `OR` and `AND` operations. The query uses `Query.or()` to match either condition: books under $20 OR magazines under $10.
-Each condition within the OR is composed of two AND conditions - one for the category and one for the price threshold. The database will return rows that match either of these combined conditions.
+Each condition within the OR is composed of two AND conditions - one for the category and one for the price threshold. The database will return documents that match either of these combined conditions.
 

@@ -1,21 +1,21 @@
 ---
 layout: article
 title: Bulk operations
-description: Perform bulk operations on documents within your collections for efficient data handling.
+description: Perform bulk operations on rows within your tables for efficient data handling.
 ---
 
-Appwrite Databases supports bulk operations for documents, allowing you to create, update, or delete multiple documents in a single request. This can significantly improve performance for apps as it allows you to reduce the number of API calls needed while working with large data sets.
+Appwrite Databases supports bulk operations for rows, allowing you to create, update, or delete multiple rows in a single request. This can significantly improve performance for apps as it allows you to reduce the number of API calls needed while working with large data sets.
 
 As of now, bulk operations can only be performed via the server-side SDKs. The client-side SDKs do not support bulk operations.
 
-# Create documents {% #create-documents %}
+# Create rows {% #create-rows %}
 
 {% info title="Permissions required" %}
-You must grant **create** permissions to users at the **collection level** before users can create documents.
+You must grant **create** permissions to users at the **table level** before users can create rows.
 [Learn more about permissions](/docs/products/databases/permissions)
 {% /info %}
 
-You can create multiple documents in a single request using the `createDocuments` method.
+You can create multiple rows in a single request using the `createRows` method.
 
 {% multicode %}
 ```server-nodejs
@@ -26,19 +26,19 @@ const client = new sdk.Client()
     .setProject('<PROJECT_ID>')
     .setKey('<API_KEY>');
 
-const databases = new sdk.Databases(client);
+const tables = new sdk.Tables(client);
 
-const result = await databases.createDocuments(
+const result = await tables.createRows(
     '<DATABASE_ID>',
-    '[COLLECTION_ID]',
+    '<TABLE_ID>',
     [
         {
-            documentId: sdk.ID.unique(),
-            data: { name: 'Document 1' }
+            rowId: sdk.ID.unique(),
+            data: { name: 'Row 1' }
         },
         {
-            documentId: sdk.ID.unique(),
-            data: { name: 'Document 2' }
+            rowId: sdk.ID.unique(),
+            data: { name: 'Row 2' }
         }
     ]
 );
@@ -46,40 +46,40 @@ const result = await databases.createDocuments(
 
 ```server-python
 from appwrite.client import Client
-from appwrite.services.databases import Databases
+from appwrite.services.databases import Tables
 
 client = Client()
 client.set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
 client.set_project('<PROJECT_ID>')
 client.set_key('<API_KEY>')
 
-databases = Databases(client)
+tables = Tables(client)
 
-result = databases.create_documents(
+result = tables.create_rows(
     database_id = '<DATABASE_ID>',
-    collection_id = '<COLLECTION_ID>',
-    documents = [
+    collection_id = '<TABLE_ID>',
+    rows = [
         {
-            'documentId': appwrite.ID.unique(),
-            'data': { 'name': 'Document 1' }
+            'rowId': appwrite.ID.unique(),
+            'data': { 'name': 'Row 1' }
         },
         {
-            'documentId': appwrite.ID.unique(),
-            'data': { 'name': 'Document 2' }
+            'rowId': appwrite.ID.unique(),
+            'data': { 'name': 'Row 2' }
         }
     ]
 )
 ```
 {% /multicode %}
 
-# Update documents {% #update-documents %}
+# Update rows {% #update-rows %}
 
 {% info title="Permissions required" %}
-You must grant **update** permissions to users at the **collection level** before users can update documents.
+You must grant **update** permissions to users at the **table level** before users can update rows.
 [Learn more about permissions](/docs/products/databases/permissions)
 {% /info %}
 
-You can update multiple documents in a single request using the `updateDocuments` method.
+You can update multiple rows in a single request using the `updateRows` method.
 
 {% multicode %}
 ```server-nodejs
@@ -90,19 +90,19 @@ const client = new sdk.Client()
     .setProject('<PROJECT_ID>')
     .setKey('<API_KEY>');
 
-const databases = new sdk.Databases(client);
+const tables = new sdk.Tables(client);
 
-const result = await databases.updateDocuments(
+const result = await tables.updateRows(
     '<DATABASE_ID>',
-    '[COLLECTION_ID]',
+    '<TABLE_ID>',
     {
         {
-            documentId: 'document-id-1',
-            data: { name: 'Updated Document 1' }
+            rowId: 'row-id-1',
+            data: { name: 'Updated Row 1' }
         },
         {
-            documentId: 'document-id-2',
-            data: { name: 'Updated Document 2' }
+            rowId: 'row-id-2',
+            data: { name: 'Updated Row 2' }
         }
     }
 );
@@ -110,40 +110,40 @@ const result = await databases.updateDocuments(
 
 ```server-python
 from appwrite.client import Client
-from appwrite.services.databases import Databases
+from appwrite.services.databases import Tables
 
 client = Client()
 client.set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
 client.set_project('<PROJECT_ID>')
 client.set_key('<API_KEY>')
 
-databases = Databases(client)
+tables = Tables(client)
 
-result = databases.update_documents(
+result = tables.update_rows(
     database_id = '<DATABASE_ID>',
-    collection_id = '<COLLECTION_ID>',
+    collection_id = '<TABLE_ID>',
     data = {
         {
-            'documentId': 'document-id-1',
-            'data': { 'name': 'New Document 1' }
+            'rowId': 'row-id-1',
+            'data': { 'name': 'New Row 1' }
         },
         {
-            'documentId': 'document-id-2',
-            'data': { 'name': 'New Document 2' }
+            'rowId': 'row-id-2',
+            'data': { 'name': 'New Row 2' }
         }
     }
 )
 ```
 {% /multicode %}
 
-# Upsert documents {% #upsert-documents %}
+# Upsert rows {% #upsert-rows %}
 
 {% info title="Permissions required" %}
-You must grant **create** and **update** permissions to users at the **collection level** before users can create documents.
+You must grant **create** and **update** permissions to users at the **table level** before users can create rows.
 [Learn more about permissions](/docs/products/databases/permissions)
 {% /info %}
 
-You can upsert multiple documents in a single request using the `upsertDocuments` method.
+You can upsert multiple rows in a single request using the `upsertRows(` method.
 
 {% multicode %}
 ```server-nodejs
@@ -154,19 +154,19 @@ const client = new sdk.Client()
     .setProject('<PROJECT_ID>')
     .setKey('<API_KEY>');
 
-const databases = new sdk.Databases(client);
+const tables = new sdk.Tables(client);
 
-const result = await databases.upsertDocuments(
+const result = await tables.upsertRows(
     '<DATABASE_ID>',
-    '[COLLECTION_ID]',
+    '<TABLE_ID>',
     [
         {
-            documentId: sdk.ID.unique(),
-            data: { name: 'New Document 1' }
+            rowId: sdk.ID.unique(),
+            data: { name: 'New Row 1' }
         },
         {
-            documentId: 'document-id-2', // Existing document ID
-            data: { name: 'New Document 2' }
+            rowId: 'row-id-2', // Existing row ID
+            data: { name: 'New Row 2' }
         }
     ]
 );
@@ -181,33 +181,33 @@ client.set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
 client.set_project('<PROJECT_ID>')
 client.set_key('<API_KEY>')
 
-databases = Databases(client)
+tables = Tables(client)
 
-result = databases.upsert_documents(
+result = tables.upsert_rows(
     database_id = '<DATABASE_ID>',
-    collection_id = '<COLLECTION_ID>',
-    documents = [
+    collection_id = '<TABLE_ID>',
+    rows = [
         {
-            'documentId': appwrite.ID.unique(),
-            'data': { 'name': 'Document 1' }
+            'rowId': appwrite.ID.unique(),
+            'data': { 'name': 'Row 1' }
         },
         {
-            'documentId': 'document-id-2',  # Existing document ID
-            'data': { 'name': 'New Document 2' }
+            'rowId': 'row-id-2',  # Existing row ID
+            'data': { 'name': 'New Row 2' }
         }
     ]
 )
 ```
 {% /multicode %}
 
-# Delete documents {% #delete-documents %}
+# Delete rows {% #delete-rows %}
 
 {% info title="Permissions required" %}
-You must grant **delete** permissions to users at the **collection level** before users can delete documents.
+You must grant **delete** permissions to users at the **table level** before users can delete rows.
 [Learn more about permissions](/docs/products/databases/permissions)
 {% /info %}
 
-You can delete multiple documents in a single request using the `deleteDocuments` method.
+You can delete multiple rows in a single request using the `deleteRows` method.
 
 {% multicode %}
 ```server-nodejs
@@ -218,11 +218,11 @@ const client = new sdk.Client()
     .setProject('<PROJECT_ID>')
     .setKey('<API_KEY>');
 
-const databases = new sdk.Databases(client);
+const tables = new sdk.Tables(client);
 
-const result = await databases.deleteDocuments(
+const result = await tables.deleteRows(
     '<DATABASE_ID>',
-    '[COLLECTION_ID]',
+    '<TABLE_ID>',
     [] // Queries
 );
 ```
@@ -236,11 +236,11 @@ client.set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
 client.set_project('<PROJECT_ID>')
 client.set_key('<API_KEY>')
 
-databases = Databases(client)
+tables = Tables(client)
 
-result = databases.delete_documents(
+result = tables.delete_rows(
     database_id = '<DATABASE_ID>',
-    collection_id = '<COLLECTION_ID>',
+    collection_id = '<TABLE_ID>',
     queries = []
 )
 ```
@@ -248,10 +248,8 @@ result = databases.delete_documents(
 
 {% info title="Queries for deletion" %}
 
-When deleting documents, you must specify queries to filter which documents to delete.
-
-If no queries are provided, all documents in the collection will be deleted.
-
+When deleting rows, you must specify queries to filter which rows to delete.
+If no queries are provided, all rows in the table will be deleted.
 [Learn more about queries](/docs/products/databases/queries).
 
 {% /info %}
