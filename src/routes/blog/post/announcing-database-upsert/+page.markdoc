@@ -35,7 +35,6 @@ This brings you immediate benefits such as:
 
 Implementing Upsert is straightforward and intuitive:
 
-```
 ```javascript
 import { Client, Databases, ID } from "appwrite";
 
