@@ -14,6 +14,8 @@ Working with databases often involves small but repetitive decisions like checki
 
 To simplify this, we introduce Database Upsert in Appwrite.
 
+# How it works
+
 Upsert allows you to create or update a document using a single API call. If the document does not exist, it is created. If it does, it is updated. You no longer need to write separate logic to check for existence or handle 404 responses. The server handles that for you.
 
 This change removes the need for client-side conditionals, reduces the number of requests between your app and the database, and helps avoid potential race conditions. It is a small shift in how you interact with the database, but one that can make your code cleaner and your application logic easier to follow.
