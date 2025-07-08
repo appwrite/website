@@ -111,12 +111,10 @@
             .replace('tables', 'collections')
     );
 
+    const hideSubtitleRoutes = ['offline', 'backups', 'csv-imports'];
+
     const shouldShowSubtitle = $derived(
-        // offline doesn't mention legacy
-        !page.url.pathname.includes('offline') &&
-            // backups doesn't mention legacy
-            !page.url.pathname.includes('backups') &&
-            // root layout page doesn't mention legacy
+        !hideSubtitleRoutes.some((segment) => page.route.id?.includes(segment)) &&
             !page.url.pathname.endsWith('products/databases')
     );
 
