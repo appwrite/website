@@ -1,6 +1,6 @@
 ---
 layout: article
-title: CSV Imports
+title: CSV imports
 description: Master document imports with Appwrite's CSV Import feature. Learn how to create documents within your collections by uploading a CSV file.
 ---
 
@@ -58,6 +58,6 @@ CSV imports run as background tasks. The Console displays a floating progress ba
 
 # Additional resources {% #additional-resources %}
 
-- [Appwrite CLI for Migrations](/docs/command-line-tools)
+- [Appwrite CLI](/docs/command-line)
 - [Database Permissions](/docs/products/databases/permissions)
 - [Documents API Reference](/docs/references/cloud/client-web/databases)
