@@ -67,6 +67,11 @@ export type SearchableCategory = {
 
 export const integrationCategoryDescriptions: SearchableCategory[] = [
     {
+        slug: 'mcp',
+        heading: 'MCP',
+        description: 'Platforms with Model Context Protocol support'
+    },
+    {
         slug: 'ai',
         heading: 'AI',
         description: 'Machine learning and AI capabilities'

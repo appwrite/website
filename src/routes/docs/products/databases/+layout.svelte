@@ -3,6 +3,7 @@
     import { page } from '$app/state';
     import { writable } from 'svelte/store';
     import Docs from '$lib/layouts/Docs.svelte';
+    import { isNewUntil } from '$lib/utils/date';
     import Sidebar, { type NavParent, type NavTree } from '$lib/layouts/Sidebar.svelte';
     import type { HeaderSectionInfoAlert } from '$lib/layouts/DocsArticle.svelte';
 
@@ -48,7 +49,8 @@
                 },
                 {
                     label: 'Type Generation',
-                    href: '/docs/products/databases/type-generation'
+                    href: '/docs/products/databases/type-generation',
+                    new: isNewUntil('31 Jul 2025')
                 },
                 {
                     label: 'Offline Sync',
@@ -61,6 +63,11 @@
                 {
                     label: 'Backups',
                     href: '/docs/products/databases/backups'
+                },
+                {
+                    label: 'CSV Imports',
+                    href: '/docs/products/databases/csv-imports',
+                    new: isNewUntil('31 Jul 2025')
                 }
             ]
         },
