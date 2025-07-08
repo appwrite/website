@@ -2,7 +2,7 @@
 layout: post
 title: "Announcing Database Upsert: Simplify your database interactions"
 description: A cleaner, faster, and atomic way to manage your documents in Appwrite.
-date: 2025-07-07
+date: 2025-07-08
 cover: /images/blog/announcing-database-upsert/cover.png
 timeToRead: 5
 author: jake-barnby
