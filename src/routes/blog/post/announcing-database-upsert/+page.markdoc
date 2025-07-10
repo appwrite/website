@@ -36,7 +36,7 @@ This brings you immediate benefits such as:
 Implementing Upsert is straightforward and intuitive:
 
 ```javascript
-import { Client, Databases, ID } from "appwrite";
+import { Client, Databases } from "appwrite";
 
 const client = new Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
@@ -47,12 +47,15 @@ const databases = new Databases(client);
 const result = await databases.upsertDocument(
     '<DATABASE_ID>',
     '<COLLECTION_ID>',
-    ID.unique(),
+    '<DOCUMENT_ID>',
     {
-	    'name': 'Document 1',
-	    'description': 'Description 1'
+        'status': 'succeeded',
+        'amount': 4999,
+        'currency': 'usd',
+        'invoiceId': 'in_1Rd...',
+        'checks': ['cvc', 'zip'],
     }
-);
+)
 ```
 
 Database Upsert was developed to enhance developer productivity and satisfaction, providing a feature that matches or surpasses competitive solutions. Whether using Appwrite Cloud or a self-hosted setup, Database Upsert integrates smoothly into your development workflow.
