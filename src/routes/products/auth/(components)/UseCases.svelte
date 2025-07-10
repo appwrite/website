@@ -9,6 +9,7 @@
     import Supabase from '../(assets)/platforms/supabase.svg';
     import Firebase from '../(assets)/platforms/firebase.svg';
     import { classNames } from '$lib/utils/classnames';
+    import { Button } from '$lib/components/ui';
 
     const platforms = [
         { icon: Android, size: 24 },
@@ -26,7 +27,7 @@
         class="container grid items-stretch gap-y-8 divide-[#19191C]/4 [grid-gap:initial] md:divide-x lg:grid-cols-2"
     >
         <div
-            class="relative mx-auto mb-20 flex flex flex-col items-center justify-center gap-y-6 text-center md:px-20
+            class="relative mx-auto mb-20 flex flex-col items-center justify-center gap-y-6 text-center md:px-20
                "
         >
             <div class="flex items-center gap-2">
@@ -52,12 +53,12 @@
             <p class="text-body text-secondary font-medium">
                 Integrate Auth seamlessly into your projects with your favorite technology.
             </p>
-            <a href="/docs/sdks" class="web-button is-secondary mt-2 !w-full md:!w-fit"
-                >Learn more</a
+            <Button href="/docs/sdks" variant="secondary" class="mt-2 !w-full md:!w-fit"
+                >Learn more</Button
             >
         </div>
         <div
-            class="mx-auto mb-20 flex flex flex-col items-center justify-center gap-y-6 text-center md:px-20"
+            class="mx-auto mb-20 flex flex-col items-center justify-center gap-y-6 text-center md:px-20"
         >
             <div class="flex items-center gap-2">
                 {#each migrations as migration}
@@ -66,7 +67,7 @@
                     </div>
                 {/each}
 
-                <div class="-mr-2 h-px w-24 flex-1 bg-gradient-to-r from-white to-[#FD366E]" />
+                <div class="-mr-2 h-px w-24 flex-1 bg-gradient-to-r from-white to-[#FD366E]"></div>
 
                 <div
                     class="flex size-14 items-center justify-center rounded-lg border border-[#FD366E] bg-white shadow-[0px_0px_8px_rgba(253,_54,_110,_0.24),_0px_5.35209px_10.7042px_rgba(0,_0,_0,_0.02)]"
@@ -80,9 +81,10 @@
             <p class="text-body text-secondary font-medium">
                 Use Appwrite's migration process to transfer your existing users with a few clicks.
             </p>
-            <a
+            <Button
+                variant="secondary"
                 href="/docs/advanced/migrations"
-                class="web-button is-secondary mt-2 !w-full md:!w-fit">Learn more</a
+                class="mt-2 !w-full md:!w-fit">Learn more</Button
             >
         </div>
     </div>

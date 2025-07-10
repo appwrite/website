@@ -8,9 +8,9 @@
         'Follow a simple tutorial to get started with Appwrite in your preferred framework quickly and easily.';
     const ogImage = DEFAULT_HOST + '/images/open-graph/docs.png';
 
-    export let data;
+    let { data } = $props();
 
-    type MappedTutorial = (typeof data.tutorials)[number];
+    type MappedTutorial = (typeof data.tutorials)[number]['tutorials'][number];
 
     const iconMap: Record<string, string> = {
         'react native': 'icon-react-native',
@@ -64,7 +64,7 @@
                     <h1 class="text-title font-aeonik-pro">Tutorials</h1>
                 </div>
             </div>
-            <div class="web-article-header-end" />
+            <div class="web-article-header-end"></div>
         </header>
         <div class="web-article-content web-u-gap-80">
             {#each data.tutorials as category}
@@ -84,7 +84,7 @@
                                             <span
                                                 class="{getIcon(tutorial)} web-u-font-size-24"
                                                 aria-hidden="true"
-                                            />
+                                            ></span>
                                             <h3 class="text-sub-body text-primary font-medium">
                                                 {tutorial.framework}
                                             </h3>
@@ -97,7 +97,7 @@
                                             <span
                                                 class="{getIcon(tutorial)} web-u-font-size-24"
                                                 aria-hidden="true"
-                                            />
+                                            ></span>
                                             <h3 class="text-sub-body text-primary font-medium">
                                                 {tutorial.framework}
                                             </h3>

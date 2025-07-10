@@ -47,7 +47,11 @@ Appwrite has rate limits on some endpoints to prevent abuse.
 {% /cards_item %}
 
 {% cards_item href="/docs/advanced/platform/api-keys" title="API keys" %}
-Create and manage API keys use by Server SDKs.
+Create and manage API keys used by Server SDKs.
+{% /cards_item %}
+
+{% cards_item href="/docs/advanced/platform/dev-keys" title="Dev keys" %}
+Create and manage dev keys used by Client SDKs in dev environments.
 {% /cards_item %}
 {% /cards %}
 
@@ -73,7 +77,7 @@ Coming soon.
 {% /cards_item %}
 
 {% cards_item href="/docs/advanced/platform/enterprise" title="Enterprise" %}
-Coming soon.
+Learn about Appwrite Enterprise, for large organizations with advanced needs.
 {% /cards_item %}
 
 {% cards_item href="/docs/advanced/platform/oss" title="Open source" %}
@@ -109,5 +113,11 @@ Learn about Appwrite's different compute add-ons.
 {% /cards_item %}
 {% cards_item href="/docs/advanced/platform/phone-otp" title="Phone OTP" %}
 Learn how Appwrite handles SMS-based OTP authentication.
+{% /cards_item %}
+{% cards_item href="/docs/advanced/platform/image-transformations" title="Image Transformations" %}
+Learn how to transform images dynamically with Appwrite.
+{% /cards_item %}
+{% cards_item href="/docs/advanced/platform/database-reads-and-writes" title="Database Reads and Writes" %}
+Learn how Appwrite handles database reads and writes.
 {% /cards_item %}
 {% /cards %}

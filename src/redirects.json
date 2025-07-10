@@ -140,10 +140,6 @@
         "redirect": "/docs/products/auth/users"
     },
     {
-        "link": "/docs/authentication-server",
-        "redirect": "/docs/authentication-server"
-    },
-    {
         "link": "/docs/authentication-security",
         "redirect": "/docs/products/auth/security"
     },
@@ -265,7 +261,7 @@
     },
     {
         "link": "/docs/debugging",
-        "redirect": "/docs/advanced/self-hosting/debugging"
+        "redirect": "/docs/advanced/self-hosting/debug"
     },
     {
         "link": "/docs/upgrade",
@@ -468,10 +464,6 @@
         "redirect": "/docs/references/cloud/models/collection"
     },
     {
-        "link": "/docs/models/attribute",
-        "redirect": "/docs/references/cloud/models/attribute"
-    },
-    {
         "link": "/docs/models/index",
         "redirect": "/docs/references/cloud/models/index"
     },
@@ -660,10 +652,6 @@
         "redirect": "/docs/tooling/appwriter"
     },
     {
-        "link": "/careers",
-        "redirect": "https://appwrite.careers"
-    },
-    {
         "link": "/policy/terms",
         "redirect": "/terms"
     },
@@ -671,10 +659,7 @@
         "link": "/policy/privacy",
         "redirect": "/privacy"
     },
-    {
-        "link": "/cli/install.sh",
-        "redirect": "https://raw.githubusercontent.com/appwrite/sdk-for-cli/master/install.sh"
-    },
+
     {
         "link": "/case-studies",
         "redirect": "/customer-stories"

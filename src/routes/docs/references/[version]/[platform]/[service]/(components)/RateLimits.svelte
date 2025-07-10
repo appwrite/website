@@ -1,5 +1,6 @@
 <script lang="ts">
     import type { SDKMethod } from '$lib/utils/specs';
+    import { trackEvent } from '$lib/actions/analytics';
 
     export let method: SDKMethod;
     export let platformType: string;
@@ -8,15 +9,15 @@
     const rateTime = method['rate-time'];
     const rateLimit = method['rate-limit'];
 
-    enum RateKeys {
-        'ip' = 'IP',
-        'userId' = 'USER ID',
-        'url' = 'URL',
-        'phone' = 'PHONE',
-        'token' = 'TOKEN',
-        'method' = 'METHOD',
-        'email' = 'EMAIL'
-    }
+    const RateKeys = {
+        ip: 'IP',
+        userId: 'USER ID',
+        url: 'URL',
+        phone: 'PHONE',
+        token: 'TOKEN',
+        method: 'METHOD',
+        email: 'EMAIL'
+    } as const;
 
     function hasMultipleKeys(keys: string | string[]): keys is string[] {
         if (Array.isArray(keys)) {
@@ -98,7 +99,11 @@
             </div>
         </div>
         <div class="">
-            <a href="/docs/advanced/platform/rate-limits" class="u-link text-primary">
+            <a
+                href="/docs/advanced/platform/rate-limits"
+                class="u-link text-primary"
+                onclick={() => trackEvent(`docs-rate_limits_learn_more-click`)}
+            >
                 <span>Learn more about rate limits</span>
                 <span class="web-icon-arrow-right" aria-hidden="true"></span>
             </a>

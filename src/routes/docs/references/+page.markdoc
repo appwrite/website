@@ -7,7 +7,7 @@ Appwrite lets you build integrations on web, mobile, native, and server platform
 
 ## Client vs Server APIs {% #client-vs-server %}
 
-Client APIs and SDKs are for integrating with Appwrite to build client-based applications and websites. 
+Client APIs and SDKs are for integrating with Appwrite to build client-based applications and websites.
 Client APIs only give access to resources if users have been [granted permissions](/docs/advanced/platform/permissions).
 
 Server API and SDKs are for integrating with Appwrite to build backend or server applications.
@@ -39,6 +39,9 @@ Group users to share access to documents, files, and functions.
 {% cards_item href="/docs/references/cloud/client-web/databases" title="Databases" %}
 Scalable and robust database backed by your favorite technologies.
 {% /cards_item %}
+{% cards_item href="/docs/references/cloud/server-nodejs/sites" title="Sites" %}
+Build and deploy websites on the internet at scale.
+{% /cards_item %}
 {% cards_item href="/docs/references/cloud/client-web/storage" title="Storage" %}
 Securely store files with advanced compression, encryption and image transformations.
 {% /cards_item %}
@@ -48,6 +51,9 @@ Deploy and scale serverless functions in secure, isolated runtimes.
 {% cards_item href="/docs/references/cloud/server-nodejs/messaging" title="Messaging" %}
 Send push notifications, SMS, or emails to users or groups of users using your app.
 {% /cards_item %}
+{% cards_item href="/docs/references/cloud/server-nodejs/tokens" title="Tokens" %}
+Create and manage temporary access tokens for secure file sharing and resource access control.
+{% /cards_item %}
 {% cards_item href="/docs/references/cloud/client-web/locale" title="Localization" %}
 Utility APIs to customize your app based on your users' location.
 {% /cards_item %}
@@ -55,3 +61,7 @@ Utility APIs to customize your app based on your users' location.
 Complete everyday tasks related to your app image, icons, and avatars.
 {% /cards_item %}
 {% /cards %}
+
+## Error handling {% #error-handling %}
+
+When building with Appwrite, implement proper error handling to provide user-friendly messages instead of exposing raw error responses. For implementation details and best practices, refer to our [Error handling guide](/docs/advanced/platform/error-handling) and [Response codes](/docs/advanced/platform/response-codes#error-types) documentation.

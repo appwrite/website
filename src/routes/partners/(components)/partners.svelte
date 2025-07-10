@@ -6,6 +6,7 @@
     import Gold from '../(assets)/icons/gold.png';
     import Silver from '../(assets)/icons/silver.png';
     import { clamp } from '$lib/utils/clamp';
+    import { Button } from '$lib/components/ui';
 
     let animate: boolean = false;
 
@@ -37,18 +38,18 @@
 
 <div
     class={classNames(
-        'border-smooth relative flex items-center justify-center border-t border-b border-dashed bg-[#17171A] py-32 [border-top-style:solid]',
+        'border-smooth relative flex items-center justify-center border-t border-b border-dashed [border-top-style:solid] bg-[#17171A] py-32',
         'after:absolute after:inset-0 after:top-0 after:right-0 after:z-0 after:mt-auto after:mb-0 after:block after:h-full after:bg-[radial-gradient(circle_at_120%_-40%,_hsla(343,_98%,_60%,_0.2)_0px,_transparent_40%)]'
     )}
     use:useInView
 >
     <div
-        class="container relative z-10 mx-auto flex w-full flex-col items-center justify-between gap-16 md:flex-row"
+        class="relative z-10 container mx-auto flex w-full flex-col items-center justify-between gap-16 md:flex-row"
     >
         <div class="flex max-w-lg flex-col gap-8 px-8">
             <div class="flex flex-col gap-4">
                 <h2 class="font-aeonik-pro text-title text-primary text-pretty">Partner Tiers</h2>
-                <p class="text-body text-secondary text-pretty font-medium">
+                <p class="text-body text-secondary font-medium text-pretty">
                     As your business grows, so do the opportunities with Appwrite. Our Partner
                     Program is designed to evolve with you, offering flexible tiers that adapt to
                     your unique needs and goals. Together, we’ll build a scalable partnership that
@@ -57,8 +58,8 @@
             </div>
 
             <div class="mt-3 flex flex-col items-center gap-2 md:flex-row">
-                <a href="#become-a-partner" class="web-button is-secondary !w-full md:!w-fit"
-                    >Become a Partner</a
+                <Button variant="secondary" href="#become-a-partner" class="!w-full md:!w-fit"
+                    >Become a Partner</Button
                 >
             </div>
         </div>
@@ -73,7 +74,7 @@
                     style:animation-delay="{i * 0.1}s"
                 >
                     <div
-                        class="flex h-fit items-center justify-center gap-4 rounded-3xl border border-[#292929] bg-black bg-gradient-to-br from-black to-white/20 py-3 px-5"
+                        class="flex h-fit items-center justify-center gap-4 rounded-3xl border border-[#292929] bg-black bg-gradient-to-br from-black to-white/20 px-5 py-3"
                         style:margin-bottom={i === tiers.length - 1
                             ? 0
                             : `-${clamp(32, i * 40, 80)}px`}
@@ -99,7 +100,7 @@
 
 <style>
     .animate {
-        animation: card-in 1200ms var(--transition-timing-function-spring) forwards;
+        animation: card-in 1200ms var(--easing-spring) forwards;
     }
     @keyframes card-in {
         0% {

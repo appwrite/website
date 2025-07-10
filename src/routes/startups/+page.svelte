@@ -21,10 +21,12 @@
     import Faq from './faq.svelte';
     import { getReferrerAndUtmSource } from '$lib/utils/utm';
     import CommunitySupportChat from '$lib/components/CommunitySupportChat.svelte';
+    import { trackEvent } from '$lib/actions/analytics';
+    import { Button } from '$lib/components/ui';
 
     const title = 'Startups' + TITLE_SUFFIX;
     const description =
-        "Get $20,000 in cloud credits to fulfill all your startup's backend needs. Apply for Appwrite's Startups Program today.";
+        "Get cloud credits to fulfill all your startup's backend and hosting needs. Apply for Appwrite's Startups Program today.";
     const ogImage = DEFAULT_HOST + '/images/open-graph/website.png';
 
     let personName: string;
@@ -58,6 +60,8 @@
                 ...getReferrerAndUtmSource()
             })
         });
+
+        trackEvent('startups-form-submit');
 
         submitting = false;
 
@@ -196,7 +200,7 @@
     <div class="web-big-padding-section relative overflow-hidden">
         <div class="relative py-10">
             <div class="web-big-padding-section-level-2 e-u-margin-block-128-desktop">
-                <section class="container web-u-padding-block-end-0">
+                <section class="web-u-padding-block-end-0 container">
                     <div
                         class="web-hero"
                         style="--hero-max-inline-size:49.375rem; --hero-gap:1.125rem;"
@@ -207,13 +211,11 @@
                         <p
                             class="text-description web-u-max-width-640 e-u-padding-inline-32-desktop mx-auto"
                         >
-                            The Appwrite Startups Program supports your startup with a complete
-                            backend for you to build your products. You will receive $20,000 Cloud
-                            credits for Appwrite Scale for 12 months.
+                            The Appwrite Startups Program supports your startup with an all-in-one
+                            cloud platform for you to build your products. You will receive Cloud
+                            credits and a discount for Appwrite's paid plans.
                         </p>
-                        <button on:click={scrollToForm} class="web-button mt-3 mx-auto">
-                            Apply now
-                        </button>
+                        <Button onclick={scrollToForm} class="mx-auto mt-3">Apply now</Button>
                     </div>
                 </section>
             </div>
@@ -231,10 +233,10 @@
                                 alt=""
                             />
                             <div class="flex flex-col gap-2 text-center">
-                                <h2 class="text-label text-primary">Complete backend</h2>
+                                <h2 class="text-label text-primary">Complete platform</h2>
                                 <p class="text-body font-medium">
-                                    Get access to Appwrite’s Scale plan and build your entire
-                                    backend with Appwrite.
+                                    Get discounted access to Appwrite’s paid plans and develop,
+                                    host, and scale your entire application with Appwrite.
                                 </p>
                             </div>
                         </li>
@@ -248,8 +250,8 @@
                             <div class="flex flex-col gap-2 text-center">
                                 <h2 class="text-label text-primary">Cloud credits</h2>
                                 <p class="text-body font-medium">
-                                    Get Appwrite Cloud Scale for 12 months and reduce risk at an
-                                    early stage.
+                                    Save on development and cloud costs and reduce risk at an early
+                                    stage.
                                 </p>
                             </div>
                         </li>
@@ -263,8 +265,8 @@
                             <div class="flex flex-col gap-2 text-center">
                                 <h2 class="text-label text-primary">Priority support</h2>
                                 <p class="text-body font-medium">
-                                    Get community support and priority email support from the
-                                    Appwrite team.
+                                    Get community support and priority support from the Appwrite
+                                    team.
                                 </p>
                             </div>
                         </li>
@@ -302,7 +304,7 @@
                                             class="web-card is-white group flex flex-col gap-5"
                                         >
                                             <div class="border-card">
-                                                <div class="glow" />
+                                                <div class="glow"></div>
                                             </div>
                                             <p class="aw-sub-body-500">
                                                 The integrated user authentication and the ease of
@@ -330,7 +332,7 @@
                                                 class="text-sub-body text-primary flex items-center gap-1"
                                                 >Read customer story <span
                                                     class="web-icon-arrow-right transition-transform group-hover:translate-x-1"
-                                                /></span
+                                                ></span></span
                                             >
                                         </a>
                                     </div>
@@ -375,7 +377,7 @@
                                             class="web-card group is-white web-u-margin-block-start-64 e-mt-4-mobile gap-5"
                                         >
                                             <div class="border-card">
-                                                <div class="glow" />
+                                                <div class="glow"></div>
                                             </div>
                                             <p class="aw-sub-body-500">{ryanOconner.text}</p>
                                             <div class="web-user-box">
@@ -399,7 +401,7 @@
                                                 class="text-sub-body text-primary flex items-center gap-1"
                                                 >Read customer story <span
                                                     class="web-icon-arrow-right transition-transform group-hover:translate-x-1"
-                                                /></span
+                                                ></span></span
                                             >
                                         </a>
                                     </div>
@@ -501,7 +503,7 @@
                                             class="web-card group is-white web-u-margin-block-start-64 e-mt-4-mobile gap-5"
                                         >
                                             <div class="border-card">
-                                                <div class="glow" />
+                                                <div class="glow"></div>
                                             </div>
                                             <p class="aw-sub-body-500">{mariusBolik.text}</p>
                                             <div class="web-user-box">
@@ -525,7 +527,7 @@
                                                 class="text-sub-body text-primary flex items-center gap-1"
                                                 >Read customer story <span
                                                     class="web-icon-arrow-right transition-transform group-hover:translate-x-1"
-                                                /></span
+                                                ></span></span
                                             >
                                         </a>
                                     </div>
@@ -580,7 +582,7 @@
             <div class="is-margin-replace-padding relative pt-[7.5rem]">
                 <div class="relative">
                     <div class="web-big-padding-section-level-2">
-                        <div class="container relative">
+                        <div class="relative container">
                             <img
                                 class="web-is-only-desktop absolute"
                                 style="inset-inline-end:-650px; inset-block-start:-200px; max-width:none; max-height:none;"
@@ -625,20 +627,20 @@
                                                 <div class="flex gap-4">
                                                     <div class="web-check-bullet mt-1"></div>
                                                     <p class="text-description">
-                                                        Appwrite Cloud Scale for 12 months
+                                                        Cloud credits and discounts on a paid plan
                                                     </p>
                                                 </div>
                                                 <div class="flex gap-4">
                                                     <div class="web-check-bullet mt-1"></div>
                                                     <p class="text-description">
-                                                        Priority email support as part of Scale
+                                                        Priority email support
                                                     </p>
                                                 </div>
                                             </div>
                                         </section>
                                         <div
                                             class="web-is-only-mobile web-u-margin-block-start-40 web-u-padding-block-start-40 web-u-sep-block-start"
-                                        />
+                                        ></div>
                                     </div>
                                 </div>
                                 {#if submitted}
@@ -646,7 +648,7 @@
                                         class="web-u-max-width-380 web-u-max-inline-size-none-mobile relative z-[1] mx-auto flex flex-col gap-2 text-center"
                                     >
                                         <h6
-                                            class="text-label e-mobile-fix-1 flex items-center justify-center gap-2"
+                                            class="text-label flex items-center justify-center gap-2"
                                         >
                                             <img
                                                 class="shrink-0"
@@ -661,10 +663,11 @@
                                             Our team will review your application and get back to
                                             you soon.
                                         </p>
-                                        <button
-                                            on:click={resetForm}
-                                            class="web-button is-secondary is-full-width-mobile blockmt-4 mx-auto"
-                                            >Back to form</button
+                                        <Button
+                                            onclick={resetForm}
+                                            variant="secondary"
+                                            class="mx-auto mt-4 block w-full! md:w-fit"
+                                            >Back to form</Button
                                         >
                                     </div>
                                 {:else}
@@ -717,6 +720,7 @@
                                                         required
                                                         class="web-input-text"
                                                         type="text"
+                                                        pattern="^(https:\/\/www\.|https:\/\/)?([a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)+)[a-zA-Z0-9\-\._~:\/\?#[\]@!\$&'\(\)\*\+,;=.]*$"
                                                         name="company-website"
                                                         placeholder="https://company.com"
                                                         aria-label="Company website"
@@ -733,13 +737,13 @@
                                                     {error}
                                                 {/if}
                                             </p>
-                                            <button
+                                            <Button
                                                 type="submit"
                                                 disabled={submitting}
-                                                class="web-button web-u-inline-width-100-percent-mobile-break1 self-center"
+                                                class="web-u-inline-width-100-percent-mobile-break1 self-center"
                                             >
-                                                <span>Apply</span>
-                                            </button>
+                                                Apply
+                                            </Button>
                                         </div>
                                     </form>
                                 {/if}
@@ -747,7 +751,7 @@
                         </div>
                     </div>
                     <div class="web-big-padding-section-level-2 relative">
-                        <div class="container relative" style:z-index="10">
+                        <div class="relative container" style:z-index="10">
                             <section class="web-grid-4-6">
                                 <header>
                                     <div class="text-display font-aeonik-pro text-primary">FAQ</div>
@@ -907,11 +911,6 @@
             inset-inline-end: 0; /*transform:translateX(50px);*/
             inset-block-start: 100px;
             opacity: 0.4;
-        }
-    }
-    @media #{devices.$break1} {
-        .e-mobile-fix-1 {
-            display: block;
         }
     }
 

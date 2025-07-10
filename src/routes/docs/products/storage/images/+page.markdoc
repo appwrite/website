@@ -2,8 +2,6 @@
 layout: article
 title: Image transformations
 description: Optimize image storage and processing with Appwrite. Explore image resizing, transformations, and manipulation to deliver rich media experiences in your apps.
-difficulty: beginner
-readtime: 15
 ---
 
 Appwrite provides utilities to manipulate images for previewing images in your apps.
@@ -34,7 +32,7 @@ Below you can find all the different parameters offered by the preview endpoint 
 | opacity       | Set opacity for the output image. Accepts a float value between `0-1`, where `0` makes it transparent. Only works with output formats supporting alpha channels like `png`. |
 | rotation      | Rotate the output image by a degree. Accepts an integer between `-360` to `360`.                                  |
 | background    | Set a background-color. Accepts any valid hex color value without the leading `#`. Only works with output formats supporting alpha channels like `png`. |
-| output        | Set the output image format. If not provided, will use the original image's format. Supported formats are: `jpg`, `jpeg`, `png`, `gif`, and `webp` |
+| output        | Set the output image format. If not provided, will use the original image's format. Supported formats are: `jpg`, `jpeg`, `png`, `gif`, `webp`, `avif`, and `heic` |
 
 # Examples {% #examples %}
 Here are some examples using [Client SDKs](/docs/sdks#client).
@@ -47,7 +45,7 @@ const client = new Client();
 const storage = new Storage(client);
 
 client
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
     .setProject('<PROJECT_ID>') // Your project ID
 ;
 
@@ -77,7 +75,7 @@ void main() { // Init SDK
   Storage storage = Storage(client);
 
   client
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
     .setProject('<PROJECT_ID>') // Your project ID
   ;
   // downloading file
@@ -106,8 +104,8 @@ void main() { // Init SDK
 //displaying image preview
 FutureBuilder(
   future: storage.getFilePreview(
-    bucketId: '[BUCKET_ID]',
-    fileId: '[FILE_ID]',
+    bucketId: '<BUCKET_ID>',
+    fileId: '<FILE_ID>',
   ), //works for both public file and private file, for private files you need to be logged in
   builder: (context, snapshot) {
     return snapshot.hasData && snapshot.data != null
@@ -123,7 +121,7 @@ import Appwrite
 
 func main() async throws {
     let client = Client()
-      .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
+      .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
       .setProject("<PROJECT_ID>") // Your project ID
     let storage = Storage(client)
     let byteBuffer = try await storage.getFilePreview(
@@ -159,7 +157,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val client = Client(applicationContext)
-            .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
+            .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
             .setProject("<PROJECT_ID>") // Your project ID
 
         val storage = Storage(client)
@@ -182,6 +180,44 @@ class MainActivity : AppCompatActivity() {
         println(result); // Resource URL
     }
 }
+```
+```client-react-native
+import { Client, Storage, ImageGravity } from 'react-native-appwrite';
+import { Image } from 'react-native';
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>');
+
+const storage = new Storage(client);
+
+// Get image with transformations
+const result = storage.getFilePreview(
+    'photos',           // bucket ID
+    'sunset.png',       // file ID
+    1800,               // width, will be resized using this value
+    0,                  // height, ignored when 0
+    ImageGravity.Center,// crop center
+    90,                 // slight compression
+    5,                  // border width
+    'CDCA30',           // border color
+    15,                 // border radius
+    1,                  // full opacity
+    0,                  // no rotation
+    'FFFFFF',           // background color
+    'jpg'               // output jpg format
+);
+
+console.log(result); // Resource URL
+
+// Usage in a component
+const ImagePreview = () => (
+    <Image
+        source={{ uri: result.toString() }}
+        style={{ width: 300, height: 200 }}
+        resizeMode="contain"
+    />
+);
 ```
 
 {% /multicode %}

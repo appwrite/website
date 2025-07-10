@@ -1,12 +1,14 @@
 <script lang="ts">
     import GradientBorderCard from '$lib/components/shared/gradient-border-card.svelte';
+    import { Button } from '$lib/components/ui';
 
     const items = [
         {
             title: 'Experts',
             description:
                 'For agencies, consultancies, freelancers, and integrators who want to provide a scalable backend solution for their clients. Partner with Appwrite to provide a highly custom solution with the newest technology.',
-            label: 'Coming Soon'
+            href: '/partners/catalog',
+            label: 'Find a Partner'
         },
         {
             title: 'Integrations',
@@ -26,9 +28,9 @@
                 <h2 class="text-primary font-aeonik-pro text-label font-medium">{item.title}</h2>
                 <p class="text-secondary text-body font-medium">{item.description}</p>
                 {#if item.href}
-                    <a href={item.href} class="web-button is-secondary mt-3">{item.label}</a>
+                    <Button href={item.href} variant="secondary" class="mt-3">{item.label}</Button>
                 {:else}
-                    <button class="web-button is-secondary mt-3">{item.label}</button>
+                    <Button variant="secondary" class="mt-3">{item.label}</Button>
                 {/if}
             </GradientBorderCard>
         {/each}

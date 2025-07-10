@@ -1,49 +1,55 @@
 <script lang="ts">
-    import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
+    import { DEFAULT_HOST } from '$lib/utils/metadata';
     import { Main } from '$lib/layouts';
     import { TITLE_SUFFIX } from '$routes/titles';
     import FooterNav from '../../../lib/components/FooterNav.svelte';
     import MainFooter from '../../../lib/components/MainFooter.svelte';
-    import Pink from '../bg.png';
     import { loggedIn, user } from '$lib/utils/console';
     import { PUBLIC_GROWTH_ENDPOINT } from '$env/static/public';
     import { getReferrerAndUtmSource } from '$lib/utils/utm';
+    import LogoList from '$lib/components/LogoList.svelte';
+    import Scale from '$routes/(marketing)/(components)/scale.svelte';
+    import { Button } from '$lib/components/ui';
+    import { trackEvent } from '$lib/actions/analytics';
 
     let email = '';
-    let name = '';
+    let firstName = '';
+    let lastName = '';
     let companyName = '';
     let companySize: string | null = null;
     let companyWebsite = '';
     let useCase = '';
 
     let submitted = false;
-    let submitting = true;
+    let submitting = false;
     let error: string | undefined;
 
     async function handleSubmit() {
         error = undefined;
         submitting = true;
-        const subject = `Enterprise Plan Application: ${companyName}`;
 
         const cloudEmail = loggedIn && $user?.email ? $user.email : undefined;
 
-        const response = await fetch(`${PUBLIC_GROWTH_ENDPOINT}/feedback/sales`, {
+        const response = await fetch(`${PUBLIC_GROWTH_ENDPOINT}/feedback/sales/enterprise`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
                 email,
-                subject,
+                subject: companyName,
                 cloudEmail,
                 companyName,
                 companySize,
                 companyWebsite,
-                firstName: name,
+                firstName,
+                lastName,
                 message: useCase,
                 ...getReferrerAndUtmSource()
             })
         });
+
+        trackEvent('contact-form-enterprise-submit');
 
         submitting = false;
         if (response.status >= 400) {
@@ -65,7 +71,7 @@
     <title>{title}</title>
     <meta property="og:title" content={title} />
     <meta name="twitter:title" content={title} />
-    <!-- Desscription -->
+    <!-- Description -->
     <meta name="description" content={description} />
     <meta property="og:description" content={description} />
     <meta name="twitter:description" content={description} />
@@ -78,51 +84,50 @@
 </svelte:head>
 
 <div class="absolute" style="pointer-events:none;">
-    <img src={Pink} alt="" />
+    <enhanced:img src="../bg.png" alt="" />
 </div>
 
 <Main>
     <div class="web-big-padding-section">
-        <div id="form" class="web-big-padding-section-level-1 u-padding-0 u-overflow-hidden">
+        <div id="form" class="web-big-padding-section-level-1 overflow-hidden p-0">
             <div class="web-big-padding-section-level-2 is-margin-replace-padding relative">
                 <div class="relative">
                     <div class="web-container relative">
                         <!-- before submit -->
-                        <div class="u-z-index-1 web-grid-1-1-opt-2 u-gap-32 e-u-row-gap-0 relative">
+                        <div class="relative z-1 grid grid-cols-1 gap-16 md:grid-cols-2">
                             <div>
-                                <div
-                                    class="web-u-max-inline-size-none-mobile"
-                                    class:web-u-max-width-380={!submitted}
-                                >
-                                    {#if submitted}
-                                        <section class="flex flex-col gap-5">
-                                            <h1 class="web-display web-u-color-text-primary">
-                                                Thank you for your submission
-                                            </h1>
-                                            <p class="web-description web-u-padding-block-end-32">
-                                                Your details for the enterprise plan have been sent
-                                                successfully. Our team will get back to you as soon
-                                                as possible.
-                                            </p>
-                                            <a
-                                                href="/pricing"
-                                                class="web-button is-secondary web-u-margin-block-end-32"
-                                            >
-                                                <span>Back to pricing</span>
-                                            </a>
-                                        </section>
-                                    {:else}
-                                        <section class="flex flex-col gap-5">
-                                            <h1 class="web-display web-u-color-text-primary">
-                                                Enterprise Plan
-                                            </h1>
-                                            <p class="web-description">
-                                                Interested in a pricing solution that fits your
-                                                specific requirements? Let’s talk.
-                                            </p>
-                                        </section>
-                                    {/if}
-                                </div>
+                                {#if submitted}
+                                    <section class="flex flex-col gap-5">
+                                        <h1 class="web-display web-u-color-text-primary">
+                                            Thank you for your submission
+                                        </h1>
+                                        <p class="text-description">
+                                            Your details for the enterprise plan have been sent
+                                            successfully. Our team will get back to you as soon as
+                                            possible.
+                                        </p>
+                                        <Button variant="secondary" href="/pricing" class="mb-8">
+                                            <span>Back to pricing</span>
+                                        </Button>
+                                    </section>
+                                {:else}
+                                    <section class="flex flex-col gap-5">
+                                        <h1 class="text-display font-aeonik-pro text-primary">
+                                            Appwrite for Enterprise
+                                        </h1>
+                                        <p class="text-description">
+                                            Enterprise businesses partner with Appwrite to empower
+                                            their developers with an all-in-one backend platform, so
+                                            they can focus on innovation, not reinventing the wheel.
+                                            Reduce complexity, accelerate development, and launch
+                                            faster.
+                                            <br />
+                                            <br />
+                                            Ready to talk? Fill out the form, and one of our experts
+                                            will be in touch.
+                                        </p>
+                                    </section>
+                                {/if}
                             </div>
                             {#if !submitted}
                                 <form
@@ -130,25 +135,35 @@
                                     on:submit|preventDefault={handleSubmit}
                                     class="mt-4 flex flex-col gap-4 lg:mt-0"
                                 >
-                                    <div class="flex justify-end">
-                                        <ul
-                                            class="web-form-list web-u-max-width-580 web-u-max-inline-size-none-mobile grid w-full gap-4 md:grid-cols-2"
-                                        >
+                                    <div class="flex w-full">
+                                        <ul class="web-form-list grid w-full gap-4 md:grid-cols-2">
                                             <li class="web-form-item">
-                                                <label class="u-block" for="name"
-                                                    >Name of representative</label
+                                                <label class="block" for="firstName"
+                                                    >First name</label
                                                 >
                                                 <input
                                                     required
                                                     class="web-input-text"
                                                     type="text"
-                                                    placeholder="Walter O'Brien"
-                                                    id="name"
-                                                    bind:value={name}
+                                                    placeholder="Walter"
+                                                    id="firstName"
+                                                    bind:value={firstName}
                                                 />
                                             </li>
                                             <li class="web-form-item">
-                                                <label class="u-block" for="workEmail"
+                                                <label class="block" for="lastName">Last name</label
+                                                >
+                                                <input
+                                                    required
+                                                    class="web-input-text"
+                                                    type="text"
+                                                    placeholder="O'Brien"
+                                                    id="lastName"
+                                                    bind:value={lastName}
+                                                />
+                                            </li>
+                                            <li class="web-form-item">
+                                                <label class="block" for="workEmail"
                                                     >Work email address</label
                                                 >
                                                 <input
@@ -161,7 +176,7 @@
                                                 />
                                             </li>
                                             <li class="web-form-item">
-                                                <label class="u-block" for="companyName"
+                                                <label class="block" for="companyName"
                                                     >Company name</label
                                                 >
                                                 <input
@@ -174,7 +189,7 @@
                                                 />
                                             </li>
                                             <li class="web-form-item">
-                                                <label class="u-block" for="companySize"
+                                                <label class="block" for="companySize"
                                                     >Company size</label
                                                 >
 
@@ -196,17 +211,18 @@
                                                     <span
                                                         class="icon-cheveron-down web-u-pointer-events-none absolute top-[11px] right-2"
                                                         aria-hidden="true"
-                                                    />
+                                                    ></span>
                                                 </div>
                                             </li>
-                                            <li class="web-form-item flex-col gap-1 md:col-span-2">
-                                                <label class="u-block" for="companyWebsite"
+                                            <li class="web-form-item flex-col gap-1">
+                                                <label class="block" for="companyWebsite"
                                                     >Company website</label
                                                 >
                                                 <input
                                                     required
+                                                    pattern="^(https:\/\/www\.|https:\/\/)?([a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)+)[a-zA-Z0-9\-\._~:\/\?#[\]@!\$&'\(\)\*\+,;=.]*$"
                                                     class="web-input-text w-full"
-                                                    type="url"
+                                                    type="text"
                                                     placeholder="https://appwrite.io"
                                                     id="companyWebsite"
                                                     bind:value={companyWebsite}
@@ -215,7 +231,7 @@
                                             <li
                                                 class="web-form-item flex-col gap-1 sm:col-span-1 md:col-span-2"
                                             >
-                                                <label class="u-block" for="use-case"
+                                                <label class="block" for="use-case"
                                                     >Please share more information about your use
                                                     case</label
                                                 >
@@ -225,7 +241,7 @@
                                                     id="use-case"
                                                     placeholder="Describe your use case and how our Enterprise Plan can support it"
                                                     bind:value={useCase}
-                                                />
+                                                ></textarea>
                                             </li>
                                         </ul>
                                     </div>
@@ -239,13 +255,13 @@
                                                 {error}
                                             {/if}
                                         </p>
-                                        <button
+                                        <Button
                                             type="submit"
                                             disabled={submitting}
-                                            class="web-button u-cross-child-center web-u-inline-width-100-percent-mobile-break1 cursor-pointer"
+                                            class="u-cross-child-center web-u-inline-width-100-percent-mobile-break1 cursor-pointer"
                                         >
                                             <span>Submit</span>
-                                        </button>
+                                        </Button>
                                     </div>
                                 </form>
                             {/if}
@@ -253,6 +269,12 @@
                     </div>
                 </div>
             </div>
+            <Scale theme="dark">
+                Appwrite has supported our recent growth in every step of the way, <span
+                    class="text-primary">without any failures or outages</span
+                >.
+            </Scale>
+            <LogoList />
             <div class="container">
                 <FooterNav />
                 <MainFooter />

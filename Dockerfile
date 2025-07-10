@@ -1,4 +1,4 @@
-FROM node:20-bullseye as base
+FROM node:20-bullseye AS base
 
 ARG PUBLIC_APPWRITE_ENDPOINT
 ENV PUBLIC_APPWRITE_ENDPOINT ${PUBLIC_APPWRITE_ENDPOINT}
@@ -45,6 +45,9 @@ ENV GITHUB_TOKEN ${GITHUB_TOKEN}
 ARG SENTRY_AUTH_TOKEN
 ENV SENTRY_AUTH_TOKEN ${SENTRY_AUTH_TOKEN}
 
+ARG SENTRY_RELEASE
+ENV SENTRY_RELEASE ${SENTRY_RELEASE}
+
 ARG PUBLIC_POSTHOG_API_KEY
 ENV PUBLIC_POSTHOG_API_KEY ${PUBLIC_POSTHOG_API_KEY}
 
@@ -57,13 +60,13 @@ COPY pnpm-lock.yaml pnpm-lock.yaml
 RUN npm i -g corepack@latest
 RUN corepack enable
 
-FROM base as build
+FROM base AS build
 
 COPY . .
 RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile
 RUN NODE_OPTIONS=--max_old_space_size=16384 pnpm run build
 
-FROM base as final
+FROM base AS final
 
 # Install fontconfig
 COPY ./local-fonts /usr/share/fonts

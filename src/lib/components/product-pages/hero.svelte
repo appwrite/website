@@ -1,5 +1,6 @@
 <script lang="ts">
     import { classNames } from '$lib/utils/classnames';
+    import Button from '$lib/components/ui/button.svelte';
 
     type $$Props = {
         eyebrow: {
@@ -36,7 +37,7 @@
 </script>
 
 <div
-    class="border-smooth box-content flex items-center border-b bg-[url(/images/bgs/mobile-hero.png)] bg-cover bg-bottom py-12 px-5 md:bg-[url(/images/bgs/hero.png)] md:bg-center md:pt-32 md:pb-40 lg:px-8 xl:px-16"
+    class="border-smooth box-content flex items-center border-b bg-[url(/images/bgs/mobile-hero.png)] bg-cover bg-bottom px-5 py-12 md:bg-[url(/images/bgs/hero.png)] md:bg-center md:pt-32 md:pb-40 lg:px-8 xl:px-16"
 >
     <div class="mx-auto grid max-w-[75rem] items-center gap-16 md:grid-cols-2">
         <div class="space-y-8">
@@ -51,18 +52,27 @@
             >
                 {title}
             </h1>
-            <p class="text-description text-secondary text-pretty font-medium">
+            <p class="text-description text-secondary font-medium text-pretty">
                 {description}
             </p>
 
             <div class="flex flex-col items-center gap-2 md:flex-row">
-                <a href={cta.url} class="web-button !w-full md:!w-fit">
+                <Button
+                    href={cta.url}
+                    class="!w-full md:!w-fit"
+                    event={`product-hero-${eyebrow.label.toLocaleLowerCase().replace(' ', '_')}-click`}
+                >
                     {cta.label}
-                </a>
+                </Button>
                 {#if secondaryCta}
-                    <a href={secondaryCta.url} class="web-button is-secondary !w-full md:!w-fit">
+                    <Button
+                        variant="secondary"
+                        href={secondaryCta.url}
+                        class="!w-full md:!w-fit"
+                        event={`product-hero-${secondaryCta.label.toLocaleLowerCase().replace(' ', '_')}-click`}
+                    >
                         {secondaryCta.label}
-                    </a>
+                    </Button>
                 {/if}
             </div>
         </div>

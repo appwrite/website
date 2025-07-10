@@ -23,51 +23,62 @@
 .web-icon-arrow-left:before { content: "\ea05"; }
 .web-icon-arrow-right:before { content: "\ea06"; }
 .web-icon-arrow-up:before { content: "\ea07"; }
-.web-icon-calendar:before { content: "\ea08"; }
-.web-icon-check:before { content: "\ea09"; }
-.web-icon-chevron-down:before { content: "\ea0a"; }
-.web-icon-chevron-left:before { content: "\ea0b"; }
-.web-icon-chevron-right:before { content: "\ea0c"; }
-.web-icon-chevron-up:before { content: "\ea0d"; }
-.web-icon-close:before { content: "\ea0e"; }
-.web-icon-command:before { content: "\ea0f"; }
-.web-icon-copy:before { content: "\ea10"; }
-.web-icon-daily-dev:before { content: "\ea11"; }
-.web-icon-dark:before { content: "\ea12"; }
-.web-icon-discord:before { content: "\ea13"; }
-.web-icon-divider-vertical:before { content: "\ea14"; }
-.web-icon-download:before { content: "\ea15"; }
-.web-icon-ext-link:before { content: "\ea16"; }
-.web-icon-firebase:before { content: "\ea17"; }
-.web-icon-github:before { content: "\ea18"; }
-.web-icon-google:before { content: "\ea19"; }
-.web-icon-hamburger-menu:before { content: "\ea1a"; }
-.web-icon-light:before { content: "\ea1b"; }
-.web-icon-linkedin:before { content: "\ea1c"; }
-.web-icon-location:before { content: "\ea1d"; }
-.web-icon-logout-left:before { content: "\ea1e"; }
-.web-icon-logout-right:before { content: "\ea1f"; }
-.web-icon-mailgun:before { content: "\ea20"; }
-.web-icon-message:before { content: "\ea21"; }
-.web-icon-microsoft:before { content: "\ea22"; }
-.web-icon-minus:before { content: "\ea23"; }
-.web-icon-nuxt:before { content: "\ea24"; }
-.web-icon-platform:before { content: "\ea25"; }
-.web-icon-play:before { content: "\ea26"; }
-.web-icon-plus:before { content: "\ea27"; }
-.web-icon-product-hunt:before { content: "\ea28"; }
-.web-icon-refine:before { content: "\ea29"; }
-.web-icon-rest:before { content: "\ea2a"; }
-.web-icon-search:before { content: "\ea2b"; }
-.web-icon-sendgrid:before { content: "\ea2c"; }
-.web-icon-star:before { content: "\ea2d"; }
-.web-icon-system:before { content: "\ea2e"; }
-.web-icon-textmagic:before { content: "\ea2f"; }
-.web-icon-twitter:before { content: "\ea30"; }
-.web-icon-vue:before { content: "\ea31"; }
-.web-icon-x:before { content: "\ea32"; }
-.web-icon-ycombinator:before { content: "\ea33"; }
-.web-icon-youtube:before { content: "\ea34"; }
+.web-icon-bluesky:before { content: "\ea08"; }
+.web-icon-calendar:before { content: "\ea09"; }
+.web-icon-check:before { content: "\ea0a"; }
+.web-icon-chevron-down:before { content: "\ea0b"; }
+.web-icon-chevron-left:before { content: "\ea0c"; }
+.web-icon-chevron-right:before { content: "\ea0d"; }
+.web-icon-chevron-up:before { content: "\ea0e"; }
+.web-icon-close:before { content: "\ea0f"; }
+.web-icon-command:before { content: "\ea10"; }
+.web-icon-copy:before { content: "\ea11"; }
+.web-icon-customize:before { content: "\ea12"; }
+.web-icon-daily-dev:before { content: "\ea13"; }
+.web-icon-dark:before { content: "\ea14"; }
+.web-icon-discord:before { content: "\ea15"; }
+.web-icon-divider-vertical:before { content: "\ea16"; }
+.web-icon-download:before { content: "\ea17"; }
+.web-icon-edge:before { content: "\ea18"; }
+.web-icon-ext-link:before { content: "\ea19"; }
+.web-icon-firebase:before { content: "\ea1a"; }
+.web-icon-github:before { content: "\ea1b"; }
+.web-icon-google:before { content: "\ea1c"; }
+.web-icon-hamburger-menu:before { content: "\ea1d"; }
+.web-icon-instagram:before { content: "\ea1e"; }
+.web-icon-light:before { content: "\ea1f"; }
+.web-icon-linkedin:before { content: "\ea20"; }
+.web-icon-location:before { content: "\ea21"; }
+.web-icon-logout-left:before { content: "\ea22"; }
+.web-icon-logout-right:before { content: "\ea23"; }
+.web-icon-mailgun:before { content: "\ea24"; }
+.web-icon-mcp:before { content: "\ea25"; }
+.web-icon-message:before { content: "\ea26"; }
+.web-icon-microsoft:before { content: "\ea27"; }
+.web-icon-minus:before { content: "\ea28"; }
+.web-icon-nuxt:before { content: "\ea29"; }
+.web-icon-platform:before { content: "\ea2a"; }
+.web-icon-play:before { content: "\ea2b"; }
+.web-icon-plus:before { content: "\ea2c"; }
+.web-icon-pop-locations:before { content: "\ea2d"; }
+.web-icon-product-hunt:before { content: "\ea2e"; }
+.web-icon-refine:before { content: "\ea2f"; }
+.web-icon-regions:before { content: "\ea30"; }
+.web-icon-remix:before { content: "\ea31"; }
+.web-icon-rest:before { content: "\ea32"; }
+.web-icon-search:before { content: "\ea33"; }
+.web-icon-sendgrid:before { content: "\ea34"; }
+.web-icon-sparkle:before { content: "\ea35"; }
+.web-icon-star:before { content: "\ea36"; }
+.web-icon-system:before { content: "\ea37"; }
+.web-icon-textmagic:before { content: "\ea38"; }
+.web-icon-ticket:before { content: "\ea39"; }
+.web-icon-tiktok:before { content: "\ea3a"; }
+.web-icon-twitter:before { content: "\ea3b"; }
+.web-icon-vue:before { content: "\ea3c"; }
+.web-icon-x:before { content: "\ea3d"; }
+.web-icon-ycombinator:before { content: "\ea3e"; }
+.web-icon-youtube:before { content: "\ea3f"; }
 
 $web-icon-apple: "\ea01";
 $web-icon-appwrite: "\ea02";
@@ -76,48 +87,59 @@ $web-icon-arrow-ext-link: "\ea04";
 $web-icon-arrow-left: "\ea05";
 $web-icon-arrow-right: "\ea06";
 $web-icon-arrow-up: "\ea07";
-$web-icon-calendar: "\ea08";
-$web-icon-check: "\ea09";
-$web-icon-chevron-down: "\ea0a";
-$web-icon-chevron-left: "\ea0b";
-$web-icon-chevron-right: "\ea0c";
-$web-icon-chevron-up: "\ea0d";
-$web-icon-close: "\ea0e";
-$web-icon-command: "\ea0f";
-$web-icon-copy: "\ea10";
-$web-icon-daily-dev: "\ea11";
-$web-icon-dark: "\ea12";
-$web-icon-discord: "\ea13";
-$web-icon-divider-vertical: "\ea14";
-$web-icon-download: "\ea15";
-$web-icon-ext-link: "\ea16";
-$web-icon-firebase: "\ea17";
-$web-icon-github: "\ea18";
-$web-icon-google: "\ea19";
-$web-icon-hamburger-menu: "\ea1a";
-$web-icon-light: "\ea1b";
-$web-icon-linkedin: "\ea1c";
-$web-icon-location: "\ea1d";
-$web-icon-logout-left: "\ea1e";
-$web-icon-logout-right: "\ea1f";
-$web-icon-mailgun: "\ea20";
-$web-icon-message: "\ea21";
-$web-icon-microsoft: "\ea22";
-$web-icon-minus: "\ea23";
-$web-icon-nuxt: "\ea24";
-$web-icon-platform: "\ea25";
-$web-icon-play: "\ea26";
-$web-icon-plus: "\ea27";
-$web-icon-product-hunt: "\ea28";
-$web-icon-refine: "\ea29";
-$web-icon-rest: "\ea2a";
-$web-icon-search: "\ea2b";
-$web-icon-sendgrid: "\ea2c";
-$web-icon-star: "\ea2d";
-$web-icon-system: "\ea2e";
-$web-icon-textmagic: "\ea2f";
-$web-icon-twitter: "\ea30";
-$web-icon-vue: "\ea31";
-$web-icon-x: "\ea32";
-$web-icon-ycombinator: "\ea33";
-$web-icon-youtube: "\ea34";
+$web-icon-bluesky: "\ea08";
+$web-icon-calendar: "\ea09";
+$web-icon-check: "\ea0a";
+$web-icon-chevron-down: "\ea0b";
+$web-icon-chevron-left: "\ea0c";
+$web-icon-chevron-right: "\ea0d";
+$web-icon-chevron-up: "\ea0e";
+$web-icon-close: "\ea0f";
+$web-icon-command: "\ea10";
+$web-icon-copy: "\ea11";
+$web-icon-customize: "\ea12";
+$web-icon-daily-dev: "\ea13";
+$web-icon-dark: "\ea14";
+$web-icon-discord: "\ea15";
+$web-icon-divider-vertical: "\ea16";
+$web-icon-download: "\ea17";
+$web-icon-edge: "\ea18";
+$web-icon-ext-link: "\ea19";
+$web-icon-firebase: "\ea1a";
+$web-icon-github: "\ea1b";
+$web-icon-google: "\ea1c";
+$web-icon-hamburger-menu: "\ea1d";
+$web-icon-instagram: "\ea1e";
+$web-icon-light: "\ea1f";
+$web-icon-linkedin: "\ea20";
+$web-icon-location: "\ea21";
+$web-icon-logout-left: "\ea22";
+$web-icon-logout-right: "\ea23";
+$web-icon-mailgun: "\ea24";
+$web-icon-mcp: "\ea25";
+$web-icon-message: "\ea26";
+$web-icon-microsoft: "\ea27";
+$web-icon-minus: "\ea28";
+$web-icon-nuxt: "\ea29";
+$web-icon-platform: "\ea2a";
+$web-icon-play: "\ea2b";
+$web-icon-plus: "\ea2c";
+$web-icon-pop-locations: "\ea2d";
+$web-icon-product-hunt: "\ea2e";
+$web-icon-refine: "\ea2f";
+$web-icon-regions: "\ea30";
+$web-icon-remix: "\ea31";
+$web-icon-rest: "\ea32";
+$web-icon-search: "\ea33";
+$web-icon-sendgrid: "\ea34";
+$web-icon-sparkle: "\ea35";
+$web-icon-star: "\ea36";
+$web-icon-system: "\ea37";
+$web-icon-textmagic: "\ea38";
+$web-icon-ticket: "\ea39";
+$web-icon-tiktok: "\ea3a";
+$web-icon-twitter: "\ea3b";
+$web-icon-vue: "\ea3c";
+$web-icon-x: "\ea3d";
+$web-icon-ycombinator: "\ea3e";
+$web-icon-youtube: "\ea3f";

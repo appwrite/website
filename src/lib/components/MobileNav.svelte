@@ -1,8 +1,12 @@
 <script lang="ts">
     import { afterNavigate } from '$app/navigation';
     import { IsLoggedIn } from '$lib/components';
-    import { GITHUB_REPO_LINK, GITHUB_STARS } from '$lib/constants';
+    import { SOCIAL_STATS } from '$lib/constants';
     import type { NavLink } from './MainNav.svelte';
+    import { getAppwriteDashboardUrl } from '$lib/utils/dashboard';
+    import { Button, InlineTag, Icon } from '$lib/components/ui';
+    import { GithubStats } from '$lib/components/shared';
+    import { trackEvent } from '$lib/actions/analytics';
 
     export let open = false;
     export let links: NavLink[];
@@ -17,10 +21,15 @@
 <nav class="web-side-nav web-is-not-desktop" class:hidden={!open}>
     <div class="web-side-nav-wrapper ps-4 pe-4">
         <div class="flex items-center gap-2 px-4">
-            <a href="https://cloud.appwrite.io/register" class="web-button is-secondary flex-1">
+            <Button
+                href={getAppwriteDashboardUrl('/register')}
+                variant="secondary"
+                class="flex-1"
+                event="mobile_nav-sign_up-click"
+            >
                 Sign up
-            </a>
-            <IsLoggedIn classes="flex-1" />
+            </Button>
+            <IsLoggedIn class="flex-1" />
         </div>
         <div class="web-side-nav-scroll">
             <section>
@@ -30,7 +39,14 @@
                             {#if mobileSubmenu}
                                 <svelte:component this={mobileSubmenu} {label} />
                             {:else}
-                                <a class="web-side-nav-button" {href}>
+                                <a
+                                    class="web-side-nav-button"
+                                    {href}
+                                    onclick={() =>
+                                        trackEvent(
+                                            `mobile-nav-${label.toLowerCase().replace(' ', '_')}-click`
+                                        )}
+                                >
                                     <span class="text-caption">{label}</span>
                                 </a>
                             {/if}
@@ -40,16 +56,7 @@
             </section>
         </div>
         <div class="web-side-nav-mobile-footer-buttons">
-            <a
-                href={GITHUB_REPO_LINK}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="web-button is-text web-u-inline-width-100-percent-mobile"
-            >
-                <span class="web-icon-star" aria-hidden="true" />
-                <span class="text">Star on GitHub</span>
-                <span class="web-inline-tag text-sub-body">{GITHUB_STARS}</span>
-            </a>
+            <GithubStats class="w-full! md:w-fit" />
         </div>
     </div>
 </nav>

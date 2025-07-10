@@ -6,6 +6,7 @@
     import type { HeroCardProps } from './HeroCard.svelte';
     import HeroCard from './HeroCard.svelte';
     import FloatingHead from '$lib/components/FloatingHead.svelte';
+    import { Button } from '$lib/components/ui';
 
     const title = 'Heroes' + TITLE_SUFFIX;
     const description =
@@ -34,17 +35,6 @@
             avatar: 'images/heroes/avatars/lucas.png'
         },
         {
-            name: 'Tanmoy Karmakar',
-            role: 'Software Engineer',
-            bio: 'Tanmoy Karmakar is a co-organizer at Flutter Kolkata and SDE-II [Flutter] at SaaS Labs.\
-						He loves to create content related to Flutter and organize events and meet-ups.\
-						Learning new ways to complement Flutter development always amuses him.',
-            github: 'https://github.com/tanmoy27112000',
-            twitter: 'https://twitter.com/tanmoykar27',
-            linkedin: 'https://www.linkedin.com/in/tanmoykarmakar2711',
-            avatar: 'images/heroes/avatars/tanmoy.png'
-        },
-        {
             name: 'Bishwajeet Parhi',
             role: 'Flutter Developer',
             bio: "Bishwajeet Parhi is a Flutter developer and active open-source contributor.\
@@ -65,21 +55,12 @@
         },
         {
             name: 'Jason Torres',
-            role: 'Freelance Community Manager',
+            role: 'Community Evangelist',
             bio: 'Jason Torres a former film-maker turned developer who is currently exploring Developer Advocacy and Community Management freelance, and hosting The Tech Commute, a series of Twitter Spaces catered towards developers.',
             github: 'https://github.com/jasonetorres',
             twitter: 'https://twitter.com/tasonjorres',
             linkedin: 'https://www.linkedin.com/in/thejasontorres',
             avatar: 'images/heroes/avatars/jason.png'
-        },
-        {
-            name: 'Nishant Jain',
-            role: 'Frontend Developer',
-            bio: 'Nishant Jain is a frontend developer and community builder from Indore, India. He has been actively contributing to the Appwrite community as a Discord moderator.',
-            github: 'https://github.com/Nishantjain10',
-            twitter: 'https://twitter.com/devnishant10',
-            linkedin: 'https://www.linkedin.com/in/nishantj2002/',
-            avatar: 'images/heroes/avatars/nishant.png'
         },
         {
             name: 'Vincent Ge',
@@ -92,7 +73,7 @@
         },
         {
             name: 'Taylor Desseyn',
-            role: 'Recruiter Advocate',
+            role: 'VP of Global Community',
             bio: 'Taylor Desseyn is a skilled people connector and has helped 600+ individuals find their perfect career fit in tech. His knack for creating community shines through his use of social media and content creation',
             github: 'https://github.com/tdesseyn',
             twitter: 'https://x.com/tdesseyn',
@@ -102,7 +83,7 @@
         {
             name: 'Demola Malomo',
             role: 'Software Engineer & Technical Writer',
-            bio: 'Demola Malomo is a software engineer and technical writer from Lagos, Nigeria. He primarily code in JavaScript and TypeScript and has been learning Rust and Go.',
+            bio: 'Demola Malomo is a software engineer and technical writer from Lagos, Nigeria. He primarily codes in JavaScript and TypeScript and has been learning Rust and Go.',
             github: 'https://github.com/Mr-Malomz',
             twitter: 'https://x.com/malomz',
             linkedin: 'https://www.linkedin.com/in/malomoademola/',
@@ -116,6 +97,24 @@
             twitter: 'https://x.com/DThompsonDev',
             linkedin: 'https://www.linkedin.com/in/dthompsondev',
             avatar: 'images/heroes/avatars/danny.png'
+        },
+        {
+            name: 'Christina Petit',
+            role: 'Freelance Developer',
+            bio: 'Christina Petit is a freelance web developer from France who has been quite active in the Appwrite Discord server and community initiatives like Init and Office Hours. She also actively creates technical content on YouTube with Astro.',
+            github: 'http://github.com/petipois',
+            twitter: 'http://x.com/petitpois28',
+            linkedin: 'https://www.linkedin.com/in/christina-petitpois',
+            avatar: 'images/heroes/avatars/christina.png'
+        },
+        {
+            name: 'Nick Gatzoulis',
+            role: 'Managing Director',
+            bio: 'Nick Gatzoulis is a tech lead and SaaS founder from the UK who actively manages a Backend-as-a-Service community on X (Twitter) and creates technical content on YouTube, where has published numerous Appwrite tutorials.',
+            github: 'https://github.com/nickgatzoulis',
+            twitter: 'https://x.com/nickgatzoulis',
+            linkedin: 'https://www.linkedin.com/in/nickgatzoulis',
+            avatar: 'images/heroes/avatars/nick.png'
         }
     ];
 
@@ -148,7 +147,7 @@
     <div class="web-big-padding-section">
         <div class="py-10">
             <div class="web-big-padding-section-level-2">
-                <section class="container hero web-u-padding-block-end-0">
+                <section class="hero web-u-padding-block-end-0 container">
                     <div>
                         <h1 class="text-display font-aeonik-pro text-primary">Appwrite Heroes</h1>
                         <p class="text-body mt-5 font-medium">
@@ -156,14 +155,15 @@
                             build with Appwrite, help us support you by joining the Appwrite Heroes
                             program and becoming a leader in our developer community.
                         </p>
-                        <a
+                        <Button
+                            variant="secondary"
                             href="https://7nxwryuitoy.typeform.com/heroes-apply"
                             target="_blank"
                             rel="noopener noreferrer"
-                            class="web-button is-secondary mt-8"
+                            class="mt-8"
                         >
                             <span class="text">Become a Hero</span>
-                        </a>
+                        </Button>
                     </div>
                     <div>
                         <img src="/images/heroes/bg.png" width="" alt="" />
@@ -343,18 +343,19 @@
                             Have you been actively providing value for the Appwrite community? Apply
                             now to join our hero program! Applications open every three months.
                         </p>
-                        <a
+                        <Button
+                            variant="transparent"
                             href="https://7nxwryuitoy.typeform.com/heroes-apply"
                             target="_blank"
                             rel="noopener noreferrer"
-                            class="web-button is-transparent is-full-width-mobile mt-5 self-center"
+                            class="is-full-width-mobile mt-6 self-center"
                         >
                             Become a Hero
-                        </a>
+                        </Button>
                     </div>
                 </div>
                 <div class="web-big-padding-section-level-2 relative">
-                    <div class="container relative">
+                    <div class="relative container">
                         <FooterNav noBorder />
                         <MainFooter />
                     </div>
@@ -524,10 +525,6 @@
 
             .text-description {
                 margin-block-start: 1.25rem;
-            }
-
-            .web-button {
-                margin-block-start: 1.5rem;
             }
         }
     }

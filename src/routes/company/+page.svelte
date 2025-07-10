@@ -4,6 +4,7 @@
     import FooterNav from '$lib/components/FooterNav.svelte';
     import { TITLE_SUFFIX } from '$routes/titles';
     import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
+    import { Button } from '$lib/components/ui';
 
     const title = 'Company' + TITLE_SUFFIX;
     const description =
@@ -34,7 +35,7 @@
     <div class="web-big-padding-section relative">
         <div class="relative py-10">
             <div class="web-big-padding-section-level-2" style:margin-block="8rem">
-                <section class="container web-u-padding-block-end-0">
+                <section class="web-u-padding-block-end-0 container">
                     <div
                         class="web-hero"
                         style="--hero-max-inline-size:62.125rem; --hero-gap:1.125rem;"
@@ -65,14 +66,15 @@
                             <h2 class="text-display font-aeonik-pro text-primary">
                                 Designed for and by developers
                             </h2>
-                            <a
+                            <Button
+                                event="company-careers-join_the_team-click"
                                 href="https://appwrite.careers"
-                                class="web-button web-u-inline-width-100-percent-mobile-break1 self-start"
+                                class="web-u-inline-width-100-percent-mobile-break1 self-start"
                                 target="_blank"
                                 rel="noopener noreferrer"
                             >
                                 <span>Join the team</span>
-                            </a>
+                            </Button>
                         </div>
 
                         <div class="text-description flex flex-col gap-4">
@@ -389,7 +391,7 @@
                                         target="_blank"
                                         rel="noopener noreferrer"
                                     >
-                                        <span class="web-icon-github" aria-hidden="true" />
+                                        <span class="web-icon-github" aria-hidden="true"></span>
                                     </a>
                                 </li>
                                 <li>
@@ -400,7 +402,7 @@
                                         target="_blank"
                                         rel="noopener noreferrer"
                                     >
-                                        <span class="web-icon-twitter" aria-hidden="true" />
+                                        <span class="web-icon-twitter" aria-hidden="true"></span>
                                     </a>
                                 </li>
                             </ul>
@@ -418,7 +420,7 @@
                                         target="_blank"
                                         rel="noopener noreferrer"
                                     >
-                                        <span class="web-icon-github" aria-hidden="true" />
+                                        <span class="web-icon-github" aria-hidden="true"></span>
                                     </a>
                                 </li>
                                 <li>
@@ -429,7 +431,7 @@
                                         target="_blank"
                                         rel="noopener noreferrer"
                                     >
-                                        <span class="web-icon-twitter" aria-hidden="true" />
+                                        <span class="web-icon-twitter" aria-hidden="true"></span>
                                     </a>
                                 </li>
                             </ul>
@@ -437,7 +439,7 @@
                         <li class="flex flex-col">
                             <h6 class="text-body text-primary font-medium">Gilad Engel</h6>
                             <p class="text-body font-medium">Angel Investor</p>
-                            <ul class="mt-auto flex gap-2 pt-4" />
+                            <ul class="mt-auto flex gap-2 pt-4"></ul>
                         </li>
                         <li class="flex flex-col">
                             <h6 class="text-body text-primary font-medium">Krishna Visvanathan</h6>
@@ -452,7 +454,7 @@
                                         target="_blank"
                                         rel="noopener noreferrer"
                                     >
-                                        <span class="web-icon-github" aria-hidden="true" />
+                                        <span class="web-icon-github" aria-hidden="true"></span>
                                     </a>
                                 </li>
                             </ul>
@@ -469,7 +471,7 @@
                                         target="_blank"
                                         rel="noopener noreferrer"
                                     >
-                                        <span class="web-icon-github" aria-hidden="true" />
+                                        <span class="web-icon-github" aria-hidden="true"></span>
                                     </a>
                                 </li>
                             </ul>
@@ -487,7 +489,7 @@
                                         target="_blank"
                                         rel="noopener noreferrer"
                                     >
-                                        <span class="web-icon-github" aria-hidden="true" />
+                                        <span class="web-icon-github" aria-hidden="true"></span>
                                     </a>
                                 </li>
                             </ul>
@@ -505,7 +507,7 @@
                                         target="_blank"
                                         rel="noopener noreferrer"
                                     >
-                                        <span class="web-icon-github" aria-hidden="true" />
+                                        <span class="web-icon-github" aria-hidden="true"></span>
                                     </a>
                                 </li>
                             </ul>
@@ -523,7 +525,7 @@
                                         target="_blank"
                                         rel="noopener noreferrer"
                                     >
-                                        <span class="web-icon-twitter" aria-hidden="true" />
+                                        <span class="web-icon-twitter" aria-hidden="true"></span>
                                     </a>
                                 </li>
                             </ul>
@@ -547,14 +549,16 @@
                         <p class="text-primary web-u-opacity-64">
                             Find your next career at Appwrite and join a team of remote workers.
                         </p>
-                        <a
+                        <Button
+                            event="company-careers-click"
+                            variant="transparent"
                             href="https://appwrite.careers"
                             target="_blank"
                             rel="noopener noreferrer"
-                            class="web-button is-transparent mt-4 self-center"
+                            class="mt-4 self-center"
                         >
                             <span>Careers</span>
-                        </a>
+                        </Button>
                     </div>
                     <FooterNav />
                     <MainFooter />

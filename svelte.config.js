@@ -1,9 +1,9 @@
-import { dirname, join } from 'path';
-import { fileURLToPath } from 'url';
-import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 import { preprocessMeltUI, sequence } from '@melt-ui/pp';
-import { markdoc } from 'svelte-markdoc-preprocess';
 import nodeAdapter from '@sveltejs/adapter-node';
+import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
+import { dirname, join } from 'path';
+import { markdoc } from 'svelte-markdoc-preprocess';
+import { fileURLToPath } from 'url';
 
 /** @type {import('@sveltejs/kit').Config}*/
 const config = {
@@ -21,6 +21,7 @@ const config = {
                 article: absolute('./src/markdoc/layouts/Article.svelte'),
                 tutorial: absolute('./src/markdoc/layouts/Tutorial.svelte'),
                 post: absolute('./src/markdoc/layouts/Post.svelte'),
+                partner: absolute('./src/markdoc/layouts/Partner.svelte'),
                 author: absolute('./src/markdoc/layouts/Author.svelte'),
                 category: absolute('./src/markdoc/layouts/Category.svelte'),
                 policy: absolute('./src/markdoc/layouts/Policy.svelte'),

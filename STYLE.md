@@ -144,21 +144,21 @@ the tone and voice remains consistent.
 - All titles, headings, buttons, and labels should be written in **sentence case**. If you're not sure what sentence case should look like, check [APA's style guide](https://apastyle.apa.org/style-grammar-guidelines/capitalization/sentence-case) or check with ChatGPT and other LLMs which reliably converts titles to sentence case.
 - All headings in a docs page begin with `# Heading` then `## Heading` and `### Heading`. Internally, they're converted to H2 to H4 tags.
 - All headings should have an ID label, for example `# Cool heading {% #cool-heading %}` the `#cool-heading` ID will be used to generate the table of contents and add links to the heading.
-- Prefer verbs over gerunds, for example, say "Create documents" not "Creating documents".
+- Prefer verbs to gerunds, for example, say "Create documents" not "Creating documents".
 
 ### Extended Markdoc components
 
-Appwrite's documentation uses extended markdown syntax. You can find all of the available partials types in the [CONTENT.md file](./CONTENT.md).
+Appwrite's documentation uses extended Markdown syntax. You can find all the available partials types in the [CONTENT.md file](./CONTENT.md).
 
 ### Screenshots
 
 - When contributing upload original screenshots. The Appwrite design team will edit the screenshot to be consistent with other screenshots in the docs.
 - Screenshots must be 16:9
-- Screnshots should be taken in a 1400 x 900 view port on 3x DPR in browser developer tools.
+- Screenshots should be taken in a 1400 x 900 view port on 3x DPR in browser developer tools.
 - Use generic and sensible organization, project, and resource names. Avoid names like `test`, `demo`, or `sdlkfj`.
-- All screenshot should be take from a user named Walter O'Brien. You can change the name of your current user by going to your Appwrite Console and clicking the **top right profile icon** > **Your Account** > **Name**.
+- All screenshot should be taken from a user named Walter O'Brien. You can change the name of your current user by going to your Appwrite Console and clicking the **top right profile icon** > **Your Account** > **Name**.
 - Screenshots are stored in the `/images/docs/` folder, in a parent folder that is consistent with the path of the docs that reference the image.
-- All screenshots must be both dark and light mode, with `/path/` holding the lightmode version and `/path/dark/` holding the dark mode version.
+- All screenshots must be both dark and light mode, with `/path/` holding the light-mode version and `/path/dark/` holding the dark mode version.
 - Screenshots should be uploaded as un-edited original. Request help from the Appwrite design team to help you edit and refine your photos according to our guidelines.
 
 ```md
@@ -250,12 +250,19 @@ Split content such that each piece makes sense without reading dependents or exp
 
 ### Headings
 
-Prefer simple nouns and root form verbs.
+Navigation labels should be short (ideally, one word) and not have verbs or a directive to keep labels concise. Also make sure not to repeat a term if already under certain context
 
-✅ Create screen (root verb, noun)
-✅ Authentication (noun)
-❌ Authenticating (present participle verb)
-❌ Create a new screen (too wordy)
+- ✅ User verification
+- ✅ Release (under a Policies section)
+- ❌ Verify user
+- ❌ Release policies (under a Policies section)
+
+For content headings, prefer simple nouns and root form verbs.
+
+- ✅ Create screen (root verb, noun)
+- ✅ Authentication (noun)
+- ❌ Authenticating (present participle verb)
+- ❌ Create a new screen (too wordy)
 
 Try your best to stick to simple headings, if it's not possible, don't worry and write a full heading if need be.
 
@@ -264,19 +271,19 @@ Try your best to stick to simple headings, if it's not possible, don't worry and
 Avoid unclear [links](https://www.youtube.com/watch?v=dQw4w9WgXcQ) such as learn more [here](https://www.youtube.com/watch?v=dQw4w9WgXcQ).
 Readers will be unsure where a link may take them. Those using a screen reader will find it especially difficult.
 
-✅ [Learn more about authentication](https://appwrite.io/docs/products/auth/email-password#login)
-❌ Learn more about authentication [here](https://www.youtube.com/watch?v=dQw4w9WgXcQ)
+- ✅ [Learn more about authentication](https://appwrite.io/docs/products/auth/email-password#login)
+- ❌ Learn more about authentication [here](https://www.youtube.com/watch?v=dQw4w9WgXcQ)
 
 ### Sentences
 
 Use a directive that's straight to the point when providing an action a developer must perform.
 The action and verb always comes first, the explanation after.
 
-✅ Create a new database.
-✅ Update a document so its permissions include your new users.
-❌ To allow access, update your permissions.
-❌ You can create a new database for each tenant.
-❌ Creating a new bucket lets you set different permissions for images uploaded by users.
+- ✅ Create a new database.
+- ✅ Update a document so its permissions include your new users.
+- ❌ To allow access, update your permissions.
+- ❌ You can create a new database for each tenant.
+- ❌ Creating a new bucket lets you set different permissions for images uploaded by users.
 
 The action always comes first and is in the beginning of the sentence, which makes important steps easier to follow.
 
@@ -288,11 +295,11 @@ to skip and scan a document.
 Like sentences, important information always comes first.
 This makes it easier to scan through the page.
 
-✅ Clear, important information such as actions come first
+- ✅ Clear, important information such as actions come first
 
 > Store secrets as environment variables in vaults by navigating to **settings** > **security** > **vault**. Your secrets should never be shared. You must ensure data privacy, sharing secrets can compromise security during development.
 
-❌ Unclear, important information is in the middle of the paragraph
+- ❌ Unclear, important information is in the middle of the paragraph
 
 > Security is important in development. That's why you should take care to protect secrets. Secrets should be safely stored as a environment variable in a vault. You can find vaults under **settings** > **security** > **vault**. Don't share this with anyone!
 
@@ -300,6 +307,13 @@ If there are multiple important actions or pieces of information, **break up the
 Even if your paragraph is just one or two sentences, shorter paragraphs are easier to scan.
 
 ### Diction
+
+Avoid using possession as it is less welcoming.
+
+- ✅ read the documentation
+- ✅ the API
+- ❌ read on our documentation
+- ❌ our API
 
 If you're unsure about which word to use to describe a concept, you shuold look for precedence in the following order.
 
@@ -317,6 +331,13 @@ This applies to tone, structure, and content. Unless no exisitng examples of a p
 or a page needs to be sufficiently different from existing pages, follow exisitng examples.
 
 If you are proposing a new type of page, discuss an outline in your PR and ask for the Appwrite team's review.
+
+### Placeholders
+
+Whenever there's a need for a placeholder such as for an ID, use angle brackets (<>) over square brackets ([]) because square brackets can be confused for an array.
+
+- ✅ `client.setEndpoint("https://<REGION>.cloud.appwrite.io")`
+- ❌ `client.setEndpoint("https://[REGION].cloud.appwrite.io")`
 
 ## Code snippets
 

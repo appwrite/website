@@ -1,32 +1,49 @@
 <script lang="ts">
-    import { platformMap } from '$lib/utils/references';
-    import { writable } from 'svelte/store';
+    import { Select, Tooltip } from '$lib/components';
     import { getCodeHtml, type Language } from '$lib/utils/code';
     import { copy } from '$lib/utils/copy';
-    import { Select, Tooltip } from '$lib/components';
+    import { platformMap } from '$lib/utils/references';
+    import { SvelteSet } from 'svelte/reactivity';
 
-    export let selected: Language = 'js';
-    export let data: { language: string; content: string; platform?: string }[] = [];
-    export let width: number | null = null;
-    export let height: number | null = null;
+    interface Props {
+        selected?: Language;
+        data?: { language: string; content: string; platform?: string }[];
+        width?: number | null;
+        height?: number | null;
+    }
 
-    $: snippets = writable(new Set(data.map((d) => d.language)));
+    let { selected = $bindable('js'), data = [], width = null, height = null }: Props = $props();
 
-    $: content = data.find((d) => d.language === selected)?.content ?? '';
+    const snippets = $derived(new SvelteSet(data.map((d) => d.language)));
+    const content = $derived(data.find((d) => d.language === selected)?.content ?? '');
+    const platform = $derived(data.find((d) => d.language === selected)?.platform ?? '');
+    const result = $derived(
+        getCodeHtml({
+            content,
+            language: selected ?? 'sh',
+            withLineNumbers: true
+        })
+    );
+    const options = $derived(
+        Array.from(snippets).map((language) => ({
+            value: language,
+            label: platformMap[language]
+        }))
+    );
 
-    $: platform = data.find((d) => d.language === selected)?.platform ?? '';
-
-    snippets?.subscribe((n) => {
-        if (selected === null && n.size > 0) {
-            selected = Array.from(n)[0] as Language;
+    $effect(() => {
+        if (selected === null && snippets.size > 0) {
+            selected = Array.from(snippets)[0] as Language;
         }
     });
 
-    enum CopyStatus {
-        Copy = 'Copy',
-        Copied = 'Copied!'
-    }
-    let copyText = CopyStatus.Copy;
+    const CopyStatus = {
+        Copy: 'Copy',
+        Copied: 'Copied!'
+    } as const;
+    type CopyStatusType = keyof typeof CopyStatus;
+    type CopyStatusValue = (typeof CopyStatus)[CopyStatusType];
+    let copyText: CopyStatusValue = $state(CopyStatus.Copy);
     async function handleCopy() {
         await copy(content);
 
@@ -35,24 +52,13 @@
             copyText = CopyStatus.Copy;
         }, 1000);
     }
-
-    $: result = getCodeHtml({
-        content,
-        language: selected ?? 'sh',
-        withLineNumbers: true
-    });
-    $: options = Array.from($snippets).map((language) => ({
-        value: language,
-        label: platformMap[language]
-    }));
 </script>
 
 <section
-    class="dark web-code-snippet mx-auto lg:!max-w-[90vw]"
+    class="dark web-code-snippet mx-auto w-full lg:!max-w-[90vw]"
     aria-label="code-snippet panel"
-    style={`width: ${width ? width / 16 + 'rem' : 'inherit'}; height: ${
-        height ? height / 16 + 'rem' : 'inherit'
-    }`}
+    style:width={width ? width / 16 + 'rem' : 'inherit'}
+    style:height={height ? height / 16 + 'rem' : 'inherit'}
 >
     <header class="web-code-snippet-header">
         <div class="web-code-snippet-header-start">
@@ -64,22 +70,24 @@
         </div>
         <div class="web-code-snippet-header-end">
             <ul class="buttons-list flex gap-3">
-                {#if $snippets.entries.length}
+                {#if snippets.size}
                     <li class="buttons-list-item flex self-center">
-                        <Select bind:value={selected} bind:options />
+                        <Select bind:value={selected} {options} />
                     </li>
                 {/if}
                 <li class="buttons-list-item" style="padding-inline-start: 13px">
                     <Tooltip>
                         <button
-                            on:click={handleCopy}
+                            onclick={handleCopy}
                             class="web-icon-button"
                             aria-label="copy code from code-snippet"
-                            ><span class="web-icon-copy" aria-hidden="true" /></button
+                            ><span class="web-icon-copy" aria-hidden="true"></span></button
                         >
-                        <svelte:fragment slot="tooltip">
-                            {copyText}
-                        </svelte:fragment>
+                        {#snippet tooltip()}
+                            <span>
+                                {copyText}
+                            </span>
+                        {/snippet}
                     </Tooltip>
                 </li>
             </ul>
@@ -87,7 +95,7 @@
     </header>
     <div
         class="web-code-snippet-content overflow-auto"
-        style={`height: ${height ? height / 16 + 'rem' : 'inherit'}`}
+        style:height={height ? height / 16 + 'rem' : 'inherit'}
     >
         <!-- eslint-disable-next-line svelte/no-at-html-tags -->
         {@html result}

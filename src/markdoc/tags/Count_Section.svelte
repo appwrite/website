@@ -1,5 +1,15 @@
+<script lang="ts">
+    import { type Snippet } from 'svelte';
+
+    interface Props {
+        children: Snippet;
+    }
+
+    const { children }: Props = $props();
+</script>
+
 <section class="count-secondary-title">
-    <slot />
+    {@render children()}
 </section>
 
 <style lang="scss">

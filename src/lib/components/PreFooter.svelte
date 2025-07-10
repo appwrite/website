@@ -1,6 +1,60 @@
 <script lang="ts">
-    import { PUBLIC_APPWRITE_DASHBOARD } from '$env/static/public';
-    import { trackEvent } from '$lib/actions/analytics';
+    import { Button, type Variant } from '$lib/components/ui';
+    import { getAppwriteDashboardUrl } from '$lib/utils/dashboard';
+
+    const plans: Array<{
+        name: string;
+        price: string;
+        description: string;
+        variable?: boolean;
+        tag?: string;
+        buttonText: string;
+        buttonLink: string;
+        buttonVariant: Variant;
+        eventName: string;
+    }> = [
+        {
+            name: 'Free',
+            price: '$0',
+            description: 'A great fit for passion projects and small applications.',
+            buttonText: 'Get started',
+            buttonLink: getAppwriteDashboardUrl('/register'),
+            buttonVariant: 'secondary',
+            eventName: 'footer-plans-free-click'
+        },
+        {
+            name: 'Pro',
+            price: '$15',
+            variable: true,
+            tag: 'Most Popular',
+            description:
+                'For production applications that need powerful functionality and resources to scale.',
+            buttonText: 'Start building',
+            buttonLink: getAppwriteDashboardUrl('/console?type=create&plan=tier-1'),
+            buttonVariant: 'primary',
+            eventName: 'footer-plans-pro-click'
+        },
+        {
+            name: 'Scale',
+            price: '$599',
+            variable: true,
+            description:
+                'For teams that handle more complex and large projects and need more control and support.',
+            buttonText: 'Start building',
+            buttonLink: getAppwriteDashboardUrl('/console?type=create&plan=tier-2'),
+            buttonVariant: 'secondary',
+            eventName: 'footer-plans-scale-click'
+        },
+        {
+            name: 'Enterprise',
+            price: 'Custom',
+            description: 'For enterprises that need more power and premium support.',
+            buttonText: 'Contact us',
+            buttonLink: '/contact-us/enterprise',
+            buttonVariant: 'secondary',
+            eventName: 'footer-plans-enterprise-click'
+        }
+    ];
 </script>
 
 <img
@@ -16,13 +70,14 @@
         <h2 class="text-display font-aeonik-pro text-primary max-w-[500px] text-center">
             Start building with Appwrite today
         </h2>
-        <a
-            href={PUBLIC_APPWRITE_DASHBOARD}
-            class="web-button is-transparent web-self-center"
-            on:click={() => trackEvent({ plausible: { name: 'Get started in pre footer' } })}
+        <Button
+            variant="transparent"
+            class="self-center"
+            href={getAppwriteDashboardUrl()}
+            event="footer-plans-get_started-click"
         >
             <span class="text">Get started</span>
-        </a>
+        </Button>
     </section>
     <section
         class="web-card is-transparent has-border-gradient web-u-max-inline-width-584-mobile web-mx-auto-mobile web-u-inline-width-100-percent-mobile p-8!"
@@ -34,127 +89,44 @@
         </header>
 
         <ul class="web-strip-plans -mt-8">
-            <li class="web-strip-plans-item web-strip-plans-container-query">
-                <div class="web-strip-plans-item-wrapper">
-                    <div class="web-strip-plans-plan">
-                        <h4 class="title text-description">Free</h4>
-                        <div class="text-title font-aeonik-pro text-primary">$0</div>
-                        <div class="info text-caption font-medium" />
-                    </div>
-                    <p class="web-strip-plans-info text-caption font-medium">
-                        A great fit for passion projects and small applications.
-                    </p>
-                    <a
-                        href={`${PUBLIC_APPWRITE_DASHBOARD}/register`}
-                        class="web-button is-secondary is-full-width-mobile web-u-cross-child-end"
-                        on:click={() =>
-                            trackEvent({
-                                plausible: {
-                                    name: 'Get started Free plan'
-                                }
-                            })}
-                    >
-                        <span class="text" style:padding-inline="0.5rem">Get started</span>
-                    </a>
-                </div>
-            </li>
-            <li class="web-strip-plans-item web-strip-plans-container-query">
-                <div class="web-strip-plans-item-wrapper">
-                    <div class="web-strip-plans-plan">
-                        <div class="flex gap-3">
-                            <h4 class="title text-description">Pro</h4>
-                            <div class="web-inline-tag is-pink text-sub-body">Most popular</div>
-                        </div>
-                        <div class="mt-4 flex flex-col">
-                            <span>From</span>
-                            <div class="flex items-end gap-2">
-                                <div class="text-title font-aeonik-pro text-primary">$15</div>
-                                <div class="info text-caption font-medium">/month</div>
+            {#each plans as plan}
+                <li class="web-strip-plans-item web-strip-plans-container-query">
+                    <div class="place-item-end grid grid-cols-1 gap-6 md:grid-cols-3">
+                        <div class="flex flex-col">
+                            <div class="flex gap-3">
+                                <h4 class="title text-description">{plan.name}</h4>
+                                {#if plan.tag}<div class="web-inline-tag is-pink text-sub-body">
+                                        Most popular
+                                    </div>{/if}
+                            </div>
+
+                            <div class="mt-4 flex flex-col">
+                                {#if plan.variable}<span>From</span>{/if}
+                                <div class="flex items-end gap-2">
+                                    <div class="text-title font-aeonik-pro text-primary">
+                                        {plan.price}
+                                    </div>
+                                    {#if plan.variable}
+                                        <div class="info text-caption font-medium">/month</div>
+                                    {/if}
+                                </div>
                             </div>
                         </div>
+                        <p class="web-strip-plans-info text-caption self-end font-medium">
+                            {plan.description}
+                        </p>
+                        <Button
+                            href={plan.buttonLink}
+                            event={plan.eventName}
+                            variant={plan.buttonVariant}
+                            class="w-full! flex-3 self-end md:w-fit"
+                        >
+                            <span class="text" style:padding-inline="0.5rem">{plan.buttonText}</span
+                            >
+                        </Button>
                     </div>
-                    <p class="web-strip-plans-info text-caption font-medium">
-                        For production applications that need powerful functionality and resources
-                        to scale.
-                    </p>
-                    <a
-                        href={`${PUBLIC_APPWRITE_DASHBOARD}/console?type=create&plan=tier-1`}
-                        class="web-button is-full-width-mobile web-u-cross-child-end"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        on:click={() =>
-                            trackEvent({
-                                plausible: {
-                                    name: 'Get started Pro plan'
-                                }
-                            })}
-                    >
-                        <!-- <span class="text">Start trial</span> -->
-                        <span class="text">Start building</span>
-                    </a>
-                </div>
-            </li>
-            <li class="web-strip-plans-item web-strip-plans-container-query">
-                <div class="web-strip-plans-item-wrapper">
-                    <div class="web-strip-plans-plan">
-                        <h4 class="text-description text-primary">Scale</h4>
-                        <div class="mt-4 flex flex-col">
-                            <span>From</span>
-                            <div class="flex items-end gap-2">
-                                <div class="text-title font-aeonik-pro text-primary">$599</div>
-                                <div class="info text-caption font-medium">/month</div>
-                            </div>
-                        </div>
-                    </div>
-                    <p class="web-strip-plans-info text-caption font-medium">
-                        For teams that handle more complex and large projects and need more control
-                        and support.
-                    </p>
-                    <a
-                        href={`${PUBLIC_APPWRITE_DASHBOARD}/console?type=create&plan=tier-2`}
-                        class="web-button is-secondary is-full-width-mobile web-u-cross-child-end"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        on:click={() =>
-                            trackEvent({
-                                plausible: {
-                                    name: 'Get started Scale plan'
-                                }
-                            })}
-                    >
-                        <span class="text">Start building</span>
-                    </a>
-                </div>
-            </li>
-            <li class="web-strip-plans-item web-strip-plans-container-query">
-                <div class="web-strip-plans-item-wrapper">
-                    <div class="web-strip-plans-plan">
-                        <h4 class="text-description text-primary">Enterprise</h4>
-                        <div class="mt-4 flex flex-col">
-                            <div class="flex items-end gap-2">
-                                <div class="text-title font-aeonik-pro text-primary">Custom</div>
-                            </div>
-                        </div>
-                    </div>
-                    <p class="web-strip-plans-info text-caption font-medium">
-                        For enterprises that need more power and premium support.
-                    </p>
-                    <a
-                        href="/contact-us/enterprise"
-                        class="web-button is-secondary is-full-width-mobile web-u-cross-child-end"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        on:click={() =>
-                            trackEvent({
-                                plausible: {
-                                    name: 'Get started Scale plan'
-                                }
-                            })}
-                    >
-                        <span class="text" style:padding-inline="0.5rem">Contact us</span>
-                    </a>
-                </div>
-            </li>
+                </li>
+            {/each}
         </ul>
     </section>
 </div>
@@ -164,32 +136,15 @@
         flex-basis: 5rem !important;
     }
 
-    .web-strip-plans .web-button {
-        flex: 3;
-    }
-
-    .web-strip-plans-item-wrapper {
-        gap: 2.65rem;
-    }
-
     @media (min-width: 1024px) and (max-width: 1224px) {
         .web-strip-plans-info {
             flex-basis: 1rem !important;
-        }
-
-        .web-strip-plans-item-wrapper {
-            gap: 1.25rem !important;
-            inline-size: 100% !important;
         }
     }
 
     @media (max-width: 1024px) {
         .web-strip-plans-info {
             flex-basis: 3rem !important;
-        }
-
-        .web-strip-plans-item-wrapper {
-            gap: 1.25rem !important;
         }
     }
 

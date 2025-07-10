@@ -111,6 +111,10 @@ Both accounts and sessions can be created with GraphQL using the `accountCreate`
 
 More information and examples of authenticating users can be found in the dedicated [authentication guide](/docs/products/auth).
 
+# Database queries {% #database-queries %}
+
+The GraphQL API can be used to query and manipulate database documents. For detailed examples of how to create, list, update, and delete documents using GraphQL, refer to the [Documents documentation](/docs/products/databases/documents).
+
 # GraphQL vs REST {% #graphql-vs-rest %}
 
 There are two main features that make GraphQL appealing when compared to the REST API: **selection sets** and **query batching**.
@@ -233,7 +237,7 @@ Appwrite SDKs also support GraphQL in addition to the REST services.
 import { Client, Graphql } from "appwrite";
 
 const client = new Client()
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your Appwrite Endpoint
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your Appwrite Endpoint
     .setProject('<PROJECT_ID>');                // Your project ID
 
 const graphql = new Graphql(client);
@@ -270,7 +274,7 @@ mutation.then(response => {
 import 'package:appwrite/appwrite.dart';
 
 final client = Client()
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your Appwrite Endpoint
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your Appwrite Endpoint
     .setProject('<PROJECT_ID>');               // Your project ID
 
 final graphql = Graphql(client);
@@ -307,7 +311,7 @@ mutation.then((response) {
 import Appwrite
 
 let client = Client()
-    .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
     .setProject("<PROJECT_ID>")                // Your project ID
 
 let graphql = Graphql(client)
@@ -348,7 +352,7 @@ import io.appwrite.Client
 import io.appwrite.services.Graphql
 
 val client = Client(context)
-    .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
     .setProject("<PROJECT_ID>")                // Your project ID
 
 val graphql = Graphql(client)

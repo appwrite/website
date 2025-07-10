@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { page } from '$app/stores';
+    import { page } from '$app/state';
     import type { SDKMethod } from '$lib/utils/specs';
 
     export let method: SDKMethod;
@@ -15,7 +15,7 @@
                             <span class="text-micro text-primary uppercase">
                                 {response.code}
                             </span>
-                            <span class="text-caption">application/json</span>
+                            <span class="text-caption">{response.contentType ?? 'no content'}</span>
                         </header>
                         {#if response.models.length > 0}
                             <ul class="text-sub-body mt-4">
@@ -23,7 +23,7 @@
                                     <li>
                                         <a
                                             class="web-link"
-                                            href={`/docs/references/${$page.params.version}/models/${model.id}`}
+                                            href={`/docs/references/${page.params.version}/models/${model.id}`}
                                         >
                                             {model.name}
                                         </a>

@@ -9,17 +9,19 @@
 <script lang="ts">
     import { browser } from '$app/environment';
     import { MobileNav, IsLoggedIn } from '$lib/components';
-    import { BANNER_KEY, GITHUB_REPO_LINK, GITHUB_STARS } from '$lib/constants';
+    import { BANNER_KEY, SOCIAL_STATS } from '$lib/constants';
     import { isVisible } from '$lib/utils/isVisible';
     import { createScrollInfo } from '$lib/utils/scroll';
     import { addEventListener } from '@melt-ui/svelte/internal/helpers';
     import { onMount } from 'svelte';
     import ProductsSubmenu from '$lib/components/ProductsSubmenu.svelte';
     import ProductsMobileSubmenu from '$lib/components/ProductsMobileSubmenu.svelte';
-    import { PUBLIC_APPWRITE_DASHBOARD } from '$env/static/public';
     import { trackEvent } from '$lib/actions/analytics';
     import MainNav from '$lib/components/MainNav.svelte';
-    import { page } from '$app/stores';
+    import { page } from '$app/state';
+    import { getAppwriteDashboardUrl } from '$lib/utils/dashboard';
+    import { Button, Icon, InlineTag } from '$lib/components/ui';
+    import AnnouncementBanner from '$routes/(init)/init/(components)/announcement-banner.svelte';
 
     export let omitMainId = false;
     let theme: 'light' | 'dark' | null = 'dark';
@@ -107,6 +109,10 @@
         {
             label: 'Pricing',
             href: '/pricing'
+        },
+        {
+            label: 'Enterprise',
+            href: '/contact-us/enterprise'
         }
     ];
 
@@ -140,6 +146,14 @@
 </script>
 
 <div class="relative">
+    <!--{#if !page.url.pathname.includes('/init')}-->
+    <!--    <div class="border-smooth relative z-10 border-b bg-[#19191C]">-->
+    <!--        <div class="is-special-padding mx-auto">-->
+    <!--            <AnnouncementBanner />-->
+    <!--        </div>-->
+    <!--    </div>-->
+    <!--{/if}-->
+
     <section
         class="web-mobile-header {resolvedTheme}"
         class:is-transparent={browser && !$isMobileNavOpen}
@@ -164,42 +178,27 @@
         </div>
         <div class="web-mobile-header-end">
             {#if !$isMobileNavOpen}
-                <a href={PUBLIC_APPWRITE_DASHBOARD} class="web-button">
+                <Button href={getAppwriteDashboardUrl()} event="main-start_building_btn-click">
                     <span class="text">Start building</span>
-                </a>
+                </Button>
             {/if}
-            <button
-                class="web-button is-text"
+            <Button
+                variant="text"
                 aria-label="open navigation"
-                on:click={() => ($isMobileNavOpen = !$isMobileNavOpen)}
+                onclick={() => ($isMobileNavOpen = !$isMobileNavOpen)}
             >
                 {#if $isMobileNavOpen}
-                    <span aria-hidden="true" class="web-icon-close" />
+                    <Icon aria-hidden="true" name="close" />
                 {:else}
-                    <span aria-hidden="true" class="web-icon-hamburger-menu" />
+                    <Icon aria-hidden="true" name="hamburger-menu" />
                 {/if}
-            </button>
+            </Button>
         </div>
     </section>
-    <header
-        class="web-main-header is-special-padding {resolvedTheme} is-transparent"
-        class:is-special-padding={!BANNER_KEY.startsWith('init-banner-')}
-        style={BANNER_KEY === 'init-banner-02' ? 'padding-inline: 0' : ''}
-    >
-        <!-- {#if !$page.data.isStickyNav}
-            {#if BANNER_KEY.startsWith('init-banner-')}
-                <InitBanner />
-            {:else}
-                <AnnouncementBanner>
-                    <a href="/discord" target="_blank" rel="noopener noreferrer">
-                        <span class="text-caption font-medium">We are having lots of fun on</span>
-                        <span class="web-icon-discord" aria-hidden="true" />
-                        <span class="text-caption font-medium">Discord. Come and join us!</span>
-                    </a>
-                </AnnouncementBanner>
-            {/if}
-        {/if} -->
 
+    <header
+        class="web-main-header is-special-padding hidden lg:block {resolvedTheme} is-transparent"
+    >
         <div
             class="web-main-header-wrapper"
             class:is-special-padding={BANNER_KEY.startsWith('init-banner-')}
@@ -224,21 +223,17 @@
                 <MainNav initialized={$initialized} links={navLinks} />
             </div>
             <div class="web-main-header-end">
-                <a
-                    href={GITHUB_REPO_LINK}
+                <Button
+                    variant="text"
+                    href={SOCIAL_STATS.GITHUB.LINK}
                     target="_blank"
                     rel="noopener noreferrer"
-                    class="web-button is-text web-u-inline-width-100-percent-mobile"
-                    on:click={() =>
-                        trackEvent({
-                            plausible: { name: 'Star on GitHub in header' },
-                            posthog: { name: 'github-stars_nav_click' }
-                        })}
+                    class="web-u-inline-width-100-percent-mobile"
                 >
-                    <span class="web-icon-star" aria-hidden="true" />
+                    <Icon name="star" aria-hidden="true" />
                     <span class="text">Star on GitHub</span>
-                    <span class="web-inline-tag text-sub-body">{GITHUB_STARS}</span>
-                </a>
+                    <InlineTag>{SOCIAL_STATS.GITHUB.STAT}</InlineTag>
+                </Button>
                 <IsLoggedIn />
             </div>
         </div>
@@ -246,7 +241,7 @@
     <MobileNav bind:open={$isMobileNavOpen} links={navLinks} />
 
     <main
-        class="space-y-6"
+        class="relative space-y-6"
         class:web-u-hide-mobile={$isMobileNavOpen}
         id={omitMainId ? undefined : 'main'}
     >

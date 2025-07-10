@@ -1,12 +1,14 @@
 <script lang="ts">
     import { Carousel } from '$lib/components';
     import Technologies from '$lib/components/Technologies.svelte';
+    import { Button } from '$lib/components/ui';
     import Docs from '$lib/layouts/Docs.svelte';
     import { DEFAULT_HOST } from '$lib/utils/metadata';
     import { TITLE_SUFFIX } from '$routes/titles';
     import MainFooter from '../../lib/components/MainFooter.svelte';
     import CodeCard, { type CodeCardProps } from './CodeCard.svelte';
     import Sidebar from './Sidebar.svelte';
+    import { trackEvent } from '$lib/actions/analytics';
 
     const title = 'Docs' + TITLE_SUFFIX;
     const description =
@@ -96,9 +98,9 @@
                 quick start guide.
             </p>
             <Technologies />
-            <a href="/docs/sdks" class="web-button is-secondary" style:align-self="start">
+            <Button href="/docs/sdks" class="self-start" variant="secondary">
                 <span class="text-sub-body font-medium">Explore all technologies</span>
-            </a>
+            </Button>
             <div class="web-is-not-mobile spline-wrapper absolute">
                 <img
                     class="web-u-only-dark"
@@ -117,7 +119,7 @@
                     style="position: absolute;"
                 />
             </div>
-            <div class="bg-overlay" />
+            <div class="bg-overlay"></div>
         </section>
         <section>
             <h2 class="text-title font-aeonik-pro text-primary max-w-[600px]">Show me some code</h2>
@@ -143,7 +145,11 @@
             <div class="mt-6">
                 <ul class="web-grid-row-4 web-grid-row-4-m-1">
                     <li>
-                        <a href="/docs/products/auth" class="web-card is-normal">
+                        <a
+                            href="/docs/products/auth"
+                            class="web-card is-normal"
+                            onclick={() => trackEvent(`docs-products_auth-click`)}
+                        >
                             <img
                                 src="/images/icons/illustrated/dark/auth.png"
                                 alt=""
@@ -165,7 +171,11 @@
                         </a>
                     </li>
                     <li>
-                        <a href="/docs/products/databases" class="web-card is-normal">
+                        <a
+                            href="/docs/products/databases"
+                            class="web-card is-normal"
+                            onclick={() => trackEvent(`docs-products_databases-click`)}
+                        >
                             <img
                                 src="/images/icons/illustrated/dark/databases.png"
                                 alt=""
@@ -185,7 +195,11 @@
                         </a>
                     </li>
                     <li>
-                        <a href="/docs/products/functions" class="web-card is-normal">
+                        <a
+                            href="/docs/products/functions"
+                            class="web-card is-normal"
+                            onclick={() => trackEvent(`docs-products_functions-click`)}
+                        >
                             <img
                                 src="/images/icons/illustrated/dark/functions.png"
                                 alt=""
@@ -207,7 +221,37 @@
                         </a>
                     </li>
                     <li>
-                        <a href="/docs/products/messaging" class="web-card is-normal">
+                        <a
+                            href="/docs/products/sites"
+                            class="web-card is-normal"
+                            onclick={() => trackEvent(`docs-products_sites-click`)}
+                        >
+                            <img
+                                src="/images/icons/illustrated/dark/sites.png"
+                                alt=""
+                                class="web-u-only-dark"
+                                width="40"
+                                height="40"
+                            />
+                            <img
+                                src="/images/icons/illustrated/light/sites.png"
+                                alt=""
+                                class="web-u-only-light"
+                                width="40"
+                                height="40"
+                            />
+                            <h4 class="text-sub-body text-primary mt-2 font-medium">Sites</h4>
+                            <p class="text-sub-body mt-1">
+                                Deploy websites on the internet at scale.
+                            </p>
+                        </a>
+                    </li>
+                    <li>
+                        <a
+                            href="/docs/products/messaging"
+                            class="web-card is-normal"
+                            onclick={() => trackEvent(`docs-products_messaging-click`)}
+                        >
                             <img
                                 src="/images/icons/illustrated/dark/messaging.png"
                                 alt=""
@@ -229,7 +273,11 @@
                         </a>
                     </li>
                     <li>
-                        <a href="/docs/products/storage" class="web-card is-normal">
+                        <a
+                            href="/docs/products/storage"
+                            class="web-card is-normal"
+                            onclick={() => trackEvent(`docs-products_storage-click`)}
+                        >
                             <img
                                 src="/images/icons/illustrated/dark/storage.png"
                                 alt=""
@@ -251,7 +299,11 @@
                         </a>
                     </li>
                     <li>
-                        <a href="/docs/apis/realtime" class="web-card is-normal">
+                        <a
+                            href="/docs/apis/realtime"
+                            class="web-card is-normal"
+                            onclick={() => trackEvent(`docs-products_realtime-click`)}
+                        >
                             <img
                                 src="/images/icons/illustrated/dark/realtime.png"
                                 alt=""
@@ -270,6 +322,32 @@
                             <p class="text-sub-body mt-1">Respond to server events in realtime.</p>
                         </a>
                     </li>
+                    <li>
+                        <a
+                            href="/docs/products/network"
+                            class="web-card is-normal"
+                            onclick={() => trackEvent(`docs-products_network-click`)}
+                        >
+                            <img
+                                src="/images/icons/illustrated/dark/network.png"
+                                alt=""
+                                class="web-u-only-dark"
+                                width="40"
+                                height="40"
+                            />
+                            <img
+                                src="/images/icons/illustrated/light/network.png"
+                                alt=""
+                                class="web-u-only-light"
+                                width="40"
+                                height="40"
+                            />
+                            <h4 class="text-sub-body text-primary mt-2 font-medium">Network</h4>
+                            <p class="text-sub-body mt-1">
+                                Global infrastructure for serverless compute.
+                            </p>
+                        </a>
+                    </li>
                 </ul>
             </div>
         </section>
@@ -284,7 +362,11 @@
             <div class="mt-6">
                 <ul class="web-grid-row-2">
                     <li>
-                        <a href="/docs/sdks" class="web-card is-normal">
+                        <a
+                            href="/docs/sdks"
+                            class="web-card is-normal"
+                            onclick={() => trackEvent(`docs-explore_sdks-click`)}
+                        >
                             <h4 class="text-sub-body text-primary mt-2 font-medium">SDKs</h4>
                             <p class="text-sub-body mt-1">
                                 Light-weight SDKs for your favorite platforms.
@@ -292,7 +374,11 @@
                         </a>
                     </li>
                     <li>
-                        <a href="/docs/apis/rest" class="web-card is-normal">
+                        <a
+                            href="/docs/apis/rest"
+                            class="web-card is-normal"
+                            onclick={() => trackEvent(`docs-explore_rest_apis-click`)}
+                        >
                             <h4 class="text-sub-body text-primary mt-2 font-medium">REST API</h4>
                             <p class="text-sub-body mt-1">
                                 Integrate with HTTP requests without the needing an SDK.
@@ -300,7 +386,11 @@
                         </a>
                     </li>
                     <li>
-                        <a href="/docs/apis/graphql" class="web-card is-normal">
+                        <a
+                            href="/docs/apis/graphql"
+                            class="web-card is-normal"
+                            onclick={() => trackEvent(`docs-explore_graphql_apis-click`)}
+                        >
                             <h4 class="text-sub-body text-primary mt-2 font-medium">GraphQL</h4>
                             <p class="text-sub-body mt-1">
                                 Leverage GraphQL through our SDKs or integrate directly with REST
@@ -309,7 +399,11 @@
                         </a>
                     </li>
                     <li>
-                        <a href="/docs/apis/realtime" class="web-card is-normal">
+                        <a
+                            href="/docs/apis/realtime"
+                            class="web-card is-normal"
+                            onclick={() => trackEvent(`docs-explore_realtime_apis-click`)}
+                        >
                             <h4 class="text-sub-body text-primary mt-2 font-medium">Realtime</h4>
                             <p class="text-sub-body mt-1">
                                 Respond to auth, databases, storage, and function events in
@@ -330,7 +424,11 @@
             <div class="mt-6">
                 <ul class="web-grid-row-4">
                     <li>
-                        <a href="/docs/advanced/migrations/self-hosted" class="web-card is-normal">
+                        <a
+                            href="/docs/advanced/migrations/self-hosted"
+                            class="web-card is-normal"
+                            onclick={() => trackEvent(`docs-migrations_self_hosted-click`)}
+                        >
                             <h4 class="text-sub-body text-primary mt-2 font-medium">Self-hosted</h4>
                             <p class="text-sub-body mt-1">
                                 Move data from self-hosted to Appwrite Cloud.
@@ -338,7 +436,11 @@
                         </a>
                     </li>
                     <li>
-                        <a href="/docs/advanced/migrations/firebase" class="web-card is-normal">
+                        <a
+                            href="/docs/advanced/migrations/firebase"
+                            class="web-card is-normal"
+                            onclick={() => trackEvent(`docs-migrations_firebase-click`)}
+                        >
                             <h4 class="text-sub-body text-primary mt-2 font-medium">Firebase</h4>
                             <p class="text-sub-body mt-1">
                                 Migrate users and data from Firebase to Appwrite.
@@ -346,7 +448,11 @@
                         </a>
                     </li>
                     <li>
-                        <a href="/docs/advanced/migrations/supabase" class="web-card is-normal">
+                        <a
+                            href="/docs/advanced/migrations/supabase"
+                            class="web-card is-normal"
+                            onclick={() => trackEvent(`docs-migrations_supabase-click`)}
+                        >
                             <h4 class="text-sub-body text-primary mt-2 font-medium">Supabase</h4>
                             <p class="text-sub-body mt-1">
                                 Migrate users and data from Supabase to Appwrite.
@@ -354,7 +460,11 @@
                         </a>
                     </li>
                     <li>
-                        <a href="/docs/advanced/migrations/nhost" class="web-card is-normal">
+                        <a
+                            href="/docs/advanced/migrations/nhost"
+                            class="web-card is-normal"
+                            onclick={() => trackEvent(`docs-migrations_nhost-click`)}
+                        >
                             <h4 class="text-sub-body text-primary mt-2 font-medium">Nhost</h4>
                             <p class="text-sub-body mt-1">
                                 Migrate users and data from NHost to Appwrite.

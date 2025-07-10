@@ -9,6 +9,7 @@
     import Pink from './bg.png';
     import { getReferrerAndUtmSource } from '$lib/utils/utm';
     import { PUBLIC_GROWTH_ENDPOINT } from '$env/static/public';
+    import { Button } from '$lib/components/ui';
 
     let email = '';
     let name = '';
@@ -91,7 +92,7 @@
         <div id="form" class="overflow-hidden p-0 pt-10">
             <div class="relative pt-[7.5rem]">
                 <div class="relative">
-                    <div class="container relative">
+                    <div class="relative container">
                         <!-- before submit -->
                         <div class="web-grid-1-1-opt-2 e-u-row-gap-0 relative z-[1] gap-8">
                             <div>
@@ -109,12 +110,13 @@
                                                 team will try to get back to you as soon as
                                                 possible.
                                             </p>
-                                            <a
+                                            <Button
+                                                variant="secondary"
                                                 href="/integrations"
-                                                class="web-button is-secondary web-u-margin-block-end-32"
+                                                class="mb-8"
                                             >
                                                 <span>Back to integrations</span>
-                                            </a>
+                                            </Button>
                                         </section>
                                     {:else}
                                         <section class="flex flex-col gap-5">
@@ -142,10 +144,8 @@
                                                         target="_blank"
                                                         rel="noopener noreferrer"
                                                     >
-                                                        <span
-                                                            class={social.icon}
-                                                            aria-hidden="true"
-                                                        />
+                                                        <span class={social.icon} aria-hidden="true"
+                                                        ></span>
                                                     </a>
                                                 </li>
                                             {/each}
@@ -153,7 +153,7 @@
                                     </section>
                                     <div
                                         class="web-is-only-mobile web-u-margin-block-start-40 web-u-padding-block-start-40 web-u-sep-block-start"
-                                    />
+                                    ></div>
                                 </div>
                             </div>
                             {#if !submitted}
@@ -239,8 +239,9 @@
                                                 >
                                                 <input
                                                     required
+                                                    pattern="^(https:\/\/www\.|https:\/\/)?([a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)+)[a-zA-Z0-9\-\._~:\/\?#[\]@!\$&'\(\)\*\+,;=.]*$"
                                                     class="web-input-text"
-                                                    type="url"
+                                                    type="text"
                                                     placeholder="https://appwrite.io"
                                                     id="companyWebsite"
                                                     bind:value={companyWebsite}
@@ -338,13 +339,13 @@
                                                 {error}
                                             {/if}
                                         </p>
-                                        <button
+                                        <Button
                                             type="submit"
                                             disabled={submitting}
-                                            class="web-button web-u-inline-width-100-percent-mobile-break1 self-center"
+                                            class="web-u-inline-width-100-percent-mobile-break1 self-center"
                                         >
                                             <span>Submit</span>
-                                        </button>
+                                        </Button>
                                     </div>
                                 </form>
                             {/if}

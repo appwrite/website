@@ -11,10 +11,37 @@ client.setEndpoint(PUBLIC_APPWRITE_ENDPOINT).setProject('console');
 const account = new Account(client);
 const teams = new Teams(client);
 
-enum BillingPlan {
-    STARTER = 'tier-0',
-    PRO = 'tier-1',
-    SCALE = 'tier-2'
+const BillingPlan = {
+    STARTER: 'tier-0',
+    PRO: 'tier-1',
+    SCALE: 'tier-2'
+} as const;
+
+const ASCII_ART = `
+   _                            _ _       
+  /_\\  _ __  _ ____      ___ __(_) |_ ___ 
+ //_\\\\| '_ \\| '_ \\ \\ /\\ / / '__| | __/ _ \\
+/  _  \\ |_) | |_) \\ V  V /| |  | | ||  __/
+\\_/ \\_/ .__/| .__/ \\_/\\_/ |_|  |_|\\__\\___|
+      |_|   |_|                           
+`;
+
+export function displayHiringMessage() {
+    if (browser) {
+        console.log('%c' + ASCII_ART, 'font-family: monospace; white-space: pre; color: #fd366e;');
+        console.log(
+            '%cWe are hiring!',
+            'font-family: Aeonik Pro, -apple-system, BlinkMacSystemFont, sans-serif; font-size: 20px; font-weight: bold;'
+        );
+        console.log(
+            '%cJoin us in building the open-source, all-in-one development platform',
+            'font-family: Inter, -apple-system, BlinkMacSystemFont, sans-serif; font-size: 14px;'
+        );
+        console.log(
+            '%cCheck out our open positions at https://appwrite.io/careers',
+            'font-family: monospace; color: #666;'
+        );
+    }
 }
 
 export async function createSource(
@@ -49,7 +76,7 @@ export async function isProUser() {
     try {
         const orgs = await teams.list([Query.equal('billingPlan', BillingPlan.PRO)]);
         return orgs?.teams?.length > 1;
-    } catch (e) {
+    } catch {
         return false;
     }
 }
@@ -61,8 +88,8 @@ function isAppwriteUser(user: unknown): user is AppwriteUser {
     return typeof user === 'object' && user !== null && '$id' in user;
 }
 
-export function getAppwriteUser(): Promise<AppwriteUser | null> {
-    return account
+export async function getAppwriteUser(): Promise<AppwriteUser | null> {
+    return await account
         .get()
         .then((res) => res)
         .catch(() => null);

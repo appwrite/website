@@ -1,17 +1,27 @@
 <script lang="ts">
-    import { page } from '$app/stores';
+    import { page } from '$app/state';
     import Docs from '$lib/layouts/Docs.svelte';
     import Sidebar, { type NavParent, type NavTree } from '$lib/layouts/Sidebar.svelte';
     import { preferredPlatform, preferredVersion } from '$lib/utils/references';
+    import type { Snippet } from 'svelte';
 
-    $: expandable = !!$page.url.pathname.match(
-        /\/docs\/references\/.*?\/(client|server).*?\/.*?\/?/
+    const { children }: { children: Snippet } = $props();
+
+    const expandable = $derived(
+        !!page.url.pathname.match(/\/docs\/references\/.*?\/(client|server).*?\/.*?\/?/)
     );
 
-    $: prefix = `/docs/references/${$preferredVersion ?? $page.params?.version ?? 'cloud'}/${
-        $preferredPlatform ?? $page.params?.platform ?? 'client-web'
-    }`;
-    $: navigation = [
+    const platform = $derived($preferredPlatform ?? page.params?.platform ?? 'client-web');
+
+    const resolvedPlatformPrefix = $derived(
+        /^server-|^client-/.test(platform) ? platform : `server-${platform}`
+    );
+
+    const prefix = $derived(
+        `/docs/references/${$preferredVersion ?? page.params?.version ?? 'cloud'}/${resolvedPlatformPrefix}`
+    );
+
+    const navigation: NavTree = $derived([
         {
             label: 'Getting started',
             items: [
@@ -51,6 +61,11 @@
                     href: `${prefix}/databases`
                 },
                 {
+                    label: 'Sites',
+                    icon: 'icon-globe-alt',
+                    href: `${prefix}/sites`
+                },
+                {
                     label: 'Storage',
                     icon: 'icon-folder',
                     href: `${prefix}/storage`
@@ -66,6 +81,11 @@
                     href: `${prefix}/messaging`
                 },
                 {
+                    label: 'Tokens',
+                    icon: 'icon-key',
+                    href: `${prefix}/tokens`
+                },
+                {
                     label: 'Localization',
                     icon: 'icon-location-marker',
                     href: `${prefix}/locale`
@@ -77,22 +97,7 @@
                 }
             ]
         }
-        // {
-        // 	label: 'Debugging',
-        // 	items: [
-        // 		{
-        // 			icon: 'icon-document-search',
-        // 			label: 'Response codes',
-        // 			href: '/docs/advanced/platform/response-codes'
-        // 		},
-        // 		{
-        // 			icon: 'icon-document-report',
-        // 			label: 'Rate-limits',
-        // 			href: '/docs/advanced/platform/rate-limits'
-        // 		}
-        // 	]
-        // }
-    ] as NavTree;
+    ]);
 
     const parent: NavParent = {
         href: '/docs',
@@ -102,5 +107,5 @@
 
 <Docs variant={expandable ? 'expanded' : 'two-side-navs'} isReferences={expandable}>
     <Sidebar {navigation} {expandable} {parent} />
-    <slot />
+    {@render children()}
 </Docs>

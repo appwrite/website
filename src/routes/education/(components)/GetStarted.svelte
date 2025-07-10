@@ -1,11 +1,20 @@
 <script lang="ts">
-    import Badge from '$lib/components/ui/Badge.svelte';
+    import { Button, Icon, type IconType } from '$lib/components/ui';
+    import Badge from '$lib/components/ui/badge.svelte';
     import { classNames } from '$lib/utils/classnames';
-    import { PUBLIC_APPWRITE_DASHBOARD } from '$env/static/public';
+    import { getAppwriteDashboardUrl } from '$lib/utils/dashboard';
 
-    const educationSignUp = `${PUBLIC_APPWRITE_DASHBOARD}/console/education`;
+    const educationSignUp = getAppwriteDashboardUrl('/console/education');
 
-    const items = [
+    const items: Array<{
+        label: string;
+        description: string;
+        cta: {
+            url: string;
+            label: string;
+            icon?: IconType;
+        };
+    }> = [
         {
             label: 'Enroll to the GitHub Student Developer Pack',
             description: 'Sign up for the Student Developer pack and explore the benefits.',
@@ -37,11 +46,11 @@
         'after:absolute after:top-0 after:right-0 after:z-0 after:hidden after:h-80 after:w-1/2 after:bg-[radial-gradient(at_100%_0%,_hsla(177,_53%,_69%,_0.6)_0px,_transparent_73%,_transparent_100%)] after:md:block md:after:block'
     )}
 >
-    <div class="container relative z-10 flex flex-col justify-center py-24">
+    <div class="relative z-10 container flex flex-col justify-center py-24">
         <h2 class="text-primary font-aeonik-pro text-4xl">Get started today</h2>
 
         <div
-            class="divide-smooth mt-12 grid gap-8 divide-y rounded-2xl bg-white py-10 px-5 shadow-[-6px_8px_24px_rgba(0,_0,_0,_0.06),_0px_0px_0px_rgba(0,_0,_0,_0.06)] lg:grid-cols-3 lg:divide-x lg:divide-y-0"
+            class="divide-smooth mt-12 grid gap-8 divide-y rounded-2xl bg-white px-5 py-10 shadow-[-6px_8px_24px_rgba(0,_0,_0,_0.06),_0px_0px_0px_rgba(0,_0,_0,_0.06)] lg:grid-cols-3 lg:divide-x lg:divide-y-0"
         >
             {#each items as item, i}
                 <div
@@ -52,15 +61,16 @@
                         <h3 class="text-primary text-pretty">{item.label}</h3>
                         <p class="text-secondary text-pretty">{item.description}</p>
                     </div>
-                    <a
-                        class="web-button is-secondary text-accent mt-auto mb-0 !w-full md:!w-fit"
+                    <Button
+                        variant="secondary"
+                        class="text-accent mt-auto mb-0 !w-full md:!w-fit"
                         href={item.cta.url}
                         target="_blank"
                     >
                         {#if item.cta.icon}
-                            <span class="web-icon-{item.cta.icon}" />
+                            <Icon name={item.cta.icon} />
                         {/if}
-                        {item.cta.label}</a
+                        {item.cta.label}</Button
                     >
                 </div>
             {/each}

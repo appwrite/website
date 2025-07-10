@@ -7,6 +7,7 @@
     import type { Integration } from '$routes/integrations/+page';
     import { isHeaderHidden } from '$lib/layouts/Main.svelte';
     import { integrationCategoryDescriptions } from '$lib/constants';
+    import { Button, Icon } from '$lib/components/ui';
 
     export let title: Integration['title'];
     export let images: Integration['images'];
@@ -47,13 +48,13 @@
         class="web-u-sep-block-end pb-0"
         style="background-color:rgba(23, 23, 26, 1); margin-block-end: 2.5rem"
     >
-        <div class="container dark">
+        <div class="dark container">
             <div class="web-integrations-top-section">
                 <div class="web-carousel-wrapper">
-                    <a href="/integrations" class="web-button is-text mb-12">
-                        <span class="icon-cheveron-left" aria-hidden="true"></span>
+                    <Button variant="text" href="/integrations" class="mb-12">
+                        <Icon name="chevron-left" aria-hidden="true" />
                         <span>Back to catalog</span>
-                    </a>
+                    </Button>
 
                     {#if images.length > 1}
                         <Root>
@@ -86,7 +87,7 @@
             </div>
         </div>
     </div>
-    <div class="py-10">
+    <div class="pt-10">
         <div class="container">
             <article class="web-u-gap-60-not-mobile web-u-gap-40-mobile flex flex-col">
                 <div class="l-grid-2-1 web-u-row-gap-56 web-u-gap-40-mobile">
@@ -142,7 +143,7 @@
         </div>
     </div>
 
-    <div class="web-u-sep-block-start mt-12 overflow-hidden py-10">
+    <div class="web-u-sep-block-start mt-12 overflow-hidden pt-10">
         <!-- <ProductsGrid /> -->
 
         <div class="container">
@@ -168,12 +169,13 @@
                             Join our Technology Partners program to integrate your solutions with
                             Appwrite’s API, enhancing functionality and expanding your reach.
                         </p>
-                        <a
+                        <Button
                             href="/integrations/technology-partner"
-                            class="web-button is-primary mt-4 self-center"
+                            class="mt-4 self-center"
+                            event="integrations-technology_partner-click"
                         >
                             <span class="text">Get Started</span>
-                        </a>
+                        </Button>
                     </section>
                 </div>
             </div>

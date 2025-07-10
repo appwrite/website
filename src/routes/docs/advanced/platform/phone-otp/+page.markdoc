@@ -12,13 +12,13 @@ Appwrite supports SMS-based OTP (One-Time Password) authentication to provide se
 
 # Free messages {% #free-messages %}
 
-All Appwrite plans include **10 free SMS messages** per month, which allows you to test and implement OTP functionality without immediate costs.
+All paid Appwrite plans include **10 free SMS messages** per month, which allows you to test and implement OTP functionality without immediate costs.
 
 In addition you can also use the [Mock phone numbers](/docs/products/auth/security#mock-phone-numbers) feature to continue testing your integrations without incurring additional costs.
 
 # Additional messages {% #additional-messages %}
 
-To send more than 10 SMS messages per month, you need to upgrade to a **paid plan**. For detailed information about the different pricing options and features, please visit the [pricing page](/pricing).
+After the first 10 free SMS messages, you'll be charged per SMS.
 
 The cost for additional messages is calculated based on two factors:
 1. The number of messages sent
@@ -30,190 +30,192 @@ As part of our commitment to making Appwrite as accessible as possible, we regul
 
 SMS rates vary by country due to differences in telecom infrastructure and regulations. Here is a breakdown of the rates:
 
-| Country code | Country name                                                 | Price / SMS (USD) |
-|--------------|--------------------------------------------------------------|-------------------|
-| +213         | Algeria                                                      | $ 0.23            |
-| +376         | Andorra                                                      | $ 0.09            |
-| +244         | Angola                                                       | $ 0.07            |
-| +54          | Argentina                                                    | $ 0.06            |
-| +374         | Armenia                                                      | $ 0.11            |
-| +297         | Aruba                                                        | $ 0.06            |
-| +61          | Australia                                                    | $ 0.03            |
-| +43          | Austria                                                      | $ 0.03            |
-| +994         | Azerbaijan                                                   | $ 0.22            |
-| +973         | Bahrain                                                      | $ 0.04            |
-| +880         | Bangladesh                                                   | $ 0.25            |
-| +375         | Belarus                                                      | $ 0.16            |
-| +32          | Belgium                                                      | $ 0.09            |
-| +501         | Belize                                                       | $ 0.21            |
-| +229         | Benin                                                        | $ 0.12            |
-| +975         | Bhutan                                                       | $ 0.18            |
-| +591         | Bolivia                                                      | $ 0.06            |
-| +387         | Bosnia and Herzegovina                                       | $ 0.06            |
-| +267         | Botswana                                                     | $ 0.03            |
-| +55          | Brazil                                                       | $ 0.03            |
-| +673         | Brunei                                                       | $ 0.03            |
-| +359         | Bulgaria                                                     | $ 0.12            |
-| +226         | Burkina Faso                                                 | $ 0.09            |
-| +257         | Burundi                                                      | $ 0.18            |
-| +855         | Cambodia                                                     | $ 0.17            |
-| +237         | Cameroon                                                     | $ 0.10            |
-| +238         | Cape Verde Islands                                           | $ 0.12            |
-| +56          | Chile                                                        | $ 0.05            |
-| +86          | China                                                        | $ 0.02            |
-| +57          | Colombia                                                     | $ 0.04            |
-| +269         | Comoros and Mayotte                                          | $ 0.10            |
-| +242         | Congo                                                        | $ 0.10            |
-| +682         | Cook Islands                                                 | $ 0.04            |
-| +506         | Costa Rica                                                   | $ 0.01            |
-| +385         | Croatia                                                      | $ 0.05            |
-| +53          | Cuba                                                         | $ 0.08            |
-| +357         | Cyprus                                                       | $ 0.01            |
-| +420         | Czech Republic                                               | $ 0.06            |
-| +45          | Denmark                                                      | $ 0.05            |
-| +253         | Djibouti                                                     | $ 0.10            |
-| +593         | Ecuador                                                      | $ 0.22            |
-| +20          | Egypt                                                        | $ 0.23            |
-| +503         | El Salvador                                                  | $ 0.05            |
-| +240         | Equatorial Guinea                                            | $ 0.09            |
-| +291         | Eritrea                                                      | $ 0.15            |
-| +372         | Estonia                                                      | $ 0.05            |
-| +251         | Ethiopia                                                     | $ 0.24            |
-| +500         | Falkland Islands                                             | $ 0.04            |
-| +298         | Faroe Islands                                                | $ 0.03            |
-| +679         | Fiji                                                         | $ 0.12            |
-| +358         | Finland                                                      | $ 0.06            |
-| +33          | France                                                       | $ 0.07            |
-| +594         | French Guiana                                                | $ 0.10            |
-| +689         | French Polynesia                                             | $ 0.10            |
-| +241         | Gabon                                                        | $ 0.12            |
-| +220         | Gambia                                                       | $ 0.09            |
-| +995         | Georgia                                                      | $ 0.13            |
-| +49          | Germany                                                      | $ 0.09            |
-| +233         | Ghana                                                        | $ 0.19            |
-| +350         | Gibraltar                                                    | $ 0.06            |
-| +30          | Greece                                                       | $ 0.05            |
-| +299         | Greenland                                                    | $ 0.03            |
-| +590         | Guadeloupe                                                   | $ 0.07            |
-| +1671        | Guam                                                         | $ 0.03            |
-| +502         | Guatemala                                                    | $ 0.05            |
-| +224         | Guinea                                                       | $ 0.11            |
-| +245         | Guinea-Bissau                                                | $ 0.08            |
-| +592         | Guyana                                                       | $ 0.10            |
-| +509         | Haiti                                                        | $ 0.09            |
-| +504         | Honduras                                                     | $ 0.04            |
-| +852         | Hong Kong                                                    | $ 0.05            |
-| +36          | Hungary                                                      | $ 0.07            |
-| +354         | Iceland                                                      | $ 0.07            |
-| +91          | India                                                        | $ 0.003           |
-| +62          | Indonesia                                                    | $ 0.28            |
-| +98          | Iran                                                         | $ 0.20            |
-| +964         | Iraq                                                         | $ 0.23            |
-| +353         | Ireland                                                      | $ 0.06            |
-| +972         | Israel                                                       | $ 0.11            |
-| +39          | Italy                                                        | $ 0.05            |
-| +81          | Japan                                                        | $ 0.06            |
-| +962         | Jordan                                                       | $ 0.25            |
-| +254         | Kenya                                                        | $ 0.25            |
-| +686         | Kiribati                                                     | $ 0.07            |
-| +850         | North Korea                                                  | $ 0.02            |
-| +82          | South Korea                                                  | $ 0.02            |
-| +965         | Kuwait                                                       | $ 0.20            |
-| +996         | Kyrgyzstan                                                   | $ 0.25            |
-| +856         | Laos                                                         | $ 0.17            |
-| +371         | Latvia                                                       | $ 0.04            |
-| +961         | Lebanon                                                      | $ 0.21            |
-| +266         | Lesotho                                                      | $ 0.11            |
-| +231         | Liberia                                                      | $ 0.08            |
-| +218         | Libya                                                        | $ 0.24            |
-| +423         | Liechtenstein                                                | $ 0.04            |
-| +370         | Lithuania                                                    | $ 0.04            |
-| +352         | Luxembourg                                                   | $ 0.09            |
-| +853         | Macao                                                        | $ 0.03            |
-| +389         | Macedonia                                                    | $ 0.03            |
-| +261         | Madagascar                                                   | $ 0.12            |
-| +265         | Malawi                                                       | $ 0.09            |
-| +60          | Malaysia                                                     | $ 0.18            |
-| +960         | Maldives                                                     | $ 0.17            |
-| +223         | Mali                                                         | $ 0.13            |
-| +356         | Malta                                                        | $ 0.05            |
-| +692         | Marshall Islands                                             | $ 0.03            |
-| +596         | Martinique                                                   | $ 0.09            |
-| +222         | Mauritania                                                   | $ 0.17            |
-| +52          | Mexico                                                       | $ 0.07            |
-| +691         | Micronesia                                                   | $ 0.03            |
-| +373         | Moldova                                                      | $ 0.07            |
-| +377         | Monaco                                                       | $ 0.09            |
-| +976         | Mongolia                                                     | $ 0.11            |
-| +212         | Morocco                                                      | $ 0.20            |
-| +258         | Mozambique                                                   | $ 0.10            |
-| +95          | Myanmar                                                      | $ 0.15            |
-| +264         | Namibia                                                      | $ 0.05            |
-| +674         | Nauru                                                        | $ 0.07            |
-| +977         | Nepal                                                        | $ 0.24            |
-| +31          | Netherlands                                                  | $ 0.10            |
-| +687         | New Caledonia                                                | $ 0.08            |
-| +64          | New Zealand                                                  | $ 0.07            |
-| +505         | Nicaragua                                                    | $ 0.09            |
-| +227         | Niger                                                        | $ 0.10            |
-| +234         | Nigeria                                                      | $ 0.35            |
-| +683         | Niue                                                         | $ 0.04            |
-| +672         | Norfolk Islands                                              | $ 0.05            |
-| +1           | North America                                                | $ 0.007           |
-| +1670        | Northern Mariana Islands                                     | $ 0.09            |
-| +47          | Norway                                                       | $ 0.05            |
-| +968         | Oman                                                         | $ 0.16            |
-| +680         | Palau                                                        | $ 0.03            |
-| +507         | Panama                                                       | $ 0.10            |
-| +675         | Papua New Guinea                                             | $ 0.16            |
-| +595         | Paraguay                                                     | $ 0.08            |
-| +51          | Peru                                                         | $ 0.03            |
-| +63          | Philippines                                                  | $ 0.18            |
-| +48          | Poland                                                       | $ 0.02            |
-| +351         | Portugal                                                     | $ 0.03            |
-| +974         | Qatar                                                        | $ 0.19            |
-| +262         | Reunion                                                      | $ 0.06            |
-| +40          | Romania                                                      | $ 0.06            |
-| +7           | Russia, Kazakhstan, Uzbekistan, Turkmenistan, and Tajikistan | $ 0.36            |
-| +250         | Rwanda                                                       | $ 0.11            |
-| +378         | San Marino                                                   | $ 0.05            |
-| +239         | Sao Tome and Principe                                        | $ 0.09            |
-| +966         | Saudi Arabia                                                 | $ 0.15            |
-| +221         | Senegal                                                      | $ 0.22            |
-| +381         | Serbia                                                       | $ 0.12            |
-| +248         | Seychelles                                                   | $ 0.05            |
-| +232         | Sierra Leone                                                 | $ 0.16            |
-| +65          | Singapore                                                    | $ 0.05            |
-| +421         | Slovak Republic                                              | $ 0.06            |
-| +386         | Slovenia                                                     | $ 0.10            |
-| +677         | Solomon Islands                                              | $ 0.07            |
-| +252         | Somalia                                                      | $ 0.15            |
-| +27          | South Africa                                                 | $ 0.03            |
-| +34          | Spain                                                        | $ 0.05            |
-| +94          | Sri Lanka                                                    | $ 0.32            |
-| +290         | St. Helena                                                   | $ 0.05            |
-| +249         | Sudan                                                        | $ 0.25            |
-| +597         | Suriname                                                     | $ 0.09            |
-| +268         | Swaziland                                                    | $ 0.11            |
-| +46          | Sweden                                                       | $ 0.06            |
-| +41          | Switzerland                                                  | $ 0.04            |
-| +963         | Syria                                                        | $ 0.24            |
-| +886         | Taiwan                                                       | $ 0.23            |
-| +66          | Thailand                                                     | $ 0.02            |
-| +228         | Togo                                                         | $ 0.13            |
-| +676         | Tonga                                                        | $ 0.04            |
-| +216         | Tunisia                                                      | $ 0.10            |
-| +90          | Turkey                                                       | $ 0.008           |
-| +688         | Tuvalu                                                       | $ 0.11            |
-| +256         | Uganda                                                       | $ 0.13            |
-| +380         | Ukraine                                                      | $ 0.14            |
-| +971         | United Arab Emirates                                         | $ 0.10            |
-| +44          | United Kingdom                                               | $ 0.05            |
-| +598         | Uruguay                                                      | $ 0.06            |
-| +678         | Vanuatu                                                      | $ 0.11            |
-| +58          | Venezuela                                                    | $ 0.08            |
-| +84          | Vietnam                                                      | $ 0.12            |
-| +967         | Yemen                                                        | $ 0.18            |
-| +260         | Zambia                                                       | $ 0.14            |
-| +255         | Zanzibar                                                     | $ 0.11            |
-| +263         | Zimbabwe                                                     | $ 0.11            |
+| Country code | Country name                        | Price / SMS (USD) |
+|--------------|-------------------------------------|-------------------|
+| +213         | Algeria                             | $ 0.23            |
+| +376         | Andorra                             | $ 0.09            |
+| +244         | Angola                              | $ 0.07            |
+| +54          | Argentina                           | $ 0.06            |
+| +374         | Armenia                             | $ 0.11            |
+| +297         | Aruba                               | $ 0.06            |
+| +61          | Australia                           | $ 0.03            |
+| +43          | Austria                             | $ 0.03            |
+| +994         | Azerbaijan                          | $ 0.22            |
+| +973         | Bahrain                             | $ 0.04            |
+| +880         | Bangladesh                          | $ 0.25            |
+| +375         | Belarus                             | $ 0.16            |
+| +32          | Belgium                             | $ 0.09            |
+| +501         | Belize                              | $ 0.21            |
+| +229         | Benin                               | $ 0.12            |
+| +975         | Bhutan                              | $ 0.18            |
+| +591         | Bolivia                             | $ 0.06            |
+| +387         | Bosnia and Herzegovina              | $ 0.06            |
+| +267         | Botswana                            | $ 0.03            |
+| +55          | Brazil                              | $ 0.03            |
+| +673         | Brunei                              | $ 0.03            |
+| +359         | Bulgaria                            | $ 0.12            |
+| +226         | Burkina Faso                        | $ 0.09            |
+| +257         | Burundi                             | $ 0.18            |
+| +855         | Cambodia                            | $ 0.17            |
+| +237         | Cameroon                            | $ 0.10            |
+| +238         | Cape Verde Islands                  | $ 0.12            |
+| +56          | Chile                               | $ 0.05            |
+| +86          | China                               | $ 0.02            |
+| +57          | Colombia                            | $ 0.04            |
+| +269         | Comoros and Mayotte                 | $ 0.10            |
+| +242         | Congo                               | $ 0.10            |
+| +682         | Cook Islands                        | $ 0.04            |
+| +506         | Costa Rica                          | $ 0.01            |
+| +385         | Croatia                             | $ 0.05            |
+| +53          | Cuba                                | $ 0.08            |
+| +357         | Cyprus                              | $ 0.01            |
+| +420         | Czech Republic                      | $ 0.06            |
+| +45          | Denmark                             | $ 0.05            |
+| +253         | Djibouti                            | $ 0.10            |
+| +593         | Ecuador                             | $ 0.22            |
+| +20          | Egypt                               | $ 0.23            |
+| +503         | El Salvador                         | $ 0.05            |
+| +240         | Equatorial Guinea                   | $ 0.09            |
+| +291         | Eritrea                             | $ 0.15            |
+| +372         | Estonia                             | $ 0.05            |
+| +251         | Ethiopia                            | $ 0.24            |
+| +500         | Falkland Islands                    | $ 0.04            |
+| +298         | Faroe Islands                       | $ 0.03            |
+| +679         | Fiji                                | $ 0.12            |
+| +358         | Finland                             | $ 0.06            |
+| +33          | France                              | $ 0.07            |
+| +594         | French Guiana                       | $ 0.10            |
+| +689         | French Polynesia                    | $ 0.10            |
+| +241         | Gabon                               | $ 0.12            |
+| +220         | Gambia                              | $ 0.09            |
+| +995         | Georgia                             | $ 0.13            |
+| +49          | Germany                             | $ 0.09            |
+| +233         | Ghana                               | $ 0.19            |
+| +350         | Gibraltar                           | $ 0.06            |
+| +30          | Greece                              | $ 0.05            |
+| +299         | Greenland                           | $ 0.03            |
+| +590         | Guadeloupe                          | $ 0.07            |
+| +1671        | Guam                                | $ 0.03            |
+| +502         | Guatemala                           | $ 0.05            |
+| +224         | Guinea                              | $ 0.11            |
+| +245         | Guinea-Bissau                       | $ 0.08            |
+| +592         | Guyana                              | $ 0.10            |
+| +509         | Haiti                               | $ 0.09            |
+| +504         | Honduras                            | $ 0.04            |
+| +852         | Hong Kong                           | $ 0.05            |
+| +36          | Hungary                             | $ 0.07            |
+| +354         | Iceland                             | $ 0.07            |
+| +91          | India                               | $ 0.003           |
+| +62          | Indonesia                           | $ 0.28            |
+| +98          | Iran                                | $ 0.20            |
+| +964         | Iraq                                | $ 0.23            |
+| +353         | Ireland                             | $ 0.06            |
+| +972         | Israel                              | $ 0.01            |
+| +39          | Italy                               | $ 0.05            |
+| +81          | Japan                               | $ 0.06            |
+| +962         | Jordan                              | $ 0.25            |
+| +254         | Kenya                               | $ 0.25            |
+| +686         | Kiribati                            | $ 0.07            |
+| +850         | North Korea                         | $ 0.02            |
+| +82          | South Korea                         | $ 0.02            |
+| +965         | Kuwait                              | $ 0.20            |
+| +996         | Kyrgyzstan                          | $ 0.25            |
+| +856         | Laos                                | $ 0.17            |
+| +371         | Latvia                              | $ 0.04            |
+| +961         | Lebanon                             | $ 0.21            |
+| +266         | Lesotho                             | $ 0.11            |
+| +231         | Liberia                             | $ 0.08            |
+| +218         | Libya                               | $ 0.24            |
+| +423         | Liechtenstein                       | $ 0.04            |
+| +370         | Lithuania                           | $ 0.04            |
+| +352         | Luxembourg                          | $ 0.09            |
+| +853         | Macao                               | $ 0.03            |
+| +389         | Macedonia                           | $ 0.03            |
+| +261         | Madagascar                          | $ 0.12            |
+| +265         | Malawi                              | $ 0.09            |
+| +60          | Malaysia                            | $ 0.18            |
+| +960         | Maldives                            | $ 0.17            |
+| +223         | Mali                                | $ 0.13            |
+| +356         | Malta                               | $ 0.05            |
+| +692         | Marshall Islands                    | $ 0.03            |
+| +596         | Martinique                          | $ 0.09            |
+| +222         | Mauritania                          | $ 0.17            |
+| +52          | Mexico                              | $ 0.07            |
+| +691         | Micronesia                          | $ 0.03            |
+| +373         | Moldova                             | $ 0.07            |
+| +377         | Monaco                              | $ 0.09            |
+| +976         | Mongolia                            | $ 0.11            |
+| +212         | Morocco                             | $ 0.20            |
+| +258         | Mozambique                          | $ 0.10            |
+| +95          | Myanmar                             | $ 0.15            |
+| +264         | Namibia                             | $ 0.05            |
+| +674         | Nauru                               | $ 0.07            |
+| +977         | Nepal                               | $ 0.24            |
+| +31          | Netherlands                         | $ 0.10            |
+| +687         | New Caledonia                       | $ 0.08            |
+| +64          | New Zealand                         | $ 0.07            |
+| +505         | Nicaragua                           | $ 0.09            |
+| +227         | Niger                               | $ 0.10            |
+| +234         | Nigeria                             | $ 0.35            |
+| +683         | Niue                                | $ 0.04            |
+| +672         | Norfolk Islands                     | $ 0.05            |
+| +1           | North America                       | $ 0.007           |
+| +1670        | Northern Mariana Islands            | $ 0.09            |
+| +47          | Norway                              | $ 0.05            |
+| +968         | Oman                                | $ 0.16            |
+| +680         | Palau                               | $ 0.03            |
+| +507         | Panama                              | $ 0.10            |
+| +675         | Papua New Guinea                    | $ 0.16            |
+| +595         | Paraguay                            | $ 0.08            |
+| +51          | Peru                                | $ 0.03            |
+| +63          | Philippines                         | $ 0.18            |
+| +48          | Poland                              | $ 0.02            |
+| +351         | Portugal                            | $ 0.03            |
+| +974         | Qatar                               | $ 0.19            |
+| +262         | Reunion                             | $ 0.06            |
+| +40          | Romania                             | $ 0.06            |
+| +7           | Russia, Kazakhstan and Turkmenistan | $ 0.36            |
+| +250         | Rwanda                              | $ 0.11            |
+| +378         | San Marino                          | $ 0.05            |
+| +239         | Sao Tome and Principe               | $ 0.09            |
+| +966         | Saudi Arabia                        | $ 0.15            |
+| +221         | Senegal                             | $ 0.22            |
+| +381         | Serbia                              | $ 0.12            |
+| +248         | Seychelles                          | $ 0.05            |
+| +232         | Sierra Leone                        | $ 0.16            |
+| +65          | Singapore                           | $ 0.05            |
+| +421         | Slovak Republic                     | $ 0.06            |
+| +386         | Slovenia                            | $ 0.10            |
+| +677         | Solomon Islands                     | $ 0.07            |
+| +252         | Somalia                             | $ 0.15            |
+| +27          | South Africa                        | $ 0.03            |
+| +34          | Spain                               | $ 0.05            |
+| +94          | Sri Lanka                           | $ 0.32            |
+| +290         | St. Helena                          | $ 0.05            |
+| +249         | Sudan                               | $ 0.25            |
+| +597         | Suriname                            | $ 0.09            |
+| +268         | Swaziland                           | $ 0.11            |
+| +46          | Sweden                              | $ 0.06            |
+| +41          | Switzerland                         | $ 0.04            |
+| +963         | Syria                               | $ 0.24            |
+| +886         | Taiwan                              | $ 0.23            |
+| +992         | Tajikistan                          | $ 0.18            |
+| +66          | Thailand                            | $ 0.02            |
+| +228         | Togo                                | $ 0.13            |
+| +676         | Tonga                               | $ 0.04            |
+| +216         | Tunisia                             | $ 0.10            |
+| +90          | Turkey                              | $ 0.008           |
+| +688         | Tuvalu                              | $ 0.11            |
+| +256         | Uganda                              | $ 0.13            |
+| +380         | Ukraine                             | $ 0.14            |
+| +971         | United Arab Emirates                | $ 0.10            |
+| +44          | United Kingdom                      | $ 0.05            |
+| +598         | Uruguay                             | $ 0.06            |
+| +998         | Uzbekistan                          | $ 0.33            |
+| +678         | Vanuatu                             | $ 0.11            |
+| +58          | Venezuela                           | $ 0.08            |
+| +84          | Vietnam                             | $ 0.12            |
+| +967         | Yemen                               | $ 0.18            |
+| +260         | Zambia                              | $ 0.14            |
+| +255         | Zanzibar                            | $ 0.11            |
+| +263         | Zimbabwe                            | $ 0.11            |

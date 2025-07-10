@@ -1,19 +1,19 @@
 <script lang="ts">
-    import { page } from '$app/stores';
+    import { page } from '$app/state';
     import Article from '$markdoc/layouts/Article.svelte';
     import { Table, Thead, Tr, Th, Tbody, Td, Heading, Fence } from '$markdoc/nodes/_Module.svelte';
     import { parse } from '$lib/utils/markdown';
     import Tabs from '$markdoc/tags/Tabs.svelte';
     import TabsItem from '$markdoc/tags/TabsItem.svelte';
 
-    export let data;
+    let { data } = $props();
 </script>
 
 <svelte:head>
-    {#if $page.params.version !== 'cloud'}
+    {#if page.params.version !== 'cloud'}
         <link
             rel="canonical"
-            href={`https://appwrite.io/docs/references/cloud/models/${$page.params.model}`}
+            href={`https://appwrite.io/docs/references/cloud/models/${page.params.model}`}
         />
     {/if}
 </svelte:head>
@@ -41,7 +41,7 @@
                         <Td>{property.name}</Td>
                         <Td>{property.type}</Td>
                         <Td>
-                            {property.description}
+                            {@html parse(property.description)}
                             {#if property.relatedModels}
                                 <!-- eslint-disable-next-line svelte/no-at-html-tags -->
                                 Can be one of: {@html parse(property.relatedModels)}
