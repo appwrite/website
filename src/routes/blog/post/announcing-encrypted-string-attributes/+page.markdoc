@@ -40,6 +40,6 @@ This new feature is available on Appwrite Cloud Pro and Scale plan, and self-hos
 
 # More resources
 
-- [Read the documentation to get started](https://appwrite.io/docs)
-- [Learn more about Appwrite security](https://appwrite.io/docs/advanced/security)
-- [Improve your Appwrite developer experience with dev keys](https://appwrite.io/blog/post/improve-devex-dev-keys)
+- [Read the documentation to get started](/docs)
+- [Learn more about Appwrite security](/docs/advanced/security)
+- [Improve your Appwrite developer experience with dev keys](/blog/post/improve-devex-dev-keys)
