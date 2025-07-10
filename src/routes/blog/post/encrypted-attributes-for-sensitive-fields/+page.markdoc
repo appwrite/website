@@ -64,7 +64,7 @@ Encrypted attributes are most suitable for data that must be stored, but not que
 
 These are values that carry risk if stored openly, but which rarely need to be queried. In many applications, such fields accumulate gradually in the background. They are often forgotten, even though they hold meaningful traces of identity and trust. Encrypting them protects against exposures.
 
-Encryption is not appropriate for fields that you need to filter or search. For example, an email address used for login should remain unencrypted if it needs to be indexed or queried. A practical approach could be to pair an unencrypted, queryable label with a separate encrypted field that holds more sensitive information.
+Encryption is not appropriate for fields that you need to filter or search. For example, a product category field should remain unencrypted if you need to filter products by category. A practical approach could be to pair an unencrypted, queryable label with a separate encrypted field that holds more sensitive information.
 
 # Why this is not end-to-end encryption
 
