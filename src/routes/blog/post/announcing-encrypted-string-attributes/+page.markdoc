@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Announcing encrypted string attribute support: Built-in encryption for sensitive fields"
+title: "Announcing Encrypted string attribute support: Built-in encryption for sensitive fields"
 description: Easily encrypt sensitive string fields at rest, with no manual encryption logic.
 date: 2025-07-10
 cover: /images/blog/announcing-encrypted-string-attributes/cover.png
@@ -11,7 +11,7 @@ featured: false
 ---
 Appwrite is secure by default. We build every single product and feature with the highest regard for security. 
 
-With this in mind, we introduce **encrypted string attribute support** for Appwrite Databases, a new feature to enhance your databases’ security. 
+With this in mind, we introduce **Encrypted string attribute support** for Appwrite Databases, a new feature to enhance your databases’ security. 
 
 This critical addition lets you store sensitive data securely, encrypted at rest, directly within your databases.
 
@@ -19,7 +19,7 @@ This critical addition lets you store sensitive data securely, encrypted at rest
 
 Previously, storing confidential or sensitive data required manual encryption and decryption. This not only increased complexity but also introduced potential security risks from implementation errors.
 
-With encrypted string attribute support, Appwrite handles encryption transparently using industry-standard AES-GCM encryption. Your data remains secure, encrypted server-side, without additional effort or complex custom code. Additionally, Appwrite ensures compliance with common security standards, including support for environments requiring FIPS compliance.
+With Encrypted string attribute support, Appwrite handles encryption transparently using industry-standard AES-GCM encryption. Your data remains secure, encrypted server-side, without additional effort or complex custom code. Additionally, Appwrite ensures compliance with common security standards, including support for environments requiring FIPS compliance.
 
 # Serving security-focused industries
 
