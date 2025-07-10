@@ -1,1 +1,45 @@
+---
+layout: post
+title: "Announcing encrypted string attributes: Built-in encryption for sensitive fields"
+description: Easily encrypt sensitive string fields at rest, with no manual encryption logic.
+date: 2025-07-10
+cover: /images/blog/announcing-encrypted-string-attributes/cover.png
+timeToRead: 5
+author: jake-barnby
+category: announcement
+featured: false
+---
+Appwrite is secure by default. We build every single product and feature with the highest regard for security. 
 
+With this in mind, we introduce **Encrypted String Attribute Support** for Appwrite Databases, a new feature to enhance your databases’ security. 
+
+This critical addition lets you store sensitive data securely, encrypted at rest, directly within your databases.
+
+# Built-in security, zero complexity
+
+Previously, storing confidential or sensitive data required manual encryption and decryption. This not only increased complexity but also introduced potential security risks from implementation errors.
+
+With Encrypted String Attribute Support, Appwrite handles encryption transparently using industry-standard AES-GCM encryption. Your data remains secure, encrypted server-side, without additional effort or complex custom code. Additionally, Appwrite ensures compliance with common security standards, including support for environments requiring FIPS compliance.
+
+# Serving security-focused industries
+
+It is essential for creating secure apps in fintech, healthcare, messaging, and other sectors where security and compliance are paramount. It ensures data protection out of the box, freeing you from manually managing encryption keys. 
+
+Key features entail:
+
+- **Server-side encryption at rest**: Your data is encrypted on the server automatically.
+- **Transparent encryption**: Clients see and interact with encrypted fields just like regular strings.
+- **Zero-effort protection**: No need to implement manual encryption or key management.
+- **Secure by design**: Fields can't be queried, ensuring sensitive data stays protected.
+
+# Setting the security standard
+
+Appwrite delivers comprehensive, secure, easy-to-use encryption that is seamlessly integrated into your workflow. When a string attribute is marked as encrypted, Appwrite applies AES-128 encryption in Galois/Counter Mode (GCM) before writing it to the database.
+
+This new feature is available on Appwrite Cloud Pro and Scale plan, and self-hosted. Encrypted String Attribute Support significantly enhances your application's security posture, making Appwrite a trusted choice for handling sensitive data.
+
+# More resources
+
+- [Read the documentation to get started](https://appwrite.io/docs)
+- [Learn more about Appwrite security](https://appwrite.io/docs/advanced/security)
+- [Improve your Appwrite developer experience with dev keys](https://appwrite.io/blog/post/improve-devex-dev-keys)
