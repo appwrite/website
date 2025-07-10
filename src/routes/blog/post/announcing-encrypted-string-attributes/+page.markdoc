@@ -5,7 +5,7 @@ description: Easily encrypt sensitive string fields at rest, with no manual encr
 date: 2025-07-10
 cover: /images/blog/announcing-encrypted-string-attributes/cover.png
 timeToRead: 5
-author: jake-barnby
+author: arnab-chatterjee
 category: announcement
 featured: false
 ---
@@ -40,6 +40,6 @@ This new feature is available on Appwrite Cloud Pro and Scale plan, and self-hos
 
 # More resources
 
-- [Read the documentation to get started](/docs)
+- [Read the documentation to get started](/docs/advanced/security/encryption)
 - [Learn more about Appwrite security](/docs/advanced/security)
 - [Improve your Appwrite developer experience with dev keys](/blog/post/improve-devex-dev-keys)
