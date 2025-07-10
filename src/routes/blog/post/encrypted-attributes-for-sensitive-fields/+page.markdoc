@@ -51,7 +51,9 @@ Encryption changes how Appwrite stores a value, but it does not change how that 
 
 Most importantly, **encrypted attributes cannot be queried**. You cannot filter, search, or sort based on encrypted values.
 
+{% info title="Important" %}
 If you encrypt a field that you later need to query, you will need to delete and recreate it.
+{% /info %}
 
 # When encryption fits
 
