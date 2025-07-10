@@ -39,7 +39,7 @@ To create an encrypted attribute:
 
 You may also configure standard settings, such as size limits, default values, whether the field is required, or whether it supports arrays. Note that encrypted string attributes require a **minimum size of 150 characters**.
 
-Once created, the attribute will appear in your schema with a lock icon to indicate that its contents are encrypted at rest.
+Once created, the attribute will appear in your schema with a lock icon indicating that its contents are encrypted at rest.
 
 ![encrypted attribute screen](/images/blog/encrypted-attributes-for-sensitive-fields/encrypted-attribute-screen.png)
 
