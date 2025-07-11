@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "Role-Based Access Control (RBAC) with Appwrite"
-description: Discover how to implement role-based access control with Appwrite, enhancing data security and protection.
+title: "Everything you need to know about RBAC and how to use it in Appwrite"
+description: Understand the basics of RBAC, why it matters, and how to set it up with Appwrite.
 cover: /images/blog/role-based-access-control-with-appwrite/cover.png
 timeToRead: 10
 date: 2025-07-11
