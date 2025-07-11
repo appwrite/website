@@ -51,6 +51,8 @@ Here are some reasons RBAC enhances data security:
 
 RBAC bolsters security and streamlines processes, making organizations more efficient in managing data protection policies.
 
+{% call_to_action title="Add secure role-based permissions with Appwrite" description="Appwrite Auth makes it easy to manage roles, permissions, and user access, all from one place." point1="Define custom roles and fine-grained permissions"  point2="Built-in RBAC and team-based access" point3="Works out of the box with Appwrite Auth" point4="Easy to manage from the Console or API" cta="Learn more" url="/products/auth" /%}
+
 # Core components of RBAC: Roles, Permissions, and Users
 
 The foundation of Role-Based Access Control (RBAC) is built on three main components: roles, permissions, and users. Each plays a critical part in establishing an effective access control system.
@@ -174,6 +176,8 @@ Implementing RBAC can present challenges, particularly in complex systems. Ident
 - **User Role drift**: Users might retain roles needlessly. **Solution**: Regularly review and update user roles.
 
 Navigating these challenges requires vigilance and periodic reviews. By continuously evaluating and refining RBAC configurations, you can maintain an efficient and secure access control system in Appwrite.
+
+{% call_to_action title="Add secure role-based permissions with Appwrite" description="Appwrite Auth makes it easy to manage roles, permissions, and user access, all from one place." point1="Define custom roles and fine-grained permissions"  point2="Built-in RBAC and team-based access" point3="Works out of the box with Appwrite Auth" point4="Easy to manage from the Console or API" cta="Learn more" url="/products/auth" /%}
 
 # Real-world use cases: RBAC with Appwrite
 
