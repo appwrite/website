@@ -144,7 +144,7 @@ By employing these elements, Appwrite's RBAC system facilitates robust, flexible
 
 # Setting up RBAC in Appwrite
 
-Setting up Role-Based Access Control (RBAC) in Appwrite is pretty straightforward and can be done directly from Appwrite Console. [Learn how to use Appwrite Labels and Team to manage user permissions.](/blog/post/manage-user-permissions-with-labels-and-teams)
+Setting up Role-Based Access Control (RBAC) in Appwrite is pretty straightforward and can be done directly from Appwrite Console by creating different sets of [permissions](/docs/advanced/platform/permissions). [Learn how to use Appwrite Labels and Team to manage user permissions.](/blog/post/manage-user-permissions-with-labels-and-teams)
 
 # Best practices for managing RBAC with Appwrite 
 
