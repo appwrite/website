@@ -107,7 +107,7 @@ Moreover, RBAC enhances the onboarding and off-boarding processes. New users rec
 
 # Introduction to Appwrite and its security features
 
-Appwrite is a versatile open-source backend server. It caters to developers seeking a secure, efficient solution for app development.
+Appwrite is an all-in-one development platform. It caters to developers seeking a secure, efficient solution for app development.
 
 One of Appwrite's standout features is its strong focus on security. It provides robust tools essential for safeguarding data. Implementing Role-Based Access Control (RBAC) is seamless with Appwrite, allowing for precise access management.
 
