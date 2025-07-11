@@ -174,15 +174,17 @@ account.createOAuth2Session(
 {% /tabsitem %}
 
 {% tabsitem #react-native title="React Native" %}
-If using Expo, set the URL scheme in your `app.json` file.
+If using Expo, set the URL scheme to `appwrite-callback-<PROJECT_ID>` in your `app.json` file.
 
 ```json
 {
   "expo": {
-    "scheme": "myapp"
+    "scheme": "appwrite-callback-<PROJECT_ID>"
   }
 }
 ```
+
+Then, create a deep link, pass it to `account.createOAuth2Token()` method to create the login URL, open the URL in a browser, listen for the redirect, and finally create a session with the secret.
 
 ```client-react-native
 import { Client, Account, OAuthProvider } from "appwrite";
@@ -190,18 +192,15 @@ import { makeRedirectUri } from 'expo-auth-session'
 import * as WebBrowser from 'expo-web-browser';
 
 const client = new Client()
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('<PROJECT_ID>');                 // Your project ID
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('<PROJECT_ID>');                          // Your project ID
 
 const account = new Account(client);
 
-// Create a deep link that works across Expo environments
+// Create deep link that works across Expo environments
 // Ensure localhost is used for the hostname to validation error for success/failure URLs
-const deepLink = new URL(makeRedirectUri({preferLocalhost: true}));
-if (!deepLink.hostname) {
-    deepLink.hostname = 'localhost';
-}
-const scheme = `${deepLink.protocol}//`; // e.g. 'exp://' or 'playground://'
+const deepLink = new URL(makeRedirectUri({ preferLocalhost: true }));
+const scheme = `${deepLink.protocol}//`; // e.g. 'exp://' or 'appwrite-callback-<PROJECT_ID>://'
 
 // Start OAuth flow
 const loginUrl = await account.createOAuth2Token(
