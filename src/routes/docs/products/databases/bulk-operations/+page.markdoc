@@ -6,14 +6,22 @@ description: Perform bulk operations on documents within your collections for ef
 
 Appwrite Databases supports bulk operations for documents, allowing you to create, update, or delete multiple documents in a single request. This can significantly improve performance for apps as it allows you to reduce the number of API calls needed while working with large data sets.
 
-As of now, bulk operations can only be performed via the server-side SDKs. The client-side SDKs do not support bulk operations.
+Bulk operations can only be performed via the server-side SDKs. The client-side SDKs do not support bulk operations by design to prevent abuse and protect against unexpected costs. This ensures that only trusted server environments can perform large-scale data operations.
+
+For client applications that need bulk-like functionality, consider using [Appwrite Functions](/docs/products/functions) with proper rate limiting and validation.
+
+# Atomic behavior {% #atomic-behavior %}
+
+Bulk operations in Appwrite are **atomic**, meaning they follow an all-or-nothing approach. Either all documents in your bulk request succeed, or all documents fail.
+
+This atomicity ensures:
+- **Data consistency**: Your database remains in a consistent state even if some operations would fail.
+- **Race condition prevention**: Multiple clients can safely perform bulk operations simultaneously.
+- **Simplified error handling**: You only need to handle complete success or complete failure scenarios.
+
+For example, if you attempt to create 100 documents and one fails due to a validation error, none of the 100 documents will be created.
 
 # Create documents {% #create-documents %}
-
-{% info title="Permissions required" %}
-You must grant **create** permissions to users at the **collection level** before users can create documents.
-[Learn more about permissions](/docs/products/databases/permissions)
-{% /info %}
 
 You can create multiple documents in a single request using the `createDocuments` method.
 
