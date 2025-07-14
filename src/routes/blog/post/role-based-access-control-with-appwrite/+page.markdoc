@@ -39,7 +39,7 @@ Implementing RBAC is crucial for data protection and maintaining security standa
 
 Data security and protection are at the heart of modern IT operations. Implementing RBAC plays a crucial role in this domain. RBAC ensures that only authorized users have access to specific data and resources, reducing the risk of data breaches.
 
-RBAC is particularly significant for compliance with regulations such as GDPR and HIPAA. These regulations mandate stringent access control measures to safeguard personal and sensitive information. By adopting RBAC, organizations can more easily meet these compliance requirements.
+RBAC is particularly significant for compliance with regulations such as [GDPR](/docs/advanced/security/gdpr) and [HIPAA](/docs/advanced/security/hipaa). These regulations mandate stringent access control measures to safeguard personal and sensitive information. By adopting RBAC, organizations can more easily meet these compliance requirements.
 
 One of the key benefits of RBAC is its adherence to the principle of least privilege. This principle ensures users have minimal access to the necessary tasks. This minimizes potential security risks associated with excessive permissions.
 
@@ -115,10 +115,10 @@ One of Appwrite's standout features is its strong focus on security. It provides
 
 Appwrite's security features include:
 
-- Robust authentication systems.
+- Robust [authentication systems.](/products/auth)
 - Customizable permissions and roles.
-- Integration with other security protocols.
-- Data encryption for enhanced protection.
+- Integration with [other security protocols](/docs/products/auth).
+- [Data encryption](/docs/advanced/security/encryption) for enhanced protection.
 
 These features make Appwrite an excellent choice for applications requiring stringent security measures. Additionally, its flexibility allows developers to tailor security features to specific project needs.
 
