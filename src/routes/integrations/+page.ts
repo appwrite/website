@@ -1,7 +1,7 @@
 import { base } from '$app/paths';
 import { groupBy } from 'remeda';
 import type { SearchableCategory } from '$lib/constants';
-import { partnerCategoryDescriptions as categoryDescriptions } from '$lib/constants';
+import { integrationCategoryDescriptions as categoryDescriptions } from '$lib/constants';
 
 export type Integration = {
     title: string;
