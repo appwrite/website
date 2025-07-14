@@ -132,9 +132,6 @@
                                                 <li><span>75K monthly active users</span></li>
                                                 <li><span>Community support</span></li>
                                                 <li>
-                                                    <span>Non-removable email branding</span>
-                                                </li>
-                                                <li>
                                                     <span
                                                         >1 Database, 1 Bucket, 5 Functions per
                                                         project</span
