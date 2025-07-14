@@ -24,7 +24,7 @@ const databases = new Databases(client);
 
 databases.listDocuments(
     '<DATABASE_ID>',
-    '[COLLECTION_ID]',
+    '<COLLECTION_ID>',
     [
         Query.orderAsc('title'),
     ]
@@ -44,7 +44,7 @@ void main() async {
     try {
         final documents = await databases.listDocuments(
             databaseId: '<DATABASE_ID>',
-            collectionId: '[COLLECTION_ID]',
+            collectionId: '<COLLECTION_ID>',
             queries: [
                 Query.orderAsc('title')
             ]
@@ -137,7 +137,7 @@ In the example below, the movies returned will be first sorted by `title` in asc
 // List documents and sort based on multiple attributes
 databases.listDocuments(
     '<DATABASE_ID>',
-    '[COLLECTION_ID]',
+    '<COLLECTION_ID>',
     [
         Query.orderAsc('title'), // Order first by title in ascending order
         Query.orderDesc('year'), // Then, order by year in descending order
@@ -152,7 +152,7 @@ databases.listDocuments(
 try {
     final documents = await databases.listDocuments(
         databaseId: '<DATABASE_ID>',
-        collectionId: '[COLLECTION_ID]',
+        collectionId: '<COLLECTION_ID>',
         queries: [
             Query.orderAsc('title'), // Order by title in ascending order
             Query.orderDesc('year')  // Order by year in descending order
@@ -231,7 +231,7 @@ const databases = new Databases(client);
 
 databases.listDocuments(
     '<DATABASE_ID>',
-    '[COLLECTION_ID]',
+    '<COLLECTION_ID>',
     [
         Query.orderAsc('$sequence'),
     ]
@@ -251,7 +251,7 @@ void main() async {
     try {
         final documents = await databases.listDocuments(
             databaseId: '<DATABASE_ID>',
-            collectionId: '[COLLECTION_ID]',
+            collectionId: '<COLLECTION_ID>',
             queries: [
                 Query.orderAsc('\$sequence')
             ]
@@ -276,7 +276,7 @@ func main() async throws {
     do {
         let documents = try await databases.listDocuments(
             databaseId: "<DATABASE_ID>",
-            collectionId: "[COLLECTION_ID]",
+            collectionId: "<COLLECTION_ID>",
             queries: [
                 Query.orderAsc("$sequence")
             ]
@@ -302,7 +302,7 @@ suspend fun main() {
     try {
         val documents = databases.listDocuments(
             databaseId = "<DATABASE_ID>",
-            collectionId = "[COLLECTION_ID]",
+            collectionId = "<COLLECTION_ID>",
             queries = listOf(
                 Query.orderAsc("\$sequence")
             )
