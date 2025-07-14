@@ -334,5 +334,3 @@ The `$sequence` field is useful when you need:
 - Consistent ordering for pagination, especially with high-frequency inserts
 - Reliable insertion order tracking when timestamps might not be precise enough
 - Simple numeric ordering without managing custom counter fields
-
-[Learn more about system-generated fields](/docs/products/databases/documents#system-generated-fields)
