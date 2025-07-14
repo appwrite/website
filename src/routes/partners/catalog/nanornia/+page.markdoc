@@ -1,0 +1,42 @@
+---
+layout: partner
+title: Nanornia
+description: Nanornia is a digital agency that creates websites, apps, and visual designs. We help businesses of all sizes build professional and user-friendly digital solutions, using both custom development and low-code tools to deliver high-quality results.
+date: 2025-03-21
+featured: true
+partnerLevel: Silver
+isNew: true
+cover: /images/partners/covers/nanornia.png
+category: agency
+website: https://nanornia.se
+product: 
+    avatar: '/images/partners/avatars/nanornia.png'
+    vendor: nanornia
+    description: 'Nanornia is a digital agency that creates websites, apps, and visual designs. We help businesses of all sizes build professional and user-friendly digital solutions, using both custom development and low-code tools to deliver high-quality results.'
+technologies: 
+    - Astro
+    - Nuxt
+    - Vue
+    - Flutter
+services:
+    - AI
+    - Web 
+    - Mobile
+regions:
+    - Europe
+languages: 
+    - English
+    - Swedish
+---
+
+# Overview
+
+Nanornia is a digital agency that creates websites, apps, and visual designs. We help businesses of all sizes build professional and user-friendly digital solutions, using both custom development and low-code tools to deliver high-quality results.
+
+# Services
+
+We provide end-to-end services in web development, app creation, and visual design, building everything from websites and digital platforms to fully custom applications tailored to your business needs.
+
+We use Appwrite to power secure and scalable web and mobile apps, handling everything from user authentication and databases to file storage and server-side functions—accelerating development and boosting efficiency.
+
+Our sweet spot is building SaaS platforms, web apps, and AI-powered solutions for businesses that need reliable, scalable, and high-performance digital tools.

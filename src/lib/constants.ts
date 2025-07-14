@@ -59,13 +59,18 @@ export type SocialShareOption = {
     type: 'link' | 'copy';
 };
 
-export type IntegrationCategory = {
+export type SearchableCategory = {
     slug: string;
     heading: string;
     description: string;
 };
 
-export const integrationCategoryDescriptions: IntegrationCategory[] = [
+export const integrationCategoryDescriptions: SearchableCategory[] = [
+    {
+        slug: 'mcp',
+        heading: 'MCP',
+        description: 'Platforms with Model Context Protocol support'
+    },
     {
         slug: 'ai',
         heading: 'AI',
@@ -102,6 +107,11 @@ export const integrationCategoryDescriptions: IntegrationCategory[] = [
         description: 'Implement search functionalities'
     },
     {
+        slug: 'sites',
+        heading: 'Sites',
+        description: 'Deploy and host web applications'
+    },
+    {
         slug: 'storage',
         heading: 'Storage',
         description: 'Storage for data and media'
@@ -110,6 +120,14 @@ export const integrationCategoryDescriptions: IntegrationCategory[] = [
         slug: 'deployments',
         heading: 'Deployments',
         description: 'Seamlessly deploy your code'
+    }
+];
+
+export const partnerCategoryDescriptions: SearchableCategory[] = [
+    {
+        slug: 'agency',
+        heading: 'Agency',
+        description: 'Find an Appwrite Partner agency for your project'
     }
 ];
 

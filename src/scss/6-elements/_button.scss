@@ -103,7 +103,7 @@
 
 
     @mixin light-mode {
-      background: rgba(253, 54, 110, 0.08);
+      background: hsla(343, 98%, 60%, 0.08);
       box-shadow: none;
       color: hsl(var(--web-color-accent-click));
       .#{$p}-inline-tag {

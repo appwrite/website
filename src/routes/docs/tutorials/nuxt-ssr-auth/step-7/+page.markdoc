@@ -46,7 +46,7 @@ The `createOAuth2Token` method redirects the user to the OAuth provider, and the
 Handle the callback and create a session for the user. Create a new server route at `server/routes/api/oauth.get.js`.
 
 ```js
-// server/routes/api/oauth.post.js
+// server/routes/api/oauth.get.js
 import { SESSION_COOKIE, createAdminClient } from "~/server/lib/appwrite";
 
 export default defineEventHandler(async (event) => {

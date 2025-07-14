@@ -13,7 +13,7 @@
             image: TeamsConsole
         },
         {
-            title: 'Full control over permissions',
+            title: 'Role-based access control',
             copy: 'Define the level of access and control users or teams have over resources according to their roles.',
             image: PermissionsConsole
         }

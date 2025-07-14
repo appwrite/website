@@ -146,13 +146,13 @@
 </script>
 
 <div class="relative">
-    {#if !page.url.pathname.includes('/init')}
-        <div class="border-smooth relative z-10 border-b bg-[#19191C]">
-            <div class="is-special-padding mx-auto">
-                <AnnouncementBanner />
-            </div>
-        </div>
-    {/if}
+    <!--{#if !page.url.pathname.includes('/init')}-->
+    <!--    <div class="border-smooth relative z-10 border-b bg-[#19191C]">-->
+    <!--        <div class="is-special-padding mx-auto">-->
+    <!--            <AnnouncementBanner />-->
+    <!--        </div>-->
+    <!--    </div>-->
+    <!--{/if}-->
 
     <section
         class="web-mobile-header {resolvedTheme}"
@@ -196,7 +196,9 @@
         </div>
     </section>
 
-    <header class="web-main-header is-special-padding {resolvedTheme} is-transparent">
+    <header
+        class="web-main-header is-special-padding hidden lg:block {resolvedTheme} is-transparent"
+    >
         <div
             class="web-main-header-wrapper"
             class:is-special-padding={BANNER_KEY.startsWith('init-banner-')}
