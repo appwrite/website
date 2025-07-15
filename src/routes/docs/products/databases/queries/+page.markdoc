@@ -146,7 +146,7 @@ X-Appwrite-Project: <PROJECT_ID>
 
 ## Select {% #select %}
 
-The `select` operator allows you to specify which attributes should be returned from a document. This is useful for optimizing response size and only retrieving the data you need.
+The `select` operator allows you to specify which attributes should be returned from a document. This is essential for optimizing response size, controlling which relationship data loads, and only retrieving the data you need.
 
 {% multicode %}
 ```client-web
@@ -174,6 +174,219 @@ Query.select(["name", "title"])
 {"method":"select","values":["name","title"]}
 ```
 {% /multicode %}
+
+### Select relationship data {% #relationship-select %}
+
+With [opt-in relationship loading](/docs/products/databases/relationships#performance-loading), you must explicitly select relationship data. This gives you fine-grained control over performance and payload size.
+
+#### Get documents without relationships
+By default, documents return only their own fields:
+
+{% multicode %}
+```client-web
+const doc = await databases.getDocument('<DATABASE_ID>', '<COLLECTION_ID>', '<DOCUMENT_ID>');
+```
+```client-flutter
+final doc = await databases.getDocument(
+    databaseId: '<DATABASE_ID>',
+    collectionId: '<COLLECTION_ID>',
+    documentId: '<DOCUMENT_ID>'
+);
+```
+```python
+doc = databases.get_document('<DATABASE_ID>', '<COLLECTION_ID>', '<DOCUMENT_ID>')
+```
+```ruby
+doc = databases.get_document('<DATABASE_ID>', '<COLLECTION_ID>', '<DOCUMENT_ID>')
+```
+```deno
+// Returns only main document fields
+const doc = await databases.getDocument('<DATABASE_ID>', '<COLLECTION_ID>', '<DOCUMENT_ID>');
+// Result: { name: "John", age: 30 } - no related data
+```
+```php
+$doc = $databases->getDocument('<DATABASE_ID>', '<COLLECTION_ID>', '<DOCUMENT_ID>');
+```
+```swift
+let doc = try await databases.getDocument(
+    databaseId: "<DATABASE_ID>",
+    collectionId: "<COLLECTION_ID>",
+    documentId: "<DOCUMENT_ID>"
+)
+```
+```http
+# Returns only main document fields
+GET /v1/databases/<DATABASE_ID>/collections/<COLLECTION_ID>/documents/<DOCUMENT_ID>
+# Result: { name: "John", age: 30 } - no related data
+```
+{% /multicode %}
+
+#### Load all relationship data
+Use the `*` wildcard to load all fields from related documents:
+
+{% multicode %}
+```client-web
+const doc = await databases.getDocument(
+    '<DATABASE_ID>', '<COLLECTION_ID>', '<DOCUMENT_ID>',
+    [Query.select(["*", "reviews.*"])]
+);
+```
+```client-flutter
+final doc = await databases.getDocument(
+    databaseId: '<DATABASE_ID>',
+    collectionId: '<COLLECTION_ID>',
+    documentId: '<DOCUMENT_ID>',
+    queries: [Query.select(["*", "reviews.*"])]
+);
+```
+```python
+doc = databases.get_document(
+    '<DATABASE_ID>', '<COLLECTION_ID>', '<DOCUMENT_ID>',
+    [Query.select(["*", "reviews.*"])]
+)
+```
+```ruby
+doc = databases.get_document(
+    '<DATABASE_ID>', '<COLLECTION_ID>', '<DOCUMENT_ID>',
+    [Query.select(["*", "reviews.*"])]
+)
+```
+```deno
+const doc = await databases.getDocument(
+    '<DATABASE_ID>', '<COLLECTION_ID>', '<DOCUMENT_ID>',
+    [Query.select(["*", "reviews.*"])]
+);
+// Result: { name: "John", age: 30, reviews: [{...}] }
+```
+```php
+$doc = $databases->getDocument(
+    '<DATABASE_ID>', '<COLLECTION_ID>', '<DOCUMENT_ID>',
+    [Query::select(["*", "reviews.*"])]
+);
+```
+```swift
+let doc = try await databases.getDocument(
+    databaseId: "<DATABASE_ID>",
+    collectionId: "<COLLECTION_ID>",
+    documentId: "<DOCUMENT_ID>",
+    queries: [Query.select(["*", "reviews.*"])]
+)
+```
+```http
+# Load all main fields + all related fields
+{"method":"select","values":["*","reviews.*"]}
+```
+{% /multicode %}
+
+#### Select specific relationship fields
+For precise control, select only specific fields from related documents:
+
+{% multicode %}
+```client-web
+const doc = await databases.getDocument(
+    '<DATABASE_ID>', '<COLLECTION_ID>', '<DOCUMENT_ID>',
+    [Query.select(["name", "age", "reviews.author", "reviews.rating"])]
+);
+```
+```client-flutter
+final doc = await databases.getDocument(
+    databaseId: '<DATABASE_ID>',
+    collectionId: '<COLLECTION_ID>',
+    documentId: '<DOCUMENT_ID>',
+    queries: [Query.select(["name", "age", "reviews.author", "reviews.rating"])]
+);
+```
+```python
+doc = databases.get_document(
+    '<DATABASE_ID>', '<COLLECTION_ID>', '<DOCUMENT_ID>',
+    [Query.select(["name", "age", "reviews.author", "reviews.rating"])]
+)
+```
+```ruby
+doc = databases.get_document(
+    '<DATABASE_ID>', '<COLLECTION_ID>', '<DOCUMENT_ID>',
+    [Query.select(["name", "age", "reviews.author", "reviews.rating"])]
+)
+```
+```deno
+const doc = await databases.getDocument(
+    '<DATABASE_ID>', '<COLLECTION_ID>', '<DOCUMENT_ID>',
+    [Query.select(["name", "age", "reviews.author", "reviews.rating"])]
+);
+// Result: { name: "John", age: 30, reviews: [{ author: "...", rating: 5 }] }
+```
+```php
+$doc = $databases->getDocument(
+    '<DATABASE_ID>', '<COLLECTION_ID>', '<DOCUMENT_ID>',
+    [Query::select(["name", "age", "reviews.author", "reviews.rating"])]
+);
+```
+```swift
+let doc = try await databases.getDocument(
+    databaseId: "<DATABASE_ID>",
+    collectionId: "<COLLECTION_ID>",
+    documentId: "<DOCUMENT_ID>",
+    queries: [Query.select(["name", "age", "reviews.author", "reviews.rating"])]
+)
+```
+```http
+# Load specific fields from main and related documents
+{"method":"select","values":["name","age","reviews.author","reviews.rating"]}
+```
+{% /multicode %}
+
+#### Load nested relationships
+You can also load relationships of relationships:
+
+{% multicode %}
+```client-web
+Query.select(["*", "reviews.*", "reviews.author.*"])
+```
+```client-flutter
+Query.select(["*", "reviews.*", "reviews.author.*"])
+```
+```python
+Query.select(["*", "reviews.*", "reviews.author.*"])
+```
+```ruby
+Query.select(["*", "reviews.*", "reviews.author.*"])
+```
+```deno
+Query.select(["*", "reviews.*", "reviews.author.*"])
+```
+```php
+Query::select(["*", "reviews.*", "reviews.author.*"])
+```
+```swift
+Query.select(["*", "reviews.*", "reviews.author.*"])
+```
+```http
+{"method":"select","values":["*","reviews.*","reviews.author.*"]}
+```
+{% /multicode %}
+
+### Use selection patterns {% #select-patterns %}
+
+| Pattern | Description | Use case |
+|---------|-------------|----------|
+| `["field1", "field2"]` | Specific attributes only | Minimize response size |
+| `["*"]` | All document attributes | Get complete document data |
+| `["*", "relationName.*"]` | Document + all relationship fields | Load document with complete related data |
+| `["field1", "relationName.field2"]` | Specific fields from document and relationships | Precise data loading |
+| `["*", "relationName.field1", "relationName.field2"]` | All document fields + specific relationship fields | Partial relationship loading |
+| `["relationName.*", "relationName.nestedRelation.*"]` | Nested relationship loading | Load relationships of relationships |
+
+### Optimize performance {% #select-performance %}
+
+**Optimize response size** - Only select the fields you actually need. Smaller responses are faster to transfer and parse.
+
+**Control relationship loading** - Related documents are not loaded by default. Use explicit selection to load only the relationships you need.
+
+**Reduce database load** - Selecting fewer fields reduces database processing time, especially for large documents.
+
+{% info title="Related documents" %}
+By default, relationship attributes contain only document IDs. To load the actual related document data, you must explicitly include relationship fields in your select query. Learn more about [relationship performance optimization](/docs/products/databases/relationships#performance-loading).
+{% /info %}
 
 ## Comparison operators {% #comparison %}
 

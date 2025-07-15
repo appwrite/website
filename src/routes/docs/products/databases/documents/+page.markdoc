@@ -143,6 +143,10 @@ You can find a full guide on querying in the [Queries Guide](/docs/products/data
 By default, results are limited to the **first 25 items**.
 You can change this through [pagination](/docs/products/databases/pagination).
 
+{% info title="Opt-in relationship loading" %}
+Documents with relationships return only their fields by default. To load related documents, use the `Query.select()` method to explicitly specify which relationship data you need. [Learn more about relationship loading](/docs/products/databases/relationships#performance-loading).
+{% /info %}
+
 {% multicode %}
 ```client-web
 import { Client, Databases, Query } from "appwrite";
