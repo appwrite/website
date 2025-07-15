@@ -15,7 +15,7 @@ Auto-increment is perfect for use cases like:
 - Invoice numbers and activity logs
 - Real-time feeds
 
-Easily manage ordered data with automatic, incrementing IDs.
+Making it easy to manage ordered data with automatic, incrementing IDs.
 
 {% arrow_link href="/blog/post/announcing-auto-increment-support" %}
 Read the announcement to learn more
