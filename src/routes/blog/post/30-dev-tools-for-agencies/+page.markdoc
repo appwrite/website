@@ -26,10 +26,10 @@ A code editor is often the first and most frequently used tool in any developerâ
 | **Editor** | **Best for**  | **Pricing** |
 | --- | --- | --- |
 | **VS Code** | Daily dev work | Free |
-| **Sublime Text** | Fast, lightweight edits | Free;$99/3-year license |
-| **Zed** | Real-time collaboration | Free (early access) |
+| **Sublime Text** | Fast, lightweight edits | Free or $99 for 3-year license |
+| **Zed** | Real-time collaboration | Free or Paid from $20/month  |
 | **Notepad++** | Quick file tweaks | Free |
-| **CodeSandbox** | Web-based code editor | Free / from $15 per month |
+| **CodeSandbox** | Web-based code editor | Free or Paid from $15/month |
 
 ## 1. Visual Studio Code
 
@@ -139,10 +139,10 @@ While code editors are lightweight and flexible, Integrated Development Environm
 
 | **IDE** | **Best for** | **Pricing** |
 | --- | --- | --- |
-| **IntelliJ IDEA** | Java, Kotlin, Spring projects | Free (Community); from $169/year |
-| **Visual Studio** | .NET, C#, Windows applications | Free (Community); from $45/month |
+| **IntelliJ IDEA** | Java, Kotlin, Spring projects | Free or paid from $169/year |
+| **Visual Studio** | .NET, C#, Windows applications | Free or paid from $45/month |
 | **Eclipse** | Java, C/C++, extensible needs | Free and open-source |
-| **PyCharm** | Python, Django, Flask workflows | Free (Community); from $99/year |
+| **PyCharm** | Python, Django, Flask workflows | Free or paid from $99/year |
 | **NetBeans** | Java, desktop apps, GUI builders | Free and open-source |
 
 ## 1. IntelliJ IDEA
@@ -254,11 +254,11 @@ Version control helps developers track changes, collaborate without conflicts, a
 
 | **Tool** | **When to Use** | **Pricing** |
 | --- | --- | --- |
-| **GitHub** | Collaborative coding and open-source | Free;$4 per user/month |
-| **GitLab** | All-in-one DevOps and self-hosting | Free;$29 per user/month |
-| **Bitbucket** | Jira-connected workflows | Free; $3 per user/month |
+| **GitHub** | Collaborative coding and open-source | Free or paid from $4 per user/month |
+| **GitLab** | All-in-one DevOps and self-hosting | Free or paid from $29 per user/month |
+| **Bitbucket** | Jira-connected workflows | Free or paid from $3 per user/month |
 | **Beanstalk** | Simple version control + deployment | Starts at $15/month (5 users) |
-| **Helix Core** | Large files, game assets, binaries | Free for small teams; enterprise pricing |
+| **Helix Core** | Large files, game assets, binaries | Free for small teams or enterprise pricing |
 
 ## 1. GitHub
 
@@ -370,11 +370,11 @@ If you're an agency or service provider helping clients build and ship apps fast
 
 | **Tool** | **Best for** | **Pricing** |
 | --- | --- | --- |
-| **GitHub Copilot** | Real-time code suggestions across IDEs | From $10/month (Individual) |
-| **Cursor** | Chat + code editing in natural language | Free plan / Pro from $20/month |
-| **Cody (Sourcegraph)** | AI + code search across large projects | From $19/user/month (Enterprise) |
-| **Replit Ghostwriter** | In-browser, fast prototyping | Free / Paid from $25/month |
-| **Windsurf** | Full-context AI inside a purpose-built IDE | Free / Pro from $15/user/month |
+| **GitHub Copilot** | Real-time code suggestions across IDEs | Paid from $10/month (Individual) |
+| **Cursor** | Chat + code editing in natural language | Free plan or  paid from $20/month |
+| **Cody (Sourcegraph)** | AI + code search across large projects | Paid from $19/user/month (Enterprise) |
+| **Replit Ghostwriter** | In-browser, fast prototyping | Free or paid from $25/month |
+| **Windsurf** | Full-context AI inside a purpose-built IDE | Free or paid from $15/user/month |
 
 ## 1. Github Copilot
 
@@ -483,11 +483,11 @@ Project management tools help teams stay aligned, track progress, and deliver wo
 
 | **Tool** | **Best For** | **Pricing** |
 | --- | --- | --- |
-| **Jira** | Engineering-heavy, Agile teams | Free (up to 10 users); from $7.53/user/month |
-| **Asana** | Mixed teams needing flexibility | Free tier; from $10.99/user/month |
-| **ClickUp** | Customizable workflows and dev+non-dev teams | Free tier; from $7/user/month |
-| **Monday Dev** | Product and engineering collaboration | From $9/seat/month |
-| **Basecamp** | Small agencies preferring simplicity | $299/month flat rate (unlimited users) |
+| **Jira** | Engineering-heavy, Agile teams | Free (up to 10 users) or paid from $7.53/user/month |
+| **Asana** | Mixed teams needing flexibility | Free or paid from $10.99/user/month |
+| **ClickUp** | Customizable workflows and dev+non-dev teams | Free or paid from $7/user/month |
+| **Monday Dev** | Product and engineering collaboration | Paid from $9/seat/month |
+| **Basecamp** | Small agencies preferring simplicity | Paid from $299/month flat rate (unlimited users) |
 
 ## 1. Jira
 
@@ -594,11 +594,11 @@ The right development tools can dramatically speed up how teams build, test, and
 
 | **Tool** | **Best for** | **Pricing** |
 | --- | --- | --- |
-| **Appwrite** | Full-stack app development with unified backend | Free for small apps;Paid from $15/month |
-| **Appsmith** | Quickly building internal tools and dashboards | Free for self-hosted;Paid from $20/user/month |
-| **Docker** | Creating consistent dev and production environments | Free for individuals;Pro from $11/user/month |
-| **Postman** | Testing and debugging APIs across environments | Free for individuals;Paid from $14/user/month |
-| **BrowserStack** | Cross-browser testing on real devices | Free trial;Paid from $19/month |
+| **Appwrite** | Full-stack app development with unified backend | Free or paid from $15/month |
+| **Appsmith** | Quickly building internal tools and dashboards | Free for self-hosted or paid from $20/user/month |
+| **Docker** | Creating consistent dev and production environments | Free for individuals or paid from $11/user/month |
+| **Postman** | Testing and debugging APIs across environments | Free for individuals or paid from $14/user/month |
+| **BrowserStack** | Cross-browser testing on real devices | Free trial or paid from $19/month |
 
 ## 1. Appwrite
 
