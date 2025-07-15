@@ -66,6 +66,6 @@ By providing a universal, cross-platform abstraction layer that's both straightf
 
 # More resources
 
-- [Read the documentation to get started](https://appwrite.io/docs/products/databases/order)
-- [Explore best practices for database pagination](https://appwrite.io/blog/post/best-pagination-technique)
-- [Secure sensitive database fields with encrypted attributes](https://appwrite.io/blog/post/encrypted-attributes-for-sensitive-fields)
+- [Read the documentation to get started](/docs/products/databases/order)
+- [Explore best practices for database pagination](/blog/post/best-pagination-technique)
+- [Secure sensitive database fields with encrypted attributes](/blog/post/encrypted-attributes-for-sensitive-fields)
