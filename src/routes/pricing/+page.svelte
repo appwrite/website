@@ -141,6 +141,10 @@
                                                     >
                                                 </li>
                                             </ul>
+
+                                            <p class="text-caption text-secondary font-small mt-4">
+                                                Limit of two projects. Never paused
+                                            </p>
                                         </div>
                                     </div>
                                 </article>
