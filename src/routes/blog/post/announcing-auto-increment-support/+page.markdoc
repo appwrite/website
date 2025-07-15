@@ -58,11 +58,9 @@ databases.listDocuments(
 
 ```
 
-# Uplifting Appwrite Databases
+# Get started
 
 Available on both Appwrite Cloud and self-hosted installations, Auto-increment support integrates smoothly into your existing workflows, significantly reducing complexity while boosting productivity.
-
-By providing a universal, cross-platform abstraction layer that's both straightforward and robust, we help you eliminate repetitive tasks, minimize errors, and enhance security in your development process. We're continuously committed to introducing more innovative features to simplify and secure your application building.
 
 # More resources
 
