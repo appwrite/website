@@ -60,7 +60,7 @@ databases.listDocuments(
 
 # Get started
 
-Available on both Appwrite Cloud and self-hosted installations, Auto-increment support integrates smoothly into your existing workflows, significantly reducing complexity while boosting productivity.
+Auto-increment support is available on both Appwrite Cloud and self-hosted installations and can smoothly integrate into your existing workflows.
 
 # More resources
 
