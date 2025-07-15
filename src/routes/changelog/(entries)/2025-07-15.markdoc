@@ -7,15 +7,13 @@ cover: /images/changelog/2025-07-15.png
 
 We're excited to introduce a new Database feature: Auto-increment support.
 
-This new feature automatically handles a special `$sequence` column within your documents, incrementing reliably with each new insertion. This ensures your data remains ordered, clear, and highly efficient without additional manual overhead.
+This new feature automatically handles a `$sequence`column in your collection that increments with each new document insertion. This ensures your data remains ordered without additional manual overhead
 
 Auto-increment is perfect for use cases like:
 
 - Paginated data sets
 - Invoice numbers and activity logs
 - Real-time feeds
-
-Making it easy to manage ordered data with automatic, incrementing IDs.
 
 {% arrow_link href="/blog/post/announcing-auto-increment-support" %}
 Read the announcement to learn more
