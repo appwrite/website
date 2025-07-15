@@ -131,6 +131,8 @@ A code editor is often the first and most frequently used tool in any developerâ
 
 **CodeSandbox pricing:** Free for learning and experimenting. $170 per month per workspace for the Scale plan.
 
+{% call_to_action title="All-in-one development platform" description="Use built-in backend infrastructure and web hosting, all from a single place." point1="Open source"  point2="Start for free" point3="Support for over 13 SDKs" point4="Managed cloud solution" cta="Start building for free" url="https://cloud.appwrite.io/console/" /%}
+
 # The 5 best IDEs
 
 While code editors are lightweight and flexible, Integrated Development Environments (IDEs) offer a full suite experience. IDEs are especially useful for large codebases, strongly typed languages, and teams that need deeper tooling out of the box. Theyâ€™re heavier than code editors but often more powerful for complex projects that demand more structure and control.
@@ -474,6 +476,8 @@ If you're an agency or service provider helping clients build and ship apps fast
 - May be overkill for simple or short tasks
 
 **Windsurf pricing:** Free plan to explore and pro plans starting from $15 per user per month.
+
+{% call_to_action title="Join the Appwrite Partners program" description="You'll get the support you need to provide your clients with the best solutions. Grow your business on top of Appwrite." point1="Access to the Appwrite team"  point2="Volume discounts for clients" point3="Co-marketing opportunities" point4="Newest technology" cta="Become a partner" url="/partners" /%}
 
 # The 5 best project management tools
 
