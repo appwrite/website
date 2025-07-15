@@ -39,7 +39,7 @@ Integrating Auto-increment support into your Appwrite Databases makes your backe
 
 For numeric ordering based on insertion order, you can use the `$sequence` field, which Appwrite automatically adds to all documents. This field increments with each new insert.
 
-```jsx
+```client-web
 import { Client, Databases, Query } from "appwrite";
 
 const client = new Client()
