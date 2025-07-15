@@ -35,7 +35,7 @@ Integrating Auto-increment support into your Appwrite Databases makes your backe
 - **Fully indexed**: Optimized for performance, allowing fast sorting and efficient querying.
 - **Read-only protection**: Safeguards against accidental modifications or tampering, preserving data integrity.
 
-## How it works
+# How it works
 
 For numeric ordering based on insertion order, you can use the `$sequence` field, which Appwrite automatically adds to all documents. This field increments with each new insert.
 
