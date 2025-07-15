@@ -13,7 +13,7 @@ Auto-increment is perfect for use cases like:
 
 - Paginated data sets
 - Invoice numbers and activity logs
-- Real-time feeds
+- Ordered timelines
 
 {% arrow_link href="/blog/post/announcing-auto-increment-support" %}
 Read the announcement to learn more
