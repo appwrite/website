@@ -7,7 +7,7 @@ cover: /images/changelog/2025-07-15.png
 
 We're excited to introduce a new Database feature: Auto-increment support.
 
-This new feature automatically handles a `$sequence`column in your collection that increments with each new document insertion. This ensures your data remains ordered without additional manual overhead
+This new feature automatically handles a `$sequence` column in your collection that increments with each new document insertion. This ensures your data remains ordered without additional manual overhead.
 
 Auto-increment is perfect for use cases like:
 
