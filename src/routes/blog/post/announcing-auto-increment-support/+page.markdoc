@@ -60,7 +60,7 @@ databases.listDocuments(
 
 # Get started
 
-Auto-increment support is available on both Appwrite Cloud and self-hosted installations and can smoothly integrate into your existing workflows.
+[Auto-increment support](/docs/products/databases/order#sequence-ordering) is available on both Appwrite Cloud and self-hosted installations and can smoothly integrate into your existing workflows.
 
 # More resources
 
