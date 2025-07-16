@@ -142,9 +142,9 @@
                                                 </li>
                                             </ul>
                                             <hr
-                                                class="mt-6 mb-3 border-t border-gray-600 opacity-12"
+                                                class="mt-4 mb-4 border-t border-gray-600 opacity-12"
                                             />
-                                            <p class="text-caption text-secondary font-small mt-4">
+                                            <p class="text-caption text-secondary font-small">
                                                 Limit of two projects.<br />
                                                 Never paused.
                                             </p>
