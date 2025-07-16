@@ -251,6 +251,13 @@
                     scale: 'True',
                     enterprise: 'True'
                 },
+		{
+                    title: 'Bulk API documents',
+                    free: '100',
+                    pro: '1000',
+                    scale: 'Custom',
+                    enterprise: 'Custom'
+                },
                 {
                     title: 'Dedicated databases',
                     free: '-',
