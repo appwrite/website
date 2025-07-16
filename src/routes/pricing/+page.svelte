@@ -145,7 +145,8 @@
                                                 class="mt-6 mb-3 border-t border-gray-600 opacity-12"
                                             />
                                             <p class="text-caption text-secondary font-small mt-4">
-                                                Limit of two projects. Never paused
+                                                Limit of two projects.<br />
+                                                Never paused.
                                             </p>
                                         </div>
                                     </div>
