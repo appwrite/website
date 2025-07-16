@@ -26,9 +26,10 @@
                 <img
                     class="web-user-box-image"
                     src="/images/avatars/steven.avif"
-                    width="48"
-                    height="48"
+                    width="40"
+                    height="40"
                     alt="Avatar of Steven"
+                    style="width: 40px !important; height: 40px !important; min-width: 40px; min-height: 40px;"
                 />
                 <div class="web-user-box-name flex gap-2">
                     <span class="text-sub-body font-medium">Steven</span>
@@ -67,9 +68,10 @@
                 <img
                     class="web-user-box-image"
                     src="/images/avatars/steven.avif"
-                    width="48"
-                    height="48"
+                    width="40"
+                    height="40"
                     alt="Avatar of Steven"
+                    style="width: 40px !important; height: 40px !important; min-width: 40px; min-height: 40px;"
                 />
                 <div class="web-user-box-name flex gap-2">
                     <span class="text-sub-body font-medium">Steven</span>
@@ -87,9 +89,47 @@
 </ul>
 
 <style>
+    .web-user-box-image {
+        object-fit: cover;
+        object-position: center;
+        image-rendering: auto;
+        image-rendering: -webkit-optimize-contrast;
+        flex-shrink: 0;
+        display: block;
+        max-width: 100%;
+        height: auto;
+        aspect-ratio: 1;
+        transform: translateZ(0);
+        -webkit-transform: translateZ(0);
+    }
+    @media screen and (-webkit-min-device-pixel-ratio: 2),
+        screen and (min-resolution: 192dpi),
+        screen and (min-resolution: 2dppx) {
+        .web-user-box-image {
+            image-rendering: -webkit-optimize-contrast;
+            image-rendering: optimize-contrast;
+            image-rendering: crisp-edges;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+        }
+    }
+    @supports (-webkit-touch-callout: none) {
+        .web-user-box-image {
+            image-rendering: auto;
+            -webkit-font-smoothing: antialiased;
+        }
+    }
+
     @media (max-width: 768px) {
         .web-chat-list {
             gap: 2rem;
+        }
+
+        .web-user-box-image {
+            image-rendering: auto;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            will-change: transform;
         }
     }
 </style>
