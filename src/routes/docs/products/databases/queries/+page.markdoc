@@ -262,9 +262,10 @@ By default, documents return only their own fields:
 
 {% multicode %}
 ```client-web
-const doc = await databases
-    .getDocument('<DATABASE_ID>', '<COLLECTION_ID>', '<DOCUMENT_ID>')
-    .select(['name', 'age']);
+const doc = await databases.getDocument(
+    '<DATABASE_ID>', '<COLLECTION_ID>', '<DOCUMENT_ID>',
+    [Query.select(['name', 'age'])]
+);
 ```
 ```client-flutter
 final doc = await databases.getDocument(
@@ -283,9 +284,10 @@ doc = databases.get_document(
 doc = databases.get_document('<DATABASE_ID>', '<COLLECTION_ID>', '<DOCUMENT_ID>')
 ```
 ```server-nodejs
-const doc = await databases
-    .getDocument('<DATABASE_ID>', '<COLLECTION_ID>', '<DOCUMENT_ID>')
-    .select(['name', 'age']);
+const doc = await databases.getDocument(
+    '<DATABASE_ID>', '<COLLECTION_ID>', '<DOCUMENT_ID>',
+    [Query.select(['name', 'age'])]
+);
 ```
 ```php
 $doc = $databases->getDocument(
@@ -312,9 +314,10 @@ Use the `*` wildcard to load all fields from related documents:
 
 {% multicode %}
 ```client-web
-const doc = await databases
-    .getDocument('<DATABASE_ID>', '<COLLECTION_ID>', '<DOCUMENT_ID>')
-    .select(['*', 'reviews.*']);
+const doc = await databases.getDocument(
+    '<DATABASE_ID>', '<COLLECTION_ID>', '<DOCUMENT_ID>',
+    [Query.select(['*', 'reviews.*'])]
+);
 ```
 ```client-flutter
 final doc = await databases.getDocument(
@@ -369,9 +372,10 @@ For precise control, select only specific fields from related documents:
 
 {% multicode %}
 ```client-web
-const doc = await databases
-    .getDocument('<DATABASE_ID>', '<COLLECTION_ID>', '<DOCUMENT_ID>')
-    .select(['name', 'age', 'reviews.author', 'reviews.rating']);
+const doc = await databases.getDocument(
+    '<DATABASE_ID>', '<COLLECTION_ID>', '<DOCUMENT_ID>',
+    [Query.select(['name', 'age', 'reviews.author', 'reviews.rating'])]
+);
 ```
 ```client-flutter
 final doc = await databases.getDocument(
