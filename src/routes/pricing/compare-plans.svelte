@@ -244,6 +244,13 @@
                     scale: 'Custom',
                     enterprise: 'Custom'
                 },
+ 		{
+                    title: 'Encrypted attributes support',
+                    free: '-',
+                    pro: 'True',
+                    scale: 'True',
+                    enterprise: 'True'
+                },
                 {
                     title: 'Dedicated databases',
                     free: '-',
