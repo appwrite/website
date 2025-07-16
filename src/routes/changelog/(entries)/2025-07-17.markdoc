@@ -1,1 +1,21 @@
+---
+layout: changelog
+title: "Announcing Opt-in relationship loading: Granular control for smarter data fetching"
+date: 2025-07-17
+cover: /images/changelog/2025-07-17.png
+---
 
+Introducing new Database feature: Opt-in relationship loading.
+
+Previously, Appwrite automatically fetched related documents whenever a query was made. This often resulted in large JSON payloads containing data you didn't necessarily need, negatively impacting load times and overall app performance.
+
+With Opt-in relationship loading, documents now only return their immediate fields by default. You explicitly specify exactly which relationships should be included in your queries. 
+
+Here’s how this upgrade improves your workflow:
+- Load only the data you need
+- Reduce payload sizes
+- Improve query performance
+
+{% arrow_link href="/blog/post/announcing-opt-in-relationship-loading" %}
+Read the announcement to learn more
+{% /arrow_link %}
