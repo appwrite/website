@@ -42,6 +42,34 @@ databases.listDocuments(
     ]
 );
 ```
+```server-nodejs
+const sdk = require('node-appwrite');
+
+const client = new sdk.Client();
+
+const databases = new sdk.Databases(client);
+
+client
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>')
+    .setKey('<YOUR_API_KEY>')
+;
+
+const promise = databases.listDocuments(
+    '<DATABASE_ID>',
+    '<COLLECTION_ID>',
+    [
+        sdk.Query.equal('title', ['Avatar', 'Lord of the Rings']),
+        sdk.Query.greaterThan('year', 1999)
+    ]
+);
+
+promise.then(function (response) {
+    console.log(response);
+}, function (error) {
+    console.log(error);
+});
+```
 ```client-flutter
 import 'package:appwrite/appwrite.dart';
 
@@ -116,6 +144,56 @@ suspend fun main() {
         Log.e("Appwrite", e.message)
     }
 }
+```
+```php
+<?php
+
+use Appwrite\Client;
+use Appwrite\Query;
+use Appwrite\Services\Databases;
+
+$client = new Client();
+
+$client
+    ->setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    ->setProject('<PROJECT_ID>')
+    ->setKey('<YOUR_API_KEY>')
+;
+
+$databases = new Databases($client);
+
+$result = $databases->listDocuments(
+    '<DATABASE_ID>',
+    '<COLLECTION_ID>',
+    [
+        Query::equal('title', ['Avatar', 'Lord of the Rings']),
+        Query::greaterThan('year', 1999)
+    ]
+);
+```
+```python
+from appwrite.client import Client
+from appwrite.query import Query
+from appwrite.services.databases import Databases
+
+client = Client()
+
+(client
+  .set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
+  .set_project('<PROJECT_ID>')
+  .set_key('<YOUR_API_KEY>')
+)
+
+databases = Databases(client)
+
+result = databases.list_documents(
+    '<DATABASE_ID>',
+    '<COLLECTION_ID>',
+    [
+        Query.equal('title', ['Avatar', 'Lord of the Rings']),
+        Query.greater_than('year', 1999)
+    ]
+)
 ```
 ```graphql
 query {
