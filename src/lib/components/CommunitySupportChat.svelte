@@ -8,6 +8,7 @@
                     height="40"
                     width="40"
                     alt="Avatar of Walter"
+                    style="width: 40px !important; height: 40px !important; min-width: 40px; min-height: 40px;"
                 />
                 <div class="web-user-box-name flex gap-2">
                     <span class="text-sub-body font-medium">Walter O'Brien</span>
@@ -53,6 +54,7 @@
                     height="40"
                     width="40"
                     alt="Avatar of Walter"
+                    style="width: 40px !important; height: 40px !important; min-width: 40px; min-height: 40px;"
                 />
                 <div class="web-user-box-name flex gap-2">
                     <span class="text-sub-body font-medium">Walter O'Brien</span>
@@ -90,17 +92,21 @@
 
 <style>
     .web-user-box-image {
-        object-fit: cover;
-        object-position: center;
+        object-fit: cover !important;
+        object-position: center !important;
         image-rendering: auto;
         image-rendering: -webkit-optimize-contrast;
-        flex-shrink: 0;
-        display: block;
-        max-width: 100%;
-        height: auto;
-        aspect-ratio: 1;
+        flex-shrink: 0 !important;
+        display: block !important;
+        max-width: 40px !important;
+        width: 40px !important;
+        height: 40px !important;
+        min-width: 40px !important;
+        min-height: 40px !important;
+        aspect-ratio: 1 !important;
         transform: translateZ(0);
         -webkit-transform: translateZ(0);
+        box-sizing: border-box !important;
     }
     @media screen and (-webkit-min-device-pixel-ratio: 2),
         screen and (min-resolution: 192dpi),
