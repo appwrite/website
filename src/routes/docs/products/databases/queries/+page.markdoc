@@ -35,7 +35,7 @@ const databases = new Databases(client);
 
 databases.listDocuments(
     '<DATABASE_ID>',
-    '[COLLECTION_ID]',
+    '<COLLECTION_ID>',
     [
         Query.equal('title', ['Avatar', 'Lord of the Rings']),
         Query.greaterThan('year', 1999)
@@ -281,7 +281,10 @@ doc = databases.get_document(
 )
 ```
 ```ruby
-doc = databases.get_document('<DATABASE_ID>', '<COLLECTION_ID>', '<DOCUMENT_ID>')
+doc = databases.get_document(
+    '<DATABASE_ID>', '<COLLECTION_ID>', '<DOCUMENT_ID>',
+    [Query.select(["name", "age"])]
+)
 ```
 ```server-nodejs
 const doc = await databases.getDocument(
