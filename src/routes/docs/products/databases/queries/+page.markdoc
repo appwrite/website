@@ -161,7 +161,7 @@ Query.select(["name", "title"])
 ```ruby
 Query.select(["name", "title"])
 ```
-```deno
+```server-nodejs
 Query.select(["name", "title"])
 ```
 ```php
@@ -184,7 +184,9 @@ By default, documents return only their own fields:
 
 {% multicode %}
 ```client-web
-const doc = await databases.getDocument('<DATABASE_ID>', '<COLLECTION_ID>', '<DOCUMENT_ID>');
+const doc = await databases
+    .getDocument('<DATABASE_ID>', '<COLLECTION_ID>', '<DOCUMENT_ID>')
+    .select(['name', 'age']);
 ```
 ```client-flutter
 final doc = await databases.getDocument(
@@ -194,18 +196,24 @@ final doc = await databases.getDocument(
 );
 ```
 ```python
-doc = databases.get_document('<DATABASE_ID>', '<COLLECTION_ID>', '<DOCUMENT_ID>')
+doc = databases.get_document(
+    '<DATABASE_ID>', '<COLLECTION_ID>', '<DOCUMENT_ID>',
+    [Query.select(["name", "age"])]
+)
 ```
 ```ruby
 doc = databases.get_document('<DATABASE_ID>', '<COLLECTION_ID>', '<DOCUMENT_ID>')
 ```
-```deno
-// Returns only main document fields
-const doc = await databases.getDocument('<DATABASE_ID>', '<COLLECTION_ID>', '<DOCUMENT_ID>');
-// Result: { name: "John", age: 30 } - no related data
+```server-nodejs
+const doc = await databases
+    .getDocument('<DATABASE_ID>', '<COLLECTION_ID>', '<DOCUMENT_ID>')
+    .select(['name', 'age']);
 ```
 ```php
-$doc = $databases->getDocument('<DATABASE_ID>', '<COLLECTION_ID>', '<DOCUMENT_ID>');
+$doc = $databases->getDocument(
+    '<DATABASE_ID>', '<COLLECTION_ID>', '<DOCUMENT_ID>',
+    [Query::select(["name", "age"])]
+);
 ```
 ```swift
 let doc = try await databases.getDocument(
@@ -215,9 +223,9 @@ let doc = try await databases.getDocument(
 )
 ```
 ```http
-# Returns only main document fields
-GET /v1/databases/<DATABASE_ID>/collections/<COLLECTION_ID>/documents/<DOCUMENT_ID>
-# Result: { name: "John", age: 30 } - no related data
+GET /v1/databases/<DATABASE_ID>/collections/<COLLECTION_ID>/documents/<DOCUMENT_ID>?queries[]=%7B%22method%22%3A%22select%22%2C%22values%22%3A%5B%22name%22%2C%22age%22%5D%7D HTTP/1.1
+Content-Type: application/json
+X-Appwrite-Project: <PROJECT_ID>
 ```
 {% /multicode %}
 
@@ -226,10 +234,9 @@ Use the `*` wildcard to load all fields from related documents:
 
 {% multicode %}
 ```client-web
-const doc = await databases.getDocument(
-    '<DATABASE_ID>', '<COLLECTION_ID>', '<DOCUMENT_ID>',
-    [Query.select(["*", "reviews.*"])]
-);
+const doc = await databases
+    .getDocument('<DATABASE_ID>', '<COLLECTION_ID>', '<DOCUMENT_ID>')
+    .select(['*', 'reviews.*']);
 ```
 ```client-flutter
 final doc = await databases.getDocument(
@@ -251,12 +258,11 @@ doc = databases.get_document(
     [Query.select(["*", "reviews.*"])]
 )
 ```
-```deno
+```server-nodejs
 const doc = await databases.getDocument(
     '<DATABASE_ID>', '<COLLECTION_ID>', '<DOCUMENT_ID>',
     [Query.select(["*", "reviews.*"])]
 );
-// Result: { name: "John", age: 30, reviews: [{...}] }
 ```
 ```php
 $doc = $databases->getDocument(
@@ -273,7 +279,9 @@ let doc = try await databases.getDocument(
 )
 ```
 ```http
-# Load all main fields + all related fields
+GET /v1/databases/<DATABASE_ID>/collections/<COLLECTION_ID>/documents/<DOCUMENT_ID>?queries[]=%7B%22method%22%3A%22select%22%2C%22values%22%3A%5B%22%2A%22%2C%22reviews.%2A%22%5D%7D HTTP/1.1
+Content-Type: application/json
+X-Appwrite-Project: <PROJECT_ID>
 {"method":"select","values":["*","reviews.*"]}
 ```
 {% /multicode %}
@@ -283,10 +291,9 @@ For precise control, select only specific fields from related documents:
 
 {% multicode %}
 ```client-web
-const doc = await databases.getDocument(
-    '<DATABASE_ID>', '<COLLECTION_ID>', '<DOCUMENT_ID>',
-    [Query.select(["name", "age", "reviews.author", "reviews.rating"])]
-);
+const doc = await databases
+    .getDocument('<DATABASE_ID>', '<COLLECTION_ID>', '<DOCUMENT_ID>')
+    .select(['name', 'age', 'reviews.author', 'reviews.rating']);
 ```
 ```client-flutter
 final doc = await databases.getDocument(
@@ -308,7 +315,7 @@ doc = databases.get_document(
     [Query.select(["name", "age", "reviews.author", "reviews.rating"])]
 )
 ```
-```deno
+```server-nodejs
 const doc = await databases.getDocument(
     '<DATABASE_ID>', '<COLLECTION_ID>', '<DOCUMENT_ID>',
     [Query.select(["name", "age", "reviews.author", "reviews.rating"])]
@@ -351,7 +358,7 @@ Query.select(["*", "reviews.*", "reviews.author.*"])
 ```ruby
 Query.select(["*", "reviews.*", "reviews.author.*"])
 ```
-```deno
+```server-nodejs
 Query.select(["*", "reviews.*", "reviews.author.*"])
 ```
 ```php
@@ -385,7 +392,9 @@ Query.select(["*", "reviews.*", "reviews.author.*"])
 **Reduce database load** - Selecting fewer fields reduces database processing time, especially for large documents.
 
 {% info title="Related documents" %}
-By default, relationship attributes contain only document IDs. To load the actual related document data, you must explicitly include relationship fields in your select query. Learn more about [relationship performance optimization](/docs/products/databases/relationships#performance-loading).
+By default, relationship attributes contain only document IDs.
+To load the actual related document data, you must explicitly include relationship fields in your select query.
+Learn more about [relationship performance optimization](/docs/products/databases/relationships#performance-loading).
 {% /info %}
 
 ## Comparison operators {% #comparison %}
@@ -407,7 +416,7 @@ Query.equal("title", ["Iron Man"])
 ```ruby
 Query.equal("title", ["Iron Man"])
 ```
-```deno
+```server-nodejs
 Query.equal("title", ["Iron Man"])
 ```
 ```php
@@ -438,7 +447,7 @@ Query.not_equal("title", "Iron Man")
 ```ruby
 Query.not_equal("title", "Iron Man")
 ```
-```deno
+```server-nodejs
 Query.notEqual("title", "Iron Man")
 ```
 ```php
@@ -469,7 +478,7 @@ Query.less_than("score", 10)
 ```ruby
 Query.less_than("score", 10)
 ```
-```deno
+```server-nodejs
 Query.lessThan("score", 10)
 ```
 ```php
@@ -500,7 +509,7 @@ Query.less_than_equal("score", 10)
 ```ruby
 Query.less_than_equal("score", 10)
 ```
-```deno
+```server-nodejs
 Query.lessThanEqual("score", 10)
 ```
 ```php
@@ -531,7 +540,7 @@ Query.greater_than("score", 10)
 ```ruby
 Query.greater_than("score", 10)
 ```
-```deno
+```server-nodejs
 Query.greaterThan("score", 10)
 ```
 ```php
@@ -562,7 +571,7 @@ Query.greater_than_equal("score", 10)
 ```ruby
 Query.greater_than_equal("score", 10)
 ```
-```deno
+```server-nodejs
 Query.greaterThanEqual("score", 10)
 ```
 ```php
@@ -593,7 +602,7 @@ Query.between("price", 5, 10)
 ```ruby
 Query.between("price", 5, 10)
 ```
-```deno
+```server-nodejs
 Query.between("price", 5, 10)
 ```
 ```php
@@ -626,7 +635,7 @@ Query.is_null("name")
 ```ruby
 Query.is_null("name")
 ```
-```deno
+```server-nodejs
 Query.isNull("name")
 ```
 ```php
@@ -657,7 +666,7 @@ Query.is_not_null("name")
 ```ruby
 Query.is_not_null("name")
 ```
-```deno
+```server-nodejs
 Query.isNotNull("name")
 ```
 ```php
@@ -690,7 +699,7 @@ Query.starts_with("name", "Once upon a time")
 ```ruby
 Query.starts_with("name", "Once upon a time")
 ```
-```deno
+```server-nodejs
 Query.startsWith("name", "Once upon a time")
 ```
 ```php
@@ -721,7 +730,7 @@ Query.ends_with("name", "happily ever after.")
 ```ruby
 Query.ends_with("name", "happily ever after.")
 ```
-```deno
+```server-nodejs
 Query.endsWith("name", "happily ever after.")
 ```
 ```php
@@ -768,7 +777,7 @@ Query.contains("ingredients", ['apple', 'banana'])
 # For strings
 Query.contains("name", "Tom")
 ```
-```deno
+```server-nodejs
 // For arrays
 Query.contains("ingredients", ['apple', 'banana'])
 
@@ -815,7 +824,7 @@ Query.search("text", "key words")
 ```ruby
 Query.search("text", "key words")
 ```
-```deno
+```server-nodejs
 Query.search("text", "key words")
 ```
 ```php
@@ -860,7 +869,7 @@ Query.and([
     Query.greater_than("size", 5)
 ])
 ```
-```deno
+```server-nodejs
 Query.and([
     Query.lessThan("size", 10),
     Query.greaterThan("size", 5)
@@ -912,7 +921,7 @@ Query.or([
     Query.greater_than("size", 10)
 ])
 ```
-```deno
+```server-nodejs
 Query.or([
     Query.lessThan("size", 5),
     Query.greaterThan("size", 10)
@@ -954,7 +963,7 @@ Query.order_desc("attribute")
 ```ruby
 Query.order_desc("attribute")
 ```
-```deno
+```server-nodejs
 Query.orderDesc("attribute")
 ```
 ```php
@@ -985,7 +994,7 @@ Query.order_asc("attribute")
 ```ruby
 Query.order_asc("attribute")
 ```
-```deno
+```server-nodejs
 Query.orderAsc("attribute")
 ```
 ```php
@@ -1018,7 +1027,7 @@ Query.limit(25)
 ```ruby
 Query.limit(25)
 ```
-```deno
+```server-nodejs
 Query.limit(25)
 ```
 ```php
@@ -1049,7 +1058,7 @@ Query.offset(0)
 ```ruby
 Query.offset(0)
 ```
-```deno
+```server-nodejs
 Query.offset(0)
 ```
 ```php
@@ -1080,7 +1089,7 @@ Query.cursor_after("62a7...f620")
 ```ruby
 Query.cursor_after("62a7...f620")
 ```
-```deno
+```server-nodejs
 Query.cursorAfter("62a7...f620")
 ```
 ```php
@@ -1111,7 +1120,7 @@ Query.cursor_before("62a7...a600")
 ```ruby
 Query.cursor_before("62a7...a600")
 ```
-```deno
+```server-nodejs
 Query.cursorBefore("62a7...a600")
 ```
 ```php
