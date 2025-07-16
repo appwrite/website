@@ -17,15 +17,15 @@ Appwrite's new `$sequence` attribute provides exactly this. Every time a documen
 
 In this tutorial, we will build a simple web-based support ticket tracker using plain HTML and JavaScript. Each submitted ticket will be stored in Appwrite with a title and description, and each will receive a `$sequence` number automatically. We will use that number to display and order the tickets.
 
-## Step 1: Set up your Appwrite project
+{% section #step-1 step=1 title="Set up your Appwrite project" %}
 
 Start by opening the [Appwrite console](https://cloud.appwrite.io/). If you do not have a project yet, create one now.
 
-### 1.1 Create a new project
+## Create a new project
 
 Give it a name like **Support Tracker**. After creation, note the **Project ID**, as you will need it later in your frontend code.
 
-### 1.2 Create a database and collection
+## Create a database and collection
 
 Inside your project:
 
@@ -33,7 +33,7 @@ Inside your project:
 - Create a new database named "Support DB"
 - Inside that database, create a new collection named "Tickets"
 
-### 1.3 Add document attributes
+## Add document attributes
 
 In the **Tickets** collection, define the following attributes:
 
@@ -44,7 +44,7 @@ Appwrite will automatically include system attributes such as `$id` and `$sequen
 
 Confirm the schema once all attributes are added.
 
-### 1.4 Set permissions for testing
+## Set permissions for testing
 
 For now, allow anyone to create and read documents:
 
@@ -55,7 +55,7 @@ You can change this later when adding [authentication](https://appwrite.io/docs/
 
 Also take note of your **Database ID** and **Collection ID**. You will use them in your frontend.
 
-### 1.5 Configure web platform
+## Configure web platform
 
 To avoid CORS errors when testing your application, you need to add your domain to the allowed platforms:
 
@@ -68,7 +68,9 @@ To avoid CORS errors when testing your application, you need to add your domain 
 
 This tells Appwrite to allow requests from your domain or local development environment.
 
-## Step 2: Create the frontend structure
+{% /section %}
+
+{% section #step-2 step=2 title="Create the frontend structure" %}
 
 In your project directory, create two files:
 
@@ -77,7 +79,7 @@ In your project directory, create two files:
 
 You can open them in any code editor. We'll build the interface in `index.html` and put all the JavaScript logic into `script.js`.
 
-### 2.1 The HTML structure
+## Set up the HTML structure
 
 Start with a clean HTML layout. In `index.html`, first add the document structure and dependencies:
 
@@ -196,7 +198,9 @@ Finally, add the tickets display section and close the document:
 
 This page includes a form to submit a ticket and a container to display submitted tickets. The Appwrite SDK is loaded from a CDN, and the logic will live in `script.js`.
 
-## Step 3: Connect to Appwrite from JavaScript
+{% /section %}
+
+{% section #step-3 step=3 title="Connect to Appwrite from JavaScript" %}
 
 Now open `script.js`. You will begin by initializing the Appwrite client and pointing it to your project.
 
@@ -220,7 +224,9 @@ Replace the placeholders with your actual values from the Appwrite console.
 
 This code sets up the SDK so that you can call `databases.createDocument()` and `databases.listDocuments()` in the rest of the script.
 
-## Step 4: Handle ticket submission
+{% /section %}
+
+{% section #step-4 step=4 title="Handle ticket submission" %}
 
 Add logic to read the form data and send it to Appwrite. Still inside `script.js`, add this:
 
@@ -252,7 +258,9 @@ form.addEventListener('submit', async (e) => {
 
 This code creates a new document in your collection when the form is submitted. It uses `'unique()'` to generate a unique ID. After submission, the form is reset and the list of tickets is reloaded to show the new entry.
 
-## Step 5: Load and display tickets using `$sequence`
+{% /section %}
+
+{% section #step-5 step=5 title="Load and display tickets using $sequence" %}
 
 Now add a function that retrieves tickets and shows them in order, newest first:
 
@@ -308,6 +316,8 @@ This function does several things:
 - Calls itself immediately to load tickets when the page first loads
 
 The `padStart(3, '0')` method formats the sequence number with leading zeros.
+
+{% /section %}
 
 ## What you have built
 
