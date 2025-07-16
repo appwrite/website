@@ -271,7 +271,8 @@ const doc = await databases.getDocument(
 final doc = await databases.getDocument(
     databaseId: '<DATABASE_ID>',
     collectionId: '<COLLECTION_ID>',
-    documentId: '<DOCUMENT_ID>'
+    documentId: '<DOCUMENT_ID>',
+    queries: [Query.select(["name", "age"])]
 );
 ```
 ```python
@@ -302,7 +303,8 @@ $doc = $databases->getDocument(
 let doc = try await databases.getDocument(
     databaseId: "<DATABASE_ID>",
     collectionId: "<COLLECTION_ID>",
-    documentId: "<DOCUMENT_ID>"
+    documentId: "<DOCUMENT_ID>",
+    queries: [Query.select(["name", "age"])]
 )
 ```
 ```http
