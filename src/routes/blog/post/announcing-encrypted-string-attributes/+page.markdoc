@@ -5,7 +5,7 @@ description: Easily encrypt sensitive string fields at rest, with no manual encr
 date: 2025-07-10
 cover: /images/blog/announcing-encrypted-string-attributes/cover.png
 timeToRead: 5
-author: arnab-chatterjee
+author: jake-barnby
 category: announcement
 featured: false
 ---
