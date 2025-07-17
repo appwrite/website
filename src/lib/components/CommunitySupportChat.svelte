@@ -88,10 +88,10 @@
 
 <style>
     .web-user-box-image {
-        width: 40px !important;
-        height: 40px !important;
-        min-width: 40px !important;
-        min-height: 40px !important;
+        width: 40px;
+        height: 40px;
+        min-width: 40px;
+        min-height: 40px;
     }
     @media (max-width: 768px) {
         .web-chat-list {
