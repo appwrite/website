@@ -8,7 +8,6 @@
                     height="40"
                     width="40"
                     alt="Avatar of Walter"
-                    style="width: 40px !important; height: 40px !important; min-width: 40px; min-height: 40px;"
                 />
                 <div class="web-user-box-name flex gap-2">
                     <span class="text-sub-body font-medium">Walter O'Brien</span>
@@ -30,7 +29,6 @@
                     width="40"
                     height="40"
                     alt="Avatar of Steven"
-                    style="width: 40px !important; height: 40px !important; min-width: 40px; min-height: 40px;"
                 />
                 <div class="web-user-box-name flex gap-2">
                     <span class="text-sub-body font-medium">Steven</span>
@@ -54,7 +52,6 @@
                     height="40"
                     width="40"
                     alt="Avatar of Walter"
-                    style="width: 40px !important; height: 40px !important; min-width: 40px; min-height: 40px;"
                 />
                 <div class="web-user-box-name flex gap-2">
                     <span class="text-sub-body font-medium">Walter O'Brien</span>
@@ -73,7 +70,6 @@
                     width="40"
                     height="40"
                     alt="Avatar of Steven"
-                    style="width: 40px !important; height: 40px !important; min-width: 40px; min-height: 40px;"
                 />
                 <div class="web-user-box-name flex gap-2">
                     <span class="text-sub-body font-medium">Steven</span>
@@ -92,50 +88,14 @@
 
 <style>
     .web-user-box-image {
-        object-fit: cover !important;
-        object-position: center !important;
-        image-rendering: auto;
-        image-rendering: -webkit-optimize-contrast;
-        flex-shrink: 0 !important;
-        display: block !important;
-        max-width: 40px !important;
         width: 40px !important;
         height: 40px !important;
         min-width: 40px !important;
         min-height: 40px !important;
-        aspect-ratio: 1 !important;
-        transform: translateZ(0);
-        -webkit-transform: translateZ(0);
-        box-sizing: border-box !important;
     }
-    @media screen and (-webkit-min-device-pixel-ratio: 2),
-        screen and (min-resolution: 192dpi),
-        screen and (min-resolution: 2dppx) {
-        .web-user-box-image {
-            image-rendering: -webkit-optimize-contrast;
-            image-rendering: optimize-contrast;
-            image-rendering: crisp-edges;
-            -webkit-backface-visibility: hidden;
-            backface-visibility: hidden;
-        }
-    }
-    @supports (-webkit-touch-callout: none) {
-        .web-user-box-image {
-            image-rendering: auto;
-            -webkit-font-smoothing: antialiased;
-        }
-    }
-
     @media (max-width: 768px) {
         .web-chat-list {
             gap: 2rem;
-        }
-
-        .web-user-box-image {
-            image-rendering: auto;
-            -webkit-backface-visibility: hidden;
-            backface-visibility: hidden;
-            will-change: transform;
         }
     }
 </style>
