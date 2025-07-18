@@ -68,7 +68,7 @@ In order to allow creating OAuth sessions, the following URL scheme must be adde
     <string>io.appwrite</string>
     <key>CFBundleURLSchemes</key>
     <array>
-        <string>appwrite-callback-[PROJECT_ID]</string>
+        <string>appwrite-callback-<PROJECT_ID></string>
     </array>
 </dict>
 </array>

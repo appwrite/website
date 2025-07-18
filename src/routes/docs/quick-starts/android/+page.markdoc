@@ -71,7 +71,7 @@ You can find your Appwrite project ID in you project settings screen in your App
         <action android:name="android.intent.action.VIEW" />
         <category android:name="android.intent.category.DEFAULT" />
         <category android:name="android.intent.category.BROWSABLE" />
-        <data android:scheme="appwrite-callback-[PROJECT_ID]" />
+        <data android:scheme="appwrite-callback-<PROJECT_ID>" />
       </intent-filter>
     </activity>
   </application>

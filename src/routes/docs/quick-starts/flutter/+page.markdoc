@@ -92,7 +92,7 @@ You can find your Appwrite project ID in you project settings screen in your App
         <action android:name="android.intent.action.VIEW" />
         <category android:name="android.intent.category.DEFAULT" />
         <category android:name="android.intent.category.BROWSABLE" />
-        <data android:scheme="appwrite-callback-[PROJECT_ID]" />
+        <data android:scheme="appwrite-callback-<PROJECT_ID>" />
       </intent-filter>
     </activity>
   </application>
@@ -127,7 +127,7 @@ In order to capture the Appwrite OAuth 2 callback url, the following URL scheme 
     <string>io.appwrite</string>
     <key>CFBundleURLSchemes</key>
     <array>
-        <string>appwrite-callback-[PROJECT_ID]</string>
+        <string>appwrite-callback-<PROJECT_ID></string>
     </array>
 </dict>
 </array>
