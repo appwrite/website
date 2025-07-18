@@ -46,7 +46,7 @@ const databases = new Databases(client);
 
 const result = await databases.upsertDocument(
     '<DATABASE_ID>',
-    '<COLLECTION_ID>',
+    '<TABLE_ID>',
     '<DOCUMENT_ID>',
     {
         'status': 'succeeded',

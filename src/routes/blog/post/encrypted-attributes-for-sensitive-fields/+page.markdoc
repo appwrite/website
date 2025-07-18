@@ -27,7 +27,7 @@ To create an encrypted attribute:
 
 1. Open your Appwrite Console
 2. Navigate to **Databases** and select your database
-3. Choose a collection and open the **Attributes** tab
+3. Choose a table and open the **Attributes** tab
 4. Click **Create attribute**, then select **String**
 
     ![create attribute modal](/images/blog/encrypted-attributes-for-sensitive-fields/create-attribute-modal.png)

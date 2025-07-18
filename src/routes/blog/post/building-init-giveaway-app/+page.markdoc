@@ -21,13 +21,13 @@ The giveaway app has two major features:
 
 - **Giveaway registration**
 
-The giveaway registration requires users to log in to the app with their Discord account. As soon as a user logs in with Discord, the app adds their Discord username and email address to an Appwrite collection.
+The giveaway registration requires users to log in to the app with their Discord account. As soon as a user logs in with Discord, the app adds their Discord username and email address to an Appwrite table.
 
 ![Sign In With Discord](/images/blog/building-init-giveaway-app/signin.png)
 
 - **Winner selection**
 
-The data added to the Appwrite collection is loaded in a wheel that is also updated in real time in case new registrations are added. The wheel can then be spun like a roulette wheel to find a randomly selected winner.
+The data added to the Appwrite table is loaded in a wheel that is also updated in real time in case new registrations are added. The wheel can then be spun like a roulette wheel to find a randomly selected winner.
 
 ![Spin The Wheel](/images/blog/building-init-giveaway-app/winner.png)
 
@@ -47,9 +47,9 @@ Implementing Discord OAuth required us to first set up an application on the [Di
 
 ### Appwrite Database
 
-We created a **database** and a **collection** for each day of the giveaway in our Appwrite project. Each collection had the same steps to set up.
+We created a **database** and a **table** for each day of the giveaway in our Appwrite project. Each table had the same steps to set up.
 
-Each collection contained two **attributes**:
+Each table contained two **attributes**:
 
 | Key         | Type        | Size        | Required    |
 | ----------- | ----------- | ----------- | ----------- |
@@ -62,7 +62,7 @@ To ensure that one user could only be added once for a day’s giveaway, we crea
 | ----------- | ----------- | ----------- | ----------- |
 | names       | unique      | discordName | ASC         |
 
-Lastly, we added **collection-level permissions** to allow anyone to read data (since the giveaway page was meant to be publicly accessible) and only authenticated users to add data (their Discord username and email address) to the collection.
+Lastly, we added **table-level permissions** to allow anyone to read data (since the giveaway page was meant to be publicly accessible) and only authenticated users to add data (their Discord username and email address) to the table.
 
 | Role   | Create | Read   | Update | Delete |
 | ------ | ------ | ------ | ------ | ------ |
@@ -94,7 +94,7 @@ export const APPWRITE_PROJECT = '<PROJECT_ID>';
 
 export const DATABASE_NAME = '<DATABASE_ID>';
 
-export const COLLECTION_NAME = '<COLLECTION_ID>';
+export const TABLE_NAME = '<TABLE_ID>';
 ```
 
 After the constants were added, we could now set up the Appwrite SDK.
@@ -176,18 +176,18 @@ The `login` function was called through a button click on the index page of our 
 
 ### Adding data to Appwrite Database
 
-To add or get information from the database, we created a database library in the project.  The `add` function adds the Discord username and email to our collection. The `list` function gets the list of all documents in our collection and returns it after reformatting for our roulette wheel for the giveaway.
+To add or get information from the database, we created a database library in the project.  The `add` function adds the Discord username and email to our table. The `list` function gets the list of all documents in our table and returns it after reformatting for our roulette wheel for the giveaway.
 
 ```js
 // ./src/lib/database.js
 
 import { Query, ID } from 'appwrite';
 import { database } from './appwrite';
-import { COLLECTION_NAME, DATABASE_NAME } from './constants';
+import { TABLE_NAME, DATABASE_NAME } from './constants';
 
 export const db = {
 	list: async () => {
-		var entries = await database.listDocuments(DATABASE_NAME, COLLECTION_NAME, [
+		var entries = await database.listDocuments(DATABASE_NAME, TABLE_NAME, [
 			Query.limit(500),
 			Query.select(['discordName'])
 		]);
@@ -203,7 +203,7 @@ export const db = {
 
 	add: async (discordName, email) => {
 		try {
-			await database.createDocument(DATABASE_NAME, COLLECTION_NAME, ID.unique(), {
+			await database.createDocument(DATABASE_NAME, TABLE_NAME, ID.unique(), {
 				discordName: discordName,
 				email: email
 			});
@@ -249,7 +249,7 @@ We integrated the `add` function directly into the `success` endpoint for our OA
 
 ### Creating our giveaway roulette
 
-To create our giveaway roulette, we used an NPM package [`spin-wheel`](https://www.npmjs.com/package/spin-wheel). To set this up, we first used a `load` function to get the list of Discord usernames that were already available in the collection before the giveaway page was rendered.
+To create our giveaway roulette, we used an NPM package [`spin-wheel`](https://www.npmjs.com/package/spin-wheel). To set this up, we first used a `load` function to get the list of Discord usernames that were already available in the table before the giveaway page was rendered.
 
 ```js
 // .src/routes/giveaway/+page.js
@@ -279,7 +279,7 @@ Using the load function would ensure that this list would be available on our pa
 	import InitHeading from '../../components/InitHeading.svelte';
 	import * as easing from 'easing-utils';
 	import { client } from '$lib/appwrite';
-	import { DATABASE_NAME, COLLECTION_NAME } from '$lib/constants';
+	import { DATABASE_NAME, TABLE_NAME } from '$lib/constants';
 
 	export let data;
 
@@ -345,7 +345,7 @@ Using the load function would ensure that this list would be available on our pa
 	// Uses Appwrite Realtime to get newly created documents and regenerate the wheel
 	function subscribe() {
 		return client.subscribe(
-			`databases.${DATABASE_NAME}.collections.${COLLECTION_NAME}.documents`,
+			`databases.${DATABASE_NAME}.tables.${TABLE_NAME}.documents`,
 			(response) => {
 				console.log(response);
 				props.items.push({ label: response.payload.discordName });

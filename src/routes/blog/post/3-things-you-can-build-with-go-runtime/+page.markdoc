@@ -29,7 +29,7 @@ Appwrite Functions can be executed by various types of events, which allows you 
 
 ## Global environment variables
 
-Aside from environment variables at the function level, Appwrite also allows you to environment variables at the project level so that they can be shared across multiple functions in a single project. 
+Aside from environment variables at the function level, Appwrite also allows you to environment variables at the project level so that they can be shared across multiple functions in a single project.
 
 ## Permissions system
 
@@ -51,7 +51,7 @@ Once your function is set up, we can try some examples:
 
 ## Example 1: AI Chatbot using GPT-3.5
 
-The first example is a simple chatbot function that accepts a prompt in the request body and returns an answer in the response from the ChatGPT API. 
+The first example is a simple chatbot function that accepts a prompt in the request body and returns an answer in the response from the ChatGPT API.
 
 To do this, we must first add the `go-openai` dependency to our project’s `mod` file.
 
@@ -138,7 +138,7 @@ You can then deploy this function using the `appwrite deploy function` command.
 
 ## Example 2: HTML Resume
 
-The second example is an online HTML-based resume that you can deliver online through the function. 
+The second example is an online HTML-based resume that you can deliver online through the function.
 
 For this, the first thing we do is create a `static` directory in the function folder and add a file, `resume.html` with the contents of our resume. You can [copy our template](https://github.com/appwrite-community/go-function-examples/blob/main/functions/go-resume/static/resume.html) if you’d like.
 
@@ -178,7 +178,7 @@ You can then deploy this function using the `appwrite deploy function` command.
 
 ## Example 3: URL Shortener
 
-The third example is a personal URL shortener that stores your shortened URL path and long URL in an Appwrite Database and redirects the consumer to the appropriate long URL on pinging the shortened URL. 
+The third example is a personal URL shortener that stores your shortened URL path and long URL in an Appwrite Database and redirects the consumer to the appropriate long URL on pinging the shortened URL.
 
 To build this function, create a `services` directory in the function folder and add a file `setup.go`. Here, we will add the necessary functions to initialize our Appwrite database.
 
@@ -199,8 +199,8 @@ func DoesDatabaseExist(dbs databases.Databases, dbId string) bool {
 	return true
 }
 
-func DoesCollectionExist(dbs databases.Databases, dbId string, collId string) bool {
-	_, err := dbs.GetCollection(dbId, collId)
+func DoesTableExist(dbs databases.Databases, dbId string, collId string) bool {
+	_, err := dbs.GetTable(dbId, collId)
 	if err != nil {
 		return false
 	}
@@ -224,13 +224,13 @@ func InitialiseDatabase(Context openruntimes.Context, dbs databases.Databases, d
 		)
 	}
 
-	doesCollExist := DoesCollectionExist(dbs, dbId, collId)
+	doesCollExist := DoesTableExist(dbs, dbId, collId)
 	if !doesCollExist {
-		dbs.CreateCollection(
+		dbs.CreateTable(
 			dbId,
 			collId,
 			"URLs",
-			dbs.WithCreateCollectionPermissions([]string{permission.Read("any")}),
+			dbs.WithCreateTablePermissions([]string{permission.Read("any")}),
 		)
 	}
 
@@ -279,7 +279,7 @@ func Main(Context openruntimes.Context) openruntimes.Response {
 	databases := appwrite.NewDatabases(client)
 
 	dbId := "urlDatabase"
-	collId := "urlCollection"
+	collId := "urlTable"
 
 	services.InitialiseDatabase(Context, *databases, dbId, collId)
 
@@ -345,7 +345,7 @@ func Main(Context openruntimes.Context) openruntimes.Response {
 
 You can then deploy this function using the `appwrite deploy function` command.
 
-After deployment, go to the Settings tab on the Function page in your Appwrite project and enable the following scopes for the dynamic API key: `databases.read`, `databases.write`, `collections.read`, `collections.write`, `attributes.read`, `attributes.write`, `documents.read`, `documents.write`, 
+After deployment, go to the Settings tab on the Function page in your Appwrite project and enable the following scopes for the dynamic API key: `databases.read`, `databases.write`, `tables.read`, `tables.write`, `attributes.read`, `attributes.write`, `documents.read`, `documents.write`,
 
 # More resources
 

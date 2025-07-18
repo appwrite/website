@@ -61,7 +61,7 @@ Our application needs to communicate with [Appwrite](https://cloud.appwrite.io/?
 PUBLIC_APPWRITE_ENDPOINT=https://cloud.appwrite.io/v1
 PUBLIC_APPWRITE_PROJECT_ID=your-project-id
 PUBLIC_APPWRITE_DATABASE_ID=expense-db
-PUBLIC_APPWRITE_COLLECTION_ID=expenses
+PUBLIC_APPWRITE_TABLE_ID=expenses
 ```
 
 The `PUBLIC_` prefix makes these variables available to our client-side code in Svelte. You'll need to replace `your-project-id` with your actual Appwrite project ID, which we'll create in the next step.
@@ -72,9 +72,9 @@ Before we continue with the frontend implementation, we need to configure our Ap
 
 1. Create a new project
 2. Open the **Databases** tab from the sidebar and create a database with the ID "expense-db"
-3. In your new database, create a collection with the ID "expenses"
+3. In your new database, create a table with the ID "expenses"
 
-The expenses collection needs several attributes to store the expense data effectively. Open the **Attributes** tab of your new collection and add the following attributes:
+The expenses table needs several attributes to store the expense data effectively. Open the **Attributes** tab of your new table and add the following attributes:
 
 ```md
 - `userId` (String, required)
@@ -89,7 +89,7 @@ The expenses collection needs several attributes to store the expense data effec
 
 Notice that the `category` attribute is an enumerated type with a set of predefined values. This structured approach helps us organize and filter expenses effectively. We have both a `date` attribute and a `createdAt` attribute because when an expense is created is not necessarily the same as when it occurred.
 
-To ensure that users can only access their own expenses, Open the collection's **Settings** tab and scroll to **Permissions**. Click **Add role**, select **Users** and check **Create** permission.
+To ensure that users can only access their own expenses, Open the table's **Settings** tab and scroll to **Permissions**. Click **Add role**, select **Users** and check **Create** permission.
 
 Next, enable **Document Security** to allow users to access their documents. We'll ensure this by giving users the **Read** permission when creating documents in our code.
 
@@ -165,7 +165,7 @@ import {
 	PUBLIC_APPWRITE_ENDPOINT,
 	PUBLIC_APPWRITE_PROJECT_ID,
 	PUBLIC_APPWRITE_DATABASE_ID,
-	PUBLIC_APPWRITE_COLLECTION_ID
+	PUBLIC_APPWRITE_TABLE_ID
 } from '$env/static/public'
 
 const client = new Client()
@@ -175,15 +175,15 @@ client.setEndpoint(PUBLIC_APPWRITE_ENDPOINT).setProject(PUBLIC_APPWRITE_PROJECT_
 export const account = new Account(client)
 export const databases = new Databases(client)
 
-// Collection IDs from environment variables
-export const EXPENSES_COLLECTION_ID = PUBLIC_APPWRITE_COLLECTION_ID
+// Table IDs from environment variables
+export const EXPENSES_TABLE_ID = PUBLIC_APPWRITE_TABLE_ID
 export const DATABASE_ID = PUBLIC_APPWRITE_DATABASE_ID
 
 ```
 
 This configuration file initializes our connection to Appwrite. The `Client` class creates a new Appwrite client instance, which we configure with our endpoint and project ID from our environment variables. We then create instances of the `Databases` and `Account` services, which we'll use throughout our application for database operations and user authentication.
 
-Finally, we export the collection IDs from our environment variables so that we can use them in other parts of our application.
+Finally, we export the table IDs from our environment variables so that we can use them in other parts of our application.
 
 ## Managing authentication state
 
@@ -525,7 +525,7 @@ We'll start with our imports and state management:
 <script lang="ts">
 	import { onMount } from 'svelte'
 	import { databases, account } from '$lib/appwrite'
-	import { DATABASE_ID, EXPENSES_COLLECTION_ID } from '$lib/appwrite'
+	import { DATABASE_ID, EXPENSES_TABLE_ID } from '$lib/appwrite'
 	import { Query, Permission, Role } from 'appwrite'
 	import { formatDistanceToNow } from 'date-fns'
 
@@ -588,7 +588,7 @@ onMount(async () => {
 async function fetchExpenses() {
   try {
     loading = true
-    const response = await databases.listDocuments(DATABASE_ID, EXPENSES_COLLECTION_ID, [
+    const response = await databases.listDocuments(DATABASE_ID, EXPENSES_TABLE_ID, [
       Query.orderDesc('$createdAt')
     ])
     expenses = response.documents
@@ -636,14 +636,14 @@ async function handleSubmit() {
     }
 
     if (editingExpense) {
-      await databases.updateDocument(DATABASE_ID, EXPENSES_COLLECTION_ID, editingExpense.$id, {
+      await databases.updateDocument(DATABASE_ID, EXPENSES_TABLE_ID, editingExpense.$id, {
         ...expenseData,
         updatedAt: now
       })
     } else {
       await databases.createDocument(
         DATABASE_ID,
-        EXPENSES_COLLECTION_ID,
+        EXPENSES_TABLE_ID,
         'unique()',
         expenseData,
         [
@@ -674,7 +674,7 @@ Finally, let's add utility functions for managing expenses:
 ```js
 async function deleteExpense(id) {
   try {
-    await databases.deleteDocument(DATABASE_ID, EXPENSES_COLLECTION_ID, id)
+    await databases.deleteDocument(DATABASE_ID, EXPENSES_TABLE_ID, id)
     await fetchExpenses()
   } catch (e) {
     error = 'Failed to delete expense'

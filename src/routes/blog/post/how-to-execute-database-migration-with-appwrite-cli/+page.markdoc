@@ -12,11 +12,11 @@ Database migration is a critical task in the lifecycle of any application. It in
 
 # The new Appwrite CLI
 
-The new Appwrite CLI introduces several enhancements to improve the developer experience in managing database schemas. One of the standout features is the ability to use your `appwrite.json` file as the source of truth for your database collections' schema. This approach brings numerous benefits, including better change tracking, seamless migrations using GitOps, and simplified project replication. Let's explore these advantages in more detail:
+The new Appwrite CLI introduces several enhancements to improve the developer experience in managing database schemas. One of the standout features is the ability to use your `appwrite.json` file as the source of truth for your database tables' schema. This approach brings numerous benefits, including better change tracking, seamless migrations using GitOps, and simplified project replication. Let's explore these advantages in more detail:
 
 **1. Tracking changes**
 
-By using `appwrite.json` as the source for your collections schema, you can easily track changes over time. This file can be version-controlled with Git, allowing you to see a detailed history of modifications and collaborate effectively with your team.
+By using `appwrite.json` as the source for your tables schema, you can easily track changes over time. This file can be version-controlled with Git, allowing you to see a detailed history of modifications and collaborate effectively with your team.
 
 **2. Migrating database changes with GitOps**
 
@@ -35,30 +35,30 @@ Let's walk through the process of planning and executing a database migration us
 If you already have a database setup, start by pulling the current configuration into your `appwrite.json` file. This step ensures that you have the latest schema as a baseline.
 
 ```bash
-appwrite pull collections --all
+appwrite pull tables --all
 
 ```
 
-## Step 2: Creating and pushing collections
+## Step 2: Creating and pushing tables
 
-If you are starting from scratch, you can initialize a new collection and push it to Appwrite.
+If you are starting from scratch, you can initialize a new table and push it to Appwrite.
 
-1. Create a new collection:
-    
+1. Create a new table:
+
     ```bash
-    appwrite init collection
+    appwrite init table
     ```
-    
-2. Push the collection to Appwrite:
-    
+
+2. Push the table to Appwrite:
+
     ```bash
-    appwrite push collections
+    appwrite push tables
     ```
-    
 
-## Step 3: Modifying collections
 
-To make changes to your collections, edit the `appwrite.json` file. For instance, you might want to change an attribute's type or add a new attribute. Here’s an example:
+## Step 3: Modifying tables
+
+To make changes to your tables, edit the `appwrite.json` file. For instance, you might want to change an attribute's type or add a new attribute. Here’s an example:
 
 ### Original attributes
 
@@ -109,7 +109,7 @@ To make changes to your collections, edit the `appwrite.json` file. For instan
 After making the necessary changes, push the updated schema to Appwrite:
 
 ```bash
-appwrite push collections
+appwrite push tables
 
 ```
 

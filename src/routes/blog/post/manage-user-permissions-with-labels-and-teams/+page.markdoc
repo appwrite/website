@@ -11,7 +11,7 @@ featured: false
 ---
 
 
-Teams and Labels allow us to categorize and group users together, allowing us to set permissions to resources at the Team and label level instead of at the individual user level. Grouping users together makes managing permissions to documents, files and functions much more efficient this way. 
+Teams and Labels allow us to categorize and group users together, allowing us to set permissions to resources at the Team and label level instead of at the individual user level. Grouping users together makes managing permissions to documents, files and functions much more efficient this way.
 
 ![Labels vs Teams](/images/blog/manage-user-permissions-with-labels-and-teams/labels3.png)
 
@@ -26,7 +26,7 @@ So let’s dive into the next section and see how Teams and Labels work and the 
 
 ## Teams Vs Labels
 
-Teams and labels accomplish much of the same thing, however there are some technical and fundamental differences between the two. While deciding which one to use will be based on your preferences and specific needs, I’ll point out the key differences and try to guide you in the right direction by providing an example of when one may be preferred over the other. 
+Teams and labels accomplish much of the same thing, however there are some technical and fundamental differences between the two. While deciding which one to use will be based on your preferences and specific needs, I’ll point out the key differences and try to guide you in the right direction by providing an example of when one may be preferred over the other.
 
 ### Teams
 
@@ -34,9 +34,9 @@ Teams are designed to group users together, allowing for shared access to resour
 
 ![Labels vs Teams](/images/blog/manage-user-permissions-with-labels-and-teams/labels6.png)
 
-One of the key differences between Teams and Labels is that Teams have the ability to set roles within a Team and assign permissions to those roles. This means all users in a Team will inherit permissions from the Team such as read access to all messages in the chat room, but will also inherit permissions from their role as well if they have been assigned one, such as moderator or admin. 
+One of the key differences between Teams and Labels is that Teams have the ability to set roles within a Team and assign permissions to those roles. This means all users in a Team will inherit permissions from the Team such as read access to all messages in the chat room, but will also inherit permissions from their role as well if they have been assigned one, such as moderator or admin.
 
-This allows for granular control over what each Team member can do based on their role within the Team. 
+This allows for granular control over what each Team member can do based on their role within the Team.
 
 ### Labels
 
@@ -46,8 +46,8 @@ Labels are essentially custom tags that you can assign to a user. They act as cu
 
 Just like Teams, we can grant permissions to specific Labels. Labels are attached to individual user accounts and are used to categorize users on a one-to-one basis. Labels can be used in a similar manner to Teams but are a more lightweight and flexible way to manage users and permissions.
 
-This would make Labels a great option for managing which users can view restricted content behind a paywall like a course on Udemy or an e-book on a digital library platform. In this example you would simply attach a label that is unique to a user after they pay to access a product, and from that point on, the label would grant the user permission.  If this access was subscription-based and the user stopped paying, we could simply remove the label from the user, and their access would be revoked since they no longer carry the label that gives them access. 
- 
+This would make Labels a great option for managing which users can view restricted content behind a paywall like a course on Udemy or an e-book on a digital library platform. In this example you would simply attach a label that is unique to a user after they pay to access a product, and from that point on, the label would grant the user permission.  If this access was subscription-based and the user stopped paying, we could simply remove the label from the user, and their access would be revoked since they no longer carry the label that gives them access.
+
 ### Summary
 
 - Labels are great for tagging users and assigning permissions based on those tags, while Teams are for grouping users together and allowing role-based management within a Team.
@@ -60,7 +60,7 @@ This would make Labels a great option for managing which users can view restrict
 
 Here’s the process of granting users permission to resources through Teams and labels. Be sure to pay attention to step 3 in the process. There’s a slight difference in how users connect to Teams Vs. labels.
 
-1. Create a Team or Label  
+1. Create a Team or Label
 2. Assign permissions to that Team or Label
 3. **Team**: Add users to the Team / **Label**: Add a Label to the user
 4. Users now inherit permissions from the Team they are on or the Labels they have been given.
@@ -69,17 +69,17 @@ Did you catch the difference between Labels and Teams in step #3? With Teams, we
 
 ## Managing Teams & Labels from the Console
 
-When getting started with Teams and Labels, it could be helpful to set things up from the console manually so you can better visualize how things work. 
+When getting started with Teams and Labels, it could be helpful to set things up from the console manually so you can better visualize how things work.
 
 ## Teams
 
-Let's start with creating a new Team, adding members, and assigning roles to those members of the Team. 
+Let's start with creating a new Team, adding members, and assigning roles to those members of the Team.
 
 1 - To create a Team, you can go to the “Auth” tab from your console and select “Teams”. From here, you can click on “Create Team” and complete the process of creating by giving your new Team a name
 
-2 - Once your Team is created, you can add a Member to the Team by selecting the “Members” tab and clicking “Create Membership”. Here you will enter the user's email address (name can be left blank) and assign a role to the member. Roles are optional, so you can leave this part blank. 
+2 - Once your Team is created, you can add a Member to the Team by selecting the “Members” tab and clicking “Create Membership”. Here you will enter the user's email address (name can be left blank) and assign a role to the member. Roles are optional, so you can leave this part blank.
 
-That’s it for creating a Team and adding members from the appwrite console. Now you can assign document, storage, and function permissions to your Teams. As an example, for collection level permissions, you can go to the “settings'' tab in a collection, and in the “permissions” section, choose “Select Teams'' to give permissions to an entire Team or “Custom permissions” if you want to assign permission to only users with a particular role within the Team. 
+That’s it for creating a Team and adding members from the appwrite console. Now you can assign document, storage, and function permissions to your Teams. As an example, for table level permissions, you can go to the “settings'' tab in a table, and in the “permissions” section, choose “Select Teams'' to give permissions to an entire Team or “Custom permissions” if you want to assign permission to only users with a particular role within the Team.
 
 ## Labels
 

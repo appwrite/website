@@ -20,7 +20,7 @@ callToAction: true
 - Improved push notifications
 
 Let’s dive in.
- 
+
 ![The Appwrite Partners program](/images/blog/product-update-jan-2025/partner-image.png)
 
 # The Appwrite Partners program
@@ -63,7 +63,7 @@ Push Notifications just got a major upgrade this month. Now, you can run backgro
 
 ## Billing improvements, UI fixes, and performance updates
 
-We believe little things make big things happen. That’s why we rolled out small yet impactful updates, including a clearer billing system, UI improvements, and fixes for collections and mobile experiences, all aimed at improving your overall Appwrite experience.
+We believe little things make big things happen. That’s why we rolled out small yet impactful updates, including a clearer billing system, UI improvements, and fixes for tables and mobile experiences, all aimed at improving your overall Appwrite experience.
 
 [Go to changelog](https://appwrite.io/changelog/entry/2025-01-03)
 
@@ -101,20 +101,20 @@ If you'd like to participate in next month's Community Recognitions, [join our D
 
 # Engineering resources
 
-**Read**  
-- [5 VS Code extensions that replace entire development tools](https://appwrite.io/blog/post/5-vs-code-extensions-that-replace-entire-dev-tools)  
-- [Budget caps: How to stop unexpected cloud bills before they happen](https://appwrite.io/blog/post/budget-caps-stop-unexpected-cloud-bills)  
-- [How Appwrite streamlines database operations using hooks](https://appwrite.io/blog/post/hooks-appwrite-databases)  
+**Read**
+- [5 VS Code extensions that replace entire development tools](https://appwrite.io/blog/post/5-vs-code-extensions-that-replace-entire-dev-tools)
+- [Budget caps: How to stop unexpected cloud bills before they happen](https://appwrite.io/blog/post/budget-caps-stop-unexpected-cloud-bills)
+- [How Appwrite streamlines database operations using hooks](https://appwrite.io/blog/post/hooks-appwrite-databases)
 
-**Build**  
-- [Building a full-stack app with Svelte and Appwrite](https://appwrite.io/blog/post/build-fullstack-svelte-appwrite)  
-- [Building custom authentication flows with Appwrite](https://appwrite.io/blog/post/building-custom-auth-flows)  
-- [Email your users using Resend and Appwrite Messaging](https://appwrite.io/blog/post/integrate-resend-smtp)  
+**Build**
+- [Building a full-stack app with Svelte and Appwrite](https://appwrite.io/blog/post/build-fullstack-svelte-appwrite)
+- [Building custom authentication flows with Appwrite](https://appwrite.io/blog/post/building-custom-auth-flows)
+- [Email your users using Resend and Appwrite Messaging](https://appwrite.io/blog/post/integrate-resend-smtp)
 
-**Watch**  
-- [Build an app and master React in 2 hours](https://www.youtube.com/watch?v=dCLhUialKPQ&t)  
-- [React Native Appwrite SDK - Getting started](https://www.youtube.com/watch?v=YSUmzHH_OMg)  
-- [Setup custom SMTP for your Appwrite self-hosted instance](https://www.youtube.com/watch?v=gUWP9J2Hp0k)  
+**Watch**
+- [Build an app and master React in 2 hours](https://www.youtube.com/watch?v=dCLhUialKPQ&t)
+- [React Native Appwrite SDK - Getting started](https://www.youtube.com/watch?v=YSUmzHH_OMg)
+- [Setup custom SMTP for your Appwrite self-hosted instance](https://www.youtube.com/watch?v=gUWP9J2Hp0k)
 
 # What's to come
 

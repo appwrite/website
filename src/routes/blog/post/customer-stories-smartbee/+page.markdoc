@@ -9,9 +9,9 @@ author: aditya-oberai
 category: customer-stories
 ---
 
-In 2020, Sergio Ponguta and his brother started Smartbee, a company offering security and communications solutions for coal mining operations in Colombia. Both brothers, being formally educated in systems engineering, combined with a lack of fear of traversing down mines, felt comfortable launching this venture. 
+In 2020, Sergio Ponguta and his brother started Smartbee, a company offering security and communications solutions for coal mining operations in Colombia. Both brothers, being formally educated in systems engineering, combined with a lack of fear of traversing down mines, felt comfortable launching this venture.
 
-They launched their venture by installing security cameras for mines. A requirement of their customers resulted in them setting up a communications system for telephone stations located both outside and inside the mine. As they began growing their offerings, they discovered that the Ministry of Mines and Energy in Colombia made it mandatory for all coal mines to monitor and record gas levels inside. Smartbee took this as an opportunity and started importing gas sensors to provide them to coal mines in Colombia. To add extra value on top of the sensors, they started developing a platform that would aggregate sensor data in real-time and generate reports accordingly. 
+They launched their venture by installing security cameras for mines. A requirement of their customers resulted in them setting up a communications system for telephone stations located both outside and inside the mine. As they began growing their offerings, they discovered that the Ministry of Mines and Energy in Colombia made it mandatory for all coal mines to monitor and record gas levels inside. Smartbee took this as an opportunity and started importing gas sensors to provide them to coal mines in Colombia. To add extra value on top of the sensors, they started developing a platform that would aggregate sensor data in real-time and generate reports accordingly.
 
 
 # Challenges revolving around the development of the platform
@@ -30,15 +30,15 @@ To simplify and accelerate their development process, Sergio started looking for
 
 {% call_to_action title="All-in-one development platform" description="Use built-in backend infrastructure and web hosting, all from a single place." point1="Start for free"  point2="Open source" point3="Support for over 13 SDKs" point4="Managed cloud solution" cta="Start building for free" url="https://cloud.appwrite.io/" /%}
 
-# Architecting their current solution 
+# Architecting their current solution
 
 Amid this process, Sergio came across Appwrite. Appwrite’s high count of GitHub stars and highly active developer community were the primary validating factors for him to consider leveraging the product for his platform.
 
 Keeping Appwrite at the center of his solution, Smartbee began working on the platform. Their gas monitoring platform would have the following rungs in the ladder:
 
 1. **Gas monitoring sensors:** Each sensor is an IoT device that constantly monitors and transmits gas levels of Oxygen, Methane, and Carbon Monoxide in the mines
-2. **Local coal mine servers:** Each local mine server accepts the data stream from the sensors in a Python container. This data is stored in a local Appwrite instance in a database collection. The local Appwrite instance also has a storage bucket where CSV reports are generated and updated for daily, weekly, and monthly data using a Python-based Appwrite function. The local server also transmits information every 10 seconds (with a check added for internet availability) to a remote server that constantly aggregates all the data and reports using a Python-based Appwrite function. This server is accessed by the team of each coal mine.
-3. **Remote aggregation server:** The remote Appwrite instance constantly aggregates information from all local coal mine servers. This server is accessible to teams of all the coal mines Smartbee supports (each team only has permission to access their data). The remote server can also restore data from the database collection to the local coal mine server using a Python-based Appwrite function.
+2. **Local coal mine servers:** Each local mine server accepts the data stream from the sensors in a Python container. This data is stored in a local Appwrite instance in a database table. The local Appwrite instance also has a storage bucket where CSV reports are generated and updated for daily, weekly, and monthly data using a Python-based Appwrite function. The local server also transmits information every 10 seconds (with a check added for internet availability) to a remote server that constantly aggregates all the data and reports using a Python-based Appwrite function. This server is accessed by the team of each coal mine.
+3. **Remote aggregation server:** The remote Appwrite instance constantly aggregates information from all local coal mine servers. This server is accessible to teams of all the coal mines Smartbee supports (each team only has permission to access their data). The remote server can also restore data from the database table to the local coal mine server using a Python-based Appwrite function.
 4. **Client application:** The client application is built with Flutter and allows the teams of all the coal mines to view and manage data from their coal mines. Flutter was specifically selected because of its cross-platform nature and high support from the Appwrite team. Smartbee is currently transitioning this application to a SvelteKit web application so it can also be used through the browser.
 
 # The power of an entire team

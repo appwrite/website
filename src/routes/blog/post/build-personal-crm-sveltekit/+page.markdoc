@@ -21,7 +21,7 @@ First, [create an Appwrite Cloud account](https://cloud.appwrite.io/) if you hav
 
 Head to the **Overview** page from the left sidebar, select the **API keys** tab under the **Integrations** section, and click on the **Create API key** button. Select the `documents.write` and `documents.read` scopes under the **Databases** dropdown, create the key, and copy it for further usage.
 
-Next, go to the **Databases** page from the left sidebar, create a new database with the ID `crm`, and then a collection with the ID `contacts` (save both IDs for further usage).
+Next, go to the **Databases** page from the left sidebar, create a new database with the ID `crm`, and then a table with the ID `contacts` (save both IDs for further usage).
 
 Next, head to the **Attributes** tab and add the following:
 
@@ -74,7 +74,7 @@ APPWRITE_ENDPOINT=https://<REGION>.cloud.appwrite.io/v1
 APPWRITE_PROJECT_ID=<PROJECT_ID>
 APPWRITE_API_KEY=<API_KEY>
 APPWRITE_DATABASE_ID=crm
-APPWRITE_COLLECTION_ID=contacts
+APPWRITE_TABLE_ID=contacts
 ```
 
 Next, in the `src/lib` subdirectory, create a file `appwrite.js` and add the following code:
@@ -92,7 +92,7 @@ const client = new Client()
 const databases = new Databases(client);
 
 const databaseId = env.APPWRITE_DATABASE_ID;
-const collectionId = env.APPWRITE_COLLECTION_ID;
+const tableId = env.APPWRITE_TABLE_ID;
 
 // Add or update contacts
 async function upsertDocuments(contacts) {
@@ -104,7 +104,7 @@ async function upsertDocuments(contacts) {
 			phone: contact.phone,
 			notes: contact.notes
 		}));
-		return await databases.upsertDocuments(databaseId, collectionId, documents);
+		return await databases.upsertDocuments(databaseId, tableId, documents);
 	} catch (error) {
 		console.error('Error upserting documents:', error);
 		throw new Error('Failed to upsert documents');
@@ -114,7 +114,7 @@ async function upsertDocuments(contacts) {
 // Delete a single contact
 async function deleteDocument(id) {
 	try {
-		return await databases.deleteDocument(databaseId, collectionId, id);
+		return await databases.deleteDocument(databaseId, tableId, id);
 	} catch (error) {
 		console.error('Error deleting document:', error);
 		throw new Error('Failed to delete document');
@@ -124,7 +124,7 @@ async function deleteDocument(id) {
 // Delete all contacts
 async function deleteDocuments() {
 	try {
-		return await databases.deleteDocuments(databaseId, collectionId, []);
+		return await databases.deleteDocuments(databaseId, tableId, []);
 	} catch (error) {
 		console.error('Error deleting documents:', error);
 		throw new Error('Failed to delete documents');
@@ -134,7 +134,7 @@ async function deleteDocuments() {
 // List contacts
 async function listDocuments() {
 	try {
-		return await databases.listDocuments(databaseId, collectionId);
+		return await databases.listDocuments(databaseId, tableId);
 	} catch (error) {
 		console.error('Error fetching documents:', error);
 		throw new Error('Failed to fetch documents');

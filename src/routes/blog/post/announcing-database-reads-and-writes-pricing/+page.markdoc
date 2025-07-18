@@ -49,7 +49,7 @@ Any action that modifies data in your database, including:
 - Updating documents with `updateDocument`.
 - Deleting documents with `deleteDocument`.
 
-Most operations are counted based on the number of documents affected. For example, if you fetch a collection of 50 documents with a single API call, this counts as 50 read operations, not as a single operation. However, if your query returns no documents, it will count as a single operation.
+Most operations are counted based on the number of documents affected. For example, if you fetch a table of 50 documents with a single API call, this counts as 50 read operations, not as a single operation. However, if your query returns no documents, it will count as a single operation.
 
 # Your usage
 

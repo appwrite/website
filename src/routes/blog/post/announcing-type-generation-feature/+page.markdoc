@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Introducing Type generation: Automate your type definitions with Appwrite"
-description: "Automatically generate types from your collections with support for multiple languages."
+description: "Automatically generate types from your tables with support for multiple languages."
 date: 2025-06-24
 cover: /images/blog/type-generation-feature/cover.png
 timeToRead: 4
@@ -9,7 +9,7 @@ author: chirag-aggarwal
 category: announcement
 ---
 
-We're excited to announce Appwrite’s newest CLI feature, **Type generation**. Designed specifically to enhance your developer experience. Type generation automates the creation of type definitions directly from your database collections, seamlessly integrating with your preferred programming language.
+We're excited to announce Appwrite’s newest CLI feature, **Type generation**. Designed specifically to enhance your developer experience. Type generation automates the creation of type definitions directly from your database tables, seamlessly integrating with your preferred programming language.
 
 # Say goodbye to manual mapping
 
@@ -21,12 +21,12 @@ Whether you work with PHP, Swift, Dart, TypeScript, JavaScript, Java, or Kotlin,
 
 # Simplified workflow, immediate benefits
 
-Using Type generation is straightforward. 
+Using Type generation is straightforward.
 
-First, ensure you have the [Appwrite CLI](/docs/tooling/command-line/installation#getting-started) installed and your project is [initialised](/docs/tooling/command-line/installation#initialization). Then, run the following command in your terminal to pull collections from your Appwrite project:
+First, ensure you have the [Appwrite CLI](/docs/tooling/command-line/installation#getting-started) installed and your project is [initialised](/docs/tooling/command-line/installation#initialization). Then, run the following command in your terminal to pull tables from your Appwrite project:
 
 ```bash
-appwrite pull collections
+appwrite pull tables
 ```
 
 To generate types, you can use the Appwrite CLI command:

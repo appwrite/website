@@ -13,7 +13,7 @@ Some systems need to reflect the order in which actions happen. A ticketing syst
 
 Relying on timestamps to get this right is often not enough. Two documents can be created almost simultaneously, and the sort order might vary. What is needed is a consistent, backend-assigned number that increases with each insert and cannot be modified or skipped.
 
-Appwrite's new `$sequence` attribute provides exactly this. Every time a document is added to a collection, the system assigns it a unique, auto-incrementing integer. This value reflects the insert history of the collection and can be used for sorting, display, filtering, and pagination.
+Appwrite's new `$sequence` attribute provides exactly this. Every time a document is added to a table, the system assigns it a unique, auto-incrementing integer. This value reflects the insert history of the table and can be used for sorting, display, filtering, and pagination.
 
 In this tutorial, we will build a simple web-based support ticket tracker using plain HTML and JavaScript. Each submitted ticket will be stored in Appwrite with a title and description, and each will receive a `$sequence` number automatically. We will use that number to display and order the tickets.
 
@@ -25,17 +25,17 @@ Start by opening the [Appwrite console](https://cloud.appwrite.io/). If you do n
 
 Give it a name like **Support Tracker**. After creation, note the **Project ID**, as you will need it later in your frontend code.
 
-## Create a database and collection
+## Create a database and table
 
 Inside your project:
 
 - Go to the **Database** section
 - Create a new database named "Support DB"
-- Inside that database, create a new collection named "Tickets"
+- Inside that database, create a new table named "Tickets"
 
 ## Add document attributes
 
-In the **Tickets** collection, define the following attributes:
+In the **Tickets** table, define the following attributes:
 
 - `title` - type: `string`, required: `yes`, size: 256
 - `body` - type: `string`, required: `yes`, size: 1000
@@ -48,12 +48,12 @@ Confirm the schema once all attributes are added.
 
 For now, allow anyone to create and read documents:
 
-- In the collection's **Settings**, under **Permissions**
+- In the table's **Settings**, under **Permissions**
 - Add `role:any` to **Create** and **Read**
 
 You can change this later when adding [authentication](https://appwrite.io/docs/products/auth).
 
-Also take note of your **Database ID** and **Collection ID**. You will use them in your frontend.
+Also take note of your **Database ID** and **Table ID**. You will use them in your frontend.
 
 ## Configure web platform
 
@@ -216,7 +216,7 @@ client
 const databases = new Appwrite.Databases(client)
 
 const databaseId = '<YOUR_DATABASE_ID>'
-const collectionId = '<YOUR_COLLECTION_ID>'
+const tableId = '<YOUR_TABLE_ID>'
 
 ```
 
@@ -242,7 +242,7 @@ form.addEventListener('submit', async (e) => {
   if (!title || !body) return
 
   try {
-    await databases.createDocument(databaseId, collectionId, 'unique()', {
+    await databases.createDocument(databaseId, tableId, 'unique()', {
       title,
       body,
     })
@@ -256,7 +256,7 @@ form.addEventListener('submit', async (e) => {
 
 ```
 
-This code creates a new document in your collection when the form is submitted. It uses `'unique()'` to generate a unique ID. After submission, the form is reset and the list of tickets is reloaded to show the new entry.
+This code creates a new document in your table when the form is submitted. It uses `'unique()'` to generate a unique ID. After submission, the form is reset and the list of tickets is reloaded to show the new entry.
 
 {% /section %}
 
@@ -267,7 +267,7 @@ Now add a function that retrieves tickets and shows them in order, newest first:
 ```javascript
 async function loadTickets() {
   try {
-    const response = await databases.listDocuments(databaseId, collectionId, [
+    const response = await databases.listDocuments(databaseId, tableId, [
       Appwrite.Query.orderDesc('$sequence'),
     ])
     const ticketList = document.getElementById('ticket-list')

@@ -94,7 +94,7 @@ MongoDB database is well-known for its JSON document structure. This approach al
 
 While MongoDB shines the most in storing unstructured data, nowadays, it provides all the capabilities developers expect from a relational database. If you don’t like SQL queries, MongoDB is a great choice.
 
-With MongoDB, integration becomes simpler, since you don’t need to define structure of collections or documents. After preparing a client, you can directly start writing and querying data.
+With MongoDB, integration becomes simpler, since you don’t need to define structure of tables or documents. After preparing a client, you can directly start writing and querying data.
 
 ```jsx
 import { MongoClient, ServerApiVersion } from 'mongodb';
@@ -119,7 +119,7 @@ export default async ({ req, res, log, error }) => {
   const location = `Street ${Math.round(Math.random() * 1000)}, Earth`; // Random address
   const capacity = 10 + Math.round(Math.random() * 10) * 10; // Random number: 10,20,30,...,90,100
 
-  await client.db("main").collection("warehouses").insertOne({
+  await client.db("main").table("warehouses").insertOne({
       location,
       capacity
   });
@@ -127,7 +127,7 @@ export default async ({ req, res, log, error }) => {
   // Query data
   const page = 1;
   const limit = 100;
-  const cursor = client.db("main").collection("warehouses")
+  const cursor = client.db("main").table("warehouses")
     .find().limit(limit).skip((page - 1) * limit);
 
   const docs = [];

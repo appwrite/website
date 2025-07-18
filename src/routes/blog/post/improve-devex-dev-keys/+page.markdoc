@@ -27,13 +27,13 @@ To test dev keys, I created a simple demo web app that sends 200 requests to cre
 
 ## Step 1: Setup Appwrite project
 
-First, create an [Appwrite Cloud](https://cloud.appwrite.io) account or [self-host Appwrite 1.7](/docs/advanced/self-hosting). Create a project (which will lead you to the project overview page) and head to the **Databases** page from the left sidebar. Create a new database with the ID `testDb` and a new collection with the ID `testCollection`. Store both of these IDs for future usage. In this collection, add the following attribute:
+First, create an [Appwrite Cloud](https://cloud.appwrite.io) account or [self-host Appwrite 1.7](/docs/advanced/self-hosting). Create a project (which will lead you to the project overview page) and head to the **Databases** page from the left sidebar. Create a new database with the ID `testDb` and a new table with the ID `testTable`. Store both of these IDs for future usage. In this table, add the following attribute:
 
 | Name | Type | Required |
 | --- | --- | --- |
 | `number` | Integer | True |
 
-Then, head to the **Settings** tab of the collection, scroll down to the **Permissions** section, and add the following permissions:
+Then, head to the **Settings** tab of the table, scroll down to the **Permissions** section, and add the following permissions:
 
 |  | Create | Read | Update | Delete |
 | --- | --- | --- | --- | --- |
@@ -59,10 +59,10 @@ Next up, we'll create our test app. This will require us to create two files in 
     <h1>Dev keys demo</h1>
     <p>Click on this button to add 200 documents to the database in less than 1 minute.</p>
     <button type="button">Add documents</button>
-    
+
     <!-- Appwrite Web SDK -->
     <script src="https://cdn.jsdelivr.net/npm/appwrite@18.1.1"></script>
-    
+
     <!-- Our app's script -->
     <script src="app.js"></script>
 </body>
@@ -83,14 +83,14 @@ document.querySelector('button').addEventListener('click', async () => {
     for (let i = 0; i < 200; i++) {
         const promise = database.createDocument(
         'testDb', // Your database ID
-        'testCollection', // Your collection ID
+        'testTable', // Your table ID
         Appwrite.ID.unique(),
         { number: i + i }
         );
         promises.push(promise);
         console.log('Request initiated:', i+1);
     }
-    
+
     await Promise.all(promises);
 });
 ```

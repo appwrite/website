@@ -81,9 +81,9 @@ This is a really rare condition and only occurs if the row's ID that you are abo
 
 [Appwrite](https://appwrite.io/) is an open-source backend-as-a-service that abstracts all the complexity involved in building a modern application by providing you with a set of REST APIs for your core backend needs. Appwrite handles user authentication and authorization, databases, file storage, cloud functions, webhooks, messaging, and more. You can extend Appwrite using your favorite backend language if anything is missing.
 
-Appwrite Database lets you store any text-based data that needs to be shared across your users. Appwrite's database allows you to create multiple collections (tables) and store multiple documents (rows) in it. Each collection has attributes (columns) configured to give your dataset a proper schema. You can also configure indexes to make your search queries more performant. When reading your data, you can use powerful queries, filter them, sort them, limit the number of results, and paginate over them.
+Appwrite Database lets you store any text-based data that needs to be shared across your users. Appwrite's database allows you to create multiple tables (tables) and store multiple documents (rows) in it. Each table has attributes (columns) configured to give your dataset a proper schema. You can also configure indexes to make your search queries more performant. When reading your data, you can use powerful queries, filter them, sort them, limit the number of results, and paginate over them.
 
-Appwrite's pagination supports both offset and cursor pagination. Let's imagine you have a collection with ID `articles`. You can get documents from this collection with either offset or cursor pagination:
+Appwrite's pagination supports both offset and cursor pagination. Let's imagine you have a table with ID `articles`. You can get documents from this table with either offset or cursor pagination:
 
 ```jsx
 // Setup
@@ -98,7 +98,7 @@ const databases = new Databases(client);
 // Offset pagination
 databases.listDocuments(
 		'main', // Database ID
-    'articles', // Collection ID
+    'articles', // Table ID
     [
 	    Query.limit(10), // Limit, total documents in the response
 	    Query.offset(500), // Offset, amount of documents to skip
@@ -110,7 +110,7 @@ databases.listDocuments(
 // Cursor pagination
 databases.listDocuments(
 		'main', // Database ID
-    'articles', // Collection ID
+    'articles', // Table ID
     [
 	    Query.limit(10), // Limit, total documents in the response
 	    Query.cursorAfter('61d6eb2281fce3650c2c', // ID of document I want to paginate after
@@ -129,7 +129,7 @@ We’ve frequently mentioned the term "performance" in this article without prov
 
 > You can find complete source code in the [GitHub repository.](https://github.com/appwrite)
 
-First, you set up Appwrite, register a user, create a project and create a collection called `posts` with read permission set to `any`. To learn more about this process, visit the [Appwrite docs](https://appwrite.io/docs). You should now have Appwrite ready to go.
+First, you set up Appwrite, register a user, create a project and create a table called `posts` with read permission set to `any`. To learn more about this process, visit the [Appwrite docs](https://appwrite.io/docs). You should now have Appwrite ready to go.
 
 Use the following script to load data into our MariaDB database and prepare for the benchmark. We could use Appwrite SDK, but talking directly to MariaDB offers more optional write queries for large datasets.
 
@@ -161,7 +161,7 @@ for(let i = 0; i < 100; i++) {
         index++;
     }
 
-    const query = `INSERT INTO _project_${config.projectId}_collection_posts (_uid, _read, _write) VALUES ${queryValues.join(", ")}`;
+    const query = `INSERT INTO _project_${config.projectId}_table_posts (_uid, _read, _write) VALUES ${queryValues.join(", ")}`;
     promises.push(connection.execute(query));
 }
 
@@ -198,7 +198,7 @@ export default function () {
 		const offset = Query.offset(__ENV.OFFSET);
 		const limit = 10;
 
-    http.get(`${config.endpoint}/databases/main/collections/posts/documents?queries[]=${offset}&queries[]=${limit}`, {
+    http.get(`${config.endpoint}/databases/main/tables/posts/documents?queries[]=${offset}&queries[]=${limit}`, {
         headers: {
             'content-type': 'application/json',
             'X-Appwrite-Project': config.projectId
@@ -266,7 +266,7 @@ export default function () {
 		const cursor = Query.cursorAfter(__ENV.CURSOR);
 		const limit = 10;
 
-    http.get(`${config.endpoint}/databases/main/collections/posts/documents?queries[]=${offset}&queries[]=${limit}`, {
+    http.get(`${config.endpoint}/databases/main/tables/posts/documents?queries[]=${offset}&queries[]=${limit}`, {
             headers: {
             'content-type': 'application/json',
             'X-Appwrite-Project': config.projectId

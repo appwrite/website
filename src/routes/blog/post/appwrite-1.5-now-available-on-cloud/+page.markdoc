@@ -203,7 +203,7 @@ The contains operator is a great addition to the existing text search operators 
 ```js
 db.listDocuments(
     '<DATABASE_ID>',
-    '<COLLECTION_ID>',
+    '<TABLE_ID>',
 	  [
 	    Query.contains('content', ['happy', 'love']),
 	  ]
@@ -215,7 +215,7 @@ To use the OR operator pass Query.or([...]) to the queries array and provide at 
 ```js
 db.listDocuments(
 	 '<DATABASE_ID>',
-	 '<COLLECTION_ID>',
+	 '<TABLE_ID>',
         [
         Query.or([
             Query.contains('name','ivy'),

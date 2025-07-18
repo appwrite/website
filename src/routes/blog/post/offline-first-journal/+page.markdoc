@@ -42,7 +42,7 @@ Our tech stack for this app will be:
 
 ## Configure your Appwrite project
 
-First, [create an Appwrite Cloud account](https://cloud.appwrite.io/) if you haven’t already. Once your project is ready, go to the **Settings** page and copy your project ID and API endpoint for further usage. Next, go to the **Databases** page from the left sidebar, create a new database with the ID `journals`, and then a collection with the ID `entries` (save both IDs for further usage).
+First, [create an Appwrite Cloud account](https://cloud.appwrite.io/) if you haven’t already. Once your project is ready, go to the **Settings** page and copy your project ID and API endpoint for further usage. Next, go to the **Databases** page from the left sidebar, create a new database with the ID `journals`, and then a table with the ID `entries` (save both IDs for further usage).
 
 Next, head to the **Attributes** tab and add the following:
 
@@ -56,7 +56,7 @@ Next, head to the **Attributes** tab and add the following:
 
 > **Note:** The `deleted` attribute is necessary to add because RxDB does not hard delete any data, only soft deletes to prevent data loss in offline scenarios.
 
-Then, head to the **Settings** tab of your collection, scroll down to the **Permissions** section, and add the following:
+Then, head to the **Settings** tab of your table, scroll down to the **Permissions** section, and add the following:
 
 | Role | Create | Read | Update | Delete |
 | --- | --- | --- | --- | --- |
@@ -64,7 +64,7 @@ Then, head to the **Settings** tab of your collection, scroll down to the **Perm
 
 ## Prepare the app logic
 
-Once our Appwrite project is set up, let’s start building our app. 
+Once our Appwrite project is set up, let’s start building our app.
 
 ### Create a SvelteKit app
 
@@ -103,7 +103,7 @@ In the root directory of your app, create a `.env` file and add the information 
 PUBLIC_APPWRITE_ENDPOINT=your-appwrite-cloud-endpoint
 PUBLIC_APPWRITE_PROJECT_ID=your-project-id
 PUBLIC_APPWRITE_DATABASE_ID=your-database-id
-PUBLIC_APPWRITE_COLLECTION_ID=your-collection-id
+PUBLIC_APPWRITE_TABLE_ID=your-table-id
 ```
 
 Next, in the `src/lib` subdirectory, create a file `appwrite.js` and add the following code:
@@ -114,14 +114,14 @@ import {
 	PUBLIC_APPWRITE_ENDPOINT,
 	PUBLIC_APPWRITE_PROJECT_ID,
 	PUBLIC_APPWRITE_DATABASE_ID,
-	PUBLIC_APPWRITE_COLLECTION_ID
+	PUBLIC_APPWRITE_TABLE_ID
 } from '$env/static/public';
 
 export const appwriteConfig = {
 	endpoint: PUBLIC_APPWRITE_ENDPOINT,
 	projectId: PUBLIC_APPWRITE_PROJECT_ID,
 	databaseId: PUBLIC_APPWRITE_DATABASE_ID,
-	collectionId: PUBLIC_APPWRITE_COLLECTION_ID
+	tableId: PUBLIC_APPWRITE_TABLE_ID
 };
 
 export const client = new Client()
@@ -156,7 +156,7 @@ addRxPlugin(RxDBQueryBuilderPlugin);
 addRxPlugin(RxDBUpdatePlugin);
 ```
 
-The RxDB imports include core RxDB functionalities to create databases and collections and to add plugins, the query builder plugin for complex read queries, the update plugin for updating data, the Dexie.js storage plugin to use IndexedDB as the local database, and the Appwrite replication plugin to manage data replication in the external Appwrite database.
+The RxDB imports include core RxDB functionalities to create databases and tables and to add plugins, the query builder plugin for complex read queries, the update plugin for updating data, the Dexie.js storage plugin to use IndexedDB as the local database, and the Appwrite replication plugin to manage data replication in the external Appwrite database.
 
 ### Create a local database
 
@@ -190,7 +190,7 @@ const journalSchema = {
 };
 ```
 
-Then, we create the database and collection using the Dexie.js plugin by adding the following code just after the schema:
+Then, we create the database and table using the Dexie.js plugin by adding the following code just after the schema:
 
 ```js
 let dbPromise = null;
@@ -207,9 +207,9 @@ export const getDB = async () => {
 
 		const db = await dbPromise;
 
-		// Add collections
-		await db.addCollections({
-			entries: { // Name must match the collection ID from Appwrite
+		// Add tables
+		await db.addTables({
+			entries: { // Name must match the table ID from Appwrite
 				schema: journalSchema
 			}
 		});
@@ -237,9 +237,9 @@ const setupReplication = async (db) => {
 			replicationIdentifier: 'journals-replication',
 			client,
 			databaseId: appwriteConfig.databaseId,
-			collectionId: appwriteConfig.collectionId,
+			tableId: appwriteConfig.tableId,
 			deletedField: 'deleted',
-			collection: db.entries,
+			table: db.entries,
 			pull: {
 				batchSize: 25 // Can be updated
 			},
@@ -347,7 +347,7 @@ This will pre-load all journal entries before the page renders. Then, open the `
 ```html
 <script>
 	import { getJournals, deleteJournal } from '$lib/database.js';
-	
+
 	let { data } = $props();
 	let journals = $state(data.journals);
 	let error = $state(null);

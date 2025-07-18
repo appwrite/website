@@ -20,7 +20,7 @@ In order to build this application, we have a few prerequisites. We must set up 
 - OpenAI API key
 - GitHub OAuth app
 - Appwrite OAuth adapter for GitHub
-- Appwrite collections to store GitHub data and destinies
+- Appwrite tables to store GitHub data and destinies
 
 ## OpenAI
 
@@ -59,11 +59,11 @@ To implement GitHub OAuth, we must visit the **Auth** page on the Appwrite proje
 
 ## Appwrite Database
 
-We must create a database with the ID `crystalball` and two collections with the IDs `githubData` and `destiny` in the Appwrite project with the following details:
+We must create a database with the ID `crystalball` and two tables with the IDs `githubData` and `destiny` in the Appwrite project with the following details:
 
-#### The `githubData` collection
+#### The `githubData` table
 
-Create the collection and add the following attributes:
+Create the table and add the following attributes:
 
 | Key | Type | Size | Required | Array |
 | --- | --- | --- | --- | --- |
@@ -72,22 +72,22 @@ Create the collection and add the following attributes:
 | following | Integer | - | Yes | - |
 | username | String | 255 | Yes | - |
 
-Visit the collection settings, enable **Document security,** and set the following (collection-level) **Permissions**:
+Visit the table settings, enable **Document security,** and set the following (table-level) **Permissions**:
 
 | Role | Create | Read | Update | Delete |
 | --- | --- | --- | --- | --- |
 | Users | Yes | - | - | - |
 
-#### The `destiny` collection
+#### The `destiny` table
 
-Create the collection and add the following attributes:
+Create the table and add the following attributes:
 
 | Key | Type | Size | Required |
 | --- | --- | --- | --- |
 | destiny | String | 25000 | Yes |
 | username | String | 255 | Yes |
 
-Visit the collection settings, enable **Document security,** and set the following (collection-level) **Permissions**:
+Visit the table settings, enable **Document security,** and set the following (table-level) **Permissions**:
 
 | Role | Create | Read | Update | Delete |
 | --- | --- | --- | --- | --- |
@@ -123,8 +123,8 @@ Lastly, we must create a `.env` file at the root of the directory and add the fo
 PUBLIC_APPWRITE_ENDPOINT=
 PUBLIC_APPWRITE_PROJECT_ID=
 PUBLIC_APPWRITE_DATABASE_ID=
-PUBLIC_APPWRITE_COLLECTION_ID_GITHUBDATA=
-PUBLIC_APPWRITE_COLLECTION_ID_DESTINY=
+PUBLIC_APPWRITE_TABLE_ID_GITHUBDATA=
+PUBLIC_APPWRITE_TABLE_ID_DESTINY=
 SECRET_OPENAI_API_KEY=
 ```
 
@@ -269,14 +269,14 @@ import { databases } from './appwrite';
 import { env } from '$env/dynamic/public';
 
 const databaseId = env.PUBLIC_APPWRITE_DATABASE_ID;
-const githubDataCollectionId = env.PUBLIC_APPWRITE_COLLECTION_ID_GITHUBDATA;
+const githubDataTableId = env.PUBLIC_APPWRITE_TABLE_ID_GITHUBDATA;
 
 export const db = {
     getUserData: async(documentId) => {
         try{
             return await databases.getDocument(
                 databaseId,
-                githubDataCollectionId,
+                githubDataTableId,
                 documentId
             );
         } catch(err){
@@ -287,7 +287,7 @@ export const db = {
     addUserData: async(userId, username, followers, following, languages) => {
         return await databases.createDocument(
             databaseId,
-            githubDataCollectionId,
+            githubDataTableId,
             userId,
             {
                 username,
@@ -497,7 +497,7 @@ Lastly, to share our destiny with the rest of the world, we must create an addit
 .
 .
 .
-const destinyCollectionId = env.PUBLIC_APPWRITE_COLLECTION_ID_DESTINY;
+const destinyTableId = env.PUBLIC_APPWRITE_TABLE_ID_DESTINY;
 
 export const db = {**
 .
@@ -506,7 +506,7 @@ export const db = {**
 		addDestiny: async(username, destiny) => {
 		    return await databases.createDocument(
 		        databaseId,
-		        destinyCollectionId,
+		        destinyTableId,
 		        ID.unique(),
 		        {
 		            username,
@@ -519,7 +519,7 @@ export const db = {**
 		    try{
 		        return await databases.getDocument(
 		            databaseId,
-		            destinyCollectionId,
+		            destinyTableId,
 		            documentId
 		        );
 		    } catch(err){

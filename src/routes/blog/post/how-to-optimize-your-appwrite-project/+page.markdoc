@@ -20,14 +20,14 @@ Every API request consumes resources, and when requests are made inefficiently, 
 
 ## Efficient use of listDocuments with queries
 
-In Appwrite, fetching multiple documents from a database is made easy with the [listDocuments](https://appwrite.io/docs/references/cloud/client-web/databases#listDocuments) method. This method allows you to retrieve all documents in a collection or apply filters using the Query API. Instead of making multiple requests for each document, you can fetch only the relevant data with a single request.
+In Appwrite, fetching multiple documents from a database is made easy with the [listDocuments](https://appwrite.io/docs/references/cloud/client-web/databases#listDocuments) method. This method allows you to retrieve all documents in a table or apply filters using the Query API. Instead of making multiple requests for each document, you can fetch only the relevant data with a single request.
 
 For example, in a content management system where you need to load blog posts written by a particular author, rather than making individual requests for each document, use Appwrite's `listDocuments` method with a filter:
 
 ```javascript
 const blogPosts = await databases.listDocuments(
   '<DATABASE_ID>',
-  '<COLLECTION_ID>',
+  '<TABLE_ID>',
   [Query.equal('author', 'Michael Scott')],
 )
 ```
@@ -43,7 +43,7 @@ For example, if you're loading products from a database, instead of fetching all
 ```javascript
 const firstPage = await databases.listDocuments(
   '<DATABASE_ID>',
-  '<COLLECTION_ID>',
+  '<TABLE_ID>',
   [
     Query.equal('author', 'Meredith Palmer'),
     Query.limit(20),
@@ -53,7 +53,7 @@ const firstPage = await databases.listDocuments(
 
 const secondPage = await databases.listDocuments(
   '<DATABASE_ID>',
-  '<COLLECTION_ID>',
+  '<TABLE_ID>',
   [
     Query.equal('author', 'JaneDoe'),
     Query.limit(20),
@@ -85,7 +85,7 @@ In addition to handling real-time updates, Appwrite's Realtime API can help deci
 1. **Versioning Document**: Create a document with a single column, `version`, to track updates.
 2. **Subscribe to Changes**: Use the Realtime API to monitor changes in this document. If the `version` field updates, it signals that the data has changed and needs re-fetching.
 
-Appwrite's Realtime API supports multiple channels, such as `files`, `account`, and specific `collections`, ensuring updates from any part of your app. To learn more about the Realtime API, refer to the [Appwrite Realtime documentation](https://appwrite.io/docs/realtime).
+Appwrite's Realtime API supports multiple channels, such as `files`, `account`, and specific `tables`, ensuring updates from any part of your app. To learn more about the Realtime API, refer to the [Appwrite Realtime documentation](https://appwrite.io/docs/realtime).
 
 By using Appwrite's real-time feature, you drastically reduce API request overhead, especially for high-traffic apps like live dashboards or messaging platforms, while maintaining instant, event-driven updates.
 

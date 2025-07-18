@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Announcing Auto-increment support: Built-in numeric sequencing for your documents"
-description: Get reliable, sequential ordering across your collections with fast, indexed auto-increment IDs.
+description: Get reliable, sequential ordering across your tables with fast, indexed auto-increment IDs.
 date: 2025-07-15
 cover: /images/blog/announcing-auto-increment-support/cover.png
 timeToRead: 5
@@ -10,7 +10,7 @@ category: announcement
 featured: false
 ---
 
-Managing ordered data can often be complex and error-prone, especially when it requires manual counters or timestamp-based sorting, which can introduce inconsistencies and unpredictability. 
+Managing ordered data can often be complex and error-prone, especially when it requires manual counters or timestamp-based sorting, which can introduce inconsistencies and unpredictability.
 
 To tackle this issue, we're introducing **Auto-increment support.**
 
@@ -50,7 +50,7 @@ const databases = new Databases(client);
 
 databases.listDocuments(
     '<DATABASE_ID>',
-    '<COLLECTION_ID>',
+    '<TABLE_ID>',
     [
         Query.orderAsc('$sequence'),
     ]

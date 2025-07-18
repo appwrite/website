@@ -99,7 +99,7 @@ Then fill in the details from the source project:
 
 Click **Next**.
 
-Appwrite will now reach into the source project, check what's available, and return a list of resources it found: users, databases, collections, documents, storage buckets, files, functions, and so on.
+Appwrite will now reach into the source project, check what's available, and return a list of resources it found: users, databases, tables, documents, storage buckets, files, functions, and so on.
 
 You'll be prompted to choose what you want to bring over.
 
@@ -126,7 +126,7 @@ Once the migration is done, you can inspect the destination project to ensure ev
 Here are some things to check (if applicable):
 
 - **Auth** → Confirm that users and teams are present.
-- **Databases** → Can you see your collections and documents?
+- **Databases** → Can you see your tables and documents?
 - **Storage** → Look inside your buckets and confirm that files are present.
 - **Functions** → Are your functions listed, and do they include deployments and any environment variables you selected?
 

@@ -173,7 +173,7 @@ def main(context):
     # client = new Client()
     #   .set_project(os.environ['APPWRITE_FUNCTION_PROJECT_ID'])
     #   .set_key(context.req.headers['x-appwrite-key']);
-  
+
     storage = Storage(client)
 
     # ... rest of the code
@@ -270,7 +270,7 @@ Another option is to trigger the function with a webhook when a new file is uplo
 
 ![Appwrite event triggers for Function](/images/blog/scan-receipts-with-appwrite-functions/events.png)
 
-The function will already have the file ID in the request body, you'll just need to store the returned data in a collection
+The function will already have the file ID in the request body, you'll just need to store the returned data in a table
 instead of returning it as a response.
 
 # Resources
