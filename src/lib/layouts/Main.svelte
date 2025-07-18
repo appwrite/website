@@ -142,7 +142,7 @@
         }
     }
 
-    $: $isHeaderHidden, updateSideNav();
+    $: ($isHeaderHidden, updateSideNav());
 </script>
 
 <div class="relative">
