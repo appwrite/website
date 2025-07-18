@@ -248,6 +248,8 @@ Here’s a quick list of features and uses to consider:
 
 Choosing the right tool can lead to significant time savings and error reduction, empowering teams to focus on creative problem-solving and higher-level tasks. Selecting a tool that aligns with your development goals ensures a seamless and productive coding experience.
 
+Platforms like [Hugging Face](https://huggingface.co/) are commonly used by developers working with AI tools. It’s a place where you can find and run open-source models, explore datasets, and try out a wide range of community-built AI apps, including ones for code generation, bug detection, and language understanding.
+
 # Challenges and considerations when adopting vibe coding tools
 
 Adopting vibe coding tools presents several challenges that teams must address. Transitioning to new technology can disrupt existing workflows. This can lead to temporary productivity dips as developers adapt.
