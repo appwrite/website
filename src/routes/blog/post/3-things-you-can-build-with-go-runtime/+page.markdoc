@@ -207,8 +207,8 @@ func DoesTableExist(dbs databases.Databases, dbId string, collId string) bool {
 	return true
 }
 
-func DoesAttributeExist(dbs databases.Databases, dbId string, collId string, attribId string) bool {
-	_, err := dbs.GetAttribute(dbId, collId, attribId)
+func DoesColumnExist(dbs databases.Databases, dbId string, collId string, attribId string) bool {
+	_, err := dbs.GetColumn(dbId, collId, attribId)
 	if err != nil {
 		return false
 	}
@@ -234,14 +234,14 @@ func InitialiseDatabase(Context openruntimes.Context, dbs databases.Databases, d
 		)
 	}
 
-	doesAttribExist := DoesAttributeExist(dbs, dbId, collId, "longUrl")
+	doesAttribExist := DoesColumnExist(dbs, dbId, collId, "longUrl")
 	if !doesAttribExist {
-		dbs.CreateUrlAttribute(
+		dbs.CreateUrlColumn(
 			dbId,
 			collId,
 			"longUrl",
 			true,
-			dbs.WithCreateUrlAttributeArray(false),
+			dbs.WithCreateUrlColumnArray(false),
 		)
 	}
 }
@@ -345,7 +345,7 @@ func Main(Context openruntimes.Context) openruntimes.Response {
 
 You can then deploy this function using the `appwrite deploy function` command.
 
-After deployment, go to the Settings tab on the Function page in your Appwrite project and enable the following scopes for the dynamic API key: `databases.read`, `databases.write`, `tables.read`, `tables.write`, `attributes.read`, `attributes.write`, `documents.read`, `documents.write`,
+After deployment, go to the Settings tab on the Function page in your Appwrite project and enable the following scopes for the dynamic API key: `databases.read`, `databases.write`, `tables.read`, `tables.write`, `columns.read`, `columns.write`, `documents.read`, `documents.write`,
 
 # More resources
 

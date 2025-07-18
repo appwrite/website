@@ -63,7 +63,7 @@ We must create a database with the ID `crystalball` and two tables with the IDs 
 
 #### The `githubData` table
 
-Create the table and add the following attributes:
+Create the table and add the following columns:
 
 | Key | Type | Size | Required | Array |
 | --- | --- | --- | --- | --- |
@@ -80,7 +80,7 @@ Visit the table settings, enable **Document security,** and set the following (t
 
 #### The `destiny` table
 
-Create the table and add the following attributes:
+Create the table and add the following columns:
 
 | Key | Type | Size | Required |
 | --- | --- | --- | --- |

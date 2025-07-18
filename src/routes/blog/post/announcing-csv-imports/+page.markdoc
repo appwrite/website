@@ -19,9 +19,9 @@ The CSV document import is useful for migrating user data from external systems,
 
 # How it works
 
-To get started, create a table and define its attributes in the Appwrite Console. Your CSV file should follow a standard format:
+To get started, create a table and define its columns in the Appwrite Console. Your CSV file should follow a standard format:
 
-- The first row must be a header containing attribute names that match your table
+- The first row must be a header containing column names that match your table
 - Each subsequent row represents a document, with values separated by commas
 
 {% info title="Good to know" %}
@@ -30,9 +30,9 @@ You can optionally include the `$id` column to assign custom document IDs.
 
 ![Tables screen](/images/blog/announcing-csv-imports/csv-import.png)
 
-All required attributes must be present in the CSV, and Appwrite will validate each row before importing it.
+All required columns must be present in the CSV, and Appwrite will validate each row before importing it.
 
-For example, if your table contains attributes like `title`, `author`, `year`, and `available`, a valid CSV file would look like this:
+For example, if your table contains columns like `title`, `author`, `year`, and `available`, a valid CSV file would look like this:
 
 ```text
 $id,title,author,year,available

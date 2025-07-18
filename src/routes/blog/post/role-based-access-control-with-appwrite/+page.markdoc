@@ -15,7 +15,7 @@ category: product
 
 As your application grows, so does the complexity of managing who gets access to what. More users join the system, teams expand, features multiply, and suddenly you're stuck trying to [balance usability with security](/blog/post/guide-to-user-authentication). Everyone needs access to do their job, but not everyone should have access to everything. Without a clear access control model, you're either granting too much freedom or slowing things down with one-off checks and permission patches.
 
-That’s where role-based access control (RBAC) comes in. Instead of scattering access logic across the codebase, RBAC lets you define clear roles and assign permissions in a structured, scalable way. It removes ambiguity, reduces risk, and makes it easier to enforce security without blocking legitimate use. 
+That’s where role-based access control (RBAC) comes in. Instead of scattering access logic across the codebase, RBAC lets you define clear roles and assign permissions in a structured, scalable way. It removes ambiguity, reduces risk, and makes it easier to enforce security without blocking legitimate use.
 
 In this article, we’ll break down what RBAC actually looks like, why it’s essential for growing systems, and how you can easily implement it using Appwrite.
 
@@ -73,7 +73,7 @@ In summary, roles map users to the permissions they need, thus streamlining the 
 
 **Mandatory Access Control (MAC)** uses a centralized authority to decide access, often based on classifications. It's strict and primarily used in environments requiring high security, such as government systems.
 
-**Attribute-Based Access Control (ABAC)** relies on dynamic policies using attributes, such as user roles and environmental conditions. This model excels in environments needing fine-grained controls.
+**Column-Based Access Control (CBAC)** relies on dynamic policies using columns, such as user roles and environmental conditions. This model excels in environments needing fine-grained controls.
 
 **Access Control Lists (ACL)** specify individual permissions per resource. While straightforward, they can become complex and unwieldy when scaled.
 
@@ -134,7 +134,7 @@ Next, Appwrite allows developers to define custom roles. Each role is associated
 
 Assigning roles to users follows the role-definition process. This setup restricts access based on user roles, enhancing application data security.
 
-Appwrite supports the principle of least privilege, ensuring users receive the minimal required permissions. 
+Appwrite supports the principle of least privilege, ensuring users receive the minimal required permissions.
 
 Key features of Appwrite’s RBAC include:
 
@@ -148,7 +148,7 @@ By employing these elements, Appwrite's RBAC system facilitates robust, flexible
 
 Setting up Role-Based Access Control (RBAC) in Appwrite is pretty straightforward and can be done directly from Appwrite Console by creating different sets of [permissions](/docs/advanced/platform/permissions). [Learn how to use Appwrite Labels and Team to manage user permissions.](/blog/post/manage-user-permissions-with-labels-and-teams)
 
-# Best practices for managing RBAC with Appwrite 
+# Best practices for managing RBAC with Appwrite
 
 Effective management of RBAC in Appwrite is vital for maintaining system security. Following best practices helps avoid common pitfalls.
 
@@ -200,17 +200,17 @@ Many developers have questions about implementing RBAC in their systems. Here ar
 ## Common questions
 
 - **What is RBAC?**
-    
+
     RBAC is a system that limits access based on user roles.
-    
+
 - **Why use Appwrite for RBAC?**
-    
+
     Appwrite offers a straightforward way to set up and manage RBAC, with secure access control that aligns with standards like HIPAA.
-    
+
 - **Can RBAC enhance security?**
-    
+
     Yes, it helps in limiting access to sensitive data efficiently.
-    
+
 
 Understanding RBAC with Appwrite can significantly improve data security and ease of access management.
 

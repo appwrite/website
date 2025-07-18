@@ -45,9 +45,9 @@ To get the second page, we keep the limit at 10 (this doesn't change since we wa
 
 In the SQL world, such a query would be written as `SELECT * FROM posts OFFSET 10 LIMIT 10`.
 
-Some websites implementing offset pagination also show the page number of the last page. How do they do it? Alongside results for each page, they also tend to return a `sum` attribute telling you how many rows there are in total. Using `limit`, `sum`, and a bit of math, you can calculate last page number using `lastPage = ceil(sum / limit)`
+Some websites implementing offset pagination also show the page number of the last page. How do they do it? Alongside results for each page, they also tend to return a `sum`column telling you how many rows there are in total. Using `limit`, `sum`, and a bit of math, you can calculate last page number using `lastPage = ceil(sum / limit)`
 
-As convenient as this feature is for the user, developers struggle to scale this type of pagination. Looking at `sum` attribute, we can already see that it can take quite some time to count all rows in a database to the exact number. **Alongside that, the `offset` in databases is implemented in a way that loops through rows to know how many should be skipped.** That means that the higher our offset is, the longer our database query will take.
+As convenient as this feature is for the user, developers struggle to scale this type of pagination. Looking at `sum`column, we can already see that it can take quite some time to count all rows in a database to the exact number. **Alongside that, the `offset` in databases is implemented in a way that loops through rows to know how many should be skipped.** That means that the higher our offset is, the longer our database query will take.
 
 Another downside of offset pagination is that it doesn't play well with real-time data or data that changes often. Offset says how many rows we want to skip but doesn't account for row deletion or new rows being created. Such an offset can result in showing duplicate data or missing data.
 
@@ -81,7 +81,7 @@ This is a really rare condition and only occurs if the row's ID that you are abo
 
 [Appwrite](https://appwrite.io/) is an open-source backend-as-a-service that abstracts all the complexity involved in building a modern application by providing you with a set of REST APIs for your core backend needs. Appwrite handles user authentication and authorization, databases, file storage, cloud functions, webhooks, messaging, and more. You can extend Appwrite using your favorite backend language if anything is missing.
 
-Appwrite Database lets you store any text-based data that needs to be shared across your users. Appwrite's database allows you to create multiple tables (tables) and store multiple documents (rows) in it. Each table has attributes (columns) configured to give your dataset a proper schema. You can also configure indexes to make your search queries more performant. When reading your data, you can use powerful queries, filter them, sort them, limit the number of results, and paginate over them.
+Appwrite Database lets you store any text-based data that needs to be shared across your users. Appwrite's database allows you to create multiple tables (tables) and store multiple documents (rows) in it. Each table has columns (attributes) configured to give your dataset a proper schema. You can also configure indexes to make your search queries more performant. When reading your data, you can use powerful queries, filter them, sort them, limit the number of results, and paginate over them.
 
 Appwrite's pagination supports both offset and cursor pagination. Let's imagine you have a table with ID `articles`. You can get documents from this table with either offset or cursor pagination:
 

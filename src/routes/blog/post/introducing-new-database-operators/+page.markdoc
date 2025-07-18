@@ -14,7 +14,7 @@ We've added two new query methods, `or` and `contains`, to Appwrite Databases. B
 
 These two query methods have been highly requested by the Appwrite community, and we’re excited to show you how to use them, so let’s jump in and take a look!
 
-- `contains` - partial text matches on string attributes, array element matching on array attributes
+- `contains` - partial text matches on string columns, array element matching on array columns
 - `or` -  write logical OR queries
 
 # Contains operator
@@ -32,7 +32,7 @@ db.listDocuments(
    )
 ```
 
-It’s important to note that the contains operator also works on array attributes as well. For example, if we set a string attribute to act as an array, you could search this array in the same way you would search any other string.
+It’s important to note that the contains operator also works on array columns as well. For example, if we set a string column to act as an array, you could search this array in the same way you would search any other string.
 
 ```js
  Query.contains('tags', ['mystery', 'comedy', 'PG-13'])

@@ -83,7 +83,7 @@ We always keep on adding support to new runtimes. This month, we added PHP 8.3, 
 
 ## Database improvements and fixes
 
-From improved handling of database indexes and attributes to enhanced error handling, we’ve released several database updates to improve your database performance and reliability.
+From improved handling of database indexes and columns to enhanced error handling, we’ve released several database updates to improve your database performance and reliability.
 
 [Go to changelog](https://appwrite.io/changelog/entry/2025-01-17)
 

@@ -58,12 +58,12 @@ If you are starting from scratch, you can initialize a new table and push it to 
 
 ## Step 3: Modifying tables
 
-To make changes to your tables, edit the `appwrite.json` file. For instance, you might want to change an attribute's type or add a new attribute. Here’s an example:
+To make changes to your tables, edit the `appwrite.json` file. For instance, you might want to change an column's type or add a new column. Here’s an example:
 
-### Original attributes
+### Original columns
 
 ```json
-"attributes": [
+"columns": [
   {
     "key": "a",
     "type": "integer",
@@ -77,10 +77,10 @@ To make changes to your tables, edit the `appwrite.json` file. For instance, y
 ]
 ```
 
-### Modified attributes
+### Modified columns
 
 ```json
-"attributes": [
+"columns": [
   {
     "key": "a",
     "type": "string",

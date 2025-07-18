@@ -23,7 +23,7 @@ Head to the **Overview** page from the left sidebar, select the **API keys** tab
 
 Next, go to the **Databases** page from the left sidebar, create a new database with the ID `crm`, and then a table with the ID `contacts` (save both IDs for further usage).
 
-Next, head to the **Attributes** tab and add the following:
+Next, head to the **Columns** tab and add the following:
 
 | Key | Type | Size | Required |
 | --- | --- | --- | --- |

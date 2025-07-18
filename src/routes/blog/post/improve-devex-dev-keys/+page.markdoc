@@ -27,7 +27,7 @@ To test dev keys, I created a simple demo web app that sends 200 requests to cre
 
 ## Step 1: Setup Appwrite project
 
-First, create an [Appwrite Cloud](https://cloud.appwrite.io) account or [self-host Appwrite 1.7](/docs/advanced/self-hosting). Create a project (which will lead you to the project overview page) and head to the **Databases** page from the left sidebar. Create a new database with the ID `testDb` and a new table with the ID `testTable`. Store both of these IDs for future usage. In this table, add the following attribute:
+First, create an [Appwrite Cloud](https://cloud.appwrite.io) account or [self-host Appwrite 1.7](/docs/advanced/self-hosting). Create a project (which will lead you to the project overview page) and head to the **Databases** page from the left sidebar. Create a new database with the ID `testDb` and a new table with the ID `testTable`. Store both of these IDs for future usage. In this table, add the following column:
 
 | Name | Type | Required |
 | --- | --- | --- |

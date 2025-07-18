@@ -82,11 +82,11 @@ If you are using a self-hosted Appwrite instance, we strongly recommend upgradin
 [Check out the changelog for more details.](https://appwrite.io/changelog/entry/2024-09-17)
 
 
-## Updating table attribute names and sizes
+## Updating table column names and sizes
 
-You can now update attribute names and sizes directly from your Cloud Console.
+You can now update column names and sizes directly from your Cloud Console.
 
-This update provides better flexibility in managing your data models, allowing you to adjust attributes without needing to recreate them or handle complicated migrations.
+This update provides better flexibility in managing your data models, allowing you to adjust columns without needing to recreate them or handle complicated migrations.
 
 This is just one in a series of updates we plan to release for Appwrite databases over the next few weeks.
 

@@ -103,7 +103,7 @@ for (let c = 0; c < maxCols; c++) {
 }
 ```
 
-However, this operation is expensive! It's best if we don't have to always fetch it on each and every access to it. So we save it to Appwrite Cloud. By using a number array attribute and converting the matrix to a flat array, this is what our final code will look like.
+However, this operation is expensive! It's best if we don't have to always fetch it on each and every access to it. So we save it to Appwrite Cloud. By using a number array column and converting the matrix to a flat array, this is what our final code will look like.
 
 ```ts
 import { APPWRITE_DB_INIT_ID, APPWRITE_COL_INIT_ID } from '$env/static/private';

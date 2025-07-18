@@ -11,7 +11,7 @@ category: accessibility
 
 Managing tables of data is an essential task for any application, but it can quickly become complex when you need to keep track of the relationships between different tables. For instance, if you have two tables of data, such as movies and reviews, you may need to retrieve all the reviews associated with a particular movie. However, writing complex code to retrieve this data and merge it together manually can be time-consuming and prone to errors.
 
-That's where one of Appwrite’s newest features comes in. Database relationships help you manage the links between your tables of data more easily. With this feature, you can create links between different tables by simply adding a new attribute to them. You can choose from four types of relationships: one-to-one, one-to-many, many-to-one, and many-to-many.
+That's where one of Appwrite’s newest features comes in. Database relationships help you manage the links between your tables of data more easily. With this feature, you can create links between different tables by simply adding a new column to them. You can choose from four types of relationships: one-to-one, one-to-many, many-to-one, and many-to-many.
 
 # Relationship Types
 
@@ -47,7 +47,7 @@ Appwrite relationships offer a high degree of flexibility and customization, all
 
 ## One Way
 
-One-way relationships are a type of relationship where only the table where the relationship attribute was created will see the relationship. For example, suppose a developer creates a one-way relationship between a movies table and a reviews table. In that case, the movies table will have an attribute containing the related reviews, but the reviews table will not have an attribute containing the related movie. This type of relationship is useful in scenarios where the parent table holds all the necessary information, and the child table only needs to access the parent's data.
+One-way relationships are a type of relationship where only the table where the relationship column was created will see the relationship. For example, suppose a developer creates a one-way relationship between a movies table and a reviews table. In that case, the movies table will have a column containing the related reviews, but the reviews table will not have an column containing the related movie. This type of relationship is useful in scenarios where the parent table holds all the necessary information, and the child table only needs to access the parent's data.
 
 The movie response:
 
@@ -79,7 +79,7 @@ The movie response:
 
 ```
 
-The review response, notably with no review attribute:
+The review response, notably with no review column:
 
 ```json
 {
@@ -96,7 +96,7 @@ The review response, notably with no review attribute:
 
 ## Two Way
 
-On the other hand, a two-way relationship is a type of relationship where both tables will see the relationship. In the same example, if a two-way relationship is created between the movies and reviews tables, both tables will have attributes containing the related data. This type of relationship is beneficial in scenarios where both the parent and child tables need to access each other's data.
+On the other hand, a two-way relationship is a type of relationship where both tables will see the relationship. In the same example, if a two-way relationship is created between the movies and reviews tables, both tables will have columns containing the related data. This type of relationship is beneficial in scenarios where both the parent and child tables need to access each other's data.
 
 The movie response:
 
@@ -124,7 +124,7 @@ The movie response:
 
 ```
 
-The review response, now with the movie attribute:
+The review response, now with the movie column:
 
 ```json
 {

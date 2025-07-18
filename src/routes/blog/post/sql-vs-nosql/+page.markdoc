@@ -56,11 +56,11 @@ These different NoSQL types offer flexibility in data models, allowing developer
 
 ## **Flexibility and schema design in NoSQL**
 
-One major benefit of NoSQL databases is their ability to work with varied data models. Without a set structure, NoSQL databases can adjust quickly to changing requirements, which can be very useful in projects with evolving data. For example, NoSQL's flexibility makes it easy to add new data attributes on the fly, unlike SQL databases, where major changes may require extra setup.
+One major benefit of NoSQL databases is their ability to work with varied data models. Without a set structure, NoSQL databases can adjust quickly to changing requirements, which can be very useful in projects with evolving data. For example, NoSQL's flexibility makes it easy to add new data columns on the fly, unlike SQL databases, where major changes may require extra setup.
 
 Instead of following SQL's strict ACID properties, many NoSQL databases use **BASE principles** (Basically Available, Soft state, Eventually consistent). BASE principles allow data to be handled more flexibly, sacrificing strict consistency for better availability and response time. In distributed NoSQL systems, **eventual consistency** means that data will sync over time across all servers, even if there are temporary differences. This approach works well in applications where availability matters more than real-time data accuracy.
 
-In contrast, SQL databases maintain a structured schema, which can provide clarity and consistency over time. While adding or altering attributes in SQL databases typically involves table locking, meaning affected tables may experience temporary downtime during updates, this structured approach supports strict data validation, which ensures consistent data across the database.
+In contrast, SQL databases maintain a structured schema, which can provide clarity and consistency over time. While adding or altering columns in SQL databases typically involves table locking, meaning affected tables may experience temporary downtime during updates, this structured approach supports strict data validation, which ensures consistent data across the database.
 
 ## **Scalability and high availability in NoSQL**
 

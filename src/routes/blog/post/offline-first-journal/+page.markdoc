@@ -44,7 +44,7 @@ Our tech stack for this app will be:
 
 First, [create an Appwrite Cloud account](https://cloud.appwrite.io/) if you haven’t already. Once your project is ready, go to the **Settings** page and copy your project ID and API endpoint for further usage. Next, go to the **Databases** page from the left sidebar, create a new database with the ID `journals`, and then a table with the ID `entries` (save both IDs for further usage).
 
-Next, head to the **Attributes** tab and add the following:
+Next, head to the **Columns** tab and add the following:
 
 | Key | Type | Size | Required |
 | --- | --- | --- | --- |
@@ -54,7 +54,7 @@ Next, head to the **Attributes** tab and add the following:
 | `updatedAt` | Integer |  | Yes |
 | `deleted` | Boolean |  | Yes |
 
-> **Note:** The `deleted` attribute is necessary to add because RxDB does not hard delete any data, only soft deletes to prevent data loss in offline scenarios.
+> **Note:** The `deleted` column is necessary to add because RxDB does not hard delete any data, only soft deletes to prevent data loss in offline scenarios.
 
 Then, head to the **Settings** tab of your table, scroll down to the **Permissions** section, and add the following:
 

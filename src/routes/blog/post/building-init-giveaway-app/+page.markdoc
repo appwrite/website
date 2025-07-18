@@ -49,7 +49,7 @@ Implementing Discord OAuth required us to first set up an application on the [Di
 
 We created a **database** and a **table** for each day of the giveaway in our Appwrite project. Each table had the same steps to set up.
 
-Each table contained two **attributes**:
+Each table contained two **columns**:
 
 | Key         | Type        | Size        | Required    |
 | ----------- | ----------- | ----------- | ----------- |
@@ -58,7 +58,7 @@ Each table contained two **attributes**:
 
 To ensure that one user could only be added once for a day’s giveaway, we created an **index** of the `unique` type.
 
-| Key         | Type        | Attribute   | Order       |
+| Key         | Type        | Column   | Order       |
 | ----------- | ----------- | ----------- | ----------- |
 | names       | unique      | discordName | ASC         |
 

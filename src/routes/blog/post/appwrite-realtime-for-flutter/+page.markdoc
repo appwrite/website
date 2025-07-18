@@ -32,10 +32,10 @@ Once on the database page, click on the **Create table** button.
 
 In the dialog that pops up, set the table name to **Items** and click on the **Create** button to create the table, and you will be redirected to the new table's page.
 
-Switch to the Attributes tab and create the following attribute. Also note down the **Table ID** from the top of the page next to the table name.
+Switch to the Columns tab and create the following column. Also note down the **Table ID** from the top of the page next to the table name.
 
 - Type: String
-- Attribute Key: name
+- Column Key: name
 - Size: 25
 - Default: null
 - Required: true

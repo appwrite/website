@@ -100,16 +100,16 @@ time      │ adding     │ Field isn't available on the remote server
 ──────────┼────────────┼─────────────────────────────────────────────
 timezone  │ recreating │ size changed from 256 to 255
 
-ℹ Info: Attribute deletion will cause loss of data
-ℹ Info: Attribute recreation will cause loss of data
+ℹ Info: Column deletion will cause loss of data
+ℹ Info: Column recreation will cause loss of data
 ? Would you like to apply these changes? Type "YES" to confirm.
 ```
 
-In this example, we can see that because we've renamed the attribute `times` to `time,` it will get deleted and read. We must also recreate the `timezone` attribute because we've changed its size from 256 to 255.
+In this example, we can see that because we've renamed the column `times` to `time,` it will get deleted and read. We must also recreate the `timezone` column because we've changed its size from 256 to 255.
 
 To help with the decision, you can notice two warnings: deleting or recreating a field will cause data loss.
 
-It's important to know that the data loss will affect only the recreated/deleted attribute and not the whole table.
+It's important to know that the data loss will affect only the recreated/deleted column and not the whole table.
 
 As you can read in the next section, when pushing tables in CI/CD pipelines, you'll need to add the `--force` flag.
 

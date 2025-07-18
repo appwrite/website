@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Using $sequence to track document order in Appwrite
-description: Learn how to use Appwrite's $sequence attribute to track document order in your database.
+description: Learn how to use Appwrite's $sequence column to track document order in your database.
 date: 2025-07-16
 cover: /images/blog/track-document-order-with-sequence/cover.png
 timeToRead: 6
@@ -13,7 +13,7 @@ Some systems need to reflect the order in which actions happen. A ticketing syst
 
 Relying on timestamps to get this right is often not enough. Two documents can be created almost simultaneously, and the sort order might vary. What is needed is a consistent, backend-assigned number that increases with each insert and cannot be modified or skipped.
 
-Appwrite's new `$sequence` attribute provides exactly this. Every time a document is added to a table, the system assigns it a unique, auto-incrementing integer. This value reflects the insert history of the table and can be used for sorting, display, filtering, and pagination.
+Appwrite's new `$sequence` column provides exactly this. Every time a document is added to a table, the system assigns it a unique, auto-incrementing integer. This value reflects the insert history of the table and can be used for sorting, display, filtering, and pagination.
 
 In this tutorial, we will build a simple web-based support ticket tracker using plain HTML and JavaScript. Each submitted ticket will be stored in Appwrite with a title and description, and each will receive a `$sequence` number automatically. We will use that number to display and order the tickets.
 
@@ -33,16 +33,16 @@ Inside your project:
 - Create a new database named "Support DB"
 - Inside that database, create a new table named "Tickets"
 
-## Add document attributes
+## Add document columns
 
-In the **Tickets** table, define the following attributes:
+In the **Tickets** table, define the following columns:
 
 - `title` - type: `string`, required: `yes`, size: 256
 - `body` - type: `string`, required: `yes`, size: 1000
 
-Appwrite will automatically include system attributes such as `$id` and `$sequence`. You do not need to create `$sequence` manually.
+Appwrite will automatically include system columns such as `$id` and `$sequence`. You do not need to create `$sequence` manually.
 
-Confirm the schema once all attributes are added.
+Confirm the schema once all columns are added.
 
 ## Set permissions for testing
 
@@ -154,7 +154,7 @@ Next, add the ticket submission form inside the container:
 
 ```
 
-This form captures the ticket title and description. Note the `id` attributes on the form and inputs. We'll use these in our JavaScript.
+This form captures the ticket title and description. Note the `id` columns on the form and inputs. We'll use these in our JavaScript.
 
 Finally, add the tickets display section and close the document:
 
@@ -330,11 +330,11 @@ You now have a working support ticket tracker that looks like this:
 - The interface displays each ticket using that number
 - The ticket list is reliably sorted by creation order
 
-There was no need to write any logic to generate numbers, track counters, or manage collisions. Appwrite's `$sequence` attribute handled the sequence internally, which was great for our use case.
+There was no need to write any logic to generate numbers, track counters, or manage collisions. Appwrite's `$sequence` column handled the sequence internally, which was great for our use case.
 
 ## Conclusion
 
-This tutorial introduced the auto-incrementing `$sequence` attribute and demonstrated how to use it in a small, working app. It offers a solution to a common need: preserving the order of inserts in a predictable, integer-based way.
+This tutorial introduced the auto-incrementing `$sequence` column and demonstrated how to use it in a small, working app. It offers a solution to a common need: preserving the order of inserts in a predictable, integer-based way.
 
 Because the value is assigned by your database, `$sequence` remains stable even as your application grows. You can filter by it, paginate through it, or display it directly in user interfaces. And since it is read-only and immutable, we avoid the risk of errors that often come with custom counters or timestamp sorting.
 
@@ -348,4 +348,4 @@ Looking forward to seeing what you build with this!
 
 - [Appwrite Database Documentation](/docs/products/databases)
 - [Pink Design System](https://pink.appwrite.io/)
-- [Secure sensitive database fields with encrypted string attributes](https://appwrite.io/blog/post/encrypted-attributes-for-sensitive-fields)
+- [Secure sensitive database fields with encrypted string columns](https://appwrite.io/blog/post/encrypted-attributes-for-sensitive-fields)

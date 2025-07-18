@@ -74,7 +74,7 @@ Before we continue with the frontend implementation, we need to configure our Ap
 2. Open the **Databases** tab from the sidebar and create a database with the ID "expense-db"
 3. In your new database, create a table with the ID "expenses"
 
-The expenses table needs several attributes to store the expense data effectively. Open the **Attributes** tab of your new table and add the following attributes:
+The expenses table needs several columns to store the expense data effectively. Open the **Columns** tab of your new table and add the following columns:
 
 ```md
 - `userId` (String, required)
@@ -87,7 +87,7 @@ The expenses table needs several attributes to store the expense data effectivel
 - `updatedAt` (DateTime, required)
 ```
 
-Notice that the `category` attribute is an enumerated type with a set of predefined values. This structured approach helps us organize and filter expenses effectively. We have both a `date` attribute and a `createdAt` attribute because when an expense is created is not necessarily the same as when it occurred.
+Notice that the `category` column is an enumerated type with a set of predefined values. This structured approach helps us organize and filter expenses effectively. We have both a `date` column and a `createdAt` column because when an expense is created is not necessarily the same as when it occurred.
 
 To ensure that users can only access their own expenses, Open the table's **Settings** tab and scroll to **Permissions**. Click **Add role**, select **Users** and check **Create** permission.
 
@@ -153,7 +153,7 @@ For the base `src/app.html` file, we'll use the default Sveltekit template, but 
 
 ```
 
-This template provides the basic structure for our application. The `data-sveltekit-preload-data="hover"` attribute enables SvelteKit's built-in preloading feature to make navigation faster.
+This template provides the basic structure for our application. The `data-sveltekit-preload-data="hover"` column enables SvelteKit's built-in preloading feature to make navigation faster.
 
 ## Setting up the Appwrite client
 

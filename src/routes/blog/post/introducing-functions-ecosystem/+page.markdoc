@@ -9,7 +9,7 @@ author: luke-silver
 category: product, announcement
 featured: false
 ---
-We're excited to bring you major improvements to Appwrite Functions, making them more versatile and powerful than ever before. 
+We're excited to bring you major improvements to Appwrite Functions, making them more versatile and powerful than ever before.
 
 With the new Functions, you can now stay within the Appwrite ecosystem. The fully integrated features reduce friction points, allowing you to focus on development while trusting that your Functions will run smoothly and automatically.
 
@@ -17,9 +17,9 @@ Previously, Appwrite Functions faced limitations in handling file-based tasks an
 
 # Faster Functions cold-starts
 
-We've significantly accelerated Functions cold-start times through infrastructure optimizations. This means you can expect faster response times for all your Functions, both new and existing. 
+We've significantly accelerated Functions cold-start times through infrastructure optimizations. This means you can expect faster response times for all your Functions, both new and existing.
 
-Cold starts occur when a Function is invoked for the first time or after a period of inactivity. This initial delay is caused by the system provisioning resources and loading the function's code. 
+Cold starts occur when a Function is invoked for the first time or after a period of inactivity. This initial delay is caused by the system provisioning resources and loading the function's code.
 
 Now, all your Functions, regardless of when they were created, benefit from faster startup times without any additional effort on your part. There's no need to make any changes to your code or configuration – the improvement is automatic.
 
@@ -43,7 +43,7 @@ export default async ({ req, res }) => {
     const databases = new Databases(client);
 
     // Your function logic here
-    
+
     return res.empty();
 };
 ```
@@ -69,7 +69,7 @@ await functions.createExecution(
     '/v1/invoices/exports', // Path
     'POST', // Method
     {}, // Headers
-    invoiceDate.toISOString() // New scheduledAt attribute
+    invoiceDate.toISOString() // New scheduledAt column
 );
 ```
 
@@ -79,9 +79,9 @@ This feature is perfect for scheduling marketing emails, cleanup tasks, or preci
 
 # Binary executions
 
-We've long relied on JSON and XML for structured data exchange, but these formats fall short when it comes to handling files like images, audio, or video. With the introduction of binary executions, Appwrite Functions can now seamlessly process and transfer these file types. 
+We've long relied on JSON and XML for structured data exchange, but these formats fall short when it comes to handling files like images, audio, or video. With the introduction of binary executions, Appwrite Functions can now seamlessly process and transfer these file types.
 
-Functions can now handle binary data, both as input and output, which is particularly useful for file processing, AI interactions, and more. 
+Functions can now handle binary data, both as input and output, which is particularly useful for file processing, AI interactions, and more.
 
 This allows you to work with formats like multipart form-data, Protocol Buffers, or raw binary data directly within your functions.
 
@@ -114,7 +114,7 @@ This allows for new use cases like sending files to AI services or generating fi
 
 # Execution and deployment filtering
 
-You can now filter Function executions and deployments based on various attributes, making it easier to monitor and debug your Functions:
+You can now filter Function executions and deployments based on various columns, making it easier to monitor and debug your Functions:
 
 ```jsx
 // Example of filtering executions (specific implementation may vary)
