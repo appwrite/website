@@ -18,7 +18,7 @@ Head to the [Appwrite Console](https://cloud.appwrite.io/console).
 
 If this is your first time using Appwrite, create an account and create your first project.
 
-Then, under **Add a platform**, add a **Web app**. The **Hostname** should be localhost. 
+Then, under **Add a platform**, add a **Web app**. The **Hostname** should be localhost.
 
 {% only_dark %}
 ![Add a platform](/images/docs/quick-starts/dark/add-platform.png)
@@ -31,7 +31,7 @@ You can skip optional steps.
 
 # Initialize Appwrite SDK {% #init-sdk %}
 
-To use Appwrite in our React app, we'll need to find our project ID. Find your project's ID in the **Settings** page. 
+To use Appwrite in our React app, we'll need to find our project ID and endpoint. Find your project's ID and endpoint in the **Settings** page.
 
 {% only_dark %}
 ![Project settings screen](/images/docs/quick-starts/dark/project-id.png)
@@ -42,14 +42,14 @@ To use Appwrite in our React app, we'll need to find our project ID. Find your p
 
 Create a new file `src/lib/appwrite.js` to hold our Appwrite related code.
 Only one instance of the `Client()` class should be created per app.
-Add the following code to it, replacing `<PROJECT_ID>` with your project ID.
+Add the following code to it, replacing `<PROJECT_ID>` with your project ID and repacing `<ENDPOINT>` with your endpoint
 
 ```client-web
 import { Client, Databases, Account } from "appwrite";
 
 const client = new Client();
 client
-  .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+  .setEndpoint("ENDPOINT") // Replace with your endpoint
   .setProject("<PROJECT_ID>"); // Replace with your project ID
 
 export const account = new Account(client);
