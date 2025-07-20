@@ -131,7 +131,7 @@ export enum Category {
   NONFICTION = "nonfiction",
 }
 
-export type Books = Models.Document & {
+export type Books = Models.DocumentBase & {
   name: string;
   author: string;
   releaseYear: string | null;
