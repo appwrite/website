@@ -73,13 +73,6 @@
             title: 'Platform',
             rows: [
                 {
-                    title: 'Number of projects',
-                    free: 'Unlimited',
-                    pro: 'Unlimited',
-                    scale: 'Unlimited',
-                    enterprise: 'Unlimited'
-                },
-                {
                     title: 'Projects pausing',
                     free: 'Never',
                     pro: 'Never',
@@ -248,6 +241,20 @@
                     title: 'Backups retention',
                     free: '-',
                     pro: '7 days retention',
+                    scale: 'Custom',
+                    enterprise: 'Custom'
+                },
+                {
+                    title: 'Encrypted attributes support',
+                    free: '-',
+                    pro: 'True',
+                    scale: 'True',
+                    enterprise: 'True'
+                },
+                {
+                    title: 'Bulk API documents',
+                    free: '100',
+                    pro: '1000',
                     scale: 'Custom',
                     enterprise: 'Custom'
                 },
