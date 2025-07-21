@@ -49,7 +49,7 @@ Using an Appwrite-based stack enabled several benefits for the Smartbee team:
 
 In the initial MVP that Smartbee built, they faced several performance issues due to their custom Flask-based solution. The solution could barely manage the load from sensors in 2 coal mines. Since transitioning to an Appwrite-based stack, Smartbee is able to process a substantially higher amount of data:
 
-1. **Database:** 35 million documents are added from a total of 70 sensors each month
+1. **Database:** 35 million rows are added from a total of 70 sensors each month
 2. **Bandwidth:** 500GB of bandwidth is transmitted between the IoT sensors, local coal mine servers, and the remote server each month
 3. **Function execution:** 4 million function executions to synchronize data and generate and update the CSV reports each month
 

@@ -94,7 +94,7 @@ MongoDB database is well-known for its JSON document structure. This approach al
 
 While MongoDB shines the most in storing unstructured data, nowadays, it provides all the capabilities developers expect from a relational database. If you don’t like SQL queries, MongoDB is a great choice.
 
-With MongoDB, integration becomes simpler, since you don’t need to define structure of tables or documents. After preparing a client, you can directly start writing and querying data.
+With MongoDB, integration becomes simpler, since you don’t need to define structure of collections or documents. After preparing a client, you can directly start writing and querying data.
 
 ```jsx
 import { MongoClient, ServerApiVersion } from 'mongodb';

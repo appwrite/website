@@ -131,7 +131,7 @@ export async function getContributions(id: string): Promise<ContributionsMatrix 
 
     // Code for fetching the matrix here
 
-    // Update the document with the new contributions
+    // Update the row with the new contributions
     await appwriteInit.database.updateDocument(APPWRITE_DB_INIT_ID, APPWRITE_COL_INIT_ID, id, {
         contributions: matrix.flat()
     });

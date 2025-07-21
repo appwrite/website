@@ -176,7 +176,7 @@ The `login` function was called through a button click on the index page of our 
 
 ### Adding data to Appwrite Database
 
-To add or get information from the database, we created a database library in the project.  The `add` function adds the Discord username and email to our table. The `list` function gets the list of all documents in our table and returns it after reformatting for our roulette wheel for the giveaway.
+To add or get information from the database, we created a database library in the project.  The `add` function adds the Discord username and email to our table. The `list` function gets the list of all rows in our table and returns it after reformatting for our roulette wheel for the giveaway.
 
 ```js
 // ./src/lib/database.js
@@ -194,7 +194,7 @@ export const db = {
 
 		var options = [];
 
-		entries.documents.forEach((entry) => {
+		entries.rows.forEach((entry) => {
 			options.push({ label: entry.discordName });
 		});
 
@@ -342,10 +342,10 @@ Using the load function would ensure that this list would be available on our pa
 		wheel.lineColor = '#3d3d3f';
 	}
 
-	// Uses Appwrite Realtime to get newly created documents and regenerate the wheel
+	// Uses Appwrite Realtime to get newly created rows and regenerate the wheel
 	function subscribe() {
 		return client.subscribe(
-			`databases.${DATABASE_NAME}.tables.${TABLE_NAME}.documents`,
+			`databases.${DATABASE_NAME}.tables.${TABLE_NAME}.rows`,
 			(response) => {
 				console.log(response);
 				props.items.push({ label: response.payload.discordName });

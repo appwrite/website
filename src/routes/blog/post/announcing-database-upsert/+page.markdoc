@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Announcing Database Upsert: Simplify your database interactions"
-description: A cleaner, faster, and atomic way to manage your documents in Appwrite.
+description: A cleaner, faster, and atomic way to manage your rows in Appwrite.
 date: 2025-07-08
 cover: /images/blog/announcing-database-upsert/cover.png
 timeToRead: 5
@@ -10,13 +10,13 @@ category: announcement
 featured: false
 ---
 
-Working with databases often involves small but repetitive decisions like checking if a document exists, choosing between creating or updating, handling errors that come from guessing wrong. These steps are not difficult on their own, but over time they add complexity to your code and friction to your workflow.
+Working with databases often involves small but repetitive decisions like checking if a row exists, choosing between creating or updating, handling errors that come from guessing wrong. These steps are not difficult on their own, but over time they add complexity to your code and friction to your workflow.
 
 To simplify this, we introduce Database Upsert in Appwrite.
 
 # How it works
 
-Upsert allows you to create or update a document using a single API call. If the document does not exist, it is created. If it does, it is updated. You no longer need to write separate logic to check for existence or handle 404 responses. The server handles that for you.
+Upsert allows you to create or update a row using a single API call. If the row does not exist, it is created. If it does, it is updated. You no longer need to write separate logic to check for existence or handle 404 responses. The server handles that for you.
 
 This change removes the need for client-side conditionals, reduces the number of requests between your app and the database, and helps avoid potential race conditions. It is a small shift in how you interact with the database, but one that can make your code cleaner and your application logic easier to follow.
 
@@ -64,7 +64,7 @@ This feature simplifies your database interactions, enhancing efficiency, reduci
 
 # More resources
 
-- [Read the documentation to get started](/docs/products/databases/documents)
+- [Read the documentation to get started](/docs/products/databases/rows)
 - [Announcing Bulk API: Handle heavy data workloads with ease](/blog/post/announcing-bulk-api)
 - [Build a personal CRM with SvelteKit and Appwrite Databases](/blog/post/build-personal-crm-sveltekit)
 - [Announcing: Document imports from CSV files](/blog/post/announcing-csv-imports)

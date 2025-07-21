@@ -11,9 +11,9 @@ category: tutorial
 
 Some systems need to reflect the order in which actions happen. A ticketing system, for example, should assign "Ticket #41" before "Ticket #42". But in a user interface, it often makes sense to display the latest tickets first, so "Ticket #42" may appear above #41.
 
-Relying on timestamps to get this right is often not enough. Two documents can be created almost simultaneously, and the sort order might vary. What is needed is a consistent, backend-assigned number that increases with each insert and cannot be modified or skipped.
+Relying on timestamps to get this right is often not enough. Two rows can be created almost simultaneously, and the sort order might vary. What is needed is a consistent, backend-assigned number that increases with each insert and cannot be modified or skipped.
 
-Appwrite's new `$sequence` column provides exactly this. Every time a document is added to a table, the system assigns it a unique, auto-incrementing integer. This value reflects the insert history of the table and can be used for sorting, display, filtering, and pagination.
+Appwrite's new `$sequence` column provides exactly this. Every time a row is added to a table, the system assigns it a unique, auto-incrementing integer. This value reflects the insert history of the table and can be used for sorting, display, filtering, and pagination.
 
 In this tutorial, we will build a simple web-based support ticket tracker using plain HTML and JavaScript. Each submitted ticket will be stored in Appwrite with a title and description, and each will receive a `$sequence` number automatically. We will use that number to display and order the tickets.
 
@@ -33,7 +33,7 @@ Inside your project:
 - Create a new database named "Support DB"
 - Inside that database, create a new table named "Tickets"
 
-## Add document columns
+## Add row columns
 
 In the **Tickets** table, define the following columns:
 
@@ -46,7 +46,7 @@ Confirm the schema once all columns are added.
 
 ## Set permissions for testing
 
-For now, allow anyone to create and read documents:
+For now, allow anyone to create and read rows:
 
 - In the table's **Settings**, under **Permissions**
 - Add `role:any` to **Create** and **Read**
@@ -256,7 +256,7 @@ form.addEventListener('submit', async (e) => {
 
 ```
 
-This code creates a new document in your table when the form is submitted. It uses `'unique()'` to generate a unique ID. After submission, the form is reset and the list of tickets is reloaded to show the new entry.
+This code creates a new row in your table when the form is submitted. It uses `'unique()'` to generate a unique ID. After submission, the form is reset and the list of tickets is reloaded to show the new entry.
 
 {% /section %}
 
@@ -276,16 +276,16 @@ async function loadTickets() {
 
     ticketList.innerHTML = ''
 
-    if (response.documents.length === 0) {
+    if (response.rows.length === 0) {
       emptyState.style.display = 'block'
       ticketCount.textContent = '0 tickets'
     } else {
       emptyState.style.display = 'none'
-      ticketCount.textContent = `${response.documents.length} ticket${
-        response.documents.length === 1 ? '' : 's'
+      ticketCount.textContent = `${response.rows.length} ticket${
+        response.rows.length === 1 ? '' : 's'
       }`
 
-      response.documents.forEach((ticket, index) => {
+      response.rows.forEach((ticket, index) => {
         const ticketElement = document.createElement('div')
         ticketElement.className = 'card u-padding-24'
         ticketElement.innerHTML = `
@@ -325,8 +325,8 @@ You now have a working support ticket tracker that looks like this:
 
 ![Support tracker demo](/images/blog/track-document-order-with-sequence/support-tracker-demo.png)
 
-- Each submitted ticket is stored as a document in Appwrite
-- Every document receives a `$sequence` number, guaranteed to be unique and increasing
+- Each submitted ticket is stored as a row in Appwrite
+- Every row receives a `$sequence` number, guaranteed to be unique and increasing
 - The interface displays each ticket using that number
 - The ticket list is reliably sorted by creation order
 

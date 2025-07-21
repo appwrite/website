@@ -18,7 +18,7 @@ Let’s look at the benefits of Go runtime and SDK, and how they can help you bu
 
 # What makes Go special?
 
-Go (or Golang) is a statically typed compiled programming language that balances the ease of use like Python and JavaScript and the performance of compiled languages like Rust. 
+Go (or Golang) is a statically typed compiled programming language that balances the ease of use like Python and JavaScript and the performance of compiled languages like Rust.
 
 It was developed by Google in 2012, and has since grown a large developer community online, with companies like Netflix, Paypal, Riot Games and more moving to Go due to its speed and developer accessibility. There are a few reasons why Go is popular with devs and enterprise companies alike:
 
@@ -188,7 +188,7 @@ package handler
 
 import (
 	"os"
-	
+
 	"github.com/open-runtimes/types-for-go/v4/openruntimes"
 	"github.com/appwrite/sdk-for-go/appwrite"
 )
@@ -211,12 +211,12 @@ func Main(Context openruntimes.Context) openruntimes.Response {
 	for _, bucket := range response.Buckets {
 		Context.Log("Bucket Name:", bucket.Name)
 	}
-	
+
 	return Context.Res.Json(response.Buckets)
 }
 ```
 
-Some of our API endpoints such as the ones that return preferences from the Accounts and Teams APIs as well as the ones the return documents from the Appwrite Database are loosely typed because they can be customised by user. For these, the structs offer a `Decode()` method, as seen in the following example.
+Some of our API endpoints such as the ones that return preferences from the Accounts and Teams APIs as well as the ones the return rows from the Appwrite Database are loosely typed because they can be customised by user. For these, the structs offer a `Decode()` method, as seen in the following example.
 
 ```go
 package handler
@@ -237,7 +237,7 @@ type Profile struct {
 
 type ProfileList struct {
 	*models.DocumentList
-	Documents []Profile `json:"documents"`
+	Documents []Profile `json:"rows"`
 }
 
 func Main(Context openruntimes.Context) openruntimes.Response {
@@ -265,7 +265,7 @@ func Main(Context openruntimes.Context) openruntimes.Response {
 	for _, profile := range profiles.Documents {
 		Context.Log(profile.Id, profile.Name, profile.Verified)
 	}
-	
+
 	return Context.Res.Json(profiles.Documents)
 }
 ```

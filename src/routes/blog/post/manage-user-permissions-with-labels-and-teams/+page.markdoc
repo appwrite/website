@@ -11,11 +11,11 @@ featured: false
 ---
 
 
-Teams and Labels allow us to categorize and group users together, allowing us to set permissions to resources at the Team and label level instead of at the individual user level. Grouping users together makes managing permissions to documents, files and functions much more efficient this way.
+Teams and Labels allow us to categorize and group users together, allowing us to set permissions to resources at the Team and label level instead of at the individual user level. Grouping users together makes managing permissions to rows, files and functions much more efficient this way.
 
 ![Labels vs Teams](/images/blog/manage-user-permissions-with-labels-and-teams/labels3.png)
 
-To think of this in real-world terms, imagine for a second we were building the next social media application. Teams can be used to create admins and moderators, and these admins and moderators would have permission to delete and flag posts that don’t meet community guidelines. The owner at the document level would have the ability to update and delete this post, but anyone who is on the moderator Team would also have the ability to delete the post, something that is normally restricted to only the owner of the post. We can also change which users have these permissions at any point by adding and removing users and updating the group-level permissions.
+To think of this in real-world terms, imagine for a second we were building the next social media application. Teams can be used to create admins and moderators, and these admins and moderators would have permission to delete and flag posts that don’t meet community guidelines. The owner at the row level would have the ability to update and delete this post, but anyone who is on the moderator Team would also have the ability to delete the post, something that is normally restricted to only the owner of the post. We can also change which users have these permissions at any point by adding and removing users and updating the group-level permissions.
 
 
 Another example we can take a look at would be a streaming service like Amazon Video. How do we give users access to a movie or show they paid for? This is where Teams and Labels make our lives easier. By simply adding Labels to users we could decide which users have access to specific resources like movies or shows in our application.
@@ -79,7 +79,7 @@ Let's start with creating a new Team, adding members, and assigning roles to tho
 
 2 - Once your Team is created, you can add a Member to the Team by selecting the “Members” tab and clicking “Create Membership”. Here you will enter the user's email address (name can be left blank) and assign a role to the member. Roles are optional, so you can leave this part blank.
 
-That’s it for creating a Team and adding members from the appwrite console. Now you can assign document, storage, and function permissions to your Teams. As an example, for table level permissions, you can go to the “settings'' tab in a table, and in the “permissions” section, choose “Select Teams'' to give permissions to an entire Team or “Custom permissions” if you want to assign permission to only users with a particular role within the Team.
+That’s it for creating a Team and adding members from the appwrite console. Now you can assign row, storage, and function permissions to your Teams. As an example, for table level permissions, you can go to the “settings'' tab in a table, and in the “permissions” section, choose “Select Teams'' to give permissions to an entire Team or “Custom permissions” if you want to assign permission to only users with a particular role within the Team.
 
 ## Labels
 

@@ -91,9 +91,9 @@ Notice that the `category` column is an enumerated type with a set of predefined
 
 To ensure that users can only access their own expenses, Open the table's **Settings** tab and scroll to **Permissions**. Click **Add role**, select **Users** and check **Create** permission.
 
-Next, enable **Document Security** to allow users to access their documents. We'll ensure this by giving users the **Read** permission when creating documents in our code.
+Next, enable **Document Security** to allow users to access their rows. We'll ensure this by giving users the **Read** permission when creating rows in our code.
 
-![permissions-document-security](/images/blog/build-fullstack-svelte-appwrite/permissions-document-security.png)
+![permissions-row-security](/images/blog/build-fullstack-svelte-appwrite/permissions-row-security.png)
 
 ## Project structure
 
@@ -591,7 +591,7 @@ async function fetchExpenses() {
     const response = await databases.listDocuments(DATABASE_ID, EXPENSES_TABLE_ID, [
       Query.orderDesc('$createdAt')
     ])
-    expenses = response.documents
+    expenses = response.rows
     calculateStats()
   } catch (e) {
     error = 'Failed to load expenses'
@@ -667,7 +667,7 @@ async function handleSubmit() {
 }
 ```
 
-The `handleSubmit` function handles both creating new expenses and updating existing ones. When creating a new expense, we set document-level permissions to ensure users can access their expenses. Here, we're giving users the **Read**, **Update**, and **Delete** permissions.
+The `handleSubmit` function handles both creating new expenses and updating existing ones. When creating a new expense, we set row-level permissions to ensure users can access their expenses. Here, we're giving users the **Read**, **Update**, and **Delete** permissions.
 
 Finally, let's add utility functions for managing expenses:
 

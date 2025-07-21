@@ -23,7 +23,7 @@ Dev keys should never be used in production environments, as they can make your 
 
 # Try out dev keys in an app
 
-To test dev keys, I created a simple demo web app that sends 200 requests to create a new document in an Appwrite database. To set this app up, you must complete the following steps:
+To test dev keys, I created a simple demo web app that sends 200 requests to create a new row in an Appwrite database. To set this app up, you must complete the following steps:
 
 ## Step 1: Setup Appwrite project
 
@@ -57,8 +57,8 @@ Next up, we'll create our test app. This will require us to create two files in 
 </head>
 <body>
     <h1>Dev keys demo</h1>
-    <p>Click on this button to add 200 documents to the database in less than 1 minute.</p>
-    <button type="button">Add documents</button>
+    <p>Click on this button to add 200 rows to the database in less than 1 minute.</p>
+    <button type="button">Add rows</button>
 
     <!-- Appwrite Web SDK -->
     <script src="https://cdn.jsdelivr.net/npm/appwrite@18.1.1"></script>
@@ -95,7 +95,7 @@ document.querySelector('button').addEventListener('click', async () => {
 });
 ```
 
-If you open the HTML page in your browser and click on the `Add documents` button, you will notice numerous errors in the console with the HTTP code `429`, as Appwrite's rate limits allow one client to create 120 requests per minute for this API endpoint.
+If you open the HTML page in your browser and click on the `Add rows` button, you will notice numerous errors in the console with the HTTP code `429`, as Appwrite's rate limits allow one client to create 120 requests per minute for this API endpoint.
 
 ## Step 3: Create dev key
 
@@ -114,7 +114,7 @@ const client = new Appwrite.Client()
 
 ## Step 4: Test the app
 
-Reopen the HTML page in your browser. Clicking the `Add documents` button will allow all 200 requests to execute successfully.
+Reopen the HTML page in your browser. Clicking the `Add rows` button will allow all 200 requests to execute successfully.
 
 # Next steps
 

@@ -60,7 +60,7 @@ Both Appwrite and Firebase provide databases that can be used depending on the n
 
 ## Storage
 
-Storage allows you to manage files in your project. It can store images, videos, documents, and other project files. Storage is a crucial requirement for every application, and here's what Appwrite and Firebase have to offer:
+Storage allows you to manage files in your project. It can store images, videos, rows, and other project files. Storage is a crucial requirement for every application, and here's what Appwrite and Firebase have to offer:
 
 *Similarities:*
 

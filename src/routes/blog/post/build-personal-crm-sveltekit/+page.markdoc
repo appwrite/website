@@ -19,7 +19,7 @@ In this blog, we'll build a lightweight personal CRM using **SvelteKit** for the
 
 First, [create an Appwrite Cloud account](https://cloud.appwrite.io/) if you haven't already. Once your project is ready, go to the **Settings** page and copy your project ID and API endpoint for further usage.
 
-Head to the **Overview** page from the left sidebar, select the **API keys** tab under the **Integrations** section, and click on the **Create API key** button. Select the `documents.write` and `documents.read` scopes under the **Databases** dropdown, create the key, and copy it for further usage.
+Head to the **Overview** page from the left sidebar, select the **API keys** tab under the **Integrations** section, and click on the **Create API key** button. Select the `rows.write` and `rows.read` scopes under the **Databases** dropdown, create the key, and copy it for further usage.
 
 Next, go to the **Databases** page from the left sidebar, create a new database with the ID `crm`, and then a table with the ID `contacts` (save both IDs for further usage).
 
@@ -97,17 +97,17 @@ const tableId = env.APPWRITE_TABLE_ID;
 // Add or update contacts
 async function upsertDocuments(contacts) {
 	try {
-		const documents = contacts.map((contact) => ({
+		const rows = contacts.map((contact) => ({
 			$id: contact.$id || ID.unique(),
 			name: contact.name,
 			email: contact.email,
 			phone: contact.phone,
 			notes: contact.notes
 		}));
-		return await databases.upsertDocuments(databaseId, tableId, documents);
+		return await databases.upsertDocuments(databaseId, tableId, rows);
 	} catch (error) {
-		console.error('Error upserting documents:', error);
-		throw new Error('Failed to upsert documents');
+		console.error('Error upserting rows:', error);
+		throw new Error('Failed to upsert rows');
 	}
 }
 
@@ -116,8 +116,8 @@ async function deleteDocument(id) {
 	try {
 		return await databases.deleteDocument(databaseId, tableId, id);
 	} catch (error) {
-		console.error('Error deleting document:', error);
-		throw new Error('Failed to delete document');
+		console.error('Error deleting row:', error);
+		throw new Error('Failed to delete row');
 	}
 }
 
@@ -126,8 +126,8 @@ async function deleteDocuments() {
 	try {
 		return await databases.deleteDocuments(databaseId, tableId, []);
 	} catch (error) {
-		console.error('Error deleting documents:', error);
-		throw new Error('Failed to delete documents');
+		console.error('Error deleting rows:', error);
+		throw new Error('Failed to delete rows');
 	}
 }
 
@@ -136,8 +136,8 @@ async function listDocuments() {
 	try {
 		return await databases.listDocuments(databaseId, tableId);
 	} catch (error) {
-		console.error('Error fetching documents:', error);
-		throw new Error('Failed to fetch documents');
+		console.error('Error fetching rows:', error);
+		throw new Error('Failed to fetch rows');
 	}
 }
 
@@ -171,7 +171,7 @@ import { env } from '$env/dynamic/private';
 export async function GET() {
 	try {
 		const response = await db.listDocuments();
-		return json(response.documents);
+		return json(response.rows);
 	} catch (error) {
 		console.error('Error fetching contacts:', error);
 		return json({ error: 'Failed to fetch contacts' }, { status: 500 });
@@ -198,10 +198,10 @@ export async function DELETE({ request }) {
 
 		let response;
 		if (id) {
-			// Single contact ID provided - delete a single document
+			// Single contact ID provided - delete a single row
 			response = await db.deleteDocument(id);
 		} else {
-			// No ID provided - delete all documents
+			// No ID provided - delete all rows
 			response = await db.deleteDocuments();
 		}
 		return json(response);

@@ -156,21 +156,21 @@ Managing related data can still be challenging, especially when deleting data. T
 
 ## Restrict
 
-If you select the restrict option, you won't be able to delete a parent document if it has any related child documents. This option is helpful if you want to ensure that data integrity is maintained and that you don't accidentally delete data that is still relevant.
+If you select the restrict option, you won't be able to delete a parent row if it has any related child rows. This option is helpful if you want to ensure that data integrity is maintained and that you don't accidentally delete data that is still relevant.
 
 ## Cascade
 
-If you choose cascade, deleting a parent document will also delete all related child documents. This option can be helpful if you want to remove all data associated with a particular parent record, such as when you want to delete a user and all their associated data.
+If you choose cascade, deleting a parent row will also delete all related child rows. This option can be helpful if you want to remove all data associated with a particular parent record, such as when you want to delete a user and all their associated data.
 
 ## Set Null
 
-Finally, the set null option means that deleting a parent document will remove the relationship to the parent document for all of its related children. This can be useful if you want to retain the child's records but simply remove the relationship.
+Finally, the set null option means that deleting a parent row will remove the relationship to the parent row for all of its related children. This can be useful if you want to retain the child's records but simply remove the relationship.
 
 Each of these options has its own use cases, and the choice ultimately depends on your specific application requirements. By providing these different options, Appwrite allows you to manage related data in a flexible and intuitive way, making it easier for you to build complex applications without worrying about data management.
 
 # Other Benefits
 
-In addition to simplifying your table management, database relationships also provide several other benefits. First, they can help to ensure data consistency and integrity by enforcing referential constraints between related tables. This means that you can prevent orphaned documents or other data inconsistencies that might arise if you were to manage the relationships between tables manually. Additionally, using relationships can also improve the performance of your requests and reduce the amount of code you need to write, since you can retrieve related data in a single request rather than having to fetch it separately.
+In addition to simplifying your table management, database relationships also provide several other benefits. First, they can help to ensure data consistency and integrity by enforcing referential constraints between related tables. This means that you can prevent orphaned rows or other data inconsistencies that might arise if you were to manage the relationships between tables manually. Additionally, using relationships can also improve the performance of your requests and reduce the amount of code you need to write, since you can retrieve related data in a single request rather than having to fetch it separately.
 
 Overall, database relationships are a powerful tool that simplifies your table management and saves you time and effort. By easily linking your tables and retrieving related data, you can focus on developing your application's core features. Check out the [docs](/docs/databases-relationships) for more information. We encourage you to give it a try today and see how it can benefit your development process.
 

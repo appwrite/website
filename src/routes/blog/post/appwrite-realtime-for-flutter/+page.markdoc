@@ -171,7 +171,7 @@ class _HomePageState extends State<HomePage> {
 
 ```
 
-In the **initState** function of the HomePage, we will create and initialize our Appwrite client, as well as subscribe to real-time changes in documents in our **items** table.
+In the **initState** function of the HomePage, we will create and initialize our Appwrite client, as well as subscribe to real-time changes in rows in our **items** table.
 
 ```dart
   RealtimeSubscription? subscription;
@@ -193,7 +193,7 @@ dispose(){
 }
 ```
 
-Now, let us set up different variables and functions to load the initial data, listen to changes in the table documents, and update the UI to reflect the changes in real time.
+Now, let us set up different variables and functions to load the initial data, listen to changes in the table rows, and update the UI to reflect the changes in real time.
 
 First, initialize our database ID and items table ID and set up a function to load initial data when the application first starts. For that, we will also set up an Appwrite database service.
 
@@ -219,7 +219,7 @@ First, initialize our database ID and items table ID and set up a function to lo
       );
       setState(() {
         items =
-            List<Map<String, dynamic>>.from(res.documents.map((e) => e.data));
+            List<Map<String, dynamic>>.from(res.rows.map((e) => e.data));
       });
     } on AppwriteException catch (e) {
       print(e.message);
@@ -227,14 +227,14 @@ First, initialize our database ID and items table ID and set up a function to lo
   }
 ```
 
-Now, we will set up our subscribe function, which will listen to changes to documents in our items table.
+Now, we will set up our subscribe function, which will listen to changes to rows in our items table.
 
 ```dart
   void subscribe() {
     final realtime = Realtime(client);
 
     subscription = realtime.subscribe([
-      'documents' // subscribe to all documents in every database and table
+      'rows' // subscribe to all rows in every database and table
     ]);
 
     // listen to changes
@@ -264,7 +264,7 @@ Finally, let's modify our `_addItem` function to add items to Appwrite's databas
       await databases.createDocument(
         databaseId: database,
         tableId: itemsTable,
-        documentId: ID.unique(),
+        rowId: ID.unique(),
         data: {'name': name},
       );
     } on AppwriteException catch (e) {
@@ -284,7 +284,7 @@ Let us also modify our `ListTile` widget to add a delete button that will allo
                   await databases.deleteDocument(
                     databaseId: database,
                     tableId: itemsTable,
-                    documentId: item['\$id'],
+                    rowId: item['\$id'],
                   );
                 },
               ),
@@ -349,7 +349,7 @@ class _HomePageState extends State<HomePage> {
       );
       setState(() {
         items =
-            List<Map<String, dynamic>>.from(res.documents.map((e) => e.data));
+            List<Map<String, dynamic>>.from(res.rows.map((e) => e.data));
       });
     } on AppwriteException catch (e) {
       print(e.message);
@@ -360,7 +360,7 @@ class _HomePageState extends State<HomePage> {
     final realtime = Realtime(client);
 
     subscription = realtime.subscribe([
-      'documents' // subscribe to all documents in every database and table
+      'rows' // subscribe to all rows in every database and table
     ]);
 
     // listen to changes
@@ -402,7 +402,7 @@ class _HomePageState extends State<HomePage> {
                   await databases.deleteDocument(
                     databaseId: database,
                     tableId: itemsTable,
-                    documentId: item['\$id'],
+                    rowId: item['\$id'],
                   );
                 },
               ),
@@ -449,7 +449,7 @@ class _HomePageState extends State<HomePage> {
       await databases.createDocument(
         databaseId: database,
         tableId: itemsTable,
-        documentId: ID.unique(),
+        rowId: ID.unique(),
         data: {'name': name},
       );
     } on AppwriteException catch (e) {

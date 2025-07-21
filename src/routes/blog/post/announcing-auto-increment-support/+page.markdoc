@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Announcing Auto-increment support: Built-in numeric sequencing for your documents"
+title: "Announcing Auto-increment support: Built-in numeric sequencing for your rows"
 description: Get reliable, sequential ordering across your tables with fast, indexed auto-increment IDs.
 date: 2025-07-15
 cover: /images/blog/announcing-auto-increment-support/cover.png
@@ -14,11 +14,11 @@ Managing ordered data can often be complex and error-prone, especially when it r
 
 To tackle this issue, we're introducing **Auto-increment support.**
 
-This new feature automatically handles a `$sequence` column within your documents, incrementing reliably with each new insertion. This ensures your data remains ordered and clear without additional manual overhead.
+This new feature automatically handles a `$sequence` column within your rows, incrementing reliably with each new insertion. This ensures your data remains ordered and clear without additional manual overhead.
 
 # Automatic, predictable ordering
 
-Previously, maintaining consistent insertion order and generating numeric identifiers required either manual increments, complex logic, or dependence on timestamps, which weren't always accurate or reliable. Appwrite’s new Auto-increment support feature solves these issues seamlessly, providing a built-in numeric identifier that increases predictably with every new document added.
+Previously, maintaining consistent insertion order and generating numeric identifiers required either manual increments, complex logic, or dependence on timestamps, which weren't always accurate or reliable. Appwrite’s new Auto-increment support feature solves these issues seamlessly, providing a built-in numeric identifier that increases predictably with every new row added.
 
 Whether you're creating paginated data sets, managing invoice numbers, logging activities, or building real-time feeds, Appwrite's Auto-increment support feature offers effortless numeric sequencing. This means less manual work, fewer bugs, and significantly improved reliability.
 
@@ -37,7 +37,7 @@ Integrating Auto-increment support into your Appwrite Databases makes your backe
 
 # How it works
 
-For numeric ordering based on insertion order, you can use the `$sequence` field, which Appwrite automatically adds to all documents. This field increments with each new insert.
+For numeric ordering based on insertion order, you can use the `$sequence` field, which Appwrite automatically adds to all rows. This field increments with each new insert.
 
 ```client-web
 import { Client, Databases, Query } from "appwrite";

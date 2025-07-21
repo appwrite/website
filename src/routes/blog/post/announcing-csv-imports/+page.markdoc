@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Announcing CSV Import: Bring in large datasets to Appwrite with ease"
-description: Learn how to import documents into your Appwrite tables using a simple CSV file, a new feature built on top of Appwrite's migration APIs.
+description: Learn how to import rows into your Appwrite tables using a simple CSV file, a new feature built on top of Appwrite's migration APIs.
 date: 2025-07-01
 # update this cover later, once available!
 cover: /images/blog/announcing-csv-imports/cover.png
@@ -11,21 +11,21 @@ category: announcement
 featured: false
 ---
 
-We're introducing a new way to populate your Appwrite databases: **document imports from CSV files**.
+We're introducing a new way to populate your Appwrite databases: **row imports from CSV files**.
 
 Built on top of Appwrite's migration APIs, this feature makes it easy to bring in large datasets, seed tables, or migrate structured data using only a CSV file.
 
-The CSV document import is useful for migrating user data from external systems, importing inventory records, seeding test environments, or onboarding structured content such as FAQs.
+The CSV row import is useful for migrating user data from external systems, importing inventory records, seeding test environments, or onboarding structured content such as FAQs.
 
 # How it works
 
 To get started, create a table and define its columns in the Appwrite Console. Your CSV file should follow a standard format:
 
 - The first row must be a header containing column names that match your table
-- Each subsequent row represents a document, with values separated by commas
+- Each subsequent row represents a row, with values separated by commas
 
 {% info title="Good to know" %}
-You can optionally include the `$id` column to assign custom document IDs.
+You can optionally include the `$id` column to assign custom row IDs.
 {% /info %}
 
 ![Tables screen](/images/blog/announcing-csv-imports/csv-import.png)

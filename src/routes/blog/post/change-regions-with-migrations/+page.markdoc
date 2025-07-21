@@ -99,11 +99,11 @@ Then fill in the details from the source project:
 
 Click **Next**.
 
-Appwrite will now reach into the source project, check what's available, and return a list of resources it found: users, databases, tables, documents, storage buckets, files, functions, and so on.
+Appwrite will now reach into the source project, check what's available, and return a list of resources it found: users, databases, tables, rows, storage buckets, files, functions, and so on.
 
 You'll be prompted to choose what you want to bring over.
 
-If you're planning to fully migrate the project, click **Select all**. You can also check top-level resources (like "Users", "Functions", "Databases") and then decide whether to include things like documents, teams, and environment variables.
+If you're planning to fully migrate the project, click **Select all**. You can also check top-level resources (like "Users", "Functions", "Databases") and then decide whether to include things like rows, teams, and environment variables.
 
 When ready, click **Create**.
 
@@ -113,7 +113,7 @@ Now, Appwrite begins the actual data transfer.
 
 You'll see a progress indicator as the migration runs.
 
-How long this takes depends on your data. If your project is lightweight, it might finish in under a minute. But if you have thousands of documents or large media files, it might take longer.
+How long this takes depends on your data. If your project is lightweight, it might finish in under a minute. But if you have thousands of rows or large media files, it might take longer.
 
 When the migration is complete, you'll see an indication in the console.
 
@@ -126,7 +126,7 @@ Once the migration is done, you can inspect the destination project to ensure ev
 Here are some things to check (if applicable):
 
 - **Auth** → Confirm that users and teams are present.
-- **Databases** → Can you see your tables and documents?
+- **Databases** → Can you see your tables and rows?
 - **Storage** → Look inside your buckets and confirm that files are present.
 - **Functions** → Are your functions listed, and do they include deployments and any environment variables you selected?
 

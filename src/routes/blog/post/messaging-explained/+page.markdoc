@@ -13,7 +13,7 @@ Recently, Appwrite launched its newest product, [Appwrite Messaging](https://app
 
 # Unified messaging platform
 
-To give you a quick refresher, Messaging covers three communication channels under one unified API, allowing you to send email, SMS, and push notifications from your Appwrite project. It connects with a variety of third-party providers, such as Vonage, Twilio, Mailgun, and more, to deliver your messages. Our [documentation](https://appwrite.io/docs/products/messaging) provides a full overview of providers. 
+To give you a quick refresher, Messaging covers three communication channels under one unified API, allowing you to send email, SMS, and push notifications from your Appwrite project. It connects with a variety of third-party providers, such as Vonage, Twilio, Mailgun, and more, to deliver your messages. Our [documentation](https://appwrite.io/docs/products/messaging) provides a full overview of providers.
 
 ![Messaging features](/images/blog/messaging-explained/features.gif)
 
@@ -36,7 +36,7 @@ In Appwrite Messaging, you can use topics to deliver messages to groups of users
 
 ## Targets
 
-Targets are different ways a user can be reached. For example, a user might have two emails, a phone number, and a phone and tablet installed with your app. This means the user has five different targets where you can deliver messages. 
+Targets are different ways a user can be reached. For example, a user might have two emails, a phone number, and a phone and tablet installed with your app. This means the user has five different targets where you can deliver messages.
 
 You can send a message directly to a set of targets or add them as subscribers to a topic. For example, if you want to send a payment reminder to a user manually, you could choose to send it just to a specific target. If you want to send out your monthly newsletter, you could have a topic many targets can subscribe to and then send the message to the topic instead.
 
@@ -81,16 +81,16 @@ You can also watch the [product tour](https://www.youtube.com/watch?v=QdDgPeuBZ1
 
 # How Messaging works
 
-Now that we have learned about the three core concepts of Appwrite Messaging, let us dive deeper into how the product works. Each time you send or schedule a push notification, email, or SMS text, it's recorded in Appwrite as a **message** is displayed in the **Messages** tab. However, there is a lot more that goes on under the hood. 
+Now that we have learned about the three core concepts of Appwrite Messaging, let us dive deeper into how the product works. Each time you send or schedule a push notification, email, or SMS text, it's recorded in Appwrite as a **message** is displayed in the **Messages** tab. However, there is a lot more that goes on under the hood.
 
 Here's a step-by-step breakdown of how Appwrite Messaging works:
 
 1. Validate input on API request
     - The process starts when the Appwrite API is called to create a message, which validates the input.
-2. Create message document
-    - A document containing details about the message, including recipients and content, is created on the internal database.
-3. Create schedule document
-    - A schedule document is created on the internal database, specifying when the message should be sent. This document is necessary for the message scheduler.
+2. Create message row
+    - A row containing details about the message, including recipients and content, is created on the internal database.
+3. Create schedule row
+    - A schedule row is created on the internal database, specifying when the message should be sent. This row is necessary for the message scheduler.
 4. Queue the message via the message scheduler
     - Every minute, the scheduler checks the internal database for scheduled messages.
     - For each scheduled message, it checks if the message should be sent at that time.
