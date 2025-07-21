@@ -83,7 +83,7 @@ const client = new Client()
 const databases = new Databases(client);
 
 // OR operator example
-const movieData1 = databases.listDocuments(
+const movieData1 = databases.listRows(
     '[DATABASE_ID]',
     '[TABLE_ID]',
     Query.or([
@@ -93,7 +93,7 @@ const movieData1 = databases.listDocuments(
 );
 
 // AND operator example
-const movieData2 = databases.listDocuments(
+const movieData2 = databases.listRows(
     '[DATABASE_ID]',
     '[TABLE_ID]',
     Query.and([
@@ -103,7 +103,7 @@ const movieData2 = databases.listDocuments(
 );
 
 // CONTAINS operator example
-const movieData3 = databases.listDocuments(
+const movieData3 = databases.listRows(
     '[DATABASE_ID]',
     '[TABLE_ID]',
     Query.contains('director', ["Christopher Nolan"])

@@ -72,7 +72,7 @@ Create the table and add the following columns:
 | following | Integer | - | Yes | - |
 | username | String | 255 | Yes | - |
 
-Visit the table settings, enable **Document security,** and set the following (table-level) **Permissions**:
+Visit the table settings, enable **Row security,** and set the following (table-level) **Permissions**:
 
 | Role | Create | Read | Update | Delete |
 | --- | --- | --- | --- | --- |
@@ -87,7 +87,7 @@ Create the table and add the following columns:
 | destiny | String | 25000 | Yes |
 | username | String | 255 | Yes |
 
-Visit the table settings, enable **Document security,** and set the following (table-level) **Permissions**:
+Visit the table settings, enable **Row security,** and set the following (table-level) **Permissions**:
 
 | Role | Create | Read | Update | Delete |
 | --- | --- | --- | --- | --- |
@@ -274,7 +274,7 @@ const githubDataTableId = env.PUBLIC_APPWRITE_TABLE_ID_GITHUBDATA;
 export const db = {
     getUserData: async(rowId) => {
         try{
-            return await databases.getDocument(
+            return await databases.getRow(
                 databaseId,
                 githubDataTableId,
                 rowId
@@ -285,7 +285,7 @@ export const db = {
     },
 
     addUserData: async(userId, username, followers, following, languages) => {
-        return await databases.createDocument(
+        return await databases.createRow(
             databaseId,
             githubDataTableId,
             userId,
@@ -504,7 +504,7 @@ export const db = {**
 .
 .
 		addDestiny: async(username, destiny) => {
-		    return await databases.createDocument(
+		    return await databases.createRow(
 		        databaseId,
 		        destinyTableId,
 		        ID.unique(),
@@ -517,7 +517,7 @@ export const db = {**
 
 		getDestiny: async(rowId) => {
 		    try{
-		        return await databases.getDocument(
+		        return await databases.getRow(
 		            databaseId,
 		            destinyTableId,
 		            rowId

@@ -96,7 +96,7 @@ client
 const databases = new Databases(client);
 
 // Offset pagination
-databases.listDocuments(
+databases.listRows(
 		'main', // Database ID
     'articles', // Table ID
     [
@@ -108,7 +108,7 @@ databases.listDocuments(
 });
 
 // Cursor pagination
-databases.listDocuments(
+databases.listRows(
 		'main', // Database ID
     'articles', // Table ID
     [

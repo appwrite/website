@@ -36,10 +36,10 @@ Bulk operations can only be performed via the server-side SDKs. The client-side 
 
 Utilizing the Bulk API is straightforward. You can use it to:
 
-- Create multiple rows in a single request using the `createDocuments` method
-- Update multiple rows in a single request using the `updateDocuments` method
-- Delete multiple rows in a single request using the `deleteDocuments` method
-- Upsert multiple rows in a single request using the `upsertDocuments` method
+- Create multiple rows in a single request using the `createRows` method
+- Update multiple rows in a single request using the `updateRows` method
+- Delete multiple rows in a single request using the `deleteRows` method
+- Upsert multiple rows in a single request using the `upsertRows` method
 
 Here is a code example for creating multiple rows in a single request:
 
@@ -54,17 +54,17 @@ const client = new sdk.Client()
 
 const databases = new sdk.Databases(client);
 
-const result = await databases.createDocuments(
+const result = await databases.createRows(
     '<DATABASE_ID>',
     '<TABLE_ID>',
     [
         {
             $id: sdk.ID.unique(),
-            name: 'Document 1',
+            name: 'Row 1',
         },
         {
             $id: sdk.ID.unique(),
-            name: 'Document 2',
+            name: 'Row 2',
         }
     ]
 );

@@ -222,7 +222,7 @@ const tableId = '<YOUR_TABLE_ID>'
 
 Replace the placeholders with your actual values from the Appwrite console.
 
-This code sets up the SDK so that you can call `databases.createDocument()` and `databases.listDocuments()` in the rest of the script.
+This code sets up the SDK so that you can call `databases.createRow()` and `databases.listRows()` in the rest of the script.
 
 {% /section %}
 
@@ -242,7 +242,7 @@ form.addEventListener('submit', async (e) => {
   if (!title || !body) return
 
   try {
-    await databases.createDocument(databaseId, tableId, 'unique()', {
+    await databases.createRow(databaseId, tableId, 'unique()', {
       title,
       body,
     })
@@ -267,7 +267,7 @@ Now add a function that retrieves tickets and shows them in order, newest first:
 ```javascript
 async function loadTickets() {
   try {
-    const response = await databases.listDocuments(databaseId, tableId, [
+    const response = await databases.listRows(databaseId, tableId, [
       Appwrite.Query.orderDesc('$sequence'),
     ])
     const ticketList = document.getElementById('ticket-list')

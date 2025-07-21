@@ -294,7 +294,7 @@ func Main(Context openruntimes.Context) openruntimes.Response {
 			}, Context.Res.WithStatusCode(400))
 		}
 
-		_, err = databases.CreateDocument(
+		_, err = databases.CreateRow(
 			dbId,
 			collId,
 			requestBody.ShortId,
@@ -326,7 +326,7 @@ func Main(Context openruntimes.Context) openruntimes.Response {
 
 		shortId := path[1:]
 
-		row, err := databases.GetDocument(dbId, collId, shortId)
+		row, err := databases.GetRow(dbId, collId, shortId)
 
 		if err != nil {
 			Context.Error(err)

@@ -95,7 +95,7 @@ const databaseId = env.APPWRITE_DATABASE_ID;
 const tableId = env.APPWRITE_TABLE_ID;
 
 // Add or update contacts
-async function upsertDocuments(contacts) {
+async function upsertRows(contacts) {
 	try {
 		const rows = contacts.map((contact) => ({
 			$id: contact.$id || ID.unique(),
@@ -104,7 +104,7 @@ async function upsertDocuments(contacts) {
 			phone: contact.phone,
 			notes: contact.notes
 		}));
-		return await databases.upsertDocuments(databaseId, tableId, rows);
+		return await databases.upsertRows(databaseId, tableId, rows);
 	} catch (error) {
 		console.error('Error upserting rows:', error);
 		throw new Error('Failed to upsert rows');
@@ -112,9 +112,9 @@ async function upsertDocuments(contacts) {
 }
 
 // Delete a single contact
-async function deleteDocument(id) {
+async function deleteRow(id) {
 	try {
-		return await databases.deleteDocument(databaseId, tableId, id);
+		return await databases.deleteRow(databaseId, tableId, id);
 	} catch (error) {
 		console.error('Error deleting row:', error);
 		throw new Error('Failed to delete row');
@@ -122,9 +122,9 @@ async function deleteDocument(id) {
 }
 
 // Delete all contacts
-async function deleteDocuments() {
+async function deleteRows() {
 	try {
-		return await databases.deleteDocuments(databaseId, tableId, []);
+		return await databases.deleteRows(databaseId, tableId, []);
 	} catch (error) {
 		console.error('Error deleting rows:', error);
 		throw new Error('Failed to delete rows');
@@ -132,9 +132,9 @@ async function deleteDocuments() {
 }
 
 // List contacts
-async function listDocuments() {
+async function listRows() {
 	try {
-		return await databases.listDocuments(databaseId, tableId);
+		return await databases.listRows(databaseId, tableId);
 	} catch (error) {
 		console.error('Error fetching rows:', error);
 		throw new Error('Failed to fetch rows');
@@ -142,10 +142,10 @@ async function listDocuments() {
 }
 
 export const db = {
-	upsertDocuments,
-	deleteDocument,
-	deleteDocuments,
-	listDocuments
+	upsertRows,
+	deleteRow,
+	deleteRows,
+	listRows
 };
 ```
 
@@ -170,7 +170,7 @@ import { env } from '$env/dynamic/private';
 // GET - List all contacts
 export async function GET() {
 	try {
-		const response = await db.listDocuments();
+		const response = await db.listRows();
 		return json(response.rows);
 	} catch (error) {
 		console.error('Error fetching contacts:', error);
@@ -183,7 +183,7 @@ export async function POST({ request }) {
 	try {
 		const { contacts } = await request.json();
 
-		const response = await db.upsertDocuments(contacts);
+		const response = await db.upsertRows(contacts);
 		return json(response);
 	} catch (error) {
 		console.error('Error upserting contacts:', error);
@@ -199,10 +199,10 @@ export async function DELETE({ request }) {
 		let response;
 		if (id) {
 			// Single contact ID provided - delete a single row
-			response = await db.deleteDocument(id);
+			response = await db.deleteRow(id);
 		} else {
 			// No ID provided - delete all rows
-			response = await db.deleteDocuments();
+			response = await db.deleteRows();
 		}
 		return json(response);
 	} catch (error) {

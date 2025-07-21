@@ -213,7 +213,7 @@ First, initialize our database ID and items table ID and set up a function to lo
 
   loadItems() async {
     try {
-      final res = await databases.listDocuments(
+      final res = await databases.listRows(
         databaseId: database,
         tableId: itemsTable,
       );
@@ -261,7 +261,7 @@ Finally, let's modify our `_addItem` function to add items to Appwrite's databas
 ```dart
   void _addItem(String name) async {
     try {
-      await databases.createDocument(
+      await databases.createRow(
         databaseId: database,
         tableId: itemsTable,
         rowId: ID.unique(),
@@ -281,7 +281,7 @@ Let us also modify our `ListTile` widget to add a delete button that will allo
               trailing: IconButton(
                 icon: const Icon(Icons.delete),
                 onPressed: () async {
-                  await databases.deleteDocument(
+                  await databases.deleteRow(
                     databaseId: database,
                     tableId: itemsTable,
                     rowId: item['\$id'],
@@ -343,7 +343,7 @@ class _HomePageState extends State<HomePage> {
 
   loadItems() async {
     try {
-      final res = await databases.listDocuments(
+      final res = await databases.listRows(
         databaseId: database,
         tableId: itemsTable,
       );
@@ -399,7 +399,7 @@ class _HomePageState extends State<HomePage> {
               trailing: IconButton(
                 icon: const Icon(Icons.delete),
                 onPressed: () async {
-                  await databases.deleteDocument(
+                  await databases.deleteRow(
                     databaseId: database,
                     tableId: itemsTable,
                     rowId: item['\$id'],
@@ -446,7 +446,7 @@ class _HomePageState extends State<HomePage> {
 
   void _addItem(String name) async {
     try {
-      await databases.createDocument(
+      await databases.createRow(
         databaseId: database,
         tableId: itemsTable,
         rowId: ID.unique(),

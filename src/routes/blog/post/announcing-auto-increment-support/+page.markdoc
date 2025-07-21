@@ -48,7 +48,7 @@ const client = new Client()
 
 const databases = new Databases(client);
 
-databases.listDocuments(
+databases.listRows(
     '<DATABASE_ID>',
     '<TABLE_ID>',
     [

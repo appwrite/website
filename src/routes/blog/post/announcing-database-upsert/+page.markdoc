@@ -44,7 +44,7 @@ const client = new Client()
 
 const databases = new Databases(client);
 
-const result = await databases.upsertDocument(
+const result = await databases.upsertRow(
     '<DATABASE_ID>',
     '<TABLE_ID>',
     '<DOCUMENT_ID>',
@@ -67,4 +67,4 @@ This feature simplifies your database interactions, enhancing efficiency, reduci
 - [Read the documentation to get started](/docs/products/databases/rows)
 - [Announcing Bulk API: Handle heavy data workloads with ease](/blog/post/announcing-bulk-api)
 - [Build a personal CRM with SvelteKit and Appwrite Databases](/blog/post/build-personal-crm-sveltekit)
-- [Announcing: Document imports from CSV files](/blog/post/announcing-csv-imports)
+- [Announcing: Row imports from CSV files](/blog/post/announcing-csv-imports)

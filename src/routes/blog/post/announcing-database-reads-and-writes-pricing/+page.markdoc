@@ -40,14 +40,14 @@ Database operations in Appwrite are categorized into two types:
 ## Read operations
 
 Any action that retrieves data from your database, including:
-- Fetching rows with `getDocument` or `listDocuments`.
+- Fetching rows with `getRow` or `listRows`.
 
 ## Write operations
 
 Any action that modifies data in your database, including:
-- Creating rows with `createDocument`.
-- Updating rows with `updateDocument`.
-- Deleting rows with `deleteDocument`.
+- Creating rows with `createRow`.
+- Updating rows with `updateRow`.
+- Deleting rows with `deleteRow`.
 
 Most operations are counted based on the number of rows affected. For example, if you fetch a table of 50 rows with a single API call, this counts as 50 read operations, not as a single operation. However, if your query returns no rows, it will count as a single operation.
 

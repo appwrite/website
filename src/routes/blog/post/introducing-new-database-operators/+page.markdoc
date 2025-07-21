@@ -23,7 +23,7 @@ The contains operator is a great addition to the existing text search operators 
 
 ```js
 
-db.listDocuments(
+db.listRows(
     '<DATABASE_ID>',
     '<TABLE_ID>',
 	  [
@@ -46,7 +46,7 @@ The logical OR operator allows us to nest queries in an OR condition. This gives
 To use the OR operator pass `Query.or([...])` to the queries array and provide at least two queries within the nested array.
 
 ```js
-db.listDocuments(
+db.listRows(
 	 '<DATABASE_ID>',
 	 '<TABLE_ID>',
         [

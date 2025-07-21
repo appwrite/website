@@ -91,7 +91,7 @@ Notice that the `category` column is an enumerated type with a set of predefined
 
 To ensure that users can only access their own expenses, Open the table's **Settings** tab and scroll to **Permissions**. Click **Add role**, select **Users** and check **Create** permission.
 
-Next, enable **Document Security** to allow users to access their rows. We'll ensure this by giving users the **Read** permission when creating rows in our code.
+Next, enable **Row Security** to allow users to access their rows. We'll ensure this by giving users the **Read** permission when creating rows in our code.
 
 ![permissions-row-security](/images/blog/build-fullstack-svelte-appwrite/permissions-row-security.png)
 
@@ -588,7 +588,7 @@ onMount(async () => {
 async function fetchExpenses() {
   try {
     loading = true
-    const response = await databases.listDocuments(DATABASE_ID, EXPENSES_TABLE_ID, [
+    const response = await databases.listRows(DATABASE_ID, EXPENSES_TABLE_ID, [
       Query.orderDesc('$createdAt')
     ])
     expenses = response.rows
@@ -636,12 +636,12 @@ async function handleSubmit() {
     }
 
     if (editingExpense) {
-      await databases.updateDocument(DATABASE_ID, EXPENSES_TABLE_ID, editingExpense.$id, {
+      await databases.updateRow(DATABASE_ID, EXPENSES_TABLE_ID, editingExpense.$id, {
         ...expenseData,
         updatedAt: now
       })
     } else {
-      await databases.createDocument(
+      await databases.createRow(
         DATABASE_ID,
         EXPENSES_TABLE_ID,
         'unique()',
@@ -674,7 +674,7 @@ Finally, let's add utility functions for managing expenses:
 ```js
 async function deleteExpense(id) {
   try {
-    await databases.deleteDocument(DATABASE_ID, EXPENSES_TABLE_ID, id)
+    await databases.deleteRow(DATABASE_ID, EXPENSES_TABLE_ID, id)
     await fetchExpenses()
   } catch (e) {
     error = 'Failed to delete expense'

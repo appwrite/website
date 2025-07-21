@@ -187,7 +187,7 @@ import { TABLE_NAME, DATABASE_NAME } from './constants';
 
 export const db = {
 	list: async () => {
-		var entries = await database.listDocuments(DATABASE_NAME, TABLE_NAME, [
+		var entries = await database.listRows(DATABASE_NAME, TABLE_NAME, [
 			Query.limit(500),
 			Query.select(['discordName'])
 		]);
@@ -203,7 +203,7 @@ export const db = {
 
 	add: async (discordName, email) => {
 		try {
-			await database.createDocument(DATABASE_NAME, TABLE_NAME, ID.unique(), {
+			await database.createRow(DATABASE_NAME, TABLE_NAME, ID.unique(), {
 				discordName: discordName,
 				email: email
 			});

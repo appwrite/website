@@ -81,7 +81,7 @@ const database = new Appwrite.Databases(client);
 document.querySelector('button').addEventListener('click', async () => {
     const promises = [];
     for (let i = 0; i < 200; i++) {
-        const promise = database.createDocument(
+        const promise = database.createRow(
         'testDb', // Your database ID
         'testTable', // Your table ID
         Appwrite.ID.unique(),

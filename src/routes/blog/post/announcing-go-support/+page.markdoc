@@ -230,14 +230,14 @@ import (
 )
 
 type Profile struct {
-	*models.Document
+	*models.Row
 	Name      string `json:"name"`
 	Verified  bool   `json:"verified"`
 }
 
 type ProfileList struct {
-	*models.DocumentList
-	Documents []Profile `json:"rows"`
+	*models.RowList
+	Rows []Profile `json:"rows"`
 }
 
 func Main(Context openruntimes.Context) openruntimes.Response {
@@ -249,7 +249,7 @@ func Main(Context openruntimes.Context) openruntimes.Response {
 
 	databases := appwrite.NewDatabases(client)
 
-	response, err := databases.ListDocuments("main", "profiles")
+	response, err := databases.ListRows("main", "profiles")
 	if err != nil {
 		Context.Error(err)
 		return Context.Res.Text("Internal error" Context.Res.WithStatusCode(500))
@@ -262,11 +262,11 @@ func Main(Context openruntimes.Context) openruntimes.Response {
 		return Context.Res.Text("Internal error", Context.Res.WithStatusCode(500))
 	}
 
-	for _, profile := range profiles.Documents {
+	for _, profile := range profiles.Rows {
 		Context.Log(profile.Id, profile.Name, profile.Verified)
 	}
 
-	return Context.Res.Json(profiles.Documents)
+	return Context.Res.Json(profiles.Rows)
 }
 ```
 
@@ -285,4 +285,4 @@ Hopefully, by this point, you’re excited to start building with Go. Here are a
 Ready to get your hands on the new Go runtime and Go SDK? We’ve created a few resources to help you get your first Go project off the ground and leverage Golang’s speed and performance in your apps. Check them out:
 
 - [Join the Appwrite Community on Discord](https://appwrite.io/discord)
-- [More about Init](https://file+.vscode-resource.vscode-cdn.net/Users/ebenezerdon/Documents/ed-repos/ed-technical-articles/appwrite/link_to_init)
+- [More about Init](https://appwrite.io/init)
