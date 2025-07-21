@@ -272,12 +272,12 @@ const databaseId = env.PUBLIC_APPWRITE_DATABASE_ID;
 const githubDataTableId = env.PUBLIC_APPWRITE_TABLE_ID_GITHUBDATA;
 
 export const db = {
-    getUserData: async(documentId) => {
+    getUserData: async(rowId) => {
         try{
             return await databases.getDocument(
                 databaseId,
                 githubDataTableId,
-                documentId
+                rowId
             );
         } catch(err){
             return false;
@@ -515,12 +515,12 @@ export const db = {**
 		    )
 		},
 
-		getDestiny: async(documentId) => {
+		getDestiny: async(rowId) => {
 		    try{
 		        return await databases.getDocument(
 		            databaseId,
 		            destinyTableId,
-		            documentId
+		            rowId
 		        );
 		    } catch(err){
 		        return {

@@ -25,7 +25,7 @@ Our Go runtime (just like our other runtimes) has been developed by our team and
 
 ## Event-driven nature
 
-Appwrite Functions can be executed by various types of events, which allows you to integrate them into your applications in many different ways. These events include all HTTP actions (to consume like a REST API), CRON schedules (to run them on set time periods), and any events across the various Appwrite products in your project (for example, user creation, document deletion, or file upload).
+Appwrite Functions can be executed by various types of events, which allows you to integrate them into your applications in many different ways. These events include all HTTP actions (to consume like a REST API), CRON schedules (to run them on set time periods), and any events across the various Appwrite products in your project (for example, user creation, row deletion, or file upload).
 
 ## Global environment variables
 
@@ -326,7 +326,7 @@ func Main(Context openruntimes.Context) openruntimes.Response {
 
 		shortId := path[1:]
 
-		document, err := databases.GetDocument(dbId, collId, shortId)
+		row, err := databases.GetDocument(dbId, collId, shortId)
 
 		if err != nil {
 			Context.Error(err)
@@ -334,7 +334,7 @@ func Main(Context openruntimes.Context) openruntimes.Response {
 		}
 
 		var responseBody ResponseBody
-		document.Decode(&responseBody)
+		row.Decode(&responseBody)
 
 		return Context.Res.Redirect(responseBody.LongUrl, Context.Res.WithStatusCode(302))
 	}
@@ -345,7 +345,7 @@ func Main(Context openruntimes.Context) openruntimes.Response {
 
 You can then deploy this function using the `appwrite deploy function` command.
 
-After deployment, go to the Settings tab on the Function page in your Appwrite project and enable the following scopes for the dynamic API key: `databases.read`, `databases.write`, `tables.read`, `tables.write`, `columns.read`, `columns.write`, `documents.read`, `documents.write`,
+After deployment, go to the Settings tab on the Function page in your Appwrite project and enable the following scopes for the dynamic API key: `databases.read`, `databases.write`, `tables.read`, `tables.write`, `columns.read`, `columns.write`, `rows.read`, `rows.write`,
 
 # More resources
 

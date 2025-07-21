@@ -16,7 +16,7 @@ One such integration you can implement using Appwrite Functions is **Searching**
 
 # Setting up the Template
 
-Meilisearch is a flexible and powerful user-focused search engine that can be added to any website or application. The purpose of this function template is to sync documents in an Appwrite database table to a Meilisearch index. Using this function template, users can explore, search, and retrieve information from the connected database table. Through this template, documents from the Appwrite table are systematically indexed within Meilisearch.
+Meilisearch is a flexible and powerful user-focused search engine that can be added to any website or application. The purpose of this function template is to sync rows in an Appwrite database table to a Meilisearch index. Using this function template, users can explore, search, and retrieve information from the connected database table. Through this template, rows from the Appwrite table are systematically indexed within Meilisearch.
 
 To use the function, you need the following set of keys:
 
@@ -50,12 +50,12 @@ Here’s the keys you need:
 
 ![Keys](/images/blog/add-a-search-function-to-your-app/connect.png)
 
-- `MEILISEARCH_INDEX_NAME` - Name of the Meilisearch index to which the documents will be synchronized. For e.g, in the above picture, the Index name is `Newindex`. You can also find it under `Settings` as `Index Name`.
+- `MEILISEARCH_INDEX_NAME` - Name of the Meilisearch index to which the rows will be synchronized. For e.g, in the above picture, the Index name is `Newindex`. You can also find it under `Settings` as `Index Name`.
 
 
 ## Preparing the Function
 
-The function template syncs documents in an Appwrite database table to a Meilisearch index. It should get you up and running, but you will need to add real data to build a useful search index.
+The function template syncs rows in an Appwrite database table to a Meilisearch index. It should get you up and running, but you will need to add real data to build a useful search index.
 
 If you want to see the source code, you can find it on our [templates GitHub repository](https://github.com/appwrite/templates/tree/main/node/sync-with-meilisearch). Now, let’s navigate to our functions page on **[Appwrite](https://cloud.appwrite.io/)**. From there, we will select the **Templates** tab, search for and select the **Sync with Meilisearch** function template.
 
