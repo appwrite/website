@@ -1,6 +1,6 @@
 ---
 layout: article
-title: Offline Sync
+title: Offline sync
 description: Enable offline synchronization of data between your apps and Appwrite Databases.
 ---
 

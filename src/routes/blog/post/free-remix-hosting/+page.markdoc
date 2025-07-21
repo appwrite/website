@@ -13,7 +13,7 @@ unlisted: true
 
 Remix is a modern full-stack web framework designed to optimize user experience through server-side rendering (SSR), progressive enhancement, and efficient data loading. While deploying Remix applications is straightforward, finding a hosting platform that balances cost, performance, and developer-friendly features can be challenging.
 
-[Appwrite Sites](https://appwrite.io/products/sites) provides an optimized hosting solution tailored for modern web applications, including Remix, with built-in tools for security, scalability, and flexible deployment workflows. This article explores how Appwrite Sites enhances Remix hosting, simplifies development, and compares to other hosting providers.
+[Appwrite Sites](/products/sites) provides an optimized hosting solution tailored for modern web applications, including Remix, with built-in tools for security, scalability, and flexible deployment workflows. This article explores how Appwrite Sites enhances Remix hosting, simplifies development, and compares to other hosting providers.
 
 # Why Appwrite Sites is a great hosting solution for Remix
 
@@ -32,11 +32,13 @@ This flexibility makes Appwrite Sites a powerful hosting option for any Remix ap
 
 ## 3. Performance-focused global CDN
 
-Speed plays a crucial role in user engagement and SEO rankings. Appwrite Sites utilizes a globally distributed [Content Delivery Network (CDN)](https://appwrite.io/docs/products/network/cdn) to efficiently cache and serve your Remix application, ensuring fast load times across all regions.
+Speed plays a crucial role in user engagement and SEO rankings. Appwrite Sites utilizes a globally distributed [Content Delivery Network (CDN)](/docs/products/network/cdn) to efficiently cache and serve your Remix application, ensuring fast load times across all regions.
 
 ## 4. Built-in security and DDoS protection
 
-Security is a priority for production applications. Appwrite Sites includes [DDoS protection](https://appwrite.io/docs/products/network/ddos), helping to mitigate malicious traffic and prevent downtime. Additionally, **custom domain management with automatic SSL encryption** ensures secure communication between users and your application.
+Security is a priority for production applications. Appwrite Sites includes [DDoS protection](/docs/products/network/ddos), helping to mitigate malicious traffic and prevent downtime. Additionally, **custom domain management with automatic SSL encryption** ensures secure communication between users and your application.
+
+{% call_to_action title="Host your Remix app for free with Appwrite Sites" description="Benefit from a complete platform to develop, deploy, and build your websites and web apps." point1="Open source and no vendor lock-in"  point2="Built-in security and DDoS protection" point3="Fully managed cloud solution" point4="Global CDN for improved performance" cta="Get started for free" url="https://cloud.appwrite.io/" /%}
 
 ## 5. Preview deployments for enhanced collaboration
 
@@ -46,7 +48,7 @@ Every update deployed to Appwrite Sites generates a **preview link**, allowing d
 
 Deploying a Remix application on Appwrite Sites is flexible and straightforward:
 
-- [Git-based deployments](https://appwrite.io/docs/products/sites/deploy-from-git): Automatically deploy changes when pushing updates to your repository.
+- [Git-based deployments](/docs/products/sites/deploy-from-git): Automatically deploy changes when pushing updates to your repository.
 - **CLI-based deployment**: Deploy manually using the Appwrite CLI:
     
     ```bash
@@ -81,4 +83,4 @@ Remix applications often require authentication, databases, and backend function
 
 Unlike other hosting platforms that require external services for backend functionality, Appwrite Sites offers a fully integrated solution with built-in authentication, databases, and serverless functions, making Remix deployments more efficient and scalable.
 
-For developers looking for an all-in-one hosting solution tailored for Remix, Appwrite Sites is a perfect choice. Start deploying your Remix applications today by visiting [**Appwrite Sites**](https://appwrite.io/sites).
+For developers looking for an all-in-one hosting solution tailored for Remix, Appwrite Sites is a perfect choice. Start deploying your Remix applications today by visiting [**Appwrite Sites**](/products/sites).

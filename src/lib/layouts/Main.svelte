@@ -196,7 +196,9 @@
         </div>
     </section>
 
-    <header class="web-main-header is-special-padding {resolvedTheme} is-transparent">
+    <header
+        class="web-main-header is-special-padding hidden lg:block {resolvedTheme} is-transparent"
+    >
         <div
             class="web-main-header-wrapper"
             class:is-special-padding={BANNER_KEY.startsWith('init-banner-')}
