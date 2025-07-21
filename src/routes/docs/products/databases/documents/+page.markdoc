@@ -26,7 +26,7 @@ const databases = new Databases(client);
 
 const promise = databases.createDocument(
     '<DATABASE_ID>',
-    '[COLLECTION_ID]',
+    '<COLLECTION_ID>',
     ID.unique(),
     {}
 );
@@ -50,7 +50,7 @@ void main() async {
     try {
         final document = databases.createDocument(
             databaseId: '<DATABASE_ID>',
-            collectionId: '[COLLECTION_ID]',
+            collectionId: '<COLLECTION_ID>',
             documentId: ID.unique(),
             data: {}
         );
@@ -143,6 +143,10 @@ You can find a full guide on querying in the [Queries Guide](/docs/products/data
 By default, results are limited to the **first 25 items**.
 You can change this through [pagination](/docs/products/databases/pagination).
 
+{% info title="Opt-in relationship loading" %}
+Documents with relationships return only their fields by default. To load related documents, use the `Query.select()` method to explicitly specify which relationship data you need. [Learn more about relationship loading](/docs/products/databases/relationships#performance-loading).
+{% /info %}
+
 {% multicode %}
 ```client-web
 import { Client, Databases, Query } from "appwrite";
@@ -180,7 +184,7 @@ void main() async {
     try {
         final documents = await databases.listDocuments(
             databaseId: '<DATABASE_ID>',
-            collectionId: '[COLLECTION_ID]',
+            collectionId: '<COLLECTION_ID>',
             queries: [
                 Query.equal('title', 'Avatar')
             ]
@@ -251,6 +255,125 @@ query {
             _id
             data
         }
+    }
+}
+```
+{% /multicode %}
+
+# Upsert documents {% #upsert-documents %}
+{% info title="Permissions required" %}
+You must grant **create** and **update** permissions to users at the **collection level** before users can upsert documents. You can also grant **update** permissions at the document level instead.
+[Learn more about permissions](#permissions)
+{% /info %}
+
+In most use cases, you will upsert documents programmatically.
+
+{% multicode %}
+```client-web
+import { Client, Databases, ID } from "appwrite";
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>');
+
+const databases = new Databases(client);
+
+const promise = databases.upsertDocument(
+    '<DATABASE_ID>',
+    '<COLLECTION_ID>',
+    ID.unique(),
+    {}
+);
+
+promise.then(function (response) {
+    console.log(response);
+}, function (error) {
+    console.log(error);
+});
+```
+```client-flutter
+import 'package:appwrite/appwrite.dart';
+
+void main() async {
+    final client = Client()
+        .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+        .setProject('<PROJECT_ID>');
+
+    final databases = Databases(client);
+
+    try {
+        final document = databases.upsertDocument(
+            databaseId: '<DATABASE_ID>',
+            collectionId: '<COLLECTION_ID>',
+            documentId: ID.unique(),
+            data: {}
+        );
+    } on AppwriteException catch(e) {
+        print(e);
+    }
+}
+```
+```client-apple
+import Appwrite
+import AppwriteModels
+
+func main() async throws {
+    let client = Client()
+        .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+        .setProject("<PROJECT_ID>")
+
+    let databases = Databases(client)
+
+    do {
+        let document = try await databases.upsertDocument(
+            databaseId: "<DATABASE_ID>",
+            collectionId: "<COLLECTION_ID>",
+            documentId: ID.unique(),
+            data: [:]
+        )
+    } catch {
+        print(error.localizedDescription)
+    }
+}
+```
+```client-android-kotlin
+import io.appwrite.Client
+import io.appwrite.services.Databases
+
+suspend fun main() {
+    val client = Client(applicationContext)
+        .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+        .setProject("<PROJECT_ID>")
+
+    val databases = Databases(client)
+
+    try {
+        val document = databases.upsertDocument(
+            databaseId = "<DATABASE_ID>",
+            collectionId = "<COLLECTION_ID>",
+            documentId = ID.unique(),
+            data = mapOf("a" to "b"),
+        )
+    } catch (e: Exception) {
+        Log.e("Appwrite", "Error: " + e.message)
+    }
+}
+```
+```graphql
+mutation {
+    databasesUpsertDocument(
+        databaseId: "<DATABASE_ID>",
+        collectionId: "<COLLECTION_ID>",
+        documentId: "[DOCUMENT_ID]",
+        data: "{}"
+    ) {
+        _id
+        _collectionId
+        _databaseId
+        _createdAt
+        _updatedAt
+        _permissions
+        data
     }
 }
 ```

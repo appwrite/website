@@ -26,8 +26,8 @@
                 <img
                     class="web-user-box-image"
                     src="/images/avatars/steven.avif"
-                    width="48"
-                    height="48"
+                    width="40"
+                    height="40"
                     alt="Avatar of Steven"
                 />
                 <div class="web-user-box-name flex gap-2">
@@ -67,8 +67,8 @@
                 <img
                     class="web-user-box-image"
                     src="/images/avatars/steven.avif"
-                    width="48"
-                    height="48"
+                    width="40"
+                    height="40"
                     alt="Avatar of Steven"
                 />
                 <div class="web-user-box-name flex gap-2">
@@ -87,6 +87,12 @@
 </ul>
 
 <style>
+    .web-user-box-image {
+        width: 40px;
+        height: 40px;
+        min-width: 40px;
+        min-height: 40px;
+    }
     @media (max-width: 768px) {
         .web-chat-list {
             gap: 2rem;

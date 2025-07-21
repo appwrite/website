@@ -1,0 +1,53 @@
+---
+layout: post
+title: "Announcing Opt-in relationship loading: Granular control for smarter data fetching"
+description: Gain full control over which related documents to fetch and drastically reduce payload sizes.
+date: 2025-07-18
+cover: /images/blog/announcing-opt-in-relationship-loading/cover.png
+timeToRead: 5
+author: darshan-pandya
+category: announcement
+featured: false
+unlisted: true
+---
+
+Being able to move fast is crucial for any developer, and nothing disrupts productivity more than unnecessary waiting. Long loading times, especially when fetching data, are not only frustrating but also slow down your development cycle and degrade user experience in production. Excessive or unintended data loading can lead to bloated JSON payloads, increased latency, and unnecessary consumption of network and compute resources.
+
+To tackle this challenge head-on, we're introducing **Opt-in relationship loading** for Appwrite Databases.
+
+This powerful enhancement empowers developers with explicit, granular control over exactly which related documents they fetch from the database. By selectively loading only essential relationships, you dramatically optimize performance, speed up application response times, and significantly reduce bandwidth usage.
+
+# Explicit control, leaner data
+
+Previously, Appwrite automatically fetched related documents whenever a query was made. This often resulted in large JSON payloads containing data you didn't necessarily need, negatively impacting load times and overall app performance.
+
+With Opt-in relationship loading, documents now only return their immediate fields by default. You explicitly specify exactly which relationships should be included in your queries. This eliminates unintended data fetching, drastically reduces payload sizes, and ensures you load only what matters.
+
+# Optimize your database queries
+
+Opt-in relationship loading addresses the common performance pitfalls associated with "N + 1" query problems. Developers can now precisely tailor queries to fetch related documents efficiently, significantly reducing latency. Typical query times, often slowed by unnecessary data overhead, become noticeably shorter, enabling smoother, faster, and more predictable performance across your application.
+
+# Tailored for performance-sensitive apps
+
+This feature provides fine-grained control over data retrieval. Ideal for backend developers and full-stack teams, and especially critical for developers building mobile or bandwidth-sensitive applications, it minimizes unnecessary data transfers, dramatically improving your app's responsiveness and efficiency. This makes it easier to deliver a seamless user experience even in constrained network environments.
+
+# Key performance benefits
+
+- **Faster response times**: Queries execute quickly because only explicitly requested data is fetched.
+- **Smaller JSON payloads**: Avoid the overhead of unrequested data, decreasing payload sizes significantly.
+- **Reduced bandwidth usage**: Lower your app's network footprint by transferring only essential data.
+- **Fine-grained control**: Precisely select related fields with intuitive, developer-friendly syntax.
+- **Backwards compatibility**: Existing queries continue to function but return leaner data by default, easing your transition.
+
+# Improved experience
+
+Adopting this new feature is seamless and requires no additional code changes for your existing setups. Old SDK versions maintain their existing behavior, ensuring full backward compatibility. Meanwhile, new queries and projects immediately benefit from optimized loading, achieving maximum efficiency without hassle.
+
+Available on both Appwrite Cloud and self-hosted installations, this enhancement streamlines your data fetching experience, significantly reducing compute and bandwidth overhead while maximizing your application's performance and responsiveness.
+
+# More resources
+
+- [Read the documentation to get started](/docs/products/databases/relationships)
+- [How Appwrite streamlines database operations using hooks](/blog/post/hooks-appwrite-databases)
+- [Enhance your developer experience with dev keys](/blog/post/improve-devex-dev-keys)
+- [Introducing Database Backups](/blog/post/introducing-database-backups)
