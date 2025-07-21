@@ -72,7 +72,7 @@
         {
             title: 'Platform',
             rows: [
-		 {	
+                {
                     title: 'Number of projects',
                     free: '2',
                     pro: 'Unlimited',
