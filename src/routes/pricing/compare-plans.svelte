@@ -73,6 +73,13 @@
             title: 'Platform',
             rows: [
                 {
+                    title: 'Number of projects',
+                    free: '2',
+                    pro: 'Unlimited',
+                    scale: 'Unlimited',
+                    enterprise: 'Unlimited'
+                },
+                {
                     title: 'Projects pausing',
                     free: 'Never',
                     pro: 'Never',
