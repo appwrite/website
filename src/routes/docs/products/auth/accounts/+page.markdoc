@@ -19,10 +19,6 @@ You can signup and login a user with an account create through
 [OAuth 2](/docs/products/auth/oauth2)
 authentication.
 
-{% arrow_link href="/docs/products/auth/user-preferences" %}
-Learn more about user preferences
-{% /arrow_link %}
-
 # Permissions {% #permissions %}
 
 You can grant permissions to all users using the `Role.users(<STATUS>)` role or
