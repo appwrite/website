@@ -244,14 +244,14 @@
                     scale: 'Custom',
                     enterprise: 'Custom'
                 },
- 		{
+                {
                     title: 'Encrypted attributes support',
                     free: '-',
                     pro: 'True',
                     scale: 'True',
                     enterprise: 'True'
                 },
-		{
+                {
                     title: 'Bulk API documents',
                     free: '100',
                     pro: '1000',
