@@ -12,6 +12,10 @@ You can store user preferences on a user's account using Appwrite's [Update Pref
 
 Preferences are stored as a key-value JSON object. The maximum allowed size for preferences is 64kB, and an error will be thrown if this limit is exceeded.
 
+## Update user preferences
+
+Use the `updatePrefs` method to store user preferences as a JSON object.
+
 {% multicode %}
 ```client-web
 import { Client, Account } from "appwrite";
@@ -94,7 +98,9 @@ mutation {
 ```
 {% /multicode %}
 
-After a user's preferences are updated, they can be retrieved using the [get account preferences](/docs/references/cloud/client-web/account#getPrefs) endpoint.
+## Get user preferences
+
+Retrieve stored preferences with the `getPrefs` method.
 
 {% multicode %}
 ```client-web
@@ -168,6 +174,8 @@ Learn more about Appwrite Teams
 {% /arrow_link %}
 
 ## Update team preferences
+
+Store team-wide settings using the `updatePrefs` method with a team ID.
 
 {% multicode %}
 ```client-web
@@ -252,6 +260,8 @@ val team = teams.updatePrefs(
 {% /multicode %}
 
 ## Get team preferences
+
+Fetch team preferences by passing a team ID to the `getPrefs` method.
 
 {% multicode %}
 ```client-web
