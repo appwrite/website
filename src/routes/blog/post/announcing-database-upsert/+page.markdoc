@@ -47,7 +47,7 @@ const databases = new Databases(client);
 const result = await databases.upsertRow(
     '<DATABASE_ID>',
     '<TABLE_ID>',
-    '<DOCUMENT_ID>',
+    '<ROW_ID>',
     {
         'status': 'succeeded',
         'amount': 4999,
