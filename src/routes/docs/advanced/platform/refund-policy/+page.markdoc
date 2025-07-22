@@ -17,18 +17,23 @@ However, we recognize that exceptional circumstances may arise. In rare and spec
 Refunds may be considered in the following circumstances:
 
 ## Service delivery failure {% #service-delivery-failure %}
+
 Critical and unresolved service outages affecting paid plans, or confirmed infrastructure issues that significantly impact service availability and performance.
 
 ## Billing errors {% #billing-errors %}
+
 Customers who are incorrectly charged due to:
+
 - Duplicate payments
 - Plan mismatches
 - Proven invoicing errors
 
 ## Unauthorized transactions {% #unauthorized-transactions %}
+
 Payments made without proper authorization or the account owner's permission, reported within 30 days of the transaction.
 
 ## First-time customer dissatisfaction {% #first-time-customer-dissatisfaction %}
+
 First-time cloud users may request a refund within the first 14 days of their subscription, provided they can demonstrate that the platform did not meet critical expectations and no significant usage occurred (subject to technical review at Appwrite's sole discretion).
 
 # Ineligible scenarios {% #ineligible-scenarios %}
@@ -39,27 +44,24 @@ The following scenarios do **not** qualify for refunds:
 - **Incorrect setup or inactivity:** Customer misconfiguration, failure to complete onboarding, or lack of usage
 - **Expired refund window:** Requests submitted more than 30 days after the transaction date
 - **Third-party limitations:** Issues caused by third-party tools, plugins, or unsupported integrations
-- **Terms of service violations:** Any usage found to be in breach of Appwrite's [Terms of Service](/terms) or [Fair use](/docs/advanced/platform/fair-use-policy) policy
+- **Terms of service violations:** Any usage found to be in breach of Appwrite's [Terms](/terms) or [Fair use](/docs/advanced/platform/fair-use-policy) policy
 
 # Request process {% #request-process %}
 
 To request a refund, please follow these steps:
 
 1. **Submit a ticket** via the Appwrite Console
-2. **Provide detailed information** about the issue, including relevant evidence and documentation
-3. **Allow for review time** - we aim to respond within 5 business days, with final resolution within 10 business days
+1. **Provide detailed information** about the issue, including relevant evidence and documentation
+1. **Allow for review time** - we aim to respond within 5 business days, with final resolution within 10 business days
 
 ## Alternative solutions {% #alternative-solutions %}
 
 Whenever possible, we will first consider non-monetary solutions such as:
+
 - Service credits
 - Extended trial periods
 - Plan adjustments
 
-# Policy updates {% #policy-updates %}
+{% partial file="policy-modifications.md" /%}
 
-Appwrite reserves the right to update this policy to reflect changes in our services or business practices at any time.
-
-# Contact us {% #contact-us %}
-
-For questions or further clarification, please [contact our support team](/contact-us). 
+{% partial file="policy-contact-us.md" /%}
