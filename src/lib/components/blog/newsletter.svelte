@@ -1,4 +1,4 @@
-<script context="module" lang="ts">
+<script module lang="ts">
     import { PUBLIC_GROWTH_ENDPOINT } from '$env/static/public';
     import { Button } from '$lib/components/ui';
 
@@ -17,10 +17,12 @@
 </script>
 
 <script lang="ts">
-    let email = '';
-    let submitted = false;
-    let error: string | undefined;
-    let submitting = false;
+    import { preventDefault } from 'svelte/legacy';
+
+    let email = $state('');
+    let submitted = $state(false);
+    let error: string | undefined = $state();
+    let submitting = $state(false);
 
     const handleSubmit = async () => {
         submitting = true;
@@ -84,7 +86,7 @@
                     </span>
                 </div>
             {:else}
-                <form method="post" class="contents" on:submit|preventDefault={handleSubmit}>
+                <form method="post" class="contents" onsubmit={preventDefault(handleSubmit)}>
                     <div
                         class="border-primary/12 focus-within:border-primary/48 flex w-full max-w-sm justify-between gap-1 rounded-xl border bg-white/4 py-1 pr-1 pl-4 backdrop-blur-2xl transition-colors"
                     >

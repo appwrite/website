@@ -2,13 +2,17 @@
     import Media from '$lib/UI/Media.svelte';
     import { formatDate } from '$lib/utils/date';
 
-    export let title: string;
-    export let cover: string;
-    export let href: string;
-    export let date: Date;
-    export let timeToRead: number;
-    export let author: string;
-    export let avatar: string;
+    interface Props {
+        title: string;
+        cover: string;
+        href: string;
+        date: Date;
+        timeToRead: number;
+        author: string;
+        avatar: string;
+    }
+
+    const { title, cover, href, date, timeToRead, author, avatar }: Props = $props();
 </script>
 
 <a class="group flex w-full flex-col gap-8 bg-transparent pb-3 transition" {href}>
