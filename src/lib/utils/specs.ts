@@ -73,50 +73,77 @@ type ModelTypeValue = (typeof ModelType)[ModelTypeType];
 function getExamples(version: string) {
     switch (version) {
         case '0.15.x':
-            return import.meta.glob('$appwrite/docs/examples/0.15.x/**/*.md', {
-                query: '?raw',
-                import: 'default'
-            });
+            return import.meta.glob(
+                '../../../node_modules/@appwrite.io/repo/docs/examples/0.15.x/**/*.md',
+                {
+                    query: '?raw',
+                    import: 'default'
+                }
+            );
         case '1.0.x':
-            return import.meta.glob('$appwrite/docs/examples/1.0.x/**/*.md', {
-                query: '?raw',
-                import: 'default'
-            });
+            return import.meta.glob(
+                '../../../node_modules/@appwrite.io/repo/docs/examples/1.0.x/**/*.md',
+                {
+                    query: '?raw',
+                    import: 'default'
+                }
+            );
         case '1.1.x':
-            return import.meta.glob('$appwrite/docs/examples/1.1.x/**/*.md', {
-                query: '?raw',
-                import: 'default'
-            });
+            return import.meta.glob(
+                '../../../node_modules/@appwrite.io/repo/docs/examples/1.1.x/**/*.md',
+                {
+                    query: '?raw',
+                    import: 'default'
+                }
+            );
         case '1.2.x':
-            return import.meta.glob('$appwrite/docs/examples/1.2.x/**/*.md', {
-                query: '?raw',
-                import: 'default'
-            });
+            return import.meta.glob(
+                '../../../node_modules/@appwrite.io/repo/docs/examples/1.2.x/**/*.md',
+                {
+                    query: '?raw',
+                    import: 'default'
+                }
+            );
         case '1.3.x':
-            return import.meta.glob('$appwrite/docs/examples/1.3.x/**/*.md', {
-                query: '?raw',
-                import: 'default'
-            });
+            return import.meta.glob(
+                '../../../node_modules/@appwrite.io/repo/docs/examples/1.3.x/**/*.md',
+                {
+                    query: '?raw',
+                    import: 'default'
+                }
+            );
         case '1.4.x':
-            return import.meta.glob('$appwrite/docs/examples/1.4.x/**/*.md', {
-                query: '?raw',
-                import: 'default'
-            });
+            return import.meta.glob(
+                '../../../node_modules/@appwrite.io/repo/docs/examples/1.4.x/**/*.md',
+                {
+                    query: '?raw',
+                    import: 'default'
+                }
+            );
         case '1.5.x':
-            return import.meta.glob('$appwrite/docs/examples/1.5.x/**/*.md', {
-                query: '?raw',
-                import: 'default'
-            });
+            return import.meta.glob(
+                '../../../node_modules/@appwrite.io/repo/docs/examples/1.5.x/**/*.md',
+                {
+                    query: '?raw',
+                    import: 'default'
+                }
+            );
         case '1.6.x':
-            return import.meta.glob('$appwrite/docs/examples/1.6.x/**/*.md', {
-                query: '?raw',
-                import: 'default'
-            });
+            return import.meta.glob(
+                '../../../node_modules/@appwrite.io/repo/docs/examples/1.6.x/**/*.md',
+                {
+                    query: '?raw',
+                    import: 'default'
+                }
+            );
         case '1.7.x':
-            return import.meta.glob('$appwrite/docs/examples/1.7.x/**/*.md', {
-                query: '?raw',
-                import: 'default'
-            });
+            return import.meta.glob(
+                '../../../node_modules/@appwrite.io/repo/docs/examples/1.7.x/**/*.md',
+                {
+                    query: '?raw',
+                    import: 'default'
+                }
+            );
     }
 }
 
@@ -217,7 +244,7 @@ export function getSchema(id: string, api: OpenAPIV3.Document): OpenAPIV3.Schema
 }
 
 const specs = import.meta.glob(
-    '$appwrite/app/config/specs/open-api3*-(client|server|console).json'
+    '../../../node_modules/@appwrite.io/repo/app/config/specs/open-api3*-(client|server|console).json'
 );
 
 export async function getApi(version: string, platform: string): Promise<OpenAPIV3.Document> {
