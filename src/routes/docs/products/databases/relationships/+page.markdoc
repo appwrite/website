@@ -35,7 +35,6 @@ Consider using relationships when the same information is found in multiple plac
 
 By default, Appwrite returns only a row's own fields when you retrieve rows. Related rows are **not automatically loaded** unless you explicitly request them using query selection. This eliminates unintentional payload bloat and gives you precise control over performance.
 
-
 {% arrow_link href="/docs/products/databases/queries#relationship-select" %}
 Learn how to load relationships with queries
 {% /arrow_link %}

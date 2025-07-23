@@ -5,7 +5,7 @@ description: Manage complex data relationships with Appwrite Databases. Discover
 difficulty: advanced
 readtime: 20
 ---
-Relationships describe how documents in different collections are associated, so that related documents can be read, updated, or deleted together. Entities in real-life often associate with each other in an organic and logical way, like a person and their dog, an album and its songs, or friends in a social network. 
+Relationships describe how documents in different collections are associated, so that related documents can be read, updated, or deleted together. Entities in real-life often associate with each other in an organic and logical way, like a person and their dog, an album and its songs, or friends in a social network.
 
 These types of association between entities can be modeled in Appwrite using relationships.
 
@@ -15,8 +15,8 @@ Appwrite Relationships is an experimental feature. The API and behavior are subj
 
 # Relationship Attributes {% #relationship-attributes %}
 
-Relationships are represented in a collection using **relationship attributes**. 
-The relationship attribute contains the ID of related documents, which it references during read, update, and delete operations. 
+Relationships are represented in a collection using **relationship attributes**.
+The relationship attribute contains the ID of related documents, which it references during read, update, and delete operations.
 This attribute is **null** if a document has no related documents.
 
 # When to use a relationship {% #when-to-use-relationships %}
@@ -30,6 +30,14 @@ Duplicated records waste storage, but more importantly, makes the database much 
 # Tradeoff {% #trade-offs %}
 
 Consider using relationships when the same information is found in multiple places to avoid duplicates. However, relationships come with the tradeoff of slowing down queries. For applications where the best read and write performance is important, it may be acceptable to tolerate duplicate data.
+
+# Opt-in Loading {% #performance-loading %}
+
+By default, Appwrite returns only a document's own fields when you retrieve documents. Related documents are **not automatically loaded** unless you explicitly request them using query selection. This eliminates unintentional payload bloat and gives you precise control over performance.
+
+{% arrow_link href="/docs/products/databases/legacy/queries#relationship-select" %}
+Learn how to load relationships with queries
+{% /arrow_link %}
 
 # Directionality {% #directionality %}
 
@@ -79,7 +87,7 @@ You can create relationships in the Appwrite Console by adding a relationship at
 {% /tabsitem %}
 
 {% tabsitem #sdk title="SDK" %}
-Here's an example that adds a relationship between the collections **movies** and **reviews**. 
+Here's an example that adds a relationship between the collections **movies** and **reviews**.
 A relationship attribute with the key `reviews` is added to the movies collection, and another relationship attribute with the key `movie` is added to the reviews collection.
 
 {% multicode %}
@@ -98,7 +106,7 @@ databases.createRelationshipAttribute(
     'reviews',    // Related collection ID
     'oneToMany',  // Relationship type
     true,         // Is two-way
-    'reviews',    // Attribute key 
+    'reviews',    // Attribute key
     'movie',      // Two-way attribute key
     'cascade'     // On delete action
 );
@@ -121,7 +129,7 @@ $databases->createRelationshipAttribute(
     relatedCollectionId: 'reviews', // Related collection ID
     type: 'oneToMany',              // Relationship type
     twoWay: true,                   // Is two-way
-    key: 'reviews',                 // Attribute key 
+    key: 'reviews',                 // Attribute key
     twoWayKey: 'movie',             // Two-way attribute key
     onDelete: 'cascade'             // On delete action
 );
@@ -144,7 +152,7 @@ databases.create_relationship_attribute(
     related_collection_id='reviews',  # Related collection ID
     type='oneToMany',                 # Relationship type
     two_way=True,                     # Is two-way
-    key='reviews',                    # Attribute key 
+    key='reviews',                    # Attribute key
     two_way_key='movie',              # Two-way attribute key
     on_delete='cascade'               # On delete action
 )
@@ -168,7 +176,7 @@ databases.create_relationship_attribute(
     related_collection_id: 'reviews',  # Related collection ID
     type: 'oneToMany',                 # Relationship type
     two_way: true,                     # Is two-way
-    key: 'reviews',                    # Attribute key 
+    key: 'reviews',                    # Attribute key
     two_way_key: 'movie',              # Two-way attribute key
     on_delete: 'cascade'               # On delete action
 )
@@ -185,14 +193,14 @@ const client = new Client()
 const databases = new Databases(client);
 
 databases.createRelationshipAttribute(
-    "marvel",    // Database ID         
-    "movies",    // Collection ID           
-    "reviews",   // Related collection ID       
-    "oneToMany", // Relationship type           
-    true,        // Is two-way          
-    "reviews",   // Attribute key           
-    "movie",     // Two-way attribute key           
-    "cascade"    // On delete action            
+    "marvel",    // Database ID
+    "movies",    // Collection ID
+    "reviews",   // Related collection ID
+    "oneToMany", // Relationship type
+    true,        // Is two-way
+    "reviews",   // Attribute key
+    "movie",     // Two-way attribute key
+    "cascade"    // On delete action
 );
 ```
 
@@ -207,14 +215,14 @@ final client = Client()
 final databases = Databases(client);
 
 await databases.createRelationshipAttribute(
-    databaseId: 'marvel',           // Database ID                     
-    collectionId: 'movies',         // Collection ID                        
-    relatedCollectionId: 'reviews', // Related collection ID                    
-    type: 'oneToMany',              // Relationship type            
-    twoWay: true,                   // Is two-way               
-    key: 'reviews',                 // Attribute key                    
-    twoWayKey: 'movie',             // Two-way attribute key            
-    onDelete: 'cascade',            // On delete action                 
+    databaseId: 'marvel',           // Database ID
+    collectionId: 'movies',         // Collection ID
+    relatedCollectionId: 'reviews', // Related collection ID
+    type: 'oneToMany',              // Relationship type
+    twoWay: true,                   // Is two-way
+    key: 'reviews',                 // Attribute key
+    twoWayKey: 'movie',             // Two-way attribute key
+    onDelete: 'cascade',            // On delete action
 );
 ```
 
@@ -230,14 +238,14 @@ val client = Client()
 val databases = Databases(client)
 
 databases.createRelationshipAttribute(
-    databaseId = "marvel",           // Database ID                 
-    collectionId = "movies",         // Collection ID                      
-    relatedCollectionId = "reviews", // Related collection ID               
-    type = "oneToMany",              // Relationship type           
-    twoWay = true,                   // Is two-way              
-    key = "reviews",                 // Attribute key           
-    twoWayKey = "movie",             // Two-way attribute key       
-    onDelete = "cascade"             // On delete action        
+    databaseId = "marvel",           // Database ID
+    collectionId = "movies",         // Collection ID
+    relatedCollectionId = "reviews", // Related collection ID
+    type = "oneToMany",              // Relationship type
+    twoWay = true,                   // Is two-way
+    key = "reviews",                 // Attribute key
+    twoWayKey = "movie",             // Two-way attribute key
+    onDelete = "cascade"             // On delete action
 )
 ```
 
@@ -252,16 +260,16 @@ let client = Client()
 let databases = Databases(client)
 
 databases.createRelationshipAttribute(
-    databaseId: "marvel",           // Database ID              
-    collectionId: "movies",         // Collection ID            
-    relatedCollectionId: "reviews", // Related collection ID    
-    type: "oneToMany",              // Relationship type        
-    twoWay: true,                   // Is two-way               
-    key: "reviews",                 // Attribute key            
-    twoWayKey: "movie",             // Two-way attribute key        
+    databaseId: "marvel",           // Database ID
+    collectionId: "movies",         // Collection ID
+    relatedCollectionId: "reviews", // Related collection ID
+    type: "oneToMany",              // Relationship type
+    twoWay: true,                   // Is two-way
+    key: "reviews",                 // Attribute key
+    twoWayKey: "movie",             // Two-way attribute key
     onDelete
 
-: "cascade"             // On delete action         
+: "cascade"             // On delete action
 )
 ```
 
@@ -436,8 +444,8 @@ await databases.createDocument(
 import 'package:appwrite/appwrite.dart';
 
 final client = Client()
-    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint    
-    .setProject('<PROJECT_ID>');               // Your project ID  
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('<PROJECT_ID>');               // Your project ID
 
 final databases = Databases(client);
 
@@ -460,8 +468,8 @@ await databases.createDocument(
 import Appwrite
 
 let client = Client()
-    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint        
-    .setProject("<PROJECT_ID>")                // Your project ID      
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
+    .setProject("<PROJECT_ID>")                // Your project ID
 
 let databases = Database(client: client)
 
@@ -486,8 +494,8 @@ import io.appwrite.services.Database
 import io.appwrite.ID
 
 val client = Client()
-    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint    
-    .setProject("<PROJECT_ID>")                // Your project ID  
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
+    .setProject("<PROJECT_ID>")                // Your project ID
 
 val databases = Database(client)
 
@@ -728,8 +736,8 @@ await databases.createDocument(
         title: 'Spiderman',
         year: 2002,
         reviews: [
-            { 
-                author: 'Bob', 
+            {
+                author: 'Bob',
                 text: 'Great movie!',
                 $permissions: [
                     Permission.read(Role.any())
@@ -756,8 +764,8 @@ await databases.createDocument(
     'title': 'Spiderman',
     'year': 2002,
     'reviews': [
-      { 
-         'author': 'Bob', 
+      {
+         'author': 'Bob',
          'text': 'Great movie!',
          '\$permissions': [
            Permission.read(Role.any())
@@ -784,7 +792,7 @@ databases.createDocument(
         "title": "Spiderman",
         "year": 2002,
         "reviews": [
-            [ 
+            [
                 "author": "Bob",
                 "text": "Great movie!",
                 "$permissions": [
@@ -812,7 +820,7 @@ databases.createDocument(
         "title": "Spiderman",
         "year": 2002,
         "reviews": [
-            [ 
+            [
                 "author": "Bob",
                 "text": "Great movie!",
                 "$permissions": [
@@ -825,11 +833,11 @@ databases.createDocument(
 ```
 {% /multicode %}
 
-When creating, updating, or deleting in a relationship, you must have permission to access all documents referenced. 
+When creating, updating, or deleting in a relationship, you must have permission to access all documents referenced.
 If the user does not have read permission to any document, an exception will be thrown.
 
 # Limitations {% #limitations %}
 
-Relationships can be nested between collections, but are restricted to a **max depth of three levels**. 
-Relationship attribute key, type, and directionality can't be updated. 
+Relationships can be nested between collections, but are restricted to a **max depth of three levels**.
+Relationship attribute key, type, and directionality can't be updated.
 On-delete behavior is the only option that can be updated for relationship attributes.
