@@ -335,7 +335,7 @@ Avoid refreshing before every request, which might cause rate limit problems.
 
 {% multicode %}
 ```client-web
-const promise = account.updateSession('[SESSION_ID]');
+const promise = account.updateSession('<SESSION_ID>');
 
 promise.then(function (response) {
     console.log(response); // Success
@@ -353,7 +353,7 @@ final client = Client()
 Account account = Account(client);
 
 final result = await account.updateSession(
-    sessionId: '[SESSION_ID]'
+    sessionId: '<SESSION_ID>'
 );
 ```
 ```client-apple

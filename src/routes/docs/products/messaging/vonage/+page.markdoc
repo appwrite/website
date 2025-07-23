@@ -82,8 +82,8 @@ client
 ;
 
 const message = await messaging.createSms(
-        '[MESSAGE_ID]',                          // messageId
-        '[CONTENT]',                             // content
+        '<MESSAGE_ID>',                          // messageId
+        '<CONTENT>',                             // content
         [],                                      // topics (optional)
         [],                                      // users (optional)
         [],                                      // targets (optional)
@@ -106,8 +106,8 @@ client
 ;
 
 const message = await messaging.createSms(
-        '[MESSAGE_ID]',                          // messageId
-        '[CONTENT]',                             // content
+        '<MESSAGE_ID>',                          // messageId
+        '<CONTENT>',                             // content
         [],                                      // topics (optional)
         [],                                      // users (optional)
         [],                                      // targets (optional)
@@ -132,8 +132,8 @@ $client
 $messaging = new Messaging($client);
 
 $result = $messaging->createSms(
-    messageId: '[MESSAGE_ID]',
-    content: '[CONTENT]',
+    messageId: '<MESSAGE_ID>',
+    content: '<CONTENT>',
     topics: [],                                   // optional
     users: [],                                    // optional
     targets: [],                                  // optional
@@ -156,8 +156,8 @@ client = Client()
 messaging = Messaging(client)
 
 result = messaging.create_sms(
-    message_id = '[MESSAGE_ID]',
-    content = '[CONTENT]',
+    message_id = '<MESSAGE_ID>',
+    content = '<CONTENT>',
     topics = [],                                # optional
     users = [],                                 # optional
     targets = [],                               # optional
@@ -178,8 +178,8 @@ client = Client.new
 messaging = Messaging.new(client)
 
 response = messaging.create_sms(
-    message_id: '[MESSAGE_ID]',
-    content: '[CONTENT]',
+    message_id: '<MESSAGE_ID>',
+    content: '<CONTENT>',
     topics: [],                                   # optional
     users: [],                                    # optional
     targets: [],                                  # optional
@@ -226,8 +226,8 @@ void main() {                                    // Init SDK
   ;
 
   Future result = messaging.createSms(
-    messageId: '[MESSAGE_ID]',
-    content: '[CONTENT]',
+    messageId: '<MESSAGE_ID>',
+    content: '<CONTENT>',
     topics: [],                                  // optional
     users: [],                                   // optional
     targets: [],                                 // optional

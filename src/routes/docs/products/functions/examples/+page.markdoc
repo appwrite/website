@@ -279,7 +279,7 @@ export default async function ({ req, res }) {
 
   const database = new Database(client);
   
-  const existingVotes = await database.listDocuments('[VOTES_COLLECTION_ID]', [
+  const existingVotes = await database.listDocuments('<VOTES_COLLECTION_ID>', [
     Query.equals('userId', vote.userId),
     Query.equals('topicId', vote.topicId)
   ]);
@@ -288,7 +288,7 @@ export default async function ({ req, res }) {
     return res.json({ ok: false, message: 'You have already voted on this topic.' }, 400);
   }
 
-  const voteDocument = await database.createDocument('[VOTES_COLLECTION_ID]', {
+  const voteDocument = await database.createDocument('<VOTES_COLLECTION_ID>', {
     userId,
     topicId,
     vote,
@@ -322,7 +322,7 @@ def main(context):
 
     database = Databases(client)
     
-    existing_votes = database.list_documents('[VOTES_COLLECTION_ID]', [
+    existing_votes = database.list_documents('<VOTES_COLLECTION_ID>', [
         Query.equals('userId', vote['userId']),
         Query.equals('topicId', vote['topicId'])
     ])
@@ -333,7 +333,7 @@ def main(context):
           'message': 'You have already voted on this topic.'
         }, 400)
 
-    vote_document = database.create_document('[VOTES_COLLECTION_ID]', {
+    vote_document = database.create_document('<VOTES_COLLECTION_ID>', {
         'userId': vote['userId'],
         'topicId': vote['topicId'],
         'vote': vote['vote'],
@@ -370,7 +370,7 @@ return function ($context) {
 
     $database = new Database($client);
 
-    $existingVotes = $database->listDocuments('[VOTES_COLLECTION_ID]', [
+    $existingVotes = $database->listDocuments('<VOTES_COLLECTION_ID>', [
         Query->equal('userId', $vote['userId']),
         Query->equal('topicId', $vote['topicId'])
     ]);
@@ -382,7 +382,7 @@ return function ($context) {
         ], 400);
     }
 
-    $voteDocument = $database->createDocument('[VOTES_COLLECTION_ID]', [
+    $voteDocument = $database->createDocument('<VOTES_COLLECTION_ID>', [
         'userId' => $vote['userId'],
         'topicId' => $vote['topicId'],
         'vote' => $vote['vote'],
@@ -418,7 +418,7 @@ Future main(final context) async {
 
     final database = Database(client);
 
-    final existingVotes = await database.listDocuments('[VOTES_COLLECTION_ID]', [
+    final existingVotes = await database.listDocuments('<VOTES_COLLECTION_ID>', [
         Query.equals('userId', vote['userId']),
         Query.equals('topicId', vote['topicId'])
     ]);
@@ -430,7 +430,7 @@ Future main(final context) async {
         }, 400);
     }
 
-    final voteDocument = await database.createDocument('[VOTES_COLLECTION_ID]', {
+    final voteDocument = await database.createDocument('<VOTES_COLLECTION_ID>', {
         'userId': vote['userId'],
         'topicId': vote['topicId'],
         'vote': vote['vote'],
@@ -465,7 +465,7 @@ def main(context)
 
     database = Appwrite::Database.new(client)
     
-    existing_votes = database.list_documents('[VOTES_COLLECTION_ID]', [
+    existing_votes = database.list_documents('<VOTES_COLLECTION_ID>', [
         Appwrite::Query.new('userId', '=', vote['userId']),
         Appwrite::Query.new('topicId', '=', vote['topicId'])
     ])
@@ -477,7 +477,7 @@ def main(context)
         }, 400)
     end
 
-    vote_document = database.create_document('[VOTES_COLLECTION_ID]', {
+    vote_document = database.create_document('<VOTES_COLLECTION_ID>', {
         'userId': vote['userId'],
         'topicId': vote['topicId'],
         'vote': vote['vote'],
@@ -553,7 +553,7 @@ export default async function ({ req, res }) {
       .setKey(req.headers['x-appwrite-key']);
 
     const databases = new Databases(client);
-    const document = await databases.createDocument('<DATABASE_ID>', '[MESSAGES_COLLECTION_ID]', ID.unique(), message);
+    const document = await databases.createDocument('<DATABASE_ID>', '<MESSAGES_COLLECTION_ID>', ID.unique(), message);
 
     return res.text("Message sent");
   }
@@ -607,7 +607,7 @@ def main(context):
         )
 
         databases = Databases(client)
-        document = databases.create_document('<DATABASE_ID>', '[MESSAGES_COLLECTION_ID]', ID.unique(), message)
+        document = databases.create_document('<DATABASE_ID>', '<MESSAGES_COLLECTION_ID>', ID.unique(), message)
 
         return context.res.text("Message sent")
 
@@ -661,7 +661,7 @@ return function ($context) {
          ->setKey($context->req->headers['x-appwrite-key']);
 
     $databases = new Databases($client);
-    $document = $databases->createDocument('<DATABASE_ID>', '[MESSAGES_COLLECTION_ID]', ID::unique(), $message);
+    $document = $databases->createDocument('<DATABASE_ID>', '<MESSAGES_COLLECTION_ID>', ID::unique(), $message);
 
     return $context->res->text("Message sent");
   }

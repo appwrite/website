@@ -38,7 +38,7 @@ const databases = new sdk.Databases(client);
 
 const result = await databases.createDocuments(
     '<DATABASE_ID>',
-    '[COLLECTION_ID]',
+    '<COLLECTION_ID>',
     [
         {
             $id: sdk.ID.unique(),
@@ -103,7 +103,7 @@ const databases = new sdk.Databases(client);
 
 const result = await databases.updateDocuments(
     '<DATABASE_ID>',
-    '[COLLECTION_ID]',
+    '<COLLECTION_ID>',
     {
         status: 'published'
     },
@@ -160,7 +160,7 @@ const databases = new sdk.Databases(client);
 
 const result = await databases.upsertDocuments(
     '<DATABASE_ID>',
-    '[COLLECTION_ID]',
+    '<COLLECTION_ID>',
     [
         {
             $id: sdk.ID.unique(),
@@ -225,7 +225,7 @@ const databases = new sdk.Databases(client);
 
 const result = await databases.deleteDocuments(
     '<DATABASE_ID>',
-    '[COLLECTION_ID]',
+    '<COLLECTION_ID>',
     [
         sdk.Query.equal('status', 'archived')
     ]

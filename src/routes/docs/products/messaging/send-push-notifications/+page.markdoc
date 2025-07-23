@@ -344,15 +344,15 @@ client
 ;
 
 const messaging = await messaging.createPush(
-        '[MESSAGE_ID]', // messageId
-        '[TITLE]',      // title
-        '[BODY]',       // body
+        '<MESSAGE_ID>', // messageId
+        '<TITLE>',      // title
+        '<BODY>',       // body
         [],             // topics (optional)
         [],             // users (optional)
         [],             // targets (optional)
         {},             // data (optional)
-        '[ACTION]',     // action (optional)
-        '[ICON]',       // icon (optional)
+        '<ACTION>',     // action (optional)
+        '<ICON>',       // icon (optional)
         '[SOUND]',      // sound (optional)
         '[COLOR]',      // color (optional)
         '[TAG]',        // tag (optional)

@@ -34,7 +34,7 @@ const client = new Client()
 
 const account = new Account(client);
 
-account.createOAuth2Session(OAuthProvider.Apple, '[LINK_ON_SUCCESS]', '[LINK_ON_FAILURE]', true);
+account.createOAuth2Session(OAuthProvider.Apple, '<LINK_ON_SUCCESS>', '<LINK_ON_FAILURE>', true);
 ```
 
 This new feature will improve the experience of building with Appwrite and lower the barrier for new developers to start. As always, we aim to make life easier, not harder, and we look forward to your feedback.

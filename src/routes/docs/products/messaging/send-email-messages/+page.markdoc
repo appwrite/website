@@ -293,8 +293,8 @@ client
 ;
 
 const topic = await messaging.createTopic(
-        '[TOPIC_ID]',                            // topicId
-        '[NAME]'                                 // name
+        '<TOPIC_ID>',                            // topicId
+        '<NAME>'                                 // name
     );
 ```
 ```deno
@@ -312,8 +312,8 @@ client
 ;
 
 const topic = await messaging.createTopic(
-        '[TOPIC_ID]',                            // topicId
-        '[NAME]'                                 // name
+        '<TOPIC_ID>',                            // topicId
+        '<NAME>'                                 // name
     );
 ```
 ```php
@@ -333,7 +333,7 @@ $client
 $messaging = new Messaging($client);
 
 $result = $messaging->createTopic(
-    topicId: '[TOPIC_ID]',
+    topicId: '<TOPIC_ID>',
     name: '[NAME]'
 );
 ```

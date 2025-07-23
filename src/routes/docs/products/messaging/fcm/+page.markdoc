@@ -139,8 +139,8 @@ client
 ;
 
 const provider = await messaging.updateFCMProvider(
-        '[PROVIDER_ID]',                         // providerId
-        '[NAME]',                                // name (optional)
+        '<PROVIDER_ID>',                         // providerId
+        '<NAME>',                                // name (optional)
         false,                                   // enabled (optional)
         {}                                       // serviceAccountJSON (optional)
     );
@@ -160,8 +160,8 @@ client
 ;
 
 const provider = await messaging.updateFCMProvider(
-        '[PROVIDER_ID]',                         // providerId
-        '[NAME]',                                // name (optional)
+        '<PROVIDER_ID>',                         // providerId
+        '<NAME>',                                // name (optional)
         false,                                   // enabled (optional)
         {}                                       // serviceAccountJSON (optional)
     );
@@ -183,8 +183,8 @@ $client
 $messaging = new Messaging($client);
 
 $result = $messaging->updateFCMProvider(
-    providerId: '[PROVIDER_ID]',
-    name: '[NAME]',                               // optional
+    providerId: '<PROVIDER_ID>',
+    name: '<NAME>',                               // optional
     enabled: false,                               // optional
     serviceAccountJSON: []                        // optional
 );
@@ -204,8 +204,8 @@ client = Client()
 messaging = Messaging(client)
 
 result = messaging.update_fcm_provider(
-    provider_id = '[PROVIDER_ID]',
-    name = '[NAME]',                            # optional
+    provider_id = '<PROVIDER_ID>',
+    name = '<NAME>',                            # optional
     enabled = False,                            # optional
     service_account_json = {}                   # optional
 )
@@ -223,8 +223,8 @@ client = Client.new
 messaging = Messaging.new(client)
 
 response = messaging.update_fcm_provider(
-    provider_id: '[PROVIDER_ID]',
-    name: '[NAME]',                               # optional
+    provider_id: '<PROVIDER_ID>',
+    name: '<NAME>',                               # optional
     enabled: false,                               # optional
     service_account_json: {}                      # optional
 )
@@ -265,8 +265,8 @@ void main() async {                               // Init SDK
   ;
 
   Future result = await messaging.updateFCMProvider(
-    providerId: '[PROVIDER_ID]',
-    name: '[NAME]',                              // optional
+    providerId: '<PROVIDER_ID>',
+    name: '<NAME>',                              // optional
     enabled: false,                              // optional
     serviceAccountJSON: {},                      // optional
   );
