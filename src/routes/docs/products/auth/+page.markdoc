@@ -53,5 +53,5 @@ When users sign up using Appwrite, their identity is automatically attached to a
 Appwrite Authentication provides permissions for individual users and groups of users through [teams](/docs/products/auth/teams) and [labels](/docs/products/auth/labels).
 
 # Built in preferences {% #built-in-preferences %}
-Appwrite Authentication comes with built-in [preferences](/docs/products/auth/accounts#preferences) for users to manage their account settings.
+Appwrite Authentication comes with built-in [preferences](/docs/products/auth/preferences) for users to manage their account settings.
 Store notification settings, themes, and other user preferences to be shared across devices.
