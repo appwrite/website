@@ -5,7 +5,7 @@ description: Manage complex data relationships with Appwrite Databases. Discover
 difficulty: advanced
 readtime: 20
 ---
-Relationships describe how rows in different tables are associated, so that related rows can be read, updated, or deleted together. Entities in real-life often associate with each other in an organic and logical way, like a person and their dog, an album and its songs, or friends in a social network. 
+Relationships describe how rows in different tables are associated, so that related rows can be read, updated, or deleted together. Entities in real-life often associate with each other in an organic and logical way, like a person and their dog, an album and its songs, or friends in a social network.
 
 These types of association between entities can be modeled in Appwrite using relationships.
 
@@ -15,8 +15,8 @@ Appwrite Relationships is an experimental feature. The API and behavior are subj
 
 # Relationship Columns {% #relationship-columns %}
 
-Relationships are represented in a table using **relationship columns**. 
-The relationship column contains the ID of related rows, which it references during read, update, and delete operations. 
+Relationships are represented in a table using **relationship columns**.
+The relationship column contains the ID of related rows, which it references during read, update, and delete operations.
 This column is **null** if a row has no related rows.
 
 # When to use a relationship {% #when-to-use-relationships %}
@@ -30,6 +30,15 @@ Duplicated records waste storage, but more importantly, makes the database much 
 # Tradeoff {% #trade-offs %}
 
 Consider using relationships when the same information is found in multiple places to avoid duplicates. However, relationships come with the tradeoff of slowing down queries. For applications where the best read and write performance is important, it may be acceptable to tolerate duplicate data.
+
+# Opt-in Loading {% #performance-loading %}
+
+By default, Appwrite returns only a row's own fields when you retrieve rows. Related rows are **not automatically loaded** unless you explicitly request them using query selection. This eliminates unintentional payload bloat and gives you precise control over performance.
+
+
+{% arrow_link href="/docs/products/databases/queries#relationship-select" %}
+Learn how to load relationships with queries
+{% /arrow_link %}
 
 # Directionality {% #directionality %}
 
@@ -79,7 +88,7 @@ You can create relationships in the Appwrite Console by adding a relationship co
 {% /tabsitem %}
 
 {% tabsitem #sdk title="SDK" %}
-Here's an example that adds a relationship between the tables **movies** and **reviews**. 
+Here's an example that adds a relationship between the tables **movies** and **reviews**.
 A relationship column with the key `reviews` is added to the movies table, and another relationship column with the key `movie` is added to the reviews table.
 
 {% multicode %}
@@ -98,7 +107,7 @@ Tables.createRelationshipColumn(
     'reviews',    // Related table ID
     'oneToMany',  // Relationship type
     true,         // Is two-way
-    'reviews',    // Column key 
+    'reviews',    // Column key
     'movie',      // Two-way column key
     'cascade'     // On delete action
 );
@@ -121,7 +130,7 @@ $tables->createRelationshipColumn(
     relatedTableId: 'reviews', // Related table ID
     type: 'oneToMany',              // Relationship type
     twoWay: true,                   // Is two-way
-    key: 'reviews',                 // Column key 
+    key: 'reviews',                 // Column key
     twoWayKey: 'movie',             // Two-way column key
     onDelete: 'cascade'             // On delete action
 );
@@ -144,7 +153,7 @@ tables.create_relationship_column(
     related_table_id='reviews',  # Related table ID
     type='oneToMany',                 # Relationship type
     two_way=True,                     # Is two-way
-    key='reviews',                    # Column key 
+    key='reviews',                    # Column key
     two_way_key='movie',              # Two-way column key
     on_delete='cascade'               # On delete action
 )
@@ -168,7 +177,7 @@ tables.create_relationship_column(
     related_table_id: 'reviews',  # Related table ID
     type: 'oneToMany',                 # Relationship type
     two_way: true,                     # Is two-way
-    key: 'reviews',                    # Column key 
+    key: 'reviews',                    # Column key
     two_way_key: 'movie',              # Two-way column key
     on_delete: 'cascade'               # On delete action
 )
@@ -185,14 +194,14 @@ const client = new Client()
 const tables = new Tables(client);
 
 tables.createRelationshipColumn(
-    "marvel",    // Database ID         
-    "movies",    // Table ID           
-    "reviews",   // Related table ID       
-    "oneToMany", // Relationship type           
-    true,        // Is two-way          
-    "reviews",   // Column key           
-    "movie",     // Two-way column key           
-    "cascade"    // On delete action            
+    "marvel",    // Database ID
+    "movies",    // Table ID
+    "reviews",   // Related table ID
+    "oneToMany", // Relationship type
+    true,        // Is two-way
+    "reviews",   // Column key
+    "movie",     // Two-way column key
+    "cascade"    // On delete action
 );
 ```
 
@@ -207,14 +216,14 @@ final client = Client()
 final tables = Tables(client);
 
 await tables.createRelationshipColumn(
-    databaseId: 'marvel',           // Database ID                     
-    tableId: 'movies',         // Table ID                        
-    relatedTableId: 'reviews', // Related table ID                    
-    type: 'oneToMany',              // Relationship type            
-    twoWay: true,                   // Is two-way               
-    key: 'reviews',                 // Column key                    
-    twoWayKey: 'movie',             // Two-way column key            
-    onDelete: 'cascade',            // On delete action                 
+    databaseId: 'marvel',           // Database ID
+    tableId: 'movies',         // Table ID
+    relatedTableId: 'reviews', // Related table ID
+    type: 'oneToMany',              // Relationship type
+    twoWay: true,                   // Is two-way
+    key: 'reviews',                 // Column key
+    twoWayKey: 'movie',             // Two-way column key
+    onDelete: 'cascade',            // On delete action
 );
 ```
 
@@ -230,14 +239,14 @@ val client = Client()
 val tables = Tables(client)
 
 tables.createRelationshipColumn(
-    databaseId = "marvel",           // Database ID                 
-    tableId = "movies",         // Table ID                      
-    relatedTableId = "reviews", // Related table ID               
-    type = "oneToMany",              // Relationship type           
-    twoWay = true,                   // Is two-way              
-    key = "reviews",                 // Column key           
-    twoWayKey = "movie",             // Two-way column key       
-    onDelete = "cascade"             // On delete action        
+    databaseId = "marvel",           // Database ID
+    tableId = "movies",         // Table ID
+    relatedTableId = "reviews", // Related table ID
+    type = "oneToMany",              // Relationship type
+    twoWay = true,                   // Is two-way
+    key = "reviews",                 // Column key
+    twoWayKey = "movie",             // Two-way column key
+    onDelete = "cascade"             // On delete action
 )
 ```
 
@@ -252,16 +261,16 @@ let client = Client()
 let tables = Tables(client)
 
 tables.createRelationshipColumn(
-    databaseId: "marvel",           // Database ID              
-    tableId: "movies",         // Table ID            
-    relatedTableId: "reviews", // Related table ID    
-    type: "oneToMany",              // Relationship type        
-    twoWay: true,                   // Is two-way               
-    key: "reviews",                 // Column key            
-    twoWayKey: "movie",             // Two-way column key        
+    databaseId: "marvel",           // Database ID
+    tableId: "movies",         // Table ID
+    relatedTableId: "reviews", // Related table ID
+    type: "oneToMany",              // Relationship type
+    twoWay: true,                   // Is two-way
+    key: "reviews",                 // Column key
+    twoWayKey: "movie",             // Two-way column key
     onDelete
 
-: "cascade"             // On delete action         
+: "cascade"             // On delete action
 )
 ```
 
@@ -436,8 +445,8 @@ await tables.createRow(
 import 'package:appwrite/appwrite.dart';
 
 final client = Client()
-    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint    
-    .setProject('<PROJECT_ID>');               // Your project ID  
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('<PROJECT_ID>');               // Your project ID
 
 final tables = Tables(client);
 
@@ -460,8 +469,8 @@ await tables.createRow(
 import Appwrite
 
 let client = Client()
-    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint        
-    .setProject("<PROJECT_ID>")                // Your project ID      
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
+    .setProject("<PROJECT_ID>")                // Your project ID
 
 let tables = Tables(client: client)
 
@@ -486,8 +495,8 @@ import io.appwrite.services.Tables
 import io.appwrite.ID
 
 val client = Client()
-    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint    
-    .setProject("<PROJECT_ID>")                // Your project ID  
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
+    .setProject("<PROJECT_ID>")                // Your project ID
 
 val tables = Tables(client)
 
@@ -728,8 +737,8 @@ await tables.createRow(
         title: 'Spiderman',
         year: 2002,
         reviews: [
-            { 
-                author: 'Bob', 
+            {
+                author: 'Bob',
                 text: 'Great movie!',
                 $permissions: [
                     Permission.read(Role.any())
@@ -756,8 +765,8 @@ await tables.createRow(
     'title': 'Spiderman',
     'year': 2002,
     'reviews': [
-      { 
-         'author': 'Bob', 
+      {
+         'author': 'Bob',
          'text': 'Great movie!',
          '\$permissions': [
            Permission.read(Role.any())
@@ -784,7 +793,7 @@ tables.createRow(
         "title": "Spiderman",
         "year": 2002,
         "reviews": [
-            [ 
+            [
                 "author": "Bob",
                 "text": "Great movie!",
                 "$permissions": [
@@ -812,7 +821,7 @@ tables.createRow(
         "title": "Spiderman",
         "year": 2002,
         "reviews": [
-            [ 
+            [
                 "author": "Bob",
                 "text": "Great movie!",
                 "$permissions": [
@@ -825,11 +834,11 @@ tables.createRow(
 ```
 {% /multicode %}
 
-When creating, updating, or deleting in a relationship, you must have permission to access all rows referenced. 
+When creating, updating, or deleting in a relationship, you must have permission to access all rows referenced.
 If the user does not have read permission to any row, an exception will be thrown.
 
 # Limitations {% #limitations %}
 
-Relationships can be nested between tables, but are restricted to a **max depth of three levels**. 
-Relationship column key, type, and directionality can't be updated. 
+Relationships can be nested between tables, but are restricted to a **max depth of three levels**.
+Relationship column key, type, and directionality can't be updated.
 On-delete behavior is the only option that can be updated for relationship columns.

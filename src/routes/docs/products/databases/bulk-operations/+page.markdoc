@@ -6,16 +6,24 @@ description: Perform bulk operations on rows within your tables for efficient da
 
 Appwrite Databases supports bulk operations for rows, allowing you to create, update, or delete multiple rows in a single request. This can significantly improve performance for apps as it allows you to reduce the number of API calls needed while working with large data sets.
 
-As of now, bulk operations can only be performed via the server-side SDKs. The client-side SDKs do not support bulk operations.
+Bulk operations can only be performed via the server-side SDKs. The client-side SDKs do not support bulk operations by design to prevent abuse and protect against unexpected costs. This ensures that only trusted server environments can perform large-scale data operations.
 
-# Create rows {% #create-rows %}
+For client applications that need bulk-like functionality, consider using [Appwrite Functions](/docs/products/functions) with proper rate limiting and validation.
 
-{% info title="Permissions required" %}
-You must grant **create** permissions to users at the **table level** before users can create rows.
-[Learn more about permissions](/docs/products/databases/permissions)
-{% /info %}
+# Atomic behavior {% #atomic-behavior %}
 
-You can create multiple rows in a single request using the `createRows` method.
+Bulk operations in Appwrite are **atomic**, meaning they follow an all-or-nothing approach. Either all documents in your bulk request succeed, or all documents fail.
+
+This atomicity ensures:
+- **Data consistency**: Your database remains in a consistent state even if some operations would fail.
+- **Race condition prevention**: Multiple clients can safely perform bulk operations simultaneously.
+- **Simplified error handling**: You only need to handle complete success or complete failure scenarios.
+
+For example, if you attempt to create 100 documents and one fails due to a validation error, none of the 100 documents will be created.
+
+# Create documents {% #create-documents %}
+
+You can create multiple rows in a single request using the `createDocuments` method.
 
 {% multicode %}
 ```server-nodejs
@@ -33,11 +41,11 @@ const result = await tables.createRows(
     '<TABLE_ID>',
     [
         {
-            rowId: sdk.ID.unique(),
+            $id: sdk.ID.unique(),
             data: { name: 'Row 1' }
         },
         {
-            rowId: sdk.ID.unique(),
+            $id: sdk.ID.unique(),
             data: { name: 'Row 2' }
         }
     ]
@@ -60,11 +68,11 @@ result = tables.create_rows(
     collection_id = '<TABLE_ID>',
     rows = [
         {
-            'rowId': appwrite.ID.unique(),
+            '$id': appwrite.ID.unique(),
             'data': { 'name': 'Row 1' }
         },
         {
-            'rowId': appwrite.ID.unique(),
+            '$id': appwrite.ID.unique(),
             'data': { 'name': 'Row 2' }
         }
     ]
@@ -96,15 +104,11 @@ const result = await tables.updateRows(
     '<DATABASE_ID>',
     '<TABLE_ID>',
     {
-        {
-            rowId: 'row-id-1',
-            data: { name: 'Updated Row 1' }
-        },
-        {
-            rowId: 'row-id-2',
-            data: { name: 'Updated Row 2' }
-        }
-    }
+        status: 'published'
+    },
+    [
+        sdk.Query.equal('status', 'draft')
+    ]
 );
 ```
 
@@ -123,15 +127,11 @@ result = tables.update_rows(
     database_id = '<DATABASE_ID>',
     collection_id = '<TABLE_ID>',
     data = {
-        {
-            'rowId': 'row-id-1',
-            'data': { 'name': 'New Row 1' }
-        },
-        {
-            'rowId': 'row-id-2',
-            'data': { 'name': 'New Row 2' }
-        }
-    }
+        'status': 'published'
+    },
+    queries = [
+        Query.equal('status', 'draft')
+    ]
 )
 ```
 {% /multicode %}
@@ -161,12 +161,12 @@ const result = await tables.upsertRows(
     '<TABLE_ID>',
     [
         {
-            rowId: sdk.ID.unique(),
-            data: { name: 'New Row 1' }
+            $id: sdk.ID.unique(),
+            name: 'New Row 1'
         },
         {
-            rowId: 'row-id-2', // Existing row ID
-            data: { name: 'New Row 2' }
+            $id: 'row-id-2', // Existing document ID
+            name: 'New Row 2'
         }
     ]
 );
@@ -175,6 +175,7 @@ const result = await tables.upsertRows(
 ```server-python
 from appwrite.client import Client
 from appwrite.services.databases import Databases
+from appwrite.id import ID
 
 client = Client()
 client.set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
@@ -188,12 +189,12 @@ result = tables.upsert_rows(
     collection_id = '<TABLE_ID>',
     rows = [
         {
-            'rowId': appwrite.ID.unique(),
-            'data': { 'name': 'Row 1' }
+            '$id': appwrite.ID.unique(),
+            'name': 'Row 1'
         },
         {
-            'rowId': 'row-id-2',  # Existing row ID
-            'data': { 'name': 'New Row 2' }
+            '$id': 'row-id-2',  # Existing row ID
+            'name': 'New Row 2'
         }
     ]
 )
@@ -223,13 +224,16 @@ const tables = new sdk.Tables(client);
 const result = await tables.deleteRows(
     '<DATABASE_ID>',
     '<TABLE_ID>',
-    [] // Queries
+    [
+        sdk.Query.equal('status', 'archived')
+    ]
 );
 ```
 
 ```server-python
 from appwrite.client import Client
 from appwrite.services.databases import Databases
+from appwrite.query import Query
 
 client = Client()
 client.set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
@@ -241,7 +245,9 @@ tables = Tables(client)
 result = tables.delete_rows(
     database_id = '<DATABASE_ID>',
     collection_id = '<TABLE_ID>',
-    queries = []
+    queries = [
+        Query.equal('status', 'archived')
+    ]
 )
 ```
 {% /multicode %}
