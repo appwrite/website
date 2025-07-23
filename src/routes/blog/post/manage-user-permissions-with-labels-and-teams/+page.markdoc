@@ -107,7 +107,7 @@ const client = //...
 
 const Teams = new Teams(client);
 
-const promise = Teams.create('<TEAM_ID>', '[NAME]');
+const promise = Teams.create('<TEAM_ID>', '<NAME>');
 ```
 
 ## Labels

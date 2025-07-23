@@ -299,8 +299,8 @@ const client = new sdk.Client()
 const messaging = new sdk.Messaging(client);
 
 const topic = await messaging.createTopic(
-    '[TOPIC_ID]',     // topicId
-    '[NAME]'          // name
+    '<TOPIC_ID>',     // topicId
+    '<NAME>'          // name
 );
 ```
 ```deno
@@ -314,8 +314,8 @@ const client = new sdk.Client()
 const messaging = new sdk.Messaging(client);
 
 const topic = await messaging.createTopic(
-    '[TOPIC_ID]',     // topicId
-    '[NAME]'          // name
+    '<TOPIC_ID>',     // topicId
+    '<NAME>'          // name
 );
 ```
 ```php
@@ -332,8 +332,8 @@ $client = (new Client())
 $messaging = new Messaging($client);
 
 $result = $messaging->createTopic(
-    topicId: '[TOPIC_ID]',
-    name: '[NAME]'
+    topicId: '<TOPIC_ID>',
+    name: '<NAME>'
 );
 ```
 ```python
@@ -348,8 +348,8 @@ client.set_key('919c2d18fb5d4...a2ae413da83346ad2') # Your secret API key
 messaging = Messaging(client)
 
 topic = messaging.create_topic(
-    topic_id = '[TOPIC_ID]',
-    name = '[NAME]'
+    topic_id = '<TOPIC_ID>',
+    name = '<NAME>'
 )
 ```
 ```ruby
@@ -365,8 +365,8 @@ client = Client.new
 messaging = Messaging.new(client)
 
 topic = messaging.create_topic(
-    topic_id: '[TOPIC_ID]',
-    name: '[NAME]'
+    topic_id: '<TOPIC_ID>',
+    name: '<NAME>'
 )
 ```
 ```csharp
@@ -398,7 +398,7 @@ Client client = Client()
 Messaging messaging = Messaging(client);
 
 Topic topic = await messaging.createTopic(
-    topicId: '[TOPIC_ID]',
+    topicId: '<TOPIC_ID>',
     name: '[NAME]',
 );
 ```
