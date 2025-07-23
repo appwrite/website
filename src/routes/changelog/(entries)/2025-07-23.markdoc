@@ -24,7 +24,3 @@ All the core building blocks of Appwrite, Databases, Authentication, Storage, Fu
 If you have questions, need help planning, or want to discuss custom needs, please contact us at billing@appwrite.io. We’re here to support you through the transition and ensure you can keep building without interruptions.
 
 Thank you for being part of this journey with us.
-
-{% arrow_link href="/blog/post/announcing-auto-increment-support" %}
-Read the announcement to learn more
-{% /arrow_link %}
