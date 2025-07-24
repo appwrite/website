@@ -16,10 +16,6 @@ Before installing Appwrite, ensure your system meets these minimum requirements:
 - **Operating system** that supports Docker
 - **Docker Compose Version 2**
 
-{% info title="Docker Compose V2 Required" %}
-Appwrite requires Docker Compose Version 2. Make sure your Docker installation supports Composer V2 before proceeding.
-{% /info %}
-
 # Install with Docker {% #install-with-docker %}
 
 The easiest way to install Appwrite is using our Docker installer tool. This automated installer will guide you through the setup process.
