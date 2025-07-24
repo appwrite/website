@@ -27,14 +27,12 @@ Choose the deployment method that fits your needs.
 Self-hosting is ideal when you need data control or have specific compliance requirements.
 
 **Consider self-hosting if:**
-- Your data must stay within specific regions or infrastructure
-- You need custom integrations with existing enterprise systems
-- You operate in air-gapped or restricted environments
-- You have enterprise-scale traffic and dedicated DevOps expertise
+- You want to manage your own infrastructure
+- You're a hobbyist or want to experiment with Appwrite in a playground environment
+- You need to develop against a local instance of Appwrite
 
 **Stick with Appwrite Cloud if:**
 - You want to focus on building features, not managing infrastructure
-- You're prototyping or building an MVP
 - Your team lacks extensive DevOps experience
 - You expect self-hosting to save costs (it often costs more when factoring in time and expertise)
 
