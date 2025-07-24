@@ -1,1 +1,16 @@
+---
+layout: changelog
+title: "Appwrite Sites now live for everyone!"
+date: 2025-07-24
+cover: /images/changelog/2025-07-24.png
+---
 
+We’re excited to announce that Appwrite Sites is now available for everyone to use.
+
+You can now host your websites and web apps directly from Appwrite.
+
+From static sites and SSR apps to databases, authentication, storage, messaging and serverless functions, you can now build, deploy, and scale your entire app stack using just Appwrite
+
+{% arrow_link href="/blog/post/announcing-appwrite-sites" %}
+Read the announcement to learn more
+{% /arrow_link %}
