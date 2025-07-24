@@ -433,10 +433,91 @@ final updateResult = await databases.updateDocument(
     }
 );
 ```
+```client-apple
+// First, increment the likes atomically
+let likeResult = try await databases.incrementDocumentAttribute(
+    databaseId: "<DATABASE_ID>",
+    collectionId: "<COLLECTION_ID>",
+    documentId: "<DOCUMENT_ID>",
+    attribute: "likes",
+    value: 1
+)
+
+// Then, update other fields
+let updateResult = try await databases.updateDocument(
+    databaseId: "<DATABASE_ID>",
+    collectionId: "<COLLECTION_ID>",
+    documentId: "<DOCUMENT_ID>",
+    data: [
+        "lastLikedBy": userId,
+        "lastLikedAt": ISO8601DateFormatter().string(from: Date())
+    ]
+)
+```
+```client-android-kotlin
+// First, increment the likes atomically
+val likeResult = databases.incrementDocumentAttribute(
+    databaseId = "<DATABASE_ID>",
+    collectionId = "<COLLECTION_ID>",
+    documentId = "<DOCUMENT_ID>",
+    attribute = "likes",
+    value = 1
+)
+
+// Then, update other fields
+val updateResult = databases.updateDocument(
+    databaseId = "<DATABASE_ID>",
+    collectionId = "<COLLECTION_ID>",
+    documentId = "<DOCUMENT_ID>",
+    data = mapOf(
+        "lastLikedBy" to userId,
+        "lastLikedAt" to Instant.now().toString()
+    )
+)
+```
+```server-nodejs
+// First, increment the likes atomically
+const likeResult = await databases.incrementDocumentAttribute(
+    '<DATABASE_ID>',
+    '<COLLECTION_ID>',
+    '<DOCUMENT_ID>',
+    'likes', // attribute
+    1 // value
+);
+
+// Then, update other fields
+const updateResult = await databases.updateDocument(
+    '<DATABASE_ID>',
+    '<COLLECTION_ID>',
+    '<DOCUMENT_ID>',
+    {
+        lastLikedBy: userId,
+        lastLikedAt: new Date().toISOString()
+    }
+);
+```
+```server-python
+# First, increment the likes atomically
+like_result = databases.increment_document_attribute(
+    database_id = '<DATABASE_ID>',
+    collection_id = '<COLLECTION_ID>',
+    document_id = '<DOCUMENT_ID>',
+    attribute = 'likes', # attribute
+    value = 1 # value
+)
+
+# Then, update other fields
+update_result = databases.update_document(
+    database_id = '<DATABASE_ID>',
+    collection_id = '<COLLECTION_ID>',
+    document_id = '<DOCUMENT_ID>',
+    data = {
+        'lastLikedBy': user_id,
+        'lastLikedAt': datetime.now().isoformat()
+    }
+)
+```
 {% /multicode %}
-
-
-
 
 ## Explore related features
 
