@@ -141,7 +141,7 @@ Cloud platform offering automatic deployments from Git with built-in SSL.
 After deployment, configure Appwrite to enable additional features:
 
 {% cards %}
-{% cards_item href="/docs/advanced/self-hosting/configuration/email" title="Email Delivery" %}
+{% cards_item href="/docs/advanced/self-hosting/configuration/email" title="Email delivery" %}
 Set up SMTP providers for user verification, password recovery, and notifications.
 {% /cards_item %}
 
