@@ -50,12 +50,12 @@ Get started with Appwrite self-hosting in three simple steps:
 * Next Action
 ---
 * 1
-* **Install locally** - Set up Appwrite on your development machine using Docker
-* [Follow installation guide](/docs/advanced/self-hosting/installation)
+* **Choose deployment location** - Decide where to install Appwrite (local, cloud, or PaaS)
+* [View deployment options](#deployment-options)
 ---
 * 2
-* **Deploy to cloud** - Choose a cloud platform and deploy your production instance
-* [View platform guides](/docs/advanced/self-hosting/platforms/aws)
+* **Install Appwrite** - Set up Appwrite on your chosen platform
+* [Follow installation guide](/docs/advanced/self-hosting/installation)
 ---
 * 3
 * **Configure services** - Set up email, SMS, storage, and other essential services
