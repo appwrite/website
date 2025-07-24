@@ -11,33 +11,18 @@
     }
 
     const { size = 'default', gap = 32, header, children }: Props = $props();
-    let scroll = 0;
-
-    function calculateScrollAmount(prev = false) {
-        const direction = prev ? -1 : 1;
-        const carouselSize = carousel?.clientWidth;
-        const childSize = (carousel.childNodes[0] as HTMLUListElement)?.clientWidth + gap;
-
-        scroll = scroll || carouselSize;
-
-        const numberOfItems = Math.floor(carouselSize / childSize);
-        const overflow = scroll % childSize;
-        const amount = numberOfItems * childSize - overflow * direction;
-        scroll += amount * direction;
-        return amount * direction;
-    }
 
     function next() {
         carousel.scrollBy({
-            left: calculateScrollAmount(),
-            behavior: 'smooth'
-        });
+			left: carousel.clientWidth,
+			behavior: 'smooth'
+		});
     }
     function prev() {
         carousel.scrollBy({
-            left: calculateScrollAmount(true),
-            behavior: 'smooth'
-        });
+			left: -carousel.clientWidth,
+			behavior: 'smooth'
+		});
     }
 
     let isEnd = $state(false);
