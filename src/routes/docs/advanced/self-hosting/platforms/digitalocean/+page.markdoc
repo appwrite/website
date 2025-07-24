@@ -202,7 +202,7 @@ Set up essential environment variables for production:
 {% section #add-managed-database step=3 title="Add managed database" %}
 
 1. In app settings, add a database resource
-2. Choose **MongoDB** for compatibility
+2. Choose **MariaDB** for compatibility
 3. Select appropriate cluster size and region
 4. Configure database connection environment variables
 
