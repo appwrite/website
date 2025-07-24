@@ -26,6 +26,40 @@
 
     async function handleSubmit() {
         error = undefined;
+
+        const validationRules = {
+            required: [
+                { value: firstName, name: 'First name' },
+                { value: lastName, name: 'Last name' },
+                { value: email, name: 'Email' },
+                { value: companyName, name: 'Company name' },
+                { value: companyWebsite, name: 'Company website' },
+                { value: useCase, name: 'Use case' }
+            ],
+            textOnly: [
+                { value: firstName, name: 'First name' },
+                { value: lastName, name: 'Last name' },
+                { value: companyName, name: 'Company name' },
+                { value: useCase, name: 'Use case' }
+            ]
+        };
+
+        for (const field of validationRules.required) {
+            const trimmedValue = field.value.trim();
+            if (!trimmedValue) {
+                error = `${field.name} cannot be empty or contain only spaces.`;
+                return;
+            }
+        }
+
+        for (const field of validationRules.textOnly) {
+            const trimmedValue = field.value.trim();
+            if (/^\d+$/.test(trimmedValue)) {
+                error = `${field.name} cannot contain only numbers.`;
+                return;
+            }
+        }
+
         submitting = true;
 
         const cloudEmail = loggedIn && $user?.email ? $user.email : undefined;
@@ -36,15 +70,15 @@
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                email,
-                subject: companyName,
+                email: email.trim(),
+                subject: companyName.trim(),
                 cloudEmail,
-                companyName,
+                companyName: companyName.trim(),
                 companySize,
-                companyWebsite,
-                firstName,
-                lastName,
-                message: useCase,
+                companyWebsite: companyWebsite.trim(),
+                firstName: firstName.trim(),
+                lastName: lastName.trim(),
+                message: useCase.trim(),
                 ...getReferrerAndUtmSource()
             })
         });
