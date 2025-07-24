@@ -150,7 +150,7 @@ Configure SMS providers for phone authentication and two-factor authentication.
 {% /cards_item %}
 
 {% cards_item href="/docs/advanced/self-hosting/configuration/storage" title="Storage Backends" %}
-Connect external storage providers like AWS S3, Google Cloud Storage, or local storage.
+Connect external storage providers like AWS S3, Backblaze, or Wasabi.
 {% /cards_item %}
 
 {% cards_item href="/docs/advanced/self-hosting/configuration/functions" title="Functions Runtime" %}
