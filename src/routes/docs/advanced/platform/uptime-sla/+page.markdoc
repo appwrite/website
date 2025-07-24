@@ -56,8 +56,6 @@ Downtime specifically excludes periods caused by:
 
 We continuously strive to exceed the commitments outlined in this SLA by improving infrastructure resilience and service quality. While the maximum attainable uptime commitment is influenced by our upstream service providers, we aim for excellence and transparency in all operational matters.
 
-# Modifications {% #modifications %}
+{% partial file="policy-modifications.md" /%}
 
-We reserve the right to modify this SLA periodically. Changes will become effective upon publication on our website. Your continued use of our services indicates acceptance of these changes.
-
-For questions or concerns regarding this SLA, please contact us at our [contact page](/contact-us). 
+{% partial file="policy-contact-us.md" /%}
