@@ -272,12 +272,7 @@ mutation {
 
 # Set constraints and bounds {% #set-constraints-and-bounds %}
 
-You can set minimum and maximum bounds for numeric fields to prevent invalid values. Use the optional `min` and `max` parameters:
-
-{% info title="Collection configuration required" %}
-Constraints must be configured at the collection level when defining attributes.
-[Learn more about collection attributes](/docs/products/databases/collections#attributes)
-{% /info %}
+You can set minimum and maximum bounds for individual operations to prevent invalid values. Use the optional `min` and `max` parameters to ensure the final value stays within acceptable limits:
 
 ## Example with constraints {% #example-with-constraints %}
 
