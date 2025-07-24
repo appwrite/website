@@ -100,7 +100,7 @@ docker compose up -d --remove-orphans
 After installation completes:
 
 1. **Access the Console** - Navigate to your machine's hostname or IP address in your browser
-2. **First-time setup** - Follow the initial setup wizard in the Appwrite Console
+2. **Create an account** - Sign up for your Appwrite account
 3. **Create your first project** - Set up your development environment
 
 {% info title="Startup Time" %}
