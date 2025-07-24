@@ -50,7 +50,7 @@ Currently, UNDŌ self-hosts Appwrite at all the customers’ on-premises compute
 - Google OAuth via **Appwrite Authentication** is used for user registration and management
 - Multiple **Appwrite Databases** help bifurcate data and environments (as per customer requests)
 - **Appwrite Storage** is used to upload pictures of QR codes from the scan feature on mobile devices
-- **Appwrite Functions** are used to analyze the QR code scans and make updates to database collections
+- **Appwrite Functions** are used to analyze the QR code scans and make updates to database tables
 - **Appwrite Realtime** helps get updates based on scanner interactions with the products’ QR codes
 - **Appwrite Messaging** is used to communicate about anomalies to stakeholders with admin privileges.
 

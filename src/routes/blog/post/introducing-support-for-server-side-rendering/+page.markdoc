@@ -34,7 +34,7 @@ npm install node-appwrite
 
 ## Create sessions server-side
 
-To solve this issue, all existing server SDK methods that create a session now return a `secret` attribute. The following methods are:
+To solve this issue, all existing server SDK methods that create a session now return a `secret` column. The following methods are:
 
 - `account.createEmailPasswordSession(email, password)`
 - `account.createAnonymousSession()`
