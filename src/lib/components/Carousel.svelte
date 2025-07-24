@@ -14,15 +14,15 @@
 
     function next() {
         carousel.scrollBy({
-			left: carousel.clientWidth,
-			behavior: 'smooth'
-		});
+            left: carousel.clientWidth,
+            behavior: 'smooth'
+        });
     }
     function prev() {
         carousel.scrollBy({
-			left: -carousel.clientWidth,
-			behavior: 'smooth'
-		});
+            left: -carousel.clientWidth,
+            behavior: 'smooth'
+        });
     }
 
     let isEnd = $state(false);
