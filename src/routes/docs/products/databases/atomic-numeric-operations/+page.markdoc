@@ -53,82 +53,59 @@ const result = await databases.incrementDocumentAttribute(
     'likes', // attribute
     1 // value
 );
-
-console.log(result);
 ```
 ```client-flutter
 import 'package:appwrite/appwrite.dart';
 
-void main() async {
-    final client = Client()
-        .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
-        .setProject('<PROJECT_ID>');
+final client = Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>');
 
-    final databases = Databases(client);
+final databases = Databases(client);
 
-    try {
-        final document = await databases.incrementDocumentAttribute(
-            databaseId: '<DATABASE_ID>',
-            collectionId: '<COLLECTION_ID>',
-            documentId: '<DOCUMENT_ID>',
-            attribute: 'likes',
-            value: 1
-        );
-        print(document);
-    } on AppwriteException catch(e) {
-        print(e);
-    }
-}
+final document = await databases.incrementDocumentAttribute(
+    databaseId: '<DATABASE_ID>',
+    collectionId: '<COLLECTION_ID>',
+    documentId: '<DOCUMENT_ID>',
+    attribute: 'likes',
+    value: 1
+);
 ```
 ```client-apple
 import Appwrite
 import AppwriteModels
 
-func main() async throws {
-    let client = Client()
-        .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
-        .setProject("<PROJECT_ID>")
+let client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
 
-    let databases = Databases(client)
+let databases = Databases(client)
 
-    do {
-        let document = try await databases.incrementDocumentAttribute(
-            databaseId: "<DATABASE_ID>",
-            collectionId: "<COLLECTION_ID>",
-            documentId: "<DOCUMENT_ID>",
-            attribute: "likes",
-            value: 1
-        )
-        print(document)
-    } catch {
-        print(error.localizedDescription)
-    }
-}
+let document = try await databases.incrementDocumentAttribute(
+    databaseId: "<DATABASE_ID>",
+    collectionId: "<COLLECTION_ID>",
+    documentId: "<DOCUMENT_ID>",
+    attribute: "likes",
+    value: 1
+)
 ```
 ```client-android-kotlin
 import io.appwrite.Client
 import io.appwrite.services.Databases
 
-suspend fun main() {
-    val client = Client(applicationContext)
-        .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
-        .setProject("<PROJECT_ID>")
+val client = Client(applicationContext)
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
 
-    val databases = Databases(client)
+val databases = Databases(client)
 
-    try {
-        val document = databases.incrementDocumentAttribute(
-            databaseId = "<DATABASE_ID>",
-            collectionId = "<COLLECTION_ID>",
-            documentId = "<DOCUMENT_ID>",
-            attribute = "likes",
-            value = 1
-        )
-        println(document)
-    } catch (e: AppwriteException) {
-        Log.e("Appwrite", "Error: " + e.message)
-    }
-}
+val document = databases.incrementDocumentAttribute(
+    databaseId = "<DATABASE_ID>",
+    collectionId = "<COLLECTION_ID>",
+    documentId = "<DOCUMENT_ID>",
+    attribute = "likes",
+    value = 1
+)
 ```
 ```server-nodejs
 const sdk = require('node-appwrite');
@@ -201,8 +178,6 @@ const result = await databases.decrementDocumentAttribute(
     'credits', // attribute
     5 // value
 );
-
-console.log(result);
 ```
 ```client-flutter
 final document = await databases.decrementDocumentAttribute(
@@ -460,50 +435,7 @@ final updateResult = await databases.updateDocument(
 ```
 {% /multicode %}
 
-## Handle errors gracefully {% #handle-errors-gracefully %}
 
-Always handle constraint violations gracefully:
-
-{% multicode %}
-```client-web
-try {
-    const result = await databases.decrementDocumentAttribute(
-        '<DATABASE_ID>',
-        '<COLLECTION_ID>',
-        '<DOCUMENT_ID>',
-        'credits', // attribute
-        100, // value
-        0 // min (optional)
-    );
-    console.log(result);
-} catch (error) {
-    if (error.code === 400) {
-        console.log('Constraint violation - insufficient credits');
-    } else {
-        console.log('Other error:', error);
-    }
-}
-```
-```client-flutter
-try {
-    final document = await databases.decrementDocumentAttribute(
-        databaseId: '<DATABASE_ID>',
-        collectionId: '<COLLECTION_ID>',
-        documentId: '<DOCUMENT_ID>',
-        attribute: 'credits',
-        value: 100,
-        min: 0
-    );
-    print('Update successful: $document');
-} on AppwriteException catch(e) {
-    if (e.code == 400) {
-        print('Constraint violation - insufficient credits');
-    } else {
-        print('Other error: ${e.message}');
-    }
-}
-```
-{% /multicode %}
 
 
 ## Explore related features
