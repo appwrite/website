@@ -171,6 +171,14 @@ Use the `decrementDocumentAttribute` method to decrease numeric fields:
 
 {% multicode %}
 ```client-web
+import { Client, Databases } from "appwrite";
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('<YOUR_PROJECT_ID>'); // Your project ID
+
+const databases = new Databases(client);
+
 const result = await databases.decrementDocumentAttribute(
     '<DATABASE_ID>',
     '<COLLECTION_ID>',
@@ -180,6 +188,14 @@ const result = await databases.decrementDocumentAttribute(
 );
 ```
 ```client-flutter
+import 'package:appwrite/appwrite.dart';
+
+final client = Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>');
+
+final databases = Databases(client);
+
 final document = await databases.decrementDocumentAttribute(
     databaseId: '<DATABASE_ID>',
     collectionId: '<COLLECTION_ID>',
@@ -189,6 +205,15 @@ final document = await databases.decrementDocumentAttribute(
 );
 ```
 ```client-apple
+import Appwrite
+import AppwriteModels
+
+let client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+
+let databases = Databases(client)
+
 let document = try await databases.decrementDocumentAttribute(
     databaseId: "<DATABASE_ID>",
     collectionId: "<COLLECTION_ID>",
@@ -198,6 +223,15 @@ let document = try await databases.decrementDocumentAttribute(
 )
 ```
 ```client-android-kotlin
+import io.appwrite.Client
+import io.appwrite.services.Databases
+
+val client = Client(applicationContext)
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+
+val databases = Databases(client)
+
 val document = databases.decrementDocumentAttribute(
     databaseId = "<DATABASE_ID>",
     collectionId = "<COLLECTION_ID>",
@@ -207,6 +241,15 @@ val document = databases.decrementDocumentAttribute(
 )
 ```
 ```server-nodejs
+const sdk = require('node-appwrite');
+
+const client = new sdk.Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('<PROJECT_ID>') // Your project ID
+    .setKey('<API_KEY>'); // Your secret API key
+
+const databases = new sdk.Databases(client);
+
 const result = await databases.decrementDocumentAttribute(
     '<DATABASE_ID>',
     '<COLLECTION_ID>',
@@ -216,6 +259,16 @@ const result = await databases.decrementDocumentAttribute(
 );
 ```
 ```server-python
+from appwrite.client import Client
+from appwrite.services.databases import Databases
+
+client = Client()
+client.set_endpoint('https://<REGION>.cloud.appwrite.io/v1') # Your API Endpoint
+client.set_project('<PROJECT_ID>') # Your project ID
+client.set_key('<API_KEY>') # Your secret API key
+
+databases = Databases(client)
+
 result = databases.decrement_document_attribute(
     database_id = '<DATABASE_ID>',
     collection_id = '<COLLECTION_ID>',
