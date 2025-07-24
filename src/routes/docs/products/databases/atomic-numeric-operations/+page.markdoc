@@ -4,11 +4,11 @@ title: Atomic numeric operations
 description: Safely increment and decrement numeric fields without race conditions. Perfect for counters, quotas, inventory, and usage metrics in high-concurrency applications.
 ---
 
-Atomic Numeric Operations allow you to safely increase or decrease numeric fields without fetching the full document. This eliminates race conditions and reduces bandwidth usage when updating any numeric values that need to be modified atomically, such as counters, scores, balances, and other fast-moving numeric data.
+Atomic numeric operations allow you to safely increase or decrease numeric fields without fetching the full document. This eliminates race conditions and reduces bandwidth usage when updating any numeric values that need to be modified atomically, such as counters, scores, balances, and other fast-moving numeric data.
 
-## How atomic operations work
+# How atomic operations work {% #how-atomic-operations-work %}
 
-Instead of the traditional read-modify-write pattern, atomic numeric operations send only the delta value to the server. The server applies the change atomically under concurrency control and returns the new value.
+Instead of the traditional read-modify-write pattern, atomic numeric operations use dedicated methods to modify values directly on the server. The server applies the change atomically under concurrency control and returns the new value.
 
 **Traditional approach:**
 1. Fetch document → `{ likes: 42 }`
@@ -16,10 +16,10 @@ Instead of the traditional read-modify-write pattern, atomic numeric operations 
 3. Write back → `{ likes: 43 }`
 
 **Atomic approach:**
-1. Send delta → `{ likes: +1 }`
+1. Call `incrementDocumentAttribute()` with the attribute name and the value to increment by
 2. Server applies atomically → `likes: 43`
 
-## When to use atomic operations
+# When to use atomic operations {% #when-to-use-atomic-operations %}
 
 Atomic numeric operations work well for:
 
@@ -30,36 +30,31 @@ Atomic numeric operations work well for:
 - **Workflow tracking**: Retry counts, progress indicators
 - **Rate limiting**: Request counters, usage tracking
 
-## Perform atomic operations
+# Perform atomic operations {% #perform-atomic-operations %}
 
-Use the `updateDocument` method with delta values to perform atomic numeric operations. The server will apply these changes atomically under concurrency control.
+Use the `incrementDocumentAttribute` and `decrementDocumentAttribute` methods to perform atomic numeric operations. The server will apply these changes atomically under concurrency control.
 
-### Increment a field
+## Increment a field {% #increment-field %}
 
 {% multicode %}
 ```client-web
 import { Client, Databases } from "appwrite";
 
 const client = new Client()
-    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
-    .setProject('<PROJECT_ID>');
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('<YOUR_PROJECT_ID>'); // Your project ID
 
 const databases = new Databases(client);
 
-const promise = databases.updateDocument(
+const result = await databases.incrementDocumentAttribute(
     '<DATABASE_ID>',
     '<COLLECTION_ID>',
     '<DOCUMENT_ID>',
-    {
-        likes: '+1'
-    }
+    'likes', // attribute
+    1 // value
 );
 
-promise.then(function (response) {
-    console.log(response);
-}, function (error) {
-    console.log(error);
-});
+console.log(result);
 ```
 ```client-flutter
 import 'package:appwrite/appwrite.dart';
@@ -72,13 +67,12 @@ void main() async {
     final databases = Databases(client);
 
     try {
-        final document = await databases.updateDocument(
+        final document = await databases.incrementDocumentAttribute(
             databaseId: '<DATABASE_ID>',
             collectionId: '<COLLECTION_ID>',
             documentId: '<DOCUMENT_ID>',
-            data: {
-                'likes': '+1'
-            }
+            attribute: 'likes',
+            value: 1
         );
         print(document);
     } on AppwriteException catch(e) {
@@ -98,13 +92,12 @@ func main() async throws {
     let databases = Databases(client)
 
     do {
-        let document = try await databases.updateDocument(
+        let document = try await databases.incrementDocumentAttribute(
             databaseId: "<DATABASE_ID>",
             collectionId: "<COLLECTION_ID>",
             documentId: "<DOCUMENT_ID>",
-            data: [
-                "likes": "+1"
-            ]
+            attribute: "likes",
+            value: 1
         )
         print(document)
     } catch {
@@ -124,11 +117,12 @@ suspend fun main() {
     val databases = Databases(client)
 
     try {
-        val document = databases.updateDocument(
+        val document = databases.incrementDocumentAttribute(
             databaseId = "<DATABASE_ID>",
             collectionId = "<COLLECTION_ID>",
             documentId = "<DOCUMENT_ID>",
-            data = mapOf("likes" to "+1")
+            attribute = "likes",
+            value = 1
         )
         println(document)
     } catch (e: AppwriteException) {
@@ -140,19 +134,18 @@ suspend fun main() {
 const sdk = require('node-appwrite');
 
 const client = new sdk.Client()
-    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
-    .setProject('<PROJECT_ID>')
-    .setKey('<API_KEY>');
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('<PROJECT_ID>') // Your project ID
+    .setKey('<API_KEY>'); // Your secret API key
 
 const databases = new sdk.Databases(client);
 
-const result = await databases.updateDocument(
+const result = await databases.incrementDocumentAttribute(
     '<DATABASE_ID>',
     '<COLLECTION_ID>',
     '<DOCUMENT_ID>',
-    {
-        likes: '+1'
-    }
+    'likes', // attribute
+    1 // value
 );
 ```
 ```server-python
@@ -160,28 +153,28 @@ from appwrite.client import Client
 from appwrite.services.databases import Databases
 
 client = Client()
-client.set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
-client.set_project('<PROJECT_ID>')
-client.set_key('<API_KEY>')
+client.set_endpoint('https://<REGION>.cloud.appwrite.io/v1') # Your API Endpoint
+client.set_project('<PROJECT_ID>') # Your project ID
+client.set_key('<API_KEY>') # Your secret API key
 
 databases = Databases(client)
 
-result = databases.update_document(
+result = databases.increment_document_attribute(
     database_id = '<DATABASE_ID>',
     collection_id = '<COLLECTION_ID>',
     document_id = '<DOCUMENT_ID>',
-    data = {
-        'likes': '+1'
-    }
+    attribute = 'likes', # attribute
+    value = 1 # value
 )
 ```
 ```graphql
 mutation {
-    databasesUpdateDocument(
+    databasesIncrementDocumentAttribute(
         databaseId: "<DATABASE_ID>",
         collectionId: "<COLLECTION_ID>",
         documentId: "<DOCUMENT_ID>",
-        data: "{\"likes\": \"+1\"}"
+        attribute: "likes",
+        value: 1
     ) {
         _id
         _collectionId
@@ -195,76 +188,75 @@ mutation {
 ```
 {% /multicode %}
 
-### Decrement a field
+## Decrement a field {% #decrement-field %}
 
-Use negative values to decrease numeric fields:
+Use the `decrementDocumentAttribute` method to decrease numeric fields:
 
 {% multicode %}
 ```client-web
-const promise = databases.updateDocument(
+const result = await databases.decrementDocumentAttribute(
     '<DATABASE_ID>',
     '<COLLECTION_ID>',
     '<DOCUMENT_ID>',
-    {
-        credits: '-5'  // Decrease credits by 5
-    }
+    'credits', // attribute
+    5 // value
 );
+
+console.log(result);
 ```
 ```client-flutter
-final document = await databases.updateDocument(
+final document = await databases.decrementDocumentAttribute(
     databaseId: '<DATABASE_ID>',
     collectionId: '<COLLECTION_ID>',
     documentId: '<DOCUMENT_ID>',
-    data: {
-        'credits': '-5'  // Decrease credits by 5
-    }
+    attribute: 'credits',
+    value: 5
 );
 ```
 ```client-apple
-let document = try await databases.updateDocument(
+let document = try await databases.decrementDocumentAttribute(
     databaseId: "<DATABASE_ID>",
     collectionId: "<COLLECTION_ID>",
     documentId: "<DOCUMENT_ID>",
-    data: [
-        "credits": "-5"  // Decrease credits by 5
-    ]
+    attribute: "credits",
+    value: 5
 )
 ```
 ```client-android-kotlin
-val document = databases.updateDocument(
+val document = databases.decrementDocumentAttribute(
     databaseId = "<DATABASE_ID>",
     collectionId = "<COLLECTION_ID>",
     documentId = "<DOCUMENT_ID>",
-    data = mapOf("credits" to "-5")  // Decrease credits by 5
+    attribute = "credits",
+    value = 5
 )
 ```
 ```server-nodejs
-const result = await databases.updateDocument(
+const result = await databases.decrementDocumentAttribute(
     '<DATABASE_ID>',
     '<COLLECTION_ID>',
     '<DOCUMENT_ID>',
-    {
-        credits: '-5'  // Decrease credits by 5
-    }
+    'credits', // attribute
+    5 // value
 );
 ```
 ```server-python
-result = databases.update_document(
+result = databases.decrement_document_attribute(
     database_id = '<DATABASE_ID>',
     collection_id = '<COLLECTION_ID>',
     document_id = '<DOCUMENT_ID>',
-    data = {
-        'credits': '-5'  // Decrease credits by 5
-    }
+    attribute = 'credits', # attribute
+    value = 5 # value
 )
 ```
 ```graphql
 mutation {
-    databasesUpdateDocument(
+    databasesDecrementDocumentAttribute(
         databaseId: "<DATABASE_ID>",
         collectionId: "<COLLECTION_ID>",
         documentId: "<DOCUMENT_ID>",
-        data: "{\"credits\": \"-5\"}"
+        attribute: "credits",
+        value: 5
     ) {
         _id
         _collectionId
@@ -278,199 +270,248 @@ mutation {
 ```
 {% /multicode %}
 
-### Update multiple fields at once
+# Set constraints and bounds {% #set-constraints-and-bounds %}
 
-You can update multiple numeric fields in a single operation:
-
-{% multicode %}
-```client-web
-const promise = databases.updateDocument(
-    '<DATABASE_ID>',
-    '<COLLECTION_ID>',
-    '<DOCUMENT_ID>',
-    {
-        likes: '+1',
-        views: '+1',
-        shares: '+2'
-    }
-);
-```
-```client-flutter
-final document = await databases.updateDocument(
-    databaseId: '<DATABASE_ID>',
-    collectionId: '<COLLECTION_ID>',
-    documentId: '<DOCUMENT_ID>',
-    data: {
-        'likes': '+1',
-        'views': '+1',
-        'shares': '+2'
-    }
-);
-```
-```client-apple
-let document = try await databases.updateDocument(
-    databaseId: "<DATABASE_ID>",
-    collectionId: "<COLLECTION_ID>",
-    documentId: "<DOCUMENT_ID>",
-    data: [
-        "likes": "+1",
-        "views": "+1",
-        "shares": "+2"
-    ]
-)
-```
-```client-android-kotlin
-val document = databases.updateDocument(
-    databaseId = "<DATABASE_ID>",
-    collectionId = "<COLLECTION_ID>",
-    documentId = "<DOCUMENT_ID>",
-    data = mapOf(
-        "likes" to "+1",
-        "views" to "+1",
-        "shares" to "+2"
-    )
-)
-```
-```server-nodejs
-const result = await databases.updateDocument(
-    '<DATABASE_ID>',
-    '<COLLECTION_ID>',
-    '<DOCUMENT_ID>',
-    {
-        likes: '+1',
-        views: '+1',
-        shares: '+2'
-    }
-);
-```
-```server-python
-result = databases.update_document(
-    database_id = '<DATABASE_ID>',
-    collection_id = '<COLLECTION_ID>',
-    document_id = '<DOCUMENT_ID>',
-    data = {
-        'likes': '+1',
-        'views': '+1',
-        'shares': '+2'
-    }
-)
-```
-```graphql
-mutation {
-    databasesUpdateDocument(
-        databaseId: "<DATABASE_ID>",
-        collectionId: "<COLLECTION_ID>",
-        documentId: "<DOCUMENT_ID>",
-        data: "{\"likes\": \"+1\", \"views\": \"+1\", \"shares\": \"+2\"}"
-    ) {
-        _id
-        _collectionId
-        _databaseId
-        _createdAt
-        _updatedAt
-        _permissions
-        data
-    }
-}
-```
-{% /multicode %}
-
-## Set constraints and bounds
-
-You can set minimum and maximum bounds for numeric fields to prevent invalid values:
+You can set minimum and maximum bounds for numeric fields to prevent invalid values. Use the optional `min` and `max` parameters:
 
 {% info title="Collection configuration required" %}
 Constraints must be configured at the collection level when defining attributes.
 [Learn more about collection attributes](/docs/products/databases/collections#attributes)
 {% /info %}
 
-### Example with constraints
-
-If your collection has a `credits` field with a minimum of 0 and maximum of 1000:
+## Example with constraints {% #example-with-constraints %}
 
 {% multicode %}
 ```client-web
-// This will succeed if credits >= 5
-const promise = databases.updateDocument(
+// Increment with maximum constraint
+const result = await databases.incrementDocumentAttribute(
     '<DATABASE_ID>',
     '<COLLECTION_ID>',
     '<DOCUMENT_ID>',
-    {
-        credits: '-5'
-    }
+    'credits', // attribute
+    100, // value
+    1000 // max (optional)
 );
 
-// This will throw an error if credits would go below 0
-const promise = databases.updateDocument(
+// Decrement with minimum constraint
+const result2 = await databases.decrementDocumentAttribute(
     '<DATABASE_ID>',
     '<COLLECTION_ID>',
     '<DOCUMENT_ID>',
-    {
-        credits: '-1000'  // Error: Value would exceed minimum
-    }
+    'credits', // attribute
+    50, // value
+    0 // min (optional)
 );
 ```
 ```client-flutter
-// This will succeed if credits >= 5
-final document = await databases.updateDocument(
+// Increment with maximum constraint
+final document = await databases.incrementDocumentAttribute(
     databaseId: '<DATABASE_ID>',
     collectionId: '<COLLECTION_ID>',
     documentId: '<DOCUMENT_ID>',
-    data: {
-        'credits': '-5'
-    }
+    attribute: 'credits',
+    value: 100,
+    max: 1000
 );
 
-// This will throw an error if credits would go below 0
-try {
-    final document = await databases.updateDocument(
-        databaseId: '<DATABASE_ID>',
-        collectionId: '<COLLECTION_ID>',
-        documentId: '<DOCUMENT_ID>',
-        data: {
-            'credits': '-1000'  // Error: Value would exceed minimum
-        }
-    );
-} on AppwriteException catch(e) {
-    print('Constraint violation: ${e.message}');
-}
+// Decrement with minimum constraint
+final document2 = await databases.decrementDocumentAttribute(
+    databaseId: '<DATABASE_ID>',
+    collectionId: '<COLLECTION_ID>',
+    documentId: '<DOCUMENT_ID>',
+    attribute: 'credits',
+    value: 50,
+    min: 0
+);
+```
+```client-apple
+// Increment with maximum constraint
+let document = try await databases.incrementDocumentAttribute(
+    databaseId: "<DATABASE_ID>",
+    collectionId: "<COLLECTION_ID>",
+    documentId: "<DOCUMENT_ID>",
+    attribute: "credits",
+    value: 100,
+    max: 1000
+)
+
+// Decrement with minimum constraint
+let document2 = try await databases.decrementDocumentAttribute(
+    databaseId: "<DATABASE_ID>",
+    collectionId: "<COLLECTION_ID>",
+    documentId: "<DOCUMENT_ID>",
+    attribute: "credits",
+    value: 50,
+    min: 0
+)
+```
+```client-android-kotlin
+// Increment with maximum constraint
+val document = databases.incrementDocumentAttribute(
+    databaseId = "<DATABASE_ID>",
+    collectionId = "<COLLECTION_ID>",
+    documentId = "<DOCUMENT_ID>",
+    attribute = "credits",
+    value = 100,
+    max = 1000
+)
+
+// Decrement with minimum constraint
+val document2 = databases.decrementDocumentAttribute(
+    databaseId = "<DATABASE_ID>",
+    collectionId = "<COLLECTION_ID>",
+    documentId = "<DOCUMENT_ID>",
+    attribute = "credits",
+    value = 50,
+    min = 0
+)
+```
+```server-nodejs
+// Increment with maximum constraint
+const result = await databases.incrementDocumentAttribute(
+    '<DATABASE_ID>',
+    '<COLLECTION_ID>',
+    '<DOCUMENT_ID>',
+    'credits', // attribute
+    100, // value
+    1000 // max (optional)
+);
+
+// Decrement with minimum constraint
+const result2 = await databases.decrementDocumentAttribute(
+    '<DATABASE_ID>',
+    '<COLLECTION_ID>',
+    '<DOCUMENT_ID>',
+    'credits', // attribute
+    50, // value
+    0 // min (optional)
+);
+```
+```server-python
+# Increment with maximum constraint
+result = databases.increment_document_attribute(
+    database_id = '<DATABASE_ID>',
+    collection_id = '<COLLECTION_ID>',
+    document_id = '<DOCUMENT_ID>',
+    attribute = 'credits', # attribute
+    value = 100, # value
+    max = 1000 # max (optional)
+)
+
+# Decrement with minimum constraint
+result2 = databases.decrement_document_attribute(
+    database_id = '<DATABASE_ID>',
+    collection_id = '<COLLECTION_ID>',
+    document_id = '<DOCUMENT_ID>',
+    attribute = 'credits', # attribute
+    value = 50, # value
+    min = 0 # min (optional)
+)
 ```
 {% /multicode %}
 
-## Follow best practices
+# Follow best practices {% #follow-best-practices %}
 
-### Use for high-concurrency scenarios
+## Use for high-concurrency scenarios {% #use-for-high-concurrency-scenarios %}
 
-Atomic numeric operations are most beneficial when multiple users or processes might update the same numeric field simultaneously.
+Atomic numeric operations are most beneficial when multiple users or processes might update the same numeric field simultaneously:
 
-### Mix atomic and regular updates
+- **Social media**: Likes, comments, shares
+- **Gaming**: Scores, currency, experience points
+- **E-commerce**: Inventory counts, sales metrics
+- **Analytics**: View counts, engagement metrics
 
-You can mix atomic operations with regular field updates in the same request:
+## Combine with regular updates {% #combine-with-regular-updates %}
+
+For complex updates that include both atomic operations and regular field changes, you'll need to use separate API calls:
 
 {% multicode %}
 ```client-web
-const promise = databases.updateDocument(
+// First, increment the likes atomically
+const likeResult = await databases.incrementDocumentAttribute(
+    '<DATABASE_ID>',
+    '<COLLECTION_ID>',
+    '<DOCUMENT_ID>',
+    'likes', // attribute
+    1 // value
+);
+
+// Then, update other fields
+const updateResult = await databases.updateDocument(
     '<DATABASE_ID>',
     '<COLLECTION_ID>',
     '<DOCUMENT_ID>',
     {
-        likes: '+1',           // Atomic increment
-        lastLikedBy: userId,   // Regular update
+        lastLikedBy: userId,
         lastLikedAt: new Date().toISOString()
     }
 );
 ```
 ```client-flutter
-final document = await databases.updateDocument(
+// First, increment the likes atomically
+final likeResult = await databases.incrementDocumentAttribute(
+    databaseId: '<DATABASE_ID>',
+    collectionId: '<COLLECTION_ID>',
+    documentId: '<DOCUMENT_ID>',
+    attribute: 'likes',
+    value: 1
+);
+
+// Then, update other fields
+final updateResult = await databases.updateDocument(
     databaseId: '<DATABASE_ID>',
     collectionId: '<COLLECTION_ID>',
     documentId: '<DOCUMENT_ID>',
     data: {
-        'likes': '+1',           // Atomic increment
-        'lastLikedBy': userId,   // Regular update
+        'lastLikedBy': userId,
         'lastLikedAt': DateTime.now().toIso8601String()
     }
 );
+```
+{% /multicode %}
+
+## Handle errors gracefully {% #handle-errors-gracefully %}
+
+Always handle constraint violations gracefully:
+
+{% multicode %}
+```client-web
+try {
+    const result = await databases.decrementDocumentAttribute(
+        '<DATABASE_ID>',
+        '<COLLECTION_ID>',
+        '<DOCUMENT_ID>',
+        'credits', // attribute
+        100, // value
+        0 // min (optional)
+    );
+    console.log(result);
+} catch (error) {
+    if (error.code === 400) {
+        console.log('Constraint violation - insufficient credits');
+    } else {
+        console.log('Other error:', error);
+    }
+}
+```
+```client-flutter
+try {
+    final document = await databases.decrementDocumentAttribute(
+        databaseId: '<DATABASE_ID>',
+        collectionId: '<COLLECTION_ID>',
+        documentId: '<DOCUMENT_ID>',
+        attribute: 'credits',
+        value: 100,
+        min: 0
+    );
+    print('Update successful: $document');
+} on AppwriteException catch(e) {
+    if (e.code == 400) {
+        print('Constraint violation - insufficient credits');
+    } else {
+        print('Other error: ${e.message}');
+    }
+}
 ```
 {% /multicode %}
 
