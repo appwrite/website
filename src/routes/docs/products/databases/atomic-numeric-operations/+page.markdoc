@@ -409,12 +409,7 @@ result2 = databases.decrement_document_attribute(
 
 ## Use for high-concurrency scenarios {% #use-for-high-concurrency-scenarios %}
 
-Atomic numeric operations are most beneficial when multiple users or processes might update the same numeric field simultaneously:
-
-- **Social media**: Likes, comments, shares
-- **Gaming**: Scores, currency, experience points
-- **E-commerce**: Inventory counts, sales metrics
-- **Analytics**: View counts, engagement metrics
+Atomic numeric operations are most beneficial when multiple users or processes might update the same numeric field simultaneously.
 
 ## Combine with regular updates {% #combine-with-regular-updates %}
 
