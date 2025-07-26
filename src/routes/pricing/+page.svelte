@@ -66,7 +66,7 @@
                         </p>
                         <div class="mt-4 flex flex-col items-center text-white">
                             <a href="/products/sites">
-                                <BadgeTransparent
+                                <BadgeTransparent class="hover:scale-105 transition-all duration-300 transform"
                                     ><img
                                         src="/images/icons/illustrated/light/sites.png"
                                         alt="Sites icon"
