@@ -148,7 +148,7 @@ To upload a file, add this to your app. For web apps, you can use the File objec
   POST /v1/storage/buckets/{bucketId}/files HTTP/1.1
   Content-Type: multipart/form-data; boundary="cec8e8123c05ba25"
   Content-Length: *Length of your entity body in bytes*
-  X-Appwrite-Project: [PROJECT_ID]
+  X-Appwrite-Project: <PROJECT_ID>
 
   --cec8e8123c05ba25
   Content-Disposition: form-data; name="operations"
