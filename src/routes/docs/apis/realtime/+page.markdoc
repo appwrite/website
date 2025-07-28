@@ -427,13 +427,13 @@ A list of all channels available you can subscribe to. IDs cannot be wildcards.
 * `documents`
 * Any create/update/delete events to any document
 ---
-* `databases.<ID>.collections.<ID>.documents.[ID]`
+* `databases.<ID>.collections.<ID>.documents.<ID>`
 * Any update/delete events to a given document
 ---
 * `files`
 * Any create/update/delete events to any file
 ---
-* `buckets.<ID>.files.[ID]`
+* `buckets.<ID>.files.<ID>`
 * Any update/delete events to a given file of the given bucket
 ---
 * `buckets.<ID>.files`
@@ -442,22 +442,22 @@ A list of all channels available you can subscribe to. IDs cannot be wildcards.
 * `teams`
 * Any create/update/delete events to a any team
 ---
-* `teams.[ID]`
+* `teams.<ID>`
 * Any update/delete events to a given team
 ---
 * `memberships`
 * Any create/update/delete events to a any membership
 ---
-* `memberships.[ID]`
+* `memberships.<ID>`
 * Any update/delete events to a given membership
 ---
 * `executions`
 * Any update to executions
 ---
-* `executions.[ID]`
+* `executions.<ID>`
 * Any update to a given execution
 ---
-* `functions.[ID]`
+* `functions.<ID>`
 * Any execution event to a given function
 
 {% /table %}
