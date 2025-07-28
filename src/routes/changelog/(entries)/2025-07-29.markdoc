@@ -12,6 +12,7 @@ We've shipped several improvements to fix broken flows and clean up the develope
 - Site screenshots now use the Storage API preview route.
 - The Git deployment modal now auto-fills your production branch.
 - Emails now include preview text for better notification previews.
+- Domain validation status now updates in realtime.
 
 ## Fixes
 
@@ -19,7 +20,6 @@ We've shipped several improvements to fix broken flows and clean up the develope
 - Git-related issues no longer cause build failures.
 - Site settings now save correctly even if the first deployment fails.
 - Deployment activation now reflects properly in realtime.
-- Domain validation status now updates in realtime.
 - DB filters now work as expected.
 - Broken links to API keys path are now fixed.
 - Console no longer adds a `null` header when executing functions.
