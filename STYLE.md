@@ -337,7 +337,7 @@ If you are proposing a new type of page, discuss an outline in your PR and ask f
 Whenever there's a need for a placeholder such as for an ID, use angle brackets (<>) over square brackets ([]) because square brackets can be confused for an array.
 
 - ✅ `client.setEndpoint("https://<REGION>.cloud.appwrite.io")`
-- ❌ `client.setEndpoint("https://[REGION].cloud.appwrite.io")`
+- ❌ `client.setEndpoint("https://<REGION>.cloud.appwrite.io")`
 
 ## Code snippets
 

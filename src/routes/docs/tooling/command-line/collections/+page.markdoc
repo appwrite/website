@@ -31,6 +31,7 @@ After [initializing](/docs/tooling/command-line/installation#initialization) you
 ```json
 {
     "projectId": "<PROJECT_ID>",
+    "endpoint": "https://<REGION>.cloud.appwrite.io/v1",
     "databases": [
         {
             "$id": "<DATABASE_ID>",

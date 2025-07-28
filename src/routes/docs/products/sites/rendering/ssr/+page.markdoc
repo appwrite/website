@@ -6,7 +6,7 @@ description: Learn how to host SSR web apps on Appwrite Sites.
 
 Server Side Rendering (SSR) apps generate HTML content dynamically on the server for each request and send fully rendered pages to the browser. This approach improves performance for the initial load and enhances SEO since search engines can easily index the content. While SSR can be slightly slower than static apps due to server-side processing, it provides a good balance between performance and interactivity.
 
-Since Appwrite's [CDN](/docs/products/network/cdn) supports dynamic content delivery, any server-side processing implemented in your site will be executed at your user's nearest edge location. The CDN also uses advanced compression algorithms to reduce data transfer sizes and improve delivery times of your site content. Any data relevant to other Appwrite products that you have integrated in your site, such as Auth, Databases, Storage, Functions, and Messaging, will be served from your project's pre-selected [region](/docs/products/network/regions).
+Since Appwrite's [CDN](/docs/products/network/cdn) supports dynamic content delivery, any server-side processing implemented in your site will be executed at your user's nearest edge location. The CDN also uses advanced compression algorithms to reduce data transfer sizes and improve delivery times of your site content. Any data relevant to other Appwrite products that you have integrated in your site, such as Auth, Databases, Storage, Functions, and Messaging, will be served from your project's pre-selected <REGION>(/docs/products/network/regions).
 
 # Configuring your Appwrite Site to use SSR
 

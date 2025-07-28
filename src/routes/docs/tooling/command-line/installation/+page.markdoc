@@ -142,7 +142,8 @@ This will create your `appwrite.config.json` file, where you will configure your
 
 ```json
 {
-    "projectId": "<PROJECT_ID>"
+    "projectId": "<PROJECT_ID>",
+    "endpoint": "https://<REGION>.cloud.appwrite.io/v1"
 }
 ```
 
