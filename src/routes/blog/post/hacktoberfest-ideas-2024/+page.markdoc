@@ -33,7 +33,7 @@ We have 3 projects we'd like to share that demonstrate a variety of ideas and ap
 
 # Terrazone: Revolutionizing global workforce management
 
-Terrazone is a platform designed to help remote teams work better together across different time zones through a simple, user-friendly interface. 
+Terrazone is a platform designed to help remote teams work better together across different time zones through a simple, user-friendly interface.
 
 ## What problem does it solve?
 
@@ -72,7 +72,7 @@ Managing multiple personal and work calendars can be overwhelming, especially wi
 ## Appwrite features used
 
 - [GitHub OAuth](https://appwrite.io/docs/products/auth/oauth2) in Appwrite Authentication
-- [Appwrite Database](https://appwrite.io/docs/products/databases) and Collections
+- [Appwrite Database](https://appwrite.io/docs/products/databases) and Tables
 - [Mailgun provider](https://appwrite.io/docs/references/cloud/server-nodejs/messaging) on Messaging
 - [New Go runtime and SDK](https://appwrite.io/blog/post/announcing-go-support) for Functions
 - [New Functions ecosystem](https://appwrite.io/blog/post/introducing-functions-ecosystem) to sync calendars and schedule emails
