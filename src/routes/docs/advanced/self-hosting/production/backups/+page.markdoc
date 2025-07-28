@@ -24,15 +24,21 @@ Back up these critical components of your Appwrite installation:
 
 # Back up the database {% #database-backup %}
 
-Appwrite uses MariaDB as its primary database. To back up the database:
+Appwrite uses MariaDB as its primary database. For database backups:
 
-### Create database backups
+### Database backup approach
+
+Use MariaDB's built-in tools for consistent backups:
+- **`mysqldump`** - Creates logical backups suitable for most installations
+- **Physical backups** - For large databases, consider tools like `mariabackup`
+
+### Basic backup example
 
 ```bash
 # Create a database backup
-docker compose exec mariadb sh -c 'exec mysqldump --all-databases --add-drop-database -u"$MYSQL_USER" -p"$MYSQL_PASSWORD"' > ./dump.sql
+docker compose exec mariadb sh -c 'exec mysqldump --all-databases --add-drop-database --single-transaction -u"$MYSQL_USER" -p"$MYSQL_PASSWORD"' > ./dump.sql
 
-# Restore from backup
+# Restore from backup (to a fresh installation only)
 docker compose exec -T mariadb sh -c 'exec mysql -u"$MYSQL_USER" -p"$MYSQL_PASSWORD"' < dump.sql
 ```
 
@@ -40,79 +46,61 @@ docker compose exec -T mariadb sh -c 'exec mysql -u"$MYSQL_USER" -p"$MYSQL_PASSW
 Only restore to a fresh Appwrite installation. Restoring to an existing installation may cause data corruption.
 {% /info %}
 
-### Automate database backups
+### Automation recommendations
 
-Create a shell script to automate daily backups:
-
-```bash
-#!/bin/bash
-BACKUP_DIR="/path/to/backup/directory"
-TIMESTAMP=$(date +"%Y%m%d_%H%M%S")
-BACKUP_FILE="$BACKUP_DIR/appwrite_db_$TIMESTAMP.sql"
-
-# Create backup directory if it doesn't exist
-mkdir -p $BACKUP_DIR
-
-# Create the database backup
-docker compose exec mariadb sh -c 'exec mysqldump --all-databases --add-drop-database -u"$MYSQL_USER" -p"$MYSQL_PASSWORD"' > $BACKUP_FILE
-
-# Compress the backup
-gzip $BACKUP_FILE
-
-# Remove backups older than 7 days
-find $BACKUP_DIR -name "appwrite_db_*.sql.gz" -type f -mtime +7 -delete
-
-echo "Backup completed: $BACKUP_FILE.gz"
-```
-
-Make the script executable and schedule it with cron:
-
-```bash
-# Make executable
-chmod +x backup_appwrite.sh
-
-# Run daily at 2 AM
-0 2 * * * /path/to/backup_appwrite.sh >> /path/to/backup_appwrite.log 2>&1
-```
+- **Schedule regular backups** using cron or your system's task scheduler
+- **Compress backups** to save storage space (gzip recommended)
+- **Implement retention policies** to manage backup storage costs
+- **Test restore procedures** regularly in a non-production environment
 
 # Back up storage volumes {% #storage-backup %}
 
-Appwrite stores data in Docker volumes, including uploads, functions, and builds. Before running these commands, shut down your Appwrite instance to ensure a complete backup.
+Appwrite stores data in multiple Docker volumes. Always shut down Appwrite before backing up volumes to ensure data consistency.
 
+## Volume backup approach
+
+Appwrite uses the following volumes that should be backed up:
+
+- `appwrite-uploads` - User-uploaded files and assets
+- `appwrite-functions` - Custom function code and dependencies
+- `appwrite-builds` - Function build artifacts
+- `appwrite-sites` - Static site deployments
+- `appwrite-certificates` - SSL certificates
+- `appwrite-config` - Configuration files
+- `appwrite-imports` - Data import files
+- `appwrite-cache` - Application cache data
+- `appwrite-redis` - Redis data (sessions, queues)
+- `appwrite-mariadb` - Database files (handled separately above)
+
+### Backup methods
+
+**Option 1: Docker volume backup (recommended)**
 ```bash
-# Create backup directory
-mkdir -p backup
+# Backup a single volume
+docker run --rm -v volume_name:/data -v $(pwd)/backup:/backup ubuntu tar czf "/backup/volume_name.tar.gz" -C /data .
 
-# Backup uploads volume
-docker run --rm --volumes-from "$(docker compose ps -q appwrite)" -v $PWD/backup:/backup ubuntu bash -c "cd /storage/uploads && tar cvf /backup/uploads.tar ."
-
-# Backup functions volume
-docker run --rm --volumes-from "$(docker compose ps -q appwrite)" -v $PWD/backup:/backup ubuntu bash -c "cd /storage/functions && tar cvf /backup/functions.tar ."
-
-# Backup builds volume
-docker run --rm --volumes-from "$(docker compose ps -q appwrite)" -v $PWD/backup:/backup ubuntu bash -c "cd /storage/builds && tar cvf /backup/builds.tar ."
-
-# Backup sites volume
-docker run --rm --volumes-from "$(docker compose ps -q appwrite)" -v $PWD/backup:/backup ubuntu bash -c "cd /storage/sites && tar cvf /backup/sites.tar ."
+# Restore a volume
+docker run --rm -v volume_name:/data -v $(pwd)/backup:/backup ubuntu tar xzf "/backup/volume_name.tar.gz" -C /data
 ```
 
-### Restore volumes
-
-To restore volumes, ensure Appwrite is shut down, then run:
-
+**Option 2: Direct volume copy**
 ```bash
-# Restore uploads volume
-docker run --rm --volumes-from "$(docker compose ps -q appwrite)" -v $PWD/backup:/restore ubuntu bash -c "cd /storage/uploads && tar xvf /restore/uploads.tar --strip 1"
+# Find volume location
+docker volume inspect volume_name
 
-# Restore functions volume
-docker run --rm --volumes-from "$(docker compose ps -q appwrite)" -v $PWD/backup:/restore ubuntu bash -c "cd /storage/functions && tar xvf /restore/functions.tar --strip 1"
-
-# Restore builds volume
-docker run --rm --volumes-from "$(docker compose ps -q appwrite)" -v $PWD/backup:/restore ubuntu bash -c "cd /storage/builds && tar xvf /restore/builds.tar --strip 1"
-
-# Restore sites volume
-docker run --rm --volumes-from "$(docker compose ps -q appwrite)" -v $PWD/backup:/restore ubuntu bash -c "cd /storage/sites && tar xvf /restore/sites.tar --strip 1"
+# Copy volume data (requires appropriate permissions)
+sudo cp -a /var/lib/docker/volumes/volume_name/_data /backup/volume_name_backup
 ```
+
+### Volume backup considerations
+
+{% info title="Permission considerations" %}
+Volume backups may encounter permission issues if files are owned by different users. If you experience permission errors, try running the backup commands with `sudo` or ensure your backup directory has appropriate permissions.
+{% /info %}
+
+{% info title="Important" %}
+Always restore to a fresh Appwrite installation. Restoring volumes may overwrite existing data and could cause permission issues. Ensure the backup files have appropriate read permissions before restoring.
+{% /info %}
 
 {% info title="External storage" %}
 If you've configured Appwrite to use S3, GCS, or Azure Blob Storage, use the respective provider's native backup tools to ensure consistent backups.
@@ -146,22 +134,75 @@ Your disaster recovery plan should include:
 
 For comprehensive protection, create a snapshot of your entire server or virtual machine.
 
-**AWS EC2 example:**
+### Cloud provider snapshots
+
+**AWS EC2:**
 1. Open the EC2 console
 2. Select your instance
 3. Choose Actions > Image > Create Image
 4. Complete the snapshot creation process
 
-Other cloud providers (Google Cloud Platform, Microsoft Azure, DigitalOcean) offer similar snapshot capabilities.
+**Other providers:** Google Cloud Platform, Microsoft Azure, and DigitalOcean offer similar snapshot capabilities.
+
+### Benefits of system snapshots
+
+- **Complete system state** - Captures entire server configuration
+- **Fast recovery** - Restore entire system in minutes
+- **Version control** - Multiple snapshots for different points in time
+- **Disaster recovery** - Protect against hardware failures
+
+# Implement backup automation {% #automation %}
+
+### Backup strategy recommendations
+
+1. **Schedule automated backups** - Use cron jobs or cloud provider automation
+2. **Implement the 3-2-1 rule** - 3 copies, 2 different media types, 1 offsite
+3. **Test restores regularly** - Verify backup integrity quarterly
+4. **Monitor backup jobs** - Set up alerts for backup failures
+5. **Document procedures** - Maintain runbooks for recovery scenarios
+
+### Third-party backup tools
+
+Consider enterprise backup solutions for production deployments:
+- **Velero** - Kubernetes-native backup solution
+- **Restic** - Secure, efficient backup program
+- **Borg** - Deduplicating backup program
+- **Cloud provider tools** - AWS Backup, Azure Backup, GCP Cloud Storage
+
+### Backup monitoring
+
+Set up monitoring for:
+- Backup job completion status
+- Backup file integrity checks
+- Storage usage and costs
+- Recovery time testing results
 
 # Follow best practices {% #best-practices %}
 
-For effective Appwrite backups:
+## Essential backup practices
 
-- **Automate backups** for consistency and reliability
-- **Test restores** to verify backup integrity
-- **Monitor backup jobs** to detect failures early
-- **Implement retention policies** to manage storage usage
-- **Document procedures** for team knowledge sharing
-- **Encrypt backups** to protect sensitive data
-- **Use version control** for functions code and configuration files
+| Practice | Recommendation |
+|----------|---------------|
+| **Frequency** | Daily database backups, weekly volume backups minimum |
+| **Retention** | Keep 7 daily, 4 weekly, 12 monthly backups |
+| **Testing** | Test restore procedures quarterly |
+| **Storage** | Store backups in different location than primary data |
+| **Security** | Encrypt backups and restrict access |
+| **Monitoring** | Alert on backup failures within 24 hours |
+| **Documentation** | Maintain current recovery procedures |
+
+## Recovery planning
+
+Your disaster recovery plan should define:
+
+1. **Recovery Point Objective (RPO)** - Maximum acceptable data loss
+2. **Recovery Time Objective (RTO)** - Maximum acceptable downtime
+3. **Communication plan** - Who to notify during incidents
+4. **Escalation procedures** - When to engage additional resources
+
+## Security considerations
+
+- **Encrypt backup files** using tools like GPG or cloud encryption
+- **Secure storage access** with proper authentication and authorization
+- **Regular security audits** of backup systems and procedures
+- **Compliance requirements** specific to your industry or region
