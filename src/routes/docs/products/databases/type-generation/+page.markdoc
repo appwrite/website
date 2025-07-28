@@ -6,7 +6,7 @@ description: Generate types from your Appwrite database schema. Learn how to use
 
 The Appwrite CLI provides a simple way to generate types based on your Appwrite database schema. This feature is particularly useful for developers who want to ensure type safety in their applications by generating type definitions that match their database collections and attributes.
 
-To generate types, the CLI reads the database schema from your project's `appwrite.json` file and generates type definitions for each collection.
+To generate types, the CLI reads the database schema from your project's `appwrite.config.json` file and generates type definitions for each collection.
 
 ## Generating types
 
@@ -31,7 +31,7 @@ The following options are currently available:
 
 ## Example usage
 
-Suppose you want to generate types for a collection with data on books with the following schema from your `appwrite.json` file:
+Suppose you want to generate types for a collection with data on books with the following schema from your `appwrite.config.json` file:
 
 ```json
 {

@@ -18,15 +18,15 @@ appwrite init sites
 
 # Pull site {% #pull-site %}
 
-You can also pull your existing Appwrite Sites from the Appwrite Console using the `pull` command in the folder containing your `appwrite.json` file.
+You can also pull your existing Appwrite Sites from the Appwrite Console using the `pull` command in the folder containing your `appwrite.config.json` file.
 
 ```sh
 appwrite pull sites
 ```
 
-# appwrite.json {% #appwritejson %}
+# appwrite.config.json {% #appwritejson %}
 
-After [initializing](/docs/tooling/command-line/installation#initialization) your Appwrite project and pulling your existing sites, your `appwrite.json` file should look similar to the following:
+After [initializing](/docs/tooling/command-line/installation#initialization) your Appwrite project and pulling your existing sites, your `appwrite.config.json` file should look similar to the following:
 
 ```json
 {

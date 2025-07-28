@@ -51,7 +51,7 @@ iwr -useb https://appwrite.io/cli/install.ps1 | iex
 or [Scoop](https://scoop.sh/)
 
 ```sh
-scoop install https://raw.githubusercontent.com/appwrite/sdk-for-cli/master/scoop/appwrite.json
+scoop install https://raw.githubusercontent.com/appwrite/sdk-for-cli/master/scoop/appwrite.config.json
 ```
 {% /tabsitem %}
 
@@ -101,7 +101,7 @@ curl -sL https://appwrite.io/cli/install.sh | bash
 
 {% tabsitem #scoop title="Scoop" %}
 ```sh
-scoop install https://raw.githubusercontent.com/appwrite/sdk-for-cli/master/scoop/appwrite.json
+scoop install https://raw.githubusercontent.com/appwrite/sdk-for-cli/master/scoop/appwrite.config.json
 ```
 {% /tabsitem %}
 
@@ -138,7 +138,7 @@ After you're logged in, the CLI needs to be initialized with your Appwrite proje
 appwrite init project
 ```
 
-This will create your `appwrite.json` file, where you will configure your various services like collections, functions, teams, topics, and buckets.
+This will create your `appwrite.config.json` file, where you will configure your various services like collections, functions, teams, topics, and buckets.
 
 ```json
 {

@@ -18,15 +18,15 @@ appwrite init buckets
 
 # Pull bucket {% #pull-bucket %}
 
-You can also pull your existing Appwrite buckets from the Appwrite Console using the `pull` command in the folder containing your `appwrite.json` file.
+You can also pull your existing Appwrite buckets from the Appwrite Console using the `pull` command in the folder containing your `appwrite.config.json` file.
 
 ```sh
 appwrite pull buckets
 ```
 
-# appwrite.json {% #appwritejson %}
+# appwrite.config.json {% #appwritejson %}
 
-After [initializing](/docs/tooling/command-line/installation#initialization) your Appwrite project and pulling your existing buckets, your `appwrite.json` file should look similar to the following:
+After [initializing](/docs/tooling/command-line/installation#initialization) your Appwrite project and pulling your existing buckets, your `appwrite.config.json` file should look similar to the following:
 
 ```json
 {

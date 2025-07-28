@@ -18,14 +18,14 @@ appwrite init teams
 
 # Pull team {% #pull-team %}
 
-You can also pull your existing Appwrite teams from the Appwrite Console using the `pull` command in the folder containing your `appwrite.json` file.
+You can also pull your existing Appwrite teams from the Appwrite Console using the `pull` command in the folder containing your `appwrite.config.json` file.
 
 ```sh
 appwrite pull teams
 ```
 
-# appwrite.json {% #appwritejson %}
-After [initializing](/docs/tooling/command-line/installation#initialization) your Appwrite project and pulling your existing teams, your `appwrite.json` file should look similar to the following:
+# appwrite.config.json {% #appwritejson %}
+After [initializing](/docs/tooling/command-line/installation#initialization) your Appwrite project and pulling your existing teams, your `appwrite.config.json` file should look similar to the following:
 
 ```json
 {
