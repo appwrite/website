@@ -421,22 +421,22 @@ A list of all channels available you can subscribe to. IDs cannot be wildcards.
 * `account`
 * All account related events (session create, name update...)
 ---
-* `databases.[ID].collections.[ID].documents`
+* `databases.<ID>.collections.<ID>.documents`
 * Any create/update/delete events to any document in a collection
 ---
 * `documents`
 * Any create/update/delete events to any document
 ---
-* `databases.[ID].collections.[ID].documents.[ID]`
+* `databases.<ID>.collections.<ID>.documents.[ID]`
 * Any update/delete events to a given document
 ---
 * `files`
 * Any create/update/delete events to any file
 ---
-* `buckets.[ID].files.[ID]`
+* `buckets.<ID>.files.[ID]`
 * Any update/delete events to a given file of the given bucket
 ---
-* `buckets.[ID].files`
+* `buckets.<ID>.files`
 * Any update/delete events to any file of the given bucket
 ---
 * `teams`
