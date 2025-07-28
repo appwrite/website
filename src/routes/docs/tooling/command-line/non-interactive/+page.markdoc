@@ -8,11 +8,11 @@ The Appwrite CLI can be used in a non-interactive and headless manner, without s
 ```sh
 appwrite client \
     --endpoint https://<REGION>.cloud.appwrite.io/v1 \
-    --project-id [PROJECT_ID] \
+    --project-id <PROJECT_ID> \
     --key YOUR_API_KEY
 ```
 
-When you set the global configuration parameters using the `appwrite client` command, they take precedence over the local configuration parameters in your `appwrite.json` thereby switching the CLI to non-interactive mode.
+When you set the global configuration parameters using the `appwrite client` command, they take precedence over the local configuration parameters in your `appwrite.config.json` thereby switching the CLI to non-interactive mode.
 
 In this mode, the CLI can only interact with one project at a time.
 

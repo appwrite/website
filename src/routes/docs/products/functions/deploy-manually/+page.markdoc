@@ -16,10 +16,10 @@ you can also create deployments manually or through the Appwrite CLI.
 
 ## Configure CLI deployments {% #configure-cli-deployments %}
 If you need to target a different project, API endpoint, change the path or entry point of your function, or update any of the other configuration options, 
-you can do so by editing the `appwrite.json` file.
+you can do so by editing the `appwrite.config.json` file.
 
 {% arrow_link href="/docs/tooling/command-line/functions#appwritejson" %}
-Learn more about appwrite.json
+Learn more about appwrite.config.json
 {% /arrow_link %}
 
 # Manual Deployment {% #manual %} 

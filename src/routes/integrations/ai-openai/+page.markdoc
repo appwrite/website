@@ -3,7 +3,7 @@ layout: integration
 title: Prompt ChatGPT
 description: Send text prompts to OpenAI GPT-3.5 and receive text generations
 date: 2024-07-30
-featured: true
+featured: false
 isPartner: true
 isNew: false
 cover: /images/integrations/ai-openai/cover.png

@@ -80,7 +80,7 @@
                                 ></a
                             >
                             <span class="mt-2 text-sm text-[var(--color-primary)] opacity-64"
-                                >Pricing will be revealed July 1st, 2025</span
+                                >Pricing will be revealed August 1st, 2025</span
                             >
                         </div>
                     </div>
@@ -132,15 +132,19 @@
                                                 <li><span>75K monthly active users</span></li>
                                                 <li><span>Community support</span></li>
                                                 <li>
-                                                    <span>Non-removable email branding</span>
-                                                </li>
-                                                <li>
                                                     <span
                                                         >1 Database, 1 Bucket, 5 Functions per
                                                         project</span
                                                     >
                                                 </li>
                                             </ul>
+                                            <hr
+                                                class="mt-4 mb-4 border-t border-gray-600 opacity-12"
+                                            />
+                                            <p class="text-caption text-secondary font-small">
+                                                Limit of two projects.<br />
+                                                Never paused.
+                                            </p>
                                         </div>
                                     </div>
                                 </article>

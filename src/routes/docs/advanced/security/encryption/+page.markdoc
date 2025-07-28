@@ -3,7 +3,7 @@ layout: article
 title: Encryption
 description: Learn about Appwrite's use of encryption across Appwrite's databases and storage buckets to protect user data.
 ---
-Other than applying encryption in [authentication](/docs/products/auth/security), [enforcing HTTPS](/docs/advanced/security/https), 
+Other than applying encryption in [authentication](/docs/products/auth/security), [enforcing HTTPS](/docs/advanced/security/https),
 and [generating TLS certificate for domains](/docs/advanced/security/tls), Appwrite also uses encryption for Storage, and Databases to come.
 Encryption helps secure your files and data in storage. In the event that an attack happens and a malicious actor gains access to files
 or data, encrypted files and data cannot be deciphered, adding a further layer of protection.
@@ -15,5 +15,9 @@ You can enable encryption by going to your bucket's **Settings** > **Security se
 Files are encrypted with AES-128 in Galois/Counter Mode (GCM).
 
 ## Databases {% #databases %}
-Databases will provide the ability to create encrypted columns. This feature is being actively developed and coming soon.
-Attributes will be encrypted with AES-128 in Galois/Counter Mode (GCM).
+Database columns support encryption for string attributes. This feature is available on Pro plans and higher. When creating a string attribute in the UI, encryption can be enabled using a toggle option.
+Attributes are encrypted with AES-128 in Galois/Counter Mode (GCM).
+
+{% info title="Querying encrypted attributes" %}
+Note that encrypted attributes cannot be queried.
+{% /info %}
