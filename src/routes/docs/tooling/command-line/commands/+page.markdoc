@@ -36,6 +36,9 @@ Below is a list of the available commands in the Appwrite CLI. You can get more 
 * `graphql`
 * The graphql command allows you to query and mutate any resource type on your Appwrite server.
 ---
+* `types [options] <output-directory>`
+* The types command generates type definitions based on your Appwrite database schema. Learn more about [type generation](/docs/products/databases/type-generation).
+---
 {% /table %}
 
 ## Account commands {% #account-commands %}
