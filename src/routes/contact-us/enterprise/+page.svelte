@@ -27,34 +27,38 @@
     async function handleSubmit() {
         error = undefined;
 
+        const trimmedFirstName = firstName.trim();
+        const trimmedLastName = lastName.trim();
+        const trimmedEmail = email.trim();
+        const trimmedCompanyName = companyName.trim();
+        const trimmedCompanyWebsite = companyWebsite.trim();
+        const trimmedUseCase = useCase.trim();
+
         const validationRules = {
             required: [
-                { value: firstName, name: 'First name' },
-                { value: lastName, name: 'Last name' },
-                { value: email, name: 'Email' },
-                { value: companyName, name: 'Company name' },
-                { value: companyWebsite, name: 'Company website' },
-                { value: useCase, name: 'Use case' }
+                { value: trimmedFirstName, name: 'First name' },
+                { value: trimmedLastName, name: 'Last name' },
+                { value: trimmedEmail, name: 'Email' },
+                { value: trimmedCompanyName, name: 'Company name' },
+                { value: trimmedCompanyWebsite, name: 'Company website' },
+                { value: trimmedUseCase, name: 'Use case' }
             ],
             textOnly: [
-                { value: firstName, name: 'First name' },
-                { value: lastName, name: 'Last name' },
-                { value: companyName, name: 'Company name' },
-                { value: useCase, name: 'Use case' }
+                { value: trimmedFirstName, name: 'First name' },
+                { value: trimmedLastName, name: 'Last name' },
+                { value: trimmedCompanyName, name: 'Company name' },
             ]
         };
 
         for (const field of validationRules.required) {
-            const trimmedValue = field.value.trim();
-            if (!trimmedValue) {
+            if (!field.value) {
                 error = `${field.name} cannot be empty or contain only spaces.`;
                 return;
             }
         }
 
         for (const field of validationRules.textOnly) {
-            const trimmedValue = field.value.trim();
-            if (/^\d+$/.test(trimmedValue)) {
+            if (!/\D/.test(field.value)) {
                 error = `${field.name} cannot contain only numbers.`;
                 return;
             }
@@ -70,15 +74,15 @@
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                email: email.trim(),
-                subject: companyName.trim(),
+                email: trimmedEmail,
+                subject: trimmedCompanyName,
                 cloudEmail,
-                companyName: companyName.trim(),
+                companyName: trimmedCompanyName,
                 companySize,
-                companyWebsite: companyWebsite.trim(),
-                firstName: firstName.trim(),
-                lastName: lastName.trim(),
-                message: useCase.trim(),
+                companyWebsite: trimmedCompanyWebsite,
+                firstName: trimmedFirstName,
+                lastName: trimmedLastName,
+                message: trimmedUseCase,
                 ...getReferrerAndUtmSource()
             })
         });
