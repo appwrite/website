@@ -46,7 +46,7 @@
             textOnly: [
                 { value: trimmedFirstName, name: 'First name' },
                 { value: trimmedLastName, name: 'Last name' },
-                { value: trimmedCompanyName, name: 'Company name' },
+                { value: trimmedCompanyName, name: 'Company name' }
             ]
         };
 
