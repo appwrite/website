@@ -515,13 +515,6 @@
                     enterprise: true
                 },
                 {
-                    title: 'Priority',
-                    free: '-',
-                    pro: '-',
-                    scale: 'Custom',
-                    enterprise: 'Custom'
-                },
-                {
                     title: 'SLA',
                     free: '-',
                     pro: '-',
