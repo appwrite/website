@@ -24,7 +24,7 @@ Let’s dive in.
 
 # Appwrite Sites live for all
 
-![Sites live for all](/images/blog/product-update-july-2025/sites.png)
+![Sites live for all](static/images/changelog/2025-07-24.png)
 
 Here’s an update many of you’ve been waiting for: Appwrite Sites is now live for all!
 
@@ -34,7 +34,7 @@ You can now host your applications directly from the Appwrite console, making Ap
 
 # CSV import
 
-![CSV imports](/images/blog/product-update-july-2025/csv.png)
+![CSV imports](/images/blog/announcing-csv-imports/cover.png)
 
 We started July with CSV import.  Built on top of Appwrite's migration APIs, this Databases feature makes it easy to bring in large datasets, seed collections, or migrate structured data using only a CSV file.
 
@@ -42,7 +42,7 @@ We started July with CSV import.  Built on top of Appwrite's migration APIs, thi
 
 # Bulk API
 
-![Bulk API](/images/blog/product-update-july-2025/bulk.png)
+![Bulk API](/images/blog/announcing-bulk-api/cover.png)
 
 You can now handle heavy data workloads with greater ease. With Bulk API, you can create, update, delete, or upsert multiple documents in a single API call. 
 
@@ -52,7 +52,7 @@ This is especially useful for managing large datasets or syncing data between sy
 
 # Database Upsert
 
-![Database Upsert](/images/blog/product-update-july-2025/upsert.png)
+![Database Upsert](/images/blog/announcing-database-upsert/cover.png)
 
 Database Upsert lets you create or update a document with a single API call. If the document exists, it’s updated; if not, it’s created. This removes the need for manual existence checks, reduces extra requests, and simplifies your logic.
 
@@ -60,7 +60,7 @@ Database Upsert lets you create or update a document with a single API call. If 
 
 # Encrypted string attribute support
 
-![Encrypted ](/images/blog/product-update-july-2025/encrypted.png)
+![Encrypted ](/images/blog/announcing-encrypted-string-attributes/cover.png)
 
 We’ve added an extra layer of security to Appwrite Databases and Storage. This feature allows you to encrypt string attributes at rest directly from the Appwrite console, without needing to implement manual encryption.
 
@@ -68,7 +68,7 @@ We’ve added an extra layer of security to Appwrite Databases and Storage. This
 
 # Auto increment support
 
-![Auto-increment](/images/blog/product-update-july-2025/increment.png)
+![Auto-increment](/images/blog/announcing-auto-increment-support/cover.png)
 
 Appwrite Databases now support auto-increment fields. A `$sequence` column is automatically managed in your collection, increasing with each new document. This helps keep your data ordered without requiring manual handling.
 
@@ -106,7 +106,7 @@ Here’s what improved:
 
 # Community recognitions
 
-![community.png](/images/blog/product-update-july-2025/community.png)
+![community.png]()
 
 This month, we’re excited to feature [**Idea Tracker**](https://idea-tracker-v2.appwrite.network/) as part of our Monthly Community recognitions.
 
