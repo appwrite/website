@@ -11,6 +11,7 @@
     import Scale from '$routes/(marketing)/(components)/scale.svelte';
     import { Button } from '$lib/components/ui';
     import { trackEvent } from '$lib/actions/analytics';
+    import Features from '$routes/(marketing)/(components)/features.svelte';
 
     let email = '';
     let firstName = '';
@@ -275,6 +276,7 @@
                 >.
             </Scale>
             <LogoList />
+            <Features theme="dark" class="-mt-24" />
             <div class="container">
                 <FooterNav />
                 <MainFooter />
