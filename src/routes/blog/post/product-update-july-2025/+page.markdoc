@@ -3,7 +3,7 @@ layout: post
 title: "July product update: New Database features, Sites live, and Console improvements"
 description: Get a full recap of products, features and programs we released in the month of July.
 date: 2025-07-31
-cover: /static/images/blog/product-update-july-2025/cover.png
+cover: /images/blog/product-update-july-2025/cover.png
 timeToRead: 3
 author: dennis-ivy
 category: product
@@ -11,7 +11,7 @@ featured: false
 callToAction: true
 ---
 
-Welcome back to the July Product Update. This month, we have made many, many great releases! 
+Welcome back to the July Product Update. This month, we have made many, many great releases!
 
 Here’s what to expect:
 
@@ -24,7 +24,7 @@ Let’s dive in.
 
 # Appwrite Sites live for all
 
-![Sites live for all](/static/images/changelog/2025-07-24.png)
+![Sites live for all](/images/changelog/2025-07-24.png)
 
 Here’s an update many of you’ve been waiting for: Appwrite Sites is now live for all!
 
@@ -44,7 +44,7 @@ We started July with CSV import.  Built on top of Appwrite's migration APIs, thi
 
 ![Bulk API](/images/blog/announcing-bulk-api/cover.png)
 
-You can now handle heavy data workloads with greater ease. With Bulk API, you can create, update, delete, or upsert multiple documents in a single API call. 
+You can now handle heavy data workloads with greater ease. With Bulk API, you can create, update, delete, or upsert multiple documents in a single API call.
 
 This is especially useful for managing large datasets or syncing data between systems without multiple API calls.
 
@@ -76,7 +76,7 @@ Appwrite Databases now support auto-increment fields. A `$sequence` column is au
 
 # Console and deployment improvements
 
-![Console](/static/images/blog/product-update-july-2025/console.png)
+![Console](/images/blog/product-update-july-2025/console.png)
 
 We've shipped several improvements to fix broken flows and clean up the developer experience across Sites, Functions, and the Appwrite Console.
 
@@ -106,7 +106,7 @@ Here’s what improved:
 
 # Community recognitions
 
-![community.png](/static/images/blog/product-update-july-2025/community.png)
+![community.png](/images/blog/product-update-july-2025/community.png)
 
 This month, we’re excited to feature [**Idea Tracker**](https://idea-tracker-v2.appwrite.network/) as part of our Monthly Community recognitions.
 
@@ -135,7 +135,7 @@ If you'd like to participate in next month's Community Recognitions, [join our D
 
 # What’s to come
 
-That’s a wrap for July. Next month, we will have more database updates, including good news for developers working with SQL, and some very big news! 
+That’s a wrap for July. Next month, we will have more database updates, including good news for developers working with SQL, and some very big news!
 
 Stay tuned!
 
