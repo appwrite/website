@@ -104,7 +104,12 @@ const LoginPage = () => {
   };
 
   const register = async () => {
-    await account.create(ID.unique(), email, password, name);
+    await account.create({
+      userId: ID.unique(),
+      email,
+      password,
+      name
+    });
     login(email, password);
   };
 

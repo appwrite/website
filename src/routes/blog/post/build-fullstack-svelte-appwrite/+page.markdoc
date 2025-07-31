@@ -235,8 +235,8 @@ We'll also need a `login` and `register` function to handle user authentication:
 export async function login(email, password) {
 	try {
 		await account.createEmailPasswordSession({
-			email: email,
-			password: password
+			email,
+			password
 		})
 		await initAuth()
 	} catch (error) {
@@ -249,9 +249,9 @@ export async function register(email, password, name) {
 	try {
 		await account.create({
 			userId: ID.unique(),
-			email: email,
-			password: password,
-			name: name
+			email,
+			password,
+			name
 		})
 		await login(email, password)
 	} catch (error) {

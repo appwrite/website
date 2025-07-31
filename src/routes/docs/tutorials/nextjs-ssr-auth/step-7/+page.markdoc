@@ -9,7 +9,7 @@ step: 7
 
 To enable the GitHub OAuth provider, navigate to your Appwrite Console > Auth > Settings > OAuth2 Providers > GitHub
 
-To support the OAuth flow, we first redirect the user to the OAuth provider, and then handle the callback from the OAuth provider. 
+To support the OAuth flow, we first redirect the user to the OAuth provider, and then handle the callback from the OAuth provider.
 
 # OAuth server action {% #oauth-server-action %}
 
@@ -28,7 +28,7 @@ export async function signUpWithGithub() {
 	const { account } = await createAdminClient();
 
   const origin = headers().get("origin");
-  
+
 	const redirectUrl = await account.createOAuth2Token(
 		OAuthProvider.Github,
 		`${origin}/oauth`,
@@ -83,7 +83,10 @@ export async function GET(request) {
   const secret = request.nextUrl.searchParams.get("secret");
 
   const { account } = await createAdminClient();
-  const session = await account.createSession(userId, secret);
+  const session = await account.createSession({
+    userId,
+    secret
+  });
 
   cookies().set("my-custom-session", session.secret, {
     path: "/",

@@ -218,7 +218,10 @@ const secret = url.searchParams.get('secret');
 const userId = url.searchParams.get('userId');
 
 // Create session with OAuth credentials
-await account.createSession(userId, secret);
+await account.createSession({
+    userId,
+    secret
+});
 // Redirect as needed
 ```
 {% /tabsitem %}

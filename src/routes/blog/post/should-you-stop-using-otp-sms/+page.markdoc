@@ -75,7 +75,10 @@ const client = new Client()
 
 const account = new Account(client);
 
-const user = await account.createMagicURLToken(ID.unique(), 'email@example.com');
+const user = await account.createMagicURLToken({
+    userId: ID.unique(),
+    email: 'email@example.com'
+});
 ```
 
 After receiving the secret from an email, you can create a session for the user.

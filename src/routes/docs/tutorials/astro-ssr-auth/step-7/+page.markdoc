@@ -64,7 +64,10 @@ export const GET = async ({ redirect, cookies, url }) => {
   const { account } = createAdminClient();
 
   // Exchange the token for a session
-  const session = await account.createSession(userId, secret);
+  const session = await account.createSession({
+    userId,
+    secret
+  });
 
   // Set the session cookie
   cookies.set(SESSION_COOKIE, session.secret, {

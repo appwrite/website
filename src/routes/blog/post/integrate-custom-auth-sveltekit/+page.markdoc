@@ -236,7 +236,10 @@ We will create a file `./src/routes/+page.svelte` and add the following code:
 	}
 
 	async function createSession() {
-		session = await account.createSession(user.$id, token.secret);
+		session = await account.createSession({
+			userId: user.$id,
+			secret: token.secret
+		});
 		currentState = state[2];
 	}
 

@@ -18,7 +18,11 @@ const client = new Client()
 
 const account = new Account(client);
 
-const promise = account.create('[USER_ID]', 'email@example.com', '');
+const promise = account.create({
+    userId: '[USER_ID]',
+    email: 'email@example.com',
+    password: ''
+});
 
 promise.then(function (response) {
     console.log(response); // Success
@@ -41,7 +45,10 @@ const client = new Client()
 
 const account = new Account(client);
 
-const promise = account.createEmailPasswordSession('email@example.com', 'password');
+const promise = account.createEmailPasswordSession({
+    email: 'email@example.com',
+    password: 'password'
+});
 
 promise.then(function (response) {
     console.log(response); // Success

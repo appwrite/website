@@ -139,7 +139,10 @@ Appwrite Cloud 1.5 brings enhanced support for SSR authentication patterns, opti
 The big change is that Appwrite now allows you to generate and access sessions server side to set session cookies and use these sessions to authorize future requests.
 
 ```tsx
-const session = account.createEmailPasswordSession(email, password)
+const session = account.createEmailPasswordSession({
+  email,
+  password
+})
 console.log(session.secret) // Output: 'eyJpZCI...sdfahfkjjy'
 ```
 

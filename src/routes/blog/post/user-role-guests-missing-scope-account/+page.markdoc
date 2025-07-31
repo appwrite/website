@@ -81,7 +81,10 @@ Since `account.createEmailPasswordSession()` doesn't persist a session, calling 
 
 ```jsx
 // Server-side code - this approach doesn't work as expected
-await account.createEmailPasswordSession('user@example.com', 'password');
+await account.createEmailPasswordSession({
+  email: 'user@example.com',
+  password: 'password'
+});
 // In a different request or function call:
 const user = await account.get(); // Error: missing scope (account)
 ```
