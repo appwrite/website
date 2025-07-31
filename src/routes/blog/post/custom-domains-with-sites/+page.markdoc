@@ -52,7 +52,7 @@ Once you’ve added a domain to your deployed Site, you’ll be able to view all
 ![Organization overview in Appwrite console](/images/blog/custom-domains-with-sites/organization-overview.png)
 
 1. In the top left corner of the console, select `Organization Overview`
-2. Select the domains tab.
+2. Select the `Domains` tab.
 
 Here you’ll see every domain you’ve added across all projects in the selected organization.
 
