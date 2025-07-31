@@ -104,6 +104,7 @@ export const platformMap: Record<Language | string, string> = {
     jsx: 'React',
     tsx: 'React',
     typescript: 'TypeScript',
+    javascript: 'JavaScript',
     dart: 'Dart',
     java: 'Java',
     kotlin: 'Kotlin',

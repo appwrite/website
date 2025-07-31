@@ -8,7 +8,7 @@ Develop your Appwrite functions locally to make code changes without redeploying
 
 # Setup {% #setup %}
 
-We use Docker to replicate the production environment for the local deployment of functions. These can be executed locally with the CLI command, which requires initializing a project with an `appwrite.json` file and having local code to run the function locally. The CLI also supports various other [CLI commands](/docs/tooling/command-line/commands).
+We use Docker to replicate the production environment for the local deployment of functions. These can be executed locally with the CLI command, which requires initializing a project with an `appwrite.config.json` file and having local code to run the function locally. The CLI also supports various other [CLI commands](/docs/tooling/command-line/commands).
 
 1. Install the [Docker CLI](https://www.docker.com/products/docker-desktop/)
 2. Ensure Docker is running in the background
@@ -36,7 +36,7 @@ appwrite run functions --port 3000 --function-id "<FUNCTION_ID>"
 -----------|-------------|--------------------------------|--------------
  node-16.0 | src/main.js | functions/<FUNCTION_ID>      | npm install  
 
-ℹ Info: If you wish to change your local settings, update the appwrite.json file and rerun the 'appwrite run' command.
+ℹ Info: If you wish to change your local settings, update the appwrite.config.json file and rerun the 'appwrite run' command.
 ♥ Hint: Permissions, events, CRON and timeouts dont apply when running locally.
 ℹ Info: Pulling Docker image ...
 ♥ Hint: This may take a few minutes, but we only need to do this once.
@@ -72,7 +72,7 @@ Learn more about developing a function
 
 # Dynamic API keys {% #dynamic-api-keys %}
 
-You can use headers like dynamic API keys in your function, which give you access to your project services and allow you to operate without sessions. To configure your dynamic API key scopes, modify the scopes in the `appwrite.json` file.
+You can use headers like dynamic API keys in your function, which give you access to your project services and allow you to operate without sessions. To configure your dynamic API key scopes, modify the scopes in the `appwrite.config.json` file.
   
 {% arrow_link href="/docs/products/functions/develop#dynamic-api-key" %}
 Learn more about dynamic API keys

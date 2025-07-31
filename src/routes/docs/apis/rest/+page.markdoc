@@ -53,7 +53,7 @@ The example below shows creating an account session with the Create Account Sess
 ```json
 POST /v1/account/sessions/email HTTP/1.1
 Content-Type: application/json
-X-Appwrite-Project: [PROJECT_ID]
+X-Appwrite-Project: <PROJECT_ID>
 
 {
   "email": "example@email.com",
@@ -74,7 +74,7 @@ These cookies are used in subsequent requests to authenticate the user.
 GET /v1/account HTTP/1.1
 Cookie: a_session_61e71ec784ab035f7259_legacy=eyJ0...aSJ9; a_session_61e71ec784ab035f7259=eyJ0...aSJ9
 Content-Type: application/json
-X-Appwrite-Project: [PROJECT_ID]
+X-Appwrite-Project: <PROJECT_ID>
 ```
 
 ## Server integrations {% #server-integrations %}
@@ -86,7 +86,7 @@ Server APIs are authenticated with API keys instead of account sessions. Simply 
 ```json
 GET /v1/databases/{databaseId}/collections/{collectionId}/documents HTTP/1.1
 Content-Type: application/json
-X-Appwrite-Project: [PROJECT_ID]
+X-Appwrite-Project: <PROJECT_ID>
 X-Appwrite-Key: [API_KEY]
 ```
 
@@ -97,7 +97,7 @@ JWT authentication is frequently used by server applications to act on behalf of
 ```json
 GET /v1/account HTTP/1.1
 Content-Type: application/json
-X-Appwrite-Project: [PROJECT_ID]
+X-Appwrite-Project: <PROJECT_ID>
 X-Appwrite-JWT: [TOKEN]
 ```
 
@@ -193,7 +193,7 @@ read("user:627a958ded6424a98a9f")
 Some use cases do not allow custom headers, such as embedding images from Appwrite in HTML. In these cases, you can provide the Appwrite project ID using the query parameter project.
 
 ```HTML
-<img src="[ENDPOINT]/v1/storage/buckets/[BUCKET_ID]/files/[FILE_ID]/preview?project=[PROJECT_ID]"/>
+<img src="[ENDPOINT]/v1/storage/buckets/[BUCKET_ID]/files/[FILE_ID]/preview?project=<PROJECT_ID>"/>
 ```
 
 # Permissions {% #permissions %}

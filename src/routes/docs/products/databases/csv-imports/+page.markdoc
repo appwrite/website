@@ -1,6 +1,6 @@
 ---
 layout: article
-title: CSV Imports
+title: CSV imports
 description: Master document imports with Appwrite's CSV Import feature. Learn how to create documents within your collections by uploading a CSV file.
 ---
 

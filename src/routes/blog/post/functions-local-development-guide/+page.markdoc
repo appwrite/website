@@ -85,9 +85,9 @@ You'll be asked to provide details about your function like its name, ID, and ru
 
 The CLI will generate the function's code in a directory within your project. This directory will be named after the function name you provided. You can open it to see the source code and start developing your function.
 
-Appwrite commands need your appwrite.json file to work, which is located in the root directory of your project. However, if you run Appwrite commands from the function directory, the CLI will automatically look for the `appwrite.json` file in the parent directories. So, commands from the function directory should work without any issues.
+Appwrite commands need your appwrite.config.json file to work, which is located in the root directory of your project. However, if you run Appwrite commands from the function directory, the CLI will automatically look for the `appwrite.config.json` file in the parent directories. So, commands from the function directory should work without any issues.
 
-This way, you don't have to worry about switching directories when you need to do commands like `npm install` (which needs to be done in the function directory) or `appwrite deploy` (which needs the `appwrite.json` file).
+This way, you don't have to worry about switching directories when you need to do commands like `npm install` (which needs to be done in the function directory) or `appwrite deploy` (which needs the `appwrite.config.json` file).
 
 # Developing locally
 
