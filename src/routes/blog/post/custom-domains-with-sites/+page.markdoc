@@ -22,7 +22,7 @@ We’ll use Namecheap in this tutorial; however, if there are different steps fo
 
 You can also learn how to host with Appwrite Sites [here](https://youtu.be/VtDe6hDw91k).
 
-### Adding a domain
+# Adding a domain
 
 In your Appwrite console, you’ll want to add a domain to your deployed website.
 
