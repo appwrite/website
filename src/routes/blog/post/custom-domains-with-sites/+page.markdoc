@@ -6,7 +6,7 @@ date: 2025-07-30
 cover: /images/blog/custom-domains-with-sites/cover.png
 timeToRead: 5
 author: dennis-ivy
-category: customer-stories
+category: tutorial
 ---
 
 Appwrite Sites, the open-source Vercel alternative, is now available to all organizations. Of course, with hosting comes the next step of connecting custom domains. In this article, we’ll walk you through the steps to do just that.
