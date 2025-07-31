@@ -70,7 +70,7 @@ Make sure you click the green check mark to save this change.
 
 ![NS settings in Namecheap](/images/blog/custom-domains-with-sites/ns-records-namecheap.png)
 
-### Verifying your domain
+# Verifying your domain
 
 Once you’ve added your NS records to Namecheap, you have successfully pointed your domain to Appwrite's name servers. All that's left to do is verify your domain from your Appwrite console.
 
