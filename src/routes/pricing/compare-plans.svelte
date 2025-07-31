@@ -73,6 +73,13 @@
             title: 'Platform',
             rows: [
                 {
+                    title: 'Number of projects',
+                    free: '2',
+                    pro: 'Unlimited',
+                    scale: 'Unlimited',
+                    enterprise: 'Unlimited'
+                },
+                {
                     title: 'Projects pausing',
                     free: 'Never',
                     pro: 'Never',
@@ -508,25 +515,18 @@
                     enterprise: true
                 },
                 {
-                    title: 'Priority',
-                    free: '-',
-                    pro: '-',
-                    scale: true,
-                    enterprise: true
-                },
-                {
                     title: 'SLA',
                     free: '-',
                     pro: '-',
-                    scale: true,
-                    enterprise: true
+                    scale: 'Custom',
+                    enterprise: 'Custom'
                 },
                 {
                     title: 'Private Slack channel',
                     free: '-',
                     pro: '-',
-                    scale: true,
-                    enterprise: true
+                    scale: 'Custom',
+                    enterprise: 'Custom'
                 }
             ]
         }

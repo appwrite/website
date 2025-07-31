@@ -279,7 +279,6 @@
                                                 <li><span>SSO</span></li>
                                                 <li><span>Activity logs</span></li>
                                                 <li><span>Custom backup policies</span></li>
-                                                <li><span>Priority support</span></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -324,8 +323,10 @@
                                             <ul class="web-checked-list-circle">
                                                 <li><span>Uptime SLAs</span></li>
                                                 <li><span>Designated Success Manager</span></li>
-                                                <li><span>24/7 enterprise support</span></li>
-                                                <li><span>Private Slack channel</span></li>
+                                                <li><span>Up to 24/7 support</span></li>
+                                                <li>
+                                                    <span>Option for private Slack channel</span>
+                                                </li>
                                                 <li><span>Volume discounts</span></li>
                                                 <li><span>Log drains</span></li>
                                                 <li><span>90-day log retention</span></li>
