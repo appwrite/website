@@ -49,7 +49,7 @@ We can’t verify our domain until we give these to our domain name provider, so
 
 Once you’ve added a domain to your deployed Site, you’ll be able to view all your Site's DNS records from your account organization:
 
-![Organization overview in Appwrite console](/images/blog/custom-domains-with-sites/Screenshot_2025-07-28_at_7.04.14_PM.png)
+![Organization overview in Appwrite console](/images/blog/custom-domains-with-sites/organization-overview.png)
 
 1. In the top left corner of the console, select `Organization Overview`
 2. Select the domains tab.
@@ -58,7 +58,7 @@ Here you’ll see every domain you’ve added across all projects in the selecte
 
 Click on the domains row to view all DNS records. Keep this tab open as you’ll need both NS records in the next step.
 
-![NS records for your domain](/images/blog/custom-domains-with-sites/Screenshot_2025-07-28_at_7.07.32_PM.png)
+![NS records for your domain](/images/blog/custom-domains-with-sites/dns-records.png)
 
 ### Adding NS records in Namecheap
 
@@ -68,13 +68,13 @@ Go to `Domain` and under the `NAMESERVERS` section, select `Custom DNS` and add 
 
 Make sure you click the green check mark to save this change.
 
-![NS settings in Namecheap](/images/blog/custom-domains-with-sites/Screenshot_2025-07-28_at_7.10.12_PM.png)
+![NS settings in Namecheap](/images/blog/custom-domains-with-sites/ns-records-namecheap.png)
 
 ### Verifying your domain
 
 Once you’ve added your NS records to Namecheap, you have successfully pointed your domain to Appwrite's name servers. All that's left to do is verify your domain from your Appwrite console.
 
-![Retry button to check domain verification status](/images/blog/custom-domains-with-sites/Screenshot_2025-07-28_at_7.11.51_PM.png)
+![Retry button to check domain verification status](/images/blog/custom-domains-with-sites/retry-dns-checks.png)
 
 This step can take a few minutes, or even a few hours, in some cases, although this is rare.
 
