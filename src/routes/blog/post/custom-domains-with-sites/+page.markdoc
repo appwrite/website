@@ -16,7 +16,7 @@ If you prefer to learn from videos, we will also have a [video tutorial](https:/
 Before we start, we’ll assume two things:
 
 1. You have a domain purchased with a domain registrar (Namecheap, GoDaddy, Bluehost, etc)
-2. You’ve deployed your website with Appwrite Sites.
+2. You’ve deployed your website with Appwrite Sites
 
 We’ll use Namecheap in this tutorial; however, if there are different steps for any providers, we will note these and link related tutorials in the footnotes.
 
@@ -27,7 +27,7 @@ You can also learn how to host with Appwrite Sites [here](https://youtu.be/VtDe6
 In your Appwrite console, you’ll want to add a domain to your deployed website.
 
 1. Go to the Sites tab
-2. Select the Site to which you wish to add the domain.
+2. Select the Site to which you wish to add the domain
 3. Go to the `Domains` tab and click `Add domain`
 
 Type in the domain name you have hosted with your provider, i.e, `example.com`.
@@ -52,7 +52,7 @@ Once you’ve added a domain to your deployed Site, you’ll be able to view all
 ![Organization overview in Appwrite console](/images/blog/custom-domains-with-sites/organization-overview.png)
 
 1. In the top left corner of the console, select `Organization Overview`
-2. Select the `Domains` tab.
+2. Select the `Domains` tab
 
 Here you’ll see every domain you’ve added across all projects in the selected organization.
 
@@ -87,3 +87,10 @@ Your website should be live once you receive the `Verified` status.
 ![Domain verified successfully on Appwrite console](/images/blog/custom-domains-with-sites/domain-verified.png)
 
 Once again, even after your website is verified, it may take some time to see the website. Try clearing your browser’s cache or visiting the domain from a different device to test.
+
+# Next steps
+
+You can now access your website at your custom domain. If you have any questions, feel free to join our [Discord server](https://appwrite.io/discord). Here are some more resources you may find helpful.
+
+- [Appwrite Sites documentation on domains](/docs/products/sites/domains)
+- [Build and deploy a personal portfolio on Appwrite Sites](/blog/post/portfolio-template-sites)
