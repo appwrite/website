@@ -40,7 +40,6 @@ We started July with CSV imports. This feature lets you add documents to your Ap
 
 [Learn more](/blog/post/announcing-csv-imports)
 
----
 # Bulk API
 
 ![Bulk API](/images/blog/product-update-july-2025/bulk.png)
@@ -50,8 +49,6 @@ You can now handle heavy data workloads with greater ease. With Bulk API, you ca
 This is especially useful for managing large datasets or syncing data between systems without multiple API calls.
 
 [Learn more](/blog/post/announcing-bulk-api)
-
----
 
 # Database Upsert
 
@@ -63,8 +60,6 @@ Database Upsert lets you create or update a document with a single API call. If 
 
 [Learn more](/blog/post/announcing-database-upsert)
 
----
-
 # Encrypted string attribute support
 
 ![Encrypted ](/images/blog/product-update-july-2025/encrypted.png)
@@ -73,8 +68,6 @@ We’ve added an extra layer of security to Appwrite Databases and Storage. This
 
 [Learn more](/blog/post/announcing-encrypted-string-attributes)
 
----
-
 # Auto increment support
 
 ![Auto-increment](/images/blog/product-update-july-2025/increment.png)
@@ -82,8 +75,6 @@ We’ve added an extra layer of security to Appwrite Databases and Storage. This
 Appwrite Databases now support auto-increment fields. A `$sequence` column is automatically managed in your collection, increasing with each new document. This helps keep your data ordered without requiring manual handling.
 
 [Learn more](/blog/post/announcing-auto-increment-support)
-
----
 
 # Console and deployment improvements
 
@@ -101,8 +92,6 @@ And many more. View the full changelog for more details
 
 [Go to Changelog](/changelog/entry/2025-07-29)
 
----
-
 # Smarter notifications
 
 ![OTP](/images/blog/product-update-july-2025/otp.png)
@@ -117,8 +106,6 @@ Here’s what improved:
 
 [Learn more](/docs/products/messaging)
 
----
-
 # Community recognitions
 
 ![community.png](/images/blog/product-update-july-2025/community.png)
@@ -130,8 +117,6 @@ This month, we’re excited to feature [**Idea Tracker**](https://idea-tracker-v
 A big shout-out to [Abhi Varde](https://x.com/varde_abhi).
 
 If you'd like to participate in next month's Community Recognitions, [join our Discord server](https://appwrite.io/discord) to showcase your project.
-
----
 
 # Engineering resources
 
@@ -149,8 +134,6 @@ If you'd like to participate in next month's Community Recognitions, [join our D
 - [Type generation for Appwrite DB Schema](https://youtu.be/ip2CXH2KRl8?si=9EoOCraYd-hOCYoX)
 - [Announcing Database Upserts](https://youtu.be/Pt9ZttS3KiA?si=TWlRi5qFzZbHbzAP)
 - [Auto-increment support for numeric sequencing](https://youtu.be/yy-L6QmEWe8?si=BjXzFna1C54IDXZd)
-
----
 
 # What’s to come
 
