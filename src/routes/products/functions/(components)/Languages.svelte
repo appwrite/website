@@ -2,17 +2,17 @@
     import { Button } from '$lib/components/ui';
     import { Platform } from '$lib/utils/references';
     import MultiCodeContextless from '$routes/products/messaging/(components)/MultiCodeContextless.svelte';
-    import SnippetNodejs from './(snippets)/nodejs.txt';
-    import SnippetPhp from './(snippets)/php.txt';
-    import SnippetPython from './(snippets)/python.txt';
-    import SnippetRuby from './(snippets)/ruby.txt';
-    import SnippetDeno from './(snippets)/deno.txt';
-    import SnippetGo from './(snippets)/go.txt';
-    import SnippetDart from './(snippets)/dart.txt';
-    import SnippetKotlin from './(snippets)/kotlin.txt';
-    import SnippetJava from './(snippets)/java.txt';
-    import SnippetSwift from './(snippets)/swift.txt';
-    import SnippetCsharp from './(snippets)/csharp.txt';
+    import SnippetNodejs from './(snippets)/nodejs.txt?raw';
+    import SnippetPhp from './(snippets)/php.txt?raw';
+    import SnippetPython from './(snippets)/python.txt?raw';
+    import SnippetRuby from './(snippets)/ruby.txt?raw';
+    import SnippetDeno from './(snippets)/deno.txt?raw';
+    import SnippetGo from './(snippets)/go.txt?raw';
+    import SnippetDart from './(snippets)/dart.txt?raw';
+    import SnippetKotlin from './(snippets)/kotlin.txt?raw';
+    import SnippetJava from './(snippets)/java.txt?raw';
+    import SnippetSwift from './(snippets)/swift.txt?raw';
+    import SnippetCsharp from './(snippets)/csharp.txt?raw';
 
     const codeTopic = [
         {
