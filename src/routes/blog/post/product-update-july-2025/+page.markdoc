@@ -76,7 +76,7 @@ Appwrite Databases now support auto-increment fields. A `$sequence` column is au
 
 # Console and deployment improvements
 
-![Console](/images/blog/product-update-july-2025/console.png)
+![Console](/static/images/blog/product-update-july-2025/console.png)
 
 We've shipped several improvements to fix broken flows and clean up the developer experience across Sites, Functions, and the Appwrite Console.
 
@@ -106,7 +106,7 @@ Here’s what improved:
 
 # Community recognitions
 
-![community.png]()
+![community.png](/Users/veera/Desktop/Appwrite website/website/static/images/blog/product-update-july-2025)
 
 This month, we’re excited to feature [**Idea Tracker**](https://idea-tracker-v2.appwrite.network/) as part of our Monthly Community recognitions.
 
