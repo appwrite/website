@@ -60,7 +60,7 @@ Click on the domains row to view all DNS records. Keep this tab open as you’ll
 
 ![NS records for your domain](/images/blog/custom-domains-with-sites/dns-records.png)
 
-### Adding NS records in Namecheap
+# Adding NS records in Namecheap
 
 In your Namecheap dashboard, find the domain you want to use and select `Manage`.
 
