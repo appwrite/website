@@ -85,21 +85,14 @@ const client = new Client()
 
 const storage = new Storage(client);
 
-const result = storage.getFilePreview(
-    '<BUCKET_ID>',          // bucketId
-    '<FILE_ID>',            // fileId
-    2000,                   // width
-    0,                      // height (maintain aspect ratio)
-    ImageGravity.Center,    // gravity
-    100,                    // quality
-    0,                      // borderWidth
-    '',                     // borderColor
-    0,                      // borderRadius
-    1,                      // opacity
-    0,                      // rotation
-    '',                     // background
-    ImageFormat.Avif        // output format
-);
+const result = storage.getFilePreview({
+    bucketId: '<BUCKET_ID>',
+    fileId: '<FILE_ID>',
+    width: 2000,
+    gravity: ImageGravity.Center,
+    quality: 100,
+    output: ImageFormat.Avif
+});
 ```
 
 The quality parameter in getFilePreview ranges from 0-100. AVIF's compression algorithm processes different image types (photographs, illustrations, UI elements) with varying efficiency, so quality settings need to be tested for your specific use case.
@@ -147,21 +140,14 @@ async function getOptimizedImageUrl(bucketId, fileId) {
 
     const format = await isAvifSupported() ? ImageFormat.Avif : ImageFormat.WebP;
 
-    return storage.getFilePreview(
+    return storage.getFilePreview({
         bucketId,
         fileId,
-        1200,      // width
-        0,         // height
-        'center',  // gravity
-        90,        // quality
-        0,         // border width
-        '',        // border color
-        0,         // border radius
-        1,         // opacity
-        0,         // rotation
-        '',        // background
-        format     // output format
-    );
+        width: 1200,
+        gravity: 'center',
+        quality: 90,
+        output: format
+    });
 }
 ```
 

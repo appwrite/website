@@ -171,21 +171,14 @@ Appwrite allows you to serve compressed and optimized versions of your images to
 
 ```javascript
 // Serve an optimized image preview
-const optimizedImage = storage.getFilePreview(
-  'bucketId', // The bucket ID where the file is stored
-  'fileId',   // The file ID of the uploaded image
-  800,        // Resize the width to 800px
-  0,          // Keep the original height (aspect ratio preserved)
-  'center',   // Crop the image centered if cropping is needed
-  80,         // Set image quality to 80%
-  0,          // No border
-  '',         // No border color
-  0,          // No border radius
-  1,          // Full opacity
-  0,          // No rotation
-  '',         // No background color
-  'webp',     // Convert the image to WebP format for better compression
-)
+const optimizedImage = storage.getFilePreview({
+  bucketId: 'bucketId',
+  fileId: 'fileId',
+  width: 800,
+  gravity: 'center',
+  quality: 80,
+  output: 'webp'
+})
 ```
 
 While this example shows how to serve an optimized image preview, and will greatly improve load times, it will not affect the original file size in your storage. So if you want to save storage space, consider compressing and optimizing files at the time of upload. A good practice for image optimization is to use formats like `WebP`, which offer better compression than JPEG or PNG.

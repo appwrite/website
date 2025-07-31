@@ -44,21 +44,18 @@ client
   .setEndpoint('<https://cloud.appwrite.io/v1>') // API Endpoint
   .setProject('<PROJECT_ID>') // Project ID
 
-const result = storage.getFilePreview(
-  'photos', // Bucket ID
-  'sunset.png', // File ID
-  1600, // Width
-  0, // Height (ignored if 0)
-  'center', // Cropping gravity
-  90, // Quality (1-100)
-  5, // Border width
-  'FD346E', // Border color (hex)
-  15, // Border radius
-  1, // Opacity (0-1)
-  0, // Rotation (degrees)
-  'FFFFFF', // Background color
-  'webp', // Output format
-)
+const result = storage.getFilePreview({
+  bucketId: 'photos',
+  fileId: 'sunset.png',
+  width: 1600,
+  gravity: 'center',
+  quality: 90,
+  borderWidth: 5,
+  borderColor: 'FD346E',
+  borderRadius: 15,
+  background: 'FFFFFF',
+  output: 'webp'
+})
 ```
 
 {% storage_image just_img=true file_id="cat-image" width=1600 height=0 gravity="center" quality=90 border_width=5 border_color="FD346E" border_radius=15 opacity=1 rotation=0 background_color="FFFFFF" output="webp" /%}
@@ -78,12 +75,12 @@ If only one dimension is set, Appwrite adjusts the other proportionally.
 **Example:**
 
 ```jsx
-const previewUrl = storage.getFilePreview(
-	'bucketID',
-	'fileID',
-	1600, // Width
-	600, // Height
-)
+const previewUrl = storage.getFilePreview({
+	bucketId: 'bucketID',
+	fileId: 'fileID',
+	width: 1600,
+	height: 600
+})
 ```
 
 {% storage_image just_img=true file_id="cat-image" width=1600 height=600 /%}
@@ -108,13 +105,13 @@ Cropping allows you to remove unnecessary parts of an image and focus on the imp
 **Example:**
 
 ```jsx
-const previewUrl = storage.getFilePreview(
-  'bucketID',
-  'fileID',
-  1600,
-  1600,
-  'top-left', // Setting gravity to focus on top-left portion
-)
+const previewUrl = storage.getFilePreview({
+  bucketId: 'bucketID',
+  fileId: 'fileID',
+  width: 1600,
+  height: 1600,
+  gravity: 'top-left'
+})
 ```
 
 {% storage_image just_img=true file_id="cat-image" width=1600 height=1600 gravity="top-left" /%}
@@ -129,14 +126,13 @@ The **quality** parameter controls image compression, helping to balance clarity
 **Example:**
 
 ```jsx
-const compressedImage = storage.getFilePreview(
-    'bucketID',
-    'fileID',
-    1600,
-    800,
-    'center',
-    10, // Quality
-)
+const compressedImage = storage.getFilePreview({
+    bucketId: 'bucketID',
+    fileId: 'fileID',
+    width: 1600,
+    height: 800,
+    quality: 10
+})
 ```
 
 {% storage_image just_img=true file_id="cat-image" width=1600 height=800 gravity="center" quality=10 /%}
@@ -152,17 +148,15 @@ Borders help separate images from the background, while border radius adds round
 **Example:**
 
 ```jsx
-const previewUrl = storage.getFilePreview(
-    'bucketID',
-    'fileID',
-    1600,
-    1000,
-    'center',
-    100,
-    8, // border width
-    'FF3366', // border color
-    80 // border radius
-)
+const previewUrl = storage.getFilePreview({
+    bucketId: 'bucketID',
+    fileId: 'fileID',
+    width: 1600,
+    height: 1000,
+    borderWidth: 8,
+    borderColor: 'FF3366',
+    borderRadius: 80
+})
 ```
 
 {% storage_image just_img=true file_id="cat-image" width=1600 height=1000 gravity="center" quality=100 border_width=8 border_color="FF3366" border_radius=80 /%}
@@ -177,18 +171,13 @@ Setting **opacity** allows images to blend into backgrounds or appear as overlay
 **Example:**
 
 ```jsx
-const overlayImage = storage.getFilePreview(
-    'bucketID',
-    'fileID',
-    1600,
-    1000,
-    'center',
-    100,
-    0,
-    '',
-    0,
-    0.3, // Opacity
-)
+const overlayImage = storage.getFilePreview({
+    bucketId: 'bucketID',
+    fileId: 'fileID',
+    width: 1600,
+    height: 1000,
+    opacity: 0.3  // Opacity for overlay effect
+})
 ```
 
 {% storage_image just_img=true file_id="cat-image" width=1600 height=1000 gravity="center" quality=100 opacity=0.3 /%}
@@ -203,19 +192,13 @@ The **rotation** parameter allows you to rotate an image by a specified number o
 
 ```jsx
 // 45-degree rotation with padding
-const rotatedImage = storage.getFilePreview(
-    'bucketID',
-    'fileID',
-    400,
-    400,
-    'center',
-    100,
-    0,
-    '',
-    0,
-    1,
-    45,        // Rotation
-)
+const rotatedImage = storage.getFilePreview({
+    bucketId: 'bucketID',
+    fileId: 'fileID',
+    width: 400,
+    height: 400,
+    rotation: 45  // 45-degree rotation
+})
 ```
 
 {% storage_image just_img=true file_id="cat-image" width=400 height=400 gravity="center" quality=100 rotation=45 background_color="FFFFFF" /%}
@@ -229,20 +212,14 @@ For transparent images (like PNGs), you can set a background color.
 **Example:**
 
 ```jsx
-const previewUrl = storage.getFilePreview(
-    'bucketID',
-    'fileID',
-    1600,
-    800,
-    'center',
-    100,
-    0,
-    '',
-    0,
-    0.7, // Partial transparency to show background
-    0,
-    'FF9900' // Bright orange background
-)
+const previewUrl = storage.getFilePreview({
+    bucketId: 'bucketID',
+    fileId: 'fileID',
+    width: 1600,
+    height: 800,
+    opacity: 0.7,
+    background: 'FF9900'
+})
 ```
 
 {% storage_image just_img=true file_id="cat-image" width=1600 height=800 gravity="center" quality=100 opacity=0.7 background_color="FF9900" /%}
@@ -255,21 +232,14 @@ The **output** parameter lets you convert images between different formats on th
 
 ```jsx
 
-const webpImage = storage.getFilePreview(
-    'bucketID',
-    'fileID',
-    1600,
-    800,
-    'center',
-    90,
-    0,
-    '',
-    0,
-    1,
-    0,
-    '',
-    'webp' // Output format
-)
+const webpImage = storage.getFilePreview({
+    bucketId: 'bucketID',
+    fileId: 'fileID',
+    width: 1600,
+    height: 800,
+    quality: 90,
+    output: 'webp'
+})
 ```
 
 {% storage_image just_img=true file_id="cat-image" width=1600 height=800 gravity="center" quality=90 output="webp" /%}

@@ -49,21 +49,17 @@ client
     .setProject('<PROJECT_ID>') // Your project ID
 ;
 
-const result = storage.getFilePreview(
-    'photos',           // bucket ID
-    'sunset.png',       // file ID
-    1800,               // width, will be resized using this value.
-    0,                  // height, ignored when 0
-    'center',           // crop center
-    '90',               // slight compression
-    5,                  // border width
-    'CDCA30',           // border color
-    15,                 // border radius
-    1,                  // full opacity
-    0,                  // no rotation
-    'FFFFFF',           // background color
-    'jpg'               // output jpg format
-    );
+const result = storage.getFilePreview({
+    bucketId: 'photos',
+    fileId: 'sunset.png',
+    width: 1800,
+    gravity: 'center',
+    quality: '90',
+    borderWidth: 5,
+    borderColor: 'CDCA30',
+    borderRadius: 15,
+    background: 'FFFFFF'
+});
 
 console.log(result.href);
 ```
@@ -80,19 +76,19 @@ void main() { // Init SDK
   ;
   // downloading file
   Future result = storage.getFilePreview(
-    bucketId: 'photos',         // bucket ID
-    fileId: 'sunset.png',       // file ID
-    width: 1800,                // width, will be resized using this value.
-    height: 0,                  // height, ignored when 0
-    gravity: 'center',          // crop center
-    quality: '90',              // slight compression
-    borderWidth: 5,             // border width
-    borderColor: 'CDCA30',      // border color
-    borderRadius: 15,           // border radius
-    opacity: 1,                 // full opacity
-    rotation: 0,                // no rotation
-    background: "FFFFFF",       // background color
-    output:'jpg'                // output jpg format
+    bucketId: 'photos',
+    fileId: 'sunset.png',
+    width: 1800,
+    height: 0,
+    gravity: 'center',
+    quality: '90',
+    borderWidth: 5,
+    borderColor: 'CDCA30',
+    borderRadius: 15,
+    opacity: 1,
+    rotation: 0,
+    background: "FFFFFF",
+    output:'jpg'
   ).then((bytes) {
     final file = File('path_to_file/filename.ext');
     file.writeAsBytesSync(bytes)
@@ -125,19 +121,19 @@ func main() async throws {
       .setProject("<PROJECT_ID>") // Your project ID
     let storage = Storage(client)
     let byteBuffer = try await storage.getFilePreview(
-            bucketId: "photos",         // bucket ID
-            fileId: "sunset.png",       // file ID
-            width: 1800,                // width, will be resized using this value.
-            height: 0,                  // height, ignored when 0
-            gravity: "center",          // crop center
-            quality: "90",              // slight compression
-            borderWidth: 5,             // border width
-            borderColor: "CDCA30",      // border color
-            borderRadius: 15,           // border radius
-            opacity: 1,                 // full opacity
-            rotation: 0,                // no rotation
-            background: "FFFFFF",       // background color
-            output:"jpg"                // output jpg format
+            bucketId: "photos",
+            fileId: "sunset.png",
+            width: 1800,
+            height: 0,
+            gravity: "center",
+            quality: "90",
+            borderWidth: 5,
+            borderColor: "CDCA30",
+            borderRadius: 15,
+            opacity: 1,
+            rotation: 0,
+            background: "FFFFFF",
+            output:"jpg"
     )
 
     print(String(describing: byteBuffer)
@@ -192,21 +188,18 @@ const client = new Client()
 const storage = new Storage(client);
 
 // Get image with transformations
-const result = storage.getFilePreview(
-    'photos',           // bucket ID
-    'sunset.png',       // file ID
-    1800,               // width, will be resized using this value
-    0,                  // height, ignored when 0
-    ImageGravity.Center,// crop center
-    90,                 // slight compression
-    5,                  // border width
-    'CDCA30',           // border color
-    15,                 // border radius
-    1,                  // full opacity
-    0,                  // no rotation
-    'FFFFFF',           // background color
-    'jpg'               // output jpg format
-);
+const result = storage.getFilePreview({
+    bucketId: 'photos',
+    fileId: 'sunset.png',
+    width: 1800,
+    gravity: ImageGravity.Center,
+    quality: 90,
+    borderWidth: 5,
+    borderColor: 'CDCA30',
+    borderRadius: 15,
+    background: 'FFFFFF',
+    output: 'jpg'
+});
 
 console.log(result); // Resource URL
 
