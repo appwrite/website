@@ -54,11 +54,19 @@ To upload a file, add this to your app. For web apps, you can use the File objec
 
   // If running in a browser environment, you can use File directly
   const browserFile = new File(['hello'], 'hello.txt');
-  await storage.createFile('[BUCKET_ID]', ID.unique(), browserFile);
+  await storage.createFile({
+    bucketId: '[BUCKET_ID]',
+    fileId: ID.unique(),
+    file: browserFile
+  });
 
   // If running in Node.js, use InputFile
   const nodeFile = InputFile.fromPath('/path/to/file.jpg', 'file.jpg');
-  await storage.createFile('[BUCKET_ID]', ID.unique(), nodeFile);
+  await storage.createFile({
+    bucketId: '[BUCKET_ID]',
+    fileId: ID.unique(),
+    file: nodeFile
+  });
   ```
 
   ```client-flutter

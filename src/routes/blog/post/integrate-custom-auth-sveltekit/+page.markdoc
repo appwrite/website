@@ -97,29 +97,34 @@ const users = new Users(client);
 
 /**
  * Returns user if user exists in Appwrite, if not creates a new user
- * 
+ *
  * @param {string} email
  * @returns {Promise<import("node-appwrite").Models.User>} user
  */
 async function getUser(email) {
     try {
-        let usersList = await users.list([ Query.equal('email', email) ]);
+        let usersList = await users.list({
+            queries: [ Query.equal('email', email) ]
+        });
         if (usersList.total != 0) {
             return usersList.users[0];
         } else {
-            return await users.create(ID.unique(), email);
+            return await users.create({
+                userId: ID.unique(),
+                email: email
+            });
         }
     } catch (err) {
         console.error(err);
     }
-    
+
 }
 
 /**
  * Logic for authentication
- * 
- * @param {string} email 
- * @param {string} password 
+ *
+ * @param {string} email
+ * @param {string} password
  * @returns {Promise<import("node-appwrite").Models.User>} user
  */
 async function authLogic(email, password) {

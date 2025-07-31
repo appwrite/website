@@ -11,7 +11,23 @@ category: tutorial
 
 Managing personal finances is a common need, and building an expense tracker is an excellent way to learn full-stack development with Svelte. In this tutorial, we'll create a web application that helps users track their spending.
 
-Users will be able to sign up, log their expenses and categorize them to view spending patterns. By the end, you will have built an app that looks and functions like this:
+Users will be able to sign up, log their expenses and categorize them to view spending patt    if (editingExpense) {
+      await databases.updateDocument({
+        databaseId: DATABASE_ID,
+        collectionId: EXPENSES_COLLECTION_ID,
+        documentId: editingExpense.$id,
+        data: {
+          ...expenseData,
+          updatedAt: now
+        }
+      })
+    } else {
+      await databases.createDocument({
+        databaseId: DATABASE_ID,
+        collectionId: EXPENSES_COLLECTION_ID,
+        documentId: ID.unique(),
+        data: expenseData
+      }) end, you will have built an app that looks and functions like this:
 
 ![Expense app demo](/images/blog/build-fullstack-svelte-appwrite/expense-app-demo.gif)
 
@@ -218,7 +234,10 @@ We'll also need a `login` and `register` function to handle user authentication:
 ```js
 export async function login(email, password) {
 	try {
-		await account.createEmailPasswordSession(email, password)
+		await account.createEmailPasswordSession({
+			email: email,
+			password: password
+		})
 		await initAuth()
 	} catch (error) {
 		console.error('Login error:', error)
@@ -228,7 +247,12 @@ export async function login(email, password) {
 
 export async function register(email, password, name) {
 	try {
-		await account.create(ID.unique(), email, password, name)
+		await account.create({
+			userId: ID.unique(),
+			email: email,
+			password: password,
+			name: name
+		})
 		await login(email, password)
 	} catch (error) {
 		console.error('Registration error:', error)
@@ -588,9 +612,13 @@ onMount(async () => {
 async function fetchExpenses() {
   try {
     loading = true
-    const response = await databases.listDocuments(DATABASE_ID, EXPENSES_COLLECTION_ID, [
-      Query.orderDesc('$createdAt')
-    ])
+    const response = await databases.listDocuments({
+      databaseId: DATABASE_ID,
+      collectionId: EXPENSES_COLLECTION_ID,
+      queries: [
+        Query.orderDesc('$createdAt')
+      ]
+    })
     expenses = response.documents
     calculateStats()
   } catch (e) {
@@ -636,22 +664,27 @@ async function handleSubmit() {
     }
 
     if (editingExpense) {
-      await databases.updateDocument(DATABASE_ID, EXPENSES_COLLECTION_ID, editingExpense.$id, {
-        ...expenseData,
-        updatedAt: now
+      await databases.updateDocument({
+        databaseId: DATABASE_ID,
+        collectionId: EXPENSES_COLLECTION_ID,
+        documentId: editingExpense.$id,
+        data: {
+          ...expenseData,
+          updatedAt: now
+        }
       })
     } else {
-      await databases.createDocument(
-        DATABASE_ID,
-        EXPENSES_COLLECTION_ID,
-        'unique()',
-        expenseData,
-        [
+      await databases.createDocument({
+        databaseId: DATABASE_ID,
+        collectionId: EXPENSES_COLLECTION_ID,
+        documentId: 'unique()',
+        data: expenseData,
+        permissions: [
           Permission.read(Role.user(user.$id)),
           Permission.update(Role.user(user.$id)),
           Permission.delete(Role.user(user.$id))
         ]
-      )
+      })
     }
 
     // Reset form
@@ -674,7 +707,11 @@ Finally, let's add utility functions for managing expenses:
 ```js
 async function deleteExpense(id) {
   try {
-    await databases.deleteDocument(DATABASE_ID, EXPENSES_COLLECTION_ID, id)
+    await databases.deleteDocument({
+      databaseId: DATABASE_ID,
+      collectionId: EXPENSES_COLLECTION_ID,
+      documentId: id
+    })
     await fetchExpenses()
   } catch (e) {
     error = 'Failed to delete expense'

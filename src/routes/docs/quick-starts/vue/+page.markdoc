@@ -20,7 +20,7 @@ Head to the [Appwrite Console](https://cloud.appwrite.io/console).
 
 If this is your first time using Appwrite, create an account and create your first project.
 
-Then, under **Add a platform**, add a **Web app**. The **Hostname** should be `localhost`. 
+Then, under **Add a platform**, add a **Web app**. The **Hostname** should be `localhost`.
 
 {% only_dark %}
 ![Add a platform](/images/docs/quick-starts/dark/add-platform.png)
@@ -48,7 +48,7 @@ npm install appwrite@18.1.1
 ```
 {% /section %}
 {% section #step-4 step=4 title="Import Appwrite" %}
-Find your project's ID in the **Settings** page. 
+Find your project's ID in the **Settings** page.
 
 {% only_dark %}
 ![Project settings screen](/images/docs/quick-starts/dark/project-id.png)
@@ -107,12 +107,20 @@ const password = ref('');
 const name = ref('');
 
 const login = async (email, password) => {
-  await account.createEmailPasswordSession(email, password);
+  await account.createEmailPasswordSession({
+    email,
+    password
+  });
   loggedInUser.value = await account.get();
 };
 
 const register = async () => {
-  await account.create(ID.unique(), email.value, password.value, name.value);
+  await account.create({
+    userId: ID.unique(),
+    email: email.value,
+    password: password.value,
+    name: name.value
+  });
   login(email.value, password.value);
 };
 

@@ -19,8 +19,8 @@ Run the following bash command to create a `package.json` file. This file is use
 ```bash
 npm init -y
 ```
-Install the `undici` library. This library includes a `fetch` function that you can use to make HTTP requests. 
-    
+Install the `undici` library. This library includes a `fetch` function that you can use to make HTTP requests.
+
 ```bash
 npm install undici
 ```
@@ -278,7 +278,7 @@ export default async function ({ req, res }) {
     .setKey(req.headers['x-appwrite-key']);
 
   const database = new Database(client);
-  
+
   const existingVotes = await database.listDocuments('[VOTES_COLLECTION_ID]', [
     Query.equals('userId', vote.userId),
     Query.equals('topicId', vote.topicId)
@@ -321,7 +321,7 @@ def main(context):
     )
 
     database = Databases(client)
-    
+
     existing_votes = database.list_documents('[VOTES_COLLECTION_ID]', [
         Query.equals('userId', vote['userId']),
         Query.equals('topicId', vote['topicId'])
@@ -329,7 +329,7 @@ def main(context):
 
     if existing_votes['total'] > 0:
         return context.res.json({
-          'ok': False, 
+          'ok': False,
           'message': 'You have already voted on this topic.'
         }, 400)
 
@@ -377,7 +377,7 @@ return function ($context) {
 
     if ($existingVotes['total'] > 0) {
         return $context->res->json([
-          'ok' => false, 
+          'ok' => false,
           'message' => 'You have already voted on this topic.'
         ], 400);
     }
@@ -389,8 +389,8 @@ return function ($context) {
     ]);
 
     return $context->res->json([
-      'ok' => true, 
-      'message' => 'Vote cast.', 
+      'ok' => true,
+      'message' => 'Vote cast.',
       'vote' => $voteDocument
     ]);
 };
@@ -425,7 +425,7 @@ Future main(final context) async {
 
     if (existingVotes['total'] > 0) {
         return context.res.json({
-          'ok': false, 
+          'ok': false,
           'message': 'You have already voted on this topic.'
         }, 400);
     }
@@ -437,8 +437,8 @@ Future main(final context) async {
     });
 
     return context.res.json({
-      'ok': true, 
-      'message': 'Vote cast.', 
+      'ok': true,
+      'message': 'Vote cast.',
       'vote': voteDocument
     });
 }
@@ -464,7 +464,7 @@ def main(context)
         .set_key(context.req.headers['x-appwrite-key'])
 
     database = Appwrite::Database.new(client)
-    
+
     existing_votes = database.list_documents('[VOTES_COLLECTION_ID]', [
         Appwrite::Query.new('userId', '=', vote['userId']),
         Appwrite::Query.new('topicId', '=', vote['topicId'])
@@ -472,7 +472,7 @@ def main(context)
 
     if existing_votes['total'] > 0
         return context.res.json({
-          'ok': false, 
+          'ok': false,
           'message': 'You have already voted on this topic.'
         }, 400)
     end
@@ -484,20 +484,20 @@ def main(context)
     })
 
     return context.res.json({
-      'ok': true, 
-      'message': 'Vote cast.', 
+      'ok': true,
+      'message': 'Vote cast.',
       'vote': vote_document
     })
 end
 ```
 {% /multicode %}
-Use the function by navigating to the function URL in the browser. 
-The URL should contain the required parameters. 
+Use the function by navigating to the function URL in the browser.
+The URL should contain the required parameters.
 For example, `<YOUR_FUNCTION_URL>/?userId=<USER_ID>&topicId=<TOPIC_ID>&vote=yes` to cast a vote.
 {% /section %}
 
 {% section #form-submission step=3 title="HTML contact form" %}
-Here's a simple form page that handles form submissions, and can be used to store a user's message in a collection. 
+Here's a simple form page that handles form submissions, and can be used to store a user's message in a collection.
 The form is submitted to the function using the `POST` method and the form data is sent as a URL-encoded string in the request body.
 
 ## Prerequisites
@@ -509,7 +509,7 @@ Create a Messages collection with the following attributes:
 | `email`    | string | The email of the message author  |
 | `content`  | string | The content of the message       |
 
-## Code 
+## Code
 
 {% multicode %}
 
@@ -553,7 +553,12 @@ export default async function ({ req, res }) {
       .setKey(req.headers['x-appwrite-key']);
 
     const databases = new Databases(client);
-    const document = await databases.createDocument('<DATABASE_ID>', '[MESSAGES_COLLECTION_ID]', ID.unique(), message);
+    const document = await databases.createDocument({
+      databaseId: '<DATABASE_ID>',
+      collectionId: '[MESSAGES_COLLECTION_ID]',
+      documentId: ID.unique(),
+      data: message
+    });
 
     return res.text("Message sent");
   }
@@ -648,7 +653,7 @@ return function ($context) {
 
   if ($context->req->method === 'POST' && $context->req->headers['content-type'] === 'application/x-www-form-urlencoded') {
     \parse_str($context->req->body, $formData);
-    
+
     $message = [
       'name' => $formData['name'],
       'email' => $formData['email'],
