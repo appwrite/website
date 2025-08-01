@@ -55,11 +55,11 @@ const client = new Client()
 const storage = new Storage(client);
 
 // Upload an AVIF file
-const promise = storage.createFile(
-    '<BUCKET_ID>',
-    ID.unique(),
-    document.getElementById('uploader').files[0]
-);
+const promise = storage.createFile({
+    bucketId: '<BUCKET_ID>',
+    fileId: ID.unique(),
+    file: document.getElementById('uploader').files[0]
+});
 
 promise.then(function (response) {
     console.log(response);

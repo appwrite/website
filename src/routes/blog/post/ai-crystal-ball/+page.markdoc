@@ -281,31 +281,31 @@ const githubDataCollectionId = env.PUBLIC_APPWRITE_COLLECTION_ID_GITHUBDATA;
 export const db = {
     getUserData: async(documentId) => {
         try{
-            return await databases.getDocument(
+            return await databases.getDocument({
                 databaseId,
-                githubDataCollectionId,
+                collectionId: githubDataCollectionId,
                 documentId
-            );
+            });
         } catch(err){
             return false;
         }
     },
 
     addUserData: async(userId, username, followers, following, languages) => {
-        return await databases.createDocument(
+        return await databases.createDocument({
             databaseId,
-            githubDataCollectionId,
-            userId,
-            {
+            collectionId: githubDataCollectionId,
+            documentId: userId,
+            data: {
                 username,
                 followers,
                 following,
                 languages
             },
-            [
+            permissions: [
                 Permission.write(Role.user(userId)), Permission.read(Role.user(userId))
             ]
-        )
+        })
     }
 };
 ```
@@ -511,24 +511,24 @@ export const db = {**
 .
 .
 		addDestiny: async(username, destiny) => {
-		    return await databases.createDocument(
+		    return await databases.createDocument({
 		        databaseId,
-		        destinyCollectionId,
-		        ID.unique(),
-		        {
+		        collectionId: destinyCollectionId,
+		        documentId: ID.unique(),
+		        data: {
 		            username,
 		            destiny
 		        }
-		    )
+		    })
 		},
 
 		getDestiny: async(documentId) => {
 		    try{
-		        return await databases.getDocument(
+		        return await databases.getDocument({
 		            databaseId,
-		            destinyCollectionId,
+		            collectionId: destinyCollectionId,
 		            documentId
-		        );
+		        });
 		    } catch(err){
 		        return {
 		            username: 'Not found',

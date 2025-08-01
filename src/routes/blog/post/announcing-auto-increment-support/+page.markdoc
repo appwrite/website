@@ -10,7 +10,7 @@ category: announcement
 featured: false
 ---
 
-Managing ordered data can often be complex and error-prone, especially when it requires manual counters or timestamp-based sorting, which can introduce inconsistencies and unpredictability. 
+Managing ordered data can often be complex and error-prone, especially when it requires manual counters or timestamp-based sorting, which can introduce inconsistencies and unpredictability.
 
 To tackle this issue, we're introducing **Auto-increment support.**
 
@@ -48,13 +48,13 @@ const client = new Client()
 
 const databases = new Databases(client);
 
-databases.listDocuments(
-    '<DATABASE_ID>',
-    '<COLLECTION_ID>',
-    [
+databases.listDocuments({
+    databaseId: '<DATABASE_ID>',
+    collectionId: '<COLLECTION_ID>',
+    queries: [
         Query.orderAsc('$sequence'),
     ]
-);
+});
 
 ```
 [Auto-increment support](/docs/products/databases/order#sequence-ordering) is available on both Appwrite Cloud and self-hosted installations and can smoothly integrate into your existing workflows.
