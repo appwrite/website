@@ -67,7 +67,7 @@
             </Cell>
             <Cell columnStart={3} column={2} class="px-4 pb-20">
                 <ul
-                    class="mx-4 grid grid-cols-1 grid-rows-4 gap-x-1 gap-y-4 md:mx-auto md:grid-flow-col md:grid-cols-2"
+                    class="mx-4 grid grid-cols-1 grid-rows-4 gap-x-1 gap-y-4 md:mx-auto lg:grid-flow-col lg:grid-cols-2"
                 >
                     {#each missions as mission, i}
                         {@const index = `0${i + 1}`}

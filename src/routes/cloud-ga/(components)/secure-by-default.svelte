@@ -52,7 +52,9 @@
                         > compliance regulations.
                     </p>
 
-                    <div class="illustration flex justify-between p-4">
+                    <div
+                        class="illustration grid grid-cols-2 justify-between gap-4 p-4 md:grid-cols-4"
+                    >
                         {#each icons as { label, src }}
                             <div class="flex items-center gap-2">
                                 <img {src} alt={label} />

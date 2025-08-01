@@ -93,7 +93,7 @@
                 </div>
             </Cell>
 
-            <Cell column={4} columnStart={3} class="px-4 pb-8 md:py-20">
+            <Cell column={4} columnStart={3} class="px-4 py-8 md:py-20">
                 <div class="text-paragraph-lg space-y-8">
                     <p>
                         Building the infrastructure to support this goal wasn't easy, especially

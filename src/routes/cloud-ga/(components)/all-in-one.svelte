@@ -138,7 +138,7 @@
 
 <div class="mx-auto flex h-fit max-w-6xl flex-1 gap-3">
     <Grid rows={2} bottomBorder>
-        <Cell column={2} columnStart={1} class="px-4 pt-12 md:pt-20">
+        <Cell column={2} columnStart={1} class="px-4 py-12 md:py-20">
             <div class="space-y-4" use:useInView>
                 <span
                     class="font-aeonik-fono text-secondary text-micro tracking-loose inline-block uppercase"
@@ -260,15 +260,15 @@
                         </div>
                     </div>
                     <!-- right side -->
-                    <div class="col-span-3 mt-8 w-full md:mt-0">
+                    <div class="col-span-3 mt-8 w-full lg:mt-0">
                         <div
-                            class="text-body flex gap-2 font-medium text-white max-md:justify-center md:flex-col md:gap-12"
+                            class="text-body flex gap-2 font-medium text-white max-lg:justify-center lg:flex-col lg:gap-12"
                         >
                             {#each products.slice(4) as product, i}
                                 {@const index = i + 4}
                                 {@const isActive = index === activeIndex}
                                 <div
-                                    class="group relative mr-0 flex w-fit items-center md:ml-auto md:w-full"
+                                    class="group relative mr-0 flex items-center md:w-full lg:ml-auto"
                                 >
                                     <button
                                         class={classNames(
@@ -292,7 +292,7 @@
                                         {product.label}
                                     </button>
                                     <div
-                                        class={classNames('absolute left-0 hidden md:block', {
+                                        class={classNames('absolute left-0 hidden lg:block', {
                                             'top-1/2': i === 0,
                                             'bottom-1/2': i === 2
                                         })}
