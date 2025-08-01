@@ -1,0 +1,96 @@
+---
+layout: post
+title: Custom domains with Appwrite Sites
+description: Learn how to use custom domains with Appwrite Sites.
+date: 2025-07-31
+cover: /images/blog/custom-domains-with-sites/cover.png
+timeToRead: 5
+author: dennis-ivy
+category: tutorial
+---
+
+Appwrite Sites, the open-source Vercel alternative, is now available to all organizations. Of course, with hosting comes the next step of connecting custom domains. In this article, we’ll walk you through the steps to do just that.
+
+If you prefer to learn from videos, we will also have a [video tutorial](https://youtu.be/gN5_ig0OIXc) on the Appwrite YouTube channel.
+
+Before we start, we’ll assume two things:
+
+1. You have a domain purchased with a domain registrar (Namecheap, GoDaddy, Bluehost, etc)
+2. You’ve deployed your website with Appwrite Sites
+
+We’ll use Namecheap in this tutorial; however, if there are different steps for any providers, we will note these and link related tutorials in the footnotes.
+
+You can also learn how to [host with Appwrite Sites](https://youtu.be/VtDe6hDw91k).
+
+# Adding a domain
+
+In your Appwrite console, you’ll want to add a domain to your deployed website.
+
+1. Go to the Sites tab
+2. Select the Site to which you wish to add the domain
+3. Go to the `Domains` tab and click `Add domain`
+
+Type in the domain name you have hosted with your provider, i.e, `example.com`.
+
+You can point your domain to a specific branch if you connect via GitHub. If you are unsure about this step, you’re better off selecting `Active Deployment` to ensure the latest version of your website is live.
+
+When you click **Add**, you'll see NS records that look like this:
+
+- `ns1.appwrite.zone`
+- `ns2.appwrite.zone`
+
+{% info title="About NS records" %}
+NS (Name Server) tells the internet which servers are responsible for knowing a domain's address (like www.example.com) and how to find it. They act like a directory listing, pointing users to the correct "address book" for a specific domain.
+{% /info %}
+
+We can’t verify our domain until we give these to our domain name provider, so for now, you can save them or close out the tab. In the next step, we’ll cover where you can find all your DNS records.
+
+# View your DNS records
+
+Once you’ve added a domain to your deployed Site, you’ll be able to view all your Site's DNS records from your account organization:
+
+![Organization overview in Appwrite console](/images/blog/custom-domains-with-sites/organization-overview.png)
+
+1. In the top left corner of the console, select `Organization Overview`
+2. Select the `Domains` tab
+
+Here you’ll see every domain you’ve added across all projects in the selected organization.
+
+Click on the domains row to view all DNS records. Keep this tab open as you’ll need both NS records in the next step.
+
+![NS records for your domain](/images/blog/custom-domains-with-sites/dns-records.png)
+
+# Adding NS records in Namecheap
+
+In your Namecheap dashboard, find the domain you want to use and select `Manage`.
+
+Go to `Domain` and under the `NAMESERVERS` section, select `Custom DNS` and add both of the NS records that Appwrite provided.
+
+Make sure you click the green check mark to save this change.
+
+![NS settings in Namecheap](/images/blog/custom-domains-with-sites/ns-records-namecheap.png)
+
+# Verifying your domain
+
+Once you’ve added your NS records to Namecheap, you have successfully pointed your domain to Appwrite's name servers. All that's left to do is verify your domain from your Appwrite console.
+
+![Retry button to check domain verification status](/images/blog/custom-domains-with-sites/retry-dns-checks.png)
+
+This step can take a few minutes, or even a few hours, in some cases, although this is rare.
+
+In any case, go back to the domain section from your Appwrite organization, select the domain, and click `Retry`.
+
+If this doesn’t work immediately, try again in a few minutes. It may take several attempts with time in between.
+
+Your website should be live once you receive the `Verified` status.
+
+![Domain verified successfully on Appwrite console](/images/blog/custom-domains-with-sites/domain-verified.png)
+
+Once again, even after your website is verified, it may take some time to see the website. Try clearing your browser’s cache or visiting the domain from a different device to test.
+
+# Next steps
+
+You can now access your website at your custom domain. If you have any questions, please join our [Discord server](https://appwrite.io/discord). Here are some more resources to help you get started with Appwrite Sites:
+
+- [Appwrite Sites documentation on domains](/docs/products/sites/domains)
+- [Build and deploy a personal portfolio on Appwrite Sites](/blog/post/portfolio-template-sites)
