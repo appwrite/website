@@ -86,23 +86,12 @@ Future result = await messaging.createPush(
 ```js
 const result = await messaging.createPush({
     messageId: 'background-sync-1',
-    title: null,
-    body: null,
-    topics: [],
-    users: [],
-    targets: [],
     data: {
         type: 'message_sync',
         lastSyncId: '123'
     },
-    action: null,
-    icon: null,
-    sound: null,
-    color: null,
-    tag: null,
     badge: 0,
     contentAvailable: true,
-    critical: false,
     priority: 'normal'
 });
 ```
@@ -136,24 +125,14 @@ const result = await messaging.createPush({
     messageId: 'security-alert-1',
     title: 'Security Alert',
     body: 'Unusual activity detected at front door',
-    topics: [],
-    users: [],
-    targets: [],
     data: {
         type: 'security_alert',
         deviceId: 'front_door_cam'
     },
-    action: null,
-    icon: null,
-    sound: null,
-    color: null,
-    tag: null,
     badge: 1,
-    contentAvailable: false,
     critical: true,
     priority: 'high'
 });
-);
 ```
 
 {% /multicode %}
@@ -184,21 +163,11 @@ const result = await messaging.createPush({
     messageId: 'chat-message-1',
     title: 'New Message',
     body: 'Sarah sent you a photo',
-    topics: [],
-    users: [],
-    targets: [],
     data: {
         chatId: '456',
         messageType: 'photo'
     },
-    action: null,
-    icon: null,
-    sound: null,
-    color: null,
-    tag: null,
     badge: 3,
-    contentAvailable: false,
-    critical: false,
     priority: 'normal'
 });
 ```
