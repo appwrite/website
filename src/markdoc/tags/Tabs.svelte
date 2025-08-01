@@ -96,10 +96,10 @@
                 </button>
             {/each}
             {#if $ctx.triggers.slice(2).length}
-                {@const desktopOptions = $ctx.triggers.slice(7)}
+                {@const mobileOptions = $ctx.triggers.slice(2)}
                 <Select
                     initialLabel="More"
-                    options={desktopOptions.map(({ id, title }) => {
+                    options={mobileOptions.map(({ id, title }) => {
                         return {
                             value: id,
                             label: title
