@@ -9,11 +9,12 @@
     import OpenSourceCommunity from './(components)/open-source-community.svelte';
     import ReliabilityUptime from './(components)/reliability-uptime.svelte';
     import ScaleWithoutWorries from './(components)/scale-without-worries.svelte';
-    import SecurityCompliance from './(components)/security-compliance.svelte';
+    import SecureByDefault from './(components)/secure-by-default.svelte';
     import TeamOfExperts from './(components)/team-of-experts.svelte';
-    import TheFuture from './(components)/the-future.svelte';
+    import WhatsNext from './(components)/whats-next.svelte';
     import AllInOne from './(components)/all-in-one.svelte';
     import CallToAction from './(components)/call-to-action.svelte';
+    import TheJourneySoFar from './(components)/the-journey-so-far.svelte';
 
     const title = 'Cloud GA - Appwrite';
     const description = 'Appwrite Cloud is now generally available.';
@@ -41,12 +42,12 @@
     <div class="block">
         <Hero />
         <BuildingCloud />
-
+        <TheJourneySoFar />
         <OpenSourceCommunity />
         <ScaleWithoutWorries />
-        <SecurityCompliance /><!-- done -->
+        <SecureByDefault /><!-- done -->
         <TeamOfExperts /><!-- done -->
-        <TheFuture /><!-- done -->
+        <WhatsNext /><!-- done -->
         <AllInOne />
         <CallToAction />
     </div>

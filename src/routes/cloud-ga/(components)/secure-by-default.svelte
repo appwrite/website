@@ -27,20 +27,22 @@
     <div class="mx-auto flex w-full max-w-6xl flex-col justify-center" use:useInView>
         <Grid rows={2} bottomBorder>
             <Cell column={2} columnStart={1} class="px-4 py-12 md:py-20">
-                <span
-                    class="font-aeonik-fono text-secondary text-micro tracking-loose mb-7 uppercase"
-                    >Security & Compliance</span
-                >
-                <h2
-                    data-animate={animate}
-                    class="text-title text-primary font-aeonik-pro before:bg-accent text-pretty before:absolute before:left-0 before:mt-2.5 before:h-6 before:w-px before:origin-top before:scale-y-0 before:transition-transform before:duration-700 data-[animate=true]:before:scale-y-100"
-                >
-                    Secure by default
-                </h2>
+                <div class="space-y-4">
+                    <span
+                        class="font-aeonik-fono text-secondary text-micro tracking-loose inline-block uppercase"
+                        >Security & Compliance</span
+                    >
+                    <h2
+                        data-animate={animate}
+                        class="text-subtitle text-primary font-aeonik-pro before:bg-accent text-pretty before:absolute before:left-0 before:mt-2.5 before:h-6 before:w-px before:origin-top before:scale-y-0 before:transition-transform before:duration-700 data-[animate=true]:before:scale-y-100"
+                    >
+                        Secure by default
+                    </h2>
+                </div>
             </Cell>
-            <Cell column={4} columnStart={3} class="px-4 pb-8 md:py-20">
+            <Cell column={4} columnStart={3} class="pb-8 md:py-20">
                 <div class="space-y-8">
-                    <p class="text-paragraph-lg max-w-lg">
+                    <p class="text-paragraph-lg max-w-lg px-4">
                         Appwrite has been and continues to be security driven. From the very
                         beginning, we ensured security measures, like encryption and abuse
                         protection, were built into Appwrite Cloud, and were easy to manage from the
@@ -59,7 +61,7 @@
                         {/each}
                     </div>
 
-                    <p class="text-paragraph-lg max-w-lg">
+                    <p class="text-paragraph-lg max-w-lg px-4">
                         Most recently, we have added three new features to ensure even more security
                         and compliance regulations are in place: <span class="text-primary"
                             >Roles for access management, 2FA for the Appwrite Console, and Database

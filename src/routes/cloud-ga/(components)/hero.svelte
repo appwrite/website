@@ -14,7 +14,7 @@
 </script>
 
 <div
-    class="from-accent/8 relative -top-24 flex justify-center overflow-y-hidden bg-gradient-to-b to-transparent pt-24"
+    class="from-accent/8 relative -top-24 -mb-24 flex justify-center overflow-y-hidden bg-gradient-to-b to-transparent pt-24"
 >
     <div class="flex w-full max-w-6xl flex-col justify-center">
         <Grid rows={1}>

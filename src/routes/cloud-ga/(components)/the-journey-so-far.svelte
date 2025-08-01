@@ -2,7 +2,7 @@
     import Grid from './grid-system/grid.svelte';
     import Cell from './grid-system/cell.svelte';
     import { inView } from 'motion';
-    import Graph from '../(assets)/graphs/stats-graph.svg';
+    import Graph from '../(assets)/graphs/journey-graph.svg';
     import Numbers from './numbers.svelte';
 
     let animate: boolean = false;
@@ -21,31 +21,29 @@
     ];
 </script>
 
-<div class="relative h-full scroll-m-16" id="developer-experience">
+<div class="relative h-full scroll-m-16" id="the-journey-so-far">
     <div class="mx-auto flex w-full max-w-6xl flex-col justify-center" use:useInView>
-        <Grid rows={2} bottomBorder>
+        <Grid rows={3} bottomBorder>
             <Cell column={2} columnStart={1} class="px-4 py-12 md:py-20">
                 <div class="space-y-4">
                     <span
                         class="font-aeonik-fono text-secondary text-micro tracking-loose inline-block uppercase"
-                        >Developer Experience</span
+                        >Milestones for Success</span
                     >
                     <h2
                         data-animate={animate}
                         class="text-subtitle text-primary font-aeonik-pro before:bg-accent text-pretty before:absolute before:left-0 before:mt-2.5 before:h-6 before:w-px before:origin-top before:scale-y-0 before:transition-transform before:duration-700 data-[animate=true]:before:scale-y-100"
                     >
-                        The Open Source<br /> community as a guide
+                        The journey so far
                     </h2>
                 </div>
             </Cell>
             <Cell column={4} columnStart={3} class="px-4 pb-8 md:py-20"
-                ><p class="text-paragraph-lg text-pretty">
-                    We have said it a million times, and we will say it again: <span
-                        class="text-primary inline-block font-medium"
-                        >Developer experience is at the top of the Appwrite list.</span
-                    > Appwrite has had the help of thousands of developers from the open source community
-                    to ensure that the developer experience is at the top of our minds as we continuously
-                    collect feedback from the community.
+                ><p class="text-paragraph-lg">
+                    The milestone we achieved today officially started 22 months ago when we
+                    launched Appwrite private beta and enrolled users onto the platform bit by bit.
+                    Since then, we have reached many milestones before taking Cloud to the next
+                    step.
                 </p></Cell
             >
             <Cell column={4}>
