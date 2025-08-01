@@ -22,14 +22,13 @@ These two query methods have been highly requested by the Appwrite community, an
 The contains operator is a great addition to the existing text search operators such as `startsWith` & `endsWith`, and can be used in combination with these two. With contains, we can now perform a broader search by matching against any text within a substring. This is extremely useful when searching a large body of text or when the placement of keywords is unknown.
 
 ```js
-
-db.listDocuments(
-    '<DATABASE_ID>',
-    '<COLLECTION_ID>',
-	  [
-	    Query.contains('content', ['happy', 'love']),
-	  ]
-   )
+db.listDocuments({
+    databaseId: '<DATABASE_ID>',
+    collectionId: '<COLLECTION_ID>',
+    queries: [
+        Query.contains('content', ['happy', 'love'])
+    ]
+});
 ```
 
 It’s important to note that the contains operator also works on array attributes as well. For example, if we set a string attribute to act as an array, you could search this array in the same way you would search any other string.
@@ -46,16 +45,16 @@ The logical OR operator allows us to nest queries in an OR condition. This gives
 To use the OR operator pass `Query.or([...])` to the queries array and provide at least two queries within the nested array.
 
 ```js
-db.listDocuments(
-	 '<DATABASE_ID>',
-	 '<COLLECTION_ID>',
-        [
+db.listDocuments({
+    databaseId: '<DATABASE_ID>',
+    collectionId: '<COLLECTION_ID>',
+    queries: [
         Query.or([
             Query.contains('name','ivy'),
             Query.greaterThan('age',30)
-            ])
-        ]
-  )
+        ])
+    ]
+});
 ```
 
 The example shown will return all people that contain the substring "ivy' somewhere in their name OR are older than 30 years old. Previously, there was no native way to do this kind of search from Appwrite's SDKs.

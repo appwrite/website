@@ -39,8 +39,16 @@ export const actions = {
     const { account } = createAdminClient();
 
     // Create the session using the client
-    await account.create(ID.unique(), email, password, name);
-    const session = await account.createEmailPasswordSession(email, password);
+    await account.create({
+        userId: ID.unique(),
+        email,
+        password,
+        name
+    });
+    const session = await account.createEmailPasswordSession({
+        email,
+        password
+    });
 
     // Set the session cookie with the secret
     cookies.set(SESSION_COOKIE, session.secret, {

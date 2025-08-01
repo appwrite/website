@@ -59,10 +59,10 @@ Next up, we'll create our test app. This will require us to create two files in 
     <h1>Dev keys demo</h1>
     <p>Click on this button to add 200 documents to the database in less than 1 minute.</p>
     <button type="button">Add documents</button>
-    
+
     <!-- Appwrite Web SDK -->
     <script src="https://cdn.jsdelivr.net/npm/appwrite@18.1.1"></script>
-    
+
     <!-- Our app's script -->
     <script src="app.js"></script>
 </body>
@@ -81,16 +81,16 @@ const database = new Appwrite.Databases(client);
 document.querySelector('button').addEventListener('click', async () => {
     const promises = [];
     for (let i = 0; i < 200; i++) {
-        const promise = database.createDocument(
-        'testDb', // Your database ID
-        'testCollection', // Your collection ID
-        Appwrite.ID.unique(),
-        { number: i + i }
-        );
+        const promise = database.createDocument({
+            databaseId: 'testDb', // Your database ID
+            collectionId: 'testCollection', // Your collection ID
+            documentId: Appwrite.ID.unique(),
+            data: { number: i + i }
+        });
         promises.push(promise);
         console.log('Request initiated:', i+1);
     }
-    
+
     await Promise.all(promises);
 });
 ```
