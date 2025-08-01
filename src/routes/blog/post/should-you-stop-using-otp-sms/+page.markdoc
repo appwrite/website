@@ -111,10 +111,10 @@ const client = new Client()
 
 const account = new Account(client);
 
-const sessionToken = await account.createEmailToken(
-    ID.unique(),
-    'email@example.com'
-);
+const sessionToken = await account.createEmailToken({
+    userId: ID.unique(),
+    email: 'email@example.com'
+});
 
 const userId = sessionToken.userId;
 
@@ -123,10 +123,10 @@ const userId = sessionToken.userId;
 After receiving the secret (6-digit number) in the email, you can use it along with the returned user ID to confirm the user.
 
 ```jsx
-const session = await account.createSession(
-    userId,
-    '[SECRET]'
-);
+const session = await account.createSession({
+    userId: userId,
+    secret: '[SECRET]'
+});
 ```
 
 {% /tabsitem %}

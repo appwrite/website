@@ -65,10 +65,10 @@ const mfa = await account.updateMFA({
 Begin your login flow with the default authentication method used by your app (for example, email password).
 
 ```js
-const user = await account.createEmailPasswordSession(
-    'email@example.com',   // email
-    'password'             // password
-);
+const user = await account.createEmailPasswordSession({
+    email: 'email@example.com',
+    password: 'password'
+});
 ```
 
 Upon successful login in the first authentication step, check the status of the login by calling `account.get()`. If you receive the error `user_more_factors_required`, redirect to perform the second factor.
@@ -111,9 +111,9 @@ The returned object will be formatted as follows:
 Based on the enabled providers, you can initialize the additional auth step. Calling these methods will send a challenge to the user. Ensure you save the challenge ID to complete the challenge in a later step.
 
 ```js
-const challenge = await account.createChallenge(
-    'phone'   // factor
-);
+const challenge = await account.createMfaChallenge({
+    factor: 'phone'
+});
 
 // Save the challenge ID to complete the challenge later
 const challengeId = challenge.$id;
@@ -124,10 +124,10 @@ const challengeId = challenge.$id;
 Once the user receives the challenge code, you can pass the code back to Appwrite to complete the challenge.
 
 ```js
-const challenge = await account.updateChallenge(
-    '<CHALLENGE_ID>',   // challengeId
-    '<OTP>'             // otp
-);
+const challenge = await account.updateMfaChallenge({
+    challengeId: '<CHALLENGE_ID>',
+    otp: '<OTP>'
+});
 ```
 
 And just like that, you have implemented 2FA using Appwrite!

@@ -206,28 +206,28 @@ New Database operators `contains` and `or`, providing greater control and flexib
 The contains operator is a great addition to the existing text search operators such as startsWith & endsWith, and can be used in combination with these two.
 
 ```js
-db.listDocuments(
-    '<DATABASE_ID>',
-    '<COLLECTION_ID>',
-	  [
-	    Query.contains('content', ['happy', 'love']),
-	  ]
-   )
+db.listDocuments({
+    databaseId: '<DATABASE_ID>',
+    collectionId: '<COLLECTION_ID>',
+    queries: [
+        Query.contains('content', ['happy', 'love'])
+    ]
+});
 ```
 
 To use the OR operator pass Query.or([...]) to the queries array and provide at least two queries within the nested array.
 
 ```js
-db.listDocuments(
-	 '<DATABASE_ID>',
-	 '<COLLECTION_ID>',
-        [
+db.listDocuments({
+    databaseId: '<DATABASE_ID>',
+    collectionId: '<COLLECTION_ID>',
+    queries: [
         Query.or([
             Query.contains('name','ivy'),
             Query.greaterThan('age',30)
-            ])
-        ]
-  )
+        ])
+    ]
+});
 ```
 
 Read the [Database operators announcement](/blog/post/introducing-new-database-operators) for a full overview of capabilities, or visit our [documentation](/docs/products/databases/queries) to get started.

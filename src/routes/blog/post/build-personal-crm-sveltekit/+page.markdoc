@@ -128,7 +128,11 @@ async function deleteDocument(id) {
 // Delete all contacts
 async function deleteDocuments() {
 	try {
-		return await databases.deleteDocuments(databaseId, collectionId, []);
+		return await databases.deleteDocuments({
+			databaseId: databaseId,
+			collectionId: collectionId,
+			queries: []
+		});
 	} catch (error) {
 		console.error('Error deleting documents:', error);
 		throw new Error('Failed to delete documents');

@@ -189,10 +189,14 @@ import { COLLECTION_NAME, DATABASE_NAME } from './constants';
 
 export const db = {
 	list: async () => {
-		var entries = await database.listDocuments(DATABASE_NAME, COLLECTION_NAME, [
-			Query.limit(500),
-			Query.select(['discordName'])
-		]);
+		var entries = await database.listDocuments({
+			databaseId: DATABASE_NAME,
+			collectionId: COLLECTION_NAME,
+			queries: [
+				Query.limit(500),
+				Query.select(['discordName'])
+			]
+		});
 
 		var options = [];
 
@@ -205,9 +209,14 @@ export const db = {
 
 	add: async (discordName, email) => {
 		try {
-			await database.createDocument(DATABASE_NAME, COLLECTION_NAME, ID.unique(), {
-				discordName: discordName,
-				email: email
+			await database.createDocument({
+				databaseId: DATABASE_NAME,
+				collectionId: COLLECTION_NAME,
+				documentId: ID.unique(),
+				data: {
+					discordName: discordName,
+					email: email
+				}
 			});
 			console.log('Added to the raffle');
 		} catch (error) {
