@@ -28,11 +28,11 @@ To upload a file, add this to your app. For web apps, you can use the File objec
 
   const storage = new Storage(client);
 
-  const promise = storage.createFile(
-      '[BUCKET_ID]',
-      ID.unique(),
-      document.getElementById('uploader').files[0]
-  );
+  const promise = storage.createFile({
+      bucketId: '<BUCKET_ID>',
+      fileId: ID.unique(),
+      file: document.getElementById('uploader').files[0]
+  });
 
   promise.then(function (response) {
       console.log(response); // Success
