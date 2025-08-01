@@ -151,23 +151,23 @@ async function seedDatabase() {
         isComplete: false
     };
 
-    await databases.createDocument(
-        todoDatabase.$id,
-        todoCollection.$id,
-        sdk.ID.unique(),
-        testTodo1
-    );
-    await databases.createDocument(
-        todoDatabase.$id,
-        todoCollection.$id,
-        sdk.ID.unique(),
-        testTodo2
-    );
-    await databases.createDocument(
-        todoDatabase.$id,
-        todoCollection.$id,
-        sdk.ID.unique(),
-        testTodo3
+    await databases.createDocument({
+        databaseId: todoDatabase.$id,
+        collectionId: todoCollection.$id,
+        documentId: sdk.ID.unique(),
+        data: testTodo1
+    });
+    await databases.createDocument({
+        databaseId: todoDatabase.$id,
+        collectionId: todoCollection.$id,
+        documentId: sdk.ID.unique(),
+        data: testTodo2
+    });
+    await databases.createDocument({
+        databaseId: todoDatabase.$id,
+        collectionId: todoCollection.$id,
+        documentId: sdk.ID.unique(),
+        data: testTodo3
     );
 }
 ```

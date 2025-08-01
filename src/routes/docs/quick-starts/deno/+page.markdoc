@@ -162,24 +162,24 @@ async function seedDatabase(): Promise<void> {
         isComplete: false
     };
 
-    await databases.createDocument(
-        todoDatabase.$id,
-        todoCollection.$id,
-        ID.unique(),
-        testTodo1
-    );
-    await databases.createDocument(
-        todoDatabase.$id,
-        todoCollection.$id,
-        ID.unique(),
-        testTodo2
-    );
-    await databases.createDocument(
-        todoDatabase.$id,
-        todoCollection.$id,
-        ID.unique(),
-        testTodo3
-    );
+    await databases.createDocument({
+        databaseId: todoDatabase.$id,
+        collectionId: todoCollection.$id,
+        documentId: ID.unique(),
+        data: testTodo1
+    });
+    await databases.createDocument({
+        databaseId: todoDatabase.$id,
+        collectionId: todoCollection.$id,
+        documentId: ID.unique(),
+        data: testTodo2
+    });
+    await databases.createDocument({
+        databaseId: todoDatabase.$id,
+        collectionId: todoCollection.$id,
+        documentId: ID.unique(),
+        data: testTodo3
+    });
 }
 ```
 
