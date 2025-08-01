@@ -13,6 +13,7 @@
     import TeamOfExperts from './(components)/team-of-experts.svelte';
     import TheFuture from './(components)/the-future.svelte';
     import AllInOne from './(components)/all-in-one.svelte';
+    import CallToAction from './(components)/call-to-action.svelte';
 
     const title = 'Cloud GA - Appwrite';
     const description = 'Appwrite Cloud is now generally available.';
@@ -40,15 +41,14 @@
     <div class="block">
         <Hero />
         <BuildingCloud />
-        <span>The journey so far</span>
+
         <OpenSourceCommunity />
         <ScaleWithoutWorries />
-        <SecurityCompliance />
-        <span>Global distribution</span>
-        <TeamOfExperts />
-        <TheFuture />
+        <SecurityCompliance /><!-- done -->
+        <TeamOfExperts /><!-- done -->
+        <TheFuture /><!-- done -->
         <AllInOne />
-        <span>Build like a team of hundreds</span>
+        <CallToAction />
     </div>
 
     <div class="container">

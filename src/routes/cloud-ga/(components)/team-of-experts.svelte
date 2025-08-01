@@ -41,7 +41,7 @@
                 </div>
             </Cell>
             <Cell column={4} columnStart={3} class="px-4 pb-8 md:py-20"
-                ><div class="space-y-8">
+                ><div class="text-paragraph-lg space-y-8">
                     <p>
                         The open-source community supporting Appwrite has been an undeniable
                         advantage in Appwrite’s success. They have been the first line of support

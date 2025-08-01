@@ -116,7 +116,7 @@
 <div class="mx-auto flex h-fit max-w-6xl flex-1 gap-3">
     <Grid>
         <Cell column={4}>
-            <div class="mx-auto flex w-full flex-col gap-16 bg-center md:pl-8">
+            <div class="mx-auto flex w-full flex-col gap-16 bg-center">
                 <div
                     class="relative mx-0! grid grid-cols-1 place-items-center [background:_radial-gradient(50%_50%_at_50%_50%,_rgba(253,_54,_110,_0.1)_0%,_rgba(253,_54,_110,_0)_100%)] md:grid-cols-12"
                 >

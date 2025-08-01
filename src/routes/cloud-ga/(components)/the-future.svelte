@@ -24,7 +24,7 @@
                 </h2>
             </Cell>
             <Cell column={4} columnStart={3} class="px-4 pb-8 md:py-20"
-                ><div class="space-y-8">
+                ><div class="text-paragraph-lg space-y-8">
                     <p>
                         As Appwrite Cloud continues to age, it also continues to improve over time.
                         With new products, features, more support, more regions, and anything else

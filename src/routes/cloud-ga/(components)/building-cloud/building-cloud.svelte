@@ -18,19 +18,19 @@
     ];
 </script>
 
-<div class="relative h-full">
+<div class="relative h-full bg-gradient-to-b from-[#232325]/70 to-transparent to-20%">
     <div class="mx-auto flex w-full max-w-6xl flex-col justify-center">
         <Grid bottomBorder>
-            <Cell column={2} columnStart={1} class="px-8 py-12 md:py-20">
+            <Cell column={2} columnStart={1} class="px-4 py-12 md:py-32">
                 <h2
-                    class="font-aeonik-pro text-title text-primary before:bg-accent text-pretty before:absolute before:left-0 before:mt-2.5 before:h-6 before:w-px"
+                    class="font-aeonik-pro text-title text-primary before:bg-accent text-pretty before:absolute before:left-0 before:mt-1 before:h-7.5 before:w-px md:before:-left-0.25 md:before:mt-2"
                 >
                     Building Appwrite<br /> Cloud for you
                 </h2>
             </Cell>
 
-            <Cell column={2} columnStart={3} class="px-4 pb-4 md:py-20">
-                <div class="space-y-8">
+            <Cell column={2} columnStart={3} class="px-4 pb-4 md:py-32">
+                <div class="text-paragraph-lg space-y-8">
                     <p>
                         When we started working on our plans for Appwrite Cloud we knew we had a
                         hard task ahead of us as we we didn’t want to just be a wrapper on top of
@@ -56,7 +56,7 @@
 
             <Cell columnStart={1} column={2} class="px-4 pb-20"
                 ><p
-                    class="animate-text before:bg-accent text-body max-w-3/4 font-medium text-white before:absolute before:left-0 before:mt-1 before:h-4 before:w-px"
+                    class="animate-text before:bg-accent text-body ml-4 font-medium text-white before:absolute before:left-4 before:mt-1 before:h-4 before:w-px md:ml-0 md:max-w-3/4 md:before:left-0"
                 >
                     To become Generally Available, we set a few milestones that we had to achieve
                     across different factors. Some are easier to measure than others, but never less
@@ -65,7 +65,7 @@
             </Cell>
             <Cell columnStart={3} column={2} class="px-4 pb-20">
                 <ul
-                    class="grid grid-flow-col grid-cols-1 grid-rows-4 gap-x-1 gap-y-4 md:grid-cols-2"
+                    class="mx-4 grid grid-cols-1 grid-rows-4 gap-x-1 gap-y-4 md:mx-auto md:grid-flow-col md:grid-cols-2"
                 >
                     {#each missions as mission, i}
                         {@const index = `0${i + 1}`}

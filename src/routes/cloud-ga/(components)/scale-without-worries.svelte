@@ -11,11 +11,34 @@
             animate = true;
         });
     };
+
+    const testimonials = [
+        {
+            blurb: 'A special thanks to Appwrite for shouldering the heavy lifting behind StoreAlert, providing robust features and seamless functionality that allow us to focus on what matters most—empowering merchants with real-time insights and control over their store operations.',
+            name: 'Hassan Ahmed',
+            title: 'Engineer at DevKind',
+            avatar: '/images/testimonials/hassan.png',
+            url: '/blog/post/customer-story-storealert'
+        },
+        {
+            blurb: "If you're looking for a backend server that is both powerful and easy to use, check out @appwrite . With its robust feature set and open-source nature, it's the perfect choice for developers who want to build secure and scalable applications without breaking the bank.",
+            name: 'Souvik Sarkar',
+            title: '@Jeet_2003',
+            avatar: '/images/testimonials/souvik-sarkar.png'
+        },
+        {
+            blurb: 'A major impact that Appwrite made was the amount of time and stress saved.',
+            name: "Ryan O'Connor",
+            title: 'Founder at K-Collect',
+            avatar: '/images/testimonials/ryan.png',
+            url: '/blog/post/customer-stories-kcollect'
+        }
+    ];
 </script>
 
 <div class="relative h-full scroll-m-16" id="infrastructure-and-scalability">
     <div class="mx-auto flex w-full max-w-6xl flex-col justify-center" use:useInView>
-        <Grid rows={2} bottomBorder>
+        <Grid rows={3} bottomBorder>
             <Cell column={2} columnStart={1} class="px-4 py-12 md:py-20">
                 <div class="space-y-4">
                     <span
@@ -39,9 +62,20 @@
                 </p>
             </Cell>
 
+            <Cell column={4} columnStart={1} class="px-4 pb-8 md:py-20">
+                <div class="grid grid-cols-1 gap-8 md:grid-cols-3">
+                    {#each testimonials as testimonial}
+                        <div>
+                            <span>{testimonial.name}</span>
+                            <span>{testimonial.blurb}</span>
+                        </div>
+                    {/each}
+                </div>
+            </Cell>
+
             <Cell column={4} columnStart={3} class="px-4 pb-8 md:py-20">
-                <div class="space-y-8">
-                    <p class="text-paragraph-lg">
+                <div class="text-paragraph-lg space-y-8">
+                    <p>
                         Building the infrastructure to support this goal wasn't easy, especially
                         with our vision of developing Appwrite Cloud from the ground up. However, we
                         pursued it to maintain control over both the platform's flexibility and the
@@ -57,6 +91,4 @@
             </Cell>
         </Grid>
     </div>
-
-    Testimonials here
 </div>

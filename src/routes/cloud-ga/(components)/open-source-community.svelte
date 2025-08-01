@@ -24,7 +24,7 @@
 <div class="relative h-full scroll-m-16" id="developer-experience">
     <div class="mx-auto flex w-full max-w-6xl flex-col justify-center" use:useInView>
         <Grid rows={2} bottomBorder>
-            <Cell column={2} columnStart={1} class="px-8 py-12 md:py-20">
+            <Cell column={2} columnStart={1} class="px-4 py-12 md:py-20">
                 <div class="space-y-4">
                     <span
                         class="font-aeonik-fono text-secondary text-micro tracking-loose uppercase"
@@ -38,8 +38,8 @@
                     </h2>
                 </div>
             </Cell>
-            <Cell column={4} columnStart={3} class="px-8 pb-8 md:py-20"
-                ><p class="max-w-lg">
+            <Cell column={4} columnStart={3} class="px-4 pb-8 md:py-20"
+                ><p class="text-paragraph-lg max-w-lg">
                     We have said it a million times, and we will say it again: <span
                         class="text-primary font-medium"
                         >Developer experience is at the top of the Appwrite list.</span

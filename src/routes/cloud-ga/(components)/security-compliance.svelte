@@ -26,7 +26,7 @@
 <div class="relative h-full">
     <div class="mx-auto flex w-full max-w-6xl flex-col justify-center" use:useInView>
         <Grid rows={2} bottomBorder>
-            <Cell column={2} columnStart={1} class="px-8 py-12 md:py-20">
+            <Cell column={2} columnStart={1} class="px-4 py-12 md:py-20">
                 <span
                     class="font-aeonik-fono text-secondary text-micro tracking-loose mb-7 uppercase"
                     >Security & Compliance</span
@@ -38,9 +38,9 @@
                     Secure by default
                 </h2>
             </Cell>
-            <Cell column={4} columnStart={3} class="px-8 pb-8 md:py-20">
+            <Cell column={4} columnStart={3} class="px-4 pb-8 md:py-20">
                 <div class="space-y-8">
-                    <p class="max-w-lg">
+                    <p class="text-paragraph-lg max-w-lg">
                         Appwrite has been and continues to be security driven. From the very
                         beginning, we ensured security measures, like encryption and abuse
                         protection, were built into Appwrite Cloud, and were easy to manage from the
@@ -59,7 +59,7 @@
                         {/each}
                     </div>
 
-                    <p class="max-w-lg">
+                    <p class="text-paragraph-lg max-w-lg">
                         Most recently, we have added three new features to ensure even more security
                         and compliance regulations are in place: <span class="text-primary"
                             >Roles for access management, 2FA for the Appwrite Console, and Database
