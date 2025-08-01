@@ -15,9 +15,12 @@
         'grid h-full w-full auto-rows-min grid-cols-1 grid-rows-[1fr] md:grid-cols-[repeat(var(--columns),_1fr)]',
         'border-smooth border-dashed md:border-l',
         'relative',
-        className
+        className,
+        {
+            'after:border-smooth after:absolute after:bottom-0 after:left-1/2 after:w-screen after:-translate-x-[calc(50%+1px)] after:border-b after:border-dashed':
+                bottomBorder
+        }
     )}
-    class:border-b={bottomBorder}
     style:--columns={columns}
     style:--rows={rows}
 >

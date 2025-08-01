@@ -7,8 +7,8 @@
 </script>
 
 <div class="mx-auto flex max-w-6xl items-start justify-between">
-    <Grid bottomBorder>
-        <Cell column={4}>
+    <Grid bottomBorder rows={1}>
+        <Cell column={4} verticalCenter>
             <div class="flex flex-col items-center justify-between px-4 py-20 md:flex-row">
                 <h3 class="font-aeonik-pro text-primary text-title max-w-xs">
                     Build like a team of hundreds <span class="text-accent">_</span>

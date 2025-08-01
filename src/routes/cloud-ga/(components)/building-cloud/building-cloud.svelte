@@ -18,9 +18,11 @@
     ];
 </script>
 
-<div class="relative h-full bg-gradient-to-b from-[#232325]/70 to-transparent to-20%">
+<div
+    class="border-smooth relative h-full border-t bg-gradient-to-b from-[#232325]/70 to-transparent to-20%"
+>
     <div class="mx-auto flex w-full max-w-6xl flex-col justify-center">
-        <Grid bottomBorder>
+        <Grid rows={2} bottomBorder>
             <Cell column={2} columnStart={1} class="px-4 py-12 md:py-32">
                 <h2
                     class="font-aeonik-pro text-title text-primary before:bg-accent text-pretty before:absolute before:left-0 before:mt-1 before:h-7.5 before:w-px md:before:-left-0.25 md:before:mt-2"

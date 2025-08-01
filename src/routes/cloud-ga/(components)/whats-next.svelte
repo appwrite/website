@@ -14,7 +14,7 @@
 
 <div class="relative h-full">
     <div class="mx-auto flex w-full max-w-6xl flex-col justify-center" use:useInView>
-        <Grid rows={2}>
+        <Grid rows={2} bottomBorder>
             <Cell column={2} columnStart={1} class="px-4 py-12 md:py-20">
                 <h2
                     data-animate={animate}
