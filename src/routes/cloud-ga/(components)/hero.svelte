@@ -17,7 +17,7 @@
     class="from-accent/8 relative -top-24 -mb-24 flex justify-center overflow-y-hidden bg-gradient-to-b to-transparent to-60% pt-24"
 >
     <div class="flex w-full max-w-6xl flex-col justify-center">
-        <Grid rows={1}>
+        <Grid rows={2}>
             <Cell column={3} horizontalCenter verticalCenter class="py-10 md:py-20">
                 <div class="max-w-4xl space-y-8 p-4">
                     <h1
@@ -76,7 +76,9 @@
                     </div>
                 </Cell>
             {/each} -->
+            <Cell column={4}>
+                <Numbers {numbers} />
+            </Cell>
         </Grid>
-        <Numbers {numbers} />
     </div>
 </div>

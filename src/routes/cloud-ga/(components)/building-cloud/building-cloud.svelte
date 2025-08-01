@@ -19,7 +19,7 @@
 </script>
 
 <div
-    class="border-smooth relative h-full border-t bg-gradient-to-b from-[#232325]/70 to-transparent to-20%"
+    class="border-smooth relative h-full border-t bg-gradient-to-b from-[#232325]/70 to-transparent to-20% px-4"
 >
     <div class="mx-auto flex w-full max-w-6xl flex-col justify-center">
         <Grid rows={2} bottomBorder>

@@ -1,13 +1,23 @@
 <script lang="ts">
     import { classNames } from '$lib/utils/classnames';
+    import type { Snippet } from 'svelte';
+    type Props = {
+        columns?: number;
+        rows?: number;
+        bottomBorder?: boolean;
+        solidBorder?: boolean;
+        class?: string;
+        children: Snippet;
+    };
 
-    export let columns: number = 4;
-    export let rows: number = 4;
-    export let bottomBorder: boolean = false;
-
-    let className: string = '';
-
-    export { className as class };
+    const {
+        children,
+        columns = 4,
+        rows = 4,
+        bottomBorder = false,
+        solidBorder = false,
+        class: className = ''
+    }: Props = $props();
 </script>
 
 <div
@@ -17,9 +27,10 @@
         'relative',
         className,
         {
-            'after:border-smooth after:absolute after:bottom-0 after:left-1/2 after:w-screen after:-translate-x-[calc(50%+1px)] after:border-b after:border-dashed':
+            'after:border-smooth after:absolute after:bottom-0 after:left-1/2 after:w-screen after:-translate-x-[calc(50%+1px)] after:border-b':
                 bottomBorder
-        }
+        },
+        { 'after:border-dashed': !solidBorder }
     )}
     style:--columns={columns}
     style:--rows={rows}
@@ -40,5 +51,5 @@
             ></div>
         {/each}
     </div>
-    <slot />
+    {@render children()}
 </div>

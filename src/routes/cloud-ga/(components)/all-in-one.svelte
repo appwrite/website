@@ -16,6 +16,7 @@
     import SitesSlide from '../(assets)/slides/sites.svg';
     import Grid from './grid-system/grid.svelte';
     import Cell from './grid-system/cell.svelte';
+    import { inView } from 'motion';
 
     const lineClass = (isActive: boolean) =>
         `group-hover:stroke-white ${isActive ? 'stroke-white' : ''} group-focus-within:stroke-white transition-all stroke-smooth`;
@@ -118,6 +119,14 @@
         paused = false;
     };
 
+    let animate = $state<boolean>(false);
+
+    const useInView = (node: HTMLElement) => {
+        inView(node, () => {
+            animate = true;
+        });
+    };
+
     $effect(() => {
         interval = setInterval(autoCycle, 5000);
 
@@ -129,14 +138,15 @@
 
 <div class="mx-auto flex h-fit max-w-6xl flex-1 gap-3">
     <Grid rows={2} bottomBorder>
-        <Cell column={2} columnStart={1} class="px-4 py-12 md:py-20">
-            <div class="space-y-4">
+        <Cell column={2} columnStart={1} class="px-4 pt-12 md:pt-20">
+            <div class="space-y-4" use:useInView>
                 <span
                     class="font-aeonik-fono text-secondary text-micro tracking-loose inline-block uppercase"
                     >Dedicated Support</span
                 >
                 <h2
-                    class="text-subtitle text-primary font-aeonik-pro before:bg-accent text-pretty before:absolute before:left-0 before:mt-2.5 before:h-6 before:w-px before:origin-top before:scale-y-0 before:transition-transform before:duration-700 data-[animate=true]:before:scale-y-100"
+                    data-animate={animate}
+                    class="text-subtitle text-primary font-aeonik-pro before:bg-accent text-pretty before:absolute before:-left-0.25 before:mt-2 before:h-6 before:w-px before:origin-top before:scale-y-0 before:transition-transform before:duration-700 data-[animate=true]:before:scale-y-100"
                 >
                     All in one development<br /> platform
                 </h2>
@@ -151,7 +161,7 @@
             </div>
         </Cell>
         <Cell column={4}>
-            <div class="mx-auto flex w-full flex-col gap-16 bg-center py-40 md:py-20">
+            <div class="mx-auto flex w-full flex-col gap-16 bg-center px-2 pt-10 pb-40 md:pb-20">
                 <div
                     class="relative grid grid-cols-1 place-items-center gap-0 [background:_radial-gradient(50%_50%_at_50%_50%,_rgba(253,_54,_110,_0.1)_0%,_rgba(253,_54,_110,_0)_100%)] lg:grid-cols-12"
                 >
@@ -202,7 +212,7 @@
                     </div>
                     <!-- window -->
                     <div
-                        class="window col-span-6 flex aspect-[6.5/4] w-full items-center justify-center rounded-[48px] border-dashed border-transparent md:aspect-[6.5/4.5] md:border"
+                        class="window md:asepct-[19/13] col-span-6 flex aspect-[19/12] w-full items-center justify-center rounded-[48px] border-dashed border-transparent md:border"
                         style:animation-delay="0.6s"
                     >
                         <div

@@ -23,7 +23,7 @@
     ];
 </script>
 
-<div class="relative h-full">
+<div class="relative h-full scroll-m-16 px-4" id="dedicated-support">
     <div class="mx-auto flex w-full max-w-6xl flex-col justify-center" use:useInView>
         <Grid rows={2} bottomBorder>
             <Cell column={2} columnStart={1} class="px-4 py-12 md:py-20">
@@ -34,7 +34,7 @@
                     >
                     <h2
                         data-animate={animate}
-                        class="text-subtitle text-primary font-aeonik-pro before:bg-accent text-pretty before:absolute before:left-0 before:mt-2.5 before:h-6 before:w-px before:origin-top before:scale-y-0 before:transition-transform before:duration-700 data-[animate=true]:before:scale-y-100"
+                        class="text-subtitle text-primary font-aeonik-pro before:bg-accent text-pretty before:absolute before:-left-0.25 before:mt-2 before:h-6 before:w-px before:origin-top before:scale-y-0 before:transition-transform before:duration-700 data-[animate=true]:before:scale-y-100"
                     >
                         A team of experts
                     </h2>
@@ -58,7 +58,7 @@
                         your dedicated partner in your development journey.
                     </p>
                     <div
-                        class="illustration grid grid-flow-col grid-cols-1 grid-rows-2 gap-x-1 gap-y-4 p-4 md:grid-cols-2"
+                        class="illustration grid grid-cols-1 grid-rows-2 gap-x-1 gap-y-4 p-4 md:grid-flow-col md:grid-cols-2"
                     >
                         {#each icons as { label, src, href }}
                             <div class="flex items-center gap-2">

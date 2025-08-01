@@ -16,7 +16,8 @@
         {
             blurb: 'A special thanks to Appwrite for shouldering the heavy lifting behind StoreAlert, providing robust features and seamless functionality that allow us to focus on what matters most—empowering merchants with real-time insights and control over their store operations.',
             name: 'Hassan Ahmed',
-            title: 'Engineer at DevKind',
+            title: 'Full Stack Developer',
+            company: 'DevKind',
             avatar: '/images/testimonials/hassan.png',
             url: '/blog/post/customer-story-storealert'
         },
@@ -27,16 +28,17 @@
             avatar: '/images/testimonials/souvik-sarkar.png'
         },
         {
-            blurb: 'A major impact that Appwrite made was the amount of time and stress saved.',
-            name: "Ryan O'Connor",
-            title: 'Founder at K-Collect',
-            avatar: '/images/testimonials/ryan.png',
-            url: '/blog/post/customer-stories-kcollect'
+            blurb: 'We really loved working with Appwrite for launching our bootstrapped "Open Mind" App. It was saving us a lot of money in comparison to Firebase since the amount of users grew quite fast and we needed a quick switch.',
+            name: 'David Forster',
+            title: 'MD',
+            company: 'Open Mind',
+            avatar: '/images/testimonials/david-forster.png',
+            url: '/blog/post/customer-stories-open-mind'
         }
     ];
 </script>
 
-<div class="relative h-full scroll-m-16" id="infrastructure-and-scalability">
+<div class="relative h-full scroll-m-16 px-4" id="infrastructure-and-scalability">
     <div class="mx-auto flex w-full max-w-6xl flex-col justify-center" use:useInView>
         <Grid rows={3} bottomBorder>
             <Cell column={2} columnStart={1} class="px-4 py-12 md:py-20">
@@ -47,7 +49,7 @@
                     >
                     <h2
                         data-animate={animate}
-                        class="text-subtitle text-primary font-aeonik-pro before:bg-accent text-pretty before:absolute before:left-0 before:mt-2.5 before:h-6 before:w-px before:origin-top before:scale-y-0 before:transition-transform before:duration-700 data-[animate=true]:before:scale-y-100"
+                        class="text-subtitle text-primary font-aeonik-pro before:bg-accent text-pretty before:absolute before:-left-0.25 before:mt-2 before:h-6 before:w-px before:origin-top before:scale-y-0 before:transition-transform before:duration-700 data-[animate=true]:before:scale-y-100"
                     >
                         Scale without worries
                     </h2>
@@ -62,12 +64,30 @@
                 </p>
             </Cell>
 
-            <Cell column={4} columnStart={1} class="px-4 pb-8 md:py-20">
+            <Cell column={4} columnStart={1}>
                 <div class="grid grid-cols-1 gap-8 md:grid-cols-3">
                     {#each testimonials as testimonial}
-                        <div>
-                            <span>{testimonial.name}</span>
+                        <div class="bg-card border-smooth h-fit rounded-2xl border p-4">
                             <span>{testimonial.blurb}</span>
+
+                            <div class="mt-4 flex items-center gap-3">
+                                <img
+                                    src={testimonial.avatar}
+                                    class="size-12 rounded-full"
+                                    alt={testimonial.name}
+                                />
+                                <div>
+                                    <span class="text-secondary text-sub-body block font-medium">
+                                        {testimonial.name}
+                                    </span>
+                                    {#if testimonial.title}
+                                        <span class="text-sub-body text-secondary block">
+                                            {testimonial.title}
+                                            {#if testimonial.company}// {testimonial.company}{/if}
+                                        </span>
+                                    {/if}
+                                </div>
+                            </div>
                         </div>
                     {/each}
                 </div>

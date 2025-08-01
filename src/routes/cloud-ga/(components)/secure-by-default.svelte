@@ -23,7 +23,7 @@
     ];
 </script>
 
-<div class="relative h-full">
+<div class="relative h-full scroll-m-16 px-4" id="security-and-compliance">
     <div class="mx-auto flex w-full max-w-6xl flex-col justify-center" use:useInView>
         <Grid rows={2} bottomBorder>
             <Cell column={2} columnStart={1} class="px-4 py-12 md:py-20">
@@ -34,7 +34,7 @@
                     >
                     <h2
                         data-animate={animate}
-                        class="text-subtitle text-primary font-aeonik-pro before:bg-accent text-pretty before:absolute before:left-0 before:mt-2.5 before:h-6 before:w-px before:origin-top before:scale-y-0 before:transition-transform before:duration-700 data-[animate=true]:before:scale-y-100"
+                        class="text-subtitle text-primary font-aeonik-pro before:bg-accent text-pretty before:absolute before:-left-0.25 before:mt-2 before:h-6 before:w-px before:origin-top before:scale-y-0 before:transition-transform before:duration-700 data-[animate=true]:before:scale-y-100"
                     >
                         Secure by default
                     </h2>
