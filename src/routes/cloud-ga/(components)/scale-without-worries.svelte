@@ -13,10 +13,10 @@
     };
 </script>
 
-<div class="relative h-full">
+<div class="relative h-full scroll-m-16" id="infrastructure-and-scalability">
     <div class="mx-auto flex w-full max-w-6xl flex-col justify-center" use:useInView>
         <Grid rows={2} bottomBorder>
-            <Cell column={2} columnStart={1} class="px-8 py-12 md:py-20">
+            <Cell column={2} columnStart={1} class="px-4 py-12 md:py-20">
                 <div class="space-y-4">
                     <span
                         class="font-aeonik-fono text-secondary text-micro tracking-loose uppercase"
@@ -26,24 +26,22 @@
                         data-animate={animate}
                         class="text-title text-primary font-aeonik-pro before:bg-accent text-pretty before:absolute before:left-0 before:mt-2.5 before:h-6 before:w-px before:origin-top before:scale-y-0 before:transition-transform before:duration-700 data-[animate=true]:before:scale-y-100"
                     >
-                        Scale without<br /> worries
+                        Scale without worries
                     </h2>
                 </div>
             </Cell>
-            <Cell column={4} columnStart={3} class="px-8 pb-8 md:py-20">
+            <Cell column={4} columnStart={3} class="px-4 pb-8 md:py-20">
+                <p class="text-paragraph-lg">
+                    We aimed to build a platform that could easily scale to 1M users overnight
+                    without you breaking a sweat over scalability or finance. Today, we are
+                    confident that we have reached this state as the numbers show, Appwrite Cloud is
+                    stable for any project to grow rapidly unexpectedly.
+                </p>
+            </Cell>
+
+            <Cell column={4} columnStart={3} class="px-4 pb-8 md:py-20">
                 <div class="space-y-8">
-                    <p>
-                        We aimed to build a platform that could easily scale to 1M users overnight
-                        without you breaking a sweat over scalability or finance. Today, we are
-                        confident that we have reached this state as the numbers show, Appwrite
-                        Cloud is stable for any project to grow rapidly unexpectedly.
-                    </p>
-                    <img
-                        class="aspect-video rounded-3xl object-cover"
-                        src={Placeholder}
-                        alt="Placeholder"
-                    />
-                    <p>
+                    <p class="text-paragraph-lg">
                         Building the infrastructure to support this goal wasn't easy, especially
                         with our vision of developing Appwrite Cloud from the ground up. However, we
                         pursued it to maintain control over both the platform's flexibility and the
@@ -59,4 +57,6 @@
             </Cell>
         </Grid>
     </div>
+
+    Testimonials here
 </div>

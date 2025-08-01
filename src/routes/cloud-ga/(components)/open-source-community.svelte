@@ -3,6 +3,7 @@
     import Cell from './grid-system/cell.svelte';
     import { inView } from 'motion';
     import Placeholder from '../(assets)/placeholder.png';
+    import Numbers from './numbers.svelte';
 
     let animate: boolean = false;
 
@@ -11,9 +12,16 @@
             animate = true;
         });
     };
+
+    const numbers = [
+        { label: '52k', description: 'GitHub stars' },
+        { label: '200k', description: 'followers across socials' },
+        { label: '46k', description: 'commits to GitHub' },
+        { label: '610k+', description: 'Discord messages' }
+    ];
 </script>
 
-<div class="relative h-full">
+<div class="relative h-full scroll-m-16" id="developer-experience">
     <div class="mx-auto flex w-full max-w-6xl flex-col justify-center" use:useInView>
         <Grid rows={2} bottomBorder>
             <Cell column={2} columnStart={1} class="px-8 py-12 md:py-20">
@@ -26,7 +34,7 @@
                         data-animate={animate}
                         class="text-title text-primary font-aeonik-pro before:bg-accent text-pretty before:absolute before:left-0 before:mt-2.5 before:h-6 before:w-px before:origin-top before:scale-y-0 before:transition-transform before:duration-700 data-[animate=true]:before:scale-y-100"
                     >
-                        The Open Source<br /> community as a <br />guide
+                        The Open Source<br /> community as a guide
                     </h2>
                 </div>
             </Cell>
@@ -42,6 +50,10 @@
             >
             <Cell column={4}>
                 <img class="rounded-3xl" src={Placeholder} alt="Placeholder" />
+            </Cell>
+
+            <Cell column={4}>
+                <Numbers class="mt-8" {numbers} />
             </Cell>
         </Grid>
     </div>

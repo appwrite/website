@@ -3,7 +3,7 @@
     import { Main } from '$lib/layouts';
     import { buildOpenGraphImage } from '$lib/utils/metadata';
     import BuildingCloud from './(components)/building-cloud/building-cloud.svelte';
-    import CloudNumbers from './(components)/cloud-numbers.svelte';
+    import CloudNumbers from './(components)/numbers.svelte';
     import Hero from './(components)/hero.svelte';
     import NetworkingLatency from './(components)/networking-latency.svelte';
     import OpenSourceCommunity from './(components)/open-source-community.svelte';
@@ -12,6 +12,7 @@
     import SecurityCompliance from './(components)/security-compliance.svelte';
     import TeamOfExperts from './(components)/team-of-experts.svelte';
     import TheFuture from './(components)/the-future.svelte';
+    import AllInOne from './(components)/all-in-one.svelte';
 
     const title = 'Cloud GA - Appwrite';
     const description = 'Appwrite Cloud is now generally available.';
@@ -36,16 +37,19 @@
 </svelte:head>
 
 <Main>
-    <Hero />
-    <CloudNumbers />
-    <BuildingCloud />
-    <SecurityCompliance />
-    <ScaleWithoutWorries />
-    <ReliabilityUptime />
-    <NetworkingLatency />
-    <OpenSourceCommunity />
-    <TeamOfExperts />
-    <TheFuture />
+    <div class="block">
+        <Hero />
+        <BuildingCloud />
+        <span>The journey so far</span>
+        <OpenSourceCommunity />
+        <ScaleWithoutWorries />
+        <SecurityCompliance />
+        <span>Global distribution</span>
+        <TeamOfExperts />
+        <TheFuture />
+        <AllInOne />
+        <span>Build like a team of hundreds</span>
+    </div>
 
     <div class="container">
         <FooterNav />

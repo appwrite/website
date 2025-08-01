@@ -1,17 +1,24 @@
 <script>
-    import { classNames } from '$lib/utils/classnames';
+    import Numbers from './numbers.svelte';
     import Cell from './grid-system/cell.svelte';
     import Grid from './grid-system/grid.svelte';
 
     const title = 'Appwrite Cloud is Generally Available'.split(' ');
+
+    const numbers = [
+        { label: 'Top 300', description: 'GitHub repos' },
+        { label: '150k', description: 'developers' },
+        { label: '50+', description: 'locations' },
+        { label: '300k', description: 'projects' }
+    ];
 </script>
 
 <div
-    class="border-smooth to-accent/9 relative flex justify-center overflow-y-hidden border-b bg-gradient-to-b from-transparent"
+    class="border-smooth from-accent/8 relative flex justify-center overflow-y-hidden border-b bg-gradient-to-b to-transparent to-60%"
 >
     <div class="flex w-full max-w-6xl flex-col justify-center">
         <Grid rows={1}>
-            <Cell column={3} horizontalCenter verticalCenter class="py-20 md:py-40">
+            <Cell column={3} horizontalCenter verticalCenter class="py-10 md:py-20">
                 <div class="max-w-4xl space-y-8 p-8">
                     <h1
                         class="text-headline font-aeonik-pro text-primary flex max-w-4xl flex-wrap gap-4 text-balance"
@@ -39,7 +46,7 @@
                     </div>
                 </div>
             </Cell>
-            {#each Array.from({ length: 5 }) as _, i}
+            <!-- {#each Array.from({ length: 5 }) as _, i}
                 {@const columnStart = i + 1}
                 {@const lineArray = Math.floor(Math.random() * 5) + 3}
                 {@const lines = Array.from({ length: lineArray }).map((_, i) => {
@@ -68,7 +75,8 @@
                         {/each}
                     </div>
                 </Cell>
-            {/each}
+            {/each} -->
         </Grid>
+        <Numbers {numbers} />
     </div>
 </div>
