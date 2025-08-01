@@ -6,7 +6,6 @@
     import Realtime from '../(assets)/icons/realtime.svg';
     import Messaging from '../(assets)/icons/messaging.svg';
     import { classNames } from '$lib/utils/classnames';
-    import { inView } from 'motion';
 
     import AuthSlide from '../(assets)/slides/auth.svg';
     import DatabasesSlide from '../(assets)/slides/databases.svg';
@@ -14,6 +13,7 @@
     import StorageSlide from '../(assets)/slides/storage.svg';
     import RealtimeSlide from '../(assets)/slides/realtime.svg';
     import MessagingSlide from '../(assets)/slides/messaging.svg';
+    import SitesSlide from '../(assets)/slides/sites.svg';
     import Grid from './grid-system/grid.svelte';
     import Cell from './grid-system/cell.svelte';
 
@@ -44,6 +44,16 @@
             image: DatabasesSlide
         },
         {
+            label: 'Functions',
+            icon: Functions,
+            line: (
+                isActive: boolean
+            ) => `<svg width="98" height="75" viewBox="0 0 98 75" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M98 1H62.6377C56.0103 1 50.6377 6.37258 50.6377 13V62C50.6377 68.6274 45.2651 74 38.6377 74H-9.53674e-07" class="group-hover:stroke-white ${isActive && 'stroke-white'} group-focus-within:stroke-white transition-all stroke-smooth" stroke-dasharray="4 4"/>
+                   </svg>`,
+            image: FunctionsSlide
+        },
+        {
             label: 'Storage',
             icon: Storage,
             line: (
@@ -54,14 +64,14 @@
             image: StorageSlide
         },
         {
-            label: 'Functions',
-            icon: Functions,
+            label: 'Realtime',
+            icon: Realtime,
             line: (
                 isActive: boolean
             ) => `<svg width="98" height="75" viewBox="0 0 98 75" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M98 1H62.6377C56.0103 1 50.6377 6.37258 50.6377 13V62C50.6377 68.6274 45.2651 74 38.6377 74H-9.53674e-07" class="group-hover:stroke-white ${isActive && 'stroke-white'} group-focus-within:stroke-white transition-all stroke-smooth" stroke-dasharray="4 4"/>
+                        <path d="M98 74H62.6377C56.0103 74 50.6377 68.6274 50.6377 62V13C50.6377 6.37258 45.2651 0.999998 38.6377 0.999998H-9.53674e-07" class="group-hover:stroke-white ${isActive && 'stroke-white'} group-focus-within:stroke-white transition-all stroke-smooth" stroke-dasharray="4 4"/>
                    </svg>`,
-            image: FunctionsSlide
+            image: RealtimeSlide
         },
         {
             label: 'Messaging',
@@ -74,14 +84,14 @@
             image: MessagingSlide
         },
         {
-            label: 'Realtime',
+            label: 'Sites',
             icon: Realtime,
             line: (
                 isActive: boolean
             ) => `<svg width="98" height="75" viewBox="0 0 98 75" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M98 74H62.6377C56.0103 74 50.6377 68.6274 50.6377 62V13C50.6377 6.37258 45.2651 0.999998 38.6377 0.999998H-9.53674e-07" class="group-hover:stroke-white ${isActive && 'stroke-white'} group-focus-within:stroke-white transition-all stroke-smooth" stroke-dasharray="4 4"/>
                    </svg>`,
-            image: RealtimeSlide
+            image: SitesSlide
         }
     ];
 
@@ -139,14 +149,14 @@
         <Cell column={4}>
             <div class="mx-auto flex w-full flex-col gap-16 bg-center py-40 md:py-20">
                 <div
-                    class="relative mx-0! grid grid-cols-1 place-items-center [background:_radial-gradient(50%_50%_at_50%_50%,_rgba(253,_54,_110,_0.1)_0%,_rgba(253,_54,_110,_0)_100%)] md:grid-cols-12"
+                    class="relative grid grid-cols-1 place-items-center gap-0 [background:_radial-gradient(50%_50%_at_50%_50%,_rgba(253,_54,_110,_0.1)_0%,_rgba(253,_54,_110,_0)_100%)] md:grid-cols-12"
                 >
                     <!-- left side -->
-                    <div class="col-span-3 mb-8 w-full">
+                    <div class="col-span-3 mb-8 w-fit">
                         <div
-                            class="text-body flex items-center gap-2 font-medium text-white max-sm:justify-center md:flex-col md:items-end md:gap-8 lg:gap-12"
+                            class="text-body flex items-center gap-2 font-medium text-white max-sm:justify-center md:flex-col md:items-end md:gap-4"
                         >
-                            {#each products.slice(0, 3) as product, index}
+                            {#each products.slice(0, 4) as product, index}
                                 {@const isActive = index === activeIndex}
                                 <div
                                     class="group relative ml-0 flex w-fit items-center md:mr-auto md:w-full"
@@ -185,7 +195,7 @@
                     </div>
                     <!-- window -->
                     <div
-                        class="window col-span-6 flex aspect-[6.5/4] w-full items-center justify-center rounded-[48px] border-dashed border-transparent md:aspect-[6.5/4.5] md:border md:p-3"
+                        class="window col-span-6 flex aspect-[6.5/4] w-full items-center justify-center rounded-[48px] border-dashed border-transparent md:aspect-[6.5/4.5] md:border"
                         style:animation-delay="0.6s"
                     >
                         <div
@@ -235,9 +245,9 @@
                     <!-- right side -->
                     <div class="col-span-3 mt-8 w-full md:mt-0">
                         <div
-                            class="text-body flex gap-2 font-medium text-white max-sm:justify-center md:flex-col md:gap-8 lg:gap-12"
+                            class="text-body flex gap-2 font-medium text-white max-sm:justify-center md:flex-col lg:gap-4"
                         >
-                            {#each products.slice(3) as product, i}
+                            {#each products.slice(4) as product, i}
                                 {@const index = i + 3}
                                 {@const isActive = index === activeIndex}
                                 <div
