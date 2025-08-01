@@ -104,38 +104,40 @@ interface Todo {
 }
 
 async function prepareDatabase(): Promise<void> {
-    todoDatabase = await databases.create(
-        ID.unique(),
-        'TodosDB'
-    );
+    todoDatabase = await databases.create({
+        databaseId: ID.unique(),
+        name: 'TodosDB'
+    });
 
-    todoCollection = await databases.createCollection(
-        todoDatabase.$id,
-        ID.unique(),
-        'Todos'
-    );
+    todoCollection = await databases.createCollection({
+        databaseId: todoDatabase.$id,
+        collectionId: ID.unique(),
+        name: 'Todos'
+    });
 
-    await databases.createStringAttribute(
-        todoDatabase.$id,
-        todoCollection.$id,
-        'title',
-        255,
-        true
-    );
+    await databases.createStringAttribute({
+        databaseId: todoDatabase.$id,
+        collectionId: todoCollection.$id,
+        key: 'title',
+        size: 255,
+        required: true
+    });
 
-    await databases.createStringAttribute(
-        todoDatabase.$id,
-        todoCollection.$id,
-        'description',
-        255, false,
-        'This is a test description'
-    );
-    await databases.createBooleanAttribute(
-        todoDatabase.$id,
-        todoCollection.$id,
-        'isComplete',
-        true
-    );
+    await databases.createStringAttribute({
+        databaseId: todoDatabase.$id,
+        collectionId: todoCollection.$id,
+        key: 'description',
+        size: 255,
+        required: false,
+        xdefault: 'This is a test description'
+    });
+    
+    await databases.createBooleanAttribute({
+        databaseId: todoDatabase.$id,
+        collectionId: todoCollection.$id,
+        key: 'isComplete',
+        required: true
+    });
 }
 ```
 
