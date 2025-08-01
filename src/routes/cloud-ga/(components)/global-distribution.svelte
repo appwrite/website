@@ -58,7 +58,7 @@
             </Cell>
             <Cell column={4}>
                 <div class="pb-12 md:pb-20">
-                    <Map theme="dark" />
+                    <Map theme="dark" navigable={false} defaultSet="regions" />
                 </div>
             </Cell>
         </Grid>

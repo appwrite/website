@@ -46,10 +46,10 @@
         <TheJourneySoFar />
         <OpenSourceCommunity />
         <ScaleWithoutWorries />
-        <SecureByDefault /><!-- done -->
+        <SecureByDefault />
         <GlobalDistribution />
-        <TeamOfExperts /><!-- done -->
-        <WhatsNext /><!-- done -->
+        <TeamOfExperts />
+        <WhatsNext />
         <AllInOne />
         <CallToAction />
     </div>
