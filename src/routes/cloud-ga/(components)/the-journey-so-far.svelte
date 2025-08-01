@@ -55,7 +55,7 @@
             </Cell>
 
             <Cell column={4}>
-                <Numbers class="mt-8" {numbers} />
+                <Numbers class="pt-8 pb-20" {numbers} />
             </Cell>
         </Grid>
     </div>

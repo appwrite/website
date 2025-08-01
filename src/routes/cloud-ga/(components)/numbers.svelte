@@ -11,10 +11,10 @@
 
 <div class={classNames('relative h-full', className)}>
     <div class="mx-auto flex w-full max-w-6xl flex-col justify-center">
-        <div class="grid place-items-center py-8 lg:grid-cols-4">
+        <div class="grid place-items-center gap-y-4 py-8 lg:grid-cols-4">
             {#each numbers as { label, description }}
                 <div
-                    class="border-gradient relative w-[calc(100%_-_24px)] rounded-2xl bg-[#232325]/90 p-4 before:rounded-2xl after:rounded-2xl"
+                    class="border-gradient relative w-full rounded-2xl bg-[#232325]/90 p-4 before:rounded-2xl after:rounded-2xl md:w-[calc(100%_-_24px)]"
                 >
                     <h3
                         class="md:tracking-squeezed font-aeonik-pro text-primary text-[1.25rem] text-pretty md:text-[2rem]"

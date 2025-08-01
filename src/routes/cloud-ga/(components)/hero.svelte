@@ -77,7 +77,7 @@
                 </Cell>
             {/each} -->
             <Cell column={4}>
-                <Numbers {numbers} />
+                <Numbers class="pt-8 pb-20" {numbers} />
             </Cell>
         </Grid>
     </div>
