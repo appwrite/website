@@ -7,7 +7,7 @@
     import Hero from './(components)/hero.svelte';
     import NetworkingLatency from './(components)/networking-latency.svelte';
     import OpenSourceCommunity from './(components)/open-source-community.svelte';
-    import ReliabilityUptime from './(components)/reliability-uptime.svelte';
+    import ReliabilityUptime from './(components)/global-distribution.svelte';
     import ScaleWithoutWorries from './(components)/scale-without-worries.svelte';
     import SecureByDefault from './(components)/secure-by-default.svelte';
     import TeamOfExperts from './(components)/team-of-experts.svelte';
@@ -15,6 +15,7 @@
     import AllInOne from './(components)/all-in-one.svelte';
     import CallToAction from './(components)/call-to-action.svelte';
     import TheJourneySoFar from './(components)/the-journey-so-far.svelte';
+    import GlobalDistribution from './(components)/global-distribution.svelte';
 
     const title = 'Cloud GA - Appwrite';
     const description = 'Appwrite Cloud is now generally available.';
@@ -46,6 +47,7 @@
         <OpenSourceCommunity />
         <ScaleWithoutWorries />
         <SecureByDefault /><!-- done -->
+        <GlobalDistribution />
         <TeamOfExperts /><!-- done -->
         <WhatsNext /><!-- done -->
         <AllInOne />

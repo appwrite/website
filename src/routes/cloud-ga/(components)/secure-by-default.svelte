@@ -42,7 +42,7 @@
             </Cell>
             <Cell column={4} columnStart={3} class="pb-8 md:py-20">
                 <div class="space-y-8">
-                    <p class="text-paragraph-lg max-w-lg px-4">
+                    <p class="text-paragraph-lg px-4">
                         Appwrite has been and continues to be security driven. From the very
                         beginning, we ensured security measures, like encryption and abuse
                         protection, were built into Appwrite Cloud, and were easy to manage from the

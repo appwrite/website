@@ -50,7 +50,7 @@
             >
             <Cell column={4}>
                 <div
-                    class="border-gradient relative rounded-2xl bg-[#232325]/90 py-8 before:rounded-2xl after:rounded-2xl"
+                    class="border-gradient relative rounded-2xl bg-[#232325]/90 p-8 before:rounded-2xl after:rounded-2xl"
                 >
                     <img class="rounded-3xl" src={Graph} alt="Placeholder" />
                 </div>
