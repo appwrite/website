@@ -36,7 +36,7 @@ OAuth 2.0 is widely used for secure, delegated access across various application
 
 # What is OpenID Connect?
 
-OpenID Connect is a simple identity layer built on top of OAuth 2.0. It allows clients to verify the user's identity based on the authentication performed by an Authorization Server, as well as to obtain basic profile information about the user in an interoperable way. 
+OpenID Connect is a simple identity layer built on top of OAuth 2.0. It allows clients to verify the user's identity based on the authentication performed by an Authorization Server, as well as to obtain basic profile information about the user in an interoperable way.
 
 OIDC uses OAuth 2.0 as its foundation. While OAuth 2.0 provides a framework for authorization, OIDC extends this to include authentication, delivering a more holistic security solution.
 
@@ -88,18 +88,22 @@ Appwrite Authentication features support for over 30 OAuth 2.0 adapters, includi
 
 Appwrite provides the necessary redirect URL to add to your OIDC app configuration.
 
-Once that is done, you can use any of the Appwrite client SDKs to implement OAuth 2.0 or OIDC authentication in just a few lines of code. 
+Once that is done, you can use any of the Appwrite client SDKs to implement OAuth 2.0 or OIDC authentication in just a few lines of code.
 
 ```client-web
 import { Client, Account, OAuthProvider } from "appwrite";
 
 const client = new Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
-    .setProject('<PROJECT_ID>');                
+    .setProject('<PROJECT_ID>');
 
 const account = new Account(client);
 
-account.createOAuth2Session(OAuthProvider.Oidc, '[LINK_ON_SUCCESS]', '[LINK_ON_FAILURE]');
+account.createOAuth2Session({
+    provider: OAuthProvider.Oidc,
+    success: '<LINK_ON_SUCCESS>',
+    failure: '<LINK_ON_FAILURE>'
+});
 ```
 
 To learn more about Appwrite and OAuth 2.0, ensure you visit the [Appwrite documentation](https://appwrite.io/docs/products/auth/oauth2).

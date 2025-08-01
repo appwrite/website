@@ -160,7 +160,7 @@ Open `main.js` and replace what's currently in it. We'll start by initializing t
 
 ```jsx
 /* Import the required Appwrite modules */
-import { Client, Account } from 'appwrite'
+import { Client, Account, OAuthProvider } from 'appwrite'
 
 /* Initialize the Appwrite client */
 const client = new Client()
@@ -255,11 +255,11 @@ Add the following code to your `main.js` file:
 /* Function to log in using GitHub OAuth */
 const login = async () => {
   try {
-    await account.createOAuth2Session(
-      'github',
-      'http://localhost:5174/',// Redirect here on success
-      'http://localhost:5174/',// Redirect here on failure
-    )
+    await account.createOAuth2Session({
+      provider: OAuthProvider.Github,
+      success: 'http://localhost:5174/',// Redirect here on success
+      failure: 'http://localhost:5174/',// Redirect here on failure
+    })
   } catch (error) {
     console.error('Login error:', error)
   }

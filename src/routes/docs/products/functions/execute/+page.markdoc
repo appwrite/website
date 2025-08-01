@@ -35,7 +35,7 @@ curl -X POST https://64d4d22db370ae41a32e.appwrite.global \
 Notice how a `x-appwrite-user-jwt` header is passed in the request, you will use this to authenticate users.
 [Learn more about JWTs](/docs/products/auth/jwt).
 
-This unlocks ability for you to develop custom HTTP endpoints with Appwrite Functions. 
+This unlocks ability for you to develop custom HTTP endpoints with Appwrite Functions.
 It also allows accepting incoming webhooks for handling online payments, hosting social platform bots, and much more.
 
 # SDK {% #sdk %}
@@ -57,14 +57,14 @@ client
     .setProject('<PROJECT_ID>') // Your project ID
 ;
 
-const promise = functions.createExecution(
-        '<FUNCTION_ID>',  // functionId
-        '<BODY>',  // body (optional)
-        false,  // async (optional)
-        '<PATH>',  // path (optional)
-        'GET',  // method (optional)
-        {} // headers (optional)
-    );
+const promise = functions.createExecution({
+    functionId: '<FUNCTION_ID>',
+    body: '<BODY>',  // optional
+    async: false,  // optional
+    path: '<PATH>',  // optional
+    method: 'GET',  // optional
+    headers: {} // optional
+});
 
 promise.then(function (response) {
     console.log(response); // Success
@@ -179,14 +179,14 @@ client
     .setProject('<PROJECT_ID>') // Your project ID
 ;
 
-const promise = functions.createExecution(
-        '<FUNCTION_ID>',  // functionId
-        '<BODY>',  // body (optional)
-        false,  // async (optional)
-        '<PATH>',  // path (optional)
-        'GET',  // method (optional)
-        {} // headers (optional)
-    );
+const promise = functions.createExecution({
+    functionId: '<FUNCTION_ID>',
+    body: '<BODY>',  // optional
+    async: false,  // optional
+    path: '<PATH>',  // optional
+    method: 'GET',  // optional
+    headers: {} // optional
+});
 
 promise.then(function (response) {
     console.log(response); // Success
@@ -206,14 +206,14 @@ client
     .setProject('<PROJECT_ID>') // Your project ID
 ;
 
-const promise = functions.createExecution(
-        '<FUNCTION_ID>',  // functionId
-        '<BODY>',  // body (optional)
-        false,  // async (optional)
-        '<PATH>',  // path (optional)
-        'GET',  // method (optional)
-        {} // headers (optional)
-    );
+const promise = functions.createExecution({
+    functionId: '<FUNCTION_ID>',
+    body: '<BODY>',  // optional
+    async: false,  // optional
+    path: '<PATH>',  // optional
+    method: 'GET',  // optional
+    headers: {} // optional
+});
 
 promise.then(function (response) {
     console.log(response); // Success
@@ -266,8 +266,8 @@ $client
 
 $functions = new Functions($client);
 
-$result = $functions->createExecution( 
-    functionId: '<FUNCTION_ID>', 
+$result = $functions->createExecution(
+    functionId: '<FUNCTION_ID>',
     body: '<BODY>',  // optional
     async: false,  // optional
     path: '<PATH>',  // optional
@@ -287,8 +287,8 @@ client = Client()
 
 functions = Functions(client)
 
-result = functions.create_execution( 
-    function_id = '<FUNCTION_ID>', 
+result = functions.create_execution(
+    function_id = '<FUNCTION_ID>',
     body = '<BODY>',  # optional
     async = False,  # optional
     path = '<PATH>',  # optional
@@ -307,7 +307,7 @@ client = Client.new
 functions = Functions.new(client)
 
 response = functions.create_execution(
-    function_id: '<FUNCTION_ID>', 
+    function_id: '<FUNCTION_ID>',
     body: '<BODY>',  # optional
     async: false,  # optional
     path: '<PATH>',  # optional
@@ -328,11 +328,11 @@ var client = new Client()
 var functions = new Functions(client);
 
 Execution result = await functions.CreateExecution(
-    functionId: "<FUNCTION_ID>"    
-    body: "<BODY>" // optional    
-    async: false // optional    
-    path: "<PATH>" // optional    
-    method: "GET" // optional    
+    functionId: "<FUNCTION_ID>"
+    body: "<BODY>" // optional
+    async: false // optional
+    path: "<PATH>" // optional
+    method: "GET" // optional
     headers: [object]); // optional
 ```
 ```dart
@@ -439,8 +439,8 @@ let execution = try await functions.createExecution(
 {% /tabs %}
 
 # Console {% #console %}
-Another easy way to test a function is directly in the Appwrite Console. 
-You test a function by hitting the **Execute now** button, which will display with modal below. 
+Another easy way to test a function is directly in the Appwrite Console.
+You test a function by hitting the **Execute now** button, which will display with modal below.
 
 You'll be able to mock executions by configuring the path, method, headers, and body.
 
@@ -784,7 +784,7 @@ $client
 
 $functions = new Functions($client);
 
-$result = $functions->createExecution( 
+$result = $functions->createExecution(
     '<FUNCTION_ID>', // functionId
     '<BODY>', // body (optional)
     true, // Scheduled executions need to be async
@@ -806,7 +806,7 @@ client = Client()
 
 functions = Functions(client)
 
-result = functions.create_execution( 
+result = functions.create_execution(
     function_id = '<FUNCTION_ID>', # functionId
     body = '<BODY>', # body (optional)
     async = True, # Scheduled executions need to be async

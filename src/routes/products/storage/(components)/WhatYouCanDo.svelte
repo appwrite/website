@@ -24,7 +24,11 @@ const files = await storage.listFiles({
                 {
                     language: Platform.ServerNodeJs,
                     content: `// Create files inside a specific bucket
-const files = await storage.createFile('[BUCKET_ID]');`
+const files = await storage.createFile({
+    bucketId: '[BUCKET_ID]',
+    fileId: '[FILE_ID]',
+    file: inputFile
+});`
                 }
             ]
         },

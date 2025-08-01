@@ -170,13 +170,13 @@ For web applications, you will use the Appwrite SDK to initiate the OAuth2 flow 
 **2. Initialize the SDK**: Place the following code in your project where the Appwrite SDK should be initialized, such as in the main application file (`index.js` or similar):
 
   ```jsx
-  import { Appwrite } from 'appwrite'
+  import { Client, Account, OAuthProvider } from 'appwrite'
 
-  const appwrite = new Appwrite()
+  const client = new Client()
+    .setEndpoint('https://YOUR_ENDPOINT') // Your API Endpoint
+    .setProject('YOUR_PROJECT_ID') // Your project ID
 
-  appwrite
-    .setEndpoint('https://YOUR_ENDPOINT')// Your API Endpoint
-    .setProject('YOUR_PROJECT_ID')// Your project ID
+  const account = new Account(client)
   ```
 
 **3. Create the OAuth2 session**: When a user clicks the "Sign in with Apple" button, trigger the following function to create an OAuth2 session:
@@ -184,11 +184,11 @@ For web applications, you will use the Appwrite SDK to initiate the OAuth2 flow 
   ```jsx
   async function loginWithApple() {
     try {
-      await appwrite.account.createOAuth2Session(
-        'apple',
-        'https://YOUR_ENDPOINT/auth/oauth2/success',
-        'https://YOUR_ENDPOINT/auth/oauth2/failure',
-      )
+      await account.createOAuth2Session({
+        provider: OAuthProvider.Apple,
+        success: 'https://YOUR_ENDPOINT/auth/oauth2/success',
+        failure: 'https://YOUR_ENDPOINT/auth/oauth2/failure',
+      })
     } catch (error) {
       console.error('Error logging in with Apple:', error)
     }
@@ -201,7 +201,9 @@ The redirect URLs should correspond to the success and failure URLs you configur
 **4. Session handling**: After a successful login, Appwrite creates a session for the user. You can use Appwrite's session management API to check the user's login status:
 
   ```jsx
-  const session = await appwrite.account.getSession('current')
+  const session = await appwrite.account.getSession({
+    sessionId: 'current'
+  })
   console.log('User session:', session)
 
   ```
@@ -220,7 +222,9 @@ The redirect URLs should correspond to the success and failure URLs you configur
 **6. Logout**: Provide an option to log out the user by terminating the session:
 
   ```jsx
-  await appwrite.account.deleteSession('current')
+  await appwrite.account.deleteSession({
+    sessionId: 'current'
+  })
 
   ```
 
@@ -395,7 +399,9 @@ After a successful OAuth2 session, the user's session is stored by Appwrite, and
 Use the following function to check if a user is still authenticated:
 
   ```jsx
-  const session = await appwrite.account.getSession('current')
+  const session = await appwrite.account.getSession({
+    sessionId: 'current'
+  })
   if (!session) {
     console.log('No active session. Redirecting to login...')
   }
@@ -409,7 +415,9 @@ Be prepared for tokens to expire, and have logic to refresh tokens or redirect u
 Offer users the ability to logout and clear their session. For example, in web apps:
 
   ```jsx
-  await appwrite.account.deleteSession('current')
+  await appwrite.account.deleteSession({
+    sessionId: 'current'
+  })
 
   ```
 

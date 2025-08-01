@@ -125,7 +125,9 @@ const App = () => {
         <button
           type="button"
           onClick={async () => {
-            await account.deleteSession('current');
+            await account.deleteSession({
+                sessionId: 'current'
+            });
             setLoggedInUser(null);
           }}
         >

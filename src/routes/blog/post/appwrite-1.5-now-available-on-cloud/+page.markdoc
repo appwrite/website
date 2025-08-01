@@ -184,7 +184,9 @@ const account = new Account(client);
 
 // Include any account creation/management steps
 
-const mfa = await account.updateMFA(true); // Enables 2FA
+const mfa = await account.updateMFA({
+    enabled: true
+}); // Enables 2FA
 ```
 
 Read the [2FA announcement](/blog/post/announcing-two-factor-authentication) for a full overview of capabilities, or visit our [documentation](/docs/products/auth/mfa) to get started.
@@ -251,7 +253,9 @@ const client = new Client()
 
 const account = new Account(client);
 
-account.createOAuth2Session(OAuthProvider.Apple);
+account.createOAuth2Session({
+    provider: OAuthProvider.Apple
+});
 ```
 
 Read the [Enum SDK support](/blog/post/introducing-enum-sdk-support) announcements for a full overview of capabilities, and visit our [Enum](/docs/sdks#enums) documentation to get started.
@@ -270,7 +274,9 @@ Once you have prepared your own login flow in an Appwrite Function or a server i
 // Server-side code
 let users = Users(client)
 
-let token = try await users.createToken("[USER_ID]")
+let token = try await users.createToken({
+    userId: "[USER_ID]"
+})
 let secret = token.secret
 ```
 

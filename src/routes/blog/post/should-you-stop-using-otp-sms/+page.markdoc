@@ -88,7 +88,10 @@ const urlParams = new URLSearchParams(window.location.search);
 const secret = urlParams.get('secret');
 const userId = urlParams.get('userId');
 
-const user = await account.createSession(userId, secret);
+const user = await account.createSession({
+    userId,
+    secret
+});
 ```
 
 {% /tabsitem %}

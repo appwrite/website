@@ -151,7 +151,9 @@ export async function POST({ request }) {
 
         // If user exists, create a token
         if(user) {
-            let token = await users.createToken(user.$id);
+            let token = await users.createToken({
+                userId: user.$id
+            });
 
             // Ideally, you should not send the token object in response. Send the token secret to the user through an alternative secure channel
             return new Response(JSON.stringify({ user, token }), { status: 200, headers: { 'Content-Type': 'application/json' } });

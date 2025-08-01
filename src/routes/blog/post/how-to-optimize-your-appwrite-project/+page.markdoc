@@ -158,9 +158,11 @@ One of the most important optimizations for file storage is **bucket compression
 To enable compression for a bucket, you can set this up via the Appwrite Console or programmatically using the SDK:
 
 ```javascript
-const promise = storage.createBucket('bucketId', 'bucketName', {
-  compression: 'zstd',
-})
+const promise = storage.createBucket({
+  bucketId: 'bucketId',
+  name: 'bucketName',
+  compression: 'zstd'
+});
 ```
 
 Keep in mind that files larger than **20MB** are not compressed, even if compression is enabled. This is done to prevent performance bottlenecks when handling large files. Enabling compression at the bucket level not only helps reduce storage usage but also speeds up file transfers by reducing the amount of data sent over the network.

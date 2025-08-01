@@ -1,7 +1,14 @@
 ---
 layout: post
 title: How to add Figma OAuth2 login to your app with Appwrite
-description: Learn how to set up Figma OAuth2 login to your app with Appwrite.
+descriptifunction signInWithFigma() {
+  account.createOAuth2Session({
+    provider: OAuthProvider.Figma,
+    success: '<https://your-app.com/redirect-after-success>',
+    failure: '<https://your-app.com/redirect-after-failure>',
+    scopes: ['file_read'], // scopes (optional)
+  })
+}n how to set up Figma OAuth2 login to your app with Appwrite.
 date: 2025-05-07
 cover: /images/blog/add-figma-oauth2-appwrite/cover.png
 timeToRead: 5
@@ -88,12 +95,12 @@ const client = new Client()
 const account = new Account(client)
 
 function signInWithFigma() {
-  account.createOAuth2Session(
-    OAuthProvider.Figma,
-    '<https://your-app.com/redirect-after-success>',
-    '<https://your-app.com/redirect-after-failure>',
-    ['file_read'], // scopes (optional)
-  )
+  account.createOAuth2Session({
+    provider: OAuthProvider.Figma,
+    success: '<https://your-app.com/redirect-after-success>',
+    failure: '<https://your-app.com/redirect-after-failure>',
+    scopes: ['file_read'] // scopes (optional)
+  })
 }
 ```
 
@@ -108,8 +115,12 @@ But if you want to call Figma's API after the initial login, either to fetch fil
 ```js
 async function getFigmaFiles() {
   // Ensure token is fresh
-  await account.updateSession('current')
-  const session = await account.getSession('current')
+  await account.updateSession({
+    sessionId: 'current'
+  });
+  const session = await account.getSession({
+    sessionId: 'current'
+  });
   const token = session.providerAccessToken
 
   const res = await fetch('https://api.figma.com/v1/files/file_key', {
@@ -153,7 +164,9 @@ Make sure the scopes you request in `createOAuth2Session()` match what you enabl
 To log the user out and remove access to their Figma account:
 
 ```js
-await account.deleteSession('current')
+await account.deleteSession({
+    sessionId: 'current'
+})
 ```
 
 This clears both the Appwrite session and the associated access and refresh tokens.

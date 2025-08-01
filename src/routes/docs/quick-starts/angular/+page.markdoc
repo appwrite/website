@@ -162,7 +162,9 @@ export class AppComponent {
   }
 
   async logout() {
-    await account.deleteSession('current');
+    await account.deleteSession({
+      sessionId: 'current'
+    });
     this.loggedInUser = null;
   }
 }

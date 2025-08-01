@@ -125,7 +125,9 @@ const register = async () => {
 };
 
 const logout = async () => {
-  await account.deleteSession('current');
+  await account.deleteSession({
+    sessionId: 'current'
+  });
   loggedInUser.value = null;
 };
 </script>

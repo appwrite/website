@@ -53,7 +53,9 @@ const account = new Account(client);
 
 // Include any account creation/management steps
 
-const mfa = await account.updateMFA(true); // Enables 2FA
+const mfa = await account.updateMFA({
+    enabled: true
+}); // Enables 2FA
 ```
 
 > Note: You will need to have added more than 1 factor of authentication to an account before the MFA is enforced.
@@ -89,7 +91,7 @@ try {
 To confirm which providers are enabled for an account, you can call `account.listProviders()`.
 
 ```js
-const factors = await account.listFactors();
+const factors = await account.listMfaFactors();
 
 console.log(factors);
 ```

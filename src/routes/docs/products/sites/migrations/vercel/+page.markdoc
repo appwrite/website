@@ -332,7 +332,9 @@ const client = new Client()
 
 const functions = new Functions(client);
 
-const response = await functions.createExecution('your-function-id');
+const response = await functions.createExecution({
+    functionId: 'your-function-id'
+});
 ```
 {% /section %}
 
