@@ -17,6 +17,9 @@
     import Grid from './grid-system/grid.svelte';
     import Cell from './grid-system/cell.svelte';
 
+    const lineClass = (isActive: boolean) =>
+        `group-hover:stroke-white ${isActive ? 'stroke-white' : ''} group-focus-within:stroke-white transition-all stroke-smooth`;
+
     const products: Array<{
         label: string;
         icon: string;
@@ -28,8 +31,8 @@
             icon: Auth,
             line: (
                 isActive: boolean
-            ) => `<svg width="98" height="75" viewBox="0 0 98 75" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M0 1H35.3623C41.9897 1 47.3623 6.37258 47.3623 13V62C47.3623 68.6274 52.7349 74 59.3623 74H98" class="group-hover:stroke-white ${isActive && 'stroke-white'} group-focus-within:stroke-white transition-all stroke-smooth" stroke-dasharray="4 4"/>
+            ) => `<svg width="98" height="107" viewBox="0 0 98 107" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M0 1H45.3623C51.9897 1 57.3623 6.37258 57.3623 13V94C57.3623 100.627 62.7349 106 69.3623 106H98" stroke-dasharray="4 4" class="${lineClass(isActive)}"/>
                    </svg>`,
             image: AuthSlide
         },
@@ -38,8 +41,8 @@
             icon: Databases,
             line: (
                 isActive: boolean
-            ) => `<svg width="98" height="2" viewBox="0 0 98 2" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M0 1L98 1.00001" class="group-hover:stroke-white group-focus-within:stroke-white ${isActive && 'stroke-white'} transition-all stroke-smooth" stroke-dasharray="4 4"/>
+            ) => `<svg width="98" height="36" viewBox="0 0 98 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M0 1H35.3626C41.9899 1 47.3624 6.37239 47.3626 12.9997L47.3629 23.0003C47.363 29.6276 52.7356 35 59.3629 35H98.0009" class="group-hover:stroke-white group-focus-within:stroke-white ${isActive && 'stroke-white'} transition-all stroke-smooth" stroke-dasharray="4 4"/>
                    </svg>`,
             image: DatabasesSlide
         },
@@ -48,8 +51,8 @@
             icon: Functions,
             line: (
                 isActive: boolean
-            ) => `<svg width="98" height="75" viewBox="0 0 98 75" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M98 1H62.6377C56.0103 1 50.6377 6.37258 50.6377 13V62C50.6377 68.6274 45.2651 74 38.6377 74H-9.53674e-07" class="group-hover:stroke-white ${isActive && 'stroke-white'} group-focus-within:stroke-white transition-all stroke-smooth" stroke-dasharray="4 4"/>
+            ) => `<svg width="98" height="36" viewBox="0 0 98 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M0 35H35.3626C41.9899 35 47.3624 29.6276 47.3626 23.0003L47.3629 12.9997C47.363 6.37239 52.7356 1 59.3629 1H98.0009" class="group-hover:stroke-white ${isActive && 'stroke-white'} group-focus-within:stroke-white transition-all stroke-smooth" stroke-dasharray="4 4"/>
                    </svg>`,
             image: FunctionsSlide
         },
@@ -58,8 +61,8 @@
             icon: Storage,
             line: (
                 isActive: boolean
-            ) => `<svg width="98" height="75" viewBox="0 0 98 75" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M0 74H35.3623C41.9897 74 47.3623 68.6274 47.3623 62V13C47.3623 6.37258 52.7349 0.999998 59.3623 0.999998H98" class="group-hover:stroke-white ${isActive && 'stroke-white'} group-focus-within:stroke-white transition-all stroke-smooth" stroke-dasharray="4 4"/>
+            ) => `<svg width="98" height="107" viewBox="0 0 98 107" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M0 106H45.3623C51.9897 106 57.3623 100.627 57.3623 94V13C57.3623 6.37258 62.7349 0.999995 69.3623 0.999995H98" class="group-hover:stroke-white ${isActive && 'stroke-white'} group-focus-within:stroke-white transition-all stroke-smooth" stroke-dasharray="4 4"/>
                    </svg>`,
             image: StorageSlide
         },
@@ -69,10 +72,11 @@
             line: (
                 isActive: boolean
             ) => `<svg width="98" height="75" viewBox="0 0 98 75" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M98 74H62.6377C56.0103 74 50.6377 68.6274 50.6377 62V13C50.6377 6.37258 45.2651 0.999998 38.6377 0.999998H-9.53674e-07" class="group-hover:stroke-white ${isActive && 'stroke-white'} group-focus-within:stroke-white transition-all stroke-smooth" stroke-dasharray="4 4"/>
+                        <path d="M98 1H62.6377C56.0103 1 50.6377 6.37258 50.6377 13V62C50.6377 68.6274 45.2651 74 38.6377 74H-9.53674e-07" class="group-hover:stroke-white ${isActive && 'stroke-white'} group-focus-within:stroke-white transition-all stroke-smooth" stroke-dasharray="4 4"/>
                    </svg>`,
             image: RealtimeSlide
         },
+
         {
             label: 'Messaging',
             icon: Messaging,
@@ -149,12 +153,12 @@
         <Cell column={4}>
             <div class="mx-auto flex w-full flex-col gap-16 bg-center py-40 md:py-20">
                 <div
-                    class="relative grid grid-cols-1 place-items-center gap-0 [background:_radial-gradient(50%_50%_at_50%_50%,_rgba(253,_54,_110,_0.1)_0%,_rgba(253,_54,_110,_0)_100%)] md:grid-cols-12"
+                    class="relative grid grid-cols-1 place-items-center gap-0 [background:_radial-gradient(50%_50%_at_50%_50%,_rgba(253,_54,_110,_0.1)_0%,_rgba(253,_54,_110,_0)_100%)] lg:grid-cols-12"
                 >
                     <!-- left side -->
                     <div class="col-span-3 mb-8 w-fit">
                         <div
-                            class="text-body flex items-center gap-2 font-medium text-white max-sm:justify-center md:flex-col md:items-end md:gap-4"
+                            class="text-body flex items-center gap-2 font-medium text-white max-sm:justify-center lg:flex-col lg:items-end lg:gap-12"
                         >
                             {#each products.slice(0, 4) as product, index}
                                 {@const isActive = index === activeIndex}
@@ -182,10 +186,13 @@
                                         {product.label}
                                     </button>
                                     <div
-                                        class={classNames('absolute right-0 hidden md:block', {
-                                            'top-1/2': index === 0,
-                                            'bottom-1/2': index === 2
-                                        })}
+                                        class={classNames(
+                                            'absolute right-0 bottom-1/2 hidden lg:block',
+                                            {
+                                                'top-1/2': index < 2,
+                                                'bottom-1/2': index > 2
+                                            }
+                                        )}
                                     >
                                         {@html product.line(isActive)}
                                     </div>
@@ -245,10 +252,10 @@
                     <!-- right side -->
                     <div class="col-span-3 mt-8 w-full md:mt-0">
                         <div
-                            class="text-body flex gap-2 font-medium text-white max-sm:justify-center md:flex-col lg:gap-4"
+                            class="text-body flex gap-2 font-medium text-white max-md:justify-center md:flex-col md:gap-12"
                         >
                             {#each products.slice(4) as product, i}
-                                {@const index = i + 3}
+                                {@const index = i + 4}
                                 {@const isActive = index === activeIndex}
                                 <div
                                     class="group relative mr-0 flex w-fit items-center md:ml-auto md:w-full"
