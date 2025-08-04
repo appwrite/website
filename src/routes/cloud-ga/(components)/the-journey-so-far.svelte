@@ -3,7 +3,6 @@
     import Cell from './grid-system/cell.svelte';
     import { inView } from 'motion';
     import Graph from '../(assets)/graphs/journey-graph.svg';
-    import Numbers from './numbers.svelte';
 
     let animate: boolean = false;
 
@@ -12,18 +11,11 @@
             animate = true;
         });
     };
-
-    const numbers = [
-        { label: '52k+', description: 'GitHub stars' },
-        { label: '250k+', description: 'Followers across socials' },
-        { label: '46k+', description: 'Commits to GitHub' },
-        { label: '610k+', description: 'Discord messages' }
-    ];
 </script>
 
 <div class="relative h-full scroll-m-16 px-4" id="milestones-for-success">
     <div class="mx-auto flex w-full max-w-6xl flex-col justify-center" use:useInView>
-        <Grid rows={3} bottomBorder>
+        <Grid rows={2} bottomBorder>
             <Cell column={2} columnStart={1} class="px-4 py-12 md:py-20">
                 <div class="space-y-4">
                     <span
@@ -52,10 +44,6 @@
                 >
                     <img class="rounded-3xl" src={Graph} alt="Placeholder" />
                 </div>
-            </Cell>
-
-            <Cell column={4}>
-                <Numbers class="pt-8 pb-20" {numbers} />
             </Cell>
         </Grid>
     </div>
