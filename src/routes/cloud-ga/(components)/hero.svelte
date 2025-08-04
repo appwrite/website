@@ -7,9 +7,9 @@
 
     const numbers = [
         { label: 'Top 300', description: 'GitHub repos' },
-        { label: '150k', description: 'developers' },
+        { label: '300k+', description: 'developers' },
         { label: '50+', description: 'locations' },
-        { label: '300k', description: 'projects' }
+        { label: '300k+', description: 'projects' }
     ];
 </script>
 
@@ -40,7 +40,7 @@
                             because we know self-hosting is not for everyone.
                         </p>
                         <p class="animate-text" style:animation-delay="700ms">
-                            Cloud is now powering over 200,000 projects, and we are both proud and
+                            Today, Appwrite Cloud is powering over 300,000 projects, and we are both proud and
                             excited to announce its transition to general availability.
                         </p>
                     </div>
