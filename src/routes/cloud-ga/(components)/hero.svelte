@@ -41,29 +41,27 @@
             </Cell>
             {#each Array.from({ length: 5 }) as _, i}
                 {@const columnStart = i + 1}
-                {@const lineArray = Math.floor(Math.random() * 5) + 3}
+                {@const lineArray = 6}
                 {@const lines = Array.from({ length: lineArray }).map((_, i) => {
+                    const isPink = Math.random() > 0.5;
                     return {
-                        height: Math.floor(Math.random() * 30) + 30,
-                        from: Math.random() > 0.3 ? 'bg-accent' : 'bg-[#85DBD8]'
+                        height: isPink
+                            ? Math.floor(Math.random() * 50) + 60
+                            : Math.floor(Math.random() * 20) + 20,
+                        color: isPink ? 'bg-accent' : 'bg-[#85DBD8]'
                     };
                 })}
                 {#if i !== 1 && i !== 2}
                     <Cell {columnStart} class="absolute">
                         <div
-                            class={classNames('absolute flex flex-col gap-10', {
+                            class={classNames('animate-drop absolute flex flex-col gap-8', {
                                 'left-0 -ml-px': i !== 4,
                                 'right-0 -mr-px': i === 4
                             })}
                         >
                             {#each lines as line}
                                 <div
-                                    class={classNames(
-                                        '//animate-drop relative h-(--height) w-px',
-                                        line.from
-                                    )}
-                                    style:--speed="2s"
-                                    style:animation-delay="{Math.random() * 2}s"
+                                    class={classNames(' relative h-(--height) w-px', line.color)}
                                     style:--height="{line.height}px"
                                 ></div>
                             {/each}
