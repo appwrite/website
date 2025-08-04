@@ -56,26 +56,28 @@
                         from: Math.random() > 0.3 ? 'bg-accent' : 'bg-[#85DBD8]'
                     };
                 })}
-                <Cell {columnStart} class="absolute">
-                    <div
-                        class={classNames('absolute flex flex-col gap-80', {
-                            'left-0 -ml-px': i !== 4,
-                            'right-0 -mr-px': i === 4
-                        })}
-                    >
-                        {#each lines as line}
-                            <div
-                                class={classNames(
-                                    'animate-drop relative h-(--height) w-px',
-                                    line.from
-                                )}
-                                style:--speed="2s"
-                                style:animation-delay="{Math.random() * 2}s"
-                                style:--height="{line.height}px"
-                            ></div>
-                        {/each}
-                    </div>
-                </Cell>
+                {#if i !== 1 && i !== 2}
+                    <Cell {columnStart} class="absolute">
+                        <div
+                            class={classNames('absolute flex flex-col gap-80', {
+                                'left-0 -ml-px': i !== 4,
+                                'right-0 -mr-px': i === 4
+                            })}
+                        >
+                            {#each lines as line}
+                                <div
+                                    class={classNames(
+                                        'animate-drop relative h-(--height) w-px',
+                                        line.from
+                                    )}
+                                    style:--speed="2s"
+                                    style:animation-delay="{Math.random() * 2}s"
+                                    style:--height="{line.height}px"
+                                ></div>
+                            {/each}
+                        </div>
+                    </Cell>
+                {/if}
             {/each}
             <Cell column={4}>
                 <Numbers class="pt-8 pb-20" {numbers} />
