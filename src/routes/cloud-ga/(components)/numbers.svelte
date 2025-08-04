@@ -11,7 +11,7 @@
 
 <div class={classNames('relative h-full', className)}>
     <div class="mx-auto flex w-full max-w-6xl flex-col justify-center">
-        <div class="flex flex-wrap justify-between gap-8 pt-8">
+        <div class="flex flex-wrap justify-between gap-4 pt-8 md:gap-8">
             {#each numbers as { label, description }, i}
                 <div
                     class={classNames(

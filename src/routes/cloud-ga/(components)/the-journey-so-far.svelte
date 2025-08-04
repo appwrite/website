@@ -11,6 +11,33 @@
             animate = true;
         });
     };
+
+    const milestones = [
+        {
+            date: 'Feb 2023',
+            label: 'Private beta'
+        },
+        {
+            date: 'May 2023',
+            label: 'Public beta'
+        },
+        {
+            date: 'Feb 2024',
+            label: '100k devs joined'
+        },
+        {
+            date: 'Mar 2025',
+            label: '20B database operations'
+        },
+        {
+            date: 'May 2025',
+            label: '300k projects'
+        },
+        {
+            date: 'Aug 2025',
+            label: 'Cloud GA launch'
+        }
+    ];
 </script>
 
 <div class="relative h-full scroll-m-16 px-4" id="milestones-for-success">
@@ -40,13 +67,36 @@
             >
             <Cell column={4} class="pb-12 md:pt-8 md:pb-40">
                 <div
-                    class="border-gradient relative rounded-2xl bg-[#232325]/90 before:rounded-2xl after:rounded-2xl"
+                    class="border-gradient relative hidden rounded-2xl bg-[#232325]/90 before:rounded-2xl after:rounded-2xl md:block"
                     style:--border-gradient-before="linear-gradient(180deg,rgba(255,255,255,0.12),transparent)"
                     style:--border-gradient-after="linear-gradient(180deg,rgba(255,255,255,0),transparent)"
                 >
                     <img class="rounded-3xl" src={Graph} alt="Placeholder" />
                 </div>
+                <div class="contents md:hidden">
+                    {@render MobileGraph()}
+                </div>
             </Cell>
         </Grid>
     </div>
 </div>
+
+{#snippet MobileGraph()}
+    <div
+        class="border-gradient relative mt-8 rounded-2xl bg-[#232325]/90 p-5 before:rounded-2xl after:rounded-2xl"
+        style:--border-gradient-before="linear-gradient(180deg,rgba(255,255,255,0.12),transparent)"
+        style:--border-gradient-after="linear-gradient(180deg,rgba(255,255,255,0),transparent)"
+    >
+        <span class="text-primary text-base font-medium">The Appwrite<br /> Cloud GA journey</span>
+        <div class="border-smooth mt-8 flex flex-col gap-8 border-l pl-2">
+            {#each milestones as milestone}
+                <div class="border-accent -ml-2 flex flex-col border-l pl-2">
+                    <span class="font-aeonik-fono text-secondary text-micro uppercase"
+                        >{milestone.date}</span
+                    >
+                    <span class="text-primary font-medium">{milestone.label}</span>
+                </div>
+            {/each}
+        </div>
+    </div>
+{/snippet}
