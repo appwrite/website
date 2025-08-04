@@ -50,8 +50,8 @@
                         pricing more accessible as part of our mission.
                     </p>
                     <p>
-                        Together with the open-source community, we have reached GA.
-                        Today, we share that journey with you.
+                        Together with the open-source community, Appwrite Cloud has reached GA.
+                        We're excited to share Appwrite Cloud's journey to reach GA with you.
                     </p>
                 </div>
             </Cell>
