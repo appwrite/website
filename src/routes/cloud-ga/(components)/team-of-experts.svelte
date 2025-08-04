@@ -64,7 +64,9 @@
                         {#each icons as { label, src, href }}
                             <div class="flex items-center gap-2">
                                 <img {src} alt={label} />
-                                <a {href} class="text-sub-body text-primary font-medium underline"
+                                <a
+                                    {href}
+                                    class="text-sub-body text-primary hover:decoration-accent hover:text-accent font-medium underline transition-colors"
                                     >{label}</a
                                 >
                             </div>

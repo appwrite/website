@@ -83,7 +83,10 @@
                                 ></div>
                                 {index}</span
                             >
-                            <span class="font-medium underline">{mission}</span>
+                            <span
+                                class="group-hover:decoration-accent group-hover:text-accent font-medium underline transition-colors"
+                                >{mission}</span
+                            >
                         </a>
                     {/each}
                 </ul>
