@@ -28,8 +28,7 @@
                     <p>
                         As Appwrite Cloud continues to age, it also continues to improve over time.
                         With new products, features, more support, more regions, and anything else
-                        that it needs to be for you to be able to build like you are a team of a
-                        hundred developers.
+                        needed to get your projects to production faster. Appwrite is a team of developers.
                     </p>
                     <p>
                         It might sound like a cliche, but this is really only the beginning. We have
