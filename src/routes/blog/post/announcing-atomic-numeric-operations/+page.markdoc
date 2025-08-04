@@ -38,6 +38,31 @@ Use it for:
 - **E-commerce** — stock levels, inventory counts, cart items
 - **Workflows and infrastructure** — rate limits, retries, processing attempts
 
+# Performing an atomic operation
+
+Use the `incrementDocumentAttribute` and `decrementDocumentAttribute` methods to perform atomic numeric operations. The server will apply these changes atomically under concurrency control.
+
+## Increment a field {% #increment-field %}
+
+{% multicode %}
+```client-web
+import { Client, Databases } from "appwrite";
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('<YOUR_PROJECT_ID>'); // Your project ID
+
+const databases = new Databases(client);
+
+const result = await databases.incrementDocumentAttribute(
+    '<DATABASE_ID>',
+    '<COLLECTION_ID>',
+    '<DOCUMENT_ID>',
+    'likes', // attribute
+    1 // value
+);
+```
+
 # Immediate benefits
 
 This feature solves a common problem with a clean, built-in approach. You don’t need to write custom logic to handle concurrency, retries, or limits. It’s a simple API call that replaces a lot of complex edge-case handling. And it just works.
