@@ -22,18 +22,10 @@
             <Cell column={3} horizontalCenter verticalCenter class="md:pt-40">
                 <div class="max-w-4xl space-y-8 p-4">
                     <h1
-                        class="text-headline font-aeonik-pro text-primary flex max-w-4xl flex-wrap gap-4 text-balance"
+                        class="text-headline font-aeonik-pro text-primary max-w-4xl gap-4 text-balance"
                     >
-                        {#each title as word, i}
-                            <span
-                                class="animate-text inline-block"
-                                style:animation-delay="{i * 100}ms"
-                                >{word}{' '}
-                            </span>
-                        {/each}
-                        <span class="text-accent animate-text -ml-4" style:animation-delay="500ms"
-                            >_</span
-                        >
+                        Appwrite Cloud is Generally Available
+                        <span class="text-accent -ml-4">_</span>
                     </h1>
                     <div class="text-description text-secondary max-w-3xl space-y-8 font-medium">
                         <p class="animate-text" style:animation-delay="600ms">
