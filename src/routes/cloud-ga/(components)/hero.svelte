@@ -2,6 +2,7 @@
     import Numbers from './numbers.svelte';
     import Cell from './grid-system/cell.svelte';
     import Grid from './grid-system/grid.svelte';
+    import { classNames } from '$lib/utils/classnames';
 
     const title = 'Appwrite Cloud is Generally Available'.split(' ');
 
@@ -17,7 +18,7 @@
     class="from-accent/8 relative -top-24 -mb-24 flex justify-center overflow-y-hidden bg-gradient-to-b to-transparent to-60% px-4 pt-24"
 >
     <div class="flex w-full max-w-6xl flex-col justify-center">
-        <Grid rows={2}>
+        <Grid rows={3}>
             <Cell column={3} horizontalCenter verticalCenter class="py-10 md:py-20">
                 <div class="max-w-4xl space-y-8 p-4">
                     <h1
@@ -40,22 +41,22 @@
                             because we know self-hosting is not for everyone.
                         </p>
                         <p class="animate-text" style:animation-delay="700ms">
-                            Today, Appwrite Cloud is powering over 300,000 projects, and we are both proud and
-                            excited to announce its transition to general availability.
+                            Today, Appwrite Cloud is powering over 300,000 projects, and we are both
+                            proud and excited to announce its transition to general availability.
                         </p>
                     </div>
                 </div>
             </Cell>
-            <!-- {#each Array.from({ length: 5 }) as _, i}
+            {#each Array.from({ length: 5 }) as _, i}
                 {@const columnStart = i + 1}
                 {@const lineArray = Math.floor(Math.random() * 5) + 3}
                 {@const lines = Array.from({ length: lineArray }).map((_, i) => {
                     return {
-                        height: Math.floor(Math.random() * 40) + 30,
-                        from: Math.random() > 0.5 ? 'from-accent' : 'from-mint-[#85DBD8]'
+                        height: Math.floor(Math.random() * 30) + 30,
+                        from: Math.random() > 0.3 ? 'bg-accent' : 'bg-[#85DBD8]'
                     };
                 })}
-                <Cell {columnStart}>
+                <Cell {columnStart} class="absolute">
                     <div
                         class={classNames('absolute flex flex-col gap-80', {
                             'left-0 -ml-px': i !== 4,
@@ -65,7 +66,7 @@
                         {#each lines as line}
                             <div
                                 class={classNames(
-                                    'animate-drop h-(--height) w-px bg-gradient-to-t to-transparent',
+                                    'animate-drop relative h-(--height) w-px',
                                     line.from
                                 )}
                                 style:--speed="2s"
@@ -75,7 +76,7 @@
                         {/each}
                     </div>
                 </Cell>
-            {/each} -->
+            {/each}
             <Cell column={4}>
                 <Numbers class="pt-8 pb-20" {numbers} />
             </Cell>
