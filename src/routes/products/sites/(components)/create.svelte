@@ -2,6 +2,7 @@
     import { write } from '$lib/animations';
     import { inView } from 'motion';
     import Dashboard from '../(assets)/dashboards/create-dashboard.svg';
+    import { object } from 'zod';
 
     let eyebrow = $state('');
     let container: HTMLElement;
@@ -36,7 +37,7 @@
             <img
                 src={Dashboard}
                 alt="Create a site dashboard"
-                class="h-full w-full rounded-t-2xl"
+                class="h-full w-full rounded-t-2xl object-cover object-[center_top]"
             />
         </div>
 
