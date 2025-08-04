@@ -62,7 +62,7 @@
                 >
                     To become Generally Available, we set a few milestones that we had to achieve
                     across different factors. Some are easier to measure than others, but never less
-                    important:
+                    important.
                 </p>
             </Cell>
             <Cell columnStart={3} column={2} class="px-4 pb-20">
