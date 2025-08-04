@@ -52,7 +52,7 @@
                     };
                 })}
                 {#if i !== 1 && i !== 2}
-                    <Cell {columnStart} class="absolute">
+                    <Cell {columnStart} class="absolute hidden md:block">
                         <div
                             class={classNames('animate-drop absolute flex flex-col gap-8', {
                                 'left-0 -ml-px': i !== 4,
