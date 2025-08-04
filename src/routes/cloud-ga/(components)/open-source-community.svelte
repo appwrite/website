@@ -40,12 +40,15 @@
             </Cell>
             <Cell column={4} columnStart={3} class="px-4 pb-8 md:py-20"
                 ><p class="text-paragraph-lg text-pretty">
-                    We have said it a million times, and we will say it again: <span
+                     We have said it a million times, and we will say it again: <span
                         class="text-primary inline-block font-medium"
                         >Developer experience is at the top of the Appwrite list.</span
-                    > Appwrite has had the help of thousands of developers from the open source community
+                    > Appwrite has had the help of thousands of developers from the open-source community
                     to ensure that the developer experience is at the top of our minds as we continuously
-                    collect feedback from the community.
+                    collect feedback from the community. 
+                    Appwrite is grateful for every contribution made, and we will always keep Appwrite open-source.
+                    That means Appwrite Self-hosting will be no different than Appwrite Cloud, and we're 
+                    committed to the Free plan. This way, we ensure that Appwrite is accessible to all of you.
                 </p></Cell
             >
             <Cell column={4}>
