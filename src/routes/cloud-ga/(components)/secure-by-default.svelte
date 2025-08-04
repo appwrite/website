@@ -43,12 +43,12 @@
             <Cell column={4} columnStart={3} class="pb-8 md:py-20">
                 <div class="space-y-8">
                     <p class="text-paragraph-lg px-4">
-                        Appwrite has been and continues to be security driven. From the very
+                        Appwrite has been and continues to be security-driven. From the very
                         beginning, we ensured security measures, like encryption and abuse
                         protection, were built into Appwrite Cloud, and were easy to manage from the
                         Console. Over the past year, we have taken security and compliance measures
                         up a notch by adhering to <span class="text-primary"
-                            >GDPR, CCPA, HIPAA, and SOC 2 Type 1</span
+                            >GDPR, CCPA, HIPAA, and SOC 2 Type 2</span
                         > compliance regulations.
                     </p>
 
