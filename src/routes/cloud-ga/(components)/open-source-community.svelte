@@ -3,6 +3,7 @@
     import Cell from './grid-system/cell.svelte';
     import { inView } from 'motion';
     import Graph from '../(assets)/graphs/stats-graph.svg';
+    import GraphMobile from '../(assets)/graphs/stats-mobile-graph.svg';
     import Numbers from './numbers.svelte';
 
     let animate: boolean = false;
@@ -57,7 +58,8 @@
                     style:--border-gradient-before="linear-gradient(180deg,rgba(255,255,255,0.12),transparent)"
                     style:--border-gradient-after="linear-gradient(180deg,rgba(255,255,255,0),transparent)"
                 >
-                    <img class="rounded-3xl" src={Graph} alt="Placeholder" />
+                    <img class="hidden md:block" src={Graph} alt="Placeholder" />
+                    <img class="md:hidden" src={GraphMobile} alt="Placeholder" />
                 </div>
             </Cell>
 

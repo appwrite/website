@@ -56,7 +56,7 @@
                 </div>
             </Cell>
 
-            <Cell columnStart={1} column={2} class="px-4 pt-30 pb-40"
+            <Cell columnStart={1} column={2} class="px-4 py-8"
                 ><p
                     class="animate-text before:bg-accent text-paragraph-lg ml-4 font-medium text-white before:absolute before:left-4 before:mt-1 before:h-4 before:w-px md:ml-0 md:max-w-3/4 md:before:left-0"
                 >
@@ -65,7 +65,7 @@
                     important.
                 </p>
             </Cell>
-            <Cell columnStart={3} column={2} class="px-4 pt-30 pb-40">
+            <Cell columnStart={3} column={2} class="px-4 pt-8 pb-40">
                 <ul
                     class="mx-4 grid grid-cols-1 grid-rows-4 gap-x-8 gap-y-4 md:mx-auto lg:grid-flow-col lg:grid-cols-2"
                 >
