@@ -23,7 +23,7 @@
 >
     <div class="mx-auto flex w-full max-w-6xl flex-col justify-center">
         <Grid rows={2} bottomBorder>
-            <Cell column={2} columnStart={1} class="px-4 md:pt-40">
+            <Cell column={2} columnStart={1} class="px-4 pt-12 md:pt-40">
                 <h2
                     class="font-aeonik-pro text-title text-primary before:bg-accent text-pretty before:absolute before:left-0 before:mt-1 before:h-7.5 before:w-px md:before:-left-0.25 md:before:mt-2"
                 >
@@ -31,7 +31,7 @@
                 </h2>
             </Cell>
 
-            <Cell column={2} columnStart={3} class="px-4 md:pt-40">
+            <Cell column={2} columnStart={3} class="px-4 pt-12 md:pt-40">
                 <div class="text-paragraph-lg space-y-8">
                     <p>
                         When we started working on our plans for Appwrite Cloud, we knew we had a
@@ -65,7 +65,7 @@
                     important.
                 </p>
             </Cell>
-            <Cell columnStart={3} column={2} class="px-4 pt-8 pb-40">
+            <Cell columnStart={3} column={2} class="px-4 pt-8 pb-12 md:pb-40">
                 <ul
                     class="mx-4 grid grid-cols-1 grid-rows-4 gap-x-8 gap-y-4 md:mx-auto lg:grid-flow-col lg:grid-cols-2"
                 >

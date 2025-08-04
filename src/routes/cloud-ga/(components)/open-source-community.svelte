@@ -25,7 +25,7 @@
 <div class="relative h-full scroll-m-16 px-4" id="developer-experience">
     <div class="mx-auto flex w-full max-w-6xl flex-col justify-center" use:useInView>
         <Grid rows={4} bottomBorder>
-            <Cell column={2} columnStart={1} class="px-4 md:pt-40">
+            <Cell column={2} columnStart={1} class="px-4 pt-12 md:pt-40">
                 <div class="space-y-4">
                     <span
                         class="font-aeonik-fono text-secondary text-micro tracking-loose inline-block uppercase"
@@ -39,7 +39,7 @@
                     </h2>
                 </div>
             </Cell>
-            <Cell column={4} columnStart={3} class="px-4 md:pt-40"
+            <Cell column={4} columnStart={3} class="px-4 pt-12 md:pt-40"
                 ><p class="text-paragraph-lg text-pretty">
                     We have said it a million times, and we will say it again: <span
                         class="text-primary inline-block font-medium"
@@ -52,7 +52,7 @@
                     way, we ensure that Appwrite is accessible to all of you.
                 </p></Cell
             >
-            <Cell column={4} class="pt-30">
+            <Cell column={4} class="pt-8 md:pt-30">
                 <div
                     class="border-gradient relative rounded-2xl bg-[#232325]/90 before:rounded-2xl after:rounded-2xl"
                     style:--border-gradient-before="linear-gradient(180deg,rgba(255,255,255,0.12),transparent)"
@@ -63,7 +63,7 @@
                 </div>
             </Cell>
 
-            <Cell column={4} class="md:pb-40">
+            <Cell column={4} class="pb-12 md:pb-40">
                 <Numbers {numbers} />
             </Cell>
         </Grid>

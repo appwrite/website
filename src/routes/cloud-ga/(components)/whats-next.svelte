@@ -23,7 +23,7 @@
                     What's next
                 </h2>
             </Cell>
-            <Cell column={4} columnStart={3} class="px-4 pb-8 md:py-40"
+            <Cell column={4} columnStart={3} class="px-4 pb-12 md:py-40"
                 ><div class="text-paragraph-lg space-y-8">
                     <p>
                         As Appwrite Cloud continues to age, it also continues to improve over time.

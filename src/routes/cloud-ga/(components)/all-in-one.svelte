@@ -138,7 +138,7 @@
 
 <div class="mx-auto flex h-fit max-w-6xl flex-1 gap-3">
     <Grid rows={2} bottomBorder>
-        <Cell column={2} columnStart={1} class="px-4 md:pt-40">
+        <Cell column={2} columnStart={1} class="px-4 pt-12 md:pt-40">
             <div class="space-y-4" use:useInView>
                 <h2
                     data-animate={animate}
@@ -148,7 +148,7 @@
                 </h2>
             </div>
         </Cell>
-        <Cell column={4} columnStart={3} class="px-4 md:py-40"
+        <Cell column={4} columnStart={3} class="px-4 pt-12 md:pt-40"
             ><div class="text-paragraph-lg">
                 <p>
                     One platform and one subscription to develop, deploy, and scale your
@@ -156,7 +156,7 @@
                 </p>
             </div>
         </Cell>
-        <Cell column={4} class="md:pb-40">
+        <Cell column={4} class="pb-12 md:pb-40">
             <div class="mx-auto flex w-full flex-col gap-16 bg-center px-4">
                 <div
                     class="relative grid grid-cols-1 place-items-center gap-0 [background:_radial-gradient(50%_50%_at_50%_50%,_rgba(253,_54,_110,_0.1)_0%,_rgba(253,_54,_110,_0)_100%)] lg:grid-cols-12"

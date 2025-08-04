@@ -40,7 +40,7 @@
                     </h2>
                 </div>
             </Cell>
-            <Cell column={4} columnStart={3} class="px-4 pb-8 md:py-40"
+            <Cell column={4} columnStart={3} class="px-4 pb-12 md:py-40"
                 ><div class="text-paragraph-lg space-y-8">
                     <p>
                         The open-source community supporting Appwrite has been an undeniable
