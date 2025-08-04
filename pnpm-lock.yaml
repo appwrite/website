@@ -29,7 +29,7 @@ importers:
         version: 0.26.0
       '@appwrite.io/repo':
         specifier: github:appwrite/appwrite#1.7.x
-        version: https://codeload.github.com/appwrite/appwrite/tar.gz/476ea76814ec9e63017a77b6ba09dac95b39afd5
+        version: https://codeload.github.com/appwrite/appwrite/tar.gz/19fe5881a432094c4062b03c75a11bbf7de9b106
       '@eslint/compat':
         specifier: ^1.2.7
         version: 1.2.7(eslint@9.22.0(jiti@2.4.2))
@@ -296,8 +296,8 @@ packages:
   '@appwrite.io/pink@0.26.0':
     resolution: {integrity: sha512-iPeGE56pauzxuIXt15ZswjKCErwp3QdF3XOlJZfyYY7J2nirra85JNTL+3lWuFIf8yYWL7NbvCjhf8ig79TgwA==}
 
-  '@appwrite.io/repo@https://codeload.github.com/appwrite/appwrite/tar.gz/476ea76814ec9e63017a77b6ba09dac95b39afd5':
-    resolution: {tarball: https://codeload.github.com/appwrite/appwrite/tar.gz/476ea76814ec9e63017a77b6ba09dac95b39afd5}
+  '@appwrite.io/repo@https://codeload.github.com/appwrite/appwrite/tar.gz/19fe5881a432094c4062b03c75a11bbf7de9b106':
+    resolution: {tarball: https://codeload.github.com/appwrite/appwrite/tar.gz/19fe5881a432094c4062b03c75a11bbf7de9b106}
     version: 0.0.0
 
   '@asamuzakjp/css-color@3.2.0':
@@ -4256,7 +4256,7 @@ snapshots:
       normalize.css: 8.0.1
       the-new-css-reset: 1.11.3
 
-  '@appwrite.io/repo@https://codeload.github.com/appwrite/appwrite/tar.gz/476ea76814ec9e63017a77b6ba09dac95b39afd5': {}
+  '@appwrite.io/repo@https://codeload.github.com/appwrite/appwrite/tar.gz/19fe5881a432094c4062b03c75a11bbf7de9b106': {}
 
   '@asamuzakjp/css-color@3.2.0':
     dependencies:
