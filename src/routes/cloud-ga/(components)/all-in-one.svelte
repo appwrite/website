@@ -136,46 +136,185 @@
     });
 </script>
 
-<div class="mx-auto flex h-fit max-w-6xl flex-1 gap-3">
-    <Grid rows={2} bottomBorder>
-        <Cell column={2} columnStart={1} class="px-4 pt-12 md:pt-40">
-            <div class="space-y-4 px-4" use:useInView>
+<div class="relative h-full scroll-m-16 px-4">
+    <div class="mx-auto flex h-fit w-full max-w-6xl flex-1 gap-3" use:useInView>
+        <Grid rows={2} bottomBorder>
+            <Cell column={2} columnStart={1} class="px-4 pt-12 md:pt-40">
                 <h2
                     data-animate={animate}
-                    class="text-subtitle text-primary font-aeonik-pro before:bg-accent text-pretty before:absolute before:left-4 before:mt-1.25 before:h-6 before:w-px before:origin-top before:scale-y-0 before:transition-transform before:duration-700 data-[animate=true]:before:scale-y-100"
+                    class="text-subtitle text-primary font-aeonik-pro before:bg-accent text-pretty before:absolute before:-left-0.5 before:mt-1.25 before:h-6 before:w-px before:origin-top before:scale-y-0 before:transition-transform before:duration-700 data-[animate=true]:before:scale-y-100"
                 >
                     All in one development<br /> platform
                 </h2>
-            </div>
-        </Cell>
-        <Cell column={4} columnStart={3} class="px-4 pt-12 md:pt-40"
-            ><div class="text-paragraph-lg">
-                <p>
-                    One platform and one subscription to develop, deploy, and scale your
-                    applications.
-                </p>
-            </div>
-        </Cell>
-        <Cell column={4} class="pt-8 pb-12 md:pb-40">
-            <div class="mx-auto flex w-full flex-col gap-16 bg-center px-4">
-                <div
-                    class="relative grid grid-cols-1 place-items-center gap-0 [background:_radial-gradient(50%_50%_at_50%_50%,_rgba(253,_54,_110,_0.1)_0%,_rgba(253,_54,_110,_0)_100%)] lg:grid-cols-12"
-                >
-                    <!-- left side -->
+            </Cell>
+            <Cell column={4} columnStart={3} class="px-4 pt-12 md:pt-40"
+                ><div class="text-paragraph-lg">
+                    <p>
+                        One platform and one subscription to develop, deploy, and scale your
+                        applications.
+                    </p>
+                </div>
+            </Cell>
+            <Cell column={4} class="pt-8 pb-12 md:pb-40">
+                <div class="mx-auto flex w-full flex-col gap-16 bg-center px-4">
                     <div
-                        class="col-span-3 mb-8 hidden w-fit justify-center lg:block lg:translate-x-6"
+                        class="relative grid grid-cols-1 place-items-center gap-0 [background:_radial-gradient(50%_50%_at_50%_50%,_rgba(253,_54,_110,_0.1)_0%,_rgba(253,_54,_110,_0)_100%)] lg:grid-cols-12"
                     >
+                        <!-- left side -->
                         <div
-                            class="text-body flex items-center gap-2 font-medium text-white max-sm:justify-center lg:flex-col lg:items-end lg:gap-12"
+                            class="col-span-3 mb-8 hidden w-fit justify-center lg:block lg:translate-x-6"
                         >
-                            {#each products.slice(0, 4) as product, index}
+                            <div
+                                class="text-body flex items-center gap-2 font-medium text-white max-sm:justify-center lg:flex-col lg:items-end lg:gap-12"
+                            >
+                                {#each products.slice(0, 4) as product, index}
+                                    {@const isActive = index === activeIndex}
+                                    <div
+                                        class="group relative ml-0 flex w-fit items-center md:mr-auto md:w-full"
+                                    >
+                                        <button
+                                            class={classNames(
+                                                'bg-card border-smooth md:text-caption flex w-fit cursor-pointer items-center gap-2 rounded-xl border py-2 pr-4 pl-3 text-sm backdrop-blur-md transition-all hover:bg-white/8 md:ml-auto lg:mr-[100px]',
+                                                {
+                                                    'bg-accent/12 border-accent/36 md:border-smooth md:bg-card':
+                                                        isActive
+                                                }
+                                            )}
+                                            onmouseover={() => handleSetActive(index)}
+                                            onfocus={() => handleSetActive(index)}
+                                            onmouseout={() => handleMouseOut()}
+                                            onblur={() => handleMouseOut()}
+                                        >
+                                            <img
+                                                src={product.icon}
+                                                alt={product.label}
+                                                class="size-4 md:size-6"
+                                            />
+                                            {product.label}
+                                        </button>
+                                        <div
+                                            class={classNames(
+                                                'absolute right-0 bottom-1/2 hidden lg:block',
+                                                {
+                                                    'top-1/2': index < 2,
+                                                    'bottom-1/2': index > 2
+                                                }
+                                            )}
+                                        >
+                                            {@html product.line(isActive)}
+                                        </div>
+                                    </div>
+                                {/each}
+                            </div>
+                        </div>
+                        <!-- window -->
+                        <div
+                            class="window col-span-6 flex aspect-[19/13] w-full items-center justify-center rounded-[48px] border-dashed border-transparent py-4 md:border md:p-3"
+                            style:animation-delay="0.6s"
+                        >
+                            <div
+                                class="window flex h-full flex-1 rounded-[40px] border-dashed border-transparent md:border md:p-3"
+                                style:animation-delay="0.4s"
+                            >
+                                <div
+                                    class="window flex h-full flex-1 rounded-[28px] border-dashed border-transparent md:border md:p-3"
+                                    style:animation-delay="0.2s"
+                                >
+                                    <div
+                                        class="bg-greyscale-850 border-smooth flex flex-1 flex-col rounded-[20px] border px-2 pb-2"
+                                    >
+                                        <div
+                                            class="flex h-8 w-fit items-center justify-start gap-1.5 pl-2"
+                                        >
+                                            {#each Array.from({ length: 3 }) as _}
+                                                <div
+                                                    class="size-2 flex-1 shrink cursor-pointer rounded-full bg-[#D9D9D9] transition hover:opacity-75"
+                                                ></div>
+                                            {/each}
+                                        </div>
+                                        <div
+                                            class="relative flex-1 overflow-hidden rounded-2xl bg-[#19191C]"
+                                        >
+                                            {#each products as product, i}
+                                                {@const isActive = i === activeIndex}
+                                                <img
+                                                    src={product.image}
+                                                    class={classNames(
+                                                        'absolute inset-0 h-full w-full rounded-2xl object-cover transition-all duration-500 ease-out',
+                                                        'scale-102 opacity-0 blur-md',
+                                                        {
+                                                            'scale-100 opacity-100 blur-none':
+                                                                isActive,
+                                                            invisible: !isActive,
+                                                            'object-[center_top]': i === 5
+                                                        }
+                                                    )}
+                                                    aria-hidden={!isActive}
+                                                    alt=""
+                                                />
+                                            {/each}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- right side -->
+                        <div class="col-span-3 mt-8 hidden w-full lg:mt-0 lg:block">
+                            <div
+                                class="text-body flex gap-2 font-medium text-white lg:flex-col lg:justify-center lg:gap-12"
+                            >
+                                {#each products.slice(4) as product, i}
+                                    {@const index = i + 4}
+                                    {@const isActive = index === activeIndex}
+                                    <div
+                                        class="group relative mr-0 flex items-center md:w-full lg:ml-auto"
+                                    >
+                                        <button
+                                            class={classNames(
+                                                'bg-card border-smooth md:text-caption flex cursor-pointer items-center gap-2 rounded-xl border py-2 pr-4 pl-3 text-sm backdrop-blur-md transition-all hover:bg-white/8 md:mr-auto lg:ml-[100px]',
+                                                {
+                                                    'bg-accent/12 border-accent/36 md:border-smooth md:bg-card':
+                                                        isActive
+                                                }
+                                            )}
+                                            onclick={() => handleSetActive(index)}
+                                            onmouseover={() => handleSetActive(index)}
+                                            onfocus={() => handleSetActive(index)}
+                                            onmouseout={() => handleMouseOut()}
+                                            onblur={() => handleMouseOut()}
+                                        >
+                                            <img
+                                                src={product.icon}
+                                                alt={product.label}
+                                                class="size-4 md:size-6"
+                                            />
+                                            {product.label}
+                                        </button>
+                                        <div
+                                            class={classNames('absolute left-0 hidden lg:block', {
+                                                'top-1/2': i === 0,
+                                                'bottom-1/2': i === 2
+                                            })}
+                                        >
+                                            {@html product.line(isActive)}
+                                        </div>
+                                    </div>
+                                {/each}
+                            </div>
+                        </div>
+
+                        <!-- mobile -->
+                        <div
+                            class="text-body mt-8 flex flex-wrap items-center justify-center gap-2 font-medium text-white lg:hidden"
+                        >
+                            {#each products as product, index}
                                 {@const isActive = index === activeIndex}
                                 <div
-                                    class="group relative ml-0 flex w-fit items-center md:mr-auto md:w-full"
+                                    class="group relative ml-0 flex basis-[calc(50%_-_4px)] items-center md:basis-[calc(33%_-_4px)]"
                                 >
                                     <button
                                         class={classNames(
-                                            'bg-card border-smooth md:text-caption flex w-fit cursor-pointer items-center gap-2 rounded-xl border py-2 pr-4 pl-3 text-sm backdrop-blur-md transition-all hover:bg-white/8 md:ml-auto lg:mr-[100px]',
+                                            'bg-card border-smooth md:text-caption flex w-full cursor-pointer items-center justify-center gap-2 rounded-xl border py-2 pr-4 pl-3 text-sm backdrop-blur-md transition-all hover:bg-white/8 md:ml-auto',
                                             {
                                                 'bg-accent/12 border-accent/36 md:border-smooth md:bg-card':
                                                     isActive
@@ -208,148 +347,10 @@
                             {/each}
                         </div>
                     </div>
-                    <!-- window -->
-                    <div
-                        class="window col-span-6 flex aspect-[19/13] w-full items-center justify-center rounded-[48px] border-dashed border-transparent py-4 md:border md:p-3"
-                        style:animation-delay="0.6s"
-                    >
-                        <div
-                            class="window flex h-full flex-1 rounded-[40px] border-dashed border-transparent md:border md:p-3"
-                            style:animation-delay="0.4s"
-                        >
-                            <div
-                                class="window flex h-full flex-1 rounded-[28px] border-dashed border-transparent md:border md:p-3"
-                                style:animation-delay="0.2s"
-                            >
-                                <div
-                                    class="bg-greyscale-850 border-smooth flex flex-1 flex-col rounded-[20px] border px-2 pb-2"
-                                >
-                                    <div
-                                        class="flex h-8 w-fit items-center justify-start gap-1.5 pl-2"
-                                    >
-                                        {#each Array.from({ length: 3 }) as _}
-                                            <div
-                                                class="size-2 flex-1 shrink cursor-pointer rounded-full bg-[#D9D9D9] transition hover:opacity-75"
-                                            ></div>
-                                        {/each}
-                                    </div>
-                                    <div
-                                        class="relative flex-1 overflow-hidden rounded-2xl bg-[#19191C]"
-                                    >
-                                        {#each products as product, i}
-                                            {@const isActive = i === activeIndex}
-                                            <img
-                                                src={product.image}
-                                                class={classNames(
-                                                    'absolute inset-0 h-full w-full rounded-2xl object-cover transition-all duration-500 ease-out',
-                                                    'scale-102 opacity-0 blur-md',
-                                                    {
-                                                        'scale-100 opacity-100 blur-none': isActive,
-                                                        invisible: !isActive,
-                                                        'object-[center_top]': i === 5
-                                                    }
-                                                )}
-                                                aria-hidden={!isActive}
-                                                alt=""
-                                            />
-                                        {/each}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- right side -->
-                    <div class="col-span-3 mt-8 hidden w-full lg:mt-0 lg:block">
-                        <div
-                            class="text-body flex gap-2 font-medium text-white lg:flex-col lg:justify-center lg:gap-12"
-                        >
-                            {#each products.slice(4) as product, i}
-                                {@const index = i + 4}
-                                {@const isActive = index === activeIndex}
-                                <div
-                                    class="group relative mr-0 flex items-center md:w-full lg:ml-auto"
-                                >
-                                    <button
-                                        class={classNames(
-                                            'bg-card border-smooth md:text-caption flex cursor-pointer items-center gap-2 rounded-xl border py-2 pr-4 pl-3 text-sm backdrop-blur-md transition-all hover:bg-white/8 md:mr-auto lg:ml-[100px]',
-                                            {
-                                                'bg-accent/12 border-accent/36 md:border-smooth md:bg-card':
-                                                    isActive
-                                            }
-                                        )}
-                                        onclick={() => handleSetActive(index)}
-                                        onmouseover={() => handleSetActive(index)}
-                                        onfocus={() => handleSetActive(index)}
-                                        onmouseout={() => handleMouseOut()}
-                                        onblur={() => handleMouseOut()}
-                                    >
-                                        <img
-                                            src={product.icon}
-                                            alt={product.label}
-                                            class="size-4 md:size-6"
-                                        />
-                                        {product.label}
-                                    </button>
-                                    <div
-                                        class={classNames('absolute left-0 hidden lg:block', {
-                                            'top-1/2': i === 0,
-                                            'bottom-1/2': i === 2
-                                        })}
-                                    >
-                                        {@html product.line(isActive)}
-                                    </div>
-                                </div>
-                            {/each}
-                        </div>
-                    </div>
-
-                    <!-- mobile -->
-                    <div
-                        class="text-body mt-8 flex flex-wrap items-center justify-center gap-2 font-medium text-white lg:hidden"
-                    >
-                        {#each products as product, index}
-                            {@const isActive = index === activeIndex}
-                            <div
-                                class="group relative ml-0 flex basis-[calc(50%_-_4px)] items-center md:basis-[calc(33%_-_4px)]"
-                            >
-                                <button
-                                    class={classNames(
-                                        'bg-card border-smooth md:text-caption flex w-full cursor-pointer items-center justify-center gap-2 rounded-xl border py-2 pr-4 pl-3 text-sm backdrop-blur-md transition-all hover:bg-white/8 md:ml-auto',
-                                        {
-                                            'bg-accent/12 border-accent/36 md:border-smooth md:bg-card':
-                                                isActive
-                                        }
-                                    )}
-                                    onmouseover={() => handleSetActive(index)}
-                                    onfocus={() => handleSetActive(index)}
-                                    onmouseout={() => handleMouseOut()}
-                                    onblur={() => handleMouseOut()}
-                                >
-                                    <img
-                                        src={product.icon}
-                                        alt={product.label}
-                                        class="size-4 md:size-6"
-                                    />
-                                    {product.label}
-                                </button>
-                                <div
-                                    class={classNames(
-                                        'absolute right-0 bottom-1/2 hidden lg:block',
-                                        {
-                                            'top-1/2': index < 2,
-                                            'bottom-1/2': index > 2
-                                        }
-                                    )}
-                                >
-                                    {@html product.line(isActive)}
-                                </div>
-                            </div>
-                        {/each}
-                    </div>
                 </div>
-            </div>
-        </Cell>
-    </Grid>
+            </Cell>
+        </Grid>
+    </div>
 </div>
 
 <style>

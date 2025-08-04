@@ -27,7 +27,7 @@
 <div class="relative h-full scroll-m-16 px-4" id="reliability-and-uptime">
     <div class="mx-auto flex w-full max-w-6xl flex-col justify-center" use:useInView>
         <Grid rows={2} bottomBorder>
-            <Cell column={2} columnStart={1} class="px-8 pt-12 md:pt-40">
+            <Cell column={2} columnStart={1} class="px-4 pt-12 md:pt-40">
                 <div class="space-y-4">
                     <span
                         class="font-aeonik-fono text-secondary text-micro tracking-loose inline-block uppercase"
