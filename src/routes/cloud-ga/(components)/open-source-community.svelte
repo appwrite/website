@@ -24,7 +24,7 @@
 <div class="relative h-full scroll-m-16 px-4" id="developer-experience">
     <div class="mx-auto flex w-full max-w-6xl flex-col justify-center" use:useInView>
         <Grid rows={4} bottomBorder>
-            <Cell column={2} columnStart={1} class="px-4 py-12 md:py-20">
+            <Cell column={2} columnStart={1} class="px-4 md:pt-40">
                 <div class="space-y-4">
                     <span
                         class="font-aeonik-fono text-secondary text-micro tracking-loose inline-block uppercase"
@@ -38,22 +38,22 @@
                     </h2>
                 </div>
             </Cell>
-            <Cell column={4} columnStart={3} class="px-4 pb-8 md:py-20"
+            <Cell column={4} columnStart={3} class="px-4 md:pt-40"
                 ><p class="text-paragraph-lg text-pretty">
-                     We have said it a million times, and we will say it again: <span
+                    We have said it a million times, and we will say it again: <span
                         class="text-primary inline-block font-medium"
                         >Developer experience is at the top of the Appwrite list.</span
                     > Appwrite has had the help of thousands of developers from the open-source community
                     to ensure that the developer experience is at the top of our minds as we continuously
-                    collect feedback from the community. 
-                    Appwrite is grateful for every contribution made, and we will always keep Appwrite open-source.
-                    That means Appwrite Self-hosting will be no different than Appwrite Cloud, and we're 
-                    committed to the Free plan. This way, we ensure that Appwrite is accessible to all of you.
+                    collect feedback from the community. Appwrite is grateful for every contribution
+                    made, and we will always keep Appwrite open-source. That means Appwrite Self-hosting
+                    will be no different than Appwrite Cloud, and we're committed to the Free plan. This
+                    way, we ensure that Appwrite is accessible to all of you.
                 </p></Cell
             >
             <Cell column={4}>
                 <div
-                    class="border-gradient relative rounded-2xl bg-[#232325]/90 p-8 before:rounded-2xl after:rounded-2xl"
+                    class="border-gradient relative rounded-2xl bg-[#232325]/90 before:rounded-2xl after:rounded-2xl"
                     style:--border-gradient-before="linear-gradient(180deg,rgba(255,255,255,0.12),transparent)"
                     style:--border-gradient-after="linear-gradient(180deg,rgba(255,255,255,0),transparent)"
                 >
@@ -61,7 +61,7 @@
                 </div>
             </Cell>
 
-            <Cell column={4}>
+            <Cell column={4} class="md:pb-40">
                 <Numbers {numbers} />
             </Cell>
         </Grid>

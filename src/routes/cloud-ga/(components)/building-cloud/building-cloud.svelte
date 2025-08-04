@@ -23,7 +23,7 @@
 >
     <div class="mx-auto flex w-full max-w-6xl flex-col justify-center">
         <Grid rows={2} bottomBorder>
-            <Cell column={2} columnStart={1} class="px-4 py-12 md:py-32">
+            <Cell column={2} columnStart={1} class="px-4 md:pt-40">
                 <h2
                     class="font-aeonik-pro text-title text-primary before:bg-accent text-pretty before:absolute before:left-0 before:mt-1 before:h-7.5 before:w-px md:before:-left-0.25 md:before:mt-2"
                 >
@@ -31,16 +31,16 @@
                 </h2>
             </Cell>
 
-            <Cell column={2} columnStart={3} class="px-4 pb-4 md:py-32">
+            <Cell column={2} columnStart={3} class="px-4 md:pt-40">
                 <div class="text-paragraph-lg space-y-8">
                     <p>
                         When we started working on our plans for Appwrite Cloud, we knew we had a
-                        hard task ahead of us, as we didn’t want to just be a wrapper on top of
-                        AWS or Cloudflare. With no pre-built building blocks, we wanted to customize
+                        hard task ahead of us, as we didn’t want to just be a wrapper on top of AWS
+                        or Cloudflare. With no pre-built building blocks, we wanted to customize
                         every piece in the platform to create the most complete developer experience
                         we can imagine.
                     </p>
-                    <p class="font-medium text-white">
+                    <p class="text-white">
                         We wanted to create a developer experience that rethinks how an idea goes to
                         production and scale, without worries, without limits.
                     </p>
@@ -56,7 +56,7 @@
                 </div>
             </Cell>
 
-            <Cell columnStart={1} column={2} class="px-4 pb-20"
+            <Cell columnStart={1} column={2} class="px-4 pt-30 pb-40"
                 ><p
                     class="animate-text before:bg-accent text-body ml-4 font-medium text-white before:absolute before:left-4 before:mt-1 before:h-4 before:w-px md:ml-0 md:max-w-3/4 md:before:left-0"
                 >
@@ -65,7 +65,7 @@
                     important.
                 </p>
             </Cell>
-            <Cell columnStart={3} column={2} class="px-4 pb-20">
+            <Cell columnStart={3} column={2} class="px-4 pt-30 pb-40">
                 <ul
                     class="mx-4 grid grid-cols-1 grid-rows-4 gap-x-1 gap-y-4 md:mx-auto lg:grid-flow-col lg:grid-cols-2"
                 >

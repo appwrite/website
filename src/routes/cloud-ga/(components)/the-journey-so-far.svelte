@@ -16,7 +16,7 @@
 <div class="relative h-full scroll-m-16 px-4" id="milestones-for-success">
     <div class="mx-auto flex w-full max-w-6xl flex-col justify-center" use:useInView>
         <Grid rows={2} bottomBorder>
-            <Cell column={2} columnStart={1} class="px-4 py-12 md:py-20">
+            <Cell column={2} columnStart={1} class="px-4 md:py-40">
                 <div class="space-y-4">
                     <span
                         class="font-aeonik-fono text-secondary text-micro tracking-loose inline-block uppercase"
@@ -30,7 +30,7 @@
                     </h2>
                 </div>
             </Cell>
-            <Cell column={4} columnStart={3} class="px-4 pb-8 md:py-20"
+            <Cell column={4} columnStart={3} class="px-4 md:pt-40"
                 ><p class="text-paragraph-lg">
                     The milestone we achieved today officially started 26 months ago when we
                     launched Appwrite private beta and enrolled users onto the platform bit by bit.
@@ -38,9 +38,9 @@
                     level.
                 </p></Cell
             >
-            <Cell column={4} class="pb-8 md:py-20">
+            <Cell column={4} class="pb-8 md:pt-8 md:pb-40">
                 <div
-                    class="border-gradient relative rounded-2xl bg-[#232325]/90 py-8 before:rounded-2xl after:rounded-2xl"
+                    class="border-gradient relative rounded-2xl bg-[#232325]/90 before:rounded-2xl after:rounded-2xl"
                     style:--border-gradient-before="linear-gradient(180deg,rgba(255,255,255,0.12),transparent)"
                     style:--border-gradient-after="linear-gradient(180deg,rgba(255,255,255,0),transparent)"
                 >

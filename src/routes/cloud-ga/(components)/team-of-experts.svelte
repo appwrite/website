@@ -26,7 +26,7 @@
 <div class="relative h-full scroll-m-16 px-4" id="dedicated-support">
     <div class="mx-auto flex w-full max-w-6xl flex-col justify-center" use:useInView>
         <Grid rows={2} bottomBorder>
-            <Cell column={2} columnStart={1} class="px-4 py-12 md:py-20">
+            <Cell column={2} columnStart={1} class="px-4 py-12 md:py-40">
                 <div class="space-y-4">
                     <span
                         class="font-aeonik-fono text-secondary text-micro tracking-loose inline-block uppercase"
@@ -40,7 +40,7 @@
                     </h2>
                 </div>
             </Cell>
-            <Cell column={4} columnStart={3} class="px-4 pb-8 md:py-20"
+            <Cell column={4} columnStart={3} class="px-4 pb-8 md:py-40"
                 ><div class="text-paragraph-lg space-y-8">
                     <p>
                         The open-source community supporting Appwrite has been an undeniable
@@ -48,14 +48,15 @@
                         when Appwrite first started.
                     </p>
                     <p>
-                        Today, Appwrite has scaled out that support with dedicated programs, processes,
-                        resources, partners, and support engineers. No matter what you are building,
-                        from students to enterprises, Appwrite helps you get to production fast.
+                        Today, Appwrite has scaled out that support with dedicated programs,
+                        processes, resources, partners, and support engineers. No matter what you
+                        are building, from students to enterprises, Appwrite helps you get to
+                        production fast.
                     </p>
 
                     <p>
-                        Appwrite don’t just provide you with an all-in-one development platform, we are
-                        your dedicated partner in your development journey.
+                        Appwrite don’t just provide you with an all-in-one development platform, we
+                        are your dedicated partner in your development journey.
                     </p>
                     <div
                         class="illustration grid grid-cols-1 grid-rows-2 gap-x-1 gap-y-4 p-4 md:grid-flow-col md:grid-cols-2"

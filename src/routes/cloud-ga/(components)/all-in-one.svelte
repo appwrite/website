@@ -138,12 +138,8 @@
 
 <div class="mx-auto flex h-fit max-w-6xl flex-1 gap-3">
     <Grid rows={2} bottomBorder>
-        <Cell column={2} columnStart={1} class="px-4 py-12 md:py-20">
+        <Cell column={2} columnStart={1} class="px-4 md:pt-40">
             <div class="space-y-4" use:useInView>
-                <span
-                    class="font-aeonik-fono text-secondary text-micro tracking-loose inline-block uppercase"
-                    >Dedicated Support</span
-                >
                 <h2
                     data-animate={animate}
                     class="text-subtitle text-primary font-aeonik-pro before:bg-accent text-pretty before:absolute before:-left-0.25 before:mt-2 before:h-6 before:w-px before:origin-top before:scale-y-0 before:transition-transform before:duration-700 data-[animate=true]:before:scale-y-100"
@@ -152,7 +148,7 @@
                 </h2>
             </div>
         </Cell>
-        <Cell column={4} columnStart={3} class="px-4 pb-8 md:py-20"
+        <Cell column={4} columnStart={3} class="px-4 md:py-40"
             ><div class="text-paragraph-lg">
                 <p>
                     One platform and one subscription to develop, deploy, and scale your
@@ -160,8 +156,8 @@
                 </p>
             </div>
         </Cell>
-        <Cell column={4}>
-            <div class="mx-auto flex w-full flex-col gap-16 bg-center px-2 pt-10 pb-40 md:pb-20">
+        <Cell column={4} class="md:pb-40">
+            <div class="mx-auto flex w-full flex-col gap-16 bg-center px-4">
                 <div
                     class="relative grid grid-cols-1 place-items-center gap-0 [background:_radial-gradient(50%_50%_at_50%_50%,_rgba(253,_54,_110,_0.1)_0%,_rgba(253,_54,_110,_0)_100%)] lg:grid-cols-12"
                 >

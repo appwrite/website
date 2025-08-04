@@ -41,7 +41,7 @@
 <div class="relative h-full scroll-m-16 px-4" id="infrastructure-and-scalability">
     <div class="mx-auto flex w-full max-w-6xl flex-col justify-center" use:useInView>
         <Grid rows={3} bottomBorder>
-            <Cell column={2} columnStart={1} class="px-4 py-12 md:py-20">
+            <Cell column={2} columnStart={1} class="px-4 md:pt-40 md:pb-30">
                 <div class="space-y-4">
                     <span
                         class="font-aeonik-fono text-secondary text-micro tracking-loose inline-block uppercase"
@@ -55,16 +55,16 @@
                     </h2>
                 </div>
             </Cell>
-            <Cell column={4} columnStart={3} class="px-4 pb-8 md:py-20">
+            <Cell column={4} columnStart={3} class="px-4 md:pt-40 md:pb-30">
                 <p class="text-paragraph-lg">
                     We aimed to build a platform that could easily scale to 1M users overnight
                     without you breaking a sweat over scalability or finance. Today, we are
-                    confident that we have reached this state. Appwrite Cloud is
-                    stable for any project to grow rapidly, unexpectedly.
+                    confident that we have reached this state. Appwrite Cloud is stable for any
+                    project to grow rapidly, unexpectedly.
                 </p>
             </Cell>
 
-            <Cell column={4} columnStart={1}>
+            <Cell column={4} columnStart={1} class="md:pb-40">
                 <div class="grid grid-cols-1 gap-8 px-4 md:grid-cols-3">
                     {#each testimonials as testimonial}
                         <div class="bg-card border-smooth h-fit rounded-2xl border p-4">
@@ -90,23 +90,6 @@
                             </div>
                         </div>
                     {/each}
-                </div>
-            </Cell>
-
-            <Cell column={4} columnStart={3} class="px-4 py-8 md:py-20">
-                <div class="text-paragraph-lg space-y-8">
-                    <p>
-                        Building the infrastructure to support this goal wasn't easy, especially
-                        with our vision of developing Appwrite Cloud from the ground up. However, we
-                        pursued it to maintain control over both the platform's flexibility and the
-                        pricing we offer. As accessibility is a key part of our mission, we knew
-                        that providing a generous free tier and fair pricing was essential to
-                        achieving that goal.
-                    </p>
-                    <p>
-                        A cloud platform without the ability to scale is not much of a platform.
-                        We’ve seen projects grow to xx users, executions, etc.
-                    </p>
                 </div>
             </Cell>
         </Grid>

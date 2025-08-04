@@ -18,8 +18,8 @@
     class="from-accent/8 relative -top-24 -mb-24 flex justify-center overflow-y-hidden bg-gradient-to-b to-transparent to-60% px-4 pt-24"
 >
     <div class="flex w-full max-w-6xl flex-col justify-center">
-        <Grid rows={3}>
-            <Cell column={3} horizontalCenter verticalCenter class="py-10 md:py-20">
+        <Grid rows={2}>
+            <Cell column={3} horizontalCenter verticalCenter class="md:pt-40">
                 <div class="max-w-4xl space-y-8 p-4">
                     <h1
                         class="text-headline font-aeonik-pro text-primary flex max-w-4xl flex-wrap gap-4 text-balance"
@@ -79,8 +79,8 @@
                     </Cell>
                 {/if}
             {/each}
-            <Cell column={4}>
-                <Numbers class="pt-8 pb-20" {numbers} />
+            <Cell column={4} class="pt-8 md:pb-40">
+                <Numbers class="" {numbers} />
             </Cell>
         </Grid>
     </div>

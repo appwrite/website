@@ -8,10 +8,10 @@
 
 <div class="mx-auto -mb-[97px] flex max-w-6xl items-start justify-between">
     <Grid bottomBorder solidBorder rows={1}>
-        <Cell column={4}>
-            <div class="flex flex-col items-center justify-between gap-12 px-4 py-20 md:flex-row">
-                <h3 class="font-aeonik-pro text-primary text-title max-w-xs self-start">
-                    Build like a team of hundreds <span class="text-accent">_</span>
+        <Cell column={4} class="py-40">
+            <div class="flex flex-col items-center justify-between gap-12 px-4 md:flex-row">
+                <h3 class="font-aeonik-pro text-primary text-title max-w-sm self-start">
+                    Build like a team of hundreds<span class="text-accent">_</span>
                 </h3>
 
                 <div class="flex w-full flex-col items-center gap-4 md:w-fit md:flex-row lg:-mr-4">
