@@ -58,8 +58,8 @@
                     style:--border-gradient-before="linear-gradient(180deg,rgba(255,255,255,0.12),transparent)"
                     style:--border-gradient-after="linear-gradient(180deg,rgba(255,255,255,0),transparent)"
                 >
-                    <img class="hidden md:block" src={Graph} alt="Placeholder" />
-                    <img class="md:hidden" src={GraphMobile} alt="Placeholder" />
+                    <img class="hidden w-full md:block" src={Graph} alt="Placeholder" />
+                    <img class="w-full md:hidden" src={GraphMobile} alt="Placeholder" />
                 </div>
             </Cell>
 

@@ -70,7 +70,7 @@
                 {/if}
             {/each}
             <Cell column={4} class="pt-8 pb-12 md:pb-40">
-                <Numbers class="" {numbers} />
+                <Numbers {numbers} />
             </Cell>
         </Grid>
     </div>
