@@ -243,7 +243,8 @@
                                                     'scale-102 opacity-0 blur-md',
                                                     {
                                                         'scale-100 opacity-100 blur-none': isActive,
-                                                        invisible: !isActive
+                                                        invisible: !isActive,
+                                                        'object-[center_top]': i === 5
                                                     }
                                                 )}
                                                 aria-hidden={!isActive}
