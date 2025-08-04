@@ -24,6 +24,7 @@
     let isEnd = $state(false);
     let isStart = $state(true);
     let categoriesElement: HTMLElement;
+    let isHovering = $state(false);
 
     let articlesHeader: HTMLElement;
 
@@ -103,6 +104,21 @@
         const { scrollLeft, offsetWidth, scrollWidth } = categoriesElement;
         isStart = scrollLeft <= 0;
         isEnd = Math.ceil(scrollLeft + offsetWidth) >= scrollWidth;
+    }
+
+    function scrollCategories(direction: 'left' | 'right') {
+        if (!categoriesElement) return;
+        
+        const scrollAmount = 200;
+        const currentScroll = categoriesElement.scrollLeft;
+        const targetScroll = direction === 'left' 
+            ? Math.max(0, currentScroll - scrollAmount)
+            : Math.min(categoriesElement.scrollWidth - categoriesElement.offsetWidth, currentScroll + scrollAmount);
+        
+        categoriesElement.scrollTo({
+            left: targetScroll,
+            behavior: 'smooth'
+        });
     }
 
     const title = 'Blog' + TITLE_SUFFIX;
@@ -264,7 +280,19 @@
                         <div
                             class="categories-wrapper"
                             data-state={isStart ? 'start' : isEnd ? 'end' : 'middle'}
+                            onmouseenter={() => isHovering = true}
+                            onmouseleave={() => isHovering = false}
+                            role="navigation"
                         >
+                            <button
+                                class="category-nav-arrow left"
+                                class:visible={isHovering && !isStart}
+                                onclick={() => scrollCategories('left')}
+                                aria-label="Scroll categories left"
+                            >
+                                <span class="web-icon-chevron-left"></span>
+                            </button>
+                            
                             <ul
                                 class="categories flex gap-2 overflow-x-auto"
                                 onscroll={handleScroll}
@@ -298,6 +326,15 @@
                                     </li>
                                 {/each}
                             </ul>
+                            
+                            <button
+                                class="category-nav-arrow right"
+                                class:visible={isHovering && !isEnd}
+                                onclick={() => scrollCategories('right')}
+                                aria-label="Scroll categories right"
+                            >
+                                <span class="web-icon-chevron-right"></span>
+                            </button>
                         </div>
 
                         <div
@@ -584,6 +621,45 @@
         max-height: 40px;
     }
 
+    .category-nav-arrow {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 32px;
+        height: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: hsl(var(--web-color-background-docs));
+        border: 1px solid hsl(var(--web-color-border));
+        border-radius: var(--border-radius-S, 8px);
+        cursor: pointer;
+        opacity: 0;
+        transition: opacity 250ms ease;
+        z-index: 200;
+    }
+
+    .category-nav-arrow:hover {
+        background: hsl(var(--web-color-background-tertiary));
+    }
+
+    .category-nav-arrow.visible {
+        opacity: 1;
+    }
+
+    .category-nav-arrow.left {
+        left: -12px;
+    }
+
+    .category-nav-arrow.right {
+        right: -12px;
+    }
+
+    .category-nav-arrow span {
+        font-size: 16px;
+        color: hsl(var(--web-color-primary));
+    }
+
     @media (max-width: 768px) {
         .search-and-categories {
             display: flex;
@@ -607,6 +683,10 @@
 
         .search-and-categories > .web-input-text-search-wrapper {
             min-inline-size: unset;
+        }
+
+        .category-nav-arrow {
+            display: none;
         }
     }
 </style>
