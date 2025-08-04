@@ -241,7 +241,7 @@ Then push your collection using the `appwrite push collections` command.
 appwrite push collections
 ```
 
-This will create your collection in the Console with all of your `appwrite.json` configurations.
+This will create your collection in the Console with all of your `appwrite.config.json` configurations.
 
 {% arrow_link href="/docs/tooling/command-line/collections#commands" %}
 Learn more about the CLI collections commands
