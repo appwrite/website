@@ -189,10 +189,15 @@ async function getTodos() {
         console.log(`Title: ${todo.title}\nDescription: ${todo.description}\nIs Todo Complete: ${todo.isComplete}\n\n`);
     });
 }
+function sleep(time) {
+    return new Promise(resolve => setTimeout(resolve, time));
+}
 
 async function runAllTasks() {
     await prepareDatabase();
+    await sleep(2500);
     await seedDatabase();
+    await sleep(2000);
     await getTodos();
 }
 runAllTasks();
