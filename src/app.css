@@ -93,7 +93,7 @@
     --animate-scroll: scroll 60s linear infinite;
     --animate-scroll-x: scroll-x var(--speed, 30s) linear infinite var(--direction, forwards);
     --animate-scroll-y: scroll-y 30s linear infinite forwards;
-    --animate-drop: drop 10s linear infinite forwards;
+    --animate-drop: drop 6s linear infinite forwards;
     --animate-fade-in: fade-in 0.5s ease-in-out both;
     --animate-fade-out: fade-out 0.5s ease-in-out both;
     --animate-lighting: lighting 1.25s ease-out forwards;
