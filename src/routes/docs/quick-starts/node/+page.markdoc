@@ -170,7 +170,7 @@ async function seedDatabase() {
         collectionId: todoCollection.$id,
         documentId: sdk.ID.unique(),
         data: testTodo3
-    );
+    });
 }
 ```
 
