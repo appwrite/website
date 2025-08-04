@@ -61,7 +61,7 @@
                         >
                             {#each lines as line}
                                 <div
-                                    class={classNames(' relative h-(--height) w-px', line.color)}
+                                    class={classNames('relative h-(--height) w-px', line.color)}
                                     style:--height="{line.height}px"
                                 ></div>
                             {/each}
