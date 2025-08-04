@@ -28,17 +28,11 @@
                     <p>
                         As Appwrite Cloud continues to age, it also continues to improve over time.
                         With new products, features, more support, more regions, and anything else
-                        needed to get your projects to production faster. Appwrite is a team of developers.
+                        needed to get your projects to production faster.
                     </p>
                     <p>
-                        It might sound like a cliche, but this is really only the beginning. We have
-                        more exciting news lined up for you in the next few months. And this time
-                        around, it might not be entirely what you would expect from a
-                        backend-as-a-service platform.
-                    </p>
-                    <p>
-                        Let’s keep building the future together! Let’s keep you building like a team
-                        of hundreds!
+                       We look forward to continuing to make Appwrite the most complete development  
+                       platform available, enabling you to build like a team of hundreds.      
                     </p>
                 </div></Cell
             >
