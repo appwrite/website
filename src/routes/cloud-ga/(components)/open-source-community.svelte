@@ -63,7 +63,7 @@
                 </div>
             </Cell>
 
-            <Cell column={4} class="pb-12 md:pb-40">
+            <Cell column={4} class="px-4 pb-12 md:pb-40">
                 <Numbers {numbers} />
             </Cell>
         </Grid>
