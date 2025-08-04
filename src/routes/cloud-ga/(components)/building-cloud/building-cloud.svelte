@@ -58,7 +58,7 @@
 
             <Cell columnStart={1} column={2} class="px-4 pt-30 pb-40"
                 ><p
-                    class="animate-text before:bg-accent text-body ml-4 font-medium text-white before:absolute before:left-4 before:mt-1 before:h-4 before:w-px md:ml-0 md:max-w-3/4 md:before:left-0"
+                    class="animate-text before:bg-accent text-paragraph-lg text-body ml-4 font-medium text-white before:absolute before:left-4 before:mt-1 before:h-4 before:w-px md:ml-0 md:max-w-3/4 md:before:left-0"
                 >
                     To become Generally Available, we set a few milestones that we had to achieve
                     across different factors. Some are easier to measure than others, but never less
