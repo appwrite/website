@@ -14,7 +14,7 @@
 
     const testimonials = [
         {
-            blurb: 'A special thanks to Appwrite for shouldering the heavy lifting behind StoreAlert, providing robust features and seamless functionality that allow us to focus on what matters most—empowering merchants with real-time insights and control over their store operations.',
+            blurb: 'A special thanks to Appwrite for shouldering the heavy lifting behind StoreAlert, providing robust features and seamless functionality that allow us to focus on what matters most.',
             name: 'Hassan Ahmed',
             title: 'Full Stack Developer',
             company: 'DevKind',
