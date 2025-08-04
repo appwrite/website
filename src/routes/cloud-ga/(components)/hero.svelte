@@ -24,8 +24,7 @@
                     <h1
                         class="text-headline font-aeonik-pro text-primary max-w-4xl gap-4 text-balance"
                     >
-                        Appwrite Cloud is Generally Available
-                        <span class="text-accent -ml-4">_</span>
+                        Appwrite Cloud is Generally Available<span class="text-accent">_</span>
                     </h1>
                     <div class="text-description text-secondary max-w-3xl space-y-8 font-medium">
                         <p class="animate-text" style:animation-delay="600ms">

@@ -9,13 +9,13 @@
     const { numbers, class: className }: Props = $props();
 </script>
 
-<div class={classNames('relative h-full', className)}>
+<div class={classNames('relative -mx-4 h-full px-4', className)}>
     <div class="mx-auto flex w-full max-w-6xl flex-col justify-center">
-        <div class="flex flex-wrap justify-between gap-4 pt-8 md:gap-8">
+        <div class="grid grid-cols-2 place-content-between gap-4 pt-8 md:grid-cols-4 md:gap-8">
             {#each numbers as { label, description }, i}
                 <div
                     class={classNames(
-                        'border-gradient relative flex h-full flex-1 flex-col rounded-2xl bg-[#232325]/90 p-5 before:rounded-2xl after:rounded-2xl'
+                        'border-gradient relative flex h-full flex-col rounded-2xl bg-[#232325]/90 p-5 before:rounded-2xl after:rounded-2xl'
                     )}
                     style:--border-gradient-before="linear-gradient(180deg,rgba(255,255,255,0.12),transparent)"
                     style:--border-gradient-after="linear-gradient(180deg,rgba(255,255,255,0),transparent)"
