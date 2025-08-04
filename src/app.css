@@ -334,8 +334,8 @@
     --text-hero: clamp(3.2rem, 7vw, 4.5rem);
     --text-hero--line-height: clamp(3.125rem, 7.5vw, 4.25rem);
     --text-hero--letter-spacing: var(--tracking-compressed);
-    --text-headline: clamp(3.5rem, 8vw, 5.5rem);
-    --text-headline--line-height: clamp(3.5rem, 8.5vw, 5.75rem);
+    --text-headline: clamp(3.5rem, 8vw, 4.5rem);
+    --text-headline--line-height: clamp(3.5rem, 8.5vw, 4.625rem);
     --text-headline--letter-spacing: var(--tracking-compressed);
 
     /* Letter spacing */
