@@ -38,7 +38,7 @@
                     level.
                 </p></Cell
             >
-            <Cell column={4}>
+            <Cell column={4} class="pb-8 md:py-20">
                 <div
                     class="border-gradient relative rounded-2xl bg-[#232325]/90 py-8 before:rounded-2xl after:rounded-2xl"
                 >

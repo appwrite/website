@@ -41,7 +41,7 @@
                     </h2>
                 </div>
             </Cell>
-            <Cell column={4} columnStart={3} class="px-4 pb-8 md:py-20">
+            <Cell column={4} columnStart={3} class="px-4 pb-8 md:pt-20">
                 <div class="text-paragraph-lg space-y-8">
                     <p>
                         One of the exciting releases this year was the announcement of the Appwrite
