@@ -18,7 +18,7 @@
             <Cell column={2} columnStart={1} class="px-4 py-12 md:py-40">
                 <h2
                     data-animate={animate}
-                    class="text-subtitle text-primary font-aeonik-pro before:bg-accent text-pretty before:absolute before:-left-0.25 before:mt-2 before:h-6 before:w-px before:origin-top before:scale-y-0 before:transition-transform before:duration-700 data-[animate=true]:before:scale-y-100"
+                    class="text-subtitle text-primary font-aeonik-pro before:bg-accent text-pretty before:absolute before:-left-0.25 before:mt-1.25 before:h-4.75 before:w-px before:origin-top before:scale-y-0 before:transition-transform before:duration-700 data-[animate=true]:before:scale-y-100"
                 >
                     What's next
                 </h2>

@@ -136,13 +136,13 @@
     });
 </script>
 
-<div class="mx-auto flex h-fit max-w-6xl flex-1 gap-3">
+<div class="mx-auto flex h-fit max-w-6xl flex-1 gap-3" use:useInView>
     <Grid rows={2} bottomBorder>
         <Cell column={2} columnStart={1} class="px-4 pt-12 md:pt-40">
-            <div class="space-y-4" use:useInView>
+            <div class="space-y-4">
                 <h2
                     data-animate={animate}
-                    class="text-subtitle text-primary font-aeonik-pro before:bg-accent text-pretty before:absolute before:-left-0.25 before:mt-2 before:h-6 before:w-px before:origin-top before:scale-y-0 before:transition-transform before:duration-700 data-[animate=true]:before:scale-y-100"
+                    class="text-subtitle text-primary font-aeonik-pro before:bg-accent text-pretty before:absolute before:-left-0.25 before:mt-1.25 before:h-6 before:w-px before:origin-top before:scale-y-0 before:transition-transform before:duration-700 data-[animate=true]:before:scale-y-100"
                 >
                     All in one development<br /> platform
                 </h2>
