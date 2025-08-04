@@ -15,7 +15,7 @@
             {#each numbers as { label, description }, i}
                 <div
                     class={classNames(
-                        'border-gradient relative flex h-full flex-1 flex-col gap-1 rounded-2xl bg-[#232325]/90 p-5 before:rounded-2xl after:rounded-2xl'
+                        'border-gradient relative flex h-full flex-1 flex-col rounded-2xl bg-[#232325]/90 p-5 before:rounded-2xl after:rounded-2xl'
                     )}
                     style:--border-gradient-before="linear-gradient(180deg,rgba(255,255,255,0.12),transparent)"
                     style:--border-gradient-after="linear-gradient(180deg,rgba(255,255,255,0),transparent)"
@@ -25,7 +25,7 @@
                     >
                         {label}
                     </h3>
-                    <p class="text-description text-secondary">{description}</p>
+                    <p class="text-description text-secondary -mt-1">{description}</p>
                 </div>
             {/each}
         </div>
