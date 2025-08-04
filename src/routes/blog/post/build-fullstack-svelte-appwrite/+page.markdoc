@@ -11,23 +11,7 @@ category: tutorial
 
 Managing personal finances is a common need, and building an expense tracker is an excellent way to learn full-stack development with Svelte. In this tutorial, we'll create a web application that helps users track their spending.
 
-Users will be able to sign up, log their expenses and categorize them to view spending patt    if (editingExpense) {
-      await databases.updateDocument({
-        databaseId: DATABASE_ID,
-        collectionId: EXPENSES_COLLECTION_ID,
-        documentId: editingExpense.$id,
-        data: {
-          ...expenseData,
-          updatedAt: now
-        }
-      })
-    } else {
-      await databases.createDocument({
-        databaseId: DATABASE_ID,
-        collectionId: EXPENSES_COLLECTION_ID,
-        documentId: ID.unique(),
-        data: expenseData
-      }) end, you will have built an app that looks and functions like this:
+Users will be able to sign up, log their expenses, and categorize them to view spending patterns. By the end, you will have built an app that looks and functions like this:
 
 ![Expense app demo](/images/blog/build-fullstack-svelte-appwrite/expense-app-demo.gif)
 
