@@ -41,6 +41,8 @@
             <Cell column={4} class="pb-8 md:py-20">
                 <div
                     class="border-gradient relative rounded-2xl bg-[#232325]/90 py-8 before:rounded-2xl after:rounded-2xl"
+                    style:--border-gradient-before="linear-gradient(180deg,rgba(255,255,255,0.12),transparent)"
+                    style:--border-gradient-after="linear-gradient(180deg,rgba(255,255,255,0),transparent)"
                 >
                     <img class="rounded-3xl" src={Graph} alt="Placeholder" />
                 </div>

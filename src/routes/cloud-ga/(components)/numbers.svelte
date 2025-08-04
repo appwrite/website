@@ -15,6 +15,8 @@
             {#each numbers as { label, description }}
                 <div
                     class="border-gradient relative h-full w-full rounded-2xl bg-[#232325]/90 p-4 before:rounded-2xl after:rounded-2xl md:w-[calc(100%_-_24px)]"
+                    style:--border-gradient-before="linear-gradient(180deg,rgba(255,255,255,0.12),transparent)"
+                    style:--border-gradient-after="linear-gradient(180deg,rgba(255,255,255,0),transparent)"
                 >
                     <h3
                         class="md:tracking-squeezed font-aeonik-pro text-primary text-[1.25rem] text-pretty md:text-[2rem]"
