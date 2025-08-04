@@ -14,7 +14,9 @@
                     Build like a team of hundreds<span class="text-accent">_</span>
                 </h3>
 
-                <div class="flex w-full flex-col items-center gap-4 md:w-fit md:flex-row lg:-mr-4">
+                <div
+                    class="flex w-full flex-col items-center gap-2 md:w-fit md:flex-row md:gap-4 lg:-mr-4"
+                >
                     <Button
                         href={getAppwriteDashboardUrl()}
                         class="w-full! lg:w-fit!"
