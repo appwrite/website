@@ -51,7 +51,7 @@
                     way, we ensure that Appwrite is accessible to all of you.
                 </p></Cell
             >
-            <Cell column={4}>
+            <Cell column={4} class="pt-30">
                 <div
                     class="border-gradient relative rounded-2xl bg-[#232325]/90 before:rounded-2xl after:rounded-2xl"
                     style:--border-gradient-before="linear-gradient(180deg,rgba(255,255,255,0.12),transparent)"
