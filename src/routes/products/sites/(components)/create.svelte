@@ -2,7 +2,6 @@
     import { write } from '$lib/animations';
     import { inView } from 'motion';
     import Dashboard from '../(assets)/dashboards/create-dashboard.svg';
-    import { object } from 'zod';
 
     let eyebrow = $state('');
     let container: HTMLElement;
