@@ -14,9 +14,9 @@
     };
 
     const numbers = [
-        { label: '52k', description: 'GitHub stars' },
-        { label: '200k', description: 'followers across socials' },
-        { label: '46k', description: 'commits to GitHub' },
+        { label: '52k+', description: 'GitHub stars' },
+        { label: '250k+', description: 'Followers across socials' },
+        { label: '46k+', description: 'Commits to GitHub' },
         { label: '610k+', description: 'Discord messages' }
     ];
 </script>
@@ -40,10 +40,10 @@
             </Cell>
             <Cell column={4} columnStart={3} class="px-4 pb-8 md:py-20"
                 ><p class="text-paragraph-lg">
-                    The milestone we achieved today officially started 22 months ago when we
+                    The milestone we achieved today officially started 26 months ago when we
                     launched Appwrite private beta and enrolled users onto the platform bit by bit.
                     Since then, we have reached many milestones before taking Cloud to the next
-                    step.
+                    level.
                 </p></Cell
             >
             <Cell column={4}>
