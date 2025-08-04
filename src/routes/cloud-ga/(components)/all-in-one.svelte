@@ -162,7 +162,7 @@
                     class="relative grid grid-cols-1 place-items-center gap-0 [background:_radial-gradient(50%_50%_at_50%_50%,_rgba(253,_54,_110,_0.1)_0%,_rgba(253,_54,_110,_0)_100%)] lg:grid-cols-12"
                 >
                     <!-- left side -->
-                    <div class="col-span-3 w-fit translate-x-6">
+                    <div class="col-span-3 hidden w-fit translate-x-6 md:block">
                         <div
                             class="text-body flex items-center gap-2 font-medium text-white max-sm:justify-center lg:flex-col lg:items-end lg:gap-12"
                         >
@@ -208,7 +208,7 @@
                     </div>
                     <!-- window -->
                     <div
-                        class="window md:asepct-[19/13] col-span-6 flex aspect-[19/12] w-full items-center justify-center rounded-[48px] border-dashed border-transparent p-3 md:border"
+                        class="window md:asepct-[19/13] col-span-6 flex aspect-[19/14] w-full items-center justify-center rounded-[48px] border-dashed border-transparent py-4 md:border md:p-3"
                         style:animation-delay="0.6s"
                     >
                         <div
@@ -257,7 +257,7 @@
                         </div>
                     </div>
                     <!-- right side -->
-                    <div class="col-span-3 mt-8 w-full lg:mt-0">
+                    <div class="col-span-3 mt-8 hidden w-full md:block lg:mt-0">
                         <div
                             class="text-body flex gap-2 font-medium text-white max-lg:justify-center lg:flex-col lg:gap-12"
                         >
@@ -299,6 +299,50 @@
                                 </div>
                             {/each}
                         </div>
+                    </div>
+
+                    <!-- mobile -->
+                    <div
+                        class="text-body flex flex-wrap items-center justify-center gap-2 font-medium text-white"
+                    >
+                        {#each products as product, index}
+                            {@const isActive = index === activeIndex}
+                            <div
+                                class="group relative ml-0 flex basis-[calc(50%_-_4px)] items-center"
+                            >
+                                <button
+                                    class={classNames(
+                                        'bg-card border-smooth md:text-caption flex w-full cursor-pointer items-center justify-center gap-2 rounded-xl border py-2 pr-4 pl-3 text-sm backdrop-blur-md transition-all hover:bg-white/8 md:mr-[100px] md:ml-auto',
+                                        {
+                                            'bg-accent/12 border-accent/36 md:border-smooth md:bg-card':
+                                                isActive
+                                        }
+                                    )}
+                                    onmouseover={() => handleSetActive(index)}
+                                    onfocus={() => handleSetActive(index)}
+                                    onmouseout={() => handleMouseOut()}
+                                    onblur={() => handleMouseOut()}
+                                >
+                                    <img
+                                        src={product.icon}
+                                        alt={product.label}
+                                        class="size-4 md:size-6"
+                                    />
+                                    {product.label}
+                                </button>
+                                <div
+                                    class={classNames(
+                                        'absolute right-0 bottom-1/2 hidden lg:block',
+                                        {
+                                            'top-1/2': index < 2,
+                                            'bottom-1/2': index > 2
+                                        }
+                                    )}
+                                >
+                                    {@html product.line(isActive)}
+                                </div>
+                            </div>
+                        {/each}
                     </div>
                 </div>
             </div>
