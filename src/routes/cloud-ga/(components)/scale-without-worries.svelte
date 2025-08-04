@@ -59,8 +59,8 @@
                 <p class="text-paragraph-lg">
                     We aimed to build a platform that could easily scale to 1M users overnight
                     without you breaking a sweat over scalability or finance. Today, we are
-                    confident that we have reached this state as the numbers show, Appwrite Cloud is
-                    stable for any project to grow rapidly unexpectedly.
+                    confident that we have reached this state. Appwrite Cloud is
+                    stable for any project to grow rapidly, unexpectedly.
                 </p>
             </Cell>
 
