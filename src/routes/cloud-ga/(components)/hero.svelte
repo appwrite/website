@@ -59,7 +59,7 @@
                 {#if i !== 1 && i !== 2}
                     <Cell {columnStart} class="absolute">
                         <div
-                            class={classNames('absolute flex flex-col gap-80', {
+                            class={classNames('absolute flex flex-col gap-10', {
                                 'left-0 -ml-px': i !== 4,
                                 'right-0 -mr-px': i === 4
                             })}
@@ -67,7 +67,7 @@
                             {#each lines as line}
                                 <div
                                     class={classNames(
-                                        'animate-drop relative h-(--height) w-px',
+                                        '//animate-drop relative h-(--height) w-px',
                                         line.from
                                     )}
                                     style:--speed="2s"
