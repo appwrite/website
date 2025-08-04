@@ -162,7 +162,7 @@
                     class="relative grid grid-cols-1 place-items-center gap-0 [background:_radial-gradient(50%_50%_at_50%_50%,_rgba(253,_54,_110,_0.1)_0%,_rgba(253,_54,_110,_0)_100%)] lg:grid-cols-12"
                 >
                     <!-- left side -->
-                    <div class="col-span-3 mb-8 w-fit">
+                    <div class="col-span-3 w-fit translate-x-6">
                         <div
                             class="text-body flex items-center gap-2 font-medium text-white max-sm:justify-center lg:flex-col lg:items-end lg:gap-12"
                         >
@@ -208,7 +208,7 @@
                     </div>
                     <!-- window -->
                     <div
-                        class="window md:asepct-[19/13] col-span-6 flex aspect-[19/12] w-full items-center justify-center rounded-[48px] border-dashed border-transparent md:border"
+                        class="window md:asepct-[19/13] col-span-6 flex aspect-[19/12] w-full items-center justify-center rounded-[48px] border-dashed border-transparent p-3 md:border"
                         style:animation-delay="0.6s"
                     >
                         <div
