@@ -44,17 +44,17 @@
                 ><div class="text-paragraph-lg space-y-8">
                     <p>
                         The open-source community supporting Appwrite has been an undeniable
-                        advantage in Appwrite’s success. They have been the first line of support
+                        advantage in Appwrite’s success. You have been the first line of support
                         when Appwrite first started.
                     </p>
                     <p>
-                        Today we have scaled out that support with dedicated programs, processes,
+                        Today, Appwrite has scaled out that support with dedicated programs, processes,
                         resources, partners, and support engineers. No matter what you are building,
-                        from students to enterprise, Appwrite helps on you get to production, fast.
+                        from students to enterprises, Appwrite helps you get to production fast.
                     </p>
 
                     <p>
-                        We don’t just provide you with an all in one development platform, we are
+                        Appwrite don’t just provide you with an all-in-one development platform, we are
                         your dedicated partner in your development journey.
                     </p>
                     <div
