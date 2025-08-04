@@ -75,7 +75,7 @@ const resultHeic = storage.getFilePreview({
 });
 console.log(resultHeic.href);
 
-const result = storage.getFilePreview({
+const resultAvif = storage.getFilePreview({
   bucketId: 'photos',
   fileId: 'sunset.jpeg',
   output: 'avif'
