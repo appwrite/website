@@ -108,13 +108,17 @@
 
     function scrollCategories(direction: 'left' | 'right') {
         if (!categoriesElement) return;
-        
+
         const scrollAmount = 200;
         const currentScroll = categoriesElement.scrollLeft;
-        const targetScroll = direction === 'left' 
-            ? Math.max(0, currentScroll - scrollAmount)
-            : Math.min(categoriesElement.scrollWidth - categoriesElement.offsetWidth, currentScroll + scrollAmount);
-        
+        const targetScroll =
+            direction === 'left'
+                ? Math.max(0, currentScroll - scrollAmount)
+                : Math.min(
+                      categoriesElement.scrollWidth - categoriesElement.offsetWidth,
+                      currentScroll + scrollAmount
+                  );
+
         categoriesElement.scrollTo({
             left: targetScroll,
             behavior: 'smooth'
@@ -280,8 +284,8 @@
                         <div
                             class="categories-wrapper"
                             data-state={isStart ? 'start' : isEnd ? 'end' : 'middle'}
-                            onmouseenter={() => isHovering = true}
-                            onmouseleave={() => isHovering = false}
+                            onmouseenter={() => (isHovering = true)}
+                            onmouseleave={() => (isHovering = false)}
                             role="navigation"
                         >
                             <button
@@ -292,7 +296,7 @@
                             >
                                 <span class="web-icon-chevron-left"></span>
                             </button>
-                            
+
                             <ul
                                 class="categories flex gap-2 overflow-x-auto"
                                 onscroll={handleScroll}
@@ -326,7 +330,7 @@
                                     </li>
                                 {/each}
                             </ul>
-                            
+
                             <button
                                 class="category-nav-arrow right"
                                 class:visible={isHovering && !isEnd}
