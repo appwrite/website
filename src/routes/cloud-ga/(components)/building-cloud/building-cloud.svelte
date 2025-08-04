@@ -34,8 +34,8 @@
             <Cell column={2} columnStart={3} class="px-4 pb-4 md:py-32">
                 <div class="text-paragraph-lg space-y-8">
                     <p>
-                        When we started working on our plans for Appwrite Cloud we knew we had a
-                        hard task ahead of us as we we didn’t want to just be a wrapper on top of
+                        When we started working on our plans for Appwrite Cloud, we knew we had a
+                        hard task ahead of us, as we didn’t want to just be a wrapper on top of
                         AWS or Cloudflare. With no pre-built building blocks, we wanted to customize
                         every piece in the platform to create the most complete developer experience
                         we can imagine.
@@ -46,12 +46,12 @@
                     </p>
                     <p>
                         Another benefit of this approach is the ability to control the cost of
-                        building with Appwrite as we reduce our vendor dependency. Making Appwrite’s
+                        building with Appwrite as we reduce vendor dependency. Making Appwrite’s
                         pricing more accessible as part of our mission.
                     </p>
                     <p>
-                        We want to share with you the journey we have taken together with open
-                        source community to reach GA.
+                        Together with the open-source community, we have reached GA.
+                        Today, we share that journey with you.
                     </p>
                 </div>
             </Cell>
