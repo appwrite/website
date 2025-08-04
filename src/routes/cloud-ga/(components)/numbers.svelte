@@ -11,12 +11,14 @@
 
 <div class={classNames('relative h-full', className)}>
     <div class="mx-auto flex w-full max-w-6xl flex-col justify-center">
-        <div
-            class="grid grid-cols-2 place-content-between place-items-center gap-y-4 pt-8 max-md:gap-x-4 lg:grid-cols-4"
-        >
-            {#each numbers as { label, description }}
+        <div class="grid grid-cols-2 place-content-between gap-4 pt-8 md:grid-cols-4">
+            {#each numbers as { label, description }, i}
                 <div
-                    class="border-gradient relative h-full w-full rounded-2xl bg-[#232325]/90 p-4 before:rounded-2xl after:rounded-2xl"
+                    class={classNames(
+                        'border-gradient relative h-full w-[calc(100%_-_16px)] rounded-2xl bg-[#232325]/90 p-4 before:rounded-2xl after:rounded-2xl'
+                    )}
+                    style:grid-column-start={i + 1}
+                    style:grid-column-end={i + 2}
                     style:--border-gradient-before="linear-gradient(180deg,rgba(255,255,255,0.12),transparent)"
                     style:--border-gradient-after="linear-gradient(180deg,rgba(255,255,255,0),transparent)"
                 >

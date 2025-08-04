@@ -22,7 +22,7 @@
 
 <div
     class={classNames(
-        'grid h-full w-full auto-rows-min grid-cols-1 grid-rows-[1fr] md:grid-cols-[repeat(var(--columns),_1fr)]',
+        'grid h-full w-full auto-rows-min grid-cols-1  grid-rows-[1fr] md:grid-cols-[repeat(var(--columns),_1fr)]',
         'border-smooth border-dashed md:border-l',
         'relative',
         className,
