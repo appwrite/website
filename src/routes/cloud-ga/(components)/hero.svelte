@@ -20,7 +20,7 @@
     <div class="flex w-full max-w-6xl flex-col justify-center">
         <Grid rows={2}>
             <Cell column={3} horizontalCenter verticalCenter class="pt-12 md:pt-40">
-                <div class="max-w-4xl space-y-8 p-4">
+                <div class="max-w-4xl space-y-8">
                     <h1
                         class="text-headline font-aeonik-pro text-primary max-w-4xl gap-4 text-balance"
                     >
