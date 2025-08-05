@@ -332,7 +332,7 @@
     --text-subtitle--line-height: clamp(1.75rem, 3.5vw, 2.25rem);
     --text-subtitle--letter-spacing: var(--tracking-squeezed);
     --text-title: clamp(2rem, 5vw, 3rem);
-    --text-title--line-height: clamp(2.125rem, 5.5vw, 2.75rem);
+    --text-title--line-height: clamp(2.125rem, 5.5vw, 3.25rem);
     --text-title--letter-spacing: var(--tracking-squeezed);
     --text-title-lg: clamp(2.85rem, 5vw, 3rem);
     --text-title-lg--line-height: clamp(2.75rem, 5.5vw, 3.5rem);

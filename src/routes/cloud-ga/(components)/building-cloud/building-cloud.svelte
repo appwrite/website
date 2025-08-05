@@ -25,7 +25,7 @@
         <Grid rows={2} bottomBorder>
             <Cell column={2} columnStart={1} class="px-4 pt-12 md:pt-40">
                 <h2
-                    class="font-aeonik-pro text-title text-primary before:bg-accent text-pretty before:absolute before:left-0 before:mt-1 before:h-7.5 before:w-px md:before:-left-0.25 md:before:mt-2"
+                    class="font-aeonik-pro text-title text-primary before:bg-accent text-pretty before:absolute before:left-0 before:mt-1.5 before:h-6 before:w-px md:before:-left-0.25 md:before:mt-2.5 md:before:h-9"
                 >
                     Building Appwrite<br /> Cloud for you
                 </h2>

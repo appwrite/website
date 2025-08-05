@@ -53,7 +53,7 @@
                     </p>
 
                     <div
-                        class="illustration grid grid-cols-2 place-items-center justify-between gap-4 p-4 md:grid-cols-4"
+                        class="illustration grid grid-cols-2 justify-between gap-4 p-4 md:grid-cols-4 md:place-items-center"
                     >
                         {#each icons as { label, src }}
                             <div class="flex items-center gap-2">
@@ -66,8 +66,8 @@
                     <p class="text-paragraph-lg max-w-lg px-4">
                         More recently, we have added three new features to ensure even more security
                         and compliance regulations are in place: <span class="text-primary"
-                            >Roles for based access management, MFA for the Appwrite Console,
-                            and Database Backups</span
+                            >Roles for based access management, MFA for the Appwrite Console, and
+                            Database Backups</span
                         >.
                     </p>
                 </div>
