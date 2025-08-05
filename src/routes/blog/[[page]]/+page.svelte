@@ -634,17 +634,19 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        background: hsl(var(--web-color-background-docs));
-        border: 1px solid hsl(var(--web-color-border));
+        background: transparent;
+        border: none;
         border-radius: var(--border-radius-S, 8px);
         cursor: pointer;
         opacity: 0;
-        transition: opacity 250ms ease;
+        transition:
+            opacity 250ms ease,
+            background-color 250ms ease;
         z-index: 200;
     }
 
     .category-nav-arrow:hover {
-        background: hsl(var(--web-color-background-tertiary));
+        background: hsl(var(--web-color-background-tertiary) / 0.8);
     }
 
     .category-nav-arrow.visible {
