@@ -64,7 +64,7 @@
             </Cell>
             <Cell columnStart={3} column={2} class="px-4 py-10 md:py-30">
                 <div
-                    class="mx-4 grid grid-cols-1 grid-rows-4 gap-x-8 gap-y-2 md:mx-auto lg:grid-flow-col lg:grid-cols-2"
+                    class="mx-4 grid grid-cols-1 grid-rows-4 gap-x-8 gap-y-1 md:mx-auto lg:grid-flow-col lg:grid-cols-2"
                 >
                     {#each missions as mission, i}
                         {@const index = `0${i + 1}`}
