@@ -22,7 +22,7 @@
             url: '/blog/post/customer-story-storealert'
         },
         {
-            blurb: "If you're looking for a backend server that is both powerful and easy to use, check out @appwrite . With its robust feature set and open-source nature, it's the perfect choice for developers who want to build secure and scalable applications without breaking the bank.",
+            blurb: "With its robust feature set and open-source nature, Appwrite is the perfect choice for developers who want to build secure and scalable applications without breaking the bank.",
             name: 'Souvik Sarkar',
             title: '@Jeet_2003',
             avatar: '/images/testimonials/souvik-sarkar.png'
