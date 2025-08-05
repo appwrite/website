@@ -33,14 +33,18 @@
                     >
                     <h2
                         data-animate={animate}
-                        class="text-subtitle text-primary font-aeonik-pro before:bg-accent text-pretty before:absolute before:-left-0.25 before:mt-1.25 before:h-4.75 before:w-px before:origin-top before:scale-y-0 before:transition-transform before:duration-700 data-[animate=true]:before:scale-y-100"
+                        class="text-subtitle text-primary font-aeonik-pro before:bg-accent text-pretty before:absolute before:-left-0.25 before:mt-1 before:h-5 before:w-px before:origin-top before:scale-y-0 before:transition-transform before:duration-700 data-[animate=true]:before:scale-y-100 md:before:mt-1.75 md:before:h-6"
                     >
                         The Open Source<br /> community as a guide
                     </h2>
                 </div>
             </Cell>
-            <Cell column={4} columnStart={3} class="px-4 pt-12 md:pt-30"
-                ><p class="text-paragraph-lg text-pretty">
+            <Cell
+                column={4}
+                columnStart={3}
+                class="text-paragraph-lg space-y-8 px-4 pt-8 text-pretty md:pt-30"
+            >
+                <p>
                     We have said it a million times, and we will say it again: <span
                         class="text-primary inline-block font-medium"
                         >Developer experience is at the top of the Appwrite list.</span

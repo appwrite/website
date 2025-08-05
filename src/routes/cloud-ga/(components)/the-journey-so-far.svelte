@@ -51,13 +51,13 @@
                     >
                     <h2
                         data-animate={animate}
-                        class="text-subtitle text-primary font-aeonik-pro before:bg-accent text-pretty before:absolute before:-left-0.25 before:mt-1.25 before:h-4.75 before:w-px before:origin-top before:scale-y-0 before:transition-transform before:duration-700 data-[animate=true]:before:scale-y-100"
+                        class="text-subtitle text-primary font-aeonik-pro before:bg-accent text-pretty before:absolute before:-left-0.25 before:mt-1 before:h-5 before:w-px before:origin-top before:scale-y-0 before:transition-transform before:duration-700 data-[animate=true]:before:scale-y-100 md:before:mt-1.75 md:before:h-6"
                     >
                         The journey so far
                     </h2>
                 </div>
             </Cell>
-            <Cell column={4} columnStart={3} class="px-4 pt-12 md:pt-30"
+            <Cell column={4} columnStart={3} class="px-4 pt-8 md:pt-30"
                 ><p class="text-paragraph-lg">
                     The milestone we achieved today officially started 26 months ago when we
                     launched Appwrite private beta and enrolled users onto the platform bit by bit.
@@ -66,6 +66,12 @@
                 </p></Cell
             >
             <Cell column={4} class="px-4 pb-12 md:pt-8 md:pb-30">
+                <span
+                    data-animate={animate}
+                    class="text-paragraph-lg text-secondary before:bg-accent mt-8 inline-block max-w-lg text-pretty before:absolute before:-left-0.25 before:mt-2 before:h-3.5 before:w-px before:origin-top before:scale-y-0 before:transition-transform before:duration-700 data-[animate=true]:before:scale-y-100"
+                    >To become Generally Available we set milestones across our journey to reach
+                    over time.</span
+                >
                 <div
                     class="border-gradient relative hidden rounded-2xl bg-[#232325]/90 before:rounded-2xl after:rounded-2xl md:block"
                     style:--border-gradient-before="linear-gradient(180deg,rgba(255,255,255,0.12),transparent)"
