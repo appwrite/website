@@ -13,10 +13,10 @@ export const useMousePosition = () => {
     });
 
     const action = (node: HTMLElement | SVGSVGElement) => {
-        const handleMouseMove = ({ clientX, pageY }: MouseEvent) => {
+        const handleMouseMove = ({ clientX, clientY }: MouseEvent) => {
             position = {
                 x: clientX - 12,
-                y: 350
+                y: clientY - 350
             };
         };
         hover(node, () => {
