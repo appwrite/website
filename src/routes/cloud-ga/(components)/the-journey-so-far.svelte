@@ -65,7 +65,7 @@
                     level.
                 </p></Cell
             >
-            <Cell column={4} class="px-4 pb-12 md:pt-8 md:pb-30">
+            <Cell column={4} class="px-4 pb-12 md:p-8 md:pb-30">
                 <span
                     data-animate={animate}
                     class="text-paragraph-lg text-secondary before:bg-accent mt-8 inline-block max-w-lg text-pretty before:absolute before:-left-0.25 before:mt-2 before:h-3.5 before:w-px before:origin-top before:scale-y-0 before:transition-transform before:duration-700 data-[animate=true]:before:scale-y-100"
@@ -73,7 +73,7 @@
                     over time.</span
                 >
                 <div
-                    class="border-gradient relative hidden rounded-2xl bg-[#232325]/90 before:rounded-2xl after:rounded-2xl md:block"
+                    class="border-gradient relative mt-8 hidden rounded-2xl bg-[#232325]/90 before:rounded-2xl after:rounded-2xl md:block"
                     style:--border-gradient-before="linear-gradient(180deg,rgba(255,255,255,0.12),transparent)"
                     style:--border-gradient-after="linear-gradient(180deg,rgba(255,255,255,0),transparent)"
                 >

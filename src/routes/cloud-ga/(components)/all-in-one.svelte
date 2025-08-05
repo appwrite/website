@@ -159,7 +159,7 @@
             <Cell column={4} class="pt-8 pb-12 md:pb-30">
                 <div class="mx-auto flex w-full flex-col gap-16 bg-center px-4">
                     <div
-                        class="relative grid grid-cols-1 place-items-center gap-0 [background:_radial-gradient(50%_50%_at_50%_50%,_rgba(253,_54,_110,_0.1)_0%,_rgba(253,_54,_110,_0)_100%)] lg:grid-cols-12"
+                        class="relative grid grid-cols-1 place-items-center gap-0 md:[background:_radial-gradient(50%_50%_at_50%_50%,_rgba(253,_54,_110,_0.1)_0%,_rgba(253,_54,_110,_0)_100%)] lg:grid-cols-12"
                     >
                         <!-- left side -->
                         <div
