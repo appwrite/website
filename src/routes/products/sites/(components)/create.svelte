@@ -36,7 +36,7 @@
             <img
                 src={Dashboard}
                 alt="Create a site dashboard"
-                class="h-full w-full rounded-t-2xl"
+                class="h-full w-full rounded-t-2xl object-cover object-[center_top]"
             />
         </div>
 
