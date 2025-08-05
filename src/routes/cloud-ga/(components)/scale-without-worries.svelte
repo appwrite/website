@@ -65,7 +65,7 @@
             </Cell>
 
             <Cell column={4} columnStart={1} class="pb-12 md:pb-40">
-                <div class="grid grid-cols-1 gap-4 px-4 md:grid-cols-3">
+                <div class="grid grid-cols-1 gap-4 px-4 md:grid-cols-3 md:gap-8">
                     {#each testimonials as testimonial}
                         <div class="bg-card border-smooth h-fit rounded-2xl border p-4">
                             <span>{testimonial.blurb}</span>
