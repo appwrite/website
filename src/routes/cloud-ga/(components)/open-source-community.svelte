@@ -60,8 +60,8 @@
                     open-source. The Appwrite self-hosted instance will offer the same experience as
                     Appwrite Cloud, and our dedication to the Free plan remains unchanged. We're
                     ensuring Appwrite stays accessible for everyone to build with.
-                </p></Cell
-            >
+                </p>
+            </Cell>
             <Cell column={4} class="px-4 pt-8 md:pt-30">
                 <div
                     class="border-gradient relative rounded-2xl bg-[#232325]/90 before:rounded-2xl after:rounded-2xl"
