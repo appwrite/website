@@ -175,7 +175,7 @@
                                     >
                                         <button
                                             class={classNames(
-                                                'bg-card border-smooth md:text-caption flex w-fit cursor-pointer items-center gap-2 rounded-xl border py-2 pr-4 pl-3 text-sm backdrop-blur-md transition-all hover:bg-white/8 md:ml-auto lg:mr-[100px]',
+                                                'bg-card border-smooth md:text-caption flex w-fit cursor-pointer items-center gap-2 rounded-xl border py-2 pr-4 pl-3 text-sm backdrop-blur-md transition-all md:ml-auto lg:mr-[100px]',
                                                 {
                                                     'bg-accent/12 border-accent/36 md:border-smooth md:bg-card':
                                                         isActive
@@ -272,7 +272,7 @@
                                     >
                                         <button
                                             class={classNames(
-                                                'bg-card border-smooth md:text-caption flex cursor-pointer items-center gap-2 rounded-xl border py-2 pr-4 pl-3 text-sm backdrop-blur-md transition-all hover:bg-white/8 md:mr-auto lg:ml-[100px]',
+                                                'bg-card border-smooth md:text-caption flex cursor-pointer items-center gap-2 rounded-xl border py-2 pr-4 pl-3 text-sm backdrop-blur-md transition-all md:mr-auto lg:ml-[100px]',
                                                 {
                                                     'bg-accent/12 border-accent/36 md:border-smooth md:bg-card':
                                                         isActive
@@ -315,7 +315,7 @@
                                 >
                                     <button
                                         class={classNames(
-                                            'bg-card border-smooth md:text-caption flex w-full cursor-pointer items-center justify-center gap-2 rounded-xl border py-2 pr-4 pl-3 text-sm backdrop-blur-md transition-all hover:bg-white/8 md:ml-auto',
+                                            'bg-card border-smooth md:text-caption flex w-full cursor-pointer items-center justify-center gap-2 rounded-xl border py-2 pr-4 pl-3 text-sm backdrop-blur-md transition-all md:ml-auto',
                                             {
                                                 'bg-accent/12 border-accent/36 md:border-smooth md:bg-card':
                                                     isActive
