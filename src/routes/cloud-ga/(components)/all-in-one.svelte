@@ -139,7 +139,7 @@
 <div class="relative h-full scroll-m-16 px-4">
     <div class="mx-auto flex h-fit w-full max-w-6xl flex-1 gap-3" use:useInView>
         <Grid rows={2} bottomBorder>
-            <Cell column={2} columnStart={1} class="px-4 pt-12 md:pt-40">
+            <Cell column={2} columnStart={1} class="px-4 pt-12 md:pt-30">
                 <h2
                     data-animate={animate}
                     class="text-subtitle text-primary font-aeonik-pro before:bg-accent text-pretty before:absolute before:-left-0.5 before:mt-1.25 before:h-6 before:w-px before:origin-top before:scale-y-0 before:transition-transform before:duration-700 data-[animate=true]:before:scale-y-100"
@@ -147,7 +147,7 @@
                     All in one development<br /> platform
                 </h2>
             </Cell>
-            <Cell column={4} columnStart={3} class="px-4 pt-12 md:pt-40"
+            <Cell column={4} columnStart={3} class="px-4 pt-12 md:pt-30"
                 ><div class="text-paragraph-lg">
                     <p>
                         One platform and one subscription to develop, deploy, and scale your
@@ -155,7 +155,7 @@
                     </p>
                 </div>
             </Cell>
-            <Cell column={4} class="pt-8 pb-12 md:pb-40">
+            <Cell column={4} class="pt-8 pb-12 md:pb-30">
                 <div class="mx-auto flex w-full flex-col gap-16 bg-center px-4">
                     <div
                         class="relative grid grid-cols-1 place-items-center gap-0 [background:_radial-gradient(50%_50%_at_50%_50%,_rgba(253,_54,_110,_0.1)_0%,_rgba(253,_54,_110,_0)_100%)] lg:grid-cols-12"

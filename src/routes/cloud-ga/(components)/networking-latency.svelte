@@ -16,7 +16,7 @@
 <div class="relative h-full">
     <div class="mx-auto flex w-full max-w-6xl flex-col justify-center" use:useInView>
         <Grid rows={2} bottomBorder>
-            <Cell column={2} columnStart={1} class="py-12 md:py-20">
+            <Cell column={2} columnStart={1} class="py-12 md:py-30">
                 <div class="space-y-4">
                     <span
                         class="font-aeonik-fono text-secondary text-micro tracking-loose uppercase"
@@ -30,7 +30,7 @@
                     </h2>
                 </div>
             </Cell>
-            <Cell column={4} columnStart={3} class="px-4 pb-8 md:py-20">
+            <Cell column={4} columnStart={3} class="px-4 pb-8 md:py-30">
                 <div class="space-y-8">
                     <p>
                         One of the exciting releases this year was the announcement of the Appwrite
@@ -46,7 +46,7 @@
                     </p>
                 </div>
             </Cell>
-            <Cell column={4} class="pb-20">
+            <Cell column={4} class="pb-30">
                 <Map theme="dark" />
             </Cell>
         </Grid>

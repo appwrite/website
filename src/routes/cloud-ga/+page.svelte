@@ -2,7 +2,7 @@
     import { FooterNav, MainFooter } from '$lib/components';
     import { Main } from '$lib/layouts';
     import { buildOpenGraphImage } from '$lib/utils/metadata';
-    import BuildingCloud from './(components)/building-cloud/building-cloud.svelte';
+    import BuildingCloud from './(components)/building-cloud.svelte';
     import CloudNumbers from './(components)/numbers.svelte';
     import Hero from './(components)/hero.svelte';
     import NetworkingLatency from './(components)/networking-latency.svelte';

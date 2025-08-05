@@ -41,7 +41,7 @@
 <div class="relative h-full scroll-m-16 px-4" id="infrastructure-and-scalability">
     <div class="mx-auto flex w-full max-w-6xl flex-col justify-center" use:useInView>
         <Grid rows={3} bottomBorder>
-            <Cell column={2} columnStart={1} class="mt-12 px-4 md:pt-40 md:pb-30">
+            <Cell column={2} columnStart={1} class="mt-12 px-4 md:py-30">
                 <div class="space-y-4">
                     <span
                         class="font-aeonik-fono text-secondary text-micro tracking-loose inline-block uppercase"
@@ -55,7 +55,7 @@
                     </h2>
                 </div>
             </Cell>
-            <Cell column={4} columnStart={3} class="mt-12 px-4 pb-8 md:pt-40 md:pb-30">
+            <Cell column={4} columnStart={3} class="mt-12 px-4 pb-8 md:py-30">
                 <p class="text-paragraph-lg">
                     We aimed to build a platform that could easily scale to 1M users overnight
                     without you breaking a sweat over scalability or finance. Today, we are
@@ -64,7 +64,7 @@
                 </p>
             </Cell>
 
-            <Cell column={4} columnStart={1} class="pb-12 md:pb-40">
+            <Cell column={4} columnStart={1} class="pb-12 md:pb-30">
                 <div class="grid grid-cols-1 gap-4 px-4 md:grid-cols-3 md:gap-8">
                     {#each testimonials as testimonial}
                         <div class="bg-card border-smooth h-fit rounded-2xl border p-4">

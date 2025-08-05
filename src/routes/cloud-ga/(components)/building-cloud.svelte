@@ -1,9 +1,6 @@
 <script lang="ts">
-    import Grid from '../grid-system/grid.svelte';
-    import Cell from '../grid-system/cell.svelte';
-    import Graph from './graph.svelte';
-    import { inView } from 'motion';
-    import { classNames } from '$lib/utils/classnames';
+    import Grid from './grid-system/grid.svelte';
+    import Cell from './grid-system/cell.svelte';
     import { slugify } from '$lib/utils/slugify';
 
     const missions = [
@@ -31,7 +28,7 @@
                 </h2>
             </Cell>
 
-            <Cell column={2} columnStart={3} class="px-4 pt-12 md:pt-40">
+            <Cell column={2} columnStart={3} class="px-4 pt-8 md:pt-40">
                 <div class="text-paragraph-lg space-y-8">
                     <p>
                         When we started working on our plans for Appwrite Cloud, we knew we had a
@@ -56,7 +53,7 @@
                 </div>
             </Cell>
 
-            <Cell columnStart={1} column={2} class="px-4 py-8"
+            <Cell columnStart={1} column={2} class="px-4 py-10 md:py-30"
                 ><p
                     class="animate-text before:bg-accent text-paragraph-lg ml-4 font-medium text-white before:absolute before:left-4 before:mt-1 before:h-4 before:w-px md:ml-0 md:max-w-3/4 md:before:left-0"
                 >
@@ -65,15 +62,15 @@
                     important.
                 </p>
             </Cell>
-            <Cell columnStart={3} column={2} class="px-4 pt-8 pb-12 md:pb-40">
-                <ul
+            <Cell columnStart={3} column={2} class="px-4 md:py-30">
+                <div
                     class="mx-4 grid grid-cols-1 grid-rows-4 gap-x-8 gap-y-4 md:mx-auto lg:grid-flow-col lg:grid-cols-2"
                 >
                     {#each missions as mission, i}
                         {@const index = `0${i + 1}`}
                         <a
                             href={`#${slugify(mission)}`}
-                            class={classNames('group flex items-center gap-2 text-white')}
+                            class="group flex items-center gap-3 text-white"
                         >
                             <span
                                 class="bg-accent/8 text-caption border-accent/32 relative flex size-6 items-center justify-center overflow-hidden rounded-md border p-3 text-base"
@@ -84,12 +81,12 @@
                                 {index}</span
                             >
                             <span
-                                class="group-hover:decoration-accent group-hover:text-accent font-medium underline transition-colors"
+                                class="text-body group-hover:decoration-accent group-hover:text-accent font-medium underline transition-colors"
                                 >{mission}</span
                             >
                         </a>
                     {/each}
-                </ul>
+                </div>
             </Cell>
         </Grid>
     </div>

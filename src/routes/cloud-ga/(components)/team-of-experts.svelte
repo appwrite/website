@@ -26,7 +26,7 @@
 <div class="relative h-full scroll-m-16 px-4" id="dedicated-support">
     <div class="mx-auto flex w-full max-w-6xl flex-col justify-center" use:useInView>
         <Grid rows={2} bottomBorder>
-            <Cell column={2} columnStart={1} class="px-4 py-12 md:py-40">
+            <Cell column={2} columnStart={1} class="px-4 py-12 md:py-30">
                 <div class="space-y-4">
                     <span
                         class="font-aeonik-fono text-secondary text-micro tracking-loose inline-block uppercase"
@@ -40,7 +40,7 @@
                     </h2>
                 </div>
             </Cell>
-            <Cell column={4} columnStart={3} class="px-4 pb-12 md:py-40"
+            <Cell column={4} columnStart={3} class="px-4 pb-12 md:py-30"
                 ><div class="text-paragraph-lg space-y-8">
                     <p>
                         The open-source community supporting Appwrite has been an undeniable
@@ -59,7 +59,7 @@
                         are your dedicated partner in your development journey.
                     </p>
                     <div
-                        class="illustration grid grid-cols-1 grid-rows-2 gap-x-1 gap-y-4 p-4 md:grid-flow-col md:grid-cols-2"
+                        class="bg-card border-gradient relative grid grid-cols-1 grid-rows-2 gap-x-1 gap-y-4 rounded-2xl p-4 before:rounded-2xl after:rounded-2xl md:grid-flow-col md:grid-cols-2"
                     >
                         {#each icons as { label, src, href }}
                             <div class="flex items-center gap-2">
@@ -78,17 +78,9 @@
     </div>
 </div>
 
-<style lang="scss">
-    @use '$scss/abstract/mixins/border-gradient' as gradients;
-
-    .illustration {
-        @include gradients.border-gradient;
-        --p-radius: 16px;
-
-        background-color: hsl(var(--web-color-card));
-        border-radius: var(--p-radius);
-        --m-border-radius: var(--p-radius);
-        --m-border-gradient-before: linear-gradient(
+<style>
+    .border-gradient {
+        --border-gradient-before: linear-gradient(
             180deg,
             rgba(255, 255, 255, 0.12) 0%,
             rgba(255, 255, 255, 0) 125.11%

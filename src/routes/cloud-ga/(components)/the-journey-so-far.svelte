@@ -43,7 +43,7 @@
 <div class="relative h-full scroll-m-16 px-4" id="milestones-for-success">
     <div class="mx-auto flex w-full max-w-6xl flex-col justify-center" use:useInView>
         <Grid rows={2} bottomBorder>
-            <Cell column={2} columnStart={1} class="px-4 pt-12 md:py-40">
+            <Cell column={2} columnStart={1} class="px-4 pt-12 md:py-30">
                 <div class="space-y-4">
                     <span
                         class="font-aeonik-fono text-secondary text-micro tracking-loose inline-block uppercase"
@@ -57,7 +57,7 @@
                     </h2>
                 </div>
             </Cell>
-            <Cell column={4} columnStart={3} class="px-4 pt-12 md:pt-40"
+            <Cell column={4} columnStart={3} class="px-4 pt-12 md:pt-30"
                 ><p class="text-paragraph-lg">
                     The milestone we achieved today officially started 26 months ago when we
                     launched Appwrite private beta and enrolled users onto the platform bit by bit.
@@ -65,7 +65,7 @@
                     level.
                 </p></Cell
             >
-            <Cell column={4} class="px-4 pb-12 md:pt-8 md:pb-40">
+            <Cell column={4} class="px-4 pb-12 md:pt-8 md:pb-30">
                 <div
                     class="border-gradient relative hidden rounded-2xl bg-[#232325]/90 before:rounded-2xl after:rounded-2xl md:block"
                     style:--border-gradient-before="linear-gradient(180deg,rgba(255,255,255,0.12),transparent)"

@@ -15,7 +15,7 @@
 <div class="relative h-full scroll-m-16 px-4" id="the-future">
     <div class="mx-auto flex w-full max-w-6xl flex-col justify-center" use:useInView>
         <Grid rows={2} bottomBorder>
-            <Cell column={2} columnStart={1} class="px-4 py-12 md:py-40">
+            <Cell column={2} columnStart={1} class="px-4 py-12 md:py-30">
                 <h2
                     data-animate={animate}
                     class="text-subtitle text-primary font-aeonik-pro before:bg-accent text-pretty before:absolute before:-left-0.25 before:mt-1.25 before:h-4.75 before:w-px before:origin-top before:scale-y-0 before:transition-transform before:duration-700 data-[animate=true]:before:scale-y-100"
@@ -23,7 +23,7 @@
                     What's next
                 </h2>
             </Cell>
-            <Cell column={4} columnStart={3} class="px-4 pb-12 md:py-40"
+            <Cell column={4} columnStart={3} class="px-4 pb-12 md:py-30"
                 ><div class="text-paragraph-lg space-y-8">
                     <p>
                         As Appwrite Cloud continues to age, it also continues to improve over time.

@@ -26,7 +26,7 @@
 <div class="relative h-full scroll-m-16 px-4" id="security-and-compliance">
     <div class="mx-auto flex w-full max-w-6xl flex-col justify-center" use:useInView>
         <Grid rows={2} bottomBorder>
-            <Cell column={2} columnStart={1} class="px-4 pt-12 md:pt-40">
+            <Cell column={2} columnStart={1} class="px-4 pt-12 md:pt-30">
                 <div class="space-y-4">
                     <span
                         class="font-aeonik-fono text-secondary text-micro tracking-loose inline-block uppercase"
@@ -40,7 +40,7 @@
                     </h2>
                 </div>
             </Cell>
-            <Cell column={4} columnStart={3} class="py-8 md:py-40">
+            <Cell column={4} columnStart={3} class="py-8 md:py-30">
                 <div class="space-y-8">
                     <p class="text-paragraph-lg px-4">
                         Appwrite has been and continues to be security-driven. From the very
