@@ -81,7 +81,7 @@
                                 {index}</span
                             >
                             <span
-                                class="text-body group-hover:decoration-accent group-hover:text-accent font-medium underline transition-colors"
+                                class="text-body group-hover:decoration-accent group-hover:text-accent text-[1.125rem] font-medium underline transition-colors"
                                 >{mission}</span
                             >
                         </a>

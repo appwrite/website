@@ -97,7 +97,8 @@
         <div class="border-smooth mt-8 flex flex-col gap-8 border-l pl-2">
             {#each milestones as milestone}
                 <div class="border-accent -ml-2 flex flex-col border-l pl-2">
-                    <span class="font-aeonik-fono text-secondary text-micro uppercase"
+                    <span
+                        class="font-aeonik-fono tracking-loose text-secondary text-micro uppercase"
                         >{milestone.date}</span
                     >
                     <span class="text-primary font-medium">{milestone.label}</span>

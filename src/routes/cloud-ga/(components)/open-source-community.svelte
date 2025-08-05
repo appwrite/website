@@ -46,7 +46,7 @@
             >
                 <p>
                     We have said it a million times, and we will say it again: <span
-                        class="text-primary inline-block font-medium"
+                        class="text-primary font-medium"
                         >Developer experience is at the top of the Appwrite list.</span
                     >
                 </p>

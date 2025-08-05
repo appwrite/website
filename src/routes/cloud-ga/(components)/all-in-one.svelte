@@ -148,7 +148,7 @@
                     All in one development<br /> platform
                 </h2>
             </Cell>
-            <Cell column={4} columnStart={3} class="px-4 pt-12 md:pt-30"
+            <Cell column={4} columnStart={3} class="px-4 pt-8 md:pt-30"
                 ><div class="text-paragraph-lg">
                     <p>
                         One platform and one subscription to develop, deploy, and scale your
@@ -175,7 +175,7 @@
                                     >
                                         <button
                                             class={classNames(
-                                                'bg-card border-smooth md:text-caption flex w-fit cursor-pointer items-center gap-2 rounded-xl border py-2 pr-4 pl-3 text-sm backdrop-blur-md transition-all md:ml-auto lg:mr-[100px]',
+                                                'bg-card border-smooth md:text-caption flex w-fit items-center gap-2 rounded-xl border py-2 pr-4 pl-3 text-sm backdrop-blur-md transition-all md:ml-auto lg:mr-[100px]',
                                                 {
                                                     'bg-accent/12 border-accent/36 md:border-smooth md:bg-card':
                                                         isActive
@@ -229,7 +229,7 @@
                                         >
                                             {#each Array.from({ length: 3 }) as _}
                                                 <div
-                                                    class="size-2 flex-1 shrink cursor-pointer rounded-full bg-[#D9D9D9] transition hover:opacity-75"
+                                                    class="size-2 flex-1 shrink rounded-full bg-[#D9D9D9] transition hover:opacity-75"
                                                 ></div>
                                             {/each}
                                         </div>
@@ -272,7 +272,7 @@
                                     >
                                         <button
                                             class={classNames(
-                                                'bg-card border-smooth md:text-caption flex cursor-pointer items-center gap-2 rounded-xl border py-2 pr-4 pl-3 text-sm backdrop-blur-md transition-all md:mr-auto lg:ml-[100px]',
+                                                'bg-card border-smooth md:text-caption flex items-center gap-2 rounded-xl border py-2 pr-4 pl-3 text-sm backdrop-blur-md transition-all md:mr-auto lg:ml-[100px]',
                                                 {
                                                     'bg-accent/12 border-accent/36 md:border-smooth md:bg-card':
                                                         isActive
@@ -306,7 +306,7 @@
 
                         <!-- mobile -->
                         <div
-                            class="text-body mt-8 flex flex-wrap items-center justify-center gap-2 font-medium text-white lg:hidden"
+                            class="text-body flex flex-wrap items-center justify-center gap-2 font-medium text-white lg:hidden"
                         >
                             {#each products as product, index}
                                 {@const isActive = index === activeIndex}

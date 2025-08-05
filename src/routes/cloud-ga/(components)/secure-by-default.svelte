@@ -26,7 +26,7 @@
 <div class="relative h-full scroll-m-16 px-4" id="security-and-compliance">
     <div class="mx-auto flex w-full max-w-6xl flex-col justify-center" use:useInView>
         <Grid rows={2} bottomBorder>
-            <Cell column={2} columnStart={1} class="px-4 pt-12 md:pt-30">
+            <Cell column={2} columnStart={1} class="px-4 pt-8 md:pt-30">
                 <div class="space-y-4">
                     <span
                         class="font-aeonik-fono text-secondary text-micro tracking-loose inline-block uppercase"
@@ -53,7 +53,7 @@
                     </p>
 
                     <div
-                        class="illustration grid grid-cols-2 justify-between gap-4 p-4 md:grid-cols-4 md:place-items-center"
+                        class="illustration mx-4 grid grid-cols-2 justify-between gap-4 p-4 md:grid-cols-4 md:place-items-center"
                     >
                         {#each icons as { label, src }}
                             <div class="flex items-center gap-2">

@@ -19,7 +19,7 @@
 >
     <div class="flex w-full max-w-6xl flex-col justify-center">
         <Grid rows={2}>
-            <Cell column={3} horizontalCenter verticalCenter class="pt-12 md:pt-40">
+            <Cell column={3} horizontalCenter verticalCenter class="relative z-10 pt-12 md:pt-40">
                 <div class="max-w-4xl space-y-8 px-4">
                     <h1
                         class="text-headline font-aeonik-pro text-primary max-w-4xl gap-4 text-balance"
@@ -42,20 +42,23 @@
                 {@const columnStart = i + 1}
                 {@const lineArray = 6}
                 {@const lines = Array.from({ length: lineArray }).map((_, i) => {
-                    const isPink = Math.random() > 0.5;
+                    let isPink;
+                    if (i === 0) isPink = true;
+                    else if (i === 1) isPink = false;
+                    else isPink = Math.random() > 0.5;
+
                     return {
-                        height: isPink
-                            ? Math.floor(Math.random() * 50) + 60
-                            : Math.floor(Math.random() * 20) + 20,
+                        height: isPink ? 143 : 16,
                         color: isPink ? 'bg-accent' : 'bg-[#85DBD8]'
                     };
                 })}
                 {#if i !== 1 && i !== 2}
                     <Cell {columnStart} class="absolute hidden md:block">
                         <div
-                            class={classNames('animate-drop absolute flex flex-col gap-8', {
+                            class={classNames('animate-drop absolute flex flex-col gap-4', {
                                 'left-0 -ml-px': i !== 4,
-                                'right-0 -mr-px': i === 4
+                                'right-0 -mr-px': i === 4,
+                                '[animation-direction:reverse]': i === 3
                             })}
                         >
                             {#each lines as line}

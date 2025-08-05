@@ -22,7 +22,7 @@
             url: '/blog/post/customer-story-storealert'
         },
         {
-            blurb: "With its robust feature set and open-source nature, Appwrite is the perfect choice for developers who want to build secure and scalable applications without breaking the bank.",
+            blurb: 'With its robust feature set and open-source nature, Appwrite is the perfect choice for developers who want to build secure and scalable applications without breaking the bank.',
             name: 'Souvik Sarkar',
             title: '@Jeet_2003',
             avatar: '/images/testimonials/souvik-sarkar.png'
@@ -41,7 +41,7 @@
 <div class="relative h-full scroll-m-16 px-4" id="infrastructure-and-scalability">
     <div class="mx-auto flex w-full max-w-6xl flex-col justify-center" use:useInView>
         <Grid rows={3} bottomBorder>
-            <Cell column={2} columnStart={1} class="mt-8 px-4 md:py-30">
+            <Cell column={2} columnStart={1} class="px-4 py-8 md:py-30">
                 <div class="space-y-4">
                     <span
                         class="font-aeonik-fono text-secondary text-micro tracking-loose inline-block uppercase"
@@ -55,7 +55,7 @@
                     </h2>
                 </div>
             </Cell>
-            <Cell column={4} columnStart={3} class="mt-8 px-4 pb-8 md:py-30">
+            <Cell column={4} columnStart={3} class="px-4 pb-8 md:py-30">
                 <p class="text-paragraph-lg">
                     We aimed to build a platform that could easily scale to 1M users overnight
                     without you breaking a sweat over scalability or finance. Today, we are
