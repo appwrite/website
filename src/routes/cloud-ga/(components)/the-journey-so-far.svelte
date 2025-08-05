@@ -65,7 +65,7 @@
                     level.
                 </p></Cell
             >
-            <Cell column={4} class="pb-12 md:pt-8 md:pb-40">
+            <Cell column={4} class="px-4 pb-12 md:pt-8 md:pb-40">
                 <div
                     class="border-gradient relative hidden rounded-2xl bg-[#232325]/90 before:rounded-2xl after:rounded-2xl md:block"
                     style:--border-gradient-before="linear-gradient(180deg,rgba(255,255,255,0.12),transparent)"
