@@ -64,10 +64,10 @@
                     </div>
 
                     <p class="text-paragraph-lg max-w-lg px-4">
-                        Most recently, we have added three new features to ensure even more security
+                        More recently, we have added three new features to ensure even more security
                         and compliance regulations are in place: <span class="text-primary"
-                            >Roles for access management, 2FA for the Appwrite Console, and Database
-                            Backups</span
+                            >Roles for based access management, MFA for the Appwrite Console,
+                            and Database Backups</span
                         >.
                     </p>
                 </div>
