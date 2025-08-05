@@ -5,6 +5,7 @@
     import Storage from '../(assets)/icons/storage.svg';
     import Realtime from '../(assets)/icons/realtime.svg';
     import Messaging from '../(assets)/icons/messaging.svg';
+    import Sites from '../(assets)/icons/sites.svg';
     import { classNames } from '$lib/utils/classnames';
 
     import AuthSlide from '../(assets)/slides/auth.svg';
@@ -90,7 +91,7 @@
         },
         {
             label: 'Sites',
-            icon: Realtime,
+            icon: Sites,
             line: (
                 isActive: boolean
             ) => `<svg width="98" height="75" viewBox="0 0 98 75" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -128,7 +129,7 @@
     };
 
     $effect(() => {
-        interval = setInterval(autoCycle, 5000);
+        interval = setInterval(autoCycle, 3000);
 
         return () => {
             clearInterval(interval);
