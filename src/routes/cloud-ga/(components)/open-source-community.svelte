@@ -15,9 +15,9 @@
     };
 
     const numbers = [
-        { label: '52k', description: 'GitHub stars' },
-        { label: '200k', description: 'followers across socials' },
-        { label: '46k', description: 'commits to GitHub' },
+        { label: '52k+', description: 'GitHub stars' },
+        { label: '250k+', description: 'Followers across socials' },
+        { label: '46k+', description: 'Contributions to GitHub' },
         { label: '610k+', description: 'Discord messages' }
     ];
 </script>
@@ -44,12 +44,18 @@
                     We have said it a million times, and we will say it again: <span
                         class="text-primary inline-block font-medium"
                         >Developer experience is at the top of the Appwrite list.</span
-                    > Appwrite has had the help of thousands of developers from the open-source community
+                    > 
+                    </p>
+                    <p>
+                    Appwrite has had the help of thousands of developers from the open-source community
                     to ensure that the developer experience is at the top of our minds as we continuously
-                    collect feedback from the community. Appwrite is grateful for every contribution
-                    made, and we will always keep Appwrite open-source. That means Appwrite Self-hosting
-                    will be no different than Appwrite Cloud, and we're committed to the Free plan. This
-                    way, we ensure that Appwrite is accessible to all of you.
+                    collect feedback from the community. 
+                    </p>
+                    <p>
+                    Appwrite is grateful for every contribution, and we're committed to remaining 
+                    open-source. The Appwrite self-hosted instance will offer the same 
+                    experience as Appwrite Cloud, and our dedication to the Free plan remains 
+                    unchanged. We're ensuring Appwrite stays accessible for everyone to build with.
                 </p></Cell
             >
             <Cell column={4} class="pt-8 md:pt-30">
