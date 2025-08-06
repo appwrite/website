@@ -57,10 +57,10 @@
             </Cell>
             <Cell column={4} columnStart={3} class="px-4 pb-8 md:py-30">
                 <p class="text-paragraph-lg">
-                    We aimed to build a platform that could easily scale to 1M users overnight
-                    without you breaking a sweat over scalability or finance. Today, we are
-                    confident that we have reached this state. Appwrite Cloud is stable for any
-                    project to grow rapidly, unexpectedly.
+                  Appwrite Cloud was built to scale, quietly and reliably. Over the past months, 
+                  we’ve seen teams of all sizes grow from their first few users to hundreds of 
+                  thousands without touching their infrastructure or running into billing surprises. 
+                  The platform has matured to a point where scaling isn’t a concern - it just happens.
                 </p>
             </Cell>
 
