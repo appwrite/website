@@ -104,7 +104,11 @@
         <div
             class="border-smooth flex aspect-video w-full flex-col rounded-t-3xl border bg-gradient-to-br from-white/10 via-white/5 to-white/10 mask-b-from-0% mask-b-to-85% px-2 pt-2 backdrop-blur-xl"
         >
-            <img src={Dashboard} class="h-full w-full rounded-t-2xl" alt="Deployment dashboard" />
+            <img
+                src={Dashboard}
+                class="h-full w-full rounded-t-2xl object-cover object-[center_top]"
+                alt="Deployment dashboard"
+            />
         </div>
 
         <div class="relative z-10 mx-auto -mt-24 flex max-w-md flex-col gap-4 text-center">

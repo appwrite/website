@@ -7,17 +7,28 @@
     import { classNames } from '$lib/utils/classnames';
     import type { Partner } from '$routes/partners/catalog/+page';
     import ContactPartner from '$routes/partners/catalog/(components)/contact-partner.svelte';
+    import Icon from '$lib/components/ui/icon';
+    import type { Snippet } from 'svelte';
+    import Button from '$lib/components/ui/button.svelte';
 
-    export let title: Partner['title'];
-    export let partnerLevel: Partner['partnerLevel'];
-    export let category: Partner['category'];
-    export let description: Partner['description'];
-    export let cover: Partner['cover'];
-    export let capabilities: Partner['capabilities'];
-    export let frameworks: Partner['frameworks'];
-    export let regions: Partner['regions'];
-    export let languages: Partner['languages'];
-    export let website: Partner['website'];
+    interface Props extends Partner {
+        children?: Snippet;
+    }
+
+    let {
+        title,
+        partnerLevel,
+        category,
+        description,
+        cover,
+        services,
+        technologies,
+        regions,
+        languages,
+        website,
+        email,
+        children
+    }: Props = $props();
 
     const ogImage = DEFAULT_HOST + cover;
 </script>
@@ -48,8 +59,8 @@
     >
         <div class="relative container w-full pb-0">
             <div class="flex flex-col gap-7">
-                <a href="/partners" class="text-caption text-primary group flex gap-2">
-                    <span class="web-icon-arrow-left transition group-hover:-translate-x-1" />
+                <a href="/partners/catalog" class="text-caption text-primary group flex gap-2">
+                    <Icon name="arrow-left" class="transition group-hover:-translate-x-1" />
                     Back to Partners Catalog
                 </a>
                 <h1 class="text-headline font-aeonik-pro text-primary">{title}</h1>
@@ -64,9 +75,11 @@
                     <div class="md:col-span-7">
                         <div class="web-article">
                             <div class="web-article-content">
-                                <slot />
+                                {@render children?.()}
                             </div>
-                            <ContactPartner />
+                            {#if email}
+                                <Button href={email}>Contact {title}</Button>
+                            {/if}
                         </div>
                     </div>
                     <div class="md:col-span-5">
@@ -74,14 +87,14 @@
                         <dl class="divide-smooth sticky top-32 mt-10 flex flex-col gap-7 divide-y">
                             <div class="flex flex-col justify-between gap-7 pb-7">
                                 <dt class="text-micro font-aeonik-fono tracking-loose uppercase">
-                                    Frameworks
+                                    Technologies
                                 </dt>
                                 <dd class="flex flex-wrap gap-2">
-                                    {#each frameworks as framework}
+                                    {#each technologies as technology}
                                         <div
                                             class="text-primary text-caption bg-smooth rounded-full px-3 py-1"
                                         >
-                                            {framework}
+                                            {technology}
                                         </div>
                                     {/each}
                                 </dd>
@@ -89,14 +102,14 @@
 
                             <div class="flex flex-col justify-between gap-7 pb-7">
                                 <dt class="text-micro font-aeonik-fono tracking-loose uppercase">
-                                    Capabilities
+                                    Services
                                 </dt>
                                 <dd class="flex flex-wrap gap-2">
-                                    {#each capabilities as capability}
+                                    {#each services as service}
                                         <div
                                             class="text-primary text-caption bg-smooth rounded-full px-3 py-1"
                                         >
-                                            {capability}
+                                            {service}
                                         </div>
                                     {/each}
                                 </dd>
@@ -116,7 +129,7 @@
                                 <dd
                                     class="text-primary text-caption font-medium underline underline-offset-4"
                                 >
-                                    {website}
+                                    <a href={website} target="_blank">{website}</a>
                                 </dd>
                             </div>
 

@@ -10,7 +10,6 @@
     class:is-selected={page.url?.pathname === groupItem.href}
     href={groupItem.href}
     target={groupItem.openInNewTab ? '_blank' : undefined}
-    data-sveltekit-reload
 >
     {#if groupItem.icon}
         <span class="icon {groupItem.icon}" aria-hidden="true"></span>

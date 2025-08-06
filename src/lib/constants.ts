@@ -67,6 +67,11 @@ export type SearchableCategory = {
 
 export const integrationCategoryDescriptions: SearchableCategory[] = [
     {
+        slug: 'mcp',
+        heading: 'MCP',
+        description: 'Platforms with Model Context Protocol support'
+    },
+    {
         slug: 'ai',
         heading: 'AI',
         description: 'Machine learning and AI capabilities'
@@ -122,7 +127,7 @@ export const partnerCategoryDescriptions: SearchableCategory[] = [
     {
         slug: 'agency',
         heading: 'Agency',
-        description: 'Agencies that build software for their clients using Appwrite'
+        description: 'Find an Appwrite Partner agency for your project'
     }
 ];
 

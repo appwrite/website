@@ -95,13 +95,15 @@ It will be initialized with the session, usually stored within a cookie.
 
 You should create a new client for each request and **never** share the client between requests.
 
+Use `a_session_<PROJECT_ID>` as the [cookie name](/docs/apis/rest#client-integration) and a [custom domain](/docs/advanced/platform/custom-domains) for your Appwrite endpoint if you want the session to work client-side as well.
+
 {% multicode %}
 ```server-nodejs
 const sessionClient = new Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
     .setProject('<PROJECT_ID>');            // Your project ID
 
-const session = req.cookies.session; // Get the session cookie from the request
+const session = req.cookies['a_session_<PROJECT_ID>']; // Get the session cookie from the request
 if (session) {
     sessionClient.setSession(session);
 }
@@ -111,7 +113,7 @@ $sessionClient = (new Client())
     ->setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
     ->setProject('<PROJECT_ID>');            // Your project ID
 
-$session = $_COOKIE['session']; // Get the session cookie from the request
+$session = $_COOKIE['a_session_<PROJECT_ID>']; // Get the session cookie from the request
 if ($session) {
     $sessionClient->setSession($session);
 }
@@ -127,7 +129,7 @@ session_client = (Client()
                 )
 
 # Get the session cookie from the request
-session = request.cookies.get('session')
+session = request.cookies.get('a_session_<PROJECT_ID>')
 if session:
     session_client.set_session(session)
 
@@ -161,7 +163,7 @@ app.post('/login', async (req, res) => {
         const session = await account.createEmailPasswordSession(email, password);
 
         // Set the session cookie
-        res.cookie('session', session.secret, { // use the session secret as the cookie value
+        res.cookie('a_session_<PROJECT_ID>', session.secret, { // use the session secret as the cookie value
             httpOnly: true,
             secure: true,
             sameSite: 'strict',
@@ -192,7 +194,7 @@ try {
     $session = $account->createEmailPasswordSession($email, $password);
 
     // Set the session cookie
-    setcookie('session', $session['secret'], [
+    setcookie('a_session_<PROJECT_ID>', $session['secret'], [
         'httpOnly' => true,
         'secure' => true,
         'sameSite' => 'strict',
@@ -226,7 +228,7 @@ def login():
         resp = make_response(jsonify({'success': True}))
 
         # Set the session cookie
-        resp.set_cookie('session', 
+        resp.set_cookie('a_session_<PROJECT_ID>', 
                         session['secret'], 
                         httponly=True, 
                         secure=True, 
@@ -257,7 +259,7 @@ When the browser makes a request to your domain's endpoints, it will automatical
 
 app.get('/user', async (req, res) => {
     // First, read the session cookie from the request
-    const session = req.cookies.session;
+    const session = req.cookies['a_session_<PROJECT_ID>'];
 
     // If the session cookie is not present, return an error
     if (!session) {
@@ -283,7 +285,7 @@ app.get('/user', async (req, res) => {
 // Initialize the session client here
 
 // First, read the session cookie from the request
-$session = $_COOKIE['session'];
+$session = $_COOKIE['a_session_<PROJECT_ID>'];
 
 // If the session cookie is not present, return an error
 if (!$session) {
@@ -309,7 +311,7 @@ try {
 @app.get('/user')
 def get_user():
     #  First, read the session cookie from the request
-    session = request.cookies.get('session')
+    session = request.cookies.get('a_session_<PROJECT_ID>')
 
     # If the session cookie is not present, return an error
     if not session:
@@ -523,7 +525,7 @@ app.get('/oauth/success', async (req, res) => {
         const session = await account.createSession(userId, secret);
 
         // Set the session cookie
-        res.cookie('session', session.secret, { // Use the session secret as the cookie value
+        res.cookie('a_session_<PROJECT_ID>', session.secret, { // Use the session secret as the cookie value
             httpOnly: true,
             secure: true,
             sameSite: 'strict',
@@ -558,7 +560,7 @@ try {
     $session = $account->createSession($userId, $secret);
 
     // Set the session cookie
-    setcookie('session', $session['secret'], [
+    setcookie('a_session_<PROJECT_ID>', $session['secret'], [
         'httpOnly' => true,
         'secure' => true,
         'sameSite' => 'strict',
@@ -589,7 +591,7 @@ def oauth_success():
         
         #  Set session cookie
         res.set_cookie(
-            'session',
+            'a_session_<PROJECT_ID>',
             session['secret'],
             httponly=True,
             secure=True,

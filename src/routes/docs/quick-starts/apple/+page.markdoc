@@ -68,7 +68,7 @@ In order to allow creating OAuth sessions, the following URL scheme must be adde
     <string>io.appwrite</string>
     <key>CFBundleURLSchemes</key>
     <array>
-        <string>appwrite-callback-[PROJECT_ID]</string>
+        <string>appwrite-callback-<PROJECT_ID></string>
     </array>
 </dict>
 </array>
@@ -97,7 +97,7 @@ Find your project's ID in the **Settings** page.
 {% only_light %}
 ![Project settings screen](/images/docs/quick-starts/project-id.png)
 {% /only_light %}
-Create a new file `Appwrite.swift` and add the following code to it, replacing `[PROJECT_ID]` with your project ID.
+Create a new file `Appwrite.swift` and add the following code to it, replacing `<PROJECT_ID>` with your project ID.
 
 ```swift
 import Foundation
@@ -111,7 +111,7 @@ class Appwrite {
     public init() {
         self.client = Client()
             .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
-            .setProject("[PROJECT_ID]")
+            .setProject("<PROJECT_ID>")
         
         self.account = Account(client)
     }

@@ -117,10 +117,10 @@
                                         </h1>
                                         <p class="text-description">
                                             Enterprise businesses partner with Appwrite to empower
-                                            their developers with an all-in-one backend platform, so
-                                            they can focus on innovation, not reinventing the wheel.
-                                            Reduce complexity, accelerate development, and launch
-                                            faster.
+                                            their developers with an all-in-one development
+                                            platform, so they can focus on innovation, not
+                                            reinventing the wheel. Reduce complexity, accelerate
+                                            development, and launch faster.
                                             <br />
                                             <br />
                                             Ready to talk? Fill out the form, and one of our experts
