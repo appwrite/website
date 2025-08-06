@@ -117,6 +117,41 @@ suspend fun main() {
     }
 }
 ```
+```go
+package main
+
+import (
+    "fmt"
+    "log"
+
+    "github.com/appwrite/sdk-for-go/appwrite"
+    "github.com/appwrite/sdk-for-go/query"
+)
+
+func main() {
+    client := appwrite.NewClient(
+        appwrite.WithEndpoint("https://<REGION>.cloud.appwrite.io/v1"),
+        appwrite.WithProject("<PROJECT_ID>"),
+        appwrite.WithKey("<API_KEY>"),
+    )
+
+    databases := appwrite.NewDatabases(client)
+
+    documents, err := databases.ListDocuments(
+        "<DATABASE_ID>",
+        "<COLLECTION_ID>",
+        databases.WithListDocumentsQueries([]string{
+            query.Equal("title", []string{"Avatar", "Lord of the Rings"}),
+            query.GreaterThan("year", 1999),
+        }),
+    )
+    if err != nil {
+        log.Fatal(err)
+    }
+
+    fmt.Printf("Documents: %+v\n", documents)
+}
+```
 ```graphql
 query {
     databasesListDocuments(
@@ -170,6 +205,9 @@ Query::select(["name", "title"])
 ```swift
 Query.select(["name", "title"])
 ```
+```go
+query.Select([]string{"name", "title"})
+```
 ```http
 {"method":"select","values":["name","title"]}
 ```
@@ -203,6 +241,9 @@ Query::equal("title", ["Iron Man"])
 ```swift
 Query.equal("title", value: ["Iron Man"])
 ```
+```go
+query.Equal("title", []string{"Iron Man"})
+```
 ```http
 {"method":"equal","attribute":"title","values":["Iron Man"]}
 ```
@@ -233,6 +274,9 @@ Query::notEqual("title", "Iron Man")
 ```
 ```swift
 Query.notEqual("title", value: "Iron Man")
+```
+```go
+query.NotEqual("title", "Iron Man")
 ```
 ```http
 {"method":"notEqual","attribute":"title","values":"Iron Man"}
@@ -265,6 +309,9 @@ Query::lessThan("score", 10)
 ```swift
 Query.lessThan("score", value: 10)
 ```
+```go
+query.LessThan("score", 10)
+```
 ```http
 {"method":"lessThan","attribute":"score","values":[10]}
 ```
@@ -295,6 +342,9 @@ Query::lessThanEqual("score", 10)
 ```
 ```swift
 Query.lessThanEqual("score", value: 10)
+```
+```go
+query.LessThanEqual("score", 10)
 ```
 ```http
 {"method":"lessThanEqual","attribute":"score","values":[10]}
@@ -327,6 +377,9 @@ Query::greaterThan("score", 10)
 ```swift
 Query.greaterThan("score", value: 10)
 ```
+```go
+query.GreaterThan("score", 10)
+```
 ```http
 {"method":"greaterThan","attribute":"score","values":[10]}
 ```
@@ -358,6 +411,9 @@ Query::greaterThanEqual("score", 10)
 ```swift
 Query.greaterThanEqual("score", value: 10)
 ```
+```go
+query.GreaterThanEqual("score", 10)
+```
 ```http
 {"method":"greaterThanEqual","attribute":"score","values":[10]}
 ```
@@ -388,6 +444,9 @@ Query::between("price", 5, 10)
 ```
 ```swift
 Query.between("price", start: 5, end: 10)
+```
+```go
+query.Between("price", 5, 10)
 ```
 ```http
 {"method":"between","attribute":"price","values":[5,10]}
@@ -422,6 +481,9 @@ Query::isNull("name")
 ```swift
 Query.isNull("name")
 ```
+```go
+query.IsNull("name")
+```
 ```http
 {"method":"isNull","attribute":"name"}
 ```
@@ -452,6 +514,9 @@ Query::isNotNull("name")
 ```
 ```swift
 Query.isNotNull("name")
+```
+```go
+query.IsNotNull("name")
 ```
 ```http
 {"method":"isNotNull","attribute":"name"}
@@ -486,6 +551,9 @@ Query::startsWith("name", "Once upon a time")
 ```swift
 Query.startsWith("name", value: "Once upon a time")
 ```
+```go
+query.StartsWith("name", "Once upon a time")
+```
 ```http
 {"method":"startsWith","attribute":"name","values":["Once upon a time"]}
 ```
@@ -516,6 +584,9 @@ Query::endsWith("name", "happily ever after.")
 ```
 ```swift
 Query.endsWith("name", value: "happily ever after.")
+```
+```go
+query.EndsWith("name", "happily ever after.")
 ```
 ```http
 {"method":"endsWith","attribute":"name","values":["happily ever after."]}
@@ -576,6 +647,13 @@ Query.contains("ingredients", value: ['apple', 'banana'])
 // For strings
 Query.contains("name", value: "Tom")
 ```
+```go
+// For arrays
+query.Contains("ingredients", []string{"apple", "banana"})
+
+// For strings
+query.Contains("name", "Tom")
+```
 ```http
 # For arrays
 {"method":"contains","attribute":"ingredients","values":["apple","banana"]}
@@ -610,6 +688,9 @@ Query::search("text", "key words")
 ```
 ```swift
 Query.search("text", value: "key words")
+```
+```go
+query.Search("text", "key words")
 ```
 ```http
 {"method":"search","attribute":"text","values":["key words"]}
@@ -665,6 +746,12 @@ Query.and([
     Query.greaterThan("size", value: 5)
 ])
 ```
+```go
+query.And([]string{
+    query.LessThan("size", 10),
+    query.GreaterThan("size", 5),
+})
+```
 ```http
 {"method":"and","values":[{"method":"lessThan","attribute":"size","values":[10]},{"method":"greaterThan","attribute":"size","values":[5]}]}
 ```
@@ -717,6 +804,12 @@ Query.or([
     Query.greaterThan("size", value: 10)
 ])
 ```
+```go
+query.Or([]string{
+    query.LessThan("size", 5),
+    query.GreaterThan("size", 10),
+})
+```
 ```http
 {"method":"or","values":[{"method":"lessThan","attribute":"size","values":[5]},{"method":"greaterThan","attribute":"size","values":[10]}]}
 ```
@@ -750,6 +843,9 @@ Query::orderDesc("attribute")
 ```swift
 Query.orderDesc("attribute")
 ```
+```go
+query.OrderDesc("attribute")
+```
 ```http
 {"method":"orderDesc","attribute":"attribute"}
 ```
@@ -780,6 +876,9 @@ Query::orderAsc("attribute")
 ```
 ```swift
 Query.orderAsc("attribute")
+```
+```go
+query.OrderAsc("attribute")
 ```
 ```http
 {"method":"orderAsc","attribute":"attribute"}
@@ -814,6 +913,9 @@ Query::limit(25)
 ```swift
 Query.limit(25)
 ```
+```go
+query.Limit(25)
+```
 ```http
 {"method":"limit","values":[25]}
 ```
@@ -844,6 +946,9 @@ Query::offset(0)
 ```
 ```swift
 Query.offset(0)
+```
+```go
+query.Offset(0)
 ```
 ```http
 {"method":"offset","values":[0]}
@@ -876,6 +981,9 @@ Query::cursorAfter("62a7...f620")
 ```swift
 Query.cursorAfter("62a7...f620")
 ```
+```go
+query.CursorAfter("62a7...f620")
+```
 ```http
 {"method":"cursorAfter","values":["62a7...f620"]}
 ```
@@ -906,6 +1014,9 @@ Query::cursorBefore("62a7...a600")
 ```
 ```swift
 Query.cursorBefore("62a7...a600")
+```
+```go
+query.CursorBefore("62a7...a600")
 ```
 ```http
 {"method":"cursorBefore","values":["62a7...a600"]}
@@ -970,6 +1081,27 @@ results = databases.list_documents(
         ])
     ]
 )
+```
+```go
+documents, err := databases.ListDocuments(
+    "<DATABASE_ID>",
+    "<COLLECTION_ID>",
+    databases.WithListDocumentsQueries([]string{
+        query.Or([]string{
+            query.And([]string{
+                query.Equal("category", []string{"books"}),
+                query.LessThan("price", 20),
+            }),
+            query.And([]string{
+                query.Equal("category", []string{"magazines"}),
+                query.LessThan("price", 10),
+            }),
+        }),
+    }),
+)
+if err != nil {
+    log.Fatal(err)
+}
 ```
 ```http
 {"method":"or","values":[{"method":"and","values":[{"method":"equal","attribute":"category","values":["books"]},{"method":"lessThan","attribute":"price","values":[20]}]},{"method":"and","values":[{"method":"equal","attribute":"category","values":["magazines"]},{"method":"lessThan","attribute":"price","values":[10]}]}]}

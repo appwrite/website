@@ -59,7 +59,7 @@ composer require appwrite/appwrite:15.0.0
 {% /section %}
 {% section #step-4 step=4 title="Import Appwrite" %}
 
-Find your project ID in the **Settings** page. Also, click on the **View API Keys** button to find the API key that was created earlier. 
+Find your project ID in the **Settings** page. Also, click on the **View API Keys** button to find the API key that was created earlier.
 
 {% only_dark %}
 ![Project settings screen](/images/docs/quick-starts/dark/project-id.png)
@@ -96,36 +96,36 @@ $databases = new Databases($client);
 
 function prepareDatabase($databases) {
     $todoDatabase = $databases->create(
-        databaseId: ID::unique(), 
+        databaseId: ID::unique(),
         name: 'TodosDB'
     );
 
     $todoCollection = $databases->createCollection(
-        databaseId: $todoDatabase['$id'], 
+        databaseId: $todoDatabase['$id'],
         collectionId: ID::unique(),
         name: 'Todos'
     );
 
     $databases->createStringAttribute(
-        databaseId: $todoDatabase['$id'], 
-        collectionId: $todoCollection['$id'], 
-        key: 'title', 
-        size: 255, 
+        databaseId: $todoDatabase['$id'],
+        collectionId: $todoCollection['$id'],
+        key: 'title',
+        size: 255,
         required: true
     );
 
     $databases->createStringAttribute(
-        databaseId: $todoDatabase['$id'], 
-        collectionId: $todoCollection['$id'], 
-        key: 'description', 
-        size: 255, 
-        required: false, 
+        databaseId: $todoDatabase['$id'],
+        collectionId: $todoCollection['$id'],
+        key: 'description',
+        size: 255,
+        required: false,
     );
 
     $databases->createBooleanAttribute(
-        databaseId: $todoDatabase['$id'], 
-        collectionId: $todoCollection['$id'], 
-        key: 'isComplete', 
+        databaseId: $todoDatabase['$id'],
+        collectionId: $todoCollection['$id'],
+        key: 'isComplete',
         required: true
     );
 
@@ -157,23 +157,23 @@ function seedDatabase($databases, $todoDatabase, $todoCollection) {
     ];
 
     $databases->createDocument(
-        $todoDatabase['$id'], 
-        $todoCollection['$id'], 
-        ID::unique(), 
+        $todoDatabase['$id'],
+        $todoCollection['$id'],
+        ID::unique(),
         $testTodo1
     );
-    
+
     $databases->createDocument(
-        $todoDatabase['$id'], 
-        $todoCollection['$id'], 
-        ID::unique(), 
+        $todoDatabase['$id'],
+        $todoCollection['$id'],
+        ID::unique(),
         $testTodo2
     );
-    
+
     $databases->createDocument(
-        $todoDatabase['$id'], 
-        $todoCollection['$id'], 
-        ID::unique(), 
+        $todoDatabase['$id'],
+        $todoCollection['$id'],
+        ID::unique(),
         $testTodo3
     );
 }
@@ -186,16 +186,60 @@ Create a function to retrieve the mock todo data and a function to execute the r
 Run the functions to by calling `runAllTasks();`.
 
 ```php
+use Appwrite\Query;
+
 function getTodos($databases, $todoDatabase, $todoCollection) {
+    // Retrieve all documents
     $todos = $databases->listDocuments(
-        $todoDatabase['$id'], 
-        $todoCollection['$id']
+        $todoDatabase['$id'],
+        $todoCollection['$id'],
+        []  // Empty queries array to get all documents
     );
 
+    echo "All todos:\n";
     foreach ($todos['documents'] as $todo) {
         echo "Title: {$todo['title']}\n" .
             "Description: {$todo['description']}\n" .
-            "Is Todo Complete: {$todo['isComplete']}\n\n";    
+            "Is Todo Complete: {$todo['isComplete']}\n\n";
+   }
+}
+
+function getCompletedTodos($databases, $todoDatabase, $todoCollection) {
+    // Use queries to filter completed todos with pagination
+    $todos = $databases->listDocuments(
+        $todoDatabase['$id'],
+        $todoCollection['$id'],
+        [
+            Query::equal('isComplete', true),
+            Query::orderDesc('$createdAt'),
+            Query::limit(5)
+        ]
+    );
+
+    echo "Completed todos (limited to 5):\n";
+    foreach ($todos['documents'] as $todo) {
+        echo "Title: {$todo['title']}\n" .
+            "Description: {$todo['description']}\n" .
+            "Is Todo Complete: {$todo['isComplete']}\n\n";
+   }
+}
+
+function getIncompleteTodos($databases, $todoDatabase, $todoCollection) {
+    // Query for incomplete todos
+    $todos = $databases->listDocuments(
+        $todoDatabase['$id'],
+        $todoCollection['$id'],
+        [
+            Query::equal('isComplete', false),
+            Query::orderAsc('title')
+        ]
+    );
+
+    echo "Incomplete todos (ordered by title):\n";
+    foreach ($todos['documents'] as $todo) {
+        echo "Title: {$todo['title']}\n" .
+            "Description: {$todo['description']}\n" .
+            "Is Todo Complete: {$todo['isComplete']}\n\n";
    }
 }
 
@@ -203,6 +247,8 @@ function runAllTasks($databases) {
     [$todoDatabase, $todoCollection] = prepareDatabase($databases);
     seedDatabase($databases, $todoDatabase, $todoCollection);
     getTodos($databases, $todoDatabase, $todoCollection);
+    getCompletedTodos($databases, $todoDatabase, $todoCollection);
+    getIncompleteTodos($databases, $todoDatabase, $todoCollection);
 }
 
 runAllTasks($databases);
