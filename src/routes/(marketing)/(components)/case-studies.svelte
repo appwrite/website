@@ -80,13 +80,14 @@
                     height={100}
                     class={classNames(
                         'h-5 px-2 opacity-100 transition-all [grid-area:stack] lg:h-7',
-                        'self-center justify-self-center brightness-50'
+                        'self-center justify-self-center brightness-50 group-[&[data-state=on]]/card:invisible group-[&[data-state=on]]/card:opacity-0'
                     )}
                 />
 
                 <div
                     class={classNames(
-                        'w-full space-y-4 transition-opacity delay-400 [grid-area:stack]'
+                        'invisible w-full space-y-4 transition-opacity delay-400 [grid-area:stack]',
+                        'group-[&[data-state=on]]/card:visible group-[&[data-state=on]]/card:opacity-100 group-[&[data-state=on]]/card:blur-none'
                     )}
                 >
                     <img
