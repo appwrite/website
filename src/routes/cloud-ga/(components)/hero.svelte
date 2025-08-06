@@ -8,9 +8,9 @@
 
     const numbers = [
         { label: 'Top 300', description: 'GitHub repos' },
-        { label: '300k+', description: 'developers' },
-        { label: '50+', description: 'locations' },
-        { label: '300k+', description: 'projects' }
+        { label: '300k+', description: 'Developers' },
+        { label: '300+', description: 'PoP locations' },
+        { label: '20B+', description: 'Monthly DB operations' }
     ];
 </script>
 
