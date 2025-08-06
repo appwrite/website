@@ -65,7 +65,7 @@
             <ToggleGroup.Item
                 value={i.toString()}
                 class={classNames(
-                    'grid cursor-pointer items-center justify-items-center overflow-hidden rounded-2xl border border-transparent p-12 backdrop-blur-3xl transition-all duration-400 ease-in-out [grid-template-areas:"stack"] md:place-content-center md:place-items-center md:items-center md:justify-center',
+                    'grid w-full cursor-pointer overflow-hidden rounded-2xl border border-transparent p-12 backdrop-blur-3xl transition-all duration-400 ease-in-out [grid-template-areas:"stack"]',
                     'group/card hover:bg-black/24 data-[state="off"]:bg-black/16 data-[state="on"]:bg-black/24',
                     'outline-0 duration-300 hover:shadow-[0px_0px_0px_4px_var(--color-offset)] focus:shadow-[0px_0px_0px_4px_var(--color-offset)]!'
                 )}
@@ -78,11 +78,15 @@
                     height={100}
                     class={classNames(
                         'h-5 px-2 opacity-100 transition-all [grid-area:stack] lg:h-7',
-                        'brightness-50'
+                        'self-center justify-self-center brightness-50'
                     )}
                 />
 
-                <div class={classNames('space-y-4 transition-opacity delay-400 [grid-area:stack]')}>
+                <div
+                    class={classNames(
+                        'w-full space-y-4 transition-opacity delay-400 [grid-area:stack]'
+                    )}
+                >
                     <img
                         loading="lazy"
                         width={100}
