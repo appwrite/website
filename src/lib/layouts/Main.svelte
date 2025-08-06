@@ -155,7 +155,7 @@
     <!--{/if}-->
 
     <section
-        class="web-mobile-header {resolvedTheme}"
+        class="web-mobile-header fixed! w-full! {resolvedTheme}"
         class:is-transparent={browser && !$isMobileNavOpen}
     >
         <div class="web-mobile-header-start">
