@@ -16,7 +16,7 @@
 <ToggleGroup.Item
     {value}
     class={classNames(
-        'grid w-full cursor-pointer overflow-hidden rounded-2xl border border-transparent p-12 backdrop-blur-3xl transition-all duration-400 ease-in-out [grid-template-areas:"stack"]',
+        'relative grid w-full cursor-pointer overflow-hidden rounded-2xl border border-transparent p-12 backdrop-blur-3xl transition-all duration-400 ease-in-out [grid-template-areas:"stack"]',
         'group/card hover:bg-black/24',
         'outline-0 duration-300 hover:shadow-[0px_0px_0px_4px_var(--color-offset)] focus:shadow-[0px_0px_0px_4px_var(--color-offset)]!',
         'data-[state="off"]:basis-[15%] data-[state="off"]:bg-black/16',
@@ -37,7 +37,7 @@
 
     <div
         class={classNames(
-            'hidden w-full space-y-4 transition-opacity delay-400 [grid-area:stack]',
+            'absolute inset-0 hidden w-full space-y-4 transition-opacity delay-400 [grid-area:stack]',
             'group-[&[data-state=on]]/card:block group-[&[data-state=on]]/card:opacity-100 group-[&[data-state=on]]/card:blur-none'
         )}
     >
