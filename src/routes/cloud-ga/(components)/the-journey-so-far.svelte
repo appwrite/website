@@ -61,7 +61,7 @@
                 ><p class="text-paragraph-lg">
                     The milestone we achieved today officially started 26 months ago when we
                     launched Appwrite private beta and enrolled users onto the platform bit by bit.
-                    Since then, we have reached many milestones before taking Cloud to the next
+                    Since then, we have reached many achievements before taking Cloud to the next
                     level.
                 </p></Cell
             >
@@ -69,7 +69,7 @@
                 <span
                     data-animate={animate}
                     class="text-paragraph-lg text-secondary before:bg-accent mt-8 inline-block max-w-lg text-pretty before:absolute before:-left-0.25 before:mt-2 before:h-3.5 before:w-px before:origin-top before:scale-y-0 before:transition-transform before:duration-700 data-[animate=true]:before:scale-y-100"
-                    >To become Generally Available we set milestones across our journey to reach
+                    >To become Generally Available, we set milestones across our journey to reach
                     over time.</span
                 >
                 <div
