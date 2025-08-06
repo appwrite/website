@@ -18,7 +18,7 @@
 
 <svelte:window on:resize={() => open && (open = false)} />
 
-<nav class="web-side-nav web-is-not-desktop" class:hidden={!open}>
+<nav class="web-side-nav web-is-not-desktop fixed! w-full!" class:hidden={!open}>
     <div class="web-side-nav-wrapper ps-4 pe-4">
         <div class="flex items-center gap-2 px-4">
             <Button
