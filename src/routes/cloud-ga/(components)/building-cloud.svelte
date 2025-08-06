@@ -33,7 +33,7 @@
                     <p>
                         When we started working on our plans for Appwrite Cloud, we knew we had a
                         hard task ahead of us, as we didn’t want to just be a wrapper on top of AWS
-                        or Cloudflare. With no pre-built building blocks, we wanted to customize
+                        or Cloudflare. With no vendors to lean on, we wanted to customize
                         every piece in the platform to create the most complete developer experience
                         we can imagine.
                     </p>
@@ -47,8 +47,8 @@
                         pricing more accessible as part of our mission.
                     </p>
                     <p>
-                        Together with the open-source community, Appwrite Cloud has reached GA.
-                        We're excited to share Appwrite Cloud's journey to reach GA with you.
+                        Together with the open-source community, Appwrite Cloud has reached General Availability (GA).
+                        We're excited to share Appwrite Cloud's journey towards GA with you.
                     </p>
                 </div>
             </Cell>
