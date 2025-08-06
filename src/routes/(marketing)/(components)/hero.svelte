@@ -25,8 +25,8 @@
             class="animate-blur-in flex flex-col gap-4 [animation-delay:150ms] [animation-duration:1000ms] md:ml-12 lg:ml-0"
         >
             <HeroBanner
-                title="Announcing Appwrite Sites"
-                href="/blog/post/announcing-appwrite-sites"
+                title="Appwrite Cloud is now GA"
+                href="/cloud-ga"
             />
 
             <GradientText class="animate-fade-in">
