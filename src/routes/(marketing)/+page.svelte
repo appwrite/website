@@ -33,7 +33,7 @@
         that you need with Appwrite.</Pullquote
     >
     <CaseStudies />
-    <Features />
+    <Features theme="light" />
     <div class="light bg-[#EDEDF0]">
         <Map theme="light" />
         <Scale
