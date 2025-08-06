@@ -55,8 +55,8 @@
                     </p>
 
                     <p>
-                        Appwrite doesn’t just provide you with an all-in-one development platform. We
-                        are your dedicated partner in your development journey.
+                        Appwrite doesn’t just provide you with an all-in-one development platform.
+                        We are your dedicated partner in your development journey.
                     </p>
                     <div
                         class="bg-card border-gradient relative grid grid-cols-1 grid-rows-2 gap-x-1 gap-y-4 rounded-2xl p-4 before:rounded-2xl after:rounded-2xl md:grid-flow-col md:grid-cols-2"

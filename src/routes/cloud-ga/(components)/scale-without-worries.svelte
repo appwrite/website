@@ -57,10 +57,11 @@
             </Cell>
             <Cell column={4} columnStart={3} class="px-4 pb-8 md:py-30">
                 <p class="text-paragraph-lg">
-                  Appwrite Cloud was built to scale, quietly and reliably. Over the past months, 
-                  we’ve seen teams of all sizes grow from their first few users to hundreds of 
-                  thousands without touching their infrastructure or running into billing surprises. 
-                  The platform has matured to a point where scaling isn’t a concern - it just happens.
+                    Appwrite Cloud was built to scale, quietly and reliably. Over the past months,
+                    we’ve seen teams of all sizes grow from their first few users to hundreds of
+                    thousands without touching their infrastructure or running into billing
+                    surprises. The platform has matured to a point where scaling isn’t a concern -
+                    it just happens.
                 </p>
             </Cell>
 
