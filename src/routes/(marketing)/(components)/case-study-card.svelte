@@ -37,7 +37,7 @@
 
     <div
         class={classNames(
-            'absolute inset-0 hidden w-full space-y-4 transition-opacity delay-400 [grid-area:stack]',
+            'relative hidden w-full space-y-4 transition-opacity delay-400 [grid-area:stack]',
             'group-[&[data-state=on]]/card:block group-[&[data-state=on]]/card:opacity-100 group-[&[data-state=on]]/card:blur-none'
         )}
     >
@@ -50,9 +50,7 @@
             class="w-20"
         />
 
-        <span
-            class="text-title font-aeonik-pro text-primary relative flex flex-wrap gap-2 text-left"
-        >
+        <span class="text-title font-aeonik-pro text-primary flex flex-wrap gap-2 text-left">
             {study.headline}
         </span>
 

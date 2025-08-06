@@ -89,11 +89,14 @@
 </script>
 
 <div
-    class={classNames('relative -mb-8 flex min-h-[700px] flex-col gap-4 pb-20 md:pb-0', theme)}
+    class={classNames(
+        'relative -mb-8 flex min-h-[700px] flex-col gap-4 pt-30 pb-20 md:pb-0',
+        theme
+    )}
     use:visible
 >
     <div class="relative z-10 container w-fit md:w-full">
-        <div class="mt-12 md:max-w-xl">
+        <div class="md:max-w-xl">
             <h2 class="text-primary font-aeonik-pro text-5xl tracking-tighter text-pretty">
                 Thousands of developers <span class="text-secondary">scale with Appwrite</span><span
                     class="text-accent">_</span

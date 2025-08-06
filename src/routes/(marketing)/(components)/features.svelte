@@ -85,8 +85,9 @@
         <div class="container grid grid-cols-2 overflow-hidden lg:grid-cols-4">
             {#each features as box}
                 <a
-                    class="text-sub-body group relative border-b border-dashed border-black/8 p-8 font-medium last-of-type:border-0 nth-of-type-[4]:border-r-0 nth-of-type-[7]:border-b-0 max-lg:even:border-r-0 md:border-r lg:nth-of-type-[5]:border-b-0 lg:nth-of-type-[6]:border-b-0 lg:nth-of-type-[8]:border-b-0"
+                    class="text-sub-body group relative border-dashed border-black/8 px-2.5 py-8 font-medium last-of-type:border-0 nth-of-type-[4]:border-r-0 nth-of-type-[7]:border-b-0 max-lg:even:border-r-0 md:border-r md:border-b md:p-8 lg:nth-of-type-[5]:border-b-0 lg:nth-of-type-[6]:border-b-0 lg:nth-of-type-[8]:border-b-0"
                     href={box.href}
+                    target="_blank"
                     onclick={() => {
                         trackEvent(`feature-${box.label.toLowerCase().replace(' ', '-')}-click`);
                     }}
