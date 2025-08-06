@@ -59,15 +59,17 @@
     <ToggleGroup.Root
         bind:value={getValue, setValue}
         type="single"
-        class="container flex h-full flex-col items-stretch gap-4"
+        class="container flex h-full items-stretch gap-4"
     >
         {#each studies as study, i}
             <ToggleGroup.Item
                 value={i.toString()}
                 class={classNames(
                     'grid w-full cursor-pointer overflow-hidden rounded-2xl border border-transparent p-12 backdrop-blur-3xl transition-all duration-400 ease-in-out [grid-template-areas:"stack"]',
-                    'group/card hover:bg-black/24 data-[state="off"]:bg-black/16 data-[state="on"]:bg-black/24',
-                    'outline-0 duration-300 hover:shadow-[0px_0px_0px_4px_var(--color-offset)] focus:shadow-[0px_0px_0px_4px_var(--color-offset)]!'
+                    'group/card hover:bg-black/24',
+                    'outline-0 duration-300 hover:shadow-[0px_0px_0px_4px_var(--color-offset)] focus:shadow-[0px_0px_0px_4px_var(--color-offset)]!',
+                    'data-[state="off"]:basis-[15%] data-[state="off"]:bg-black/16',
+                    'data-[state="on"]:basis-[70%] data-[state="on"]:bg-black/24'
                 )}
             >
                 <img
