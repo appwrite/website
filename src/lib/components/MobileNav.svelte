@@ -55,7 +55,7 @@
                 </ul>
             </section>
         </div>
-        <div class="web-side-nav-mobile-footer-buttons">
+        <div class="web-side-nav-mobile-footer-buttons mx-1!">
             <GithubStats class="w-full! md:w-fit" />
         </div>
     </div>
