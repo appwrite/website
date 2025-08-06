@@ -3,11 +3,8 @@
     import { Main } from '$lib/layouts';
     import { buildOpenGraphImage } from '$lib/utils/metadata';
     import BuildingCloud from './(components)/building-cloud.svelte';
-    import CloudNumbers from './(components)/numbers.svelte';
     import Hero from './(components)/hero.svelte';
-    import NetworkingLatency from './(components)/networking-latency.svelte';
     import OpenSourceCommunity from './(components)/open-source-community.svelte';
-    import ReliabilityUptime from './(components)/global-distribution.svelte';
     import ScaleWithoutWorries from './(components)/scale-without-worries.svelte';
     import SecureByDefault from './(components)/secure-by-default.svelte';
     import TeamOfExperts from './(components)/team-of-experts.svelte';
