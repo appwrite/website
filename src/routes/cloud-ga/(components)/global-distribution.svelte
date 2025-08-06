@@ -24,7 +24,7 @@
     ];
 </script>
 
-<div class="relative h-full scroll-m-16 px-4" id="reliability-and-uptime">
+<div class="relative h-full scroll-m-16 px-4" id="network-and-latency">
     <div class="mx-auto flex w-full max-w-6xl flex-col justify-center" use:useInView>
         <Grid rows={2} bottomBorder>
             <Cell column={2} columnStart={1} class="px-4 pt-8 md:pt-30">
@@ -47,8 +47,9 @@
                         One of the exciting releases this year was the announcement of the Appwrite
                         Network. A network of cloud regions and edge locations (edges) to improve
                         Appwrite Cloud availability, performance, and compliance with local
-                        regulations. We’re we started with one region, Frankfurt, we now have x more
-                        up and running, and a lot more to come.
+                        regulations. We started with one region, Frankfurt, and we now have two more
+                        up and running, and a lot more to come. Appwrite is committed to expanding
+                        the number of regions to ensure a great experience, regardless of location.
                     </p>
                     <p>
                         We aim to deliver a great experience by reducing latency and ensuring you
