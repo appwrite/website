@@ -24,7 +24,7 @@
     ];
 </script>
 
-<div class="relative h-full scroll-m-16 px-4" id="reliability-and-uptime">
+<div class="relative h-full scroll-m-16 px-4" id="network-and-latency">
     <div class="mx-auto flex w-full max-w-6xl flex-col justify-center" use:useInView>
         <Grid rows={2} bottomBorder>
             <Cell column={2} columnStart={1} class="px-4 pt-8 md:pt-30">

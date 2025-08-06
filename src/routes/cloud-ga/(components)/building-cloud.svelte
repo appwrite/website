@@ -8,8 +8,7 @@
         'Developer experience',
         'Infrastructure and scalability',
         'Security and compliance',
-        'Reliability and uptime',
-        'Networking and latency',
+        'Network and latency',
         'Dedicated support',
         "What's next"
     ];
