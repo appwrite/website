@@ -12,7 +12,7 @@
     };
 </script>
 
-<div class="relative h-full scroll-m-16 px-4" id="the-future">
+<div class="relative h-full scroll-m-16 px-4" id="whats-next">
     <div class="mx-auto flex w-full max-w-6xl flex-col justify-center" use:useInView>
         <Grid rows={2} bottomBorder>
             <Cell column={2} columnStart={1} class="px-4 pt-12 pb-8 md:pt-30">
