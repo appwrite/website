@@ -55,7 +55,7 @@
                     </p>
 
                     <p>
-                        Appwrite don’t just provide you with an all-in-one development platform, we
+                        Appwrite doesn’t just provide you with an all-in-one development platform. We
                         are your dedicated partner in your development journey.
                     </p>
                     <div
