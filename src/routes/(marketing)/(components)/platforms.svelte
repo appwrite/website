@@ -88,7 +88,7 @@
 </script>
 
 <div class={classNames('border-smooth relative z-10 border-y border-dashed', className)}>
-    <div class="/max-md:pt-4 container flex flex-col items-center md:flex-row">
+    <div class="container flex flex-col items-center md:flex-row">
         {#if headline}
             <GradientText>
                 <span class="flex items-center pr-4 text-sm font-medium md:w-full md:max-w-[175px]"
@@ -159,7 +159,7 @@
                                             sideOffset={8}
                                             side="top"
                                             class={classNames(
-                                                'text-primary bg-greyscale-900 relative rounded-md border-0! px-2.5 py-1 text-sm',
+                                                'text-primary dark:bg-greyscale-900 relative rounded-md border-0! bg-[#EDEDF0] px-2.5 py-1 text-sm',
                                                 'data-[state="closed"]:animate-menu-out data-[state="instant-open"]:animate-menu-in data-[state="delayed-open"]:animate-menu-in'
                                             )}
                                             >{platform.name}
