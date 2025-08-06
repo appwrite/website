@@ -16,9 +16,9 @@
 <ToggleGroup.Item
     {value}
     class={classNames(
-        'relative grid w-full cursor-pointer overflow-hidden rounded-2xl border border-transparent p-12 backdrop-blur-3xl transition-all duration-400 ease-in-out [grid-template-areas:"stack"]',
+        'relative grid w-full cursor-pointer overflow-hidden rounded-2xl border border-transparent p-12 backdrop-blur-3xl transition-all ease-in-out [grid-template-areas:"stack"]',
         'group/card hover:bg-black/24',
-        'outline-0 duration-300 hover:shadow-[0px_0px_0px_4px_var(--color-offset)] focus:shadow-[0px_0px_0px_4px_var(--color-offset)]!',
+        'outline-0 duration-250 hover:shadow-[0px_0px_0px_4px_var(--color-offset)] focus:shadow-[0px_0px_0px_4px_var(--color-offset)]!',
         'data-[state="off"]:basis-[15%] data-[state="off"]:bg-black/16',
         'data-[state="on"]:basis-[70%] data-[state="on"]:bg-black/24'
     )}
@@ -43,14 +43,23 @@
     >
         <img
             loading="lazy"
-            width={100}
-            height={100}
+            width={80}
+            height={80}
             src={study.logo}
             alt={study.headline}
-            class="w-20"
+            class={classNames('-mt-8 h-20 w-20', {
+                'animate-fade-in': isActive
+            })}
         />
 
-        <span class="text-title font-aeonik-pro text-primary flex flex-wrap gap-2 text-left">
+        <span
+            class={classNames(
+                'text-title font-aeonik-pro text-primary flex h-[3lh] w-[24ch] flex-wrap gap-2 text-left',
+                {
+                    'animate-fade-in': isActive
+                }
+            )}
+        >
             {study.headline}
         </span>
 
