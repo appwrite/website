@@ -277,6 +277,7 @@
                     company: 'K-Collect',
                     image: '/images/testimonials/ryan-oconner-testimonial.png'
                 }}
+                theme="dark"
             >
                 The switch to using Appwrite brought
                 <span class="text-primary">infinite value that I'm still discovering today.</span>
