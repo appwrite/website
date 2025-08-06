@@ -11,6 +11,7 @@
     import Scale from '$routes/(marketing)/(components)/scale.svelte';
     import { Button } from '$lib/components/ui';
     import { trackEvent } from '$lib/actions/analytics';
+    import Features from '$routes/(marketing)/(components)/features.svelte';
 
     let email = '';
     let firstName = '';
@@ -269,12 +270,19 @@
                     </div>
                 </div>
             </div>
-            <Scale theme="dark">
-                Appwrite has supported our recent growth in every step of the way, <span
-                    class="text-primary">without any failures or outages</span
-                >.
+            <Scale
+                testimonial={{
+                    name: 'Ryan O’Connor',
+                    title: 'Founder',
+                    company: 'K-Collect',
+                    image: '/images/testimonials/ryan-oconner-testimonial.png'
+                }}
+            >
+                The switch to using Appwrite brought
+                <span class="text-primary">infinite value that I'm still discovering today.</span>
             </Scale>
             <LogoList />
+            <Features theme="dark" class="-mt-24" />
             <div class="container">
                 <FooterNav />
                 <MainFooter />
