@@ -33,7 +33,7 @@
             <Cell column={4} columnStart={3} class="px-4 pb-8 md:py-30">
                 <div class="space-y-8">
                     <p>
-                        One of the most exciting releases this year was the announcement of the Appwrite
+                        One of the exciting releases this year was the announcement of the Appwrite
                         Network. A network of cloud regions and edge locations (edges) to improve
                         Appwrite Cloud availability, performance, and compliance with local
                         regulations. We started with one region, Frankfurt, and we now have two more
