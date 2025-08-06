@@ -40,7 +40,7 @@
                 description: 'developers'
             },
             {
-                number: 200,
+                number: 20,
                 suffix: 'B+',
                 description: 'monthly database operations'
             }
