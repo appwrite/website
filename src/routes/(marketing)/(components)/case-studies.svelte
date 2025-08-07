@@ -63,7 +63,7 @@
     <ToggleGroup.Root
         bind:value={getValue, setValue}
         type="single"
-        class="container flex h-full flex-col items-stretch gap-4 md:flex-row"
+        class="container flex h-full flex-col items-stretch gap-4 lg:flex-row"
     >
         {#each studies as study, index}
             <CaseStudyCard {study} isActive={value === index.toString()} value={index.toString()} />
