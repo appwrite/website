@@ -54,7 +54,7 @@
 
         <span
             class={classNames(
-                'text-title font-aeonik-pro text-primary flex h-[3lh] w-[24ch] flex-wrap gap-2 text-left',
+                'text-title font-aeonik-pro text-primary flex min-h-[3lh] flex-wrap gap-2 text-left md:w-[16ch] lg:w-[24ch]',
                 {
                     'animate-fade-in': isActive
                 }
