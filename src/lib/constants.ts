@@ -8,7 +8,7 @@ type SocialStats = {
 
 export const SOCIAL_STATS: SocialStats = {
     GITHUB: {
-        STAT: '50K',
+        STAT: '52K',
         LINK: 'https://github.com/appwrite/appwrite',
         EXTRA: {
             COMMITS: '27K+',

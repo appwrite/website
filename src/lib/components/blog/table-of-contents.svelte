@@ -1,4 +1,4 @@
-<script lang="ts" context="module">
+<script lang="ts" module>
     export type TocItem = {
         title: string;
         href: string;
@@ -22,17 +22,21 @@
         window.scrollTo({ top: 0 });
     };
 
-    let isScrolled: boolean = false;
+    let isScrolled: boolean = $state(false);
 
     const handleIsScrolled = () => {
         isScrolled = !!window.scrollY;
     };
 
-    export let toc: Array<TocItem> = [];
-    export let heading: string = 'Table of Contents';
+    interface Props {
+        toc?: Array<TocItem>;
+        heading?: string;
+    }
+
+    let { toc = [], heading = 'Table of Contents' }: Props = $props();
 </script>
 
-<svelte:window on:scroll={handleIsScrolled} />
+<svelte:window onscroll={handleIsScrolled} />
 
 <nav class="sticky top-32 col-span-3 mt-2 -ml-4 hidden h-[800px] flex-col gap-6 lg:flex">
     <span class="text-micro tracking-loose text-primary font-aeonik-fono ps-6 uppercase"
@@ -88,7 +92,7 @@
     {#if isScrolled}
         <button
             class="text-primary group border-smooth text-caption ms-6 -mt-4 flex cursor-pointer items-center gap-2 border-t pt-10 font-medium transition-all"
-            on:click={backToTop}
+            onclick={backToTop}
             out:fade
             in:fade
         >
