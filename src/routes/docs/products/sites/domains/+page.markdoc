@@ -60,7 +60,7 @@ DNS changes can take up to 48 hours to fully propagate across the internet. Duri
 
 ### Why Appwrite uses NS records instead of A records
 
-By DNS standards (RFC), apex domains cannot use CNAME records, only A or AAAA records, which require pointing to fixed IP addresses. Using A records would lock Appwrite into specific IP addresses, limiting our ability to optimize routing, scale our infrastructure, or make changes as needed. To avoid this constraint and maintain flexibility, Appwrite offers DNS delegation through NS records so we can manage routing on your behalf.
+By [DNS standards (RFC)](https://datatracker.ietf.org/doc/html/rfc1035), apex domains cannot use CNAME records, only A or AAAA records, which require pointing to fixed IP addresses. Using A records would lock Appwrite into specific IP addresses, limiting our ability to optimize routing, scale our infrastructure, or make changes as needed. To avoid this constraint and maintain flexibility, Appwrite offers DNS delegation through NS records so we can manage routing on your behalf.
 
 Some DNS providers support CNAME-like behavior at the apex through custom setups. If your provider allows it, you can point your apex domain to `appwrite.network` without using Appwrite's nameservers.
 
