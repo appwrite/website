@@ -63,7 +63,7 @@
 </script>
 
 <div
-    class={classNames('mt-4 bg-[#EDEDF0] pt-20 pb-12 md:pt-40', theme, classes, {
+    class={classNames('bg-[#EDEDF0] pt-20 pb-12 md:pt-40', theme, classes, {
         'bg-greyscale-900': theme === 'dark'
     })}
     {...restProps}

@@ -16,7 +16,7 @@
 <ToggleGroup.Item
     {value}
     class={classNames(
-        'relative grid max-h-[467px] w-full cursor-pointer overflow-hidden rounded-2xl border border-transparent p-12 backdrop-blur-3xl transition-all ease-in-out [grid-template-areas:"stack"]',
+        'relative grid w-full cursor-pointer overflow-hidden rounded-2xl border border-transparent p-12 backdrop-blur-3xl transition-all ease-in-out [grid-template-areas:"stack"] md:max-h-[467px]',
         'group/card hover:bg-black/24',
         'outline-0 duration-250 hover:shadow-[0px_0px_0px_4px_var(--color-offset)] focus:shadow-[0px_0px_0px_4px_var(--color-offset)]!',
         'data-[state="off"]:basis-[15%] data-[state="off"]:bg-black/16',
