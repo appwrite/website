@@ -89,14 +89,11 @@
 </script>
 
 <div
-    class={classNames(
-        'relative -mb-8 flex min-h-[700px] flex-col gap-4 pt-30 pb-20 md:pb-0',
-        theme
-    )}
+    class={classNames('relative -mb-8 flex min-h-[700px] flex-col gap-4 pb-20 md:pb-0', theme)}
     use:visible
 >
     <div class="relative z-10 container w-fit md:w-full">
-        <div class="md:max-w-xl">
+        <div class="mt-12 md:max-w-xl">
             <h2 class="text-primary font-aeonik-pro text-5xl tracking-tighter text-pretty">
                 Thousands of developers <span class="text-secondary">scale with Appwrite</span><span
                     class="text-accent">_</span
@@ -131,7 +128,7 @@
 
     <div class="mt-12 block space-y-8 md:hidden">
         {#each localStats as stat, i}
-            <div class="h-full overflow-auto pl-6">
+            <div class="/overflow-auto h-full pl-6">
                 <div class="relative">
                     {#if browser}
                         <NumberFlow
@@ -151,7 +148,7 @@
         <div class="relative container mx-auto h-full">
             <div class="absolute inset-0 z-100 grid grid-cols-4">
                 {#each localStats as stat, i}
-                    <div class="border-smooth relative h-full overflow-auto border-l border-dashed">
+                    <div class="border-smooth relative h-full border-l border-dashed">
                         <div
                             class="absolute"
                             style="bottom: calc(50px + {25 + (75 / 3) * (i / 2)}%)"
