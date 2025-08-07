@@ -191,7 +191,7 @@ const client = new Client()
 
 const storage = new Storage(client);
 
-// Get image with transformations (downloads actual image data)
+// Get image with transformations (downloads image data)
 const result = await storage.getFilePreview(
     'photos',           // bucket ID
     'sunset.png',       // file ID
