@@ -65,7 +65,7 @@
                             Appwrite offers simple and transparent pricing plans with no surprises.
                         </p>
                         <div class="mt-4 flex flex-col items-center text-white">
-                            <a href="/products/sites">
+                            <a href="/blog/post/appwrite-pricing-update">
                                 <BadgeTransparent
                                     ><img
                                         src="/images/icons/illustrated/light/sites.png"
@@ -73,14 +73,14 @@
                                         class="h-8 w-8"
                                     />
                                     <span class="text-white"
-                                        >Appwrite Sites is free during launch</span
+                                        >New Appwrite pricing announced</span
                                     >
                                     <Icon name="arrow-right" aria-hidden="true"
                                     ></Icon></BadgeTransparent
                                 ></a
                             >
                             <span class="mt-2 text-sm text-[var(--color-primary)] opacity-64"
-                                >Pricing will be revealed August 1st, 2025</span
+                                >New pricing will go into effect September 1st, 2025</span
                             >
                         </div>
                     </div>
