@@ -12,6 +12,7 @@
     import Hero from './(components)/Hero.svelte';
     import Testimonials from '$lib/components/product-pages/testimonials.svelte';
     import Features from './(components)/features/Features.svelte';
+    import Pricing from '$routes/(marketing)/(components)/pricing.svelte';
 
     const title = 'Auth' + TITLE_SUFFIX;
     const description =
@@ -192,9 +193,9 @@
                 </ul>
             </div>
         </section>
-        <div class="relative">
+        <div class="border-smooth relative border-t">
+            <Pricing class="mt-0" />
             <div class="container">
-                <PreFooter />
                 <FooterNav />
                 <MainFooter />
             </div>
