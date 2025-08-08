@@ -19,7 +19,7 @@
             suffix: '+',
             label: 'OSS Contributors'
         },
-        { number: 0, label: 'Top OSS GitHub projects' }
+        { number: 0, label: 'Top OSS projects' }
     ];
 
     const numbers = [650, 50, 900, 300];
@@ -59,7 +59,7 @@
             {#each items as { label, number, suffix }}
                 <GradientBorderCard class="bg-greyscale-750 rounded-lg p-6">
                     <h3 class="text-title font-aeonik-pro text-primary">
-                        <NumberFlow value={number} {suffix} />
+                        <NumberFlow value={number} {suffix} class="-mt-4 -mb-2 inline-block" />
                     </h3>
                     <p class="text-description text-secondary">{label}</p>
                 </GradientBorderCard>
