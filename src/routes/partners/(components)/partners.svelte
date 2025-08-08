@@ -64,7 +64,7 @@
             </div>
         </div>
 
-        <div class="mask relative overflow-hidden px-8" style:--mask-height="150px">
+        <div class="mask relative max-w-screen overflow-hidden px-8" style:--mask-height="150px">
             {#each tiers as { title, icon }, i}
                 <div
                     class={classNames('relative h-fit min-w-md rounded-3xl opacity-0', {
