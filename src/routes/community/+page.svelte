@@ -496,7 +496,7 @@
                                 Discover Appwrite's community across platforms and join the fun.
                             </p>
                         </div>
-                        <ul class="web-multi-columns-1" style:--p-col-gap="-1rem">
+                        <ul class="grid grid-cols-1 md:grid-cols-2" style:--p-col-gap="-1rem">
                             <li>
                                 <a
                                     href={SOCIAL_STATS.DISCORD.LINK}
