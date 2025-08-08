@@ -18,7 +18,10 @@
 
 <svelte:window on:resize={() => open && (open = false)} />
 
-<nav class="web-side-nav web-is-not-desktop fixed! w-full!" class:hidden={!open}>
+<nav
+    class="web-side-nav sticky top-[74px] block max-h-screen overflow-hidden lg:hidden"
+    class:hidden={!open}
+>
     <div class="web-side-nav-wrapper ps-4 pe-4">
         <div class="flex items-center gap-2 px-4">
             <Button
@@ -31,7 +34,7 @@
             </Button>
             <IsLoggedIn class="flex-1" />
         </div>
-        <div class="web-side-nav-scroll">
+        <div class="web-side-nav-scroll max-w-screen! pr-0!">
             <section>
                 <ul>
                     {#each links as { href, label, mobileSubmenu }}
