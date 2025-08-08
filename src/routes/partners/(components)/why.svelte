@@ -3,7 +3,7 @@
     import { inView } from 'motion';
     import NumberFlow from '@number-flow/svelte';
 
-    let items: Array<{ number: number; label: string; suffix?: string }> = [
+    let items: Array<{ number: number; label: string; suffix?: string; prefix?: string }> = [
         {
             number: 0,
             suffix: 'k+',
@@ -56,12 +56,12 @@
             </p>
         </div>
         <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4" use:useInView>
-            {#each items as { label, number, suffix }}
+            {#each items as { label, number, suffix, prefix }}
                 <GradientBorderCard class="bg-card rounded-lg p-6">
-                    <h3 class="text-title font-aeonik-pro text-primary">
-                        <NumberFlow value={number} {suffix} class="-mt-4 -mb-2 inline-block" />
+                    <h3 class="text-title font-aeonik-pro text-primary -mt-4 -mb-2">
+                        <NumberFlow {prefix} value={number} {suffix} class="inline-block" />
                     </h3>
-                    <p class="text-description text-secondary">{label}</p>
+                    <p class="text-description text-secondary font-medium">{label}</p>
                 </GradientBorderCard>
             {/each}
         </div>
