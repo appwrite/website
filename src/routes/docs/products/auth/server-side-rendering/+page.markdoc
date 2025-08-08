@@ -73,6 +73,17 @@ $adminClient = (new Client())
 
 
 ```
+```python
+from appwrite.client import Client
+
+admin_client = (Client()
+                .set_endpoint('https://<REGION>.cloud.appwrite.io/v1') # Your API Endpoint \
+                .set_project('<PROJECT_ID>') # Your project ID
+                .set_key('<YOUR_API_KEY>') # Your secret API key
+            )
+
+
+```
 {% /multicode %}
 
 It is important to use an API key, as this will allow your server requests to bypass [rate limits](/docs/advanced/platform/rate-limits). If you don't use an API key, your server will be rate limited as if it were a client from a single IP address.
@@ -84,13 +95,15 @@ It will be initialized with the session, usually stored within a cookie.
 
 You should create a new client for each request and **never** share the client between requests.
 
+Use `a_session_<PROJECT_ID>` as the [cookie name](/docs/apis/rest#client-integration) and a [custom domain](/docs/advanced/platform/custom-domains) for your Appwrite endpoint if you want the session to work client-side as well.
+
 {% multicode %}
 ```server-nodejs
 const sessionClient = new Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
     .setProject('<PROJECT_ID>');            // Your project ID
 
-const session = req.cookies.session; // Get the session cookie from the request
+const session = req.cookies['a_session_<PROJECT_ID>']; // Get the session cookie from the request
 if (session) {
     sessionClient.setSession(session);
 }
@@ -100,10 +113,26 @@ $sessionClient = (new Client())
     ->setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
     ->setProject('<PROJECT_ID>');            // Your project ID
 
-$session = $_COOKIE['session']; // Get the session cookie from the request
+$session = $_COOKIE['a_session_<PROJECT_ID>']; // Get the session cookie from the request
 if ($session) {
     $sessionClient->setSession($session);
 }
+```
+
+```python
+from flask import request
+from appwrite.client import Client
+
+session_client = (Client()
+                  .set_endpoint('https://<REGION>.cloud.appwrite.io/v1') # Your API Endpoint
+                  .set_project('<PROJECT_ID>') # Your project ID
+                )
+
+# Get the session cookie from the request
+session = request.cookies.get('a_session_<PROJECT_ID>')
+if session:
+    session_client.set_session(session)
+
 ```
 {% /multicode %}
 
@@ -134,7 +163,7 @@ app.post('/login', async (req, res) => {
         const session = await account.createEmailPasswordSession(email, password);
 
         // Set the session cookie
-        res.cookie('session', session.secret, { // use the session secret as the cookie value
+        res.cookie('a_session_<PROJECT_ID>', session.secret, { // use the session secret as the cookie value
             httpOnly: true,
             secure: true,
             sameSite: 'strict',
@@ -165,7 +194,7 @@ try {
     $session = $account->createEmailPasswordSession($email, $password);
 
     // Set the session cookie
-    setcookie('session', $session['secret'], [
+    setcookie('a_session_<PROJECT_ID>', $session['secret'], [
         'httpOnly' => true,
         'secure' => true,
         'sameSite' => 'strict',
@@ -177,6 +206,39 @@ try {
 } catch (Exception $e) {
     echo json_encode(['success' => false, 'error' => $e->getMessage()]);
 }
+```
+```python
+from flask import Flask, request, jsonify, make_response
+
+# Initialize admin client here
+# ...
+
+@app.post('/login')
+def login():
+    body = request.json
+    # Get email and password from request
+    email = body['email']
+    password = body['password']
+
+    try:
+        account = Account(admin_client)
+        
+        # Create the session using the Appwrite client
+        session = account.create_email_password_session(email, password)
+        resp = make_response(jsonify({'success': True}))
+
+        # Set the session cookie
+        resp.set_cookie('a_session_<PROJECT_ID>', 
+                        session['secret'], 
+                        httponly=True, 
+                        secure=True, 
+                        samesite='Strict', 
+                        expires=session['expire'], 
+                        path='/'
+                    )
+        return resp
+    except Exception as e:
+        return jsonify({'success': False, 'error': str(e)}), 400
 ```
 {% /multicode %}
 
@@ -197,7 +259,7 @@ When the browser makes a request to your domain's endpoints, it will automatical
 
 app.get('/user', async (req, res) => {
     // First, read the session cookie from the request
-    const session = req.cookies.session;
+    const session = req.cookies['a_session_<PROJECT_ID>'];
 
     // If the session cookie is not present, return an error
     if (!session) {
@@ -223,7 +285,7 @@ app.get('/user', async (req, res) => {
 // Initialize the session client here
 
 // First, read the session cookie from the request
-$session = $_COOKIE['session'];
+$session = $_COOKIE['a_session_<PROJECT_ID>'];
 
 // If the session cookie is not present, return an error
 if (!$session) {
@@ -242,6 +304,30 @@ try {
 } catch (Exception $e) {
     echo json_encode(['success' => false, 'error' => $e->getMessage()]);
 }
+```
+```python
+#  Initialize the session client here
+
+@app.get('/user')
+def get_user():
+    #  First, read the session cookie from the request
+    session = request.cookies.get('a_session_<PROJECT_ID>')
+
+    # If the session cookie is not present, return an error
+    if not session:
+        return jsonify({'success': False, 'error': 'Unauthorized'}), 401
+    
+    # pass the session cookie to the Appwrite client
+    session_client.set_session(session)
+    account = Account(session_client)
+
+    # Now, you can make authenticated requests to the Appwrite API
+    try:
+        user = account.get()
+        return jsonify({'success': True, 'user': user})
+    except Exception as e:
+        return jsonify({'success': False, 'error': str(e)}), 400
+
 ```
 {% /multicode %}
 
@@ -319,6 +405,19 @@ $account = new Account($client);
 
 $result = $account->createAnonymousSession();
 ```
+```python
+from appwrite.client import Client
+from appwrite.services.account import Account
+
+client = (Client()
+            .set_endpoint('https://<REGION>.cloud.appwrite.io/v1') # Your API Endpoint
+            .set_project('<PROJECT_ID>') # Your project ID
+        )
+
+account = Account(client)
+
+result = account.create_anonymous_session()
+```
 {% /multicode %}
 
 # Forwarding user agent {% #forwarding-user-agent %}
@@ -332,6 +431,9 @@ client.setForwardedUserAgent(req.headers['user-agent']);
 ```php
 <?php
 $client->setForwardedUserAgent($_SERVER['HTTP_USER_AGENT']);
+```
+```python
+client.set_forwarded_user_agent(request.headers.get('user-agent'))
 ```
 {% /multicode %}
 
@@ -383,6 +485,29 @@ $redirectUrl = $account->createOAuth2Token(
 
 header('Location' . $redirectUrl);
 ```
+```python
+from appwrite.client import Client
+from appwrite.services.account import Account, OAuthProvider
+from flask import Flask, request ,redirect, make_response, jsonify
+
+admin_client = (Client()
+                .set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
+                .set_project('<PROJECT_ID>')
+                .set_key('<API_KEY>')
+            )
+
+@app.get('/oauth')
+def oauth():
+    account = Account(admin_client)
+
+    redirect_url = account.create_o_auth2_token(
+        OAuthProvider.Github,                # Provider
+        'https://example.com/oauth/success', # Success URL
+        'https://example.com/oauth/failure', # Failure URL
+    )
+
+    return redirect(redirect_url)
+```
 {% /multicode %}
 
 Next, create a success callback endpoint that receives the `userId` and `secret` URL parameters, and then calls `createSession` on the server side. This endpoint returns a session object, which you can store in a cookie.
@@ -400,7 +525,7 @@ app.get('/oauth/success', async (req, res) => {
         const session = await account.createSession(userId, secret);
 
         // Set the session cookie
-        res.cookie('session', session.secret, { // Use the session secret as the cookie value
+        res.cookie('a_session_<PROJECT_ID>', session.secret, { // Use the session secret as the cookie value
             httpOnly: true,
             secure: true,
             sameSite: 'strict',
@@ -435,7 +560,7 @@ try {
     $session = $account->createSession($userId, $secret);
 
     // Set the session cookie
-    setcookie('session', $session['secret'], [
+    setcookie('a_session_<PROJECT_ID>', $session['secret'], [
         'httpOnly' => true,
         'secure' => true,
         'sameSite' => 'strict',
@@ -447,6 +572,38 @@ try {
 } catch (Exception $e) {
     echo json_encode(['success' => false, 'error' => $e->getMessage()]);
 }
+```
+```python
+@app.get('/oauth/success')
+def oauth_success():
+    account = Account(admin_client)
+
+    # Get the userId and secret from the URL parameters
+    user_id = request.args.get('userId')
+    secret = request.args.get('secret')
+
+    try:
+        # Create the session using the Appwrite client
+        session = account.create_session(user_id, secret)
+        
+        # Set the session cookie
+        res = make_response(jsonify({'success': True}))
+        
+        #  Set session cookie
+        res.set_cookie(
+            'a_session_<PROJECT_ID>',
+            session['secret'],
+            httponly=True,
+            secure=True,
+            samesite='Strict',
+            max_age=session['expire'],
+            path='/'
+        )
+
+        return res
+
+    except Exception as e:
+        return jsonify({'success': False, 'error': str(e)}), 400
 ```
 {% /multicode %}
 

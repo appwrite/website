@@ -59,6 +59,7 @@
     import { saveReferrerAndUtmSource } from '$lib/utils/utm';
     import { Sprite } from '$lib/components/ui/icon/sprite';
     import { setTheme, ThemeProvider } from '$lib/providers/theme';
+    import { displayHiringMessage } from '$lib/utils/console';
 
     function applyTheme(theme: Theme) {
         const resolvedTheme = theme === 'system' ? getSystemTheme() : theme;
@@ -71,6 +72,7 @@
     const tracked = new Set();
 
     onMount(() => {
+        displayHiringMessage();
         saveReferrerAndUtmSource(page.url);
 
         const initialTheme = page.route.id?.startsWith('/docs') ? getPreferredTheme() : 'dark';
@@ -146,6 +148,15 @@
 <svelte:window on:scroll={handleScroll} />
 <svelte:head>
     {#if !dev}
+        <!-- Start cookieyes banner -->
+        <script
+            defer
+            id="cookieyes"
+            type="text/javascript"
+            src="https://cdn-cookieyes.com/client_data/7d0de7a43cc518960906cf03/script.js"
+        ></script>
+        <!-- End cookieyes banner -->
+
         <!--suppress JSUnresolvedLibraryURL -->
         <script defer data-domain="appwrite.io" src="https://plausible.io/js/script.js"></script>
 

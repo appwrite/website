@@ -43,44 +43,44 @@
             image: DatabasesSlide
         },
         {
-            label: 'Functions',
-            icon: Functions,
-            line: (
-                isActive: boolean
-            ) => `<svg width="98" height="75" viewBox="0 0 98 75" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M0 74H35.3623C41.9897 74 47.3623 68.6274 47.3623 62V13C47.3623 6.37258 52.7349 0.999998 59.3623 0.999998H98" class="group-hover:stroke-white ${isActive && 'stroke-white'} group-focus-within:stroke-white transition-all stroke-smooth" stroke-dasharray="4 4"/>
-                   </svg>`,
-            image: FunctionsSlide
-        },
-        {
             label: 'Storage',
             icon: Storage,
             line: (
                 isActive: boolean
             ) => `<svg width="98" height="75" viewBox="0 0 98 75" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M98 1H62.6377C56.0103 1 50.6377 6.37258 50.6377 13V62C50.6377 68.6274 45.2651 74 38.6377 74H-9.53674e-07" class="group-hover:stroke-white ${isActive && 'stroke-white'} group-focus-within:stroke-white transition-all stroke-smooth" stroke-dasharray="4 4"/>
+                        <path d="M0 74H35.3623C41.9897 74 47.3623 68.6274 47.3623 62V13C47.3623 6.37258 52.7349 0.999998 59.3623 0.999998H98" class="group-hover:stroke-white ${isActive && 'stroke-white'} group-focus-within:stroke-white transition-all stroke-smooth" stroke-dasharray="4 4"/>
                    </svg>`,
             image: StorageSlide
         },
         {
-            label: 'Realtime',
-            icon: Realtime,
+            label: 'Functions',
+            icon: Functions,
             line: (
                 isActive: boolean
-            ) => `<svg width="98" height="2" viewBox="0 0 98 2" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M0 1L98 1.00001" class="group-hover:stroke-white group-focus-within:stroke-white ${isActive && 'stroke-white'} transition-all stroke-smooth" stroke-dasharray="4 4"/>
+            ) => `<svg width="98" height="75" viewBox="0 0 98 75" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M98 1H62.6377C56.0103 1 50.6377 6.37258 50.6377 13V62C50.6377 68.6274 45.2651 74 38.6377 74H-9.53674e-07" class="group-hover:stroke-white ${isActive && 'stroke-white'} group-focus-within:stroke-white transition-all stroke-smooth" stroke-dasharray="4 4"/>
                    </svg>`,
-            image: RealtimeSlide
+            image: FunctionsSlide
         },
         {
             label: 'Messaging',
             icon: Messaging,
             line: (
                 isActive: boolean
+            ) => `<svg width="98" height="2" viewBox="0 0 98 2" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M0 1L98 1.00001" class="group-hover:stroke-white group-focus-within:stroke-white ${isActive && 'stroke-white'} transition-all stroke-smooth" stroke-dasharray="4 4"/>
+                   </svg>`,
+            image: MessagingSlide
+        },
+        {
+            label: 'Realtime',
+            icon: Realtime,
+            line: (
+                isActive: boolean
             ) => `<svg width="98" height="75" viewBox="0 0 98 75" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M98 74H62.6377C56.0103 74 50.6377 68.6274 50.6377 62V13C50.6377 6.37258 45.2651 0.999998 38.6377 0.999998H-9.53674e-07" class="group-hover:stroke-white ${isActive && 'stroke-white'} group-focus-within:stroke-white transition-all stroke-smooth" stroke-dasharray="4 4"/>
                    </svg>`,
-            image: MessagingSlide
+            image: RealtimeSlide
         }
     ];
 

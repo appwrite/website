@@ -25,24 +25,24 @@
         children,
         stats = [
             {
-                number: 12,
-                suffix: '+',
-                description: 'Regions served'
-            },
-            {
-                number: 1000,
-                suffix: '+ TB',
-                description: 'of data served'
-            },
-            {
                 number: 50,
-                suffix: 'B',
-                description: 'requests'
+                suffix: 'K+',
+                description: 'GitHub stars'
             },
             {
                 number: 300,
-                suffix: 'K',
-                description: 'projects'
+                suffix: '+',
+                description: 'PoP locations'
+            },
+            {
+                number: 300,
+                suffix: 'K+',
+                description: 'developers'
+            },
+            {
+                number: 20,
+                suffix: 'B+',
+                description: 'monthly database operations'
             }
         ]
     }: Props = $props();

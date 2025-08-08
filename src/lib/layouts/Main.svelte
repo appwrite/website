@@ -155,7 +155,7 @@
     <!--{/if}-->
 
     <section
-        class="web-mobile-header {resolvedTheme}"
+        class="web-mobile-header fixed! w-full! {resolvedTheme}"
         class:is-transparent={browser && !$isMobileNavOpen}
     >
         <div class="web-mobile-header-start">
@@ -196,7 +196,9 @@
         </div>
     </section>
 
-    <header class="web-main-header is-special-padding {resolvedTheme} is-transparent">
+    <header
+        class="web-main-header is-special-padding hidden lg:block {resolvedTheme} is-transparent"
+    >
         <div
             class="web-main-header-wrapper"
             class:is-special-padding={BANNER_KEY.startsWith('init-banner-')}

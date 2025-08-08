@@ -98,12 +98,12 @@
             on:emblaInit={onEmblaInit}
         >
             <div class="embla__container flex">
-                {#each events as _}
+                {#each events as { poster, title }}
                     <div
                         class="embla__slide bg-card/90 mr-4 min-w-0 [flex:0_0_33%] items-center rounded-lg p-4"
                     >
-                        <img src={_.poster} class="m-auto rounded-t" />
-                        <h3 class="mt-0.5 text-base font-medium">{_.title}</h3>
+                        <img alt={title} src={poster} class="m-auto rounded-t" />
+                        <h3 class="mt-0.5 text-base font-medium">{title}</h3>
                     </div>
                 {/each}
             </div>

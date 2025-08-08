@@ -19,13 +19,13 @@ The edge network endpoints are designed for:
 - **Global traffic distribution**: Automatically balancing traffic across the edge network for consistent performance.
 
 Example:
-- `https://[ID].appwrite.network`
+- `https://<ID>.appwrite.network`
 
 Use this endpoint when optimizing for low-latency and global availability is critical for your functions.
 
 # Region {% #region %}
 
-The **`[REGION].cloud.appwrite.io`** domain directs traffic specifically to the region hosting your Appwrite project's services. This endpoint ensures that requests are processed close to your core data and infrastructure, making it ideal for:
+The **`<REGION>.cloud.appwrite.io`** domain directs traffic specifically to the region hosting your Appwrite project's services. This endpoint ensures that requests are processed close to your core data and infrastructure, making it ideal for:
 
 - **Data-intensive operations**: Frequent access to databases, storage, authentication, and other region-hosted services.
 - **Regulatory compliance**: Ensuring data residency requirements are met by targeting specific regions.
@@ -38,7 +38,7 @@ Use this endpoint when direct access to region-specific infrastructure is requir
 
 # Compute {% #compute %}
 
-The **`[ID].[REGION].appwrite.run`** domain is designed for running server-side functions and compute-heavy tasks directly in the region where your services are hosted. It supports custom domains for seamless integration into your workflows. The `appwrite.run` subdomains are auto-generated for each function you create. This endpoint is best suited for:
+The **`<ID>.<REGION>.appwrite.run`** domain is designed for running server-side functions and compute-heavy tasks directly in the region where your services are hosted. It supports custom domains for seamless integration into your workflows. The `appwrite.run` subdomains are auto-generated for each function you create. This endpoint is best suited for:
 
 - **Compute-Intensive Tasks**: Executing server-side functions, handling APIs, or processing asynchronous jobs.
 - **Custom Domain Support**: Enabling custom domains for specific function endpoints.
@@ -53,8 +53,8 @@ Use this endpoint for scenarios where compute needs to happen close to your data
 
 | Endpoint                             | Use Case                                             |
 |--------------------------------------|------------------------------------------------------|
-| `https://[ID].appwrite.network`      | Geo-balanced edges for low-latency operations        |
-| `https://[REGION].cloud.appwrite.io` | Direct access to region services                     |
-| `https://[ID].[REGION].appwrite.run` | Region-based compute and function execution          |
+| `https://<ID>.appwrite.network`      | Geo-balanced edges for low-latency operations        |
+| `https://<REGION>.cloud.appwrite.io` | Direct access to region services                     |
+| `https://<ID>.<REGION>.appwrite.run` | Region-based compute and function execution          |
 
 Knowing how these endpoints work helps you choose the right one for your needs, ensuring better performance and alignment with your application's compliance requirements.

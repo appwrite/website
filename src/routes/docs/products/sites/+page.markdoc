@@ -38,3 +38,14 @@ Try out one of our most popular framework quick-starts:
 {% /cards %}
 
 Or, [setup your first site using your favorite framework >](/docs/products/sites/quick-start)
+
+# Migrating from other platforms?
+
+Looking to migrate existing web applications from other hosting platforms to Appwrite Sites? Find detailed migration guides for various platforms:
+
+{% cards %}
+
+{% cards_item href="/docs/products/sites/migrations/vercel" title="Migrating from Vercel" icon="icon-vercel" %}
+{% /cards_item %}
+
+{% /cards %}
