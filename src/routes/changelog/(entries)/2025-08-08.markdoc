@@ -22,6 +22,6 @@ Starting September 1st, 2025, the following pricing changes will go into effect:
 - The additional storage price has decreased by 6.7%, from $3 per 100GB to $2.8 per 100GB
 - Appwrite Messaging and Sites now have resource limits on Free, Pro, and Scale plans
 
-{% arrow_link href="/blof/post/appwrite-pricing-update" %}
+{% arrow_link href="/blog/post/appwrite-pricing-update" %}
 Read the announcement to learn more
 {% /arrow_link %}
