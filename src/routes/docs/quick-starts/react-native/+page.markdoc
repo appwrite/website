@@ -1,7 +1,7 @@
 ---
 layout: article
 title: Start with React Native
-description: Discover how to leverage Appwrite's powerful backend to help you build React Native apps for iOS, Android and other native platforms. 
+description: Discover how to leverage Appwrite's powerful backend to help you build React Native apps for iOS, Android and other native platforms.
 difficulty: beginner
 readtime: 10
 back: /docs/quick-starts
@@ -115,12 +115,20 @@ export default function App() {
   const [name, setName] = useState('');
 
   async function login(email: string, password: string) {
-    await account.createEmailPasswordSession(email, password);
+    await account.createEmailPasswordSession({
+        email,
+        password
+    });
     setLoggedInUser(await account.get());
   }
 
   async function register(email: string, password: string, name: string) {
-    await account.create(ID.unique(), email, password, name);
+    await account.create({
+        userId: ID.unique(),
+        email,
+        password,
+        name
+    });
     await login(email, password);
     setLoggedInUser(await account.get());
   }
@@ -199,7 +207,7 @@ You can also add some simple styling to your app by adding the following styles 
 ```client-react-native
 const styles = StyleSheet.create({
   root: {
-    marginTop: 40, 
+    marginTop: 40,
     marginBottom: 40
   },
   input: {

@@ -19,11 +19,11 @@ const client = new Client()
 
 const account = new Account(client);
 
-const user = await account.create(
-    ID.unique(), 
-    'email@example.com', 
-    'password'
-);
+const user = await account.create({
+    userId: ID.unique(), 
+    email: 'email@example.com', 
+    password: 'password'
+});
 ```
 ```client-flutter
 import 'package:appwrite/appwrite.dart';
@@ -90,11 +90,11 @@ const client = new Client()
 
 const account = new Account(client);
 
-const user = await account.create(
-    ID.unique(), 
-    'email@example.com', 
-    'password'
-);
+const user = await account.create({
+    userId: ID.unique(), 
+    email: 'email@example.com', 
+    password: 'password'
+});
 ```
 {% /multicode %}
 {% /section %}
@@ -105,9 +105,10 @@ After you've created your account, users can be logged in using the [Create Emai
 
 {% multicode %}
 ```client-web
-const session = await account.createEmailPasswordSession(
-    email, 
-    password
+const session = await account.createEmailPasswordSession({
+    email: email, 
+    password: password
+});
 );
 ```
 
@@ -144,10 +145,10 @@ mutation {
 ```
 
 ```client-react-native
-const session = await account.createEmailPasswordSession(
-    email, 
-    password
-);
+const session = await account.createEmailPasswordSession({
+    email: email, 
+    password: password
+});
 ```
 {% /multicode %}
 {% /section %}
