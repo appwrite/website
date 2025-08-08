@@ -3,7 +3,7 @@ import { format } from 'date-fns';
 export const formatDate = (date: string | Date | number): string => {
     const dt = new Date(date);
 
-    return format(dt, 'MMM d, yyyy');
+    return format(dt, 'MMMM d, yyyy');
 };
 
 export const addDays = (date: Date, days: number) => {
