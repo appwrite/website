@@ -62,8 +62,8 @@
 </script>
 
 <section class="light bg-greyscale-50 py-4 md:py-20">
-    <div class="container grid grid-cols-1 md:grid-cols-2">
-        <div class="mb-10 flex max-w-lg flex-col">
+    <div class="container grid grid-cols-1 gap-8 lg:grid-cols-2">
+        <div class="mb-10 flex flex-col">
             <span class="web-badges text-micro font-aeonik-fono mr-auto ml-0 !text-white uppercase"
                 >SSR_</span
             >
@@ -113,7 +113,7 @@
         <MultiFrameworkCode
             data={codeSnippets}
             selected={Framework.NextJs}
-            class="max-w-auto min-w-auto! basis-1/2"
+            class="max-w-auto! w-full min-w-auto! basis-full lg:basis-1/2"
         />
     </div>
 </section>

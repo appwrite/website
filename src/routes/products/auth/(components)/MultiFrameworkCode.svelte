@@ -72,7 +72,7 @@
 </script>
 
 <section
-    class={classNames('dark web-code-snippet mx-auto max-w-[90vw]! md:min-w-2xl', className)}
+    class={classNames('dark web-code-snippet mx-auto', className)}
     aria-label="code-snippet panel"
 >
     <header class="web-code-snippet-header">
