@@ -1,23 +1,34 @@
-import { readFileSync } from 'fs';
-import { fileURLToPath } from 'url';
-import { dirname, join } from 'path';
+import { resolveRoute } from '$app/paths';
 import type { RequestHandler } from '@sveltejs/kit';
 
-const BASE_DIR = dirname(fileURLToPath(import.meta.url));
+export const prerender = true;
 
-export const GET: RequestHandler = () => {
+const markdocFiles = import.meta.glob('$routes/docs/**/+page.markdoc', {
+    query: '?raw',
+    import: 'default',
+    eager: true
+});
+
+export const GET: RequestHandler = ({ request }) => {
     try {
-        const contentPath = join(BASE_DIR, 'content.txt');
-        const llmsContent = readFileSync(contentPath, 'utf-8');
+        const content = Object.keys(markdocFiles).reduce((acc, path) => {
+            const content = markdocFiles[path] as string;
 
-        return new Response(llmsContent, {
+            const route = path.replace(/^\/src\/routes/, '').replace(/\/\+page\.markdoc$/, '');
+            const url = new URL(resolveRoute(route, {}), request.url);
+
+            return acc + `\n# ${url}\n\n${content}\n\n---\n\n`;
+        }, '# Appwrite Documentation\n\n');
+
+        return new Response(content, {
             headers: {
-                'Content-Type': 'text/plain; charset=utf-8'
+                'Content-Type': 'text/plain; charset=utf-8',
+                'Cache-Control': 'public, max-age=3600'
             }
         });
     } catch (error) {
-        console.error('Error reading llms content:', error);
-        return new Response('Content not found', {
+        console.error('Error reading markdoc files:', error);
+        return new Response('Error processing documentation files', {
             status: 500,
             headers: {
                 'Content-Type': 'text/plain'
