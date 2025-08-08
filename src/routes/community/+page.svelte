@@ -354,7 +354,7 @@
                     >
                         <li>
                             <div
-                                class="web-card is-normal has-border-gradient web-u-gap-6 flex flex-col"
+                                class="web-card is-normal has-border-gradient web-u-gap-6 flex h-full flex-col"
                             >
                                 <div class="text-sub-body text-primary font-medium">
                                     Create content
@@ -366,7 +366,7 @@
                         </li>
                         <li>
                             <div
-                                class="web-card is-normal has-border-gradient web-u-gap-6 flex flex-col"
+                                class="web-card is-normal has-border-gradient web-u-gap-6 flex h-full flex-col"
                             >
                                 <div class="text-sub-body text-primary font-medium">
                                     Present at meetups
@@ -378,7 +378,7 @@
                         </li>
                         <li>
                             <div
-                                class="web-card is-normal has-border-gradient web-u-gap-6 flex flex-col"
+                                class="web-card is-normal has-border-gradient web-u-gap-6 flex h-full flex-col"
                             >
                                 <div class="text-sub-body text-primary font-medium">
                                     Report bugs
@@ -390,7 +390,7 @@
                         </li>
                         <li>
                             <div
-                                class="web-card is-normal has-border-gradient web-u-gap-6 flex flex-col"
+                                class="web-card is-normal has-border-gradient web-u-gap-6 flex h-full flex-col"
                             >
                                 <div class="text-sub-body text-primary font-medium">
                                     Submit new ideas
@@ -402,7 +402,7 @@
                         </li>
                         <li>
                             <div
-                                class="web-card is-normal has-border-gradient web-u-gap-6 flex flex-col"
+                                class="web-card is-normal has-border-gradient web-u-gap-6 flex h-full flex-col"
                             >
                                 <div class="text-sub-body text-primary font-medium">
                                     Improve documentation
@@ -414,7 +414,7 @@
                         </li>
                         <li>
                             <div
-                                class="web-card is-normal has-border-gradient web-u-gap-6 flex flex-col"
+                                class="web-card is-normal has-border-gradient web-u-gap-6 flex h-full flex-col"
                             >
                                 <div class="text-sub-body text-primary font-medium">
                                     Helping others
@@ -433,7 +433,8 @@
                         {#snippet header()}
                             <h4 class="text-label text-primary">Upcoming Events</h4>
                         {/snippet}
-                        {#each events as event}
+                        <li>There are no upcoming events scheduled.</li>
+                        <!-- {#each events as event}
                             <li>
                                 <EventCard
                                     href={event.href}
@@ -445,7 +446,7 @@
                                     buttonText={event.buttonText}
                                 />
                             </li>
-                        {/each}
+                        {/each} -->
                     </Carousel>
                 </section>
             </div>
