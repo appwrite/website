@@ -41,7 +41,7 @@
     };
 </script>
 
-<div class="border-smooth mb-0 border-y py-32">
+<div class="border-smooth mb-0 border-y py-12 md:py-30">
     <div class="container space-y-16">
         <div class="mx-auto flex max-w-2xl flex-col gap-4 text-center">
             <span class="font-aeonik-fono tracking-loose text-micro text-primary uppercase">

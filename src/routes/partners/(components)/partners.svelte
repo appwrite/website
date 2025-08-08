@@ -38,7 +38,7 @@
 
 <div
     class={classNames(
-        'border-smooth relative flex items-center justify-center border-t border-b border-dashed [border-top-style:solid] bg-[#17171A] py-32',
+        'border-smooth relative flex items-center justify-center border-t border-b border-dashed [border-top-style:solid] bg-[#17171A] py-12 md:py-30',
         'after:absolute after:inset-0 after:top-0 after:right-0 after:z-0 after:mt-auto after:mb-0 after:block after:h-full after:bg-[radial-gradient(circle_at_120%_-40%,_hsla(343,_98%,_60%,_0.2)_0px,_transparent_40%)]'
     )}
     use:useInView
