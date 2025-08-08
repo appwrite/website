@@ -72,9 +72,7 @@
                                         alt="Sites icon"
                                         class="h-8 w-8"
                                     />
-                                    <span class="text-white"
-                                        >New Appwrite pricing announced</span
-                                    >
+                                    <span class="text-white">New Appwrite pricing announced</span>
                                     <Icon name="arrow-right" aria-hidden="true"
                                     ></Icon></BadgeTransparent
                                 ></a
