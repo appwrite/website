@@ -19,7 +19,7 @@
             suffix: '+',
             label: 'OSS Contributors'
         },
-        { number: 0, label: 'Top OSS projects' }
+        { number: 0, label: 'Top GitHub projects' }
     ];
 
     const numbers = [650, 50, 900, 300];
@@ -57,7 +57,7 @@
         </div>
         <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4" use:useInView>
             {#each items as { label, number, suffix }}
-                <GradientBorderCard class="bg-greyscale-750 rounded-lg p-6">
+                <GradientBorderCard class="bg-card rounded-lg p-6">
                     <h3 class="text-title font-aeonik-pro text-primary">
                         <NumberFlow value={number} {suffix} class="-mt-4 -mb-2 inline-block" />
                     </h3>
