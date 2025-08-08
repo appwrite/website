@@ -502,7 +502,7 @@
                                     href={SOCIAL_STATS.DISCORD.LINK}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    class="web-card is-white web-u-min-block-size-320 flex flex-col"
+                                    class="web-card is-white web-u-min-block-size-320 flex flex-col transition-transform hover:-translate-y-2"
                                     style="--card-padding:2rem;rotate: 6deg"
                                 >
                                     <div class="flex flex-col justify-between gap-8">
@@ -522,7 +522,7 @@
                                     href={SOCIAL_STATS.TWITTER.LINK}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    class="web-card is-white web-u-min-block-size-320 flex flex-col"
+                                    class="web-card is-white web-u-min-block-size-320 flex flex-col transition-transform hover:-translate-y-2"
                                     style="--card-padding:2rem; rotate: 2deg"
                                 >
                                     <div class="flex flex-col justify-between gap-8">
@@ -542,7 +542,7 @@
                                     href={SOCIAL_STATS.GITHUB.LINK}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    class="web-card is-white web-u-min-block-size-320 flex flex-col"
+                                    class="web-card is-white web-u-min-block-size-320 flex flex-col transition-transform hover:-translate-y-2"
                                     style="--card-padding:2rem; rotate: -10deg"
                                 >
                                     <div class="flex flex-col justify-between gap-8">
@@ -562,7 +562,7 @@
                                     href={SOCIAL_STATS.YOUTUBE.LINK}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    class="web-card is-white web-u-min-block-size-320 flex flex-col"
+                                    class="web-card is-white web-u-min-block-size-320 flex flex-col transition-transform hover:-translate-y-2"
                                     style="--card-padding:2rem; rotate: -6deg"
                                 >
                                     <div class="flex flex-col justify-between gap-8">
