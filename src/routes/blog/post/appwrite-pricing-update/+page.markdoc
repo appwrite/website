@@ -143,28 +143,28 @@ Build like a team of hundreds.
 
 # Frequently asked questions
 
-### How much more bandwidth do I get per project?
+## How much more bandwidth do I get per project?
 
 You will get 2TB of bandwidth per project on the paid plans, Pro and Scale. Previously, you got 300GB bandwidth across all projects. If we calculate just for one project, you will have 1700GB more, which is an increase of +566.67%.
 
-### How many seats will I have on paid plans?
+## How many seats will I have on paid plans?
 
 On both the Pro and Scale plans, you will have unlimited seats. This is part of the pricing model change, moving from per seat to per project.
 
-### Why the change to per-project vs per-seat?
+## Why the change to per-project vs per-seat?
 
 With the recent features, improvements, and going GA, it’s time to re-align our pricing with the value that Appwrite provides.
 Customers experience Appwrite’s value at the project level (Databases, Auth, Storage, etc.), not by individual seats. Charging where we deliver the most value is industry best practice.
 We’ve also noticed people share accounts, indicating they don’t find value in paying for the seat.
 This change puts Appwrite on a more sustainable revenue model, ensuring longevity and growth for all.
 
-### How much will I pay for my projects after September 1st?
+## How much will I pay for my projects after September 1st?
 
 This depends on your situation. It is important to understand whether you are paying for add-ons or not. In this case, you will pay a lot less for your add-ons, and if you’re paying for additional bandwidth, there is a big chance you won’t have to due to the jump from 300GB to 2TB in resources. However, you will be charged $15 for each additional project you have.
 
 Please get in touch with us if you have any questions concerning your projects and the new pricing at billing@appwrite.io.
 
-### How will the per-project pricing affect the Education (GitHub student) plan?
+## How will the per-project pricing affect the Education (GitHub student) plan?
 
 The Education plan will continue to allow multiple projects.
 
