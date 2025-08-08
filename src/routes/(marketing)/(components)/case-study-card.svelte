@@ -16,11 +16,11 @@
 <ToggleGroup.Item
     {value}
     class={classNames(
-        'relative grid w-full cursor-pointer overflow-hidden rounded-2xl border border-transparent p-12 backdrop-blur-3xl transition-all ease-in-out [grid-template-areas:"stack"] md:max-h-[467px]',
+        'relative grid w-full cursor-pointer overflow-hidden rounded-2xl border border-transparent backdrop-blur-3xl transition-all ease-in-out [grid-template-areas:"stack"] md:max-h-[467px]',
         'group/card hover:bg-black/24',
         'outline-0 duration-250 hover:shadow-[0px_0px_0px_4px_var(--color-offset)] focus:shadow-[0px_0px_0px_4px_var(--color-offset)]!',
-        'data-[state="off"]:basis-[15%] data-[state="off"]:bg-black/16',
-        'data-[state="on"]:basis-[70%] data-[state="on"]:bg-black/24'
+        'data-[state="off"]:basis-[15%] data-[state="off"]:bg-black/16 data-[state="off"]:p-8',
+        'data-[state="on"]:basis-[70%] data-[state="on"]:bg-black/2  data-[state="on"]:p-8 data-[state="on"]:shadow-[0px_0px_0px_4px_var(--color-offset)]! md:data-[state="on"]:p-12'
     )}
 >
     <img
@@ -30,7 +30,7 @@
         width={100}
         height={100}
         class={classNames(
-            'h-5 shrink-0 px-2 opacity-100 transition-all [grid-area:stack] lg:h-12',
+            'h-5 shrink-0 opacity-100 transition-all [grid-area:stack] lg:h-12',
             'self-center justify-self-center brightness-50 group-[&[data-state=on]]/card:invisible group-[&[data-state=on]]/card:opacity-0'
         )}
     />
@@ -72,7 +72,7 @@
                 "{study.blurb}"
             </div>
 
-            <div class="mt-4 flex flex-col justify-between gap-4 lg:flex-row">
+            <div class="mt-4 flex flex-col justify-between gap-4 md:flex-row">
                 <div class="flex items-center gap-2">
                     <img
                         loading="lazy"
