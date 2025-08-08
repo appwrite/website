@@ -33,19 +33,19 @@ Since launching Appwrite Cloud, we’ve introduced significant improvements that
 
 ## More Appwrite, new price
 
-The updated base pricing from $15 to $25 helps us sustainably support this growing feature set and scale our infrastructure. Every paid project will now come with its dedicated pool of resources, giving you better performance, more transparency, and a more apparent connection between what you pay and what you get. 
+The updated base pricing from $15 to $25 helps us sustainably support this growing feature set and scale our infrastructure. Every paid project will now come with its dedicated pool of resources, giving you better performance, more transparency, and a more apparent connection between what you pay and what you get.
 
-![Your first project will be free. After that, it’s only $15 per project.](/blog/images/appwrite-pricing-update/project)
+![Your first project will be free. After that, it’s only $15 per project.](/images/blog/appwrite-pricing-update/project.png)
 
-The increased bandwidth, from 300GB to 2TB per project, and the reduced price for additional bandwidth from $40 to $15 per 100GB, significantly impact costs. Where you initially had to pay up to $680 extra to get to the same bandwidth, you now pay $15. 
+The increased bandwidth, from 300GB to 2TB per project, and the reduced price for additional bandwidth from $40 to $15 per 100GB, significantly impact costs. Where you initially had to pay up to $680 extra to get to the same bandwidth, you now pay $15.
 
 ## More products more capabilities
 
-It’s important to mention the release of Appwrite Messaging and Sites. These two products allow you to reduce the number of vendors and ensure you get a complete development platform in one subscription, at no additional cost. With the addition of the Appwrite Network, DDoS, and global CDN, we aim to guarantee excellent global performance for all products. 
+It’s important to mention the release of Appwrite Messaging and Sites. These two products allow you to reduce the number of vendors and ensure you get a complete development platform in one subscription, at no additional cost. With the addition of the Appwrite Network, DDoS, and global CDN, we aim to guarantee excellent global performance for all products.
 
 ## Pay per project, not per seat
 
-When we introduced pricing, we did so with a per-seat model. Since then, we have learned a lot. We have received much feedback that this model limits adoption and gets in the way of collaboration. Although having unlimited projects seemed like the right move, it has not been shown to deliver the expected value. Developers are forced to share accounts, making collaboration clunky and even unpleasant. 
+When we introduced pricing, we did so with a per-seat model. Since then, we have learned a lot. We have received much feedback that this model limits adoption and gets in the way of collaboration. Although having unlimited projects seemed like the right move, it has not been shown to deliver the expected value. Developers are forced to share accounts, making collaboration clunky and even unpleasant.
 
 Talking to developers, one thing became clear: the real value of Appwrite is how fast it helps you go from idea to launch. New projects are where momentum starts, learning happens, and the platform delivers the most impact. We’ve structured the new pricing around this point of highest impact, right where Appwrite delivers the most value.
 
@@ -67,17 +67,17 @@ Another important factor we considered is valuing output, not input. This means 
 
 We have created graph overviews to show how costs evolve per project with the new project price and new resource pricing.
 
-![combined costs](/blog/image/appwrite-pricing-update/combined.png)
+![combined costs](/images/blog/appwrite-pricing-update/combined.png)
 
 *Showing the starting point of $15 and showing the growth rate of pricing based on the new additional resource prices.
 
-This chart shows that each project, even with a $15 starting price per project, will be more cost-effective in the long run due to lower costs for additional resources. Resource prices will become cheaper as we continue to optimize Appwrite. 
+This chart shows that each project, even with a $15 starting price per project, will be more cost-effective in the long run due to lower costs for additional resources. Resource prices will become cheaper as we continue to optimize Appwrite.
 
-![More resources](/blog/images/appwrite-pricing-update/bandwidth-project.png)
+![More resources](/images/blog/appwrite-pricing-update/bandwidth-project.png)
 
 Previously, you got 300GB bandwidth across all projects. As of the first of September, you will get 2TB of bandwidth per project. This is **6.7× more** free bandwidth per project.
 
-![What you get for 50 dollars](/blog/images/appwrite-pricing-update/add-ons.png)
+![What you get for 50 dollars](/images/blog/appwrite-pricing-update/add-ons.png)
 
 With $50 add-ons, you now get more compute, storage, and bandwidth.
 
@@ -119,7 +119,7 @@ Below is an overview of the resources included for Appwrite Messaging in the bas
 
 ### What counts as a message?
 
-Each time an end user is sent a message per channel, a message is counted. This means that when you have one end user with three targets (email, SMS, and Push notification) and send all three, this counts as three messages. 
+Each time an end user is sent a message per channel, a message is counted. This means that when you have one end user with three targets (email, SMS, and Push notification) and send all three, this counts as three messages.
 
 # One subscription to replace them all
 
