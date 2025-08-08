@@ -39,6 +39,10 @@ The updated base pricing from $15 to $25 helps us sustainably support this growi
 
 The increased bandwidth, from 300GB to 2TB per project, and the reduced price for additional bandwidth from $40 to $15 per 100GB, significantly impact costs. Where you initially had to pay up to $680 extra to get to the same bandwidth, you now pay $15.
 
+For larger projects, the reduced bandwidth price has an even more significant impact on costs, as this chart shows.
+
+![Reduced price for large projects.](/images/blog/appwrite-pricing-update/large-project.png)
+
 ## More products more capabilities
 
 It’s important to mention the release of Appwrite Messaging and Sites. These two products allow you to reduce the number of vendors and ensure you get a complete development platform in one subscription, at no additional cost. With the addition of the Appwrite Network, DDoS, and global CDN, we aim to guarantee excellent global performance for all products.
@@ -132,6 +136,8 @@ With the introduction of Messaging and Sites, Appwrite became an all-in-one deve
 | **Messaging** | Yes | No | Yes | No | No | Yes |
 | **Open source** | Yes | Yes | No | No | No | Yes |
 | **Monthly base price** | $25 | $25 | Pay as you go | $20 | $19 | $30 |
+
+![One subscription to replace them all.](/images/blog/appwrite-pricing-update/one-subscription.png)
 
 # Conclusion
 
