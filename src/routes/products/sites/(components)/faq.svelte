@@ -20,7 +20,7 @@
         },
         {
             question: 'What does Appwrite Sites cost?',
-            answer: 'Appwrite Sites is free to use until July 1st, 2025. We will inform you before introducing pricing so that you know well beforehand and have no surprises.'
+            answer: 'Appwrite Sites is free to use until the first week of August, 2025. We will inform you before introducing pricing so that you know well beforehand and have no surprises.'
         },
         {
             question: 'Does Appwrite have an Enterprise plan for Appwrite Sites?',

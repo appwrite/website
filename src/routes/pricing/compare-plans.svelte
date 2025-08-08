@@ -74,7 +74,7 @@
             rows: [
                 {
                     title: 'Number of projects',
-                    free: 'Unlimited',
+                    free: '2',
                     pro: 'Unlimited',
                     scale: 'Unlimited',
                     enterprise: 'Unlimited'
@@ -248,6 +248,20 @@
                     title: 'Backups retention',
                     free: '-',
                     pro: '7 days retention',
+                    scale: 'Custom',
+                    enterprise: 'Custom'
+                },
+                {
+                    title: 'Encrypted attributes support',
+                    free: '-',
+                    pro: 'True',
+                    scale: 'True',
+                    enterprise: 'True'
+                },
+                {
+                    title: 'Bulk API documents',
+                    free: '100',
+                    pro: '1000',
                     scale: 'Custom',
                     enterprise: 'Custom'
                 },
@@ -501,25 +515,18 @@
                     enterprise: true
                 },
                 {
-                    title: 'Priority',
-                    free: '-',
-                    pro: '-',
-                    scale: true,
-                    enterprise: true
-                },
-                {
                     title: 'SLA',
                     free: '-',
                     pro: '-',
-                    scale: true,
-                    enterprise: true
+                    scale: 'Custom',
+                    enterprise: 'Custom'
                 },
                 {
                     title: 'Private Slack channel',
                     free: '-',
                     pro: '-',
-                    scale: true,
-                    enterprise: true
+                    scale: 'Custom',
+                    enterprise: 'Custom'
                 }
             ]
         }

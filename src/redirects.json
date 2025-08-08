@@ -695,5 +695,25 @@
     {
         "link": "/blog/post/case-study-undo",
         "redirect": "/blog/post/customer-stories-undo"
+    },
+    {
+        "link": "/blog/post/top-5-tips-to-build-an-AI-agent-startup",
+        "redirect": "/blog/post/ai-agent-startup-tips"
+    },
+    {
+        "link": "/blog/post/5-MCP-startup-ideas-to-build-in-2025",
+        "redirect": "/blog/post/mcp-startup-ideas"
+    },
+    {
+        "link": "/blog/post/10-open-source-alternatives-to-popular-software-for-startups",
+        "redirect": "/blog/post/open-source-startup-tools"
+    },
+    {
+        "link": "/blog/post/the-shift-from-SaaS-to-Vertical-AI-what-startup-founders-need-to-know",
+        "redirect": "/blog/post/saas-to-vertical-ai"
+    },
+    {
+        "link": "/blog/post/how-can-you-rapidly-build-an-mvp-for-your-startup",
+        "redirect": "/blog/post/startup-mvp-guide"
     }
 ]
