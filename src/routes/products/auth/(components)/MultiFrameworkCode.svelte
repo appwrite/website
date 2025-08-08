@@ -1,24 +1,36 @@
 <script lang="ts">
     import { Select, Tooltip } from '$lib/components';
+    import { classNames } from '$lib/utils/classnames';
     import { getCodeHtml, type Language } from '$lib/utils/code';
     import { copy } from '$lib/utils/copy';
     import { platformMap } from '$lib/utils/references';
-    import { writable } from 'svelte/store';
+    import type { ClassValue } from 'svelte/elements';
 
-    export let selected: string = '';
-    export let data: { language: string; content: string; platform: string }[] = [];
-    export let height: number | null = null;
+    interface MultiFrameworkCodeprops {
+        selected?: string;
+        data: { language: string; content: string; platform: string }[];
+        height?: number | null;
+        class?: ClassValue;
+    }
 
-    $: snippets = writable(new Set(data.map((d) => `${d.platform}`)));
+    let {
+        selected = '',
+        data,
+        height = null,
+        class: className
+    }: MultiFrameworkCodeprops = $props();
 
-    $: content = data.find((d) => `${d.platform}` === selected)?.content ?? '';
+    let snippets = $derived(new Set(data.map((d) => `${d.platform}`)));
 
-    $: ({ language } =
-        data.find((d) => `${d.platform}` === selected) ?? ({} as (typeof data)[number]));
+    const content = $derived(data.find((d) => `${d.platform}` === selected)?.content ?? '');
 
-    snippets?.subscribe((n) => {
-        if (selected === '' && n.size > 0) {
-            selected = Array.from(n)[0];
+    const { language } = $derived(
+        data.find((d) => `${d.platform}` === selected) ?? ({} as (typeof data)[number])
+    );
+
+    $effect(() => {
+        if (selected === '' && snippets.size > 0) {
+            selected = Array.from(snippets)[0];
         }
     });
 
@@ -29,7 +41,7 @@
     type CopyStatusType = keyof typeof CopyStatus;
     type CopyStatusValue = (typeof CopyStatus)[CopyStatusType];
 
-    let copyText: CopyStatusValue = CopyStatus.Copy;
+    let copyText: CopyStatusValue = $state(CopyStatus.Copy);
     async function handleCopy() {
         await copy(content);
 
@@ -39,23 +51,28 @@
         }, 1000);
     }
 
-    $: result = getCodeHtml({
-        content,
-        language: (language as Language) ?? 'sh',
-        withLineNumbers: true
-    });
-    $: options = Array.from($snippets).map((key) => {
-        const [platform] = key.split('-');
+    const result = $derived(
+        getCodeHtml({
+            content,
+            language: (language as Language) ?? 'sh',
+            withLineNumbers: true
+        })
+    );
 
-        return {
-            value: key,
-            label: platform
-        };
-    });
+    let options = $derived(
+        Array.from(snippets).map((key) => {
+            const [platform] = key.split('-');
+
+            return {
+                value: key,
+                label: platform
+            };
+        })
+    );
 </script>
 
 <section
-    class="dark web-code-snippet mx-auto !max-w-[90vw] md:min-w-2xl"
+    class={classNames('dark web-code-snippet mx-auto max-w-[90vw]! md:min-w-2xl', className)}
     aria-label="code-snippet panel"
 >
     <header class="web-code-snippet-header">
@@ -74,7 +91,7 @@
                 <li class="buttons-list-item" style="padding-inline-start: 13px">
                     <Tooltip>
                         <button
-                            on:click={handleCopy}
+                            onclick={handleCopy}
                             class="web-icon-button"
                             aria-label="copy code from code-snippet"
                             ><span class="web-icon-copy" aria-hidden="true"></span></button

@@ -62,7 +62,7 @@
 </script>
 
 <section class="light bg-greyscale-50 py-4 md:py-20">
-    <div class="container grid grid-cols-2 gap-6 md:flex-row">
+    <div class="container grid grid-cols-1 md:grid-cols-2">
         <div class="mb-10 flex max-w-lg flex-col">
             <span class="web-badges text-micro font-aeonik-fono mr-auto ml-0 !text-white uppercase"
                 >SSR_</span
@@ -104,11 +104,17 @@
                 variant="secondary"
                 href="/docs/sdks#server"
                 class="mt-8"
-                event="products-auth-server_sdks-click">Learn more</Button
+                event="products-auth-server_sdks-click"
             >
+                Learn more
+            </Button>
         </div>
 
-        <MultiFrameworkCode data={codeSnippets} selected={Framework.NextJs} />
+        <MultiFrameworkCode
+            data={codeSnippets}
+            selected={Framework.NextJs}
+            class="max-w-auto min-w-auto! basis-1/2"
+        />
     </div>
 </section>
 

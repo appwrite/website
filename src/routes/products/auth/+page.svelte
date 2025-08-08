@@ -1,6 +1,6 @@
 <script>
     import Main from '$lib/layouts/Main.svelte';
-    import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
+    import { DEFAULT_HOST } from '$lib/utils/metadata';
     import { TITLE_SUFFIX } from '$routes/titles';
     import Access from './(components)/Access.svelte';
 
