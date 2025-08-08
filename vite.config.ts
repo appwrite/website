@@ -26,6 +26,9 @@ export default defineConfig({
             algorithms: ['sha384']
         })
     ],
+    server: {
+        allowedHosts: true
+    },
     css: {
         preprocessorOptions: {
             scss: {
