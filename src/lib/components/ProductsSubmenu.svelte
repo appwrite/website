@@ -79,7 +79,7 @@
     import { createDropdownMenu, melt } from '@melt-ui/svelte';
     import Icon from './ui/icon';
 
-    const {
+    let {
         elements: { trigger, menu, item, overlay },
         states: { open }
     } = createDropdownMenu({
@@ -88,6 +88,8 @@
 
     export let label: string;
 </script>
+
+<svelte:window on:resize={() => open && ($open = false)} />
 
 <button
     class={classNames(
@@ -181,12 +183,12 @@
 
                     <a
                         href="/blog/post/customer-story-storealert"
-                        class="my-4 flex flex-1 gap-3 outline-none"
+                        class="my-4 flex flex-1 flex-col gap-3 outline-none xl:flex-row"
                     >
                         <img
                             src="/images/blog/customer-story-storealert/cover.png"
                             alt="Case study cover"
-                            class="aspect-[3/1] max-w-[7.5rem] shrink-0 rounded-xl object-cover"
+                            class="hidden min-h-10 w-full shrink-0 rounded-xl object-cover md:aspect-[3/1] lg:block lg:max-w-30"
                         />
                         <p class="text-pretty">
                             Appwrited helped reduce development time by 60%, and lower server costs
