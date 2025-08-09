@@ -149,8 +149,8 @@
     .pattern {
         background: repeating-linear-gradient(
             45deg,
-            var(--color-primary) 0,
-            var(--color-primary) 1px,
+            var(--color-secondary) 0,
+            var(--color-secondary) 1px,
             transparent 1px,
             transparent 24px
         );

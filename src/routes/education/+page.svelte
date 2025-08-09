@@ -44,7 +44,7 @@
     <Faq />
     <CallToAction />
     <div class="container">
-        <FooterNav />
+        <FooterNav noBorder />
         <MainFooter />
     </div>
 </Main>
