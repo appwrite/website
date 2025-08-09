@@ -146,7 +146,7 @@
 
     const handleNav = () => {
         $isMobileNavOpen = !$isMobileNavOpen;
-        document.body.style.overflow = $isMobileNavOpen ? 'hidden' : 'auto';
+        document.body.style.overflow = $isMobileNavOpen ? 'hidden' : '';
     };
 </script>
 
