@@ -51,7 +51,10 @@ To make this easier, create a service class that will handle all the Appwrite in
 Create a file called `src/appwrite.js` and implement the following class:
 
 ```js
-import { Client, ID, InputFile, Storage } from 'node-appwrite';
+```js
+import { Client, ID, Storage } from 'node-appwrite';
+import { InputFile } from 'node-appwrite/file';
+```
 
 class AppwriteService {
   constructor() {

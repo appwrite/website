@@ -201,7 +201,8 @@ Add methods necessary to integrate with the ElevenLabs API:
 Import `fetch`, and the required features from the Appwrite Node.js SDK at the top of the `main.js` file
 
 ```js
-import { Client, Storage, ID, InputFile, Permission, Role } from "node-appwrite";
+import { Client, Storage, ID, Permission, Role } from "node-appwrite";
+import { InputFile } from "node-appwrite/file";
 import { fetch } from "undici";
 ```
 
