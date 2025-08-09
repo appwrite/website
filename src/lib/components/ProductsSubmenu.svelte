@@ -174,7 +174,9 @@
                         <a
                             href="/blog/category/customer-stories"
                             class="text-secondary text-caption flex items-center"
-                            >Read more <span class="hidden xl:inline"> customer stories</span>
+                            >Read more <span class="ml-1 hidden xl:inline"
+                                >{' '}customer stories</span
+                            >
                             <Icon
                                 name="chevron-right"
                                 class="transition-transform group-hover:translate-x-0.5"
