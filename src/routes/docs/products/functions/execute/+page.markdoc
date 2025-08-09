@@ -11,6 +11,42 @@ Appwrite Functions can be executed in several ways.
 Executions can be invoked through the Appwrite SDK and visiting its REST endpoint. Functions can also be triggered by events and scheduled executions.
 Here are all the different ways to consume your Appwrite Functions.
 
+# Execution modes {% #execution-modes %}
+
+Appwrite Functions support two execution modes: **synchronous** and **asynchronous**. Understanding the difference between these modes is important for building efficient applications.
+
+## Synchronous executions {% #synchronous-executions %}
+
+Synchronous executions are those where Appwrite makes the request to the function runtime synchronously and waits for the response. The client making the request will wait until the function completes and receives the response directly.
+
+Synchronous executions are created via:
+- The [Create execution](/docs/references/cloud/client-web/functions#createExecution) endpoint where the `async` parameter is `false`
+- Requests to custom or auto-generated [domains](/docs/products/functions/execute#domains)
+
+Synchronous executions:
+- Return response bodies and headers directly to the client
+- Have a **30-second timeout limit** to prevent long-running requests from blocking Appwrite workers
+- Are ideal for real-time operations where you need immediate response data
+- Work best for lightweight operations that complete quickly
+
+## Asynchronous executions {% #asynchronous-executions %}
+
+Asynchronous executions are added to a queue and processed by the function worker as background jobs.
+
+Asynchronous executions are created via:
+- The [Create execution](/docs/references/cloud/client-web/functions#createExecution) endpoint where the `async` parameter is `true`
+- Event triggers (when functions are triggered by [platform events](/docs/advanced/platform/events))
+- Scheduled executions (cron jobs or delayed executions)
+
+Asynchronous executions:
+- Have no timeout limitations beyond your function's configured timeout
+- Do **not store** response bodies and headers and cannot be retrieved later
+- Are ideal for long-running tasks, background processing, and event-driven workflows
+
+{% info title="Response body storage" %}
+Response bodies and headers are not stored anywhere, so they are only ever returned via synchronous executions.
+{% /info %}
+
 # Domains {% #domains %}
 You can execute a function through HTTP requests, using a browser or by sending an HTTP request.
 1. In the Appwrite Console's sidebar, click **Functions**.
@@ -35,7 +71,7 @@ curl -X POST https://64d4d22db370ae41a32e.appwrite.global \
 Notice how a `x-appwrite-user-jwt` header is passed in the request, you will use this to authenticate users.
 [Learn more about JWTs](/docs/products/auth/jwt).
 
-This unlocks ability for you to develop custom HTTP endpoints with Appwrite Functions. 
+This unlocks ability for you to develop custom HTTP endpoints with Appwrite Functions.
 It also allows accepting incoming webhooks for handling online payments, hosting social platform bots, and much more.
 
 # SDK {% #sdk %}
@@ -266,8 +302,8 @@ $client
 
 $functions = new Functions($client);
 
-$result = $functions->createExecution( 
-    functionId: '<FUNCTION_ID>', 
+$result = $functions->createExecution(
+    functionId: '<FUNCTION_ID>',
     body: '<BODY>',  // optional
     async: false,  // optional
     path: '<PATH>',  // optional
@@ -287,8 +323,8 @@ client = Client()
 
 functions = Functions(client)
 
-result = functions.create_execution( 
-    function_id = '<FUNCTION_ID>', 
+result = functions.create_execution(
+    function_id = '<FUNCTION_ID>',
     body = '<BODY>',  # optional
     async = False,  # optional
     path = '<PATH>',  # optional
@@ -307,7 +343,7 @@ client = Client.new
 functions = Functions.new(client)
 
 response = functions.create_execution(
-    function_id: '<FUNCTION_ID>', 
+    function_id: '<FUNCTION_ID>',
     body: '<BODY>',  # optional
     async: false,  # optional
     path: '<PATH>',  # optional
@@ -328,11 +364,11 @@ var client = new Client()
 var functions = new Functions(client);
 
 Execution result = await functions.CreateExecution(
-    functionId: "<FUNCTION_ID>"    
-    body: "<BODY>" // optional    
-    async: false // optional    
-    path: "<PATH>" // optional    
-    method: "GET" // optional    
+    functionId: "<FUNCTION_ID>"
+    body: "<BODY>" // optional
+    async: false // optional
+    path: "<PATH>" // optional
+    method: "GET" // optional
     headers: [object]); // optional
 ```
 ```dart
@@ -439,8 +475,8 @@ let execution = try await functions.createExecution(
 {% /tabs %}
 
 # Console {% #console %}
-Another easy way to test a function is directly in the Appwrite Console. 
-You test a function by hitting the **Execute now** button, which will display with modal below. 
+Another easy way to test a function is directly in the Appwrite Console.
+You test a function by hitting the **Execute now** button, which will display with modal below.
 
 You'll be able to mock executions by configuring the path, method, headers, and body.
 
@@ -784,7 +820,7 @@ $client
 
 $functions = new Functions($client);
 
-$result = $functions->createExecution( 
+$result = $functions->createExecution(
     '<FUNCTION_ID>', // functionId
     '<BODY>', // body (optional)
     true, // Scheduled executions need to be async
@@ -806,7 +842,7 @@ client = Client()
 
 functions = Functions(client)
 
-result = functions.create_execution( 
+result = functions.create_execution(
     function_id = '<FUNCTION_ID>', # functionId
     body = '<BODY>', # body (optional)
     async = True, # Scheduled executions need to be async
