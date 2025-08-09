@@ -80,7 +80,7 @@ pip install appwrite==11.0.0
 {% /section %}
 {% section #step-4 step=4 title="Import Appwrite" %}
 
-Find your project ID in the **Settings** page. Also, click on the **View API Keys** button to find the API key that was created earlier. 
+Find your project ID in the **Settings** page. Also, click on the **View API Keys** button to find the API key that was created earlier.
 
 {% only_dark %}
 ![Project settings screen](/images/docs/quick-starts/dark/project-id.png)
@@ -166,7 +166,7 @@ def seed_database():
   }
 
   testTodo2 = {
-    'title': "Wash the apples", 
+    'title': "Wash the apples",
     'isComplete': True
   }
 
@@ -201,15 +201,49 @@ def seed_database():
 {% /section %}
 {% section #step-7 step=7 title="Retrieve documents" %}
 
-Create a function to retrieve the mock todo data, 
+Create a function to retrieve the mock todo data,
 then execute the functions in `_main_`.
 
 ```py
+from appwrite.query import Query
+
 def get_todos():
+  # Retrieve all documents
   todos = databases.list_documents(
     database_id=todoDatabase['$id'],
-    collection_id=todoCollection['$id']
+    collection_id=todoCollection['$id'],
+    queries=[]  # Empty queries array to get all documents
   )
+  print("All todos:")
+  for todo in todos['documents']:
+    print(f"Title: {todo['title']}\nDescription: {todo['description']}\nIs Todo Complete: {todo['isComplete']}\n\n")
+
+def get_completed_todos():
+  # Use queries to filter completed todos with pagination
+  todos = databases.list_documents(
+    database_id=todoDatabase['$id'],
+    collection_id=todoCollection['$id'],
+    queries=[
+      Query.equal("isComplete", True),
+      Query.order_desc("$createdAt"),
+      Query.limit(5)
+    ]
+  )
+  print("Completed todos (limited to 5):")
+  for todo in todos['documents']:
+    print(f"Title: {todo['title']}\nDescription: {todo['description']}\nIs Todo Complete: {todo['isComplete']}\n\n")
+
+def get_incomplete_todos():
+  # Query for incomplete todos
+  todos = databases.list_documents(
+    database_id=todoDatabase['$id'],
+    collection_id=todoCollection['$id'],
+    queries=[
+      Query.equal("isComplete", False),
+      Query.order_asc("title")
+    ]
+  )
+  print("Incomplete todos (ordered by title):")
   for todo in todos['documents']:
     print(f"Title: {todo['title']}\nDescription: {todo['description']}\nIs Todo Complete: {todo['isComplete']}\n\n")
 
@@ -217,6 +251,8 @@ if __name__ == "__main__":
   prepare_database()
   seed_database()
   get_todos()
+  get_completed_todos()
+  get_incomplete_todos()
 ```
 
 {% /section %}
