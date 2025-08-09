@@ -530,9 +530,7 @@
                 </div>
             </div>
 
-            <div
-                class="web-big-padding-section-level-2 web-u-overflow-hidden e-mt-50-desktop e-mt-38-mobile"
-            >
+            <div class="web-u-overflow-hidden e-mt-50-desktop e-mt-38-mobile pb-8 md:pb-30">
                 <h4
                     class="text-title font-aeonik-pro text-primary mx-auto max-w-[350px] text-center"
                 >
