@@ -174,7 +174,8 @@
                         <a
                             href="/blog/category/customer-stories"
                             class="text-secondary text-caption flex items-center"
-                            >Read more customer stories <Icon
+                            >Read more <span class="hidden xl:inline">customer stories</span>
+                            <Icon
                                 name="chevron-right"
                                 class="transition-transform group-hover:translate-x-0.5"
                             ></Icon></a
@@ -188,9 +189,9 @@
                         <img
                             src="/images/blog/customer-story-storealert/cover.png"
                             alt="Case study cover"
-                            class="hidden min-h-10 w-full shrink-0 rounded-xl object-cover md:aspect-[3/1] lg:block lg:max-w-30"
+                            class="min-h-10 w-full shrink-0 rounded-xl object-cover md:aspect-[3/1] xl:max-w-30"
                         />
-                        <p class="text-pretty">
+                        <p class="w-full text-pretty">
                             Appwrited helped reduce development time by 60%, and lower server costs
                             by 40%.
                         </p>
