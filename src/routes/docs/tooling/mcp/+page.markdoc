@@ -53,6 +53,9 @@ You can now integrate the MCP server with various popular AI-enabled code editor
 {% cards_item href="/docs/tooling/mcp/windsurf" title="Windsurf Editor" image="/images/docs/mcp/logos/windsurf.svg" %}
 {% /cards_item %}
 
+{% cards_item href="/docs/tooling/mcp/vscode" title="VS Code" image="/images/docs/mcp/logos/vscode.svg" %}
+{% /cards_item %}
+
 {% /cards %}
 {% /only_light %}
 
@@ -67,6 +70,10 @@ You can now integrate the MCP server with various popular AI-enabled code editor
 
 {% cards_item href="/docs/tooling/mcp/windsurf" title="Windsurf Editor" image="/images/docs/mcp/logos/dark/windsurf.svg" %}
 {% /cards_item %}
+
+{% cards_item href="/docs/tooling/mcp/vscode" title="VS Code" image="/images/docs/mcp/logos/dark/vscode.svg" %}
+{% /cards_item %}
+
 {% /cards %}
 {% /only_dark %}
 
