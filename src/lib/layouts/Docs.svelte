@@ -74,7 +74,6 @@
             showReferences: false,
             showSidenav: false
         }));
-        document.body.style.overflow = '';
     });
 
     const key = page.route.id?.includes('tutorials') ? TUT_CTX_KEY : CTX_KEY;

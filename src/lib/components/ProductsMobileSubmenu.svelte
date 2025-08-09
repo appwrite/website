@@ -13,7 +13,7 @@
     } = createCollapsible();
 </script>
 
-<div use:melt={$root} class="relative mx-auto block xl:hidden">
+<div use:melt={$root} class="relative mx-auto block lg:hidden">
     <div class="flex items-center justify-between">
         <button
             use:melt={$trigger}
