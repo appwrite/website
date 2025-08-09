@@ -13,6 +13,7 @@
 
     afterNavigate(() => {
         open = false;
+        document.body.style.overflow = '';
     });
 </script>
 
