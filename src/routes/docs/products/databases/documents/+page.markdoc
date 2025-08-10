@@ -400,7 +400,8 @@ await databases.createDocument(
     sdk.ID.unique(),
     {
         '$createdAt': new Date('<CUSTOM_DATE>').toISOString(),
-        '$updatedAt': new Date('<CUSTOM_DATE>').toISOString(),
+        '$createdAt': new Date('2025-08-10T12:34:56.000Z').toISOString(),
+        '$updatedAt': new Date('2025-08-10T12:34:56.000Z').toISOString(),
         // ...your attributes
     }
 );
