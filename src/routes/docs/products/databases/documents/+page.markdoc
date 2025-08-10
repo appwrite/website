@@ -375,6 +375,122 @@ mutation {
 ```
 {% /multicode %}
 
+# Set custom $createdAt and $updatedAt {% #custom-timestamps %}
+{% info title="Server SDKs required" %}
+To manually set `$createdAt` and `$updatedAt`, you must use a **server SDK** with an **API key**. These attributes can be passed inside the `data` parameter on any of the create, update, or upsert routes (single or bulk).
+{% /info %}
+
+You can override a document's timestamps by providing ISO 8601 strings (for example, `2025-08-10T12:34:56.000Z`) in the `data` payload. If these attributes are not provided, Appwrite will set them automatically.
+
+{% multicode %}
+```server-nodejs
+const sdk = require('node-appwrite');
+
+const client = new sdk.Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>')
+    .setKey('<API_KEY>');
+
+const databases = new sdk.Databases(client);
+
+// Single document (create)
+await databases.createDocument(
+    '<DATABASE_ID>',
+    '<COLLECTION_ID>',
+    sdk.ID.unique(),
+    {
+        '$createdAt': new Date('<CUSTOM_DATE>').toISOString(),
+        '$updatedAt': new Date('<CUSTOM_DATE>').toISOString(),
+        // ...your attributes
+    }
+);
+
+// Single document (update)
+await databases.updateDocument(
+    '<DATABASE_ID>',
+    '<COLLECTION_ID>',
+    '<DOCUMENT_ID>',
+    {
+        '$updatedAt': new Date('<CUSTOM_DATE>').toISOString(),
+        // ...your attributes
+    }
+);
+
+// Bulk (create)
+await databases.createDocuments(
+    '<DATABASE_ID>',
+    '<COLLECTION_ID>',
+    [
+        {
+            '$id': sdk.ID.unique(),
+            '$createdAt': new Date('<CUSTOM_DATE>').toISOString(),
+            '$updatedAt': new Date('<CUSTOM_DATE>').toISOString(),
+            // ...your attributes
+        }
+    ]
+);
+
+// Bulk (upsert)
+await databases.upsertDocuments(
+    '<DATABASE_ID>',
+    '<COLLECTION_ID>',
+    [
+        {
+            '$id': '<DOCUMENT_ID_OR_NEW_ID>',
+            '$createdAt': new Date('<CUSTOM_DATE>').toISOString(),
+            '$updatedAt': new Date('<CUSTOM_DATE>').toISOString(),
+            // ...your attributes
+        }
+    ]
+);
+```
+```server-python
+from appwrite.client import Client
+from appwrite.services.databases import Databases
+from appwrite.id import ID
+from datetime import datetime, timezone
+
+client = Client()
+client.set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
+client.set_project('<PROJECT_ID>')
+client.set_key('<API_KEY>')
+
+databases = Databases(client)
+
+iso = datetime(2025, 8, 10, 12, 34, 56, tzinfo=timezone.utc).isoformat()
+
+# Single (create)
+databases.create_document(
+        database_id='<DATABASE_ID>',
+        collection_id='<COLLECTION_ID>',
+        document_id=ID.unique(),
+        data={
+                '$createdAt': iso,
+                '$updatedAt': iso,
+                # ...your attributes
+        }
+)
+
+# Bulk (create)
+databases.create_documents(
+        database_id='<DATABASE_ID>',
+        collection_id='<COLLECTION_ID>',
+        documents=[{
+                '$id': ID.unique(),
+                '$createdAt': iso,
+                '$updatedAt': iso,
+                # ...your attributes
+        }]
+)
+```
+{% /multicode %}
+
+{% info title="Timestamp format and usage" %}
+- Values must be valid ISO 8601 date-time strings (UTC recommended). Using `toISOString()` (JavaScript) or `datetime.isoformat()` (Python) is a good default.
+- You can set either or both attributes as needed. If omitted, Appwrite sets them.
+- This also works with bulk routes such as `createDocuments` and `upsertDocuments`. See [Bulk operations](#bulk-operations).
+{% /info %}
+
 # Permissions {% #permissions %}
 In Appwrite, permissions can be granted at the collection level and the document level.
 Before a user can create a document, you need to grant create permissions to the user.
