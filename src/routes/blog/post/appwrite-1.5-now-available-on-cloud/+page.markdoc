@@ -275,7 +275,7 @@ Once you have prepared your own login flow in an Appwrite Function or a server i
 let users = Users(client)
 
 let token = try await users.createToken({
-    userId: "[USER_ID]"
+    userId: "<USER_ID>"
 })
 let secret = token.secret
 ```
@@ -287,8 +287,8 @@ Then, pass this token to the client through email, magic links, texts, or other 
 let account = Account(client);
 
 let session = try await account.createSession(
-    userId: "[USER_ID]",
-    secret: "[SECRET]");
+    userId: "<USER_ID>",
+    secret: "<SECRET>");
 ```
 
 Visit our [documentation](/docs/products/auth/custom-token) to learn more.
