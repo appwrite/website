@@ -173,8 +173,8 @@ For web applications, you will use the Appwrite SDK to initiate the OAuth2 flow 
   import { Client, Account, OAuthProvider } from 'appwrite'
 
   const client = new Client()
-    .setEndpoint('https://YOUR_ENDPOINT') // Your API Endpoint
-    .setProject('YOUR_PROJECT_ID') // Your project ID
+    .setEndpoint('https://<YOUR_ENDPOINT>') // Your API Endpoint
+    .setProject('<YOUR_PROJECT_ID>') // Your project ID
 
   const account = new Account(client)
   ```
@@ -186,8 +186,8 @@ For web applications, you will use the Appwrite SDK to initiate the OAuth2 flow 
     try {
       await account.createOAuth2Session({
         provider: OAuthProvider.Apple,
-        success: 'https://YOUR_ENDPOINT/auth/oauth2/success',
-        failure: 'https://YOUR_ENDPOINT/auth/oauth2/failure',
+        success: 'https://<YOUR_ENDPOINT>/auth/oauth2/success',
+        failure: 'https://<YOUR_ENDPOINT>/auth/oauth2/failure',
       })
     } catch (error) {
       console.error('Error logging in with Apple:', error)
@@ -244,8 +244,8 @@ For Flutter applications, Appwrite provides an SDK that allows you to manage aut
     Client client = Client();
 
     client
-      .setEndpoint('https://YOUR_ENDPOINT')// Your API Endpoint
-      .setProject('YOUR_PROJECT_ID');// Your project ID
+      .setEndpoint('https://<YOUR_ENDPOINT>')// Your API Endpoint
+      .setProject('<YOUR_PROJECT_ID>');// Your project ID
   }
 
   ```
@@ -259,8 +259,8 @@ For Flutter applications, Appwrite provides an SDK that allows you to manage aut
     try {
       await account.createOAuth2Session(
         provider: 'apple',
-        success: 'https://YOUR_ENDPOINT/auth/oauth2/success',
-        failure: 'https://YOUR_ENDPOINT/auth/oauth2/failure',
+        success: 'https://<YOUR_ENDPOINT>/auth/oauth2/success',
+        failure: 'https://<YOUR_ENDPOINT>/auth/oauth2/failure',
       );
     } catch (error) {
       print('Error logging in with Apple: $error');
@@ -357,8 +357,8 @@ For iOS apps, integrating **Sign in with Apple** using Appwrite involves configu
   import Appwrite
 
   let client = Client()
-      .setEndpoint("https://YOUR_ENDPOINT")
-      .setProject("YOUR_PROJECT_ID")
+      .setEndpoint("https://<YOUR_ENDPOINT>")
+      .setProject("<YOUR_PROJECT_ID>")
 
   ```
 
@@ -369,8 +369,8 @@ For iOS apps, integrating **Sign in with Apple** using Appwrite involves configu
 
   account.createOAuth2Session(
       provider: "apple",
-      success: "https://YOUR_ENDPOINT/auth/oauth2/success",
-      failure: "https://YOUR_ENDPOINT/auth/oauth2/failure"
+      success: "https://<YOUR_ENDPOINT>/auth/oauth2/success",
+      failure: "https://<YOUR_ENDPOINT>/auth/oauth2/failure"
   ) { result in
       switch result {
       case .failure(let error):
