@@ -411,7 +411,7 @@ await databases.updateDocument(
     '<COLLECTION_ID>',
     '<DOCUMENT_ID>',
     {
-        '$updatedAt': new Date('<CUSTOM_DATE>').toISOString(),
+        '$updatedAt': new Date('2025-08-10T12:34:56.000Z').toISOString(),
         // ...your attributes
     }
 );
