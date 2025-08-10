@@ -81,6 +81,11 @@
                     new: isNewUntil('31 Jul 2025')
                 },
                 {
+                    label: 'Atomic numeric operations',
+                    href: '/docs/products/databases/atomic-numeric-operations',
+                    new: isNewUntil('31 Jul 2025')
+                },
+                {
                     label: 'CSV imports',
                     href: '/docs/products/databases/csv-imports',
                     new: isNewUntil('31 Jul 2025')

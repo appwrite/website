@@ -628,12 +628,18 @@ const client = new Client()
 
 const storage = new Storage(client);
 
-const result = storage.getFileDownload({
+// Downloads the file data as ArrayBuffer
+const result = await storage.getFileDownload({
     bucketId: '<BUCKET_ID>',
     fileId: '<FILE_ID>'
 });
 
-console.log(result); // Resource URL
+console.log(result); // ArrayBuffer with file data
+
+// To get just the download URL without downloading:
+const downloadUrl = storage.getFileDownloadURL('<BUCKET_ID>', '<FILE_ID>');
+
+console.log(downloadUrl); // URL object
 ```
 {% /multicode %}
 
@@ -750,7 +756,8 @@ const client = new Client()
 
 const storage = new Storage(client);
 
-const result = storage.getFilePreview(
+// Downloads the preview image data as ArrayBuffer
+const result = await storage.getFilePreview(
     '<BUCKET_ID>',
     '<FILE_ID>',
     200,                    // width
@@ -759,7 +766,19 @@ const result = storage.getFilePreview(
     100                     // quality
 );
 
-console.log(result); // Resource URL
+console.log(result); // ArrayBuffer with image data
+
+// To get just the preview URL without downloading:
+const previewUrl = storage.getFilePreviewURL(
+    '<BUCKET_ID>',
+    '<FILE_ID>',
+    200,                    // width
+    200,                    // height
+    ImageGravity.Center,    // gravity
+    100                     // quality
+);
+
+console.log(previewUrl); // URL object
 ```
 {% /multicode %}
 
@@ -877,11 +896,17 @@ const client = new Client()
 
 const storage = new Storage(client);
 
-const result = storage.getFileView({
+// Downloads the file data as ArrayBuffer
+const result = await storage.getFileView({
     bucketId: '<BUCKET_ID>',
     fileId: '<FILE_ID>'
 });
 
-console.log(result); // Resource URL
+console.log(result); // ArrayBuffer with file data
+
+// To get just the view URL without downloading:
+const viewUrl = storage.getFileViewURL('<BUCKET_ID>', '<FILE_ID>');
+
+console.log(viewUrl); // URL object
 ```
 {% /multicode %}
