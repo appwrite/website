@@ -250,7 +250,7 @@ const specs = import.meta.glob(
 export async function getApi(version: string, platform: string): Promise<OpenAPIV3.Document> {
     const isClient = platform.startsWith('client-');
     const isServer = platform.startsWith('server-');
-    const target = `/node_modules/@appwrite.io/repo/app/config/specs/open-api3-${version}-${
+    const target = `../../../node_modules/@appwrite.io/repo/app/config/specs/open-api3-${version}-${
         isServer ? 'server' : isClient ? 'client' : 'console'
     }.json`;
 
