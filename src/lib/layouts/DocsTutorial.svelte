@@ -204,7 +204,7 @@
         <aside class="web-references-menu ps-6">
             <div class="web-references-menu-content">
                 <div class="flex items-center justify-between gap-4">
-                    <h5 class="web-references-menu-title text-micro uppercase">Tutorial Steps</h5>
+                    <h5 class="web-references-menu-title text-eyebrow uppercase">Tutorial Steps</h5>
                 </div>
                 <ol class="web-references-menu-list">
                     {#each tutorials as tutorial, index}

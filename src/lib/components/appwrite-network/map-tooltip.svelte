@@ -107,7 +107,7 @@
                         }
                     )}
                 >
-                    <span class="text-micro -tracking-tight">Available now</span>
+                    <span class="text-eyebrow -tracking-tight">Available now</span>
                 </div>
             {:else}
                 <div
@@ -119,7 +119,7 @@
                         }
                     )}
                 >
-                    <span class="text-micro -tracking-tight">{tooltipData.date}</span>
+                    <span class="text-eyebrow -tracking-tight">{tooltipData.date}</span>
                 </div>
             {/if}
         </div>

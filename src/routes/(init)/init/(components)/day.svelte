@@ -66,7 +66,7 @@
     <div class="scroll-mt-10 space-y-4 pb-8" id="day-{index}">
         <Window>
             {#snippet title()}
-                <div class="text-micro flex items-center gap-1 text-white">
+                <div class="text-eyebrow flex items-center gap-1 text-white">
                     Day {index} <span class="text-accent">/</span>
                     {format(release, 'EEEE, MMM d')}
                 </div>

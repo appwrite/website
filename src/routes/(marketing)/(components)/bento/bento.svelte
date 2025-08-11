@@ -63,7 +63,9 @@
                     'after:border-smooth after:absolute after:top-1/2 after:-right-22 after:h-px after:w-22 after:-translate-y-1/2 after:border-b after:border-dashed'
                 )}
             >
-                <span class="text-micro text-secondary font-aeonik-fono ml-3 uppercase">Build</span>
+                <span class="text-eyebrow text-secondary font-aeonik-fono ml-3 uppercase"
+                    >Build</span
+                >
                 <div class="flex h-full w-full justify-between gap-2">
                     {#each build as product}
                         <a
@@ -89,7 +91,8 @@
             <div
                 class="bg-card border-smooth text-primary flex h-10 items-center gap-4 rounded-full border border-dashed p-1 text-sm"
             >
-                <span class="text-micro text-secondary font-aeonik-fono ml-3 uppercase">Deploy</span
+                <span class="text-eyebrow text-secondary font-aeonik-fono ml-3 uppercase"
+                    >Deploy</span
                 >
                 <div class="flex h-full w-full justify-between gap-2">
                     {#each deploy as product}

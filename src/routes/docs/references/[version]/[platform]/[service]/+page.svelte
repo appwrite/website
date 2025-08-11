@@ -361,7 +361,9 @@
                     <div
                         class="web-references-menu-header mt-6 flex items-center justify-between gap-4"
                     >
-                        <h5 class="web-references-menu-title text-micro uppercase">On This Page</h5>
+                        <h5 class="web-references-menu-title text-eyebrow uppercase">
+                            On This Page
+                        </h5>
                         <button
                             class="web-icon-button"
                             id="refClose"
@@ -375,7 +377,7 @@
                         {#each Object.entries(groupMethodsByGroup(data.methods)) as [group, methods]}
                             <li class="web-references-menu-group">
                                 {#if group !== ''}
-                                    <h6 class="text-micro text-greyscale-500 mb-2 uppercase">
+                                    <h6 class="text-eyebrow text-greyscale-500 mb-2 uppercase">
                                         {group}
                                     </h6>
                                 {/if}

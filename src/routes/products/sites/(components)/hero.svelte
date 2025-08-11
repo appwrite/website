@@ -24,7 +24,7 @@
                     class="size-8"
                     alt="Sites icon"
                 />
-                <span class="font-aeonik-fono tracking-loose text-micro text-primary uppercase">
+                <span class="font-aeonik-fono tracking-loose text-eyebrow text-primary uppercase">
                     Sites<span class="web-u-color-text-accent">_</span>
                 </span>
             </div>

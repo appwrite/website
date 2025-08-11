@@ -52,7 +52,8 @@
 <section class="light bg-greyscale-50 pt-12 pb-20">
     <div class="container flex flex-col justify-between gap-8 md:flex-row">
         <div class="mb-10 flex max-w-sm flex-col">
-            <span class="web-badges text-micro font-aeonik-fono mr-auto ml-0 !text-white uppercase"
+            <span
+                class="web-badges text-eyebrow font-aeonik-fono mr-auto ml-0 !text-white uppercase"
                 >Getting Started_</span
             >
             <h2 class="text-title text-primary font-aeonik-pro mt-8 mb-4 text-pretty">
@@ -106,12 +107,13 @@
                                     <li
                                         class="border-smooth -ml-3 flex size-8 cursor-pointer items-center justify-center rounded-full border bg-white"
                                     >
-                                        <span class="text-micro text-secondary font-medium">
+                                        <span class="text-eyebrow text-secondary font-medium">
                                             +{hiddenRuntimes.length}
                                         </span>
                                     </li>
                                     {#snippet tooltip()}
-                                        <span class="text-micro">{hiddenRuntimes.join(', ')}</span>
+                                        <span class="text-eyebrow">{hiddenRuntimes.join(', ')}</span
+                                        >
                                     {/snippet}
                                 </Tooltip>
                             {/if}

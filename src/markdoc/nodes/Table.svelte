@@ -43,7 +43,7 @@
             text-transform: none;
         }
 
-        :global(td .text-micro uppercase) {
+        :global(td .text-eyebrow uppercase) {
             all: unset;
         }
 

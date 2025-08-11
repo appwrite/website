@@ -98,7 +98,7 @@
                                     </div>
                                 </div>
                                 <div
-                                    class="text-primary text-micro grid grid-cols-3 place-items-center items-center divide-x divide-black/8 rounded-md border border-black/8 bg-[#19191C]/4 text-center"
+                                    class="text-primary text-eyebrow grid grid-cols-3 place-items-center items-center divide-x divide-black/8 rounded-md border border-black/8 bg-[#19191C]/4 text-center"
                                 >
                                     <button class="web-icon-minus size-6" aria-label="Remove item"
                                     ></button>
@@ -155,12 +155,12 @@
                             </div>
 
                             <div class="flex justify-between font-semibold">
-                                <span class="text-secondary text-micro">Total</span>
-                                <span class="text-primary text-micro">$32.83</span>
+                                <span class="text-secondary text-eyebrow">Total</span>
+                                <span class="text-primary text-eyebrow">$32.83</span>
                             </div>
 
                             <button
-                                class="text-micro mt-2 w-full rounded-lg bg-[#7C67FE] py-1.5 font-medium text-white"
+                                class="text-eyebrow mt-2 w-full rounded-lg bg-[#7C67FE] py-1.5 font-medium text-white"
                                 >Place order</button
                             >
                         </div>

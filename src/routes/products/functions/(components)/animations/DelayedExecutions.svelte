@@ -42,7 +42,7 @@
             {#each $months as month}
                 <div class="grid grid-cols-7 gap-x-2 gap-y-4 text-center" use:melt={$grid}>
                     {#each weekdays as day}
-                        <span class="text-micro font-aeonik-fono text-[0.625rem] uppercase">
+                        <span class="text-eyebrow font-aeonik-fono text-[0.625rem] uppercase">
                             {day}
                         </span>
                     {/each}

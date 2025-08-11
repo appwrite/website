@@ -19,7 +19,7 @@
             <Cell column={2} columnStart={1} class="py-12 md:py-30">
                 <div class="space-y-4">
                     <span
-                        class="font-aeonik-fono text-secondary text-micro tracking-loose uppercase"
+                        class="font-aeonik-fono text-secondary text-eyebrow tracking-loose uppercase"
                         >Networking and Latency</span
                     >
                     <h2

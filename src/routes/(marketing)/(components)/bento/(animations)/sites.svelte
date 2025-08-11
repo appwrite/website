@@ -148,7 +148,7 @@
                 <div class="flex items-center gap-2">
                     <span class="text-caption text-primary"> Deployment logs</span>
                     <span
-                        class="text-micro text-secondary rounded-md bg-white/20 px-1.5 py-0.5 font-light"
+                        class="text-eyebrow text-secondary rounded-md bg-white/20 px-1.5 py-0.5 font-light"
                         >Building</span
                     >
                 </div>
@@ -159,7 +159,7 @@
             </div>
 
             <div
-                class="text-micro font-fira-code flex flex-col flex-nowrap overflow-hidden rounded-[12px] bg-[#19191C] p-4"
+                class="text-eyebrow font-fira-code flex flex-col flex-nowrap overflow-hidden rounded-[12px] bg-[#19191C] p-4"
             >
                 <div class="w-[900px]">
                     {#each text as { timestamp, content }, i}

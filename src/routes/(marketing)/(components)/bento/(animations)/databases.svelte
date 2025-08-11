@@ -175,7 +175,7 @@
                 <table class="table w-full p-2.5">
                     <thead>
                         <tr
-                            class="bg-greyscale-900 border-smooth text-primary text-micro w-full border-b font-normal"
+                            class="bg-greyscale-900 border-smooth text-primary text-eyebrow w-full border-b font-normal"
                         >
                             {#each collectionKeys as heading}
                                 <th
@@ -201,7 +201,7 @@
                             {/each}
                         </tr>
                     </thead>
-                    <tbody class="text-micro divide-smooth divide-y">
+                    <tbody class="text-eyebrow divide-smooth divide-y">
                         {#each collections as collection, c}
                             {@const isSweaters = collection.Category === 'Sweaters'}
                             <tr
@@ -266,7 +266,7 @@
                     <table class="table w-full p-2.5">
                         <thead>
                             <tr
-                                class="bg-greyscale-900 border-smooth text-primary text-micro w-full border-b font-normal"
+                                class="bg-greyscale-900 border-smooth text-primary text-eyebrow w-full border-b font-normal"
                             >
                                 {#each keys as key}
                                     <th
@@ -292,7 +292,7 @@
                                 {/each}
                             </tr>
                         </thead>
-                        <tbody class="text-micro divide-smooth divide-y">
+                        <tbody class="text-eyebrow divide-smooth divide-y">
                             {#each products as product, p}
                                 <tr class="bg-[#1D1D21]">
                                     {#each Object.values(product) as item, i}

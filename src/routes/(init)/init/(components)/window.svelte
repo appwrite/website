@@ -22,7 +22,7 @@
     <div class="relative flex items-center justify-between px-1.5 pt-1 pb-2">
         {#if link}
             <span
-                class="font-aeonik-fono tracking-loose text-micro text-primary absolute flex pl-2 uppercase"
+                class="font-aeonik-fono tracking-loose text-eyebrow text-primary absolute flex pl-2 uppercase"
                 >{@render link()}</span
             >
         {:else}
@@ -44,7 +44,7 @@
 
         {#if title}
             <span
-                class="font-aeonik-fono tracking-loose text-micro text-primary mx-auto block text-center uppercase"
+                class="font-aeonik-fono tracking-loose text-eyebrow text-primary mx-auto block text-center uppercase"
                 >{@render title()}</span
             >
         {/if}

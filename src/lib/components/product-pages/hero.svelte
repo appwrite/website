@@ -43,7 +43,7 @@
         <div class="space-y-8">
             <div class="flex items-center gap-2">
                 <img src={eyebrow.icon} class="size-8" alt="" />
-                <span class="text-micro font-aeonik-fono tracking-loose text-primary uppercase">
+                <span class="text-eyebrow font-aeonik-fono tracking-loose text-primary uppercase">
                     {eyebrow.label}<span class="web-u-color-text-accent">_</span>
                 </span>
             </div>

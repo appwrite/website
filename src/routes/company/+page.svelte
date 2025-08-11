@@ -117,7 +117,7 @@
 									<div class="web-timeline-content-item-top web-grid-1-1"
 										 style="--grid-1-1-gap:2.5rem; --grid-1-1-gap-desktop:15rem;">
 										<div class="flex flex-col gap-4">
-											<span class="web-badges text-micro uppercase web-u-cross-child-start">2019_</span>
+											<span class="web-badges text-eyebrow uppercase web-u-cross-child-start">2019_</span>
 											<h3 class="text-title font-aeonik-pro text-primary">
 												A passion project called Appwrite
 											</h3>
@@ -150,7 +150,7 @@
 									<div class="web-grid-1-1"
 										 style="--grid-1-1-gap:2.5rem; --grid-1-1-gap-desktop:15rem;">
 										<div class="flex flex-col gap-4">
-											<span class="web-badges text-micro uppercase web-u-cross-child-start">2019_</span>
+											<span class="web-badges text-eyebrow uppercase web-u-cross-child-start">2019_</span>
 											<h3 class="text-title font-aeonik-pro text-primary">
 												Building the team
 											</h3>
@@ -178,7 +178,7 @@
 									<div class="web-grid-1-1"
 										 style="--grid-1-1-gap:2.5rem; --grid-1-1-gap-desktop:15rem;">
 										<div class="flex flex-col gap-4">
-											<span class="web-badges text-micro uppercase web-u-cross-child-start">2019_</span>
+											<span class="web-badges text-eyebrow uppercase web-u-cross-child-start">2019_</span>
 											<h3 class="text-title font-aeonik-pro text-primary">
 												Community validation
 											</h3>
@@ -220,7 +220,7 @@
 									<div class="web-grid-1-1"
 										 style="--grid-1-1-gap:2.5rem; --grid-1-1-gap-desktop:15rem;">
 										<div class="flex flex-col gap-4">
-											<span class="web-badges text-micro uppercase web-u-cross-child-start">2019_</span>
+											<span class="web-badges text-eyebrow uppercase web-u-cross-child-start">2019_</span>
 											<h3 class="text-title font-aeonik-pro text-primary">
 												Continuous improvement
 											</h3>
@@ -249,7 +249,7 @@
 									<div class="web-grid-1-1"
 										 style="--grid-1-1-gap:2.5rem; --grid-1-1-gap-desktop:15rem;">
 										<div class="flex flex-col gap-4">
-											<span class="web-badges text-micro uppercase web-u-cross-child-start">2019_</span>
+											<span class="web-badges text-eyebrow uppercase web-u-cross-child-start">2019_</span>
 											<h3 class="text-title font-aeonik-pro text-primary">
 												Taking it to the Cloud
 											</h3>

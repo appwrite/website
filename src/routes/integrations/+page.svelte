@@ -104,7 +104,7 @@
                 <div
                     class="l-integrations-hero web-u-max-width-680 flex flex-col justify-center gap-5"
                 >
-                    <div class="text-micro text-primary uppercase">
+                    <div class="text-eyebrow text-primary uppercase">
                         INTEGRATIONS<span class="web-u-color-text-accent">_</span>
                     </div>
                     <h1 class="text-headline font-aeonik-pro text-primary">
@@ -145,7 +145,7 @@
                         <section class="flex flex-col">
                             <section class="flex flex-col gap-4">
                                 <h2
-                                    class="web-side-nav-header text-micro whitespace-nowrap uppercase"
+                                    class="web-side-nav-header text-eyebrow whitespace-nowrap uppercase"
                                 >
                                     Platform
                                 </h2>
@@ -171,7 +171,7 @@
                             <div class="web-u-sep-block-start my-6"></div>
                             <section class="flex flex-col gap-4">
                                 <h2
-                                    class="web-side-nav-header text-micro whitespace-nowrap uppercase"
+                                    class="web-side-nav-header text-eyebrow whitespace-nowrap uppercase"
                                 >
                                     Categories
                                 </h2>

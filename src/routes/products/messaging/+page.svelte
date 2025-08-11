@@ -257,10 +257,10 @@ messaging.create_email(
                 <div>
                     <div class="product">
                         <img src="/images/icons/illustrated/dark/messaging.png" alt="" />
-                        <span class="text-micro text-primary uppercase">
+                        <span class="text-eyebrow text-primary uppercase">
                             Messaging<span class="web-u-color-text-accent">_</span>
                         </span>
-                        <span class="web-hero-banner-button text-micro uppercase">BETA</span>
+                        <span class="web-hero-banner-button text-eyebrow uppercase">BETA</span>
                     </div>
                     <h1 class="text-display font-aeonik-pro text-primary">
                         Open source messaging service for developers
@@ -294,7 +294,7 @@ messaging.create_email(
             <div class="web-big-padding-section-level-2" style="margin-block-end: 160px">
                 <div class="container">
                     <section class="web-hero is-align-start">
-                        <span class="web-badges text-micro !text-white uppercase"
+                        <span class="web-badges text-eyebrow !text-white uppercase"
                             >capabilities_</span
                         >
                         <h2 class="text-display font-aeonik-pro text-primary max-w-[700px]">
@@ -472,7 +472,7 @@ messaging.create_email(
             <div class="web-big-padding-section-level-2">
                 <div class="container">
                     <div class="web-hero is-align-start">
-                        <span class="web-badges text-micro !text-white uppercase">SDKs_</span>
+                        <span class="web-badges text-eyebrow !text-white uppercase">SDKs_</span>
                         <h2 class="text-display font-aeonik-pro text-primary max-w-[700px]">
                             Start today with your preferred technologies
                         </h2>

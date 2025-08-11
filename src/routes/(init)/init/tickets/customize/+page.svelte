@@ -214,7 +214,7 @@
                         oninput={() => debouncer.call()}
                     />
                     <div
-                        class="text-tertiary font-aeonik-fono tracking-loose text-micro bg-smooth flex size-[calc(100%_-_6px)] items-center justify-center rounded-[1px] p-1 uppercase"
+                        class="text-tertiary font-aeonik-fono tracking-loose text-eyebrow bg-smooth flex size-[calc(100%_-_6px)] items-center justify-center rounded-[1px] p-1 uppercase"
                     >
                         None
                     </div>

@@ -74,7 +74,7 @@
                     >
                         <span class="icon-cheveron-left" aria-hidden="true"></span>
                     </a>
-                    <span class="web-side-nav-wrapper-parent-title text-micro uppercase"
+                    <span class="web-side-nav-wrapper-parent-title text-eyebrow uppercase"
                         >{parent.label}</span
                     >
                 </section>
@@ -94,7 +94,9 @@
                         {/if}
                     {:else}
                         {#if navGroup.label}
-                            <h2 class="web-side-nav-header text-micro whitespace-nowrap uppercase">
+                            <h2
+                                class="web-side-nav-header text-eyebrow whitespace-nowrap uppercase"
+                            >
                                 {navGroup.label}
                             </h2>
                         {/if}

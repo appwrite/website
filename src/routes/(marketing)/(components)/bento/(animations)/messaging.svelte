@@ -86,7 +86,7 @@
             <div class="flex size-8 shrink-0 items-center justify-center rounded-lg bg-black">
                 <div class="size-3 rounded-full bg-white"></div>
             </div>
-            <div class="max-lg:text-micro text-x-micro flex flex-col">
+            <div class="max-lg:text-eyebrow text-x-micro flex flex-col">
                 <h2 class="text-primary flex justify-between font-medium">
                     New security measures added <span class="text-secondary/50 mr-1 block">now</span
                     >
@@ -111,13 +111,13 @@
                     <div class="h-3 w-7 rounded-full bg-black"></div>
                 </div>
                 <div
-                    class="text-micro mt-6 grid flex-1 grid-cols-4 grid-rows-24 place-items-center gap-3 p-6"
+                    class="text-eyebrow mt-6 grid flex-1 grid-cols-4 grid-rows-24 place-items-center gap-3 p-6"
                 >
                     <div
                         class="relative flex aspect-square size-full shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-white/10 to-white/3 shadow-sm shadow-black/5"
                     >
                         <div
-                            class="bg-accent text-micro absolute -top-1 -right-1 flex size-3 items-center justify-center rounded-full"
+                            class="bg-accent text-eyebrow absolute -top-1 -right-1 flex size-3 items-center justify-center rounded-full"
                         ></div>
 
                         <img loading="lazy" src={Email} alt="" class="size-6" />

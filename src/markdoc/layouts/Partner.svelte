@@ -86,7 +86,7 @@
                         <h2 class="text-label text-primary font-aeonik-pro">About {title}</h2>
                         <dl class="divide-smooth sticky top-32 mt-10 flex flex-col gap-7 divide-y">
                             <div class="flex flex-col justify-between gap-7 pb-7">
-                                <dt class="text-micro font-aeonik-fono tracking-loose uppercase">
+                                <dt class="text-eyebrow font-aeonik-fono tracking-loose uppercase">
                                     Technologies
                                 </dt>
                                 <dd class="flex flex-wrap gap-2">
@@ -101,7 +101,7 @@
                             </div>
 
                             <div class="flex flex-col justify-between gap-7 pb-7">
-                                <dt class="text-micro font-aeonik-fono tracking-loose uppercase">
+                                <dt class="text-eyebrow font-aeonik-fono tracking-loose uppercase">
                                     Services
                                 </dt>
                                 <dd class="flex flex-wrap gap-2">
@@ -116,14 +116,14 @@
                             </div>
 
                             <div class="flex items-center justify-between gap-7 pb-7">
-                                <dt class="text-micro font-aeonik-fono tracking-loose uppercase">
+                                <dt class="text-eyebrow font-aeonik-fono tracking-loose uppercase">
                                     Category
                                 </dt>
                                 <dd class="text-primary text-caption">{category}</dd>
                             </div>
 
                             <div class="flex items-center justify-between gap-7 pb-7">
-                                <dt class="text-micro font-aeonik-fono tracking-loose uppercase">
+                                <dt class="text-eyebrow font-aeonik-fono tracking-loose uppercase">
                                     Website
                                 </dt>
                                 <dd
@@ -134,7 +134,7 @@
                             </div>
 
                             <div class="flex items-center justify-between gap-7 pb-7">
-                                <dt class="text-micro font-aeonik-fono tracking-loose uppercase">
+                                <dt class="text-eyebrow font-aeonik-fono tracking-loose uppercase">
                                     Partner Level
                                 </dt>
                                 <dd>
@@ -147,7 +147,7 @@
                             </div>
 
                             <div class="flex items-center justify-between gap-8 pb-7">
-                                <dt class="text-micro font-aeonik-fono tracking-loose uppercase">
+                                <dt class="text-eyebrow font-aeonik-fono tracking-loose uppercase">
                                     Regions
                                 </dt>
                                 <dd class="text-primary text-caption">
@@ -156,7 +156,7 @@
                             </div>
 
                             <div class="flex flex-col justify-between gap-7 pb-7">
-                                <dt class="text-micro font-aeonik-fono tracking-loose uppercase">
+                                <dt class="text-eyebrow font-aeonik-fono tracking-loose uppercase">
                                     Languages
                                 </dt>
                                 <dd class="flex flex-wrap gap-2">

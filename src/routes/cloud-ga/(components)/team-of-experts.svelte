@@ -29,7 +29,7 @@
             <Cell column={2} columnStart={1} class="px-4 pt-12 pb-8 md:py-30">
                 <div class="space-y-4">
                     <span
-                        class="font-aeonik-fono text-secondary text-micro tracking-loose inline-block uppercase"
+                        class="font-aeonik-fono text-secondary text-eyebrow tracking-loose inline-block uppercase"
                         >Dedicated Support</span
                     >
                     <h2

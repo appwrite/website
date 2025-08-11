@@ -35,7 +35,7 @@
 <svelte:element
     this={as}
     class={classNames(
-        'text-micro tracking-loose text-primary font-aeonik-fono uppercase',
+        'text-eyebrow tracking-loose text-primary font-aeonik-fono uppercase',
         className
     )}><slot /></svelte:element
 >

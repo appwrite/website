@@ -108,7 +108,7 @@
                         <section class="flex flex-col">
                             <section class="flex flex-col gap-4">
                                 <h2
-                                    class="web-side-nav-header text-micro whitespace-nowrap uppercase"
+                                    class="web-side-nav-header text-eyebrow whitespace-nowrap uppercase"
                                 >
                                     Platform
                                 </h2>
@@ -134,7 +134,7 @@
                             <div class="web-u-sep-block-start my-6"></div>
                             <section class="flex flex-col gap-4">
                                 <h2
-                                    class="web-side-nav-header text-micro whitespace-nowrap uppercase"
+                                    class="web-side-nav-header text-eyebrow whitespace-nowrap uppercase"
                                 >
                                     Categories
                                 </h2>

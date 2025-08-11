@@ -92,7 +92,7 @@
                                 {data.title}
                             </h1>
                             <div class="share-post-section mt-4 flex items-center gap-4">
-                                <span class="text-micro pr-2 uppercase" style:color="#adadb0">
+                                <span class="text-eyebrow pr-2 uppercase" style:color="#adadb0">
                                     SHARE
                                 </span>
 

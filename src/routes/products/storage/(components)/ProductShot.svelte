@@ -61,22 +61,22 @@
             <ul class="mt-4 flex gap-4 px-6 pb-2">
                 <li class="tabs-item px-2">
                     <button class="tabs-button" tabindex="-1" role="tab">
-                        <span class="text-micro">Files</span>
+                        <span class="text-eyebrow">Files</span>
                     </button>
                 </li>
                 <li class="tabs-item px-2">
                     <button class="tabs-button" tabindex="-1" role="tab">
-                        <span class="text-micro">Usage</span>
+                        <span class="text-eyebrow">Usage</span>
                     </button>
                 </li>
                 <li class="tabs-item px-2">
                     <button class="tabs-button" tabindex="-1" role="tab">
-                        <span class="text-micro">Settings</span>
+                        <span class="text-eyebrow">Settings</span>
                     </button>
                 </li>
                 <li class="tabs-item border-secondary -mb-2 border-b px-2 pb-1.5">
                     <button class="tabs-button" tabindex="0" role="tab">
-                        <span class="text-micro">Security</span>
+                        <span class="text-eyebrow">Security</span>
                     </button>
                 </li>
             </ul>
@@ -111,12 +111,12 @@
         <thead>
             <tr class="border-b border-white/10 pb-4">
                 <th
-                    class="text-micro font-aeonik-fono text-secondary w-[120px] pl-6 text-left font-normal uppercase md:w-[200px]"
+                    class="text-eyebrow font-aeonik-fono text-secondary w-[120px] pl-6 text-left font-normal uppercase md:w-[200px]"
                     >Role</th
                 >
                 {#each headings as heading}
                     <th
-                        class="text-micro font-aeonik-fono text-secondary py-2 text-left font-normal uppercase md:py-4"
+                        class="text-eyebrow font-aeonik-fono text-secondary py-2 text-left font-normal uppercase md:py-4"
                         >{heading}</th
                     >
                 {/each}
@@ -126,7 +126,7 @@
             {#each $permissions as { label, options }, index}
                 <tr>
                     <td
-                        class="text-primary text-micro md:text-caption w-[120px] px-6 py-2 md:w-[200px] md:py-4"
+                        class="text-primary text-eyebrow md:text-caption w-[120px] px-6 py-2 md:w-[200px] md:py-4"
                         >{label}</td
                     >
                     {#each options as option, i}

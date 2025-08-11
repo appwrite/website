@@ -81,7 +81,7 @@
                             <input
                                 type="text"
                                 name="email"
-                                class="border-smooth text-micro w-full rounded-lg border bg-[#19191C] px-3 py-2 text-white"
+                                class="border-smooth text-eyebrow w-full rounded-lg border bg-[#19191C] px-3 py-2 text-white"
                                 value="walter@acme.dev"
                                 disabled
                             />
@@ -94,7 +94,7 @@
                                 type="text"
                                 name="password"
                                 class={classNames(
-                                    'text-micro w-full rounded-lg border border-white/24 bg-[#19191C] px-3 py-2 text-white'
+                                    'text-eyebrow w-full rounded-lg border border-white/24 bg-[#19191C] px-3 py-2 text-white'
                                 )}
                                 placeholder="Your Password"
                                 value={password}
@@ -103,7 +103,7 @@
                         </div>
 
                         <button
-                            class="text-micro w-full rounded-lg bg-white py-2 font-medium text-[#19191C]"
+                            class="text-eyebrow w-full rounded-lg bg-white py-2 font-medium text-[#19191C]"
                             disabled
                             bind:this={button}>Sign up</button
                         >
@@ -121,7 +121,7 @@
 
                     <button
                         class={classNames(
-                            'text-micro border-smooth flex w-full items-center justify-center gap-3 rounded-lg border py-2 font-medium text-white transition'
+                            'text-eyebrow border-smooth flex w-full items-center justify-center gap-3 rounded-lg border py-2 font-medium text-white transition'
                         )}
                         disabled
                     >

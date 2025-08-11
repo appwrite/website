@@ -18,7 +18,7 @@
 <div class="relative h-fit pb-8">
     <Window class="aspect-[4/1]">
         {#snippet title()}
-            <div class="text-micro flex items-center gap-1 text-white">
+            <div class="text-eyebrow flex items-center gap-1 text-white">
                 Day {index} <span class="text-accent">/</span>
                 {format(release, 'MMM-dd-yyyy')}
             </div>

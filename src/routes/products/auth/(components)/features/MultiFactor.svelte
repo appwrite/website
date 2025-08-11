@@ -7,7 +7,7 @@
 >
     <div class="space-y-1">
         <h3 class="text-description text-primary">Verify your identity</h3>
-        <p class="text-micro text-secondary -tracking-tight">
+        <p class="text-eyebrow text-secondary -tracking-tight">
             Enter the verification code<br /> sent to your inbox.
         </p>
     </div>

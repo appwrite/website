@@ -70,7 +70,7 @@
         {/if}
 
         <div class="mt-4 flex items-center gap-4">
-            <span class="text-micro text-secondary uppercase">SHARE</span>
+            <span class="text-eyebrow text-secondary uppercase">SHARE</span>
 
             <ul class="flex gap-2">
                 {#each socialSharingOptions as sharingOption}

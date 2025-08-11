@@ -13,7 +13,7 @@
     <div class="container mx-auto grid grid-cols-1 place-items-center gap-16 md:grid-cols-2">
         <div class="flex max-w-lg flex-col gap-8">
             <div class="flex items-center gap-2">
-                <span class="font-aeonik-fono tracking-loose text-micro text-primary uppercase">
+                <span class="font-aeonik-fono tracking-loose text-eyebrow text-primary uppercase">
                     Partners Program<span class="web-u-color-text-accent">_</span>
                 </span>
             </div>
