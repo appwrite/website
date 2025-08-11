@@ -216,7 +216,7 @@
                             (author) => author.slug === featured.author
                         )}
                         <article class="web-feature-article mt-12">
-                            <a href={featured.href} class="web-feature-article-image">
+                            <a href={featured.href} class="web-feature-article-image h-fit">
                                 <img
                                     src={featured.cover}
                                     class="web-image-ratio-4/3"
@@ -259,7 +259,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <Button variant="secondary" href={featured.href} class="mt-auto">
+                                <Button variant="secondary" href={featured.href} class="mt-8">
                                     <span>Read article</span>
                                 </Button>
                             </div>
