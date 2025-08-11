@@ -28,7 +28,7 @@ const sdk = require('node-appwrite');
 // Init SDK
 const client = new sdk.Client();
 
-const databases = new sdk.Databases(client);
+const databases = new sdk.Grids(client);
 
 client
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
@@ -36,7 +36,7 @@ client
     .setKey('919c2d18fb5d4...a2ae413da83346ad2') // Your secret API key
 ;
 
-const promise = databases.createTable('<DATABASE_ID>', '<TABLE_ID>', '<NAME>');
+const promise = grids.createTable('<DATABASE_ID>', '<TABLE_ID>', '<NAME>');
 
 promise.then(function (response) {
     console.log(response);
@@ -50,7 +50,7 @@ import * as sdk from "https://deno.land/x/appwrite/mod.ts";
 // Init SDK
 let client = new sdk.Client();
 
-let databases = new sdk.Databases(client);
+let databases = new sdk.Grids(client);
 
 client
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
@@ -59,7 +59,7 @@ client
 ;
 
 
-let promise = databases.createTable('<DATABASE_ID>', '<TABLE_ID>', '<NAME>');
+let promise = grids.createTable('<DATABASE_ID>', '<TABLE_ID>', '<NAME>');
 
 promise.then(function (response) {
     console.log(response);
@@ -81,13 +81,13 @@ $client
     ->setKey('919c2d18fb5d4...a2ae413da83346ad2') // Your secret API key
 ;
 
-$databases = new Databases($client);
+$databases = new Grids($client);
 
 $result = $databases->createTable('<DATABASE_ID>', '<TABLE_ID>', '<NAME>');
 ```
 ```python
 from appwrite.client import Client
-from appwrite.services.databases import Databases
+from appwrite.services.grids import Grids
 
 client = Client()
 
@@ -97,9 +97,9 @@ client = Client()
   .set_key('919c2d18fb5d4...a2ae413da83346ad2') # Your secret API key
 )
 
-databases = Databases(client)
+databases = Grids(client)
 
-result = databases.create_table('<DATABASE_ID>', '<TABLE_ID>', '<NAME>')
+result = grids.create_table('<DATABASE_ID>', '<TABLE_ID>', '<NAME>')
 ```
 ```ruby
 require 'Appwrite'
@@ -113,7 +113,7 @@ client = Client.new
 
 databases = Databases.new(client)
 
-response = databases.create_table(database_id: '<DATABASE_ID>', table_id: '<TABLE_ID>', name: '<NAME>')
+response = grids.create_table(database_id: '<DATABASE_ID>', table_id: '<TABLE_ID>', name: '<NAME>')
 
 puts response.inspect
 ```
@@ -127,9 +127,9 @@ var client = new Client()
     .SetProject("<PROJECT_ID>") // Your project ID
     .SetKey("919c2d18fb5d4...a2ae413da83346ad2"); // Your secret API key
 
-var databases = new Databases(client);
+var databases = new Grids(client);
 
-Table result = await databases.CreateTable(
+Table result = await grids.CreateTable(
     databaseId: "<DATABASE_ID>",
     tableId: "<TABLE_ID>",
     name: "[NAME]");
@@ -139,7 +139,7 @@ import 'package:dart_appwrite/dart_appwrite.dart';
 
 void main() { // Init SDK
   Client client = Client();
-  Databases databases = Databases(client);
+  Databases databases = Grids(client);
 
   client
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
@@ -147,7 +147,7 @@ void main() { // Init SDK
     .setKey('919c2d18fb5d4...a2ae413da83346ad2') // Your secret API key
   ;
 
-  Future result = databases.createTable(
+  Future result = grids.createTable(
     databaseId: '<DATABASE_ID>',
     tableId: '<TABLE_ID>',
     name: '<NAME>',
@@ -170,9 +170,9 @@ val client = Client(context)
     .setProject("<PROJECT_ID>") // Your project ID
     .setKey("919c2d18fb5d4...a2ae413da83346ad2") // Your secret API key
 
-val databases = Databases(client)
+val databases = Grids(client)
 
-val response = databases.createTable(
+val response = grids.createTable(
     databaseId = "<DATABASE_ID>",
     tableId = "<TABLE_ID>",
     name = "[NAME]",
@@ -188,9 +188,9 @@ Client client = new Client()
     .setProject("<PROJECT_ID>") // Your project ID
     .setKey("919c2d18fb5d4...a2ae413da83346ad2"); // Your secret API key
 
-Databases databases = new Databases(client);
+Databases databases = new Grids(client);
 
-databases.createTable(
+grids.createTable(
     "<DATABASE_ID>",
     "<TABLE_ID>",
     "[NAME]",
@@ -212,9 +212,9 @@ let client = Client()
     .setProject("<PROJECT_ID>") // Your project ID
     .setKey("919c2d18fb5d4...a2ae413da83346ad2") // Your secret API key
 
-let databases = Databases(client)
+let databases = Grids(client)
 
-let table = try await databases.createTable(
+let table = try await grids.createTable(
     databaseId: "<DATABASE_ID>",
     tableId: "<TABLE_ID>",
     name: "[NAME]"

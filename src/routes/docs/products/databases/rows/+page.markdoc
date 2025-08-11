@@ -16,15 +16,15 @@ In most use cases, you will create rows programmatically.
 
 {% multicode %}
 ```client-web
-import { Client, ID, Tables } from "appwrite";
+import { Client, ID, Grids } from "appwrite";
 
 const client = new Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
     .setProject('<PROJECT_ID>');
 
-const tables = new Tables(client);
+const grids = new Grids(client);
 
-const promise = tables.createRow(
+const promise = grids.createRow(
     '<DATABASE_ID>',
     '<TABLE_ID>',
     ID.unique(),
@@ -45,10 +45,10 @@ void main() async {
         .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
         .setProject('<PROJECT_ID>');
 
-    final tables = Tables(client);
+    final grids = Grids(client);
 
     try {
-        final row = tables.createRow(
+        final row = grids.createRow(
             databaseId: '<DATABASE_ID>',
             tableId: '<TABLE_ID>',
             rowId: ID.unique(),
@@ -68,10 +68,10 @@ func main() async throws {
         .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
         .setProject("<PROJECT_ID>")
 
-    let tables = Tables(client)
+    let grids = Grids(client)
 
     do {
-        let row = try await tables.createRow(
+        let row = try await grids.createRow(
             databaseId: "<DATABASE_ID>",
             tableId: "<TABLE_ID>",
             rowId: ID.unique(),
@@ -91,10 +91,10 @@ suspend fun main() {
         .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
         .setProject("<PROJECT_ID>")
 
-    val tables = Tables(client)
+    val grids = Grids(client)
 
     try {
-        val row = tables.createRow(
+        val row = grids.createRow(
             databaseId = "<DATABASE_ID>",
             tableId = "<TABLE_ID>",
             rowId = ID.unique(),
@@ -145,15 +145,15 @@ You can change this through [pagination](/docs/products/databases/pagination).
 
 {% multicode %}
 ```client-web
-import { Client, Query, Tables } from "appwrite";
+import { Client, Query, Grids } from "appwrite";
 
 const client = new Client()
     .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
     .setProject("<PROJECT_ID>")
 
-const tables = new Tables(client);
+const grids = new Grids(client);
 
-let promise = tables.listRows(
+let promise = grids.listRows(
     "<DATABASE_ID>",
     "<TABLE_ID>",
     [
@@ -175,10 +175,10 @@ void main() async {
         .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
         .setProject("<PROJECT_ID>")
 
-    final tables = Tables(client);
+    final grids = Grids(client);
 
     try {
-        final rows = await tables.listRows(
+        final rows = await grids.listRows(
             databaseId: '<DATABASE_ID>',
             tableId: '<TABLE_ID>',
             queries: [
@@ -199,10 +199,10 @@ func main() async throws {
         .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
         .setProject("<PROJECT_ID>")
 
-    let tables = Tables(client)
+    let grids = Grids(client)
 
     do {
-        let rows = try await tables.listRows(
+        let rows = try await grids.listRows(
             databaseId: "<DATABASE_ID>",
             tableId: "<TABLE_ID>",
             queries: [
@@ -224,10 +224,10 @@ suspend fun main() {
         .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
         .setProject("<PROJECT_ID>")
 
-    val tables = Tables(client)
+    val grids = Grids(client)
 
     try {
-        val rows = tables.listRows(
+        val rows = grids.listRows(
             databaseId = "<DATABASE_ID>",
             tableId = "<TABLE_ID>",
             queries = listOf(
@@ -266,15 +266,15 @@ In most use cases, you will upsert rows programmatically.
 
 {% multicode %}
 ```client-web
-import { Client, ID, Tables } from "appwrite";
+import { Client, ID, Grids } from "appwrite";
 
 const client = new Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
     .setProject('<PROJECT_ID>');
 
-const tables = new Tables(client);
+const grids = new Grids(client);
 
-const promise = tables.upsertRow(
+const promise = grids.upsertRow(
     '<DATABASE_ID>',
     '<TABLE_ID>',
     ID.unique(),
@@ -295,10 +295,10 @@ void main() async {
         .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
         .setProject('<PROJECT_ID>');
 
-    final tables = Tables(client);
+    final grids = Grids(client);
 
     try {
-        final row = tables.upsertRow(
+        final row = grids.upsertRow(
             databaseId: '<DATABASE_ID>',
             tableId: '<TABLE_ID>',
             rowId: ID.unique(),
@@ -318,10 +318,10 @@ func main() async throws {
         .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
         .setProject("<PROJECT_ID>")
 
-    let tables = Tables(client)
+    let grids = Grids(client)
 
     do {
-        let row = try await tables.upsertRow(
+        let row = try await grids.upsertRow(
             databaseId: "<DATABASE_ID>",
             tableId: "<TABLE_ID>",
             rowId: ID.unique(),
@@ -341,10 +341,10 @@ suspend fun main() {
         .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
         .setProject("<PROJECT_ID>")
 
-    val tables = Tables(client)
+    val grids = Grids(client)
 
     try {
-        val row = tables.upsertRow(
+        val row = grids.upsertRow(
             databaseId = "<DATABASE_ID>",
             tableId = "<TABLE_ID>",
             rowId = ID.unique(),

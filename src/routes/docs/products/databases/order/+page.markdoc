@@ -14,15 +14,15 @@ you can specify the order of the rows returned using the `Query.orderAsc()` and 
 
 {% multicode %}
 ```client-web
-import { Client, Query, Tables } from "appwrite";
+import { Client, Query, Grids } from "appwrite";
 
 const client = new Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
     .setProject('<PROJECT_ID>');
 
-const tables = new Tables(client);
+const grids = new Grids(client);
 
-tables.listRows(
+grids.listRows(
     '<DATABASE_ID>',
     '<TABLE_ID>',
     [
@@ -39,10 +39,10 @@ void main() async {
         .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
         .setProject('<PROJECT_ID>');
 
-    final tables = Tables(client);
+    final grids = Grids(client);
 
     try {
-        final rows = await tables.listRows(
+        final rows = await grids.listRows(
             databaseId: '<DATABASE_ID>',
             tableId: '<TABLE_ID>',
             queries: [
@@ -64,10 +64,10 @@ func main() async throws {
         .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
         .setProject('<PROJECT_ID>');
 
-    let tables = Tables(client)
+    let grids = Grids(client)
 
     do {
-        let rows = try await tables.listRows(
+        let rows = try await grids.listRows(
             databaseId: "<DATABASE_ID>",
             tableId: "<TABLE_ID>",
             queries: [
@@ -89,10 +89,10 @@ suspend fun main() {
         .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
         .setProject('<PROJECT_ID>');
 
-    val tables = Tables(client)
+    val grids = Grids(client)
 
     try {
-        val rows = tables.listRows(
+        val rows = grids.listRows(
             databaseId = "<DATABASE_ID>",
             tableId = "<TABLE_ID>",
             queries = [
@@ -135,7 +135,7 @@ In the example below, the movies returned will be first sorted by `title` in asc
 // ...
 
 // List rows and sort based on multiple columns
-tables.listRows(
+grids.listRows(
     '<DATABASE_ID>',
     '<TABLE_ID>',
     [
@@ -150,7 +150,7 @@ tables.listRows(
 
 // List rows and sort based on multiple columns
 try {
-    final rows = await tables.listRows(
+    final rows = await grids.listRows(
         databaseId: '<DATABASE_ID>',
         tableId: '<TABLE_ID>',
         queries: [
@@ -168,7 +168,7 @@ try {
 
 // List rows and sort based on multiple columns
 try {
-    val rows = tables.listRows(
+    val rows = grids.listRows(
         databaseId = "<DATABASE_ID>",
         tableId = "<TABLE_ID>",
         queries = [
@@ -186,7 +186,7 @@ try {
 
 // List rows and sort based on multiple columns
 do {
-    let rows = try await tables.listRows(
+    let rows = try await grids.listRows(
         databaseId: "<DATABASE_ID>",
         tableId: "<TABLE_ID>",
         queries: [
@@ -221,15 +221,15 @@ For numeric ordering based on insertion order, you can use the `$sequence` field
 
 {% multicode %}
 ```client-web
-import { Client, Query, Tables } from "appwrite";
+import { Client, Query, Grids } from "appwrite";
 
 const client = new Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
     .setProject('<PROJECT_ID>');
 
-const tables = new Tables(client);
+const grids = new Grids(client);
 
-tables.listRows(
+grids.listRows(
     '<DATABASE_ID>',
     '<TABLE_ID>',
     [
@@ -246,10 +246,10 @@ void main() async {
         .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
         .setProject('<PROJECT_ID>');
 
-    final tables = Tables(client);
+    final grids = Grids(client);
 
     try {
-        final rows = await tables.listRows(
+        final rows = await grids.listRows(
             databaseId: '<DATABASE_ID>',
             tableId: '<TABLE_ID>',
             queries: [
@@ -271,12 +271,12 @@ func main() async throws {
         .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
         .setProject("<PROJECT_ID>")
 
-    let tables = Tables(client)
+    let grids = Grids(client)
 
     do {
-        let rows = try await tables.listRows(
+        let rows = try await grids.listRows(
             databaseId: "<DATABASE_ID>",
-            collectionId: "<TABLE_ID>",
+            tableId: "<TABLE_ID>",
             queries: [
                 Query.orderAsc("$sequence")
             ]
@@ -297,10 +297,10 @@ suspend fun main() {
         .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
         .setProject("<PROJECT_ID>")
 
-    val tables = Tables(client)
+    val grids = Grids(client)
 
     try {
-        val rows = tables.listRows(
+        val rows = grids.listRows(
             databaseId = "<DATABASE_ID>",
             tableId = "<TABLE_ID>",
             queries = listOf(
@@ -317,7 +317,7 @@ suspend fun main() {
 query {
     tablesListRows(
         databaseId: "<DATABASE_ID>",
-        collectionId: "<TABLE_ID>"
+        tableId: "<TABLE_ID>"
         queries: ["orderAsc(\"$sequence\")"]
     ) {
         total

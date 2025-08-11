@@ -38,17 +38,17 @@ Use the `incrementDocumentAttribute` and `decrementDocumentAttribute` methods to
 
 {% multicode %}
 ```client-web
-import { Client, Databases } from "appwrite";
+import { Client, Grids } from "appwrite";
 
 const client = new Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
     .setProject('<YOUR_PROJECT_ID>'); // Your project ID
 
-const databases = new Databases(client);
+const databases = new Grids(client);
 
-const result = await databases.incrementDocumentAttribute(
+const result = await grids.incrementDocumentAttribute(
     '<DATABASE_ID>',
-    '<COLLECTION_ID>',
+    '<TABLE_ID>',
     '<DOCUMENT_ID>',
     'likes', // attribute
     1 // value
@@ -61,11 +61,11 @@ final client = Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
     .setProject('<PROJECT_ID>');
 
-final databases = Databases(client);
+final databases = Grids(client);
 
-final document = await databases.incrementDocumentAttribute(
+final document = await grids.incrementDocumentAttribute(
     databaseId: '<DATABASE_ID>',
-    collectionId: '<COLLECTION_ID>',
+    tableId: '<TABLE_ID>',
     documentId: '<DOCUMENT_ID>',
     attribute: 'likes',
     value: 1
@@ -79,11 +79,11 @@ let client = Client()
     .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
     .setProject("<PROJECT_ID>")
 
-let databases = Databases(client)
+let databases = Grids(client)
 
-let document = try await databases.incrementDocumentAttribute(
+let document = try await grids.incrementDocumentAttribute(
     databaseId: "<DATABASE_ID>",
-    collectionId: "<COLLECTION_ID>",
+    tableId: "<TABLE_ID>",
     documentId: "<DOCUMENT_ID>",
     attribute: "likes",
     value: 1
@@ -97,11 +97,11 @@ val client = Client(applicationContext)
     .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
     .setProject("<PROJECT_ID>")
 
-val databases = Databases(client)
+val databases = Grids(client)
 
-val document = databases.incrementDocumentAttribute(
+val document = grids.incrementDocumentAttribute(
     databaseId = "<DATABASE_ID>",
-    collectionId = "<COLLECTION_ID>",
+    tableId = "<TABLE_ID>",
     documentId = "<DOCUMENT_ID>",
     attribute = "likes",
     value = 1
@@ -115,11 +115,11 @@ const client = new sdk.Client()
     .setProject('<PROJECT_ID>') // Your project ID
     .setKey('<API_KEY>'); // Your secret API key
 
-const databases = new sdk.Databases(client);
+const databases = new sdk.Grids(client);
 
-const result = await databases.incrementDocumentAttribute(
+const result = await grids.incrementDocumentAttribute(
     '<DATABASE_ID>',
-    '<COLLECTION_ID>',
+    '<TABLE_ID>',
     '<DOCUMENT_ID>',
     'likes', // attribute
     1 // value
@@ -127,18 +127,18 @@ const result = await databases.incrementDocumentAttribute(
 ```
 ```server-python
 from appwrite.client import Client
-from appwrite.services.databases import Databases
+from appwrite.services.grids import Grids
 
 client = Client()
 client.set_endpoint('https://<REGION>.cloud.appwrite.io/v1') # Your API Endpoint
 client.set_project('<PROJECT_ID>') # Your project ID
 client.set_key('<API_KEY>') # Your secret API key
 
-databases = Databases(client)
+databases = Grids(client)
 
-result = databases.increment_document_attribute(
+result = grids.increment_document_attribute(
     database_id = '<DATABASE_ID>',
-    collection_id = '<COLLECTION_ID>',
+    collection_id = '<TABLE_ID>',
     document_id = '<DOCUMENT_ID>',
     attribute = 'likes', # attribute
     value = 1 # value
@@ -148,13 +148,13 @@ result = databases.increment_document_attribute(
 mutation {
     databasesIncrementDocumentAttribute(
         databaseId: "<DATABASE_ID>",
-        collectionId: "<COLLECTION_ID>",
+        tableId: "<TABLE_ID>",
         documentId: "<DOCUMENT_ID>",
         attribute: "likes",
         value: 1
     ) {
         _id
-        _collectionId
+        _tableId
         _databaseId
         _createdAt
         _updatedAt
@@ -171,17 +171,17 @@ Use the `decrementDocumentAttribute` method to decrease numeric fields:
 
 {% multicode %}
 ```client-web
-import { Client, Databases } from "appwrite";
+import { Client, Grids } from "appwrite";
 
 const client = new Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
     .setProject('<YOUR_PROJECT_ID>'); // Your project ID
 
-const databases = new Databases(client);
+const databases = new Grids(client);
 
-const result = await databases.decrementDocumentAttribute(
+const result = await grids.decrementDocumentAttribute(
     '<DATABASE_ID>',
-    '<COLLECTION_ID>',
+    '<TABLE_ID>',
     '<DOCUMENT_ID>',
     'credits', // attribute
     5 // value
@@ -194,11 +194,11 @@ final client = Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
     .setProject('<PROJECT_ID>');
 
-final databases = Databases(client);
+final databases = Grids(client);
 
-final document = await databases.decrementDocumentAttribute(
+final document = await grids.decrementDocumentAttribute(
     databaseId: '<DATABASE_ID>',
-    collectionId: '<COLLECTION_ID>',
+    tableId: '<TABLE_ID>',
     documentId: '<DOCUMENT_ID>',
     attribute: 'credits',
     value: 5
@@ -212,11 +212,11 @@ let client = Client()
     .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
     .setProject("<PROJECT_ID>")
 
-let databases = Databases(client)
+let databases = Grids(client)
 
-let document = try await databases.decrementDocumentAttribute(
+let document = try await grids.decrementDocumentAttribute(
     databaseId: "<DATABASE_ID>",
-    collectionId: "<COLLECTION_ID>",
+    tableId: "<TABLE_ID>",
     documentId: "<DOCUMENT_ID>",
     attribute: "credits",
     value: 5
@@ -230,11 +230,11 @@ val client = Client(applicationContext)
     .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
     .setProject("<PROJECT_ID>")
 
-val databases = Databases(client)
+val databases = Grids(client)
 
-val document = databases.decrementDocumentAttribute(
+val document = grids.decrementDocumentAttribute(
     databaseId = "<DATABASE_ID>",
-    collectionId = "<COLLECTION_ID>",
+    tableId = "<TABLE_ID>",
     documentId = "<DOCUMENT_ID>",
     attribute = "credits",
     value = 5
@@ -248,11 +248,11 @@ const client = new sdk.Client()
     .setProject('<PROJECT_ID>') // Your project ID
     .setKey('<API_KEY>'); // Your secret API key
 
-const databases = new sdk.Databases(client);
+const databases = new sdk.Grids(client);
 
-const result = await databases.decrementDocumentAttribute(
+const result = await grids.decrementDocumentAttribute(
     '<DATABASE_ID>',
-    '<COLLECTION_ID>',
+    '<TABLE_ID>',
     '<DOCUMENT_ID>',
     'credits', // attribute
     5 // value
@@ -260,18 +260,18 @@ const result = await databases.decrementDocumentAttribute(
 ```
 ```server-python
 from appwrite.client import Client
-from appwrite.services.databases import Databases
+from appwrite.services.grids import Grids
 
 client = Client()
 client.set_endpoint('https://<REGION>.cloud.appwrite.io/v1') # Your API Endpoint
 client.set_project('<PROJECT_ID>') # Your project ID
 client.set_key('<API_KEY>') # Your secret API key
 
-databases = Databases(client)
+databases = Grids(client)
 
-result = databases.decrement_document_attribute(
+result = grids.decrement_document_attribute(
     database_id = '<DATABASE_ID>',
-    collection_id = '<COLLECTION_ID>',
+    collection_id = '<TABLE_ID>',
     document_id = '<DOCUMENT_ID>',
     attribute = 'credits', # attribute
     value = 5 # value
@@ -281,13 +281,13 @@ result = databases.decrement_document_attribute(
 mutation {
     databasesDecrementDocumentAttribute(
         databaseId: "<DATABASE_ID>",
-        collectionId: "<COLLECTION_ID>",
+        tableId: "<TABLE_ID>",
         documentId: "<DOCUMENT_ID>",
         attribute: "credits",
         value: 5
     ) {
         _id
-        _collectionId
+        _tableId
         _databaseId
         _createdAt
         _updatedAt
@@ -307,9 +307,9 @@ You can set minimum and maximum bounds for individual operations to prevent inva
 {% multicode %}
 ```client-web
 // Increment with maximum constraint
-const result = await databases.incrementDocumentAttribute(
+const result = await grids.incrementDocumentAttribute(
     '<DATABASE_ID>',
-    '<COLLECTION_ID>',
+    '<TABLE_ID>',
     '<DOCUMENT_ID>',
     'credits', // attribute
     100, // value
@@ -317,9 +317,9 @@ const result = await databases.incrementDocumentAttribute(
 );
 
 // Decrement with minimum constraint
-const result2 = await databases.decrementDocumentAttribute(
+const result2 = await grids.decrementDocumentAttribute(
     '<DATABASE_ID>',
-    '<COLLECTION_ID>',
+    '<TABLE_ID>',
     '<DOCUMENT_ID>',
     'credits', // attribute
     50, // value
@@ -328,9 +328,9 @@ const result2 = await databases.decrementDocumentAttribute(
 ```
 ```client-flutter
 // Increment with maximum constraint
-final document = await databases.incrementDocumentAttribute(
+final document = await grids.incrementDocumentAttribute(
     databaseId: '<DATABASE_ID>',
-    collectionId: '<COLLECTION_ID>',
+    tableId: '<TABLE_ID>',
     documentId: '<DOCUMENT_ID>',
     attribute: 'credits',
     value: 100,
@@ -338,9 +338,9 @@ final document = await databases.incrementDocumentAttribute(
 );
 
 // Decrement with minimum constraint
-final document2 = await databases.decrementDocumentAttribute(
+final document2 = await grids.decrementDocumentAttribute(
     databaseId: '<DATABASE_ID>',
-    collectionId: '<COLLECTION_ID>',
+    tableId: '<TABLE_ID>',
     documentId: '<DOCUMENT_ID>',
     attribute: 'credits',
     value: 50,
@@ -349,9 +349,9 @@ final document2 = await databases.decrementDocumentAttribute(
 ```
 ```client-apple
 // Increment with maximum constraint
-let document = try await databases.incrementDocumentAttribute(
+let document = try await grids.incrementDocumentAttribute(
     databaseId: "<DATABASE_ID>",
-    collectionId: "<COLLECTION_ID>",
+    tableId: "<TABLE_ID>",
     documentId: "<DOCUMENT_ID>",
     attribute: "credits",
     value: 100,
@@ -359,9 +359,9 @@ let document = try await databases.incrementDocumentAttribute(
 )
 
 // Decrement with minimum constraint
-let document2 = try await databases.decrementDocumentAttribute(
+let document2 = try await grids.decrementDocumentAttribute(
     databaseId: "<DATABASE_ID>",
-    collectionId: "<COLLECTION_ID>",
+    tableId: "<TABLE_ID>",
     documentId: "<DOCUMENT_ID>",
     attribute: "credits",
     value: 50,
@@ -370,9 +370,9 @@ let document2 = try await databases.decrementDocumentAttribute(
 ```
 ```client-android-kotlin
 // Increment with maximum constraint
-val document = databases.incrementDocumentAttribute(
+val document = grids.incrementDocumentAttribute(
     databaseId = "<DATABASE_ID>",
-    collectionId = "<COLLECTION_ID>",
+    tableId = "<TABLE_ID>",
     documentId = "<DOCUMENT_ID>",
     attribute = "credits",
     value = 100,
@@ -380,9 +380,9 @@ val document = databases.incrementDocumentAttribute(
 )
 
 // Decrement with minimum constraint
-val document2 = databases.decrementDocumentAttribute(
+val document2 = grids.decrementDocumentAttribute(
     databaseId = "<DATABASE_ID>",
-    collectionId = "<COLLECTION_ID>",
+    tableId = "<TABLE_ID>",
     documentId = "<DOCUMENT_ID>",
     attribute = "credits",
     value = 50,
@@ -391,9 +391,9 @@ val document2 = databases.decrementDocumentAttribute(
 ```
 ```server-nodejs
 // Increment with maximum constraint
-const result = await databases.incrementDocumentAttribute(
+const result = await grids.incrementDocumentAttribute(
     '<DATABASE_ID>',
-    '<COLLECTION_ID>',
+    '<TABLE_ID>',
     '<DOCUMENT_ID>',
     'credits', // attribute
     100, // value
@@ -401,9 +401,9 @@ const result = await databases.incrementDocumentAttribute(
 );
 
 // Decrement with minimum constraint
-const result2 = await databases.decrementDocumentAttribute(
+const result2 = await grids.decrementDocumentAttribute(
     '<DATABASE_ID>',
-    '<COLLECTION_ID>',
+    '<TABLE_ID>',
     '<DOCUMENT_ID>',
     'credits', // attribute
     50, // value
@@ -412,9 +412,9 @@ const result2 = await databases.decrementDocumentAttribute(
 ```
 ```server-python
 # Increment with maximum constraint
-result = databases.increment_document_attribute(
+result = grids.increment_document_attribute(
     database_id = '<DATABASE_ID>',
-    collection_id = '<COLLECTION_ID>',
+    collection_id = '<TABLE_ID>',
     document_id = '<DOCUMENT_ID>',
     attribute = 'credits', # attribute
     value = 100, # value
@@ -422,9 +422,9 @@ result = databases.increment_document_attribute(
 )
 
 # Decrement with minimum constraint
-result2 = databases.decrement_document_attribute(
+result2 = grids.decrement_document_attribute(
     database_id = '<DATABASE_ID>',
-    collection_id = '<COLLECTION_ID>',
+    collection_id = '<TABLE_ID>',
     document_id = '<DOCUMENT_ID>',
     attribute = 'credits', # attribute
     value = 50, # value
@@ -446,18 +446,18 @@ For complex updates that include both atomic operations and regular field change
 {% multicode %}
 ```client-web
 // First, increment the likes atomically
-const likeResult = await databases.incrementDocumentAttribute(
+const likeResult = await grids.incrementDocumentAttribute(
     '<DATABASE_ID>',
-    '<COLLECTION_ID>',
+    '<TABLE_ID>',
     '<DOCUMENT_ID>',
     'likes', // attribute
     1 // value
 );
 
 // Then, update other fields
-const updateResult = await databases.updateDocument(
+const updateResult = await grids.updateDocument(
     '<DATABASE_ID>',
-    '<COLLECTION_ID>',
+    '<TABLE_ID>',
     '<DOCUMENT_ID>',
     {
         lastLikedBy: userId,
@@ -467,18 +467,18 @@ const updateResult = await databases.updateDocument(
 ```
 ```client-flutter
 // First, increment the likes atomically
-final likeResult = await databases.incrementDocumentAttribute(
+final likeResult = await grids.incrementDocumentAttribute(
     databaseId: '<DATABASE_ID>',
-    collectionId: '<COLLECTION_ID>',
+    tableId: '<TABLE_ID>',
     documentId: '<DOCUMENT_ID>',
     attribute: 'likes',
     value: 1
 );
 
 // Then, update other fields
-final updateResult = await databases.updateDocument(
+final updateResult = await grids.updateDocument(
     databaseId: '<DATABASE_ID>',
-    collectionId: '<COLLECTION_ID>',
+    tableId: '<TABLE_ID>',
     documentId: '<DOCUMENT_ID>',
     data: {
         'lastLikedBy': userId,
@@ -488,18 +488,18 @@ final updateResult = await databases.updateDocument(
 ```
 ```client-apple
 // First, increment the likes atomically
-let likeResult = try await databases.incrementDocumentAttribute(
+let likeResult = try await grids.incrementDocumentAttribute(
     databaseId: "<DATABASE_ID>",
-    collectionId: "<COLLECTION_ID>",
+    tableId: "<TABLE_ID>",
     documentId: "<DOCUMENT_ID>",
     attribute: "likes",
     value: 1
 )
 
 // Then, update other fields
-let updateResult = try await databases.updateDocument(
+let updateResult = try await grids.updateDocument(
     databaseId: "<DATABASE_ID>",
-    collectionId: "<COLLECTION_ID>",
+    tableId: "<TABLE_ID>",
     documentId: "<DOCUMENT_ID>",
     data: [
         "lastLikedBy": userId,
@@ -509,18 +509,18 @@ let updateResult = try await databases.updateDocument(
 ```
 ```client-android-kotlin
 // First, increment the likes atomically
-val likeResult = databases.incrementDocumentAttribute(
+val likeResult = grids.incrementDocumentAttribute(
     databaseId = "<DATABASE_ID>",
-    collectionId = "<COLLECTION_ID>",
+    tableId = "<TABLE_ID>",
     documentId = "<DOCUMENT_ID>",
     attribute = "likes",
     value = 1
 )
 
 // Then, update other fields
-val updateResult = databases.updateDocument(
+val updateResult = grids.updateDocument(
     databaseId = "<DATABASE_ID>",
-    collectionId = "<COLLECTION_ID>",
+    tableId = "<TABLE_ID>",
     documentId = "<DOCUMENT_ID>",
     data = mapOf(
         "lastLikedBy" to userId,
@@ -530,18 +530,18 @@ val updateResult = databases.updateDocument(
 ```
 ```server-nodejs
 // First, increment the likes atomically
-const likeResult = await databases.incrementDocumentAttribute(
+const likeResult = await grids.incrementDocumentAttribute(
     '<DATABASE_ID>',
-    '<COLLECTION_ID>',
+    '<TABLE_ID>',
     '<DOCUMENT_ID>',
     'likes', // attribute
     1 // value
 );
 
 // Then, update other fields
-const updateResult = await databases.updateDocument(
+const updateResult = await grids.updateDocument(
     '<DATABASE_ID>',
-    '<COLLECTION_ID>',
+    '<TABLE_ID>',
     '<DOCUMENT_ID>',
     {
         lastLikedBy: userId,
@@ -551,18 +551,18 @@ const updateResult = await databases.updateDocument(
 ```
 ```server-python
 # First, increment the likes atomically
-like_result = databases.increment_document_attribute(
+like_result = grids.increment_document_attribute(
     database_id = '<DATABASE_ID>',
-    collection_id = '<COLLECTION_ID>',
+    collection_id = '<TABLE_ID>',
     document_id = '<DOCUMENT_ID>',
     attribute = 'likes', # attribute
     value = 1 # value
 )
 
 # Then, update other fields
-update_result = databases.update_document(
+update_result = grids.update_document(
     database_id = '<DATABASE_ID>',
-    collection_id = '<COLLECTION_ID>',
+    collection_id = '<TABLE_ID>',
     document_id = '<DOCUMENT_ID>',
     data = {
         'lastLikedBy': user_id,
