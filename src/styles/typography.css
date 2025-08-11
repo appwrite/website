@@ -1,4 +1,4 @@
-/* .prose {
+.prose {
     --prose-color: var(--color-gray-700);
     --prose-heading-color: var(--color-gray-950);
     --prose-strong-color: var(--color-gray-950);
@@ -301,4 +301,4 @@
             max-width: calc(100% + calc(var(--spacing) * 8));
         }
     }
-} */
+}

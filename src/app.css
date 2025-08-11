@@ -301,6 +301,7 @@
     --font-aeonik-pro: 'Aeonik Pro', var(--font-sans);
 
     /* sizes */
+    /* sizes */
     --font-size-micro: 0.75rem;
     --font-size-tiny: 0.875rem;
     --font-size-small: 1rem;
@@ -308,7 +309,7 @@
     --font-size-large: 1.25rem;
     --font-size-xl: 1.5rem;
     --font-size-xxl: 2rem;
-    --font-size-xxxl: 3rem;
+    --font-size-big: 3rem;
     --font-size-huge: 3.5rem;
     --font-size-super: 4rem;
     --font-size-giant: 4.5rem;
@@ -341,57 +342,76 @@
     --font-weight-medium: 500;
 
     /* tokens */
-    --text-*: initial;
-    --text-eyebrow: var(--font-size-micro);
-    --text-eyebrow--line-height: var(--leading-tiny);
+    --text-eyebrow: clamp(var(--font-size-micro), -0.366vw + 1.125rem, var(--font-size-micro));
+    --text-eyebrow--line-height: clamp(var(--leading-tiny), -0.488vw + 1.5rem, var(--leading-tiny));
     --text-eyebrow--letter-spacing: var(--tracking-loose);
-    --text-code: clamp(var(--font-size-micro), 0.732vw, var(--font-size-tiny));
-    --text-code--line-height: clamp(var(--leading-tiny), 0.977vw, var(--leading-xs));
+    --text-code: clamp(var(--font-size-micro), -0.122vw + 0.875rem, var(--font-size-tiny));
+    --text-code--line-height: clamp(var(--leading-tiny), -0.163vw + 1.375rem, var(--leading-xs));
     --text-code-letter-spacing: var(--tracking-none);
-    --text-caption: var(--font-size-tiny);
-    --text-caption--line-height: var(--leading-xs);
+    --text-caption: clamp(var(--font-size-micro), -0.122vw + 0.875rem, var(--font-size-tiny));
+    --text-caption--line-height: clamp(var(--leading-tiny), -0.163vw + 1.375rem, var(--leading-xs));
     --text-caption--letter-spacing: clamp(var(--tracking-tighter), -0.013em, var(--tracking-tight));
-    --text-sub-body: clamp(var(--font-size-tiny), 0.854vw, var(--font-size-small));
-    --text-sub-body--line-height: var(--leading-xs);
+    --text-sub-body: clamp(var(--font-size-tiny), -0.122vw + 1rem, var(--font-size-small));
+    --text-sub-body--line-height: clamp(
+        var(--leading-tiny),
+        -0.163vw + 1.375rem,
+        var(--leading-xs)
+    );
     --text-sub-body--letter-spacing: clamp(
         var(--tracking-tighter),
         -0.013em,
         var(--tracking-tight)
     );
-    --text-main-body: clamp(var(--font-size-small), 0.976vw, var(--font-size-medium));
-    --text-main-body--line-height: clamp(var(--leading-xs), 1.343vw, var(--leading-sm));
+    --text-main-body: clamp(var(--font-size-small), -0.122vw + 1.125rem, var(--font-size-medium));
+    --text-main-body--line-height: clamp(var(--leading-xs), -0.244vw + 1.625rem, var(--leading-sm));
     --text-main-body--letter-spacing: var(--tracking-tight);
-    --text-paragraph-md: var(--font-size-small);
-    --text-paragraph-md--line-height: var(--leading-sm);
+    --text-paragraph-md: clamp(var(--font-size-tiny), -0.122vw + 1rem, var(--font-size-small));
+    --text-paragraph-md--line-height: clamp(
+        var(--leading-xs),
+        -0.244vw + 1.625rem,
+        var(--leading-sm)
+    );
     --text-paragraph-md--letter-spacing: var(--tracking-tight);
-    --text-paragraph-lg: var(--font-size-medium);
-    --text-paragraph-lg--line-height: var(--leading-md);
+    --text-paragraph-lg: clamp(var(--font-size-small), -0.122vw + 1.25rem, var(--font-size-medium));
+    --text-paragraph-lg--line-height: clamp(
+        var(--leading-sm),
+        -0.122vw + 1.75rem,
+        var(--leading-md)
+    );
     --text-paragraph-lg--letter-spacing: var(--tracking-tight);
-    --text-description: clamp(var(--font-size-medium), 1.099vw, var(--font-size-large));
-    --text-description--line-height: clamp(var(--leading-sm), 1.587vw, var(--leading-md));
+    --text-description: clamp(var(--font-size-medium), -0.122vw + 1.25rem, var(--font-size-large));
+    --text-description--line-height: clamp(
+        var(--leading-sm),
+        -0.244vw + 1.75rem,
+        var(--leading-md)
+    );
     --text-description--letter-spacing: var(--tracking-tighter);
-    --text-label: var(--font-size-large);
-    --text-label--line-height: var(--leading-md);
+    --text-label: clamp(var(--font-size-small), -0.122vw + 1.25rem, var(--font-size-large));
+    --text-label--line-height: clamp(var(--leading-xs), -0.122vw + 1.75rem, var(--leading-md));
     --text-label-letter-spacing: var(--tracking-none);
-    --text-subtitle: clamp(var(--font-size-large), 1.221vw, var(--font-size-xl));
-    --text-subtitle--line-height: clamp(var(--leading-md), 1.709vw, var(--leading-lg));
+    --text-subtitle: clamp(var(--font-size-large), -0.244vw + 1.5rem, var(--font-size-xl));
+    --text-subtitle--line-height: clamp(var(--leading-md), -0.366vw + 2.125rem, var(--leading-lg));
     --text-subtitle--letter-spacing: clamp(
         var(--tracking-none),
-        -0.0098vw,
+        -0.0098vw - 0.003em,
         var(--tracking-squeezed)
     );
-    --text-title: clamp(var(--font-size-xl), 1.465vw, var(--font-size-xxl));
-    --text-title--line-height: clamp(var(--leading-lg), 2.075vw, var(--leading-xl));
+    --text-title: clamp(var(--font-size-xxl), 1.046rem + 3.053vw, var(--font-size-big));
+    --text-title--line-height: clamp(var(--leading-lg), 2.296rem + 3.053vw, var(--leading-xl));
     --text-title--letter-spacing: clamp(
         var(--tracking-compressed),
-        -0.0215vw,
+        -0.0215vw - 0.007em,
         var(--tracking-squeezed)
     );
-    --text-display: clamp(var(--font-size-xl), 1.465vw, var(--font-size-xxxl));
-    --text-display--line-height: clamp(var(--leading-xl), 3.174vw, var(--leading-xxxl));
+    --text-display: clamp(var(--font-size-xl), -0.977vw + 2.5rem, var(--font-size-xxxl));
+    --text-display--line-height: clamp(var(--leading-xl), -1.099vw + 4.25rem, var(--leading-xxxl));
     --text-display--letter-spacing: var(--tracking-compressed);
-    --text-headline: clamp(var(--font-size-xxl), 2.93vw, var(--font-size-xxxxl));
-    --text-headline--line-height: clamp(var(--leading-xxl), 3.288vw, var(--leading-xxxxl));
+    --text-headline: clamp(var(--font-size-huge), -0.488vw + 4.5rem, var(--font-size-giant));
+    --text-headline--line-height: clamp(
+        var(--leading-xxl),
+        -0.61vw + 4.625rem,
+        var(--leading-xxxxl)
+    );
     --text-headline--letter-spacing: var(--tracking-compressed);
 
     /* Font sizes */

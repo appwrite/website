@@ -27,7 +27,7 @@
             <HeroBanner title="Appwrite Cloud is now GA" href="/cloud-ga" />
 
             <GradientText class="animate-fade-in">
-                <h1 class="font-aeonik-pro text-hero text-pretty">
+                <h1 class="font-aeonik-pro text-headline text-pretty">
                     Build like a team of hundreds<span class="text-accent">_</span>
                 </h1>
             </GradientText>
