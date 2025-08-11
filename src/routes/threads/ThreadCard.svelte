@@ -42,7 +42,7 @@
                 aria-label="Replies"
             >
                 <span class="web-icon-message web-u-font-size-16" aria-hidden="true"></span>
-                <span class="text-caption font-sans">{thread.message_count}</span>
+                <span class="text-caption font-inter">{thread.message_count}</span>
             </div>
         </div>
     </a>

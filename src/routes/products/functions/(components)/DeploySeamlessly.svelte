@@ -191,7 +191,7 @@
                 <div class="col-span-9 col-start-4 overflow-hidden rounded-xl bg-[#232325] p-2">
                     <ul
                         class={classNames(
-                            'text-greyscale-600 relative px-1 font-mono',
+                            'text-greyscale-600 font-fira-code relative px-1',
                             'after:absolute after:inset-0 after:bg-gradient-to-b after:from-transparent after:via-transparent after:to-[#232325]'
                         )}
                     >

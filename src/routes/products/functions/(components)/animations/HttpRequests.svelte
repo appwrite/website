@@ -38,7 +38,7 @@
         </div>
         <div class="flex flex-1 flex-col gap-4 text-center">
             <div class="flex flex-col gap-1">
-                <span class="font-mono text-[0.625rem]">Request</span>
+                <span class="font-fira-code text-[0.625rem]">Request</span>
                 <svg
                     width="83"
                     height="4"
@@ -67,7 +67,7 @@
                         fill-opacity="0.24"
                     />
                 </svg>
-                <span class="font-mono text-[0.625rem]">Response</span>
+                <span class="font-fira-code text-[0.625rem]">Response</span>
             </div>
         </div>
         <div class="flex w-full flex-1 flex-col gap-2">

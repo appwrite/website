@@ -124,7 +124,7 @@
                     {@render Command({ command })}
                 {/each}
                 <div
-                    class="text-caption relative w-fit shrink-0 overflow-hidden rounded-2xl border border-transparent p-px font-mono text-sm text-white"
+                    class="text-caption font-fira-code relative w-fit shrink-0 overflow-hidden rounded-2xl border border-transparent p-px text-sm text-white"
                     bind:this={activeCommand}
                 >
                     <div
@@ -152,7 +152,7 @@
 
 {#snippet Command({ command }: { command: string })}
     <div
-        class="text-caption relative w-fit shrink-0 overflow-hidden rounded-2xl border border-transparent p-px font-mono text-sm text-white"
+        class="text-caption font-fira-code relative w-fit shrink-0 overflow-hidden rounded-2xl border border-transparent p-px text-sm text-white"
     >
         <div class="h-full w-full rounded-2xl bg-[#202023] px-3 py-1 text-white/80">
             {command}

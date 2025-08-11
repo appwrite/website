@@ -100,7 +100,7 @@
                 {#if option === '654321'}
                     <div
                         class={classNames(
-                            'from-greyscale-800 to-greyscale-900 relative z-50 flex items-center gap-2 bg-gradient-to-r px-1 font-mono text-white shadow-lg shadow-black/30'
+                            'from-greyscale-800 to-greyscale-900 font-fira-code relative z-50 flex items-center gap-2 bg-gradient-to-r px-1 text-white shadow-lg shadow-black/30'
                         )}
                     >
                         <span>6543</span>
@@ -110,8 +110,10 @@
                         <span class="text-white/50">21</span>
                     </div>
                 {:else}
-                    <span class={classNames('font-mono text-white/20 transition-all duration-1000')}
-                        >{option}</span
+                    <span
+                        class={classNames(
+                            'font-fira-code text-white/20 transition-all duration-1000'
+                        )}>{option}</span
                     >{/if}
             {/each}
             <div class="mask absolute inset-0 z-0 backdrop-blur-md"></div>

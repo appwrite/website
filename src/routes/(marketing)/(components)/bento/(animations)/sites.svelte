@@ -154,12 +154,12 @@
                 </div>
                 <div class="flex items-center gap-2">
                     <Spinner {shouldAnimate} />
-                    <span class="font-mono text-sm">{seconds}s</span>
+                    <span class="font-fira-code text-sm">{seconds}s</span>
                 </div>
             </div>
 
             <div
-                class="text-micro flex flex-col flex-nowrap overflow-hidden rounded-[12px] bg-[#19191C] p-4 font-mono"
+                class="text-micro font-fira-code flex flex-col flex-nowrap overflow-hidden rounded-[12px] bg-[#19191C] p-4"
             >
                 <div class="w-[900px]">
                     {#each text as { timestamp, content }, i}

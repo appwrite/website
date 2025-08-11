@@ -56,7 +56,7 @@
 
                         <ul
                             class={classNames(
-                                'text-greyscale-600 relative mt-2 px-2 font-mono',
+                                'text-greyscale-600 font-fira-code relative mt-2 px-2',
                                 'after:to-offset after:absolute after:inset-0 after:bg-gradient-to-b after:from-transparent after:via-transparent'
                             )}
                         >
