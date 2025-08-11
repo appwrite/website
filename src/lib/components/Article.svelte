@@ -21,6 +21,9 @@
             <Media src={cover} class="aspect-video" alt={title} autoplay controls={false} />
         </div>
         <div class="flex flex-col gap-3 pt-6 pb-3">
+            <h4 class="text-label font-aeonik-pro text-primary line-clamp-2">
+                {title}
+            </h4>
             <div class="flex w-full">
                 <div class="text-micro flex w-full flex-col items-center xl:flex-row xl:gap-2">
                     <div class="flex items-center justify-center gap-2">
@@ -35,9 +38,6 @@
                     </div>
                 </div>
             </div>
-            <h4 class="text-label font-aeonik-pro text-primary line-clamp-2">
-                {title}
-            </h4>
         </div>
     </a>
 </li>
