@@ -58,16 +58,18 @@ To add an apex domain:
 
 DNS changes can take up to 48 hours to fully propagate across the internet. During this time, your domain might not be accessible or might show inconsistent behavior.
 
+### Why Appwrite uses NS records instead of A records
+
+By [DNS standards (RFC)](https://datatracker.ietf.org/doc/html/rfc1035), apex domains cannot use CNAME records, only A or AAAA records, which require pointing to fixed IP addresses. Using A records would lock Appwrite into specific IP addresses, limiting our ability to optimize routing, scale our infrastructure, or make changes as needed. To avoid this constraint and maintain flexibility, Appwrite offers DNS delegation through NS records so we can manage routing on your behalf.
+
+Some DNS providers support CNAME-like behavior at the apex through custom setups. If your provider allows it, you can point your apex domain to `appwrite.network` without using Appwrite's nameservers.
+
 Using Appwrite's DNS servers for your apex domain provides several benefits:
 - Proper SSL certificate management
 - Automatic DNS configuration
 - Secure and reliable DNS resolution
 
 When you change your domain's NS records, you're delegating DNS management to Appwrite. This means any existing DNS records (like MX records for email) will need to be recreated in Appwrite's DNS configuration.
-
-{% info title="Note on A records" %}
-Appwrite uses a global CDN to serve your sites. To maintain flexibility and avoid tying your domain to specific IP addresses, Appwrite uses NS records for apex domains.
-{% /info %}
 
 {% arrow_link href="/docs/products/network/dns" %}
 Learn more about Appwrite DNS server

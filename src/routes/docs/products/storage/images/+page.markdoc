@@ -191,8 +191,8 @@ const client = new Client()
 
 const storage = new Storage(client);
 
-// Get image with transformations
-const result = storage.getFilePreview(
+// Get image with transformations (downloads image data)
+const result = await storage.getFilePreview(
     'photos',           // bucket ID
     'sunset.png',       // file ID
     1800,               // width, will be resized using this value
@@ -208,12 +208,31 @@ const result = storage.getFilePreview(
     'jpg'               // output jpg format
 );
 
-console.log(result); // Resource URL
+console.log(result); // ArrayBuffer with image data
+
+// To get just the URL without downloading:
+const imageUrl = storage.getFilePreviewURL(
+    'photos',           // bucket ID
+    'sunset.png',       // file ID
+    1800,               // width, will be resized using this value
+    0,                  // height, ignored when 0
+    ImageGravity.Center,// crop center
+    90,                 // slight compression
+    5,                  // border width
+    'CDCA30',           // border color
+    15,                 // border radius
+    1,                  // full opacity
+    0,                  // no rotation
+    'FFFFFF',           // background color
+    'jpg'               // output jpg format
+);
+
+console.log(imageUrl); // URL object
 
 // Usage in a component
 const ImagePreview = () => (
     <Image
-        source={{ uri: result.toString() }}
+        source={{ uri: imageUrl.toString() }}
         style={{ width: 300, height: 200 }}
         resizeMode="contain"
     />
