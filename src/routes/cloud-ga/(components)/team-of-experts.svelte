@@ -66,7 +66,7 @@
                                 <img {src} alt={label} />
                                 <a
                                     {href}
-                                    class="text-body text-primary hover:decoration-accent hover:text-accent font-medium underline transition-colors"
+                                    class="text-main-body text-primary hover:decoration-accent hover:text-accent font-medium underline transition-colors"
                                     >{label}</a
                                 >
                             </div>

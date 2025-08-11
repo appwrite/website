@@ -49,7 +49,7 @@
         <div class="flex max-w-lg flex-col gap-8 px-8">
             <div class="flex flex-col gap-4">
                 <h2 class="font-aeonik-pro text-title text-primary text-pretty">Partner Tiers</h2>
-                <p class="text-body text-secondary font-medium text-pretty">
+                <p class="text-main-body text-secondary font-medium text-pretty">
                     As your business grows, so do the opportunities with Appwrite. Our Partner
                     Program is designed to evolve with you, offering flexible tiers that adapt to
                     your unique needs and goals. Together, we’ll build a scalable partnership that

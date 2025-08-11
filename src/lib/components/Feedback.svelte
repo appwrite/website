@@ -71,7 +71,7 @@
             style="flex-wrap: wrap-reverse;"
         >
             <div class="flex items-center gap-4">
-                <h5 class="text-body text-primary font-semibold">Was this page helpful?</h5>
+                <h5 class="text-main-body text-primary font-semibold">Was this page helpful?</h5>
                 <div class="flex gap-2">
                     <button
                         class="web-radio-button"

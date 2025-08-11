@@ -280,7 +280,7 @@
                         >
                             <div>
                                 <h3 class="text-label text-primary">Check our Open Issues</h3>
-                                <p class="text-body mt-1 font-medium">
+                                <p class="text-main-body mt-1 font-medium">
                                     Anyone can join and help Appwrite become better.
                                 </p>
                                 <Button

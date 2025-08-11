@@ -77,7 +77,11 @@
                 <div class="pointer-events-none relative m-2 flex-1 rounded-4xl bg-[#19191C] p-4">
                     <div class="flex flex-col gap-3">
                         <div class="flex flex-col gap-1">
-                            <label for="email" class="text-x-micro text-secondary">Email</label>
+                            <label
+                                for="email"
+                                class="leading-micro tracking-tigher text-secondary text-[0.625rem]"
+                                >Email</label
+                            >
                             <input
                                 type="text"
                                 name="email"
@@ -87,7 +91,9 @@
                             />
                         </div>
                         <div class="flex flex-col gap-1">
-                            <label for="password" class="text-x-micro text-secondary"
+                            <label
+                                for="password"
+                                class="leading-micro tracking-tigher text-secondary text-[0.625rem]"
                                 >Create Password</label
                             >
                             <input
@@ -111,7 +117,7 @@
 
                     <span
                         class={classNames(
-                            'text-x-micro text-secondary relative my-3 flex items-center justify-center gap-3 text-center'
+                            'leading-micro tracking-tigher text-secondary relative my-3 flex items-center justify-center gap-3 text-center text-[0.625rem]'
                         )}
                     >
                         <span class="bg-smooth h-px flex-1"></span>

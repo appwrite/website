@@ -143,7 +143,7 @@
             <!-- left side -->
             <div class="col-span-3 mb-8 w-full">
                 <div
-                    class="text-body flex items-center gap-2 font-medium text-white max-sm:justify-center md:flex-col md:items-end md:gap-8 lg:gap-12"
+                    class="text-main-body flex items-center gap-2 font-medium text-white max-sm:justify-center md:flex-col md:items-end md:gap-8 lg:gap-12"
                 >
                     {#each products.slice(0, 3) as product, index}
                         {@const isActive = index === activeIndex}
@@ -230,7 +230,7 @@
             <!-- right side -->
             <div class="col-span-3 mt-8 w-full md:mt-0">
                 <div
-                    class="text-body flex gap-2 font-medium text-white max-sm:justify-center md:flex-col md:gap-8 lg:gap-12"
+                    class="text-main-body flex gap-2 font-medium text-white max-sm:justify-center md:flex-col md:gap-8 lg:gap-12"
                 >
                     {#each products.slice(3) as product, i}
                         {@const index = i + 3}

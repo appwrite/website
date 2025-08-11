@@ -36,7 +36,7 @@
 >
     <div class="flex flex-col gap-2">
         <h2 class="text-label text-primary font-aeonik-pro text-pretty">{title}</h2>
-        <p class="text-body text-secondary text-pretty">{description}</p>
+        <p class="text-main-body text-secondary text-pretty">{description}</p>
     </div>
 
     <ul class="grid grid-cols-1 gap-3 md:grid-cols-2">

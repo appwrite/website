@@ -59,7 +59,7 @@
             <h2 class="text-title text-primary font-aeonik-pro mt-8 mb-4 text-pretty">
                 Add functionality within seconds
             </h2>
-            <p class="text-body text-secondary block font-medium text-pretty">
+            <p class="text-main-body text-secondary block font-medium text-pretty">
                 Appwrite offers a wide variety of ready-to-use templates to speed up development.
             </p>
         </div>

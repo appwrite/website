@@ -82,7 +82,7 @@
                         <h2 class="text-display font-aeonik-pro text-primary">
                             {featureTitle}<span class="text-accent">_</span>
                         </h2>
-                        <p class="text-secondary text-body max-w-sm font-medium">
+                        <p class="text-secondary text-main-body max-w-sm font-medium">
                             {description}
                         </p>
                         {#if announcementVideo}

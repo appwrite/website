@@ -272,7 +272,7 @@
                                                                 height="40"
                                                             />
                                                             <div
-                                                                class="text-body gap-2 font-medium"
+                                                                class="text-main-body gap-2 font-medium"
                                                             >
                                                                 <span class="text-primary mt-3">
                                                                     {item.integration.title}

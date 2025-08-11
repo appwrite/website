@@ -52,7 +52,7 @@
             <h2 class="md:text-display text-title text-primary font-aeonik-pro">
                 Customer identity
             </h2>
-            <p class="text-body md:text-description font-medium md:font-normal">
+            <p class="text-main-body md:text-description font-medium md:font-normal">
                 Create a seamless experience for your users by providing various authentication
                 methods for them to identify and login.
             </p>

@@ -72,7 +72,7 @@
                 </GridPaper>
 
                 <div class="text-primary flex items-center justify-between px-2 pt-3 pb-1">
-                    <span class="text-body font-medium">{template.label}</span>
+                    <span class="text-main-body font-medium">{template.label}</span>
                     <span class="web-icon-arrow-right -rotate-45"></span>
                 </div>
             </div>

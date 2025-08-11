@@ -166,7 +166,7 @@
                             class="col-span-3 mb-8 hidden w-fit justify-center lg:block lg:translate-x-6"
                         >
                             <div
-                                class="text-body flex items-center gap-2 font-medium text-white max-sm:justify-center lg:flex-col lg:items-end lg:gap-12"
+                                class="text-main-body flex items-center gap-2 font-medium text-white max-sm:justify-center lg:flex-col lg:items-end lg:gap-12"
                             >
                                 {#each products.slice(0, 4) as product, index}
                                     {@const isActive = index === activeIndex}
@@ -262,7 +262,7 @@
                         <!-- right side -->
                         <div class="col-span-3 mt-8 hidden w-full lg:mt-0 lg:block">
                             <div
-                                class="text-body flex gap-2 font-medium text-white lg:flex-col lg:justify-center lg:gap-12"
+                                class="text-main-body flex gap-2 font-medium text-white lg:flex-col lg:justify-center lg:gap-12"
                             >
                                 {#each products.slice(4) as product, i}
                                     {@const index = i + 4}
@@ -306,7 +306,7 @@
 
                         <!-- mobile -->
                         <div
-                            class="text-body flex flex-wrap items-center justify-center gap-2 font-medium text-white lg:hidden"
+                            class="text-main-body flex flex-wrap items-center justify-center gap-2 font-medium text-white lg:hidden"
                         >
                             {#each products as product, index}
                                 {@const isActive = index === activeIndex}

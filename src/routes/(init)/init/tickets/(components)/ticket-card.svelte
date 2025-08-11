@@ -160,7 +160,7 @@
                             </h3>
                             {#if title}
                                 <span
-                                    class="text-secondary font-aeonik-pro text-x-micro tracking-loose relative w-fit max-w-[32ch] overflow-hidden overflow-ellipsis whitespace-nowrap uppercase"
+                                    class="text-secondary font-aeonik-pro leading-micro tracking-tigher tracking-loose relative w-fit max-w-[32ch] overflow-hidden text-[0.625rem] overflow-ellipsis whitespace-nowrap uppercase"
                                     >{title}
                                 </span>
                             {/if}
@@ -168,7 +168,7 @@
                     </div>
 
                     <div
-                        class="font-aeonik-fono tracking-loose border-offset text-x-micro relative z-10 flex items-center justify-between rounded-lg border-2 border-dashed bg-black p-2 uppercase"
+                        class="font-aeonik-fono tracking-loose border-offset leading-micro tracking-tigher relative z-10 flex items-center justify-between rounded-lg border-2 border-dashed bg-black p-2 text-[0.625rem] uppercase"
                     >
                         <span>Init / {initDates}</span>
                         <span
@@ -212,7 +212,7 @@
                                     class="border-offset mt-auto mb-0 rounded-md border-2 border-dashed bg-black p-2"
                                 >
                                     <div
-                                        class="font-aeonik-fono tracking-loose text-x-micro border-offset flex items-center justify-between border-b pb-2 uppercase"
+                                        class="font-aeonik-fono tracking-loose leading-micro tracking-tigher border-offset flex items-center justify-between border-b pb-2 text-[0.625rem] uppercase"
                                     >
                                         <span>Init / {initDates}</span>
                                         <span>
@@ -246,7 +246,7 @@
                                 </div>
                             {:else}
                                 <div
-                                    class="font-aeonik-fono tracking-loose border-offset text-x-micro relative z-10 mt-auto mb-0 flex items-center justify-between rounded-lg border-2 border-dashed bg-black p-2 uppercase"
+                                    class="font-aeonik-fono tracking-loose border-offset leading-micro tracking-tigher relative z-10 mt-auto mb-0 flex items-center justify-between rounded-lg border-2 border-dashed bg-black p-2 text-[0.625rem] uppercase"
                                 >
                                     <span>Init / {initDates}</span>
                                     <span

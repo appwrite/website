@@ -73,7 +73,7 @@
                                         width="32"
                                         height="32"
                                     />
-                                    <h4 class="text-body text-primary">Messaging</h4>
+                                    <h4 class="text-main-body text-primary">Messaging</h4>
                                     <span class="web-icon-arrow-right ml-auto" aria-hidden="true"
                                     ></span>
                                 </div>
@@ -100,7 +100,7 @@
                                         width="32"
                                         height="32"
                                     />
-                                    <h4 class="text-body text-primary">Functions</h4>
+                                    <h4 class="text-main-body text-primary">Functions</h4>
                                     <span class="web-icon-arrow-right ml-auto" aria-hidden="true"
                                     ></span>
                                 </div>
@@ -127,7 +127,7 @@
                                         width="37"
                                         height="32"
                                     />
-                                    <h4 class="text-body text-primary">Databases</h4>
+                                    <h4 class="text-main-body text-primary">Databases</h4>
                                     <span class="web-icon-arrow-right ml-auto" aria-hidden="true"
                                     ></span>
                                 </div>
@@ -153,7 +153,7 @@
                                         width="32"
                                         height="32"
                                     />
-                                    <h4 class="text-body text-primary">Storage</h4>
+                                    <h4 class="text-main-body text-primary">Storage</h4>
                                     <span class="web-icon-arrow-right ml-auto" aria-hidden="true"
                                     ></span>
                                 </div>
@@ -179,7 +179,7 @@
                                         width="32"
                                         height="32"
                                     />
-                                    <h4 class="text-body text-primary">Realtime</h4>
+                                    <h4 class="text-main-body text-primary">Realtime</h4>
                                     <span class="web-icon-arrow-right ml-auto" aria-hidden="true"
                                     ></span>
                                 </div>

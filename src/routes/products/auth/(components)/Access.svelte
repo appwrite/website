@@ -31,7 +31,7 @@
             <h2 class="text-title text-primary font-aeonik-pro">
                 Easily manage teams <br /> and permissions
             </h2>
-            <p class="text-body text-secondary font-medium">
+            <p class="text-main-body text-secondary font-medium">
                 Create custom roles and level of access to resources such as projects, files, etc.
             </p>
             <Button
@@ -54,8 +54,10 @@
                 )}
             >
                 <div class="space-y-1 pr-5 md:pr-0">
-                    <h3 class="text-primary text-body font-medium">{console.title}</h3>
-                    <p class="text-secondary text-body max-w-[30rem] font-medium">{console.copy}</p>
+                    <h3 class="text-primary text-main-body font-medium">{console.title}</h3>
+                    <p class="text-secondary text-main-body max-w-[30rem] font-medium">
+                        {console.copy}
+                    </p>
                 </div>
 
                 <div

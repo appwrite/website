@@ -21,7 +21,7 @@
             <h2 class="text-title text-primary font-aeonik-pro mb-4">
                 Get a ticket and<br />enter our giveaway
             </h2>
-            <p class="text-secondary text-body mb-6">
+            <p class="text-secondary text-main-body mb-6">
                 Create, customize and share your ticket to get the chance to win exclusive Init
                 swag.
             </p>

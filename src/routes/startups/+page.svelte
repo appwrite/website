@@ -234,7 +234,7 @@
                             />
                             <div class="flex flex-col gap-2 text-center">
                                 <h2 class="text-label text-primary">Complete platform</h2>
-                                <p class="text-body font-medium">
+                                <p class="text-main-body font-medium">
                                     Get discounted access to Appwrite’s paid plans and develop,
                                     host, and scale your entire application with Appwrite.
                                 </p>
@@ -249,7 +249,7 @@
                             />
                             <div class="flex flex-col gap-2 text-center">
                                 <h2 class="text-label text-primary">Cloud credits</h2>
-                                <p class="text-body font-medium">
+                                <p class="text-main-body font-medium">
                                     Save on development and cloud costs and reduce risk at an early
                                     stage.
                                 </p>
@@ -264,7 +264,7 @@
                             />
                             <div class="flex flex-col gap-2 text-center">
                                 <h2 class="text-label text-primary">Priority support</h2>
-                                <p class="text-body font-medium">
+                                <p class="text-main-body font-medium">
                                     Get community support and priority support from the Appwrite
                                     team.
                                 </p>
@@ -289,7 +289,7 @@
                                         <h3 class="text-title font-aeonik-pro text-primary">
                                             Ship faster
                                         </h3>
-                                        <p class="text-body font-medium">
+                                        <p class="text-main-body font-medium">
                                             Utilizing Appwrite as your backend, you significantly
                                             cut down the time and resources spent on building a
                                             backend infrastructure from scratch. This means you can
@@ -364,7 +364,7 @@
                                         <h3 class="text-title font-aeonik-pro text-primary">
                                             Scalable architecture
                                         </h3>
-                                        <p class="text-body font-medium">
+                                        <p class="text-main-body font-medium">
                                             Appwrite's scalable architecture ensures you can build
                                             your product with growth in mind. Whether you're just
                                             testing the waters or ready to scale up rapidly, our
@@ -423,7 +423,7 @@
                                         <h3 class="text-title font-aeonik-pro text-primary">
                                             Built-in security and compliance
                                         </h3>
-                                        <p class="text-body font-medium">
+                                        <p class="text-main-body font-medium">
                                             Appwrite comes with built-in security features like
                                             authentication, database security, and more, reducing
                                             the time and effort you need to spend on securing your
@@ -492,7 +492,7 @@
                                         <h3 class="text-title font-aeonik-pro text-primary">
                                             Power of open source community
                                         </h3>
-                                        <p class="text-body font-medium">
+                                        <p class="text-main-body font-medium">
                                             Join a growing community of developers and founders who
                                             use Appwrite to build their products. Gain access to a
                                             wealth of knowledge, support, and shared experiences to
@@ -659,7 +659,7 @@
                                                 >Thank you for your submission</span
                                             >
                                         </h6>
-                                        <p class="text-body">
+                                        <p class="text-main-body">
                                             Our team will review your application and get back to
                                             you soon.
                                         </p>

@@ -50,7 +50,7 @@
             <h2 class="text-primary font-aeonik-pro text-title">
                 Partner with one of the fastest growing dev tool companies
             </h2>
-            <p class="text-body text-secondary mx-auto max-w-md font-medium">
+            <p class="text-main-body text-secondary mx-auto max-w-md font-medium">
                 Everyday thousands of companies are built on top of Appwrite. Benefit from our
                 network as a Appwrite Partner.
             </p>

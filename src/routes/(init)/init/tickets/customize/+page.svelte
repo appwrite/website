@@ -119,7 +119,7 @@
                         disableEffects
                     />
                     <span
-                        class="font-aeonik-fono tracking-loose text-x-micro text-primary transition-opacity peer-hover:opacity-0"
+                        class="font-aeonik-fono tracking-loose leading-micro tracking-tigher text-primary text-[0.625rem] transition-opacity peer-hover:opacity-0"
                         >Front</span
                     >
                 </div>
@@ -133,7 +133,7 @@
                         {stickerPack}
                     />
                     <span
-                        class="font-aeonik-fono tracking-loose text-x-micro text-primary transition duration-300 peer-hover:opacity-0 peer-hover:blur-sm"
+                        class="font-aeonik-fono tracking-loose leading-micro tracking-tigher text-primary text-[0.625rem] transition duration-300 peer-hover:opacity-0 peer-hover:blur-sm"
                         >Back</span
                     >
                 </div>
@@ -160,7 +160,7 @@
         <div class="flex flex-col gap-2">
             <label
                 for="name"
-                class="text-primary font-aeonik-fono text-x-micro tracking-loose uppercase"
+                class="text-primary font-aeonik-fono leading-micro tracking-tigher tracking-loose text-[0.625rem] uppercase"
                 >First name</label
             >
             <input
@@ -177,7 +177,7 @@
         <div class="flex flex-col gap-2">
             <label
                 for="title"
-                class="text-primary font-aeonik-fono text-x-micro tracking-loose uppercase"
+                class="text-primary font-aeonik-fono leading-micro tracking-tigher tracking-loose text-[0.625rem] uppercase"
                 >Title</label
             >
             <input
@@ -190,7 +190,8 @@
         </div>
 
         <div class="flex h-full flex-1 flex-col gap-2">
-            <span class="text-primary font-aeonik-fono text-x-micro tracking-loose uppercase"
+            <span
+                class="text-primary font-aeonik-fono leading-micro tracking-tigher tracking-loose text-[0.625rem] uppercase"
                 >Sticker Pack</span
             >
             <div

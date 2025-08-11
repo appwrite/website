@@ -165,7 +165,7 @@
                         >
                             Become a Technology Partner
                         </h2>
-                        <p class="text-body font-medium">
+                        <p class="text-main-body font-medium">
                             Join our Technology Partners program to integrate your solutions with
                             Appwrite’s API, enhancing functionality and expanding your reach.
                         </p>

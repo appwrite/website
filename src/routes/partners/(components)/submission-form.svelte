@@ -62,14 +62,14 @@
         >
             <div class="flex max-w-sm flex-col gap-6">
                 <h2 class="text-display font-aeonik-pro text-primary">Become a Partner</h2>
-                <p class="text-body text-secondary font-medium">
+                <p class="text-main-body text-secondary font-medium">
                     Our team will review your application and follow up to ensure we're a perfect
                     fit.
                 </p>
 
                 <ul class="space-y-4">
                     {#each list as item}
-                        <li class="text-body flex items-center gap-2 font-medium">
+                        <li class="text-main-body flex items-center gap-2 font-medium">
                             <img src="/images/icons/colored/check.svg" alt="checkmark icon" />
                             {item}
                         </li>
@@ -165,7 +165,7 @@
         <div class="animate-fade-in container mx-auto flex max-w-sm flex-col gap-4 text-center">
             <div class="border-smooth mb-6 flex flex-col gap-4 border-b pb-8">
                 <h2 class="text-display text-primary font-aeonik-pro">Thank you for applying</h2>
-                <p class="text-body text-secondary font-medium">
+                <p class="text-main-body text-secondary font-medium">
                     Our team will review your application and follow up to ensure we're a perfect
                     fit.
                 </p>

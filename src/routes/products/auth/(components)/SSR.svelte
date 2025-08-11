@@ -71,7 +71,7 @@
             <h2 class="text-title text-primary font-aeonik-pro my-4">
                 Server-side rendering <br /> made simple
             </h2>
-            <p class="text-body text-secondary font-medium">
+            <p class="text-main-body text-secondary font-medium">
                 Optimize your auth with Appwrite's server-side SDK, enhancing your application's
                 performance without sacrificing functionality. Start with our ready-to-ship
                 snippets, or follow our quick starts for your favorite framework.

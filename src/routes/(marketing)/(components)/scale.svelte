@@ -137,7 +137,9 @@
                             suffix={stat.suffix}
                         />
 
-                        <span class="text-body text-secondary block pl-4">{stat.description}</span>
+                        <span class="text-main-body text-secondary block pl-4"
+                            >{stat.description}</span
+                        >
                     {/if}
                 </div>
             </div>
@@ -159,7 +161,7 @@
                                     value={stat.number}
                                     suffix={stat.suffix}
                                 />
-                                <span class="text-body text-secondary block pl-4">
+                                <span class="text-main-body text-secondary block pl-4">
                                     {stat.description}
                                 </span>
                             {/if}

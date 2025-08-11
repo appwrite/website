@@ -306,7 +306,7 @@
                                                                 height="40"
                                                             />
                                                             <div
-                                                                class="text-body gap-2 font-medium"
+                                                                class="text-main-body gap-2 font-medium"
                                                             >
                                                                 <span class="text-primary mt-3">
                                                                     {item.integration.title}
@@ -427,7 +427,7 @@
                         >
                             Become a Technology Partner
                         </h2>
-                        <p class="text-body font-medium">
+                        <p class="text-main-body font-medium">
                             Join our Technology Partners program to integrate your solutions with
                             Appwrite’s API, enhancing functionality and expanding your reach.
                         </p>
