@@ -341,7 +341,7 @@
                                 <div
                                     class="border-smooth mt-20 -mr-[85vw] overflow-hidden rounded-lg border shadow-[-28.0524px_51.0044px_22.952px_rgba(0,0,0,0.01),_-16.1514px_28.9025px_19.5517px_rgba(0,_0,_0,_0.02),_-6.80058px_12.7511px_14.4512px_rgba(0,_0,_0,_0.03),_-1.70015px_3.40029px_7.65065px_rgba(0,_0,_0,_0.04),_0px_0px_0px_rgba(0,_0,_0,_0.04)] md:mr-0 md:rounded-2xl"
                                 >
-                                    <img alt="" src={ProjectTimeline} class="" width={1250} />
+                                    <img alt="" src={ProjectTimeline} width={1250} />
                                 </div>
                             </li>
                             <li class="web-timeline-content-item">
