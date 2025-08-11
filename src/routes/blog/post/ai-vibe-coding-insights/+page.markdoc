@@ -56,25 +56,15 @@ What’s even more interesting? **Four out of five developers say they’re exci
 
 Among all the AI coding assistants, a few clearly lead the pack:
 
-- **ChatGPT / OpenAI Assistants:**
+- **ChatGPT / OpenAI Assistants:** Used by most developers for quick answers, code generation, and debugging help.
     
-    Used by most developers for quick answers, code generation, and debugging help.
+- **GitHub Copilot:** Popular for in‑editor suggestions, speeding up everyday coding tasks.
     
-- **GitHub Copilot:**
+- **Claude:** Favored for longer explanations, handling documentation, and brainstorming.
     
-    Popular for in‑editor suggestions, speeding up everyday coding tasks.
+- **Cursor:** An AI‑driven editor gaining traction for its smooth coding experience.
     
-- **Claude:**
-    
-    Favored for longer explanations, handling documentation, and brainstorming.
-    
-- **Cursor:**
-    
-    An AI‑driven editor gaining traction for its smooth coding experience.
-    
-- **Warp AI CLI:**
-    
-    Still niche, but appreciated by developers working heavily in the terminal.
+- **Warp AI CLI:** Still niche, but appreciated by developers working heavily in the terminal.
     
 
 One developer summed it up: 
