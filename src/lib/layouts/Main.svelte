@@ -146,7 +146,7 @@
 
     const handleNav = () => {
         $isMobileNavOpen = !$isMobileNavOpen;
-        document.body.style.overflow = $isMobileNavOpen ? 'hidden' : 'auto';
+        document.body.style.overflow = $isMobileNavOpen ? 'hidden' : '';
     };
 </script>
 
@@ -160,7 +160,7 @@
     <!--{/if}-->
 
     <section
-        class="web-mobile-header {resolvedTheme}"
+        class="web-mobile-header flex! lg:hidden! {resolvedTheme}"
         class:is-transparent={browser && !$isMobileNavOpen}
     >
         <div class="web-mobile-header-start">
@@ -198,7 +198,7 @@
     </section>
 
     <header
-        class="web-main-header is-special-padding hidden lg:block {resolvedTheme} is-transparent"
+        class="web-main-header is-special-padding hidden lg:block! {resolvedTheme} is-transparent"
     >
         <div
             class="web-main-header-wrapper"
