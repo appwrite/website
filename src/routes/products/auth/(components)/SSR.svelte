@@ -4,11 +4,11 @@
     import { Button } from '$lib/components/ui';
     import { Framework, Platform } from '$lib/utils/references';
     import MultiFrameworkCode from './MultiFrameworkCode.svelte';
-    import SnippetNextJs from './(snippets)/nextjs.txt';
-    import SnippetSvelteKit from './(snippets)/sveltekit.txt';
-    import SnippetAstro from './(snippets)/astro.txt';
-    import SnippetNuxt from './(snippets)/nuxt.txt';
-    import SnippetRemix from './(snippets)/remix.txt';
+    import SnippetNextJs from './(snippets)/nextjs.txt?raw';
+    import SnippetSvelteKit from './(snippets)/sveltekit.txt?raw';
+    import SnippetAstro from './(snippets)/astro.txt?raw';
+    import SnippetNuxt from './(snippets)/nuxt.txt?raw';
+    import SnippetRemix from './(snippets)/remix.txt?raw';
 
     const codeSnippets = [
         {

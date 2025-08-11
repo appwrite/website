@@ -416,96 +416,35 @@ export function resolveReference(
     throw new Error("Schema doesn't exist");
 }
 
-export const generateExample = (
+export const getExample = (
     schema: OpenAPIV3.SchemaObject,
     api: OpenAPIV3.Document<object>,
     modelType: ModelTypeValue = ModelType.REST
 ): object => {
-    const properties = Object.keys(schema.properties ?? {}).map((key) => {
-        const name = key;
-        const fields = schema.properties?.[key];
-        return {
-            name,
-            ...fields
-        };
-    });
-
-    const example = properties.reduce((carry, currentValue) => {
-        const property = currentValue as AppwriteSchemaObject & Property;
-        let propertyName;
-        switch (modelType) {
-            case ModelType.REST:
-                propertyName = property.name;
-                break;
-            case ModelType.GRAPHQL:
-                propertyName = property.name.replace('$', '_');
-                break;
-            default:
-                propertyName = property.name;
-                break;
+    if (schema.example) {
+        if (modelType === ModelType.GRAPHQL) {
+            const modifiedExample = JSON.parse(JSON.stringify(schema.example));
+            return transformForGraphQL(modifiedExample);
         }
+        return schema.example;
+    }
 
-        if (property.type === 'array') {
-            // If it's an array type containing primatives
-            if (property.items?.type) {
-                return {
-                    ...carry,
-                    [propertyName]: property['x-example']
-                };
-            }
-
-            if (property.items && 'anyOf' in property.items) {
-                // default to first child type if multiple available
-                const firstSchema = (property.items as unknown as AppwriteSchemaObject)?.anyOf?.[0];
-                const schema = getSchema(
-                    getIdFromReference(firstSchema as OpenAPIV3.ReferenceObject),
-                    api
-                );
-
-                return {
-                    ...carry,
-                    [propertyName]: [generateExample(schema, api, modelType)]
-                };
-            }
-
-            // if an array of objects without child types
-            const schema = getSchema(
-                getIdFromReference(property.items as OpenAPIV3.ReferenceObject),
-                api
-            );
-            return {
-                ...carry,
-                [propertyName]: [generateExample(schema, api, modelType)]
-            };
-        }
-
-        // If it's an object type, but not in an array.
-        if (property.type === 'object') {
-            if (property.items?.oneOf) {
-                // default to first child type if multiple available
-                const schema = getSchema(
-                    getIdFromReference(property.items.oneOf[0] as OpenAPIV3.ReferenceObject),
-                    api
-                );
-                return {
-                    ...carry,
-                    [propertyName]: generateExample(schema, api, modelType)
-                };
-            }
-
-            if (property.items) {
-                const schema = getSchema(getIdFromReference(property.items), api);
-                return {
-                    ...carry,
-                    [propertyName]: generateExample(schema, api, modelType)
-                };
-            }
-        }
-
-        return {
-            ...carry,
-            [propertyName]: property['x-example']
-        };
-    }, {});
-    return example;
+    return {};
 };
+
+function transformForGraphQL(obj: any): any {
+    if (Array.isArray(obj)) {
+        return obj.map(transformForGraphQL);
+    }
+
+    if (obj !== null && typeof obj === 'object') {
+        const transformed: any = {};
+        for (const [key, value] of Object.entries(obj)) {
+            const newKey = key.replace('$', '_');
+            transformed[newKey] = transformForGraphQL(value);
+        }
+        return transformed;
+    }
+
+    return obj;
+}

@@ -4,12 +4,23 @@
     import { formatDate } from '$lib/utils/date';
     import type { AuthorData } from '$routes/blog/content';
 
-    export let date: string = new Date().toISOString();
-    export let timeToRead: string = '0';
-    export let title: string = '';
-    export let description: string = '';
-    export let authorData: Partial<AuthorData> = {};
-    export let currentURL: string = '';
+    interface Props {
+        date?: string;
+        timeToRead?: string;
+        title?: string;
+        description?: string;
+        authorData?: Partial<AuthorData>;
+        currentURL?: string;
+    }
+
+    const {
+        date = new Date().toISOString(),
+        timeToRead = '0',
+        title = '',
+        description = '',
+        authorData = {},
+        currentURL = ''
+    }: Props = $props();
 
     const getShareLink = (shareOption: SocialShareOption) => {
         const blogPostUrl = encodeURI(currentURL);
@@ -78,7 +89,7 @@
                         {:else}
                             <button
                                 aria-label={sharingOption.label}
-                                on:click={() => handleCopy(currentURL)}
+                                onclick={() => handleCopy(currentURL)}
                             >
                                 <span class={sharingOption.icon} aria-hidden="true"></span>
                             </button>

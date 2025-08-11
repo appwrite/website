@@ -1,4 +1,4 @@
-@import 'tailwindcss';
+@import '../node_modules/tailwindcss';
 @import './styles/typography.css';
 @custom-variant dark (&:where(.dark, .dark *));
 
@@ -93,7 +93,7 @@
     --animate-scroll: scroll 60s linear infinite;
     --animate-scroll-x: scroll-x var(--speed, 30s) linear infinite var(--direction, forwards);
     --animate-scroll-y: scroll-y 30s linear infinite forwards;
-
+    --animate-drop: drop 18s linear infinite forwards;
     --animate-fade-in: fade-in 0.5s ease-in-out both;
     --animate-fade-out: fade-out 0.5s ease-in-out both;
     --animate-lighting: lighting 1.25s ease-out forwards;
@@ -285,6 +285,15 @@
         }
     }
 
+    @keyframes drop {
+        from {
+            top: calc(100vh * -1);
+        }
+        to {
+            top: 100vh;
+        }
+    }
+
     /* Fonts */
     --font-sans: 'Inter', arial, sans-serif;
     --font-mono: 'Fira Code', monospace;
@@ -319,8 +328,11 @@
     --text-description--letter-spacing: var(--tracking-tighter);
     --text-label: 1.5rem;
     --text-label--line-height: 1.75rem;
-    --text-title: clamp(2rem, 5vw, 2.5rem);
-    --text-title--line-height: clamp(2.125rem, 5.5vw, 2.75rem);
+    --text-subtitle: clamp(1.5rem, 3vw, 2rem);
+    --text-subtitle--line-height: clamp(1.75rem, 3.5vw, 2.25rem);
+    --text-subtitle--letter-spacing: var(--tracking-squeezed);
+    --text-title: clamp(2rem, 5vw, 3rem);
+    --text-title--line-height: clamp(2.125rem, 5.5vw, 3.25rem);
     --text-title--letter-spacing: var(--tracking-squeezed);
     --text-title-lg: clamp(2.85rem, 5vw, 3rem);
     --text-title-lg--line-height: clamp(2.75rem, 5.5vw, 3.5rem);
@@ -331,9 +343,9 @@
     --text-hero: clamp(3.2rem, 7vw, 4.5rem);
     --text-hero--line-height: clamp(3.125rem, 7.5vw, 4.25rem);
     --text-hero--letter-spacing: var(--tracking-compressed);
-    --text-headline: clamp(3.5rem, 8vw, 5.5rem);
-    --text-headline--line-height: clamp(3.5rem, 8.5vw, 5.75rem);
-    --text-headline--letter-spacing: var(--tracking-compressed);
+    --text-headline: clamp(3.5rem, 8vw, 4.5rem);
+    --text-headline--line-height: clamp(3.5rem, 8vw, 4.625rem);
+    --text-headline--letter-spacing: var(--tracking-squeezed);
 
     /* Letter spacing */
     --tracking-*: initial;

@@ -65,22 +65,20 @@
                             Appwrite offers simple and transparent pricing plans with no surprises.
                         </p>
                         <div class="mt-4 flex flex-col items-center text-white">
-                            <a href="/products/sites">
+                            <a href="/blog/post/appwrite-pricing-update">
                                 <BadgeTransparent
                                     ><img
                                         src="/images/icons/illustrated/light/sites.png"
                                         alt="Sites icon"
                                         class="h-8 w-8"
                                     />
-                                    <span class="text-white"
-                                        >Appwrite Sites is free during launch</span
-                                    >
+                                    <span class="text-white">New Appwrite pricing announced</span>
                                     <Icon name="arrow-right" aria-hidden="true"
                                     ></Icon></BadgeTransparent
                                 ></a
                             >
                             <span class="mt-2 text-sm text-[var(--color-primary)] opacity-64"
-                                >Pricing will be revealed August 1st, 2025</span
+                                >New pricing will go into effect September 1st, 2025</span
                             >
                         </div>
                     </div>
@@ -132,15 +130,19 @@
                                                 <li><span>75K monthly active users</span></li>
                                                 <li><span>Community support</span></li>
                                                 <li>
-                                                    <span>Non-removable email branding</span>
-                                                </li>
-                                                <li>
                                                     <span
                                                         >1 Database, 1 Bucket, 5 Functions per
                                                         project</span
                                                     >
                                                 </li>
                                             </ul>
+                                            <hr
+                                                class="mt-4 mb-4 border-t border-gray-600 opacity-12"
+                                            />
+                                            <p class="text-caption text-secondary font-small">
+                                                Limit of two projects.<br />
+                                                Never paused.
+                                            </p>
                                         </div>
                                     </div>
                                 </article>
@@ -275,7 +277,6 @@
                                                 <li><span>SSO</span></li>
                                                 <li><span>Activity logs</span></li>
                                                 <li><span>Custom backup policies</span></li>
-                                                <li><span>Priority support</span></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -320,8 +321,10 @@
                                             <ul class="web-checked-list-circle">
                                                 <li><span>Uptime SLAs</span></li>
                                                 <li><span>Designated Success Manager</span></li>
-                                                <li><span>24/7 enterprise support</span></li>
-                                                <li><span>Private Slack channel</span></li>
+                                                <li><span>Up to 24/7 support</span></li>
+                                                <li>
+                                                    <span>Option for private Slack channel</span>
+                                                </li>
                                                 <li><span>Volume discounts</span></li>
                                                 <li><span>Log drains</span></li>
                                                 <li><span>90-day log retention</span></li>

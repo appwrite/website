@@ -23,7 +23,7 @@
         "optimize": "node ./scripts/optimize-assets.js",
         "optimize:all": "node ./scripts/optimize-all.js"
     },
-    "packageManager": "pnpm@10.12.1",
+    "packageManager": "pnpm@10.14.0+sha512.ad27a79641b49c3e481a16a805baa71817a04bbe06a38d17e60e2eaee83f6a146c6a688125f5792e48dd5ba30e7da52a5cda4c3992b9ccf333f9ce223af84748",
     "dependencies": {
         "h3": "^1.15.3",
         "sharp": "^0.34.2"
@@ -104,7 +104,7 @@
         "typescript": "^5.8.3",
         "typescript-eslint": "^8.35.0",
         "vaul-svelte": "1.0.0-next.7",
-        "vite": "npm:rolldown-vite@^7.0.3",
+        "vite": "npm:rolldown-vite@latest",
         "vite-plugin-dynamic-import": "^1.6.0",
         "vite-plugin-image-optimizer": "^1.1.9",
         "vite-plugin-manifest-sri": "^0.2.0",
@@ -113,7 +113,7 @@
     },
     "pnpm": {
         "overrides": {
-            "vite": "npm:rolldown-vite@^7.0.3"
+            "vite": "npm:rolldown-vite@latest"
         },
         "onlyBuiltDependencies": [
             "@parcel/watcher",

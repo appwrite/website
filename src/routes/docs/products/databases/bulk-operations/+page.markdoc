@@ -1,19 +1,27 @@
 ---
 layout: article
-title: Bulk Operations
+title: Bulk operations
 description: Perform bulk operations on documents within your collections for efficient data handling.
 ---
 
 Appwrite Databases supports bulk operations for documents, allowing you to create, update, or delete multiple documents in a single request. This can significantly improve performance for apps as it allows you to reduce the number of API calls needed while working with large data sets.
 
-As of now, bulk operations can only be performed via the server-side SDKs. The client-side SDKs do not support bulk operations.
+Bulk operations can only be performed via the server-side SDKs. The client-side SDKs do not support bulk operations by design to prevent abuse and protect against unexpected costs. This ensures that only trusted server environments can perform large-scale data operations.
+
+For client applications that need bulk-like functionality, consider using [Appwrite Functions](/docs/products/functions) with proper rate limiting and validation.
+
+# Atomic behavior {% #atomic-behavior %}
+
+Bulk operations in Appwrite are **atomic**, meaning they follow an all-or-nothing approach. Either all documents in your bulk request succeed, or all documents fail.
+
+This atomicity ensures:
+- **Data consistency**: Your database remains in a consistent state even if some operations would fail.
+- **Race condition prevention**: Multiple clients can safely perform bulk operations simultaneously.
+- **Simplified error handling**: You only need to handle complete success or complete failure scenarios.
+
+For example, if you attempt to create 100 documents and one fails due to a validation error, none of the 100 documents will be created.
 
 # Create documents {% #create-documents %}
-
-{% info title="Permissions required" %}
-You must grant **create** permissions to users at the **collection level** before users can create documents.
-[Learn more about permissions](/docs/products/databases/permissions)
-{% /info %}
 
 You can create multiple documents in a single request using the `createDocuments` method.
 
@@ -33,12 +41,12 @@ const result = await databases.createDocuments(
     '[COLLECTION_ID]',
     [
         {
-            documentId: sdk.ID.unique(),
-            data: { name: 'Document 1' }
+            $id: sdk.ID.unique(),
+            name: 'Document 1'
         },
         {
-            documentId: sdk.ID.unique(),
-            data: { name: 'Document 2' }
+            $id: sdk.ID.unique(),
+            name: 'Document 2'
         }
     ]
 );
@@ -47,6 +55,7 @@ const result = await databases.createDocuments(
 ```server-python
 from appwrite.client import Client
 from appwrite.services.databases import Databases
+from appwrite.id import ID
 
 client = Client()
 client.set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
@@ -60,12 +69,12 @@ result = databases.create_documents(
     collection_id = '<COLLECTION_ID>',
     documents = [
         {
-            'documentId': appwrite.ID.unique(),
-            'data': { 'name': 'Document 1' }
+            '$id': ID.unique(),
+            'name': 'Document 1'
         },
         {
-            'documentId': appwrite.ID.unique(),
-            'data': { 'name': 'Document 2' }
+            '$id': ID.unique(),
+            'name': 'Document 2'
         }
     ]
 )
@@ -96,21 +105,18 @@ const result = await databases.updateDocuments(
     '<DATABASE_ID>',
     '[COLLECTION_ID]',
     {
-        {
-            documentId: 'document-id-1',
-            data: { name: 'Updated Document 1' }
-        },
-        {
-            documentId: 'document-id-2',
-            data: { name: 'Updated Document 2' }
-        }
-    }
+        status: 'published'
+    },
+    [
+        sdk.Query.equal('status', 'draft')
+    ]
 );
 ```
 
 ```server-python
 from appwrite.client import Client
 from appwrite.services.databases import Databases
+from appwrite.query import Query
 
 client = Client()
 client.set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
@@ -123,15 +129,11 @@ result = databases.update_documents(
     database_id = '<DATABASE_ID>',
     collection_id = '<COLLECTION_ID>',
     data = {
-        {
-            'documentId': 'document-id-1',
-            'data': { 'name': 'New Document 1' }
-        },
-        {
-            'documentId': 'document-id-2',
-            'data': { 'name': 'New Document 2' }
-        }
-    }
+        'status': 'published'
+    },
+    queries = [
+        Query.equal('status', 'draft')
+    ]
 )
 ```
 {% /multicode %}
@@ -161,12 +163,12 @@ const result = await databases.upsertDocuments(
     '[COLLECTION_ID]',
     [
         {
-            documentId: sdk.ID.unique(),
-            data: { name: 'New Document 1' }
+            $id: sdk.ID.unique(),
+            name: 'New Document 1'
         },
         {
-            documentId: 'document-id-2', // Existing document ID
-            data: { name: 'New Document 2' }
+            $id: 'document-id-2', // Existing document ID
+            name: 'New Document 2'
         }
     ]
 );
@@ -175,6 +177,7 @@ const result = await databases.upsertDocuments(
 ```server-python
 from appwrite.client import Client
 from appwrite.services.databases import Databases
+from appwrite.id import ID
 
 client = Client()
 client.set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
@@ -188,12 +191,12 @@ result = databases.upsert_documents(
     collection_id = '<COLLECTION_ID>',
     documents = [
         {
-            'documentId': appwrite.ID.unique(),
-            'data': { 'name': 'Document 1' }
+            '$id': ID.unique(),
+            'name': 'New Document 1'
         },
         {
-            'documentId': 'document-id-2',  # Existing document ID
-            'data': { 'name': 'New Document 2' }
+            '$id': 'document-id-2',  # Existing document ID
+            'name': 'New Document 2'
         }
     ]
 )
@@ -223,13 +226,16 @@ const databases = new sdk.Databases(client);
 const result = await databases.deleteDocuments(
     '<DATABASE_ID>',
     '[COLLECTION_ID]',
-    [] // Queries
+    [
+        sdk.Query.equal('status', 'archived')
+    ]
 );
 ```
 
 ```server-python
 from appwrite.client import Client
 from appwrite.services.databases import Databases
+from appwrite.query import Query
 
 client = Client()
 client.set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
@@ -241,7 +247,9 @@ databases = Databases(client)
 result = databases.delete_documents(
     database_id = '<DATABASE_ID>',
     collection_id = '<COLLECTION_ID>',
-    queries = []
+    queries = [
+        Query.equal('status', 'archived')
+    ]
 )
 ```
 {% /multicode %}
@@ -249,7 +257,7 @@ result = databases.delete_documents(
 {% info title="Queries for deletion" %}
 
 When deleting documents, you must specify queries to filter which documents to delete.
- 
+
 If no queries are provided, all documents in the collection will be deleted.
 
 [Learn more about queries](/docs/products/databases/queries).
