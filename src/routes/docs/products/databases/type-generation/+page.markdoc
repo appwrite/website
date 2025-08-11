@@ -27,6 +27,7 @@ The following options are currently available:
 | Option | Description |
 |--------|-------------|
 | `--language` or `-l` |  The programming language for which types can be generated. Choices include `ts`, `js`, `php`, `kotlin`, `swift`, `java`, `dart`, `auto`. The CLI will use `auto` as the default option if this option is skipped. |
+| `--strict` or `-s` |  Enables strict type generation. This option ensures that all the attributes follow language conventions, even if that leads to mismatches with the schema defined in your Appwrite console. |
 | `--help` or `-h` | Displays help information for the command. |
 
 ## Example usage
@@ -36,6 +37,7 @@ Suppose you want to generate types for a table with data on books with the follo
 ```json
 {
     "projectId": "682ca9a50004cf4b330f",
+    "endpoint": "https://<REGION>.cloud.appwrite.io/v1",
     "projectName": "Appwrite project",
     "databases": [
         {
@@ -124,7 +126,7 @@ appwrite types --language ts ./types
 This will generate the following types in the `./types` sub-directory of your project:
 
 ```ts
-import { Models } from 'appwrite';
+import { type Models } from 'appwrite';
 
 export enum Category {
   FICTION = "fiction",

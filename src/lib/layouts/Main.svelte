@@ -143,9 +143,14 @@
     }
 
     $: $isHeaderHidden, updateSideNav();
+
+    const handleNav = () => {
+        $isMobileNavOpen = !$isMobileNavOpen;
+        document.body.style.overflow = $isMobileNavOpen ? 'hidden' : 'auto';
+    };
 </script>
 
-<div class="relative">
+<div class="relative contents h-full">
     <!--{#if !page.url.pathname.includes('/init')}-->
     <!--    <div class="border-smooth relative z-10 border-b bg-[#19191C]">-->
     <!--        <div class="is-special-padding mx-auto">-->
@@ -182,11 +187,7 @@
                     <span class="text">Start building</span>
                 </Button>
             {/if}
-            <Button
-                variant="text"
-                aria-label="open navigation"
-                onclick={() => ($isMobileNavOpen = !$isMobileNavOpen)}
-            >
+            <Button variant="text" aria-label="open navigation" onclick={handleNav}>
                 {#if $isMobileNavOpen}
                     <Icon aria-hidden="true" name="close" />
                 {:else}
@@ -242,7 +243,7 @@
 
     <main
         class="relative space-y-6"
-        class:web-u-hide-mobile={$isMobileNavOpen}
+        class:invisible={$isMobileNavOpen}
         id={omitMainId ? undefined : 'main'}
     >
         <slot />

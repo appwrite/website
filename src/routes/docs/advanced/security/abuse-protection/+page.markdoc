@@ -34,6 +34,10 @@ You can add new platforms by navigating to **Overview** > **Platforms** > **Add 
 ![Add a platform](/images/docs/quick-starts/add-platform.png)
 {% /only_light %}
 
+{% arrow_link href="/blog/post/cors-error" %}
+Learn more about debugging CORS errors
+{% /arrow_link %}
+
 # DDoS protection {% #ddos-protection %}
 Appwrite Cloud's infrastructure is protected with always-on DDoS protection.
 Appwrite's DDoS protection operates across multiple layers, including the Network (layer 3), Transport (layer 4), and Application (layer 7) layers.

@@ -281,7 +281,7 @@ You can now push your topics with the following command:
 appwrite push topics
 ```
 
-This will create your topic in the Console with all of your `appwrite.json` configurations.
+This will create your topic in the Console with all of your `appwrite.config.json` configurations.
 
 {% arrow_link href="/docs/tooling/command-line/topics#commands" %}
 Learn more about the CLI topics commands

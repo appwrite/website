@@ -239,7 +239,7 @@ Query.select(["name", "title"])
 ```ruby
 Query.select(["name", "title"])
 ```
-```server-nodejs
+```deno
 Query.select(["name", "title"])
 ```
 ```php
@@ -503,7 +503,7 @@ Query.equal("title", ["Iron Man"])
 ```ruby
 Query.equal("title", ["Iron Man"])
 ```
-```server-nodejs
+```deno
 Query.equal("title", ["Iron Man"])
 ```
 ```php
@@ -534,7 +534,7 @@ Query.not_equal("title", "Iron Man")
 ```ruby
 Query.not_equal("title", "Iron Man")
 ```
-```server-nodejs
+```deno
 Query.notEqual("title", "Iron Man")
 ```
 ```php
@@ -565,7 +565,7 @@ Query.less_than("score", 10)
 ```ruby
 Query.less_than("score", 10)
 ```
-```server-nodejs
+```deno
 Query.lessThan("score", 10)
 ```
 ```php
@@ -596,7 +596,7 @@ Query.less_than_equal("score", 10)
 ```ruby
 Query.less_than_equal("score", 10)
 ```
-```server-nodejs
+```deno
 Query.lessThanEqual("score", 10)
 ```
 ```php
@@ -627,7 +627,7 @@ Query.greater_than("score", 10)
 ```ruby
 Query.greater_than("score", 10)
 ```
-```server-nodejs
+```deno
 Query.greaterThan("score", 10)
 ```
 ```php
@@ -658,7 +658,7 @@ Query.greater_than_equal("score", 10)
 ```ruby
 Query.greater_than_equal("score", 10)
 ```
-```server-nodejs
+```deno
 Query.greaterThanEqual("score", 10)
 ```
 ```php
@@ -689,7 +689,7 @@ Query.between("price", 5, 10)
 ```ruby
 Query.between("price", 5, 10)
 ```
-```server-nodejs
+```deno
 Query.between("price", 5, 10)
 ```
 ```php
@@ -722,7 +722,7 @@ Query.is_null("name")
 ```ruby
 Query.is_null("name")
 ```
-```server-nodejs
+```deno
 Query.isNull("name")
 ```
 ```php
@@ -753,7 +753,7 @@ Query.is_not_null("name")
 ```ruby
 Query.is_not_null("name")
 ```
-```server-nodejs
+```deno
 Query.isNotNull("name")
 ```
 ```php
@@ -786,7 +786,7 @@ Query.starts_with("name", "Once upon a time")
 ```ruby
 Query.starts_with("name", "Once upon a time")
 ```
-```server-nodejs
+```deno
 Query.startsWith("name", "Once upon a time")
 ```
 ```php
@@ -817,7 +817,7 @@ Query.ends_with("name", "happily ever after.")
 ```ruby
 Query.ends_with("name", "happily ever after.")
 ```
-```server-nodejs
+```deno
 Query.endsWith("name", "happily ever after.")
 ```
 ```php
@@ -864,7 +864,7 @@ Query.contains("ingredients", ['apple', 'banana'])
 # For strings
 Query.contains("name", "Tom")
 ```
-```server-nodejs
+```deno
 // For arrays
 Query.contains("ingredients", ['apple', 'banana'])
 
@@ -911,7 +911,7 @@ Query.search("text", "key words")
 ```ruby
 Query.search("text", "key words")
 ```
-```server-nodejs
+```deno
 Query.search("text", "key words")
 ```
 ```php
@@ -956,7 +956,7 @@ Query.and([
     Query.greater_than("size", 5)
 ])
 ```
-```server-nodejs
+```deno
 Query.and([
     Query.lessThan("size", 10),
     Query.greaterThan("size", 5)
@@ -1008,7 +1008,7 @@ Query.or([
     Query.greater_than("size", 10)
 ])
 ```
-```server-nodejs
+```deno
 Query.or([
     Query.lessThan("size", 5),
     Query.greaterThan("size", 10)
@@ -1114,7 +1114,7 @@ Query.limit(25)
 ```ruby
 Query.limit(25)
 ```
-```server-nodejs
+```deno
 Query.limit(25)
 ```
 ```php
@@ -1145,7 +1145,7 @@ Query.offset(0)
 ```ruby
 Query.offset(0)
 ```
-```server-nodejs
+```deno
 Query.offset(0)
 ```
 ```php
@@ -1176,7 +1176,7 @@ Query.cursor_after("62a7...f620")
 ```ruby
 Query.cursor_after("62a7...f620")
 ```
-```server-nodejs
+```deno
 Query.cursorAfter("62a7...f620")
 ```
 ```php
@@ -1207,7 +1207,7 @@ Query.cursor_before("62a7...a600")
 ```ruby
 Query.cursor_before("62a7...a600")
 ```
-```server-nodejs
+```deno
 Query.cursorBefore("62a7...a600")
 ```
 ```php

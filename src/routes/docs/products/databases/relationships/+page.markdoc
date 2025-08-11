@@ -269,7 +269,7 @@ tables.createRelationshipColumn(
     twoWayKey: "movie",             // Two-way column key
     onDelete
 
-: "cascade"             // On delete action
+: "cascade"             // On delete action         
 )
 ```
 
@@ -444,8 +444,8 @@ await tables.createRow(
 import 'package:appwrite/appwrite.dart';
 
 final client = Client()
-    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('<PROJECT_ID>');               // Your project ID
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint    
+    .setProject('<PROJECT_ID>');               // Your project ID  
 
 final tables = Tables(client);
 
@@ -468,8 +468,8 @@ await tables.createRow(
 import Appwrite
 
 let client = Client()
-    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
-    .setProject("<PROJECT_ID>")                // Your project ID
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint        
+    .setProject("<PROJECT_ID>")                // Your project ID      
 
 let tables = Tables(client: client)
 
@@ -494,8 +494,8 @@ import io.appwrite.services.Tables
 import io.appwrite.ID
 
 val client = Client()
-    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
-    .setProject("<PROJECT_ID>")                // Your project ID
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint    
+    .setProject("<PROJECT_ID>")                // Your project ID  
 
 val tables = Tables(client)
 
@@ -736,8 +736,8 @@ await tables.createRow(
         title: 'Spiderman',
         year: 2002,
         reviews: [
-            {
-                author: 'Bob',
+            { 
+                author: 'Bob', 
                 text: 'Great movie!',
                 $permissions: [
                     Permission.read(Role.any())
@@ -764,8 +764,8 @@ await tables.createRow(
     'title': 'Spiderman',
     'year': 2002,
     'reviews': [
-      {
-         'author': 'Bob',
+      { 
+         'author': 'Bob', 
          'text': 'Great movie!',
          '\$permissions': [
            Permission.read(Role.any())
@@ -792,7 +792,7 @@ tables.createRow(
         "title": "Spiderman",
         "year": 2002,
         "reviews": [
-            [
+            [ 
                 "author": "Bob",
                 "text": "Great movie!",
                 "$permissions": [
@@ -820,7 +820,7 @@ tables.createRow(
         "title": "Spiderman",
         "year": 2002,
         "reviews": [
-            [
+            [ 
                 "author": "Bob",
                 "text": "Great movie!",
                 "$permissions": [

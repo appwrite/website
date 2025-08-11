@@ -234,13 +234,13 @@ Create a bucket using the CLI command `appwrite init buckets`.
 appwrite init buckets
 ```
 
-This will initialize your bucket in your `appwrite.json` file. To push your initialized bucket, use the `appwrite push buckets`.
+This will initialize your bucket in your `appwrite.config.json` file. To push your initialized bucket, use the `appwrite push buckets`.
 
 ```sh
 appwrite push buckets
 ```
 
-This will create your bucket in the Console with all of your `appwrite.json` configurations.
+This will create your bucket in the Console with all of your `appwrite.config.json` configurations.
 
 {% arrow_link href="/docs/tooling/command-line/buckets#commands" %}
 Learn more about the CLI buckets commands
