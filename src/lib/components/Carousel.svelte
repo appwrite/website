@@ -66,7 +66,7 @@
             <button
                 class="web-icon-button cursor-pointer"
                 aria-label="Move carousel forward"
-                disabled={isEnd}
+                disabled
                 onclick={next}
             >
                 <span class="web-icon-arrow-right" aria-hidden="true"></span>

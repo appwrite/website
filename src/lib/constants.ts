@@ -21,15 +21,15 @@ export const SOCIAL_STATS: SocialStats = {
         }
     },
     DISCORD: {
-        STAT: '22K+',
+        STAT: '23K+',
         LINK: '/discord'
     },
     TWITTER: {
-        STAT: '128K+',
+        STAT: '127K+',
         LINK: 'https://twitter.com/intent/follow?screen_name=appwrite'
     },
     YOUTUBE: {
-        STAT: '12K+',
+        STAT: '13K+',
         LINK: 'https://www.youtube.com/c/appwrite?sub_confirmation=1'
     }
 };
