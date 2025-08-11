@@ -90,7 +90,8 @@
     --animate-caret-blink: caret-blink 1s ease-in-out infinite;
     --animate-enter:
         fade-in 0.75s ease-in-out both, blur 0.75s ease-in-out both, up 0.75s ease-in-out both;
-    --animate-scroll: scroll 60s linear infinite;
+    --animate-scroll-deprecate: scroll-deprecate 60s linear infinite forwards;
+
     --animate-scroll-x: scroll-x var(--speed, 30s) linear infinite var(--direction, forwards);
     --animate-scroll-y: scroll-y 30s linear infinite forwards;
     --animate-drop: drop 18s linear infinite forwards;
