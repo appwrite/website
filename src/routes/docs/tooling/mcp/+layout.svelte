@@ -31,6 +31,10 @@
                 {
                     label: 'Windsurf Editor',
                     href: '/docs/tooling/mcp/windsurf'
+                },
+                {
+                    label: 'VS Code',
+                    href: '/docs/tooling/mcp/vscode'
                 }
             ]
         }
