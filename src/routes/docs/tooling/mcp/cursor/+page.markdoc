@@ -43,6 +43,24 @@ To enable additional tools, learn more about [command-line arguments](/docs/tool
 
 {% /info %}
 
+You can also **directly add the MCP server to Cursor** using the following link.
+
+{% only_light %}
+{% cards %}
+{% cards_item href="cursor://anysphere.cursor-deeplink/mcp/install?name=appwrite&config=eyJjb21tYW5kIjoidXZ4IG1jcC1zZXJ2ZXItYXBwd3JpdGUgLS11c2VycyIsImVudiI6eyJBUFBXUklURV9BUElfS0VZIjoiPHlvdXItYXBpLWtleT4iLCJBUFBXUklURV9QUk9KRUNUX0lEIjoiPHlvdXItcHJvamVjdC1pZD4iLCJBUFBXUklURV9FTkRQT0lOVCI6Imh0dHBzOi8vPFJFR0lPTj4uY2xvdWQuYXBwd3JpdGUuaW8vdjEifX0%3D" title="Add to Cursor" image="/images/docs/mcp/logos/cursor-ai.svg" %}
+{% /cards_item %}
+{% /cards %}
+{% /only_light %}
+
+{% only_dark %}
+{% cards %}
+{% cards_item href="cursor://anysphere.cursor-deeplink/mcp/install?name=appwrite&config=eyJjb21tYW5kIjoidXZ4IG1jcC1zZXJ2ZXItYXBwd3JpdGUgLS11c2VycyIsImVudiI6eyJBUFBXUklURV9BUElfS0VZIjoiPHlvdXItYXBpLWtleT4iLCJBUFBXUklURV9QUk9KRUNUX0lEIjoiPHlvdXItcHJvamVjdC1pZD4iLCJBUFBXUklURV9FTkRQT0lOVCI6Imh0dHBzOi8vPFJFR0lPTj4uY2xvdWQuYXBwd3JpdGUuaW8vdjEifX0%3D" title="Add to Cursor" image="/images/docs/mcp/logos/dark/cursor-ai.svg" %}
+{% /cards_item %}
+{% /cards %}
+{% /only_dark %}
+
+This will automatically configure the MCP server, and you will only need to update your Appwrite API key, project ID, and endpoint.
+
 {% /section %}
 
 {% section #step-2 step=2 title="Test the integration" %}

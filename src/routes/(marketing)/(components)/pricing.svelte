@@ -43,10 +43,19 @@
             event: 'home-pricing-cards-enterprise-click'
         }
     ];
+
+    type PricingProps = {
+        class?: string;
+    };
+
+    const { class: className }: PricingProps = $props();
 </script>
 
 <div
-    class="relative -mt-6 -mb-12 flex min-h-[650px] max-w-screen items-center justify-center overflow-hidden pt-40 md:mb-0 md:pb-10"
+    class={classNames(
+        'relative -mt-6 -mb-12 flex min-h-[650px] max-w-screen items-center justify-center overflow-hidden pt-40 md:mb-0 md:pb-10',
+        className
+    )}
 >
     <div class="container flex w-full flex-col items-center justify-center gap-10">
         <div
@@ -103,7 +112,9 @@
                             >{price}
 
                             {#if subtitle}
-                                <span class="text-caption text-secondary -ml-1">{subtitle}</span>
+                                <span class="text-caption text-secondary -ml-1 font-sans"
+                                    >{subtitle}</span
+                                >
                             {/if}
                         </span>
 

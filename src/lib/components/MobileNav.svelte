@@ -13,13 +13,14 @@
 
     afterNavigate(() => {
         open = false;
+        document.body.style.overflow = '';
     });
 </script>
 
 <svelte:window on:resize={() => open && (open = false)} />
 
 <nav
-    class="web-side-nav sticky top-[74px] block max-h-screen overflow-hidden lg:hidden"
+    class="web-side-nav sticky top-[73px] block max-h-screen overflow-hidden lg:hidden"
     class:hidden={!open}
 >
     <div class="web-side-nav-wrapper ps-4 pe-4">
