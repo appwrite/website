@@ -118,20 +118,16 @@
         color: var(--prose-marker-color);
     }
 
-    a:not(:where(:is(h2, h3, h4) *)):where(:not(.not-prose, .not-prose *)) {
-        color: var(--prose-link-color);
-        font-weight: var(--font-weight-semibold);
+    a:not(:where(:is(h2, h3, h4, h5, h6) *)):where(:not(.not-prose, .not-prose *)) {
+        font-weight: var(--font-weight-medium);
         text-decoration: underline;
-        text-underline-offset: 3px;
-        text-decoration-color: var(--prose-link-underline-color);
         text-decoration-thickness: 1px;
-        & code {
-            font-weight: var(--font-weight-semibold);
-        }
+        letter-spacing: var(--tracking-tight);
+        color: var(--text-primary);
     }
 
     a:hover:where(:not(.not-prose, .not-prose *)) {
-        text-decoration-thickness: 2px;
+        color: var(--color-secondary);
     }
 
     a:where(:not(.not-prose, .not-prose *)):has(> [data-media]) {
