@@ -51,9 +51,6 @@
     :is(h2, h3, h4, h5, h6):where(:not(.not-prose, .not-prose *)) {
         scroll-margin-top: calc(var(--spacing) * 32);
         color: var(--color-primary);
-        @variant lg {
-            scroll-margin-top: calc(var(--spacing) * 18);
-        }
     }
 
     p:where(:not(.not-prose, .not-prose *)) {
