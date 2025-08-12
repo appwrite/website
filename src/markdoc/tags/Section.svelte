@@ -1,7 +1,7 @@
 <script lang="ts">
     import { getContext, hasContext, type Snippet } from 'svelte';
     import { type Writable } from 'svelte/store';
-    import Heading from '../nodes/Heading.svelte';
+    import Heading from '../nodes/heading.svelte';
 
     interface Props {
         id: string;

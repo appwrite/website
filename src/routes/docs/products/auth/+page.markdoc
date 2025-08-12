@@ -55,3 +55,6 @@ Appwrite Authentication provides permissions for individual users and groups of 
 # Built in preferences {% #built-in-preferences %}
 Appwrite **Authentication** comes with built-in [preferences](/docs/products/auth/preferences) for users to manage their account settings.
 Store notification settings, themes, and other user preferences to be shared across devices.
+
+
+YOOOOOO this is `inline-code`.

@@ -12,7 +12,7 @@
     export { default as Only_Light } from './Only_Light.svelte';
     export { default as Only_Dark } from './Only_Dark.svelte';
     export { default as Video } from './Video.svelte';
-    export { default as Arrow_Link } from './Arrow_Link.svelte';
+    export { default as Arrow_Link } from './arrow_link.svelte';
     export { default as Count_Section } from './Count_Section.svelte';
     export { default as Count_Title } from './Count_Title.svelte';
     export { default as Accordion } from './Accordion.svelte';

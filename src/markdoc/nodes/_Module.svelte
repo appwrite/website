@@ -1,11 +1,8 @@
 <script context="module">
-    export { default as Blockquote } from './Blockquote.svelte';
-    export { default as Code } from './Code.svelte';
+    export { default as Blockquote } from './blockquote.svelte';
     export { default as Fence } from './Fence.svelte';
-    export { default as Heading } from './Heading.svelte';
+    export { default as Heading } from './heading.svelte';
     export { default as List } from './List.svelte';
-    export { default as Paragraph } from './Paragraph.svelte';
-
     export { default as Image } from './Image.svelte';
     export { default as Item } from './Item.svelte';
     export { default as Link } from './Link.svelte';

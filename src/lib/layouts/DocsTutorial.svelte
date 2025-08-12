@@ -3,7 +3,7 @@
     import { Feedback } from '$lib/components';
     import type { Tutorial } from '$markdoc/layouts/Tutorial.svelte';
     import type { TocItem } from './DocsArticle.svelte';
-    import Heading from '$markdoc/nodes/Heading.svelte';
+    import Heading from '$markdoc/nodes/heading.svelte';
     import { onMount, tick } from 'svelte';
     import { page } from '$app/state';
     import { Button, Icon } from '$lib/components/ui';

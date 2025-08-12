@@ -10,9 +10,9 @@
         children: Snippet;
     }
 
-    const { level, id = undefined, step = undefined, children }: HeadingProps = $props();
+    const { level, id: elementId = undefined, step = undefined, children }: HeadingProps = $props();
 
-    const tag = `h${level}`;
+    const tag = `h${level + 1}`;
     const ctx = hasContext('headings') ? getContext<LayoutContext>('headings') : undefined;
 
     let element: HTMLElement | undefined = $state();
@@ -49,8 +49,10 @@
 
         observer.observe(element);
     });
+
+    let id = $derived(elementId ?? slugify(element?.innerText ?? ''));
 </script>
 
-<svelte:element this={tag} id={id ?? slugify(element?.innerText ?? '')} bind:this={element}>
-    <a href={`#${id ?? slugify(element?.innerText ?? '')}`} class="">{@render children()}</a>
+<svelte:element this={tag} {id} bind:this={element}>
+    <a href={`#${id ?? slugify(element?.innerText ?? '')}`}>{@render children()}</a>
 </svelte:element>

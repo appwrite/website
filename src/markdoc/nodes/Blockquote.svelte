@@ -8,7 +8,7 @@
 </script>
 
 <blockquote>
-    <p>
+    <p class="leading-sm text-primary text-lg font-medium tracking-tight">
         {@render children()}
     </p>
 </blockquote>
