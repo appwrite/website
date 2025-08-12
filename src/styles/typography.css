@@ -41,7 +41,7 @@
     }
 
     color: var(--prose-color);
-    font-size: var(--text-sm);
+    font-size: var(--text-paragraph-md);
     line-height: 2;
 
     *:where(:not(.not-prose, .not-prose *)) + *:where(:not(.not-prose, .not-prose *)) {
@@ -95,6 +95,24 @@
         }
     }
 
+    ol:where(:not(.not-prose, .not-prose *)) {
+        padding-left: calc(var(--spacing) * 6);
+        list-style-type: decimal;
+    }
+
+    ol li:where(:not(.not-prose, .not-prose *)) {
+        padding-left: calc(var(--spacing) * 3);
+    }
+
+    ol li + li:where(:not(.not-prose, .not-prose *)) {
+        margin-top: calc(var(--spacing) * 4);
+    }
+
+    ol li:where(:not(.not-prose, .not-prose *))::marker {
+        font-weight: 600;
+        color: var(--prose-strong-color);
+    }
+
     ul:where(:not(.not-prose, .not-prose *)) {
         padding-left: calc(var(--spacing) * 6);
         list-style-type: square;
@@ -126,6 +144,10 @@
 
     a:hover:where(:not(.not-prose, .not-prose *)) {
         text-decoration-thickness: 2px;
+    }
+
+    a:where(:not(.not-prose, .not-prose *)):has(> [data-media]) {
+        display: block;
     }
 
     strong:where(:not(.not-prose, .not-prose *)) {
