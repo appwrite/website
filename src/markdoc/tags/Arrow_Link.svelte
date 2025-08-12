@@ -17,6 +17,6 @@
 </script>
 
 <a class="flex" {href} {target} {rel}>
-    {@render children()}
+    <span>{@render children()}</span>
     <Icon name="chevron-right" />
 </a>
