@@ -37,7 +37,7 @@
     <span class="text-eyebrow text-primary font-aeonik-fono ps-6 uppercase">{heading}</span>
     <div class="relative">
         <div
-            class="bg-greyscale-300 absolute top-0 -left-px h-6 w-px rounded-full transition-transform ease-linear"
+            class="bg-accent absolute top-0 -left-px h-6 w-px rounded-full transition-transform ease-linear"
             style:transform={`translateY(${position}px)`}
         ></div>
         <ul
