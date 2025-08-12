@@ -16,7 +16,7 @@ Instead of the traditional read-modify-write pattern, atomic numeric operations 
 3. Write back → `{ likes: 43 }`
 
 **Atomic approach:**
-1. Call `incrementRowAttribute()` with the attribute name and the value to increment by
+1. Call `incrementRowColumn()` with the column name and the value to increment by
 2. Server applies atomically → `likes: 43`
 
 # When to use atomic operations {% #when-to-use-atomic-operations %}
@@ -32,7 +32,7 @@ Atomic numeric operations work well for:
 
 # Perform atomic operations {% #perform-atomic-operations %}
 
-Use the `incrementRowAttribute` and `decrementRowAttribute` methods to perform atomic numeric operations. The server will apply these changes atomically under concurrency control.
+Use the `incrementRowColumn` and `decrementRowColumn` methods to perform atomic numeric operations. The server will apply these changes atomically under concurrency control.
 
 ## Increment a field {% #increment-field %}
 
@@ -46,11 +46,11 @@ const client = new Client()
 
 const grids = new Grids(client);
 
-const result = await grids.incrementRowAttribute(
+const result = await grids.incrementRowColumn(
     '<DATABASE_ID>',
     '<TABLE_ID>',
     '<ROW_ID>',
-    'likes', // attribute
+    'likes', // column
     1 // value
 );
 ```
@@ -63,11 +63,11 @@ final client = Client()
 
 final grids = Grids(client);
 
-final row = await grids.incrementRowAttribute(
+final row = await grids.incrementRowColumn(
     databaseId: '<DATABASE_ID>',
     tableId: '<TABLE_ID>',
     rowId: '<ROW_ID>',
-    attribute: 'likes',
+    column: 'likes',
     value: 1
 );
 ```
@@ -81,11 +81,11 @@ let client = Client()
 
 let grids = Grids(client)
 
-let row = try await grids.incrementRowAttribute(
+let row = try await grids.incrementRowColumn(
     databaseId: "<DATABASE_ID>",
     tableId: "<TABLE_ID>",
     rowId: "<ROW_ID>",
-    attribute: "likes",
+    column: "likes",
     value: 1
 )
 ```
@@ -99,11 +99,11 @@ val client = Client(applicationContext)
 
 val grids = Grids(client)
 
-val row = grids.incrementRowAttribute(
+val row = grids.incrementRowColumn(
     databaseId = "<DATABASE_ID>",
     tableId = "<TABLE_ID>",
     rowId = "<ROW_ID>",
-    attribute = "likes",
+    column = "likes",
     value = 1
 )
 ```
@@ -117,11 +117,11 @@ const client = new sdk.Client()
 
 const grids = new sdk.Grids(client);
 
-const result = await grids.incrementRowAttribute(
+const result = await grids.incrementRowColumn(
     '<DATABASE_ID>',
     '<TABLE_ID>',
     '<ROW_ID>',
-    'likes', // attribute
+    'likes', // column
     1 // value
 );
 ```
@@ -136,21 +136,21 @@ client.set_key('<API_KEY>') # Your secret API key
 
 grids = Grids(client)
 
-result = grids.increment_row_attribute(
+result = grids.increment_row_column(
     database_id = '<DATABASE_ID>',
     table_id = '<TABLE_ID>',
     row_id = '<ROW_ID>',
-    attribute = 'likes', # attribute
+    column = 'likes', # column
     value = 1 # value
 )
 ```
 ```graphql
 mutation {
-    databasesIncrementRowAttribute(
+    databasesIncrementRowColumn(
         databaseId: "<DATABASE_ID>",
         tableId: "<TABLE_ID>",
         rowId: "<ROW_ID>",
-        attribute: "likes",
+        column: "likes",
         value: 1
     ) {
         _id
@@ -167,7 +167,7 @@ mutation {
 
 ## Decrement a field {% #decrement-field %}
 
-Use the `decrementRowAttribute` method to decrease numeric fields:
+Use the `decrementRowColumn` method to decrease numeric fields:
 
 {% multicode %}
 ```client-web
@@ -179,11 +179,11 @@ const client = new Client()
 
 const grids = new Grids(client);
 
-const result = await grids.decrementRowAttribute(
+const result = await grids.decrementRowColumn(
     '<DATABASE_ID>',
     '<TABLE_ID>',
     '<ROW_ID>',
-    'credits', // attribute
+    'credits', // column
     5 // value
 );
 ```
@@ -196,11 +196,11 @@ final client = Client()
 
 final grids = Grids(client);
 
-final row = await grids.decrementRowAttribute(
+final row = await grids.decrementRowColumn(
     databaseId: '<DATABASE_ID>',
     tableId: '<TABLE_ID>',
     rowId: '<ROW_ID>',
-    attribute: 'credits',
+    column: 'credits',
     value: 5
 );
 ```
@@ -214,11 +214,11 @@ let client = Client()
 
 let grids = Grids(client)
 
-let row = try await grids.decrementRowAttribute(
+let row = try await grids.decrementRowColumn(
     databaseId: "<DATABASE_ID>",
     tableId: "<TABLE_ID>",
     rowId: "<ROW_ID>",
-    attribute: "credits",
+    column: "credits",
     value: 5
 )
 ```
@@ -232,11 +232,11 @@ val client = Client(applicationContext)
 
 val grids = Grids(client)
 
-val row = grids.decrementRowAttribute(
+val row = grids.decrementRowColumn(
     databaseId = "<DATABASE_ID>",
     tableId = "<TABLE_ID>",
     rowId = "<ROW_ID>",
-    attribute = "credits",
+    column = "credits",
     value = 5
 )
 ```
@@ -250,11 +250,11 @@ const client = new sdk.Client()
 
 const grids = new sdk.Grids(client);
 
-const result = await grids.decrementRowAttribute(
+const result = await grids.decrementRowColumn(
     '<DATABASE_ID>',
     '<TABLE_ID>',
     '<ROW_ID>',
-    'credits', // attribute
+    'credits', // column
     5 // value
 );
 ```
@@ -269,21 +269,21 @@ client.set_key('<API_KEY>') # Your secret API key
 
 grids = Grids(client)
 
-result = grids.decrement_row_attribute(
+result = grids.decrement_row_column(
     database_id = '<DATABASE_ID>',
     table_id = '<TABLE_ID>',
     row_id = '<ROW_ID>',
-    attribute = 'credits', # attribute
+    column = 'credits', # column
     value = 5 # value
 )
 ```
 ```graphql
 mutation {
-    databasesDecrementRowAttribute(
+    databasesDecrementRowColumn(
         databaseId: "<DATABASE_ID>",
         tableId: "<TABLE_ID>",
         rowId: "<ROW_ID>",
-        attribute: "credits",
+        column: "credits",
         value: 5
     ) {
         _id
@@ -307,126 +307,126 @@ You can set minimum and maximum bounds for individual operations to prevent inva
 {% multicode %}
 ```client-web
 // Increment with maximum constraint
-const result = await grids.incrementRowAttribute(
+const result = await grids.incrementRowColumn(
     '<DATABASE_ID>',
     '<TABLE_ID>',
     '<ROW_ID>',
-    'credits', // attribute
+    'credits', // column
     100, // value
     1000 // max (optional)
 );
 
 // Decrement with minimum constraint
-const result2 = await grids.decrementRowAttribute(
+const result2 = await grids.decrementRowColumn(
     '<DATABASE_ID>',
     '<TABLE_ID>',
     '<ROW_ID>',
-    'credits', // attribute
+    'credits', // column
     50, // value
     0 // min (optional)
 );
 ```
 ```client-flutter
 // Increment with maximum constraint
-final row = await grids.incrementRowAttribute(
+final row = await grids.incrementRowColumn(
     databaseId: '<DATABASE_ID>',
     tableId: '<TABLE_ID>',
     rowId: '<ROW_ID>',
-    attribute: 'credits',
+    column: 'credits',
     value: 100,
     max: 1000
 );
 
 // Decrement with minimum constraint
-final row2 = await grids.decrementRowAttribute(
+final row2 = await grids.decrementRowColumn(
     databaseId: '<DATABASE_ID>',
     tableId: '<TABLE_ID>',
     rowId: '<ROW_ID>',
-    attribute: 'credits',
+    column: 'credits',
     value: 50,
     min: 0
 );
 ```
 ```client-apple
 // Increment with maximum constraint
-let row = try await grids.incrementRowAttribute(
+let row = try await grids.incrementRowColumn(
     databaseId: "<DATABASE_ID>",
     tableId: "<TABLE_ID>",
     rowId: "<ROW_ID>",
-    attribute: "credits",
+    column: "credits",
     value: 100,
     max: 1000
 )
 
 // Decrement with minimum constraint
-let row2 = try await grids.decrementRowAttribute(
+let row2 = try await grids.decrementRowColumn(
     databaseId: "<DATABASE_ID>",
     tableId: "<TABLE_ID>",
     rowId: "<ROW_ID>",
-    attribute: "credits",
+    column: "credits",
     value: 50,
     min: 0
 )
 ```
 ```client-android-kotlin
 // Increment with maximum constraint
-val row = grids.incrementRowAttribute(
+val row = grids.incrementRowColumn(
     databaseId = "<DATABASE_ID>",
     tableId = "<TABLE_ID>",
     rowId = "<ROW_ID>",
-    attribute = "credits",
+    column = "credits",
     value = 100,
     max = 1000
 )
 
 // Decrement with minimum constraint
-val row2 = grids.decrementRowAttribute(
+val row2 = grids.decrementRowColumn(
     databaseId = "<DATABASE_ID>",
     tableId = "<TABLE_ID>",
     rowId = "<ROW_ID>",
-    attribute = "credits",
+    column = "credits",
     value = 50,
     min = 0
 )
 ```
 ```server-nodejs
 // Increment with maximum constraint
-const result = await grids.incrementRowAttribute(
+const result = await grids.incrementRowColumn(
     '<DATABASE_ID>',
     '<TABLE_ID>',
     '<ROW_ID>',
-    'credits', // attribute
+    'credits', // column
     100, // value
     1000 // max (optional)
 );
 
 // Decrement with minimum constraint
-const result2 = await grids.decrementRowAttribute(
+const result2 = await grids.decrementRowColumn(
     '<DATABASE_ID>',
     '<TABLE_ID>',
     '<ROW_ID>',
-    'credits', // attribute
+    'credits', // column
     50, // value
     0 // min (optional)
 );
 ```
 ```server-python
 # Increment with maximum constraint
-result = grids.increment_row_attribute(
+result = grids.increment_row_column(
     database_id = '<DATABASE_ID>',
     table_id = '<TABLE_ID>',
     row_id = '<ROW_ID>',
-    attribute = 'credits', # attribute
+    column = 'credits', # column
     value = 100, # value
     max = 1000 # max (optional)
 )
 
 # Decrement with minimum constraint
-result2 = grids.decrement_row_attribute(
+result2 = grids.decrement_row_column(
     database_id = '<DATABASE_ID>',
     table_id = '<TABLE_ID>',
     row_id = '<ROW_ID>',
-    attribute = 'credits', # attribute
+    column = 'credits', # column
     value = 50, # value
     min = 0 # min (optional)
 )
@@ -446,11 +446,11 @@ For complex updates that include both atomic operations and regular field change
 {% multicode %}
 ```client-web
 // First, increment the likes atomically
-const likeResult = await grids.incrementRowAttribute(
+const likeResult = await grids.incrementRowColumn(
     '<DATABASE_ID>',
     '<TABLE_ID>',
     '<ROW_ID>',
-    'likes', // attribute
+    'likes', // column
     1 // value
 );
 
@@ -467,11 +467,11 @@ const updateResult = await grids.updateRow(
 ```
 ```client-flutter
 // First, increment the likes atomically
-final likeResult = await grids.incrementRowAttribute(
+final likeResult = await grids.incrementRowColumn(
     databaseId: '<DATABASE_ID>',
     tableId: '<TABLE_ID>',
     rowId: '<ROW_ID>',
-    attribute: 'likes',
+    column: 'likes',
     value: 1
 );
 
@@ -488,11 +488,11 @@ final updateResult = await grids.updateRow(
 ```
 ```client-apple
 // First, increment the likes atomically
-let likeResult = try await grids.incrementRowAttribute(
+let likeResult = try await grids.incrementRowColumn(
     databaseId: "<DATABASE_ID>",
     tableId: "<TABLE_ID>",
     rowId: "<ROW_ID>",
-    attribute: "likes",
+    column: "likes",
     value: 1
 )
 
@@ -509,11 +509,11 @@ let updateResult = try await grids.updateRow(
 ```
 ```client-android-kotlin
 // First, increment the likes atomically
-val likeResult = grids.incrementRowAttribute(
+val likeResult = grids.incrementRowColumn(
     databaseId = "<DATABASE_ID>",
     tableId = "<TABLE_ID>",
     rowId = "<ROW_ID>",
-    attribute = "likes",
+    column = "likes",
     value = 1
 )
 
@@ -530,11 +530,11 @@ val updateResult = grids.updateRow(
 ```
 ```server-nodejs
 // First, increment the likes atomically
-const likeResult = await grids.incrementRowAttribute(
+const likeResult = await grids.incrementRowColumn(
     '<DATABASE_ID>',
     '<TABLE_ID>',
     '<ROW_ID>',
-    'likes', // attribute
+    'likes', // column
     1 // value
 );
 
@@ -551,11 +551,11 @@ const updateResult = await grids.updateRow(
 ```
 ```server-python
 # First, increment the likes atomically
-like_result = grids.increment_row_attribute(
+like_result = grids.increment_row_column(
     database_id = '<DATABASE_ID>',
     table_id = '<TABLE_ID>',
     row_id = '<ROW_ID>',
-    attribute = 'likes', # attribute
+    column = 'likes', # column
     value = 1 # value
 )
 

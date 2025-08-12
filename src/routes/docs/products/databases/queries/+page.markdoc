@@ -463,8 +463,8 @@ Query.select(["*", "reviews.*", "reviews.author.*"])
 
 | Pattern | Description | Use case |
 |---------|-------------|----------|
-| `["field1", "field2"]` | Specific attributes only | Minimize response size |
-| `["*"]` | All row attributes | Get complete row data |
+| `["field1", "field2"]` | Specific columns only | Minimize response size |
+| `["*"]` | All row columns | Get complete row data |
 | `["*", "relationName.*"]` | Row + all relationship fields | Load row with complete related data |
 | `["field1", "relationName.field2"]` | Specific fields from row and relationships | Precise data loading |
 | `["*", "relationName.field1", "relationName.field2"]` | All row fields + specific relationship fields | Partial relationship loading |
@@ -479,7 +479,7 @@ Query.select(["*", "reviews.*", "reviews.author.*"])
 **Reduce database load** - Selecting fewer fields reduces database processing time, especially for large rows.
 
 {% info title="Related rows" %}
-By default, relationship attributes contain only row IDs.
+By default, relationship columns contain only row IDs.
 To load the actual related row data, you must explicitly include relationship fields in your select query.
 Learn more about [relationship performance optimization](/docs/products/databases/relationships#performance-loading).
 {% /info %}

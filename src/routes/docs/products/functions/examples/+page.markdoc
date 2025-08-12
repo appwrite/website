@@ -239,14 +239,14 @@ Here's a simple voting system that allows users to vote on various topics. Appwr
 
 ## Prerequisites
 
-Create a Topics table with the following attributes:
+Create a Topics table with the following columns:
 
 | Name          | Type   | Description                      |
 |---------------|--------|----------------------------------|
 | `title`       | string | The name of the topic            |
 | `description` | string | Long form description of the topic|
 
-Create a Votes table with the following attributes:
+Create a Votes table with the following columns:
 
 | Name          | Type   | Description                              |
 |---------------|--------|------------------------------------------|
@@ -501,7 +501,7 @@ Here's a simple form page that handles form submissions, and can be used to stor
 The form is submitted to the function using the `POST` method and the form data is sent as a URL-encoded string in the request body.
 
 ## Prerequisites
-Create a Messages table with the following attributes:
+Create a Messages table with the following columns:
 
 | Name       | Type   | Description                      |
 |------------|--------|----------------------------------|

@@ -89,7 +89,7 @@ let subscription = realtime.subscribe("files") {
 
 To subscribe to updates from different Appwrite resources, you need to specify one or more [channels](/docs/apis/realtime#channels). The channels offer a wide and powerful selection that will allow you to listen to all possible resources. This allows you to receive updates not only from the database, but from _all_ the services that Appwrite offers.
 
-If you subscribe to a channel, you will receive callbacks for a variety of events related to the channel. The events attribute in the callback can be used to filter and respond to specific events in a channel.
+If you subscribe to a channel, you will receive callbacks for a variety of events related to the channel. The events column in the callback can be used to filter and respond to specific events in a channel.
 
 [View a list of all available events](/docs/advanced/platform/events).
 

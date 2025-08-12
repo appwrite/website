@@ -15,7 +15,7 @@ Create a table inside a database in the [Appwrite Console](https://cloud.appwrit
 ![Create project screen](/images/docs/tutorials/idea-tracker-table.png)
 {% /only_light %}
 
-Create the following attributes within the table:
+Create the following columns within the table:
 | Field       | Type   | Size | Required |
 | ----------- | ------ | ---- | -------- |
 | userId      | String | 36   | Yes      |

@@ -38,8 +38,8 @@ If you need to replace your API Key, create a new key, update your app credentia
 | `databases.write`| Access to create, update, and delete your project's databases         |
 | `tables.read`| Access to read your project's database tables                   |
 | `tables.write`| Access to create, update, and delete your project's database tables|
-| `attributes.read`| Access to read your project's database table's attributes        |
-| `attributes.write`| Access to create, update, and delete your project's database table's attributes|
+| `columns.read`| Access to read your project's database table's columns        |
+| `columns.write`| Access to create, update, and delete your project's database table's columns|
 | `indexes.read`   | Access to read your project's database table's indexes            |
 | `indexes.write`  | Access to create, update, and delete your project's database table's indexes|
 | `rows.read` | Access to read your project's database rows                       |

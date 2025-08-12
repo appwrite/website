@@ -56,7 +56,7 @@ Platform errors are not related to an individual product, but can occur across t
 | ---- | ---- | ----------- |
 | 400  | general_mock | General errors thrown by the mock controller used for testing. |
 | 400  | general_argument_invalid | The request contains one or more invalid arguments. Please refer to the endpoint documentation. |
-| 400  | general_query_limit_exceeded | Query limit exceeded for the current attribute. Usage of more than 100 query values on a single attribute is prohibited. |
+| 400  | general_query_limit_exceeded | Query limit exceeded for the current column. Usage of more than 100 query values on a single column is prohibited. |
 | 400  | general_query_invalid | The query's syntax is invalid. Please check the query and try again. |
 | 400  | general_cursor_not_found | The cursor is invalid. This can happen if the item represented by the cursor has been deleted. |
 | 400  | general_provider_failure | VCS (Version Control System) provider failed to process the request. We believe this is an error with the VCS provider. Try again, or contact support for more information. |
@@ -141,16 +141,16 @@ Errors found when using Appwrite Databases.
 | Code | Type | Description |
 | ---- | ---- | ----------- |
 | 400  | table_limit_exceeded | The maximum number of tables has been reached. |
-| 400  | row_invalid_structure | The row structure is invalid. Please ensure the attributes match the table definition. |
+| 400  | row_invalid_structure | The row structure is invalid. Please ensure the columns match the table definition. |
 | 400  | row_missing_data | The row data is missing. Try again with row data populated. |
 | 400  | row_missing_payload | The row data and permissions are missing. You must provide either row data or permissions to be updated. |
-| 400  | attribute_unknown | The attribute required for the index could not be found. Please confirm all your attributes are in the available state. |
-| 400  | attribute_not_available | The requested attribute is not yet available. Please try again later. |
-| 400  | attribute_format_unsupported | The requested attribute format is not supported. |
-| 400  | attribute_default_unsupported | Default values cannot be set for array or required attributes. |
-| 400  | attribute_limit_exceeded | The maximum number of attributes has been reached. |
-| 400  | attribute_value_invalid | The attribute value is invalid. Please check the type, range and value of the attribute. |
-| 400  | attribute_type_invalid | The attribute type is invalid. |
+| 400  | column_unknown | The column required for the index could not be found. Please confirm all your columns are in the available state. |
+| 400  | column_not_available | The requested column is not yet available. Please try again later. |
+| 400  | column_format_unsupported | The requested column format is not supported. |
+| 400  | column_default_unsupported | Default values cannot be set for array or required columns. |
+| 400  | column_limit_exceeded | The maximum number of columns has been reached. |
+| 400  | column_value_invalid | The column value is invalid. Please check the type, range and value of the column. |
+| 400  | column_type_invalid | The column type is invalid. |
 | 400  | index_limit_exceeded | The maximum number of indexes has been reached. |
 | 400  | index_invalid | Index invalid. |
 | 403  | row_delete_restricted | Row cannot be deleted because it is referenced by another row. |
@@ -158,13 +158,13 @@ Errors found when using Appwrite Databases.
 | 404  | database_not_found | Database not found |
 | 404  | table_not_found | Table with the requested ID could not be found. |
 | 404  | row_not_found | Row with the requested ID could not be found. |
-| 404  | attribute_not_found | Attribute with the requested ID could not be found. |
+| 404  | column_not_found | Column with the requested ID could not be found. |
 | 404  | index_not_found | Index with the requested ID could not be found. |
 | 409  | database_already_exists | Database already exists |
 | 409  | table_already_exists | A table with the requested ID already exists. Try again with a different ID or use `unique()` to generate a unique ID. |
 | 409  | row_already_exists | Row with the requested ID already exists. Try again with a different ID or use `unique()` to generate a unique ID. |
 | 409  | row_update_conflict | Remote row is newer than local. |
-| 409  | attribute_already_exists | Attribute with the requested ID already exists. Try again with a different ID or use `unique()` to generate a unique ID. |
+| 409  | column_already_exists | Column with the requested ID already exists. Try again with a different ID or use `unique()` to generate a unique ID. |
 | 409  | index_already_exists | Index with the requested ID already exists. Try again with a different ID or use `unique()` to generate a unique ID. |
 
 ## Storage errors {% #storage-errors %}

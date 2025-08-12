@@ -17,9 +17,9 @@ In Appwrite, data is stored as a table of rows. Create a table in the [Appwrite 
 ![Create project screen](/images/docs/tutorials/idea-tracker-table.png)
 {% /only_light %}
 
-Create a new table with the following attributes:
+Create a new table with the following columns:
 
-| Attribute   | Type   | Required | Size     |
+| Column   | Type   | Required | Size     |
 |-------------|--------|----------|----------|
 | userId      | String | Yes      | 200      |
 | title       | String | Yes      | 200      |

@@ -37,7 +37,7 @@ Then, under **Integrate with your server**, add an **API Key** with the followin
 |-----------|-----------------------|---------|
 | Database  | `databases.write`     | Allows API key to create, update, and delete [databases](/docs/products/databases/databases). |
 |           | `tables.write`   | Allows API key to create, update, and delete [tables](/docs/products/databases/tables). |
-|           | `attributes.write`    | Allows API key to create, update, and delete [attributes](/docs/products/databases/tables#attributes). |
+|           | `columns.write`    | Allows API key to create, update, and delete [columns](/docs/products/databases/tables#columns). |
 |           | `rows.read`      | Allows API key to read [rows](/docs/products/databases/rows). |
 |           | `rows.write`     | Allows API key to create, update, and delete [rows](/docs/products/databases/rows). |
 
@@ -111,7 +111,7 @@ suspend fun prepareDatabase() {
     todoDatabase = grids.create(ID.unique(), "TodosDB")
     todoTable = grids.createTable(todoDatabase?.id!!, ID.unique(), "Todos")
 
-    grids.createStringAttribute(
+    grids.createStringColumn(
         databaseId = todoDatabase?.id!!,
         tableId = todoTable?.id!!,
         key = "title",
@@ -119,7 +119,7 @@ suspend fun prepareDatabase() {
         required = true
     )
 
-    grids.createStringAttribute(
+    grids.createStringColumn(
         databaseId = todoDatabase?.id!!,
         tableId = todoTable?.id!!,
         key = "description",
@@ -128,7 +128,7 @@ suspend fun prepareDatabase() {
         default = "This is a test description."
     )
 
-    grids.createBooleanAttribute(
+    grids.createBooleanColumn(
         databaseId = todoDatabase?.id!!,
         tableId = todoTable?.id!!,
         key = "isComplete",

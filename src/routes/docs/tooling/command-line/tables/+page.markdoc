@@ -54,7 +54,7 @@ After [initializing](/docs/tooling/command-line/installation#initialization) you
             "name": "music",
             "enabled": true,
             "rowSecurity": false,
-            "attributes": [
+            "columns": [
                 {
                     "key": "userID",
                     "type": "string",
@@ -167,80 +167,80 @@ appwrite databases [COMMAND] [OPTIONS]
 * `delete-table [options]`
 * Delete a table by its unique ID. Only users with write permissions have access to delete this resource.
 ---
-* `list-attributes [options]`
-* List attributes in the table.
+* `list-columns [options]`
+* List columns in the table.
 ---
-* `create-boolean-attribute [options]`
-* Create a boolean attribute.
+* `create-boolean-column [options]`
+* Create a boolean column.
 ---
-* `update-boolean-attribute [options]`
-* Update a boolean attribute. Changing the 'default' value will not update already existing rows.
+* `update-boolean-column [options]`
+* Update a boolean column. Changing the 'default' value will not update already existing rows.
 ---
-* `create-datetime-attribute [options]`
-* Create a date time attribute according to the ISO 8601 standard.
+* `create-datetime-column [options]`
+* Create a date time column according to the ISO 8601 standard.
 ---
-* `update-datetime-attribute [options]`
-* Update a date time attribute. Changing the 'default' value will not update already existing rows.
+* `update-datetime-column [options]`
+* Update a date time column. Changing the 'default' value will not update already existing rows.
 ---
-* `create-email-attribute [options]`
-* Create an email attribute.
+* `create-email-column [options]`
+* Create an email column.
 ---
-* `update-email-attribute [options]`
-* Update an email attribute. Changing the 'default' value will not update already existing rows.
+* `update-email-column [options]`
+* Update an email column. Changing the 'default' value will not update already existing rows.
 ---
-* `create-enum-attribute [options]`
-* Create an enumeration attribute. The 'elements' param acts as a white-list of accepted values for this attribute.
+* `create-enum-column [options]`
+* Create an enumeration column. The 'elements' param acts as a white-list of accepted values for this column.
 ---
-* `update-enum-attribute [options]`
-* Update an enum attribute. Changing the 'default' value will not update already existing rows.
+* `update-enum-column [options]`
+* Update an enum column. Changing the 'default' value will not update already existing rows.
 ---  
-* `create-float-attribute [options]`
-* Create a float attribute. Optionally, minimum and maximum values can be provided.
+* `create-float-column [options]`
+* Create a float column. Optionally, minimum and maximum values can be provided.
 ---
-* `update-float-attribute [options]`
-* Update a float attribute. Changing the 'default' value will not update already existing rows.
+* `update-float-column [options]`
+* Update a float column. Changing the 'default' value will not update already existing rows.
 ---  
-* `create-integer-attribute [options]`
-* Create an integer attribute. Optionally, minimum and maximum values can be provided.
+* `create-integer-column [options]`
+* Create an integer column. Optionally, minimum and maximum values can be provided.
 ---
-* `update-integer-attribute [options]`
-* Update an integer attribute. Changing the 'default' value will not update already existing rows.
+* `update-integer-column [options]`
+* Update an integer column. Changing the 'default' value will not update already existing rows.
 ---
-* `create-ip-attribute [options]`     
-* Create IP address attribute.
+* `create-ip-column [options]`     
+* Create IP address column.
 ---
-* `update-ip-attribute [options]`
-* Update an ip attribute. Changing the 'default' value will not update already existing rows.
+* `update-ip-column [options]`
+* Update an ip column. Changing the 'default' value will not update already existing rows.
 ---
-* `create-relationship-attribute [options]`
-* Create relationship attribute. [Learn more about relationship attributes](https://appwrite.io/docs/databases-relationships#relationship-attributes).
+* `create-relationship-column [options]`
+* Create relationship column. [Learn more about relationship columns](https://appwrite.io/docs/databases-relationships#relationship-columns).
 ---
-* `create-string-attribute [options]`
-* Create a string attribute.
+* `create-string-column [options]`
+* Create a string column.
 ---
-* `update-string-attribute [options]`
-* Update a string attribute. Changing the 'default' value will not update already existing rows.
+* `update-string-column [options]`
+* Update a string column. Changing the 'default' value will not update already existing rows.
 ---
-* `create-url-attribute [options]`          
-* Create a URL attribute.
+* `create-url-column [options]`          
+* Create a URL column.
 ---
-* `update-url-attribute [options]`
-* Update an url attribute. Changing the 'default' value will not update already existing rows.
+* `update-url-column [options]`
+* Update an url column. Changing the 'default' value will not update already existing rows.
 ---
-* `get-attribute [options]`
-* Get attribute by ID.
+* `get-column [options]`
+* Get column by ID.
 ---
-* `delete-attribute [options]` 
-* Deletes an attribute.
+* `delete-column [options]` 
+* Deletes an column.
 ---
-* `update-relationship-attribute [options]`  
-* Update relationship attribute. [Learn more about relationship attributes](https://appwrite.io/docs/databases-relationships#relationship-attributes).
+* `update-relationship-column [options]`  
+* Update relationship column. [Learn more about relationship columns](https://appwrite.io/docs/databases-relationships#relationship-columns).
 ---
 * `list-indexes [options]`
 * List indexes in the table.
 ---
 * `create-index [options]`
-* Creates an index on the attributes listed. Your index should include all the attributes you will query in a single request. Attributes can be 'key', 'fulltext', and 'unique'.
+* Creates an index on the columns listed. Your index should include all the columns you will query in a single request. Columns can be 'key', 'fulltext', and 'unique'.
 ---
 * `get-index [options]`
 * Get index by ID.

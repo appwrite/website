@@ -32,7 +32,7 @@ Then, under **Integrate with your server**, add an **API Key** with the followin
 |-----------|-----------------------|---------|
 | Database  | `databases.write`     | Allows API key to create, update, and delete [databases](/docs/products/databases/databases). |
 |           | `tables.write`   | Allows API key to create, update, and delete [tables](/docs/products/databases/tables). |
-|           | `attributes.write`    | Allows API key to create, update, and delete [attributes](/docs/products/databases/tables#attributes). |
+|           | `columns.write`    | Allows API key to create, update, and delete [columns](/docs/products/databases/tables#columns). |
 |           | `rows.read`      | Allows API key to read [rows](/docs/products/databases/rows). |
 |           | `rows.write`     | Allows API key to create, update, and delete [rows](/docs/products/databases/rows). |
 
@@ -106,7 +106,7 @@ function prepareDatabase($databases) {
         name: 'Todos'
     );
 
-    $databases->createStringAttribute(
+    $databases->createStringColumn(
         databaseId: $todoDatabase['$id'], 
         tableId: $todoTable['$id'], 
         key: 'title', 
@@ -114,7 +114,7 @@ function prepareDatabase($databases) {
         required: true
     );
 
-    $databases->createStringAttribute(
+    $databases->createStringColumn(
         databaseId: $todoDatabase['$id'], 
         tableId: $todoTable['$id'], 
         key: 'description', 
@@ -122,7 +122,7 @@ function prepareDatabase($databases) {
         required: false, 
     );
 
-    $databases->createBooleanAttribute(
+    $databases->createBooleanColumn(
         databaseId: $todoDatabase['$id'], 
         tableId: $todoTable['$id'], 
         key: 'isComplete', 

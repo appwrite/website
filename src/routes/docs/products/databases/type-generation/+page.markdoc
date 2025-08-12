@@ -27,7 +27,7 @@ The following options are currently available:
 | Option | Description |
 |--------|-------------|
 | `--language` or `-l` |  The programming language for which types can be generated. Choices include `ts`, `js`, `php`, `kotlin`, `swift`, `java`, `dart`, `auto`. The CLI will use `auto` as the default option if this option is skipped. |
-| `--strict` or `-s` |  Enables strict type generation. This option ensures that all the attributes follow language conventions, even if that leads to mismatches with the schema defined in your Appwrite console. |
+| `--strict` or `-s` |  Enables strict type generation. This option ensures that all the columns follow language conventions, even if that leads to mismatches with the schema defined in your Appwrite console. |
 | `--help` or `-h` | Displays help information for the command. |
 
 ## Example usage

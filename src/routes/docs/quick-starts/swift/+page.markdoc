@@ -38,7 +38,7 @@ Then, under **Integrate with your server**, add an **API Key** with the followin
 |-----------|-----------------------|---------|
 | Database  | `databases.write`     | Allows API key to create, update, and delete [databases](/docs/products/databases/databases). |
 |           | `tables.write`   | Allows API key to create, update, and delete [tables](/docs/products/databases/tables). |
-|           | `attributes.write`    | Allows API key to create, update, and delete [attributes](/docs/products/databases/tables#attributes). |
+|           | `columns.write`    | Allows API key to create, update, and delete [columns](/docs/products/databases/tables#columns). |
 |           | `rows.read`      | Allows API key to read [rows](/docs/products/databases/rows). |
 |           | `rows.write`     | Allows API key to create, update, and delete [rows](/docs/products/databases/rows). |
 
@@ -108,14 +108,14 @@ func prepareDatabase() async -> (Database?, Table?) {
         tableId: ID.unique(),
         name: "Todos"
     )
-    try? await grids.createStringAttribute(
+    try? await grids.createStringColumn(
         databaseId: todoDatabase!.id,
         tableId: todoTable!.id,
         key: "title",
         size: 255,
         xrequired: true
     )
-    try? await grids.createStringAttribute(
+    try? await grids.createStringColumn(
         databaseId: todoDatabase!.id as! String,
         tableId: todoTable!.id as! String,
         key: "description",
@@ -123,7 +123,7 @@ func prepareDatabase() async -> (Database?, Table?) {
         xrequired: false,
         xdefault: "This is a test description."
     )
-    try? await grids.createBooleanAttribute(
+    try? await grids.createBooleanColumn(
         databaseId: todoDatabase!.id as! String,
         tableId: todoTable!.id as! String,
         key: "isComplete",

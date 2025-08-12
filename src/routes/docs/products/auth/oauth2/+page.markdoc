@@ -312,7 +312,7 @@ print(session.providerAccessToken);
 {% /multicode %}
 
 
-An OAuth 2 [session](/docs/references/cloud/models/session) will have the following attributes.
+An OAuth 2 [session](/docs/references/cloud/models/session) will have the following columns.
 
 | Property                   | Description                                                                                               |
 | -------------------------- | --------------------------------------------------------------------------------------------------------- |

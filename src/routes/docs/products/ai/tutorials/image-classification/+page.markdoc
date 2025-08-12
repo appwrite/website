@@ -92,7 +92,7 @@ Once you've created the database, click on the **Create table** button and creat
 
 Next, create the following schema for the table:
 
-| Attribute | Type      | Size      | Required  | Array     |
+| Column | Type      | Size      | Required  | Array     |
 | --------- | --------- | --------- | --------- | --------- |
 | image     | String    | 256       | Yes       | No        |
 | labels    | String    | 256       | Yes       | Yes       |

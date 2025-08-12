@@ -271,7 +271,7 @@ You can discover the query methods available in the [Queries page.](/docs/produc
 Appwrite Queries are escaped JSON strings, which look like this.
 
 ```json
-"{\"method\":\"equal\",\"attribute\":\"name\",\"values\":[\"John\"]}"
+"{\"method\":\"equal\",\"column\":\"name\",\"values\":[\"John\"]}"
 ```
 
 Query strings are passed to Appwrite using the `queries` parameter. 
@@ -279,7 +279,7 @@ You can attach multiple query strings by including the array parameter multiple 
 
 For example, the unescaped query string might look like this.
 ```text
-?queries[0]={"method":"equal","attribute":"name","values":["John"]}&queries[1]={"method":"limit","values":[6]}
+?queries[0]={"method":"equal","column":"name","values":["John"]}&queries[1]={"method":"limit","values":[6]}
 ```
 
 The JSON has a general format like this.
@@ -287,7 +287,7 @@ The JSON has a general format like this.
 ```json
 {
   "method": "<QUERY_METHOD>",
-  "attribute": "<ATTRIBUTE>",
+  "column": "<ATTRIBUTE>",
   "values": [
     <VALUE1>,
     <VALUE2>,
@@ -306,7 +306,7 @@ For example, to query for all rows with the name "John" or "Jane", the query str
 ```json
 {
   "method": "equal",
-  "attribute": "name",
+  "column": "name",
   "values": [
     "John",
     "Jane"
@@ -320,7 +320,7 @@ When in doubt, you can use the Appwrite SDKs to generate the query strings for y
 ```json
 {
   "method": "isNull",
-  "attribute": "name"
+  "column": "name"
 }
 {
   "method": "select",
@@ -328,7 +328,7 @@ When in doubt, you can use the Appwrite SDKs to generate the query strings for y
 }
 {
   "method": "between",
-  "attribute": "age",
+  "column": "age",
   "values": [18, 30]
 }
 {
@@ -341,7 +341,7 @@ When in doubt, you can use the Appwrite SDKs to generate the query strings for y
 Some Appwrite query methods, like `and` and `or`, allow you to nest queries. 
 When using Appwrite without an SDK, you can template your own JSON strings.
 
-In these cases, `attribute` is empty and `values` is an array of queries.
+In these cases, `column` is empty and `values` is an array of queries.
 
 ```json
 {
@@ -349,12 +349,12 @@ In these cases, `attribute` is empty and `values` is an array of queries.
   "values": [
     {
       "method": "equal",
-      "attribute": "name",
+      "column": "name",
       "values": ["John"]
     },
     {
       "method": "between",
-      "attribute": "age",
+      "column": "age",
       "values": [20, 30]
     }
   ]
