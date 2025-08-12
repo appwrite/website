@@ -8,4 +8,4 @@
     const { children }: StrongProps = $props();
 </script>
 
-<strong class="font-medium">{@render children()}</strong>
+<strong>{@render children()}</strong>

@@ -2,14 +2,13 @@
     import { getContext, hasContext } from 'svelte';
     import type { Writable } from 'svelte/store';
 
-    interface Props {
+    interface CodeProps {
         content: string;
     }
 
-    let { content }: Props = $props();
+    let { content }: CodeProps = $props();
 
     if (hasContext('isCodeInsideTd')) {
-        // setting `true` correctly uses flex & align center.
         getContext<Writable<boolean>>('isCodeInsideTd').set(true);
     }
 </script>

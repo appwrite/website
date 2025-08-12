@@ -65,7 +65,7 @@
             </div>
             <div class="web-article-header-end"></div>
         </header>
-        <div class="web-article-content" class:web-reduced-article-size={$reducedArticleSize}>
+        <div class="web-article-content prose" class:web-reduced-article-size={$reducedArticleSize}>
             <slot />
 
             <Feedback {date} />

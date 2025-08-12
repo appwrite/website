@@ -9,7 +9,7 @@
     import { getContext, hasContext } from 'svelte';
     import type { CodeContext } from '../tags/MultiCode.svelte';
 
-    interface Props {
+    interface FenceProps {
         content: string;
         toCopy?: string | undefined;
         language: Language;
@@ -25,7 +25,7 @@
         process,
         withLineNumbers = true,
         badge = null
-    }: Props = $props();
+    }: FenceProps = $props();
 
     const inTutorialDocs = isInTutorialDocs();
     const insideMultiCode = hasContext('multi-code');

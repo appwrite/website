@@ -1,22 +1,13 @@
 <script lang="ts">
     import { type Snippet } from 'svelte';
 
-    interface Props {
+    interface CardsProps {
         children: Snippet;
     }
 
-    const { children }: Props = $props();
+    const { children }: CardsProps = $props();
 </script>
 
-<div>
-    <ul class="web-grid-row-2">
-        {@render children()}
-    </ul>
+<div class="not-prose grid grid-cols-1 gap-8 md:grid-cols-2">
+    {@render children()}
 </div>
-
-<style>
-    div {
-        margin-block-start: 1rem;
-        margin-block-end: 2rem;
-    }
-</style>

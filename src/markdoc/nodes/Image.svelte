@@ -6,13 +6,13 @@
     import { quadInOut } from 'svelte/easing';
     import { fade, scale } from 'svelte/transition';
 
-    interface Props {
+    interface ImageProps {
         src: string;
         alt: string;
         title: string;
     }
 
-    let { src, alt, title }: Props = $props();
+    let { src, alt, title }: ImageProps = $props();
 
     const inTable = hasContext('in-table') ? getContext('in-table') : false;
     const isAudio = /\.(wav|mp3|m4a|ogg)$/i.test(src);
