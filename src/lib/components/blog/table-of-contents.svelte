@@ -1,5 +1,5 @@
 <script lang="ts" module>
-    export type TocItem = {
+    export interface TocItem {
         title: string;
         href: string;
         step?: number;
@@ -11,32 +11,18 @@
             selected: boolean;
             level?: number;
         }>;
-    };
+    }
 </script>
 
 <script lang="ts">
     import { classNames } from '$lib/utils/classnames';
-    import { fade } from 'svelte/transition';
-
-    const backToTop = () => {
-        window.scrollTo({ top: 0 });
-    };
-
-    let isScrolled: boolean = $state(false);
-
-    const handleIsScrolled = () => {
-        isScrolled = !!window.scrollY;
-    };
-
-    interface Props {
+    interface TableOfContentProps {
         toc?: Array<TocItem>;
         heading?: string;
     }
 
-    let { toc = [], heading = 'Table of Contents' }: Props = $props();
+    let { toc = [], heading = 'Table of Contents' }: TableOfContentProps = $props();
 </script>
-
-<svelte:window onscroll={handleIsScrolled} />
 
 <nav class="sticky top-32 col-span-3 mt-2 -ml-4 hidden h-[800px] flex-col gap-6 lg:flex">
     <span class="text-eyebrow text-primary font-aeonik-fono ps-6 uppercase">{heading}</span>
@@ -86,16 +72,4 @@
             {/each}
         </ul>
     </div>
-
-    {#if isScrolled}
-        <button
-            class="text-primary group border-smooth text-caption ms-6 -mt-4 flex cursor-pointer items-center gap-2 border-t pt-10 font-medium transition-all"
-            onclick={backToTop}
-            out:fade
-            in:fade
-        >
-            <span class="web-icon-arrow-up transition group-hover:-translate-y-0.5"></span>
-            Back to Top
-        </button>
-    {/if}
 </nav>
