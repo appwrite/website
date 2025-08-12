@@ -12,18 +12,18 @@ For client applications that need bulk-like functionality, consider using [Appwr
 
 # Atomic behavior {% #atomic-behavior %}
 
-Bulk operations in Appwrite are **atomic**, meaning they follow an all-or-nothing approach. Either all documents in your bulk request succeed, or all documents fail.
+Bulk operations in Appwrite are **atomic**, meaning they follow an all-or-nothing approach. Either all rows in your bulk request succeed, or all rows fail.
 
 This atomicity ensures:
 - **Data consistency**: Your database remains in a consistent state even if some operations would fail.
 - **Race condition prevention**: Multiple clients can safely perform bulk operations simultaneously.
 - **Simplified error handling**: You only need to handle complete success or complete failure scenarios.
 
-For example, if you attempt to create 100 documents and one fails due to a validation error, none of the 100 documents will be created.
+For example, if you attempt to create 100 rows and one fails due to a validation error, none of the 100 rows will be created.
 
-# Create documents {% #create-documents %}
+# Create rows {% #create-rows %}
 
-You can create multiple rows in a single request using the `createDocuments` method.
+You can create multiple rows in a single request using the `createRows` method.
 
 {% multicode %}
 ```server-nodejs
@@ -65,7 +65,7 @@ grids = Grids(client)
 
 result = grids.create_rows(
     database_id = '<DATABASE_ID>',
-    collection_id = '<TABLE_ID>',
+    table_id = '<TABLE_ID>',
     rows = [
         {
             '$id': appwrite.ID.unique(),
@@ -125,7 +125,7 @@ grids = Grids(client)
 
 result = grids.update_rows(
     database_id = '<DATABASE_ID>',
-    collection_id = '<TABLE_ID>',
+    table_id = '<TABLE_ID>',
     data = {
         'status': 'published'
     },
@@ -165,7 +165,7 @@ const result = await grids.upsertRows(
             name: 'New Row 1'
         },
         {
-            $id: 'row-id-2', // Existing document ID
+            $id: 'row-id-2', // Existing row ID
             name: 'New Row 2'
         }
     ]
@@ -186,7 +186,7 @@ grids = Grids(client)
 
 result = grids.upsert_rows(
     database_id = '<DATABASE_ID>',
-    collection_id = '<TABLE_ID>',
+    table_id = '<TABLE_ID>',
     rows = [
         {
             '$id': appwrite.ID.unique(),
@@ -244,7 +244,7 @@ grids = Grids(client)
 
 result = grids.delete_rows(
     database_id = '<DATABASE_ID>',
-    collection_id = '<TABLE_ID>',
+    table_id = '<TABLE_ID>',
     queries = [
         Query.equal('status', 'archived')
     ]

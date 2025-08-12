@@ -115,7 +115,7 @@ val client = Client()
 
 val users = Users(client)
 
-val token = users.createToken("[USER_ID]")
+val token = users.createToken("<USER_ID>")
 val secret = token.secret
 ```
 
@@ -129,7 +129,7 @@ let client = Client()
 
 let users = Users(client)
 
-let token = try await users.createToken("[USER_ID]")
+let token = try await users.createToken("<USER_ID>")
 let secret = token.secret
 ```
 
@@ -143,7 +143,7 @@ var client = new Client()
 
 var users = new Users(client);
 
-var token = await users.CreateToken("[USER_ID]");
+var token = await users.CreateToken("<USER_ID>");
 var secret = token.secret;
 ```
 {% /multicode %}
@@ -201,8 +201,8 @@ let client = Client()
 let account = Account(client);
 
 let session = try await account.createSession(
-    userId: "[USER_ID]",
-    secret: "[SECRET]"
+    userId: "<USER_ID>",
+    secret: "<SECRET>"
 );
 ```
 
@@ -217,14 +217,14 @@ val client = Client()
 val account = Account(client);
 
 val session = account.createSession(
-    userId = "[USER_ID]",
-    secret = "[SECRET]"
+    userId = "<USER_ID>",
+    secret = "<SECRET>"
 );
 ```
 
 ```graphql
 mutation {
-    accountcreateSession(userId: "[USER_ID]", secret: "[SECRET]") {
+    accountcreateSession(userId: "<USER_ID>", secret: "<SECRET>") {
         _id
         userId
         provider

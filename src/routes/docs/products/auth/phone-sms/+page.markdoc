@@ -148,7 +148,7 @@ let account = Account(client);
 
 let session = try await account.createSession(
     userId: userId,
-    secret: "[SECRET]"
+    secret: "<SECRET>"
 );
 ```
 ```client-android-kotlin
@@ -164,13 +164,13 @@ val account = Account(client);
 
 val session = account.createSession(
     userId = userId,
-    secret = "[SECRET]"
+    secret = "<SECRET>"
 );
 ```
 
 ```graphql
 mutation {
-    accountCreateSession(userId: "[USER_ID]", secret: "[SECRET]") {
+    accountCreateSession(userId: "<USER_ID>", secret: "<SECRET>") {
         _id
         userId
         provider

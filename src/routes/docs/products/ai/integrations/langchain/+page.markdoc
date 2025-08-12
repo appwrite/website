@@ -9,7 +9,7 @@ readtime: 15
 # Prerequisites {% #prerequisites %}
 
 - An Appwrite project
-- An Appwrite collection
+- An Appwrite table
 - An [OpenAI API key](https://platform.openai.com/account/api-keys)
 - A [Pinecone API key](https://docs.pinecone.io/guides/getting-started/quickstart#2-get-your-api-key)
 - A Pinecone index
@@ -47,7 +47,7 @@ npm install @pinecone-database/pinecone openai @langchain/core @langchain/openai
 For this example, the function will be able to take both `GET` and `POST` requests.
 
 For the `GET` request, return a static HTML page that will have a form to search the Pinecone index. Meanwhile the `POST /search` requests will send the search query to the Pinecone API and return the results.
-All other `POST` requests will trigger the indexing of the Appwrite collection into the Pinecone index.
+All other `POST` requests will trigger the indexing of the Appwrite table into the Pinecone index.
 
 Write the code to return the static HTML page, to do this create a new `src/utils.js` file with the following code:
 
@@ -248,14 +248,14 @@ if (req.path === '/prompt') {
 }
 ```
 
-This code will handle the prompt requests by creating a LangChain sequence that will format the documents as strings, prompt the user for a question, and then use the OpenAI API to generate a response. The response is then parsed and returned to the user.
+This code will handle the prompt requests by creating a LangChain sequence that will format the rows as strings, prompt the user for a question, and then use the OpenAI API to generate a response. The response is then parsed and returned to the user.
 {% /section %}
 
 {% section #step-8 step=8 title="Handle index requests" %}
-The Appwrite collection needs to be indexed into the Pinecone index. Create a new file at `src/appwrite.js` with the following code:
+The Appwrite table needs to be indexed into the Pinecone index. Create a new file at `src/appwrite.js` with the following code:
 
 ```js
-import { Client, Databases, Query } from 'node-appwrite';
+import { Client, Grids, Query } from 'node-appwrite';
 
 export default class AppwriteService {
   constructor() {
@@ -267,10 +267,10 @@ export default class AppwriteService {
       .setProject(process.env.APPWRITE_FUNCTION_PROJECT_ID)
       .setKey(process.env.APPWRITE_API_KEY);
 
-    this.databases = new Databases(client);
+    this.grids = new Grids(client);
   }
 
-  async getAllDocuments(databaseId, collectionId) {
+  async getAllRows(databaseId, tableId) {
     const cumulative = [];
 
     let cursor = null;
@@ -281,19 +281,19 @@ export default class AppwriteService {
         queries.push(Query.cursorAfter(cursor));
       }
 
-      const { documents } = await this.databases.listDocuments(
+      const { rows } = await this.grids.listRows(
         databaseId,
-        collectionId,
+        tableId,
         queries
       );
 
-      if (documents.length === 0) {
+      if (rows.length === 0) {
         break;
       }
 
-      cursor = documents[documents.length - 1].$id;
+      cursor = rows[rows.length - 1].$id;
 
-      cumulative.push(...documents);
+      cumulative.push(...rows);
     } while (cursor);
 
     return cumulative;
@@ -301,35 +301,35 @@ export default class AppwriteService {
 }
 ```
 
-The service provides a method to iterate the documents contained within an entire collection, fetching the limit of 100 documents per request.
+The service provides a method to iterate the rows contained within an entire table, fetching the limit of 100 rows per request.
 
 ```js
 const appwrite = new AppwriteService();
 
-const appwriteDocuments = await appwrite.getAllDocuments(
+const appwriteRows = await appwrite.getAllRows(
   process.env.APPWRITE_DATABASE_ID,
-  process.env.APPWRITE_COLLECTION_ID
+  process.env.APPWRITE_TABLE_ID
 );
 
-const documents = appwriteDocuments.map(
-  (document) =>
-    new Document({
-      metadata: { id: document.$id },
-      pageContent: Object.entries(document)
+const rows = appwriteRows.map(
+  (row) =>
+    new Row({
+      metadata: { id: row.$id },
+      pageContent: Object.entries(row)
         .filter(([key, _]) => !key.startsWith('$'))
         .map(([key, value]) => `${key}: ${value}`)
         .join('\n'),
     })
 );
 
-await PineconeStore.fromDocuments(documents, new OpenAIEmbeddings(), {
+await PineconeStore.fromDocuments(rows, new OpenAIEmbeddings(), {
   pineconeIndex,
   maxConcurrency: 5,
 });
 
 ```
 
-Within our function handler, the service is instantiated and used to create an array of LangChain documents. LangChain documents can then be used with the `PineconeStore.fromDocuments` method to retrieve embeddings from OpenAI and upsert them to your Pinecone index.
+Within our function handler, the service is instantiated and used to create an array of LangChain rows. LangChain rows can then be used with the `PineconeStore.fromDocuments` method to retrieve embeddings from OpenAI and upsert them to your Pinecone index.
 {% /section %}
 
 {% section #step-9 step=9 title="Test the function" %}

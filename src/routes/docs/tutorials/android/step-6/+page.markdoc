@@ -5,19 +5,19 @@ description: Add databases and queries to store user data in you Android applica
 step: 6
 ---
 
-# Create collection {% #create-collection %}
+# Create table {% #create-table %}
 
-In Appwrite, data is stored as a collection of documents. Create a collection in the [Appwrite Console](https://cloud.appwrite.io/) to store our ideas.
+In Appwrite, data is stored as a table of rows. Create a table in the [Appwrite Console](https://cloud.appwrite.io/) to store our ideas.
 
 {% only_dark %}
-![Create project screen](/images/docs/tutorials/dark/idea-tracker-collection.png)
+![Create project screen](/images/docs/tutorials/dark/idea-tracker-table.png)
 {% /only_dark %}
 
 {% only_light %}
-![Create project screen](/images/docs/tutorials/idea-tracker-collection.png)
+![Create project screen](/images/docs/tutorials/idea-tracker-table.png)
 {% /only_light %}
 
-Create a new collection with the following attributes:
+Create a new table with the following attributes:
 
 | Attribute   | Type   | Required | Size     |
 |-------------|--------|----------|----------|
@@ -26,19 +26,19 @@ Create a new collection with the following attributes:
 | description | String | No       | 500      |
 
 {% only_dark %}
-![Collection permissions screen](/images/docs/tutorials/dark/idea-tracker-permissions.png)
+![Table permissions screen](/images/docs/tutorials/dark/idea-tracker-permissions.png)
 {% /only_dark %}
 {% only_light %}
-![Collection permissions screen](/images/docs/tutorials/idea-tracker-permissions.png)
+![Table permissions screen](/images/docs/tutorials/idea-tracker-permissions.png)
 {% /only_light %}
 
-Navigate to the **Settings** tab of your collection, add the role **Any** and check the **Read** box.
+Navigate to the **Settings** tab of your table, add the role **Any** and check the **Read** box.
 Next, add a **Users** role and give them access to **Create**, **Update** and **Delete** by checking those boxes.
 
 # Add and remove methods {% #add-add-remove-methods %}
 
-Now that you have a collection to hold ideas, we can read and write to it from our app.
-Create a new file `services/IdeasService.kt` and add the following code to it. Replace the values for `ideaDatabaseId` and `ideaCollectionId` with the IDs of the database and collection you created in the previous step.
+Now that you have a table to hold ideas, we can read and write to it from our app.
+Create a new file `services/IdeasService.kt` and add the following code to it. Replace the values for `ideaDatabaseId` and `ideaTableId` with the IDs of the database and table you created in the previous step.
 
 ```kotlin
 package <YOUR_ROOT_PACKAGE_HERE>.services
@@ -46,33 +46,33 @@ package <YOUR_ROOT_PACKAGE_HERE>.services
 import io.appwrite.Client
 import io.appwrite.ID
 import io.appwrite.Query
-import io.appwrite.models.Document
+import io.appwrite.models.Row
 import io.appwrite.services.Databases
 
 class IdeaService(client: Client) {
     companion object {
         private const val ideaDatabaseId = "<YOUR_IDEA_DATABASE_ID_HERE>"
-        private const val ideaCollectionId = "<YOUR_IDEA_COLLECTION_ID_HERE>"
+        private const val ideaTableId = "<YOUR_IDEA_TABLE_ID_HERE>"
     }
 
-    private val databases = Databases(client)
+    private val grids = Grids(client)
 
-    suspend fun fetch(): List<Document<Map<String, Any>>> {
-        return databases.listDocuments(
+    suspend fun fetch(): List<Row<Map<String, Any>>> {
+        return grids.listRows(
             ideaDatabaseId,
-            ideaCollectionId,
+            ideaTableId,
             listOf(Query.orderDesc("\$createdAt"), Query.limit(10))
-        ).documents
+        ).rows
     }
 
     suspend fun add(
         userId: String,
         title: String,
         description: String
-    ): Document<Map<String, Any>> {
-        return databases.createDocument(
+    ): Row<Map<String, Any>> {
+        return grids.createRow(
             ideaDatabaseId,
-            ideaCollectionId,
+            ideaTableId,
             ID.unique(),
             mapOf(
                 "userId" to userId,
@@ -83,9 +83,9 @@ class IdeaService(client: Client) {
     }
 
     suspend fun remove(id: String) {
-        databases.deleteDocument(
+        grids.deleteRow(
             ideaDatabaseId,
-            ideaCollectionId,
+            ideaTableId,
             id
         )
     }

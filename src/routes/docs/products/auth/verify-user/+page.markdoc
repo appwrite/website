@@ -254,15 +254,15 @@ result.then((response) {
 
 ```client-apple
 let response = try await account.updatePhoneVerification(
-    userId: "[USER_ID]",
-    secret: "[SECRET]"
+    userId: "<USER_ID>",
+    secret: "<SECRET>"
 )
 ```
 
 ```client-android-kotlin
 val response = account.updatePhoneVerification(
-    userId = "[USER_ID]",
-    secret = "[SECRET]"
+    userId = "<USER_ID>",
+    secret = "<SECRET>"
 )
 ```
 {% /multicode %}

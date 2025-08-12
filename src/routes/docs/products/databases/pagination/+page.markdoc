@@ -111,7 +111,7 @@ func main() async throws {
 ```client-android-kotlin
 import io.appwrite.Client
 import io.appwrite.Query
-import io.appwrite.services.Tables
+import io.appwrite.services.Grids
 
 suspend fun main() {
     val client = Client(applicationContext)
@@ -254,7 +254,7 @@ import android.util.Log
 import io.appwrite.AppwriteException
 import io.appwrite.Client
 import io.appwrite.Query
-import io.appwrite.services.Tables
+import io.appwrite.services.Grids
 
 suspend fun main() {
     val client = Client(applicationContext)

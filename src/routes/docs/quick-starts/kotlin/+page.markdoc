@@ -36,10 +36,10 @@ Then, under **Integrate with your server**, add an **API Key** with the followin
 | Category  {% width=120 %} | Required scopes       | Purpose |
 |-----------|-----------------------|---------|
 | Database  | `databases.write`     | Allows API key to create, update, and delete [databases](/docs/products/databases/databases). |
-|           | `collections.write`   | Allows API key to create, update, and delete [collections](/docs/products/databases/collections). |
-|           | `attributes.write`    | Allows API key to create, update, and delete [attributes](/docs/products/databases/collections#attributes). |
-|           | `documents.read`      | Allows API key to read [documents](/docs/products/databases/documents). |
-|           | `documents.write`     | Allows API key to create, update, and delete [documents](/docs/products/databases/documents). |
+|           | `tables.write`   | Allows API key to create, update, and delete [tables](/docs/products/databases/tables). |
+|           | `attributes.write`    | Allows API key to create, update, and delete [attributes](/docs/products/databases/tables#attributes). |
+|           | `rows.read`      | Allows API key to read [rows](/docs/products/databases/rows). |
+|           | `rows.write`     | Allows API key to create, update, and delete [rows](/docs/products/databases/rows). |
 
 Other scopes are optional.
 
@@ -87,7 +87,7 @@ import io.appwrite.Client
 import io.appwrite.ID
 import io.appwrite.services.Databases
 import io.appwrite.models.Database
-import io.appwrite.models.Collection
+import io.appwrite.models.Table
 import kotlinx.coroutines.coroutineScope
 
 val client = Client()
@@ -99,38 +99,38 @@ val client = Client()
 {% /section %}
 {% section #step-5 step=5 title="Initialize database" %}
 
-Once the Appwrite Client is initialized, create a function to configure a todo collection.
+Once the Appwrite Client is initialized, create a function to configure a todo table.
 
 ```kotlin
-val databases = Databases(client)
+val grids = Grids(client)
 
 var todoDatabase: Database? = null
-var todoCollection: Collection? = null
+var todoTable: Table? = null
 
 suspend fun prepareDatabase() {
-    todoDatabase = databases.create(ID.unique(), "TodosDB")
-    todoCollection = databases.createCollection(todoDatabase?.id!!, ID.unique(), "Todos")
+    todoDatabase = grids.create(ID.unique(), "TodosDB")
+    todoTable = grids.createTable(todoDatabase?.id!!, ID.unique(), "Todos")
 
-    databases.createStringAttribute(
+    grids.createStringAttribute(
         databaseId = todoDatabase?.id!!,
-        collectionId = todoCollection?.id!!,
+        tableId = todoTable?.id!!,
         key = "title",
         size = 255,
         required = true
     )
 
-    databases.createStringAttribute(
+    grids.createStringAttribute(
         databaseId = todoDatabase?.id!!,
-        collectionId = todoCollection?.id!!,
+        tableId = todoTable?.id!!,
         key = "description",
         size = 255,
         required = false,
         default = "This is a test description."
     )
 
-    databases.createBooleanAttribute(
+    grids.createBooleanAttribute(
         databaseId = todoDatabase?.id!!,
-        collectionId = todoCollection?.id!!,
+        tableId = todoTable?.id!!,
         key = "isComplete",
         required = true
     )
@@ -138,8 +138,8 @@ suspend fun prepareDatabase() {
 ```
 
 {% /section %}
-{% section #step-6 step=6 title="Add documents" %}
-Create a function to add some mock data into your new collection.
+{% section #step-6 step=6 title="Add rows" %}
+Create a function to add some mock data into your new table.
 ```kotlin
 suspend fun seedDatabase() {
     val testTodo1 = mapOf(
@@ -159,38 +159,38 @@ suspend fun seedDatabase() {
         "isComplete" to false
     )
 
-    databases.createDocument(
+    grids.createRow(
         databaseId = todoDatabase?.id!!,
-        collectionId = todoCollection?.id!!,
-        documentId = ID.unique(),
+        tableId = todoTable?.id!!,
+        rowId = ID.unique(),
         data = testTodo1
     )
 
-    databases.createDocument(
+    grids.createRow(
         databaseId = todoDatabase?.id!!,
-        collectionId = todoCollection?.id!!,
-        documentId = ID.unique(),
+        tableId = todoTable?.id!!,
+        rowId = ID.unique(),
         data = testTodo2
     )
 
-    databases.createDocument(
+    grids.createRow(
         databaseId = todoDatabase?.id!!,
-        collectionId = todoCollection?.id!!,
-        documentId = ID.unique(),
+        tableId = todoTable?.id!!,
+        rowId = ID.unique(),
         data = testTodo3
     )
 }
 ```
 
 {% /section %}
-{% section #step-7 step=7 title="Retrieve documents" %}
+{% section #step-7 step=7 title="Retrieve rows" %}
 
 Create a function to retrieve the mock todo data.
 
 ```kotlin
 suspend fun getTodos() {
-    val todos = databases.listDocuments(todoDatabase?.id!!, todoCollection?.id!!)
-    for (todo in todos.documents) {
+    val todos = grids.listRows(todoDatabase?.id!!, todoTable?.id!!)
+    for (todo in todos.rows) {
         println(
             """
             Title: ${todo.data["title"]}

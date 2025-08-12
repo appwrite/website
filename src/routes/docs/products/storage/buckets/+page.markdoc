@@ -4,7 +4,7 @@ title: Buckets
 description: Organize and manage your files effectively with Appwrite Storage Buckets. Explore how to create, configure, and use storage buckets for seamless file organization.
 ---
 
-Storage buckets are a group of files, similar to collections in Appwrite Databases.
+Storage buckets are a group of files, similar to tables in Appwrite Databases.
 Buckets let you limit file size and extensions, whether or not to encrypt the files, and more.
 
 # Create Bucket {% #create-bucket %}
@@ -23,7 +23,7 @@ You can create a bucket by heading to the **Storage** page and clicking **Create
 {% /tabsitem %}
 
 {% tabsitem #server-sdk title="Server SDK" %}
-You can also create collections programmatically using a [Server SDK](/docs/sdks#server). Appwrite [Server SDKs](/docs/sdks#server) require an [API key](/docs/advanced/platform/api-keys).
+You can also create tables programmatically using a [Server SDK](/docs/sdks#server). Appwrite [Server SDKs](/docs/sdks#server) require an [API key](/docs/advanced/platform/api-keys).
 
 {% multicode %}
 
@@ -135,8 +135,8 @@ var client = new Client()
 var storage = new Storage(client);
 
 Bucket result = await storage.CreateBucket(
-    bucketId: "[BUCKET_ID]",
-    name: "[NAME]");
+    bucketId: "<BUCKET_ID>",
+    name: "<NAME>");
 ```
 ```dart
 import 'package:dart_appwrite/dart_appwrite.dart';
@@ -176,8 +176,8 @@ val client = Client(context)
 val storage = Storage(client)
 
 val response = storage.createBucket(
-    bucketId = "[BUCKET_ID]",
-    name = "[NAME]",
+    bucketId = "<BUCKET_ID>",
+    name = "<NAME>",
 )
 ```
 ```java
@@ -193,8 +193,8 @@ Client client = new Client()
 Storage storage = new Storage(client);
 
 storage.createBucket(
-    "[BUCKET_ID]",
-    "[NAME]",
+    "<BUCKET_ID>",
+    "<NAME>",
     new CoroutineCallback<>((result, error) -> {
         if (error != null) {
             error.printStackTrace();
@@ -216,8 +216,8 @@ let client = Client()
 let storage = Storage(client)
 
 let bucket = try await storage.createBucket(
-    bucketId: "[BUCKET_ID]",
-    name: "[NAME]"
+    bucketId: "<BUCKET_ID>",
+    name: "<NAME>"
 )
 
 ```

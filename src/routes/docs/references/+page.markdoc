@@ -34,7 +34,7 @@ Add signup, login, logout, and other common authentication methods to client app
 Manage users from an admin scope to build server integrations.
 {% /cards_item %}
 {% cards_item href="/docs/references/cloud/client-web/teams" title="Teams" %}
-Group users to share access to documents, files, and functions.
+Group users to share access to rows, files, and functions.
 {% /cards_item %}
 {% cards_item href="/docs/references/cloud/client-web/databases" title="Databases" %}
 Scalable and robust database backed by your favorite technologies.

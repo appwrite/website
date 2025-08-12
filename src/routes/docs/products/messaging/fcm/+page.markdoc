@@ -244,8 +244,8 @@ var client = new Client()
 var messaging = new Messaging(client);
 
 Provider result = await messaging.UpdateFCMProvider(
-    providerId: "[PROVIDER_ID]"
-    name: "[NAME]"                                // optional
+    providerId: "<PROVIDER_ID>"
+    name: "<NAME>"                                // optional
     enabled: false                                // optional
     serviceAccountJSON: [object]);                // optional
 ```
@@ -292,8 +292,8 @@ Client client = new Client()
 Messaging messaging = new Messaging(client);
 
 messaging.updateFCMProvider(
-    "[PROVIDER_ID]",                              // providerId
-    "[NAME]",                                     // name (optional)
+    "<PROVIDER_ID>",                              // providerId
+    "<NAME>",                                     // name (optional)
     false,                                        // enabled (optional)
     mapOf( "a" to "b" )                           // serviceAccountJSON (optional)
     new CoroutineCallback<>((result, error) -> {
@@ -319,8 +319,8 @@ Client client = new Client()
 Messaging messaging = new Messaging(client);
 
 messaging.updateFCMProvider(
-    "[PROVIDER_ID]",                              // providerId
-    "[NAME]",                                     // name (optional)
+    "<PROVIDER_ID>",                              // providerId
+    "<NAME>",                                     // name (optional)
     false,                                        // enabled (optional)
     mapOf( "a" to "b" )                           // serviceAccountJSON (optional)
     new CoroutineCallback<>((result, error) -> {
@@ -344,8 +344,8 @@ let client = Client()
 let messaging = Messaging(client)
 
 let provider = try await messaging.updateFCMProvider(
-  providerId: "[PROVIDER_ID]",
-  name: "[NAME]",                                // optional
+  providerId: "<PROVIDER_ID>",
+  name: "<NAME>",                                // optional
   enabled: xfalse,                               // optional
   serviceAccountJSON: [:]                        // optional
 )

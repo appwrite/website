@@ -50,7 +50,7 @@ Open up your `src/main.js` file and replace the function body with the following
 ```js
 export default async ({ req, res, log, error }) => {
   const databaseId = process.env.APPWRITE_DATABASE_ID ?? 'ai';
-  const collectionId = process.env.APPWRITE_COLLECTION_ID ?? 'image_classification';
+  const tableId = process.env.APPWRITE_TABLE_ID ?? 'image_classification';
   const bucketId = process.env.APPWRITE_BUCKET_ID ?? 'image_classification';
 
   // Allows using direct execution or file create event
@@ -84,13 +84,13 @@ In order for this function to work, create a new bucket in the Appwrite Storage.
 Use the default configuration for the bucket. Make sure to note down the bucket ID so you can add it as an environment variable later.
 {% /section %}
 
-{% section #step-6 step=6 title="Create Appwrite collection" %}
-Before saving the classification result to Appwrite Databases, create a new database and collection in the Appwrite Console.
+{% section #step-6 step=6 title="Create Appwrite table" %}
+Before saving the classification result to Appwrite Databases, create a new database and table in the Appwrite Console.
 
 Navigate to the Appwrite Console and click on **Database** in the left sidebar, then click on the **Create database** button, and name it, for example `AI`.
-Once you've created the database, click on the **Create collection** button and create a new collection, and name it, for example `Image Labels`.
+Once you've created the database, click on the **Create table** button and create a new table, and name it, for example `Image Labels`.
 
-Next, create the following schema for the collection:
+Next, create the following schema for the table:
 
 | Attribute | Type      | Size      | Required  | Array     |
 | --------- | --------- | --------- | --------- | --------- |
@@ -112,7 +112,7 @@ With the payload parsed, now you can download the image from Appwrite Storage.
 Create a new file called `appwrite.js` in the `src` directory and add the following code:
 
 ```js
-import { Client, Databases, ID, Storage } from 'node-appwrite';
+import { Client, Grids, ID, Storage } from 'node-appwrite';
 
 class AppwriteService {
   constructor() {
@@ -124,7 +124,7 @@ class AppwriteService {
       .setProject(process.env.APPWRITE_FUNCTION_PROJECT_ID)
       .setKey(process.env.APPWRITE_API_KEY);
 
-    this.databases = new Databases(client);
+    this.grids = new Grids(client);
     this.storage = new Storage(client);
   }
 
@@ -183,11 +183,11 @@ With the image classified, save the result to the Appwrite Databases.
 To begin, add a new function to the `appwrite.js` file created earlier which will add these records in the database.
 
 ```js
-async createImageLabels(databaseId, collectionId, imageId, labels)
+async createImageLabels(databaseId, tableId, imageId, labels)
 {
-  await this.databases.createDocument(
+  await this.grids.createRow(
     databaseId,
-    collectionId,
+    tableId,
     ID.unique(),
     {
       image: imageId,
@@ -202,7 +202,7 @@ In the `main.js` file, save the result to the Appwrite Database.
 Add the following code:
 
 ```js
-await appwrite.createImageLabels(databaseId, collectionId, fileId, result);
+await appwrite.createImageLabels(databaseId, tableId, fileId, result);
 
 log('Image ' + fileId + ' classified', result);
 return res.json(result);

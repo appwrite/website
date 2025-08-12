@@ -84,7 +84,7 @@ Server integrations use API keys to authenticate and are typically used for back
 Server APIs are authenticated with API keys instead of account sessions. Simply pass an [API key](/docs/advanced/platform/api-keys) in the `X-Appwrite-key: [API-KEY]` header with the appropriate scopes.
 
 ```json
-GET /v1/databases/{databaseId}/collections/{collectionId}/documents HTTP/1.1
+GET /v1/databases/{databaseId}/tables/{tableId}/rows HTTP/1.1
 Content-Type: application/json
 X-Appwrite-Project: <PROJECT_ID>
 X-Appwrite-Key: [API_KEY]
@@ -205,19 +205,19 @@ Appwrite SDKs have helpers to generate permission string formats, but when using
 - API string
 ---
 - `Permission.read()`
-- `read("[PERMISSION_ROLE]")`
+- `read("<PERMISSION_ROLE>")`
 ---
 - `Permission.create()`
-- `read("[PERMISSION_ROLE]")`
+- `read("<PERMISSION_ROLE>")`
 ---
 - `Permission.update()`
-- `update("[PERMISSION_ROLE]")`
+- `update("<PERMISSION_ROLE>")`
 ---
 - `Permission.delete()`
-- `delete("[PERMISSION_ROLE]")`
+- `delete("<PERMISSION_ROLE>")`
 ---
 - `Permission.write()`
-- `write("[PERMISSION_ROLE]")`
+- `write("<PERMISSION_ROLE>")`
 {% /table %}
 
 ## Roles {% #roles %}
@@ -301,7 +301,7 @@ When using greater than, greater than or equal to, less than, or less than or eq
 While the API will accept multiple values and return results with **or logic**, it's best practice to pass in only one value for performance reasons.
 {% /info %}
 
-For example, to query for all documents with the name "John" or "Jane", the query string would look like this.
+For example, to query for all rows with the name "John" or "Jane", the query string would look like this.
 
 ```json
 {
@@ -333,7 +333,7 @@ When in doubt, you can use the Appwrite SDKs to generate the query strings for y
 }
 {
   "method": "cursorAfter",
-  "values": ["documentId"]
+  "values": ["rowId"]
 }
 ```
 

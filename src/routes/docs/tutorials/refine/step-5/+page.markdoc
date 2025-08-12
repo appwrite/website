@@ -4,17 +4,17 @@ title: Add database
 description: Add a database to your React application using Appwrite Web SDK.
 step: 5
 ---
-# Create collection {% #create-collection %}
-In Appwrite, data is stored as a collection of documents. Create a collection in the [Appwrite Console](https://cloud.appwrite.io/) to store our ideas.
+# Create table {% #create-table %}
+In Appwrite, data is stored as a table of rows. Create a table in the [Appwrite Console](https://cloud.appwrite.io/) to store our ideas.
 
 {% only_dark %}
-![Create project screen](/images/docs/tutorials/refine/posts-collection-dark.png)
+![Create project screen](/images/docs/tutorials/refine/posts-table-dark.png)
 {% /only_dark %}
 {% only_light %}
-![Create project screen](/images/docs/tutorials/refine/posts-collection-light.png)
+![Create project screen](/images/docs/tutorials/refine/posts-table-light.png)
 {% /only_light %}
 
-Create a new collection with the following attributes:
+Create a new table with the following attributes:
 | Field       | Type   | Required |
 |-------------|--------|----------|
 | title       | String | Yes      |
@@ -22,13 +22,13 @@ Create a new collection with the following attributes:
 
 # Connect database to the Refine app {% #blog-context %}
 
-Now that you have a collection to hold blog post contents, we can read and write to it from our app. 
+Now that you have a table to hold blog post contents, we can read and write to it from our app. 
 
 
 
 To integrate Appwrite API with the Refine App,
 - Add a resources array to the `<Refine />` component in `App.tsx`
-- Include your `Appwrite Database ID` in both `dataProvider` and `liveProvider`, and specify the `Appwrite Collection ID` in the resource name property.
+- Include your `Appwrite Database ID` in both `dataProvider` and `liveProvider`, and specify the `Appwrite Table ID` in the resource name property.
 
 
 ```ts
@@ -46,7 +46,7 @@ import { dataProvider, liveProvider } from '@refinedev/appwrite';
   routerProvider={routerProvider}
   resources={[
     {
-      name: "<APPWRITE_COLLECTION_ID>", // resource name must be the same as APPWRITE_COLLECTION_ID.
+      name: "<APPWRITE_TABLE_ID>", // resource name must be the same as APPWRITE_TABLE_ID.
       list: "/posts", // Means that the list action of this resource will be available at /posts in your app
       create: "/posts/create", // create action of this resource will be available at /posts/create
       edit: "/posts/edit/:id", // edit action of this resource will be available at /posts/edit/:id

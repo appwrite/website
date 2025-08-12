@@ -140,10 +140,10 @@ Errors found when using Appwrite Authentication.
 Errors found when using Appwrite Databases.
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400  | collection_limit_exceeded | The maximum number of collections has been reached. |
-| 400  | document_invalid_structure | The document structure is invalid. Please ensure the attributes match the collection definition. |
-| 400  | document_missing_data | The document data is missing. Try again with document data populated. |
-| 400  | document_missing_payload | The document data and permissions are missing. You must provide either document data or permissions to be updated. |
+| 400  | table_limit_exceeded | The maximum number of tables has been reached. |
+| 400  | row_invalid_structure | The row structure is invalid. Please ensure the attributes match the table definition. |
+| 400  | row_missing_data | The row data is missing. Try again with row data populated. |
+| 400  | row_missing_payload | The row data and permissions are missing. You must provide either row data or permissions to be updated. |
 | 400  | attribute_unknown | The attribute required for the index could not be found. Please confirm all your attributes are in the available state. |
 | 400  | attribute_not_available | The requested attribute is not yet available. Please try again later. |
 | 400  | attribute_format_unsupported | The requested attribute format is not supported. |
@@ -153,17 +153,17 @@ Errors found when using Appwrite Databases.
 | 400  | attribute_type_invalid | The attribute type is invalid. |
 | 400  | index_limit_exceeded | The maximum number of indexes has been reached. |
 | 400  | index_invalid | Index invalid. |
-| 403  | document_delete_restricted | Document cannot be deleted because it is referenced by another document. |
+| 403  | row_delete_restricted | Row cannot be deleted because it is referenced by another row. |
 | 404  | execution_not_found | Execution with the requested ID could not be found. |
 | 404  | database_not_found | Database not found |
-| 404  | collection_not_found | Collection with the requested ID could not be found. |
-| 404  | document_not_found | Document with the requested ID could not be found. |
+| 404  | table_not_found | Table with the requested ID could not be found. |
+| 404  | row_not_found | Row with the requested ID could not be found. |
 | 404  | attribute_not_found | Attribute with the requested ID could not be found. |
 | 404  | index_not_found | Index with the requested ID could not be found. |
 | 409  | database_already_exists | Database already exists |
-| 409  | collection_already_exists | A collection with the requested ID already exists. Try again with a different ID or use `unique()` to generate a unique ID. |
-| 409  | document_already_exists | Document with the requested ID already exists. Try again with a different ID or use `unique()` to generate a unique ID. |
-| 409  | document_update_conflict | Remote document is newer than local. |
+| 409  | table_already_exists | A table with the requested ID already exists. Try again with a different ID or use `unique()` to generate a unique ID. |
+| 409  | row_already_exists | Row with the requested ID already exists. Try again with a different ID or use `unique()` to generate a unique ID. |
+| 409  | row_update_conflict | Remote row is newer than local. |
 | 409  | attribute_already_exists | Attribute with the requested ID already exists. Try again with a different ID or use `unique()` to generate a unique ID. |
 | 409  | index_already_exists | Index with the requested ID already exists. Try again with a different ID or use `unique()` to generate a unique ID. |
 

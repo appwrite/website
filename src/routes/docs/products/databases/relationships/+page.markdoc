@@ -100,7 +100,7 @@ const client = new Client()
 
 const grids = new Grids(client);
 
-Tables.createRelationshipColumn(
+grids.createRelationshipColumn(
     'marvel',     // Database ID
     'movies',     // Table ID
     'reviews',    // Related table ID
@@ -115,7 +115,7 @@ Tables.createRelationshipColumn(
 
 ```php
 use \Appwrite\Client;
-use \Appwrite\Services\Tables;
+use \Appwrite\Services\Grids;
 
 $client = (new Client())
     ->setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
@@ -168,7 +168,7 @@ client = Client.new
     .set_endpoint('https://<REGION>.cloud.appwrite.io/v1')# Your API Endpoint
     .set_project('<PROJECT_ID>')               # Your project ID
 
-grids = Tables.new(client)
+grids = Grids.new(client)
 
 grids.create_relationship_column(
     database_id: 'marvel',             # Database ID
@@ -229,7 +229,7 @@ await grids.createRelationshipColumn(
 
 ```kotlin
 import io.appwrite.Client
-import io.appwrite.services.Tables
+import io.appwrite.services.Grids
 
 val client = Client()
     .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
@@ -381,7 +381,7 @@ grids.createRow(
 
 ```kotlin
 import io.appwrite.Client
-import io.appwrite.services.Tables
+import io.appwrite.services.Grids
 import io.appwrite.ID
 
 val client = Client()
@@ -490,7 +490,7 @@ grids.createRow(
 
 ```kotlin
 import io.appwrite.Client
-import io.appwrite.services.Tables
+import io.appwrite.services.Grids
 import io.appwrite.ID
 
 val client = Client()
@@ -598,7 +598,7 @@ grids.updateRow(
 
 ```kotlin
 import io.appwrite.Client
-import io.appwrite.services.Tables
+import io.appwrite.services.Grids
 
 val client = Client()
     .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
@@ -693,7 +693,7 @@ grids.deleteRow(
 
 ```kotlin
 import io.appwrite.Client
-import io.appwrite.services.Tables
+import io.appwrite.services.Grids
 
 val client = Client()
     .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")

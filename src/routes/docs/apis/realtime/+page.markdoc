@@ -181,7 +181,7 @@ val subscription = realtime.subscribe("account") {
 
 You can also listen to multiple channels at once by passing an array of channels. This will trigger the callback for any events for all channels passed.
 
-In this example we are listening to the document A and all files by subscribing to the `databases.A.collections.A.documents.A` and `files` channels.
+In this example we are listening to the row A and all files by subscribing to the `databases.A.tables.A.rows.A` and `files` channels.
 
 {% multicode %}
 ```client-web
@@ -191,8 +191,8 @@ const client = new Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
     .setProject('<PROJECT_ID>');
 
-client.subscribe(['collections.A.documents.A', 'files'], response => {
-    // Callback will be executed on changes for documents A and all files.
+client.subscribe(['tables.A.rows.A', 'files'], response => {
+    // Callback will be executed on changes for rows A and all files.
     console.log(response);
 });
 ```
@@ -206,10 +206,10 @@ final client = Client()
 
 final realtime = Realtime(client);
 
-final subscription = realtime.subscribe(['databases.A.collections.A.documents.A', 'files']);
+final subscription = realtime.subscribe(['databases.A.tables.A.rows.A', 'files']);
 
 subscription.stream.listen((response) {
-    // Callback will be executed on changes for documents A and all files.
+    // Callback will be executed on changes for rows A and all files.
     print(response);
 })
 ```
@@ -224,8 +224,8 @@ let client = Client()
 
 let realtime = Realtime(client)
 
-realtime.subscribe(channels: ["databases.A.collections.A.documents.A", "files"]) { response in
-    // Callback will be executed on changes for documents A and all files.
+realtime.subscribe(channels: ["databases.A.tables.A.rows.A", "files"]) { response in
+    // Callback will be executed on changes for rows A and all files.
     print(String(describing: response))
 }
 ```
@@ -239,8 +239,8 @@ val client = Client(context)
     .setProject("<PROJECT_ID>")
 val realtime = Realtime(client)
 
-realtime.subscribe("databases.A.collections.A.documents.A", "files") {
-    // Callback will be executed on changes for documents A and all files.
+realtime.subscribe("databases.A.tables.A.rows.A", "files") {
+    // Callback will be executed on changes for rows A and all files.
     print(it.toString())
 }
 ```
@@ -350,40 +350,40 @@ The payload from the subscription will contain following properties:
 * Payload contains the data equal to the response model.
 {% /table %}
 
-If you subscribe to the `documents` channel and a document the user is allowed to read is updated, you will receive an object containing information about the event and the updated document.
+If you subscribe to the `rows` channel and a row the user is allowed to read is updated, you will receive an object containing information about the event and the updated row.
 
 The response will look like this:
 
 ```json
 {
   "events": [
-    "databases.default.collections.sample.documents.63c98b9baea0938e1206.update",
-    "databases.*.collections.*.documents.*.update",
-    "databases.default.collections.*.documents.63c98b9baea0938e1206.update",
-    "databases.*.collections.*.documents.63c98b9baea0938e1206.update",
-    "databases.*.collections.sample.documents.63c98b9baea0938e1206.update",
-    "databases.default.collections.sample.documents.*.update",
-    "databases.*.collections.sample.documents.*.update",
-    "databases.default.collections.*.documents.*.update",
-    "databases.default.collections.sample.documents.63c98b9baea0938e1206",
-    "databases.*.collections.*.documents.*",
-    "databases.default.collections.*.documents.63c98b9baea0938e1206",
-    "databases.*.collections.*.documents.63c98b9baea0938e1206",
-    "databases.*.collections.sample.documents.63c98b9baea0938e1206",
-    "databases.default.collections.sample.documents.*",
-    "databases.*.collections.sample.documents.*",
-    "databases.default.collections.*.documents.*",
-    "databases.default.collections.sample",
-    "databases.*.collections.*",
-    "databases.default.collections.*",
-    "databases.*.collections.sample",
+    "databases.default.tables.sample.rows.63c98b9baea0938e1206.update",
+    "databases.*.tables.*.rows.*.update",
+    "databases.default.tables.*.rows.63c98b9baea0938e1206.update",
+    "databases.*.tables.*.rows.63c98b9baea0938e1206.update",
+    "databases.*.tables.sample.rows.63c98b9baea0938e1206.update",
+    "databases.default.tables.sample.rows.*.update",
+    "databases.*.tables.sample.rows.*.update",
+    "databases.default.tables.*.rows.*.update",
+    "databases.default.tables.sample.rows.63c98b9baea0938e1206",
+    "databases.*.tables.*.rows.*",
+    "databases.default.tables.*.rows.63c98b9baea0938e1206",
+    "databases.*.tables.*.rows.63c98b9baea0938e1206",
+    "databases.*.tables.sample.rows.63c98b9baea0938e1206",
+    "databases.default.tables.sample.rows.*",
+    "databases.*.tables.sample.rows.*",
+    "databases.default.tables.*.rows.*",
+    "databases.default.tables.sample",
+    "databases.*.tables.*",
+    "databases.default.tables.*",
+    "databases.*.tables.sample",
     "databases.default",
     "databases.*"
   ],
   "channels": [
-    "documents",
-    "databases.default.collections.sample.documents",
-    "databases.default.collections.sample.documents.63c98b9baea0938e1206"
+    "rows",
+    "databases.default.tables.sample.rows",
+    "databases.default.tables.sample.rows.63c98b9baea0938e1206"
   ],
   "timestamp": "2023-01-19 18:30:04.051",
   "payload": {
@@ -404,7 +404,7 @@ The response will look like this:
     "$createdAt": "2023-01-19T18:27:39.715+00:00",
     "$updatedAt": "2023-01-19T18:30:04.040+00:00",
     "$permissions": [],
-    "$collectionId": "sample",
+    "$tableId": "sample",
     "$databaseId": "default"
   }
 }
@@ -421,14 +421,14 @@ A list of all channels available you can subscribe to. IDs cannot be wildcards.
 * `account`
 * All account related events (session create, name update...)
 ---
-* `databases.<ID>.collections.<ID>.documents`
-* Any create/update/delete events to any document in a collection
+* `databases.<ID>.tables.<ID>.rows`
+* Any create/update/delete events to any row in a table
 ---
-* `documents`
-* Any create/update/delete events to any document
+* `rows`
+* Any create/update/delete events to any row
 ---
-* `databases.<ID>.collections.<ID>.documents.<ID>`
-* Any update/delete events to a given document
+* `databases.<ID>.tables.<ID>.rows.<ID>`
+* Any update/delete events to a given row
 ---
 * `files`
 * Any create/update/delete events to any file

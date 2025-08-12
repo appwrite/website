@@ -30,10 +30,10 @@ Then, under **Integrate with your server**, add an **API Key** with the followin
 | Category  {% width=120 %} | Required scopes       | Purpose |
 |-----------|-----------------------|---------|
 | Database  | `databases.write`     | Allows API key to create, update, and delete [databases](/docs/products/databases/databases). |
-|           | `collections.write`   | Allows API key to create, update, and delete [collections](/docs/products/databases/collections). |
-|           | `attributes.write`    | Allows API key to create, update, and delete [attributes](/docs/products/databases/collections#attributes). |
-|           | `documents.read`      | Allows API key to read [documents](/docs/products/databases/documents). |
-|           | `documents.write`     | Allows API key to create, update, and delete [documents](/docs/products/databases/documents). |
+|           | `tables.write`   | Allows API key to create, update, and delete [tables](/docs/products/databases/tables). |
+|           | `attributes.write`    | Allows API key to create, update, and delete [attributes](/docs/products/databases/tables#attributes). |
+|           | `rows.read`      | Allows API key to read [rows](/docs/products/databases/rows). |
+|           | `rows.write`     | Allows API key to create, update, and delete [rows](/docs/products/databases/rows). |
 
 Other scopes are optional.
 
@@ -91,28 +91,28 @@ client
 {% /section %}
 {% section #step-5 step=5 title="Initialize database" %}
 
-Once the Appwrite Client is initialized, create a function to configure a todo collection.
+Once the Appwrite Client is initialized, create a function to configure a todo table.
 
 ```csharp
-var databases = new Databases(client);
+var grids = new Grids(client);
 
 Database todoDatabase;
-Collection todoCollection;
+Table todoTable;
 
 todoDatabase = await databases.Create(
     databaseId: ID.Unique(),
     name: "TodosDB"
 );
 
-todoCollection = await databases.CreateCollection(
+todoTable = await databases.CreateTable(
     databaseId: todoDatabase.Id,
-    collectionId: ID.Unique(),
+    tableId: ID.Unique(),
     name: "Todos"
 );
 
 await databases.CreateStringAttribute(
     databaseId: todoDatabase.Id,
-    collectionId: todoCollection.Id,
+    tableId: todoTable.Id,
     key: "title",
     size: 255,
     required: true
@@ -120,7 +120,7 @@ await databases.CreateStringAttribute(
 
 await databases.CreateStringAttribute(
     databaseId: todoDatabase.Id,
-    collectionId: todoCollection.Id,
+    tableId: todoTable.Id,
     key: "description",
     size: 255,
     required: false,
@@ -129,15 +129,15 @@ await databases.CreateStringAttribute(
 
 await databases.CreateBooleanAttribute(
     databaseId: todoDatabase.Id,
-    collectionId: todoCollection.Id,
+    tableId: todoTable.Id,
     key: "isComplete",
     required: true
 );
 ```
 
 {% /section %}
-{% section #step-6 step=6 title="Add documents" %}
-Create a function to add some mock data into your new collection.
+{% section #step-6 step=6 title="Add rows" %}
+Create a function to add some mock data into your new table.
 ```csharp
 var testTodo1 = new Dictionary<string, object>()
 {
@@ -159,37 +159,37 @@ var testTodo3 = new Dictionary<string, object>()
     {"isComplete", false}
 };
 
-await databases.CreateDocument(
+await databases.createRow(
     databaseId: todoDatabase.Id,
-    collectionId: todoCollection.Id,
-    documentId: ID.Unique(),
+    tableId: todoTable.Id,
+    rowId: ID.Unique(),
     data: testTodo1
 );
 
-await databases.CreateDocument(
+await databases.createRow(
     databaseId: todoDatabase.Id,
-    collectionId: todoCollection.Id,
-    documentId: ID.Unique(),
+    tableId: todoTable.Id,
+    rowId: ID.Unique(),
     data: testTodo2
 );
 
-await databases.CreateDocument(
+await databases.createRow(
     databaseId: todoDatabase.Id,
-    collectionId: todoCollection.Id,
-    documentId: ID.Unique(),
+    tableId: todoTable.Id,
+    rowId: ID.Unique(),
     data: testTodo3
 );
 ```
 
 {% /section %}
-{% section #step-7 step=7 title="Retrieve documents" %}
+{% section #step-7 step=7 title="Retrieve rows" %}
 
 Create a function to retrieve the mock todo data.
 
 ```csharp
-var todos = await databases.ListDocuments(
+var todos = await databases.listRows(
     databaseId: todoDatabase.Id,
-    collectionId: todoCollection.Id
+    tableId: todoTable.Id
 );
 
 foreach (var todo in todos.Documents)

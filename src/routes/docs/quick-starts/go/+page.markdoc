@@ -31,10 +31,10 @@ Then, under **Integrate with your server**, add an **API Key** with the followin
 | Category  {% width=120 %} | Required scopes       | Purpose |
 |-----------|-----------------------|---------|
 | Database  | `databases.write`     | Allows API key to create, update, and delete [databases](/docs/products/databases/databases). |
-|           | `collections.write`   | Allows API key to create, update, and delete [collections](/docs/products/databases/collections). |
-|           | `attributes.write`    | Allows API key to create, update, and delete [attributes](/docs/products/databases/collections#attributes). |
-|           | `documents.read`      | Allows API key to read [documents](/docs/products/databases/documents). |
-|           | `documents.write`     | Allows API key to create, update, and delete [documents](/docs/products/databases/documents). |
+|           | `tables.write`   | Allows API key to create, update, and delete [tables](/docs/products/databases/tables). |
+|           | `attributes.write`    | Allows API key to create, update, and delete [attributes](/docs/products/databases/tables#attributes). |
+|           | `rows.read`      | Allows API key to read [rows](/docs/products/databases/rows). |
+|           | `rows.write`     | Allows API key to create, update, and delete [rows](/docs/products/databases/rows). |
 
 Other scopes are optional.
 
@@ -86,7 +86,7 @@ import (
 var (
 	appwriteClient    client.Client
 	todoDatabase      *models.Database
-	todoCollection    *models.Collection
+	todoTable    *models.Table
 	appwriteDatabases *databases.Databases
 )
 
@@ -101,18 +101,18 @@ func main() {
 {% /section %}
 {% section #step-5 step=5 title="Initialize database" %}
 
-Once the Appwrite Client is initialized, create a function to configure a todo collection. Import the id Appwrite dependency by adding `"github.com/appwrite/sdk-for-go/id"` to the imported dependencies list.
+Once the Appwrite Client is initialized, create a function to configure a todo table. Import the id Appwrite dependency by adding `"github.com/appwrite/sdk-for-go/id"` to the imported dependencies list.
 
 ```go
 func prepareDatabase() {
-	appwriteDatabases = appwrite.NewDatabases(appwriteClient)
+	appwriteDatabases = appwrite.NewGrids(appwriteClient)
 
 	todoDatabase, _ = appwriteDatabases.Create(
 		id.Unique(),
 		"TodosDB",
 	)
 
-	todoCollection, _ = appwriteDatabases.CreateCollection(
+	todoTable, _ = appwriteDatabases.CreateTable(
 		todoDatabase.Id,
 		id.Unique(),
 		"Todos",
@@ -120,7 +120,7 @@ func prepareDatabase() {
 
 	appwriteDatabases.CreateStringAttribute(
 		todoDatabase.Id,
-		todoCollection.Id,
+		todoTable.Id,
 		"title",
 		255,
 		true,
@@ -128,7 +128,7 @@ func prepareDatabase() {
 
 	appwriteDatabases.CreateStringAttribute(
 		todoDatabase.Id,
-		todoCollection.Id,
+		todoTable.Id,
 		"description",
 		255,
 		false,
@@ -136,7 +136,7 @@ func prepareDatabase() {
 
 	appwriteDatabases.CreateBooleanAttribute(
 		todoDatabase.Id,
-		todoCollection.Id,
+		todoTable.Id,
 		"isComplete",
 		true,
 	)
@@ -144,8 +144,8 @@ func prepareDatabase() {
 ```
 
 {% /section %}
-{% section #step-6 step=6 title="Add documents" %}
-Create a function to add some mock data to your new collection.
+{% section #step-6 step=6 title="Add rows" %}
+Create a function to add some mock data to your new table.
 
 ```go
 func seedDatabase() {
@@ -166,23 +166,23 @@ func seedDatabase() {
 		"isComplete":  false,
 	}
 
-	appwriteDatabases.CreateDocument(
+	appwriteDatabases.createRow(
 		todoDatabase.Id,
-		todoCollection.Id,
+		todoTable.Id,
 		id.Unique(),
 		testTodo1,
 	)
 
-	appwriteDatabases.CreateDocument(
+	appwriteDatabases.createRow(
 		todoDatabase.Id,
-		todoCollection.Id,
+		todoTable.Id,
 		id.Unique(),
 		testTodo2,
 	)
 
-	appwriteDatabases.CreateDocument(
+	appwriteDatabases.createRow(
 		todoDatabase.Id,
-		todoCollection.Id,
+		todoTable.Id,
 		id.Unique(),
 		testTodo3,
 	)
@@ -190,7 +190,7 @@ func seedDatabase() {
 ```
 
 {% /section %}
-{% section #step-7 step=7 title="Retrieve documents" %}
+{% section #step-7 step=7 title="Retrieve rows" %}
 
 Create a function to retrieve the mock todo data.
 
@@ -203,13 +203,13 @@ type Todo struct {
 
 type TodoList struct {
 	*models.DocumentList
-	Documents []Todo `json:"documents"`
+	Documents []Todo `json:"rows"`
 }
 
 func getTodos() {
-	todoResponse, _ := appwriteDatabases.ListDocuments(
+	todoResponse, _ := appwriteDatabases.listRows(
 		todoDatabase.Id,
-		todoCollection.Id,
+		todoTable.Id,
 	)
 
 	var todos TodoList
@@ -239,7 +239,7 @@ import (
 var (
 	appwriteClient    client.Client
 	todoDatabase      *models.Database
-	todoCollection    *models.Collection
+	todoTable    *models.Table
 	appwriteDatabases *databases.Databases
 )
 

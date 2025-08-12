@@ -4,19 +4,19 @@ title: Atomic numeric operations
 description: Safely increment and decrement numeric fields without race conditions. Perfect for counters, quotas, inventory, and usage metrics in high-concurrency applications.
 ---
 
-Atomic numeric operations allow you to safely increase or decrease numeric fields without fetching the full document. This eliminates race conditions and reduces bandwidth usage when updating any numeric values that need to be modified atomically, such as counters, scores, balances, and other fast-moving numeric data.
+Atomic numeric operations allow you to safely increase or decrease numeric fields without fetching the full row. This eliminates race conditions and reduces bandwidth usage when updating any numeric values that need to be modified atomically, such as counters, scores, balances, and other fast-moving numeric data.
 
 # How atomic operations work {% #how-atomic-operations-work %}
 
 Instead of the traditional read-modify-write pattern, atomic numeric operations use dedicated methods to modify values directly on the server. The server applies the change atomically under concurrency control and returns the new value.
 
 **Traditional approach:**
-1. Fetch document → `{ likes: 42 }`
+1. Fetch row → `{ likes: 42 }`
 2. Update client-side → `likes: 43`
 3. Write back → `{ likes: 43 }`
 
 **Atomic approach:**
-1. Call `incrementDocumentAttribute()` with the attribute name and the value to increment by
+1. Call `incrementRowAttribute()` with the attribute name and the value to increment by
 2. Server applies atomically → `likes: 43`
 
 # When to use atomic operations {% #when-to-use-atomic-operations %}
@@ -32,7 +32,7 @@ Atomic numeric operations work well for:
 
 # Perform atomic operations {% #perform-atomic-operations %}
 
-Use the `incrementDocumentAttribute` and `decrementDocumentAttribute` methods to perform atomic numeric operations. The server will apply these changes atomically under concurrency control.
+Use the `incrementRowAttribute` and `decrementRowAttribute` methods to perform atomic numeric operations. The server will apply these changes atomically under concurrency control.
 
 ## Increment a field {% #increment-field %}
 
@@ -44,12 +44,12 @@ const client = new Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
     .setProject('<YOUR_PROJECT_ID>'); // Your project ID
 
-const databases = new Grids(client);
+const grids = new Grids(client);
 
-const result = await grids.incrementDocumentAttribute(
+const result = await grids.incrementRowAttribute(
     '<DATABASE_ID>',
     '<TABLE_ID>',
-    '<DOCUMENT_ID>',
+    '<ROW_ID>',
     'likes', // attribute
     1 // value
 );
@@ -61,12 +61,12 @@ final client = Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
     .setProject('<PROJECT_ID>');
 
-final databases = Grids(client);
+final grids = Grids(client);
 
-final document = await grids.incrementDocumentAttribute(
+final row = await grids.incrementRowAttribute(
     databaseId: '<DATABASE_ID>',
     tableId: '<TABLE_ID>',
-    documentId: '<DOCUMENT_ID>',
+    rowId: '<ROW_ID>',
     attribute: 'likes',
     value: 1
 );
@@ -79,12 +79,12 @@ let client = Client()
     .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
     .setProject("<PROJECT_ID>")
 
-let databases = Grids(client)
+let grids = Grids(client)
 
-let document = try await grids.incrementDocumentAttribute(
+let row = try await grids.incrementRowAttribute(
     databaseId: "<DATABASE_ID>",
     tableId: "<TABLE_ID>",
-    documentId: "<DOCUMENT_ID>",
+    rowId: "<ROW_ID>",
     attribute: "likes",
     value: 1
 )
@@ -97,12 +97,12 @@ val client = Client(applicationContext)
     .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
     .setProject("<PROJECT_ID>")
 
-val databases = Grids(client)
+val grids = Grids(client)
 
-val document = grids.incrementDocumentAttribute(
+val row = grids.incrementRowAttribute(
     databaseId = "<DATABASE_ID>",
     tableId = "<TABLE_ID>",
-    documentId = "<DOCUMENT_ID>",
+    rowId = "<ROW_ID>",
     attribute = "likes",
     value = 1
 )
@@ -115,12 +115,12 @@ const client = new sdk.Client()
     .setProject('<PROJECT_ID>') // Your project ID
     .setKey('<API_KEY>'); // Your secret API key
 
-const databases = new sdk.Grids(client);
+const grids = new sdk.Grids(client);
 
-const result = await grids.incrementDocumentAttribute(
+const result = await grids.incrementRowAttribute(
     '<DATABASE_ID>',
     '<TABLE_ID>',
-    '<DOCUMENT_ID>',
+    '<ROW_ID>',
     'likes', // attribute
     1 // value
 );
@@ -134,22 +134,22 @@ client.set_endpoint('https://<REGION>.cloud.appwrite.io/v1') # Your API Endpoint
 client.set_project('<PROJECT_ID>') # Your project ID
 client.set_key('<API_KEY>') # Your secret API key
 
-databases = Grids(client)
+grids = Grids(client)
 
-result = grids.increment_document_attribute(
+result = grids.increment_row_attribute(
     database_id = '<DATABASE_ID>',
-    collection_id = '<TABLE_ID>',
-    document_id = '<DOCUMENT_ID>',
+    table_id = '<TABLE_ID>',
+    row_id = '<ROW_ID>',
     attribute = 'likes', # attribute
     value = 1 # value
 )
 ```
 ```graphql
 mutation {
-    databasesIncrementDocumentAttribute(
+    databasesIncrementRowAttribute(
         databaseId: "<DATABASE_ID>",
         tableId: "<TABLE_ID>",
-        documentId: "<DOCUMENT_ID>",
+        rowId: "<ROW_ID>",
         attribute: "likes",
         value: 1
     ) {
@@ -167,7 +167,7 @@ mutation {
 
 ## Decrement a field {% #decrement-field %}
 
-Use the `decrementDocumentAttribute` method to decrease numeric fields:
+Use the `decrementRowAttribute` method to decrease numeric fields:
 
 {% multicode %}
 ```client-web
@@ -177,12 +177,12 @@ const client = new Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
     .setProject('<YOUR_PROJECT_ID>'); // Your project ID
 
-const databases = new Grids(client);
+const grids = new Grids(client);
 
-const result = await grids.decrementDocumentAttribute(
+const result = await grids.decrementRowAttribute(
     '<DATABASE_ID>',
     '<TABLE_ID>',
-    '<DOCUMENT_ID>',
+    '<ROW_ID>',
     'credits', // attribute
     5 // value
 );
@@ -194,12 +194,12 @@ final client = Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
     .setProject('<PROJECT_ID>');
 
-final databases = Grids(client);
+final grids = Grids(client);
 
-final document = await grids.decrementDocumentAttribute(
+final row = await grids.decrementRowAttribute(
     databaseId: '<DATABASE_ID>',
     tableId: '<TABLE_ID>',
-    documentId: '<DOCUMENT_ID>',
+    rowId: '<ROW_ID>',
     attribute: 'credits',
     value: 5
 );
@@ -212,12 +212,12 @@ let client = Client()
     .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
     .setProject("<PROJECT_ID>")
 
-let databases = Grids(client)
+let grids = Grids(client)
 
-let document = try await grids.decrementDocumentAttribute(
+let row = try await grids.decrementRowAttribute(
     databaseId: "<DATABASE_ID>",
     tableId: "<TABLE_ID>",
-    documentId: "<DOCUMENT_ID>",
+    rowId: "<ROW_ID>",
     attribute: "credits",
     value: 5
 )
@@ -230,12 +230,12 @@ val client = Client(applicationContext)
     .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
     .setProject("<PROJECT_ID>")
 
-val databases = Grids(client)
+val grids = Grids(client)
 
-val document = grids.decrementDocumentAttribute(
+val row = grids.decrementRowAttribute(
     databaseId = "<DATABASE_ID>",
     tableId = "<TABLE_ID>",
-    documentId = "<DOCUMENT_ID>",
+    rowId = "<ROW_ID>",
     attribute = "credits",
     value = 5
 )
@@ -248,12 +248,12 @@ const client = new sdk.Client()
     .setProject('<PROJECT_ID>') // Your project ID
     .setKey('<API_KEY>'); // Your secret API key
 
-const databases = new sdk.Grids(client);
+const grids = new sdk.Grids(client);
 
-const result = await grids.decrementDocumentAttribute(
+const result = await grids.decrementRowAttribute(
     '<DATABASE_ID>',
     '<TABLE_ID>',
-    '<DOCUMENT_ID>',
+    '<ROW_ID>',
     'credits', // attribute
     5 // value
 );
@@ -267,22 +267,22 @@ client.set_endpoint('https://<REGION>.cloud.appwrite.io/v1') # Your API Endpoint
 client.set_project('<PROJECT_ID>') # Your project ID
 client.set_key('<API_KEY>') # Your secret API key
 
-databases = Grids(client)
+grids = Grids(client)
 
-result = grids.decrement_document_attribute(
+result = grids.decrement_row_attribute(
     database_id = '<DATABASE_ID>',
-    collection_id = '<TABLE_ID>',
-    document_id = '<DOCUMENT_ID>',
+    table_id = '<TABLE_ID>',
+    row_id = '<ROW_ID>',
     attribute = 'credits', # attribute
     value = 5 # value
 )
 ```
 ```graphql
 mutation {
-    databasesDecrementDocumentAttribute(
+    databasesDecrementRowAttribute(
         databaseId: "<DATABASE_ID>",
         tableId: "<TABLE_ID>",
-        documentId: "<DOCUMENT_ID>",
+        rowId: "<ROW_ID>",
         attribute: "credits",
         value: 5
     ) {
@@ -307,20 +307,20 @@ You can set minimum and maximum bounds for individual operations to prevent inva
 {% multicode %}
 ```client-web
 // Increment with maximum constraint
-const result = await grids.incrementDocumentAttribute(
+const result = await grids.incrementRowAttribute(
     '<DATABASE_ID>',
     '<TABLE_ID>',
-    '<DOCUMENT_ID>',
+    '<ROW_ID>',
     'credits', // attribute
     100, // value
     1000 // max (optional)
 );
 
 // Decrement with minimum constraint
-const result2 = await grids.decrementDocumentAttribute(
+const result2 = await grids.decrementRowAttribute(
     '<DATABASE_ID>',
     '<TABLE_ID>',
-    '<DOCUMENT_ID>',
+    '<ROW_ID>',
     'credits', // attribute
     50, // value
     0 // min (optional)
@@ -328,20 +328,20 @@ const result2 = await grids.decrementDocumentAttribute(
 ```
 ```client-flutter
 // Increment with maximum constraint
-final document = await grids.incrementDocumentAttribute(
+final row = await grids.incrementRowAttribute(
     databaseId: '<DATABASE_ID>',
     tableId: '<TABLE_ID>',
-    documentId: '<DOCUMENT_ID>',
+    rowId: '<ROW_ID>',
     attribute: 'credits',
     value: 100,
     max: 1000
 );
 
 // Decrement with minimum constraint
-final document2 = await grids.decrementDocumentAttribute(
+final row2 = await grids.decrementRowAttribute(
     databaseId: '<DATABASE_ID>',
     tableId: '<TABLE_ID>',
-    documentId: '<DOCUMENT_ID>',
+    rowId: '<ROW_ID>',
     attribute: 'credits',
     value: 50,
     min: 0
@@ -349,20 +349,20 @@ final document2 = await grids.decrementDocumentAttribute(
 ```
 ```client-apple
 // Increment with maximum constraint
-let document = try await grids.incrementDocumentAttribute(
+let row = try await grids.incrementRowAttribute(
     databaseId: "<DATABASE_ID>",
     tableId: "<TABLE_ID>",
-    documentId: "<DOCUMENT_ID>",
+    rowId: "<ROW_ID>",
     attribute: "credits",
     value: 100,
     max: 1000
 )
 
 // Decrement with minimum constraint
-let document2 = try await grids.decrementDocumentAttribute(
+let row2 = try await grids.decrementRowAttribute(
     databaseId: "<DATABASE_ID>",
     tableId: "<TABLE_ID>",
-    documentId: "<DOCUMENT_ID>",
+    rowId: "<ROW_ID>",
     attribute: "credits",
     value: 50,
     min: 0
@@ -370,20 +370,20 @@ let document2 = try await grids.decrementDocumentAttribute(
 ```
 ```client-android-kotlin
 // Increment with maximum constraint
-val document = grids.incrementDocumentAttribute(
+val row = grids.incrementRowAttribute(
     databaseId = "<DATABASE_ID>",
     tableId = "<TABLE_ID>",
-    documentId = "<DOCUMENT_ID>",
+    rowId = "<ROW_ID>",
     attribute = "credits",
     value = 100,
     max = 1000
 )
 
 // Decrement with minimum constraint
-val document2 = grids.decrementDocumentAttribute(
+val row2 = grids.decrementRowAttribute(
     databaseId = "<DATABASE_ID>",
     tableId = "<TABLE_ID>",
-    documentId = "<DOCUMENT_ID>",
+    rowId = "<ROW_ID>",
     attribute = "credits",
     value = 50,
     min = 0
@@ -391,20 +391,20 @@ val document2 = grids.decrementDocumentAttribute(
 ```
 ```server-nodejs
 // Increment with maximum constraint
-const result = await grids.incrementDocumentAttribute(
+const result = await grids.incrementRowAttribute(
     '<DATABASE_ID>',
     '<TABLE_ID>',
-    '<DOCUMENT_ID>',
+    '<ROW_ID>',
     'credits', // attribute
     100, // value
     1000 // max (optional)
 );
 
 // Decrement with minimum constraint
-const result2 = await grids.decrementDocumentAttribute(
+const result2 = await grids.decrementRowAttribute(
     '<DATABASE_ID>',
     '<TABLE_ID>',
-    '<DOCUMENT_ID>',
+    '<ROW_ID>',
     'credits', // attribute
     50, // value
     0 // min (optional)
@@ -412,20 +412,20 @@ const result2 = await grids.decrementDocumentAttribute(
 ```
 ```server-python
 # Increment with maximum constraint
-result = grids.increment_document_attribute(
+result = grids.increment_row_attribute(
     database_id = '<DATABASE_ID>',
-    collection_id = '<TABLE_ID>',
-    document_id = '<DOCUMENT_ID>',
+    table_id = '<TABLE_ID>',
+    row_id = '<ROW_ID>',
     attribute = 'credits', # attribute
     value = 100, # value
     max = 1000 # max (optional)
 )
 
 # Decrement with minimum constraint
-result2 = grids.decrement_document_attribute(
+result2 = grids.decrement_row_attribute(
     database_id = '<DATABASE_ID>',
-    collection_id = '<TABLE_ID>',
-    document_id = '<DOCUMENT_ID>',
+    table_id = '<TABLE_ID>',
+    row_id = '<ROW_ID>',
     attribute = 'credits', # attribute
     value = 50, # value
     min = 0 # min (optional)
@@ -446,19 +446,19 @@ For complex updates that include both atomic operations and regular field change
 {% multicode %}
 ```client-web
 // First, increment the likes atomically
-const likeResult = await grids.incrementDocumentAttribute(
+const likeResult = await grids.incrementRowAttribute(
     '<DATABASE_ID>',
     '<TABLE_ID>',
-    '<DOCUMENT_ID>',
+    '<ROW_ID>',
     'likes', // attribute
     1 // value
 );
 
 // Then, update other fields
-const updateResult = await grids.updateDocument(
+const updateResult = await grids.updateRow(
     '<DATABASE_ID>',
     '<TABLE_ID>',
-    '<DOCUMENT_ID>',
+    '<ROW_ID>',
     {
         lastLikedBy: userId,
         lastLikedAt: new Date().toISOString()
@@ -467,19 +467,19 @@ const updateResult = await grids.updateDocument(
 ```
 ```client-flutter
 // First, increment the likes atomically
-final likeResult = await grids.incrementDocumentAttribute(
+final likeResult = await grids.incrementRowAttribute(
     databaseId: '<DATABASE_ID>',
     tableId: '<TABLE_ID>',
-    documentId: '<DOCUMENT_ID>',
+    rowId: '<ROW_ID>',
     attribute: 'likes',
     value: 1
 );
 
 // Then, update other fields
-final updateResult = await grids.updateDocument(
+final updateResult = await grids.updateRow(
     databaseId: '<DATABASE_ID>',
     tableId: '<TABLE_ID>',
-    documentId: '<DOCUMENT_ID>',
+    rowId: '<ROW_ID>',
     data: {
         'lastLikedBy': userId,
         'lastLikedAt': DateTime.now().toIso8601String()
@@ -488,19 +488,19 @@ final updateResult = await grids.updateDocument(
 ```
 ```client-apple
 // First, increment the likes atomically
-let likeResult = try await grids.incrementDocumentAttribute(
+let likeResult = try await grids.incrementRowAttribute(
     databaseId: "<DATABASE_ID>",
     tableId: "<TABLE_ID>",
-    documentId: "<DOCUMENT_ID>",
+    rowId: "<ROW_ID>",
     attribute: "likes",
     value: 1
 )
 
 // Then, update other fields
-let updateResult = try await grids.updateDocument(
+let updateResult = try await grids.updateRow(
     databaseId: "<DATABASE_ID>",
     tableId: "<TABLE_ID>",
-    documentId: "<DOCUMENT_ID>",
+    rowId: "<ROW_ID>",
     data: [
         "lastLikedBy": userId,
         "lastLikedAt": ISO8601DateFormatter().string(from: Date())
@@ -509,19 +509,19 @@ let updateResult = try await grids.updateDocument(
 ```
 ```client-android-kotlin
 // First, increment the likes atomically
-val likeResult = grids.incrementDocumentAttribute(
+val likeResult = grids.incrementRowAttribute(
     databaseId = "<DATABASE_ID>",
     tableId = "<TABLE_ID>",
-    documentId = "<DOCUMENT_ID>",
+    rowId = "<ROW_ID>",
     attribute = "likes",
     value = 1
 )
 
 // Then, update other fields
-val updateResult = grids.updateDocument(
+val updateResult = grids.updateRow(
     databaseId = "<DATABASE_ID>",
     tableId = "<TABLE_ID>",
-    documentId = "<DOCUMENT_ID>",
+    rowId = "<ROW_ID>",
     data = mapOf(
         "lastLikedBy" to userId,
         "lastLikedAt" to Instant.now().toString()
@@ -530,19 +530,19 @@ val updateResult = grids.updateDocument(
 ```
 ```server-nodejs
 // First, increment the likes atomically
-const likeResult = await grids.incrementDocumentAttribute(
+const likeResult = await grids.incrementRowAttribute(
     '<DATABASE_ID>',
     '<TABLE_ID>',
-    '<DOCUMENT_ID>',
+    '<ROW_ID>',
     'likes', // attribute
     1 // value
 );
 
 // Then, update other fields
-const updateResult = await grids.updateDocument(
+const updateResult = await grids.updateRow(
     '<DATABASE_ID>',
     '<TABLE_ID>',
-    '<DOCUMENT_ID>',
+    '<ROW_ID>',
     {
         lastLikedBy: userId,
         lastLikedAt: new Date().toISOString()
@@ -551,19 +551,19 @@ const updateResult = await grids.updateDocument(
 ```
 ```server-python
 # First, increment the likes atomically
-like_result = grids.increment_document_attribute(
+like_result = grids.increment_row_attribute(
     database_id = '<DATABASE_ID>',
-    collection_id = '<TABLE_ID>',
-    document_id = '<DOCUMENT_ID>',
+    table_id = '<TABLE_ID>',
+    row_id = '<ROW_ID>',
     attribute = 'likes', # attribute
     value = 1 # value
 )
 
 # Then, update other fields
-update_result = grids.update_document(
+update_result = grids.update_row(
     database_id = '<DATABASE_ID>',
-    collection_id = '<TABLE_ID>',
-    document_id = '<DOCUMENT_ID>',
+    table_id = '<TABLE_ID>',
+    row_id = '<ROW_ID>',
     data = {
         'lastLikedBy': user_id,
         'lastLikedAt': datetime.now().isoformat()
@@ -574,7 +574,7 @@ update_result = grids.update_document(
 
 ## Explore related features
 
-- [Bulk operations](/docs/products/databases/bulk-operations) - Update multiple documents at once
-- [Permissions](/docs/products/databases/permissions) - Control access to documents
-- [Queries](/docs/products/databases/queries) - Find documents to update
-- [Relationships](/docs/products/databases/relationships) - Update related documents
+- [Bulk operations](/docs/products/databases/bulk-operations) - Update multiple rows at once
+- [Permissions](/docs/products/databases/permissions) - Control access to rows
+- [Queries](/docs/products/databases/queries) - Find rows to update
+- [Relationships](/docs/products/databases/relationships) - Update related rows

@@ -136,7 +136,7 @@ val client = Client()
 val users = Users(client)
 
 val response = users.updateLabels(
-    userId = "[USER_ID]",
+    userId = "<USER_ID>",
     labels = [ 'subscriber' ]
 );
 ```
@@ -152,7 +152,7 @@ let client = Client()
 let users = Users(client)
 
 let response = try await users.updateLabels(
-    userId: "[USER_ID]",
+    userId: "<USER_ID>",
     labels: [ 'subscriber' ]
 );
 ```
@@ -168,7 +168,7 @@ var client = new Client()
 var users = new Users(client);
 
 var response = await users.UpdateLabels(
-    userId: "[USER_ID]",
+    userId: "<USER_ID>",
     labels: [ 'subscriber' ]
 );
 ```

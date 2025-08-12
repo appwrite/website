@@ -166,13 +166,13 @@ $client
 $messaging = new Messaging($client);
 
 $result = $messaging->updateApnsProvider(
-    providerId: '[PROVIDER_ID]',
-    name: '[NAME]',                               // optional
+    providerId: '<PROVIDER_ID>',
+    name: '<NAME>',                               // optional
     enabled: false,                               // optional
-    authKey: '[AUTH_KEY]',                        // optional
-    authKeyId: '[AUTH_KEY_ID]',                   // optional
-    teamId: '[TEAM_ID]',                          // optional
-    bundleId: '[BUNDLE_ID]'                       // optional
+    authKey: '<AUTH_KEY>',                        // optional
+    authKeyId: '<AUTH_KEY_ID>',                   // optional
+    teamId: '<TEAM_ID>',                          // optional
+    bundleId: '<BUNDLE_ID>'                       // optional
 );
 ```
 ```python
@@ -190,13 +190,13 @@ client = Client()
 messaging = Messaging(client)
 
 result = messaging.update_apns_provider(
-    provider_id = '[PROVIDER_ID]',
-    name = '[NAME]',                            # optional
+    provider_id = '<PROVIDER_ID>',
+    name = '<NAME>',                            # optional
     enabled = False,                            # optional
-    auth_key = '[AUTH_KEY]',                    # optional
-    auth_key_id = '[AUTH_KEY_ID]',              # optional
-    team_id = '[TEAM_ID]',                      # optional
-    bundle_id = '[BUNDLE_ID]'                   # optional
+    auth_key = '<AUTH_KEY>',                    # optional
+    auth_key_id = '<AUTH_KEY_ID>',              # optional
+    team_id = '<TEAM_ID>',                      # optional
+    bundle_id = '<BUNDLE_ID>'                   # optional
 )
 ```
 ```ruby
@@ -212,13 +212,13 @@ client = Client.new
 messaging = Messaging.new(client)
 
 response = messaging.update_apns_provider(
-    provider_id: '[PROVIDER_ID]',
-    name: '[NAME]',                               # optional
+    provider_id: '<PROVIDER_ID>',
+    name: '<NAME>',                               # optional
     enabled: false,                               # optional
-    auth_key: '[AUTH_KEY]',                       # optional
-    auth_key_id: '[AUTH_KEY_ID]',                 # optional
-    team_id: '[TEAM_ID]',                         # optional
-    bundle_id: '[BUNDLE_ID]'                      # optional
+    auth_key: '<AUTH_KEY>',                       # optional
+    auth_key_id: '<AUTH_KEY_ID>',                 # optional
+    team_id: '<TEAM_ID>',                         # optional
+    bundle_id: '<BUNDLE_ID>'                      # optional
 )
 
 puts response.inspect
@@ -236,13 +236,13 @@ var client = new Client()
 var messaging = new Messaging(client);
 
 Provider result = await messaging.updateApnsProvider(
-    providerId: "[PROVIDER_ID]"
-    name: "[NAME]"                                // optional
+    providerId: "<PROVIDER_ID>"
+    name: "<NAME>"                                // optional
     enabled: false                                // optional
-    authKey: "[AUTH_KEY]"                         // optional
-    authKeyId: "[AUTH_KEY_ID]"                    // optional
-    teamId: "[TEAM_ID]"                           // optional
-    bundleId: "[BUNDLE_ID]");                     // optional
+    authKey: "<AUTH_KEY>"                         // optional
+    authKeyId: "<AUTH_KEY_ID>"                    // optional
+    teamId: "<TEAM_ID>"                           // optional
+    bundleId: "<BUNDLE_ID>");                     // optional
 ```
 ```dart
 import 'package:dart_appwrite/dart_appwrite.dart';
@@ -260,13 +260,13 @@ void main() async {                               // Init SDK
   ;
 
   Future result = await messaging.updateApnsProvider(
-    providerId: '[PROVIDER_ID]',
-    name: '[NAME]',                              // optional
+    providerId: '<PROVIDER_ID>',
+    name: '<NAME>',                              // optional
     enabled: false,                              // optional
-    authKey: '[AUTH_KEY]',                       // optional
-    authKeyId: '[AUTH_KEY_ID]',                  // optional
-    teamId: '[TEAM_ID]',                         // optional
-    bundleId: '[BUNDLE_ID]',                     // optional
+    authKey: '<AUTH_KEY>',                       // optional
+    authKeyId: '<AUTH_KEY_ID>',                  // optional
+    teamId: '<TEAM_ID>',                         // optional
+    bundleId: '<BUNDLE_ID>',                     // optional
   );
 
   result
@@ -290,13 +290,13 @@ Client client = new Client()
 Messaging messaging = new Messaging(client);
 
 messaging.updateApnsProvider(
-    "[PROVIDER_ID]",                              // providerId
-    "[NAME]",                                     // name (optional)
+    "<PROVIDER_ID>",                              // providerId
+    "<NAME>",                                     // name (optional)
     false,                                        // enabled (optional)
-    "[AUTH_KEY]",                                 // authKey (optional)
-    "[AUTH_KEY_ID]",                              // authKeyId (optional)
-    "[TEAM_ID]",                                  // teamId (optional)
-    "[BUNDLE_ID]"                                 // bundleId (optional)
+    "<AUTH_KEY>",                                 // authKey (optional)
+    "<AUTH_KEY_ID>",                              // authKeyId (optional)
+    "<TEAM_ID>",                                  // teamId (optional)
+    "<BUNDLE_ID>"                                 // bundleId (optional)
     new CoroutineCallback<>((result, error) -> {
         if (error != null) {
             error.printStackTrace();
@@ -320,13 +320,13 @@ Client client = new Client()
 Messaging messaging = new Messaging(client);
 
 messaging.updateApnsProvider(
-    "[PROVIDER_ID]",                              // providerId
-    "[NAME]",                                     // name (optional)
+    "<PROVIDER_ID>",                              // providerId
+    "<NAME>",                                     // name (optional)
     false,                                        // enabled (optional)
-    "[AUTH_KEY]",                                 // authKey (optional)
-    "[AUTH_KEY_ID]",                              // authKeyId (optional)
-    "[TEAM_ID]",                                  // teamId (optional)
-    "[BUNDLE_ID]"                                 // bundleId (optional)
+    "<AUTH_KEY>",                                 // authKey (optional)
+    "<AUTH_KEY_ID>",                              // authKeyId (optional)
+    "<TEAM_ID>",                                  // teamId (optional)
+    "<BUNDLE_ID>"                                 // bundleId (optional)
     new CoroutineCallback<>((result, error) -> {
         if (error != null) {
             error.printStackTrace();
@@ -348,13 +348,13 @@ let client = Client()
 let messaging = Messaging(client)
 
 let provider = try await messaging.updateApnsProvider(
-  providerId: "[PROVIDER_ID]",
-  name: "[NAME]",                                // optional
+  providerId: "<PROVIDER_ID>",
+  name: "<NAME>",                                // optional
   enabled: xfalse,                               // optional
-  authKey: "[AUTH_KEY]",                         // optional
-  authKeyId: "[AUTH_KEY_ID]",                    // optional
-  teamId: "[TEAM_ID]",                           // optional
-  bundleId: "[BUNDLE_ID]"                        // optional
+  authKey: "<AUTH_KEY>",                         // optional
+  authKeyId: "<AUTH_KEY_ID>",                    // optional
+  teamId: "<TEAM_ID>",                           // optional
+  bundleId: "<BUNDLE_ID>"                        // optional
 )
 ```
 {% /multicode %}

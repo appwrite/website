@@ -202,8 +202,8 @@ var client = new Client()
 var messaging = new Messaging(client);
 
 Message result = await messaging.CreateSMS(
-    messageId: "[MESSAGE_ID]",
-    content: "[CONTENT]"    
+    messageId: "<MESSAGE_ID>",
+    content: "<CONTENT>"    
     topics: new List<string> {}                   // optional    
     users: new List<string> {}                    // optional    
     targets: new List<string> {}                  // optional    
@@ -256,8 +256,8 @@ Client client = new Client()
 Messaging messaging = new Messaging(client);
 
 messaging.createSms(
-    "[MESSAGE_ID]",                               // messageId
-    "[CONTENT]",                                  // content
+    "<MESSAGE_ID>",                               // messageId
+    "<CONTENT>",                                  // content
     listOf(),                                     // topics (optional)
     listOf(),                                     // users (optional)
     listOf(),                                     // targets (optional)
@@ -286,8 +286,8 @@ Client client = new Client()
 Messaging messaging = new Messaging(client);
 
 messaging.createSms(
-    "[MESSAGE_ID]",                               // messageId
-    "[CONTENT]",                                  // content
+    "<MESSAGE_ID>",                               // messageId
+    "<CONTENT>",                                  // content
     listOf(),                                     // topics (optional)
     listOf(),                                     // users (optional)
     listOf(),                                     // targets (optional)
@@ -314,8 +314,8 @@ let client = Client()
 let messaging = Messaging(client)
 
 let message = try await messaging.createSms(
-  messageId: "[MESSAGE_ID]",
-  content: "[CONTENT]",
+  messageId: "<MESSAGE_ID>",
+  content: "<CONTENT>",
   topics: [],                                    // optional
   users: [],                                     // optional
   targets: [],                                   // optional
@@ -355,12 +355,12 @@ client
 ;
 
 const provider = await messaging.updateTwilioProvider(
-        '[PROVIDER_ID]',                         // providerId
-        '[NAME]',                                // name (optional)
+        '<PROVIDER_ID>',                         // providerId
+        '<NAME>',                                // name (optional)
         false,                                   // enabled (optional)
-        '[ACCOUNT_SID]',                         // accountSid (optional)
-        '[AUTH_TOKEN]',                          // authToken (optional)
-        '[FROM]'                                 // from (optional)
+        '<ACCOUNT_SID>',                         // accountSid (optional)
+        '<AUTH_TOKEN>',                          // authToken (optional)
+        '<FROM>'                                 // from (optional)
     );
 ```
 ```deno
@@ -378,12 +378,12 @@ client
 ;
 
 const provider = await messaging.updateTwilioProvider(
-        '[PROVIDER_ID]',                         // providerId
-        '[NAME]',                                // name (optional)
+        '<PROVIDER_ID>',                         // providerId
+        '<NAME>',                                // name (optional)
         false,                                   // enabled (optional)
-        '[ACCOUNT_SID]',                         // accountSid (optional)
-        '[AUTH_TOKEN]',                          // authToken (optional)
-        '[FROM]'                                 // from (optional)
+        '<ACCOUNT_SID>',                         // accountSid (optional)
+        '<AUTH_TOKEN>',                          // authToken (optional)
+        '<FROM>'                                 // from (optional)
     );
 ```
 ```php
@@ -403,12 +403,12 @@ $client
 $messaging = new Messaging($client);
 
 $result = $messaging->updateTwilioProvider(
-    providerId: '[PROVIDER_ID]',
-    name: '[NAME]',                               // optional
+    providerId: '<PROVIDER_ID>',
+    name: '<NAME>',                               // optional
     enabled: false,                               // optional
-    accountSid: '[ACCOUNT_SID]',                  // optional
-    authToken: '[AUTH_TOKEN]',                    // optional
-    from: '[FROM]'                                // optional
+    accountSid: '<ACCOUNT_SID>',                  // optional
+    authToken: '<AUTH_TOKEN>',                    // optional
+    from: '<FROM>'                                // optional
 );
 ```
 ```python
@@ -426,12 +426,12 @@ client = Client()
 messaging = Messaging(client)
 
 result = messaging.update_twilio_provider(
-    provider_id = '[PROVIDER_ID]',
-    name = '[NAME]',                            # optional
+    provider_id = '<PROVIDER_ID>',
+    name = '<NAME>',                            # optional
     enabled = False,                            # optional
-    account_sid = '[ACCOUNT_SID]',              # optional
-    auth_token = '[AUTH_TOKEN]',                # optional
-    from = '[FROM]'                             # optional
+    account_sid = '<ACCOUNT_SID>',              # optional
+    auth_token = '<AUTH_TOKEN>',                # optional
+    from = '<FROM>'                             # optional
 )
 ```
 ```ruby
@@ -447,12 +447,12 @@ client = Client.new
 messaging = Messaging.new(client)
 
 response = messaging.update_twilio_provider(
-    provider_id: '[PROVIDER_ID]',
-    name: '[NAME]',                               # optional
+    provider_id: '<PROVIDER_ID>',
+    name: '<NAME>',                               # optional
     enabled: false,                               # optional
-    account_sid: '[ACCOUNT_SID]',                 # optional
-    auth_token: '[AUTH_TOKEN]',                   # optional
-    from: '[FROM]'                                # optional
+    account_sid: '<ACCOUNT_SID>',                 # optional
+    auth_token: '<AUTH_TOKEN>',                   # optional
+    from: '<FROM>'                                # optional
 )
 
 puts response.inspect
@@ -470,12 +470,12 @@ var client = new Client()
 var messaging = new Messaging(client);
 
 Provider result = await messaging.UpdateTwilioProvider(
-    providerId: "[PROVIDER_ID]"
-    name: "[NAME]"                                // optional
+    providerId: "<PROVIDER_ID>"
+    name: "<NAME>"                                // optional
     enabled: false                                // optional
-    accountSid: "[ACCOUNT_SID]"                   // optional
-    authToken: "[AUTH_TOKEN]"                     // optional
-    from: "[FROM]");                              // optional
+    accountSid: "<ACCOUNT_SID>"                   // optional
+    authToken: "<AUTH_TOKEN>"                     // optional
+    from: "<FROM>");                              // optional
 ```
 ```dart
 import 'package:dart_appwrite/dart_appwrite.dart';
@@ -493,12 +493,12 @@ void main() {                                    // Init SDK
   ;
 
   Future result = messaging.updateTwilioProvider(
-    providerId: '[PROVIDER_ID]',
-    name: '[NAME]',                              // optional
+    providerId: '<PROVIDER_ID>',
+    name: '<NAME>',                              // optional
     enabled: false,                              // optional
-    accountSid: '[ACCOUNT_SID]',                 // optional
-    authToken: '[AUTH_TOKEN]',                   // optional
-    from: '[FROM]',                              // optional
+    accountSid: '<ACCOUNT_SID>',                 // optional
+    authToken: '<AUTH_TOKEN>',                   // optional
+    from: '<FROM>',                              // optional
   );
 
   result
@@ -522,12 +522,12 @@ Client client = new Client()
 Messaging messaging = new Messaging(client);
 
 messaging.updateTwilioProvider(
-    "[PROVIDER_ID]",                              // providerId
-    "[NAME]",                                     // name (optional)
+    "<PROVIDER_ID>",                              // providerId
+    "<NAME>",                                     // name (optional)
     false,                                        // enabled (optional)
-    "[ACCOUNT_SID]",                              // accountSid (optional)
-    "[AUTH_TOKEN]",                               // authToken (optional)
-    "[FROM]"                                      // from (optional)
+    "<ACCOUNT_SID>",                              // accountSid (optional)
+    "<AUTH_TOKEN>",                               // authToken (optional)
+    "<FROM>"                                      // from (optional)
     new CoroutineCallback<>((result, error) -> {
         if (error != null) {
             error.printStackTrace();
@@ -551,12 +551,12 @@ Client client = new Client()
 Messaging messaging = new Messaging(client);
 
 messaging.updateTwilioProvider(
-    "[PROVIDER_ID]",                              // providerId
-    "[NAME]",                                     // name (optional)
+    "<PROVIDER_ID>",                              // providerId
+    "<NAME>",                                     // name (optional)
     false,                                        // enabled (optional)
-    "[ACCOUNT_SID]",                              // accountSid (optional)
-    "[AUTH_TOKEN]",                               // authToken (optional)
-    "[FROM]"                                      // from (optional)
+    "<ACCOUNT_SID>",                              // accountSid (optional)
+    "<AUTH_TOKEN>",                               // authToken (optional)
+    "<FROM>"                                      // from (optional)
     new CoroutineCallback<>((result, error) -> {
         if (error != null) {
             error.printStackTrace();
@@ -578,12 +578,12 @@ let client = Client()
 let messaging = Messaging(client)
 
 let provider = try await messaging.updateTwilioProvider(
-  providerId: "[PROVIDER_ID]",
-  name: "[NAME]",                                // optional
+  providerId: "<PROVIDER_ID>",
+  name: "<NAME>",                                // optional
   enabled: xfalse,                               // optional
-  accountSid: "[ACCOUNT_SID]",                   // optional
-  authToken: "[AUTH_TOKEN]",                     // optional
-  from: "[FROM]"                                 // optional
+  accountSid: "<ACCOUNT_SID>",                   // optional
+  authToken: "<AUTH_TOKEN>",                     // optional
+  from: "<FROM>"                                 // optional
 )
 ```
 {% /multicode %}

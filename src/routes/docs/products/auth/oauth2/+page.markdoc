@@ -264,7 +264,7 @@ final client = Client()
 final account = Account(client);
 
 final session = await getSession(
-    sessionId : "[SESSION_ID]"
+    sessionId : "<SESSION_ID>"
 );
 
 // Provider information
@@ -282,7 +282,7 @@ let client = Client()
 let account = Account(client)
 
 let session = try await account.getSession(
-    sessionId: "[SESSION_ID]"
+    sessionId: "<SESSION_ID>"
 )
 
 // Provider information
@@ -301,7 +301,7 @@ val client = Client(context)
 val account = Account(client)
 
 val response = account.getSession(
-    sessionId = "[SESSION_ID]"
+    sessionId = "<SESSION_ID>"
 )
 
 // Provider information
@@ -366,7 +366,7 @@ let client = Client()
 let account = Account(client)
 
 let session = try await account.updateSession(
-    sessionId: "[SESSION_ID]"
+    sessionId: "<SESSION_ID>"
 );
 ```
 ```client-android-kotlin
@@ -380,7 +380,7 @@ val client = Client(context)
 val account = Account(client)
 
 val response = account.updateSession(
-    sessionId = "[SESSION_ID]"
+    sessionId = "<SESSION_ID>"
 );
 ```
 

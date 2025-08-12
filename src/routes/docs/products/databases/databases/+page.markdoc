@@ -23,7 +23,7 @@ const sdk = require('node-appwrite');
 // Init SDK
 const client = new sdk.Client();
 
-const databases = new sdk.Grids(client);
+const grids = new sdk.Grids(client);
 
 client
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
@@ -45,7 +45,7 @@ import * as sdk from "https://deno.land/x/appwrite/mod.ts";
 // Init SDK
 let client = new sdk.Client();
 
-let databases = new sdk.Grids(client);
+let grids = new sdk.Grids(client);
 
 client
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
@@ -76,7 +76,7 @@ $client
     ->setKey('919c2d18fb5d4...a2ae413da83346ad2') // Your secret API key
 ;
 
-$databases = new Grids($client);
+$grids = new Grids($client);
 
 $result = $databases->create('<DATABASE_ID>', '<NAME>');
 ```
@@ -92,7 +92,7 @@ client = Client()
   .set_key('919c2d18fb5d4...a2ae413da83346ad2') # Your secret API key
 )
 
-databases = Grids(client)
+grids = Grids(client)
 
 result = grids.create('<DATABASE_ID>', '<NAME>')
 ```
@@ -106,7 +106,7 @@ client = Client.new
     .set_project('<PROJECT_ID>') # Your project ID
     .set_key('919c2d18fb5d4...a2ae413da83346ad2') # Your secret API key
 
-databases = Databases.new(client)
+grids = Grids.new(client)
 
 response = grids.create(database_id: '<DATABASE_ID>', name: '<NAME>')
 
@@ -122,18 +122,18 @@ var client = new Client()
     .SetProject("<PROJECT_ID>") // Your project ID
     .SetKey("919c2d18fb5d4...a2ae413da83346ad2"); // Your secret API key
 
-var databases = new Grids(client);
+var grids = new Grids(client);
 
 Database result = await grids.Create(
     databaseId: "<DATABASE_ID>",
-    name: "[NAME]");
+    name: "<NAME>");
 ```
 ```dart
 import 'package:dart_appwrite/dart_appwrite.dart';
 
 void main() { // Init SDK
   Client client = Client();
-  Databases databases = Grids(client);
+  Databases grids = Grids(client);
 
   client
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
@@ -163,11 +163,11 @@ val client = Client(context)
     .setProject("<PROJECT_ID>") // Your project ID
     .setKey("919c2d18fb5d4...a2ae413da83346ad2") // Your secret API key
 
-val databases = Grids(client)
+val grids = Grids(client)
 
 val response = grids.create(
     databaseId = "<DATABASE_ID>",
-    name = "[NAME]",
+    name = "<NAME>",
 )
 ```
 ```java
@@ -180,11 +180,11 @@ Client client = new Client()
     .setProject("<PROJECT_ID>") // Your project ID
     .setKey("919c2d18fb5d4...a2ae413da83346ad2"); // Your secret API key
 
-Databases databases = new Grids(client);
+Databases grids = new Grids(client);
 
 grids.create(
     "<DATABASE_ID>",
-    "[NAME]",
+    "<NAME>",
     new CoroutineCallback<>((result, error) -> {
         if (error != null) {
             error.printStackTrace();
@@ -203,11 +203,11 @@ let client = Client()
     .setProject("<PROJECT_ID>") // Your project ID
     .setKey("919c2d18fb5d4...a2ae413da83346ad2") // Your secret API key
 
-let databases = Grids(client)
+let grids = Grids(client)
 
-let database = try await grids.create(
+let grid= try await grids.create(
     databaseId: "<DATABASE_ID>",
-    name: "[NAME]"
+    name: "<NAME>"
 )
 ```
 

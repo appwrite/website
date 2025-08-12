@@ -1,32 +1,32 @@
 ---
 layout: article
-title: Collections
-description: Efficiently deploy your Appwrite collections using the Command-Line Tool (CLI). 
+title: Tables
+description: Efficiently deploy your Appwrite tables using the Command-Line Tool (CLI). 
 ---
 
 {% partial file="cli-disclaimer.md" /%}
 
-Create and manage your collections using the CLI commands. The Appwrite CLI also helps you push your project's databases and collections schema from one project to another.
+Create and manage your tables using the CLI commands. The Appwrite CLI also helps you push your project's databases and tables schema from one project to another.
 
-# Initialize collection {% #initialize-collection %}
+# Initialize table {% #initialize-table %}
 
-Create a new collection using the following command:
+Create a new table using the following command:
 
 ```sh
-appwrite init collections
+appwrite init tables
 ```
 
-# Pull collection {% #pull-collection %}
+# Pull table {% #pull-table %}
 
-You can also pull your existing Appwrite collections and databases from the Appwrite Console using the `pull` command in the folder containing your `appwrite.config.json` file.
+You can also pull your existing Appwrite tables and databases from the Appwrite Console using the `pull` command in the folder containing your `appwrite.config.json` file.
 
 ```sh
-appwrite pull collections
+appwrite pull tables
 ```
 
 # appwrite.config.json {% #appwritejson %}
 
-After [initializing](/docs/tooling/command-line/installation#initialization) your Appwrite project and pulling your existing collections, your `appwrite.config.json` file should look similar to the following:
+After [initializing](/docs/tooling/command-line/installation#initialization) your Appwrite project and pulling your existing tables, your `appwrite.config.json` file should look similar to the following:
 
 ```json
 {
@@ -41,9 +41,9 @@ After [initializing](/docs/tooling/command-line/installation#initialization) you
             "enabled": true
         }
     ],
-    "collections": [
+    "tables": [
         {
-            "$id": "<COLLECTION_ID>",
+            "$id": "<TABLE_ID>",
             "$permissions": [
                 "create(\"any\")",
                 "read(\"any\")",
@@ -53,7 +53,7 @@ After [initializing](/docs/tooling/command-line/installation#initialization) you
             "databaseId": "<DATABASE_ID>",
             "name": "music",
             "enabled": true,
-            "documentSecurity": false,
+            "rowSecurity": false,
             "attributes": [
                 {
                     "key": "userID",
@@ -132,17 +132,17 @@ After [initializing](/docs/tooling/command-line/installation#initialization) you
 }
 ```
 
-# Push collection {% #push-collection %}
+# Push table {% #push-table %}
 
 {% partial file="cli-push-command.md" /%}
 
 ```sh
-appwrite push collections
+appwrite push tables
 ```
 
 # Commands {% #commands %}
 
-The databases command allows you to create structured collections of documents, queries, and filter lists of documents. Appwrite database CLI commands generally follow the following syntax:
+The databases command allows you to create structured tables of rows, queries, and filter lists of rows. Appwrite database CLI commands generally follow the following syntax:
 
 ```sh
 appwrite databases [COMMAND] [OPTIONS]
@@ -152,65 +152,65 @@ appwrite databases [COMMAND] [OPTIONS]
 * Command
 * Description
 ---
-* `list-collections [options]`
-* Get a list of all collections that belong to the provided databaseId. You can use the search parameter to filter your results.
+* `list-tables [options]`
+* Get a list of all tables that belong to the provided databaseId. You can use the search parameter to filter your results.
 ---
-* `create-collection [options]`
-* Create a new Collection. Before using this route, you should create a new database resource using either a [server integration](https://appwrite.io/docs/server/databases#databasesCreateCollection) API or directly from your database console.
+* `create-table [options]`
+* Create a new Table. Before using this route, you should create a new database resource using either a [server integration](https://appwrite.io/docs/server/databases#databasesCreateTable) API or directly from your database console.
 ---  
-* `get-collection [options]`
-* Get a collection by its unique ID. This endpoint response returns a JSON object with the collection metadata.
+* `get-table [options]`
+* Get a table by its unique ID. This endpoint response returns a JSON object with the table metadata.
 ---
-* `update-collection [options]`
-* Update a collection by its unique ID.
+* `update-table [options]`
+* Update a table by its unique ID.
 ---
-* `delete-collection [options]`
-* Delete a collection by its unique ID. Only users with write permissions have access to delete this resource.
+* `delete-table [options]`
+* Delete a table by its unique ID. Only users with write permissions have access to delete this resource.
 ---
 * `list-attributes [options]`
-* List attributes in the collection.
+* List attributes in the table.
 ---
 * `create-boolean-attribute [options]`
 * Create a boolean attribute.
 ---
 * `update-boolean-attribute [options]`
-* Update a boolean attribute. Changing the 'default' value will not update already existing documents.
+* Update a boolean attribute. Changing the 'default' value will not update already existing rows.
 ---
 * `create-datetime-attribute [options]`
 * Create a date time attribute according to the ISO 8601 standard.
 ---
 * `update-datetime-attribute [options]`
-* Update a date time attribute. Changing the 'default' value will not update already existing documents.
+* Update a date time attribute. Changing the 'default' value will not update already existing rows.
 ---
 * `create-email-attribute [options]`
 * Create an email attribute.
 ---
 * `update-email-attribute [options]`
-* Update an email attribute. Changing the 'default' value will not update already existing documents.
+* Update an email attribute. Changing the 'default' value will not update already existing rows.
 ---
 * `create-enum-attribute [options]`
 * Create an enumeration attribute. The 'elements' param acts as a white-list of accepted values for this attribute.
 ---
 * `update-enum-attribute [options]`
-* Update an enum attribute. Changing the 'default' value will not update already existing documents.
+* Update an enum attribute. Changing the 'default' value will not update already existing rows.
 ---  
 * `create-float-attribute [options]`
 * Create a float attribute. Optionally, minimum and maximum values can be provided.
 ---
 * `update-float-attribute [options]`
-* Update a float attribute. Changing the 'default' value will not update already existing documents.
+* Update a float attribute. Changing the 'default' value will not update already existing rows.
 ---  
 * `create-integer-attribute [options]`
 * Create an integer attribute. Optionally, minimum and maximum values can be provided.
 ---
 * `update-integer-attribute [options]`
-* Update an integer attribute. Changing the 'default' value will not update already existing documents.
+* Update an integer attribute. Changing the 'default' value will not update already existing rows.
 ---
 * `create-ip-attribute [options]`     
 * Create IP address attribute.
 ---
 * `update-ip-attribute [options]`
-* Update an ip attribute. Changing the 'default' value will not update already existing documents.
+* Update an ip attribute. Changing the 'default' value will not update already existing rows.
 ---
 * `create-relationship-attribute [options]`
 * Create relationship attribute. [Learn more about relationship attributes](https://appwrite.io/docs/databases-relationships#relationship-attributes).
@@ -219,13 +219,13 @@ appwrite databases [COMMAND] [OPTIONS]
 * Create a string attribute.
 ---
 * `update-string-attribute [options]`
-* Update a string attribute. Changing the 'default' value will not update already existing documents.
+* Update a string attribute. Changing the 'default' value will not update already existing rows.
 ---
 * `create-url-attribute [options]`          
 * Create a URL attribute.
 ---
 * `update-url-attribute [options]`
-* Update an url attribute. Changing the 'default' value will not update already existing documents.
+* Update an url attribute. Changing the 'default' value will not update already existing rows.
 ---
 * `get-attribute [options]`
 * Get attribute by ID.
@@ -237,7 +237,7 @@ appwrite databases [COMMAND] [OPTIONS]
 * Update relationship attribute. [Learn more about relationship attributes](https://appwrite.io/docs/databases-relationships#relationship-attributes).
 ---
 * `list-indexes [options]`
-* List indexes in the collection.
+* List indexes in the table.
 ---
 * `create-index [options]`
 * Creates an index on the attributes listed. Your index should include all the attributes you will query in a single request. Attributes can be 'key', 'fulltext', and 'unique'.
@@ -248,7 +248,7 @@ appwrite databases [COMMAND] [OPTIONS]
 * `delete-index [options]`
 * Delete an index.
 ---
-* `list-collection-logs [options]`
-* Get the collection activity logs list by its unique ID.
+* `list-table-logs [options]`
+* Get the table activity logs list by its unique ID.
 ---
 {% /table %}
