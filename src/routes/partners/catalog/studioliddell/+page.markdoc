@@ -1,7 +1,7 @@
 ---
 layout: partner
 title: Studio Liddell
-description: Studio Liddell is a premier digital solutions company, enhancing brands and online presence through captivating design, immersive VR and AR experiences, innovative apps, and strategic digital initiatives. We turn your vision into powerful, resonant experiences that inspire audiences and deliver measurable results.
+description: Studio Liddell is a premier digital solutions company, enhancing brands and online presence through captivating design, immersive VR and AR experiences, innovative apps, and strategic digital initiatives. 
 date: 2025-08-12
 featured: false
 partnerLevel: Silver
@@ -11,9 +11,9 @@ category: agency
 website: https://studioliddell.com
 email: emailto:bizdev@studioliddell.com
 product: 
-    avatar: '/images/partners/avatars/bld.png'
-    vendor: Black Leave Digital
-    description: 
+    avatar: '/images/partners/avatars/studioliddel.png'
+    vendor: Studio Liddell
+    description: Studio Liddell is a premier digital solutions company, enhancing brands and online presence through captivating design, immersive VR and AR experiences, innovative apps, and strategic digital initiatives.
 frameworks: 
     - Go Lang
     - Render
