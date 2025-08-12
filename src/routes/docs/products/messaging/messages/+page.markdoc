@@ -250,18 +250,18 @@ client
 ;
 
 const message = await messaging.createPush(
-        '[MESSAGE_ID]',                          // messageId
-        '[TITLE]',                               // title
-        '[BODY]',                                // body
+        '<MESSAGE_ID>',                          // messageId
+        '<TITLE>',                               // title
+        '<BODY>',                                // body
         [],                                      // topics (optional)
         [],                                      // users (optional)
         [],                                      // targets (optional)
         {},                                      // data (optional)
-        '[ACTION]',                              // action (optional)
-        '[ICON]',                                // icon (optional)
-        '[SOUND]',                               // sound (optional)
-        '[COLOR]',                               // color (optional)
-        '[TAG]',                                 // tag (optional)
+        '<ACTION>',                              // action (optional)
+        '<ICON>',                                // icon (optional)
+        '<SOUND>',                               // sound (optional)
+        '<COLOR>',                               // color (optional)
+        '<TAG>',                                 // tag (optional)
         1,                                       // badge (optional)
         false,                                   // contentAvailable (optional)
         false,                                   // critical (optional)
@@ -285,18 +285,18 @@ client
 ;
 
 const message = await messaging.createPush(
-        '[MESSAGE_ID]',                          // messageId
-        '[TITLE]',                               // title
-        '[BODY]',                                // body
+        '<MESSAGE_ID>',                          // messageId
+        '<TITLE>',                               // title
+        '<BODY>',                                // body
         [],                                      // topics (optional)
         [],                                      // users (optional)
         [],                                      // targets (optional)
         {},                                      // data (optional)
-        '[ACTION]',                              // action (optional)
-        '[ICON]',                                // icon (optional)
-        '[SOUND]',                               // sound (optional)
-        '[COLOR]',                               // color (optional)
-        '[TAG]',                                 // tag (optional)
+        '<ACTION>',                              // action (optional)
+        '<ICON>',                                // icon (optional)
+        '<SOUND>',                               // sound (optional)
+        '<COLOR>',                               // color (optional)
+        '<TAG>',                                 // tag (optional)
         1,                                       // badge (optional)
         false,                                   // contentAvailable (optional)
         false,                                   // critical (optional)
@@ -322,18 +322,18 @@ $client
 $messaging = new Messaging($client);
 
 $result = $messaging->createPush(
-    messageId: '[MESSAGE_ID]',
-    title: '[TITLE]',
-    body: '[BODY]',
+    messageId: '<MESSAGE_ID>',
+    title: '<TITLE>',
+    body: '<BODY>',
     topics: [],                                   // optional
     users: [],                                    // optional
     targets: [],                                  // optional
     data: [],                                     // optional
-    action: '[ACTION]',                           // optional
-    icon: '[ICON]',                               // optional
-    sound: '[SOUND]',                             // optional
-    color: '[COLOR]',                             // optional
-    tag: '[TAG]',                                 // optional
+    action: '<ACTION>',                           // optional
+    icon: '<ICON>',                               // optional
+    sound: '<SOUND>',                             // optional
+    color: '<COLOR>',                             // optional
+    tag: '<TAG>',                                 // optional
     badge: 1,                                     // optional
     contentAvailable: false,                      // optional
     critical: false,                              // optional
@@ -357,18 +357,18 @@ client = Client()
 messaging = Messaging(client)
 
 result = messaging.create_push(
-    message_id = '[MESSAGE_ID]',
-    title = '[TITLE]',
-    body = '[BODY]',
+    message_id = '<MESSAGE_ID>',
+    title = '<TITLE>',
+    body = '<BODY>',
     topics = [],                                # optional
     users = [],                                 # optional
     targets = [],                               # optional
     data = {},                                  # optional
-    action = '[ACTION]',                        # optional
-    icon = '[ICON]',                            # optional
-    sound = '[SOUND]',                          # optional
-    color = '[COLOR]',                          # optional
-    tag = '[TAG]',                              # optional
+    action = '<ACTION>',                        # optional
+    icon = '<ICON>',                            # optional
+    sound = '<SOUND>',                          # optional
+    color = '<COLOR>',                          # optional
+    tag = '<TAG>',                              # optional
     badge = 1,                                  # optional
     content_available = False,                  # optional
     critical = False,                           # optional
@@ -390,19 +390,19 @@ client = Client.new
 messaging = Messaging.new(client)
 
 response = messaging.create_push(
-    message_id: '[MESSAGE_ID]',
-    title: '[TITLE]',
-    body: '[BODY]',
+    message_id: '<MESSAGE_ID>',
+    title: '<TITLE>',
+    body: '<BODY>',
     topics: [],                                   # optional
     users: [],                                    # optional
     targets: [],                                  # optional
     data: {},                                     # optional
-    action: '[ACTION]',                           # optional
-    icon: '[ICON]',                               # optional
-    sound: '[SOUND]',                             # optional
-    color: '[COLOR]',                             # optional
-    tag: '[TAG]',                                 # optional
-    badge: '[BADGE]',                             # optional
+    action: '<ACTION>',                           # optional
+    icon: '<ICON>',                               # optional
+    sound: '<SOUND>',                             # optional
+    color: '<COLOR>',                             # optional
+    tag: '<TAG>',                                 # optional
+    badge: '<BADGE>',                             # optional
     content_available: false,                     # optional
     critical: false,                              # optional
     priority: 'normal',                           # optional
@@ -425,18 +425,18 @@ var client = new Client()
 var messaging = new Messaging(client);
 
 Message result = await messaging.CreatePush(
-    messageId: "[MESSAGE_ID]",
-    title: "[TITLE]",
-    body: "[BODY]"
+    messageId: "<MESSAGE_ID>",
+    title: "<TITLE>",
+    body: "<BODY>"
     topics: new List<string> {},                   // optional
     users: new List<string> {},                    // optional
     targets: new List<string> {},                  // optional
     data: [object]                                 // optional
-    action: "[ACTION]",                            // optional
-    icon: "[ICON]",                                // optional
-    sound: "[SOUND]",                              // optional
-    color: "[COLOR]",                              // optional
-    tag: "[TAG]",                                  // optional
+    action: "<ACTION>",                            // optional
+    icon: "<ICON>",                                // optional
+    sound: "<SOUND>",                              // optional
+    color: "<COLOR>",                              // optional
+    tag: "<TAG>",                                  // optional
     badge: 1,                                      // optional
     contentAvailable: false,                       // optional
     critical: false,                               // optional
@@ -461,18 +461,18 @@ void main() async {                               // Init SDK
   ;
 
   Future result = await messaging.createPush(
-    messageId: '[MESSAGE_ID]',
-    title: '[TITLE]',
-    body: '[BODY]',
+    messageId: '<MESSAGE_ID>',
+    title: '<TITLE>',
+    body: '<BODY>',
     topics: [],                                  // optional
     users: [],                                   // optional
     targets: [],                                 // optional
     data: {},                                    // optional
-    action: '[ACTION]',                          // optional
-    icon: '[ICON]',                              // optional
-    sound: '[SOUND]',                            // optional
-    color: '[COLOR]',                            // optional
-    tag: '[TAG]',                                // optional
+    action: '<ACTION>',                          // optional
+    icon: '<ICON>',                              // optional
+    sound: '<SOUND>',                            // optional
+    color: '<COLOR>',                            // optional
+    tag: '<TAG>',                                // optional
     badge: 1,                                    // optional
     content_available: false,                    // optional
     critical: false,                             // optional
@@ -502,18 +502,18 @@ Client client = new Client()
 Messaging messaging = new Messaging(client);
 
 messaging.createPush(
-    "[MESSAGE_ID]",                               // messageId
-    "[TITLE]",                                    // title
-    "[BODY]",                                     // body
+    "<MESSAGE_ID>",                               // messageId
+    "<TITLE>",                                    // title
+    "<BODY>",                                     // body
     listOf(),                                     // topics (optional)
     listOf(),                                     // users (optional)
     listOf(),                                     // targets (optional)
     mapOf( "a" to "b" ),                          // data (optional)
-    "[ACTION]",                                   // action (optional)
-    "[ICON]",                                     // icon (optional)
-    "[SOUND]",                                    // sound (optional)
-    "[COLOR]",                                    // color (optional)
-    "[TAG]",                                      // tag (optional)
+    "<ACTION>",                                   // action (optional)
+    "<ICON>",                                     // icon (optional)
+    "<SOUND>",                                    // sound (optional)
+    "<COLOR>",                                    // color (optional)
+    "<TAG>",                                      // tag (optional)
     1,                                            // badge (optional)
     true,                                         // draft (optional)
     ""                                            // scheduledAt (optional)
@@ -540,18 +540,18 @@ Client client = new Client()
 Messaging messaging = new Messaging(client);
 
 messaging.createPush(
-    "[MESSAGE_ID]",                               // messageId
-    "[TITLE]",                                    // title
-    "[BODY]",                                     // body
+    "<MESSAGE_ID>",                               // messageId
+    "<TITLE>",                                    // title
+    "<BODY>",                                     // body
     listOf(),                                     // topics (optional)
     listOf(),                                     // users (optional)
     listOf(),                                     // targets (optional)
     mapOf( "a" to "b" ),                          // data (optional)
-    "[ACTION]",                                   // action (optional)
-    "[ICON]",                                     // icon (optional)
-    "[SOUND]",                                    // sound (optional)
-    "[COLOR]",                                    // color (optional)
-    "[TAG]",                                      // tag (optional)
+    "<ACTION>",                                   // action (optional)
+    "<ICON>",                                     // icon (optional)
+    "<SOUND>",                                    // sound (optional)
+    "<COLOR>",                                    // color (optional)
+    "<TAG>",                                      // tag (optional)
     1,                                            // badge (optional)
     true,                                         // draft (optional)
     ""                                            // scheduledAt (optional)
@@ -576,18 +576,18 @@ let client = Client()
 let messaging = Messaging(client)
 
 let message = try await messaging.createPush(
-  messageId: "[MESSAGE_ID]",
-  title: "[TITLE]",
-  body: "[BODY]",
+  messageId: "<MESSAGE_ID>",
+  title: "<TITLE>",
+  body: "<BODY>",
   topics: [],                                    // optional
   users: [],                                     // optional
   targets: [],                                   // optional
   data: [:],                                     // optional
-  action: "[ACTION]",                            // optional
-  icon: "[ICON]",                                // optional
-  sound: "[SOUND]",                              // optional
-  color: "[COLOR]",                              // optional
-  tag: "[TAG]",                                  // optional
+  action: "<ACTION>",                            // optional
+  icon: "<ICON>",                                // optional
+  sound: "<SOUND>",                              // optional
+  color: "<COLOR>",                              // optional
+  tag: "<TAG>",                                  // optional
   badge: 1,                                      // optional
   content_available: false,                      // optional
   critical: false,                               // optional
@@ -620,9 +620,9 @@ client
 ;
 
 const message - await messaging.createEmail(
-        '[MESSAGE_ID]',                          // messageId
-        '[SUBJECT]',                             // subject
-        '[CONTENT]',                             // content
+        '<MESSAGE_ID>',                          // messageId
+        '<SUBJECT>',                             // subject
+        '<CONTENT>',                             // content
         [],                                      // topics (optional)
         [],                                      // users (optional)
         [],                                      // targets (optional)
@@ -648,9 +648,9 @@ client
 ;
 
 const message - await messaging.createEmail(
-        '[MESSAGE_ID]',                          // messageId
-        '[SUBJECT]',                             // subject
-        '[CONTENT]',                             // content
+        '<MESSAGE_ID>',                          // messageId
+        '<SUBJECT>',                             // subject
+        '<CONTENT>',                             // content
         [],                                      // topics (optional)
         [],                                      // users (optional)
         [],                                      // targets (optional)
@@ -678,9 +678,9 @@ $client
 $messaging = new Messaging($client);
 
 $result = $messaging->createEmail(
-    messageId: '[MESSAGE_ID]',
-    subject: '[SUBJECT]',
-    content: '[CONTENT]',
+    messageId: '<MESSAGE_ID>',
+    subject: '<SUBJECT>',
+    content: '<CONTENT>',
     topics: [],                                   // optional
     users: [],                                    // optional
     targets: [],                                  // optional
@@ -706,9 +706,9 @@ client = Client()
 messaging = Messaging(client)
 
 result = messaging.create_email(
-    message_id = '[MESSAGE_ID]',
-    subject = '[SUBJECT]',
-    content = '[CONTENT]',
+    message_id = '<MESSAGE_ID>',
+    subject = '<SUBJECT>',
+    content = '<CONTENT>',
     topics = [],                                # optional
     users = [],                                 # optional
     targets = [],                               # optional
@@ -732,9 +732,9 @@ client = Client.new
 messaging = Messaging.new(client)
 
 response = messaging.create_email(
-    message_id: '[MESSAGE_ID]',
-    subject: '[SUBJECT]',
-    content: '[CONTENT]',
+    message_id: '<MESSAGE_ID>',
+    subject: '<SUBJECT>',
+    content: '<CONTENT>',
     topics: [],                                   # optional
     users: [],                                    # optional
     targets: [],                                  # optional
@@ -760,9 +760,9 @@ var client = new Client()
 var messaging = new Messaging(client);
 
 Message result = await messaging.CreateEmail(
-    messageId: "[MESSAGE_ID]",
-    subject: "[SUBJECT]",
-    content: "[CONTENT]"
+    messageId: "<MESSAGE_ID>",
+    subject: "<SUBJECT>",
+    content: "<CONTENT>"
     topics: new List<string> {}                   // optional
     users: new List<string> {}                    // optional
     targets: new List<string> {}                  // optional
@@ -788,9 +788,9 @@ void main() {                                    // Init SDK
   ;
 
   Future result = messaging.createEmail(
-    messageId: '[MESSAGE_ID]',
-    subject: '[SUBJECT]',
-    content: '[CONTENT]',
+    messageId: '<MESSAGE_ID>',
+    subject: '<SUBJECT>',
+    content: '<CONTENT>',
     topics: [],                                  // optional
     users: [],                                   // optional
     targets: [],                                 // optional
@@ -822,9 +822,9 @@ Client client = new Client()
 Messaging messaging = new Messaging(client);
 
 messaging.createEmail(
-    "[MESSAGE_ID]",                               // messageId
-    "[SUBJECT]",                                  // subject
-    "[CONTENT]",                                  // content
+    "<MESSAGE_ID>",                               // messageId
+    "<SUBJECT>",                                  // subject
+    "<CONTENT>",                                  // content
     listOf(),                                     // topics (optional)
     listOf(),                                     // users (optional)
     listOf(),                                     // targets (optional)
@@ -856,9 +856,9 @@ Client client = new Client()
 Messaging messaging = new Messaging(client);
 
 messaging.createEmail(
-    "[MESSAGE_ID]",                               // messageId
-    "[SUBJECT]",                                  // subject
-    "[CONTENT]",                                  // content
+    "<MESSAGE_ID>",                               // messageId
+    "<SUBJECT>",                                  // subject
+    "<CONTENT>",                                  // content
     listOf(),                                     // topics (optional)
     listOf(),                                     // users (optional)
     listOf(),                                     // targets (optional)
@@ -888,9 +888,9 @@ let client = Client()
 let messaging = Messaging(client)
 
 let message = try await messaging.createEmail(
-  messageId: "[MESSAGE_ID]",
-  subject: "[SUBJECT]",
-  content: "[CONTENT]",
+  messageId: "<MESSAGE_ID>",
+  subject: "<SUBJECT>",
+  content: "<CONTENT>",
   topics: [],                                    // optional
   users: [],                                     // optional
   targets: [],                                   // optional
@@ -925,8 +925,8 @@ client
 ;
 
 const message = await messaging.createSms(
-        '[MESSAGE_ID]',                          // messageId
-        '[CONTENT]',                             // content
+        '<MESSAGE_ID>',                          // messageId
+        '<CONTENT>',                             // content
         [],                                      // topics (optional)
         [],                                      // users (optional)
         [],                                      // targets (optional)
@@ -949,8 +949,8 @@ client
 ;
 
 const message = await messaging.createSms(
-        '[MESSAGE_ID]',                          // messageId
-        '[CONTENT]',                             // content
+        '<MESSAGE_ID>',                          // messageId
+        '<CONTENT>',                             // content
         [],                                      // topics (optional)
         [],                                      // users (optional)
         [],                                      // targets (optional)
@@ -975,8 +975,8 @@ $client
 $messaging = new Messaging($client);
 
 $result = $messaging->createSms(
-    messageId: '[MESSAGE_ID]',
-    content: '[CONTENT]',
+    messageId: '<MESSAGE_ID>',
+    content: '<CONTENT>',
     topics: [],                                   // optional
     users: [],                                    // optional
     targets: [],                                  // optional
@@ -999,8 +999,8 @@ client = Client()
 messaging = Messaging(client)
 
 result = messaging.create_sms(
-    message_id = '[MESSAGE_ID]',
-    content = '[CONTENT]',
+    message_id = '<MESSAGE_ID>',
+    content = '<CONTENT>',
     topics = [],                                # optional
     users = [],                                 # optional
     targets = [],                               # optional
@@ -1021,8 +1021,8 @@ client = Client.new
 messaging = Messaging.new(client)
 
 response = messaging.create_sms(
-    message_id: '[MESSAGE_ID]',
-    content: '[CONTENT]',
+    message_id: '<MESSAGE_ID>',
+    content: '<CONTENT>',
     topics: [],                                   # optional
     users: [],                                    # optional
     targets: [],                                  # optional
@@ -1045,8 +1045,8 @@ var client = new Client()
 var messaging = new Messaging(client);
 
 Message result = await messaging.CreateSMS(
-    messageId: "[MESSAGE_ID]",
-    content: "[CONTENT]"
+    messageId: "<MESSAGE_ID>",
+    content: "<CONTENT>"
     topics: new List<string> {}                   // optional
     users: new List<string> {}                    // optional
     targets: new List<string> {}                  // optional
@@ -1069,8 +1069,8 @@ void main() {                                    // Init SDK
   ;
 
   Future result = messaging.createSms(
-    messageId: '[MESSAGE_ID]',
-    content: '[CONTENT]',
+    messageId: '<MESSAGE_ID>',
+    content: '<CONTENT>',
     topics: [],                                  // optional
     users: [],                                   // optional
     targets: [],                                 // optional
@@ -1099,8 +1099,8 @@ Client client = new Client()
 Messaging messaging = new Messaging(client);
 
 messaging.createSms(
-    "[MESSAGE_ID]",                               // messageId
-    "[CONTENT]",                                  // content
+    "<MESSAGE_ID>",                               // messageId
+    "<CONTENT>",                                  // content
     listOf(),                                     // topics (optional)
     listOf(),                                     // users (optional)
     listOf(),                                     // targets (optional)
@@ -1129,8 +1129,8 @@ Client client = new Client()
 Messaging messaging = new Messaging(client);
 
 messaging.createSms(
-    "[MESSAGE_ID]",                               // messageId
-    "[CONTENT]",                                  // content
+    "<MESSAGE_ID>",                               // messageId
+    "<CONTENT>",                                  // content
     listOf(),                                     // topics (optional)
     listOf(),                                     // users (optional)
     listOf(),                                     // targets (optional)
@@ -1157,8 +1157,8 @@ let client = Client()
 let messaging = Messaging(client)
 
 let message = try await messaging.createSms(
-  messageId: "[MESSAGE_ID]",
-  content: "[CONTENT]",
+  messageId: "<MESSAGE_ID>",
+  content: "<CONTENT>",
   topics: [],                                    // optional
   users: [],                                     // optional
   targets: [],                                   // optional

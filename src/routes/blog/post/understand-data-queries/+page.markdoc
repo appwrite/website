@@ -84,8 +84,8 @@ const databases = new Databases(client);
 
 // OR operator example
 const movieData1 = databases.listDocuments(
-    '[DATABASE_ID]',
-    '[COLLECTION_ID]',
+    '<DATABASE_ID>',
+    '<COLLECTION_ID>',
     Query.or([
         Query.equal('title', ['Back To The Future', 'Top Gun']),
         Query.greaterThan('year', 2017)
@@ -94,8 +94,8 @@ const movieData1 = databases.listDocuments(
 
 // AND operator example
 const movieData2 = databases.listDocuments(
-    '[DATABASE_ID]',
-    '[COLLECTION_ID]',
+    '<DATABASE_ID>',
+    '<COLLECTION_ID>',
     Query.and([
         Query.startsWith("title", "Once"),
         Query.greaterThan('year', 1995)
@@ -104,8 +104,8 @@ const movieData2 = databases.listDocuments(
 
 // CONTAINS operator example
 const movieData3 = databases.listDocuments(
-    '[DATABASE_ID]',
-    '[COLLECTION_ID]',
+    '<DATABASE_ID>',
+    '<COLLECTION_ID>',
     Query.contains('director', ["Christopher Nolan"])
 );
 ```

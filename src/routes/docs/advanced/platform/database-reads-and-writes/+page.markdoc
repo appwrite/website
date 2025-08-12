@@ -14,20 +14,20 @@ Appwrite provides powerful database capabilities through its [Database API](/doc
 Database operations in Appwrite are categorized into two types:
 
 **Read Operations**: Any action that retrieves data from your database, including:
-- Fetching documents with `getDocument` or `listDocuments`.
+- Fetching rows with `getRow` or `listRows`.
 
 **Write Operations**: Any action that modifies data in your database, including:
-- Creating documents with `createDocument`.
-- Updating documents with `updateDocument`.
-- Deleting documents with `deleteDocument`.
+- Creating rows with `createRow`.
+- Updating rows with `updateRow`.
+- Deleting rows with `deleteRow`.
 
 How it works:
 1. Perform database operations through the Appwrite SDK or API.
 2. Appwrite automatically tracks and logs these operations.
-3. Operations are counted based on the number of documents affected, not API calls.
+3. Operations are counted based on the number of rows affected, not API calls.
 4. Quotas are refreshed monthly based on your subscription plan.
 
-For example, if you fetch a collection of 50 documents with a single API call, this counts as 50 read operations, not as a single operation. If your query returns no documents, this counts as a single operation.
+For example, if you fetch a table of 50 rows with a single API call, this counts as 50 read operations, not as a single operation. If your query returns no rows, this counts as a single operation.
 
 ## Pricing
 

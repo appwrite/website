@@ -276,7 +276,7 @@ const App: React.FC = () => (
           routerProvider={routerProvider}
           resources={[
             {
-              name: "<APPWRITE_COLLECTION_ID>",
+              name: "<APPWRITE_TABLE_ID>",
               list: "/posts",
               create: "/posts/create",
               edit: "/posts/edit/:id",
@@ -309,7 +309,7 @@ const App: React.FC = () => (
                 index
                 element={
                   <NavigateToResource 
-                    resource="<APPWRITE_COLLECTION_ID>" 
+                    resource="<APPWRITE_TABLE_ID>" 
                   />
                 }
               />
@@ -326,7 +326,7 @@ const App: React.FC = () => (
               element={
                 <Authenticated fallback={<Outlet />}>
                   <NavigateToResource
-                    resource="<APPWRITE_COLLECTION_ID>" 
+                    resource="<APPWRITE_TABLE_ID>" 
                   />
                 </Authenticated>
               }

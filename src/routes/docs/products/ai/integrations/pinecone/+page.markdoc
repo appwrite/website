@@ -8,12 +8,12 @@ readtime: 15
 
 Pinecone is a vector database that allows you to store and query high-dimensional vectors. It is a great tool for building recommendation systems, search engines, and more. In this tutorial, we'll show you how to integrate Pinecone into your Appwrite project.
 
-Inside an Appwrite Function, we'll create a method to that indexes an Appwrite collection into Pinecone. We'll also create a method to query the Pinecone index and return the results.
+Inside an Appwrite Function, we'll create a method to that indexes an Appwrite table into Pinecone. We'll also create a method to query the Pinecone index and return the results.
 
 # Prerequisites {% #prerequisites %}
 
 - An Appwrite project
-- An Appwrite collection
+- An Appwrite table
 - An [OpenAI API key](https://platform.openai.com/account/api-keys)
 - A [Pinecone API key](https://docs.pinecone.io/guides/getting-started/quickstart#2-get-your-api-key)
 - A Pinecone index
@@ -221,10 +221,10 @@ For all requests with the path `/search`, the function sends the search query to
 {% /section %}
 
 {% section #step-8 step=8 title="Handle indexing requests" %}
-The Appwrite collection needs to be indexed into the Pinecone index. Create a new file at `src/appwrite.js` with the following code:
+The Appwrite table needs to be indexed into the Pinecone index. Create a new file at `src/appwrite.js` with the following code:
 
 ```js
-import { Client, Databases, Query } from 'node-appwrite';
+import { Client, Grids, Query } from 'node-appwrite';
 
 export default class AppwriteService {
   constructor() {
@@ -236,10 +236,10 @@ export default class AppwriteService {
       .setProject(process.env.APPWRITE_FUNCTION_PROJECT_ID)
       .setKey(process.env.APPWRITE_API_KEY);
 
-    this.databases = new Databases(client);
+    this.grids = new Grids(client);
   }
 
-  async getAllDocuments(databaseId, collectionId) {
+  async getAllRows(databaseId, tableId) {
     const cumulative = [];
 
     let cursor = null;
@@ -250,19 +250,19 @@ export default class AppwriteService {
         queries.push(Query.cursorAfter(cursor));
       }
 
-      const { documents } = await this.databases.listDocuments(
+      const { rows } = await this.grids.listRows(
         databaseId,
-        collectionId,
+        tableId,
         queries
       );
 
-      if (documents.length === 0) {
+      if (rows.length === 0) {
         break;
       }
 
-      cursor = documents[documents.length - 1].$id;
+      cursor = rows[rows.length - 1].$id;
 
-      cumulative.push(...documents);
+      cumulative.push(...rows);
     } while (cursor);
 
     return cumulative;
@@ -270,26 +270,26 @@ export default class AppwriteService {
 }
 ```
 
-The service provides a method to iterate the documents contained within an entire collection, fetching the limit of 100 documents per request.
+The service provides a method to iterate the rows contained within an entire table, fetching the limit of 100 rows per request.
 
 ```js
 const appwrite = new AppwriteService();
 
-const documents = await appwrite.getAllDocuments(
+const rows = await appwrite.getAllRows(
   process.env.APPWRITE_DATABASE_ID,
-  process.env.APPWRITE_COLLECTION_ID
+  process.env.APPWRITE_TABLE_ID
 );
 
 const embeddings = await Promise.all(
-  documents.map(async (document) => {
+  rows.map(async (row) => {
     const record = await openai.embeddings.create({
       model: 'text-embedding-ada-002',
-      input: JSON.stringify(document),
+      input: JSON.stringify(row),
     });
     return {
-      id: document.$id,
+      id: row.$id,
       values: record.data[0].embedding,
-      metadata: document,
+      metadata: row,
     };
   })
 );
@@ -297,7 +297,7 @@ const embeddings = await Promise.all(
 await pineconeIndex.upsert(embeddings);
 ```
 
-The code fetches all documents from the Appwrite collection, then sends each document to the OpenAI API to get the embedding. The embeddings are then uploaded to the Pinecone index.
+The code fetches all rows from the Appwrite table, then sends each row to the OpenAI API to get the embedding. The embeddings are then uploaded to the Pinecone index.
 {% /section %}
 
 {% section #step-9 step=9 title="Test the function" %}

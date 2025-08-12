@@ -56,9 +56,9 @@ Each screen on the console has a concept of a primary action. For example, in th
 |`C` then `P`|Create project|
 |`C` then `U`|Create user|
 |`C` then `A`|Create database|
-|`C` then `C`|Create collection|
-|`C` then `D`|Create document|
-|`C` then `T`|Create attribute|
+|`C` then `C`|Create table|
+|`C` then `D`|Create row|
+|`C` then `T`|Create column|
 |`C` then `F`|Create function|
 |`C` then `S`|Create storage|
 

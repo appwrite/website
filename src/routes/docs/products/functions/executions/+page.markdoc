@@ -87,5 +87,5 @@ to explicitly log the information you need.
 Logs are not retained forever in order to be compliant with GDPR and other data privacy standards.
 Free plan organizations will retain logs for 24 hours, Pro plan organizations will retain logs for 7 days.
 
-If you need longer log retention, you can log to an Appwrite collection.
+If you need longer log retention, you can log to an Appwrite table.
 Remember to configure proper permissions and implement Appwrite Functions or other scheduled tasks to expire and clean up logs.

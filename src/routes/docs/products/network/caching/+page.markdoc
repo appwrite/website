@@ -10,7 +10,7 @@ Appwrite employs a multi-layered caching approach to enhance the performance of 
 
 At the region level, Appwrite provides smart in-memory caching for various resources:  
 
-- **Documents**: Frequently accessed documents are cached in memory and automatically purged when updated, ensuring data consistency without manual intervention.  
+- **Documents**: Frequently accessed rows are cached in memory and automatically purged when updated, ensuring data consistency without manual intervention.  
 - **Storage files**: Frequently accessed files are cached in memory to reduce disk reads and improve performance.  
 - **Image transformations**: Processed images (e.g., resized or converted) are cached in memory for faster repeated requests, reducing processing overhead.  
 
