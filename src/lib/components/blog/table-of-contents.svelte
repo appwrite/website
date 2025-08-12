@@ -5,12 +5,7 @@
         step?: number;
         selected?: boolean;
         level?: number;
-        children?: Array<{
-            title: string;
-            href: string;
-            selected: boolean;
-            level?: number;
-        }>;
+        children?: Array<TocItem>;
     }
 </script>
 
@@ -22,27 +17,41 @@
     }
 
     let { toc = [], heading = 'Table of Contents' }: TableOfContentProps = $props();
+
+    let height = $state<number>(0);
+    let position = $state<number>(0);
+
+    const onScroll = () => {
+        const selectedIndex = toc.findIndex(
+            (item) => item.selected || item.children?.some((child) => child.selected)
+        );
+        if (selectedIndex >= 0) {
+            position = Math.min(selectedIndex * 40, height - 24);
+        }
+    };
 </script>
+
+<svelte:window onscroll={onScroll} />
 
 <nav class="sticky top-32 col-span-3 mt-2 -ml-4 hidden h-[800px] flex-col gap-6 lg:flex">
     <span class="text-eyebrow text-primary font-aeonik-fono ps-6 uppercase">{heading}</span>
     <div class="relative">
+        <div
+            class="bg-greyscale-300 absolute top-0 -left-px h-6 w-px rounded-full transition-transform ease-linear"
+            style:transform={`translateY(${position}px)`}
+        ></div>
         <ul
-            class="text-caption flex max-h-[600px] flex-col gap-4 overflow-scroll pb-11 [scrollbar-width:none]"
+            class="text-caption /pb-11 flex max-h-[600px] flex-col gap-4 overflow-scroll [scrollbar-width:none]"
+            bind:clientHeight={height}
         >
             {#each toc as parent (parent.href)}
                 <li
-                    class={classNames(
-                        parent.selected ? 'text-primary' : 'text-secondary',
-                        'relative ps-6 transition-colors',
-                        'before:bg-greyscale-300 before:absolute before:top-0 before:left-0 before:h-6 before:w-px before:rounded-full before:opacity-0 before:transition-opacity',
-                        {
-                            'font-medium': parent.level && parent.level === 1,
-                            'pl-12': parent.level && parent.level === 2,
-                            'ps-16': parent.level && parent.level >= 3,
-                            'before:opacity-100': parent.selected
-                        }
-                    )}
+                    class={classNames('text-secondary relative ps-6 transition-colors', {
+                        'font-medium': parent.level && parent.level === 1,
+                        'pl-12': parent.level && parent.level === 2,
+                        'ps-16': parent.level && parent.level >= 3,
+                        'text-primary': parent.selected
+                    })}
                 >
                     <a href={parent.href} class="line-clamp-1">{parent.title}</a>
 
