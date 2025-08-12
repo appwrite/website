@@ -5,6 +5,34 @@
     import { loggedIn, user } from '$lib/utils/console';
     import { PUBLIC_GROWTH_ENDPOINT } from '$env/static/public';
     import { Button } from '$lib/components/ui';
+    import Icon from './ui/icon';
+    import { createForm } from '@tanstack/svelte-form';
+
+    const form = createForm(() => ({
+        defaultValues: {
+            email: '',
+            comment: ''
+        },
+        onSubmit: async ({ value }) => {
+            const userId = loggedIn && $user?.$id ? $user.$id : undefined;
+
+            const response = await fetch(`${PUBLIC_GROWTH_ENDPOINT}/feedback/docs`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    email,
+                    type: feedbackType,
+                    route: page.route.id,
+                    comment,
+                    metaFields: {
+                        userId
+                    }
+                })
+            });
+        }
+    }));
 
     export let date: string | undefined = undefined;
     let showFeedback = false;
@@ -81,7 +109,7 @@
                             feedbackType = 'positive';
                         }}
                     >
-                        <span class="icon-thumb-up"></span>
+                        <Icon class="icon-thumb-up"></Icon>
                     </button>
                     <button
                         class="web-radio-button"
@@ -120,7 +148,8 @@
         <form
             onsubmit={(e) => {
                 e.preventDefault();
-                handleSubmit();
+                e.stopPropagation();
+                form.handleSubmit();
             }}
             class="web-card is-normal"
             style="--card-padding:1rem"
@@ -142,14 +171,20 @@
                 <label for="message" class="mt-2">
                     <span class="text-primary">Email</span>
                 </label>
-                <input
-                    class="web-input-text"
-                    placeholder="Enter your email"
-                    type="email"
-                    name="email"
-                    required
-                    bind:value={email}
-                />
+                <form.Field name="email">
+                    {#snippet children(field)}
+                        <input
+                            name={field.name}
+                            value={field.state.value}
+                            onblur={field.handleBlur}
+                            oninput={(e) => field.handleChange(e.currentTarget.value)}
+                            class="web-input-text"
+                            placeholder="Enter your email"
+                            type="email"
+                            required
+                        />
+                    {/snippet}
+                </form.Field>
             </div>
             {#if submitted}
                 <p class="text-primary mt-4">

@@ -69,6 +69,9 @@ importers:
       '@tailwindcss/postcss':
         specifier: ^4.1.4
         version: 4.1.4
+      '@tanstack/svelte-form':
+        specifier: ^1.19.1
+        version: 1.19.1(svelte@5.25.6)
       '@turf/boolean-point-in-polygon':
         specifier: ^7.2.0
         version: 7.2.0
@@ -1455,6 +1458,22 @@ packages:
 
   '@tailwindcss/postcss@4.1.4':
     resolution: {integrity: sha512-bjV6sqycCEa+AQSt2Kr7wpGF1bOZJ5wsqnLEkqSbM/JEHxx/yhMH8wHmdkPyApF9xhHeMSwnnkDUUMMM/hYnXw==}
+
+  '@tanstack/form-core@1.19.1':
+    resolution: {integrity: sha512-1c+/8ZlhuNroy6J9cMR+04K3muVO9ht3YZ4TNLlnBQjijv3nySugetzwW2O3Z77OI8FOJMSyUDsh8A9nB36f+g==}
+
+  '@tanstack/store@0.7.2':
+    resolution: {integrity: sha512-RP80Z30BYiPX2Pyo0Nyw4s1SJFH2jyM6f9i3HfX4pA+gm5jsnYryscdq2aIQLnL4TaGuQMO+zXmN9nh1Qck+Pg==}
+
+  '@tanstack/svelte-form@1.19.1':
+    resolution: {integrity: sha512-C+e81FgP6pLEtcXuf613lM3QZG91r4vtikBz4VG+OyzqwcPH961Y4Qes5CF7IOXUrzaiqIR5K0tG5IL0rCMTUw==}
+    peerDependencies:
+      svelte: ^5.0.0
+
+  '@tanstack/svelte-store@0.7.3':
+    resolution: {integrity: sha512-/NZGI42mT0V0WRmeJKymv1Oftp3ZtgDOB57Vp79g9JZACqeLGmCcJwWWSwUEdul41XJ4Q4o9XHRIUCtCEbKAfA==}
+    peerDependencies:
+      svelte: ^5.0.0
 
   '@tokenizer/token@0.3.0':
     resolution: {integrity: sha512-OvjF+z51L3ov0OyAU0duzsYuvO01PH7x4t6DJx+guahgTnBHkhJdG7soQeTSFLWN3efnHyibZ4Z8l2EuWwJN3A==}
@@ -5282,6 +5301,23 @@ snapshots:
       '@tailwindcss/oxide': 4.1.4
       postcss: 8.5.3
       tailwindcss: 4.1.4
+
+  '@tanstack/form-core@1.19.1':
+    dependencies:
+      '@tanstack/store': 0.7.2
+
+  '@tanstack/store@0.7.2': {}
+
+  '@tanstack/svelte-form@1.19.1(svelte@5.25.6)':
+    dependencies:
+      '@tanstack/form-core': 1.19.1
+      '@tanstack/svelte-store': 0.7.3(svelte@5.25.6)
+      svelte: 5.25.6
+
+  '@tanstack/svelte-store@0.7.3(svelte@5.25.6)':
+    dependencies:
+      '@tanstack/store': 0.7.2
+      svelte: 5.25.6
 
   '@tokenizer/token@0.3.0': {}
 

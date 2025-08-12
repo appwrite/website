@@ -1,7 +1,7 @@
 <script lang="ts">
     import { page } from '$app/state';
     import Article from '$markdoc/layouts/Article.svelte';
-    import { Table, Thead, Tr, Th, Tbody, Td, Heading, Fence } from '$markdoc/nodes/_module.svelte';
+    import { Table, Thead, Tr, Th, Tbody, Td, Heading, Fence } from '$markdoc/nodes/_Module.svelte';
     import { parse } from '$lib/utils/markdown';
     import Tabs from '$markdoc/tags/Tabs.svelte';
     import TabsItem from '$markdoc/tags/TabsItem.svelte';
