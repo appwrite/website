@@ -4,7 +4,7 @@
         href: string;
         selected?: boolean;
         level: number;
-        children?: Array<TocItem>;
+        children?: Array<Omit<TocItem, 'children' | 'level'>>;
     }
 </script>
 

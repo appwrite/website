@@ -290,9 +290,7 @@
                     <section class="web-article-content-grid-6-4">
                         <div class="web-article-content-grid-6-4-column-1 flex flex-col gap-8">
                             <header class="web-article-content-header">
-                                <Heading id={method.id} level={2} inReferences
-                                    >{method.title}</Heading
-                                >
+                                <Heading id={method.id} level={2}>{method.title}</Heading>
                             </header>
                             <div class="flex flex-col gap-2">
                                 <!-- eslint-disable-next-line svelte/no-at-html-tags -->

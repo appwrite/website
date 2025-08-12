@@ -1,4 +1,5 @@
 <script module>
+    export { default as Blockquote } from './blockquote.svelte';
     export { default as Section } from './Section.svelte';
     export { default as MultiCode } from './MultiCode.svelte';
     export { default as Info } from './Info.svelte';

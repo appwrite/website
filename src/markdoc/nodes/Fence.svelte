@@ -79,7 +79,7 @@
     {/if}
 {:else}
     <section
-        class="dark web-code-snippet"
+        class="dark web-code-snippet not-prose my-8!"
         class:no-top-margin={inTutorialDocs}
         aria-label="code-snippet panel"
     >
