@@ -1,6 +1,6 @@
 <script lang="ts">
     import { Icon } from '$lib/components/ui';
-    import type { Snippet } from 'svelte';
+    import { setContext, type Snippet } from 'svelte';
 
     interface ArrowLinkProps {
         href: string;
@@ -9,9 +9,11 @@
 
     const { href, children }: ArrowLinkProps = $props();
 
-    const isExternal = ['http://', 'https://'].some((prefix) => href.startsWith(prefix));
-    const target = isExternal ? '_blank' : undefined;
+    const isExternal = /https?:\/\//.test(href);
+    const target = isExternal ? '_blank' : '_self';
     const rel = isExternal ? 'noopener nofollow' : undefined;
+
+    setContext('no-paragraph', true);
 </script>
 
 <a class="flex" {href} {target} {rel}>

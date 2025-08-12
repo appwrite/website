@@ -13,8 +13,8 @@ const config = {
         vitePreprocess(),
         markdoc({
             generateSchema: true,
-            nodes: absolute('./src/markdoc/nodes/_Module.svelte'),
-            tags: absolute('./src/markdoc/tags/_Module.svelte'),
+            nodes: absolute('./src/markdoc/nodes/_module.svelte'),
+            tags: absolute('./src/markdoc/tags/_module.svelte'),
             partials: absolute('./src/partials'),
             layouts: {
                 default: absolute('./src/markdoc/layouts/Article.svelte'),

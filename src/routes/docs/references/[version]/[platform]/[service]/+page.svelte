@@ -15,7 +15,7 @@
         versions
     } from '$lib/utils/references';
     import type { LayoutContext } from '$markdoc/layouts/Article.svelte';
-    import { Fence, Heading } from '$markdoc/nodes/_Module.svelte';
+    import { Fence, Heading } from '$markdoc/nodes/_module.svelte';
     import { API_REFERENCE_TITLE_SUFFIX } from '$routes/titles.js';
     import { getContext, onMount, setContext } from 'svelte';
     import { writable } from 'svelte/store';
