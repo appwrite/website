@@ -17,7 +17,7 @@
 <script lang="ts">
     import { setContext } from 'svelte';
     import { writable } from 'svelte/store';
-    import { FeedbackForm } from '$lib/components';
+    import { Feedback } from '$lib/components';
     import TableOfContents from '$lib/components/blog/table-of-contents.svelte';
     import { Button, Icon } from '$lib/components/ui';
 
@@ -68,7 +68,7 @@
         <div class="web-article-content prose" class:web-reduced-article-size={$reducedArticleSize}>
             <slot />
 
-            <FeedbackForm {date} />
+            <Feedback {date} />
         </div>
         <aside class="web-references-menu ps-6">
             <div class="web-references-menu-content">
