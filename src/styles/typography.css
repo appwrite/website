@@ -122,7 +122,7 @@
         font-weight: var(--font-weight-medium);
         text-decoration: underline;
         text-decoration-thickness: 0.75px;
-        text-decoration-color: var(--color-offset);
+        text-decoration-color: var(--color-smooth);
         text-underline-offset: 0.375rem;
         letter-spacing: var(--tracking-tight);
         color: var(--color-primary);
@@ -291,4 +291,8 @@
 .prose-large {
     font-size: var(--font-size-medium);
     line-height: var(--leading-md);
+
+    code:where(:not(.not-prose, .not-prose *)) {
+        font-size: var(--font-size-small);
+    }
 }
