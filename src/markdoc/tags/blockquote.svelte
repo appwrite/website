@@ -13,6 +13,6 @@
     {@render children()}
     <div class="text-paragraph-md flex flex-col">
         <span class="text-primary font-medium">{name}</span>
-        <span class="text-secondary">{title}</span>
+        <span class="text-secondary font-regular">{title}</span>
     </div>
 </blockquote>

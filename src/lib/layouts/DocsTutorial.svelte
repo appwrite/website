@@ -1,6 +1,6 @@
 <script lang="ts">
     import { scrollToTop } from '$lib/actions/scrollToTop';
-    import { Feedback } from '$lib/components';
+    import { FeedbackForm } from '$lib/components';
     import type { Tutorial } from '$markdoc/layouts/Tutorial.svelte';
     import type { TocItem } from './DocsArticle.svelte';
     import Heading from '$markdoc/nodes/Heading.svelte';
@@ -199,7 +199,7 @@
                 </section>
             </section>
 
-            <Feedback {date} />
+            <FeedbackForm {date} />
         </div>
         <aside class="web-references-menu ps-6">
             <div class="web-references-menu-content">

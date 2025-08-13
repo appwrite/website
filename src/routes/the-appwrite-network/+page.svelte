@@ -72,7 +72,7 @@
             )}
         ></div>
         <div class="mb-20">
-            <Map />
+            <Map theme="dark" />
         </div>
     </div>
 </Main>

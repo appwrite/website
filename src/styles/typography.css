@@ -256,6 +256,7 @@
         border-inline-start-color: var(--color-accent);
         padding-inline-start: calc(var(--spacing) * 5);
         margin-inline-end: calc(var(--spacing) * 30);
+        margin-block: calc(var(--spacing) * 8);
         color: var(--color-primary);
         font-size: var(--font-size-large);
         font-weight: var(--font-weight-medium);

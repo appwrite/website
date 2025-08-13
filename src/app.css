@@ -343,6 +343,7 @@
     --font-weight-medium: 500;
 
     /* tokens */
+    --text-*: initial;
     --text-eyebrow: var(--font-size-micro);
     --text-eyebrow--line-height: var(--leading-tiny);
     --text-eyebrow--letter-spacing: var(--tracking-loose);
@@ -386,7 +387,7 @@
         var(--tracking-squeezed)
     );
     --text-title: clamp(var(--font-size-xxl), 1.046rem + 3.053vw, var(--font-size-big));
-    --text-title--line-height: clamp(var(--leading-lg), 2.296rem + 3.053vw, var(--leading-xl));
+    --text-title--line-height: clamp(var(--leading-lg), 1.052rem + 3.435vw, var(--leading-xl));
     --text-title--letter-spacing: clamp(
         var(--tracking-compressed),
         0.033rem + -0.037vw,
