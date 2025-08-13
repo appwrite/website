@@ -63,13 +63,18 @@
             form.setFieldValue('email', $user?.email);
         }
     });
+
+    const FEEDBACK_WIDTH = 360;
+    const FEEDBACK_HEIGHT = 225;
 </script>
 
 <section class="not-prose border-subtle border-t pt-8">
     <header class="flex w-full">
         <div class="flex w-full items-center justify-between gap-8">
             <div
-                class="border-smooth bg-card relative mx-auto flex w-fit flex-col justify-center overflow-hidden rounded-xl border py-1.5 pr-2 pl-4 transition-all ease-[cubic-bezier(0.165,_0.84,_0.44,_1)]"
+                class="border-smooth bg-card relative mx-auto flex w-fit flex-col overflow-hidden rounded-xl border transition-all ease-[cubic-bezier(0.165,_0.84,_0.44,_1)]"
+                style:width={`${FEEDBACK_WIDTH}px`}
+                style:height={`${FEEDBACK_HEIGHT}px`}
             >
                 <form
                     onsubmit={(e) => {
@@ -77,11 +82,10 @@
                         e.stopPropagation();
                         form.handleSubmit();
                     }}
-                    style:width="350px"
-                    style:height="225px"
-                    class="absolute bottom-0"
+                    style:width={`${FEEDBACK_WIDTH}px`}
+                    class="border-smooth h-full border-b"
                 >
-                    <div class="flex flex-col gap-2">
+                    <div class="flex h-full flex-col gap-2">
                         <form.Field
                             name="comment"
                             validators={{
@@ -90,7 +94,7 @@
                         >
                             {#snippet children(field)}
                                 <textarea
-                                    class="resize-none outline-0"
+                                    class="flex-1 resize-none p-3 outline-0"
                                     placeholder={`What did you ${feedbackType === 'negative' ? 'dislike' : 'like'}?`}
                                     required
                                     value={field.state.value}
@@ -119,8 +123,14 @@
                                 />
                             {/snippet}
                         </form.Field> -->
+
+                        <Button
+                            type="submit"
+                            class="self-end justify-self-end"
+                            disabled={form.state.isSubmitting}>Submit</Button
+                        >
                     </div>
-                    {#if form.state.isSubmitted}
+                    <!-- {#if form.state.isSubmitted}
                         <p class="text-primary mt-4">
                             Your message has been sent successfully. We appreciate your feedback.
                         </p>
@@ -129,13 +139,9 @@
                         <p class="text-primary mt-4">
                             There was an error submitting your feedback. Please try again later.
                         </p>
-                    {/if}
-
-                    <div class="mt-4 flex justify-end gap-2">
-                        <Button type="submit" disabled={form.state.isSubmitting}>Submit</Button>
-                    </div>
+                    {/if} -->
                 </form>
-                <div class="flex items-center gap-3">
+                <div class="flex items-center gap-3 self-center py-2 pr-2 pl-4">
                     <h5 class="text-caption text-primary">Was this page helpful?</h5>
                     <div class="flex gap-2">
                         <button
@@ -178,17 +184,3 @@
         </div>
     </header>
 </section>
-
-{#snippet SadFace()}
-    <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="32"
-        height="32"
-        fill="var(--color-primary)"
-        viewBox="0 0 256 256"
-        class="p-2"
-        ><path
-            d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24ZM92,96a12,12,0,1,1-12,12A12,12,0,0,1,92,96Zm80,86.92A8,8,0,0,1,161.08,180c-7.47-12.91-19.21-20-33.08-20s-25.61,7.1-33.08,20a8,8,0,1,1-13.84-8c10.29-17.79,27.39-28,46.92-28s36.63,10.2,46.92,28A8,8,0,0,1,172,182.92ZM164,120a12,12,0,1,1,12-12A12,12,0,0,1,164,120Z"
-        ></path></svg
-    >
-{/snippet}
