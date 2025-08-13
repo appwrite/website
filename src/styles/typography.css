@@ -93,7 +93,7 @@
     }
 
     ol li + li:where(:not(.not-prose, .not-prose *)) {
-        margin-top: calc(var(--spacing) * 1);
+        margin-top: calc(var(--spacing) * 2);
         display: inline-block;
     }
 
@@ -109,7 +109,7 @@
     }
 
     ul li:where(:not(.not-prose, .not-prose *)) {
-        margin-block: calc(var(--spacing) * 1);
+        margin-block: calc(var(--spacing) * 2);
         margin-inline-start: calc(var(--spacing) * 2);
         padding-inline-start: calc(var(--spacing) * 1);
     }
@@ -295,5 +295,10 @@
 
     code:where(:not(.not-prose, .not-prose *)) {
         font-size: var(--font-size-small);
+    }
+
+    ul li:where(:not(.not-prose, .not-prose *)),
+    ol li + li:where(:not(.not-prose, .not-prose *)) {
+        margin-top: calc(var(--spacing) * 2.5);
     }
 }

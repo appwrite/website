@@ -40,11 +40,6 @@ Integrating Auto-increment support into your Appwrite Databases makes your backe
 For numeric ordering based on insertion order, you can use the `$sequence` field, which Appwrite automatically adds to all documents. This field increments with each new insert.
 
 
-{% blockquote name="Caio Arias" title="Visual Designer" %}
-This is a blockquote alongside of a citation. Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-{% /blockquote %}
-
-
 ```client-web
 import { Client, Databases, Query } from "appwrite";
 
@@ -64,8 +59,6 @@ databases.listDocuments(
 
 ```
 [Auto-increment support](/docs/products/databases/order#sequence-ordering) is available on both Appwrite Cloud and self-hosted installations and can smoothly integrate into your existing workflows.
-
-> Blockquote that goes here but does not have a citation. Lorem Ipsum is simply dummy text of the printing and typesetting industry.
 
 # More resources
 

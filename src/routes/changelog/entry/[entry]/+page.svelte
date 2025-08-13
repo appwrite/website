@@ -146,7 +146,7 @@
                             </div>
                         {/if}
 
-                        <div class="web-article-content mt-8">
+                        <div class="web-article-content prose prose-large mt-8">
                             <!-- <svelte:component> is deprecated -->
                             {#if data.component}
                                 {@const DataComponent = data.component}
