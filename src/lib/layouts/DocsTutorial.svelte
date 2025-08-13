@@ -160,7 +160,7 @@
                         </div>
                     </header>
 
-                    <div class="web-u-padding-block-start-32" bind:this={slotContent}>
+                    <div class="web-u-padding-block-start-32 prose" bind:this={slotContent}>
                         <slot />
                     </div>
 

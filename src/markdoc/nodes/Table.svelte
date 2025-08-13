@@ -14,7 +14,7 @@
     const transparentCells = inPolicy ? getPolicyCtx().transparentTableCells : false;
 </script>
 
-<div class="web-table-wrapper" class:in-policy={inPolicy} class:transparentCells>
+<div class="web-table-wrapper my-8!" class:in-policy={inPolicy} class:transparentCells>
     <div class="web-table-scroll">
         <table class="web-table">
             <slot />

@@ -41,9 +41,9 @@
         <img {src} {alt} {title} loading="lazy" style:vertical-align="middle" />
     {/if}
 {:else}
-    <div class="web-media main">
+    <div class="web-media relative my-8!">
         <img {src} {alt} {title} loading="lazy" class="aspect-video w-full object-cover" />
-        <div class="abs">
+        <div class="absolute right-4 bottom-4 opacity-25 transition hover:opacity-100">
             <Tooltip closeOnPointerDown>
                 <Button variant="secondary" class="cursor-pointer" action={trigger}>
                     <span class="icon-arrow-expand" aria-hidden="true"></span>
@@ -77,24 +77,6 @@
         padding: 0.6rem !important;
         [class*='icon'] {
             color: hsl(var(--web-color-primary)) !important;
-        }
-    }
-
-    .main {
-        position: relative;
-
-        .abs {
-            position: absolute;
-            bottom: 1rem;
-            right: 1rem;
-            opacity: 0.25;
-            transition: var(--transition);
-        }
-
-        &:hover {
-            .abs {
-                opacity: 1;
-            }
         }
     }
 

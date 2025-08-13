@@ -153,7 +153,6 @@
             }}
             class="web-card is-normal"
             style="--card-padding:1rem"
-            out:fade={{ duration: 450 }}
         >
             <div class="flex flex-col gap-2">
                 <label for="message">
@@ -161,13 +160,19 @@
                         What did you {feedbackType === 'negative' ? 'dislike' : 'like'}?
                     </span>
                 </label>
-                <textarea
-                    class="web-input-text"
-                    id="message"
-                    placeholder="Write your message"
-                    required
-                    bind:value={comment}
-                ></textarea>
+                <form.Field name="comment">
+                    {#snippet children(field)}
+                        <textarea
+                            class="web-input-text"
+                            id="message"
+                            placeholder="Write your message"
+                            required
+                            value={field.state.value}
+                            onblur={field.handleBlur}
+                            oninput={(e) => field.handleChange(e.currentTarget.value)}
+                        ></textarea>
+                    {/snippet}
+                </form.Field>
                 <label for="message" class="mt-2">
                     <span class="text-primary">Email</span>
                 </label>

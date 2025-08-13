@@ -10,6 +10,7 @@
 
 <script lang="ts">
     import { classNames } from '$lib/utils/classnames';
+    import { onMount, tick } from 'svelte';
     interface TableOfContentProps {
         toc?: Array<TocItem>;
         heading?: string;
@@ -72,7 +73,7 @@
             {/each}
         </ul>
         <div
-            class="absolute top-0 -left-px h-6 w-px rounded-full bg-white transition-transform ease-linear"
+            class="absolute top-0 -left-px h-6 w-px bg-white transition-transform ease-linear"
             style:transform={`translateY(${position}px)`}
         ></div>
     </div>
