@@ -122,8 +122,8 @@
         font-weight: var(--font-weight-medium);
         text-decoration: underline;
         text-decoration-thickness: 0.75px;
-        text-decoration-color: var(--color-tertiary);
-        text-underline-offset: 0.375rem;
+        text-decoration-color: var(--color-tertiary) !important;
+        text-underline-offset: 0.3125rem;
         letter-spacing: var(--tracking-tight);
         color: var(--color-primary);
         transition: all 200ms ease-in-out;
@@ -300,5 +300,9 @@
     ul li:where(:not(.not-prose, .not-prose *)),
     ol li + li:where(:not(.not-prose, .not-prose *)) {
         margin-top: calc(var(--spacing) * 2.5);
+    }
+
+    a:not(:where(:is(h2, h3, h4, h5, h6) *)):where(:not(.not-prose, .not-prose *)) {
+        text-underline-offset: 0.375rem;
     }
 }
