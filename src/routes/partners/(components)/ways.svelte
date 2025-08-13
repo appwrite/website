@@ -20,7 +20,7 @@
     ];
 </script>
 
-<div class="container space-y-12 py-24">
+<div class="container space-y-12 py-12 md:py-30">
     <h2 class="text-primary font-aeonik-pro text-title text-center">Ways to partner</h2>
     <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
         {#each items as item}
