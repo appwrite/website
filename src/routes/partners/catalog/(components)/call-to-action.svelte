@@ -1,9 +1,9 @@
 <script lang="ts">
-    import { classNames } from '$lib/utils/classnames';
+    import { cn } from '$lib/utils/cn';
 </script>
 
 <div
-    class={classNames(
+    class={cn(
         'border-smooth relative -mb-24 border-t py-32',
         'bg-[url("/images/bgs/building-blocks.webp")] [background-size:50%] bg-right-bottom bg-no-repeat',
         'before:absolute before:top-0 before:left-0 before:z-0 before:block before:h-80 before:w-full before:bg-[radial-gradient(at_25%_0%,_hsla(343,_98%,_60%,_0.05)_0px,_transparent_73%,_transparent_100%)] md:before:w-1/2',

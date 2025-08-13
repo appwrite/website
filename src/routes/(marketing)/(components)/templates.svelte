@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { classNames } from '$lib/utils/classnames';
+    import { cn } from '$lib/utils/cn';
     import GridPaper from './grid-paper.svelte';
 
     const templates = [
@@ -44,7 +44,7 @@
 </script>
 
 <div
-    class={classNames(
+    class={cn(
         'light border-smooth relative flex min-h-[60vh] w-full flex-col gap-4 overflow-hidden border-t border-dashed bg-[#EDEDF0] py-20',
         'before:absolute before:inset-0 before:top-0 before:left-0 before:block before:h-full before:bg-[radial-gradient(circle_at_120%_-50%,_hsla(248,_99%,_70%,_0.4)_0,_transparent_40%)]',
         'after:absolute after:inset-0 after:top-0 after:right-0 after:mt-auto after:mb-0 after:block after:h-full after:bg-[radial-gradient(circle_at_-15%_125%,_hsla(343,_98%,_60%,_0.4)_0px,_transparent_40%)]'

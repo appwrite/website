@@ -4,7 +4,7 @@
     import { visible } from '$lib/actions/visible';
     import { Tooltip } from '$lib/components';
     import { Button } from '$lib/components/ui';
-    import { classNames } from '$lib/utils/classnames';
+    import { cn } from '$lib/utils/cn';
     import { getAppwriteDashboardUrl } from '$lib/utils/dashboard';
     import { getScrollDir } from '$lib/utils/getScrollDir';
     import { createAccordion, melt } from '@melt-ui/svelte';
@@ -739,7 +739,7 @@
                                         </th>
                                         {#each cols as col, index}
                                             <td
-                                                class={classNames(
+                                                class={cn(
                                                     `text-caption flex justify-center font-normal level-${index}`,
                                                     {
                                                         'md:bg-greyscale-100': col === 'pro'

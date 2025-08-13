@@ -4,7 +4,7 @@
     import { Main } from '$lib/layouts';
     import { DEFAULT_HOST } from '$lib/utils/metadata';
 
-    import { classNames } from '$lib/utils/classnames';
+    import { cn } from '$lib/utils/cn';
     import type { Partner } from '$routes/partners/catalog/+page';
     import ContactPartner from '$routes/partners/catalog/(components)/contact-partner.svelte';
     import Icon from '$lib/components/ui/icon';
@@ -52,7 +52,7 @@
 
 <Main>
     <div
-        class={classNames(
+        class={cn(
             'grid-bg border-smooth relative flex items-center border-b px-5 py-28 lg:px-8 xl:px-16',
             'before:from-accent/20 before:absolute before:inset-0 before:-z-1 before:bg-linear-to-tr before:via-transparent before:via-40% before:to-transparent'
         )}

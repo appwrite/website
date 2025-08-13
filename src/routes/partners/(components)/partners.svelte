@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { classNames } from '$lib/utils/classnames';
+    import { cn } from '$lib/utils/cn';
     import { inView } from 'motion';
 
     import Platinum from '../(assets)/icons/platinum.png';
@@ -37,7 +37,7 @@
 </script>
 
 <div
-    class={classNames(
+    class={cn(
         'border-smooth relative flex items-center justify-center border-t border-b border-dashed [border-top-style:solid] bg-[#17171A] py-32',
         'after:absolute after:inset-0 after:top-0 after:right-0 after:z-0 after:mt-auto after:mb-0 after:block after:h-full after:bg-[radial-gradient(circle_at_120%_-40%,_hsla(343,_98%,_60%,_0.2)_0px,_transparent_40%)]'
     )}
@@ -67,7 +67,7 @@
         <div class="mask relative overflow-hidden px-8" style:--mask-height="150px">
             {#each tiers as { title, icon }, i}
                 <div
-                    class={classNames('relative h-fit min-w-md rounded-3xl opacity-0', {
+                    class={cn('relative h-fit min-w-md rounded-3xl opacity-0', {
                         animate
                     })}
                     style:z-index={tiers.length - i}

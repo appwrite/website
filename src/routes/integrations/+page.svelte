@@ -8,7 +8,7 @@
     import Input from '$lib/components/ui/input.svelte';
     import { type ResultType, Fuse } from '$lib/integrations';
     import { Main } from '$lib/layouts';
-    import { classNames } from '$lib/utils/classnames';
+    import { cn } from '$lib/utils/cn';
     import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
     import { TITLE_SUFFIX } from '$routes/titles';
     import { onDestroy, onMount } from 'svelte';
@@ -153,7 +153,7 @@
                                     {#each platforms as platform}
                                         <li>
                                             <button
-                                                class={classNames(
+                                                class={cn(
                                                     'tag bg-greyscale-800 border-greyscale-700 h-8 cursor-pointer rounded-full border px-3 text-sm font-light',
                                                     {
                                                         'bg-white text-black':

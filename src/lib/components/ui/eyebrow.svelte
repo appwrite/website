@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { classNames } from '$lib/utils/classnames';
+    import { cn } from '$lib/utils/cn';
 
     // html text elements
     type ElementType =
@@ -34,8 +34,6 @@
 
 <svelte:element
     this={as}
-    class={classNames(
-        'text-eyebrow tracking-loose text-primary font-aeonik-fono uppercase',
-        className
-    )}><slot /></svelte:element
+    class={cn('text-eyebrow tracking-loose text-primary font-aeonik-fono uppercase', className)}
+    ><slot /></svelte:element
 >

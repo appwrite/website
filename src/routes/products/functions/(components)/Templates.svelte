@@ -1,7 +1,7 @@
 <script lang="ts">
     import Tooltip from '$lib/components/Tooltip.svelte';
     import { Button } from '$lib/components/ui';
-    import { classNames } from '$lib/utils/classnames';
+    import { cn } from '$lib/utils/cn';
     import Templates from '../(assets)/templates.png';
 
     const icons = {
@@ -85,12 +85,9 @@
                 {@const baseRuntimes = template.runtimes.slice(0, 2)}
                 {@const hiddenRuntimes = template.runtimes.slice(2)}
                 <div
-                    class={classNames(
-                        'flex-col gap-2 rounded-2xl border border-black/8 bg-white p-4',
-                        {
-                            'hidden md:flex': i > 3
-                        }
-                    )}
+                    class={cn('flex-col gap-2 rounded-2xl border border-black/8 bg-white p-4', {
+                        'hidden md:flex': i > 3
+                    })}
                 >
                     <div class="flex w-full items-center justify-between">
                         <span class="text-sub-body text-primary font-medium">{template.title}</span>

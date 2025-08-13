@@ -11,7 +11,7 @@
     import { goto } from '$app/navigation';
     import { onDestroy, onMount } from 'svelte';
     import { browser } from '$app/environment';
-    import { classNames } from '$lib/utils/classnames';
+    import { cn } from '$lib/utils/cn';
 
     import { page } from '$app/state';
     import Hero from './(components)/hero.svelte';
@@ -116,7 +116,7 @@
                                     {#each platforms as platform}
                                         <li>
                                             <button
-                                                class={classNames(
+                                                class={cn(
                                                     'tag bg-greyscale-800 border-greyscale-700 h-8 cursor-pointer rounded-full border px-3 text-sm font-light',
                                                     {
                                                         'bg-white text-black':

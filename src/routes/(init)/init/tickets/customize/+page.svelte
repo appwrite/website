@@ -13,7 +13,7 @@
     import Window from '../../(components)/window.svelte';
 
     import { enhance } from '$app/forms';
-    import { classNames } from '$lib/utils/classnames';
+    import { cn } from '$lib/utils/cn';
     import TicketCard from '../(components)/ticket-card.svelte';
     import { Button, Icon } from '$lib/components/ui';
     import { initDates } from '../../+page.svelte';
@@ -198,7 +198,7 @@
                 class="bg-smooth border-offset grid h-full flex-1 grid-cols-3 place-items-center gap-4 overflow-y-scroll rounded-lg border p-4 lg:grid-cols-2"
             >
                 <label
-                    class={classNames(
+                    class={cn(
                         'relative flex aspect-square w-full items-center justify-center rounded-[2px] border-black bg-black outline-2 outline-[var(--color-offset)] outline-dashed',
                         originalTicketData.sticker === null
                             ? 'outline-white'
@@ -223,7 +223,7 @@
 
                 {#each stickerPack as s, i}
                     <label
-                        class={classNames(
+                        class={cn(
                             'relative flex aspect-square w-full items-center justify-center rounded-sm bg-black outline-2 [outline-offset:-1px] transition outline-dashed',
                             originalTicketData.sticker === i
                                 ? 'outline-white'

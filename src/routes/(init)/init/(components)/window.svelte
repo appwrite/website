@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { classNames } from '$lib/utils/classnames';
+    import { cn } from '$lib/utils/cn';
     import type { Snippet } from 'svelte';
 
     interface Props {
@@ -13,7 +13,7 @@
 </script>
 
 <div
-    class={classNames(
+    class={cn(
         'bg-smooth relative z-10 container mx-auto flex flex-col rounded-2xl p-1 backdrop-blur-2xl',
         'before:absolute before:inset-x-0 before:top-0 before:h-px before:bg-linear-to-r before:from-transparent before:via-white/30 before:to-transparent',
         className

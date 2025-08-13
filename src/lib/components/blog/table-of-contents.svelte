@@ -9,7 +9,7 @@
 </script>
 
 <script lang="ts">
-    import { classNames } from '$lib/utils/classnames';
+    import { cn } from '$lib/utils/cn';
     import { onMount, tick } from 'svelte';
     interface TableOfContentProps {
         toc?: Array<TocItem>;
@@ -43,7 +43,7 @@
         >
             {#each toc as parent (parent.href)}
                 <li
-                    class={classNames('text-secondary relative transition-colors', {
+                    class={cn('text-secondary relative transition-colors', {
                         'ps-6 font-medium': !parent.level || parent.level === 1,
                         'ps-12': parent.level === 2,
                         'ps-16': parent.level >= 3,
@@ -58,7 +58,7 @@
                         >
                             {#each parent.children as child}
                                 <li
-                                    class={classNames('text-secondary relative transition-colors', {
+                                    class={cn('text-secondary relative transition-colors', {
                                         'text-primary': parent.selected
                                     })}
                                 >

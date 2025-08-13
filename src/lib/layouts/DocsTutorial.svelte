@@ -7,7 +7,7 @@
     import { onMount, tick } from 'svelte';
     import { page } from '$app/state';
     import { Button, Icon } from '$lib/components/ui';
-    import { classNames } from '$lib/utils/classnames';
+    import { cn } from '$lib/utils/cn';
 
     export let toc: Array<TocItem>;
     export let back: string;
@@ -183,7 +183,7 @@
                             <Button
                                 variant="secondary"
                                 href={nextStep.href}
-                                class={classNames({
+                                class={cn({
                                     'ml-auto': prevStep
                                 })}
                             >

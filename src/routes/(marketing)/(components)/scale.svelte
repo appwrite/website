@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { classNames } from '$lib/utils/classnames';
+    import { cn } from '$lib/utils/cn';
     import NumberFlow from '@number-flow/svelte';
     import { inView } from 'motion';
     import { onDestroy, type Snippet } from 'svelte';
@@ -89,7 +89,7 @@
 </script>
 
 <div
-    class={classNames('relative -mb-8 flex min-h-[700px] flex-col gap-4 pb-20 md:pb-0', theme)}
+    class={cn('relative -mb-8 flex min-h-[700px] flex-col gap-4 pb-20 md:pb-0', theme)}
     use:visible
 >
     <div class="relative z-10 container w-fit md:w-full">

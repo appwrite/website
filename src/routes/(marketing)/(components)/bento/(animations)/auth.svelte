@@ -4,7 +4,7 @@
     import Google from '../../../(assets)/logos/google.svg';
 
     import { isMobile } from '$lib/utils/is-mobile';
-    import { classNames } from '$lib/utils/classnames';
+    import { cn } from '$lib/utils/cn';
     import GridPaper from '../../grid-paper.svelte';
     import { unwrite, write } from '$lib/animations';
     import { trackEvent } from '$lib/actions/analytics';
@@ -99,7 +99,7 @@
                             <input
                                 type="text"
                                 name="password"
-                                class={classNames(
+                                class={cn(
                                     'text-eyebrow w-full rounded-lg border border-white/24 bg-[#19191C] px-3 py-2 text-white'
                                 )}
                                 placeholder="Your Password"
@@ -116,7 +116,7 @@
                     </div>
 
                     <span
-                        class={classNames(
+                        class={cn(
                             'leading-micro tracking-tigher text-secondary relative my-3 flex items-center justify-center gap-3 text-center text-[0.625rem]'
                         )}
                     >
@@ -126,7 +126,7 @@
                     </span>
 
                     <button
-                        class={classNames(
+                        class={cn(
                             'text-eyebrow border-smooth flex w-full items-center justify-center gap-3 rounded-lg border py-2 font-medium text-white transition'
                         )}
                         disabled

@@ -1,7 +1,7 @@
 <script lang="ts">
     import Switch from '$lib/components/Switch.svelte';
     import { Button, Icon } from '$lib/components/ui';
-    import { classNames } from '$lib/utils/classnames';
+    import { cn } from '$lib/utils/cn';
     import { writable } from 'svelte/store';
 
     const buttons = [
@@ -136,7 +136,7 @@
                                     type="checkbox"
                                     aria-label={`role ${label} ${headings[i].toLowerCase()}`}
                                     checked={option}
-                                    class={classNames(
+                                    class={cn(
                                         'checkbox peer size-4 cursor-pointer appearance-none rounded-sm border-0 bg-white/12 backdrop-blur-lg transition-all duration-100 md:size-5 md:rounded',
                                         'checked:bg-pink-500'
                                     )}

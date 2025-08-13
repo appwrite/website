@@ -3,7 +3,7 @@
     import GridPaper from '../../grid-paper.svelte';
     import { animate, hover, inView, stagger, transform } from 'motion';
     import Site from '../../../(assets)/images/site.png';
-    import { classNames } from '$lib/utils/classnames';
+    import { cn } from '$lib/utils/cn';
     import Spinner from '../../spinner.svelte';
     import { unwrite, write } from '$lib/animations';
     import { trackEvent } from '$lib/actions/analytics';
@@ -166,7 +166,7 @@
                         <div class="flex flex-nowrap gap-2">
                             <span class="text-secondary block">{timestamp}</span>
                             <span
-                                class={classNames('text-primary block flex-nowrap', {
+                                class={cn('text-primary block flex-nowrap', {
                                     'text-[#5382CB]': i === 0
                                 })}>{content}</span
                             >

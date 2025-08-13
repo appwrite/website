@@ -8,7 +8,7 @@
     import NHost from '../(assets)/platforms/nhost.svg';
     import Supabase from '../(assets)/platforms/supabase.svg';
     import Firebase from '../(assets)/platforms/firebase.svg';
-    import { classNames } from '$lib/utils/classnames';
+    import { cn } from '$lib/utils/cn';
     import { Button } from '$lib/components/ui';
 
     const platforms = [

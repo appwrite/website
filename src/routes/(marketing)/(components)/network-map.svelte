@@ -1,6 +1,6 @@
 <script>
     import Map from '$lib/components/regions-map/map.svelte';
-    import { classNames } from '$lib/utils/classnames';
+    import { cn } from '$lib/utils/cn';
 
     import { createTabs, melt } from '@melt-ui/svelte';
 
@@ -83,7 +83,7 @@
             {@const isActive = $value === label.toLowerCase()}
             <button
                 use:melt={$trigger(label.toLowerCase())}
-                class={classNames(
+                class={cn(
                     'text-caption text-primary bg-smooth flex h-8 items-center justify-center gap-1 rounded-full border border-[#EBEBEB] font-medium transition-colors',
                     {
                         'bg-accent/4 border-accent text-accent': isActive

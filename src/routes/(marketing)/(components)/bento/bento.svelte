@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { classNames } from '$lib/utils/classnames';
+    import { cn } from '$lib/utils/cn';
     import Auth from './(animations)/auth.svelte';
     import Databases from './(animations)/databases.svelte';
     import Functions from './(animations)/functions.svelte';
@@ -58,7 +58,7 @@
 
         <div class="hidden justify-between gap-8 lg:flex">
             <div
-                class={classNames(
+                class={cn(
                     'bg-card border-smooth text-primary relative flex h-10 items-center gap-4 rounded-full border border-dashed p-1 text-sm',
                     'after:border-smooth after:absolute after:top-1/2 after:-right-22 after:h-px after:w-22 after:-translate-y-1/2 after:border-b after:border-dashed'
                 )}

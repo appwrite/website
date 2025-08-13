@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { classNames } from '$lib/utils/classnames';
+    import { cn } from '$lib/utils/cn';
     import Window from './window.svelte';
     import { createCountdown } from '$lib/utils/create-countdown';
     import Counter from './counter.svelte';
@@ -24,11 +24,7 @@
             </div>
         {/snippet}
 
-        <div
-            class={classNames(
-                'relative flex flex-1 items-center justify-center rounded-xl bg-[#19191C]'
-            )}
-        >
+        <div class={cn('relative flex flex-1 items-center justify-center rounded-xl bg-[#19191C]')}>
             <div
                 class="font-aeonik-fono text-primary relative flex items-center rounded-full bg-black px-4 py-1.5 text-center text-xl uppercase outline-2 outline-[var(--color-offset)] outline-dashed"
             >

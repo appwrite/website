@@ -2,7 +2,7 @@
     import TicketCard from '../tickets/(components)/ticket-card.svelte';
     import Avatar from '../(assets)/avatar.png';
     import InitGiveaway from '../(assets)/init-giveaway.png';
-    import { classNames } from '$lib/utils/classnames';
+    import { cn } from '$lib/utils/cn';
     import { Button } from '$lib/components/ui';
     import { Media } from '$lib/UI';
 </script>
@@ -43,10 +43,7 @@
             />
         </div>
 
-        <div
-            style:transform="rotate(-5deg) scale(.95)"
-            class={classNames('absolute right-20 -z-1')}
-        >
+        <div style:transform="rotate(-5deg) scale(.95)" class={cn('absolute right-20 -z-1')}>
             <TicketCard
                 $id="1"
                 disableEffects
@@ -56,7 +53,7 @@
                 avatar_url={Avatar}
             />
         </div>
-        <div style:transform="rotate(7deg) scale(.90)" class={classNames('absolute right-0 -z-2')}>
+        <div style:transform="rotate(7deg) scale(.90)" class={cn('absolute right-0 -z-2')}>
             <TicketCard
                 $id="1"
                 disableEffects

@@ -8,6 +8,7 @@
     import { createForm } from '@tanstack/svelte-form';
     import { z } from 'zod';
     import { useHotkeys } from '$lib/utils/use-hotkeys.svelte';
+    import { Smile, Frown } from '@lucide/svelte';
 
     interface FeedbackProps {
         date?: string;
@@ -23,7 +24,7 @@
         onSubmit: async ({ value }) => {
             const userId = loggedIn && $user?.$id ? $user.$id : undefined;
 
-            const response = await fetch(`${PUBLIC_GROWTH_ENDPOINT}/feedback/docs`, {
+            await fetch(`${PUBLIC_GROWTH_ENDPOINT}/feedback/docs`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -74,7 +75,7 @@
                             feedbackType = 'positive';
                         }}
                     >
-                        {@render HappyFace()}
+                        <Smile class="p-1" />
                     </button>
                     <button
                         class="web-radio-button"
@@ -84,7 +85,7 @@
                             feedbackType = 'negative';
                         }}
                     >
-                        {@render SadFace()}
+                        <Frown class="p-1" />
                     </button>
                 </div>
             </div>
@@ -185,20 +186,6 @@
         </form>
     {/if}
 </section>
-
-{#snippet HappyFace()}
-    <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="32"
-        height="32"
-        fill="var(--color-primary)"
-        viewBox="0 0 256 256"
-        class="p-2"
-        ><path
-            d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24ZM92,96a12,12,0,1,1-12,12A12,12,0,0,1,92,96Zm82.92,60c-10.29,17.79-27.39,28-46.92,28s-36.63-10.2-46.92-28a8,8,0,1,1,13.84-8c7.47,12.91,19.21,20,33.08,20s25.61-7.1,33.08-20a8,8,0,1,1,13.84,8ZM164,120a12,12,0,1,1,12-12A12,12,0,0,1,164,120Z"
-        ></path></svg
-    >
-{/snippet}
 
 {#snippet SadFace()}
     <svg

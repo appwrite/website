@@ -1,6 +1,6 @@
 <script lang="ts">
     import { Button } from '$lib/components/ui';
-    import { classNames } from '$lib/utils/classnames';
+    import { cn } from '$lib/utils/cn';
     import Window from '../(assets)/deploy-window.png';
 </script>
 
@@ -193,7 +193,7 @@
                 </div>
                 <div class="col-span-9 col-start-4 overflow-hidden rounded-xl bg-[#232325] p-2">
                     <ul
-                        class={classNames(
+                        class={cn(
                             'text-greyscale-600 font-fira-code relative px-1',
                             'after:absolute after:inset-0 after:bg-gradient-to-b after:from-transparent after:via-transparent after:to-[#232325]'
                         )}
@@ -204,7 +204,7 @@
                             {@const isError = lineNumber === 41}
                             {@const isGood = highlightedNumbers.includes(lineNumber)}
                             <li
-                                class={classNames(
+                                class={cn(
                                     'leading-micro tracking-tigher pointer-events-none pl-2 text-[6px] md:text-[0.625rem]',
                                     {
                                         'rounded bg-[#FF453A]/8 text-white': isError,

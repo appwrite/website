@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { classNames } from '$lib/utils/classnames';
+    import { cn } from '$lib/utils/cn';
 
     import { getLocalTimeZone, today } from '@internationalized/date';
     import { createCalendar, melt } from '@melt-ui/svelte';
@@ -17,7 +17,7 @@
     const weekdays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 </script>
 
-<div class={classNames('bg-greyscale-850/90 flex flex-col rounded-2xl p-2')}>
+<div class={cn('bg-greyscale-850/90 flex flex-col rounded-2xl p-2')}>
     <div
         class="relative flex h-[250px] flex-1 flex-col items-center justify-center gap-4 overflow-hidden rounded-lg bg-white/[0.02]"
     >
@@ -55,7 +55,7 @@
                             >
                                 <button
                                     use:melt={$cell(date, month.value)}
-                                    class={classNames(
+                                    class={cn(
                                         'size-5 rounded-md',
                                         'data-[disabled]:opacity-60',
                                         'data-[today]:bg-greyscale-700 data-[today]:text-white'
