@@ -67,9 +67,13 @@ This is the blockquote content from Eldad Fux. It has a citation as well.
     - This is a nested list item in a ul.
     - This is another nested list item in a ul.
         - This is another one
+        - And another
+    - Third item
+- Third main item
 
 1. This is a list item in a ol.
 2. This is another list item in a ol.
+    1. This is a nested list item in a ol.
 
 # Resources
 

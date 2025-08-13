@@ -81,7 +81,6 @@
 
     ol li:where(:not(.not-prose, .not-prose *)) {
         margin-block: calc(var(--spacing) * 1);
-        display: inline-flex;
 
         &:before {
             counter-increment: numeric-list;
@@ -308,8 +307,7 @@
     }
 
     ul li:where(:not(.not-prose, .not-prose *)),
-    ul li + li:where(:not(.not-prose, .not-prose *)),
-    ol li + li:where(:not(.not-prose, .not-prose *)) {
+    ol li:where(:not(.not-prose, .not-prose *)) {
         margin-top: calc(var(--spacing) * 2.5);
     }
 
