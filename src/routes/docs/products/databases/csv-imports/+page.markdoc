@@ -17,6 +17,8 @@ Each column in the CSV should map to an attribute key in your collection, and ea
 {% info title="Good to know" %}
 You can optionally include the `$id` column to define custom document IDs. If not provided, Appwrite will generate unique IDs for each document automatically.
 {% /info %}
+
+You can also optionally include `$createdAt` and `$updatedAt` columns to set custom timestamps for imported documents. If omitted, Appwrite sets these automatically during import.
 For example, if your collection has the following required attributes:
 
 - `title` (string)
@@ -27,14 +29,18 @@ For example, if your collection has the following required attributes:
 A valid CSV file might look like:
 
 ```text
-$id,title,author,year,available
-f3k91x8b2q,Harry Potter and the Sorcerer's Stone,J.K. Rowling,1997,true
-mz7lq3dp5c,The Fellowship of the Ring,J.R.R. Tolkien,1954,true
-x0v4p8ncq2,To Kill a Mockingbird,Harper Lee,1960,false
+$id,$createdAt,$updatedAt,title,author,year,available
+f3k91x8b2q,2025-08-10T12:34:56.000Z,2025-08-10T12:34:56.000Z,Harry Potter and the Sorcerer's Stone,J.K. Rowling,1997,true
+mz7lq3dp5c,2025-08-11T09:15:00.000Z,2025-08-11T10:00:00.000Z,The Fellowship of the Ring,J.R.R. Tolkien,1954,true
+x0v4p8ncq2,2025-08-12T08:00:00.000Z,2025-08-12T08:30:00.000Z,To Kill a Mockingbird,Harper Lee,1960,false
 ```
 
 {% info title="Note" %}
 All required attributes must be present in the CSV. Each row is validated before being imported.
+{% /info %}
+
+{% info title="Timestamps format" %}
+`$createdAt` and `$updatedAt` must be valid ISO 8601 date-time strings, for example: `2025-08-10T12:34:56.000Z`.
 {% /info %}
 
 
