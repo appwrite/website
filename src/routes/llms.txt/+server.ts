@@ -134,7 +134,10 @@ export const GET: RequestHandler = ({ request }) => {
             // within section, sort by href for stability
             return a.href.localeCompare(b.href);
         });
-        const lines = items.map((i) => `- [${i.title.replace(/\\/g, '\\\\').replace(/\[/g, '\\[').replace(/\]/g, '\\]')}](${i.href}): ${i.description}`);
+        const lines = items.map(
+            (i) =>
+                `- [${i.title.replace(/\\/g, '\\\\').replace(/\[/g, '\\[').replace(/\]/g, '\\]')}](${i.href}): ${i.description}`
+        );
         const origin = new URL(request.url).origin;
         const header = `# ${origin} llms.txt`;
         const content = `${header}\n\n${lines.join('\n')}\n`;
@@ -155,5 +158,3 @@ export const GET: RequestHandler = ({ request }) => {
         });
     }
 };
-
-

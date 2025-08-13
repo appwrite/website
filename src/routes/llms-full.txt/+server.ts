@@ -59,7 +59,9 @@ export const GET: RequestHandler = ({ request }) => {
             const url = new URL(href, request.url).toString();
 
             const titleMatch = raw.match(/^#\s+(.+)$/m);
-            const title = titleMatch ? titleMatch[1].trim() : href.split('/').pop()!.replace(/[-_]/g, ' ');
+            const title = titleMatch
+                ? titleMatch[1].trim()
+                : href.split('/').pop()!.replace(/[-_]/g, ' ');
 
             const body = stripFrontmatter(raw).trim();
             items.push({ href: url, title, block: `## ${title}\n${url}\n\n${body}\n\n---` });
@@ -91,5 +93,3 @@ export const GET: RequestHandler = ({ request }) => {
         });
     }
 };
-
-
