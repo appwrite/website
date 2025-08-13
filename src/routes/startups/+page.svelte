@@ -1,5 +1,5 @@
 <script lang="ts">
-    import ProjectTimeline from './(assets)/project-timeline.avif';
+    import ProjectTimeline from './(assets)/project-timeline.webp';
     import UsageGraphs from './(assets)/usage-graphs.avif';
     import SecurityOptions from './(assets)/security-options.avif';
 
@@ -234,7 +234,7 @@
                             />
                             <div class="flex flex-col gap-2 text-center">
                                 <h2 class="text-label text-primary">Complete platform</h2>
-                                <p class="text-main-body font-medium">
+                                <p class="text-body font-medium">
                                     Get discounted access to Appwrite’s paid plans and develop,
                                     host, and scale your entire application with Appwrite.
                                 </p>
@@ -249,7 +249,7 @@
                             />
                             <div class="flex flex-col gap-2 text-center">
                                 <h2 class="text-label text-primary">Cloud credits</h2>
-                                <p class="text-main-body font-medium">
+                                <p class="text-body font-medium">
                                     Save on development and cloud costs and reduce risk at an early
                                     stage.
                                 </p>
@@ -264,7 +264,7 @@
                             />
                             <div class="flex flex-col gap-2 text-center">
                                 <h2 class="text-label text-primary">Priority support</h2>
-                                <p class="text-main-body font-medium">
+                                <p class="text-body font-medium">
                                     Get community support and priority support from the Appwrite
                                     team.
                                 </p>
@@ -289,7 +289,7 @@
                                         <h3 class="text-title font-aeonik-pro text-primary">
                                             Ship faster
                                         </h3>
-                                        <p class="text-main-body font-medium">
+                                        <p class="text-body font-medium">
                                             Utilizing Appwrite as your backend, you significantly
                                             cut down the time and resources spent on building a
                                             backend infrastructure from scratch. This means you can
@@ -339,17 +339,9 @@
                                 </div>
 
                                 <div
-                                    class="web-is-only-desktop"
-                                    style="margin-block-start:80px; margin-inline-start: -50px"
+                                    class="border-smooth mt-20 -mr-[85vw] overflow-hidden rounded-lg border shadow-[-28.0524px_51.0044px_22.952px_rgba(0,0,0,0.01),_-16.1514px_28.9025px_19.5517px_rgba(0,_0,_0,_0.02),_-6.80058px_12.7511px_14.4512px_rgba(0,_0,_0,_0.03),_-1.70015px_3.40029px_7.65065px_rgba(0,_0,_0,_0.04),_0px_0px_0px_rgba(0,_0,_0,_0.04)] md:mr-0 md:rounded-2xl"
                                 >
-                                    <img alt="" src={ProjectTimeline} width="1250" />
-                                </div>
-
-                                <div
-                                    class="web-is-not-desktop"
-                                    style="padding-block-start: 48px; margin-inline-start:-32px;"
-                                >
-                                    <img alt="" src={ProjectTimeline} />
+                                    <img alt="" src={ProjectTimeline} width={1250} />
                                 </div>
                             </li>
                             <li class="web-timeline-content-item">
@@ -364,7 +356,7 @@
                                         <h3 class="text-title font-aeonik-pro text-primary">
                                             Scalable architecture
                                         </h3>
-                                        <p class="text-main-body font-medium">
+                                        <p class="text-body font-medium">
                                             Appwrite's scalable architecture ensures you can build
                                             your product with growth in mind. Whether you're just
                                             testing the waters or ready to scale up rapidly, our
@@ -408,7 +400,7 @@
                                 </div>
                                 <div class="web-is-only-mobile">
                                     <img
-                                        class="blockmx-auto max-w-[450px]"
+                                        class="mx-auto block max-w-[450px]"
                                         alt=""
                                         src={UsageGraphs}
                                     />
@@ -423,7 +415,7 @@
                                         <h3 class="text-title font-aeonik-pro text-primary">
                                             Built-in security and compliance
                                         </h3>
-                                        <p class="text-main-body font-medium">
+                                        <p class="text-body font-medium">
                                             Appwrite comes with built-in security features like
                                             authentication, database security, and more, reducing
                                             the time and effort you need to spend on securing your
@@ -492,7 +484,7 @@
                                         <h3 class="text-title font-aeonik-pro text-primary">
                                             Power of open source community
                                         </h3>
-                                        <p class="text-main-body font-medium">
+                                        <p class="text-body font-medium">
                                             Join a growing community of developers and founders who
                                             use Appwrite to build their products. Gain access to a
                                             wealth of knowledge, support, and shared experiences to
@@ -538,9 +530,7 @@
                 </div>
             </div>
 
-            <div
-                class="web-big-padding-section-level-2 web-u-overflow-hidden e-mt-50-desktop e-mt-38-mobile"
-            >
+            <div class="web-u-overflow-hidden e-mt-50-desktop e-mt-38-mobile pb-8 md:pb-30">
                 <h4
                     class="text-title font-aeonik-pro text-primary mx-auto max-w-[350px] text-center"
                 >
@@ -578,178 +568,175 @@
             </div>
         </div>
 
-        <div id="form" class="overflow-hidden pt-10">
-            <div class="is-margin-replace-padding relative pt-[7.5rem]">
+        <div id="form" class="overflow-hidden">
+            <div class=" relative pt-20 pb-8 md:pt-40 md:pb-30">
                 <div class="relative">
-                    <div class="web-big-padding-section-level-2">
-                        <div class="relative container">
-                            <img
-                                class="web-is-only-desktop absolute"
-                                style="inset-inline-end:-650px; inset-block-start:-200px; max-width:none; max-height:none;"
-                                src={BlobGreen}
-                                alt=""
-                            />
-                            <img
-                                class="web-is-only-desktop absolute"
-                                style="inset-inline-start:-1000px; inset-block-start:-800px; max-width:none; max-height:none;"
-                                src={BlobPink}
-                                alt=""
-                            />
-                            <img
-                                class="web-is-only-mobile absolute"
-                                style="inset-inline-end:-450px; inset-block-start:400px; max-width:none; max-height:none;"
-                                src={BlobGreenMobile}
-                                alt=""
-                            />
-                            <img
-                                class="web-is-only-mobile absolute"
-                                style="inset-inline-start:-700px; inset-block-start:-400px; max-width:none; max-height:none;"
-                                src={BlobPinkMobile}
-                                alt=""
-                            />
+                    <div class="relative container">
+                        <img
+                            class="web-is-only-desktop absolute"
+                            style="inset-inline-end:-650px; inset-block-start:-200px; max-width:none; max-height:none;"
+                            src={BlobGreen}
+                            alt=""
+                        />
+                        <img
+                            class="web-is-only-desktop absolute"
+                            style="inset-inline-start:-1000px; inset-block-start:-800px; max-width:none; max-height:none;"
+                            src={BlobPink}
+                            alt=""
+                        />
+                        <img
+                            class="web-is-only-mobile absolute"
+                            style="inset-inline-end:-450px; inset-block-start:400px; max-width:none; max-height:none;"
+                            src={BlobGreenMobile}
+                            alt=""
+                        />
+                        <img
+                            class="web-is-only-mobile absolute"
+                            style="inset-inline-start:-700px; inset-block-start:-400px; max-width:none; max-height:none;"
+                            src={BlobPinkMobile}
+                            alt=""
+                        />
 
-                            <!-- before submit -->
-                            <div class="web-grid-1-1-opt-2 e-u-row-gap-0 relative z-[1] gap-8">
-                                <div>
-                                    <div
-                                        class="web-u-max-inline-size-none-mobile"
-                                        class:web-u-max-width-380={!submitted}
-                                    >
-                                        <section class="flex flex-col gap-5">
-                                            <h4 class="text-title font-aeonik-pro text-primary">
-                                                Join the Appwrite Startups program
-                                            </h4>
-                                            <p class="text-description">
-                                                We support your startup with:
-                                            </p>
+                        <!-- before submit -->
+                        <div class="web-grid-1-1-opt-2 e-u-row-gap-0 relative z-[1] gap-8">
+                            <div>
+                                <div
+                                    class="web-u-max-inline-size-none-mobile"
+                                    class:web-u-max-width-380={!submitted}
+                                >
+                                    <section class="flex flex-col gap-5">
+                                        <h4 class="text-title font-aeonik-pro text-primary">
+                                            Join the Appwrite Startups program
+                                        </h4>
+                                        <p class="text-description">
+                                            We support your startup with:
+                                        </p>
 
-                                            <div class="flex flex-col gap-3">
-                                                <div class="flex gap-4">
-                                                    <div class="web-check-bullet mt-1"></div>
-                                                    <p class="text-description">
-                                                        Cloud credits and discounts on a paid plan
-                                                    </p>
-                                                </div>
-                                                <div class="flex gap-4">
-                                                    <div class="web-check-bullet mt-1"></div>
-                                                    <p class="text-description">
-                                                        Priority email support
-                                                    </p>
-                                                </div>
+                                        <div class="flex flex-col gap-3">
+                                            <div class="flex gap-4">
+                                                <div class="web-check-bullet mt-1"></div>
+                                                <p class="text-description">
+                                                    Cloud credits and discounts on a paid plan
+                                                </p>
                                             </div>
-                                        </section>
-                                        <div
-                                            class="web-is-only-mobile web-u-margin-block-start-40 web-u-padding-block-start-40 web-u-sep-block-start"
-                                        ></div>
-                                    </div>
-                                </div>
-                                {#if submitted}
+                                            <div class="flex gap-4">
+                                                <div class="web-check-bullet mt-1"></div>
+                                                <p class="text-description">
+                                                    Priority email support
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </section>
                                     <div
-                                        class="web-u-max-width-380 web-u-max-inline-size-none-mobile relative z-[1] mx-auto flex flex-col gap-2 text-center"
-                                    >
-                                        <h6
-                                            class="text-label flex items-center justify-center gap-2"
+                                        class="web-is-only-mobile web-u-margin-block-start-40 web-u-padding-block-start-40 web-u-sep-block-start"
+                                    ></div>
+                                </div>
+                            </div>
+                            {#if submitted}
+                                <div
+                                    class="web-u-max-width-380 web-u-max-inline-size-none-mobile relative z-[1] mx-auto flex flex-col gap-2 text-center"
+                                >
+                                    <h6 class="text-label flex items-center justify-center gap-2">
+                                        <img
+                                            class="shrink-0"
+                                            src="/images/icons/colored/check.svg"
+                                            alt=""
+                                        />
+                                        <span class="text-primary"
+                                            >Thank you for your submission</span
                                         >
-                                            <img
-                                                class="shrink-0"
-                                                src="/images/icons/colored/check.svg"
-                                                alt=""
-                                            />
-                                            <span class="text-primary"
-                                                >Thank you for your submission</span
-                                            >
-                                        </h6>
-                                        <p class="text-main-body">
-                                            Our team will review your application and get back to
-                                            you soon.
+                                    </h6>
+                                    <p class="text-body">
+                                        Our team will review your application and get back to you
+                                        soon.
+                                    </p>
+                                    <Button
+                                        onclick={resetForm}
+                                        variant="secondary"
+                                        class="mx-auto mt-4 block w-full! md:w-fit"
+                                        >Back to form</Button
+                                    >
+                                </div>
+                            {:else}
+                                <form
+                                    method="post"
+                                    on:submit|preventDefault={handleSubmit}
+                                    class="flex flex-col gap-4"
+                                >
+                                    <div class="flex justify-end">
+                                        <ul
+                                            class="web-form-list web-u-max-width-580 web-u-max-inline-size-none-mobile w-full gap-4"
+                                        >
+                                            <li class="web-form-item flex flex-col gap-1">
+                                                <div class="block">Full name</div>
+                                                <input
+                                                    required
+                                                    class="web-input-text"
+                                                    type="text"
+                                                    placeholder="Walter O'Brien"
+                                                    aria-label="Full name"
+                                                    bind:value={personName}
+                                                />
+                                            </li>
+                                            <li class="web-form-item flex flex-col gap-1">
+                                                <div class="block">Email address</div>
+                                                <input
+                                                    required
+                                                    class="web-input-text"
+                                                    type="email"
+                                                    placeholder="walter@company.com"
+                                                    aria-label="Email address"
+                                                    bind:value={personEmail}
+                                                />
+                                            </li>
+                                            <li class="web-form-item flex flex-col gap-1">
+                                                <div class="block">Company name</div>
+                                                <input
+                                                    required
+                                                    class="web-input-text"
+                                                    type="text"
+                                                    name="company"
+                                                    placeholder="Company Inc."
+                                                    aria-label="Company name"
+                                                    bind:value={companyName}
+                                                />
+                                            </li>
+                                            <li class="web-form-item flex flex-col gap-1">
+                                                <div class="block">Company website</div>
+                                                <input
+                                                    required
+                                                    class="web-input-text"
+                                                    type="text"
+                                                    pattern="^(https:\/\/www\.|https:\/\/)?([a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)+)[a-zA-Z0-9\-\._~:\/\?#[\]@!\$&'\(\)\*\+,;=.]*$"
+                                                    name="company-website"
+                                                    placeholder="https://company.com"
+                                                    aria-label="Company website"
+                                                    bind:value={companyUrl}
+                                                />
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div
+                                        class="web-u-flex-vertical-reverse-mobile flex justify-between gap-4"
+                                    >
+                                        <p class="text-caption web-u-max-width-380">
+                                            {#if error}
+                                                {error}
+                                            {/if}
                                         </p>
                                         <Button
-                                            onclick={resetForm}
-                                            variant="secondary"
-                                            class="mx-auto mt-4 block w-full! md:w-fit"
-                                            >Back to form</Button
+                                            type="submit"
+                                            disabled={submitting}
+                                            class="web-u-inline-width-100-percent-mobile-break1 self-center"
                                         >
+                                            Apply
+                                        </Button>
                                     </div>
-                                {:else}
-                                    <form
-                                        method="post"
-                                        on:submit|preventDefault={handleSubmit}
-                                        class="flex flex-col gap-4"
-                                    >
-                                        <div class="flex justify-end">
-                                            <ul
-                                                class="web-form-list web-u-max-width-580 web-u-max-inline-size-none-mobile w-full gap-4"
-                                            >
-                                                <li class="web-form-item flex flex-col gap-1">
-                                                    <div class="block">Full name</div>
-                                                    <input
-                                                        required
-                                                        class="web-input-text"
-                                                        type="text"
-                                                        placeholder="Walter O'Brien"
-                                                        aria-label="Full name"
-                                                        bind:value={personName}
-                                                    />
-                                                </li>
-                                                <li class="web-form-item flex flex-col gap-1">
-                                                    <div class="block">Email address</div>
-                                                    <input
-                                                        required
-                                                        class="web-input-text"
-                                                        type="email"
-                                                        placeholder="walter@company.com"
-                                                        aria-label="Email address"
-                                                        bind:value={personEmail}
-                                                    />
-                                                </li>
-                                                <li class="web-form-item flex flex-col gap-1">
-                                                    <div class="block">Company name</div>
-                                                    <input
-                                                        required
-                                                        class="web-input-text"
-                                                        type="text"
-                                                        name="company"
-                                                        placeholder="Company Inc."
-                                                        aria-label="Company name"
-                                                        bind:value={companyName}
-                                                    />
-                                                </li>
-                                                <li class="web-form-item flex flex-col gap-1">
-                                                    <div class="block">Company website</div>
-                                                    <input
-                                                        required
-                                                        class="web-input-text"
-                                                        type="text"
-                                                        pattern="^(https:\/\/www\.|https:\/\/)?([a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)+)[a-zA-Z0-9\-\._~:\/\?#[\]@!\$&'\(\)\*\+,;=.]*$"
-                                                        name="company-website"
-                                                        placeholder="https://company.com"
-                                                        aria-label="Company website"
-                                                        bind:value={companyUrl}
-                                                    />
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div
-                                            class="web-u-flex-vertical-reverse-mobile flex justify-between gap-4"
-                                        >
-                                            <p class="text-caption web-u-max-width-380">
-                                                {#if error}
-                                                    {error}
-                                                {/if}
-                                            </p>
-                                            <Button
-                                                type="submit"
-                                                disabled={submitting}
-                                                class="web-u-inline-width-100-percent-mobile-break1 self-center"
-                                            >
-                                                Apply
-                                            </Button>
-                                        </div>
-                                    </form>
-                                {/if}
-                            </div>
+                                </form>
+                            {/if}
                         </div>
                     </div>
+
                     <div class="web-big-padding-section-level-2 relative">
                         <div class="relative container" style:z-index="10">
                             <section class="web-grid-4-6">

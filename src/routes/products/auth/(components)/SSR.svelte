@@ -62,16 +62,15 @@
 </script>
 
 <section class="light bg-greyscale-50 py-4 md:py-20">
-    <div class="container flex flex-col gap-6 md:flex-row">
-        <div class="mb-10 flex max-w-lg flex-col">
-            <span
-                class="web-badges text-eyebrow font-aeonik-fono mr-auto ml-0 !text-white uppercase"
+    <div class="container grid grid-cols-1 gap-8 lg:grid-cols-2">
+        <div class="mb-10 flex flex-col">
+            <span class="web-badges text-micro font-aeonik-fono mr-auto ml-0 !text-white uppercase"
                 >SSR_</span
             >
             <h2 class="text-title text-primary font-aeonik-pro my-4">
                 Server-side rendering <br /> made simple
             </h2>
-            <p class="text-main-body text-secondary font-medium">
+            <p class="text-body text-secondary font-medium">
                 Optimize your auth with Appwrite's server-side SDK, enhancing your application's
                 performance without sacrificing functionality. Start with our ready-to-ship
                 snippets, or follow our quick starts for your favorite framework.
@@ -105,11 +104,17 @@
                 variant="secondary"
                 href="/docs/sdks#server"
                 class="mt-8"
-                event="products-auth-server_sdks-click">Learn more</Button
+                event="products-auth-server_sdks-click"
             >
+                Learn more
+            </Button>
         </div>
 
-        <MultiFrameworkCode data={codeSnippets} selected={Framework.NextJs} />
+        <MultiFrameworkCode
+            data={codeSnippets}
+            selected={Framework.NextJs}
+            class="max-w-auto! w-full min-w-auto! basis-full lg:basis-1/2"
+        />
     </div>
 </section>
 

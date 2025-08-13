@@ -1,7 +1,7 @@
 <script lang="ts">
-    import DDOS from '../(assets)/icons/ddos.svg';
-    import SSR from '../(assets)/icons/ssr.svg';
-    import Domains from '../(assets)/icons/domains.svg';
+    import DDOS from '../(assets)/icons/ddos.png';
+    import SSR from '../(assets)/icons/ssr.png';
+    import Domains from '../(assets)/icons/domains.png';
 
     const items = [
         {
@@ -26,12 +26,10 @@
 </script>
 
 <div class="border-smooth container mx-auto mb-20 border-y border-dashed py-12">
-    <div
-        class="divide-smooth grid w-full grid-cols-1 divide-dashed max-sm:divide-y md:grid-cols-3 md:place-items-center"
-    >
+    <div class="divide-smooth grid w-full grid-cols-1 divide-dashed max-sm:divide-y md:grid-cols-3">
         {#each items as { icon, label, description }}
             <div
-                class="text-sub-body border-smooth border-dashed py-10 text-center font-medium last-of-type:border-0 md:border-r md:px-8 md:text-left"
+                class="text-sub-body border-smooth flex flex-col border-dashed py-10 text-center font-medium last-of-type:border-0 md:border-r md:px-8 md:text-left"
             >
                 <img class="mx-auto mb-3 size-10 md:mx-0" src={icon} alt={label} />
                 <h3 class="text-primary mb-1">{label}</h3>

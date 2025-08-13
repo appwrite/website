@@ -39,10 +39,10 @@
 </script>
 
 <div class="relative w-full max-w-[100vw] overflow-hidden">
-    <div class="group light flex w-fit gap-4">
+    <div class="group light flex w-fit gap-8">
         {#each Array.from({ length: 4 }) as _, i}
             <div
-                class="animate-scroll-deprecategroup-hover:[animation-play-state:paused;] flex items-center gap-8"
+                class="animate-scroll-deprecate group-hover:[animation-play-state:paused;] flex items-center gap-8"
                 aria-hidden={i !== 0}
             >
                 {#each testimonials as testimonial}

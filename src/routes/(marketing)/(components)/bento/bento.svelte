@@ -117,7 +117,7 @@
             </div>
         </div>
     </div>
-    <div class="grid grid-cols-12 gap-8">
+    <div class="flex flex-col gap-8 md:grid md:grid-cols-12">
         <Auth />
         <Databases />
         <Storage />

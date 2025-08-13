@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { cn } from '$lib/utils/cn';
+    import { classNames } from '$lib/utils/classnames';
     import NumberFlow from '@number-flow/svelte';
     import { inView } from 'motion';
     import { onDestroy, type Snippet } from 'svelte';
@@ -63,12 +63,14 @@
         });
     };
 
+    let isVisible = $state(false);
     let timeoutIds: Array<NodeJS.Timeout> = [];
 
     const visible = (node: HTMLElement) => {
         inView(
             node,
             () => {
+                isVisible = true;
                 updateNumbers();
             },
             { amount: 0.5 }
@@ -89,11 +91,14 @@
 </script>
 
 <div
-    class={cn('relative -mb-8 flex min-h-[700px] flex-col gap-4 pb-20 md:pb-0', theme)}
+    class={classNames(
+        'relative -mb-8 flex min-h-[700px] flex-col gap-4 pt-12 pb-20 md:pt-30 md:pb-0',
+        theme
+    )}
     use:visible
 >
-    <div class="relative z-10 container w-fit md:w-full">
-        <div class="mt-12 md:max-w-xl">
+    <div class="relative z-100 container w-fit md:w-full">
+        <div class="relative z-100 md:max-w-xl">
             <h2 class="text-primary font-aeonik-pro text-5xl tracking-tighter text-pretty">
                 Thousands of developers <span class="text-secondary">scale with Appwrite</span><span
                     class="text-accent">_</span
@@ -126,9 +131,9 @@
         </div>
     </div>
 
-    <div class="mt-12 block space-y-8 md:hidden">
+    <div class="z-0 mt-12 block space-y-8 md:hidden">
         {#each localStats as stat, i}
-            <div class="h-full overflow-auto pl-6">
+            <div class="h-full pl-6">
                 <div class="relative">
                     {#if browser}
                         <NumberFlow
@@ -137,20 +142,22 @@
                             suffix={stat.suffix}
                         />
 
-                        <span class="text-main-body text-secondary block pl-4"
-                            >{stat.description}</span
-                        >
+                        <span class="text-body text-secondary block pl-4">{stat.description}</span>
                     {/if}
                 </div>
             </div>
         {/each}
     </div>
 
-    <div class="animate-wipe-in absolute inset-0 mt-32 hidden md:block">
+    <div
+        class={classNames('absolute inset-0 mt-32 hidden md:block', {
+            'animate-wipe-in': isVisible
+        })}
+    >
         <div class="relative container mx-auto h-full">
-            <div class="absolute inset-0 z-100 grid grid-cols-4">
+            <div class="absolute inset-0 z-10 grid grid-cols-4">
                 {#each localStats as stat, i}
-                    <div class="border-smooth relative h-full overflow-auto border-l border-dashed">
+                    <div class="border-greyscale-200 relative h-full border-l border-dashed">
                         <div
                             class="absolute"
                             style="bottom: calc(50px + {25 + (75 / 3) * (i / 2)}%)"
@@ -161,7 +168,7 @@
                                     value={stat.number}
                                     suffix={stat.suffix}
                                 />
-                                <span class="text-main-body text-secondary block pl-4">
+                                <span class="text-body text-secondary block pl-4">
                                     {stat.description}
                                 </span>
                             {/if}

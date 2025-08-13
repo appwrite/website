@@ -1,7 +1,7 @@
 <script lang="ts">
     import { trackEvent } from '$lib/actions/analytics';
     import Icon from '$lib/components/ui/icon';
-    import { cn } from '$lib/utils/cn';
+    import { classNames } from '$lib/utils/classnames';
     import type { HTMLAttributes } from 'svelte/elements';
 
     const features = [
@@ -63,7 +63,7 @@
 </script>
 
 <div
-    class={cn('mt-4 bg-[#EDEDF0] pt-20 pb-12 md:pt-40', theme, classes, {
+    class={classNames('bg-[#EDEDF0] pt-20 pb-12 md:pt-40', theme, classes, {
         'bg-greyscale-900': theme === 'dark'
     })}
     {...restProps}
@@ -71,7 +71,7 @@
     <div class="container mx-auto">
         <section class="flex flex-col items-start gap-x-20 md:flex-row">
             <h2
-                class="text-title font-aeonik-pro text-primary max-w-[700px] leading-12 text-pretty"
+                class="text-title-lg font-aeonik-pro text-primary max-w-[700px] leading-12 text-pretty"
             >
                 Self-host your data or take it to the Cloud<span class="text-accent">_</span>
             </h2>
@@ -85,7 +85,7 @@
         <div class="container grid grid-cols-2 overflow-hidden lg:grid-cols-4">
             {#each features as box}
                 <a
-                    class="text-sub-body group relative border-b border-dashed border-black/8 p-8 font-medium last-of-type:border-0 nth-of-type-[4]:border-r-0 nth-of-type-[7]:border-b-0 max-lg:even:border-r-0 md:border-r lg:nth-of-type-[5]:border-b-0 lg:nth-of-type-[6]:border-b-0 lg:nth-of-type-[8]:border-b-0"
+                    class="text-sub-body group relative border-dashed border-black/8 px-2.5 py-8 font-medium last-of-type:border-0 nth-of-type-[4]:border-r-0 nth-of-type-[7]:border-b-0 max-lg:even:border-r-0 md:border-r md:border-b md:p-8 lg:nth-of-type-[5]:border-b-0 lg:nth-of-type-[6]:border-b-0 lg:nth-of-type-[8]:border-b-0"
                     href={box.href}
                     onclick={() => {
                         trackEvent(`feature-${box.label.toLowerCase().replace(' ', '-')}-click`);
@@ -97,7 +97,7 @@
 
                         <Icon
                             name="arrow-right"
-                            class="-rotate-45 transition-all group-hover:translate-x-0.25 group-hover:-translate-y-0.25 group-hover:opacity-100 group-focus:translate-x-0.25 group-focus:-translate-y-0.25 group-focus:opacity-100 xl:opacity-0"
+                            class="transition-all group-hover:translate-x-0.25 group-hover:opacity-100 group-focus:translate-x-0.25 group-focus:-translate-y-0.25 group-focus:opacity-100 xl:opacity-0"
                         />
                     </h3>
                     <p class="text-secondary mt-1">
