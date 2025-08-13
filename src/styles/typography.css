@@ -129,12 +129,12 @@
         transition: all 200ms ease-in-out;
     }
 
-    a:hover:where(:not(.not-prose, .not-prose *)) {
+    a:not(:where(:is(h2, h3, h4, h5, h6) *)):hover:where(:not(.not-prose, .not-prose *)) {
         color: var(--color-accent-darker);
         text-decoration-color: var(--color-accent-darker);
     }
 
-    a:active:where(:not(.not-prose, .not-prose *)) {
+    a:not(:where(:is(h2, h3, h4, h5, h6) *)):active:where(:not(.not-prose, .not-prose *)) {
         color: var(--color-accent);
         text-decoration-color: var(--color-accent);
     }
