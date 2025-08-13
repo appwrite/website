@@ -110,7 +110,7 @@ mutation {
     databasesCreateDocument(
         databaseId: "<DATABASE_ID>",
         collectionId: "<COLLECTION_ID>",
-        documentId: "[DOCUMENT_ID]",
+        documentId: "<DOCUMENT_ID>",
         data: "{}"
     ) {
         _id
@@ -360,7 +360,7 @@ mutation {
     databasesUpsertDocument(
         databaseId: "<DATABASE_ID>",
         collectionId: "<COLLECTION_ID>",
-        documentId: "[DOCUMENT_ID]",
+        documentId: "<DOCUMENT_ID>",
         data: "{}"
     ) {
         _id
@@ -399,7 +399,6 @@ await databases.createDocument(
     '<COLLECTION_ID>',
     sdk.ID.unique(),
     {
-        '$createdAt': new Date('<CUSTOM_DATE>').toISOString(),
         '$createdAt': new Date('2025-08-10T12:34:56.000Z').toISOString(),
         '$updatedAt': new Date('2025-08-10T12:34:56.000Z').toISOString(),
         // ...your attributes
@@ -444,6 +443,158 @@ await databases.upsertDocuments(
         }
     ]
 );
+```
+```server-php
+use Appwrite\Client;
+use Appwrite\ID;
+use Appwrite\Services\Databases;
+
+$client = (new Client())
+    ->setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
+    ->setProject('<YOUR_PROJECT_ID>') // Your project ID
+    ->setKey('<YOUR_API_KEY>'); // Your secret API key
+
+$databases = new Databases($client);
+
+// Single document (create)
+$databases->createDocument(
+    databaseId: '<DATABASE_ID>',
+    collectionId: '<COLLECTION_ID>',
+    documentId: '<DOCUMENT_ID>',
+    [
+        '$createdAt' => (new DateTime('<CUSTOM_DATE>'))->format(DATE_ATOM),
+        '$updatedAt' => (new DateTime('<CUSTOM_DATE>'))->format(DATE_ATOM),
+        // ...your attributes
+    ]
+);
+
+// Single document (update)
+$databases->updateDocument(
+    databaseId: '<DATABASE_ID>',
+    collectionId: '<COLLECTION_ID>',
+    documentId: '<DOCUMENT_ID>',
+    [
+        '$updatedAt': (new DateTime('<CUSTOM_DATE>'))->format(DATE_ATOM),
+        // ...your attributes
+    ]
+);
+
+// Bulk (create)
+$databases->createDocuments(
+    databaseId: '<DATABASE_ID>',
+    collectionId: '<COLLECTION_ID>',
+    [
+        [
+            '$id': ID::unique(),
+            '$createdAt': (new DateTime('<CUSTOM_DATE>'))->format(DATE_ATOM),
+            '$updatedAt': (new DateTime('<CUSTOM_DATE>'))->format(DATE_ATOM),
+            // ...your attributes
+        ]
+    ]
+);
+
+// Bulk (upsert)
+$databases->upsertDocuments(
+    databaseId: '<DATABASE_ID>',
+    collectionId: '<COLLECTION_ID>',
+    documents: [
+        [
+            '$id' => '<DOCUMENT_ID_OR_NEW_ID>',
+            '$createdAt' => (new DateTime('<CUSTOM_DATE>'))->format(DATE_ATOM),
+            '$updatedAt' => (new DateTime('<CUSTOM_DATE>'))->format(DATE_ATOM),
+            // ...your attributes
+        ],
+    ],
+);
+```
+```server-swift
+import Appwrite
+import Foundation
+
+// MARK: - Client setup
+let client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
+    .setProject("<YOUR_PROJECT_ID>") // Your project ID
+    .setKey("<YOUR_API_KEY>") // Your secret API key
+
+let databases = Databases(client)
+
+let isoFormatter = ISO8601DateFormatter()
+isoFormatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
+let customDate = isoFormatter.date(from: "<CUSTOM_DATE>") ?? Date()
+let createdAt = isoFormatter.string(from: customDate)
+let updatedAt = isoFormatter.string(from: customDate)
+
+// MARK: - Single document (create)
+do {
+    let created = try await databases.createDocument(
+        databaseId: "<DATABASE_ID>",
+        collectionId: "<COLLECTION_ID>",
+        documentId: "<DOCUMENT_ID>",
+        data: [
+            "$createdAt": createdAt,
+            "$updatedAt": updatedAt,
+            // ...your attributes
+        ]
+    )
+    print("Created:", created)
+} catch {
+    print("Create error:", error)
+}
+
+// MARK: - Single document (update)
+do {
+    let updated = try await databases.updateDocument(
+        databaseId: "<DATABASE_ID>",
+        collectionId: "<COLLECTION_ID>",
+        documentId: "<DOCUMENT_ID>",
+        data: [
+            "$updatedAt": updatedAt,
+            // ...your attributes
+        ]
+    )
+    print("Updated:", updated)
+} catch {
+    print("Update error:", error)
+}
+
+// MARK: - Bulk (create)
+do {
+    let bulkCreated = try await databases.createDocuments(
+        databaseId: "<DATABASE_ID>",
+        collectionId: "<COLLECTION_ID>",
+        documents: [
+            [
+                "$id": ID.unique(),
+                "$createdAt": createdAt,
+                "$updatedAt": updatedAt,
+                // ...your attributes
+            ]
+        ]
+    )
+    print("Bulk create:", bulkCreated)
+} catch {
+    print("Bulk create error:", error)
+}
+
+// MARK: - Bulk (upsert)
+do {
+    let bulkUpserted = try await databases.upsertDocuments(
+        databaseId: "<DATABASE_ID>",
+        collectionId: "<COLLECTION_ID>",
+        documents: [
+            [
+                "$id": "<DOCUMENT_ID_OR_NEW_ID>",
+                "$createdAt": createdAt,
+                "$updatedAt": updatedAt,
+                // ...your attributes
+            ]
+        ]
+    )
+    print("Bulk upsert:", bulkUpserted)
+} catch {
+    print("Bulk upsert error:", error)
+}
 ```
 ```server-python
 from appwrite.client import Client

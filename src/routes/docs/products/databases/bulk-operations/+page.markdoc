@@ -26,7 +26,7 @@ For example, if you attempt to create 100 documents and one fails due to a valid
 You can create multiple documents in a single request using the `createDocuments` method.
 
 {% info title="Custom timestamps" %}
-When creating or upserting in bulk, you can set `$createdAt` and `$updatedAt` for each document in the payload. Values must be ISO 8601 date-time strings. If omitted, Appwrite sets them automatically.
+When creating, updating or upserting in bulk, you can set `$createdAt` and `$updatedAt` for each document in the payload. Values must be ISO 8601 date-time strings. If omitted, Appwrite sets them automatically.
 {% /info %}
 
 {% multicode %}
