@@ -31,7 +31,7 @@ This change isn’t just about convenience. It unlocks a few tangible benefits f
 
 - **Accurate history:** Timestamps match when events actually happened.
 - **Easier migrations:** Move data without relying on custom fields or workarounds..
-- **Correct user timelines:** “Joined on” or “Ordered on” dates stay true.
+- **Correct user timelines:** "Joined on" or "Ordered on" dates stay true.
 - **Seamless CSV imports:** Set `$createdAt` and `$updatedAt` directly from your CSV.
 
 # What you need to know before using it
