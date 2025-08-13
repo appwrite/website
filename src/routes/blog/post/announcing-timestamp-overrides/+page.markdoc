@@ -13,7 +13,7 @@ In many data workflows, imported records automatically take on the time they are
 
 Whether it is maintaining accurate audit trails, reliable analytics, proper chronological order, or a customer’s “joined on” date, every detail matters.
 
-That’s why we’re introducing **Timestamp Overrides**. A simple but powerful way to set `$createdAt` and `$updatedAt` manually when importing or creating documents, so your history stays accurate without extra steps. This means your data looks exactly how it should from day one, with no extra scripts and workarounds.
+That’s why we’re introducing **Timestamp Overrides**. A simple but powerful way to set `$createdAt` and `$updatedAt` manually when importing or creating documents, so your history stays accurate without extra steps. This means your data looks exactly how it should from day one, with no extra scripts or workarounds.
 
 # Preserve timestamps without extra workarounds
 
