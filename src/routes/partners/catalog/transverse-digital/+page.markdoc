@@ -1,0 +1,64 @@
+---
+layout: partner
+title: Transverse Digital
+description: Transverse Digital is a technology company that specializes in building robust digital solutions powered by Appwrite as our core backend infrastructure. We leverage Appwrite's comprehensive backend-as-a-service platform to deliver scalable, secure, and efficient applications for our clients. Our expertise lies in utilizing Appwrite's full suite of services - including authentication, databases, storage, and cloud functions - to create seamless digital experiences. We focus on rapid development and deployment while maintaining enterprise-grade security and performance standards. At Transverse Digital, we believe in the power of modern backend technologies to transform businesses, and Appwrite's developer-friendly approach aligns perfectly with our mission to deliver innovative solutions that drive growth and efficiency for our partners.
+partnerLevel: Silver
+isNew: true
+cover: /images/partners/covers/transverse-digital.png
+category: agency
+website: https://transversedigital.com/
+email: emailto:krishna@transversedigital.com
+product: 
+    avatar: '/images/partners/avatars/transverse-digital.png'
+    vendor: Transverse Digital
+    description: Transverse Digital is a technology company specializing in building robust digital solutions powered by Appwrite as our core backend infrastructure.
+frameworks: 
+    - Go Lang
+    For programming:
+		- JavaScript/TypeScript
+		- Java
+		- Python
+		- C#
+		- Next.js
+		- React
+		- Vue.js
+		- Angular
+		- Mobile Development:
+		- React Native
+		- Ionic
+		- Flutter
+		- Swift
+		- Unity with C#
+		- Arduino
+		- Python for Pi
+		- Node.js
+capabilities:
+    - Mobile App Development
+    - Web Development
+    - Software as a Service (SaaS)
+    - Game Development
+    - IoT Solutions
+    - Real-time Applications
+    - E-commerce Platforms
+    - API Development
+    - Data-Driven Applications
+    - Social Platforms
+regions:
+    - Canada
+    - India
+    - USA
+    - Dubai
+    - Bangladesh
+languages: 
+    - English
+---
+
+# Overview
+
+Transverse Digital is a technology company that builds robust digital solutions powered by Appwrite as our core backend infrastructure. We leverage Appwrite's comprehensive backend-as-a-service platform to deliver scalable, secure, and efficient applications for our clients.
+Our expertise lies in utilizing Appwrite's full suite of services - including authentication, databases, storage, and cloud functions - to create seamless digital experiences. We focus on rapid development and deployment while maintaining enterprise-grade security and performance standards.
+At Transverse Digital, we believe in the power of modern backend technologies to transform businesses. Appwrite's developer-friendly approach aligns perfectly with our mission to deliver innovative solutions that drive growth and efficiency for our partners.
+
+# Services
+
+We use Appwrite for database operations, file storage, cloud functions, real-time features, security, APIs, automation, DevOps, and deployments. Our services include building SaaS platforms, café management software, multiplayer games, e-commerce solutions, IoT systems, and delivering custom APIs and integration projects.
