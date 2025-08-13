@@ -23,7 +23,7 @@ Starting September 1st, 2025, the following pricing changes will go into effect:
 - Resources will be per project instead of per organization, and we will be giving you more resources per project
 - The bandwidth resources on Pro and Scale will increase by +500%, from 300GB to 2TB per month per project
 - The additional bandwidth price has decreased by 62%, from $40 per 100GB to $15 per 100GB
-- The price for GB hours has decreased by 67%, from $0.18 per GB hour to $0.06 per GB hour
+- The price for GB hours has decreased by 33%, from $0.09 per GB hour to $0.06 per GB hour
 - The additional storage price has decreased by 6.7%, from $3 per 100GB to $2.8 per 100GB
 - Appwrite Messaging and Sites now have resource limits on Free, Pro, and Scale plans
 
