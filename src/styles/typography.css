@@ -122,7 +122,7 @@
         font-weight: var(--font-weight-medium);
         text-decoration: underline;
         text-decoration-thickness: 0.75px;
-        text-decoration-color: var(--color-smooth);
+        text-decoration-color: var(--color-tertiary);
         text-underline-offset: 0.375rem;
         letter-spacing: var(--tracking-tight);
         color: var(--color-primary);

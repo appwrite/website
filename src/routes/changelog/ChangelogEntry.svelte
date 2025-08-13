@@ -17,7 +17,7 @@
     {/if}
 
     <div class="prose prose-large px-4 sm:px-0">
-        <h2 class="text-title font-aeonik-pro text-primary">
+        <h2 class="text-title not-prose font-aeonik-pro text-primary mb-8">
             <a href={entry.href} onclick={() => trackEvent(`changelog-entry-click`)}>
                 {entry.title}
             </a>
