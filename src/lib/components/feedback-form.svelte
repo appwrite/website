@@ -9,6 +9,7 @@
     import { z } from 'zod';
     import { useHotkeys } from '$lib/utils/use-hotkeys.svelte';
     import { Smile, Frown } from '@lucide/svelte';
+    import { Popover } from 'bits-ui';
 
     interface FeedbackFormProps {
         date?: string;
@@ -47,15 +48,8 @@
     let showFeedbackForm = $state<boolean>(false);
     let feedbackType = $state<'negative' | 'positive'>('positive');
 
-    const handleToggle = (type: typeof feedbackType) => {
-        feedbackType = type;
-        showFeedbackForm = !showFeedbackForm;
-    };
-
-    $effect(() => {
-        useHotkeys(['Escape'], () => {
-            showFeedbackForm = false;
-        });
+    useHotkeys(['Escape'], () => {
+        showFeedbackForm = false;
     });
 
     onMount(() => {
@@ -63,48 +57,72 @@
             form.setFieldValue('email', $user?.email);
         }
     });
-
-    const FEEDBACK_WIDTH = 360;
-    const FEEDBACK_HEIGHT = 225;
 </script>
 
 <section class="not-prose border-subtle border-t pt-8">
     <header class="flex w-full">
         <div class="flex w-full items-center justify-between gap-8">
             <div
-                class="border-smooth bg-card relative mx-auto flex w-fit flex-col overflow-hidden rounded-xl border transition-all ease-[cubic-bezier(0.165,_0.84,_0.44,_1)]"
-                style:width={`${FEEDBACK_WIDTH}px`}
-                style:height={`${FEEDBACK_HEIGHT}px`}
+                class="border-smooth bg-card relative flex flex-col overflow-hidden rounded-xl border transition-all duration-250 ease-[cubic-bezier(0.165,_0.84,_0.44,_1)]"
             >
-                <form
-                    onsubmit={(e) => {
-                        e.preventDefault();
-                        e.stopPropagation();
-                        form.handleSubmit();
-                    }}
-                    style:width={`${FEEDBACK_WIDTH}px`}
-                    class="border-smooth h-full border-b"
-                >
-                    <div class="flex h-full flex-col gap-2">
-                        <form.Field
-                            name="comment"
-                            validators={{
-                                onChange: z.string()
-                            }}
-                        >
-                            {#snippet children(field)}
-                                <textarea
-                                    class="flex-1 resize-none p-3 outline-0"
-                                    placeholder={`What did you ${feedbackType === 'negative' ? 'dislike' : 'like'}?`}
-                                    required
-                                    value={field.state.value}
-                                    onblur={field.handleBlur}
-                                    oninput={(e) => field.handleChange(e.currentTarget.value)}
-                                ></textarea>
-                            {/snippet}
-                        </form.Field>
+                <Popover.Root>
+                    <div
+                        class="relative z-10 flex w-full items-center justify-center gap-3 self-center p-2"
+                    >
+                        <h5 class="text-caption text-primary">Was this page helpful?</h5>
+                        <div class="flex gap-2">
+                            <Popover.Trigger
+                                aria-label="helpful"
+                                onclick={() => {
+                                    feedbackType = 'positive';
+                                }}
+                            >
+                                <Smile class="size-5" />
+                            </Popover.Trigger>
+                            <Popover.Trigger
+                                aria-label="unhelpful"
+                                onclick={() => {
+                                    feedbackType = 'negative';
+                                }}
+                            >
+                                <Frown class="size-5" />
+                            </Popover.Trigger>
+                        </div>
+                    </div>
+                    <Popover.Portal>
+                        <Popover.Content side="top" sideOffset={8}>
+                            <form
+                                onsubmit={(e) => {
+                                    e.preventDefault();
+                                    e.stopPropagation();
+                                    form.handleSubmit();
+                                }}
+                            >
+                                <div class="flex px-3 py-3">
+                                    {`What did you ${feedbackType === 'negative' ? 'dislike' : 'like'}?`}
+                                </div>
 
-                        <!-- <form.Field
+                                <div class="flex h-full flex-col">
+                                    <form.Field
+                                        name="comment"
+                                        validators={{
+                                            onChange: z.string()
+                                        }}
+                                    >
+                                        {#snippet children(field)}
+                                            <textarea
+                                                class="bg-offset flex-1 resize-none rounded-md p-3 outline-0"
+                                                placeholder="What's on your mind?"
+                                                required
+                                                value={field.state.value}
+                                                onblur={field.handleBlur}
+                                                oninput={(e) =>
+                                                    field.handleChange(e.currentTarget.value)}
+                                            ></textarea>
+                                        {/snippet}
+                                    </form.Field>
+
+                                    <!-- <form.Field
                             name="email"
                             validators={{
                                 onChange: z.string().email()
@@ -123,47 +141,13 @@
                                 />
                             {/snippet}
                         </form.Field> -->
-
-                        <Button
-                            type="submit"
-                            class="self-end justify-self-end"
-                            disabled={form.state.isSubmitting}>Submit</Button
-                        >
-                    </div>
-                    <!-- {#if form.state.isSubmitted}
-                        <p class="text-primary mt-4">
-                            Your message has been sent successfully. We appreciate your feedback.
-                        </p>
-                    {/if}
-                    {#if form.state.errors.length}
-                        <p class="text-primary mt-4">
-                            There was an error submitting your feedback. Please try again later.
-                        </p>
-                    {/if} -->
-                </form>
-                <div class="flex items-center gap-3 self-center py-2 pr-2 pl-4">
-                    <h5 class="text-caption text-primary">Was this page helpful?</h5>
-                    <div class="flex gap-2">
-                        <button
-                            aria-label="helpful"
-                            onclick={() => {
-                                handleToggle('positive');
-                            }}
-                        >
-                            <Smile class="size-5" />
-                        </button>
-                        <button
-                            aria-label="unhelpful"
-                            onclick={() => {
-                                handleToggle('negative');
-                            }}
-                        >
-                            <Frown class="size-5" />
-                        </button>
-                    </div>
-                </div>
+                                </div>
+                            </form>
+                        </Popover.Content>
+                    </Popover.Portal>
+                </Popover.Root>
             </div>
-            <!-- <div class="web-content-footer-header-end">
+            <div class="web-content-footer-header-end">
                 <ul class="web-metadata text-caption">
                     {#if date}
                         <li>Last updated on {new Date()?.toLocaleDateString()}</li>
@@ -180,7 +164,7 @@
                         </a>
                     </li>
                 </ul>
-            </div> -->
+            </div>
         </div>
     </header>
 </section>

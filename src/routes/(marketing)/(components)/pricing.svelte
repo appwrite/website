@@ -1,6 +1,5 @@
 <script lang="ts">
     import { trackEvent } from '$lib/actions/analytics';
-    import Noise from '$lib/components/fancy/noise.svelte';
     import { Button } from '$lib/components/ui';
     import { cn } from '$lib/utils/cn';
     import { getAppwriteDashboardUrl } from '$lib/utils/dashboard';
@@ -52,7 +51,7 @@
 </script>
 
 <div
-    class={classNames(
+    class={cn(
         'relative -mt-6 -mb-12 flex min-h-[650px] max-w-screen items-center justify-center overflow-hidden pt-40 md:mb-0 md:pb-10',
         className
     )}

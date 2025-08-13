@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { classNames } from '$lib/utils/classnames';
+    import { cn } from '$lib/utils/cn';
     import NumberFlow from '@number-flow/svelte';
     import { inView } from 'motion';
     import { onDestroy, type Snippet } from 'svelte';
@@ -91,7 +91,7 @@
 </script>
 
 <div
-    class={classNames(
+    class={cn(
         'relative -mb-8 flex min-h-[700px] flex-col gap-4 pt-12 pb-20 md:pt-30 md:pb-0',
         theme
     )}
@@ -150,7 +150,7 @@
     </div>
 
     <div
-        class={classNames('absolute inset-0 mt-32 hidden md:block', {
+        class={cn('absolute inset-0 mt-32 hidden md:block', {
             'animate-wipe-in': isVisible
         })}
     >
