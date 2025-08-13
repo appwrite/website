@@ -2,9 +2,9 @@
     import { classNames } from '$lib/utils/classnames';
     import { inView } from 'motion';
 
-    import Platinum from '../(assets)/icons/platinum.png';
-    import Gold from '../(assets)/icons/gold.png';
-    import Silver from '../(assets)/icons/silver.png';
+    import Platinum from '../(assets)/badges/platinum.svg';
+    import Gold from '../(assets)/badges/gold.svg';
+    import Silver from '../(assets)/badges/silver.svg';
     import { clamp } from '$lib/utils/clamp';
     import { Button } from '$lib/components/ui';
 
@@ -23,30 +23,30 @@
     const tiers = [
         {
             title: 'Platinum',
-            icon: Platinum
+            badge: Platinum
         },
         {
             title: 'Gold',
-            icon: Gold
+            badge: Gold
         },
         {
             title: 'Silver',
-            icon: Silver
+            badge: Silver
         }
     ];
 </script>
 
 <div
     class={classNames(
-        'border-smooth relative flex items-center justify-center border-t border-b border-dashed [border-top-style:solid] bg-[#17171A] py-32',
+        'border-smooth relative flex items-center justify-center border-t border-b border-dashed [border-top-style:solid] bg-[#17171A] py-12 md:py-30',
         'after:absolute after:inset-0 after:top-0 after:right-0 after:z-0 after:mt-auto after:mb-0 after:block after:h-full after:bg-[radial-gradient(circle_at_120%_-40%,_hsla(343,_98%,_60%,_0.2)_0px,_transparent_40%)]'
     )}
     use:useInView
 >
     <div
-        class="relative z-10 container mx-auto flex w-full flex-col items-center justify-between gap-16 md:flex-row"
+        class="relative z-10 container mx-auto flex w-full flex-col items-center justify-between gap-16 lg:flex-row"
     >
-        <div class="flex max-w-lg flex-col gap-8 px-8">
+        <div class="flex flex-col gap-8 px-8 lg:max-w-lg">
             <div class="flex flex-col gap-4">
                 <h2 class="font-aeonik-pro text-title text-primary text-pretty">Partner Tiers</h2>
                 <p class="text-body text-secondary font-medium text-pretty">
@@ -64,34 +64,24 @@
             </div>
         </div>
 
-        <div class="mask relative overflow-hidden px-8" style:--mask-height="150px">
-            {#each tiers as { title, icon }, i}
+        <div class="mask relative px-8" style:--mask-height="150px">
+            {#each tiers as { title, badge }, i}
                 <div
-                    class={classNames('relative h-fit min-w-md rounded-3xl opacity-0', {
+                    class={classNames('relative flex h-fit w-full justify-center opacity-0', {
                         animate
                     })}
                     style:z-index={tiers.length - i}
                     style:animation-delay="{i * 0.1}s"
                 >
-                    <div
-                        class="flex h-fit items-center justify-center gap-4 rounded-3xl border border-[#292929] bg-black bg-gradient-to-br from-black to-white/20 px-5 py-3"
+                    <img
+                        src={badge}
+                        alt="{title} Badge"
+                        class="max-w-full"
                         style:margin-bottom={i === tiers.length - 1
                             ? 0
                             : `-${clamp(32, i * 40, 80)}px`}
                         style:transform="scale({1 - i * 0.15})"
-                    >
-                        <div class="flex items-center justify-center gap-4 pr-2">
-                            <img src={icon} alt="{title} Icon" class="h-16 w-auto md:h-20" />
-                            <div class="-mt-2 flex grow flex-col">
-                                <span class="text-primary mt-2 block font-medium uppercase"
-                                    >{title}<span class="text-accent">_</span></span
-                                >
-                                <h3 class="text-primary font-aeonik-pro text-title">
-                                    Appwrite Partner
-                                </h3>
-                            </div>
-                        </div>
-                    </div>
+                    />
                 </div>
             {/each}
         </div>
