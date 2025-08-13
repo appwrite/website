@@ -224,6 +224,18 @@ function* iterateAllMethods(
                             ...appwritePost['x-appwrite'],
                             method: additionalMethod.name,
                             demo: additionalMethod.demo
+                        },
+                        responses: {
+                            ...appwritePost.responses,
+                            [additionalMethod.responses[0].code]: {
+                                content: {
+                                    'application/json': {
+                                        schema: {
+                                            $ref: additionalMethod.responses[0].model
+                                        }
+                                    }
+                                }
+                            }
                         }
                     },
                     url
