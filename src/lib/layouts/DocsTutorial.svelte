@@ -148,11 +148,11 @@
             </div>
             <div class="web-article-header-end"></div>
         </header>
-        <div class="web-article-content">
+        <div class="web-article-content prose">
             <section class="web-article-content-section">
                 <section class="web-article-content-sub-section">
                     <header class="web-article-content-header">
-                        <span class="web-numeric-badge">{currentStep}</span>
+                        <span class="web-numeric-badge mt-8">{currentStep}</span>
                         <div class="tutorial-heading">
                             <Heading level={1} id={currentStepItem.href} step={currentStep}>
                                 {getCorrectTitle(currentStepItem, 1)}

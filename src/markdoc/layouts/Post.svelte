@@ -133,7 +133,7 @@
                         </div>
                     {/if}
 
-                    <div class="web-article-content prose mt-8 flex flex-col gap-8">
+                    <div class="web-article-content prose prose-large mt-8 flex flex-col gap-8">
                         {#if lastUpdated}
                             <span class="text-main-body last-updated-text font-medium">
                                 Updated:

@@ -14,7 +14,7 @@
 
 <a
     {href}
-    class="bg-card border-smooth hover:bg-smooth mb-0! flex flex-col gap-1 rounded-2xl border p-4 outline-0"
+    class="bg-card border-smooth hover:bg-smooth mb-0! flex flex-col gap-2 rounded-2xl border p-4 outline-0"
 >
     <header class="flex items-center gap-1">
         {#if icon}
@@ -27,7 +27,9 @@
             {title}
         </h4>
     </header>
-    {#if children}
-        {@render children()}
-    {/if}
+    <div class="text-sub-body">
+        {#if children}
+            {@render children()}
+        {/if}
+    </div>
 </a>

@@ -1,7 +1,7 @@
 .prose {
     color: var(--color-secondary);
     font-size: var(--font-size-small);
-    line-height: var(--leading-md);
+    line-height: var(--leading-sm);
     letter-spacing: var(--tracking-tight);
 
     h2:where(:not(.not-prose, .not-prose *)) {
@@ -52,6 +52,7 @@
         scroll-margin-top: calc(var(--spacing) * 32);
         color: var(--color-primary);
         text-wrap: balance;
+        font-weight: var(--font-weight-medium);
     }
 
     p:where(:not(.not-prose, .not-prose *)) {
@@ -121,14 +122,21 @@
         font-weight: var(--font-weight-medium);
         text-decoration: underline;
         text-decoration-thickness: 0.75px;
-        text-decoration-color: var(--color-tertiary);
+        text-decoration-color: var(--color-offset);
         text-underline-offset: 0.375rem;
         letter-spacing: var(--tracking-tight);
-        color: var(--text-primary);
+        color: var(--color-primary);
+        transition: all 200ms ease-in-out;
     }
 
     a:hover:where(:not(.not-prose, .not-prose *)) {
-        color: var(--color-secondary);
+        color: var(--color-accent-darker);
+        text-decoration-color: var(--color-accent-darker);
+    }
+
+    a:active:where(:not(.not-prose, .not-prose *)) {
+        color: var(--color-accent);
+        text-decoration-color: var(--color-accent);
     }
 
     a:where(:not(.not-prose, .not-prose *)):has(> [data-media]) {
@@ -136,8 +144,8 @@
     }
 
     strong:where(:not(.not-prose, .not-prose *)) {
-        color: var(--prose-strong-color);
-        font-weight: var(--font-weight-semibold);
+        color: var(--color-primary);
+        font-weight: var(--font-weight-medium);
     }
 
     code:where(:not(.not-prose, .not-prose *)) {
@@ -149,18 +157,18 @@
         background-color: var(--color-smooth);
         border: 1px solid var(--color-offset);
         border-radius: var(--radius-md);
-        padding: calc(var(--spacing) * 0.5) calc(var(--spacing) * 0.75);
+        padding: calc(var(--spacing) * 0) calc(var(--spacing) * 0.75);
     }
 
-    :where(h2, h3, h4) code:where(:not(.not-prose, .not-prose *)) {
-        font-weight: var(--font-weight-semibold);
+    :where(h2, h3, h4, h5, h6) code:where(:not(.not-prose, .not-prose *)) {
+        font-weight: var(--font-weight-medium);
     }
 
     table:where(:not(.not-prose, .not-prose *)) {
         width: 100%;
         table-layout: auto;
         margin-block: calc(var(--spacing) * 8);
-        font-size: var(--text-sm);
+        font-size: var(--font-size-small);
         line-height: 1.4;
     }
 
@@ -281,8 +289,6 @@
 }
 
 .prose-large {
-    p:where(:not(.not-prose, .not-prose *)) {
-        font-size: var(--font-size-medium);
-        line-height: var(--leading-md);
-    }
+    font-size: var(--font-size-medium);
+    line-height: var(--leading-md);
 }

@@ -8,6 +8,6 @@
     const { children }: CardsProps = $props();
 </script>
 
-<div class="not-prose grid grid-cols-1 gap-8 md:grid-cols-2">
+<div class="not-prose my-8 grid grid-cols-1 gap-8 md:grid-cols-2">
     {@render children()}
 </div>

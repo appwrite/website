@@ -49,7 +49,7 @@
                     {#if back}
                         <Button
                             href={back}
-                            class="web-u-translate-x-negative absolute top-0 size-10 items-center"
+                            class="web-u-translate-x-negative absolute size-10 items-center"
                             aria-label="previous page"
                             variant="icon"
                         >

@@ -14,7 +14,8 @@
     /* theme */
     --color-primary: var(--color-primary);
     --color-secondary: var(--color-secondary);
-    --color-accent: var(--color-secondary);
+    --color-accent: var(--color-pink-500);
+    --color-accent-darker: hsl(343, 64.9%, 48.04%);
     --color-smooth: var(--color-smooth);
     --color-subtle: var(--color-subtle);
     --color-tertiary: var(--color-tertiary);
@@ -466,13 +467,14 @@
     --color-primary: var(--color-greyscale-900);
     --color-secondary: var(--color-greyscale-700);
     --color-accent: var(--color-pink-500);
+    --color-accent-darker: #ca2b58;
     --carousel-gradient: transparent;
     --color-badge-bg: var(--color-badge-bg-light);
     --color-badge-border: var(--color-badge-border-light);
     --color-smooth: hsl(var(--color-greyscale-hue) 6% 10% / 0.04);
     --color-card: var(--color-greyscale-850);
     --color-tertiary: hsl(var(--color-greyscale-600));
-    --color-offset: hsl(var(--color-greyscale-hue) 2% 11% / 0.94);
+    --color-offset: hsl(0 0% 0% / 0.08);
     --color-subtle: var(--color-greyscale-850);
 }
 

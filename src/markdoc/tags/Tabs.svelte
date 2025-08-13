@@ -44,7 +44,7 @@
 </script>
 
 <div
-    class="dark:bg-greyscale-850/90 mt-4 mb-8 flex flex-col gap-1 rounded-2xl border border-black/8 bg-white/90 px-6 pt-4 pb-6 outline-0 dark:border-white/10"
+    class="dark:bg-greyscale-850/90 not-prose mt-4 mb-8 flex flex-col gap-1 rounded-2xl border border-black/8 bg-white/90 px-6 pt-4 pb-6 outline-0 dark:border-white/10"
 >
     <div
         class="flex items-center gap-4 overflow-scroll [-ms-overflow-style:none] [scrollbar-width:none]"
