@@ -44,7 +44,8 @@
 
         const observer = new IntersectionObserver(callback, {
             root: null,
-            threshold: 1
+            threshold: 0,
+            rootMargin: '-100px 0px -80% 0px'
         });
 
         observer.observe(element);

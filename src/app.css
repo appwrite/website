@@ -473,7 +473,7 @@
     --color-badge-bg: var(--color-badge-bg-light);
     --color-badge-border: var(--color-badge-border-light);
     --color-smooth: hsl(var(--color-greyscale-hue) 6% 10% / 0.04);
-    --color-card: hsl(var(--color-white) / 0.9);
+    --color-card: color-mix(in srgb, var(--color-white) 90%, transparent);
     --color-tertiary: var(--color-greyscale-600);
     --color-offset: hsl(0 0% 0% / 0.08);
     --color-subtle: var(--color-greyscale-850);
