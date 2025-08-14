@@ -74,7 +74,7 @@
                 <div class="grid grid-cols-1 gap-10 md:grid-cols-12 md:gap-x-14">
                     <div class="md:col-span-7">
                         <div class="web-article">
-                            <div class="web-article-content">
+                            <div class="web-article-content prose">
                                 {@render children?.()}
                             </div>
                             {#if email}

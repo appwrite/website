@@ -257,7 +257,7 @@
                 </div>
             </div>
         </header>
-        <div class="web-article-content" style:gap="6rem">
+        <div class="web-article-content prose" style:gap="6rem">
             <section class="web-article-content-grid-6-4">
                 <div class="web-article-content-grid-6-4-column-1 flex flex-col gap-2">
                     <!-- eslint-disable-next-line svelte/no-at-html-tags -->

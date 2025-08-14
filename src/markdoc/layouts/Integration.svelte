@@ -110,7 +110,7 @@
                         </div>
 
                         <div class="web-article">
-                            <div class="web-article-content">
+                            <div class="web-article-content prose">
                                 <slot />
                             </div>
                         </div>
