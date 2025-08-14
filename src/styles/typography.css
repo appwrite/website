@@ -108,46 +108,15 @@
         margin-top: calc(var(--spacing) * 2);
     }
 
-    ol:where(:not(.not-prose, .not-prose *)) {
-        margin-block: calc(var(--spacing) * 8);
-        display: flex;
-        flex-direction: column;
-        list-style-type: decimal;
-    }
-
-    ol li:where(:not(.not-prose, .not-prose *)) {
-        margin-block: calc(var(--spacing) * 2);
-        margin-inline-start: calc(var(--spacing) * 2);
-        padding-inline-start: calc(var(--spacing) * 1);
-    }
-
-    ol li + li:where(:not(.not-prose, .not-prose *)) {
-        margin-top: calc(var(--spacing) * 2);
-    }
-
-    ol ol:where(:not(.not-prose, .not-prose *)) {
-        margin-block: calc(var(--spacing) * 2);
-        list-style-type: upper-alpha;
-        padding-left: calc(var(--spacing) * 3);
-    }
-
-    ol ol ol:where(:not(.not-prose, .not-prose *)) {
-        list-style-type: lower-alpha;
-    }
-
-    ol li:where(:not(.not-prose, .not-prose *))::marker {
-        font-weight: var(--font-weight-medium);
-    }
-
     a:not(:where(:is(h2, h3, h4, h5, h6) *)):where(:not(.not-prose, .not-prose *)) {
         font-weight: var(--font-weight-medium);
         text-decoration: underline;
         text-decoration-thickness: 0.75px;
-        text-decoration-color: var(--color-tertiary) !important;
+        text-decoration-color: color-mix(in srgb, var(--color-tertiary) 50%, transparent);
         text-underline-offset: 0.3125rem;
         letter-spacing: var(--tracking-tight);
         color: var(--color-primary);
-        transition: all 200ms ease-in-out;
+        transition: all 100ms ease-in-out;
     }
 
     a:not(:where(:is(h2, h3, h4, h5, h6) *)):hover:where(:not(.not-prose, .not-prose *)) {
@@ -299,8 +268,7 @@
         font-size: var(--font-size-small);
     }
 
-    ul li:where(:not(.not-prose, .not-prose *)),
-    ol li:where(:not(.not-prose, .not-prose *)) {
+    ul li:where(:not(.not-prose, .not-prose *)) {
         margin-top: calc(var(--spacing) * 2.5);
     }
 
