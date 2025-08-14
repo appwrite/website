@@ -83,17 +83,23 @@
         margin-top: calc(var(--spacing) * 2.5);
     }
 
-    ul:where(:not(.not-prose, .not-prose *)):not(li ul) {
+    ol:where(:not(.not-prose, .not-prose *)):not(ol ol),
+    ul:where(:not(.not-prose, .not-prose *)):not(ul ul) {
         margin-block: calc(var(--spacing) * 8);
-        list-style-type: disc;
         padding-left: calc(var(--spacing) * 3);
     }
 
+    ul:where(:not(.not-prose, .not-prose *)) {
+        list-style-type: disc;
+    }
+
+    ol:where(:not(.not-prose, .not-prose *)) ol,
     ul:where(ul:where(:not(.not-prose, .not-prose *))) {
         margin-block: calc(var(--spacing) * 2);
         list-style-type: circle;
     }
 
+    ol li:where(:not(.not-prose, .not-prose *)),
     ul li:where(:not(.not-prose, .not-prose *)) {
         margin-block: calc(var(--spacing) * 2);
         margin-inline-start: calc(var(--spacing) * 2);
@@ -104,8 +110,16 @@
         color: var(--color-accent);
     }
 
-    ul li + li:where(:not(.not-prose, .not-prose *)) {
-        margin-top: calc(var(--spacing) * 2);
+    ol:where(:not(.not-prose, .not-prose *)) {
+        list-style-type: decimal;
+    }
+
+    ol:where(:not(.not-prose, .not-prose *)) ol {
+        list-style-type: upper-alpha;
+    }
+
+    ol ol:where(:not(.not-prose, .not-prose *)) ol {
+        list-style-type: lower-alpha;
     }
 
     a:not(:where(:is(h2, h3, h4, h5, h6) *)):where(:not(.not-prose, .not-prose *)) {
@@ -251,7 +265,7 @@
         }
     }
 
-    :first-child:where(:not(.not-prose, .not-prose *)):not(li ul) {
+    :first-child:where(:not(.not-prose, .not-prose *)):not(li ul):not(li ol) {
         margin-top: 0;
     }
 
