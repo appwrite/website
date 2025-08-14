@@ -207,6 +207,7 @@ type TodoList struct {
 }
 
 func getTodos() {
+	// Retrieve all documents
 	todoResponse, _ := appwriteDatabases.ListDocuments(
 		todoDatabase.Id,
 		todoCollection.Id,
@@ -215,6 +216,48 @@ func getTodos() {
 	var todos TodoList
 	todoResponse.Decode(&todos)
 
+	fmt.Println("All todos:")
+	for _, todo := range todos.Documents {
+		fmt.Printf("Title: %s\nDescription: %s\nIs Todo Complete: %t\n\n", todo.Title, todo.Description, todo.IsComplete)
+	}
+}
+
+func getCompletedTodos() {
+	// Use queries to filter completed todos with pagination
+	todoResponse, _ := appwriteDatabases.ListDocuments(
+		todoDatabase.Id,
+		todoCollection.Id,
+		appwriteDatabases.WithListDocumentsQueries([]string{
+			query.Equal("isComplete", true),
+			query.OrderDesc("$createdAt"),
+			query.Limit(5),
+		}),
+	)
+
+	var todos TodoList
+	todoResponse.Decode(&todos)
+
+	fmt.Println("Completed todos (limited to 5):")
+	for _, todo := range todos.Documents {
+		fmt.Printf("Title: %s\nDescription: %s\nIs Todo Complete: %t\n\n", todo.Title, todo.Description, todo.IsComplete)
+	}
+}
+
+func getIncompleteTodos() {
+	// Query for incomplete todos
+	todoResponse, _ := appwriteDatabases.ListDocuments(
+		todoDatabase.Id,
+		todoCollection.Id,
+		appwriteDatabases.WithListDocumentsQueries([]string{
+			query.Equal("isComplete", false),
+			query.OrderAsc("title"),
+		}),
+	)
+
+	var todos TodoList
+	todoResponse.Decode(&todos)
+
+	fmt.Println("Incomplete todos (ordered by title):")
 	for _, todo := range todos.Documents {
 		fmt.Printf("Title: %s\nDescription: %s\nIs Todo Complete: %t\n\n", todo.Title, todo.Description, todo.IsComplete)
 	}
@@ -234,6 +277,7 @@ import (
 	"github.com/appwrite/sdk-for-go/databases"
 	"github.com/appwrite/sdk-for-go/id"
 	"github.com/appwrite/sdk-for-go/models"
+	"github.com/appwrite/sdk-for-go/query"
 )
 
 var (
@@ -252,6 +296,8 @@ func main() {
 	prepareDatabase()
 	seedDatabase()
 	getTodos()
+	getCompletedTodos()
+	getIncompleteTodos()
 }
 ```
 

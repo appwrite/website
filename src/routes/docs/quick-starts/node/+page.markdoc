@@ -179,12 +179,52 @@ Create a function to retrieve the mock todo data and a function to execute the r
 Run the functions to by calling `runAllTasks();`.
 
 ```js
+const { Query } = require('node-appwrite');
+
 async function getTodos() {
+    // Retrieve all documents
     var todos = await databases.listDocuments(
         todoDatabase.$id,
-        todoCollection.$id
+        todoCollection.$id,
+        []  // Empty queries array to get all documents
     );
 
+    console.log("All todos:");
+    todos.documents.forEach(todo => {
+        console.log(`Title: ${todo.title}\nDescription: ${todo.description}\nIs Todo Complete: ${todo.isComplete}\n\n`);
+    });
+}
+
+async function getCompletedTodos() {
+    // Use queries to filter completed todos with pagination
+    var todos = await databases.listDocuments(
+        todoDatabase.$id,
+        todoCollection.$id,
+        [
+            Query.equal("isComplete", true),
+            Query.orderDesc("$createdAt"),
+            Query.limit(5)
+        ]
+    );
+
+    console.log("Completed todos (limited to 5):");
+    todos.documents.forEach(todo => {
+        console.log(`Title: ${todo.title}\nDescription: ${todo.description}\nIs Todo Complete: ${todo.isComplete}\n\n`);
+    });
+}
+
+async function getIncompleteTodos() {
+    // Query for incomplete todos
+    var todos = await databases.listDocuments(
+        todoDatabase.$id,
+        todoCollection.$id,
+        [
+            Query.equal("isComplete", false),
+            Query.orderAsc("title")
+        ]
+    );
+
+    console.log("Incomplete todos (ordered by title):");
     todos.documents.forEach(todo => {
         console.log(`Title: ${todo.title}\nDescription: ${todo.description}\nIs Todo Complete: ${todo.isComplete}\n\n`);
     });
@@ -194,6 +234,8 @@ async function runAllTasks() {
     await prepareDatabase();
     await seedDatabase();
     await getTodos();
+    await getCompletedTodos();
+    await getIncompleteTodos();
 }
 runAllTasks();
 ```
