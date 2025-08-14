@@ -81,26 +81,27 @@
 
     ol:where(:not(.not-prose, .not-prose *)) {
         margin-block: calc(var(--spacing) * 8);
-        counter-reset: numeric-list;
         display: flex;
         flex-direction: column;
     }
 
     ol li:where(:not(.not-prose, .not-prose *)) {
         margin-block: calc(var(--spacing) * 1);
-
-        &:before {
-            counter-increment: numeric-list;
-            content: counter(numeric-list);
-            align-self: start;
-            padding-inline-end: 0.75rem;
-            color: var(--color-primary);
-        }
     }
 
     ul li + li:where(:not(.not-prose, .not-prose *)),
     ol li + li:where(:not(.not-prose, .not-prose *)) {
         margin-top: calc(var(--spacing) * 2);
+    }
+
+    ol:where(ol:where(:not(.not-prose, .not-prose *))) {
+        margin-block: calc(var(--spacing) * 2);
+        list-style-type: upper-alpha;
+        padding-left: calc(var(--spacing) * 3);
+    }
+
+    ol ol:where(:not(.not-prose, .not-prose *)) {
+        list-style-type: lower-alpha;
     }
 
     ol li:where(:not(.not-prose, .not-prose *))::marker {
@@ -118,10 +119,6 @@
         margin-block: calc(var(--spacing) * 2);
         list-style-type: circle;
         padding-left: calc(var(--spacing) * 3);
-    }
-
-    ul ul ul li:where(:not(.not-prose, .not-prose *))::marker {
-        content: '▸';
     }
 
     ul li:where(:not(.not-prose, .not-prose *)) {
