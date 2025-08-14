@@ -5,7 +5,7 @@
     letter-spacing: var(--tracking-tight);
 
     h2:where(:not(.not-prose, .not-prose *)) {
-        font-size: var(--font-size-medium);
+        font-size: var(--font-size-large);
         line-height: var(--leading-md);
         letter-spacing: var(--tracking-tighter);
         color: var(--color-primary);
@@ -17,10 +17,13 @@
     }
 
     h3:where(:not(.not-prose, .not-prose *)) {
-        font-size: var(--font-size-large);
+        font-size: var(--font-size-medium);
         line-height: var(--leading-sm);
-        font-weight: var(--font-weight-medium);
         margin-top: calc(var(--spacing) * 12);
+
+        @variant md {
+            font-size: var(--font-size-large);
+        }
     }
 
     h2 + h3:where(:not(.not-prose, .not-prose *)) {
@@ -28,23 +31,24 @@
     }
 
     h4:where(:not(.not-prose, .not-prose *)) {
-        font-size: var(--font-size-medium);
+        font-size: var(--font-size-small);
         line-height: var(--leading-xs);
-        font-weight: var(--font-weight-medium);
         margin-top: calc(var(--spacing) * 3);
+
+        @variant md {
+            font-size: var(--font-size-medium);
+        }
     }
 
     h5:where(:not(.not-prose, .not-prose *)) {
         font-size: var(--font-size-small);
         line-height: var(--leading-xs);
         margin-top: calc(var(--spacing) * 3);
-        font-weight: var(--font-weight-medium);
     }
 
     h6:where(:not(.not-prose, .not-prose *)) {
         font-size: var(--font-size-tiny);
         line-height: var(--leading-tiny);
-        font-weight: var(--font-weight-medium);
         margin-top: calc(var(--spacing) * 3);
     }
 
@@ -264,11 +268,14 @@
         border-inline-start-width: 0.0625rem;
         border-inline-start-color: var(--color-accent);
         padding-inline-start: calc(var(--spacing) * 5);
-        margin-inline-end: calc(var(--spacing) * 30);
         margin-block: calc(var(--spacing) * 8);
         color: var(--color-primary);
         font-size: var(--font-size-large);
         font-weight: var(--font-weight-medium);
+
+        @variant md {
+            margin-inline-end: calc(var(--spacing) * 30);
+        }
     }
 
     blockquote:where(:not(.not-prose, .not-prose *)) p:first-of-type::before {
