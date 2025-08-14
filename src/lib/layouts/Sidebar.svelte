@@ -94,7 +94,9 @@
                         {/if}
                     {:else}
                         {#if navGroup.label}
-                            <h2 class="text-eyebrow mb-2 whitespace-nowrap uppercase md:opacity-0">
+                            <h2
+                                class="text-eyebrow web-side-nav-header mb-2 whitespace-nowrap uppercase"
+                            >
                                 {navGroup.label}
                             </h2>
                         {/if}
