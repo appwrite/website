@@ -5,24 +5,25 @@
 
     interface HeadingProps {
         level: number;
-        id?: string | undefined;
         step?: number | undefined;
         children: Snippet;
     }
 
-    const { level, id: elementId = undefined, step = undefined, children }: HeadingProps = $props();
+    const { level, step = undefined, children }: HeadingProps = $props();
 
     const tag = `h${level + 1}`;
     const ctx = hasContext('headings') ? getContext<LayoutContext>('headings') : undefined;
 
-    let element: HTMLElement | undefined = $state();
+    let element = $state<NonNullable<HTMLElement>>();
+    let id = $state<string | undefined>(undefined);
 
     onMount(() => {
         if (!element || !$ctx) {
             return;
         }
 
-        const slug = id ?? slugify(element.innerText);
+        const slug = slugify(element.innerText);
+        id = slug;
 
         $ctx = {
             ...$ctx,
@@ -50,10 +51,8 @@
 
         observer.observe(element);
     });
-
-    let id = $derived(elementId ?? slugify(element?.innerText ?? ''));
 </script>
 
 <svelte:element this={tag} {id} bind:this={element}>
-    <a href={`#${id ?? slugify(element?.innerText ?? '')}`}>{@render children()}</a>
+    <a href={`#${id}`}>{@render children()}</a>
 </svelte:element>

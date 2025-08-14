@@ -1,5 +1,5 @@
 import type { RequestHandler } from './$types';
-import { posts } from '../content';
+import { getAllPosts } from '../content';
 
 export const prerender = true;
 
@@ -26,7 +26,7 @@ export const GET: RequestHandler = () => {
     <link>https://appwrite.io</link>
     <atom:link href="https://appwrite.io/blog/rss.xml" rel="self" type="application/rss+xml" />
     <description>Appwrite is an open-source platform for building applications at any scale, using your preferred programming languages and tools.</description>
-    ${posts
+    ${getAllPosts
         .map(
             (post) => `<item>
         <title>${encodeText(post.title)}</title>

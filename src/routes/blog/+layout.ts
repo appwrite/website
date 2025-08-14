@@ -1,9 +1,9 @@
-import { posts, authors, categories } from './content';
+import { getAllPosts, getAllAuthors, getAllCategories } from './content';
 
 export function load() {
     return {
-        posts,
-        authors,
-        categories
+        posts: getAllPosts,
+        authors: getAllAuthors,
+        categories: getAllCategories
     };
 }

@@ -48,7 +48,7 @@ const categoriesGlob = import.meta.glob('./category/**/*.markdoc', {
     eager: true
 });
 
-export const posts = Object.entries(postsGlob)
+export const getAllPosts = Object.entries(postsGlob)
     .map(([filepath, postList]) => {
         const { frontmatter } = postList as {
             frontmatter: PostsData;
@@ -77,7 +77,7 @@ export const posts = Object.entries(postsGlob)
         return b.date.getTime() - a.date.getTime();
     });
 
-export const authors = Object.values(authorsGlob).map((authorList) => {
+export const getAllAuthors = Object.values(authorsGlob).map((authorList) => {
     const { frontmatter } = authorList as {
         frontmatter: AuthorData;
     };
@@ -95,7 +95,7 @@ export const authors = Object.values(authorsGlob).map((authorList) => {
     };
 });
 
-export const categories = Object.values(categoriesGlob).map((categoryList) => {
+export const getAllCategories = Object.values(categoriesGlob).map((categoryList) => {
     const { frontmatter } = categoryList as {
         frontmatter: CategoryData;
     };
@@ -110,13 +110,15 @@ export const categories = Object.values(categoriesGlob).map((categoryList) => {
 export const normalizeCategory = (str: string) => str?.replace(/\s+/g, '-').toLowerCase();
 
 export const getBlogEntries = () => {
-    const filteredCategories = categories.filter((category) =>
-        posts.some((post) => normalizeCategory(post.category) === normalizeCategory(category.name))
+    const filteredCategories = getAllCategories.filter((category) =>
+        getAllPosts.some(
+            (post) => normalizeCategory(post.category) === normalizeCategory(category.name)
+        )
     );
 
     return {
-        authors,
+        authors: getAllAuthors,
         filteredCategories,
-        posts: posts.filter((post) => !post.unlisted)
+        posts: getAllPosts.filter((post) => !post.unlisted)
     };
 };

@@ -1,4 +1,4 @@
-<script context="module" lang="ts">
+<script module lang="ts">
     import { writable, type Writable } from 'svelte/store';
 
     export type LayoutContext = Writable<
@@ -20,21 +20,27 @@
     import { DocsArticle } from '$lib/layouts';
     import type { TocItem } from '$lib/layouts/DocsArticle.svelte';
     import { DOCS_TITLE_SUFFIX, OVERVIEW_TITLE_SUFFIX } from '$routes/titles';
-    import { getContext, setContext } from 'svelte';
+    import { getContext, setContext, type Snippet } from 'svelte';
     import { page } from '$app/state';
 
-    export let title: string;
-    export let description: string;
-    export let back: string | undefined = undefined;
-    export let difficulty: string | undefined = undefined;
-    export let readtime: string | undefined = undefined;
-    export let date: string | undefined = undefined;
+    interface ArticleProps {
+        title: string;
+        description: string;
+        back?: string;
+        difficulty?: string;
+        readtime?: string;
+        date?: string;
+        children: Snippet;
+    }
+
+    const { title, description, back, difficulty, readtime, date, children }: ArticleProps =
+        $props();
 
     setContext<LayoutContext>('headings', writable({}));
 
     const headings = getContext<LayoutContext>('headings');
 
-    let selected: string | undefined = undefined;
+    let selected = $state<string>('');
     headings.subscribe((n) => {
         const noVisible = Object.values(n).every((n) => !n.visible);
         if (selected && noVisible) {
@@ -48,21 +54,25 @@
         }
     });
 
-    $: entries = Object.entries($headings);
-    $: toc = entries.reduce<Array<TocItem>>((carry, [id, heading]) => {
-        carry.push({
-            title: heading.title,
-            href: `#${id}`,
-            step: heading.step,
-            selected: selected === id,
-            level: heading.level
-        });
-        return carry;
-    }, []);
+    const entries = $state(Object.entries($headings));
+    const toc = $derived(
+        entries.reduce<Array<TocItem>>((headings, [id, heading]) => {
+            headings.push({
+                title: heading.title,
+                href: `#${id}`,
+                step: heading.step,
+                selected: selected === id,
+                level: heading.level
+            });
+            return headings;
+        }, [])
+    );
+
+    console.log(children());
 
     const isProductsPage = /^\/docs\/products\/[^/]+$/.test(page.route.id!.toString());
 
-    let seoTitle = title + DOCS_TITLE_SUFFIX;
+    let seoTitle = $derived(title + DOCS_TITLE_SUFFIX);
     if (isProductsPage) seoTitle = title + OVERVIEW_TITLE_SUFFIX;
 </script>
 
@@ -87,6 +97,6 @@
             <li>{readtime} min</li>
         {/if}
     </svelte:fragment>
-    <slot />
+    {@render children()}
 </DocsArticle>
 <MainFooter variant="docs" />
