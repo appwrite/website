@@ -10,9 +10,50 @@
     export let width: number | null = null;
     export let height: number | null = null;
 
+    function decodeContent(content: string): string {
+        let decodedContent = content;
+        
+        if (content.startsWith('data:text/plain;base64,')) {
+            try {
+                const base64Content = content.replace('data:text/plain;base64,', '');
+                decodedContent = atob(base64Content);
+            } catch (err) {
+                console.warn('Failed to decode data content:', err);
+                return content;
+            }
+        }
+        
+        if (isBase64(content)) {
+            try {
+                decodedContent = atob(content);
+            } catch (err) {
+                console.warn('Failed to decode base64 content:', err);
+                return content;
+            }
+        }
+        
+        return decodedContent
+            .replace(/\r\n/g, '\n')  
+            .replace(/\r/g, '\n')    
+            .replace(/\n{3,}/g, '\n\n'); 
+    }
+
+    function isBase64(str: string): boolean {
+        if (!str || str.length === 0) return false;
+        try {
+            const decoded = atob(str);
+            const reencoded = btoa(decoded);
+            return reencoded === str;
+        } catch (err) {
+            return false;
+        }
+    }
+
     $: snippets = writable(new Set(data.map((d) => d.language)));
 
-    $: content = data.find((d) => d.language === selected)?.content ?? '';
+    $: rawContent = data.find((d) => d.language === selected)?.content ?? '';
+
+    $: content = decodeContent(rawContent);
 
     $: platform = data.find((d) => d.language === selected)?.platform ?? '';
 
