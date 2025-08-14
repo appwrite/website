@@ -1,0 +1,268 @@
+---
+layout: tutorial
+title: Implementing the offset pagination
+description: Explore offset pagination and how the react app accesses the Appwrite backend using this method.
+step: 7
+---
+In this step, we'll delve into adding the offset pagination method to our app.
+
+# What is offset pagination? {% #what-is-offset-pagination %}
+Offset pagination is widely used in databases and online APIs to extract specific data subsets from a bigger whole. It requires you to tell it where to start (offset) and how many records to get (limit). 
+In the context of software applications, offset pagination is a technique that may be employed to facilitate the content navigation by incorporating forward and back buttons on a given page.
+
+With Appwrite, offset pagination is achieved using the `Query.limit()` and `Query.offset()` methods. 
+Here's an example using Appwrite's `listDocuments()` function to list the next four tasks:
+
+```js
+const page2 = await databases.listDocuments(
+    '[TODOS_DATABASE_ID]',
+    '[TODOS_COLLECTION_ID]',
+    [
+        Query.limit(4),
+        Query.offset(4)
+    ]
+);
+```
+this will retrieve the next four tasks, starting at task-5
+
+We'll explore different UI patterns for offset pagination and how to implement them in our React app.
+
+# Adding the Pagination Component {% #Adding-the-pagination-component %}
+{% tabs %}
+{% tabsitem #Basic-pagination title="Basic Pagination" %}
+
+Open the file named `src/pages/TodosWithOffsetPagination.jsx`, overwrite it with the following code:
+```js
+import { useCallback } from "react";
+import { useTodos } from "../lib/context/OffsetProvider";
+
+export function TodosWithOffsetPagination() {
+  const todos = useTodos();
+
+  return (
+    <section>
+      <h2>Todos</h2>
+      <ul>
+        {todos.current.map((todo) => (
+          <li key={`todo-${todo.taskId}`} className='todo'>
+            <span>{`Task-${todo.taskId}: `}</span>
+            <input type='checkbox' id={todo.taskId} name={todo.title} />
+            <label htmlFor={todo.title}>{todo.title}</label>
+          </li>
+        ))}
+      </ul>
+      <BasicPagination
+        loadPrev={todos.loadPrev}
+        loadNext={todos.loadNext}
+        hasNext={todos.hasNext}
+        hasPrev={todos.currentPage > 1}
+      />
+    </section>
+  );
+}
+
+function BasicPagination(props) {
+  const { loadPrev, loadNext, hasNext, hasPrev } = props;
+
+  const debounce = (func, delay) => {
+    let debounceTimer;
+    return (...args) => {
+      clearTimeout(debounceTimer);
+      debounceTimer = setTimeout(() => func(...args), delay);
+    };
+  };
+
+  const debouncedLoadPrev = useCallback(debounce(loadPrev, 300), [loadPrev]);
+
+  const debouncedLoadNext = useCallback(debounce(loadNext, 300), [loadNext]);
+
+  return (
+    <div>
+      <button disabled={!hasPrev} onClick={debouncedLoadPrev}>
+        Previous
+      </button>
+      <button disabled={!hasNext} onClick={debouncedLoadNext}>
+        Next
+      </button>
+    </div>
+  );
+}
+```
+This component will only have "Previous" and "Next" buttons.
+{% /tabsitem %}
+{% tabsitem #numbered-pagination title="Numbered Pagination" %}
+Open the file named `src/pages/TodosWithOffsetPaginationAndNumbers.jsx`, overwrite it with the following code:
+```js
+import { useCallback } from "react";
+import { useTodos } from "../lib/context/OffsetProvider";
+
+export function TodosWithOffsetPaginationAndNumbers() {
+  const todos = useTodos();
+
+  return (
+    <section>
+      <h2>Todos</h2>
+      <ul>
+        {todos.current.map((todo) => (
+          <li key={`todo-${todo.taskId}`} className='todo'>
+            <span>{`Task-${todo.taskId}: `}</span>
+            <input type='checkbox' id={todo.taskId} name={todo.title} />
+            <label htmlFor={todo.title}>{todo.title}</label>
+          </li>
+        ))}
+      </ul>
+      <NumberedPagination
+        currentPage={todos.currentPage}
+        totalPages={todos.totalPages}
+        loadPrev={todos.loadPrev}
+        loadNext={todos.loadNext}
+        loadPage={todos.loadPage}
+        hasNext={todos.hasNext}
+        hasPrev={todos.currentPage > 1}
+      />
+    </section>
+  );
+}
+
+function NumberedPagination(props) {
+  const {
+    currentPage,
+    totalPages,
+    loadPrev,
+    loadNext,
+    loadPage,
+    hasNext,
+    hasPrev,
+  } = props;
+
+  const pages = [];
+
+  for (let i = 1; i <= totalPages; i++) {
+    pages.push(
+      <button key={i} disabled={i === currentPage} onClick={() => loadPage(i)}>
+        {i}
+      </button>,
+    );
+  }
+  const debounce = (func, delay) => {
+    let debounceTimer;
+    return (...args) => {
+      clearTimeout(debounceTimer);
+      debounceTimer = setTimeout(() => func(...args), delay);
+    };
+  };
+
+  const debouncedLoadPrev = useCallback(debounce(loadPrev, 300), [loadPrev]);
+
+  const debouncedLoadNext = useCallback(debounce(loadNext, 300), [loadNext]);
+
+  return (
+    <div>
+      <button disabled={!hasPrev} onClick={debouncedLoadPrev}>
+        Previous
+      </button>
+      {pages}
+      <button disabled={!hasNext} onClick={debouncedLoadNext}>
+        Next
+      </button>
+    </div>
+  );
+}
+```
+
+This component will have "Previous" and "Next" buttons along with numbered pages for direct navigation.
+{% /tabsitem %}
+{% /tabs %}
+
+# Update OffsetProvider context {% #update-offsetprovider-context %}
+
+Update the contents of `src/lib/context/OffsetProvider.jsx` with the following code:
+
+```js
+import { createContext, useContext, useEffect, useState } from "react";
+import { databases } from "../appwrite";
+import { Query } from "appwrite";
+
+const TodosContext = createContext();
+
+export function useTodos() {
+  return useContext(TodosContext);
+}
+
+export function OffsetProvider(props) {
+  const [todos, setTodos] = useState([]);
+  const [offset, setOffset] = useState(0);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(0);
+  const pageLimit = 4;
+  const hasNext = totalPages > currentPage;
+
+  async function loadNext() {
+    if (hasNext) {
+      setOffset(offset + pageLimit);
+    }
+  }
+
+  async function loadPrev() {
+    if (offset >= pageLimit) {
+      setOffset(offset - pageLimit);
+    }
+  }
+
+  async function loadPage(pageNumber) {
+    setOffset((pageNumber - 1) * pageLimit);
+  }
+
+  async function init() {
+    try {
+      const response = await databases.listDocuments(
+        import.meta.env.VITE_APPWRITE_DATABASE_ID,
+        import.meta.env.VITE_APPWRITE_COLLECTION_ID,
+        [
+          Query.orderAsc("$createdAt"),
+          Query.limit(pageLimit),
+          Query.offset(offset),
+        ],
+      );
+
+      setTodos(response.documents);
+      setCurrentPage(Math.floor(offset / pageLimit) + 1);
+      setTotalPages(response.total / pageLimit);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  useEffect(() => {
+    init();
+  }, [offset]);
+
+  return (
+    <TodosContext.Provider
+      value={{
+        current: todos,
+        loadNext,
+        loadPrev,
+        loadPage,
+        currentPage,
+        totalPages,
+        hasNext,
+        hasPrev: currentPage > 1,
+      }}>
+      {props.children}
+    </TodosContext.Provider>
+  );
+}
+```
+In this updated context:
+ * We're using `Query.limit()` to set the number of tasks we want to fetch per page.
+ * We're using `Query.offset()` to set the starting point for fetching tasks based on the current page.
+ * We've added `loadNext`, `loadPrev`, and `loadPage` function to handle pagination.
+
+ Now, you can use this context in your components to display todo items and handle pagination using Appwrite's offset pagination methods.
+
+You can now choose between the two offset pagination styles based on your UI/UX preferences.
+
+In the next step, we'll transition from our current pagination method to cursor pagination method.
+
+# See it in action {% #see-it-in-action %}
+Before moving on, take a moment to run your application and see the offset pagination in action. Navigate through the tasks using the "forward" and "back" buttons and observe how the tasks are displayed based on the offset. This hands-on experience will give you a clearer understanding of how offset pagination works in a real-world scenario.
