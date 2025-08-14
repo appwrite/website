@@ -24,8 +24,5 @@ export const load: PageServerLoad = async ({ params }) => {
     if (!platforms.includes(platform as Platform)) error(404, 'Invalid platform');
     if (!services.includes(service as ServiceValue)) error(404, 'Invalid service');
 
-    return {
-        ...(await getService(version, platform, service)),
-        changelogEntries: 0
-    };
+    return getService(version, platform, service);
 };
