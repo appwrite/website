@@ -209,7 +209,8 @@ Next, you'll add the methods necessary to integrate with the LMNT API.
 Import the `Speech` class from `lmnt-node`, and the required features from the Appwrite Node.js SDK at the top of the `main.js` file.
 
 ```js
-import { Client, Storage, ID, InputFile, Permission, Role } from "node-appwrite";
+import { Client, Storage, ID, Permission, Role } from "node-appwrite";
+import { InputFile } from "node-appwrite/file";
 import Speech from 'lmnt-node';
 ```
 
