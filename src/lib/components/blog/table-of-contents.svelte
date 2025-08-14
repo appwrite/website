@@ -32,7 +32,7 @@
     };
 </script>
 
-<svelte:window onscroll={onScroll} />
+<svelte:window onscroll={onScroll} on:hashchange={onScroll} />
 
 <nav class="sticky top-32 col-span-3 mt-2 -ml-4 hidden h-[800px] flex-col gap-6 lg:flex">
     <span class="text-eyebrow text-primary font-aeonik-fono ps-6 uppercase">{heading}</span>
@@ -73,7 +73,7 @@
             {/each}
         </ul>
         <div
-            class="absolute top-0 -left-px h-6 w-px bg-white transition-transform ease-linear"
+            class="bg-primary absolute top-0 -left-px h-6 w-px transition-transform ease-linear"
             style:transform={`translateY(${position}px)`}
         ></div>
     </div>
