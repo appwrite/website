@@ -89,7 +89,7 @@
         padding-left: calc(var(--spacing) * 3);
     }
 
-    ul:where(:not(.not-prose, .not-prose *)) {
+    ul:where(:not(.not-prose, .not-prose *)):not(ul ul) {
         list-style-type: disc;
     }
 
@@ -97,6 +97,10 @@
     ul:where(ul:where(:not(.not-prose, .not-prose *))) {
         margin-block: calc(var(--spacing) * 2);
         list-style-type: circle;
+    }
+
+    ul:where(ul:where(:not(.not-prose, .not-prose *))) ul ul {
+        list-style-type: square;
     }
 
     ol li:where(:not(.not-prose, .not-prose *)),
