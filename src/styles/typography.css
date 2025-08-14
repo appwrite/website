@@ -103,7 +103,7 @@
     ul li:where(:not(.not-prose, .not-prose *)) {
         margin-block: calc(var(--spacing) * 2);
         margin-inline-start: calc(var(--spacing) * 2);
-        padding-inline-start: calc(var(--spacing) * 1);
+        padding-inline-start: calc(var(--spacing) * 2);
     }
 
     ul li:where(:not(.not-prose, .not-prose *))::marker {
@@ -120,6 +120,10 @@
 
     ol ol:where(:not(.not-prose, .not-prose *)) ol {
         list-style-type: lower-alpha;
+    }
+
+    ol li:where(:not(.not-prose, .not-prose *))::marker {
+        color: var(--color-primary);
     }
 
     a:not(:where(:is(h2, h3, h4, h5, h6) *)):where(:not(.not-prose, .not-prose *)) {
