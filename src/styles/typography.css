@@ -92,7 +92,6 @@
     ul:where(ul:where(:not(.not-prose, .not-prose *))) {
         margin-block: calc(var(--spacing) * 2);
         list-style-type: circle;
-        padding-left: calc(var(--spacing) * 3);
     }
 
     ul li:where(:not(.not-prose, .not-prose *)) {
@@ -113,29 +112,31 @@
         margin-block: calc(var(--spacing) * 8);
         display: flex;
         flex-direction: column;
+        list-style-type: decimal;
     }
 
     ol li:where(:not(.not-prose, .not-prose *)) {
-        margin-block: calc(var(--spacing) * 1);
+        margin-block: calc(var(--spacing) * 2);
+        margin-inline-start: calc(var(--spacing) * 2);
+        padding-inline-start: calc(var(--spacing) * 1);
     }
 
     ol li + li:where(:not(.not-prose, .not-prose *)) {
         margin-top: calc(var(--spacing) * 2);
     }
 
-    ol:where(ol:where(:not(.not-prose, .not-prose *))) {
+    ol ol:where(:not(.not-prose, .not-prose *)) {
         margin-block: calc(var(--spacing) * 2);
         list-style-type: upper-alpha;
         padding-left: calc(var(--spacing) * 3);
     }
 
-    ol ol:where(:not(.not-prose, .not-prose *)) {
+    ol ol ol:where(:not(.not-prose, .not-prose *)) {
         list-style-type: lower-alpha;
     }
 
     ol li:where(:not(.not-prose, .not-prose *))::marker {
-        font-weight: 600;
-        color: var(--prose-strong-color);
+        font-weight: var(--font-weight-medium);
     }
 
     a:not(:where(:is(h2, h3, h4, h5, h6) *)):where(:not(.not-prose, .not-prose *)) {
