@@ -8,14 +8,17 @@
     import { DEFAULT_HOST } from '$lib/utils/metadata';
     import FloatingHead from '$lib/components/FloatingHead.svelte';
 
-    export let name: string;
-    export let role: string;
-    export let avatar: string;
-    export let bio: string;
-    export let twitter: string;
-    export let linkedin: string;
-    export let github: string;
+    interface AuthorProps {
+        name: string;
+        role: string;
+        avatar: string;
+        bio: string;
+        twitter: string;
+        linkedin: string;
+        github: string;
+    }
 
+    const { name, role, avatar, bio, twitter, linkedin, github }: AuthorProps = $props();
     const posts = getContext<PostsData[]>('posts');
     const authors = getContext<AuthorData[]>('authors');
     const author = authors.find(

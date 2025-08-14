@@ -1,7 +1,7 @@
 <script lang="ts">
     import { cn } from '$lib/utils/cn';
     import type { SvelteHTMLElements } from 'svelte/elements';
-    import { navState } from './menu-state.svelte';
+    import { menuState } from './menu-state.svelte';
 
     type Props = {
         class?: string;
@@ -14,9 +14,7 @@
         ...rest
     }: Props = $props();
 
-    const toggleMobileNav = () => {
-        navState.isOpen = !navState.isOpen;
-    };
+    const { isOpen } = menuState();
 </script>
 
 <button
@@ -26,7 +24,6 @@
         className
     )}
     onclick={(e) => {
-        toggleMobileNav();
         onclick?.(e);
     }}
     {...rest}
@@ -40,15 +37,13 @@
                 'after:bg-primary after:absolute after:top-1 after:left-0 after:block after:h-px after:w-7',
                 'after:ease-in-out after:[transition:top_200ms_200ms,transform_200ms]',
                 {
-                    '!bg-transparent': navState.isOpen,
+                    '!bg-transparent': isOpen,
                     'before:bottom-0 before:rotate-45 before:[transition:bottom_200ms,transform_200ms_200ms]':
-                        navState.isOpen,
+                        isOpen,
                     'after:top-0 after:-rotate-45 after:[transition:top_200ms,transform_200ms_200ms]':
-                        navState.isOpen
+                        isOpen
                 }
             )}
         ></span>
     </span>
 </button>
-
-<svelte:window onresize={() => (navState.isOpen = false)} />

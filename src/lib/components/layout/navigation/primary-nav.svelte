@@ -31,10 +31,10 @@
     ];
     type Props = NavigationMenu.RootProps;
 
-    const { class: className, ...rest }: Props = $props();
+    const { class: classNames, ...rest }: Props = $props();
 </script>
 
-<NavigationMenu.Root class={className} {...rest}>
+<NavigationMenu.Root class={classNames} {...rest}>
     <NavigationMenu.List class="flex items-center gap-8">
         {#each navItems as item}
             <NavigationMenu.Item class="hover:text-accent transition-colors">
