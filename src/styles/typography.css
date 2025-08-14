@@ -6,22 +6,24 @@
 
     h2:where(:not(.not-prose, .not-prose *)) {
         font-size: var(--font-size-large);
-        line-height: var(--leading-md);
+        line-height: var(--leading-sm);
         letter-spacing: var(--tracking-tighter);
         color: var(--color-primary);
         margin-top: calc(var(--spacing) * 14);
 
         @variant md {
             font-size: var(--font-size-xl);
+            line-height: var(--leading-md);
         }
     }
 
     h3:where(:not(.not-prose, .not-prose *)) {
         font-size: var(--font-size-medium);
-        line-height: var(--leading-sm);
+        line-height: var(--leading-xs);
         margin-top: calc(var(--spacing) * 12);
 
         @variant md {
+            line-height: var(--leading-sm);
             font-size: var(--font-size-large);
         }
     }
@@ -32,10 +34,11 @@
 
     h4:where(:not(.not-prose, .not-prose *)) {
         font-size: var(--font-size-small);
-        line-height: var(--leading-xs);
+        line-height: var(--leading-tiny);
         margin-top: calc(var(--spacing) * 3);
 
         @variant md {
+            line-height: var(--leading-xs);
             font-size: var(--font-size-medium);
         }
     }
