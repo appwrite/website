@@ -27,9 +27,9 @@
             {title}
         </h4>
     </header>
-    <div class="text-sub-body">
-        {#if children}
+    {#if children}
+        <div class="text-sub-body">
             {@render children()}
-        {/if}
-    </div>
+        </div>
+    {/if}
 </a>
