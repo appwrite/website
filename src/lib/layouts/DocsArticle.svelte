@@ -4,7 +4,7 @@
         href: string;
         step?: number;
         selected?: boolean;
-        level?: number;
+        level: number;
         children?: Array<{
             title: string;
             href: string;
@@ -49,7 +49,7 @@
                     {#if back}
                         <Button
                             href={back}
-                            class="web-u-translate-x-negative absolute top-0 size-10 items-center"
+                            class="web-u-translate-x-negative absolute size-10 items-center"
                             aria-label="previous page"
                             variant="icon"
                         >
@@ -65,7 +65,7 @@
             </div>
             <div class="web-article-header-end"></div>
         </header>
-        <div class="web-article-content" class:web-reduced-article-size={$reducedArticleSize}>
+        <div class="web-article-content prose" class:web-reduced-article-size={$reducedArticleSize}>
             <slot />
 
             <Feedback {date} />

@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { classNames } from '$lib/utils/classnames';
+    import { cn } from '$lib/utils/cn';
     // import { animate, stagger } from 'motion';
 
     // $effect(() => {
@@ -20,7 +20,7 @@
 </script>
 
 <div
-    class={classNames(
+    class={cn(
         'bg-smooth -mb-108 max-w-[150vw] translate-x-8 -translate-y-32 scale-70 overflow-hidden rounded-t-2xl border-x border-t border-white/10 px-2 pt-2 backdrop-blur-2xl md:mt-12 md:mb-0 md:ml-24 md:translate-x-1/4 md:translate-y-0 md:scale-100 lg:ml-12 ',
         'mask-b-from-0% mask-b-to-70% md:mask-b-to-100%'
     )}

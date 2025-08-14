@@ -5,7 +5,7 @@ description: Add authentication to your Vue application using Appwrite Web SDK.
 step: 4
 ---
 
-# User store {% #user-store %}
+## User store {% #user-store %}
 
 In Vue, you can use the [reactive](https://vuejs.org/guide/essentials/reactivity-fundamentals.html#reactive) API to share data between components.
 We'll create a store to share the user's data between components.
@@ -44,7 +44,7 @@ export const user = reactive({
 
 Now, we can import the `user` store in any component and use it to login, logout, or register a user. However, we'll need to call the `init` method to initialize the user's data.
 
-# Basic routing {% #basic-routing %}
+## Basic routing {% #basic-routing %}
 
 First, import the `user` store in `src/App.vue` and call the `init` method when the component is mounted.
 
@@ -98,7 +98,7 @@ onMounted(() => {
 
 
 
-# Home page {% #home-page %}
+## Home page {% #home-page %}
 
 Create a new file `src/pages/Home.vue` and add the following stub code to it.
 
@@ -109,7 +109,7 @@ Create a new file `src/pages/Home.vue` and add the following stub code to it.
 </template>
 ```
 
-# Login page {% #login-page %}
+## Login page {% #login-page %}
 
 Finally, we are able to create the login page. Users will be able to login or register from this page, so we'll need to add two buttons.
 

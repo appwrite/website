@@ -1,11 +1,11 @@
 <script>
     import { Button } from '$lib/components/ui';
-    import { classNames } from '$lib/utils/classnames';
+    import { cn } from '$lib/utils/cn';
     import Puzzle from './puzzle.svelte';
 </script>
 
 <div
-    class={classNames(
+    class={cn(
         'grid-bg border-smooth relative box-content flex items-center border-b px-5 py-12 lg:px-8 xl:px-16',
         'before:absolute before:inset-0 before:-z-1 before:bg-linear-to-r before:from-black/32 before:to-transparent'
     )}
@@ -13,7 +13,7 @@
     <div class="container mx-auto grid grid-cols-1 place-items-center gap-16 md:grid-cols-2">
         <div class="flex max-w-lg flex-col gap-8">
             <div class="flex items-center gap-2">
-                <span class="font-aeonik-fono tracking-loose text-micro text-primary uppercase">
+                <span class="font-aeonik-fono tracking-loose text-eyebrow text-primary uppercase">
                     Partners Program<span class="web-u-color-text-accent">_</span>
                 </span>
             </div>

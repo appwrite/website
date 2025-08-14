@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { classNames } from '$lib/utils/classnames';
+    import { cn } from '$lib/utils/cn';
     import type { SvelteHTMLElements } from 'svelte/elements';
 
     type BlockquoteElementProps = SvelteHTMLElements['blockquote'];
@@ -15,7 +15,7 @@
 
 <div class="container mx-auto">
     <blockquote
-        class={classNames(
+        class={cn(
             className,
             '/font-aeonik-pro mx-auto flex w-full max-w-[30rem] flex-col items-center justify-center gap-3 pb-16 text-center'
         )}

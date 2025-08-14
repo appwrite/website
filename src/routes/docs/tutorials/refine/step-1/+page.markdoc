@@ -22,7 +22,7 @@ In this tutorial, you will build admin panel app with Appwrite and [Refine](http
 ![Create project screen](/images/docs/tutorials/refine/refine-admin-panel-light.png)
 {% /only_light %}
 
-# Concepts {% #concepts %}
+## Concepts {% #concepts %}
 
 This tutorial will introduce the following concepts:
 
@@ -33,7 +33,7 @@ This tutorial will introduce the following concepts:
 
 
 
-# Prerequisites {% #prerequisites %}
+## Prerequisites {% #prerequisites %}
 
 1. Basic knowledge of Typescript and React.
 2. Have [Node.js](https://nodejs.org/en) and [NPM](https://www.npmjs.com/) installed on your computer

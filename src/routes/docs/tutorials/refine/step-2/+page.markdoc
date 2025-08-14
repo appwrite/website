@@ -5,7 +5,7 @@ description: Create a Refine app project and integrate with Appwrite.
 step: 2
 ---
 
-# Create Refine project {% #create-react-project %}
+## Create Refine project {% #create-react-project %}
 
 Create a Refine app with the `npm create` command.
 

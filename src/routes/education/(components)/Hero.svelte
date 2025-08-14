@@ -1,5 +1,5 @@
 <script>
-    import { classNames } from '$lib/utils/classnames';
+    import { cn } from '$lib/utils/cn';
     import Logos from './Logos.svelte';
     import ChatIcon from '../(assets)/chat-icon.svg';
     import Beaker from '../(assets)/beaker.svg';
@@ -31,7 +31,7 @@
 </script>
 
 <section
-    class={classNames(
+    class={cn(
         'gridLine horizontal relative mt-8 grid h-full min-h-[50vh] w-full place-items-center md:mt-32 md:grid-cols-[10%_1fr_10%] lg:grid-cols-[20%_1fr_20%] xl:grid-cols-3'
     )}
 >

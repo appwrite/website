@@ -5,7 +5,7 @@ description: Add navigation to your Android application.
 step: 5
 ---
 
-# Creating the MainActivity {% #creating-the-mainactivity %}
+## Creating the MainActivity {% #creating-the-mainactivity %}
 
 To show the new screen, we need to set up our `MainActivity` class. Open `MainActivity.kt` and update it with following code.
 This code sets up our `MainActivity` with a bottom navigation bar, including a **User** screen.
@@ -83,6 +83,6 @@ private fun AppContent(accountService: AccountService) {
 }
 ```
 
-# Test the MainActivity {% #test-the-mainactivity %}
+## Test the MainActivity {% #test-the-mainactivity %}
 
 Launch the app and you should be able to use the Login screen to register, login, and logout. Confirm your email address is displayed once you are logged in.

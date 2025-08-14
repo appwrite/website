@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { classNames } from '$lib/utils/classnames';
+    import { cn } from '$lib/utils/cn';
     import Email from './Email.svelte';
     import Identity from './Identity.svelte';
     import MultiFactor from './MultiFactor.svelte';
@@ -22,7 +22,7 @@
 
 <div class="relative pt-40 pb-32 md:container">
     <div
-        class={classNames(
+        class={cn(
             'relative mx-auto max-h-[50vh] lg:max-w-[85vw] xl:max-w-[75vw]',
             'before:to-greyscale-900 before:absolute before:right-0 before:bottom-0 before:left-0 before:z-0 before:h-[350px] before:bg-gradient-to-b before:from-transparent',
             'after:to-greyscale-900 after:absolute after:right-0 after:bottom-0 after:left-0 after:z-0 after:h-[350px] after:bg-gradient-to-b after:from-transparent'
@@ -52,7 +52,7 @@
             <h2 class="md:text-display text-title text-primary font-aeonik-pro">
                 Customer identity
             </h2>
-            <p class="text-body md:text-description font-medium md:font-normal">
+            <p class="text-main-body md:text-description font-medium md:font-normal">
                 Create a seamless experience for your users by providing various authentication
                 methods for them to identify and login.
             </p>

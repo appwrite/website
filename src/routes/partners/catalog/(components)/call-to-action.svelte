@@ -1,9 +1,9 @@
 <script lang="ts">
-    import { classNames } from '$lib/utils/classnames';
+    import { cn } from '$lib/utils/cn';
 </script>
 
 <div
-    class={classNames(
+    class={cn(
         'border-smooth relative -mb-24 border-t py-32',
         'bg-[url("/images/bgs/building-blocks.webp")] [background-size:50%] bg-right-bottom bg-no-repeat',
         'before:absolute before:top-0 before:left-0 before:z-0 before:block before:h-80 before:w-full before:bg-[radial-gradient(at_25%_0%,_hsla(343,_98%,_60%,_0.05)_0px,_transparent_73%,_transparent_100%)] md:before:w-1/2',
@@ -13,7 +13,7 @@
     <div class="relative container grid grid-cols-1 place-items-center md:grid-cols-2">
         <section class="flex max-w-[540px] flex-col gap-4">
             <h2 class="text-display font-aeonik-pro text-primary">Become an Appwrite Partner</h2>
-            <p class="text-body font-medium">
+            <p class="text-main-body font-medium">
                 Find the perfect partner to bring your project to life. Whether you're building an
                 application, from scratch or seeking ongoing maintenance and support.
             </p>

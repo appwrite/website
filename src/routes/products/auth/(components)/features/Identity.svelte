@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { classNames } from '$lib/utils/classnames';
+    import { cn } from '$lib/utils/cn';
     import fingerprint from '../../(assets)/identity-bg.png';
 
     const columns = 40;
@@ -134,7 +134,7 @@
                     <div
                         data-state="off"
                         data-index={i}
-                        class={classNames(
+                        class={cn(
                             'relative size-[1.5px] rounded-[0.5px] transition-all',
                             'data-[state=high]:bg-white/30 data-[state=medium]:bg-white/20 data-[state=off]:bg-white/10'
                         )}

@@ -20,7 +20,7 @@ This tutorial will show you how to accept payments and provide subscribers with 
 ![Stripe subscription demo](/images/docs/tutorials/subscriptions-with-stripe/stripe.png)
 {% /only_light %}
 
-# Prerequisites {% #prerequisites %}
+## Prerequisites {% #prerequisites %}
 1. A [GitHub account](https://github.com/) and working knowledge with GitHub
 1. A [Stripe account](https://stripe.com/en-ca).
 1. An [Appwrite Cloud account](https://cloud.appwrite.io/).

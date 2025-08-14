@@ -61,7 +61,7 @@ export function createSessionClient(event) {
 }
 ```
 
-# Environment variables {% #environment-variables %}
+## Environment variables {% #environment-variables %}
 
 `APPWRITE_KEY`, `PUBLIC_APPWRITE_ENDPOINT` and `PUBLIC_APPWRITE_PROJECT_ID` are environment variables that are exported in your project's [.env file](https://kit.svelte.dev/docs/modules#$env-dynamic-public).
 

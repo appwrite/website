@@ -5,7 +5,7 @@ description: Add databases and queries to store user data in you Android applica
 step: 6
 ---
 
-# Create collection {% #create-collection %}
+## Create collection {% #create-collection %}
 
 In Appwrite, data is stored as a collection of documents. Create a collection in the [Appwrite Console](https://cloud.appwrite.io/) to store our ideas.
 
@@ -35,7 +35,7 @@ Create a new collection with the following attributes:
 Navigate to the **Settings** tab of your collection, add the role **Any** and check the **Read** box.
 Next, add a **Users** role and give them access to **Create**, **Update** and **Delete** by checking those boxes.
 
-# Add and remove methods {% #add-add-remove-methods %}
+## Add and remove methods {% #add-add-remove-methods %}
 
 Now that you have a collection to hold ideas, we can read and write to it from our app.
 Create a new file `services/IdeasService.kt` and add the following code to it. Replace the values for `ideaDatabaseId` and `ideaCollectionId` with the IDs of the database and collection you created in the previous step.

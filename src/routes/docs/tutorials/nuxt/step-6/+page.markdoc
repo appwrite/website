@@ -34,7 +34,7 @@ Change the collection's permissions in the settings to give access.
 Navigate to the **Settings** tab of your collection, add the role **Any** and check the **Read** box.
 Next, add a **Users** role and give them access to **Create**, **Update** and **Delete** by checking those boxes.
 
-# Environment variables {% #environment-variables %}
+## Environment variables {% #environment-variables %}
 
 Just like when we set up the connection to Appwrite in [step 3](/docs/tutorials/nuxt/step-3), we need to keep the variables with the collection id secret.
 Open the `.env` file and add your database id and your collection id to it.
@@ -44,7 +44,7 @@ VITE_DATABASE_ID="YOUR_DATABASE_ID"
 VITE_COLLECTION_ID="YOUR_COLLECTION_ID"
 ```
 
-# Query methods {% #query-methods %}
+## Query methods {% #query-methods %}
 
 Now that we have a collection in the database to hold ideas, we can connect to it from our app.
 Our users should be able to read, add and remove ideas.

@@ -128,14 +128,14 @@
                 <div class="border-smooth md:border-r md:pr-12 lg:col-span-9">
                     <PostMeta {authorData} {title} {timeToRead} {currentURL} {date} {description} />
                     {#if cover}
-                        <div class="web-media aspect-video">
+                        <div class="web-media my-8! aspect-video">
                             <Media class="block aspect-video object-cover" src={cover} />
                         </div>
                     {/if}
 
-                    <div class="web-article-content text-secondary mt-8 flex flex-col gap-8">
+                    <div class="web-article-content prose prose-large mt-8 flex flex-col gap-8">
                         {#if lastUpdated}
-                            <span class="text-body last-updated-text font-medium">
+                            <span class="text-main-body last-updated-text font-medium">
                                 Updated:
                                 <time dateTime={lastUpdated}>
                                     {formatDate(lastUpdated)}

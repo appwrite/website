@@ -1,6 +1,6 @@
 <script lang="ts">
     import { write } from '$lib/animations';
-    import { classNames } from '$lib/utils/classnames';
+    import { cn } from '$lib/utils/cn';
     import { onDestroy, onMount } from 'svelte';
 
     export let text: string = '';
@@ -24,6 +24,6 @@
     });
 </script>
 
-<span class={classNames('inline-block w-full text-balance', className)}
+<span class={cn('inline-block w-full text-balance', className)}
     >{displayText}<slot name="suffix" /></span
 >

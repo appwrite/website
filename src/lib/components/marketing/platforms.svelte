@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { classNames } from '$lib/utils/classnames';
+    import { cn } from '$lib/utils/cn';
     import Node from './(assets)/icons/node.svg';
     import Javascript from './(assets)/icons/javascript.svg';
     import Flutter from './(assets)/icons/flutter.svg';
@@ -79,7 +79,7 @@
     }: Props = $props();
 </script>
 
-<div class={classNames('border-smooth relative z-10 border-y border-dashed', className)} {...rest}>
+<div class={cn('border-smooth relative z-10 border-y border-dashed', className)} {...rest}>
     <div class="container flex flex-col items-center max-md:pt-4 md:flex-row">
         <GradientText>
             <span class="flex items-center pr-4 text-sm font-medium md:w-full md:max-w-[175px]"
@@ -87,14 +87,14 @@
             >
         </GradientText>
         <div
-            class={classNames(
+            class={cn(
                 'flex w-full flex-nowrap overflow-clip md:overflow-visible',
                 'mask-r-from-75% mask-r-to-99% mask-l-from-75% mask-l-to-99% mask-alpha backdrop-blur-3xl md:mask-none'
             )}
         >
             {#each [1, 2] as _, i}
                 <div
-                    class={classNames(
+                    class={cn(
                         'divide-smooth animate-scroll-x flex w-max flex-1 grow flex-nowrap divide-dashed md:w-full md:[animation:none] md:divide-x md:[animation-play-state:paused]',
                         {
                             'md:hidden': i === 1
@@ -110,7 +110,7 @@
                                         25}ms"
                                 >
                                     <Tooltip.Trigger
-                                        class={classNames(
+                                        class={cn(
                                             'border-smooth group animate-fade-in relative mt-4 flex h-16 w-16 items-center justify-center border-dashed md:mt-0 md:w-full lg:border-r',
                                             {
                                                 'lg:border-l': i === 0
@@ -125,7 +125,7 @@
                                         />
 
                                         <div
-                                            class={classNames(
+                                            class={cn(
                                                 'absolute inset-0 opacity-0 transition-opacity group-hover:opacity-100',
                                                 'bg-gradient-to-tl from-transparent to-transparent',
                                                 'hover:from-(--primary-color,_#fff)/4 hover:to-(--secondary-color,_transparent)/10'
@@ -137,7 +137,7 @@
                                     <Tooltip.Content
                                         sideOffset={8}
                                         side="top"
-                                        class={classNames(
+                                        class={cn(
                                             'text-primary bg-greyscale-900 relative hidden rounded-md border-0! px-2.5 py-1 text-sm md:block',
                                             'data-[state="closed"]:animate-menu-out data-[state="instant-open"]:animate-menu-in data-[state="delayed-open"]:animate-menu-in'
                                         )}

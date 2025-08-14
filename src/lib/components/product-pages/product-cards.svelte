@@ -66,7 +66,7 @@
                     >
                         <div class="flex items-center gap-2">
                             <img src={product.icon} alt="auth" width="32" height="32" />
-                            <h4 class="text-body text-primary">{product.title}</h4>
+                            <h4 class="text-main-body text-primary">{product.title}</h4>
                             <span class="web-icon-arrow-right ml-auto" aria-hidden="true"></span>
                         </div>
                         <p class="text-sub-body">

@@ -19,10 +19,9 @@
 </script>
 
 <script lang="ts">
-    import { type VariantProps } from 'cva';
     import type { Snippet } from 'svelte';
     import type { Action } from 'svelte/action';
-    import { classNames } from '$lib/utils/classnames';
+    import { cn } from '$lib/utils/cn';
     import { trackEvent, type TrackEventArgs } from '$lib/actions/analytics';
     import type { HTMLAnchorAttributes, HTMLButtonAttributes } from 'svelte/elements';
 
@@ -47,7 +46,7 @@
         ...rest
     }: Props = $props();
 
-    const buttonClasses = classNames(button({ variant }), classes);
+    const buttonClasses = cn(button({ variant }), classes);
 </script>
 
 {#if href}

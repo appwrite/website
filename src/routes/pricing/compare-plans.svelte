@@ -4,7 +4,7 @@
     import { visible } from '$lib/actions/visible';
     import { Tooltip } from '$lib/components';
     import { Button } from '$lib/components/ui';
-    import { classNames } from '$lib/utils/classnames';
+    import { cn } from '$lib/utils/cn';
     import { getAppwriteDashboardUrl } from '$lib/utils/dashboard';
     import { getScrollDir } from '$lib/utils/getScrollDir';
     import { createAccordion, melt } from '@melt-ui/svelte';
@@ -571,7 +571,7 @@
                         }}
                     >
                         <h3 class="text-title font-aeonik-pro text-primary">Compare plans</h3>
-                        <p class="text-body mt-4 font-medium">
+                        <p class="text-main-body mt-4 font-medium">
                             Discover our plans and find the one that fits your project’s needs.
                         </p>
                     </header>
@@ -589,7 +589,7 @@
 								--p-secondary-tabs-bg-color-selected: var(--web-color-accent) / 0.08;"
                                 let:tab
                             >
-                                <span class="text-body font-medium capitalize">{tab}</span>
+                                <span class="text-main-body font-medium capitalize">{tab}</span>
                             </TabsList>
                         </Tabs>
                     </div>
@@ -704,7 +704,7 @@
                             }}
                         >
                             <caption
-                                class="web-compare-table-caption text-body text-primary text-left font-medium"
+                                class="web-compare-table-caption text-main-body text-primary text-left font-medium"
                                 use:melt={$heading({ level: 3 })}
                                 style:position={browser ? 'unset' : undefined}
                             >
@@ -739,7 +739,7 @@
                                         </th>
                                         {#each cols as col, index}
                                             <td
-                                                class={classNames(
+                                                class={cn(
                                                     `text-caption flex justify-center font-normal level-${index}`,
                                                     {
                                                         'md:bg-greyscale-100': col === 'pro'

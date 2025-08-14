@@ -71,7 +71,7 @@
             <h2 class="text-title text-primary font-aeonik-pro my-4">
                 Run in your preferred<br /> languages
             </h2>
-            <p class="text-body text-secondary font-medium">
+            <p class="text-main-body text-secondary font-medium">
                 Appwrite Functions support a variety of<br /> languages, ensuring flexibility and<br
                 /> compatibility in your projects.
             </p>

@@ -1,4 +1,4 @@
-<ul class="collapsible w-full" style="--p-toggle-border-color: var(--web-color-border);">
+<ul class="collapsible not-prose w-full" style="--p-toggle-border-color: var(--web-color-border);">
     <slot />
 </ul>
 

@@ -13,7 +13,7 @@
     <a href="/threads/{thread.discord_id}" class="web-card is-normal has-border-gradient thread">
         <div class="flex gap-2">
             <h3
-                class="text-body text-primary font-medium break-words"
+                class="text-main-body text-primary font-medium break-words"
                 use:highlight={highlightTerms}
             >
                 {thread.title}
@@ -42,7 +42,7 @@
                 aria-label="Replies"
             >
                 <span class="web-icon-message web-u-font-size-16" aria-hidden="true"></span>
-                <span class="text-caption font-sans">{thread.message_count}</span>
+                <span class="text-caption font-inter">{thread.message_count}</span>
             </div>
         </div>
     </a>

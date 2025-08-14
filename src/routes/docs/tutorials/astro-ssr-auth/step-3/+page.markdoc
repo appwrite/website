@@ -75,7 +75,7 @@ function parseCookies(cookies) {
 }
 ```
 
-# Environment variables {% #environment-variables %}
+## Environment variables {% #environment-variables %}
 
 `import.meta.env.APPWRITE_KEY`, `import.meta.env.PUBLIC_APPWRITE_ENDPOINT` and `import.meta.env.PUBLIC_APPWRITE_PROJECT` are environment variables that are exported in your project's [.env file](https://kit.Astro.dev/docs/modules#$env-dynamic-public).
 

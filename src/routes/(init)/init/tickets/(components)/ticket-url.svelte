@@ -9,7 +9,7 @@
 </script>
 
 <div
-    class="border-offset font-aeonik-fono tracking-loose text-micro bg-subtle relative z-10 flex h-9 w-full items-center justify-between rounded-xl border p-2 uppercase"
+    class="border-offset font-aeonik-fono tracking-loose text-eyebrow bg-subtle relative z-10 flex h-9 w-full items-center justify-between rounded-xl border p-2 uppercase"
 >
     <svg
         width="20"

@@ -4,7 +4,7 @@ title: Add database
 description: Add a database to your React application using Appwrite Web SDK.
 step: 5
 ---
-# Create collection {% #create-collection %}
+## Create collection {% #create-collection %}
 In Appwrite, data is stored as a collection of documents. Create a collection in the [Appwrite Console](https://cloud.appwrite.io/) to store our ideas.
 
 {% only_dark %}
@@ -20,7 +20,7 @@ Create a new collection with the following attributes:
 | title       | String | Yes      |
 | content     | String | Yes      |
 
-# Connect database to the Refine app {% #blog-context %}
+## Connect database to the Refine app {% #blog-context %}
 
 Now that you have a collection to hold blog post contents, we can read and write to it from our app. 
 

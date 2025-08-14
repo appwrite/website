@@ -7,7 +7,7 @@
     import { onMount, tick } from 'svelte';
     import { page } from '$app/state';
     import { Button, Icon } from '$lib/components/ui';
-    import { classNames } from '$lib/utils/classnames';
+    import { cn } from '$lib/utils/cn';
 
     export let toc: Array<TocItem>;
     export let back: string;
@@ -148,11 +148,11 @@
             </div>
             <div class="web-article-header-end"></div>
         </header>
-        <div class="web-article-content">
+        <div class="web-article-content prose">
             <section class="web-article-content-section">
                 <section class="web-article-content-sub-section">
                     <header class="web-article-content-header">
-                        <span class="web-numeric-badge">{currentStep}</span>
+                        <span class="web-numeric-badge mt-8">{currentStep}</span>
                         <div class="tutorial-heading">
                             <Heading level={1} id={currentStepItem.href} step={currentStep}>
                                 {getCorrectTitle(currentStepItem, 1)}
@@ -160,7 +160,7 @@
                         </div>
                     </header>
 
-                    <div class="web-u-padding-block-start-32" bind:this={slotContent}>
+                    <div class="web-u-padding-block-start-32 prose" bind:this={slotContent}>
                         <slot />
                     </div>
 
@@ -183,7 +183,7 @@
                             <Button
                                 variant="secondary"
                                 href={nextStep.href}
-                                class={classNames({
+                                class={cn({
                                     'ml-auto': prevStep
                                 })}
                             >
@@ -204,7 +204,7 @@
         <aside class="web-references-menu ps-6">
             <div class="web-references-menu-content">
                 <div class="flex items-center justify-between gap-4">
-                    <h5 class="web-references-menu-title text-micro uppercase">Tutorial Steps</h5>
+                    <h5 class="web-references-menu-title text-eyebrow uppercase">Tutorial Steps</h5>
                 </div>
                 <ol class="web-references-menu-list">
                     {#each tutorials as tutorial, index}

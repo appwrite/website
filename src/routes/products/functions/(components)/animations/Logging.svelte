@@ -47,7 +47,7 @@
             </div>
             <div class="bg-greyscale-850 rounded-md p-4">
                 <table class="w-full">
-                    <thead class="text-secondary mt-4 text-left font-mono text-[0.5rem]">
+                    <thead class="text-secondary font-fira-code mt-4 text-left text-[0.5rem]">
                         <tr>
                             {#each ['Timestamp', 'Function', 'Status'] as th}
                                 <th class="pb-2">{th}</th>
@@ -57,7 +57,7 @@
 
                     <tbody>
                         {#each events as event}
-                            <tr class="text-primary font-mono text-[0.5rem]">
+                            <tr class="text-primary font-fira-code text-[0.5rem]">
                                 <td class="py-1">{event.timestamp}</td>
                                 <td class="py-1">{event.name}</td>
                                 <td class="py-1">{event.status}</td>

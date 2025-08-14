@@ -75,7 +75,7 @@
 
 <script lang="ts">
     import { trackEvent } from '$lib/actions/analytics';
-    import { classNames } from '$lib/utils/classnames';
+    import { cn } from '$lib/utils/cn';
     import { createDropdownMenu, melt } from '@melt-ui/svelte';
     import Icon from './ui/icon';
 
@@ -92,7 +92,7 @@
 <svelte:window on:resize={() => open && ($open = false)} />
 
 <button
-    class={classNames(
+    class={cn(
         'text-primary focus:text-accent hover:text-accent inline-flex cursor-pointer items-center justify-between outline-none',
         {
             'text-accent': $open
@@ -103,7 +103,7 @@
     {label}
 
     <span
-        class={classNames('web-icon-chevron-down block transition-transform', {
+        class={cn('web-icon-chevron-down block transition-transform', {
             'rotate-180': $open
         })}
     ></span>
@@ -111,7 +111,7 @@
 
 <div
     use:melt={$menu}
-    class={classNames(
+    class={cn(
         'data-[state=closed]:animate-fade-out data-[state=open]:animate-fade-in relative !left-1/2 z-10 mx-auto mt-6 hidden w-full -translate-x-1/2 flex-col items-center p-0 outline-none [max-inline-size:86.875rem] md:flex'
     )}
 >

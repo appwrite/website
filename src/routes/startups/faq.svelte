@@ -117,7 +117,7 @@
                             use:melt={$content(`${index}`)}
                             transition:slide
                         >
-                            <p class="text-body">
+                            <p class="text-main-body">
                                 <!-- eslint-disable-next-line svelte/no-at-html-tags -->
                                 {@html faqItem.answer}
                             </p>
@@ -136,7 +136,7 @@
                     </summary>
 
                     <div class="collapsible-content">
-                        <p class="text-body">
+                        <p class="text-main-body">
                             <!-- eslint-disable-next-line svelte/no-at-html-tags -->
                             {@html faqItem.answer}
                         </p>

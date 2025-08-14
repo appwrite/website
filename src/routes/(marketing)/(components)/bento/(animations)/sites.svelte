@@ -3,7 +3,7 @@
     import GridPaper from '../../grid-paper.svelte';
     import { animate, hover, inView, stagger, transform } from 'motion';
     import Site from '../../../(assets)/images/site.png';
-    import { classNames } from '$lib/utils/classnames';
+    import { cn } from '$lib/utils/cn';
     import Spinner from '../../spinner.svelte';
     import { unwrite, write } from '$lib/animations';
     import { trackEvent } from '$lib/actions/analytics';
@@ -148,25 +148,25 @@
                 <div class="flex items-center gap-2">
                     <span class="text-caption text-primary"> Deployment logs</span>
                     <span
-                        class="text-micro text-secondary rounded-md bg-white/20 px-1.5 py-0.5 font-light"
+                        class="text-eyebrow text-secondary rounded-md bg-white/20 px-1.5 py-0.5 font-light"
                         >Building</span
                     >
                 </div>
                 <div class="flex items-center gap-2">
                     <Spinner {shouldAnimate} />
-                    <span class="font-mono text-sm">{seconds}s</span>
+                    <span class="font-fira-code text-sm">{seconds}s</span>
                 </div>
             </div>
 
             <div
-                class="text-micro flex flex-col flex-nowrap overflow-hidden rounded-[12px] bg-[#19191C] p-4 font-mono"
+                class="text-eyebrow font-fira-code flex flex-col flex-nowrap overflow-hidden rounded-[12px] bg-[#19191C] p-4"
             >
                 <div class="w-[900px]">
                     {#each text as { timestamp, content }, i}
                         <div class="flex flex-nowrap gap-2">
                             <span class="text-secondary block">{timestamp}</span>
                             <span
-                                class={classNames('text-primary block flex-nowrap', {
+                                class={cn('text-primary block flex-nowrap', {
                                     'text-[#5382CB]': i === 0
                                 })}>{content}</span
                             >

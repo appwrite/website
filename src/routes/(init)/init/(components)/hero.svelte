@@ -2,7 +2,7 @@
     import Spinner from '$lib/components/shared/spinner.svelte';
     import VideoDialog from '$lib/components/shared/dialog.svelte';
     import { Button, Icon } from '$lib/components/ui';
-    import { classNames } from '$lib/utils/classnames';
+    import { cn } from '$lib/utils/cn';
     import { initDates } from '../+page.svelte';
     import LockupImage from '../(assets)/lockup.png';
 
@@ -18,7 +18,7 @@
 </script>
 
 <div
-    class={classNames(
+    class={cn(
         'relative container -mb-10 flex min-h-[50vh] w-full flex-col items-center justify-center gap-8 px-0 py-20 md:min-h-[80vh]',
         'before:border-offset before:absolute before:inset-0 before:z-0 before:border-r-2 before:border-l-2 before:border-dashed',
         'before:[mask-image:linear-gradient(to_top,transparent,black_150px,black_calc(100%_-_150px),black)]'

@@ -5,7 +5,7 @@
     import Storage from '../(assets)/icons/storage.svg';
     import Realtime from '../(assets)/icons/realtime.svg';
     import Messaging from '../(assets)/icons/messaging.svg';
-    import { classNames } from '$lib/utils/classnames';
+    import { cn } from '$lib/utils/cn';
     import { inView } from 'motion';
 
     import AuthSlide from '../(assets)/slides/auth.svg';
@@ -134,7 +134,7 @@
         </div>
     </div>
     <div class="mx-auto flex w-full flex-col gap-16 bg-center md:pl-8">
-        <span class="text-primary text-micro font-aeonik-fono uppercase max-sm:ml-2"
+        <span class="text-primary text-eyebrow font-aeonik-fono uppercase max-sm:ml-2"
             >{eyebrow}<span class="text-accent">_</span></span
         >
         <div
@@ -143,7 +143,7 @@
             <!-- left side -->
             <div class="col-span-3 mb-8 w-full">
                 <div
-                    class="text-body flex items-center gap-2 font-medium text-white max-sm:justify-center md:flex-col md:items-end md:gap-8 lg:gap-12"
+                    class="text-main-body flex items-center gap-2 font-medium text-white max-sm:justify-center md:flex-col md:items-end md:gap-8 lg:gap-12"
                 >
                     {#each products.slice(0, 3) as product, index}
                         {@const isActive = index === activeIndex}
@@ -151,7 +151,7 @@
                             class="group relative ml-0 flex w-fit items-center md:mr-auto md:w-full"
                         >
                             <button
-                                class={classNames(
+                                class={cn(
                                     'bg-card border-smooth md:text-caption flex cursor-pointer items-center gap-2 rounded-xl border py-2 pr-4 pl-3 text-sm backdrop-blur-md transition-all hover:bg-white/8 md:mr-[100px] md:ml-auto',
                                     {
                                         'bg-accent/12 border-accent/36 md:border-smooth md:bg-card':
@@ -171,7 +171,7 @@
                                 {product.label}
                             </button>
                             <div
-                                class={classNames('absolute right-0 hidden md:block', {
+                                class={cn('absolute right-0 hidden md:block', {
                                     'top-1/2': index === 0,
                                     'bottom-1/2': index === 2
                                 })}
@@ -210,7 +210,7 @@
                                     {@const isActive = i === activeIndex}
                                     <img
                                         src={product.image}
-                                        class={classNames(
+                                        class={cn(
                                             'absolute inset-0 h-full w-full rounded-2xl object-cover transition-all duration-500 ease-out',
                                             'scale-102 opacity-0 blur-md',
                                             {
@@ -230,7 +230,7 @@
             <!-- right side -->
             <div class="col-span-3 mt-8 w-full md:mt-0">
                 <div
-                    class="text-body flex gap-2 font-medium text-white max-sm:justify-center md:flex-col md:gap-8 lg:gap-12"
+                    class="text-main-body flex gap-2 font-medium text-white max-sm:justify-center md:flex-col md:gap-8 lg:gap-12"
                 >
                     {#each products.slice(3) as product, i}
                         {@const index = i + 3}
@@ -239,7 +239,7 @@
                             class="group relative mr-0 flex w-fit items-center md:ml-auto md:w-full"
                         >
                             <button
-                                class={classNames(
+                                class={cn(
                                     'bg-card border-smooth md:text-caption flex cursor-pointer items-center gap-2 rounded-xl border py-2 pr-4 pl-3 text-sm backdrop-blur-md transition-all hover:bg-white/8 md:mr-auto md:ml-[100px]',
                                     {
                                         'bg-accent/12 border-accent/36 md:border-smooth md:bg-card':
@@ -260,7 +260,7 @@
                                 {product.label}
                             </button>
                             <div
-                                class={classNames('absolute left-0 hidden md:block', {
+                                class={cn('absolute left-0 hidden md:block', {
                                     'top-1/2': i === 0,
                                     'bottom-1/2': i === 2
                                 })}

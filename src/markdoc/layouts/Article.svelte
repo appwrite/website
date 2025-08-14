@@ -8,7 +8,7 @@
                 title: string;
                 step?: number;
                 visible: boolean;
-                level?: number;
+                level: number;
             }
         >
     >;

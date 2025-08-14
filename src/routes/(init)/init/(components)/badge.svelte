@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { classNames } from '$lib/utils/classnames';
+    import { cn } from '$lib/utils/cn';
     import type { Snippet } from 'svelte';
 
     interface Props {
@@ -11,8 +11,8 @@
 </script>
 
 <span
-    class={classNames(
-        'font-aeonik-fono text-micro text-primary rounded-full bg-black px-1.5 py-1 uppercase outline-2 [outline-offset:-1px] outline-[var(--color-offset)] outline-dashed',
+    class={cn(
+        'font-aeonik-fono text-eyebrow text-primary rounded-full bg-black px-1.5 py-1 uppercase outline-2 [outline-offset:-1px] outline-[var(--color-offset)] outline-dashed',
         className
     )}
 >

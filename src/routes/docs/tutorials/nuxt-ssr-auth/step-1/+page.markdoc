@@ -13,7 +13,7 @@ category: Auth
 Appwrite takes away the stress of building and maintaining a backend. Appwrite helps implement authentication, databases, file storage, and respond to real-time events with **secure** APIs out of the box. 
 This tutorials shows how Appwrite can help you add authentication to your Nuxt app using server-side rendering (SSR).
 
-# Before you start {% #before-you-start %}
+## Before you start {% #before-you-start %}
 
 Before following this tutorial, have the following prepared:
 

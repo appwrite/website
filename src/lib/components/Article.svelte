@@ -25,7 +25,7 @@
                 {title}
             </h4>
             <div class="flex w-full">
-                <div class="text-micro flex w-full flex-col items-center xl:flex-row xl:gap-2">
+                <div class="flex w-full flex-col items-center text-[0.75rem] xl:flex-row xl:gap-2">
                     <div class="flex items-center justify-center gap-2">
                         <img class="size-5 rounded-full" loading="lazy" src={avatar} alt={author} />
                         <h4 class="text-primary">{author}</h4>

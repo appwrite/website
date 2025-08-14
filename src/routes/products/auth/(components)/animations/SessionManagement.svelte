@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { classNames } from '$lib/utils/classnames';
+    import { cn } from '$lib/utils/cn';
 
     import Chrome from '../../(assets)/chrome.svg';
     import Safari from '../../(assets)/safari.svg';
@@ -43,14 +43,15 @@
                         <span class="font-aeonik-pro text-[18px] font-light text-white"
                             >Walter O'Brien</span
                         >
-                        <span class="bg-greyscale-700/60 rounded-full px-2 py-1 font-mono text-xs"
+                        <span
+                            class="bg-greyscale-700/60 font-fira-code rounded-full px-2 py-1 text-xs"
                             >637a40ba7</span
                         >
                     </div>
                     <nav class="relative z-10 mt-4 -mb-[17px] flex items-center gap-4 pl-1 text-xs">
                         {#each ['Overview', 'Memberships', 'Sessions', 'Activity'] as heading, i}
                             <button
-                                class={classNames('border-b border-transparent pb-2', {
+                                class={cn('border-b border-transparent pb-2', {
                                     ' border-white/40': i === 2
                                 })}>{heading}</button
                             >
@@ -63,7 +64,9 @@
                             class="border-y-greyscale-600/40 flex justify-between gap-8 border-b px-6 py-4"
                         >
                             {#each ['Client', 'Location'] as heading}
-                                <span class="basis-1/2 font-mono text-xs uppercase">{heading}</span>
+                                <span class="font-fira-code basis-1/2 text-xs uppercase"
+                                    >{heading}</span
+                                >
                             {/each}
                         </div>
                         <div class="divide-greyscale-600/40 flex flex-1 flex-col divide-y">
@@ -73,7 +76,7 @@
                                 >
                                     <div class="flex h-8 basis-2/3 items-center gap-2 text-left">
                                         <img src={data.icon} alt={data.device} class="size-8" />
-                                        <span class="font-sans">{data.device}</span>
+                                        <span class="font-inter">{data.device}</span>
                                     </div>
                                     <div class="basis-1/2">
                                         {data.location}

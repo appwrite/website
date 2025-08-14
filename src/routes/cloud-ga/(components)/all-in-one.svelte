@@ -6,7 +6,7 @@
     import Realtime from '../(assets)/icons/realtime.svg';
     import Messaging from '../(assets)/icons/messaging.svg';
     import Sites from '../(assets)/icons/sites.svg';
-    import { classNames } from '$lib/utils/classnames';
+    import { cn } from '$lib/utils/cn';
 
     import AuthSlide from '../(assets)/slides/auth.svg';
     import DatabasesSlide from '../(assets)/slides/databases.svg';
@@ -166,7 +166,7 @@
                             class="col-span-3 mb-8 hidden w-fit justify-center lg:block lg:translate-x-6"
                         >
                             <div
-                                class="text-body flex items-center gap-2 font-medium text-white max-sm:justify-center lg:flex-col lg:items-end lg:gap-12"
+                                class="text-main-body flex items-center gap-2 font-medium text-white max-sm:justify-center lg:flex-col lg:items-end lg:gap-12"
                             >
                                 {#each products.slice(0, 4) as product, index}
                                     {@const isActive = index === activeIndex}
@@ -174,7 +174,7 @@
                                         class="group relative ml-0 flex w-fit items-center md:mr-auto md:w-full"
                                     >
                                         <button
-                                            class={classNames(
+                                            class={cn(
                                                 'bg-card border-smooth md:text-caption flex w-fit items-center gap-2 rounded-xl border py-2 pr-4 pl-3 text-sm backdrop-blur-md transition-all md:ml-auto lg:mr-[100px]',
                                                 {
                                                     'bg-accent/12 border-accent/36 md:border-smooth md:bg-card':
@@ -194,7 +194,7 @@
                                             {product.label}
                                         </button>
                                         <div
-                                            class={classNames(
+                                            class={cn(
                                                 'absolute right-0 bottom-1/2 hidden lg:block',
                                                 {
                                                     'top-1/2': index < 2,
@@ -240,7 +240,7 @@
                                                 {@const isActive = i === activeIndex}
                                                 <img
                                                     src={product.image}
-                                                    class={classNames(
+                                                    class={cn(
                                                         'absolute inset-0 h-full w-full rounded-2xl object-cover transition-all duration-500 ease-out',
                                                         'scale-102 opacity-0 blur-md',
                                                         {
@@ -262,7 +262,7 @@
                         <!-- right side -->
                         <div class="col-span-3 mt-8 hidden w-full lg:mt-0 lg:block">
                             <div
-                                class="text-body flex gap-2 font-medium text-white lg:flex-col lg:justify-center lg:gap-12"
+                                class="text-main-body flex gap-2 font-medium text-white lg:flex-col lg:justify-center lg:gap-12"
                             >
                                 {#each products.slice(4) as product, i}
                                     {@const index = i + 4}
@@ -271,7 +271,7 @@
                                         class="group relative mr-0 flex items-center md:w-full lg:ml-auto"
                                     >
                                         <button
-                                            class={classNames(
+                                            class={cn(
                                                 'bg-card border-smooth md:text-caption flex items-center gap-2 rounded-xl border py-2 pr-4 pl-3 text-sm backdrop-blur-md transition-all md:mr-auto lg:ml-[100px]',
                                                 {
                                                     'bg-accent/12 border-accent/36 md:border-smooth md:bg-card':
@@ -292,7 +292,7 @@
                                             {product.label}
                                         </button>
                                         <div
-                                            class={classNames('absolute left-0 hidden lg:block', {
+                                            class={cn('absolute left-0 hidden lg:block', {
                                                 'top-1/2': i === 0,
                                                 'bottom-1/2': i === 2
                                             })}
@@ -306,7 +306,7 @@
 
                         <!-- mobile -->
                         <div
-                            class="text-body flex flex-wrap items-center justify-center gap-2 font-medium text-white lg:hidden"
+                            class="text-main-body flex flex-wrap items-center justify-center gap-2 font-medium text-white lg:hidden"
                         >
                             {#each products as product, index}
                                 {@const isActive = index === activeIndex}
@@ -314,7 +314,7 @@
                                     class="group relative ml-0 flex basis-[calc(50%_-_4px)] items-center md:basis-[calc(33%_-_4px)]"
                                 >
                                     <button
-                                        class={classNames(
+                                        class={cn(
                                             'bg-card border-smooth md:text-caption flex w-full cursor-pointer items-center justify-center gap-2 rounded-xl border py-2 pr-4 pl-3 text-sm backdrop-blur-md transition-all md:ml-auto',
                                             {
                                                 'bg-accent/12 border-accent/36 md:border-smooth md:bg-card':
@@ -334,13 +334,10 @@
                                         {product.label}
                                     </button>
                                     <div
-                                        class={classNames(
-                                            'absolute right-0 bottom-1/2 hidden lg:block',
-                                            {
-                                                'top-1/2': index < 2,
-                                                'bottom-1/2': index > 2
-                                            }
-                                        )}
+                                        class={cn('absolute right-0 bottom-1/2 hidden lg:block', {
+                                            'top-1/2': index < 2,
+                                            'bottom-1/2': index > 2
+                                        })}
                                     >
                                         {@html product.line(isActive)}
                                     </div>

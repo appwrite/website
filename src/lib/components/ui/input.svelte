@@ -1,7 +1,7 @@
 <!-- @migration-task Error while migrating Svelte code: migrating this component would require adding a `$props` rune but there's already a variable named props.
      Rename the variable and try again or migrate by hand. -->
 <script lang="ts">
-    import { classNames } from '$lib/utils/classnames';
+    import { cn } from '$lib/utils/cn';
     import type { Snippet } from 'svelte';
     import type { HTMLInputAttributes } from 'svelte/elements';
 
@@ -23,7 +23,7 @@
 
 {#if icon}
     <label
-        class={classNames(
+        class={cn(
             'focus:border-greyscale-100 bg-greyscale-800 border-greyscale-700 flex items-center gap-1 rounded-lg border px-3 py-2 text-sm font-light transition-colors focus-within:border-white active:shadow-sm active:shadow-black/30',
             classes
         )}
@@ -50,7 +50,7 @@
             {name}
             {...{ type }}
             bind:value
-            class={classNames(
+            class={cn(
                 'focus:border-greyscale-100 bg-greyscale-800 border-greyscale-700 mt-2 flex w-full items-center gap-1 rounded-lg border px-3 py-2 text-sm font-light transition-colors focus-within:border-white active:shadow-sm active:shadow-black/30',
                 classes
             )}

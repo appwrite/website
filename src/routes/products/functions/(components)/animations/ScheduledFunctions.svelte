@@ -53,7 +53,7 @@
                 >
                     <span>5</span>
                 </div>
-                <span class="text-center font-mono text-[0.625rem]">Minute</span>
+                <span class="font-fira-code text-center text-[0.625rem]">Minute</span>
             </div>
             <div class="flex flex-col gap-1">
                 <div
@@ -61,7 +61,7 @@
                 >
                     <span class="block pt-[10px]">*</span>
                 </div>
-                <span class="text-center font-mono text-[0.625rem]">Hour</span>
+                <span class="font-fira-code text-center text-[0.625rem]">Hour</span>
             </div>
             <div class="flex flex-col gap-1">
                 <div
@@ -69,7 +69,7 @@
                 >
                     <span class="block pt-[10px]">*</span>
                 </div>
-                <span class="text-center font-mono text-[0.625rem]">Day <br /> (month)</span>
+                <span class="font-fira-code text-center text-[0.625rem]">Day <br /> (month)</span>
             </div>
             <div class="flex flex-col gap-1">
                 <div
@@ -77,7 +77,7 @@
                 >
                     <span class="h-[20px] w-px bg-white"></span>
                 </div>
-                <span class="text-center font-mono text-[0.625rem]">Month</span>
+                <span class="font-fira-code text-center text-[0.625rem]">Month</span>
             </div>
             <div class="flex flex-col gap-1">
                 <div
@@ -85,7 +85,7 @@
                 >
                     <span class="block pt-[10px]">*</span>
                 </div>
-                <span class="text-center font-mono text-[0.625rem]">Day <br /> (week)</span>
+                <span class="font-fira-code text-center text-[0.625rem]">Day <br /> (week)</span>
             </div>
         </div>
     </div>

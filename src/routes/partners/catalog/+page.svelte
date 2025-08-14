@@ -11,7 +11,7 @@
     import { goto } from '$app/navigation';
     import { onDestroy, onMount } from 'svelte';
     import { browser } from '$app/environment';
-    import { classNames } from '$lib/utils/classnames';
+    import { cn } from '$lib/utils/cn';
 
     import { page } from '$app/state';
     import Hero from './(components)/hero.svelte';
@@ -108,7 +108,7 @@
                         <section class="flex flex-col">
                             <section class="flex flex-col gap-4">
                                 <h2
-                                    class="web-side-nav-header text-micro whitespace-nowrap uppercase"
+                                    class="web-side-nav-header text-eyebrow whitespace-nowrap uppercase"
                                 >
                                     Platform
                                 </h2>
@@ -116,7 +116,7 @@
                                     {#each platforms as platform}
                                         <li>
                                             <button
-                                                class={classNames(
+                                                class={cn(
                                                     'tag bg-greyscale-800 border-greyscale-700 h-8 cursor-pointer rounded-full border px-3 text-sm font-light',
                                                     {
                                                         'bg-white text-black':
@@ -134,7 +134,7 @@
                             <div class="web-u-sep-block-start my-6"></div>
                             <section class="flex flex-col gap-4">
                                 <h2
-                                    class="web-side-nav-header text-micro whitespace-nowrap uppercase"
+                                    class="web-side-nav-header text-eyebrow whitespace-nowrap uppercase"
                                 >
                                     Categories
                                 </h2>
@@ -272,7 +272,7 @@
                                                                 height="40"
                                                             />
                                                             <div
-                                                                class="text-body gap-2 font-medium"
+                                                                class="text-main-body gap-2 font-medium"
                                                             >
                                                                 <span class="text-primary mt-3">
                                                                     {item.integration.title}

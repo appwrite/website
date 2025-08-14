@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { classNames } from '$lib/utils/classnames';
+    import { cn } from '$lib/utils/cn';
     import Image from '../../../(assets)/images/storage.webp';
     import { animate, hover, inView, type AnimationSequence } from 'motion';
     import GridPaper from '../../grid-paper.svelte';
@@ -85,7 +85,7 @@
         <div class="relative h-fit border border-white/50 p-1">
             {#each [1, 2, 3, 4] as _, i}
                 <div
-                    class={classNames(
+                    class={cn(
                         'absolute z-10 flex h-1 w-1 items-center justify-center border border-white/24 bg-white/24 backdrop-blur-sm',
                         {
                             '-left-0.5': i === 0 || i === 2,

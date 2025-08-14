@@ -167,7 +167,7 @@
                             <h2 class="web-title text-primary">
                                 What you can do with Storage APIs
                             </h2>
-                            <p class="text-body font-medium">
+                            <p class="text-main-body font-medium">
                                 Appwrite's Storage APIs allow you to create and update your files,
                                 apply image transformations, and more.
                             </p>
