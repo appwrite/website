@@ -41,7 +41,7 @@
             {title}
         </h1>
         {#if description}
-            <p class="text-description text-secondary mt-2">
+            <p class="text-description text-secondary font-medium">
                 {description}
             </p>
         {/if}
