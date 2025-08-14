@@ -34,7 +34,10 @@ class AccountService(client: Client) {
 
     suspend fun login(email: String, password: String): User<Map<String, Any>>? {
         return try {
-            account.createEmailPasswordSession(email, password)
+            account.createEmailPasswordSession({
+                email: email,
+                password: password
+            })
             getLoggedIn()
         } catch (e: AppwriteException) {
             null
@@ -43,7 +46,11 @@ class AccountService(client: Client) {
 
     suspend fun register(email: String, password: String): User<Map<String, Any>>? {
         return try {
-            account.create(ID.unique(), email, password)
+            account.create({
+                userId: ID.unique(),
+                email: email,
+                password: password
+            })
             login(email, password)
         } catch (e: AppwriteException) {
             null
@@ -66,7 +73,7 @@ object Appwrite {
     private const val PROJECT_ID = "<PROJECT_ID>"
 
     private lateinit var client: Client
-    
+
     // Add this line 👇
     internal lateinit var account: AccountService
 

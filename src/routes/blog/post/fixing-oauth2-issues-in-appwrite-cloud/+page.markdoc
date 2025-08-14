@@ -76,7 +76,10 @@ const signInWithGoogle = () => {
 const handleCallback = async (userId, secret) => {
   try {
     // Create a session using the OAuth2 token
-    await account.createSession(userId, secret)
+    await account.createSession({
+      userId,
+      secret
+    })
 
     // Get the user data
     const user = await account.get()

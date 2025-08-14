@@ -83,7 +83,12 @@ const client = new Client()
 
 const account = new Account(client);
 
-account.createOAuth2Session(OAuthProvider.Apple, '[LINK_ON_SUCCESS]', '[LINK_ON_FAILURE]', true);
+account.createOAuth2Session({
+    provider: OAuthProvider.Google,
+    success: 'https://cloud.appwrite.io/console',
+    failure: 'https://cloud.appwrite.io/login',
+    scopes: ['email', 'profile']
+});
 ```
 
 # Resources

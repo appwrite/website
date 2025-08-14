@@ -36,8 +36,16 @@ For signup, you can copy the login `+page.js` and `+page.svelte` files into `src
 		}
 
 		try {
-			await appwrite.account.create(ID.unique(), email, password, name);
-			await appwrite.account.createEmailPasswordSession(email, password);
+			await appwrite.account.create({
+				userId: ID.unique(),
+				email,
+				password,
+				name
+			});
+			await appwrite.account.createEmailPasswordSession({
+				email,
+				password
+			});
 			await invalidateAll();
 		} catch (e) {
 			formError = /** @type {import('appwrite').AppwriteException} */ (e).message;

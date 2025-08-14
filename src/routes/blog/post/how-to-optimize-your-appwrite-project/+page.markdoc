@@ -25,11 +25,11 @@ In Appwrite, fetching multiple documents from a database is made easy with the [
 For example, in a content management system where you need to load blog posts written by a particular author, rather than making individual requests for each document, use Appwrite's `listDocuments` method with a filter:
 
 ```javascript
-const blogPosts = await databases.listDocuments(
-  '<DATABASE_ID>',
-  '<COLLECTION_ID>',
-  [Query.equal('author', 'Michael Scott')],
-)
+const blogPosts = await databases.listDocuments({
+  databaseId: '<DATABASE_ID>',
+  collectionId: '<COLLECTION_ID>',
+  queries: [Query.equal('author', 'Michael Scott')]
+})
 ```
 
 By fetching all the documents you need in one go and applying filters, you reduce the number of requests and improve performance. However, as we'll see in the next section, you should use the `listDocuments` method carefully to avoid fetching unnecessary data, else you might end up with a large dataset that could slow down your application.
@@ -41,25 +41,27 @@ For applications with large datasets (e.g., e-commerce platforms with thousands 
 For example, if you're loading products from a database, instead of fetching all products, fetch them in batches using pagination.
 
 ```javascript
-const firstPage = await databases.listDocuments(
-  '<DATABASE_ID>',
-  '<COLLECTION_ID>',
-  [
+```javascript
+const firstPage = await databases.listDocuments({
+  databaseId: '<DATABASE_ID>',
+  collectionId: '<COLLECTION_ID>',
+  queries: [
     Query.equal('author', 'Meredith Palmer'),
     Query.limit(20),
     Query.offset(0),// Fetch the first 20 records
-  ],
-)
+  ]
+})
 
-const secondPage = await databases.listDocuments(
-  '<DATABASE_ID>',
-  '<COLLECTION_ID>',
-  [
-    Query.equal('author', 'JaneDoe'),
+const secondPage = await databases.listDocuments({
+  databaseId: '<DATABASE_ID>',
+  collectionId: '<COLLECTION_ID>',
+  queries: [
+    Query.equal('author', 'Meredith Palmer'),
     Query.limit(20),
-    Query.offset(20),// Fetch the next 20 records
-  ],
-)
+    Query.offset(20), // Fetch the next 20 records
+  ]
+})
+```
 ```
 
 This strategy will not only conserve bandwidth but will ensure that your queries return faster results, improving your user experience.
@@ -158,9 +160,11 @@ One of the most important optimizations for file storage is **bucket compression
 To enable compression for a bucket, you can set this up via the Appwrite Console or programmatically using the SDK:
 
 ```javascript
-const promise = storage.createBucket('bucketId', 'bucketName', {
-  compression: 'zstd',
-})
+const promise = storage.createBucket({
+  bucketId: 'bucketId',
+  name: 'bucketName',
+  compression: 'zstd'
+});
 ```
 
 Keep in mind that files larger than **20MB** are not compressed, even if compression is enabled. This is done to prevent performance bottlenecks when handling large files. Enabling compression at the bucket level not only helps reduce storage usage but also speeds up file transfers by reducing the amount of data sent over the network.
@@ -171,21 +175,14 @@ Appwrite allows you to serve compressed and optimized versions of your images to
 
 ```javascript
 // Serve an optimized image preview
-const optimizedImage = storage.getFilePreview(
-  'bucketId', // The bucket ID where the file is stored
-  'fileId',   // The file ID of the uploaded image
-  800,        // Resize the width to 800px
-  0,          // Keep the original height (aspect ratio preserved)
-  'center',   // Crop the image centered if cropping is needed
-  80,         // Set image quality to 80%
-  0,          // No border
-  '',         // No border color
-  0,          // No border radius
-  1,          // Full opacity
-  0,          // No rotation
-  '',         // No background color
-  'webp',     // Convert the image to WebP format for better compression
-)
+const optimizedImage = storage.getFilePreview({
+  bucketId: 'bucketId',
+  fileId: 'fileId',
+  width: 800,
+  gravity: 'center',
+  quality: 80,
+  output: 'webp'
+})
 ```
 
 While this example shows how to serve an optimized image preview, and will greatly improve load times, it will not affect the original file size in your storage. So if you want to save storage space, consider compressing and optimizing files at the time of upload. A good practice for image optimization is to use formats like `WebP`, which offer better compression than JPEG or PNG.

@@ -160,7 +160,10 @@ app.post('/login', async (req, res) => {
 
     try {
         // Create the session using the Appwrite client
-        const session = await account.createEmailPasswordSession(email, password);
+        const session = await account.createEmailPasswordSession({
+            email,
+            password
+        });
 
         // Set the session cookie
         res.cookie('a_session_<PROJECT_ID>', session.secret, { // use the session secret as the cookie value
@@ -222,18 +225,18 @@ def login():
 
     try:
         account = Account(admin_client)
-        
+
         # Create the session using the Appwrite client
         session = account.create_email_password_session(email, password)
         resp = make_response(jsonify({'success': True}))
 
         # Set the session cookie
-        resp.set_cookie('a_session_<PROJECT_ID>', 
-                        session['secret'], 
-                        httponly=True, 
-                        secure=True, 
-                        samesite='Strict', 
-                        expires=session['expire'], 
+        resp.set_cookie('a_session_<PROJECT_ID>',
+                        session['secret'],
+                        httponly=True,
+                        secure=True,
+                        samesite='Strict',
+                        expires=session['expire'],
                         path='/'
                     )
         return resp
@@ -316,7 +319,7 @@ def get_user():
     # If the session cookie is not present, return an error
     if not session:
         return jsonify({'success': False, 'error': 'Unauthorized'}), 401
-    
+
     # pass the session cookie to the Appwrite client
     session_client.set_session(session)
     account = Account(session_client)
@@ -522,7 +525,10 @@ app.get('/oauth/success', async (req, res) => {
 
     try {
         // Create the session using the Appwrite client
-        const session = await account.createSession(userId, secret);
+        const session = await account.createSession({
+            userId,
+            secret
+        });
 
         // Set the session cookie
         res.cookie('a_session_<PROJECT_ID>', session.secret, { // Use the session secret as the cookie value
@@ -585,10 +591,10 @@ def oauth_success():
     try:
         # Create the session using the Appwrite client
         session = account.create_session(user_id, secret)
-        
+
         # Set the session cookie
         res = make_response(jsonify({'success': True}))
-        
+
         #  Set session cookie
         res.set_cookie(
             'a_session_<PROJECT_ID>',
