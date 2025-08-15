@@ -22,7 +22,9 @@
     import Noise from '$lib/components/fancy/noise.svelte';
     import { Tooltip } from 'bits-ui';
     import { trackEvent } from '$lib/actions/analytics';
-    import { themeInUse } from '$routes/+layout.svelte';
+    import { useTheme } from 'sveltekit-themes';
+
+    const theme = useTheme();
 
     const platforms = [
         {
@@ -154,7 +156,7 @@
                                                 )}
                                         >
                                             <img
-                                                src={$themeInUse === 'light' && platform.light
+                                                src={theme.current === 'light' && platform.light
                                                     ? platform.light
                                                     : platform.dark}
                                                 alt={platform.name}

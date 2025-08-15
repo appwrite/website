@@ -1,47 +1,6 @@
 <script lang="ts" context="module">
     import { type Reo, loadReoScript } from '$lib/reodotdev';
     import { derived, writable } from 'svelte/store';
-
-    export type Theme = 'dark' | 'light' | 'system';
-    export const currentTheme = (() => {
-        const store = writable<Theme>(getPreferredTheme());
-
-        const set: typeof store.set = (value) => {
-            store.set(value);
-            if (browser) {
-                localStorage.setItem('theme', value);
-                document.documentElement.style.setProperty('color-scheme', value);
-            }
-        };
-
-        return { ...store, set };
-    })();
-
-    export const themeInUse = derived(currentTheme, (theme) => {
-        return theme === 'system' ? getSystemTheme() : theme;
-    });
-
-    function isTheme(theme: unknown): theme is Theme {
-        return ['dark', 'light', 'system'].includes(theme as Theme);
-    }
-
-    function getSystemTheme(): Theme {
-        return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-    }
-
-    function getPreferredTheme() {
-        if (!browser) {
-            return 'dark';
-        }
-
-        const theme = localStorage.getItem('theme');
-
-        if (!isTheme(theme)) {
-            return 'dark';
-        }
-
-        return theme;
-    }
 </script>
 
 <script lang="ts">
@@ -51,22 +10,15 @@
 
     import { browser, dev } from '$app/environment';
     import { page } from '$app/state';
-    import { navigating, updated } from '$app/stores';
+    import { updated } from '$app/stores';
     import { onMount } from 'svelte';
     import { loggedIn } from '$lib/utils/console';
     import { beforeNavigate } from '$app/navigation';
     import { trackEvent } from '$lib/actions/analytics';
     import { saveReferrerAndUtmSource } from '$lib/utils/utm';
     import { Sprite } from '$lib/components/ui/icon/sprite';
-    import { setTheme, ThemeProvider } from '$lib/providers/theme';
     import { displayHiringMessage } from '$lib/utils/console';
-
-    function applyTheme(theme: Theme) {
-        const resolvedTheme = theme === 'system' ? getSystemTheme() : theme;
-        const className = `${resolvedTheme}`;
-        document.body.classList.remove('dark', 'light');
-        document.body.classList.add(className);
-    }
+    import { ThemeProvider } from 'sveltekit-themes';
 
     const thresholds = [0.25, 0.5, 0.75];
     const tracked = new Set();
@@ -74,26 +26,6 @@
     onMount(() => {
         displayHiringMessage();
         saveReferrerAndUtmSource(page.url);
-
-        const initialTheme = page.route.id?.startsWith('/docs') ? getPreferredTheme() : 'dark';
-
-        applyTheme(initialTheme);
-
-        navigating.subscribe((n) => {
-            if (!n?.to) {
-                return;
-            }
-
-            const isDocs = n.to.route.id?.startsWith('/docs');
-
-            if (isDocs) {
-                if (!document.body.classList.contains(`${$currentTheme}`)) {
-                    applyTheme($currentTheme);
-                }
-            } else {
-                applyTheme('dark');
-            }
-        });
 
         saveReferrerAndUtmSource(page.url);
     });
@@ -109,7 +41,6 @@
         }
     });
 
-    $: if (browser) currentTheme.subscribe((theme) => applyTheme(theme));
     $: if (browser && $loggedIn) {
         document.body.dataset.loggedIn = '';
     }
@@ -173,9 +104,10 @@
     href="#main">Skip to content</a
 >
 
-<slot />
-<ThemeProvider />
-<Sprite />
+<ThemeProvider attribute="class">
+    <slot />
+    <Sprite />
+</ThemeProvider>
 
 <style lang="scss">
     :global(html) {
