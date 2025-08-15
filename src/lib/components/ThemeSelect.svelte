@@ -1,8 +1,10 @@
 <script lang="ts">
-    import { type Theme, currentTheme } from '$routes/+layout.svelte';
     import Select, { type SelectOption } from './Select.svelte';
+    import { useTheme } from 'sveltekit-themes';
 
-    const options: SelectOption<Theme>[] = [
+    const theme = useTheme();
+
+    const options: SelectOption<'light' | 'dark' | 'system'>[] = [
         {
             value: 'dark',
             label: 'Dark',
@@ -21,4 +23,10 @@
     ];
 </script>
 
-<Select {options} bind:value={$currentTheme} placement="top" />
+<select onchange={(e) => theme.set(e.currentTarget.value)} value={theme.current}>
+    <option value="light"> Light Theme </option>
+    <option value="dark"> Dark Theme </option>
+    <option value="system"> System Theme </option>
+</select>
+
+<Select {options} value={theme.current} placement="top" />

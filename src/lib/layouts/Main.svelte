@@ -26,24 +26,24 @@
     export let omitMainId = false;
     let theme: 'light' | 'dark' | null = 'dark';
 
-    function setupThemeObserver() {
-        const handleVisibility = () => {
-            theme = getVisibleTheme();
-        };
+    // function setupThemeObserver() {
+    //     const handleVisibility = () => {
+    //         theme = getVisibleTheme();
+    //     };
 
-        const observer = new MutationObserver(handleVisibility);
-        observer.observe(document.body, { childList: true, subtree: true });
+    //     const observer = new MutationObserver(handleVisibility);
+    //     observer.observe(document.body, { childList: true, subtree: true });
 
-        const callbacks = [
-            addEventListener(window, 'scroll', handleVisibility),
-            addEventListener(window, 'resize', handleVisibility)
-        ];
+    //     const callbacks = [
+    //         addEventListener(window, 'scroll', handleVisibility),
+    //         addEventListener(window, 'resize', handleVisibility)
+    //     ];
 
-        return () => {
-            observer.disconnect();
-            callbacks.forEach((callback) => callback());
-        };
-    }
+    //     return () => {
+    //         observer.disconnect();
+    //         callbacks.forEach((callback) => callback());
+    //     };
+    // }
 
     function isInViewport(element: Element): boolean {
         const mobileHeader = document.querySelector('.aw-mobile-header');
@@ -66,35 +66,35 @@
         });
     }
 
-    function getVisibleTheme() {
-        const themes = Array.from(document.querySelectorAll('.dark, .light')).filter((element) => {
-            const { classList, dataset } = element as HTMLElement;
-            if (
-                classList.contains('web-mobile-header') ||
-                classList.contains('web-main-header') ||
-                element === document.body ||
-                typeof dataset['themeIgnore'] === 'string'
-            ) {
-                return false;
-            }
-            return true;
-        });
+    // function getVisibleTheme() {
+    //     const themes = Array.from(document.querySelectorAll('.dark, .light')).filter((element) => {
+    //         const { classList, dataset } = element as HTMLElement;
+    //         if (
+    //             classList.contains('web-mobile-header') ||
+    //             classList.contains('web-main-header') ||
+    //             element === document.documentElement ||
+    //             typeof dataset['themeIgnore'] === 'string'
+    //         ) {
+    //             return false;
+    //         }
+    //         return true;
+    //     });
 
-        for (const theme of themes) {
-            if (isInViewport(theme)) {
-                return theme.classList.contains('light') ? 'light' : 'dark';
-            }
-        }
+    //     for (const theme of themes) {
+    //         if (isInViewport(theme)) {
+    //             return theme.classList.contains('light') ? 'light' : 'dark';
+    //         }
+    //     }
 
-        return 'dark';
-    }
+    //     return 'dark';
+    // }
 
-    onMount(() => {
-        setTimeout(() => {
-            $initialized = true;
-        }, 1000);
-        return setupThemeObserver();
-    });
+    // onMount(() => {
+    //     setTimeout(() => {
+    //         $initialized = true;
+    //     }, 1000);
+    //     return setupThemeObserver();
+    // });
 
     $: navLinks = [
         {
