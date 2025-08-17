@@ -65,7 +65,14 @@
 
         preferredPlatform.set(correctPlatform);
 
-        goto(`/docs/references/${version}/${platform}/${service}`, {
+        const hash = page.url?.hash ?? '';
+        const target =
+            `/docs/references/${version}/${platform}/${service}` +
+            (hash && !String(`/docs/references/${version}/${platform}/${service}`).includes('#')
+                ? hash
+                : '');
+
+        goto(target, {
             noScroll: true
         });
     }
@@ -76,7 +83,15 @@
         if ($preferredVersion === version) return;
 
         preferredVersion.set(version);
-        goto(`/docs/references/${version}/${platform}/${service}`, {
+
+        const hash = page.url?.hash ?? '';
+        const target =
+            `/docs/references/${version}/${platform}/${service}` +
+            (hash && !String(`/docs/references/${version}/${platform}/${service}`).includes('#')
+                ? hash
+                : '');
+
+        goto(target, {
             noScroll: true
         });
     }
@@ -113,7 +128,17 @@
                 ? $preferredPlatform
                 : `server-${$preferredPlatform}`;
 
-            goto(`/docs/references/${$preferredVersion}/${platformMode}/${page.params.service}`, {
+            const hash = page.url?.hash ?? '';
+            const target =
+                `/docs/references/${$preferredVersion}/${platformMode}/${page.params.service}` +
+                (hash &&
+                !String(
+                    `/docs/references/${$preferredVersion}/${platformMode}/${page.params.service}`
+                ).includes('#')
+                    ? hash
+                    : '');
+
+            goto(target, {
                 noScroll: true
             });
         }
