@@ -297,7 +297,11 @@ if (req.body.type === 'image') {
 
   let data = Buffer.from(resJson.choices[0].image_base64, 'base64');
 
-  let file = await storage.createFile(process.env.APPWRITE_BUCKET_ID, ID.unique(), InputFile.fromBuffer(data, "image.png"));
+  let file = await storage.createFile({
+    bucketId: process.env.APPWRITE_BUCKET_ID,
+    fileId: ID.unique(),
+    file: InputFile.fromBuffer(data, "image.png")
+  });
 
   return res.json({
     ok: true,

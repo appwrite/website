@@ -131,7 +131,7 @@ SECRET_OPENAI_API_KEY=
 After the environment variables are created, we can set up the Appwrite SDK by creating a file `./src/lib/appwrite.js` and adding the following:
 
 ```js
-import { Client, Account, Databases } from 'appwrite';
+import { Client, Account, Databases, OAuthProvider } from 'appwrite';
 import { env } from '$env/dynamic/public';
 
 const client = new Client()
@@ -140,6 +140,7 @@ const client = new Client()
 
 export const account = new Account(client);
 export const databases = new Databases(client);
+export { OAuthProvider };
 ```
 
 Also, since this app is created without SSR, we will go to the `./src/routes` directory and creates a file `+layout.js` to add the following:
@@ -155,7 +156,7 @@ First, we must use the Appwrite Web SDK to set up our Auth library in the applic
 
 ```js
 import { writable } from 'svelte/store';
-import { account } from './appwrite';
+import { account, OAuthProvider } from './appwrite';
 
 const isBrowser = typeof window !== 'undefined';
 
@@ -178,12 +179,18 @@ const createUser = () => {
 
     function login() {
         if(!isBrowser) return;
-        account.createOAuth2Session('github', `https://${window.location.hostname}/app`, `https://${window.location.hostname}`);
+        account.createOAuth2Session({
+            provider: OAuthProvider.Github,
+            success: `https://${window.location.hostname}/app`,
+            failure: `https://${window.location.hostname}`
+        });
     }
 
     async function getSession() {
         try {
-            return await account.getSession('current');
+            return await account.getSession({
+                sessionId: 'current'
+            });
         } catch(err) {
             return null;
         }
@@ -274,31 +281,31 @@ const githubDataCollectionId = env.PUBLIC_APPWRITE_COLLECTION_ID_GITHUBDATA;
 export const db = {
     getUserData: async(documentId) => {
         try{
-            return await databases.getDocument(
+            return await databases.getDocument({
                 databaseId,
-                githubDataCollectionId,
+                collectionId: githubDataCollectionId,
                 documentId
-            );
+            });
         } catch(err){
             return false;
         }
     },
 
     addUserData: async(userId, username, followers, following, languages) => {
-        return await databases.createDocument(
+        return await databases.createDocument({
             databaseId,
-            githubDataCollectionId,
-            userId,
-            {
+            collectionId: githubDataCollectionId,
+            documentId: userId,
+            data: {
                 username,
                 followers,
                 following,
                 languages
             },
-            [
+            permissions: [
                 Permission.write(Role.user(userId)), Permission.read(Role.user(userId))
             ]
-        )
+        })
     }
 };
 ```
@@ -504,24 +511,24 @@ export const db = {**
 .
 .
 		addDestiny: async(username, destiny) => {
-		    return await databases.createDocument(
+		    return await databases.createDocument({
 		        databaseId,
-		        destinyCollectionId,
-		        ID.unique(),
-		        {
+		        collectionId: destinyCollectionId,
+		        documentId: ID.unique(),
+		        data: {
 		            username,
 		            destiny
 		        }
-		    )
+		    })
 		},
 
 		getDestiny: async(documentId) => {
 		    try{
-		        return await databases.getDocument(
+		        return await databases.getDocument({
 		            databaseId,
-		            destinyCollectionId,
+		            collectionId: destinyCollectionId,
 		            documentId
-		        );
+		        });
 		    } catch(err){
 		        return {
 		            username: 'Not found',

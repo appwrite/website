@@ -283,7 +283,9 @@ const teams = new Teams(client);
 const teamsList = await teams.list();
 
 // For a specific team, get all memberships
-const response = await teams.listMemberships('<TEAM_ID>');
+const response = await teams.listMemberships({
+    teamId: '<TEAM_ID>'
+});
 
 // Find membership for specific user
 const userMembership = response.memberships.find(
@@ -395,7 +397,9 @@ const teamsList = await teams.list();
 
 // Iterate through teams to find memberships
 for (const team of teamsList.teams) {
-    const response = await teams.listMemberships(team.$id);
+    const response = await teams.listMemberships({
+        teamId: team.$id
+    });
 
     // Find membership for specific user
     const userMembership = response.memberships.find(
@@ -652,7 +656,9 @@ const client = new Client()
 const teams = new Teams(client)
 
 // Get team memberships
-const response = await teams.listMemberships('<TEAM_ID>')
+const response = await teams.listMemberships({
+    teamId: '<TEAM_ID>'
+});
 
 // Check if user has specific role
 const membership = response.memberships.find(m => m.userId === '<USER_ID>')

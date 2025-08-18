@@ -75,7 +75,10 @@ func login() async {
 
         let token = /* Retrieve the stored push token */
 
-        try await account.createPushTarget(targetId: ID.unique(), identifier: token)
+        try await account.createPushTarget({
+            targetId: ID.unique(),
+            identifier: token
+        })
     } catch {
         print("Login failed: \(error.localizedDescription)")
     }
@@ -122,7 +125,10 @@ fun login(email: String, password: String) {
             let token = /* Retrieve the stored push token */
 
             /* store the `target.id` */
-            val target = account.createPushTarget(ID.unique(), token)
+            val target = account.createPushTarget({
+                targetId = ID.unique(),
+                identifier = token
+            })
         } catch (e: AppwriteException) {
             Log.e("Login", "Failed: ${e.message}")
         }
@@ -255,7 +261,7 @@ Your app must ask for permission to receive push notification from the user.
 Before your app can receive push notifications, you need to request the user for permissions.
 Appwrite provides a utility to help request permissions to display notificaitons.
 
-You can learn more about requesting permissions from the 
+You can learn more about requesting permissions from the
 [Apple Developer Documentation](https://developer.apple.com/documentation/usernotifications/asking-permission-to-use-notifications).
 {% /tabsitem %}
 
@@ -270,7 +276,7 @@ First, add `POST_NOTIFICATIONS` to your `AndroidManifest.xml`.
     <!-- ... rest of your manifest -->
 ```
 
-Then, you'll also need to request [runtime permissions](https://developer.android.com/training/permissions/requesting) 
+Then, you'll also need to request [runtime permissions](https://developer.android.com/training/permissions/requesting)
 from your users using the `android.permission.POST_NOTIFICATIONS` permission.
 {% /tabsitem %}
 
@@ -278,7 +284,7 @@ from your users using the `android.permission.POST_NOTIFICATIONS` permission.
 Before your app can receive push notifications, you need to request the user for permissions.
 Appwrite provides a utility to help request permissions to display notificaitons.
 
-You can learn more about requesting permissions from the 
+You can learn more about requesting permissions from the
 [Apple Developer Documentation](https://developer.apple.com/documentation/usernotifications/asking-permission-to-use-notifications).
 
 When an FCM registration token is generated, the library uploads the identifier and configuration data to Firebase.
@@ -506,18 +512,18 @@ var messaging = new Messaging(client);
 Message result = await messaging.CreatePush(
     messageId: "[MESSAGE_ID]",
     title: "[TITLE]",
-    body: "[BODY]"    
-    topics: new List<string> {}     // optional    
-    users: new List<string> {}      // optional    
-    targets: new List<string> {}    // optional    
-    data: [object]      // optional    
-    action: "[ACTION]"  // optional    
-    icon: "[ICON]"      // optional    
-    sound: "[SOUND]"    // optional    
-    color: "[COLOR]"    // optional    
-    tag: "[TAG]"        // optional    
-    badge: "[BADGE]"    // optional    
-    draft: false        // optional    
+    body: "[BODY]"
+    topics: new List<string> {}     // optional
+    users: new List<string> {}      // optional
+    targets: new List<string> {}    // optional
+    data: [object]      // optional
+    action: "[ACTION]"  // optional
+    icon: "[ICON]"      // optional
+    sound: "[SOUND]"    // optional
+    color: "[COLOR]"    // optional
+    tag: "[TAG]"        // optional
+    badge: "[BADGE]"    // optional
+    draft: false        // optional
     scheduledAt: "");   // optional
 ```
 ```dart
