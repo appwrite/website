@@ -2,48 +2,39 @@
     import Media from '$lib/UI/Media.svelte';
     import { formatDate } from '$lib/utils/date';
 
-    export let title: string;
-    export let cover: string;
-    export let href: string;
-    export let date: Date;
-    export let timeToRead: number;
-    export let author: string;
-    export let avatar: string;
+    interface ArticleProps {
+        title: string;
+        cover: string;
+        href: string;
+        date: Date;
+        timeToRead: number;
+        author: string;
+        avatar: string;
+    }
+
+    const { title, cover, href, date, timeToRead, author, avatar }: ArticleProps = $props();
 </script>
 
 <li>
-    <a class="web-grid-articles-item is-transparent" {href}>
-        <div class="web-grid-articles-item-image">
-            <Media
-                src={cover}
-                class="web-u-media-ratio-16-9"
-                alt={title}
-                autoplay
-                controls={false}
-            />
+    <a class="bg-transparent" {href}>
+        <div class="overflow-hidden rounded-lg">
+            <Media src={cover} class="aspect-video" alt={title} autoplay controls={false} />
         </div>
-        <div class="web-grid-articles-item-content">
-            <h4 class="text-label text-primary">
+        <div class="flex flex-col gap-3 pt-6 pb-3">
+            <h4 class="text-label font-aeonik-pro text-primary line-clamp-2">
                 {title}
             </h4>
-            <div class="web-author">
-                <div class="flex items-center gap-2">
-                    <img
-                        class="web-author-image"
-                        loading="lazy"
-                        src={avatar}
-                        width="24"
-                        height="24"
-                        alt={author}
-                    />
-                    <div class="web-author-info">
-                        <h4 class="text-sub-body text-primary">{author}</h4>
-                        <ul class="web-metadata text-caption web-is-not-mobile">
-                            <li>
-                                {formatDate(date)}
-                            </li>
-                            <li>{timeToRead} min</li>
-                        </ul>
+            <div class="flex w-full">
+                <div class="text-micro flex w-full flex-col items-center xl:flex-row xl:gap-2">
+                    <div class="flex items-center justify-center gap-2">
+                        <img class="size-5 rounded-full" loading="lazy" src={avatar} alt={author} />
+                        <h4 class="text-primary">{author}</h4>
+                    </div>
+                    <div class="text-secondary ml-7 flex xl:ml-0">
+                        <span>
+                            {formatDate(date)}
+                        </span>
+                        <span class="before:mx-1 xl:before:content-['-']">{timeToRead} min</span>
                     </div>
                 </div>
             </div>

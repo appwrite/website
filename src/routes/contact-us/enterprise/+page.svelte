@@ -221,12 +221,15 @@
                                                 >
                                                 <input
                                                     required
-                                                    pattern="^(https:\/\/www\.|https:\/\/)?([a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)+)[a-zA-Z0-9\-\._~:\/\?#[\]@!\$&'\(\)\*\+,;=.]*$"
+                                                    pattern="^(https?:\/\/)?[\w\-]+(\.[\w\-]+)+(\/.*)?$"
                                                     class="web-input-text w-full"
                                                     type="text"
-                                                    placeholder="https://appwrite.io"
+                                                    placeholder="appwrite.io or https://appwrite.io"
                                                     id="companyWebsite"
                                                     bind:value={companyWebsite}
+                                                    title="Enter a valid URL like example.com, example.org, or https://site.co.uk"
+                                                    minlength="4"
+                                                    maxlength="200"
                                                 />
                                             </li>
                                             <li
@@ -277,6 +280,7 @@
                     company: 'K-Collect',
                     image: '/images/testimonials/ryan-oconner-testimonial.png'
                 }}
+                theme="dark"
             >
                 The switch to using Appwrite brought
                 <span class="text-primary">infinite value that I'm still discovering today.</span>
