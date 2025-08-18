@@ -87,7 +87,7 @@
                 <div class="size-3 rounded-full bg-white"></div>
             </div>
             <div
-                class="max-lg:text-eyebrow leading-micro tracking-tigher flex flex-col text-[0.625rem]"
+                class="max-lg:text-eyebrow leading-micro flex flex-col text-[0.625rem] tracking-tighter"
             >
                 <h2 class="text-primary flex justify-between font-medium">
                     New security measures added <span class="text-secondary/50 mr-1 block">now</span
@@ -107,7 +107,7 @@
             <div class="m-2 flex-1 rounded-t-[34px] bg-[#19191C]">
                 <div class="flex items-center justify-between px-8 pt-4">
                     <span
-                        class="leading-micro tracking-tigher w-10 text-[0.625rem] font-semibold text-white"
+                        class="leading-micro w-10 text-[0.625rem] font-semibold tracking-tighter text-white"
                         >{format(new Date(), 'h:mm')}</span
                     >
                     <div class="h-5 w-[84px] rounded-full bg-black"></div>

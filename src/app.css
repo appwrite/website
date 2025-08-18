@@ -343,7 +343,6 @@
     --font-weight-medium: 500;
 
     /* tokens */
-    --text-*: initial;
     --text-eyebrow: var(--font-size-micro);
     --text-eyebrow--line-height: var(--leading-tiny);
     --text-eyebrow--letter-spacing: var(--tracking-loose);

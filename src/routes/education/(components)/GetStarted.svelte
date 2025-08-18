@@ -47,7 +47,7 @@
     )}
 >
     <div class="relative z-10 container flex flex-col justify-center py-24">
-        <h2 class="text-primary font-aeonik-pro text-4xl">Get started today</h2>
+        <h2 class="text-primary font-aeonik-pro text-subtitle">Get started today</h2>
 
         <div
             class="divide-smooth mt-12 grid gap-8 divide-y rounded-2xl bg-white px-5 py-10 shadow-[-6px_8px_24px_rgba(0,_0,_0,_0.06),_0px_0px_0px_rgba(0,_0,_0,_0.06)] lg:grid-cols-3 lg:divide-x lg:divide-y-0"

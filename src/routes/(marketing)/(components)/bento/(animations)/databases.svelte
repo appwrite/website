@@ -175,7 +175,7 @@
                 <table class="table w-full p-2.5">
                     <thead>
                         <tr
-                            class="bg-greyscale-900 border-smooth text-primary text-eyebrow w-full border-b font-normal"
+                            class="bg-greyscale-900 border-smooth text-primary text-eyebrow w-full border-b font-normal tracking-tight"
                         >
                             {#each collectionKeys as heading}
                                 <th

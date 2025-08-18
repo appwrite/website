@@ -82,7 +82,8 @@
 <div class={cn('border-smooth relative z-10 border-y border-dashed', className)} {...rest}>
     <div class="container flex flex-col items-center max-md:pt-4 md:flex-row">
         <GradientText>
-            <span class="flex items-center pr-4 text-sm font-medium md:w-full md:max-w-[175px]"
+            <span
+                class="text-sub-body flex items-center pr-4 font-medium md:w-full md:max-w-[175px]"
                 >{headline}</span
             >
         </GradientText>
