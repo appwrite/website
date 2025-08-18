@@ -48,7 +48,7 @@
 </svelte:head>
 
 <div class="container grid grid-cols-1 justify-between pt-20 md:grid-cols-12">
-    <h2 class="text-primary mt-10 text-5xl md:col-span-4">FAQ</h2>
+    <h2 class="text-primary text-title mt-10 md:col-span-4">FAQ</h2>
     <ul class="collapsible w-full divide-y divide-white/5 md:col-span-8" use:melt={$root} id="faq">
         {#each items as faqItem, index (index)}
             <li class="collapsible-item">

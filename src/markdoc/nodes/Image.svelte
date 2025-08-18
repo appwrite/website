@@ -57,7 +57,7 @@
 
     {#if $open}
         <div use:melt={$portalled}>
-            <div use:melt={$overlay} class="overlay" transition:fade={{ duration: 350 }}></div>
+            <div use:melt={$overlay} class="overlay" transition:fade={{ duration: 150 }}></div>
 
             <img
                 class="web-media content"
@@ -66,7 +66,7 @@
                 {alt}
                 {title}
                 loading="lazy"
-                transition:scale={{ duration: 350, start: 0.8, easing: quadInOut }}
+                transition:scale={{ duration: 150, start: 0.95, easing: quadInOut }}
             />
         </div>
     {/if}

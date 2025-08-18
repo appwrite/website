@@ -49,7 +49,7 @@
     ];
 </script>
 
-<section class="light bg-greyscale-50 pt-12 pb-20">
+<section class="light bg-greyscale-50 pt-20 md:pt-40">
     <div class="container flex flex-col justify-between gap-8 md:flex-row">
         <div class="mb-10 flex max-w-sm flex-col">
             <span

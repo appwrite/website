@@ -43,8 +43,8 @@
         >
             {#each toc as parent (parent.href)}
                 <li
-                    class={cn('text-secondary relative transition-colors', {
-                        'ps-6 font-medium': !parent.level || parent.level === 1,
+                    class={cn('text-secondary hover:text-accent relative transition-colors', {
+                        'ps-6': !parent.level || parent.level === 1,
                         'ps-12': parent.level === 2,
                         'ps-16': parent.level >= 3,
                         'text-primary': parent.selected
@@ -58,9 +58,12 @@
                         >
                             {#each parent.children as child}
                                 <li
-                                    class={cn('text-secondary relative transition-colors', {
-                                        'text-primary': parent.selected
-                                    })}
+                                    class={cn(
+                                        'text-secondary hover:text-accent relative transition-colors',
+                                        {
+                                            'text-primary': parent.selected
+                                        }
+                                    )}
                                 >
                                     <a href={child.href} class="line-clamp-1">
                                         {child.title}

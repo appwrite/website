@@ -1,5 +1,6 @@
 <script lang="ts">
     import { cn } from '$lib/utils/cn';
+    import type { Snippet } from 'svelte';
 
     // html text elements
     type ElementType =
@@ -26,14 +27,17 @@
         | 'sub'
         | 'sup';
 
-    let className: string = '';
-    export let as: ElementType = 'span';
+    interface EyebrowProps {
+        class?: string;
+        as?: ElementType;
+        children: Snippet;
+    }
 
-    export { className as class };
+    const { class: classNames, as, children }: EyebrowProps = $props();
 </script>
 
 <svelte:element
     this={as}
-    class={cn('text-eyebrow tracking-loose text-primary font-aeonik-fono uppercase', className)}
-    ><slot /></svelte:element
+    class={cn('text-eyebrow text-primary font-aeonik-fono uppercase', classNames)}
+    >{@render children()}</svelte:element
 >

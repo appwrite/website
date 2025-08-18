@@ -16,13 +16,13 @@
 
             <div class="mt-8 mb-5 flex items-center gap-2">
                 <button
-                    class="text-eyebrow flex flex-1 items-center justify-center gap-1 rounded-md border border-[#E2E8F0] py-1 font-medium text-[#0F172A]"
+                    class="text-eyebrow flex flex-1 items-center justify-center gap-1 rounded-md border border-[#E2E8F0] py-1 font-medium tracking-tight text-[#0F172A]"
                 >
                     <span class="web-icon-google !text-sm"></span>
                     Google</button
                 >
                 <button
-                    class="text-eyebrow flex flex-1 items-center justify-center gap-1 rounded-md border border-[#E2E8F0] py-1 font-medium text-[#0F172A]"
+                    class="text-eyebrow flex flex-1 items-center justify-center gap-1 rounded-md border border-[#E2E8F0] py-1 font-medium tracking-tight text-[#0F172A]"
                 >
                     <span class="web-icon-github !text-sm"></span>
                     GitHub</button

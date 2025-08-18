@@ -38,9 +38,9 @@
     ];
 </script>
 
-<div class="group relative my-8 w-full overflow-clip">
+<div class="group relative my-20 w-full overflow-clip">
     <div
-        class="animate-scroll-x light flex w-max gap-4 pl-4 group-hover:[animation-play-state:paused]"
+        class="animate-scroll-x light flex w-max gap-4 pl-4 [animation-duration:80s] group-hover:[animation-play-state:paused]"
     >
         {#each testimonials as testimonial}
             <div

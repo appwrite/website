@@ -184,7 +184,7 @@
                             </div>
 
                             <button
-                                class="text-eyebrow mt-2 w-full rounded-lg bg-[#7C67FE] py-1.5 font-medium text-white"
+                                class="text-eyebrow mt-2 w-full rounded-lg bg-[#7C67FE] py-1.5 font-medium tracking-tighter text-white"
                                 >Place order</button
                             >
                         </div>

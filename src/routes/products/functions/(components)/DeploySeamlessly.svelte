@@ -187,7 +187,7 @@
                     </ul>
 
                     <button
-                        class="md:text-eyebrow mt-auto mb-0 rounded-md border border-white/8 bg-[#19191C] py-1 text-[8px] font-medium text-white md:py-2"
+                        class="md:text-eyebrow mt-auto mb-0 rounded-md border border-white/8 bg-[#19191C] py-1 text-[8px] font-medium tracking-tighter text-white md:py-2"
                         >Commit and push</button
                     >
                 </div>

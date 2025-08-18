@@ -71,7 +71,7 @@
     <div class="container mx-auto">
         <section class="flex flex-col items-start gap-x-20 md:flex-row">
             <h2
-                class="text-title-lg font-aeonik-pro text-primary max-w-[700px] leading-12 text-pretty"
+                class="text-title font-aeonik-pro text-primary max-w-[700px] leading-12 text-pretty"
             >
                 Self-host your data or take it to the Cloud<span class="text-accent">_</span>
             </h2>
