@@ -99,7 +99,7 @@
         "svelte-check": "^4.0.0",
         "svelte-markdoc-preprocess": "3.0.0",
         "svelte-markdown": "^0.4.1",
-        "sveltekit-themes": "^1.0.1",
+        "sveltekit-themes": "^1.1.1",
         "svg-dotted-map": "^2.0.1",
         "svgtofont": "^4.2.3",
         "tailwind-merge": "^3.0.2",

@@ -16,7 +16,6 @@
     import { saveReferrerAndUtmSource } from '$lib/utils/utm';
     import { Sprite } from '$lib/components/ui/icon/sprite';
     import { displayHiringMessage } from '$lib/utils/console';
-    import { ThemeProvider, useTheme } from 'sveltekit-themes';
 
     const thresholds = [0.25, 0.5, 0.75];
     const tracked = new Set();
@@ -107,13 +106,5 @@
     href="#main">Skip to content</a
 >
 
-<ThemeProvider attribute="class" disableTransitionOnChange>
-    {@render children()}
-    <Sprite />
-</ThemeProvider>
-
-<style lang="scss">
-    :global(html) {
-        color-scheme: dark;
-    }
-</style>
+{@render children()}
+<Sprite />

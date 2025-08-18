@@ -14,7 +14,7 @@
     import Integrate from './(components)/integrate.svelte';
     import Steps from './(components)/steps.svelte';
     import Network from './(components)/network.svelte';
-    import Scale from '$routes/(marketing)/(components)/scale.svelte';
+    import Scale from '$routes/(dark)/(marketing)/(components)/scale.svelte';
 
     const title = 'Sites' + TITLE_SUFFIX;
     const description =

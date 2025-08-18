@@ -12,7 +12,7 @@
     import Hero from './(components)/Hero.svelte';
     import Testimonials from '$lib/components/product-pages/testimonials.svelte';
     import Features from './(components)/features/Features.svelte';
-    import Pricing from '$routes/(marketing)/(components)/pricing.svelte';
+    import Pricing from '$routes/(dark)/(marketing)/(components)/pricing.svelte';
 
     const title = 'Auth' + TITLE_SUFFIX;
     const description =

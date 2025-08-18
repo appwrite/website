@@ -5,12 +5,12 @@
     import Docs from '$lib/layouts/Docs.svelte';
     import { DEFAULT_HOST } from '$lib/utils/metadata';
     import { TITLE_SUFFIX } from '$routes/titles';
-    import MainFooter from '../../lib/components/MainFooter.svelte';
+    import MainFooter from '$lib/components/MainFooter.svelte';
     import CodeCard, { type CodeCardProps } from './CodeCard.svelte';
     import Sidebar from './Sidebar.svelte';
     import { trackEvent } from '$lib/actions/analytics';
-    import Platforms from '$routes/(marketing)/(components)/platforms.svelte';
-    import HeroBanner from '$routes/(marketing)/(components)/hero-banner.svelte';
+    import Platforms from '$routes/(dark)/(marketing)/(components)/platforms.svelte';
+    import HeroBanner from '$routes/(dark)/(marketing)/(components)/hero-banner.svelte';
     import { useTheme } from 'sveltekit-themes';
     import { browser } from '$app/environment';
 
@@ -51,20 +51,6 @@
             description: 'Learn Appwrite Auth, Databases, and more with Flutter.'
         }
     ];
-
-    const theme = useTheme();
-
-    const handleTheme = () => {
-        if (browser) {
-            const opposite = theme.current === 'dark' ? 'light' : 'dark';
-            document.body.classList.remove(opposite);
-            document.body.classList.add(theme.current!);
-        }
-    };
-
-    $effect(() => {
-        handleTheme();
-    });
 </script>
 
 <svelte:head>

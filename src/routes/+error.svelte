@@ -3,7 +3,7 @@
     import { FooterNav, MainFooter } from '$lib/components';
     import { Button } from '$lib/components/ui';
     import { Main } from '$lib/layouts';
-    import DocsError from './docs/+error.svelte';
+    import DocsError from './(docs)/docs/+error.svelte';
 
     const isDocs = page.url.pathname.startsWith('/docs');
 </script>

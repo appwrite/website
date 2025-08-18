@@ -68,8 +68,6 @@
         }, [])
     );
 
-    console.log(children());
-
     const isProductsPage = /^\/docs\/products\/[^/]+$/.test(page.route.id!.toString());
 
     let seoTitle = $derived(title + DOCS_TITLE_SUFFIX);

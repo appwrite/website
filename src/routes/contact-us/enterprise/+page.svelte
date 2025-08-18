@@ -2,16 +2,16 @@
     import { DEFAULT_HOST } from '$lib/utils/metadata';
     import { Main } from '$lib/layouts';
     import { TITLE_SUFFIX } from '$routes/titles';
-    import FooterNav from '../../../lib/components/FooterNav.svelte';
-    import MainFooter from '../../../lib/components/MainFooter.svelte';
+    import FooterNav from '../$lib/components/FooterNav.svelte';
+    import MainFooter from '../$lib/components/MainFooter.svelte';
     import { loggedIn, user } from '$lib/utils/console';
     import { PUBLIC_GROWTH_ENDPOINT } from '$env/static/public';
     import { getReferrerAndUtmSource } from '$lib/utils/utm';
     import LogoList from '$lib/components/LogoList.svelte';
-    import Scale from '$routes/(marketing)/(components)/scale.svelte';
+    import Scale from '$routes/(dark)/(marketing)/(components)/scale.svelte';
     import { Button } from '$lib/components/ui';
     import { trackEvent } from '$lib/actions/analytics';
-    import Features from '$routes/(marketing)/(components)/features.svelte';
+    import Features from '$routes/(dark)/(marketing)/(components)/features.svelte';
 
     let email = '';
     let firstName = '';

@@ -220,8 +220,8 @@ importers:
         specifier: ^0.4.1
         version: 0.4.1(svelte@5.25.6)
       sveltekit-themes:
-        specifier: ^1.0.1
-        version: 1.0.1(svelte@5.25.6)
+        specifier: ^1.1.1
+        version: 1.1.1(svelte@5.25.6)
       svg-dotted-map:
         specifier: ^2.0.1
         version: 2.0.1
@@ -3762,8 +3762,8 @@ packages:
     resolution: {integrity: sha512-RGkaeAXDuJdvhA1fdSM5GgD++vYfJYijZL0uN6kM2s/TRJ663jktBhZlF0qjzAJGR/34PtaeT3G8MKJY1EKeqg==}
     engines: {node: '>=18'}
 
-  sveltekit-themes@1.0.1:
-    resolution: {integrity: sha512-/97psEAWUkf2vjyzEZjC9IxdOpplhB1XNryIKrWSM0ZSj3BjLJkriDjMlPP941lCr2XzGoWq62ZU3ObygilS6Q==}
+  sveltekit-themes@1.1.1:
+    resolution: {integrity: sha512-AMsdY+ay64FtCrvX0YeCLtfIsf8jAPn7PBUqJCuq8bFMTESAH7qdjzB4O9ROS501jGB6C0Zmec92cbjRYM+tPA==}
     peerDependencies:
       svelte: ^5.0.0
 
@@ -7751,7 +7751,7 @@ snapshots:
       magic-string: 0.30.17
       zimmerframe: 1.1.2
 
-  sveltekit-themes@1.0.1(svelte@5.25.6):
+  sveltekit-themes@1.1.1(svelte@5.25.6):
     dependencies:
       svelte: 5.25.6
 
