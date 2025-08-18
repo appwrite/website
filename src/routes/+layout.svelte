@@ -107,7 +107,7 @@
     href="#main">Skip to content</a
 >
 
-<ThemeProvider attribute="class">
+<ThemeProvider attribute="class" disableTransitionOnChange>
     {@render children()}
     <Sprite />
 </ThemeProvider>
