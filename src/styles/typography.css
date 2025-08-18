@@ -164,6 +164,7 @@
     code:where(:not(.not-prose, .not-prose *)) {
         font-family: var(--font-fira-code);
         font-size: var(--font-size-tiny);
+        font-weight: var(--font-weight-regular);
         line-height: var(--leading-tiny);
         letter-spacing: var(--tracking-none);
         color: var(--color-secondary);
