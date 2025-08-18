@@ -11,6 +11,8 @@
     import { trackEvent } from '$lib/actions/analytics';
     import Platforms from '$routes/(marketing)/(components)/platforms.svelte';
     import HeroBanner from '$routes/(marketing)/(components)/hero-banner.svelte';
+    import { useTheme } from 'sveltekit-themes';
+    import { browser } from '$app/environment';
 
     const title = 'Docs' + TITLE_SUFFIX;
     const description =
@@ -49,6 +51,20 @@
             description: 'Learn Appwrite Auth, Databases, and more with Flutter.'
         }
     ];
+
+    const theme = useTheme();
+
+    const handleTheme = () => {
+        if (browser) {
+            const opposite = theme.current === 'dark' ? 'light' : 'dark';
+            document.body.classList.remove(opposite);
+            document.body.classList.add(theme.current!);
+        }
+    };
+
+    $effect(() => {
+        handleTheme();
+    });
 </script>
 
 <svelte:head>

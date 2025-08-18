@@ -1,6 +1,5 @@
-<script lang="ts" context="module">
+<script lang="ts" module>
     import { type Reo, loadReoScript } from '$lib/reodotdev';
-    import { derived, writable } from 'svelte/store';
 </script>
 
 <script lang="ts">
@@ -9,8 +8,7 @@
     import '$icons/output/web-icon.css';
 
     import { browser, dev } from '$app/environment';
-    import { page } from '$app/state';
-    import { updated } from '$app/stores';
+    import { page, updated } from '$app/state';
     import { onMount } from 'svelte';
     import { loggedIn } from '$lib/utils/console';
     import { beforeNavigate } from '$app/navigation';
@@ -18,7 +16,7 @@
     import { saveReferrerAndUtmSource } from '$lib/utils/utm';
     import { Sprite } from '$lib/components/ui/icon/sprite';
     import { displayHiringMessage } from '$lib/utils/console';
-    import { ThemeProvider } from 'sveltekit-themes';
+    import { ThemeProvider, useTheme } from 'sveltekit-themes';
 
     const thresholds = [0.25, 0.5, 0.75];
     const tracked = new Set();
@@ -35,17 +33,20 @@
             tracked.clear();
         }
 
-        // TODO: thejessewinton, the `updated` from `svelte/state` creates an infinite refresh loop on docs references pages!
-        if ($updated && !willUnload && to?.url) {
+        if (updated.current && !willUnload && to?.url) {
             location.href = to.url.href;
         }
     });
 
-    $: if (browser && $loggedIn) {
-        document.body.dataset.loggedIn = '';
-    }
+    $effect(() => {
+        if (browser && $loggedIn) {
+            document.body.dataset.loggedIn = '';
+        }
+    });
 
-    $: canonicalUrl = page.url.origin.replace(/^https?:\/\/www\./, 'https://') + page.url.pathname;
+    const canonicalUrl = $derived(
+        page.url.origin.replace(/^https?:\/\/www\./, 'https://') + page.url.pathname
+    );
 
     function handleScroll() {
         const scrollY = window.scrollY;
@@ -74,6 +75,8 @@
             reo.init({ clientID });
         });
     }
+
+    const { children } = $props();
 </script>
 
 <svelte:window on:scroll={handleScroll} />
@@ -105,7 +108,7 @@
 >
 
 <ThemeProvider attribute="class">
-    <slot />
+    {@render children()}
     <Sprite />
 </ThemeProvider>
 

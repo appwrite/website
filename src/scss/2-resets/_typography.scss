@@ -9,7 +9,7 @@ body {
 	line-height: 1.5;
 
 	color: hsl(var(--p-body-text-color)) !important;
-	//background-color: hsl(var(--p-body-bg-color));
+	background-color: hsl(var(--p-body-bg-color));
 }
 
 .#{$p}-main-section {
