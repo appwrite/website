@@ -2,12 +2,12 @@
     import { cn } from '$lib/utils/cn';
     import type { Snippet } from 'svelte';
 
-    interface Props {
+    interface BadgeProps {
         class?: string;
         children: Snippet;
     }
 
-    const { class: className = '', children }: Props = $props();
+    const { class: className = '', children }: BadgeProps = $props();
 </script>
 
 <span

@@ -188,7 +188,9 @@
             {#if value}
                 <section>
                     {#if results.length > 0}
-                        <h6 class="text-eyebrow uppercase">{results.length} results found</h6>
+                        <h6 class="text-eyebrow font-aeonik-fono uppercase">
+                            {results.length} results found
+                        </h6>
                         <ul class="mt-2 flex flex-col gap-1">
                             {#each results as hit, i (hit.uid)}
                                 {@const subtitleContent = getSubtitleContent(hit)}
@@ -240,7 +242,7 @@
                 </section>
             {/if}
             <section>
-                <h6 class="text-eyebrow uppercase">Recommended</h6>
+                <h6 class="text-eyebrow font-aeonik-fono uppercase">Recommended</h6>
                 <ul class="mt-2 flex flex-col gap-1">
                     {#each recommended as hit, i (hit.uid)}
                         {@const index = i + (results.length ? results.length : 0)}

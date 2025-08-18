@@ -359,7 +359,9 @@
                     <div
                         class="web-references-menu-header mt-6 flex items-center justify-between gap-4"
                     >
-                        <h5 class="web-references-menu-title text-eyebrow uppercase">
+                        <h5
+                            class="web-references-menu-title text-eyebrow font-aeonik-fono uppercase"
+                        >
                             On This Page
                         </h5>
                         <button
