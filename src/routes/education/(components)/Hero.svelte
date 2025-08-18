@@ -40,7 +40,7 @@
         class="gridLine vertical from-accent/5 relative flex h-full w-full flex-1 basis-[calc(100vw_/_3)] flex-col items-center justify-center gap-8 to-transparent px-8 py-10 text-center md:bg-gradient-to-t"
     >
         <Logos />
-        <h1 class="font-aeonik-pro text-5xl text-white">Build your next project with Appwrite</h1>
+        <h1 class="font-aeonik-pro text-title text-white">Build your next project with Appwrite</h1>
         <p class="text-secondary font-medium">
             Join the Appwrite Education program in collaboration with the GitHub Student Developer
             Pack. Students access Appwrite Cloud for free throughout their studies.

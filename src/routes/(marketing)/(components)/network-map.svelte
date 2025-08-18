@@ -1,5 +1,5 @@
 <script>
-    import Map from '$lib/components/regions-map/map.svelte';
+    import Map from '$lib/components/appwrite-network/map.svelte';
     import { cn } from '$lib/utils/cn';
 
     import { createTabs, melt } from '@melt-ui/svelte';
@@ -9,7 +9,7 @@
             label: 'PoP Locations',
             icon: `<svg
                     width="20"
-                    height="20"
+                height="20"
                     viewBox="0 0 20 20"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
@@ -73,7 +73,7 @@
         <a href="/" class="web-button is-secondary mt-2">More about the Appwrite Network</a>
     </div>
 
-    <Map />
+    <Map theme="light" />
 
     <div
         use:melt={$list}
