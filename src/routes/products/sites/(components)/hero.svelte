@@ -1,14 +1,14 @@
 <script>
     import { PUBLIC_APPWRITE_DASHBOARD } from '$env/static/public';
     import Platforms from '$lib/components/marketing/platforms.svelte';
-    import { classNames } from '$lib/utils/classnames';
+    import { cn } from '$lib/utils/cn';
 
     import Illustration from '../(assets)/images/illustration.png';
     import ProductHuntBadge from '../(assets)/images/producthunt-badge.svelte';
 </script>
 
 <div
-    class={classNames(
+    class={cn(
         'relative flex flex-col items-center',
         'before:absolute before:inset-0 before:top-0 before:left-0 before:-z-10 before:block before:h-full before:bg-[radial-gradient(circle_at_-15%_-10%,_hsla(343,_98%,_60%,_0.2)_0px,_transparent_40%)]',
         'after:absolute after:inset-0 after:top-0 after:right-0 after:-z-10 after:mt-auto after:mb-0 after:block after:h-full after:bg-[radial-gradient(circle_at_120%_125%,_hsla(248,_99%,_70%,_0.2)_0px,_transparent_40%)]'
@@ -24,7 +24,7 @@
                     class="size-8"
                     alt="Sites icon"
                 />
-                <span class="font-aeonik-fono tracking-loose text-micro text-primary uppercase">
+                <span class="font-aeonik-fono tracking-loose text-eyebrow text-primary uppercase">
                     Sites<span class="web-u-color-text-accent">_</span>
                 </span>
             </div>
