@@ -1,7 +1,7 @@
 <script lang="ts">
     import { Button } from '$lib/components/ui';
     import { Platform } from '$lib/utils/references';
-    import MultiCodeContextless from '$routes/products/messaging/(components)/MultiCodeContextless.svelte';
+    import MultiCodeContextless from '$routes/(dark)/products/messaging/(components)/MultiCodeContextless.svelte';
     import SnippetNodejs from './(snippets)/nodejs.txt?raw';
     import SnippetPhp from './(snippets)/php.txt?raw';
     import SnippetPython from './(snippets)/python.txt?raw';

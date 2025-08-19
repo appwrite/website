@@ -21,7 +21,6 @@
     import { page } from '$app/state';
     import { getAppwriteDashboardUrl } from '$lib/utils/dashboard';
     import { Button, Icon, InlineTag } from '$lib/components/ui';
-    import AnnouncementBanner from '$routes/(init)/init/(components)/announcement-banner.svelte';
 
     export let omitMainId = false;
     let theme: 'light' | 'dark' | null = 'dark';

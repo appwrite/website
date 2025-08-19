@@ -18,23 +18,23 @@
     --web-color-border: var(--web-color-greyscale-50);
   }
 
-  // @mixin color-dark {
-  //   --web-color-background: var(--color-greyscale-900);
-  //   --web-color-background-docs: var(--color-greyscale-900);
-  //   --web-color-primary: var(--web-color-greyscale-100);
-  //   --web-color-secondary: var(--web-color-greyscale-300);
-  //   --web-color-tertiary: var(--web-color-greyscale-600);
-  //   --web-color-accent: var(--web-color-pink-500);
-  //   --web-color-accent-darker: var(--web-color-pink-600);
-  //   --web-color-accent-click: var(--web-color-greyscale-50);
-  //   --web-color-card: var(--web-color-greyscale-850) / 0.9;
-  //   --web-color-smooth: var(--web-color-white) / 0.06;
-  //   --web-color-subtle: var(--web-color-greyscale-850);
-  //   --web-color-offset: var(--web-color-white) / 0.1;
+  @mixin color-dark {
+    --web-color-background: var(--web-color-greyscale-900);
+    --web-color-background-docs: var(--web-color-greyscale-900);
+    --web-color-primary: var(--web-color-greyscale-100);
+    --web-color-secondary: var(--web-color-greyscale-300);
+    --web-color-tertiary: var(--web-color-greyscale-600);
+    --web-color-accent: var(--web-color-pink-500);
+    --web-color-accent-darker: var(--web-color-pink-600);
+    --web-color-accent-click: var(--web-color-greyscale-50);
+    --web-color-card: var(--web-color-greyscale-850) / 0.9;
+    --web-color-smooth: var(--web-color-white) / 0.06;
+    --web-color-subtle: var(--web-color-greyscale-850);
+    --web-color-offset: var(--web-color-white) / 0.1;
 
-  //   /* call other color variable */
-  //   --web-color-border: var(--web-color-subtle);
-  // }
+    /* call other color variable */
+    --web-color-border: var(--web-color-subtle);
+  }
   
   /* pink */
   --web-color-pink-hue: 343;
