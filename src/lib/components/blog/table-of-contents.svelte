@@ -44,7 +44,7 @@
     >
     <div class="relative">
         <ul
-            class="mask text-caption flex max-h-[600px] flex-col gap-4 overflow-scroll pb-11 [scrollbar-width:none]"
+            class="mask text-caption flex max-h-[700px] flex-col gap-4 overflow-scroll pb-11 [scrollbar-width:none]"
         >
             {#each toc as parent (parent.href)}
                 <li
