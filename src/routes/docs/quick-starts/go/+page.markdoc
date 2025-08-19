@@ -207,7 +207,7 @@ type TodoList struct {
 }
 
 func getTodos() {
-	// Retrieve all documents
+	// Retrieve documents (default limit is 25)
 	todoResponse, _ := appwriteDatabases.ListDocuments(
 		todoDatabase.Id,
 		todoCollection.Id,
@@ -216,7 +216,7 @@ func getTodos() {
 	var todos TodoList
 	todoResponse.Decode(&todos)
 
-	fmt.Println("All todos:")
+	fmt.Println("Todos:")
 	for _, todo := range todos.Documents {
 		fmt.Printf("Title: %s\nDescription: %s\nIs Todo Complete: %t\n\n", todo.Title, todo.Description, todo.IsComplete)
 	}

@@ -189,14 +189,14 @@ Run the functions to by calling `runAllTasks();`.
 use Appwrite\Query;
 
 function getTodos($databases, $todoDatabase, $todoCollection) {
-    // Retrieve all documents
+    // Retrieve documents (default limit is 25)
     $todos = $databases->listDocuments(
         $todoDatabase['$id'],
         $todoCollection['$id'],
-        []  // Empty queries array to get all documents
+        []  // Empty queries array returns up to 25 documents (default limit)
     );
 
-    echo "All todos:\n";
+    echo "Todos:\n";
     foreach ($todos['documents'] as $todo) {
         echo "Title: {$todo['title']}\n" .
             "Description: {$todo['description']}\n" .
