@@ -635,6 +635,205 @@ databases.create_documents(
         }]
 )
 ```
+```server-ruby
+require 'appwrite'
+
+include Appwrite
+
+client = Client.new
+    .set_endpoint('https://<REGION>.cloud.appwrite.io/v1') # Your API Endpoint
+    .set_project('<YOUR_PROJECT_ID>') # Your project ID
+    .set_key('<YOUR_API_KEY>') # Your secret API key
+
+databases = Databases.new(client)
+
+custom_date = Time.parse('2025-08-10T12:34:56.000Z').iso8601
+
+# Single document (create)
+databases.create_document(
+    database_id: '<DATABASE_ID>',
+    collection_id: '<COLLECTION_ID>',
+    document_id: ID.unique(),
+    data: {
+        '$createdAt' => custom_date,
+        '$updatedAt' => custom_date,
+        # ...your attributes
+    }
+)
+
+# Single document (update)
+databases.update_document(
+    database_id: '<DATABASE_ID>',
+    collection_id: '<COLLECTION_ID>',
+    document_id: '<DOCUMENT_ID>',
+    data: {
+        '$updatedAt' => custom_date,
+        # ...your attributes
+    }
+)
+
+# Bulk (create)
+databases.create_documents(
+    database_id: '<DATABASE_ID>',
+    collection_id: '<COLLECTION_ID>',
+    documents: [
+        {
+            '$id' => ID.unique(),
+            '$createdAt' => custom_date,
+            '$updatedAt' => custom_date,
+            # ...your attributes
+        }
+    ]
+)
+
+# Bulk (upsert)
+databases.upsert_documents(
+    database_id: '<DATABASE_ID>',
+    collection_id: '<COLLECTION_ID>',
+    documents: [
+        {
+            '$id' => '<DOCUMENT_ID_OR_NEW_ID>',
+            '$createdAt' => custom_date,
+            '$updatedAt' => custom_date,
+            # ...your attributes
+        }
+    ]
+)
+```
+```server-dotnet
+using Appwrite;
+using Appwrite.Models;
+using Appwrite.Services;
+
+Client client = new Client()
+    .SetEndPoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
+    .SetProject("<YOUR_PROJECT_ID>") // Your project ID
+    .SetKey("<YOUR_API_KEY>"); // Your secret API key
+
+Databases databases = new Databases(client);
+
+string customDate = DateTimeOffset.Parse("2025-08-10T12:34:56.000Z").ToString("O");
+
+// Single document (create)
+await databases.CreateDocument(
+    databaseId: "<DATABASE_ID>",
+    collectionId: "<COLLECTION_ID>",
+    documentId: ID.Unique(),
+    data: new Dictionary<string, object>
+    {
+        ["$createdAt"] = customDate,
+        ["$updatedAt"] = customDate,
+        // ...your attributes
+    }
+);
+
+// Single document (update)
+await databases.UpdateDocument(
+    databaseId: "<DATABASE_ID>",
+    collectionId: "<COLLECTION_ID>",
+    documentId: "<DOCUMENT_ID>",
+    data: new Dictionary<string, object>
+    {
+        ["$updatedAt"] = customDate,
+        // ...your attributes
+    }
+);
+
+// Bulk (create)
+await databases.CreateDocuments(
+    databaseId: "<DATABASE_ID>",
+    collectionId: "<COLLECTION_ID>",
+    documents: new List<object>
+    {
+        new Dictionary<string, object>
+        {
+            ["$id"] = ID.Unique(),
+            ["$createdAt"] = customDate,
+            ["$updatedAt"] = customDate,
+            // ...your attributes
+        }
+    }
+);
+
+// Bulk (upsert)
+await databases.UpsertDocuments(
+    databaseId: "<DATABASE_ID>",
+    collectionId: "<COLLECTION_ID>",
+    documents: new List<object>
+    {
+        new Dictionary<string, object>
+        {
+            ["$id"] = "<DOCUMENT_ID_OR_NEW_ID>",
+            ["$createdAt"] = customDate,
+            ["$updatedAt"] = customDate,
+            // ...your attributes
+        }
+    }
+);
+```
+```server-dart
+import 'package:dart_appwrite/dart_appwrite.dart';
+
+Client client = Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('<YOUR_PROJECT_ID>') // Your project ID
+    .setKey('<YOUR_API_KEY>'); // Your secret API key
+
+Databases databases = Databases(client);
+
+String customDate = DateTime.parse('2025-08-10T12:34:56.000Z').toIso8601String();
+
+// Single document (create)
+await databases.createDocument(
+    databaseId: '<DATABASE_ID>',
+    collectionId: '<COLLECTION_ID>',
+    documentId: ID.unique(),
+    data: {
+        '\$createdAt': customDate,
+        '\$updatedAt': customDate,
+        // ...your attributes
+    },
+);
+
+// Single document (update)
+await databases.updateDocument(
+    databaseId: '<DATABASE_ID>',
+    collectionId: '<COLLECTION_ID>',
+    documentId: '<DOCUMENT_ID>',
+    data: {
+        '\$updatedAt': customDate,
+        // ...your attributes
+    },
+);
+
+// Bulk (create)
+await databases.createDocuments(
+    databaseId: '<DATABASE_ID>',
+    collectionId: '<COLLECTION_ID>',
+    documents: [
+        {
+            '\$id': ID.unique(),
+            '\$createdAt': customDate,
+            '\$updatedAt': customDate,
+            // ...your attributes
+        }
+    ],
+);
+
+// Bulk (upsert)
+await databases.upsertDocuments(
+    databaseId: '<DATABASE_ID>',
+    collectionId: '<COLLECTION_ID>',
+    documents: [
+        {
+            '\$id': '<DOCUMENT_ID_OR_NEW_ID>',
+            '\$createdAt': customDate,
+            '\$updatedAt': customDate,
+            // ...your attributes
+        }
+    ],
+);
+```
 {% /multicode %}
 
 {% info title="Timestamp format and usage" %}
