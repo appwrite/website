@@ -37,6 +37,10 @@
                     href: '/docs/products/auth/teams'
                 },
                 {
+                    label: 'Preferences',
+                    href: '/docs/products/auth/preferences'
+                },
+                {
                     label: 'Labels',
                     href: '/docs/products/auth/labels'
                 },
@@ -112,6 +116,10 @@
                 {
                     label: 'Multi-tenancy',
                     href: '/docs/products/auth/multi-tenancy'
+                },
+                {
+                    label: 'Preferences storage',
+                    href: '/docs/products/auth/preferences-storage'
                 }
             ]
         },

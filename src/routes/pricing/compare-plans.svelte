@@ -515,25 +515,18 @@
                     enterprise: true
                 },
                 {
-                    title: 'Priority',
-                    free: '-',
-                    pro: '-',
-                    scale: true,
-                    enterprise: true
-                },
-                {
                     title: 'SLA',
                     free: '-',
                     pro: '-',
-                    scale: true,
-                    enterprise: true
+                    scale: 'Custom',
+                    enterprise: 'Custom'
                 },
                 {
                     title: 'Private Slack channel',
                     free: '-',
                     pro: '-',
-                    scale: true,
-                    enterprise: true
+                    scale: 'Custom',
+                    enterprise: 'Custom'
                 }
             ]
         }

@@ -4,11 +4,11 @@
     import { Button } from '$lib/components/ui';
     import { Framework, Platform } from '$lib/utils/references';
     import MultiFrameworkCode from './MultiFrameworkCode.svelte';
-    import SnippetNextJs from './(snippets)/nextjs.txt';
-    import SnippetSvelteKit from './(snippets)/sveltekit.txt';
-    import SnippetAstro from './(snippets)/astro.txt';
-    import SnippetNuxt from './(snippets)/nuxt.txt';
-    import SnippetRemix from './(snippets)/remix.txt';
+    import SnippetNextJs from './(snippets)/nextjs.txt?raw';
+    import SnippetSvelteKit from './(snippets)/sveltekit.txt?raw';
+    import SnippetAstro from './(snippets)/astro.txt?raw';
+    import SnippetNuxt from './(snippets)/nuxt.txt?raw';
+    import SnippetRemix from './(snippets)/remix.txt?raw';
 
     const codeSnippets = [
         {
@@ -62,8 +62,8 @@
 </script>
 
 <section class="light bg-greyscale-50 py-4 md:py-20">
-    <div class="container flex flex-col gap-6 md:flex-row">
-        <div class="mb-10 flex max-w-lg flex-col">
+    <div class="container grid grid-cols-1 gap-8 lg:grid-cols-2">
+        <div class="mb-10 flex flex-col">
             <span class="web-badges text-micro font-aeonik-fono mr-auto ml-0 !text-white uppercase"
                 >SSR_</span
             >
@@ -104,11 +104,17 @@
                 variant="secondary"
                 href="/docs/sdks#server"
                 class="mt-8"
-                event="products-auth-server_sdks-click">Learn more</Button
+                event="products-auth-server_sdks-click"
             >
+                Learn more
+            </Button>
         </div>
 
-        <MultiFrameworkCode data={codeSnippets} selected={Framework.NextJs} />
+        <MultiFrameworkCode
+            data={codeSnippets}
+            selected={Framework.NextJs}
+            class="max-w-auto! w-full min-w-auto! basis-full lg:basis-1/2"
+        />
     </div>
 </section>
 

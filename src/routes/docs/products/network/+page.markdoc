@@ -40,7 +40,7 @@ In Appwrite, Regions are where all your core data and services live. This includ
 Edges are about speed. They process requests closer to your users using smart geo-routing, reducing latency by handling compute tasks at the nearest edge location. Edges are perfect for serving cached content, executing lightweight computations, and optimizing user interactions.
 
 {% info title="Where to execute?" %}
-The Appwrite Network is designed for flexibility. You can choose to run your serverless compute workload in your project's home region by using the `[ID].[REGION].appwrite.run` endpoint, or on the edge using the `[ID].appwrite.network` endpoint. Both your region and edge endpoints can be customized to use your own custom domain.
+The Appwrite Network is designed for flexibility. You can choose to run your serverless compute workload in your project's home region by using the `<ID>.<REGION>.appwrite.run` endpoint, or on the edge using the `<ID>.appwrite.network` endpoint. Both your region and edge endpoints can be customized to use your own custom domain.
 {% /info %}
 
 # Architecture {% #architecture %}
