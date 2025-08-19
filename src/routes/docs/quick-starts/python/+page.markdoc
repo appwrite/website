@@ -212,7 +212,7 @@ def get_todos():
   todos = databases.list_documents(
     database_id=todoDatabase['$id'],
     collection_id=todoCollection['$id'],
-    queries=[]  # Empty queries array returns up to 25 documents (default limit)
+    queries=[]
   )
   print("Todos:")
   for todo in todos['documents']:
