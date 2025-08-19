@@ -208,13 +208,13 @@ then execute the functions in `_main_`.
 from appwrite.query import Query
 
 def get_todos():
-  # Retrieve all documents
+  # Retrieve documents (default limit is 25)
   todos = databases.list_documents(
     database_id=todoDatabase['$id'],
     collection_id=todoCollection['$id'],
-    queries=[]  # Empty queries array to get all documents
+    queries=[]  # Empty queries array returns up to 25 documents (default limit)
   )
-  print("All todos:")
+  print("Todos:")
   for todo in todos['documents']:
     print(f"Title: {todo['title']}\nDescription: {todo['description']}\nIs Todo Complete: {todo['isComplete']}\n\n")
 
