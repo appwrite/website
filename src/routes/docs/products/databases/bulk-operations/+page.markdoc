@@ -21,6 +21,18 @@ This atomicity ensures:
 
 For example, if you attempt to create 100 documents and one fails due to a validation error, none of the 100 documents will be created.
 
+# Plan limits {% #plan-limits %}
+
+Bulk operations have different limits based on your Appwrite plan:
+
+| Plan | Documents per request |
+|------|----------------------|
+| Free | 100 |
+| Pro  | 1,000 |
+| Scale | Customizable |
+
+These limits apply to all bulk operations including create, update, upsert, and delete operations. If you need higher limits than what the Pro plan offers, you can upgrade to the Scale plan and [contact support](https://appwrite.io/contact-us) to customize your limits based on your specific requirements.
+
 # Create documents {% #create-documents %}
 
 You can create multiple documents in a single request using the `createDocuments` method.
