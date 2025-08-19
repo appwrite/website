@@ -182,14 +182,14 @@ Run the functions to by calling `runAllTasks();`.
 const { Query } = require('node-appwrite');
 
 async function getTodos() {
-    // Retrieve all documents
+    // Retrieve documents (default limit is 25)
     var todos = await databases.listDocuments(
         todoDatabase.$id,
         todoCollection.$id,
-        []  // Empty queries array to get all documents
+        []  // Empty queries array returns up to 25 documents (default limit)
     );
 
-    console.log("All todos:");
+    console.log("Todos:");
     todos.documents.forEach(todo => {
         console.log(`Title: ${todo.title}\nDescription: ${todo.description}\nIs Todo Complete: ${todo.isComplete}\n\n`);
     });
