@@ -293,13 +293,13 @@ For complex preference structures or when storing larger amounts of data, Appwri
 
 {% multicode %}
 ```client-web
-import { Client, TablesDb, ID, Query } from "appwrite";
+import { Client, TablesDB, ID, Query } from "appwrite";
 
 const client = new Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
     .setProject('<PROJECT_ID>');                 // Your project ID
 
-const tablesDb = new TablesDb(client);
+const tablesDb = new TablesDB(client);
 
 // Store user preferences in a database
 const promise = tablesDb.createRow(
@@ -342,7 +342,7 @@ final client = Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
     .setProject('<PROJECT_ID>');                 // Your project ID
 
-final tablesDb = TablesDb(client);
+final tablesDb = TablesDB(client);
 
 // Store user preferences in a database
 final row = await tablesDb.createRow(

@@ -92,7 +92,7 @@ client
 Once the Appwrite Client is initialized, create a function to configure a todo table.
 
 ```ts
-const tablesDb: TablesDb = new TablesDb(client);
+const tablesDb: TablesDB = new TablesDB(client);
 
 var todoDatabase: Models.Database;
 var todoTable: Models.Table;

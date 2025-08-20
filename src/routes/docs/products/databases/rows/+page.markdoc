@@ -16,13 +16,13 @@ In most use cases, you will create rows programmatically.
 
 {% multicode %}
 ```client-web
-import { Client, ID, TablesDb } from "appwrite";
+import { Client, ID, TablesDB } from "appwrite";
 
 const client = new Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
     .setProject('<PROJECT_ID>');
 
-const tablesDb = new TablesDb(client);
+const tablesDb = new TablesDB(client);
 
 const promise = tablesDb.createRow(
     '<DATABASE_ID>',
@@ -45,7 +45,7 @@ void main() async {
         .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
         .setProject('<PROJECT_ID>');
 
-    final tablesDb = TablesDb(client);
+    final tablesDb = TablesDB(client);
 
     try {
         final row = tablesDb.createRow(
@@ -68,7 +68,7 @@ func main() async throws {
         .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
         .setProject("<PROJECT_ID>")
 
-    let tablesDb = TablesDb(client)
+    let tablesDb = TablesDB(client)
 
     do {
         let row = try await tablesDb.createRow(
@@ -84,14 +84,14 @@ func main() async throws {
 ```
 ```client-android-kotlin
 import io.appwrite.Client
-import io.appwrite.services.TablesDb
+import io.appwrite.services.TablesDB
 
 suspend fun main() {
     val client = Client(applicationContext)
         .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
         .setProject("<PROJECT_ID>")
 
-    val tablesDb = TablesDb(client)
+    val tablesDb = TablesDB(client)
 
     try {
         val row = tablesDb.createRow(
@@ -145,13 +145,13 @@ You can change this through [pagination](/docs/products/databases/pagination).
 
 {% multicode %}
 ```client-web
-import { Client, Query, TablesDb } from "appwrite";
+import { Client, Query, TablesDB } from "appwrite";
 
 const client = new Client()
     .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
     .setProject("<PROJECT_ID>")
 
-const tablesDb = new TablesDb(client);
+const tablesDb = new TablesDB(client);
 
 let promise = tablesDb.listRows(
     "<DATABASE_ID>",
@@ -175,7 +175,7 @@ void main() async {
         .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
         .setProject("<PROJECT_ID>")
 
-    final tablesDb = TablesDb(client);
+    final tablesDb = TablesDB(client);
 
     try {
         final rows = await tablesDb.listRows(
@@ -199,7 +199,7 @@ func main() async throws {
         .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
         .setProject("<PROJECT_ID>")
 
-    let tablesDb = TablesDb(client)
+    let tablesDb = TablesDB(client)
 
     do {
         let rows = try await tablesDb.listRows(
@@ -217,14 +217,14 @@ func main() async throws {
 ```client-android-kotlin
 import io.appwrite.Client
 import io.appwrite.Query
-import io.appwrite.services.TablesDb
+import io.appwrite.services.TablesDB
 
 suspend fun main() {
     val client = Client(applicationContext)
         .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
         .setProject("<PROJECT_ID>")
 
-    val tablesDb = TablesDb(client)
+    val tablesDb = TablesDB(client)
 
     try {
         val rows = tablesDb.listRows(
@@ -266,13 +266,13 @@ In most use cases, you will upsert rows programmatically.
 
 {% multicode %}
 ```client-web
-import { Client, ID, TablesDb } from "appwrite";
+import { Client, ID, TablesDB } from "appwrite";
 
 const client = new Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
     .setProject('<PROJECT_ID>');
 
-const tablesDb = new TablesDb(client);
+const tablesDb = new TablesDB(client);
 
 const promise = tablesDb.upsertRow(
     '<DATABASE_ID>',
@@ -295,7 +295,7 @@ void main() async {
         .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
         .setProject('<PROJECT_ID>');
 
-    final tablesDb = TablesDb(client);
+    final tablesDb = TablesDB(client);
 
     try {
         final row = tablesDb.upsertRow(
@@ -318,7 +318,7 @@ func main() async throws {
         .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
         .setProject("<PROJECT_ID>")
 
-    let tablesDb = TablesDb(client)
+    let tablesDb = TablesDB(client)
 
     do {
         let row = try await tablesDb.upsertRow(
@@ -334,14 +334,14 @@ func main() async throws {
 ```
 ```client-android-kotlin
 import io.appwrite.Client
-import io.appwrite.services.TablesDb
+import io.appwrite.services.TablesDB
 
 suspend fun main() {
     val client = Client(applicationContext)
         .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
         .setProject("<PROJECT_ID>")
 
-    val tablesDb = TablesDb(client)
+    val tablesDb = TablesDB(client)
 
     try {
         val row = tablesDb.upsertRow(

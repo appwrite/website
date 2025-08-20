@@ -96,7 +96,7 @@ let client = Client()
 Once the Appwrite Client is initialized, create a function to configure a todo table.
 
 ```swift
-let tablesDb = TablesDb(client)
+let tablesDb = TablesDB(client)
 
 func prepareDatabase() async -> (Database?, Table?) {
     let todoDatabase = try? await tablesDb.create(

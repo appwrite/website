@@ -258,7 +258,7 @@ Create a Votes table with the following columns:
 ## Code
 {% multicode %}
 ```server-nodejs
-import { Client, TablesDb, Query } from 'node-appwrite';
+import { Client, TablesDB, Query } from 'node-appwrite';
 
 export default async function ({ req, res }) {
   const vote = {
@@ -277,7 +277,7 @@ export default async function ({ req, res }) {
     .setProject(process.env.APPWRITE_FUNCTION_PROJECT_ID)
     .setKey(req.headers['x-appwrite-key']);
 
-  const tablesDb = new TablesDb(client);
+  const tablesDb = new TablesDB(client);
   
   const existingVotes = await tablesDb.listRows('<VOTES_TABLE_ID>', [
     Query.equals('userId', vote.userId),
@@ -299,7 +299,7 @@ export default async function ({ req, res }) {
 ```
 ```python
 from appwrite.client import Client
-from appwrite.services.tablesDb import TablesDb
+from appwrite.services.tablesDb import TablesDB
 from appwrite.query import Query
 import os
 
@@ -320,7 +320,7 @@ def main(context):
         .set_key(context.req.headers['x-appwrite-key'])
     )
 
-    tablesDb = TablesDb(client)
+    tablesDb = TablesDB(client)
     
     existing_votes = tablesDb.list_rows('<VOTES_TABLE_ID>', [
         Query.equals('userId', vote['userId']),
@@ -368,7 +368,7 @@ return function ($context) {
         ->setProject(getenv('APPWRITE_FUNCTION_PROJECT_ID'))
         ->setKey($context->req->headers['x-appwrite-key']);
 
-    $tablesDb = new TablesDb($client);
+    $tablesDb = new TablesDB($client);
 
     $existingVotes = $database->listRows('<VOTES_TABLE_ID>', [
         Query->equal('userId', $vote['userId']),
@@ -416,7 +416,7 @@ Future main(final context) async {
         .setProject(Platform.environment['APPWRITE_FUNCTION_PROJECT_ID'])
         .setKey(context.req.headers['x-appwrite-key']);
 
-    final tablesDb = TablesDb(client);
+    final tablesDb = TablesDB(client);
 
     final existingVotes = await tablesDb.listRows('<VOTES_TABLE_ID>', [
         Query.equals('userId', vote['userId']),
@@ -463,7 +463,7 @@ def main(context)
         .set_project(ENV['APPWRITE_FUNCTION_PROJECT_ID'])
         .set_key(context.req.headers['x-appwrite-key'])
 
-    tablesDb = Appwrite::TablesDb.new(client)
+    tablesDb = Appwrite::TablesDB.new(client)
     
     existing_votes = tablesDb.list_rows('<VOTES_TABLE_ID>', [
         Appwrite::Query.new('userId', '=', vote['userId']),
@@ -514,7 +514,7 @@ Create a Messages table with the following columns:
 {% multicode %}
 
 ```server-nodejs
-import { Client, TablesDb, Query, ID } from 'node-appwrite';
+import { Client, TablesDB, Query, ID } from 'node-appwrite';
 import querystring from 'node:querystring';
 
 const html = `<!doctype html>
@@ -552,7 +552,7 @@ export default async function ({ req, res }) {
       .setProject(process.env.APPWRITE_FUNCTION_PROJECT_ID)
       .setKey(req.headers['x-appwrite-key']);
 
-    const tablesDb = new TablesDb(client);
+    const tablesDb = new TablesDB(client);
     const row = await tablesDb.createRow('<DATABASE_ID>', '<MESSAGES_TABLE_ID>', ID.unique(), message);
 
     return res.text("Message sent");
@@ -564,7 +564,7 @@ export default async function ({ req, res }) {
 
 ```python
 from appwrite.client import Client
-from appwrite.services.tablesDb import TablesDb
+from appwrite.services.tablesDb import TablesDB
 from appwrite.query import Query
 from urllib.parse import parse_qs
 import os
@@ -606,7 +606,7 @@ def main(context):
             .set_key(context.req.headers["x-appwrite-key"])
         )
 
-        tablesDb = TablesDb(client)
+        tablesDb = TablesDB(client)
         row = tablesDb.create_row('<DATABASE_ID>', '<MESSAGES_TABLE_ID>', ID.unique(), message)
 
         return context.res.text("Message sent")
@@ -621,7 +621,7 @@ require(__DIR__ . '/../vendor/autoload.php');
 
 use Appwrite\Client;
 use Appwrite\Exception;
-use Appwrite\Services\TablesDb;
+use Appwrite\Services\TablesDB;
 
 $html = '<!doctype html>
 <html lang="en">
@@ -660,7 +660,7 @@ return function ($context) {
          ->setProject(getenv('APPWRITE_FUNCTION_PROJECT_ID'))
          ->setKey($context->req->headers['x-appwrite-key']);
 
-    $tablesDb = new TablesDb($client);
+    $tablesDb = new TablesDB($client);
     $row = $tablesDb->createRow('<DATABASE_ID>', '<MESSAGES_TABLE_ID>', ID::unique(), $message);
 
     return $context->res->text("Message sent");
@@ -709,7 +709,7 @@ def main(context)
             .set_project(ENV['APPWRITE_FUNCTION_PROJECT_ID'])
             .set_key(context.req.headers['x-appwrite-key'])
 
-        tablesDb = Appwrite::TablesDb.new(client)
+        tablesDb = Appwrite::TablesDB.new(client)
         row = tablesDb.create_row('<DATABASE_ID>', '<MESSAGES_TABLE_ID>', ID.unique(), message)
 
         return context.res.text("Message sent")
@@ -759,7 +759,7 @@ Future main(final context) async {
           .setProject(Platform.environment['APPWRITE_FUNCTION_PROJECT_ID'])
           .setKey(context.req.headers['x-appwrite-key']);
 
-        final tablesDb = TablesDb(client);
+        final tablesDb = TablesDB(client);
         final row = await tablesDb.createRow('<DATABASE_ID>', '<MESSAGES_TABLE_ID>', ID.unique(), message);
 
         return context.res.text("Message sent");

@@ -495,7 +495,7 @@ import JSONCodable
 class Appwrite {
     var client: Client
     var account: Account
-    var tablesDb: TablesDb
+    var tablesDb: TablesDB
     let databaseId = "default"
     let tableId = "ideas-tracker"
 

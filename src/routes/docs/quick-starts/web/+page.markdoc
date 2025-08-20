@@ -72,7 +72,7 @@ client
     .setProject('<PROJECT_ID>') // Replace with your project ID
 
 export const account = new Appwrite.Account(client)
-export const tablesDb = new Appwrite.TablesDb(client)
+export const tablesDb = new Appwrite.TablesDB(client)
 ```
 {% /section %}
 
@@ -82,7 +82,7 @@ If you prefer TypeScript, you can import TypeScript models from the Appwrite SDK
 ```ts
 // appwrite.ts
 
-import { Client, TablesDb, Account } from "appwrite";
+import { Client, TablesDB, Account } from "appwrite";
 // Import type models for Appwrite
 import { type Models } from 'appwrite';
 
@@ -93,7 +93,7 @@ client
     .setProject('<PROJECT_ID>'); // Replace with your project ID
 
 export const account: Account = new Account(client);
-export const tablesDb: TablesDb = new TablesDb(client);
+export const tablesDb: TablesDB = new TablesDB(client);
 
 // You then use the imported type definitions like this
 const authUser: Models.Session = await account.createEmailPasswordSession(email, password);

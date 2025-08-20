@@ -25,13 +25,13 @@ You can change this through [pagination](/docs/products/databases/pagination).
 {% multicode %}
 
 ```client-web
-import { Client, Query, TablesDb } from "appwrite";
+import { Client, Query, TablesDB } from "appwrite";
 
 const client = new Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
     .setProject('<PROJECT_ID>');
 
-const tablesDb = new TablesDb(client);
+const tablesDb = new TablesDB(client);
 
 tablesDb.listRows(
     '<DATABASE_ID>',
@@ -47,7 +47,7 @@ const sdk = require('node-appwrite');
 
 const client = new sdk.Client();
 
-const tablesDb = new sdk.TablesDb(client);
+const tablesDb = new sdk.TablesDB(client);
 
 client
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
@@ -78,7 +78,7 @@ void main() async {
         .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
         .setProject('<PROJECT_ID>');
 
-    final tablesDb = TablesDb(client);
+    final tablesDb = TablesDB(client);
 
     try {
         final rows = await tablesDb.listRows(
@@ -103,7 +103,7 @@ func main() async throws {
         .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
         .setProject("<PROJECT_ID>")
 
-    let tablesDb = TablesDb(client)
+    let tablesDb = TablesDB(client)
 
     do {
         let rows = try await tablesDb.listRows(
@@ -122,14 +122,14 @@ func main() async throws {
 ```client-android-kotlin
 import io.appwrite.Client
 import io.appwrite.Query
-import io.appwrite.services.TablesDb
+import io.appwrite.services.TablesDB
 
 suspend fun main() {
     val client = Client(applicationContext)
         .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
         .setProject('<PROJECT_ID>');
 
-    val tablesDb = TablesDb(client)
+    val tablesDb = TablesDB(client)
 
     try {
         val rows = tablesDb.listRows(
@@ -150,7 +150,7 @@ suspend fun main() {
 
 use Appwrite\Client;
 use Appwrite\Query;
-use Appwrite\Services\TablesDb;
+use Appwrite\Services\TablesDB;
 
 $client = new Client();
 
@@ -160,7 +160,7 @@ $client
     ->setKey('<YOUR_API_KEY>')
 ;
 
-$tablesDb = new TablesDb($client);
+$tablesDb = new TablesDB($client);
 
 $result = $tables->listRows(
     '<DATABASE_ID>',
@@ -174,7 +174,7 @@ $result = $tables->listRows(
 ```python
 from appwrite.client import Client
 from appwrite.query import Query
-from appwrite.services.tablesDb import TablesDb
+from appwrite.services.tablesDb import TablesDB
 
 client = Client()
 
@@ -184,7 +184,7 @@ client = Client()
   .set_key('<YOUR_API_KEY>')
 )
 
-tablesDb = TablesDb(client)
+tablesDb = TablesDB(client)
 
 result = tablesDb.list_rows(
     '<DATABASE_ID>',

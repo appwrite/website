@@ -198,7 +198,7 @@ const client = new Client()
     .setProject('<PROJECT_ID>')                  // Your project ID
     .setJWT('eyJJ9.eyJ...886ca');                // Your secret JSON Web Token
 
-const tablesDb = new sdk.TablesDb(client);
+const tablesDb = new sdk.TablesDB(client);
 
 const rows = await tablesDb.listRows(
     '642f358bf4084c662590',
@@ -214,7 +214,7 @@ $client = (new Client())
     .setProject('<PROJECT_ID>')                           // Your project ID
     .setJWT('eyJJ9.eyJ...886ca');                          // Your secret JSON Web Tokens
 
-$tablesDb = new TablesDb($client);
+$tablesDb = new TablesDB($client);
 
 $rows = $tablesDb->listRows(
     databaseId: '642f358bf4084c662590',
@@ -233,7 +233,7 @@ client = Client()
   .set_jwt('eyJJ9.eyJ...886ca')                             # Your secret JSON Web Token
 )
 
-tablesDb = TablesDb(client)
+tablesDb = TablesDB(client)
 
 rows = tablesDb.list_rows(
     database_id='642f358bf4084c662590',
@@ -251,7 +251,7 @@ client = Client.new
     .set_project('<PROJECT_ID>')                           # Your project ID
     .set_jwt('eyJJ9.eyJ...886ca')                           # Your secret JSON Web Token
 
-tablesDb = TablesDb.new(client)
+tablesDb = TablesDB.new(client)
 
 rows = tablesDb.list_rows(
     database_id: '642f358bf4084c662590',
@@ -267,7 +267,7 @@ let client = new Client()
     .setProject('<PROJECT_ID>')                     // Your project ID
     .setJWT('eyJJ9.eyJ...886ca');                   // Your secret JSON Web Token
 
-let tablesDb = new sdk.TablesDb(client);
+let tablesDb = new sdk.TablesDB(client);
 
 let rows = await tablesDb.listRows(
     '642f358bf4084c662590',
@@ -283,7 +283,7 @@ final client = Client()
     .setProject('<PROJECT_ID>')                     // Your project ID
     .setJWT('eyJJ9.eyJ...886ca');                   // Your secret JSON Web Token
 
-final tablesDb = TablesDb(client);
+final tablesDb = TablesDB(client);
 
 final rows = await tablesDb.listRows(
     databaseId: '642f358bf4084c662590',
@@ -299,7 +299,7 @@ val client = Client()
     .setProject("<PROJECT_ID>")                     // Your project ID
     .setJWT("eyJJ9.eyJ...886ca")                    // Your secret JSON Web Token
 
-val tablesDb = TablesDb(client)
+val tablesDb = TablesDB(client)
 
 val rows = tablesDb.listRows(
     databaseId = "642f358bf4084c662590",
@@ -315,7 +315,7 @@ let client = Client()
     .setProject("<PROJECT_ID>")                     // Your project ID
     .setJWT("eyJJ9.eyJ...886ca")                    // Your secret JSON Web Token
     
-let tablesDb = TablesDb(client)
+let tablesDb = TablesDB(client)
 
 let rows = try await tablesDb.listRows(
     databaseId: "642f358bf4084c662590",
@@ -333,7 +333,7 @@ var client = new Client()
     .SetProject("<PROJECT_ID>")                     // Your project ID
     .SetJWT("eyJJ9.eyJ...886ca");                   // Your secret JSON Web Token
 
-var tablesDb = new TablesDb(client);
+var tablesDb = new TablesDB(client);
 
 var rows = await databases.listRows(
     databaseId: "642f358bf4084c662590",
@@ -376,7 +376,7 @@ const client = new Client()
     .setProject('<PROJECT_ID>')                  // Your project ID
     .setKey('98fd4...a2ad2');                    // Your secret API key
 
-const tablesDb = new sdk.TablesDb(client);
+const tablesDb = new sdk.TablesDB(client);
 
 const rows = await tablesDb.listRows(
     '642f358bf4084c662590',
@@ -393,7 +393,7 @@ $client = (new Client())
     ->setProject('<PROJECT_ID>')                  // Your project ID
     ->setKey('98fd4...a2ad2');                    // Your secret API key
 
-$tablesDb = new TablesDb($client);
+$tablesDb = new TablesDB($client);
 
 $rows = $tablesDb->listRows(
     databaseId: '642f358bf4084c662590',
@@ -412,7 +412,7 @@ client = Client()
     .set_key('98fd4...a2ad2')                     // Your secret API key
 )
 
-tablesDb = TablesDb(client)
+tablesDb = TablesDB(client)
 
 rows = tablesDb.list_rows(
     database_id='642f358bf4084c662590',
@@ -430,7 +430,7 @@ client = Client.new
     .set_project('<PROJECT_ID>')                  # Your project ID
     .set_key('98fd4...a2ad2')                     # Your secret API key
 
-tablesDb = TablesDb.new(client)
+tablesDb = TablesDB.new(client)
 
 rows = tablesDb.list_rows(
     database_id: '642f358bf4084c662590',
@@ -446,7 +446,7 @@ let client = new Client()
     .setProject('<PROJECT_ID>')                  // Your project ID
     .setKey('98fd4...a2ad2');                    // Your secret API key
 
-let tablesDb = new sdk.TablesDb(client);
+let tablesDb = new sdk.TablesDB(client);
 
 let rows = await tablesDb.listRows(
     '642f358bf4084c662590',
@@ -462,7 +462,7 @@ final client = Client()
     .setProject('<PROJECT_ID>')                  // Your project ID
     .setKey('98fd4...a2ad2');                    // Your secret API key
 
-final tablesDb = TablesDb(client);
+final tablesDb = TablesDB(client);
 
 final rows = await tablesDb.listRows(
     databaseId: '642f358bf4084c662590',
@@ -478,7 +478,7 @@ val client = Client()
     .setProject("<PROJECT_ID>")                  // Your project ID
     .setKey('98fd4...a2ad2');                    // Your secret API key
 
-val tablesDb = TablesDb(client)
+val tablesDb = TablesDB(client)
 
 val rows = tablesDb.listRows(
     databaseId = "642f358bf4084c662590",
@@ -494,7 +494,7 @@ let client = Client()
     .setProject("<PROJECT_ID>")                  // Your project ID
     .setKey('98fd4...a2ad2');                    // Your secret API key
 
-let tablesDb = TablesDb(client)
+let tablesDb = TablesDB(client)
 
 let rows = try await tablesDb.listRows(
     databaseId: "642f358bf4084c662590",
@@ -512,7 +512,7 @@ var client = new Client()
     .SetProject("<PROJECT_ID>")                  // Your project ID
     .SetKey('98fd4...a2ad2');                    // Your secret API key
 
-var tablesDb = new TablesDb(client);
+var tablesDb = new TablesDB(client);
 
 var rows = await databases.listRows(
     databaseId: "642f358bf4084c662590",

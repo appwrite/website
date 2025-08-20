@@ -112,7 +112,7 @@ With the payload parsed, now you can download the image from Appwrite Storage.
 Create a new file called `appwrite.js` in the `src` directory and add the following code:
 
 ```js
-import { Client, TablesDb, ID, Storage } from 'node-appwrite';
+import { Client, TablesDB, ID, Storage } from 'node-appwrite';
 
 class AppwriteService {
   constructor() {
@@ -124,7 +124,7 @@ class AppwriteService {
       .setProject(process.env.APPWRITE_FUNCTION_PROJECT_ID)
       .setKey(process.env.APPWRITE_API_KEY);
 
-    this.tablesDb = new TablesDb(client);
+    this.tablesDb = new TablesDB(client);
     this.storage = new Storage(client);
   }
 

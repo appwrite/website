@@ -47,7 +47,7 @@ import io.appwrite.Client
 import io.appwrite.ID
 import io.appwrite.Query
 import io.appwrite.models.Row
-import io.appwrite.services.TablesDb
+import io.appwrite.services.TablesDB
 
 class IdeaService(client: Client) {
     companion object {
@@ -55,7 +55,7 @@ class IdeaService(client: Client) {
         private const val ideaTableId = "<YOUR_IDEA_TABLE_ID_HERE>"
     }
 
-    private val tablesDb = TablesDb(client)
+    private val tablesDb = TablesDB(client)
 
     suspend fun fetch(): List<Row<Map<String, Any>>> {
         return tablesDb.listRows(

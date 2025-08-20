@@ -85,7 +85,7 @@ Open the file `Main.kt` and initialize the Appwrite Client. Replace `<PROJECT_ID
 ```kotlin
 import io.appwrite.Client
 import io.appwrite.ID
-import io.appwrite.services.TablesDb
+import io.appwrite.services.TablesDB
 import io.appwrite.models.Database
 import io.appwrite.models.Table
 import kotlinx.coroutines.coroutineScope
@@ -102,7 +102,7 @@ val client = Client()
 Once the Appwrite Client is initialized, create a function to configure a todo table.
 
 ```kotlin
-val tablesDb = TablesDb(client)
+val tablesDb = TablesDB(client)
 
 var todoDatabase: Database? = null
 var todoTable: Table? = null

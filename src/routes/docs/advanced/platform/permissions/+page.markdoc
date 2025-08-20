@@ -68,13 +68,13 @@ The following examples are using the [Appwrite Web SDK](https://github.com/appwr
 In the following example, we are creating a row that can be read by anyone, edited by writers or admins, and deleted by administrators or a user with the user ID `user:5c1f88b42259e`.
 
 ```client-web
-import { Client, TablesDb, Permission, Role } from "appwrite";
+import { Client, TablesDB, Permission, Role } from "appwrite";
 
 const client = new Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
     .setProject('<PROJECT_ID>');
 
-const tablesDb = new TablesDb(client);
+const tablesDb = new TablesDB(client);
 
 let promise = tablesDb.createRow(
     '<DATABASE_ID>',
@@ -101,13 +101,13 @@ promise.then(function (response) {
 In the following example, we are creating a row that can be read by members of the team with ID `5c1f88b87435e` and can only be edited or deleted by members of the same team that possess the team role `owner`.
 
 ```client-web
-import { Client, TablesDb, Permission, Role } from "appwrite";
+import { Client, TablesDB, Permission, Role } from "appwrite";
 
 const client = new Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
     .setProject('<PROJECT_ID>');
 
-const tablesDb = new TablesDb(client);
+const tablesDb = new TablesDB(client);
 
 let promise = tablesDb.createRow(
     '<DATABASE_ID>',
@@ -147,13 +147,13 @@ When creating rows in your application, set row-level permissions to restrict ac
 
 {% multicode %}
 ```client-web
-import { Client, TablesDb, Permission, Role } from "appwrite";
+import { Client, TablesDB, Permission, Role } from "appwrite";
 
 const client = new Client()
     .setEndpoint('https://cloud.appwrite.io/v1')
     .setProject('<PROJECT_ID>');
 
-const tablesDb = new TablesDb(client);
+const tablesDb = new TablesDB(client);
 
 let promise = tablesDb.createRow(
     '<DATABASE_ID>',
@@ -180,7 +180,7 @@ void main() async {
         .setEndpoint('https://cloud.appwrite.io/v1')
         .setProject('<PROJECT_ID>');
 
-    final tablesDb = TablesDb(client);
+    final tablesDb = TablesDB(client);
 
     try {
         final row = await tablesDb.createRow(
@@ -206,7 +206,7 @@ func main() async throws {
         .setEndpoint("https://cloud.appwrite.io/v1")
         .setProject("<PROJECT_ID>");
 
-    let tablesDb = TablesDb(client);
+    let tablesDb = TablesDB(client);
 
     do {
         let row = try await tablesDb.createRow(
@@ -228,7 +228,7 @@ func main() async throws {
 import io.appwrite.Client
 import io.appwrite.Permission
 import io.appwrite.Role
-import io.appwrite.services.TablesDb
+import io.appwrite.services.TablesDB
 import io.appwrite.exceptions.AppwriteException
 
 suspend fun main() {
@@ -236,7 +236,7 @@ suspend fun main() {
         .setEndpoint("https://cloud.appwrite.io/v1")
         .setProject("<PROJECT_ID>");
 
-    val tablesDb = TablesDb(client);
+    val tablesDb = TablesDB(client);
 
     try {
         val row = tablesDb.createRow(

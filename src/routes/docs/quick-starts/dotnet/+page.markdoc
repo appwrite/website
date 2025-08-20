@@ -94,7 +94,7 @@ client
 Once the Appwrite Client is initialized, create a function to configure a todo table.
 
 ```csharp
-var tablesDb = new TablesDb(client);
+var tablesDb = new TablesDB(client);
 
 Database todoDatabase;
 Table todoTable;

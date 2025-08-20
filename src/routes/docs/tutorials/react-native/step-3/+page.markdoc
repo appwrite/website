@@ -46,7 +46,7 @@ Only one instance of the `Client()` class should be created per app.
 Add the following code to it, replacing `<PROJECT_ID>` with your project ID.
 
 ```js
-import { Client, TablesDb, Account } from "react-native-appwrite";
+import { Client, TablesDB, Account } from "react-native-appwrite";
 
 const client = new Client();
 client
@@ -56,5 +56,5 @@ client
 
 
 export const account = new Account(client);
-export const tablesDb = new TablesDb(client);
+export const tablesDb = new TablesDB(client);
 ```

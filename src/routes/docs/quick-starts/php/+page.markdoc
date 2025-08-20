@@ -75,7 +75,7 @@ Create a new file `index.php` and initialize the Appwrite Client. Replace `<PROJ
 require_once 'vendor/autoload.php';
 
 use Appwrite\Client;
-use Appwrite\Services\TablesDb;
+use Appwrite\Services\TablesDB;
 use Appwrite\ID;
 
 $client = new Client();
@@ -92,7 +92,7 @@ $client
 Once the Appwrite Client is initialized, create a function to configure a todo table.
 
 ```php
-$tablesDb = new TablesDb($client);
+$tablesDb = new TablesDB($client);
 
 function prepareDatabase($tablesDb) {
     $todoDatabase = $tablesDb->create(

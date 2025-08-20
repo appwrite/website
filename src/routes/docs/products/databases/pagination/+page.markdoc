@@ -21,13 +21,13 @@ The `Query.offset()` is number of records you wish to skip before selecting reco
 
 {% multicode %}
 ```client-web
-import { Client, Query, TablesDb } from "appwrite";
+import { Client, Query, TablesDB } from "appwrite";
 
 const client = new Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
     .setProject('<PROJECT_ID>');
 
-const tablesDb = new TablesDb(client);
+const tablesDb = new TablesDB(client);
 
 // Page 1
 const page1 = await tablesDb.listRows(
@@ -57,7 +57,7 @@ void main() async {
         .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
         .setProject('<PROJECT_ID>');
 
-    final tablesDb = TablesDb(client);
+    final tablesDb = TablesDB(client);
 
     final page1 = await tablesDb.listRows(
         databaseId: '<DATABASE_ID>',
@@ -87,7 +87,7 @@ func main() async throws {
         .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
         .setProject("<PROJECT_ID>")
 
-    let tablesDb = TablesDb(client)
+    let tablesDb = TablesDB(client)
 
     let page1 = try await tablesDb.listRows(
         databaseId: "<DATABASE_ID>",
@@ -111,14 +111,14 @@ func main() async throws {
 ```client-android-kotlin
 import io.appwrite.Client
 import io.appwrite.Query
-import io.appwrite.services.TablesDb
+import io.appwrite.services.TablesDB
 
 suspend fun main() {
     val client = Client(applicationContext)
         .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
         .setProject("<PROJECT_ID>")
 
-    val tablesDb = TablesDb(client)
+    val tablesDb = TablesDB(client)
 
     val page1 = tablesDb.listRows(
         databaseId = "<DATABASE_ID>",
@@ -157,13 +157,13 @@ Pass the first row's ID into the `Query.cursorBefore(firstId)` query method to r
 {% multicode %}
 
 ```client-web
-import { Client, Query, TablesDb } from "appwrite";
+import { Client, Query, TablesDB } from "appwrite";
 
 const client = new Client()
     .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
     .setProject("<PROJECT_ID>");
 
-const tablesDb = new TablesDb(client);
+const tablesDb = new TablesDB(client);
 
 // Page 1
 const page1 = await tablesDb.listRows(
@@ -195,7 +195,7 @@ void main() async {
         .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
         .setProject('<PROJECT_ID>');
 
-    final tablesDb = TablesDb(client);
+    final tablesDb = TablesDB(client);
 
     final page1 = await tablesDb.listRows(
         databaseId: '<DATABASE_ID>',
@@ -227,7 +227,7 @@ func main() async throws {
       .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
       .setProject("<PROJECT_ID>")
 
-    let tablesDb = TablesDb(client)
+    let tablesDb = TablesDB(client)
 
     let page1 = try await tablesDb.listRows(
         databaseId: "<DATABASE_ID>",
@@ -254,14 +254,14 @@ import android.util.Log
 import io.appwrite.AppwriteException
 import io.appwrite.Client
 import io.appwrite.Query
-import io.appwrite.services.TablesDb
+import io.appwrite.services.TablesDB
 
 suspend fun main() {
     val client = Client(applicationContext)
         .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
         .setProject("<PROJECT_ID>")
 
-    val tablesDb = TablesDb(client)
+    val tablesDb = TablesDB(client)
 
     val page1 = tablesDb.listRows(
         databaseId = "<DATABASE_ID>",

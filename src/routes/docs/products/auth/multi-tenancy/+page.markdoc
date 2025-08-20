@@ -183,13 +183,13 @@ Control access to rows and resources using team-based permissions. This ensures 
 
 {% multicode %}
 ```client-web
-import { Client, TablesDb, ID, Permission, Role } from "appwrite";
+import { Client, TablesDB, ID, Permission, Role } from "appwrite";
 
 const client = new Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
     .setProject('<PROJECT_ID>');
 
-const tablesDb = new TablesDb(client);
+const tablesDb = new TablesDB(client);
 
 // Create a row that only members of "Example Corp" tenant can access
 const row = await tablesDb.createRow(
@@ -219,7 +219,7 @@ final client = Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
     .setProject('<PROJECT_ID>');
 
-final tablesDb = TablesDb(client);
+final tablesDb = TablesDB(client);
 
 // Create a row that only members of "Example Corp" tenant can access
 final row = await tablesDb.createRow(
@@ -249,7 +249,7 @@ let client = Client()
     .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
     .setProject("<PROJECT_ID>")
 
-let tablesDb = TablesDb(client)
+let tablesDb = TablesDB(client)
 
 // Create a row that only members of "Example Corp" tenant can access
 let row = try await tablesDb.createRow(
@@ -275,7 +275,7 @@ let row = try await tablesDb.createRow(
 ```client-android-kotlin
 import io.appwrite.Client
 import io.appwrite.ID
-import io.appwrite.services.TablesDb
+import io.appwrite.services.TablesDB
 import io.appwrite.models.Permission
 import io.appwrite.models.Role
 
@@ -283,7 +283,7 @@ val client = Client(context)
     .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
     .setProject("<PROJECT_ID>")
 
-val tablesDb = TablesDb(client)
+val tablesDb = TablesDB(client)
 
 // Create a row that only members of "Example Corp" tenant can access
 val row = tablesDb.createRow(
@@ -314,13 +314,13 @@ When querying data, users will automatically only see rows they have permission 
 
 {% multicode %}
 ```client-web
-import { Client, TablesDb, Query } from "appwrite";
+import { Client, TablesDB, Query } from "appwrite";
 
 const client = new Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
     .setProject('<PROJECT_ID>');
 
-const tablesDb = new TablesDb(client);
+const tablesDb = new TablesDB(client);
 
 // Current user will only see invoices they have access to
 const rows = await tablesDb.listRows(
@@ -344,7 +344,7 @@ final client = Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
     .setProject('<PROJECT_ID>');
 
-final tablesDb = TablesDb(client);
+final tablesDb = TablesDB(client);
 
 // Current user will only see invoices they have access to
 final rows = await tablesDb.listRows(
@@ -368,7 +368,7 @@ let client = Client()
     .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
     .setProject("<PROJECT_ID>")
 
-let tablesDb = TablesDb(client)
+let tablesDb = TablesDB(client)
 
 // Current user will only see invoices they have access to
 let rows = try await tablesDb.listRows(
@@ -387,14 +387,14 @@ let tenantDocuments = try await tablesDb.listRows(
 ```
 ```client-android-kotlin
 import io.appwrite.Client
-import io.appwrite.services.TablesDb
+import io.appwrite.services.TablesDB
 import io.appwrite.Query
 
 val client = Client(context)
     .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
     .setProject("<PROJECT_ID>")
 
-val tablesDb = TablesDb(client)
+val tablesDb = TablesDB(client)
 
 // Current user will only see invoices they have access to
 val rows = tablesDb.listRows(

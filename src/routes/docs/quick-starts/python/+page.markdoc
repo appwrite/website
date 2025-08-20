@@ -93,7 +93,7 @@ Open `my_app.py` and initialize the Appwrite Client. Replace `<PROJECT_ID>` with
 
 ```py
 from appwrite.client import Client
-from appwrite.services.tablesDb import TablesDb
+from appwrite.services.tablesDb import TablesDB
 from appwrite.id import ID
 
 client = Client()
@@ -108,7 +108,7 @@ client.set_key('<YOUR_API_KEY>')
 Once the Appwrite Client is initialized, create a function to configure a todo table.
 
 ```py
-tablesDb = TablesDb(client)
+tablesDb = TablesDB(client)
 
 todoDatabase = None
 todoTable = None

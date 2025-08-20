@@ -1566,7 +1566,7 @@ Update the function settings to configure the scopes of the function.
 
 {% multicode %}
 ```server-nodejs
-import { Client, TablesDb, ID } from 'node-appwrite';
+import { Client, TablesDB, ID } from 'node-appwrite';
 
 export default async ({ req, res, log, error }) => {
     // Set project and set API key
@@ -1574,7 +1574,7 @@ export default async ({ req, res, log, error }) => {
        .setProject(process.env.APPWRITE_FUNCTION_PROJECT_ID)
        .setKey(req.headers['x-appwrite-key']);
 
-    const tablesDb = new TablesDb(client);
+    const tablesDb = new TablesDB(client);
 
     try {
         await tablesDb.createRow(
@@ -1598,7 +1598,7 @@ require(__DIR__ . '/../vendor/autoload.php');
 
 use Appwrite\Client;
 use Appwrite\Exception;
-use Appwrite\Services\TablesDb;
+use Appwrite\Services\TablesDB;
 use Appwrite\ID;
 
 return function ($context) {
@@ -1607,7 +1607,7 @@ return function ($context) {
         ->setProject(getenv('APPWRITE_FUNCTION_PROJECT_ID'))
         ->setKey($context->req->headers['x-appwrite-key']);
    
-    $tablesDb = new TablesDb($client);
+    $tablesDb = new TablesDB($client);
 
     try {
         $tablesDb->createRow(
@@ -1626,7 +1626,7 @@ return function ($context) {
 ```
 ```python
 from appwrite.client import Client
-from appwrite.services.tablesDb import TablesDb
+from appwrite.services.tablesDb import TablesDB
 from appwrite.id import ID
 
 import os
@@ -1639,7 +1639,7 @@ def main(context):
             .set_key(context.req.headers["x-appwrite-key"])
     )
 
-    tablesDb = TablesDb(client)
+    tablesDb = TablesDB(client)
 
     try:
         tablesDb.create_row(
@@ -1665,7 +1665,7 @@ def main(context)
       .set_project(ENV['APPWRITE_FUNCTION_PROJECT_ID'])
       .set_key(context.req.headers['x-appwrite-key'])
 
-    tablesDb = Appwrite::TablesDb.new(client)
+    tablesDb = Appwrite::TablesDB.new(client)
 
     begin
         tablesDb.create_row(
@@ -1683,7 +1683,7 @@ def main(context)
 end
 ```
 ```deno
-import { Client, TablesDb, ID } from "https://deno.land/x/appwrite/mod.ts";
+import { Client, TablesDB, ID } from "https://deno.land/x/appwrite/mod.ts";
                 
 export default function ({req, res, error}: any){
     // Set project and set API key
@@ -1691,7 +1691,7 @@ export default function ({req, res, error}: any){
        .setProject(Deno.env.get("APPWRITE_FUNCTION_PROJECT_ID"))
        .setKey(req.headers["x-appwrite-key"] || "");
 
-    const tablesDb = new TablesDb(client);
+    const tablesDb = new TablesDB(client);
     
     try {
         tablesDb.createRow(
@@ -1727,7 +1727,7 @@ func Main(Context openruntimes.Context) openruntimes.Response {
 		appwrite.WithKey(Context.Req.Headers["x-appwrite-key"]),
 	)
 
-	databases := appwrite.NewTablesDb(client)
+	databases := appwrite.NewTablesDB(client)
 
 	_, err := databases.createRow(
 		"<DATABASE_ID>",
@@ -1755,7 +1755,7 @@ Future<dynamic> main(final context) async {
        .setProject(Platform.environment['APPWRITE_FUNCTION_PROJECT_ID'])
        .setKey(context.req.headers['x-appwrite-key']);
 
-    final tablesDb = TablesDb(client);
+    final tablesDb = TablesDB(client);
     
     try {
         await tablesDb.createRow(
@@ -1783,7 +1783,7 @@ func main(context: RuntimeContext) async throws -> RuntimeOutput {
        .setProject(ProcessInfo.processInfo.environment["APPWRITE_FUNCTION_PROJECT_ID"])
        .setKey(context.req.headers["x-appwrite-key"] ?? "")
 
-    let tablesDb = TablesDb(client: client)
+    let tablesDb = TablesDB(client: client)
 
     do {
         try await tablesDb.createRow(
@@ -1816,7 +1816,7 @@ namespace DotNetRuntime
                 .SetProject(Environment.GetEnvironmentVariable("APPWRITE_FUNCTION_PROJECT_ID")) 
                 .SetKey(Context.Req.Headers["x-appwrite-key"]);
 
-            var tablesDb = new TablesDb(client);
+            var tablesDb = new TablesDB(client);
     
             try {
                 await databases.createRow(
@@ -1840,7 +1840,7 @@ package io.openruntimes.kotlin.src
 import io.openruntimes.kotlin.RuntimeContext
 import io.openruntimes.kotlin.RuntimeOutput
 import io.appwrite.Client
-import io.appwrite.services.TablesDb
+import io.appwrite.services.TablesDB
 import io.appwrite.ID
 import java.util.HashMap
 
@@ -1851,7 +1851,7 @@ class Main {
            .setProject(System.getenv("APPWRITE_FUNCTION_PROJECT_ID"))
            .setKey(context.req.headers["x-appwrite-key"])
 
-        val tablesDb = TablesDb(client)
+        val tablesDb = TablesDB(client)
 
         try {
             tablesDb.createRow(
@@ -1884,7 +1884,7 @@ public class Main {
              .setProject(System.getenv("APPWRITE_FUNCTION_PROJECT_ID"))
              .setKey(context.getReq().getHeaders().get("x-appwrite-key"));
 
-        Databases tablesDb = new TablesDb(client);
+        Databases tablesDb = new TablesDB(client);
 
         try {
             tablesDb.createRow(
@@ -1914,7 +1914,7 @@ If the Appwrite Function is invoked by an authenticated user, the `x-appwrite-us
 {% multicode %}
 
 ```server-nodejs
-import { Client, TablesDb, ID } from 'node-appwrite';
+import { Client, TablesDB, ID } from 'node-appwrite';
 
 export default async ({ req, res, log }) => {
     const client = new Client()
@@ -1926,7 +1926,7 @@ export default async ({ req, res, log }) => {
         return res.text("Access denied: This function requires authentication. Please sign in to continue.");
     }
 
-    const tablesDb = new TablesDb(client);
+    const tablesDb = new TablesDB(client);
 
     try {
         await tablesDb.createRow(
@@ -1950,7 +1950,7 @@ require(__DIR__ . '/../vendor/autoload.php');
 
 use Appwrite\Client;
 use Appwrite\Exception;
-use Appwrite\Services\TablesDb;
+use Appwrite\Services\TablesDB;
 use Appwrite\ID;
 
 return function ($context) {
@@ -1963,7 +1963,7 @@ return function ($context) {
         return $context->res->text("Access denied: This function requires authentication. Please sign in to continue.");
     }
     
-    $tablesDb = new TablesDb($client);
+    $tablesDb = new TablesDB($client);
 
     try {
         $tablesDb->createRow(
@@ -1982,7 +1982,7 @@ return function ($context) {
 ```
 ```python
 from appwrite.client import Client
-from appwrite.services.tablesDb import TablesDb
+from appwrite.services.tablesDb import TablesDB
 from appwrite.id import ID
 
 import os
@@ -1998,7 +1998,7 @@ def main(context):
     else:
         return context.res.text("Access denied: This function requires authentication. Please sign in to continue.")
 
-    tablesDb = TablesDb(client)
+    tablesDb = TablesDB(client)
 
     try:
         tablesDb.create_row(
@@ -2028,7 +2028,7 @@ def main(context)
         return context.response.text("Access denied: This function requires authentication. Please sign in to continue.")
     end
 
-    tablesDb = Appwrite::TablesDb.new(client)
+    tablesDb = Appwrite::TablesDB.new(client)
 
     begin
         tablesDb.create_row('<DATABASE_ID>', '<TABLE_ID>', Appwrite::ID.unique(), {})
@@ -2041,7 +2041,7 @@ def main(context)
 end
 ```
 ```deno
-import { Client, TablesDb, ID } from "https://deno.land/x/appwrite/mod.ts";
+import { Client, TablesDB, ID } from "https://deno.land/x/appwrite/mod.ts";
                 
 export default function ({req, res, error}: any){
     const client = new Client()
@@ -2053,7 +2053,7 @@ export default function ({req, res, error}: any){
         return res.text("Access denied: This function requires authentication. Please sign in to continue.");
     }
     
-    const tablesDb = new TablesDb(client);
+    const tablesDb = new TablesDB(client);
     
     try {
         tablesDb.createRow(
@@ -2094,7 +2094,7 @@ func Main(Context openruntimes.Context) openruntimes.Response {
 		return Context.Res.Text("Access denied: This function requires authentication. Please sign in to continue.")
 	}
 
-	databases := appwrite.NewTablesDb(client)
+	databases := appwrite.NewTablesDB(client)
 
 	_, err := databases.createRow(
 		"<DATABASE_ID>",
@@ -2126,7 +2126,7 @@ Future<dynamic> main(final context) async {
         return context.res.text("Access denied: This function requires authentication. Please sign in to continue.");
     }
     
-    final tablesDb = TablesDb(client);
+    final tablesDb = TablesDB(client);
     
     try {
         await tablesDb.createRow(
@@ -2158,7 +2158,7 @@ func main(context: RuntimeContext) async throws -> RuntimeOutput {
         return context.res.text("Access denied: This function requires authentication. Please sign in to continue.")
     }
 
-    let tablesDb = TablesDb(client: client)
+    let tablesDb = TablesDB(client: client)
 
     do {
         try await tablesDb.createRow(
@@ -2195,7 +2195,7 @@ namespace DotNetRuntime
                 return Context.Res.Text("Access denied: This function requires authentication. Please sign in to continue");
             }
 
-            var tablesDb = new TablesDb(client);
+            var tablesDb = new TablesDB(client);
 
             try {
                 await databases.createRow(
@@ -2219,7 +2219,7 @@ package io.openruntimes.kotlin.src
 import io.openruntimes.kotlin.RuntimeContext
 import io.openruntimes.kotlin.RuntimeOutput
 import io.appwrite.Client
-import io.appwrite.services.TablesDb
+import io.appwrite.services.TablesDB
 import io.appwrite.ID
 import java.util.HashMap
 
@@ -2234,7 +2234,7 @@ class Main {
             return context.res.text("Access denied: This function requires authentication. Please sign in to continue.")
         }
 
-        val tablesDb = TablesDb(client)
+        val tablesDb = TablesDB(client)
 
         try {
             tablesDb.createRow(
@@ -2271,7 +2271,7 @@ public class Main {
             return context.res.text("Access denied: This function requires authentication. Please sign in to continue.");
         }
 
-        Databases tablesDb = new TablesDb(client);
+        Databases tablesDb = new TablesDB(client);
 
         try {
             tablesDb.createRow(

@@ -87,7 +87,7 @@ var (
 	appwriteClient    client.Client
 	todoDatabase      *models.Database
 	todoTable    *models.Table
-	appwriteDatabases *tablesDb.TablesDb
+	appwriteDatabases *tablesDb.TablesDB
 )
 
 func main() {
@@ -105,7 +105,7 @@ Once the Appwrite Client is initialized, create a function to configure a todo t
 
 ```go
 func prepareDatabase() {
-	tablesDb = appwrite.NewTablesDb(appwriteClient)
+	tablesDb = appwrite.NewTablesDB(appwriteClient)
 
 	todoDatabase, _ = tablesDb.Create(
 		id.Unique(),
@@ -240,7 +240,7 @@ var (
 	appwriteClient    client.Client
 	todoDatabase      *models.Database
 	todoTable    *models.Table
-	tablesDb *tablesDb.TablesDb
+	tablesDb *tablesDb.TablesDB
 )
 
 func main() {

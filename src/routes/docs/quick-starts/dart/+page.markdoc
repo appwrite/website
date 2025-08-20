@@ -95,7 +95,7 @@ var todoDatabase;
 var todoTable;
 
 Future<void> prepareDatabase() async {
-  tablesDb = TablesDb(client);
+  tablesDb = TablesDB(client);
 
   todoDatabase = await tablesDb.create(
     databaseId: ID.unique(), 
