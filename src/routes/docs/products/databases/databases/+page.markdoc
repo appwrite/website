@@ -31,7 +31,7 @@ client
     .setKey('919c2d18fb5d4...a2ae413da83346ad2') // Your secret API key
 ;
 
-const promise = grids.create('<DATABASE_ID>', '<NAME>');
+const promise = grids.createDatabase('<DATABASE_ID>', '<NAME>');
 
 promise.then(function (response) {
     console.log(response);
@@ -54,7 +54,7 @@ client
 ;
 
 
-let promise = grids.create('<DATABASE_ID>', '<NAME>');
+let promise = grids.createTable('<DATABASE_ID>', '<NAME>');
 
 promise.then(function (response) {
     console.log(response);
@@ -66,7 +66,7 @@ promise.then(function (response) {
 <?php
 
 use Appwrite\Client;
-use Appwrite\Services\Databases;
+use Appwrite\Services\Grids;
 
 $client = new Client();
 
@@ -78,7 +78,7 @@ $client
 
 $grids = new Grids($client);
 
-$result = $databases->create('<DATABASE_ID>', '<NAME>');
+$result = $databases->createDatabase('<DATABASE_ID>', '<NAME>');
 ```
 ```python
 from appwrite.client import Client
@@ -94,7 +94,7 @@ client = Client()
 
 grids = Grids(client)
 
-result = grids.create('<DATABASE_ID>', '<NAME>')
+result = grids.create_database('<DATABASE_ID>', '<NAME>')
 ```
 ```ruby
 require 'Appwrite'
@@ -108,7 +108,7 @@ client = Client.new
 
 grids = Grids.new(client)
 
-response = grids.create(database_id: '<DATABASE_ID>', name: '<NAME>')
+response = grids.create_database(database_id: '<DATABASE_ID>', name: '<NAME>')
 
 puts response.inspect
 ```
@@ -124,7 +124,7 @@ var client = new Client()
 
 var grids = new Grids(client);
 
-Database result = await grids.Create(
+Database result = await grids.CreateDatabase(
     databaseId: "<DATABASE_ID>",
     name: "<NAME>");
 ```
@@ -133,7 +133,7 @@ import 'package:dart_appwrite/dart_appwrite.dart';
 
 void main() { // Init SDK
   Client client = Client();
-  Databases grids = Grids(client);
+  Grids grids = Grids(client);
 
   client
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
@@ -141,7 +141,7 @@ void main() { // Init SDK
     .setKey('919c2d18fb5d4...a2ae413da83346ad2') // Your secret API key
   ;
 
-  Future result = grids.create(
+  Future result = grids.createDatabase(
     databaseId: '<DATABASE_ID>',
     name: '<NAME>',
   );
@@ -156,7 +156,7 @@ void main() { // Init SDK
 ```
 ```kotlin
 import io.appwrite.Client
-import io.appwrite.services.Databases
+import io.appwrite.services.Grids
 
 val client = Client(context)
     .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
@@ -165,7 +165,7 @@ val client = Client(context)
 
 val grids = Grids(client)
 
-val response = grids.create(
+val response = grids.createDatabase(
     databaseId = "<DATABASE_ID>",
     name = "<NAME>",
 )
@@ -173,16 +173,16 @@ val response = grids.create(
 ```java
 import io.appwrite.Client;
 import io.appwrite.coroutines.CoroutineCallback;
-import io.appwrite.services.Databases;
+import io.appwrite.services.Grids;
 
 Client client = new Client()
     .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
     .setProject("<PROJECT_ID>") // Your project ID
     .setKey("919c2d18fb5d4...a2ae413da83346ad2"); // Your secret API key
 
-Databases grids = new Grids(client);
+Grids grids = new Grids(client);
 
-grids.create(
+grids.createDatabase(
     "<DATABASE_ID>",
     "<NAME>",
     new CoroutineCallback<>((result, error) -> {
@@ -205,7 +205,7 @@ let client = Client()
 
 let grids = Grids(client)
 
-let grid= try await grids.create(
+let grid= try await grids.createDatabase(
     databaseId: "<DATABASE_ID>",
     name: "<NAME>"
 )
