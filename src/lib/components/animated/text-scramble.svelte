@@ -1,7 +1,7 @@
 <script lang="ts">
     import { write } from '$lib/animations';
     import { cn } from '$lib/utils/cn';
-    import { onDestroy, onMount } from 'svelte';
+    import { onMount } from 'svelte';
 
     export let text: string = '';
     export let delay: number = 0;

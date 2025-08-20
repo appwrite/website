@@ -21,16 +21,19 @@
     export let animate: boolean = false;
 
     const animation = () => {
-        setInterval(() => {
-            if ($state.animationComplete) {
+        const interval = setInterval(() => {
+            if ($state.animationComplete || $state.activeInputs.length >= 5) {
+                clearInterval(interval);
+                if (!$state.animationComplete) {
+                    state.set({ ...$state, animationComplete: true });
+                }
                 return;
             }
-            if ($state.activeInputs.length === 5) {
-                state.set({ ...$state, animationComplete: true });
-            }
+
+            const nextIndex = $state.activeInputs.length;
             state.set({
                 ...$state,
-                activeInputs: [...$state.activeInputs, $state.activeInputs.length],
+                activeInputs: [...$state.activeInputs, nextIndex],
                 currentInput: Math.min($state.currentInput + 1, 5)
             });
         }, 600);

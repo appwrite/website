@@ -28,7 +28,7 @@
         <div class="mt-1 grid grid-cols-2 gap-y-4 md:grid-cols-3">
             <div>Copyright © {year} Appwrite</div>
 
-            <iframe
+            <!-- <iframe
                 class="w-full md:w-fit md:max-w-[230px]"
                 title="Appwrite Status"
                 src="https://status.appwrite.online/badge?theme=dark"
@@ -37,7 +37,7 @@
                 scrolling="no"
                 style:color-scheme="none"
                 style:margin-top="-4px"
-            ></iframe>
+            ></iframe> -->
 
             <ul class="flex gap-4 text-right md:justify-end">
                 <li>
