@@ -154,7 +154,7 @@ To prevent this, implement **role-based access control (RBAC)** to restrict acce
 
 Every function that modifies or deletes data should enforce strict authorization rules. Always verify user roles and enforce **least privilege access**, ensuring users only have permissions necessary for their role.
 
-If using Appwrite, ensure that your database collections are [configured with the correct permissions](https://appwrite.io/docs/products/databases/permissions) and that you are using the correct roles to restrict access.
+If using Appwrite, ensure that your database tables are [configured with the correct permissions](https://appwrite.io/docs/products/databases/permissions) and that you are using the correct roles to restrict access.
 
 # 7. Secure all communications with HTTPS
 

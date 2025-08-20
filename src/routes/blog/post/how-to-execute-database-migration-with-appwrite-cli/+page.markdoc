@@ -35,35 +35,35 @@ Let's walk through the process of planning and executing a database migration us
 If you already have a database setup, start by pulling the current configuration into your `appwrite.config.json` file. This step ensures that you have the latest schema as a baseline.
 
 ```bash
-appwrite pull collections --all
+appwrite pull tables --all
 
 ```
 
-## Step 2: Creating and pushing collections
+## Step 2: Creating and pushing tables
 
-If you are starting from scratch, you can initialize a new collection and push it to Appwrite.
+If you are starting from scratch, you can initialize a new table and push it to Appwrite.
 
-1. Create a new collection:
-    
+1. Create a new table:
+
     ```bash
-    appwrite init collection
+    appwrite init table
     ```
-    
-2. Push the collection to Appwrite:
-    
-    ```bash
-    appwrite push collections
-    ```
-    
 
-## Step 3: Modifying collections
+2. Push the table to Appwrite:
+
+    ```bash
+    appwrite push tables
+    ```
+
+
+## Step 3: Modifying tables
 
 To make changes to your collections, edit the `appwrite.config.json` file. For instance, you might want to change an attribute's type or add a new attribute. Here’s an example:
 
-### Original attributes
+### Original columns
 
 ```json
-"attributes": [
+"columns": [
   {
     "key": "a",
     "type": "integer",
@@ -77,10 +77,10 @@ To make changes to your collections, edit the `appwrite.config.json` file. For
 ]
 ```
 
-### Modified attributes
+### Modified columns
 
 ```json
-"attributes": [
+"columns": [
   {
     "key": "a",
     "type": "string",
@@ -109,7 +109,7 @@ To make changes to your collections, edit the `appwrite.config.json` file. For
 After making the necessary changes, push the updated schema to Appwrite:
 
 ```bash
-appwrite push collections
+appwrite push tables
 
 ```
 

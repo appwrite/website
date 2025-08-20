@@ -26,11 +26,11 @@ The roadmap is designed to help us increase collaboration among the core team, c
 
 # The Appwriter is out!
 
-Appwrite community members have started to receive their Appwriters, and the reviews are in! People love it. 
+Appwrite community members have started to receive their Appwriters, and the reviews are in! People love it.
 
 ![Appwriter testimonials](/images/blog/product-update-june/appwriter-testimonials.png)
 
-We’re very proud of the overwhelmingly positive feedback from the community. Our team has worked tirelessly for the past six months to ensure that every detail, from the packaging to every key press, is perfect. 
+We’re very proud of the overwhelmingly positive feedback from the community. Our team has worked tirelessly for the past six months to ensure that every detail, from the packaging to every key press, is perfect.
 
 The Appwriter will be available for pre-order on the Appwrite store today! [Visit our store](https://apwr.dev/store) to place your pre-order.
 
@@ -40,7 +40,7 @@ Does this mean we’re also a hardware company now?
 
 ![Messaging page](/images/blog/product-update-june/messaging-page.png)
 
-Appwrite’s newest product Messaging now has its own product page (the first of its kind!). Messaging allows you to set up email, SMS and push notifications to your users from a single API. 
+Appwrite’s newest product Messaging now has its own product page (the first of its kind!). Messaging allows you to set up email, SMS and push notifications to your users from a single API.
 
 You can find more in-depth information on how messaging works and even play around with the interactive animations.
 
@@ -52,7 +52,7 @@ You can find more in-depth information on how messaging works and even play arou
 
 # Product updates
 
-Big shoutout to [Manjunath0408](https://github.com/Manjunath0408) and [Darshan](https://github.com/ItzNotABug) for their contributions! 
+Big shoutout to [Manjunath0408](https://github.com/Manjunath0408) and [Darshan](https://github.com/ItzNotABug) for their contributions!
 
 ## New releases
 
@@ -68,7 +68,7 @@ Big shoutout to [Manjunath0408](https://github.com/Manjunath0408) and [Darshan](
 - Improved Console loading bar
 - [Throw an error if invalid domain is added to a function](https://github.com/appwrite/console/pull/1115) by [Manjunath0408](https://github.com/Manjunath0408)
 - [Fix for inconsistent build logs](https://github.com/appwrite/appwrite/issues/6237) by [Darshan](https://github.com/ItzNotABug)
-- [Fix for migration of collections, attributes and indexes of Databases](https://github.com/appwrite/appwrite/issues/8044)
+- [Fix for migration of collections, columns and indexes of Databases](https://github.com/appwrite/appwrite/issues/8044)
 
 # Open source community recognitions
 

@@ -18,7 +18,7 @@ Despite its commonality in both personal and professional contexts, password sha
 - **Security breaches**: Increases vulnerability to unauthorized access and cyberattacks.
 - **Data leaks**: Raises the likelihood of unintentional exposure of sensitive information.
 - **Compliance violations**: Can lead to breaches of regulatory standards (e.g., GDPR, HIPAA), resulting in fines and sanctions.
-- **Diminished accountability**: Makes it difficult to trace activities and attribute actions back to individual users accurately.
+- **Diminished accountability**: Makes it difficult to trace activities and column actions back to individual users accurately.
 - **Operational disruptions**: Causes inefficiencies and potential system lockouts affecting productivity in certain scenario (for instance, if shared accounts are locked out due to suspicious activities).
 - **Increased IT support costs**: Requires additional resources to manage and resolve access issues.
 - **Erosion of trust**: Undermines customer and partner confidence if security is compromised.
