@@ -255,7 +255,7 @@ This code will handle the prompt requests by creating a LangChain sequence that 
 The Appwrite table needs to be indexed into the Pinecone index. Create a new file at `src/appwrite.js` with the following code:
 
 ```js
-import { Client, Grids, Query } from 'node-appwrite';
+import { Client, TablesDb, Query } from 'node-appwrite';
 
 export default class AppwriteService {
   constructor() {
@@ -267,7 +267,7 @@ export default class AppwriteService {
       .setProject(process.env.APPWRITE_FUNCTION_PROJECT_ID)
       .setKey(process.env.APPWRITE_API_KEY);
 
-    this.grids = new Grids(client);
+    this.tablesDb = new TablesDb(client);
   }
 
   async getAllRows(databaseId, tableId) {
@@ -281,7 +281,7 @@ export default class AppwriteService {
         queries.push(Query.cursorAfter(cursor));
       }
 
-      const { rows } = await this.grids.listRows(
+      const { rows } = await this.tablesDb.listRows(
         databaseId,
         tableId,
         queries

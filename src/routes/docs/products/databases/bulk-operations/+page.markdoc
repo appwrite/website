@@ -38,9 +38,9 @@ const client = new sdk.Client()
     .setProject('<PROJECT_ID>')
     .setKey('<API_KEY>');
 
-const grids = new sdk.Grids(client);
+const tablesDb = new sdk.TablesDb(client);
 
-const result = await grids.createRows(
+const result = await tablesDb.createRows(
     '<DATABASE_ID>',
     '<TABLE_ID>',
     [
@@ -58,16 +58,16 @@ const result = await grids.createRows(
 
 ```server-python
 from appwrite.client import Client
-from appwrite.services.grids import Grids
+from appwrite.services.tablesDb import TablesDb
 
 client = Client()
 client.set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
 client.set_project('<PROJECT_ID>')
 client.set_key('<API_KEY>')
 
-grids = Grids(client)
+tablesDb = TablesDb(client)
 
-result = grids.create_rows(
+result = tablesDb.create_rows(
     database_id = '<DATABASE_ID>',
     table_id = '<TABLE_ID>',
     rows = [
@@ -102,9 +102,9 @@ const client = new sdk.Client()
     .setProject('<PROJECT_ID>')
     .setKey('<API_KEY>');
 
-const grids = new sdk.Grids(client);
+const tablesDb = new sdk.TablesDb(client);
 
-const result = await grids.updateRows(
+const result = await tablesDb.updateRows(
     '<DATABASE_ID>',
     '<TABLE_ID>',
     {
@@ -118,16 +118,16 @@ const result = await grids.updateRows(
 
 ```server-python
 from appwrite.client import Client
-from appwrite.services.grids import Grids
+from appwrite.services.tablesDb import TablesDb
 
 client = Client()
 client.set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
 client.set_project('<PROJECT_ID>')
 client.set_key('<API_KEY>')
 
-grids = Grids(client)
+tablesDb = TablesDb(client)
 
-result = grids.update_rows(
+result = tablesDb.update_rows(
     database_id = '<DATABASE_ID>',
     table_id = '<TABLE_ID>',
     data = {
@@ -158,9 +158,9 @@ const client = new sdk.Client()
     .setProject('<PROJECT_ID>')
     .setKey('<API_KEY>');
 
-const grids = new sdk.Grids(client);
+const tablesDb = new sdk.TablesDb(client);
 
-const result = await grids.upsertRows(
+const result = await tablesDb.upsertRows(
     '<DATABASE_ID>',
     '<TABLE_ID>',
     [
@@ -178,7 +178,7 @@ const result = await grids.upsertRows(
 
 ```server-python
 from appwrite.client import Client
-from appwrite.services.grids import Grids
+from appwrite.services.tablesDb import TablesDb
 from appwrite.id import ID
 
 client = Client()
@@ -186,9 +186,9 @@ client.set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
 client.set_project('<PROJECT_ID>')
 client.set_key('<API_KEY>')
 
-grids = Grids(client)
+tablesDb = TablesDb(client)
 
-result = grids.upsert_rows(
+result = tablesDb.upsert_rows(
     database_id = '<DATABASE_ID>',
     table_id = '<TABLE_ID>',
     rows = [
@@ -223,9 +223,9 @@ const client = new sdk.Client()
     .setProject('<PROJECT_ID>')
     .setKey('<API_KEY>');
 
-const grids = new sdk.Grids(client);
+const tablesDb = new sdk.TablesDb(client);
 
-const result = await grids.deleteRows(
+const result = await tablesDb.deleteRows(
     '<DATABASE_ID>',
     '<TABLE_ID>',
     [
@@ -236,7 +236,7 @@ const result = await grids.deleteRows(
 
 ```server-python
 from appwrite.client import Client
-from appwrite.services.grids import Grids
+from appwrite.services.tablesDb import TablesDb
 from appwrite.query import Query
 
 client = Client()
@@ -244,9 +244,9 @@ client.set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
 client.set_project('<PROJECT_ID>')
 client.set_key('<API_KEY>')
 
-grids = Grids(client)
+tablesDb = TablesDb(client)
 
-result = grids.delete_rows(
+result = tablesDb.delete_rows(
     database_id = '<DATABASE_ID>',
     table_id = '<TABLE_ID>',
     queries = [

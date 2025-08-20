@@ -50,7 +50,7 @@ To make this easier, create a service class that will handle all the Appwrite in
 Create a file called `src/appwrite.js` and implement the following class:
 
 ```js
-import { Client, Grids, ID, Storage } from 'node-appwrite';
+import { Client, TablesDb, ID, Storage } from 'node-appwrite';
 
 class AppwriteService {
   constructor() {
@@ -62,12 +62,12 @@ class AppwriteService {
         .setProject(process.env.APPWRITE_FUNCTION_PROJECT_ID)
         .setKey(process.env.APPWRITE_API_KEY);
 
-      this.grids = new Grids(client);
+      this.tablesDb = new TablesDb(client);
       this.storage = new Storage(client);
   }
 
   async createRecognitionEntry(databaseId, tableId, audioId, speech) {
-    await this.grids.createRow(
+    await this.tablesDb.createRow(
       databaseId,
       tableId,
       ID.unique(),

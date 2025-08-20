@@ -75,7 +75,7 @@ Create a new file `index.php` and initialize the Appwrite Client. Replace `<PROJ
 require_once 'vendor/autoload.php';
 
 use Appwrite\Client;
-use Appwrite\Services\Databases;
+use Appwrite\Services\TablesDb;
 use Appwrite\ID;
 
 $client = new Client();
@@ -92,21 +92,21 @@ $client
 Once the Appwrite Client is initialized, create a function to configure a todo table.
 
 ```php
-$grids = new Grids($client);
+$tablesDb = new TablesDb($client);
 
-function prepareDatabase($databases) {
-    $todoDatabase = $databases->create(
+function prepareDatabase($tablesDb) {
+    $todoDatabase = $tablesDb->create(
         databaseId: ID::unique(), 
         name: 'TodosDB'
     );
 
-    $todoTable = $databases->createTable(
+    $todoTable = $tablesDb->createTable(
         databaseId: $todoDatabase['$id'], 
         tableId: ID::unique(),
         name: 'Todos'
     );
 
-    $databases->createStringColumn(
+    $tablesDb->createStringColumn(
         databaseId: $todoDatabase['$id'], 
         tableId: $todoTable['$id'], 
         key: 'title', 
@@ -114,7 +114,7 @@ function prepareDatabase($databases) {
         required: true
     );
 
-    $databases->createStringColumn(
+    $tablesDb->createStringColumn(
         databaseId: $todoDatabase['$id'], 
         tableId: $todoTable['$id'], 
         key: 'description', 
@@ -122,7 +122,7 @@ function prepareDatabase($databases) {
         required: false, 
     );
 
-    $databases->createBooleanColumn(
+    $tablesDb->createBooleanColumn(
         databaseId: $todoDatabase['$id'], 
         tableId: $todoTable['$id'], 
         key: 'isComplete', 
@@ -138,7 +138,7 @@ function prepareDatabase($databases) {
 Create a function to add some mock data into your new table.
 
 ```php
-function seedDatabase($databases, $todoDatabase, $todoTable) {
+function seedDatabase($tablesDb, $todoDatabase, $todoTable) {
     $testTodo1 = [
         'title' => 'Buy apples',
         'description' => 'At least 2KGs',
@@ -156,21 +156,21 @@ function seedDatabase($databases, $todoDatabase, $todoTable) {
         'isComplete' => false
     ];
 
-    $databases->createRow(
+    $tablesDb->createRow(
         $todoDatabase['$id'], 
         $todoTable['$id'], 
         ID::unique(), 
         $testTodo1
     );
     
-    $databases->createRow(
+    $tablesDb->createRow(
         $todoDatabase['$id'], 
         $todoTable['$id'], 
         ID::unique(), 
         $testTodo2
     );
     
-    $databases->createRow(
+    $tablesDb->createRow(
         $todoDatabase['$id'], 
         $todoTable['$id'], 
         ID::unique(), 
@@ -186,8 +186,8 @@ Create a function to retrieve the mock todo data and a function to execute the r
 Run the functions to by calling `runAllTasks();`.
 
 ```php
-function getTodos($databases, $todoDatabase, $todoTable) {
-    $todos = $databases->listRows(
+function getTodos($tablesDb, $todoDatabase, $todoTable) {
+    $todos = $tablesDb->listRows(
         $todoDatabase['$id'], 
         $todoTable['$id']
     );
@@ -199,13 +199,13 @@ function getTodos($databases, $todoDatabase, $todoTable) {
    }
 }
 
-function runAllTasks($databases) {
-    [$todoDatabase, $todoTable] = prepareDatabase($databases);
-    seedDatabase($databases, $todoDatabase, $todoTable);
-    getTodos($databases, $todoDatabase, $todoTable);
+function runAllTasks($tablesDb) {
+    [$todoDatabase, $todoTable] = prepareDatabase($tablesDb);
+    seedDatabase($tablesDb, $todoDatabase, $todoTable);
+    getTodos($tablesDb, $todoDatabase, $todoTable);
 }
 
-runAllTasks($databases);
+runAllTasks($tablesDb);
 ```
 
 {% /section %}

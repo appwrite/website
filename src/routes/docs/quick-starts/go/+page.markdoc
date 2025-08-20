@@ -79,7 +79,7 @@ package main
 import (
 	"github.com/appwrite/sdk-for-go/appwrite"
 	"github.com/appwrite/sdk-for-go/client"
-	"github.com/appwrite/sdk-for-go/databases"
+	"github.com/appwrite/sdk-for-go/tablesDb"
 	"github.com/appwrite/sdk-for-go/models"
 )
 
@@ -87,7 +87,7 @@ var (
 	appwriteClient    client.Client
 	todoDatabase      *models.Database
 	todoTable    *models.Table
-	appwriteDatabases *databases.Databases
+	appwriteDatabases *tablesDb.TablesDb
 )
 
 func main() {
@@ -105,20 +105,20 @@ Once the Appwrite Client is initialized, create a function to configure a todo t
 
 ```go
 func prepareDatabase() {
-	appwriteDatabases = appwrite.NewGrids(appwriteClient)
+	tablesDb = appwrite.NewTablesDb(appwriteClient)
 
-	todoDatabase, _ = appwriteDatabases.Create(
+	todoDatabase, _ = tablesDb.Create(
 		id.Unique(),
 		"TodosDB",
 	)
 
-	todoTable, _ = appwriteDatabases.CreateTable(
+	todoTable, _ = tablesDb.CreateTable(
 		todoDatabase.Id,
 		id.Unique(),
 		"Todos",
 	)
 
-	appwriteDatabases.CreateStringColumn(
+	tablesDb.CreateStringColumn(
 		todoDatabase.Id,
 		todoTable.Id,
 		"title",
@@ -126,7 +126,7 @@ func prepareDatabase() {
 		true,
 	)
 
-	appwriteDatabases.CreateStringColumn(
+	tablesDb.CreateStringColumn(
 		todoDatabase.Id,
 		todoTable.Id,
 		"description",
@@ -134,7 +134,7 @@ func prepareDatabase() {
 		false,
 	)
 
-	appwriteDatabases.CreateBooleanColumn(
+	tablesDb.CreateBooleanColumn(
 		todoDatabase.Id,
 		todoTable.Id,
 		"isComplete",
@@ -166,21 +166,21 @@ func seedDatabase() {
 		"isComplete":  false,
 	}
 
-	appwriteDatabases.createRow(
+	tablesDb.createRow(
 		todoDatabase.Id,
 		todoTable.Id,
 		id.Unique(),
 		testTodo1,
 	)
 
-	appwriteDatabases.createRow(
+	tablesDb.createRow(
 		todoDatabase.Id,
 		todoTable.Id,
 		id.Unique(),
 		testTodo2,
 	)
 
-	appwriteDatabases.createRow(
+	tablesDb.createRow(
 		todoDatabase.Id,
 		todoTable.Id,
 		id.Unique(),
@@ -207,7 +207,7 @@ type TodoList struct {
 }
 
 func getTodos() {
-	todoResponse, _ := appwriteDatabases.listRows(
+	todoResponse, _ := tablesDb.listRows(
 		todoDatabase.Id,
 		todoTable.Id,
 	)
@@ -231,7 +231,7 @@ import (
 
 	"github.com/appwrite/sdk-for-go/appwrite"
 	"github.com/appwrite/sdk-for-go/client"
-	"github.com/appwrite/sdk-for-go/databases"
+	"github.com/appwrite/sdk-for-go/tablesDb"
 	"github.com/appwrite/sdk-for-go/id"
 	"github.com/appwrite/sdk-for-go/models"
 )
@@ -240,7 +240,7 @@ var (
 	appwriteClient    client.Client
 	todoDatabase      *models.Database
 	todoTable    *models.Table
-	appwriteDatabases *databases.Databases
+	tablesDb *tablesDb.TablesDb
 )
 
 func main() {

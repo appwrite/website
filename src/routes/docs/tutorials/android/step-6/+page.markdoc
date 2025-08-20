@@ -47,7 +47,7 @@ import io.appwrite.Client
 import io.appwrite.ID
 import io.appwrite.Query
 import io.appwrite.models.Row
-import io.appwrite.services.Databases
+import io.appwrite.services.TablesDb
 
 class IdeaService(client: Client) {
     companion object {
@@ -55,10 +55,10 @@ class IdeaService(client: Client) {
         private const val ideaTableId = "<YOUR_IDEA_TABLE_ID_HERE>"
     }
 
-    private val grids = Grids(client)
+    private val tablesDb = TablesDb(client)
 
     suspend fun fetch(): List<Row<Map<String, Any>>> {
-        return grids.listRows(
+        return tablesDb.listRows(
             ideaDatabaseId,
             ideaTableId,
             listOf(Query.orderDesc("\$createdAt"), Query.limit(10))
@@ -70,7 +70,7 @@ class IdeaService(client: Client) {
         title: String,
         description: String
     ): Row<Map<String, Any>> {
-        return grids.createRow(
+        return tablesDb.createRow(
             ideaDatabaseId,
             ideaTableId,
             ID.unique(),
@@ -83,7 +83,7 @@ class IdeaService(client: Client) {
     }
 
     suspend fun remove(id: String) {
-        grids.deleteRow(
+        tablesDb.deleteRow(
             ideaDatabaseId,
             ideaTableId,
             id

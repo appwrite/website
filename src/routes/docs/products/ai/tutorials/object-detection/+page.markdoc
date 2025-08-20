@@ -95,7 +95,7 @@ With the payload parsed, you can now download the image from the Appwrite Storag
 Create a new file in the `src` directory called `appwrite.js` and add the following code:
 
 ```js
-import { Client, Grids, ID, Storage } from 'node-appwrite';
+import { Client, TablesDb, ID, Storage } from 'node-appwrite';
 
 class AppwriteService {
   constructor() {
@@ -107,7 +107,7 @@ class AppwriteService {
       .setProject(process.env.APPWRITE_FUNCTION_PROJECT_ID)
       .setKey(process.env.APPWRITE_API_KEY);
 
-    this.grids = new Grids(client);
+    this.tablesDb = new TablesDb(client);
     this.storage = new Storage(client);
   }
 
@@ -186,7 +186,7 @@ To begin with we're going to add a new function to the `appwrite.js` file we cre
 ```js
 async createImageLabels(databaseId, tableId, imageId, labels)
 {
-  await this.grids.createRow(
+  await this.tablesDb.createRow(
     databaseId,
     tableId,
     ID.unique(),

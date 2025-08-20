@@ -25,7 +25,7 @@ client
   .setProject(PUBLIC_APPWRITE_PROJECT);
 
 const account = new Account(client);
-const grids = new Grids(client);
+const tablesDb = new TablesDb(client);
 
 export const appwrite = {
   client,

@@ -59,7 +59,7 @@ Add the following code to it.
 ```ts
 // appwrite.ts
 
-import { Client, Grids, Account } from "appwrite";
+import { Client, TablesDb, Account } from "appwrite";
 
 const url: string = import.meta.env.VITE_APPWRITE_ENDPOINT;
 const project: string = import.meta.env.VITE_APPWRITE_PROJECT;
@@ -69,5 +69,5 @@ const client: Client = new Client();
 client.setEndpoint(url).setProject(project);
 
 export const account: Account = new Account(client);
-export const grids: Grids = new Grids(client);
+export const tablesDb: TablesDb = new TablesDb(client);
 ```

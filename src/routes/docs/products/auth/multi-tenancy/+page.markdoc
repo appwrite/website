@@ -183,16 +183,16 @@ Control access to rows and resources using team-based permissions. This ensures 
 
 {% multicode %}
 ```client-web
-import { Client, Grids, ID, Permission, Role } from "appwrite";
+import { Client, TablesDb, ID, Permission, Role } from "appwrite";
 
 const client = new Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
     .setProject('<PROJECT_ID>');
 
-const grids = new Grids(client);
+const tablesDb = new TablesDb(client);
 
 // Create a row that only members of "Example Corp" tenant can access
-const row = await grids.createRow(
+const row = await tablesDb.createRow(
     'invoices_db',
     'invoices',
     ID.unique(),
@@ -219,10 +219,10 @@ final client = Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
     .setProject('<PROJECT_ID>');
 
-final grids = Grids(client);
+final tablesDb = TablesDb(client);
 
 // Create a row that only members of "Example Corp" tenant can access
-final row = await grids.createRow(
+final row = await tablesDb.createRow(
     databaseId: 'invoices_db',
     tableId: 'invoices',
     rowId: ID.unique(),
@@ -249,10 +249,10 @@ let client = Client()
     .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
     .setProject("<PROJECT_ID>")
 
-let grids = Grids(client)
+let tablesDb = TablesDb(client)
 
 // Create a row that only members of "Example Corp" tenant can access
-let row = try await grids.createRow(
+let row = try await tablesDb.createRow(
     databaseId: "invoices_db",
     tableId: "invoices",
     rowId: ID.unique(),
@@ -275,7 +275,7 @@ let row = try await grids.createRow(
 ```client-android-kotlin
 import io.appwrite.Client
 import io.appwrite.ID
-import io.appwrite.services.Databases
+import io.appwrite.services.TablesDb
 import io.appwrite.models.Permission
 import io.appwrite.models.Role
 
@@ -283,10 +283,10 @@ val client = Client(context)
     .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
     .setProject("<PROJECT_ID>")
 
-val grids = Grids(client)
+val tablesDb = TablesDb(client)
 
 // Create a row that only members of "Example Corp" tenant can access
-val row = grids.createRow(
+val row = tablesDb.createRow(
     databaseId = "invoices_db",
     tableId = "invoices",
     rowId = ID.unique(),
@@ -314,22 +314,22 @@ When querying data, users will automatically only see rows they have permission 
 
 {% multicode %}
 ```client-web
-import { Client, Grids, Query } from "appwrite";
+import { Client, TablesDb, Query } from "appwrite";
 
 const client = new Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
     .setProject('<PROJECT_ID>');
 
-const grids = new Grids(client);
+const tablesDb = new TablesDb(client);
 
 // Current user will only see invoices they have access to
-const rows = await grids.listRows(
+const rows = await tablesDb.listRows(
     'invoices_db',
     'invoices'
 );
 
 // For specific tenant data, you can add a query filter
-const tenantDocuments = await grids.listRows(
+const tenantDocuments = await tablesDb.listRows(
     'invoices_db',
     'invoices',
     [
@@ -344,16 +344,16 @@ final client = Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
     .setProject('<PROJECT_ID>');
 
-final grids = Grids(client);
+final tablesDb = TablesDb(client);
 
 // Current user will only see invoices they have access to
-final rows = await grids.listRows(
+final rows = await tablesDb.listRows(
     databaseId: 'invoices_db',
     tableId: 'invoices',
 );
 
 // For specific tenant data, you can add a query filter
-final tenantDocuments = await grids.listRows(
+final tenantDocuments = await tablesDb.listRows(
     databaseId: 'invoices_db',
     tableId: 'invoices',
     queries: [
@@ -368,16 +368,16 @@ let client = Client()
     .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
     .setProject("<PROJECT_ID>")
 
-let grids = Grids(client)
+let tablesDb = TablesDb(client)
 
 // Current user will only see invoices they have access to
-let rows = try await grids.listRows(
+let rows = try await tablesDb.listRows(
     databaseId: "invoices_db",
     tableId: "invoices"
 )
 
 // For specific tenant data, you can add a query filter
-let tenantDocuments = try await grids.listRows(
+let tenantDocuments = try await tablesDb.listRows(
     databaseId: "invoices_db",
     tableId: "invoices",
     queries: [
@@ -387,23 +387,23 @@ let tenantDocuments = try await grids.listRows(
 ```
 ```client-android-kotlin
 import io.appwrite.Client
-import io.appwrite.services.Databases
+import io.appwrite.services.TablesDb
 import io.appwrite.Query
 
 val client = Client(context)
     .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
     .setProject("<PROJECT_ID>")
 
-val grids = Grids(client)
+val tablesDb = TablesDb(client)
 
 // Current user will only see invoices they have access to
-val rows = grids.listRows(
+val rows = tablesDb.listRows(
     databaseId = "invoices_db",
     tableId = "invoices"
 )
 
 // For specific tenant data, you can add a query filter
-val tenantDocuments = grids.listRows(
+val tenantDocuments = tablesDb.listRows(
     databaseId = "invoices_db",
     tableId = "invoices",
     queries = listOf(

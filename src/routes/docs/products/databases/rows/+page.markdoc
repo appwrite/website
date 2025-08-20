@@ -16,15 +16,15 @@ In most use cases, you will create rows programmatically.
 
 {% multicode %}
 ```client-web
-import { Client, ID, Grids } from "appwrite";
+import { Client, ID, TablesDb } from "appwrite";
 
 const client = new Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
     .setProject('<PROJECT_ID>');
 
-const grids = new Grids(client);
+const tablesDb = new TablesDb(client);
 
-const promise = grids.createRow(
+const promise = tablesDb.createRow(
     '<DATABASE_ID>',
     '<TABLE_ID>',
     ID.unique(),
@@ -45,10 +45,10 @@ void main() async {
         .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
         .setProject('<PROJECT_ID>');
 
-    final grids = Grids(client);
+    final tablesDb = TablesDb(client);
 
     try {
-        final row = grids.createRow(
+        final row = tablesDb.createRow(
             databaseId: '<DATABASE_ID>',
             tableId: '<TABLE_ID>',
             rowId: ID.unique(),
@@ -68,10 +68,10 @@ func main() async throws {
         .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
         .setProject("<PROJECT_ID>")
 
-    let grids = Grids(client)
+    let tablesDb = TablesDb(client)
 
     do {
-        let row = try await grids.createRow(
+        let row = try await tablesDb.createRow(
             databaseId: "<DATABASE_ID>",
             tableId: "<TABLE_ID>",
             rowId: ID.unique(),
@@ -84,17 +84,17 @@ func main() async throws {
 ```
 ```client-android-kotlin
 import io.appwrite.Client
-import io.appwrite.services.Grids
+import io.appwrite.services.TablesDb
 
 suspend fun main() {
     val client = Client(applicationContext)
         .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
         .setProject("<PROJECT_ID>")
 
-    val grids = Grids(client)
+    val tablesDb = TablesDb(client)
 
     try {
-        val row = grids.createRow(
+        val row = tablesDb.createRow(
             databaseId = "<DATABASE_ID>",
             tableId = "<TABLE_ID>",
             rowId = ID.unique(),
@@ -145,15 +145,15 @@ You can change this through [pagination](/docs/products/databases/pagination).
 
 {% multicode %}
 ```client-web
-import { Client, Query, Grids } from "appwrite";
+import { Client, Query, TablesDb } from "appwrite";
 
 const client = new Client()
     .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
     .setProject("<PROJECT_ID>")
 
-const grids = new Grids(client);
+const tablesDb = new TablesDb(client);
 
-let promise = grids.listRows(
+let promise = tablesDb.listRows(
     "<DATABASE_ID>",
     "<TABLE_ID>",
     [
@@ -175,10 +175,10 @@ void main() async {
         .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
         .setProject("<PROJECT_ID>")
 
-    final grids = Grids(client);
+    final tablesDb = TablesDb(client);
 
     try {
-        final rows = await grids.listRows(
+        final rows = await tablesDb.listRows(
             databaseId: '<DATABASE_ID>',
             tableId: '<TABLE_ID>',
             queries: [
@@ -199,10 +199,10 @@ func main() async throws {
         .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
         .setProject("<PROJECT_ID>")
 
-    let grids = Grids(client)
+    let tablesDb = TablesDb(client)
 
     do {
-        let rows = try await grids.listRows(
+        let rows = try await tablesDb.listRows(
             databaseId: "<DATABASE_ID>",
             tableId: "<TABLE_ID>",
             queries: [
@@ -217,17 +217,17 @@ func main() async throws {
 ```client-android-kotlin
 import io.appwrite.Client
 import io.appwrite.Query
-import io.appwrite.services.Grids
+import io.appwrite.services.TablesDb
 
 suspend fun main() {
     val client = Client(applicationContext)
         .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
         .setProject("<PROJECT_ID>")
 
-    val grids = Grids(client)
+    val tablesDb = TablesDb(client)
 
     try {
-        val rows = grids.listRows(
+        val rows = tablesDb.listRows(
             databaseId = "<DATABASE_ID>",
             tableId = "<TABLE_ID>",
             queries = listOf(
@@ -266,15 +266,15 @@ In most use cases, you will upsert rows programmatically.
 
 {% multicode %}
 ```client-web
-import { Client, ID, Grids } from "appwrite";
+import { Client, ID, TablesDb } from "appwrite";
 
 const client = new Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
     .setProject('<PROJECT_ID>');
 
-const grids = new Grids(client);
+const tablesDb = new TablesDb(client);
 
-const promise = grids.upsertRow(
+const promise = tablesDb.upsertRow(
     '<DATABASE_ID>',
     '<TABLE_ID>',
     ID.unique(),
@@ -295,10 +295,10 @@ void main() async {
         .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
         .setProject('<PROJECT_ID>');
 
-    final grids = Grids(client);
+    final tablesDb = TablesDb(client);
 
     try {
-        final row = grids.upsertRow(
+        final row = tablesDb.upsertRow(
             databaseId: '<DATABASE_ID>',
             tableId: '<TABLE_ID>',
             rowId: ID.unique(),
@@ -318,10 +318,10 @@ func main() async throws {
         .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
         .setProject("<PROJECT_ID>")
 
-    let grids = Grids(client)
+    let tablesDb = TablesDb(client)
 
     do {
-        let row = try await grids.upsertRow(
+        let row = try await tablesDb.upsertRow(
             databaseId: "<DATABASE_ID>",
             tableId: "<TABLE_ID>",
             rowId: ID.unique(),
@@ -334,17 +334,17 @@ func main() async throws {
 ```
 ```client-android-kotlin
 import io.appwrite.Client
-import io.appwrite.services.Databases
+import io.appwrite.services.TablesDb
 
 suspend fun main() {
     val client = Client(applicationContext)
         .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
         .setProject("<PROJECT_ID>")
 
-    val grids = Grids(client)
+    val tablesDb = TablesDb(client)
 
     try {
-        val row = grids.upsertRow(
+        val row = tablesDb.upsertRow(
             databaseId = "<DATABASE_ID>",
             tableId = "<TABLE_ID>",
             rowId = ID.unique(),

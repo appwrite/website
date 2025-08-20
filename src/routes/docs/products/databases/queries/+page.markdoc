@@ -1,7 +1,7 @@
 ---
 layout: article
 title: Queries
-description: Harness the power of querying with Appwrite grids. Discover various query options, filtering, sorting, and advanced querying techniques.
+description: Harness the power of querying with Appwrite tablesDb. Discover various query options, filtering, sorting, and advanced querying techniques.
 ---
 
 Many list endpoints in Appwrite allow you to filter, sort, and paginate results using queries. Appwrite provides a common set of syntax to build queries.
@@ -25,15 +25,15 @@ You can change this through [pagination](/docs/products/databases/pagination).
 {% multicode %}
 
 ```client-web
-import { Client, Query, Grids } from "appwrite";
+import { Client, Query, TablesDb } from "appwrite";
 
 const client = new Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
     .setProject('<PROJECT_ID>');
 
-const grids = new Grids(client);
+const tablesDb = new TablesDb(client);
 
-grids.listRows(
+tablesDb.listRows(
     '<DATABASE_ID>',
     '<TABLE_ID>',
     [
@@ -47,7 +47,7 @@ const sdk = require('node-appwrite');
 
 const client = new sdk.Client();
 
-const grids = new sdk.Grids(client);
+const tablesDb = new sdk.TablesDb(client);
 
 client
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
@@ -55,7 +55,7 @@ client
     .setKey('<YOUR_API_KEY>')
 ;
 
-const promise = grids.listRows(
+const promise = tablesDb.listRows(
     '<DATABASE_ID>',
     '<TABLE_ID>',
     [
@@ -78,10 +78,10 @@ void main() async {
         .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
         .setProject('<PROJECT_ID>');
 
-    final grids = Grids(client);
+    final tablesDb = TablesDb(client);
 
     try {
-        final rows = await grids.listRows(
+        final rows = await tablesDb.listRows(
             '<DATABASE_ID>',
             '<TABLE_ID>',
             [
@@ -103,10 +103,10 @@ func main() async throws {
         .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
         .setProject("<PROJECT_ID>")
 
-    let grids = Grids(client)
+    let tablesDb = TablesDb(client)
 
     do {
-        let rows = try await grids.listRows(
+        let rows = try await tablesDb.listRows(
             databaseId: "<DATABASE_ID>",
             tableId: "<TABLE_ID>",
             queries: [
@@ -122,17 +122,17 @@ func main() async throws {
 ```client-android-kotlin
 import io.appwrite.Client
 import io.appwrite.Query
-import io.appwrite.services.Grids
+import io.appwrite.services.TablesDb
 
 suspend fun main() {
     val client = Client(applicationContext)
         .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
         .setProject('<PROJECT_ID>');
 
-    val grids = Grids(client)
+    val tablesDb = TablesDb(client)
 
     try {
-        val rows = grids.listRows(
+        val rows = tablesDb.listRows(
             databaseId = "<DATABASE_ID>",
             tableId = "<TABLE_ID>",
             queries = listOf(
@@ -150,7 +150,7 @@ suspend fun main() {
 
 use Appwrite\Client;
 use Appwrite\Query;
-use Appwrite\Services\Grids;
+use Appwrite\Services\TablesDb;
 
 $client = new Client();
 
@@ -160,7 +160,7 @@ $client
     ->setKey('<YOUR_API_KEY>')
 ;
 
-$grids = new Grids($client);
+$tablesDb = new TablesDb($client);
 
 $result = $tables->listRows(
     '<DATABASE_ID>',
@@ -174,7 +174,7 @@ $result = $tables->listRows(
 ```python
 from appwrite.client import Client
 from appwrite.query import Query
-from appwrite.services.grids import Grids
+from appwrite.services.tablesDb import TablesDb
 
 client = Client()
 
@@ -184,9 +184,9 @@ client = Client()
   .set_key('<YOUR_API_KEY>')
 )
 
-grids = Grids(client)
+tablesDb = TablesDb(client)
 
-result = grids.list_rows(
+result = tablesDb.list_rows(
     '<DATABASE_ID>',
     '<TABLE_ID>',
     [
@@ -262,13 +262,13 @@ By default, rows return only their own fields:
 
 {% multicode %}
 ```client-web
-const doc = await grids.getRow(
+const doc = await tablesDb.getRow(
     '<DATABASE_ID>', '<TABLE_ID>', '<ROW_ID>',
     [Query.select(['name', 'age'])]
 );
 ```
 ```client-flutter
-final doc = await grids.getRow(
+final doc = await tablesDb.getRow(
     databaseId: '<DATABASE_ID>',
     tableId: '<TABLE_ID>',
     rowId: '<ROW_ID>',
@@ -276,31 +276,31 @@ final doc = await grids.getRow(
 );
 ```
 ```python
-doc = grids.get_row(
+doc = tablesDb.get_row(
     '<DATABASE_ID>', '<TABLE_ID>', '<ROW_ID>',
     [Query.select(["name", "age"])]
 )
 ```
 ```ruby
-doc = grids.get_row(
+doc = tablesDb.get_row(
     '<DATABASE_ID>', '<TABLE_ID>', '<ROW_ID>',
     [Query.select(["name", "age"])]
 )
 ```
 ```server-nodejs
-const doc = await grids.getRow(
+const doc = await tablesDb.getRow(
     '<DATABASE_ID>', '<TABLE_ID>', '<ROW_ID>',
     [Query.select(['name', 'age'])]
 );
 ```
 ```php
-$doc = $databases->getRow(
+$doc = $tablesDb->getRow(
     '<DATABASE_ID>', '<TABLE_ID>', '<ROW_ID>',
     [Query::select(["name", "age"])]
 );
 ```
 ```swift
-let doc = try await grids.getRow(
+let doc = try await tablesDb.getRow(
     databaseId: "<DATABASE_ID>",
     tableId: "<TABLE_ID>",
     rowId: "<ROW_ID>",
@@ -319,13 +319,13 @@ Use the `*` wildcard to load all fields from related rows:
 
 {% multicode %}
 ```client-web
-const doc = await grids.getRow(
+const doc = await tablesDb.getRow(
     '<DATABASE_ID>', '<TABLE_ID>', '<ROW_ID>',
     [Query.select(['*', 'reviews.*'])]
 );
 ```
 ```client-flutter
-final doc = await grids.getRow(
+final doc = await tablesDb.getRow(
     databaseId: '<DATABASE_ID>',
     tableId: '<TABLE_ID>',
     rowId: '<ROW_ID>',
@@ -333,31 +333,31 @@ final doc = await grids.getRow(
 );
 ```
 ```python
-doc = grids.get_row(
+doc = tablesDb.get_row(
     '<DATABASE_ID>', '<TABLE_ID>', '<ROW_ID>',
     [Query.select(["*", "reviews.*"])]
 )
 ```
 ```ruby
-doc = grids.get_row(
+doc = tablesDb.get_row(
     '<DATABASE_ID>', '<TABLE_ID>', '<ROW_ID>',
     [Query.select(["*", "reviews.*"])]
 )
 ```
 ```server-nodejs
-const doc = await grids.getRow(
+const doc = await tablesDb.getRow(
     '<DATABASE_ID>', '<TABLE_ID>', '<ROW_ID>',
     [Query.select(["*", "reviews.*"])]
 );
 ```
 ```php
-$doc = $databases->getRow(
+$doc = $tablesDb->getRow(
     '<DATABASE_ID>', '<TABLE_ID>', '<ROW_ID>',
     [Query::select(["*", "reviews.*"])]
 );
 ```
 ```swift
-let doc = try await grids.getRow(
+let doc = try await tablesDb.getRow(
     databaseId: "<DATABASE_ID>",
     tableId: "<TABLE_ID>",
     rowId: "<ROW_ID>",
@@ -377,13 +377,13 @@ For precise control, select only specific fields from related rows:
 
 {% multicode %}
 ```client-web
-const doc = await grids.getRow(
+const doc = await tablesDb.getRow(
     '<DATABASE_ID>', '<TABLE_ID>', '<ROW_ID>',
     [Query.select(['name', 'age', 'reviews.author', 'reviews.rating'])]
 );
 ```
 ```client-flutter
-final doc = await grids.getRow(
+final doc = await tablesDb.getRow(
     databaseId: '<DATABASE_ID>',
     tableId: '<TABLE_ID>',
     rowId: '<ROW_ID>',
@@ -391,32 +391,32 @@ final doc = await grids.getRow(
 );
 ```
 ```python
-doc = grids.get_row(
+doc = tablesDb.get_row(
     '<DATABASE_ID>', '<TABLE_ID>', '<ROW_ID>',
     [Query.select(["name", "age", "reviews.author", "reviews.rating"])]
 )
 ```
 ```ruby
-doc = grids.get_row(
+doc = tablesDb.get_row(
     '<DATABASE_ID>', '<TABLE_ID>', '<ROW_ID>',
     [Query.select(["name", "age", "reviews.author", "reviews.rating"])]
 )
 ```
 ```server-nodejs
-const doc = await grids.getRow(
+const doc = await tablesDb.getRow(
     '<DATABASE_ID>', '<TABLE_ID>', '<ROW_ID>',
     [Query.select(["name", "age", "reviews.author", "reviews.rating"])]
 );
 // Result: { name: "John", age: 30, reviews: [{ author: "...", rating: 5 }] }
 ```
 ```php
-$doc = $databases->getRow(
+$doc = $tablesDb->getRow(
     '<DATABASE_ID>', '<TABLE_ID>', '<ROW_ID>',
     [Query::select(["name", "age", "reviews.author", "reviews.rating"])]
 );
 ```
 ```swift
-let doc = try await grids.getRow(
+let doc = try await tablesDb.getRow(
     databaseId: "<DATABASE_ID>",
     tableId: "<TABLE_ID>",
     rowId: "<ROW_ID>",
@@ -1227,7 +1227,7 @@ You can create complex queries by combining AND and OR operations. For example, 
 
 {% multicode %}
 ```client-web
-const results = await grids.listRows(
+const results = await tablesDb.listRows(
     '<DATABASE_ID>',
     '<TABLE_ID>',
     [
@@ -1245,7 +1245,7 @@ const results = await grids.listRows(
 );
 ```
 ```client-flutter
-final results = await grids.listRows(
+final results = await tablesDb.listRows(
     '<DATABASE_ID>',
     '<TABLE_ID>',
     [
@@ -1263,7 +1263,7 @@ final results = await grids.listRows(
 );
 ```
 ```python
-results = grids.list_rows(
+results = tablesDb.list_rows(
     database_id='<DATABASE_ID>',
     table_id='<TABLE_ID>',
     queries=[

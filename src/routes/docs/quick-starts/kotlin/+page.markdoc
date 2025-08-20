@@ -85,7 +85,7 @@ Open the file `Main.kt` and initialize the Appwrite Client. Replace `<PROJECT_ID
 ```kotlin
 import io.appwrite.Client
 import io.appwrite.ID
-import io.appwrite.services.Databases
+import io.appwrite.services.TablesDb
 import io.appwrite.models.Database
 import io.appwrite.models.Table
 import kotlinx.coroutines.coroutineScope
@@ -102,16 +102,16 @@ val client = Client()
 Once the Appwrite Client is initialized, create a function to configure a todo table.
 
 ```kotlin
-val grids = Grids(client)
+val tablesDb = TablesDb(client)
 
 var todoDatabase: Database? = null
 var todoTable: Table? = null
 
 suspend fun prepareDatabase() {
-    todoDatabase = grids.create(ID.unique(), "TodosDB")
-    todoTable = grids.createTable(todoDatabase?.id!!, ID.unique(), "Todos")
+    todoDatabase = tablesDb.createDatabase(ID.unique(), "TodosDB")
+    todoTable = tablesDb.createTable(todoDatabase?.id!!, ID.unique(), "Todos")
 
-    grids.createStringColumn(
+    tablesDb.createStringColumn(
         databaseId = todoDatabase?.id!!,
         tableId = todoTable?.id!!,
         key = "title",
@@ -119,7 +119,7 @@ suspend fun prepareDatabase() {
         required = true
     )
 
-    grids.createStringColumn(
+    tablesDb.createStringColumn(
         databaseId = todoDatabase?.id!!,
         tableId = todoTable?.id!!,
         key = "description",
@@ -128,7 +128,7 @@ suspend fun prepareDatabase() {
         default = "This is a test description."
     )
 
-    grids.createBooleanColumn(
+    tablesDb.createBooleanColumn(
         databaseId = todoDatabase?.id!!,
         tableId = todoTable?.id!!,
         key = "isComplete",
@@ -159,21 +159,21 @@ suspend fun seedDatabase() {
         "isComplete" to false
     )
 
-    grids.createRow(
+    tablesDb.createRow(
         databaseId = todoDatabase?.id!!,
         tableId = todoTable?.id!!,
         rowId = ID.unique(),
         data = testTodo1
     )
 
-    grids.createRow(
+    tablesDb.createRow(
         databaseId = todoDatabase?.id!!,
         tableId = todoTable?.id!!,
         rowId = ID.unique(),
         data = testTodo2
     )
 
-    grids.createRow(
+    tablesDb.createRow(
         databaseId = todoDatabase?.id!!,
         tableId = todoTable?.id!!,
         rowId = ID.unique(),
@@ -189,7 +189,7 @@ Create a function to retrieve the mock todo data.
 
 ```kotlin
 suspend fun getTodos() {
-    val todos = grids.listRows(todoDatabase?.id!!, todoTable?.id!!)
+    val todos = tablesDb.listRows(todoDatabase?.id!!, todoTable?.id!!)
     for (todo in todos.rows) {
         println(
             """

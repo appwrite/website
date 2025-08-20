@@ -21,16 +21,16 @@ The `Query.offset()` is number of records you wish to skip before selecting reco
 
 {% multicode %}
 ```client-web
-import { Client, Query, Grids } from "appwrite";
+import { Client, Query, TablesDb } from "appwrite";
 
 const client = new Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
     .setProject('<PROJECT_ID>');
 
-const grids = new Grids(client);
+const tablesDb = new TablesDb(client);
 
 // Page 1
-const page1 = await grids.listRows(
+const page1 = await tablesDb.listRows(
     '<DATABASE_ID>',
     '<TABLE_ID>',
     [
@@ -40,7 +40,7 @@ const page1 = await grids.listRows(
 );
 
 // Page 2
-const page2 = await grids.listRows(
+const page2 = await tablesDb.listRows(
     '<DATABASE_ID>',
     '<TABLE_ID>',
     [
@@ -57,9 +57,9 @@ void main() async {
         .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
         .setProject('<PROJECT_ID>');
 
-    final grids = Grids(client);
+    final tablesDb = TablesDb(client);
 
-    final page1 = await grids.listRows(
+    final page1 = await tablesDb.listRows(
         databaseId: '<DATABASE_ID>',
         tableId: '<TABLE_ID>',
         queries: [
@@ -68,7 +68,7 @@ void main() async {
         ]
     );
 
-    final page2 = await grids.listRows(
+    final page2 = await tablesDb.listRows(
         databaseId: '<DATABASE_ID>',
         tableId: '<TABLE_ID>',
         queries: [
@@ -87,9 +87,9 @@ func main() async throws {
         .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
         .setProject("<PROJECT_ID>")
 
-    let grids = Grids(client)
+    let tablesDb = TablesDb(client)
 
-    let page1 = try await grids.listRows(
+    let page1 = try await tablesDb.listRows(
         databaseId: "<DATABASE_ID>",
         tableId: "<TABLE_ID>",
         queries: [
@@ -98,7 +98,7 @@ func main() async throws {
         ]
     )
 
-    let page2 = try await grids.listRows(
+    let page2 = try await tablesDb.listRows(
         databaseId: "<DATABASE_ID>",
         tableId: "<TABLE_ID>",
         queries: [
@@ -111,16 +111,16 @@ func main() async throws {
 ```client-android-kotlin
 import io.appwrite.Client
 import io.appwrite.Query
-import io.appwrite.services.Grids
+import io.appwrite.services.TablesDb
 
 suspend fun main() {
     val client = Client(applicationContext)
         .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
         .setProject("<PROJECT_ID>")
 
-    val grids = Grids(client)
+    val tablesDb = TablesDb(client)
 
-    val page1 = grids.listRows(
+    val page1 = tablesDb.listRows(
         databaseId = "<DATABASE_ID>",
         tableId = "<TABLE_ID>",
         queries = [
@@ -129,7 +129,7 @@ suspend fun main() {
         ]
     )
 
-    val page2 = grids.listRows(
+    val page2 = tablesDb.listRows(
         databaseId = "<DATABASE_ID>",
         tableId = "<TABLE_ID>",
         queries = [
@@ -157,16 +157,16 @@ Pass the first row's ID into the `Query.cursorBefore(firstId)` query method to r
 {% multicode %}
 
 ```client-web
-import { Client, Query, Grids } from "appwrite";
+import { Client, Query, TablesDb } from "appwrite";
 
 const client = new Client()
     .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
     .setProject("<PROJECT_ID>");
 
-const grids = new Grids(client);
+const tablesDb = new TablesDb(client);
 
 // Page 1
-const page1 = await grids.listRows(
+const page1 = await tablesDb.listRows(
     '<DATABASE_ID>',
     '<TABLE_ID>',
     [
@@ -177,7 +177,7 @@ const page1 = await grids.listRows(
 const lastId = page1.rows[page1.rows.length - 1].$id;
 
 // Page 2
-const page2 = await grids.listRows(
+const page2 = await tablesDb.listRows(
     '<DATABASE_ID>',
     '<TABLE_ID>',
     [
@@ -195,9 +195,9 @@ void main() async {
         .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
         .setProject('<PROJECT_ID>');
 
-    final grids = Grids(client);
+    final tablesDb = TablesDb(client);
 
-    final page1 = await grids.listRows(
+    final page1 = await tablesDb.listRows(
         databaseId: '<DATABASE_ID>',
         tableId: '<TABLE_ID>',
         queries: [
@@ -207,7 +207,7 @@ void main() async {
 
     final lastId = page1.rows[page1.rows.length - 1].$id;
 
-    final page2 = await grids.listRows(
+    final page2 = await tablesDb.listRows(
         databaseId: '<DATABASE_ID>',
         tableId: '<TABLE_ID>',
         queries: [
@@ -227,9 +227,9 @@ func main() async throws {
       .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
       .setProject("<PROJECT_ID>")
 
-    let grids = Grids(client)
+    let tablesDb = TablesDb(client)
 
-    let page1 = try await grids.listRows(
+    let page1 = try await tablesDb.listRows(
         databaseId: "<DATABASE_ID>",
         tableId: "<TABLE_ID>",
         queries: [
@@ -239,7 +239,7 @@ func main() async throws {
 
     let lastId = page1.rows[page1.rows.count - 1].$id
 
-    let page2 = try await grids.listRows(
+    let page2 = try await tablesDb.listRows(
         databaseId: "<DATABASE_ID>",
         tableId: "<TABLE_ID>",
         queries: [
@@ -254,16 +254,16 @@ import android.util.Log
 import io.appwrite.AppwriteException
 import io.appwrite.Client
 import io.appwrite.Query
-import io.appwrite.services.Grids
+import io.appwrite.services.TablesDb
 
 suspend fun main() {
     val client = Client(applicationContext)
         .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
         .setProject("<PROJECT_ID>")
 
-    val grids = Grids(client)
+    val tablesDb = TablesDb(client)
 
-    val page1 = grids.listRows(
+    val page1 = tablesDb.listRows(
         databaseId = "<DATABASE_ID>",
         tableId = "<TABLE_ID>",
         queries = [
@@ -273,7 +273,7 @@ suspend fun main() {
 
     val lastId = page1.rows[page1.rows.size - 1].$id
 
-    val page2 = grids.listRows(
+    val page2 = tablesDb.listRows(
         databaseId = "<DATABASE_ID>",
         tableId = "<TABLE_ID>",
         queries = [
@@ -292,6 +292,6 @@ Offset pagination allow you to create indicator of the current page number and t
 For example, a list with up to 20 pages or static data like a list of countries or currencies.
 Using offset pagination on large tables and frequently updated tables may result in slow performance and **missing and duplicate** results.
 
-Cursor pagination should be used for frequently updated grids.
+Cursor pagination should be used for frequently updated tablesDb.
 It is best suited for lazy-loaded pages with infinite scrolling.
 For example, a feed, comment section, chat history, or high volume datasets.

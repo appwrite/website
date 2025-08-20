@@ -76,7 +76,7 @@ export const useIdeas = () => {
     // Fetch the 10 most recent ideas from the database
     // Add the list to the current reference object
     const fetch = async (): Promise<void> => {
-        const response = await grids.listRows(
+        const response = await tablesDb.listRows(
             ideasDatabaseId,
             ideasTableId,
             [Query.orderDesc("$createdAt"), Query.limit(queryLimit)]

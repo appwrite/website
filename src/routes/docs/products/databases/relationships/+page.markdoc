@@ -25,7 +25,7 @@ Relationships help reduce redundant information. For example, a user can create 
 
 # Benefits of relationships {% #benefit-of-relationships %}
 
-Duplicated records waste storage, but more importantly, makes the database much harder to maintain. If the user changes their user name, you will have to update dozens or hundreds of records, a problem commonly known as an update anomaly in grids. You can avoid duplicate information by storing users and posts in separate tables and relating a user and their posts through a relationship.
+Duplicated records waste storage, but more importantly, makes the database much harder to maintain. If the user changes their user name, you will have to update dozens or hundreds of records, a problem commonly known as an update anomaly in tablesDb. You can avoid duplicate information by storing users and posts in separate tables and relating a user and their posts through a relationship.
 
 # Tradeoff {% #trade-offs %}
 
@@ -92,15 +92,15 @@ A relationship column with the key `reviews` is added to the movies table, and a
 
 {% multicode %}
 ```js
-const { Client, Grids } = require('node-appwrite');
+const { Client, TablesDb } = require('node-appwrite');
 
 const client = new Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
     .setProject('<PROJECT_ID>');               // Your project ID
 
-const grids = new Grids(client);
+const tablesDb = new TablesDb(client);
 
-grids.createRelationshipColumn(
+tablesDb.createRelationshipColumn(
     'marvel',     // Database ID
     'movies',     // Table ID
     'reviews',    // Related table ID
@@ -115,13 +115,13 @@ grids.createRelationshipColumn(
 
 ```php
 use \Appwrite\Client;
-use \Appwrite\Services\Grids;
+use \Appwrite\Services\TablesDb;
 
 $client = (new Client())
     ->setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
     ->setProject('<PROJECT_ID>');               // Your project ID
 
-$grids = new Grids($client);
+$tablesDb = new TablesDb($client);
 
 $tables->createRelationshipColumn(
     databaseId: 'marvel',           // Database ID
@@ -138,15 +138,15 @@ $tables->createRelationshipColumn(
 
 ```python
 from appwrite.client import Client
-from appwrite.services.grids import Grids
+from appwrite.services.tablesDb import TablesDb
 
 client = (Client()
     .set_endpoint('https://<REGION>.cloud.appwrite.io/v1')     # Your API Endpoint
     .set_project('<PROJECT_ID>'))                   # Your project ID
 
-grids = Grids(client)
+tablesDb = TablesDb(client)
 
-grids.create_relationship_column(
+tablesDb.create_relationship_column(
     database_id='marvel',             # Database ID
     table_id='movies',           # Table ID
     related_table_id='reviews',  # Related table ID
@@ -168,9 +168,9 @@ client = Client.new
     .set_endpoint('https://<REGION>.cloud.appwrite.io/v1')# Your API Endpoint
     .set_project('<PROJECT_ID>')               # Your project ID
 
-grids = Grids.new(client)
+tablesDb = TablesDb.new(client)
 
-grids.create_relationship_column(
+tablesDb.create_relationship_column(
     database_id: 'marvel',             # Database ID
     table_id: 'movies',           # Table ID
     related_table_id: 'reviews',  # Related table ID
@@ -184,15 +184,15 @@ grids.create_relationship_column(
 
 
 ```deno
-import { Client, Grids } from "https://deno.land/x/appwrite/mod.ts";
+import { Client, TablesDb } from "https://deno.land/x/appwrite/mod.ts";
 
 const client = new Client()
     .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
     .setProject("<PROJECT_ID>");               // Your project ID
 
-const grids = new Grids(client);
+const tablesDb = new TablesDb(client);
 
-grids.createRelationshipColumn(
+tablesDb.createRelationshipColumn(
     "marvel",    // Database ID
     "movies",    // Table ID
     "reviews",   // Related table ID
@@ -212,9 +212,9 @@ final client = Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
     .setProject('<PROJECT_ID>');               // Your project ID
 
-final grids = Grids(client);
+final tablesDb = TablesDb(client);
 
-await grids.createRelationshipColumn(
+await tablesDb.createRelationshipColumn(
     databaseId: 'marvel',           // Database ID
     tableId: 'movies',         // Table ID
     relatedTableId: 'reviews', // Related table ID
@@ -229,15 +229,15 @@ await grids.createRelationshipColumn(
 
 ```kotlin
 import io.appwrite.Client
-import io.appwrite.services.Grids
+import io.appwrite.services.TablesDb
 
 val client = Client()
     .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
     .setProject("<PROJECT_ID>")                // Your project ID
 
-val grids = Grids(client)
+val tablesDb = TablesDb(client)
 
-grids.createRelationshipColumn(
+tablesDb.createRelationshipColumn(
     databaseId = "marvel",           // Database ID
     tableId = "movies",         // Table ID
     relatedTableId = "reviews", // Related table ID
@@ -257,9 +257,9 @@ let client = Client()
     .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
     .setProject("<PROJECT_ID>")                // Your project ID
 
-let grids = Grids(client)
+let tablesDb = TablesDb(client)
 
-grids.createRelationshipColumn(
+tablesDb.createRelationshipColumn(
     databaseId: "marvel",           // Database ID
     tableId: "movies",         // Table ID
     relatedTableId: "reviews", // Related table ID
@@ -282,9 +282,9 @@ var client = new Client()
     .SetEndpoint("https://<REGION>.cloud.appwrite.io/v1")
     .SetProject("<PROJECT_ID>");
 
-var grids = new Grids(client);
+var tablesDb = new TablesDb(client);
 
-await grids.CreateRelationshipColumn(
+await tablesDb.CreateRelationshipColumn(
     databaseId: "marvel",
     tableId: "movies",
     relatedTableId: "reviews",
@@ -308,15 +308,15 @@ You can create both the **parent** and **child** at once in a relationship by ne
 
 {% multicode %}
 ```js
-const { Client, ID, Grids } = require('node-appwrite');
+const { Client, ID, TablesDb } = require('node-appwrite');
 
 const client = new Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
     .setProject('<PROJECT_ID>');               // Your project ID
 
-const grids = new Grids(client);
+const tablesDb = new TablesDb(client);
 
-await grids.createRow(
+await tablesDb.createRow(
     'marvel',
     'movies',
     ID.unique(),
@@ -338,9 +338,9 @@ final client = Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')  // Your API Endpoint
     .setProject('<PROJECT_ID>');                // Your project ID
 
-final grids = Grids(client);
+final tablesDb = TablesDb(client);
 
-await grids.createRow(
+await tablesDb.createRow(
   databaseId: 'marvel',
   tableId: 'movies',
   rowId: ID.unique(),
@@ -362,9 +362,9 @@ let client = Client()
     .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
     .setProject("<PROJECT_ID>")                // Your project ID
 
-let grids = Grids(client: client)
+let tablesDb = TablesDb(client: client)
 
-grids.createRow(
+tablesDb.createRow(
     databaseId: "marvel",
     tableId: "movies",
     rowId: ID.unique(),
@@ -381,16 +381,16 @@ grids.createRow(
 
 ```kotlin
 import io.appwrite.Client
-import io.appwrite.services.Grids
+import io.appwrite.services.TablesDb
 import io.appwrite.ID
 
 val client = Client()
     .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
     .setProject("<PROJECT_ID>")                // Your project ID
 
-val grids = Grids(client)
+val tablesDb = TablesDb(client)
 
-grids.createRow(
+tablesDb.createRow(
     databaseId = "marvel",
     tableId = "movies",
     rowId = ID.unique(),
@@ -417,15 +417,15 @@ If the child rows are already present in the related table, you can create the p
 Here's an example connecting reviews to a movie.
 {% multicode %}
 ```js
-const { Client, ID, Grids } = require('node-appwrite');
+const { Client, ID, TablesDb } = require('node-appwrite');
 
 const client = new Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
     .setProject('<PROJECT_ID>');               // Your project ID
 
-const grids = new Grids(client);
+const tablesDb = new TablesDb(client);
 
-await grids.createRow(
+await tablesDb.createRow(
     'marvel',
     'movies',
     ID.unique(),
@@ -447,9 +447,9 @@ final client = Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint    
     .setProject('<PROJECT_ID>');               // Your project ID  
 
-final grids = Grids(client);
+final tablesDb = TablesDb(client);
 
-await grids.createRow(
+await tablesDb.createRow(
   databaseId: 'marvel',
   tableId: 'movies',
   rowId: ID.unique(),
@@ -471,9 +471,9 @@ let client = Client()
     .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint        
     .setProject("<PROJECT_ID>")                // Your project ID      
 
-let grids = Grids(client: client)
+let tablesDb = TablesDb(client: client)
 
-grids.createRow(
+tablesDb.createRow(
     databaseId: "marvel",
     tableId: "movies",
     rowId: ID.unique(),
@@ -490,16 +490,16 @@ grids.createRow(
 
 ```kotlin
 import io.appwrite.Client
-import io.appwrite.services.Grids
+import io.appwrite.services.TablesDb
 import io.appwrite.ID
 
 val client = Client()
     .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint    
     .setProject("<PROJECT_ID>")                // Your project ID  
 
-val grids = Grids(client)
+val tablesDb = TablesDb(client)
 
-grids.createRow(
+tablesDb.createRow(
     databaseId = "marvel",
     tableId = "movies",
     rowId = ID.unique(),
@@ -525,15 +525,15 @@ Relationships can be updated by updating the relationship column.
 
 {% multicode %}
 ```js
-const { Client, Grids } = require('node-appwrite');
+const { Client, TablesDb } = require('node-appwrite');
 
 const client = new Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
     .setProject('<PROJECT_ID>');               // Your project ID
 
-const grids = new Grids(client);
+const tablesDb = new TablesDb(client);
 
-await grids.updateRow(
+await tablesDb.updateRow(
     'marvel',
     'movies',
     'spiderman',
@@ -555,9 +555,9 @@ final client = Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
     .setProject('<PROJECT_ID>');
 
-final grids = Grids(client);
+final tablesDb = TablesDb(client);
 
-await grids.updateRow(
+await tablesDb.updateRow(
   databaseId: 'marvel',
   tableId: 'movies',
   rowId: 'spiderman',
@@ -579,9 +579,9 @@ let client = Client()
     .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
     .setProject("<PROJECT_ID>")
 
-let grids = Grids(client: client)
+let tablesDb = TablesDb(client: client)
 
-grids.updateRow(
+tablesDb.updateRow(
     databaseId: "marvel",
     tableId: "movies",
     rowId: "spiderman",
@@ -598,15 +598,15 @@ grids.updateRow(
 
 ```kotlin
 import io.appwrite.Client
-import io.appwrite.services.Grids
+import io.appwrite.services.TablesDb
 
 val client = Client()
     .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
     .setProject("<PROJECT_ID>")
 
-val grids = Grids(client)
+val tablesDb = TablesDb(client)
 
-grids.updateRow(
+tablesDb.updateRow(
     databaseId = "marvel",
     tableId = "movies",
     rowId = "spiderman",
@@ -644,15 +644,15 @@ If the on-delete behavior is **cascade**, deleting the parent rows also deletes 
 
 {% multicode %}
 ```js
-const { Client, Grids } = require('node-appwrite');
+const { Client, TablesDb } = require('node-appwrite');
 
 const client = new Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
     .setProject('<PROJECT_ID>');               // Your project ID
 
-const grids = new Grids(client);
+const tablesDb = new TablesDb(client);
 
-await grids.deleteRow(
+await tablesDb.deleteRow(
     'marvel',
     'movies',
     'spiderman'
@@ -666,9 +666,9 @@ final client = Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
     .setProject('<PROJECT_ID>');
 
-final grids = Grids(client);
+final tablesDb = TablesDb(client);
 
-await grids.deleteRow(
+await tablesDb.deleteRow(
   databaseId: 'marvel',
   tableId: 'movies',
   rowId: 'spiderman'
@@ -682,9 +682,9 @@ let client = Client()
     .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
     .setProject("<PROJECT_ID>")
 
-let grids = Grids(client: client)
+let tablesDb = TablesDb(client: client)
 
-grids.deleteRow(
+tablesDb.deleteRow(
     databaseId: "marvel",
     tableId: "movies",
     rowId: "spiderman"
@@ -693,15 +693,15 @@ grids.deleteRow(
 
 ```kotlin
 import io.appwrite.Client
-import io.appwrite.services.Grids
+import io.appwrite.services.TablesDb
 
 val client = Client()
     .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
     .setProject("<PROJECT_ID>")
 
-val grids = Grids(client)
+val tablesDb = TablesDb(client)
 
-grids.deleteRow(
+tablesDb.deleteRow(
     databaseId = "marvel",
     tableId = "movies",
     rowId = "spiderman"
@@ -720,15 +720,15 @@ You can also provide explicit permissions to the child row if they should be **d
 
 {% multicode %}
 ```js
-const { Client, ID, Grids } = require('node-appwrite');
+const { Client, ID, TablesDb } = require('node-appwrite');
 
 const client = new Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
     .setProject('<PROJECT_ID>');               // Your project ID
 
-const grids = new Grids(client);
+const tablesDb = new TablesDb(client);
 
-await grids.createRow(
+await tablesDb.createRow(
     'marvel',
     'movies',
     ID.unique(),
@@ -754,9 +754,9 @@ final client = Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
     .setProject('<PROJECT_ID>');
 
-final grids = Grids(client);
+final tablesDb = TablesDb(client);
 
-await grids.createRow(
+await tablesDb.createRow(
   databaseId: 'marvel',
   tableId: 'movies',
   rowId: ID.unique(),
@@ -782,9 +782,9 @@ let client = Client()
     .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
     .setProject("<PROJECT_ID>")
 
-let grids = Grids(client: client)
+let tablesDb = TablesDb(client: client)
 
-grids.createRow(
+tablesDb.createRow(
     databaseId: "marvel",
     tableId: "movies",
     rowId: ID.unique(),
@@ -810,9 +810,9 @@ let client = Client()
     .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
     .setProject("<PROJECT_ID>")
 
-let grids = Grids(client: client)
+let tablesDb = TablesDb(client: client)
 
-grids.createRow(
+tablesDb.createRow(
     databaseId: "marvel",
     tableId: "movies",
     rowId: ID.unique(),

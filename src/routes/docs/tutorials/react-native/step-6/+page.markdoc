@@ -64,7 +64,7 @@ export function IdeasProvider(props) {
   const [ideas, setIdeas] = useState([]);
 
   async function add(idea) {
-    const response = await grids.createRow(
+    const response = await tablesDb.createRow(
       IDEAS_DATABASE_ID,
       IDEAS_TABLE_ID,
       ID.unique(),
@@ -76,14 +76,14 @@ export function IdeasProvider(props) {
   }
 
   async function remove(id) {
-    await grids.deleteRow(IDEAS_DATABASE_ID, IDEAS_TABLE_ID, id);
+    await tablesDb.deleteRow(IDEAS_DATABASE_ID, IDEAS_TABLE_ID, id);
     toast('Idea removed');
     setIdeas((ideas) => ideas.filter((idea) => idea.$id !== id));
     await init(); // Refetch ideas to ensure we have 10 items
   }
 
   async function init() {
-    const response = await grids.listRows(
+    const response = await tablesDb.listRows(
       IDEAS_DATABASE_ID,
       IDEAS_TABLE_ID,
       [Query.orderDesc("$createdAt"), Query.limit(10)]

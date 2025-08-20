@@ -90,24 +90,24 @@ client
 Once the Appwrite Client is initialized, create a function to configure a todo table.
 
 ```ruby
-grids = Grids.new(client)
+tablesDb = TablesDb.new(client)
 
 todo_database = nil
 todo_table = nil
 
 def prepare_database(databases)
-    todo_database = grids.create(
+    todo_database = tablesDb.create_databas(
         database_id: ID.unique(), 
         name: 'TodosDB'
     )
 
-    todo_table = grids.create_table(
+    todo_table = tablesDb.create_table(
         database_id: todo_database.id, 
         table_id: ID.unique(), 
         name: 'Todos'
     )
 
-    grids.create_string_column(
+    tablesDb.create_string_column(
         database_id: todo_database.id, 
         table_id: todo_table.id, 
         key: 'title', 
@@ -115,7 +115,7 @@ def prepare_database(databases)
         required: true
     )
 
-    grids.create_string_column(
+    tablesDb.create_string_column(
         database_id: todo_database.id, 
         table_id: todo_table.id, 
         key: 'description', 
@@ -123,7 +123,7 @@ def prepare_database(databases)
         required: false
     )
 
-    grids.create_boolean_column(
+    tablesDb.create_boolean_column(
         database_id: todo_database.id, 
         table_id: todo_table.id, 
         key: 'isComplete', 
@@ -157,21 +157,21 @@ def seed_database(databases, todo_database, todo_table)
         isComplete: false
     }
 
-    grids.create_row(
+    tablesDb.create_row(
         database_id: todo_database.id, 
         table_id: todo_table.id, 
         row_id: ID.unique(), 
         data: test_todo1
     )
     
-    grids.create_row(
+    tablesDb.create_row(
         database_id: todo_database.id, 
         table_id: todo_table.id, 
         row_id: ID.unique(), 
         data: test_todo2
     )
     
-    grids.create_row(
+    tablesDb.create_row(
         database_id: todo_database.id, 
         table_id: todo_table.id, 
         row_id: ID.unique(), 
@@ -188,7 +188,7 @@ Run the functions to by calling `run_all_tasks()`.
 
 ```ruby
 def get_todos(databases, todo_database, todo_table)
-    todos = grids.list_rows(
+    todos = tablesDb.list_rows(
         database_id: todo_database.id, 
         table_id: todo_table.id
     )

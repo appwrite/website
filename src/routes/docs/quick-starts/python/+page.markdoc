@@ -93,7 +93,7 @@ Open `my_app.py` and initialize the Appwrite Client. Replace `<PROJECT_ID>` with
 
 ```py
 from appwrite.client import Client
-from appwrite.services.databases import Databases
+from appwrite.services.tablesDb import TablesDb
 from appwrite.id import ID
 
 client = Client()
@@ -108,7 +108,7 @@ client.set_key('<YOUR_API_KEY>')
 Once the Appwrite Client is initialized, create a function to configure a todo table.
 
 ```py
-grids = Grids(client)
+tablesDb = TablesDb(client)
 
 todoDatabase = None
 todoTable = None
@@ -117,18 +117,18 @@ def prepare_database():
   global todoDatabase
   global todoTable
 
-  todoDatabase = grids.create(
+  todoDatabase = tablesDb.create_database(
     database_id=ID.unique(),
     name='TodosDB'
   )
 
-  todoTable = grids.create_table(
+  todoTable = tablesDb.create_table(
     database_id=todoDatabase['$id'],
     table_id=ID.unique(),
     name='Todos'
   )
 
-  grids.create_string_column(
+  tablesDb.create_string_column(
     database_id=todoDatabase['$id'],
     table_id=todoTable['$id'],
     key='title',
@@ -136,7 +136,7 @@ def prepare_database():
     required=True
   )
 
-  grids.create_string_column(
+  tablesDb.create_string_column(
     database_id=todoDatabase['$id'],
     table_id=todoTable['$id'],
     key='description',
@@ -145,7 +145,7 @@ def prepare_database():
     default='This is a test description.'
   )
 
-  grids.create_boolean_column(
+  tablesDb.create_boolean_column(
     database_id=todoDatabase['$id'],
     table_id=todoTable['$id'],
     key='isComplete',
@@ -176,21 +176,21 @@ def seed_database():
     'isComplete': False
   }
 
-  grids.create_row(
+  tablesDb.create_row(
     database_id=todoDatabase['$id'],
     table_id=todoTable['$id'],
     row_id=ID.unique(),
     data=testTodo1
   )
 
-  grids.create_row(
+  tablesDb.create_row(
     database_id=todoDatabase['$id'],
     table_id=todoTable['$id'],
     row_id=ID.unique(),
     data=testTodo2
   )
 
-  grids.create_row(
+  tablesDb.create_row(
     database_id=todoDatabase['$id'],
     table_id=todoTable['$id'],
     row_id=ID.unique(),
@@ -206,7 +206,7 @@ then execute the functions in `_main_`.
 
 ```py
 def get_todos():
-  todos = grids.list_rows(
+  todos = tablesDb.list_rows(
     database_id=todoDatabase['$id'],
     table_id=todoTable['$id']
   )

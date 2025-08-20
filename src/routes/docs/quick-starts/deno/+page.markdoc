@@ -92,7 +92,7 @@ client
 Once the Appwrite Client is initialized, create a function to configure a todo table.
 
 ```ts
-const grids: Grids = new Grids(client);
+const tablesDb: TablesDb = new TablesDb(client);
 
 var todoDatabase: Models.Database;
 var todoTable: Models.Table;
@@ -104,18 +104,18 @@ interface Todo {
 }
 
 async function prepareDatabase(): Promise<void> {
-    todoDatabase = await grids.create(
+    todoDatabase = await tablesDb.createDatabase(
         ID.unique(),
         'TodosDB'
     );
 
-    todoTable = await grids.createTable(
+    todoTable = await tablesDb.createTable(
         todoDatabase.$id,
         ID.unique(),
         'Todos'
     );
 
-    await grids.createStringColumn(
+    await tablesDb.createStringColumn(
         todoDatabase.$id,
         todoTable.$id,
         'title',
@@ -123,14 +123,14 @@ async function prepareDatabase(): Promise<void> {
         true
     );
 
-    await grids.createStringColumn(
+    await tablesDb.createStringColumn(
         todoDatabase.$id,
         todoTable.$id,
         'description',
         255, false,
         'This is a test description'
     );
-    await grids.createBooleanColumn(
+    await tablesDb.createBooleanColumn(
         todoDatabase.$id,
         todoTable.$id,
         'isComplete',
@@ -162,19 +162,19 @@ async function seedDatabase(): Promise<void> {
         isComplete: false
     };
 
-    await grids.createRow(
+    await tablesDb.createRow(
         todoDatabase.$id,
         todoTable.$id,
         ID.unique(),
         testTodo1
     );
-    await grids.createRow(
+    await tablesDb.createRow(
         todoDatabase.$id,
         todoTable.$id,
         ID.unique(),
         testTodo2
     );
-    await grids.createRow(
+    await tablesDb.createRow(
         todoDatabase.$id,
         todoTable.$id,
         ID.unique(),
@@ -191,7 +191,7 @@ Run the functions to by calling `runAllTasks();`.
 
 ```ts
 async function getTodos(): Promise<void> {
-    const todos = await grids.listRows(
+    const todos = await tablesDb.listRows(
         todoDatabase.$id,
         todoTable.$id
     );

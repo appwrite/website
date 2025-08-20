@@ -38,15 +38,15 @@ Use the `incrementRowColumn` and `decrementRowColumn` methods to perform atomic 
 
 {% multicode %}
 ```client-web
-import { Client, Grids } from "appwrite";
+import { Client, TablesDb } from "appwrite";
 
 const client = new Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
     .setProject('<YOUR_PROJECT_ID>'); // Your project ID
 
-const grids = new Grids(client);
+const tablesDb = new TablesDb(client);
 
-const result = await grids.incrementRowColumn(
+const result = await tablesDb.incrementRowColumn(
     '<DATABASE_ID>',
     '<TABLE_ID>',
     '<ROW_ID>',
@@ -61,9 +61,9 @@ final client = Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
     .setProject('<PROJECT_ID>');
 
-final grids = Grids(client);
+final tablesDb = TablesDb(client);
 
-final row = await grids.incrementRowColumn(
+final row = await tablesDb.incrementRowColumn(
     databaseId: '<DATABASE_ID>',
     tableId: '<TABLE_ID>',
     rowId: '<ROW_ID>',
@@ -79,9 +79,9 @@ let client = Client()
     .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
     .setProject("<PROJECT_ID>")
 
-let grids = Grids(client)
+let tablesDb = TablesDb(client)
 
-let row = try await grids.incrementRowColumn(
+let row = try await tablesDb.incrementRowColumn(
     databaseId: "<DATABASE_ID>",
     tableId: "<TABLE_ID>",
     rowId: "<ROW_ID>",
@@ -91,15 +91,15 @@ let row = try await grids.incrementRowColumn(
 ```
 ```client-android-kotlin
 import io.appwrite.Client
-import io.appwrite.services.Databases
+import io.appwrite.services.TablesDb
 
 val client = Client(applicationContext)
     .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
     .setProject("<PROJECT_ID>")
 
-val grids = Grids(client)
+val tablesDb = TablesDb(client)
 
-val row = grids.incrementRowColumn(
+val row = tablesDb.incrementRowColumn(
     databaseId = "<DATABASE_ID>",
     tableId = "<TABLE_ID>",
     rowId = "<ROW_ID>",
@@ -115,9 +115,9 @@ const client = new sdk.Client()
     .setProject('<PROJECT_ID>') // Your project ID
     .setKey('<API_KEY>'); // Your secret API key
 
-const grids = new sdk.Grids(client);
+const tablesDb = new sdk.TablesDb(client);
 
-const result = await grids.incrementRowColumn(
+const result = await tablesDb.incrementRowColumn(
     '<DATABASE_ID>',
     '<TABLE_ID>',
     '<ROW_ID>',
@@ -127,16 +127,16 @@ const result = await grids.incrementRowColumn(
 ```
 ```server-python
 from appwrite.client import Client
-from appwrite.services.grids import Grids
+from appwrite.services.tablesDb import TablesDb
 
 client = Client()
 client.set_endpoint('https://<REGION>.cloud.appwrite.io/v1') # Your API Endpoint
 client.set_project('<PROJECT_ID>') # Your project ID
 client.set_key('<API_KEY>') # Your secret API key
 
-grids = Grids(client)
+tablesDb = TablesDb(client)
 
-result = grids.increment_row_column(
+result = tablesDb.increment_row_column(
     database_id = '<DATABASE_ID>',
     table_id = '<TABLE_ID>',
     row_id = '<ROW_ID>',
@@ -171,15 +171,15 @@ Use the `decrementRowColumn` method to decrease numeric fields:
 
 {% multicode %}
 ```client-web
-import { Client, Grids } from "appwrite";
+import { Client, TablesDb } from "appwrite";
 
 const client = new Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
     .setProject('<YOUR_PROJECT_ID>'); // Your project ID
 
-const grids = new Grids(client);
+const tablesDb = new TablesDb(client);
 
-const result = await grids.decrementRowColumn(
+const result = await tablesDb.decrementRowColumn(
     '<DATABASE_ID>',
     '<TABLE_ID>',
     '<ROW_ID>',
@@ -194,9 +194,9 @@ final client = Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
     .setProject('<PROJECT_ID>');
 
-final grids = Grids(client);
+final tablesDb = TablesDb(client);
 
-final row = await grids.decrementRowColumn(
+final row = await tablesDb.decrementRowColumn(
     databaseId: '<DATABASE_ID>',
     tableId: '<TABLE_ID>',
     rowId: '<ROW_ID>',
@@ -212,9 +212,9 @@ let client = Client()
     .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
     .setProject("<PROJECT_ID>")
 
-let grids = Grids(client)
+let tablesDb = TablesDb(client)
 
-let row = try await grids.decrementRowColumn(
+let row = try await tablesDb.decrementRowColumn(
     databaseId: "<DATABASE_ID>",
     tableId: "<TABLE_ID>",
     rowId: "<ROW_ID>",
@@ -224,15 +224,15 @@ let row = try await grids.decrementRowColumn(
 ```
 ```client-android-kotlin
 import io.appwrite.Client
-import io.appwrite.services.Databases
+import io.appwrite.services.TablesDb
 
 val client = Client(applicationContext)
     .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
     .setProject("<PROJECT_ID>")
 
-val grids = Grids(client)
+val tablesDb = TablesDb(client)
 
-val row = grids.decrementRowColumn(
+val row = tablesDb.decrementRowColumn(
     databaseId = "<DATABASE_ID>",
     tableId = "<TABLE_ID>",
     rowId = "<ROW_ID>",
@@ -248,9 +248,9 @@ const client = new sdk.Client()
     .setProject('<PROJECT_ID>') // Your project ID
     .setKey('<API_KEY>'); // Your secret API key
 
-const grids = new sdk.Grids(client);
+const tablesDb = new sdk.TablesDb(client);
 
-const result = await grids.decrementRowColumn(
+const result = await tablesDb.decrementRowColumn(
     '<DATABASE_ID>',
     '<TABLE_ID>',
     '<ROW_ID>',
@@ -260,16 +260,16 @@ const result = await grids.decrementRowColumn(
 ```
 ```server-python
 from appwrite.client import Client
-from appwrite.services.grids import Grids
+from appwrite.services.tablesDb import TablesDb
 
 client = Client()
 client.set_endpoint('https://<REGION>.cloud.appwrite.io/v1') # Your API Endpoint
 client.set_project('<PROJECT_ID>') # Your project ID
 client.set_key('<API_KEY>') # Your secret API key
 
-grids = Grids(client)
+tablesDb = TablesDb(client)
 
-result = grids.decrement_row_column(
+result = tablesDb.decrement_row_column(
     database_id = '<DATABASE_ID>',
     table_id = '<TABLE_ID>',
     row_id = '<ROW_ID>',
@@ -307,7 +307,7 @@ You can set minimum and maximum bounds for individual operations to prevent inva
 {% multicode %}
 ```client-web
 // Increment with maximum constraint
-const result = await grids.incrementRowColumn(
+const result = await tablesDb.incrementRowColumn(
     '<DATABASE_ID>',
     '<TABLE_ID>',
     '<ROW_ID>',
@@ -317,7 +317,7 @@ const result = await grids.incrementRowColumn(
 );
 
 // Decrement with minimum constraint
-const result2 = await grids.decrementRowColumn(
+const result2 = await tablesDb.decrementRowColumn(
     '<DATABASE_ID>',
     '<TABLE_ID>',
     '<ROW_ID>',
@@ -328,7 +328,7 @@ const result2 = await grids.decrementRowColumn(
 ```
 ```client-flutter
 // Increment with maximum constraint
-final row = await grids.incrementRowColumn(
+final row = await tablesDb.incrementRowColumn(
     databaseId: '<DATABASE_ID>',
     tableId: '<TABLE_ID>',
     rowId: '<ROW_ID>',
@@ -338,7 +338,7 @@ final row = await grids.incrementRowColumn(
 );
 
 // Decrement with minimum constraint
-final row2 = await grids.decrementRowColumn(
+final row2 = await tablesDb.decrementRowColumn(
     databaseId: '<DATABASE_ID>',
     tableId: '<TABLE_ID>',
     rowId: '<ROW_ID>',
@@ -349,7 +349,7 @@ final row2 = await grids.decrementRowColumn(
 ```
 ```client-apple
 // Increment with maximum constraint
-let row = try await grids.incrementRowColumn(
+let row = try await tablesDb.incrementRowColumn(
     databaseId: "<DATABASE_ID>",
     tableId: "<TABLE_ID>",
     rowId: "<ROW_ID>",
@@ -359,7 +359,7 @@ let row = try await grids.incrementRowColumn(
 )
 
 // Decrement with minimum constraint
-let row2 = try await grids.decrementRowColumn(
+let row2 = try await tablesDb.decrementRowColumn(
     databaseId: "<DATABASE_ID>",
     tableId: "<TABLE_ID>",
     rowId: "<ROW_ID>",
@@ -370,7 +370,7 @@ let row2 = try await grids.decrementRowColumn(
 ```
 ```client-android-kotlin
 // Increment with maximum constraint
-val row = grids.incrementRowColumn(
+val row = tablesDb.incrementRowColumn(
     databaseId = "<DATABASE_ID>",
     tableId = "<TABLE_ID>",
     rowId = "<ROW_ID>",
@@ -380,7 +380,7 @@ val row = grids.incrementRowColumn(
 )
 
 // Decrement with minimum constraint
-val row2 = grids.decrementRowColumn(
+val row2 = tablesDb.decrementRowColumn(
     databaseId = "<DATABASE_ID>",
     tableId = "<TABLE_ID>",
     rowId = "<ROW_ID>",
@@ -391,7 +391,7 @@ val row2 = grids.decrementRowColumn(
 ```
 ```server-nodejs
 // Increment with maximum constraint
-const result = await grids.incrementRowColumn(
+const result = await tablesDb.incrementRowColumn(
     '<DATABASE_ID>',
     '<TABLE_ID>',
     '<ROW_ID>',
@@ -401,7 +401,7 @@ const result = await grids.incrementRowColumn(
 );
 
 // Decrement with minimum constraint
-const result2 = await grids.decrementRowColumn(
+const result2 = await tablesDb.decrementRowColumn(
     '<DATABASE_ID>',
     '<TABLE_ID>',
     '<ROW_ID>',
@@ -412,7 +412,7 @@ const result2 = await grids.decrementRowColumn(
 ```
 ```server-python
 # Increment with maximum constraint
-result = grids.increment_row_column(
+result = tablesDb.increment_row_column(
     database_id = '<DATABASE_ID>',
     table_id = '<TABLE_ID>',
     row_id = '<ROW_ID>',
@@ -422,7 +422,7 @@ result = grids.increment_row_column(
 )
 
 # Decrement with minimum constraint
-result2 = grids.decrement_row_column(
+result2 = tablesDb.decrement_row_column(
     database_id = '<DATABASE_ID>',
     table_id = '<TABLE_ID>',
     row_id = '<ROW_ID>',
@@ -446,7 +446,7 @@ For complex updates that include both atomic operations and regular field change
 {% multicode %}
 ```client-web
 // First, increment the likes atomically
-const likeResult = await grids.incrementRowColumn(
+const likeResult = await tablesDb.incrementRowColumn(
     '<DATABASE_ID>',
     '<TABLE_ID>',
     '<ROW_ID>',
@@ -455,7 +455,7 @@ const likeResult = await grids.incrementRowColumn(
 );
 
 // Then, update other fields
-const updateResult = await grids.updateRow(
+const updateResult = await tablesDb.updateRow(
     '<DATABASE_ID>',
     '<TABLE_ID>',
     '<ROW_ID>',
@@ -467,7 +467,7 @@ const updateResult = await grids.updateRow(
 ```
 ```client-flutter
 // First, increment the likes atomically
-final likeResult = await grids.incrementRowColumn(
+final likeResult = await tablesDb.incrementRowColumn(
     databaseId: '<DATABASE_ID>',
     tableId: '<TABLE_ID>',
     rowId: '<ROW_ID>',
@@ -476,7 +476,7 @@ final likeResult = await grids.incrementRowColumn(
 );
 
 // Then, update other fields
-final updateResult = await grids.updateRow(
+final updateResult = await tablesDb.updateRow(
     databaseId: '<DATABASE_ID>',
     tableId: '<TABLE_ID>',
     rowId: '<ROW_ID>',
@@ -488,7 +488,7 @@ final updateResult = await grids.updateRow(
 ```
 ```client-apple
 // First, increment the likes atomically
-let likeResult = try await grids.incrementRowColumn(
+let likeResult = try await tablesDb.incrementRowColumn(
     databaseId: "<DATABASE_ID>",
     tableId: "<TABLE_ID>",
     rowId: "<ROW_ID>",
@@ -497,7 +497,7 @@ let likeResult = try await grids.incrementRowColumn(
 )
 
 // Then, update other fields
-let updateResult = try await grids.updateRow(
+let updateResult = try await tablesDb.updateRow(
     databaseId: "<DATABASE_ID>",
     tableId: "<TABLE_ID>",
     rowId: "<ROW_ID>",
@@ -509,7 +509,7 @@ let updateResult = try await grids.updateRow(
 ```
 ```client-android-kotlin
 // First, increment the likes atomically
-val likeResult = grids.incrementRowColumn(
+val likeResult = tablesDb.incrementRowColumn(
     databaseId = "<DATABASE_ID>",
     tableId = "<TABLE_ID>",
     rowId = "<ROW_ID>",
@@ -518,7 +518,7 @@ val likeResult = grids.incrementRowColumn(
 )
 
 // Then, update other fields
-val updateResult = grids.updateRow(
+val updateResult = tablesDb.updateRow(
     databaseId = "<DATABASE_ID>",
     tableId = "<TABLE_ID>",
     rowId = "<ROW_ID>",
@@ -530,7 +530,7 @@ val updateResult = grids.updateRow(
 ```
 ```server-nodejs
 // First, increment the likes atomically
-const likeResult = await grids.incrementRowColumn(
+const likeResult = await tablesDb.incrementRowColumn(
     '<DATABASE_ID>',
     '<TABLE_ID>',
     '<ROW_ID>',
@@ -539,7 +539,7 @@ const likeResult = await grids.incrementRowColumn(
 );
 
 // Then, update other fields
-const updateResult = await grids.updateRow(
+const updateResult = await tablesDb.updateRow(
     '<DATABASE_ID>',
     '<TABLE_ID>',
     '<ROW_ID>',
@@ -551,7 +551,7 @@ const updateResult = await grids.updateRow(
 ```
 ```server-python
 # First, increment the likes atomically
-like_result = grids.increment_row_column(
+like_result = tablesDb.increment_row_column(
     database_id = '<DATABASE_ID>',
     table_id = '<TABLE_ID>',
     row_id = '<ROW_ID>',
@@ -560,7 +560,7 @@ like_result = grids.increment_row_column(
 )
 
 # Then, update other fields
-update_result = grids.update_row(
+update_result = tablesDb.update_row(
     database_id = '<DATABASE_ID>',
     table_id = '<TABLE_ID>',
     row_id = '<ROW_ID>',

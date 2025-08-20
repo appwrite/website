@@ -94,23 +94,23 @@ client
 Once the Appwrite Client is initialized, create a function to configure a todo table.
 
 ```csharp
-var grids = new Grids(client);
+var tablesDb = new TablesDb(client);
 
 Database todoDatabase;
 Table todoTable;
 
-todoDatabase = await databases.Create(
+todoDatabase = await tablesDb.CreateDatabase(
     databaseId: ID.Unique(),
     name: "TodosDB"
 );
 
-todoTable = await databases.CreateTable(
+todoTable = await tablesDb.CreateTable(
     databaseId: todoDatabase.Id,
     tableId: ID.Unique(),
     name: "Todos"
 );
 
-await databases.CreateStringColumn(
+await tablesDb.CreateStringColumn(
     databaseId: todoDatabase.Id,
     tableId: todoTable.Id,
     key: "title",
@@ -118,7 +118,7 @@ await databases.CreateStringColumn(
     required: true
 );
 
-await databases.CreateStringColumn(
+await tablesDb.CreateStringColumn(
     databaseId: todoDatabase.Id,
     tableId: todoTable.Id,
     key: "description",
@@ -127,7 +127,7 @@ await databases.CreateStringColumn(
     xdefault: "This is a test description"
 );
 
-await databases.CreateBooleanColumn(
+await tablesDb.CreateBooleanColumn(
     databaseId: todoDatabase.Id,
     tableId: todoTable.Id,
     key: "isComplete",
@@ -159,21 +159,21 @@ var testTodo3 = new Dictionary<string, object>()
     {"isComplete", false}
 };
 
-await databases.createRow(
+await tablesDb.createRow(
     databaseId: todoDatabase.Id,
     tableId: todoTable.Id,
     rowId: ID.Unique(),
     data: testTodo1
 );
 
-await databases.createRow(
+await tablesDb.createRow(
     databaseId: todoDatabase.Id,
     tableId: todoTable.Id,
     rowId: ID.Unique(),
     data: testTodo2
 );
 
-await databases.createRow(
+await tablesDb.createRow(
     databaseId: todoDatabase.Id,
     tableId: todoTable.Id,
     rowId: ID.Unique(),
@@ -187,7 +187,7 @@ await databases.createRow(
 Create a function to retrieve the mock todo data.
 
 ```csharp
-var todos = await databases.listRows(
+var todos = await tablesDb.listRows(
     databaseId: todoDatabase.Id,
     tableId: todoTable.Id
 );
