@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { setContext, type Snippet } from 'svelte';
+    import { type Snippet } from 'svelte';
 
     interface CardsImageItemProps {
         href: string;
@@ -10,8 +10,6 @@
     }
 
     const { href, light = '', dark = '', title, children }: CardsImageItemProps = $props();
-
-    setContext('no-paragraph', true);
 </script>
 
 <a
