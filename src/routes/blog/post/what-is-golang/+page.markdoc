@@ -134,14 +134,14 @@ package main
 import (
 "fmt"
 "github.com/appwrite/sdk-for-go/client"
-"github.com/appwrite/sdk-for-go/databases"
+"github.com/appwrite/sdk-for-go/tablesdb"
 )
 
 func main() {
 appwriteClient := client.NewClient()
 appwriteClient.SetProject("<PROJECT_ID>")
 appwriteClient.SetKey(“<API_KEY>”)
-appwriteTablesDB := databases.NewTablesDB(appwriteClient)
+appwriteTablesDB := tablesdb.NewTablesDB(appwriteClient)
 
 response, err := appwriteTablesDB.Create("unique()", "Pokemon")
 

@@ -181,7 +181,7 @@ export const DATABASE_ID = PUBLIC_APPWRITE_DATABASE_ID
 
 ```
 
-This configuration file initializes our connection to Appwrite. The `Client` class creates a new Appwrite client instance, which we configure with our endpoint and project ID from our environment variables. We then create instances of the `Databases` and `Account` services, which we'll use throughout our application for database operations and user authentication.
+This configuration file initializes our connection to Appwrite. The `Client` class creates a new Appwrite client instance, which we configure with our endpoint and project ID from our environment variables. We then create instances of the `TablesDB` and `Account` services, which we'll use throughout our application for database operations and user authentication.
 
 Finally, we export the table IDs from our environment variables so that we can use them in other parts of our application.
 

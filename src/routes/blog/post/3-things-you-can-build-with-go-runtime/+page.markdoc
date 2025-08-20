@@ -186,12 +186,12 @@ To build this function, create a `services` directory in the function folder and
 package services
 
 import (
-	"github.com/appwrite/sdk-for-go/databases"
+	"github.com/appwrite/sdk-for-go/tablesdb"
 	"github.com/appwrite/sdk-for-go/permission"
 	"github.com/open-runtimes/types-for-go/v4/openruntimes"
 )
 
-func DoesDatabaseExist(dbs databases.Databases, dbId string) bool {
+func DoesDatabaseExist(dbs tablesdb.TablesDB, dbId string) bool {
 	_, err := dbs.Get(dbId)
 	if err != nil {
 		return false
@@ -199,7 +199,7 @@ func DoesDatabaseExist(dbs databases.Databases, dbId string) bool {
 	return true
 }
 
-func DoesTableExist(dbs databases.Databases, dbId string, collId string) bool {
+func DoesTableExist(dbs tablesdb.TablesDB, dbId string, collId string) bool {
 	_, err := dbs.GetTable(dbId, collId)
 	if err != nil {
 		return false
@@ -207,7 +207,7 @@ func DoesTableExist(dbs databases.Databases, dbId string, collId string) bool {
 	return true
 }
 
-func DoesColumnExist(dbs databases.Databases, dbId string, collId string, attribId string) bool {
+func DoesColumnExist(dbs tablesdb.TablesDB, dbId string, collId string, attribId string) bool {
 	_, err := dbs.GetColumn(dbId, collId, attribId)
 	if err != nil {
 		return false
@@ -215,7 +215,7 @@ func DoesColumnExist(dbs databases.Databases, dbId string, collId string, attrib
 	return true
 }
 
-func InitialiseDatabase(Context openruntimes.Context, dbs databases.Databases, dbId string, collId string) {
+func InitialiseDatabase(Context openruntimes.Context, dbs tablesdb.TablesDB, dbId string, collId string) {
 	doesDbExist := DoesDatabaseExist(dbs, dbId)
 	if !doesDbExist {
 		dbs.Create(
