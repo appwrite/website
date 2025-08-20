@@ -99,7 +99,7 @@ Once the Appwrite Client is initialized, create a function to configure a todo t
 let tablesDb = TablesDb(client)
 
 func prepareDatabase() async -> (Database?, Table?) {
-    let todoDatabase = try? await tablesDb.createDatabase(
+    let todoDatabase = try? await tablesDb.create(
         databaseId: ID.unique(),
         name: "TodosDB"
     )

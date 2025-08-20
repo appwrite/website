@@ -104,7 +104,7 @@ interface Todo {
 }
 
 async function prepareDatabase(): Promise<void> {
-    todoDatabase = await tablesDb.createDatabase(
+    todoDatabase = await tablesDb.create(
         ID.unique(),
         'TodosDB'
     );

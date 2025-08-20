@@ -96,7 +96,7 @@ todo_database = nil
 todo_table = nil
 
 def prepare_database(databases)
-    todo_database = tablesDb.create_databas(
+    todo_database = tablesDb.create(
         database_id: ID.unique(), 
         name: 'TodosDB'
     )

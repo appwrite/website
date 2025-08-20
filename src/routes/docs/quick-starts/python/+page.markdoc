@@ -117,7 +117,7 @@ def prepare_database():
   global todoDatabase
   global todoTable
 
-  todoDatabase = tablesDb.create_database(
+  todoDatabase = tablesDb.create(
     database_id=ID.unique(),
     name='TodosDB'
   )

@@ -31,7 +31,7 @@ client
     .setKey('919c2d18fb5d4...a2ae413da83346ad2') // Your secret API key
 ;
 
-const promise = tablesDb.createDatabase('<DATABASE_ID>', '<NAME>');
+const promise = tablesDb.create('<DATABASE_ID>', '<NAME>');
 
 promise.then(function (response) {
     console.log(response);
@@ -54,7 +54,7 @@ client
 ;
 
 
-let promise = tablesDb.createTable('<DATABASE_ID>', '<NAME>');
+let promise = tablesDb.create('<DATABASE_ID>', '<NAME>');
 
 promise.then(function (response) {
     console.log(response);
@@ -78,7 +78,7 @@ $client
 
 $tablesDb = new TablesDb($client);
 
-$result = $tablesDb->createDatabase('<DATABASE_ID>', '<NAME>');
+$result = $tablesDb->create('<DATABASE_ID>', '<NAME>');
 ```
 ```python
 from appwrite.client import Client
@@ -94,7 +94,7 @@ client = Client()
 
 tablesDb = TablesDb(client)
 
-result = tablesDb.create_database('<DATABASE_ID>', '<NAME>')
+result = tablesDb.create('<DATABASE_ID>', '<NAME>')
 ```
 ```ruby
 require 'Appwrite'
@@ -108,7 +108,7 @@ client = Client.new
 
 tablesDb = TablesDb.new(client)
 
-response = tablesDb.create_database(database_id: '<DATABASE_ID>', name: '<NAME>')
+response = tablesDb.create(database_id: '<DATABASE_ID>', name: '<NAME>')
 
 puts response.inspect
 ```
@@ -124,7 +124,7 @@ var client = new Client()
 
 var tablesDb = new TablesDb(client);
 
-Database result = await tablesDb.CreateDatabase(
+Database result = await tablesDb.Create(
     databaseId: "<DATABASE_ID>",
     name: "<NAME>");
 ```
@@ -141,7 +141,7 @@ void main() { // Init SDK
     .setKey('919c2d18fb5d4...a2ae413da83346ad2') // Your secret API key
   ;
 
-  Future result = tablesDb.createDatabase(
+  Future result = tablesDb.create(
     databaseId: '<DATABASE_ID>',
     name: '<NAME>',
   );
@@ -165,7 +165,7 @@ val client = Client(context)
 
 val tablesDb = TablesDb(client)
 
-val response = tablesDb.createDatabase(
+val response = tablesDb.create(
     databaseId = "<DATABASE_ID>",
     name = "<NAME>",
 )
@@ -182,7 +182,7 @@ Client client = new Client()
 
 TablesDb tablesDb = new TablesDb(client);
 
-tablesDb.createDatabase(
+tablesDb.create(
     "<DATABASE_ID>",
     "<NAME>",
     new CoroutineCallback<>((result, error) -> {
@@ -205,7 +205,7 @@ let client = Client()
 
 let tablesDb = TablesDb(client)
 
-let response = try await tablesDb.createDatabase(
+let response = try await tablesDb.create(
     databaseId: "<DATABASE_ID>",
     name: "<NAME>"
 )

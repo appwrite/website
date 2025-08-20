@@ -108,7 +108,7 @@ var todoDatabase: Database? = null
 var todoTable: Table? = null
 
 suspend fun prepareDatabase() {
-    todoDatabase = tablesDb.createDatabase(ID.unique(), "TodosDB")
+    todoDatabase = tablesDb.create(ID.unique(), "TodosDB")
     todoTable = tablesDb.createTable(todoDatabase?.id!!, ID.unique(), "Todos")
 
     tablesDb.createStringColumn(

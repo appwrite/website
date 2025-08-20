@@ -99,7 +99,7 @@ var tablesDb = new TablesDb(client);
 Database todoDatabase;
 Table todoTable;
 
-todoDatabase = await tablesDb.CreateDatabase(
+todoDatabase = await tablesDb.Create(
     databaseId: ID.Unique(),
     name: "TodosDB"
 );

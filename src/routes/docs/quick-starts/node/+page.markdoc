@@ -93,7 +93,7 @@ var todoDatabase;
 var todoTable;
 
 async function prepareDatabase() {
-    todoDatabase = await tablesDb.createDatabase(
+    todoDatabase = await tablesDb.create(
         sdk.ID.unique(),
         'TodosDB'
     );
