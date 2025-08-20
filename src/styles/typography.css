@@ -279,7 +279,7 @@
         margin-top: 0;
     }
 
-    :last-child:where(:not(.not-prose, .not-prose *)) {
+    :last-child:where(:not(.not-prose, .not-prose *)):not(li ul):not(li ol) {
         margin-bottom: 0;
     }
 }
