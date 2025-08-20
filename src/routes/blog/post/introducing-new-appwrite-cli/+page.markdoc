@@ -89,7 +89,7 @@ Appwrite CLI is now in listening mode. Try changing your code and seeing how the
 
 GitOps is a common way of tracking and migrating database changes. The latest Appwrite CLI generation includes a few features to help you migrate your database changes easily.
 
-When running `appwrite push collection`, the CLI will compare your local `appwrite.config.json` collection definition against the currently deployed remote collection and will present you with a detailed table awaiting your decision, for example:
+When running `appwrite push table`, the CLI will compare your local `appwrite.config.json` table definition against the currently deployed remote table and will present you with a detailed table awaiting your decision, for example:
 
 ```
 Key       │ Action     │ Reason
