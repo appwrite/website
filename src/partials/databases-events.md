@@ -71,6 +71,12 @@
 
 ---
 
+- `databases.*.collections.*.documents.*.upsert`
+- This event triggers when a document is upserted.
+  Returns [Document Object](/docs/references/cloud/models/document)
+
+---
+
 - `databases.*.collections.*.indexes.*`
 - This event triggers on any indexes event.
   Returns [Index Object](/docs/references/cloud/models/index)
