@@ -84,7 +84,7 @@ Server integrations use API keys to authenticate and are typically used for back
 Server APIs are authenticated with API keys instead of account sessions. Simply pass an [API key](/docs/advanced/platform/api-keys) in the `X-Appwrite-key: [API-KEY]` header with the appropriate scopes.
 
 ```json
-GET /v1/databases/{databaseId}/tables/{tableId}/rows HTTP/1.1
+GET /v1/tablesdb/{databaseId}/tables/{tableId}/rows HTTP/1.1
 Content-Type: application/json
 X-Appwrite-Project: <PROJECT_ID>
 X-Appwrite-Key: [API_KEY]
