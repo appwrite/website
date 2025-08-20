@@ -247,9 +247,9 @@ func Main(Context openruntimes.Context) openruntimes.Response {
 		appwrite.WithKey(Context.Req.Headers["x-appwrite-key"]),
 	)
 
-	databases := appwrite.NewDatabases(client)
+	tablesDB := appwrite.NewTablesDB(client)
 
-	response, err := databases.ListRows("main", "profiles")
+	response, err := tablesDB.ListRows("main", "profiles")
 	if err != nil {
 		Context.Error(err)
 		return Context.Res.Text("Internal error" Context.Res.WithStatusCode(500))

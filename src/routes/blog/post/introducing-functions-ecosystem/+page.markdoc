@@ -32,7 +32,7 @@ To combat this, we've introduced automatically generated, short-lived API keys f
 Here's how you can use them:
 
 ```jsx
-import { Client, Databases } from 'node-appwrite';
+import { Client, TablesDB } from 'node-appwrite';
 
 export default async ({ req, res }) => {
     const client = new Client()
@@ -40,7 +40,7 @@ export default async ({ req, res }) => {
         .setProject(process.env.APPWRITE_FUNCTION_PROJECT_ID)
         .setKey(req.headers['x-appwrite-key']);
 
-    const databases = new Databases(client);
+    const tablesDB = new TablesDB(client);
 
     // Your function logic here
 

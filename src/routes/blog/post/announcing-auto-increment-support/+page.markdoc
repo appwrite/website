@@ -40,15 +40,15 @@ Integrating Auto-increment support into your Appwrite Databases makes your backe
 For numeric ordering based on insertion order, you can use the `$sequence` field, which Appwrite automatically adds to all rows. This field increments with each new insert.
 
 ```client-web
-import { Client, Databases, Query } from "appwrite";
+import { Client, TablesDB, Query } from "appwrite";
 
 const client = new Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
     .setProject('<PROJECT_ID>');
 
-const databases = new Databases(client);
+const tablesDB = new TablesDB(client);
 
-databases.listRows(
+tablesDB.listRows(
     '<DATABASE_ID>',
     '<TABLE_ID>',
     [

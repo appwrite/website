@@ -52,9 +52,9 @@ const client = new sdk.Client()
     .setProject('<PROJECT_ID>')
     .setKey('<API_KEY>');
 
-const databases = new sdk.Databases(client);
+const tablesDB = new sdk.TablesDB(client);
 
-const result = await databases.createRows(
+const result = await tablesDB.createRows(
     '<DATABASE_ID>',
     '<TABLE_ID>',
     [

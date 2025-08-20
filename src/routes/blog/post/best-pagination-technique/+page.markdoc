@@ -87,16 +87,16 @@ Appwrite's pagination supports both offset and cursor pagination. Let's imagine 
 
 ```jsx
 // Setup
-import { Appwrite, Databases, Query } from "appwrite";
+import { Appwrite, TablesDB, Query } from "appwrite";
 
 const client = new Appwrite();
 client
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
     .setProject('articles-demo'); // Your project ID
-const databases = new Databases(client);
+const tablesDB = new TablesDB(client);
 
 // Offset pagination
-databases.listRows(
+tablesDB.listRows(
 		'main', // Database ID
     'articles', // Table ID
     [
@@ -108,7 +108,7 @@ databases.listRows(
 });
 
 // Cursor pagination
-databases.listRows(
+tablesDB.listRows(
 		'main', // Database ID
     'articles', // Table ID
     [

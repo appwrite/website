@@ -276,12 +276,12 @@ func Main(Context openruntimes.Context) openruntimes.Response {
 		appwrite.WithKey(Context.Req.Headers["x-appwrite-key"]),
 	)
 
-	databases := appwrite.NewDatabases(client)
+	tablesDB := appwrite.NewTablesDB(client)
 
 	dbId := "urlDatabase"
 	collId := "urlTable"
 
-	services.InitialiseDatabase(Context, *databases, dbId, collId)
+	services.InitialiseDatabase(Context, *tablesDB, dbId, collId)
 
 	if Context.Req.Method == "POST" {
 		var requestBody RequestBody
@@ -294,7 +294,7 @@ func Main(Context openruntimes.Context) openruntimes.Response {
 			}, Context.Res.WithStatusCode(400))
 		}
 
-		_, err = databases.CreateRow(
+		_, err = tablesDB.CreateRow(
 			dbId,
 			collId,
 			requestBody.ShortId,
@@ -326,7 +326,7 @@ func Main(Context openruntimes.Context) openruntimes.Response {
 
 		shortId := path[1:]
 
-		row, err := databases.GetRow(dbId, collId, shortId)
+		row, err := tablesDB.GetRow(dbId, collId, shortId)
 
 		if err != nil {
 			Context.Error(err)

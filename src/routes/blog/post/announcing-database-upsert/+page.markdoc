@@ -36,15 +36,15 @@ This brings you immediate benefits such as:
 Implementing Upsert is straightforward and intuitive:
 
 ```javascript
-import { Client, Databases } from "appwrite";
+import { Client, TablesDB } from "appwrite";
 
 const client = new Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
     .setProject('<PROJECT_ID>');
 
-const databases = new Databases(client);
+const tablesDB = new TablesDB(client);
 
-const result = await databases.upsertRow(
+const result = await tablesDB.upsertRow(
     '<DATABASE_ID>',
     '<TABLE_ID>',
     '<ROW_ID>',

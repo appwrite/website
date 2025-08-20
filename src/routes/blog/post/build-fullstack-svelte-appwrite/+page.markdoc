@@ -160,7 +160,7 @@ This template provides the basic structure for our application. The `data-svelte
 Let's set up our connection to Appwrite. If you haven't already, create a new file in the `src/lib` directory named `appwrite.js`. We'll use this file to configure the Appwrite client and provide access to our database and account services.
 
 ```js
-import { Client, Account, Databases } from 'appwrite'
+import { Client, Account, TablesDB } from 'appwrite'
 import {
 	PUBLIC_APPWRITE_ENDPOINT,
 	PUBLIC_APPWRITE_PROJECT_ID,
@@ -173,7 +173,7 @@ const client = new Client()
 client.setEndpoint(PUBLIC_APPWRITE_ENDPOINT).setProject(PUBLIC_APPWRITE_PROJECT_ID)
 
 export const account = new Account(client)
-export const databases = new Databases(client)
+export const tablesDB = new TablesDB(client)
 
 // Table IDs from environment variables
 export const EXPENSES_TABLE_ID = PUBLIC_APPWRITE_TABLE_ID
@@ -588,7 +588,7 @@ onMount(async () => {
 async function fetchExpenses() {
   try {
     loading = true
-    const response = await databases.listRows(DATABASE_ID, EXPENSES_TABLE_ID, [
+    const response = await tablesDB.listRows(DATABASE_ID, EXPENSES_TABLE_ID, [
       Query.orderDesc('$createdAt')
     ])
     expenses = response.rows
@@ -636,12 +636,12 @@ async function handleSubmit() {
     }
 
     if (editingExpense) {
-      await databases.updateRow(DATABASE_ID, EXPENSES_TABLE_ID, editingExpense.$id, {
+      await tablesDB.updateRow(DATABASE_ID, EXPENSES_TABLE_ID, editingExpense.$id, {
         ...expenseData,
         updatedAt: now
       })
     } else {
-      await databases.createRow(
+      await tablesDB.createRow(
         DATABASE_ID,
         EXPENSES_TABLE_ID,
         'unique()',
@@ -674,7 +674,7 @@ Finally, let's add utility functions for managing expenses:
 ```js
 async function deleteExpense(id) {
   try {
-    await databases.deleteRow(DATABASE_ID, EXPENSES_TABLE_ID, id)
+    await tablesDB.deleteRow(DATABASE_ID, EXPENSES_TABLE_ID, id)
     await fetchExpenses()
   } catch (e) {
     error = 'Failed to delete expense'

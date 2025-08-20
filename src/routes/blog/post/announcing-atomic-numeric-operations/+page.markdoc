@@ -10,7 +10,7 @@ category: announcement
 featured: false
 ---
 
-In high-concurrency systems like social apps, games, and usage-tracked services, even updating a single number such as a like, retry count, or quota, can lead to consistency issues. When multiple clients try to update the same value simultaneously, it’s easy to end up with conflicting writes, lost updates, or inaccurate data. 
+In high-concurrency systems like social apps, games, and usage-tracked services, even updating a single number such as a like, retry count, or quota, can lead to consistency issues. When multiple clients try to update the same value simultaneously, it’s easy to end up with conflicting writes, lost updates, or inaccurate data.
 
 Most setups require you to fetch the document, change the number on the client, and then write it back. This process is slow, error-prone, and wastes bandwidth, especially when you're only trying to change a single field.
 
@@ -45,15 +45,15 @@ Use the `incrementDocumentAttribute` and `decrementDocumentAttribute` methods to
 ## Increment a field {% #increment-field %}
 
 ```client-web
-import { Client, Databases } from "appwrite";
+import { Client, TablesDB } from "appwrite";
 
 const client = new Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
     .setProject('<YOUR_PROJECT_ID>'); // Your project ID
 
-const databases = new Databases(client);
+const tablesDB = new TablesDB(client);
 
-const result = await databases.incrementDocumentAttribute(
+const result = await tablesDB.incrementDocumentAttribute(
     '<DATABASE_ID>',
     '<COLLECTION_ID>',
     '<DOCUMENT_ID>',
@@ -65,15 +65,15 @@ const result = await databases.incrementDocumentAttribute(
 ## Decrement a field {% #decrement-field %}
 
 ```client-web
-import { Client, Databases } from "appwrite";
+import { Client, TablesDB } from "appwrite";
 
 const client = new Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
     .setProject('<YOUR_PROJECT_ID>'); // Your project ID
 
-const databases = new Databases(client);
+const tablesDB = new TablesDB(client);
 
-const result = await databases.decrementDocumentAttribute(
+const result = await tablesDB.decrementDocumentAttribute(
     '<DATABASE_ID>',
     '<COLLECTION_ID>',
     '<DOCUMENT_ID>',

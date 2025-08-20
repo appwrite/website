@@ -74,16 +74,16 @@ One of the data retrieval APIs the Appwrite Database offers is a list rows API t
 - `CONTAINS` operation: The contains operator allows filtering by values that are contained in an array.
 
 ```client-web
-import { Client, Databases, Query } from "appwrite";
+import { Client, TablesDB, Query } from "appwrite";
 
 const client = new Client()
   .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
   .setProject('<PROJECT_ID>');
 
-const databases = new Databases(client);
+const tablesDB = new TablesDB(client);
 
 // OR operator example
-const movieData1 = databases.listRows(
+const movieData1 = tablesDB.listRows(
     '[DATABASE_ID]',
     '[TABLE_ID]',
     Query.or([
@@ -93,7 +93,7 @@ const movieData1 = databases.listRows(
 );
 
 // AND operator example
-const movieData2 = databases.listRows(
+const movieData2 = tablesDB.listRows(
     '[DATABASE_ID]',
     '[TABLE_ID]',
     Query.and([
@@ -103,7 +103,7 @@ const movieData2 = databases.listRows(
 );
 
 // CONTAINS operator example
-const movieData3 = databases.listRows(
+const movieData3 = tablesDB.listRows(
     '[DATABASE_ID]',
     '[TABLE_ID]',
     Query.contains('director', ["Christopher Nolan"])

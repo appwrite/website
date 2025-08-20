@@ -76,12 +76,12 @@ const client = new Appwrite.Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
     .setProject('<YOUR_PROJECT_ID>'); // Your project ID
 
-const database = new Appwrite.Databases(client);
+const tablesDB = new Appwrite.TablesDB(client);
 
 document.querySelector('button').addEventListener('click', async () => {
     const promises = [];
     for (let i = 0; i < 200; i++) {
-        const promise = database.createRow(
+        const promise = tablesDB.createRow(
         'testDb', // Your database ID
         'testTable', // Your table ID
         Appwrite.ID.unique(),

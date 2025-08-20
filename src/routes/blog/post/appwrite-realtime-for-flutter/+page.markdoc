@@ -200,20 +200,20 @@ First, initialize our database ID and items table ID and set up a function to lo
 ```dart
   final database = 'default'; // your database id
   final itemsTable = 'items'; // your table id
-  late final Databases databases;
+  late final TablesDB tablesDB;
 
   @override
   initState() {
     super.initState();
     client = Client().setProject('delete'); // your project id
-    databases = Databases(client);
+    tablesDB = TablesDB(client);
     loadItems();
     subscribe();
   }
 
   loadItems() async {
     try {
-      final res = await databases.listRows(
+      final res = await tablesDB.listRows(
         databaseId: database,
         tableId: itemsTable,
       );
@@ -261,7 +261,7 @@ Finally, let's modify our `_addItem` function to add items to Appwrite's databas
 ```dart
   void _addItem(String name) async {
     try {
-      await databases.createRow(
+      await tablesDB.createRow(
         databaseId: database,
         tableId: itemsTable,
         rowId: ID.unique(),
@@ -281,7 +281,7 @@ Let us also modify our `ListTile` widget to add a delete button that will allo
               trailing: IconButton(
                 icon: const Icon(Icons.delete),
                 onPressed: () async {
-                  await databases.deleteRow(
+                  await tablesDB.deleteRow(
                     databaseId: database,
                     tableId: itemsTable,
                     rowId: item['\$id'],
@@ -330,20 +330,20 @@ class _HomePageState extends State<HomePage> {
   late final Client client;
   final database = 'default'; // your database id
   final itemsTable = 'items'; // your table id
-  late final Databases databases;
+  late final TablesDB tablesDB;
 
   @override
   initState() {
     super.initState();
     client = Client().setProject('delete'); // your project id
-    databases = Databases(client);
+    tablesDB = TablesDB(client);
     loadItems();
     subscribe();
   }
 
   loadItems() async {
     try {
-      final res = await databases.listRows(
+      final res = await tablesDB.listRows(
         databaseId: database,
         tableId: itemsTable,
       );
@@ -399,7 +399,7 @@ class _HomePageState extends State<HomePage> {
               trailing: IconButton(
                 icon: const Icon(Icons.delete),
                 onPressed: () async {
-                  await databases.deleteRow(
+                  await tablesDB.deleteRow(
                     databaseId: database,
                     tableId: itemsTable,
                     rowId: item['\$id'],
@@ -446,7 +446,7 @@ class _HomePageState extends State<HomePage> {
 
   void _addItem(String name) async {
     try {
-      await databases.createRow(
+      await tablesDB.createRow(
         databaseId: database,
         tableId: itemsTable,
         rowId: ID.unique(),

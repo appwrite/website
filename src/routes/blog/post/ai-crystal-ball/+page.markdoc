@@ -131,7 +131,7 @@ SECRET_OPENAI_API_KEY=
 After the environment variables are created, we can set up the Appwrite SDK by creating a file `./src/lib/appwrite.js` and adding the following:
 
 ```js
-import { Client, Account, Databases } from 'appwrite';
+import { Client, Account, TablesDB } from 'appwrite';
 import { env } from '$env/dynamic/public';
 
 const client = new Client()
@@ -139,7 +139,7 @@ const client = new Client()
     .setProject(env.PUBLIC_APPWRITE_PROJECT_ID);
 
 export const account = new Account(client);
-export const databases = new Databases(client);
+export const tablesDB = new TablesDB(client);
 ```
 
 Also, since this app is created without SSR, we will go to the `./src/routes` directory and creates a file `+layout.js` to add the following:
@@ -265,7 +265,7 @@ At this point, we also want to create our Database library using the Appwrite SD
 
 ```js
 import { Permission, Role, ID } from 'appwrite';
-import { databases } from './appwrite';
+import { tablesDB } from './appwrite';
 import { env } from '$env/dynamic/public';
 
 const databaseId = env.PUBLIC_APPWRITE_DATABASE_ID;
@@ -274,7 +274,7 @@ const githubDataTableId = env.PUBLIC_APPWRITE_TABLE_ID_GITHUBDATA;
 export const db = {
     getUserData: async(rowId) => {
         try{
-            return await databases.getRow(
+            return await tablesDB.getRow(
                 databaseId,
                 githubDataTableId,
                 rowId
@@ -285,7 +285,7 @@ export const db = {
     },
 
     addUserData: async(userId, username, followers, following, languages) => {
-        return await databases.createRow(
+        return await tablesDB.createRow(
             databaseId,
             githubDataTableId,
             userId,
@@ -504,7 +504,7 @@ export const db = {**
 .
 .
 		addDestiny: async(username, destiny) => {
-		    return await databases.createRow(
+		    return await tablesDB.createRow(
 		        databaseId,
 		        destinyTableId,
 		        ID.unique(),
@@ -517,7 +517,7 @@ export const db = {**
 
 		getDestiny: async(rowId) => {
 		    try{
-		        return await databases.getRow(
+		        return await tablesDB.getRow(
 		            databaseId,
 		            destinyTableId,
 		            rowId

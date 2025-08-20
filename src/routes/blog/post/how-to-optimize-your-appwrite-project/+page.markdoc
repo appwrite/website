@@ -25,7 +25,7 @@ In Appwrite, fetching multiple rows from a database is made easy with the [listR
 For example, in a content management system where you need to load blog posts written by a particular author, rather than making individual requests for each row, use Appwrite's `listRows` method with a filter:
 
 ```javascript
-const blogPosts = await databases.listRows(
+const blogPosts = await tablesDB.listRows(
   '<DATABASE_ID>',
   '<TABLE_ID>',
   [Query.equal('author', 'Michael Scott')],
@@ -41,7 +41,7 @@ For applications with large datasets (e.g., e-commerce platforms with thousands 
 For example, if you're loading products from a database, instead of fetching all products, fetch them in batches using pagination.
 
 ```javascript
-const firstPage = await databases.listRows(
+const firstPage = await tablesDB.listRows(
   '<DATABASE_ID>',
   '<TABLE_ID>',
   [
@@ -51,7 +51,7 @@ const firstPage = await databases.listRows(
   ],
 )
 
-const secondPage = await databases.listRows(
+const secondPage = await tablesDB.listRows(
   '<DATABASE_ID>',
   '<TABLE_ID>',
   [
