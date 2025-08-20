@@ -10,6 +10,8 @@
     }
 
     const { href, light = '', dark = '', title, children }: CardsImageItemProps = $props();
+
+    setContext('no-paragraph', true);
 </script>
 
 <a
