@@ -11,7 +11,7 @@ step: 1
 **Idea tracker**: an app to track all the side project ideas that you'll start, but probably never finish.
 In this tutorial, you will build Idea tracker with Appwrite and Android.
 
-# Concepts {% #concepts %}
+## Concepts {% #concepts %}
 This tutorial will introduce the following concepts:
 
 1. Setting up your first project
@@ -20,6 +20,6 @@ This tutorial will introduce the following concepts:
 4. Queries and pagination
 
 
-# Prerequisites {% #prerequisites %}
+## Prerequisites {% #prerequisites %}
 1. Basic knowledge of Kotlin and Android development.
 2. Have [Android Studio](https://developer.android.com/studio) installed on your computer.

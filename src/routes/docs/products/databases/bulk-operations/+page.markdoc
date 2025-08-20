@@ -25,6 +25,10 @@ For example, if you attempt to create 100 rows and one fails due to a validation
 
 You can create multiple rows in a single request using the `createRows` method.
 
+{% info title="Custom timestamps" %}
+When creating, updating or upserting in bulk, you can set `$createdAt` and `$updatedAt` for each document in the payload. Values must be ISO 8601 date-time strings. If omitted, Appwrite sets them automatically.
+{% /info %}
+
 {% multicode %}
 ```server-nodejs
 const sdk = require('node-appwrite');

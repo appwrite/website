@@ -5,7 +5,7 @@ description: Create a SvelteKit app project using Appwrite.
 step: 2
 ---
 
-# Create SvelteKit project {% #create-sveltekit-project %}
+## Create SvelteKit project {% #create-sveltekit-project %}
 
 Create a SvelteKit app with the `npm create` command and select `Skeleton project`
 
@@ -15,7 +15,7 @@ cd ideas-tracker
 npm install
 ```
 
-# Add dependencies {% #add-dependencies %}
+## Add dependencies {% #add-dependencies %}
 
 Install the JavaScript Appwrite SDK.
 

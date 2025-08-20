@@ -25,13 +25,13 @@
             <Thead>
                 <Tr>
                     <Th>
-                        <span class="text-micro uppercase">NAME</span>
+                        <span class="text-eyebrow uppercase">NAME</span>
                     </Th>
                     <Th>
-                        <span class="text-micro uppercase">TYPE</span>
+                        <span class="text-eyebrow uppercase">TYPE</span>
                     </Th>
                     <Th>
-                        <span class="text-micro uppercase">DESCRIPTION</span>
+                        <span class="text-eyebrow uppercase">DESCRIPTION</span>
                     </Th>
                 </Tr>
             </Thead>

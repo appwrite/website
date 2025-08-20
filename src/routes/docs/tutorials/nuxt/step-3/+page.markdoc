@@ -5,7 +5,7 @@ description: Import and configure a project with Appwrite Cloud.
 step: 3
 ---
 
-# Create project {% #create-project %}
+## Create project {% #create-project %}
 
 Head to the [Appwrite Console](https://cloud.appwrite.io/console).
 
@@ -30,7 +30,7 @@ The **Hostname** should be `localhost`.
 
 You can skip the optional steps.
 
-# Environment variables {% #environment-variables %}
+## Environment variables {% #environment-variables %}
 
 To connect to Appwrite in our app, we'll need to use sensitive information.
 We keep the secrets by using environment variables for the endpoint and project id.
@@ -50,7 +50,7 @@ VITE_APPWRITE_ENDPOINT=https://<REGION>.cloud.appwrite.io/v1
 VITE_APPWRITE_PROJECT=PROJECT_ID
 ```
 
-# Initialize Appwrite SDK {% #init-sdk %}
+## Initialize Appwrite SDK {% #init-sdk %}
 
 Create a new file `appwrite.js` for the Appwrite related code.
 Only one instance of the `Client()` class should be created per app.

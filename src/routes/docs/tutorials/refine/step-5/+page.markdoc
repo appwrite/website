@@ -20,7 +20,7 @@ Create a new table with the following columns:
 | title       | String | Yes      |
 | content     | String | Yes      |
 
-# Connect database to the Refine app {% #blog-context %}
+## Connect database to the Refine app {% #blog-context %}
 
 Now that you have a table to hold blog post contents, we can read and write to it from our app. 
 

@@ -2,7 +2,7 @@
     import { PUBLIC_GROWTH_ENDPOINT } from '$env/static/public';
     import { Button } from '$lib/components/ui';
     import { socials } from '$lib/constants';
-    import { classNames } from '$lib/utils/classnames';
+    import { cn } from '$lib/utils/cn';
     import { getReferrerAndUtmSource } from '$lib/utils/utm';
 
     let name = '';
@@ -50,7 +50,7 @@
 
 <div
     id="become-a-partner"
-    class={classNames(
+    class={cn(
         'relative -mb-[6rem] flex min-h-[75vh] flex-col items-center justify-center overflow-hidden bg-black/8',
         'before:absolute before:inset-0 before:top-0 before:left-0 before:-z-10 before:block before:h-full before:bg-[radial-gradient(circle_at_-15%_-30%,_hsla(343,_98%,_60%,_0.2)_0px,_transparent_40%)] before:blur-2xl',
         'after:absolute after:inset-0 after:top-0 after:right-0 after:-z-10 after:mt-auto after:mb-0 after:block after:h-full after:bg-[radial-gradient(circle_at_120%_125%,_hsla(177,_53%,_69%,_0.2)_0px,_transparent_40%)] after:blur-2xl'
@@ -62,14 +62,14 @@
         >
             <div class="flex max-w-sm flex-col gap-6">
                 <h2 class="text-display font-aeonik-pro text-primary">Become a Partner</h2>
-                <p class="text-body text-secondary font-medium">
+                <p class="text-main-body text-secondary font-medium">
                     Our team will review your application and follow up to ensure we're a perfect
                     fit.
                 </p>
 
                 <ul class="space-y-4">
                     {#each list as item}
-                        <li class="text-body flex items-center gap-2 font-medium">
+                        <li class="text-main-body flex items-center gap-2 font-medium">
                             <img src="/images/icons/colored/check.svg" alt="checkmark icon" />
                             {item}
                         </li>
@@ -165,7 +165,7 @@
         <div class="animate-fade-in container mx-auto flex max-w-sm flex-col gap-4 text-center">
             <div class="border-smooth mb-6 flex flex-col gap-4 border-b pb-8">
                 <h2 class="text-display text-primary font-aeonik-pro">Thank you for applying</h2>
-                <p class="text-body text-secondary font-medium">
+                <p class="text-main-body text-secondary font-medium">
                     Our team will review your application and follow up to ensure we're a perfect
                     fit.
                 </p>

@@ -12,7 +12,7 @@ With a login function, we can differentiate between users and decide which users
 
 We will build a page with a simple login form and store its related logic in a `useUserSession` composable so it can be reused, starting with the composable.
 
-# User session composable {% #user-session-composable %}
+## User session composable {% #user-session-composable %}
 
 There are a few standard functions involved in handling a user session that are added to the composable.
 The user needs to be able to register to an account, login to the account and logout from it.
@@ -66,7 +66,7 @@ export const useUserSession = () =>  {
 
 Then you can call the  `useUserSession()` function in the pages and components to use the functionality.
 
-# Login page {% #login-page %}
+## Login page {% #login-page %}
 
 Create a new file in the `pages` directory called `login.vue`.
 This will not only create a new page, it will also add the route `/login` to the url.
@@ -125,7 +125,7 @@ const handleRegistration = async (event) => {
 This page renders a login or sign up form depending on `isSignUp`'s state.
 We will also show buttons to toggle between the two different types of forms.
 
-# Authentication forms {% #auth-forms %}
+## Authentication forms {% #auth-forms %}
 
 In the previous step, we defined a `AuthForm` to handle signup and login. 
 Let's build this form now.

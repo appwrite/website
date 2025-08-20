@@ -20,6 +20,7 @@ A new feature that lets you increment or decrement numeric fields directly on th
 
 # Race-free numeric updates
 
+
 Before this feature, updating a number meant fetching the entire document, modifying it on the client, and writing it back, a process prone to race conditions, unnecessary bandwidth use, and extra logic to handle edge cases.
 
 With **Atomic numeric operations,** you simply send a delta (like `+1` or `-3`), and Appwrite applies the update atomically on the server. No full document reads, no conflicts, no custom logic. Just consistent, permission-aware updates that work reliably under load.
@@ -90,7 +91,7 @@ This feature solves a common problem with a clean, built-in approach. You don’
 
 - **Supports both increments and decrements:** You're not limited to just adding `+1`. You can apply any positive or negative delta, whether you're increasing API credits or reducing stock levels after a purchase.
 
-- **Built-in constraints:** You can define optional `min` and `max`bounds on the value. If the update would push the value outside that range, it’s rejected. Great for enforcing limits like “stock can’t go below zero” or “credits can't exceed a cap.”
+- **Built-in constraints:** You can define optional `min` and `max` bounds on the value. If the update would push the value outside that range, it’s rejected. Great for enforcing limits like “stock can’t go below zero” or “credits can't exceed a cap.”
 
 - **Respects permissions:** This works just like any other Appwrite document update. If the user doesn’t have permission to modify the document, the update doesn’t go through. No exceptions.
 

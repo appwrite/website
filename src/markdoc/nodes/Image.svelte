@@ -6,13 +6,13 @@
     import { quadInOut } from 'svelte/easing';
     import { fade, scale } from 'svelte/transition';
 
-    interface Props {
+    interface ImageProps {
         src: string;
         alt: string;
         title: string;
     }
 
-    let { src, alt, title }: Props = $props();
+    let { src, alt, title }: ImageProps = $props();
 
     const inTable = hasContext('in-table') ? getContext('in-table') : false;
     const isAudio = /\.(wav|mp3|m4a|ogg)$/i.test(src);
@@ -41,9 +41,9 @@
         <img {src} {alt} {title} loading="lazy" style:vertical-align="middle" />
     {/if}
 {:else}
-    <div class="web-media main">
+    <div class="web-media relative my-8!">
         <img {src} {alt} {title} loading="lazy" class="aspect-video w-full object-cover" />
-        <div class="abs">
+        <div class="absolute right-4 bottom-4 opacity-25 transition hover:opacity-100">
             <Tooltip closeOnPointerDown>
                 <Button variant="secondary" class="cursor-pointer" action={trigger}>
                     <span class="icon-arrow-expand" aria-hidden="true"></span>
@@ -57,7 +57,7 @@
 
     {#if $open}
         <div use:melt={$portalled}>
-            <div use:melt={$overlay} class="overlay" transition:fade={{ duration: 350 }}></div>
+            <div use:melt={$overlay} class="overlay" transition:fade={{ duration: 150 }}></div>
 
             <img
                 class="web-media content"
@@ -66,7 +66,7 @@
                 {alt}
                 {title}
                 loading="lazy"
-                transition:scale={{ duration: 350, start: 0.8, easing: quadInOut }}
+                transition:scale={{ duration: 150, start: 0.95, easing: quadInOut }}
             />
         </div>
     {/if}
@@ -77,24 +77,6 @@
         padding: 0.6rem !important;
         [class*='icon'] {
             color: hsl(var(--web-color-primary)) !important;
-        }
-    }
-
-    .main {
-        position: relative;
-
-        .abs {
-            position: absolute;
-            bottom: 1rem;
-            right: 1rem;
-            opacity: 0.25;
-            transition: var(--transition);
-        }
-
-        &:hover {
-            .abs {
-                opacity: 1;
-            }
         }
     }
 

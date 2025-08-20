@@ -21,7 +21,7 @@ Create a new table with the following columns:
 | title       | String | Yes      |
 | description | String | No       |
 
-# Ideas context {% #ideas-context %}
+## Ideas context {% #ideas-context %}
 
 Now that you have a table to hold ideas, we can read and write to it from our app. Like we did with the user data, we will create a store hold our ideas.
 Create a new file `src/lib/stores/ideas.js` and add the following code to it.

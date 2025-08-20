@@ -1,8 +1,7 @@
 <script lang="ts">
     import { trackEvent } from '$lib/actions/analytics';
-    import Noise from '$lib/components/fancy/noise.svelte';
     import { Button } from '$lib/components/ui';
-    import { classNames } from '$lib/utils/classnames';
+    import { cn } from '$lib/utils/cn';
     import { getAppwriteDashboardUrl } from '$lib/utils/dashboard';
 
     const plans: Array<{
@@ -52,16 +51,16 @@
 </script>
 
 <div
-    class={classNames(
+    class={cn(
         'relative -mt-6 -mb-12 flex min-h-[650px] max-w-screen items-center justify-center overflow-hidden pt-40 md:mb-0 md:pb-10',
         className
     )}
 >
     <div class="container flex w-full flex-col items-center justify-center gap-10">
         <div
-            class={classNames(
+            class={cn(
                 'animate-lighting absolute top-0 left-0 -z-10 h-screen w-[200vw] -translate-x-[25%] translate-y-8 rotate-25 overflow-hidden blur-3xl md:w-full',
-                'bg-[image:radial-gradient(ellipse_390px_250px_at_10%_30%,_rgba(254,_149,_103,_0.75)_0%,_rgba(254,_149,_103,_0)_70%),_radial-gradient(ellipse_1100px_450px_at_15%_40%,rgba(253,_54,_110,_0.5)_0%,_rgba(253,_54,_110,_0)_70%),_radial-gradient(ellipse_1200px_180px_at_30%_30%,_rgba(253,_54,_110,_0.08)_0%,_rgba(253,_54,_110,_0)_70%)]',
+                'bg-[image:radial-gradient(ellipse_390px_50px_at_10%_30%,_rgba(254,_149,_103,_0.2)_0%,_rgba(254,_149,_103,_0)_70%),_radial-gradient(ellipse_1100px_170px_at_15%_40%,rgba(253,_54,_110,_0.08)_0%,_rgba(253,_54,_110,_0)_70%),_radial-gradient(ellipse_1200px_180px_at_30%_30%,_rgba(253,_54,_110,_0.08)_0%,_rgba(253,_54,_110,_0)_70%)]',
                 'bg-position-[0%_0%]'
             )}
         ></div>
@@ -69,7 +68,7 @@
         <div
             class="animate-fade-in relative flex w-full flex-col justify-between gap-8 [animation-delay:150ms] [animation-duration:1000ms] md:flex-row md:items-center"
         >
-            <h2 class="text-title-lg text-primary font-aeonik-pro max-w-xl text-pretty">
+            <h2 class="text-title text-primary font-aeonik-pro max-w-xl text-pretty">
                 Start building like a team of hundreds today<span class="text-accent">_</span>
             </h2>
 

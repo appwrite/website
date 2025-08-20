@@ -35,7 +35,7 @@ Create a new table with the following columns:
 Navigate to the **Settings** tab of your table, add the role **Any** and check the **Read** box.
 Next, add a **Users** role and give them access to **Create**, **Update** and **Delete** by checking those boxes.
 
-# Add and remove methods {% #add-add-remove-methods %}
+## Add and remove methods {% #add-add-remove-methods %}
 
 Now that you have a table to hold ideas, we can read and write to it from our app.
 Create a new file `services/IdeasService.kt` and add the following code to it. Replace the values for `ideaDatabaseId` and `ideaTableId` with the IDs of the database and table you created in the previous step.

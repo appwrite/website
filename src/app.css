@@ -14,7 +14,8 @@
     /* theme */
     --color-primary: var(--color-primary);
     --color-secondary: var(--color-secondary);
-    --color-accent: var(--color-secondary);
+    --color-accent: var(--color-pink-500);
+    --color-accent-darker: hsl(343, 64.9%, 48.04%);
     --color-smooth: var(--color-smooth);
     --color-subtle: var(--color-subtle);
     --color-tertiary: var(--color-tertiary);
@@ -104,7 +105,7 @@
     --animate-enter-from-right: enter-from-right 0.2s ease;
     --animate-exit-to-left: exit-to-left 0.2s ease;
     --animate-exit-to-right: exit-to-right 0.2s ease;
-    --animate-wipe-in: wipe-in 2s ease-in-out;
+    --animate-wipe-in: wipe-in 2s ease-in-out backwards;
 
     /* Keyframes */
     @keyframes scale-in {
@@ -295,60 +296,39 @@
         }
     }
 
-    /* Fonts */
-    --font-sans: 'Inter', arial, sans-serif;
-    --font-mono: 'Fira Code', monospace;
+    /* fonts */
+    --font-inter: 'Inter', arial, sans-serif;
+    --font-fira-code: 'Fira Code', monospace;
     --font-aeonik-fono: 'Aenoik Fono', monospace;
     --font-aeonik-pro: 'Aeonik Pro', var(--font-sans);
-    --font-archia: 'Archia', arial, sans-serif;
 
-    /* Font sizes */
-    --text-x-micro: 0.625rem;
-    --text-x-micro--line-height: 0.875rem;
-    --text-x-micro--letter-spacing: var(--tracking-tighter);
-    --text-micro: 0.75rem;
-    --text-micro--line-height: 1rem;
-    --text-micro--letter-spacing: var(--tracking-tighter);
-    --text-caption: 0.875rem;
-    --text-caption--line-height: 1.375rem;
-    --text-caption--letter-spacing: var(--tracking-tight);
-    --text-sub-body: clamp(0.875rem, 2vw, 1rem);
-    --text-sub-body--line-height: 1.375rem;
-    --text-sub-body--letter-spacing: var(--tracking-tight);
-    --text-body: clamp(1rem, 2.5vw, 1.125rem);
-    --text-body--line-height: clamp(1.375rem, 3vw, 1.625rem);
-    --text-body--letter-spacing: var(--tracking-tight);
-    --text-paragraph-md: 1rem;
-    --text-paragraph-md--line-height: 1.625rem;
-    --text-paragraph-md--letter-spacing: var(--tracking-tight);
-    --text-paragraph-lg: 1.125rem;
-    --text-paragraph-lg--line-height: 1.75rem;
-    --text-paragraph-lg--letter-spacing: var(--tracking-tight);
-    --text-description: clamp(1.125rem, 3vw, 1.25rem);
-    --text-description--line-height: clamp(1.625rem, 3.5vw, 1.75rem);
-    --text-description--letter-spacing: var(--tracking-tighter);
-    --text-label: 1.5rem;
-    --text-label--line-height: 1.75rem;
-    --text-subtitle: clamp(1.5rem, 3vw, 2rem);
-    --text-subtitle--line-height: clamp(1.75rem, 3.5vw, 2.25rem);
-    --text-subtitle--letter-spacing: var(--tracking-squeezed);
-    --text-title: clamp(2rem, 5vw, 3rem);
-    --text-title--line-height: clamp(2.125rem, 5.5vw, 3.25rem);
-    --text-title--letter-spacing: var(--tracking-squeezed);
-    --text-title-lg: clamp(2.85rem, 5vw, 3rem);
-    --text-title-lg--line-height: clamp(2.75rem, 5.5vw, 3.5rem);
-    --text-title-lg--letter-spacing: var(--tracking-squeezed);
-    --text-display: clamp(3rem, 7vw, 4rem);
-    --text-display--line-height: clamp(3.125rem, 7.5vw, 4.25rem);
-    --text-display--letter-spacing: var(--tracking-compressed);
-    --text-hero: clamp(3.2rem, 7vw, 4.5rem);
-    --text-hero--line-height: clamp(3.125rem, 7.5vw, 4.25rem);
-    --text-hero--letter-spacing: var(--tracking-compressed);
-    --text-headline: clamp(3.5rem, 8vw, 4.5rem);
-    --text-headline--line-height: clamp(3.5rem, 8vw, 4.625rem);
-    --text-headline--letter-spacing: var(--tracking-squeezed);
+    /* sizes */
+    --font-size-micro: 0.75rem;
+    --font-size-tiny: 0.875rem;
+    --font-size-small: 1rem;
+    --font-size-medium: 1.125rem;
+    --font-size-large: 1.25rem;
+    --font-size-xl: 1.5rem;
+    --font-size-xxl: 2rem;
+    --font-size-big: 3rem;
+    --font-size-huge: 3.5rem;
+    --font-size-super: 4rem;
+    --font-size-giant: 4.5rem;
 
-    /* Letter spacing */
+    /* line height */
+    --leading-micro: 0.875rem;
+    --leading-tiny: 1rem;
+    --leading-xs: 1.375rem;
+    --leading-sm: 1.625rem;
+    --leading-md: 1.75rem;
+    --leading-lg: 2.125rem;
+    --leading-big: 2.75rem;
+    --leading-xl: 3.25rem;
+    --leading-xxl: 3.5rem;
+    --leading-xxxl: 4.25rem;
+    --leading-xxxxl: 4.625rem;
+
+    /* letter spacing */
     --tracking-*: initial;
     --tracking-compressed: -0.022em;
     --tracking-squeezed: -0.01em;
@@ -356,6 +336,72 @@
     --tracking-tight: -0.0045em;
     --tracking-none: 0em;
     --tracking-loose: 0.08em;
+
+    /* weights */
+    --font-weight-*: initial;
+    --font-weight-regular: 400;
+    --font-weight-medium: 500;
+
+    /* tokens */
+    --text-eyebrow: var(--font-size-micro);
+    --text-eyebrow--line-height: var(--leading-tiny);
+    --text-eyebrow--letter-spacing: var(--tracking-loose);
+    --text-code: clamp(var(--font-size-micro), 0.631rem + 0.382vw, var(--font-size-tiny));
+    --text-code--line-height: clamp(var(--leading-tiny), 0.642rem + 1.145vw, var(--leading-xs));
+    --text-code-letter-spacing: var(--tracking-none);
+    --text-caption: var(--font-size-tiny);
+    --text-caption--line-height: var(--leading-xs);
+    --text-caption--letter-spacing: var(--tracking-tighter);
+    --text-sub-body: clamp(var(--font-size-tiny), 0.756rem + 0.382vw, var(--font-size-small));
+    --text-sub-body--line-height: clamp(var(--leading-tiny), 0.642rem + 1.145vw, var(--leading-xs));
+    --text-sub-body--letter-spacing: clamp(
+        var(--tracking-tighter),
+        -0.013em,
+        var(--tracking-tight)
+    );
+    --text-main-body: clamp(var(--font-size-small), 0.881rem + 0.382vw, var(--font-size-medium));
+    --text-main-body--line-height: clamp(var(--leading-xs), 1.136rem + 0.763vw, var(--leading-sm));
+    --text-main-body--letter-spacing: var(--tracking-tight);
+    --text-paragraph-md: var(--font-size-small);
+    --text-paragraph-md--line-height: var(--leading-sm);
+    --text-paragraph-md--letter-spacing: var(--tracking-tight);
+    --text-paragraph-lg: var(--font-size-medium);
+    --text-paragraph-lg--line-height: var(--leading-md);
+    --text-paragraph-lg--letter-spacing: var(--tracking-tight);
+    --text-description: clamp(var(--font-size-medium), 1.006rem + 0.382vw, var(--font-size-large));
+    --text-description--line-height: clamp(
+        var(--leading-sm),
+        1.506rem + 0.382vw,
+        var(--leading-md)
+    );
+    --text-description--letter-spacing: var(--tracking-tighter);
+    --text-label: var(--font-size-large);
+    --text-label--line-height: var(--leading-md);
+    --text-label-letter-spacing: var(--tracking-none);
+    --text-subtitle: clamp(var(--font-size-large), 0.534rem + 2.29vw, var(--font-size-xxl));
+    --text-subtitle--line-height: clamp(var(--leading-md), 1.392rem + 1.145vw, var(--leading-lg));
+    --text-subtitle--letter-spacing: clamp(
+        var(--tracking-none),
+        -0.01rem + 0.031vw,
+        var(--tracking-squeezed)
+    );
+    --text-title: clamp(var(--font-size-xxl), 1.046rem + 3.053vw, var(--font-size-big));
+    --text-title--line-height: clamp(var(--leading-lg), 1.052rem + 3.435vw, var(--leading-xl));
+    --text-title--letter-spacing: clamp(
+        var(--tracking-compressed),
+        0.033rem + -0.037vw,
+        var(--tracking-squeezed)
+    );
+    --text-display: clamp(var(--font-size-big), 1.557rem + 3.817vw, var(--font-size-super));
+    --text-display--line-height: clamp(var(--leading-xl), 2.296rem + 3.053vw, var(--leading-xxxl));
+    --text-display--letter-spacing: var(--tracking-compressed);
+    --text-headline: clamp(var(--font-size-huge), 2.546rem + 3.053vw, var(--font-size-giant));
+    --text-headline--line-height: clamp(
+        var(--leading-xxl),
+        2.427rem + 3.435vw,
+        var(--leading-xxxxl)
+    );
+    --text-headline--letter-spacing: var(--tracking-compressed);
 }
 
 @utility container {
@@ -421,13 +467,14 @@
     --color-primary: var(--color-greyscale-900);
     --color-secondary: var(--color-greyscale-700);
     --color-accent: var(--color-pink-500);
+    --color-accent-darker: #ca2b58;
     --carousel-gradient: transparent;
     --color-badge-bg: var(--color-badge-bg-light);
     --color-badge-border: var(--color-badge-border-light);
     --color-smooth: hsl(var(--color-greyscale-hue) 6% 10% / 0.04);
-    --color-card: var(--color-greyscale-850);
-    --color-tertiary: hsl(var(--color-greyscale-600));
-    --color-offset: hsl(var(--color-greyscale-hue) 2% 11% / 0.94);
+    --color-card: color-mix(in srgb, var(--color-white) 90%, transparent);
+    --color-tertiary: var(--color-greyscale-600);
+    --color-offset: hsl(0 0% 0% / 0.08);
     --color-subtle: var(--color-greyscale-850);
 }
 
@@ -437,6 +484,7 @@
     --carousel-gradient: 23, 23, 26;
     --color-primary-bg: var(--color-greyscale-900);
     --color-smooth: hsl(0 0% 100% / 0.06);
-    --color-tertiary: hsl(var(--color-greyscale-600));
+    --color-tertiary: var(--color-greyscale-600);
     --color-offset: hsl(0 0% 100% / 0.1);
+    --color-card: var(--color-greyscale-850);
 }

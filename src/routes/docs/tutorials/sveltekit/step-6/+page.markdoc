@@ -25,7 +25,7 @@ Create the following columns within the table:
 For this tutorial, we'll also set the permissions to allow any users to read and write to the table. 
 In a real-world scenario, you would probably want to restrict access to a certain group of users.
 
-# Managing ideas {% #getting-ideas %}
+## Managing ideas {% #getting-ideas %}
 
 Now that you have a table to hold ideas, we can read and write to it from our app.
 

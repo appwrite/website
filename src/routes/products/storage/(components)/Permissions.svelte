@@ -11,7 +11,7 @@
             <h2 class="text-title font-aeonik-pro text-primary">
                 Protect your files and set permissions
             </h2>
-            <p class="text-body max-width-[380px] mx-auto font-medium">
+            <p class="text-main-body max-width-[380px] mx-auto font-medium">
                 Set up file encryption and granular user permissions in your storage infrastructure
             </p>
             <Button
