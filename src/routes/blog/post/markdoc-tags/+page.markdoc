@@ -1,0 +1,81 @@
+---
+layout: post
+title: "Markdoc Tags in Appwrite"
+description: All of our markdoc tags.
+date: 2025-08-21
+cover: /images/blog/sites-announcement/sites-cover.png
+timeToRead: 6
+author: jesse-winton
+draft: true
+---
+
+# All of our tags
+
+## Accordion
+{% accordion %}
+{%accordion_item title="What is Appwrite Sites?" id="what-is-appwrite-sites" %}
+Appwrite Sites is a new product that allows you to deploy and host your websites and web apps directly within Appwrite. It provides an all-in-one solution for building, deploying, and scaling your applications without needing to rely on external platforms like Vercel or Netlify.
+
+{% /accordion_item %}
+
+{%accordion_item title="What features does Appwrite Sites offer?" id="features-of-appwrite-sites" %}
+Appwrite Sites offers a range of features including:
+{% /accordion_item %}
+{% /accordion %}
+
+## Info
+{% info title="Testing info" %}
+This is the info block
+{% /info %}
+
+## Icon 
+{% icon icon="arrow-up" /%}
+{% icon icon="arrow-up" size="m" /%}
+{% icon icon="arrow-up" size="l" /%}
+{% icon icon="arrow-up" size="xl" /%}
+
+## Arrow Link
+
+{% arrow_link href="/" %}
+This is an arrow link
+{% /arrow_link %}
+
+## Blockquote
+
+{% blockquote name="Jesse Winton" title="Design Engineer" %}
+This is the blockquote content.
+{% /blockquote %}
+
+## Cards
+{% cards %}
+{% cards_item href="/" title="Cards Item" %}
+This is the content.
+{% /cards_item %}
+{% cards_item href="/" title="Cards Item 2" %}
+This is the content.
+{% /cards_item %}
+{% cards_image_item href="/" title="Cards Image Item" dark="/images/logos/appwrite.svg" %}
+This is the content.
+{% /cards_image_item %}
+{% cards_image_item href="/" title="Cards Image Item 2" dark="/images/logos/appwrite.svg" %}
+This is the content.
+{% /cards_image_item %}
+{% /cards %}
+
+## Tabs
+{% tabs %}
+{% tabsitem #js title="Javascript" %}
+Lorem ipsum dolor sit amet consectetur.
+{% /tabsitem %}
+
+{% tabsitem #flutter title="Flutter" %}
+Lorem ipsum dolor sit amet consectetur.
+{% /tabsitem %}
+{% /tabs %}
+
+## Video
+{% video
+   src="/images/blog/defying-the-laws-of-web-animations/animations.mp4" /%}
+
+## YouTube
+{% youtube src="https://www.youtube-nocookie.com/embed/5NtrYks2dqE?si=0vjkBCZYg8yf2GUW" thumbnail="/images/blog/a-recap-of-init/thumbnails/thumbnail-1.png" /%}
