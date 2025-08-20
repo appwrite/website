@@ -9,7 +9,7 @@ A event will fire when a change occurs in your Appwrite project, like when a new
 You can subscribe to these events with Appwrite [Functions](/docs/products/functions), [Realtime](/docs/apis/realtime), or [Webhooks](/docs/advanced/platform/webhooks).
 
 You can subscribe to events for specific resources using their ID or subscribe to changes of all resources of the same type by using a wildcard character * instead of an ID.
-You can also filter for events of specific actions like create, update, or delete.
+You can also filter for events of specific actions like create, update, upsert, or delete.
 
 
 You can find a list of events for Storage, Databases, Functions, and Authentication services below.
