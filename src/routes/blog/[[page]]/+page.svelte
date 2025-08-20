@@ -149,8 +149,8 @@
 </svelte:head>
 
 <Main>
-    <div class="web-big-padding-section" style:overflow-x="hidden">
-        <div class="relative py-10">
+    <div class="web-big-padding-section overflow-x-hidden">
+        <div class="border-smooth relative border-b py-10">
             <div
                 class="absolute"
                 style="pointer-events:none;inset-inline-start:0; inset-block-end:0;"
@@ -224,13 +224,15 @@
                                     alt="cover"
                                 />
                             </a>
-                            <div class="web-feature-article-content">
+                            <div class="web-feature-article-content w-full">
                                 <header class="web-feature-article-header">
                                     <ul class="web-metadata text-caption web-is-only-mobile">
                                         <li>{featured.timeToRead} min</li>
                                     </ul>
                                     <a href={featured.href}>
-                                        <h2 class="text-title font-aeonik-pro text-primary">
+                                        <h2
+                                            class="text-title font-aeonik-pro text-primary text-balanced"
+                                        >
                                             {featured.title}
                                         </h2>
                                     </a>

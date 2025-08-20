@@ -4,13 +4,13 @@
   &-image {
     img { inline-size:100%;border-radius: 0.5rem; }
   }
-  &-content { display:flex; flex-direction:column; max-inline-size:pxToRem(450); }
+  &-content { display:flex; flex-direction:column;  }
 
   @media #{$break1} {
     display:flex; flex-direction:column; gap:pxToRem(24);
     &-header { display:flex; flex-direction:column; gap:pxToRem(4); }
     &-content {
-      padding:pxToRem(8); gap:pxToRem(8);
+      padding:- pxToRem(8); gap:pxToRem(8);
       .#{$p}-author { margin-block-start:pxToRem(8); }
     }
     .#{$p}-button { margin-block-start:pxToRem(32); }
@@ -18,7 +18,7 @@
   @media #{$break2open} {
     display:grid; grid-template-columns:repeat(2, 1fr); gap:pxToRem(32);
     &-content {
-      padding:pxToRem(24); gap:pxToRem(16);
+      padding:0 pxToRem(24); gap:pxToRem(16);
     }
   }
 }
