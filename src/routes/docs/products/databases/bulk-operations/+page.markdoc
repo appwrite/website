@@ -10,6 +10,11 @@ Bulk operations can only be performed via the server-side SDKs. The client-side 
 
 For client applications that need bulk-like functionality, consider using [Appwrite Functions](/docs/products/functions) with proper rate limiting and validation.
 
+{% info title="Important notes" %}
+- Bulk operations do not trigger Functions, Webhooks, or Realtime events
+- Collections that contain relationship attributes are not supported via bulk operations. Use individual document operations for collections with relationships
+{% /info %}
+
 # Atomic behavior {% #atomic-behavior %}
 
 Bulk operations in Appwrite are **atomic**, meaning they follow an all-or-nothing approach. Either all documents in your bulk request succeed, or all documents fail.
