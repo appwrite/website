@@ -701,7 +701,7 @@ messaging.create_email(
                     position: absolute;
                     display: block;
                     block-size: 100%;
-                    translate: 0 100px;
+                    translate: 0 150px;
                     inline-size: auto;
                 }
                 @media (max-width: 1023px) {

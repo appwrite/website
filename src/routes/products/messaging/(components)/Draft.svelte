@@ -55,8 +55,7 @@
 
                     <label class="text-primary" for="title">Title</label>
                     <input
-                        class="web-input-text"
-                        style="max-width: 80%"
+                        class="web-input-text w-full max-w-[80%]"
                         type="text"
                         id="title"
                         name="title"
@@ -65,8 +64,7 @@
                     />
                     <label class="text-primary" for="message">Message</label>
                     <textarea
-                        class="web-input-text"
-                        style="max-width: 80%"
+                        class="web-input-text w-full max-w-[80%]"
                         id="message"
                         name="message"
                         bind:value={message}
