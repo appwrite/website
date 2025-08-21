@@ -20,7 +20,7 @@ Starting September 1st, 2025, the following pricing changes will go into effect:
 
 - The base price for Pro will go from $15 to $25 per month
 - The per-seat pricing model is moving to a per-project pricing model
-- Resources will be per project instead of per organization, and we will be giving you more resources per project
+- Resources will be per project instead of per organization, with each project getting its own dedicated resources
 - The bandwidth resources on Pro and Scale will increase by +500%, from 300GB to 2TB per month per project
 - The additional bandwidth price has decreased by 62%, from $40 per 100GB to $15 per 100GB
 - The price for GB hours has decreased by 33%, from $0.09 per GB hour to $0.06 per GB hour
@@ -169,6 +169,10 @@ This change puts Appwrite on a more sustainable revenue model, ensuring longevit
 This depends on your situation. It is important to understand whether you are paying for add-ons or not. In this case, you will pay a lot less for your add-ons, and if you’re paying for additional bandwidth, there is a big chance you won’t have to due to the jump from 300GB to 2TB in resources. However, you will be charged $15 for each additional project you have.
 
 Please get in touch with us if you have any questions concerning your projects and the new pricing at billing@appwrite.io.
+
+## Are resources shared across projects?
+
+No, resources are per project, not pooled. Each project gets its own allocation of database reads/writes, storage, bandwidth, and all other resources.
 
 ## How will the per-project pricing affect the Education (GitHub student) plan?
 
