@@ -1,4 +1,4 @@
-<script lang="ts" context="module">
+<script lang="ts" module>
     import { type Reo, loadReoScript } from '$lib/reodotdev';
     import { derived, writable } from 'svelte/store';
 
@@ -51,14 +51,13 @@
 
     import { browser, dev } from '$app/environment';
     import { page } from '$app/state';
-    import { navigating, updated } from '$app/stores';
+    import { navigating, updated } from '$app/state';
     import { onMount } from 'svelte';
     import { loggedIn } from '$lib/utils/console';
     import { beforeNavigate } from '$app/navigation';
     import { trackEvent } from '$lib/actions/analytics';
     import { saveReferrerAndUtmSource } from '$lib/utils/utm';
     import { Sprite } from '$lib/components/ui/icon/sprite';
-    import { setTheme, ThemeProvider } from '$lib/providers/theme';
     import { displayHiringMessage } from '$lib/utils/console';
 
     function applyTheme(theme: Theme) {
@@ -79,22 +78,6 @@
 
         applyTheme(initialTheme);
 
-        navigating.subscribe((n) => {
-            if (!n?.to) {
-                return;
-            }
-
-            const isDocs = n.to.route.id?.startsWith('/docs');
-
-            if (isDocs) {
-                if (!document.body.classList.contains(`${$currentTheme}`)) {
-                    applyTheme($currentTheme);
-                }
-            } else {
-                applyTheme('dark');
-            }
-        });
-
         saveReferrerAndUtmSource(page.url);
     });
 
@@ -103,18 +86,44 @@
             tracked.clear();
         }
 
-        // TODO: thejessewinton, the `updated` from `svelte/state` creates an infinite refresh loop on docs references pages!
-        if ($updated && !willUnload && to?.url) {
+        if (updated.current && !willUnload && to?.url) {
             location.href = to.url.href;
         }
     });
 
-    $: if (browser) currentTheme.subscribe((theme) => applyTheme(theme));
-    $: if (browser && $loggedIn) {
-        document.body.dataset.loggedIn = '';
-    }
+    $effect(() => {
+        if (!navigating?.to) {
+            return;
+        }
 
-    $: canonicalUrl = page.url.origin.replace(/^https?:\/\/www\./, 'https://') + page.url.pathname;
+        const isDocs = navigating.to.route.id?.startsWith('/docs');
+
+        if (isDocs) {
+            if (!document.body.classList.contains(`${$currentTheme}`)) {
+                applyTheme($currentTheme);
+            }
+        } else {
+            applyTheme('dark');
+        }
+    });
+
+    $effect(() => {
+        currentTheme.subscribe((theme) => applyTheme(theme));
+    });
+
+    $effect(() => {
+        if ($loggedIn) {
+            document.body.dataset.loggedIn = '';
+        }
+    });
+
+    let canonicalUrl = $state<string>(
+        `${page.url.origin.replace(/^https?:\/\/www\./, 'https://')}${page.url.pathname}`
+    );
+
+    $effect(() => {
+        canonicalUrl = `${page.url.origin.replace(/^https?:\/\/www\./, 'https://')}${page.url.pathname}`;
+    });
 
     function handleScroll() {
         const scrollY = window.scrollY;
@@ -143,6 +152,8 @@
             reo.init({ clientID });
         });
     }
+
+    const { children } = $props();
 </script>
 
 <svelte:window on:scroll={handleScroll} />
@@ -173,8 +184,8 @@
     href="#main">Skip to content</a
 >
 
-<slot />
-<ThemeProvider />
+{@render children()}
+
 <Sprite />
 
 <style lang="scss">
