@@ -144,7 +144,7 @@
 </svelte:head>
 
 <Main>
-    <div class="web-big-padding-section">
+    <div class="web-big-padding-section max-w-screen overflow-hidden">
         <div class="py-10">
             <div class="web-big-padding-section-level-2">
                 <section class="hero web-u-padding-block-end-0 container">
