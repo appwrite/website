@@ -32,8 +32,8 @@
 <Step title="Step 1: Draft">
     <div
         class="console"
-        style:--marker-active="url('{MarkerActive}')"
-        style:--marker="url('{Marker}')"
+        style:--marker-active={`url("${MarkerActive}")`}
+        style:--marker={`url("${Marker}")`}
         bind:this={wrapper}
     >
         <div class="inner">
