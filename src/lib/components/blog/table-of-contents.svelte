@@ -11,6 +11,7 @@
 <script lang="ts">
     import { cn } from '$lib/utils/cn';
     import { onMount, tick } from 'svelte';
+    import CopyAsMarkdown from './copy-as-markdown.svelte';
     interface TableOfContentProps {
         toc?: Array<TocItem>;
         heading?: string;
@@ -80,4 +81,5 @@
             style:transform={`translateY(${position}px)`}
         ></div>
     </div>
+    <CopyAsMarkdown />
 </nav>
