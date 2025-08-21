@@ -179,13 +179,46 @@ function* iterateAllMethods(
         }
         if (methods?.post?.tags?.includes(service)) {
             if (
-                methods?.post &&
-                (!('x-appwrite' in methods.post) ||
-                    !methods.post['x-appwrite'] ||
-                    typeof methods.post['x-appwrite'] !== 'object' ||
-                    !('methods' in methods.post['x-appwrite']))
+                !('x-appwrite' in methods.post) ||
+                !methods.post['x-appwrite'] ||
+                typeof methods.post['x-appwrite'] !== 'object' ||
+                !('methods' in methods.post['x-appwrite'])
             ) {
                 yield { method: OpenAPIV3.HttpMethods.POST, value: methods.post, url };
+            } else {
+                const appwritePost = methods.post as AppwriteOperationObject;
+                for (const additionalMethod of appwritePost['x-appwrite'].methods!) {
+                    yield {
+                        method: OpenAPIV3.HttpMethods.POST,
+                        value: {
+                            ...methods.post,
+                            summary: additionalMethod.desc,
+                            description: additionalMethod.description,
+                            requestBody: filterRequestBodyProperties(
+                                methods.post.requestBody,
+                                additionalMethod.parameters
+                            ),
+                            'x-appwrite': {
+                                ...appwritePost['x-appwrite'],
+                                method: additionalMethod.name,
+                                demo: additionalMethod.demo
+                            },
+                            responses: {
+                                ...appwritePost.responses,
+                                [additionalMethod.responses[0].code]: {
+                                    content: {
+                                        'application/json': {
+                                            schema: {
+                                                $ref: additionalMethod.responses[0].model
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        url
+                    };
+                }
             }
         }
         if (methods?.put?.tags?.includes(service)) {
@@ -200,48 +233,6 @@ function* iterateAllMethods(
                 value: methods.delete,
                 url
             };
-        }
-        if (
-            methods?.post &&
-            methods?.post?.tags?.includes(service) &&
-            'x-appwrite' in methods.post &&
-            methods.post['x-appwrite'] &&
-            typeof methods.post['x-appwrite'] === 'object' &&
-            'methods' in methods.post['x-appwrite']
-        ) {
-            const appwritePost = methods.post as AppwriteOperationObject;
-            for (const additionalMethod of appwritePost['x-appwrite'].methods!) {
-                yield {
-                    method: OpenAPIV3.HttpMethods.POST,
-                    value: {
-                        ...methods.post,
-                        summary: additionalMethod.desc,
-                        description: additionalMethod.description,
-                        requestBody: filterRequestBodyProperties(
-                            methods.post.requestBody,
-                            additionalMethod.parameters
-                        ),
-                        'x-appwrite': {
-                            ...appwritePost['x-appwrite'],
-                            method: additionalMethod.name,
-                            demo: additionalMethod.demo
-                        },
-                        responses: {
-                            ...appwritePost.responses,
-                            [additionalMethod.responses[0].code]: {
-                                content: {
-                                    'application/json': {
-                                        schema: {
-                                            $ref: additionalMethod.responses[0].model
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    },
-                    url
-                };
-            }
         }
     }
 }
