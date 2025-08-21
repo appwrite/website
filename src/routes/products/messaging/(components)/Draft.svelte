@@ -51,7 +51,7 @@
                 </div>
                 <div class="content">
                     <h4 class="text-label text-primary">Message</h4>
-                    <hr />
+                    <hr class="border-smooth! mt-8 block w-full border-b!" />
 
                     <label class="text-primary" for="title">Title</label>
                     <input
@@ -224,6 +224,7 @@
             background: linear-gradient(to bottom, hsl(240, 6%, 10%, 0), hsl(240, 6%, 10%, 1));
             border-radius: var(--m-border-radius);
             pointer-events: none;
+            min-height: 700px;
         }
 
         .phone {
