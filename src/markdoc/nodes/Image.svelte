@@ -46,7 +46,7 @@
         <div class="absolute right-4 bottom-4 opacity-25 transition hover:opacity-100">
             <Tooltip closeOnPointerDown>
                 <Button variant="secondary" class="cursor-pointer" action={trigger}>
-                    <span class="icon-arrow-expand" aria-hidden="true"></span>
+                    <span class="icon-arrow-expand text-accent size-4" aria-hidden="true"></span>
                 </Button>
                 {#snippet tooltip()}
                     Expand
