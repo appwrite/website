@@ -24,8 +24,8 @@ Appwrite Sites offers a range of features including:
 {% /accordion %}
 
 ## Info
-{% info title="Testing info" %}
-This is the info block
+{% info title="Lorem ipsum dolor sit amet consectetur" %}
+Lorem ipsum dolor sit amet consectetur. Sed volutpat nec pharetra nisl dis. Donec accumsan in orci volutpat augue sed sit sollicitudin. Nunc nec nunc nisl faucibus cursus diam tellus aliquet. Ac blandit et varius egestas.
 {% /info %}
 
 ## Icon 
