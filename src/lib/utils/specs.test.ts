@@ -31,7 +31,12 @@ describe('specs.ts iterateAllMethods', () => {
                                     name: 'createDocument',
                                     desc: 'Create document',
                                     auth: { Project: [], Key: [] },
-                                    parameters: ['databaseId', 'collectionId', 'documentId', 'data'],
+                                    parameters: [
+                                        'databaseId',
+                                        'collectionId',
+                                        'documentId',
+                                        'data'
+                                    ],
                                     required: ['databaseId', 'collectionId', 'documentId', 'data'],
                                     responses: [{ code: 201, model: 'Document' }],
                                     description: 'Create a new Document.',
@@ -47,30 +52,31 @@ describe('specs.ts iterateAllMethods', () => {
         // The fix ensures that when iterating methods for the 'locale' service,
         // the createDocument method (which belongs to 'databases') won't be included
         // This is tested by the fact that methods?.post?.tags?.includes(service) must be true
-        
+
         // Test the condition logic directly
-        const methods = mockApi.paths!['/databases/{databaseId}/collections/{collectionId}/documents'];
+        const methods =
+            mockApi.paths!['/databases/{databaseId}/collections/{collectionId}/documents'];
         const databasesService = 'databases';
         const localeService = 'locale';
-        
+
         // Should include for databases service
-        const shouldIncludeForDatabases = 
+        const shouldIncludeForDatabases =
             methods?.post &&
             methods?.post?.tags?.includes(databasesService) &&
             'x-appwrite' in methods.post &&
             methods.post['x-appwrite'] &&
             typeof methods.post['x-appwrite'] === 'object' &&
             'methods' in methods.post['x-appwrite'];
-            
+
         // Should NOT include for locale service
-        const shouldIncludeForLocale = 
+        const shouldIncludeForLocale =
             methods?.post &&
             methods?.post?.tags?.includes(localeService) &&
             'x-appwrite' in methods.post &&
             methods.post['x-appwrite'] &&
             typeof methods.post['x-appwrite'] === 'object' &&
             'methods' in methods.post['x-appwrite'];
-        
+
         expect(shouldIncludeForDatabases).toBe(true);
         expect(shouldIncludeForLocale).toBe(false);
     });
