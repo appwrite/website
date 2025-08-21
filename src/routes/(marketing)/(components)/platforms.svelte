@@ -98,13 +98,18 @@
     interface PlatformsProps {
         class?: string;
         headline?: string;
+        padded?: boolean;
     }
 
-    const { headline, class: className }: PlatformsProps = $props();
+    const { headline, class: className, padded = true }: PlatformsProps = $props();
 </script>
 
 <div class={cn('border-smooth relative z-10 border-y border-dashed', className)}>
-    <div class="container flex flex-col items-center md:flex-row">
+    <div
+        class={cn('container flex flex-col items-center md:flex-row', {
+            'px-0!': !padded
+        })}
+    >
         {#if headline}
             <GradientText>
                 <span class="flex items-center pr-4 text-sm font-medium md:w-full md:max-w-[175px]"
