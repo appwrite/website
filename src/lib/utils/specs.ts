@@ -203,6 +203,7 @@ function* iterateAllMethods(
         }
         if (
             methods?.post &&
+            methods?.post?.tags?.includes(service) &&
             'x-appwrite' in methods.post &&
             methods.post['x-appwrite'] &&
             typeof methods.post['x-appwrite'] === 'object' &&
