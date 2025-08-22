@@ -194,7 +194,7 @@
                             class="min-h-10 w-full shrink-0 rounded-xl object-cover md:aspect-[3/1] xl:max-w-30"
                         />
                         <p class="w-full text-pretty">
-                            Appwrited helped reduce development time by 60%, and lower server costs
+                            Appwrite helped reduce development time by 60%, and lower server costs
                             by 40%.
                         </p>
                     </a>
