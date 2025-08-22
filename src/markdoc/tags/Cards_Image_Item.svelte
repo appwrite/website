@@ -24,7 +24,7 @@
         </h4>
     </header>
 
-    <p class="text-sub-body text-primary font-medium">
+    <p class="text-sub-body">
         {@render children()}
     </p>
 </a>

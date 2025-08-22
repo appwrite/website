@@ -79,8 +79,8 @@
             rgba(255, 255, 255, 0) 127.21%
         );
         backdrop-filter: blur(16px);
-        width: 2.625rem;
-        height: 2.625rem;
+        width: 3.125rem;
+        height: 3.125rem;
 
         position: absolute;
         top: 50%;
