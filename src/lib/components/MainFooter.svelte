@@ -25,7 +25,7 @@
                 </li>
             {/each}
         </ul>
-        <div class="mt-1 grid grid-cols-2 gap-y-4 md:grid-cols-3">
+        <div class="mt-1 grid grid-cols-1 gap-y-4 md:grid-cols-3">
             <div>Copyright © {year} Appwrite</div>
 
             <iframe

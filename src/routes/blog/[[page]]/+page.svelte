@@ -546,7 +546,7 @@
             width: 60px;
             height: 100%;
             transition: ease 250ms;
-            z-index: 100;
+            z-index: 10;
             pointer-events: none;
         }
 
