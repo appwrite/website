@@ -2,9 +2,6 @@
     import { onMount } from 'svelte';
     import { page } from '$app/state';
     import { loggedIn, user } from '$lib/utils/console';
-    import { PUBLIC_GROWTH_ENDPOINT } from '$env/static/public';
-    import { Button } from '$lib/components/ui';
-    import Icon from './ui/icon';
     import { createForm } from '@tanstack/svelte-form';
     import { z } from 'zod';
     import { useHotkeys } from '$lib/utils/use-hotkeys.svelte';
