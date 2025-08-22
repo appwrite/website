@@ -6,7 +6,7 @@
     class="container grid min-h-80 place-content-center items-center gap-8 py-20 md:grid-cols-2 md:py-40"
 >
     <div class="text-secondary space-y-8 md:max-w-[75%]">
-        <h2 class="text-primary font-aeonik-pro text-4xl">
+        <h2 class="text-primary font-aeonik-pro text-subtitle">
             Kickstart your developer journey with Appwrite
         </h2>
         <p class="font-medium">

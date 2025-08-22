@@ -14,7 +14,7 @@
 </script>
 
 <script lang="ts">
-    import { classNames } from '$lib/utils/classnames';
+    import { cn } from '$lib/utils/cn';
     import { setContext, type Snippet } from 'svelte';
     import { Select } from '$lib/components';
 
@@ -44,7 +44,7 @@
 </script>
 
 <div
-    class="dark:bg-greyscale-850/90 mt-4 mb-8 flex flex-col gap-1 rounded-2xl border border-black/8 bg-white/90 px-6 pt-4 pb-6 outline-0 dark:border-white/10"
+    class="dark:bg-greyscale-850/90 not-prose mt-4 mb-8 flex flex-col gap-1 rounded-2xl border border-black/8 bg-white/90 px-6 pt-4 pb-6 outline-0 dark:border-white/10"
 >
     <div
         class="flex items-center gap-4 overflow-scroll [-ms-overflow-style:none] [scrollbar-width:none]"
@@ -52,7 +52,7 @@
         <div class="hidden items-center gap-4 sm:flex" {...tabs.triggerList}>
             {#each $ctx.triggers.slice(0, 7) as { title, id }}
                 <button
-                    class={classNames(
+                    class={cn(
                         'shrink-0 rounded-t-[0.625rem] text-center hover:bg-white/4',
                         'relative cursor-pointer bg-clip-padding px-1 py-[0.625rem] font-light outline-none',
                         'after:relative after:top-1 after:bottom-0 after:block after:h-px after:transition-all',
@@ -82,7 +82,7 @@
         <div class="flex items-center gap-4 sm:hidden" {...tabs.triggerList}>
             {#each $ctx.triggers.slice(0, 2) as { title, id }}
                 <button
-                    class={classNames(
+                    class={cn(
                         'shrink-0 rounded-t-[0.625rem] text-center hover:bg-white/4',
                         'relative cursor-pointer bg-clip-padding px-1 py-[0.625rem] font-light outline-none',
                         'after:relative after:top-1 after:bottom-0 after:block after:h-px after:transition-all',

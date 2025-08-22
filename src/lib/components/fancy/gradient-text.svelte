@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { classNames } from '$lib/utils/classnames';
+    import { cn } from '$lib/utils/cn';
     import type { Snippet } from 'svelte';
     import type { SvelteHTMLElements } from 'svelte/elements';
 
@@ -12,7 +12,7 @@
 </script>
 
 <span
-    class={classNames(
+    class={cn(
         '-mb-1 block bg-linear-145 from-[#f8a1ba] to-white to-50% bg-clip-text pb-1 text-transparent',
         className
     )}

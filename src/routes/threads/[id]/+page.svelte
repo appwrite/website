@@ -91,7 +91,9 @@
             </div>
             <div class="related">
                 {#if data.related.length}
-                    <h2 class="text-micro text-primary uppercase">Recommended threads</h2>
+                    <h2 class="text-eyebrow font-aeonik-fono text-primary uppercase">
+                        Recommended threads
+                    </h2>
                 {/if}
                 <ul>
                     {#each data.related as thread}

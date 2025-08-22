@@ -51,7 +51,7 @@
 </script>
 
 <section
-    class="dark web-code-snippet !max-w-[90vw] md:!max-w-3xl md:min-w-3xl"
+    class="dark web-code-snippet !max-w-[90vw] md:!max-w-3xl"
     aria-label="code-snippet panel"
     style={`width: ${width ? width / 16 + 'rem' : 'inherit'}; height: ${
         height ? height / 16 + 'rem' : 'inherit'

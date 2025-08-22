@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { classNames } from '$lib/utils/classnames';
+    import { cn } from '$lib/utils/cn';
     import { tick, type Snippet } from 'svelte';
 
     interface MasonryProps {
@@ -81,7 +81,7 @@
 
 <div
     bind:this={masonryElement}
-    class={classNames(
+    class={cn(
         'grid grid-cols-[repeat(auto-fit,_minmax(min(20em,_100%),_1fr))] [grid-template-rows:masonry] justify-center [grid-gap:20px] *:self-start'
     )}
 >

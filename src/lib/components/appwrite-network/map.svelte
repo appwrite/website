@@ -60,7 +60,6 @@
                 {#each markers as marker}
                     <g
                         role="tooltip"
-                        class="animate-fade-in outline-none"
                         aria-label={`${marker.city} (${marker.code})`}
                         onmouseover={() =>
                             handleSetActiveTooltip(
@@ -81,7 +80,7 @@
                         data-region={slugify(marker.city)}
                     >
                         <circle cx={marker.x} cy={marker.y} r={radius * 1.25} class="fill-accent" />
-                        <circle cx={marker.x} cy={marker.y} r={radius * 0.5} class="fill-white" />
+                        <circle cx={marker.x} cy={marker.y} r={radius * 0.5} fill="white" />
                         <circle
                             cx={marker.x}
                             cy={marker.y}

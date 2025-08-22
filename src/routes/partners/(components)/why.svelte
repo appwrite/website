@@ -44,13 +44,13 @@
 <div class="border-smooth mb-0 border-y py-12 md:py-30">
     <div class="container space-y-16">
         <div class="mx-auto flex max-w-2xl flex-col gap-4 text-center">
-            <span class="font-aeonik-fono tracking-loose text-micro text-primary uppercase">
+            <span class="font-aeonik-fono tracking-loose text-eyebrow text-primary uppercase">
                 Why Appwrite?<span class="text-accent">_</span>
             </span>
             <h2 class="text-primary font-aeonik-pro text-title">
                 Partner with one of the fastest growing dev tool companies
             </h2>
-            <p class="text-body text-secondary mx-auto max-w-md font-medium">
+            <p class="text-main-body text-secondary mx-auto max-w-md font-medium">
                 Everyday thousands of companies are built on top of Appwrite. Benefit from our
                 network as a Appwrite Partner.
             </p>

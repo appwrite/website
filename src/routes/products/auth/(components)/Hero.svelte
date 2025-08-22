@@ -12,7 +12,7 @@
         <div class="space-y-4">
             <div class="flex items-center gap-2">
                 <img src="/images/icons/illustrated/dark/auth.png" class="size-8" alt="" />
-                <span class="text-micro text-primary uppercase">
+                <span class="text-eyebrow text-primary uppercase">
                     Auth<span class="web-u-color-text-accent">_</span>
                 </span>
             </div>

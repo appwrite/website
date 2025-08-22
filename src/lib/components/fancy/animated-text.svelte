@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { classNames } from '$lib/utils/classnames';
+    import { cn } from '$lib/utils/cn';
 
     interface Props {
         text: string;
@@ -12,7 +12,7 @@
 </script>
 
 <span class="sr-only">{text}</span>
-<span class={classNames('relative overflow-hidden', className)}>
+<span class={cn('relative overflow-hidden', className)}>
     {#each words as word, i}
         <span class="relative overflow-hidden">
             <span

@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { classNames } from '$lib/utils/classnames';
+    import { cn } from '$lib/utils/cn';
 
     const testimonials = [
         {
@@ -45,7 +45,7 @@
     const { class: className }: Props = $props();
 </script>
 
-<div class={classNames('relative w-full max-w-[100vw] overflow-hidden', className)}>
+<div class={cn('relative w-full max-w-[100vw] overflow-hidden', className)}>
     <div class="group light flex w-fit flex-nowrap gap-8 overflow-clip md:overflow-visible">
         {#each Array.from({ length: 2 }) as _, i}
             <div

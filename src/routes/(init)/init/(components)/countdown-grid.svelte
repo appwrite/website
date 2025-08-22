@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { classNames } from '$lib/utils/classnames';
+    import { cn } from '$lib/utils/cn';
     import CountdownCard from './countdown-card.svelte';
     import type { DayProps } from './day.svelte';
     import Window from './window.svelte';
@@ -11,7 +11,7 @@
     let { days = [] }: Props = $props();
 </script>
 
-<div class={classNames('relative')}>
+<div class={cn('relative')}>
     <div class="container">
         <Window>
             {#snippet title()}
