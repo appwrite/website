@@ -9,6 +9,7 @@ We've shipped updates and bug fixes across Functions, Sites, and the Console to 
 # What's new {% #what-s-new %}
 - **Node.js 22** runtime updated from 22.9 → 22.18
 - You can now **filter function executions by `deploymentId`** for easier debugging
+- **Avatar API favicon endpoint** now supports SVG icons
 
 # Fixes and improvements {% #fixes-and-improvements %}
 - **Dynamic keys** no longer cause random execution failures
