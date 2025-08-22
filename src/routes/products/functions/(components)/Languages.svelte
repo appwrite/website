@@ -66,10 +66,10 @@
 </script>
 
 <section class="pt-12 pb-40 md:pt-32">
-    <div class="container flex flex-col items-center justify-between md:flex-row md:gap-6">
-        <div class="mb-10 flex w-full flex-col md:max-w-lg">
+    <div class="container grid grid-cols-1 items-center md:grid-cols-2 md:gap-6">
+        <div class="mb-10 flex w-full flex-col md:max-w-sm">
             <h2 class="text-title text-primary font-aeonik-pro my-4">
-                Run in your preferred<br /> languages
+                Run in your preferred languages
             </h2>
             <p class="text-main-body text-secondary font-medium">
                 Appwrite Functions support a variety of<br /> languages, ensuring flexibility and<br

@@ -149,8 +149,8 @@
 </svelte:head>
 
 <Main>
-    <div class="web-big-padding-section" style:overflow-x="hidden">
-        <div class="relative py-10">
+    <div class="web-big-padding-section overflow-x-hidden">
+        <div class="border-smooth relative border-b py-10">
             <div
                 class="absolute"
                 style="pointer-events:none;inset-inline-start:0; inset-block-end:0;"
@@ -216,21 +216,26 @@
                             (author) => author.slug === featured.author
                         )}
                         <article class="web-feature-article mt-12">
-                            <a href={featured.href} class="web-feature-article-image h-fit">
+                            <a
+                                href={featured.href}
+                                class="web-feature-article-image h-fit overflow-hidden rounded-lg"
+                            >
                                 <img
                                     src={featured.cover}
-                                    class="web-image-ratio-4/3"
+                                    class="aspect-video transition-transform duration-250 hover:scale-102"
                                     loading="lazy"
                                     alt="cover"
                                 />
                             </a>
-                            <div class="web-feature-article-content">
+                            <div class="web-feature-article-content w-full">
                                 <header class="web-feature-article-header">
                                     <ul class="web-metadata text-caption web-is-only-mobile">
                                         <li>{featured.timeToRead} min</li>
                                     </ul>
                                     <a href={featured.href}>
-                                        <h2 class="text-title font-aeonik-pro text-primary">
+                                        <h2
+                                            class="text-title font-aeonik-pro text-primary text-balanced"
+                                        >
                                             {featured.title}
                                         </h2>
                                     </a>
@@ -269,7 +274,7 @@
             </div>
         </div>
 
-        <div class="pt-20">
+        <div class="pt-30">
             <div class="web-container">
                 <h2
                     id="title"

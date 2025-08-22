@@ -89,9 +89,9 @@
                         'hidden md:flex': i > 3
                     })}
                 >
-                    <div class="flex w-full items-center justify-between">
+                    <div class="mb-3 flex w-full items-center justify-between">
                         <span class="text-sub-body text-primary font-medium">{template.title}</span>
-                        <ul class="flex h-12 gap-1">
+                        <ul class="flex gap-1">
                             {#each baseRuntimes as runtime}
                                 <li
                                     class="border-smooth -ml-3 flex size-8 items-center justify-center rounded-full border bg-white"
