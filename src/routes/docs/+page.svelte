@@ -338,36 +338,56 @@
                     <li>
                         <a
                             href="/docs/tooling/mcp/claude"
-                            class="web-card is-normal"
+                            class="web-card is-normal flex flex-row! items-center gap-2!"
                             onclick={() => trackEvent(`docs-mcp-click`)}
                         >
+                            <img
+                                src="/images/docs/mcp/logos/dark/claude.svg"
+                                alt="Cursor"
+                                class="w-6"
+                            />
                             <h4 class="text-sub-body text-primary font-medium">Claude Desktop</h4>
                         </a>
                     </li>
                     <li>
                         <a
                             href="/docs/tooling/mcp/cursor"
-                            class="web-card is-normal"
+                            class="web-card is-normal flex flex-row! items-center gap-2!"
                             onclick={() => trackEvent(`docs-mcp-click`)}
                         >
+                            <img
+                                src="/images/docs/mcp/logos/dark/cursor-ai.svg"
+                                alt="Cursor"
+                                class="w-6"
+                            />
                             <h4 class="text-sub-body text-primary font-medium">Cursor</h4>
                         </a>
                     </li>
                     <li>
                         <a
                             href="/docs/tooling/mcp/windsurf"
-                            class="web-card is-normal"
+                            class="web-card is-normal flex flex-row! items-center gap-2!"
                             onclick={() => trackEvent(`docs-mcp-click`)}
                         >
+                            <img
+                                src="/images/docs/mcp/logos/dark/windsurf.svg"
+                                alt="Cursor"
+                                class="w-6"
+                            />
                             <h4 class="text-sub-body text-primary font-medium">Windsurf Editor</h4>
                         </a>
                     </li>
                     <li>
                         <a
                             href="/docs/tooling/mcp/vscode"
-                            class="web-card is-normal"
+                            class="web-card is-normal flex flex-row! items-center gap-2!"
                             onclick={() => trackEvent(`docs-mcp-click`)}
                         >
+                            <img
+                                src="/images/docs/mcp/logos/dark/vscode.svg"
+                                alt="Cursor"
+                                class="w-6"
+                            />
                             <h4 class="text-sub-body text-primary font-medium">VS Code</h4>
                         </a>
                     </li>
