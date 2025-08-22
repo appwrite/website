@@ -108,10 +108,6 @@
     });
 
     $effect(() => {
-        currentTheme.subscribe((theme) => applyTheme(theme));
-    });
-
-    $effect(() => {
         if ($loggedIn) {
             document.body.dataset.loggedIn = '';
         }
