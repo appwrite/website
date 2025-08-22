@@ -117,11 +117,11 @@
 									<div class="web-timeline-content-item-top web-grid-1-1"
 										 style="--grid-1-1-gap:2.5rem; --grid-1-1-gap-desktop:15rem;">
 										<div class="flex flex-col gap-4">
-											<span class="web-badges text-micro uppercase web-u-cross-child-start">2019_</span>
+											<span class="web-badges text-eyebrow uppercase web-u-cross-child-start">2019_</span>
 											<h3 class="text-title font-aeonik-pro text-primary">
 												A passion project called Appwrite
 											</h3>
-											<p class="text-body">
+											<p class="text-main-body">
 												Appwrite's first ever pull request was submitted in August 2019 by CEO and Founder Eldad A. Fux. Just one month later, September 2019, Appwrite officially launched. Soon the community started contributing by the hundreds pushing the product to new heights.
 											</p>
 										</div>
@@ -150,7 +150,7 @@
 									<div class="web-grid-1-1"
 										 style="--grid-1-1-gap:2.5rem; --grid-1-1-gap-desktop:15rem;">
 										<div class="flex flex-col gap-4">
-											<span class="web-badges text-micro uppercase web-u-cross-child-start">2019_</span>
+											<span class="web-badges text-eyebrow uppercase web-u-cross-child-start">2019_</span>
 											<h3 class="text-title font-aeonik-pro text-primary">
 												Building the team
 											</h3>
@@ -178,7 +178,7 @@
 									<div class="web-grid-1-1"
 										 style="--grid-1-1-gap:2.5rem; --grid-1-1-gap-desktop:15rem;">
 										<div class="flex flex-col gap-4">
-											<span class="web-badges text-micro uppercase web-u-cross-child-start">2019_</span>
+											<span class="web-badges text-eyebrow uppercase web-u-cross-child-start">2019_</span>
 											<h3 class="text-title font-aeonik-pro text-primary">
 												Community validation
 											</h3>
@@ -220,7 +220,7 @@
 									<div class="web-grid-1-1"
 										 style="--grid-1-1-gap:2.5rem; --grid-1-1-gap-desktop:15rem;">
 										<div class="flex flex-col gap-4">
-											<span class="web-badges text-micro uppercase web-u-cross-child-start">2019_</span>
+											<span class="web-badges text-eyebrow uppercase web-u-cross-child-start">2019_</span>
 											<h3 class="text-title font-aeonik-pro text-primary">
 												Continuous improvement
 											</h3>
@@ -249,7 +249,7 @@
 									<div class="web-grid-1-1"
 										 style="--grid-1-1-gap:2.5rem; --grid-1-1-gap-desktop:15rem;">
 										<div class="flex flex-col gap-4">
-											<span class="web-badges text-micro uppercase web-u-cross-child-start">2019_</span>
+											<span class="web-badges text-eyebrow uppercase web-u-cross-child-start">2019_</span>
 											<h3 class="text-title font-aeonik-pro text-primary">
 												Taking it to the Cloud
 											</h3>
@@ -379,9 +379,9 @@
                     </h5>
                     <ul class="web-grid-2c-4c mt-12">
                         <li class="flex flex-col">
-                            <h6 class="text-body text-primary font-medium">Aaron Applebaum</h6>
-                            <p class="text-body font-medium">Partner</p>
-                            <p class="text-body font-medium">MizMaa</p>
+                            <h6 class="text-main-body text-primary font-medium">Aaron Applebaum</h6>
+                            <p class="text-main-body font-medium">Partner</p>
+                            <p class="text-main-body font-medium">MizMaa</p>
                             <ul class="mt-auto flex gap-2 pt-4">
                                 <li>
                                     <a
@@ -408,9 +408,9 @@
                             </ul>
                         </li>
                         <li class="flex flex-col">
-                            <h6 class="text-body text-primary font-medium">Ariel Maislos</h6>
-                            <p class="text-body font-medium">Angel Investor</p>
-                            <p class="text-body font-medium">Former Apple IL CEO</p>
+                            <h6 class="text-main-body text-primary font-medium">Ariel Maislos</h6>
+                            <p class="text-main-body font-medium">Angel Investor</p>
+                            <p class="text-main-body font-medium">Former Apple IL CEO</p>
                             <ul class="mt-auto flex gap-2 pt-4">
                                 <li>
                                     <a
@@ -437,14 +437,16 @@
                             </ul>
                         </li>
                         <li class="flex flex-col">
-                            <h6 class="text-body text-primary font-medium">Gilad Engel</h6>
-                            <p class="text-body font-medium">Angel Investor</p>
+                            <h6 class="text-main-body text-primary font-medium">Gilad Engel</h6>
+                            <p class="text-main-body font-medium">Angel Investor</p>
                             <ul class="mt-auto flex gap-2 pt-4"></ul>
                         </li>
                         <li class="flex flex-col">
-                            <h6 class="text-body text-primary font-medium">Krishna Visvanathan</h6>
-                            <p class="text-body font-medium">Co-founder & Partner</p>
-                            <p class="text-body font-medium">Crane Venture Partners</p>
+                            <h6 class="text-main-body text-primary font-medium">
+                                Krishna Visvanathan
+                            </h6>
+                            <p class="text-main-body font-medium">Co-founder & Partner</p>
+                            <p class="text-main-body font-medium">Crane Venture Partners</p>
                             <ul class="mt-auto flex gap-2 pt-4">
                                 <li>
                                     <a
@@ -460,8 +462,8 @@
                             </ul>
                         </li>
                         <li class="flex flex-col">
-                            <h6 class="text-body text-primary font-medium">Ameet Patel</h6>
-                            <p class="text-body font-medium">Angel Investor</p>
+                            <h6 class="text-main-body text-primary font-medium">Ameet Patel</h6>
+                            <p class="text-main-body font-medium">Angel Investor</p>
                             <ul class="mt-auto flex gap-2 pt-4">
                                 <li>
                                     <a
@@ -477,9 +479,9 @@
                             </ul>
                         </li>
                         <li class="flex flex-col">
-                            <h6 class="text-body text-primary font-medium">Benno Jering</h6>
-                            <p class="text-body font-medium">Partner</p>
-                            <p class="text-body font-medium">Redline Capital</p>
+                            <h6 class="text-main-body text-primary font-medium">Benno Jering</h6>
+                            <p class="text-main-body font-medium">Partner</p>
+                            <p class="text-main-body font-medium">Redline Capital</p>
                             <ul class="mt-auto flex gap-2 pt-4">
                                 <li>
                                     <a
@@ -495,9 +497,11 @@
                             </ul>
                         </li>
                         <li class="flex flex-col">
-                            <h6 class="text-body text-primary font-medium">James Lindenbaum</h6>
-                            <p class="text-body font-medium">Co-founder</p>
-                            <p class="text-body font-medium">Heroku</p>
+                            <h6 class="text-main-body text-primary font-medium">
+                                James Lindenbaum
+                            </h6>
+                            <p class="text-main-body font-medium">Co-founder</p>
+                            <p class="text-main-body font-medium">Heroku</p>
                             <ul class="mt-auto flex gap-2 pt-4">
                                 <li>
                                     <a
@@ -513,9 +517,9 @@
                             </ul>
                         </li>
                         <li class="flex flex-col">
-                            <h6 class="text-body text-primary font-medium">Uri Boness</h6>
-                            <p class="text-body font-medium">Co-Founder</p>
-                            <p class="text-body font-medium">Elastic</p>
+                            <h6 class="text-main-body text-primary font-medium">Uri Boness</h6>
+                            <p class="text-main-body font-medium">Co-Founder</p>
+                            <p class="text-main-body font-medium">Elastic</p>
                             <ul class="mt-auto flex gap-2 pt-4">
                                 <li>
                                     <a

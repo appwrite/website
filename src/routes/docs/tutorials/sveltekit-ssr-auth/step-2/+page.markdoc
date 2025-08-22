@@ -43,7 +43,7 @@ cd my-svelte-project
 npm install
 ```
 
-# Install Appwrite {% #install-appwrite %}
+## Install Appwrite {% #install-appwrite %}
 
 Appwrite provides a Node SDK that can be used in your Svelte apps. You can use Appwrite by installing the Node SDK as an NPM package. 
 The Node SDK is intended for server-side use. If you want to use Appwrite in a client-side application, you should [use the Web SDK instead](/docs/tutorials/sveltekit-csr-auth).

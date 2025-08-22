@@ -66,13 +66,19 @@
                     <thead class="web-table-header">
                         <tr class="web-table-row">
                             <th class="web-table-head-col">
-                                <div class="text-micro text-primary uppercase">Time frame</div>
+                                <div class="text-eyebrow font-aeonik-fono text-primary uppercase">
+                                    Time frame
+                                </div>
                             </th>
                             <th class="web-table-head-col">
-                                <div class="text-micro text-primary uppercase">Attempts</div>
+                                <div class="text-eyebrow font-aeonik-fono text-primary uppercase">
+                                    Attempts
+                                </div>
                             </th>
                             <th class="web-table-head-col">
-                                <div class="text-micro text-primary uppercase">Key</div>
+                                <div class="text-eyebrow font-aeonik-fono text-primary uppercase">
+                                    Key
+                                </div>
                             </th>
                         </tr>
                     </thead>
