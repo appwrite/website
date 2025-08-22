@@ -12,6 +12,6 @@ We've added new DNS records to improve security and reliability for Appwrite dom
 
 These changes give you more flexibility and help reduce the chance of misconfigured certificates or DNS errors.
 
-{% arrow_link href="/docs/advanced/platform/custom-domains" %}
-Learn more about custom domains
+{% arrow_link href="/docs/products/network/dns" %}
+Learn more about Appwrite DNS
 {% /arrow_link %}
