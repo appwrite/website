@@ -54,10 +54,10 @@ This is the content.
 {% cards_item href="/" title="Cards Item 2" %}
 This is the content.
 {% /cards_item %}
-{% cards_image_item href="/" title="Cards Image Item" dark="/images/logos/appwrite.svg" %}
+{% cards_image_item href="/" title="Cards Image Item" light="/images/docs/ai/computer-vision-light.png" dark="/images/docs/ai/computer-vision-dark.png"  %}
 This is the content.
 {% /cards_image_item %}
-{% cards_image_item href="/" title="Cards Image Item 2" dark="/images/logos/appwrite.svg" %}
+{% cards_image_item href="/" title="Cards Image Item 2" light="/images/docs/ai/computer-vision-light.png" dark="/images/docs/ai/computer-vision-dark.png"  %}
 This is the content.
 {% /cards_image_item %}
 {% /cards %}
