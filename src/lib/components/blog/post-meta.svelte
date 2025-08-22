@@ -5,7 +5,6 @@
     import type { AuthorData } from '$routes/blog/content';
     import { page } from '$app/state';
 
-    console.log(page.data);
     interface Props {
         date?: string;
         timeToRead?: string;
