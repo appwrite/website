@@ -66,11 +66,8 @@
         preferredPlatform.set(correctPlatform);
 
         const hash = page.url?.hash ?? '';
-        const target =
-            `/docs/references/${version}/${platform}/${service}` +
-            (hash && !String(`/docs/references/${version}/${platform}/${service}`).includes('#')
-                ? hash
-                : '');
+        const baseUrl = `/docs/references/${version}/${platform}/${service}`;
+        const target = baseUrl + (hash && !String(baseUrl).includes('#') ? hash : '');
 
         goto(target, {
             noScroll: true
@@ -85,11 +82,8 @@
         preferredVersion.set(version);
 
         const hash = page.url?.hash ?? '';
-        const target =
-            `/docs/references/${version}/${platform}/${service}` +
-            (hash && !String(`/docs/references/${version}/${platform}/${service}`).includes('#')
-                ? hash
-                : '');
+        const baseUrl = `/docs/references/${version}/${platform}/${service}`;
+        const target = baseUrl + (hash && !String(baseUrl).includes('#') ? hash : '');
 
         goto(target, {
             noScroll: true
@@ -129,14 +123,8 @@
                 : `server-${$preferredPlatform}`;
 
             const hash = page.url?.hash ?? '';
-            const target =
-                `/docs/references/${$preferredVersion}/${platformMode}/${page.params.service}` +
-                (hash &&
-                !String(
-                    `/docs/references/${$preferredVersion}/${platformMode}/${page.params.service}`
-                ).includes('#')
-                    ? hash
-                    : '');
+            const baseUrl = `/docs/references/${$preferredVersion}/${platformMode}/${page.params.service}`;
+            const target = baseUrl + (hash && !String(baseUrl).includes('#') ? hash : '');
 
             goto(target, {
                 noScroll: true
