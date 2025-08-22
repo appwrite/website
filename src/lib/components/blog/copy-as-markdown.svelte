@@ -1,14 +1,24 @@
 <script lang="ts">
     import { getContext } from 'svelte';
     import { handleCopy } from '$lib/utils/copy';
+    import { cn } from '$lib/utils/cn';
+
+    interface CopyAsMarkdownProps {
+        class?: string;
+    }
 
     const content = getContext<string>('rawContent');
 
     const { copy, copied } = handleCopy(content, 2000);
+
+    const { class: classNames }: CopyAsMarkdownProps = $props();
 </script>
 
 <button
-    class="text-caption hover:text-accent text-secondary -mt-6 ml-4 flex cursor-pointer items-center gap-2.5 rounded-md p-1.5 transition-colors"
+    class={cn(
+        'text-caption hover:text-accent text-secondary -mt-6 ml-4 flex cursor-pointer items-center gap-2.5 rounded-md p-1.5 transition-colors',
+        classNames
+    )}
     onclick={copy}
 >
     <svg xmlns="http://www.w3.org/2000/svg" class="w-6" viewBox="0 0 208 128"
