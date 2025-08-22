@@ -1,6 +1,6 @@
 <script lang="ts" module>
     import { type Reo, loadReoScript } from '$lib/reodotdev';
-    import { derived, writable } from 'svelte/store';
+    import { derived as storeDerived, writable } from 'svelte/store';
 
     export type Theme = 'dark' | 'light' | 'system';
     export const currentTheme = (() => {
@@ -17,7 +17,7 @@
         return { ...store, set };
     })();
 
-    export const themeInUse = derived(currentTheme, (theme) => {
+    export const themeInUse = storeDerived(currentTheme, (theme) => {
         return theme === 'system' ? getSystemTheme() : theme;
     });
 
@@ -117,13 +117,9 @@
         }
     });
 
-    let canonicalUrl = $state<string>(
+    let canonicalUrl = $derived<string>(
         `${page.url.origin.replace(/^https?:\/\/www\./, 'https://')}${page.url.pathname}`
     );
-
-    $effect(() => {
-        canonicalUrl = `${page.url.origin.replace(/^https?:\/\/www\./, 'https://')}${page.url.pathname}`;
-    });
 
     function handleScroll() {
         const scrollY = window.scrollY;
