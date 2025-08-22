@@ -216,10 +216,13 @@
                             (author) => author.slug === featured.author
                         )}
                         <article class="web-feature-article mt-12">
-                            <a href={featured.href} class="web-feature-article-image h-fit">
+                            <a
+                                href={featured.href}
+                                class="web-feature-article-image h-fit overflow-hidden rounded-lg"
+                            >
                                 <img
                                     src={featured.cover}
-                                    class="web-image-ratio-4/3"
+                                    class="aspect-video transition-transform duration-250 hover:scale-102"
                                     loading="lazy"
                                     alt="cover"
                                 />
@@ -271,7 +274,7 @@
             </div>
         </div>
 
-        <div class="pt-20">
+        <div class="pt-30">
             <div class="web-container">
                 <h2
                     id="title"
