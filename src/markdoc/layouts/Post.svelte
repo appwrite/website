@@ -181,7 +181,7 @@
                 </section>
             </div>
         </div>
-        <div class="relative overflow-hidden pt-[7.5rem]">
+        <div class="relative overflow-hidden">
             <div class="container">
                 <Newsletter />
                 <FooterNav />
