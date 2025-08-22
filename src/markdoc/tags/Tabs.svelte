@@ -54,10 +54,10 @@
                 <button
                     class={cn(
                         'shrink-0 rounded-t-[0.625rem] text-center hover:bg-white/4',
-                        'relative cursor-pointer bg-clip-padding px-1 pt-1 pb-[0.625rem] font-light outline-none',
+                        'relative cursor-pointer bg-clip-padding px-1 pt-1 pb-1 font-light outline-none',
                         'after:relative after:top-1 after:bottom-0 after:block after:h-px after:transition-all',
                         {
-                            'after:bg-(--color-primary)': tabs.value === id
+                            'after:bg-primary': tabs.value === id
                         }
                     )}
                     {...tabs.getTrigger(id)}

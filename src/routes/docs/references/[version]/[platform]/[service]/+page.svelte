@@ -221,7 +221,7 @@
         <header class="web-article-header">
             <div class="web-article-header-start">
                 <h1 class="text-title font-aeonik-pro">{serviceName}</h1>
-                <div class="web-inline-code">{platformType}</div>
+                <div class="web-inline-code text-caption">{platformType}</div>
             </div>
             <div class="web-article-header-end">
                 <div class="text-primary flex flex-col gap-6 md:flex-row">
