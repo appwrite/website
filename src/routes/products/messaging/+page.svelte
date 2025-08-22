@@ -270,9 +270,13 @@ messaging.create_email(
                         directly to your users.
                     </p>
                     <div class="hero-buttons mt-8 flex items-center gap-2">
-                        <Button href={getAppwriteDashboardUrl()}>Get started</Button>
-                        <Button variant="secondary" href="/docs/products/messaging"
-                            >Documentation</Button
+                        <Button href={getAppwriteDashboardUrl()} class="w-full! md:w-fit!"
+                            >Get started</Button
+                        >
+                        <Button
+                            variant="secondary"
+                            href="/docs/products/messaging"
+                            class="w-full! md:w-fit!">Documentation</Button
                         >
                     </div>
                 </div>
@@ -482,7 +486,7 @@ messaging.create_email(
                     >
                         <div class="flex min-w-0 flex-col gap-2">
                             <h3 class="text-label text-primary">Subscribe to a topic</h3>
-                            <p class="text-description">
+                            <p class="text-description font-medium">
                                 Subscribe to receive all messages related to a topic.
                             </p>
 
@@ -496,7 +500,7 @@ messaging.create_email(
                         </div>
                         <div class="flex min-w-0 flex-col gap-2">
                             <h3 class="text-label text-primary">Send a message</h3>
-                            <p class="text-description">
+                            <p class="text-description font-medium">
                                 Send a message to all targets on a topic.
                             </p>
                             <div class="mt-4 min-w-0">
@@ -701,7 +705,7 @@ messaging.create_email(
                     position: absolute;
                     display: block;
                     block-size: 100%;
-                    translate: 0 100px;
+                    translate: 0 150px;
                     inline-size: auto;
                 }
                 @media (max-width: 1023px) {

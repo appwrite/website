@@ -32,8 +32,8 @@
 <Step title="Step 1: Draft">
     <div
         class="console"
-        style:--marker-active="url('{MarkerActive}')"
-        style:--marker="url('{Marker}')"
+        style:--marker-active={`url("${MarkerActive}")`}
+        style:--marker={`url("${Marker}")`}
         bind:this={wrapper}
     >
         <div class="inner">
@@ -51,12 +51,11 @@
                 </div>
                 <div class="content">
                     <h4 class="text-label text-primary">Message</h4>
-                    <hr />
+                    <hr class="border-smooth! mt-8 block w-full border-b!" />
 
                     <label class="text-primary" for="title">Title</label>
                     <input
-                        class="web-input-text"
-                        style="max-width: 80%"
+                        class="web-input-text w-full max-w-[80%]"
                         type="text"
                         id="title"
                         name="title"
@@ -65,8 +64,7 @@
                     />
                     <label class="text-primary" for="message">Message</label>
                     <textarea
-                        class="web-input-text"
-                        style="max-width: 80%"
+                        class="web-input-text w-full max-w-[80%]"
                         id="message"
                         name="message"
                         bind:value={message}
@@ -226,6 +224,7 @@
             background: linear-gradient(to bottom, hsl(240, 6%, 10%, 0), hsl(240, 6%, 10%, 1));
             border-radius: var(--m-border-radius);
             pointer-events: none;
+            min-height: 700px;
         }
 
         .phone {
