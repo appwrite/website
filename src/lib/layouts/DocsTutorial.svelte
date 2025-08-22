@@ -8,6 +8,7 @@
     import { page } from '$app/state';
     import { Button, Icon } from '$lib/components/ui';
     import { cn } from '$lib/utils/cn';
+    import CopyAsMarkdown from '$lib/components/blog/copy-as-markdown.svelte';
 
     export let toc: Array<TocItem>;
     export let back: string;
@@ -262,12 +263,14 @@
                         </li>
                     {/each}
                 </ol>
-                <div class="border-greyscale-900/4 border-t pt-5">
+
+                <div class="border-greyscale-900/4 border-t">
                     <button class="web-link inline-flex items-center gap-2" use:scrollToTop>
                         <span class="web-icon-arrow-up" aria-hidden="true"></span>
                         <span class="text-caption">Back to top</span>
                     </button>
                 </div>
+                <CopyAsMarkdown class="mt-4 ml-0" />
             </div>
         </aside>
     </article>
