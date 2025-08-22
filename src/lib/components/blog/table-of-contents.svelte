@@ -39,7 +39,7 @@
     <span class="text-eyebrow text-primary font-aeonik-fono ps-6 uppercase">{heading}</span>
     <div class="relative">
         <ul
-            class="text-caption flex max-h-[600px] flex-col gap-4 overflow-scroll pb-11 [scrollbar-width:none]"
+            class="text-caption flex max-h-[600px] flex-col gap-4 overflow-scroll [scrollbar-width:none]"
             bind:clientHeight={height}
         >
             {#each toc as parent (parent.href)}
