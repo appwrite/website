@@ -65,7 +65,7 @@
         </div>
 
         <div
-            class="w-[200%] rounded-3xl border border-black/8 bg-gradient-to-br from-black/6 via-black/4 via-[61%] to-black/6 p-2 md:w-full"
+            class="w-[200%] rounded-3xl border border-black/8 bg-gradient-to-br from-black/6 via-black/4 via-[61%] to-black/6 p-2 md:w-1/2"
         >
             <img class="rounded-xl" src={Templates} alt="Templates console" />
         </div>
