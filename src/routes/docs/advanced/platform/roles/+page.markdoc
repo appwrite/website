@@ -17,7 +17,7 @@ The highest level of access, the Owner role has full control over all aspects of
 Developers have access to all resources and scopes available to the Owner, with the exception of team management and billing writes. This role is ideal for team members focusing solely on development tasks.
 
 ## Editor {% #editor %}
-Editors can modify most resources but do not have write permissions for critical backend elements like collections, buckets, topics, and others. This role is intended for users who need to modify content or make changes but should not alter key infrastructure elements. This is great if you need to give access for updating your documents, creating messages, or uploading files.
+Editors can modify most resources but do not have write permissions for critical backend elements like tables, buckets, topics, and others. This role is intended for users who need to modify content or make changes but should not alter key infrastructure elements. This is great if you need to give access for updating your rows, creating messages, or uploading files.
 
 ## Analyst {% #analyst %}
 Analysts are limited to read-only access across all resources. This role is suitable for team members who need to view data, analytics, or reports but do not require editing permissions.

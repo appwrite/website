@@ -29,9 +29,9 @@ To upload a file, add this to your app. For web apps, you can use the File objec
   const storage = new Storage(client);
 
   const promise = storage.createFile(
-      '[BUCKET_ID]',
+      '<BUCKET_ID>',
       ID.unique(),
-      document.getElementById('uploader').files[0]
+      row.getElementById('uploader').files[0]
   );
 
   promise.then(function (response) {
@@ -54,11 +54,11 @@ To upload a file, add this to your app. For web apps, you can use the File objec
 
   // If running in a browser environment, you can use File directly
   const browserFile = new File(['hello'], 'hello.txt');
-  await storage.createFile('[BUCKET_ID]', ID.unique(), browserFile);
+  await storage.createFile('<BUCKET_ID>', ID.unique(), browserFile);
 
   // If running in Node.js, use InputFile
   const nodeFile = InputFile.fromPath('/path/to/file.jpg', 'file.jpg');
-  await storage.createFile('[BUCKET_ID]', ID.unique(), nodeFile);
+  await storage.createFile('<BUCKET_ID>', ID.unique(), nodeFile);
   ```
 
   ```client-flutter
@@ -72,7 +72,7 @@ To upload a file, add this to your app. For web apps, you can use the File objec
     final storage = Storage(client);
 
     final file = await storage.createFile(
-      bucketId: '[BUCKET_ID]',
+      bucketId: '<BUCKET_ID>',
       fileId: ID.unique(),
       file: InputFile.fromPath(path: './path-to-files/image.jpg', filename: 'image.jpg'),
     );
@@ -89,7 +89,7 @@ To upload a file, add this to your app. For web apps, you can use the File objec
       let storage = Storage(client)
 
       let file = try await storage.createFile(
-          bucketId: "[BUCKET_ID]",
+          bucketId: "<BUCKET_ID>",
           fileId: ID.unique(),
           file: InputFile.fromBuffer(yourByteBuffer,
               filename: "image.jpg",
@@ -110,7 +110,7 @@ To upload a file, add this to your app. For web apps, you can use the File objec
       val storage = Storage(client)
 
       val file = storage.createFile(
-          bucketId = "[BUCKET_ID]",
+          bucketId = "<BUCKET_ID>",
           fileId = ID.unique(),
           file = File("./path-to-files/image.jpg"),
       )
@@ -153,7 +153,7 @@ To upload a file, add this to your app. For web apps, you can use the File objec
   --cec8e8123c05ba25
   Content-Disposition: form-data; name="operations"
 
-  { "query": "mutation CreateFile($bucketId: String!, $fileId: String!, $file: InputFile!) { storageCreateFile(bucketId: $bucketId, fileId: $fileId, file: $file) { id } }", "variables": { "bucketId": "[BUCKET_ID]", "fileId": "[FILE_ID]", "file": null } }
+  { "query": "mutation CreateFile($bucketId: String!, $fileId: String!, $file: InputFile!) { storageCreateFile(bucketId: $bucketId, fileId: $fileId, file: $file) { id } }", "variables": { "bucketId": "<BUCKET_ID>", "fileId": "<FILE_ID>", "file": null } }
   --cec8e8123c05ba25
   Content-Disposition: form-data; name="map"
 
@@ -186,7 +186,7 @@ client
     .setProject('<PROJECT_ID>') // Your project ID
 ;
 
-const result = storage.getFileDownload('[BUCKET_ID]', '[FILE_ID]');
+const result = storage.getFileDownload('<BUCKET_ID>', '<FILE_ID>');
 
 console.log(result); // Resource URL
 ```
@@ -203,8 +203,8 @@ void main() { // Init SDK
   ;
   // downloading file
   Future result = storage.getFileDownload(
-    bucketId: '[BUCKET_ID]',
-    fileId: '[FILE_ID]',
+    bucketId: '<BUCKET_ID>',
+    fileId: '<FILE_ID>',
   ).then((bytes) {
     final file = File('path_to_file/filename.ext');
     file.writeAsBytesSync(bytes)
@@ -216,8 +216,8 @@ void main() { // Init SDK
 //displaying image preview
 FutureBuilder(
   future: storage.getFileDownload(
-    bucketId: '[BUCKET_ID]',
-    fileId: '[FILE_ID]',
+    bucketId: '<BUCKET_ID>',
+    fileId: '<FILE_ID>',
   ), //works for both public file and private file, for private files you need to be logged in
   builder: (context, snapshot) {
     return snapshot.hasData && snapshot.data != null
@@ -237,8 +237,8 @@ func main() async throws {
       .setProject("<PROJECT_ID>") // Your project ID
     let storage = Storage(client)
     let byteBuffer = try await storage.getFileDownload(
-        bucketId: "[BUCKET_ID]",
-        fileId: "[FILE_ID]"
+        bucketId: "<BUCKET_ID>",
+        fileId: "<FILE_ID>"
     )
 
     print(String(describing: byteBuffer))
@@ -264,8 +264,8 @@ class MainActivity : AppCompatActivity() {
         val storage = Storage(client)
 
         val result = storage.getFileDownload(
-            bucketId = "[BUCKET_ID]",
-            fileId = "[FILE_ID]"
+            bucketId = "<BUCKET_ID>",
+            fileId = "<FILE_ID>"
         )
         println(result); // Resource URL
     }

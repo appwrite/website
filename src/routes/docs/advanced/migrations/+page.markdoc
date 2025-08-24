@@ -6,7 +6,7 @@ difficulty: beginner
 readtime: 5
 ---
 
-If you're looking to migrate existing projects to Appwrite, Migrations can help you make the move more quickly. You can move your app from Firebase, Supabase, Nhost, and even move between self-hosted and Cloud projects using Migrations. You can also use Migrations to move between two self-hosted instances or even to duplicate projects on the same instance. Migrations will automatically move accounts, database documents, and storage files from one source to another.
+If you're looking to migrate existing projects to Appwrite, Migrations can help you make the move more quickly. You can move your app from Firebase, Supabase, Nhost, and even move between self-hosted and Cloud projects using Migrations. You can also use Migrations to move between two self-hosted instances or even to duplicate projects on the same instance. Migrations will automatically move accounts, database rows, and storage files from one source to another.
 
 # Sources  {% #sources %}
 

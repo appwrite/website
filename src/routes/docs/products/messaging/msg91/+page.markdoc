@@ -81,8 +81,8 @@ client
 ;
 
 const message = await messaging.createSms(
-        '[MESSAGE_ID]',                          // messageId
-        '[CONTENT]',                             // content
+        '<MESSAGE_ID>',                          // messageId
+        '<CONTENT>',                             // content
         [],                                      // topics (optional)
         [],                                      // users (optional)
         [],                                      // targets (optional)
@@ -105,8 +105,8 @@ client
 ;
 
 const message = await messaging.createSms(
-        '[MESSAGE_ID]',                          // messageId
-        '[CONTENT]',                             // content
+        '<MESSAGE_ID>',                          // messageId
+        '<CONTENT>',                             // content
         [],                                      // topics (optional)
         [],                                      // users (optional)
         [],                                      // targets (optional)
@@ -131,8 +131,8 @@ $client
 $messaging = new Messaging($client);
 
 $result = $messaging->createSms(
-    messageId: '[MESSAGE_ID]',
-    content: '[CONTENT]',
+    messageId: '<MESSAGE_ID>',
+    content: '<CONTENT>',
     topics: [],                                   // optional
     users: [],                                    // optional
     targets: [],                                  // optional
@@ -155,8 +155,8 @@ client = Client()
 messaging = Messaging(client)
 
 result = messaging.create_sms(
-    message_id = '[MESSAGE_ID]',
-    content = '[CONTENT]',
+    message_id = '<MESSAGE_ID>',
+    content = '<CONTENT>',
     topics = [],                                # optional
     users = [],                                 # optional
     targets = [],                               # optional
@@ -177,8 +177,8 @@ client = Client.new
 messaging = Messaging.new(client)
 
 response = messaging.create_sms(
-    message_id: '[MESSAGE_ID]',
-    content: '[CONTENT]',
+    message_id: '<MESSAGE_ID>',
+    content: '<CONTENT>',
     topics: [],                                   # optional
     users: [],                                    # optional
     targets: [],                                  # optional
@@ -201,8 +201,8 @@ var client = new Client()
 var messaging = new Messaging(client);
 
 Message result = await messaging.CreateSMS(
-    messageId: "[MESSAGE_ID]",
-    content: "[CONTENT]"    
+    messageId: "<MESSAGE_ID>",
+    content: "<CONTENT>"    
     topics: new List<string> {}                   // optional    
     users: new List<string> {}                    // optional    
     targets: new List<string> {}                  // optional    
@@ -225,8 +225,8 @@ void main() async {                                    // Init SDK
   ;
 
   Future result = await messaging.createSms(
-    messageId: '[MESSAGE_ID]',
-    content: '[CONTENT]',
+    messageId: '<MESSAGE_ID>',
+    content: '<CONTENT>',
     topics: [],                                  // optional
     users: [],                                   // optional
     targets: [],                                 // optional
@@ -255,8 +255,8 @@ Client client = new Client()
 Messaging messaging = new Messaging(client);
 
 messaging.createSms(
-    "[MESSAGE_ID]",                               // messageId
-    "[CONTENT]",                                  // content
+    "<MESSAGE_ID>",                               // messageId
+    "<CONTENT>",                                  // content
     listOf(),                                     // topics (optional)
     listOf(),                                     // users (optional)
     listOf(),                                     // targets (optional)
@@ -285,8 +285,8 @@ Client client = new Client()
 Messaging messaging = new Messaging(client);
 
 messaging.createSms(
-    "[MESSAGE_ID]",                               // messageId
-    "[CONTENT]",                                  // content
+    "<MESSAGE_ID>",                               // messageId
+    "<CONTENT>",                                  // content
     listOf(),                                     // topics (optional)
     listOf(),                                     // users (optional)
     listOf(),                                     // targets (optional)
@@ -313,8 +313,8 @@ let client = Client()
 let messaging = Messaging(client)
 
 let message = try await messaging.createSms(
-  messageId: "[MESSAGE_ID]",
-  content: "[CONTENT]",
+  messageId: "<MESSAGE_ID>",
+  content: "<CONTENT>",
   topics: [],                                    // optional
   users: [],                                     // optional
   targets: [],                                   // optional
@@ -357,12 +357,12 @@ client
 ;
 
 const message = await messaging.updateMsg91Provider(
-        '[PROVIDER_ID]',                         // providerId
-        '[NAME]',                                // name (optional)
+        '<PROVIDER_ID>',                         // providerId
+        '<NAME>',                                // name (optional)
         false,                                   // enabled (optional)
-        '[SENDER_ID]',                           // senderId (optional)
-        '[AUTH_KEY]',                            // authKey (optional)
-        '[FROM]'                                 // from (optional)
+        '<SENDER_ID>',                           // senderId (optional)
+        '<AUTH_KEY>',                            // authKey (optional)
+        '<FROM>'                                 // from (optional)
     );
 ```
 ```deno
@@ -380,12 +380,12 @@ client
 ;
 
 const message = await messaging.updateMsg91Provider(
-        '[PROVIDER_ID]',                         // providerId
-        '[NAME]',                                // name (optional)
+        '<PROVIDER_ID>',                         // providerId
+        '<NAME>',                                // name (optional)
         false,                                   // enabled (optional)
-        '[SENDER_ID]',                           // senderId (optional)
-        '[AUTH_KEY]',                            // authKey (optional)
-        '[FROM]'                                 // from (optional)
+        '<SENDER_ID>',                           // senderId (optional)
+        '<AUTH_KEY>',                            // authKey (optional)
+        '<FROM>'                                 // from (optional)
     );
 ```
 ```php
@@ -405,12 +405,12 @@ $client
 $messaging = new Messaging($client);
 
 $result = $messaging->updateMsg91Provider(
-    providerId: '[PROVIDER_ID]',
-    name: '[NAME]',                               // optional
+    providerId: '<PROVIDER_ID>',
+    name: '<NAME>',                               // optional
     enabled: false,                               // optional
-    senderId: '[SENDER_ID]',                      // optional
-    authKey: '[AUTH_KEY]',                        // optional
-    from: '[FROM]'                                // optional
+    senderId: '<SENDER_ID>',                      // optional
+    authKey: '<AUTH_KEY>',                        // optional
+    from: '<FROM>'                                // optional
 );
 ```
 ```python
@@ -428,12 +428,12 @@ client = Client()
 messaging = Messaging(client)
 
 result = messaging.update_msg91_provider(
-    provider_id = '[PROVIDER_ID]',
-    name = '[NAME]',                            # optional
+    provider_id = '<PROVIDER_ID>',
+    name = '<NAME>',                            # optional
     enabled = False,                            # optional
-    sender_id = '[SENDER_ID]',                  # optional
-    auth_key = '[AUTH_KEY]',                    # optional
-    from = '[FROM]'                             # optional
+    sender_id = '<SENDER_ID>',                  # optional
+    auth_key = '<AUTH_KEY>',                    # optional
+    from = '<FROM>'                             # optional
 )
 ```
 ```ruby
@@ -449,12 +449,12 @@ client = Client.new
 messaging = Messaging.new(client)
 
 response = messaging.update_msg91_provider(
-    provider_id: '[PROVIDER_ID]',
-    name: '[NAME]',                               # optional
+    provider_id: '<PROVIDER_ID>',
+    name: '<NAME>',                               # optional
     enabled: false,                               # optional
-    sender_id: '[SENDER_ID]',                     # optional
-    auth_key: '[AUTH_KEY]',                       # optional
-    from: '[FROM]'                                # optional
+    sender_id: '<SENDER_ID>',                     # optional
+    auth_key: '<AUTH_KEY>',                       # optional
+    from: '<FROM>'                                # optional
 )
 
 puts response.inspect
@@ -472,12 +472,12 @@ var client = new Client()
 var messaging = new Messaging(client);
 
 Provider result = await messaging.UpdateMsg91Provider(
-    providerId: "[PROVIDER_ID]"
-    name: "[NAME]"                                // optional
+    providerId: "<PROVIDER_ID>"
+    name: "<NAME>"                                // optional
     enabled: false                                // optional
-    senderId: "[SENDER_ID]"                       // optional
-    authKey: "[AUTH_KEY]"                         // optional
-    from: "[FROM]");                              // optional
+    senderId: "<SENDER_ID>"                       // optional
+    authKey: "<AUTH_KEY>"                         // optional
+    from: "<FROM>");                              // optional
 ```
 ```dart
 import 'package:dart_appwrite/dart_appwrite.dart';
@@ -495,12 +495,12 @@ void main() {                                    // Init SDK
   ;
 
   Future result = messaging.updateMsg91Provider(
-    providerId: '[PROVIDER_ID]',
-    name: '[NAME]',                              // optional
+    providerId: '<PROVIDER_ID>',
+    name: '<NAME>',                              // optional
     enabled: false,                              // optional
-    senderId: '[SENDER_ID]',                     // optional
-    authKey: '[AUTH_KEY]',                       // optional
-    from: '[FROM]',                              // optional
+    senderId: '<SENDER_ID>',                     // optional
+    authKey: '<AUTH_KEY>',                       // optional
+    from: '<FROM>',                              // optional
   );
 
   result
@@ -524,12 +524,12 @@ Client client = new Client()
 Messaging messaging = new Messaging(client);
 
 messaging.updateMsg91Provider(
-    "[PROVIDER_ID]",                              // providerId
-    "[NAME]",                                     // name (optional)
+    "<PROVIDER_ID>",                              // providerId
+    "<NAME>",                                     // name (optional)
     false,                                        // enabled (optional)
-    "[SENDER_ID]",                                // senderId (optional)
-    "[AUTH_KEY]",                                 // authKey (optional)
-    "[FROM]"                                      // from (optional)
+    "<SENDER_ID>",                                // senderId (optional)
+    "<AUTH_KEY>",                                 // authKey (optional)
+    "<FROM>"                                      // from (optional)
     new CoroutineCallback<>((result, error) -> {
         if (error != null) {
             error.printStackTrace();
@@ -553,12 +553,12 @@ Client client = new Client()
 Messaging messaging = new Messaging(client);
 
 messaging.updateMsg91Provider(
-    "[PROVIDER_ID]",                              // providerId
-    "[NAME]",                                     // name (optional)
+    "<PROVIDER_ID>",                              // providerId
+    "<NAME>",                                     // name (optional)
     false,                                        // enabled (optional)
-    "[SENDER_ID]",                                // senderId (optional)
-    "[AUTH_KEY]",                                 // authKey (optional)
-    "[FROM]"                                      // from (optional)
+    "<SENDER_ID>",                                // senderId (optional)
+    "<AUTH_KEY>",                                 // authKey (optional)
+    "<FROM>"                                      // from (optional)
     new CoroutineCallback<>((result, error) -> {
         if (error != null) {
             error.printStackTrace();
@@ -580,12 +580,12 @@ let client = Client()
 let messaging = Messaging(client)
 
 let provider = try await messaging.updateMsg91Provider(
-  providerId: "[PROVIDER_ID]",
-  name: "[NAME]",                                // optional
+  providerId: "<PROVIDER_ID>",
+  name: "<NAME>",                                // optional
   enabled: xfalse,                               // optional
-  senderId: "[SENDER_ID]",                       // optional
-  authKey: "[AUTH_KEY]",                         // optional
-  from: "[FROM]"                                 // optional
+  senderId: "<SENDER_ID>",                       // optional
+  authKey: "<AUTH_KEY>",                         // optional
+  from: "<FROM>"                                 // optional
 )
 ```
 {% /multicode %}

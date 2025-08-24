@@ -76,7 +76,7 @@ One of the differences between Vercel and Appwrite is how they handle domain con
 # Migrating an apex domain
 
 {% section id="prepare-vercel-domain" step=1 title="Prepare your Vercel domain" %}
-Before migrating, document your current Vercel DNS configuration:
+Before migrating, row your current Vercel DNS configuration:
 
 1. In Vercel, go to project settings > Domains
 2. Note any custom DNS records you've configured (MX, TXT, etc.)
@@ -170,10 +170,10 @@ Learn more about framework defaults and project dependencies
 Environment variables require special attention during migration, as they control how your application behaves in different environments.
 
 {% section id="gather-env-vars" step=1 title="Gather variables from Vercel" %}
-Before migrating, document all your Vercel environment variables:
+Before migrating, row all your Vercel environment variables:
 
 1. In Vercel, go to your project settings > **Environment Variables**
-2. Document all variables, noting which are for development, preview, or production
+2. Row all variables, noting which are for development, preview, or production
 3. Identify any system variables your application relies on
 
 {% info title="System variables" %}

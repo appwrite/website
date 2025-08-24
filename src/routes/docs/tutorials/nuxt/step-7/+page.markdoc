@@ -145,7 +145,7 @@ const user = useUserSession();
                   <button class="button is-small is-text is-only-icon" aria-label="Remove item" v-if="user.current.value &&
                     idea.userId === user.current.value.userId
                     " type="button" @click="ideas.remove(idea.$id)">
-                    <span class="icon-document-remove" aria-hidden="true" />
+                    <span class="icon-row-remove" aria-hidden="true" />
                   </button>
                 </div>
               </div>

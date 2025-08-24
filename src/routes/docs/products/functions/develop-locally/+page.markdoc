@@ -159,7 +159,7 @@ When the source code in a runtime with an interpreted languages is updated, the 
 
 # Impersonate user {% #impersonate-user %}
 
-You can also impersonate a user when you develop a function locally. Impersonate a user using the `--user-id <USER_ID>` option to select a user you want to use for testing. This allows you to test if the user can perform specific actions, such as creating a document.
+You can also impersonate a user when you develop a function locally. Impersonate a user using the `--user-id <USER_ID>` option to select a user you want to use for testing. This allows you to test if the user can perform specific actions, such as creating a row.
 
 When using the `--user-id <USER_ID>` endpoint, the CLI will check and return an error if the user does not exist. But if a user does exist, a [JWT token](/docs/products/auth/jwt#jwt) will be generated and last for 1 hour, similar to API tokens. If the user exists, the header `x-appwrite-user-id` will be set with the userId value, and the `x-appwrite-user-jwt` header will be set with the generated JWT token value.
 

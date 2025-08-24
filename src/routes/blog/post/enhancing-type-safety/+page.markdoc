@@ -74,7 +74,7 @@ const client = new Client()
 
 const account = new Account(client);
 
-account.createOAuth2Session(OAuthProvider.Apple, '[LINK_ON_SUCCESS]', '[LINK_ON_FAILURE]', true);
+account.createOAuth2Session(OAuthProvider.Apple, '<LINK_ON_SUCCESS>', '<LINK_ON_FAILURE>', true);
 ```
 
 # Resources

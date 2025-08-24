@@ -59,9 +59,9 @@ client
 ;
 
 const topic = messaging.createTopic(
-        '[TOPIC_ID]',     // topicId
-        '[NAME]',         // name
-        '[ROLES]'         // permission roles for who can subscribe
+        '<TOPIC_ID>',     // topicId
+        '<NAME>',         // name
+        '<ROLES>'         // permission roles for who can subscribe
     );
 
 ```
@@ -80,9 +80,9 @@ client
 ;
 
 const topic = messaging.createTopic(
-        '[TOPIC_ID]',     // topicId
-        '[NAME]',         // name
-        '[ROLES]'         // permission roles for who can subscribe
+        '<TOPIC_ID>',     // topicId
+        '<NAME>',         // name
+        '<ROLES>'         // permission roles for who can subscribe
     );
 ```
 ```php
@@ -102,9 +102,9 @@ $client
 $messaging = new Messaging($client);
 
 $topic = $messaging->createTopic( 
-    topicId: '[TOPIC_ID]', 
-    name: '[NAME]',
-    subscribe: '[ROLES]'  // permission roles for who can subscribe
+    topicId: '<TOPIC_ID>',
+    name: '<NAME>',
+    subscribe: '<ROLES>'  // permission roles for who can subscribe
 
 );
 ```
@@ -123,9 +123,9 @@ client = Client()
 messaging = Messaging(client)
 
 topic = messaging.create_topic( 
-    topic_id = '[TOPIC_ID]', 
-    name = '[NAME]',
-    subscribe = '[ROLES]'  # permission roles for who can subscribe
+    topic_id = '<TOPIC_ID>',
+    name = '<NAME>',
+    subscribe = '<ROLES>'  # permission roles for who can subscribe
 )
 ```
 ```ruby
@@ -141,9 +141,9 @@ client = Client.new
 messaging = Messaging.new(client)
 
 topic = messaging.create_topic(
-    topic_id: '[TOPIC_ID]', 
-    name: '[NAME]',
-    subscribe: '[ROLES]'  # permission roles for who can subscribe
+    topic_id: '<TOPIC_ID>',
+    name: '<NAME>',
+    subscribe: '<ROLES>'  # permission roles for who can subscribe
 )
 
 puts topic.inspect
@@ -161,9 +161,9 @@ var client = new Client()
 var messaging = new Messaging(client);
 
 Topic topic = await messaging.CreateTopic(
-    topicId: "[TOPIC_ID]",
-    name: "[NAME]",
-    subscribe: "[ROLES]")  // permission roles for who can subscribe
+    topicId: "<TOPIC_ID>",
+    name: "<NAME>",
+    subscribe: "<ROLES>")  // permission roles for who can subscribe
 ```
 ```dart
 import 'package:dart_appwrite/dart_appwrite.dart';
@@ -181,9 +181,9 @@ void main() async {                                    // Init SDK
   ;
 
   Future result = await messaging.createTopic(
-    topicId: '[TOPIC_ID]',
-    name: '[NAME]',
-    subscribe: '[ROLES]' // permission roles for who can subscribe
+    topicId: '<TOPIC_ID>',
+    name: '<NAME>',
+    subscribe: '<ROLES>' // permission roles for who can subscribe
   );
 
   result
@@ -207,9 +207,9 @@ Client client = new Client()
 Messaging messaging = new Messaging(client);
 
 messaging.createTopic(
-    "[TOPIC_ID]",       // topicId
-    "[NAME]"            // name
-    "[ROLES]"           // permission roles for who can subscribe
+    "<TOPIC_ID>",       // topicId
+    "<NAME>"            // name
+    "<ROLES>"           // permission roles for who can subscribe
     new CoroutineCallback<>((topic, error) -> {
         if (error != null) {
             error.printStackTrace();
@@ -233,9 +233,9 @@ Client client = new Client()
 Messaging messaging = new Messaging(client);
 
 messaging.createTopic(
-    "[TOPIC_ID]",                          // topicId
-    "[NAME]"                               // name
-    "[ROLES]"                              // permission roles for who can subscribe
+    "<TOPIC_ID>",                          // topicId
+    "<NAME>"                               // name
+    "<ROLES>"                              // permission roles for who can subscribe
     new CoroutineCallback<>((topic, error) -> {
         if (error != null) {
             error.printStackTrace();
@@ -257,9 +257,9 @@ let client = Client()
 let messaging = Messaging(client)
 
 let topic = try await messaging.createTopic(
-  topicId: "[TOPIC_ID]",
-  name: "[NAME]",
-  subscribe: "[ROLES]" // permission roles for who can subscribe
+  topicId: "<TOPIC_ID>",
+  name: "<NAME>",
+  subscribe: "<ROLES>" // permission roles for who can subscribe
 )
 ```
 {% /multicode %}
@@ -326,9 +326,9 @@ const client = new sdk.Client()
 const messaging = new sdk.Messaging(client);
 
 const subscriber = await messaging.createSubscriber(
-    '[TOPIC_ID]',         // topicId
-    '[SUBSCRIBER_ID]',    // subscriberId
-    '[TARGET_ID]'         // targetId
+    '<TOPIC_ID>',         // topicId
+    '<SUBSCRIBER_ID>',    // subscriberId
+    '<TARGET_ID>'         // targetId
 );
 ```
 ```deno
@@ -342,9 +342,9 @@ const client = new sdk.Client()
 const messaging = new sdk.Messaging(client);
 
 const subscriber = await messaging.createSubscriber(
-    '[TOPIC_ID]',         // topicId
-    '[SUBSCRIBER_ID]',    // subscriberId
-    '[TARGET_ID]'         // targetId
+    '<TOPIC_ID>',         // topicId
+    '<SUBSCRIBER_ID>',    // subscriberId
+    '<TARGET_ID>'         // targetId
 );
 ```
 ```php
@@ -363,9 +363,9 @@ $client
 $messaging = new Messaging($client);
 
 $subscriber = $messaging->createSubscriber(
-    topicId: '[TOPIC_ID]', 
-    subscriberId: '[SUBSCRIBER_ID]', 
-    targetId: '[TARGET_ID]'
+    topicId: '<TOPIC_ID>', 
+    subscriberId: '<SUBSCRIBER_ID>', 
+    targetId: '<TARGET_ID>'
 );
 ```
 ```python
@@ -380,9 +380,9 @@ client.set_jwt('eyJhbVCJ9.eyJ...')                   # Your secret JSON Web Toke
 messaging = Messaging(client)
 
 subscriber = messaging.create_subscriber(
-    topic_id = '[TOPIC_ID]', 
-    subscriber_id = '[SUBSCRIBER_ID]', 
-    target_id = '[TARGET_ID]'
+    topic_id = '<TOPIC_ID>', 
+    subscriber_id = '<SUBSCRIBER_ID>', 
+    target_id = '<TARGET_ID>'
 )
 ```
 ```ruby
@@ -398,9 +398,9 @@ client = Client.new
 messaging = Messaging.new(client)
 
 subscriber = messaging.create_subscriber(
-    topic_id: '[TOPIC_ID]', 
-    subscriber_id: '[SUBSCRIBER_ID]', 
-    target_id: '[TARGET_ID]'
+    topic_id: '<TOPIC_ID>', 
+    subscriber_id: '<SUBSCRIBER_ID>', 
+    target_id: '<TARGET_ID>'
 )
 ```
 ```csharp
@@ -416,9 +416,9 @@ Client client = new Client()
 Messaging messaging = new Messaging(client);
 
 Subscriber result = await messaging.CreateSubscriber(
-    topicId: "[TOPIC_ID]",
-    subscriberId: "[SUBSCRIBER_ID]",
-    targetId: "[TARGET_ID]");
+    topicId: "<TOPIC_ID>",
+    subscriberId: "<SUBSCRIBER_ID>",
+    targetId: "<TARGET_ID>");
 ```
 ```dart
 import 'package:dart_appwrite/dart_appwrite.dart';
@@ -433,9 +433,9 @@ Client client = Client()
 Messaging messaging = Messaging(client);
 
 Subscriber subscriber result = await messaging.createSubscriber(
-    topicId: '[TOPIC_ID]',
-    subscriberId: '[SUBSCRIBER_ID]',
-    targetId: '[TARGET_ID]',
+    topicId: '<TOPIC_ID>',
+    subscriberId: '<SUBSCRIBER_ID>',
+    targetId: '<TARGET_ID>',
 );
 ```
 ```kotlin
@@ -451,9 +451,9 @@ val client = Client()
 val messaging = new Messaging(client)
 
 val subscriber = messaging.createSubscriber(
-    topicId = "[TOPIC_ID]",
-    subscriberId = "[SUBSCRIBER_ID]",
-    targetId = "[TARGET_ID]"
+    topicId = "<TOPIC_ID>",
+    subscriberId = "<SUBSCRIBER_ID>",
+    targetId = "<TARGET_ID>"
 )
 ```
 ```java
@@ -469,9 +469,9 @@ Client client = new Client()
 Messaging messaging = new Messaging(client);
 
 messaging.createSubscriber(
-    "[TOPIC_ID]",         // topicId
-    "[SUBSCRIBER_ID]",    // subscriberId
-    "[TARGET_ID]"         // targetId
+    "<TOPIC_ID>",         // topicId
+    "<SUBSCRIBER_ID>",    // subscriberId
+    "<TARGET_ID>"         // targetId
     new CoroutineCallback<>((result, error) -> {
         if (error != null) {
             error.printStackTrace();
@@ -493,9 +493,9 @@ let client = Client()
 let messaging = Messaging(client)
 
 let subscriber = try await messaging.createSubscriber(
-    topicId: "[TOPIC_ID]",
-    subscriberId: "[SUBSCRIBER_ID]",
-    targetId: "[TARGET_ID]"
+    topicId: "<TOPIC_ID>",
+    subscriberId: "<SUBSCRIBER_ID>",
+    targetId: "<TARGET_ID>"
 )
 ```
 {% /multicode %}

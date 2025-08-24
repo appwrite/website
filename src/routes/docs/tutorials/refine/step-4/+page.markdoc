@@ -114,7 +114,7 @@ const App: React.FC = () => (
               element={
                 <Authenticated fallback={<Outlet />}>
                   <NavigateToResource 
-                    resource="<APPWRITE_COLLECTION_ID>" 
+                    resource="<APPWRITE_TABLE_ID>" 
                   />
                 </Authenticated>
               }

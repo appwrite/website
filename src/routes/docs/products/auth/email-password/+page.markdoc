@@ -18,7 +18,7 @@ const client = new Client()
 
 const account = new Account(client);
 
-const promise = account.create('[USER_ID]', 'email@example.com', '');
+const promise = account.create('<USER_ID>', 'email@example.com', '');
 
 promise.then(function (response) {
     console.log(response); // Success
@@ -128,8 +128,8 @@ const client = new Client()
     .setProject('<PROJECT_ID>'); // Your project ID
 
 const promise = account.updateRecovery(
-    '[USER_ID]',
-    '[SECRET]',
+    '<USER_ID>',
+    '<SECRET>',
     'password'
 );
 

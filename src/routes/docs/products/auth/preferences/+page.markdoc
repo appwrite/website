@@ -167,7 +167,7 @@ query {
 
 Team preferences let you store settings that apply to an entire team of users. They are well-suited for collaborative features like team-wide themes, notification preferences, or feature toggles.
 
-Team preferences are stored as a JSON object in the team document and are limited to 64kB of data. All team members can access these shared preferences.
+Team preferences are stored as a JSON object in the team row and are limited to 64kB of data. All team members can access these shared preferences.
 
 {% arrow_link href="/docs/products/auth/teams" %}
 Learn more about Appwrite Teams

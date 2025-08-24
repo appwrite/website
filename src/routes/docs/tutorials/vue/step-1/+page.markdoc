@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Build an ideas tracker with Vue.js
-description: Learn to build an idea tracker app with Appwrite and Vue with authentication, databases and collections, queries, pagination, and file storage.
+description: Learn to build an idea tracker app with Appwrite and Vue with authentication, databases and tables, queries, pagination, and file storage.
 step: 1
 back: /docs/tutorials
 framework: Vue
@@ -24,7 +24,7 @@ This tutorial will introduce the following concepts:
 
 1. Setting up your first project
 2. Authentication 
-3. Databases and collections
+3. Databases and tables
 4. Queries and pagination
 
 

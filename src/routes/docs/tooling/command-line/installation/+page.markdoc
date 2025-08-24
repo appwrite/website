@@ -4,7 +4,7 @@ title: Installation
 description: Get started with the Appwrite CLI by following the installation guide. Learn how to set up and configure the CLI on your development environment.
 ---
 
-The [Appwrite Command Line Interface (CLI)](https://github.com/appwrite/sdk-for-cli) is an application that allows you to interact with Appwrite to perform server-side tasks using your terminal. This includes creating and managing projects, managing resources (documents, files, users), creating and deploying Appwrite Functions, and other operations available through Appwrite's API.
+The [Appwrite Command Line Interface (CLI)](https://github.com/appwrite/sdk-for-cli) is an application that allows you to interact with Appwrite to perform server-side tasks using your terminal. This includes creating and managing projects, managing resources (rows, files, users), creating and deploying Appwrite Functions, and other operations available through Appwrite's API.
 
 # Getting started {% #getting-started %}
 
@@ -138,7 +138,7 @@ After you're logged in, the CLI needs to be initialized with your Appwrite proje
 appwrite init project
 ```
 
-This will create your `appwrite.config.json` file, where you will configure your various services like collections, functions, teams, topics, and buckets.
+This will create your `appwrite.config.json` file, where you will configure your various services like tables, functions, teams, topics, and buckets.
 
 ```json
 {
@@ -163,9 +163,9 @@ appwrite client --self-signed true
 
 ## Next steps {% #next-steps %}
 
-You can use the CLI to create and deploy collections, functions, teams, topics, and buckets. Deployment commands allow you to configure your Appwrite project programmatically and replicate functions and collection schemas across Appwrite projects.
+You can use the CLI to create and deploy tables, functions, teams, topics, and buckets. Deployment commands allow you to configure your Appwrite project programmatically and replicate functions and table schemas across Appwrite projects.
 
-[Learn more about deployment](/docs/tooling/command-line/collections)
+[Learn more about deployment](/docs/tooling/command-line/tables)
 
 Besides utility commands, the CLI can be used to execute commands like a Server SDK.
 
