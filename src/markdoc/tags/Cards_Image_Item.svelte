@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { setContext, type Snippet } from 'svelte';
+    import { type Snippet } from 'svelte';
 
     interface CardsImageItemProps {
         href: string;
