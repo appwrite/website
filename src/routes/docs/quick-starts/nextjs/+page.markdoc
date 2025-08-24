@@ -86,7 +86,7 @@ Create or update `app/page.js` file and add the following code to it.
 
 ```js
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { account, ID } from "./appwrite";
 
 const LoginPage = () => {
@@ -95,9 +95,18 @@ const LoginPage = () => {
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
 
+  const getUser = async () => {
+    try {
+      setLoggedInUser(await account.get());
+    } catch (error) {
+      setLoggedInUser(null);
+    }
+  }
+
   const login = async (email, password) => {
     const session = await account.createEmailPasswordSession(email, password);
-    setLoggedInUser(await account.get());
+    console.log(session)
+    getUser()
   };
 
   const register = async () => {
@@ -107,8 +116,13 @@ const LoginPage = () => {
 
   const logout = async () => {
     await account.deleteSession("current");
-    setLoggedInUser(null);
+    getUser()
   };
+
+  useEffect(() => {
+    getUser()
+  }, [])
+
 
   if (loggedInUser) {
     return (
