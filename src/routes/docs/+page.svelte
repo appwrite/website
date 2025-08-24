@@ -94,7 +94,7 @@
                 >Quickstart guides</Button
             >
         </section>
-        <Platforms class="mt-12! p-0! max-md:p-0!" />
+        <Platforms padded={false} class="mt-12! p-0! max-md:p-0!" />
         <section class="mt-12!">
             <h2 class="text-title font-aeonik-pro text-primary max-w-[600px]">Show me some code</h2>
             <p class="text-description mt-4 max-w-[600px]">
