@@ -1,0 +1,19 @@
+{
+    "start_urls": [
+        "https://appwrite.io/docs",
+        "https://appwrite.io/blog",
+        "https://appwrite.io/integrations"
+    ],
+    "meilisearch_url": "https://ms-4f2b8bcd5490-29219.fra.meilisearch.io",
+    "meilisearch_api_key": "b347cbb673ff7c143dfb2dca1dda55c2e849e585",
+    "meilisearch_index_uid": "website",
+    "strategy": "default",
+    "headless": true,
+    "batch_size": 1000,
+    "primary_key": null,
+    "meilisearch_settings": {
+        "searchableAttributes": ["h1", "h2", "h3", "h4", "h5", "h6", "p", "title"],
+        "filterableAttributes": ["urls_tags"],
+        "distinctAttribute": "url"
+    }
+}

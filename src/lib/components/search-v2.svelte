@@ -5,9 +5,10 @@
 
     import { createCombobox, melt } from '@melt-ui/svelte';
 
-    import { type Hit, type Hits, MeiliSearch } from 'meilisearch';
+    import { type Hit, type Hits } from 'meilisearch';
     import { tick } from 'svelte';
     import Icon from './ui/icon';
+    import { meilisearchClient } from '$lib/meilisearch';
 
     interface SearchProps {
         open: boolean;
@@ -18,17 +19,7 @@
     let value = $state<string>('');
     let container: HTMLDivElement;
 
-    // const client = new MeiliSearch({
-    //     host: 'https://ms-4f2b8bcd5490-29219.fra.meilisearch.io',
-    //     apiKey: 'b347cbb673ff7c143dfb2dca1dda55c2e849e585'
-    // });
-
-    const client = new MeiliSearch({
-        host: 'https://search.appwrite.org',
-        apiKey: '10a5fea149bfaff21ef4d7cbe7f8a09d4fab404d6c3510279a365e065f8955a7'
-    });
-
-    const index = client.index<IndexProps>('website');
+    const index = meilisearchClient.index<IndexProps>('website');
 
     interface IndexProps {
         url: string;
@@ -57,7 +48,6 @@
     }
 
     async function handleInput(value: string) {
-        if (value.length < 3) return;
         const response = await handleSearch(value);
         results = response.hits;
     }
@@ -79,7 +69,7 @@
     const recommended: Hits<IndexProps> = [
         {
             uid: 'blog',
-            url: '/block',
+            url: '/blog',
             h1: 'Blog'
         },
         {
