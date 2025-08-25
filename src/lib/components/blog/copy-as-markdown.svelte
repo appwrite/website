@@ -16,7 +16,7 @@
 
 <button
     class={cn(
-        'text-caption hover:text-accent text-secondary -mt-6 ml-4 flex cursor-pointer items-center gap-2.5 rounded-md p-1.5 transition-colors',
+        'text-caption hover:text-accent text-secondary ml-4 flex cursor-pointer items-center gap-2.5 rounded-md p-1.5 transition-colors',
         classNames
     )}
     onclick={copy}
