@@ -21,6 +21,6 @@
     });
 </script>
 
-<div class="border-smooth border-t pt-4" {...$ctx.tabs.getContent(id)}>
+<div class="border-smooth -mt-1.25 border-t pt-4" {...$ctx.tabs.getContent(id)}>
     {@render children()}
 </div>
