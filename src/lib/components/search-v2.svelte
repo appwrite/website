@@ -202,29 +202,31 @@
                                             label: hit.title ?? i.toString()
                                         })}
                                     >
-                                        <div class="web-u-trim-1">
+                                        <div class="line-clamp-1 flex items-center gap-1">
                                             {#if subtitleContent.header}
-                                                <span class="web-u-color-text-secondary"
-                                                    >{subtitleContent.header}</span
+                                                <Icon name="hash" class="size-4" />
+                                                <span class="text-primary">
+                                                    {subtitleContent.subtitle}</span
                                                 >
-                                                {#if subtitleContent.subtitle}
+                                                <!-- {#if subtitleContent.subtitle}
                                                     <span class="web-u-color-text-secondary">
                                                         /
                                                     </span>
-                                                {/if}
+                                                {/if} -->
                                             {/if}
 
-                                            {#if subtitleContent.subtitle}
+                                            <!-- {#if subtitleContent.subtitle}
                                                 <span class="text-primary"
                                                     >{subtitleContent.subtitle}</span
                                                 >
-                                            {/if}
+                                            {/if} -->
                                         </div>
                                         {#if hit.p}
                                             <div
-                                                class="web-u-color-text-secondary w-full overflow-hidden text-left text-ellipsis whitespace-nowrap"
+                                                class="text-secondary line-clamp-1 flex w-full items-center gap-1 overflow-hidden text-left"
                                             >
-                                                {hit.p}
+                                                <Icon name="text" class="size-4 shrink-0" />
+                                                <span class="line-clamp-1">{hit.p}</span>
                                             </div>
                                         {/if}
                                     </a>
