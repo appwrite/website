@@ -27,6 +27,44 @@
 
     async function handleSubmit() {
         error = undefined;
+
+        const trimmedFirstName = firstName.trim();
+        const trimmedLastName = lastName.trim();
+        const trimmedEmail = email.trim();
+        const trimmedCompanyName = companyName.trim();
+        const trimmedCompanyWebsite = companyWebsite.trim();
+        const trimmedUseCase = useCase.trim();
+
+        const validationRules = {
+            required: [
+                { value: trimmedFirstName, name: 'First name' },
+                { value: trimmedLastName, name: 'Last name' },
+                { value: trimmedEmail, name: 'Email' },
+                { value: trimmedCompanyName, name: 'Company name' },
+                { value: trimmedCompanyWebsite, name: 'Company website' },
+                { value: trimmedUseCase, name: 'Use case' }
+            ],
+            textOnly: [
+                { value: trimmedFirstName, name: 'First name' },
+                { value: trimmedLastName, name: 'Last name' },
+                { value: trimmedCompanyName, name: 'Company name' }
+            ]
+        };
+
+        for (const field of validationRules.required) {
+            if (!field.value) {
+                error = `${field.name} cannot be empty or contain only spaces.`;
+                return;
+            }
+        }
+
+        for (const field of validationRules.textOnly) {
+            if (!/\D/.test(field.value)) {
+                error = `${field.name} cannot contain only numbers.`;
+                return;
+            }
+        }
+
         submitting = true;
 
         const cloudEmail = loggedIn && $user?.email ? $user.email : undefined;
@@ -37,15 +75,15 @@
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                email,
-                subject: companyName,
+                email: trimmedEmail,
+                subject: trimmedCompanyName,
                 cloudEmail,
-                companyName,
+                companyName: trimmedCompanyName,
                 companySize,
-                companyWebsite,
-                firstName,
-                lastName,
-                message: useCase,
+                companyWebsite: trimmedCompanyWebsite,
+                firstName: trimmedFirstName,
+                lastName: trimmedLastName,
+                message: trimmedUseCase,
                 ...getReferrerAndUtmSource()
             })
         });
