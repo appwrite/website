@@ -5,10 +5,9 @@
 
     import { createCombobox, melt } from '@melt-ui/svelte';
 
-    import { type Hit, type Hits } from 'meilisearch';
+    import { type Hit, type Hits, MeiliSearch } from 'meilisearch';
     import { tick } from 'svelte';
     import Icon from './ui/icon';
-    import { meilisearchClient } from '$lib/meilisearch';
 
     interface SearchProps {
         open: boolean;
@@ -18,6 +17,11 @@
 
     let value = $state<string>('');
     let container: HTMLDivElement;
+
+    const meilisearchClient = new MeiliSearch({
+        host: 'https://search.appwrite.org',
+        apiKey: '10a5fea149bfaff21ef4d7cbe7f8a09d4fab404d6c3510279a365e065f8955a7'
+    });
 
     const index = meilisearchClient.index<SearchResult>('website');
 
