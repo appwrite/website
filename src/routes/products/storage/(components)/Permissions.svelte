@@ -3,10 +3,10 @@
     import ProductShot from './ProductShot.svelte';
 </script>
 
-<div class="py-20 md:py-40">
+<div class="py-30 md:py-40">
     <div class="container">
         <div
-            class="mx-auto flex max-w-[380px] flex-col items-center justify-center gap-4 text-center"
+            class="mx-auto flex max-w-[500px] flex-col items-center justify-center gap-4 text-center"
         >
             <h2 class="text-title font-aeonik-pro text-primary">
                 Protect your files and set permissions

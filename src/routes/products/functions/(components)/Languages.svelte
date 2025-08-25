@@ -84,7 +84,7 @@
         </div>
 
         <div>
-            <MultiCodeContextless data={codeTopic} selected={Platform.ServerNodeJs} height={450} />
+            <MultiCodeContextless data={codeTopic} selected={Platform.ServerNodeJs} height={375} />
         </div>
     </div>
 </section>
