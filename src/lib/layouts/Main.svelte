@@ -142,6 +142,7 @@
         }
     }
 
+    // weird formatting issues
     $: ($isHeaderHidden, updateSideNav());
 
     const handleNav = () => {
