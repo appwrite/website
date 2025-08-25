@@ -39,6 +39,27 @@
       &:nth-child(odd)  { background-color:hsl(var(--p-table-row-bg-odd-color)); }
       &:nth-child(even) { background-color:hsl(var(--p-table-row-bg-even-color)); }
     }
+
+    a {
+        font-weight: var(--font-weight-medium);
+        text-decoration: underline;
+        text-decoration-thickness: 0.75px;
+        text-decoration-color: color-mix(in srgb, var(--color-tertiary) 50%, transparent);
+        text-underline-offset: 0.3125rem;
+        letter-spacing: var(--tracking-tight);
+        color: var(--color-primary);
+        transition: all 100ms ease-in-out;
+
+        &:hover {
+          color: var(--color-accent-darker);
+          text-decoration-color: var(--color-accent-darker);
+        }
+
+        &:active {
+          color: var(--color-accent);
+          text-decoration-color: var(--color-accent);
+        }
+    }
   }
   &-head-col { padding:pxToRem(12); min-inline-size:pxToRem(180); }
   &-col      {

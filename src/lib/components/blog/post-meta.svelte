@@ -3,6 +3,7 @@
     import { handleCopy } from '$lib/utils/copy';
     import { formatDate } from '$lib/utils/date';
     import type { AuthorData } from '$routes/blog/content';
+    import { page } from '$app/state';
 
     interface Props {
         date?: string;
