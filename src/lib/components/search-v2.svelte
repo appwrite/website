@@ -19,9 +19,9 @@
     let value = $state<string>('');
     let container: HTMLDivElement;
 
-    const index = meilisearchClient.index<IndexProps>('website');
+    const index = meilisearchClient.index<SearchResult>('website');
 
-    interface IndexProps {
+    interface SearchResult {
         url: string;
         title?: string;
         uid?: string;
@@ -36,14 +36,21 @@
         h6?: string;
         p?: string;
         anchor?: string;
+        _formatted?: SearchResult;
     }
 
-    let results = $state<Hits<IndexProps>>([]);
-    let isSearching = $state<boolean>(false);
+    let results = $state<Hits<SearchResult>>([]);
+
+    $inspect(results);
 
     async function handleSearch(value: string) {
         return await index.search(value, {
-            limit: 20
+            limit: 20,
+            attributesToHighlight: ['title', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p'],
+            cropLength: 40,
+            highlightPreTag:
+                '<span class="font-bold text-primary inline-block bg-accent rounded-sm">',
+            highlightPostTag: '</span>'
         });
     }
 
@@ -59,14 +66,14 @@
         }
     }
 
-    function createHref(hit: Hit<IndexProps>): string {
+    function createHref(hit: Hit<SearchResult>): string {
         const anchor = hit.anchor === '#' ? '' : (hit.anchor ?? '');
         const target = hit.url + anchor;
 
         return target.toString();
     }
 
-    const recommended: Hits<IndexProps> = [
+    const recommended: Hits<SearchResult> = [
         {
             uid: 'blog',
             url: '/blog',
@@ -104,7 +111,7 @@
     const {
         elements: { input, menu, option },
         states: { inputValue }
-    } = createCombobox<IndexProps>({
+    } = createCombobox<SearchResult>({
         forceVisible: true,
         preventScroll: false,
         portal: null,
@@ -191,6 +198,8 @@
                         <ul class="mt-2 flex flex-col gap-1">
                             {#each results as hit, i (hit.uid)}
                                 {@const subtitleContent = getSubtitleContent(hit)}
+                                {@const isDocs = hit.urls_tags?.includes('docs')}
+                                {@const isBlog = hit.urls_tags?.includes('blog')}
                                 <li>
                                     <a
                                         data-hit={i}
@@ -202,9 +211,16 @@
                                             label: hit.title ?? i.toString()
                                         })}
                                     >
-                                        <div class="line-clamp-1 flex items-center gap-1">
+                                        <div class="line-clamp-1 flex items-center gap-2">
                                             {#if subtitleContent.header}
-                                                <Icon name="hash" class="size-4" />
+                                                <Icon
+                                                    name={isDocs
+                                                        ? 'docs'
+                                                        : isBlog
+                                                          ? 'blog'
+                                                          : 'integrations'}
+                                                    class="size-5"
+                                                />
                                                 <span class="text-primary">
                                                     {subtitleContent.subtitle}</span
                                                 >
@@ -221,12 +237,13 @@
                                                 >
                                             {/if} -->
                                         </div>
-                                        {#if hit.p}
+                                        {#if hit._formatted}
                                             <div
                                                 class="text-secondary line-clamp-1 flex w-full items-center gap-1 overflow-hidden text-left"
                                             >
-                                                <Icon name="text" class="size-4 shrink-0" />
-                                                <span class="line-clamp-1">{hit.p}</span>
+                                                <span class="line-clamp-1"
+                                                    >{@html hit._formatted.p}</span
+                                                >
                                             </div>
                                         {/if}
                                     </a>
