@@ -1,7 +1,7 @@
 <script lang="ts">
     import { NavigationMenu } from 'bits-ui';
     import MenuWrapper from './menu-wrapper.svelte';
-    import { classNames } from '$lib/utils/classnames';
+    import { cn } from '$lib/utils/cn';
 
     const products: { name: string; href: string; description: string }[] = [
         {

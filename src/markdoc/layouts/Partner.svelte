@@ -4,7 +4,7 @@
     import { Main } from '$lib/layouts';
     import { DEFAULT_HOST } from '$lib/utils/metadata';
 
-    import { classNames } from '$lib/utils/classnames';
+    import { cn } from '$lib/utils/cn';
     import type { Partner } from '$routes/partners/catalog/+page';
     import ContactPartner from '$routes/partners/catalog/(components)/contact-partner.svelte';
     import Icon from '$lib/components/ui/icon';
@@ -52,7 +52,7 @@
 
 <Main>
     <div
-        class={classNames(
+        class={cn(
             'grid-bg border-smooth relative flex items-center border-b px-5 py-28 lg:px-8 xl:px-16',
             'before:from-accent/20 before:absolute before:inset-0 before:-z-1 before:bg-linear-to-tr before:via-transparent before:via-40% before:to-transparent'
         )}
@@ -74,7 +74,7 @@
                 <div class="grid grid-cols-1 gap-10 md:grid-cols-12 md:gap-x-14">
                     <div class="md:col-span-7">
                         <div class="web-article">
-                            <div class="web-article-content">
+                            <div class="web-article-content prose">
                                 {@render children?.()}
                             </div>
                             {#if email}
@@ -86,7 +86,7 @@
                         <h2 class="text-label text-primary font-aeonik-pro">About {title}</h2>
                         <dl class="divide-smooth sticky top-32 mt-10 flex flex-col gap-7 divide-y">
                             <div class="flex flex-col justify-between gap-7 pb-7">
-                                <dt class="text-micro font-aeonik-fono tracking-loose uppercase">
+                                <dt class="text-eyebrow font-aeonik-fono tracking-loose uppercase">
                                     Technologies
                                 </dt>
                                 <dd class="flex flex-wrap gap-2">
@@ -101,7 +101,7 @@
                             </div>
 
                             <div class="flex flex-col justify-between gap-7 pb-7">
-                                <dt class="text-micro font-aeonik-fono tracking-loose uppercase">
+                                <dt class="text-eyebrow font-aeonik-fono tracking-loose uppercase">
                                     Services
                                 </dt>
                                 <dd class="flex flex-wrap gap-2">
@@ -116,14 +116,14 @@
                             </div>
 
                             <div class="flex items-center justify-between gap-7 pb-7">
-                                <dt class="text-micro font-aeonik-fono tracking-loose uppercase">
+                                <dt class="text-eyebrow font-aeonik-fono tracking-loose uppercase">
                                     Category
                                 </dt>
                                 <dd class="text-primary text-caption">{category}</dd>
                             </div>
 
                             <div class="flex items-center justify-between gap-7 pb-7">
-                                <dt class="text-micro font-aeonik-fono tracking-loose uppercase">
+                                <dt class="text-eyebrow font-aeonik-fono tracking-loose uppercase">
                                     Website
                                 </dt>
                                 <dd
@@ -134,7 +134,7 @@
                             </div>
 
                             <div class="flex items-center justify-between gap-7 pb-7">
-                                <dt class="text-micro font-aeonik-fono tracking-loose uppercase">
+                                <dt class="text-eyebrow font-aeonik-fono tracking-loose uppercase">
                                     Partner Level
                                 </dt>
                                 <dd>
@@ -147,7 +147,7 @@
                             </div>
 
                             <div class="flex items-center justify-between gap-8 pb-7">
-                                <dt class="text-micro font-aeonik-fono tracking-loose uppercase">
+                                <dt class="text-eyebrow font-aeonik-fono tracking-loose uppercase">
                                     Regions
                                 </dt>
                                 <dd class="text-primary text-caption">
@@ -156,7 +156,7 @@
                             </div>
 
                             <div class="flex flex-col justify-between gap-7 pb-7">
-                                <dt class="text-micro font-aeonik-fono tracking-loose uppercase">
+                                <dt class="text-eyebrow font-aeonik-fono tracking-loose uppercase">
                                     Languages
                                 </dt>
                                 <dd class="flex flex-wrap gap-2">

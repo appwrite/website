@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { classNames } from '$lib/utils/classnames';
+    import { cn } from '$lib/utils/cn';
     import Hat from '../(assets)/hat.png';
     import Shirt from '../(assets)/shirt.png';
     import Window from '../(assets)/checkout-window.png';
@@ -41,7 +41,10 @@
                 <div
                     class="bg-offset col-span-6 col-start-4 flex h-6 w-full flex-1 items-center justify-center rounded-full backdrop-blur-lg"
                 >
-                    <span class="text-x-micro -tracking-[.045%] text-white">localhost:3000</span>
+                    <span
+                        class="leading-micro tracking-tigher text-[0.625rem] -tracking-[.045%] text-white"
+                        >localhost:3000</span
+                    >
                 </div>
             </header>
 
@@ -55,14 +58,16 @@
                         >
 
                         <ul
-                            class={classNames(
-                                'text-greyscale-600 relative mt-2 px-2 font-mono',
+                            class={cn(
+                                'text-greyscale-600 font-fira-code relative mt-2 px-2',
                                 'after:to-offset after:absolute after:inset-0 after:bg-gradient-to-b after:from-transparent after:via-transparent'
                             )}
                         >
                             {#each Array.from({ length: 15 }) as _, i}
                                 {@const lineNumber = i + 25}
-                                <li class="md:text-x-micro pointer-events-none pl-2 text-[6px]">
+                                <li
+                                    class="leading-micro tracking-tigher pointer-events-none pl-2 text-[6px] md:text-[0.625rem]"
+                                >
                                     {lineNumber}
                                 </li>
                             {/each}
@@ -89,7 +94,8 @@
                                         class="size-12 rounded-md"
                                     />
                                     <div class="ml-4 flex flex-col pt-0.5">
-                                        <span class="text-x-micro font-medium text-black"
+                                        <span
+                                            class="leading-micro tracking-tigher text-[0.625rem] font-medium text-black"
                                             >{product.name}</span
                                         >
                                         <span class="text-secondary text-[9px]"
@@ -98,7 +104,7 @@
                                     </div>
                                 </div>
                                 <div
-                                    class="text-primary text-micro grid grid-cols-3 place-items-center items-center divide-x divide-black/8 rounded-md border border-black/8 bg-[#19191C]/4 text-center"
+                                    class="text-primary text-eyebrow grid grid-cols-3 place-items-center items-center divide-x divide-black/8 rounded-md border border-black/8 bg-[#19191C]/4 text-center"
                                 >
                                     <button class="web-icon-minus size-6" aria-label="Remove item"
                                     ></button>
@@ -109,7 +115,7 @@
                             </div>
                         {/each}
                         <div
-                            class="text-primary text-x-micro flex w-full items-center justify-between rounded-lg border border-black/8 bg-[#19191C]/4 px-2 py-1.5 font-medium"
+                            class="text-primary leading-micro tracking-tigher flex w-full items-center justify-between rounded-lg border border-black/8 bg-[#19191C]/4 px-2 py-1.5 text-[0.625rem] font-medium"
                         >
                             <span>Coupon code</span>
                             <span class="text-[#7C67FE]">Apply</span>
@@ -142,25 +148,43 @@
 
                         <div class="space-y-1.5 px-1">
                             <div class="flex justify-between">
-                                <span class="text-secondary text-x-micro">Subtotal</span>
-                                <span class="text-primary text-x-micro">$41.00</span>
+                                <span
+                                    class="text-secondary leading-micro tracking-tigher text-[0.625rem]"
+                                    >Subtotal</span
+                                >
+                                <span
+                                    class="text-primary leading-micro tracking-tigher text-[0.625rem]"
+                                    >$41.00</span
+                                >
                             </div>
                             <div class="flex justify-between">
-                                <span class="text-secondary text-x-micro">Delivery</span>
-                                <span class="text-primary text-x-micro">$5.90</span>
+                                <span
+                                    class="text-secondary leading-micro tracking-tigher text-[0.625rem]"
+                                    >Delivery</span
+                                >
+                                <span
+                                    class="text-primary leading-micro tracking-tigher text-[0.625rem]"
+                                    >$5.90</span
+                                >
                             </div>
                             <div class="flex justify-between border-b border-black/8 pb-2">
-                                <span class="text-secondary text-x-micro">Discount</span>
-                                <span class="text-primary text-x-micro">-$14.07</span>
+                                <span
+                                    class="text-secondary leading-micro tracking-tigher text-[0.625rem]"
+                                    >Discount</span
+                                >
+                                <span
+                                    class="text-primary leading-micro tracking-tigher text-[0.625rem]"
+                                    >-$14.07</span
+                                >
                             </div>
 
                             <div class="flex justify-between font-semibold">
-                                <span class="text-secondary text-micro">Total</span>
-                                <span class="text-primary text-micro">$32.83</span>
+                                <span class="text-secondary text-eyebrow">Total</span>
+                                <span class="text-primary text-eyebrow">$32.83</span>
                             </div>
 
                             <button
-                                class="text-micro mt-2 w-full rounded-lg bg-[#7C67FE] py-1.5 font-medium text-white"
+                                class="text-eyebrow mt-2 w-full rounded-lg bg-[#7C67FE] py-1.5 font-medium tracking-tighter text-white"
                                 >Place order</button
                             >
                         </div>
@@ -172,7 +196,7 @@
             <h2 class="text-title text-primary font-aeonik-pro my-4 text-pretty">
                 Develop your functions locally
             </h2>
-            <p class="text-body text-secondary font-medium text-pretty">
+            <p class="text-main-body text-secondary font-medium text-pretty">
                 Code and test your functions locally with Appwrite Functions, ensuring full control
                 over your development.
             </p>

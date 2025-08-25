@@ -9,7 +9,7 @@ With the methods in the `useIdeas` composable we can get some ideas to the home 
 We will use it in a form component so the logged in users can add their ideas, and in a list component to render the ten most recent ideas.
 We start with building the form.
 
-# Idea form {% #idea-form %}
+## Idea form {% #idea-form %}
 
 On the home page, the logged in users should be able to add their ideas to the Appwrite database.
 The form need a text field for filling in the title, a textarea for the description and a submit button.
@@ -110,7 +110,7 @@ article.box {
 </style>
 ````
 
-# Ideas list {% #ideas-list %}
+## Ideas list {% #ideas-list %}
 Now that we can get some ideas to show, we go on to build the component for the list of ideas.
 
 Once again, we need to take a moment to think about how this component should work.
