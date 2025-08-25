@@ -12,27 +12,25 @@ product:
     avatar: '/images/partners/avatars/transverse-digital.png'
     vendor: Transverse Digital
     description: Transverse Digital is a technology company specializing in building robust digital solutions powered by Appwrite as our core backend infrastructure.
-frameworks: 
+technologies: 
     - Go Lang
-    For programming:
-		- JavaScript/TypeScript
-		- Java
-		- Python
-		- C#
-		- Next.js
-		- React
-		- Vue.js
-		- Angular
-		- Mobile Development:
-		- React Native
-		- Ionic
-		- Flutter
-		- Swift
-		- Unity with C#
-		- Arduino
-		- Python for Pi
-		- Node.js
-capabilities:
+    - JavaScript/TypeScript
+    - Java
+    - Python
+    - C#
+    - Next.js
+    - React
+    - Vue.js
+    - Angular
+    - React Native
+    - Ionic
+    - Flutter
+    - Swift
+    - Unity with C#
+    - Arduino
+    - Python for Pi
+    - Node.js
+services:
     - Mobile App Development
     - Web Development
     - Software as a Service (SaaS)

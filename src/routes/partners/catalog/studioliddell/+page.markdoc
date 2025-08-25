@@ -11,10 +11,10 @@ category: agency
 website: https://studioliddell.com
 email: mailto:bizdev@studioliddell.com
 product: 
-    avatar: '/images/partners/avatars/studioliddel.png'
+    avatar: '/images/partners/avatars/studioliddell.png'
     vendor: Studio Liddell
     description: Studio Liddell is a premier digital solutions company, enhancing brands and online presence through captivating design, immersive VR and AR experiences, innovative apps, and strategic digital initiatives.
-frameworks: 
+technologies: 
     - Go Lang
     - Render
     - iOS
@@ -25,7 +25,7 @@ frameworks:
     - Nuxt
     - SvelteKit
     - Native Apps
-capabilities:
+services:
     - Mobile App Development
     - Websites
     - AR
