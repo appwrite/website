@@ -7,24 +7,30 @@
 
     import { type Hit, type Hits, MeiliSearch } from 'meilisearch';
     import { tick } from 'svelte';
+    import Icon from './ui/icon';
 
-    export let open = true;
+    interface SearchProps {
+        open: boolean;
+    }
 
-    let value: string;
+    let { open = $bindable(false) }: SearchProps = $props();
+
+    let value = $state<string>('');
     let container: HTMLDivElement;
 
+    // const client = new MeiliSearch({
+    //     host: 'https://ms-4f2b8bcd5490-29219.fra.meilisearch.io',
+    //     apiKey: 'b347cbb673ff7c143dfb2dca1dda55c2e849e585'
+    // });
+
     const client = new MeiliSearch({
-        host: 'https://ms-4f2b8bcd5490-29219.fra.meilisearch.io',
-        apiKey: 'b347cbb673ff7c143dfb2dca1dda55c2e849e585'
+        host: 'https://search.appwrite.org',
+        apiKey: '10a5fea149bfaff21ef4d7cbe7f8a09d4fab404d6c3510279a365e065f8955a7'
     });
 
-    // const client = new MeiliSearch({
-    //     host: 'https://search.appwrite.org',
-    //     apiKey: '10a5fea149bfaff21ef4d7cbe7f8a09d4fab404d6c3510279a365e065f8955a7'
-    // });
-    const index = client.index<Props>('website');
+    const index = client.index<IndexProps>('website');
 
-    type Props = {
+    interface IndexProps {
         url: string;
         title?: string;
         uid?: string;
@@ -39,23 +45,21 @@
         h6?: string;
         p?: string;
         anchor?: string;
-    };
+    }
 
-    let results: Hits<Props> = [];
+    let results = $state<Hits<IndexProps>>([]);
+    let isSearching = $state<boolean>(false);
 
-    async function search(value: string) {
-        return index.search(value, {
+    async function handleSearch(value: string) {
+        return await index.search(value, {
             limit: 20
         });
     }
 
     async function handleInput(value: string) {
-        if (!value) {
-            results = [];
-        } else {
-            const response = await search(value);
-            results = response.hits;
-        }
+        if (value.length < 3) return;
+        const response = await handleSearch(value);
+        results = response.hits;
     }
 
     function handleExit(event: MouseEvent & { currentTarget: EventTarget & HTMLDivElement }) {
@@ -65,37 +69,28 @@
         }
     }
 
-    function createHref(hit: Hit<Props>): string {
+    function createHref(hit: Hit<IndexProps>): string {
         const anchor = hit.anchor === '#' ? '' : (hit.anchor ?? '');
         const target = hit.url + anchor;
 
         return target.toString();
     }
 
-    const recommended: Hits<Props> = [
+    const recommended: Hits<IndexProps> = [
         {
-            uid: 'recommended-references-account',
-            url: '/docs/references/cloud/client-web/account',
-            h1: 'API reference',
-            h2: 'Account'
+            uid: 'blog',
+            url: '/block',
+            h1: 'Blog'
         },
         {
-            uid: 'recommended-references-teams',
-            url: '/docs/references/cloud/client-web/teams',
-            h1: 'API reference',
-            h2: 'Teams'
+            uid: 'docs',
+            url: '/docs',
+            h1: 'Docs'
         },
         {
-            uid: 'recommended-references-databases',
-            url: '/docs/references/cloud/client-web/databases',
-            h1: 'API reference',
-            h2: 'Databases'
-        },
-        {
-            uid: 'recommended-references-storage',
-            url: '/docs/references/cloud/client-web/storage',
-            h1: 'API reference',
-            h2: 'Storage'
+            uid: 'pricing',
+            url: '/pricing',
+            h1: 'Pricing'
         }
     ];
 
@@ -103,18 +98,23 @@
         open = false;
     });
 
-    $: handleInput(value);
+    $effect(() => {
+        handleInput(value);
+    });
 
     let inputEl: HTMLInputElement;
-    $: if (open && inputEl) {
-        inputEl.value = '';
-        inputEl?.focus();
-    }
+
+    $effect(() => {
+        if (open && inputEl) {
+            inputEl.value = '';
+            inputEl?.focus();
+        }
+    });
 
     const {
         elements: { input, menu, option },
         states: { inputValue }
-    } = createCombobox<Props>({
+    } = createCombobox<IndexProps>({
         forceVisible: true,
         preventScroll: false,
         portal: null,
@@ -152,8 +152,8 @@
 
 <svelte:window on:keydown={handleKeypress} />
 
-<!-- svelte-ignore a11y-no-static-element-interactions -->
-<!-- svelte-ignore a11y-click-events-have-key-events -->
+<!-- svelte-ignore a11y_click_events_have_key_events -->
+<!-- svelte-ignore a11y_no_static_element_interactions -->
 <div
     class="wrapper fixed inset-0 flex items-center justify-center p-0"
     data-visible={open ? true : undefined}
@@ -162,24 +162,26 @@
     style:backdrop-filter="blur(15px)"
     style:-webkit-backdrop-filter="blur(15px)"
     bind:this={container}
-    on:click={handleExit}
+    onclick={handleExit}
 >
-    <div class="web-input-text-search-wrapper web-u-margin-inline-20 w-full max-w-[680px]">
+    <div
+        class="web-input-text-search-wrapper web-u-margin-inline-20 w-full max-w-[680px] outline-0!"
+    >
         <span class="web-icon-search z-[5]" aria-hidden="true" style="inset-block-start:0.9rem"
         ></span>
         <div id="searchbox"></div>
 
         <input
-            class="web-input-button bg-white-800/75! relative z-1 !rounded-b-none !pl-10"
+            class="web-input-button bg-white-800/75! border-offset! relative z-1 !rounded-b-none !pl-10 shadow-none! outline-0! focus:placeholder:text-white!"
             type="text"
             id="search"
             bind:value
-            placeholder="Search in docs"
+            placeholder="Search..."
             style:inline-size="100%"
             use:melt={$input}
             bind:this={inputEl}
             data-hit="-1"
-            on:keydown={(e) => {
+            onkeydown={(e) => {
                 if (e.key === 'Tab') {
                     e.preventDefault();
                 }
@@ -190,7 +192,7 @@
             use:melt={$menu}
             style="--card-padding-mobile:1rem; border-radius:0 0 0.5rem 0.5rem;"
         >
-            {#if value}
+            {#if value && value.length >= 3}
                 <section>
                     {#if results.length > 0}
                         <h6 class="text-eyebrow font-aeonik-fono uppercase">
@@ -240,39 +242,40 @@
                             {/each}
                         </ul>
                     {:else}
-                        <p class="text-caption">
-                            No results found for <span class="font-bold">{value}</span>
+                        <p class="text-caption py-4 text-center">
+                            No results found for <span class="font-bold">"{value}"</span>
                         </p>
                     {/if}
                 </section>
+            {:else}
+                <section>
+                    <h6 class="text-eyebrow font-aeonik-fono pl-1 uppercase">Suggestions</h6>
+                    <ul class="mt-2 flex flex-col gap-1">
+                        {#each recommended as hit, i (hit.uid)}
+                            {@const index = i + (results.length ? results.length : 0)}
+                            <li>
+                                <a
+                                    data-hit={index}
+                                    href={createHref(hit)}
+                                    use:melt={$option({
+                                        value: hit,
+                                        label: hit.title ?? i.toString()
+                                    })}
+                                    class="text-caption group data-[highlighted]:bg-smooth data-[highlighted]:text-primary text-secondary focus:bg-smooth flex min-w-full items-center justify-between rounded-lg px-3 py-2.5 transition-colors"
+                                >
+                                    <div class="line-clamp-1">
+                                        <span class="text-secondary">{hit.h1}</span>
+                                    </div>
+                                    <Icon
+                                        name="arrow-right"
+                                        class="text-secondary size-4 transition-transform group-hover:translate-x-0.5 group-data-[highlighted]:translate-x-0.5"
+                                    />
+                                </a>
+                            </li>
+                        {/each}
+                    </ul>
+                </section>
             {/if}
-            <section>
-                <h6 class="text-eyebrow font-aeonik-fono uppercase">Recommended</h6>
-                <ul class="mt-2 flex flex-col gap-1">
-                    {#each recommended as hit, i (hit.uid)}
-                        {@const index = i + (results.length ? results.length : 0)}
-                        <li>
-                            <a
-                                data-hit={index}
-                                href={createHref(hit)}
-                                use:melt={$option({
-                                    value: hit,
-                                    label: hit.title ?? i.toString()
-                                })}
-                                class="web-button text-caption is-text web-u-padding-block-4 web-u-cross-start flex min-w-full flex-col gap-2"
-                            >
-                                <div class="web-u-trim-1">
-                                    <span class="web-u-color-text-secondary">{hit.h1}</span>
-                                    {#if hit.h2}
-                                        <span class="web-u-color-text-secondary"> / </span>
-                                        <span class="text-primary">{hit.h2}</span>
-                                    {/if}
-                                </div>
-                            </a>
-                        </li>
-                    {/each}
-                </ul>
-            </section>
         </div>
     </div>
 </div>
