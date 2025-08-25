@@ -18,19 +18,20 @@ appwrite init functions
 
 # Pull function {% #pull-function %}
 
-You can also pull your existing Appwrite Functions from the Appwrite Console using the `pull` command in the folder containing your `appwrite.json` file.
+You can also pull your existing Appwrite Functions from the Appwrite Console using the `pull` command in the folder containing your `appwrite.config.json` file.
 
 ```sh
 appwrite pull functions
 ```
 
-# appwrite.json {% #appwritejson %}
+# appwrite.config.json {% #appwritejson %}
 
-After [initializing](/docs/tooling/command-line/installation#initialization) your Appwrite project and pulling your existing functions, your `appwrite.json` file should look similar to the following:
+After [initializing](/docs/tooling/command-line/installation#initialization) your Appwrite project and pulling your existing functions, your `appwrite.config.json` file should look similar to the following:
 
 ```json
 {
     "projectId": "<PROJECT_ID>",
+    "endpoint": "https://<REGION>.cloud.appwrite.io/v1",
     "functions": [
         {
             "$id": "<FUNCTION_ID>",

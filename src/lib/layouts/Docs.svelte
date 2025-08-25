@@ -74,6 +74,7 @@
             showReferences: false,
             showSidenav: false
         }));
+        document.body.style.overflow = '';
     });
 
     const key = page.route.id?.includes('tutorials') ? TUT_CTX_KEY : CTX_KEY;
@@ -94,7 +95,7 @@
 <svelte:window onkeydown={handleKeydown} />
 
 <div class="relative" data-variant={$layoutState.currentVariant}>
-    <section class="web-mobile-header is-transparent">
+    <section class="web-mobile-header is-transparent flex! lg:hidden!">
         <div class="web-mobile-header-start">
             <a href="/" aria-label="homepage">
                 <img
@@ -131,7 +132,7 @@
         </div>
     </section>
     <header
-        class="web-main-header {isReferences ? 'is-reference' : 'is-docs'}"
+        class="web-main-header hidden lg:block! {isReferences ? 'is-reference' : 'is-docs'}"
         class:is-transparent={variant !== 'expanded'}
     >
         <div class="web-main-header-wrapper">

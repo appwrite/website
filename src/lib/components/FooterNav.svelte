@@ -39,7 +39,7 @@
                 { label: 'Functions', href: '/products/functions' },
                 { label: 'Messaging', href: '/products/messaging' },
                 { label: 'Realtime', href: '/docs/apis/realtime' },
-                { label: 'Hosting', href: '/docs/products/sites' },
+                { label: 'Hosting', href: '/products/sites' },
                 { label: 'Network', href: '/docs/products/network' }
             ],
             Learn: [
@@ -99,7 +99,7 @@
 
 <nav
     aria-label="Footer"
-    class="web-footer-nav relative container mt-24"
+    class="web-footer-nav relative mt-24"
     class:web-u-sep-block-start={!noBorder}
 >
     <img class="web-logo" src="/images/logos/appwrite.svg" alt="appwrite" height="24" width="130" />
@@ -134,7 +134,7 @@
             >
                 <h5 use:melt={$heading({ level: 5 })}>
                     <button
-                        class="web-footer-nav-button web-is-only-mobile"
+                        class="web-footer-nav-button web-is-only-mobile px-0!"
                         use:melt={$trigger({ value: title })}
                     >
                         <span class="text-caption font-medium uppercase">{title}</span>

@@ -18,7 +18,7 @@
 
 <Main>
     <Hero />
-    <Platforms />
+    <Platforms headline="Designed for the tools you work with" />
     <LogoList
         class="border-smooth border-b"
         title="Loved by developers from the world's leading organizations"
@@ -33,7 +33,7 @@
         that you need with Appwrite.</Pullquote
     >
     <CaseStudies />
-    <Features />
+    <Features theme="light" />
     <div class="light bg-[#EDEDF0]">
         <Map theme="light" />
         <Scale
@@ -43,28 +43,6 @@
                 company: 'K-Collect',
                 image: '/images/testimonials/ryan-oconner-testimonial.png'
             }}
-            stats={[
-                {
-                    number: 50,
-                    suffix: 'K+',
-                    description: 'GitHub stars'
-                },
-                {
-                    number: 300,
-                    suffix: '+',
-                    description: 'PoP locations'
-                },
-                {
-                    number: 300,
-                    suffix: 'K+',
-                    description: 'developers'
-                },
-                {
-                    number: 200,
-                    suffix: 'B+',
-                    description: 'monthly database operations'
-                }
-            ]}
         >
             The switch to using Appwrite brought
             <span class="text-primary">infinite value that I'm still discovering today.</span>

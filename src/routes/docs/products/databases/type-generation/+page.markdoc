@@ -1,14 +1,14 @@
 ---
 layout: article
-title: Type Generation
+title: Type generation
 description: Generate types from your Appwrite database schema. Learn how to use the Appwrite CLI to create and manage your types effectively.
 ---
 
 The Appwrite CLI provides a simple way to generate types based on your Appwrite database schema. This feature is particularly useful for developers who want to ensure type safety in their applications by generating type definitions that match their database collections and attributes.
 
-To generate types, the CLI reads the database schema from your project's `appwrite.json` file and generates type definitions for each collection. 
+To generate types, the CLI reads the database schema from your project's `appwrite.config.json` file and generates type definitions for each collection.
 
-## Generating Types
+## Generating types
 
 First, ensure you have the [Appwrite CLI](/docs/tooling/command-line/installation#getting-started) installed and your project is [initialised](/docs/tooling/command-line/installation#initialization). Then, run the following command in your terminal to pull collections from your Appwrite project:
 
@@ -27,15 +27,17 @@ The following options are currently available:
 | Option | Description |
 |--------|-------------|
 | `--language` or `-l` |  The programming language for which types can be generated. Choices include `ts`, `js`, `php`, `kotlin`, `swift`, `java`, `dart`, `auto`. The CLI will use `auto` as the default option if this option is skipped. |
+| `--strict` or `-s` |  Enables strict type generation. This option ensures that all the attributes follow language conventions, even if that leads to mismatches with the schema defined in your Appwrite console. |
 | `--help` or `-h` | Displays help information for the command. |
 
-## Example Usage
+## Example usage
 
-Suppose you want to generate types for a collection with data on books with the following schema from your `appwrite.json` file:
+Suppose you want to generate types for a collection with data on books with the following schema from your `appwrite.config.json` file:
 
 ```json
 {
     "projectId": "682ca9a50004cf4b330f",
+    "endpoint": "https://<REGION>.cloud.appwrite.io/v1",
     "projectName": "Appwrite project",
     "databases": [
         {
@@ -124,7 +126,7 @@ appwrite types --language ts ./types
 This will generate the following types in the `./types` sub-directory of your project:
 
 ```ts
-import { Models } from 'appwrite';
+import { type Models } from 'appwrite';
 
 export enum Category {
   FICTION = "fiction",

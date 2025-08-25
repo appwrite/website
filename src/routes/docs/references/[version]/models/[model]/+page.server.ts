@@ -2,7 +2,7 @@ import {
     getApi,
     getSchema,
     type AppwriteSchemaObject,
-    generateExample,
+    getExample,
     type Property,
     ModelType
 } from '$lib/utils/specs';
@@ -95,7 +95,7 @@ export const load: PageServerLoad = async ({ params }) => {
     for (const type of Object.values(ModelType)) {
         examples.push({
             type,
-            example: generateExample(schema, api, type)
+            example: getExample(schema, api, type)
         });
     }
 

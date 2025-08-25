@@ -28,8 +28,8 @@ importers:
         specifier: ~0.26.0
         version: 0.26.0
       '@appwrite.io/repo':
-        specifier: github:appwrite/appwrite#main
-        version: https://codeload.github.com/appwrite/appwrite/tar.gz/e56c03a007ba65345b73892f90b0a968cd58a595
+        specifier: github:appwrite/appwrite#1.7.x
+        version: https://codeload.github.com/appwrite/appwrite/tar.gz/6a3ea1feec0d6a8dfc96874c3809dbefbe68d2b2
       '@eslint/compat':
         specifier: ^1.2.7
         version: 1.2.7(eslint@9.22.0(jiti@2.4.2))
@@ -42,6 +42,9 @@ importers:
       '@internationalized/date':
         specifier: 3.5.0
         version: 3.5.0
+      '@lucide/svelte':
+        specifier: ^0.539.0
+        version: 0.539.0(svelte@5.25.6)
       '@melt-ui/pp':
         specifier: ^0.3.2
         version: 0.3.2(@melt-ui/svelte@0.86.6(svelte@5.25.6))(svelte@5.25.6)
@@ -69,6 +72,9 @@ importers:
       '@tailwindcss/postcss':
         specifier: ^4.1.4
         version: 4.1.4
+      '@tanstack/svelte-form':
+        specifier: ^1.19.1
+        version: 1.19.1(svelte@5.25.6)
       '@turf/boolean-point-in-polygon':
         specifier: ^7.2.0
         version: 7.2.0
@@ -296,8 +302,8 @@ packages:
   '@appwrite.io/pink@0.26.0':
     resolution: {integrity: sha512-iPeGE56pauzxuIXt15ZswjKCErwp3QdF3XOlJZfyYY7J2nirra85JNTL+3lWuFIf8yYWL7NbvCjhf8ig79TgwA==}
 
-  '@appwrite.io/repo@https://codeload.github.com/appwrite/appwrite/tar.gz/e56c03a007ba65345b73892f90b0a968cd58a595':
-    resolution: {tarball: https://codeload.github.com/appwrite/appwrite/tar.gz/e56c03a007ba65345b73892f90b0a968cd58a595}
+  '@appwrite.io/repo@https://codeload.github.com/appwrite/appwrite/tar.gz/6a3ea1feec0d6a8dfc96874c3809dbefbe68d2b2':
+    resolution: {tarball: https://codeload.github.com/appwrite/appwrite/tar.gz/6a3ea1feec0d6a8dfc96874c3809dbefbe68d2b2}
     version: 0.0.0
 
   '@asamuzakjp/css-color@3.2.0':
@@ -871,6 +877,11 @@ packages:
 
   '@jridgewell/trace-mapping@0.3.25':
     resolution: {integrity: sha512-vNk6aEwybGtawWmy/PzwnGDOjCkLWSD2wqvjGGAgOAwCGWySYXfYoxt00IJkTF+8Lb57DwOb3Aa0o9CApepiYQ==}
+
+  '@lucide/svelte@0.539.0':
+    resolution: {integrity: sha512-OWhw4BhHO+owmOE/ijSNLnw/flbW2/DsLzMHAeM8oEjLsO0xE6glX0ADCDwxKItTs5ZJYssfyGNXxMXrea173w==}
+    peerDependencies:
+      svelte: ^5
 
   '@markdoc/markdoc@0.5.1':
     resolution: {integrity: sha512-W2apYOglq0hOnvWbhE70yl6V9++FG+YPFKNHmgiSjv0HTmdJaMLt+NA1LMqoH5LasSiTI7R0yVc5ofjaFh39Pg==}
@@ -1456,6 +1467,22 @@ packages:
   '@tailwindcss/postcss@4.1.4':
     resolution: {integrity: sha512-bjV6sqycCEa+AQSt2Kr7wpGF1bOZJ5wsqnLEkqSbM/JEHxx/yhMH8wHmdkPyApF9xhHeMSwnnkDUUMMM/hYnXw==}
 
+  '@tanstack/form-core@1.19.1':
+    resolution: {integrity: sha512-1c+/8ZlhuNroy6J9cMR+04K3muVO9ht3YZ4TNLlnBQjijv3nySugetzwW2O3Z77OI8FOJMSyUDsh8A9nB36f+g==}
+
+  '@tanstack/store@0.7.2':
+    resolution: {integrity: sha512-RP80Z30BYiPX2Pyo0Nyw4s1SJFH2jyM6f9i3HfX4pA+gm5jsnYryscdq2aIQLnL4TaGuQMO+zXmN9nh1Qck+Pg==}
+
+  '@tanstack/svelte-form@1.19.1':
+    resolution: {integrity: sha512-C+e81FgP6pLEtcXuf613lM3QZG91r4vtikBz4VG+OyzqwcPH961Y4Qes5CF7IOXUrzaiqIR5K0tG5IL0rCMTUw==}
+    peerDependencies:
+      svelte: ^5.0.0
+
+  '@tanstack/svelte-store@0.7.3':
+    resolution: {integrity: sha512-/NZGI42mT0V0WRmeJKymv1Oftp3ZtgDOB57Vp79g9JZACqeLGmCcJwWWSwUEdul41XJ4Q4o9XHRIUCtCEbKAfA==}
+    peerDependencies:
+      svelte: ^5.0.0
+
   '@tokenizer/token@0.3.0':
     resolution: {integrity: sha512-OvjF+z51L3ov0OyAU0duzsYuvO01PH7x4t6DJx+guahgTnBHkhJdG7soQeTSFLWN3efnHyibZ4Z8l2EuWwJN3A==}
 
@@ -1677,8 +1704,8 @@ packages:
     resolution: {integrity: sha512-RZNwNclF7+MS/8bDg70amg32dyeZGZxiDuQmZxKLAlQjr3jGyLx+4Kkk58UO7D2QdgFIQCovuSuZESne6RG6XQ==}
     engines: {node: '>= 6.0.0'}
 
-  agent-base@7.1.3:
-    resolution: {integrity: sha512-jRR5wdylq8CkOe6hei19GGZnxM6rBGwFl3Bg0YItGDimvjGtAvdZk4Pu6Cl4u4Igsws4a1fd1Vq3ezrhn4KmFw==}
+  agent-base@7.1.4:
+    resolution: {integrity: sha512-MnA+YT8fwfJPgBx3m60MNqakm30XOkyIoH1y6huTQvC0PwZG7ki8NacLBcrPbNoo8vEZy7Jpuk7+jMO+CUovTQ==}
     engines: {node: '>= 14'}
 
   agentkeepalive@4.6.0:
@@ -1987,8 +2014,8 @@ packages:
   cssom@0.5.0:
     resolution: {integrity: sha512-iKuQcq+NdHqlAcwUY0o/HL69XQrUaQdMjmStJ8JFmUaiiQErlhrmuigkg/CU4E2J0IyUKUrMAgl36TvN67MqTw==}
 
-  cssstyle@4.3.1:
-    resolution: {integrity: sha512-ZgW+Jgdd7i52AaLYCriF8Mxqft0gD/R9i9wi6RWBhs1pqdPEzPjym7rvRKi397WmQFf3SlyUsszhw+VVCbx79Q==}
+  cssstyle@4.6.0:
+    resolution: {integrity: sha512-2z+rWdzbbSZv6/rhtvzvqeZQHrBaqgogqt85sqFNbabZOuFbCVFb8kPeEtZjiKkbrm395irpNKiYeFeLiQnFPg==}
     engines: {node: '>=18'}
 
   cubic2quad@1.2.1:
@@ -2023,8 +2050,8 @@ packages:
       supports-color:
         optional: true
 
-  decimal.js@10.5.0:
-    resolution: {integrity: sha512-8vDa8Qxvr/+d94hSh5P3IJwI5t8/c0KsMp+g8bNw9cY2icONa5aPfvKeieW1WlG0WQYwwhJ7mjui2xtiePQSXw==}
+  decimal.js@10.6.0:
+    resolution: {integrity: sha512-YpgQiITW3JXGntzdUmyUR1V812Hn8T1YVXhCu+wO3OpS4eU9l4YdD3qjyiKdV6mvV29zapkMeD390UVEf2lkUg==}
 
   deep-eql@5.0.2:
     resolution: {integrity: sha512-h5k/5U50IJJFpzfL6nO9jaaumfjO/f2NjK/oYB2Djzm4p9L+3T9qWpZqZ2hAbLPuuYq9wrU08WQyBTL5GbPk5Q==}
@@ -2161,6 +2188,10 @@ packages:
 
   entities@6.0.0:
     resolution: {integrity: sha512-aKstq2TDOndCn4diEyp9Uq/Flu2i1GlLkc6XIDQSDMuaFE3OPW5OphLCyQ5SpSJZTb4reN+kTcYru5yIfXoRPw==}
+    engines: {node: '>=0.12'}
+
+  entities@6.0.1:
+    resolution: {integrity: sha512-aN97NXWF6AWBTahfVOIrB/NShkzi5H7F9r1s9mD3cDj4Ko5f2qhhVoYMibXF7GlLveb/D2ioWay8lxI97Ven3g==}
     engines: {node: '>=0.12'}
 
   env-paths@2.2.1:
@@ -3123,8 +3154,8 @@ packages:
   number-flow@0.5.7:
     resolution: {integrity: sha512-P83Y9rBgN3Xpz5677YDNtuQHZpIldw6WXeWRg0+edrfFthhV7QqRdABas5gtu07QPLvbA8XhfO69rIvbKRzYIg==}
 
-  nwsapi@2.2.20:
-    resolution: {integrity: sha512-/ieB+mDe4MrrKMT8z+mQL8klXydZWGR5Dowt4RAGKbJ3kIGEx3X4ljUo+6V73IXtUPWgfOlU5B9MlGxFO5T+cA==}
+  nwsapi@2.2.21:
+    resolution: {integrity: sha512-o6nIY3qwiSXl7/LuOU0Dmuctd34Yay0yeuZRLFmDPrrdHpXKFndPj3hM+YEPVHYC5fx2otBx4Ilc/gyYSAUaIA==}
 
   object-assign@4.1.1:
     resolution: {integrity: sha512-rJgTQnkUnH1sFw8yT6VSU3zD3sWmu6sZhIseY8VX+GRu3P6F7Fu+JNDoXfklElbLJSnc3FUQHVe4cU5hj+BcUg==}
@@ -4116,8 +4147,8 @@ packages:
   wrappy@1.0.2:
     resolution: {integrity: sha512-l4Sp/DRseor9wL6EvV2+TuQn63dMkPjZ/sp9XkghTEbV9KlPS1xUsZ3u7/IQO4wxtcFB4bgpQPRcR3QCvezPcQ==}
 
-  ws@8.18.2:
-    resolution: {integrity: sha512-DMricUmwGZUVr++AEAe2uiVM7UoO9MAVZMDu05UQOaUII0lp+zOzLLU4Xqh/JvTqklB1T4uELaaPBKyjE1r4fQ==}
+  ws@8.18.3:
+    resolution: {integrity: sha512-PEIGCY5tSlUt50cqyMXfCzX+oOPqN0vuGqWzbcJ2xvnkzkq46oOpz7dQaTDBdfICb4N14+GARUDw2XV2N4tvzg==}
     engines: {node: '>=10.0.0'}
     peerDependencies:
       bufferutil: ^4.0.1
@@ -4252,7 +4283,7 @@ snapshots:
       normalize.css: 8.0.1
       the-new-css-reset: 1.11.3
 
-  '@appwrite.io/repo@https://codeload.github.com/appwrite/appwrite/tar.gz/e56c03a007ba65345b73892f90b0a968cd58a595': {}
+  '@appwrite.io/repo@https://codeload.github.com/appwrite/appwrite/tar.gz/6a3ea1feec0d6a8dfc96874c3809dbefbe68d2b2': {}
 
   '@asamuzakjp/css-color@3.2.0':
     dependencies:
@@ -4812,6 +4843,10 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.0
 
+  '@lucide/svelte@0.539.0(svelte@5.25.6)':
+    dependencies:
+      svelte: 5.25.6
+
   '@markdoc/markdoc@0.5.1':
     optionalDependencies:
       '@types/linkify-it': 3.0.5
@@ -5279,6 +5314,23 @@ snapshots:
       postcss: 8.5.3
       tailwindcss: 4.1.4
 
+  '@tanstack/form-core@1.19.1':
+    dependencies:
+      '@tanstack/store': 0.7.2
+
+  '@tanstack/store@0.7.2': {}
+
+  '@tanstack/svelte-form@1.19.1(svelte@5.25.6)':
+    dependencies:
+      '@tanstack/form-core': 1.19.1
+      '@tanstack/svelte-store': 0.7.3(svelte@5.25.6)
+      svelte: 5.25.6
+
+  '@tanstack/svelte-store@0.7.3(svelte@5.25.6)':
+    dependencies:
+      '@tanstack/store': 0.7.2
+      svelte: 5.25.6
+
   '@tokenizer/token@0.3.0': {}
 
   '@tootallnate/once@2.0.0': {}
@@ -5561,7 +5613,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  agent-base@7.1.3:
+  agent-base@7.1.4:
     optional: true
 
   agentkeepalive@4.6.0:
@@ -5900,7 +5952,7 @@ snapshots:
 
   cssom@0.5.0: {}
 
-  cssstyle@4.3.1:
+  cssstyle@4.6.0:
     dependencies:
       '@asamuzakjp/css-color': 3.2.0
       rrweb-cssom: 0.8.0
@@ -5927,7 +5979,7 @@ snapshots:
       ms: 2.1.3
     optional: true
 
-  decimal.js@10.5.0:
+  decimal.js@10.6.0:
     optional: true
 
   deep-eql@5.0.2: {}
@@ -6053,6 +6105,9 @@ snapshots:
   entities@4.5.0: {}
 
   entities@6.0.0: {}
+
+  entities@6.0.1:
+    optional: true
 
   env-paths@2.2.1: {}
 
@@ -6507,7 +6562,7 @@ snapshots:
 
   http-proxy-agent@7.0.2:
     dependencies:
-      agent-base: 7.1.3
+      agent-base: 7.1.4
       debug: 4.4.1
     transitivePeerDependencies:
       - supports-color
@@ -6522,7 +6577,7 @@ snapshots:
 
   https-proxy-agent@7.0.6:
     dependencies:
-      agent-base: 7.1.3
+      agent-base: 7.1.4
       debug: 4.4.1
     transitivePeerDependencies:
       - supports-color
@@ -6682,14 +6737,14 @@ snapshots:
 
   jsdom@26.1.0:
     dependencies:
-      cssstyle: 4.3.1
+      cssstyle: 4.6.0
       data-urls: 5.0.0
-      decimal.js: 10.5.0
+      decimal.js: 10.6.0
       html-encoding-sniffer: 4.0.0
       http-proxy-agent: 7.0.2
       https-proxy-agent: 7.0.6
       is-potential-custom-element-name: 1.0.1
-      nwsapi: 2.2.20
+      nwsapi: 2.2.21
       parse5: 7.3.0
       rrweb-cssom: 0.8.0
       saxes: 6.0.0
@@ -6700,7 +6755,7 @@ snapshots:
       whatwg-encoding: 3.1.1
       whatwg-mimetype: 4.0.0
       whatwg-url: 14.2.0
-      ws: 8.18.2
+      ws: 8.18.3
       xml-name-validator: 5.0.0
     transitivePeerDependencies:
       - bufferutil
@@ -7088,7 +7143,7 @@ snapshots:
     dependencies:
       esm-env: 1.2.2
 
-  nwsapi@2.2.20:
+  nwsapi@2.2.21:
     optional: true
 
   object-assign@4.1.1: {}
@@ -7189,7 +7244,7 @@ snapshots:
 
   parse5@7.3.0:
     dependencies:
-      entities: 6.0.0
+      entities: 6.0.1
     optional: true
 
   path-exists@4.0.0: {}
@@ -8075,7 +8130,7 @@ snapshots:
 
   wrappy@1.0.2: {}
 
-  ws@8.18.2:
+  ws@8.18.3:
     optional: true
 
   xhr@2.6.0:

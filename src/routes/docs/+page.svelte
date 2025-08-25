@@ -9,6 +9,8 @@
     import CodeCard, { type CodeCardProps } from './CodeCard.svelte';
     import Sidebar from './Sidebar.svelte';
     import { trackEvent } from '$lib/actions/analytics';
+    import Platforms from '$routes/(marketing)/(components)/platforms.svelte';
+    import HeroBanner from '$routes/(marketing)/(components)/hero-banner.svelte';
 
     const title = 'Docs' + TITLE_SUFFIX;
     const description =
@@ -79,49 +81,21 @@
         </div>
 
         <section class="web-hero is-align-start e-hero-docs relative">
+            <HeroBanner title="MCP Server" href="/docs/tooling/mcp" />
             <h1 class="text-display font-aeonik-pro text-primary max-w-[600px]">
-                Learn how to build like a team of hundreds<span class="web-u-color-text-accent"
-                    >_
-                </span>
+                Docs<span class="web-u-color-text-accent">_ </span>
             </h1>
             <p class="text-description max-w-[600px]">
                 Appwrite helps you build secure and scalable apps, faster. Leverage Appwrite's
                 powerful APIs to stop fighting technologies and start delivering value.
             </p>
+
+            <Button variant="secondary" href="/docs/quick-starts" class="mt-8"
+                >Quickstart guides</Button
+            >
         </section>
-        <section class="web-hero is-align-start tech-hero">
-            <h2 class="text-title font-aeonik-pro text-primary max-w-[600px]">
-                Get started with your technologies
-            </h2>
-            <p class="text-description max-w-[600px]">
-                Start building with your preferred web, mobile, and native frameworks by following a
-                quick start guide.
-            </p>
-            <Technologies />
-            <Button href="/docs/sdks" class="self-start" variant="secondary">
-                <span class="text-sub-body font-medium">Explore all technologies</span>
-            </Button>
-            <div class="web-is-not-mobile spline-wrapper absolute">
-                <img
-                    class="web-u-only-dark"
-                    src="/images/animations/tech-dark-transparent.png"
-                    width="660"
-                    height="660"
-                    alt=""
-                    style="position: absolute;"
-                />
-                <img
-                    class="web-u-only-light"
-                    src="/images/animations/tech-light-transparent.png"
-                    width="660"
-                    height="660"
-                    alt=""
-                    style="position: absolute;"
-                />
-            </div>
-            <div class="bg-overlay"></div>
-        </section>
-        <section>
+        <Platforms padded={false} class="mt-12! p-0! max-md:p-0!" />
+        <section class="mt-12!">
             <h2 class="text-title font-aeonik-pro text-primary max-w-[600px]">Show me some code</h2>
             <p class="text-description mt-4 max-w-[600px]">
                 If you learn best from code examples, follow one of our tutorials.
@@ -134,7 +108,7 @@
                 {/each}
             </Carousel>
         </section>
-        <section class="web-hero is-align-start is-no-max-width">
+        <section class="web-hero is-align-start is-no-max-width mt-12!">
             <h2 class="text-title font-aeonik-pro text-primary max-w-[600px]">
                 Explore capabilities
             </h2>
@@ -351,7 +325,7 @@
                 </ul>
             </div>
         </section>
-        <section class="web-hero is-align-start is-no-max-width">
+        <section class="web-hero is-align-start is-no-max-width mt-12!">
             <h2 class="text-title font-aeonik-pro text-primary max-w-[600px]">
                 Explore ways to integrate
             </h2>
@@ -367,7 +341,7 @@
                             class="web-card is-normal"
                             onclick={() => trackEvent(`docs-explore_sdks-click`)}
                         >
-                            <h4 class="text-sub-body text-primary mt-2 font-medium">SDKs</h4>
+                            <h4 class="text-sub-body text-primary font-medium">SDKs</h4>
                             <p class="text-sub-body mt-1">
                                 Light-weight SDKs for your favorite platforms.
                             </p>
@@ -379,7 +353,7 @@
                             class="web-card is-normal"
                             onclick={() => trackEvent(`docs-explore_rest_apis-click`)}
                         >
-                            <h4 class="text-sub-body text-primary mt-2 font-medium">REST API</h4>
+                            <h4 class="text-sub-body text-primary font-medium">REST API</h4>
                             <p class="text-sub-body mt-1">
                                 Integrate with HTTP requests without the needing an SDK.
                             </p>
@@ -391,7 +365,7 @@
                             class="web-card is-normal"
                             onclick={() => trackEvent(`docs-explore_graphql_apis-click`)}
                         >
-                            <h4 class="text-sub-body text-primary mt-2 font-medium">GraphQL</h4>
+                            <h4 class="text-sub-body text-primary font-medium">GraphQL</h4>
                             <p class="text-sub-body mt-1">
                                 Leverage GraphQL through our SDKs or integrate directly with REST
                                 endpoints.
@@ -404,7 +378,7 @@
                             class="web-card is-normal"
                             onclick={() => trackEvent(`docs-explore_realtime_apis-click`)}
                         >
-                            <h4 class="text-sub-body text-primary mt-2 font-medium">Realtime</h4>
+                            <h4 class="text-sub-body text-primary font-medium">Realtime</h4>
                             <p class="text-sub-body mt-1">
                                 Respond to auth, databases, storage, and function events in
                                 realtime.
@@ -414,7 +388,7 @@
                 </ul>
             </div>
         </section>
-        <section class="web-hero is-align-start is-no-max-width">
+        <section class="web-hero is-align-start is-no-max-width mt-12!">
             <h2 class="text-title font-aeonik-pro text-primary max-w-[600px]">
                 Migrate to Appwrite
             </h2>
@@ -429,7 +403,7 @@
                             class="web-card is-normal"
                             onclick={() => trackEvent(`docs-migrations_self_hosted-click`)}
                         >
-                            <h4 class="text-sub-body text-primary mt-2 font-medium">Self-hosted</h4>
+                            <h4 class="text-sub-body text-primary font-medium">Self-hosted</h4>
                             <p class="text-sub-body mt-1">
                                 Move data from self-hosted to Appwrite Cloud.
                             </p>
@@ -441,7 +415,7 @@
                             class="web-card is-normal"
                             onclick={() => trackEvent(`docs-migrations_firebase-click`)}
                         >
-                            <h4 class="text-sub-body text-primary mt-2 font-medium">Firebase</h4>
+                            <h4 class="text-sub-body text-primary font-medium">Firebase</h4>
                             <p class="text-sub-body mt-1">
                                 Migrate users and data from Firebase to Appwrite.
                             </p>
@@ -453,7 +427,7 @@
                             class="web-card is-normal"
                             onclick={() => trackEvent(`docs-migrations_supabase-click`)}
                         >
-                            <h4 class="text-sub-body text-primary mt-2 font-medium">Supabase</h4>
+                            <h4 class="text-sub-body text-primary font-medium">Supabase</h4>
                             <p class="text-sub-body mt-1">
                                 Migrate users and data from Supabase to Appwrite.
                             </p>
@@ -465,7 +439,7 @@
                             class="web-card is-normal"
                             onclick={() => trackEvent(`docs-migrations_nhost-click`)}
                         >
-                            <h4 class="text-sub-body text-primary mt-2 font-medium">Nhost</h4>
+                            <h4 class="text-sub-body text-primary font-medium">Nhost</h4>
                             <p class="text-sub-body mt-1">
                                 Migrate users and data from NHost to Appwrite.
                             </p>
@@ -493,45 +467,5 @@
         @media (min-width: 1280px) {
             padding-inline-start: 3rem; // 48px
         }
-    }
-
-    .tech-hero {
-        @include gradients.border-block-gradient;
-
-        --m-border-size: 1px;
-        --m-border-gradient-before: linear-gradient(
-            to right,
-            hsl(var(--web-color-smooth)) 0%,
-            hsl(var(--web-color-smooth)) 90%,
-            transparent
-        );
-
-        max-inline-size: unset;
-        margin-block-start: 2rem;
-        margin-inline-start: -3rem;
-        padding-block: 5rem;
-        padding-inline-start: 3rem;
-
-        position: relative;
-        z-index: 10;
-
-        .spline-wrapper {
-            --p-size: 700px;
-            inline-size: var(--p-size);
-            block-size: var(--p-size);
-            inset-block-start: -3rem;
-            z-index: -1;
-            left: calc(50% - 384px + 400px);
-        }
-    }
-
-    :global(.dark) .tech-hero {
-        background: linear-gradient(to right, #19191c80, #19191c00);
-        backdrop-filter: blur(1rem);
-        -webkit-backdrop-filter: blur(1rem);
-    }
-
-    :global(.dark) .bg-overlay {
-        background: linear-gradient(to right, #19191c00 0%, #19191c 400px, #19191c);
     }
 </style>

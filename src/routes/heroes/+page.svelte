@@ -144,13 +144,13 @@
 </svelte:head>
 
 <Main>
-    <div class="web-big-padding-section">
+    <div class="web-big-padding-section max-w-screen overflow-hidden">
         <div class="py-10">
             <div class="web-big-padding-section-level-2">
                 <section class="hero web-u-padding-block-end-0 container">
                     <div>
                         <h1 class="text-display font-aeonik-pro text-primary">Appwrite Heroes</h1>
-                        <p class="text-body mt-5 font-medium">
+                        <p class="text-main-body mt-5 font-medium">
                             If you love building, writing, speaking, and helping other developers
                             build with Appwrite, help us support you by joining the Appwrite Heroes
                             program and becoming a leader in our developer community.

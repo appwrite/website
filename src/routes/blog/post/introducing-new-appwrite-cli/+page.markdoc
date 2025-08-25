@@ -53,14 +53,14 @@ appwrite init project
 > ? How would you like to start? Link directory to an existing project
 > ? Choose your organization 668d4668d4668d4
 > ? Choose your Appwrite project. 668d4701668d4701
-> ✓ Success: Project successfully linked. Details are now stored in appwrite.json file.
+> ✓ Success: Project successfully linked. Details are now stored in appwrite.config.json file.
 > ? Would you like to pull all resources from project you just linked? No
 
 ```
 
 *You can optionally pull all existing resources* from the new or linked project*.*
 
-The command will create a file named `appwrite.json` in the current directory. This file will include all the project settings and resource details. A good practice is to add this file to your project repo; this will let you use your version control for version management.
+The command will create a file named `appwrite.config.json` in the current directory. This file will include all the project settings and resource details. A good practice is to add this file to your project repo; this will let you use your version control for version management.
 
 To make it easy, we've decided to refactor and unify our terminology for the CLI commands as follows:
 
@@ -89,12 +89,12 @@ Appwrite CLI is now in listening mode. Try changing your code and seeing how the
 
 GitOps is a common way of tracking and migrating database changes. The latest Appwrite CLI generation includes a few features to help you migrate your database changes easily.
 
-When running `appwrite push collection`, the CLI will compare your local `appwrite.json` collection definition against the currently deployed remote collection and will present you with a detailed table awaiting your decision, for example:
+When running `appwrite push collection`, the CLI will compare your local `appwrite.config.json` collection definition against the currently deployed remote collection and will present you with a detailed table awaiting your decision, for example:
 
 ```
 Key       │ Action     │ Reason
 ──────────┼────────────┼─────────────────────────────────────────────
-times     │ deleting   │ Field isn't available in appwrite.json file
+times     │ deleting   │ Field isn't available in appwrite.config.json file
 ──────────┼────────────┼─────────────────────────────────────────────
 time      │ adding     │ Field isn't available on the remote server
 ──────────┼────────────┼─────────────────────────────────────────────

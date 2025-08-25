@@ -1,9 +1,13 @@
 <script lang="ts">
-    export let title: string;
+    interface Props {
+        title: string;
+    }
+
+    const { title }: Props = $props();
 </script>
 
 <div class="text-caption text-secondary flex gap-3 pt-8 pb-16">
-    <a href="/blog">Blog</a>
+    <a href="/blog" class="hover:text-accent-darker transition-colors">Blog</a>
     <span>/</span>
     <span class="text-primary line-clamp-1">{title}</span>
 </div>

@@ -3,7 +3,7 @@
 
     import GridPaper from '../../grid-paper.svelte';
     import { isMobile } from '$lib/utils/is-mobile';
-    import { classNames } from '$lib/utils/classnames';
+    import { cn } from '$lib/utils/cn';
     import Checkmark from '$lib/components/fancy/checkmark.svelte';
     import { trackEvent } from '$lib/actions/analytics';
 
@@ -114,7 +114,7 @@
         class="relative mt-auto mb-0 flex h-85 items-center justify-between overflow-clip rounded-xl bg-black/24 px-8"
     >
         <div
-            class={classNames(
+            class={cn(
                 'flex flex-1 flex-col gap-3 overflow-clip text-center',
                 'mask-linear-[to_top,_transparent_0%,_white_50%,_transparent_100%] mask-alpha '
             )}
@@ -124,7 +124,7 @@
                     {@render Command({ command })}
                 {/each}
                 <div
-                    class="text-caption relative w-fit shrink-0 overflow-hidden rounded-2xl border border-transparent p-px font-mono text-sm text-white"
+                    class="text-caption font-fira-code relative w-fit shrink-0 overflow-hidden rounded-2xl border border-transparent p-px text-sm text-white"
                     bind:this={activeCommand}
                 >
                     <div
@@ -152,7 +152,7 @@
 
 {#snippet Command({ command }: { command: string })}
     <div
-        class="text-caption relative w-fit shrink-0 overflow-hidden rounded-2xl border border-transparent p-px font-mono text-sm text-white"
+        class="text-caption font-fira-code relative w-fit shrink-0 overflow-hidden rounded-2xl border border-transparent p-px text-sm text-white"
     >
         <div class="h-full w-full rounded-2xl bg-[#202023] px-3 py-1 text-white/80">
             {command}

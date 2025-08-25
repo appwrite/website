@@ -8,7 +8,7 @@
     import Input from '$lib/components/ui/input.svelte';
     import { type ResultType, Fuse } from '$lib/integrations';
     import { Main } from '$lib/layouts';
-    import { classNames } from '$lib/utils/classnames';
+    import { cn } from '$lib/utils/cn';
     import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
     import { TITLE_SUFFIX } from '$routes/titles';
     import { onDestroy, onMount } from 'svelte';
@@ -20,7 +20,7 @@
 
     const title = 'Integrations' + TITLE_SUFFIX;
     const description =
-        'Connect your favorite apps to Appwrite for one unified tech stack. Explore our catalog of integrations now.';
+        'Connect your favorite apps to Appwrite for a unified tech stack. Explore the Appwrite catalog: a marketplace to find integrations for your projects.';
     const ogImage = DEFAULT_HOST + '/images/open-graph/website.png';
 
     // search functionality
@@ -104,15 +104,15 @@
                 <div
                     class="l-integrations-hero web-u-max-width-680 flex flex-col justify-center gap-5"
                 >
-                    <div class="text-micro text-primary uppercase">
+                    <div class="text-eyebrow text-primary uppercase">
                         INTEGRATIONS<span class="web-u-color-text-accent">_</span>
                     </div>
                     <h1 class="text-headline font-aeonik-pro text-primary">
                         Discover infinite possibilities
                     </h1>
                     <p class="text-description">
-                        Unlock the full potential of Appwrite by seamlessly integrating your
-                        favorite apps with your projects.
+                        Find your favourite apps to integrate with your projects in Appwrite's
+                        marketplace.
                     </p>
                 </div>
             </div>
@@ -145,7 +145,7 @@
                         <section class="flex flex-col">
                             <section class="flex flex-col gap-4">
                                 <h2
-                                    class="web-side-nav-header text-micro whitespace-nowrap uppercase"
+                                    class="web-side-nav-header text-eyebrow whitespace-nowrap uppercase"
                                 >
                                     Platform
                                 </h2>
@@ -153,7 +153,7 @@
                                     {#each platforms as platform}
                                         <li>
                                             <button
-                                                class={classNames(
+                                                class={cn(
                                                     'tag bg-greyscale-800 border-greyscale-700 h-8 cursor-pointer rounded-full border px-3 text-sm font-light',
                                                     {
                                                         'bg-white text-black':
@@ -171,7 +171,7 @@
                             <div class="web-u-sep-block-start my-6"></div>
                             <section class="flex flex-col gap-4">
                                 <h2
-                                    class="web-side-nav-header text-micro whitespace-nowrap uppercase"
+                                    class="web-side-nav-header text-eyebrow whitespace-nowrap uppercase"
                                 >
                                     Categories
                                 </h2>
@@ -306,7 +306,7 @@
                                                                 height="40"
                                                             />
                                                             <div
-                                                                class="text-body gap-2 font-medium"
+                                                                class="text-main-body gap-2 font-medium"
                                                             >
                                                                 <span class="text-primary mt-3">
                                                                     {item.integration.title}
@@ -427,7 +427,7 @@
                         >
                             Become a Technology Partner
                         </h2>
-                        <p class="text-body font-medium">
+                        <p class="text-main-body font-medium">
                             Join our Technology Partners program to integrate your solutions with
                             Appwrite’s API, enhancing functionality and expanding your reach.
                         </p>

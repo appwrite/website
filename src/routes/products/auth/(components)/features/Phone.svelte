@@ -16,13 +16,13 @@
 
             <div class="mt-8 mb-5 flex items-center gap-2">
                 <button
-                    class="text-micro flex flex-1 items-center justify-center gap-1 rounded-md border border-[#E2E8F0] py-1 font-medium text-[#0F172A]"
+                    class="text-eyebrow flex flex-1 items-center justify-center gap-1 rounded-md border border-[#E2E8F0] py-1 font-medium tracking-tight text-[#0F172A]"
                 >
                     <span class="web-icon-google !text-sm"></span>
                     Google</button
                 >
                 <button
-                    class="text-micro flex flex-1 items-center justify-center gap-1 rounded-md border border-[#E2E8F0] py-1 font-medium text-[#0F172A]"
+                    class="text-eyebrow flex flex-1 items-center justify-center gap-1 rounded-md border border-[#E2E8F0] py-1 font-medium tracking-tight text-[#0F172A]"
                 >
                     <span class="web-icon-github !text-sm"></span>
                     GitHub</button
@@ -39,7 +39,7 @@
                     id="email"
                     placeholder="Email address"
                     autocomplete="off"
-                    class="text-micro flex h-7 rounded-lg border border-[#d8d8db] px-3 py-2 -tracking-tight"
+                    class="text-eyebrow flex h-7 rounded-lg border border-[#d8d8db] px-3 py-2 -tracking-tight"
                 />
 
                 <input
@@ -48,11 +48,11 @@
                     id="password"
                     placeholder="Password"
                     autocomplete="off"
-                    class="text-micro flex h-7 rounded-lg border border-[#d8d8db] px-3 py-2 -tracking-tight"
+                    class="text-eyebrow flex h-7 rounded-lg border border-[#d8d8db] px-3 py-2 -tracking-tight"
                 />
             </div>
             <button
-                class="text-micro mt-3 flex h-7 w-full items-center justify-center rounded-lg bg-[#0F172A] font-medium -tracking-tight text-white"
+                class="text-eyebrow mt-3 flex h-7 w-full items-center justify-center rounded-lg bg-[#0F172A] font-medium -tracking-tight text-white"
                 >Sign up</button
             >
         </div>
