@@ -2,6 +2,7 @@
     import { getContext } from 'svelte';
     import { handleCopy } from '$lib/utils/copy';
     import { cn } from '$lib/utils/cn';
+    import { Icon } from '$lib/components/ui';
 
     interface CopyAsMarkdownProps {
         class?: string;
@@ -37,7 +38,7 @@
         />
     </svg>
     {#if $copied}
-        Copied
+        Copied <Icon name="check" class="-ml-1" />
     {:else}
         Copy page as markdown
     {/if}
