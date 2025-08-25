@@ -64,9 +64,9 @@ Add the **Services ID Identifier** (in the Bundle ID field), **Key ID**, **Team 
 
 Follow the [OAuth 2 login](https://appwrite.io/docs/products/auth/oauth2#init) flow to test your provider.
 
-# Read more about Google and Appwrite Auth
+# Read more about Apple and Appwrite Auth
 
-If you would like to learn more about Google and Appwrite Auth, we have some resources that you should visit:
+If you would like to learn more about Apple and Appwrite Auth, we have some resources that you should visit:
 
 - [Sign up for the Apple Developer program](https://developer.apple.com/programs)
 - [Implement OAuth login in your apps using Appwrite Auth](https://appwrite.io/docs/products/auth/oauth2)
