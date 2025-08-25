@@ -2,14 +2,13 @@
     import { getContext } from 'svelte';
     import { handleCopy } from '$lib/utils/copy';
     import { cn } from '$lib/utils/cn';
+    import { rawContent } from '$routes/docs/+layout.svelte';
 
     interface CopyAsMarkdownProps {
         class?: string;
     }
 
-    const content = getContext<string>('rawContent');
-
-    const { copy, copied } = handleCopy(content, 2000);
+    const { copy, copied } = handleCopy($rawContent!, 2000);
 
     const { class: classNames }: CopyAsMarkdownProps = $props();
 </script>

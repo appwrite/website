@@ -1,8 +1,15 @@
-<script lang="ts">
-    import { setContext } from 'svelte';
+<script lang="ts" module>
+    export const rawContent = writable<string | null>(null);
+</script>
 
+<script lang="ts">
     let { data, children } = $props();
-    setContext<string | null>('rawContent', data.rawContent);
+
+    import { writable } from 'svelte/store';
+
+    $effect(() => {
+        rawContent.set(data.rawContent);
+    });
 </script>
 
 {@render children()}
