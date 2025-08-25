@@ -220,7 +220,7 @@
     <article class="web-article contents">
         <header class="web-article-header">
             <div class="web-article-header-start">
-                <h1 class="text-title font-aeonik-pro">{serviceName}</h1>
+                <h1 class="text-title font-aeonik-pro text-primary">{serviceName}</h1>
                 <div class="web-inline-code text-caption">{platformType}</div>
             </div>
             <div class="web-article-header-end">

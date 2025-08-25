@@ -5,7 +5,7 @@
     export let method: SDKMethod;
 </script>
 
-<div class="web-card is-transparent p-4">
+<div class="web-card is-normal bg-card! p-4">
     <ul class="flex flex-col">
         {#each method.parameters as parameter, i}
             {@const first = i === 0}
@@ -17,7 +17,7 @@
                         </span>
                         <span class="text-caption">{parameter.type}</span>
                         {#if parameter.required}
-                            <div class="web-tag text-caption">required</div>
+                            <div class="web-tag text-caption! rounded-full!">required</div>
                         {/if}
                     </header>
                     <p class="text-paragraph-md mt-4">
