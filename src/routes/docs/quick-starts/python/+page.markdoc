@@ -110,35 +110,35 @@ Once the Appwrite Client is initialized, create a function to configure a todo c
 ```py
 databases = Databases(client)
 
-todoDatabase = None
-todoCollection = None
+todo_database = None
+todo_collection = None
 
 def prepare_database():
-  global todoDatabase
-  global todoCollection
+  global todo_database
+  global todo_collection
 
-  todoDatabase = databases.create(
+  todo_database = databases.create(
     database_id=ID.unique(),
     name='TodosDB'
   )
 
-  todoCollection = databases.create_collection(
-    database_id=todoDatabase['$id'],
+  todo_collection = databases.create_collection(
+database_id=todo_database['$id'],
     collection_id=ID.unique(),
     name='Todos'
   )
 
   databases.create_string_attribute(
-    database_id=todoDatabase['$id'],
-    collection_id=todoCollection['$id'],
+    database_id=todo_database['$id'],
+    collection_id=todo_collection['$id'],
     key='title',
     size=255,
     required=True
   )
 
   databases.create_string_attribute(
-    database_id=todoDatabase['$id'],
-    collection_id=todoCollection['$id'],
+    database_id=todo_database['$id'],
+    collection_id=todo_collection['$id'],
     key='description',
     size=255,
     required=False,
@@ -146,8 +146,8 @@ def prepare_database():
   )
 
   databases.create_boolean_attribute(
-    database_id=todoDatabase['$id'],
-    collection_id=todoCollection['$id'],
+    database_id=todo_database['$id'],
+    collection_id=todo_collection['$id'],
     key='isComplete',
     required=True
   )
@@ -177,22 +177,22 @@ def seed_database():
   }
 
   databases.create_document(
-    database_id=todoDatabase['$id'],
-    collection_id=todoCollection['$id'],
+    database_id=todo_database['$id'],
+    collection_id=todo_collection['$id'],
     document_id=ID.unique(),
     data=testTodo1
   )
 
   databases.create_document(
-    database_id=todoDatabase['$id'],
-    collection_id=todoCollection['$id'],
+    database_id=todo_database['$id'],
+    collection_id=todo_collection['$id'],
     document_id=ID.unique(),
     data=testTodo2
   )
 
   databases.create_document(
-    database_id=todoDatabase['$id'],
-    collection_id=todoCollection['$id'],
+    database_id=todo_database['$id'],
+    collection_id=todo_collection['$id'],
     document_id=ID.unique(),
     data=testTodo3
   )
@@ -210,8 +210,8 @@ from appwrite.query import Query
 def get_todos():
   # Retrieve documents (default limit is 25)
   todos = databases.list_documents(
-    database_id=todoDatabase['$id'],
-    collection_id=todoCollection['$id'],
+    database_id=todo_database['$id'],
+    collection_id=todo_collection['$id'],
     queries=[]
   )
   print("Todos:")
@@ -221,8 +221,8 @@ def get_todos():
 def get_completed_todos():
   # Use queries to filter completed todos with pagination
   todos = databases.list_documents(
-    database_id=todoDatabase['$id'],
-    collection_id=todoCollection['$id'],
+    database_id=todo_database['$id'],
+    collection_id=todo_collection['$id'],
     queries=[
       Query.equal("isComplete", True),
       Query.order_desc("$createdAt"),
@@ -236,8 +236,8 @@ def get_completed_todos():
 def get_incomplete_todos():
   # Query for incomplete todos
   todos = databases.list_documents(
-    database_id=todoDatabase['$id'],
-    collection_id=todoCollection['$id'],
+    database_id=todo_database['$id'],
+    collection_id=todo_collection['$id'],
     queries=[
       Query.equal("isComplete", False),
       Query.order_asc("title")
