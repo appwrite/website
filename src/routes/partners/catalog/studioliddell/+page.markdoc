@@ -9,7 +9,7 @@ isNew: true
 cover: /images/partners/covers/studioliddell.png
 category: agency
 website: https://studioliddell.com
-email: emailto:bizdev@studioliddell.com
+email: mailto:bizdev@studioliddell.com
 product: 
     avatar: '/images/partners/avatars/studioliddel.png'
     vendor: Studio Liddell
