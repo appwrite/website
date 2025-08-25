@@ -47,6 +47,7 @@
     import { getAppwriteDashboardUrl } from '$lib/utils/dashboard';
     import { Button, Icon, InlineTag } from '$lib/components/ui';
     import { afterNavigate } from '$app/navigation';
+    import SearchV2 from '$lib/components/search-v2.svelte';
 
     interface Props {
         variant?: DocsLayoutVariant;
@@ -205,4 +206,4 @@
     </div>
 </div>
 
-<Search bind:open={$layoutState.showSearch} />
+<SearchV2 bind:open={$layoutState.showSearch} />
