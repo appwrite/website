@@ -94,7 +94,7 @@
                 >Quickstart guides</Button
             >
         </section>
-        <Platforms class="mt-12! p-0! max-md:p-0!" />
+        <Platforms padded={false} class="mt-12! p-0! max-md:p-0!" />
         <section class="mt-12!">
             <h2 class="text-title font-aeonik-pro text-primary max-w-[600px]">Show me some code</h2>
             <p class="text-description mt-4 max-w-[600px]">
@@ -341,7 +341,7 @@
                             class="web-card is-normal"
                             onclick={() => trackEvent(`docs-explore_sdks-click`)}
                         >
-                            <h4 class="text-sub-body text-primary mt-2 font-medium">SDKs</h4>
+                            <h4 class="text-sub-body text-primary font-medium">SDKs</h4>
                             <p class="text-sub-body mt-1">
                                 Light-weight SDKs for your favorite platforms.
                             </p>
@@ -353,7 +353,7 @@
                             class="web-card is-normal"
                             onclick={() => trackEvent(`docs-explore_rest_apis-click`)}
                         >
-                            <h4 class="text-sub-body text-primary mt-2 font-medium">REST API</h4>
+                            <h4 class="text-sub-body text-primary font-medium">REST API</h4>
                             <p class="text-sub-body mt-1">
                                 Integrate with HTTP requests without the needing an SDK.
                             </p>
@@ -365,7 +365,7 @@
                             class="web-card is-normal"
                             onclick={() => trackEvent(`docs-explore_graphql_apis-click`)}
                         >
-                            <h4 class="text-sub-body text-primary mt-2 font-medium">GraphQL</h4>
+                            <h4 class="text-sub-body text-primary font-medium">GraphQL</h4>
                             <p class="text-sub-body mt-1">
                                 Leverage GraphQL through our SDKs or integrate directly with REST
                                 endpoints.
@@ -378,7 +378,7 @@
                             class="web-card is-normal"
                             onclick={() => trackEvent(`docs-explore_realtime_apis-click`)}
                         >
-                            <h4 class="text-sub-body text-primary mt-2 font-medium">Realtime</h4>
+                            <h4 class="text-sub-body text-primary font-medium">Realtime</h4>
                             <p class="text-sub-body mt-1">
                                 Respond to auth, databases, storage, and function events in
                                 realtime.
@@ -403,7 +403,7 @@
                             class="web-card is-normal"
                             onclick={() => trackEvent(`docs-migrations_self_hosted-click`)}
                         >
-                            <h4 class="text-sub-body text-primary mt-2 font-medium">Self-hosted</h4>
+                            <h4 class="text-sub-body text-primary font-medium">Self-hosted</h4>
                             <p class="text-sub-body mt-1">
                                 Move data from self-hosted to Appwrite Cloud.
                             </p>
@@ -415,7 +415,7 @@
                             class="web-card is-normal"
                             onclick={() => trackEvent(`docs-migrations_firebase-click`)}
                         >
-                            <h4 class="text-sub-body text-primary mt-2 font-medium">Firebase</h4>
+                            <h4 class="text-sub-body text-primary font-medium">Firebase</h4>
                             <p class="text-sub-body mt-1">
                                 Migrate users and data from Firebase to Appwrite.
                             </p>
@@ -427,7 +427,7 @@
                             class="web-card is-normal"
                             onclick={() => trackEvent(`docs-migrations_supabase-click`)}
                         >
-                            <h4 class="text-sub-body text-primary mt-2 font-medium">Supabase</h4>
+                            <h4 class="text-sub-body text-primary font-medium">Supabase</h4>
                             <p class="text-sub-body mt-1">
                                 Migrate users and data from Supabase to Appwrite.
                             </p>
@@ -439,7 +439,7 @@
                             class="web-card is-normal"
                             onclick={() => trackEvent(`docs-migrations_nhost-click`)}
                         >
-                            <h4 class="text-sub-body text-primary mt-2 font-medium">Nhost</h4>
+                            <h4 class="text-sub-body text-primary font-medium">Nhost</h4>
                             <p class="text-sub-body mt-1">
                                 Migrate users and data from NHost to Appwrite.
                             </p>

@@ -5,6 +5,6 @@ description: View your Android project powered by Appwrite authentication and da
 step: 8
 ---
 
-# Test your project {% #test-project %}
+## Test your project {% #test-project %}
 
 You can now run your project and test it on your Android device or emulator.

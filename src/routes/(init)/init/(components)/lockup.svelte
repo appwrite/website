@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { classNames } from '$lib/utils/classnames';
+    import { cn } from '$lib/utils/cn';
     import { animate, type AnimationSequence } from 'motion';
 
     interface Props {
@@ -39,7 +39,7 @@
 <svg
     viewBox="0 0 750 420"
     fill="none"
-    class={classNames('lockup mx-auto hidden w-full overflow-hidden md:block', className)}
+    class={cn('lockup mx-auto hidden w-full overflow-hidden md:block', className)}
 >
     <g class="background-layer">
         <path

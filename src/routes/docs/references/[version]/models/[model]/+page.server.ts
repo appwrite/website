@@ -101,7 +101,6 @@ export const load: PageServerLoad = async ({ params }) => {
 
     return {
         model,
-        examples,
-        changelogEntries: 0
+        examples
     };
 };

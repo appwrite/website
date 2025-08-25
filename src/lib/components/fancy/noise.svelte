@@ -1,6 +1,6 @@
 <script lang="ts">
     import type { SvelteHTMLElements } from 'svelte/elements';
-    import { classNames } from '$lib/utils/classnames';
+    import { cn } from '$lib/utils/cn';
 
     type Props = {
         invert?: boolean;
@@ -25,7 +25,7 @@
     width="100%"
     height="100%"
     xmlns="http://www.w3.org/2000/svg"
-    class={classNames('pointer-events-none absolute inset-0', className)}
+    class={cn('pointer-events-none absolute inset-0', className)}
     style:opacity
     style:filter={invert ? 'invert(1)' : 'none'}
     {...rest}

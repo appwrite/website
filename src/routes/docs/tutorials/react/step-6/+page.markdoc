@@ -4,7 +4,7 @@ title: Add database
 description: Add a database to your React application using Appwrite Web SDK.
 step: 6
 ---
-# Create database {% #create-database %}
+## Create database {% #create-database %}
 To store your ideas, you need to create a database first.
 
 1. Go to the Databases section in your Appwrite Console
@@ -12,7 +12,7 @@ To store your ideas, you need to create a database first.
 3. Give it a name and ID. For this tutorial, we'll use `Ideas Tracker` as the name and `ideas-tracker` as the ID.
 4. You'll need to remember the database ID as you'll need it later.
 
-# Create collection {% #create-collection %}
+## Create collection {% #create-collection %}
 In Appwrite, data is stored as a collection of documents. Create a collection in the [Appwrite Console](https://cloud.appwrite.io/) to store our ideas.
 
 {% only_dark %}
@@ -22,7 +22,7 @@ In Appwrite, data is stored as a collection of documents. Create a collection in
 ![Create project screen](/images/docs/tutorials/idea-tracker-collection.png)
 {% /only_light %}
 
-## Attributes
+### Attributes
 
 Create a new collection with the following attributes:
 | Field       | Type   | Required | Size   |
@@ -31,7 +31,7 @@ Create a new collection with the following attributes:
 | title       | String | Yes      |  25    |
 | description | String | No       |  100   |
 
-# Configure permissions {% #configure-permissions %}
+## Configure permissions {% #configure-permissions %}
 {% only_dark %}
 ![Collection permissions screen](/images/docs/tutorials/dark/idea-tracker-permissions.png)
 {% /only_dark %}
@@ -43,7 +43,7 @@ Navigate to the **Settings** tab of your collection, add the role **Any** and ch
 Next, add a **Users** role and give them access to **Create** by checking those boxes.
 These permissions apply to all documents in your new collection.
 
-# Ideas context {% #ideas-context %}
+## Ideas context {% #ideas-context %}
 
 Now that you have a collection to hold ideas, we can read and write to it from our app. Like we did with the user data, we will create a React context to hold our ideas.
 Create a new file `src/lib/context/ideas.jsx` and add the following code to it.
