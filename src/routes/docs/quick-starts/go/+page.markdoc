@@ -81,6 +81,7 @@ import (
 	"github.com/appwrite/sdk-for-go/client"
 	"github.com/appwrite/sdk-for-go/databases"
 	"github.com/appwrite/sdk-for-go/models"
+	"github.com/appwrite/sdk-for-go/query"
 )
 
 var (
