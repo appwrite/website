@@ -170,6 +170,11 @@ Query::select(["name", "title"])
 ```swift
 Query.select(["name", "title"])
 ```
+
+To select an related doc (relations) write "attibutename.*" 
+for example Query.select(["name", "user.*"]) where user is a related document.
+For further narrowing  Query.select([ "user.email","user.age"])
+
 ```http
 {"method":"select","values":["name","title"]}
 ```
