@@ -37,9 +37,9 @@ First, [sign up for the Apple Developer program](https://developer.apple.com/pro
 
 ![Apple Developer Program](/images/integrations/oauth-apple/apple-developer-program.png)
 
-Before you configure any other details, you must create an **App ID** for our app. To do that, go to XCode and open the `ios` folder in your source code. Navigate to the **Signing & Capabilities** tab, click the ➕ **Capability** button, search for `Sign in with Apple`, and double-click the result to add it. Then, modify the **Bundle Identifier** to a unique string by prefixing it with any letters of your choice and change the **Team** to your Apple Developer team. This will automatically create an **App ID** for your app.
+Before you configure any other details, you must create an **App ID** for our app. To do that, go to XCode and open the `ios` folder in your source code. Navigate to the **Signing & Capabilities** tab, click the ➕ **Capability** button, search for `Sign in with Apple`, and double-click the result to add it. Then, modify the **Bundle Identifier** to a unique string by prefixing it with any letters of your choice and change the **Team** to your Apple Developer team. This will automatically create an **App ID** for your app.
 
-After that, you will also need to create a **Services ID**. Visit your Apple Developer account, head to **Program resources** > **Certificates, Identifiers & Profiles** > **Identifiers**, and register a new **Service ID**, setting your Bundle ID as the unique identifier. 
+After that, you will also need to create a **Services ID**. Visit your Apple Developer account, head to **Program resources** > **Certificates, Identifiers & Profiles** > **Identifiers**, and register a new **Service ID**, setting your Bundle ID as the unique identifier. 
 
 View the service ID, enable **Sign in with Apple**, and in its configuration, select your primary App ID, input `appwrite.io` (or the domain of your self-hosted instance) under **Domains and Subdomains,** and temporarily add the URL `https://temporary-endpoint.com/` under **Return URLs**. This temporary URI will be replaced with the final URI once the OAuth2 adapter is configured on Appwrite.
 
@@ -47,10 +47,10 @@ Head to your Apple Developer account and save the following details:
 
 | Field name |  |
 | --- | --- |
-| Services ID Identifier | Head to Apple Developer account > Program resources > Certificates, Identifiers & Profiles > Identifiers and view the Services ID. |
-| Team ID | Head to Apple Developer account > Membership details > Team ID |
-| Authentication key (.p8 file) | Head to Apple Developer account > Program resources > Certificates, Identifiers & Profiles > Keys. Create a key and give it a name. Enable Sign in with Apple and register your key. Download the key, open it in a text editor, and copy the content. |
-| Authentication key ID | Head to Apple Developer account > Program resources > Certificates, Identifiers & Profiles > Keys. Click on your key to view details. |
+| Services ID Identifier | Head to Apple Developer account > Program resources > Certificates, Identifiers & Profiles > Identifiers and view the Services ID. |
+| Team ID | Head to Apple Developer account > Membership details > Team ID |
+| Authentication key (.p8 file) | Head to Apple Developer account > Program resources > Certificates, Identifiers & Profiles > Keys. Create a key and give it a name. Enable Sign in with Apple and register your key. Download the key, open it in a text editor, and copy the content. |
+| Authentication key ID | Head to Apple Developer account > Program resources > Certificates, Identifiers & Profiles > Keys. Click on your key to view details. |
 
 ## Step 2: Add Apple OAuth adapter to your Appwrite project
 
