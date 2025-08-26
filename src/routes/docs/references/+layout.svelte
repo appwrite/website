@@ -63,7 +63,7 @@
                 {
                     label: 'TablesDB',
                     icon: 'icon-database',
-                    href: `${prefix}/tablesdb`
+                    href: `${prefix}/tablesDB`
                 },
                 {
                     label: 'Sites',
