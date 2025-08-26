@@ -3,7 +3,7 @@ layout: post
 title: Deploy a Next.js app to Appwrite Sites
 description: Learn how to deploy a Next.js app to Appwrite Sites.
 date: 2025-08-25
-cover: /images/blog/init-may-2025/cover.png
+cover: /images/blog/deploy-nextjs-app-to-appwrite-sites/cover.png
 timeToRead: 5
 author: atharva
 category: tutorial
@@ -41,13 +41,13 @@ Now, let’s link your GitHub repository to Appwrite Sites.
 
 Now, you should be able to see the most recent GitHub repositories based on activity.
 
-![Connecting your GitHub repository to Appwrite Sites](/images/blog/deploy-nextjs-app-with-appwrite-sites/connect-repo.png)
+![Connecting your GitHub repository to Appwrite Sites](/images/blog/deploy-nextjs-app-to-appwrite-sites/connect-repo.png)
 
 Click **Connect** against the desired GitHub repository. The Next.js logo should be the icon of any valid Next.js app.
 
 Once you connect your GitHub repository, you will be presented with options for deployment.
 
-![Configuring your Site on Appwrite](/images/blog/deploy-nextjs-app-with-appwrite-sites/site-config.png)
+![Configuring your Site on Appwrite](/images/blog/deploy-nextjs-app-to-appwrite-sites/site-config.png)
 
 Fill in the details as desired. Although there are some things you must know before moving forward.
 
@@ -62,7 +62,7 @@ Now, hit the **Deploy** button, and the deployment process will begin. You can s
 
 # Next steps
 
-![Deployment successful screen](/images/blog/deploy-nextjs-app-with-appwrite-sites/site-deployed.png)
+![Deployment successful screen](/images/blog/deploy-nextjs-app-to-appwrite-sites/site-deployed.png)
 
 Once your Next.js application is deployed, you can view it on the provided domains on the deployment success splash screen or in the Sites section of the Appwrite console.
 
