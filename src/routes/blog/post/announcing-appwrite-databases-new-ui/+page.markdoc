@@ -146,6 +146,6 @@ And we’re just getting started. These changes set the stage for powerful new c
 
 # More resources
 
-- Read the documentation to learn more
+- [Read the documentation to learn more](/docs/references/cloud/client-web/tablesdb)
 - [Announcing Bulk API: Handle heavy data workloads with ease](/blog/post/announcing-bulk-api)
 - [Announcing CSV Import: Bring in large datasets to Appwrite with ease](/blog/post/announcing-csv-imports)
