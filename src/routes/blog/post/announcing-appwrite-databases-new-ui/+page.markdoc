@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "Announcing the new TablesDB UI, plus some big updates for Appwrite Databases"
-description: New terminology, a new UI, and a supporting TablesDB API, all built to make working with databases simpler and faster.
+title: "Announcing an improved Appwrite Databases. A completely new look, feel, and experience."
+description: Appwrite Databases just got the most significant update to date. We proudly present new terminology, a new TablesDB UI, and a supporting TablesDB API, all built to make working with databases simpler and faster.
 date: 2025-08-26
 cover: /images/blog/announcing-appwrite-databases-new-ui/cover.png
 timeToRead: 5
