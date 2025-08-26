@@ -7,7 +7,7 @@
 
     import { type Hit, type Hits, MeiliSearch } from 'meilisearch';
     import { tick } from 'svelte';
-    import Icon from './ui/icon';
+    import Icon, { type IconType } from './ui/icon';
 
     interface SearchProps {
         open: boolean;
@@ -24,7 +24,6 @@
     });
 
     const index = meilisearchClient.index<SearchResult>('website');
-    index.updateFilterableAttributes(['h1']);
 
     interface SearchResult {
         url: string;
@@ -42,6 +41,7 @@
         p?: string;
         anchor?: string;
         _formatted?: SearchResult;
+        icon?: IconType;
     }
 
     let results = $state<Hits<SearchResult>>([]);
@@ -206,9 +206,6 @@
                                 {@const subtitleContent = getSubtitleContent(hit)}
                                 {@const isDocs = hit.urls_tags?.includes('docs')}
                                 {@const isBlog = hit.urls_tags?.includes('blog')}
-                                {@const isTutorial = hit.urls_tags?.includes('tutorials')}
-                                {@const isIntegration = hit.urls_tags?.includes('integrations')}
-                                {@const isReference = hit.urls_tags?.includes('reference')}}
                                 <li>
                                     <a
                                         data-hit={i}
