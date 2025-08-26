@@ -48,27 +48,27 @@
 
     $inspect(results);
 
-    async function handleSearch(value: string) {
-        return await index.search(value, {
-            distinct: 'h1',
+    const resetValue = () => {
+        value = '';
+    };
+
+    const handleInput = async (value: string) => {
+        const response = await index.search(value, {
+            attributesToCrop: ['p'],
             limit: 20,
             attributesToHighlight: ['title', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p'],
             cropLength: 40,
             highlightPreTag:
-                '<span class="font-bold text-primary inline-block bg-accent rounded-sm">',
+                '<span class="text-greyscale-900 inline-block px-0.5 bg-mint-500 rounded-sm">',
             highlightPostTag: '</span>'
         });
-    }
-
-    async function handleInput(value: string) {
-        const response = await handleSearch(value);
         results = response.hits;
-    }
+    };
 
     function handleExit(event: MouseEvent & { currentTarget: EventTarget & HTMLDivElement }) {
         if (event.target === container) {
             open = false;
-            value = '';
+            resetValue();
         }
     }
 
@@ -158,22 +158,13 @@
 <!-- svelte-ignore a11y_click_events_have_key_events -->
 <!-- svelte-ignore a11y_no_static_element_interactions -->
 <div
-    class="wrapper fixed inset-0 flex items-center justify-center p-0"
+    class="pointer-events-none fixed inset-0 z-100 flex items-center justify-center bg-black/10 p-0 opacity-0 backdrop-blur-lg transition-opacity duration-250 ease-out data-[visible]:pointer-events-auto data-[visible]:opacity-100"
     data-visible={open ? true : undefined}
-    style:z-index="100"
-    style:background="hsl(var(--web-color-black) / 0.3)"
-    style:backdrop-filter="blur(15px)"
-    style:-webkit-backdrop-filter="blur(15px)"
     bind:this={container}
     onclick={handleExit}
 >
-    <div
-        class="web-input-text-search-wrapper web-u-margin-inline-20 w-full max-w-[680px] outline-0!"
-    >
-        <span class="web-icon-search z-[5]" aria-hidden="true" style="inset-block-start:0.9rem"
-        ></span>
-        <div id="searchbox"></div>
-
+    <div class="web-input-text-search-wrapper relative w-full max-w-2xl min-w-sm outline-0!">
+        <Icon name="search" class="absolute top-3.5 left-3 z-5" aria-hidden="true"></Icon>
         <input
             class="web-input-button bg-white-800/75! border-offset! relative z-1 !rounded-b-none !pl-10 shadow-none! outline-0! focus:placeholder:text-white!"
             type="text"
@@ -191,7 +182,7 @@
             }}
         />
         <div
-            class="web-card is-normal flex flex-col gap-6"
+            class="bg-card border-offset flex flex-col gap-1 rounded-2xl border-x border-b p-4 outline-none"
             use:melt={$menu}
             style="--card-padding-mobile:1rem; border-radius:0 0 0.5rem 0.5rem;"
         >
@@ -210,48 +201,53 @@
                                     <a
                                         data-hit={i}
                                         href={createHref(hit)}
-                                        class="web-button text-caption is-text web-u-padding-block-8 web-padding-inline-12 web-u-cross-start flex
-                                            max-w-full min-w-full flex-col gap-2"
+                                        class="text-caption group data-[highlighted]:bg-smooth data-[highlighted]:text-primary text-secondary focus:bg-smooth flex min-w-full items-start justify-between gap-2.5 rounded-lg px-3 py-2.5 transition-colors"
                                         use:melt={$option({
                                             value: hit,
                                             label: hit.title ?? i.toString()
                                         })}
                                     >
-                                        <div class="line-clamp-1 flex items-center gap-2">
-                                            {#if subtitleContent.header}
-                                                <Icon
-                                                    name={isDocs
-                                                        ? 'docs'
-                                                        : isBlog
-                                                          ? 'blog'
-                                                          : 'integrations'}
-                                                    class="size-5"
-                                                />
-                                                <span class="text-primary">
-                                                    {subtitleContent.subtitle}</span
-                                                >
-                                                <!-- {#if subtitleContent.subtitle}
+                                        <div
+                                            class="bg-offset border-offset flex size-6 shrink-0 items-center justify-center rounded-sm border"
+                                        >
+                                            <Icon
+                                                name={isDocs
+                                                    ? 'docs'
+                                                    : isBlog
+                                                      ? 'blog'
+                                                      : 'integrations'}
+                                                class="size-4"
+                                            />
+                                        </div>
+                                        <div class="flex flex-col">
+                                            <div class="flex items-center gap-2">
+                                                {#if subtitleContent.header}
+                                                    <span class="text-primary line-clamp-1">
+                                                        {subtitleContent.subtitle}</span
+                                                    >
+                                                    <!-- {#if subtitleContent.subtitle}
                                                     <span class="web-u-color-text-secondary">
                                                         /
                                                     </span>
                                                 {/if} -->
-                                            {/if}
+                                                {/if}
 
-                                            <!-- {#if subtitleContent.subtitle}
+                                                <!-- {#if subtitleContent.subtitle}
                                                 <span class="text-primary"
                                                     >{subtitleContent.subtitle}</span
                                                 >
                                             {/if} -->
-                                        </div>
-                                        {#if hit._formatted}
-                                            <div
-                                                class="text-secondary line-clamp-1 flex w-full items-center gap-1 overflow-hidden text-left"
-                                            >
-                                                <span class="line-clamp-1"
-                                                    >{@html hit._formatted.p}</span
-                                                >
                                             </div>
-                                        {/if}
+                                            {#if hit._formatted}
+                                                <div
+                                                    class="text-secondary line-clamp-1 flex w-full items-center gap-1 overflow-hidden text-left"
+                                                >
+                                                    <span class="line-clamp-1"
+                                                        >{@html hit._formatted.p}</span
+                                                    >
+                                                </div>
+                                            {/if}
+                                        </div>
                                     </a>
                                 </li>
                             {/each}
@@ -295,22 +291,7 @@
     </div>
 </div>
 
-<style lang="scss">
-    .wrapper {
-        opacity: 0;
-        pointer-events: none;
-        transition: opacity 250ms ease;
-    }
-
-    .wrapper[data-visible] {
-        opacity: 1;
-        pointer-events: auto;
-    }
-
-    a.web-button {
-        scroll-margin-block: 1rem;
-    }
-
+<!-- <style lang="scss">
     .web-card {
         margin-block-start: -0.0625rem;
         max-block-size: min(18.75rem, calc(100vh - 5.5rem));
@@ -320,4 +301,4 @@
         flex-direction: column;
         overflow-y: auto;
     }
-</style>
+</style> -->

@@ -154,8 +154,8 @@ importers:
         specifier: ^14.1.0
         version: 14.1.0
       meilisearch:
-        specifier: ^0.37.0
-        version: 0.37.0(encoding@0.1.13)
+        specifier: ^0.52.0
+        version: 0.52.0
       melt:
         specifier: ^0.29.2
         version: 0.29.3(@floating-ui/dom@1.7.4)(svelte@5.38.3)
@@ -2106,9 +2106,6 @@ packages:
   core-util-is@1.0.3:
     resolution: {integrity: sha512-ZQBvi1DcpJ4GDqanjucZ2Hj3wEO5pZDS89BWbkcrvdxksJorwUDDZamX9ldFkp9aw2lmBDLgkObEA4DWNJ9FYQ==}
 
-  cross-fetch@3.2.0:
-    resolution: {integrity: sha512-Q+xVJLoGOeIMXZmbUK4HYk+69cQH6LudR0Vu/pRm2YlU/hDV9CiS0gKUMaWY5f2NeUH9C1nV3bsTlCo0FsTV1Q==}
-
   cross-spawn@7.0.6:
     resolution: {integrity: sha512-uV2QOWP2nWzsy2aMp8aRibhi9dlzF5Hgh5SHaB9OiTGEyDTiJJyx0uy51QXdyWbtAHNua4XJzUKca3OzKUd3vA==}
     engines: {node: '>= 8'}
@@ -3024,8 +3021,8 @@ packages:
   mdurl@2.0.0:
     resolution: {integrity: sha512-Lf+9+2r+Tdp5wXDXC4PcIBjTDtq4UKjCPMQhKIuzpJNW0b96kVqSwW0bT7FhRSfmAiFYgP+SCRvdrDozfh0U5w==}
 
-  meilisearch@0.37.0:
-    resolution: {integrity: sha512-LdbK6JmRghCawrmWKJSEQF0OiE82md+YqJGE/U2JcCD8ROwlhTx0KM6NX4rQt0u0VpV0QZVG9umYiu3CSSIJAQ==}
+  meilisearch@0.52.0:
+    resolution: {integrity: sha512-RqPsB4a78sXf/ATB7PIVvKCG7yf0y1M+uCj8Z9Wku44WmCy3iz0C1PHjVV5xphQolo09CdhdyFoRxHQSJkOdpg==}
 
   melt@0.29.3:
     resolution: {integrity: sha512-cgorPvV3hSTugEnMpjLarugz8YRhUckM48i2gAgNzmqYx2w4hwvEsxA6GRy9DWst5rj+DKSmiDCcFRrHRpg/lA==}
@@ -3202,15 +3199,6 @@ packages:
 
   node-fetch-native-with-agent@1.7.2:
     resolution: {integrity: sha512-5MaOOCuJEvcckoz7/tjdx1M6OusOY6Xc5f459IaruGStWnKzlI1qpNgaAwmn4LmFYcsSlj+jBMk84wmmRxfk5g==}
-
-  node-fetch@2.7.0:
-    resolution: {integrity: sha512-c4FRfUm/dbcWZ7U+1Wq0AwCyFL+3nt2bEw05wfxSz+DWpWsitgmSgYmy2dQdWyKC1694ELPqMs/YzUSNozLt8A==}
-    engines: {node: 4.x || >=6.0.0}
-    peerDependencies:
-      encoding: ^0.1.0
-    peerDependenciesMeta:
-      encoding:
-        optional: true
 
   node-fetch@3.3.2:
     resolution: {integrity: sha512-dRB78srN/l6gqWulah9SrxeYnxeddIG30+GOqK/9OlLVyLg3HPnr6SqOWTWOXKRwC2eGYCkZ59NNuSgvSrpgOA==}
@@ -3963,9 +3951,6 @@ packages:
     resolution: {integrity: sha512-sf4i37nQ2LBx4m3wB74y+ubopq6W/dIzXg0FDGjsYnZHVa1Da8FH853wlL2gtUhg+xJXjfk3kUZS3BRoQeoQBQ==}
     engines: {node: '>=6'}
 
-  tr46@0.0.3:
-    resolution: {integrity: sha512-N3WMsuqV66lT30CrXNbEjx4GEwlow3v6rr4mCcv6prnfwhS01rkgyFdjPNBYd9br7LpXV1+Emh01fHnq2Gdgrw==}
-
   ts-api-utils@2.1.0:
     resolution: {integrity: sha512-CUgTZL1irw8u29bzrOD/nH85jqyc74D6SshFgujOIA7osm2Rz7dYH77agkx7H4FBNxDq7Cjf+IjaX/8zwFW+ZQ==}
     engines: {node: '>=18.12'}
@@ -4165,9 +4150,6 @@ packages:
   web-vitals@4.2.4:
     resolution: {integrity: sha512-r4DIlprAGwJ7YM11VZp4R884m0Vmgr6EAKe3P+kO0PPj3Unqyvv59rczf6UiGcb9Z8QxZVcqKNwv/g0WNdWwsw==}
 
-  webidl-conversions@3.0.1:
-    resolution: {integrity: sha512-2JAn3z8AR6rjK8Sm8orRC0h/bcl/DqL7tRPdGZ4I1CjdF+EaMLmYxBHyXuKL849eucPFhvBoxMsflfOb8kxaeQ==}
-
   whatwg-encoding@3.1.1:
     resolution: {integrity: sha512-6qN4hJdMwfYBtE3YBTTHhoeuUrDBPZmbQaxWAqSALV/MeEnR5z1xd8UKud2RAkFoPkmB+hli1TZSnyi84xz1vQ==}
     engines: {node: '>=18'}
@@ -4175,9 +4157,6 @@ packages:
   whatwg-mimetype@4.0.0:
     resolution: {integrity: sha512-QaKxh0eNIi2mE9p2vEdzfagOKHCcj1pJ56EEHGQOVxp8r9/iszLUUV7v89x9O1p/T+NlTM5W7jW6+cz4Fq1YVg==}
     engines: {node: '>=18'}
-
-  whatwg-url@5.0.0:
-    resolution: {integrity: sha512-saE57nupxk6v3HY35+jzBwYa0rKSy0XR8JSxZPwgLr7ys0IBzhGviA1/TUGJLmSVqs8pb9AnvICXEuOHLprYTw==}
 
   wheel-gestures@2.2.48:
     resolution: {integrity: sha512-f+Gy33Oa5Z14XY9679Zze+7VFhbsQfBFXodnU2x589l4kxGM9L5Y8zETTmcMR5pWOPQyRv4Z0lNax6xCO0NSlA==}
@@ -6054,12 +6033,6 @@ snapshots:
 
   core-util-is@1.0.3: {}
 
-  cross-fetch@3.2.0(encoding@0.1.13):
-    dependencies:
-      node-fetch: 2.7.0(encoding@0.1.13)
-    transitivePeerDependencies:
-      - encoding
-
   cross-spawn@7.0.6:
     dependencies:
       path-key: 3.1.1
@@ -7003,11 +6976,7 @@ snapshots:
 
   mdurl@2.0.0: {}
 
-  meilisearch@0.37.0(encoding@0.1.13):
-    dependencies:
-      cross-fetch: 3.2.0(encoding@0.1.13)
-    transitivePeerDependencies:
-      - encoding
+  meilisearch@0.52.0: {}
 
   melt@0.29.3(@floating-ui/dom@1.7.4)(svelte@5.38.3):
     dependencies:
@@ -7151,12 +7120,6 @@ snapshots:
   node-domexception@1.0.0: {}
 
   node-fetch-native-with-agent@1.7.2: {}
-
-  node-fetch@2.7.0(encoding@0.1.13):
-    dependencies:
-      whatwg-url: 5.0.0
-    optionalDependencies:
-      encoding: 0.1.13
 
   node-fetch@3.3.2:
     dependencies:
@@ -7953,8 +7916,6 @@ snapshots:
 
   totalist@3.0.1: {}
 
-  tr46@0.0.3: {}
-
   ts-api-utils@2.1.0(typescript@5.9.2):
     dependencies:
       typescript: 5.9.2
@@ -8150,18 +8111,11 @@ snapshots:
 
   web-vitals@4.2.4: {}
 
-  webidl-conversions@3.0.1: {}
-
   whatwg-encoding@3.1.1:
     dependencies:
       iconv-lite: 0.6.3
 
   whatwg-mimetype@4.0.0: {}
-
-  whatwg-url@5.0.0:
-    dependencies:
-      tr46: 0.0.3
-      webidl-conversions: 3.0.1
 
   wheel-gestures@2.2.48: {}
 
