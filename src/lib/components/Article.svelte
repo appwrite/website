@@ -18,14 +18,22 @@
 <li>
     <a class="bg-transparent" {href}>
         <div class="overflow-hidden rounded-lg">
-            <Media src={cover} class="aspect-video" alt={title} autoplay controls={false} />
+            <Media
+                src={cover}
+                class="aspect-video transition-transform duration-250 hover:scale-105"
+                alt={title}
+                autoplay
+                controls={false}
+            />
         </div>
         <div class="flex flex-col gap-3 pt-6 pb-3">
             <h4 class="text-label font-aeonik-pro text-primary line-clamp-2">
                 {title}
             </h4>
             <div class="flex w-full">
-                <div class="text-micro flex w-full flex-col items-center xl:flex-row xl:gap-2">
+                <div
+                    class="text-paragraph-md flex w-full flex-col items-center xl:flex-row xl:gap-2"
+                >
                     <div class="flex items-center justify-center gap-2">
                         <img class="size-5 rounded-full" loading="lazy" src={avatar} alt={author} />
                         <h4 class="text-primary">{author}</h4>

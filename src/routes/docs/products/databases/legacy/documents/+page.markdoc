@@ -138,10 +138,10 @@ You must grant **read** permissions to users at the **collection level** before 
 Documents can be retrieved using the [List Document](/docs/references/cloud/client-web/databases#listDocuments) endpoint.
 
 Results can be filtered, sorted, and paginated using Appwrite's shared set of query methods.
-You can find a full guide on querying in the [Queries Guide](/docs/products/databases/queries).
+You can find a full guide on querying in the [Queries Guide](/docs/products/databases/legacy/queries).
 
 By default, results are limited to the **first 25 items**.
-You can change this through [pagination](/docs/products/databases/pagination).
+You can change this through [pagination](/docs/products/databases/legacy/pagination).
 
 {% multicode %}
 ```client-web
@@ -650,12 +650,12 @@ Before a user can create a document, you need to grant create permissions to the
 Read, update, and delete permissions can be granted at both the collection and document level.
 Users only need to be granted access at either the collection or document level to access documents.
 
-[Learn about configuring permissions](/docs/products/databases/permissions).
+[Learn about configuring permissions](/docs/products/databases/legacy/permissions).
 
 # Bulk operations {% #bulk-operations %}
 
-In Appwrite, you can perform bulk operations on documents within a collection. This allows you to create, update, or delete multiple documents in a single request.
+In Appwrite, you can perform bulk operations on documents within a collection. This allows you to create, update, upsert, or delete multiple documents in a single request.
 
 As of now, bulk operations can only be performed via the server-side SDKs. The client-side SDKs do not support bulk operations.
 
-[Learn more about bulk operations](/docs/products/databases/bulk-operations).
+[Learn more about bulk operations](/docs/products/databases/legacy/bulk-operations).

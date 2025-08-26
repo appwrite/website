@@ -5,7 +5,7 @@ description: Create a Nuxt app project and integrate with Appwrite
 step: 2
 ---
 
-# Create Nuxt project {% #create-nuxt-project %}
+## Create Nuxt project {% #create-nuxt-project %}
 
 Create a Nuxt app with the `npx init` command.
 The command will install all the necessary dependencies for you.
@@ -14,7 +14,7 @@ The command will install all the necessary dependencies for you.
 npx nuxi@latest init ideas-tracker
 ```
 
-# Add dependencies {% #add-dependencies %}
+## Add dependencies {% #add-dependencies %}
 
 Once the project is created, change your current working directory and install the JavaScript Appwrite SDK.
 
@@ -56,7 +56,7 @@ You can start the development server to watch your app update in the browser as 
 npm run dev
 ```
 
-# File structure {% #file-structure %}
+## File structure {% #file-structure %}
 
 Nuxt relies on an opiniated directory structure to automate tasks and help organize the codebase.
 To take advantage of this we need to add the following directories:
@@ -73,7 +73,7 @@ Run the following command to create these folders
 mkdir components composables layouts pages
 ```
 
-# Add layout {% #add-layout %}
+## Add layout {% #add-layout %}
 
 Go to the `layouts/` directory and add the file `default.vue`.
 Add the following code for the default layout.
@@ -95,7 +95,7 @@ export default {
 </script>
 ```
 
-# Add home page {% #add-home-page %}
+## Add home page {% #add-home-page %}
 
 Next, head over to the `pages` directory.
 This is where we will keep the content that will render on our pages in the web application.
@@ -136,7 +136,7 @@ This is what your directory should look like after adding the new directories an
 └── tsconfig.json
 ```
 
-# Render page {% #render-page %}
+## Render page {% #render-page %}
 
 If you run the development server now, it will still render the Nuxt Welcome page.
 We need to tell our app to use the files we just created instead.

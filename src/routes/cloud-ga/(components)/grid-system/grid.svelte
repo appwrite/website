@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { classNames } from '$lib/utils/classnames';
+    import { cn } from '$lib/utils/cn';
     import type { Snippet } from 'svelte';
     type Props = {
         columns?: number;
@@ -21,7 +21,7 @@
 </script>
 
 <div
-    class={classNames(
+    class={cn(
         'grid h-full w-full auto-rows-min grid-cols-1  grid-rows-[1fr] md:grid-cols-[repeat(var(--columns),_1fr)]',
         'border-smooth border-dashed md:border-l',
         'relative',
@@ -40,7 +40,7 @@
             {@const x = (index % columns) + 1}
             {@const y = Math.floor(index / columns) + 1}
             <div
-                class={classNames(
+                class={cn(
                     'animate-fade-in absolute inset-0',
                     '[grid-column-start:var(--x)] [grid-column-end:span_1]',
                     '[grid-row-start:var(--y)] [grid-row-end:span_1]',

@@ -27,7 +27,7 @@ You can also upload files programmatically using our SDKs:
   const promise = storage.createFile(
       '<BUCKET_ID>',
       ID.unique(),
-      document.getElementById('uploader').files[0]
+      row.getElementById('uploader').files[0]
   );
 
   promise.then(function (response) {
@@ -173,7 +173,7 @@ If you're using an Appwrite SDK, this is handled automatically.
 If you're not using an SDK, you can [learn more about REST API file handling](/docs/apis/rest#files).
 
 # InputFile {% #input-file %}
-Every language and platform handles file inputs differently. This section documents the expected input type of each SDK. Where applicable, Appwrite provides an `InputFile` class to accept multiple file sources, like paths, buffers, or plain text.
+Every language and platform handles file inputs differently. This section rows the expected input type of each SDK. Where applicable, Appwrite provides an `InputFile` class to accept multiple file sources, like paths, buffers, or plain text.
 
 # Client SDKs {% #client-sdks %}
 
@@ -187,7 +187,7 @@ For example, for the input tag `<input type="file" id="uploader">`, you would ca
 const promise = storage.createFile(
     '<BUCKET_ID>',
     ID.unique(),
-    document.getElementById('uploader').files[0]
+    row.getElementById('uploader').files[0]
 );
 ```
 {% /tabsitem %}
@@ -258,14 +258,14 @@ const pickImage = async () => {
 };
 ```
 
-You can also use the file picker or document picker from Expo:
+You can also use the file picker or row picker from Expo:
 
 ```js
-// Example with expo-document-picker
-import * as DocumentPicker from 'expo-document-picker';
+// Example with expo-row-picker
+import * as DocumentPicker from 'expo-row-picker';
 
 const pickDocument = async () => {
-  const result = await DocumentPicker.getDocumentAsync();
+  const result = await DocumentPicker.getRowAsync();
 
   if (result.assets && result.assets[0]) {
     return {
