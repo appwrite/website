@@ -3,6 +3,7 @@ import type { Language } from './code';
 import { browser } from '$app/environment';
 
 const allVersions = [
+    '1.8.x',
     '1.7.x',
     '1.6.x',
     '1.5.x',
@@ -25,6 +26,7 @@ export const Service = {
     Account: 'account',
     Avatars: 'avatars',
     Databases: 'databases',
+    TablesDB: 'tablesdb',
     Functions: 'functions',
     Messaging: 'messaging',
     Health: 'health',
@@ -141,6 +143,7 @@ export const serviceMap: Record<ServiceValue, string> = {
     [Service.Account]: 'Account',
     [Service.Avatars]: 'Avatars',
     [Service.Databases]: 'Databases',
+    [Service.TablesDB]: 'TablesDB',
     [Service.Functions]: 'Functions',
     [Service.Messaging]: 'Messaging',
     [Service.Health]: 'Health',
