@@ -1,7 +1,15 @@
 import { json } from '@sveltejs/kit';
+import { getSearchablePosts } from '../(lib)/blog';
+import { index } from '../(lib)/client';
 
-export function GET() {
-    const number = Math.floor(Math.random() * 6) + 1;
+export const GET = async () => {
+    try {
+        const posts = getSearchablePosts();
 
-    return json(number);
-}
+        const res = await index.addDocuments(posts);
+
+        return json(res);
+    } catch (error) {
+        return json({ updated: false, error });
+    }
+};
