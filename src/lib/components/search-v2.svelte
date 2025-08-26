@@ -156,6 +156,23 @@
     type GroupKey = 'docs' | 'blog' | 'integrations';
 
     type GroupedResults = Record<GroupKey, SearchHit[]>;
+
+    const groupedResults = $derived(
+        results.reduce<GroupedResults>((groups, hit) => {
+            const tags = hit.urls_tags || [];
+            const primaryTag: GroupKey = tags.includes('docs')
+                ? 'docs'
+                : tags.includes('blog')
+                  ? 'blog'
+                  : 'integrations';
+
+            if (!groups[primaryTag]) {
+                groups[primaryTag] = [];
+            }
+            groups[primaryTag].push(hit);
+            return groups;
+        }, {} as GroupedResults)
+    );
 </script>
 
 <svelte:window on:keydown={handleKeypress} />
@@ -203,21 +220,6 @@
             {#if value && value.length >= 3}
                 {#if results.length > 0}
                     {@const totalResults = results.length}
-                    {@const groupedResults = results.reduce<GroupedResults>((groups, hit) => {
-                        const tags = hit.urls_tags || [];
-                        const primaryTag: GroupKey = tags.includes('docs')
-                            ? 'docs'
-                            : tags.includes('blog')
-                              ? 'blog'
-                              : 'integrations';
-
-                        if (!groups[primaryTag]) {
-                            groups[primaryTag] = [];
-                        }
-                        groups[primaryTag].push(hit);
-                        return groups;
-                    }, {} as GroupedResults)}
-
                     {@const groupOrder: readonly GroupKey[] = ['docs', 'blog', 'integrations'] as const}
 
                     {@const groupConfig = {
