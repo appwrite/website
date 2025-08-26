@@ -26,7 +26,7 @@ export const Service = {
     Account: 'account',
     Avatars: 'avatars',
     Databases: 'databases',
-    TablesDB: 'tablesdb',
+    TablesDB: 'tablesDB',
     Functions: 'functions',
     Messaging: 'messaging',
     Health: 'health',

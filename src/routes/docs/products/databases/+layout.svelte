@@ -107,7 +107,7 @@
                 },
                 {
                     label: 'TablesDB API',
-                    href: '/docs/references/cloud/client-web/tablesdb',
+                    href: '/docs/references/cloud/client-web/tablesDB',
                     new: isNewUntil('31 Oct 2025')
                 }
             ]
