@@ -1,4 +1,4 @@
-import { readFile, readdir, stat } from 'fs/promises';
+import { readFile, stat } from 'fs/promises';
 import { join } from 'path';
 
 export const getMarkdownContent = async <T extends string | null>(slug: T) => {
@@ -19,7 +19,6 @@ export const getMarkdownContent = async <T extends string | null>(slug: T) => {
 
         return fileContent;
     } catch (e) {
-        console.log(e);
         return null;
     }
 };

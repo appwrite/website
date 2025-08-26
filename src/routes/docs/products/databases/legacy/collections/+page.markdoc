@@ -13,7 +13,7 @@ You can create collections using the Appwrite Console, a [Server SDK](/docs/sdks
 {% tabs %}
 
 {% tabsitem #console title="Console" %}
-You can create a collection by heading to the **Databases** page, navigate to a [database](/docs/products/databases/databases), and click **Create collection**.
+You can create a collection by heading to the **Databases** page, navigate to a [database](/docs/products/databases/legacy/databases), and click **Create collection**.
 
 {% /tabsitem %}
 
@@ -36,7 +36,7 @@ client
     .setKey('919c2d18fb5d4...a2ae413da83346ad2') // Your secret API key
 ;
 
-const promise = databases.createCollection('<DATABASE_ID>', '[COLLECTION_ID]', '[NAME]');
+const promise = databases.createCollection('<DATABASE_ID>', '<COLLECTION_ID>', '<NAME>');
 
 promise.then(function (response) {
     console.log(response);
@@ -59,7 +59,7 @@ client
 ;
 
 
-let promise = databases.createCollection('<DATABASE_ID>', '[COLLECTION_ID]', '[NAME]');
+let promise = databases.createCollection('<DATABASE_ID>', '<COLLECTION_ID>', '<NAME>');
 
 promise.then(function (response) {
     console.log(response);
@@ -83,7 +83,7 @@ $client
 
 $databases = new Databases($client);
 
-$result = $databases->createCollection('<DATABASE_ID>', '[COLLECTION_ID]', '[NAME]');
+$result = $databases->createCollection('<DATABASE_ID>', '<COLLECTION_ID>', '<NAME>');
 ```
 ```python
 from appwrite.client import Client
@@ -99,7 +99,7 @@ client = Client()
 
 databases = Databases(client)
 
-result = databases.create_collection('<DATABASE_ID>', '[COLLECTION_ID]', '[NAME]')
+result = databases.create_collection('<DATABASE_ID>', '<COLLECTION_ID>', '<NAME>')
 ```
 ```ruby
 require 'Appwrite'
@@ -113,7 +113,7 @@ client = Client.new
 
 databases = Databases.new(client)
 
-response = databases.create_collection(database_id: '<DATABASE_ID>', collection_id: '[COLLECTION_ID]', name: '[NAME]')
+response = databases.create_collection(database_id: '<DATABASE_ID>', collection_id: '<COLLECTION_ID>', name: '<NAME>')
 
 puts response.inspect
 ```
@@ -149,8 +149,8 @@ void main() { // Init SDK
 
   Future result = databases.createCollection(
     databaseId: '<DATABASE_ID>',
-    collectionId: '[COLLECTION_ID]',
-    name: '[NAME]',
+    collectionId: '<COLLECTION_ID>',
+    name: '<NAME>',
   );
 
   result
@@ -259,7 +259,7 @@ This helps prevent accidental data leaks by forcing you to make more concious de
 By default, Appwrite doesn't grant permissions to any users when a new collection is created.
 This means users can't create new documents or read, update, and delete existing documents.
 
-[Learn about configuring permissions](/docs/products/databases/permissions).
+[Learn about configuring permissions](/docs/products/databases/legacy/permissions).
 
 # Attributes {% #attributes %}
 All documents in a collection follow the same structure.
@@ -279,7 +279,7 @@ You can choose between the following types.
 | `ip`         | IP address attribute for IPv4 and IPv6.                          |
 | `email`      | Email address attribute.                                         |
 | `url`        | URL attribute.                                                   |
-| `relationship` | Relationship attribute relates one collection to another. [Learn more about relationships.](/docs/products/databases/relationships) |
+| `relationship` | Relationship attribute relates one collection to another. [Learn more about relationships.](/docs/products/databases/legacy/relationships) |
 
 If an attribute must be populated in all documents, set it as `required`.
 If not, you may optionally set a default value.
@@ -301,6 +301,6 @@ The following indexes are currently supported:
 |------------|--------------------------------------------------------------------------------------------------------------|
 | `key`      | Plain Index to allow queries.                                                                                 |
 | `unique`   | Unique Index to disallow duplicates.                                                                          |
-| `fulltext` | For searching within string attributes. Required for the [search query method](/docs/products/databases/queries#query-class).     |
+| `fulltext` | For searching within string attributes. Required for the [search query method](/docs/products/databases/legacy/queries#query-class).     |
 
 You can create an index by navigating to your collection's **Indexes** tab or by using your favorite [Server SDK](/docs/sdks#server).

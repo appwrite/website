@@ -32,7 +32,7 @@ In this directory, create two files with the following code:
 - `app.js`
 
 ```js
-document.querySelector("button").addEventListener("click", () => {
+row.querySelector("button").addEventListener("click", () => {
     alert("Hello World!");
 });
 ```
