@@ -183,7 +183,7 @@
         <div class="relative flex justify-between">
             <Icon name="search" class="absolute top-3.5 left-3 z-5" aria-hidden="true"></Icon>
             <input
-                class="bg-card/75 border-offset text-caption relative z-1 h-12 flex-1 rounded-t-2xl border pl-10 shadow-none outline-0 focus:placeholder:text-white!"
+                class="bg-card/75 border-offset placeholder:text-secondary text-caption text-primary focus:placeholder:text-primary relative z-1 h-12 flex-1 rounded-t-2xl border pl-10 shadow-none outline-0"
                 type="text"
                 id="search"
                 bind:value
