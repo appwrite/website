@@ -329,7 +329,7 @@ await PineconeStore.fromDocuments(rows, new OpenAIEmbeddings(), {
 
 ```
 
-Within our function handler, the service is instantiated and used to create an array of LangChain rows. LangChain rows can then be used with the `PineconeStore.fromDocuments` method to retrieve embeddings from OpenAI and upsert them to your Pinecone index.
+Within our function handler, the service is instantiated and used to create an array of LangChain documents. LangChain documents can then be used with the `PineconeStore.fromDocuments` method to retrieve embeddings from OpenAI and upsert them to your Pinecone index.
 {% /section %}
 
 {% section #step-9 step=9 title="Test the function" %}
