@@ -226,7 +226,7 @@
                         integrations: { label: 'Integrations', icon: 'integrations' }
                     } as const}
 
-                    <div class="max-h-80 overflow-x-auto overflow-y-auto px-4 pb-10">
+                    <div class="top-0 max-h-80 overflow-x-auto overflow-y-auto px-4 pb-10">
                         {#each groupOrder as groupKey}
                             {@const groupResults = groupedResults[groupKey]}
                             {#if groupResults && groupResults.length > 0}
