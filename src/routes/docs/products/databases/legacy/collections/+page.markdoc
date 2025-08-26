@@ -13,7 +13,7 @@ You can create collections using the Appwrite Console, a [Server SDK](/docs/sdks
 {% tabs %}
 
 {% tabsitem #console title="Console" %}
-You can create a collection by heading to the **Databases** page, navigate to a [database](/docs/products/databases/databases), and click **Create collection**.
+You can create a collection by heading to the **Databases** page, navigate to a [database](/docs/products/databases/legacy/databases), and click **Create collection**.
 
 {% /tabsitem %}
 
