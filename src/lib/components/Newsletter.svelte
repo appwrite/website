@@ -141,16 +141,3 @@
         </div>
     </div>
 </div>
-
-<style lang="scss">
-    .pre-footer-bg {
-        position: absolute;
-        top: clamp(300px, 50vw, 50%);
-        left: clamp(300px, 50vw, 50%);
-        transform: translate(-50%, -70%);
-        width: clamp(1200px, 100vw, 3000px);
-        height: auto;
-        max-inline-size: unset;
-        max-block-size: unset;
-    }
-</style>

@@ -24,6 +24,7 @@
     });
 
     const index = meilisearchClient.index<SearchResult>('website');
+    index.updateFilterableAttributes(['h1']);
 
     interface SearchResult {
         url: string;
@@ -49,6 +50,7 @@
 
     async function handleSearch(value: string) {
         return await index.search(value, {
+            distinct: 'h1',
             limit: 20,
             attributesToHighlight: ['title', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p'],
             cropLength: 40,
@@ -204,6 +206,9 @@
                                 {@const subtitleContent = getSubtitleContent(hit)}
                                 {@const isDocs = hit.urls_tags?.includes('docs')}
                                 {@const isBlog = hit.urls_tags?.includes('blog')}
+                                {@const isTutorial = hit.urls_tags?.includes('tutorials')}
+                                {@const isIntegration = hit.urls_tags?.includes('integrations')}
+                                {@const isReference = hit.urls_tags?.includes('reference')}}
                                 <li>
                                     <a
                                         data-hit={i}
