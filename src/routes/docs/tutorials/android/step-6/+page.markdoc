@@ -55,10 +55,10 @@ class IdeaService(client: Client) {
         private const val ideaTableId = "<YOUR_IDEA_TABLE_ID_HERE>"
     }
 
-    private val tablesDb = TablesDB(client)
+    private val tablesDB = TablesDB(client)
 
     suspend fun fetch(): List<Row<Map<String, Any>>> {
-        return tablesDb.listRows(
+        return tablesDB.listRows(
             ideaDatabaseId,
             ideaTableId,
             listOf(Query.orderDesc("\$createdAt"), Query.limit(10))
@@ -70,7 +70,7 @@ class IdeaService(client: Client) {
         title: String,
         description: String
     ): Row<Map<String, Any>> {
-        return tablesDb.createRow(
+        return tablesDB.createRow(
             ideaDatabaseId,
             ideaTableId,
             ID.unique(),
@@ -83,7 +83,7 @@ class IdeaService(client: Client) {
     }
 
     suspend fun remove(id: String) {
-        tablesDb.deleteRow(
+        tablesDB.deleteRow(
             ideaDatabaseId,
             ideaTableId,
             id

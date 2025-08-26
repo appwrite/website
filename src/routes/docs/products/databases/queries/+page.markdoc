@@ -1,7 +1,7 @@
 ---
 layout: article
 title: Queries
-description: Harness the power of querying with Appwrite tablesDb. Discover various query options, filtering, sorting, and advanced querying techniques.
+description: Harness the power of querying with Appwrite tablesDB. Discover various query options, filtering, sorting, and advanced querying techniques.
 ---
 
 Many list endpoints in Appwrite allow you to filter, sort, and paginate results using queries. Appwrite provides a common set of syntax to build queries.
@@ -31,9 +31,9 @@ const client = new Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
     .setProject('<PROJECT_ID>');
 
-const tablesDb = new TablesDB(client);
+const tablesDB = new TablesDB(client);
 
-tablesDb.listRows(
+tablesDB.listRows(
     '<DATABASE_ID>',
     '<TABLE_ID>',
     [
@@ -47,7 +47,7 @@ const sdk = require('node-appwrite');
 
 const client = new sdk.Client();
 
-const tablesDb = new sdk.TablesDB(client);
+const tablesDB = new sdk.TablesDB(client);
 
 client
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
@@ -55,7 +55,7 @@ client
     .setKey('<YOUR_API_KEY>')
 ;
 
-const promise = tablesDb.listRows(
+const promise = tablesDB.listRows(
     '<DATABASE_ID>',
     '<TABLE_ID>',
     [
@@ -78,10 +78,10 @@ void main() async {
         .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
         .setProject('<PROJECT_ID>');
 
-    final tablesDb = TablesDB(client);
+    final tablesDB = TablesDB(client);
 
     try {
-        final rows = await tablesDb.listRows(
+        final rows = await tablesDB.listRows(
             '<DATABASE_ID>',
             '<TABLE_ID>',
             [
@@ -103,10 +103,10 @@ func main() async throws {
         .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
         .setProject("<PROJECT_ID>")
 
-    let tablesDb = TablesDB(client)
+    let tablesDB = TablesDB(client)
 
     do {
-        let rows = try await tablesDb.listRows(
+        let rows = try await tablesDB.listRows(
             databaseId: "<DATABASE_ID>",
             tableId: "<TABLE_ID>",
             queries: [
@@ -129,10 +129,10 @@ suspend fun main() {
         .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
         .setProject('<PROJECT_ID>');
 
-    val tablesDb = TablesDB(client)
+    val tablesDB = TablesDB(client)
 
     try {
-        val rows = tablesDb.listRows(
+        val rows = tablesDB.listRows(
             databaseId = "<DATABASE_ID>",
             tableId = "<TABLE_ID>",
             queries = listOf(
@@ -160,7 +160,7 @@ $client
     ->setKey('<YOUR_API_KEY>')
 ;
 
-$tablesDb = new TablesDB($client);
+$tablesDB = new TablesDB($client);
 
 $result = $tables->listRows(
     '<DATABASE_ID>',
@@ -174,7 +174,7 @@ $result = $tables->listRows(
 ```python
 from appwrite.client import Client
 from appwrite.query import Query
-from appwrite.services.tablesDb import TablesDB
+from appwrite.services.tablesDB import TablesDB
 
 client = Client()
 
@@ -184,9 +184,9 @@ client = Client()
   .set_key('<YOUR_API_KEY>')
 )
 
-tablesDb = TablesDB(client)
+tablesDB = TablesDB(client)
 
-result = tablesDb.list_rows(
+result = tablesDB.list_rows(
     '<DATABASE_ID>',
     '<TABLE_ID>',
     [
@@ -262,13 +262,13 @@ By default, rows return only their own fields:
 
 {% multicode %}
 ```client-web
-const doc = await tablesDb.getRow(
+const doc = await tablesDB.getRow(
     '<DATABASE_ID>', '<TABLE_ID>', '<ROW_ID>',
     [Query.select(['name', 'age'])]
 );
 ```
 ```client-flutter
-final doc = await tablesDb.getRow(
+final doc = await tablesDB.getRow(
     databaseId: '<DATABASE_ID>',
     tableId: '<TABLE_ID>',
     rowId: '<ROW_ID>',
@@ -276,31 +276,31 @@ final doc = await tablesDb.getRow(
 );
 ```
 ```python
-doc = tablesDb.get_row(
+doc = tablesDB.get_row(
     '<DATABASE_ID>', '<TABLE_ID>', '<ROW_ID>',
     [Query.select(["name", "age"])]
 )
 ```
 ```ruby
-doc = tablesDb.get_row(
+doc = tablesDB.get_row(
     '<DATABASE_ID>', '<TABLE_ID>', '<ROW_ID>',
     [Query.select(["name", "age"])]
 )
 ```
 ```server-nodejs
-const doc = await tablesDb.getRow(
+const doc = await tablesDB.getRow(
     '<DATABASE_ID>', '<TABLE_ID>', '<ROW_ID>',
     [Query.select(['name', 'age'])]
 );
 ```
 ```php
-$doc = $tablesDb->getRow(
+$doc = $tablesDB->getRow(
     '<DATABASE_ID>', '<TABLE_ID>', '<ROW_ID>',
     [Query::select(["name", "age"])]
 );
 ```
 ```swift
-let doc = try await tablesDb.getRow(
+let doc = try await tablesDB.getRow(
     databaseId: "<DATABASE_ID>",
     tableId: "<TABLE_ID>",
     rowId: "<ROW_ID>",
@@ -319,13 +319,13 @@ Use the `*` wildcard to load all fields from related rows:
 
 {% multicode %}
 ```client-web
-const doc = await tablesDb.getRow(
+const doc = await tablesDB.getRow(
     '<DATABASE_ID>', '<TABLE_ID>', '<ROW_ID>',
     [Query.select(['*', 'reviews.*'])]
 );
 ```
 ```client-flutter
-final doc = await tablesDb.getRow(
+final doc = await tablesDB.getRow(
     databaseId: '<DATABASE_ID>',
     tableId: '<TABLE_ID>',
     rowId: '<ROW_ID>',
@@ -333,31 +333,31 @@ final doc = await tablesDb.getRow(
 );
 ```
 ```python
-doc = tablesDb.get_row(
+doc = tablesDB.get_row(
     '<DATABASE_ID>', '<TABLE_ID>', '<ROW_ID>',
     [Query.select(["*", "reviews.*"])]
 )
 ```
 ```ruby
-doc = tablesDb.get_row(
+doc = tablesDB.get_row(
     '<DATABASE_ID>', '<TABLE_ID>', '<ROW_ID>',
     [Query.select(["*", "reviews.*"])]
 )
 ```
 ```server-nodejs
-const doc = await tablesDb.getRow(
+const doc = await tablesDB.getRow(
     '<DATABASE_ID>', '<TABLE_ID>', '<ROW_ID>',
     [Query.select(["*", "reviews.*"])]
 );
 ```
 ```php
-$doc = $tablesDb->getRow(
+$doc = $tablesDB->getRow(
     '<DATABASE_ID>', '<TABLE_ID>', '<ROW_ID>',
     [Query::select(["*", "reviews.*"])]
 );
 ```
 ```swift
-let doc = try await tablesDb.getRow(
+let doc = try await tablesDB.getRow(
     databaseId: "<DATABASE_ID>",
     tableId: "<TABLE_ID>",
     rowId: "<ROW_ID>",
@@ -377,13 +377,13 @@ For precise control, select only specific fields from related rows:
 
 {% multicode %}
 ```client-web
-const doc = await tablesDb.getRow(
+const doc = await tablesDB.getRow(
     '<DATABASE_ID>', '<TABLE_ID>', '<ROW_ID>',
     [Query.select(['name', 'age', 'reviews.author', 'reviews.rating'])]
 );
 ```
 ```client-flutter
-final doc = await tablesDb.getRow(
+final doc = await tablesDB.getRow(
     databaseId: '<DATABASE_ID>',
     tableId: '<TABLE_ID>',
     rowId: '<ROW_ID>',
@@ -391,32 +391,32 @@ final doc = await tablesDb.getRow(
 );
 ```
 ```python
-doc = tablesDb.get_row(
+doc = tablesDB.get_row(
     '<DATABASE_ID>', '<TABLE_ID>', '<ROW_ID>',
     [Query.select(["name", "age", "reviews.author", "reviews.rating"])]
 )
 ```
 ```ruby
-doc = tablesDb.get_row(
+doc = tablesDB.get_row(
     '<DATABASE_ID>', '<TABLE_ID>', '<ROW_ID>',
     [Query.select(["name", "age", "reviews.author", "reviews.rating"])]
 )
 ```
 ```server-nodejs
-const doc = await tablesDb.getRow(
+const doc = await tablesDB.getRow(
     '<DATABASE_ID>', '<TABLE_ID>', '<ROW_ID>',
     [Query.select(["name", "age", "reviews.author", "reviews.rating"])]
 );
 // Result: { name: "John", age: 30, reviews: [{ author: "...", rating: 5 }] }
 ```
 ```php
-$doc = $tablesDb->getRow(
+$doc = $tablesDB->getRow(
     '<DATABASE_ID>', '<TABLE_ID>', '<ROW_ID>',
     [Query::select(["name", "age", "reviews.author", "reviews.rating"])]
 );
 ```
 ```swift
-let doc = try await tablesDb.getRow(
+let doc = try await tablesDB.getRow(
     databaseId: "<DATABASE_ID>",
     tableId: "<TABLE_ID>",
     rowId: "<ROW_ID>",
@@ -1227,7 +1227,7 @@ You can create complex queries by combining AND and OR operations. For example, 
 
 {% multicode %}
 ```client-web
-const results = await tablesDb.listRows(
+const results = await tablesDB.listRows(
     '<DATABASE_ID>',
     '<TABLE_ID>',
     [
@@ -1245,7 +1245,7 @@ const results = await tablesDb.listRows(
 );
 ```
 ```client-flutter
-final results = await tablesDb.listRows(
+final results = await tablesDB.listRows(
     '<DATABASE_ID>',
     '<TABLE_ID>',
     [
@@ -1263,7 +1263,7 @@ final results = await tablesDb.listRows(
 );
 ```
 ```python
-results = tablesDb.list_rows(
+results = tablesDB.list_rows(
     database_id='<DATABASE_ID>',
     table_id='<TABLE_ID>',
     queries=[

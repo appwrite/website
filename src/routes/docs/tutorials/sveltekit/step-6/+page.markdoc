@@ -41,7 +41,7 @@ const IDEAS_DATABASE_ID = '<YOUR_DATABASE_ID>'; // Replace with your database ID
 const IDEAS_TABLE_ID = '<YOUR_TABLE_ID>'; // Replace with your table ID
 
 export async function getIdeas() {
-	return await tablesDb.listRows(
+	return await tablesDB.listRows(
 		IDEAS_DATABASE_ID,
 		IDEAS_TABLE_ID,
 		// Use a query to show the latest ideas first
@@ -50,7 +50,7 @@ export async function getIdeas() {
 }
 
 export async function addIdea(userId, title, description) {
-	await tablesDb.createRow(IDEAS_DATABASE_ID, IDEAS_TABLE_ID, ID.unique(), {
+	await tablesDB.createRow(IDEAS_DATABASE_ID, IDEAS_TABLE_ID, ID.unique(), {
 		userId,
 		title,
 		description
@@ -58,7 +58,7 @@ export async function addIdea(userId, title, description) {
 }
 
 export async function deleteIdea(id) {
-	await tablesDb.deleteRow(IDEAS_DATABASE_ID, IDEAS_TABLE_ID, id);
+	await tablesDB.deleteRow(IDEAS_DATABASE_ID, IDEAS_TABLE_ID, id);
 }
 ```
 

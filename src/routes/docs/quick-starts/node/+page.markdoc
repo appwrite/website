@@ -87,24 +87,24 @@ client
 Once the Appwrite Client is initialized, create a function to configure a todo table.
 
 ```js
-const tablesDb = new sdk.TablesDB(client);
+const tablesDB = new sdk.TablesDB(client);
 
 var todoDatabase;
 var todoTable;
 
 async function prepareDatabase() {
-    todoDatabase = await tablesDb.create(
+    todoDatabase = await tablesDB.create(
         sdk.ID.unique(),
         'TodosDB'
     );
 
-    todoTable = await tablesDb.createTable(
+    todoTable = await tablesDB.createTable(
         todoDatabase.$id,
         sdk.ID.unique(),
         'Todos'
     );
 
-    await tablesDb.createStringColumn(
+    await tablesDB.createStringColumn(
         todoDatabase.$id,
         todoTable.$id,
         'title',
@@ -112,14 +112,14 @@ async function prepareDatabase() {
         true
     );
 
-    await tablesDb.createStringColumn(
+    await tablesDB.createStringColumn(
         todoDatabase.$id,
         todoTable.$id,
         'description',
         255, false,
         'This is a test description'
     );
-    await tablesDb.createBooleanColumn(
+    await tablesDB.createBooleanColumn(
         todoDatabase.$id,
         todoTable.$id,
         'isComplete',
@@ -151,19 +151,19 @@ async function seedDatabase() {
         isComplete: false
     };
 
-    await tablesDb.createRow(
+    await tablesDB.createRow(
         todoDatabase.$id,
         todoTable.$id,
         sdk.ID.unique(),
         testTodo1
     );
-    await tablesDb.createRow(
+    await tablesDB.createRow(
         todoDatabase.$id,
         todoTable.$id,
         sdk.ID.unique(),
         testTodo2
     );
-    await tablesDb.createRow(
+    await tablesDB.createRow(
         todoDatabase.$id,
         todoTable.$id,
         sdk.ID.unique(),
@@ -180,7 +180,7 @@ Run the functions to by calling `runAllTasks();`.
 
 ```js
 async function getTodos() {
-    var todos = await tablesDb.listRows(
+    var todos = await tablesDB.listRows(
         todoDatabase.$id,
         todoTable.$id
     );

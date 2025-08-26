@@ -102,16 +102,16 @@ val client = Client()
 Once the Appwrite Client is initialized, create a function to configure a todo table.
 
 ```kotlin
-val tablesDb = TablesDB(client)
+val tablesDB = TablesDB(client)
 
 var todoDatabase: Database? = null
 var todoTable: Table? = null
 
 suspend fun prepareDatabase() {
-    todoDatabase = tablesDb.create(ID.unique(), "TodosDB")
-    todoTable = tablesDb.createTable(todoDatabase?.id!!, ID.unique(), "Todos")
+    todoDatabase = tablesDB.create(ID.unique(), "TodosDB")
+    todoTable = tablesDB.createTable(todoDatabase?.id!!, ID.unique(), "Todos")
 
-    tablesDb.createStringColumn(
+    tablesDB.createStringColumn(
         databaseId = todoDatabase?.id!!,
         tableId = todoTable?.id!!,
         key = "title",
@@ -119,7 +119,7 @@ suspend fun prepareDatabase() {
         required = true
     )
 
-    tablesDb.createStringColumn(
+    tablesDB.createStringColumn(
         databaseId = todoDatabase?.id!!,
         tableId = todoTable?.id!!,
         key = "description",
@@ -128,7 +128,7 @@ suspend fun prepareDatabase() {
         default = "This is a test description."
     )
 
-    tablesDb.createBooleanColumn(
+    tablesDB.createBooleanColumn(
         databaseId = todoDatabase?.id!!,
         tableId = todoTable?.id!!,
         key = "isComplete",
@@ -159,21 +159,21 @@ suspend fun seedDatabase() {
         "isComplete" to false
     )
 
-    tablesDb.createRow(
+    tablesDB.createRow(
         databaseId = todoDatabase?.id!!,
         tableId = todoTable?.id!!,
         rowId = ID.unique(),
         data = testTodo1
     )
 
-    tablesDb.createRow(
+    tablesDB.createRow(
         databaseId = todoDatabase?.id!!,
         tableId = todoTable?.id!!,
         rowId = ID.unique(),
         data = testTodo2
     )
 
-    tablesDb.createRow(
+    tablesDB.createRow(
         databaseId = todoDatabase?.id!!,
         tableId = todoTable?.id!!,
         rowId = ID.unique(),
@@ -189,7 +189,7 @@ Create a function to retrieve the mock todo data.
 
 ```kotlin
 suspend fun getTodos() {
-    val todos = tablesDb.listRows(todoDatabase?.id!!, todoTable?.id!!)
+    val todos = tablesDB.listRows(todoDatabase?.id!!, todoTable?.id!!)
     for (todo in todos.rows) {
         println(
             """

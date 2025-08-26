@@ -267,7 +267,7 @@ export default class AppwriteService {
       .setProject(process.env.APPWRITE_FUNCTION_PROJECT_ID)
       .setKey(process.env.APPWRITE_API_KEY);
 
-    this.tablesDb = new TablesDB(client);
+    this.tablesDB = new TablesDB(client);
   }
 
   async getAllRows(databaseId, tableId) {
@@ -281,7 +281,7 @@ export default class AppwriteService {
         queries.push(Query.cursorAfter(cursor));
       }
 
-      const { rows } = await this.tablesDb.listRows(
+      const { rows } = await this.tablesDB.listRows(
         databaseId,
         tableId,
         queries

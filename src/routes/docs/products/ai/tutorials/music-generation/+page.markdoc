@@ -65,7 +65,7 @@ class AppwriteService {
       .setProject(process.env.APPWRITE_FUNCTION_PROJECT_ID)
       .setKey(process.env.APPWRITE_API_KEY);
 
-    this.tablesDb = new TablesDB(client);
+    this.tablesDB = new TablesDB(client);
     this.storage = new Storage(client);
   }
 

@@ -90,24 +90,24 @@ client
 Once the Appwrite Client is initialized, create a function to configure a todo table.
 
 ```ruby
-tablesDb = TablesDB.new(client)
+tablesDB = TablesDB.new(client)
 
 todo_database = nil
 todo_table = nil
 
 def prepare_database(databases)
-    todo_database = tablesDb.create(
+    todo_database = tablesDB.create(
         database_id: ID.unique(), 
         name: 'TodosDB'
     )
 
-    todo_table = tablesDb.create_table(
+    todo_table = tablesDB.create_table(
         database_id: todo_database.id, 
         table_id: ID.unique(), 
         name: 'Todos'
     )
 
-    tablesDb.create_string_column(
+    tablesDB.create_string_column(
         database_id: todo_database.id, 
         table_id: todo_table.id, 
         key: 'title', 
@@ -115,7 +115,7 @@ def prepare_database(databases)
         required: true
     )
 
-    tablesDb.create_string_column(
+    tablesDB.create_string_column(
         database_id: todo_database.id, 
         table_id: todo_table.id, 
         key: 'description', 
@@ -123,7 +123,7 @@ def prepare_database(databases)
         required: false
     )
 
-    tablesDb.create_boolean_column(
+    tablesDB.create_boolean_column(
         database_id: todo_database.id, 
         table_id: todo_table.id, 
         key: 'isComplete', 
@@ -157,21 +157,21 @@ def seed_database(databases, todo_database, todo_table)
         isComplete: false
     }
 
-    tablesDb.create_row(
+    tablesDB.create_row(
         database_id: todo_database.id, 
         table_id: todo_table.id, 
         row_id: ID.unique(), 
         data: test_todo1
     )
     
-    tablesDb.create_row(
+    tablesDB.create_row(
         database_id: todo_database.id, 
         table_id: todo_table.id, 
         row_id: ID.unique(), 
         data: test_todo2
     )
     
-    tablesDb.create_row(
+    tablesDB.create_row(
         database_id: todo_database.id, 
         table_id: todo_table.id, 
         row_id: ID.unique(), 
@@ -188,7 +188,7 @@ Run the functions to by calling `run_all_tasks()`.
 
 ```ruby
 def get_todos(databases, todo_database, todo_table)
-    todos = tablesDb.list_rows(
+    todos = tablesDB.list_rows(
         database_id: todo_database.id, 
         table_id: todo_table.id
     )

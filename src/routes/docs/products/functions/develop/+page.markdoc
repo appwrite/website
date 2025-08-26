@@ -1574,10 +1574,10 @@ export default async ({ req, res, log, error }) => {
        .setProject(process.env.APPWRITE_FUNCTION_PROJECT_ID)
        .setKey(req.headers['x-appwrite-key']);
 
-    const tablesDb = new TablesDB(client);
+    const tablesDB = new TablesDB(client);
 
     try {
-        await tablesDb.createRow(
+        await tablesDB.createRow(
             '<DATABASE_ID>',
             '<TABLE_ID>',
             ID.unique(),
@@ -1607,10 +1607,10 @@ return function ($context) {
         ->setProject(getenv('APPWRITE_FUNCTION_PROJECT_ID'))
         ->setKey($context->req->headers['x-appwrite-key']);
    
-    $tablesDb = new TablesDB($client);
+    $tablesDB = new TablesDB($client);
 
     try {
-        $tablesDb->createRow(
+        $tablesDB->createRow(
             databaseId: '<DATABASE_ID>',
             tableId: '<TABLE_ID>',
             rowId: ID::unique(),
@@ -1626,7 +1626,7 @@ return function ($context) {
 ```
 ```python
 from appwrite.client import Client
-from appwrite.services.tablesDb import TablesDB
+from appwrite.services.tablesDB import TablesDB
 from appwrite.id import ID
 
 import os
@@ -1639,10 +1639,10 @@ def main(context):
             .set_key(context.req.headers["x-appwrite-key"])
     )
 
-    tablesDb = TablesDB(client)
+    tablesDB = TablesDB(client)
 
     try:
-        tablesDb.create_row(
+        tablesDB.create_row(
             database_id="<DATABASE_ID>",
             table_id="<TABLE_ID>",
             row_id=ID.unique(),
@@ -1665,10 +1665,10 @@ def main(context)
       .set_project(ENV['APPWRITE_FUNCTION_PROJECT_ID'])
       .set_key(context.req.headers['x-appwrite-key'])
 
-    tablesDb = Appwrite::TablesDB.new(client)
+    tablesDB = Appwrite::TablesDB.new(client)
 
     begin
-        tablesDb.create_row(
+        tablesDB.create_row(
             databaseId: '<DATABASE_ID>',
             tableId: '<TABLE_ID>',
             rowId: ID.unique(),
@@ -1691,10 +1691,10 @@ export default function ({req, res, error}: any){
        .setProject(Deno.env.get("APPWRITE_FUNCTION_PROJECT_ID"))
        .setKey(req.headers["x-appwrite-key"] || "");
 
-    const tablesDb = new TablesDB(client);
+    const tablesDB = new TablesDB(client);
     
     try {
-        tablesDb.createRow(
+        tablesDB.createRow(
             "<DATABASE_ID>",
             "<TABLE_ID>",
             ID.unique(),
@@ -1755,10 +1755,10 @@ Future<dynamic> main(final context) async {
        .setProject(Platform.environment['APPWRITE_FUNCTION_PROJECT_ID'])
        .setKey(context.req.headers['x-appwrite-key']);
 
-    final tablesDb = TablesDB(client);
+    final tablesDB = TablesDB(client);
     
     try {
-        await tablesDb.createRow(
+        await tablesDB.createRow(
             databaseId: '<DATABASE_ID>',
             tableId: '<TABLE_ID>',
             rowId: ID.unique(),
@@ -1783,10 +1783,10 @@ func main(context: RuntimeContext) async throws -> RuntimeOutput {
        .setProject(ProcessInfo.processInfo.environment["APPWRITE_FUNCTION_PROJECT_ID"])
        .setKey(context.req.headers["x-appwrite-key"] ?? "")
 
-    let tablesDb = TablesDB(client: client)
+    let tablesDB = TablesDB(client: client)
 
     do {
-        try await tablesDb.createRow(
+        try await tablesDB.createRow(
             databaseId: "<DATABASE_ID>", 
             tableId: "<TABLE_ID>",
             rowId: ID.unique(),
@@ -1816,7 +1816,7 @@ namespace DotNetRuntime
                 .SetProject(Environment.GetEnvironmentVariable("APPWRITE_FUNCTION_PROJECT_ID")) 
                 .SetKey(Context.Req.Headers["x-appwrite-key"]);
 
-            var tablesDb = new TablesDB(client);
+            var tablesDB = new TablesDB(client);
     
             try {
                 await databases.createRow(
@@ -1851,10 +1851,10 @@ class Main {
            .setProject(System.getenv("APPWRITE_FUNCTION_PROJECT_ID"))
            .setKey(context.req.headers["x-appwrite-key"])
 
-        val tablesDb = TablesDB(client)
+        val tablesDB = TablesDB(client)
 
         try {
-            tablesDb.createRow(
+            tablesDB.createRow(
                 databaseId = "<DATABASE_ID>",
                 tableId = "<TABLE_ID>",
                 rowId = ID.unique()
@@ -1884,10 +1884,10 @@ public class Main {
              .setProject(System.getenv("APPWRITE_FUNCTION_PROJECT_ID"))
              .setKey(context.getReq().getHeaders().get("x-appwrite-key"));
 
-        Databases tablesDb = new TablesDB(client);
+        Databases tablesDB = new TablesDB(client);
 
         try {
-            tablesDb.createRow(
+            tablesDB.createRow(
                 "<DATABASE_ID>",
                 "<TABLE_ID>",
                 ID.unique(),
@@ -1926,10 +1926,10 @@ export default async ({ req, res, log }) => {
         return res.text("Access denied: This function requires authentication. Please sign in to continue.");
     }
 
-    const tablesDb = new TablesDB(client);
+    const tablesDB = new TablesDB(client);
 
     try {
-        await tablesDb.createRow(
+        await tablesDB.createRow(
             '<DATABASE_ID>',
             '<TABLE_ID>',
             ID.unique(),
@@ -1963,10 +1963,10 @@ return function ($context) {
         return $context->res->text("Access denied: This function requires authentication. Please sign in to continue.");
     }
     
-    $tablesDb = new TablesDB($client);
+    $tablesDB = new TablesDB($client);
 
     try {
-        $tablesDb->createRow(
+        $tablesDB->createRow(
             databaseId: '<DATABASE_ID>',
             tableId: '<TABLE_ID>',
             rowId: ID::unique(),
@@ -1982,7 +1982,7 @@ return function ($context) {
 ```
 ```python
 from appwrite.client import Client
-from appwrite.services.tablesDb import TablesDB
+from appwrite.services.tablesDB import TablesDB
 from appwrite.id import ID
 
 import os
@@ -1998,10 +1998,10 @@ def main(context):
     else:
         return context.res.text("Access denied: This function requires authentication. Please sign in to continue.")
 
-    tablesDb = TablesDB(client)
+    tablesDB = TablesDB(client)
 
     try:
-        tablesDb.create_row(
+        tablesDB.create_row(
             database_id="<DATABASE_ID>",
             table_id="<TABLE_ID>",
             row_id=ID.unique(),
@@ -2028,10 +2028,10 @@ def main(context)
         return context.response.text("Access denied: This function requires authentication. Please sign in to continue.")
     end
 
-    tablesDb = Appwrite::TablesDB.new(client)
+    tablesDB = Appwrite::TablesDB.new(client)
 
     begin
-        tablesDb.create_row('<DATABASE_ID>', '<TABLE_ID>', Appwrite::ID.unique(), {})
+        tablesDB.create_row('<DATABASE_ID>', '<TABLE_ID>', Appwrite::ID.unique(), {})
     rescue Appwrite::Exception => e
         context.error("Failed to create row: " + e.message)
         return context.response.text("Failed to create row")
@@ -2053,10 +2053,10 @@ export default function ({req, res, error}: any){
         return res.text("Access denied: This function requires authentication. Please sign in to continue.");
     }
     
-    const tablesDb = new TablesDB(client);
+    const tablesDB = new TablesDB(client);
     
     try {
-        tablesDb.createRow(
+        tablesDB.createRow(
             "<DATABASE_ID>",
             "<TABLE_ID>",
             ID.unique(),
@@ -2126,10 +2126,10 @@ Future<dynamic> main(final context) async {
         return context.res.text("Access denied: This function requires authentication. Please sign in to continue.");
     }
     
-    final tablesDb = TablesDB(client);
+    final tablesDB = TablesDB(client);
     
     try {
-        await tablesDb.createRow(
+        await tablesDB.createRow(
             databaseId: '<DATABASE_ID>',
             tableId: '<TABLE_ID>',
             rowId: ID.unique(),
@@ -2158,10 +2158,10 @@ func main(context: RuntimeContext) async throws -> RuntimeOutput {
         return context.res.text("Access denied: This function requires authentication. Please sign in to continue.")
     }
 
-    let tablesDb = TablesDB(client: client)
+    let tablesDB = TablesDB(client: client)
 
     do {
-        try await tablesDb.createRow(
+        try await tablesDB.createRow(
             databaseId: "<DATABASE_ID>",
             tableId: "<TABLE_ID>",
             rowId: ID.unique()
@@ -2195,7 +2195,7 @@ namespace DotNetRuntime
                 return Context.Res.Text("Access denied: This function requires authentication. Please sign in to continue");
             }
 
-            var tablesDb = new TablesDB(client);
+            var tablesDB = new TablesDB(client);
 
             try {
                 await databases.createRow(
@@ -2234,10 +2234,10 @@ class Main {
             return context.res.text("Access denied: This function requires authentication. Please sign in to continue.")
         }
 
-        val tablesDb = TablesDB(client)
+        val tablesDB = TablesDB(client)
 
         try {
-            tablesDb.createRow(
+            tablesDB.createRow(
                 databaseId = "<DATABASE_ID>",
                 tableId = "<TABLE_ID>",
                 rowId = ID.unique(),
@@ -2271,10 +2271,10 @@ public class Main {
             return context.res.text("Access denied: This function requires authentication. Please sign in to continue.");
         }
 
-        Databases tablesDb = new TablesDB(client);
+        Databases tablesDB = new TablesDB(client);
 
         try {
-            tablesDb.createRow(
+            tablesDB.createRow(
                 "<DATABASE_ID>",
                 "<TABLE_ID>",
                 ID.unique(),

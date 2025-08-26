@@ -299,10 +299,10 @@ const client = new Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
     .setProject('<PROJECT_ID>');                 // Your project ID
 
-const tablesDb = new TablesDB(client);
+const tablesDB = new TablesDB(client);
 
 // Store user preferences in a database
-const promise = tablesDb.createRow(
+const promise = tablesDB.createRow(
     '<DATABASE_ID>',
     '<TABLE_ID>',
     ID.unique(),
@@ -327,7 +327,7 @@ const promise = tablesDb.createRow(
 );
 
 // Retrieve user preferences
-const getUserPrefs = tablesDb.listRows(
+const getUserPrefs = tablesDB.listRows(
     '<DATABASE_ID>',
     '<TABLE_ID>',
     [
@@ -342,10 +342,10 @@ final client = Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
     .setProject('<PROJECT_ID>');                 // Your project ID
 
-final tablesDb = TablesDB(client);
+final tablesDB = TablesDB(client);
 
 // Store user preferences in a database
-final row = await tablesDb.createRow(
+final row = await tablesDB.createRow(
     databaseId: '<DATABASE_ID>',
     tableId: '<TABLE_ID>',
     rowId: ID.unique(),
@@ -370,7 +370,7 @@ final row = await tablesDb.createRow(
 );
 
 // Retrieve user preferences
-final userPrefs = await tablesDb.listRows(
+final userPrefs = await tablesDB.listRows(
     databaseId: '<DATABASE_ID>',
     tableId: '<TABLE_ID>',
     queries: [

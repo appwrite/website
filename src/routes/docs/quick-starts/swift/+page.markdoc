@@ -96,26 +96,26 @@ let client = Client()
 Once the Appwrite Client is initialized, create a function to configure a todo table.
 
 ```swift
-let tablesDb = TablesDB(client)
+let tablesDB = TablesDB(client)
 
 func prepareDatabase() async -> (Database?, Table?) {
-    let todoDatabase = try? await tablesDb.create(
+    let todoDatabase = try? await tablesDB.create(
         databaseId: ID.unique(),
         name: "TodosDB"
     )
-    let todoTable = try? await tablesDb.createTable(
+    let todoTable = try? await tablesDB.createTable(
         databaseId: todoDatabase!.id,
         tableId: ID.unique(),
         name: "Todos"
     )
-    try? await tablesDb.createStringColumn(
+    try? await tablesDB.createStringColumn(
         databaseId: todoDatabase!.id,
         tableId: todoTable!.id,
         key: "title",
         size: 255,
         xrequired: true
     )
-    try? await tablesDb.createStringColumn(
+    try? await tablesDB.createStringColumn(
         databaseId: todoDatabase!.id as! String,
         tableId: todoTable!.id as! String,
         key: "description",
@@ -123,7 +123,7 @@ func prepareDatabase() async -> (Database?, Table?) {
         xrequired: false,
         xdefault: "This is a test description."
     )
-    try? await tablesDb.createBooleanColumn(
+    try? await tablesDB.createBooleanColumn(
         databaseId: todoDatabase!.id as! String,
         tableId: todoTable!.id as! String,
         key: "isComplete",
@@ -156,19 +156,19 @@ func seedDatabase(todoDatabase: Database?, todoTable: Table?) async {
         "isComplete": false
     ]
 
-    try? await tablesDb.createRow(
+    try? await tablesDB.createRow(
         databaseId: todoDatabase!.id,
         tableId: todoTable!.id,
         rowId: ID.unique(), 
         data: testTodo1
     )
-    try? await tablesDb.createRow(
+    try? await tablesDB.createRow(
         databaseId: todoDatabase!.id,
         tableId: todoTable!.id,
         rowId: ID.unique(), 
         data: testTodo2
     )
-    try? await tablesDb.createRow(
+    try? await tablesDB.createRow(
         databaseId: todoDatabase!.id,
         tableId: todoTable!.id,
         rowId: ID.unique(),
@@ -184,7 +184,7 @@ Create a function to retrieve the mock todo data.
 
 ```swift
 func getTodos(todoDatabase: Database?, todoTable: Table?) async {
-    let todos = try? await tablesDb.listRows(
+    let todos = try? await tablesDB.listRows(
         databaseId: todoDatabase!.id as! String,
         tableId: todoTable!.id as! String
     )

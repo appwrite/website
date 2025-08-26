@@ -79,7 +79,7 @@ package main
 import (
 	"github.com/appwrite/sdk-for-go/appwrite"
 	"github.com/appwrite/sdk-for-go/client"
-	"github.com/appwrite/sdk-for-go/tablesDb"
+	"github.com/appwrite/sdk-for-go/tablesDB"
 	"github.com/appwrite/sdk-for-go/models"
 )
 
@@ -87,7 +87,7 @@ var (
 	appwriteClient    client.Client
 	todoDatabase      *models.Database
 	todoTable    *models.Table
-	appwriteDatabases *tablesDb.TablesDB
+	appwriteDatabases *tablesDB.TablesDB
 )
 
 func main() {
@@ -105,20 +105,20 @@ Once the Appwrite Client is initialized, create a function to configure a todo t
 
 ```go
 func prepareDatabase() {
-	tablesDb = appwrite.NewTablesDB(appwriteClient)
+	tablesDB = appwrite.NewTablesDB(appwriteClient)
 
-	todoDatabase, _ = tablesDb.Create(
+	todoDatabase, _ = tablesDB.Create(
 		id.Unique(),
 		"TodosDB",
 	)
 
-	todoTable, _ = tablesDb.CreateTable(
+	todoTable, _ = tablesDB.CreateTable(
 		todoDatabase.Id,
 		id.Unique(),
 		"Todos",
 	)
 
-	tablesDb.CreateStringColumn(
+	tablesDB.CreateStringColumn(
 		todoDatabase.Id,
 		todoTable.Id,
 		"title",
@@ -126,7 +126,7 @@ func prepareDatabase() {
 		true,
 	)
 
-	tablesDb.CreateStringColumn(
+	tablesDB.CreateStringColumn(
 		todoDatabase.Id,
 		todoTable.Id,
 		"description",
@@ -134,7 +134,7 @@ func prepareDatabase() {
 		false,
 	)
 
-	tablesDb.CreateBooleanColumn(
+	tablesDB.CreateBooleanColumn(
 		todoDatabase.Id,
 		todoTable.Id,
 		"isComplete",
@@ -166,21 +166,21 @@ func seedDatabase() {
 		"isComplete":  false,
 	}
 
-	tablesDb.createRow(
+	tablesDB.createRow(
 		todoDatabase.Id,
 		todoTable.Id,
 		id.Unique(),
 		testTodo1,
 	)
 
-	tablesDb.createRow(
+	tablesDB.createRow(
 		todoDatabase.Id,
 		todoTable.Id,
 		id.Unique(),
 		testTodo2,
 	)
 
-	tablesDb.createRow(
+	tablesDB.createRow(
 		todoDatabase.Id,
 		todoTable.Id,
 		id.Unique(),
@@ -207,7 +207,7 @@ type TodoList struct {
 }
 
 func getTodos() {
-	todoResponse, _ := tablesDb.listRows(
+	todoResponse, _ := tablesDB.listRows(
 		todoDatabase.Id,
 		todoTable.Id,
 	)
@@ -231,7 +231,7 @@ import (
 
 	"github.com/appwrite/sdk-for-go/appwrite"
 	"github.com/appwrite/sdk-for-go/client"
-	"github.com/appwrite/sdk-for-go/tablesDb"
+	"github.com/appwrite/sdk-for-go/tablesDB"
 	"github.com/appwrite/sdk-for-go/id"
 	"github.com/appwrite/sdk-for-go/models"
 )
@@ -240,7 +240,7 @@ var (
 	appwriteClient    client.Client
 	todoDatabase      *models.Database
 	todoTable    *models.Table
-	tablesDb *tablesDb.TablesDB
+	tablesDB *tablesDB.TablesDB
 )
 
 func main() {

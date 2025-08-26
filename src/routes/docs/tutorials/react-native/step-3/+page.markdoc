@@ -56,5 +56,5 @@ client
 
 
 export const account = new Account(client);
-export const tablesDb = new TablesDB(client);
+export const tablesDB = new TablesDB(client);
 ```

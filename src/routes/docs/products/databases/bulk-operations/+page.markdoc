@@ -38,9 +38,9 @@ const client = new sdk.Client()
     .setProject('<PROJECT_ID>')
     .setKey('<API_KEY>');
 
-const tablesDb = new sdk.TablesDB(client);
+const tablesDB = new sdk.TablesDB(client);
 
-const result = await tablesDb.createRows(
+const result = await tablesDB.createRows(
     '<DATABASE_ID>',
     '<TABLE_ID>',
     [
@@ -58,16 +58,16 @@ const result = await tablesDb.createRows(
 
 ```server-python
 from appwrite.client import Client
-from appwrite.services.tablesDb import TablesDB
+from appwrite.services.tablesDB import TablesDB
 
 client = Client()
 client.set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
 client.set_project('<PROJECT_ID>')
 client.set_key('<API_KEY>')
 
-tablesDb = TablesDB(client)
+tablesDB = TablesDB(client)
 
-result = tablesDb.create_rows(
+result = tablesDB.create_rows(
     database_id = '<DATABASE_ID>',
     table_id = '<TABLE_ID>',
     rows = [
@@ -102,9 +102,9 @@ const client = new sdk.Client()
     .setProject('<PROJECT_ID>')
     .setKey('<API_KEY>');
 
-const tablesDb = new sdk.TablesDB(client);
+const tablesDB = new sdk.TablesDB(client);
 
-const result = await tablesDb.updateRows(
+const result = await tablesDB.updateRows(
     '<DATABASE_ID>',
     '<TABLE_ID>',
     {
@@ -118,16 +118,16 @@ const result = await tablesDb.updateRows(
 
 ```server-python
 from appwrite.client import Client
-from appwrite.services.tablesDb import TablesDB
+from appwrite.services.tablesDB import TablesDB
 
 client = Client()
 client.set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
 client.set_project('<PROJECT_ID>')
 client.set_key('<API_KEY>')
 
-tablesDb = TablesDB(client)
+tablesDB = TablesDB(client)
 
-result = tablesDb.update_rows(
+result = tablesDB.update_rows(
     database_id = '<DATABASE_ID>',
     table_id = '<TABLE_ID>',
     data = {
@@ -158,9 +158,9 @@ const client = new sdk.Client()
     .setProject('<PROJECT_ID>')
     .setKey('<API_KEY>');
 
-const tablesDb = new sdk.TablesDB(client);
+const tablesDB = new sdk.TablesDB(client);
 
-const result = await tablesDb.upsertRows(
+const result = await tablesDB.upsertRows(
     '<DATABASE_ID>',
     '<TABLE_ID>',
     [
@@ -178,7 +178,7 @@ const result = await tablesDb.upsertRows(
 
 ```server-python
 from appwrite.client import Client
-from appwrite.services.tablesDb import TablesDB
+from appwrite.services.tablesDB import TablesDB
 from appwrite.id import ID
 
 client = Client()
@@ -186,9 +186,9 @@ client.set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
 client.set_project('<PROJECT_ID>')
 client.set_key('<API_KEY>')
 
-tablesDb = TablesDB(client)
+tablesDB = TablesDB(client)
 
-result = tablesDb.upsert_rows(
+result = tablesDB.upsert_rows(
     database_id = '<DATABASE_ID>',
     table_id = '<TABLE_ID>',
     rows = [
@@ -223,9 +223,9 @@ const client = new sdk.Client()
     .setProject('<PROJECT_ID>')
     .setKey('<API_KEY>');
 
-const tablesDb = new sdk.TablesDB(client);
+const tablesDB = new sdk.TablesDB(client);
 
-const result = await tablesDb.deleteRows(
+const result = await tablesDB.deleteRows(
     '<DATABASE_ID>',
     '<TABLE_ID>',
     [
@@ -236,7 +236,7 @@ const result = await tablesDb.deleteRows(
 
 ```server-python
 from appwrite.client import Client
-from appwrite.services.tablesDb import TablesDB
+from appwrite.services.tablesDB import TablesDB
 from appwrite.query import Query
 
 client = Client()
@@ -244,9 +244,9 @@ client.set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
 client.set_project('<PROJECT_ID>')
 client.set_key('<API_KEY>')
 
-tablesDb = TablesDB(client)
+tablesDB = TablesDB(client)
 
-result = tablesDb.delete_rows(
+result = tablesDB.delete_rows(
     database_id = '<DATABASE_ID>',
     table_id = '<TABLE_ID>',
     queries = [

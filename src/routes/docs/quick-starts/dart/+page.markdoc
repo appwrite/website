@@ -95,20 +95,20 @@ var todoDatabase;
 var todoTable;
 
 Future<void> prepareDatabase() async {
-  tablesDb = TablesDB(client);
+  tablesDB = TablesDB(client);
 
-  todoDatabase = await tablesDb.create(
+  todoDatabase = await tablesDB.create(
     databaseId: ID.unique(), 
     name: 'TodosDB'
   );
 
-  todoTable = await tablesDb.createTable(
+  todoTable = await tablesDB.createTable(
     databaseId: todoDatabase.$id, 
     tableId: ID.unique(), 
     name: 'Todos'
   );
 
-  await tablesDb.createStringColumn(
+  await tablesDB.createStringColumn(
     databaseId: todoDatabase.$id,
     tableId: todoTable.$id,
     key: 'title',
@@ -116,7 +116,7 @@ Future<void> prepareDatabase() async {
     xrequired: true
   );
 
-  await tablesDb.createStringColumn(
+  await tablesDB.createStringColumn(
     databaseId: todoDatabase.$id,
     tableId: todoTable.$id,
     key: 'description',
@@ -125,7 +125,7 @@ Future<void> prepareDatabase() async {
     xdefault: 'This is a test description'
   );
 
-  await tablesDb.createBooleanColumn(
+  await tablesDB.createBooleanColumn(
     databaseId: todoDatabase.$id,
     tableId: todoTable.$id,
     key: 'isComplete',
@@ -156,21 +156,21 @@ Future<void> seedDatabase() async {
     'isComplete': false
   };
 
-  await tablesDb.createRow(
+  await tablesDB.createRow(
     databaseId: todoDatabase.$id,
     tableId: todoTable.$id,
     rowId: ID.unique(),
     data: testTodo1
   );
 
-  await tablesDb.createRow(
+  await tablesDB.createRow(
     databaseId: todoDatabase.$id,
     tableId: todoTable.$id,
     rowId: ID.unique(),
     data: testTodo2
   );
 
-  await tablesDb.createRow(
+  await tablesDB.createRow(
     databaseId: todoDatabase.$id,
     tableId: todoTable.$id,
     rowId: ID.unique(),
@@ -185,7 +185,7 @@ Future<void> seedDatabase() async {
 Create a function to retrieve the mock todo data.
 ```dart
 Future<void> getTodos() async {
-  var todos = await tablesDb.listRows(
+  var todos = await tablesDB.listRows(
     databaseId: todoDatabase.$id, 
     tableId: todoTable.$id
   );

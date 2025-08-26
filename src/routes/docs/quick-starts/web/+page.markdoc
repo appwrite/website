@@ -72,7 +72,7 @@ client
     .setProject('<PROJECT_ID>') // Replace with your project ID
 
 export const account = new Appwrite.Account(client)
-export const tablesDb = new Appwrite.TablesDB(client)
+export const tablesDB = new Appwrite.TablesDB(client)
 ```
 {% /section %}
 
@@ -93,7 +93,7 @@ client
     .setProject('<PROJECT_ID>'); // Replace with your project ID
 
 export const account: Account = new Account(client);
-export const tablesDb: TablesDB = new TablesDB(client);
+export const tablesDB: TablesDB = new TablesDB(client);
 
 // You then use the imported type definitions like this
 const authUser: Models.Session = await account.createEmailPasswordSession(email, password);
@@ -115,7 +115,7 @@ interface Idea extends Models.Row {
 When you fetch rows, you can use this new `Idea` interface like this.
 
 ```ts
-const response = await tablesDb.listRows(
+const response = await tablesDB.listRows(
     ideasDatabaseId,
     ideasTableId,
     [Query.orderDesc("$createdAt"), Query.limit(queryLimit)]

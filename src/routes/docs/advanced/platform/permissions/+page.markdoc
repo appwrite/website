@@ -74,9 +74,9 @@ const client = new Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
     .setProject('<PROJECT_ID>');
 
-const tablesDb = new TablesDB(client);
+const tablesDB = new TablesDB(client);
 
-let promise = tablesDb.createRow(
+let promise = tablesDB.createRow(
     '<DATABASE_ID>',
     '<TABLE_ID>',
     {'actorName': 'Chris Evans', 'height': 183},
@@ -107,9 +107,9 @@ const client = new Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
     .setProject('<PROJECT_ID>');
 
-const tablesDb = new TablesDB(client);
+const tablesDB = new TablesDB(client);
 
-let promise = tablesDb.createRow(
+let promise = tablesDB.createRow(
     '<DATABASE_ID>',
     '<TABLE_ID>',
     {'actorName': 'Chris Evans', 'height': 183},
@@ -153,9 +153,9 @@ const client = new Client()
     .setEndpoint('https://cloud.appwrite.io/v1')
     .setProject('<PROJECT_ID>');
 
-const tablesDb = new TablesDB(client);
+const tablesDB = new TablesDB(client);
 
-let promise = tablesDb.createRow(
+let promise = tablesDB.createRow(
     '<DATABASE_ID>',
     '<TABLE_ID>',
     { 'title': 'My Private Row' },
@@ -180,10 +180,10 @@ void main() async {
         .setEndpoint('https://cloud.appwrite.io/v1')
         .setProject('<PROJECT_ID>');
 
-    final tablesDb = TablesDB(client);
+    final tablesDB = TablesDB(client);
 
     try {
-        final row = await tablesDb.createRow(
+        final row = await tablesDB.createRow(
             databaseId: '<DATABASE_ID>',
             tableId: '<TABLE_ID>',
             data: { 'title': 'My Private Row' },
@@ -206,10 +206,10 @@ func main() async throws {
         .setEndpoint("https://cloud.appwrite.io/v1")
         .setProject("<PROJECT_ID>");
 
-    let tablesDb = TablesDB(client);
+    let tablesDB = TablesDB(client);
 
     do {
-        let row = try await tablesDb.createRow(
+        let row = try await tablesDB.createRow(
             databaseId: "<DATABASE_ID>",
             tableId: "<TABLE_ID>",
             data: ["title": "My Private Row"],
@@ -236,10 +236,10 @@ suspend fun main() {
         .setEndpoint("https://cloud.appwrite.io/v1")
         .setProject("<PROJECT_ID>");
 
-    val tablesDb = TablesDB(client);
+    val tablesDB = TablesDB(client);
 
     try {
-        val row = tablesDb.createRow(
+        val row = tablesDB.createRow(
             databaseId = "<DATABASE_ID>",
             tableId = "<TABLE_ID>",
             data = mapOf("title" to "My Private Row"),

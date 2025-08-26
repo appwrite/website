@@ -23,7 +23,7 @@ const sdk = require('node-appwrite');
 // Init SDK
 const client = new sdk.Client();
 
-const tablesDb = new sdk.TablesDB(client);
+const tablesDB = new sdk.TablesDB(client);
 
 client
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
@@ -31,7 +31,7 @@ client
     .setKey('919c2d18fb5d4...a2ae413da83346ad2') // Your secret API key
 ;
 
-const promise = tablesDb.create('<DATABASE_ID>', '<NAME>');
+const promise = tablesDB.create('<DATABASE_ID>', '<NAME>');
 
 promise.then(function (response) {
     console.log(response);
@@ -45,7 +45,7 @@ import * as sdk from "https://deno.land/x/appwrite/mod.ts";
 // Init SDK
 let client = new sdk.Client();
 
-let tablesDb = new sdk.TablesDB(client);
+let tablesDB = new sdk.TablesDB(client);
 
 client
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
@@ -54,7 +54,7 @@ client
 ;
 
 
-let promise = tablesDb.create('<DATABASE_ID>', '<NAME>');
+let promise = tablesDB.create('<DATABASE_ID>', '<NAME>');
 
 promise.then(function (response) {
     console.log(response);
@@ -76,13 +76,13 @@ $client
     ->setKey('919c2d18fb5d4...a2ae413da83346ad2') // Your secret API key
 ;
 
-$tablesDb = new TablesDB($client);
+$tablesDB = new TablesDB($client);
 
-$result = $tablesDb->create('<DATABASE_ID>', '<NAME>');
+$result = $tablesDB->create('<DATABASE_ID>', '<NAME>');
 ```
 ```python
 from appwrite.client import Client
-from appwrite.services.tablesDb import TablesDB
+from appwrite.services.tablesDB import TablesDB
 
 client = Client()
 
@@ -92,9 +92,9 @@ client = Client()
   .set_key('919c2d18fb5d4...a2ae413da83346ad2') # Your secret API key
 )
 
-tablesDb = TablesDB(client)
+tablesDB = TablesDB(client)
 
-result = tablesDb.create('<DATABASE_ID>', '<NAME>')
+result = tablesDB.create('<DATABASE_ID>', '<NAME>')
 ```
 ```ruby
 require 'Appwrite'
@@ -106,9 +106,9 @@ client = Client.new
     .set_project('<PROJECT_ID>') # Your project ID
     .set_key('919c2d18fb5d4...a2ae413da83346ad2') # Your secret API key
 
-tablesDb = TablesDB.new(client)
+tablesDB = TablesDB.new(client)
 
-response = tablesDb.create(database_id: '<DATABASE_ID>', name: '<NAME>')
+response = tablesDB.create(database_id: '<DATABASE_ID>', name: '<NAME>')
 
 puts response.inspect
 ```
@@ -122,9 +122,9 @@ var client = new Client()
     .SetProject("<PROJECT_ID>") // Your project ID
     .SetKey("919c2d18fb5d4...a2ae413da83346ad2"); // Your secret API key
 
-var tablesDb = new TablesDB(client);
+var tablesDB = new TablesDB(client);
 
-Database result = await tablesDb.Create(
+Database result = await tablesDB.Create(
     databaseId: "<DATABASE_ID>",
     name: "<NAME>");
 ```
@@ -133,7 +133,7 @@ import 'package:dart_appwrite/dart_appwrite.dart';
 
 void main() { // Init SDK
   Client client = Client();
-  TablesDB tablesDb = TablesDB(client);
+  TablesDB tablesDB = TablesDB(client);
 
   client
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
@@ -141,7 +141,7 @@ void main() { // Init SDK
     .setKey('919c2d18fb5d4...a2ae413da83346ad2') // Your secret API key
   ;
 
-  Future result = tablesDb.create(
+  Future result = tablesDB.create(
     databaseId: '<DATABASE_ID>',
     name: '<NAME>',
   );
@@ -163,9 +163,9 @@ val client = Client(context)
     .setProject("<PROJECT_ID>") // Your project ID
     .setKey("919c2d18fb5d4...a2ae413da83346ad2") // Your secret API key
 
-val tablesDb = TablesDB(client)
+val tablesDB = TablesDB(client)
 
-val response = tablesDb.create(
+val response = tablesDB.create(
     databaseId = "<DATABASE_ID>",
     name = "<NAME>",
 )
@@ -180,9 +180,9 @@ Client client = new Client()
     .setProject("<PROJECT_ID>") // Your project ID
     .setKey("919c2d18fb5d4...a2ae413da83346ad2"); // Your secret API key
 
-TablesDB tablesDb = new TablesDB(client);
+TablesDB tablesDB = new TablesDB(client);
 
-tablesDb.create(
+tablesDB.create(
     "<DATABASE_ID>",
     "<NAME>",
     new CoroutineCallback<>((result, error) -> {
@@ -203,9 +203,9 @@ let client = Client()
     .setProject("<PROJECT_ID>") // Your project ID
     .setKey("919c2d18fb5d4...a2ae413da83346ad2") // Your secret API key
 
-let tablesDb = TablesDB(client)
+let tablesDB = TablesDB(client)
 
-let response = try await tablesDb.create(
+let response = try await tablesDB.create(
     databaseId: "<DATABASE_ID>",
     name: "<NAME>"
 )

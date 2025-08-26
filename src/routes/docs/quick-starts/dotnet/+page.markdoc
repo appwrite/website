@@ -94,23 +94,23 @@ client
 Once the Appwrite Client is initialized, create a function to configure a todo table.
 
 ```csharp
-var tablesDb = new TablesDB(client);
+var tablesDB = new TablesDB(client);
 
 Database todoDatabase;
 Table todoTable;
 
-todoDatabase = await tablesDb.Create(
+todoDatabase = await tablesDB.Create(
     databaseId: ID.Unique(),
     name: "TodosDB"
 );
 
-todoTable = await tablesDb.CreateTable(
+todoTable = await tablesDB.CreateTable(
     databaseId: todoDatabase.Id,
     tableId: ID.Unique(),
     name: "Todos"
 );
 
-await tablesDb.CreateStringColumn(
+await tablesDB.CreateStringColumn(
     databaseId: todoDatabase.Id,
     tableId: todoTable.Id,
     key: "title",
@@ -118,7 +118,7 @@ await tablesDb.CreateStringColumn(
     required: true
 );
 
-await tablesDb.CreateStringColumn(
+await tablesDB.CreateStringColumn(
     databaseId: todoDatabase.Id,
     tableId: todoTable.Id,
     key: "description",
@@ -127,7 +127,7 @@ await tablesDb.CreateStringColumn(
     xdefault: "This is a test description"
 );
 
-await tablesDb.CreateBooleanColumn(
+await tablesDB.CreateBooleanColumn(
     databaseId: todoDatabase.Id,
     tableId: todoTable.Id,
     key: "isComplete",
@@ -159,21 +159,21 @@ var testTodo3 = new Dictionary<string, object>()
     {"isComplete", false}
 };
 
-await tablesDb.createRow(
+await tablesDB.createRow(
     databaseId: todoDatabase.Id,
     tableId: todoTable.Id,
     rowId: ID.Unique(),
     data: testTodo1
 );
 
-await tablesDb.createRow(
+await tablesDB.createRow(
     databaseId: todoDatabase.Id,
     tableId: todoTable.Id,
     rowId: ID.Unique(),
     data: testTodo2
 );
 
-await tablesDb.createRow(
+await tablesDB.createRow(
     databaseId: todoDatabase.Id,
     tableId: todoTable.Id,
     rowId: ID.Unique(),
@@ -187,7 +187,7 @@ await tablesDb.createRow(
 Create a function to retrieve the mock todo data.
 
 ```csharp
-var todos = await tablesDb.listRows(
+var todos = await tablesDB.listRows(
     databaseId: todoDatabase.Id,
     tableId: todoTable.Id
 );

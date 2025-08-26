@@ -44,9 +44,9 @@ const client = new Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
     .setProject('<YOUR_PROJECT_ID>'); // Your project ID
 
-const tablesDb = new TablesDB(client);
+const tablesDB = new TablesDB(client);
 
-const result = await tablesDb.incrementRowColumn(
+const result = await tablesDB.incrementRowColumn(
     '<DATABASE_ID>',
     '<TABLE_ID>',
     '<ROW_ID>',
@@ -61,9 +61,9 @@ final client = Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
     .setProject('<PROJECT_ID>');
 
-final tablesDb = TablesDB(client);
+final tablesDB = TablesDB(client);
 
-final row = await tablesDb.incrementRowColumn(
+final row = await tablesDB.incrementRowColumn(
     databaseId: '<DATABASE_ID>',
     tableId: '<TABLE_ID>',
     rowId: '<ROW_ID>',
@@ -79,9 +79,9 @@ let client = Client()
     .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
     .setProject("<PROJECT_ID>")
 
-let tablesDb = TablesDB(client)
+let tablesDB = TablesDB(client)
 
-let row = try await tablesDb.incrementRowColumn(
+let row = try await tablesDB.incrementRowColumn(
     databaseId: "<DATABASE_ID>",
     tableId: "<TABLE_ID>",
     rowId: "<ROW_ID>",
@@ -97,9 +97,9 @@ val client = Client(applicationContext)
     .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
     .setProject("<PROJECT_ID>")
 
-val tablesDb = TablesDB(client)
+val tablesDB = TablesDB(client)
 
-val row = tablesDb.incrementRowColumn(
+val row = tablesDB.incrementRowColumn(
     databaseId = "<DATABASE_ID>",
     tableId = "<TABLE_ID>",
     rowId = "<ROW_ID>",
@@ -115,9 +115,9 @@ const client = new sdk.Client()
     .setProject('<PROJECT_ID>') // Your project ID
     .setKey('<API_KEY>'); // Your secret API key
 
-const tablesDb = new sdk.TablesDB(client);
+const tablesDB = new sdk.TablesDB(client);
 
-const result = await tablesDb.incrementRowColumn(
+const result = await tablesDB.incrementRowColumn(
     '<DATABASE_ID>',
     '<TABLE_ID>',
     '<ROW_ID>',
@@ -127,16 +127,16 @@ const result = await tablesDb.incrementRowColumn(
 ```
 ```server-python
 from appwrite.client import Client
-from appwrite.services.tablesDb import TablesDB
+from appwrite.services.tablesDB import TablesDB
 
 client = Client()
 client.set_endpoint('https://<REGION>.cloud.appwrite.io/v1') # Your API Endpoint
 client.set_project('<PROJECT_ID>') # Your project ID
 client.set_key('<API_KEY>') # Your secret API key
 
-tablesDb = TablesDB(client)
+tablesDB = TablesDB(client)
 
-result = tablesDb.increment_row_column(
+result = tablesDB.increment_row_column(
     database_id = '<DATABASE_ID>',
     table_id = '<TABLE_ID>',
     row_id = '<ROW_ID>',
@@ -177,9 +177,9 @@ const client = new Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
     .setProject('<YOUR_PROJECT_ID>'); // Your project ID
 
-const tablesDb = new TablesDB(client);
+const tablesDB = new TablesDB(client);
 
-const result = await tablesDb.decrementRowColumn(
+const result = await tablesDB.decrementRowColumn(
     '<DATABASE_ID>',
     '<TABLE_ID>',
     '<ROW_ID>',
@@ -194,9 +194,9 @@ final client = Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
     .setProject('<PROJECT_ID>');
 
-final tablesDb = TablesDB(client);
+final tablesDB = TablesDB(client);
 
-final row = await tablesDb.decrementRowColumn(
+final row = await tablesDB.decrementRowColumn(
     databaseId: '<DATABASE_ID>',
     tableId: '<TABLE_ID>',
     rowId: '<ROW_ID>',
@@ -212,9 +212,9 @@ let client = Client()
     .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
     .setProject("<PROJECT_ID>")
 
-let tablesDb = TablesDB(client)
+let tablesDB = TablesDB(client)
 
-let row = try await tablesDb.decrementRowColumn(
+let row = try await tablesDB.decrementRowColumn(
     databaseId: "<DATABASE_ID>",
     tableId: "<TABLE_ID>",
     rowId: "<ROW_ID>",
@@ -230,9 +230,9 @@ val client = Client(applicationContext)
     .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
     .setProject("<PROJECT_ID>")
 
-val tablesDb = TablesDB(client)
+val tablesDB = TablesDB(client)
 
-val row = tablesDb.decrementRowColumn(
+val row = tablesDB.decrementRowColumn(
     databaseId = "<DATABASE_ID>",
     tableId = "<TABLE_ID>",
     rowId = "<ROW_ID>",
@@ -248,9 +248,9 @@ const client = new sdk.Client()
     .setProject('<PROJECT_ID>') // Your project ID
     .setKey('<API_KEY>'); // Your secret API key
 
-const tablesDb = new sdk.TablesDB(client);
+const tablesDB = new sdk.TablesDB(client);
 
-const result = await tablesDb.decrementRowColumn(
+const result = await tablesDB.decrementRowColumn(
     '<DATABASE_ID>',
     '<TABLE_ID>',
     '<ROW_ID>',
@@ -260,16 +260,16 @@ const result = await tablesDb.decrementRowColumn(
 ```
 ```server-python
 from appwrite.client import Client
-from appwrite.services.tablesDb import TablesDB
+from appwrite.services.tablesDB import TablesDB
 
 client = Client()
 client.set_endpoint('https://<REGION>.cloud.appwrite.io/v1') # Your API Endpoint
 client.set_project('<PROJECT_ID>') # Your project ID
 client.set_key('<API_KEY>') # Your secret API key
 
-tablesDb = TablesDB(client)
+tablesDB = TablesDB(client)
 
-result = tablesDb.decrement_row_column(
+result = tablesDB.decrement_row_column(
     database_id = '<DATABASE_ID>',
     table_id = '<TABLE_ID>',
     row_id = '<ROW_ID>',
@@ -307,7 +307,7 @@ You can set minimum and maximum bounds for individual operations to prevent inva
 {% multicode %}
 ```client-web
 // Increment with maximum constraint
-const result = await tablesDb.incrementRowColumn(
+const result = await tablesDB.incrementRowColumn(
     '<DATABASE_ID>',
     '<TABLE_ID>',
     '<ROW_ID>',
@@ -317,7 +317,7 @@ const result = await tablesDb.incrementRowColumn(
 );
 
 // Decrement with minimum constraint
-const result2 = await tablesDb.decrementRowColumn(
+const result2 = await tablesDB.decrementRowColumn(
     '<DATABASE_ID>',
     '<TABLE_ID>',
     '<ROW_ID>',
@@ -328,7 +328,7 @@ const result2 = await tablesDb.decrementRowColumn(
 ```
 ```client-flutter
 // Increment with maximum constraint
-final row = await tablesDb.incrementRowColumn(
+final row = await tablesDB.incrementRowColumn(
     databaseId: '<DATABASE_ID>',
     tableId: '<TABLE_ID>',
     rowId: '<ROW_ID>',
@@ -338,7 +338,7 @@ final row = await tablesDb.incrementRowColumn(
 );
 
 // Decrement with minimum constraint
-final row2 = await tablesDb.decrementRowColumn(
+final row2 = await tablesDB.decrementRowColumn(
     databaseId: '<DATABASE_ID>',
     tableId: '<TABLE_ID>',
     rowId: '<ROW_ID>',
@@ -349,7 +349,7 @@ final row2 = await tablesDb.decrementRowColumn(
 ```
 ```client-apple
 // Increment with maximum constraint
-let row = try await tablesDb.incrementRowColumn(
+let row = try await tablesDB.incrementRowColumn(
     databaseId: "<DATABASE_ID>",
     tableId: "<TABLE_ID>",
     rowId: "<ROW_ID>",
@@ -359,7 +359,7 @@ let row = try await tablesDb.incrementRowColumn(
 )
 
 // Decrement with minimum constraint
-let row2 = try await tablesDb.decrementRowColumn(
+let row2 = try await tablesDB.decrementRowColumn(
     databaseId: "<DATABASE_ID>",
     tableId: "<TABLE_ID>",
     rowId: "<ROW_ID>",
@@ -370,7 +370,7 @@ let row2 = try await tablesDb.decrementRowColumn(
 ```
 ```client-android-kotlin
 // Increment with maximum constraint
-val row = tablesDb.incrementRowColumn(
+val row = tablesDB.incrementRowColumn(
     databaseId = "<DATABASE_ID>",
     tableId = "<TABLE_ID>",
     rowId = "<ROW_ID>",
@@ -380,7 +380,7 @@ val row = tablesDb.incrementRowColumn(
 )
 
 // Decrement with minimum constraint
-val row2 = tablesDb.decrementRowColumn(
+val row2 = tablesDB.decrementRowColumn(
     databaseId = "<DATABASE_ID>",
     tableId = "<TABLE_ID>",
     rowId = "<ROW_ID>",
@@ -391,7 +391,7 @@ val row2 = tablesDb.decrementRowColumn(
 ```
 ```server-nodejs
 // Increment with maximum constraint
-const result = await tablesDb.incrementRowColumn(
+const result = await tablesDB.incrementRowColumn(
     '<DATABASE_ID>',
     '<TABLE_ID>',
     '<ROW_ID>',
@@ -401,7 +401,7 @@ const result = await tablesDb.incrementRowColumn(
 );
 
 // Decrement with minimum constraint
-const result2 = await tablesDb.decrementRowColumn(
+const result2 = await tablesDB.decrementRowColumn(
     '<DATABASE_ID>',
     '<TABLE_ID>',
     '<ROW_ID>',
@@ -412,7 +412,7 @@ const result2 = await tablesDb.decrementRowColumn(
 ```
 ```server-python
 # Increment with maximum constraint
-result = tablesDb.increment_row_column(
+result = tablesDB.increment_row_column(
     database_id = '<DATABASE_ID>',
     table_id = '<TABLE_ID>',
     row_id = '<ROW_ID>',
@@ -422,7 +422,7 @@ result = tablesDb.increment_row_column(
 )
 
 # Decrement with minimum constraint
-result2 = tablesDb.decrement_row_column(
+result2 = tablesDB.decrement_row_column(
     database_id = '<DATABASE_ID>',
     table_id = '<TABLE_ID>',
     row_id = '<ROW_ID>',
@@ -446,7 +446,7 @@ For complex updates that include both atomic operations and regular field change
 {% multicode %}
 ```client-web
 // First, increment the likes atomically
-const likeResult = await tablesDb.incrementRowColumn(
+const likeResult = await tablesDB.incrementRowColumn(
     '<DATABASE_ID>',
     '<TABLE_ID>',
     '<ROW_ID>',
@@ -455,7 +455,7 @@ const likeResult = await tablesDb.incrementRowColumn(
 );
 
 // Then, update other fields
-const updateResult = await tablesDb.updateRow(
+const updateResult = await tablesDB.updateRow(
     '<DATABASE_ID>',
     '<TABLE_ID>',
     '<ROW_ID>',
@@ -467,7 +467,7 @@ const updateResult = await tablesDb.updateRow(
 ```
 ```client-flutter
 // First, increment the likes atomically
-final likeResult = await tablesDb.incrementRowColumn(
+final likeResult = await tablesDB.incrementRowColumn(
     databaseId: '<DATABASE_ID>',
     tableId: '<TABLE_ID>',
     rowId: '<ROW_ID>',
@@ -476,7 +476,7 @@ final likeResult = await tablesDb.incrementRowColumn(
 );
 
 // Then, update other fields
-final updateResult = await tablesDb.updateRow(
+final updateResult = await tablesDB.updateRow(
     databaseId: '<DATABASE_ID>',
     tableId: '<TABLE_ID>',
     rowId: '<ROW_ID>',
@@ -488,7 +488,7 @@ final updateResult = await tablesDb.updateRow(
 ```
 ```client-apple
 // First, increment the likes atomically
-let likeResult = try await tablesDb.incrementRowColumn(
+let likeResult = try await tablesDB.incrementRowColumn(
     databaseId: "<DATABASE_ID>",
     tableId: "<TABLE_ID>",
     rowId: "<ROW_ID>",
@@ -497,7 +497,7 @@ let likeResult = try await tablesDb.incrementRowColumn(
 )
 
 // Then, update other fields
-let updateResult = try await tablesDb.updateRow(
+let updateResult = try await tablesDB.updateRow(
     databaseId: "<DATABASE_ID>",
     tableId: "<TABLE_ID>",
     rowId: "<ROW_ID>",
@@ -509,7 +509,7 @@ let updateResult = try await tablesDb.updateRow(
 ```
 ```client-android-kotlin
 // First, increment the likes atomically
-val likeResult = tablesDb.incrementRowColumn(
+val likeResult = tablesDB.incrementRowColumn(
     databaseId = "<DATABASE_ID>",
     tableId = "<TABLE_ID>",
     rowId = "<ROW_ID>",
@@ -518,7 +518,7 @@ val likeResult = tablesDb.incrementRowColumn(
 )
 
 // Then, update other fields
-val updateResult = tablesDb.updateRow(
+val updateResult = tablesDB.updateRow(
     databaseId = "<DATABASE_ID>",
     tableId = "<TABLE_ID>",
     rowId = "<ROW_ID>",
@@ -530,7 +530,7 @@ val updateResult = tablesDb.updateRow(
 ```
 ```server-nodejs
 // First, increment the likes atomically
-const likeResult = await tablesDb.incrementRowColumn(
+const likeResult = await tablesDB.incrementRowColumn(
     '<DATABASE_ID>',
     '<TABLE_ID>',
     '<ROW_ID>',
@@ -539,7 +539,7 @@ const likeResult = await tablesDb.incrementRowColumn(
 );
 
 // Then, update other fields
-const updateResult = await tablesDb.updateRow(
+const updateResult = await tablesDB.updateRow(
     '<DATABASE_ID>',
     '<TABLE_ID>',
     '<ROW_ID>',
@@ -551,7 +551,7 @@ const updateResult = await tablesDb.updateRow(
 ```
 ```server-python
 # First, increment the likes atomically
-like_result = tablesDb.increment_row_column(
+like_result = tablesDB.increment_row_column(
     database_id = '<DATABASE_ID>',
     table_id = '<TABLE_ID>',
     row_id = '<ROW_ID>',
@@ -560,7 +560,7 @@ like_result = tablesDb.increment_row_column(
 )
 
 # Then, update other fields
-update_result = tablesDb.update_row(
+update_result = tablesDB.update_row(
     database_id = '<DATABASE_ID>',
     table_id = '<TABLE_ID>',
     row_id = '<ROW_ID>',

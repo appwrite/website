@@ -189,10 +189,10 @@ const client = new Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
     .setProject('<PROJECT_ID>');
 
-const tablesDb = new TablesDB(client);
+const tablesDB = new TablesDB(client);
 
 // Create a row that only members of "Example Corp" tenant can access
-const row = await tablesDb.createRow(
+const row = await tablesDB.createRow(
     'invoices_db',
     'invoices',
     ID.unique(),
@@ -219,10 +219,10 @@ final client = Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
     .setProject('<PROJECT_ID>');
 
-final tablesDb = TablesDB(client);
+final tablesDB = TablesDB(client);
 
 // Create a row that only members of "Example Corp" tenant can access
-final row = await tablesDb.createRow(
+final row = await tablesDB.createRow(
     databaseId: 'invoices_db',
     tableId: 'invoices',
     rowId: ID.unique(),
@@ -249,10 +249,10 @@ let client = Client()
     .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
     .setProject("<PROJECT_ID>")
 
-let tablesDb = TablesDB(client)
+let tablesDB = TablesDB(client)
 
 // Create a row that only members of "Example Corp" tenant can access
-let row = try await tablesDb.createRow(
+let row = try await tablesDB.createRow(
     databaseId: "invoices_db",
     tableId: "invoices",
     rowId: ID.unique(),
@@ -283,10 +283,10 @@ val client = Client(context)
     .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
     .setProject("<PROJECT_ID>")
 
-val tablesDb = TablesDB(client)
+val tablesDB = TablesDB(client)
 
 // Create a row that only members of "Example Corp" tenant can access
-val row = tablesDb.createRow(
+val row = tablesDB.createRow(
     databaseId = "invoices_db",
     tableId = "invoices",
     rowId = ID.unique(),
@@ -320,16 +320,16 @@ const client = new Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
     .setProject('<PROJECT_ID>');
 
-const tablesDb = new TablesDB(client);
+const tablesDB = new TablesDB(client);
 
 // Current user will only see invoices they have access to
-const rows = await tablesDb.listRows(
+const rows = await tablesDB.listRows(
     'invoices_db',
     'invoices'
 );
 
 // For specific tenant data, you can add a query filter
-const tenantDocuments = await tablesDb.listRows(
+const tenantDocuments = await tablesDB.listRows(
     'invoices_db',
     'invoices',
     [
@@ -344,16 +344,16 @@ final client = Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
     .setProject('<PROJECT_ID>');
 
-final tablesDb = TablesDB(client);
+final tablesDB = TablesDB(client);
 
 // Current user will only see invoices they have access to
-final rows = await tablesDb.listRows(
+final rows = await tablesDB.listRows(
     databaseId: 'invoices_db',
     tableId: 'invoices',
 );
 
 // For specific tenant data, you can add a query filter
-final tenantDocuments = await tablesDb.listRows(
+final tenantDocuments = await tablesDB.listRows(
     databaseId: 'invoices_db',
     tableId: 'invoices',
     queries: [
@@ -368,16 +368,16 @@ let client = Client()
     .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
     .setProject("<PROJECT_ID>")
 
-let tablesDb = TablesDB(client)
+let tablesDB = TablesDB(client)
 
 // Current user will only see invoices they have access to
-let rows = try await tablesDb.listRows(
+let rows = try await tablesDB.listRows(
     databaseId: "invoices_db",
     tableId: "invoices"
 )
 
 // For specific tenant data, you can add a query filter
-let tenantDocuments = try await tablesDb.listRows(
+let tenantDocuments = try await tablesDB.listRows(
     databaseId: "invoices_db",
     tableId: "invoices",
     queries: [
@@ -394,16 +394,16 @@ val client = Client(context)
     .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
     .setProject("<PROJECT_ID>")
 
-val tablesDb = TablesDB(client)
+val tablesDB = TablesDB(client)
 
 // Current user will only see invoices they have access to
-val rows = tablesDb.listRows(
+val rows = tablesDB.listRows(
     databaseId = "invoices_db",
     tableId = "invoices"
 )
 
 // For specific tenant data, you can add a query filter
-val tenantDocuments = tablesDb.listRows(
+val tenantDocuments = tablesDB.listRows(
     databaseId = "invoices_db",
     tableId = "invoices",
     queries = listOf(

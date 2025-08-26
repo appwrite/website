@@ -107,7 +107,7 @@ class AppwriteService {
       .setProject(process.env.APPWRITE_FUNCTION_PROJECT_ID)
       .setKey(process.env.APPWRITE_API_KEY);
 
-    this.tablesDb = new TablesDB(client);
+    this.tablesDB = new TablesDB(client);
     this.storage = new Storage(client);
   }
 
@@ -186,7 +186,7 @@ To begin with we're going to add a new function to the `appwrite.js` file we cre
 ```js
 async createImageLabels(databaseId, tableId, imageId, labels)
 {
-  await this.tablesDb.createRow(
+  await this.tablesDB.createRow(
     databaseId,
     tableId,
     ID.unique(),

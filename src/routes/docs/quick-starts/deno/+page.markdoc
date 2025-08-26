@@ -92,7 +92,7 @@ client
 Once the Appwrite Client is initialized, create a function to configure a todo table.
 
 ```ts
-const tablesDb: TablesDB = new TablesDB(client);
+const tablesDB: TablesDB = new TablesDB(client);
 
 var todoDatabase: Models.Database;
 var todoTable: Models.Table;
@@ -104,18 +104,18 @@ interface Todo {
 }
 
 async function prepareDatabase(): Promise<void> {
-    todoDatabase = await tablesDb.create(
+    todoDatabase = await tablesDB.create(
         ID.unique(),
         'TodosDB'
     );
 
-    todoTable = await tablesDb.createTable(
+    todoTable = await tablesDB.createTable(
         todoDatabase.$id,
         ID.unique(),
         'Todos'
     );
 
-    await tablesDb.createStringColumn(
+    await tablesDB.createStringColumn(
         todoDatabase.$id,
         todoTable.$id,
         'title',
@@ -123,14 +123,14 @@ async function prepareDatabase(): Promise<void> {
         true
     );
 
-    await tablesDb.createStringColumn(
+    await tablesDB.createStringColumn(
         todoDatabase.$id,
         todoTable.$id,
         'description',
         255, false,
         'This is a test description'
     );
-    await tablesDb.createBooleanColumn(
+    await tablesDB.createBooleanColumn(
         todoDatabase.$id,
         todoTable.$id,
         'isComplete',
@@ -162,19 +162,19 @@ async function seedDatabase(): Promise<void> {
         isComplete: false
     };
 
-    await tablesDb.createRow(
+    await tablesDB.createRow(
         todoDatabase.$id,
         todoTable.$id,
         ID.unique(),
         testTodo1
     );
-    await tablesDb.createRow(
+    await tablesDB.createRow(
         todoDatabase.$id,
         todoTable.$id,
         ID.unique(),
         testTodo2
     );
-    await tablesDb.createRow(
+    await tablesDB.createRow(
         todoDatabase.$id,
         todoTable.$id,
         ID.unique(),
@@ -191,7 +191,7 @@ Run the functions to by calling `runAllTasks();`.
 
 ```ts
 async function getTodos(): Promise<void> {
-    const todos = await tablesDb.listRows(
+    const todos = await tablesDB.listRows(
         todoDatabase.$id,
         todoTable.$id
     );

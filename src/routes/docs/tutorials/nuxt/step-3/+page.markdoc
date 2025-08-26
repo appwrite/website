@@ -69,5 +69,5 @@ const client: Client = new Client();
 client.setEndpoint(url).setProject(project);
 
 export const account: Account = new Account(client);
-export const tablesDb: TablesDB = new TablesDB(client);
+export const tablesDB: TablesDB = new TablesDB(client);
 ```

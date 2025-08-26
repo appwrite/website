@@ -37,7 +37,7 @@ export const IDEAS_TABLE_ID = "<YOUR_TABLE_ID>"; // Replace with your table ID
 export const ideas = reactive({
   current: [],
   async init() {
-    const response = await tablesDb.listRows(
+    const response = await tablesDB.listRows(
       IDEAS_DATABASE_ID,
       IDEAS_TABLE_ID,
       [Query.orderDesc("$createdAt"), Query.limit(10)]
@@ -45,7 +45,7 @@ export const ideas = reactive({
     this.current = response.rows;
   },
   async add(idea) {
-    const response = await tablesDb.createRow(
+    const response = await tablesDB.createRow(
       IDEAS_DATABASE_ID,
       IDEAS_TABLE_ID,
       ID.unique(),
@@ -54,7 +54,7 @@ export const ideas = reactive({
     this.current = [response, ...this.current].slice(0, 10);
   },
   async remove(id) {
-    await tablesDb.deleteRow(IDEAS_DATABASE_ID, IDEAS_TABLE_ID, id);
+    await tablesDB.deleteRow(IDEAS_DATABASE_ID, IDEAS_TABLE_ID, id);
     this.current = this.current.filter((idea) => idea.$id !== id);
     await this.init(); // Refetch ideas to ensure we have 10 items
   },
