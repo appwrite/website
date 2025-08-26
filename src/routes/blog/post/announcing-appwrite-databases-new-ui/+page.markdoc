@@ -59,28 +59,28 @@ const client = new sdk.Client()
     .setProject('<PROJECT_ID>')
     .setKey('<API_KEY>');
 
-const tablesDb = new sdk.TablesDB(client);
+const tablesDB = new sdk.TablesDB(client);
 
 async function main() {
-	const database = await tablesDb.create({
+	const database = await tablesDB.create({
 		databaseId: '<DATABASE_ID>',
 		name: '<NAME>'
 	});
 	
-	const table = await tablesDb.createTable({
+	const table = await tablesDB.createTable({
 		databaseId: database.$id,
 		tableId: '<TABLE_ID>',
 		name: '<NAME>'
 	});
 	
-	const nameColumn = await tablesDb.createStringColumn({
+	const nameColumn = await tablesDB.createStringColumn({
 		databaseId: database.$id,
 		tableId: table.$id,
 		key: 'name',
 		size: 255
 	});
 	
-	const row = await tablesDb.createRow({
+	const row = await tablesDB.createRow({
 		databaseId: database.$id,
 		tableId: table.$id,
 		rowId: sdk.ID.unique(),
