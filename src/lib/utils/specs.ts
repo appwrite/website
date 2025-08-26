@@ -129,6 +129,11 @@ function getExamples(version: string) {
                 query: '?raw',
                 import: 'default'
             });
+        case '1.8.x':
+            return import.meta.glob('$appwrite/docs/examples/1.8.x/**/*.md', {
+                query: '?raw',
+                import: 'default'
+            });
     }
 }
 
@@ -202,11 +207,9 @@ function* iterateAllMethods(
             };
         }
         if (
-            methods?.post &&
-            'x-appwrite' in methods.post &&
-            methods.post['x-appwrite'] &&
+            methods?.post?.tags?.includes(service) &&
             typeof methods.post['x-appwrite'] === 'object' &&
-            'methods' in methods.post['x-appwrite']
+            Array.isArray(methods.post['x-appwrite']?.methods)
         ) {
             const appwritePost = methods.post as AppwriteOperationObject;
             for (const additionalMethod of appwritePost['x-appwrite'].methods!) {
@@ -423,6 +426,7 @@ export async function getService(
                   isAndroidServer ? 'server-kotlin' : 'client-android'
               }/${isAndroidJava ? 'java' : 'kotlin'}/${operation['x-appwrite']?.demo}`
             : `/node_modules/@appwrite.io/repo/docs/examples/${version}/${platform}/examples/${operation['x-appwrite']?.demo}`;
+
         if (!(path in examples)) {
             continue;
         }
