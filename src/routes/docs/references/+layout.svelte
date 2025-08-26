@@ -61,6 +61,11 @@
                     href: `${prefix}/databases`
                 },
                 {
+                    label: 'TablesDB',
+                    icon: 'icon-database',
+                    href: `${prefix}/tablesDB`
+                },
+                {
                     label: 'Sites',
                     icon: 'icon-globe-alt',
                     href: `${prefix}/sites`

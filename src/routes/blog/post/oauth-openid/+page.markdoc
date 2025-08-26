@@ -99,7 +99,7 @@ const client = new Client()
 
 const account = new Account(client);
 
-account.createOAuth2Session(OAuthProvider.Oidc, '[LINK_ON_SUCCESS]', '[LINK_ON_FAILURE]');
+account.createOAuth2Session(OAuthProvider.Oidc, '<LINK_ON_SUCCESS>', '<LINK_ON_FAILURE>');
 ```
 
 To learn more about Appwrite and OAuth 2.0, ensure you visit the [Appwrite documentation](https://appwrite.io/docs/products/auth/oauth2).

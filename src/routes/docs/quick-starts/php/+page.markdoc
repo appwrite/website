@@ -31,10 +31,10 @@ Then, under **Integrate with your server**, add an **API Key** with the followin
 | Category  {% width=120 %} | Required scopes       | Purpose |
 |-----------|-----------------------|---------|
 | Database  | `databases.write`     | Allows API key to create, update, and delete [databases](/docs/products/databases/databases). |
-|           | `collections.write`   | Allows API key to create, update, and delete [collections](/docs/products/databases/collections). |
-|           | `attributes.write`    | Allows API key to create, update, and delete [attributes](/docs/products/databases/collections#attributes). |
-|           | `documents.read`      | Allows API key to read [documents](/docs/products/databases/documents). |
-|           | `documents.write`     | Allows API key to create, update, and delete [documents](/docs/products/databases/documents). |
+|           | `tables.write`   | Allows API key to create, update, and delete [tables](/docs/products/databases/tables). |
+|           | `columns.write`    | Allows API key to create, update, and delete [columns](/docs/products/databases/tables#columns). |
+|           | `rows.read`      | Allows API key to read [rows](/docs/products/databases/rows). |
+|           | `rows.write`     | Allows API key to create, update, and delete [rows](/docs/products/databases/rows). |
 
 Other scopes are optional.
 
@@ -75,7 +75,7 @@ Create a new file `index.php` and initialize the Appwrite Client. Replace `<PROJ
 require_once 'vendor/autoload.php';
 
 use Appwrite\Client;
-use Appwrite\Services\Databases;
+use Appwrite\Services\TablesDB;
 use Appwrite\ID;
 
 $client = new Client();
@@ -89,56 +89,56 @@ $client
 {% /section %}
 {% section #step-5 step=5 title="Initialize database" %}
 
-Once the Appwrite Client is initialized, create a function to configure a todo collection.
+Once the Appwrite Client is initialized, create a function to configure a todo table.
 
 ```php
-$databases = new Databases($client);
+$tablesDB = new TablesDB($client);
 
-function prepareDatabase($databases) {
-    $todoDatabase = $databases->create(
+function prepareDatabase($tablesDB) {
+    $todoDatabase = $tablesDB->create(
         databaseId: ID::unique(), 
         name: 'TodosDB'
     );
 
-    $todoCollection = $databases->createCollection(
+    $todoTable = $tablesDB->createTable(
         databaseId: $todoDatabase['$id'], 
-        collectionId: ID::unique(),
+        tableId: ID::unique(),
         name: 'Todos'
     );
 
-    $databases->createStringAttribute(
+    $tablesDB->createStringColumn(
         databaseId: $todoDatabase['$id'], 
-        collectionId: $todoCollection['$id'], 
+        tableId: $todoTable['$id'], 
         key: 'title', 
         size: 255, 
         required: true
     );
 
-    $databases->createStringAttribute(
+    $tablesDB->createStringColumn(
         databaseId: $todoDatabase['$id'], 
-        collectionId: $todoCollection['$id'], 
+        tableId: $todoTable['$id'], 
         key: 'description', 
         size: 255, 
         required: false, 
     );
 
-    $databases->createBooleanAttribute(
+    $tablesDB->createBooleanColumn(
         databaseId: $todoDatabase['$id'], 
-        collectionId: $todoCollection['$id'], 
+        tableId: $todoTable['$id'], 
         key: 'isComplete', 
         required: true
     );
 
-    return [$todoDatabase, $todoCollection];
+    return [$todoDatabase, $todoTable];
 }
 ```
 
 {% /section %}
-{% section #step-6 step=6 title="Add documents" %}
-Create a function to add some mock data into your new collection.
+{% section #step-6 step=6 title="Add rows" %}
+Create a function to add some mock data into your new table.
 
 ```php
-function seedDatabase($databases, $todoDatabase, $todoCollection) {
+function seedDatabase($tablesDB, $todoDatabase, $todoTable) {
     $testTodo1 = [
         'title' => 'Buy apples',
         'description' => 'At least 2KGs',
@@ -156,23 +156,23 @@ function seedDatabase($databases, $todoDatabase, $todoCollection) {
         'isComplete' => false
     ];
 
-    $databases->createDocument(
+    $tablesDB->createRow(
         $todoDatabase['$id'], 
-        $todoCollection['$id'], 
+        $todoTable['$id'], 
         ID::unique(), 
         $testTodo1
     );
     
-    $databases->createDocument(
+    $tablesDB->createRow(
         $todoDatabase['$id'], 
-        $todoCollection['$id'], 
+        $todoTable['$id'], 
         ID::unique(), 
         $testTodo2
     );
     
-    $databases->createDocument(
+    $tablesDB->createRow(
         $todoDatabase['$id'], 
-        $todoCollection['$id'], 
+        $todoTable['$id'], 
         ID::unique(), 
         $testTodo3
     );
@@ -180,32 +180,32 @@ function seedDatabase($databases, $todoDatabase, $todoCollection) {
 ```
 
 {% /section %}
-{% section #step-7 step=7 title="Retrieve documents" %}
+{% section #step-7 step=7 title="Retrieve rows" %}
 
 Create a function to retrieve the mock todo data and a function to execute the requests in order.
 Run the functions to by calling `runAllTasks();`.
 
 ```php
-function getTodos($databases, $todoDatabase, $todoCollection) {
-    $todos = $databases->listDocuments(
+function getTodos($tablesDB, $todoDatabase, $todoTable) {
+    $todos = $tablesDB->listRows(
         $todoDatabase['$id'], 
-        $todoCollection['$id']
+        $todoTable['$id']
     );
 
-    foreach ($todos['documents'] as $todo) {
+    foreach ($todos['rows'] as $todo) {
         echo "Title: {$todo['title']}\n" .
             "Description: {$todo['description']}\n" .
             "Is Todo Complete: {$todo['isComplete']}\n\n";    
    }
 }
 
-function runAllTasks($databases) {
-    [$todoDatabase, $todoCollection] = prepareDatabase($databases);
-    seedDatabase($databases, $todoDatabase, $todoCollection);
-    getTodos($databases, $todoDatabase, $todoCollection);
+function runAllTasks($tablesDB) {
+    [$todoDatabase, $todoTable] = prepareDatabase($tablesDB);
+    seedDatabase($tablesDB, $todoDatabase, $todoTable);
+    getTodos($tablesDB, $todoDatabase, $todoTable);
 }
 
-runAllTasks($databases);
+runAllTasks($tablesDB);
 ```
 
 {% /section %}

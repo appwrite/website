@@ -1,11 +1,11 @@
 ---
 layout: article
 title: Relationships
-description: Manage complex data relationships with Appwrite Databases. Discover how to define and work with relationships between documents for interconnected data.
+description: Manage complex data relationships with Appwrite Databases. Discover how to define and work with relationships between rows for interconnected data.
 difficulty: advanced
 readtime: 20
 ---
-Relationships describe how documents in different collections are associated, so that related documents can be read, updated, or deleted together. Entities in real-life often associate with each other in an organic and logical way, like a person and their dog, an album and its songs, or friends in a social network. 
+Relationships describe how rows in different tables are associated, so that related rows can be read, updated, or deleted together. Entities in real-life often associate with each other in an organic and logical way, like a person and their dog, an album and its songs, or friends in a social network.
 
 These types of association between entities can be modeled in Appwrite using relationships.
 
@@ -13,23 +13,31 @@ These types of association between entities can be modeled in Appwrite using rel
 Appwrite Relationships is an experimental feature. The API and behavior are subject to change in future versions.
 {% /info %}
 
-# Relationship Attributes {% #relationship-attributes %}
+# Relationship Columns {% #relationship-columns %}
 
-Relationships are represented in a collection using **relationship attributes**. 
-The relationship attribute contains the ID of related documents, which it references during read, update, and delete operations. 
-This attribute is **null** if a document has no related documents.
+Relationships are represented in a table using **relationship columns**.
+The relationship column contains the ID of related rows, which it references during read, update, and delete operations.
+This column is **null** if a row has no related rows.
 
 # When to use a relationship {% #when-to-use-relationships %}
 
-Relationships help reduce redundant information. For example, a user can create many posts in your app. You can model this without relationships by keeping a copy of the user's information in all the documents representing posts, but this creates a lot of duplicate information in your database about the user.
+Relationships help reduce redundant information. For example, a user can create many posts in your app. You can model this without relationships by keeping a copy of the user's information in all the rows representing posts, but this creates a lot of duplicate information in your database about the user.
 
 # Benefits of relationships {% #benefit-of-relationships %}
 
-Duplicated records waste storage, but more importantly, makes the database much harder to maintain. If the user changes their user name, you will have to update dozens or hundreds of records, a problem commonly known as an update anomaly in databases. You can avoid duplicate information by storing users and posts in separate collections and relating a user and their posts through a relationship.
+Duplicated records waste storage, but more importantly, makes the database much harder to maintain. If the user changes their user name, you will have to update dozens or hundreds of records, a problem commonly known as an update anomaly in tablesDB. You can avoid duplicate information by storing users and posts in separate tables and relating a user and their posts through a relationship.
 
 # Tradeoff {% #trade-offs %}
 
 Consider using relationships when the same information is found in multiple places to avoid duplicates. However, relationships come with the tradeoff of slowing down queries. For applications where the best read and write performance is important, it may be acceptable to tolerate duplicate data.
+
+# Opt-in Loading {% #performance-loading %}
+
+By default, Appwrite returns only a row's own fields when you retrieve rows. Related rows are **not automatically loaded** unless you explicitly request them using query selection. This eliminates unintentional payload bloat and gives you precise control over performance.
+
+{% arrow_link href="/docs/products/databases/queries#relationship-select" %}
+Learn how to load relationships with queries
+{% /arrow_link %}
 
 # Directionality {% #directionality %}
 
@@ -42,25 +50,25 @@ Appwrite relationships can be one-way or two-way.
 
 # Types {% #types %}
 
-Appwrite provides four different relationship types to enforce different associative rules between documents.
+Appwrite provides four different relationship types to enforce different associative rules between rows.
 
 | Type        | Description                                                             |
 | ----------- | ----------------------------------------------------------------------- |
-| One-to-one  | A document can only be related to one and only one document.           |
-| One-to-many | A document can be related to many other documents.                      |
-| Many-to-one | Many documents can be related to a single document.                     |
-| Many-to-many| A document can be related to many other documents.                      |
+| One-to-one  | A row can only be related to one and only one row.           |
+| One-to-many | A row can be related to many other rows.                      |
+| Many-to-one | Many rows can be related to a single row.                     |
+| Many-to-many| A row can be related to many other rows.                      |
 
 
 # On-delete {% #on-delete %}
 
-Appwrite also allows you to define the behavior of a relationship when a document is deleted.
+Appwrite also allows you to define the behavior of a relationship when a row is deleted.
 
 | Type       | Description                                                            |
 | ---------- | ---------------------------------------------------------------------- |
-| Restrict   | If a document has at least one related document, it cannot be deleted.|
-| Cascade    | If a document has related documents, when it is deleted, the related documents are also deleted.|
-| Set null   | If a document has related documents, when it is deleted, the related documents are kept with their relationship attribute set to null.|
+| Restrict   | If a row has at least one related row, it cannot be deleted.|
+| Cascade    | If a row has related rows, when it is deleted, the related rows are also deleted.|
+| Set null   | If a row has related rows, when it is deleted, the related rows are kept with their relationship column set to null.|
 
 # Creating relationships {% #create-relationships %}
 You can define relationships in the Appwrite Console, or using a [Server SDK](/docs/sdks#server)
@@ -68,38 +76,38 @@ You can define relationships in the Appwrite Console, or using a [Server SDK](/d
 {% tabs %}
 {% tabsitem #console title="Console" %}
 
-You can create relationships in the Appwrite Console by adding a relationship attribute to a collection.
+You can create relationships in the Appwrite Console by adding a relationship column to a table.
 
-1. In your project, navigate to **Databases** > **Select your database** > **Select your collection** > **Attributes** > **Create attribute**.
-2. Select **Relationship** as the attribute type.
-3. In the **Relationship** modal, select the [relationship type](#types) and pick the related collection and attributes.
-4. Pick relationship attribute key(s) to represent the related collection. Relationship attribute keys are used to reference the related collection in queries, so pick something that's intuitive and easy to remember.
+1. In your project, navigate to **Databases** > **Select your database** > **Select your table** > **Columns** > **Create column**.
+2. Select **Relationship** as the column type.
+3. In the **Relationship** modal, select the [relationship type](#types) and pick the related table and columns.
+4. Pick relationship column key(s) to represent the related table. Relationship column keys are used to reference the related table in queries, so pick something that's intuitive and easy to remember.
 5. Select desired [on delete](#on-delete) behavior.
 6. Click the **Create** button to create the relationship.
 {% /tabsitem %}
 
 {% tabsitem #sdk title="SDK" %}
-Here's an example that adds a relationship between the collections **movies** and **reviews**. 
-A relationship attribute with the key `reviews` is added to the movies collection, and another relationship attribute with the key `movie` is added to the reviews collection.
+Here's an example that adds a relationship between the tables **movies** and **reviews**.
+A relationship column with the key `reviews` is added to the movies table, and another relationship column with the key `movie` is added to the reviews table.
 
 {% multicode %}
 ```js
-const { Client, Databases } = require('node-appwrite');
+const { Client, TablesDB } = require('node-appwrite');
 
 const client = new Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
     .setProject('<PROJECT_ID>');               // Your project ID
 
-const databases = new Databases(client);
+const tablesDB = new TablesDB(client);
 
-databases.createRelationshipAttribute(
+tablesDB.createRelationshipColumn(
     'marvel',     // Database ID
-    'movies',     // Collection ID
-    'reviews',    // Related collection ID
+    'movies',     // Table ID
+    'reviews',    // Related table ID
     'oneToMany',  // Relationship type
     true,         // Is two-way
-    'reviews',    // Attribute key 
-    'movie',      // Two-way attribute key
+    'reviews',    // Column key
+    'movie',      // Two-way column key
     'cascade'     // On delete action
 );
 ```
@@ -107,22 +115,22 @@ databases.createRelationshipAttribute(
 
 ```php
 use \Appwrite\Client;
-use \Appwrite\Services\Databases;
+use \Appwrite\Services\TablesDB;
 
 $client = (new Client())
     ->setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
     ->setProject('<PROJECT_ID>');               // Your project ID
 
-$databases = new Databases($client);
+$tablesDB = new TablesDB($client);
 
-$databases->createRelationshipAttribute(
+$tables->createRelationshipColumn(
     databaseId: 'marvel',           // Database ID
-    collectionId: 'movies',         // Collection ID
-    relatedCollectionId: 'reviews', // Related collection ID
+    tableId: 'movies',         // Table ID
+    relatedTableId: 'reviews', // Related table ID
     type: 'oneToMany',              // Relationship type
     twoWay: true,                   // Is two-way
-    key: 'reviews',                 // Attribute key 
-    twoWayKey: 'movie',             // Two-way attribute key
+    key: 'reviews',                 // Column key
+    twoWayKey: 'movie',             // Two-way column key
     onDelete: 'cascade'             // On delete action
 );
 ```
@@ -130,22 +138,22 @@ $databases->createRelationshipAttribute(
 
 ```python
 from appwrite.client import Client
-from appwrite.services.databases import Databases
+from appwrite.services.tablesDB import TablesDB
 
 client = (Client()
     .set_endpoint('https://<REGION>.cloud.appwrite.io/v1')     # Your API Endpoint
     .set_project('<PROJECT_ID>'))                   # Your project ID
 
-databases = Databases(client)
+tablesDB = TablesDB(client)
 
-databases.create_relationship_attribute(
+tablesDB.create_relationship_column(
     database_id='marvel',             # Database ID
-    collection_id='movies',           # Collection ID
-    related_collection_id='reviews',  # Related collection ID
+    table_id='movies',           # Table ID
+    related_table_id='reviews',  # Related table ID
     type='oneToMany',                 # Relationship type
     two_way=True,                     # Is two-way
-    key='reviews',                    # Attribute key 
-    two_way_key='movie',              # Two-way attribute key
+    key='reviews',                    # Column key
+    two_way_key='movie',              # Two-way column key
     on_delete='cascade'               # On delete action
 )
 ```
@@ -160,39 +168,39 @@ client = Client.new
     .set_endpoint('https://<REGION>.cloud.appwrite.io/v1')# Your API Endpoint
     .set_project('<PROJECT_ID>')               # Your project ID
 
-databases = Databases.new(client)
+tablesDB = TablesDB.new(client)
 
-databases.create_relationship_attribute(
+tablesDB.create_relationship_column(
     database_id: 'marvel',             # Database ID
-    collection_id: 'movies',           # Collection ID
-    related_collection_id: 'reviews',  # Related collection ID
+    table_id: 'movies',           # Table ID
+    related_table_id: 'reviews',  # Related table ID
     type: 'oneToMany',                 # Relationship type
     two_way: true,                     # Is two-way
-    key: 'reviews',                    # Attribute key 
-    two_way_key: 'movie',              # Two-way attribute key
+    key: 'reviews',                    # Column key
+    two_way_key: 'movie',              # Two-way column key
     on_delete: 'cascade'               # On delete action
 )
 ```
 
 
 ```deno
-import { Client, Databases } from "https://deno.land/x/appwrite/mod.ts";
+import { Client, TablesDB } from "https://deno.land/x/appwrite/mod.ts";
 
 const client = new Client()
     .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
     .setProject("<PROJECT_ID>");               // Your project ID
 
-const databases = new Databases(client);
+const tablesDB = new TablesDB(client);
 
-databases.createRelationshipAttribute(
-    "marvel",    // Database ID         
-    "movies",    // Collection ID           
-    "reviews",   // Related collection ID       
-    "oneToMany", // Relationship type           
-    true,        // Is two-way          
-    "reviews",   // Attribute key           
-    "movie",     // Two-way attribute key           
-    "cascade"    // On delete action            
+tablesDB.createRelationshipColumn(
+    "marvel",    // Database ID
+    "movies",    // Table ID
+    "reviews",   // Related table ID
+    "oneToMany", // Relationship type
+    true,        // Is two-way
+    "reviews",   // Column key
+    "movie",     // Two-way column key
+    "cascade"    // On delete action
 );
 ```
 
@@ -204,40 +212,40 @@ final client = Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
     .setProject('<PROJECT_ID>');               // Your project ID
 
-final databases = Databases(client);
+final tablesDB = TablesDB(client);
 
-await databases.createRelationshipAttribute(
-    databaseId: 'marvel',           // Database ID                     
-    collectionId: 'movies',         // Collection ID                        
-    relatedCollectionId: 'reviews', // Related collection ID                    
-    type: 'oneToMany',              // Relationship type            
-    twoWay: true,                   // Is two-way               
-    key: 'reviews',                 // Attribute key                    
-    twoWayKey: 'movie',             // Two-way attribute key            
-    onDelete: 'cascade',            // On delete action                 
+await tablesDB.createRelationshipColumn(
+    databaseId: 'marvel',           // Database ID
+    tableId: 'movies',         // Table ID
+    relatedTableId: 'reviews', // Related table ID
+    type: 'oneToMany',              // Relationship type
+    twoWay: true,                   // Is two-way
+    key: 'reviews',                 // Column key
+    twoWayKey: 'movie',             // Two-way column key
+    onDelete: 'cascade',            // On delete action
 );
 ```
 
 
 ```kotlin
 import io.appwrite.Client
-import io.appwrite.services.Databases
+import io.appwrite.services.TablesDB
 
 val client = Client()
     .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
     .setProject("<PROJECT_ID>")                // Your project ID
 
-val databases = Databases(client)
+val tablesDB = TablesDB(client)
 
-databases.createRelationshipAttribute(
-    databaseId = "marvel",           // Database ID                 
-    collectionId = "movies",         // Collection ID                      
-    relatedCollectionId = "reviews", // Related collection ID               
-    type = "oneToMany",              // Relationship type           
-    twoWay = true,                   // Is two-way              
-    key = "reviews",                 // Attribute key           
-    twoWayKey = "movie",             // Two-way attribute key       
-    onDelete = "cascade"             // On delete action        
+tablesDB.createRelationshipColumn(
+    databaseId = "marvel",           // Database ID
+    tableId = "movies",         // Table ID
+    relatedTableId = "reviews", // Related table ID
+    type = "oneToMany",              // Relationship type
+    twoWay = true,                   // Is two-way
+    key = "reviews",                 // Column key
+    twoWayKey = "movie",             // Two-way column key
+    onDelete = "cascade"             // On delete action
 )
 ```
 
@@ -249,16 +257,16 @@ let client = Client()
     .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
     .setProject("<PROJECT_ID>")                // Your project ID
 
-let databases = Databases(client)
+let tablesDB = TablesDB(client)
 
-databases.createRelationshipAttribute(
-    databaseId: "marvel",           // Database ID              
-    collectionId: "movies",         // Collection ID            
-    relatedCollectionId: "reviews", // Related collection ID    
-    type: "oneToMany",              // Relationship type        
-    twoWay: true,                   // Is two-way               
-    key: "reviews",                 // Attribute key            
-    twoWayKey: "movie",             // Two-way attribute key        
+tablesDB.createRelationshipColumn(
+    databaseId: "marvel",           // Database ID
+    tableId: "movies",         // Table ID
+    relatedTableId: "reviews", // Related table ID
+    type: "oneToMany",              // Relationship type
+    twoWay: true,                   // Is two-way
+    key: "reviews",                 // Column key
+    twoWayKey: "movie",             // Two-way column key
     onDelete
 
 : "cascade"             // On delete action         
@@ -274,12 +282,12 @@ var client = new Client()
     .SetEndpoint("https://<REGION>.cloud.appwrite.io/v1")
     .SetProject("<PROJECT_ID>");
 
-var databases = new Databases(client);
+var tablesDB = new TablesDB(client);
 
-await databases.CreateRelationshipAttribute(
+await tablesDB.CreateRelationshipColumn(
     databaseId: "marvel",
-    collectionId: "movies",
-    relatedCollectionId: "reviews",
+    tableId: "movies",
+    relatedTableId: "reviews",
     type: "oneToMany",
     twoWay: true,
     key: "reviews",
@@ -290,9 +298,9 @@ await databases.CreateRelationshipAttribute(
 {% /tabsitem %}
 {% /tabs %}
 
-# Creating documents {% #create-documents %}
-If a collection has relationship attributes, you can create documents in two ways.
-You create both parent and child at the same time using a **nested** syntax or link parent and child documents through **references***.
+# Creating rows {% #create-rows %}
+If a table has relationship columns, you can create rows in two ways.
+You create both parent and child at the same time using a **nested** syntax or link parent and child rows through **references***.
 
 {% tabs %}
 {% tabsitem #nested title="Nested" %}
@@ -300,15 +308,15 @@ You can create both the **parent** and **child** at once in a relationship by ne
 
 {% multicode %}
 ```js
-const { Client, Databases, ID } = require('node-appwrite');
+const { Client, ID, TablesDB } = require('node-appwrite');
 
 const client = new Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
     .setProject('<PROJECT_ID>');               // Your project ID
 
-const databases = new Databases(client);
+const tablesDB = new TablesDB(client);
 
-await databases.createDocument(
+await tablesDB.createRow(
     'marvel',
     'movies',
     ID.unique(),
@@ -330,12 +338,12 @@ final client = Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')  // Your API Endpoint
     .setProject('<PROJECT_ID>');                // Your project ID
 
-final databases = Databases(client);
+final tablesDB = TablesDB(client);
 
-await databases.createDocument(
+await tablesDB.createRow(
   databaseId: 'marvel',
-  collectionId: 'movies',
-  documentId: ID.unique(),
+  tableId: 'movies',
+  rowId: ID.unique(),
   data: {
     'title': 'Spiderman',
     'year': 2002,
@@ -354,12 +362,12 @@ let client = Client()
     .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
     .setProject("<PROJECT_ID>")                // Your project ID
 
-let databases = Database(client: client)
+let tablesDB = TablesDB(client: client)
 
-databases.createDocument(
+tablesDB.createRow(
     databaseId: "marvel",
-    collectionId: "movies",
-    documentId: ID.unique(),
+    tableId: "movies",
+    rowId: ID.unique(),
     data: [
         "title": "Spiderman",
         "year": 2002,
@@ -373,19 +381,19 @@ databases.createDocument(
 
 ```kotlin
 import io.appwrite.Client
-import io.appwrite.services.Database
+import io.appwrite.services.TablesDB
 import io.appwrite.ID
 
 val client = Client()
     .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
     .setProject("<PROJECT_ID>")                // Your project ID
 
-val databases = Database(client)
+val tablesDB = TablesDB(client)
 
-databases.createDocument(
+tablesDB.createRow(
     databaseId = "marvel",
-    collectionId = "movies",
-    documentId = ID.unique(),
+    tableId = "movies",
+    rowId = ID.unique(),
     data = mapOf(
         "title" to "Spiderman",
         "year" to 2002,
@@ -399,25 +407,25 @@ databases.createDocument(
 {% /multicode %}
 
 ## Edge case behaviors {% #edge-case-behaviors %}
-- If a nested child document is included and **no child document ID** is provided, the child document will be given a unique ID.
-- If a nested child document is included and **no conflicting child document ID** exists, the child document will be **created**.
-- If a nested child document is included and the **child document ID already exists**, the child document will be **updated**.
+- If a nested child row is included and **no child row ID** is provided, the child row will be given a unique ID.
+- If a nested child row is included and **no conflicting child row ID** exists, the child row will be **created**.
+- If a nested child row is included and the **child row ID already exists**, the child row will be **updated**.
 
 {% /tabsitem %}
 {% tabsitem #reference title="Reference" %}
-If the child documents are already present in the related collection, you can create the parent and **reference the child documents** using their IDs.
+If the child rows are already present in the related table, you can create the parent and **reference the child rows** using their IDs.
 Here's an example connecting reviews to a movie.
 {% multicode %}
 ```js
-const { Client, Databases, ID } = require('node-appwrite');
+const { Client, ID, TablesDB } = require('node-appwrite');
 
 const client = new Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
     .setProject('<PROJECT_ID>');               // Your project ID
 
-const databases = new Databases(client);
+const tablesDB = new TablesDB(client);
 
-await databases.createDocument(
+await tablesDB.createRow(
     'marvel',
     'movies',
     ID.unique(),
@@ -439,12 +447,12 @@ final client = Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint    
     .setProject('<PROJECT_ID>');               // Your project ID  
 
-final databases = Databases(client);
+final tablesDB = TablesDB(client);
 
-await databases.createDocument(
+await tablesDB.createRow(
   databaseId: 'marvel',
-  collectionId: 'movies',
-  documentId: ID.unique(),
+  tableId: 'movies',
+  rowId: ID.unique(),
   data: {
     'title': 'Spiderman',
     'year': 2002,
@@ -463,12 +471,12 @@ let client = Client()
     .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint        
     .setProject("<PROJECT_ID>")                // Your project ID      
 
-let databases = Database(client: client)
+let tablesDB = TablesDB(client: client)
 
-databases.createDocument(
+tablesDB.createRow(
     databaseId: "marvel",
-    collectionId: "movies",
-    documentId: ID.unique(),
+    tableId: "movies",
+    rowId: ID.unique(),
     data: [
         "title": "Spiderman",
         "year": 2002,
@@ -482,19 +490,19 @@ databases.createDocument(
 
 ```kotlin
 import io.appwrite.Client
-import io.appwrite.services.Database
+import io.appwrite.services.TablesDB
 import io.appwrite.ID
 
 val client = Client()
     .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint    
     .setProject("<PROJECT_ID>")                // Your project ID  
 
-val databases = Database(client)
+val tablesDB = TablesDB(client)
 
-databases.createDocument(
+tablesDB.createRow(
     databaseId = "marvel",
-    collectionId = "movies",
-    documentId = ID.unique(),
+    tableId = "movies",
+    rowId = ID.unique(),
     data = mapOf(
         "title" to "Spiderman",
         "year" to 2002,
@@ -513,19 +521,19 @@ databases.createDocument(
 Queries are currently not available in the experimental version of Appwrite Relationships but will be added in a later version.
 
 # Update Relationships {% #update %}
-Relationships can be updated by updating the relationship attribute.
+Relationships can be updated by updating the relationship column.
 
 {% multicode %}
 ```js
-const { Client, Databases } = require('node-appwrite');
+const { Client, TablesDB } = require('node-appwrite');
 
 const client = new Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
     .setProject('<PROJECT_ID>');               // Your project ID
 
-const databases = new Databases(client);
+const tablesDB = new TablesDB(client);
 
-await databases.updateDocument(
+await tablesDB.updateRow(
     'marvel',
     'movies',
     'spiderman',
@@ -547,12 +555,12 @@ final client = Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
     .setProject('<PROJECT_ID>');
 
-final databases = Databases(client);
+final tablesDB = TablesDB(client);
 
-await databases.updateDocument(
+await tablesDB.updateRow(
   databaseId: 'marvel',
-  collectionId: 'movies',
-  documentId: 'spiderman',
+  tableId: 'movies',
+  rowId: 'spiderman',
   data: {
     'title': 'Spiderman',
     'year': 2002,
@@ -571,12 +579,12 @@ let client = Client()
     .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
     .setProject("<PROJECT_ID>")
 
-let databases = Database(client: client)
+let tablesDB = TablesDB(client: client)
 
-databases.updateDocument(
+tablesDB.updateRow(
     databaseId: "marvel",
-    collectionId: "movies",
-    documentId: "spiderman",
+    tableId: "movies",
+    rowId: "spiderman",
     data: [
         "title": "Spiderman",
         "year": 2002,
@@ -590,18 +598,18 @@ databases.updateDocument(
 
 ```kotlin
 import io.appwrite.Client
-import io.appwrite.services.Database
+import io.appwrite.services.TablesDB
 
 val client = Client()
     .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
     .setProject("<PROJECT_ID>")
 
-val databases = Database(client)
+val tablesDB = TablesDB(client)
 
-databases.updateDocument(
+tablesDB.updateRow(
     databaseId = "marvel",
-    collectionId = "movies",
-    documentId = "spiderman",
+    tableId = "movies",
+    rowId = "spiderman",
     data = mapOf(
         "title" to "Spiderman",
         "year" to 2002,
@@ -616,35 +624,35 @@ databases.updateDocument(
 {% /multicode %}
 
 # Delete relationships {% #delete %}
-## Unlink relationships, retain documents {% #unlink %}
+## Unlink relationships, retain rows {% #unlink %}
 
-If you need to unlink documents in a relationship but retain the documents, you can do this by **updating the relationship attribute** and removing the ID of the related document.
+If you need to unlink rows in a relationship but retain the rows, you can do this by **updating the relationship column** and removing the ID of the related row.
 
-If a document can be related to **only one document**, you can delete the relationship by setting the relationship attribute to `null`.
+If a row can be related to **only one row**, you can delete the relationship by setting the relationship column to `null`.
 
-If a document can be related to **more than one document**, you can delete the relationship by setting the relationship attribute to an empty list.
+If a row can be related to **more than one row**, you can delete the relationship by setting the relationship column to an empty list.
 
-## Delete relationships and documents {% #delete-both %}
+## Delete relationships and rows {% #delete-both %}
 
-If you need to delete the documents as well as unlink the relationship, the approach depends on the [on-delete behavior](#on-delete) of a relationship.
+If you need to delete the rows as well as unlink the relationship, the approach depends on the [on-delete behavior](#on-delete) of a relationship.
 
-If the on-delete behavior is **restrict**, the link between the documents needs to be deleted first before the documents can be deleted **individually**.
+If the on-delete behavior is **restrict**, the link between the rows needs to be deleted first before the rows can be deleted **individually**.
 
-If the on-delete behavior is **set null**, deleting a document will leave related documents in place with their relationship attribute **set to null**. If you wish to also delete related documents, they must be deleted **individually**.
+If the on-delete behavior is **set null**, deleting a row will leave related rows in place with their relationship column **set to null**. If you wish to also delete related rows, they must be deleted **individually**.
 
-If the on-delete behavior is **cascade**, deleting the parent documents also deletes **related child documents**, except for many-to-one relationships. In many-to-one relationships, there are multiple parent documents related to a single child document, and when the child document is deleted, the parents are deleted in cascade.
+If the on-delete behavior is **cascade**, deleting the parent rows also deletes **related child rows**, except for many-to-one relationships. In many-to-one relationships, there are multiple parent rows related to a single child row, and when the child row is deleted, the parents are deleted in cascade.
 
 {% multicode %}
 ```js
-const { Client, Databases } = require('node-appwrite');
+const { Client, TablesDB } = require('node-appwrite');
 
 const client = new Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
     .setProject('<PROJECT_ID>');               // Your project ID
 
-const databases = new Databases(client);
+const tablesDB = new TablesDB(client);
 
-await databases.deleteDocument(
+await tablesDB.deleteRow(
     'marvel',
     'movies',
     'spiderman'
@@ -658,12 +666,12 @@ final client = Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
     .setProject('<PROJECT_ID>');
 
-final databases = Databases(client);
+final tablesDB = TablesDB(client);
 
-await databases.deleteDocument(
+await tablesDB.deleteRow(
   databaseId: 'marvel',
-  collectionId: 'movies',
-  documentId: 'spiderman'
+  tableId: 'movies',
+  rowId: 'spiderman'
 );
 ```
 
@@ -674,29 +682,29 @@ let client = Client()
     .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
     .setProject("<PROJECT_ID>")
 
-let databases = Database(client: client)
+let tablesDB = TablesDB(client: client)
 
-databases.deleteDocument(
+tablesDB.deleteRow(
     databaseId: "marvel",
-    collectionId: "movies",
-    documentId: "spiderman"
+    tableId: "movies",
+    rowId: "spiderman"
 )
 ```
 
 ```kotlin
 import io.appwrite.Client
-import io.appwrite.services.Database
+import io.appwrite.services.TablesDB
 
 val client = Client()
     .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
     .setProject("<PROJECT_ID>")
 
-val databases = Database(client)
+val tablesDB = TablesDB(client)
 
-databases.deleteDocument(
+tablesDB.deleteRow(
     databaseId = "marvel",
-    collectionId = "movies",
-    documentId = "spiderman"
+    tableId = "movies",
+    rowId = "spiderman"
 )
 ```
 
@@ -704,23 +712,23 @@ databases.deleteDocument(
 
 # Permissions {% #permissions %}
 
-To access documents in a relationship, you must have permission to access both the parent and child documents.
+To access rows in a relationship, you must have permission to access both the parent and child rows.
 
-When creating both the parent and child documents, the child document will **inherit permissions** from its parent.
+When creating both the parent and child rows, the child row will **inherit permissions** from its parent.
 
-You can also provide explicit permissions to the child document if they should be **different from their parent**.
+You can also provide explicit permissions to the child row if they should be **different from their parent**.
 
 {% multicode %}
 ```js
-const { Client, Databases, ID } = require('node-appwrite');
+const { Client, ID, TablesDB } = require('node-appwrite');
 
 const client = new Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
     .setProject('<PROJECT_ID>');               // Your project ID
 
-const databases = new Databases(client);
+const tablesDB = new TablesDB(client);
 
-await databases.createDocument(
+await tablesDB.createRow(
     'marvel',
     'movies',
     ID.unique(),
@@ -746,12 +754,12 @@ final client = Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
     .setProject('<PROJECT_ID>');
 
-final databases = Databases(client);
+final tablesDB = TablesDB(client);
 
-await databases.createDocument(
+await tablesDB.createRow(
   databaseId: 'marvel',
-  collectionId: 'movies',
-  documentId: ID.unique(),
+  tableId: 'movies',
+  rowId: ID.unique(),
   data: {
     'title': 'Spiderman',
     'year': 2002,
@@ -774,12 +782,12 @@ let client = Client()
     .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
     .setProject("<PROJECT_ID>")
 
-let databases = Database(client: client)
+let tablesDB = TablesDB(client: client)
 
-databases.createDocument(
+tablesDB.createRow(
     databaseId: "marvel",
-    collectionId: "movies",
-    documentId: ID.unique(),
+    tableId: "movies",
+    rowId: ID.unique(),
     data: [
         "title": "Spiderman",
         "year": 2002,
@@ -802,12 +810,12 @@ let client = Client()
     .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
     .setProject("<PROJECT_ID>")
 
-let databases = Database(client: client)
+let tablesDB = TablesDB(client: client)
 
-databases.createDocument(
+tablesDB.createRow(
     databaseId: "marvel",
-    collectionId: "movies",
-    documentId: ID.unique(),
+    tableId: "movies",
+    rowId: ID.unique(),
     data: [
         "title": "Spiderman",
         "year": 2002,
@@ -825,11 +833,11 @@ databases.createDocument(
 ```
 {% /multicode %}
 
-When creating, updating, or deleting in a relationship, you must have permission to access all documents referenced. 
-If the user does not have read permission to any document, an exception will be thrown.
+When creating, updating, or deleting in a relationship, you must have permission to access all rows referenced.
+If the user does not have read permission to any row, an exception will be thrown.
 
 # Limitations {% #limitations %}
 
-Relationships can be nested between collections, but are restricted to a **max depth of three levels**. 
-Relationship attribute key, type, and directionality can't be updated. 
-On-delete behavior is the only option that can be updated for relationship attributes.
+Relationships can be nested between tables, but are restricted to a **max depth of three levels**.
+Relationship column key, type, and directionality can't be updated.
+On-delete behavior is the only option that can be updated for relationship columns.
