@@ -41,12 +41,9 @@
         p?: string;
         anchor?: string;
         _formatted?: SearchResult;
-        icon?: IconType;
     }
 
     let results = $state<Hits<SearchResult>>([]);
-
-    $inspect(results);
 
     const resetValue = () => {
         value = '';
@@ -54,10 +51,10 @@
 
     const handleInput = async (value: string) => {
         const response = await index.search(value, {
-            attributesToCrop: ['p'],
-            limit: 20,
-            attributesToHighlight: ['title', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p'],
+            attributesToCrop: ['h1', 'p'],
             cropLength: 40,
+            limit: 20,
+            attributesToHighlight: ['title', 'p'],
             highlightPreTag:
                 '<span class="text-greyscale-900 inline-block px-0.5 bg-mint-500 rounded-sm">',
             highlightPostTag: '</span>'
@@ -79,21 +76,36 @@
         return target.toString();
     }
 
-    const recommended: Hits<SearchResult> = [
+    const recommended: Hits<SearchResult & { icon?: IconType }> = [
         {
-            uid: 'blog',
-            url: '/blog',
-            h1: 'Blog'
+            uid: 'custom-domains',
+            url: '/blog/post/custom-domains-with-sites',
+            h1: 'Custom domains with Appwrite Sites',
+            icon: 'blog'
         },
         {
-            uid: 'docs',
-            url: '/docs',
-            h1: 'Docs'
+            uid: 'quick-starts-flutter',
+            url: '/quick-starts/flutter',
+            h1: 'Quick start with Flutter',
+            icon: 'quickstarts'
         },
         {
-            uid: 'pricing',
-            url: '/pricing',
-            h1: 'Pricing'
+            uid: 'tutorial-idea-tracker',
+            url: '/docs/tutorials/react',
+            h1: 'Build an ideas tracker with React',
+            icon: 'docs'
+        },
+        {
+            uid: 'email-password',
+            url: '/docs/products/auth/email-password',
+            h1: 'Auth with email and password',
+            icon: 'users'
+        },
+        {
+            uid: 'queries',
+            url: '/docs/products/databases/queries',
+            h1: 'Querying your database',
+            icon: 'database'
         }
     ];
 
@@ -147,8 +159,13 @@
 
     function getSubtitleContent(hit: Hit): { header?: string; subtitle?: string } {
         return {
-            header: hit.h1,
-            subtitle: hit.h2 ?? hit.h3 ?? hit.h4 ?? hit.h5 ?? hit.h6
+            header: hit._formatted?.h1,
+            subtitle:
+                hit._formatted?.h2 ??
+                hit._formatted?.h3 ??
+                hit._formatted?.h4 ??
+                hit._formatted?.h5 ??
+                hit._formatted?.h6
         };
     }
 </script>
@@ -164,25 +181,35 @@
     onclick={handleExit}
 >
     <div class="web-input-text-search-wrapper relative w-full max-w-2xl min-w-sm outline-0!">
-        <Icon name="search" class="absolute top-3.5 left-3 z-5" aria-hidden="true"></Icon>
-        <input
-            class="web-input-button bg-white-800/75! border-offset! relative z-1 !rounded-b-none !pl-10 shadow-none! outline-0! focus:placeholder:text-white!"
-            type="text"
-            id="search"
-            bind:value
-            placeholder="Search..."
-            style:inline-size="100%"
-            use:melt={$input}
-            bind:this={inputEl}
-            data-hit="-1"
-            onkeydown={(e) => {
-                if (e.key === 'Tab') {
-                    e.preventDefault();
-                }
-            }}
-        />
+        <div class="relative flex justify-between">
+            <Icon name="search" class="absolute top-3.5 left-3 z-5" aria-hidden="true"></Icon>
+            <input
+                class="web-input-button bg-card! border-offset! relative z-1 flex-1 !rounded-b-none !pl-10 shadow-none! outline-0! focus:placeholder:text-white!"
+                type="text"
+                id="search"
+                bind:value
+                placeholder="Search..."
+                style:inline-size="100%"
+                use:melt={$input}
+                bind:this={inputEl}
+                data-hit="-1"
+                onkeydown={(e) => {
+                    if (e.key === 'Tab') {
+                        e.preventDefault();
+                    }
+                }}
+            />
+            {#if value}
+                <button
+                    onclick={resetValue}
+                    class="absolute top-3.5 right-2 z-5 cursor-pointer px-1 transition-colors hover:text-white"
+                >
+                    <Icon name="close" />
+                </button>
+            {/if}
+        </div>
         <div
-            class="bg-card border-offset flex flex-col gap-1 rounded-2xl border-x border-b p-4 outline-none"
+            class="bg-card border-offset flex max-h-80 flex-col gap-1 overflow-hidden overflow-y-auto rounded-2xl border-x border-b p-4 outline-none"
             use:melt={$menu}
             style="--card-padding-mobile:1rem; border-radius:0 0 0.5rem 0.5rem;"
         >
@@ -201,46 +228,41 @@
                                     <a
                                         data-hit={i}
                                         href={createHref(hit)}
-                                        class="text-caption group data-[highlighted]:bg-smooth data-[highlighted]:text-primary text-secondary focus:bg-smooth flex min-w-full items-start justify-between gap-2.5 rounded-lg px-3 py-2.5 transition-colors"
+                                        class="text-caption group data-[highlighted]:bg-smooth data-[highlighted]:text-primary text-secondary focus:bg-smooth -mx-2 flex min-w-full items-start gap-2.5 rounded-lg px-2 py-2.5 transition-colors"
                                         use:melt={$option({
                                             value: hit,
                                             label: hit.title ?? i.toString()
                                         })}
                                     >
                                         <div
-                                            class="bg-offset border-offset flex size-6 shrink-0 items-center justify-center rounded-sm border"
+                                            class="bg-offset border-offset flex size-6 shrink-0 items-center justify-center gap-2 rounded-sm border"
                                         >
                                             <Icon
                                                 name={isDocs
                                                     ? 'docs'
                                                     : isBlog
                                                       ? 'blog'
-                                                      : 'integrations'}
+                                                      : 'lightning'}
                                                 class="size-4"
                                             />
                                         </div>
                                         <div class="flex flex-col">
-                                            <div class="flex items-center gap-2">
+                                            <div class="flex items-center gap-0.5">
                                                 {#if subtitleContent.header}
-                                                    <span class="text-primary line-clamp-1">
-                                                        {subtitleContent.subtitle}</span
+                                                    <span class="text-secondary line-clamp-1">
+                                                        {@html subtitleContent.header}</span
                                                     >
-                                                    <!-- {#if subtitleContent.subtitle}
-                                                    <span class="web-u-color-text-secondary">
-                                                        /
-                                                    </span>
-                                                {/if} -->
+                                                    {#if subtitleContent.subtitle}
+                                                        <span class="text-secondary"> / </span>
+                                                        <span class="text-primary"
+                                                            >{@html subtitleContent.subtitle}</span
+                                                        >
+                                                    {/if}
                                                 {/if}
-
-                                                <!-- {#if subtitleContent.subtitle}
-                                                <span class="text-primary"
-                                                    >{subtitleContent.subtitle}</span
-                                                >
-                                            {/if} -->
                                             </div>
                                             {#if hit._formatted}
                                                 <div
-                                                    class="text-secondary line-clamp-1 flex w-full items-center gap-1 overflow-hidden text-left"
+                                                    class="text-secondary mt-1 line-clamp-1 flex w-full items-center text-left"
                                                 >
                                                     <span class="line-clamp-1"
                                                         >{@html hit._formatted.p}</span
@@ -261,7 +283,7 @@
             {:else}
                 <section>
                     <h6 class="text-eyebrow font-aeonik-fono pl-1 uppercase">Suggestions</h6>
-                    <ul class="mt-2 flex flex-col gap-1">
+                    <ul class="mt-4 flex flex-col gap-1">
                         {#each recommended as hit, i (hit.uid)}
                             {@const index = i + (results.length ? results.length : 0)}
                             <li>
@@ -272,15 +294,13 @@
                                         value: hit,
                                         label: hit.title ?? i.toString()
                                     })}
-                                    class="text-caption group data-[highlighted]:bg-smooth data-[highlighted]:text-primary text-secondary focus:bg-smooth flex min-w-full items-center justify-between rounded-lg px-3 py-2.5 transition-colors"
+                                    class="text-caption group data-[highlighted]:bg-smooth data-[highlighted]:text-primary text-secondary focus:bg-smooth -mx-2 flex min-w-full items-center gap-2.5 rounded-lg px-2 py-2.5 transition-colors"
                                 >
-                                    <div class="line-clamp-1">
+                                    <Icon name={hit.icon} class="fill-primary size-4 shrink-0" />
+
+                                    <div class="line-clamp-1 flex-1">
                                         <span class="text-secondary">{hit.h1}</span>
                                     </div>
-                                    <Icon
-                                        name="arrow-right"
-                                        class="text-secondary size-4 transition-transform group-hover:translate-x-0.5 group-data-[highlighted]:translate-x-0.5"
-                                    />
                                 </a>
                             </li>
                         {/each}
@@ -290,15 +310,3 @@
         </div>
     </div>
 </div>
-
-<!-- <style lang="scss">
-    .web-card {
-        margin-block-start: -0.0625rem;
-        max-block-size: min(18.75rem, calc(100vh - 5.5rem));
-        border-block-start-width: 0;
-
-        display: flex;
-        flex-direction: column;
-        overflow-y: auto;
-    }
-</style> -->

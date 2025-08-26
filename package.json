@@ -12,7 +12,7 @@
         "download-contributors": "node ./scripts/download-contributor-data.js",
         "format": "prettier --write .",
         "format:check": "prettier --check .",
-        "generate:icons": "node ./src/icons/optimize.js && pnpm format",
+        "generate:icons": "node ./src/icons/optimize.js && pnpm prettier --write ./src/lib/components/ui/icon/sprite/sprite.svelte",
         "icons:build": "node ./src/icons/build.js",
         "icons:generate": "node ./src/icons/optimize.js && node ./src/icons/build.js",
         "icons:optimize": "node ./src/icons/optimize.js",
