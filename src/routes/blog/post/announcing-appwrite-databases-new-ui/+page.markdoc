@@ -51,7 +51,7 @@ These methods make it easier to understand exactly what an operation does at a g
 
 Here’s an example of how you can use the new SDK methods:
 
-```jsx
+```server-nodejs
 const sdk = require('node-appwrite');
 
 const client = new sdk.Client()
