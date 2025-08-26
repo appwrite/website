@@ -202,11 +202,9 @@ function* iterateAllMethods(
             };
         }
         if (
-            methods?.post &&
-            'x-appwrite' in methods.post &&
-            methods.post['x-appwrite'] &&
+            methods?.post?.tags?.includes(service) &&
             typeof methods.post['x-appwrite'] === 'object' &&
-            'methods' in methods.post['x-appwrite']
+            Array.isArray(methods.post['x-appwrite']?.methods)
         ) {
             const appwritePost = methods.post as AppwriteOperationObject;
             for (const additionalMethod of appwritePost['x-appwrite'].methods!) {

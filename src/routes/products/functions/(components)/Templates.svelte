@@ -65,7 +65,7 @@
         </div>
 
         <div
-            class="w-[200%] rounded-3xl border border-black/8 bg-gradient-to-br from-black/6 via-black/4 via-[61%] to-black/6 p-2 md:w-full"
+            class="w-[200%] rounded-3xl border border-black/8 bg-gradient-to-br from-black/6 via-black/4 via-[61%] to-black/6 p-2 md:w-1/2"
         >
             <img class="rounded-xl" src={Templates} alt="Templates console" />
         </div>
@@ -89,9 +89,9 @@
                         'hidden md:flex': i > 3
                     })}
                 >
-                    <div class="flex w-full items-center justify-between">
+                    <div class="mb-3 flex w-full items-center justify-between">
                         <span class="text-sub-body text-primary font-medium">{template.title}</span>
-                        <ul class="flex h-12 gap-1">
+                        <ul class="flex gap-1">
                             {#each baseRuntimes as runtime}
                                 <li
                                     class="border-smooth -ml-3 flex size-8 items-center justify-center rounded-full border bg-white"
