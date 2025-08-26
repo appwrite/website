@@ -72,7 +72,7 @@ client
     .setProject('<PROJECT_ID>') // Replace with your project ID
 
 export const account = new Appwrite.Account(client)
-export const databases = new Appwrite.Databases(client)
+export const tablesDB = new Appwrite.TablesDB(client)
 ```
 {% /section %}
 
@@ -82,7 +82,7 @@ If you prefer TypeScript, you can import TypeScript models from the Appwrite SDK
 ```ts
 // appwrite.ts
 
-import { Client, Databases, Account } from "appwrite";
+import { Client, TablesDB, Account } from "appwrite";
 // Import type models for Appwrite
 import { type Models } from 'appwrite';
 
@@ -93,7 +93,7 @@ client
     .setProject('<PROJECT_ID>'); // Replace with your project ID
 
 export const account: Account = new Account(client);
-export const database: Databases = new Databases(client);
+export const tablesDB: TablesDB = new TablesDB(client);
 
 // You then use the imported type definitions like this
 const authUser: Models.Session = await account.createEmailPasswordSession(email, password);
@@ -103,24 +103,24 @@ const authUser: Models.Session = await account.createEmailPasswordSession(email,
 {% section #step-5 step=5 title="Extending TypeScript models" %}
 Sometimes you'll need to extend TypeScript models with your own type definitions.
 
-For example, when you fetch a list of documents from a collection, you can define the expected structure of the documents like this.
+For example, when you fetch a list of rows from a table, you can define the expected structure of the rows like this.
 ```ts
-interface Idea extends Models.Document {
+interface Idea extends Models.Row {
     title: string;
     description: string;
     userId: string;
 }
 ```
 
-When you fetch documents, you can use this new `Idea` interface like this.
+When you fetch rows, you can use this new `Idea` interface like this.
 
 ```ts
-const response = await database.listDocuments(
+const response = await tablesDB.listRows(
     ideasDatabaseId,
-    ideasCollectionId,
+    ideasTableId,
     [Query.orderDesc("$createdAt"), Query.limit(queryLimit)]
 );
-const ideas = response.documents as Idea[];
+const ideas = response.rows as Idea[];
 ```
 {% /section %}
 

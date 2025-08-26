@@ -122,7 +122,7 @@ After receiving the secret (6-digit number) in the email, you can use it along w
 ```js
 const session = await account.createSession(
     userId,
-    '[SECRET]'
+    '<SECRET>'
 );
 ```
 
@@ -156,7 +156,7 @@ After receiving the secret (6-digit number) in the SMS, you can use it along wit
 ```dart
 final session = await account.createSession(
     userId: userId,
-    secret: '[SECRET]'
+    secret: '<SECRET>'
 );
 ```
 

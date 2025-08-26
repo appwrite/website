@@ -129,6 +129,11 @@ function getExamples(version: string) {
                 query: '?raw',
                 import: 'default'
             });
+        case '1.8.x':
+            return import.meta.glob('$appwrite/docs/examples/1.8.x/**/*.md', {
+                query: '?raw',
+                import: 'default'
+            });
     }
 }
 
@@ -421,6 +426,7 @@ export async function getService(
                   isAndroidServer ? 'server-kotlin' : 'client-android'
               }/${isAndroidJava ? 'java' : 'kotlin'}/${operation['x-appwrite']?.demo}`
             : `/node_modules/@appwrite.io/repo/docs/examples/${version}/${platform}/examples/${operation['x-appwrite']?.demo}`;
+
         if (!(path in examples)) {
             continue;
         }
