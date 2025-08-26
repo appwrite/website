@@ -84,7 +84,7 @@ async function main() {
 		databaseId: database.$id,
 		tableId: table.$id,
 		rowId: sdk.ID.unique(),
-	  data: { name: 'Row 1' }
+		data: { name: 'Row 1' }
 	});
 } 
 
