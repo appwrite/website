@@ -113,7 +113,7 @@ More information and examples of authenticating users can be found in the dedica
 
 # Database queries {% #database-queries %}
 
-The GraphQL API can be used to query and manipulate database rows. For detailed examples of how to create, list, update, and delete rows using GraphQL, refer to the [Documents documentation](/docs/products/databases/rows).
+The GraphQL API can be used to query and manipulate database rows. For detailed examples of how to create, list, update, and delete rows using GraphQL, refer to the [Rows documentation](/docs/products/databases/rows).
 
 # GraphQL vs REST {% #graphql-vs-rest %}
 
