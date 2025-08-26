@@ -7,7 +7,7 @@ cover: /images/blog/announcing-appwrite-databases-new-ui/cover.png
 timeToRead: 5
 author: darshan-pandya
 category: announcement
-featured: false
+featured: true
 ---
 As Appwrite has grown, so has the diversity of developers building with it, from document-based systems to others deeply familiar with relational data structures. To make the platform more intuitive and consistent for everyone, we’re evolving how Appwrite Databases is presented and managed. This update also adds the ability to generate dummy data for faster prototyping, and we’re actively working on features like AI-powered suggestions to help you design your structure even faster.
 
