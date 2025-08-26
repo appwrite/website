@@ -59,7 +59,7 @@ const client = new sdk.Client()
     .setProject('<PROJECT_ID>')
     .setKey('<API_KEY>');
 
-const tablesDb = new sdk.TablesDb(client);
+const tablesDb = new sdk.TablesDB(client);
 
 async function main() {
 	const database = await tablesDb.create({
