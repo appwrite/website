@@ -183,7 +183,7 @@
         <div class="relative flex justify-between">
             <Icon name="search" class="absolute top-3.5 left-3 z-5" aria-hidden="true"></Icon>
             <input
-                class="web-input-button bg-card/50! border-offset! relative z-1 flex-1 rounded-t-2xl! !rounded-b-none !pl-10 shadow-none! outline-0! focus:placeholder:text-white!"
+                class="bg-card/75 border-offset text-caption relative z-1 h-12 flex-1 rounded-t-2xl border pl-10 shadow-none outline-0 focus:placeholder:text-white!"
                 type="text"
                 id="search"
                 bind:value
@@ -208,7 +208,7 @@
             {/if}
         </div>
         <div
-            class="bg-card/50 border-offset flex max-h-80 flex-col gap-1 overflow-hidden overflow-y-auto rounded-b-2xl border-x border-b px-4 pt-4 pb-2 outline-none"
+            class="bg-card/75 border-offset flex max-h-80 flex-col gap-1 overflow-hidden overflow-y-auto rounded-b-2xl border-x border-b px-4 pt-4 pb-2 outline-none"
             use:melt={$menu}
         >
             {#if value && value.length >= 3}
@@ -305,7 +305,7 @@
                                     <Icon name={hit.icon} class="fill-primary size-4 shrink-0" />
 
                                     <div class="line-clamp-1 flex-1">
-                                        <span class="text-secondary">{hit.h1}</span>
+                                        <span>{hit.h1}</span>
                                     </div>
                                 </a>
                             </li>
