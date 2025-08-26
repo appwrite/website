@@ -51,13 +51,12 @@
 
     const handleInput = async (value: string) => {
         const response = await index.search(value, {
-            attributesToCrop: ['h1', 'p'],
+            attributesToCrop: ['p'],
             cropLength: 40,
             limit: 20,
-            attributesToHighlight: ['title', 'p'],
-            highlightPreTag:
-                '<span class="text-greyscale-900 inline-block px-0.5 bg-mint-500 rounded-sm">',
-            highlightPostTag: '</span>'
+            attributesToHighlight: ['title', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p'],
+            highlightPreTag: '<mark>',
+            highlightPostTag: '</mark>'
         });
         results = response.hits;
     };
@@ -184,7 +183,7 @@
         <div class="relative flex justify-between">
             <Icon name="search" class="absolute top-3.5 left-3 z-5" aria-hidden="true"></Icon>
             <input
-                class="web-input-button bg-card! border-offset! relative z-1 flex-1 !rounded-b-none !pl-10 shadow-none! outline-0! focus:placeholder:text-white!"
+                class="web-input-button bg-card/50! border-offset! relative z-1 flex-1 rounded-t-2xl! !rounded-b-none !pl-10 shadow-none! outline-0! focus:placeholder:text-white!"
                 type="text"
                 id="search"
                 bind:value
@@ -209,9 +208,8 @@
             {/if}
         </div>
         <div
-            class="bg-card border-offset flex max-h-80 flex-col gap-1 overflow-hidden overflow-y-auto rounded-2xl border-x border-b p-4 outline-none"
+            class="bg-card/50 border-offset flex max-h-80 flex-col gap-1 overflow-hidden overflow-y-auto rounded-b-2xl border-x border-b px-4 pt-4 pb-2 outline-none"
             use:melt={$menu}
-            style="--card-padding-mobile:1rem; border-radius:0 0 0.5rem 0.5rem;"
         >
             {#if value && value.length >= 3}
                 <section>
@@ -246,15 +244,22 @@
                                                 class="size-4"
                                             />
                                         </div>
-                                        <div class="flex flex-col">
-                                            <div class="flex items-center gap-0.5">
+                                        <div
+                                            class="[&_mark]:text-primary flex flex-col [&_mark]:bg-transparent [&:is(mark)]:bg-transparent"
+                                        >
+                                            <div
+                                                class="text-secondary line-clamp-1 flex items-center gap-0.5"
+                                            >
                                                 {#if subtitleContent.header}
-                                                    <span class="text-secondary line-clamp-1">
+                                                    <span
+                                                        class="[&:is(mark)]:font-medium [&>mark]:font-medium"
+                                                    >
                                                         {@html subtitleContent.header}</span
                                                     >
                                                     {#if subtitleContent.subtitle}
-                                                        <span class="text-secondary"> / </span>
-                                                        <span class="text-primary"
+                                                        <span> / </span>
+                                                        <span
+                                                            class="[&:is(mark)]:font-medium [&>mark]:font-medium"
                                                             >{@html subtitleContent.subtitle}</span
                                                         >
                                                     {/if}
@@ -264,7 +269,8 @@
                                                 <div
                                                     class="text-secondary mt-1 line-clamp-1 flex w-full items-center text-left"
                                                 >
-                                                    <span class="line-clamp-1"
+                                                    <span
+                                                        class="[&>mark]:text-greyscale-900 [&>mark]:bg-mint-500 line-clamp-1 [&>mark]:rounded-sm [&>mark]:px-0.5 [&>mark]:font-medium"
                                                         >{@html hit._formatted.p}</span
                                                     >
                                                 </div>
@@ -282,7 +288,7 @@
                 </section>
             {:else}
                 <section>
-                    <h6 class="text-eyebrow font-aeonik-fono pl-1 uppercase">Suggestions</h6>
+                    <h6 class="text-eyebrow font-aeonik-fono uppercase">Suggestions</h6>
                     <ul class="mt-4 flex flex-col gap-1">
                         {#each recommended as hit, i (hit.uid)}
                             {@const index = i + (results.length ? results.length : 0)}
