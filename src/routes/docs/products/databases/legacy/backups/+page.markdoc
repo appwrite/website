@@ -22,10 +22,10 @@ Backup policies allow you to automate your backup process. The Scale and Enterpr
 To automate your database backups, you need to create backup policies that run at scheduled intervals.
 
 {% only_dark %}
-![Create databases screen](/images/docs/databases/dark/databases.png)
+![Create databases screen](/images/docs/databases/legacy/dark/databases.png)
 {% /only_dark %}
 {% only_light %}
-![Create databases screen](/images/docs/databases/databases.png)
+![Create databases screen](/images/docs/databases/legacy/databases.png)
 {% /only_light %}
 
 1. In the Appwrite Console's sidebar, click **Databases**
@@ -34,27 +34,27 @@ To automate your database backups, you need to create backup policies that run a
 &nbsp;
     * On a **Pro** plan, you get access to a Daily backup policy
     {% only_dark %}
-    ![Pro plan policy](/images/docs/databases/dark/pro-policy.png)
+    ![Pro plan policy](/images/docs/databases/legacy/dark/pro-policy.png)
     {% /only_dark %}
     {% only_light %}
-    ![Pro plan policy](/images/docs/databases/pro-policy.png)
+    ![Pro plan policy](/images/docs/databases/legacy/pro-policy.png)
     {% /only_light %}
 
     * On **Scale** and **Enterprise** plans, you get access to more & custom policies\
     &nbsp;
         * Select a pre-defined policy
             {% only_dark %}
-            ![Scale plan policies](/images/docs/databases/dark/scale-policies.png)
+            ![Scale plan policies](/images/docs/databases/legacy/dark/scale-policies.png)
             {% /only_dark %}
             {% only_light %}
-            ![Scale plan policies](/images/docs/databases/scale-policies.png)
+            ![Scale plan policies](/images/docs/databases/legacy/scale-policies.png)
             {% /only_light %}
         * Or create a custom policy and adjust the settings as you like
             {% only_dark %}
-            ![Custom policies for Scale plan](/images/docs/databases/dark/scale-custom-policies.png)
+            ![Custom policies for Scale plan](/images/docs/databases/legacy/dark/scale-custom-policies.png)
             {% /only_dark %}
             {% only_light %}
-            ![Custom policies for Scale plan](/images/docs/databases/scale-custom-policies.png)
+            ![Custom policies for Scale plan](/images/docs/databases/legacy/scale-custom-policies.png)
             {% /only_light %}
 
 4. Click on **Create**
@@ -78,10 +78,10 @@ You can monitor its progress via the floating status bar at the bottom of your s
 To restore a database, you must have a backup of the database you want to restore.
 
 {% only_dark %}
-![Create databases screen](/images/docs/databases/dark/restore.png)
+![Create databases screen](/images/docs/databases/legacy/dark/restore.png)
 {% /only_dark %}
 {% only_light %}
-![Create databases screen](/images/docs/databases/restore.png)
+![Create databases screen](/images/docs/databases/legacy/restore.png)
 {% /only_light %}
 
 1. In the Appwrite Console's sidebar, click **Databases**
