@@ -11,20 +11,20 @@
     }
 
     const { size = 'default', gap = 32, header, children }: Props = $props();
-    let scroll = 0;
 
     function calculateScrollAmount(prev = false) {
+        if (!carousel) return 0;
+        
         const direction = prev ? -1 : 1;
-        const carouselSize = carousel?.clientWidth;
-        const childSize = (carousel.childNodes[0] as HTMLUListElement)?.clientWidth + gap;
-
-        scroll = scroll || carouselSize;
-
+        const carouselSize = carousel.clientWidth;
+        
+        const firstChild = carousel.querySelector('li') as HTMLElement;
+        if (!firstChild) return 0;
+        
+        const childSize = firstChild.offsetWidth + gap;
         const numberOfItems = Math.floor(carouselSize / childSize);
-        const overflow = scroll % childSize;
-        const amount = numberOfItems * childSize - overflow * direction;
-        scroll += amount * direction;
-        return amount * direction;
+        
+        return numberOfItems * childSize * direction;
     }
 
     function next() {
@@ -44,9 +44,19 @@
     let isStart = $state(true);
 
     function handleScroll() {
+        if (!carousel) return;
+        
         isStart = carousel.scrollLeft <= 0;
-        isEnd = Math.ceil(carousel.scrollLeft + carousel.offsetWidth) >= carousel.scrollWidth;
+        isEnd = Math.ceil(carousel.scrollLeft + carousel.offsetWidth) >= carousel.scrollWidth - 1;
     }
+
+    $effect(() => {
+        if (carousel) {
+            setTimeout(() => {
+                handleScroll();
+            }, 0);
+        }
+    });
 </script>
 
 <div>
@@ -66,7 +76,7 @@
             <button
                 class="web-icon-button cursor-pointer"
                 aria-label="Move carousel forward"
-                disabled
+                disabled={isEnd}
                 onclick={next}
             >
                 <span class="web-icon-arrow-right" aria-hidden="true"></span>
@@ -82,6 +92,12 @@
             style:gap="{gap}px"
             bind:this={carousel}
             onscroll={handleScroll}
+            onwheel={(e) => {
+                if (e.deltaY !== 0) {
+                    e.preventDefault();
+                    carousel.scrollLeft += e.deltaY;
+                }
+            }}
         >
             {@render children()}
         </ul>
