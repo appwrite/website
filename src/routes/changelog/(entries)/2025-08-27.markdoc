@@ -15,3 +15,7 @@ This means you can:
 - Or switch your existing projects to take advantage of the new location
 
 If your users are on the U.S. West Coast, the SFO region will help you deliver a faster and reliable experience to your users.
+
+{% arrow_link href="/docs/products/network/regions" %}
+Learn more about Regions
+{% /arrow_link %}
