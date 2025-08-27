@@ -1,7 +1,7 @@
 ---
 layout: article
 title: Regions
-description: Learn about Appwrite regions, where core services like databases, auth, functons, sites and storage are hosted. Understand data sovereignty, fault isolation, and scalability for compliant, high-performance deployments
+description: Learn about Appwrite regions, where core services like databases, auth, functions, sites, and storage are hosted. Understand data sovereignty, fault isolation, and scalability for compliant, high-performance deployments
 ---
 
 Appwrite regions are geographic locations where all your application's core infrastructure is deployed. Each region operates as an independent, highly available cluster, managing the storage, processing, and serving of your data and Appwrite services.
@@ -22,8 +22,8 @@ Appwrite is currently available in the following list of regions:
 | Frankfurt           | FRA    | `https://fra.cloud.appwrite.io/v1`      | Available       |
 | New York            | NYC    | `https://nyc.cloud.appwrite.io/v1`      | Available       |
 | Sydney              | SYD    | `https://syd.cloud.appwrite.io/v1`      | Available       |
+| San Francisco       | SFO    | `https://sfo.cloud.appwrite.io/v1`      | Available       |
 | Singapore           | SGP    | `coming soon`                           | Q4 2025         |
-| San Francisco       | SFO    | `coming soon`                           | Q4 2025         |
 | Bangalore           | BLR    | `coming soon`                           | TBD         |
 | Amsterdam           | AMS    | `coming soon`                           | TBD         |
 | London              | LON    | `coming soon`                           | TBD         |
