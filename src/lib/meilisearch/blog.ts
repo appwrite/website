@@ -1,11 +1,12 @@
 import { readdirSync, statSync } from 'fs';
 import path, { join } from 'path';
-import type { SearchResult } from './types';
+import type { SearchItem } from './types';
 import { generateSearchableContent, getMarkdocContent } from './utils';
 import { randomUUID } from 'crypto';
+import { groupBy } from 'remeda';
 
 export const getSearchablePosts = () => {
-    const searchablePosts = [] as Array<SearchResult>;
+    const searchablePosts = [] as Array<SearchItem>;
     const directoryPath = join(process.cwd(), `src/routes/blog/post`);
 
     readdirSync(directoryPath).forEach((entry) => {
@@ -24,7 +25,8 @@ export const getSearchablePosts = () => {
             posts.forEach((post, i) => {
                 searchablePosts.push({
                     ...post,
-                    url: `/blog/post/${url}`
+                    url: `/blog/post/${url}`,
+                    uid: `${url}-${randomUUID()}`
                 });
             });
         }

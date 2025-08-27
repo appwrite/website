@@ -5,10 +5,12 @@
 
     import { createCombobox, melt } from '@melt-ui/svelte';
 
-    import { type Hit, type Hits, MeiliSearch } from 'meilisearch';
+    import { MeiliSearch } from 'meilisearch';
     import { tick } from 'svelte';
     import Icon, { type IconType } from './ui/icon';
-    import type { SearchHit, SearchResult } from '$routes/search/(lib)/types';
+    import type { SearchHit, SearchItem } from '$lib/meilisearch/types';
+    import { transformResults } from '$lib/meilisearch/search';
+    import { PUBLIC_MEILISEARCH_SEARCH_KEY } from '$env/static/public';
 
     interface SearchProps {
         open: boolean;
@@ -20,11 +22,11 @@
     let container: HTMLDivElement;
 
     const meilisearchClient = new MeiliSearch({
-        host: 'https://search.appwrite.org',
-        apiKey: '10a5fea149bfaff21ef4d7cbe7f8a09d4fab404d6c3510279a365e065f8955a7'
+        host: 'https://ms-6b6b7d6df3ec-29090.fra.meilisearch.io',
+        apiKey: PUBLIC_MEILISEARCH_SEARCH_KEY
     });
 
-    const index = meilisearchClient.index<SearchResult>('website');
+    const index = meilisearchClient.index<SearchItem>('website');
 
     let results = $state<Array<SearchHit>>([]);
 
@@ -58,17 +60,17 @@
         return target.toString();
     }
 
-    const recommended: Hits<SearchResult & { icon?: IconType }> = [
+    const recommended = [
         {
             uid: 'custom-domains',
             url: '/blog/post/custom-domains-with-sites',
-            h1: 'Custom domains with Appwrite Sites',
+            title: 'Custom domains with Appwrite Sites',
             icon: 'blog'
         },
         {
             uid: 'quick-starts-flutter',
             url: '/quick-starts/flutter',
-            h1: 'Quick start with Flutter',
+            title: 'Quick start with Flutter',
             icon: 'quickstarts'
         },
         {
@@ -111,7 +113,7 @@
     const {
         elements: { input, menu, option },
         states: { inputValue }
-    } = createCombobox<SearchResult>({
+    } = createCombobox<SearchItem>({
         forceVisible: true,
         preventScroll: false,
         portal: null,
@@ -139,40 +141,25 @@
         }
     }
 
-    function getSubtitleContent(
-        hit: Hit<{ h1?: string; h2?: string; h3?: string; h4?: string; h5?: string; h6?: string }>
-    ): { header?: string; subtitle?: string } {
-        return {
-            header: hit._formatted?.h1,
-            subtitle:
-                hit._formatted?.h2 ??
-                hit._formatted?.h3 ??
-                hit._formatted?.h4 ??
-                hit._formatted?.h5 ??
-                hit._formatted?.h6
-        };
-    }
+    // function getSubtitleContent(
+    //     hit: Hit<{ h1?: string; h2?: string; h3?: string; h4?: string; h5?: string; h6?: string }>
+    // ): { header?: string; subtitle?: string } {
+    //     return {
+    //         header: hit._formatted?.h1,
+    //         subtitle:
+    //             hit._formatted?.h2 ??
+    //             hit._formatted?.h3 ??
+    //             hit._formatted?.h4 ??
+    //             hit._formatted?.h5 ??
+    //             hit._formatted?.h6
+    //     };
+    // }
 
-    type GroupKey = 'docs' | 'blog' | 'integrations';
+    type GroupKey = string;
 
-    type GroupedResults = Record<GroupKey, SearchHit[]>;
+    const groupedResults = $derived(transformResults(results));
 
-    const groupedResults = $derived(
-        results.reduce<GroupedResults>((groups, hit) => {
-            const tags = hit.urls_tags || [];
-            const primaryTag: GroupKey = tags.includes('docs')
-                ? 'docs'
-                : tags.includes('blog')
-                  ? 'blog'
-                  : 'integrations';
-
-            if (!groups[primaryTag]) {
-                groups[primaryTag] = [];
-            }
-            groups[primaryTag].push(hit);
-            return groups;
-        }, {} as GroupedResults)
-    );
+    $inspect(groupedResults);
 </script>
 
 <svelte:window on:keydown={handleKeypress} />
@@ -229,74 +216,70 @@
                     } as const}
 
                     <div class="top-0 max-h-80 overflow-x-auto overflow-y-auto px-4 pb-10">
-                        {#each groupOrder as groupKey}
-                            {@const groupResults = groupedResults[groupKey]}
-                            {#if groupResults && groupResults.length > 0}
-                                {@const config = groupConfig[groupKey]}
-                                <div>
-                                    <h6 class="text-primary mb-2 font-sans text-xs">
-                                        {config.label}
-                                    </h6>
-                                    <ul class="flex flex-col gap-1">
-                                        {#each groupResults as hit, index (hit.uid)}
-                                            {@const subtitleContent = getSubtitleContent(hit)}
-                                            {@const globalIndex = results.findIndex(
-                                                (r) => r.uid === hit.uid
-                                            )}
-                                            <li>
-                                                <a
-                                                    data-hit={globalIndex}
-                                                    href={createHref(hit)}
-                                                    class="text-caption group data-[highlighted]:bg-smooth data-[highlighted]:text-primary text-secondary focus:bg-smooth -mx-2 flex min-w-full items-start gap-2.5 rounded-lg px-2 py-2.5 transition-colors"
-                                                    use:melt={$option({
-                                                        value: hit,
-                                                        label: hit.title ?? hit.uid
-                                                    })}
+                        <!-- {#each groupedResults as group}
+                            <div>
+                                <h6 class="text-primary mb-2 font-sans text-xs">
+                                    {config.label}
+                                </h6>
+                                <ul class="flex flex-col gap-1">
+                                    {#each groupResults as hit, index (hit.uid)}
+                                        {@const subtitleContent = getSubtitleContent(hit)}
+                                        {@const globalIndex = results.findIndex(
+                                            (r) => r.uid === hit.uid
+                                        )}
+                                        <li>
+                                            <a
+                                                data-hit={globalIndex}
+                                                href={createHref(hit)}
+                                                class="text-caption group data-[highlighted]:bg-smooth data-[highlighted]:text-primary text-secondary focus:bg-smooth -mx-2 flex min-w-full items-start gap-2.5 rounded-lg px-2 py-2.5 transition-colors"
+                                                use:melt={$option({
+                                                    value: hit,
+                                                    label: hit.title ?? hit.uid
+                                                })}
+                                            >
+                                                <div
+                                                    class="bg-offset border-offset flex size-6 shrink-0 items-center justify-center gap-2 rounded-sm border"
+                                                >
+                                                    <Icon name={config.icon} class="size-4" />
+                                                </div>
+                                                <div
+                                                    class="[&_mark]:text-primary flex flex-col [&_mark]:bg-transparent [&:is(mark)]:bg-transparent"
                                                 >
                                                     <div
-                                                        class="bg-offset border-offset flex size-6 shrink-0 items-center justify-center gap-2 rounded-sm border"
+                                                        class="text-secondary line-clamp-1 flex items-center gap-0.5"
                                                     >
-                                                        <Icon name={config.icon} class="size-4" />
-                                                    </div>
-                                                    <div
-                                                        class="[&_mark]:text-primary flex flex-col [&_mark]:bg-transparent [&:is(mark)]:bg-transparent"
-                                                    >
-                                                        <div
-                                                            class="text-secondary line-clamp-1 flex items-center gap-0.5"
-                                                        >
-                                                            {#if subtitleContent.header}
+                                                        {#if subtitleContent.header}
+                                                            <span
+                                                                class="[&:is(mark)]:font-medium [&>mark]:font-medium"
+                                                            >
+                                                                {@html subtitleContent.header}</span
+                                                            >
+                                                            {#if subtitleContent.subtitle}
+                                                                <span> / </span>
                                                                 <span
                                                                     class="[&:is(mark)]:font-medium [&>mark]:font-medium"
+                                                                    >{@html subtitleContent.subtitle}</span
                                                                 >
-                                                                    {@html subtitleContent.header}</span
-                                                                >
-                                                                {#if subtitleContent.subtitle}
-                                                                    <span> / </span>
-                                                                    <span
-                                                                        class="[&:is(mark)]:font-medium [&>mark]:font-medium"
-                                                                        >{@html subtitleContent.subtitle}</span
-                                                                    >
-                                                                {/if}
                                                             {/if}
-                                                        </div>
-                                                        {#if hit._formatted}
-                                                            <div
-                                                                class="text-secondary mt-1 line-clamp-1 flex w-full items-center text-left"
-                                                            >
-                                                                <span
-                                                                    class="[&>mark]:text-greyscale-900 [&>mark]:bg-mint-500 line-clamp-1 [&>mark]:rounded-sm [&>mark]:px-0.5 [&>mark]:font-medium"
-                                                                    >{@html hit._formatted.p}</span
-                                                                >
-                                                            </div>
                                                         {/if}
                                                     </div>
-                                                </a>
-                                            </li>
-                                        {/each}
-                                    </ul>
-                                </div>
-                            {/if}
-                        {/each}
+                                                    {#if hit._formatted}
+                                                        <div
+                                                            class="text-secondary mt-1 line-clamp-1 flex w-full items-center text-left"
+                                                        >
+                                                            <span
+                                                                class="[&>mark]:text-greyscale-900 [&>mark]:bg-mint-500 line-clamp-1 [&>mark]:rounded-sm [&>mark]:px-0.5 [&>mark]:font-medium"
+                                                                >{@html hit._formatted.p}</span
+                                                            >
+                                                        </div>
+                                                    {/if}
+                                                </div>
+                                            </a>
+                                        </li>
+                                    {/each}
+                                </ul>
+                            </div>
+                        {/each} -->
                     </div>
                     <div
                         class="bg-subtle border-smooth fixed bottom-0 left-px w-full rounded-b-2xl border-t py-3 text-center"
@@ -319,17 +302,19 @@
                             <li>
                                 <a
                                     data-hit={index}
-                                    href={createHref(hit)}
                                     use:melt={$option({
                                         value: hit,
                                         label: hit.title ?? i.toString()
                                     })}
                                     class="text-caption group data-[highlighted]:bg-smooth data-[highlighted]:text-primary text-secondary focus:bg-smooth -mx-2 flex min-w-full items-center gap-2.5 rounded-lg px-2 py-2.5 transition-colors"
                                 >
-                                    <Icon name={hit.icon} class="fill-primary size-4 shrink-0" />
+                                    <Icon
+                                        name={hit.icon as IconType}
+                                        class="fill-primary size-4 shrink-0"
+                                    />
 
                                     <div class="line-clamp-1 flex-1">
-                                        <span>{hit.h1}</span>
+                                        <span>{hit.title}</span>
                                     </div>
                                 </a>
                             </li>
