@@ -2,6 +2,7 @@
 layout: changelog
 title: "New Cloud region available: San Francisco (SFO)"
 date: 2025-08-27
+cover: /images/changelog/2025-08-27.png
 ---
 
 We’ve expanded the Appwrite Cloud to a brand-new region.
