@@ -36,7 +36,7 @@
         const response = await index.search(value, {
             attributesToCrop: ['p'],
             cropLength: 40,
-            limit: 20,
+
             attributesToHighlight: ['title', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p'],
             highlightPreTag: '<mark>',
             highlightPostTag: '</mark>'
@@ -189,7 +189,7 @@
         <div class="relative flex justify-between">
             <Icon name="search" class="absolute top-3.5 left-3 z-5" aria-hidden="true"></Icon>
             <input
-                class="bg-smooth border-offset placeholder:text-secondary text-caption text-primary focus:placeholder:text-primary relative z-1 h-12 flex-1 rounded-t-2xl border pl-10 shadow-none outline-0 backdrop-blur-[48px]"
+                class="dark:bg-smooth bg-card/90 border-offset placeholder:text-secondary text-caption text-primary focus:placeholder:text-primary relative z-1 h-12 flex-1 rounded-t-2xl border pl-10 shadow-none outline-0 backdrop-blur-[48px]"
                 type="text"
                 id="search"
                 bind:value
@@ -214,7 +214,7 @@
             {/if}
         </div>
         <div
-            class="bg-card/75 border-offset relative flex max-h-80 flex-col gap-1 rounded-b-2xl border-x border-b pt-4 pb-2 backdrop-blur-[48px] outline-none"
+            class="bg-card/90 dark:bg-card-75 border-offset relative flex max-h-80 flex-col gap-1 rounded-b-2xl border-x border-b pt-4 pb-2 backdrop-blur-[48px] outline-none"
             use:melt={$menu}
         >
             {#if value && value.length >= 3}
