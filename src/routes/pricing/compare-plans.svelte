@@ -35,15 +35,15 @@
                 {
                     title: 'API bandwidth',
                     free: '5GB / month',
-                    pro: '300GB / month',
-                    scale: '300GB / month',
+                    pro: '2TB / month',
+                    scale: '2TB / month',
                     enterprise: 'Custom'
                 },
                 {
                     title: 'Additional API bandwidth',
                     free: '-',
-                    pro: '$40 per 100GB / month',
-                    scale: '$40 per 100GB / month',
+                    pro: '$15 per 100GB / month',
+                    scale: '$15 per 100GB / month',
                     enterprise: 'Custom'
                 },
                 {
@@ -56,8 +56,8 @@
                 {
                     title: 'Additional storage',
                     free: '-',
-                    pro: '$3 per 100GB ',
-                    scale: '$3 per 100GB',
+                    pro: '$2.8 per 100GB ',
+                    scale: '$2.8 per 100GB',
                     enterprise: 'Custom'
                 },
                 {
@@ -74,10 +74,17 @@
             rows: [
                 {
                     title: 'Number of projects',
-                    free: '2',
-                    pro: 'Unlimited',
-                    scale: 'Unlimited',
-                    enterprise: 'Unlimited'
+                    free: '2 (Shared resources)',
+                    pro: '1 (Dedicated resources)',
+                    scale: '1 (Dedicated resources)',
+                    enterprise: 'Custom'
+                },
+				{
+                    title: 'Additional projects',
+                    free: '-',
+                    pro: '$15',
+                    scale: '$15',
+                    enterprise: 'Custom'
                 },
                 {
                     title: 'Projects pausing',
@@ -89,16 +96,9 @@
                 {
                     title: 'Organization members',
                     free: '1',
-                    pro: '1',
+                    pro: 'Unlimited',
                     scale: 'Unlimited',
                     enterprise: 'Unlimited'
-                },
-                {
-                    title: 'Additional members',
-                    free: '-',
-                    pro: '$15 per member',
-                    scale: '$0',
-                    enterprise: '$0'
                 },
                 {
                     title: 'Connected websites and apps',
@@ -275,6 +275,18 @@
             ]
         },
         {
+            title: 'Sites',
+            rows: [
+                {
+                    title: 'Sites',
+                    free: '1 per project',
+                    pro: 'Unlimited',
+                    scale: 'Unlimited',
+                    enterprise: 'Unlimited'
+                },
+            ]
+        },
+        {
             title: 'Storage',
             rows: [
                 {
@@ -334,8 +346,8 @@
                 {
                     title: 'Additional GB-hours',
                     free: '-',
-                    pro: '$0.09 per GB-hour',
-                    scale: '$0.09 per GB-hour',
+                    pro: '$0.06 per GB-hour',
+                    scale: '$0.06 per GB-hour',
                     enterprise: 'Custom'
                 },
                 {
@@ -386,6 +398,95 @@
                     scale: 'Unlimited',
                     enterprise: 'Unlimited'
                 }
+			]
+        },
+        {
+            title: 'Messaging',
+            rows: [
+                {
+                    title: 'Messages',
+                    free: 1000 per month,
+                    pro: Unlimited,
+                    scale: Unlimited,
+                    enterprise: Unlimited
+                },
+				{
+                    title: 'Topics',
+                    free: 1,
+                    pro: Unlimited,
+                    scale: Unlimited,
+                    enterprise: Unlimited
+                },
+				{
+                    title: 'Targets',
+                    free: true,
+                    pro: true,
+                    scale: true,
+                    enterprise: true
+                },
+				{
+                    title: 'In app notifications',
+                    free: true,
+                    pro: true,
+                    scale: true,
+                    enterprise: true
+                },
+				{
+                    title: 'Chat',
+                    free: true,
+                    pro: true,
+                    scale: true,
+                    enterprise: true
+                },
+				{
+                    title: 'Push notifications',
+                    free: true,
+                    pro: true,
+                    scale: true,
+                    enterprise: true
+                },
+				{
+                    title: 'Email',
+                    free: true,
+                    pro: true,
+                    scale: true,
+                    enterprise: true
+                },
+				{
+                    title: 'SMS',
+                    free: true,
+                    pro: true,
+                    scale: true,
+                    enterprise: true
+                },
+				{
+                    title: 'Discord',
+                    free: true,
+                    pro: true,
+                    scale: true,
+                    enterprise: true
+                },
+				{
+                    title: 'WhatsApp',
+                    free: false,
+                    pro: true,
+                    scale: true,
+                    enterprise: true
+                },
+				{
+                    title: 'Slack',
+                    free: false,
+                    pro: true,
+                    scale: true,
+                    enterprise: true
+                },
+				{
+                    title: 'Analytics',
+                    free: false,
+                    pro: Coming soon,
+                    scale: Coming soon,
+                    enterprise: Coming soon
+                },
             ]
         },
         {
@@ -414,7 +515,7 @@
                 },
                 {
                     title: 'Content compression',
-                    info: 'Support for brotli, zstd and gzip for text compression and webp for image compression',
+                    info: 'Support for brotli, zstd, and gzip for text compression and webp for image compression',
                     free: true,
                     pro: true,
                     scale: true,
