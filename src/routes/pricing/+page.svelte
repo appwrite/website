@@ -174,7 +174,7 @@
                                                     <div
                                                         class="text-title font-aeonik-pro text-primary mt-3"
                                                     >
-                                                        $15
+                                                        $25
                                                     </div>
                                                     <div class="mt-1">/month</div>
                                                 </div>
@@ -200,7 +200,7 @@
                                         <div class="web-pricing-cards-content">
                                             <p>Everything in Free, plus:</p>
                                             <ul class="web-checked-list-circle">
-                                                <li><span>300GB API bandwidth</span></li>
+                                                <li><span>2TB API bandwidth</span></li>
                                                 <li><span>150GB storage</span></li>
                                                 <li><span>3.5M executions</span></li>
                                                 <li><span>200K monthly active users</span></li>
