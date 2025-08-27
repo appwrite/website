@@ -198,7 +198,7 @@
                                             </Button>
                                         </header>
                                         <div class="web-pricing-cards-content">
-                                            <p>Everything in Free, plus:</p>
+                                            <p>Dedicated resources per project:</p>
                                             <ul class="web-checked-list-circle">
                                                 <li><span>2TB API bandwidth</span></li>
                                                 <li><span>150GB storage</span></li>
