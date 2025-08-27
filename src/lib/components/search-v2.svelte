@@ -307,7 +307,7 @@
                     </div>
                 {:else}
                     <p class="text-caption py-4 text-center">
-                        No results found for <span class="font-bold">"{value}"</span>
+                        No results found for <span class="text-primary font-medium">"{value}"</span>
                     </p>
                 {/if}
             {:else}
