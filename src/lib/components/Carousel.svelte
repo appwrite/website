@@ -14,16 +14,16 @@
 
     function calculateScrollAmount(prev = false) {
         if (!carousel) return 0;
-        
+
         const direction = prev ? -1 : 1;
         const carouselSize = carousel.clientWidth;
-        
+
         const firstChild = carousel.querySelector('li') as HTMLElement;
         if (!firstChild) return 0;
-        
+
         const childSize = firstChild.offsetWidth + gap;
         const numberOfItems = Math.floor(carouselSize / childSize);
-        
+
         return numberOfItems * childSize * direction;
     }
 
@@ -45,7 +45,7 @@
 
     function handleScroll() {
         if (!carousel) return;
-        
+
         isStart = carousel.scrollLeft <= 0;
         isEnd = Math.ceil(carousel.scrollLeft + carousel.offsetWidth) >= carousel.scrollWidth - 1;
     }
