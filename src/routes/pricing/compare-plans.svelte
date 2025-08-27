@@ -275,18 +275,6 @@
             ]
         },
         {
-            title: 'Sites',
-            rows: [
-                {
-                    title: 'Sites',
-                    free: '1 per project',
-                    pro: 'Unlimited',
-                    scale: 'Unlimited',
-                    enterprise: 'Unlimited'
-                },
-            ]
-        },
-        {
             title: 'Storage',
             rows: [
                 {
@@ -320,11 +308,18 @@
             ]
         },
         {
-            title: 'Functions',
+            title: 'Compute',
             rows: [
                 {
                     title: 'Functions',
                     free: '5 per project',
+                    pro: 'Unlimited',
+                    scale: 'Unlimited',
+                    enterprise: 'Unlimited'
+                },
+			   {
+                    title: 'Sites',
+                    free: '1 per project',
                     pro: 'Unlimited',
                     scale: 'Unlimited',
                     enterprise: 'Unlimited'
