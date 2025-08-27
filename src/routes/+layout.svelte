@@ -165,6 +165,38 @@
 
         <!-- ZoomInfo snippet -->
         <script defer src="/scripts/zoominfo.js"></script>
+
+        <!-- Google tag script -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=AW-10891042172"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+            gtag('js', new Date());
+
+            gtag('config', 'AW-10891042172');
+        </script>
+
+        <!-- Twitter conversion tracking script -->
+        <script>
+            !(function (e, t, n, s, u, a) {
+                e.twq ||
+                    ((s = e.twq =
+                        function () {
+                            s.exe ? s.exe.apply(s, arguments) : s.queue.push(arguments);
+                        }),
+                    (s.version = '1.1'),
+                    (s.queue = []),
+                    (u = t.createElement(n)),
+                    (u.async = !0),
+                    (u.src = 'https://static.ads-twitter.com/uwt.js'),
+                    (a = t.getElementsByTagName(n)[0]),
+                    a.parentNode.insertBefore(u, a));
+            })(window, document, 'script');
+            twq('config', 'o798a');
+        </script>
+        <!-- End Twitter conversion tracking base code -->
     {/if}
 
     <!-- canonical url -->
