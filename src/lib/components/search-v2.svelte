@@ -207,40 +207,26 @@
             {#if value && value.length >= 3}
                 {#if results.length > 0}
                     {@const totalResults = results.length}
-                    {@const groupOrder: readonly GroupKey[] = ['docs', 'blog', 'integrations'] as const}
-
-                    {@const groupConfig = {
-                        docs: { label: 'Docs', icon: 'docs' },
-                        blog: { label: 'Blog', icon: 'blog' },
-                        integrations: { label: 'Integrations', icon: 'integrations' }
-                    } as const}
 
                     <div class="top-0 max-h-80 overflow-x-auto overflow-y-auto px-4 pb-10">
-                        <!-- {#each groupedResults as group}
+                        {#each groupedResults as group}
                             <div>
-                                <h6 class="text-primary mb-2 font-sans text-xs">
-                                    {config.label}
-                                </h6>
+                                <h6 class="text-primary mb-2 font-sans text-xs">Docs</h6>
                                 <ul class="flex flex-col gap-1">
-                                    {#each groupResults as hit, index (hit.uid)}
-                                        {@const subtitleContent = getSubtitleContent(hit)}
-                                        {@const globalIndex = results.findIndex(
-                                            (r) => r.uid === hit.uid
-                                        )}
+                                    {#each group.hits as hit, index (hit.uid)}
                                         <li>
                                             <a
-                                                data-hit={globalIndex}
                                                 href={createHref(hit)}
                                                 class="text-caption group data-[highlighted]:bg-smooth data-[highlighted]:text-primary text-secondary focus:bg-smooth -mx-2 flex min-w-full items-start gap-2.5 rounded-lg px-2 py-2.5 transition-colors"
                                                 use:melt={$option({
-                                                    value: hit,
+                                                    value: hit.uid,
                                                     label: hit.title ?? hit.uid
                                                 })}
                                             >
                                                 <div
                                                     class="bg-offset border-offset flex size-6 shrink-0 items-center justify-center gap-2 rounded-sm border"
                                                 >
-                                                    <Icon name={config.icon} class="size-4" />
+                                                    <Icon name="docs" class="size-4" />
                                                 </div>
                                                 <div
                                                     class="[&_mark]:text-primary flex flex-col [&_mark]:bg-transparent [&:is(mark)]:bg-transparent"
@@ -248,38 +234,37 @@
                                                     <div
                                                         class="text-secondary line-clamp-1 flex items-center gap-0.5"
                                                     >
-                                                        {#if subtitleContent.header}
+                                                        {#if hit.title}
                                                             <span
                                                                 class="[&:is(mark)]:font-medium [&>mark]:font-medium"
                                                             >
-                                                                {@html subtitleContent.header}</span
+                                                                {@html hit.title}</span
                                                             >
-                                                            {#if subtitleContent.subtitle}
+                                                            <!-- {#if subtitleContent.subtitle}
                                                                 <span> / </span>
                                                                 <span
                                                                     class="[&:is(mark)]:font-medium [&>mark]:font-medium"
                                                                     >{@html subtitleContent.subtitle}</span
                                                                 >
-                                                            {/if}
+                                                            {/if} -->
                                                         {/if}
                                                     </div>
-                                                    {#if hit._formatted}
-                                                        <div
-                                                            class="text-secondary mt-1 line-clamp-1 flex w-full items-center text-left"
+
+                                                    <div
+                                                        class="text-secondary mt-1 line-clamp-1 flex w-full items-center text-left"
+                                                    >
+                                                        <span
+                                                            class="[&>mark]:text-greyscale-900 [&>mark]:bg-mint-500 line-clamp-1 [&>mark]:rounded-sm [&>mark]:px-0.5 [&>mark]:font-medium"
+                                                            >{@html hit.content}</span
                                                         >
-                                                            <span
-                                                                class="[&>mark]:text-greyscale-900 [&>mark]:bg-mint-500 line-clamp-1 [&>mark]:rounded-sm [&>mark]:px-0.5 [&>mark]:font-medium"
-                                                                >{@html hit._formatted.p}</span
-                                                            >
-                                                        </div>
-                                                    {/if}
+                                                    </div>
                                                 </div>
                                             </a>
                                         </li>
                                     {/each}
                                 </ul>
                             </div>
-                        {/each} -->
+                        {/each}
                     </div>
                     <div
                         class="bg-subtle border-smooth fixed bottom-0 left-px w-full rounded-b-2xl border-t py-3 text-center"
