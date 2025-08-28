@@ -21,11 +21,6 @@ Choose the deployment method that best fits your needs:
 * Low
 * Predictable
 ---
-* **App Platform**
-* Managed deployment, automatic scaling
-* Medium
-* Usage-based
----
 * **Kubernetes**
 * Container orchestration, high availability
 * High
@@ -144,102 +139,6 @@ For detailed SSL setup instructions, see the [SSL certificates guide](/docs/adva
 
 {% /section %}
 
-# App Platform deployment {% #app-platform %}
-
-Deploy Appwrite using DigitalOcean's fully managed App Platform service.
-
-## Prerequisites {% #app-platform-prerequisites %}
-
-- DigitalOcean account
-- Understanding of containerized applications
-
-## Deploy from Docker Hub {% #deploy-docker %}
-
-{% section #create-new-app step=1 title="Create new app" %}
-
-1. Navigate to [DigitalOcean App Platform](https://cloud.digitalocean.com/apps)
-2. Click **Create App**
-3. Choose **Docker Hub** as your source
-4. Configure the service:
-   - **Repository**: `appwrite/appwrite`
-   - **Tag**: `1.7.4` (or latest stable version)
-   - **HTTP Port**: `80`
-
-{% /section %}
-
-{% section #configure-environment step=2 title="Configure environment variables" %}
-
-Set up essential environment variables for production:
-
-{% table %}
-* Variable
-* Description
-* Example Value
----
-* `_APP_ENV`
-* Environment type
-* `production`
----
-* `_APP_KEY`
-* Encryption key
-* Generate secure random string
----
-* `_APP_DOMAIN`
-* App domain
-* `${APP_DOMAIN}` or your custom domain
----
-* `_APP_DOMAIN_TARGET`
-* Target domain
-* Same as `_APP_DOMAIN`
----
-* `_APP_SYSTEM_SECURITY_EMAIL_ADDRESS`
-* Admin email
-* Your admin email address
-{% /table %}
-
-{% /section %}
-
-{% section #add-managed-database step=3 title="Add managed database" %}
-
-1. In app settings, add a database resource
-2. Choose **MySQL** for compatibility with Appwrite
-3. Select appropriate cluster size and region
-4. Configure database connection environment variables
-
-{% /section %}
-
-{% section #deploy-configure step=4 title="Deploy and configure" %}
-
-1. Review your configuration settings
-2. Deploy the application
-3. Monitor the deployment logs
-4. Test the installation once deployment completes
-
-{% /section %}
-
-## Custom domain setup {% #app-platform-domain %}
-
-{% section #add-domain step=1 title="Add domain" %}
-
-1. Navigate to your app's **Settings** tab
-2. Add your custom domain
-3. Choose between apex domain or subdomain configuration
-
-{% /section %}
-
-{% section #configure-dns step=2 title="Configure DNS" %}
-
-1. Add the required DNS records (CNAME or A records) at your domain provider
-2. Wait for DNS verification to complete
-
-{% /section %}
-
-{% section #ssl-configuration step=3 title="SSL configuration" %}
-
-SSL certificates are automatically provisioned and managed by DigitalOcean App Platform for custom domains.
-
-{% /section %}
-
 # Kubernetes deployment {% #kubernetes %}
 
 Deploy Appwrite on DigitalOcean Kubernetes (DOKS) for container orchestration and high availability.
@@ -322,9 +221,9 @@ For domain configuration, connect via SSH and update the environment configurati
 ## Security best practices {% #security %}
 
 **Data Protection**
-- Use DigitalOcean Managed Databases for production workloads
-- Store sensitive environment variables securely
 - Enable automatic security updates
+- Store sensitive environment variables securely
+- Use DigitalOcean Spaces for external file storage
 
 **Network Security**
 - Use Cloud Firewalls to restrict access
@@ -345,7 +244,6 @@ For domain configuration, connect via SSH and update the environment configurati
 
 **Backup Strategy**
 - Enable automatic snapshots for Droplets
-- Use managed database backups for App Platform
 - Store file uploads in DigitalOcean Spaces with versioning
 
 For comprehensive backup procedures including database exports, storage volumes, and configuration files, see the [backup documentation](/docs/advanced/self-hosting/backups).
@@ -364,11 +262,6 @@ For comprehensive backup procedures including database exports, storage volumes,
 - Check SSH key configuration
 - Ensure Droplet is running and accessible
 
-**App Platform deployment failures**
-- Review environment variable configuration
-- Check application logs in the DigitalOcean control panel
-- Verify Docker image availability and tags
-
 **SSL certificate problems**
 - Ensure domain DNS records point to correct IP address
 - Verify web server configuration
@@ -376,7 +269,7 @@ For comprehensive backup procedures including database exports, storage volumes,
 
 **Performance issues**
 - Monitor resource usage through DigitalOcean dashboard
-- Consider upgrading Droplet size or App Platform plan
+- Consider upgrading Droplet size
 - Review application logs for bottlenecks
 
 # Next steps {% #next-steps %}
