@@ -54,7 +54,7 @@ Fill in the details as desired. Although there are some things you must know bef
 - If you’re using a different branch for your intended production website, choose the specific branch.
 - If you’re using a monorepo, Sites might not automatically detect your application. In such cases, manually provide the root directory for your Next.js app that contains the Next.js configuration file. For example, if you’re using Turborepo, your Next.js app might be located inside one of the folders in the `apps` folder, so your root directory should be something like `./apps/web`.
 - Most users don’t need to change the **Build settings**, although if you want to run different commands for installation and builds, you can configure those in this section. If you don’t know anything about this, it’s worth skipping this section altogether.
-    - The default build command for Next.js is `next build`.
+    - The default build command for Next.js is `npm run build`.
     - The default install command for Next.js is `npm install`.
     - The default output directory for Next.js is `./.next`.
 - If your app uses environment variables, add them in the **Environment variables** section. If your app uses sensitive API keys, you are likely using environment variables.
