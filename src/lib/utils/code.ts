@@ -66,7 +66,6 @@ const languages = {
     css: css,
     groovy: groovy,
     ini: ini,
-    ini: ini,
     env: ini,
     dotenv: ini,
     dockerfile: dockerfile,
