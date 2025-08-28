@@ -400,17 +400,17 @@
             rows: [
                 {
                     title: 'Messages',
-                    free: 1000 per month,
-                    pro: Unlimited,
-                    scale: Unlimited,
-                    enterprise: Unlimited
+                    free: '1000 per month',
+                    pro: 'Unlimited,
+                    scale: 'Unlimited',
+                    enterprise: 'Unlimited'
                 },
 				{
                     title: 'Topics',
                     free: 1,
-                    pro: Unlimited,
-                    scale: Unlimited,
-                    enterprise: Unlimited
+                    pro: 'Unlimited',
+                    scale: 'Unlimited',
+                    enterprise: 'Unlimited'
                 },
 				{
                     title: 'Targets',
@@ -478,9 +478,9 @@
 				{
                     title: 'Analytics',
                     free: false,
-                    pro: Coming soon,
-                    scale: Coming soon,
-                    enterprise: Coming soon
+                    pro: 'Coming soon',
+                    scale: 'Coming soon',
+                    enterprise: 'Coming soon'
                 },
             ]
         },
