@@ -64,23 +64,6 @@
                         >
                             Appwrite offers simple and transparent pricing plans with no surprises.
                         </p>
-                        <div class="mt-4 flex flex-col items-center text-white">
-                            <a href="/blog/post/appwrite-pricing-update">
-                                <BadgeTransparent
-                                    ><img
-                                        src="/images/icons/illustrated/light/sites.png"
-                                        alt="Sites icon"
-                                        class="h-8 w-8"
-                                    />
-                                    <span class="text-white">New Appwrite pricing announced</span>
-                                    <Icon name="arrow-right" aria-hidden="true"
-                                    ></Icon></BadgeTransparent
-                                ></a
-                            >
-                            <span class="mt-2 text-sm text-[var(--color-primary)] opacity-64"
-                                >New pricing will go into effect September 1st, 2025</span
-                            >
-                        </div>
                     </div>
                 </section>
             </div>
