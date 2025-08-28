@@ -66,8 +66,11 @@ const languages = {
     css: css,
     groovy: groovy,
     ini: ini,
+    ini: ini,
     env: ini,
-    dockerfile: dockerfile
+    dotenv: ini,
+    dockerfile: dockerfile,
+    docker: dockerfile
 } as const satisfies Record<string, LanguageFn>;
 
 const platformAliases: Record<string, keyof typeof languages> = {
