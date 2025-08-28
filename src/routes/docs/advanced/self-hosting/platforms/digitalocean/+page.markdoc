@@ -279,4 +279,4 @@ After successful deployment:
 - [Configure email delivery](/docs/advanced/self-hosting/configuration/email) - Set up SMTP for notifications
 - [Set up external storage](/docs/advanced/self-hosting/configuration/storage) - Use DigitalOcean Spaces for file storage
 - [Production deployment guide](/docs/advanced/self-hosting/production) - Optimize for production workloads
-- [Update and maintenance](/docs/advanced/self-hosting/update) - Keep your Appwrite instance up to date
+- [Update and maintenance](/docs/advanced/self-hosting/production/updates) - Keep your Appwrite instance up to date

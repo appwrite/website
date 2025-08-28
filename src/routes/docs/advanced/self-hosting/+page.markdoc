@@ -7,7 +7,7 @@ description: Set up your self-hosted Appwrite instance easily. Read the installa
 Appwrite was designed from the ground up with self-hosting in mind. You can install and run Appwrite on any operating system that can run a [Docker CLI](https://www.docker.com/products/docker-desktop). Self-hosted Appwrite instances can be configured flexibly with access to the same features found on Appwrite Cloud.
 
 {% info title="Upgrading from older versions" %}
-If you are migrating from an older version of Appwrite, you need to follow the [migration instructions](/docs/advanced/self-hosting/update)
+If you are migrating from an older version of Appwrite, you need to follow the [migration instructions](/docs/advanced/self-hosting/production/updates)
 {% /info %}
 
 # Cloud vs Self-hosting {% #cloud-vs-self-hosting %}
