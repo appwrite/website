@@ -5,7 +5,7 @@ description: Add authentication to your React Native application.
 step: 4
 ---
 
-# User context {% #user-context %}
+## User context {% #user-context %}
 
 In React Native, you can use [context](https://reactjs.org/docs/context.html) to share data between components.
 You can use a context and a custom hook to manage our user's data.
@@ -77,7 +77,7 @@ export function UserProvider(props) {
 
 Now, you can use the `useUser` hook to access the user's data from any component wrapped by this context's provider.
 
-# Display toasts {% #display-toasts %}
+## Display toasts {% #display-toasts %}
 
 For a better user experience, display toasts when the users perform an action, such as login, logout, create new ideas, etc.
 
@@ -94,7 +94,7 @@ export function toast(msg) {
     }
 }
 ```
-# Login page {% #login-page %}
+## Login page {% #login-page %}
 
 Create a new file `views/Login.jsx` and add the following code to it.
 this page contains a basic form to allow the user to login or register.

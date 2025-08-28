@@ -17,13 +17,15 @@
     }
 </script>
 
-<section class="web-article-content-section is-with-line">
+<section class="web-article-content-section is-with-line mt-8">
     <section class="web-article-content-sub-section">
         <header class="web-article-content-header">
-            <span class="web-numeric-badge mb-4">{step}</span>
-            <Heading level={2} {id} {step}>
-                {title}
-            </Heading>
+            <span class="web-numeric-badge">{step}</span>
+            <div class="contents">
+                <Heading level={2} {id} {step}>
+                    {title}
+                </Heading>
+            </div>
         </header>
         {@render children()}
     </section>

@@ -5,13 +5,13 @@ description: Add authentication to a Next.js project using Appwrite.
 step: 7
 ---
 
-# Enable OAuth provider {% #enable-oauth-provider %}
+## Enable OAuth provider {% #enable-oauth-provider %}
 
 To enable the GitHub OAuth provider, navigate to your Appwrite Console > Auth > Settings > OAuth2 Providers > GitHub
 
 To support the OAuth flow, we first redirect the user to the OAuth provider, and then handle the callback from the OAuth provider.
 
-# OAuth server action {% #oauth-server-action %}
+## OAuth server action {% #oauth-server-action %}
 
 Add a new server action. Navigate to `src/lib/server` and create a new file `oauth.js`:
 
@@ -41,7 +41,7 @@ export async function signUpWithGithub() {
 
 The `createOAuth2Token` method redirects the user to the OAuth provider, and then the OAuth provider redirects the user back to the `/OAuth` route with the `userId` and `secret` URL query parameters.
 
-# OAuth form {% #oauth-form %}
+## OAuth form {% #oauth-form %}
 
 To redirect, add a button to our sign up page that redirects the user to the OAuth provider.
 
@@ -67,7 +67,7 @@ export default async function SignUpPage() {
 
 ```
 
-# OAuth callback {% #oauth-callback %}
+## OAuth callback {% #oauth-callback %}
 
 Handle the callback and create a session for the user. Create a new Next.js server route at `src/app/oauth/route.js`:
 

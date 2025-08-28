@@ -5,7 +5,7 @@ description: Add Appwrite authentication to you Android app.
 step: 4
 ---
 
-# Creating an account service {% #creating-an-account-service %}
+## Creating an account service {% #creating-an-account-service %}
 
 We can use services to abstract business logic from our views.
 Create a service to handle user authentication with a new file `services/AccountService.kt`.
@@ -88,7 +88,7 @@ object Appwrite {
 }
 ```
 
-# Login screen {% #login-screen %}
+## Login screen {% #login-screen %}
 
 Using this service, we can now create a screen to login or register a user.
 

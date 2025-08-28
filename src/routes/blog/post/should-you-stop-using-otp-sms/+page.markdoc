@@ -159,7 +159,7 @@ After receiving the secret (6-digit number) in the SMS, you can use it along wit
 ```dart
 final session = await account.createSession(
     userId: userId,
-    secret: '[SECRET]'
+    secret: '<SECRET>'
 );
 ```
 

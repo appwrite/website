@@ -196,7 +196,8 @@ Now that you're serving a basic HTML page add methods necessary to integrate wit
 
 ```js
 import { fetch } from 'undici'
-import { Client, ID, InputFile, Storage } from 'node-appwrite';
+import { Client, ID, Storage } from 'node-appwrite';
+import { InputFile } from 'node-appwrite/file';
 ```
 
 To handle the `POST` request, add the following code to the end of the request handler in the `src/main.js` file to validate the request body and define the models:

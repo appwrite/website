@@ -7,41 +7,41 @@ step: 6
 In this step, you'll set up a database to store ideas in Appwrite, configure permissions, then create a
 context to manage ideas in your React Native app.
 
-# Create collection {% #create-collection %}
-In Appwrite, data is stored as a collection of documents. Create a collection in the [Appwrite Console](https://cloud.appwrite.io/) to store our ideas.
+# Create table {% #create-table %}
+In Appwrite, data is stored as a table of rows. Create a table in the [Appwrite Console](https://cloud.appwrite.io/) to store our ideas.
 
 {% only_dark %}
-![Create project screen](/images/docs/tutorials/dark/idea-tracker-collection.png)
+![Create project screen](/images/docs/tutorials/dark/idea-tracker-table.png)
 {% /only_dark %}
 {% only_light %}
-![Create project screen](/images/docs/tutorials/idea-tracker-collection.png)
+![Create project screen](/images/docs/tutorials/idea-tracker-table.png)
 {% /only_light %}
 
-Create a new collection with the following attributes:
+Create a new table with the following columns:
 | Field       | Type   | Required |
 |-------------|--------|----------|
 | userId      | String | Yes      |
 | title       | String | Yes      |
 | description | String | No       |
 
-# Configure permissions {% #configure-permissions %}
+## Configure permissions {% #configure-permissions %}
 {% only_dark %}
-![Collection permissions screen](/images/docs/tutorials/dark/idea-tracker-permissions.png)
+![Table permissions screen](/images/docs/tutorials/dark/idea-tracker-permissions.png)
 {% /only_dark %}
 {% only_light %}
-![Collection permissions screen](/images/docs/tutorials/idea-tracker-permissions.png)
+![Table permissions screen](/images/docs/tutorials/idea-tracker-permissions.png)
 {% /only_light %}
 
-Navigate to the **Settings** tab of your collection, add the role **Any** and check the **Read** box.
+Navigate to the **Settings** tab of your table, add the role **Any** and check the **Read** box.
 Next, add a **Users** role and give them access to **Create** by checking those boxes.
-These permissions apply to all documents in your new collection.
+These permissions apply to all rows in your new table.
 
-Finally, enable **Document security** to allow further permissions to be set at the document level.
+Finally, enable **Row security** to allow further permissions to be set at the row level.
 Remember to click the **Update** button to apply your changes.
 
-# Ideas context {% #ideas-context %}
+## Ideas context {% #ideas-context %}
 
-Now that you have a collection to hold ideas, we can read and write to it from our app.
+Now that you have a table to hold ideas, we can read and write to it from our app.
 Like you did with the user data, we will create a React context to hold our ideas.
 Create a new file `contexts/IdeasContext.jsx` and add the following code to it.
 
@@ -52,7 +52,7 @@ import { databases } from "../lib/appwrite";
 import { toast } from "../lib/toast";
 
 export const IDEAS_DATABASE_ID = "default"; // Replace with your database ID
-export const IDEAS_COLLECTION_ID = "ideas-tracker"; // Replace with your collection ID
+export const IDEAS_TABLE_ID = "ideas-tracker"; // Replace with your table ID
 
 const IdeasContext = createContext();
 
@@ -64,9 +64,9 @@ export function IdeasProvider(props) {
   const [ideas, setIdeas] = useState([]);
 
   async function add(idea) {
-    const response = await databases.createDocument(
+    const response = await tablesDB.createRow(
       IDEAS_DATABASE_ID,
-      IDEAS_COLLECTION_ID,
+      IDEAS_TABLE_ID,
       ID.unique(),
       idea,
       [Permission.write(Role.user(idea.userId))]
@@ -76,23 +76,19 @@ export function IdeasProvider(props) {
   }
 
   async function remove(id) {
-    await databases.deleteDocument({
-      databaseId: IDEAS_DATABASE_ID,
-      collectionId: IDEAS_COLLECTION_ID,
-      documentId: id
-    });
+    await tablesDB.deleteRow(IDEAS_DATABASE_ID, IDEAS_TABLE_ID, id);
     toast('Idea removed');
     setIdeas((ideas) => ideas.filter((idea) => idea.$id !== id));
     await init(); // Refetch ideas to ensure we have 10 items
   }
 
   async function init() {
-    const response = await databases.listDocuments(
+    const response = await tablesDB.listRows(
       IDEAS_DATABASE_ID,
-      IDEAS_COLLECTION_ID,
+      IDEAS_TABLE_ID,
       [Query.orderDesc("$createdAt"), Query.limit(10)]
     );
-    setIdeas(response.documents);
+    setIdeas(response.rows);
   }
 
   useEffect(() => {

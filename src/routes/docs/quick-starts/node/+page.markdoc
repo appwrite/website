@@ -31,10 +31,10 @@ Then, under **Integrate with your server**, add an **API Key** with the followin
 | Category  {% width=120 %} | Required scopes       | Purpose |
 |-----------|-----------------------|---------|
 | Database  | `databases.write`     | Allows API key to create, update, and delete [databases](/docs/products/databases/databases). |
-|           | `collections.write`   | Allows API key to create, update, and delete [collections](/docs/products/databases/collections). |
-|           | `attributes.write`    | Allows API key to create, update, and delete [attributes](/docs/products/databases/collections#attributes). |
-|           | `documents.read`      | Allows API key to read [documents](/docs/products/databases/documents). |
-|           | `documents.write`     | Allows API key to create, update, and delete [documents](/docs/products/databases/documents). |
+|           | `tables.write`   | Allows API key to create, update, and delete [tables](/docs/products/databases/tables). |
+|           | `columns.write`    | Allows API key to create, update, and delete [columns](/docs/products/databases/tables#columns). |
+|           | `rows.read`      | Allows API key to read [rows](/docs/products/databases/rows). |
+|           | `rows.write`     | Allows API key to create, update, and delete [rows](/docs/products/databases/rows). |
 
 Other scopes are optional.
 
@@ -84,25 +84,34 @@ client
 {% /section %}
 {% section #step-5 step=5 title="Initialize database" %}
 
-Once the Appwrite Client is initialized, create a function to configure a todo collection.
+Once the Appwrite Client is initialized, create a function to configure a todo table.
 
 ```js
-const databases = new sdk.Databases(client);
+const tablesDB = new sdk.TablesDB(client);
 
 var todoDatabase;
-var todoCollection;
+var todoTable;
 
 async function prepareDatabase() {
     todoDatabase = await databases.create({
         databaseId: sdk.ID.unique(),
         name: 'TodosDB'
     });
+    todoDatabase = await tablesDB.create(
+        sdk.ID.unique(),
+        'TodosDB'
+    );
 
     todoCollection = await databases.createCollection({
         databaseId: todoDatabase.$id,
         collectionId: sdk.ID.unique(),
         name: 'Todos'
     });
+    todoTable = await tablesDB.createTable(
+        todoDatabase.$id,
+        sdk.ID.unique(),
+        'Todos'
+    );
 
     await databases.createStringAttribute({
         databaseId: todoDatabase.$id,
@@ -111,28 +120,33 @@ async function prepareDatabase() {
         size: 255,
         required: true
     });
+    await tablesDB.createStringColumn(
+        todoDatabase.$id,
+        todoTable.$id,
+        'title',
+        255,
+        true
+    );
 
-    await databases.createStringAttribute({
-        databaseId: todoDatabase.$id,
-        collectionId: todoCollection.$id,
-        key: 'description',
-        size: 255,
-        required: false,
-        xdefault: 'This is a test description'
-    });
-    
-    await databases.createBooleanAttribute({
-        databaseId: todoDatabase.$id,
-        collectionId: todoCollection.$id,
-        key: 'isComplete',
-        required: true
-    });
+    await tablesDB.createStringColumn(
+        todoDatabase.$id,
+        todoTable.$id,
+        'description',
+        255, false,
+        'This is a test description'
+    );
+    await tablesDB.createBooleanColumn(
+        todoDatabase.$id,
+        todoTable.$id,
+        'isComplete',
+        true
+    );
 }
 ```
 
 {% /section %}
-{% section #step-6 step=6 title="Add documents" %}
-Create a function to add some mock data into your new collection.
+{% section #step-6 step=6 title="Add rows" %}
+Create a function to add some mock data into your new table.
 
 ```js
 async function seedDatabase() {
@@ -153,21 +167,21 @@ async function seedDatabase() {
         isComplete: false
     };
 
-    await databases.createDocument({
+    await tablesDB.createRow({
         databaseId: todoDatabase.$id,
-        collectionId: todoCollection.$id,
+        tableId: todoTable.$id,
         documentId: sdk.ID.unique(),
         data: testTodo1
     });
-    await databases.createDocument({
+    await tablesDB.createRow({
         databaseId: todoDatabase.$id,
-        collectionId: todoCollection.$id,
+        tableId: todoTable.$id,
         documentId: sdk.ID.unique(),
         data: testTodo2
     });
-    await databases.createDocument({
+    await tablesDB.createRow({
         databaseId: todoDatabase.$id,
-        collectionId: todoCollection.$id,
+        tableId: todoTable.$id,
         documentId: sdk.ID.unique(),
         data: testTodo3
     });
@@ -175,19 +189,25 @@ async function seedDatabase() {
 ```
 
 {% /section %}
-{% section #step-7 step=7 title="Retrieve documents" %}
+{% section #step-7 step=7 title="Retrieve rows" %}
+
+Create a function to retrieve the mock todo data and a function to execute the requests in order.
+Run the functions to by calling `runAllTasks();`.
+
+{% /section %}
+{% section #step-7 step=7 title="Retrieve rows" %}
 
 Create a function to retrieve the mock todo data and a function to execute the requests in order.
 Run the functions to by calling `runAllTasks();`.
 
 ```js
 async function getTodos() {
-    var todos = await databases.listDocuments(
-        todoDatabase.$id,
-        todoCollection.$id
-    );
+    var todos = await tablesDB.listRows({
+        databaseId: todoDatabase.$id,
+        tableId: todoTable.$id
+    });
 
-    todos.documents.forEach(todo => {
+    todos.rows.forEach(todo => {
         console.log(`Title: ${todo.title}\nDescription: ${todo.description}\nIs Todo Complete: ${todo.isComplete}\n\n`);
     });
 }

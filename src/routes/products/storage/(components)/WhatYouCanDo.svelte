@@ -51,7 +51,7 @@ const files = await storage.getFile({
                 {
                     language: Platform.ServerNodeJs,
                     content: `// List files inside a specific bucket
-const files = await storage.deleteFiles('[BUCKET_ID]');`
+const files = await storage.deleteFiles('<BUCKET_ID>');`
                 }
             ]
         }

@@ -246,8 +246,8 @@ const response = await account.updatePhoneVerification({
 
 ```client-flutter
 Future result = account.updatePhoneVerification(
-    userId: '[USER_ID]',
-    secret: '[SECRET]'
+    userId: '<USER_ID>',
+    secret: '<SECRET>'
 );
 
 result.then((response) {
@@ -259,15 +259,15 @@ result.then((response) {
 
 ```client-apple
 let response = try await account.updatePhoneVerification(
-    userId: "[USER_ID]",
-    secret: "[SECRET]"
+    userId: "<USER_ID>",
+    secret: "<SECRET>"
 )
 ```
 
 ```client-android-kotlin
 val response = account.updatePhoneVerification(
-    userId = "[USER_ID]",
-    secret = "[SECRET]"
+    userId = "<USER_ID>",
+    secret = "<SECRET>"
 )
 ```
 {% /multicode %}

@@ -76,7 +76,7 @@ const user = await account.createSession({
 mutation {
     accountCreateSession(
         userId: "unique()",
-        secret: "[SECRET]"
+        secret: "<SECRET>"
     ) {
         _id
         _createdAt

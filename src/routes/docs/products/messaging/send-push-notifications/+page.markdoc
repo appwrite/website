@@ -350,19 +350,19 @@ client
 ;
 
 const messaging = await messaging.createPush(
-        '[MESSAGE_ID]', // messageId
-        '[TITLE]',      // title
-        '[BODY]',       // body
+        '<MESSAGE_ID>', // messageId
+        '<TITLE>',      // title
+        '<BODY>',       // body
         [],             // topics (optional)
         [],             // users (optional)
         [],             // targets (optional)
         {},             // data (optional)
-        '[ACTION]',     // action (optional)
-        '[ICON]',       // icon (optional)
-        '[SOUND]',      // sound (optional)
-        '[COLOR]',      // color (optional)
-        '[TAG]',        // tag (optional)
-        '[BADGE]',      // badge (optional)
+        '<ACTION>',     // action (optional)
+        '<ICON>',       // icon (optional)
+        '<SOUND>',      // sound (optional)
+        '<COLOR>',      // color (optional)
+        '<TAG>',        // tag (optional)
+        '<BADGE>',      // badge (optional)
         false,          // draft (optional)
         ''              // scheduledAt (optional)
     );
@@ -382,19 +382,19 @@ client
 ;
 
 const messaging = await messaging.createPush(
-        '[MESSAGE_ID]', // messageId
-        '[TITLE]',      // title
-        '[BODY]',       // body
+        '<MESSAGE_ID>', // messageId
+        '<TITLE>',      // title
+        '<BODY>',       // body
         [],             // topics (optional)
         [],             // users (optional)
         [],             // targets (optional)
         {},             // data (optional)
-        '[ACTION]',     // action (optional)
-        '[ICON]',       // icon (optional)
-        '[SOUND]',      // sound (optional)
-        '[COLOR]',      // color (optional)
-        '[TAG]',        // tag (optional)
-        '[BADGE]',      // badge (optional)
+        '<ACTION>',     // action (optional)
+        '<ICON>',       // icon (optional)
+        '<SOUND>',      // sound (optional)
+        '<COLOR>',      // color (optional)
+        '<TAG>',        // tag (optional)
+        '<BADGE>',      // badge (optional)
         false,          // draft (optional)
         ''              // scheduledAt (optional)
     );
@@ -416,19 +416,19 @@ $client
 $messaging = new Messaging($client);
 
 $result = $messaging->createPush(
-    messageId: '[MESSAGE_ID]',
-    title: '[TITLE]',
-    body: '[BODY]',
+    messageId: '<MESSAGE_ID>',
+    title: '<TITLE>',
+    body: '<BODY>',
     topics: [],         // optional
     users: [],          // optional
     targets: [],        // optional
     data: [],           // optional
-    action: '[ACTION]', // optional
-    icon: '[ICON]',     // optional
-    sound: '[SOUND]',   // optional
-    color: '[COLOR]',   // optional
-    tag: '[TAG]',       // optional
-    badge: '[BADGE]',   // optional
+    action: '<ACTION>', // optional
+    icon: '<ICON>',     // optional
+    sound: '<SOUND>',   // optional
+    color: '<COLOR>',   // optional
+    tag: '<TAG>',       // optional
+    badge: '<BADGE>',   // optional
     draft: false,       // optional
     scheduledAt: ''     // optional
 );
@@ -448,19 +448,19 @@ client = Client()
 messaging = Messaging(client)
 
 result = messaging.create_push(
-    message_id = '[MESSAGE_ID]',
-    title = '[TITLE]',
-    body = '[BODY]',
+    message_id = '<MESSAGE_ID>',
+    title = '<TITLE>',
+    body = '<BODY>',
     topics = [],        # optional
     users = [],         # optional
     targets = [],       # optional
     data = {},          # optional
-    action = '[ACTION]',# optional
-    icon = '[ICON]',    # optional
-    sound = '[SOUND]',  # optional
-    color = '[COLOR]',  # optional
-    tag = '[TAG]',      # optional
-    badge = '[BADGE]',  # optional
+    action = '<ACTION>',# optional
+    icon = '<ICON>',    # optional
+    sound = '<SOUND>',  # optional
+    color = '<COLOR>',  # optional
+    tag = '<TAG>',      # optional
+    badge = '<BADGE>',  # optional
     draft = False,      # optional
     scheduled_at = ''   # optional
 )
@@ -478,19 +478,19 @@ client = Client.new
 messaging = Messaging.new(client)
 
 response = messaging.create_push(
-    message_id: '[MESSAGE_ID]',
-    title: '[TITLE]',
-    body: '[BODY]',
+    message_id: '<MESSAGE_ID>',
+    title: '<TITLE>',
+    body: '<BODY>',
     topics: [],         # optional
     users: [],          # optional
     targets: [],        # optional
     data: {},           # optional
-    action: '[ACTION]', # optional
-    icon: '[ICON]',     # optional
-    sound: '[SOUND]',   # optional
-    color: '[COLOR]',   # optional
-    tag: '[TAG]',       # optional
-    badge: '[BADGE]',   # optional
+    action: '<ACTION>', # optional
+    icon: '<ICON>',     # optional
+    sound: '<SOUND>',   # optional
+    color: '<COLOR>',   # optional
+    tag: '<TAG>',       # optional
+    badge: '<BADGE>',   # optional
     draft: false,       # optional
     scheduled_at: ''    # optional
 )
@@ -542,19 +542,19 @@ void main() async {   // Init SDK
   ;
 
   Future result = await messaging.createPush(
-    messageId: '[MESSAGE_ID]',
-    title: '[TITLE]',
-    body: '[BODY]',
+    messageId: '<MESSAGE_ID>',
+    title: '<TITLE>',
+    body: '<BODY>',
     topics: [],         // optional
     users: [],          // optional
     targets: [],        // optional
     data: {},           // optional
-    action: '[ACTION]', // optional
-    icon: '[ICON]',     // optional
-    sound: '[SOUND]',   // optional
-    color: '[COLOR]',   // optional
-    tag: '[TAG]',       // optional
-    badge: '[BADGE]',   // optional
+    action: '<ACTION>', // optional
+    icon: '<ICON>',     // optional
+    sound: '<SOUND>',   // optional
+    color: '<COLOR>',   // optional
+    tag: '<TAG>',       // optional
+    badge: '<BADGE>',   // optional
     draft: false,       // optional
     scheduledAt: '',    // optional
   );
@@ -579,19 +579,19 @@ val client = Client(context)
 val messaging = Messaging(client)
 
 val response = messaging.createPush(
-    messageId = "[MESSAGE_ID]",
-    title = "[TITLE]",
-    body = "[BODY]",
+    messageId = "<MESSAGE_ID>",
+    title = "<TITLE>",
+    body = "<BODY>",
     topics = listOf(),          // optional
     users = listOf(),           // optional
     targets = listOf(),         // optional
     data = mapOf( "a" to "b" ), // optional
-    action = "[ACTION]",        // optional
-    icon = "[ICON]",            // optional
-    sound = "[SOUND]",          // optional
-    color = "[COLOR]",          // optional
-    tag = "[TAG]",              // optional
-    badge = "[BADGE]",          // optional
+    action = "<ACTION>",        // optional
+    icon = "<ICON>",            // optional
+    sound = "<SOUND>",          // optional
+    color = "<COLOR>",          // optional
+    tag = "<TAG>",              // optional
+    badge = "<BADGE>",          // optional
     draft = false,              // optional
     scheduledAt = ""            // optional
 )
@@ -609,19 +609,19 @@ Client client = new Client()
 Messaging messaging = new Messaging(client);
 
 messaging.createPush(
-    "[MESSAGE_ID]",      // messageId
-    "[TITLE]",           // title
-    "[BODY]",            // body
+    "<MESSAGE_ID>",      // messageId
+    "<TITLE>",           // title
+    "<BODY>",            // body
     listOf(),            // topics (optional)
     listOf(),            // users (optional)
     listOf(),            // targets (optional)
     mapOf( "a" to "b" ), // data (optional)
-    "[ACTION]",          // action (optional)
-    "[ICON]",            // icon (optional)
-    "[SOUND]",           // sound (optional)
-    "[COLOR]",           // color (optional)
-    "[TAG]",             // tag (optional)
-    "[BADGE]",           // badge (optional)
+    "<ACTION>",          // action (optional)
+    "<ICON>",            // icon (optional)
+    "<SOUND>",           // sound (optional)
+    "<COLOR>",           // color (optional)
+    "<TAG>",             // tag (optional)
+    "<BADGE>",           // badge (optional)
     false,               // draft (optional)
     ""                   // scheduledAt (optional)
     new CoroutineCallback<>((result, error) -> {
@@ -645,19 +645,19 @@ let client = Client()
 let messaging = Messaging(client)
 
 let message = try await messaging.createPush(
-  messageId: "[MESSAGE_ID]",
-  title: "[TITLE]",
-  body: "[BODY]",
+  messageId: "<MESSAGE_ID>",
+  title: "<TITLE>",
+  body: "<BODY>",
   topics: [],         // optional
   users: [],          // optional
   targets: [],        // optional
   data: [:],          // optional
-  action: "[ACTION]", // optional
-  icon: "[ICON]",     // optional
-  sound: "[SOUND]",   // optional
-  color: "[COLOR]",   // optional
-  tag: "[TAG]",       // optional
-  badge: "[BADGE]",   // optional
+  action: "<ACTION>", // optional
+  icon: "<ICON>",     // optional
+  sound: "<SOUND>",   // optional
+  color: "<COLOR>",   // optional
+  tag: "<TAG>",       // optional
+  badge: "<BADGE>",   // optional
   draft: false,       // optional
   scheduledAt: ""     // optional
 )

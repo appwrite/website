@@ -4,30 +4,30 @@ title: Add database
 description: Add databases and queries to store user data in you SvelteKit project.
 step: 6
 ---
-# Create collection {% #create-collection %}
-In Appwrite, data is stored as a collection of documents.
-Create a collection inside a database in the [Appwrite Console](https://cloud.appwrite.io/) to store our ideas.
+# Create table {% #create-table %}
+In Appwrite, data is stored as a table of rows.
+Create a table inside a database in the [Appwrite Console](https://cloud.appwrite.io/) to store our ideas.
 
 {% only_dark %}
-![Create project screen](/images/docs/tutorials/dark/idea-tracker-collection.png)
+![Create project screen](/images/docs/tutorials/dark/idea-tracker-table.png)
 {% /only_dark %}
 {% only_light %}
-![Create project screen](/images/docs/tutorials/idea-tracker-collection.png)
+![Create project screen](/images/docs/tutorials/idea-tracker-table.png)
 {% /only_light %}
 
-Create the following attributes within the collection:
+Create the following columns within the table:
 | Field       | Type   | Size | Required |
 | ----------- | ------ | ---- | -------- |
 | userId      | String | 36   | Yes      |
 | title       | String | 128  | Yes      |
 | description | String | 1024 | No       |
 
-For this tutorial, we'll also set the permissions to allow any users to read and write to the collection.
+For this tutorial, we'll also set the permissions to allow any users to read and write to the table.
 In a real-world scenario, you would probably want to restrict access to a certain group of users.
 
-# Managing ideas {% #getting-ideas %}
+## Managing ideas {% #getting-ideas %}
 
-Now that you have a collection to hold ideas, we can read and write to it from our app.
+Now that you have a table to hold ideas, we can read and write to it from our app.
 
 Let's create some methods to manage ideas in our app.
 
@@ -38,36 +38,27 @@ import { ID, Query } from 'appwrite';
 import { databases } from '$lib/appwrite';
 
 const IDEAS_DATABASE_ID = '<YOUR_DATABASE_ID>'; // Replace with your database ID
-const IDEAS_COLLECTION_ID = '<YOUR_COLLECTION_ID>'; // Replace with your collection ID
+const IDEAS_TABLE_ID = '<YOUR_TABLE_ID>'; // Replace with your table ID
 
 export async function getIdeas() {
-	return await databases.listDocuments(
+	return await tablesDB.listRows(
 		IDEAS_DATABASE_ID,
-		IDEAS_COLLECTION_ID,
+		IDEAS_TABLE_ID,
 		// Use a query to show the latest ideas first
 		[Query.orderDesc('$createdAt')]
 	);
 }
 
 export async function addIdea(userId, title, description) {
-	await databases.createDocument({
-		databaseId: IDEAS_DATABASE_ID,
-		collectionId: IDEAS_COLLECTION_ID,
-		documentId: ID.unique(),
-		data: {
-			userId,
-			title,
-			description
-		}
+	await tablesDB.createRow(IDEAS_DATABASE_ID, IDEAS_TABLE_ID, ID.unique(), {
+		userId,
+		title,
+		description
 	});
 }
 
 export async function deleteIdea(id) {
-	await databases.deleteDocument({
-		databaseId: IDEAS_DATABASE_ID,
-		collectionId: IDEAS_COLLECTION_ID,
-		documentId: id
-	});
+	await tablesDB.deleteRow(IDEAS_DATABASE_ID, IDEAS_TABLE_ID, id);
 }
 ```
 

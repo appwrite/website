@@ -85,8 +85,8 @@ const account = new Account(client);
 
 account.createOAuth2Session({
     provider: OAuthProvider.Google,
-    success: 'https://cloud.appwrite.io/console',
-    failure: 'https://cloud.appwrite.io/login',
+    success: '<LINK_ON_SUCCESS>',
+    failure: '<LINK_ON_FAILURE>',
     scopes: ['email', 'profile']
 });
 ```

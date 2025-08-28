@@ -41,10 +41,10 @@
     );
 </script>
 
-<div class="relative w-full overflow-x-scroll [scrollbar-width:none]">
+<div class="relative w-full overflow-x-hidden [scrollbar-width:none]">
     <div class="relative mx-auto h-full [scrollbar-width:none] md:w-full" use:inView>
         <div
-            class="relative mx-auto my-10 h-fit w-full max-w-5xl origin-bottom transform-[perspective(25px)_rotateX(1deg)_scale3d(1.2,_1.2,_1)] transition-all [scrollbar-width:none] md:my-0 md:-translate-x-20"
+            class="relative mx-auto my-10 h-fit max-w-5xl origin-bottom transform-[perspective(25px)_rotateX(1deg)_scale3d(1.2,_1.2,_1)] transition-all [scrollbar-width:none] md:my-0 md:w-full md:-translate-x-20"
             use:mousePosition
         >
             <svg viewBox={`0 0 ${height * 2} ${height}`}>
@@ -60,7 +60,6 @@
                 {#each markers as marker}
                     <g
                         role="tooltip"
-                        class="animate-fade-in outline-none"
                         aria-label={`${marker.city} (${marker.code})`}
                         onmouseover={() =>
                             handleSetActiveTooltip(
@@ -81,7 +80,7 @@
                         data-region={slugify(marker.city)}
                     >
                         <circle cx={marker.x} cy={marker.y} r={radius * 1.25} class="fill-accent" />
-                        <circle cx={marker.x} cy={marker.y} r={radius * 0.5} class="fill-white" />
+                        <circle cx={marker.x} cy={marker.y} r={radius * 0.5} fill="white" />
                         <circle
                             cx={marker.x}
                             cy={marker.y}

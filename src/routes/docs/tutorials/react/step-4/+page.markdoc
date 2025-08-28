@@ -5,7 +5,7 @@ description: Add authentication to your react application.
 step: 4
 ---
 
-# User context {% #user-context %}
+## User context {% #user-context %}
 
 In React, you can use [context](https://reactjs.org/docs/context.html) to share data between components.
 We'll use context and a custom hook to manage our user's data.
@@ -72,7 +72,7 @@ export function UserProvider(props) {
 
 Now, we can use the `useUser` hook to access the user's data from any component. However, we first need to wrap our app with the `UserProvider`.
 
-# Basic routing  {% #basic-routing %}
+## Basic routing  {% #basic-routing %}
 
 First, wrap the `main` element with the `UserProvider` component.
 
@@ -121,7 +121,7 @@ function App() {
 export default App;
 ```
 
-# Home page  {% #home-page %}
+## Home page  {% #home-page %}
 
 Create a new file `src/pages/Home.jsx` and add the following stub code to it.
 
@@ -134,7 +134,7 @@ export function Home() {
 }
 ```
 
-# Login page {% #login-page %}
+## Login page {% #login-page %}
 
 Finally, we are able to create the login page. Users will be able to login or register from this page, so we'll need to add two buttons.
 

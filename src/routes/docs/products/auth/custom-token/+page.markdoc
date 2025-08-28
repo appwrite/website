@@ -40,7 +40,7 @@ $client = (new Client())
 
 $users = new Users($client);
 
-$token = $users->createToken('[USER_ID]');
+$token = $users->createToken('<USER_ID>');
 $secret = $token['secret'];
 ```
 
@@ -58,7 +58,7 @@ client = Client()
 
 users = Users(client)
 
-token = users.create_token('[USER_ID]')
+token = users.create_token('<USER_ID>')
 secret = token.secret
 ```
 
@@ -74,7 +74,7 @@ client = Client.new
 
 users = Users.new(client)
 
-token = users.create_token('[USER_ID]')
+token = users.create_token('<USER_ID>')
 secret = token['secret']
 ```
 
@@ -104,7 +104,7 @@ final client = Client()
 
 final users = Users(client);
 
-final token = await users.createToken('[USER_ID]');
+final token = await users.createToken('<USER_ID>');
 final secret = token.secret;
 ```
 
@@ -119,7 +119,7 @@ val client = Client()
 
 val users = Users(client)
 
-val token = users.createToken("[USER_ID]")
+val token = users.createToken("<USER_ID>")
 val secret = token.secret
 ```
 
@@ -133,7 +133,7 @@ let client = Client()
 
 let users = Users(client)
 
-let token = try await users.createToken("[USER_ID]")
+let token = try await users.createToken("<USER_ID>")
 let secret = token.secret
 ```
 
@@ -147,7 +147,7 @@ var client = new Client()
 
 var users = new Users(client);
 
-var token = await users.CreateToken("[USER_ID]");
+var token = await users.CreateToken("<USER_ID>");
 var secret = token.secret;
 ```
 {% /multicode %}
@@ -176,8 +176,8 @@ const client = new Client()
 const account = new Account(client);
 
 const session = await account.createSession(
-    '[USER_ID]',
-    '[SECRET]'
+    '<USER_ID>',
+    '<SECRET>'
 );
 ```
 
@@ -191,8 +191,8 @@ final client = Client()
 final account = Account(client);
 
 final session = await account.createSession(
-    userId: '[USER_ID]',
-    secret: '[SECRET]'
+    userId: '<USER_ID>',
+    secret: '<SECRET>'
 );
 ```
 ```client-apple
@@ -205,8 +205,8 @@ let client = Client()
 let account = Account(client);
 
 let session = try await account.createSession(
-    userId: "[USER_ID]",
-    secret: "[SECRET]"
+    userId: "<USER_ID>",
+    secret: "<SECRET>"
 );
 ```
 
@@ -221,14 +221,14 @@ val client = Client()
 val account = Account(client);
 
 val session = account.createSession(
-    userId = "[USER_ID]",
-    secret = "[SECRET]"
+    userId = "<USER_ID>",
+    secret = "<SECRET>"
 );
 ```
 
 ```graphql
 mutation {
-    accountcreateSession(userId: "[USER_ID]", secret: "[SECRET]") {
+    accountcreateSession(userId: "<USER_ID>", secret: "<SECRET>") {
         _id
         userId
         provider

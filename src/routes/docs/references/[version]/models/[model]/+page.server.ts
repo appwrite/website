@@ -21,7 +21,7 @@ type Model = {
 };
 
 export const load: PageServerLoad = async ({ params }) => {
-    const version = params.version === 'cloud' ? '1.7.x' : params.version;
+    const version = params.version === 'cloud' ? '1.8.x' : params.version;
     const api = await getApi(version, 'console-web');
     const schema = getSchema(params.model, api);
     const props = Object.entries(schema.properties ?? {});
@@ -101,7 +101,6 @@ export const load: PageServerLoad = async ({ params }) => {
 
     return {
         model,
-        examples,
-        changelogEntries: 0
+        examples
     };
 };

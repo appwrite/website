@@ -31,10 +31,10 @@ Then, under **Integrate with your server**, add an **API Key** with the followin
 | Category  {% width=120 %} | Required scopes       | Purpose |
 |-----------|-----------------------|---------|
 | Database  | `databases.write`     | Allows API key to create, update, and delete [databases](/docs/products/databases/databases). |
-|           | `collections.write`   | Allows API key to create, update, and delete [collections](/docs/products/databases/collections). |
-|           | `attributes.write`    | Allows API key to create, update, and delete [attributes](/docs/products/databases/collections#attributes). |
-|           | `documents.read`      | Allows API key to read [documents](/docs/products/databases/documents). |
-|           | `documents.write`     | Allows API key to create, update, and delete [documents](/docs/products/databases/documents). |
+|           | `tables.write`   | Allows API key to create, update, and delete [tables](/docs/products/databases/tables). |
+|           | `columns.write`    | Allows API key to create, update, and delete [columns](/docs/products/databases/tables#columns). |
+|           | `rows.read`      | Allows API key to read [rows](/docs/products/databases/rows). |
+|           | `rows.write`     | Allows API key to create, update, and delete [rows](/docs/products/databases/rows). |
 
 Other scopes are optional.
 
@@ -89,13 +89,13 @@ client
 {% /section %}
 {% section #step-5 step=5 title="Initialize database" %}
 
-Once the Appwrite Client is initialized, create a function to configure a todo collection.
+Once the Appwrite Client is initialized, create a function to configure a todo table.
 
 ```ts
-const databases: Databases = new Databases(client);
+const tablesDB: TablesDB = new TablesDB(client);
 
 var todoDatabase: Models.Database;
-var todoCollection: Models.Collection;
+var todoTable: Models.Table;
 
 interface Todo {
     title: string;
@@ -131,7 +131,7 @@ async function prepareDatabase(): Promise<void> {
         required: false,
         xdefault: 'This is a test description'
     });
-    
+
     await databases.createBooleanAttribute({
         databaseId: todoDatabase.$id,
         collectionId: todoCollection.$id,
@@ -142,8 +142,8 @@ async function prepareDatabase(): Promise<void> {
 ```
 
 {% /section %}
-{% section #step-6 step=6 title="Add documents" %}
-Create a function to add some mock data into your new collection.
+{% section #step-6 step=6 title="Add rows" %}
+Create a function to add some mock data into your new table.
 
 ```ts
 async function seedDatabase(): Promise<void> {
@@ -186,19 +186,19 @@ async function seedDatabase(): Promise<void> {
 ```
 
 {% /section %}
-{% section #step-7 step=7 title="Retrieve documents" %}
+{% section #step-7 step=7 title="Retrieve rows" %}
 
 Create a function to retrieve the mock todo data and a function to execute the requests in order.
 Run the functions to by calling `runAllTasks();`.
 
 ```ts
 async function getTodos(): Promise<void> {
-    const todos = await databases.listDocuments(
+    const todos = await tablesDB.listRows(
         todoDatabase.$id,
-        todoCollection.$id
+        todoTable.$id
     );
 
-    todos.documents.forEach((todo: Todo) => {
+    todos.rows.forEach((todo: Todo) => {
         console.log(`Title: ${todo.title}\nDescription: ${todo.description}\nIs Todo Complete: ${todo.isComplete}\n\n`);
     });
 }
