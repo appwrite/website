@@ -6,9 +6,9 @@ cover: /images/blog/announcing-opt-in-relationship-loading/cover.png
 ---
 Announcing Opt-in relationship loading for Appwrite Databases.
 
-Before this feature, Database queries automatically included related documents. This often caused large JSON payloads, higher latency, and wasted bandwidth.
+Before this feature, database queries automatically included related documents. This often caused large JSON payloads, higher latency, and wasted bandwidth.
 
-With Opt-in relationship Loading, you now decide exactly which related documents to include. That means smaller payloads. Faster queries.
+With Opt-in relationship loading, you now choose exactly which related documents to include, resulting in smaller payloads and faster queries.
 
 This added control over data fetching helps you deliver faster, more efficient applications.
 
