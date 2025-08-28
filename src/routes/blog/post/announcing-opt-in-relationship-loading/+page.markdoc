@@ -2,7 +2,7 @@
 layout: post
 title: "Announcing Opt-in relationship loading: Granular control for smarter data fetching"
 description: Gain full control over which related documents to fetch and drastically reduce payload sizes.
-date: 2025-07-28
+date: 2025-08-28
 cover: /images/blog/announcing-opt-in-relationship-loading/cover.png
 timeToRead: 5
 author: darshan-pandya
