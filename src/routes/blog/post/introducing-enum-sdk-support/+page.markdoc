@@ -36,8 +36,8 @@ const account = new Account(client);
 
 account.createOAuth2Session({
     provider: OAuthProvider.Apple,
-    success: '[LINK_ON_SUCCESS]',
-    failure: '[LINK_ON_FAILURE]',
+    success: '<LINK_ON_SUCCESS>',
+    failure: '<LINK_ON_FAILURE>',
     scopes: ['email', 'profile']
 });
 ```
