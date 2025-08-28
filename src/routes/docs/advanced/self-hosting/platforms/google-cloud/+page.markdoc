@@ -77,7 +77,6 @@ For detailed commands, refer to the [Artifact Registry documentation](https://cl
 {% section #setup-managed-database step=1 title="Set up managed database" %}
 
 1. **Create a Cloud SQL instance**
-   - Choose MySQL 8.0 as the database version
    - Select appropriate machine type for your workload
    - Configure your preferred region
    - Set up secure authentication
@@ -87,6 +86,9 @@ For detailed commands, refer to the [Artifact Registry documentation](https://cl
    - Create a dedicated user with appropriate permissions
    - Note the connection details for later configuration
 
+{% info title="Compatibility note" %}
+Appwrite uses MariaDB by default. Running against Cloud SQL for MySQL 8.x is unsupported and may break schema or SQL dialect assumptions. Test thoroughly in a staging environment or deploy MariaDB yourself on Compute Engine or GKE instead.
+{% /info %}
 {% /section %}
 
 {% section #deploy-appwrite-cloud-run step=2 title="Deploy Appwrite to Cloud Run" %}
