@@ -150,12 +150,16 @@
      */
     function getOperationOrder(methodTitle: string): number {
         const title = methodTitle.toLowerCase();
+        if (title.startsWith('create or update')) return 2;
         if (title.startsWith('create')) return 1;
         if (title.startsWith('read') || title.startsWith('get') || title.startsWith('list'))
-            return 2;
-        if (title.startsWith('update')) return 3;
-        if (title.startsWith('delete')) return 4;
-        return 5; // Other operations
+            return 3;
+        if (title.startsWith('update')) return 4;
+        if (title.startsWith('upsert')) return 5;
+        if (title.startsWith('delete')) return 6;
+        if (title.startsWith('increment')) return 7;
+        if (title.startsWith('decrement')) return 8;
+        return 9; // Other operations
     }
 
     /**
