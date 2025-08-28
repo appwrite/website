@@ -58,7 +58,7 @@ Fill in the details as desired. Although there are some things you must know bef
     - The default install command for Next.js is `npm install`.
     - The default output directory for Next.js is `./.next`.
 - If your app uses environment variables, add them in the **Environment variables** section. If your app uses sensitive API keys, you are likely using environment variables.
-- Configure an Appwrite Network subdomain to get started. Don’t worry, you can configure a custom domain or use a new Appwrite Network domain once your app is deployed.
+- Configure an Appwrite Network subdomain to get started. You can add a custom domain or use a new Appwrite Network domain once your app is deployed.
 
 {% info title="Note on environment variables" %}
 In Next.js, public environment variables start with `NEXT_PUBLIC_`. These environment variables are accessible in the browser environment, so don’t store your sensitive API keys in a variable that starts with that prefix.
