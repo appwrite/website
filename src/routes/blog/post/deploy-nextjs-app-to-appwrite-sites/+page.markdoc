@@ -2,7 +2,7 @@
 layout: post
 title: Deploy a Next.js app to Appwrite Sites
 description: Learn how to deploy a Next.js app to Appwrite Sites.
-date: 2025-08-25
+date: 2025-08-28
 cover: /images/blog/deploy-nextjs-app-to-appwrite-sites/cover.png
 timeToRead: 5
 author: atharva
@@ -54,9 +54,15 @@ Fill in the details as desired. Although there are some things you must know bef
 - If you’re using a different branch for your intended production website, choose the specific branch.
 - If you’re using a monorepo, Sites might not automatically detect your application. In such cases, manually provide the root directory for your Next.js app that contains the Next.js configuration file. For example, if you’re using Turborepo, your Next.js app might be located inside one of the folders in the `apps` folder, so your root directory should be something like `./apps/web`.
 - Most users don’t need to change the **Build settings**, although if you want to run different commands for installation and builds, you can configure those in this section. If you don’t know anything about this, it’s worth skipping this section altogether.
+    - The default build command for Next.js is `next build`.
+    - The default install command for Next.js is `npm install`.
+    - The default output directory for Next.js is `./.next`.
 - If your app uses environment variables, add them in the **Environment variables** section. If your app uses sensitive API keys, you are likely using environment variables.
-    - In Next.js, public environment variables start with `NEXT_PUBLIC_`. These environment variables are accessible in the browser environment, so don’t store your sensitive API keys in a variable that starts with that prefix.
-- Configure an Appwrite Network subdomain to get started. Don’t worry, you can configure a custom domain once your app is deployed.
+- Configure an Appwrite Network subdomain to get started. Don’t worry, you can configure a custom domain or use a new Appwrite Network domain once your app is deployed.
+
+{% info title="Note on environment variables" %}
+In Next.js, public environment variables start with `NEXT_PUBLIC_`. These environment variables are accessible in the browser environment, so don’t store your sensitive API keys in a variable that starts with that prefix.
+{% /info %}
 
 Now, hit the **Deploy** button, and the deployment process will begin. You can see the build logs as your website gets deployed.
 
@@ -70,3 +76,5 @@ Now, you can perform further steps to level up your experience with Appwrite Sit
 
 - [Custom domains with Appwrite Sites](/blog/post/custom-domains-with-sites)
 - [How to host SSR web apps on Appwrite Sites](/blog/post/host-ssr-web-apps-sites)
+- [Build and deploy a personal portfolio on Appwrite Sites](/blog/post/portfolio-template-sites)
+- [Appwrite Sites quick start documentation](/docs/products/sites/quick-start)
