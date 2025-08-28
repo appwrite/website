@@ -133,7 +133,7 @@ To completely remove Appwrite and all its data:
 docker compose down -v
 ```
 
-{% info title="Data Loss Warning" %}
+{% info title="Data loss warning" %}
 The uninstall command will permanently delete all your Appwrite data. Make sure to backup any important information before running this command.
 {% /info %}
 
