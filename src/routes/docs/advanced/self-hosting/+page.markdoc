@@ -31,11 +31,10 @@ Self-hosting is ideal when you need data control or have specific compliance req
 - You're a hobbyist or want to experiment with Appwrite in a playground environment
 - You need to develop against a local instance of Appwrite
 
-**Stick with Appwrite Cloud if:**
+**Appwrite Cloud is recommended if:**
 - You want to focus on building features, not managing infrastructure
 - Your team lacks extensive DevOps experience
 - You expect self-hosting to save costs (it often costs more when factoring in time and expertise)
-
 {% info title="Enterprise self-hosting" %}
 For compliance features and dedicated support, explore [enterprise self-hosting solutions](/contact-us/enterprise).
 {% /info %}
