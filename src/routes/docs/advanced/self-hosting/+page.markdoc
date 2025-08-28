@@ -44,23 +44,9 @@ For compliance features and dedicated support, explore [enterprise self-hosting 
 
 Get started with Appwrite self-hosting in three simple steps:
 
-{% table %}
-* Step
-* Description
-* Next Action
----
-* 1
-* **Choose deployment location** - Decide where to install Appwrite (local, cloud, or PaaS)
-* [View deployment options](#deployment-options)
----
-* 2
-* **Install Appwrite** - Set up Appwrite on your chosen platform
-* [Follow installation guide](/docs/advanced/self-hosting/installation)
----
-* 3
-* **Configure services** - Set up email, SMS, storage, and other essential services
-* [Configure features](/docs/advanced/self-hosting/configuration/email)
-{% /table %}
+1. [Choose deployment location](#deployment-options) - Decide where to install Appwrite (local, cloud, or PaaS).
+2. [Install Appwrite](/docs/advanced/self-hosting/installation) - Set up Appwrite on your chosen platform.
+3. [Configure services](/docs/advanced/self-hosting/configuration/email) - Set up email, SMS, storage, and other essential services.
 
 # Deployment options {% #deployment-options %}
 
