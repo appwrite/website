@@ -66,7 +66,7 @@ docker run -it --rm `
     appwrite/appwrite:<APPWRITE_VERSION>
 ```
 
-This will pull the `docker-compose.yml` file for the selected version/tag and perform the installation.
+This will pull the `docker-compose.yml` for the selected version/tag and perform the upgrade steps.
 Once the setup completes, verify that you have the latest version of Appwrite.
 
 ```sh
