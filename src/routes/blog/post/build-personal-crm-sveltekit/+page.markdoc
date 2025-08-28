@@ -129,8 +129,8 @@ async function deleteDocument(id) {
 async function deleteDocuments() {
 	try {
 		return await databases.deleteDocuments({
-			databaseId: databaseId,
-			collectionId: collectionId,
+			databaseId,
+			collectionId,
 			queries: []
 		});
 	} catch (error) {
