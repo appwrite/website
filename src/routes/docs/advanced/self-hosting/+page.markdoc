@@ -111,14 +111,6 @@ Deploy Appwrite on modern PaaS platforms for simplified management:
 {% cards_item href="/docs/advanced/self-hosting/platforms/coolify" title="Coolify" %}
 Open-source platform for easy self-hosting with one-click deployments.
 {% /cards_item %}
-
-{% cards_item href="/docs/advanced/self-hosting/platforms/railway" title="Railway" %}
-Modern deployment platform with Git-based workflows and automatic scaling.
-{% /cards_item %}
-
-{% cards_item href="/docs/advanced/self-hosting/platforms/render" title="Render" %}
-Cloud platform offering automatic deployments from Git with built-in SSL.
-{% /cards_item %}
 {% /cards %}
 
 # Configuration {% #configuration %}
