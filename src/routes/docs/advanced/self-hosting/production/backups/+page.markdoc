@@ -10,199 +10,131 @@ Appwrite Cloud offers automated [Backups as a Service](/docs/products/databases/
 For self-hosted instances, you'll need to implement manual backup procedures as outlined on this page.
 {% /info %}
 
-Regular backups are essential for all production Appwrite deployments. This page explains how to implement backups for your self-hosted instance.
+Self-hosted Appwrite requires manual backup procedures to protect your data.
 
-# Identify what to back up {% #what-to-backup %}
+# What to back up {% #what-to-backup %}
 
-Back up these critical components of your Appwrite installation:
+Your Appwrite installation has several components that need backing up:
 
-1. **Database** - All application data including users, documents, and settings
-2. **Storage Files** - User-uploaded files and assets
-3. **Environment Variables** - Your `.env` configuration
-4. **Custom Functions** - Any custom function code not stored in external repositories
-5. **Sites** - Deployed website content from Appwrite's hosting feature
+1. **Database** - User data, documents, and configuration
+2. **Storage volumes** - Uploaded files and function code
+3. **Environment variables** - Configuration in `.env`
+4. **System snapshots** - Complete server state (alternative approach)
 
-# Back up the database {% #database-backup %}
+# Database backups {% #database-backup %}
 
-Appwrite uses MariaDB as its primary database. For database backups:
-
-### Database backup approach
-
-Use MariaDB's built-in tools for consistent backups:
-- **`mysqldump`** - Creates logical backups suitable for most installations
-- **Physical backups** - For large databases, consider tools like `mariabackup`
-
-### Basic backup example
+Appwrite uses MariaDB. Use `mysqldump` for most installations:
 
 ```bash
-# Create a database backup
+# Create database backup
 docker compose exec mariadb sh -c 'exec mysqldump --all-databases --add-drop-database --single-transaction -u"$MYSQL_USER" -p"$MYSQL_PASSWORD"' > ./dump.sql
 
-# Restore from backup (to a fresh installation only)
+# Restore (fresh installation only)
 docker compose exec -T mariadb sh -c 'exec mysql -u"$MYSQL_USER" -p"$MYSQL_PASSWORD"' < dump.sql
 ```
 
 {% info title="Important" %}
-Only restore to a fresh Appwrite installation. Restoring to an existing installation may cause data corruption.
+Only restore to fresh Appwrite installations to avoid data corruption.
 {% /info %}
 
-### Automation recommendations
+For large databases, consider `mariabackup` for physical backups.
 
-- **Schedule regular backups** using cron or your system's task scheduler
-- **Compress backups** to save storage space (gzip recommended)
-- **Implement retention policies** to manage backup storage costs
-- **Test restore procedures** regularly in a non-production environment
+# Storage volume backups {% #storage-backup %}
 
-# Back up storage volumes {% #storage-backup %}
+Shut down Appwrite before backing up volumes to avoid data inconsistency.
 
-Appwrite stores data in multiple Docker volumes. Always shut down Appwrite before backing up volumes to ensure data consistency.
+Appwrite uses these Docker volumes:
 
-## Volume backup approach
-
-Appwrite uses the following volumes that should be backed up:
-
-- `appwrite-uploads` - User-uploaded files and assets
-- `appwrite-functions` - Custom function code and dependencies
-- `appwrite-builds` - Function build artifacts
-- `appwrite-sites` - Static site deployments
+- `appwrite-uploads` - User files
+- `appwrite-functions` - Function code
+- `appwrite-builds` - Build artifacts
+- `appwrite-sites` - Static sites
 - `appwrite-certificates` - SSL certificates
-- `appwrite-config` - Configuration files
-- `appwrite-imports` - Data import files
-- `appwrite-cache` - Application cache data
-- `appwrite-redis` - Redis data (sessions, queues)
-- `appwrite-mariadb` - Database files (handled separately above)
+- `appwrite-config` - Configuration
+- `appwrite-cache` and `appwrite-redis` - Cache data
+- `appwrite-mariadb` - Database files
 
-### Backup methods
+## Backup methods
 
-**Option 1: Docker volume backup (recommended)**
+**Docker volume backup:**
 ```bash
-# Backup a single volume
+# Backup volume
 docker run --rm -v volume_name:/data -v $(pwd)/backup:/backup ubuntu tar czf "/backup/volume_name.tar.gz" -C /data .
 
-# Restore a volume
+# Restore volume
 docker run --rm -v volume_name:/data -v $(pwd)/backup:/backup ubuntu tar xzf "/backup/volume_name.tar.gz" -C /data
 ```
 
-**Option 2: Direct volume copy**
+**Direct copy:**
 ```bash
-# Find volume location
 docker volume inspect volume_name
-
-# Copy volume data (requires appropriate permissions)
 sudo cp -a /var/lib/docker/volumes/volume_name/_data /backup/volume_name_backup
 ```
 
-### Volume backup considerations
 
-{% info title="Permission considerations" %}
-Volume backups may encounter permission issues if files are owned by different users. If you experience permission errors, try running the backup commands with `sudo` or ensure your backup directory has appropriate permissions.
-{% /info %}
-
-{% info title="Important" %}
-Always restore to a fresh Appwrite installation. Restoring volumes may overwrite existing data and could cause permission issues. Ensure the backup files have appropriate read permissions before restoring.
-{% /info %}
 
 {% info title="External storage" %}
-If you've configured Appwrite to use S3, GCS, or Azure Blob Storage, use the respective provider's native backup tools to ensure consistent backups.
+For S3/GCS/Azure storage, use your provider's native backup tools.
 {% /info %}
 
-# Back up environment variables {% #env-backup %}
+# Environment variables {% #env-backup %}
 
-Always keep a secure backup of your `.env` file, as it contains critical configuration settings:
+Back up your `.env` file containing configuration and secrets:
 
 ```bash
-# Make a copy of your environment variables
 cp .env .env.backup.$(date +"%Y%m%d")
 ```
 
 {% info title="Critical variable" %}
-The `_APP_OPENSSL_KEY_V1` environment variable is especially important as Appwrite uses it for data encryption. When restoring to a new instance, be sure to copy this value exactly from your original installation, or your encrypted data will be inaccessible.
+The `_APP_OPENSSL_KEY_V1` encrypts your data. Copy this exact value when restoring, or encrypted data becomes inaccessible.
 {% /info %}
 
-Store this backup securely, as it contains sensitive information and secrets.
+Store `.env` backups securely due to sensitive data.
 
-# Plan for disaster recovery {% #disaster-recovery %}
+# System snapshots {% #system-snapshots %}
 
-Your disaster recovery plan should include:
+As an alternative to individual backups, snapshot your entire server:
 
-1. **Regular testing** - Verify your backup and restore procedures work correctly
-2. **Off-site storage** - Keep backups in a separate physical or virtual location
-3. **Documentation** - Maintain detailed recovery steps
-4. **Recovery time objective (RTO)** - Define your maximum acceptable downtime
+**AWS EC2:** Actions > Image > Create Image
+**GCP/Azure/DigitalOcean:** Use provider snapshot features
 
-# Create complete system backups {% #complete-backup %}
+System snapshots capture complete server state and enable fast recovery, but use more storage than selective backups.
 
-For comprehensive protection, create a snapshot of your entire server or virtual machine.
+# Best practices {% #best-practices %}
 
-### Cloud provider snapshots
+## Automation
 
-**AWS EC2:**
-1. Open the EC2 console
-2. Select your instance
-3. Choose Actions > Image > Create Image
-4. Complete the snapshot creation process
+**Schedule backups** with cron jobs or cloud automation:
+```bash
+# Daily database backup at 2 AM
+0 2 * * * /path/to/backup-script.sh
+```
 
-**Other providers:** Google Cloud Platform, Microsoft Azure, and DigitalOcean offer similar snapshot capabilities.
+**Follow 3-2-1 rule:** 3 copies, 2 different media, 1 offsite.
 
-### Benefits of system snapshots
+**Monitor backup jobs** and set alerts for failures.
 
-- **Complete system state** - Captures entire server configuration
-- **Fast recovery** - Restore entire system in minutes
-- **Version control** - Multiple snapshots for different points in time
-- **Disaster recovery** - Protect against hardware failures
+## Third-party tools
 
-# Implement backup automation {% #automation %}
-
-### Backup strategy recommendations
-
-1. **Schedule automated backups** - Use cron jobs or cloud provider automation
-2. **Implement the 3-2-1 rule** - 3 copies, 2 different media types, 1 offsite
-3. **Test restores regularly** - Verify backup integrity quarterly
-4. **Monitor backup jobs** - Set up alerts for backup failures
-5. **Document procedures** - Maintain runbooks for recovery scenarios
-
-### Third-party backup tools
-
-Consider enterprise backup solutions for production deployments:
-- **Velero** - Kubernetes-native backup solution
-- **Restic** - Secure, efficient backup program
+For production environments:
+- **Restic** - Cross-platform backup with encryption
 - **Borg** - Deduplicating backup program
-- **Cloud provider tools** - AWS Backup, Azure Backup, GCP Cloud Storage
+- **Velero** - Kubernetes backup solution
+- **Cloud provider tools** - AWS/Azure/GCP backup services
 
-### Backup monitoring
+## Disaster recovery
 
-Set up monitoring for:
-- Backup job completion status
-- Backup file integrity checks
-- Storage usage and costs
-- Recovery time testing results
+Define your requirements:
+- **RPO (Recovery Point Objective)** - Acceptable data loss window
+- **RTO (Recovery Time Objective)** - Acceptable downtime window
 
-# Follow best practices {% #best-practices %}
+**Test restores quarterly** to verify backup integrity.
 
-## Essential backup practices
+Keep backups **offsite** and **encrypted**. Document recovery procedures and update contact information.
 
-| Practice | Recommendation |
-|----------|---------------|
-| **Frequency** | Daily database backups, weekly volume backups minimum |
-| **Retention** | Keep 7 daily, 4 weekly, 12 monthly backups |
-| **Testing** | Test restore procedures quarterly |
-| **Storage** | Store backups in different location than primary data |
-| **Security** | Encrypt backups and restrict access |
-| **Monitoring** | Alert on backup failures within 24 hours |
-| **Documentation** | Maintain current recovery procedures |
+## Security
 
-## Recovery planning
-
-Your disaster recovery plan should define:
-
-1. **Recovery Point Objective (RPO)** - Maximum acceptable data loss
-2. **Recovery Time Objective (RTO)** - Maximum acceptable downtime
-3. **Communication plan** - Who to notify during incidents
-4. **Escalation procedures** - When to engage additional resources
-
-## Security considerations
-
-- **Encrypt backup files** using tools like GPG or cloud encryption
-- **Secure storage access** with proper authentication and authorization
-- **Regular security audits** of backup systems and procedures
-- **Compliance requirements** specific to your industry or region
+- Encrypt backup files
+- Restrict backup storage access
+- Audit backup systems regularly
+- Meet compliance requirements for your industry
