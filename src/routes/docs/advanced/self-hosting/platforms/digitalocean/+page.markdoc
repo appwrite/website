@@ -246,7 +246,7 @@ For domain configuration, connect via SSH and update the environment configurati
 - Enable automatic snapshots for Droplets
 - Store file uploads in DigitalOcean Spaces with versioning
 
-For comprehensive backup procedures including database exports, storage volumes, and configuration files, see the [backup documentation](/docs/advanced/self-hosting/backups).
+For comprehensive backup procedures including database exports, storage volumes, and configuration files, see the [Backups page](/docs/advanced/self-hosting/production/backups).
 
 **Performance Optimization**
 - Use DigitalOcean CDN for static asset delivery
