@@ -5,7 +5,7 @@ description: Add paid app subscription plans to your app with Stripe and Appwrit
 step: 4
 ---
 
-# Add platform {% #add-platform %}
+## Add platform {% #add-platform %}
 To showcase the functionality, the template ships with a demo frontend that you can use. To allow this demo, you must add Function's domain as a trusted web platform. Head to your project's **Overview** page in Apwrite Console, and scroll down to the **Integrations** section. Click the **Add platform** button and select **Web App** from the dropdown.
 
 {% only_dark %}
@@ -29,7 +29,7 @@ Click the **Next** button to continue.
 
 You don't need to follow the remaining screens, so you can click on **Skip optional steps**.
 
-# Update webhook endpoint {% #update-webhook-endpoint %}
+## Update webhook endpoint {% #update-webhook-endpoint %}
 
 Navigate to your Stripe dashboard, under **Developers**, go to the **Webhooks** tab.
 Click on the webhook we added earlier, under the three-dot menu, click **Update details**.

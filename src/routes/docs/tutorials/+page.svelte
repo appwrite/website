@@ -69,7 +69,7 @@
         <div class="web-article-content web-u-gap-80">
             {#each data.tutorials as category}
                 <section class="flex flex-col gap-6">
-                    <h2 class="text-micro uppercase">{category.title}</h2>
+                    <h2 class="text-eyebrow uppercase">{category.title}</h2>
                     <ul class="web-grid-row-4 web-grid-row-4-mobile-1">
                         {#each category.tutorials as tutorial}
                             <li>

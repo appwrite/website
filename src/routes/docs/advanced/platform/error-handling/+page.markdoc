@@ -49,7 +49,7 @@ Here are some examples of how you might map Appwrite error types to user-friendl
 | `user_blocked` | The current user has been blocked. | "Your account has been temporarily suspended. Please contact support." |
 | `general_rate_limit_exceeded` | Rate limit for the current endpoint has been exceeded. | "Please wait a moment before trying again." |
 | `storage_file_not_found` | The requested file could not be found. | "The file you requested is not available." |
-| `document_not_found` | Document with the requested ID could not be found. | "The information you're looking for could not be found." |
+| `row_not_found` | Row with the requested ID could not be found. | "The information you're looking for could not be found." |
 
 # Complete list of error types
 

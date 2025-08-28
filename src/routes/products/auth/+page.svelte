@@ -1,6 +1,6 @@
 <script>
     import Main from '$lib/layouts/Main.svelte';
-    import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
+    import { DEFAULT_HOST } from '$lib/utils/metadata';
     import { TITLE_SUFFIX } from '$routes/titles';
     import Access from './(components)/Access.svelte';
 
@@ -12,6 +12,7 @@
     import Hero from './(components)/Hero.svelte';
     import Testimonials from '$lib/components/product-pages/testimonials.svelte';
     import Features from './(components)/features/Features.svelte';
+    import Pricing from '$routes/(marketing)/(components)/pricing.svelte';
 
     const title = 'Auth' + TITLE_SUFFIX;
     const description =
@@ -73,7 +74,7 @@
                                         width="32"
                                         height="32"
                                     />
-                                    <h4 class="text-body text-primary">Messaging</h4>
+                                    <h4 class="text-main-body text-primary">Messaging</h4>
                                     <span class="web-icon-arrow-right ml-auto" aria-hidden="true"
                                     ></span>
                                 </div>
@@ -100,7 +101,7 @@
                                         width="32"
                                         height="32"
                                     />
-                                    <h4 class="text-body text-primary">Functions</h4>
+                                    <h4 class="text-main-body text-primary">Functions</h4>
                                     <span class="web-icon-arrow-right ml-auto" aria-hidden="true"
                                     ></span>
                                 </div>
@@ -127,7 +128,7 @@
                                         width="37"
                                         height="32"
                                     />
-                                    <h4 class="text-body text-primary">Databases</h4>
+                                    <h4 class="text-main-body text-primary">Databases</h4>
                                     <span class="web-icon-arrow-right ml-auto" aria-hidden="true"
                                     ></span>
                                 </div>
@@ -153,7 +154,7 @@
                                         width="32"
                                         height="32"
                                     />
-                                    <h4 class="text-body text-primary">Storage</h4>
+                                    <h4 class="text-main-body text-primary">Storage</h4>
                                     <span class="web-icon-arrow-right ml-auto" aria-hidden="true"
                                     ></span>
                                 </div>
@@ -179,7 +180,7 @@
                                         width="32"
                                         height="32"
                                     />
-                                    <h4 class="text-body text-primary">Realtime</h4>
+                                    <h4 class="text-main-body text-primary">Realtime</h4>
                                     <span class="web-icon-arrow-right ml-auto" aria-hidden="true"
                                     ></span>
                                 </div>
@@ -192,9 +193,9 @@
                 </ul>
             </div>
         </section>
-        <div class="relative">
+        <div class="border-smooth relative border-t">
+            <Pricing class="mt-0" />
             <div class="container">
-                <PreFooter />
                 <FooterNav />
                 <MainFooter />
             </div>

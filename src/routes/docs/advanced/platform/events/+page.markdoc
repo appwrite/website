@@ -9,7 +9,7 @@ A event will fire when a change occurs in your Appwrite project, like when a new
 You can subscribe to these events with Appwrite [Functions](/docs/products/functions), [Realtime](/docs/apis/realtime), or [Webhooks](/docs/advanced/platform/webhooks).
 
 You can subscribe to events for specific resources using their ID or subscribe to changes of all resources of the same type by using a wildcard character * instead of an ID.
-You can also filter for events of specific actions like create, update, or delete.
+You can also filter for events of specific actions like create, update, upsert, or delete.
 
 
 You can find a list of events for Storage, Databases, Functions, and Authentication services below.
@@ -38,31 +38,31 @@ When events fire, only existing subscriptions for that event will receive the up
 
 For self-hosted instances, when the Appwrite containers are shut down and restarted, events with pending webhooks and subscription updates will not be delivered.
 
-A change to a resource can cause multiple events to fire. For example adding a new document with ID `"lion-king"` to a collection with the ID `"movies"` will cause all of the below events to fire.
+A change to a resource can cause multiple events to fire. For example adding a new row with ID `"lion-king"` to a table with the ID `"movies"` will cause all of the below events to fire.
 
 ```json
 {
   "events": [
-      "databases.default.collections.movies.documents.lion-king.create",
-      "databases.*.collections.*.documents.*.create",
-      "databases.default.collections.*.documents.lion-king.create",
-      "databases.*.collections.*.documents.lion-king.create",
-      "databases.*.collections.movies.documents.lion-king.create",
-      "databases.default.collections.movies.documents.*.create",
-      "databases.*.collections.movies.documents.*.create",
-      "databases.default.collections.*.documents.*.create",
-      "databases.default.collections.movies.documents.lion-king",
-      "databases.*.collections.*.documents.*",
-      "databases.default.collections.*.documents.lion-king",
-      "databases.*.collections.*.documents.lion-king",
-      "databases.*.collections.movies.documents.lion-king",
-      "databases.default.collections.movies.documents.*",
-      "databases.*.collections.movies.documents.*",
-      "databases.default.collections.*.documents.*",
-      "databases.default.collections.movies",
-      "databases.*.collections.*",
-      "databases.default.collections.*",
-      "databases.*.collections.movies",
+      "databases.default.tables.movies.rows.lion-king.create",
+      "databases.*.tables.*.rows.*.create",
+      "databases.default.tables.*.rows.lion-king.create",
+      "databases.*.tables.*.rows.lion-king.create",
+      "databases.*.tables.movies.rows.lion-king.create",
+      "databases.default.tables.movies.rows.*.create",
+      "databases.*.tables.movies.rows.*.create",
+      "databases.default.tables.*.rows.*.create",
+      "databases.default.tables.movies.rows.lion-king",
+      "databases.*.tables.*.rows.*",
+      "databases.default.tables.*.rows.lion-king",
+      "databases.*.tables.*.rows.lion-king",
+      "databases.*.tables.movies.rows.lion-king",
+      "databases.default.tables.movies.rows.*",
+      "databases.*.tables.movies.rows.*",
+      "databases.default.tables.*.rows.*",
+      "databases.default.tables.movies",
+      "databases.*.tables.*",
+      "databases.default.tables.*",
+      "databases.*.tables.movies",
       "databases.default",
       "databases.*"
   ]

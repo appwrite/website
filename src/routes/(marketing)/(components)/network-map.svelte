@@ -1,6 +1,6 @@
 <script>
-    import Map from '$lib/components/regions-map/map.svelte';
-    import { classNames } from '$lib/utils/classnames';
+    import Map from '$lib/components/appwrite-network/map.svelte';
+    import { cn } from '$lib/utils/cn';
 
     import { createTabs, melt } from '@melt-ui/svelte';
 
@@ -9,7 +9,7 @@
             label: 'PoP Locations',
             icon: `<svg
                     width="20"
-                    height="20"
+                height="20"
                     viewBox="0 0 20 20"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
@@ -73,7 +73,7 @@
         <a href="/" class="web-button is-secondary mt-2">More about the Appwrite Network</a>
     </div>
 
-    <Map />
+    <Map theme="light" />
 
     <div
         use:melt={$list}
@@ -83,7 +83,7 @@
             {@const isActive = $value === label.toLowerCase()}
             <button
                 use:melt={$trigger(label.toLowerCase())}
-                class={classNames(
+                class={cn(
                     'text-caption text-primary bg-smooth flex h-8 items-center justify-center gap-1 rounded-full border border-[#EBEBEB] font-medium transition-colors',
                     {
                         'bg-accent/4 border-accent text-accent': isActive

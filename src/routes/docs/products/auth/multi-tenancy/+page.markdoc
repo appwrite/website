@@ -179,20 +179,20 @@ val membership = teams.createMembership(
 
 # Secure resources with team permissions
 
-Control access to documents and resources using team-based permissions. This ensures data isolation between tenants.
+Control access to rows and resources using team-based permissions. This ensures data isolation between tenants.
 
 {% multicode %}
 ```client-web
-import { Client, Databases, ID, Permission, Role } from "appwrite";
+import { Client, TablesDB, ID, Permission, Role } from "appwrite";
 
 const client = new Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
     .setProject('<PROJECT_ID>');
 
-const databases = new Databases(client);
+const tablesDB = new TablesDB(client);
 
-// Create a document that only members of "Example Corp" tenant can access
-const document = await databases.createDocument(
+// Create a row that only members of "Example Corp" tenant can access
+const row = await tablesDB.createRow(
     'invoices_db',
     'invoices',
     ID.unique(),
@@ -219,13 +219,13 @@ final client = Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
     .setProject('<PROJECT_ID>');
 
-final databases = Databases(client);
+final tablesDB = TablesDB(client);
 
-// Create a document that only members of "Example Corp" tenant can access
-final document = await databases.createDocument(
+// Create a row that only members of "Example Corp" tenant can access
+final row = await tablesDB.createRow(
     databaseId: 'invoices_db',
-    collectionId: 'invoices',
-    documentId: ID.unique(),
+    tableId: 'invoices',
+    rowId: ID.unique(),
     data: {
         'title': 'Q2 Invoice',
         'amount': 2500.00,
@@ -249,13 +249,13 @@ let client = Client()
     .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
     .setProject("<PROJECT_ID>")
 
-let databases = Databases(client)
+let tablesDB = TablesDB(client)
 
-// Create a document that only members of "Example Corp" tenant can access
-let document = try await databases.createDocument(
+// Create a row that only members of "Example Corp" tenant can access
+let row = try await tablesDB.createRow(
     databaseId: "invoices_db",
-    collectionId: "invoices",
-    documentId: ID.unique(),
+    tableId: "invoices",
+    rowId: ID.unique(),
     data: [
         "title": "Q2 Invoice",
         "amount": 2500.00,
@@ -275,7 +275,7 @@ let document = try await databases.createDocument(
 ```client-android-kotlin
 import io.appwrite.Client
 import io.appwrite.ID
-import io.appwrite.services.Databases
+import io.appwrite.services.TablesDB
 import io.appwrite.models.Permission
 import io.appwrite.models.Role
 
@@ -283,13 +283,13 @@ val client = Client(context)
     .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
     .setProject("<PROJECT_ID>")
 
-val databases = Databases(client)
+val tablesDB = TablesDB(client)
 
-// Create a document that only members of "Example Corp" tenant can access
-val document = databases.createDocument(
+// Create a row that only members of "Example Corp" tenant can access
+val row = tablesDB.createRow(
     databaseId = "invoices_db",
-    collectionId = "invoices",
-    documentId = ID.unique(),
+    tableId = "invoices",
+    rowId = ID.unique(),
     data = mapOf(
         "title" to "Q2 Invoice",
         "amount" to 2500.00,
@@ -310,26 +310,26 @@ val document = databases.createDocument(
 
 # Query tenant data
 
-When querying data, users will automatically only see documents they have permission to access based on their team memberships.
+When querying data, users will automatically only see rows they have permission to access based on their team memberships.
 
 {% multicode %}
 ```client-web
-import { Client, Databases, Query } from "appwrite";
+import { Client, TablesDB, Query } from "appwrite";
 
 const client = new Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
     .setProject('<PROJECT_ID>');
 
-const databases = new Databases(client);
+const tablesDB = new TablesDB(client);
 
 // Current user will only see invoices they have access to
-const documents = await databases.listDocuments(
+const rows = await tablesDB.listRows(
     'invoices_db',
     'invoices'
 );
 
 // For specific tenant data, you can add a query filter
-const tenantDocuments = await databases.listDocuments(
+const tenantDocuments = await tablesDB.listRows(
     'invoices_db',
     'invoices',
     [
@@ -344,18 +344,18 @@ final client = Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
     .setProject('<PROJECT_ID>');
 
-final databases = Databases(client);
+final tablesDB = TablesDB(client);
 
 // Current user will only see invoices they have access to
-final documents = await databases.listDocuments(
+final rows = await tablesDB.listRows(
     databaseId: 'invoices_db',
-    collectionId: 'invoices',
+    tableId: 'invoices',
 );
 
 // For specific tenant data, you can add a query filter
-final tenantDocuments = await databases.listDocuments(
+final tenantDocuments = await tablesDB.listRows(
     databaseId: 'invoices_db',
-    collectionId: 'invoices',
+    tableId: 'invoices',
     queries: [
         Query.equal('tenant_id', 'example_corp')
     ]
@@ -368,18 +368,18 @@ let client = Client()
     .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
     .setProject("<PROJECT_ID>")
 
-let databases = Databases(client)
+let tablesDB = TablesDB(client)
 
 // Current user will only see invoices they have access to
-let documents = try await databases.listDocuments(
+let rows = try await tablesDB.listRows(
     databaseId: "invoices_db",
-    collectionId: "invoices"
+    tableId: "invoices"
 )
 
 // For specific tenant data, you can add a query filter
-let tenantDocuments = try await databases.listDocuments(
+let tenantDocuments = try await tablesDB.listRows(
     databaseId: "invoices_db",
-    collectionId: "invoices",
+    tableId: "invoices",
     queries: [
         Query.equal(key: "tenant_id", value: "example_corp")
     ]
@@ -387,25 +387,25 @@ let tenantDocuments = try await databases.listDocuments(
 ```
 ```client-android-kotlin
 import io.appwrite.Client
-import io.appwrite.services.Databases
+import io.appwrite.services.TablesDB
 import io.appwrite.Query
 
 val client = Client(context)
     .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
     .setProject("<PROJECT_ID>")
 
-val databases = Databases(client)
+val tablesDB = TablesDB(client)
 
 // Current user will only see invoices they have access to
-val documents = databases.listDocuments(
+val rows = tablesDB.listRows(
     databaseId = "invoices_db",
-    collectionId = "invoices"
+    tableId = "invoices"
 )
 
 // For specific tenant data, you can add a query filter
-val tenantDocuments = databases.listDocuments(
+val tenantDocuments = tablesDB.listRows(
     databaseId = "invoices_db",
-    collectionId = "invoices",
+    tableId = "invoices",
     queries = listOf(
         Query.equal("tenant_id", "example_corp")
     )

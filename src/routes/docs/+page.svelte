@@ -94,7 +94,7 @@
                 >Quickstart guides</Button
             >
         </section>
-        <Platforms class="mt-12! p-0! max-md:p-0!" />
+        <Platforms padded={false} class="mt-12! p-0! max-md:p-0!" />
         <section class="mt-12!">
             <h2 class="text-title font-aeonik-pro text-primary max-w-[600px]">Show me some code</h2>
             <p class="text-description mt-4 max-w-[600px]">
@@ -325,6 +325,75 @@
                 </ul>
             </div>
         </section>
+        <section class="web-hero is-align-start is-no-max-width border-smooth border-t pt-12!">
+            <h2 class="text-title font-aeonik-pro text-primary max-w-[600px]">
+                Build faster with AI
+            </h2>
+            <p class="text-description max-w-[600px]">
+                Appwrite’s Model Context Protocol (MCP) server lets LLMs interact directly with your
+                Appwrite API.
+            </p>
+            <div class="mt-6">
+                <ul class="grid grid-cols-1 gap-8 md:grid-cols-2">
+                    <li>
+                        <a
+                            href="/docs/tooling/mcp/claude"
+                            class="web-card is-normal flex flex-row! items-center gap-2!"
+                            onclick={() => trackEvent(`docs-mcp-click`)}
+                        >
+                            <img
+                                src="/images/docs/mcp/logos/dark/claude.svg"
+                                alt="Cursor"
+                                class="w-6"
+                            />
+                            <h4 class="text-sub-body text-primary font-medium">Claude Desktop</h4>
+                        </a>
+                    </li>
+                    <li>
+                        <a
+                            href="/docs/tooling/mcp/cursor"
+                            class="web-card is-normal flex flex-row! items-center gap-2!"
+                            onclick={() => trackEvent(`docs-mcp-click`)}
+                        >
+                            <img
+                                src="/images/docs/mcp/logos/dark/cursor-ai.svg"
+                                alt="Cursor"
+                                class="w-6"
+                            />
+                            <h4 class="text-sub-body text-primary font-medium">Cursor</h4>
+                        </a>
+                    </li>
+                    <li>
+                        <a
+                            href="/docs/tooling/mcp/windsurf"
+                            class="web-card is-normal flex flex-row! items-center gap-2!"
+                            onclick={() => trackEvent(`docs-mcp-click`)}
+                        >
+                            <img
+                                src="/images/docs/mcp/logos/dark/windsurf.svg"
+                                alt="Cursor"
+                                class="w-6"
+                            />
+                            <h4 class="text-sub-body text-primary font-medium">Windsurf Editor</h4>
+                        </a>
+                    </li>
+                    <li>
+                        <a
+                            href="/docs/tooling/mcp/vscode"
+                            class="web-card is-normal flex flex-row! items-center gap-2!"
+                            onclick={() => trackEvent(`docs-mcp-click`)}
+                        >
+                            <img
+                                src="/images/docs/mcp/logos/dark/vscode.svg"
+                                alt="Cursor"
+                                class="w-6"
+                            />
+                            <h4 class="text-sub-body text-primary font-medium">VS Code</h4>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </section>
         <section class="web-hero is-align-start is-no-max-width mt-12!">
             <h2 class="text-title font-aeonik-pro text-primary max-w-[600px]">
                 Explore ways to integrate
@@ -341,7 +410,7 @@
                             class="web-card is-normal"
                             onclick={() => trackEvent(`docs-explore_sdks-click`)}
                         >
-                            <h4 class="text-sub-body text-primary mt-2 font-medium">SDKs</h4>
+                            <h4 class="text-sub-body text-primary font-medium">SDKs</h4>
                             <p class="text-sub-body mt-1">
                                 Light-weight SDKs for your favorite platforms.
                             </p>
@@ -353,7 +422,7 @@
                             class="web-card is-normal"
                             onclick={() => trackEvent(`docs-explore_rest_apis-click`)}
                         >
-                            <h4 class="text-sub-body text-primary mt-2 font-medium">REST API</h4>
+                            <h4 class="text-sub-body text-primary font-medium">REST API</h4>
                             <p class="text-sub-body mt-1">
                                 Integrate with HTTP requests without the needing an SDK.
                             </p>
@@ -365,7 +434,7 @@
                             class="web-card is-normal"
                             onclick={() => trackEvent(`docs-explore_graphql_apis-click`)}
                         >
-                            <h4 class="text-sub-body text-primary mt-2 font-medium">GraphQL</h4>
+                            <h4 class="text-sub-body text-primary font-medium">GraphQL</h4>
                             <p class="text-sub-body mt-1">
                                 Leverage GraphQL through our SDKs or integrate directly with REST
                                 endpoints.
@@ -378,7 +447,7 @@
                             class="web-card is-normal"
                             onclick={() => trackEvent(`docs-explore_realtime_apis-click`)}
                         >
-                            <h4 class="text-sub-body text-primary mt-2 font-medium">Realtime</h4>
+                            <h4 class="text-sub-body text-primary font-medium">Realtime</h4>
                             <p class="text-sub-body mt-1">
                                 Respond to auth, databases, storage, and function events in
                                 realtime.
@@ -403,7 +472,7 @@
                             class="web-card is-normal"
                             onclick={() => trackEvent(`docs-migrations_self_hosted-click`)}
                         >
-                            <h4 class="text-sub-body text-primary mt-2 font-medium">Self-hosted</h4>
+                            <h4 class="text-sub-body text-primary font-medium">Self-hosted</h4>
                             <p class="text-sub-body mt-1">
                                 Move data from self-hosted to Appwrite Cloud.
                             </p>
@@ -415,7 +484,7 @@
                             class="web-card is-normal"
                             onclick={() => trackEvent(`docs-migrations_firebase-click`)}
                         >
-                            <h4 class="text-sub-body text-primary mt-2 font-medium">Firebase</h4>
+                            <h4 class="text-sub-body text-primary font-medium">Firebase</h4>
                             <p class="text-sub-body mt-1">
                                 Migrate users and data from Firebase to Appwrite.
                             </p>
@@ -427,7 +496,7 @@
                             class="web-card is-normal"
                             onclick={() => trackEvent(`docs-migrations_supabase-click`)}
                         >
-                            <h4 class="text-sub-body text-primary mt-2 font-medium">Supabase</h4>
+                            <h4 class="text-sub-body text-primary font-medium">Supabase</h4>
                             <p class="text-sub-body mt-1">
                                 Migrate users and data from Supabase to Appwrite.
                             </p>
@@ -439,7 +508,7 @@
                             class="web-card is-normal"
                             onclick={() => trackEvent(`docs-migrations_nhost-click`)}
                         >
-                            <h4 class="text-sub-body text-primary mt-2 font-medium">Nhost</h4>
+                            <h4 class="text-sub-body text-primary font-medium">Nhost</h4>
                             <p class="text-sub-body mt-1">
                                 Migrate users and data from NHost to Appwrite.
                             </p>

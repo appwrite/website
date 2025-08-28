@@ -4,16 +4,16 @@ title: Type generation
 description: Generate types from your Appwrite database schema. Learn how to use the Appwrite CLI to create and manage your types effectively.
 ---
 
-The Appwrite CLI provides a simple way to generate types based on your Appwrite database schema. This feature is particularly useful for developers who want to ensure type safety in their applications by generating type definitions that match their database collections and attributes.
+The Appwrite CLI provides a simple way to generate types based on your Appwrite database schema. This feature is particularly useful for developers who want to ensure type safety in their applications by generating type definitions that match their database tables and columns.
 
-To generate types, the CLI reads the database schema from your project's `appwrite.config.json` file and generates type definitions for each collection.
+To generate types, the CLI reads the database schema from your project's `appwrite.json` file and generates type definitions for each table.
 
 ## Generating types
 
-First, ensure you have the [Appwrite CLI](/docs/tooling/command-line/installation#getting-started) installed and your project is [initialised](/docs/tooling/command-line/installation#initialization). Then, run the following command in your terminal to pull collections from your Appwrite project:
+First, ensure you have the [Appwrite CLI](/docs/tooling/command-line/installation#getting-started) installed and your project is [initialised](/docs/tooling/command-line/installation#initialization). Then, run the following command in your terminal to pull tables from your Appwrite project:
 
 ```bash
-appwrite pull collections
+appwrite pull tables
 ```
 
 To generate types, you can use the Appwrite CLI command:
@@ -27,12 +27,12 @@ The following options are currently available:
 | Option | Description |
 |--------|-------------|
 | `--language` or `-l` |  The programming language for which types can be generated. Choices include `ts`, `js`, `php`, `kotlin`, `swift`, `java`, `dart`, `auto`. The CLI will use `auto` as the default option if this option is skipped. |
-| `--strict` or `-s` |  Enables strict type generation. This option ensures that all the attributes follow language conventions, even if that leads to mismatches with the schema defined in your Appwrite console. |
+| `--strict` or `-s` |  Enables strict type generation. This option ensures that all the columns follow language conventions, even if that leads to mismatches with the schema defined in your Appwrite console. |
 | `--help` or `-h` | Displays help information for the command. |
 
 ## Example usage
 
-Suppose you want to generate types for a collection with data on books with the following schema from your `appwrite.config.json` file:
+Suppose you want to generate types for a table with data on books with the following schema from your `appwrite.json` file:
 
 ```json
 {
@@ -46,15 +46,15 @@ Suppose you want to generate types for a collection with data on books with the 
             "enabled": true
         }
     ],
-    "collections": [
+    "tables": [
         {
             "$id": "684c6790002d457ee89d",
             "$permissions": [],
             "databaseId": "684c678b00211ddac082",
             "name": "Books",
             "enabled": true,
-            "documentSecurity": false,
-            "attributes": [
+            "rowSecurity": false,
+            "columns": [
                 {
                     "key": "name",
                     "type": "string",
@@ -113,7 +113,7 @@ Suppose you want to generate types for a collection with data on books with the 
 }
 ```
 
-Here's how you can generate types for this collection across all supported languages:
+Here's how you can generate types for this table across all supported languages:
 
 {% tabs %}
 {% tabsitem #ts title="TypeScript" %}
@@ -133,7 +133,7 @@ export enum Category {
   NONFICTION = "nonfiction",
 }
 
-export type Books = Models.Document & {
+export type Books = Models.Row & {
   name: string;
   author: string;
   releaseYear: string | null;
@@ -155,7 +155,7 @@ This will generate the following types in the `./types` sub-directory of your pr
 
 ```js
 /**
- * @typedef {import('appwrite').Models.Document} Document
+ * @typedef {import('appwrite').Models.Row} Row
  */
 
 

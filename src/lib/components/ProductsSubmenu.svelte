@@ -75,11 +75,11 @@
 
 <script lang="ts">
     import { trackEvent } from '$lib/actions/analytics';
-    import { classNames } from '$lib/utils/classnames';
+    import { cn } from '$lib/utils/cn';
     import { createDropdownMenu, melt } from '@melt-ui/svelte';
     import Icon from './ui/icon';
 
-    const {
+    let {
         elements: { trigger, menu, item, overlay },
         states: { open }
     } = createDropdownMenu({
@@ -89,8 +89,10 @@
     export let label: string;
 </script>
 
+<svelte:window on:resize={() => open && ($open = false)} />
+
 <button
-    class={classNames(
+    class={cn(
         'text-primary focus:text-accent hover:text-accent inline-flex cursor-pointer items-center justify-between outline-none',
         {
             'text-accent': $open
@@ -101,7 +103,7 @@
     {label}
 
     <span
-        class={classNames('web-icon-chevron-down block transition-transform', {
+        class={cn('web-icon-chevron-down block transition-transform', {
             'rotate-180': $open
         })}
     ></span>
@@ -109,7 +111,7 @@
 
 <div
     use:melt={$menu}
-    class={classNames(
+    class={cn(
         'data-[state=closed]:animate-fade-out data-[state=open]:animate-fade-in relative !left-1/2 z-10 mx-auto mt-6 hidden w-full -translate-x-1/2 flex-col items-center p-0 outline-none [max-inline-size:86.875rem] md:flex'
     )}
 >
@@ -172,7 +174,10 @@
                         <a
                             href="/blog/category/customer-stories"
                             class="text-secondary text-caption flex items-center"
-                            >Read more customer stories <Icon
+                            >Read more <span class="ml-1 hidden xl:inline"
+                                >{' '}customer stories</span
+                            >
+                            <Icon
                                 name="chevron-right"
                                 class="transition-transform group-hover:translate-x-0.5"
                             ></Icon></a
@@ -181,15 +186,15 @@
 
                     <a
                         href="/blog/post/customer-story-storealert"
-                        class="my-4 flex flex-1 gap-3 outline-none"
+                        class="my-4 flex flex-1 flex-col gap-3 outline-none xl:flex-row"
                     >
                         <img
                             src="/images/blog/customer-story-storealert/cover.png"
                             alt="Case study cover"
-                            class="aspect-[3/1] max-w-[7.5rem] shrink-0 rounded-xl object-cover"
+                            class="min-h-10 w-full shrink-0 rounded-xl object-cover md:aspect-[3/1] xl:max-w-30"
                         />
-                        <p class="text-pretty">
-                            Appwrited helped reduce development time by 60%, and lower server costs
+                        <p class="w-full text-pretty">
+                            Appwrite helped reduce development time by 60%, and lower server costs
                             by 40%.
                         </p>
                     </a>
