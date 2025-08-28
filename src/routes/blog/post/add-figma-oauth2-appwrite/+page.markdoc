@@ -92,7 +92,7 @@ function signInWithFigma() {
     provider: OAuthProvider.Figma,
     success: '<https://your-app.com/redirect-after-success>',
     failure: '<https://your-app.com/redirect-after-failure>',
-    scopes: ['file_read'] // scopes (optional)
+    scopes: ['files:read'] // scopes (optional)
   })
 }
 ```
