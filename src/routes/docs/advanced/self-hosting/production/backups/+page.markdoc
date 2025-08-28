@@ -26,12 +26,11 @@ Your Appwrite installation has several components that need backing up:
 Appwrite uses MariaDB. Use `mysqldump` for most installations:
 
 ```bash
-# Create database backup
-docker compose exec mariadb sh -c 'exec mysqldump --all-databases --add-drop-database --single-transaction -u"$MYSQL_USER" -p"$MYSQL_PASSWORD"' > ./dump.sql
+# Create database backup (all databases)
+docker compose exec mariadb sh -c 'exec mysqldump --all-databases --add-drop-database --single-transaction --routines --triggers -uroot -p"$MYSQL_ROOT_PASSWORD"' > ./dump.sql
 
 # Restore (fresh installation only)
-docker compose exec -T mariadb sh -c 'exec mysql -u"$MYSQL_USER" -p"$MYSQL_PASSWORD"' < dump.sql
-```
+docker compose exec -T mariadb sh -c 'exec mysql -uroot -p"$MYSQL_ROOT_PASSWORD"' < dump.sql
 
 {% info title="Important" %}
 Only restore to fresh Appwrite installations to avoid data corruption.
