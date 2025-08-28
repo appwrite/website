@@ -143,8 +143,8 @@ const client = new Client()
     .setProject('<PROJECT_ID>'); // Your project ID
 
 const promise = account.updateRecovery({
-    userId: '[USER_ID]',
-    secret: '[SECRET]',
+    userId: '<USER_ID>',
+    secret: '<SECRET>',
     password: 'password'
 });
 
