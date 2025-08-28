@@ -65,7 +65,7 @@ Deploy on AWS using ECS, EC2, or Lightsail with comprehensive security and scali
 Simple deployment on DigitalOcean Droplets with excellent developer experience.
 {% /cards_item %}
 
-{% cards_item href="/docs/advanced/self-hosting/platforms/google-cloud" title="Google Cloud Platform" %}
+{% cards_item href="/docs/advanced/self-hosting/platforms/google-cloud" title="Google Cloud" %}
 Leverage Google Cloud's infrastructure with Cloud Run, Compute Engine, or GKE.
 {% /cards_item %}
 
