@@ -1,7 +1,7 @@
 ---
 layout: article
 title: DigitalOcean deployment
-description: Deploy Appwrite on DigitalOcean using Droplets, App Platform, or Kubernetes. Learn how to set up a production-ready Appwrite instance with step-by-step instructions.
+description: Deploy Appwrite on DigitalOcean using Droplets, Kubernetes, or the Marketplace. Learn how to set up a production-ready Appwrite instance with step-by-step instructions.
 ---
 
 DigitalOcean offers several ways to deploy Appwrite, from simple Droplet deployments to fully managed Kubernetes clusters. This guide covers the most popular deployment methods with detailed instructions.
