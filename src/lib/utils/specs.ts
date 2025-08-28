@@ -384,9 +384,6 @@ export async function getService(
     }
 
     for (const { method, value, url } of iterateAllMethods(api, service)) {
-        if (value.summary === 'Create row') {
-            console.log(value);
-        }
         const operation = value as AppwriteOperationObject;
         const parameters = getParameters(operation);
         const responses: SDKMethod['responses'] = Object.entries(operation.responses ?? {}).map(
