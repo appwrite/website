@@ -103,7 +103,7 @@ After installation completes:
 2. **Create an account** - Sign up for your Appwrite account
 3. **Create your first project** - Set up your development environment
 
-{% info title="Startup Time" %}
+{% info title="Startup time" %}
 On non-Linux hosts, the server might take a few minutes to start after installation completes. This is normal behavior.
 {% /info %}
 
