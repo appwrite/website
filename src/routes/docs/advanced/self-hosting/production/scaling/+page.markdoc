@@ -39,9 +39,6 @@ x-logging: &x-logging
 
 ## Redis memory management
 You may want to set memory limits for Redis to prevent out-of-memory issues:
-```bash
-redis-server --maxmemory <memory_limit> --maxmemory-policy <eviction_policy>
-```
 
 # Monitoring considerations {% #monitoring %}
 
