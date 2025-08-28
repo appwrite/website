@@ -109,7 +109,7 @@ const Teams = new Teams(client);
 
 const promise = Teams.create({
   teamId: '<TEAM_ID>',
-  name: '[NAME]'
+  name: '<NAME>'
 });
 ```
 
