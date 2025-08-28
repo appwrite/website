@@ -102,13 +102,13 @@
             label: 'References',
             items: [
                 {
-                    label: 'Databases API',
-                    href: '/docs/references/cloud/client-web/databases'
-                },
-                {
                     label: 'TablesDB API',
                     href: '/docs/references/cloud/client-web/tablesDB',
                     new: isNewUntil('31 Oct 2025')
+                },
+                {
+                    label: 'Legacy API',
+                    href: '/docs/references/cloud/client-web/databases'
                 }
             ]
         }

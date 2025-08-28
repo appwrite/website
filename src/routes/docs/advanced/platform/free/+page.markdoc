@@ -13,7 +13,7 @@ Learn more about Free plan's generous resource limits on the [pricing page](http
 Appwrite Cloud's different plans are applied at an organization level with its resources shared by the organization's projects.
 When you create your Appwrite Cloud account, a **Personal Projects** organization using the Free plan is automatically created.
 
-Each Appwrite Cloud account can only have one organization on the **Free** plan, but you can create unlimited projects in the organization.
+Each Appwrite Cloud account can only have one organization and 2 projects on the **Free** plan.
 
 # Resource limits {% #resource-limits %}
 
