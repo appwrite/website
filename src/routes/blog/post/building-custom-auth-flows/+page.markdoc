@@ -186,6 +186,14 @@ app.post('/auth/external/login', async (req, res) => {
     }
 
     // Create Appwrite token and return it to the client
+    await users.get({ userId: user.id })
+    await users.create({
+      userId: user.id,
+      email,
+      phone: undefined,
+      password: undefined, // can remain undefined for custom auth
+      name: user.name,
+    })
     const token = await users.createToken({
       userId: user.id
     })
