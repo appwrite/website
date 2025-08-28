@@ -24,7 +24,7 @@ const client = new Client()
 const users = new Users(client);
 
 const token = await users.createToken({
-    userId: '[USER_ID]'
+    userId: '<USER_ID>'
 });
 const secret = token.secret;
 ```
