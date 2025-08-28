@@ -399,6 +399,7 @@ async function handleExternalAuth(email, password) {
       userId: data.userId,
       secret: data.secret
     })
+    await account.deleteSession({ sessionId: 'current' })
 
     // Show logged in state
     loginForm.classList.add('hidden')
