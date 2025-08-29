@@ -58,7 +58,7 @@ With the addition of Two-factor authentication, you can now require users to pro
 Implementing Two-factor authentication is as easy as creating a challenge using the `createChalenge` method, which will generate a one-time code, and solving the challenge with the `updateChallenge` method using the one-time code you received.
 
 ```ts
-const challenge = await account.createChallenge({
+const challenge = await account.createMFAChallenge({
     type: 'email'
 });
 const challengeId = challenge.$id;
