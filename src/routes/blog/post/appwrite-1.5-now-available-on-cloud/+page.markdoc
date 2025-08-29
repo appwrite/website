@@ -274,9 +274,7 @@ Once you have prepared your own login flow in an Appwrite Function or a server i
 // Server-side code
 let users = Users(client)
 
-let token = try await users.createToken({
-    userId: "<USER_ID>"
-})
+let token = try await users.createToken(userId: "<USER_ID>")
 let secret = token.secret
 ```
 
