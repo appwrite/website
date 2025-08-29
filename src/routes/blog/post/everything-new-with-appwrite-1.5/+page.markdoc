@@ -63,7 +63,7 @@ const challenge = await account.createChallenge({
 });
 const challengeId = challenge.$id;
 
-account.updateChallenge({
+account.updateMFAChallenge({
     challengeId,
     otp: 'challengeCode'
 });
