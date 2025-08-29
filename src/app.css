@@ -353,7 +353,7 @@
     --text-caption--line-height: var(--leading-xs);
     --text-caption--letter-spacing: var(--tracking-tighter);
     --text-sub-body: clamp(var(--font-size-tiny), 0.756rem + 0.382vw, var(--font-size-small));
-    --text-sub-body--line-height: clamp(var(--leading-tiny), 0.642rem + 1.145vw, var(--leading-xs));
+    --text-sub-body--line-height: var(--leading-xs);
     --text-sub-body--letter-spacing: clamp(
         var(--tracking-tighter),
         -0.013em,

@@ -72,7 +72,7 @@
             <div class="web-code-snippet-header-start">
                 {#if platformMap[language]}
                     <div class="flex gap-4">
-                        <div class="web-tag">
+                        <div class="web-tag rounded-full!">
                             <span class="text">{platformMap[language]}</span>
                         </div>
                     </div>
