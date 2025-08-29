@@ -95,6 +95,10 @@
                     label: 'CSV imports',
                     href: '/docs/products/databases/csv-imports',
                     new: isNewUntil('31 Jul 2025')
+                },
+                {
+                    label: 'Custom timestamps',
+                    href: '/docs/products/databases/custom-timestamps'
                 }
             ]
         },
