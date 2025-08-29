@@ -63,7 +63,7 @@ A comment is made to your PR about the build, unless you enable **Silent mode**.
 * Node.js, Python, PHP, Dart, Node.js (TypeScript), Bun, Deno, Ruby, Kotlin, C++, .NET, Java, Swift, Go
 ---
 * Sync with Meilisearch
-* Syncs documents in an Appwrite database collection to a Meilisearch index to add search-as-you-type search boxes to your app.
+* Syncs rows in an Appwrite database table to a Meilisearch index to add search-as-you-type search boxes to your app.
 * Node.js, Python, PHP, Node.js (TypeScript), Bun, Deno, Ruby, Kotlin
 ---
 * WhatsApp with Vonage

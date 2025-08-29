@@ -75,7 +75,7 @@ Simple as that! Now, let's create the page itself. Replace the contents in `src/
 		<p>{data.ideas.total} ideas found</p>
 	{/if}
 	<ul>
-		{#each data.ideas.documents as idea}
+		{#each data.ideas.rows as idea}
 			<li>
 				<strong>{idea.title}</strong>
 				{#if idea.description}

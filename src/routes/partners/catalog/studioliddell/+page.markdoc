@@ -1,0 +1,49 @@
+---
+layout: partner
+title: Studio Liddell
+description: Studio Liddell is a premier digital solutions company, enhancing brands and online presence through captivating design, immersive VR and AR experiences, innovative apps, and strategic digital initiatives. 
+date: 2025-08-12
+featured: false
+partnerLevel: Silver
+isNew: true
+cover: /images/partners/covers/studioliddell.png
+category: agency
+website: https://studioliddell.com
+email: mailto:bizdev@studioliddell.com
+product: 
+    avatar: '/images/partners/avatars/studioliddell.png'
+    vendor: Studio Liddell
+    description: Studio Liddell is a premier digital solutions company, enhancing brands and online presence through captivating design, immersive VR and AR experiences, innovative apps, and strategic digital initiatives.
+technologies: 
+    - Go Lang
+    - Render
+    - iOS
+    - Android
+    - Vue
+    - Render
+    - Unity
+    - Nuxt
+    - SvelteKit
+    - Native Apps
+services:
+    - Mobile App Development
+    - Websites
+    - AR
+    - VR
+    - Games
+    - AI
+regions:
+    - Europe
+    - UK
+    - USA
+languages: 
+    - English
+---
+
+# Overview
+
+Studio Liddell is a premier digital solutions company, enhancing brands and online presence through captivating design, immersive VR and AR experiences, innovative apps, and strategic digital initiatives. We turn your vision into powerful, resonant experiences that inspire audiences and deliver measurable results.
+
+# Services
+
+Studio Liddell uses Appwrite to power the backend for their apps, games, and websites—delivering secure, scalable, and efficient infrastructure. Their expertise spans creating engaging digital experiences, from interactive games to innovative apps, all supported by Appwrite’s robust backend capabilities for seamless performance and reliability.

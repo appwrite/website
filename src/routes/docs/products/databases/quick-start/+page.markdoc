@@ -1,7 +1,7 @@
 ---
 layout: article
 title: Start with Databases
-description: Get started with Appwrite Databases. Follow a step-by-step guide to create your first database, define collections, and perform basic data operations.
+description: Get started with Appwrite Databases. Follow a step-by-step guide to create your first database, define tables, and perform basic data operations.
 ---
 
 {% section #create-database step=1 title="Create database" %}
@@ -9,38 +9,38 @@ Head to your [Appwrite Console](https://cloud.appwrite.io/console/) and create a
 Optionally, add a custom database ID.
 {% /section %}
 
-{% section #create-collection step=2 title="Create collection" %}
-Create a collection and name it `My books`. Optionally, add a custom collection ID.
+{% section #create-table step=2 title="Create table" %}
+Create a table and name it `My books`. Optionally, add a custom table ID.
 
-Navigate to **Attributes** and create attributes by clicking **Create attribute** and select **String**.
-Attributes define the structure of your collection's documents. Enter **Attribute key** and **Size**. For example, `title` and `100`.
+Navigate to **Columns** and create columns by clicking **Create column** and select **String**.
+Columns define the structure of your table's rows. Enter **Column key** and **Size**. For example, `title` and `100`.
 
 Navigate to **Settings** > **Permissions** and add a new role **Any**.
-Check the **CREATE** and **READ** permissions, so anyone can create and read documents.
+Check the **CREATE** and **READ** permissions, so anyone can create and read rows.
 {% /section %}
 
 
-{% section #create-documents step=3 title="Create documents" %}
-To create a document use the `createDocument` method.
+{% section #create-rows step=3 title="Create rows" %}
+To create a row use the `createRow` method.
 
 In the **Settings** menu, find your project ID and replace `<PROJECT_ID>` in the example.
 
 Navigate to the `Oscar` database, copy the database ID, and replace `<DATABASE_ID>`.
-Then, in the `My books` collection, copy the collection ID, and replace `<COLLECTION_ID>`.
+Then, in the `My books` table, copy the table ID, and replace `<TABLE_ID>`.
 
 {% multicode %}
 ```client-web
-import { Client, Databases, ID } from "appwrite";
+import { Client, ID, TablesDB } from "appwrite";
 
 const client = new Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
     .setProject('<PROJECT_ID>');
 
-const databases = new Databases(client);
+const tablesDB = new TablesDB(client);
 
-const promise = databases.createDocument(
+const promise = tablesDB.createRow(
     '<DATABASE_ID>',
-    '<COLLECTION_ID>',
+    '<TABLE_ID>',
     ID.unique(),
     { "title": "Hamlet" }
 );
@@ -59,13 +59,13 @@ void main() async {
         .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
         .setProject('<PROJECT_ID>');
 
-    final databases = Databases(client);
+    final tablesDB = TablesDB(client);
 
     try {
-        final document = databases.createDocument(
+        final row = tablesDB.createRow(
             databaseId: '<DATABASE_ID>',
-            collectionId: '<COLLECTION_ID>',
-            documentId: ID.unique(),
+            tableId: '<TABLE_ID>',
+            rowId: ID.unique(),
             data: { "title": "Hamlet" }
         );
     } on AppwriteException catch(e) {
@@ -82,13 +82,13 @@ func main() async throws {
         .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
         .setProject("<PROJECT_ID>")
 
-    let databases = Databases(client)
+    let tablesDB = TablesDB(client)
 
     do {
-        let document = try await databases.createDocument(
+        let row = try await tablesDB.createRow(
             databaseId: "<DATABASE_ID>",
-            collectionId: "<COLLECTION_ID>",
-            documentId: ID.unique(),
+            tableId: "<TABLE_ID>",
+            rowId: ID.unique(),
             data: ["title" : "hamlet"]
         )
     } catch {
@@ -98,20 +98,20 @@ func main() async throws {
 ```
 ```client-android-kotlin
 import io.appwrite.Client
-import io.appwrite.services.Databases
+import io.appwrite.services.TablesDB
 
 suspend fun main() {
     val client = Client(applicationContext)
         .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
         .setProject("<PROJECT_ID>")
 
-    val databases = Databases(client)
+    val tablesDB = TablesDB(client)
 
     try {
-        val document = databases.createDocument(
+        val row = tablesDB.createRow(
             databaseId = "<DATABASE_ID>",
-            collectionId = "<COLLECTION_ID>",
-            documentId = ID.unique(),
+            tableId = "<TABLE_ID>",
+            rowId = ID.unique(),
             data = mapOf("title" to "hamlet"),
         )
     } catch (e: Exception) {
@@ -131,29 +131,29 @@ The response should look similar to this.
     "$createdAt": "2023-09-13T03:49:12.905+00:00",
     "$updatedAt": "2023-09-13T03:49:12.905+00:00",
     "$databaseId": "650125c64b3c25ce4bc4",
-    "$collectionId": "650125cff227cf9f95ad"
+    "$tableId": "650125cff227cf9f95ad"
 }
 ```
 
 {% /section %}
 
-{% section #list-documents step=4 title="List documents" %}
-To read and query data from your collection, use the `listDocuments` endpoint.
+{% section #list-rows step=4 title="List rows" %}
+To read and query data from your table, use the `listRows` endpoint.
 
-Like the previous step, replace `<PROJECT_ID>`, `<DATABASE_ID>`, and`<COLLECTION_ID>` with their respective IDs.
+Like the previous step, replace `<PROJECT_ID>`, `<DATABASE_ID>`, and`<TABLE_ID>` with their respective IDs.
 {% multicode %}
 ```client-web
-import { Client, Databases, Query } from "appwrite";
+import { Client, Query, TablesDB } from "appwrite";
 
 const client = new Client()
     .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
     .setProject("<PROJECT_ID>")
 
-const databases = new Databases(client);
+const tablesDB = new TablesDB(client);
 
-let promise = databases.listDocuments(
+let promise = tablesDB.listRows(
     "<DATABASE_ID>",
-    "<COLLECTION_ID>",
+    "<TABLE_ID>",
     [
         Query.equal('title', 'Hamlet')
     ]
@@ -173,12 +173,12 @@ void main() async {
         .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
         .setProject("<PROJECT_ID>")
 
-    final databases = Databases(client);
+    final tablesDB = TablesDB(client);
 
     try {
-        final documents = await databases.listDocuments(
+        final rows = await tablesDB.listRows(
             databaseId: '<DATABASE_ID>',
-            collectionId: '[COLLECTION_ID]',
+            tableId: '<TABLE_ID>',
             queries: [
                 Query.equal('title', 'Hamlet')
             ]
@@ -197,12 +197,12 @@ func main() async throws{
         .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
         .setProject("<PROJECT_ID>")
 
-    let databases = Databases(client)
+    let tablesDB = TablesDB(client)
 
     do {
-        let documents = try await databases.listDocuments(
+        let rows = try await tablesDB.listRows(
             databaseId: "<DATABASE_ID>",
-            collectionId: "<COLLECTION_ID>",
+            tableId: "<TABLE_ID>",
             queries: [
                 Query.equal("title", value: "Hamlet")
             ]
@@ -215,19 +215,19 @@ func main() async throws{
 ```client-android-kotlin
 import io.appwrite.Client
 import io.appwrite.Query
-import io.appwrite.services.Databases
+import io.appwrite.services.TablesDB
 
 suspend fun main() {
     val client = Client(applicationContext)
         .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
         .setProject("<PROJECT_ID>")
 
-    val databases = Databases(client)
+    val tablesDB = TablesDB(client)
 
     try {
-        val documents = databases.listDocuments(
+        val rows = tablesDB.listRows(
             databaseId = "<DATABASE_ID>",
-            collectionId = "<COLLECTION_ID>",
+            tableId = "<TABLE_ID>",
             queries = listOf(
                 Query.equal("title", "Hamlet")
             )

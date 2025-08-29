@@ -1,0 +1,385 @@
+---
+layout: article
+title: Rows
+description: Master row management with Appwrite Databases. Learn how to create, update, and query rows within your tables for dynamic data storage.
+---
+Each piece of data or information in Appwrite Databases is a row.
+Rows have a structure defined by the parent table.
+
+# Create rows {% #create-rows %}
+{% info title="Permissions required" %}
+You must grant **create** permissions to users at the **table level** before users can create rows.
+[Learn more about permissions](#permissions)
+{% /info %}
+
+In most use cases, you will create rows programmatically.
+
+{% multicode %}
+```client-web
+import { Client, ID, TablesDB } from "appwrite";
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>');
+
+const tablesDB = new TablesDB(client);
+
+const promise = tablesDB.createRow(
+    '<DATABASE_ID>',
+    '<TABLE_ID>',
+    ID.unique(),
+    {}
+);
+
+promise.then(function (response) {
+    console.log(response);
+}, function (error) {
+    console.log(error);
+});
+```
+```client-flutter
+import 'package:appwrite/appwrite.dart';
+
+void main() async {
+    final client = Client()
+        .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+        .setProject('<PROJECT_ID>');
+
+    final tablesDB = TablesDB(client);
+
+    try {
+        final row = tablesDB.createRow(
+            databaseId: '<DATABASE_ID>',
+            tableId: '<TABLE_ID>',
+            rowId: ID.unique(),
+            data: {}
+        );
+    } on AppwriteException catch(e) {
+        print(e);
+    }
+}
+```
+```client-apple
+import Appwrite
+import AppwriteModels
+
+func main() async throws {
+    let client = Client()
+        .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+        .setProject("<PROJECT_ID>")
+
+    let tablesDB = TablesDB(client)
+
+    do {
+        let row = try await tablesDB.createRow(
+            databaseId: "<DATABASE_ID>",
+            tableId: "<TABLE_ID>",
+            rowId: ID.unique(),
+            data: [:]
+        )
+    } catch {
+        print(error.localizedDescription)
+    }
+}
+```
+```client-android-kotlin
+import io.appwrite.Client
+import io.appwrite.services.TablesDB
+
+suspend fun main() {
+    val client = Client(applicationContext)
+        .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+        .setProject("<PROJECT_ID>")
+
+    val tablesDB = TablesDB(client)
+
+    try {
+        val row = tablesDB.createRow(
+            databaseId = "<DATABASE_ID>",
+            tableId = "<TABLE_ID>",
+            rowId = ID.unique(),
+            data = mapOf("a" to "b"),
+        )
+    } catch (e: Exception) {
+        Log.e("Appwrite", "Error: " + e.message)
+    }
+}
+```
+```graphql
+mutation {
+    tablesCreateRow(
+        databaseId: "<DATABASE_ID>",
+        tableId: "<TABLE_ID>",
+        rowId: "<ROW_ID>",
+        data: "{}"
+    ) {
+        _id
+        _tableId
+        _databaseId
+        _createdAt
+        _updatedAt
+        _permissions
+        data
+    }
+}
+```
+{% /multicode %}
+
+During testing, you might prefer to create rows in the Appwrite Console.
+To do so, navigate to the **Rows** tab of your table and click the **Add row** button.
+
+# List rows {% #list-rows %}
+
+{% info title="Permissions required" %}
+You must grant **read** permissions to users at the **table level** before users can read rows.
+[Learn more about permissions](#permissions)
+{% /info %}
+
+Rows can be retrieved using the [List Row](/docs/references/cloud/client-web/tables#listRows) endpoint.
+
+Results can be filtered, sorted, and paginated using Appwrite's shared set of query methods.
+You can find a full guide on querying in the [Queries Guide](/docs/products/databases/queries).
+
+By default, results are limited to the **first 25 items**.
+You can change this through [pagination](/docs/products/databases/pagination).
+
+{% multicode %}
+```client-web
+import { Client, Query, TablesDB } from "appwrite";
+
+const client = new Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+
+const tablesDB = new TablesDB(client);
+
+let promise = tablesDB.listRows(
+    "<DATABASE_ID>",
+    "<TABLE_ID>",
+    [
+        Query.equal('title', 'Avatar')
+    ]
+);
+
+promise.then(function (response) {
+    console.log(response);
+}, function (error) {
+    console.log(error);
+});
+```
+```client-flutter
+import 'package:appwrite/appwrite.dart';
+
+void main() async {
+    final client = Client()
+        .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+        .setProject("<PROJECT_ID>")
+
+    final tablesDB = TablesDB(client);
+
+    try {
+        final rows = await tablesDB.listRows(
+            databaseId: '<DATABASE_ID>',
+            tableId: '<TABLE_ID>',
+            queries: [
+                Query.equal('title', 'Avatar')
+            ]
+        );
+    } on AppwriteException catch(e) {
+        print(e);
+    }
+}
+```
+```client-apple
+import Appwrite
+import AppwriteModels
+
+func main() async throws {
+    let client = Client()
+        .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+        .setProject("<PROJECT_ID>")
+
+    let tablesDB = TablesDB(client)
+
+    do {
+        let rows = try await tablesDB.listRows(
+            databaseId: "<DATABASE_ID>",
+            tableId: "<TABLE_ID>",
+            queries: [
+                Query.equal("title", value: "Avatar")
+            ]
+        )
+    } catch {
+        print(error.localizedDescription)
+    }
+}
+```
+```client-android-kotlin
+import io.appwrite.Client
+import io.appwrite.Query
+import io.appwrite.services.TablesDB
+
+suspend fun main() {
+    val client = Client(applicationContext)
+        .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+        .setProject("<PROJECT_ID>")
+
+    val tablesDB = TablesDB(client)
+
+    try {
+        val rows = tablesDB.listRows(
+            databaseId = "<DATABASE_ID>",
+            tableId = "<TABLE_ID>",
+            queries = listOf(
+                Query.equal("title", "Avatar")
+            )
+        )
+    } catch (e: AppwriteException) {
+        Log.e("Appwrite", "Error: " + e.message)
+    }
+}
+```
+```graphql
+query {
+    tablesListRows(
+        databaseId: "<DATABASE_ID>",
+        tableId: "<TABLE_ID>",
+        queries: ["equal(\"title\", [\"Avatar\"])"]
+    ) {
+        total
+        rows {
+            _id
+            data
+        }
+    }
+}
+```
+{% /multicode %}
+
+# Upsert rows {% #upsert-rows %}
+{% info title="Permissions required" %}
+You must grant **create** and **update** permissions to users at the **table level** before users can upsert rows. You can also grant **update** permissions at the row level instead.
+[Learn more about permissions](#permissions)
+{% /info %}
+
+In most use cases, you will upsert rows programmatically.
+
+{% multicode %}
+```client-web
+import { Client, ID, TablesDB } from "appwrite";
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>');
+
+const tablesDB = new TablesDB(client);
+
+const promise = tablesDB.upsertRow(
+    '<DATABASE_ID>',
+    '<TABLE_ID>',
+    ID.unique(),
+    {}
+);
+
+promise.then(function (response) {
+    console.log(response);
+}, function (error) {
+    console.log(error);
+});
+```
+```client-flutter
+import 'package:appwrite/appwrite.dart';
+
+void main() async {
+    final client = Client()
+        .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+        .setProject('<PROJECT_ID>');
+
+    final tablesDB = TablesDB(client);
+
+    try {
+        final row = tablesDB.upsertRow(
+            databaseId: '<DATABASE_ID>',
+            tableId: '<TABLE_ID>',
+            rowId: ID.unique(),
+            data: {}
+        );
+    } on AppwriteException catch(e) {
+        print(e);
+    }
+}
+```
+```client-apple
+import Appwrite
+import AppwriteModels
+
+func main() async throws {
+    let client = Client()
+        .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+        .setProject("<PROJECT_ID>")
+
+    let tablesDB = TablesDB(client)
+
+    do {
+        let row = try await tablesDB.upsertRow(
+            databaseId: "<DATABASE_ID>",
+            tableId: "<TABLE_ID>",
+            rowId: ID.unique(),
+            data: [:]
+        )
+    } catch {
+        print(error.localizedDescription)
+    }
+}
+```
+```client-android-kotlin
+import io.appwrite.Client
+import io.appwrite.services.TablesDB
+
+suspend fun main() {
+    val client = Client(applicationContext)
+        .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+        .setProject("<PROJECT_ID>")
+
+    val tablesDB = TablesDB(client)
+
+    try {
+        val row = tablesDB.upsertRow(
+            databaseId = "<DATABASE_ID>",
+            tableId = "<TABLE_ID>",
+            rowId = ID.unique(),
+            data = mapOf("a" to "b"),
+        )
+    } catch (e: Exception) {
+        Log.e("Appwrite", "Error: " + e.message)
+    }
+}
+```
+```graphql
+mutation {
+    tablesUpsertRow(
+        databaseId: "<DATABASE_ID>",
+        tableId: "<TABLE_ID>",
+        rowId: "<ROW_ID>",
+        data: "{}"
+    ) {
+        _id
+        _tableId
+        _databaseId
+        _createdAt
+        _updatedAt
+        _permissions
+        data
+    }
+}
+```
+{% /multicode %}
+
+# Permissions {% #permissions %}
+In Appwrite, permissions can be granted at the table level and the row level.
+Before a user can create a row, you need to grant create permissions to the user.
+
+Read, update, and delete permissions can be granted at both the table and row level.
+Users only need to be granted access at either the table or row level to access rows.
+
+[Learn about configuring permissions](/docs/products/databases/permissions).

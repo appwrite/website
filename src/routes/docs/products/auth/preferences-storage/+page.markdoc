@@ -293,18 +293,18 @@ For complex preference structures or when storing larger amounts of data, Appwri
 
 {% multicode %}
 ```client-web
-import { Client, Databases, ID, Query } from "appwrite";
+import { Client, TablesDB, ID, Query } from "appwrite";
 
 const client = new Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
     .setProject('<PROJECT_ID>');                 // Your project ID
 
-const databases = new Databases(client);
+const tablesDB = new TablesDB(client);
 
 // Store user preferences in a database
-const promise = databases.createDocument(
+const promise = tablesDB.createRow(
     '<DATABASE_ID>',
-    '<COLLECTION_ID>',
+    '<TABLE_ID>',
     ID.unique(),
     {
         userId: '<USER_ID>',
@@ -327,9 +327,9 @@ const promise = databases.createDocument(
 );
 
 // Retrieve user preferences
-const getUserPrefs = databases.listDocuments(
+const getUserPrefs = tablesDB.listRows(
     '<DATABASE_ID>',
-    '<COLLECTION_ID>',
+    '<TABLE_ID>',
     [
         Query.equal('userId', '<USER_ID>')
     ]
@@ -342,13 +342,13 @@ final client = Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
     .setProject('<PROJECT_ID>');                 // Your project ID
 
-final databases = Databases(client);
+final tablesDB = TablesDB(client);
 
 // Store user preferences in a database
-final document = await databases.createDocument(
+final row = await tablesDB.createRow(
     databaseId: '<DATABASE_ID>',
-    collectionId: '<COLLECTION_ID>',
-    documentId: ID.unique(),
+    tableId: '<TABLE_ID>',
+    rowId: ID.unique(),
     data: {
         'userId': '<USER_ID>',
         'theme': {
@@ -370,9 +370,9 @@ final document = await databases.createDocument(
 );
 
 // Retrieve user preferences
-final userPrefs = await databases.listDocuments(
+final userPrefs = await tablesDB.listRows(
     databaseId: '<DATABASE_ID>',
-    collectionId: '<COLLECTION_ID>',
+    tableId: '<TABLE_ID>',
     queries: [
         Query.equal('userId', '<USER_ID>')
     ]

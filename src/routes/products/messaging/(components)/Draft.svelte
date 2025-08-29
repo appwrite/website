@@ -18,7 +18,7 @@
                     await write('Appwrite Messaging is out 🚀', (v) => (title = v), 500);
                     await sleep(500);
                     await write(
-                        'Discover enhanced features to elevate your apps!',
+                        'Discover enhanced features to elevate your apps to the next level!',
                         (v) => (message = v),
                         500
                     );

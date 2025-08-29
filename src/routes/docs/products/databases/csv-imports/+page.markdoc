@@ -1,25 +1,25 @@
 ---
 layout: article
 title: CSV imports
-description: Master document imports with Appwrite's CSV Import feature. Learn how to create documents within your collections by uploading a CSV file.
+description: Master row imports with Appwrite's CSV Import feature. Learn how to create rows within your tables by uploading a CSV file.
 ---
 
-Appwrite's CSV Import feature allows you to create multiple documents in a collection by uploading a single CSV file. This is especially useful for importing existing data, seeding test environments, or migrating from other systems.
+Appwrite's CSV Import feature allows you to create multiple rows in a table by uploading a single CSV file. This is especially useful for importing existing data, seeding test environments, or migrating from other systems.
 
 This feature is available in both Appwrite Cloud and the self-hosted version.
 
-# Prepare your collection {% #prepare-collection %}
+# Prepare your table {% #prepare-table %}
 
-To get started, create a collection in your database and define its attributes. Your CSV file must match the structure of this collection.
+To get started, create a table in your database and define its columns. Your CSV file must match the structure of this table.
 
-Each column in the CSV should map to an attribute key in your collection, and each row should represent a new document.
+Each column in the CSV should map to an column key in your table, and each row should represent a new row.
 
 {% info title="Good to know" %}
-You can optionally include the `$id` column to define custom document IDs. If not provided, Appwrite will generate unique IDs for each document automatically.
+You can optionally include the `$id` column to define custom row IDs. If not provided, Appwrite will generate unique IDs for each row automatically.
 {% /info %}
 
 You can also optionally include `$createdAt` and `$updatedAt` columns to set custom timestamps for imported documents. If omitted, Appwrite sets these automatically during import.
-For example, if your collection has the following required attributes:
+For example, if your table has the following required attributes:
 
 - `title` (string)
 - `author` (string)
@@ -36,7 +36,7 @@ x0v4p8ncq2,2025-08-12T08:00:00.000Z,2025-08-12T08:30:00.000Z,To Kill a Mockingbi
 ```
 
 {% info title="Note" %}
-All required attributes must be present in the CSV. Each row is validated before being imported.
+All required columns must be present in the CSV. Each row is validated before being imported.
 {% /info %}
 
 {% info title="Timestamps format" %}
@@ -44,12 +44,12 @@ All required attributes must be present in the CSV. Each row is validated before
 {% /info %}
 
 
-# Import documents from the Console {% #import-console %}
+# Import rows from the Console {% #import-console %}
 
-To import documents using the Appwrite Console:
+To import rows using the Appwrite Console:
 
 1. Go to your project -> Databases
-2. Navigate to your target Collection
+2. Navigate to your target Table
 3. Click on the **Import CSV** button in the action area
 4. Upload a new CSV file or choose an existing file from your Storage bucket
 
@@ -66,4 +66,4 @@ CSV imports run as background tasks. The Console displays a floating progress ba
 
 - [Appwrite CLI](/docs/command-line)
 - [Database Permissions](/docs/products/databases/permissions)
-- [Documents API Reference](/docs/references/cloud/client-web/databases)
+- [Database API Reference](/docs/references/cloud/client-web/databases)
