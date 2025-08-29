@@ -475,7 +475,7 @@
     --color-card: color-mix(in srgb, var(--color-white) 90%, transparent);
     --color-tertiary: var(--color-greyscale-600);
     --color-offset: hsl(0 0% 0% / 0.08);
-    --color-subtle: var(--color-greyscale-850);
+    --color-subtle: var(--color-greyscale-50);
 }
 
 .dark {
@@ -487,4 +487,5 @@
     --color-tertiary: var(--color-greyscale-600);
     --color-offset: hsl(0 0% 100% / 0.1);
     --color-card: var(--color-greyscale-850);
+    --color-subtle: var(--color-greyscale-850);
 }
