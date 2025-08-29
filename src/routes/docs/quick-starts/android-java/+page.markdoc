@@ -131,7 +131,10 @@ public class AppwriteHelper {
     }
 
     public void login(String email, String password, final AuthCallback<Session> callback) {
-        account.createEmailPasswordSession(email, password, new CoroutineCallback<>(result -> {
+        account.createEmailPasswordSession(
+            email,
+            password,
+            new CoroutineCallback<>(result -> {
             callback.onSuccess(result);
             return null;
         }, error -> {
@@ -142,10 +145,9 @@ public class AppwriteHelper {
 
     public void register(String email, String password, final AuthCallback<User<Map<String, Object>>> callback) {
         account.create(
-                ID.unique(),
-                email,
-                password,
-                null,
+            ID.unique(),
+            email,
+            password,
                 new CoroutineCallback<>(result -> {
                     callback.onSuccess(result);
                     return null;

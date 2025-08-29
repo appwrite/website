@@ -5,7 +5,7 @@ description: Add databases and queries to store user data in you SvelteKit proje
 step: 6
 ---
 # Create table {% #create-table %}
-In Appwrite, data is stored as a table of rows. 
+In Appwrite, data is stored as a table of rows.
 Create a table inside a database in the [Appwrite Console](https://cloud.appwrite.io/) to store our ideas.
 
 {% only_dark %}
@@ -22,7 +22,7 @@ Create the following columns within the table:
 | title       | String | 128  | Yes      |
 | description | String | 1024 | No       |
 
-For this tutorial, we'll also set the permissions to allow any users to read and write to the table. 
+For this tutorial, we'll also set the permissions to allow any users to read and write to the table.
 In a real-world scenario, you would probably want to restrict access to a certain group of users.
 
 ## Managing ideas {% #getting-ideas %}

@@ -54,7 +54,11 @@ export const ideas = reactive({
     this.current = [response, ...this.current].slice(0, 10);
   },
   async remove(id) {
-    await tablesDB.deleteRow(IDEAS_DATABASE_ID, IDEAS_TABLE_ID, id);
+    await tablesDB.deleteRow({
+      databaseId: IDEAS_DATABASE_ID,
+      tableId: IDEAS_TABLE_ID,
+      rowId: id
+    });
     this.current = this.current.filter((idea) => idea.$id !== id);
     await this.init(); // Refetch ideas to ensure we have 10 items
   },

@@ -186,7 +186,17 @@ app.post('/auth/external/login', async (req, res) => {
     }
 
     // Create Appwrite token and return it to the client
-    const token = await users.createToken(user.id)
+    await users.get({ userId: user.id })
+    await users.create({
+      userId: user.id,
+      email,
+      phone: undefined,
+      password: undefined, // can remain undefined for custom auth
+      name: user.name,
+    })
+    const token = await users.createToken({
+      userId: user.id
+    })
     res.json({
       userId: user.id,
       secret: token.secret,
@@ -385,7 +395,11 @@ async function handleExternalAuth(email, password) {
     if (!response.ok) throw new Error(data.message)
 
     // Then create Appwrite session using the custom token
-    const session = await account.createSession(data.userId, data.secret)
+    const session = await account.createSession({
+      userId: data.userId,
+      secret: data.secret
+    })
+    await account.deleteSession({ sessionId: 'current' })
 
     // Show logged in state
     loginForm.classList.add('hidden')

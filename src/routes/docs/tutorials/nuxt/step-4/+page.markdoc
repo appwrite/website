@@ -34,12 +34,19 @@ const current = ref<Models.Session | null>(null); // Reference to current user o
 
 export const useUserSession = () =>  {
     const register = async (email: string, password: string): Promise<void> => {
-        await account.create(ID.unique(), email, password); // Register new user in Appwrite
+        await account.create({
+            userId: ID.unique(),
+            email,
+            password
+        }); // Register new user in Appwrite
         await login(email, password); // Login registered user
     };
 
     const login = async (email: string, password: string): Promise<void> => {
-        const authUser = await account.createEmailPasswordSession(email, password); // Open user session in Appwrite
+        const authUser = await account.createEmailPasswordSession({
+            email,
+            password
+        }); // Open user session in Appwrite
         current.value = authUser; // Pass user data to current ref
         navigateTo("/");
     };
@@ -51,7 +58,9 @@ export const useUserSession = () =>  {
     };
 
     // Check if already logged in to initialize the store.
-    account.getSession('current').then((user: Models.Session) => {
+    account.getSession({
+        sessionId: 'current'
+    }).then((user: Models.Session) => {
         current.value = user;
     });
 
@@ -127,7 +136,7 @@ We will also show buttons to toggle between the two different types of forms.
 
 ## Authentication forms {% #auth-forms %}
 
-In the previous step, we defined a `AuthForm` to handle signup and login. 
+In the previous step, we defined a `AuthForm` to handle signup and login.
 Let's build this form now.
 
 Create a new file `components/authForm.vue` and add the following code.
