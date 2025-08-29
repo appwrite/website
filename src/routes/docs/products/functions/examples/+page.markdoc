@@ -465,9 +465,9 @@ def main(context)
 
     tablesDB = Appwrite::TablesDB.new(client)
 
-    existing_votes = tablesDB.list_rows('<VOTES_TABLE_ID>', [
-        Appwrite::Query.new('userId', '=', vote['userId']),
-        Appwrite::Query.new('topicId', '=', vote['topicId'])
+    existing_votes = tablesDB.list_rows('<DATABASE_ID>', '<VOTES_TABLE_ID>', [
+        Appwrite::Query.equal('userId', vote['userId']),
+        Appwrite::Query.equal('topicId', vote['topicId'])
     ])
 
     if existing_votes['total'] > 0
