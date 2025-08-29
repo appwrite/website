@@ -149,15 +149,21 @@ function getExamples(version: string) {
                 }
             );
         case '1.7.x':
-            return import.meta.glob('../../../node_modules/@appwrite.io/repo/docs/examples/1.7.x/**/*.md', {
-                query: '?raw',
-                import: 'default'
-            });
+            return import.meta.glob(
+                '../../../node_modules/@appwrite.io/repo/docs/examples/1.7.x/**/*.md',
+                {
+                    query: '?raw',
+                    import: 'default'
+                }
+            );
         case '1.8.x':
-            return import.meta.glob('../../../node_modules/@appwrite.io/repo/docs/examples/1.8.x/**/*.md', {
-                query: '?raw',
-                import: 'default'
-            });
+            return import.meta.glob(
+                '../../../node_modules/@appwrite.io/repo/docs/examples/1.8.x/**/*.md',
+                {
+                    query: '?raw',
+                    import: 'default'
+                }
+            );
     }
 }
 
