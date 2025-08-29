@@ -12,9 +12,9 @@
                 {
                     language: Platform.ServerNodeJs,
                     content: `// List files inside a specific bucket
-const files = await storage.listFiles({
-    bucketId: '[BUCKET_ID]'
-});`
+                    const files = await storage.listFiles({
+                        bucketId: '<BUCKET_ID>'
+                    });`
                 }
             ]
         },
@@ -24,11 +24,11 @@ const files = await storage.listFiles({
                 {
                     language: Platform.ServerNodeJs,
                     content: `// Create files inside a specific bucket
-const files = await storage.createFile({
-    bucketId: '[BUCKET_ID]',
-    fileId: '[FILE_ID]',
-    file: inputFile
-});`
+                    const files = await storage.createFile({
+                        bucketId: '[BUCKET_ID]',
+                        fileId: '<FILE_ID>',
+                        file: inputFile
+                    });`
                 }
             ]
         },
@@ -38,10 +38,10 @@ const files = await storage.createFile({
                 {
                     language: Platform.ServerNodeJs,
                     content: `// Get file inside a specific bucket
-const files = await storage.getFile({
-    bucketId: '[BUCKET_ID]',
-    fileId: '[FILE_ID]'
-});`
+                    const files = await storage.getFile({
+                        bucketId: '<BUCKET_ID>',
+                        fileId: '<FILE_ID>'
+                    });`
                 }
             ]
         },
@@ -51,7 +51,9 @@ const files = await storage.getFile({
                 {
                     language: Platform.ServerNodeJs,
                     content: `// List files inside a specific bucket
-const files = await storage.deleteFiles('<BUCKET_ID>');`
+                    const files = await storage.deleteFiles({
+                        bucketId: '<BUCKET_ID>'
+                    });`
                 }
             ]
         }
