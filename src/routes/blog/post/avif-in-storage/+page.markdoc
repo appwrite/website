@@ -144,7 +144,7 @@ async function getOptimizedImageUrl(bucketId, fileId) {
         bucketId,
         fileId,
         width: 1200,
-        gravity: 'center',
+        gravity: ImageGravity.Center,
         quality: 90,
         output: format
     });
