@@ -245,7 +245,7 @@ form.addEventListener('submit', async (e) => {
     await databases.createDocument({
       databaseId,
       collectionId,
-      documentId: 'unique()',
+      documentId: ID.unique(),
       data: {
         title,
         body,
