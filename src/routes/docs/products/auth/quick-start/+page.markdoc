@@ -109,7 +109,6 @@ const session = await account.createEmailPasswordSession({
     email: email, 
     password: password
 });
-);
 ```
 
 ```client-flutter
