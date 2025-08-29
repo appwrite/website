@@ -222,7 +222,7 @@ The redirect URLs should correspond to the success and failure URLs you configur
 **6. Logout**: Provide an option to log out the user by terminating the session:
 
   ```jsx
-  await appwrite.account.deleteSession({
+  await account.deleteSession({
     sessionId: 'current'
   })
 
