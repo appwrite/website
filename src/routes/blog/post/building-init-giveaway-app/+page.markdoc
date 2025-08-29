@@ -189,7 +189,7 @@ import { COLLECTION_NAME, DATABASE_NAME } from './constants';
 
 export const db = {
 	list: async () => {
-		var entries = await database.listDocuments({
+		let entries = await database.listDocuments({
 			databaseId: DATABASE_NAME,
 			collectionId: COLLECTION_NAME,
 			queries: [
