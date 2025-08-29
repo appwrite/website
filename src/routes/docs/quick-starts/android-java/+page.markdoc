@@ -131,10 +131,10 @@ public class AppwriteHelper {
     }
 
     public void login(String email, String password, final AuthCallback<Session> callback) {
-        account.createEmailPasswordSession({
-            email: email,
-            password: password
-        }, new CoroutineCallback<>(result -> {
+        account.createEmailPasswordSession(
+            email,
+            password,
+            new CoroutineCallback<>(result -> {
             callback.onSuccess(result);
             return null;
         }, error -> {
