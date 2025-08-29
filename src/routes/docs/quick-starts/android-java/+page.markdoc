@@ -144,11 +144,10 @@ public class AppwriteHelper {
     }
 
     public void register(String email, String password, final AuthCallback<User<Map<String, Object>>> callback) {
-        account.create({
-                userId: ID.unique(),
-                email: email,
-                password: password
-            },
+        account.create(
+            ID.unique(),
+            email,
+            password,
                 new CoroutineCallback<>(result -> {
                     callback.onSuccess(result);
                     return null;
