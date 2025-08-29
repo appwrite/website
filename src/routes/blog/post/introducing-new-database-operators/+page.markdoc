@@ -57,7 +57,7 @@ db.listDocuments({
 });
 ```
 
-The example shown will return all people that contain the substring "ivy' somewhere in their name OR are older than 30 years old. Previously, there was no native way to do this kind of search from Appwrite's SDKs.
+The example shown will return all people that contain the substring 'ivy' somewhere in their name OR are older than 30 years old. Previously, there was no native way to do this kind of search from Appwrite's SDKs.
 
 # Database improvements
 
