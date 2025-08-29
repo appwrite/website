@@ -154,8 +154,11 @@
         if (title.startsWith('read') || title.startsWith('get') || title.startsWith('list'))
             return 2;
         if (title.startsWith('update')) return 3;
-        if (title.startsWith('delete')) return 4;
-        return 5; // Other operations
+        if (title.startsWith('upsert')) return 4;
+        if (title.startsWith('delete')) return 5;
+        if (title.startsWith('increment')) return 6;
+        if (title.startsWith('decrement')) return 7;
+        return 8; // Other operations
     }
 
     /**
