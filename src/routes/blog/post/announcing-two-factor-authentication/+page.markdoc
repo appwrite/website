@@ -91,7 +91,7 @@ try {
 To confirm which providers are enabled for an account, you can call `account.listProviders()`.
 
 ```js
-const factors = await account.listMfaFactors();
+const factors = await account.listMFAFactors();
 
 console.log(factors);
 ```
@@ -111,7 +111,7 @@ The returned object will be formatted as follows:
 Based on the enabled providers, you can initialize the additional auth step. Calling these methods will send a challenge to the user. Ensure you save the challenge ID to complete the challenge in a later step.
 
 ```js
-const challenge = await account.createMfaChallenge({
+const challenge = await account.createMFAChallenge({
     factor: 'phone'
 });
 
@@ -124,7 +124,7 @@ const challengeId = challenge.$id;
 Once the user receives the challenge code, you can pass the code back to Appwrite to complete the challenge.
 
 ```js
-const challenge = await account.updateMfaChallenge({
+const challenge = await account.updateMFAChallenge({
     challengeId: '<CHALLENGE_ID>',
     otp: '<OTP>'
 });
