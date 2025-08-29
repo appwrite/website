@@ -159,7 +159,7 @@ Remove mock numbers that are not in use, or delete them once the tests are compl
 
 # Conclusion
 
-Mock numbers in Appwrite offer a practical solution for testing phone sign-in flows, facilitating development, QA testing, app reviews, and demonstrations. The feature will be available to Pro users in 1.6.
+Mock numbers in Appwrite offer a practical solution for testing phone sign-in flows, facilitating development, QA testing, app reviews, and demonstrations. Mock numbers are available to Pro users (introduced in 1.6).
 
 By using mock numbers effectively and following best practices, you can streamline your testing processes and ensure a robust authentication experience for your users.
 
