@@ -47,7 +47,19 @@ type AppwriteOperationObject = OpenAPIV3.OperationObject & {
         scope: string;
         platforms: string[];
         packaging: boolean;
+        methods?: AppwriteAdditionalMethod[];
     };
+};
+
+type AppwriteAdditionalMethod = {
+    name: string;
+    desc: string;
+    auth: { Project: []; Key: [] };
+    parameters: string[];
+    required: string[];
+    responses: { code: number; model: string }[];
+    description: string;
+    demo: string;
 };
 
 export type AppwriteSchemaObject = OpenAPIV3.SchemaObject & {
@@ -137,14 +149,48 @@ function getExamples(version: string) {
                 }
             );
         case '1.7.x':
-            return import.meta.glob(
-                '../../../node_modules/@appwrite.io/repo/docs/examples/1.7.x/**/*.md',
-                {
-                    query: '?raw',
-                    import: 'default'
-                }
-            );
+            return import.meta.glob('../../../node_modules/@appwrite.io/repo/docs/examples/1.7.x/**/*.md', {
+                query: '?raw',
+                import: 'default'
+            });
+        case '1.8.x':
+            return import.meta.glob('../../../node_modules/@appwrite.io/repo/docs/examples/1.8.x/**/*.md', {
+                query: '?raw',
+                import: 'default'
+            });
     }
+}
+
+function filterRequestBodyProperties(
+    requestBody: OpenAPIV3.ReferenceObject | OpenAPIV3.RequestBodyObject | undefined,
+    allowedParameters: string[]
+): OpenAPIV3.ReferenceObject | OpenAPIV3.RequestBodyObject | undefined {
+    if (!requestBody || '$ref' in requestBody) {
+        return requestBody;
+    }
+
+    const filteredRequestBody = structuredClone(requestBody);
+    if (filteredRequestBody.content?.['application/json']?.schema) {
+        const schema = filteredRequestBody.content['application/json']
+            .schema as OpenAPIV3.SchemaObject;
+
+        if (schema.properties) {
+            const filteredProperties: {
+                [key: string]: OpenAPIV3.SchemaObject | OpenAPIV3.ReferenceObject;
+            } = {};
+
+            for (const [propertyName, propertySchema] of Object.entries(schema.properties)) {
+                if (allowedParameters.includes(propertyName)) {
+                    filteredProperties[propertyName] = propertySchema;
+                }
+            }
+
+            schema.properties = filteredProperties;
+            schema.required = schema.required?.filter((prop) => allowedParameters.includes(prop));
+        }
+    }
+
+    return filteredRequestBody;
 }
 
 function* iterateAllMethods(
@@ -152,7 +198,7 @@ function* iterateAllMethods(
     service: string
 ): Generator<{
     method: OpenAPIV3.HttpMethods;
-    value: OpenAPIV3.OperationObject;
+    value: OpenAPIV3.OperationObject | AppwriteOperationObject;
     url: string;
 }> {
     for (const url in api.paths) {
@@ -161,7 +207,16 @@ function* iterateAllMethods(
             yield { method: OpenAPIV3.HttpMethods.GET, value: methods.get, url };
         }
         if (methods?.post?.tags?.includes(service)) {
-            yield { method: OpenAPIV3.HttpMethods.POST, value: methods.post, url };
+            // Skip if additional methods are present in [x-appwrite].methods
+            if (
+                methods?.post &&
+                (!('x-appwrite' in methods.post) ||
+                    !methods.post['x-appwrite'] ||
+                    typeof methods.post['x-appwrite'] !== 'object' ||
+                    !('methods' in methods.post['x-appwrite']))
+            ) {
+                yield { method: OpenAPIV3.HttpMethods.POST, value: methods.post, url };
+            }
         }
         if (methods?.put?.tags?.includes(service)) {
             yield { method: OpenAPIV3.HttpMethods.PUT, value: methods.put, url };
@@ -175,6 +230,47 @@ function* iterateAllMethods(
                 value: methods.delete,
                 url
             };
+        }
+
+        // Check additional methods in [x-appwrite].methods
+        if (
+            methods?.post?.tags?.includes(service) &&
+            typeof (methods.post as AppwriteOperationObject)['x-appwrite'] === 'object' &&
+            Array.isArray((methods.post as AppwriteOperationObject)['x-appwrite']?.methods)
+        ) {
+            const appwritePost = methods.post as AppwriteOperationObject;
+            for (const additionalMethod of appwritePost['x-appwrite'].methods!) {
+                yield {
+                    method: OpenAPIV3.HttpMethods.POST,
+                    value: {
+                        ...methods.post,
+                        summary: additionalMethod.desc,
+                        description: additionalMethod.description,
+                        requestBody: filterRequestBodyProperties(
+                            methods.post.requestBody,
+                            additionalMethod.parameters
+                        ),
+                        'x-appwrite': {
+                            ...appwritePost['x-appwrite'],
+                            method: additionalMethod.name,
+                            demo: additionalMethod.demo
+                        },
+                        responses: {
+                            ...appwritePost.responses,
+                            [additionalMethod.responses[0].code]: {
+                                content: {
+                                    'application/json': {
+                                        schema: {
+                                            $ref: additionalMethod.responses[0].model
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    url
+                };
+            }
         }
     }
 }
@@ -355,8 +451,9 @@ export async function getService(
         const path = isAndroid
             ? `/node_modules/@appwrite.io/repo/docs/examples/${version}/${
                   isAndroidServer ? 'server-kotlin' : 'client-android'
-              }/${isAndroidJava ? 'java' : 'kotlin'}/${operation['x-appwrite'].demo}`
-            : `/node_modules/@appwrite.io/repo/docs/examples/${version}/${platform}/examples/${operation['x-appwrite'].demo}`;
+              }/${isAndroidJava ? 'java' : 'kotlin'}/${operation['x-appwrite']?.demo}`
+            : `/node_modules/@appwrite.io/repo/docs/examples/${version}/${platform}/examples/${operation['x-appwrite']?.demo}`;
+
         if (!(path in examples)) {
             continue;
         }

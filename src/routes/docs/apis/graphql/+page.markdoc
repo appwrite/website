@@ -23,7 +23,7 @@ Although every query executes through the same endpoint, there are multiple ways
 
 In Appwrite's GraphQL API, all internal model parameters are prefixed with `_` instead of `$` because `$` is reserved by GraphQL.
 
-For example, `$collectionId` in the REST API would be referenced as `_collectionId` in the GraphQL API.
+For example, `$tableId` in the REST API would be referenced as `_tableId` in the GraphQL API.
 
 ## GET requests {% #get-resquest %}
 
@@ -113,7 +113,7 @@ More information and examples of authenticating users can be found in the dedica
 
 # Database queries {% #database-queries %}
 
-The GraphQL API can be used to query and manipulate database documents. For detailed examples of how to create, list, update, and delete documents using GraphQL, refer to the [Documents documentation](/docs/products/databases/documents).
+The GraphQL API can be used to query and manipulate database rows. For detailed examples of how to create, list, update, and delete rows using GraphQL, refer to the [Rows documentation](/docs/products/databases/rows).
 
 # GraphQL vs REST {% #graphql-vs-rest %}
 

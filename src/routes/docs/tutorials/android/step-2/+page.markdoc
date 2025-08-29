@@ -5,11 +5,11 @@ description: Create a Android app project using Appwrite.
 step: 2
 ---
 
-# Create Android project {% #create-android-project %}
+## Create Android project {% #create-android-project %}
 
 Create a Android app with the Android Studio **New Project** wizard. Select **Empty Activity** as the template.
 
-# Add dependencies {% #add-dependencies %}
+## Add dependencies {% #add-dependencies %}
 
 Install the Android Appwrite SDK.
 
@@ -41,7 +41,7 @@ You can find your Appwrite project ID in you project settings screen in your App
 </manifest>
 ```
 
-# Using the emulator {% #using-the-emulator %}
+## Using the emulator {% #using-the-emulator %}
 
 Run your app on the [Android emulator](https://developer.android.com/studio/run/emulator).
  You can use the emulator to test your app on different versions of the Android platform and different screen sizes without the need to use physical devices.

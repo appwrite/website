@@ -56,7 +56,7 @@ When using Appwrite in server-integrations, it's important to **never share a `C
 Doing so could create security vulnerabilities.
 {% /info %}
 
-# Environment variables {% #environment-variables %}
+## Environment variables {% #environment-variables %}
 
 `NEXT_APPWRITE_KEY`, `NEXT_PUBLIC_APPWRITE_ENDPOINT` and `NEXT_PUBLIC_APPWRITE_PROJECT` are environment variables that are exported in your project's [.env file](https://kit.svelte.dev/docs/modules#$env-dynamic-public).
 

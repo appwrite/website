@@ -8,7 +8,7 @@
     import NHost from '../(assets)/platforms/nhost.svg';
     import Supabase from '../(assets)/platforms/supabase.svg';
     import Firebase from '../(assets)/platforms/firebase.svg';
-    import { classNames } from '$lib/utils/classnames';
+    import { cn } from '$lib/utils/cn';
     import { Button } from '$lib/components/ui';
 
     const platforms = [
@@ -50,7 +50,7 @@
             <h2 class="text-title text-primary font-aeonik-pro">
                 Integrate with easy-to-use APIs and SDKs
             </h2>
-            <p class="text-body text-secondary font-medium">
+            <p class="text-main-body text-secondary font-medium">
                 Integrate Auth seamlessly into your projects with your favorite technology.
             </p>
             <Button href="/docs/sdks" variant="secondary" class="mt-2 !w-full md:!w-fit"
@@ -78,7 +78,7 @@
             <h2 class="text-title text-primary font-aeonik-pro">
                 Migrate your users to Appwrite effortlessly
             </h2>
-            <p class="text-body text-secondary font-medium">
+            <p class="text-main-body text-secondary font-medium">
                 Use Appwrite's migration process to transfer your existing users with a few clicks.
             </p>
             <Button

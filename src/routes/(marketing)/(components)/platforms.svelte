@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { classNames } from '$lib/utils/classnames';
+    import { cn } from '$lib/utils/cn';
     import Python from '../(assets)/icons/python.svg';
     import Node from '../(assets)/icons/node.svg';
     import Javascript from '../(assets)/icons/javascript.svg';
@@ -98,13 +98,18 @@
     interface PlatformsProps {
         class?: string;
         headline?: string;
+        padded?: boolean;
     }
 
-    const { headline, class: className }: PlatformsProps = $props();
+    const { headline, class: className, padded = true }: PlatformsProps = $props();
 </script>
 
-<div class={classNames('border-smooth relative z-10 border-y border-dashed', className)}>
-    <div class="container flex flex-col items-center md:flex-row">
+<div class={cn('border-smooth relative z-10 border-y border-dashed', className)}>
+    <div
+        class={cn('container flex flex-col items-center md:flex-row', {
+            'px-0!': !padded
+        })}
+    >
         {#if headline}
             <GradientText>
                 <span class="flex items-center pr-4 text-sm font-medium md:w-full md:max-w-[175px]"
@@ -114,14 +119,14 @@
         {/if}
 
         <div
-            class={classNames(
+            class={cn(
                 'flex w-full flex-nowrap overflow-clip md:overflow-visible',
                 'mask-r-from-75% mask-r-to-99% mask-l-from-75% mask-l-to-99% mask-alpha backdrop-blur-3xl md:mask-none'
             )}
         >
             {#each [1, 2] as _, i}
                 <div
-                    class={classNames(
+                    class={cn(
                         'divide-smooth animate-scroll-x flex w-max flex-1 grow flex-nowrap divide-dashed md:w-full md:[animation:none] md:divide-x md:[animation-play-state:paused]',
                         {
                             'md:hidden': i === 0
@@ -137,7 +142,7 @@
                                         25}ms"
                                 >
                                     <Tooltip.Trigger
-                                        class={classNames(
+                                        class={cn(
                                             'border-smooth group animate-fade-in /mt-4 relative flex h-16 w-16 items-center justify-center border-dashed md:mt-0 md:w-full lg:border-r',
                                             {
                                                 'lg:border-l': i === 0
@@ -158,13 +163,13 @@
                                                     ? platform.light
                                                     : platform.dark}
                                                 alt={platform.name}
-                                                class={classNames(
+                                                class={cn(
                                                     'h-8 w-auto grayscale transition-all duration-500 group-hover:grayscale-0'
                                                 )}
                                             />
 
                                             <div
-                                                class={classNames(
+                                                class={cn(
                                                     'absolute inset-0 opacity-0 transition-opacity group-hover:opacity-100',
                                                     'bg-gradient-to-tl from-transparent to-transparent',
                                                     'hover:from-(--primary-color,_#fff)/4 hover:to-(--secondary-color,_transparent)/10'
@@ -178,7 +183,7 @@
                                         <Tooltip.Content
                                             sideOffset={8}
                                             side="top"
-                                            class={classNames(
+                                            class={cn(
                                                 'text-primary dark:bg-greyscale-900 relative rounded-md border-0! bg-[#EDEDF0] px-2.5 py-1 text-sm',
                                                 'data-[state="closed"]:animate-menu-out data-[state="instant-open"]:animate-menu-in data-[state="delayed-open"]:animate-menu-in'
                                             )}

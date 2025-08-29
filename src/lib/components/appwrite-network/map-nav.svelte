@@ -2,7 +2,7 @@
     import { Tabs } from 'bits-ui';
     import type { IconType } from '../ui';
     import Icon from '../ui/icon/icon.svelte';
-    import { classNames } from '$lib/utils/classnames';
+    import { cn } from '$lib/utils/cn';
     import { trackEvent } from '$lib/actions/analytics';
 
     const {
@@ -55,7 +55,7 @@
         class="flex flex-col items-center justify-center gap-12 md:mt-9"
     >
         <Tabs.List
-            class={classNames(
+            class={cn(
                 'border-smooth animate-fade-in relative grid w-full max-w-xl grid-cols-1 place-content-center gap-3 overflow-hidden p-1 px-8 shadow-[0px_4px_8p_rgba(0,0,0,0.04)] md:grid-cols-3 md:rounded-full md:border md:px-1',
                 theme === 'light' ? 'md:bg-white' : 'md:bg-card'
             )}
@@ -63,7 +63,7 @@
             {#each navItems as { label, icon, value }, index}
                 <Tabs.Trigger
                     {value}
-                    class={classNames(
+                    class={cn(
                         'text-caption animate-enter text-primary bg-smooth border-smooth flex h-8 cursor-pointer items-center justify-center gap-2 rounded-full border font-medium outline-0 transition-colors hover:border-white/12',
                         'group data-[state="active"]:bg-accent/4 data-[state="active"]:border-accent/36 data-[state="active"]:text-accent'
                     )}
@@ -76,7 +76,7 @@
                 >
                     <Icon
                         name={icon}
-                        class={classNames(
+                        class={cn(
                             '-ml-2',
                             "group-data-[state='active']:text-accent",
                             theme === 'light' ? 'text-[#19191C]' : 'text-inherit'

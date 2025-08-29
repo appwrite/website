@@ -31,10 +31,10 @@ Then, under **Integrate with your server**, add an **API Key** with the followin
 | Category  {% width=120 %} | Required scopes       | Purpose |
 |-----------|-----------------------|---------|
 | Database  | `databases.write`     | Allows API key to create, update, and delete [databases](/docs/products/databases/databases). |
-|           | `collections.write`   | Allows API key to create, update, and delete [collections](/docs/products/databases/collections). |
-|           | `attributes.write`    | Allows API key to create, update, and delete [attributes](/docs/products/databases/collections#attributes). |
-|           | `documents.read`      | Allows API key to read [documents](/docs/products/databases/documents). |
-|           | `documents.write`     | Allows API key to create, update, and delete [documents](/docs/products/databases/documents). |
+|           | `tables.write`   | Allows API key to create, update, and delete [tables](/docs/products/databases/tables). |
+|           | `columns.write`    | Allows API key to create, update, and delete [columns](/docs/products/databases/tables#columns). |
+|           | `rows.read`      | Allows API key to read [rows](/docs/products/databases/rows). |
+|           | `rows.write`     | Allows API key to create, update, and delete [rows](/docs/products/databases/rows). |
 
 Other scopes are optional.
 
@@ -93,7 +93,7 @@ Open `my_app.py` and initialize the Appwrite Client. Replace `<PROJECT_ID>` with
 
 ```py
 from appwrite.client import Client
-from appwrite.services.databases import Databases
+from appwrite.services.tablesDB import TablesDB
 from appwrite.id import ID
 
 client = Client()
@@ -105,57 +105,57 @@ client.set_key('<YOUR_API_KEY>')
 {% /section %}
 {% section #step-5 step=5 title="Initialize database" %}
 
-Once the Appwrite Client is initialized, create a function to configure a todo collection.
+Once the Appwrite Client is initialized, create a function to configure a todo table.
 
 ```py
-databases = Databases(client)
+tablesDB = TablesDB(client)
 
 todoDatabase = None
-todoCollection = None
+todoTable = None
 
 def prepare_database():
   global todoDatabase
-  global todoCollection
+  global todoTable
 
-  todoDatabase = databases.create(
+  todoDatabase = tablesDB.create(
     database_id=ID.unique(),
     name='TodosDB'
   )
 
-  todoCollection = databases.create_collection(
+  todoTable = tablesDB.create_table(
     database_id=todoDatabase['$id'],
-    collection_id=ID.unique(),
+    table_id=ID.unique(),
     name='Todos'
   )
 
-  databases.create_string_attribute(
+  tablesDB.create_string_column(
     database_id=todoDatabase['$id'],
-    collection_id=todoCollection['$id'],
+    table_id=todoTable['$id'],
     key='title',
     size=255,
     required=True
   )
 
-  databases.create_string_attribute(
+  tablesDB.create_string_column(
     database_id=todoDatabase['$id'],
-    collection_id=todoCollection['$id'],
+    table_id=todoTable['$id'],
     key='description',
     size=255,
     required=False,
     default='This is a test description.'
   )
 
-  databases.create_boolean_attribute(
+  tablesDB.create_boolean_column(
     database_id=todoDatabase['$id'],
-    collection_id=todoCollection['$id'],
+    table_id=todoTable['$id'],
     key='isComplete',
     required=True
   )
 ```
 
 {% /section %}
-{% section #step-6 step=6 title="Add documents" %}
-Create a function to add some mock data into your new collection.
+{% section #step-6 step=6 title="Add rows" %}
+Create a function to add some mock data into your new table.
 
 ```py
 def seed_database():
@@ -176,41 +176,41 @@ def seed_database():
     'isComplete': False
   }
 
-  databases.create_document(
+  tablesDB.create_row(
     database_id=todoDatabase['$id'],
-    collection_id=todoCollection['$id'],
-    document_id=ID.unique(),
+    table_id=todoTable['$id'],
+    row_id=ID.unique(),
     data=testTodo1
   )
 
-  databases.create_document(
+  tablesDB.create_row(
     database_id=todoDatabase['$id'],
-    collection_id=todoCollection['$id'],
-    document_id=ID.unique(),
+    table_id=todoTable['$id'],
+    row_id=ID.unique(),
     data=testTodo2
   )
 
-  databases.create_document(
+  tablesDB.create_row(
     database_id=todoDatabase['$id'],
-    collection_id=todoCollection['$id'],
-    document_id=ID.unique(),
+    table_id=todoTable['$id'],
+    row_id=ID.unique(),
     data=testTodo3
   )
 ```
 
 {% /section %}
-{% section #step-7 step=7 title="Retrieve documents" %}
+{% section #step-7 step=7 title="Retrieve rows" %}
 
 Create a function to retrieve the mock todo data, 
 then execute the functions in `_main_`.
 
 ```py
 def get_todos():
-  todos = databases.list_documents(
+  todos = tablesDB.list_rows(
     database_id=todoDatabase['$id'],
-    collection_id=todoCollection['$id']
+    table_id=todoTable['$id']
   )
-  for todo in todos['documents']:
+  for todo in todos['rows']:
     print(f"Title: {todo['title']}\nDescription: {todo['description']}\nIs Todo Complete: {todo['isComplete']}\n\n")
 
 if __name__ == "__main__":

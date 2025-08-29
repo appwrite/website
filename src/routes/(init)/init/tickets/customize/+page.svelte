@@ -13,7 +13,7 @@
     import Window from '../../(components)/window.svelte';
 
     import { enhance } from '$app/forms';
-    import { classNames } from '$lib/utils/classnames';
+    import { cn } from '$lib/utils/cn';
     import TicketCard from '../(components)/ticket-card.svelte';
     import { Button, Icon } from '$lib/components/ui';
     import { initDates } from '../../+page.svelte';
@@ -119,7 +119,7 @@
                         disableEffects
                     />
                     <span
-                        class="font-aeonik-fono tracking-loose text-x-micro text-primary transition-opacity peer-hover:opacity-0"
+                        class="font-aeonik-fono tracking-loose leading-micro tracking-tigher text-primary text-[0.625rem] transition-opacity peer-hover:opacity-0"
                         >Front</span
                     >
                 </div>
@@ -133,7 +133,7 @@
                         {stickerPack}
                     />
                     <span
-                        class="font-aeonik-fono tracking-loose text-x-micro text-primary transition duration-300 peer-hover:opacity-0 peer-hover:blur-sm"
+                        class="font-aeonik-fono tracking-loose leading-micro tracking-tigher text-primary text-[0.625rem] transition duration-300 peer-hover:opacity-0 peer-hover:blur-sm"
                         >Back</span
                     >
                 </div>
@@ -160,7 +160,7 @@
         <div class="flex flex-col gap-2">
             <label
                 for="name"
-                class="text-primary font-aeonik-fono text-x-micro tracking-loose uppercase"
+                class="text-primary font-aeonik-fono leading-micro tracking-tigher tracking-loose text-[0.625rem] uppercase"
                 >First name</label
             >
             <input
@@ -177,7 +177,7 @@
         <div class="flex flex-col gap-2">
             <label
                 for="title"
-                class="text-primary font-aeonik-fono text-x-micro tracking-loose uppercase"
+                class="text-primary font-aeonik-fono leading-micro tracking-tigher tracking-loose text-[0.625rem] uppercase"
                 >Title</label
             >
             <input
@@ -190,14 +190,15 @@
         </div>
 
         <div class="flex h-full flex-1 flex-col gap-2">
-            <span class="text-primary font-aeonik-fono text-x-micro tracking-loose uppercase"
+            <span
+                class="text-primary font-aeonik-fono leading-micro tracking-tigher tracking-loose text-[0.625rem] uppercase"
                 >Sticker Pack</span
             >
             <div
                 class="bg-smooth border-offset grid h-full flex-1 grid-cols-3 place-items-center gap-4 overflow-y-scroll rounded-lg border p-4 lg:grid-cols-2"
             >
                 <label
-                    class={classNames(
+                    class={cn(
                         'relative flex aspect-square w-full items-center justify-center rounded-[2px] border-black bg-black outline-2 outline-[var(--color-offset)] outline-dashed',
                         originalTicketData.sticker === null
                             ? 'outline-white'
@@ -214,7 +215,7 @@
                         oninput={() => debouncer.call()}
                     />
                     <div
-                        class="text-tertiary font-aeonik-fono tracking-loose text-micro bg-smooth flex size-[calc(100%_-_6px)] items-center justify-center rounded-[1px] p-1 uppercase"
+                        class="text-tertiary font-aeonik-fono tracking-loose text-eyebrow bg-smooth flex size-[calc(100%_-_6px)] items-center justify-center rounded-[1px] p-1 uppercase"
                     >
                         None
                     </div>
@@ -222,7 +223,7 @@
 
                 {#each stickerPack as s, i}
                     <label
-                        class={classNames(
+                        class={cn(
                             'relative flex aspect-square w-full items-center justify-center rounded-sm bg-black outline-2 [outline-offset:-1px] transition outline-dashed',
                             originalTicketData.sticker === i
                                 ? 'outline-white'

@@ -65,7 +65,11 @@
 
         preferredPlatform.set(correctPlatform);
 
-        goto(`/docs/references/${version}/${platform}/${service}`, {
+        const hash = page.url?.hash ?? '';
+        const baseUrl = `/docs/references/${version}/${platform}/${service}`;
+        const target = baseUrl + (hash && !String(baseUrl).includes('#') ? hash : '');
+
+        goto(target, {
             noScroll: true
         });
     }
@@ -76,7 +80,12 @@
         if ($preferredVersion === version) return;
 
         preferredVersion.set(version);
-        goto(`/docs/references/${version}/${platform}/${service}`, {
+
+        const hash = page.url?.hash ?? '';
+        const baseUrl = `/docs/references/${version}/${platform}/${service}`;
+        const target = baseUrl + (hash && !String(baseUrl).includes('#') ? hash : '');
+
+        goto(target, {
             noScroll: true
         });
     }
@@ -113,7 +122,11 @@
                 ? $preferredPlatform
                 : `server-${$preferredPlatform}`;
 
-            goto(`/docs/references/${$preferredVersion}/${platformMode}/${page.params.service}`, {
+            const hash = page.url?.hash ?? '';
+            const baseUrl = `/docs/references/${$preferredVersion}/${platformMode}/${page.params.service}`;
+            const target = baseUrl + (hash && !String(baseUrl).includes('#') ? hash : '');
+
+            goto(target, {
                 noScroll: true
             });
         }
@@ -141,8 +154,11 @@
         if (title.startsWith('read') || title.startsWith('get') || title.startsWith('list'))
             return 2;
         if (title.startsWith('update')) return 3;
-        if (title.startsWith('delete')) return 4;
-        return 5; // Other operations
+        if (title.startsWith('upsert')) return 4;
+        if (title.startsWith('delete')) return 5;
+        if (title.startsWith('increment')) return 6;
+        if (title.startsWith('decrement')) return 7;
+        return 8; // Other operations
     }
 
     /**
@@ -257,7 +273,7 @@
                 </div>
             </div>
         </header>
-        <div class="web-article-content" style:gap="6rem">
+        <div class="web-article-content prose" style:gap="6rem">
             <section class="web-article-content-grid-6-4">
                 <div class="web-article-content-grid-6-4-column-1 flex flex-col gap-2">
                     <!-- eslint-disable-next-line svelte/no-at-html-tags -->
@@ -290,9 +306,7 @@
                     <section class="web-article-content-grid-6-4">
                         <div class="web-article-content-grid-6-4-column-1 flex flex-col gap-8">
                             <header class="web-article-content-header">
-                                <Heading id={method.id} level={2} inReferences
-                                    >{method.title}</Heading
-                                >
+                                <Heading id={method.id} level={2}>{method.title}</Heading>
                             </header>
                             <div class="flex flex-col gap-2">
                                 <!-- eslint-disable-next-line svelte/no-at-html-tags -->
@@ -361,7 +375,11 @@
                     <div
                         class="web-references-menu-header mt-6 flex items-center justify-between gap-4"
                     >
-                        <h5 class="web-references-menu-title text-micro uppercase">On This Page</h5>
+                        <h5
+                            class="web-references-menu-title text-eyebrow font-aeonik-fono uppercase"
+                        >
+                            On This Page
+                        </h5>
                         <button
                             class="web-icon-button"
                             id="refClose"
@@ -375,7 +393,7 @@
                         {#each Object.entries(groupMethodsByGroup(data.methods)) as [group, methods]}
                             <li class="web-references-menu-group">
                                 {#if group !== ''}
-                                    <h6 class="text-micro text-greyscale-500 mb-2 uppercase">
+                                    <h6 class="text-eyebrow text-greyscale-500 mb-2 uppercase">
                                         {group}
                                     </h6>
                                 {/if}

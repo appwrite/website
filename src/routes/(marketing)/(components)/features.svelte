@@ -1,7 +1,7 @@
 <script lang="ts">
     import { trackEvent } from '$lib/actions/analytics';
     import Icon from '$lib/components/ui/icon';
-    import { classNames } from '$lib/utils/classnames';
+    import { cn } from '$lib/utils/cn';
     import type { HTMLAttributes } from 'svelte/elements';
 
     const features = [
@@ -63,7 +63,7 @@
 </script>
 
 <div
-    class={classNames('bg-[#EDEDF0] pt-20 pb-12 md:pt-40', theme, classes, {
+    class={cn('bg-[#EDEDF0] pt-20 pb-12 md:pt-40', theme, classes, {
         'bg-greyscale-900': theme === 'dark'
     })}
     {...restProps}
@@ -71,7 +71,7 @@
     <div class="container mx-auto">
         <section class="flex flex-col items-start gap-x-20 md:flex-row">
             <h2
-                class="text-title-lg font-aeonik-pro text-primary max-w-[700px] leading-12 text-pretty"
+                class="text-title font-aeonik-pro text-primary max-w-[700px] leading-12 text-pretty"
             >
                 Self-host your data or take it to the Cloud<span class="text-accent">_</span>
             </h2>
