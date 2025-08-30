@@ -140,7 +140,7 @@ The response should look similar to this.
 {% section #list-rows step=4 title="List rows" %}
 To read and query data from your table, use the `listRows` endpoint.
 
-Like the previous step, replace `<PROJECT_ID>`, `<DATABASE_ID>`, and`<TABLE_ID>` with their respective IDs.
+Like the previous step, replace `<PROJECT_ID>`, `<DATABASE_ID>`, and `<TABLE_ID>` with their respective IDs.
 {% multicode %}
 ```client-web
 import { Client, Query, TablesDB } from "appwrite";
@@ -151,7 +151,7 @@ const client = new Client()
 
 const tablesDB = new TablesDB(client);
 
-let promise = tablesDB.listRows({
+const promise = tablesDB.listRows({
     databaseId: "<DATABASE_ID>",
     tableId: "<TABLE_ID>",
     queries: [
