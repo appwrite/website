@@ -151,12 +151,12 @@ const client = new Client()
 
 const tablesDB = new TablesDB(client);
 
-let promise = tablesDB.listRows(
-    "<DATABASE_ID>",
-    "<TABLE_ID>",
-    [
+let promise = tablesDB.listRows({
+    databaseId: "<DATABASE_ID>",
+    tableId: "<TABLE_ID>",
+    queries: [
         Query.equal('title', 'Hamlet')
-    ]
+    ]}
 );
 
 promise.then(function (response) {
