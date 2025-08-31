@@ -180,6 +180,6 @@ No, resources are per project, not pooled. Each project gets its own allocation 
 
 ## How will the per-project pricing affect the Education (GitHub student) plan?
 
-The Education plan will allow up 10 projects.
+The Education plan will allow up to 10 projects.
 
 Please remember that the Education plan is only for educational purposes and is not allowed for commercial purposes ([fair use policy](https://appwrite.io/docs/advanced/platform/fair-use-policy)).
