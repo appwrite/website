@@ -62,7 +62,7 @@ Another important factor we considered is valuing output, not input. This means 
 | Base | $15 | $25 | +$10 | +66.67% |
 | Per additional member | $15 | $0 | -$15 | -100% |
 | Per additional project | $0 | $15 | +$15 | +100% |
-| Functions GB hours | $0.18 per GB hour | $0.06 per GB hour | -$0.12 | -66.67% |
+| Functions GB hours | $0.09 per GB hour | $0.06 per GB hour | -$0.03 | -33.33% |
 | Additional Storage | $3 per 100GB  | $2.8 per 100GB  | -$0.2 | -6.67% |
 | Additional bandwidth | $40 per 100GB | $15 per 100GB | -$25 | -62.5% |
 | Bandwidth resource per project on Pro and Scale | 300GB | 2TB | -$255* | +566.67% |
