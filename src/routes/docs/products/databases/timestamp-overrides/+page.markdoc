@@ -122,8 +122,8 @@ databases.create_document(
         }
 )
 ```
-```server-ruby
 require 'appwrite'
+require 'time'
 
 include Appwrite
 
@@ -146,7 +146,6 @@ databases.create_document(
         # ...your attributes
     }
 )
-```
 ```server-dotnet
 using Appwrite;
 using Appwrite.Models;
