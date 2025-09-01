@@ -36,6 +36,7 @@ const result = storage.getFilePreview(
 const result = storage.getFilePreview({
   bucketId: '<BUCKET_ID>',
   fileId: '<FILE_ID>',
+  gravity: ImageGravity.Center,
   output: ImageFormat.Jpg,
   token: '<TOKEN>'
 });
