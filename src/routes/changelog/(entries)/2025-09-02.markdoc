@@ -42,8 +42,9 @@ const result = storage.getFilePreview({
 // No more undefined values needed!
 ```
 
-**What about existing code?**
+{% info title="What about existing code?" %}
 Positional arguments still work, but they've been marked as deprecated. Your IDE will show warnings, and you can migrate over time.
+{% /info %}
 
 This update is now available in the following SDK versions:
 
@@ -52,5 +53,3 @@ This update is now available in the following SDK versions:
 * `deno-appwrite@16.0.0` (Deno): [https://github.com/appwrite/sdk-for-deno/releases/tag/16.0.0](https://github.com/appwrite/sdk-for-deno/releases/tag/16.0.0)
 
 For more updates, check out the full changelog: [https://appwrite.io/changelog](https://appwrite.io/changelog)
-
-Let me know if you want a matching blog post or social announcement.
