@@ -655,6 +655,7 @@ do {
 ```
 ```server-ruby
 require 'appwrite'
+require 'time'
 
 include Appwrite
 
@@ -679,7 +680,6 @@ databases.upsert_documents(
     }
   ]
 )
-```
 ```server-dotnet
 using Appwrite;
 using Appwrite.Models;
