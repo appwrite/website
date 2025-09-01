@@ -1,6 +1,6 @@
 import { getThreads } from './helpers.js';
 
-export async function load({ url }) {
+export async function load({ url }: { url: URL }) {
     const tagsParam = url.searchParams.get('tags');
 
     return {

@@ -78,20 +78,26 @@ type GetThreadsArgs = Omit<FilterThreadsArgs, 'threads'>;
 
 export async function getThreads({ q, tags, allTags }: GetThreadsArgs) {
     let query = [q ? Query.search('search_meta', q) : undefined, Query.orderDesc('$createdAt')];
-
     tags = tags?.filter(Boolean).map((tag) => tag) ?? [];
+
     if (tags.length > 0) {
         query = [...query, Query.contains('tags', tags)];
     }
+    // try catch to handle errors
+    try {
+        const data = await databases.listDocuments(
+            PUBLIC_APPWRITE_DB_MAIN_ID,
+            PUBLIC_APPWRITE_COL_THREADS_ID,
+            query.filter(Boolean) as string[]
+        );
 
-    const data = await databases.listDocuments(
-        PUBLIC_APPWRITE_DB_MAIN_ID,
-        PUBLIC_APPWRITE_COL_THREADS_ID,
-        query.filter(Boolean) as string[]
-    );
-
-    const threadDocs = data.documents as unknown as DiscordThread[];
-    return filterThreads({ threads: threadDocs, q, tags, allTags });
+        const threadDocs = data.documents as unknown as DiscordThread[];
+        return filterThreads({ threads: threadDocs, q, tags, allTags });
+    } catch (error) {
+        console.error('Error fetching threads:', error);
+        // if error occured then return a empty list
+        return filterThreads({ threads: [], q, tags, allTags });
+    }
 }
 
 export async function getThread($id: string) {
