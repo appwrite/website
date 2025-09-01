@@ -219,11 +219,10 @@ $databases->updateDocument(
     collectionId: '<COLLECTION_ID>',
     documentId: '<DOCUMENT_ID>',
     [
-        '$updatedAt': (new DateTime('<CUSTOM_DATE>'))->format(DATE_ATOM),
+        '$updatedAt' => (new DateTime('<CUSTOM_DATE>'))->format(DATE_ATOM),
         // ...your attributes
     ]
 );
-```
 ```server-python
 databases.update_document(
     database_id='<DATABASE_ID>',
