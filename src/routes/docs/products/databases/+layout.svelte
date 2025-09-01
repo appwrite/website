@@ -97,8 +97,8 @@
                     new: isNewUntil('31 Jul 2025')
                 },
                 {
-                    label: 'Custom timestamps',
-                    href: '/docs/products/databases/custom-timestamps'
+                    label: 'Timestamp overrides',
+                    href: '/docs/products/databases/timestamp-overrides'
                 }
             ]
         },
