@@ -76,7 +76,7 @@ Find your project ID in the **Settings** page. Also, click on the **View API Key
 Open `mod.ts` in your IDE and initialize the Appwrite Client. Replace `<PROJECT_ID>` with your project ID and `<YOUR_API_KEY>` with your API key.
 
 ```ts
-import { Client, ID, Databases, Models } from "https://deno.land/x/appwrite/mod.ts";
+import { Client, ID, TablesDB, Models } from "https://deno.land/x/appwrite/mod.ts";
 
 const client: Client = new Client();
 
@@ -104,38 +104,40 @@ interface Todo {
 }
 
 async function prepareDatabase(): Promise<void> {
-    todoDatabase = await tablesDB.create(
-        ID.unique(),
-        'TodosDB'
-    );
+    todoDatabase = await tablesDB.create({
+        databaseId: ID.unique(),
+        name: 'TodosDB'
+    });
 
-    todoTable = await tablesDB.createTable(
-        todoDatabase.$id,
-        ID.unique(),
-        'Todos'
-    );
+    todoTable = await tablesDB.createTable({
+        databaseId: todoDatabase.$id,
+        tableId: ID.unique(),
+        name: 'Todos'
+    });
 
-    await tablesDB.createStringColumn(
-        todoDatabase.$id,
-        todoTable.$id,
-        'title',
-        255,
-        true
-    );
+    await tablesDB.createStringColumn({
+        databaseId: todoDatabase.$id,
+        tableId: todoTable.$id,
+        key: 'title',
+        size: 255,
+        required: true
+    });
 
-    await tablesDB.createStringColumn(
-        todoDatabase.$id,
-        todoTable.$id,
-        'description',
-        255, false,
-        'This is a test description'
-    );
-    await tablesDB.createBooleanColumn(
-        todoDatabase.$id,
-        todoTable.$id,
-        'isComplete',
-        true
-    );
+    await tablesDB.createStringColumn({
+        databaseId: todoDatabase.$id,
+        tableId: todoTable.$id,
+        key: 'description',
+        size: 255,
+        required: false,
+        xdefault: 'This is a test description'
+    });
+
+    await tablesDB.createBooleanColumn({
+        databaseId: todoDatabase.$id,
+        tableId: todoTable.$id,
+        key: 'isComplete',
+        required: true
+    });
 }
 ```
 
@@ -162,24 +164,24 @@ async function seedDatabase(): Promise<void> {
         isComplete: false
     };
 
-    await tablesDB.createRow(
-        todoDatabase.$id,
-        todoTable.$id,
-        ID.unique(),
-        testTodo1
-    );
-    await tablesDB.createRow(
-        todoDatabase.$id,
-        todoTable.$id,
-        ID.unique(),
-        testTodo2
-    );
-    await tablesDB.createRow(
-        todoDatabase.$id,
-        todoTable.$id,
-        ID.unique(),
-        testTodo3
-    );
+    await tablesDB.createRow({
+        databaseId: todoDatabase.$id,
+        tableId: todoTable.$id,
+        rowId: ID.unique(),
+        data: testTodo1
+    });
+    await tablesDB.createRow({
+        databaseId: todoDatabase.$id,
+        tableId: todoTable.$id,
+        rowId: ID.unique(),
+        data: testTodo2
+    });
+    await tablesDB.createRow({
+        databaseId: todoDatabase.$id,
+        tableId: todoTable.$id,
+        rowId: ID.unique(),
+        data: testTodo3
+    });
 }
 ```
 
@@ -191,10 +193,10 @@ Run the functions to by calling `runAllTasks();`.
 
 ```ts
 async function getTodos(): Promise<void> {
-    const todos = await tablesDB.listRows(
-        todoDatabase.$id,
-        todoTable.$id
-    );
+    const todos = await tablesDB.listRows({
+        databaseId: todoDatabase.$id,
+        tableId: todoTable.$id
+    });
 
     todos.rows.forEach((todo: Todo) => {
         console.log(`Title: ${todo.title}\nDescription: ${todo.description}\nIs Todo Complete: ${todo.isComplete}\n\n`);

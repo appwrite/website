@@ -60,7 +60,10 @@ export default defineEventHandler(async (event) => {
   const { account } = createAdminClient();
 
   // Exchange the token userId and secret for a session
-  const session = await account.createSession(userId, secret);
+  const session = await account.createSession({
+    userId,
+    secret
+  });
 
   // Set the session cookie
   setCookie(event, SESSION_COOKIE, session.secret, {

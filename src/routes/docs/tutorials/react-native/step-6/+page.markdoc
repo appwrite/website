@@ -4,7 +4,7 @@ title: Add database
 description: Connect a database to your React Native application using Appwrite Web SDK.
 step: 6
 ---
-In this step, you'll set up a database to store ideas in Appwrite, configure permissions, then create a 
+In this step, you'll set up a database to store ideas in Appwrite, configure permissions, then create a
 context to manage ideas in your React Native app.
 
 # Create table {% #create-table %}
@@ -41,7 +41,7 @@ Remember to click the **Update** button to apply your changes.
 
 ## Ideas context {% #ideas-context %}
 
-Now that you have a table to hold ideas, we can read and write to it from our app. 
+Now that you have a table to hold ideas, we can read and write to it from our app.
 Like you did with the user data, we will create a React context to hold our ideas.
 Create a new file `contexts/IdeasContext.jsx` and add the following code to it.
 
@@ -103,7 +103,7 @@ export function IdeasProvider(props) {
 }
 ```
 
-Notice that new ideas have the added permission `Permission.write(Role.user(idea.userId))`. 
+Notice that new ideas have the added permission `Permission.write(Role.user(idea.userId))`.
 This permission ensures that only the user who created the idea can modify it.
 
 Remeber to add the `IdeasProvider` to your `App.js` file.
@@ -119,7 +119,7 @@ export default function App() {
   return (
     <UserProvider>
       <!-- Add the Ideas Provider -->
-      <IdeasProvider> 
+      <IdeasProvider>
         <Router />
       </IdeasProvider>
     </UserProvider >

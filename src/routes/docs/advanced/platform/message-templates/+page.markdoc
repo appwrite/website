@@ -135,7 +135,9 @@ client
     .setLocale('fr')                             // Your locale
 ;
 
-const promise = account.createVerification('https://example.com');
+const promise = account.createVerification({
+    url: 'https://example.com'
+});
 
 promise.then(function (response) {
     console.log(response); // Success

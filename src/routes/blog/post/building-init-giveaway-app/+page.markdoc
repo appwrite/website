@@ -102,7 +102,7 @@ After the constants were added, we could now set up the Appwrite SDK.
 ```js
 // ./src/lib/appwrite.js
 
-import { Account, Client, Databases } from 'appwrite';
+import { Account, Client, Databases, OAuthProvider } from 'appwrite';
 import { APPWRITE_ENDPOINT, APPWRITE_PROJECT } from './constants';
 
 export const client = new Client();
@@ -112,6 +112,8 @@ client.setEndpoint(APPWRITE_ENDPOINT).setProject(APPWRITE_PROJECT);
 export const account = new Account(client);
 
 export const database = new Databases(client);
+
+export { OAuthProvider };
 ```
 
 Once this is done, we could move forward to create the main application.
@@ -123,15 +125,15 @@ First, we used the Appwrite Web SDK to set up our Auth library in the applicatio
 ```js
 // ./src/lib/user.js
 
-import { account } from './appwrite';
+import { account, OAuthProvider } from './appwrite';
 
 export const user = {
 	login: async () => {
-		account.createOAuth2Session(
-			'discord',
-			`https://${window.location.hostname}/success`,
-			`https://${window.location.hostname}/failure`
-		);
+		account.createOAuth2Session({
+			provider: OAuthProvider.Discord,
+			success: `https://${window.location.hostname}/success`,
+			failure: `https://${window.location.hostname}/failure`
+		});
 	},
 
 	get: async () => {
@@ -187,10 +189,14 @@ import { COLLECTION_NAME, DATABASE_NAME } from './constants';
 
 export const db = {
 	list: async () => {
-		var entries = await database.listDocuments(DATABASE_NAME, COLLECTION_NAME, [
-			Query.limit(500),
-			Query.select(['discordName'])
-		]);
+		let entries = await database.listDocuments({
+			databaseId: DATABASE_NAME,
+			collectionId: COLLECTION_NAME,
+			queries: [
+				Query.limit(500),
+				Query.select(['discordName'])
+			]
+		});
 
 		var options = [];
 
@@ -203,9 +209,14 @@ export const db = {
 
 	add: async (discordName, email) => {
 		try {
-			await database.createDocument(DATABASE_NAME, COLLECTION_NAME, ID.unique(), {
-				discordName: discordName,
-				email: email
+			await database.createDocument({
+				databaseId: DATABASE_NAME,
+				collectionId: COLLECTION_NAME,
+				documentId: ID.unique(),
+				data: {
+					discordName: discordName,
+					email: email
+				}
 			});
 			console.log('Added to the raffle');
 		} catch (error) {

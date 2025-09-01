@@ -129,11 +129,18 @@ import { ID } from "appwrite";
 
 export const user = {
     createOtp: async (email) => {
-        return await account.createEmailToken(ID.unique(), email, true);
+        return await account.createEmailToken({
+            userId: ID.unique(),
+            email,
+            phrase: true
+        });
     },
 
     verifyOtp: async (userId, secret) => {
-        return await account.createSession(userId, secret);
+        return await account.createSession({
+            userId,
+            secret
+        });
     }
 }
 ```
@@ -176,7 +183,7 @@ In the `src/routes` directory, visit the file `+page.svelte` and replace it with
                 <button class="button" type="submit">Submit</button>
             </form>
         </div>
-        
+
         <div id="otp">
             <h2>Enter OTP</h2>
             <form on:submit={verifyOtp}>

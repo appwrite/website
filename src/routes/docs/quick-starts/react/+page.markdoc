@@ -20,7 +20,7 @@ Head to the [Appwrite Console](https://cloud.appwrite.io/console).
 
 If this is your first time using Appwrite, create an account and create your first project.
 
-Then, under **Add a platform**, add a **Web app**. The **Hostname** should be `localhost`. 
+Then, under **Add a platform**, add a **Web app**. The **Hostname** should be `localhost`.
 
 {% only_dark %}
 ![Add a platform](/images/docs/quick-starts/dark/add-platform.png)
@@ -48,7 +48,7 @@ npm install appwrite@18.1.1
 ```
 {% /section %}
 {% section #step-4 step=4 title="Import Appwrite" %}
-Find your project's ID in the **Settings** page. 
+Find your project's ID in the **Settings** page.
 
 {% only_dark %}
 ![Project settings screen](/images/docs/quick-starts/dark/project-id.png)
@@ -85,7 +85,10 @@ const App = () => {
   const [name, setName] = useState('');
 
   async function login(email, password) {
-    await account.createEmailPasswordSession(email, password);
+    await account.createEmailPasswordSession({
+        email,
+        password
+    });
     setLoggedInUser(await account.get());
   }
 
@@ -107,7 +110,12 @@ const App = () => {
         <button
           type="button"
           onClick={async () => {
-            await account.create(ID.unique(), email, password, name);
+            await account.create({
+                userId: ID.unique(),
+                email,
+                password,
+                name
+            });
             login(email, password);
           }}
         >
@@ -117,7 +125,9 @@ const App = () => {
         <button
           type="button"
           onClick={async () => {
-            await account.deleteSession('current');
+            await account.deleteSession({
+                sessionId: 'current'
+            });
             setLoggedInUser(null);
           }}
         >
