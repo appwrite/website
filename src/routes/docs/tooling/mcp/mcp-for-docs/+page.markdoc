@@ -113,7 +113,7 @@ Once configured, your AI assistant will have access to Appwrite documentation co
 Run the following prompt in your preferred code editor/LLM after enabling the MCP server for Docs: 
 
 ```
-Show me how to set up real-time subscriptions that trigger on the create of a user
+Show me how to set up real-time subscriptions that trigger on creation of a user
 ```
 
 ![Code generation example](/images/docs/mcp/mcp-for-docs/code-generation.png)
