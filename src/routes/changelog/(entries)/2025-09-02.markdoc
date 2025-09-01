@@ -22,7 +22,7 @@ const result = storage.getFilePreview(
   undefined, // borderColor
   undefined, // borderRadius
   undefined, // opacity
-  -360, // rotation
+  undefined, // rotation
   undefined, // background
   ImageFormat.Jpg,
   '<TOKEN>'
