@@ -98,16 +98,11 @@ async function prepareDatabase() {
         name: 'TodosDB'
     });
 
-    todoCollection = await tablesDB.createCollection({
+    todoTable = await tablesDB.createTable({
         databaseId: todoDatabase.$id,
-        collectionId: sdk.ID.unique(),
+        tableId: sdk.ID.unique(),
         name: 'Todos'
     });
-    todoTable = await tablesDB.createTable(
-        todoDatabase.$id,
-        sdk.ID.unique(),
-        'Todos'
-    );
 
     await tablesDB.createStringAttribute({
         databaseId: todoDatabase.$id,
