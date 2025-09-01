@@ -110,7 +110,7 @@ const previewUrl = storage.getFilePreview({
   fileId: 'fileID',
   width: 1600,
   height: 1600,
-  gravity: 'top-left'
+  gravity: ImageGravity.TopLeft
 })
 ```
 

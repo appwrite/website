@@ -46,8 +46,7 @@ Labels are essentially custom tags that you can assign to a user. They act as cu
 
 Just like Teams, we can grant permissions to specific Labels. Labels are attached to individual user accounts and are used to categorize users on a one-to-one basis. Labels can be used in a similar manner to Teams but are a more lightweight and flexible way to manage users and permissions.
 
-This would make Labels a great option for managing which users can view restricted content behind a paywall like a course on Udemy or an e-book on a digital library platform. In this example you would simply attach a label that is unique to a user after they pay to access a product, and from that point on, the label would grant the user permission.  If this access was subscription-based and the user stopped paying, we could simply remove the label from the user, and their access would be revoked since they no longer carry the label that gives them access.
-
+This would make Labels a great option for managing which users can view restricted content behind a paywall like a course on Udemy or an e-book on a digital library platform. In this example you would simply attach a label that is unique to a user after they pay to access a product, and from that point on, the label would grant the user permission. If this access was subscription-based and the user stopped paying, we could simply remove the label from the user, and their access would be revoked since they no longer carry the label that gives them access.
 ### Summary
 
 - Labels are great for tagging users and assigning permissions based on those tags, while Teams are for grouping users together and allowing role-based management within a Team.

@@ -244,7 +244,7 @@ For Flutter applications, Appwrite provides an SDK that allows you to manage aut
     Client client = Client();
 
     client
-      .setEndpoint('https://<YOUR_ENDPOINT>')// Your API Endpoint
+      .setEndpoint('https://<YOUR_APPWRITE_ENDPOINT>/v1')// Appwrite API Endpoint
       .setProject('<YOUR_PROJECT_ID>');// Your project ID
   }
 
@@ -357,9 +357,8 @@ For iOS apps, integrating **Sign in with Apple** using Appwrite involves configu
   import Appwrite
 
   let client = Client()
-      .setEndpoint("https://<YOUR_ENDPOINT>")
+      .setEndpoint("https://<YOUR_APPWRITE_ENDPOINT>/v1")
       .setProject("<YOUR_PROJECT_ID>")
-
   ```
 
 **3. Trigger the OAuth2 flow**: In your view controller, start the OAuth2 flow when the user taps the "Sign in with Apple" button:
@@ -399,7 +398,7 @@ After a successful OAuth2 session, the user's session is stored by Appwrite, and
 Use the following function to check if a user is still authenticated:
 
   ```jsx
-  const session = await appwrite.account.getSession({
+  const session = await account.getSession({
     sessionId: 'current'
   })
   if (!session) {

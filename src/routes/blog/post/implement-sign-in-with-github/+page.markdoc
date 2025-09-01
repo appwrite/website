@@ -268,7 +268,7 @@ const login = async () => {
 /* Function to log out */
 const logout = async () => {
   try {
-    account.deleteSession({ sessionId: 'current' }) // Delete the current session
+    await account.deleteSession({ sessionId: 'current' }) // Delete the current session
     user = null
     updateUI()
   } catch (error) {

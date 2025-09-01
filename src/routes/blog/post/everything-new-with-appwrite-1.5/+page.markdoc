@@ -55,7 +55,7 @@ const currentUser = await account.get()
 
 With the addition of Two-factor authentication, you can now require users to provide a second authentication factor by choosing between a one-time code sent via phone, email, or TOTP with an authenticator app.
 
-Implementing Two-factor authentication is as easy as creating a challenge using the `createMfaChallenge` method, which will generate a one-time code, and solving the challenge with the `updateChallenge` method using the one-time code you received.
+Implementing Two-factor authentication is as easy as creating a challenge using the `createMFAChallenge` method, which will generate a one-time code, and solving the challenge with the `updateMFAChallenge` method using the one-time code you received.
 
 ```ts
 const challenge = await account.createMFAChallenge({
@@ -63,7 +63,7 @@ const challenge = await account.createMFAChallenge({
 });
 const challengeId = challenge.$id;
 
-account.updateMFAChallenge({
+await account.updateMFAChallenge({
     challengeId,
     otp: 'challengeCode'
 });
