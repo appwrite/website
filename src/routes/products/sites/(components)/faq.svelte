@@ -20,7 +20,7 @@
         },
         {
             question: 'What does Appwrite Sites cost?',
-            answer: "You can use Appwrite Sites for free on the Free plan, which will include one site per project. If you need more, you can upgrade to a Pro plan. This pricing starts at $25 a month and includes unlimited sites. Learn more about Appwrite's pricing plans on the [pricing page](/pricing)."
+            answer: "You can use Appwrite Sites for free on the Free plan, which will include one site per project. If you need more, you can upgrade to a Pro plan. This pricing starts at $25 a month and includes unlimited sites. Learn more about Appwrite's pricing plans on the <a href="/pricing" class="underline">pricing page</a>."
         },
         {
             question: 'Does Appwrite have an Enterprise plan for Appwrite Sites?',
@@ -29,6 +29,10 @@
         {
             question: 'Can I use Appwrite Sites on the self-hosted version?',
             answer: 'Yes, you can! Appwrite Sites is fully open-source, and you can self-host by following the <a href="/docs/advanced/self-hosting" class="underline">documentation</a> or by visiting the <a href="https://github.com/appwrite/appwrite" class="underline">Appwrite repository</a>.'
+        }
+        {
+            question: 'Does Appwrite have hosting for Startups?',
+            answer: 'Yes, we support funded startups with Appwrite's hosting capabilities. Take a look at the <a href="/startups" class="underline">Appwrite Startups program</a> to learn more.'
         }
     ];
 
