@@ -19,7 +19,7 @@ const result = storage.getFilePreview(
   ImageGravity.Center,
   -1, // quality
   undefined, // borderWidth
-  '', // borderColor
+  undefined, // borderColor
   undefined, // borderRadius
   undefined, // opacity
   -360, // rotation
