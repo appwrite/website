@@ -1,6 +1,7 @@
 <script lang="ts">
     import Docs from '$lib/layouts/Docs.svelte';
     import Sidebar, { type NavParent, type NavTree } from '$lib/layouts/Sidebar.svelte';
+    import { isNewUntil } from '$lib/utils/date';
 
     const parent: NavParent = {
         href: '/docs',
@@ -14,6 +15,11 @@
                 {
                     label: 'Overview',
                     href: '/docs/tooling/mcp'
+                },
+                {
+                    label: 'MCP for Docs',
+                    href: '/docs/tooling/mcp/mcp-for-docs',
+                    new: isNewUntil('31 Oct 2025')
                 }
             ]
         },

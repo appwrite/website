@@ -1,0 +1,139 @@
+---
+layout: article
+title: MCP server for Appwrite docs
+description: Enable LLMs and code-generation tools to interact with the Appwrite docs
+---
+
+In addition to the Appwrite MCP server that allows LLMs and code-generation tools to interact with the platform, Appwrite offers an MCP server that provides AI assistants with comprehensive access to Appwrite's documentation, enabling intelligent code generation for Appwrite's API's and SDKs and troubleshooting assistance.
+
+Here are some of the key benefits of using the MCP server for Appwrite documentation:
+
+- **Complete documentation access**: Provides AI assistants with access to all Appwrite documentation
+- **Real-time context**: Ensures AI responses are based on the latest documentation
+- **Intelligent search**: Enables semantic search across documentation content
+- **Code examples**: Includes access to code samples and implementation guides
+- **Best practices**: Shares recommended patterns and practices from official documentation
+
+## Installation {% #installation %}
+
+{% tabs %}
+{% tabsitem #cursor title="Cursor" %}
+
+Add the MCP server to Cursor by clicking on the following:
+
+{% only_light %}
+{% cards %}
+{% cards_item href="https://apwr.dev/docs-mcp-cursor?ref=docs" title="Add to Cursor" image="/images/docs/mcp/logos/cursor-ai.svg" %}
+{% /cards_item %}
+{% /cards %}
+{% /only_light %}
+
+{% only_dark %}
+{% cards %}
+{% cards_item href="https://apwr.dev/docs-mcp-cursor?ref=docs" title="Add to Cursor" image="/images/docs/mcp/logos/dark/cursor-ai.svg" %}
+{% /cards_item %}
+{% /cards %}
+{% /only_dark %}
+
+{% /tabsitem %}
+
+{% tabsitem #vscode title="VS Code" %}
+
+Add the MCP server to VS Code by clicking on the following:
+
+{% only_light %}
+{% cards %}
+{% cards_item href="https://apwr.dev/docs-mcp-vscode?ref=docs" title="Add to VS Code" image="/images/docs/mcp/logos/vscode.svg" %}
+{% /cards_item %}
+{% /cards %}
+{% /only_light %}
+
+{% only_dark %}
+{% cards %}
+{% cards_item href="https://apwr.dev/docs-mcp-vscode?ref=docs" title="Add to VS Code" image="/images/docs/mcp/logos/dark/vscode.svg" %}
+{% /cards_item %}
+{% /cards %}
+{% /only_dark %}
+
+{% /tabsitem %}
+
+{% tabsitem #windsurf title="Windsurf Editor" %}
+
+Open the **Windsurf Settings** page, head to the **Cascade** tab, find the **Model Context Protocol (MCP) Servers** section, and click on the **View raw config** button.
+
+![Add MCP server](/images/docs/mcp/windsurf/windsurf-add-mcp-server.png)
+
+Update the `mcp_config.json` file to include the following:
+
+```json
+{
+  "mcpServers": {
+    "appwrite-docs": {
+      "command": "npx",
+      "args": ["@appwrite/mcp-server-docs"]
+    }
+  }
+}
+```
+{% /tabsitem %}
+
+{% tabsitem #claude-desktop title="Claude Desktop" %}
+
+In the Claude Desktop app, open the app's **Settings** page (press `CTRL + ,` on Windows or `CMD + ,` on MacOS) and head to the **Developer** tab.  
+
+![Claude Settings](/images/docs/mcp/claude/claude-settings.png)
+
+Click on the **Edit Config** button, wait for the `claude_desktop_config.json` file to open, and add the following info:
+
+```json
+{
+  "mcpServers": {
+    "appwrite-docs": {
+      "command": "npx",
+      "args": ["@appwrite/mcp-server-docs"]
+    }
+  }
+}
+```
+
+If you use **Claude Code**, run the following command in your terminal:
+
+```bash
+claude mcp add appwrite-docs-mcp https://mcp-for-docs.appwrite.io -t http
+```
+{% /tabsitem %}
+{% /tabs %}
+
+## Usage {% #usage %}
+
+Once configured, your AI assistant will have access to Appwrite documentation context. You can ask questions like:
+
+### Example 1: Code generation
+
+Run the following prompt in your preferred code editor/LLM after enabling the MCP server for Docs: 
+
+```
+Show me how to set up real-time subscriptions that trigger on the create of a user
+```
+
+![Code generation example](/images/docs/mcp/mcp-for-docs/code-generation.png)
+
+### Example 2: Troubleshooting
+
+Run the following prompt in your preferred code editor/LLM after enabling the MCP server for Docs: 
+
+```
+I'm getting a 401 error when trying to delete a user. What could be wrong?
+```
+
+![Troubleshooting example](/images/docs/mcp/mcp-for-docs/troubleshooting.png)
+
+### Example 3: Best practices
+
+Run the following prompt in your preferred code editor/LLM after enabling the MCP server for Docs: 
+
+```
+What are some of the best security practices for Appwrite Auth in a web app with SSR?
+```
+
+![Best practices example](/images/docs/mcp/mcp-for-docs/best-practices.png)
