@@ -185,12 +185,6 @@ async function seedDatabase() {
 Create a function to retrieve the mock todo data and a function to execute the requests in order.
 Run the functions to by calling `runAllTasks();`.
 
-{% /section %}
-{% section #step-7 step=7 title="Retrieve rows" %}
-
-Create a function to retrieve the mock todo data and a function to execute the requests in order.
-Run the functions to by calling `runAllTasks();`.
-
 ```js
 async function getTodos() {
     var todos = await tablesDB.listRows({
