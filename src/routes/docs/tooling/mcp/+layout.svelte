@@ -17,7 +17,7 @@
                     href: '/docs/tooling/mcp'
                 },
                 {
-                    label: 'MCP for Docs',
+                    label: 'MCP Server For Docs',
                     href: '/docs/tooling/mcp/mcp-for-docs',
                     new: isNewUntil('31 Oct 2025')
                 }
