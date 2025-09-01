@@ -81,7 +81,7 @@
 </svelte:head>
 
 <div class="absolute" style="pointer-events:none;">
-    <enhanced:img src="../bg.png" alt="" />
+    <enhanced:img src="./bg.png" alt="" />
 </div>
 
 <Main>
