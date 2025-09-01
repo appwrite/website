@@ -14,16 +14,16 @@ This change makes SDK calls easier to read, less error-prone, and more maintaina
 const result = storage.getFilePreview(
   '<BUCKET_ID>',
   '<FILE_ID>',
-  0, // width
-  0, // height
+  undefined, // width
+  undefined, // height
   ImageGravity.Center,
   -1, // quality
-  0, // borderWidth
+  undefined, // borderWidth
   '', // borderColor
-  0, // borderRadius
-  0, // opacity
+  undefined, // borderRadius
+  undefined, // opacity
   -360, // rotation
-  '', // background
+  undefined, // background
   ImageFormat.Jpg,
   '<TOKEN>'
 );
