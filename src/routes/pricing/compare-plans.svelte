@@ -407,7 +407,7 @@
                 },
 				{
                     title: 'Topics',
-                    free: 1,
+                    free: '1',
                     pro: 'Unlimited',
                     scale: 'Unlimited',
                     enterprise: 'Unlimited'
