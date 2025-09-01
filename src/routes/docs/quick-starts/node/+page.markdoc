@@ -93,7 +93,7 @@ var todoDatabase;
 var todoTable;
 
 async function prepareDatabase() {
-    todoDatabase = await databases.create({
+    todoDatabase = await tablesDB.create({
         databaseId: sdk.ID.unique(),
         name: 'TodosDB'
     });
@@ -102,7 +102,7 @@ async function prepareDatabase() {
         'TodosDB'
     );
 
-    todoCollection = await databases.createCollection({
+    todoCollection = await tablesDB.createCollection({
         databaseId: todoDatabase.$id,
         collectionId: sdk.ID.unique(),
         name: 'Todos'
@@ -113,7 +113,7 @@ async function prepareDatabase() {
         'Todos'
     );
 
-    await databases.createStringAttribute({
+    await tablesDB.createStringAttribute({
         databaseId: todoDatabase.$id,
         collectionId: todoCollection.$id,
         key: 'title',
