@@ -170,19 +170,19 @@ async function seedDatabase() {
     await tablesDB.createRow({
         databaseId: todoDatabase.$id,
         tableId: todoTable.$id,
-        documentId: sdk.ID.unique(),
+        rowId: sdk.ID.unique(),
         data: testTodo1
     });
     await tablesDB.createRow({
         databaseId: todoDatabase.$id,
         tableId: todoTable.$id,
-        documentId: sdk.ID.unique(),
+        rowId: sdk.ID.unique(),
         data: testTodo2
     });
     await tablesDB.createRow({
         databaseId: todoDatabase.$id,
         tableId: todoTable.$id,
-        documentId: sdk.ID.unique(),
+        rowId: sdk.ID.unique(),
         data: testTodo3
     });
 }
