@@ -101,7 +101,11 @@ client
     .setKey('<API_KEY>') // Your secret API key
 ;
 
-cconst message - await messaging.createEmail('<MESSAGE_ID>', '<SUBJECT>', '<CONTENT>');
+const message = await messaging.createEmail({
+  messageId: '<MESSAGE_ID>',
+  subject: '<SUBJECT>',
+  content: '<CONTENT>'
+});
 ```
 ```deno
 import * as sdk from "https://deno.land/x/appwrite/mod.ts";
@@ -117,7 +121,11 @@ client
     .setKey('<API_KEY>') // Your secret API key
 ;
 
-const messaging = await messaging.createEmail('<MESSAGE_ID>', '<SUBJECT>', '<CONTENT>');
+const message = await messaging.createEmail({
+  messageId: '<MESSAGE_ID>',
+  subject: '<SUBJECT>',
+  content: '<CONTENT>'
+});
 ```
 ```php
 <?php

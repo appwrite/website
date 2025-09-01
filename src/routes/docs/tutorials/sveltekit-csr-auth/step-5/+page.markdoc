@@ -52,7 +52,10 @@ Now we just need to create a form to let the user input sign in data.
 		}
 
 		try {
-			await appwrite.account.createEmailPasswordSession(email, password);
+			await appwrite.account.createEmailPasswordSession({
+				email,
+				password
+			});
 			await invalidateAll();
 		} catch (e) {
 			formError = /** @type {import('appwrite').AppwriteException} */ (e).message;
@@ -79,5 +82,5 @@ Now we just need to create a form to let the user input sign in data.
 </form>
 ```
 
-And that's it. When the user successfully logs in, we use `invalidateAll` to re-run the relevant `load` functions. In this case, the functions inside `src/routes/login/+page.js` and `src/routes/+layout.js`. 
+And that's it. When the user successfully logs in, we use `invalidateAll` to re-run the relevant `load` functions. In this case, the functions inside `src/routes/login/+page.js` and `src/routes/+layout.js`.
 This means that the `account` data will be updated, no longer being `null`, and so the login `load` function will redirect the user to the home page.

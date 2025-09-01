@@ -38,7 +38,10 @@ When it comes to implementing authentication in Next.js, Appwrite supports diffe
 With single page applications (SPAs) that are rendered on the client-side, the Appwrite web SDK handles the session for us, so we never need to manually access it. After creating a user session with `account.createEmailPasswordSession` (or any other authentication method Appwrite offers), we can directly retrieve the current user with `account.get()` and process any other authentication checks or move forward to our main app.
 
 ```jsx
-account.createEmailPasswordSession('[email]', '[password]')
+account.createEmailPasswordSession({
+  email: '[email]',
+  password: '[password]'
+})
 const user = await account.get()
 ```
 
@@ -76,7 +79,10 @@ export async function POST(request) {
     // ...
 
     const { email, password } = await request.json()
-    const session = await account.createEmailPasswordSession(email, password)
+    const session = await account.createEmailPasswordSession({
+      email,
+      password
+    })
 
     cookies().set('my-session-cookie', session.secret)
 
