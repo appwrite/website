@@ -290,9 +290,10 @@
                                             Ship faster
                                         </h3>
                                         <p class="text-body font-medium">
-                                            Utilizing Appwrite as your backend, you significantly
-                                            cut down the time and resources spent on building a
-                                            backend infrastructure from scratch. This means you can
+                                            Utilizing Appwrite as your all-in-one platform, 
+                                            you significantly cut down the time and resources spent 
+                                            on building a backend infrastructure from scratch and you
+                                            deploy directly from Appwrite with Sites. This means you can
                                             get to quicker iterations and faster time-to-market,
                                             directly addressing the challenge of finding
                                             product-market fit sooner.
@@ -417,8 +418,8 @@
                                         </h3>
                                         <p class="text-body font-medium">
                                             Appwrite comes with built-in security features like
-                                            authentication, database security, and more, reducing
-                                            the time and effort you need to spend on securing your
+                                            authentication, database security, DDoS protections, and more, 
+                                            reducing the time and effort you need to spend on securing your
                                             application.
                                         </p>
                                         <div
