@@ -62,7 +62,7 @@ Another important factor we considered is valuing output, not input. This means 
 | Base | $15 | $25 | +$10 | +66.67% |
 | Per additional member | $15 | $0 | -$15 | -100% |
 | Per additional project | $0 | $15 | +$15 | +100% |
-| Functions GB hours | $0.09 per GB hour | $0.06 per GB hour | -$0.03 | -33% |
+| Functions GB hours | $0.09 per GB hour | $0.06 per GB hour | -$0.03 | -33.33% |
 | Additional Storage | $3 per 100GB  | $2.8 per 100GB  | -$0.2 | -6.67% |
 | Additional bandwidth | $40 per 100GB | $15 per 100GB | -$25 | -62.5% |
 | Bandwidth resource per project on Pro and Scale | 300GB | 2TB | -$255* | +566.67% |
@@ -153,6 +153,10 @@ Build like a team of hundreds.
 
 You will get 2TB of bandwidth per project on the paid plans, Pro and Scale. Previously, you got 300GB bandwidth across all projects. If we calculate just for one project, you will have 1700GB more, which is an increase of +566.67%.
 
+## Are there any changes in other resources?
+
+All other resources remain the same.
+
 ## How many seats will I have on paid plans?
 
 On both the Pro and Scale plans, you will have unlimited seats. This is part of the pricing model change, moving from per seat to per project.
@@ -176,6 +180,6 @@ No, resources are per project, not pooled. Each project gets its own allocation 
 
 ## How will the per-project pricing affect the Education (GitHub student) plan?
 
-The Education plan will continue to allow multiple projects.
+The Education plan will allow up to 10 projects.
 
 Please remember that the Education plan is only for educational purposes and is not allowed for commercial purposes ([fair use policy](https://appwrite.io/docs/advanced/platform/fair-use-policy)).
