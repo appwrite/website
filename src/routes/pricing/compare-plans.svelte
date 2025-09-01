@@ -12,7 +12,8 @@
     import { fly } from 'svelte/transition';
     import { trackEvent } from '$lib/actions/analytics';
 
-    type Row = string | true | { text: string; url: string; event: string };
+    type LinkRow = { text: string; url: string; event: string };
+    type Row = string | true | LinkRow;
 
     type Table = {
         title: string;
@@ -79,7 +80,7 @@
                     scale: '1 (Dedicated resources)',
                     enterprise: 'Custom'
                 },
-				{
+                {
                     title: 'Additional projects',
                     free: '-',
                     pro: '$15',
@@ -317,7 +318,7 @@
                     scale: 'Unlimited',
                     enterprise: 'Unlimited'
                 },
-			   {
+                {
                     title: 'Sites',
                     free: '1 per project',
                     pro: 'Unlimited',
@@ -393,7 +394,7 @@
                     scale: 'Unlimited',
                     enterprise: 'Unlimited'
                 }
-			]
+            ]
         },
         {
             title: 'Messaging',
@@ -401,87 +402,87 @@
                 {
                     title: 'Messages',
                     free: '1000 per month',
-                    pro: 'Unlimited,
+                    pro: 'Unlimited',
                     scale: 'Unlimited',
                     enterprise: 'Unlimited'
                 },
-				{
+                {
                     title: 'Topics',
                     free: '1',
                     pro: 'Unlimited',
                     scale: 'Unlimited',
                     enterprise: 'Unlimited'
                 },
-				{
+                {
                     title: 'Targets',
                     free: true,
                     pro: true,
                     scale: true,
                     enterprise: true
                 },
-				{
+                {
                     title: 'In app notifications',
                     free: true,
                     pro: true,
                     scale: true,
                     enterprise: true
                 },
-				{
+                {
                     title: 'Chat',
                     free: true,
                     pro: true,
                     scale: true,
                     enterprise: true
                 },
-				{
+                {
                     title: 'Push notifications',
                     free: true,
                     pro: true,
                     scale: true,
                     enterprise: true
                 },
-				{
+                {
                     title: 'Email',
                     free: true,
                     pro: true,
                     scale: true,
                     enterprise: true
                 },
-				{
+                {
                     title: 'SMS',
                     free: true,
                     pro: true,
                     scale: true,
                     enterprise: true
                 },
-				{
+                {
                     title: 'Discord',
                     free: true,
                     pro: true,
                     scale: true,
                     enterprise: true
                 },
-				{
+                {
                     title: 'WhatsApp',
-                    free: false,
+                    free: '-',
                     pro: true,
                     scale: true,
                     enterprise: true
                 },
-				{
+                {
                     title: 'Slack',
-                    free: false,
+                    free: '-',
                     pro: true,
                     scale: true,
                     enterprise: true
                 },
-				{
+                {
                     title: 'Analytics',
-                    free: false,
+                    free: '-',
                     pro: 'Coming soon',
                     scale: 'Coming soon',
                     enterprise: 'Coming soon'
-                },
+                }
             ]
         },
         {
@@ -647,8 +648,8 @@
     let scrollDir = 'down';
     let shouldShowTable = false;
 
-    function getItemAsRow(item: any): Row {
-        return item as Row;
+    function getItemAsLinkRow(item: Row): LinkRow {
+        return item as LinkRow;
     }
 </script>
 
@@ -846,7 +847,7 @@
                                                 {#if typeof row[col] === 'string'}
                                                     {@html row[col]}
                                                 {:else if typeof row[col] === 'object'}
-                                                    {@const rowItem = getItemAsRow(row[col])}
+                                                    {@const rowItem = getItemAsLinkRow(row[col])}
                                                     <a
                                                         href={rowItem.url}
                                                         class="underline"
