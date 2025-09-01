@@ -39,7 +39,7 @@ export const actions = {
       failure: `${event.url.origin}/signup`
     });
 
-    redirect(302, redirectUrl);
+    throw redirect(302, redirectUrl);
   },
 };
 
