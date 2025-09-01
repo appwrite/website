@@ -20,7 +20,7 @@
         },
         {
             name: 'Pro',
-            price: '$15',
+            price: '$25',
             tag: 'Popular',
             description:
                 'For production applications that need powerful functionality and resources to scale.',
