@@ -46,11 +46,11 @@ class AccountService(client: Client) {
 
     suspend fun register(email: String, password: String): User<Map<String, Any>>? {
         return try {
-            account.create({
-                userId: ID.unique(),
-                email: email,
-                password: password
-            })
+            account.create(
+                userId = ID.unique(),
+                email = email,
+                password = password
+            )
             login(email, password)
         } catch (e: AppwriteException) {
             null
