@@ -408,4 +408,4 @@ Set custom creation and update timestamps when migrating data or backdating reco
 {% /cards_item %}
 {% /cards %}
 
-[Learn more about bulk operations](/docs/products/databases/legacy/bulk-operations).
+[Learn more about bulk operations](/docs/products/databases/bulk-operations).
