@@ -17,7 +17,7 @@ const result = storage.getFilePreview(
   undefined, // width
   undefined, // height
   ImageGravity.Center,
-  -1, // quality
+  undefined, // quality
   undefined, // borderWidth
   undefined, // borderColor
   undefined, // borderRadius
