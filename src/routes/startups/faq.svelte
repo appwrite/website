@@ -21,6 +21,10 @@
             answer: 'Yes, if you are currently on a Free or Pro plan, you can apply for the program.'
         },
         {
+            question: 'Does the Appwrite Startups program include web hosting?',
+            answer: 'Yes, with the Appwrite Startups program, you can host your website or web app with Appwrite Sites.'
+        },
+        {
             question: 'I am already a Scale user. Can I apply?',
             answer: "If you are currently on a Scale plan, you can't apply for the program as the program is intended for Startups to help them relieve financial burdens at an early stage. If you're able to pay for a Scale plan, we will consider you ineligible."
         },
