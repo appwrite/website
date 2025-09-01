@@ -12,7 +12,8 @@
     import { fly } from 'svelte/transition';
     import { trackEvent } from '$lib/actions/analytics';
 
-    type Row = string | true | { text: string; url: string; event: string };
+    type LinkRow = { text: string; url: string; event: string };
+    type Row = string | true | LinkRow;
 
     type Table = {
         title: string;
@@ -35,15 +36,15 @@
                 {
                     title: 'API bandwidth',
                     free: '5GB / month',
-                    pro: '300GB / month',
-                    scale: '300GB / month',
+                    pro: '2TB / month',
+                    scale: '2TB / month',
                     enterprise: 'Custom'
                 },
                 {
                     title: 'Additional API bandwidth',
                     free: '-',
-                    pro: '$40 per 100GB / month',
-                    scale: '$40 per 100GB / month',
+                    pro: '$15 per 100GB / month',
+                    scale: '$15 per 100GB / month',
                     enterprise: 'Custom'
                 },
                 {
@@ -56,8 +57,8 @@
                 {
                     title: 'Additional storage',
                     free: '-',
-                    pro: '$3 per 100GB ',
-                    scale: '$3 per 100GB',
+                    pro: '$2.8 per 100GB ',
+                    scale: '$2.8 per 100GB',
                     enterprise: 'Custom'
                 },
                 {
@@ -74,10 +75,17 @@
             rows: [
                 {
                     title: 'Number of projects',
-                    free: '2',
-                    pro: 'Unlimited',
-                    scale: 'Unlimited',
-                    enterprise: 'Unlimited'
+                    free: '2 (Shared resources)',
+                    pro: '1 (Dedicated resources)',
+                    scale: '1 (Dedicated resources)',
+                    enterprise: 'Custom'
+                },
+                {
+                    title: 'Additional projects',
+                    free: '-',
+                    pro: '$15',
+                    scale: '$15',
+                    enterprise: 'Custom'
                 },
                 {
                     title: 'Projects pausing',
@@ -89,16 +97,9 @@
                 {
                     title: 'Organization members',
                     free: '1',
-                    pro: '1',
+                    pro: 'Unlimited',
                     scale: 'Unlimited',
                     enterprise: 'Unlimited'
-                },
-                {
-                    title: 'Additional members',
-                    free: '-',
-                    pro: '$15 per member',
-                    scale: '$0',
-                    enterprise: '$0'
                 },
                 {
                     title: 'Connected websites and apps',
@@ -308,11 +309,18 @@
             ]
         },
         {
-            title: 'Functions',
+            title: 'Compute',
             rows: [
                 {
                     title: 'Functions',
                     free: '5 per project',
+                    pro: 'Unlimited',
+                    scale: 'Unlimited',
+                    enterprise: 'Unlimited'
+                },
+                {
+                    title: 'Sites',
+                    free: '1 per project',
                     pro: 'Unlimited',
                     scale: 'Unlimited',
                     enterprise: 'Unlimited'
@@ -334,8 +342,8 @@
                 {
                     title: 'Additional GB-hours',
                     free: '-',
-                    pro: '$0.09 per GB-hour',
-                    scale: '$0.09 per GB-hour',
+                    pro: '$0.06 per GB-hour',
+                    scale: '$0.06 per GB-hour',
                     enterprise: 'Custom'
                 },
                 {
@@ -389,6 +397,95 @@
             ]
         },
         {
+            title: 'Messaging',
+            rows: [
+                {
+                    title: 'Messages',
+                    free: '1000 per month',
+                    pro: 'Unlimited',
+                    scale: 'Unlimited',
+                    enterprise: 'Unlimited'
+                },
+                {
+                    title: 'Topics',
+                    free: '1',
+                    pro: 'Unlimited',
+                    scale: 'Unlimited',
+                    enterprise: 'Unlimited'
+                },
+                {
+                    title: 'Targets',
+                    free: true,
+                    pro: true,
+                    scale: true,
+                    enterprise: true
+                },
+                {
+                    title: 'In app notifications',
+                    free: true,
+                    pro: true,
+                    scale: true,
+                    enterprise: true
+                },
+                {
+                    title: 'Chat',
+                    free: true,
+                    pro: true,
+                    scale: true,
+                    enterprise: true
+                },
+                {
+                    title: 'Push notifications',
+                    free: true,
+                    pro: true,
+                    scale: true,
+                    enterprise: true
+                },
+                {
+                    title: 'Email',
+                    free: true,
+                    pro: true,
+                    scale: true,
+                    enterprise: true
+                },
+                {
+                    title: 'SMS',
+                    free: true,
+                    pro: true,
+                    scale: true,
+                    enterprise: true
+                },
+                {
+                    title: 'Discord',
+                    free: true,
+                    pro: true,
+                    scale: true,
+                    enterprise: true
+                },
+                {
+                    title: 'WhatsApp',
+                    free: '-',
+                    pro: true,
+                    scale: true,
+                    enterprise: true
+                },
+                {
+                    title: 'Slack',
+                    free: '-',
+                    pro: true,
+                    scale: true,
+                    enterprise: true
+                },
+                {
+                    title: 'Analytics',
+                    free: '-',
+                    pro: 'Coming soon',
+                    scale: 'Coming soon',
+                    enterprise: 'Coming soon'
+                }
+            ]
+        },
+        {
             title: 'Network',
             rows: [
                 {
@@ -414,7 +511,7 @@
                 },
                 {
                     title: 'Content compression',
-                    info: 'Support for brotli, zstd and gzip for text compression and webp for image compression',
+                    info: 'Support for brotli, zstd, and gzip for text compression and webp for image compression',
                     free: true,
                     pro: true,
                     scale: true,
@@ -551,8 +648,8 @@
     let scrollDir = 'down';
     let shouldShowTable = false;
 
-    function getItemAsRow(item: any): Row {
-        return item as Row;
+    function getItemAsLinkRow(item: Row): LinkRow {
+        return item as LinkRow;
     }
 </script>
 
@@ -750,7 +847,7 @@
                                                 {#if typeof row[col] === 'string'}
                                                     {@html row[col]}
                                                 {:else if typeof row[col] === 'object'}
-                                                    {@const rowItem = getItemAsRow(row[col])}
+                                                    {@const rowItem = getItemAsLinkRow(row[col])}
                                                     <a
                                                         href={rowItem.url}
                                                         class="underline"
