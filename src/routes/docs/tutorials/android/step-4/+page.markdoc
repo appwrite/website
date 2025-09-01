@@ -34,10 +34,10 @@ class AccountService(client: Client) {
 
     suspend fun login(email: String, password: String): User<Map<String, Any>>? {
         return try {
-            account.createEmailPasswordSession({
-                email: email,
-                password: password
-            })
+            account.createEmailPasswordSession(
+                email = email,
+                password = password
+            )
             getLoggedIn()
         } catch (e: AppwriteException) {
             null
