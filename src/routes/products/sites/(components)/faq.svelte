@@ -33,7 +33,7 @@
         {
             question: 'Does Appwrite have hosting for Startups?',
             answer: 'Yes, we support funded startups with Appwrite\'s hosting capabilities. Take a look at the <a href="/startups" class="underline">Appwrite Startups program</a> to learn more.'
-        },
+        }
     ];
 
     const {

@@ -290,11 +290,11 @@
                                             Ship faster
                                         </h3>
                                         <p class="text-body font-medium">
-                                            Utilizing Appwrite as your all-in-one platform, 
-                                            you significantly cut down the time and resources spent 
-                                            on building a backend infrastructure from scratch and you
-                                            deploy directly from Appwrite with Sites. This means you can
-                                            get to quicker iterations and faster time-to-market,
+                                            Utilizing Appwrite as your all-in-one platform, you
+                                            significantly cut down the time and resources spent on
+                                            building a backend infrastructure from scratch and you
+                                            deploy directly from Appwrite with Sites. This means you
+                                            can get to quicker iterations and faster time-to-market,
                                             directly addressing the challenge of finding
                                             product-market fit sooner.
                                         </p>
@@ -418,9 +418,9 @@
                                         </h3>
                                         <p class="text-body font-medium">
                                             Appwrite comes with built-in security features like
-                                            authentication, database security, DDoS protections, and more, 
-                                            reducing the time and effort you need to spend on securing your
-                                            application.
+                                            authentication, database security, DDoS protections, and
+                                            more, reducing the time and effort you need to spend on
+                                            securing your application.
                                         </p>
                                         <div
                                             class="web-card is-white web-u-margin-block-start-64 e-mt-4-mobile flex flex-col gap-5"
