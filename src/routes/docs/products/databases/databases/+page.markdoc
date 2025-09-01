@@ -31,7 +31,7 @@ client
     .setKey('919c2d18fb5d4...a2ae413da83346ad2') // Your secret API key
 ;
 
-const promise = databases.create({
+const promise = tablesDB.create({
     databaseId: '<DATABASE_ID>',
     name: '[NAME]'
 });
@@ -57,7 +57,7 @@ client
 ;
 
 
-let promise = databases.create({
+let promise = tablesDB.create({
     databaseId: '<DATABASE_ID>',
     name: '[NAME]'
 });
