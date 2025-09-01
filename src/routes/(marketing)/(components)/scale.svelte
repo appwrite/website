@@ -157,7 +157,11 @@
         <div class="relative container mx-auto h-full">
             <div class="absolute inset-0 z-10 grid grid-cols-4">
                 {#each localStats as stat, i}
-                    <div class="border-greyscale-200 relative h-full border-l border-dashed">
+                    <div
+                        class:border-[#2F2F32]={theme === 'dark'}
+                        class:border-greyscale-200={theme === 'light'}
+                        class="relative h-full border-l border-dashed"
+                    >
                         <div
                             class="absolute"
                             style="bottom: calc(50px + {25 + (75 / 3) * (i / 2)}%)"
