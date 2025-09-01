@@ -52,4 +52,3 @@ This update is now available in the following SDK versions:
 * `node-appwrite@18.0.0` (Node.js): [https://github.com/appwrite/sdk-for-node/releases/tag/18.0.0](https://github.com/appwrite/sdk-for-node/releases/tag/18.0.0)
 * `deno-appwrite@16.0.0` (Deno): [https://github.com/appwrite/sdk-for-deno/releases/tag/16.0.0](https://github.com/appwrite/sdk-for-deno/releases/tag/16.0.0)
 
-For more updates, check out the full changelog: [https://appwrite.io/changelog](https://appwrite.io/changelog)
