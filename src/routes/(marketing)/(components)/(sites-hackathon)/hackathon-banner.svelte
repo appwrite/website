@@ -14,11 +14,16 @@
 >
     <div class="mx-auto flex w-full gap-[1rem] [max-inline-size:108rem]">
         <div class="md:basis-1/2">
-            <Badge class="ml-0">Sites Hackathon is live <span class="text-accent">/</span> {hackathonDates}</Badge>
+            <Badge class="ml-0"
+                >Sites Hackathon is live <span class="text-accent">/</span> {hackathonDates}</Badge
+            >
         </div>
-        
+
         <div class="mr-0 ml-auto text-right">
-            <a href="https://hackathon.appwrite.network" target="_blank" class="text-primary group mr-0 ml-auto flex items-center gap-2 text-right"
+            <a
+                href="https://hackathon.appwrite.network"
+                target="_blank"
+                class="text-primary group mr-0 ml-auto flex items-center gap-2 text-right"
                 >Go to hackathon <Icon
                     class="transition group-hover:-translate-x-0.5"
                     name="arrow-right"
