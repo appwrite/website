@@ -16,7 +16,7 @@ Billing periods begin the day you change your plan, and lasts 30 days.
 Your resource limits are reset at the beginning of each billing period.
 
 Charges are applied at different times:
-- **Seats and add-ons** are billed at the start of the billing period
+- **Projects and add-ons** are billed at the start of the billing period
 - **Additional usage** (like bandwidth, execution time, and GB-hours) is billed at the start of the following billing period based on your actual usage
 
 # Payment history {% #payment-history %}
@@ -25,7 +25,7 @@ You can click the three-dots menu to view and download your invoices.
 
 # Payment methods {% #payment-methods %}
 Appwrite Cloud accepts credit and debit cards as payment methods and will bill the card at the end of each billing cycle.
-Appwrite accepts Visa, Mastercard, American Express, Discover & Diners Club, China UnionPay, Japan Credit Bureau (JCB), Cartes Bancairies, and eftpos Australia.
+Appwrite accepts Visa, Mastercard, American Express, Discover & Diners Club, China UnionPay, Japan Credit Bureau (JCB), Cartes Bancaires, and eftpos Australia.
 
 # Billing addresss {% #billing-addresss %}
 Your billing address will be displayed on your invoices and used when Appwrite Cloud bills your payment method at the end of a billing cycle.
@@ -34,7 +34,7 @@ Your billing address will be displayed on your invoices and used when Appwrite C
 If you'd like you or your company's tax ID displayed on your generated invoice, you can provide it under **Tax ID**.
 
 # Budget cap {% #budget-cap %}
-Appwrite allows you to set budget caps when on your organizations.
+Appwrite allows you to set budget caps for your organization.
 Appwrite will automatically scale your projects by purchasing add-ons as they require more resources.
 Budget caps limit the amount of automatic scaling and prevent unexpected bills.
 This budget cap does **not include the plan's recurring cost**, only add-ons.
@@ -43,8 +43,8 @@ You can enable budget caps under **Budget cap**, toggle the option **Enable budg
 You will be able to set a budget cap in USD.
 
 ## Budget alerts {% #budget-alerts %}
-When you enable budget cap, you'll be able to configure alerts under **Budget alerts** to warn you when you organization is near the budget cap.
-By default, an email alert will be sent at 75% of the budget cap. You can add up to three check points that send budget alerts when reached.
+When you enable budget cap, you'll be able to configure alerts under **Budget alerts** to warn you when your organization is near the budget cap.
+By default, an email alert will be sent at 75% of the budget cap. You can add up to three checkpoints that send budget alerts when reached.
 
 # Redeem credit {% #redeem-credit %}
 If you received a redeemable code for Appwrite Cloud credits, you can redeem them in the **Available credit** section.
