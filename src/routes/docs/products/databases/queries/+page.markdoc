@@ -715,6 +715,12 @@ Query.notBetween("price", 5, 10)
 ```client-flutter
 Query.notBetween("price", 5, 10)
 ```
+```client-apple
+Query.notBetween("price", start: 5, end: 10)
+```
+```client-android-kotlin
+Query.notBetween("price", 5, 10)
+```
 ```python
 Query.not_between("price", 5, 10)
 ```
@@ -843,6 +849,12 @@ Query.notStartsWith("name", "Once upon a time")
 ```client-flutter
 Query.notStartsWith("name", "Once upon a time")
 ```
+```client-apple
+Query.notStartsWith("name", value: "Once upon a time")
+```
+```client-android-kotlin
+Query.notStartsWith("name", "Once upon a time")
+```
 ```python
 Query.not_starts_with("name", "Once upon a time")
 ```
@@ -903,6 +915,12 @@ Returns rows if a string column does not end with a substring.
 Query.notEndsWith("name", "happily ever after.")
 ```
 ```client-flutter
+Query.notEndsWith("name", "happily ever after.")
+```
+```client-apple
+Query.notEndsWith("name", value: "happily ever after.")
+```
+```client-android-kotlin
 Query.notEndsWith("name", "happily ever after.")
 ```
 ```python
@@ -1009,6 +1027,20 @@ Query.notContains("ingredients", ['apple', 'banana'])
 // For strings
 Query.notContains("name", "Tom")
 ```
+```client-apple
+// For arrays
+Query.notContains("ingredients", value: ['apple', 'banana'])
+
+// For strings
+Query.notContains("name", value: "Tom")
+```
+```client-android-kotlin
+// For arrays
+Query.notContains("ingredients", ['apple', 'banana'])
+
+// For strings
+Query.notContains("name", "Tom")
+```
 ```python
 # For arrays
 Query.not_contains("ingredients", ['apple', 'banana'])
@@ -1095,6 +1127,12 @@ on queried columns.
 Query.notSearch("text", "key words")
 ```
 ```client-flutter
+Query.notSearch("text", "key words")
+```
+```client-apple
+Query.notSearch("text", value: "key words")
+```
+```client-android-kotlin
 Query.notSearch("text", "key words")
 ```
 ```python
@@ -1429,6 +1467,12 @@ Query.createdBefore("2025-01-01T00:00:00Z")
 ```client-flutter
 Query.createdBefore("2025-01-01T00:00:00Z")
 ```
+```client-apple
+Query.createdBefore("2025-01-01T00:00:00Z")
+```
+```client-android-kotlin
+Query.createdBefore("2025-01-01T00:00:00Z")
+```
 ```python
 Query.created_before("2025-01-01T00:00:00Z")
 ```
@@ -1458,6 +1502,12 @@ Returns rows created after the given date.
 Query.createdAfter("2025-01-01T00:00:00Z")
 ```
 ```client-flutter
+Query.createdAfter("2025-01-01T00:00:00Z")
+```
+```client-apple
+Query.createdAfter("2025-01-01T00:00:00Z")
+```
+```client-android-kotlin
 Query.createdAfter("2025-01-01T00:00:00Z")
 ```
 ```python
@@ -1491,6 +1541,12 @@ Query.updatedBefore("2025-01-01T00:00:00Z")
 ```client-flutter
 Query.updatedBefore("2025-01-01T00:00:00Z")
 ```
+```client-apple
+Query.updatedBefore("2025-01-01T00:00:00Z")
+```
+```client-android-kotlin
+Query.updatedBefore("2025-01-01T00:00:00Z")
+```
 ```python
 Query.updated_before("2025-01-01T00:00:00Z")
 ```
@@ -1520,6 +1576,12 @@ Returns rows updated after the given date.
 Query.updatedAfter("2025-01-01T00:00:00Z")
 ```
 ```client-flutter
+Query.updatedAfter("2025-01-01T00:00:00Z")
+```
+```client-apple
+Query.updatedAfter("2025-01-01T00:00:00Z")
+```
+```client-android-kotlin
 Query.updatedAfter("2025-01-01T00:00:00Z")
 ```
 ```python
