@@ -27,7 +27,7 @@ You can click the three-dots menu to view and download your invoices.
 Appwrite Cloud accepts credit and debit cards as payment methods and will bill the card at the end of each billing cycle.
 Appwrite accepts Visa, Mastercard, American Express, Discover & Diners Club, China UnionPay, Japan Credit Bureau (JCB), Cartes Bancaires, and eftpos Australia.
 
-# Billing addresss {% #billing-addresss %}
+# Billing address {% #billing-address %}
 Your billing address will be displayed on your invoices and used when Appwrite Cloud bills your payment method at the end of a billing cycle.
 
 # Tax ID {% #tax-id %}
