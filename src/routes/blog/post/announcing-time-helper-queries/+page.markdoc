@@ -76,7 +76,7 @@ Instead of cluttered conditions around internal fields, you now have simple oper
 
 # More resources
 
-- Read the documentation to get started
+- [Read the documentation to get started](/docs/products/databases/queries/#time-helpers)
 - [Announcing Opt-in relationship loading: Granular control for smarter data fetching](/blog/post/announcing-opt-in-relationship-loading)
 - [Announcing an improved Appwrite Databases. A completely new look, feel, and experience](/blog/post/announcing-appwrite-databases-new-ui)
 - [Announcing Database Upsert: Simplify your database interactions](/blog/post/announcing-database-upsert)
