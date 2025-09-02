@@ -20,7 +20,9 @@ const client = new Client()
 
 const account = new Account(client);
 
-const promise = account.createVerification('https://example.com/verify');
+const promise = account.createVerification({
+    url: 'https://example.com/verify'
+});
 
 promise.then(function (response) {
     console.log(response); // Success
@@ -99,7 +101,10 @@ const urlParams = new URLSearchParams(window.location.search);
 const secret = urlParams.get('secret');
 const userId = urlParams.get('userId');
 
-const promise = account.updateVerification(userId, secret);
+const promise = account.updateVerification({
+    userId,
+    secret
+});
 
 promise.then(function (response) {
     console.log(response); // Success
@@ -169,10 +174,10 @@ To verify a phone number, first ensure the user is logged in and has a phone num
 
 {% multicode %}
 ```client-web
-const response = await account.updatePhone(
-    '+12065550100',  // phone
-    'password' // password
-);
+const response = await account.updatePhone({
+    phone: '+12065550100',
+    password: 'password'
+});
 ```
 
 ```client-flutter
@@ -233,10 +238,10 @@ After the user receives the verification code, complete verification by calling 
 
 {% multicode %}
 ```client-web
-const response = await account.updatePhoneVerification(
-    '<USER_ID>',  // userId
-    '<SECRET>' // secret
-);
+const response = await account.updatePhoneVerification({
+    userId: '[USER_ID]',
+    secret: '[SECRET]'
+});
 ```
 
 ```client-flutter

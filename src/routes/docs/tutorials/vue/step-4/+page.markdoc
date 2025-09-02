@@ -27,11 +27,18 @@ export const user = reactive({
     }
   },
   async register(email, password) {
-    await account.create(ID.unique(), email, password);
+    await account.create({
+        userId: ID.unique(),
+        email,
+        password
+    });
     await this.login(email, password);
   },
   async login(email, password) {
-    await account.createEmailPasswordSession(email, password);
+    await account.createEmailPasswordSession({
+        email,
+        password
+    });
     window.location.href = "/"; // Redirect to home page
   },
   async logout() {

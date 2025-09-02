@@ -37,13 +37,21 @@ const createUser = () => {
 
 	async function register(email, password, name) {
 		if (!isBrowser) return;
-		await account.create(ID.unique(), email, password, name);
+		await account.create({
+			userId: ID.unique(),
+			email,
+			password,
+			name
+		});
 		await login(email, password);
 	}
 
 	async function login(email, password) {
 		if (!isBrowser) return;
-		await account.createEmailPasswordSession(email, password);
+		await account.createEmailPasswordSession({
+			email,
+			password
+		});
 		await init();
 		goto('/'); // Redirect to home page after login
 	}
