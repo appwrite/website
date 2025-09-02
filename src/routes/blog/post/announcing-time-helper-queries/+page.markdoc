@@ -70,9 +70,9 @@ For devs, it’s about code clarity and scalability. Clean, expressive queries r
 
 # Get started
 
-Time helper queries are available today in **Appwrite Cloud and Self-Hosted**.
+Time Helper Queries are live on Appwrite Cloud and Self-Hosted. They are designed to make time-based filtering more intuitive and maintainable as your applications scale. 
 
-Give them a try in your next project, and enjoy cleaner, more expressive code.
+Instead of cluttered conditions around internal fields, you now have simple operators that make intent explicit, reduce boilerplate, and help ensure your queries remain clean and predictable even as datasets grow larger and more complex.
 
 # More resources
 
