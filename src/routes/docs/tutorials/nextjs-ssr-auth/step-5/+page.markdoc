@@ -69,8 +69,16 @@ async function signUpWithEmail(formData) {
 
   const { account } = await createAdminClient();
 
-  await account.create(ID.unique(), email, password, name);
-  const session = await account.createEmailPasswordSession(email, password);
+  await account.create({
+    userId: ID.unique(),
+    email,
+    password,
+    name
+  });
+  const session = await account.createEmailPasswordSession({
+    email,
+    password
+  });
 
   cookies().set("my-custom-session", session.secret, {
     path: "/",

@@ -38,7 +38,7 @@ You will need to provide the following information from your **SendGrid dashboar
 *
 ---
 * API key
-* Head to Settings -> API Keys -> Create API Key. 
+* Head to Settings -> API Keys -> Create API Key.
 ---
 * Sender email
 * The provider sends emails from this sender email. The sender email must either be an email under an [authenticated domain](https://www.twilio.com/docs/sendgrid/ui/account-and-settings/how-to-set-up-domain-authentication) or a [verified sender identity](https://www.twilio.com/docs/sendgrid/ui/sending-email/sender-verification).
@@ -91,7 +91,11 @@ client
     .setKey('<API_KEY>') // Your secret API key
 ;
 
-const message = await messaging.createEmail('<MESSAGE_ID>', '<SUBJECT>', '<CONTENT>');
+const message = await messaging.createEmail({
+  messageId: '<MESSAGE_ID>',
+  subject: '<SUBJECT>',
+  content: '<CONTENT>'
+});
 ```
 ```deno
 import * as sdk from "https://deno.land/x/appwrite/mod.ts";
@@ -108,7 +112,11 @@ client
 ;
 
 
-const messaging = await messaging.createEmail('<MESSAGE_ID>', '<SUBJECT>', '<CONTENT>');
+const message = await messaging.createEmail({
+  messageId: '<MESSAGE_ID>',
+  subject: '<SUBJECT>',
+  content: '<CONTENT>'
+});
 ```
 ```php
 <?php

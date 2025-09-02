@@ -32,6 +32,14 @@
                     class="!w-full md:!w-fit"
                     event="partners-become_a_partner_hero-click">Become a Partner</Button
                 >
+                <Button
+                    variant="secondary"
+                    href="/partners/catalog"
+                    class="!w-full md:!w-fit"
+                    event="partners-find_a_partner_hero-click"
+                >
+                    Find a Partner
+                </Button>
             </div>
         </div>
         <Puzzle />

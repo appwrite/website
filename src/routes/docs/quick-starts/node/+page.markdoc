@@ -93,17 +93,24 @@ var todoDatabase;
 var todoTable;
 
 async function prepareDatabase() {
-    todoDatabase = await tablesDB.create(
-        sdk.ID.unique(),
-        'TodosDB'
-    );
+    todoDatabase = await tablesDB.create({
+        databaseId: sdk.ID.unique(),
+        name: 'TodosDB'
+    });
 
-    todoTable = await tablesDB.createTable(
-        todoDatabase.$id,
-        sdk.ID.unique(),
-        'Todos'
-    );
+    todoTable = await tablesDB.createTable({
+        databaseId: todoDatabase.$id,
+        tableId: sdk.ID.unique(),
+        name: 'Todos'
+    });
 
+    await tablesDB.createStringAttribute({
+        databaseId: todoDatabase.$id,
+        collectionId: todoCollection.$id,
+        key: 'title',
+        size: 255,
+        required: true
+    });
     await tablesDB.createStringColumn(
         todoDatabase.$id,
         todoTable.$id,
@@ -151,24 +158,24 @@ async function seedDatabase() {
         isComplete: false
     };
 
-    await tablesDB.createRow(
-        todoDatabase.$id,
-        todoTable.$id,
-        sdk.ID.unique(),
-        testTodo1
-    );
-    await tablesDB.createRow(
-        todoDatabase.$id,
-        todoTable.$id,
-        sdk.ID.unique(),
-        testTodo2
-    );
-    await tablesDB.createRow(
-        todoDatabase.$id,
-        todoTable.$id,
-        sdk.ID.unique(),
-        testTodo3
-    );
+    await tablesDB.createRow({
+        databaseId: todoDatabase.$id,
+        tableId: todoTable.$id,
+        rowId: sdk.ID.unique(),
+        data: testTodo1
+    });
+    await tablesDB.createRow({
+        databaseId: todoDatabase.$id,
+        tableId: todoTable.$id,
+        rowId: sdk.ID.unique(),
+        data: testTodo2
+    });
+    await tablesDB.createRow({
+        databaseId: todoDatabase.$id,
+        tableId: todoTable.$id,
+        rowId: sdk.ID.unique(),
+        data: testTodo3
+    });
 }
 ```
 
@@ -180,10 +187,10 @@ Run the functions to by calling `runAllTasks();`.
 
 ```js
 async function getTodos() {
-    var todos = await tablesDB.listRows(
-        todoDatabase.$id,
-        todoTable.$id
-    );
+    var todos = await tablesDB.listRows({
+        databaseId: todoDatabase.$id,
+        tableId: todoTable.$id
+    });
 
     todos.rows.forEach(todo => {
         console.log(`Title: ${todo.title}\nDescription: ${todo.description}\nIs Todo Complete: ${todo.isComplete}\n\n`);
