@@ -33,18 +33,16 @@ const client = new Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
     .setProject('<PROJECT_ID>');
 
-const tablesDB = new TablesDB(client);
-
-tablesDB.listRows(
-    '<DATABASE_ID>',
-    '<TABLE_ID>',
-    [
+const result = await tablesDB.listRows({
+    databaseId: '<DATABASE_ID>',
+    tableId: '<TABLE_ID>',
+    queries: [
         Query.createdBefore(new Date('2023').toISOString()),
         Query.createdAfter(new Date('2000').toISOString()),
         Query.updatedBefore(new Date('2025').toISOString()),
         Query.updatedAfter(new Date('2000').toISOString())
     ]
-);
+})
 ```
 
 # Where does this help?
