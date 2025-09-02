@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Announcing Time helper queries: Cleaner, more expressive time-based queries"
+title: "Announcing time helper queries: Cleaner, more expressive time-based queries"
 description: Handle time-based filtering directly in your queries using new helpers for created and updated timestamps.
 date: 2025-09-02
 cover: /images/blog/announcing-time-helper-queries/cover.png
@@ -13,7 +13,7 @@ If you’ve ever built a feed, a dashboard, or an audit report, you know how oft
 
 These time-based queries show up in so many of the apps you build, and when you’re working with dates, you naturally think in terms of *before* and *after*.
 
-To make this workflow smoother, we’re excited to announce **Time helper queries:** A new way to filter your documents by creating and updating times using simple, expressive syntax.
+To make this workflow smoother, we’re excited to announce **time helper queries:** A new way to filter your documents by creating and updating times using simple, expressive syntax.
 
 # A better way to query by dates
 
@@ -70,7 +70,7 @@ For devs, it’s about code clarity and scalability. Clean, expressive queries r
 
 # Get started
 
-Time Helper Queries are live on Appwrite Cloud and Self-Hosted. They are designed to make time-based filtering more intuitive and maintainable as your applications scale. 
+Time helper queries are live on Appwrite Cloud and Self-Hosted. They are designed to make time-based filtering more intuitive and maintainable as your applications scale. 
 
 Instead of cluttered conditions around internal fields, you now have simple operators that make intent explicit, reduce boilerplate, and help ensure your queries remain clean and predictable even as datasets grow larger and more complex.
 
