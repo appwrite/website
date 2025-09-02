@@ -21,7 +21,7 @@ Under the **Billing** tab, you can click **Change plan** to update your organiza
 
 # Resource limits {% #resource-limits %}
 
-Each plan in Appwrite Cloud has a set of resource limits per project. You can find the details of these resource limits in the in the [pricing page](https://appwrite.io/pricing).
+Each plan in Appwrite Cloud has a set of resource limits per project. You can find the details of these resource limits on the [pricing page](https://appwrite.io/pricing).
 
 Additional resources are automatically purchased when your organization exceeds the resource limits to continue scaling until the budget cap is reached.
 Each resource limit is applied per billing period and resets at the beginning of each billing period.
