@@ -34,6 +34,8 @@ APIs accelerate development by letting teams integrate third-party services rath
 
 As a startup scales, reliability matters as much as speed. Monitoring, logging, and alerting tools help ensure smooth deployments and stable web apps in production.
 
+{% call_to_action title="Build your startup with Appwrite" description="An all-in-one development platform for you to develop, host, and scale your products." point1="Cloud credits" point2="Priority support" point3="Ship faster" point4="Built-in security and compliance" cta="Apply for the program" url="https://appwrite.io/startups" /%}
+
 ## Why startup tools differ from enterprise tools
 
 Enterprise tools assume large budgets and dedicated DevOps staff. Startups need lightweight, flexible solutions that prioritize simplicity in deploying applications. Developer tools for startups are optimized for:
@@ -73,6 +75,8 @@ Appwrite is designed as a developer-first platform that removes friction from bo
 - Maintain open source flexibility to avoid lock-in
 
 For startups, this means less time on DevOps and more time building products.
+
+{% call_to_action title="Build your startup with Appwrite" description="An all-in-one development platform for you to develop, host, and scale your products." point1="Cloud credits" point2="Priority support" point3="Ship faster" point4="Built-in security and compliance" cta="Apply for the program" url="https://appwrite.io/startups" /%}
 
 ## Conclusion
 
