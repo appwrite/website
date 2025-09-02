@@ -4,7 +4,7 @@ title: "Announcing Time helper queries: Cleaner, more expressive time-based quer
 date: 2025-09-02
 cover: /images/blog/announcing-time-helper-queries/cover.png
 ---
-A new set of database queries, **Time helper queries**, is now live.
+A new set of database queries, **time helper queries**, is now live.
 
 Filtering by time is one of the most common patterns in real-world apps. Until now, this often meant adding extra conditions that made your queries longer and harder to read.
 
