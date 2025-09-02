@@ -721,25 +721,25 @@ Query.notBetween("price", start: 5, end: 10)
 ```client-android-kotlin
 Query.notBetween("price", 5, 10)
 ```
-```client-android
+```client-android-java
 Query.notBetween("price", 5, 10)
 ```
-```python
+```server-python
 Query.not_between("price", 5, 10)
 ```
-```ruby
+```server-ruby
 Query.not_between("price", 5, 10)
 ```
-```deno
+```server-deno
 Query.notBetween("price", 5, 10)
 ```
 ```server-nodejs
 Query.notBetween("price", 5, 10)
 ```
-```php
+```server-php
 Query::notBetween("price", 5, 10)
 ```
-```swift
+```server-swift
 Query.notBetween("price", start: 5, end: 10)
 ```
 ```http
@@ -861,25 +861,25 @@ Query.notStartsWith("name", value: "Once upon a time")
 ```client-android-kotlin
 Query.notStartsWith("name", "Once upon a time")
 ```
-```client-android
+```client-android-java
 Query.notStartsWith("name", "Once upon a time")
 ```
-```python
+```server-python
 Query.not_starts_with("name", "Once upon a time")
 ```
-```ruby
+```server-ruby
 Query.not_starts_with("name", "Once upon a time")
 ```
-```deno
+```server-deno
 Query.notStartsWith("name", "Once upon a time")
 ```
 ```server-nodejs
 Query.notStartsWith("name", "Once upon a time")
 ```
-```php
+```server-php
 Query::notStartsWith("name", "Once upon a time")
 ```
-```swift
+```server-swift
 Query.notStartsWith("name", value: "Once upon a time")
 ```
 ```http
@@ -935,25 +935,25 @@ Query.notEndsWith("name", value: "happily ever after.")
 ```client-android-kotlin
 Query.notEndsWith("name", "happily ever after.")
 ```
-```client-android
+```client-android-java
 Query.notEndsWith("name", "happily ever after.")
 ```
-```python
+```server-python
 Query.not_ends_with("name", "happily ever after.")
 ```
-```ruby
+```server-ruby
 Query.not_ends_with("name", "happily ever after.")
 ```
-```deno
+```server-deno
 Query.notEndsWith("name", "happily ever after.")
 ```
 ```server-nodejs
 Query.notEndsWith("name", "happily ever after.")
 ```
-```php
+```server-php
 Query::notEndsWith("name", "happily ever after.")
 ```
-```swift
+```server-swift
 Query.notEndsWith("name", value: "happily ever after.")
 ```
 ```http
@@ -1059,28 +1059,28 @@ Query.notContains("ingredients", ['apple', 'banana'])
 // For strings
 Query.notContains("name", "Tom")
 ```
-```client-android
+```client-android-java
 // For arrays
-Query.notContains("ingredients", listOf("apple", "banana"))
+Query.notContains("ingredients", Arrays.asList("apple", "banana"))
 
 // For strings
 Query.notContains("name", "Tom")
 ```
-```python
+```server-python
 # For arrays
 Query.not_contains("ingredients", ['apple', 'banana'])
 
 # For strings
 Query.not_contains("name", "Tom")
 ```
-```ruby
+```server-ruby
 # For arrays
 Query.not_contains("ingredients", ['apple', 'banana'])
 
 # For strings
 Query.not_contains("name", "Tom")
 ```
-```deno
+```server-deno
 // For arrays
 Query.notContains("ingredients", ['apple', 'banana'])
 
@@ -1094,14 +1094,14 @@ Query.notContains("ingredients", ['apple', 'banana'])
 // For strings
 Query.notContains("name", "Tom")
 ```
-```php
+```server-php
 // For arrays
 Query::notContains("ingredients", ['apple', 'banana'])
 
 // For strings
 Query::notContains("name", "Tom")
 ```
-```swift
+```server-swift
 // For arrays
 Query.notContains("ingredients", value: ['apple', 'banana'])
 
@@ -1167,25 +1167,25 @@ Query.notSearch("text", value: "key words")
 ```client-android-kotlin
 Query.notSearch("text", "key words")
 ```
-```client-android
+```client-android-java
 Query.notSearch("text", "key words")
 ```
-```python
+```server-python
 Query.not_search("text", "key words")
 ```
-```ruby
+```server-ruby
 Query.not_search("text", "key words")
 ```
-```deno
+```server-deno
 Query.notSearch("text", "key words")
 ```
 ```server-nodejs
 Query.notSearch("text", "key words")
 ```
-```php
+```server-php
 Query::notSearch("text", "key words")
 ```
-```swift
+```server-swift
 Query.notSearch("text", value: "key words")
 ```
 ```http
@@ -1511,25 +1511,25 @@ Query.createdBefore("2025-01-01T00:00:00Z")
 ```client-android-kotlin
 Query.createdBefore("2025-01-01T00:00:00Z")
 ```
-```client-android
+```client-android-java
 Query.createdBefore("2025-01-01T00:00:00Z")
 ```
-```python
+```server-python
 Query.created_before("2025-01-01T00:00:00Z")
 ```
-```ruby
+```server-ruby
 Query.created_before("2025-01-01T00:00:00Z")
 ```
-```deno
+```server-deno
 Query.createdBefore("2025-01-01T00:00:00Z")
 ```
 ```server-nodejs
 Query.createdBefore("2025-01-01T00:00:00Z")
 ```
-```php
+```server-php
 Query::createdBefore("2025-01-01T00:00:00Z")
 ```
-```swift
+```server-swift
 Query.createdBefore("2025-01-01T00:00:00Z")
 ```
 ```http
@@ -1554,25 +1554,25 @@ Query.createdAfter("2025-01-01T00:00:00Z")
 ```client-android-kotlin
 Query.createdAfter("2025-01-01T00:00:00Z")
 ```
-```client-android
+```client-android-java
 Query.createdAfter("2025-01-01T00:00:00Z")
 ```
-```python
+```server-python
 Query.created_after("2025-01-01T00:00:00Z")
 ```
-```ruby
+```server-ruby
 Query.created_after("2025-01-01T00:00:00Z")
 ```
-```deno
+```server-deno
 Query.createdAfter("2025-01-01T00:00:00Z")
 ```
 ```server-nodejs
 Query.createdAfter("2025-01-01T00:00:00Z")
 ```
-```php
+```server-php
 Query::createdAfter("2025-01-01T00:00:00Z")
 ```
-```swift
+```server-swift
 Query.createdAfter("2025-01-01T00:00:00Z")
 ```
 ```http
@@ -1597,25 +1597,25 @@ Query.updatedBefore("2025-01-01T00:00:00Z")
 ```client-android-kotlin
 Query.updatedBefore("2025-01-01T00:00:00Z")
 ```
-```client-android
+```client-android-java
 Query.updatedBefore("2025-01-01T00:00:00Z")
 ```
-```python
+```server-python
 Query.updated_before("2025-01-01T00:00:00Z")
 ```
-```ruby
+```server-ruby
 Query.updated_before("2025-01-01T00:00:00Z")
 ```
-```deno
+```server-deno
 Query.updatedBefore("2025-01-01T00:00:00Z")
 ```
 ```server-nodejs
 Query.updatedBefore("2025-01-01T00:00:00Z")
 ```
-```php
+```server-php
 Query::updatedBefore("2025-01-01T00:00:00Z")
 ```
-```swift
+```server-swift
 Query.updatedBefore("2025-01-01T00:00:00Z")
 ```
 ```http
@@ -1640,25 +1640,25 @@ Query.updatedAfter("2025-01-01T00:00:00Z")
 ```client-android-kotlin
 Query.updatedAfter("2025-01-01T00:00:00Z")
 ```
-```client-android
+```client-android-java
 Query.updatedAfter("2025-01-01T00:00:00Z")
 ```
-```python
+```server-python
 Query.updated_after("2025-01-01T00:00:00Z")
 ```
-```ruby
+```server-ruby
 Query.updated_after("2025-01-01T00:00:00Z")
 ```
-```deno
+```server-deno
 Query.updatedAfter("2025-01-01T00:00:00Z")
 ```
 ```server-nodejs
 Query.updatedAfter("2025-01-01T00:00:00Z")
 ```
-```php
+```server-php
 Query::updatedAfter("2025-01-01T00:00:00Z")
 ```
-```swift
+```server-swift
 Query.updatedAfter("2025-01-01T00:00:00Z")
 ```
 ```http
