@@ -703,9 +703,37 @@ Query.between("price", start: 5, end: 10)
 ```
 {% /multicode %}
 
+### Not between {% #not-between %}
+
+Returns rows if the column value is outside the range defined by the two values (strictly less than start OR strictly greater than end).
+Works with strings or numbers. Boundary values are excluded.
+
 {% multicode %}
 ```client-web
 Query.notBetween("price", 5, 10)
+```
+```client-flutter
+Query.notBetween("price", 5, 10)
+```
+```python
+Query.not_between("price", 5, 10)
+```
+```ruby
+Query.not_between("price", 5, 10)
+```
+```deno
+Query.notBetween("price", 5, 10)
+```
+```php
+Query::notBetween("price", 5, 10)
+```
+```swift
+Query.notBetween("price", start: 5, end: 10)
+```
+```http
+{"method":"notBetween","column":"price","values":[5,10]}
+```
+{% /multicode %}
 
 ## Null checks {% #null-checks %}
 
