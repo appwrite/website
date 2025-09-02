@@ -26,7 +26,7 @@ Previously, this meant comparing against `$createdAt` or `$updatedAt` using rang
 - `updatedBefore`: Find rows updated before a given date
 - `updatedAfter`: Find rows updated after a given date
 
-```jsx
+```server-nodejs
 import { Client, Query, TablesDB } from "appwrite";
 
 const client = new Client()
