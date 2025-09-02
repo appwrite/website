@@ -703,12 +703,9 @@ Query.between("price", start: 5, end: 10)
 ```
 {% /multicode %}
 
-### Not between {% #not-between %}
-
-Returns rows if the column value is outside the range defined by the two values (strictly less than the start OR strictly greater than the end).
-Works with strings or numbers. Boundary values are excluded.
-
 {% multicode %}
+```client-web
+Query.notBetween("price", 5, 10)
 
 ## Null checks {% #null-checks %}
 
