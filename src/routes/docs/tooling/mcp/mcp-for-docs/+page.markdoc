@@ -137,3 +137,13 @@ What are some of the best security practices for Appwrite Auth in a web app with
 ```
 
 ![Best practices example](/images/docs/mcp/mcp-for-docs/best-practices.png)
+
+### Example 4: API reference
+
+Run the following prompt in your preferred code editor/LLM after enabling the MCP server for Docs: 
+
+```
+I want an example of how I can list all users in a Python app
+```
+
+![API reference example](/images/docs/mcp/mcp-for-docs/api-reference.png)
