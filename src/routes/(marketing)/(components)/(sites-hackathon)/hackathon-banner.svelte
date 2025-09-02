@@ -23,6 +23,7 @@
             <a
                 href="https://hackathon.appwrite.network"
                 target="_blank"
+                rel="noopener noreferrer"
                 class="text-primary group mr-0 ml-auto flex items-center gap-2 text-right"
                 >Go to hackathon <Icon
                     class="transition group-hover:-translate-x-0.5"
