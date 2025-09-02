@@ -733,6 +733,9 @@ Query.not_between("price", 5, 10)
 ```deno
 Query.notBetween("price", 5, 10)
 ```
+```server-nodejs
+Query.notBetween("price", 5, 10)
+```
 ```php
 Query::notBetween("price", 5, 10)
 ```
@@ -870,6 +873,9 @@ Query.not_starts_with("name", "Once upon a time")
 ```deno
 Query.notStartsWith("name", "Once upon a time")
 ```
+```server-nodejs
+Query.notStartsWith("name", "Once upon a time")
+```
 ```php
 Query::notStartsWith("name", "Once upon a time")
 ```
@@ -939,6 +945,9 @@ Query.not_ends_with("name", "happily ever after.")
 Query.not_ends_with("name", "happily ever after.")
 ```
 ```deno
+Query.notEndsWith("name", "happily ever after.")
+```
+```server-nodejs
 Query.notEndsWith("name", "happily ever after.")
 ```
 ```php
@@ -1078,6 +1087,13 @@ Query.notContains("ingredients", ['apple', 'banana'])
 // For strings
 Query.notContains("name", "Tom")
 ```
+```server-nodejs
+// For arrays
+Query.notContains("ingredients", ['apple', 'banana'])
+
+// For strings
+Query.notContains("name", "Tom")
+```
 ```php
 // For arrays
 Query::notContains("ingredients", ['apple', 'banana'])
@@ -1161,6 +1177,9 @@ Query.not_search("text", "key words")
 Query.not_search("text", "key words")
 ```
 ```deno
+Query.notSearch("text", "key words")
+```
+```server-nodejs
 Query.notSearch("text", "key words")
 ```
 ```php
@@ -1504,6 +1523,9 @@ Query.created_before("2025-01-01T00:00:00Z")
 ```deno
 Query.createdBefore("2025-01-01T00:00:00Z")
 ```
+```server-nodejs
+Query.createdBefore("2025-01-01T00:00:00Z")
+```
 ```php
 Query::createdBefore("2025-01-01T00:00:00Z")
 ```
@@ -1542,6 +1564,9 @@ Query.created_after("2025-01-01T00:00:00Z")
 Query.created_after("2025-01-01T00:00:00Z")
 ```
 ```deno
+Query.createdAfter("2025-01-01T00:00:00Z")
+```
+```server-nodejs
 Query.createdAfter("2025-01-01T00:00:00Z")
 ```
 ```php
@@ -1584,6 +1609,9 @@ Query.updated_before("2025-01-01T00:00:00Z")
 ```deno
 Query.updatedBefore("2025-01-01T00:00:00Z")
 ```
+```server-nodejs
+Query.updatedBefore("2025-01-01T00:00:00Z")
+```
 ```php
 Query::updatedBefore("2025-01-01T00:00:00Z")
 ```
@@ -1622,6 +1650,9 @@ Query.updated_after("2025-01-01T00:00:00Z")
 Query.updated_after("2025-01-01T00:00:00Z")
 ```
 ```deno
+Query.updatedAfter("2025-01-01T00:00:00Z")
+```
+```server-nodejs
 Query.updatedAfter("2025-01-01T00:00:00Z")
 ```
 ```php
