@@ -14,11 +14,11 @@
         },
         {
             question: 'What happens after I apply?',
-            answer: 'Once you submit the form, our team will evaluate your application andget back to you with onboarding steps.'
+            answer: 'Once you submit the form, our team will evaluate your application and get back to you with onboarding steps.'
         },
         {
             question: 'I am a Pro user. Can I apply?',
-            answer: 'Yes, if you are currently on a Free or Pro plan, you can apply for the program.'
+            answer: 'If you are already paying for a Pro plan, or a Scale plan, then you cannot apply for the Startups program.'
         },
         {
             question: 'I am already a Scale user. Can I apply?',
