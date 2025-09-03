@@ -703,6 +703,50 @@ Query.between("price", start: 5, end: 10)
 ```
 {% /multicode %}
 
+### Not between {% #not-between %}
+
+Returns rows if the column value is outside the range defined by the two values (strictly less than start OR strictly greater than end).
+Works with strings or numbers. Boundary values are excluded.
+
+{% multicode %}
+```client-web
+Query.notBetween("price", 5, 10)
+```
+```client-flutter
+Query.notBetween("price", 5, 10)
+```
+```client-apple
+Query.notBetween("price", start: 5, end: 10)
+```
+```client-android-kotlin
+Query.notBetween("price", 5, 10)
+```
+```client-android-java
+Query.notBetween("price", 5, 10)
+```
+```server-python
+Query.not_between("price", 5, 10)
+```
+```server-ruby
+Query.not_between("price", 5, 10)
+```
+```server-deno
+Query.notBetween("price", 5, 10)
+```
+```server-nodejs
+Query.notBetween("price", 5, 10)
+```
+```server-php
+Query::notBetween("price", 5, 10)
+```
+```server-swift
+Query.notBetween("price", start: 5, end: 10)
+```
+```http
+{"method":"notBetween","column":"price","values":[5,10]}
+```
+{% /multicode %}
+
 ## Null checks {% #null-checks %}
 
 ### Is null {% #is-null %}
@@ -800,6 +844,49 @@ Query.startsWith("name", value: "Once upon a time")
 ```
 {% /multicode %}
 
+### Not starts with {% #not-starts-with %}
+
+Returns rows if a string column does not start with a substring.
+
+{% multicode %}
+```client-web
+Query.notStartsWith("name", "Once upon a time")
+```
+```client-flutter
+Query.notStartsWith("name", "Once upon a time")
+```
+```client-apple
+Query.notStartsWith("name", value: "Once upon a time")
+```
+```client-android-kotlin
+Query.notStartsWith("name", "Once upon a time")
+```
+```client-android-java
+Query.notStartsWith("name", "Once upon a time")
+```
+```server-python
+Query.not_starts_with("name", "Once upon a time")
+```
+```server-ruby
+Query.not_starts_with("name", "Once upon a time")
+```
+```server-deno
+Query.notStartsWith("name", "Once upon a time")
+```
+```server-nodejs
+Query.notStartsWith("name", "Once upon a time")
+```
+```server-php
+Query::notStartsWith("name", "Once upon a time")
+```
+```server-swift
+Query.notStartsWith("name", value: "Once upon a time")
+```
+```http
+{"method":"notStartsWith","column":"name","values":["Once upon a time"]}
+```
+{% /multicode %}
+
 ### Ends with {% #ends-with %}
 
 Returns rows if a string column ends with a substring.
@@ -828,6 +915,49 @@ Query.endsWith("name", value: "happily ever after.")
 ```
 ```http
 {"method":"endsWith","column":"name","values":["happily ever after."]}
+```
+{% /multicode %}
+
+### Not ends with {% #not-ends-with %}
+
+Returns rows if a string column does not end with a substring.
+
+{% multicode %}
+```client-web
+Query.notEndsWith("name", "happily ever after.")
+```
+```client-flutter
+Query.notEndsWith("name", "happily ever after.")
+```
+```client-apple
+Query.notEndsWith("name", value: "happily ever after.")
+```
+```client-android-kotlin
+Query.notEndsWith("name", "happily ever after.")
+```
+```client-android-java
+Query.notEndsWith("name", "happily ever after.")
+```
+```server-python
+Query.not_ends_with("name", "happily ever after.")
+```
+```server-ruby
+Query.not_ends_with("name", "happily ever after.")
+```
+```server-deno
+Query.notEndsWith("name", "happily ever after.")
+```
+```server-nodejs
+Query.notEndsWith("name", "happily ever after.")
+```
+```server-php
+Query::notEndsWith("name", "happily ever after.")
+```
+```server-swift
+Query.notEndsWith("name", value: "happily ever after.")
+```
+```http
+{"method":"notEndsWith","column":"name","values":["happily ever after."]}
 ```
 {% /multicode %}
 
@@ -894,6 +1024,99 @@ Query.contains("name", value: "Tom")
 ```
 {% /multicode %}
 
+### Not contains {% #not-contains %}
+
+Returns rows if the array column does not contain the specified
+elements, or if a string column does not contain the specified
+substring.
+
+{% multicode %}
+```client-web
+// For arrays
+Query.notContains("ingredients", ['apple', 'banana'])
+
+// For strings
+Query.notContains("name", "Tom")
+```
+```client-flutter
+// For arrays
+Query.notContains("ingredients", ['apple', 'banana'])
+
+// For strings
+Query.notContains("name", "Tom")
+```
+```client-apple
+// For arrays
+Query.notContains("ingredients", value: ['apple', 'banana'])
+
+// For strings
+Query.notContains("name", value: "Tom")
+```
+```client-android-kotlin
+// For arrays
+Query.notContains("ingredients", ['apple', 'banana'])
+
+// For strings
+Query.notContains("name", "Tom")
+```
+```client-android-java
+// For arrays
+Query.notContains("ingredients", Arrays.asList("apple", "banana"))
+
+// For strings
+Query.notContains("name", "Tom")
+```
+```server-python
+# For arrays
+Query.not_contains("ingredients", ['apple', 'banana'])
+
+# For strings
+Query.not_contains("name", "Tom")
+```
+```server-ruby
+# For arrays
+Query.not_contains("ingredients", ['apple', 'banana'])
+
+# For strings
+Query.not_contains("name", "Tom")
+```
+```server-deno
+// For arrays
+Query.notContains("ingredients", ['apple', 'banana'])
+
+// For strings
+Query.notContains("name", "Tom")
+```
+```server-nodejs
+// For arrays
+Query.notContains("ingredients", ['apple', 'banana'])
+
+// For strings
+Query.notContains("name", "Tom")
+```
+```server-php
+// For arrays
+Query::notContains("ingredients", ['apple', 'banana'])
+
+// For strings
+Query::notContains("name", "Tom")
+```
+```server-swift
+// For arrays
+Query.notContains("ingredients", value: ['apple', 'banana'])
+
+// For strings
+Query.notContains("name", value: "Tom")
+```
+```http
+# For arrays
+{"method":"notContains","column":"ingredients","values":["apple","banana"]}
+
+# For strings
+{"method":"notContains","column":"name","values":["Tom"]}
+```
+{% /multicode %}
+
 ### Search {% #search %}
 
 Searches string columns for provided keywords. Requires a [full-text index](/docs/products/databases/tables#indexes) on queried columns.
@@ -922,6 +1145,51 @@ Query.search("text", value: "key words")
 ```
 ```http
 {"method":"search","column":"text","values":["key words"]}
+```
+{% /multicode %}
+
+### Not search {% #not-search %}
+
+Returns rows if a string column does not match the full-text search
+query. Requires a [full-text index](/docs/products/databases/tables#indexes)
+on queried columns.
+
+{% multicode %}
+```client-web
+Query.notSearch("text", "key words")
+```
+```client-flutter
+Query.notSearch("text", "key words")
+```
+```client-apple
+Query.notSearch("text", value: "key words")
+```
+```client-android-kotlin
+Query.notSearch("text", "key words")
+```
+```client-android-java
+Query.notSearch("text", "key words")
+```
+```server-python
+Query.not_search("text", "key words")
+```
+```server-ruby
+Query.not_search("text", "key words")
+```
+```server-deno
+Query.notSearch("text", "key words")
+```
+```server-nodejs
+Query.notSearch("text", "key words")
+```
+```server-php
+Query::notSearch("text", "key words")
+```
+```server-swift
+Query.notSearch("text", value: "key words")
+```
+```http
+{"method":"notSearch","column":"text","values":["key words"]}
 ```
 {% /multicode %}
 
@@ -1221,6 +1489,182 @@ Query.cursorBefore("62a7...a600")
 ```
 {% /multicode %}
 
+# Time helpers {% #time-helpers %}
+
+Built-in helpers for filtering by creation and update timestamps using
+ISO 8601 date-time strings (for example, "2025-01-01T00:00:00Z").
+
+### Created before {% #created-before %}
+
+Returns rows created before the given date.
+
+{% multicode %}
+```client-web
+Query.createdBefore("2025-01-01T00:00:00Z")
+```
+```client-flutter
+Query.createdBefore("2025-01-01T00:00:00Z")
+```
+```client-apple
+Query.createdBefore("2025-01-01T00:00:00Z")
+```
+```client-android-kotlin
+Query.createdBefore("2025-01-01T00:00:00Z")
+```
+```client-android-java
+Query.createdBefore("2025-01-01T00:00:00Z")
+```
+```server-python
+Query.created_before("2025-01-01T00:00:00Z")
+```
+```server-ruby
+Query.created_before("2025-01-01T00:00:00Z")
+```
+```server-deno
+Query.createdBefore("2025-01-01T00:00:00Z")
+```
+```server-nodejs
+Query.createdBefore("2025-01-01T00:00:00Z")
+```
+```server-php
+Query::createdBefore("2025-01-01T00:00:00Z")
+```
+```server-swift
+Query.createdBefore("2025-01-01T00:00:00Z")
+```
+```http
+{"method":"createdBefore","values":["2025-01-01T00:00:00Z"]}
+```
+{% /multicode %}
+
+### Created after {% #created-after %}
+
+Returns rows created after the given date.
+
+{% multicode %}
+```client-web
+Query.createdAfter("2025-01-01T00:00:00Z")
+```
+```client-flutter
+Query.createdAfter("2025-01-01T00:00:00Z")
+```
+```client-apple
+Query.createdAfter("2025-01-01T00:00:00Z")
+```
+```client-android-kotlin
+Query.createdAfter("2025-01-01T00:00:00Z")
+```
+```client-android-java
+Query.createdAfter("2025-01-01T00:00:00Z")
+```
+```server-python
+Query.created_after("2025-01-01T00:00:00Z")
+```
+```server-ruby
+Query.created_after("2025-01-01T00:00:00Z")
+```
+```server-deno
+Query.createdAfter("2025-01-01T00:00:00Z")
+```
+```server-nodejs
+Query.createdAfter("2025-01-01T00:00:00Z")
+```
+```server-php
+Query::createdAfter("2025-01-01T00:00:00Z")
+```
+```server-swift
+Query.createdAfter("2025-01-01T00:00:00Z")
+```
+```http
+{"method":"createdAfter","values":["2025-01-01T00:00:00Z"]}
+```
+{% /multicode %}
+
+### Updated before {% #updated-before %}
+
+Returns rows updated before the given date.
+
+{% multicode %}
+```client-web
+Query.updatedBefore("2025-01-01T00:00:00Z")
+```
+```client-flutter
+Query.updatedBefore("2025-01-01T00:00:00Z")
+```
+```client-apple
+Query.updatedBefore("2025-01-01T00:00:00Z")
+```
+```client-android-kotlin
+Query.updatedBefore("2025-01-01T00:00:00Z")
+```
+```client-android-java
+Query.updatedBefore("2025-01-01T00:00:00Z")
+```
+```server-python
+Query.updated_before("2025-01-01T00:00:00Z")
+```
+```server-ruby
+Query.updated_before("2025-01-01T00:00:00Z")
+```
+```server-deno
+Query.updatedBefore("2025-01-01T00:00:00Z")
+```
+```server-nodejs
+Query.updatedBefore("2025-01-01T00:00:00Z")
+```
+```server-php
+Query::updatedBefore("2025-01-01T00:00:00Z")
+```
+```server-swift
+Query.updatedBefore("2025-01-01T00:00:00Z")
+```
+```http
+{"method":"updatedBefore","values":["2025-01-01T00:00:00Z"]}
+```
+{% /multicode %}
+
+### Updated after {% #updated-after %}
+
+Returns rows updated after the given date.
+
+{% multicode %}
+```client-web
+Query.updatedAfter("2025-01-01T00:00:00Z")
+```
+```client-flutter
+Query.updatedAfter("2025-01-01T00:00:00Z")
+```
+```client-apple
+Query.updatedAfter("2025-01-01T00:00:00Z")
+```
+```client-android-kotlin
+Query.updatedAfter("2025-01-01T00:00:00Z")
+```
+```client-android-java
+Query.updatedAfter("2025-01-01T00:00:00Z")
+```
+```server-python
+Query.updated_after("2025-01-01T00:00:00Z")
+```
+```server-ruby
+Query.updated_after("2025-01-01T00:00:00Z")
+```
+```server-deno
+Query.updatedAfter("2025-01-01T00:00:00Z")
+```
+```server-nodejs
+Query.updatedAfter("2025-01-01T00:00:00Z")
+```
+```server-php
+Query::updatedAfter("2025-01-01T00:00:00Z")
+```
+```server-swift
+Query.updatedAfter("2025-01-01T00:00:00Z")
+```
+```http
+{"method":"updatedAfter","values":["2025-01-01T00:00:00Z"]}
+```
+{% /multicode %}
 # Complex queries {% #complex-queries %}
 
 You can create complex queries by combining AND and OR operations. For example, to find items that are either books under $20 or magazines under $10:
