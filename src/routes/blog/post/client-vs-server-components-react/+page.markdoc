@@ -70,7 +70,7 @@ export default function Component() {
 		fetchName();
 	}, [])
 
-	return <div>{response.name}</div>
+	return <div>{response?.name || "Loading..."}</div>
 }
 ```
 
