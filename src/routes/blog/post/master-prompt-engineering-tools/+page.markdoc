@@ -11,7 +11,7 @@ unlisted: true
 category: startup
 call_to_action: true
 ---
-Prompt engineering is changing how we [build with AI](https://appwrite.io/docs/products/ai). It's no longer just about the model, it’s also about the inputs given to the AI models.
+Prompt engineering is changing how we [build with AI](/docs/tooling/mcp). It's no longer just about the model, it’s also about the inputs given to the AI models.
 
 As AI-driven development takes off, prompt engineering becomes the bridge between human intent and machine execution. It’s how you get AI to do what you want. If you’re building with AI, this isn’t optional. Understanding prompts means understanding how to steer AI. It’s a must-have skill for the next generation of developers.
 
