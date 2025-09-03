@@ -92,31 +92,29 @@
     });
 
     $effect(() => {
-        if (!navigating?.to) {
+        // Handle navigation changes
+        if (navigating?.to) {
+            const isDocs = navigating.to.route.id?.startsWith('/docs');
+
+            if (isDocs) {
+                if (!document.body.classList.contains(`${$currentTheme}`)) {
+                    applyTheme($currentTheme);
+                }
+            } else {
+                applyTheme('dark');
+            }
             return;
         }
 
-        const isDocs = navigating.to.route.id?.startsWith('/docs');
-
-        if (isDocs) {
-            if (!document.body.classList.contains(`${$currentTheme}`)) {
-                applyTheme($currentTheme);
-            }
-        } else {
-            applyTheme('dark');
+        // Handle theme changes on current page (docs only)
+        if (browser && page.route.id?.startsWith('/docs')) {
+            applyTheme($currentTheme);
         }
     });
 
     $effect(() => {
         if ($loggedIn) {
             document.body.dataset.loggedIn = '';
-        }
-    });
-
-    // Apply theme changes immediately when currentTheme changes
-    $effect(() => {
-        if (browser && page.route.id?.startsWith('/docs')) {
-            applyTheme($currentTheme);
         }
     });
 
