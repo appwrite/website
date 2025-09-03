@@ -588,7 +588,7 @@ export const pins = {
             lng: -122.42,
             city: 'San Francisco',
             code: 'SFO',
-            date: 'Q4 2025'
+            available: true
         },
         {
             lat: 12.97,
@@ -653,7 +653,7 @@ export const pins = {
             lng: -122.42,
             city: 'San Francisco',
             code: 'SFO',
-            date: 'Q4 2025'
+            available: true
         },
         {
             lat: 12.97,
