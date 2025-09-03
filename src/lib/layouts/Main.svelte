@@ -143,7 +143,7 @@
         }
     }
 
-    $: ($isHeaderHidden, updateSideNav());
+    $: $isHeaderHidden, updateSideNav();
 
     const handleNav = () => {
         $isMobileNavOpen = !$isMobileNavOpen;
