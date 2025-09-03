@@ -26,7 +26,7 @@ Let’s dive in.
 
 # Appwrite Cloud is now generally available
 
-![Appwrite Cloud GA](/images/changelog/2025-07-24.png)
+![Appwrite Cloud GA](/images/blog/product-update-august-2025/ga.png)
 
 After more than 26 months of Appwrite Cloud, we removed the beta tag. Appwrite is now officially generally available (GA).
 
@@ -36,7 +36,7 @@ With Appwrite Cloud now powering over 300,000 projects, we’re proud and excite
 
 # Appwrite Sites Hackathon
 
-![Appwrite Sites Hackathon](/images/blog/announcing-csv-imports/cover.png)
+![Appwrite Sites Hackathon](/images/blog/product-update-august-2025/hackathon.png)
 
 After receiving multiple requests from the community, the **Appwrite Sites Hackathon** is finally here and underway.
 
@@ -46,7 +46,7 @@ You have until **September 12** to showcase your creativity and compete for grea
 
 # New Cloud region
 
-![New Cloud region](/images/blog/announcing-bulk-api/cover.png)
+![New Cloud region](/images/blog/product-update-august-2025/new-region.png)
 
 We’re happy to share that the new cloud region, San Francisco (SFO), is now available on all Free, Pro, Scale, and Enterprise plans.
 
@@ -59,7 +59,7 @@ Want to switch to a new region? Here are some resources to help you:
 
 # New TablesDB API with updated terminology
 
-![New TablesDB API with updated terminology](/images/blog/announcing-database-upsert/cover.png)
+![New TablesDB API with updated terminology](/images/blog/product-update-august-2025/terminology.png)
 
 Appwrite Databases now feels more relational. We’ve updated the terminology to match the relational model that developers are most familiar with.
 
@@ -79,7 +79,7 @@ While old collection methods still work with essential security and maintenance,
 
 # TablesDB UI
 
-![TablesDB UI](/images/blog/announcing-encrypted-string-attributes/cover.png)
+![TablesDB UI](/images/blog/product-update-august-2025/new-ui.png)
 
 We introduced a completely new TablesDB UI for Appwrite Databases. This new interface lets you experience a spreadsheet‑like editing workflow inside the Console.
 
@@ -93,7 +93,7 @@ You can now:
 
 # Atomic numeric operations
 
-![Atomic numeric operations](/images/blog/announcing-auto-increment-support/cover.png)
+![Atomic numeric operations](/images/blog/product-update-august-2025/atomic.png)
 
 This new database feature optimizes your app’s performance and saves you time.
 
@@ -103,7 +103,7 @@ You can safely update numeric fields (likes, retries, stock, or scores) directly
 
 # Timestamp Overrides
 
-![Timestamp Overrides](/images/blog/product-update-july-2025/console.png)
+![Timestamp Overrides](/images/blog/product-update-august-2025/timestamp.png)
 
 With the help of timestamp overrides, you can now retain original timestamps during imports to keep audits, analytics, and user timelines accurate.
 
@@ -113,7 +113,7 @@ Whether importing a few thousand records or years of historical data, this featu
 
 # Community recognitions
 
-![Community recognitions](/images/blog/product-update-july-2025/community.png)
+![Community recognitions](/images/blog/product-update-august-2025/community.png)
 
 We’re excited to feature [WriteWise](https://writewise-os.streamlit.app/) as part of our Monthly Community recognitions this month.
 
