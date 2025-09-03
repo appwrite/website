@@ -113,6 +113,13 @@
         }
     });
 
+    // Apply theme changes immediately when currentTheme changes
+    $effect(() => {
+        if (browser && page.route.id?.startsWith('/docs')) {
+            applyTheme($currentTheme);
+        }
+    });
+
     let canonicalUrl = $derived<string>(
         `${page.url.origin.replace(/^https?:\/\/www\./, 'https://')}${page.url.pathname}`
     );
