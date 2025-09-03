@@ -83,6 +83,8 @@
         saveReferrerAndUtmSource(page.url);
     });
 
+    currentTheme.subscribe(applyTheme);
+
     beforeNavigate(({ willUnload, to }) => {
         if (window) {
             tracked.clear();
