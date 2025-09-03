@@ -92,23 +92,14 @@
     });
 
     $effect(() => {
-        // Handle navigation changes
-        if (navigating?.to) {
-            const isDocs = navigating.to.route.id?.startsWith('/docs');
+        const isDocs = browser && page.route.id?.startsWith('/docs')
 
-            if (isDocs) {
-                if (!document.body.classList.contains(`${$currentTheme}`)) {
-                    applyTheme($currentTheme);
-                }
-            } else {
-                applyTheme('dark');
+        if (isDocs) {
+            if (!document.body.classList.contains(`${$currentTheme}`)) {
+                applyTheme($currentTheme);
             }
-            return;
-        }
-
-        // Handle theme changes on current page (docs only)
-        if (browser && page.route.id?.startsWith('/docs')) {
-            applyTheme($currentTheme);
+        } else {
+            applyTheme('dark');
         }
     });
 
