@@ -10,7 +10,8 @@
             store.set(value);
             if (browser) {
                 localStorage.setItem('theme', value);
-                document.documentElement.style.setProperty('color-scheme', value);
+                const resolvedTheme = value === 'system' ? getSystemTheme() : value;
+                document.documentElement.style.setProperty('color-scheme', resolvedTheme);
             }
         };
 
@@ -79,6 +80,10 @@
         applyTheme(initialTheme);
 
         saveReferrerAndUtmSource(page.url);
+    });
+
+    $effect(() => {
+        applyTheme($currentTheme);
     });
 
     beforeNavigate(({ willUnload, to }) => {
