@@ -1,5 +1,6 @@
 import { enhancedImages } from '@sveltejs/enhanced-img';
 import { sveltekit } from '@sveltejs/kit/vite';
+import { withFilter } from 'vite';
 import dynamicImport from 'vite-plugin-dynamic-import';
 import { ViteImageOptimizer } from 'vite-plugin-image-optimizer';
 import manifestSRI from 'vite-plugin-manifest-sri';
@@ -9,13 +10,16 @@ export default defineConfig({
     plugins: [
         enhancedImages(),
         sveltekit(),
-        dynamicImport({
-            filter(id) {
-                if (id.includes('/node_modules/@appwrite.io/repo/docs')) {
-                    return true;
+        withFilter(
+            dynamicImport({
+                filter(id) {
+                    if (id.includes('/node_modules/@appwrite.io/repo/docs')) {
+                        return true;
+                    }
                 }
-            }
-        }),
+            }),
+            { load: { id: 'src/lib/utils/specs.ts' } }
+        ),
         ViteImageOptimizer({
             include: ['**/*.png', '**/*.jpg', '**/*.jpeg', '**/*.gif', '**/*.svg'],
             exclude: ['**/*.avif', '**/*.webp'],
@@ -40,5 +44,8 @@ export default defineConfig({
     },
     test: {
         include: ['src/**/*.{test,spec}.{js,ts}']
+    },
+    experimental: {
+        enableNativePlugin: true
     }
 });

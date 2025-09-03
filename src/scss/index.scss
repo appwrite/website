@@ -7,15 +7,15 @@
 }
 
 @layer css-variables {
-  @include meta.load-css('1-css-variables');
+  @include meta.load-css('1-css-variables/index');
 }
 
 @layer resets {
-  @include meta.load-css('2-resets');
+  @include meta.load-css('2-resets/index');
 }
 
 @layer fonts {
-  @include meta.load-css('3-fonts');
+  @include meta.load-css('3-fonts/index');
 }
 
 @layer icons {
@@ -23,27 +23,27 @@
 }
 
 @layer animations {
-  @include meta.load-css('5-animations');
+  @include meta.load-css('5-animations/index');
 }
 
 @layer elements {
-  @include meta.load-css('6-elements');
+  @include meta.load-css('6-elements/index');
 }
 
 @layer pinkcomponents {
-  @include meta.load-css('7-components');
+  @include meta.load-css('7-components/index');
 }
 
 @layer sequences {
-  @include meta.load-css('8-sequences');
+  @include meta.load-css('8-sequences/index');
 }
 
 @layer grids {
-  @include meta.load-css('9-grids');
+  @include meta.load-css('9-grids/index');
 }
 
 @layer pages {
-  @include meta.load-css('9-pages');
+  @include meta.load-css('9-pages/index');
 }
 
 @layer pinkutilities {
