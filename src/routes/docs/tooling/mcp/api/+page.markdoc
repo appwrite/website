@@ -187,7 +187,13 @@ Click on the **Edit Config** button, wait for the `claude_desktop_config.json` f
 }
 ```
 
-If you use **Claude Code**, run the following command in your terminal:
+Replace `your-project-id`, `your-api-key`, and `<REGION>` with your actual Appwrite project details.
+
+{% /tabsitem %}
+
+{% tabsitem #claude-code title="Claude Code" %}
+
+Run the following command in your terminal:
 
 ```bash
 claude mcp add-json appwrite-api '{"command":"uvx","args":["mcp-server-appwrite","--users"],"env":{"APPWRITE_PROJECT_ID": "your-project-id", "APPWRITE_API_KEY": "your-api-key", "APPWRITE_ENDPOINT": "https://<REGION>.cloud.appwrite.io/v1"}}'

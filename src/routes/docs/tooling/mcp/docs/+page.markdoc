@@ -106,12 +106,16 @@ Click on the **Edit Config** button, wait for the `claude_desktop_config.json` f
   }
 }
 ```
+{% /tabsitem %}
 
-If you use **Claude Code**, run the following command in your terminal:
+{% tabsitem #claude-code title="Claude Code" %}
+
+Run the following command in your terminal:
 
 ```bash
 claude mcp add appwrite-docs https://mcp-for-docs.appwrite.io -t http
 ```
+
 {% /tabsitem %}
 {% /tabs %}
 
