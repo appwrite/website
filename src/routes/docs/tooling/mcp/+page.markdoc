@@ -4,7 +4,7 @@ title: Model Context Protocol
 description: Enable LLMs and code-generation tools to interact with your Appwrite project
 ---
 
-Appwrite offers [Model Context Protocol](https://modelcontextprotocol.io) (MCP) servers that allows LLMs to directly interact with Appwrite's API and docs. Using the MCP server, you can use applications such as Claude Desktop, Cursor, Windsurf Editor, etc. to operate on your Appwrite project as well as gain context about the latest updates to Appwrite's SDKs, APIs, and CLI.
+Appwrite offers [Model Context Protocol](https://modelcontextprotocol.io) (MCP) servers that allow LLMs to directly interact with Appwrite's API and docs. Using MCP servers, you can use applications such as Claude Desktop, Cursor, Windsurf Editor, etc. to operate on your Appwrite project as well as gain context about the latest updates to Appwrite's SDKs, APIs, and CLI.
 
 # What is MCP?
 
