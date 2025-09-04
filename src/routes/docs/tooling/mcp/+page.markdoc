@@ -69,3 +69,9 @@ You can now integrate the MCP server with various popular AI-enabled code editor
 
 {% /cards %}
 {% /only_dark %}
+
+{% info title="Want to integrate your AI tool?" %}
+
+If you are building an AI code-generation tool that can integrate with MCP servers and would like to collaborate, join our [Technology Partners](https://appwrite.io/integrations/technology-partner) program.
+
+{% /info %}
