@@ -73,7 +73,9 @@ To support the terminology change, we’ve added the TablesDB API.
 
 A new API layer that helps you work with relational database concepts like tables, columns, and rows, without requiring any changes to your existing apps.
 
-While old collection methods still work with essential security and maintenance, all new features will now be available in the TablesDB API.
+The old document-based methods are now deprecated and will no longer receive major upgrades. They will continue to receive security patches and essential maintenance, and we are ensuring backwards compatibility with those methods for the API, so there’s no need to migrate immediately if a specific issue arises.
+
+However, we recommend adopting the new TablesDB API for future projects to take advantage of ongoing improvements and new capabilities.
 
 [Learn more](/blog/post/announcing-appwrite-databases-new-ui)
 
