@@ -36,14 +36,17 @@ npm install node-appwrite
 
 To solve this issue, all existing server SDK methods that create a session now return a `secret` attribute. The following methods are:
 
-- `account.createEmailPasswordSession(email, password)`
+- `account.createEmailPasswordSession({email, password})`
 - `account.createAnonymousSession()`
-- `account.createSession(userId, token)`
+- `account.createSession({userId, secret})`
 
 You can use these methods now to create a session, and to set a session cookie on your domain.
 
 ```jsx
-const session = account.createEmailPasswordSession(email, password)
+const session = account.createEmailPasswordSession({
+  email,
+  password
+})
 
 console.log(session.secret) // Output: 'eyJpZCI...sdfahfkjjy'
 ```
@@ -159,7 +162,10 @@ export async function POST(request){
     const { account } = await  createAdminClient()
 
     const { email, password } = await request.json()
-    const session = await account.createEmailPasswordSession(email, password)
+    const session = await account.createEmailPasswordSession({
+      email,
+      password
+    })
 
     cookies().set('session', session.secret, {
         httpOnly: true,

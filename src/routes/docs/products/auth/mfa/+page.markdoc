@@ -77,7 +77,7 @@ val avatars = Avatars(client)
 {% /multicode %}
 
 Before enabling MFA, you should display recovery codes to the user.
-The codes are single use passwords the user can use to access their account if they lose access to their MFA email, 
+The codes are single use passwords the user can use to access their account if they lose access to their MFA email,
 phone, or authenticator app. These codes can **only be generated once**, warn the users to save them.
 
 The code will look like this, display them to the user and remind them to save the codes in a secure place.
@@ -145,10 +145,10 @@ Before they can be used as a factor, they need to be verified.
 First, set your user's email if they haven't already.
 {% multicode %}
 ```client-web
-const response = await account.updateEmail(
-    'email@example.com',  // email
-    'password' // password
-);
+const response = await account.updateEmail({
+    email: 'email@example.com',
+    password: 'password'
+});
 ```
 ```client-flutter
 Future result = account.updateEmail(
@@ -191,14 +191,14 @@ account.updateEmail(
 {% /multicode %}
 
 Then, initiate verification for the email by calling `account.createEmailVerification()`.
-Calling `createEmailVerification` will send a verification email to the user's email address 
+Calling `createEmailVerification` will send a verification email to the user's email address
 with a link with the query parameter `userId` and `secret`.
 
 {% multicode %}
 ```client-web
-const res = await account.createVerification(
-    'https://example.com/verify-email' // url
-);
+const res = await account.createVerification({
+    url: 'https://example.com/verify-email'
+});
 ```
 ```client-flutter
 Future result = account.createVerification(
@@ -244,10 +244,10 @@ Finally, verify the email by calling `account.updateVerification()` with `userId
 
 {% multicode %}
 ```client-web
-const response = await account.updateVerification(
-    '<USER_ID>',  // userId
-    '<SECRET>', // secret
-);
+const response = await account.updateVerification({
+    userId: '<USER_ID>',
+    secret: '<SECRET>'
+});
 ```
 ```client-flutter
 Future result = account.updateVerification(
@@ -296,10 +296,10 @@ First, set your user's phone number if they haven't already.
 
 {% multicode %}
 ```client-web
-const response = await account.updatePhone(
-    '+12065550100',  // phone
-    'password' // password
-);
+const response = await account.updatePhone({
+    phone: '+12065550100',
+    password: 'password'
+});
 ```
 ```client-flutter
 Future result = account.updatePhone(
@@ -377,10 +377,10 @@ account.createPhoneVerification(new CoroutineCallback<>((result, error) -> {
 After the user receives the verification code, they can verify their phone number by calling `account.updatePhoneVerification()`.
 {% multicode %}
 ```client-web
-const response = await account.updatePhoneVerification(
-    '<USER_ID>',  // userId
-    '<SECRET>' // secret
-);
+const response = await account.updatePhoneVerification({
+    userId: '<USER_ID>',
+    secret: '<SECRET>'
+});
 ```
 ```client-flutter
 Future result = account.updatePhoneVerification(
@@ -429,9 +429,9 @@ First, add a TOTP authenticator to the user's account by calling `account.addAut
 
 {% multicode %}
 ```client-web
-const { secret, uri } = await account.createMfaAuthenticator(
-    'totp' // type
-);
+const { secret, uri } = await account.createMfaAuthenticator({
+    type: 'totp'
+});
 ```
 ```client-flutter
 Future result = account.createMfaAuthenticator(
@@ -474,7 +474,7 @@ account.createMfaAuthenticator(
 ```
 {% /multicode %}
 
-This will create a secret and a URI. 
+This will create a secret and a URI.
 The URI is a URL that can be used to generate a QR code for the user to scan with their TOTP authenticator app.
 
 You can generate a QR code for the user to scan by calling `avatars.getQR()`.
@@ -562,10 +562,10 @@ verify the authenticator by calling `account.verifyMfaAuthenticator()`.
 
 {% multicode %}
 ```client-web
-const promise = account.updateMfaAuthenticator(
-    'totp',  // type
-    '<OTP>' // otp
-);
+const promise = account.updateMfaAuthenticator({
+    type: 'totp',
+    otp: '<OTP>'
+});
 ```
 ```client-flutter
   Future result = account.updateMfaAuthenticator(
@@ -619,7 +619,9 @@ the MFA is enforced.
 
 {% multicode %}
 ```client-web
-const result = await account.updateMFA(true);
+const result = await account.updateMFA({
+    enabled: true
+});
 ```
 
 ```client-flutter
@@ -995,12 +997,12 @@ let result = try await account.updateMfaChallenge(
 ```
 {% /multicode %}
 
-After completing the challenge, the user is now authenticated and all requests will be authorized. 
-You can confirm this by running `account.get()` 
+After completing the challenge, the user is now authenticated and all requests will be authorized.
+You can confirm this by running `account.get()`
 {% /section %}
 
 {% section #recovery step=9 title="Recovery" %}
-In case your user needs to recover their account, they can use the recovery codes generated in the first step with the 
+In case your user needs to recover their account, they can use the recovery codes generated in the first step with the
 recovery code factor. Initialize the challenge by calling `account.createMfaChallenge()` with the factor `recoverycode`.
 
 {% multicode %}
