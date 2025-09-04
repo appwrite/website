@@ -96,11 +96,7 @@
     });
 
     $effect(() => {
-        if (!navigating?.to) {
-            return;
-        }
-
-        const isDocs = navigating.to.route.id?.startsWith('/docs');
+        const isDocs = browser && page.route.id?.startsWith('/docs');
 
         if (isDocs) {
             if (!document.body.classList.contains(`${$currentTheme}`)) {
