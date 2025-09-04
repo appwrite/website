@@ -15,10 +15,19 @@
                 {
                     label: 'Overview',
                     href: '/docs/tooling/mcp'
+                }
+            ]
+        },
+        {
+            label: 'Servers',
+            items: [
+                {
+                    label: 'MCP for API',
+                    href: '/docs/tooling/mcp/api'
                 },
                 {
-                    label: 'MCP Server For Docs',
-                    href: '/docs/tooling/mcp/mcp-for-docs',
+                    label: 'MCP for Docs',
+                    href: '/docs/tooling/mcp/docs',
                     new: isNewUntil('31 Oct 2025')
                 }
             ]

@@ -1,33 +1,50 @@
 ---
 layout: article
 title: Cursor
-description: Add the MCP server to Cursor
+description: Add the Appwrite MCP servers to Cursor
 ---
 
-Learn how you can add the Appwrite MCP server to Cursor.
+Learn how you can add the Appwrite MCP servers to Cursor to interact with both the Appwrite API and documentation.
 
-{% info title="Pre-requisite: Install uv" %}
+Before you begin, ensure you have the following **pre-requisites** installed on your system:
 
-You must install [uv](https://docs.astral.sh/uv/getting-started/installation/) on your system to use the MCP server.
+{% tabs %}
+{% tabsitem #api-server-prerequisites title="API Server" %}
 
-{% /info %}
+[uv](https://docs.astral.sh/uv/getting-started/installation/) must be installed on your system.
 
-{% section #step-1 step=1 title="Add MCP server" %}
+{% /tabsitem %}
 
-Open the **Cursor Settings** page, head to the **MCP** tab, and click on the **Add new global MCP server** button. This will open an `mcp.json` file in your editor, which you must update to the following:
+{% tabsitem #docs-server-prerequisites title="Docs Server" %}
+
+[Node.js](https://nodejs.org/en/download) and npm must be installed on your system.
+
+{% /tabsitem %}
+{% /tabs %}
+
+{% section #step-1 step=1 title="Add MCP servers" %}
+
+Open the **Cursor Settings** page, head to the **MCP** tab, and click on the **Add new global MCP server** button. This will open an `mcp.json` file in your editor.
+
+Choose which MCP server you want to configure:
+
+{% tabs %}
+{% tabsitem #api-only title="API Server" %}
+
+Update the `mcp.json` file to include the API server:
 
 ```json
 {
     "mcpServers": {
-        "appwrite": {
+        "appwrite-api": {
             "command": "uvx",
             "args": [
                 "mcp-server-appwrite",
                 "--users"
             ],
             "env": {
-                "APPWRITE_API_KEY": "<your-api-key>",
-                "APPWRITE_PROJECT_ID": "<your-project-id>",
+                "APPWRITE_API_KEY": "your-api-key",
+                "APPWRITE_PROJECT_ID": "your-project-id",
                 "APPWRITE_ENDPOINT": "https://<REGION>.cloud.appwrite.io/v1"
             }
         }
@@ -35,37 +52,109 @@ Open the **Cursor Settings** page, head to the **MCP** tab, and click on the **A
 }
 ```
 
-Once you save the details, Cursor will connect with the MCP server and load all available tools. You may need to restart Cursor if it is unable to start the MCP server.
+**Configuration:**
+- Replace `your-project-id` with your actual Appwrite project ID
+- Replace `your-api-key` with your Appwrite API key
+- Replace `<REGION>` with your Appwrite Cloud region (e.g., `nyc`, `fra`)
 
-{% info title="Enable other MCP tools" %}
+{% /tabsitem %}
 
-To enable additional tools, learn more about [command-line arguments](/docs/tooling/mcp#command-line-arguments).
+{% tabsitem #docs-only title="Docs Server" %}
 
-{% /info %}
+Update the `mcp.json` file to include the docs server:
 
-You can also **directly add the MCP server to Cursor** using the following link.
+```json
+{
+    "mcpServers": {
+        "appwrite-docs": {
+            "command": "npx",
+            "args": ["@appwrite/mcp-server-docs"]
+        }
+    }
+}
+```
+
+{% /tabsitem %}
+{% /tabs %}
+
+You can also **directly add the MCP servers to Cursor** using the following links:
+
+{% tabs %}
+{% tabsitem #direct-api-only title="API Server" %}
 
 {% only_light %}
 {% cards %}
-{% cards_item href="cursor://anysphere.cursor-deeplink/mcp/install?name=appwrite&config=eyJjb21tYW5kIjoidXZ4IG1jcC1zZXJ2ZXItYXBwd3JpdGUgLS11c2VycyIsImVudiI6eyJBUFBXUklURV9BUElfS0VZIjoiPHlvdXItYXBpLWtleT4iLCJBUFBXUklURV9QUk9KRUNUX0lEIjoiPHlvdXItcHJvamVjdC1pZD4iLCJBUFBXUklURV9FTkRQT0lOVCI6Imh0dHBzOi8vPFJFR0lPTj4uY2xvdWQuYXBwd3JpdGUuaW8vdjEifX0%3D" title="Add to Cursor" image="/images/docs/mcp/logos/cursor-ai.svg" %}
+{% cards_item href="https://apwr.dev/api-mcp-cursor?ref=docs" title="Add API Server to Cursor" image="/images/docs/mcp/logos/cursor-ai.svg" %}
 {% /cards_item %}
 {% /cards %}
 {% /only_light %}
 
 {% only_dark %}
 {% cards %}
-{% cards_item href="cursor://anysphere.cursor-deeplink/mcp/install?name=appwrite&config=eyJjb21tYW5kIjoidXZ4IG1jcC1zZXJ2ZXItYXBwd3JpdGUgLS11c2VycyIsImVudiI6eyJBUFBXUklURV9BUElfS0VZIjoiPHlvdXItYXBpLWtleT4iLCJBUFBXUklURV9QUk9KRUNUX0lEIjoiPHlvdXItcHJvamVjdC1pZD4iLCJBUFBXUklURV9FTkRQT0lOVCI6Imh0dHBzOi8vPFJFR0lPTj4uY2xvdWQuYXBwd3JpdGUuaW8vdjEifX0%3D" title="Add to Cursor" image="/images/docs/mcp/logos/dark/cursor-ai.svg" %}
+{% cards_item href="https://apwr.dev/api-mcp-cursor?ref=docs" title="Add API Server to Cursor" image="/images/docs/mcp/logos/dark/cursor-ai.svg" %}
 {% /cards_item %}
 {% /cards %}
 {% /only_dark %}
 
-This will automatically configure the MCP server, and you will only need to update your Appwrite API key, project ID, and endpoint.
+{% /tabsitem %}
+
+{% tabsitem #direct-docs-only title="Docs Server" %}
+
+{% only_light %}
+{% cards %}
+{% cards_item href="https://apwr.dev/docs-mcp-cursor?ref=docs" title="Add Docs Server to Cursor" image="/images/docs/mcp/logos/cursor-ai.svg" %}
+{% /cards_item %}
+{% /cards %}
+{% /only_light %}
+
+{% only_dark %}
+{% cards %}
+{% cards_item href="https://apwr.dev/docs-mcp-cursor?ref=docs" title="Add Docs Server to Cursor" image="/images/docs/mcp/logos/dark/cursor-ai.svg" %}
+{% /cards_item %}
+{% /cards %}
+{% /only_dark %}
+
+{% /tabsitem %}
+{% /tabs %}
+
+Once you save the details, Cursor will connect with the MCP server(s) and load all available tools. You may need to restart Cursor if it is unable to start the MCP server.
+
+{% info title="Enable other API MCP tools" %}
+
+To enable additional API tools, learn more about [command-line arguments](/docs/tooling/mcp/api#command-line-arguments).
+
+{% /info %}
 
 {% /section %}
 
 {% section #step-2 step=2 title="Test the integration" %}
 
-Open Cursor Agent and add a prompt to create a new user.
+Open Cursor Agent and test your MCP integrations. You can try out the following example prompts based on the MCP server you have configured:
+
+{% tabs %}
+{% tabsitem #test-api title="API Server" %}
+
+**Example prompts:**
+- `Create a new user in my Appwrite project`
+- `List all databases in my project`
+- `Show me the collections in my database`
+- `Create a new document in my collection`
+- `Delete a specific user by ID`
+
+{% /tabsitem %}
+
+{% tabsitem #test-docs title="Docs Server" %}
+
+**Example prompts:**
+- `How do I set up real-time subscriptions in Appwrite?`
+- `Show me how to authenticate users with OAuth`
+- `What are the best practices for database queries?`
+- `How do I implement file uploads with Appwrite Storage?`
+- `Show me an example of using Appwrite Functions`
+
+{% /tabsitem %}
+
+{% /tabs %}
 
 ![Create user in Appwrite project](/images/docs/mcp/cursor/cursor-create-user.png)
 

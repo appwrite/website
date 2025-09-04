@@ -4,40 +4,33 @@ title: Model Context Protocol
 description: Enable LLMs and code-generation tools to interact with your Appwrite project
 ---
 
-Appwrite offers a [Model Context Protocol](https://modelcontextprotocol.io) (MCP) server that allows LLMs to directly interact with Appwrite's API. Using the MCP server, you can use applications such as Claude Desktop, Cursor, Windsurf Editor, etc. to interact with your Appwrite project.
+Appwrite offers [Model Context Protocol](https://modelcontextprotocol.io) (MCP) servers that allows LLMs to directly interact with Appwrite's API and docs. Using the MCP server, you can use applications such as Claude Desktop, Cursor, Windsurf Editor, etc. to operate on your Appwrite project as well as gain context about the latest updates to Appwrite's SDKs, APIs, and CLI.
 
-# Getting started
+# What is MCP?
 
-Before launching the MCP server, you must [set up an Appwrite project](https://cloud.appwrite.io) and create an API key with the necessary scopes enabled.
+The Model Context Protocol (MCP) is an open standard that enables Large Language Models (LLMs) and AI code-generation tools to interact with APIs and documentation in a structured manner. MCP servers provide a bridge between LLMs and external services, allowing them to perform actions such as querying databases, managing users, and accessing files.
 
-{% only_light %}
-![Appwrite API key](/images/docs/mcp/appwrite/appwrite-api-secret.png)
-{% /only_light %}
-{% only_dark %}
-![Appwrite API key](/images/docs/mcp/appwrite/dark/appwrite-api-secret.png)
-{% /only_dark %}
+The key benefits of using MCP servers include:
 
-## Integrate with popular AI tools
+- **Enhanced capabilities**: LLMs can perform complex tasks by interacting with APIs, going beyond simple text generation.
+- **Improved context**: By accessing up-to-date documentation and API definitions, LLMs can provide more accurate and relevant responses.
+- **Seamless integration**: MCP servers can be easily integrated with popular AI tools andcode editors, enhancing their functionality.
 
-Install [uv](https://docs.astral.sh/uv/getting-started/installation/) on your system with:
+# Available MCP servers
 
-{% tabs %}
-{% tabsitem #uv-linux-macos title="Linux and MacOS" %}
+Appwrite currently offers the following MCP servers:
 
-```bash
-curl -LsSf https://astral.sh/uv/install.sh | sh
-```
+{% cards %}
 
-{% /tabsitem %}
+{% cards_item href="/docs/tooling/mcp/api" title="MCP server for Appwrite API" icon="icon-globe-alt"%}
+{% /cards_item %}
 
-{% tabsitem #uv-windows title="Windows" %}
+{% cards_item href="/docs/tooling/mcp/docs" title="MCP server for Appwrite docs" icon="icon-document-text" %}
+{% /cards_item %}
 
-```powershell
-powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
-``` 
+{% /cards %}
 
-{% /tabsitem %}
-{% /tabs %}
+# Integrate with popular AI tools
 
 You can now integrate the MCP server with various popular AI-enabled code editors and LLM apps.
 
@@ -76,31 +69,3 @@ You can now integrate the MCP server with various popular AI-enabled code editor
 
 {% /cards %}
 {% /only_dark %}
-
-{% info title="Want to integrate your AI tool?" %}
-
-If you are building an AI code-generation tool that can integrate with MCP servers and would like to collaborate, join our [Technology Partners](https://appwrite.io/integrations/technology-partner) program.
-
-{% /info %}
-
-## Command-line arguments
-
-Database tools are enabled by default. In addition you can pass arguments to `uvx mcp-server-appwrite [args]` to enable other MCP tools for various Appwrite APIs.
-
-| Argument | Description |
-| --- | --- |
-| `--databases` | Enables the Databases API |
-| `--users` | Enables the Users API |
-| `--teams` | Enables the Teams API |
-| `--storage` | Enables the Storage API |
-| `--functions` | Enables the Functions API |
-| `--messaging` | Enables the Messaging API |
-| `--locale` | Enables the Locale API |
-| `--avatars` | Enables the Avatars API |
-| `--all` | Enables all Appwrite APIs |
-
-{% info title="Enable only necessary MCP tools" %}
-When an MCP tool is enabled, the tool's definition is passed to the LLM, using up tokens from the model's available context window. As a result, the effective context window is reduced. 
-
-The default Appwrite MCP server ships with only the Databases tools (our most commonly used API) enabled to stay within these limits. Additional tools can be enabled using the flags below.
-{% /info %}

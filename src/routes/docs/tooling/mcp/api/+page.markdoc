@@ -1,0 +1,255 @@
+---
+layout: article
+title: MCP server for Appwrite API
+description: Enable LLMs and code-generation tools to interact with the Appwrite API
+---
+
+The MCP server for Appwrite API allows LLMs and code-generation tools to interact with the Appwrite platform and perform various operations on your Appwrite resources, such as creating users, managing databases, and more, using natural language commands.
+
+Here are some of the key benefits of using the MCP server:
+
+- **Direct API interaction**: Enables LLMs to perform actions directly on your Appwrite project
+- **Real-time data access**: Allows LLMs to fetch and manipulate live data from your Appwrite instance
+- **Simplified workflows**: Facilitates complex operations through simple natural language prompts
+- **Customizable tools**: Offers a range of tools for different Appwrite services, which can be enabled as needed
+
+# Pre-requisites {% #pre-requisites %}
+
+## Appwrite API key
+
+Before launching the MCP server, you must [set up an Appwrite project](https://cloud.appwrite.io) and create an **API key** with the necessary scopes enabled.
+
+{% only_light %}
+![Appwrite API key](/images/docs/mcp/appwrite/appwrite-api-secret.png)
+{% /only_light %}
+{% only_dark %}
+![Appwrite API key](/images/docs/mcp/appwrite/dark/appwrite-api-secret.png)
+{% /only_dark %}
+
+## Install uv
+
+Install [uv](https://docs.astral.sh/uv/getting-started/installation/) on your system with:
+
+{% tabs %}
+{% tabsitem #uv-linux-macos title="Linux and MacOS" %}
+
+```bash
+curl -LsSf https://astral.sh/uv/install.sh | sh
+```
+
+{% /tabsitem %}
+
+{% tabsitem #uv-windows title="Windows" %}
+
+```powershell
+powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
+``` 
+
+{% /tabsitem %}
+{% /tabs %}
+
+You can verify the installation by running the following command in your terminal:
+
+```bash
+uv
+```
+
+# Installation {% #installation %}
+
+You can add the MCP server to various AI tools and code editors:
+
+{% tabs %}
+{% tabsitem #cursor title="Cursor" %}
+
+You can directly add the API MCP server to Cursor by clicking on the following:
+
+{% only_light %}
+{% cards %}
+{% cards_item href="https://apwr.dev/api-mcp-cursor?ref=docs" title="Add to Cursor" image="/images/docs/mcp/logos/cursor-ai.svg" %}
+{% /cards_item %}
+{% /cards %}
+{% /only_light %}
+
+{% only_dark %}
+{% cards %}
+{% cards_item href="https://apwr.dev/api-mcp-cursor?ref=docs" title="Add to Cursor" image="/images/docs/mcp/logos/dark/cursor-ai.svg" %}
+{% /cards_item %}
+{% /cards %}
+{% /only_dark %}
+
+Alternatively, you can manually configure it. Open the **Cursor Settings** page, head to the **MCP** tab, and click on the **Add new global MCP server** button. This will open an `mcp.json` file in your editor, where you must add the following:
+
+```json
+{
+    "mcpServers": {
+        "appwrite-api": {
+            "command": "uvx",
+            "args": [
+                "mcp-server-appwrite",
+                "--users"
+            ],
+            "env": {
+                "APPWRITE_API_KEY": "your-api-key",
+                "APPWRITE_PROJECT_ID": "your-project-id",
+                "APPWRITE_ENDPOINT": "https://<REGION>.cloud.appwrite.io/v1"
+            }
+        }
+    }
+}
+```
+
+Replace `your-project-id`, `your-api-key`, and `<REGION>` with your actual Appwrite project details.
+
+{% /tabsitem %}
+
+{% tabsitem #vscode title="VS Code" %}
+
+In VS Code, open the **Command Palette** (press `CTRL + Shift + P` on Windows or `CMD + Shift + P` on MacOS) and run the `MCP: Open User Configuration` command. Update the `mcp.json` file to include the following:
+
+```json
+{
+  "servers": {
+    "appwrite-api": {
+      "command": "uvx",
+      "args": [
+        "mcp-server-appwrite",
+        "--users"
+      ],
+      "env": {
+        "APPWRITE_PROJECT_ID": "your-project-id",
+        "APPWRITE_API_KEY": "your-api-key",
+        "APPWRITE_ENDPOINT": "https://<REGION>.cloud.appwrite.io/v1"
+      }
+    }
+  }
+}
+```
+
+Replace `your-project-id`, `your-api-key`, and `<REGION>` with your actual Appwrite project details.
+
+{% /tabsitem %}
+
+{% tabsitem #windsurf title="Windsurf Editor" %}
+
+Open the **Windsurf Settings** page, head to the **Cascade** tab, find the **Model Context Protocol (MCP) Servers** section, and click on the **View raw config** button.
+
+![Add MCP server](/images/docs/mcp/windsurf/windsurf-add-mcp-server.png)
+
+Update the `mcp_config.json` file to include the following:
+
+```json
+{
+  "mcpServers": {
+    "appwrite-api": {
+      "command": "uvx",
+      "args": [
+        "mcp-server-appwrite",
+        "--users"
+      ],
+      "env": {
+        "APPWRITE_PROJECT_ID": "your-project-id",
+        "APPWRITE_API_KEY": "your-api-key",
+        "APPWRITE_ENDPOINT": "https://<REGION>.cloud.appwrite.io/v1"
+      }
+    }
+  }
+}
+```
+
+Replace `your-project-id`, `your-api-key`, and `<REGION>` with your actual Appwrite project details.
+
+{% /tabsitem %}
+
+{% tabsitem #claude-desktop title="Claude Desktop" %}
+
+In the Claude Desktop app, open the app's **Settings** page (press `CTRL + ,` on Windows or `CMD + ,` on MacOS) and head to the **Developer** tab.  
+
+![Claude Settings](/images/docs/mcp/claude/claude-settings.png)
+
+Click on the **Edit Config** button, wait for the `claude_desktop_config.json` file to open, and add the following info:
+
+```json
+{
+  "mcpServers": {
+    "appwrite-api": {
+      "command": "uvx",
+      "args": [
+        "mcp-server-appwrite",
+        "--users"
+      ],
+      "env": {
+        "APPWRITE_PROJECT_ID": "your-project-id",
+        "APPWRITE_API_KEY": "your-api-key",
+        "APPWRITE_ENDPOINT": "https://<REGION>.cloud.appwrite.io/v1"
+      }
+    }
+  }
+}
+```
+
+If you use **Claude Code**, run the following command in your terminal:
+
+```bash
+claude mcp add-json appwrite-api '{"command":"uvx","args":["mcp-server-appwrite","--users"],"env":{"APPWRITE_PROJECT_ID": "your-project-id", "APPWRITE_API_KEY": "your-api-key", "APPWRITE_ENDPOINT": "https://<REGION>.cloud.appwrite.io/v1"}}'
+```
+
+Replace `your-project-id`, `your-api-key`, and `<REGION>` with your actual Appwrite project details.
+
+{% /tabsitem %}
+{% /tabs %}
+
+## Command-line arguments
+
+Database tools are enabled by default. In addition you can pass arguments to `uvx mcp-server-appwrite [args]` to enable other MCP tools for various Appwrite APIs.
+
+| Argument | Description |
+| --- | --- |
+| `--databases` | Enables the Databases API |
+| `--users` | Enables the Users API |
+| `--teams` | Enables the Teams API |
+| `--storage` | Enables the Storage API |
+| `--functions` | Enables the Functions API |
+| `--messaging` | Enables the Messaging API |
+| `--locale` | Enables the Locale API |
+| `--avatars` | Enables the Avatars API |
+| `--all` | Enables all Appwrite APIs |
+
+{% info title="Enable only necessary MCP tools" %}
+When an MCP tool is enabled, the tool's definition is passed to the LLM, using up tokens from the model's available context window. As a result, the effective context window is reduced. 
+
+The default Appwrite MCP server ships with only the Databases tools (our most commonly used API) enabled to stay within these limits. Additional tools can be enabled using the flags below.
+{% /info %}
+
+# Usage {% #usage %}
+
+Once configured, your AI assistant will have access to your Appwrite project. You can ask questions like:
+
+## Example 1: List users
+
+Run the following prompt in your preferred code editor/LLM after enabling the MCP server: 
+
+```
+List users in my Appwrite project
+```
+
+![List users in Appwrite project](/images/docs/mcp/claude/claude-list-users.png)
+
+## Example 2: Search a site
+
+Run the following prompt in your preferred code editor/LLM after enabling the MCP server: 
+
+```
+Get the details of my portfolio site from Appwrite
+```
+
+![Search for portfolio site in Appwrite project](/images/docs/mcp/vscode/copilot-chat.png)
+
+## Example 3: Create a user
+
+Run the following prompt in your preferred code editor/LLM after enabling the MCP server: 
+
+```
+Add a user john.doe@example.com to the Appwrite project
+```
+
+![Create user in Appwrite project](/images/docs/mcp/cursor/cursor-create-user.png)
