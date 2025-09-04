@@ -6,9 +6,8 @@
 
     const features = [
         {
-            label: 'DDOS',
-            description:
-                'Automatically detect and mitigate Distributed Denial-of-Service (DDoS) attacks.',
+            label: 'Self-Hosted',
+            description: 'Own your data or host it on a cloud region of choice.',
             icon: '/images/icons/gradients/self-hosted.svg',
             href: '/docs/advanced/self-hosting'
         },
@@ -74,14 +73,11 @@
             <h2
                 class="text-title font-aeonik-pro text-primary max-w-[700px] leading-12 text-pretty"
             >
-                Safely scale with built-in
-                <span class="whitespace-nowrap">security and compliance</span><span
-                    class="text-accent">_</span
-                >
+                Self-host your data or take it to the Cloud<span class="text-accent">_</span>
             </h2>
             <p class="text-secondary text-description mt-4 max-w-xl font-medium">
-                With a security first approach we ensure your products and users are safe by default
-                making it easy for you to adhere to strict safety policies.
+                Migrate your data from and to any platform at any time with Appwrite’s migrations
+                API. With built-in security and privacy for peace of mind.
             </p>
         </section>
     </div>
