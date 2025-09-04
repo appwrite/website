@@ -59,9 +59,9 @@ Here are the top players offering free hosting solutions:
 
 Appwrite is an **all-in-one development with web hosting, and backend deployment**. Unlike competitors, it doesn’t just provide hosting, it provides a full developer stack, including authentication, databases, realtime, [serverless functions](/products/functions], [messaging](/products/messaging) and more.
 
-* **Best For:** Full-stack apps, SaaS MVPs, teams who want backend + web hosting on one platform.
+* **Best for:** Full-stack apps, SaaS MVPs, teams who want backend + web hosting on one platform.
 * **Strengths:** Integrated backend services, scalability, strong open-source ecosystem.
-* **Free Tier:** Generous limits with databases, APIs, storage, and hosting included.
+* **Free tier:** Generous limits with databases, APIs, storage, and hosting included.
 
 {% call_to_action title="Build your startup with Appwrite" description="An all-in-one development platform for you to develop, host, and scale your products." point1="Cloud credits" point2="Priority support" point3="Ship faster" point4="Built-in security and compliance" cta="Apply for the program" url="https://appwrite.io/startups" /%}
 
@@ -69,33 +69,33 @@ Appwrite is an **all-in-one development with web hosting, and backend deployment
 
 Vercel is the go-to platform for **Next.js** projects but supports other frameworks as well. It’s optimized for frontend-first workflows with global edge delivery.
 
-* **Best For:** React/Next.js developers.
+* **Best for:** React/Next.js developers.
 * **Strengths:** Lightning-fast deployments, edge functions, great for frontend-heavy teams.
-* **Free Tier:** 125 GB bandwidth/month, SSL, deploy previews, and hobby project support.
+* **Free tier:** 125 GB bandwidth/month, SSL, deploy previews, and hobby project support.
 
 ### 3. Netlify
 
 Netlify popularized the **Jamstack** architecture and remains a leader in frontend hosting with serverless support.
 
-* **Best For:** Jamstack projects, agencies working with static sites.
+* **Best for:** Jamstack projects, agencies working with static sites.
 * **Strengths:** Functions, build previews, Git-based workflows.
-* **Free Tier:** 125k requests/month, 100 GB bandwidth, free SSL, and deploy previews.
+* **Free tier:** 125k requests/month, 100 GB bandwidth, free SSL, and deploy previews.
 
 ### 4. Firebase Hosting (Google)
 
 Firebase offers **hosting for SPAs and PWAs** with easy integration into the Google ecosystem.
 
-* **Best For:** Teams already using Google Cloud or mobile-first apps.
+* **Best for:** Teams already using Google Cloud or mobile-first apps.
 * **Strengths:** Built-in auth, real-time database, analytics.
-* **Free Tier:** 1 GB storage, 10 GB/month transfer, SSL, custom domain support.
+* **Free tier:** 1 GB storage, 10 GB/month transfer, SSL, custom domain support.
 
 ### 5. Render / Railway
 
 Both Render and Railway are flexible platforms that support **frontend and backend hosting**.
 
-* **Best For:** Developers needing both static hosting and backend APIs.
+* **Best for:** Developers needing both static hosting and backend APIs.
 * **Strengths:** Deploy web services, databases, and static sites with one provider.
-* **Free Tier:** Varies, but includes free static sites, databases, and functions.
+* **Free tier:** Varies, but includes free static sites, databases, and functions.
 
 ## Best web hosting platforms beyond free tiers
 
