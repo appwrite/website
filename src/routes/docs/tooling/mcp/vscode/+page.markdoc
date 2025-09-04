@@ -1,10 +1,10 @@
 ---
 layout: article
-title: VS Code
-description: Add the Appwrite MCP servers to VS Code
+title: Appwrite MCP and VS Code
+description: Learn how to add the Appwrite MCP servers to GitHub Copilot Chat in VS Code to interact with both the Appwrite API and documentation.
 ---
 
-Learn how you can add the Appwrite MCP servers to VS Code to interact with both the Appwrite API and documentation.
+Learn how you can add the Appwrite MCP servers to GitHub Copilot Chat in VS Code to interact with both the Appwrite API and documentation.
 
 Before you begin, ensure you have the following **pre-requisites** installed on your system:
 
@@ -77,7 +77,7 @@ Update the `mcp.json` file to include the docs server:
 {% /tabsitem %}
 {% /tabs %}
 
-Once you save the configuration, VS Code will connect with the MCP server(s) and load all available tools.
+Once you save the configuration, Copilot Chat will connect with the MCP server(s) and load all available tools.
 
 {% info title="Enable other API MCP tools" %}
 

@@ -1,7 +1,7 @@
 ---
 layout: article
-title: Windsurf Editor
-description: Add the Appwrite MCP servers to Windsurf Editor
+title: Appwrite MCP and Windsurf Editor
+description: Learn how to add the Appwrite MCP servers to Windsurf Editor to interact with both the Appwrite API and documentation.
 ---
 
 Learn how you can add the Appwrite MCP servers to Windsurf Editor to interact with both the Appwrite API and documentation.

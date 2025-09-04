@@ -1,7 +1,7 @@
 ---
 layout: article
-title: Cursor
-description: Add the Appwrite MCP servers to Cursor
+title: Appwrite MCP and Cursor
+description: Learn how to add the Appwrite MCP servers to Cursor to interact with both the Appwrite API and documentation.
 ---
 
 Learn how you can add the Appwrite MCP servers to Cursor to interact with both the Appwrite API and documentation.

@@ -1,7 +1,7 @@
 ---
 layout: article
-title: Claude
-description: Add the Appwrite MCP servers to Claude Desktop and Claude Code
+title: Appwrite MCP and Claude
+description: Learn how to add the Appwrite MCP servers to Claude Desktop and Claude Code to interact with both the Appwrite API and documentation.
 ---
 
 Learn how you can add the Appwrite MCP servers to Claude Desktop to interact with both the Appwrite API and documentation.
