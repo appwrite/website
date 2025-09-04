@@ -25,11 +25,11 @@ With inversion queries, you can express these cases directly in your database ca
 
 They include:
 
-- `notContains`: Find documents where the attribute does not contain the given substring
-- `notSearch`: Find documents where the attribute does not match the search query
-- `notBetween`: Find documents where the attribute is not between two given values
-- `notStartsWith`: Find documents where the attribute does not start with the given value
-- `notEndsWith`: Find documents where the attribute does not end with the given value
+- `notContains`: Find rows where the attribute does not contain the given substring
+- `notSearch`: Find rows where the attribute does not match the search query
+- `notBetween`: Find rows where the attribute is not between two given values
+- `notStartsWith`: Find rows where the attribute does not start with the given value
+- `notEndsWith`: Find rows where the attribute does not end with the given value
 
 # Why does this matter?
 
