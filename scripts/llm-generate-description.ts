@@ -9,14 +9,13 @@ import { JSDOM } from 'jsdom';
 import { generateText } from 'ai';
 import { openai } from '@ai-sdk/openai';
 import dedent from 'dedent';
+import { pathToFileURL } from 'url';
 
-const apiKey = process.env.OPENAI_API_KEY;
-
-if (!apiKey) {
+if (!process.env.OPENAI_API_KEY) {
   throw new Error('OPENAI_API_KEY is not set');
 }
 
-export async function generateDescription({
+async function generateDescription({
   articleText,
   frontmatterAttributes,
   previousAttempt,
@@ -132,20 +131,28 @@ export async function generateDescriptionForDocsPage(filePath: string) {
 }
 
 async function main() {
-    const filePathArg = extractArg('file-path');
+  const filePathArg = extractArg('file-path');
 
-    if (!filePathArg) {
-        throw new Error('File path is required');
-    }
-
-    const resolvedPath = path.resolve(filePathArg);
-    const { description, characterCount } = await generateDescriptionForDocsPage(resolvedPath);
-    console.log(`================ DESCRIPTION START (character count: ${characterCount}) =================`)
-    console.log(description);
-    console.log(`===================== DESCRIPTION END ======================`)
+  if (!filePathArg) {
+      throw new Error('File path is required');
   }
 
-main();
+  const resolvedPath = path.resolve(filePathArg);
+  const { description, characterCount } = await generateDescriptionForDocsPage(resolvedPath);
+  console.log(`================ DESCRIPTION START (character count: ${characterCount}) =================`)
+  console.log(description);
+  console.log(`===================== DESCRIPTION END ======================`)
+}
+
+// Runs only if invoked via CLI
+// @ts-ignore
+const isDirect = import.meta.url === pathToFileURL(process.argv[1]).href;
+if (isDirect) {
+  main().catch((err) => {
+    console.error(err);
+    process.exit(1);
+  });
+}
 
 function extractArg(name: string): string | null {
     const args = process.argv;
