@@ -119,6 +119,18 @@ export async function getDocPageContent(markdocPath: string) {
   };
 }
 
+export async function generateDescriptionForDocsPage(filePath: string) {
+  const resolvedPath = path.resolve(filePath);
+  const { articleText, frontmatterAttributes } = await getDocPageContent(resolvedPath);
+
+  if (!articleText || !frontmatterAttributes) {
+      throw new Error('Article text or frontmatter attributes are undefined');
+  }
+
+  const { description, characterCount } = await generateDescription({ articleText, frontmatterAttributes });
+  return { description, characterCount };
+}
+
 async function main() {
     const filePathArg = extractArg('file-path');
 
@@ -126,14 +138,8 @@ async function main() {
         throw new Error('File path is required');
     }
 
-    const filePath = path.resolve(filePathArg);
-    const { articleText, frontmatterAttributes } = await getDocPageContent(filePath);
-
-    if (!articleText || !frontmatterAttributes) {
-        throw new Error('Article text or frontmatter attributes are undefined');
-    }
-
-    const { description, characterCount } = await generateDescription({ articleText, frontmatterAttributes });
+    const resolvedPath = path.resolve(filePathArg);
+    const { description, characterCount } = await generateDescriptionForDocsPage(resolvedPath);
     console.log(`================ DESCRIPTION START (character count: ${characterCount}) =================`)
     console.log(description);
     console.log(`===================== DESCRIPTION END ======================`)
