@@ -61,6 +61,8 @@
     import { displayHiringMessage } from '$lib/utils/console';
 
     function applyTheme(theme: Theme) {
+        if (!browser) return;
+
         const resolvedTheme = theme === 'system' ? getSystemTheme() : theme;
         const className = `${resolvedTheme}`;
         document.body.classList.remove('dark', 'light');
@@ -80,6 +82,8 @@
 
         saveReferrerAndUtmSource(page.url);
     });
+
+    currentTheme.subscribe(applyTheme);
 
     beforeNavigate(({ willUnload, to }) => {
         if (window) {
