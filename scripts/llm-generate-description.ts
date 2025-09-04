@@ -139,7 +139,7 @@ async function main() {
 
   const resolvedPath = path.resolve(filePathArg);
   const { description, characterCount } = await generateDescriptionForDocsPage(resolvedPath);
-  console.log(`Generated description (${characterCount} characters):\n\n${description}\n`);
+  console.log(`Generated description:\n\n${description}\n`);
 }
 
 // Runs only if invoked via CLI
