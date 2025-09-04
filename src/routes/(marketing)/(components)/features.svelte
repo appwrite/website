@@ -6,11 +6,11 @@
 
     const features = [
         {
-            label: 'DDOS',
+            label: 'DDoS',
             description:
                 'Automatically detect and mitigate Distributed Denial-of-Service (DDoS) attacks.',
             icon: '/images/icons/gradients/self-hosted.svg',
-            href: '/docs/advanced/self-hosting'
+            href: '/docs/advanced/security/abuse-protection#ddos-protection'
         },
         {
             label: 'Encryption',
@@ -80,8 +80,8 @@
                 >
             </h2>
             <p class="text-secondary text-description mt-4 max-w-xl font-medium">
-                With a security first approach we ensure your products and users are safe by default
-                making it easy for you to adhere to strict safety policies.
+                With a security-first approach, we ensure your products and users are safe by
+                default, making it easy for you to adhere to strict safety policies.
             </p>
         </section>
     </div>
