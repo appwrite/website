@@ -87,7 +87,7 @@ Firebase offers **hosting for SPAs and PWAs** with easy integration into the Goo
 
 * **Best for:** Teams already using Google Cloud or mobile-first apps.
 * **Strengths:** Built-in auth, real-time database, analytics.
-* **Free tier:** 1 GB storage, 10 GB/month transfer, SSL, custom domain support.
+* **Free tier:** 10 GB storage, 10 GB/month data transfer, SSL, custom domain support.
 
 ### 5. Render / Railway
 
