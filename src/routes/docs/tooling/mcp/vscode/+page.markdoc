@@ -9,13 +9,13 @@ Learn how you can add the Appwrite MCP servers to VS Code to interact with both 
 Before you begin, ensure you have the following **pre-requisites** installed on your system:
 
 {% tabs %}
-{% tabsitem #api-server-prerequisites title="API Server" %}
+{% tabsitem #api-server-prerequisites title="API server" %}
 
 [uv](https://docs.astral.sh/uv/getting-started/installation/) must be installed on your system.
 
 {% /tabsitem %}
 
-{% tabsitem #docs-server-prerequisites title="Docs Server" %}
+{% tabsitem #docs-server-prerequisites title="Docs server" %}
 
 [Node.js](https://nodejs.org/en/download) and npm must be installed on your system.
 
@@ -29,7 +29,7 @@ In VS Code, open the **Command Palette** (press `CTRL + Shift + P` on Windows or
 Choose which MCP servers you want to configure:
 
 {% tabs %}
-{% tabsitem #api-only title="API Server" %}
+{% tabsitem #api-only title="API server" %}
 
 Update the `mcp.json` file to include the API server:
 
@@ -59,7 +59,7 @@ Update the `mcp.json` file to include the API server:
 
 {% /tabsitem %}
 
-{% tabsitem #docs-only title="Docs Server" %}
+{% tabsitem #docs-only title="Docs server" %}
 
 Update the `mcp.json` file to include the docs server:
 
@@ -92,7 +92,7 @@ To enable additional API tools, learn more about [command-line arguments](/docs/
 Open **Copilot Chat** in VS Code and switch to **Agent Mode** to test your MCP integrations. You can try out the following example prompts based on the MCP server you have configured:
 
 {% tabs %}
-{% tabsitem #test-api title="API Server" %}
+{% tabsitem #test-api title="API server" %}
 
 **Example prompts:**
 - `Create a new user in my Appwrite project`
@@ -103,7 +103,7 @@ Open **Copilot Chat** in VS Code and switch to **Agent Mode** to test your MCP i
 
 {% /tabsitem %}
 
-{% tabsitem #test-docs title="Docs Server" %}
+{% tabsitem #test-docs title="Docs server" %}
 
 **Example prompts:**
 - `How do I set up real-time subscriptions in Appwrite?`
