@@ -1,10 +1,10 @@
 ---
 layout: article
 title: Bulk operations
-description: Perform bulk operations on documents within your collections for efficient data handling.
+description: Perform bulk operations on rows within your tables for efficient data handling.
 ---
 
-Appwrite Databases supports bulk operations for documents, allowing you to create, update, or delete multiple documents in a single request. This can significantly improve performance for apps as it allows you to reduce the number of API calls needed while working with large data sets.
+Appwrite Databases supports bulk operations for rows, allowing you to create, update, or delete multiple rows in a single request. This can significantly improve performance for apps as it allows you to reduce the number of API calls needed while working with large data sets.
 
 Bulk operations can only be performed via the server-side SDKs. The client-side SDKs do not support bulk operations by design to prevent abuse and protect against unexpected costs. This ensures that only trusted server environments can perform large-scale data operations.
 
@@ -12,18 +12,18 @@ For client applications that need bulk-like functionality, consider using [Appwr
 
 # Atomic behavior {% #atomic-behavior %}
 
-Bulk operations in Appwrite are **atomic**, meaning they follow an all-or-nothing approach. Either all documents in your bulk request succeed, or all documents fail.
+Bulk operations in Appwrite are **atomic**, meaning they follow an all-or-nothing approach. Either all rows in your bulk request succeed, or all rows fail.
 
 This atomicity ensures:
 - **Data consistency**: Your database remains in a consistent state even if some operations would fail.
 - **Race condition prevention**: Multiple clients can safely perform bulk operations simultaneously.
 - **Simplified error handling**: You only need to handle complete success or complete failure scenarios.
 
-For example, if you attempt to create 100 documents and one fails due to a validation error, none of the 100 documents will be created.
+For example, if you attempt to create 100 rows and one fails due to a validation error, none of the 100 rows will be created.
 
-# Create documents {% #create-documents %}
+# Create rows {% #create-rows %}
 
-You can create multiple documents in a single request using the `createDocuments` method.
+You can create multiple rows in a single request using the `createRows` method.
 
 {% info title="Custom timestamps" %}
 When creating, updating or upserting in bulk, you can set `$createdAt` and `$updatedAt` for each document in the payload. Values must be ISO 8601 date-time strings. If omitted, Appwrite sets them automatically.
@@ -38,19 +38,19 @@ const client = new sdk.Client()
     .setProject('<PROJECT_ID>')
     .setKey('<API_KEY>');
 
-const databases = new sdk.Databases(client);
+const tablesDB = new sdk.TablesDB(client);
 
-const result = await databases.createDocuments(
+const result = await tablesDB.createRows(
     '<DATABASE_ID>',
-    '[COLLECTION_ID]',
+    '<TABLE_ID>',
     [
         {
             $id: sdk.ID.unique(),
-            name: 'Document 1'
+            data: { name: 'Row 1' }
         },
         {
             $id: sdk.ID.unique(),
-            name: 'Document 2'
+            data: { name: 'Row 2' }
         }
     ]
 );
@@ -58,41 +58,40 @@ const result = await databases.createDocuments(
 
 ```server-python
 from appwrite.client import Client
-from appwrite.services.databases import Databases
-from appwrite.id import ID
+from appwrite.services.tablesDB import TablesDB
 
 client = Client()
 client.set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
 client.set_project('<PROJECT_ID>')
 client.set_key('<API_KEY>')
 
-databases = Databases(client)
+tablesDB = TablesDB(client)
 
-result = databases.create_documents(
+result = tablesDB.create_rows(
     database_id = '<DATABASE_ID>',
-    collection_id = '<COLLECTION_ID>',
-    documents = [
+    table_id = '<TABLE_ID>',
+    rows = [
         {
-            '$id': ID.unique(),
-            'name': 'Document 1'
+            '$id': appwrite.ID.unique(),
+            'data': { 'name': 'Row 1' }
         },
         {
-            '$id': ID.unique(),
-            'name': 'Document 2'
+            '$id': appwrite.ID.unique(),
+            'data': { 'name': 'Row 2' }
         }
     ]
 )
 ```
 {% /multicode %}
 
-# Update documents {% #update-documents %}
+# Update rows {% #update-rows %}
 
 {% info title="Permissions required" %}
-You must grant **update** permissions to users at the **collection level** before users can update documents.
+You must grant **update** permissions to users at the **table level** before users can update rows.
 [Learn more about permissions](/docs/products/databases/permissions)
 {% /info %}
 
-You can update multiple documents in a single request using the `updateDocuments` method.
+You can update multiple rows in a single request using the `updateRows` method.
 
 {% multicode %}
 ```server-nodejs
@@ -103,11 +102,11 @@ const client = new sdk.Client()
     .setProject('<PROJECT_ID>')
     .setKey('<API_KEY>');
 
-const databases = new sdk.Databases(client);
+const tablesDB = new sdk.TablesDB(client);
 
-const result = await databases.updateDocuments(
+const result = await tablesDB.updateRows(
     '<DATABASE_ID>',
-    '[COLLECTION_ID]',
+    '<TABLE_ID>',
     {
         status: 'published'
     },
@@ -119,19 +118,18 @@ const result = await databases.updateDocuments(
 
 ```server-python
 from appwrite.client import Client
-from appwrite.services.databases import Databases
-from appwrite.query import Query
+from appwrite.services.tablesDB import TablesDB
 
 client = Client()
 client.set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
 client.set_project('<PROJECT_ID>')
 client.set_key('<API_KEY>')
 
-databases = Databases(client)
+tablesDB = TablesDB(client)
 
-result = databases.update_documents(
+result = tablesDB.update_rows(
     database_id = '<DATABASE_ID>',
-    collection_id = '<COLLECTION_ID>',
+    table_id = '<TABLE_ID>',
     data = {
         'status': 'published'
     },
@@ -142,14 +140,14 @@ result = databases.update_documents(
 ```
 {% /multicode %}
 
-# Upsert documents {% #upsert-documents %}
+# Upsert rows {% #upsert-rows %}
 
 {% info title="Permissions required" %}
-You must grant **create** and **update** permissions to users at the **collection level** before users can create documents.
+You must grant **create** and **update** permissions to users at the **table level** before users can create rows.
 [Learn more about permissions](/docs/products/databases/permissions)
 {% /info %}
 
-You can upsert multiple documents in a single request using the `upsertDocuments` method.
+You can upsert multiple rows in a single request using the `upsertRows(` method.
 
 {% multicode %}
 ```server-nodejs
@@ -160,19 +158,19 @@ const client = new sdk.Client()
     .setProject('<PROJECT_ID>')
     .setKey('<API_KEY>');
 
-const databases = new sdk.Databases(client);
+const tablesDB = new sdk.TablesDB(client);
 
-const result = await databases.upsertDocuments(
+const result = await tablesDB.upsertRows(
     '<DATABASE_ID>',
-    '[COLLECTION_ID]',
+    '<TABLE_ID>',
     [
         {
             $id: sdk.ID.unique(),
-            name: 'New Document 1'
+            name: 'New Row 1'
         },
         {
-            $id: 'document-id-2', // Existing document ID
-            name: 'New Document 2'
+            $id: 'row-id-2', // Existing row ID
+            name: 'New Row 2'
         }
     ]
 );
@@ -180,7 +178,7 @@ const result = await databases.upsertDocuments(
 
 ```server-python
 from appwrite.client import Client
-from appwrite.services.databases import Databases
+from appwrite.services.tablesDB import TablesDB
 from appwrite.id import ID
 
 client = Client()
@@ -188,33 +186,33 @@ client.set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
 client.set_project('<PROJECT_ID>')
 client.set_key('<API_KEY>')
 
-databases = Databases(client)
+tablesDB = TablesDB(client)
 
-result = databases.upsert_documents(
+result = tablesDB.upsert_rows(
     database_id = '<DATABASE_ID>',
-    collection_id = '<COLLECTION_ID>',
-    documents = [
+    table_id = '<TABLE_ID>',
+    rows = [
         {
-            '$id': ID.unique(),
-            'name': 'New Document 1'
+            '$id': appwrite.ID.unique(),
+            'name': 'Row 1'
         },
         {
-            '$id': 'document-id-2',  # Existing document ID
-            'name': 'New Document 2'
+            '$id': 'row-id-2',  # Existing row ID
+            'name': 'New Row 2'
         }
     ]
 )
 ```
 {% /multicode %}
 
-# Delete documents {% #delete-documents %}
+# Delete rows {% #delete-rows %}
 
 {% info title="Permissions required" %}
-You must grant **delete** permissions to users at the **collection level** before users can delete documents.
+You must grant **delete** permissions to users at the **table level** before users can delete rows.
 [Learn more about permissions](/docs/products/databases/permissions)
 {% /info %}
 
-You can delete multiple documents in a single request using the `deleteDocuments` method.
+You can delete multiple rows in a single request using the `deleteRows` method.
 
 {% multicode %}
 ```server-nodejs
@@ -225,11 +223,11 @@ const client = new sdk.Client()
     .setProject('<PROJECT_ID>')
     .setKey('<API_KEY>');
 
-const databases = new sdk.Databases(client);
+const tablesDB = new sdk.TablesDB(client);
 
-const result = await databases.deleteDocuments(
+const result = await tablesDB.deleteRows(
     '<DATABASE_ID>',
-    '[COLLECTION_ID]',
+    '<TABLE_ID>',
     [
         sdk.Query.equal('status', 'archived')
     ]
@@ -238,7 +236,7 @@ const result = await databases.deleteDocuments(
 
 ```server-python
 from appwrite.client import Client
-from appwrite.services.databases import Databases
+from appwrite.services.tablesDB import TablesDB
 from appwrite.query import Query
 
 client = Client()
@@ -246,11 +244,11 @@ client.set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
 client.set_project('<PROJECT_ID>')
 client.set_key('<API_KEY>')
 
-databases = Databases(client)
+tablesDB = TablesDB(client)
 
-result = databases.delete_documents(
+result = tablesDB.delete_rows(
     database_id = '<DATABASE_ID>',
-    collection_id = '<COLLECTION_ID>',
+    table_id = '<TABLE_ID>',
     queries = [
         Query.equal('status', 'archived')
     ]
@@ -260,10 +258,8 @@ result = databases.delete_documents(
 
 {% info title="Queries for deletion" %}
 
-When deleting documents, you must specify queries to filter which documents to delete.
-
-If no queries are provided, all documents in the collection will be deleted.
-
+When deleting rows, you must specify queries to filter which rows to delete.
+If no queries are provided, all rows in the table will be deleted.
 [Learn more about queries](/docs/products/databases/queries).
 
 {% /info %}

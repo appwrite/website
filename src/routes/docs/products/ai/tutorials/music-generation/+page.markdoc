@@ -65,13 +65,17 @@ class AppwriteService {
       .setProject(process.env.APPWRITE_FUNCTION_PROJECT_ID)
       .setKey(process.env.APPWRITE_API_KEY);
 
-    this.databases = new Databases(client);
+    this.tablesDB = new TablesDB(client);
     this.storage = new Storage(client);
   }
 
   async createFile(bucketId, blob) {
     const file = await InputFile.fromBuffer(blob, 'audio.flac');
-    return await this.storage.createFile(bucketId, ID.unique(), file);
+    return await this.storage.createFile({
+      bucketId: bucketId,
+      fileId: ID.unique(),
+      file: file
+    });
   }
 }
 

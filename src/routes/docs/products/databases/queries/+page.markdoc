@@ -1,7 +1,7 @@
 ---
 layout: article
 title: Queries
-description: Harness the power of querying with Appwrite Databases. Discover various query options, filtering, sorting, and advanced querying techniques.
+description: Harness the power of querying with Appwrite tablesDB. Discover various query options, filtering, sorting, and advanced querying techniques.
 ---
 
 Many list endpoints in Appwrite allow you to filter, sort, and paginate results using queries. Appwrite provides a common set of syntax to build queries.
@@ -25,22 +25,50 @@ You can change this through [pagination](/docs/products/databases/pagination).
 {% multicode %}
 
 ```client-web
-import { Client, Databases, Query } from "appwrite";
+import { Client, Query, TablesDB } from "appwrite";
 
 const client = new Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
     .setProject('<PROJECT_ID>');
 
-const databases = new Databases(client);
+const tablesDB = new TablesDB(client);
 
-databases.listDocuments(
+tablesDB.listRows(
     '<DATABASE_ID>',
-    '[COLLECTION_ID]',
+    '<TABLE_ID>',
     [
         Query.equal('title', ['Avatar', 'Lord of the Rings']),
         Query.greaterThan('year', 1999)
     ]
 );
+```
+```server-nodejs
+const sdk = require('node-appwrite');
+
+const client = new sdk.Client();
+
+const tablesDB = new sdk.TablesDB(client);
+
+client
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>')
+    .setKey('<YOUR_API_KEY>')
+;
+
+const promise = tablesDB.listRows(
+    '<DATABASE_ID>',
+    '<TABLE_ID>',
+    [
+        sdk.Query.equal('title', ['Avatar', 'Lord of the Rings']),
+        sdk.Query.greaterThan('year', 1999)
+    ]
+);
+
+promise.then(function (response) {
+    console.log(response);
+}, function (error) {
+    console.log(error);
+});
 ```
 ```client-flutter
 import 'package:appwrite/appwrite.dart';
@@ -50,12 +78,12 @@ void main() async {
         .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
         .setProject('<PROJECT_ID>');
 
-    final databases = Databases(client);
+    final tablesDB = TablesDB(client);
 
     try {
-        final documents = await databases.listDocuments(
+        final rows = await tablesDB.listRows(
             '<DATABASE_ID>',
-            '<COLLECTION_ID>',
+            '<TABLE_ID>',
             [
                 Query.equal('title', ['Avatar', 'Lord of the Rings']),
                 Query.greaterThan('year', 1999)
@@ -75,12 +103,12 @@ func main() async throws {
         .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
         .setProject("<PROJECT_ID>")
 
-    let databases = Databases(client)
+    let tablesDB = TablesDB(client)
 
     do {
-        let documents = try await databases.listDocuments(
+        let rows = try await tablesDB.listRows(
             databaseId: "<DATABASE_ID>",
-            collectionId: "<COLLECTION_ID>",
+            tableId: "<TABLE_ID>",
             queries: [
                 Query.equal("title", value: ["Avatar", "Lord of the Rings"]),
                 Query.greaterThan("year", value: 1999)
@@ -94,19 +122,19 @@ func main() async throws {
 ```client-android-kotlin
 import io.appwrite.Client
 import io.appwrite.Query
-import io.appwrite.services.Databases
+import io.appwrite.services.TablesDB
 
 suspend fun main() {
     val client = Client(applicationContext)
         .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
         .setProject('<PROJECT_ID>');
 
-    val databases = Databases(client)
+    val tablesDB = TablesDB(client)
 
     try {
-        val documents = databases.listDocuments(
+        val rows = tablesDB.listRows(
             databaseId = "<DATABASE_ID>",
-            collectionId = "<COLLECTION_ID>",
+            tableId = "<TABLE_ID>",
             queries = listOf(
                 Query.equal("title", listOf("Avatar", "Lord of the Rings")),
                 Query.greaterThan("year", 1999)
@@ -135,12 +163,12 @@ func main() {
         appwrite.WithKey("<API_KEY>"),
     )
 
-    databases := appwrite.NewDatabases(client)
+    tablesDB := appwrite.NewTablesDB(client)
 
-    documents, err := databases.ListDocuments(
+    rows, err := tablesDB.ListRows(
         "<DATABASE_ID>",
-        "<COLLECTION_ID>",
-        databases.WithListDocumentsQueries([]string{
+        "<TABLE_ID>",
+        tablesDB.WithListRowsQueries([]string{
             query.Equal("title", []string{"Avatar", "Lord of the Rings"}),
             query.GreaterThan("year", 1999),
         }),
@@ -149,21 +177,71 @@ func main() {
         log.Fatal(err)
     }
 
-    fmt.Printf("Documents: %+v\n", documents)
+    fmt.Printf("Rows: %+v\n", rows)
 }
+```
+```php
+<?php
+
+use Appwrite\Client;
+use Appwrite\Query;
+use Appwrite\Services\TablesDB;
+
+$client = new Client();
+
+$client
+    ->setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    ->setProject('<PROJECT_ID>')
+    ->setKey('<YOUR_API_KEY>')
+;
+
+$tablesDB = new TablesDB($client);
+
+$result = $tables->listRows(
+    '<DATABASE_ID>',
+    '<TABLE_ID>',
+    [
+        Query::equal('title', ['Avatar', 'Lord of the Rings']),
+        Query::greaterThan('year', 1999)
+    ]
+);
+```
+```python
+from appwrite.client import Client
+from appwrite.query import Query
+from appwrite.services.tablesDB import TablesDB
+
+client = Client()
+
+(client
+  .set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
+  .set_project('<PROJECT_ID>')
+  .set_key('<YOUR_API_KEY>')
+)
+
+tablesDB = TablesDB(client)
+
+result = tablesDB.list_rows(
+    '<DATABASE_ID>',
+    '<TABLE_ID>',
+    [
+        Query.equal('title', ['Avatar', 'Lord of the Rings']),
+        Query.greater_than('year', 1999)
+    ]
+)
 ```
 ```graphql
 query {
-    databasesListDocuments(
+    tablesListRows(
         databaseId: "<DATABASE_ID>",
-        collectionId: "<COLLECTION_ID>"
+        tableId: "<TABLE_ID>"
         queries: [
-            "{\"method\":\"equal\",\"attribute\":\"title\",\"values\":[\"Avatar\",\"Lord of the Rings\"]}",
-            "{\"method\":\"greaterThan\",\"attribute\":\"year\",\"values\":[1999]}"
+            "{\"method\":\"equal\",\"column\":\"title\",\"values\":[\"Avatar\",\"Lord of the Rings\"]}",
+            "{\"method\":\"greaterThan\",\"column\":\"year\",\"values\":[1999]}"
         ]
     ) {
         total
-        documents {
+        rows {
             _id
             data
         }
@@ -171,7 +249,7 @@ query {
 }
 ```
 ```http
-GET /v1/databases/<DATABASE_ID>/collections/<COLLECTION_ID>/documents?queries[]=%7B%22method%22%3A%22equal%22%2C%22attribute%22%3A%22title%22%2C%22values%22%3A%5B%22Avatar%22%2C%22Lord%20of%20the%20Rings%22%5D%7D&queries[]=%7B%22method%22%3A%22greaterThan%22%2C%22attribute%22%3A%22year%22%2C%22values%22%3A%5B1999%5D%7D HTTP/1.1
+GET /v1/tablesdb/<DATABASE_ID>/tables/<TABLE_ID>/rows?queries[]=%7B%22method%22%3A%22equal%22%2C%22column%22%3A%22title%22%2C%22values%22%3A%5B%22Avatar%22%2C%22Lord%20of%20the%20Rings%22%5D%7D&queries[]=%7B%22method%22%3A%22greaterThan%22%2C%22column%22%3A%22year%22%2C%22values%22%3A%5B1999%5D%7D HTTP/1.1
 Content-Type: application/json
 X-Appwrite-Project: <PROJECT_ID>
 ```
@@ -181,7 +259,7 @@ X-Appwrite-Project: <PROJECT_ID>
 
 ## Select {% #select %}
 
-The `select` operator allows you to specify which attributes should be returned from a document. This is useful for optimizing response size and only retrieving the data you need.
+The `select` operator allows you to specify which columns should be returned from a row. This is essential for optimizing response size, controlling which relationship data loads, and only retrieving the data you need.
 
 {% multicode %}
 ```client-web
@@ -213,11 +291,242 @@ query.Select([]string{"name", "title"})
 ```
 {% /multicode %}
 
+### Select relationship data {% #relationship-select %}
+
+With [opt-in relationship loading](/docs/products/databases/relationships#performance-loading), you must explicitly select relationship data. This gives you fine-grained control over performance and payload size.
+
+#### Get rows without relationships
+By default, rows return only their own fields:
+
+{% multicode %}
+```client-web
+const doc = await tablesDB.getRow(
+    '<DATABASE_ID>', '<TABLE_ID>', '<ROW_ID>',
+    [Query.select(['name', 'age'])]
+);
+```
+```client-flutter
+final doc = await tablesDB.getRow(
+    databaseId: '<DATABASE_ID>',
+    tableId: '<TABLE_ID>',
+    rowId: '<ROW_ID>',
+    queries: [Query.select(["name", "age"])]
+);
+```
+```python
+doc = tablesDB.get_row(
+    '<DATABASE_ID>', '<TABLE_ID>', '<ROW_ID>',
+    [Query.select(["name", "age"])]
+)
+```
+```ruby
+doc = tablesDB.get_row(
+    '<DATABASE_ID>', '<TABLE_ID>', '<ROW_ID>',
+    [Query.select(["name", "age"])]
+)
+```
+```server-nodejs
+const doc = await tablesDB.getRow(
+    '<DATABASE_ID>', '<TABLE_ID>', '<ROW_ID>',
+    [Query.select(['name', 'age'])]
+);
+```
+```php
+$doc = $tablesDB->getRow(
+    '<DATABASE_ID>', '<TABLE_ID>', '<ROW_ID>',
+    [Query::select(["name", "age"])]
+);
+```
+```swift
+let doc = try await tablesDB.getRow(
+    databaseId: "<DATABASE_ID>",
+    tableId: "<TABLE_ID>",
+    rowId: "<ROW_ID>",
+    queries: [Query.select(["name", "age"])]
+)
+```
+```http
+GET /v1/tablesdb/<DATABASE_ID>/tables/<TABLE_ID>/rows/<ROW_ID>?queries[]=%7B%22method%22%3A%22select%22%2C%22values%22%3A%5B%22name%22%2C%22age%22%5D%7D HTTP/1.1
+Content-Type: application/json
+X-Appwrite-Project: <PROJECT_ID>
+```
+{% /multicode %}
+
+#### Load all relationship data
+Use the `*` wildcard to load all fields from related rows:
+
+{% multicode %}
+```client-web
+const doc = await tablesDB.getRow(
+    '<DATABASE_ID>', '<TABLE_ID>', '<ROW_ID>',
+    [Query.select(['*', 'reviews.*'])]
+);
+```
+```client-flutter
+final doc = await tablesDB.getRow(
+    databaseId: '<DATABASE_ID>',
+    tableId: '<TABLE_ID>',
+    rowId: '<ROW_ID>',
+    queries: [Query.select(["*", "reviews.*"])]
+);
+```
+```python
+doc = tablesDB.get_row(
+    '<DATABASE_ID>', '<TABLE_ID>', '<ROW_ID>',
+    [Query.select(["*", "reviews.*"])]
+)
+```
+```ruby
+doc = tablesDB.get_row(
+    '<DATABASE_ID>', '<TABLE_ID>', '<ROW_ID>',
+    [Query.select(["*", "reviews.*"])]
+)
+```
+```server-nodejs
+const doc = await tablesDB.getRow(
+    '<DATABASE_ID>', '<TABLE_ID>', '<ROW_ID>',
+    [Query.select(["*", "reviews.*"])]
+);
+```
+```php
+$doc = $tablesDB->getRow(
+    '<DATABASE_ID>', '<TABLE_ID>', '<ROW_ID>',
+    [Query::select(["*", "reviews.*"])]
+);
+```
+```swift
+let doc = try await tablesDB.getRow(
+    databaseId: "<DATABASE_ID>",
+    tableId: "<TABLE_ID>",
+    rowId: "<ROW_ID>",
+    queries: [Query.select(["*", "reviews.*"])]
+)
+```
+```http
+GET /v1/tablesdb/<DATABASE_ID>/tables/<TABLE_ID>/rows/<ROW_ID>?queries[]=%7B%22method%22%3A%22select%22%2C%22values%22%3A%5B%22%2A%22%2C%22reviews.%2A%22%5D%7D HTTP/1.1
+Content-Type: application/json
+X-Appwrite-Project: <PROJECT_ID>
+{"method":"select","values":["*","reviews.*"]}
+```
+{% /multicode %}
+
+#### Select specific relationship fields
+For precise control, select only specific fields from related rows:
+
+{% multicode %}
+```client-web
+const doc = await tablesDB.getRow(
+    '<DATABASE_ID>', '<TABLE_ID>', '<ROW_ID>',
+    [Query.select(['name', 'age', 'reviews.author', 'reviews.rating'])]
+);
+```
+```client-flutter
+final doc = await tablesDB.getRow(
+    databaseId: '<DATABASE_ID>',
+    tableId: '<TABLE_ID>',
+    rowId: '<ROW_ID>',
+    queries: [Query.select(["name", "age", "reviews.author", "reviews.rating"])]
+);
+```
+```python
+doc = tablesDB.get_row(
+    '<DATABASE_ID>', '<TABLE_ID>', '<ROW_ID>',
+    [Query.select(["name", "age", "reviews.author", "reviews.rating"])]
+)
+```
+```ruby
+doc = tablesDB.get_row(
+    '<DATABASE_ID>', '<TABLE_ID>', '<ROW_ID>',
+    [Query.select(["name", "age", "reviews.author", "reviews.rating"])]
+)
+```
+```server-nodejs
+const doc = await tablesDB.getRow(
+    '<DATABASE_ID>', '<TABLE_ID>', '<ROW_ID>',
+    [Query.select(["name", "age", "reviews.author", "reviews.rating"])]
+);
+// Result: { name: "John", age: 30, reviews: [{ author: "...", rating: 5 }] }
+```
+```php
+$doc = $tablesDB->getRow(
+    '<DATABASE_ID>', '<TABLE_ID>', '<ROW_ID>',
+    [Query::select(["name", "age", "reviews.author", "reviews.rating"])]
+);
+```
+```swift
+let doc = try await tablesDB.getRow(
+    databaseId: "<DATABASE_ID>",
+    tableId: "<TABLE_ID>",
+    rowId: "<ROW_ID>",
+    queries: [Query.select(["name", "age", "reviews.author", "reviews.rating"])]
+)
+```
+```http
+# Load specific fields from main and related rows
+{"method":"select","values":["name","age","reviews.author","reviews.rating"]}
+```
+{% /multicode %}
+
+#### Load nested relationships
+You can also load relationships of relationships:
+
+{% multicode %}
+```client-web
+Query.select(["*", "reviews.*", "reviews.author.*"])
+```
+```client-flutter
+Query.select(["*", "reviews.*", "reviews.author.*"])
+```
+```python
+Query.select(["*", "reviews.*", "reviews.author.*"])
+```
+```ruby
+Query.select(["*", "reviews.*", "reviews.author.*"])
+```
+```server-nodejs
+Query.select(["*", "reviews.*", "reviews.author.*"])
+```
+```php
+Query::select(["*", "reviews.*", "reviews.author.*"])
+```
+```swift
+Query.select(["*", "reviews.*", "reviews.author.*"])
+```
+```http
+{"method":"select","values":["*","reviews.*","reviews.author.*"]}
+```
+{% /multicode %}
+
+### Use selection patterns {% #select-patterns %}
+
+| Pattern | Description | Use case |
+|---------|-------------|----------|
+| `["field1", "field2"]` | Specific columns only | Minimize response size |
+| `["*"]` | All row columns | Get complete row data |
+| `["*", "relationName.*"]` | Row + all relationship fields | Load row with complete related data |
+| `["field1", "relationName.field2"]` | Specific fields from row and relationships | Precise data loading |
+| `["*", "relationName.field1", "relationName.field2"]` | All row fields + specific relationship fields | Partial relationship loading |
+| `["relationName.*", "relationName.nestedRelation.*"]` | Nested relationship loading | Load relationships of relationships |
+
+### Optimize performance {% #select-performance %}
+
+**Optimize response size** - Only select the fields you actually need. Smaller responses are faster to transfer and parse.
+
+**Control relationship loading** - Related rows are not loaded by default. Use explicit selection to load only the relationships you need.
+
+**Reduce database load** - Selecting fewer fields reduces database processing time, especially for large rows.
+
+{% info title="Related rows" %}
+By default, relationship columns contain only row IDs.
+To load the actual related row data, you must explicitly include relationship fields in your select query.
+Learn more about [relationship performance optimization](/docs/products/databases/relationships#performance-loading).
+{% /info %}
+
 ## Comparison operators {% #comparison %}
 
 ### Equal {% #equal %}
 
-Returns document if attribute is equal to any value in the provided array.
+Returns row if column is equal to any value in the provided array.
 
 {% multicode %}
 ```client-web
@@ -245,13 +554,13 @@ Query.equal("title", value: ["Iron Man"])
 query.Equal("title", []string{"Iron Man"})
 ```
 ```http
-{"method":"equal","attribute":"title","values":["Iron Man"]}
+{"method":"equal","column":"title","values":["Iron Man"]}
 ```
 {% /multicode %}
 
 ### Not equal {% #not-equal %}
 
-Returns document if attribute is not equal to any value in the provided array.
+Returns row if column is not equal to any value in the provided array.
 
 {% multicode %}
 ```client-web
@@ -279,13 +588,13 @@ Query.notEqual("title", value: "Iron Man")
 query.NotEqual("title", "Iron Man")
 ```
 ```http
-{"method":"notEqual","attribute":"title","values":"Iron Man"}
+{"method":"notEqual","column":"title","values":"Iron Man"}
 ```
 {% /multicode %}
 
 ### Less than {% #less-than %}
 
-Returns document if attribute is less than the provided value.
+Returns row if column is less than the provided value.
 
 {% multicode %}
 ```client-web
@@ -313,13 +622,13 @@ Query.lessThan("score", value: 10)
 query.LessThan("score", 10)
 ```
 ```http
-{"method":"lessThan","attribute":"score","values":[10]}
+{"method":"lessThan","column":"score","values":[10]}
 ```
 {% /multicode %}
 
 ### Less than or equal {% #less-than-equal %}
 
-Returns document if attribute is less than or equal to the provided value.
+Returns row if column is less than or equal to the provided value.
 
 {% multicode %}
 ```client-web
@@ -347,13 +656,13 @@ Query.lessThanEqual("score", value: 10)
 query.LessThanEqual("score", 10)
 ```
 ```http
-{"method":"lessThanEqual","attribute":"score","values":[10]}
+{"method":"lessThanEqual","column":"score","values":[10]}
 ```
 {% /multicode %}
 
 ### Greater than {% #greater-than %}
 
-Returns document if attribute is greater than the provided value.
+Returns row if column is greater than the provided value.
 
 {% multicode %}
 ```client-web
@@ -381,13 +690,13 @@ Query.greaterThan("score", value: 10)
 query.GreaterThan("score", 10)
 ```
 ```http
-{"method":"greaterThan","attribute":"score","values":[10]}
+{"method":"greaterThan","column":"score","values":[10]}
 ```
 {% /multicode %}
 
 ### Greater than or equal {% #greater-than-equal %}
 
-Returns document if attribute is greater than or equal to the provided value.
+Returns row if column is greater than or equal to the provided value.
 
 {% multicode %}
 ```client-web
@@ -415,13 +724,13 @@ Query.greaterThanEqual("score", value: 10)
 query.GreaterThanEqual("score", 10)
 ```
 ```http
-{"method":"greaterThanEqual","attribute":"score","values":[10]}
+{"method":"greaterThanEqual","column":"score","values":[10]}
 ```
 {% /multicode %}
 
 ### Between {% #between %}
 
-Returns document if attribute value falls between the two values. The boundary values are inclusive and can be strings or numbers.
+Returns row if column value falls between the two values. The boundary values are inclusive and can be strings or numbers.
 
 {% multicode %}
 ```client-web
@@ -449,7 +758,51 @@ Query.between("price", start: 5, end: 10)
 query.Between("price", 5, 10)
 ```
 ```http
-{"method":"between","attribute":"price","values":[5,10]}
+{"method":"between","column":"price","values":[5,10]}
+```
+{% /multicode %}
+
+### Not between {% #not-between %}
+
+Returns rows if the column value is outside the range defined by the two values (strictly less than start OR strictly greater than end).
+Works with strings or numbers. Boundary values are excluded.
+
+{% multicode %}
+```client-web
+Query.notBetween("price", 5, 10)
+```
+```client-flutter
+Query.notBetween("price", 5, 10)
+```
+```client-apple
+Query.notBetween("price", start: 5, end: 10)
+```
+```client-android-kotlin
+Query.notBetween("price", 5, 10)
+```
+```client-android-java
+Query.notBetween("price", 5, 10)
+```
+```server-python
+Query.not_between("price", 5, 10)
+```
+```server-ruby
+Query.not_between("price", 5, 10)
+```
+```server-deno
+Query.notBetween("price", 5, 10)
+```
+```server-nodejs
+Query.notBetween("price", 5, 10)
+```
+```server-php
+Query::notBetween("price", 5, 10)
+```
+```server-swift
+Query.notBetween("price", start: 5, end: 10)
+```
+```http
+{"method":"notBetween","column":"price","values":[5,10]}
 ```
 {% /multicode %}
 
@@ -457,7 +810,7 @@ query.Between("price", 5, 10)
 
 ### Is null {% #is-null %}
 
-Returns documents where attribute value is null.
+Returns rows where column value is null.
 
 {% multicode %}
 ```client-web
@@ -485,13 +838,13 @@ Query.isNull("name")
 query.IsNull("name")
 ```
 ```http
-{"method":"isNull","attribute":"name"}
+{"method":"isNull","column":"name"}
 ```
 {% /multicode %}
 
 ### Is not null {% #is-not-null %}
 
-Returns documents where attribute value is **not** null.
+Returns rows where column value is **not** null.
 
 {% multicode %}
 ```client-web
@@ -519,7 +872,7 @@ Query.isNotNull("name")
 query.IsNotNull("name")
 ```
 ```http
-{"method":"isNotNull","attribute":"name"}
+{"method":"isNotNull","column":"name"}
 ```
 {% /multicode %}
 
@@ -527,7 +880,7 @@ query.IsNotNull("name")
 
 ### Starts with {% #starts-with %}
 
-Returns documents if a string attribute starts with a substring.
+Returns rows if a string column starts with a substring.
 
 {% multicode %}
 ```client-web
@@ -555,13 +908,56 @@ Query.startsWith("name", value: "Once upon a time")
 query.StartsWith("name", "Once upon a time")
 ```
 ```http
-{"method":"startsWith","attribute":"name","values":["Once upon a time"]}
+{"method":"startsWith","column":"name","values":["Once upon a time"]}
+```
+{% /multicode %}
+
+### Not starts with {% #not-starts-with %}
+
+Returns rows if a string column does not start with a substring.
+
+{% multicode %}
+```client-web
+Query.notStartsWith("name", "Once upon a time")
+```
+```client-flutter
+Query.notStartsWith("name", "Once upon a time")
+```
+```client-apple
+Query.notStartsWith("name", value: "Once upon a time")
+```
+```client-android-kotlin
+Query.notStartsWith("name", "Once upon a time")
+```
+```client-android-java
+Query.notStartsWith("name", "Once upon a time")
+```
+```server-python
+Query.not_starts_with("name", "Once upon a time")
+```
+```server-ruby
+Query.not_starts_with("name", "Once upon a time")
+```
+```server-deno
+Query.notStartsWith("name", "Once upon a time")
+```
+```server-nodejs
+Query.notStartsWith("name", "Once upon a time")
+```
+```server-php
+Query::notStartsWith("name", "Once upon a time")
+```
+```server-swift
+Query.notStartsWith("name", value: "Once upon a time")
+```
+```http
+{"method":"notStartsWith","column":"name","values":["Once upon a time"]}
 ```
 {% /multicode %}
 
 ### Ends with {% #ends-with %}
 
-Returns documents if a string attribute ends with a substring.
+Returns rows if a string column ends with a substring.
 
 {% multicode %}
 ```client-web
@@ -589,13 +985,56 @@ Query.endsWith("name", value: "happily ever after.")
 query.EndsWith("name", "happily ever after.")
 ```
 ```http
-{"method":"endsWith","attribute":"name","values":["happily ever after."]}
+{"method":"endsWith","column":"name","values":["happily ever after."]}
+```
+{% /multicode %}
+
+### Not ends with {% #not-ends-with %}
+
+Returns rows if a string column does not end with a substring.
+
+{% multicode %}
+```client-web
+Query.notEndsWith("name", "happily ever after.")
+```
+```client-flutter
+Query.notEndsWith("name", "happily ever after.")
+```
+```client-apple
+Query.notEndsWith("name", value: "happily ever after.")
+```
+```client-android-kotlin
+Query.notEndsWith("name", "happily ever after.")
+```
+```client-android-java
+Query.notEndsWith("name", "happily ever after.")
+```
+```server-python
+Query.not_ends_with("name", "happily ever after.")
+```
+```server-ruby
+Query.not_ends_with("name", "happily ever after.")
+```
+```server-deno
+Query.notEndsWith("name", "happily ever after.")
+```
+```server-nodejs
+Query.notEndsWith("name", "happily ever after.")
+```
+```server-php
+Query::notEndsWith("name", "happily ever after.")
+```
+```server-swift
+Query.notEndsWith("name", value: "happily ever after.")
+```
+```http
+{"method":"notEndsWith","column":"name","values":["happily ever after."]}
 ```
 {% /multicode %}
 
 ### Contains {% #contains %}
 
-Returns documents if the array attribute contains the specified elements or if a string attribute contains the specified substring.
+Returns rows if the array column contains the specified elements or if a string column contains the specified substring.
 
 {% multicode %}
 ```client-web
@@ -656,16 +1095,109 @@ query.Contains("name", "Tom")
 ```
 ```http
 # For arrays
-{"method":"contains","attribute":"ingredients","values":["apple","banana"]}
+{"method":"contains","column":"ingredients","values":["apple","banana"]}
 
 # For strings
-{"method":"contains","attribute":"name","values":["Tom"]}
+{"method":"contains","column":"name","values":["Tom"]}
+```
+{% /multicode %}
+
+### Not contains {% #not-contains %}
+
+Returns rows if the array column does not contain the specified
+elements, or if a string column does not contain the specified
+substring.
+
+{% multicode %}
+```client-web
+// For arrays
+Query.notContains("ingredients", ['apple', 'banana'])
+
+// For strings
+Query.notContains("name", "Tom")
+```
+```client-flutter
+// For arrays
+Query.notContains("ingredients", ['apple', 'banana'])
+
+// For strings
+Query.notContains("name", "Tom")
+```
+```client-apple
+// For arrays
+Query.notContains("ingredients", value: ['apple', 'banana'])
+
+// For strings
+Query.notContains("name", value: "Tom")
+```
+```client-android-kotlin
+// For arrays
+Query.notContains("ingredients", ['apple', 'banana'])
+
+// For strings
+Query.notContains("name", "Tom")
+```
+```client-android-java
+// For arrays
+Query.notContains("ingredients", Arrays.asList("apple", "banana"))
+
+// For strings
+Query.notContains("name", "Tom")
+```
+```server-python
+# For arrays
+Query.not_contains("ingredients", ['apple', 'banana'])
+
+# For strings
+Query.not_contains("name", "Tom")
+```
+```server-ruby
+# For arrays
+Query.not_contains("ingredients", ['apple', 'banana'])
+
+# For strings
+Query.not_contains("name", "Tom")
+```
+```server-deno
+// For arrays
+Query.notContains("ingredients", ['apple', 'banana'])
+
+// For strings
+Query.notContains("name", "Tom")
+```
+```server-nodejs
+// For arrays
+Query.notContains("ingredients", ['apple', 'banana'])
+
+// For strings
+Query.notContains("name", "Tom")
+```
+```server-php
+// For arrays
+Query::notContains("ingredients", ['apple', 'banana'])
+
+// For strings
+Query::notContains("name", "Tom")
+```
+```server-swift
+// For arrays
+Query.notContains("ingredients", value: ['apple', 'banana'])
+
+// For strings
+Query.notContains("name", value: "Tom")
+```
+```http
+# For arrays
+{"method":"notContains","column":"ingredients","values":["apple","banana"]}
+
+# For strings
+{"method":"notContains","column":"name","values":["Tom"]}
 ```
 {% /multicode %}
 
 ### Search {% #search %}
 
-Searches string attributes for provided keywords. Requires a [full-text index](/docs/products/databases/collections#indexes) on queried attributes.
+Searches string columns for provided keywords. Requires a [full-text index](/docs/products/databases/tables#indexes) on queried columns.
 
 {% multicode %}
 ```client-web
@@ -693,7 +1225,52 @@ Query.search("text", value: "key words")
 query.Search("text", "key words")
 ```
 ```http
-{"method":"search","attribute":"text","values":["key words"]}
+{"method":"search","column":"text","values":["key words"]}
+```
+{% /multicode %}
+
+### Not search {% #not-search %}
+
+Returns rows if a string column does not match the full-text search
+query. Requires a [full-text index](/docs/products/databases/tables#indexes)
+on queried columns.
+
+{% multicode %}
+```client-web
+Query.notSearch("text", "key words")
+```
+```client-flutter
+Query.notSearch("text", "key words")
+```
+```client-apple
+Query.notSearch("text", value: "key words")
+```
+```client-android-kotlin
+Query.notSearch("text", "key words")
+```
+```client-android-java
+Query.notSearch("text", "key words")
+```
+```server-python
+Query.not_search("text", "key words")
+```
+```server-ruby
+Query.not_search("text", "key words")
+```
+```server-deno
+Query.notSearch("text", "key words")
+```
+```server-nodejs
+Query.notSearch("text", "key words")
+```
+```server-php
+Query::notSearch("text", "key words")
+```
+```server-swift
+Query.notSearch("text", value: "key words")
+```
+```http
+{"method":"notSearch","column":"text","values":["key words"]}
 ```
 {% /multicode %}
 
@@ -701,7 +1278,7 @@ query.Search("text", "key words")
 
 ### AND {% #and %}
 
-Returns document if it matches all of the nested sub-queries in the array passed in.
+Returns row if it matches all of the nested sub-queries in the array passed in.
 
 {% multicode %}
 ```client-web
@@ -753,13 +1330,13 @@ query.And([]string{
 })
 ```
 ```http
-{"method":"and","values":[{"method":"lessThan","attribute":"size","values":[10]},{"method":"greaterThan","attribute":"size","values":[5]}]}
+{"method":"and","values":[{"method":"lessThan","column":"size","values":[10]},{"method":"greaterThan","column":"size","values":[5]}]}
 ```
 {% /multicode %}
 
 ### OR {% #or %}
 
-Returns document if it matches any of the nested sub-queries in the array passed in.
+Returns row if it matches any of the nested sub-queries in the array passed in.
 
 {% multicode %}
 ```client-web
@@ -811,7 +1388,7 @@ query.Or([]string{
 })
 ```
 ```http
-{"method":"or","values":[{"method":"lessThan","attribute":"size","values":[5]},{"method":"greaterThan","attribute":"size","values":[10]}]}
+{"method":"or","values":[{"method":"lessThan","column":"size","values":[5]},{"method":"greaterThan","column":"size","values":[10]}]}
 ```
 {% /multicode %}
 
@@ -819,69 +1396,69 @@ query.Or([]string{
 
 ### Order descending {% #order-desc %}
 
-Orders results in descending order by attribute. Attribute must be indexed.
+Orders results in descending order by column. Column must be indexed.
 
 {% multicode %}
 ```client-web
-Query.orderDesc("attribute")
+Query.orderDesc("column")
 ```
 ```client-flutter
-Query.orderDesc("attribute")
+Query.orderDesc("column")
 ```
 ```python
-Query.order_desc("attribute")
+Query.order_desc("column")
 ```
 ```ruby
-Query.order_desc("attribute")
+Query.order_desc("column")
 ```
-```deno
-Query.orderDesc("attribute")
+```server-nodejs
+Query.orderDesc("column")
 ```
 ```php
-Query::orderDesc("attribute")
+Query::orderDesc("column")
 ```
 ```swift
-Query.orderDesc("attribute")
+Query.orderDesc("column")
 ```
 ```go
 query.OrderDesc("attribute")
 ```
 ```http
-{"method":"orderDesc","attribute":"attribute"}
+{"method":"orderDesc","column":"column"}
 ```
 {% /multicode %}
 
 ### Order ascending {% #order-asc %}
 
-Orders results in ascending order by attribute. Attribute must be indexed.
+Orders results in ascending order by column. Column must be indexed.
 
 {% multicode %}
 ```client-web
-Query.orderAsc("attribute")
+Query.orderAsc("column")
 ```
 ```client-flutter
-Query.orderAsc("attribute")
+Query.orderAsc("column")
 ```
 ```python
-Query.order_asc("attribute")
+Query.order_asc("column")
 ```
 ```ruby
-Query.order_asc("attribute")
+Query.order_asc("column")
 ```
-```deno
-Query.orderAsc("attribute")
+```server-nodejs
+Query.orderAsc("column")
 ```
 ```php
-Query::orderAsc("attribute")
+Query::orderAsc("column")
 ```
 ```swift
-Query.orderAsc("attribute")
+Query.orderAsc("column")
 ```
 ```go
 query.OrderAsc("attribute")
 ```
 ```http
-{"method":"orderAsc","attribute":"attribute"}
+{"method":"orderAsc","column":"column"}
 ```
 {% /multicode %}
 
@@ -1023,15 +1600,191 @@ query.CursorBefore("62a7...a600")
 ```
 {% /multicode %}
 
+# Time helpers {% #time-helpers %}
+
+Built-in helpers for filtering by creation and update timestamps using
+ISO 8601 date-time strings (for example, "2025-01-01T00:00:00Z").
+
+### Created before {% #created-before %}
+
+Returns rows created before the given date.
+
+{% multicode %}
+```client-web
+Query.createdBefore("2025-01-01T00:00:00Z")
+```
+```client-flutter
+Query.createdBefore("2025-01-01T00:00:00Z")
+```
+```client-apple
+Query.createdBefore("2025-01-01T00:00:00Z")
+```
+```client-android-kotlin
+Query.createdBefore("2025-01-01T00:00:00Z")
+```
+```client-android-java
+Query.createdBefore("2025-01-01T00:00:00Z")
+```
+```server-python
+Query.created_before("2025-01-01T00:00:00Z")
+```
+```server-ruby
+Query.created_before("2025-01-01T00:00:00Z")
+```
+```server-deno
+Query.createdBefore("2025-01-01T00:00:00Z")
+```
+```server-nodejs
+Query.createdBefore("2025-01-01T00:00:00Z")
+```
+```server-php
+Query::createdBefore("2025-01-01T00:00:00Z")
+```
+```server-swift
+Query.createdBefore("2025-01-01T00:00:00Z")
+```
+```http
+{"method":"createdBefore","values":["2025-01-01T00:00:00Z"]}
+```
+{% /multicode %}
+
+### Created after {% #created-after %}
+
+Returns rows created after the given date.
+
+{% multicode %}
+```client-web
+Query.createdAfter("2025-01-01T00:00:00Z")
+```
+```client-flutter
+Query.createdAfter("2025-01-01T00:00:00Z")
+```
+```client-apple
+Query.createdAfter("2025-01-01T00:00:00Z")
+```
+```client-android-kotlin
+Query.createdAfter("2025-01-01T00:00:00Z")
+```
+```client-android-java
+Query.createdAfter("2025-01-01T00:00:00Z")
+```
+```server-python
+Query.created_after("2025-01-01T00:00:00Z")
+```
+```server-ruby
+Query.created_after("2025-01-01T00:00:00Z")
+```
+```server-deno
+Query.createdAfter("2025-01-01T00:00:00Z")
+```
+```server-nodejs
+Query.createdAfter("2025-01-01T00:00:00Z")
+```
+```server-php
+Query::createdAfter("2025-01-01T00:00:00Z")
+```
+```server-swift
+Query.createdAfter("2025-01-01T00:00:00Z")
+```
+```http
+{"method":"createdAfter","values":["2025-01-01T00:00:00Z"]}
+```
+{% /multicode %}
+
+### Updated before {% #updated-before %}
+
+Returns rows updated before the given date.
+
+{% multicode %}
+```client-web
+Query.updatedBefore("2025-01-01T00:00:00Z")
+```
+```client-flutter
+Query.updatedBefore("2025-01-01T00:00:00Z")
+```
+```client-apple
+Query.updatedBefore("2025-01-01T00:00:00Z")
+```
+```client-android-kotlin
+Query.updatedBefore("2025-01-01T00:00:00Z")
+```
+```client-android-java
+Query.updatedBefore("2025-01-01T00:00:00Z")
+```
+```server-python
+Query.updated_before("2025-01-01T00:00:00Z")
+```
+```server-ruby
+Query.updated_before("2025-01-01T00:00:00Z")
+```
+```server-deno
+Query.updatedBefore("2025-01-01T00:00:00Z")
+```
+```server-nodejs
+Query.updatedBefore("2025-01-01T00:00:00Z")
+```
+```server-php
+Query::updatedBefore("2025-01-01T00:00:00Z")
+```
+```server-swift
+Query.updatedBefore("2025-01-01T00:00:00Z")
+```
+```http
+{"method":"updatedBefore","values":["2025-01-01T00:00:00Z"]}
+```
+{% /multicode %}
+
+### Updated after {% #updated-after %}
+
+Returns rows updated after the given date.
+
+{% multicode %}
+```client-web
+Query.updatedAfter("2025-01-01T00:00:00Z")
+```
+```client-flutter
+Query.updatedAfter("2025-01-01T00:00:00Z")
+```
+```client-apple
+Query.updatedAfter("2025-01-01T00:00:00Z")
+```
+```client-android-kotlin
+Query.updatedAfter("2025-01-01T00:00:00Z")
+```
+```client-android-java
+Query.updatedAfter("2025-01-01T00:00:00Z")
+```
+```server-python
+Query.updated_after("2025-01-01T00:00:00Z")
+```
+```server-ruby
+Query.updated_after("2025-01-01T00:00:00Z")
+```
+```server-deno
+Query.updatedAfter("2025-01-01T00:00:00Z")
+```
+```server-nodejs
+Query.updatedAfter("2025-01-01T00:00:00Z")
+```
+```server-php
+Query::updatedAfter("2025-01-01T00:00:00Z")
+```
+```server-swift
+Query.updatedAfter("2025-01-01T00:00:00Z")
+```
+```http
+{"method":"updatedAfter","values":["2025-01-01T00:00:00Z"]}
+```
+{% /multicode %}
 # Complex queries {% #complex-queries %}
 
 You can create complex queries by combining AND and OR operations. For example, to find items that are either books under $20 or magazines under $10:
 
 {% multicode %}
 ```client-web
-const results = await databases.listDocuments(
+const results = await tablesDB.listRows(
     '<DATABASE_ID>',
-    '<COLLECTION_ID>',
+    '<TABLE_ID>',
     [
         Query.or([
             Query.and([
@@ -1047,9 +1800,9 @@ const results = await databases.listDocuments(
 );
 ```
 ```client-flutter
-final results = await databases.listDocuments(
+final results = await tablesDB.listRows(
     '<DATABASE_ID>',
-    '<COLLECTION_ID>',
+    '<TABLE_ID>',
     [
         Query.or([
             Query.and([
@@ -1065,9 +1818,9 @@ final results = await databases.listDocuments(
 );
 ```
 ```python
-results = databases.list_documents(
+results = tablesDB.list_rows(
     database_id='<DATABASE_ID>',
-    collection_id='<COLLECTION_ID>',
+    table_id='<TABLE_ID>',
     queries=[
         Query.or_queries([
             Query.and_queries([
@@ -1082,11 +1835,10 @@ results = databases.list_documents(
     ]
 )
 ```
-```go
-documents, err := databases.ListDocuments(
+rows, err := tablesDB.ListRows(
     "<DATABASE_ID>",
-    "<COLLECTION_ID>",
-    databases.WithListDocumentsQueries([]string{
+    "<TABLE_ID>",
+    tablesDB.WithListRowsQueries([]string{
         query.Or([]string{
             query.And([]string{
                 query.Equal("category", []string{"books"}),
@@ -1104,10 +1856,10 @@ if err != nil {
 }
 ```
 ```http
-{"method":"or","values":[{"method":"and","values":[{"method":"equal","attribute":"category","values":["books"]},{"method":"lessThan","attribute":"price","values":[20]}]},{"method":"and","values":[{"method":"equal","attribute":"category","values":["magazines"]},{"method":"lessThan","attribute":"price","values":[10]}]}]}
+{"method":"or","values":[{"method":"and","values":[{"method":"equal","column":"category","values":["books"]},{"method":"lessThan","column":"price","values":[20]}]},{"method":"and","values":[{"method":"equal","column":"category","values":["magazines"]},{"method":"lessThan","column":"price","values":[10]}]}]}
 ```
 {% /multicode %}
 
 This example demonstrates how to combine `OR` and `AND` operations. The query uses `Query.or()` to match either condition: books under $20 OR magazines under $10.
-Each condition within the OR is composed of two AND conditions - one for the category and one for the price threshold. The database will return documents that match either of these combined conditions.
+Each condition within the OR is composed of two AND conditions - one for the category and one for the price threshold. The database will return rows that match either of these combined conditions.
 

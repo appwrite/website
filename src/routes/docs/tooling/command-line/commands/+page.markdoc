@@ -9,7 +9,7 @@ All commands are compatible with the latest version of the CLI. We recommend run
 {% /info %}
 
 
-Other than commands to create and push databases, collections, functions, messaging-topics, teams, and buckets, the Appwrite CLI can be used as a Server SDK as well. The Appwrite CLI has a command for every Server API endpoint.
+Other than commands to create and push databases, tables, functions, messaging-topics, teams, and buckets, the Appwrite CLI can be used as a Server SDK as well. The Appwrite CLI has a command for every Server API endpoint.
 
 Commands generally follow the following syntax:
 
@@ -68,13 +68,13 @@ Below is a list of the available commands in the Appwrite CLI. You can get more 
 * Description
 ---
 * `init [options]`
-* The init command provides a convenient wrapper for creating and initializing projects, functions, collections, buckets, teams, and messaging-topics in Appwrite.
+* The init command provides a convenient wrapper for creating and initializing projects, functions, tables, buckets, teams, and messaging-topics in Appwrite.
 ---
 * `pull`
-* The pull command helps you pull your Appwrite project, functions, collections, buckets, teams, and messaging-topics.
+* The pull command helps you pull your Appwrite project, functions, tables, buckets, teams, and messaging-topics.
 ---
 * `push`
-* The push command provides a convenient wrapper for pushing your functions, collections, buckets, teams, and topics.
+* The push command provides a convenient wrapper for pushing your functions, tables, buckets, teams, and topics.
 ---
 * `run`
 * The run command allows you to run projects locally to allow easy development and quick debugging.
@@ -98,7 +98,7 @@ Below is a list of the available commands in the Appwrite CLI. You can get more 
 * The teams command allows you to group users of your project and enable them to share read and write access to your project resources.
 ---
 * `databases`
-* The databases command allows you to create structured collections of documents and query and filter lists of documents.
+* The databases command allows you to create structured tables of rows and query and filter lists of rows.
 ---
 * `functions`
 * The functions command allows you to view, create, and manage your Appwrite Functions.
@@ -165,7 +165,7 @@ appwrite users list --json
 By default, when pushing or pulling resources, the Appwrite CLI will ask you to confirm destructive operations. Use the `--force` flag to verify all questions.
 
 ```sh
-appwrite push collections --force
+appwrite push tables --force
 ```
 
 # All {% #all %}
@@ -186,10 +186,10 @@ appwrite login --report
 Many resources support the option to view them in the console. Use the `--console` flag to get a direct link to the console, and add the optional `--open` flag to automatically open it in the default browser.
 
 ```sh
-appwrite databases get-document \
+appwrite databases get-row \
   --database-id "<DATABASE_ID>" \
-  --collection-id "<COLLECTION_ID>" \
-  --document-id "<DOCUMENT_ID>" \
+  --table-id "<TABLE_ID>" \
+  --row-id "<ROW_ID>" \
   --console --open
 ```
 
@@ -213,35 +213,35 @@ To get a list of all your project users, you can use the list command.
 appwrite users list
 ```
 
-## List collections {% #list-collections %}
+## List tables {% #list-tables %}
 
-To get a list of all your [collections](/docs/tooling/command-line/collections), you can use the `list-collections` command.
+To get a list of all your [tables](/docs/tooling/command-line/tables), you can use the `list-tables` command.
 
 ```sh
-appwrite databases list-collections --database-id "<DATABASE_ID>"
+appwrite databases list-tables --database-id "<DATABASE_ID>"
 ```
 
 If you wish to parse the output from the CLI, you can request the CLI output in JSON format using the `--json` flag
 
 ```sh
-appwrite databases list-collections --database-id "<DATABASE_ID>" --json
+appwrite databases list-tables --database-id "<DATABASE_ID>" --json
 ```
 
-## Get collection {% #get-collection %}
+## Get table {% #get-table %}
 
-To get more information on a particular collection, you can make use of the `get-collection` command and pass in the collection-id.
+To get more information on a particular table, you can make use of the `get-table` command and pass in the table-id.
 
 ```sh
-appwrite databases get-collection --database-id "<DATABASE_ID>" --collection-id "<COLLECTION_ID>"
+appwrite databases get-table --database-id "<DATABASE_ID>" --table-id "<TABLE_ID>"
 ```
 
-## Create document {% #create-document %}
+## Create row {% #create-row %}
 
-To create a new document in an existing collection, use the `create-document` command.
+To create a new row in an existing table, use the `create-row` command.
 
 ```sh
-appwrite databases create-document \
-    --database-id "<DATABASE_ID>" --collection-id "<COLLECTION_ID>" \
-    --document-id 'unique()' --data '{ "Name": "Iron Man" }' \
+appwrite databases create-row \
+    --database-id "<DATABASE_ID>" --table-id "<TABLE_ID>" \
+    --row-id 'unique()' --data '{ "Name": "Iron Man" }' \
     --permissions 'read("any")' 'write("team:abc")' 
 ```

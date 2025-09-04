@@ -44,7 +44,7 @@ Only one instance of the `Client()` class should be created per app.
 Add the following code to it, replacing `<PROJECT_ID>` with your project ID.
 
 ```client-web
-import { Client, Databases, Account } from "appwrite";
+import { Client, TablesDB, Account } from "appwrite";
 
 const client = new Client();
 client
@@ -52,5 +52,5 @@ client
   .setProject("<PROJECT_ID>"); // Replace with your project ID
 
 export const account = new Account(client);
-export const databases = new Databases(client);
+export const tablesDB = new TablesDB(client);
 ```

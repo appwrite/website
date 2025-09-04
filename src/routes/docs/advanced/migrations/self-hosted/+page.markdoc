@@ -35,7 +35,7 @@ and [things to keep in mind](#notices) sections above.
 
 1. Once redirected to Appwrite Cloud, you'll be prompted to select an organization and a project. You can migrate to an existing project or create a new one.
 
-2. Select the data you wish to migrate. You can choose among accounts, databases, documents, files, and functions.
+2. Select the data you wish to migrate. You can choose among accounts, databases, rows, files, and functions.
 
 3. Click **Start migration** to start the migration process. You do not need to keep the Appwrite Console open through the process.
 

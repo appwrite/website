@@ -12,27 +12,27 @@ There is no hard limit on the number of items you can request. However, beware t
 
 # Offset pagination {% #offset-pagination %}
 
-Offset pagination works by dividing documents into `M` pages containing `N` documents.
+Offset pagination works by dividing rows into `M` pages containing `N` rows.
 Every page is retrieved by skipping `offset = M * (N - 1)` items and reading the following `M` pages.
 
 Using `Query.limit()` and `Query.offset()` you can achieve offset pagination.
-With `Query.limit()` you can define how many documents can be returned from one request.
+With `Query.limit()` you can define how many rows can be returned from one request.
 The `Query.offset()` is number of records you wish to skip before selecting records.
 
 {% multicode %}
 ```client-web
-import { Client, Databases, Query } from "appwrite";
+import { Client, Query, TablesDB } from "appwrite";
 
 const client = new Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
     .setProject('<PROJECT_ID>');
 
-const databases = new Databases(client);
+const tablesDB = new TablesDB(client);
 
 // Page 1
-const page1 = await databases.listDocuments(
+const page1 = await tablesDB.listRows(
     '<DATABASE_ID>',
-    '[COLLECTION_ID]',
+    '<TABLE_ID>',
     [
         Query.limit(25),
         Query.offset(0)
@@ -40,9 +40,9 @@ const page1 = await databases.listDocuments(
 );
 
 // Page 2
-const page2 = await databases.listDocuments(
+const page2 = await tablesDB.listRows(
     '<DATABASE_ID>',
-    '[COLLECTION_ID]',
+    '<TABLE_ID>',
     [
         Query.limit(25),
         Query.offset(25)
@@ -57,20 +57,20 @@ void main() async {
         .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
         .setProject('<PROJECT_ID>');
 
-    final databases = Databases(client);
+    final tablesDB = TablesDB(client);
 
-    final page1 = await databases.listDocuments(
+    final page1 = await tablesDB.listRows(
         databaseId: '<DATABASE_ID>',
-        collectionId: '[COLLECTION_ID]',
+        tableId: '<TABLE_ID>',
         queries: [
             Query.limit(25),
             Query.offset(0)
         ]
     );
 
-    final page2 = await databases.listDocuments(
+    final page2 = await tablesDB.listRows(
         databaseId: '<DATABASE_ID>',
-        collectionId: '[COLLECTION_ID]',
+        tableId: '<TABLE_ID>',
         queries: [
             Query.limit(25),
             Query.offset(25)
@@ -87,20 +87,20 @@ func main() async throws {
         .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
         .setProject("<PROJECT_ID>")
 
-    let databases = Databases(client)
+    let tablesDB = TablesDB(client)
 
-    let page1 = try await databases.listDocuments(
+    let page1 = try await tablesDB.listRows(
         databaseId: "<DATABASE_ID>",
-        collectionId: "<COLLECTION_ID>",
+        tableId: "<TABLE_ID>",
         queries: [
             Query.limit(25),
             Query.offset(0)
         ]
     )
 
-    let page2 = try await databases.listDocuments(
+    let page2 = try await tablesDB.listRows(
         databaseId: "<DATABASE_ID>",
-        collectionId: "<COLLECTION_ID>",
+        tableId: "<TABLE_ID>",
         queries: [
             Query.limit(25),
             Query.offset(25)
@@ -111,27 +111,27 @@ func main() async throws {
 ```client-android-kotlin
 import io.appwrite.Client
 import io.appwrite.Query
-import io.appwrite.services.Databases
+import io.appwrite.services.TablesDB
 
 suspend fun main() {
     val client = Client(applicationContext)
         .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
         .setProject("<PROJECT_ID>")
 
-    val databases = Databases(client)
+    val tablesDB = TablesDB(client)
 
-    val page1 = databases.listDocuments(
+    val page1 = tablesDB.listRows(
         databaseId = "<DATABASE_ID>",
-        collectionId = "<COLLECTION_ID>",
+        tableId = "<TABLE_ID>",
         queries = [
             Query.limit(25),
             Query.offset(0)
         ]
     )
 
-    val page2 = databases.listDocuments(
+    val page2 = tablesDB.listRows(
         databaseId = "<DATABASE_ID>",
-        collectionId = "<COLLECTION_ID>",
+        tableId = "<TABLE_ID>",
         queries = [
             Query.limit(25),
             Query.offset(25)
@@ -150,36 +150,36 @@ If the data changes frequently, offset pagination will also produce **missing an
 
 # Cursor pagination {% #cursor-pagination %}
 
-The cursor is a unique identifier for a document that points to where the next page should start.
-After reading a page of documents, pass the last document's ID into the `Query.cursorAfter(lastId)` query method to get the next page of documents.
-Pass the first document's ID into the `Query.cursorBefore(firstId)` query method to retrieve the previous page.
+The cursor is a unique identifier for a row that points to where the next page should start.
+After reading a page of rows, pass the last row's ID into the `Query.cursorAfter(lastId)` query method to get the next page of rows.
+Pass the first row's ID into the `Query.cursorBefore(firstId)` query method to retrieve the previous page.
 
 {% multicode %}
 
 ```client-web
-import { Databases, Query } from "appwrite";
+import { Client, Query, TablesDB } from "appwrite";
 
 const client = new Client()
     .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
     .setProject("<PROJECT_ID>");
 
-const databases = new Databases(client);
+const tablesDB = new TablesDB(client);
 
 // Page 1
-const page1 = await databases.listDocuments(
+const page1 = await tablesDB.listRows(
     '<DATABASE_ID>',
-    '[COLLECTION_ID]',
+    '<TABLE_ID>',
     [
         Query.limit(25),
     ]
 );
 
-const lastId = page1.documents[page1.documents.length - 1].$id;
+const lastId = page1.rows[page1.rows.length - 1].$id;
 
 // Page 2
-const page2 = await databases.listDocuments(
+const page2 = await tablesDB.listRows(
     '<DATABASE_ID>',
-    '[COLLECTION_ID]',
+    '<TABLE_ID>',
     [
         Query.limit(25),
         Query.cursorAfter(lastId),
@@ -195,21 +195,21 @@ void main() async {
         .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
         .setProject('<PROJECT_ID>');
 
-    final databases = Databases(client);
+    final tablesDB = TablesDB(client);
 
-    final page1 = await databases.listDocuments(
+    final page1 = await tablesDB.listRows(
         databaseId: '<DATABASE_ID>',
-        collectionId: '[COLLECTION_ID]',
+        tableId: '<TABLE_ID>',
         queries: [
             Query.limit(25)
         ]
     );
 
-    final lastId = page1.documents[page1.documents.length - 1].$id;
+    final lastId = page1.rows[page1.rows.length - 1].$id;
 
-    final page2 = await databases.listDocuments(
+    final page2 = await tablesDB.listRows(
         databaseId: '<DATABASE_ID>',
-        collectionId: '[COLLECTION_ID]',
+        tableId: '<TABLE_ID>',
         queries: [
             Query.limit(25),
             Query.cursorAfter(lastId)
@@ -227,21 +227,21 @@ func main() async throws {
       .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
       .setProject("<PROJECT_ID>")
 
-    let databases = Databases(client)
+    let tablesDB = TablesDB(client)
 
-    let page1 = try await databases.listDocuments(
+    let page1 = try await tablesDB.listRows(
         databaseId: "<DATABASE_ID>",
-        collectionId: "<COLLECTION_ID>",
+        tableId: "<TABLE_ID>",
         queries: [
             Query.limit(25)
         ]
     )
 
-    let lastId = page1.documents[page1.documents.count - 1].$id
+    let lastId = page1.rows[page1.rows.count - 1].$id
 
-    let page2 = try await databases.listDocuments(
+    let page2 = try await tablesDB.listRows(
         databaseId: "<DATABASE_ID>",
-        collectionId: "<COLLECTION_ID>",
+        tableId: "<TABLE_ID>",
         queries: [
             Query.limit(25),
             Query.cursorAfter(lastId)
@@ -254,28 +254,28 @@ import android.util.Log
 import io.appwrite.AppwriteException
 import io.appwrite.Client
 import io.appwrite.Query
-import io.appwrite.services.Databases
+import io.appwrite.services.TablesDB
 
 suspend fun main() {
     val client = Client(applicationContext)
         .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
         .setProject("<PROJECT_ID>")
 
-    val databases = Databases(client)
+    val tablesDB = TablesDB(client)
 
-    val page1 = databases.listDocuments(
+    val page1 = tablesDB.listRows(
         databaseId = "<DATABASE_ID>",
-        collectionId = "<COLLECTION_ID>",
+        tableId = "<TABLE_ID>",
         queries = [
             Query.limit(25)
         ]
     )
 
-    val lastId = page1.documents[page1.documents.size - 1].$id
+    val lastId = page1.rows[page1.rows.size - 1].$id
 
-    val page2 = databases.listDocuments(
+    val page2 = tablesDB.listRows(
         databaseId = "<DATABASE_ID>",
-        collectionId = "<COLLECTION_ID>",
+        tableId = "<TABLE_ID>",
         queries = [
             Query.limit(25),
             Query.cursorAfter(lastId)
@@ -287,11 +287,11 @@ suspend fun main() {
 {% /multicode %}
 
 # When to use what? {% #when-to-use %}
-Offset pagination should be used for collections that rarely change.
-Offset paginations allow you to create indicator of the current page number and total page number.
+Offset pagination should be used for tables that rarely change.
+Offset pagination allow you to create indicator of the current page number and total page number.
 For example, a list with up to 20 pages or static data like a list of countries or currencies.
-Using offset pagination on large collections and frequently updated collections may result in slow performance and **missing and duplicate** results.
+Using offset pagination on large tables and frequently updated tables may result in slow performance and **missing and duplicate** results.
 
-Cursor pagination should be used for frequently updated collections.
+Cursor pagination should be used for frequently updated tablesDB.
 It is best suited for lazy-loaded pages with infinite scrolling.
 For example, a feed, comment section, chat history, or high volume datasets.

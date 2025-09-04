@@ -70,7 +70,11 @@ class AppwriteService {
 
   async createFile(bucketId, blob) {
     const file = await InputFile.fromBuffer(blob, 'audio.flac');
-    return await this.storage.createFile(bucketId, ID.unique(), file);
+    return await this.storage.createFile({
+      bucketId: bucketId,
+      fileId: ID.unique(),
+      file: file
+    });
   }
 }
 
@@ -139,7 +143,7 @@ export default async ({ req, res, error }) => {
 ```
 
 This Appwrite Function checks if the required environment variables are set, then processes the text using the Hugging Face API,
-stores the generated audio file in Appwrite Storage, and creates a document in the Appwrite database of the original text.
+stores the generated audio file in Appwrite Storage, and creates a row in the Appwrite database of the original text.
 {% /section %}
 
 {% section #step-6 step=6 title="Test the function" %}
