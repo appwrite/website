@@ -12,28 +12,28 @@ import dedent from 'dedent';
 import { pathToFileURL } from 'url';
 
 if (!process.env.OPENAI_API_KEY) {
-  throw new Error('OPENAI_API_KEY is not set');
+    throw new Error('OPENAI_API_KEY is not set');
 }
 
 async function generateDescription({
-  articleText,
-  frontmatterAttributes,
-  previousAttempt,
+    articleText,
+    frontmatterAttributes,
+    previousAttempt
 }: {
-  articleText: string;
-  frontmatterAttributes: Record<string, any>;
-  previousAttempt?: {
-    text: string;
-    characterCount: number;
-  };
+    articleText: string;
+    frontmatterAttributes: Record<string, any>;
+    previousAttempt?: {
+        text: string;
+        characterCount: number;
+    };
 }) {
-  console.log(`Generating description...`);
-  const { text } = await generateText({
-    model: openai("gpt-5-mini"),
-    messages: [
-      {
-        role: 'system',
-        content: dedent`
+    console.log(`Generating description...`);
+    const { text } = await generateText({
+        model: openai('gpt-5-mini'),
+        messages: [
+            {
+                role: 'system',
+                content: dedent`
           You are a helpful technical writer. Your goal is to help Appwrite generate descriptions for their documentation pages.
           You will be given the content of a docs page, and you need to generate a description for it.
 
@@ -43,10 +43,10 @@ async function generateDescription({
           - Avoid deeply technical terms and jargon, this is just an SEO description.
           - Output must be worthy of being used as a meta description.
         `
-      },
-      {
-        role: 'user',
-        content: `
+            },
+            {
+                role: 'user',
+                content: `
 Here are the frontmatter attributes:
 <frontmatter>
 ${JSON.stringify(frontmatterAttributes, null, 2)}
@@ -59,7 +59,9 @@ ${articleText}
 
 Generate the description.
 
-${previousAttempt && `
+${
+    previousAttempt &&
+    `
 Pay attention, you have made a previous attempt at generating the description, but it exceeded the character count limit (${previousAttempt.characterCount} characters).
 This is your previous attempt:
 <previous-attempt>
@@ -67,89 +69,93 @@ ${previousAttempt.text}
 </previous-attempt>
 
 Make sure you stick to the character count limit of 250.
-`}
+`
+}
         `
-      }
-    ]
-  });
-
-  const characterCount = text.split(' ').length;
-
-  if (characterCount > 250) {
-    console.log(`Character count is too long (${characterCount}), generating again...`);
-    return generateDescription({
-      articleText,
-      frontmatterAttributes,
-      previousAttempt: {
-        text,
-        characterCount
-      }
+            }
+        ]
     });
-  }
 
-  console.log(`Description generated successfully (${characterCount} characters)`);
-  return {
-    description: text,
-    characterCount
-  };
+    const characterCount = text.split(' ').length;
+
+    if (characterCount > 250) {
+        console.log(`Character count is too long (${characterCount}), generating again...`);
+        return generateDescription({
+            articleText,
+            frontmatterAttributes,
+            previousAttempt: {
+                text,
+                characterCount
+            }
+        });
+    }
+
+    console.log(`Description generated successfully (${characterCount} characters)`);
+    return {
+        description: text,
+        characterCount
+    };
 }
 
 export async function getDocPageContent(markdocPath: string) {
-  const fileContent = await fs.readFile(markdocPath, 'utf8');
+    const fileContent = await fs.readFile(markdocPath, 'utf8');
 
-  const seq = sequence([markdoc(markdocSchema), preprocessMeltUI()]);
+    const seq = sequence([markdoc(markdocSchema), preprocessMeltUI()]);
 
-  if (!seq || !seq.markup) {
-      throw new Error('Sequence is undefined');
-  }
+    if (!seq || !seq.markup) {
+        throw new Error('Sequence is undefined');
+    }
 
-  // Get the frontmatter
-  const frontmatter = fm(fileContent);
-  const markup = await seq.markup({ content: frontmatter.body, filename: markdocPath });
-  const html = (markup as any).toString();
-  
-  // Use JSDOM to parse the HTML and extract text content from <article>
-  const dom = new JSDOM(html);
-  const articleElement = dom.window.document.querySelector('article');
-  const articleText = articleElement ? articleElement.textContent : '';
-  return {
-    articleText,
-    frontmatterAttributes: frontmatter.attributes
-  };
+    // Get the frontmatter
+    const frontmatter = fm(fileContent);
+    const markup = await seq.markup({ content: frontmatter.body, filename: markdocPath });
+    const html = (markup as any).toString();
+
+    // Use JSDOM to parse the HTML and extract text content from <article>
+    const dom = new JSDOM(html);
+    const articleElement = dom.window.document.querySelector('article');
+    const articleText = articleElement ? articleElement.textContent : '';
+    return {
+        articleText,
+        frontmatterAttributes: frontmatter.attributes
+    };
 }
 
 export async function generateDescriptionForDocsPage(filePath: string) {
-  const resolvedPath = path.resolve(filePath);
-  const { articleText, frontmatterAttributes } = await getDocPageContent(resolvedPath);
+    const resolvedPath = path.resolve(filePath);
+    const { articleText, frontmatterAttributes } = await getDocPageContent(resolvedPath);
 
-  if (!articleText || !frontmatterAttributes) {
-      throw new Error('Article text or frontmatter attributes are undefined');
-  }
+    if (!articleText || !frontmatterAttributes) {
+        throw new Error('Article text or frontmatter attributes are undefined');
+    }
 
-  const { description, characterCount } = await generateDescription({ articleText, frontmatterAttributes });
-  return { description, characterCount };
+    const { description, characterCount } = await generateDescription({
+        articleText,
+        frontmatterAttributes
+    });
+    return { description, characterCount };
 }
 
 async function main() {
-  const filePathArg = extractArg('file-path');
+    const filePathArg = extractArg('file-path');
 
-  if (!filePathArg) {
-      throw new Error('File path is required');
-  }
+    if (!filePathArg) {
+        throw new Error('File path is required');
+    }
 
-  const resolvedPath = path.resolve(filePathArg);
-  const { description, characterCount } = await generateDescriptionForDocsPage(resolvedPath);
-  console.log(`Generated description:\n\n${description}\n`);
+    const resolvedPath = path.resolve(filePathArg);
+    const { description, characterCount } = await generateDescriptionForDocsPage(resolvedPath);
+    console.log(`Generated description:\n\n${description}\n`);
 }
 
 // Runs only if invoked via CLI
 // @ts-ignore
 const isDirect = import.meta.url === pathToFileURL(process.argv[1]).href;
 if (isDirect) {
-  main().catch((err) => {
-    console.error(err);
-    process.exit(1);
-  });
+    main().catch((err) => {
+        console.error(err);
+        process.exit(1);
+    });
 }
 
 function extractArg(name: string): string | null {
