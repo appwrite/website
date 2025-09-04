@@ -36,9 +36,14 @@
         { name: 'Vue', dark: Vue, href: '/docs/quick-starts/vue', primary: '#4FC08D' },
         { name: 'Angular', dark: Angular, href: '/docs/quick-starts/angular', primary: '#DD0031' },
         { name: 'Svelte', dark: Svelte, href: '/docs/quick-starts/svelte', primary: '#FF3E00' },
-        
+
         // Mobile Frameworks
-        { name: 'React Native', dark: ReactNative, href: '/docs/quick-starts/react-native', primary: '#61DAFB' },
+        {
+            name: 'React Native',
+            dark: ReactNative,
+            href: '/docs/quick-starts/react-native',
+            primary: '#61DAFB'
+        },
         {
             name: 'Flutter',
             dark: Flutter,
@@ -68,7 +73,7 @@
             primary: '#F88A36',
             secondary: '#FD2020'
         },
-        
+
         // Backend Languages & Runtimes
         { name: 'Node.js', dark: Node, href: '/docs/quick-starts/node', primary: '#8CC84B' },
         {
