@@ -1,7 +1,7 @@
 import { base } from '$app/paths';
 import type { Tutorial } from '$markdoc/layouts/Tutorial.svelte';
 
-const framework_order = ['React', 'Vue', 'SvelteKit', 'Stripe', 'Refine'];
+const framework_order = ['React', 'Next.js', 'Vue', 'Nuxt', 'SvelteKit', 'Stripe', 'Refine'];
 const category_order = [
     'Web',
     'Mobile and native',
