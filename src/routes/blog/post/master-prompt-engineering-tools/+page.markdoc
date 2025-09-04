@@ -8,7 +8,7 @@ timeToRead: 10
 author: laura-du-ry
 unlisted: true
 category: startup
-call_to_action: true
+
 ---
 Prompt engineering is changing how we [build with AI](/docs/tooling/mcp). It's no longer just about the model, it’s also about the inputs given to the AI models.
 
