@@ -35,7 +35,7 @@
         { name: 'React', dark: React, href: '/docs/quick-starts/react', primary: '#53C1DE' },
         { name: 'Vue', dark: Vue, href: '/docs/quick-starts/vue', primary: '#4FC08D' },
         { name: 'Angular', dark: Angular, href: '/docs/quick-starts/angular', primary: '#DD0031' },
-        { name: 'Svelte', dark: Svelte, href: '/docs/quick-starts/svelte', primary: '#FF3E00' },
+        { name: 'Svelte', dark: Svelte, href: '/docs/quick-starts/sveltekit', primary: '#FF3E00' },
 
         // Mobile Frameworks
         {
