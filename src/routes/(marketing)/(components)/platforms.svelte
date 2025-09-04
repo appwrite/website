@@ -18,6 +18,11 @@
     import Go from '../(assets)/icons/go.svg';
     import GoLight from '../(assets)/icons/light/go.svg';
     import React from '../(assets)/icons/react.svg';
+    import Nextjs from '../(assets)/icons/nextjs.svg';
+    import Svelte from '../(assets)/icons/svelte.svg';
+    import Vue from '../(assets)/icons/vue.svg';
+    import Angular from '../(assets)/icons/angular.svg';
+    import ReactNative from '../(assets)/icons/react-native.svg';
     import GradientText from '$lib/components/fancy/gradient-text.svelte';
     import Noise from '$lib/components/fancy/noise.svelte';
     import { Tooltip } from 'bits-ui';
@@ -25,26 +30,21 @@
     import { themeInUse } from '$routes/+layout.svelte';
 
     const platforms = [
-        {
-            name: 'JS',
-            dark: Javascript,
-            href: '/docs/quick-starts/web',
-            primary: '#FFCA28'
-        },
+        // Web Frameworks (by popularity)
+        { name: 'Next.js', dark: Nextjs, href: '/docs/quick-starts/nextjs', primary: '#fff' },
+        { name: 'React', dark: React, href: '/docs/quick-starts/react', primary: '#53C1DE' },
+        { name: 'Vue', dark: Vue, href: '/docs/quick-starts/vue', primary: '#4FC08D' },
+        { name: 'Angular', dark: Angular, href: '/docs/quick-starts/angular', primary: '#DD0031' },
+        { name: 'Svelte', dark: Svelte, href: '/docs/quick-starts/svelte', primary: '#FF3E00' },
+        
+        // Mobile Frameworks
+        { name: 'React Native', dark: ReactNative, href: '/docs/quick-starts/react-native', primary: '#61DAFB' },
         {
             name: 'Flutter',
             dark: Flutter,
             href: '/docs/quick-starts/flutter',
             primary: '#00569E',
             secondary: '#47C5FB'
-        },
-        { name: 'Node.js', dark: Node, href: '/docs/quick-starts/node', primary: '#8CC84B' },
-        {
-            name: 'Python',
-            dark: Python,
-            href: '/docs/quick-starts/python',
-            primary: '#F9C600',
-            secondary: '#327EBD'
         },
         {
             name: 'iOS',
@@ -55,11 +55,28 @@
         },
         { name: 'Android', dark: Android, href: '/docs/quick-starts/android', primary: '#3DDC84' },
         {
-            name: 'Dart',
-            dark: Dart,
-            href: '/docs/quick-starts/dart',
-            primary: '#01579B',
-            secondary: '#29B6F6'
+            name: 'Kotlin',
+            dark: Kotlin,
+            href: '/docs/quick-starts/kotlin',
+            primary: '#6D74E1',
+            secondary: '#E1725C'
+        },
+        {
+            name: 'Swift',
+            dark: Swift,
+            href: '/docs/quick-starts/swift',
+            primary: '#F88A36',
+            secondary: '#FD2020'
+        },
+        
+        // Backend Languages & Runtimes
+        { name: 'Node.js', dark: Node, href: '/docs/quick-starts/node', primary: '#8CC84B' },
+        {
+            name: 'Python',
+            dark: Python,
+            href: '/docs/quick-starts/python',
+            primary: '#F9C600',
+            secondary: '#327EBD'
         },
         { name: 'PHP', dark: Php, href: '/docs/quick-starts/php', primary: '#8892BF' },
         {
@@ -69,6 +86,8 @@
             primary: '#791C12',
             secondary: '#9E120B'
         },
+        { name: '.NET', dark: Net, href: '/docs/quick-starts/dotnet', primary: '#512BD4' },
+        { name: 'Go', dark: Go, light: GoLight, href: '/docs/quick-starts/go', primary: '#fff' },
         {
             name: 'Deno',
             dark: Deno,
@@ -76,22 +95,12 @@
             href: '/docs/quick-starts/deno',
             primary: '#fff'
         },
-        { name: '.NET', dark: Net, href: '/docs/quick-starts/dotnet', primary: '#512BD4' },
-        { name: 'Go', dark: Go, light: GoLight, href: '/docs/quick-starts/go', primary: '#fff' },
         {
-            name: 'Swift',
-            dark: Swift,
-            href: '/docs/quick-starts/swift',
-            primary: '#F88A36',
-            secondary: '#FD2020'
-        },
-        { name: 'React', dark: React, href: '/docs/quick-starts/react', primary: '#53C1DE' },
-        {
-            name: 'Kotlin',
-            dark: Kotlin,
-            href: '/docs/quick-starts/kotlin',
-            primary: '#6D74E1',
-            secondary: '#E1725C'
+            name: 'Dart',
+            dark: Dart,
+            href: '/docs/quick-starts/dart',
+            primary: '#01579B',
+            secondary: '#29B6F6'
         }
     ];
 
