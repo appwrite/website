@@ -61,6 +61,8 @@
     import { displayHiringMessage } from '$lib/utils/console';
 
     function applyTheme(theme: Theme) {
+        if (!browser) return;
+
         const resolvedTheme = theme === 'system' ? getSystemTheme() : theme;
         const className = `${resolvedTheme}`;
         document.body.classList.remove('dark', 'light');
@@ -81,6 +83,8 @@
         saveReferrerAndUtmSource(page.url);
     });
 
+    currentTheme.subscribe(applyTheme);
+
     beforeNavigate(({ willUnload, to }) => {
         if (window) {
             tracked.clear();
@@ -92,11 +96,7 @@
     });
 
     $effect(() => {
-        if (!navigating?.to) {
-            return;
-        }
-
-        const isDocs = navigating.to.route.id?.startsWith('/docs');
+        const isDocs = browser && page.route.id?.startsWith('/docs');
 
         if (isDocs) {
             if (!document.body.classList.contains(`${$currentTheme}`)) {
