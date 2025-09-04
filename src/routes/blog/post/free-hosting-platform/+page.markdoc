@@ -89,14 +89,21 @@ Firebase offers **hosting for SPAs and PWAs** with easy integration into the Goo
 * **Strengths:** Built-in auth, real-time database, analytics.
 * **Free tier:** 10 GB storage, 10 GB/month data transfer, SSL, custom domain support.
 
-### 5. Render / Railway
+### 5. Render
 
-Both Render and Railway are flexible platforms that support **frontend and backend hosting**.
+Render supports both **frontend and backend hosting**.
 
-* **Best for:** Developers needing both static hosting and backend APIs.
-* **Strengths:** Deploy web services, databases, and static sites with one provider.
-* **Free tier:** Varies, but includes free static sites, databases, and functions.
+* **Best for:** Developers needing both static hosting and backend APIs.  
+* **Strengths:** Deploy web services, databases, and static sites with one provider.  
+* **Free tier:** Free static sites and free instance types; 750 free instance hours per workspace/month. Included outbound bandwidth: 100 GB/month in the Hobby workspace (overage billed or services suspended without a payment method).
 
+### 6. Railway
+
+Railway supports full-stack apps with a usage-based model.
+
+* **Best for:** Developers needing managed deploys for web services and databases.  
+* **Strengths:** Usage-based compute with automatic sleep on idle; serverless-like ergonomics.  
+* **Plan notes:** No always-free runtime tier. Hobby/Pro are usage-based; trials may be available. Check current pricing before positioning it as “free.”
 ## Best web hosting platforms beyond free tiers
 
 Not every project can run forever on free hosting. For startups moving into production or enterprises with compliance needs, here are the main categories:
