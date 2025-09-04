@@ -9,7 +9,7 @@ author: jake-barnby
 category: announcement
 featured: false
 ---
-When you need to exclude certain records, the usual approach is to fetch a broad set of documents, sometimes even the entire collection, and then filter them in your application code. 
+When you need to exclude certain records, the usual approach is to fetch a broad set of rows, sometimes even the entire collection, and then filter them in your application code. 
 
 It works, but it also means you are moving more data across the network than necessary, increasing payload sizes, and adding extra logic to your client. In smaller projects this might not be noticeable, but as your datasets grow, it quickly becomes inefficient.
 
@@ -19,7 +19,7 @@ We’re introducing **inversion Queries:** A new set of `NOT` operators that let
 
 # Excluding data just got easier
 
-Exclusion rules come in many forms. Sometimes you need to ignore documents that contain a specific keyword, sometimes you want values that fall outside a numeric range, and other times you need to filter out records based on prefixes or suffixes. These are standard requirements, but they often require extra application-side filtering after fetching results.
+Exclusion rules come in many forms. Sometimes you need to ignore rows that contain a specific keyword, sometimes you want values that fall outside a numeric range, and other times you need to filter out records based on prefixes or suffixes. These are standard requirements, but they often require extra application-side filtering after fetching results.
 
 With inversion queries, you can express these cases directly in your database calls. The new set of `NOT` operators gives you a way to describe “everything except” conditions without leaving the query itself.
 
