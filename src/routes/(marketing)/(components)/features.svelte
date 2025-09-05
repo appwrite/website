@@ -9,7 +9,7 @@
             label: 'DDoS',
             description:
                 'Automatically detect and mitigate Distributed Denial-of-Service (DDoS) attacks.',
-            icon: '/images/icons/gradients/self-hosted.svg',
+            icon: '/images/icons/gradients/shield.svg',
             href: '/docs/advanced/security/abuse-protection#ddos-protection'
         },
         {
@@ -21,7 +21,7 @@
         {
             label: 'Abuse protection',
             description: 'Protect your APIs from abuse with built-in protection.',
-            icon: '/images/icons/gradients/shield.svg',
+            icon: '/images/icons/gradients/verified.svg',
             href: '/docs/advanced/security/abuse-protection#rate-limiting'
         },
         {
