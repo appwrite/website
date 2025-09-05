@@ -212,7 +212,7 @@
                             class="text-description web-u-max-width-640 e-u-padding-inline-32-desktop mx-auto"
                         >
                             The Appwrite Startups Program supports your startup with an all-in-one
-                            cloud platform for you to build your products. You will receive Cloud
+                            development platform for you to build your products. You will receive Cloud
                             credits and a discount for Appwrite's paid plans.
                         </p>
                         <Button onclick={scrollToForm} class="mx-auto mt-3">Apply now</Button>
