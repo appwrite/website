@@ -40,7 +40,9 @@ Head to the **Domains** tab of your site, and add your apex domain (e.g., `myapp
 
 Next, head to your DNS provider and create an A or AAAA record for your root domain pointing to the server's IP address. This will allow Appwrite to serve your sites from the apex domain.
 
-> Note: Make sure to remove any pre-existing `A` and `AAAA` records in the DNS settings of your domain, as these can conflict with your current configuration.
+{% info title="Important" %}
+Make sure to remove any pre-existing `A` and `AAAA` records in the DNS settings of your domain, as these can conflict with your current configuration.
+{% /info %}
 
 # SSL certificates for sites domains {% #ssl-certificates %}
 
@@ -135,6 +137,8 @@ environment:
     - DO_PROPAGATION_TIMEOUT=1h
 ```
 
-> Note: Let's Encrypt has strict rate limits for certificate requests. If you encounter rate limit errors in the logs, you may need to wait a few hours before trying again.
+{% info title="Rate limits" %}
+Let's Encrypt has strict rate limits for certificate requests. If you encounter rate limit errors in the logs, you may need to wait a few hours before trying again.
+{% /info %}
 
 For other DNS providers, refer to [Traefik's DNS providers documentation](https://doc.traefik.io/traefik/https/acme/#providers).
