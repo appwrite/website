@@ -1657,10 +1657,10 @@ namespace runtime {
         } else if (type == "json") {
           Json::Value data;
           data["type"] = "This is a JSON response";
-          return context.res.text(data);
+          return context.res.json(data);
         } else if (type == "binary") {
           std::vector<char> buffer(std::istreambuf_iterator<char>(std::ifstream("file.png", std::ios::binary)), {});
-          return context.res.binary(buffer)
+          return context.res.binary(buffer);
         } else if (type == "redirect") {
           return context.res.redirect("https://appwrite.io", 301);
         } else if (type == "html") {
@@ -1673,7 +1673,6 @@ namespace runtime {
       }
   };
 }
-```
 {% /multicode %}
 
 To get the different response types, set one of the following query parameters in the [generated domain](/docs/products/functions/domains) of your function.
