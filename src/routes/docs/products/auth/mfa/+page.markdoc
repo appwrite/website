@@ -482,7 +482,7 @@ You can generate a QR code for the user to scan by calling `avatars.getQR()`.
 {% multicode %}
 ```client-web
 const result = await avatars.getQR({
-    text: authenticatorUrl,
+    text: uri,
     size: 800,  // optional
     margin: 0,  // optional
     download: false // optional
