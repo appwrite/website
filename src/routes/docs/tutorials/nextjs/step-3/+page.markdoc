@@ -47,7 +47,7 @@ Add a `.env.local` file to the root directory and add the following code to it, 
 
 ```
 NEXT_PUBLIC_APPWRITE_ENDPOINT=https://<REGION>.cloud.appwrite.io/v1
-NEXT_PUBLIC_APPWRITE_PROJECT=PROJECT_ID
+NEXT_PUBLIC_APPWRITE_PROJECT=<PROJECT_ID>
 ```
 
 ## Initialize Appwrite SDK {% #init-sdk %}

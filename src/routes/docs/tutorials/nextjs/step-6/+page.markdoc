@@ -5,7 +5,7 @@ description: Add databases and queries for ideas in your Next.js project.
 step: 6
 ---
 
-In Appwrite, data is stored as a table of rows. 
+In Appwrite, data is stored as a table of rows.
 Create a new database and table in the [Appwrite Console](https://cloud.appwrite.io/) to store the ideas.
 
 {% only_dark %}
@@ -40,8 +40,8 @@ Just like when we set up the connection to Appwrite in [step 3](/docs/tutorials/
 Open the `.env.local` file and add your database id and your table id to it.
 
 ```
-NEXT_PUBLIC_DATABASE_ID="YOUR_DATABASE_ID"
-NEXT_PUBLIC_TABLE_ID="YOUR_TABLE_ID"
+NEXT_PUBLIC_DATABASE_ID=<YOUR_DATABASE_ID>
+NEXT_PUBLIC_TABLE_ID=<YOUR_TABLE_ID>
 ```
 
 ## Query methods {% #query-methods %}
