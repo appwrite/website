@@ -26,6 +26,8 @@ Before launching the MCP server, you must [set up an Appwrite project](https://c
 ![Appwrite API key](/images/docs/mcp/appwrite/dark/appwrite-api-secret.png)
 {% /only_dark %}
 
+Ensure you save the **API key** along with the **project ID**, **region** and **endpoint URL** from the Settings page of your project as you'll need them later.
+
 ## Install uv
 
 Install [uv](https://docs.astral.sh/uv/getting-started/installation/) on your system with:
@@ -221,9 +223,9 @@ Database tools are enabled by default. In addition you can pass arguments to `uv
 | `--all` | Enables all Appwrite APIs |
 
 {% info title="Enable only necessary MCP tools" %}
-When an MCP tool is enabled, the tool's definition is passed to the LLM, using up tokens from the model's available context window. As a result, the effective context window is reduced. 
+When an MCP tool is enabled, the tool's definition is passed to the LLM, using up tokens from the model's available context window. As a result, the effective context window is reduced. Some IDEs may return errors if too many tools are enabled for the same reason.
 
-The default Appwrite MCP server ships with only the Databases tools (our most commonly used API) enabled to stay within these limits. Additional tools can be enabled using the flags below.
+The default Appwrite MCP server ships with only the Databases tools (our most commonly used API) enabled to stay within these limits. Additional tools can be enabled using the flags above.
 {% /info %}
 
 # Usage {% #usage %}
