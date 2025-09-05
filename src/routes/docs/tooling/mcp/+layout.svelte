@@ -36,7 +36,7 @@
             label: 'Integrations',
             items: [
                 {
-                    label: 'Claude Desktop',
+                    label: 'Claude',
                     href: '/docs/tooling/mcp/claude'
                 },
                 {
