@@ -48,7 +48,7 @@ Create a new file `contexts/IdeasContext.jsx` and add the following code to it.
 ```client-react-native
 import { ID, Permission, Role, Query } from "react-native-appwrite";
 import { createContext, useContext, useEffect, useState } from "react";
-import { databases } from "../lib/appwrite";
+import { tablesDB } from "../lib/appwrite";
 import { toast } from "../lib/toast";
 
 export const IDEAS_DATABASE_ID = "default"; // Replace with your database ID
