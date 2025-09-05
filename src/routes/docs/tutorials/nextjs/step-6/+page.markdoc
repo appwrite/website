@@ -32,7 +32,9 @@ Change the table's permissions in the settings to give access.
 {% /only_light %}
 
 Navigate to the **Settings** tab of your table, add the role **Any** and check the **Read** box.
-Next, add a **Users** role and give them access to **Create**, **Update** and **Delete** by checking those boxes.
+Next, add a **Users** role and give them access to **Create** by checking that box.
+
+For security, we won't grant table-level **Update** and **Delete** permissions to all users. Instead, we'll implement row-level permissions so that only the creator of each idea can update or delete their own ideas.
 
 ## Environment variables {% #environment-variables %}
 
@@ -56,7 +58,7 @@ Create a new file `hooks/useIdeas.ts` and add the following code.
 // hooks/useIdeas.ts
 
 import { useState, useEffect } from 'react';
-import { ID, Query, type Models } from 'appwrite';
+import { ID, Query, Permission, type Models } from 'appwrite';
 import { tablesDB } from '../lib/appwrite';
 
 const databaseId = process.env.NEXT_PUBLIC_DATABASE_ID!;
@@ -96,7 +98,12 @@ export function useIdeas() {
                 databaseId,
                 tableId,
                 ID.unique(),
-                idea
+                idea,
+                [
+                    Permission.read('any'),
+                    Permission.update(`user:${idea.userId}`),
+                    Permission.delete(`user:${idea.userId}`)
+                ]
             );
             setCurrent(prev => [response as Idea, ...prev].slice(0, queryLimit));
         } catch (error) {
