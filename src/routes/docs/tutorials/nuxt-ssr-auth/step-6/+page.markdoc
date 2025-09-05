@@ -64,7 +64,7 @@ import { SESSION_COOKIE, createSessionClient } from "~/server/lib/appwrite";
 export default defineEventHandler(async (event) => {
   const { account } = createSessionClient(event);
 
-  await account.deleteSession("current");
+  await account.deleteSession({ sessionId: "current" });
   deleteCookie(event, SESSION_COOKIE);
 
   await sendRedirect(event, "/signup");

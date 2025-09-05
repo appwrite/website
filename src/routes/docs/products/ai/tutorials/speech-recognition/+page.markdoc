@@ -67,15 +67,15 @@ class AppwriteService {
   }
 
   async createRecognitionEntry(databaseId, tableId, audioId, speech) {
-    await this.tablesDB.createRow(
+    await this.tablesDB.createRow({
       databaseId,
       tableId,
-      ID.unique(),
-      {
+      rowId: ID.unique(),
+      data: {
         audio: audioId,
         speech: speech,
       }
-    );
+    });
   }
 
   async getFile(bucketId, fileId) {

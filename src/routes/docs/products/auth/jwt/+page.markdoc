@@ -200,10 +200,10 @@ const client = new Client()
 
 const tablesDB = new sdk.TablesDB(client);
 
-const rows = await tablesDB.listRows(
-    '642f358bf4084c662590',
-    '642f3592aa5fc856ad1e'
-);
+const rows = await tablesDB.listRows({
+    databaseId: '642f358bf4084c662590',
+    tableId: '642f3592aa5fc856ad1e'
+});
 // ... More code to manipulate the results
 ```
 ```php
@@ -269,10 +269,10 @@ let client = new Client()
 
 let tablesDB = new sdk.TablesDB(client);
 
-let rows = await tablesDB.listRows(
-    '642f358bf4084c662590',
-    '642f3592aa5fc856ad1e'
-);
+let rows = await tablesDB.listRows({
+    databaseId: '642f358bf4084c662590',
+    tableId: '642f3592aa5fc856ad1e'
+});
 // ... More code to manipulate the results
 ```
 ```dart
@@ -378,10 +378,10 @@ const client = new Client()
 
 const tablesDB = new sdk.TablesDB(client);
 
-const rows = await tablesDB.listRows(
-    '642f358bf4084c662590',
-    '642f3592aa5fc856ad1e'
-);
+const rows = await tablesDB.listRows({
+    databaseId: '642f358bf4084c662590',
+    tableId: '642f3592aa5fc856ad1e'
+});
 // ... More code to manipulate the results
 ```
 
@@ -448,10 +448,10 @@ let client = new Client()
 
 let tablesDB = new sdk.TablesDB(client);
 
-let rows = await tablesDB.listRows(
-    '642f358bf4084c662590',
-    '642f3592aa5fc856ad1e'
-);
+let rows = await tablesDB.listRows({
+    databaseId: '642f358bf4084c662590',
+    tableId: '642f3592aa5fc856ad1e'
+});
 // ... More code to manipulate the results
 ```
 ```dart

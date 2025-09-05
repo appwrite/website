@@ -257,12 +257,12 @@ Store the audio file in Appwrite Storage for easy retrieval later:
 ```js
 const storage = new Storage(client);
 
-const file = await storage.createFile(
-  process.env.APPWRITE_BUCKET_ID,
-  ID.unique(),
-  InputFile.fromBuffer(await response.blob(), "audio.mp3"),
-  [Permission.read(Role.any())],
-);
+const file = await storage.createFile({
+  bucketId: process.env.APPWRITE_BUCKET_ID,
+  fileId: ID.unique(),
+  file: InputFile.fromBuffer(await response.blob(), "audio.mp3"),
+  permissions: [Permission.read(Role.any())],
+});
 ```
 
 To show it to the user, parse the download URL from Appwrite and return it in the response:

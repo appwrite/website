@@ -52,7 +52,9 @@ export const useUserSession = () =>  {
     };
 
     const logout = async (): Promise<void> => {
-        await account.deleteSession("current"); // Delete Appwrite user session
+        await account.deleteSession({
+            sessionId: "current"
+        }); // Delete Appwrite user session
         current.value = null; // Clear current ref
         navigateTo("/");
     };
