@@ -1,46 +1,14 @@
 ---
 layout: article
 title: Google Cloud deployment
-description: Deploy Appwrite on Google Cloud Platform using Cloud Run or Compute Engine. Learn how to set up a production-ready Appwrite instance with automatic scaling.
+description: Deploy Appwrite on Google Cloud Platform using Compute Engine. Learn how to set up a production-ready Appwrite instance on GCP.
 ---
 
-Google Cloud Platform (GCP) offers multiple deployment options for Appwrite. This guide covers the most effective deployment methods for different use cases.
+Deploy Appwrite on Google Cloud Platform using Compute Engine virtual machines.
 
-# Deployment options {% #deployment-options %}
+# Compute Engine deployment {% #compute-engine %}
 
-Choose the deployment method that best fits your requirements:
-
-{% table %}
-* Service
-* Best For
-* Complexity
-* Scaling
----
-* **Cloud Run**
-* Serverless, automatic scaling
-* Low
-* Automatic
----
-* **Compute Engine**
-* Custom configurations, full control
-* Medium
-* Manual
----
-* **App Engine**
-* Managed platform, simple deployment
-* Low
-* Automatic
-{% /table %}
-
-# Cloud Run deployment {% #cloud-run %}
-
-Deploy Appwrite using Google Cloud Run for a serverless, fully managed experience with automatic scaling.
-
-{% info title="Compatibility note" %}
-Appwrite uses MariaDB by default. Running against Cloud SQL for MySQL 8.x is unsupported and may break schema or SQL dialect assumptions. Test thoroughly in a staging environment or deploy MariaDB yourself on Compute Engine instead.
-{% /info %}
-
-For detailed Cloud Run deployment instructions, follow the [general installation guide](/docs/advanced/self-hosting/installation) and adapt the Docker commands for your Cloud Run environment.
+Google Cloud Compute Engine provides virtual machines where you can deploy Appwrite with full control over the infrastructure. Create a VM instance with at least 2 vCPU and 4 GB RAM, configure firewall rules to allow HTTP/HTTPS traffic, then follow the [general installation guide](/docs/advanced/self-hosting/installation) for Docker setup.
 
 # Custom installations {% #custom-installations %}
 
