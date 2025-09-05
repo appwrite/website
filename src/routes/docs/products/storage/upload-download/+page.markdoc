@@ -16,7 +16,7 @@ You can also upload files programmatically using our SDKs:
 
 {% multicode %}
   ```client-web
-  import { Client, Storage } from "appwrite";
+  import { Client, Storage, ID } from "appwrite";
 
   const client = new Client()
       .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
@@ -27,7 +27,7 @@ You can also upload files programmatically using our SDKs:
   const promise = storage.createFile({
       bucketId: '<BUCKET_ID>',
       fileId: ID.unique(),
-      file: row.getElementById('uploader').files[0]
+      file: document.getElementById('uploader').files[0]
   });
 
   promise.then(function (response) {
@@ -195,7 +195,7 @@ For example, for the input tag `<input type="file" id="uploader">`, you would ca
 const promise = storage.createFile({
     bucketId: '<BUCKET_ID>',
     fileId: ID.unique(),
-    file: row.getElementById('uploader').files[0]
+    file: document.getElementById('uploader').files[0]
 });
 ```
 {% /tabsitem %}
@@ -779,7 +779,7 @@ const previewUrl = storage.getFilePreviewURL({
     height: 200
     ImageGravity.Center,    // gravity
     100                     // quality
-);
+});
 
 console.log(previewUrl); // URL object
 ```
