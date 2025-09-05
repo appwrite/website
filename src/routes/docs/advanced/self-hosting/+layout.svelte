@@ -78,7 +78,7 @@
                     href: '/docs/advanced/self-hosting/configuration/tls-certificates'
                 },
                 {
-                    label: 'Version Control',
+                    label: 'Version control',
                     href: '/docs/advanced/self-hosting/configuration/version-control'
                 }
             ]
