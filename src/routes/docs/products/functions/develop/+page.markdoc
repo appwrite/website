@@ -1067,7 +1067,7 @@ import (
 )
 
 func Main(Context openruntimes.Context) openruntimes.Response {
-    return res.text(os.Getenv(MY_VAR))
+    return Context.Res.Text(os.Getenv("MY_VAR"))
 }
 ```
 ```dart
@@ -1879,133 +1879,6 @@ You can access these logs through the following steps.
 3. Under the Executions tab, click on an execution.
 4. In the Response section, you'll be able to view logs under the Logs and Errors tabs.
 
-# Accessing environment variables {% #environment-variables %}
-If you need to pass constants or secrets to Appwrite Functions, you can use environment variables.
-
-| Variable                          | Description                                    |	Available at Build and/or Run Time                 |
-|-----------------------------------|------------------------------------------------|-----------------------------------------------------|
-| `APPWRITE_FUNCTION_API_ENDPOINT`    |  The API endpoint of the running function      | Both                                              |
-| `APPWRITE_VERSION`                  |  The Appwrite version used to run the function | Both                                              |
-| `APPWRITE_REGION`                   |  The region where the function will run from   | Both                                              |
-| `APPWRITE_FUNCTION_API_KEY`         |  The function API key is used for server authentication | Build time                               |
-| `APPWRITE_FUNCTION_ID`              |  The ID of the running function.               | Both                                              |
-| `APPWRITE_FUNCTION_NAME`            |  The Name of the running function.             | Both                                              |
-| `APPWRITE_FUNCTION_DEPLOYMENT`      |  The deployment ID of the running function.    | Both                                              |
-| `APPWRITE_FUNCTION_PROJECT_ID`      |  The project ID of the running function.       | Both                                              |
-| `APPWRITE_FUNCTION_RUNTIME_NAME`    |  The runtime of the running function.          | Both                                              |
-| `APPWRITE_FUNCTION_RUNTIME_VERSION` |  The runtime version of the running function.  | Both                                              |
-
-{% arrow_link href="/docs/products/functions/functions#environment-variables" %}
-Learn to add variables to you function
-{% /arrow_link %}
-
-You can access the environment variables through the systems library of each language.
-
-{% multicode %}
-```server-nodejs
-export default async ({ req, res, log }) => {
-    return res.text(process.env.MY_VAR);
-}
-```
-```php
-<?php
-
-return function ($context) {
-    return $context->res->text(getenv('MY_VAR'));
-};
-```
-```python
-def main(context):
-    return context.res.text(os.environ['MY_VAR'])
-```
-```ruby
-def main(context)
-    return context.res.text(ENV['MY_VAR'])
-end
-```
-```deno
-export default async ({ req, res, log }) => {
-    return res.text(Deno.env.get('MY_VAR'));
-}
-```
-```go
-package handler
-
-import (
-    "os"
-
-    "github.com/open-runtimes/types-for-go/v4/openruntimes"
-)
-
-func Main(Context openruntimes.Context) openruntimes.Response {
-    return res.text(os.Getenv(MY_VAR))
-}
-```
-```dart
-import 'dart:io';
-import 'dart:async';
-
-Future<dynamic> main(final context) async {
-    return context.res.text(Platform.environment['MY_VAR']);
-}
-```
-```swift
-import Foundation
-
-func main(context: RuntimeContext) async throws -> RuntimeOutput {
-    return context.res.text(ProcessInfo.processInfo.environment["MY_VAR"])
-}
-```
-```csharp
-namespace DotNetRuntime;
-
-public class Handler {
-    public async Task<RuntimeOutput> Main(RuntimeContext Context)
-    {
-        return Context.Res.Text(Environment.GetEnvironmentVariable("MY_VAR"));
-    }
-}
-```
-```kotlin
-package io.openruntimes.kotlin.src
-
-import io.openruntimes.kotlin.RuntimeContext
-import io.openruntimes.kotlin.RuntimeOutput
-
-class Main {
-    fun main(context: RuntimeContext): RuntimeOutput {
-        return context.res.text(System.getenv("MY_VAR"))
-    }
-}
-```
-```java
-package io.openruntimes.java.src;
-
-import io.openruntimes.java.RuntimeContext;
-import io.openruntimes.java.RuntimeOutput;
-
-public class Main {
-    public RuntimeOutput main(RuntimeContext context) throws Exception {
-        return context.getRes().text(System.getenv("MY_VAR"));
-    }
-}
-```
-```cpp
-#include "../RuntimeResponse.h"
-#include "../RuntimeRequest.h"
-#include "../RuntimeOutput.h"
-#include "../RuntimeContext.h"
-
-namespace runtime {
-    class Handler {
-    public:
-        static RuntimeOutput main(RuntimeContext &context) {
-            return context.res.text(std::getenv("MY_VAR"));
-        }
-    };
-}
-```
-{% /multicode %}
 
 
 # Using Appwrite in a function {% #using-appwrite %}
