@@ -7,8 +7,6 @@
     const endDate = new Date('2025-09-12');
 
     const hackathonDates = `${format(startDate, 'MMM d')} - ${format(endDate, 'MMM d')}`;
-
-
 </script>
 
 <a href="https://apwr.dev/sites-hack-2025" target="_blank" rel="noopener noreferrer">
