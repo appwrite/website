@@ -1,42 +1,14 @@
 ---
 layout: article
 title: Azure deployment
-description: Deploy Appwrite on Microsoft Azure using Container Apps or Virtual Machines. Learn how to set up a production-ready Appwrite instance with Azure's managed services.
+description: Deploy Appwrite on Microsoft Azure using Virtual Machines. Learn how to set up a production-ready Appwrite instance on Azure.
 ---
 
-Microsoft Azure provides multiple deployment options for Appwrite. This guide covers the most effective Azure services for deploying Appwrite.
+Deploy Appwrite on Microsoft Azure using Virtual Machines.
 
-# Deployment options {% #deployment-options %}
+# Virtual Machines deployment {% #virtual-machines %}
 
-Choose the Azure service that best fits your requirements:
-
-{% table %}
-* Service
-* Best For
-* Complexity
-* Scaling
----
-* **Container Apps**
-* Serverless containers, microservices
-* Low
-* Automatic
----
-* **Virtual Machines**
-* Full control, custom configurations
-* Medium
-* Manual
----
-* **App Service**
-* Web apps, managed platform
-* Low
-* Automatic
-{% /table %}
-
-# Container Apps deployment {% #container-apps %}
-
-Deploy Appwrite using Azure Container Apps for a serverless, fully managed container experience.
-
-For detailed Container Apps deployment instructions, follow the [general installation guide](/docs/advanced/self-hosting/installation) and adapt the Docker commands for your Azure Container Apps environment.
+Azure Virtual Machines provide full control over your infrastructure where you can deploy Appwrite. Create a VM with at least 2 vCPU and 4 GB RAM, configure network security groups to allow HTTP/HTTPS traffic, then follow the [general installation guide](/docs/advanced/self-hosting/installation) for Docker setup.
 
 # Custom installations {% #custom-installations %}
 
