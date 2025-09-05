@@ -56,7 +56,8 @@ const securityheaders: Handle = async ({ event, resolve }) => {
             'https://js.zi-scripts.com',
             'https://ws.zoominfo.com',
             'https://*.cookieyes.com',
-            'https://cdn-cookieyes.com'
+            'https://cdn-cookieyes.com',
+            'https://ms-6b6b7d6df3ec-29090.fra.meilisearch.io'
         ]),
         'style-src': "'self' 'unsafe-inline'",
         'img-src': "'self' data: https:",
@@ -81,7 +82,8 @@ const securityheaders: Handle = async ({ event, resolve }) => {
             'https://hemsync.clickagy.com',
             'https://ws.zoominfo.com ',
             'https://*.cookieyes.com',
-            'https://cdn-cookieyes.com'
+            'https://cdn-cookieyes.com',
+            'https://ms-6b6b7d6df3ec-29090.fra.meilisearch.io'
         ]),
         'frame-src': join([
             "'self'",

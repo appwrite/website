@@ -39,7 +39,7 @@
 </script>
 
 <script lang="ts">
-    import { Search, IsLoggedIn } from '$lib/components';
+    import { IsLoggedIn } from '$lib/components';
     import { isMac } from '$lib/utils/platform';
     import { getContext, setContext } from 'svelte';
     import { SOCIAL_STATS } from '$lib/constants';
@@ -47,6 +47,7 @@
     import { getAppwriteDashboardUrl } from '$lib/utils/dashboard';
     import { Button, Icon, InlineTag } from '$lib/components/ui';
     import { afterNavigate } from '$app/navigation';
+    import { Search } from '$lib/components';
 
     interface Props {
         variant?: DocsLayoutVariant;
