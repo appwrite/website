@@ -15,7 +15,7 @@ Our documentation has a [guide for installing and setting up the Appwrite MCP se
 
 ## Generating documentation for your project
 
-Since your AI agents can now access your Appwrite projects, you can generate detailed documentation about any resource present in your project. This is particularly useful when generating documentation for your database schema. This way, you don’t need to give end developers access to your project and keep them in the loop about the database schema and purpose for each table and column.
+Since your AI agents can now access your Appwrite projects, you can generate detailed documentation about any resource present in your project. This is particularly useful when generating documentation for your database schema. This way, you don't need to give end developers access to your project and keep them in the loop about the database schema and purpose for each table and column.
 
 Once connected to your project, you can run a prompt similar to the following to generate documentation for your database schema.
 
@@ -29,7 +29,7 @@ By running this prompt, the AI agent should start accessing your database (if it
 
 ## Creating tables dynamically
 
-Instead of opening the Appwrite Console or writing custom scripts, you can ask your AI agents to create/modify tables in your database. This is especially useful when you’re vibe coding to build a prototype and you need the model to create tables according to its judgment without you needing to go to Appwrite Console to do it manually.
+Instead of opening the Appwrite Console or writing custom scripts, you can ask your AI agents to create/modify tables in your database. This is especially useful when you're vibe coding to build a prototype and you need the model to create tables according to its judgment without you needing to go to Appwrite Console to do it manually.
 
 Once connected to your project, you can run a prompt similar to the following to create tables using your AI agent.
 
@@ -69,7 +69,7 @@ This should make the AI agent scan through all your database tables, record the 
 
 ## Wrapping up
 
-Appwrite’s MCP server can unlock many different possibilities when powered by an AI agent. These were just a few of the many more use cases you could imagine. If you have any questions, please join our [Discord server](https://appwrite.io/discord) to connect with the team.
+Appwrite's MCP server can unlock many different possibilities when powered by an AI agent. These were just a few of the many more use cases you could imagine. If you have any questions, please join our [Discord server](https://appwrite.io/discord) to connect with the team.
 
 - [Appwrite MCP documentation](/docs/tooling/mcp)
 - [What exactly is MCP, and why is it trending?](/blog/post/what-is-mcp)
