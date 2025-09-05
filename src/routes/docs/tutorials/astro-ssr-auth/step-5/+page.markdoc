@@ -23,8 +23,8 @@ if (user) {
 </form>
 ```
 
-This is an HTML form with an email and password input. 
-When the form is submitted, we want to send the email and password to Appwrite to authenticate the user. 
+This is an HTML form with an email and password input.
+When the form is submitted, we want to send the email and password to Appwrite to authenticate the user.
 To use Astro form actions, add an `if (Astro.request.method === "POST")` statement to the server-side javascript.
 
 In the same file, implement the following.
@@ -47,8 +47,16 @@ if (Astro.request.method === "POST") {
   const { account } = createAdminClient();
 
   // Create the email password session
-  await account.create(ID.unique(), email, password, name);
-  const session = await account.createEmailPasswordSession(email, password);
+  await account.create({
+    userId: ID.unique(),
+    email,
+    password,
+    name
+  });
+  const session = await account.createEmailPasswordSession({
+    email,
+    password
+  });
 
   // Set the session cookie
   Astro.cookies.set(SESSION_COOKIE, session.secret, {

@@ -173,7 +173,7 @@ def main(context):
     # client = new Client()
     #   .set_project(os.environ['APPWRITE_FUNCTION_PROJECT_ID'])
     #   .set_key(context.req.headers['x-appwrite-key']);
-  
+
     storage = Storage(client)
 
     # ... rest of the code
@@ -250,20 +250,22 @@ There are a few things you can do to integrate this into your app. For example, 
 with a web app by uploading the receipt image to Appwrite Storage and calling the function with the file ID.
 
 ```ts
-const file = await storage.createFile(
-    '6632844900292d283610', // bucketId
-    '66328472002415a37392', // fileId
-    document.getElementById('uploader').files[0] // file from html input
-);
+import { Storage, Functions, ExecutionMethod } from 'appwrite';
 
-const result = await functions.createExecution(
-    '66325723000399792782', // functionId
-    JSON.stringify({$id: file.$id}), // data
-    false, // async (optional)
-    '/', // path (optional)
-    sdk.ExecutionMethod.POST, // method
-    {"Content-Type": "application/json"} // headers
-);
+const file = await storage.createFile({
+    bucketId: '6632844900292d283610', // bucketId
+    fileId: '66328472002415a37392', // fileId
+    file: document.getElementById('uploader').files[0] // file from html input
+});
+
+const result = await functions.createExecution({
+    functionId: '66325723000399792782', // functionId
+    body: JSON.stringify({$id: file.$id}), // data
+    async: false, // async (optional)
+    xpath: '/', // xpath (optional)
+    method: ExecutionMethod.POST, // method
+    headers: {"Content-Type": "application/json"} // headers
+});
 ```
 
 Another option is to trigger the function with a webhook when a new file is uploaded to Appwrite Storage.

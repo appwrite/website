@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Announcing Opt-in relationship loading: Granular control for smarter data fetching"
-description: Gain full control over which related documents to fetch and drastically reduce payload sizes.
+description: Gain full control over which related rows to fetch and drastically reduce payload sizes.
 date: 2025-08-28
 cover: /images/blog/announcing-opt-in-relationship-loading/cover.png
 timeToRead: 5
@@ -14,17 +14,17 @@ Being able to move fast is crucial for any developer, and nothing disrupts produ
 
 To tackle this challenge head-on, we're introducing **Opt-in relationship loading** for Appwrite Databases.
 
-This powerful enhancement empowers developers with explicit, granular control over exactly which related documents they fetch from the database. By selectively loading only essential relationships, you dramatically optimize performance, speed up application response times, and significantly reduce bandwidth usage.
+This powerful enhancement empowers developers with explicit, granular control over exactly which related rows they fetch from the database. By selectively loading only essential relationships, you dramatically optimize performance, speed up application response times, and significantly reduce bandwidth usage.
 
 # Explicit control, leaner data
 
-Previously, Appwrite automatically fetched related documents whenever a query was made. This often resulted in large JSON payloads containing data you didn't necessarily need, negatively impacting load times and overall app performance.
+Previously, Appwrite automatically fetched related rows whenever a query was made. This often resulted in large JSON payloads containing data you didn't necessarily need, negatively impacting load times and overall app performance.
 
-With Opt-in relationship loading, documents now only return their immediate fields by default. You explicitly specify exactly which relationships should be included in your queries. This eliminates unintended data fetching, drastically reduces payload sizes, and ensures you load only what matters.
+With Opt-in relationship loading, rows now only return their immediate fields by default. You explicitly specify exactly which relationships should be included in your queries. This eliminates unintended data fetching, drastically reduces payload sizes, and ensures you load only what matters.
 
 # Optimize your database queries
 
-Opt-in relationship loading addresses the common performance pitfalls associated with "N + 1" query problems. Developers can now precisely tailor queries to fetch related documents efficiently, significantly reducing latency. Typical query times, often slowed by unnecessary data overhead, become noticeably shorter, enabling smoother, faster, and more predictable performance across your application.
+Opt-in relationship loading addresses the common performance pitfalls associated with "N + 1" query problems. Developers can now precisely tailor queries to fetch related rows efficiently, significantly reducing latency. Typical query times, often slowed by unnecessary data overhead, become noticeably shorter, enabling smoother, faster, and more predictable performance across your application.
 
 # Tailored for performance-sensitive apps
 
