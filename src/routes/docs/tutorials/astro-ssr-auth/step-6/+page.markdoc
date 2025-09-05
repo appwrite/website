@@ -23,7 +23,7 @@ if (Astro.request.method === "POST") {
   const { account } = createSessionClient(Astro.request);
 
   // Delete the Appwrite session
-  await account.deleteSession("current");
+  await account.deleteSession({ sessionId: "current" });
 
   // Delete the session cookie
   Astro.cookies.delete(SESSION_COOKIE);

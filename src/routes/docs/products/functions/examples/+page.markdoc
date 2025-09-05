@@ -258,7 +258,7 @@ Create a Votes table with the following columns:
 ## Code
 {% multicode %}
 ```server-nodejs
-import { Client, TablesDB, Query } from 'node-appwrite';
+import { Client, TablesDB, Query, ID } from 'node-appwrite';
 
 export default async function ({ req, res }) {
   const vote = {
@@ -292,10 +292,15 @@ export default async function ({ req, res }) {
     return res.json({ ok: false, message: 'You have already voted on this topic.' }, 400);
   }
 
-  const voteDocument = await database.createRow('<VOTES_TABLE_ID>', {
-    userId,
-    topicId,
-    vote,
+  const voteDocument = await tablesDB.createRow({
+    databaseId: '<DATABASE_ID>',
+    tableId: '<VOTES_TABLE_ID>',
+    rowId: ID.unique(),
+    data: {
+      userId: vote.userId,
+      topicId: vote.topicId,
+      vote: vote.vote,
+    }
   });
 
   return res.json({ ok: true, message: 'Vote cast.', vote: voteDocument });

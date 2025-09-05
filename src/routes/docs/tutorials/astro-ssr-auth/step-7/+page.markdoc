@@ -32,11 +32,11 @@ export const POST = async ({ redirect, url }) => {
   const { account } = createAdminClient();
 
   // Create an OAuth token
-  const redirectUrl = await account.createOAuth2Token(
-    OAuthProvider.Github,
-    `${url.origin}/oauth`,
-    `${url.origin}/signup`
-  );
+  const redirectUrl = await account.createOAuth2Token({
+    provider: OAuthProvider.Github,
+    success: `${url.origin}/oauth`,
+    failure: `${url.origin}/signup`
+  });
 
   // Redirect the end-user to the OAuth2 provider authentication
   return redirect(redirectUrl);

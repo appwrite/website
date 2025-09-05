@@ -109,7 +109,7 @@ Replace the contents of `src/routes/+page.svelte` with the following code.
     }
 
     async function logout() {
-        await account.deleteSession('current');
+        await account.deleteSession({ sessionId: 'current' });
         loggedInUser = null;
     }
 </script>
