@@ -2,7 +2,7 @@
 layout: post
 title: Client vs Server Components in React
 description: Learn how to choose between client and server components in React.
-date: 2025-09-03
+date: 2025-09-05
 cover: /images/blog/client-vs-server-components-react/cover.png
 timeToRead: 5
 author: atharva
@@ -23,7 +23,7 @@ Meta decided to implement this functionality into React, so they introduced RSC 
 
 # Client Components
 
-These components are rendered purely on the client-side on the user’s browser using JavaScript. When you build your app and create a JS bundle, it can be loaded into the user’s browser when the page is requested. When this happens:
+These components are rendered purely on the client-side on the user's browser using JavaScript. When you build your app and create a JS bundle, it can be loaded into the user’s browser when the page is requested. When this happens:
 
 - If SSR is being used, the server fetches data on the server-side and passes it to the client
 - The browser starts to parse and execute the JS bundle
@@ -38,15 +38,15 @@ If you're using a framework that **doesn't** support RSC, you don't need to do a
 ## Advantages of using client components
 
 - It lets you have a lot of client-side DOM interactivity since the component is mounted on the client side on the user’s browser.
-- For a pure client-side app with no SSR, you don’t need a server for data fetching, which reduces the server load and runs the code on the client side instead.
+- For a pure client-side app with no SSR, you don't need a server for data fetching, which reduces the server load and runs the code on the client side instead.
 - Client components are usually very handy if you want to quickly show a loading screen to the user without waiting for the server to fetch data and then sending it to the browser, as in RSC.
 - It allows you to access client-side state easily, such as LocalStorage, and state from state managers like Zustand and Redux.
 - It has been around for a while, so massive community support is available, and many libraries are built for client-side usage.
 
 ## Disadvantages of using client components
 
-- For complex apps, bundle size could get very high and cause the first load of the page to be extremely slow. In this case, you’d typically want a setup where you use client components nested inside server components.
-- SEO could be a massive problem for non-SSR setups as page metadata isn’t available until the React bundle is loaded.
+- For complex apps, bundle size could get very high and cause the first load of the page to be extremely slow. In this case, you'd typically want a setup where you use client components nested inside server components.
+- SEO could be a massive problem for non-SSR setups as page metadata isn't available until the React bundle is loaded.
 
 ## Example code snippet
 
@@ -128,7 +128,7 @@ If you need to show a very generic component with data and no browser interactiv
 
 However, you will implement a mix of both by nesting client components inside server components. The best way to use server components is to find the best mix by fetching only the most crucial data on the server that the user needs to see immediately when the page loads. Everything else can be fetched on the client-side.
 
-Or you can stick with just using client components + SSR if you don’t want to participate in this complexity. Server components don’t make client components outdated. There are use cases that might be well-suited to using a combination of client components + SSR.
+Or you can stick with just using client components + SSR if you don't want to participate in this complexity. Server components don't make client components outdated. There are use cases that might be well-suited to using a combination of client components + SSR.
 
 # Conclusion
 
