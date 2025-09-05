@@ -104,13 +104,6 @@ async function prepareDatabase() {
         name: 'Todos'
     });
 
-    await tablesDB.createStringAttribute({
-        databaseId: todoDatabase.$id,
-        collectionId: todoCollection.$id,
-        key: 'title',
-        size: 255,
-        required: true
-    });
     await tablesDB.createStringColumn({
         databaseId: todoDatabase.$id,
         tableId: todoTable.$id,
