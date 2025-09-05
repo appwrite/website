@@ -113,11 +113,10 @@
                                             Appwrite for Startups
                                         </h1>
                                         <p class="text-description">
-                                            Startups develop, deploy, and Scale with Appwrite. The
-                                            program ensures you get the all-in-one development
-                                            platform you need so that you can focus on innovation.
-                                            Including Startup web (app) hosting. Reduce complexity,
-                                            accelerate development, and launch faster.
+                                            Startups develop, deploy, and Scale with Appwrite. The 
+                                            Startups program ensures you get the all-in-one development
+                                            platform you need. Including Startup web hosting.
+                                            Reduce complexity, accelerate development, and launch faster.
                                             <br />
                                             <br />
                                             Join the Appwrite Startups program and benefit from reduced
