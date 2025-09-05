@@ -16,7 +16,7 @@ Appwrite and Firebase are both solid options to choose as the Backend-as-a-Servi
 
 # Appwrite - Open-source backend platform
 
-In 2019, [Appwrite](/) started as an open-source project to make software development more accessible and enjoyable. It is a Backend as a Service platform with a vibrant developer community. You can self-host Appwrite on your server or utilize [Appwrite Cloud](https://cloud.appwrite.io/). Appwrite provides many features, including user authentication, databases, storage, real-time features, and functions. It is known for its flexibility, security, and extensibility, enabling you to customize backend logic and build applications tailored to your needs. You can view Appwrite’s source code on [GitHub](https://github.com/appwrite/appwrite).
+In 2019, [Appwrite](/) started as an open-source project to make software development more accessible and enjoyable. Appwrite is an open-source, all-in-one cloud development platform that offers built-in backend infrastructure and web hosting, all from a single place. You can build your entire backend within minutes and deploy effortlessly, adding Authentication, Databases, Functions, Storage, Messaging, and more to your projects using the frameworks and languages of your choice. You can self-host Appwrite on your server or utilize [Appwrite Cloud](https://cloud.appwrite.io/). Appwrite is known for its flexibility, security, and extensibility, enabling you to customize backend logic and build applications tailored to your needs. You can view Appwrite’s source code on [GitHub](https://github.com/appwrite/appwrite).
 
 # Firebase - Google-owned BaaS
 

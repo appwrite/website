@@ -60,7 +60,9 @@ Supabase functions, also known as Edge Functions, are deployed at the edge, ensu
 ![Appwrite-functions](/images/blog/comparing-functions/3.png)
 
 ## Overview:
-Appwrite is an open-source backend platform designed to provide developers with all the core APIs required to build modern applications. It offers a range of features, including databases, authentication, storage, and serverless functions, all aimed at simplifying the developer experience.
+Appwrite is an open-source, all-in-one cloud development platform. Use built-in backend infrastructure and web hosting, all from a single place. 
+
+You can build your entire backend within minutes and deploy effortlessly, adding Authentication, Databases, Functions, Storage, Messaging, and more to your projects using the frameworks and languages of your choice.
 
 ## Serverless functions:
 Appwrite Functions support multiple languages, including Node.js, Python, Ruby, PHP, Dart and Go. This flexibility allows developers to choose the best language for their specific needs. Functions can be developed and tested locally, speeding up the development process and making debugging simpler. Once ready, Appwrite lets you easily deploy functions directly from your Git repository. You can choose from various pre-built templates or integrate with other services. Functions can be activated by different triggers, such as HTTP requests, scheduled events, or specific actions within your application, offering flexibility for various use cases.

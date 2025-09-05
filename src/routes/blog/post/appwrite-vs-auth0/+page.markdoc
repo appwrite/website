@@ -15,7 +15,11 @@ Appwrite’s Authentication feature provides such open-source alternative to Aut
 
 # What is Appwrite?
 
-Appwrite is an open-source backend-as-a-service (BaaS) platform designed to simplify the backend development process by providing essential APIs and SDKs. In addition to customer identity and authentication, Appwrite provides database management, storage, and serverless functions to build your mobile or web application. You can view Appwrite’s source code on [GitHub](https://github.com/appwrite/appwrite).
+Appwrite is an open-source, all-in-one cloud development platform. Use built-in backend infrastructure and web hosting, all from a single place. 
+
+You can build your entire backend within minutes and deploy effortlessly, adding Authentication, Databases, Functions, Storage, Messaging, and more to your projects using the frameworks and languages of your choice.
+
+You can view Appwrite’s source code on [GitHub](https://github.com/appwrite/appwrite).
 
 # What is Auth0?
 

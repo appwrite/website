@@ -15,7 +15,11 @@ Appwrite's Storage product provides an open-source alternative to Cloudinary. In
 
 # Appwrite
 
-Appwrite is an open-source backend-as-a-service (BaaS) platform offering essential APIs to build your mobile or web application. In addition to storage, it covers all your other backend needs, such as authentication, database management, serverless functions, and messaging. You can self-host Appwrite or use the Cloud version. Take a look at Appwrite’s source code in [GitHub](https://github.com/appwrite/appwrite).
+Appwrite is an open-source, all-in-one cloud development platform. Use built-in backend infrastructure and web hosting, all from a single place. 
+
+You can build your entire backend within minutes and deploy effortlessly, adding Authentication, Databases, Functions, Storage, Messaging, and more to your projects using the frameworks and languages of your choice.
+
+Take a look at Appwrite’s source code in [GitHub](https://github.com/appwrite/appwrite).
 
 # Cloudinary
 

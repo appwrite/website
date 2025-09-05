@@ -110,7 +110,7 @@ Under GDPR, it’s your responsibility to make sure any third-party data process
 
 For example, if you’re using a backend platform like Firebase that handles your databases or authentication, you need to keep in mind that it’s not fully GDPR-compliant out of the box. Firebase’s data handling, particularly with data transfers outside of the EU, can make meeting GDPR requirements tricky and put extra burden on you to ensure compliance.
 
-Appwrite provides a GDPR-compliant alternative to Firebase. Appwrite is an open-source backend-as-a-service platform that gives you full control over where your data is stored and processed. With Appwrite, you can ensure that all user data stays within the EU, making GDPR compliance much simpler. 
+Appwrite provides a GDPR-compliant alternative to Firebase. Appwrite is an open-source, cloud development platform that gives you full control over where your data is stored and processed. With Appwrite, you can ensure that all user data stays within the EU, making GDPR compliance much simpler. 
 
 ![GDPR-compliant alternative to Firebase](/images/blog/gdpr-mobile-apps-guide/1.png)
 

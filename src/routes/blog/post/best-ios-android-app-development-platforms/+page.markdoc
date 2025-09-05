@@ -227,7 +227,11 @@ NativeScript is an excellent choice for developers seeking to build high-perform
 
 As you’ve read through this article, you’ve likely already picked the framework that speaks to you. Choosing a framework is not just about meeting project requirements; it’s also a very personal decision. The great news is that whether you vibe better with React Native or Flutter, you don’t have to commit exclusively to one.
 
-Appwrite is a language and framework-agnostic backend platform for mobile and web development, which means you’ve got the flexibility to create apps with your favourite technologies. We’ve got a few get-started guides to help you kick off your projects quickly and smoothly:
+Appwrite is an open-source, all-in-one cloud development platform. Use built-in backend infrastructure and web hosting, all from a single place. 
+
+You can build your entire backend within minutes and deploy effortlessly, adding Authentication, Databases, Functions, Storage, Messaging, and more to your projects using the frameworks and languages of your choice.
+
+We’ve got a few get-started guides to help you kick off your projects quickly and smoothly:
 
 - [[Docs] Appwrite for React Native](https://appwrite.io/docs/quick-starts/react-native)
 - [[Docs] Appwrite for Flutter](https://appwrite.io/docs/quick-starts/flutter)

@@ -96,11 +96,7 @@
     });
 
     $effect(() => {
-        if (!navigating?.to) {
-            return;
-        }
-
-        const isDocs = navigating.to.route.id?.startsWith('/docs');
+        const isDocs = browser && page.route.id?.startsWith('/docs');
 
         if (isDocs) {
             if (!document.body.classList.contains(`${$currentTheme}`)) {
@@ -169,6 +165,10 @@
 
         <!-- ZoomInfo snippet -->
         <script defer src="/scripts/zoominfo.js"></script>
+
+        <!-- Google Tag Manager -->
+        <script defer src="/scripts/gtm.js"></script>
+        <!-- End Google Tag Manager -->
     {/if}
 
     <!-- canonical url -->

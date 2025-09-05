@@ -23,7 +23,7 @@ const redirecter: Handle = async ({ event, resolve }) => {
         });
     }
 
-    return await resolve(event);
+    return resolve(event);
 };
 
 const securityheaders: Handle = async ({ event, resolve }) => {
@@ -56,7 +56,8 @@ const securityheaders: Handle = async ({ event, resolve }) => {
             'https://js.zi-scripts.com',
             'https://ws.zoominfo.com',
             'https://*.cookieyes.com',
-            'https://cdn-cookieyes.com'
+            'https://cdn-cookieyes.com',
+            'https://www.googletagmanager.com'
         ]),
         'style-src': "'self' 'unsafe-inline'",
         'img-src': "'self' data: https:",
