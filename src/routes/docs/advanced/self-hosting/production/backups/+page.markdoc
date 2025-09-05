@@ -95,8 +95,8 @@ Store `.env` backups securely due to sensitive data.
 
 As an alternative to individual backups, snapshot your entire server:
 
-**AWS EC2:** Actions > Image > Create Image
-**GCP/Azure/DigitalOcean:** Use provider snapshot features
+- **AWS EC2:** Actions > Image > Create Image
+- **GCP/Azure/DigitalOcean:** Use provider snapshot features
 
 System snapshots capture complete server state and enable fast recovery, but use more storage than selective backups.
 
