@@ -30,6 +30,16 @@ Appwrite currently offers the following MCP servers:
 
 {% /cards %}
 
+## Why use Appwrite's MCP servers?
+
+Some **popular use cases** for Appwrite's MCP servers include:
+
+- **Code generation**: Automatically generate code snippets or entire files based on user input and context.
+- **Documentation lookup**: Quickly find relevant documentation for specific API endpoints or SDK features.
+- **Project management**: Create, update, or delete resources in your Appwrite project using natural language commands.
+- **Debugging assistance**: Get help with debugging issues by providing context about your project and recent changes.
+- **Learning and exploration**: Explore Appwrite's features and capabilities through interactive conversations with LLMs.
+
 # Integrate with popular AI tools
 
 You can now integrate the MCP server with various popular AI-enabled code editors and LLM apps.
