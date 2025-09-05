@@ -31,6 +31,7 @@ docker compose exec mariadb sh -c 'exec mysqldump --all-databases --add-drop-dat
 
 # Restore (fresh installation only)
 docker compose exec -T mariadb sh -c 'exec mysql -uroot -p"$MYSQL_ROOT_PASSWORD"' < dump.sql
+```
 
 {% info title="Important" %}
 Only restore to fresh Appwrite installations to avoid data corruption.
