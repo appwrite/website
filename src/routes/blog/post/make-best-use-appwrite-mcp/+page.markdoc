@@ -67,7 +67,7 @@ This should make the AI agent scan through all your database tables, record the 
 
 ![Database schema replicated](/images/blog/make-best-use-appwrite-mcp/db-replicated.png)
 
-## Conclusion
+## Wrapping up
 
 Appwrite’s MCP server can unlock many different possibilities when powered by an AI agent. These were just a few of the many more use cases you could imagine. If you have any questions, please join our [Discord server](https://appwrite.io/discord) to connect with the team.
 
