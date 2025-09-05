@@ -776,7 +776,7 @@ const previewUrl = storage.getFilePreviewURL({
     bucketId: '<BUCKET_ID>',
     fileId: '<FILE_ID>',
     width: 200,
-    height: 200
+    height: 200,
     ImageGravity.Center,    // gravity
     100                     // quality
 });
