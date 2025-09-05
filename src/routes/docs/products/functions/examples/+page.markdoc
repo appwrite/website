@@ -279,10 +279,14 @@ export default async function ({ req, res }) {
 
   const tablesDB = new TablesDB(client);
 
-  const existingVotes = await tablesDB.listRows('<VOTES_TABLE_ID>', [
-    Query.equals('userId', vote.userId),
-    Query.equals('topicId', vote.topicId)
-  ]);
+  const existingVotes = await tablesDB.listRows({
+    databaseId: '<DATABASE_ID>',
+    tableId: '<VOTES_TABLE_ID>',
+    queries: [
+      Query.equals('userId', vote.userId),
+      Query.equals('topicId', vote.topicId)
+    ]
+  });
 
   if (existingVotes.total > 0) {
     return res.json({ ok: false, message: 'You have already voted on this topic.' }, 400);
@@ -553,7 +557,12 @@ export default async function ({ req, res }) {
       .setKey(req.headers['x-appwrite-key']);
 
     const tablesDB = new TablesDB(client);
-    const row = await tablesDB.createRow('<DATABASE_ID>', '<MESSAGES_TABLE_ID>', ID.unique(), message);
+    const row = await tablesDB.createRow({
+        databaseId: '<DATABASE_ID>',
+        tableId: '<MESSAGES_TABLE_ID>',
+        rowId: ID.unique(),
+        data: message
+    });
 
     return res.text("Message sent");
   }

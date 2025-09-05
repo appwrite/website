@@ -24,11 +24,11 @@ You can also upload files programmatically using our SDKs:
 
   const storage = new Storage(client);
 
-  const promise = storage.createFile(
-      '<BUCKET_ID>',
-      ID.unique(),
-      row.getElementById('uploader').files[0]
-  );
+  const promise = storage.createFile({
+      bucketId: '<BUCKET_ID>',
+      fileId: ID.unique(),
+      file: row.getElementById('uploader').files[0]
+  });
 
   promise.then(function (response) {
       console.log(response); // Success
@@ -111,16 +111,16 @@ You can also upload files programmatically using our SDKs:
 
   const storage = new Storage(client);
 
-  const promise = storage.createFile(
-      '<BUCKET_ID>',
-      ID.unique(),
-      {
+  const promise = storage.createFile({
+      bucketId: '<BUCKET_ID>',
+      fileId: ID.unique(),
+      file: {
           name: 'image.jpg',
           type: 'image/jpeg',
           size: 1234567,
           uri: 'file:///path/to/file.jpg',
       }
-  );
+  });
 
   promise.then(function (response) {
       console.log(response); // Success
@@ -192,11 +192,11 @@ The Appwrite Web SDK expects a [File](https://developer.mozilla.org/en-US/docs/W
 For example, for the input tag `<input type="file" id="uploader">`, you would call create file like this:
 
 ```js
-const promise = storage.createFile(
-    '<BUCKET_ID>',
-    ID.unique(),
-    row.getElementById('uploader').files[0]
-);
+const promise = storage.createFile({
+    bucketId: '<BUCKET_ID>',
+    fileId: ID.unique(),
+    file: row.getElementById('uploader').files[0]
+});
 ```
 {% /tabsitem %}
 
@@ -637,7 +637,10 @@ const result = await storage.getFileDownload({
 console.log(result); // ArrayBuffer with file data
 
 // To get just the download URL without downloading:
-const downloadUrl = storage.getFileDownloadURL('<BUCKET_ID>', '<FILE_ID>');
+const downloadUrl = storage.getFileDownloadURL({
+    bucketId: '<BUCKET_ID>',
+    fileId: '<FILE_ID>'
+});
 
 console.log(downloadUrl); // URL object
 ```
@@ -769,11 +772,11 @@ const result = await storage.getFilePreview(
 console.log(result); // ArrayBuffer with image data
 
 // To get just the preview URL without downloading:
-const previewUrl = storage.getFilePreviewURL(
-    '<BUCKET_ID>',
-    '<FILE_ID>',
-    200,                    // width
-    200,                    // height
+const previewUrl = storage.getFilePreviewURL({
+    bucketId: '<BUCKET_ID>',
+    fileId: '<FILE_ID>',
+    width: 200,
+    height: 200
     ImageGravity.Center,    // gravity
     100                     // quality
 );
@@ -905,7 +908,10 @@ const result = await storage.getFileView({
 console.log(result); // ArrayBuffer with file data
 
 // To get just the view URL without downloading:
-const viewUrl = storage.getFileViewURL('<BUCKET_ID>', '<FILE_ID>');
+const viewUrl = storage.getFileViewURL({
+    bucketId: '<BUCKET_ID>',
+    fileId: '<FILE_ID>'
+});
 
 console.log(viewUrl); // URL object
 ```
