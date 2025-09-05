@@ -41,41 +41,19 @@ For compliance features and dedicated support, explore [enterprise self-hosting 
 
 # Quick start {% #quick-start %}
 
-Get started with Appwrite self-hosting in three simple steps:
+The fastest way to get started with Appwrite self-hosting:
 
-1. [Choose deployment location](#deployment-options) - Decide where to install Appwrite (local, cloud, or PaaS).
-2. [Install Appwrite](/docs/advanced/self-hosting/installation) - Set up Appwrite on your chosen platform.
-3. [Configure services](/docs/advanced/self-hosting/configuration/email) - Set up email, SMS, storage, and other essential services.
+1. **Use a one-click deployment** - Choose from [marketplace installations](#one-click-deployments) for instant setup
+2. **Or follow the manual installation** - Use our [Docker installation guide](/docs/advanced/self-hosting/installation) for custom setups
+3. **Configure services** - Set up [email](/docs/advanced/self-hosting/configuration/email), [storage](/docs/advanced/self-hosting/configuration/storage), and other services
 
 # Deployment options {% #deployment-options %}
 
-Appwrite can be deployed on various platforms, each with different benefits:
-
-## Cloud platforms {% #cloud-platforms %}
-
-Deploy Appwrite on major cloud providers with our step-by-step guides:
-
-{% cards %}
-{% cards_item href="/docs/advanced/self-hosting/platforms/aws" title="Amazon Web Services" %}
-Deploy on AWS using ECS, EC2, or Lightsail with comprehensive security and scaling options.
-{% /cards_item %}
-
-{% cards_item href="/docs/advanced/self-hosting/platforms/digitalocean" title="DigitalOcean" %}
-Simple deployment on DigitalOcean Droplets with excellent developer experience.
-{% /cards_item %}
-
-{% cards_item href="/docs/advanced/self-hosting/platforms/google-cloud" title="Google Cloud" %}
-Leverage Google Cloud's infrastructure with Cloud Run, Compute Engine, or GKE.
-{% /cards_item %}
-
-{% cards_item href="/docs/advanced/self-hosting/platforms/azure" title="Microsoft Azure" %}
-Deploy on Azure using Container Instances, Virtual Machines, or Azure Kubernetes Service.
-{% /cards_item %}
-{% /cards %}
+Choose the deployment method that best fits your needs:
 
 ## One-click deployments {% #one-click-deployments %}
 
-For the fastest setup, use these pre-configured deployment options:
+**Recommended:** Use these pre-configured marketplace apps for instant setup:
 
 {% table %}
 * &nbsp; {% width=48 %}
@@ -102,6 +80,28 @@ For the fastest setup, use these pre-configured deployment options:
 * AWS Marketplace
 * [Click to install](https://aws.amazon.com/marketplace/pp/prodview-2hiaeo2px4md6)
 {% /table %}
+
+## Cloud platforms {% #cloud-platforms %}
+
+For custom deployments on major cloud providers:
+
+{% cards %}
+{% cards_item href="/docs/advanced/self-hosting/platforms/aws" title="Amazon Web Services" %}
+One-click AWS Marketplace deployment with custom configuration options.
+{% /cards_item %}
+
+{% cards_item href="/docs/advanced/self-hosting/platforms/digitalocean" title="DigitalOcean" %}
+Marketplace installation with simple Droplet configuration.
+{% /cards_item %}
+
+{% cards_item href="/docs/advanced/self-hosting/platforms/google-cloud" title="Google Cloud" %}
+Deploy using Cloud Run, Compute Engine, or other Google Cloud services.
+{% /cards_item %}
+
+{% cards_item href="/docs/advanced/self-hosting/platforms/azure" title="Microsoft Azure" %}
+Deploy using Container Apps, Virtual Machines, or other Azure services.
+{% /cards_item %}
+{% /cards %}
 
 ## Platform-as-a-Service (PaaS) {% #paas-platforms %}
 
@@ -164,10 +164,10 @@ Ensure your Appwrite deployment is production-ready:
 
 Ready to self-host Appwrite? Choose your preferred path:
 
-**Quick Local Setup** - [Install on your machine](/docs/advanced/self-hosting/installation) for development and testing
+**🚀 One-Click Deploy** - Use a [marketplace installation](#one-click-deployments) for instant setup (recommended)
 
-**Cloud Deployment** - [Choose a cloud platform](/docs/advanced/self-hosting/platforms/aws) for production hosting
+**🐳 Manual Installation** - Follow our [Docker installation guide](/docs/advanced/self-hosting/installation) for custom setups
 
-**One-Click Deploy** - Use a [marketplace installation](#one-click-deployments) for instant setup
+**☁️ Cloud Platform** - [Choose a cloud platform](#cloud-platforms) for production hosting with custom configuration
 
-**Platform-as-a-Service** - Deploy on [Coolify](/docs/advanced/self-hosting/platforms/coolify) or similar platforms for simplified management
+**🛠️ Platform-as-a-Service** - Deploy on [Coolify](/docs/advanced/self-hosting/platforms/coolify) or similar platforms for simplified management

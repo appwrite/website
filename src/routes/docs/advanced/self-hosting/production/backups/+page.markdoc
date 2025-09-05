@@ -118,8 +118,8 @@ System snapshots capture complete server state and enable fast recovery, but use
 For production environments:
 - **Restic** - Cross-platform backup with encryption
 - **Borg** - Deduplicating backup program
-- **Velero** - Kubernetes backup solution
 - **Cloud provider tools** - AWS/Azure/GCP backup services
+- **Third-party backup services** - Automated backup solutions
 
 ## Disaster recovery
 

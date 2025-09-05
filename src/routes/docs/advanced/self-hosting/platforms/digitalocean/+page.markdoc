@@ -1,198 +1,13 @@
 ---
 layout: article
 title: DigitalOcean deployment
-description: Deploy Appwrite on DigitalOcean using Droplets, Kubernetes, or the Marketplace. Learn how to set up a production-ready Appwrite instance with step-by-step instructions.
+description: Deploy Appwrite on DigitalOcean using the one-click Marketplace app.
 ---
 
-DigitalOcean offers several ways to deploy Appwrite, from simple Droplet deployments to fully managed Kubernetes clusters. This guide covers the most popular deployment methods with detailed instructions.
+Deploy Appwrite on DigitalOcean using the pre-configured Marketplace app.
 
-# Deployment options {% #deployment-options %}
 
-Choose the deployment method that best fits your needs:
-
-{% table %}
-* Method
-* Best For
-* Complexity
-* Pricing
----
-* **Droplets**
-* Full control, custom configurations
-* Low
-* Predictable
----
-* **Kubernetes**
-* Container orchestration, high availability
-* High
-* Resource-based
----
-* **Marketplace**
-* One-click installation
-* Very Low
-* Fixed
-{% /table %}
-
-# Droplet deployment {% #droplet-deployment %}
-
-Deploy Appwrite on a DigitalOcean Droplet for maximum control and flexibility.
-
-## Prerequisites {% #droplet-prerequisites %}
-
-- DigitalOcean account
-- SSH key pair added to your account
-- Basic familiarity with Linux command line
-
-## Create and configure Droplet {% #create-droplet %}
-
-{% section #launch-droplet step=1 title="Launch Droplet" %}
-
-1. Log in to your [DigitalOcean Control Panel](https://cloud.digitalocean.com/)
-2. Click **Create** → **Droplets**
-3. Choose your configuration:
-   - **Distribution**: Ubuntu 24.04 LTS or 22.04 LTS
-   - **Plan**: Basic (minimum 4GB RAM / 2 vCPUs recommended)
-   - **Datacenter**: Choose region closest to your users
-   - **Authentication**: SSH keys (select your key)
-   - **Hostname**: Choose a descriptive name
-4. Click **Create Droplet**
-
-{% /section %}
-
-{% section #configure-firewall step=2 title="Configure firewall" %}
-
-Create a DigitalOcean Cloud Firewall with these inbound rules:
-
-{% table %}
-* Type
-* Protocol
-* Port Range
-* Sources
----
-* SSH
-* TCP
-* 22
-* Your IP address
----
-* HTTP
-* TCP
-* 80
-* All IPv4, All IPv6
----
-* HTTPS
-* TCP
-* 443
-* All IPv4, All IPv6
----
-* Custom
-* TCP
-* 8080
-* All IPv4, All IPv6
-{% /table %}
-
-Apply the firewall to your Droplet through the DigitalOcean control panel.
-
-{% /section %}
-
-## Install Appwrite {% #install-appwrite %}
-
-{% section #connect-droplet step=1 title="Connect to your Droplet" %}
-
-Use SSH to connect to your Droplet using the IP address provided in your DigitalOcean dashboard.
-
-{% /section %}
-
-{% section #install-prerequisites step=2 title="Install prerequisites" %}
-
-1. **Update the system** packages to the latest versions
-2. **Install Docker** following the [official Docker installation guide](https://docs.docker.com/engine/install/ubuntu/)
-3. **Install Docker Compose** from the [official releases](https://github.com/docker/compose/releases)
-4. **Add your user to the docker group** to run Docker commands without sudo
-
-{% /section %}
-
-{% section #install-appwrite-droplet step=3 title="Install Appwrite" %}
-
-1. **Create a directory** for your Appwrite installation
-2. **Run the Appwrite installer** using the [Appwrite Docker image](https://hub.docker.com/r/appwrite/appwrite)
-3. **Configure the installation** with these [recommended settings](/docs/advanced/self-hosting/installation)
-
-{% /section %}
-
-## Configure domain and SSL {% #droplet-ssl %}
-
-{% section #point-domain step=1 title="Point domain to Droplet (optional)" %}
-
-If using a custom domain:
-1. Add an A record in your DNS provider pointing to your Droplet's IP address
-2. Wait for DNS propagation (typically 15 minutes to 24 hours)
-
-{% /section %}
-
-{% section #setup-ssl step=2 title="Set up SSL with Let's Encrypt" %}
-
-1. **Install Certbot** for automated SSL certificate management
-2. **Configure Nginx** as a reverse proxy
-3. **Obtain SSL certificates** using Certbot with the nginx plugin
-4. **Enable automatic renewal** to maintain valid certificates
-
-For detailed SSL setup instructions, see the [SSL certificates guide](/docs/advanced/self-hosting/configuration/tls-certificates).
-
-{% /section %}
-
-# Kubernetes deployment {% #kubernetes %}
-
-Deploy Appwrite on DigitalOcean Kubernetes (DOKS) for container orchestration and high availability.
-
-## Prerequisites {% #kubernetes-prerequisites %}
-
-- DigitalOcean CLI (`doctl`) installed and configured
-- `kubectl` installed locally
-- Basic understanding of Kubernetes concepts
-
-## Create and deploy {% #create-deploy %}
-
-{% section #setup-doks-cluster step=1 title="Set up DOKS cluster" %}
-
-1. **Create a Kubernetes cluster** with these recommended settings:
-   - **Version**: Latest stable Kubernetes version
-   - **Node count**: 3 nodes minimum for high availability
-   - **Node size**: s-2vcpu-4gb or larger
-   - **Region**: Choose based on your target audience
-2. **Configure kubectl** to access your cluster
-
-For current DOKS setup procedures, refer to the [DigitalOcean Kubernetes documentation](https://docs.digitalocean.com/products/kubernetes/).
-
-{% /section %}
-
-{% section #deploy-to-k8s step=2 title="Deploy Appwrite" %}
-
-1. **Create Kubernetes manifests** for:
-   - Namespace for organizing components
-   - ConfigMap for non-sensitive configuration
-   - Secret for sensitive data like encryption keys
-   - Deployment for the Appwrite application
-   - Service for internal communication
-   - Ingress for external access
-
-2. **Configure the deployment**:
-   - Memory: 512Mi minimum, 2Gi recommended
-   - CPU: 250m minimum, 1000m limit
-   - Storage: Configure persistent volumes as needed
-
-3. **Apply manifests and verify**:
-   - Deploy using kubectl
-   - Monitor pod status and logs
-   - Test connectivity and functionality
-
-For Kubernetes deployment examples, see the [official Kubernetes documentation](https://kubernetes.io/docs/).
-
-{% /section %}
-
-# Marketplace deployment {% #marketplace %}
-
-The quickest way to deploy Appwrite on DigitalOcean using the pre-configured marketplace image.
-
-## One-click installation {% #one-click %}
+# One-click installation {% #one-click %}
 
 {% section #marketplace-install step=1 title="Create marketplace Droplet" %}
 
@@ -212,71 +27,20 @@ The quickest way to deploy Appwrite on DigitalOcean using the pre-configured mar
 2. Navigate to your Droplet's IP address in a web browser
 3. Complete the initial setup wizard following the prompts
 
-For domain configuration, connect via SSH and update the environment configuration as needed.
-
 {% /section %}
+
+# Custom installations {% #custom-installations %}
+
+For manual installations on DigitalOcean Droplets or other configurations, follow the [general installation guide](/docs/advanced/self-hosting/installation) which covers Docker setup and configuration for any Linux server.
 
 # Production considerations {% #production %}
 
-## Security best practices {% #security %}
-
-**Data Protection**
-- Enable automatic security updates
-- Store sensitive environment variables securely
-- Use DigitalOcean Spaces for external file storage
-
-**Network Security**
-- Use Cloud Firewalls to restrict access
-- Deploy behind a Load Balancer for high availability
-- Enable VPC for private networking between resources
-
-**SSL/TLS Configuration**
-- Use Let's Encrypt for free SSL certificates
-- Configure automatic certificate renewal
-- Implement proper HTTPS redirects
-
-## Monitoring and backup {% #monitoring %}
-
-**DigitalOcean Monitoring**
-- Enable monitoring in your Droplet settings
-- Configure alerts for CPU, memory, and disk usage
-- Set up uptime monitoring for your domain
-
-**Backup Strategy**
-- Enable automatic snapshots for Droplets
-- Store file uploads in DigitalOcean Spaces with versioning
-
-For comprehensive backup procedures including database exports, storage volumes, and configuration files, see the [Backups page](/docs/advanced/self-hosting/production/backups).
-
-**Performance Optimization**
-- Use DigitalOcean CDN for static asset delivery
-- Implement proper caching strategies
-- Monitor and optimize database queries
-
-# Troubleshooting {% #troubleshooting %}
-
-**Common issues and solutions:**
-
-**Droplet connectivity issues**
-- Verify firewall rules allow required traffic
-- Check SSH key configuration
-- Ensure Droplet is running and accessible
-
-**SSL certificate problems**
-- Ensure domain DNS records point to correct IP address
-- Verify web server configuration
-- Monitor certificate expiration and renewal
-
-**Performance issues**
-- Monitor resource usage through DigitalOcean dashboard
-- Consider upgrading Droplet size
-- Review application logs for bottlenecks
+For production deployments, optimization, and advanced configuration, see the [production deployment guide](/docs/advanced/self-hosting/production).
 
 # Next steps {% #next-steps %}
 
 After successful deployment:
 
-- [Configure email delivery](/docs/advanced/self-hosting/configuration/email) - Set up SMTP for notifications
-- [Set up external storage](/docs/advanced/self-hosting/configuration/storage) - Use DigitalOcean Spaces for file storage
-- [Production deployment guide](/docs/advanced/self-hosting/production) - Optimize for production workloads
-- [Update and maintenance](/docs/advanced/self-hosting/production/updates) - Keep your Appwrite instance up to date
+- [Configure services](/docs/advanced/self-hosting/configuration) - Set up email, storage, and other services
+- [Production optimization](/docs/advanced/self-hosting/production) - Prepare for production workloads
+- [Updates and maintenance](/docs/advanced/self-hosting/production/updates) - Keep your instance up to date

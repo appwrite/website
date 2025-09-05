@@ -1,10 +1,10 @@
 ---
 layout: article
 title: Google Cloud deployment
-description: Deploy Appwrite on Google Cloud Platform using Cloud Run, Compute Engine, or GKE. Learn how to set up a production-ready Appwrite instance with automatic scaling and managed infrastructure.
+description: Deploy Appwrite on Google Cloud Platform using Cloud Run or Compute Engine. Learn how to set up a production-ready Appwrite instance with automatic scaling.
 ---
 
-Google Cloud Platform (GCP) offers multiple deployment options for Appwrite, from serverless containers with Cloud Run to fully managed Kubernetes clusters. This guide covers the most effective deployment methods for different use cases.
+Google Cloud Platform (GCP) offers multiple deployment options for Appwrite. This guide covers the most effective deployment methods for different use cases.
 
 # Deployment options {% #deployment-options %}
 
@@ -26,11 +26,6 @@ Choose the deployment method that best fits your requirements:
 * Medium
 * Manual
 ---
-* **GKE**
-* Container orchestration, high availability
-* High
-* Automatic
----
 * **App Engine**
 * Managed platform, simple deployment
 * Low
@@ -41,292 +36,24 @@ Choose the deployment method that best fits your requirements:
 
 Deploy Appwrite using Google Cloud Run for a serverless, fully managed experience with automatic scaling.
 
-## Prerequisites {% #cloud-run-prerequisites %}
-
-- Google Cloud account with billing enabled
-- Google Cloud CLI installed and authenticated
-- Docker installed locally
-- Project with required APIs enabled
-
-## Enable required APIs {% #enable-apis %}
-
-Enable these Google Cloud APIs in your project:
-- Cloud Run API
-- Cloud Build API
-- Artifact Registry API
-- Compute Engine API
-- Cloud SQL API (if using managed database)
-
-You can enable these through the [Google Cloud Console](https://console.cloud.google.com/apis) or using the gcloud CLI.
-
-## Prepare container image {% #prepare-image %}
-
-{% section #setup-container-registry step=1 title="Set up container registry" %}
-
-1. **Create an Artifact Registry repository** for storing your Docker images
-2. **Configure Docker authentication** for the registry
-3. **Pull the [Appwrite image](https://hub.docker.com/r/appwrite/appwrite)**
-4. **Tag and push** the image to your registry
-
-For detailed commands, refer to the [Artifact Registry documentation](https://cloud.google.com/artifact-registry/docs).
-
-{% /section %}
-
-## Deploy to Cloud Run {% #deploy-cloud-run %}
-
-{% section #setup-managed-database step=1 title="Set up managed database" %}
-
-1. **Create a Cloud SQL instance**
-   - Select appropriate machine type for your workload
-   - Configure your preferred region
-   - Set up secure authentication
-
-2. **Configure the database**
-   - Create an `appwrite` database
-   - Create a dedicated user with appropriate permissions
-   - Note the connection details for later configuration
-
 {% info title="Compatibility note" %}
-Appwrite uses MariaDB by default. Running against Cloud SQL for MySQL 8.x is unsupported and may break schema or SQL dialect assumptions. Test thoroughly in a staging environment or deploy MariaDB yourself on Compute Engine or GKE instead.
+Appwrite uses MariaDB by default. Running against Cloud SQL for MySQL 8.x is unsupported and may break schema or SQL dialect assumptions. Test thoroughly in a staging environment or deploy MariaDB yourself on Compute Engine instead.
 {% /info %}
-{% /section %}
 
-{% section #deploy-appwrite-cloud-run step=2 title="Deploy Appwrite to Cloud Run" %}
+For detailed Cloud Run deployment instructions, follow the [general installation guide](/docs/advanced/self-hosting/installation) and adapt the Docker commands for your Cloud Run environment.
 
-1. **Deploy the service** with these recommended specifications:
-   - **Memory**: 2Gi minimum
-   - **CPU**: 2 cores recommended
-   - **Port**: 80
-   - **Scaling**: Configure based on your expected traffic
+# Custom installations {% #custom-installations %}
 
-2. **Configure environment variables** for production:
-   - `_APP_ENV=production`
-   - Database connection settings
-   - Security and feature flags as needed
-   - Use Secret Manager for sensitive values
-
-3. **Set up database connectivity**
-   - Enable Cloud SQL connections for your Cloud Run service
-   - Configure the connection using Cloud SQL Auth Proxy
-   - Test the database connection
-
-For current deployment commands, see the [Cloud Run documentation](https://cloud.google.com/run/docs).
-
-{% /section %}
-
-## Configure custom domain {% #cloud-run-domain %}
-
-{% section #map-custom-domain step=1 title="Map custom domain" %}
-
-1. Navigate to the [Cloud Run Console](https://console.cloud.google.com/run)
-2. Select your Appwrite service
-3. Configure custom domain mapping
-4. Complete domain verification process
-
-{% /section %}
-
-{% section #update-dns-records step=2 title="Update DNS records" %}
-
-Configure your DNS provider with the appropriate CNAME records as specified in the Google Cloud Console. SSL certificates are automatically managed by Google Cloud.
-
-{% /section %}
-
-# Compute Engine deployment {% #compute-engine %}
-
-Deploy Appwrite on Google Compute Engine VMs for maximum control and customization.
-
-## Create VM instance {% #create-vm %}
-
-{% section #launch-vm-instance step=1 title="Launch instance" %}
-
-1. **Create a VM instance** with these specifications:
-   - **Machine Type**: e2-standard-2 or higher recommended
-   - **Operating System**: Ubuntu 22.04 LTS
-   - **Boot Disk**: 20GB minimum, SSD recommended
-   - **Zone**: Choose based on your target audience location
-
-2. **Configure startup script** to:
-   - Update the system packages
-   - Install Docker and Docker Compose
-   - Configure Docker service and user permissions
-
-{% /section %}
-
-{% section #configure-firewall-rules step=2 title="Configure firewall rules" %}
-
-Create firewall rules to allow traffic on these ports:
-- **HTTP (80)**: Web traffic
-- **HTTPS (443)**: Secure web traffic
-- **Custom (8080)**: Appwrite API access
-
-Refer to the [Compute Engine documentation](https://cloud.google.com/compute/docs) for current firewall configuration procedures.
-
-{% /section %}
-
-## Install Appwrite on VM {% #install-vm %}
-
-{% section #connect-to-instance step=1 title="Connect to your instance" %}
-
-Use SSH to connect to your VM instance through the Google Cloud Console or gcloud CLI.
-
-{% /section %}
-
-{% section #install-configure-appwrite step=2 title="Install and configure Appwrite" %}
-
-1. **Create a directory** for your Appwrite installation
-2. **Run the Appwrite installer** using the [Appwrite Docker image](https://hub.docker.com/r/appwrite/appwrite)
-3. **Configure the installation** with these [recommended settings](/docs/advanced/self-hosting/installation)
-
-{% /section %}
-
-{% section #setup-ssl-certificates step=3 title="Set up SSL certificates" %}
-
-1. **Install Certbot** for Let's Encrypt certificates
-2. **Configure Nginx** as a reverse proxy
-3. **Obtain and install SSL certificates** using Certbot
-4. **Configure automatic renewal** for certificate maintenance
-
-For detailed SSL setup, see the [SSL certificates guide](/docs/advanced/self-hosting/configuration/tls-certificates).
-
-{% /section %}
-
-# GKE deployment {% #gke %}
-
-Deploy Appwrite on Google Kubernetes Engine for enterprise-grade container orchestration.
-
-## Create GKE cluster {% #create-cluster %}
-
-{% section #setup-gke-cluster step=1 title="Set up the cluster" %}
-
-1. **Create a GKE cluster** with these recommended settings:
-   - **Machine Type**: e2-standard-2 or higher
-   - **Node Count**: 3 nodes minimum for high availability
-   - **Auto-scaling**: Enable with appropriate min/max node limits
-   - **Auto-repair and auto-upgrade**: Enable for maintenance automation
-
-2. **Configure cluster access**
-   - Obtain cluster credentials for kubectl access
-   - Verify connectivity to the cluster
-
-Refer to the [GKE documentation](https://cloud.google.com/kubernetes-engine/docs) for current cluster creation procedures.
-
-{% /section %}
-
-{% section #prepare-for-deployment step=2 title="Prepare for deployment" %}
-
-1. **Install required tools**:
-   - kubectl (Kubernetes CLI)
-   - Helm (package manager)
-
-2. **Create namespace** for Appwrite components
-
-{% /section %}
-
-## Deploy with Kubernetes manifests {% #k8s-deploy %}
-
-{% section #prepare-deployment-manifests step=1 title="Prepare deployment manifests" %}
-
-Create Kubernetes manifests for:
-- **Persistent Volume Claims** for data storage
-- **Deployments** for Appwrite containers
-- **Services** for internal and external connectivity
-- **ConfigMaps and Secrets** for configuration management
-
-{% /section %}
-
-{% section #configure-k8s-deployment step=2 title="Configure the deployment" %}
-
-1. **Set resource requirements**:
-   - Memory: 2Gi minimum per replica
-   - CPU: 1 core minimum per replica
-   - Storage: Configure persistent volumes for data
-
-2. **Configure environment variables**:
-   - Production settings
-   - Database connections
-   - Security configurations
-
-3. **Set up load balancing**:
-   - Internal services for inter-component communication
-   - External LoadBalancer or Ingress for public access
-
-For Kubernetes deployment examples, see the [Kubernetes documentation](https://kubernetes.io/docs/).
-
-{% /section %}
+For manual installations on Compute Engine VMs or other Google Cloud services, follow the [general installation guide](/docs/advanced/self-hosting/installation) which covers Docker setup and configuration for any Linux server.
 
 # Production considerations {% #production %}
 
-## Security best practices {% #security %}
-
-**Identity and Access Management**
-- Create dedicated service accounts with minimal required permissions
-- Use Workload Identity for secure access to Google Cloud services
-- Implement proper RBAC policies for cluster access
-- Store sensitive data in Secret Manager rather than environment variables
-
-**Network Security**
-- Create custom VPC networks with appropriate subnet configurations
-- Implement firewall rules following the principle of least privilege
-- Use private clusters for GKE deployments when possible
-- Configure VPC peering for secure database access
-
-**Data Protection**
-- Enable encryption at rest for all storage
-- Use managed SSL certificates for automatic renewal
-- Implement proper backup and disaster recovery procedures
-
-## Monitoring and backup {% #monitoring %}
-
-**Google Cloud Operations Suite**
-- Enable Cloud Monitoring for infrastructure and application metrics
-- Configure Cloud Logging for centralized log management
-- Set up Error Reporting for application error tracking
-- Configure alerts for CPU, memory, and service health
-
-**Backup Strategy**
-- Enable automated backups for Cloud SQL instances
-- Use Cloud Storage with versioning for backup storage
-- Set up regular backups of file uploads and user data
-- Configure backup retention policies
-
-For comprehensive backup procedures including database exports, storage volumes, and configuration files, see the [backup documentation](/docs/advanced/self-hosting/backups).
-
-**Performance Optimization**
-- Use Cloud CDN for static asset delivery
-- Implement Cloud SQL read replicas for read-heavy workloads
-- Configure appropriate auto-scaling policies
-- Monitor and optimize database performance
-
-# Troubleshooting {% #troubleshooting %}
-
-**Common issues and solutions:**
-
-**Cloud Run cold starts**
-- Configure minimum instances to reduce cold start latency
-- Optimize container startup time
-- Monitor and adjust concurrency settings
-
-**Database connectivity issues**
-- Verify Cloud SQL Auth Proxy configuration
-- Check VPC network connectivity and firewall rules
-- Ensure service accounts have proper Cloud SQL permissions
-
-**SSL certificate problems**
-- Verify domain ownership and DNS configuration
-- Check certificate provisioning status in Google Cloud Console
-- Ensure proper domain mapping to services
-
-**Performance issues**
-- Use Cloud CDN for static asset delivery
-- Implement Cloud SQL read replicas for read-heavy workloads
-- Configure appropriate auto-scaling policies
-- Monitor container resource allocation
+For production deployments, optimization, and advanced configuration, see the [production deployment guide](/docs/advanced/self-hosting/production).
 
 # Next steps {% #next-steps %}
 
 After successful deployment:
 
-- [Configure email delivery](/docs/advanced/self-hosting/configuration/email) - Set up SMTP using Gmail or SendGrid
-- [Set up SSL certificates](/docs/advanced/self-hosting/configuration/tls-certificates) - Configure managed SSL certificates
-- [Production deployment guide](/docs/advanced/self-hosting/production) - Optimize for production workloads
-- [Update and maintenance](/docs/advanced/self-hosting/update) - Keep your Appwrite instance up to date
+- [Configure services](/docs/advanced/self-hosting/configuration) - Set up email, storage, and other services
+- [Production optimization](/docs/advanced/self-hosting/production) - Prepare for production workloads
+- [Updates and maintenance](/docs/advanced/self-hosting/production/updates) - Keep your instance up to date
