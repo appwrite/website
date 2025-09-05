@@ -62,10 +62,8 @@ export function useAuth() {
 
     const getCurrentUser = async () => {
         try {
-            const session = await account.getSession({
-                sessionId: 'current'
-            });
-            setCurrent(session);
+            const user = await account.get();
+            setCurrent(user);
         } catch (error) {
             setCurrent(null);
         } finally {
