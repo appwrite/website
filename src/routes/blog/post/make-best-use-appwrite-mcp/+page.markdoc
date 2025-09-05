@@ -13,7 +13,7 @@ MCP servers are the next big thing in the AI space. Everyone is talking about th
 
 Our documentation has a [guide for installing and setting up the Appwrite MCP server](/docs/tooling/mcp) if you haven't already.
 
-## Generating documentation for your project
+# Generating documentation for your project
 
 Since your AI agents can now access your Appwrite projects, you can generate detailed documentation about any resource present in your project. This is particularly useful when generating documentation for your database schema. This way, you don't need to give end developers access to your project and keep them in the loop about the database schema and purpose for each table and column.
 
@@ -27,7 +27,7 @@ By running this prompt, the AI agent should start accessing your database (if it
 
 ![Database documentation generated](/images/blog/make-best-use-appwrite-mcp/doc-generated.png)
 
-## Creating tables dynamically
+# Creating tables dynamically
 
 Instead of opening the Appwrite Console or writing custom scripts, you can ask your AI agents to create/modify tables in your database. This is especially useful when you're vibe coding to build a prototype and you need the model to create tables according to its judgment without you needing to go to Appwrite Console to do it manually.
 
@@ -41,7 +41,7 @@ By running this prompt, the AI agent should create a new table and then add the 
 
 ![Table created by the AI agent](/images/blog/make-best-use-appwrite-mcp/table-created.png)
 
-## Selective CSV export
+# Selective CSV export
 
 If you ran the above prompt and now have a products table with all the relevant columns, you can make your AI agents perform queries on your database and take actions with it. For example, you can run a query and export the final data to a CSV file.
 
@@ -55,7 +55,7 @@ This will run the necessary database queries and create a CSV file with all the 
 
 Similarly, you can run this the other way around and import a CSV file with selective requirements, i.e., only importing if the product price is less than $100, for example.
 
-## Replicating database schema
+# Replicating database schema
 
 Sometimes you need a separate database with the same structure as your main database to test new updates. It could be tedious to manually replicate the database schema each time. Instead, you can ask your AI agent to do the job.
 
@@ -67,7 +67,7 @@ This should make the AI agent scan through all your database tables, record the 
 
 ![Database schema replicated](/images/blog/make-best-use-appwrite-mcp/db-replicated.png)
 
-## Wrapping up
+# Wrapping up
 
 Appwrite's MCP server can unlock many different possibilities when powered by an AI agent. These were just a few of the many more use cases you could imagine. If you have any questions, please join our [Discord server](https://appwrite.io/discord) to connect with the team.
 
