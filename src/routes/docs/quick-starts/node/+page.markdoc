@@ -111,27 +111,28 @@ async function prepareDatabase() {
         size: 255,
         required: true
     });
-    await tablesDB.createStringColumn(
-        todoDatabase.$id,
-        todoTable.$id,
-        'title',
-        255,
-        true
-    );
+    await tablesDB.createStringColumn({
+        databaseId: todoDatabase.$id,
+        tableId: todoTable.$id,
+        key: 'title',
+        size: 255,
+        required: true
+    });
 
-    await tablesDB.createStringColumn(
-        todoDatabase.$id,
-        todoTable.$id,
-        'description',
-        255, false,
-        'This is a test description'
-    );
-    await tablesDB.createBooleanColumn(
-        todoDatabase.$id,
-        todoTable.$id,
-        'isComplete',
-        true
-    );
+    await tablesDB.createStringColumn({
+        databaseId: todoDatabase.$id,
+        tableId: todoTable.$id,
+        key: 'description',
+        size: 255,
+        required: false,
+        default: 'This is a test description'
+    });
+    await tablesDB.createBooleanColumn({
+        databaseId: todoDatabase.$id,
+        tableId: todoTable.$id,
+        key: 'isComplete',
+        required: true
+    });
 }
 ```
 
