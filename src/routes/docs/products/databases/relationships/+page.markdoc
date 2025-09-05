@@ -331,8 +331,8 @@ await tablesDB.createRow({
 
 ```dart
 import 'package:appwrite/appwrite.dart';
-    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('<PROJECT_ID>');               // Your project ID
+
+final client = Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')  // Your API Endpoint
     .setProject('<PROJECT_ID>');                // Your project ID
 
