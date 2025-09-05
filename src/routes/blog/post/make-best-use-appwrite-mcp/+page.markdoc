@@ -11,7 +11,9 @@ category: tutorial
 
 MCP servers are the next big thing in the AI space. Everyone is talking about them. An MCP server allows your AI agents to interact with external services. The use cases are legit, so we launched our own Appwrite MCP server that allows your AI agents to interact with your Appwrite projects. This MCP server unlocks some handy use cases, which we will look at in this article.
 
-Our documentation has a [guide for installing and setting up the Appwrite MCP server](/docs/tooling/mcp) if you haven’t already.
+{% info title="Note" %}
+Our documentation has a [guide for installing and setting up the Appwrite MCP server](/docs/tooling/mcp) if you haven't already.
+{% /info %}
 
 ## Generating documentation for your project
 
