@@ -1332,11 +1332,11 @@ def main(context):
             .set_project(os.environ["APPWRITE_FUNCTION_PROJECT_ID"])
     )
 
-    if "x-appwrite-user-jwt" in context.req.headers:
-        client.set_jwt(context.req.headers["x-appwrite-user-jwt"])
-    else:
-        return context.res.text("Access denied: This function requires authentication. Please sign in to continue.")
+    except Exception as e:
+        context.error("Failed to create row: " + str(e))
+        return context.res.text("Failed to create row")
 
+    return context.res.text("Row created")
     tablesDB = TablesDB(client)
 
     try:
