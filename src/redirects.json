@@ -719,5 +719,9 @@
     {
         "link": "/docs/tooling/command-line/collections",
         "redirect": "/docs/tooling/command-line/tables"
+    },
+    {
+        "link": "/docs/tooling/mcp/mcp-for-docs",
+        "redirect": "/docs/tooling/mcp/docs"
     }
 ]
