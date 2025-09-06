@@ -5,30 +5,32 @@ import { dirname, join } from 'path';
 import { markdoc } from 'svelte-markdoc-preprocess';
 import { fileURLToPath } from 'url';
 
+export const markdocSchema = {
+    generateSchema: true,
+    nodes: absolute('./src/markdoc/nodes/_Module.svelte'),
+    tags: absolute('./src/markdoc/tags/_Module.svelte'),
+    partials: absolute('./src/partials'),
+    layouts: {
+        default: absolute('./src/markdoc/layouts/Article.svelte'),
+        article: absolute('./src/markdoc/layouts/Article.svelte'),
+        tutorial: absolute('./src/markdoc/layouts/Tutorial.svelte'),
+        post: absolute('./src/markdoc/layouts/Post.svelte'),
+        partner: absolute('./src/markdoc/layouts/Partner.svelte'),
+        author: absolute('./src/markdoc/layouts/Author.svelte'),
+        category: absolute('./src/markdoc/layouts/Category.svelte'),
+        policy: absolute('./src/markdoc/layouts/Policy.svelte'),
+        changelog: absolute('./src/markdoc/layouts/Changelog.svelte'),
+        integration: absolute('./src/markdoc/layouts/Integration.svelte')
+    }
+}
+
 /** @type {import('@sveltejs/kit').Config}*/
 const config = {
     // Consult https://kit.svelte.dev/docs/integrations#preprocessors
     // for more information about preprocessors
     preprocess: sequence([
         vitePreprocess(),
-        markdoc({
-            generateSchema: true,
-            nodes: absolute('./src/markdoc/nodes/_Module.svelte'),
-            tags: absolute('./src/markdoc/tags/_Module.svelte'),
-            partials: absolute('./src/partials'),
-            layouts: {
-                default: absolute('./src/markdoc/layouts/Article.svelte'),
-                article: absolute('./src/markdoc/layouts/Article.svelte'),
-                tutorial: absolute('./src/markdoc/layouts/Tutorial.svelte'),
-                post: absolute('./src/markdoc/layouts/Post.svelte'),
-                partner: absolute('./src/markdoc/layouts/Partner.svelte'),
-                author: absolute('./src/markdoc/layouts/Author.svelte'),
-                category: absolute('./src/markdoc/layouts/Category.svelte'),
-                policy: absolute('./src/markdoc/layouts/Policy.svelte'),
-                changelog: absolute('./src/markdoc/layouts/Changelog.svelte'),
-                integration: absolute('./src/markdoc/layouts/Integration.svelte')
-            }
-        }),
+        markdoc(markdocSchema),
         preprocessMeltUI()
     ]),
     extensions: ['.markdoc', '.svelte', '.md'],
