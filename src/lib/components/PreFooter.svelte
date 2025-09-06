@@ -24,7 +24,7 @@
         },
         {
             name: 'Pro',
-            price: '$15',
+            price: '$25',
             variable: true,
             tag: 'Most Popular',
             description:

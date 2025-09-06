@@ -112,7 +112,10 @@ class AppwriteService {
   }
 
   async getFile(bucketId, fileId) {
-    return await this.storage.getFileDownload(bucketId, fileId);
+    return await this.storage.getFileDownload({
+      bucketId,
+      fileId
+    });
   }
 }
 

@@ -36,7 +36,11 @@ client
     .setKey('919c2d18fb5d4...a2ae413da83346ad2') // Your secret API key
 ;
 
-const promise = databases.createCollection('<DATABASE_ID>', '<COLLECTION_ID>', '<NAME>');
+const promise = databases.createCollection({
+    databaseId: '<DATABASE_ID>',
+    collectionId: '[COLLECTION_ID]',
+    name: '[NAME]'
+});
 
 promise.then(function (response) {
     console.log(response);
@@ -59,7 +63,11 @@ client
 ;
 
 
-let promise = databases.createCollection('<DATABASE_ID>', '<COLLECTION_ID>', '<NAME>');
+let promise = databases.createCollection({
+    databaseId: '<DATABASE_ID>',
+    collectionId: '[COLLECTION_ID]',
+    name: '[NAME]'
+});
 
 promise.then(function (response) {
     console.log(response);

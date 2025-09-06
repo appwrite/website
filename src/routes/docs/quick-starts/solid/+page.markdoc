@@ -92,12 +92,20 @@ const App = () => {
     const [name, setName] = createSignal('');
 
     async function login(email, password) {
-        await account.createEmailPasswordSession(email, password);
+        await account.createEmailPasswordSession({
+            email,
+            password
+        });
         setLoggedInUser(await account.get());
     }
 
     async function register(email, password, name) {
-        await account.create(ID.unique(), email, password, name);
+        await account.create({
+            userId: ID.unique(),
+            email,
+            password,
+            name
+        });
         login(email, password);
     }
 

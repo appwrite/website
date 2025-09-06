@@ -21,6 +21,6 @@
         >Go to Console</span
     >
     <span class="block group-[&[data-logged-in]]/body:hidden" aria-hidden={isLoggedIn}
-        >Start building</span
+        >Start building for free</span
     >
 </Button>
