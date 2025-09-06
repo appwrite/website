@@ -4,9 +4,9 @@ title: Functions
 description: Harness the full power of self-hosted functions with Appwrite. Explore function deployment, management, and integration in your self-hosted environment.
 ---
 
-{% partial file="configure-github-app.md" /%}
+This guide covers how to configure functions in your self-hosted Appwrite instance. For GitHub repository integration with functions, see the [version control configuration](/docs/advanced/self-hosting/configuration/version-control).
 
-# Configure Function runtimes {% #functions %}
+# Configure function runtimes {% #functions %}
 
 Not all function runtimes are enabled by default. Enable the runtimes that you need and disable unused runtimes to save disk space on your server.
 To enable a runtime, add it to the `_APP_FUNCTIONS_RUNTIMES` environment variable as a comma-separated list.
@@ -23,7 +23,7 @@ You can also configure the maximum timeout that can be set on individual Appwrit
 
 {% partial file="update-variables.md" /%}
 
-# SSL certificates for Function domains {% #ssl-certificates %}
+# SSL certificates for function domains {% #ssl-certificates %}
 
 Before setting up SSL certificates, ensure you have configured your DNS settings properly. You'll need to create a CNAME record that points your wildcard function domain (e.g. `*.functions.appwrite.myapp.com`) to your Appwrite domain.
 
@@ -99,7 +99,7 @@ labels:
 docker compose up -d --force-recreate
 ```
 
-### Troubleshooting DNS Propagation
+### Troubleshooting DNS propagation
 
 If certificate generation fails, first check the Traefik logs to identify the specific issue.
 
