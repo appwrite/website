@@ -61,7 +61,7 @@
         <div class="web-code-snippet-header-start">
             <div class="flex gap-4">
                 {#if platform}
-                    <div class="web-tag"><span class="text">{platform}</span></div>
+                    <div class="web-tag rounded-full!"><span class="text">{platform}</span></div>
                 {/if}
             </div>
         </div>

@@ -5,22 +5,22 @@
     export let method: SDKMethod;
 </script>
 
-<div class="web-card is-transparent p-4">
+<div class="web-card is-normal bg-card! p-4">
     <ul class="flex flex-col">
         {#each method.parameters as parameter, i}
             {@const first = i === 0}
             <li class:pt-4={!first}>
                 <article>
-                    <header class="flex items-baseline gap-2">
+                    <header class="flex items-baseline gap-2.5">
                         <span class="web-code text-primary">
                             {parameter.name}
                         </span>
                         <span class="text-caption">{parameter.type}</span>
                         {#if parameter.required}
-                            <div class="web-tag">required</div>
+                            <div class="web-tag text-caption! rounded-full!">required</div>
                         {/if}
                     </header>
-                    <p class="text-sub-body mt-4">
+                    <p class="text-paragraph-md mt-4">
                         <!-- eslint-disable-next-line svelte/no-at-html-tags -->
                         {@html parse(parameter.description)}
                     </p>
