@@ -119,6 +119,8 @@ export async function sitemaps() {
 }
 
 function writeSitemap(filename, routes, dir) {
+    const currentDate = new Date().toISOString().split('T')[0]; // Format: YYYY-MM-DD
+
     const body = `
 <?xml version="1.0" encoding="UTF-8" ?>
 <urlset
@@ -129,8 +131,27 @@ function writeSitemap(filename, routes, dir) {
   xmlns:image="https://www.google.com/schemas/sitemap-image/1.1"
   xmlns:video="https://www.google.com/schemas/sitemap-video/1.1"
 >
-${routes.map((route) => `  <url>\n    <loc>${BASE_URL}${route}</loc>\n  </url>`).join('\n')}
-</urlset>`.trim();
+${routes
+    .map((route) => {
+        let priority = '0.5';
+        if (route === '/' || route === '/sitemaps/pages.xml') {
+            priority = '1.0';
+        } else if (route.startsWith('/docs') || route === '/sitemaps/docs.xml') {
+            priority = '0.9';
+        } else if (route.startsWith('/blog') || route === '/sitemaps/blog.xml') {
+            priority = '0.8';
+        } else if (route.startsWith('/integrations') || route === '/sitemaps/integrations.xml') {
+            priority = '0.7';
+        }
+
+        return `  <url>
+            <loc>${BASE_URL}${route}</loc>
+            <lastmod>${currentDate}</lastmod>
+            <priority>${priority}</priority>
+        </url>`;
+    })
+    .join('\n')}
+    </urlset>`.trim();
 
     const filepath = join(dir, filename);
     writeFileSync(filepath, body);
