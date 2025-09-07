@@ -10,7 +10,7 @@ const config: PlaywrightTestConfig = {
     testMatch: /(.+\.)?(test|spec)\.[jt]s/,
     projects: [
         {
-            name: 'chromium',
+            name: 'Chrome',
             use: {
                 channel: 'chrome'
             }
