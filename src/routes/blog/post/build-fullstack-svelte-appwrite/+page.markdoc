@@ -682,7 +682,11 @@ Finally, let's add utility functions for managing expenses:
 ```js
 async function deleteExpense(id) {
   try {
-    await tablesDB.deleteRow(DATABASE_ID, EXPENSES_TABLE_ID, id)
+    await tablesDB.deleteRow({
+      databaseId: DATABASE_ID,
+      tableId: EXPENSES_TABLE_ID,
+      rowId: id,
+    })
     await fetchExpenses()
   } catch (e) {
     error = 'Failed to delete expense'
