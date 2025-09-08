@@ -11,14 +11,7 @@ const sitemap = `Sitemap: https://appwrite.io/sitemap.xml`;
 
 export const GET: RequestHandler = ({ url }) => {
     const hostname: string = url.hostname;
-    return new Response(
-        (hostname === 'www.appwrite.io' ||
-        hostname === 'appwrite.io' ||
-        hostname === 'init-3.torsten.work' ||
-        hostname === 'www.init-3.torsten.work'
-            ? follow
-            : nofollow) +
-            '\n' +
-            sitemap
-    );
+    const allowedHosts: string[] = ['www.appwrite.io', 'appwrite.io'];
+
+    return new Response((allowedHosts.includes(hostname) ? follow : nofollow) + '\n' + sitemap);
 };
