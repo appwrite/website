@@ -1,0 +1,106 @@
+---
+layout: tutorial
+title: Create Next.js app
+description: Create a Next.js project using Appwrite.
+step: 2
+---
+
+# Create Next.js project {% #create-next-js-project %}
+
+Create a new Next.js project using the `create-next-app` command.
+
+```sh
+npx create-next-app expense-tracker --eslint
+cd expense-tracker 
+```
+
+We are using the `--eslint` flags to add ESLint to our project.
+
+What are the options you plan to take?
+
+```sh
+✔ Would you like to use TypeScript? … No / Yes : No
+✔ Would you like to use Tailwind CSS? … No / Yes : No
+✔ Would you like to use `src/` directory? … No / Yes : Yes
+✔ Would you like to use App Router? (recommended) … No / Yes: Yes
+✔ Would you like to customize the default import alias? … No / Yes : No
+
+Creating a new Next.js app in expense-tracker.
+```
+
+You can also follow the responses from above. We will be using `app` directory for project. Also We are not using TypeScript and Tailwind CSS. So we can skip those options.
+
+# Install dependencies {% #install-dependencies %}
+
+Install the [JavaScript Appwrite SDK](https://appwrite.io/docs/sdks).
+
+```sh
+npm install appwrite
+```
+
+Install the [Appwrite CSS library](https://pink.appwrite.io/) and icons package. This will give us a nice looking UI for our app. We just have to use the classes provided by the CSS library.
+
+```sh
+npm install "@appwrite.io/pink" "@appwrite.io/pink-icons"
+```
+
+Import the CSS file and icons in the top of `app/layout.js` file.
+
+```js
+// /src/app/layout.js
+
+import "@appwrite.io/pink";
+import "@appwrite.io/pink-icons";
+```
+
+We are going to use a custom className `lite-bg` which we can define in the `globals.css` file.
+
+```css
+/* /src/app/globals.css */
+
+.lite-bg {
+  background-color: hsl(var(--color-primary-100) / 0.2);
+}
+```
+
+We will be using cookie to store the session token. So we need to install `next-cookie` package. We will also be using `react-hot-toast` to show toast messages.
+
+```bash
+npm install next-cookie react-hot-toast
+```
+
+We also have to add the `Toaster` component in the `app/layout.js` file. This component will render all toasts. The `layout.js` file will look like this.
+
+```js
+// /src/app/layout.js
+
+import { Toaster } from "react-hot-toast";
+import { Inter } from "next/font/google";
+
+import "@appwrite.io/pink";
+import "@appwrite.io/pink-icons";
+import "./globals.css";
+
+const inter = Inter({ subsets: ["latin"] });
+
+export default function RootLayout({ children }) {
+  return (
+    <html lang="en">
+      <body className={inter.className}>
+        {children}
+        <Toaster position="bottom-right" />
+      </body>
+    </html>
+  );
+}
+```
+
+# Start the development server {% #start-the-development-server %}
+
+You can start the development server using the following command.
+
+```sh
+npm run dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) in your browser to see the app.

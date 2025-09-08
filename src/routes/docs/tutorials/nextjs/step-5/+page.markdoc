@@ -1,0 +1,326 @@
+---
+layout: tutorial
+title: Add expenses
+description: Add databases and queries to store user data in your Next.js app.
+step: 5
+---
+# Create collection {% #create-collection %} 
+In Appwrite, data is stored as a collection of documents. Create a collection in the [Appwrite Console](https://cloud.appwrite.io/) to store our expenses.
+
+{% only_dark %}
+![Create project screen](/images/docs/tutorials/dark/expense-tracker-collection.png)
+{% /only_dark %}
+{% only_light %}
+![Create project screen](/images/docs/tutorials/expense-tracker-collection.png)
+{% /only_light %}
+
+In the collection go to attributes and add the following attributes:
+| Field       | Type    | Required | Elements       |
+|-------------|---------|----------|----------------|
+| userId      | String  | Yes      |                |
+| title       | String  | Yes      |                |
+| amount      | Float   | Yes      |                |
+| type        | Enum    | Yes      | Paid, Received |
+
+Now that we have created a collection, we have to add permissions to the collection. Go to the settings tab, scoll to the permissions sections add the following permissions:
+
+{% only_dark %}
+![Create project screen](/images/docs/tutorials/dark/collection-permissions.png)
+{% /only_dark %}
+{% only_light %}
+![Create project screen](/images/docs/tutorials/collection-permissions.png)
+{% /only_light %}
+
+You can also add permission for a specific user or a team.
+
+Now you will get a database ID and collection ID. First Copy the these two and add them in the `.env.local` file
+
+```js
+// .env.local
+
+NEXT_PUBLIC_APPWRITE_ENDPOINT = https://cloud.appwrite.io/v1
+NEXT_PUBLIC_APPWRITE_PROJECT = <YOUR_PROJECT_ID>
+NEXT_PUBLIC_EXPENSE_DATABASE_ID = <YOUR_DATABASE_ID>
+NEXT_PUBLIC_EXPENSE_COLLECTION_ID = <YOUR_COLLECTION_ID>
+```
+
+Now add them in the Appwrite config in the `/config/appwrite.js` file.
+
+```js
+// /src/config/appwrite.js
+
+export const config = {
+  APPWRITE_ENDPOINT: process.env.NEXT_PUBLIC_APPWRITE_ENDPOINT,
+  APPWRITE_PROJECT: process.env.NEXT_PUBLIC_APPWRITE_PROJECT,
+  EXPENSE_DATABASE_ID: process.env.NEXT_PUBLIC_EXPENSE_DATABASE_ID,
+  EXPENSE_COLLECTION_ID: process.env.NEXT_PUBLIC_EXPENSE_COLLECTION_ID,
+};
+
+export const EXPENSE_DATABASE_ID = config.EXPENSE_DATABASE_ID;
+export const EXPENSE_COLLECTION_ID = config.EXPENSE_COLLECTION_ID;
+```
+
+Here is the final Appwrite config file.
+
+```js
+// /src/config/appwrite.js
+
+import { Client, Databases, Account } from "appwrite";
+
+export const config = {
+  APPWRITE_ENDPOINT: process.env.NEXT_PUBLIC_APPWRITE_ENDPOINT,
+  APPWRITE_PROJECT: process.env.NEXT_PUBLIC_APPWRITE_PROJECT,
+  EXPENSE_DATABASE_ID: process.env.NEXT_PUBLIC_EXPENSE_DATABASE_ID,
+  EXPENSE_COLLECTION_ID: process.env.NEXT_PUBLIC_EXPENSE_COLLECTION_ID,
+};
+
+const client = new Client();
+client
+  .setEndpoint(config.APPWRITE_ENDPOINT)
+  .setProject(config.APPWRITE_PROJECT);
+
+export const EXPENSE_DATABASE_ID = config.EXPENSE_DATABASE_ID;
+export const EXPENSE_COLLECTION_ID = config.EXPENSE_COLLECTION_ID;
+
+export const account = new Account(client);
+export const database = new Databases(client);
+```
+
+# Add new expense {% #add-new-expense %}
+Now that we have a collection, we can add a new expense to the database.
+
+First we need to create a new API endpoint to add an expense. Create a new file `app/api/expense/route.js` and add the following code.
+
+```js
+// /src/app/api/expense/route.js
+
+import { ID } from "appwrite";
+import { headers } from "next/headers";
+import { NextResponse } from "next/server";
+
+import {
+  EXPENSE_COLLECTION_ID,
+  EXPENSE_DATABASE_ID,
+  account,
+  database,
+} from "@/config/appwrite";
+
+export async function POST(req) {
+  const body = await req.json();
+  const { userId, title, amount, type } = body;
+  if (!userId || !title || !amount || !type) {
+    return new NextResponse("Missing fields", { status: 401 });
+  }
+
+  const headersList = headers();
+  const jwt = headersList.get("jwt");
+
+  if (!jwt) {
+    return new NextResponse("Unauthorized", { status: 401 });
+  }
+
+  account.client.setJWT(jwt);
+
+  try {
+    await database.createDocument(
+      EXPENSE_DATABASE_ID,
+      EXPENSE_COLLECTION_ID,
+      ID.unique(),
+      {
+        userId,
+        title,
+        amount,
+        type,
+      }
+    );
+    return new NextResponse("Saved successfully", { status: 200 });
+  } catch (error) {
+    console.log(error);
+    return new NextResponse("Internal server error", {
+      status: 500,
+      error: error.message,
+    });
+  }
+}
+```
+
+In this endpoint, we use the `createDocument` method to add a new document to the database, which accepts the following parameters: `databaseId`, `collectionId`, `documentId`, `data`. 
+
+In Appwrite, documents live in a collection, which in turn live in a database. So to add a document, we need its ID, as well as the ID of its containing collection, and the ID of the database that contains said collection. We also need the data that the document contains.
+
+Since we're creating a new document, it doesn't yet have an ID. We can use the `ID.unique()` method to generate a unique one for it.
+
+The document created by this endpoint represents a new expense. The endpoint is now available at `http://localhost:3000/api/expense`.
+
+# Create expense popup {% #create-expense-popup %}
+
+Now that we have an endpoint to add a new expense, we can create a popup to add a new expense. We will manage the in our homepage.In Next.js the `app/page.js` serves as the home page. Open the file and add the following code.
+
+```js
+// /src/app/page.js
+
+"use client";
+
+import React, { useState } from "react";
+import { useCookie } from "next-cookie";
+import toast from "react-hot-toast";
+
+const Home = (props) => {
+  const [popup, setPopup] = useState(null);
+  const cookie = useCookie(props.cookie);
+  const jwt = cookie.get("jwt");
+  const userId = cookie.get("userid");
+
+  const createExpense = async (item) => {
+    const response = await fetch("/api/expense", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        jwt,
+      },
+      body: JSON.stringify({
+        userId,
+        title: item.title,
+        amount: item.amount,
+        type: item.type,
+      }),
+    });
+
+    if (response.status === 200) {
+      toast.success("Saved successfully");
+      setPopup(null);
+    }
+  };
+
+  return (
+    <>
+      {popup?.type === "new" && (
+        <CreateExpensePopup 
+          setPopup={setPopup} 
+          createExpense={createExpense} 
+        />
+      )}
+      <div className="container u-flex-vertical u-gap-12 u-cross-center">
+        <h1 className="heading-level-1 font-bold">Your expenses</h1>
+        <button
+          className="button"
+          onClick={() => setPopup({ type: "new", data: null })}
+        >
+          <span className="icon-plus" aria-hidden="true"></span>
+          <span className="text">New Expense</span>
+        </button>
+      </div>
+    </>
+  );
+};
+
+export default Home;
+```
+
+We are rendering a new component `CreateExpensePopup` when the user clicks on the `New Expense` button. The `CreateExpensePopup` component will be used to create a new expense. 
+
+Let's create the `CreateExpensePopup` component. Create a new file `components/CreateExpensePopup.js` and add the following code.
+
+```js
+// /src/components/CreateExpensePopup.js
+
+"use client";
+
+import React from "react";
+import toast from "react-hot-toast";
+
+const CreateExpensePopup = ({ setPopup, createExpense }) => {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const formData = new FormData(form);
+
+    const item = {
+      title: formData.get("title"),
+      amount: formData.get("amount"),
+      type: formData.get("type"),
+    };
+
+    if (!item.title) {
+      return toast.error("Title is required");
+    }
+    if (!item.amount) {
+      return toast.error("Amount is required");
+    }
+    if (!item.type) {
+      return toast.error("Type is required");
+    }
+
+    try {
+      await createExpense(item);
+    } catch (error) {
+      toast.error(error.message);
+    }
+  };
+
+  return (
+    <div className="u-position-fixed u-inset-0 u-width-full-line u-full-screen-height u-flex u-cross-center u-main-center u-z-index-10 lite-bg">
+      <div className="card u-max-width-600 u-width-full-line">
+        <button
+          onClick={() => setPopup(null)}
+          className="u-position-absolute u-inset-inline-end-16 u-inset-block-start-16"
+        >
+          <span className="icon-x-circle" />
+        </button>
+        <p className="heading-level-3 font-bold u-text-center">
+          Create Expense
+        </p>
+        <form className="u-margin-block-start-12" onSubmit={handleSubmit}>
+          <div>
+            <label className="label">Title</label>
+            <div className="input-text-wrapper">
+              <input
+                className="input-text"
+                placeholder="Title"
+                name="title"
+                type="text"
+                required
+              />
+            </div>
+          </div>
+          <div className="u-margin-block-start-12">
+            <label className="label">Amount($)</label>
+            <div className="input-text-wrapper">
+              <input
+                className="input-text"
+                placeholder="Title"
+                name="amount"
+                type="number"
+                step="0.01"
+                required
+                min="0"
+              />
+            </div>
+          </div>
+          <div className="u-margin-block-start-12">
+            <label className="label">Type</label>
+            <div className="input-text-wrapper">
+              <select name="type" className="input-text">
+                <option value="">Select</option>
+                <option value="Paid">Paid</option>
+                <option value="Received">Received</option>
+              </select>
+            </div>
+          </div>
+          <div className="u-margin-block-start-12">
+            <button type="submit" className="button">
+              Create
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  );
+};
+
+export default CreateExpensePopup;
+```
+
+We are using the `createExpense` function on the `handleSubmit` function to create a new expense.
+
+Now your expense createtion form is created, you can add a new expense to the database. And you can see the expense in the Appwrite console under the documents tab in the collection.
