@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { classNames } from '$lib/utils/classnames';
+    import { cn } from '$lib/utils/cn';
 
     import Chrome from '../../(assets)/chrome.svg';
 
@@ -24,7 +24,8 @@
                 >
                     <div class="flex items-center gap-3">
                         <span class="font-aeonik-pro text-[18px] text-white">Function</span>
-                        <span class="bg-greyscale-700/60 rounded-full px-2 py-1 font-mono text-xs"
+                        <span
+                            class="bg-greyscale-700/60 font-fira-code rounded-full px-2 py-1 text-xs"
                             >637a40ba7</span
                         >
                     </div>
@@ -33,7 +34,7 @@
                     >
                         {#each ['Deployments', 'Executions', 'Domains', 'Usage', 'Settings'] as heading, i}
                             <button
-                                class={classNames('border-b border-transparent pb-2', {
+                                class={cn('border-b border-transparent pb-2', {
                                     ' border-white/40': i === 2
                                 })}>{heading}</button
                             >
@@ -46,7 +47,7 @@
                             class="border-y-greyscale-600/40 flex justify-between gap-8 border-b px-6 py-4"
                         >
                             {#each ['Name', 'Verification Status'] as heading}
-                                <span class="basis-1/2 font-mono text-[0.5625rem] uppercase"
+                                <span class="font-fira-code basis-1/2 text-[0.5625rem] uppercase"
                                     >{heading}</span
                                 >
                             {/each}
@@ -57,7 +58,7 @@
                                     class="-mb-2 flex items-center justify-between px-6 py-2 text-xs"
                                 >
                                     <div class="flex h-8 basis-2/3 items-center gap-2 text-left">
-                                        <span class="font-sans">{data.domain}</span>
+                                        <span class="font-inter">{data.domain}</span>
                                     </div>
                                     <div class="flex basis-1/2 items-center gap-1">
                                         <svg

@@ -2,7 +2,7 @@
     import Numbers from './numbers.svelte';
     import Cell from './grid-system/cell.svelte';
     import Grid from './grid-system/grid.svelte';
-    import { classNames } from '$lib/utils/classnames';
+    import { cn } from '$lib/utils/cn';
 
     const title = 'Appwrite Cloud is Generally Available'.split(' ');
 
@@ -55,7 +55,7 @@
                 {#if i !== 1 && i !== 2}
                     <Cell {columnStart} class="absolute hidden md:block">
                         <div
-                            class={classNames('animate-drop absolute flex flex-col gap-4', {
+                            class={cn('animate-drop absolute flex flex-col gap-4', {
                                 'left-0 -ml-px': i !== 4,
                                 'right-0 -mr-px': i === 4,
                                 '[animation-direction:reverse]': i === 3
@@ -63,7 +63,7 @@
                         >
                             {#each lines as line}
                                 <div
-                                    class={classNames('relative h-(--height) w-px', line.color)}
+                                    class={cn('relative h-(--height) w-px', line.color)}
                                     style:--height="{line.height}px"
                                 ></div>
                             {/each}

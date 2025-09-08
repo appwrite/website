@@ -123,15 +123,15 @@ First, we used the Appwrite Web SDK to set up our Auth library in the applicatio
 ```js
 // ./src/lib/user.js
 
-import { account } from './appwrite';
+import { account, OAuthProvider } from './appwrite';
 
 export const user = {
 	login: async () => {
-		account.createOAuth2Session(
-			'discord',
-			`https://${window.location.hostname}/success`,
-			`https://${window.location.hostname}/failure`
-		);
+		account.createOAuth2Session({
+			provider: OAuthProvider.Discord,
+			success: `https://${window.location.hostname}/success`,
+			failure: `https://${window.location.hostname}/failure`
+		});
 	},
 
 	get: async () => {

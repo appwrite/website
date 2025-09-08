@@ -1566,7 +1566,7 @@ Update the function settings to configure the scopes of the function.
 
 {% multicode %}
 ```server-nodejs
-import { Client, Databases, ID } from 'node-appwrite';
+import { Client, TablesDB, ID } from 'node-appwrite';
 
 export default async ({ req, res, log, error }) => {
     // Set project and set API key
@@ -1574,21 +1574,21 @@ export default async ({ req, res, log, error }) => {
        .setProject(process.env.APPWRITE_FUNCTION_PROJECT_ID)
        .setKey(req.headers['x-appwrite-key']);
 
-    const databases = new Databases(client);
+    const tablesDB = new TablesDB(client);
 
     try {
-        await databases.createDocument(
+        await tablesDB.createRow(
             '<DATABASE_ID>',
-            '<COLLECTION_ID>',
+            '<TABLE_ID>',
             ID.unique(),
             {}
         )
     } catch (e) {
-        error("Failed to create document: " + e.message)
-        return res.text("Failed to create document")
+        error("Failed to create row: " + e.message)
+        return res.text("Failed to create row")
     }
 
-    return res.text("Document created")
+    return res.text("Row created")
 }
 ```
 ```php
@@ -1598,7 +1598,7 @@ require(__DIR__ . '/../vendor/autoload.php');
 
 use Appwrite\Client;
 use Appwrite\Exception;
-use Appwrite\Services\Databases;
+use Appwrite\Services\TablesDB;
 use Appwrite\ID;
 
 return function ($context) {
@@ -1607,26 +1607,26 @@ return function ($context) {
         ->setProject(getenv('APPWRITE_FUNCTION_PROJECT_ID'))
         ->setKey($context->req->headers['x-appwrite-key']);
    
-    $databases = new Databases($client);
+    $tablesDB = new TablesDB($client);
 
     try {
-        $databases->createDocument(
+        $tablesDB->createRow(
             databaseId: '<DATABASE_ID>',
-            collectionId: '<COLLECTION_ID>',
-            documentId: ID::unique(),
+            tableId: '<TABLE_ID>',
+            rowId: ID::unique(),
             data: []
         );
     } catch (Exception $e) {
-        $context->error("Failed to create document: " . $e->getMessage());
-        return $context->res->text("Failed to create document");
+        $context->error("Failed to create row: " . $e->getMessage());
+        return $context->res->text("Failed to create row");
     }
 
-    return $context->res->text("Document created");
+    return $context->res->text("Row created");
 };
 ```
 ```python
 from appwrite.client import Client
-from appwrite.services.databases import Databases
+from appwrite.services.tablesDB import TablesDB
 from appwrite.id import ID
 
 import os
@@ -1639,20 +1639,20 @@ def main(context):
             .set_key(context.req.headers["x-appwrite-key"])
     )
 
-    databases = Databases(client)
+    tablesDB = TablesDB(client)
 
     try:
-        databases.create_document(
+        tablesDB.create_row(
             database_id="<DATABASE_ID>",
-            collection_id="<COLLECTION_ID>",
-            document_id=ID.unique(),
+            table_id="<TABLE_ID>",
+            row_id=ID.unique(),
             data={}
         )
     except Exception as e:
-        context.error("Failed to create document: " + e.message)
-        return context.response.text("Failed to create document")
+        context.error("Failed to create row: " + e.message)
+        return context.response.text("Failed to create row")
 
-    return context.response.text("Document created")
+    return context.response.text("Row created")
 ```
 ```ruby
 require "appwrite"
@@ -1665,25 +1665,25 @@ def main(context)
       .set_project(ENV['APPWRITE_FUNCTION_PROJECT_ID'])
       .set_key(context.req.headers['x-appwrite-key'])
 
-    databases = Appwrite::Databases.new(client)
+    tablesDB = Appwrite::TablesDB.new(client)
 
     begin
-        databases.create_document(
+        tablesDB.create_row(
             databaseId: '<DATABASE_ID>',
-            collectionId: '<COLLECTION_ID>',
-            documentId: ID.unique(),
+            tableId: '<TABLE_ID>',
+            rowId: ID.unique(),
             data: {}
         )
     rescue Exception => e
-        context.error("Failed to create document: " + e.message)
-        return context.response.text("Failed to create document")
+        context.error("Failed to create row: " + e.message)
+        return context.response.text("Failed to create row")
     end
 
-    return context.response.text("Document created")
+    return context.response.text("Row created")
 end
 ```
 ```deno
-import { Client, Databases, ID } from "https://deno.land/x/appwrite/mod.ts";
+import { Client, TablesDB, ID } from "https://deno.land/x/appwrite/mod.ts";
                 
 export default function ({req, res, error}: any){
     // Set project and set API key
@@ -1691,21 +1691,21 @@ export default function ({req, res, error}: any){
        .setProject(Deno.env.get("APPWRITE_FUNCTION_PROJECT_ID"))
        .setKey(req.headers["x-appwrite-key"] || "");
 
-    const databases = new Databases(client);
+    const tablesDB = new TablesDB(client);
     
     try {
-        databases.createDocument(
+        tablesDB.createRow(
             "<DATABASE_ID>",
-            "<COLLECTION_ID>",
+            "<TABLE_ID>",
             ID.unique(),
             {}
         );
     } catch (e) {
-        error("Failed to create document: " + e.message);
-        return res.text("Failed to create document");
+        error("Failed to create row: " + e.message);
+        return res.text("Failed to create row");
     }
     
-    return res.text("Document created");
+    return res.text("Row created");
 }
 ```
 ```go
@@ -1727,21 +1727,21 @@ func Main(Context openruntimes.Context) openruntimes.Response {
 		appwrite.WithKey(Context.Req.Headers["x-appwrite-key"]),
 	)
 
-	databases := appwrite.NewDatabases(client)
+	databases := appwrite.NewTablesDB(client)
 
-	_, err := databases.CreateDocument(
+	_, err := databases.createRow(
 		"<DATABASE_ID>",
-		"<COLLECTION_ID>",
+		"<TABLE_ID>",
 		id.Unique(),
 		map[string]interface{}{},
 	)
 
 	if err != nil {
-		Context.Log(fmt.Sprintf("Failed to create document: %v", err))
-		return Context.Res.Text("Failed to create document")
+		Context.Log(fmt.Sprintf("Failed to create row: %v", err))
+		return Context.Res.Text("Failed to create row")
 	}
 
-	return Context.Res.Text("Document created")
+	return Context.Res.Text("Row created")
 }
 ```
 ```dart
@@ -1755,21 +1755,21 @@ Future<dynamic> main(final context) async {
        .setProject(Platform.environment['APPWRITE_FUNCTION_PROJECT_ID'])
        .setKey(context.req.headers['x-appwrite-key']);
 
-    final databases = Databases(client);
+    final tablesDB = TablesDB(client);
     
     try {
-        await databases.createDocument(
+        await tablesDB.createRow(
             databaseId: '<DATABASE_ID>',
-            collectionId: '<COLLECTION_ID>',
-            documentId: ID.unique(),
+            tableId: '<TABLE_ID>',
+            rowId: ID.unique(),
             data: {}
         );
     } catch (e) {
-        context.error("Failed to create document: " + e.message);
-        return context.res.text("Failed to create document");
+        context.error("Failed to create row: " + e.message);
+        return context.res.text("Failed to create row");
     }
 
-    return context.res.text("Document created");
+    return context.res.text("Row created");
 }
 ```
 ```swift
@@ -1783,21 +1783,21 @@ func main(context: RuntimeContext) async throws -> RuntimeOutput {
        .setProject(ProcessInfo.processInfo.environment["APPWRITE_FUNCTION_PROJECT_ID"])
        .setKey(context.req.headers["x-appwrite-key"] ?? "")
 
-    let databases = Databases(client: client)
+    let tablesDB = TablesDB(client: client)
 
     do {
-        try await databases.createDocument(
+        try await tablesDB.createRow(
             databaseId: "<DATABASE_ID>", 
-            collectionId: "<COLLECTION_ID>",
-            documentId: ID.unique(),
+            tableId: "<TABLE_ID>",
+            rowId: ID.unique(),
             data: [:]
         )
     } catch {
-        context.error("Failed to create document: \(error.localizedDescription)")
-        return context.res.text("Failed to create document")
+        context.error("Failed to create row: \(error.localizedDescription)")
+        return context.res.text("Failed to create row")
     }
 
-    return context.res.text("Document created")
+    return context.res.text("Row created")
 }
 ```
 ```csharp
@@ -1816,20 +1816,20 @@ namespace DotNetRuntime
                 .SetProject(Environment.GetEnvironmentVariable("APPWRITE_FUNCTION_PROJECT_ID")) 
                 .SetKey(Context.Req.Headers["x-appwrite-key"]);
 
-            var databases = new Databases(client);
+            var tablesDB = new TablesDB(client);
     
             try {
-                await databases.CreateDocument(
+                await databases.createRow(
                     databaseId: "<DATABASE_ID>",
-                    collectionId: "<COLLECTION_ID>",
-                    documentId: ID.Unique(),
+                    tableId: "<TABLE_ID>",
+                    rowId: ID.Unique(),
                     data: new Dictionary<string, object>());
             } catch (Exception e) {
-                Context.Error("Failed to create document: " + e.Message);
-                return Context.Response.Text("Failed to create document");
+                Context.Error("Failed to create row: " + e.Message);
+                return Context.Response.Text("Failed to create row");
             }
     
-            return Context.Response.Text("Document created");
+            return Context.Response.Text("Row created");
         }
     }
 }
@@ -1840,7 +1840,7 @@ package io.openruntimes.kotlin.src
 import io.openruntimes.kotlin.RuntimeContext
 import io.openruntimes.kotlin.RuntimeOutput
 import io.appwrite.Client
-import io.appwrite.services.Databases
+import io.appwrite.services.TablesDB
 import io.appwrite.ID
 import java.util.HashMap
 
@@ -1851,21 +1851,21 @@ class Main {
            .setProject(System.getenv("APPWRITE_FUNCTION_PROJECT_ID"))
            .setKey(context.req.headers["x-appwrite-key"])
 
-        val databases = Databases(client)
+        val tablesDB = TablesDB(client)
 
         try {
-            databases.createDocument(
+            tablesDB.createRow(
                 databaseId = "<DATABASE_ID>",
-                collectionId = "<COLLECTION_ID>",
-                documentId = ID.unique()
+                tableId = "<TABLE_ID>",
+                rowId = ID.unique()
                 data = mapOf()
             )
         } catch (e: Exception) {
-            context.error("Failed to create document: " + e.message)
-            return context.res.text("Failed to create document")
+            context.error("Failed to create row: " + e.message)
+            return context.res.text("Failed to create row")
         }
 
-        return context.res.text("Document created")
+        return context.res.text("Row created")
     }
 }
 ```
@@ -1884,21 +1884,21 @@ public class Main {
              .setProject(System.getenv("APPWRITE_FUNCTION_PROJECT_ID"))
              .setKey(context.getReq().getHeaders().get("x-appwrite-key"));
 
-        Databases databases = new Databases(client);
+        Databases tablesDB = new TablesDB(client);
 
         try {
-            databases.createDocument(
+            tablesDB.createRow(
                 "<DATABASE_ID>",
-                "<COLLECTION_ID>",
+                "<TABLE_ID>",
                 ID.unique(),
                 new HashMap<>()
             );
         } catch (Exception e) {
-            context.error("Failed to create document: " + e.getMessage());
-            return context.res.text("Failed to create document");
+            context.error("Failed to create row: " + e.getMessage());
+            return context.res.text("Failed to create row");
         }
 
-        return context.res.text("Document created");
+        return context.res.text("Row created");
     }
 }
 ```
@@ -1914,7 +1914,7 @@ If the Appwrite Function is invoked by an authenticated user, the `x-appwrite-us
 {% multicode %}
 
 ```server-nodejs
-import { Client, Databases, ID } from 'node-appwrite';
+import { Client, TablesDB, ID } from 'node-appwrite';
 
 export default async ({ req, res, log }) => {
     const client = new Client()
@@ -1926,21 +1926,21 @@ export default async ({ req, res, log }) => {
         return res.text("Access denied: This function requires authentication. Please sign in to continue.");
     }
 
-    const databases = new Databases(client);
+    const tablesDB = new TablesDB(client);
 
     try {
-        await databases.createDocument(
+        await tablesDB.createRow(
             '<DATABASE_ID>',
-            '<COLLECTION_ID>',
+            '<TABLE_ID>',
             ID.unique(),
             {}
         )
     } catch (e) {
-        log("Failed to create document: " + e.message)
-        return res.text("Failed to create document")
+        log("Failed to create row: " + e.message)
+        return res.text("Failed to create row")
     }
 
-    return res.text("Document created")
+    return res.text("Row created")
 }
 ```
 ```php
@@ -1950,7 +1950,7 @@ require(__DIR__ . '/../vendor/autoload.php');
 
 use Appwrite\Client;
 use Appwrite\Exception;
-use Appwrite\Services\Databases;
+use Appwrite\Services\TablesDB;
 use Appwrite\ID;
 
 return function ($context) {
@@ -1963,26 +1963,26 @@ return function ($context) {
         return $context->res->text("Access denied: This function requires authentication. Please sign in to continue.");
     }
     
-    $databases = new Databases($client);
+    $tablesDB = new TablesDB($client);
 
     try {
-        $databases->createDocument(
+        $tablesDB->createRow(
             databaseId: '<DATABASE_ID>',
-            collectionId: '<COLLECTION_ID>',
-            documentId: ID::unique(),
+            tableId: '<TABLE_ID>',
+            rowId: ID::unique(),
             data: []
         );
     } catch (Exception $e) {
-        $context->error("Failed to create document: " . $e->getMessage());
-        return $context->res->text("Failed to create document");
+        $context->error("Failed to create row: " . $e->getMessage());
+        return $context->res->text("Failed to create row");
     }
 
-    return $context->res->text("Document created");
+    return $context->res->text("Row created");
 };
 ```
 ```python
 from appwrite.client import Client
-from appwrite.services.databases import Databases
+from appwrite.services.tablesDB import TablesDB
 from appwrite.id import ID
 
 import os
@@ -1998,20 +1998,20 @@ def main(context):
     else:
         return context.res.text("Access denied: This function requires authentication. Please sign in to continue.")
 
-    databases = Databases(client)
+    tablesDB = TablesDB(client)
 
     try:
-        databases.create_document(
+        tablesDB.create_row(
             database_id="<DATABASE_ID>",
-            collection_id="<COLLECTION_ID>",
-            document_id=ID.unique(),
+            table_id="<TABLE_ID>",
+            row_id=ID.unique(),
             data={}
         )
     except Exception as e:
-        context.error("Failed to create document: " + e.message)
-        return context.response.text("Failed to create document")
+        context.error("Failed to create row: " + e.message)
+        return context.response.text("Failed to create row")
 
-    return context.response.text("Document created")
+    return context.response.text("Row created")
 ```
 ```ruby
 require "appwrite"
@@ -2028,20 +2028,20 @@ def main(context)
         return context.response.text("Access denied: This function requires authentication. Please sign in to continue.")
     end
 
-    databases = Appwrite::Databases.new(client)
+    tablesDB = Appwrite::TablesDB.new(client)
 
     begin
-        databases.create_document('<DATABASE_ID>', '<COLLECTION_ID>', Appwrite::ID.unique(), {})
+        tablesDB.create_row('<DATABASE_ID>', '<TABLE_ID>', Appwrite::ID.unique(), {})
     rescue Appwrite::Exception => e
-        context.error("Failed to create document: " + e.message)
-        return context.response.text("Failed to create document")
+        context.error("Failed to create row: " + e.message)
+        return context.response.text("Failed to create row")
     end
 
-    return context.response.text("Document created")
+    return context.response.text("Row created")
 end
 ```
 ```deno
-import { Client, Databases, ID } from "https://deno.land/x/appwrite/mod.ts";
+import { Client, TablesDB, ID } from "https://deno.land/x/appwrite/mod.ts";
                 
 export default function ({req, res, error}: any){
     const client = new Client()
@@ -2053,21 +2053,21 @@ export default function ({req, res, error}: any){
         return res.text("Access denied: This function requires authentication. Please sign in to continue.");
     }
     
-    const databases = new Databases(client);
+    const tablesDB = new TablesDB(client);
     
     try {
-        databases.createDocument(
+        tablesDB.createRow(
             "<DATABASE_ID>",
-            "<COLLECTION_ID>",
+            "<TABLE_ID>",
             ID.unique(),
             {}
         );
     } catch (e) {
-        error("Failed to create document: " + e.message)
-        return res.text("Failed to create document");
+        error("Failed to create row: " + e.message)
+        return res.text("Failed to create row");
     }
     
-    return res.text("Document created");
+    return res.text("Row created");
 }
 ```
 ```go
@@ -2094,21 +2094,21 @@ func Main(Context openruntimes.Context) openruntimes.Response {
 		return Context.Res.Text("Access denied: This function requires authentication. Please sign in to continue.")
 	}
 
-	databases := appwrite.NewDatabases(client)
+	databases := appwrite.NewTablesDB(client)
 
-	_, err := databases.CreateDocument(
+	_, err := databases.createRow(
 		"<DATABASE_ID>",
-		"<COLLECTION_ID>",
+		"<TABLE_ID>",
 		id.Unique(),
 		map[string]interface{}{},
 	)
 
 	if err != nil {
-        Context.Log(fmt.Sprintf("Failed to create document: %v", err))
+        Context.Log(fmt.Sprintf("Failed to create row: %v", err))
 		return Context.Res.Text(str)
 	}
 
-	return Context.Res.Text("Document created")
+	return Context.Res.Text("Row created")
 }
 ```
 ```dart
@@ -2126,21 +2126,21 @@ Future<dynamic> main(final context) async {
         return context.res.text("Access denied: This function requires authentication. Please sign in to continue.");
     }
     
-    final databases = Databases(client);
+    final tablesDB = TablesDB(client);
     
     try {
-        await databases.createDocument(
+        await tablesDB.createRow(
             databaseId: '<DATABASE_ID>',
-            collectionId: '<COLLECTION_ID>',
-            documentId: ID.unique(),
+            tableId: '<TABLE_ID>',
+            rowId: ID.unique(),
             data: {}
         );
     } catch (e) {
-        context.error("Failed to create document: " + e.message);
-        return context.res.text("Failed to create document");
+        context.error("Failed to create row: " + e.message);
+        return context.res.text("Failed to create row");
     }
 
-    return context.res.text("Document created");
+    return context.res.text("Row created");
 }
 ```
 ```swift
@@ -2158,21 +2158,21 @@ func main(context: RuntimeContext) async throws -> RuntimeOutput {
         return context.res.text("Access denied: This function requires authentication. Please sign in to continue.")
     }
 
-    let databases = Databases(client: client)
+    let tablesDB = TablesDB(client: client)
 
     do {
-        try await databases.createDocument(
+        try await tablesDB.createRow(
             databaseId: "<DATABASE_ID>",
-            collectionId: "<COLLECTION_ID>",
-            documentId: ID.unique()
+            tableId: "<TABLE_ID>",
+            rowId: ID.unique()
             data: [:]
         )
     } catch {
-        context.error("Failed to create document: \(error.localizedDescription)")
-        return context.res.text("Failed to create document")
+        context.error("Failed to create row: \(error.localizedDescription)")
+        return context.res.text("Failed to create row")
     }
 
-    return context.res.text("Document created")
+    return context.res.text("Row created")
 }
 ```
 ```csharp
@@ -2195,20 +2195,20 @@ namespace DotNetRuntime
                 return Context.Res.Text("Access denied: This function requires authentication. Please sign in to continue");
             }
 
-            var databases = new Databases(client);
+            var tablesDB = new TablesDB(client);
 
             try {
-                await databases.CreateDocument(
+                await databases.createRow(
                     databaseId: "<DATABASE_ID>",
-                    collectionId: "<COLLECTION_ID>",
-                    documentId: ID.Unique(),
+                    tableId: "<TABLE_ID>",
+                    rowId: ID.Unique(),
                     data: new Dictionary<string, object>());
             } catch (Exception e) {
-                Context.Error("Failed to create document: " + e.Message);
-                return Context.Res.Text("Failed to create document");
+                Context.Error("Failed to create row: " + e.Message);
+                return Context.Res.Text("Failed to create row");
             }
 
-            return Context.Res.Text("Document created");
+            return Context.Res.Text("Row created");
         }
     }
 }
@@ -2219,7 +2219,7 @@ package io.openruntimes.kotlin.src
 import io.openruntimes.kotlin.RuntimeContext
 import io.openruntimes.kotlin.RuntimeOutput
 import io.appwrite.Client
-import io.appwrite.services.Databases
+import io.appwrite.services.TablesDB
 import io.appwrite.ID
 import java.util.HashMap
 
@@ -2234,21 +2234,21 @@ class Main {
             return context.res.text("Access denied: This function requires authentication. Please sign in to continue.")
         }
 
-        val databases = Databases(client)
+        val tablesDB = TablesDB(client)
 
         try {
-            databases.createDocument(
+            tablesDB.createRow(
                 databaseId = "<DATABASE_ID>",
-                collectionId = "<COLLECTION_ID>",
-                documentId = ID.unique(),
+                tableId = "<TABLE_ID>",
+                rowId = ID.unique(),
                 data = mapOf()
             )
         } catch (e: Exception) {
-            context.error("Failed to create document: " + e.message)
-            return context.res.text("Failed to create document")
+            context.error("Failed to create row: " + e.message)
+            return context.res.text("Failed to create row")
         }
 
-        return context.res.text("Document created")
+        return context.res.text("Row created")
     }
 }
 ```
@@ -2271,21 +2271,21 @@ public class Main {
             return context.res.text("Access denied: This function requires authentication. Please sign in to continue.");
         }
 
-        Databases databases = new Databases(client);
+        Databases tablesDB = new TablesDB(client);
 
         try {
-            databases.createDocument(
+            tablesDB.createRow(
                 "<DATABASE_ID>",
-                "<COLLECTION_ID>",
+                "<TABLE_ID>",
                 ID.unique(),
                 new HashMap<>()
             );
         } catch (Exception e) {
-            context.error("Failed to create document: " + e.getMessage());
-            return context.res.text("Failed to create document");
+            context.error("Failed to create row: " + e.getMessage());
+            return context.res.text("Failed to create row");
         }
 
-        return context.res.text("Document created");
+        return context.res.text("Row created");
 
     }
 }

@@ -5,48 +5,48 @@ description: Add databases and queries for ideas in your Nuxt project.
 step: 6
 ---
 
-In Appwrite, data is stored as a collection of documents. 
-Create a new database and collection in the [Appwrite Console](https://cloud.appwrite.io/) to store the ideas.
+In Appwrite, data is stored as a table of rows. 
+Create a new database and table in the [Appwrite Console](https://cloud.appwrite.io/) to store the ideas.
 
 {% only_dark %}
-![Create collection screen](/images/docs/tutorials/dark/idea-tracker-collection.png)
+![Create table screen](/images/docs/tutorials/dark/idea-tracker-table.png)
 {% /only_dark %}
 {% only_light %}
-![Create collection screen](/images/docs/tutorials/idea-tracker-collection.png)
+![Create table screen](/images/docs/tutorials/idea-tracker-table.png)
 {% /only_light %}
 
-Create a new collection with the following attributes:
+Create a new table with the following columns:
 | Field       | Type   | Required | Size     |
 |-------------|--------|----------|----------|
 | userId      | String | Yes      | 200      |
 | title       | String | Yes      | 200      |
 | description | String | No       | 500      |
 
-Change the collection's permissions in the settings to give access.
+Change the table's permissions in the settings to give access.
 
 {% only_dark %}
-![Collection permissions screen](/images/docs/tutorials/dark/idea-tracker-permissions.png)
+![Table permissions screen](/images/docs/tutorials/dark/idea-tracker-permissions.png)
 {% /only_dark %}
 {% only_light %}
-![Collection permissions screen](/images/docs/tutorials/idea-tracker-permissions.png)
+![Table permissions screen](/images/docs/tutorials/idea-tracker-permissions.png)
 {% /only_light %}
 
-Navigate to the **Settings** tab of your collection, add the role **Any** and check the **Read** box.
+Navigate to the **Settings** tab of your table, add the role **Any** and check the **Read** box.
 Next, add a **Users** role and give them access to **Create**, **Update** and **Delete** by checking those boxes.
 
-# Environment variables {% #environment-variables %}
+## Environment variables {% #environment-variables %}
 
-Just like when we set up the connection to Appwrite in [step 3](/docs/tutorials/nuxt/step-3), we need to keep the variables with the collection id secret.
-Open the `.env` file and add your database id and your collection id to it.
+Just like when we set up the connection to Appwrite in [step 3](/docs/tutorials/nuxt/step-3), we need to keep the variables with the table id secret.
+Open the `.env` file and add your database id and your table id to it.
 
 ```
 VITE_DATABASE_ID="YOUR_DATABASE_ID"
-VITE_COLLECTION_ID="YOUR_COLLECTION_ID"
+VITE_TABLE_ID="YOUR_TABLE_ID"
 ```
 
-# Query methods {% #query-methods %}
+## Query methods {% #query-methods %}
 
-Now that we have a collection in the database to hold ideas, we can connect to it from our app.
+Now that we have a table in the database to hold ideas, we can connect to it from our app.
 Our users should be able to read, add and remove ideas.
 We will add a new composable, `useIdeas`, to handle this functionality.
 
@@ -60,10 +60,10 @@ import { database } from "~/appwrite";
 import { ref } from "vue";
 
 const ideasDatabaseId: string = import.meta.env.VITE_DATABASE_ID;
-const ideasCollectionId: string = import.meta.env.VITE_COLLECTION_ID;
+const ideasTableId: string = import.meta.env.VITE_TABLE_ID;
 const queryLimit: number = 10;
 
-interface Idea extends Models.Document{
+interface Idea extends Models.Row{
     title: string;
     description: string;
     userId: string;
@@ -76,20 +76,20 @@ export const useIdeas = () => {
     // Fetch the 10 most recent ideas from the database
     // Add the list to the current reference object
     const fetch = async (): Promise<void> => {
-        const response = await database.listDocuments(
+        const response = await tablesDB.listRows(
             ideasDatabaseId,
-            ideasCollectionId,
+            ideasTableId,
             [Query.orderDesc("$createdAt"), Query.limit(queryLimit)]
         );
-        current.value = response.documents as Idea[];
+        current.value = response.rows as Idea[];
     };
 
     // Add new idea to the database,
     // Change the value of the current object
     const add = async (idea: Idea): Promise<void> => {
-        const response = await database.createDocument(
+        const response = await database.createRow(
             ideasDatabaseId,
-            ideasCollectionId,
+            ideasTableId,
             ID.unique(),
             idea
         );
@@ -97,7 +97,7 @@ export const useIdeas = () => {
     };
 
     const remove = async (id: string): Promise<void> => {
-        await database.deleteDocument(ideasDatabaseId, ideasCollectionId, id);
+        await database.deleteRow(ideasDatabaseId, ideasTableId, id);
         await fetch(); // Refetch ideas to ensure we have 10 items
     };
 

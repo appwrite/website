@@ -72,15 +72,19 @@
             </div>
         </div>
 
-        <div class="web-big-padding-section-level-1 web-white-section light relative">
+        <div class="light relative bg-[#EDEDF0] py-30 md:py-40">
             <div class="max-lg:py-20">
                 <div class="container">
-                    <div class="web-hero is-center !max-w-xl">
-                        <span class="web-badges web-eyebrow !text-white">Dashboard_</span>
-                        <h2 class="web-title text-primary text-pretty">
+                    <div class="web-hero is-center !max-w-3xl">
+                        <span class="web-badges font-aeonik-fono text-eyebrow !text-white uppercase"
+                            >Dashboard_</span
+                        >
+                        <h2 class="text-title font-aeonik-pro text-primary text-pretty">
                             Manage your storage infrastructure from the Console
                         </h2>
-                        <p class="web-main-body-500 web-u-margin-block-start-0">
+                        <p
+                            class="text-main-body text-secondary web-u-margin-block-start-0 mx-auto max-w-xl font-medium"
+                        >
                             Organize your buckets and files with ease in your dashboard, as well as
                             manage security, permissions, compression, and more.
                         </p>
@@ -102,10 +106,10 @@
                     <div class="flex flex-col gap-8 lg:flex-row">
                         <div class="flex flex-1 flex-col gap-8">
                             <div class="web-u-max-width-580 mx-auto flex flex-col gap-2">
-                                <h3 class="web-main-body-500 web-u-color-text-primary">
+                                <h3 class="text-main-body text-primary font-medium">
                                     File management dashboard
                                 </h3>
-                                <p class="web-main-body-500">
+                                <p class="text-main-body text-secondary font-medium">
                                     Visualize and search for files with different view options and
                                     manipulate multiple at the same time.
                                 </p>
@@ -125,10 +129,10 @@
                         ></div>
                         <div class="web-u-max-width-580 mx-auto flex flex-1 flex-col gap-8">
                             <div class="flex flex-col gap-2">
-                                <h3 class="web-main-body-500 web-u-color-text-primary">
+                                <h3 class="text-main-body text-primary font-medium">
                                     Extensive settings options
                                 </h3>
-                                <p class="web-main-body-500">
+                                <p class="text-main-body text-secondary font-medium">
                                     Manage security, permissions, compression, and more with
                                     straightforward Bucket settings.
                                 </p>
@@ -167,7 +171,7 @@
                             <h2 class="web-title text-primary">
                                 What you can do with Storage APIs
                             </h2>
-                            <p class="text-body font-medium">
+                            <p class="text-main-body font-medium">
                                 Appwrite's Storage APIs allow you to create and update your files,
                                 apply image transformations, and more.
                             </p>

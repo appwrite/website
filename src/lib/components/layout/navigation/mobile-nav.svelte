@@ -1,7 +1,7 @@
 <script lang="ts">
     import { Collapsible } from 'bits-ui';
     import { Icon } from '$lib/components/ui';
-    import { classNames } from '$lib/utils/classnames';
+    import { cn } from '$lib/utils/cn';
 
     const products: { name: string; href: string; description: string }[] = [
         {
@@ -52,7 +52,7 @@
     <Collapsible.Root>
         <Collapsible.Trigger>{label}</Collapsible.Trigger>
         <Collapsible.Content
-            class={classNames(
+            class={cn(
                 'hover:bg-muted hover:text-accent-foreground focus:bg-muted focus:text-accent-foreground block space-y-1 rounded-md p-3 leading-none no-underline outline-hidden transition-colors select-none',
                 className
             )}

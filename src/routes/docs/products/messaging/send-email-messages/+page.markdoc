@@ -293,8 +293,8 @@ client
 ;
 
 const topic = await messaging.createTopic(
-        '[TOPIC_ID]',                            // topicId
-        '[NAME]'                                 // name
+        '<TOPIC_ID>',                            // topicId
+        '<NAME>'                                 // name
     );
 ```
 ```deno
@@ -312,8 +312,8 @@ client
 ;
 
 const topic = await messaging.createTopic(
-        '[TOPIC_ID]',                            // topicId
-        '[NAME]'                                 // name
+        '<TOPIC_ID>',                            // topicId
+        '<NAME>'                                 // name
     );
 ```
 ```php
@@ -333,8 +333,8 @@ $client
 $messaging = new Messaging($client);
 
 $result = $messaging->createTopic(
-    topicId: '[TOPIC_ID]',
-    name: '[NAME]'
+    topicId: '<TOPIC_ID>',
+    name: '<NAME>'
 );
 ```
 ```python
@@ -352,8 +352,8 @@ client = Client()
 messaging = Messaging(client)
 
 result = messaging.create_topic(
-    topic_id = '[TOPIC_ID]',
-    name = '[NAME]'
+    topic_id = '<TOPIC_ID>',
+    name = '<NAME>'
 )
 ```
 ```ruby
@@ -369,8 +369,8 @@ client = Client.new
 messaging = Messaging.new(client)
 
 response = messaging.create_topic(
-    topic_id: '[TOPIC_ID]',
-    name: '[NAME]'
+    topic_id: '<TOPIC_ID>',
+    name: '<NAME>'
 )
 
 puts response.inspect
@@ -388,8 +388,8 @@ var client = new Client()
 var messaging = new Messaging(client);
 
 Topic result = await messaging.CreateTopic(
-    topicId: "[TOPIC_ID]",
-    name: "[NAME]");
+    topicId: "<TOPIC_ID>",
+    name: "<NAME>");
 ```
 ```dart
 import 'package:dart_appwrite/dart_appwrite.dart';
@@ -407,8 +407,8 @@ void main() async {                                 // Init SDK
   ;
 
   Future result = await messaging.createTopic(
-    topicId: '[TOPIC_ID]',
-    name: '[NAME]',
+    topicId: '<TOPIC_ID>',
+    name: '<NAME>',
   );
 
   result
@@ -432,8 +432,8 @@ Client client = new Client()
 Messaging messaging = new Messaging(client);
 
 messaging.createTopic(
-    "[TOPIC_ID]",                                 // topicId
-    "[NAME]"                                      // name
+    "<TOPIC_ID>",                                 // topicId
+    "<NAME>"                                      // name
     new CoroutineCallback<>((result, error) -> {
         if (error != null) {
             error.printStackTrace();
@@ -457,8 +457,8 @@ Client client = new Client()
 Messaging messaging = new Messaging(client);
 
 messaging.createTopic(
-    "[TOPIC_ID]",                                 // topicId
-    "[NAME]"                                      // name
+    "<TOPIC_ID>",                                 // topicId
+    "<NAME>"                                      // name
     new CoroutineCallback<>((result, error) -> {
         if (error != null) {
             error.printStackTrace();
@@ -480,8 +480,8 @@ let client = Client()
 let messaging = Messaging(client)
 
 let topic = try await messaging.createTopic(
-  topicId: "[TOPIC_ID]",
-  name: "[NAME]"
+  topicId: "<TOPIC_ID>",
+  name: "<NAME>"
 )
 ```
 {% /multicode %}
@@ -505,9 +505,9 @@ client
 ;
 
 const message = await messaging.createEmail(
-        '[MESSAGE_ID]',                          // messageId
-        '[SUBJECT]',                             // subject
-        '[CONTENT]',                             // content
+        '<MESSAGE_ID>',                          // messageId
+        '<SUBJECT>',                             // subject
+        '<CONTENT>',                             // content
         [],                                      // topics (optional)
         [],                                      // users (optional)
         [],                                      // targets (optional)
@@ -534,9 +534,9 @@ client
 ;
 
 const message = await messaging.createEmail(
-        '[MESSAGE_ID]',                          // messageId
-        '[SUBJECT]',                             // subject
-        '[CONTENT]',                             // content
+        '<MESSAGE_ID>',                          // messageId
+        '<SUBJECT>',                             // subject
+        '<CONTENT>',                             // content
         [],                                      // topics (optional)
         [],                                      // users (optional)
         [],                                      // targets (optional)
@@ -565,9 +565,9 @@ $client
 $messaging = new Messaging($client);
 
 $result = $messaging->createEmail(
-    messageId: '[MESSAGE_ID]',
-    subject: '[SUBJECT]',
-    content: '[CONTENT]',
+    messageId: '<MESSAGE_ID>',
+    subject: '<SUBJECT>',
+    content: '<CONTENT>',
     topics: [],                                   // optional
     users: [],                                    // optional
     targets: [],                                  // optional
@@ -593,9 +593,9 @@ client = Client()
 messaging = Messaging(client)
 
 result = messaging.create_email(
-    message_id = '[MESSAGE_ID]',
-    subject = '[SUBJECT]',
-    content = '[CONTENT]',
+    message_id = '<MESSAGE_ID>',
+    subject = '<SUBJECT>',
+    content = '<CONTENT>',
     topics = [],                                # optional
     users = [],                                 # optional
     targets = [],                               # optional
@@ -619,9 +619,9 @@ client = Client.new
 messaging = Messaging.new(client)
 
 response = messaging.create_email(
-    message_id: '[MESSAGE_ID]',
-    subject: '[SUBJECT]',
-    content: '[CONTENT]',
+    message_id: '<MESSAGE_ID>',
+    subject: '<SUBJECT>',
+    content: '<CONTENT>',
     topics: [],                                   # optional
     users: [],                                    # optional
     targets: [],                                  # optional
@@ -647,9 +647,9 @@ var client = new Client()
 var messaging = new Messaging(client);
 
 Message result = await messaging.CreateEmail(
-    messageId: "[MESSAGE_ID]",
-    subject: "[SUBJECT]",
-    content: "[CONTENT]"    
+    messageId: "<MESSAGE_ID>",
+    subject: "<SUBJECT>",
+    content: "<CONTENT>"    
     topics: new List<string> {}                   // optional    
     users: new List<string> {}                    // optional    
     targets: new List<string> {}                  // optional    
@@ -675,9 +675,9 @@ void main() {                                    // Init SDK
   ;
 
   Future result = messaging.createEmail(
-    messageId: '[MESSAGE_ID]',
-    subject: '[SUBJECT]',
-    content: '[CONTENT]',
+    messageId: '<MESSAGE_ID>',
+    subject: '<SUBJECT>',
+    content: '<CONTENT>',
     topics: [],                                  // optional
     users: [],                                   // optional
     targets: [],                                 // optional
@@ -709,9 +709,9 @@ Client client = new Client()
 Messaging messaging = new Messaging(client);
 
 messaging.createEmail(
-    "[MESSAGE_ID]",                               // messageId
-    "[SUBJECT]",                                  // subject
-    "[CONTENT]",                                  // content
+    "<MESSAGE_ID>",                               // messageId
+    "<SUBJECT>",                                  // subject
+    "<CONTENT>",                                  // content
     listOf(),                                     // topics (optional)
     listOf(),                                     // users (optional)
     listOf(),                                     // targets (optional)
@@ -743,9 +743,9 @@ Client client = new Client()
 Messaging messaging = new Messaging(client);
 
 messaging.createEmail(
-    "[MESSAGE_ID]",   // messageId
-    "[SUBJECT]",      // subject
-    "[CONTENT]",      // content
+    "<MESSAGE_ID>",   // messageId
+    "<SUBJECT>",      // subject
+    "<CONTENT>",      // content
     listOf(),         // topics (optional)
     listOf(),         // users (optional)
     listOf(),         // targets (optional)
@@ -775,9 +775,9 @@ let client = Client()
 let messaging = Messaging(client)
 
 let message = try await messaging.createEmail(
-  messageId: "[MESSAGE_ID]",
-  subject: "[SUBJECT]",
-  content: "[CONTENT]",
+  messageId: "<MESSAGE_ID>",
+  subject: "<SUBJECT>",
+  content: "<CONTENT>",
   topics: [],                                    // optional
   users: [],                                     // optional
   targets: [],                                   // optional
@@ -809,9 +809,9 @@ client
 ;
 
 const message = await messaging.createEmail(
-        '[MESSAGE_ID]',            // messageId
-        '[SUBJECT]',               // subject
-        '[CONTENT]',               // content
+        '<MESSAGE_ID>',            // messageId
+        '<SUBJECT>',               // subject
+        '<CONTENT>',               // content
         [],                        // topics (optional)
         [],                        // users (optional)
         [],                        // targets (optional)
@@ -837,9 +837,9 @@ client
 ;
 
 const message - await messaging.createEmail(
-        '[MESSAGE_ID]',            // messageId
-        '[SUBJECT]',               // subject
-        '[CONTENT]',               // content
+        '<MESSAGE_ID>',            // messageId
+        '<SUBJECT>',               // subject
+        '<CONTENT>',               // content
         [],                        // topics (optional)
         [],                        // users (optional)
         [],                        // targets (optional)
@@ -867,9 +867,9 @@ $client
 $messaging = new Messaging($client);
 
 $result = $messaging->createEmail( 
-    messageId: '[MESSAGE_ID]', 
-    subject: '[SUBJECT]', 
-    content: '[CONTENT]', 
+    messageId: '<MESSAGE_ID>', 
+    subject: '<SUBJECT>', 
+    content: '<CONTENT>', 
     topics: [],       // optional
     users: [],        // optional
     targets: [],      // optional
@@ -895,9 +895,9 @@ client = Client()
 messaging = Messaging(client)
 
 result = messaging.create_email( 
-    message_id = '[MESSAGE_ID]', 
-    subject = '[SUBJECT]', 
-    content = '[CONTENT]', 
+    message_id = '<MESSAGE_ID>', 
+    subject = '<SUBJECT>', 
+    content = '<CONTENT>', 
     topics = [],                # optional
     users = [],                 # optional
     targets = [],               # optional
@@ -921,9 +921,9 @@ client = Client.new
 messaging = Messaging.new(client)
 
 response = messaging.create_email(
-    message_id: '[MESSAGE_ID]', 
-    subject: '[SUBJECT]', 
-    content: '[CONTENT]', 
+    message_id: '<MESSAGE_ID>', 
+    subject: '<SUBJECT>', 
+    content: '<CONTENT>', 
     topics: [],        # optional
     users: [],         # optional
     targets: [],       # optional
@@ -949,9 +949,9 @@ var client = new Client()
 var messaging = new Messaging(client);
 
 Message result = await messaging.CreateEmail(
-    messageId: "[MESSAGE_ID]",
-    subject: "[SUBJECT]",
-    content: "[CONTENT]"    
+    messageId: "<MESSAGE_ID>",
+    subject: "<SUBJECT>",
+    content: "<CONTENT>"    
     topics: new List<string> {}    // optional    
     users: new List<string> {}     // optional    
     targets: new List<string> {}   // optional    
@@ -977,9 +977,9 @@ void main() {                                          // Init SDK
   ;
 
   Future result = messaging.createEmail(
-    messageId: '[MESSAGE_ID]',
-    subject: '[SUBJECT]',
-    content: '[CONTENT]',
+    messageId: '<MESSAGE_ID>',
+    subject: '<SUBJECT>',
+    content: '<CONTENT>',
     topics: [],         // optional
     users: [],          // optional
     targets: [],        // optional
@@ -1011,9 +1011,9 @@ Client client = new Client()
 Messaging messaging = new Messaging(client);
 
 messaging.createEmail(
-    "[MESSAGE_ID]",  // messageId
-    "[SUBJECT]",     // subject
-    "[CONTENT]",     // content
+    "<MESSAGE_ID>",  // messageId
+    "<SUBJECT>",     // subject
+    "<CONTENT>",     // content
     listOf(),        // topics (optional)
     listOf(),        // users (optional)
     listOf(),        // targets (optional)
@@ -1045,9 +1045,9 @@ Client client = new Client()
 Messaging messaging = new Messaging(client);
 
 messaging.createEmail(
-    "[MESSAGE_ID]",    // messageId
-    "[SUBJECT]",       // subject
-    "[CONTENT]",       // content
+    "<MESSAGE_ID>",    // messageId
+    "<SUBJECT>",       // subject
+    "<CONTENT>",       // content
     listOf(),          // topics (optional)
     listOf(),          // users (optional)
     listOf(),          // targets (optional)
@@ -1077,9 +1077,9 @@ let client = Client()
 let messaging = Messaging(client)
 
 let message = try await messaging.createEmail(
-  messageId: "[MESSAGE_ID]",
-  subject: "[SUBJECT]",
-  content: "[CONTENT]",
+  messageId: "<MESSAGE_ID>",
+  subject: "<SUBJECT>",
+  content: "<CONTENT>",
   topics: [],           // optional
   users: [],            // optional
   targets: [],          // optional

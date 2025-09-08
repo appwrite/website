@@ -39,6 +39,7 @@ Integrating Auto-increment support into your Appwrite Databases makes your backe
 
 For numeric ordering based on insertion order, you can use the `$sequence` field, which Appwrite automatically adds to all rows. This field increments with each new insert.
 
+
 ```client-web
 import { Client, TablesDB, Query } from "appwrite";
 
@@ -54,7 +55,7 @@ tablesDB.listRows(
     [
         Query.orderAsc('$sequence'),
     ]
-);
+});
 
 ```
 [Auto-increment support](/docs/products/databases/order#sequence-ordering) is available on both Appwrite Cloud and self-hosted installations and can smoothly integrate into your existing workflows.

@@ -9,7 +9,7 @@
         <div class="space-y-6">
             <div class="flex items-center gap-2">
                 <img src="/images/icons/illustrated/dark/functions.png" class="size-8" alt="" />
-                <span class="text-micro text-primary uppercase">
+                <span class="text-eyebrow text-primary uppercase">
                     Functions<span class="web-u-color-text-accent">_</span>
                 </span>
             </div>

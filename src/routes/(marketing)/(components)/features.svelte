@@ -1,15 +1,16 @@
 <script lang="ts">
     import { trackEvent } from '$lib/actions/analytics';
     import Icon from '$lib/components/ui/icon';
-    import { classNames } from '$lib/utils/classnames';
+    import { cn } from '$lib/utils/cn';
     import type { HTMLAttributes } from 'svelte/elements';
 
     const features = [
         {
-            label: 'Self-Hosted',
-            description: 'Own your data or host it on a cloud region of choice.',
-            icon: '/images/icons/gradients/self-hosted.svg',
-            href: '/docs/advanced/self-hosting'
+            label: 'DDoS',
+            description:
+                'Automatically detect and mitigate Distributed Denial-of-Service (DDoS) attacks.',
+            icon: '/images/icons/gradients/shield.svg',
+            href: '/docs/advanced/security/abuse-protection#ddos-protection'
         },
         {
             label: 'Encryption',
@@ -20,7 +21,7 @@
         {
             label: 'Abuse protection',
             description: 'Protect your APIs from abuse with built-in protection.',
-            icon: '/images/icons/gradients/shield.svg',
+            icon: '/images/icons/gradients/verified.svg',
             href: '/docs/advanced/security/abuse-protection#rate-limiting'
         },
         {
@@ -63,7 +64,7 @@
 </script>
 
 <div
-    class={classNames('bg-[#EDEDF0] pt-20 pb-12 md:pt-40', theme, classes, {
+    class={cn('bg-[#EDEDF0] pt-20 pb-12 md:pt-40', theme, classes, {
         'bg-greyscale-900': theme === 'dark'
     })}
     {...restProps}
@@ -71,13 +72,16 @@
     <div class="container mx-auto">
         <section class="flex flex-col items-start gap-x-20 md:flex-row">
             <h2
-                class="text-title-lg font-aeonik-pro text-primary max-w-[700px] leading-12 text-pretty"
+                class="text-title font-aeonik-pro text-primary max-w-[700px] leading-12 text-pretty"
             >
-                Self-host your data or take it to the Cloud<span class="text-accent">_</span>
+                Safely scale with built-in
+                <span class="whitespace-nowrap">security and compliance</span><span
+                    class="text-accent">_</span
+                >
             </h2>
             <p class="text-secondary text-description mt-4 max-w-xl font-medium">
-                Migrate your data from and to any platform at any time with Appwrite’s migrations
-                API. With built-in security and privacy for peace of mind.
+                With a security-first approach, we ensure your products and users are safe by
+                default, making it easy for you to adhere to strict safety policies.
             </p>
         </section>
     </div>

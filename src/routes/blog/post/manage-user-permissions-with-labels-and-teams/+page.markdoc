@@ -47,7 +47,6 @@ Labels are essentially custom tags that you can assign to a user. They act as cu
 Just like Teams, we can grant permissions to specific Labels. Labels are attached to individual user accounts and are used to categorize users on a one-to-one basis. Labels can be used in a similar manner to Teams but are a more lightweight and flexible way to manage users and permissions.
 
 This would make Labels a great option for managing which users can view restricted content behind a paywall like a course on Udemy or an e-book on a digital library platform. In this example you would simply attach a label that is unique to a user after they pay to access a product, and from that point on, the label would grant the user permission.  If this access was subscription-based and the user stopped paying, we could simply remove the label from the user, and their access would be revoked since they no longer carry the label that gives them access.
-
 ### Summary
 
 - Labels are great for tagging users and assigning permissions based on those tags, while Teams are for grouping users together and allowing role-based management within a Team.
@@ -79,7 +78,7 @@ Let's start with creating a new Team, adding members, and assigning roles to tho
 
 2 - Once your Team is created, you can add a Member to the Team by selecting the “Members” tab and clicking “Create Membership”. Here you will enter the user's email address (name can be left blank) and assign a role to the member. Roles are optional, so you can leave this part blank.
 
-That’s it for creating a Team and adding members from the appwrite console. Now you can assign row, storage, and function permissions to your Teams. As an example, for table level permissions, you can go to the “settings'' tab in a table, and in the “permissions” section, choose “Select Teams'' to give permissions to an entire Team or “Custom permissions” if you want to assign permission to only users with a particular role within the Team.
+That's it for creating a Team and adding members from the appwrite console. Now you can assign row, storage, and function permissions to your Teams. As an example, for table level permissions, you can go to the "settings'' tab in a table, and in the "permissions" section, choose "Select Teams'' to give permissions to an entire Team or "Custom permissions" if you want to assign permission to only users with a particular role within the Team.
 
 ## Labels
 
@@ -107,7 +106,10 @@ const client = //...
 
 const Teams = new Teams(client);
 
-const promise = Teams.create('<TEAM_ID>', '[NAME]');
+const promise = Teams.create({
+  teamId: '<TEAM_ID>',
+  name: '<NAME>'
+});
 ```
 
 ## Labels
@@ -124,7 +126,10 @@ const client = //...
 
 const users = new sdk.Users(client);
 
-const promise = users.updateLabels('<USER_ID>', ['subscriber']);
+const promise = users.updateLabels({
+  userId: '<USER_ID>',
+  labels: ['subscriber']
+});
 ```
 
 ### Resources

@@ -30,7 +30,7 @@
     import { format } from 'date-fns';
     import PreReleaseCard from './pre-release-card.svelte';
     import Window from './window.svelte';
-    import { classNames } from '$lib/utils/classnames';
+    import { cn } from '$lib/utils/cn';
     import MediaCard from './media-card.svelte';
     import { onDestroy } from 'svelte';
 
@@ -66,7 +66,7 @@
     <div class="scroll-mt-10 space-y-4 pb-8" id="day-{index}">
         <Window>
             {#snippet title()}
-                <div class="text-micro flex items-center gap-1 text-white">
+                <div class="text-eyebrow flex items-center gap-1 text-white">
                     Day {index} <span class="text-accent">/</span>
                     {format(release, 'EEEE, MMM d')}
                 </div>
@@ -82,7 +82,7 @@
                         <h2 class="text-display font-aeonik-pro text-primary">
                             {featureTitle}<span class="text-accent">_</span>
                         </h2>
-                        <p class="text-secondary text-body max-w-sm font-medium">
+                        <p class="text-secondary text-main-body max-w-sm font-medium">
                             {description}
                         </p>
                         {#if announcementVideo}
@@ -110,7 +110,7 @@
                 </div>
                 {#if content?.length}
                     <div
-                        class={classNames(
+                        class={cn(
                             'divide-offset my-10 divide-y-2 divide-dashed',
                             'before:border-offset before:-mb-px before:block before:h-0.5 before:w-full before:border-t-2 before:border-dashed',
                             'after:border-offset after:-mt-px after:block after:h-0.5 after:w-full after:border-t-2 after:border-dashed'
@@ -119,7 +119,7 @@
                         {#each content as { type, title: contentTitle, url, label }}
                             <a href={url} class="group block cursor-pointer">
                                 <div
-                                    class={classNames(
+                                    class={cn(
                                         'bg-smooth group-hover:bg-offset relative mx-4 -mb-0.5 flex flex-col justify-between px-4 py-4 transition md:mx-8 md:flex-row',
                                         'before:border-offset before:absolute before:inset-y-0 before:left-0 before:-mr-px before:block before:w-0.5 before:border-l-2 before:border-dashed',
                                         'after:border-offset after:absolute after:inset-y-0 after:right-0 after:-ml-px after:block after:w-0.5 after:border-r-2 after:border-dashed'

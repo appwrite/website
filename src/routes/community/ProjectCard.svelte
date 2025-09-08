@@ -30,7 +30,7 @@
     onclick={() => trackEvent(`community-project-${title.toLowerCase().replace(' ', '_')}-click`)}
 >
     <div class="p-3">
-        <h3 class="text-body text-primary font-medium">{title}</h3>
+        <h3 class="text-main-body text-primary font-medium">{title}</h3>
         <p class="line-clamp-2">
             {description}
         </p>

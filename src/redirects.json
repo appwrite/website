@@ -715,5 +715,9 @@
     {
         "link": "/blog/post/how-can-you-rapidly-build-an-mvp-for-your-startup",
         "redirect": "/blog/post/startup-mvp-guide"
+    },
+    {
+        "link": "/docs/tooling/command-line/collections",
+        "redirect": "/docs/tooling/command-line/tables"
     }
 ]

@@ -90,7 +90,7 @@ This feature solves a common problem with a clean, built-in approach. You don’
 
 - **Supports both increments and decrements:** You're not limited to just adding `+1`. You can apply any positive or negative delta, whether you're increasing API credits or reducing stock levels after a purchase.
 
-- **Built-in constraints:** You can define optional `min` and `max`bounds on the value. If the update would push the value outside that range, it’s rejected. Great for enforcing limits like “stock can’t go below zero” or “credits can't exceed a cap.”
+- **Built-in constraints:** You can define optional `min` and `max` bounds on the value. If the update would push the value outside that range, it’s rejected. Great for enforcing limits like “stock can’t go below zero” or “credits can't exceed a cap.”
 
 - **Respects permissions:** This works just like any other Appwrite row update. If the user doesn't have permission to modify the row, the update doesn't go through. No exceptions.
 

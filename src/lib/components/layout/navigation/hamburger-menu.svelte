@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { classNames } from '$lib/utils/classnames';
+    import { cn } from '$lib/utils/cn';
     import type { SvelteHTMLElements } from 'svelte/elements';
     import { navState } from './menu-state.svelte';
 
@@ -21,7 +21,7 @@
 
 <button
     aria-label={ariaLabel}
-    class={classNames(
+    class={cn(
         'focus:ring-accent flex size-7 cursor-pointer appearance-none items-center justify-center rounded-xs',
         className
     )}
@@ -33,7 +33,7 @@
 >
     <span class="h-4.5 w-7">
         <span
-            class={classNames(
+            class={cn(
                 'dark:bg-primary relative block h-px w-6 translate-y-1 bg-gray-800 transition-all duration-200 ease-in-out',
                 'before:bg-primary before:absolute before:bottom-1 before:left-0 before:block before:h-px before:w-7',
                 'before:ease-in-out before:[transition:bottom_200ms_200ms,transform_200ms]',

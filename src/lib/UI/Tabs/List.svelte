@@ -23,7 +23,7 @@
                 use:melt={$trigger(tab)}
             >
                 <slot {tab}>
-                    <span class="text-body font-medium">{tab}</span>
+                    <span class="text-main-body font-medium">{tab}</span>
                 </slot>
             </button>
         </li>

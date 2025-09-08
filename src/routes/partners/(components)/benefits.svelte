@@ -72,7 +72,7 @@
 
 <div class="border-smooth flex flex-col items-center border-b py-12 md:py-30">
     <div class="mb-20 flex flex-col gap-2 text-center">
-        <span class="font-aeonik-fono tracking-loose text-micro text-primary uppercase">
+        <span class="font-aeonik-fono tracking-loose text-eyebrow text-primary uppercase">
             Benefits<span class="text-accent">_</span>
         </span>
         <h2 class="text-primary font-aeonik-pro text-title">Growing together</h2>

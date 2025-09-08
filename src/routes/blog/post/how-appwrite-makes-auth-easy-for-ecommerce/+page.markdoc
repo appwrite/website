@@ -100,10 +100,17 @@ const client = new Client()
 const account = new Account(client);
 
 // Create a new account
-await account.create('unique-user-id', 'user@example.com', 'password123');
+await account.create({
+  userId: ID.unique(),
+  email: 'user@example.com',
+  password: 'password123'
+});
 
 // Login
-await account.createEmailPasswordSession('user@example.com', 'password123');
+await account.createEmailPasswordSession({
+  email: 'user@example.com',
+  password: 'password123'
+});
 
 ```
 

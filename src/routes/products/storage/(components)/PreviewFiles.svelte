@@ -11,7 +11,7 @@
             <h2 class="text-title font-aeonik-pro text-primary">
                 Preview media files however you want
             </h2>
-            <p class="text-body mt-4 font-medium">
+            <p class="text-main-body mt-4 font-medium">
                 Appwrite Storage's preview endpoint lets you manipulate image previews while also
                 managing different formats and compression algorithms.
             </p>

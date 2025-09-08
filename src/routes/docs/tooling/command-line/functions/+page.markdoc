@@ -78,8 +78,8 @@ After [initializing](/docs/tooling/command-line/installation#initialization) you
                     "$id": "bhJyIJiON1IzUicGe",
                     "$createdAt": "2024-04-22T23:32:12.912+00:00",
                     "$updatedAt": "2024-04-22T23:32:12.912+00:00",
-                    "key": "<COLLECTION_USERS_ID>",
-                    "value": "<COLLECTION_ID>",
+                    "key": "<TABLE_USERS_ID>",
+                    "value": "<TABLE_ID>",
                     "resourceType": "function",
                     "resourceId": "bhJyIJiON1IzUicGe"
                 }

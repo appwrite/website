@@ -57,6 +57,8 @@ Now, you can schedule Functions to run at a specific time in the future, unlocki
  Here's how to create a delayed execution:
 
 ```jsx
+import { Functions, ExecutionMethod } from 'appwrite';
+
 const functions = new Functions(client);
 
 const invoiceDate = new Date();
@@ -118,14 +120,14 @@ You can now filter Function executions and deployments based on various columns,
 
 ```jsx
 // Example of filtering executions (specific implementation may vary)
-const executions = await functions.listExecutions(
-    'functionId',
-    [
+const executions = await functions.listExecutions({
+    functionId: 'functionId',
+    queries: [
         Query.equal('status', 'completed'),
         Query.equal('requestMethod', 'POST'),
         Query.equal('deploymentId', 'latest')
     ]
-);
+});
 ```
 
 Of course, it’s also possible to filter executions from the Appwrite Console:

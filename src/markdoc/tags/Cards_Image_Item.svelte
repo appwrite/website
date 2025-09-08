@@ -1,7 +1,7 @@
 <script lang="ts">
     import { setContext, type Snippet } from 'svelte';
 
-    interface Props {
+    interface CardsImageItemProps {
         href: string;
         light?: string;
         dark?: string;
@@ -9,20 +9,22 @@
         children: Snippet;
     }
 
-    const { href, light = '', dark = '', title, children }: Props = $props();
-
-    setContext('no-paragraph', true);
+    const { href, light = '', dark = '', title, children }: CardsImageItemProps = $props();
 </script>
 
-<li>
-    <a {href} class="web-card is-normal" style:margin-block-end="0">
-        <img src={dark} alt="" class="web-u-only-dark" width="32" height="32" />
-        <img src={light} alt="" class="web-u-only-light" width="32" height="32" />
-        <h4 class="text-sub-body text-primary mt-2 font-medium">
+<a
+    {href}
+    class="bg-card border-smooth hover:bg-smooth mb-0! flex flex-col gap-1 rounded-2xl border p-4 outline-0"
+>
+    <header class="flex items-center gap-1">
+        <img src={dark} alt="" class="hidden size-8 dark:block" width="32" height="32" />
+        <img src={light} alt="" class="block size-8 dark:hidden" width="32" height="32" />
+        <h4 class="text-sub-body text-primary font-medium">
             {title}
         </h4>
-        <p class="text-sub-body mt-1">
-            {@render children()}
-        </p>
-    </a>
-</li>
+    </header>
+
+    <p class="text-sub-body text-primary font-medium">
+        {@render children()}
+    </p>
+</a>

@@ -38,7 +38,7 @@ You will need to provide the following information from your **SendGrid dashboar
 *
 ---
 * API key
-* Head to Settings -> API Keys -> Create API Key. 
+* Head to Settings -> API Keys -> Create API Key.
 ---
 * Sender email
 * The provider sends emails from this sender email. The sender email must either be an email under an [authenticated domain](https://www.twilio.com/docs/sendgrid/ui/account-and-settings/how-to-set-up-domain-authentication) or a [verified sender identity](https://www.twilio.com/docs/sendgrid/ui/sending-email/sender-verification).
@@ -91,7 +91,11 @@ client
     .setKey('<API_KEY>') // Your secret API key
 ;
 
-const message = await messaging.createEmail('<MESSAGE_ID>', '<SUBJECT>', '<CONTENT>');
+const message = await messaging.createEmail({
+  messageId: '<MESSAGE_ID>',
+  subject: '<SUBJECT>',
+  content: '<CONTENT>'
+});
 ```
 ```deno
 import * as sdk from "https://deno.land/x/appwrite/mod.ts";
@@ -108,7 +112,11 @@ client
 ;
 
 
-const messaging = await messaging.createEmail('<MESSAGE_ID>', '<SUBJECT>', '<CONTENT>');
+const message = await messaging.createEmail({
+  messageId: '<MESSAGE_ID>',
+  subject: '<SUBJECT>',
+  content: '<CONTENT>'
+});
 ```
 ```php
 <?php
@@ -302,14 +310,14 @@ client
 ;
 
 const provider = await messaging.updateSendgridProvider(
-        '[PROVIDER_ID]',             // providerId
-        '[NAME]',                    // name (optional)
-        '[API_KEY]',                 // apiKey (optional)
+        '<PROVIDER_ID>',             // providerId
+        '<NAME>',                    // name (optional)
+        '<API_KEY>',                 // apiKey (optional)
         false,                       // enabled (optional)
-        '[FROM_NAME]',               // fromName (optional)
+        '<FROM_NAME>',               // fromName (optional)
         'email@example.com',         // fromEmail (optional)
-        '[REPLY_TO_NAME]',           // replyToName (optional)
-        '[REPLY_TO_EMAIL]'           // replyToEmail (optional)
+        '<REPLY_TO_NAME>',           // replyToName (optional)
+        '<REPLY_TO_EMAIL>'           // replyToEmail (optional)
     );
 ```
 ```deno
@@ -327,14 +335,14 @@ client
 ;
 
 const provider = await messaging.updateSendgridProvider(
-        '[PROVIDER_ID]',             // providerId
-        '[NAME]',                    // name (optional)
-        '[API_KEY]',                 // apiKey (optional)
+        '<PROVIDER_ID>',             // providerId
+        '<NAME>',                    // name (optional)
+        '<API_KEY>',                 // apiKey (optional)
         false,                       // enabled (optional)
-        '[FROM_NAME]',               // fromName (optional)
+        '<FROM_NAME>',               // fromName (optional)
         'email@example.com',         // fromEmail (optional)
-        '[REPLY_TO_NAME]',           // replyToName (optional)
-        '[REPLY_TO_EMAIL]'           // replyToEmail (optional)
+        '<REPLY_TO_NAME>',           // replyToName (optional)
+        '<REPLY_TO_EMAIL>'           // replyToEmail (optional)
     );
 ```
 ```php
@@ -354,14 +362,14 @@ $client
 $messaging = new Messaging($client);
 
 $result = $messaging->updateSendgridProvider(
-    providerId: '[PROVIDER_ID]',
-    name: '[NAME]',                   // optional
-    apiKey: '[API_KEY]',              // optional
+    providerId: '<PROVIDER_ID>',
+    name: '<NAME>',                   // optional
+    apiKey: '<API_KEY>',              // optional
     enabled: false,                   // optional
-    fromName: '[FROM_NAME]',          // optional
+    fromName: '<FROM_NAME>',          // optional
     fromEmail: 'email@example.com',   // optional
-    replyToName: '[REPLY_TO_NAME]',   // optional
-    replyToEmail: '[REPLY_TO_EMAIL]'  // optional
+    replyToName: '<REPLY_TO_NAME>',   // optional
+    replyToEmail: '<REPLY_TO_EMAIL>'  // optional
 );
 ```
 ```python
@@ -379,14 +387,14 @@ client = Client()
 messaging = Messaging(client)
 
 result = messaging.update_sendgrid_provider(
-    provider_id = '[PROVIDER_ID]',
-    name = '[NAME]',                    # optional
-    api_key = '[API_KEY]',              # optional
+    provider_id = '<PROVIDER_ID>',
+    name = '<NAME>',                    # optional
+    api_key = '<API_KEY>',              # optional
     enabled = False,                    # optional
-    from_name = '[FROM_NAME]',          # optional
+    from_name = '<FROM_NAME>',          # optional
     from_email = 'email@example.com',   # optional
-    reply_to_name = '[REPLY_TO_NAME]',  # optional
-    reply_to_email = '[REPLY_TO_EMAIL]' # optional
+    reply_to_name = '<REPLY_TO_NAME>',  # optional
+    reply_to_email = '<REPLY_TO_EMAIL>' # optional
 )
 ```
 ```ruby
@@ -402,14 +410,14 @@ client = Client.new
 messaging = Messaging.new(client)
 
 response = messaging.update_sendgrid_provider(
-    provider_id: '[PROVIDER_ID]',
-    name: '[NAME]',                    # optional
-    api_key: '[API_KEY]',              # optional
+    provider_id: '<PROVIDER_ID>',
+    name: '<NAME>',                    # optional
+    api_key: '<API_KEY>',              # optional
     enabled: false,                    # optional
-    from_name: '[FROM_NAME]',          # optional
+    from_name: '<FROM_NAME>',          # optional
     from_email: 'email@example.com',   # optional
-    reply_to_name: '[REPLY_TO_NAME]',  # optional
-    reply_to_email: '[REPLY_TO_EMAIL]' # optional
+    reply_to_name: '<REPLY_TO_NAME>',  # optional
+    reply_to_email: '<REPLY_TO_EMAIL>' # optional
 )
 
 puts response.inspect
@@ -427,14 +435,14 @@ var client = new Client()
 var messaging = new Messaging(client);
 
 Provider result = await messaging.UpdateSendgridProvider(
-    providerId: "[PROVIDER_ID]"
-    name: "[NAME]"                     // optional
-    apiKey: "[API_KEY]"                // optional
+    providerId: "<PROVIDER_ID>"
+    name: "<NAME>"                     // optional
+    apiKey: "<API_KEY>"                // optional
     enabled: false                     // optional
-    fromName: "[FROM_NAME]"            // optional
+    fromName: "<FROM_NAME>"            // optional
     fromEmail: "email@example.com"     // optional
-    replyToName: "[REPLY_TO_NAME]"     // optional
-    replyToEmail: "[REPLY_TO_EMAIL]"); // optional
+    replyToName: "<REPLY_TO_NAME>"     // optional
+    replyToEmail: "<REPLY_TO_EMAIL>"); // optional
 ```
 ```dart
 import 'package:dart_appwrite/dart_appwrite.dart';
@@ -452,14 +460,14 @@ void main() {                         // Init SDK
   ;
 
   Future result = messaging.updateSendgridProvider(
-    providerId: '[PROVIDER_ID]',
-    name: '[NAME]',                   // optional
-    apiKey: '[API_KEY]',              // optional
+    providerId: '<PROVIDER_ID>',
+    name: '<NAME>',                   // optional
+    apiKey: '<API_KEY>',              // optional
     enabled: false,                   // optional
-    fromName: '[FROM_NAME]',          // optional
+    fromName: '<FROM_NAME>',          // optional
     fromEmail: 'email@example.com',   // optional
-    replyToName: '[REPLY_TO_NAME]',   // optional
-    replyToEmail: '[REPLY_TO_EMAIL]', // optional
+    replyToName: '<REPLY_TO_NAME>',   // optional
+    replyToEmail: '<REPLY_TO_EMAIL>', // optional
   );
 
   result
@@ -483,14 +491,14 @@ Client client = new Client()
 Messaging messaging = new Messaging(client);
 
 messaging.updateSendgridProvider(
-    "[PROVIDER_ID]",                 // providerId
-    "[NAME]",                        // name (optional)
-    "[API_KEY]",                     // apiKey (optional)
+    "<PROVIDER_ID>",                 // providerId
+    "<NAME>",                        // name (optional)
+    "<API_KEY>",                     // apiKey (optional)
     false,                           // enabled (optional)
-    "[FROM_NAME]",                   // fromName (optional)
+    "<FROM_NAME>",                   // fromName (optional)
     "email@example.com",             // fromEmail (optional)
-    "[REPLY_TO_NAME]",               // replyToName (optional)
-    "[REPLY_TO_EMAIL]"               // replyToEmail (optional)
+    "<REPLY_TO_NAME>",               // replyToName (optional)
+    "<REPLY_TO_EMAIL>"               // replyToEmail (optional)
     new CoroutineCallback<>((result, error) -> {
         if (error != null) {
             error.printStackTrace();
@@ -514,14 +522,14 @@ Client client = new Client()
 Messaging messaging = new Messaging(client);
 
 messaging.updateSendgridProvider(
-    "[PROVIDER_ID]",                 // providerId
-    "[NAME]",                        // name (optional)
-    "[API_KEY]",                     // apiKey (optional)
+    "<PROVIDER_ID>",                 // providerId
+    "<NAME>",                        // name (optional)
+    "<API_KEY>",                     // apiKey (optional)
     false,                           // enabled (optional)
-    "[FROM_NAME]",                   // fromName (optional)
+    "<FROM_NAME>",                   // fromName (optional)
     "email@example.com",             // fromEmail (optional)
-    "[REPLY_TO_NAME]",               // replyToName (optional)
-    "[REPLY_TO_EMAIL]"               // replyToEmail (optional)
+    "<REPLY_TO_NAME>",               // replyToName (optional)
+    "<REPLY_TO_EMAIL>"               // replyToEmail (optional)
     new CoroutineCallback<>((result, error) -> {
         if (error != null) {
             error.printStackTrace();
@@ -543,14 +551,14 @@ let client = Client()
 let messaging = Messaging(client)
 
 let provider = try await messaging.updateSendgridProvider(
-  providerId: "[PROVIDER_ID]",
-  name: "[NAME]",                    // optional
-  apiKey: "[API_KEY]",               // optional
+  providerId: "<PROVIDER_ID>",
+  name: "<NAME>",                    // optional
+  apiKey: "<API_KEY>",               // optional
   enabled: xfalse,                   // optional
-  fromName: "[FROM_NAME]",           // optional
+  fromName: "<FROM_NAME>",           // optional
   fromEmail: "email@example.com",    // optional
-  replyToName: "[REPLY_TO_NAME]",    // optional
-  replyToEmail: "[REPLY_TO_EMAIL]"   // optional
+  replyToName: "<REPLY_TO_NAME>",    // optional
+  replyToEmail: "<REPLY_TO_EMAIL>"   // optional
 )
 ```
 {% /multicode %}
