@@ -644,9 +644,11 @@ async function handleSubmit() {
     }
 
     if (editingExpense) {
-      await tablesDB.updateRow(DATABASE_ID, EXPENSES_TABLE_ID, editingExpense.$id, {
-        ...expenseData,
-        updatedAt: now
+      await tablesDB.updateRow({
+        databaseId: DATABASE_ID,
+        tableId: EXPENSES_TABLE_ID,
+        rowId: editingExpense.$id,
+        data: { ...expenseData, updatedAt: now },
       })
     } else {
       await tablesDB.createRow(
