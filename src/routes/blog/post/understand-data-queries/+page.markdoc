@@ -103,12 +103,11 @@ const movieData2 = tablesDB.listRows(
 );
 
 // CONTAINS operator example
-const movieData3 = tablesDB.listRows(
-    '[DATABASE_ID]',
-    '[TABLE_ID]',
-    Query.contains('director', ["Christopher Nolan"])
-);
-```
+const movieData3 = tablesDB.listRows({
+  databaseId: '[DATABASE_ID]',
+  tableId: '[TABLE_ID]',
+  queries: [Query.contains('director', ['Christopher Nolan'])],
+});
 
 Mastering the art of data querying is a continuous process. As a developer, your aim should be to write efficient, secure, and maintainable queries. Remember, the power of a database is harnessed through the effectiveness of its queries.
 
