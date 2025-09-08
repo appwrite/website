@@ -596,9 +596,11 @@ onMount(async () => {
 async function fetchExpenses() {
   try {
     loading = true
-    const response = await tablesDB.listRows(DATABASE_ID, EXPENSES_TABLE_ID, [
-      Query.orderDesc('$createdAt')
-    ])
+    const response = await tablesDB.listRows({
+      databaseId: DATABASE_ID,
+      tableId: EXPENSES_TABLE_ID,
+      queries: [Query.orderDesc('$createdAt')],
+    })
     expenses = response.rows
     calculateStats()
   } catch (e) {
