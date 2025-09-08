@@ -36,8 +36,12 @@
             label: 'Integrations',
             items: [
                 {
-                    label: 'Claude',
-                    href: '/docs/tooling/mcp/claude'
+                    label: 'Claude Desktop',
+                    href: '/docs/tooling/mcp/claude-desktop'
+                },
+                {
+                    label: 'Claude Code',
+                    href: '/docs/tooling/mcp/claude-code'
                 },
                 {
                     label: 'Cursor',

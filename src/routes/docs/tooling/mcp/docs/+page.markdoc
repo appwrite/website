@@ -92,7 +92,7 @@ Update the `mcp_config.json` file to include the following:
 
 In the Claude Desktop app, open the app's **Settings** page (press `CTRL + ,` on Windows or `CMD + ,` on MacOS) and head to the **Developer** tab.  
 
-![Claude Settings](/images/docs/mcp/claude/claude-settings.png)
+![Claude Settings](/images/docs/mcp/claude-desktop/claude-settings.png)
 
 Click on the **Edit Config** button, wait for the `claude_desktop_config.json` file to open, and add the following info:
 

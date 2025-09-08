@@ -1,7 +1,7 @@
 ---
 layout: article
-title: Appwrite MCP and Claude
-description: Learn how to add the Appwrite MCP servers to Claude Desktop and Claude Code to interact with both the Appwrite API and documentation.
+title: Appwrite MCP and Claude Desktop
+description: Learn how to add the Appwrite MCP servers to Claude Desktop to interact with both the Appwrite API and documentation.
 ---
 
 Learn how you can add the Appwrite MCP servers to Claude Desktop to interact with both the Appwrite API and documentation.
@@ -26,7 +26,7 @@ Before you begin, ensure you have the following **pre-requisites** installed on 
 
 In the Claude Desktop app, open the app's **Settings** page (press `CTRL + ,` on Windows or `CMD + ,` on MacOS) and head to the **Developer** tab.
 
-![Claude Settings](/images/docs/mcp/claude/claude-settings.png)
+![Claude Settings](/images/docs/mcp/claude-desktop/claude-settings.png)
 
 Clicking on the **Edit Config** button will take you to the `claude_desktop_config.json` file. In case the file is missing, please visit the [Model Context Protocol](https://modelcontextprotocol.io/quickstart/user#2-add-the-filesystem-mcp-server) docs.
 
@@ -87,33 +87,13 @@ To enable additional API tools, learn more about [command-line arguments](/docs/
 
 {% /info %}
 
-If you use the **Claude Code CLI**, you can run the following commands in your terminal to add both MCP servers:
-
-{% tabs %}
-{% tabsitem #api-only title="API server" %}
-
-```bash
-claude mcp add-json appwrite-api '{"command":"uvx","args":["mcp-server-appwrite","--users"],"env":{"APPWRITE_PROJECT_ID": "your-project-id", "APPWRITE_API_KEY": "your-api-key", "APPWRITE_ENDPOINT": "https://<REGION>.cloud.appwrite.io/v1"}}'
-```
-
-{% /tabsitem %}
-
-{% tabsitem #docs-only title="Docs server" %}
-
-```bash
-claude mcp add appwrite-docs https://mcp-for-docs.appwrite.io -t http
-```
-
-{% /tabsitem %}
-{% /tabs %}
-
 {% /section %}
 
 {% section #step-2 step=2 title="Verify MCP tools" %}
 
 Restart the Claude Desktop app, click on the MCP tools button (at the bottom right section of the prompt input) and click on it to view available Appwrite MCP tools.
 
-![Appwrite MCP tools](/images/docs/mcp/claude/claude-mcp-tools.png)
+![Appwrite MCP tools](/images/docs/mcp/claude-desktop/claude-mcp-tools.png)
 
 {% info title="uvx ENOENT error" %}
 
@@ -152,6 +132,6 @@ Try out the following example prompts based on the MCP server you have configure
 
 {% /tabs %}
 
-![List users in Appwrite project](/images/docs/mcp/claude/claude-list-users.png)
+![List users in Appwrite project](/images/docs/mcp/claude-desktop/claude-list-users.png)
 
 {% /section %}

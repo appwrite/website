@@ -166,7 +166,7 @@ Replace `your-project-id`, `your-api-key`, and `<REGION>` with your actual Appwr
 
 In the Claude Desktop app, open the app's **Settings** page (press `CTRL + ,` on Windows or `CMD + ,` on MacOS) and head to the **Developer** tab.  
 
-![Claude Settings](/images/docs/mcp/claude/claude-settings.png)
+![Claude Settings](/images/docs/mcp/claude-desktop/claude-settings.png)
 
 Click on the **Edit Config** button, wait for the `claude_desktop_config.json` file to open, and add the following info:
 
@@ -240,7 +240,7 @@ Run the following prompt in your preferred code editor/LLM after enabling the MC
 List users in my Appwrite project
 ```
 
-![List users in Appwrite project](/images/docs/mcp/claude/claude-list-users.png)
+![List users in Appwrite project](/images/docs/mcp/claude-desktop/claude-list-users.png)
 
 ## Example 2: Search a site
 
