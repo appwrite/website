@@ -33,7 +33,7 @@ You can skip the optional steps.
 ## Environment variables {% #environment-variables %}
 
 To connect to Appwrite in our app, we'll need to use sensitive information.
-We keep the secrets by using environment variables for the endpoint and project id.
+We keep the secrets by using environment variables for the endpoint and project ID.
 Your project ID is located in the **Settings** page in the Appwrite console.
 
 {% only_dark %}
