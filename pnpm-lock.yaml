@@ -42,9 +42,6 @@ importers:
       '@internationalized/date':
         specifier: 3.5.0
         version: 3.5.0
-      '@lucide/svelte':
-        specifier: ^0.539.0
-        version: 0.539.0(svelte@5.38.3)
       '@melt-ui/pp':
         specifier: ^0.3.2
         version: 0.3.2(@melt-ui/svelte@0.86.6(svelte@5.38.3))(svelte@5.38.3)
@@ -972,11 +969,6 @@ packages:
 
   '@jridgewell/trace-mapping@0.3.30':
     resolution: {integrity: sha512-GQ7Nw5G2lTu/BtHTKfXhKHok2WGetd4XYcVKGx00SjAk8GMwgJM3zr6zORiPGuOE+/vkc90KtTosSSvaCjKb2Q==}
-
-  '@lucide/svelte@0.539.0':
-    resolution: {integrity: sha512-OWhw4BhHO+owmOE/ijSNLnw/flbW2/DsLzMHAeM8oEjLsO0xE6glX0ADCDwxKItTs5ZJYssfyGNXxMXrea173w==}
-    peerDependencies:
-      svelte: ^5
 
   '@markdoc/markdoc@0.5.4':
     resolution: {integrity: sha512-36YFNlqFk//gVNGm5xZaTWVwbAVF2AOmVjf1tiUrS6tCoD/YSkVy2E3CkAfhc5MlKcjparL/QFHCopxL4zRyaQ==}
@@ -4948,10 +4940,6 @@ snapshots:
     dependencies:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.5
-
-  '@lucide/svelte@0.539.0(svelte@5.38.3)':
-    dependencies:
-      svelte: 5.38.3
 
   '@markdoc/markdoc@0.5.4':
     optionalDependencies:
