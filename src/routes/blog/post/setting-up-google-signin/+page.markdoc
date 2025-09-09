@@ -35,7 +35,7 @@ After creating your project, you will be redirected to your project dashboard, w
 
 ![Google developer console project dashboard](/images/blog/setting-up-google-signin/google-console.png)
 
-- Click on **APIs & Services** in the quick access section and then on **OAuth Consent Screen** in the sidebar. If you’re doing this for the first time, you should see a page that mentions the Google Auth Platform is not set up. Click on **Get Started**, which should open a wizard that guides you to creating your OAuth consent screen.
+- Click on **APIs & Services** in the quick access section and then on **OAuth Consent Screen** in the sidebar. If you're doing this for the first time, you should see a page that mentions the Google Auth Platform is not set up. Click on **Get Started**, which should open a wizard that guides you to creating your OAuth consent screen.
 - When creating an OAuth consent screen, you will be presented with a wizard that asks a series of questions, starting with your app name and user support email address. Google will share this email with your users for support-related queries. Hit **Next** once you’re ready to proceed to the next step.
 
 ![Setting up audience for OAuth consent screen](/images/blog/setting-up-google-signin/audience.png)
@@ -94,7 +94,7 @@ Once you have created your Google OAuth credentials, you can integrate them into
 
 ![Setting up Google authentication in Appwrite console](/images/blog/setting-up-google-signin/appwrite-google-oauth.png)
 
-- Enter the client ID and secret you obtained from the Google Cloud Console. Also, copy the URI and add it to the redirect URIs section of your Google client on Google Cloud Console. Once that’s done, click on **Update**. This should enable Google to be an authentication provider in your Appwrite app.
+- Enter the client ID and secret you obtained from the Google Cloud Console. Also, copy the URI and add it to the redirect URIs section of your Google client on Google Cloud Console. Once that's done, click on **Update**. This should enable Google to be an authentication provider in your Appwrite app.
 
 ## Initiating Google authentication flow
 
@@ -117,9 +117,9 @@ account.createOAuth2Session(
 );
 ```
 
-The `createOAuth2Session()` method from the `account` object allows you to initiate an OAuth authentication session. By running this function, the user will be redirected to Google’s authentication servers to authenticate and will be redirected back to your app, depending on how you’ve configured your success and failure redirect URLs.
+The `createOAuth2Session()` method from the `account` object allows you to initiate an OAuth authentication session. By running this function, the user will be redirected to Google's authentication servers to authenticate and will be redirected back to your app, depending on how you've configured your success and failure redirect URLs.
 
-If you’re facing problems where cookies are not being set after authentication, you should use `createOAuth2Token()` method instead. We have a [troubleshooting guide](/blog/post/fixing-oauth2-issues-in-appwrite-cloud) to help you transition to that flow, which should not be a huge change.
+If you're facing problems where cookies are not being set after authentication, you should use `createOAuth2Token()` method instead. We have a [troubleshooting guide](/blog/post/fixing-oauth2-issues-in-appwrite-cloud) to help you transition to that flow, which should not be a huge change.
 
 You can use the following method to get more information about the current logged-in session.
 
