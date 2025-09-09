@@ -11,7 +11,7 @@ Create a Next.js app with the `npx create-next-app` command.
 The command will install all the necessary dependencies for you.
 
 ```sh
-npx create-next-app@latest ideas-tracker --typescript --tailwind --eslint --app --src-dir --import-alias "@/*"
+npx create-next-app@latest ideas-tracker --typescript --eslint --app --src-dir --import-alias "@/*"
 ```
 
 ## Add dependencies {% #add-dependencies %}
