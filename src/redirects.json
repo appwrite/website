@@ -245,27 +245,27 @@
     },
     {
         "link": "/docs/environment-variables",
-        "redirect": "/docs/advanced/self-hosting/environment-variables"
+        "redirect": "/docs/advanced/self-hosting/configuration/environment-variables"
     },
     {
         "link": "/docs/email-delivery",
-        "redirect": "/docs/advanced/self-hosting/email"
+        "redirect": "/docs/advanced/self-hosting/configuration/email"
     },
     {
         "link": "/docs/sms-delivery",
-        "redirect": "/docs/advanced/self-hosting/sms"
+        "redirect": "/docs/advanced/self-hosting/configuration/sms"
     },
     {
         "link": "/docs/certificates",
-        "redirect": "/docs/advanced/self-hosting/tls-certificates"
+        "redirect": "/docs/advanced/self-hosting/configuration/tls-certificates"
     },
     {
         "link": "/docs/debugging",
-        "redirect": "/docs/advanced/self-hosting/debug"
+        "redirect": "/docs/advanced/self-hosting/production/debugging"
     },
     {
         "link": "/docs/upgrade",
-        "redirect": "/docs/advanced/self-hosting/update"
+        "redirect": "/docs/advanced/self-hosting/production/updates"
     },
     {
         "link": "/docs/production",
