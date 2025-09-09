@@ -69,14 +69,19 @@ Add the docs server to your configuration:
 
 ```json
 {
-    "mcpServers": {
-        "appwrite-docs": {
-            "command": "npx",
-            "args": ["@appwrite/mcp-server-docs"]
-        }
+  "mcpServers": {
+    "appwrite-docs": {
+      "command": "npx",
+      "args": [
+        "mcp-remote",
+        "https://mcp-for-docs.appwrite.io"
+      ]
     }
+  }
 }
 ```
+
+We don't directly use the `@appwrite/mcp-server-docs` package in Claude Desktop because currently, Claude Desktop only supports local (stdio) MCP servers and not remote servers. The `mcp-remote` package acts as a proxy to connect to the docs MCP server.
 
 {% /tabsitem %}
 {% /tabs %}
