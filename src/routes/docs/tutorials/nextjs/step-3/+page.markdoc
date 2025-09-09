@@ -34,7 +34,7 @@ You can skip the optional steps.
 
 To connect to Appwrite in our app, we'll need to use sensitive information.
 We keep the secrets by using environment variables for the endpoint and project id.
-Your project id is located in the **Settings** page in the Appwrite console.
+Your project ID is located in the **Settings** page in the Appwrite console.
 
 {% only_dark %}
 ![Project settings screen](/images/docs/quick-starts/dark/project-id.png)
