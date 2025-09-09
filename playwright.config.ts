@@ -10,7 +10,15 @@ const config: PlaywrightTestConfig = {
     },
     fullyParallel: true,
     testDir: 'tests',
-    testMatch: /(.+\.)?(test|spec)\.[jt]s/
+    testMatch: /(.+\.)?(test|spec)\.[jt]s/,
+    projects: [
+        {
+            name: 'Chrome',
+            use: {
+                channel: 'chrome'
+            }
+        }
+    ]
 };
 
 export default config;
