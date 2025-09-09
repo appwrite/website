@@ -5,7 +5,7 @@ description: Add ideas from Appwrite database in your app.
 step: 7
 ---
 
-With the methods in the `useIdeas` hook we can get some ideas to the home page for the users to interact with.
+With the methods in the `useIdeas()` hook we can get some ideas to the home page for the users to interact with.
 We will use it in a form component so the logged in users can add their ideas, and in a list component to render the ten most recent ideas.
 We start with building the form.
 
