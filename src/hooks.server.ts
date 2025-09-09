@@ -1,13 +1,8 @@
-import type { Handle, RequestEvent } from '@sveltejs/kit';
+import type { Handle } from '@sveltejs/kit';
 import redirects from './redirects.json';
 import { sequence } from '@sveltejs/kit/hooks';
-import { BANNER_KEY } from '$lib/constants';
-import { dev } from '$app/environment';
 import { type GithubUser } from '$routes/(init)/init/(utils)/auth';
-import {
-    createInitServerClient,
-    createInitSessionClient
-} from '$routes/(init)/init/(utils)/appwrite';
+import { createInitSessionClient } from '$routes/(init)/init/(utils)/appwrite';
 import type { AppwriteUser } from '$lib/utils/console';
 
 const redirectMap = new Map(redirects.map(({ link, redirect }) => [link, redirect]));
@@ -57,7 +52,8 @@ const securityheaders: Handle = async ({ event, resolve }) => {
             'https://ws.zoominfo.com',
             'https://*.cookieyes.com',
             'https://cdn-cookieyes.com',
-            'https://www.googletagmanager.com'
+            'https://www.googletagmanager.com',
+            'https://js.hs-scripts.com'
         ]),
         'style-src': "'self' 'unsafe-inline'",
         'img-src': "'self' data: https:",
@@ -185,9 +181,7 @@ const initSession: Handle = async ({ event, resolve }) => {
 
     event.locals.initUser = await getInitUser();
 
-    const response = await resolve(event);
-
-    return response;
+    return resolve(event);
 };
 
 export const handle = sequence(redirecter, securityheaders, initSession);
