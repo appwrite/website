@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Setting up “Sign in with Google” in your app
-description: Learn how to set up Google authentication in your app.
+description: Learn how to set up Google OAuth2 authentication in your app.
 date: 2025-09-09
 cover: /images/blog/setting-up-google-signin/cover.png
 timeToRead: 5
