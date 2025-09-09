@@ -1,0 +1,42 @@
+---
+layout: article
+title: Spatial
+description: Store geographic data with points, lines, and polygons. Query spatial relationships with distance, intersects, overlaps, and other geo-spatial operations.
+---
+
+Spatial attributes store geographic data as coordinates, shapes, and areas that can be queried using location-based operations. Applications use spatial data to find nearby locations, check if coordinates fall within boundaries, or calculate distances between points.
+
+These types of geographic operations can be performed in Appwrite using spatial attributes and queries.
+
+Coordinates are specified as `[latitude, longitude]` arrays. Distance measurements are in meters.
+
+# Spatial attributes {% #spatial-attributes %}
+
+Appwrite provides first-class geo types that can be stored as table attributes:
+
+- **Point**: Represents a single geographic coordinate with latitude and longitude
+- **Line**: Represents a series of connected geographic coordinates forming a path or route
+- **Polygon**: Represents a closed area defined by a series of coordinates forming a boundary
+
+# Spatial index {% #spatial-index %}
+
+Spatial indexes are recommended for performance when using spatial attributes. They enable efficient querying of geographic data by creating optimized data structures for spatial operations.
+
+Create spatial indexes through the [Appwrite Console](/docs/products/databases/tables#indexes), [Server SDK](/docs/sdks#server), or [CLI](/docs/tooling/command-line/tables#commands) when working with spatial attributes.
+
+# Spatial queries {% #spatial-queries %}
+
+Spatial queries enable geographic operations on spatial attributes. Appwrite supports distance operations (equal, not equal, greater than, less than) and geometric relationships (intersects, overlaps, touches, crosses) with both positive and negative forms.
+
+For complete documentation and examples of all spatial query operators, see [Queries](/docs/products/databases/queries#spatial-operations).
+
+# Use cases {% #use-cases %}
+
+Spatial queries enable geo-spatial operations:
+
+- **Search nearby**: Find all bus stops within 200 meters of a location
+- **Geofencing**: Check if delivery vehicles enter or exit designated zones  
+- **Routing coverage**: Determine service areas and delivery radiuses
+- **Region lookups**: Match addresses to administrative boundaries
+- **Asset tracking**: Monitor equipment locations and movements
+- **Compliance zones**: Verify operations within permitted areas
