@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Build an ideas tracker with Next.js
+title: Build an idea tracker with Next.js
 description: Learn to build an idea tracker app with Appwrite and Next.js with authentication, databases and tables, queries, pagination, and file storage.
 step: 1
 difficulty: beginner
