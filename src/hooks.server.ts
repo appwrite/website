@@ -5,6 +5,7 @@ import { type GithubUser } from '$routes/(init)/init/(utils)/auth';
 import { createInitSessionClient } from '$routes/(init)/init/(utils)/appwrite';
 import type { AppwriteUser } from '$lib/utils/console';
 
+const PLAYWRIGHT_TESTS = process.env.PLAYWRIGHT_TESTS ?? undefined;
 const redirectMap = new Map(redirects.map(({ link, redirect }) => [link, redirect]));
 
 const redirecter: Handle = async ({ event, resolve }) => {
@@ -52,8 +53,16 @@ const securityheaders: Handle = async ({ event, resolve }) => {
             'https://ws.zoominfo.com',
             'https://*.cookieyes.com',
             'https://cdn-cookieyes.com',
+
+            // too many scripts from gtm!
             'https://www.googletagmanager.com',
-            'https://js.hs-scripts.com'
+            'https://js.hs-scripts.com',
+            'https://js.hs-banner.com',
+            'https://js.hsadspixel.net',
+            'https://js.hs-analytics.net',
+            'https://js.hscollectedforms.net',
+            'https://api.hubapi.com',
+            'https://googleads.g.doubleclick.net'
         ]),
         'style-src': "'self' 'unsafe-inline'",
         'img-src': "'self' data: https:",
@@ -78,7 +87,12 @@ const securityheaders: Handle = async ({ event, resolve }) => {
             'https://hemsync.clickagy.com',
             'https://ws.zoominfo.com ',
             'https://*.cookieyes.com',
-            'https://cdn-cookieyes.com'
+            'https://cdn-cookieyes.com',
+
+            // gtm
+            'https://api.hubapi.com',
+            'https://www.google.com',
+            'https://forms.hscollectedforms.net'
         ]),
         'frame-src': join([
             "'self'",
@@ -87,7 +101,10 @@ const securityheaders: Handle = async ({ event, resolve }) => {
             'https://www.youtube-nocookie.com',
             'https://player.vimeo.com',
             'https://hemsync.clickagy.com',
-            'https://cdn-cookieyes.com'
+            'https://cdn-cookieyes.com',
+
+            // gtm
+            'https://www.googletagmanager.com'
         ])
     };
 
@@ -125,6 +142,8 @@ const securityheaders: Handle = async ({ event, resolve }) => {
 };
 
 const initSession: Handle = async ({ event, resolve }) => {
+    if (PLAYWRIGHT_TESTS) return resolve(event);
+
     const session = await createInitSessionClient(event.cookies);
 
     const getGithubUser = async () => {
