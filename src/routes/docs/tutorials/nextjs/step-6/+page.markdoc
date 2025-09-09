@@ -134,4 +134,4 @@ export function useIdeas() {
 }
 ```
 
-Now we can call the `useIdeas` hook from the home page.
+Now we can call the `useIdeas()` hook from the home page.
