@@ -11,7 +11,7 @@ back: /docs/tutorials
 ---
 
 **Idea Tracker**: an app to track all the side project ideas that you'll start, but probably never finish.
-In this tutorial, you will build Idea Tracker with Appwrite and Next.js.
+In this tutorial, you will build an Idea Tracker with Appwrite and Next.js.
 
 {% only_dark %}
 ![Create project screen](/images/docs/tutorials/dark/idea-tracker.png)
