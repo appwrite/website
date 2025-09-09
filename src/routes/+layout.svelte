@@ -165,6 +165,10 @@
 
         <!-- ZoomInfo snippet -->
         <script defer src="/scripts/zoominfo.js"></script>
+
+        <!-- Google Tag Manager -->
+        <script defer src="/scripts/gtm.js"></script>
+        <!-- End Google Tag Manager -->
     {/if}
 
     <!-- canonical url -->

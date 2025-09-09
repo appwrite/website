@@ -14,11 +14,11 @@
         },
         {
             question: 'What happens after I apply?',
-            answer: 'Once you submit the form, our team will evaluate your application. If selected, you will receive an email with a special code to redeem your cloud credits and a detailed how-to guide on applying them. After you redeem your code, you will officially be part of the Startups program and can get started with your project!'
+            answer: 'Once you submit the form, our team will evaluate your application and get back to you with onboarding steps.'
         },
         {
             question: 'I am a Pro user. Can I apply?',
-            answer: 'Yes, if you are currently on a Free or Pro plan, you can apply for the program.'
+            answer: 'If you are already paying for a Pro plan, or a Scale plan, then you cannot apply for the Startups program.'
         },
         {
             question: 'Does the Appwrite Startups program include web hosting?',
@@ -30,7 +30,7 @@
         },
         {
             question: 'Who is eligible to apply?',
-            answer: 'We welcome early-stage startups as well as startups established within the last decade who are VC backed. So whether you are still looking to build your application or want to switch to Appwrite, we welcome you to join.'
+            answer: 'We welcome early-stage startups as well as startups established within the last decade that are VC-backed. So whether you are still looking to build your application or want to switch to Appwrite, we welcome you to join.'
         },
         {
             question: 'What are the limits of the Scale plan?',
@@ -46,7 +46,7 @@
         },
         {
             question: "What's included in the Appwrite for Startups program?",
-            answer: 'Startups joining the program get access to everything Appwrite Pro or Scale offers. This includes Cloud credits, unlimited team members, and premium email support. In addition, we provide you with special swag, and you get a program manager and a private Slack channel. Read more about it in our <a class="web-link underline" href="/blog/post/announcing-appwrite-startups-program">announcement</a>.'
+            answer: 'Startups joining the program get a discount for the Pro or Scale plan and get everything each plan offers. You can also get Cloud credits, unlimited team members, and premium email support. In addition, we provide you with special swag, and you get a program manager and a private Slack channel. Read more about it in our <a class="web-link underline" href="/blog/post/announcing-appwrite-startups-program">announcement</a>.'
         },
         {
             question: 'What kind of support do we get?',

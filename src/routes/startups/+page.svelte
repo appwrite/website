@@ -172,6 +172,12 @@
             'Thanks to Appwrite and advances in technology, we were able to get an MVP out in 2-3 months with 1 developer.',
             'jonas-janssen'
         ),
+        testimonial(
+            'Zach Handley',
+            'CTO // Socialaize',
+            "We have somewhere between 200,000 to 600,000 function executions per day. It's especially nice that you guys have to deal with the scaling now and not me.",
+            'zach-handley'
+        ),
         mariusBolik
     ];
 </script>
