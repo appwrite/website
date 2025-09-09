@@ -103,7 +103,7 @@
                                 >
                             </h2>
 
-                            <p class="text-body text-secondary mt-2 font-medium">
+                            <p class="text-main-body text-secondary mt-2 font-medium">
                                 Thank you for registering for Init. Share your ticket on social
                                 media to enter the raffle to win limited edition swag.
                             </p>
@@ -189,7 +189,7 @@
                 <h2 class="text-title text-primary font-aeonik-pro md:mb-4">
                     Get your ticket and<br />enter our giveaway
                 </h2>
-                <p class="text-secondary text-body mb-10 md:mb-6">
+                <p class="text-secondary text-main-body mb-10 md:mb-6">
                     Create, customize and share your ticket to<br />get the chance to win exclusive
                     Init swag.
                 </p>

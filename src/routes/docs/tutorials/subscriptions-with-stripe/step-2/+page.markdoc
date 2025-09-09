@@ -16,7 +16,7 @@ This quick start will use test mode, but the same steps will also work for live 
 ![Stripe dashboard](/images/docs/tutorials/subscriptions-with-stripe/stripe-dashboard.png)
 {% /only_light %}
 
-# API key {% #api-key %}
+## API key {% #api-key %}
 
 In the header, you can switch to the **Developers** page, where you can head to the **API Keys** section. On this page, reveal and copy the **Secret key**. Note it down, as you will need it later when setting the `STRIPE_SECRET_KEY` environment variable.
 
@@ -27,7 +27,7 @@ In the header, you can switch to the **Developers** page, where you can head to 
 ![Stripe API key screen](/images/docs/tutorials/subscriptions-with-stripe/stripe-api-key.png)
 {% /only_light %}
 
-# Webhooks {% #webhooks %}
+## Webhooks {% #webhooks %}
 
 Go to the **Webhooks** section and click the button to **Add an endpoint**.
 

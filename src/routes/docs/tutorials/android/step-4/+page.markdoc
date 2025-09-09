@@ -5,7 +5,7 @@ description: Add Appwrite authentication to you Android app.
 step: 4
 ---
 
-# Creating an account service {% #creating-an-account-service %}
+## Creating an account service {% #creating-an-account-service %}
 
 We can use services to abstract business logic from our views.
 Create a service to handle user authentication with a new file `services/AccountService.kt`.
@@ -34,7 +34,10 @@ class AccountService(client: Client) {
 
     suspend fun login(email: String, password: String): User<Map<String, Any>>? {
         return try {
-            account.createEmailPasswordSession(email, password)
+            account.createEmailPasswordSession(
+                email = email,
+                password = password
+            )
             getLoggedIn()
         } catch (e: AppwriteException) {
             null
@@ -43,7 +46,11 @@ class AccountService(client: Client) {
 
     suspend fun register(email: String, password: String): User<Map<String, Any>>? {
         return try {
-            account.create(ID.unique(), email, password)
+            account.create(
+                userId = ID.unique(),
+                email = email,
+                password = password
+            )
             login(email, password)
         } catch (e: AppwriteException) {
             null
@@ -66,7 +73,7 @@ object Appwrite {
     private const val PROJECT_ID = "<PROJECT_ID>"
 
     private lateinit var client: Client
-    
+
     // Add this line 👇
     internal lateinit var account: AccountService
 
@@ -81,7 +88,7 @@ object Appwrite {
 }
 ```
 
-# Login screen {% #login-screen %}
+## Login screen {% #login-screen %}
 
 Using this service, we can now create a screen to login or register a user.
 

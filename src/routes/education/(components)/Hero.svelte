@@ -1,5 +1,5 @@
 <script>
-    import { classNames } from '$lib/utils/classnames';
+    import { cn } from '$lib/utils/cn';
     import Logos from './Logos.svelte';
     import ChatIcon from '../(assets)/chat-icon.svg';
     import Beaker from '../(assets)/beaker.svg';
@@ -31,7 +31,7 @@
 </script>
 
 <section
-    class={classNames(
+    class={cn(
         'gridLine horizontal relative mt-8 grid h-full min-h-[50vh] w-full place-items-center md:mt-32 md:grid-cols-[10%_1fr_10%] lg:grid-cols-[20%_1fr_20%] xl:grid-cols-3'
     )}
 >
@@ -40,7 +40,7 @@
         class="gridLine vertical from-accent/5 relative flex h-full w-full flex-1 basis-[calc(100vw_/_3)] flex-col items-center justify-center gap-8 to-transparent px-8 py-10 text-center md:bg-gradient-to-t"
     >
         <Logos />
-        <h1 class="font-aeonik-pro text-5xl text-white">Build your next project with Appwrite</h1>
+        <h1 class="font-aeonik-pro text-title text-white">Build your next project with Appwrite</h1>
         <p class="text-secondary font-medium">
             Join the Appwrite Education program in collaboration with the GitHub Student Developer
             Pack. Students access Appwrite Cloud for free throughout their studies.
@@ -149,8 +149,8 @@
     .pattern {
         background: repeating-linear-gradient(
             45deg,
-            var(--color-primary) 0,
-            var(--color-primary) 1px,
+            var(--color-secondary) 0,
+            var(--color-secondary) 1px,
             transparent 1px,
             transparent 24px
         );

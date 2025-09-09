@@ -2,19 +2,19 @@
     import Tooltip from '$lib/components/Tooltip.svelte';
     import { Button, Icon } from '$lib/components/ui';
     import { createDialog, melt } from '@melt-ui/svelte';
-    import { getContext, hasContext } from 'svelte';
     import { quadInOut } from 'svelte/easing';
     import { fade, scale } from 'svelte/transition';
+    import { isInTable } from '$markdoc/nodes/Table.svelte';
 
-    interface Props {
+    interface ImageProps {
         src: string;
         alt: string;
         title: string;
     }
 
-    let { src, alt, title }: Props = $props();
+    let { src, alt, title }: ImageProps = $props();
 
-    const inTable = hasContext('in-table') ? getContext('in-table') : false;
+    const inTable = isInTable();
     const isAudio = /\.(wav|mp3|m4a|ogg)$/i.test(src);
 
     const {
@@ -41,23 +41,23 @@
         <img {src} {alt} {title} loading="lazy" style:vertical-align="middle" />
     {/if}
 {:else}
-    <div class="web-media main">
+    <span class="web-media relative my-8! block">
         <img {src} {alt} {title} loading="lazy" class="aspect-video w-full object-cover" />
-        <div class="abs">
+        <span class="absolute right-4 bottom-4 opacity-25 transition hover:opacity-100">
             <Tooltip closeOnPointerDown>
                 <Button variant="secondary" class="cursor-pointer" action={trigger}>
-                    <span class="icon-arrow-expand" aria-hidden="true"></span>
+                    <span class="icon-arrow-expand text-accent size-4" aria-hidden="true"></span>
                 </Button>
                 {#snippet tooltip()}
                     Expand
                 {/snippet}
             </Tooltip>
-        </div>
-    </div>
+        </span>
+    </span>
 
     {#if $open}
-        <div use:melt={$portalled}>
-            <div use:melt={$overlay} class="overlay" transition:fade={{ duration: 350 }}></div>
+        <span use:melt={$portalled}>
+            <span use:melt={$overlay} class="overlay" transition:fade={{ duration: 150 }}></span>
 
             <img
                 class="web-media content"
@@ -66,9 +66,9 @@
                 {alt}
                 {title}
                 loading="lazy"
-                transition:scale={{ duration: 350, start: 0.8, easing: quadInOut }}
+                transition:scale={{ duration: 150, start: 0.95, easing: quadInOut }}
             />
-        </div>
+        </span>
     {/if}
 {/if}
 
@@ -77,24 +77,6 @@
         padding: 0.6rem !important;
         [class*='icon'] {
             color: hsl(var(--web-color-primary)) !important;
-        }
-    }
-
-    .main {
-        position: relative;
-
-        .abs {
-            position: absolute;
-            bottom: 1rem;
-            right: 1rem;
-            opacity: 0.25;
-            transition: var(--transition);
-        }
-
-        &:hover {
-            .abs {
-                opacity: 1;
-            }
         }
     }
 

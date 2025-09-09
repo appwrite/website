@@ -173,13 +173,13 @@ var client = new Client()
 
 JWT auth is useful when you need your backend app's Server SDK to be restricted by the same set of permissions.
 
-If your backend app's Server SDK is using an [API key](/docs/advanced/platform/api-keys), it will fetch **all resources** regardless of permissions. This means the Server SDK might fetch files and documents your user should not be able to see, which is not helpful when you need to act on behalf of a user.
+If your backend app's Server SDK is using an [API key](/docs/advanced/platform/api-keys), it will fetch **all resources** regardless of permissions. This means the Server SDK might fetch files and rows your user should not be able to see, which is not helpful when you need to act on behalf of a user.
 
 If your backend app's Server SDK is using a **JWT**, it will only fetch resources your user has permissions to access.
 
 # Example {% #when-to-use-example %}
 
-Here's an example collection of birthdays with the following documents. Notice how they all have **different permissions**.
+Here's an example table of birthdays with the following rows. Notice how they all have **different permissions**.
 
 | $id         | name  | birthday  | $permissions          |
 |-------------|-------|-----------|------------------------|
@@ -198,9 +198,9 @@ const client = new Client()
     .setProject('<PROJECT_ID>')                  // Your project ID
     .setJWT('eyJJ9.eyJ...886ca');                // Your secret JSON Web Token
 
-const databases = new sdk.Databases(client);
+const tablesDB = new sdk.TablesDB(client);
 
-const documents = await databases.listDocuments(
+const rows = await tablesDB.listRows(
     '642f358bf4084c662590',
     '642f3592aa5fc856ad1e'
 );
@@ -214,11 +214,11 @@ $client = (new Client())
     .setProject('<PROJECT_ID>')                           // Your project ID
     .setJWT('eyJJ9.eyJ...886ca');                          // Your secret JSON Web Tokens
 
-$databases = new Databases($client);
+$tablesDB = new TablesDB($client);
 
-$documents = $databases->listDocuments(
+$rows = $tablesDB->listRows(
     databaseId: '642f358bf4084c662590',
-    collectionId: '642f3592aa5fc856ad1e'
+    tableId: '642f3592aa5fc856ad1e'
 );
 // ... More code to manipulate the results
 ```
@@ -233,11 +233,11 @@ client = Client()
   .set_jwt('eyJJ9.eyJ...886ca')                             # Your secret JSON Web Token
 )
 
-databases = Databases(client)
+tablesDB = TablesDB(client)
 
-documents = databases.list_documents(
+rows = tablesDB.list_rows(
     database_id='642f358bf4084c662590',
-    collection_id='642f3592aa5fc856ad1e'
+    table_id='642f3592aa5fc856ad1e'
 )
 # ... More code to manipulate the results
 ```
@@ -251,11 +251,11 @@ client = Client.new
     .set_project('<PROJECT_ID>')                           # Your project ID
     .set_jwt('eyJJ9.eyJ...886ca')                           # Your secret JSON Web Token
 
-databases = Databases.new(client)
+tablesDB = TablesDB.new(client)
 
-documents = databases.list_documents(
+rows = tablesDB.list_rows(
     database_id: '642f358bf4084c662590',
-    collection_id: '642f3592aa5fc856ad1e'
+    table_id: '642f3592aa5fc856ad1e'
 )
 # ... More code to manipulate the results
 ```
@@ -267,9 +267,9 @@ let client = new Client()
     .setProject('<PROJECT_ID>')                     // Your project ID
     .setJWT('eyJJ9.eyJ...886ca');                   // Your secret JSON Web Token
 
-let databases = new sdk.Databases(client);
+let tablesDB = new sdk.TablesDB(client);
 
-let documents = await databases.listDocuments(
+let rows = await tablesDB.listRows(
     '642f358bf4084c662590',
     '642f3592aa5fc856ad1e'
 );
@@ -283,11 +283,11 @@ final client = Client()
     .setProject('<PROJECT_ID>')                     // Your project ID
     .setJWT('eyJJ9.eyJ...886ca');                   // Your secret JSON Web Token
 
-final databases = Databases(client);
+final tablesDB = TablesDB(client);
 
-final documents = await databases.listDocuments(
+final rows = await tablesDB.listRows(
     databaseId: '642f358bf4084c662590',
-    collectionId: '642f3592aa5fc856ad1e',
+    tableId: '642f3592aa5fc856ad1e',
 );
 // ... More code to manipulate the results
 ```
@@ -299,11 +299,11 @@ val client = Client()
     .setProject("<PROJECT_ID>")                     // Your project ID
     .setJWT("eyJJ9.eyJ...886ca")                    // Your secret JSON Web Token
 
-val databases = Databases(client)
+val tablesDB = TablesDB(client)
 
-val documents = databases.listDocuments(
+val rows = tablesDB.listRows(
     databaseId = "642f358bf4084c662590",
-    collectionId = "642f3592aa5fc856ad1e",
+    tableId = "642f3592aa5fc856ad1e",
 )
 // ... More code to manipulate the results
 ```
@@ -315,11 +315,11 @@ let client = Client()
     .setProject("<PROJECT_ID>")                     // Your project ID
     .setJWT("eyJJ9.eyJ...886ca")                    // Your secret JSON Web Token
     
-let databases = Databases(client)
+let tablesDB = TablesDB(client)
 
-let documents = try await databases.listDocuments(
+let rows = try await tablesDB.listRows(
     databaseId: "642f358bf4084c662590",
-    collectionId: "642f3592aa5fc856ad1e"
+    tableId: "642f3592aa5fc856ad1e"
 )
 // ... More code to manipulate the results
 ```
@@ -333,23 +333,23 @@ var client = new Client()
     .SetProject("<PROJECT_ID>")                     // Your project ID
     .SetJWT("eyJJ9.eyJ...886ca");                   // Your secret JSON Web Token
 
-var databases = new Databases(client);
+var tablesDB = new TablesDB(client);
 
-var documents = await databases.ListDocuments(
+var rows = await databases.listRows(
     databaseId: "642f358bf4084c662590",
-    collectionId: "642f3592aa5fc856ad1e");
+    tableId: "642f3592aa5fc856ad1e");
 
 // ... More code to manipulate the results
 ```
 
 {% /multicode %}
 
-Only Kevin's birthday is returned and documents where `user-A` has no permissions to access are not returned.
+Only Kevin's birthday is returned and rows where `user-A` has no permissions to access are not returned.
 
 ```js
 {
   "total": 1,
-  "documents": [
+  "rows": [
     {
       "name": "Kevin",
       "birthday": "2012-02-03T00:00:00.000+00:00",
@@ -357,7 +357,7 @@ Only Kevin's birthday is returned and documents where `user-A` has no permission
       "$permissions": [
         "read(\"user:user-a\")"
       ],
-      "$collectionId": "642f3592aa5fc856ad1e",
+      "$tableId": "642f3592aa5fc856ad1e",
       "$databaseId": "642f358bf4084c662590",
       ...
     }
@@ -376,9 +376,9 @@ const client = new Client()
     .setProject('<PROJECT_ID>')                  // Your project ID
     .setKey('98fd4...a2ad2');                    // Your secret API key
 
-const databases = new sdk.Databases(client);
+const tablesDB = new sdk.TablesDB(client);
 
-const documents = await databases.listDocuments(
+const rows = await tablesDB.listRows(
     '642f358bf4084c662590',
     '642f3592aa5fc856ad1e'
 );
@@ -393,11 +393,11 @@ $client = (new Client())
     ->setProject('<PROJECT_ID>')                  // Your project ID
     ->setKey('98fd4...a2ad2');                    // Your secret API key
 
-$databases = new Databases($client);
+$tablesDB = new TablesDB($client);
 
-$documents = $databases->listDocuments(
+$rows = $tablesDB->listRows(
     databaseId: '642f358bf4084c662590',
-    collectionId: '642f3592aa5fc856ad1e'
+    tableId: '642f3592aa5fc856ad1e'
 );
 // ... More code to manipulate the results
 ```
@@ -412,11 +412,11 @@ client = Client()
     .set_key('98fd4...a2ad2')                     // Your secret API key
 )
 
-databases = Databases(client)
+tablesDB = TablesDB(client)
 
-documents = databases.list_documents(
+rows = tablesDB.list_rows(
     database_id='642f358bf4084c662590',
-    collection_id='642f3592aa5fc856ad1e'
+    table_id='642f3592aa5fc856ad1e'
 )
 // ... More code to manipulate the results
 ```
@@ -430,11 +430,11 @@ client = Client.new
     .set_project('<PROJECT_ID>')                  # Your project ID
     .set_key('98fd4...a2ad2')                     # Your secret API key
 
-databases = Databases.new(client)
+tablesDB = TablesDB.new(client)
 
-documents = databases.list_documents(
+rows = tablesDB.list_rows(
     database_id: '642f358bf4084c662590',
-    collection_id: '642f3592aa5fc856ad1e'
+    table_id: '642f3592aa5fc856ad1e'
 )
 # ... More code to manipulate the results
 ```
@@ -446,9 +446,9 @@ let client = new Client()
     .setProject('<PROJECT_ID>')                  // Your project ID
     .setKey('98fd4...a2ad2');                    // Your secret API key
 
-let databases = new sdk.Databases(client);
+let tablesDB = new sdk.TablesDB(client);
 
-let documents = await databases.listDocuments(
+let rows = await tablesDB.listRows(
     '642f358bf4084c662590',
     '642f3592aa5fc856ad1e'
 );
@@ -462,11 +462,11 @@ final client = Client()
     .setProject('<PROJECT_ID>')                  // Your project ID
     .setKey('98fd4...a2ad2');                    // Your secret API key
 
-final databases = Databases(client);
+final tablesDB = TablesDB(client);
 
-final documents = await databases.listDocuments(
+final rows = await tablesDB.listRows(
     databaseId: '642f358bf4084c662590',
-    collectionId: '642f3592aa5fc856ad1e',
+    tableId: '642f3592aa5fc856ad1e',
 );
 // ... More code to manipulate the results
 ```
@@ -478,11 +478,11 @@ val client = Client()
     .setProject("<PROJECT_ID>")                  // Your project ID
     .setKey('98fd4...a2ad2');                    // Your secret API key
 
-val databases = Databases(client)
+val tablesDB = TablesDB(client)
 
-val documents = databases.listDocuments(
+val rows = tablesDB.listRows(
     databaseId = "642f358bf4084c662590",
-    collectionId = "642f3592aa5fc856ad1e",
+    tableId = "642f3592aa5fc856ad1e",
 )
 // ... More code to manipulate the results
 ```
@@ -494,11 +494,11 @@ let client = Client()
     .setProject("<PROJECT_ID>")                  // Your project ID
     .setKey('98fd4...a2ad2');                    // Your secret API key
 
-let databases = Databases(client)
+let tablesDB = TablesDB(client)
 
-let documents = try await databases.listDocuments(
+let rows = try await tablesDB.listRows(
     databaseId: "642f358bf4084c662590",
-    collectionId: "642f3592aa5fc856ad1e"
+    tableId: "642f3592aa5fc856ad1e"
 )
 // ... More code to manipulate the results
 ```
@@ -512,22 +512,22 @@ var client = new Client()
     .SetProject("<PROJECT_ID>")                  // Your project ID
     .SetKey('98fd4...a2ad2');                    // Your secret API key
 
-var databases = new Databases(client);
+var tablesDB = new TablesDB(client);
 
-var documents = await databases.ListDocuments(
+var rows = await databases.listRows(
     databaseId: "642f358bf4084c662590",
-    collectionId: "642f3592aa5fc856ad1e");
+    tableId: "642f3592aa5fc856ad1e");
 
 // ... More code to manipulate the results
 ```
 {% /multicode %}
 
-This will return every document regardless of permissions, which could lead to privacy and security problems.
+This will return every row regardless of permissions, which could lead to privacy and security problems.
 
 ```json
 {
   "total": 3,
-  "documents": [
+  "rows": [
     {
       "name": "Kevin",
       "birthday": "2012-02-03T00:00:00.000+00:00",
@@ -535,7 +535,7 @@ This will return every document regardless of permissions, which could lead to p
       "$permissions": [
         "read(\"user:user-a\")"
       ],
-      "$collectionId": "642f3592aa5fc856ad1e",
+      "$tableId": "642f3592aa5fc856ad1e",
       "$databaseId": "642f358bf4084c662590",
       ...
     },
@@ -546,7 +546,7 @@ This will return every document regardless of permissions, which could lead to p
       "$permissions": [
         "read(\"user:user-b\")"
       ],
-      "$collectionId": "642f3592aa5fc856ad1e",
+      "$tableId": "642f3592aa5fc856ad1e",
       "$databaseId": "642f358bf4084c662590",
       ...
     },
@@ -557,7 +557,7 @@ This will return every document regardless of permissions, which could lead to p
       "$permissions": [
         "read(\"user:user-c\")"
       ],
-      "$collectionId": "642f3592aa5fc856ad1e",
+      "$tableId": "642f3592aa5fc856ad1e",
       "$databaseId": "642f358bf4084c662590",
       ...
     }

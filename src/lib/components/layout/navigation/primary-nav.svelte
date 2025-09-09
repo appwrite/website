@@ -1,7 +1,7 @@
 <script lang="ts">
     import { NavigationMenu } from 'bits-ui';
 
-    import { classNames } from '$lib/utils/classnames';
+    import { cn } from '$lib/utils/cn';
     import type { Component, SvelteComponent } from 'svelte';
     import ProductMenu from './menus/product-menu.svelte';
     import { Icon } from '$lib/components/ui';
@@ -57,7 +57,7 @@
     </NavigationMenu.List>
     <div class="absolute top-full left-0 flex w-full justify-center perspective-[2000px]">
         <NavigationMenu.Viewport
-            class={classNames(
+            class={cn(
                 'bg-greyscale-850 border-smooth relative w-full origin-[top_center] overflow-hidden rounded-b-md border-x border-b opacity-100 shadow-lg backdrop-blur-2xl transition-[width,_height] duration-200 before:rounded-md after:rounded-md',
                 'data-[state=open]:animate-scale-in data-[state=closed]:hidden',
                 'h-(--bits-navigation-menu-viewport-height) sm:w-(--bits-navigation-menu-viewport-width)'

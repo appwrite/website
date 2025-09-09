@@ -1,6 +1,6 @@
 <script lang="ts">
     import { trackEvent } from '$lib/actions/analytics';
-    import { classNames } from '$lib/utils/classnames';
+    import { cn } from '$lib/utils/cn';
     import { isMobile } from '$lib/utils/is-mobile';
     import GridPaper from '../../grid-paper.svelte';
     import { animate, hover, inView, stagger, transform, type AnimationSequence } from 'motion';
@@ -175,7 +175,7 @@
                 <table class="table w-full p-2.5">
                     <thead>
                         <tr
-                            class="bg-greyscale-900 border-smooth text-primary text-micro w-full border-b font-normal"
+                            class="bg-greyscale-900 border-smooth text-primary text-eyebrow w-full border-b font-normal tracking-tight"
                         >
                             {#each collectionKeys as heading}
                                 <th
@@ -201,11 +201,11 @@
                             {/each}
                         </tr>
                     </thead>
-                    <tbody class="text-micro divide-smooth divide-y">
+                    <tbody class="text-eyebrow divide-smooth divide-y">
                         {#each collections as collection, c}
                             {@const isSweaters = collection.Category === 'Sweaters'}
                             <tr
-                                class={classNames('bg-[#1D1D21] transition-colors', {
+                                class={cn('bg-[#1D1D21] transition-colors', {
                                     'bg-white/2': isSweaters && shouldAnimate
                                 })}
                             >
@@ -213,7 +213,7 @@
                                     {@const isLastProduct = c === products.length - 1}
                                     {@const isLastItem = i === Object.values(collection).length - 1}
                                     <td
-                                        class={classNames('text-primary p-2.5 text-left', {
+                                        class={cn('text-primary p-2.5 text-left', {
                                             'rounded-bl-xl': isLastProduct && i === 0,
                                             'rounded-br-xl': isLastProduct && isLastItem
                                         })}
@@ -255,7 +255,7 @@
         </div>
         <div class="mt-0 mb-auto flex h-full w-full flex-col gap-8">
             <div
-                class={classNames(
+                class={cn(
                     'border-smooth absolute right-8 bottom-8 flex aspect-[4/2] flex-col rounded-2xl border bg-[#232325]/90 shadow-[4px_8px_20px_rgba(0,0,0,0.2)] backdrop-blur-md md:min-w-[275px]'
                 )}
                 style:transform="translateY(12px) translateX(12px)"
@@ -266,7 +266,7 @@
                     <table class="table w-full p-2.5">
                         <thead>
                             <tr
-                                class="bg-greyscale-900 border-smooth text-primary text-micro w-full border-b font-normal"
+                                class="bg-greyscale-900 border-smooth text-primary text-eyebrow w-full border-b font-normal"
                             >
                                 {#each keys as key}
                                     <th
@@ -292,7 +292,7 @@
                                 {/each}
                             </tr>
                         </thead>
-                        <tbody class="text-micro divide-smooth divide-y">
+                        <tbody class="text-eyebrow divide-smooth divide-y">
                             {#each products as product, p}
                                 <tr class="bg-[#1D1D21]">
                                     {#each Object.values(product) as item, i}
@@ -300,7 +300,7 @@
                                         {@const isLastItem =
                                             i === Object.values(product).length - 1}
                                         <td
-                                            class={classNames('text-primary p-2.5 text-left', {
+                                            class={cn('text-primary p-2.5 text-left', {
                                                 'rounded-bl-xl': isLastProduct && i === 0,
                                                 'rounded-br-xl': isLastProduct && isLastItem
                                             })}>{item}</td

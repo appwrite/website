@@ -1,9 +1,9 @@
 <script lang="ts">
     import Input from '$lib/components/ui/input.svelte';
-    import { classNames } from '$lib/utils/classnames';
+    import { cn } from '$lib/utils/cn';
 </script>
 
-<div class={classNames('bg-greyscale-850/90 flex flex-col gap-4 rounded-2xl p-2 lg:row-span-5')}>
+<div class={cn('bg-greyscale-850/90 flex flex-col gap-4 rounded-2xl p-2 lg:row-span-5')}>
     <div class="text-sub-body p-3 font-medium">
         <span class="text-primary">Session limit</span>
         <p class="text-secondary">

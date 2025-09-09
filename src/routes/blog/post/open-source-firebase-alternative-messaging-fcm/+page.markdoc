@@ -35,7 +35,9 @@ While FCM was a popular choice due to its deep integration with Firebase and Goo
 
 # Messaging: an open-source alternative
 
-Appwrite is an open-source backend-as-a-service (BaaS) platform that provides a suite of tools for managing databases, authentication, storage, serverless functions and, most importantly, messaging. 
+Appwrite is an open-source, all-in-one cloud development platform. Use built-in backend infrastructure and web hosting, all from a single place. 
+
+You can build your entire backend within minutes and deploy effortlessly, adding Authentication, Databases, Functions, Storage, Messaging, and more to your projects using the frameworks and languages of your choice. 
 
 Appwrite’s [Messaging](https://appwrite.io/products/messaging) service is built to address the real-time communication needs of modern applications in a fully secure and open-source way. 
 

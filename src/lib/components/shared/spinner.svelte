@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { classNames } from '$lib/utils/classnames';
+    import { cn } from '$lib/utils/cn';
 
     let className: string = '';
 
@@ -7,10 +7,10 @@
     export { className as class };
 </script>
 
-<div class={classNames('flex size-5 animate-spin [animation-duration:5s]', className)}>
+<div class={cn('flex size-5 animate-spin [animation-duration:5s]', className)}>
     <svg
         xmlns="http://www.w3.org/2000/svg"
-        class={classNames('motion-reduce:[animation:none]', {
+        class={cn('motion-reduce:[animation:none]', {
             'animate-spin': !paused
         })}
         viewBox="0 0 24 24"

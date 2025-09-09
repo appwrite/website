@@ -1,11 +1,11 @@
 import { base } from '$app/paths';
 
-export type CategoryData = {
+export interface CategoryData {
     name: string;
     description: string;
     href: string;
-};
-export type AuthorData = {
+}
+export interface AuthorData {
     name: string;
     slug: string;
     role: string;
@@ -15,8 +15,9 @@ export type AuthorData = {
     linkedin: string;
     github: string;
     href: string;
-};
-export type PostsData = {
+}
+
+export interface PostsData {
     draft: boolean;
     title: string;
     description: string;
@@ -35,7 +36,7 @@ export type PostsData = {
         label?: string;
         url?: string;
     };
-};
+}
 
 const postsGlob = import.meta.glob('./post/**/*.markdoc', {
     eager: true

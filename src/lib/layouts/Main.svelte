@@ -22,6 +22,7 @@
     import { getAppwriteDashboardUrl } from '$lib/utils/dashboard';
     import { Button, Icon, InlineTag } from '$lib/components/ui';
     import AnnouncementBanner from '$routes/(init)/init/(components)/announcement-banner.svelte';
+    import HackathonBanner from '$routes/(marketing)/(components)/(sites-hackathon)/hackathon-banner.svelte';
 
     export let omitMainId = false;
     let theme: 'light' | 'dark' | null = 'dark';
@@ -142,20 +143,25 @@
         }
     }
 
-    $: $isHeaderHidden, updateSideNav();
+    $: ($isHeaderHidden, updateSideNav());
+
+    const handleNav = () => {
+        $isMobileNavOpen = !$isMobileNavOpen;
+        document.body.style.overflow = $isMobileNavOpen ? 'hidden' : '';
+    };
 </script>
 
-<div class="relative">
-    <!--{#if !page.url.pathname.includes('/init')}-->
-    <!--    <div class="border-smooth relative z-10 border-b bg-[#19191C]">-->
-    <!--        <div class="is-special-padding mx-auto">-->
-    <!--            <AnnouncementBanner />-->
-    <!--        </div>-->
-    <!--    </div>-->
-    <!--{/if}-->
+<div class="relative contents h-full">
+    {#if !page.url.pathname.includes('/init')}
+        <div class="border-smooth relative z-10 border-b bg-[#19191C]">
+            <div class="is-special-padding mx-auto">
+                <HackathonBanner />
+            </div>
+        </div>
+    {/if}
 
     <section
-        class="web-mobile-header {resolvedTheme}"
+        class="web-mobile-header flex! lg:hidden! {resolvedTheme}"
         class:is-transparent={browser && !$isMobileNavOpen}
     >
         <div class="web-mobile-header-start">
@@ -182,11 +188,7 @@
                     <span class="text">Start building</span>
                 </Button>
             {/if}
-            <Button
-                variant="text"
-                aria-label="open navigation"
-                onclick={() => ($isMobileNavOpen = !$isMobileNavOpen)}
-            >
+            <Button variant="text" aria-label="open navigation" onclick={handleNav}>
                 {#if $isMobileNavOpen}
                     <Icon aria-hidden="true" name="close" />
                 {:else}
@@ -197,7 +199,7 @@
     </section>
 
     <header
-        class="web-main-header is-special-padding hidden lg:block {resolvedTheme} is-transparent"
+        class="web-main-header is-special-padding hidden lg:block! {resolvedTheme} is-transparent"
     >
         <div
             class="web-main-header-wrapper"
@@ -242,7 +244,7 @@
 
     <main
         class="relative space-y-6"
-        class:web-u-hide-mobile={$isMobileNavOpen}
+        class:invisible={$isMobileNavOpen}
         id={omitMainId ? undefined : 'main'}
     >
         <slot />

@@ -5,7 +5,7 @@ description: Add Appwrite authentication to you Svelte app using your Svelte sto
 step: 4
 ---
 
-# Using stores {% #using-stores %}
+## Using stores {% #using-stores %}
 
 Svelte [stores](https://svelte.dev/docs/svelte-store) provide an easy way to manage state throughout your application.
 We'll use a store to keep track of our user's data.
@@ -37,13 +37,21 @@ const createUser = () => {
 
 	async function register(email, password, name) {
 		if (!isBrowser) return;
-		await account.create(ID.unique(), email, password, name);
+		await account.create({
+			userId: ID.unique(),
+			email,
+			password,
+			name
+		});
 		await login(email, password);
 	}
 
 	async function login(email, password) {
 		if (!isBrowser) return;
-		await account.createEmailPasswordSession(email, password);
+		await account.createEmailPasswordSession({
+			email,
+			password
+		});
 		await init();
 		goto('/'); // Redirect to home page after login
 	}
@@ -66,7 +74,7 @@ const createUser = () => {
 export const user = createUser();
 ```
 
-# Login page {% #login-page %}
+## Login page {% #login-page %}
 
 Using this store, we can build a login page.
 

@@ -18,7 +18,7 @@
 
 <Main>
     <Hero />
-    <Platforms />
+    <Platforms headline="Designed for the tools you work with" />
     <LogoList
         class="border-smooth border-b"
         title="Loved by developers from the world's leading organizations"
@@ -33,7 +33,7 @@
         that you need with Appwrite.</Pullquote
     >
     <CaseStudies />
-    <Features />
+    <Features theme="light" />
     <div class="light bg-[#EDEDF0]">
         <Map theme="light" />
         <Scale

@@ -33,7 +33,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import io.appwrite.models.Document
+import io.appwrite.models.Row
 import io.appwrite.models.User
 import kotlinx.coroutines.launch
 import <YOUR_ROOT_PACKAGE_HERE>services.IdeaService
@@ -45,7 +45,7 @@ fun IdeasScreen(
     user: User<Map<String, Any>>?,
     ideasService: IdeaService
 ) {
-    var ideas by remember { mutableStateOf<List<Document<Map<String, Any>>>>(listOf()) }
+    var ideas by remember { mutableStateOf<List<Row<Map<String, Any>>>>(listOf()) }
     val coroutineScope = rememberCoroutineScope()
 
     LaunchedEffect(ideasService) {
@@ -117,7 +117,7 @@ fun IdeasScreen(
 }
 ```
 
-# Update navigation {% #update-navigation %}
+## Update navigation {% #update-navigation %}
 
 Update `MainActivity.kt` to add the `IdeasScreen` to the navigation bar.
 

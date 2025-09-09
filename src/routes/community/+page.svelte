@@ -280,7 +280,7 @@
                         >
                             <div>
                                 <h3 class="text-label text-primary">Check our Open Issues</h3>
-                                <p class="text-body mt-1 font-medium">
+                                <p class="text-main-body mt-1 font-medium">
                                     Anyone can join and help Appwrite become better.
                                 </p>
                                 <Button
@@ -354,7 +354,7 @@
                     >
                         <li>
                             <div
-                                class="web-card is-normal has-border-gradient web-u-gap-6 flex flex-col"
+                                class="web-card is-normal has-border-gradient web-u-gap-6 flex h-full flex-col"
                             >
                                 <div class="text-sub-body text-primary font-medium">
                                     Create content
@@ -366,7 +366,7 @@
                         </li>
                         <li>
                             <div
-                                class="web-card is-normal has-border-gradient web-u-gap-6 flex flex-col"
+                                class="web-card is-normal has-border-gradient web-u-gap-6 flex h-full flex-col"
                             >
                                 <div class="text-sub-body text-primary font-medium">
                                     Present at meetups
@@ -378,7 +378,7 @@
                         </li>
                         <li>
                             <div
-                                class="web-card is-normal has-border-gradient web-u-gap-6 flex flex-col"
+                                class="web-card is-normal has-border-gradient web-u-gap-6 flex h-full flex-col"
                             >
                                 <div class="text-sub-body text-primary font-medium">
                                     Report bugs
@@ -390,7 +390,7 @@
                         </li>
                         <li>
                             <div
-                                class="web-card is-normal has-border-gradient web-u-gap-6 flex flex-col"
+                                class="web-card is-normal has-border-gradient web-u-gap-6 flex h-full flex-col"
                             >
                                 <div class="text-sub-body text-primary font-medium">
                                     Submit new ideas
@@ -402,7 +402,7 @@
                         </li>
                         <li>
                             <div
-                                class="web-card is-normal has-border-gradient web-u-gap-6 flex flex-col"
+                                class="web-card is-normal has-border-gradient web-u-gap-6 flex h-full flex-col"
                             >
                                 <div class="text-sub-body text-primary font-medium">
                                     Improve documentation
@@ -414,7 +414,7 @@
                         </li>
                         <li>
                             <div
-                                class="web-card is-normal has-border-gradient web-u-gap-6 flex flex-col"
+                                class="web-card is-normal has-border-gradient web-u-gap-6 flex h-full flex-col"
                             >
                                 <div class="text-sub-body text-primary font-medium">
                                     Helping others
@@ -433,7 +433,8 @@
                         {#snippet header()}
                             <h4 class="text-label text-primary">Upcoming Events</h4>
                         {/snippet}
-                        {#each events as event}
+                        <li>There are no upcoming events scheduled.</li>
+                        <!-- {#each events as event}
                             <li>
                                 <EventCard
                                     href={event.href}
@@ -445,7 +446,7 @@
                                     buttonText={event.buttonText}
                                 />
                             </li>
-                        {/each}
+                        {/each} -->
                     </Carousel>
                 </section>
             </div>
@@ -495,13 +496,13 @@
                                 Discover Appwrite's community across platforms and join the fun.
                             </p>
                         </div>
-                        <ul class="web-multi-columns-1" style:--p-col-gap="-1rem">
+                        <ul class="grid grid-cols-1 md:grid-cols-2" style:--p-col-gap="-1rem">
                             <li>
                                 <a
                                     href={SOCIAL_STATS.DISCORD.LINK}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    class="web-card is-white web-u-min-block-size-320 flex flex-col"
+                                    class="web-card is-white web-u-min-block-size-320 flex flex-col transition-transform hover:-translate-y-2"
                                     style="--card-padding:2rem;rotate: 6deg"
                                 >
                                     <div class="flex flex-col justify-between gap-8">
@@ -521,7 +522,7 @@
                                     href={SOCIAL_STATS.TWITTER.LINK}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    class="web-card is-white web-u-min-block-size-320 flex flex-col"
+                                    class="web-card is-white web-u-min-block-size-320 flex flex-col transition-transform hover:-translate-y-2"
                                     style="--card-padding:2rem; rotate: 2deg"
                                 >
                                     <div class="flex flex-col justify-between gap-8">
@@ -541,7 +542,7 @@
                                     href={SOCIAL_STATS.GITHUB.LINK}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    class="web-card is-white web-u-min-block-size-320 flex flex-col"
+                                    class="web-card is-white web-u-min-block-size-320 flex flex-col transition-transform hover:-translate-y-2"
                                     style="--card-padding:2rem; rotate: -10deg"
                                 >
                                     <div class="flex flex-col justify-between gap-8">
@@ -561,7 +562,7 @@
                                     href={SOCIAL_STATS.YOUTUBE.LINK}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    class="web-card is-white web-u-min-block-size-320 flex flex-col"
+                                    class="web-card is-white web-u-min-block-size-320 flex flex-col transition-transform hover:-translate-y-2"
                                     style="--card-padding:2rem; rotate: -6deg"
                                 >
                                     <div class="flex flex-col justify-between gap-8">

@@ -4,7 +4,7 @@
     import Google from '../../../(assets)/logos/google.svg';
 
     import { isMobile } from '$lib/utils/is-mobile';
-    import { classNames } from '$lib/utils/classnames';
+    import { cn } from '$lib/utils/cn';
     import GridPaper from '../../grid-paper.svelte';
     import { unwrite, write } from '$lib/animations';
     import { trackEvent } from '$lib/actions/analytics';
@@ -77,24 +77,30 @@
                 <div class="pointer-events-none relative m-2 flex-1 rounded-4xl bg-[#19191C] p-4">
                     <div class="flex flex-col gap-3">
                         <div class="flex flex-col gap-1">
-                            <label for="email" class="text-x-micro text-secondary">Email</label>
+                            <label
+                                for="email"
+                                class="leading-micro text-secondary text-[0.625rem] tracking-tighter"
+                                >Email</label
+                            >
                             <input
                                 type="text"
                                 name="email"
-                                class="border-smooth text-micro w-full rounded-lg border bg-[#19191C] px-3 py-2 text-white"
+                                class="border-smooth text-eyebrow w-full rounded-lg border bg-[#19191C] px-3 py-2 tracking-tighter text-white"
                                 value="walter@acme.dev"
                                 disabled
                             />
                         </div>
                         <div class="flex flex-col gap-1">
-                            <label for="password" class="text-x-micro text-secondary"
+                            <label
+                                for="password"
+                                class="leading-micro text-secondary text-[0.625rem] tracking-tighter"
                                 >Create Password</label
                             >
                             <input
                                 type="text"
                                 name="password"
-                                class={classNames(
-                                    'text-micro w-full rounded-lg border border-white/24 bg-[#19191C] px-3 py-2 text-white'
+                                class={cn(
+                                    'text-eyebrow! w-full rounded-lg border border-white/24 bg-[#19191C] px-3 py-2 tracking-tighter text-white'
                                 )}
                                 placeholder="Your Password"
                                 value={password}
@@ -103,15 +109,15 @@
                         </div>
 
                         <button
-                            class="text-micro w-full rounded-lg bg-white py-2 font-medium text-[#19191C]"
+                            class="text-eyebrow w-full rounded-lg bg-white py-2 font-medium tracking-tighter text-[#19191C]"
                             disabled
                             bind:this={button}>Sign up</button
                         >
                     </div>
 
                     <span
-                        class={classNames(
-                            'text-x-micro text-secondary relative my-3 flex items-center justify-center gap-3 text-center'
+                        class={cn(
+                            'leading-micro text-secondary relative my-3 flex items-center justify-center gap-3 text-center text-[0.625rem] tracking-tighter'
                         )}
                     >
                         <span class="bg-smooth h-px flex-1"></span>
@@ -120,8 +126,8 @@
                     </span>
 
                     <button
-                        class={classNames(
-                            'text-micro border-smooth flex w-full items-center justify-center gap-3 rounded-lg border py-2 font-medium text-white transition'
+                        class={cn(
+                            'text-eyebrow border-smooth flex w-full items-center justify-center gap-3 rounded-lg border py-2 font-medium text-white transition'
                         )}
                         disabled
                     >

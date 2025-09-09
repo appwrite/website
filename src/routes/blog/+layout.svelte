@@ -6,6 +6,7 @@
     setContext<PostsData[]>('posts', data.posts);
     setContext<AuthorData[]>('authors', data.authors);
     setContext<CategoryData[]>('categories', data.categories);
+    setContext<string | null>('rawContent', data.rawContent);
 </script>
 
 {@render children()}

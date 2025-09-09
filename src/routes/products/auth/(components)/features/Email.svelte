@@ -35,7 +35,7 @@
                         <img src={Closed} class="size-4" alt="Closed envelope" />
                     </div>
                 {/if}
-                <div class="text-micro -tracking-tight">
+                <div class="text-eyebrow tracking-tight">
                     <span class="text-primary font-medium">{email.title} </span>
                     <span class="text-secondary font-normal">{email.copy}</span>
                 </div>

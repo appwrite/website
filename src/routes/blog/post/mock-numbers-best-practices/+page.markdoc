@@ -44,11 +44,11 @@ Log in to your Appwrite account and select the project you want to configure. En
 
 1. **Navigate to `Project > Auth > Security` :** Scroll to the **Mock phone numbers** section
 2. **Generate Mock Number**: Click the **generate number** button. This will generate a mock phone number and verification code that you can use to test user authentication.
-    
+
     ![Mock-numbers-Appwrite](/images/blog/mock-numbers-use-cases/1.png)
-    
+
     You can regenerate the number and verification code by clicking the icon beside the input field or you can edit it directly. To generate another mock phone number and verification code, click the **Add number** button.
-    
+
 3. **Save Changes**: Click the `Update` button to apply the mock number configurations.
 
 ## Step 3: Implement mock numbers in your application
@@ -85,11 +85,17 @@ Next, create a function to handle phone sign-in with mock numbers:
 async function createPhoneSession(phone, secret) {
   try {
 		// Create a phone token
-		const token = await account.createPhoneToken('unique_id', phone.trim())
+		const token = await account.createPhoneToken({
+			userId: 'unique_id',
+			phone: phone.trim()
+		})
     const userId = token.userId
 
 		// Create a session using the provided secret
-		const session = await account.createSession(userId, secret)
+		const session = await account.createSession({
+			userId,
+			secret
+		})
     console.log('Session created:', session)
     return session
   } catch (error) {
@@ -131,7 +137,7 @@ In this example:
 
 Use mock numbers only in development, testing, and demo environments. Avoid using them in production to maintain the integrity and security of your application’s authentication system.
 
-## Maintain consistency in test scenarios 
+## Maintain consistency in test scenarios
 
 Ensure that mock numbers and verification codes are used consistently across different testing environments. This consistency helps achieve reliable and repeatable test results.
 
@@ -153,7 +159,7 @@ Remove mock numbers that are not in use, or delete them once the tests are compl
 
 # Conclusion
 
-Mock numbers in Appwrite offer a practical solution for testing phone sign-in flows, facilitating development, QA testing, app reviews, and demonstrations. The feature will be available to Pro users in 1.6. 
+Mock numbers in Appwrite offer a practical solution for testing phone sign-in flows, facilitating development, QA testing, app reviews, and demonstrations. Mock numbers are available to Pro users (introduced in 1.6).
 
 By using mock numbers effectively and following best practices, you can streamline your testing processes and ensure a robust authentication experience for your users.
 

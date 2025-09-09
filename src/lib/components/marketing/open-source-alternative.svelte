@@ -7,7 +7,7 @@
     import DiscordLink from '../shared/discord-link.svelte';
     import GithubStats from '../shared/github-stats.svelte';
     import type { SvelteHTMLElements } from 'svelte/elements';
-    import { classNames } from '$lib/utils/classnames';
+    import { cn } from '$lib/utils/cn';
     import { onMount } from 'svelte';
 
     const items = [
@@ -60,7 +60,7 @@
     });
 </script>
 
-<div class={classNames('light bg-greyscale-50 pt-40 pb-40', className)} {...rest}>
+<div class={cn('light bg-greyscale-50 pt-40 pb-40', className)} {...rest}>
     <div class="container overflow-x-hidden max-md:px-5!">
         <div class="mx-auto mb-20 flex max-w-2xl flex-col items-center gap-4 text-center">
             <h2 class="text-display text-primary font-aeonik-pro">
@@ -76,7 +76,7 @@
                     ></div>
                 </div>
             </h2>
-            <p class="md:text-description text-body text-secondary font-medium">
+            <p class="md:text-description text-main-body text-secondary font-medium">
                 Appwrite is a 100% open source project, giving you the flexibility and support you
                 need to get your project started.
             </p>

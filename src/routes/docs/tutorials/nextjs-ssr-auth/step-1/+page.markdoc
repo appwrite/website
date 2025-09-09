@@ -13,7 +13,7 @@ category: Auth
 Appwrite takes away the stress of building and maintaining a backend. Appwrite helps implement authentication, databases, file storage, and respond to real-time events with **secure** APIs out of the box. 
 If you're a Next.js developer, the examples in this guide show you how Appwrite can help you add authentication to Next.js apps faster.
 
-# Before you start {% #before-you-start %}
+## Before you start {% #before-you-start %}
 
 Before following this tutorial, have the following prepared:
 

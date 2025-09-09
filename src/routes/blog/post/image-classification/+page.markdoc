@@ -152,7 +152,7 @@ This code will download a bunch of sample images of flowers, create two groups o
 Next, initialize a new function using the Appwrite CLI by using:
 
 ```bash
-appwrite init project # Use if you don't already have an appwrite.json
+appwrite init project # Use if you don't already have an appwrite.config.json
 appwrite init function
 ```
 
@@ -242,7 +242,7 @@ Pillow
 
 ### Step 4: Deploy your function
 
-Move the `model.tflite` file that was created into the same directory as the `main.py` file and then change directories to that containing the `appwrite.json`. This `model.tflite` is quite a small file, so store it in the function. If using larger models, upload them to Appwrite Storage and then use `getFileDownload` to download them to the function. 
+Move the `model.tflite` file that was created into the same directory as the `main.py` file and then change directories to that containing the `appwrite.config.json`. This `model.tflite` is quite a small file, so store it in the function. If using larger models, upload them to Appwrite Storage and then use `getFileDownload` to download them to the function. 
 
 With the file now copied, run appwrite deploy function and select the function to deploy it to Appwrite.
 

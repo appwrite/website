@@ -38,50 +38,6 @@
     }
 </script>
 
-<div class="pre-footer-bg" style="pointer-events:none;">
-    <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="692"
-        height="1171"
-        viewBox="0 0 692 1171"
-        fill="none"
-        style="max-inline-size:100%;"
-    >
-        <g opacity="0.4" filter="url(#filter0_f_1577_37321)">
-            <path
-                d="M-96.9811 29.2126C-329.155 33.7322 -513.706 225.611 -509.186 457.785C-504.667 689.959 -312.788 874.51 -80.6141 869.99C33.1857 867.775 -132.237 523.592 -36.8339 437.579C62.4044 348.109 394.063 627.529 391.759 509.155C387.239 276.98 135.193 24.693 -96.9811 29.2126Z"
-                fill="url(#paint0_radial_1577_37321)"
-            />
-        </g>
-        <defs>
-            <filter
-                id="filter0_f_1577_37321"
-                x="-809.268"
-                y="-270.847"
-                width="1501.04"
-                height="1440.92"
-                filterUnits="userSpaceOnUse"
-                color-interpolation-filters="sRGB"
-            >
-                <feFlood flood-opacity="0" result="BackgroundImageFix" />
-                <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
-                <feGaussianBlur stdDeviation="150" result="effect1_foregroundBlur_1577_37321" />
-            </filter>
-            <radialGradient
-                id="paint0_radial_1577_37321"
-                cx="0"
-                cy="0"
-                r="1"
-                gradientUnits="userSpaceOnUse"
-                gradientTransform="translate(-88.7975 449.601) rotate(178.885) scale(420.468 420.468)"
-            >
-                <stop offset="0.281696" stop-color="#FE9567" />
-                <stop offset="0.59375" stop-color="#FD366E" />
-            </radialGradient>
-        </defs>
-    </svg>
-</div>
-
 <div class="web-big-padding-section">
     <div class="py-10">
         <div class="web-big-padding-section-level-2">

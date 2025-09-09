@@ -4,7 +4,7 @@
         href: string;
         step?: number;
         selected?: boolean;
-        level?: number;
+        level: number;
         children?: Array<{
             title: string;
             href: string;
@@ -12,14 +12,20 @@
             level?: number;
         }>;
     };
+
+    export type HeaderSectionInfoAlert = {
+        title?: string;
+        description?: string;
+    };
 </script>
 
 <script lang="ts">
-    import { setContext } from 'svelte';
-    import { writable } from 'svelte/store';
+    import { getContext, hasContext, setContext } from 'svelte';
+    import { readable, type Readable, writable } from 'svelte/store';
     import { Feedback } from '$lib/components';
     import TableOfContents from '$lib/components/blog/table-of-contents.svelte';
     import { Button, Icon } from '$lib/components/ui';
+    import Info from '$markdoc/tags/Info.svelte';
 
     export let title: string;
     export let toc: Array<TocItem>;
@@ -27,11 +33,14 @@
     export let date: string | undefined = undefined;
 
     const reducedArticleSize = setContext('articleHasNumericBadge', writable(false));
+    const headerSectionInfoAlert = hasContext('headerSectionInfoAlert')
+        ? getContext<Readable<HeaderSectionInfoAlert | null>>('headerSectionInfoAlert')
+        : readable(null);
 </script>
 
 <main class="contents" id="main">
     <article class="web-article contents">
-        <header class="web-article-header">
+        <header class="web-article-header flex flex-col">
             <div class="web-article-header-start web-u-cross-start flex flex-col">
                 {#if back}
                     <a
@@ -49,7 +58,7 @@
                     {#if back}
                         <Button
                             href={back}
-                            class="web-u-translate-x-negative absolute top-0 size-10 items-center"
+                            class="web-u-translate-x-negative absolute size-10 items-center"
                             aria-label="previous page"
                             variant="icon"
                         >
@@ -60,12 +69,12 @@
                             />
                         </Button>
                     {/if}
+
                     <h1 class="text-title font-aeonik-pro text-primary">{title}</h1>
                 </div>
             </div>
-            <div class="web-article-header-end"></div>
         </header>
-        <div class="web-article-content" class:web-reduced-article-size={$reducedArticleSize}>
+        <div class="web-article-content prose" class:web-reduced-article-size={$reducedArticleSize}>
             <slot />
 
             <Feedback {date} />

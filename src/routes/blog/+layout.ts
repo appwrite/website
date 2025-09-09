@@ -1,9 +1,10 @@
 import { posts, authors, categories } from './content';
 
-export function load() {
+export async function load({ data }) {
     return {
         posts,
         authors,
-        categories
+        categories,
+        rawContent: data.rawContent
     };
 }

@@ -6,13 +6,13 @@
 </script>
 
 <div
-    class="box-content flex items-center bg-[url(/images/bgs/mobile-auth-hero.png)] bg-cover bg-bottom px-5 pt-20 pb-20 md:bg-[url(/images/bgs/auth-hero.png)] md:bg-center md:pt-32 md:pb-40 lg:px-8 xl:px-16"
+    class="border-smooth box-content flex items-center border-b bg-[url(/images/bgs/mobile-auth-hero.png)] bg-cover bg-bottom px-5 pt-20 pb-20 md:bg-[url(/images/bgs/auth-hero.png)] md:bg-center md:pt-32 md:pb-40 lg:px-8 xl:px-16"
 >
     <div class="mx-auto grid max-w-[75rem] items-center gap-16 md:grid-cols-2">
         <div class="space-y-4">
             <div class="flex items-center gap-2">
                 <img src="/images/icons/illustrated/dark/auth.png" class="size-8" alt="" />
-                <span class="text-micro text-primary uppercase">
+                <span class="text-eyebrow text-primary uppercase">
                     Auth<span class="web-u-color-text-accent">_</span>
                 </span>
             </div>
