@@ -12,7 +12,7 @@ We start with building the form.
 ## Idea form {% #idea-form %}
 
 On the home page, the logged in users should be able to add their ideas to the Appwrite database.
-The form need a text field for filling in the title, a textarea for the description and a submit button.
+The form needs a text field for filling in the title, a textarea for the description and a submit button.
 
 Create a new file `src/components/IdeasForm.tsx` and add the following code.
 
