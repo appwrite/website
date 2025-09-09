@@ -8,7 +8,7 @@ step: 4
 For our ideas tracker app, we want any visitor to be able to read the ideas that are stored.
 On the other hand, we don't want the page spammed with just about anything from anyone just stopping by.
 To prevent that, or at least making it a bit more difficult, editing ideas will be available for logged in users only.
-With a login function, we can differentiate between users and decide which users have access to which content.
+With authentication, we can differentiate between users and decide which users have access to which content.
 
 We will build a page with a simple login form and store its related logic in a custom hook so it can be reused.
 
