@@ -1370,7 +1370,12 @@ def main(context)
     tablesDB = Appwrite::TablesDB.new(client)
 
     begin
-        tablesDB.create_row('<DATABASE_ID>', '<TABLE_ID>', Appwrite::ID.unique(), {})
+        tablesDB.create_row(
+          database_id: '<DATABASE_ID>',
+          table_id: '<TABLE_ID>',
+          row_id: Appwrite::ID.unique(),
+          data: {}
+        )
     rescue Appwrite::Exception => e
         context.error("Failed to create row: " + e.message)
         return context.response.text("Failed to create row")
