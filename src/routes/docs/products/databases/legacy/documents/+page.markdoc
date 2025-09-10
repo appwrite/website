@@ -403,7 +403,7 @@ Handle large datasets by implementing pagination in your document queries.
 Perform create, update, and delete operations on multiple documents simultaneously.
 {% /cards_item %}
 
-{% cards_item href="/docs/products/databases/custom-timestamps" title="Custom timestamps" %}
+{% cards_item href="/docs/products/databases/timestamp-overrides" title="Timestamp overrides" %}
 Set custom creation and update timestamps when migrating data or backdating records.
 {% /cards_item %}
 {% /cards %}
