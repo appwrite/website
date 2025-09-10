@@ -1,6 +1,6 @@
 ---
 layout: article
-title: Custom timestamps
+title: Timestamp overrides
 description: Set custom $createdAt and $updatedAt timestamps for your documents when using server SDKs.
 ---
 
