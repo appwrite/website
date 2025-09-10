@@ -1808,6 +1808,15 @@ Query::distanceEqual("location", [-73.9851, 40.7589], 200)
 ```swift
 Query.distanceEqual("location", value: [-73.9851, 40.7589], 200)
 ```
+```kotlin
+Query.distanceEqual("location", listOf(-73.9851, 40.7589), 200)
+```
+```java
+Query.distanceEqual("location", Arrays.asList(-73.9851, 40.7589), 200)
+```
+```csharp
+Query.DistanceEqual("location", new List<double> { -73.9851, 40.7589 }, 200)
+```
 ```go
 query.DistanceEqual("location", []float64{-73.9851, 40.7589}, 200)
 ```
@@ -1841,6 +1850,15 @@ Query::distanceNotEqual("location", [-73.9851, 40.7589], 200)
 ```
 ```swift
 Query.distanceNotEqual("location", value: [-73.9851, 40.7589], 200)
+```
+```kotlin
+Query.distanceNotEqual("location", listOf(-73.9851, 40.7589), 200)
+```
+```java
+Query.distanceNotEqual("location", Arrays.asList(-73.9851, 40.7589), 200)
+```
+```csharp
+Query.DistanceNotEqual("location", new List<double> { -73.9851, 40.7589 }, 200)
 ```
 ```go
 query.DistanceNotEqual("location", []float64{-73.9851, 40.7589}, 200)
@@ -1876,6 +1894,15 @@ Query::distanceGreaterThan("location", [-73.9851, 40.7589], 200)
 ```swift
 Query.distanceGreaterThan("location", value: [-73.9851, 40.7589], 200)
 ```
+```kotlin
+Query.distanceGreaterThan("location", listOf(-73.9851, 40.7589), 200)
+```
+```java
+Query.distanceGreaterThan("location", Arrays.asList(-73.9851, 40.7589), 200)
+```
+```csharp
+Query.DistanceGreaterThan("location", new List<double> { -73.9851, 40.7589 }, 200)
+```
 ```go
 query.DistanceGreaterThan("location", []float64{-73.9851, 40.7589}, 200)
 ```
@@ -1909,6 +1936,15 @@ Query::distanceLessThan("location", [-73.9851, 40.7589], 200)
 ```
 ```swift
 Query.distanceLessThan("location", value: [-73.9851, 40.7589], 200)
+```
+```kotlin
+Query.distanceLessThan("location", listOf(-73.9851, 40.7589), 200)
+```
+```java
+Query.distanceLessThan("location", Arrays.asList(-73.9851, 40.7589), 200)
+```
+```csharp
+Query.DistanceLessThan("location", new List<double> { -73.9851, 40.7589 }, 200)
 ```
 ```go
 query.DistanceLessThan("location", []float64{-73.9851, 40.7589}, 200)
@@ -1944,6 +1980,26 @@ Query::intersects("area", [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 
 ```swift
 Query.intersects("area", value: [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]])
 ```
+```kotlin
+Query.intersects("area", listOf(listOf(-73.9851, 40.7589), listOf(-73.9776, 40.7614), listOf(-73.9733, 40.7505), listOf(-73.9851, 40.7589)))
+```
+```java
+Query.intersects("area", Arrays.asList(
+    Arrays.asList(-73.9851, 40.7589),
+    Arrays.asList(-73.9776, 40.7614),
+    Arrays.asList(-73.9733, 40.7505),
+    Arrays.asList(-73.9851, 40.7589)
+))
+```
+```csharp
+Query.Intersects("area", new List<List<double>>
+{
+    new List<double> { -73.9851, 40.7589 },
+    new List<double> { -73.9776, 40.7614 },
+    new List<double> { -73.9733, 40.7505 },
+    new List<double> { -73.9851, 40.7589 }
+})
+```
 ```go
 query.Intersects("area", [][]float64{{-73.9851, 40.7589}, {-73.9776, 40.7614}, {-73.9733, 40.7505}, {-73.9851, 40.7589}})
 ```
@@ -1977,6 +2033,26 @@ Query::notIntersects("area", [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.973
 ```
 ```swift
 Query.notIntersects("area", value: [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]])
+```
+```kotlin
+Query.notIntersects("area", listOf(listOf(-73.9851, 40.7589), listOf(-73.9776, 40.7614), listOf(-73.9733, 40.7505), listOf(-73.9851, 40.7589)))
+```
+```java
+Query.notIntersects("area", Arrays.asList(
+    Arrays.asList(-73.9851, 40.7589),
+    Arrays.asList(-73.9776, 40.7614),
+    Arrays.asList(-73.9733, 40.7505),
+    Arrays.asList(-73.9851, 40.7589)
+))
+```
+```csharp
+Query.NotIntersects("area", new List<List<double>>
+{
+    new List<double> { -73.9851, 40.7589 },
+    new List<double> { -73.9776, 40.7614 },
+    new List<double> { -73.9733, 40.7505 },
+    new List<double> { -73.9851, 40.7589 }
+})
 ```
 ```go
 query.NotIntersects("area", [][]float64{{-73.9851, 40.7589}, {-73.9776, 40.7614}, {-73.9733, 40.7505}, {-73.9851, 40.7589}})
@@ -2012,6 +2088,26 @@ Query::overlaps("zone", [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40
 ```swift
 Query.overlaps("zone", value: [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]])
 ```
+```kotlin
+Query.overlaps("zone", listOf(listOf(-73.9851, 40.7589), listOf(-73.9776, 40.7614), listOf(-73.9733, 40.7505), listOf(-73.9851, 40.7589)))
+```
+```java
+Query.overlaps("zone", Arrays.asList(
+    Arrays.asList(-73.9851, 40.7589),
+    Arrays.asList(-73.9776, 40.7614),
+    Arrays.asList(-73.9733, 40.7505),
+    Arrays.asList(-73.9851, 40.7589)
+))
+```
+```csharp
+Query.Overlaps("zone", new List<List<double>>
+{
+    new List<double> { -73.9851, 40.7589 },
+    new List<double> { -73.9776, 40.7614 },
+    new List<double> { -73.9733, 40.7505 },
+    new List<double> { -73.9851, 40.7589 }
+})
+```
 ```go
 query.Overlaps("zone", [][]float64{{-73.9851, 40.7589}, {-73.9776, 40.7614}, {-73.9733, 40.7505}, {-73.9851, 40.7589}})
 ```
@@ -2045,6 +2141,26 @@ Query::notOverlaps("zone", [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733,
 ```
 ```swift
 Query.notOverlaps("zone", value: [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]])
+```
+```kotlin
+Query.notOverlaps("zone", listOf(listOf(-73.9851, 40.7589), listOf(-73.9776, 40.7614), listOf(-73.9733, 40.7505), listOf(-73.9851, 40.7589)))
+```
+```java
+Query.notOverlaps("zone", Arrays.asList(
+    Arrays.asList(-73.9851, 40.7589),
+    Arrays.asList(-73.9776, 40.7614),
+    Arrays.asList(-73.9733, 40.7505),
+    Arrays.asList(-73.9851, 40.7589)
+))
+```
+```csharp
+Query.NotOverlaps("zone", new List<List<double>>
+{
+    new List<double> { -73.9851, 40.7589 },
+    new List<double> { -73.9776, 40.7614 },
+    new List<double> { -73.9733, 40.7505 },
+    new List<double> { -73.9851, 40.7589 }
+})
 ```
 ```go
 query.NotOverlaps("zone", [][]float64{{-73.9851, 40.7589}, {-73.9776, 40.7614}, {-73.9733, 40.7505}, {-73.9851, 40.7589}})
@@ -2080,6 +2196,26 @@ Query::touches("boundary", [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733,
 ```swift
 Query.touches("boundary", value: [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]])
 ```
+```kotlin
+Query.touches("boundary", listOf(listOf(-73.9851, 40.7589), listOf(-73.9776, 40.7614), listOf(-73.9733, 40.7505), listOf(-73.9851, 40.7589)))
+```
+```java
+Query.touches("boundary", Arrays.asList(
+    Arrays.asList(-73.9851, 40.7589),
+    Arrays.asList(-73.9776, 40.7614),
+    Arrays.asList(-73.9733, 40.7505),
+    Arrays.asList(-73.9851, 40.7589)
+))
+```
+```csharp
+Query.Touches("boundary", new List<List<double>>
+{
+    new List<double> { -73.9851, 40.7589 },
+    new List<double> { -73.9776, 40.7614 },
+    new List<double> { -73.9733, 40.7505 },
+    new List<double> { -73.9851, 40.7589 }
+})
+```
 ```go
 query.Touches("boundary", [][]float64{{-73.9851, 40.7589}, {-73.9776, 40.7614}, {-73.9733, 40.7505}, {-73.9851, 40.7589}})
 ```
@@ -2113,6 +2249,26 @@ Query::notTouches("boundary", [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.97
 ```
 ```swift
 Query.notTouches("boundary", value: [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]])
+```
+```kotlin
+Query.notTouches("boundary", listOf(listOf(-73.9851, 40.7589), listOf(-73.9776, 40.7614), listOf(-73.9733, 40.7505), listOf(-73.9851, 40.7589)))
+```
+```java
+Query.notTouches("boundary", Arrays.asList(
+    Arrays.asList(-73.9851, 40.7589),
+    Arrays.asList(-73.9776, 40.7614),
+    Arrays.asList(-73.9733, 40.7505),
+    Arrays.asList(-73.9851, 40.7589)
+))
+```
+```csharp
+Query.NotTouches("boundary", new List<List<double>>
+{
+    new List<double> { -73.9851, 40.7589 },
+    new List<double> { -73.9776, 40.7614 },
+    new List<double> { -73.9733, 40.7505 },
+    new List<double> { -73.9851, 40.7589 }
+})
 ```
 ```go
 query.NotTouches("boundary", [][]float64{{-73.9851, 40.7589}, {-73.9776, 40.7614}, {-73.9733, 40.7505}, {-73.9851, 40.7589}})
@@ -2148,6 +2304,22 @@ Query::crosses("route", [[-73.9851, 40.7589], [-73.9776, 40.7614]])
 ```swift
 Query.crosses("route", value: [[-73.9851, 40.7589], [-73.9776, 40.7614]])
 ```
+```kotlin
+Query.crosses("route", listOf(listOf(-73.9851, 40.7589), listOf(-73.9776, 40.7614)))
+```
+```java
+Query.crosses("route", Arrays.asList(
+    Arrays.asList(-73.9851, 40.7589),
+    Arrays.asList(-73.9776, 40.7614)
+))
+```
+```csharp
+Query.Crosses("route", new List<List<double>>
+{
+    new List<double> { -73.9851, 40.7589 },
+    new List<double> { -73.9776, 40.7614 }
+})
+```
 ```go
 query.Crosses("route", [][]float64{{-73.9851, 40.7589}, {-73.9776, 40.7614}})
 ```
@@ -2181,6 +2353,22 @@ Query::notCrosses("route", [[-73.9851, 40.7589], [-73.9776, 40.7614]])
 ```
 ```swift
 Query.notCrosses("route", value: [[-73.9851, 40.7589], [-73.9776, 40.7614]])
+```
+```kotlin
+Query.notCrosses("route", listOf(listOf(-73.9851, 40.7589), listOf(-73.9776, 40.7614)))
+```
+```java
+Query.notCrosses("route", Arrays.asList(
+    Arrays.asList(-73.9851, 40.7589),
+    Arrays.asList(-73.9776, 40.7614)
+))
+```
+```csharp
+Query.NotCrosses("route", new List<List<double>>
+{
+    new List<double> { -73.9851, 40.7589 },
+    new List<double> { -73.9776, 40.7614 }
+})
 ```
 ```go
 query.NotCrosses("route", [][]float64{{-73.9851, 40.7589}, {-73.9776, 40.7614}})
