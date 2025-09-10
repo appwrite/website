@@ -8,7 +8,7 @@ Spatial attributes store geographic data as coordinates, shapes, and areas that 
 
 These types of geographic operations can be performed in Appwrite using spatial attributes and queries.
 
-Coordinates are specified as `[latitude, longitude]` arrays. Distance measurements are in meters.
+Coordinates are specified as `[longitude, latitude]` arrays. Distance measurements are in meters.
 
 # Spatial attributes {% #spatial-attributes %}
 
