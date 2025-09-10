@@ -1440,7 +1440,7 @@ func Main(Context openruntimes.Context) openruntimes.Response {
 
 	databases := appwrite.NewTablesDB(client)
 
-	_, err := databases.createRow(
+	_, err := tablesDB.createRow(
 		"<DATABASE_ID>",
 		"<TABLE_ID>",
 		id.Unique(),
@@ -1542,7 +1542,7 @@ namespace DotNetRuntime
             var tablesDB = new TablesDB(client);
 
             try {
-                await databases.createRow(
+                await tablesDB.createRow(
                     databaseId: "<DATABASE_ID>",
                     tableId: "<TABLE_ID>",
                     rowId: ID.Unique(),
@@ -2088,7 +2088,7 @@ func Main(Context openruntimes.Context) openruntimes.Response {
 
 	databases := appwrite.NewTablesDB(client)
 
-	_, err := databases.createRow(
+	_, err := tablesDB.createRow(
 		"<DATABASE_ID>",
 		"<TABLE_ID>",
 		id.Unique(),
@@ -2190,7 +2190,7 @@ namespace DotNetRuntime
             var tablesDB = new TablesDB(client);
 
             try {
-                await databases.createRow(
+                await tablesDB.createRow(
                     databaseId: "<DATABASE_ID>",
                     tableId: "<TABLE_ID>",
                     rowId: ID.Unique(),
