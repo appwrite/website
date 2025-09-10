@@ -224,12 +224,14 @@ $databases->updateDocument(
     ]
 );
 ```server-python
+from datetime import datetime, timezone
+
 databases.update_document(
     database_id='<DATABASE_ID>',
     collection_id='<COLLECTION_ID>',
     document_id='<DOCUMENT_ID>',
     data={
-        '$updatedAt': iso,
+        '$updatedAt': datetime(2025, 8, 10, 12, 34, 56, tzinfo=timezone.utc).isoformat(),
         # ...your attributes
     }
 )
