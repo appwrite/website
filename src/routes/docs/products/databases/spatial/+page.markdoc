@@ -16,7 +16,7 @@ Appwrite provides first-class geo types that can be stored as table attributes:
 
 - **Point**: Represents a single geographic coordinate as `[longitude, latitude]`
 - **Line**: Represents a series of connected geographic coordinates forming a path or route
-- **Polygon**: Represents a closed area defined by a series of coordinates forming a boundary
+- **Polygon**: Represents a closed area defined by a series of coordinates forming a boundary and optional hole punches within that boundary
 
 # Spatial index {% #spatial-index %}
 
