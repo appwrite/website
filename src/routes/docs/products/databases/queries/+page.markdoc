@@ -1790,23 +1790,26 @@ Returns rows where the spatial attribute is exactly the specified distance from 
 ```client-web
 Query.distanceEqual("location", [-73.9851, 40.7589], 200)
 ```
-```server-nodejs
-sdk.Query.distanceEqual("location", [-73.9851, 40.7589], 200)
-```
 ```client-flutter
 Query.distanceEqual("location", [-73.9851, 40.7589], 200)
 ```
-```client-apple
-Query.distanceEqual("location", value: [-73.9851, 40.7589], 200)
+```python
+Query.distance_equal("location", [-73.9851, 40.7589], 200)
 ```
-```client-android-kotlin
-Query.distanceEqual("location", listOf(-73.9851, 40.7589), 200)
+```ruby
+Query.distance_equal("location", [-73.9851, 40.7589], 200)
+```
+```deno
+Query.distanceEqual("location", [-73.9851, 40.7589], 200)
 ```
 ```php
 Query::distanceEqual("location", [-73.9851, 40.7589], 200)
 ```
-```python
-Query.distance_equal("location", [-73.9851, 40.7589], 200)
+```swift
+Query.distanceEqual("location", value: [-73.9851, 40.7589], 200)
+```
+```go
+query.DistanceEqual("location", []float64{-73.9851, 40.7589}, 200)
 ```
 ```http
 {"method":"distanceEqual","column":"location","values":[[-73.9851, 40.7589], 200]}
@@ -1821,23 +1824,26 @@ Returns rows where the spatial attribute is not exactly the specified distance f
 ```client-web
 Query.distanceNotEqual("location", [-73.9851, 40.7589], 200)
 ```
-```server-nodejs
-sdk.Query.distanceNotEqual("location", [-73.9851, 40.7589], 200)
-```
 ```client-flutter
 Query.distanceNotEqual("location", [-73.9851, 40.7589], 200)
 ```
-```client-apple
-Query.distanceNotEqual("location", value: [-73.9851, 40.7589], 200)
+```python
+Query.distance_not_equal("location", [-73.9851, 40.7589], 200)
 ```
-```client-android-kotlin
-Query.distanceNotEqual("location", listOf(-73.9851, 40.7589), 200)
+```ruby
+Query.distance_not_equal("location", [-73.9851, 40.7589], 200)
+```
+```deno
+Query.distanceNotEqual("location", [-73.9851, 40.7589], 200)
 ```
 ```php
 Query::distanceNotEqual("location", [-73.9851, 40.7589], 200)
 ```
-```python
-Query.distance_not_equal("location", [-73.9851, 40.7589], 200)
+```swift
+Query.distanceNotEqual("location", value: [-73.9851, 40.7589], 200)
+```
+```go
+query.DistanceNotEqual("location", []float64{-73.9851, 40.7589}, 200)
 ```
 ```http
 {"method":"distanceNotEqual","column":"location","values":[[-73.9851, 40.7589], 200]}
@@ -1852,23 +1858,26 @@ Returns rows where the spatial attribute is more than the specified distance fro
 ```client-web
 Query.distanceGreaterThan("location", [-73.9851, 40.7589], 200)
 ```
-```server-nodejs
-sdk.Query.distanceGreaterThan("location", [-73.9851, 40.7589], 200)
-```
 ```client-flutter
 Query.distanceGreaterThan("location", [-73.9851, 40.7589], 200)
 ```
-```client-apple
-Query.distanceGreaterThan("location", value: [-73.9851, 40.7589], 200)
+```python
+Query.distance_greater_than("location", [-73.9851, 40.7589], 200)
 ```
-```client-android-kotlin
-Query.distanceGreaterThan("location", listOf(-73.9851, 40.7589), 200)
+```ruby
+Query.distance_greater_than("location", [-73.9851, 40.7589], 200)
+```
+```deno
+Query.distanceGreaterThan("location", [-73.9851, 40.7589], 200)
 ```
 ```php
 Query::distanceGreaterThan("location", [-73.9851, 40.7589], 200)
 ```
-```python
-Query.distance_greater_than("location", [-73.9851, 40.7589], 200)
+```swift
+Query.distanceGreaterThan("location", value: [-73.9851, 40.7589], 200)
+```
+```go
+query.DistanceGreaterThan("location", []float64{-73.9851, 40.7589}, 200)
 ```
 ```http
 {"method":"distanceGreaterThan","column":"location","values":[[-73.9851, 40.7589], 200]}
@@ -1883,23 +1892,26 @@ Returns rows where the spatial attribute is less than the specified distance fro
 ```client-web
 Query.distanceLessThan("location", [-73.9851, 40.7589], 200)
 ```
-```server-nodejs
-sdk.Query.distanceLessThan("location", [-73.9851, 40.7589], 200)
-```
 ```client-flutter
 Query.distanceLessThan("location", [-73.9851, 40.7589], 200)
 ```
-```client-apple
-Query.distanceLessThan("location", value: [-73.9851, 40.7589], 200)
+```python
+Query.distance_less_than("location", [-73.9851, 40.7589], 200)
 ```
-```client-android-kotlin
-Query.distanceLessThan("location", listOf(-73.9851, 40.7589), 200)
+```ruby
+Query.distance_less_than("location", [-73.9851, 40.7589], 200)
+```
+```deno
+Query.distanceLessThan("location", [-73.9851, 40.7589], 200)
 ```
 ```php
 Query::distanceLessThan("location", [-73.9851, 40.7589], 200)
 ```
-```python
-Query.distance_less_than("location", [-73.9851, 40.7589], 200)
+```swift
+Query.distanceLessThan("location", value: [-73.9851, 40.7589], 200)
+```
+```go
+query.DistanceLessThan("location", []float64{-73.9851, 40.7589}, 200)
 ```
 ```http
 {"method":"distanceLessThan","column":"location","values":[[-73.9851, 40.7589], 200]}
@@ -1914,23 +1926,26 @@ Returns rows where the spatial attribute intersects with the provided geometry.
 ```client-web
 Query.intersects("area", [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]])
 ```
-```server-nodejs
-sdk.Query.intersects("area", [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]])
-```
 ```client-flutter
 Query.intersects("area", [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]])
 ```
-```client-apple
-Query.intersects("area", value: [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]])
+```python
+Query.intersects("area", [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]])
 ```
-```client-android-kotlin
-Query.intersects("area", listOf(listOf(-73.9851, 40.7589), listOf(-73.9776, 40.7614), listOf(-73.9733, 40.7505)))
+```ruby
+Query.intersects("area", [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]])
+```
+```deno
+Query.intersects("area", [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]])
 ```
 ```php
 Query::intersects("area", [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]])
 ```
-```python
-Query.intersects("area", [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]])
+```swift
+Query.intersects("area", value: [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]])
+```
+```go
+query.Intersects("area", [][]float64{{-73.9851, 40.7589}, {-73.9776, 40.7614}, {-73.9733, 40.7505}, {-73.9851, 40.7589}})
 ```
 ```http
 {"method":"intersects","column":"area","values":[[[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]]]}
@@ -1945,23 +1960,26 @@ Returns rows where the spatial attribute does not intersect with the provided ge
 ```client-web
 Query.notIntersects("area", [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]])
 ```
-```server-nodejs
-sdk.Query.notIntersects("area", [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]])
-```
 ```client-flutter
 Query.notIntersects("area", [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]])
 ```
-```client-apple
-Query.notIntersects("area", value: [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]])
+```python
+Query.not_intersects("area", [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]])
 ```
-```client-android-kotlin
-Query.notIntersects("area", listOf(listOf(-73.9851, 40.7589), listOf(-73.9776, 40.7614), listOf(-73.9733, 40.7505)))
+```ruby
+Query.not_intersects("area", [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]])
+```
+```deno
+Query.notIntersects("area", [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]])
 ```
 ```php
 Query::notIntersects("area", [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]])
 ```
-```python
-Query.not_intersects("area", [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]])
+```swift
+Query.notIntersects("area", value: [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]])
+```
+```go
+query.NotIntersects("area", [][]float64{{-73.9851, 40.7589}, {-73.9776, 40.7614}, {-73.9733, 40.7505}, {-73.9851, 40.7589}})
 ```
 ```http
 {"method":"notIntersects","column":"area","values":[[[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]]]}
@@ -1976,23 +1994,26 @@ Returns rows where the spatial attribute overlaps with the provided geometry.
 ```client-web
 Query.overlaps("zone", [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]])
 ```
-```server-nodejs
-sdk.Query.overlaps("zone", [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]])
-```
 ```client-flutter
 Query.overlaps("zone", [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]])
 ```
-```client-apple
-Query.overlaps("zone", value: [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]])
+```python
+Query.overlaps("zone", [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]])
 ```
-```client-android-kotlin
-Query.overlaps("zone", listOf(listOf(-73.9851, 40.7589), listOf(-73.9776, 40.7614), listOf(-73.9733, 40.7505)))
+```ruby
+Query.overlaps("zone", [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]])
+```
+```deno
+Query.overlaps("zone", [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]])
 ```
 ```php
 Query::overlaps("zone", [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]])
 ```
-```python
-Query.overlaps("zone", [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]])
+```swift
+Query.overlaps("zone", value: [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]])
+```
+```go
+query.Overlaps("zone", [][]float64{{-73.9851, 40.7589}, {-73.9776, 40.7614}, {-73.9733, 40.7505}, {-73.9851, 40.7589}})
 ```
 ```http
 {"method":"overlaps","column":"zone","values":[[[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]]]}
@@ -2007,23 +2028,26 @@ Returns rows where the spatial attribute does not overlap with the provided geom
 ```client-web
 Query.notOverlaps("zone", [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]])
 ```
-```server-nodejs
-sdk.Query.notOverlaps("zone", [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]])
-```
 ```client-flutter
 Query.notOverlaps("zone", [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]])
 ```
-```client-apple
-Query.notOverlaps("zone", value: [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]])
+```python
+Query.not_overlaps("zone", [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]])
 ```
-```client-android-kotlin
-Query.notOverlaps("zone", listOf(listOf(-73.9851, 40.7589), listOf(-73.9776, 40.7614), listOf(-73.9733, 40.7505)))
+```ruby
+Query.not_overlaps("zone", [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]])
+```
+```deno
+Query.notOverlaps("zone", [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]])
 ```
 ```php
 Query::notOverlaps("zone", [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]])
 ```
-```python
-Query.not_overlaps("zone", [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]])
+```swift
+Query.notOverlaps("zone", value: [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]])
+```
+```go
+query.NotOverlaps("zone", [][]float64{{-73.9851, 40.7589}, {-73.9776, 40.7614}, {-73.9733, 40.7505}, {-73.9851, 40.7589}})
 ```
 ```http
 {"method":"notOverlaps","column":"zone","values":[[[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]]]}
@@ -2038,23 +2062,26 @@ Returns rows where the spatial attribute touches the provided geometry.
 ```client-web
 Query.touches("boundary", [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]])
 ```
-```server-nodejs
-sdk.Query.touches("boundary", [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]])
-```
 ```client-flutter
 Query.touches("boundary", [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]])
 ```
-```client-apple
-Query.touches("boundary", value: [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]])
+```python
+Query.touches("boundary", [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]])
 ```
-```client-android-kotlin
-Query.touches("boundary", listOf(listOf(-73.9851, 40.7589), listOf(-73.9776, 40.7614), listOf(-73.9733, 40.7505)))
+```ruby
+Query.touches("boundary", [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]])
+```
+```deno
+Query.touches("boundary", [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]])
 ```
 ```php
 Query::touches("boundary", [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]])
 ```
-```python
-Query.touches("boundary", [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]])
+```swift
+Query.touches("boundary", value: [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]])
+```
+```go
+query.Touches("boundary", [][]float64{{-73.9851, 40.7589}, {-73.9776, 40.7614}, {-73.9733, 40.7505}, {-73.9851, 40.7589}})
 ```
 ```http
 {"method":"touches","column":"boundary","values":[[[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]]]}
@@ -2069,23 +2096,26 @@ Returns rows where the spatial attribute does not touch the provided geometry.
 ```client-web
 Query.notTouches("boundary", [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]])
 ```
-```server-nodejs
-sdk.Query.notTouches("boundary", [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]])
-```
 ```client-flutter
 Query.notTouches("boundary", [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]])
 ```
-```client-apple
-Query.notTouches("boundary", value: [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]])
+```python
+Query.not_touches("boundary", [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]])
 ```
-```client-android-kotlin
-Query.notTouches("boundary", listOf(listOf(-73.9851, 40.7589), listOf(-73.9776, 40.7614), listOf(-73.9733, 40.7505)))
+```ruby
+Query.not_touches("boundary", [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]])
+```
+```deno
+Query.notTouches("boundary", [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]])
 ```
 ```php
 Query::notTouches("boundary", [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]])
 ```
-```python
-Query.not_touches("boundary", [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]])
+```swift
+Query.notTouches("boundary", value: [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]])
+```
+```go
+query.NotTouches("boundary", [][]float64{{-73.9851, 40.7589}, {-73.9776, 40.7614}, {-73.9733, 40.7505}, {-73.9851, 40.7589}})
 ```
 ```http
 {"method":"notTouches","column":"boundary","values":[[[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]]]}
@@ -2100,23 +2130,26 @@ Returns rows where the spatial attribute crosses the provided geometry.
 ```client-web
 Query.crosses("route", [[-73.9851, 40.7589], [-73.9776, 40.7614]])
 ```
-```server-nodejs
-sdk.Query.crosses("route", [[-73.9851, 40.7589], [-73.9776, 40.7614]])
-```
 ```client-flutter
 Query.crosses("route", [[-73.9851, 40.7589], [-73.9776, 40.7614]])
 ```
-```client-apple
-Query.crosses("route", value: [[-73.9851, 40.7589], [-73.9776, 40.7614]])
+```python
+Query.crosses("route", [[-73.9851, 40.7589], [-73.9776, 40.7614]])
 ```
-```client-android-kotlin
-Query.crosses("route", listOf(listOf(-73.9851, 40.7589), listOf(-73.9776, 40.7614)))
+```ruby
+Query.crosses("route", [[-73.9851, 40.7589], [-73.9776, 40.7614]])
+```
+```deno
+Query.crosses("route", [[-73.9851, 40.7589], [-73.9776, 40.7614]])
 ```
 ```php
 Query::crosses("route", [[-73.9851, 40.7589], [-73.9776, 40.7614]])
 ```
-```python
-Query.crosses("route", [[-73.9851, 40.7589], [-73.9776, 40.7614]])
+```swift
+Query.crosses("route", value: [[-73.9851, 40.7589], [-73.9776, 40.7614]])
+```
+```go
+query.Crosses("route", [][]float64{{-73.9851, 40.7589}, {-73.9776, 40.7614}})
 ```
 ```http
 {"method":"crosses","column":"route","values":[[[-73.9851, 40.7589], [-73.9776, 40.7614]]]}
@@ -2131,23 +2164,26 @@ Returns rows where the spatial attribute does not cross the provided geometry.
 ```client-web
 Query.notCrosses("route", [[-73.9851, 40.7589], [-73.9776, 40.7614]])
 ```
-```server-nodejs
-sdk.Query.notCrosses("route", [[-73.9851, 40.7589], [-73.9776, 40.7614]])
-```
 ```client-flutter
 Query.notCrosses("route", [[-73.9851, 40.7589], [-73.9776, 40.7614]])
 ```
-```client-apple
-Query.notCrosses("route", value: [[-73.9851, 40.7589], [-73.9776, 40.7614]])
+```python
+Query.not_crosses("route", [[-73.9851, 40.7589], [-73.9776, 40.7614]])
 ```
-```client-android-kotlin
-Query.notCrosses("route", listOf(listOf(-73.9851, 40.7589), listOf(-73.9776, 40.7614)))
+```ruby
+Query.not_crosses("route", [[-73.9851, 40.7589], [-73.9776, 40.7614]])
+```
+```deno
+Query.notCrosses("route", [[-73.9851, 40.7589], [-73.9776, 40.7614]])
 ```
 ```php
 Query::notCrosses("route", [[-73.9851, 40.7589], [-73.9776, 40.7614]])
 ```
-```python
-Query.not_crosses("route", [[-73.9851, 40.7589], [-73.9776, 40.7614]])
+```swift
+Query.notCrosses("route", value: [[-73.9851, 40.7589], [-73.9776, 40.7614]])
+```
+```go
+query.NotCrosses("route", [][]float64{{-73.9851, 40.7589}, {-73.9776, 40.7614}})
 ```
 ```http
 {"method":"notCrosses","column":"route","values":[[[-73.9851, 40.7589], [-73.9776, 40.7614]]]}
