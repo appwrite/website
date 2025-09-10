@@ -66,12 +66,12 @@ client
     .setProject('<PROJECT_ID>')                    // Your project ID
     .setKey('919c2d18fb5d4...a2ae413da83346ad2');   // Your secret API key
 
-const message = await messaging.createPush(
-    sdk.ID.unique(),                // messageId
-    'Init_ Day 0',                  // title
-    'Appwrite Messaging is here!',  // body
-    ['init-day-0'],                 // topic IDs
-);
+const message = await messaging.createPush({
+    messageId: sdk.ID.unique(),
+    title: 'Init_ Day 0',
+    body: 'Appwrite Messaging is here!',
+    topics: ['init-day-0']
+});
 ```
 
 # Resources

@@ -11,7 +11,9 @@ category: tutorial
 
 You just built your Next.js app with all the killer features you wanted. Now you want to put it out for the world to see. But you’re confused — “how do I do that?”. If you’re that person, this article is for you.
 
-In this article, you will learn how to deploy your Next.js app completely free of cost. We will use Appwrite Sites to achieve that. Appwrite is an all-in-one open-source BaaS (backend as a service) that handles the backend part of your application so that you can focus on the app's core logic rather than unnecessary technical details. 
+In this article, you will learn how to deploy your Next.js app completely free of cost. We will use Appwrite Sites to achieve that.
+
+Appwrite is an open-source, all-in-one cloud development platform. Use built-in backend infrastructure and web hosting, all from a single place. You can build your entire backend within minutes and deploy effortlessly, adding Authentication, Databases, Functions, Storage, Messaging, and more to your projects using the frameworks and languages of your choice.
 
 Appwrite Sites is a frontend hosting service that can help you deploy your Next.js (or any web framework) app in minutes with full RSC (React Server Components) and SSR (server‑side rendering) functionality.
 
