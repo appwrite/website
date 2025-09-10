@@ -1778,7 +1778,7 @@ Query.updatedAfter("2025-01-01T00:00:00Z")
 {% /multicode %}
 # Spatial operations {% #spatial-operations %}
 
-Spatial queries enable geographic operations on [spatial attributes](/docs/products/databases/spatial). Coordinates are specified as `[longitude, latitude]` arrays. Distance measurements are in meters.
+Spatial queries enable geographic operations on [spatial attributes](/docs/products/databases/spatial). Coordinates are specified as `[longitude, latitude]` arrays. Distance measurements can be specified in meters or degrees.
 
 For conceptual information about spatial data types and indexing, see [Spatial](/docs/products/databases/spatial).
 
