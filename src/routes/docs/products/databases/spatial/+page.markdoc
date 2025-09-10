@@ -1,7 +1,7 @@
 ---
 layout: article
 title: Spatial
-description: Store geographic data with points, lines, and polygons. Query spatial relationships with distance, intersects, overlaps, and other geo-spatial operations.
+description: Store geographic data with points, lines, and polygons. Query spatial data with distance, intersects, overlaps, and other geo-spatial operations.
 ---
 
 Spatial attributes store geographic data as coordinates, shapes, and areas that can be queried using location-based operations. Applications use spatial data to find nearby locations, check if coordinates fall within boundaries, or calculate distances between points.
