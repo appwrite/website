@@ -16,7 +16,7 @@
                             width="32"
                             height="32"
                         />
-                        <h4 class="text-body text-primary">Auth</h4>
+                        <h4 class="text-main-body text-primary">Auth</h4>
                         <span class="icon-arrow-right ml-0" aria-hidden="true"></span>
                     </div>
                     <p class="text-sub-body ml-1">
@@ -38,7 +38,7 @@
                             width="32"
                             height="32"
                         />
-                        <h4 class="text-body text-primary">Functions</h4>
+                        <h4 class="text-main-body text-primary">Functions</h4>
                         <span class="icon-arrow-right ml-0" aria-hidden="true"></span>
                     </div>
                     <p class="text-sub-body ml-1">
@@ -60,7 +60,7 @@
                             width="32"
                             height="32"
                         />
-                        <h4 class="text-body text-primary">Databases</h4>
+                        <h4 class="text-main-body text-primary">Databases</h4>
                         <span class="icon-arrow-right ml-0" aria-hidden="true"></span>
                     </div>
                     <p class="text-sub-body ml-1">
@@ -82,7 +82,7 @@
                             width="32"
                             height="32"
                         />
-                        <h4 class="text-body text-primary">Messaging</h4>
+                        <h4 class="text-main-body text-primary">Messaging</h4>
                         <span class="icon-arrow-right ml-0" aria-hidden="true"></span>
                     </div>
                     <p class="text-sub-body ml-1">
@@ -104,7 +104,7 @@
                             width="32"
                             height="32"
                         />
-                        <h4 class="text-body text-primary">Realtime</h4>
+                        <h4 class="text-main-body text-primary">Realtime</h4>
                         <span class="icon-arrow-right ml-0" aria-hidden="true"></span>
                     </div>
                     <p class="text-sub-body ml-1">

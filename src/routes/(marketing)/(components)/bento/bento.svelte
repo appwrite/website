@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { classNames } from '$lib/utils/classnames';
+    import { cn } from '$lib/utils/cn';
     import Auth from './(animations)/auth.svelte';
     import Databases from './(animations)/databases.svelte';
     import Functions from './(animations)/functions.svelte';
@@ -52,18 +52,20 @@
 
 <div class="container py-20">
     <div class="mx-auto mb-16 flex max-w-5xl flex-col gap-8">
-        <h2 class="text-primary font-aeonik-pro mx-auto max-w-lg text-center text-4xl md:text-5xl">
+        <h2 class="text-primary font-aeonik-pro text-title mx-auto max-w-lg text-center">
             All the products you need, in one platform
         </h2>
 
         <div class="hidden justify-between gap-8 lg:flex">
             <div
-                class={classNames(
+                class={cn(
                     'bg-card border-smooth text-primary relative flex h-10 items-center gap-4 rounded-full border border-dashed p-1 text-sm',
                     'after:border-smooth after:absolute after:top-1/2 after:-right-22 after:h-px after:w-22 after:-translate-y-1/2 after:border-b after:border-dashed'
                 )}
             >
-                <span class="text-micro text-secondary font-aeonik-fono ml-3 uppercase">Build</span>
+                <span class="text-eyebrow text-secondary font-aeonik-fono ml-3 uppercase"
+                    >Build</span
+                >
                 <div class="flex h-full w-full justify-between gap-2">
                     {#each build as product}
                         <a
@@ -89,7 +91,8 @@
             <div
                 class="bg-card border-smooth text-primary flex h-10 items-center gap-4 rounded-full border border-dashed p-1 text-sm"
             >
-                <span class="text-micro text-secondary font-aeonik-fono ml-3 uppercase">Deploy</span
+                <span class="text-eyebrow text-secondary font-aeonik-fono ml-3 uppercase"
+                    >Deploy</span
                 >
                 <div class="flex h-full w-full justify-between gap-2">
                     {#each deploy as product}

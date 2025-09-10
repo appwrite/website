@@ -64,23 +64,6 @@
                         >
                             Appwrite offers simple and transparent pricing plans with no surprises.
                         </p>
-                        <div class="mt-4 flex flex-col items-center text-white">
-                            <a href="/blog/post/appwrite-pricing-update">
-                                <BadgeTransparent
-                                    ><img
-                                        src="/images/icons/illustrated/light/sites.png"
-                                        alt="Sites icon"
-                                        class="h-8 w-8"
-                                    />
-                                    <span class="text-white">New Appwrite pricing announced</span>
-                                    <Icon name="arrow-right" aria-hidden="true"
-                                    ></Icon></BadgeTransparent
-                                ></a
-                            >
-                            <span class="mt-2 text-sm text-[var(--color-primary)] opacity-64"
-                                >New pricing will go into effect September 1st, 2025</span
-                            >
-                        </div>
                     </div>
                 </section>
             </div>
@@ -107,7 +90,7 @@
                                                 $0
                                             </div>
                                             <div class="mt-1">&nbsp;</div>
-                                            <p class="text-body mt-4 h-[5rem] font-medium">
+                                            <p class="text-main-body mt-4 h-[5rem] font-medium">
                                                 A great fit for passion projects and small
                                                 applications.
                                             </p>
@@ -174,12 +157,12 @@
                                                     <div
                                                         class="text-title font-aeonik-pro text-primary mt-3"
                                                     >
-                                                        $15
+                                                        $25
                                                     </div>
                                                     <div class="mt-1">/month</div>
                                                 </div>
                                             </div>
-                                            <p class="text-body mt-4 h-[5rem] font-medium">
+                                            <p class="text-main-body mt-4 h-[5rem] font-medium">
                                                 For production applications that need powerful
                                                 functionality and resources to scale.
                                             </p>
@@ -198,9 +181,9 @@
                                             </Button>
                                         </header>
                                         <div class="web-pricing-cards-content">
-                                            <p>Everything in Free, plus:</p>
+                                            <p>Dedicated resources per project:</p>
                                             <ul class="web-checked-list-circle">
-                                                <li><span>300GB API bandwidth</span></li>
+                                                <li><span>2TB API bandwidth</span></li>
                                                 <li><span>150GB storage</span></li>
                                                 <li><span>3.5M executions</span></li>
                                                 <li><span>200K monthly active users</span></li>
@@ -246,7 +229,7 @@
                                                 </div>
                                             </div>
 
-                                            <p class="text-body mt-4 h-[5rem] font-medium">
+                                            <p class="text-main-body mt-4 h-[5rem] font-medium">
                                                 For teams that handle more complex and large
                                                 projects and need more control and support.
                                             </p>
@@ -301,7 +284,7 @@
                                                 Custom
                                             </div>
                                             <div class="mt-1">&nbsp;</div>
-                                            <p class="text-body mt-4 h-[5rem] font-medium">
+                                            <p class="text-main-body mt-4 h-[5rem] font-medium">
                                                 For enterprises that need more power and premium
                                                 support.
                                             </p>
@@ -341,11 +324,11 @@
                     <div class="mt-24 grid grid-cols-1 place-items-center gap-4 md:grid-cols-2">
                         <div class="cta-card w-full p-6">
                             <h6
-                                class="text-body text-primary mb-2 flex items-center gap-3 font-medium"
+                                class="text-main-body text-primary mb-2 flex items-center gap-3 font-medium"
                             >
                                 Enterprises
                             </h6>
-                            <p class="text-body text-secondary font-medium">
+                            <p class="text-main-body text-secondary font-medium">
                                 Large scale projects seeking greater performance, collaboration and
                                 security.
                             </p>
@@ -358,11 +341,11 @@
                         </div>
                         <div class="cta-card w-full p-6">
                             <h6
-                                class="text-body text-primary mb-2 flex items-center gap-3 font-medium"
+                                class="text-main-body text-primary mb-2 flex items-center gap-3 font-medium"
                             >
                                 Open Source
                             </h6>
-                            <p class="text-body text-secondary font-medium">
+                            <p class="text-main-body text-secondary font-medium">
                                 We support open-source teams with free access to Pro and Scale
                                 plans.
                             </p>

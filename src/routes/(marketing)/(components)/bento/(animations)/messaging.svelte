@@ -86,7 +86,9 @@
             <div class="flex size-8 shrink-0 items-center justify-center rounded-lg bg-black">
                 <div class="size-3 rounded-full bg-white"></div>
             </div>
-            <div class="max-lg:text-micro text-x-micro flex flex-col">
+            <div
+                class="max-lg:text-eyebrow leading-micro flex flex-col text-[0.625rem] tracking-tighter"
+            >
                 <h2 class="text-primary flex justify-between font-medium">
                     New security measures added <span class="text-secondary/50 mr-1 block">now</span
                     >
@@ -104,20 +106,21 @@
         >
             <div class="m-2 flex-1 rounded-t-[34px] bg-[#19191C]">
                 <div class="flex items-center justify-between px-8 pt-4">
-                    <span class="text-x-micro w-10 font-semibold text-white"
+                    <span
+                        class="leading-micro w-10 text-[0.625rem] font-semibold tracking-tighter text-white"
                         >{format(new Date(), 'h:mm')}</span
                     >
                     <div class="h-5 w-[84px] rounded-full bg-black"></div>
                     <div class="h-3 w-7 rounded-full bg-black"></div>
                 </div>
                 <div
-                    class="text-micro mt-6 grid flex-1 grid-cols-4 grid-rows-24 place-items-center gap-3 p-6"
+                    class="text-eyebrow mt-6 grid flex-1 grid-cols-4 grid-rows-24 place-items-center gap-3 p-6"
                 >
                     <div
                         class="relative flex aspect-square size-full shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-white/10 to-white/3 shadow-sm shadow-black/5"
                     >
                         <div
-                            class="bg-accent text-micro absolute -top-1 -right-1 flex size-3 items-center justify-center rounded-full"
+                            class="bg-accent text-eyebrow absolute -top-1 -right-1 flex size-3 items-center justify-center rounded-full"
                         ></div>
 
                         <img loading="lazy" src={Email} alt="" class="size-6" />

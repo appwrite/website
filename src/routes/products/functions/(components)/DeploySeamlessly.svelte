@@ -1,6 +1,6 @@
 <script lang="ts">
     import { Button } from '$lib/components/ui';
-    import { classNames } from '$lib/utils/classnames';
+    import { cn } from '$lib/utils/cn';
     import Window from '../(assets)/deploy-window.png';
 </script>
 
@@ -12,7 +12,7 @@
             <h2 class="text-title text-primary font-aeonik-pro my-4 text-pretty">
                 Deploy seamlessly<br /> with no effort
             </h2>
-            <p class="text-body text-secondary font-medium text-pretty">
+            <p class="text-main-body text-secondary font-medium text-pretty">
                 Appwrite offers to deploy functions directly from Git repositories to track changes
                 within your development workflow seamlessly.
             </p>
@@ -69,7 +69,10 @@
 
             <div class="grid w-full flex-1 grid-cols-12 gap-2 overflow-hidden px-4">
                 <div class="col-span-3 col-start-1 flex flex-col">
-                    <span class="text-x-micro font-medium text-white">Changes</span>
+                    <span
+                        class="leading-micro tracking-tigher text-[0.625rem] font-medium text-white"
+                        >Changes</span
+                    >
                     <ul class="mt-2 space-y-1 pr-4 text-[9px]">
                         <li class="flex items-center justify-between">
                             <span>app/src/../<span class="text-white">main.js</span></span>
@@ -184,14 +187,14 @@
                     </ul>
 
                     <button
-                        class="md:text-micro mt-auto mb-0 rounded-md border border-white/8 bg-[#19191C] py-1 text-[8px] font-medium text-white md:py-2"
+                        class="md:text-eyebrow mt-auto mb-0 rounded-md border border-white/8 bg-[#19191C] py-1 text-[8px] font-medium tracking-tighter text-white md:py-2"
                         >Commit and push</button
                     >
                 </div>
                 <div class="col-span-9 col-start-4 overflow-hidden rounded-xl bg-[#232325] p-2">
                     <ul
-                        class={classNames(
-                            'text-greyscale-600 relative px-1 font-mono',
+                        class={cn(
+                            'text-greyscale-600 font-fira-code relative px-1',
                             'after:absolute after:inset-0 after:bg-gradient-to-b after:from-transparent after:via-transparent after:to-[#232325]'
                         )}
                     >
@@ -201,8 +204,8 @@
                             {@const isError = lineNumber === 41}
                             {@const isGood = highlightedNumbers.includes(lineNumber)}
                             <li
-                                class={classNames(
-                                    'md:text-x-micro pointer-events-none pl-2 text-[6px]',
+                                class={cn(
+                                    'leading-micro tracking-tigher pointer-events-none pl-2 text-[6px] md:text-[0.625rem]',
                                     {
                                         'rounded bg-[#FF453A]/8 text-white': isError,
                                         'bg-[#7ADF82]/8 text-white': isGood,

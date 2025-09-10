@@ -1,6 +1,6 @@
 <script lang="ts">
     import { slide } from 'svelte/transition';
-    import { classNames } from '$lib/utils/classnames';
+    import { cn } from '$lib/utils/cn';
     import { trackEvent } from '$lib/actions/analytics';
     import { melt, createCollapsible } from '@melt-ui/svelte';
     import { products, sublinks } from './ProductsSubmenu.svelte';
@@ -20,7 +20,7 @@
             class="text-caption web-side-nav-button flex items-center justify-between"
             >{label}
             <span
-                class={classNames('web-icon-chevron-down transition-transform', {
+                class={cn('web-icon-chevron-down transition-transform', {
                     'rotate-180': $open
                 })}
             ></span></button

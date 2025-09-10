@@ -8,7 +8,7 @@ step: 6
 We're going to add CRUD pages to our admin panel so you can list, create, and view blog posts records.
 
 
-# List page {% #list-page %}
+## List page {% #list-page %}
 
 
  First, create a listing page to show Appwrite API data in a table by copying the code below into `src/pages/posts` and saving it as `list.tsx`.
@@ -66,7 +66,7 @@ export const PostList: React.FC<IResourceComponentsProps> = () => {
 };
 ```
 
-# Create page {% #create-page %}
+## Create page {% #create-page %}
 
  Create a new record page for the Appwrite API by copying the following code and saving it as `create.tsx`.
 
@@ -116,7 +116,7 @@ export const PostCreate: React.FC<IResourceComponentsProps> = () => {
 };
 ```
 
-# Edit page {% #edit-page %}
+## Edit page {% #edit-page %}
 
 Create a page for editing a records with the following code and saving it as `edit.tsx`.
 
@@ -166,7 +166,7 @@ export const PostEdit: React.FC<IResourceComponentsProps> = () => {
 };
 ```
 
-# Show page {% #show-page %}
+## Show page {% #show-page %}
 
  Create a page for showig the records with the following code and saving it as `edit.tsx`.
 
@@ -200,7 +200,7 @@ export const PostShow: React.FC<IResourceComponentsProps> = () => {
 };
 ```
 
-# Interfaces {% #interfaces %}
+## Interfaces {% #interfaces %}
 
  We need to add interfaces to `src/interfaces/index.d.ts` file.
 
@@ -229,7 +229,7 @@ export interface IPostVariables {
 }
 ```
 
-# Connect pages to the App
+## Connect pages to the App
 
 Finally, import the pages into `App.tsx` and define them in the `<Route>` components. 
 
@@ -276,7 +276,7 @@ const App: React.FC = () => (
           routerProvider={routerProvider}
           resources={[
             {
-              name: "<APPWRITE_COLLECTION_ID>",
+              name: "<APPWRITE_TABLE_ID>",
               list: "/posts",
               create: "/posts/create",
               edit: "/posts/edit/:id",
@@ -309,7 +309,7 @@ const App: React.FC = () => (
                 index
                 element={
                   <NavigateToResource 
-                    resource="<APPWRITE_COLLECTION_ID>" 
+                    resource="<APPWRITE_TABLE_ID>" 
                   />
                 }
               />
@@ -326,7 +326,7 @@ const App: React.FC = () => (
               element={
                 <Authenticated fallback={<Outlet />}>
                   <NavigateToResource
-                    resource="<APPWRITE_COLLECTION_ID>" 
+                    resource="<APPWRITE_TABLE_ID>" 
                   />
                 </Authenticated>
               }

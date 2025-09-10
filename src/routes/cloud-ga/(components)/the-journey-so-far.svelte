@@ -46,7 +46,7 @@
             <Cell column={2} columnStart={1} class="px-4 pt-12 md:py-30">
                 <div class="space-y-4">
                     <span
-                        class="font-aeonik-fono text-secondary text-micro tracking-loose inline-block uppercase"
+                        class="font-aeonik-fono text-secondary text-eyebrow tracking-loose inline-block uppercase"
                         >Milestones for Success</span
                     >
                     <h2
@@ -98,7 +98,7 @@
             {#each milestones as milestone}
                 <div class="border-accent -ml-2 flex flex-col border-l pl-2">
                     <span
-                        class="font-aeonik-fono tracking-loose text-secondary text-micro uppercase"
+                        class="font-aeonik-fono tracking-loose text-secondary text-eyebrow uppercase"
                         >{milestone.date}</span
                     >
                     <span class="text-primary font-medium">{milestone.label}</span>

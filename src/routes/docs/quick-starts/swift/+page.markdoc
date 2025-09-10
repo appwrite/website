@@ -37,10 +37,10 @@ Then, under **Integrate with your server**, add an **API Key** with the followin
 | Category  {% width=120 %} | Required scopes       | Purpose |
 |-----------|-----------------------|---------|
 | Database  | `databases.write`     | Allows API key to create, update, and delete [databases](/docs/products/databases/databases). |
-|           | `collections.write`   | Allows API key to create, update, and delete [collections](/docs/products/databases/collections). |
-|           | `attributes.write`    | Allows API key to create, update, and delete [attributes](/docs/products/databases/collections#attributes). |
-|           | `documents.read`      | Allows API key to read [documents](/docs/products/databases/documents). |
-|           | `documents.write`     | Allows API key to create, update, and delete [documents](/docs/products/databases/documents). |
+|           | `tables.write`   | Allows API key to create, update, and delete [tables](/docs/products/databases/tables). |
+|           | `columns.write`    | Allows API key to create, update, and delete [columns](/docs/products/databases/tables#columns). |
+|           | `rows.read`      | Allows API key to read [rows](/docs/products/databases/rows). |
+|           | `rows.write`     | Allows API key to create, update, and delete [rows](/docs/products/databases/rows). |
 
 Other scopes are optional.
 
@@ -93,52 +93,52 @@ let client = Client()
 {% /section %}
 {% section #step-5 step=5 title="Initialize database" %}
 
-Once the Appwrite Client is initialized, create a function to configure a todo collection.
+Once the Appwrite Client is initialized, create a function to configure a todo table.
 
 ```swift
-let databases = Databases(client)
+let tablesDB = TablesDB(client)
 
-func prepareDatabase() async -> (Database?, Collection?) {
-    let todoDatabase = try? await databases.create(
+func prepareDatabase() async -> (Database?, Table?) {
+    let todoDatabase = try? await tablesDB.create(
         databaseId: ID.unique(),
         name: "TodosDB"
     )
-    let todoCollection = try? await databases.createCollection(
+    let todoTable = try? await tablesDB.createTable(
         databaseId: todoDatabase!.id,
-        collectionId: ID.unique(),
+        tableId: ID.unique(),
         name: "Todos"
     )
-    try? await databases.createStringAttribute(
+    try? await tablesDB.createStringColumn(
         databaseId: todoDatabase!.id,
-        collectionId: todoCollection!.id,
+        tableId: todoTable!.id,
         key: "title",
         size: 255,
         xrequired: true
     )
-    try? await databases.createStringAttribute(
+    try? await tablesDB.createStringColumn(
         databaseId: todoDatabase!.id as! String,
-        collectionId: todoCollection!.id as! String,
+        tableId: todoTable!.id as! String,
         key: "description",
         size: 255,
         xrequired: false,
         xdefault: "This is a test description."
     )
-    try? await databases.createBooleanAttribute(
+    try? await tablesDB.createBooleanColumn(
         databaseId: todoDatabase!.id as! String,
-        collectionId: todoCollection!.id as! String,
+        tableId: todoTable!.id as! String,
         key: "isComplete",
         xrequired: true
     )
     
-    return (todoDatabase, todoCollection)
+    return (todoDatabase, todoTable)
 }
 ```
 
 {% /section %}
-{% section #step-6 step=6 title="Add documents" %}
-Create a function to add some mock data into your new collection.
+{% section #step-6 step=6 title="Add rows" %}
+Create a function to add some mock data into your new table.
 ```swift
-func seedDatabase(todoDatabase: Database?, todoCollection: Collection?) async {
+func seedDatabase(todoDatabase: Database?, todoTable: Table?) async {
     let testTodo1: [String: Any] = [
         "title": "Buy apples",
         "description": "At least 2KGs",
@@ -156,40 +156,40 @@ func seedDatabase(todoDatabase: Database?, todoCollection: Collection?) async {
         "isComplete": false
     ]
 
-    try? await databases.createDocument(
+    try? await tablesDB.createRow(
         databaseId: todoDatabase!.id,
-        collectionId: todoCollection!.id,
-        documentId: ID.unique(), 
+        tableId: todoTable!.id,
+        rowId: ID.unique(), 
         data: testTodo1
     )
-    try? await databases.createDocument(
+    try? await tablesDB.createRow(
         databaseId: todoDatabase!.id,
-        collectionId: todoCollection!.id,
-        documentId: ID.unique(), 
+        tableId: todoTable!.id,
+        rowId: ID.unique(), 
         data: testTodo2
     )
-    try? await databases.createDocument(
+    try? await tablesDB.createRow(
         databaseId: todoDatabase!.id,
-        collectionId: todoCollection!.id,
-        documentId: ID.unique(),
+        tableId: todoTable!.id,
+        rowId: ID.unique(),
         data: testTodo3
     )
 }
 ```
 
 {% /section %}
-{% section #step-7 step=7 title="Retrieve documents" %}
+{% section #step-7 step=7 title="Retrieve rows" %}
 
 Create a function to retrieve the mock todo data.
 
 ```swift
-func getTodos(todoDatabase: Database?, todoCollection: Collection?) async {
-    let todos = try? await databases.listDocuments(
+func getTodos(todoDatabase: Database?, todoTable: Table?) async {
+    let todos = try? await tablesDB.listRows(
         databaseId: todoDatabase!.id as! String,
-        collectionId: todoCollection!.id as! String
+        tableId: todoTable!.id as! String
     )
-    for document in todos?.documents ?? [] {
-        if let todo = document.data as? [String: Any] {
+    for row in todos?.rows ?? [] {
+        if let todo = row.data as? [String: Any] {
             print("Title: \(todo["title"] ?? "")\n"
                 + "Description: \(todo["description"] ?? "")\n"
                 + "Is Todo Complete: \(todo["isComplete"] ?? "")\n\n"
@@ -198,9 +198,9 @@ func getTodos(todoDatabase: Database?, todoCollection: Collection?) async {
     }
 }
 
-let (todoDatabase, todoCollection) = await prepareDatabase()
-await seedDatabase(todoDatabase: todoDatabase, todoCollection: todoCollection)
-await getTodos(todoDatabase: todoDatabase, todoCollection: todoCollection)
+let (todoDatabase, todoTable) = await prepareDatabase()
+await seedDatabase(todoDatabase: todoDatabase, todoTable: todoTable)
+await getTodos(todoDatabase: todoDatabase, todoTable: todoTable)
 ```
 
 {% /section %}

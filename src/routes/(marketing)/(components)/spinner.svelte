@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { classNames } from '$lib/utils/classnames';
+    import { cn } from '$lib/utils/cn';
 
     type Props = {
         shouldAnimate: boolean;
@@ -10,7 +10,7 @@
 <div role="status" class="order-1 md:order-2">
     <svg
         aria-hidden="true"
-        class={classNames('h-3 w-3 fill-white text-white/10 [animation-duration:3s]', {
+        class={cn('h-3 w-3 fill-white text-white/10 [animation-duration:3s]', {
             'animate-spin': shouldAnimate
         })}
         viewBox="0 0 100 101"

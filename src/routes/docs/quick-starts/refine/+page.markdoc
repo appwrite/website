@@ -140,7 +140,7 @@ const App: React.FC = () => {
                             <Route
                                 element={
                                     <Authenticated fallback={<Outlet />}>
-                                        <NavigateToResource resource="<APPWRITE_COLLECTION_ID>" />
+                                        <NavigateToResource resource="<APPWRITE_TABLE_ID>" />
                                     </Authenticated>
                                 }
                             >

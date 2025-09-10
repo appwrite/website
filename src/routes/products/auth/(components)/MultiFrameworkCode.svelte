@@ -1,6 +1,6 @@
 <script lang="ts">
     import { Select, Tooltip } from '$lib/components';
-    import { classNames } from '$lib/utils/classnames';
+    import { cn } from '$lib/utils/cn';
     import { getCodeHtml, type Language } from '$lib/utils/code';
     import { copy } from '$lib/utils/copy';
     import { platformMap } from '$lib/utils/references';
@@ -71,10 +71,7 @@
     );
 </script>
 
-<section
-    class={classNames('dark web-code-snippet mx-auto', className)}
-    aria-label="code-snippet panel"
->
+<section class={cn('dark web-code-snippet mx-auto', className)} aria-label="code-snippet panel">
     <header class="web-code-snippet-header">
         <div class="web-code-snippet-header-start">
             <div class="flex gap-4">

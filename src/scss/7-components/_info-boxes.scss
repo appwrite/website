@@ -1,25 +1,38 @@
 @use '../abstract' as *;
 
 .#{$p}-info-boxes {
-  --p-info-boxes-sep-color: var(--web-color-smooth);
+  --p-info-boxes-sep-color: var(--color-smooth);
 
   display:grid; gap:pxToRem(1);
   grid-template-columns: repeat(auto-fill, minmax(pxToRem(306), 1fr));
   margin-inline-start:pxToRem(-32); margin-block-start:pxToRem(-32);
   clip-path: inset(pxToRem(1.2)); overflow:hidden;
 
-  &-item {
-    position:relative;
-    padding-inline:pxToRem(32);
-    padding-block-start:pxToRem(32); padding-block-end:pxToRem(32);
-    border-block-end:solid pxToRem(1) hsl(var(--p-info-boxes-sep-color));
-    &::after {
-      content:"";
-      position:absolute; inset-block-start:0; inset-inline-end:0;
-      display:block; height:100vh;
-      border-inline-end:solid pxToRem(1) hsl(var(--p-info-boxes-sep-color));
+ &-item {
+  position:relative;
+  padding-inline:pxToRem(32);
+  padding-block-start:pxToRem(32); padding-block-end:pxToRem(32);
+  border-block-end:solid pxToRem(1) var(--color-smooth);
+  &::after {
+    content:"";
+    position:absolute; inset-block-start:0; inset-inline-end:0;
+    display:block; height:100vh;
+    border-inline-end:solid pxToRem(1) var(--color-smooth);
+  }
+  &:nth-child(3n)::after,
+  &::after {
+    @media (max-width:767.9px) {
+      display: none;
     }
   }
+  &:nth-child(3n)::after {
+    display: none;
+  }
+  &:nth-child(n+4) {
+    border-block-end: none;
+  }
+}
+
   &-title {
     display:flex; flex-wrap:wrap; align-items:baseline; gap:pxToRem(12);
     margin-block-start:pxToRem(16); color:hsl(var(--web-color-primary));

@@ -1,9 +1,9 @@
 <script lang="ts">
-    import { classNames } from '$lib/utils/classnames';
+    import { cn } from '$lib/utils/cn';
 </script>
 
 <div
-    class={classNames(
+    class={cn(
         'grid-bg border-smooth relative flex items-center border-b px-5 py-28 lg:px-8 xl:px-16',
         'before:from-accent/20 before:absolute before:inset-0 before:-z-1 before:bg-linear-to-tr before:via-transparent before:via-40% before:to-transparent'
     )}
@@ -11,7 +11,7 @@
     <div class="relative container pb-0">
         <div class="flex flex-col items-center">
             <div class="flex flex-col items-center justify-center gap-5 text-center">
-                <div class="text-micro text-white uppercase">
+                <div class="text-eyebrow text-white uppercase">
                     Appwrite Partner Catalog<span class="web-u-color-text-accent">_</span>
                 </div>
                 <h1 class="text-headline font-aeonik-pro text-primary">Find a Partner</h1>

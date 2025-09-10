@@ -1,6 +1,6 @@
 <script lang="ts">
     import { browser } from '$app/environment';
-    import { classNames } from '$lib/utils/classnames';
+    import { cn } from '$lib/utils/cn';
     import AnimatedLogo from './animated-logo.svelte';
 
     type Props = {
@@ -103,7 +103,7 @@
     );
 </script>
 
-<div class={classNames('py-12', className)}>
+<div class={cn('py-12', className)}>
     <div class="mx-auto max-w-4xl">
         <h2
             class="font-aeonik-pro text-greyscale-100 text-description mx-auto max-w-[312px] text-center text-pretty"

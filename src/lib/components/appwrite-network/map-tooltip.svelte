@@ -62,7 +62,7 @@
 </script>
 
 <script lang="ts">
-    import { classNames } from '$lib/utils/classnames';
+    import { cn } from '$lib/utils/cn';
     interface TooltipProps {
         x: number;
         y: number;
@@ -80,13 +80,13 @@
 </script>
 
 <div
-    class={classNames('pointer-events-none fixed z-100 hidden md:block', theme)}
+    class={cn('pointer-events-none fixed z-100 hidden md:block', theme)}
     style:left={`${x}px`}
     style:top={`${y}px`}
 >
     {#if tooltipData.city}
         <div
-            class={classNames(
+            class={cn(
                 'border-gradient relative z-100 flex w-[190px] flex-col gap-2 rounded-[10px] p-2 backdrop-blur-lg before:rounded-[10px] after:rounded-[10px]',
                 { 'bg-transparent': theme === 'dark', 'bg-white': theme === 'light' }
             )}
@@ -99,7 +99,7 @@
             {/key}
             {#if tooltipData.available}
                 <div
-                    class={classNames(
+                    class={cn(
                         'text-caption flex h-5 items-center justify-center place-self-start rounded-md p-1 text-center',
                         {
                             'bg-[#10B981]/16 text-[#0A714F]': theme === 'light',
@@ -107,11 +107,11 @@
                         }
                     )}
                 >
-                    <span class="text-micro -tracking-tight">Available now</span>
+                    <span class="text-eyebrow -tracking-tight">Available now</span>
                 </div>
             {:else}
                 <div
-                    class={classNames(
+                    class={cn(
                         'text-caption text-primary flex h-5 items-center justify-center place-self-start rounded-md bg-black/6 p-1 text-center',
                         {
                             'text-primary bg-black/6': theme === 'light',
@@ -119,7 +119,7 @@
                         }
                     )}
                 >
-                    <span class="text-micro -tracking-tight">{tooltipData.date}</span>
+                    <span class="text-eyebrow -tracking-tight">{tooltipData.date}</span>
                 </div>
             {/if}
         </div>

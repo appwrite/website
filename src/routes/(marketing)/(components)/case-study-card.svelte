@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { classNames } from '$lib/utils/classnames';
+    import { cn } from '$lib/utils/cn';
     import { ToggleGroup } from 'bits-ui';
     import type { CaseStudy } from './case-studies.svelte';
     import { Icon } from '$lib/components/ui';
@@ -15,7 +15,7 @@
 
 <ToggleGroup.Item
     {value}
-    class={classNames(
+    class={cn(
         'relative grid w-full cursor-pointer overflow-hidden rounded-2xl border border-transparent backdrop-blur-3xl transition-all ease-in-out [grid-template-areas:"stack"] md:max-h-[467px]',
         'group/card hover:bg-black/24',
         'outline-0 duration-250 hover:shadow-[0px_0px_0px_4px_var(--color-offset)] focus:shadow-[0px_0px_0px_4px_var(--color-offset)]!',
@@ -29,14 +29,14 @@
         alt={study.headline}
         width={100}
         height={100}
-        class={classNames(
+        class={cn(
             'h-5 shrink-0 opacity-100 transition-all [grid-area:stack] lg:h-12',
             'self-center justify-self-center brightness-50 group-[&[data-state=on]]/card:invisible group-[&[data-state=on]]/card:opacity-0'
         )}
     />
 
     <div
-        class={classNames(
+        class={cn(
             'relative hidden w-full space-y-4 overflow-hidden transition-opacity delay-400 [grid-area:stack]',
             'group-[&[data-state=on]]/card:block group-[&[data-state=on]]/card:opacity-100 group-[&[data-state=on]]/card:blur-none'
         )}
@@ -47,13 +47,13 @@
             height={80}
             src={study.logo}
             alt={study.headline}
-            class={classNames('-mt-8 h-20 w-20', {
+            class={cn('-mt-8 h-20 w-20', {
                 'animate-fade-in': isActive
             })}
         />
 
         <span
-            class={classNames(
+            class={cn(
                 'text-title font-aeonik-pro text-primary flex h-fit flex-wrap gap-2 overflow-hidden text-left text-pretty md:h-[3lh] lg:w-[20ch]',
                 {
                     'animate-fade-in': isActive
@@ -64,7 +64,7 @@
         </span>
 
         <div
-            class={classNames('border-smooth mt-8 border-t border-dashed pt-8', {
+            class={cn('border-smooth mt-8 border-t border-dashed pt-8', {
                 'animate-fade-in [animation-delay:500ms]': isActive
             })}
         >

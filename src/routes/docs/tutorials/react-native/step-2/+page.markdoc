@@ -5,7 +5,7 @@ description: Create a React Native app project and integrate with Appwrite.
 step: 2
 ---
 
-# Create React Native project {% #create-react-project %}
+## Create React Native project {% #create-react-project %}
 
 Create a React Native app with the `npm create` command.
 
@@ -14,7 +14,7 @@ npx create-expo-app ideas-tracker
 cd ideas-tracker
 ```
 
-# Add dependencies {% #add-dependencies %}
+## Add dependencies {% #add-dependencies %}
 
 Install the React Native Appwrite SDK.
 

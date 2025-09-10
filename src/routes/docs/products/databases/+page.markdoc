@@ -11,7 +11,7 @@ Databases provide high-performance and scalable data storage for your key applic
 Databases store data, if you need to store files like images, PDFs or videos, use [Appwrite Storage](/docs/products/storage).
 {% /info %}
 
-You can organize data into databases, collections, and documents. You can also paginate, order, and query documents. 
+You can organize data into databases, tables, and rows. You can also paginate, order, and query rows.
 For complex business logic, Appwrite supports relationships to help you model your data.
 
 {% arrow_link href="/docs/products/databases/quick-start" %}
