@@ -355,9 +355,8 @@ suspend fun main() {
     }
 }
 ```
-```graphql
 mutation {
-    tablesUpdateRow(
+    tablesDBUpdateRow(
         databaseId: "<DATABASE_ID>",
         tableId: "<TABLE_ID>",
         rowId: "<ROW_ID>",
@@ -372,7 +371,6 @@ mutation {
         data
     }
 }
-```
 {% /multicode %}
 
 # Upsert rows {% #upsert-rows %}
