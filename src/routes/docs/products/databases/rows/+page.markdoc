@@ -376,15 +376,15 @@ mutation {
 {% /multicode %}
 
 # Upsert rows {% #upsert-rows %}
-{% info title="Permissions required" %}
-You must grant **create** and **update** permissions to users at the **table level** before users can upsert rows. You can also grant **update** permissions at the row level instead.
-[Learn more about permissions](#permissions)
-{% /info %}
 
 Upsert is a combination of "update" and "insert" operations. It creates a new row if one doesn't exist with the given ID, or updates an existing row if it does exist.
 
 In most use cases, you will upsert rows programmatically.
 
+{% info title="Permissions required" %}
+You must grant **create** and **update** permissions to users at the **table level** before users can upsert rows. You can also grant **update** permissions at the row level instead.
+[Learn more about permissions](#permissions)
+{% /info %}
 {% multicode %}
 ```client-web
 import { Client, ID, TablesDB } from "appwrite";
