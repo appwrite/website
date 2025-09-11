@@ -1,5 +1,4 @@
 <script>
-    import { PUBLIC_APPWRITE_DASHBOARD } from '$env/static/public';
     import Platforms from '$lib/components/marketing/platforms.svelte';
     import { cn } from '$lib/utils/cn';
 
@@ -37,12 +36,8 @@
             </p>
 
             <div class="flex flex-col items-center gap-2 md:flex-row">
-                <a href={PUBLIC_APPWRITE_DASHBOARD} class="web-button !w-full md:!w-fit">
-                    Start for free
-                </a>
-
-                <a href="/docs/products/sites" class="web-button is-secondary !w-full md:!w-fit">
-                    Read the docs
+                <a href="https://apwr.dev/HflyA0N" class="web-button !w-full md:!w-fit">
+                    Get started with $300 Credits
                 </a>
             </div>
         </div>
