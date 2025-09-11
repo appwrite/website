@@ -1081,11 +1081,10 @@ Query::contains("name", "Tom")
 ```
 ```client-apple
 // For arrays
-Query.contains("ingredients", value: ['apple', 'banana'])
+Query.contains("ingredients", value: ["apple", "banana"])
 
 // For strings
 Query.contains("name", value: "Tom")
-```
 ```server-go
 // For arrays
 query.Contains("ingredients", []string{"apple", "banana"})
