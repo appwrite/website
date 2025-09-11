@@ -1,0 +1,209 @@
+---
+layout: tutorial
+title: Create login page
+description: Add Authentication to a Flutter project using Appwrite.
+step: 5
+---
+
+We can now implement our login page. Go to your `login.dart` file in the `lib/screens` directory:
+
+
+Create a basic login page with a form to let the user input their email and password. We'll use the `onSaved` and `validator` properties of the `TextFormField` widget to save the user's input and validate it. We'll also use the `obscureText` property to hide the password as the user types it. Finally, we'll use the `ElevatedButton` widget to create a button that will call the `onPressed` function when pressed. We'll use this function to perform the login.
+```dart
+// lib/screens/login.dart
+class LogInPage extends StatefulWidget {
+  const LogInPage({super.key});
+
+  @override
+  State<LogInPage> createState() => _LogInPageState();
+}
+
+class _LogInPageState extends State<LogInPage> {
+  final _formKey = GlobalKey<FormState>();
+  String _email = '';
+  String _password = '';
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Form(
+          key: _formKey,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              TextFormField(
+                decoration: const InputDecoration(
+                  labelText: 'Email',
+                ),
+                validator: (value) {
+                  if (value == '') {
+                    return 'Please enter your email';
+                  }
+                  return null;
+                },
+                onSaved: (value) {
+                  _email = value!;
+                },
+              ),
+              TextFormField(
+                decoration: const InputDecoration(
+                  labelText: 'Password',
+                ),
+                obscureText: true,
+                validator: (value) {
+                  if (value == '') {
+                    return 'Please enter your password';
+                  }
+                  return null;
+                },
+                onSaved: (value) {
+                  _password = value!;
+                },
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 16.0),
+                child: ElevatedButton(
+                  onPressed: () async {
+                    // TODO: Perform login
+                  },
+                  child: const Text('Login'),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+```
+
+Once the user presses the login button, we'll call the `onPressed` function. This function will first check if the form is valid. If it is, we'll call the `save` function on the form to save the user's input. We'll then call the `account.createEmailSession()` function to perform the login. If the login is successful, we'll navigate to the home page. If not, we'll show an error message using a `SnackBar`.
+
+```dart
+// lib/screens/login.dart
+onPressed: () async {
+	if(_formKey.currentState!.validate()) {
+	   _formKey.currentState!.save();
+	   try {
+	     await Appwrite.instance.account.createEmailSession(
+	       email: _email, 
+	       password: _password,
+	     );
+	     if (context.mounted) {
+	       Navigator.pushNamed(context, '/home');
+	     }
+	   } on AppwriteException catch (e) {
+	     if (context.mounted) {
+	       ScaffoldMessenger.of(context).showSnackBar(
+	         SnackBar(
+		   content: Text(e.message ?? "Error"),
+            ),
+	       );
+	     }
+	   }
+	}
+}
+```
+
+
+Complete code for the `login.dart` file:
+```dart
+import 'package:appwrite/appwrite.dart';
+import 'package:flutter/material.dart';
+
+import '../config/appwrite.dart';
+
+class LogInPage extends StatefulWidget {
+  const LogInPage({super.key});
+
+  @override
+  State<LogInPage> createState() => _LogInPageState();
+}
+
+class _LogInPageState extends State<LogInPage> {
+  final _formKey = GlobalKey<FormState>();
+  String _email = '';
+  String _password = '';
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Form(
+          key: _formKey,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              TextFormField(
+                decoration: const InputDecoration(
+                  labelText: 'Email',
+                ),
+                validator: (value) {
+                  if (value == '') {
+                    return 'Please enter your email';
+                  }
+                  return null;
+                },
+                onSaved: (value) {
+                  _email = value!;
+                },
+              ),
+              TextFormField(
+                decoration: const InputDecoration(
+                  labelText: 'Password',
+                ),
+                obscureText: true,
+                validator: (value) {
+                  if (value == '') {
+                    return 'Please enter your password';
+                  }
+                  return null;
+                },
+                onSaved: (value) {
+                  _password = value!;
+                },
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 16.0),
+                child: ElevatedButton(
+                  onPressed: () async {
+                    if (_formKey.currentState!.validate()) {
+                      _formKey.currentState!.save();
+                      try {
+                        await Appwrite.instance.account.createEmailSession(
+                          email: _email,
+                          password: _password,
+                        );
+                        if (context.mounted) {
+                          Navigator.pushNamed(context, '/home');
+                        }
+                      } on AppwriteException catch (e) {
+                        if (context.mounted) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text(e.message ?? "Error"),
+                            ),
+                          );
+                        }
+                      }
+                    }
+                  },
+                  child: const Text('Login'),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+```
+
+That's is it for the login page. We can now move on to the next step where we'll create the Signup page.
