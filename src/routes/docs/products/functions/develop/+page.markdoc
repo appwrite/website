@@ -1577,12 +1577,12 @@ export default async ({ req, res, log, error }) => {
     const tablesDB = new TablesDB(client);
 
     try {
-        await tablesDB.createRow(
-            '<DATABASE_ID>',
-            '<TABLE_ID>',
-            ID.unique(),
-            {}
-        )
+        await tablesDB.createRow({
+            databaseId: '<DATABASE_ID>',
+            tableId: '<TABLE_ID>',
+            rowId: ID.unique(),
+            data: {}
+        })
     } catch (e) {
         error("Failed to create row: " + e.message)
         return res.text("Failed to create row")
@@ -1929,12 +1929,12 @@ export default async ({ req, res, log }) => {
     const tablesDB = new TablesDB(client);
 
     try {
-        await tablesDB.createRow(
-            '<DATABASE_ID>',
-            '<TABLE_ID>',
-            ID.unique(),
-            {}
-        )
+        await tablesDB.createRow({
+            databaseId: '<DATABASE_ID>',
+            tableId: '<TABLE_ID>',
+            rowId: ID.unique(),
+            data: {}
+        })
     } catch (e) {
         log("Failed to create row: " + e.message)
         return res.text("Failed to create row")
