@@ -1,176 +1,216 @@
-import fs from 'fs/promises';
-import path from 'path';
-import fm from 'front-matter';
-import { markdocSchema } from '../svelte.config.js';
-// @ts-ignore
-import { markdoc } from 'svelte-markdoc-preprocess';
-import { preprocessMeltUI, sequence } from '@melt-ui/pp';
-import { JSDOM } from 'jsdom';
-import { generateText } from 'ai';
-import { openai } from '@ai-sdk/openai';
-import dedent from 'dedent';
-import { pathToFileURL } from 'url';
+import { generateText } from "ai";
+import { openai } from "@ai-sdk/openai";
+import { readFileSync } from "fs";
+import { pathToFileURL } from "url";
+import path from "path";
+import frontMatter from "front-matter";
 
-if (!process.env.OPENAI_API_KEY) {
-    throw new Error('OPENAI_API_KEY is not set');
+function extractArg(name: string): string | undefined {
+  const argIndex = process.argv.findIndex((arg) => arg.startsWith(`--${name}`));
+  if (argIndex === -1) return undefined;
+
+  const arg = process.argv[argIndex];
+  const value = arg.split("=")[1];
+  if (value) return value;
+
+  const nextArg = process.argv[argIndex + 1];
+  return nextArg && !nextArg.startsWith("--") ? nextArg : undefined;
+}
+
+function extractBooleanArg(name: string): boolean {
+  return process.argv.includes(`--${name}`);
 }
 
 async function generateDescription({
-    articleText,
-    frontmatterAttributes,
-    previousAttempt
+  articleText,
+  frontmatterAttributes,
 }: {
-    articleText: string;
-    frontmatterAttributes: Record<string, any>;
-    previousAttempt?: {
-        text: string;
-        characterCount: number;
-    };
+  articleText: string;
+  frontmatterAttributes: Record<
+    string,
+    string | number | boolean | Date | string[] | number[] | boolean[]
+  >;
 }) {
-    console.log(`Generating description...`);
-    const { text } = await generateText({
-        model: openai('gpt-5-mini'),
-        messages: [
-            {
-                role: 'system',
-                content: dedent`
-          You are a helpful technical writer. Your goal is to help Appwrite generate descriptions for their documentation pages.
-          You will be given the content of a docs page, and you need to generate a description for it.
+  const systemPrompt = `You are an expert at writing SEO-optimized page descriptions for technical documentation websites targeting senior software engineers.
 
-          Rules:
-          - You MUST limit your response to 250 characters maximum.
-          - The output must be SEO-optimized, you are not meant to just summarize the page in every detail. It should give a user/crawler a good idea of what the page covers.
-          - Avoid deeply technical terms and jargon, this is just an SEO description.
-          - Output must be worthy of being used as a meta description.
-        `
-            },
-            {
-                role: 'user',
-                content: `
-Here are the frontmatter attributes:
-<frontmatter>
-${JSON.stringify(frontmatterAttributes, null, 2)}
-</frontmatter>
+Generate a concise, professional description (maximum 250 characters) that:
+- Accurately summarizes the technical content
+- Uses natural language with standard punctuation (use regular hyphens, not em dashes)
+- Speaks directly to experienced developers and engineering leaders
+- Includes relevant technical keywords for SEO
+- Avoids AI-generated language patterns or marketing fluff
+- Uses a professional, authoritative tone that resonates with senior engineers
 
-And here is the body of the page:
-<article>
+The description should be suitable for use in HTML meta descriptions and social media previews.`;
+
+  const userPrompt = `Generate a page description for this documentation page:
+
+Title: ${frontmatterAttributes?.title || "Untitled"}
+Summary: ${frontmatterAttributes?.summary || "No summary provided"}
+
+Content:
 ${articleText}
-</article>
 
-Generate the description.
+Generate a description that captures the essence of this page in 250 characters or less.`;
 
-${
-    previousAttempt &&
-    `
-Pay attention, you have made a previous attempt at generating the description, but it exceeded the character count limit (${previousAttempt.characterCount} characters).
-This is your previous attempt:
-<previous-attempt>
-${previousAttempt.text}
-</previous-attempt>
-
-Make sure you stick to the character count limit of 250.
-`
-}
-        `
-            }
-        ]
+  try {
+    const { text: description } = await generateText({
+      model: openai("gpt-4o-mini"),
+      system: systemPrompt,
+      prompt: userPrompt,
+      maxTokens: 100,
     });
 
-    const characterCount = text.split(' ').length;
+    const trimmedDescription = description.trim();
+    const characterCount = trimmedDescription.length;
 
+    // If the description is too long, try again with a more specific prompt
     if (characterCount > 250) {
-        console.log(`Character count is too long (${characterCount}), generating again...`);
-        return generateDescription({
-            articleText,
-            frontmatterAttributes,
-            previousAttempt: {
-                text,
-                characterCount
-            }
-        });
+      const retryPrompt = `The previous description was too long (${characterCount} characters). Generate a shorter description (maximum 250 characters) for this page:
+
+Title: ${frontmatterAttributes?.title || "Untitled"}
+Content: ${articleText.substring(0, 500)}...
+
+Make it concise and under 250 characters.`;
+
+      const { text: retryDescription } = await generateText({
+        model: openai("gpt-4o-mini"),
+        system: systemPrompt,
+        prompt: retryPrompt,
+        maxTokens: 80,
+      });
+
+      const finalDescription = retryDescription.trim();
+      return {
+        description: finalDescription,
+        characterCount: finalDescription.length,
+      };
     }
 
-    console.log(`Description generated successfully (${characterCount} characters)`);
-    return {
-        description: text,
-        characterCount
-    };
+    return { description: trimmedDescription, characterCount };
+  } catch (error) {
+    throw new Error(
+      `Failed to generate description: ${error instanceof Error ? error.message : "Unknown error"}`,
+    );
+  }
 }
 
 export async function getDocPageContent(markdocPath: string) {
-    const fileContent = await fs.readFile(markdocPath, 'utf8');
+  try {
+    const fileContent = readFileSync(markdocPath, "utf-8");
+    const { attributes: frontmatterAttributes, body } =
+      frontMatter(fileContent);
 
-    const seq = sequence([markdoc(markdocSchema), preprocessMeltUI()]);
+    // Use raw markdoc content directly - simpler and faster
+    // The LLM can understand markdown syntax just fine
+    const articleText = body;
 
-    if (!seq || !seq.markup) {
-        throw new Error('Sequence is undefined');
-    }
-
-    // Get the frontmatter
-    const frontmatter = fm(fileContent);
-    const markup = await seq.markup({ content: frontmatter.body, filename: markdocPath });
-    const html = (markup as any).toString();
-
-    // Use JSDOM to parse the HTML and extract text content from <article>
-    const dom = new JSDOM(html);
-    const articleElement = dom.window.document.querySelector('article');
-    const articleText = articleElement ? articleElement.textContent : '';
     return {
-        articleText,
-        frontmatterAttributes: frontmatter.attributes
+      articleText: articleText.trim(),
+      frontmatterAttributes,
     };
+  } catch (error) {
+    throw new Error(
+      `Failed to parse markdoc file ${markdocPath}: ${error instanceof Error ? error.message : "Unknown error"}`,
+    );
+  }
 }
 
-export async function generateDescriptionForDocsPage(filePath: string) {
-    const resolvedPath = path.resolve(filePath);
-    const { articleText, frontmatterAttributes } = await getDocPageContent(resolvedPath);
+export async function generateDescriptionForDocsPage(
+  filePath: string,
+  options: { skipIfExists?: boolean } = {},
+) {
+  const resolvedPath = path.resolve(filePath);
+  const { articleText, frontmatterAttributes } =
+    await getDocPageContent(resolvedPath);
 
-    if (!articleText || !frontmatterAttributes) {
-        throw new Error('Article text or frontmatter attributes are undefined');
-    }
+  if (!frontmatterAttributes) {
+    throw new Error(
+      "Frontmatter attributes are undefined - file may be malformed",
+    );
+  }
 
-    const { description, characterCount } = await generateDescription({
-        articleText,
-        frontmatterAttributes
-    });
-    return { description, characterCount };
+  // Check if description already exists and skip if requested
+  if (options.skipIfExists && frontmatterAttributes.description) {
+    console.log(
+      `⏭️  Skipping ${filePath} - description already exists: "${frontmatterAttributes.description}"`,
+    );
+    return {
+      description: frontmatterAttributes.description,
+      characterCount: frontmatterAttributes.description.length,
+      skipped: true,
+    };
+  }
+
+  // If article text is empty, use frontmatter as fallback
+  const contentToUse =
+    articleText && articleText.trim()
+      ? articleText
+      : frontmatterAttributes.summary ||
+        frontmatterAttributes.title ||
+        "No content available";
+
+  const { description, characterCount } = await generateDescription({
+    articleText: contentToUse,
+    frontmatterAttributes,
+  });
+  return { description, characterCount, skipped: false };
 }
 
 async function main() {
-    const filePathArg = extractArg('file-path');
+  const filePathArg = extractArg("file-path");
+  const skipIfExists = extractBooleanArg("skip-existing");
+  const showHelp = extractBooleanArg("help");
 
-    if (!filePathArg) {
-        throw new Error('File path is required');
-    }
+  if (showHelp) {
+    console.log(`
+📝 LLM Description Generator
 
-    const resolvedPath = path.resolve(filePathArg);
-    const { description, characterCount } = await generateDescriptionForDocsPage(resolvedPath);
-    console.log(`Generated description:\n\n${description}\n`);
+Usage:
+  npm run generate:page-description -- --file-path <path> [options]
+
+Options:
+  --file-path <path>     Path to the markdoc file to process
+  --skip-existing        Skip files that already have descriptions
+  --help                 Show this help message
+
+Examples:
+  npm run generate:page-description -- --file-path ./blog-post.markdoc
+  npm run generate:page-description -- --file-path ./blog-post.markdoc --skip-existing
+
+For CI/CD usage:
+  npm run generate:page-description -- --file-path ./new-post.markdoc --skip-existing
+`);
+    return;
+  }
+
+  if (!filePathArg) {
+    throw new Error("File path is required. Use --help for usage information.");
+  }
+
+  const resolvedPath = path.resolve(filePathArg);
+  const { description, characterCount, skipped } =
+    await generateDescriptionForDocsPage(resolvedPath, { skipIfExists });
+
+  if (skipped) {
+    console.log("✅ File skipped - description already exists");
+    return;
+  }
+
+  console.log(
+    `================ DESCRIPTION START (character count: ${characterCount}) =================`,
+  );
+  console.log(description);
+  console.log(`===================== DESCRIPTION END ======================`);
 }
 
 // Runs only if invoked via CLI
-// @ts-ignore
-const isDirect = import.meta.url === pathToFileURL(process.argv[1]).href;
+// Check if this file is being run directly (not imported)
+const isDirect =
+  process.argv[1] && process.argv[1].endsWith("llm-generate-description.ts");
 if (isDirect) {
-    main().catch((err) => {
-        console.error(err);
-        process.exit(1);
-    });
-}
-
-function extractArg(name: string): string | null {
-    const args = process.argv;
-    const prefix = `--${name}=`;
-
-    const inlineArg = args.find((arg) => arg.startsWith(prefix));
-    if (inlineArg) {
-        return inlineArg.slice(prefix.length);
-    }
-
-    const keyIndex = args.findIndex((arg) => arg === `--${name}`);
-    if (keyIndex !== -1 && keyIndex + 1 < args.length) {
-        return args[keyIndex + 1];
-    }
-
-    return null;
+  main().catch((err) => {
+    console.error(err);
+    process.exit(1);
+  });
 }
