@@ -26,7 +26,7 @@
         },
         {
             href: '/docs/tutorials/nextjs',
-            cover: '/images/tutorials/react.png',
+            cover: '/images/tutorials/nextjs.png',
             title: 'Next.js tutorial',
             description: 'Learn Appwrite Auth, Databases, and more with Next.js.'
         },
