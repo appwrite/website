@@ -4,9 +4,9 @@ title: Spatial
 description: Store geographic data with points, lines, and polygons. Query spatial data with distance, intersects, overlaps, and other geo-spatial operations.
 ---
 
-Spatial attributes store geographic data as coordinates, shapes, and areas that can be queried using location-based operations. Applications use spatial data to find nearby locations, check if coordinates fall within boundaries, or calculate distances between points.
+Spatial columns store geographic data as coordinates, shapes, and areas that can be queried using location-based operations. Applications use spatial data to find nearby locations, check if coordinates fall within boundaries, or calculate distances between points.
 
-These types of geographic operations can be performed in Appwrite using spatial attributes and queries.
+These types of geographic operations can be performed in Appwrite using spatial columns and queries.
 
 Coordinates are specified as `[longitude, latitude]` arrays. Distance measurements can be specified in meters or degrees.
 
@@ -21,9 +21,9 @@ Spatial queries enable geo-spatial operations:
 - **Asset tracking**: Monitor equipment locations and movements
 - **Compliance zones**: Verify operations within permitted areas
 
-# Spatial attributes {% #spatial-attributes %}
+# Spatial columns {% #spatial-columns %}
 
-Appwrite provides first-class geo types that can be stored as table attributes:
+Appwrite provides first-class geo types that can be stored as table columns:
 
 - **Point**: Represents a single geographic coordinate as `[longitude, latitude]`
 - **Line**: Represents a series of connected geographic coordinates forming a path or route
@@ -31,12 +31,12 @@ Appwrite provides first-class geo types that can be stored as table attributes:
 
 # Spatial index {% #spatial-index %}
 
-Spatial indexes are recommended for performance when using spatial attributes. They enable efficient querying of geographic data by creating optimized data structures for spatial operations.
+Spatial indexes are recommended for performance when using spatial columns. They enable efficient querying of geographic data by creating optimized data structures for spatial operations.
 
-Create spatial indexes through the [Appwrite Console](/docs/products/databases/tables#indexes), [Server SDK](/docs/sdks#server), or [CLI](/docs/tooling/command-line/tables#commands) when working with spatial attributes.
+Create spatial indexes through the [Appwrite Console](/docs/products/databases/tables#indexes), [Server SDK](/docs/sdks#server), or [CLI](/docs/tooling/command-line/tables#commands) when working with spatial columns.
 
 # Spatial queries {% #spatial-queries %}
 
-Spatial queries enable geographic operations on spatial attributes. Appwrite supports distance operations (equal, not equal, greater than, less than) and geometric relationships (intersects, overlaps, touches, crosses) with both positive and negative forms.
+Spatial queries enable geographic operations on spatial columns. Appwrite supports distance operations (equal, not equal, greater than, less than) and geometric relationships (intersects, overlaps, touches, crosses) with both positive and negative forms.
 
 For complete documentation and examples of all spatial query operators, see [Queries](/docs/products/databases/queries#spatial-operations).

@@ -1778,13 +1778,13 @@ Query.updatedAfter("2025-01-01T00:00:00Z")
 {% /multicode %}
 # Spatial operations {% #spatial-operations %}
 
-Spatial queries enable geographic operations on [spatial attributes](/docs/products/databases/spatial). Coordinates are specified as `[longitude, latitude]` arrays. Distance measurements can be specified in meters or degrees.
+Spatial queries enable geographic operations on [spatial columns](/docs/products/databases/spatial). Coordinates are specified as `[longitude, latitude]` arrays. Distance measurements can be specified in meters or degrees.
 
 For conceptual information about spatial data types and indexing, see [Spatial](/docs/products/databases/spatial).
 
 ## Distance equal {% #distance-equal %}
 
-Returns rows where the spatial attribute is exactly the specified distance from a point.
+Returns rows where the spatial column is exactly the specified distance from a point.
 
 {% multicode %}
 ```client-web
@@ -1807,7 +1807,7 @@ Query.distanceEqual("location", [-73.9851, 40.7589], 200)
 Query::distanceEqual("location", [-73.9851, 40.7589], 200)
 ```
 ```swift
-// Query.distanceEqual(attribute, coordinates, distance)
+// Query.distanceEqual(column, coordinates, distance)
 Query.distanceEqual("location", value: [-73.9851, 40.7589], 200)
 ```
 ```kotlin
@@ -1820,7 +1820,7 @@ Query.distanceEqual("location", Arrays.asList(-73.9851, 40.7589), 200)
 Query.DistanceEqual("location", new List<double> { -73.9851, 40.7589 }, 200)
 ```
 ```go
-// query.DistanceEqual(attribute, coordinates, distance)
+// query.DistanceEqual(column, coordinates, distance)
 query.DistanceEqual("location", []float64{-73.9851, 40.7589}, 200)
 ```
 ```http
@@ -1830,7 +1830,7 @@ query.DistanceEqual("location", []float64{-73.9851, 40.7589}, 200)
 
 ## Distance not equal {% #distance-not-equal %}
 
-Returns rows where the spatial attribute is not exactly the specified distance from a point.
+Returns rows where the spatial column is not exactly the specified distance from a point.
 
 {% multicode %}
 ```client-web
@@ -1852,7 +1852,7 @@ Query.distanceNotEqual("location", [-73.9851, 40.7589], 200)
 Query::distanceNotEqual("location", [-73.9851, 40.7589], 200)
 ```
 ```swift
-// Query.distanceNotEqual(attribute, coordinates, distance)
+// Query.distanceNotEqual(column, coordinates, distance)
 Query.distanceNotEqual("location", value: [-73.9851, 40.7589], 200)
 ```
 ```kotlin
@@ -1865,7 +1865,7 @@ Query.distanceNotEqual("location", Arrays.asList(-73.9851, 40.7589), 200)
 Query.DistanceNotEqual("location", new List<double> { -73.9851, 40.7589 }, 200)
 ```
 ```go
-// query.DistanceNotEqual(attribute, coordinates, distance)
+// query.DistanceNotEqual(column, coordinates, distance)
 query.DistanceNotEqual("location", []float64{-73.9851, 40.7589}, 200)
 ```
 ```http
@@ -1875,7 +1875,7 @@ query.DistanceNotEqual("location", []float64{-73.9851, 40.7589}, 200)
 
 ## Distance greater than {% #distance-greater-than %}
 
-Returns rows where the spatial attribute is more than the specified distance from a point.
+Returns rows where the spatial column is more than the specified distance from a point.
 
 {% multicode %}
 ```client-web
@@ -1897,7 +1897,7 @@ Query.distanceGreaterThan("location", [-73.9851, 40.7589], 200)
 Query::distanceGreaterThan("location", [-73.9851, 40.7589], 200)
 ```
 ```swift
-// Query.distanceGreaterThan(attribute, coordinates, distance)
+// Query.distanceGreaterThan(column, coordinates, distance)
 Query.distanceGreaterThan("location", value: [-73.9851, 40.7589], 200)
 ```
 ```kotlin
@@ -1910,7 +1910,7 @@ Query.distanceGreaterThan("location", Arrays.asList(-73.9851, 40.7589), 200)
 Query.DistanceGreaterThan("location", new List<double> { -73.9851, 40.7589 }, 200)
 ```
 ```go
-// query.DistanceGreaterThan(attribute, coordinates, distance)
+// query.DistanceGreaterThan(column, coordinates, distance)
 query.DistanceGreaterThan("location", []float64{-73.9851, 40.7589}, 200)
 ```
 ```http
@@ -1920,7 +1920,7 @@ query.DistanceGreaterThan("location", []float64{-73.9851, 40.7589}, 200)
 
 ## Distance less than {% #distance-less-than %}
 
-Returns rows where the spatial attribute is less than the specified distance from a point.
+Returns rows where the spatial column is less than the specified distance from a point.
 
 {% multicode %}
 ```client-web
@@ -1942,7 +1942,7 @@ Query.distanceLessThan("location", [-73.9851, 40.7589], 200)
 Query::distanceLessThan("location", [-73.9851, 40.7589], 200)
 ```
 ```swift
-// Query.distanceLessThan(attribute, coordinates, distance)
+// Query.distanceLessThan(column, coordinates, distance)
 Query.distanceLessThan("location", value: [-73.9851, 40.7589], 200)
 ```
 ```kotlin
@@ -1955,7 +1955,7 @@ Query.distanceLessThan("location", Arrays.asList(-73.9851, 40.7589), 200)
 Query.DistanceLessThan("location", new List<double> { -73.9851, 40.7589 }, 200)
 ```
 ```go
-// query.DistanceLessThan(attribute, coordinates, distance)
+// query.DistanceLessThan(column, coordinates, distance)
 query.DistanceLessThan("location", []float64{-73.9851, 40.7589}, 200)
 ```
 ```http
@@ -1965,7 +1965,7 @@ query.DistanceLessThan("location", []float64{-73.9851, 40.7589}, 200)
 
 ## Intersects {% #intersects %}
 
-Returns rows where the spatial attribute intersects with the provided geometry.
+Returns rows where the spatial column intersects with the provided geometry.
 
 {% multicode %}
 ```client-web
@@ -1987,7 +1987,7 @@ Query.intersects("area", [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 4
 Query::intersects("area", [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]])
 ```
 ```swift
-// Query.intersects(attribute, geometry)
+// Query.intersects(column, geometry)
 Query.intersects("area", value: [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]])
 ```
 ```kotlin
@@ -2011,7 +2011,7 @@ Query.Intersects("area", new List<List<double>>
 })
 ```
 ```go
-// query.Intersects(attribute, geometry)
+// query.Intersects(column, geometry)
 query.Intersects("area", [][]float64{{-73.9851, 40.7589}, {-73.9776, 40.7614}, {-73.9733, 40.7505}, {-73.9851, 40.7589}})
 ```
 ```http
@@ -2021,7 +2021,7 @@ query.Intersects("area", [][]float64{{-73.9851, 40.7589}, {-73.9776, 40.7614}, {
 
 ## Not intersects {% #not-intersects %}
 
-Returns rows where the spatial attribute does not intersect with the provided geometry.
+Returns rows where the spatial column does not intersect with the provided geometry.
 
 {% multicode %}
 ```client-web
@@ -2043,7 +2043,7 @@ Query.notIntersects("area", [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733
 Query::notIntersects("area", [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]])
 ```
 ```swift
-// Query.notIntersects(attribute, geometry)
+// Query.notIntersects(column, geometry)
 Query.notIntersects("area", value: [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]])
 ```
 ```kotlin
@@ -2067,7 +2067,7 @@ Query.NotIntersects("area", new List<List<double>>
 })
 ```
 ```go
-// query.NotIntersects(attribute, geometry)
+// query.NotIntersects(column, geometry)
 query.NotIntersects("area", [][]float64{{-73.9851, 40.7589}, {-73.9776, 40.7614}, {-73.9733, 40.7505}, {-73.9851, 40.7589}})
 ```
 ```http
@@ -2077,7 +2077,7 @@ query.NotIntersects("area", [][]float64{{-73.9851, 40.7589}, {-73.9776, 40.7614}
 
 ## Overlaps {% #overlaps %}
 
-Returns rows where the spatial attribute overlaps with the provided geometry.
+Returns rows where the spatial column overlaps with the provided geometry.
 
 {% multicode %}
 ```client-web
@@ -2099,7 +2099,7 @@ Query.overlaps("zone", [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.
 Query::overlaps("zone", [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]])
 ```
 ```swift
-// Query.overlaps(attribute, geometry)
+// Query.overlaps(column, geometry)
 Query.overlaps("zone", value: [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]])
 ```
 ```kotlin
@@ -2123,7 +2123,7 @@ Query.Overlaps("zone", new List<List<double>>
 })
 ```
 ```go
-// query.Overlaps(attribute, geometry)
+// query.Overlaps(column, geometry)
 query.Overlaps("zone", [][]float64{{-73.9851, 40.7589}, {-73.9776, 40.7614}, {-73.9733, 40.7505}, {-73.9851, 40.7589}})
 ```
 ```http
@@ -2133,7 +2133,7 @@ query.Overlaps("zone", [][]float64{{-73.9851, 40.7589}, {-73.9776, 40.7614}, {-7
 
 ## Not overlaps {% #not-overlaps %}
 
-Returns rows where the spatial attribute does not overlap with the provided geometry.
+Returns rows where the spatial column does not overlap with the provided geometry.
 
 {% multicode %}
 ```client-web
@@ -2155,7 +2155,7 @@ Query.notOverlaps("zone", [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 
 Query::notOverlaps("zone", [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]])
 ```
 ```swift
-// Query.notOverlaps(attribute, geometry)
+// Query.notOverlaps(column, geometry)
 Query.notOverlaps("zone", value: [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]])
 ```
 ```kotlin
@@ -2179,7 +2179,7 @@ Query.NotOverlaps("zone", new List<List<double>>
 })
 ```
 ```go
-// query.NotOverlaps(attribute, geometry)
+// query.NotOverlaps(column, geometry)
 query.NotOverlaps("zone", [][]float64{{-73.9851, 40.7589}, {-73.9776, 40.7614}, {-73.9733, 40.7505}, {-73.9851, 40.7589}})
 ```
 ```http
@@ -2189,7 +2189,7 @@ query.NotOverlaps("zone", [][]float64{{-73.9851, 40.7589}, {-73.9776, 40.7614}, 
 
 ## Touches {% #touches %}
 
-Returns rows where the spatial attribute touches the provided geometry.
+Returns rows where the spatial column touches the provided geometry.
 
 {% multicode %}
 ```client-web
@@ -2211,7 +2211,7 @@ Query.touches("boundary", [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 
 Query::touches("boundary", [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]])
 ```
 ```swift
-// Query.touches(attribute, geometry)
+// Query.touches(column, geometry)
 Query.touches("boundary", value: [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]])
 ```
 ```kotlin
@@ -2235,7 +2235,7 @@ Query.Touches("boundary", new List<List<double>>
 })
 ```
 ```go
-// query.Touches(attribute, geometry)
+// query.Touches(column, geometry)
 query.Touches("boundary", [][]float64{{-73.9851, 40.7589}, {-73.9776, 40.7614}, {-73.9733, 40.7505}, {-73.9851, 40.7589}})
 ```
 ```http
@@ -2245,7 +2245,7 @@ query.Touches("boundary", [][]float64{{-73.9851, 40.7589}, {-73.9776, 40.7614}, 
 
 ## Not touches {% #not-touches %}
 
-Returns rows where the spatial attribute does not touch the provided geometry.
+Returns rows where the spatial column does not touch the provided geometry.
 
 {% multicode %}
 ```client-web
@@ -2267,7 +2267,7 @@ Query.notTouches("boundary", [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.973
 Query::notTouches("boundary", [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]])
 ```
 ```swift
-// Query.notTouches(attribute, geometry)
+// Query.notTouches(column, geometry)
 Query.notTouches("boundary", value: [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]])
 ```
 ```kotlin
@@ -2291,7 +2291,7 @@ Query.NotTouches("boundary", new List<List<double>>
 })
 ```
 ```go
-// query.NotTouches(attribute, geometry)
+// query.NotTouches(column, geometry)
 query.NotTouches("boundary", [][]float64{{-73.9851, 40.7589}, {-73.9776, 40.7614}, {-73.9733, 40.7505}, {-73.9851, 40.7589}})
 ```
 ```http
@@ -2301,7 +2301,7 @@ query.NotTouches("boundary", [][]float64{{-73.9851, 40.7589}, {-73.9776, 40.7614
 
 ## Crosses {% #crosses %}
 
-Returns rows where the spatial attribute crosses the provided geometry.
+Returns rows where the spatial column crosses the provided geometry.
 
 {% multicode %}
 ```client-web
@@ -2323,7 +2323,7 @@ Query.crosses("route", [[-73.9851, 40.7589], [-73.9776, 40.7614]])
 Query::crosses("route", [[-73.9851, 40.7589], [-73.9776, 40.7614]])
 ```
 ```swift
-// Query.crosses(attribute, geometry)
+// Query.crosses(column, geometry)
 Query.crosses("route", value: [[-73.9851, 40.7589], [-73.9776, 40.7614]])
 ```
 ```kotlin
@@ -2343,7 +2343,7 @@ Query.Crosses("route", new List<List<double>>
 })
 ```
 ```go
-// query.Crosses(attribute, geometry)
+// query.Crosses(column, geometry)
 query.Crosses("route", [][]float64{{-73.9851, 40.7589}, {-73.9776, 40.7614}})
 ```
 ```http
@@ -2353,7 +2353,7 @@ query.Crosses("route", [][]float64{{-73.9851, 40.7589}, {-73.9776, 40.7614}})
 
 ## Not crosses {% #not-crosses %}
 
-Returns rows where the spatial attribute does not cross the provided geometry.
+Returns rows where the spatial column does not cross the provided geometry.
 
 {% multicode %}
 ```client-web
@@ -2375,7 +2375,7 @@ Query.notCrosses("route", [[-73.9851, 40.7589], [-73.9776, 40.7614]])
 Query::notCrosses("route", [[-73.9851, 40.7589], [-73.9776, 40.7614]])
 ```
 ```swift
-// Query.notCrosses(attribute, geometry)
+// Query.notCrosses(column, geometry)
 Query.notCrosses("route", value: [[-73.9851, 40.7589], [-73.9776, 40.7614]])
 ```
 ```kotlin
@@ -2395,7 +2395,7 @@ Query.NotCrosses("route", new List<List<double>>
 })
 ```
 ```go
-// query.NotCrosses(attribute, geometry)
+// query.NotCrosses(column, geometry)
 query.NotCrosses("route", [][]float64{{-73.9851, 40.7589}, {-73.9776, 40.7614}})
 ```
 ```http
