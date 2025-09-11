@@ -1199,12 +1199,11 @@ query.NotContains("ingredients", []string{"apple", "banana"})
 // For strings
 query.NotContains("name", "Tom")
 ```server-dart
-# For arrays
+// For arrays
 Query.notContains("ingredients", ['apple', 'banana'])
 
-# For strings
+// For strings
 Query.notContains("name", "Tom")
-```
 ```server-swift
 // For arrays
 Query.notContains("ingredients", value: ['apple', 'banana'])
