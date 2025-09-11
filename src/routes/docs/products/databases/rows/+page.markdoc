@@ -298,7 +298,7 @@ void main() async {
     final tablesDB = TablesDB(client);
 
     try {
-        final row = tablesDB.updateRow(
+        final row = await tablesDB.updateRow(
             databaseId: '<DATABASE_ID>',
             tableId: '<TABLE_ID>',
             rowId: '<ROW_ID>',
