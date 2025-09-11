@@ -100,7 +100,7 @@ suspend fun main() {
             rowId = ID.unique(),
             data = mapOf("a" to "b"),
         )
-    } catch (e: Exception) {
+    } catch (e: AppwriteException) {
         Log.e("Appwrite", "Error: " + e.message)
     }
 }
@@ -350,7 +350,7 @@ suspend fun main() {
             rowId = "<ROW_ID>",
             data = mapOf("title" to "Updated Title"),
         )
-    } catch (e: Exception) {
+    } catch (e: AppwriteException) {
         Log.e("Appwrite", "Error: " + e.message)
     }
 }
@@ -469,7 +469,7 @@ suspend fun main() {
             rowId = ID.unique(),
             data = mapOf("a" to "b"),
         )
-    } catch (e: Exception) {
+    } catch (e: AppwriteException) {
         Log.e("Appwrite", "Error: " + e.message)
     }
 }
