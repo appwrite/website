@@ -25,6 +25,12 @@
             description: 'Learn Appwrite Auth, Databases, and more with React.'
         },
         {
+            href: '/docs/tutorials/nextjs',
+            cover: '/images/tutorials/react.png',
+            title: 'Next.js tutorial',
+            description: 'Learn Appwrite Auth, Databases, and more with Next.js.'
+        },
+        {
             href: '/docs/tutorials/sveltekit',
             cover: '/images/tutorials/svelte.png',
             title: 'SvelteKit tutorial',
