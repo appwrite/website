@@ -79,6 +79,11 @@ client
     .setKey('919c2d18fb5d4...a2ae413da83346ad2') // Your secret API key
 ;
 
+const topic = messaging.createTopic({
+        topicId: '<TOPIC_ID>',
+        name: '<NAME>',
+        subscribe: '<ROLES>' // permission roles for who can subscribe
+    });
 const topic = messaging.createTopic(
         '<TOPIC_ID>',     // topicId
         '<NAME>',         // name
@@ -101,7 +106,7 @@ $client
 
 $messaging = new Messaging($client);
 
-$topic = $messaging->createTopic( 
+$topic = $messaging->createTopic(
     topicId: '<TOPIC_ID>',
     name: '<NAME>',
     subscribe: '<ROLES>'  // permission roles for who can subscribe
@@ -122,7 +127,7 @@ client = Client()
 
 messaging = Messaging(client)
 
-topic = messaging.create_topic( 
+topic = messaging.create_topic(
     topic_id = '<TOPIC_ID>',
     name = '<NAME>',
     subscribe = '<ROLES>'  # permission roles for who can subscribe
@@ -341,11 +346,11 @@ const client = new sdk.Client()
 
 const messaging = new sdk.Messaging(client);
 
-const subscriber = await messaging.createSubscriber(
-    '<TOPIC_ID>',         // topicId
-    '<SUBSCRIBER_ID>',    // subscriberId
-    '<TARGET_ID>'         // targetId
-);
+const subscriber = await messaging.createSubscriber({
+    topicId: '<TOPIC_ID>',
+    subscriberId: '<SUBSCRIBER_ID>',
+    targetId: '<TARGET_ID>'
+});
 ```
 ```php
 <?php
@@ -363,8 +368,11 @@ $client
 $messaging = new Messaging($client);
 
 $subscriber = $messaging->createSubscriber(
-    topicId: '<TOPIC_ID>', 
-    subscriberId: '<SUBSCRIBER_ID>', 
+    topicId: '[TOPIC_ID]',
+    subscriberId: '[SUBSCRIBER_ID]',
+    targetId: '[TARGET_ID]'
+    topicId: '<TOPIC_ID>',
+    subscriberId: '<SUBSCRIBER_ID>',
     targetId: '<TARGET_ID>'
 );
 ```
@@ -380,8 +388,8 @@ client.set_jwt('eyJhbVCJ9.eyJ...')                   # Your secret JSON Web Toke
 messaging = Messaging(client)
 
 subscriber = messaging.create_subscriber(
-    topic_id = '<TOPIC_ID>', 
-    subscriber_id = '<SUBSCRIBER_ID>', 
+    topic_id = '<TOPIC_ID>',
+    subscriber_id = '<SUBSCRIBER_ID>',
     target_id = '<TARGET_ID>'
 )
 ```
@@ -398,8 +406,8 @@ client = Client.new
 messaging = Messaging.new(client)
 
 subscriber = messaging.create_subscriber(
-    topic_id: '<TOPIC_ID>', 
-    subscriber_id: '<SUBSCRIBER_ID>', 
+    topic_id: '<TOPIC_ID>',
+    subscriber_id: '<SUBSCRIBER_ID>',
     target_id: '<TARGET_ID>'
 )
 ```

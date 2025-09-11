@@ -2,9 +2,9 @@
     import Tooltip from '$lib/components/Tooltip.svelte';
     import { Button, Icon } from '$lib/components/ui';
     import { createDialog, melt } from '@melt-ui/svelte';
-    import { getContext, hasContext } from 'svelte';
     import { quadInOut } from 'svelte/easing';
     import { fade, scale } from 'svelte/transition';
+    import { isInTable } from '$markdoc/nodes/Table.svelte';
 
     interface ImageProps {
         src: string;
@@ -14,7 +14,7 @@
 
     let { src, alt, title }: ImageProps = $props();
 
-    const inTable = hasContext('in-table') ? getContext('in-table') : false;
+    const inTable = isInTable();
     const isAudio = /\.(wav|mp3|m4a|ogg)$/i.test(src);
 
     const {
@@ -41,9 +41,9 @@
         <img {src} {alt} {title} loading="lazy" style:vertical-align="middle" />
     {/if}
 {:else}
-    <div class="web-media relative my-8!">
+    <span class="web-media relative my-8! block">
         <img {src} {alt} {title} loading="lazy" class="aspect-video w-full object-cover" />
-        <div class="absolute right-4 bottom-4 opacity-25 transition hover:opacity-100">
+        <span class="absolute right-4 bottom-4 opacity-25 transition hover:opacity-100">
             <Tooltip closeOnPointerDown>
                 <Button variant="secondary" class="cursor-pointer" action={trigger}>
                     <span class="icon-arrow-expand text-accent size-4" aria-hidden="true"></span>
@@ -52,12 +52,12 @@
                     Expand
                 {/snippet}
             </Tooltip>
-        </div>
-    </div>
+        </span>
+    </span>
 
     {#if $open}
-        <div use:melt={$portalled}>
-            <div use:melt={$overlay} class="overlay" transition:fade={{ duration: 150 }}></div>
+        <span use:melt={$portalled}>
+            <span use:melt={$overlay} class="overlay" transition:fade={{ duration: 150 }}></span>
 
             <img
                 class="web-media content"
@@ -68,7 +68,7 @@
                 loading="lazy"
                 transition:scale={{ duration: 150, start: 0.95, easing: quadInOut }}
             />
-        </div>
+        </span>
     {/if}
 {/if}
 

@@ -183,6 +183,7 @@ function* iterateAllMethods(
             yield { method: OpenAPIV3.HttpMethods.GET, value: methods.get, url };
         }
         if (methods?.post?.tags?.includes(service)) {
+            // Skip if additional methods are present in [x-appwrite].methods
             if (
                 methods?.post &&
                 (!('x-appwrite' in methods.post) ||
@@ -206,10 +207,12 @@ function* iterateAllMethods(
                 url
             };
         }
+
+        // Check additional methods in [x-appwrite].methods
         if (
             methods?.post?.tags?.includes(service) &&
-            typeof methods.post['x-appwrite'] === 'object' &&
-            Array.isArray(methods.post['x-appwrite']?.methods)
+            typeof (methods.post as AppwriteOperationObject)['x-appwrite'] === 'object' &&
+            Array.isArray((methods.post as AppwriteOperationObject)['x-appwrite']?.methods)
         ) {
             const appwritePost = methods.post as AppwriteOperationObject;
             for (const additionalMethod of appwritePost['x-appwrite'].methods!) {

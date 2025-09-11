@@ -172,6 +172,12 @@
             'Thanks to Appwrite and advances in technology, we were able to get an MVP out in 2-3 months with 1 developer.',
             'jonas-janssen'
         ),
+        testimonial(
+            'Zach Handley',
+            'CTO // Socialaize',
+            "We have somewhere between 200,000 to 600,000 function executions per day. It's especially nice that you guys have to deal with the scaling now and not me.",
+            'zach-handley'
+        ),
         mariusBolik
     ];
 </script>
@@ -212,8 +218,8 @@
                             class="text-description web-u-max-width-640 e-u-padding-inline-32-desktop mx-auto"
                         >
                             The Appwrite Startups Program supports your startup with an all-in-one
-                            cloud platform for you to build your products. You will receive Cloud
-                            credits and a discount for Appwrite's paid plans.
+                            development platform for you to build your products. You will receive
+                            Cloud credits and a discount for Appwrite's paid plans.
                         </p>
                         <Button onclick={scrollToForm} class="mx-auto mt-3">Apply now</Button>
                     </div>
@@ -290,10 +296,11 @@
                                             Ship faster
                                         </h3>
                                         <p class="text-body font-medium">
-                                            Utilizing Appwrite as your backend, you significantly
-                                            cut down the time and resources spent on building a
-                                            backend infrastructure from scratch. This means you can
-                                            get to quicker iterations and faster time-to-market,
+                                            Utilizing Appwrite as your all-in-one platform, you
+                                            significantly cut down the time and resources spent on
+                                            building a backend infrastructure from scratch and you
+                                            deploy directly from Appwrite with Sites. This means you
+                                            can get to quicker iterations and faster time-to-market,
                                             directly addressing the challenge of finding
                                             product-market fit sooner.
                                         </p>
@@ -417,9 +424,9 @@
                                         </h3>
                                         <p class="text-body font-medium">
                                             Appwrite comes with built-in security features like
-                                            authentication, database security, and more, reducing
-                                            the time and effort you need to spend on securing your
-                                            application.
+                                            authentication, database security, DDoS protections, and
+                                            more, reducing the time and effort you need to spend on
+                                            securing your application.
                                         </p>
                                         <div
                                             class="web-card is-white web-u-margin-block-start-64 e-mt-4-mobile flex flex-col gap-5"
