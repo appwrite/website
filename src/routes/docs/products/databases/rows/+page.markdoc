@@ -354,7 +354,7 @@ suspend fun main() {
         Log.e("Appwrite", "Error: " + e.message)
     }
 }
-```
+```graphql
 mutation {
     tablesDBUpdateRow(
         databaseId: "<DATABASE_ID>",
@@ -371,6 +371,7 @@ mutation {
         data
     }
 }
+```
 {% /multicode %}
 
 # Upsert rows {% #upsert-rows %}
