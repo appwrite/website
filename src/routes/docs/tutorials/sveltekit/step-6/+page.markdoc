@@ -35,7 +35,7 @@ Create a new file `src/lib/ideas.js` and add the following code:
 
 ```client-web
 import { ID, Query } from 'appwrite';
-import { databases } from '$lib/appwrite';
+import { tablesDB } from '$lib/appwrite';
 
 const IDEAS_DATABASE_ID = '<YOUR_DATABASE_ID>'; // Replace with your database ID
 const IDEAS_TABLE_ID = '<YOUR_TABLE_ID>'; // Replace with your table ID
