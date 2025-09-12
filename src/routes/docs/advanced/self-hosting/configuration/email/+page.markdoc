@@ -46,7 +46,7 @@ When using SendGrid, the SMTP username should be set to the literal string "apik
 
 # Debugging {% #debugging %}
 
-If you are unable to send emails, there are several common issues to check. Follow these troubleshooting steps in order:
+If you are unable to send emails, there are several common issues to check. Follow these troubleshooting steps:
 
 ## Check email worker logs {% #check-logs %}
 
@@ -63,12 +63,12 @@ Look for error messages that might indicate authentication failures, network iss
 Check your `.env` file configuration:
 
 1. Ensure all SMTP environment variables are correctly set
-2. Verify credentials are valid 
+2. Verify credentials are valid
 3. Test your SMTP credentials independently using your provider's SDK or cURL requests
 
 ## Check authorized recipients {% #authorized-recipients %}
 
-Some SMTP providers have [authorized recipients](https://help.mailgun.com/hc/en-us/articles/217531258-Authorized-Recipients) restrictions in sandbox/development environments. 
+Some SMTP providers have [authorized recipients](https://help.mailgun.com/hc/en-us/articles/217531258-Authorized-Recipients) restrictions in sandbox/development environments.
 
 Make sure the email recipient is added to your provider's authorized recipients list if you're using a sandbox account.
 
