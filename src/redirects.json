@@ -727,5 +727,81 @@
     {
         "link": "/docs/tooling/mcp/claude",
         "redirect": "/docs/tooling/mcp/claude-desktop"
+    },
+    {
+        "link": "/docs/advanced/self-hosting/management/production",
+        "redirect": "/docs/advanced/self-hosting/production"
+    },
+    {
+        "link": "/docs/advanced/self-hosting/management/backups",
+        "redirect": "/docs/advanced/self-hosting/production/backups"
+    },
+    {
+        "link": "/docs/advanced/self-hosting/management/debug",
+        "redirect": "/docs/advanced/self-hosting/production/debugging"
+    },
+    {
+        "link": "/docs/advanced/self-hosting/management/updates",
+        "redirect": "/docs/advanced/self-hosting/production/updates"
+    },
+    {
+        "link": "/docs/advanced/self-hosting/backups",
+        "redirect": "/docs/advanced/self-hosting/production/backups"
+    },
+    {
+        "link": "/docs/advanced/self-hosting/debug",
+        "redirect": "/docs/advanced/self-hosting/production/debugging"
+    },
+    {
+        "link": "/docs/advanced/self-hosting/updates",
+        "redirect": "/docs/advanced/self-hosting/production/updates"
+    },
+    {
+        "link": "/docs/advanced/self-hosting/update",
+        "redirect": "/docs/advanced/self-hosting/production/updates"
+    },
+    {
+        "link": "/docs/advanced/self-hosting/scaling",
+        "redirect": "/docs/advanced/self-hosting/production/scaling"
+    },
+    {
+        "link": "/docs/advanced/self-hosting/errors",
+        "redirect": "/docs/advanced/self-hosting/production/errors"
+    },
+    {
+        "link": "/docs/advanced/self-hosting/rate-limits",
+        "redirect": "/docs/advanced/self-hosting/production/rate-limits"
+    },
+    {
+        "link": "/docs/advanced/self-hosting/security",
+        "redirect": "/docs/advanced/self-hosting/production/security"
+    },
+    {
+        "link": "/docs/advanced/self-hosting/functions",
+        "redirect": "/docs/advanced/self-hosting/configuration/functions"
+    },
+    {
+        "link": "/docs/advanced/self-hosting/tls-certificates",
+        "redirect": "/docs/advanced/self-hosting/configuration/tls-certificates"
+    },
+    {
+        "link": "/docs/advanced/self-hosting/storage",
+        "redirect": "/docs/advanced/self-hosting/configuration/storage"
+    },
+    {
+        "link": "/docs/advanced/self-hosting/sites",
+        "redirect": "/docs/advanced/self-hosting/configuration/sites"
+    },
+    {
+        "link": "/docs/advanced/self-hosting/sms",
+        "redirect": "/docs/advanced/self-hosting/configuration/sms"
+    },
+    {
+        "link": "/docs/advanced/self-hosting/email",
+        "redirect": "/docs/advanced/self-hosting/configuration/email"
+    },
+    {
+        "link": "/docs/advanced/self-hosting/version-control",
+        "redirect": "/docs/advanced/self-hosting/configuration/version-control"
     }
 ]
