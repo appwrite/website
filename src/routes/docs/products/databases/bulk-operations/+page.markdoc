@@ -35,7 +35,7 @@ Bulk operations have different limits based on your Appwrite plan:
 | Free | 100 |
 | Pro  | 1,000 |
 
-These limits apply to all bulk operations including create, update, upsert, and delete operations. If you need higher limits than what the Pro plan offers, you can [contact support](https://appwrite.io/contact-us/enterprise) to inquire about a custom plan.
+These limits apply to all bulk operations including create, update, upsert, and delete operations. If you need higher limits than what the Pro plan offers, you can [inquire](/contact-us/enterprise) about a custom plan.
 
 # Create rows {% #create-rows %}
 
