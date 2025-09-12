@@ -1,0 +1,52 @@
+---
+layout: partner
+title: Sayone Technologies
+description: AI consulting, custom software, and digital transformation solutions for global businesses.
+date: 2025-09-09
+featured: false
+partnerLevel: Silver
+isNew: true
+cover: /images/partners/covers/sayone.png
+category: agency
+website: https://www.sayonetech.com/
+email: mailto:renjith@sayonetech.com
+product: 
+    avatar: '/images/partners/avatars/sayone.png'
+    vendor: Sayone Technologies
+    description: SayOne is a fast-growing IT company providing AI consulting, custom software, and modern digital solutions.
+technologies: 
+    - Java
+    - Spring Boot
+    - Python
+    - NodeJS
+    - .NET
+    - Ruby on Rails
+    - React
+    - Next JS
+services:
+    - AI Consulting
+    - Generative AI
+    - Custom Software Development
+    - Cloud Solutions
+    - Digital Transformation
+    - E-Commerce Development
+    - Enterprise App Modernization
+    - Mobile App Development
+regions:
+    - Europe
+    - North America
+    - Middle East 
+    - Australia
+    - New Zealand
+languages: 
+    - English
+---
+
+# Overview
+
+SayOne Technologies is a fast-growing Information Technology company serving clients across North America, Europe, the Middle East, and Asia-Pacific. With strong expertise in AI, cloud, and full-stack development, SayOne focuses on helping businesses accelerate digital transformation and deliver secure, scalable, and innovative solutions.
+
+# Services
+
+SayOne offers a wide range of services including AI consulting, generative AI solutions, custom software development, and digital transformation strategies. Their team leverages modern frameworks and cloud platforms to build reliable web and mobile applications, helping clients stay competitive in a rapidly evolving digital landscape.
+
