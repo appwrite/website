@@ -1008,7 +1008,7 @@ recovery code factor. Initialize the challenge by calling `account.createMfaChal
 {% multicode %}
 ```client-web
 const challenge = await account.createMfaChallenge({
-    factor: 'recoverycode'
+    factor: AuthenticationFactor.Recoverycode
 });
 
 // Save the challenge ID to complete the challenge later
