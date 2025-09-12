@@ -8,7 +8,7 @@ Rows have a structure defined by the parent table.
 
 # Create rows {% #create-rows %}
 {% info title="Permissions required" %}
-You must grant **create** permissions to users at the **table level** before users can create rows.
+You must grant _create_ permissions to users at the _table level_ before users can create rows.
 [Learn more about permissions](#permissions)
 {% /info %}
 
@@ -131,7 +131,7 @@ To do so, navigate to the **Rows** tab of your table and click the **Add row** b
 # List rows {% #list-rows %}
 
 {% info title="Permissions required" %}
-You must grant **read** permissions to users at the **table level** before users can read rows.
+You must grant _read_ permissions to users at the _table level_ before users can read rows.
 [Learn more about permissions](#permissions)
 {% /info %}
 
@@ -140,7 +140,7 @@ Rows can be retrieved using the [List Row](/docs/references/cloud/client-web/tab
 Results can be filtered, sorted, and paginated using Appwrite's shared set of query methods.
 You can find a full guide on querying in the [Queries Guide](/docs/products/databases/queries).
 
-By default, results are limited to the **first 25 items**.
+By default, results are limited to the _first 25 items_.
 You can change this through [pagination](/docs/products/databases/pagination).
 
 {% multicode %}
@@ -258,7 +258,7 @@ query {
 
 # Update row {% #update-row %}
 {% info title="Permissions required" %}
-You must grant **update** permissions to users at the **table level** or **row level** before users can update rows.
+You must grant _update_ permissions to users at the _table level_ or _row level_ before users can update rows.
 [Learn more about permissions](#permissions)
 {% /info %}
 
@@ -380,7 +380,7 @@ Upsert is a combination of "update" and "insert" operations. It creates a new ro
 In most use cases, you will upsert rows programmatically.
 
 {% info title="Permissions required" %}
-You must grant **create** and **update** permissions to users at the **table level** before users can upsert rows. You can also grant **update** permissions at the row level instead.
+You must grant _create_ permissions to users at the _table level_, and _update_ permissions to users at the _table_ or _row_ level before users can upsert rows.
 [Learn more about permissions](#permissions)
 {% /info %}
 {% multicode %}
