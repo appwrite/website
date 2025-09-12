@@ -40,7 +40,7 @@ Head to the **Domains** tab of your site, and add your apex domain (e.g., `myapp
 
 Next, head to your DNS provider and create an A or AAAA record for your root domain pointing to the server's IP address. This will allow Appwrite to serve your sites from the apex domain.
 
-{% info title="Important" %}
+{% info title="DNS conflicts" %}
 Make sure to remove any pre-existing `A` and `AAAA` records in the DNS settings of your domain, as these can conflict with your current configuration.
 {% /info %}
 
