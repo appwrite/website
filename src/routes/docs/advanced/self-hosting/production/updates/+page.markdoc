@@ -6,8 +6,6 @@ description: Keep your self-hosted Appwrite instance up-to-date. Learn how to pe
 
 To upgrade your Appwrite server from an older version, you should use the Appwrite migration tool **after you have installed the new version**. The migration tool will adjust your Appwrite data to the new version's structure to make sure your Appwrite data is compatible with any internal changes.
 
-As of version 0.14, Appwrite requires [Docker Compose Version 2](https://docs.docker.com/compose/install/). To upgrade Appwrite, make sure your Docker installation is updated to support Compose V2.
-
 {% info title="A note about migration" %}
 You can migrate to versions that require a migration path and are higher than your current version, such as from 1.5.0 to 1.5.11.
 
