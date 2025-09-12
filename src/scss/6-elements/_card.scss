@@ -2,7 +2,7 @@
 
 .#{$p}-card {
   --p-card-padding: var(--card-padding, #{pxToRem(24)});
-  --p-card-border-radius: var(--card-border-radius, #{pxToRem(16)});
+  --p-card-border-radius: var(--card-border-radius, #{pxToRem(12)});
   outline: 0;
 
   &.is-normal {

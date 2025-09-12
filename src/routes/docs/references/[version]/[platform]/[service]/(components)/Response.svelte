@@ -5,7 +5,7 @@
     export let method: SDKMethod;
 </script>
 
-<div class="web-card is-transparent p-4">
+<div class="web-card is-normal bg-card! bg-gradient-to-b p-4">
     <ul>
         {#each method.responses as response}
             {#if response.models}

@@ -52,7 +52,7 @@
                     using SSR with <code>setSession</code>, these rate limits will still apply.
                     <a
                         href="/docs/products/auth/server-side-rendering#rate-limits"
-                        class="u-link text-primary"
+                        class="u-link text-primary mt-3 block"
                     >
                         Learn more about SSR rate limits.
                     </a>
@@ -66,17 +66,23 @@
                     <thead class="web-table-header">
                         <tr class="web-table-row">
                             <th class="web-table-head-col">
-                                <div class="text-eyebrow font-aeonik-fono text-primary uppercase">
+                                <div
+                                    class="text-eyebrow font-regular font-aeonik-fono text-primary uppercase"
+                                >
                                     Time frame
                                 </div>
                             </th>
                             <th class="web-table-head-col">
-                                <div class="text-eyebrow font-aeonik-fono text-primary uppercase">
+                                <div
+                                    class="text-eyebrow font-regular font-aeonik-fono text-primary uppercase"
+                                >
                                     Attempts
                                 </div>
                             </th>
                             <th class="web-table-head-col">
-                                <div class="text-eyebrow font-aeonik-fono text-primary uppercase">
+                                <div
+                                    class="text-eyebrow font-regular font-aeonik-fono text-primary uppercase"
+                                >
                                     Key
                                 </div>
                             </th>
@@ -94,7 +100,7 @@
                                 </tr>
                             {/each}
                         {:else if typeof rateKeys === 'string'}
-                            <tr class="web-table-row">
+                            <tr class="web-table-row rounded-none!">
                                 <td class="web-table-col">{Math.floor(rateTime / 60)} minutes</td>
                                 <td class="web-table-col">{rateLimit} requests</td>
                                 <td class="web-table-col">{parseKeys(rateKeys)}</td>
@@ -107,7 +113,7 @@
         <div class="">
             <a
                 href="/docs/advanced/platform/rate-limits"
-                class="u-link text-primary"
+                class="u-link text-primary mt-3 block"
                 onclick={() => trackEvent(`docs-rate_limits_learn_more-click`)}
             >
                 <span>Learn more about rate limits</span>
