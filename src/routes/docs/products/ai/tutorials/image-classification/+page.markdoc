@@ -188,15 +188,15 @@ To begin, add a new function to the `appwrite.js` file created earlier which wil
 ```js
 async createImageLabels(databaseId, tableId, imageId, labels)
 {
-  await this.tablesDB.createRow(
+  await this.tablesDB.createRow({
     databaseId,
     tableId,
-    ID.unique(),
-    {
+    rowId: ID.unique(),
+    data: {
       image: imageId,
       labels,
     }
-  );
+  });
 }
 ```
 

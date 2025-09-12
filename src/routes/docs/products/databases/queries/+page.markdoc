@@ -33,14 +33,14 @@ const client = new Client()
 
 const tablesDB = new TablesDB(client);
 
-tablesDB.listRows(
-    '<DATABASE_ID>',
-    '<TABLE_ID>',
-    [
+tablesDB.listRows({
+    databaseId: '<DATABASE_ID>',
+    tableId: '<TABLE_ID>',
+    queries: [
         Query.equal('title', ['Avatar', 'Lord of the Rings']),
         Query.greaterThan('year', 1999)
     ]
-);
+});
 ```
 ```server-nodejs
 const sdk = require('node-appwrite');
@@ -55,14 +55,14 @@ client
     .setKey('<YOUR_API_KEY>')
 ;
 
-const promise = tablesDB.listRows(
-    '<DATABASE_ID>',
-    '<TABLE_ID>',
-    [
+const promise = tablesDB.listRows({
+    databaseId: '<DATABASE_ID>',
+    tableId: '<TABLE_ID>',
+    queries: [
         sdk.Query.equal('title', ['Avatar', 'Lord of the Rings']),
         sdk.Query.greaterThan('year', 1999)
     ]
-);
+});
 
 promise.then(function (response) {
     console.log(response);
@@ -300,10 +300,12 @@ By default, rows return only their own fields:
 
 {% multicode %}
 ```client-web
-const doc = await tablesDB.getRow(
-    '<DATABASE_ID>', '<TABLE_ID>', '<ROW_ID>',
-    [Query.select(['name', 'age'])]
-);
+const doc = await tablesDB.getRow({
+    databaseId: '<DATABASE_ID>',
+    tableId: '<TABLE_ID>',
+    rowId: '<ROW_ID>',
+    queries: [Query.select(['name', 'age'])]
+});
 ```
 ```client-flutter
 final doc = await tablesDB.getRow(
@@ -326,10 +328,12 @@ doc = tablesDB.get_row(
 )
 ```
 ```server-nodejs
-const doc = await tablesDB.getRow(
-    '<DATABASE_ID>', '<TABLE_ID>', '<ROW_ID>',
-    [Query.select(['name', 'age'])]
-);
+const doc = await tablesDB.getRow({
+    databaseId: '<DATABASE_ID>',
+    tableId: '<TABLE_ID>',
+    rowId: '<ROW_ID>',
+    queries: [Query.select(['name', 'age'])]
+});
 ```
 ```php
 $doc = $tablesDB->getRow(
@@ -357,10 +361,12 @@ Use the `*` wildcard to load all fields from related rows:
 
 {% multicode %}
 ```client-web
-const doc = await tablesDB.getRow(
-    '<DATABASE_ID>', '<TABLE_ID>', '<ROW_ID>',
-    [Query.select(['*', 'reviews.*'])]
-);
+const doc = await tablesDB.getRow({
+    databaseId: '<DATABASE_ID>',
+    tableId: '<TABLE_ID>',
+    rowId: '<ROW_ID>',
+    queries: [Query.select(['*', 'reviews.*'])]
+});
 ```
 ```client-flutter
 final doc = await tablesDB.getRow(
@@ -383,10 +389,12 @@ doc = tablesDB.get_row(
 )
 ```
 ```server-nodejs
-const doc = await tablesDB.getRow(
-    '<DATABASE_ID>', '<TABLE_ID>', '<ROW_ID>',
-    [Query.select(["*", "reviews.*"])]
-);
+const doc = await tablesDB.getRow({
+    databaseId: '<DATABASE_ID>',
+    tableId: '<TABLE_ID>',
+    rowId: '<ROW_ID>',
+    queries: [Query.select(["*", "reviews.*"])]
+});
 ```
 ```php
 $doc = $tablesDB->getRow(
@@ -415,10 +423,12 @@ For precise control, select only specific fields from related rows:
 
 {% multicode %}
 ```client-web
-const doc = await tablesDB.getRow(
-    '<DATABASE_ID>', '<TABLE_ID>', '<ROW_ID>',
-    [Query.select(['name', 'age', 'reviews.author', 'reviews.rating'])]
-);
+const doc = await tablesDB.getRow({
+    databaseId: '<DATABASE_ID>',
+    tableId: '<TABLE_ID>',
+    rowId: '<ROW_ID>',
+    queries: [Query.select(['name', 'age', 'reviews.author', 'reviews.rating'])]
+});
 ```
 ```client-flutter
 final doc = await tablesDB.getRow(
@@ -441,10 +451,12 @@ doc = tablesDB.get_row(
 )
 ```
 ```server-nodejs
-const doc = await tablesDB.getRow(
-    '<DATABASE_ID>', '<TABLE_ID>', '<ROW_ID>',
-    [Query.select(["name", "age", "reviews.author", "reviews.rating"])]
-);
+const doc = await tablesDB.getRow({
+    databaseId: '<DATABASE_ID>',
+    tableId: '<TABLE_ID>',
+    rowId: '<ROW_ID>',
+    queries: [Query.select(["name", "age", "reviews.author", "reviews.rating"])]
+});
 // Result: { name: "John", age: 30, reviews: [{ author: "...", rating: 5 }] }
 ```
 ```php
@@ -1782,10 +1794,10 @@ You can create complex queries by combining AND and OR operations. For example, 
 
 {% multicode %}
 ```client-web
-const results = await tablesDB.listRows(
-    '<DATABASE_ID>',
-    '<TABLE_ID>',
-    [
+const results = await tablesDB.listRows({
+    databaseId: '<DATABASE_ID>',
+    tableId: '<TABLE_ID>',
+    queries: [
         Query.or([
             Query.and([
                 Query.equal('category', ['books']),
@@ -1797,7 +1809,7 @@ const results = await tablesDB.listRows(
             ])
         ])
     ]
-);
+});
 ```
 ```client-flutter
 final results = await tablesDB.listRows(

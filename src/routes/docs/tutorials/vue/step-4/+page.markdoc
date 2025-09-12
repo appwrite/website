@@ -42,7 +42,9 @@ export const user = reactive({
     window.location.href = "/"; // Redirect to home page
   },
   async logout() {
-    await account.deleteSession("current");
+    await account.deleteSession({
+        sessionId: "current"
+    });
     this.current = null;
   },
 });

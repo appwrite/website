@@ -192,7 +192,7 @@ Add the following components to your `App.js` file to create a simple login form
     <TouchableOpacity
         style={styles.button}
         onPress={async () => {
-        await account.deleteSession('current');
+        await account.deleteSession({ sessionId: 'current' });
         setLoggedInUser(null);
         }}
     >

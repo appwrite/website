@@ -203,11 +203,11 @@ const deepLink = new URL(makeRedirectUri({ preferLocalhost: true }));
 const scheme = `${deepLink.protocol}//`; // e.g. 'exp://' or 'appwrite-callback-<PROJECT_ID>://'
 
 // Start OAuth flow
-const loginUrl = await account.createOAuth2Token(
+const loginUrl = await account.createOAuth2Token({
     provider,
-    `${deepLink}`,
-    `${deepLink}`,
-);
+    success: `${deepLink}`,
+    failure: `${deepLink}`,
+});
 
 // Open loginUrl and listen for the scheme redirect
 const result = await WebBrowser.openAuthSessionAsync(`${loginUrl}`, scheme);

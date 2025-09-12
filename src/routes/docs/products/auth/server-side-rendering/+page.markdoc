@@ -458,11 +458,11 @@ const adminClient = new Client()
 app.get('/oauth', async (req, res) => {
     const account = new Account(adminClient);
 
-    const redirectUrl = await account.createOAuth2Token(
-        OAuthProvider.Github,                // Provider
-        'https://example.com/oauth/success', // Success URL
-        'https://example.com/oauth/failure', // Failure URL
-    );
+    const redirectUrl = await account.createOAuth2Token({
+        provider: OAuthProvider.Github,                // Provider
+        success: 'https://example.com/oauth/success', // Success URL
+        failure: 'https://example.com/oauth/failure', // Failure URL
+    });
 
     res.redirect(redirectUrl);
 });
