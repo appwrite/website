@@ -1,0 +1,38 @@
+---
+layout: partner
+title: App bis Web
+description: High-performance websites, shops, and WordPress solutions tailored to your business.
+date: 2025-09-09
+featured: false
+partnerLevel: Silver
+isNew: true
+cover: /images/partners/covers/appbisweb.png
+category: agency
+website: https://app-bis-web.de/
+email: mailto:luther@app-bis-web.de
+product: 
+    avatar: '/images/partners/avatars/appbisweb.png'
+    vendor: Jan Luther
+    description: Freelance web developer from Germany, building custom solutions with modern web technologies.
+technologies: 
+    - Astro
+    - React
+    - Vue
+services:
+    - Custom web apps
+    - WordPress solutions
+    - E-commerce development
+    - Website optimization
+regions:
+    - Germany
+languages: 
+    - English
+    - German
+---
+# Overview
+
+App bis Web is led by Jan Luther, a freelance web developer from Germany specializing in high-performance websites, custom shops, and WordPress solutions. With expertise in Astro, React, and Vue, the company focuses on delivering tailored, scalable, and user-friendly applications that help businesses grow and enhance their digital presence.
+
+# Services
+
+App bis Web offers a complete range of services, including custom web application development, WordPress site creation and optimization, and e-commerce solutions designed for speed and reliability. 
