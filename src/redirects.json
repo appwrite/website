@@ -729,52 +729,12 @@
         "redirect": "/docs/tooling/mcp/claude-desktop"
     },
     {
-        "link": "/docs/advanced/self-hosting/management/production",
-        "redirect": "/docs/advanced/self-hosting/production"
-    },
-    {
-        "link": "/docs/advanced/self-hosting/management/backups",
-        "redirect": "/docs/advanced/self-hosting/production/backups"
-    },
-    {
-        "link": "/docs/advanced/self-hosting/management/debug",
-        "redirect": "/docs/advanced/self-hosting/production/debugging"
-    },
-    {
-        "link": "/docs/advanced/self-hosting/management/updates",
-        "redirect": "/docs/advanced/self-hosting/production/updates"
-    },
-    {
-        "link": "/docs/advanced/self-hosting/backups",
-        "redirect": "/docs/advanced/self-hosting/production/backups"
-    },
-    {
         "link": "/docs/advanced/self-hosting/debug",
         "redirect": "/docs/advanced/self-hosting/production/debugging"
     },
     {
-        "link": "/docs/advanced/self-hosting/updates",
-        "redirect": "/docs/advanced/self-hosting/production/updates"
-    },
-    {
         "link": "/docs/advanced/self-hosting/update",
         "redirect": "/docs/advanced/self-hosting/production/updates"
-    },
-    {
-        "link": "/docs/advanced/self-hosting/scaling",
-        "redirect": "/docs/advanced/self-hosting/production/scaling"
-    },
-    {
-        "link": "/docs/advanced/self-hosting/errors",
-        "redirect": "/docs/advanced/self-hosting/production/errors"
-    },
-    {
-        "link": "/docs/advanced/self-hosting/rate-limits",
-        "redirect": "/docs/advanced/self-hosting/production/rate-limits"
-    },
-    {
-        "link": "/docs/advanced/self-hosting/security",
-        "redirect": "/docs/advanced/self-hosting/production/security"
     },
     {
         "link": "/docs/advanced/self-hosting/functions",
@@ -801,7 +761,11 @@
         "redirect": "/docs/advanced/self-hosting/configuration/email"
     },
     {
-        "link": "/docs/advanced/self-hosting/version-control",
-        "redirect": "/docs/advanced/self-hosting/configuration/version-control"
+        "link": "/docs/advanced/self-hosting/coolify",
+        "redirect": "/docs/advanced/self-hosting/platforms/coolify"
+    },
+    {
+        "link": "/docs/advanced/self-hosting/environment-variables",
+        "redirect": "/docs/advanced/self-hosting/configuration/environment-variables"
     }
 ]
