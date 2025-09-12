@@ -42,7 +42,7 @@ const promise = tablesDB.createRow({
     databaseId: '<DATABASE_ID>',
     tableId: '<TABLE_ID>',
     rowId: ID.unique(),
-    data: { "title": "Hamlet" }
+    data: { title: "Hamlet" }
 });
 
 promise.then(function (response) {
