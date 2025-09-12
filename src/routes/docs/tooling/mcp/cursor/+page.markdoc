@@ -65,12 +65,12 @@ Update the `mcp.json` file to include the docs server:
 
 ```json
 {
-    "mcpServers": {
-        "appwrite-docs": {
-            "command": "npx",
-            "args": ["@appwrite/mcp-server-docs"]
-        }
+  "mcpServers": {
+    "appwrite-docs": {
+      "url": "https://mcp-for-docs.appwrite.io",
+      "type": "http"
     }
+  }
 }
 ```
 
