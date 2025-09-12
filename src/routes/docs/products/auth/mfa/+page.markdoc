@@ -917,7 +917,7 @@ Initiate a challenge for users to complete using an authenticator app.
 {% multicode %}
 ```client-web
 const challenge = await account.createMfaChallenge({
-    factor: 'totp'
+    factor: AuthenticationFactor.Totp
 });
 
 // Save the challenge ID to complete the challenge later
