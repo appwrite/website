@@ -81,9 +81,9 @@ Add the docs server to your configuration:
 }
 ```
 
-**Why don't we use the `@appwrite/mcp-server-docs` package?**  
+**Why do we use the `mcp-remote` package?**  
 
-Unlike other IDEs, we can't directly use the `@appwrite/mcp-server-docs` package in Claude Desktop because currently, Claude Desktop only supports local (stdio) MCP servers and not remote servers. The `mcp-remote` package acts as a proxy to connect to the docs MCP server.
+Unlike other IDEs, Claude Desktop only supports local (stdio) MCP servers and not remote servers. The `mcp-remote` package acts as a proxy to connect to the docs MCP server.
 
 {% /tabsitem %}
 {% /tabs %}
