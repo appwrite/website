@@ -723,5 +723,9 @@
     {
         "link": "/docs/tooling/mcp/mcp-for-docs",
         "redirect": "/docs/tooling/mcp/docs"
+    },
+    {
+        "link": "/docs/tooling/mcp/claude",
+        "redirect": "/docs/tooling/mcp/claude-desktop"
     }
 ]
