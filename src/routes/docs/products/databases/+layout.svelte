@@ -52,6 +52,11 @@
                     href: '/docs/products/databases/relationships'
                 },
                 {
+                    label: 'Spatial',
+                    href: '/docs/products/databases/spatial',
+                    new: isNewUntil('30 Sep 2025')
+                },
+                {
                     label: 'Backups',
                     href: '/docs/products/databases/backups'
                 }
