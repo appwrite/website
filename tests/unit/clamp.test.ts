@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest';
 
-import { clamp } from './clamp';
-import type { TestCases } from './test';
+import { clamp } from '$lib/utils/clamp';
+import type { TestCases } from '$lib/utils/test';
 
 const testCases: TestCases<typeof clamp> = [
     {
