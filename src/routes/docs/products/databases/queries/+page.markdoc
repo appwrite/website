@@ -1835,6 +1835,7 @@ results = tablesDB.list_rows(
     ]
 )
 ```
+```go
 rows, err := tablesDB.ListRows(
     "<DATABASE_ID>",
     "<TABLE_ID>",
