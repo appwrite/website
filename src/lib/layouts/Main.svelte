@@ -185,8 +185,19 @@
         </div>
         <div class="web-mobile-header-end">
             {#if !$isMobileNavOpen}
-                <Button href={getAppwriteDashboardUrl()} event="main-start_building_btn-click">
-                    <span class="text">Start building</span>
+                <Button
+                    href={page.url.pathname.includes('/offer-300')
+                        ? 'https://apwr.dev/DCMWDSw'
+                        : getAppwriteDashboardUrl()}
+                    event={page.url.pathname.includes('/offer-300')
+                        ? 'mobile-claim_300_credits_btn-click'
+                        : 'main-start_building_btn-click'}
+                >
+                    <span class="text"
+                        >{page.url.pathname.includes('/offer-300')
+                            ? 'Claim 300$ credits'
+                            : 'Start building'}</span
+                    >
                 </Button>
             {/if}
             <Button variant="text" aria-label="open navigation" onclick={handleNav}>
@@ -223,25 +234,35 @@
                         width="130"
                     />
                 </a>
-                <MainNav initialized={$initialized} links={navLinks} />
+                {#if !page.url.pathname.includes('/offer-300')}
+                    <MainNav initialized={$initialized} links={navLinks} />
+                {/if}
             </div>
             <div class="web-main-header-end">
-                <Button
-                    variant="text"
-                    href={SOCIAL_STATS.GITHUB.LINK}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="web-u-inline-width-100-percent-mobile"
-                >
-                    <Icon name="star" aria-hidden="true" />
-                    <span class="text">Star on GitHub</span>
-                    <InlineTag>{SOCIAL_STATS.GITHUB.STAT}</InlineTag>
-                </Button>
-                <IsLoggedIn />
+                {#if true}
+                    {@const isOfferPage = page.url.pathname.includes('/offer-300')}
+                    <Button
+                        variant="text"
+                        href={isOfferPage ? undefined : SOCIAL_STATS.GITHUB.LINK}
+                        target={isOfferPage ? undefined : '_blank'}
+                        rel={isOfferPage ? undefined : 'noopener noreferrer'}
+                        class="web-u-inline-width-100-percent-mobile"
+                        style={isOfferPage ? 'pointer-events: none;' : ''}
+                    >
+                        <Icon name="star" aria-hidden="true" />
+                        <span class="text">Star on GitHub</span>
+                        <InlineTag>{SOCIAL_STATS.GITHUB.STAT}</InlineTag>
+                    </Button>
+                    <IsLoggedIn offerButton={isOfferPage} />
+                {/if}
             </div>
         </div>
     </header>
-    <MobileNav bind:open={$isMobileNavOpen} links={navLinks} />
+    <MobileNav
+        bind:open={$isMobileNavOpen}
+        links={navLinks}
+        offerButton={page.url.pathname.includes('/offer-300')}
+    />
 
     <main
         class="relative space-y-6"
