@@ -760,14 +760,14 @@ const client = new Client()
 const storage = new Storage(client);
 
 // Downloads the preview image data as ArrayBuffer
-const result = await storage.getFilePreview(
-    '<BUCKET_ID>',
-    '<FILE_ID>',
-    200,                    // width
-    200,                    // height
-    ImageGravity.Center,    // gravity
-    100                     // quality
-);
+const result = await storage.getFilePreview({
+    bucketId: '<BUCKET_ID>',
+    fileId: '<FILE_ID>',
+    width: 200,
+    height: 200,
+    gravity: ImageGravity.Center,
+    quality: 100
+});
 
 console.log(result); // ArrayBuffer with image data
 
