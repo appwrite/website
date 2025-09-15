@@ -18,8 +18,8 @@ platform:
 images: 
     - /images/integrations/mcp-claude/cover.png
     - /images/integrations/mcp-claude/appwrite-api-key.png
-    - /images/docs/mcp/claude/claude-mcp-tools.png
-    - /images/docs/mcp/claude/claude-list-users.png
+    - /images/docs/mcp/claude-desktop/claude-mcp-tools.png
+    - /images/docs/mcp/claude-desktop/claude-list-users.png
 ---
 
 Claude Desktop is a standalone application by Anthropic that allows users to interact with the Claude large language model directly from their Mac or Windows desktops. Designed for convenience and speed, it offers a distraction-free chat experience, supports multiple conversations, and runs natively for faster performance and system integration. Whether you're brainstorming, coding, summarizing documents, or automating workflows, Claude Desktop makes it easy to harness AI assistance without relying on a browser.
