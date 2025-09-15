@@ -144,7 +144,7 @@
 
     $: ($isHeaderHidden, updateSideNav());
 
-    $: isOfferPage = page.url.pathname.includes('/offer-300');
+    $: isOfferPage = page.route.id?.includes('/offer-300') ?? false;
 
     $: mobileButtonHref = isOfferPage ? 'https://apwr.dev/DCMWDSw' : getAppwriteDashboardUrl();
     $: mobileButtonEvent = isOfferPage
