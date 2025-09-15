@@ -4,7 +4,7 @@
 [![Twitter Account](https://img.shields.io/twitter/follow/appwrite?color=00acee&label=twitter&style=flat-square)](https://twitter.com/appwrite)
 [![appwrite.io](https://img.shields.io/badge/appwrite-.io-f02e65?style=flat-square)](https://appwrite.io)
 
-![Cover banner](/../../../.github/blob/main/profile/images/banner.png)
+![Cover banner](/../../../.github/blob/main/profile/images/banner.png) 
 
 The Appwrite Website repo features the main Appwrite website, including our [homepage](https://appwrite.io), [docs](https://appwrite.io/docs), and upcoming blog.
 
