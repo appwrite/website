@@ -29,11 +29,12 @@ import { createAdminClient } from "~/server/lib/appwrite";
 export default defineEventHandler(async (event) => {
   const config = useRuntimeConfig(event);
   const { account } = createAdminClient();
+  const endpoint = config.public.appwriteEndpoint;
 
   const redirectUrl = await account.createOAuth2Token({
-    provider: "github", // OAuth provider
-    success: `${config.public.appwriteEndpoint}/api/oauth`, // Success URL: redirect back to the /oauth route
-    failure: `${config.public.appwriteEndpoint}/signup`      // Failure URL: redirect to the sign up page
+    provider: "github",
+    success: `${endpoint}/api/oauth`,
+    failure: `${endpoint}/signup`
   });
 
   // Redirect the user to the OAuth provider authorization page
