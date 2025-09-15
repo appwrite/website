@@ -27,15 +27,7 @@
     <div class="web-side-nav-wrapper ps-4 pe-4">
         <div class="flex items-center gap-2 px-4">
             {#if offerButton}
-                <Button
-                    href="https://apwr.dev/DCMWDSw"
-                    variant="secondary"
-                    class="flex-1"
-                    event="mobile_nav-claim_300_credits-click"
-                >
-                    Claim 300$ credits
-                </Button>
-                <IsLoggedIn class="flex-1" offerButton={true} />
+                <IsLoggedIn class="flex-1" offerButton />
             {:else}
                 <Button
                     href={getAppwriteDashboardUrl('/register')}

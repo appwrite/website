@@ -22,11 +22,7 @@
         'Appwrite Sites, the open-source Vercel alternative. Develop, deploy, and scale your web applications directly from Appwrite, alongside your backend.';
     const ogImage = DEFAULT_HOST + '/images/open-graph/website.png';
 
-    let isShortFormat = $state(false);
-
-    $effect(() => {
-        isShortFormat = page.url.searchParams.get('format') === 'short';
-    });
+    const isShortFormat = $derived(page.url.searchParams.get('format') === 'short');
 </script>
 
 <svelte:head>

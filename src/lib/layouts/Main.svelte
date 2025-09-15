@@ -144,6 +144,14 @@
 
     $: ($isHeaderHidden, updateSideNav());
 
+    $: isOfferPage = page.url.pathname.includes('/offer-300');
+
+    $: mobileButtonHref = isOfferPage ? 'https://apwr.dev/DCMWDSw' : getAppwriteDashboardUrl();
+    $: mobileButtonEvent = isOfferPage
+        ? 'mobile-claim_300_credits_btn-click'
+        : 'main-start_building_btn-click';
+    $: mobileButtonText = isOfferPage ? 'Claim 300$ credits' : 'Start building';
+
     const handleNav = () => {
         $isMobileNavOpen = !$isMobileNavOpen;
         document.body.style.overflow = $isMobileNavOpen ? 'hidden' : '';
@@ -185,19 +193,8 @@
         </div>
         <div class="web-mobile-header-end">
             {#if !$isMobileNavOpen}
-                <Button
-                    href={page.url.pathname.includes('/offer-300')
-                        ? 'https://apwr.dev/DCMWDSw'
-                        : getAppwriteDashboardUrl()}
-                    event={page.url.pathname.includes('/offer-300')
-                        ? 'mobile-claim_300_credits_btn-click'
-                        : 'main-start_building_btn-click'}
-                >
-                    <span class="text"
-                        >{page.url.pathname.includes('/offer-300')
-                            ? 'Claim 300$ credits'
-                            : 'Start building'}</span
-                    >
+                <Button href={mobileButtonHref} event={mobileButtonEvent}>
+                    <span class="text">{mobileButtonText}</span>
                 </Button>
             {/if}
             <Button variant="text" aria-label="open navigation" onclick={handleNav}>
@@ -234,35 +231,28 @@
                         width="130"
                     />
                 </a>
-                {#if !page.url.pathname.includes('/offer-300')}
+                {#if !isOfferPage}
                     <MainNav initialized={$initialized} links={navLinks} />
                 {/if}
             </div>
             <div class="web-main-header-end">
-                {#if true}
-                    {@const isOfferPage = page.url.pathname.includes('/offer-300')}
-                    <Button
-                        variant="text"
-                        href={isOfferPage ? undefined : SOCIAL_STATS.GITHUB.LINK}
-                        target={isOfferPage ? undefined : '_blank'}
-                        rel={isOfferPage ? undefined : 'noopener noreferrer'}
-                        class="web-u-inline-width-100-percent-mobile"
-                        style={isOfferPage ? 'pointer-events: none;' : ''}
-                    >
-                        <Icon name="star" aria-hidden="true" />
-                        <span class="text">Star on GitHub</span>
-                        <InlineTag>{SOCIAL_STATS.GITHUB.STAT}</InlineTag>
-                    </Button>
-                    <IsLoggedIn offerButton={isOfferPage} />
-                {/if}
+                <Button
+                    variant="text"
+                    href={isOfferPage ? undefined : SOCIAL_STATS.GITHUB.LINK}
+                    target={isOfferPage ? undefined : '_blank'}
+                    rel={isOfferPage ? undefined : 'noopener noreferrer'}
+                    class="web-u-inline-width-100-percent-mobile"
+                    style={isOfferPage ? 'pointer-events: none;' : ''}
+                >
+                    <Icon name="star" aria-hidden="true" />
+                    <span class="text">Star on GitHub</span>
+                    <InlineTag>{SOCIAL_STATS.GITHUB.STAT}</InlineTag>
+                </Button>
+                <IsLoggedIn offerButton={isOfferPage} />
             </div>
         </div>
     </header>
-    <MobileNav
-        bind:open={$isMobileNavOpen}
-        links={navLinks}
-        offerButton={page.url.pathname.includes('/offer-300')}
-    />
+    <MobileNav bind:open={$isMobileNavOpen} links={navLinks} offerButton={isOfferPage} />
 
     <main
         class="relative space-y-6"

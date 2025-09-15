@@ -19,7 +19,7 @@
     class={cn('web-u-inline-width-100-percent-mobile', className)}
 >
     {#if offerButton}
-        <span class="block" aria-hidden="false">Claim 300$ credits</span>
+        <span class="block">Claim 300$ credits</span>
     {:else}
         <span class="hidden group-[&[data-logged-in]]/body:block" aria-hidden={!isLoggedIn}
             >Go to Console</span
