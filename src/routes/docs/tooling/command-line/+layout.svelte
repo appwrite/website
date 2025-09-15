@@ -29,8 +29,8 @@
             label: 'Deployments',
             items: [
                 {
-                    label: 'Collections',
-                    href: '/docs/tooling/command-line/collections'
+                    label: 'Tables',
+                    href: '/docs/tooling/command-line/tables'
                 },
                 {
                     label: 'Functions',
