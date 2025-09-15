@@ -79,7 +79,7 @@ You may have noticed the `--users` argument, which enables Claude Desktop to int
 
 Once you have updated and saved the `claude_desktop_config.json` file, restart Claude Desktop and click on the MCP tools button (at the bottom right section of the prompt input) to view the available MCP tools.
 
-![Claude MCP Tools](/images/docs/mcp/claude/claude-mcp-tools.png)
+![Claude MCP Tools](/images/docs/mcp/claude-desktop/claude-mcp-tools.png)
 
 {% info title="Claude Code" %}
 If you are using the Claude Code CLI, you can use the following command in your terminal to configure the MCP server in the exact same manner:
@@ -93,7 +93,7 @@ claude mcp add-json appwrite '{"command":"uvx","args":["mcp-server-appwrite","--
 
 Finally, you can test the integration by asking Claude Desktop to list all the users in your Appwrite project.
 
-![Claude Desktop](/images/docs/mcp/claude/claude-list-users.png)
+![Claude Desktop](/images/docs/mcp/claude-desktop/claude-list-users.png)
 
 # Read more about MCP with Claude Desktop
 
