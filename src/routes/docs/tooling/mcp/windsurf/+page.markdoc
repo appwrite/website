@@ -70,8 +70,7 @@ Update the `mcp_config.json` file to include the docs server:
 {
   "mcpServers": {
     "appwrite-docs": {
-      "command": "npx",
-      "args": ["@appwrite/mcp-server-docs"]
+      "serverUrl": "https://mcp-for-docs.appwrite.io"
     }
   }
 }

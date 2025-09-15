@@ -40,7 +40,7 @@ Head to the **Domains** tab of your site, and add your apex domain (e.g., `myapp
 
 Next, head to your DNS provider and create an A or AAAA record for your root domain pointing to the server's IP address. This will allow Appwrite to serve your sites from the apex domain.
 
-{% info title="Important" %}
+{% info title="DNS conflicts" %}
 Make sure to remove any pre-existing `A` and `AAAA` records in the DNS settings of your domain, as these can conflict with your current configuration.
 {% /info %}
 
@@ -68,7 +68,7 @@ docker compose logs appwrite-worker-certificates
 ```
 
 Note that you'll need to run this command for each domain, and repeat it every time you create a new site.
-If you have many  or frequently create new ones, consider using the automated certificate generation method below.
+If you have many sites or frequently create new ones, consider using the automated certificate generation method below.
 
 ## Automated certificate generation
 
