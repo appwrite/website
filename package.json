@@ -10,6 +10,7 @@
         "clean": "rm -rf node_modules && rm -rf .svelte_kit && pnpm i",
         "dev": "vite dev",
         "download-contributors": "node ./scripts/download-contributor-data.js",
+        "download-versions": "node ./scripts/download-sdk-versions.js",
         "format": "prettier --write .",
         "format:check": "prettier --check .",
         "generate:icons": "node ./src/icons/optimize.js",
