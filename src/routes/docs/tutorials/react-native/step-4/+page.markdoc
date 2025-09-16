@@ -38,7 +38,7 @@ export function UserProvider(props) {
   }
 
   async function logout() {
-    await account.deleteSession("current");
+    await account.deleteSession({ sessionId: "current" });
     setUser(null);
     toast('Logged out');
   }
