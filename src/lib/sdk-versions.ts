@@ -1,4 +1,4 @@
-export const appwriteVersions = {
+export const sdkVersions = {
     server: '1.8.0',
     'client-web': '20.0.0',
     'client-flutter': '19.0.0',
@@ -22,4 +22,4 @@ export const appwriteVersions = {
     'server-rest': ''
 } as const;
 
-export type AppwriteVersions = typeof appwriteVersions;
+export type SDKVersions = typeof sdkVersions;

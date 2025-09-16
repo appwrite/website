@@ -21,9 +21,9 @@ export async function downloadVersions() {
 
         const versions = await response.json();
         const outputPath = join(__dirname, '../src/lib/sdk-versions.ts');
-        const tsContent = `export const appwriteVersions = ${JSON.stringify(versions, null, 2)} as const;
+        const tsContent = `export const sdkVersions = ${JSON.stringify(versions, null, 2)} as const;
 
-export type AppwriteVersions = typeof appwriteVersions;
+export type SDKVersions = typeof sdkVersions;
 `;
         writeFileSync(outputPath, tsContent);
         console.log('✓ Appwrite SDK versions downloaded successfully');
