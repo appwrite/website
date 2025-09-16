@@ -20,10 +20,9 @@ Once the project is created, change your current working directory and install t
 
 ```sh
 cd ideas-tracker
+npm install appwrite@20.0.0
 npm install "@appwrite.io/pink"
 ```
-
-{% install_info type="client-web" /%}
 
 Open `src/app/globals.css` and replace the content with the following to import the relevant style files.
 
