@@ -25,6 +25,7 @@ Add a new server route to handle the redirect.
 ```js
 // server/routes/api/oauth.post.js
 import { createAdminClient } from "~/server/lib/appwrite";
+import { OAuthProvider } from "node-appwrite";
 
 export default defineEventHandler(async (event) => {
   const config = useRuntimeConfig(event);
@@ -32,7 +33,7 @@ export default defineEventHandler(async (event) => {
   const endpoint = config.public.appwriteEndpoint;
 
   const redirectUrl = await account.createOAuth2Token({
-    provider: "github",
+    provider: OAuthProvider.Github,
     success: `${endpoint}/api/oauth`,
     failure: `${endpoint}/signup`
   });
