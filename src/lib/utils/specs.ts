@@ -224,15 +224,18 @@ function* processAdditionalMethods(
                 },
                 responses: {
                     ...appwriteMethod.responses,
-                    [additionalMethod.responses[0].code]: {
-                        content: {
-                            'application/json': {
-                                schema: {
-                                    $ref: additionalMethod.responses[0].model
-                                }
-                            }
-                        }
-                    }
+                    [additionalMethod.responses[0].code]:
+                        additionalMethod.responses[0].code === 204
+                            ? { description: 'No Content' }
+                            : {
+                                  content: {
+                                      'application/json': {
+                                          schema: {
+                                              $ref: additionalMethod.responses[0].model
+                                          }
+                                      }
+                                  }
+                              }
                 }
             },
             url
@@ -289,6 +292,9 @@ function* iterateAllMethods(
         }
         if (hasAdditionalMethods(methods?.patch, service)) {
             yield* processAdditionalMethods(methods.patch!, OpenAPIV3.HttpMethods.PATCH, url);
+        }
+        if (hasAdditionalMethods(methods?.delete, service)) {
+            yield* processAdditionalMethods(methods.delete!, OpenAPIV3.HttpMethods.DELETE, url);
         }
     }
 }
