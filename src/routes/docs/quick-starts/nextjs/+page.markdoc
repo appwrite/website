@@ -53,7 +53,7 @@ These settings will create a minimal Next.js setup that's perfect for getting st
 Install the JavaScript Appwrite SDK.
 
 ```sh
-npm install appwrite@18.1.1
+npm install appwrite@20.0.0
 ```
 {% /section %}
 {% section #step-4 step=4 title="Define Appwrite service" %}
@@ -96,17 +96,25 @@ const LoginPage = () => {
   const [name, setName] = useState("");
 
   const login = async (email, password) => {
-    const session = await account.createEmailPasswordSession(email, password);
+    const session = await account.createEmailPasswordSession({
+        email,
+        password
+    });
     setLoggedInUser(await account.get());
   };
 
   const register = async () => {
-    await account.create(ID.unique(), email, password, name);
+    await account.create({
+      userId: ID.unique(),
+      email,
+      password,
+      name
+    });
     login(email, password);
   };
 
   const logout = async () => {
-    await account.deleteSession("current");
+    await account.deleteSession({ sessionId: 'current' });
     setLoggedInUser(null);
   };
 

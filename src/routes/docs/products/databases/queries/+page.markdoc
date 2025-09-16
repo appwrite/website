@@ -33,14 +33,14 @@ const client = new Client()
 
 const tablesDB = new TablesDB(client);
 
-tablesDB.listRows(
-    '<DATABASE_ID>',
-    '<TABLE_ID>',
-    [
+tablesDB.listRows({
+    databaseId: '<DATABASE_ID>',
+    tableId: '<TABLE_ID>',
+    queries: [
         Query.equal('title', ['Avatar', 'Lord of the Rings']),
         Query.greaterThan('year', 1999)
     ]
-);
+});
 ```
 ```server-nodejs
 const sdk = require('node-appwrite');
@@ -55,14 +55,14 @@ client
     .setKey('<YOUR_API_KEY>')
 ;
 
-const promise = tablesDB.listRows(
-    '<DATABASE_ID>',
-    '<TABLE_ID>',
-    [
+const promise = tablesDB.listRows({
+    databaseId: '<DATABASE_ID>',
+    tableId: '<TABLE_ID>',
+    queries: [
         sdk.Query.equal('title', ['Avatar', 'Lord of the Rings']),
         sdk.Query.greaterThan('year', 1999)
     ]
-);
+});
 
 promise.then(function (response) {
     console.log(response);
@@ -143,6 +143,41 @@ suspend fun main() {
     } catch (e: AppwriteException) {
         Log.e("Appwrite", e.message)
     }
+}
+```
+```go
+package main
+
+import (
+    "fmt"
+    "log"
+
+    "github.com/appwrite/sdk-for-go/appwrite"
+    "github.com/appwrite/sdk-for-go/query"
+)
+
+func main() {
+    client := appwrite.NewClient(
+        appwrite.WithEndpoint("https://<REGION>.cloud.appwrite.io/v1"),
+        appwrite.WithProject("<PROJECT_ID>"),
+        appwrite.WithKey("<API_KEY>"),
+    )
+
+    tablesDB := appwrite.NewTablesDB(client)
+
+    rows, err := tablesDB.ListRows(
+        "<DATABASE_ID>",
+        "<TABLE_ID>",
+        tablesDB.WithListRowsQueries([]string{
+            query.Equal("title", []string{"Avatar", "Lord of the Rings"}),
+            query.GreaterThan("year", 1999),
+        }),
+    )
+    if err != nil {
+        log.Fatal(err)
+    }
+
+    fmt.Printf("Rows: %+v\n", rows)
 }
 ```
 ```php
@@ -248,6 +283,9 @@ Query::select(["name", "title"])
 ```swift
 Query.select(["name", "title"])
 ```
+```go
+query.Select([]string{"name", "title"})
+```
 ```http
 {"method":"select","values":["name","title"]}
 ```
@@ -262,10 +300,12 @@ By default, rows return only their own fields:
 
 {% multicode %}
 ```client-web
-const doc = await tablesDB.getRow(
-    '<DATABASE_ID>', '<TABLE_ID>', '<ROW_ID>',
-    [Query.select(['name', 'age'])]
-);
+const doc = await tablesDB.getRow({
+    databaseId: '<DATABASE_ID>',
+    tableId: '<TABLE_ID>',
+    rowId: '<ROW_ID>',
+    queries: [Query.select(['name', 'age'])]
+});
 ```
 ```client-flutter
 final doc = await tablesDB.getRow(
@@ -288,10 +328,12 @@ doc = tablesDB.get_row(
 )
 ```
 ```server-nodejs
-const doc = await tablesDB.getRow(
-    '<DATABASE_ID>', '<TABLE_ID>', '<ROW_ID>',
-    [Query.select(['name', 'age'])]
-);
+const doc = await tablesDB.getRow({
+    databaseId: '<DATABASE_ID>',
+    tableId: '<TABLE_ID>',
+    rowId: '<ROW_ID>',
+    queries: [Query.select(['name', 'age'])]
+});
 ```
 ```php
 $doc = $tablesDB->getRow(
@@ -319,10 +361,12 @@ Use the `*` wildcard to load all fields from related rows:
 
 {% multicode %}
 ```client-web
-const doc = await tablesDB.getRow(
-    '<DATABASE_ID>', '<TABLE_ID>', '<ROW_ID>',
-    [Query.select(['*', 'reviews.*'])]
-);
+const doc = await tablesDB.getRow({
+    databaseId: '<DATABASE_ID>',
+    tableId: '<TABLE_ID>',
+    rowId: '<ROW_ID>',
+    queries: [Query.select(['*', 'reviews.*'])]
+});
 ```
 ```client-flutter
 final doc = await tablesDB.getRow(
@@ -345,10 +389,12 @@ doc = tablesDB.get_row(
 )
 ```
 ```server-nodejs
-const doc = await tablesDB.getRow(
-    '<DATABASE_ID>', '<TABLE_ID>', '<ROW_ID>',
-    [Query.select(["*", "reviews.*"])]
-);
+const doc = await tablesDB.getRow({
+    databaseId: '<DATABASE_ID>',
+    tableId: '<TABLE_ID>',
+    rowId: '<ROW_ID>',
+    queries: [Query.select(["*", "reviews.*"])]
+});
 ```
 ```php
 $doc = $tablesDB->getRow(
@@ -377,10 +423,12 @@ For precise control, select only specific fields from related rows:
 
 {% multicode %}
 ```client-web
-const doc = await tablesDB.getRow(
-    '<DATABASE_ID>', '<TABLE_ID>', '<ROW_ID>',
-    [Query.select(['name', 'age', 'reviews.author', 'reviews.rating'])]
-);
+const doc = await tablesDB.getRow({
+    databaseId: '<DATABASE_ID>',
+    tableId: '<TABLE_ID>',
+    rowId: '<ROW_ID>',
+    queries: [Query.select(['name', 'age', 'reviews.author', 'reviews.rating'])]
+});
 ```
 ```client-flutter
 final doc = await tablesDB.getRow(
@@ -403,10 +451,12 @@ doc = tablesDB.get_row(
 )
 ```
 ```server-nodejs
-const doc = await tablesDB.getRow(
-    '<DATABASE_ID>', '<TABLE_ID>', '<ROW_ID>',
-    [Query.select(["name", "age", "reviews.author", "reviews.rating"])]
-);
+const doc = await tablesDB.getRow({
+    databaseId: '<DATABASE_ID>',
+    tableId: '<TABLE_ID>',
+    rowId: '<ROW_ID>',
+    queries: [Query.select(["name", "age", "reviews.author", "reviews.rating"])]
+});
 // Result: { name: "John", age: 30, reviews: [{ author: "...", rating: 5 }] }
 ```
 ```php
@@ -512,6 +562,9 @@ Query::equal("title", ["Iron Man"])
 ```swift
 Query.equal("title", value: ["Iron Man"])
 ```
+```go
+query.Equal("title", []string{"Iron Man"})
+```
 ```http
 {"method":"equal","column":"title","values":["Iron Man"]}
 ```
@@ -542,6 +595,9 @@ Query::notEqual("title", "Iron Man")
 ```
 ```swift
 Query.notEqual("title", value: "Iron Man")
+```
+```go
+query.NotEqual("title", "Iron Man")
 ```
 ```http
 {"method":"notEqual","column":"title","values":"Iron Man"}
@@ -574,6 +630,9 @@ Query::lessThan("score", 10)
 ```swift
 Query.lessThan("score", value: 10)
 ```
+```go
+query.LessThan("score", 10)
+```
 ```http
 {"method":"lessThan","column":"score","values":[10]}
 ```
@@ -604,6 +663,9 @@ Query::lessThanEqual("score", 10)
 ```
 ```swift
 Query.lessThanEqual("score", value: 10)
+```
+```go
+query.LessThanEqual("score", 10)
 ```
 ```http
 {"method":"lessThanEqual","column":"score","values":[10]}
@@ -636,6 +698,9 @@ Query::greaterThan("score", 10)
 ```swift
 Query.greaterThan("score", value: 10)
 ```
+```go
+query.GreaterThan("score", 10)
+```
 ```http
 {"method":"greaterThan","column":"score","values":[10]}
 ```
@@ -666,6 +731,9 @@ Query::greaterThanEqual("score", 10)
 ```
 ```swift
 Query.greaterThanEqual("score", value: 10)
+```
+```go
+query.GreaterThanEqual("score", 10)
 ```
 ```http
 {"method":"greaterThanEqual","column":"score","values":[10]}
@@ -698,8 +766,55 @@ Query::between("price", 5, 10)
 ```swift
 Query.between("price", start: 5, end: 10)
 ```
+```go
+query.Between("price", 5, 10)
+```
 ```http
 {"method":"between","column":"price","values":[5,10]}
+```
+{% /multicode %}
+
+### Not between {% #not-between %}
+
+Returns rows if the column value is outside the range defined by the two values (strictly less than start OR strictly greater than end).
+Works with strings or numbers. Boundary values are excluded.
+
+{% multicode %}
+```client-web
+Query.notBetween("price", 5, 10)
+```
+```client-flutter
+Query.notBetween("price", 5, 10)
+```
+```client-apple
+Query.notBetween("price", start: 5, end: 10)
+```
+```client-android-kotlin
+Query.notBetween("price", 5, 10)
+```
+```client-android-java
+Query.notBetween("price", 5, 10)
+```
+```server-python
+Query.not_between("price", 5, 10)
+```
+```server-ruby
+Query.not_between("price", 5, 10)
+```
+```server-deno
+Query.notBetween("price", 5, 10)
+```
+```server-nodejs
+Query.notBetween("price", 5, 10)
+```
+```server-php
+Query::notBetween("price", 5, 10)
+```
+```server-swift
+Query.notBetween("price", start: 5, end: 10)
+```
+```http
+{"method":"notBetween","column":"price","values":[5,10]}
 ```
 {% /multicode %}
 
@@ -731,6 +846,9 @@ Query::isNull("name")
 ```swift
 Query.isNull("name")
 ```
+```go
+query.IsNull("name")
+```
 ```http
 {"method":"isNull","column":"name"}
 ```
@@ -761,6 +879,9 @@ Query::isNotNull("name")
 ```
 ```swift
 Query.isNotNull("name")
+```
+```go
+query.IsNotNull("name")
 ```
 ```http
 {"method":"isNotNull","column":"name"}
@@ -795,8 +916,54 @@ Query::startsWith("name", "Once upon a time")
 ```swift
 Query.startsWith("name", value: "Once upon a time")
 ```
+```go
+query.StartsWith("name", "Once upon a time")
+```
 ```http
 {"method":"startsWith","column":"name","values":["Once upon a time"]}
+```
+{% /multicode %}
+
+### Not starts with {% #not-starts-with %}
+
+Returns rows if a string column does not start with a substring.
+
+{% multicode %}
+```client-web
+Query.notStartsWith("name", "Once upon a time")
+```
+```client-flutter
+Query.notStartsWith("name", "Once upon a time")
+```
+```client-apple
+Query.notStartsWith("name", value: "Once upon a time")
+```
+```client-android-kotlin
+Query.notStartsWith("name", "Once upon a time")
+```
+```client-android-java
+Query.notStartsWith("name", "Once upon a time")
+```
+```server-python
+Query.not_starts_with("name", "Once upon a time")
+```
+```server-ruby
+Query.not_starts_with("name", "Once upon a time")
+```
+```server-deno
+Query.notStartsWith("name", "Once upon a time")
+```
+```server-nodejs
+Query.notStartsWith("name", "Once upon a time")
+```
+```server-php
+Query::notStartsWith("name", "Once upon a time")
+```
+```server-swift
+Query.notStartsWith("name", value: "Once upon a time")
+```
+```http
+{"method":"notStartsWith","column":"name","values":["Once upon a time"]}
 ```
 {% /multicode %}
 
@@ -826,8 +993,54 @@ Query::endsWith("name", "happily ever after.")
 ```swift
 Query.endsWith("name", value: "happily ever after.")
 ```
+```go
+query.EndsWith("name", "happily ever after.")
+```
 ```http
 {"method":"endsWith","column":"name","values":["happily ever after."]}
+```
+{% /multicode %}
+
+### Not ends with {% #not-ends-with %}
+
+Returns rows if a string column does not end with a substring.
+
+{% multicode %}
+```client-web
+Query.notEndsWith("name", "happily ever after.")
+```
+```client-flutter
+Query.notEndsWith("name", "happily ever after.")
+```
+```client-apple
+Query.notEndsWith("name", value: "happily ever after.")
+```
+```client-android-kotlin
+Query.notEndsWith("name", "happily ever after.")
+```
+```client-android-java
+Query.notEndsWith("name", "happily ever after.")
+```
+```server-python
+Query.not_ends_with("name", "happily ever after.")
+```
+```server-ruby
+Query.not_ends_with("name", "happily ever after.")
+```
+```server-deno
+Query.notEndsWith("name", "happily ever after.")
+```
+```server-nodejs
+Query.notEndsWith("name", "happily ever after.")
+```
+```server-php
+Query::notEndsWith("name", "happily ever after.")
+```
+```server-swift
+Query.notEndsWith("name", value: "happily ever after.")
+```
+```http
+{"method":"notEndsWith","column":"name","values":["happily ever after."]}
 ```
 {% /multicode %}
 
@@ -885,12 +1098,112 @@ Query.contains("ingredients", value: ['apple', 'banana'])
 // For strings
 Query.contains("name", value: "Tom")
 ```
+```go
+// For arrays
+query.Contains("ingredients", []string{"apple", "banana"})
+
+// For strings
+query.Contains("name", "Tom")
+```
 ```http
 # For arrays
 {"method":"contains","column":"ingredients","values":["apple","banana"]}
 
 # For strings
 {"method":"contains","column":"name","values":["Tom"]}
+```
+{% /multicode %}
+
+### Not contains {% #not-contains %}
+
+Returns rows if the array column does not contain the specified
+elements, or if a string column does not contain the specified
+substring.
+
+{% multicode %}
+```client-web
+// For arrays
+Query.notContains("ingredients", ['apple', 'banana'])
+
+// For strings
+Query.notContains("name", "Tom")
+```
+```client-flutter
+// For arrays
+Query.notContains("ingredients", ['apple', 'banana'])
+
+// For strings
+Query.notContains("name", "Tom")
+```
+```client-apple
+// For arrays
+Query.notContains("ingredients", value: ['apple', 'banana'])
+
+// For strings
+Query.notContains("name", value: "Tom")
+```
+```client-android-kotlin
+// For arrays
+Query.notContains("ingredients", ['apple', 'banana'])
+
+// For strings
+Query.notContains("name", "Tom")
+```
+```client-android-java
+// For arrays
+Query.notContains("ingredients", Arrays.asList("apple", "banana"))
+
+// For strings
+Query.notContains("name", "Tom")
+```
+```server-python
+# For arrays
+Query.not_contains("ingredients", ['apple', 'banana'])
+
+# For strings
+Query.not_contains("name", "Tom")
+```
+```server-ruby
+# For arrays
+Query.not_contains("ingredients", ['apple', 'banana'])
+
+# For strings
+Query.not_contains("name", "Tom")
+```
+```server-deno
+// For arrays
+Query.notContains("ingredients", ['apple', 'banana'])
+
+// For strings
+Query.notContains("name", "Tom")
+```
+```server-nodejs
+// For arrays
+Query.notContains("ingredients", ['apple', 'banana'])
+
+// For strings
+Query.notContains("name", "Tom")
+```
+```server-php
+// For arrays
+Query::notContains("ingredients", ['apple', 'banana'])
+
+// For strings
+Query::notContains("name", "Tom")
+```
+```server-swift
+// For arrays
+Query.notContains("ingredients", value: ['apple', 'banana'])
+
+// For strings
+Query.notContains("name", value: "Tom")
+```
+```http
+# For arrays
+{"method":"notContains","column":"ingredients","values":["apple","banana"]}
+
+# For strings
+{"method":"notContains","column":"name","values":["Tom"]}
 ```
 {% /multicode %}
 
@@ -920,8 +1233,56 @@ Query::search("text", "key words")
 ```swift
 Query.search("text", value: "key words")
 ```
+```go
+query.Search("text", "key words")
+```
 ```http
 {"method":"search","column":"text","values":["key words"]}
+```
+{% /multicode %}
+
+### Not search {% #not-search %}
+
+Returns rows if a string column does not match the full-text search
+query. Requires a [full-text index](/docs/products/databases/tables#indexes)
+on queried columns.
+
+{% multicode %}
+```client-web
+Query.notSearch("text", "key words")
+```
+```client-flutter
+Query.notSearch("text", "key words")
+```
+```client-apple
+Query.notSearch("text", value: "key words")
+```
+```client-android-kotlin
+Query.notSearch("text", "key words")
+```
+```client-android-java
+Query.notSearch("text", "key words")
+```
+```server-python
+Query.not_search("text", "key words")
+```
+```server-ruby
+Query.not_search("text", "key words")
+```
+```server-deno
+Query.notSearch("text", "key words")
+```
+```server-nodejs
+Query.notSearch("text", "key words")
+```
+```server-php
+Query::notSearch("text", "key words")
+```
+```server-swift
+Query.notSearch("text", value: "key words")
+```
+```http
+{"method":"notSearch","column":"text","values":["key words"]}
 ```
 {% /multicode %}
 
@@ -973,6 +1334,12 @@ Query.and([
     Query.lessThan("size", value: 10),
     Query.greaterThan("size", value: 5)
 ])
+```
+```go
+query.And([]string{
+    query.LessThan("size", 10),
+    query.GreaterThan("size", 5),
+})
 ```
 ```http
 {"method":"and","values":[{"method":"lessThan","column":"size","values":[10]},{"method":"greaterThan","column":"size","values":[5]}]}
@@ -1026,6 +1393,12 @@ Query.or([
     Query.greaterThan("size", value: 10)
 ])
 ```
+```go
+query.Or([]string{
+    query.LessThan("size", 5),
+    query.GreaterThan("size", 10),
+})
+```
 ```http
 {"method":"or","values":[{"method":"lessThan","column":"size","values":[5]},{"method":"greaterThan","column":"size","values":[10]}]}
 ```
@@ -1059,6 +1432,9 @@ Query::orderDesc("column")
 ```swift
 Query.orderDesc("column")
 ```
+```go
+query.OrderDesc("attribute")
+```
 ```http
 {"method":"orderDesc","column":"column"}
 ```
@@ -1089,6 +1465,9 @@ Query::orderAsc("column")
 ```
 ```swift
 Query.orderAsc("column")
+```
+```go
+query.OrderAsc("attribute")
 ```
 ```http
 {"method":"orderAsc","column":"column"}
@@ -1123,6 +1502,9 @@ Query::limit(25)
 ```swift
 Query.limit(25)
 ```
+```go
+query.Limit(25)
+```
 ```http
 {"method":"limit","values":[25]}
 ```
@@ -1153,6 +1535,9 @@ Query::offset(0)
 ```
 ```swift
 Query.offset(0)
+```
+```go
+query.Offset(0)
 ```
 ```http
 {"method":"offset","values":[0]}
@@ -1185,6 +1570,9 @@ Query::cursorAfter("62a7...f620")
 ```swift
 Query.cursorAfter("62a7...f620")
 ```
+```go
+query.CursorAfter("62a7...f620")
+```
 ```http
 {"method":"cursorAfter","values":["62a7...f620"]}
 ```
@@ -1216,21 +1604,200 @@ Query::cursorBefore("62a7...a600")
 ```swift
 Query.cursorBefore("62a7...a600")
 ```
+```go
+query.CursorBefore("62a7...a600")
+```
 ```http
 {"method":"cursorBefore","values":["62a7...a600"]}
 ```
 {% /multicode %}
 
+# Time helpers {% #time-helpers %}
+
+Built-in helpers for filtering by creation and update timestamps using
+ISO 8601 date-time strings (for example, "2025-01-01T00:00:00Z").
+
+### Created before {% #created-before %}
+
+Returns rows created before the given date.
+
+{% multicode %}
+```client-web
+Query.createdBefore("2025-01-01T00:00:00Z")
+```
+```client-flutter
+Query.createdBefore("2025-01-01T00:00:00Z")
+```
+```client-apple
+Query.createdBefore("2025-01-01T00:00:00Z")
+```
+```client-android-kotlin
+Query.createdBefore("2025-01-01T00:00:00Z")
+```
+```client-android-java
+Query.createdBefore("2025-01-01T00:00:00Z")
+```
+```server-python
+Query.created_before("2025-01-01T00:00:00Z")
+```
+```server-ruby
+Query.created_before("2025-01-01T00:00:00Z")
+```
+```server-deno
+Query.createdBefore("2025-01-01T00:00:00Z")
+```
+```server-nodejs
+Query.createdBefore("2025-01-01T00:00:00Z")
+```
+```server-php
+Query::createdBefore("2025-01-01T00:00:00Z")
+```
+```server-swift
+Query.createdBefore("2025-01-01T00:00:00Z")
+```
+```http
+{"method":"createdBefore","values":["2025-01-01T00:00:00Z"]}
+```
+{% /multicode %}
+
+### Created after {% #created-after %}
+
+Returns rows created after the given date.
+
+{% multicode %}
+```client-web
+Query.createdAfter("2025-01-01T00:00:00Z")
+```
+```client-flutter
+Query.createdAfter("2025-01-01T00:00:00Z")
+```
+```client-apple
+Query.createdAfter("2025-01-01T00:00:00Z")
+```
+```client-android-kotlin
+Query.createdAfter("2025-01-01T00:00:00Z")
+```
+```client-android-java
+Query.createdAfter("2025-01-01T00:00:00Z")
+```
+```server-python
+Query.created_after("2025-01-01T00:00:00Z")
+```
+```server-ruby
+Query.created_after("2025-01-01T00:00:00Z")
+```
+```server-deno
+Query.createdAfter("2025-01-01T00:00:00Z")
+```
+```server-nodejs
+Query.createdAfter("2025-01-01T00:00:00Z")
+```
+```server-php
+Query::createdAfter("2025-01-01T00:00:00Z")
+```
+```server-swift
+Query.createdAfter("2025-01-01T00:00:00Z")
+```
+```http
+{"method":"createdAfter","values":["2025-01-01T00:00:00Z"]}
+```
+{% /multicode %}
+
+### Updated before {% #updated-before %}
+
+Returns rows updated before the given date.
+
+{% multicode %}
+```client-web
+Query.updatedBefore("2025-01-01T00:00:00Z")
+```
+```client-flutter
+Query.updatedBefore("2025-01-01T00:00:00Z")
+```
+```client-apple
+Query.updatedBefore("2025-01-01T00:00:00Z")
+```
+```client-android-kotlin
+Query.updatedBefore("2025-01-01T00:00:00Z")
+```
+```client-android-java
+Query.updatedBefore("2025-01-01T00:00:00Z")
+```
+```server-python
+Query.updated_before("2025-01-01T00:00:00Z")
+```
+```server-ruby
+Query.updated_before("2025-01-01T00:00:00Z")
+```
+```server-deno
+Query.updatedBefore("2025-01-01T00:00:00Z")
+```
+```server-nodejs
+Query.updatedBefore("2025-01-01T00:00:00Z")
+```
+```server-php
+Query::updatedBefore("2025-01-01T00:00:00Z")
+```
+```server-swift
+Query.updatedBefore("2025-01-01T00:00:00Z")
+```
+```http
+{"method":"updatedBefore","values":["2025-01-01T00:00:00Z"]}
+```
+{% /multicode %}
+
+### Updated after {% #updated-after %}
+
+Returns rows updated after the given date.
+
+{% multicode %}
+```client-web
+Query.updatedAfter("2025-01-01T00:00:00Z")
+```
+```client-flutter
+Query.updatedAfter("2025-01-01T00:00:00Z")
+```
+```client-apple
+Query.updatedAfter("2025-01-01T00:00:00Z")
+```
+```client-android-kotlin
+Query.updatedAfter("2025-01-01T00:00:00Z")
+```
+```client-android-java
+Query.updatedAfter("2025-01-01T00:00:00Z")
+```
+```server-python
+Query.updated_after("2025-01-01T00:00:00Z")
+```
+```server-ruby
+Query.updated_after("2025-01-01T00:00:00Z")
+```
+```server-deno
+Query.updatedAfter("2025-01-01T00:00:00Z")
+```
+```server-nodejs
+Query.updatedAfter("2025-01-01T00:00:00Z")
+```
+```server-php
+Query::updatedAfter("2025-01-01T00:00:00Z")
+```
+```server-swift
+Query.updatedAfter("2025-01-01T00:00:00Z")
+```
+```http
+{"method":"updatedAfter","values":["2025-01-01T00:00:00Z"]}
+```
+{% /multicode %}
 # Complex queries {% #complex-queries %}
 
 You can create complex queries by combining AND and OR operations. For example, to find items that are either books under $20 or magazines under $10:
 
 {% multicode %}
 ```client-web
-const results = await tablesDB.listRows(
-    '<DATABASE_ID>',
-    '<TABLE_ID>',
-    [
+const results = await tablesDB.listRows({
+    databaseId: '<DATABASE_ID>',
+    tableId: '<TABLE_ID>',
+    queries: [
         Query.or([
             Query.and([
                 Query.equal('category', ['books']),
@@ -1242,7 +1809,7 @@ const results = await tablesDB.listRows(
             ])
         ])
     ]
-);
+});
 ```
 ```client-flutter
 final results = await tablesDB.listRows(
@@ -1279,6 +1846,26 @@ results = tablesDB.list_rows(
         ])
     ]
 )
+```
+rows, err := tablesDB.ListRows(
+    "<DATABASE_ID>",
+    "<TABLE_ID>",
+    tablesDB.WithListRowsQueries([]string{
+        query.Or([]string{
+            query.And([]string{
+                query.Equal("category", []string{"books"}),
+                query.LessThan("price", 20),
+            }),
+            query.And([]string{
+                query.Equal("category", []string{"magazines"}),
+                query.LessThan("price", 10),
+            }),
+        }),
+    }),
+)
+if err != nil {
+    log.Fatal(err)
+}
 ```
 ```http
 {"method":"or","values":[{"method":"and","values":[{"method":"equal","column":"category","values":["books"]},{"method":"lessThan","column":"price","values":[20]}]},{"method":"and","values":[{"method":"equal","column":"category","values":["magazines"]},{"method":"lessThan","column":"price","values":[10]}]}]}

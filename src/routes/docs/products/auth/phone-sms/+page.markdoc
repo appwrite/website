@@ -29,10 +29,10 @@ const client = new Client()
 
 const account = new Account(client);
 
-const token = await account.createPhoneToken(
-    ID.unique(),
-    '+14255550123'
-);
+const token = await account.createPhoneToken({
+    userId: ID.unique(),
+    phone: '+14255550123'
+});
 
 const userId = token.userId;
 ```
@@ -117,10 +117,10 @@ const client = new Client()
 
 const account = new Account(client);
 
-const session = await account.createSession(
-    userId,
-    '<SECRET>'
-);
+const session = await account.createSession({
+    userId: userId,
+    secret: '<SECRET>'
+});
 ```
 
 ```client-flutter

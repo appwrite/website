@@ -5,7 +5,7 @@ description: Add databases and queries to store user data in you SvelteKit proje
 step: 6
 ---
 # Create table {% #create-table %}
-In Appwrite, data is stored as a table of rows. 
+In Appwrite, data is stored as a table of rows.
 Create a table inside a database in the [Appwrite Console](https://cloud.appwrite.io/) to store our ideas.
 
 {% only_dark %}
@@ -22,7 +22,7 @@ Create the following columns within the table:
 | title       | String | 128  | Yes      |
 | description | String | 1024 | No       |
 
-For this tutorial, we'll also set the permissions to allow any users to read and write to the table. 
+For this tutorial, we'll also set the permissions to allow any users to read and write to the table.
 In a real-world scenario, you would probably want to restrict access to a certain group of users.
 
 ## Managing ideas {% #getting-ideas %}
@@ -35,30 +35,39 @@ Create a new file `src/lib/ideas.js` and add the following code:
 
 ```client-web
 import { ID, Query } from 'appwrite';
-import { databases } from '$lib/appwrite';
+import { tablesDB } from '$lib/appwrite';
 
 const IDEAS_DATABASE_ID = '<YOUR_DATABASE_ID>'; // Replace with your database ID
 const IDEAS_TABLE_ID = '<YOUR_TABLE_ID>'; // Replace with your table ID
 
 export async function getIdeas() {
-	return await tablesDB.listRows(
-		IDEAS_DATABASE_ID,
-		IDEAS_TABLE_ID,
+	return await tablesDB.listRows({
+		databaseId: IDEAS_DATABASE_ID,
+		tableId: IDEAS_TABLE_ID,
 		// Use a query to show the latest ideas first
-		[Query.orderDesc('$createdAt')]
-	);
+		queries: [Query.orderDesc('$createdAt')]
+	});
 }
 
 export async function addIdea(userId, title, description) {
-	await tablesDB.createRow(IDEAS_DATABASE_ID, IDEAS_TABLE_ID, ID.unique(), {
-		userId,
-		title,
-		description
+	await tablesDB.createRow({
+		databaseId: IDEAS_DATABASE_ID,
+		tableId: IDEAS_TABLE_ID,
+		rowId: ID.unique(),
+		data: {
+			userId,
+			title,
+			description
+		}
 	});
 }
 
 export async function deleteIdea(id) {
-	await tablesDB.deleteRow(IDEAS_DATABASE_ID, IDEAS_TABLE_ID, id);
+	await tablesDB.deleteRow({
+		databaseId: IDEAS_DATABASE_ID,
+		tableId: IDEAS_TABLE_ID,
+		rowId: id
+	});
 }
 ```
 

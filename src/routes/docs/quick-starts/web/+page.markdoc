@@ -71,8 +71,8 @@ client
     .setEndpoint('https://cloud.appwrite.io/v1')
     .setProject('<PROJECT_ID>') // Replace with your project ID
 
-export const account = new Appwrite.Account(client)
-export const tablesDB = new Appwrite.TablesDB(client)
+const account = new Appwrite.Account(client)
+const tablesDB = new Appwrite.TablesDB(client)
 ```
 {% /section %}
 
@@ -96,7 +96,10 @@ export const account: Account = new Account(client);
 export const tablesDB: TablesDB = new TablesDB(client);
 
 // You then use the imported type definitions like this
-const authUser: Models.Session = await account.createEmailPasswordSession(email, password);
+const authUser: Models.Session = await account.createEmailPasswordSession({
+  email,
+  password
+});
 ```
 {% /section %}
 
@@ -115,11 +118,11 @@ interface Idea extends Models.Row {
 When you fetch rows, you can use this new `Idea` interface like this.
 
 ```ts
-const response = await tablesDB.listRows(
-    ideasDatabaseId,
-    ideasTableId,
-    [Query.orderDesc("$createdAt"), Query.limit(queryLimit)]
-);
+const response = await tablesDB.listRows({
+    databaseId: ideasDatabaseId,
+    tableId: ideasTableId,
+    queries: [Query.orderDesc("$createdAt"), Query.limit(queryLimit)]
+});
 const ideas = response.rows as Idea[];
 ```
 {% /section %}

@@ -32,6 +32,11 @@ type SDKMethodModel = {
     name: string;
 };
 
+type AppwriteDeprecated = {
+    since: string;
+    replaceWith: string;
+};
+
 type AppwriteOperationObject = OpenAPIV3.OperationObject & {
     'x-appwrite': {
         method: string;
@@ -60,6 +65,7 @@ type AppwriteAdditionalMethod = {
     responses: { code: number; model: string }[];
     description: string;
     demo: string;
+    deprecated?: AppwriteDeprecated;
 };
 
 export type AppwriteSchemaObject = OpenAPIV3.SchemaObject & {
@@ -169,6 +175,74 @@ function filterRequestBodyProperties(
     return filteredRequestBody;
 }
 
+/**
+ * Checks if a method has additional methods in x-appwrite.methods
+ */
+function hasAdditionalMethods(
+    method: OpenAPIV3.OperationObject | undefined,
+    service: string
+): method is AppwriteOperationObject {
+    return !!(
+        method?.tags?.includes(service) &&
+        typeof (method as AppwriteOperationObject)['x-appwrite'] === 'object' &&
+        Array.isArray((method as AppwriteOperationObject)['x-appwrite']?.methods)
+    );
+}
+
+/**
+ * Processes additional methods for a given HTTP method and yields the results
+ */
+function* processAdditionalMethods(
+    method: OpenAPIV3.OperationObject,
+    httpMethod: OpenAPIV3.HttpMethods,
+    url: string
+): Generator<{
+    method: OpenAPIV3.HttpMethods;
+    value: OpenAPIV3.OperationObject | AppwriteOperationObject;
+    url: string;
+}> {
+    const appwriteMethod = method as AppwriteOperationObject;
+    const additionalMethods = appwriteMethod['x-appwrite'].methods!;
+
+    for (const additionalMethod of additionalMethods) {
+        if (additionalMethod.deprecated) continue;
+
+        yield {
+            method: httpMethod,
+            value: {
+                ...method,
+                summary: additionalMethod.desc.length > 0 ? additionalMethod.desc : method.summary,
+                description: additionalMethod.description,
+                requestBody: filterRequestBodyProperties(
+                    method.requestBody,
+                    additionalMethod.parameters
+                ),
+                'x-appwrite': {
+                    ...appwriteMethod['x-appwrite'],
+                    method: additionalMethod.name,
+                    demo: additionalMethod.demo
+                },
+                responses: {
+                    ...appwriteMethod.responses,
+                    [additionalMethod.responses[0].code]:
+                        additionalMethod.responses[0].code === 204
+                            ? { description: 'No Content' }
+                            : {
+                                  content: {
+                                      'application/json': {
+                                          schema: {
+                                              $ref: additionalMethod.responses[0].model
+                                          }
+                                      }
+                                  }
+                              }
+                }
+            },
+            url
+        };
+    }
+}
+
 function* iterateAllMethods(
     api: OpenAPIV3.Document,
     service: string
@@ -179,71 +253,48 @@ function* iterateAllMethods(
 }> {
     for (const url in api.paths) {
         const methods = api.paths[url];
-        if (methods?.get?.tags?.includes(service)) {
+
+        // Handle non-additional methods
+        if (methods?.get?.tags?.includes(service) && !hasAdditionalMethods(methods.get, service)) {
             yield { method: OpenAPIV3.HttpMethods.GET, value: methods.get, url };
-        }
-        if (methods?.post?.tags?.includes(service)) {
-            if (
-                methods?.post &&
-                (!('x-appwrite' in methods.post) ||
-                    !methods.post['x-appwrite'] ||
-                    typeof methods.post['x-appwrite'] !== 'object' ||
-                    !('methods' in methods.post['x-appwrite']))
-            ) {
-                yield { method: OpenAPIV3.HttpMethods.POST, value: methods.post, url };
-            }
-        }
-        if (methods?.put?.tags?.includes(service)) {
-            yield { method: OpenAPIV3.HttpMethods.PUT, value: methods.put, url };
-        }
-        if (methods?.patch?.tags?.includes(service)) {
-            yield { method: OpenAPIV3.HttpMethods.PATCH, value: methods.patch, url };
-        }
-        if (methods?.delete?.tags?.includes(service)) {
-            yield {
-                method: OpenAPIV3.HttpMethods.DELETE,
-                value: methods.delete,
-                url
-            };
         }
         if (
             methods?.post?.tags?.includes(service) &&
-            typeof methods.post['x-appwrite'] === 'object' &&
-            Array.isArray(methods.post['x-appwrite']?.methods)
+            !hasAdditionalMethods(methods.post, service)
         ) {
-            const appwritePost = methods.post as AppwriteOperationObject;
-            for (const additionalMethod of appwritePost['x-appwrite'].methods!) {
-                yield {
-                    method: OpenAPIV3.HttpMethods.POST,
-                    value: {
-                        ...methods.post,
-                        summary: additionalMethod.desc,
-                        description: additionalMethod.description,
-                        requestBody: filterRequestBodyProperties(
-                            methods.post.requestBody,
-                            additionalMethod.parameters
-                        ),
-                        'x-appwrite': {
-                            ...appwritePost['x-appwrite'],
-                            method: additionalMethod.name,
-                            demo: additionalMethod.demo
-                        },
-                        responses: {
-                            ...appwritePost.responses,
-                            [additionalMethod.responses[0].code]: {
-                                content: {
-                                    'application/json': {
-                                        schema: {
-                                            $ref: additionalMethod.responses[0].model
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    },
-                    url
-                };
-            }
+            yield { method: OpenAPIV3.HttpMethods.POST, value: methods.post, url };
+        }
+        if (methods?.put?.tags?.includes(service) && !hasAdditionalMethods(methods.put, service)) {
+            yield { method: OpenAPIV3.HttpMethods.PUT, value: methods.put, url };
+        }
+        if (
+            methods?.patch?.tags?.includes(service) &&
+            !hasAdditionalMethods(methods.patch, service)
+        ) {
+            yield { method: OpenAPIV3.HttpMethods.PATCH, value: methods.patch, url };
+        }
+        if (
+            methods?.delete?.tags?.includes(service) &&
+            !hasAdditionalMethods(methods.delete, service)
+        ) {
+            yield { method: OpenAPIV3.HttpMethods.DELETE, value: methods.delete, url };
+        }
+
+        // Process additional methods
+        if (hasAdditionalMethods(methods?.get, service)) {
+            yield* processAdditionalMethods(methods.get!, OpenAPIV3.HttpMethods.GET, url);
+        }
+        if (hasAdditionalMethods(methods?.post, service)) {
+            yield* processAdditionalMethods(methods.post!, OpenAPIV3.HttpMethods.POST, url);
+        }
+        if (hasAdditionalMethods(methods?.put, service)) {
+            yield* processAdditionalMethods(methods.put!, OpenAPIV3.HttpMethods.PUT, url);
+        }
+        if (hasAdditionalMethods(methods?.patch, service)) {
+            yield* processAdditionalMethods(methods.patch!, OpenAPIV3.HttpMethods.PATCH, url);
+        }
+        if (hasAdditionalMethods(methods?.delete, service)) {
+            yield* processAdditionalMethods(methods.delete!, OpenAPIV3.HttpMethods.DELETE, url);
         }
     }
 }

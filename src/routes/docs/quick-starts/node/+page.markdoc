@@ -93,38 +93,40 @@ var todoDatabase;
 var todoTable;
 
 async function prepareDatabase() {
-    todoDatabase = await tablesDB.create(
-        sdk.ID.unique(),
-        'TodosDB'
-    );
+    todoDatabase = await tablesDB.create({
+        databaseId: sdk.ID.unique(),
+        name: 'TodosDB'
+    });
 
-    todoTable = await tablesDB.createTable(
-        todoDatabase.$id,
-        sdk.ID.unique(),
-        'Todos'
-    );
+    todoTable = await tablesDB.createTable({
+        databaseId: todoDatabase.$id,
+        tableId: sdk.ID.unique(),
+        name: 'Todos'
+    });
 
-    await tablesDB.createStringColumn(
-        todoDatabase.$id,
-        todoTable.$id,
-        'title',
-        255,
-        true
-    );
+    await tablesDB.createStringColumn({
+        databaseId: todoDatabase.$id,
+        tableId: todoTable.$id,
+        key: 'title',
+        size: 255,
+        required: true
+    });
 
-    await tablesDB.createStringColumn(
-        todoDatabase.$id,
-        todoTable.$id,
-        'description',
-        255, false,
-        'This is a test description'
-    );
-    await tablesDB.createBooleanColumn(
-        todoDatabase.$id,
-        todoTable.$id,
-        'isComplete',
-        true
-    );
+    await tablesDB.createStringColumn({
+        databaseId: todoDatabase.$id,
+        tableId: todoTable.$id,
+        key: 'description',
+        size: 255,
+        required: false,
+        default: 'This is a test description'
+    });
+
+    await tablesDB.createBooleanColumn({
+        databaseId: todoDatabase.$id,
+        tableId: todoTable.$id,
+        key: 'isComplete',
+        required: true
+    });
 }
 ```
 
@@ -151,24 +153,24 @@ async function seedDatabase() {
         isComplete: false
     };
 
-    await tablesDB.createRow(
-        todoDatabase.$id,
-        todoTable.$id,
-        sdk.ID.unique(),
-        testTodo1
-    );
-    await tablesDB.createRow(
-        todoDatabase.$id,
-        todoTable.$id,
-        sdk.ID.unique(),
-        testTodo2
-    );
-    await tablesDB.createRow(
-        todoDatabase.$id,
-        todoTable.$id,
-        sdk.ID.unique(),
-        testTodo3
-    );
+    await tablesDB.createRow({
+        databaseId: todoDatabase.$id,
+        tableId: todoTable.$id,
+        rowId: sdk.ID.unique(),
+        data: testTodo1
+    });
+    await tablesDB.createRow({
+        databaseId: todoDatabase.$id,
+        tableId: todoTable.$id,
+        rowId: sdk.ID.unique(),
+        data: testTodo2
+    });
+    await tablesDB.createRow({
+        databaseId: todoDatabase.$id,
+        tableId: todoTable.$id,
+        rowId: sdk.ID.unique(),
+        data: testTodo3
+    });
 }
 ```
 
@@ -179,12 +181,51 @@ Create a function to retrieve the mock todo data and a function to execute the r
 Run the functions to by calling `runAllTasks();`.
 
 ```js
-async function getTodos() {
-    var todos = await tablesDB.listRows(
-        todoDatabase.$id,
-        todoTable.$id
-    );
+const { Query } = require('node-appwrite');
 
+async function getTodos() {
+    // Retrieve rows (default limit is 25)
+    var todos = await tablesDB.listRows({
+        databaseId: todoDatabase.$id,
+        tableId: todoTable.$id
+    });
+
+    console.log("Todos:");
+    todos.rows.forEach(todo => {
+        console.log(`Title: ${todo.title}\nDescription: ${todo.description}\nIs Todo Complete: ${todo.isComplete}\n\n`);
+    });
+}
+
+async function getCompletedTodos() {
+    // Use queries to filter completed todos with pagination
+    var todos = await tablesDB.listRows({
+        databaseId: todoDatabase.$id,
+        tableId: todoTable.$id,
+        queries: [
+            Query.equal("isComplete", true),
+            Query.orderDesc("$createdAt"),
+            Query.limit(5)
+        ]
+    });
+
+    console.log("Completed todos (limited to 5):");
+    todos.rows.forEach(todo => {
+        console.log(`Title: ${todo.title}\nDescription: ${todo.description}\nIs Todo Complete: ${todo.isComplete}\n\n`);
+    });
+}
+
+async function getIncompleteTodos() {
+    // Query for incomplete todos
+    var todos = await tablesDB.listRows({
+        databaseId: todoDatabase.$id,
+        tableId: todoTable.$id,
+        queries: [
+            Query.equal("isComplete", false),
+            Query.orderAsc("title")
+        ]
+    });
+
+    console.log("Incomplete todos (ordered by title):");
     todos.rows.forEach(todo => {
         console.log(`Title: ${todo.title}\nDescription: ${todo.description}\nIs Todo Complete: ${todo.isComplete}\n\n`);
     });
@@ -194,6 +235,8 @@ async function runAllTasks() {
     await prepareDatabase();
     await seedDatabase();
     await getTodos();
+    await getCompletedTodos();
+    await getIncompleteTodos();
 }
 runAllTasks();
 ```
