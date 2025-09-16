@@ -118,11 +118,11 @@ interface Idea extends Models.Row {
 When you fetch rows, you can use this new `Idea` interface like this.
 
 ```ts
-const response = await tablesDB.listRows(
-    ideasDatabaseId,
-    ideasTableId,
-    [Query.orderDesc("$createdAt"), Query.limit(queryLimit)]
-);
+const response = await tablesDB.listRows({
+    databaseId: ideasDatabaseId,
+    tableId: ideasTableId,
+    queries: [Query.orderDesc("$createdAt"), Query.limit(queryLimit)]
+});
 const ideas = response.rows as Idea[];
 ```
 {% /section %}

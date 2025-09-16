@@ -38,12 +38,12 @@ const client = new Client()
 
 const tablesDB = new TablesDB(client);
 
-const promise = tablesDB.createRow(
-    '<DATABASE_ID>',
-    '<TABLE_ID>',
-    ID.unique(),
-    { "title": "Hamlet" }
-);
+const promise = tablesDB.createRow({
+    databaseId: '<DATABASE_ID>',
+    tableId: '<TABLE_ID>',
+    rowId: ID.unique(),
+    data: { title: "Hamlet" }
+});
 
 promise.then(function (response) {
     console.log(response);
@@ -156,8 +156,8 @@ const promise = tablesDB.listRows({
     tableId: "<TABLE_ID>",
     queries: [
         Query.equal('title', 'Hamlet')
-    ]}
-);
+    ]
+});
 
 promise.then(function (response) {
     console.log(response);
