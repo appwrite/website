@@ -35,9 +35,7 @@ You can skip optional steps.
 {% /section %}
 {% section #step-2 step=2 title="Install Appwrite" %}
 You can install the Appwrite Web SDK using a package manager.
-```sh
-npm install appwrite@18.1.1
-```
+{% install_info type="client-web" %}{% /install_info %}
 
 You can also add the Appwrite Web SDK using CDN by adding a script tag to your HTML file. The SDK will be available globally through the `Appwrite` namespace.
 

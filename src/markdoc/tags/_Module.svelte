@@ -22,5 +22,6 @@
     export { default as Call_To_Action } from './Call_To_Action.svelte';
     export { default as Storage_Image } from './Storage_Image.svelte';
     export { default as Version } from './Version.svelte';
+    export { default as Install_Info } from './Install_Info.svelte';
     export { default as Appwrite_Network_Map } from '../../lib/components/appwrite-network/map.svelte';
 </script>

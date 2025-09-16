@@ -19,9 +19,7 @@ npm install
 
 Install the JavaScript Appwrite SDK.
 
-```sh
-npm install appwrite@18.1.1
-```
+{% install_info type="client-web" %}{% /install_info %}
 
 You can start the development server to watch your app update in the browser as you make changes.
 

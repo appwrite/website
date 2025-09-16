@@ -43,9 +43,7 @@ npm init vue@latest my-app && cd my-app
 
 Install the JavaScript Appwrite SDK.
 
-```sh
-npm install appwrite@18.1.1
-```
+{% install_info type="client-web" %}{% /install_info %}
 {% /section %}
 {% section #step-4 step=4 title="Import Appwrite" %}
 Find your project's ID in the **Settings** page.

@@ -46,9 +46,7 @@ npm create vite@latest my-app -- --template solid && cd my-app
 {% section #step-3 step=3 title="Install Appwrite" %}
 Install the JavaScript Appwrite SDK.
 
-```sh
-npm install appwrite@18.1.1
-```
+{% install_info type="client-web" %}{% /install_info %}
 {% /section %}
 
 {% section #step-4 step=4 title="Import Appwrite" %}

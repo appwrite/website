@@ -33,6 +33,4 @@ cd my-nuxt-project
 Appwrite provides a Node SDK that can be used in your Nuxt apps. You can use Appwrite by installing the Node SDK as an NPM package. 
 The Node SDK is intended for server-side use. If you want to use Appwrite in a client-side application, you should [use the Web SDK instead](/docs/tutorials/nuxt)
 
-```sh
-npm install node-appwrite@17.0.0
-```
+{% install_info type="server-nodejs" %}{% /install_info %}

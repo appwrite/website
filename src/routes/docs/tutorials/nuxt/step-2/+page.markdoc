@@ -20,9 +20,10 @@ Once the project is created, change your current working directory and install t
 
 ```sh
 cd ideas-tracker
-npm install appwrite@18.1.1
 npm install "@appwrite.io/pink"
 ```
+
+{% install_info type="client-web" %}{% /install_info %}
 
 Open `App.vue` and import the relevant style files.
 
