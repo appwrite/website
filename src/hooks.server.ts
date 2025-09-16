@@ -1,15 +1,11 @@
-import type { Handle, RequestEvent } from '@sveltejs/kit';
+import type { Handle } from '@sveltejs/kit';
 import redirects from './redirects.json';
 import { sequence } from '@sveltejs/kit/hooks';
-import { BANNER_KEY } from '$lib/constants';
-import { dev } from '$app/environment';
 import { type GithubUser } from '$routes/(init)/init/(utils)/auth';
-import {
-    createInitServerClient,
-    createInitSessionClient
-} from '$routes/(init)/init/(utils)/appwrite';
+import { createInitSessionClient } from '$routes/(init)/init/(utils)/appwrite';
 import type { AppwriteUser } from '$lib/utils/console';
 
+const PLAYWRIGHT_TESTS = process.env.PLAYWRIGHT_TESTS ?? undefined;
 const redirectMap = new Map(redirects.map(({ link, redirect }) => [link, redirect]));
 
 const redirecter: Handle = async ({ event, resolve }) => {
@@ -23,7 +19,7 @@ const redirecter: Handle = async ({ event, resolve }) => {
         });
     }
 
-    return await resolve(event);
+    return resolve(event);
 };
 
 const securityheaders: Handle = async ({ event, resolve }) => {
@@ -128,6 +124,8 @@ const securityheaders: Handle = async ({ event, resolve }) => {
 };
 
 const initSession: Handle = async ({ event, resolve }) => {
+    if (PLAYWRIGHT_TESTS) return resolve(event);
+
     const session = await createInitSessionClient(event.cookies);
 
     const getGithubUser = async () => {
@@ -184,9 +182,7 @@ const initSession: Handle = async ({ event, resolve }) => {
 
     event.locals.initUser = await getInitUser();
 
-    const response = await resolve(event);
-
-    return response;
+    return resolve(event);
 };
 
 export const handle = sequence(redirecter, securityheaders, initSession);
