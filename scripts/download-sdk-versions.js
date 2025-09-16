@@ -11,19 +11,15 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 export async function downloadVersions() {
     try {
         console.log('Fetching Appwrite SDK versions...');
-        
+
         const response = await fetch('https://cloud.appwrite.io/versions');
-        
         if (!response.ok) {
-            throw new Error(`Failed to fetch SDK versions: ${response.status} ${response.statusText}`);
+            throw new Error(
+                `Failed to fetch SDK versions: ${response.status} ${response.statusText}`
+            );
         }
-        
+
         const versions = await response.json();
-        
-        if (!versions['client-web']) {
-            throw new Error('Invalid SDK versions response: missing client-web version');
-        }
-        
         const outputPath = join(__dirname, '../src/lib/sdk-versions.ts');
         const tsContent = `export const appwriteVersions = ${JSON.stringify(versions, null, 2)} as const;
 
