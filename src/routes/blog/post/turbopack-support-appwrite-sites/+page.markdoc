@@ -15,7 +15,7 @@ Appwrite Sites now supports Next.js applications built with Turbopack, Vercel's 
 
 Turbopack is built in Rust to fix webpack's performance issues. It delivers faster updates, up to 700x faster than webpack and up to 10x faster than Vite for large applications.
 
-Previously, deploying Next.js applications that used Turbopack on Appwrite Sites required manual intervention. Developers had to remove the `--turbo` flag from their build commands, forcing their applications back to webpack. This created friction for teams migrating from Vercel where Turbopack worked seamlessly.
+Previously, deploying Next.js applications that used Turbopack on Appwrite Sites required manual intervention. Developers had to remove the `--turbopack` flag from their build commands, forcing their applications back to webpack. This created friction for teams migrating from Vercel where Turbopack worked seamlessly.
 
 # What this means for developers
 
