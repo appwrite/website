@@ -52,7 +52,7 @@ These settings will create a minimal Next.js setup that's perfect for getting st
 
 Install the JavaScript Appwrite SDK.
 
-{% install_info type="client-web" %}{% /install_info %}
+{% install_info type="client-web" /%}
 {% /section %}
 {% section #step-4 step=4 title="Define Appwrite service" %}
 Find your project's ID in the **Settings** page.

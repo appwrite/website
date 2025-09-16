@@ -17,7 +17,7 @@ npm create vite@latest --template vue ideas-tracker && cd ideas-tracker
 
 Install the JavaScript Appwrite SDK.
 
-{% install_info type="client-web" %}{% /install_info %}
+{% install_info type="client-web" /%}
 
 You can start the development server to watch your app update in the browser as you make changes.
 

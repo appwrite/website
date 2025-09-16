@@ -36,7 +36,7 @@ cd my-astro-project
 
 Appwrite provides a Node SDK that can be used in your Astro apps. You can use Appwrite by installing the Node SDK as an NPM package. The Node SDK is intended for server-side use. If you want to use Appwrite in a client-side application, you should use the Web SDK instead.
 
-{% install_info type="server-nodejs" %}{% /install_info %}
+{% install_info type="server-nodejs" /%}
 
 ## Add Node adapter to Astro {% #add-node-to-astro %}
 

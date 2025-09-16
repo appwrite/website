@@ -23,7 +23,7 @@ cd ideas-tracker
 npm install "@appwrite.io/pink"
 ```
 
-{% install_info type="client-web" %}{% /install_info %}
+{% install_info type="client-web" /%}
 
 Open `src/app/globals.css` and replace the content with the following to import the relevant style files.
 

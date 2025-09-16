@@ -23,7 +23,7 @@ cd ideas-tracker
 npm install "@appwrite.io/pink"
 ```
 
-{% install_info type="client-web" %}{% /install_info %}
+{% install_info type="client-web" /%}
 
 Open `App.vue` and import the relevant style files.
 
