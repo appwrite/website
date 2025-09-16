@@ -35,15 +35,13 @@ The compatibility improvements go beyond just Turbopack. They ensure that modern
 
 # Getting started
 
-No action is needed from existing users. If you have Next.js applications using Turbopack that failed to deploy before, redeploy them. New deployments will work with Turbopack support.
-
-This also eliminates the configuration differences when moving applications that use Turbopack from platforms like Vercel to Appwrite Sites.
-
 For new projects:
 
 1. Create your Next.js application with Turbopack enabled
 2. Connect your repository to Appwrite Sites
 3. Deploy. No build configuration changes needed
+
+**For existing broken sites:** If your site shows 404 errors due to missing Turbopack support, go to your site settings, select **Server side rendering** in the **Build settings** section, and redeploy.
 
 This feature is live on Appwrite Cloud. Self-hosted support will be included in an upcoming release.
 
