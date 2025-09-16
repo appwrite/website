@@ -32,6 +32,11 @@ type SDKMethodModel = {
     name: string;
 };
 
+type AppwriteDeprecated = {
+    since: string;
+    replaceWith: string;
+};
+
 type AppwriteOperationObject = OpenAPIV3.OperationObject & {
     'x-appwrite': {
         method: string;
@@ -60,6 +65,7 @@ type AppwriteAdditionalMethod = {
     responses: { code: number; model: string }[];
     description: string;
     demo: string;
+    deprecated?: AppwriteDeprecated;
 };
 
 export type AppwriteSchemaObject = OpenAPIV3.SchemaObject & {
@@ -216,11 +222,16 @@ function* iterateAllMethods(
         ) {
             const appwritePost = methods.post as AppwriteOperationObject;
             for (const additionalMethod of appwritePost['x-appwrite'].methods!) {
+                if (additionalMethod.deprecated) continue;
+
                 yield {
                     method: OpenAPIV3.HttpMethods.POST,
                     value: {
                         ...methods.post,
-                        summary: additionalMethod.desc,
+                        summary:
+                            additionalMethod.desc.length > 0
+                                ? additionalMethod.desc
+                                : methods.post.summary,
                         description: additionalMethod.description,
                         requestBody: filterRequestBodyProperties(
                             methods.post.requestBody,
