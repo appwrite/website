@@ -205,8 +205,7 @@ struct ContentView: View {
 For enhanced type safety, you can use custom model structs with the `nestedType` parameter:
 
 ```swift
-import TablesDB
-
+import Appwrite
 struct User: Codable {
     let name: String
     let email: String
