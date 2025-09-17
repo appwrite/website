@@ -20,7 +20,7 @@ export const COLORS = {
     pink: '\x1b[38;2;253;54;110m' // #fd366e
 };
 
-export function printHeader() {
+export function printHeader(title = 'BLOG CREATOR', subtitle = 'Create a new blog post for the Appwrite website') {
     console.clear();
     console.log(`${COLORS.pink}${COLORS.bright}`);
     console.log('    ___                          _ __     ');
@@ -29,9 +29,9 @@ export function printHeader() {
     console.log(' /_/ |_/ .__/ .__/|__,__/_/ /_/_/\\__/\\__/ ');
     console.log('      /_/  /_/                             ');
     console.log('');
-    console.log('  BLOG CREATOR');
+    console.log(`  ${title}`);
     console.log(`${COLORS.reset}\n`);
-    console.log(`${COLORS.dim}Create a new blog post for the Appwrite website${COLORS.reset}\n`);
+    console.log(`${COLORS.dim}${subtitle}${COLORS.reset}\n`);
 }
 
 export function question(prompt) {

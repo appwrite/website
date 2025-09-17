@@ -16,19 +16,6 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const ROOT_DIR = path.join(__dirname, '..', '..');
 
-function printAuthorHeader() {
-    console.clear();
-    console.log(`${COLORS.pink}${COLORS.bright}`);
-    console.log('    ___                          _ __     ');
-    console.log('   / _ | ___  ___  _    ___ ____(_) /____ ');
-    console.log('  / __ |/ _ \\/ _ \\| |/|/ / __/ / / __/ -_)');
-    console.log(' /_/ |_/ .__/ .__/|__,__/_/ /_/_/\\__/\\__/ ');
-    console.log('      /_/  /_/                             ');
-    console.log('');
-    console.log('  AUTHOR CREATOR');
-    console.log(`${COLORS.reset}\n`);
-    console.log(`${COLORS.dim}Add a new author to the Appwrite blog${COLORS.reset}\n`);
-}
 
 function slugify(text) {
     return text
@@ -216,7 +203,7 @@ async function createAuthorFiles(authorInfo) {
 }
 
 async function main() {
-    printAuthorHeader();
+    printHeader('AUTHOR CREATOR', 'Add a new author to the Appwrite blog');
 
     try {
         const authorInfo = await collectAuthorInfo();
