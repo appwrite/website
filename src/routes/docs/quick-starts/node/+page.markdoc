@@ -242,10 +242,9 @@ runAllTasks();
 ```
 
 {% /section %}
-
 {% section #step-8 step=8 title="Type safety with TypeScript" %}
 
-For enhanced type safety in TypeScript Node.js projects, define interfaces and use generics:
+For better type safety in TypeScript Node.js projects, define interfaces and use generics:
 
 ```typescript
 interface Todo {
@@ -273,9 +272,10 @@ async function getTodos() {
         console.log(`Title: ${todo.title} - Complete: ${todo.isComplete}`);
     });
 }
+```
 
 {% info title="Generate types automatically" %}
-Use the [Appwrite CLI](/docs/products/databases/type-generation) to generate TypeScript interfaces automatically: `appwrite types collection`
+Use the [Appwrite CLI](/docs/products/databases/type-generation) to generate TypeScript interfaces automatically: `appwrite types ./types`
 {% /info %}
 
 {% /section %}
