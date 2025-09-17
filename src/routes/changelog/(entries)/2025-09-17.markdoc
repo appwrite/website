@@ -1,7 +1,8 @@
 ---
 layout: changelog
 title: Announcing Turbopack support for Appwrite Sites
-date: 2025-09-16
+date: 2025-09-17
+cover: /images/blog/turbopack-support-appwrite-sites/cover.png
 ---
 
 Appwrite Sites now supports Next.js applications built with Turbopack, with faster builds and better compatibility for your deployments.

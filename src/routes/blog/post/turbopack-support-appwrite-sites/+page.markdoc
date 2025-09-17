@@ -2,7 +2,7 @@
 layout: post
 title: Announcing Turbopack support for Appwrite Sites
 description: Appwrite Sites now supports Next.js applications built with Turbopack, with faster builds and better compatibility for your deployments.
-date: 2025-09-16
+date: 2025-09-17
 cover: /images/blog/turbopack-support-appwrite-sites/cover.png
 timeToRead: 3
 author: ebenezer-don
@@ -42,6 +42,8 @@ For new projects:
 3. Deploy. No build configuration changes needed
 
 **For existing broken sites:** If your site shows 404 errors due to missing Turbopack support, go to your site settings, select **Server side rendering** in the **Build settings** section, and redeploy.
+
+![Build settings in Appwrite Sites](/images/blog/turbopack-support-appwrite-sites/build-settings.png)
 
 This feature is live on Appwrite Cloud. Self-hosted support will be included in an upcoming release.
 
