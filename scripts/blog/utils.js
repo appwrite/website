@@ -20,7 +20,10 @@ export const COLORS = {
     pink: '\x1b[38;2;253;54;110m' // #fd366e
 };
 
-export function printHeader(title = 'BLOG CREATOR', subtitle = 'Create a new blog post for the Appwrite website') {
+export function printHeader(
+    title = 'BLOG CREATOR',
+    subtitle = 'Create a new blog post for the Appwrite website'
+) {
     console.clear();
     console.log(`${COLORS.pink}${COLORS.bright}`);
     console.log('    ___                          _ __     ');
@@ -86,7 +89,9 @@ export async function selectFromList(prompt, options) {
 
             // Show scroll indicator if needed
             if (endIdx < options.length) {
-                console.log(`  ${COLORS.dim}▼ ${options.length - endIdx} more below${COLORS.reset}`);
+                console.log(
+                    `  ${COLORS.dim}▼ ${options.length - endIdx} more below${COLORS.reset}`
+                );
             }
         };
 
@@ -105,29 +110,37 @@ export async function selectFromList(prompt, options) {
         process.stdin.setEncoding('utf8');
 
         const keypress = (key) => {
-            if (key === '\u0003') { // Ctrl+C
+            if (key === '\u0003') {
+                // Ctrl+C
                 process.stdin.setRawMode(false);
                 process.stdin.pause();
                 console.log('\n');
                 process.exit();
             }
 
-            if (key === '\r' || key === '\n') { // Enter
+            if (key === '\r' || key === '\n') {
+                // Enter
                 process.stdin.removeListener('data', keypress);
                 process.stdin.setRawMode(false);
                 process.stdin.resume();
                 console.log('');
-                resolve(options[selectedIndex].value !== undefined ? options[selectedIndex].value : options[selectedIndex]);
+                resolve(
+                    options[selectedIndex].value !== undefined
+                        ? options[selectedIndex].value
+                        : options[selectedIndex]
+                );
                 return;
             }
 
-            if (key === '\u001b[A') { // Up arrow
+            if (key === '\u001b[A') {
+                // Up arrow
                 selectedIndex = selectedIndex > 0 ? selectedIndex - 1 : options.length - 1;
                 updateScroll();
                 render();
             }
 
-            if (key === '\u001b[B') { // Down arrow
+            if (key === '\u001b[B') {
+                // Down arrow
                 selectedIndex = selectedIndex < options.length - 1 ? selectedIndex + 1 : 0;
                 updateScroll();
                 render();
@@ -148,7 +161,9 @@ export async function multiSelectFromList(prompt, options) {
         const render = () => {
             console.log('\x1b[2J\x1b[H');
             console.log(`\n${COLORS.pink}${prompt}${COLORS.reset}`);
-            console.log(`${COLORS.dim}(Use ↑↓ to navigate, Space to select/deselect, Enter to confirm)${COLORS.reset}\n`);
+            console.log(
+                `${COLORS.dim}(Use ↑↓ to navigate, Space to select/deselect, Enter to confirm)${COLORS.reset}\n`
+            );
 
             // Calculate visible range
             const startIdx = scrollOffset;
@@ -175,11 +190,15 @@ export async function multiSelectFromList(prompt, options) {
 
             // Show scroll indicator if needed
             if (endIdx < options.length) {
-                console.log(`  ${COLORS.dim}▼ ${options.length - endIdx} more below${COLORS.reset}`);
+                console.log(
+                    `  ${COLORS.dim}▼ ${options.length - endIdx} more below${COLORS.reset}`
+                );
             }
 
             if (selectedItems.size > 0) {
-                console.log(`\n${COLORS.dim}Selected: ${selectedItems.size} item(s)${COLORS.reset}`);
+                console.log(
+                    `\n${COLORS.dim}Selected: ${selectedItems.size} item(s)${COLORS.reset}`
+                );
             }
         };
 
@@ -198,24 +217,29 @@ export async function multiSelectFromList(prompt, options) {
         process.stdin.setEncoding('utf8');
 
         const keypress = (key) => {
-            if (key === '\u0003') { // Ctrl+C
+            if (key === '\u0003') {
+                // Ctrl+C
                 process.stdin.setRawMode(false);
                 process.stdin.pause();
                 console.log('\n');
                 process.exit();
             }
 
-            if (key === '\r' || key === '\n') { // Enter
+            if (key === '\r' || key === '\n') {
+                // Enter
                 process.stdin.removeListener('data', keypress);
                 process.stdin.setRawMode(false);
                 process.stdin.pause();
                 console.log('');
-                const selected = Array.from(selectedItems).map(i => options[i].value || options[i]);
+                const selected = Array.from(selectedItems).map(
+                    (i) => options[i].value || options[i]
+                );
                 resolve(selected);
                 return;
             }
 
-            if (key === ' ') { // Space
+            if (key === ' ') {
+                // Space
                 if (selectedItems.has(selectedIndex)) {
                     selectedItems.delete(selectedIndex);
                 } else {
@@ -224,13 +248,15 @@ export async function multiSelectFromList(prompt, options) {
                 render();
             }
 
-            if (key === '\u001b[A') { // Up arrow
+            if (key === '\u001b[A') {
+                // Up arrow
                 selectedIndex = selectedIndex > 0 ? selectedIndex - 1 : options.length - 1;
                 updateScroll();
                 render();
             }
 
-            if (key === '\u001b[B') { // Down arrow
+            if (key === '\u001b[B') {
+                // Down arrow
                 selectedIndex = selectedIndex < options.length - 1 ? selectedIndex + 1 : 0;
                 updateScroll();
                 render();
@@ -243,7 +269,9 @@ export async function multiSelectFromList(prompt, options) {
 
 export async function imagePathInput(prompt, targetPath) {
     console.log(`\n${COLORS.pink}${prompt}${COLORS.reset}`);
-    console.log(`${COLORS.dim}Drag & drop an image file here, or press Enter to add later${COLORS.reset}`);
+    console.log(
+        `${COLORS.dim}Drag & drop an image file here, or press Enter to add later${COLORS.reset}`
+    );
     console.log(`${COLORS.dim}Image will be saved to: ${targetPath}${COLORS.reset}\n`);
 
     const input = await question('Image path: ');
@@ -256,7 +284,8 @@ export async function imagePathInput(prompt, targetPath) {
     // 1. Remove surrounding quotes
     // 2. Replace escaped spaces (\ ) with regular spaces
     // 3. Handle escaped quotes
-    let cleanPath = input.trim()
+    let cleanPath = input
+        .trim()
         .replace(/^['"]|['"]$/g, '') // Remove surrounding quotes
         .replace(/\\ /g, ' ') // Replace escaped spaces
         .replace(/\\"/g, '"') // Replace escaped quotes
@@ -266,7 +295,9 @@ export async function imagePathInput(prompt, targetPath) {
     const fs = await import('fs');
 
     if (fs.existsSync(cleanPath)) {
-        console.log(`${COLORS.pink}✓${COLORS.reset} Image selected: ${COLORS.dim}${cleanPath}${COLORS.reset}`);
+        console.log(
+            `${COLORS.pink}✓${COLORS.reset} Image selected: ${COLORS.dim}${cleanPath}${COLORS.reset}`
+        );
         return { sourcePath: cleanPath, targetPath };
     } else {
         console.log(`${COLORS.red}File not found: ${cleanPath}${COLORS.reset}`);
@@ -289,7 +320,9 @@ export async function copyImage(sourcePath, targetPath) {
 
         // Copy the file
         fs.copyFileSync(sourcePath, targetPath);
-        console.log(`${COLORS.pink}✓${COLORS.reset} Image copied to: ${COLORS.dim}${targetPath}${COLORS.reset}`);
+        console.log(
+            `${COLORS.pink}✓${COLORS.reset} Image copied to: ${COLORS.dim}${targetPath}${COLORS.reset}`
+        );
         return true;
     } catch (error) {
         console.log(`${COLORS.red}Failed to copy image: ${error.message}${COLORS.reset}`);

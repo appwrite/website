@@ -16,7 +16,6 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const ROOT_DIR = path.join(__dirname, '..', '..');
 
-
 function slugify(text) {
     return text
         .toLowerCase()
@@ -193,7 +192,10 @@ async function createAuthorFiles(authorInfo) {
         // Copy avatar image if provided
         let avatarCopied = false;
         if (authorInfo.avatarSourcePath && authorInfo.avatarTargetPath) {
-            avatarCopied = await copyImage(authorInfo.avatarSourcePath, authorInfo.avatarTargetPath);
+            avatarCopied = await copyImage(
+                authorInfo.avatarSourcePath,
+                authorInfo.avatarTargetPath
+            );
         }
 
         return { success: true, authorPath, markdocPath, avatarCopied };
@@ -248,25 +250,26 @@ async function main() {
 
             console.log(`\n${COLORS.bright}Next steps:${COLORS.reset}`);
             if (!result.avatarCopied) {
-                const avatarPath = path.join(ROOT_DIR, 'static', 'images', 'avatars', `${authorInfo.slug}.png`);
-                console.log(
-                    `1. Add avatar image to: ${COLORS.pink}${avatarPath}${COLORS.reset}`
+                const avatarPath = path.join(
+                    ROOT_DIR,
+                    'static',
+                    'images',
+                    'avatars',
+                    `${authorInfo.slug}.png`
                 );
-                console.log(
-                    `2. The author "${authorInfo.name}" is now available for blog posts`
-                );
+                console.log(`1. Add avatar image to: ${COLORS.pink}${avatarPath}${COLORS.reset}`);
+                console.log(`2. The author "${authorInfo.name}" is now available for blog posts`);
             } else {
-                console.log(
-                    `The author "${authorInfo.name}" is now available for blog posts`
-                );
+                console.log(`The author "${authorInfo.name}" is now available for blog posts`);
             }
             console.log(
                 `\n${COLORS.dim}Run 'pnpm create-blog' to create a blog post with this author!${COLORS.reset}`
             );
         } else {
-            console.log(`\n${COLORS.red}Error creating author files: ${result.error}${COLORS.reset}`);
+            console.log(
+                `\n${COLORS.red}Error creating author files: ${result.error}${COLORS.reset}`
+            );
         }
-
     } catch (error) {
         console.log(`\n${COLORS.red}Error: ${error.message}${COLORS.reset}`);
     }
