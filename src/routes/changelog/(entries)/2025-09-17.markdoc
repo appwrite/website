@@ -9,16 +9,14 @@ Appwrite Sites now supports Next.js applications built with Turbopack, with fast
 
 ## What's new
 - **Turbopack support**: Deploy Next.js SSR sites using Turbopack bundler for faster builds
-- **Better Next.js compatibility**: Projects that use Turbopack now work on Appwrite Sites without changes
-- **No manual configuration needed**: Developers no longer need to disable Turbopack in their build commands
+- **Better Next.js compatibility**: Developers no longer need to disable Turbopack in build commands
 
 ## Benefits
 - **Faster builds**: Turbopack is faster than webpack
 - **Better developer experience**: No build configuration changes needed when deploying applications that use Turbopack
-- **Better reliability**: Projects that failed due to Turbopack incompatibility now deploy successfully
 
 This update is live for all Appwrite Cloud users. Self-hosted support will come in an upcoming release.
 
-{% arrow_link href="https://appwrite.io/docs/products/sites" %}
-Learn more about Appwrite Sites
+{% arrow_link href="/blog/post/turbopack-support-appwrite-sites" %}
+Learn more in the announcement post
 {% /arrow_link %}
