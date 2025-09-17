@@ -201,6 +201,43 @@ struct ContentView: View {
 ```
 {% /section %}
 
-{% section #step-6 step=6 title="All set" %}
+{% section #step-6 step=6 title="Type safety with models" %}
+For enhanced type safety, you can use custom model structs with the `nestedType` parameter:
+
+```swift
+import TablesDB
+
+struct User: Codable {
+    let name: String
+    let email: String
+    let isVerified: Bool
+}
+
+// Usage with type safety
+let appwrite = Appwrite()
+let tablesDB = TablesDB(appwrite.client)
+
+do {
+    let users = try await tablesDB.listRows(
+        databaseId: "[DATABASE_ID]",
+        tableId: "[TABLE_ID]",
+        nestedType: User.self // Enables type safety
+    )
+
+    for user in users.rows {
+        print("User: \(user.name) (\(user.email))")
+    }
+} catch {
+    print("Error: \(error.localizedDescription)")
+}
+```
+
+{% info title="Generate types automatically" %}
+Use the [Appwrite CLI](/docs/products/databases/type-generation) to generate model structs automatically: `appwrite types collection`
+{% /info %}
+
+{% /section %}
+
+{% section #step-7 step=7 title="All set" %}
 Run your project by clicking **Start active scheme** in Xcode.
 {% /section %}
