@@ -538,7 +538,7 @@ Learn more about [relationship performance optimization](/docs/products/database
 
 ### Equal {% #equal %}
 
-Returns row if column is equal to any value in the provided array.
+Returns row if column is equal to any value in the provided array. Also supported for spatial types.
 
 {% multicode %}
 ```client-web
@@ -572,7 +572,7 @@ query.Equal("title", []string{"Iron Man"})
 
 ### Not equal {% #not-equal %}
 
-Returns row if column is not equal to any value in the provided array.
+Returns row if column is not equal to any value in the provided array. Also supported for spatial types.
 
 {% multicode %}
 ```client-web
@@ -1046,7 +1046,7 @@ Query.notEndsWith("name", value: "happily ever after.")
 
 ### Contains {% #contains %}
 
-Returns rows if the array column contains the specified elements or if a string column contains the specified substring.
+Returns rows if the array column contains the specified elements or if a string column contains the specified substring. Also supported for spatial types.
 
 {% multicode %}
 ```client-web
@@ -1117,7 +1117,7 @@ query.Contains("name", "Tom")
 
 Returns rows if the array column does not contain the specified
 elements, or if a string column does not contain the specified
-substring.
+substring. Also supported for spatial types.
 
 {% multicode %}
 ```client-web
@@ -1825,6 +1825,17 @@ Query.updatedAfter("2025-01-01T00:00:00Z")
 Spatial queries enable geographic operations on [spatial columns](/docs/products/databases/spatial). Coordinates are specified as `[longitude, latitude]` arrays. Distance measurements can be specified in meters or degrees.
 
 For conceptual information about spatial data types and indexing, see [Spatial](/docs/products/databases/spatial).
+
+{% info title="Additional supported queries" %}
+In addition to the spatial-specific operations below, the query helpers `equal`, `notEqual`, `contains`, and `notContains` are also supported on spatial columns. This lets you:
+
+- Match exact spatial values (e.g. `equal("location", someGeometry)`).
+- Exclude exact spatial values with `notEqual`.
+- Check whether a geometry collection contains a geometry with `contains`.
+- Ensure a geometry collection does not contain a geometry with `notContains`.
+
+Use these when you need simple equality or membership checks instead of distance or topological comparisons.
+{% /info %}
 
 ## Distance equal {% #distance-equal %}
 
