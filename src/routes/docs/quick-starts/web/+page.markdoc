@@ -167,10 +167,12 @@ Get started with Appwrite and Nuxt
 Get started with Appwrite and SvelteKit
 {% /cards_item %}
 {% /cards %}
+{% /section %}
 
+{% section #step-7 step=7 title="Type safety with TypeScript" %}
 ## Type safety with TypeScript
 
-For enhanced type safety in TypeScript projects, define interfaces and use generics:
+For better type safety in TypeScript projects, define interfaces and use generics:
 
 ```typescript
 interface User {
@@ -203,7 +205,7 @@ try {
 ```
 
 {% info title="Generate types automatically" %}
-Use the [Appwrite CLI](/docs/products/databases/type-generation) to generate TypeScript interfaces automatically: `appwrite types collection`
+Use the [Appwrite CLI](/docs/products/databases/type-generation) to generate TypeScript interfaces automatically: `appwrite types ./types`
 {% /info %}
 
 {% /section %}
