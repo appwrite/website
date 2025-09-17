@@ -33,7 +33,7 @@ Cursor remains one of the most technically capable AI development environments, 
 
 ![Cursor IDE interface](/images/blog/comparing-vibe-coding-tools/cursor.webp)
 
-Cursor now prices its usage based on tokens instead of number of requests. This is for high-end models like Claude or Open AI's o3. Its auto mode, however, seems to be unlimited, and works surprisingly well.
+Cursor now prices its usage based on tokens instead of number of requests. They add markups to the rates of high-end models like Anthropic's Claude or OpenAI's GPT-5. Its auto mode, however, routes to different models depending on complexity of the prompt, is billed at a fixed token rate, and works surprisingly well.
 
 However, I've noticed that on large codebases, Cursor can lag, freeze while indexing, or stall on file edits, even on high-performance computers (I use a MacBook M3 Pro). This is probably the same experience other similar AI editors might have, since they're mostly all VS Code forks.
 
