@@ -52,8 +52,8 @@
                     href: '/docs/products/databases/relationships'
                 },
                 {
-                    label: 'Spatial',
-                    href: '/docs/products/databases/spatial',
+                    label: 'Geo queries',
+                    href: '/docs/products/databases/geo-queries',
                     new: isNewUntil('30 Sep 2025')
                 },
                 {

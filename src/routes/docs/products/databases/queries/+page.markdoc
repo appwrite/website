@@ -1820,21 +1820,14 @@ Query.updatedAfter("2025-01-01T00:00:00Z")
 {"method":"updatedAfter","values":["2025-01-01T00:00:00Z"]}
 ```
 {% /multicode %}
-# Spatial operations {% #spatial-operations %}
+# Geo queries and spatial operations {% #geo-queries %}
 
-Spatial queries enable geographic operations on [spatial columns](/docs/products/databases/spatial). Coordinates are specified as `[longitude, latitude]` arrays. Distance measurements can be specified in meters or degrees.
+Geo queries enable geographic operations on [spatial columns](/docs/products/databases/spatial). Coordinates are specified as `[longitude, latitude]` arrays. Distance measurements can be specified in meters or degrees.
 
-For conceptual information about spatial data types and indexing, see [Spatial](/docs/products/databases/spatial).
+For conceptual information about spatial data types, spatial columns and indexing, see [Geo queries](/docs/products/databases/geo-queries).
 
 {% info title="Additional supported queries" %}
-In addition to the spatial-specific operations below, the query helpers `equal`, `notEqual`, `contains`, and `notContains` are also supported on spatial columns. This lets you:
-
-- Match exact spatial values (e.g. `equal("location", someGeometry)`).
-- Exclude exact spatial values with `notEqual`.
-- Check whether a geometry collection contains a geometry with `contains`.
-- Ensure a geometry collection does not contain a geometry with `notContains`.
-
-Use these when you need simple equality or membership checks instead of distance or topological comparisons.
+In addition to the spatial-specific operations below, the query helpers `equal`, `notEqual`, `contains`, and `notContains` are also supported on spatial columns. This lets you match or exclude exact spatial values, check whether a geometry collection contains a geometry or not.
 {% /info %}
 
 ## Distance equal {% #distance-equal %}
