@@ -22,13 +22,13 @@ const client = new Client()
 
 const tablesDB = new TablesDB(client);
 
-tablesDB.listRows(
-    '<DATABASE_ID>',
-    '<TABLE_ID>',
-    [
+tablesDB.listRows({
+    databaseId: '<DATABASE_ID>',
+    tableId: '<TABLE_ID>',
+    queries: [
         Query.orderAsc('title'),
     ]
-);
+});
 ```
 
 ```client-flutter
@@ -135,14 +135,14 @@ In the example below, the movies returned will be first sorted by `title` in asc
 // ...
 
 // List rows and sort based on multiple columns
-tablesDB.listRows(
-    '<DATABASE_ID>',
-    '<TABLE_ID>',
-    [
+tablesDB.listRows({
+    databaseId: '<DATABASE_ID>',
+    tableId: '<TABLE_ID>',
+    queries: [
         Query.orderAsc('title'), // Order first by title in ascending order
         Query.orderDesc('year'), // Then, order by year in descending order
     ]
-);
+});
 ```
 ```dart
 // Flutter SDK code example for sorting based on multiple columns
@@ -229,13 +229,13 @@ const client = new Client()
 
 const tablesDB = new TablesDB(client);
 
-tablesDB.listRows(
-    '<DATABASE_ID>',
-    '<TABLE_ID>',
-    [
+tablesDB.listRows({
+    databaseId: '<DATABASE_ID>',
+    tableId: '<TABLE_ID>',
+    queries: [
         Query.orderAsc('$sequence'),
     ]
-);
+});
 ```
 
 ```client-flutter

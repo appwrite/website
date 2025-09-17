@@ -175,10 +175,10 @@ const client = new Client()
 
 const account = new Account(client);
 
-const session = await account.createSession(
-    '<USER_ID>',
-    '<SECRET>'
-);
+const session = await account.createSession({
+    userId: '<USER_ID>',
+    secret: '<SECRET>'
+});
 ```
 
 ```client-flutter

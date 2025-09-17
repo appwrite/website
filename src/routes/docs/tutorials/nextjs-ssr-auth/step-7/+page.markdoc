@@ -29,11 +29,11 @@ export async function signUpWithGithub() {
 
   const origin = headers().get("origin");
 
-	const redirectUrl = await account.createOAuth2Token(
-		OAuthProvider.Github,
-		`${origin}/oauth`,
-		`${origin}/signup`,
-	);
+	const redirectUrl = await account.createOAuth2Token({
+		provider: OAuthProvider.Github,
+		success: `${origin}/oauth`,
+		failure: `${origin}/signup`,
+	});
 
 	return redirect(redirectUrl);
 };

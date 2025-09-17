@@ -125,10 +125,10 @@ fun login(email: String, password: String) {
             let token = /* Retrieve the stored push token */
 
             /* store the `target.id` */
-            val target = account.createPushTarget({
+            val target = account.createPushTarget(
                 targetId = ID.unique(),
                 identifier = token
-            })
+            )
         } catch (e: AppwriteException) {
             Log.e("Login", "Failed: ${e.message}")
         }
@@ -349,23 +349,23 @@ client
     .setKey('919c2d18fb5d4...a2ae413da83346ad2')    // Your secret API key
 ;
 
-const messaging = await messaging.createPush(
-        '<MESSAGE_ID>', // messageId
-        '<TITLE>',      // title
-        '<BODY>',       // body
-        [],             // topics (optional)
-        [],             // users (optional)
-        [],             // targets (optional)
-        {},             // data (optional)
-        '<ACTION>',     // action (optional)
-        '<ICON>',       // icon (optional)
-        '<SOUND>',      // sound (optional)
-        '<COLOR>',      // color (optional)
-        '<TAG>',        // tag (optional)
-        '<BADGE>',      // badge (optional)
-        false,          // draft (optional)
-        ''              // scheduledAt (optional)
-    );
+const message = await messaging.createPush({
+        messageId: '<MESSAGE_ID>',
+        title: '<TITLE>',
+        body: '<BODY>',
+        topics: [],             // optional
+        users: [],              // optional
+        targets: [],            // optional
+        data: {},               // optional
+        action: '<ACTION>',     // optional
+        icon: '<ICON>',         // optional
+        sound: '<SOUND>',       // optional
+        color: '<COLOR>',       // optional
+        tag: '<TAG>',           // optional
+        badge: '<BADGE>',       // optional
+        draft: false,           // optional
+        scheduledAt: ''         // optional
+    });
 ```
 ```deno
 import * as sdk from "https://deno.land/x/appwrite/mod.ts";
@@ -381,23 +381,23 @@ client
     .setKey('919c2d18fb5d4...a2ae413da83346ad2')    // Your secret API key
 ;
 
-const messaging = await messaging.createPush(
-        '<MESSAGE_ID>', // messageId
-        '<TITLE>',      // title
-        '<BODY>',       // body
-        [],             // topics (optional)
-        [],             // users (optional)
-        [],             // targets (optional)
-        {},             // data (optional)
-        '<ACTION>',     // action (optional)
-        '<ICON>',       // icon (optional)
-        '<SOUND>',      // sound (optional)
-        '<COLOR>',      // color (optional)
-        '<TAG>',        // tag (optional)
-        '<BADGE>',      // badge (optional)
-        false,          // draft (optional)
-        ''              // scheduledAt (optional)
-    );
+const message = await messaging.createPush({
+        messageId: '<MESSAGE_ID>',
+        title: '<TITLE>',
+        body: '<BODY>',
+        topics: [],             // optional
+        users: [],              // optional
+        targets: [],            // optional
+        data: {},               // optional
+        action: '<ACTION>',     // optional
+        icon: '<ICON>',         // optional
+        sound: '<SOUND>',       // optional
+        color: '<COLOR>',       // optional
+        tag: '<TAG>',           // optional
+        badge: '<BADGE>',       // optional
+        draft: false,           // optional
+        scheduledAt: ''         // optional
+    });
 ```
 ```php
 <?php
