@@ -260,20 +260,19 @@ const client = new Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
     .setProject('<PROJECT_ID>');
 
-const databases = new TablesDB(client);
+const tablesDB = new TablesDB(client);
 
 // Type-safe database operations
 async function getTodos() {
-    const todos = await databases.listRows<Todo>({
-        databaseId: todoDatabase.$id,
-        tableId: todoTable.$id
+    const todos = await tablesDB.listRows<Todo>({
+        databaseId: '<DATABASE_ID>',
+        tableId: '<TABLE_ID>'
     });
 
     todos.rows.forEach(todo => {
         console.log(`Title: ${todo.title} - Complete: ${todo.isComplete}`);
     });
 }
-```
 
 {% info title="Generate types automatically" %}
 Use the [Appwrite CLI](/docs/products/databases/type-generation) to generate TypeScript interfaces automatically: `appwrite types collection`
