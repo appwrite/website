@@ -1847,7 +1847,7 @@ Query.distanceEqual("location", [-73.9851, 40.7589], 200)
 ```
 ```client-apple
 // Query.distanceEqual(column, coordinates, distance)
-Query.distanceEqual("location", value: [-73.9851, 40.7589], 200)
+Query.distanceEqual("location", values: [-73.9851, 40.7589], distance: 200)
 ```
 ```client-android-kotlin
 Query.distanceEqual("location", listOf(-73.9851, 40.7589), 200)
@@ -1911,7 +1911,7 @@ Query.distanceNotEqual("location", [-73.9851, 40.7589], 200)
 ```
 ```client-apple
 // Query.distanceNotEqual(column, coordinates, distance)
-Query.distanceNotEqual("location", value: [-73.9851, 40.7589], 200)
+Query.distanceNotEqual("location", values: [-73.9851, 40.7589], distance: 200)
 ```
 ```client-android-kotlin
 Query.distanceNotEqual("location", listOf(-73.9851, 40.7589), 200)
@@ -1975,7 +1975,7 @@ Query.distanceGreaterThan("location", [-73.9851, 40.7589], 200)
 ```
 ```client-apple
 // Query.distanceGreaterThan(column, coordinates, distance)
-Query.distanceGreaterThan("location", value: [-73.9851, 40.7589], 200)
+Query.distanceGreaterThan("location", values: [-73.9851, 40.7589], distance: 200)
 ```
 ```client-android-kotlin
 Query.distanceGreaterThan("location", listOf(-73.9851, 40.7589), 200)
@@ -2036,7 +2036,7 @@ Query.distanceLessThan("location", [-73.9851, 40.7589], 200)
 ```
 ```client-apple
 // Query.distanceLessThan(column, coordinates, distance)
-Query.distanceLessThan("location", value: [-73.9851, 40.7589], 200)
+Query.distanceLessThan("location", values: [-73.9851, 40.7589], distance: 200)
 ```
 ```client-android-kotlin
 Query.distanceLessThan("location", listOf(-73.9851, 40.7589), 200)
