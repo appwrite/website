@@ -21,7 +21,7 @@ Appwrite now gives you **first-class geo primitives and queries.**
 
 Here’s what you get:
 
-**New attribute types**
+**New column types**
 - `point`:  Perfect for things like bus stops, delivery drop-offs, or user check-ins.
 - `line`: Ideal for routes, bike paths, or utility lines.
 - `polygon`: Great for delivery zones, property boundaries, or compliance regions.
