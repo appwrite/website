@@ -109,7 +109,7 @@
     );
 
     const ryanOconner = testimonial(
-        "Ryan O'Conner",
+        "Ryan O'Connor",
         'Founder // K-Collect',
         "There's no struggling with writing backend code and working with databases, as that's already taken care of.",
         'ryan-oconner'

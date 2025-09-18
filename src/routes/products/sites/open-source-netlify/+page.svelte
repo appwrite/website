@@ -6,19 +6,19 @@
     import Main from '$lib/layouts/Main.svelte';
     import { DEFAULT_HOST } from '$lib/utils/metadata';
     import { TITLE_SUFFIX } from '$routes/titles';
-    import Create from './(components)/create.svelte';
-    import Deploy from './(components)/deploy.svelte';
-    import Faq from './(components)/faq.svelte';
-    import Features from './(components)/features.svelte';
+    import Create from '../(components)/create.svelte';
+    import Deploy from '../(components)/deploy.svelte';
+    import Faq from '../(components)/faq.svelte';
+    import Features from '../(components)/features.svelte';
     import Hero from './(components)/hero.svelte';
-    import Integrate from './(components)/integrate.svelte';
-    import Steps from './(components)/steps.svelte';
-    import Network from './(components)/network.svelte';
+    import Integrate from '../(components)/integrate.svelte';
+    import Steps from '../(components)/steps.svelte';
+    import Network from '../(components)/network.svelte';
     import Scale from '$routes/(marketing)/(components)/scale.svelte';
 
     const title = 'Sites' + TITLE_SUFFIX;
     const description =
-        'Appwrite Sites, the open-source Vercel alternative. Develop, deploy, and scale your web applications directly from Appwrite, alongside your backend.';
+        'Appwrite Sites, the open-source Netlify alternative. Develop, deploy, and scale your web applications directly from Appwrite, alongside your backend.';
     const ogImage = DEFAULT_HOST + '/images/open-graph/website.png';
 </script>
 
