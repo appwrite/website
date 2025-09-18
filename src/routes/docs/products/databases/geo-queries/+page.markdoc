@@ -37,7 +37,7 @@ Appwrite provides first-class geo types that can be stored as table columns:
 
 # Spatial index {% #spatial-index %}
 
-For optimal performance, create spatial indexes on columns you'll query frequently. Spatial indexes use optimized data structures designed for geographic operations.
+For optimal performance, create spatial indexes on columns you'll query. Spatial indexes use optimized data structures designed for geographic operations. Spatial indexes are **strongly recommended** if you plan to query your spatial data in any way.
 
 Create spatial indexes through the [Appwrite Console](/docs/products/databases/tables#indexes), [Server SDK](/docs/sdks#server), or [CLI](/docs/tooling/command-line/tables#commands).
 
