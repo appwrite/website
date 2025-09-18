@@ -1216,6 +1216,7 @@ Query.notContains("ingredients", ['apple', 'banana'])
 
 // For strings
 Query.notContains("name", "Tom")
+```
 ```server-swift
 // For arrays
 Query.notContains("ingredients", value: ['apple', 'banana'])
