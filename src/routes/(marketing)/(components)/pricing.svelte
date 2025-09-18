@@ -28,17 +28,10 @@
             event: 'home-pricing-cards-pro-click'
         },
         {
-            name: 'Scale',
-            price: '$599',
-            description:
-                'For teams that handle more complex and large projects and need more control and support.',
-            subtitle: '/month',
-            event: 'home-pricing-cards-scale-click'
-        },
-        {
             name: 'Enterprise',
             price: 'Custom',
-            description: 'For enterprises that need more power and premium support.',
+            description:
+                'For enterprises that need more power, premium support, and advanced security features.',
             event: 'home-pricing-cards-enterprise-click'
         }
     ];
@@ -92,7 +85,7 @@
         </div>
 
         <div
-            class="border-smooth divide-smooth grid min-h-75 w-full grid-cols-1 divide-y divide-dashed rounded-3xl border bg-white/2 backdrop-blur-lg md:grid-cols-2 md:gap-y-12 md:divide-y-0 md:px-4 md:py-8 lg:grid-cols-4 lg:divide-x"
+            class="border-smooth divide-smooth grid min-h-75 w-full grid-cols-1 divide-y divide-dashed rounded-3xl border bg-white/2 backdrop-blur-lg md:grid-cols-2 md:gap-y-12 md:divide-y-0 md:px-4 md:py-8 lg:grid-cols-3 lg:divide-x"
         >
             {#each plans as { name, price, tag: label, subtitle, description, event }}
                 {@const isEnterprise = name === 'Enterprise'}

@@ -35,20 +35,10 @@
             eventName: 'footer-plans-pro-click'
         },
         {
-            name: 'Scale',
-            price: '$599',
-            variable: true,
-            description:
-                'For teams that handle more complex and large projects and need more control and support.',
-            buttonText: 'Start building',
-            buttonLink: getAppwriteDashboardUrl('/console?type=create&plan=tier-2'),
-            buttonVariant: 'secondary',
-            eventName: 'footer-plans-scale-click'
-        },
-        {
             name: 'Enterprise',
             price: 'Custom',
-            description: 'For enterprises that need more power and premium support.',
+            description:
+                'For enterprises that need more power, premium support, and advanced security features.',
             buttonText: 'Contact us',
             buttonLink: '/contact-us/enterprise',
             buttonVariant: 'secondary',

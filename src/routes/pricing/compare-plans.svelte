@@ -22,12 +22,11 @@
             info?: string;
             free: Row;
             pro: Row;
-            scale: Row;
             enterprise: Row;
         }[];
     };
 
-    const cols = ['free', 'pro', 'scale', 'enterprise'] as const;
+    const cols = ['free', 'pro', 'enterprise'] as const;
 
     const tables: Array<Table> = [
         {
@@ -37,35 +36,30 @@
                     title: 'API bandwidth',
                     free: '5GB / month',
                     pro: '2TB / month',
-                    scale: '2TB / month',
                     enterprise: 'Custom'
                 },
                 {
                     title: 'Additional API bandwidth',
                     free: '-',
                     pro: '$15 per 100GB / month',
-                    scale: '$15 per 100GB / month',
                     enterprise: 'Custom'
                 },
                 {
                     title: 'Storage',
                     free: '2GB',
                     pro: '150GB',
-                    scale: '150GB',
                     enterprise: 'Custom'
                 },
                 {
                     title: 'Additional storage',
                     free: '-',
                     pro: '$2.8 per 100GB ',
-                    scale: '$2.8 per 100GB',
                     enterprise: 'Custom'
                 },
                 {
                     title: 'Executions',
                     free: '750K / month',
                     pro: '3.5M / month',
-                    scale: '3.5M / month',
                     enterprise: 'Custom'
                 }
             ]
@@ -77,70 +71,60 @@
                     title: 'Number of projects',
                     free: '2 (Shared resources)',
                     pro: '1 (Dedicated resources)',
-                    scale: '1 (Dedicated resources)',
                     enterprise: 'Custom'
                 },
                 {
                     title: 'Additional projects',
                     free: '-',
                     pro: '$15',
-                    scale: '$15',
                     enterprise: 'Custom'
                 },
                 {
                     title: 'Projects pausing',
                     free: 'Never',
                     pro: 'Never',
-                    scale: 'Never',
                     enterprise: 'Never'
                 },
                 {
                     title: 'Organization members',
                     free: '1',
                     pro: 'Unlimited',
-                    scale: 'Unlimited',
                     enterprise: 'Unlimited'
                 },
                 {
                     title: 'Connected websites and apps',
                     free: '3 per project',
                     pro: 'Unlimited',
-                    scale: 'Unlimited',
                     enterprise: 'Unlimited'
                 },
                 {
                     title: 'No Appwrite branding on emails',
                     free: '-',
                     pro: true,
-                    scale: true,
                     enterprise: true
                 },
                 {
                     title: 'Custom SMTP',
                     free: '-',
                     pro: true,
-                    scale: true,
                     enterprise: true
                 },
                 {
                     title: 'Webhooks',
                     free: '2 per project',
                     pro: 'Unlimited',
-                    scale: 'Unlimited',
                     enterprise: 'Unlimited'
                 },
                 {
                     title: 'Logs retention',
                     free: '1 hour',
                     pro: '7 days',
-                    scale: '28 days',
                     enterprise: 'Custom'
                 },
                 {
                     title: 'Budget caps and alerts',
                     free: 'Not needed',
                     pro: true,
-                    scale: true,
                     enterprise: true
                 }
             ]
@@ -152,14 +136,12 @@
                     title: 'Users',
                     free: '75,000 monthly active users',
                     pro: '200,000 monthly active users',
-                    scale: '200,000 monthly active users',
                     enterprise: 'Custom'
                 },
                 {
                     title: 'Additional users',
                     free: '-',
                     pro: '$3 per 1,000 users',
-                    scale: '$3 per 1,000 users',
                     enterprise: 'Custom'
                 },
                 {
@@ -170,25 +152,18 @@
                         url: '/docs/advanced/platform/phone-otp#rates',
                         event: 'pricing-pro-view_phone_otp_rates-click'
                     },
-                    scale: {
-                        text: 'View rates',
-                        url: '/docs/advanced/platform/phone-otp#rates',
-                        event: 'pricing-scale-view_phone_otp_rates-click'
-                    },
                     enterprise: 'Custom'
                 },
                 {
                     title: 'Teams',
                     free: '100 per project',
                     pro: 'Unlimited',
-                    scale: 'Unlimited',
                     enterprise: 'Unlimited'
                 },
                 {
                     title: 'SSO',
                     free: '-',
                     pro: '-',
-                    scale: 'Coming soon',
                     enterprise: 'Coming soon'
                 }
             ]
@@ -200,77 +175,66 @@
                     title: 'Databases',
                     free: '1 per project',
                     pro: 'Unlimited',
-                    scale: 'Unlimited',
                     enterprise: 'Unlimited'
                 },
                 {
                     title: 'Documents',
                     free: 'Unlimited',
                     pro: 'Unlimited',
-                    scale: 'Unlimited',
                     enterprise: 'Unlimited'
                 },
                 {
                     title: 'Reads',
                     free: '500K',
                     pro: '1750K',
-                    scale: '1750K',
                     enterprise: 'Custom'
                 },
                 {
                     title: 'Writes',
                     free: '250K',
                     pro: '750K',
-                    scale: '750K',
                     enterprise: 'Custom'
                 },
                 {
                     title: 'Additional reads',
                     free: '-',
                     pro: '$0.060 per 100k reads',
-                    scale: '$0.060 per 100k reads',
                     enterprise: 'Custom'
                 },
                 {
                     title: 'Additional writes',
                     free: '-',
                     pro: '$0.10 per 100k writes',
-                    scale: '$0.10 per 100k writes',
                     enterprise: 'Custom'
                 },
                 {
                     title: 'Backups',
                     free: '-',
                     pro: 'Daily',
-                    scale: 'Custom',
                     enterprise: 'Custom'
                 },
                 {
                     title: 'Backups retention',
                     free: '-',
                     pro: '7 days retention',
-                    scale: 'Custom',
                     enterprise: 'Custom'
                 },
                 {
                     title: 'Encrypted attributes support',
                     free: '-',
                     pro: 'True',
-                    scale: 'True',
                     enterprise: 'True'
                 },
                 {
                     title: 'Bulk API documents',
                     free: '100',
                     pro: '1000',
-                    scale: 'Custom',
                     enterprise: 'Custom'
                 },
                 {
                     title: 'Dedicated databases',
                     free: '-',
                     pro: 'Coming soon',
-                    scale: 'Coming soon',
                     enterprise: 'Coming soon'
                 }
             ]
@@ -282,28 +246,24 @@
                     title: 'Buckets',
                     free: '1 per project',
                     pro: 'Unlimited',
-                    scale: 'Unlimited',
                     enterprise: 'Unlimited'
                 },
                 {
                     title: 'File size limit',
                     free: '50MB',
                     pro: '5GB',
-                    scale: '5GB',
                     enterprise: 'Custom'
                 },
                 {
                     title: 'Image transformations',
                     free: '-',
                     pro: '100 origin images / month',
-                    scale: '100 origin images / month',
                     enterprise: 'Custom'
                 },
                 {
                     title: 'Additional transformations',
                     free: '-',
                     pro: '$5 per 1000 origin images',
-                    scale: '$5 per 1000 origin images',
                     enterprise: 'Custom'
                 }
             ]
@@ -315,49 +275,42 @@
                     title: 'Functions',
                     free: '5 per project',
                     pro: 'Unlimited',
-                    scale: 'Unlimited',
                     enterprise: 'Unlimited'
                 },
                 {
                     title: 'Sites',
                     free: '1 per project',
                     pro: 'Unlimited',
-                    scale: 'Unlimited',
                     enterprise: 'Unlimited'
                 },
                 {
                     title: 'Executions',
                     free: '750K / month',
                     pro: '3.5M / month',
-                    scale: '3.5M / month',
                     enterprise: 'Custom'
                 },
                 {
                     title: 'GB-hours',
                     free: '100 GB-hour / month',
                     pro: '1,000 GB-hour / month',
-                    scale: '1,000 GB-hour / month',
                     enterprise: 'Custom'
                 },
                 {
                     title: 'Additional GB-hours',
                     free: '-',
                     pro: '$0.06 per GB-hour',
-                    scale: '$0.06 per GB-hour',
                     enterprise: 'Custom'
                 },
                 {
                     title: 'Compute options',
                     free: '0.5 CPUs - 512MB RAM',
                     pro: 'Up to 4 CPUs - 4GB RAM',
-                    scale: 'Up to 4 CPUs - 4GB RAM',
                     enterprise: 'Custom'
                 },
                 {
                     title: 'Additional executions',
                     free: '-',
                     pro: '$2 per 1m',
-                    scale: '$2 per 1m',
                     enterprise: 'Custom'
                 },
                 {
@@ -365,7 +318,6 @@
                     info: 'Dedicated priority queues for build jobs',
                     free: '-',
                     pro: true,
-                    scale: true,
                     enterprise: true
                 }
             ]
@@ -377,21 +329,18 @@
                     title: 'Concurrent connections',
                     free: '250',
                     pro: '500',
-                    scale: '750',
                     enterprise: 'Custom'
                 },
                 {
                     title: 'Additional connections',
                     free: '-',
                     pro: '$5 per 1,000',
-                    scale: '$5 per 1,000',
                     enterprise: 'Custom'
                 },
                 {
                     title: 'Messages',
                     free: '3M',
                     pro: 'Unlimited',
-                    scale: 'Unlimited',
                     enterprise: 'Unlimited'
                 }
             ]
@@ -403,84 +352,72 @@
                     title: 'Messages',
                     free: '1000 per month',
                     pro: 'Unlimited',
-                    scale: 'Unlimited',
                     enterprise: 'Unlimited'
                 },
                 {
                     title: 'Topics',
                     free: '1',
                     pro: 'Unlimited',
-                    scale: 'Unlimited',
                     enterprise: 'Unlimited'
                 },
                 {
                     title: 'Targets',
                     free: true,
                     pro: true,
-                    scale: true,
                     enterprise: true
                 },
                 {
                     title: 'In app notifications',
                     free: true,
                     pro: true,
-                    scale: true,
                     enterprise: true
                 },
                 {
                     title: 'Chat',
                     free: true,
                     pro: true,
-                    scale: true,
                     enterprise: true
                 },
                 {
                     title: 'Push notifications',
                     free: true,
                     pro: true,
-                    scale: true,
                     enterprise: true
                 },
                 {
                     title: 'Email',
                     free: true,
                     pro: true,
-                    scale: true,
                     enterprise: true
                 },
                 {
                     title: 'SMS',
                     free: true,
                     pro: true,
-                    scale: true,
                     enterprise: true
                 },
                 {
                     title: 'Discord',
                     free: true,
                     pro: true,
-                    scale: true,
                     enterprise: true
                 },
                 {
                     title: 'WhatsApp',
                     free: '-',
                     pro: true,
-                    scale: true,
                     enterprise: true
                 },
                 {
                     title: 'Slack',
                     free: '-',
                     pro: true,
-                    scale: true,
                     enterprise: true
                 },
                 {
                     title: 'Analytics',
                     free: '-',
                     pro: 'Coming soon',
-                    scale: 'Coming soon',
                     enterprise: 'Coming soon'
                 }
             ]
@@ -492,21 +429,18 @@
                     title: 'Edge compute',
                     free: true,
                     pro: true,
-                    scale: true,
                     enterprise: true
                 },
                 {
                     title: 'DDoS mitigation',
                     free: true,
                     pro: true,
-                    scale: true,
                     enterprise: true
                 },
                 {
                     title: 'Content delivery network',
                     free: true,
                     pro: true,
-                    scale: true,
                     enterprise: true
                 },
                 {
@@ -514,35 +448,30 @@
                     info: 'Support for brotli, zstd, and gzip for text compression and webp for image compression',
                     free: true,
                     pro: true,
-                    scale: true,
                     enterprise: true
                 },
                 {
                     title: 'TLS encryption',
                     free: true,
                     pro: true,
-                    scale: true,
                     enterprise: true
                 },
                 {
                     title: 'Logs',
                     free: '-',
                     pro: '-',
-                    scale: 'Coming soon',
                     enterprise: 'Coming soon'
                 },
                 {
                     title: 'Firewall',
                     free: '-',
                     pro: '-',
-                    scale: '-',
                     enterprise: 'Custom rules'
                 },
                 {
                     title: 'WAF',
                     free: '-',
                     pro: '-',
-                    scale: '-',
                     enterprise: 'Custom rules'
                 }
             ]
@@ -554,42 +483,36 @@
                     title: 'Organization roles',
                     free: '-',
                     pro: true,
-                    scale: true,
                     enterprise: true
                 },
                 {
                     title: 'SOC-2',
                     free: '-',
                     pro: '-',
-                    scale: true,
                     enterprise: true
                 },
                 {
                     title: 'HIPAA',
                     free: '-',
                     pro: '-',
-                    scale: true,
                     enterprise: true
                 },
                 {
                     title: 'BAA',
                     free: '-',
                     pro: '-',
-                    scale: true,
                     enterprise: true
                 },
                 {
                     title: 'Custom organization roles',
                     free: '-',
                     pro: '-',
-                    scale: 'Coming soon',
                     enterprise: 'Coming soon'
                 },
                 {
                     title: 'Activity logs',
                     free: '-',
                     pro: '-',
-                    scale: 'Coming soon',
                     enterprise: 'Coming soon'
                 }
             ]
@@ -601,28 +524,24 @@
                     title: 'Community',
                     free: true,
                     pro: true,
-                    scale: true,
                     enterprise: true
                 },
                 {
                     title: 'Email',
                     free: '-',
                     pro: true,
-                    scale: true,
                     enterprise: true
                 },
                 {
                     title: 'SLA',
                     free: '-',
                     pro: '-',
-                    scale: 'Custom',
                     enterprise: 'Custom'
                 },
                 {
                     title: 'Private Slack channel',
                     free: '-',
                     pro: '-',
-                    scale: 'Custom',
                     enterprise: 'Custom'
                 }
             ]
@@ -751,23 +670,6 @@
                         </div>
                         <div class="web-mini-card">
                             <div class="flex flex-col items-center justify-between gap-2">
-                                <h4 class="text-sub-body text-primary font-medium">Scale</h4>
-                                <Button
-                                    variant="secondary"
-                                    class="!w-full"
-                                    href={getAppwriteDashboardUrl(
-                                        '/console?type=create&plan=tier-2'
-                                    )}
-                                    event="pricing-compare-scale-click"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                >
-                                    <span class="text-sub-body font-medium">Start building</span>
-                                </Button>
-                            </div>
-                        </div>
-                        <div class="web-mini-card">
-                            <div class="flex flex-col items-center justify-between gap-2">
                                 <h4 class="text-sub-body text-primary font-medium">Enterprise</h4>
                                 <Button
                                     variant="secondary"
@@ -878,7 +780,7 @@
 <style>
     .web-u-grid-auto-column-1fr {
         grid-auto-columns: max-content;
-        grid-template-columns: repeat(5, 2fr);
+        grid-template-columns: repeat(4, 2fr);
     }
 
     .web-mini-card {
