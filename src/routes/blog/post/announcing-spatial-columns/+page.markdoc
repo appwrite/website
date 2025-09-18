@@ -30,18 +30,18 @@ Here’s what you get:
 - `spatial`: Built to keep geo queries lightning fast, even when your dataset grows into the millions.
 
 **12 new geo query operators**
-    - `crosses`
-    - `notCrosses`
-    - `distanceEqual`
-    - `distanceNotEqual`
-    - `distanceGreaterThan`
-    - `distanceLessThan`
-    - `intersects`
-    - `notIntersects`
-    - `overlaps`
-    - `notOverlaps`
-    - `touches`
-    - `notTouches`
+- `crosses`
+- `notCrosses`
+- `distanceEqual`
+- `distanceNotEqual`
+- `distanceGreaterThan`
+- `distanceLessThan`
+- `intersects`
+- `notIntersects`
+- `overlaps`
+- `notOverlaps`
+- `touches`
+- `notTouches`
 
 # Practical applications
 
@@ -53,7 +53,7 @@ For example, you could
 - Identify all customers (points) who fall outside of a service area (polygon).
 - Find every bike trail (line) that touches the boundary of a city park (polygon).
 
-And of course, you can still keep it simple, like using a point attribute to store bus stop locations and running a `distanceLessThan` query to instantly find all bus stops within 200 meters of a user’s house.
+And of course, you can still keep it simple, like using a point column to store bus stop locations and running a `distanceLessThan` query to instantly find all bus stops within 200 meters of a user’s house.
 
 # Immediate benefits
 
