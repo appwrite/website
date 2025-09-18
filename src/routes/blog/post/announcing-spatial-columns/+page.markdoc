@@ -86,6 +86,4 @@ Define your spatial columns, add a spatial index, and start building location-aw
 # More resources
 - [Read the documentation to get started](/docs/products/databases/geo-queries)
 - [Announcing inversion queries: Exclusion rules made simple](/blog/post/announcing-inversion-queries)
-- [Announcing an improved Appwrite Databases experience. A completely new look and feel](/blog/post/announcing-appwrite-databases-new-ui)
-
-
+- [Announcing an improved Appwrite Databases experience: A completely new look and feel](/blog/post/announcing-appwrite-databases-new-ui)
