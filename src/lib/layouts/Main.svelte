@@ -24,6 +24,7 @@
     import AnnouncementBanner from '$routes/(init)/init/(components)/announcement-banner.svelte';
 
     export let omitMainId = false;
+    export let hideNavigation = false;
     let theme: 'light' | 'dark' | null = 'dark';
 
     function setupThemeObserver() {
@@ -223,7 +224,9 @@
                         width="130"
                     />
                 </a>
-                <MainNav initialized={$initialized} links={navLinks} />
+                {#if !hideNavigation}
+                    <MainNav initialized={$initialized} links={navLinks} />
+                {/if}
             </div>
             <div class="web-main-header-end">
                 <Button
@@ -241,7 +244,9 @@
             </div>
         </div>
     </header>
-    <MobileNav bind:open={$isMobileNavOpen} links={navLinks} />
+    {#if !hideNavigation}
+        <MobileNav bind:open={$isMobileNavOpen} links={navLinks} />
+    {/if}
 
     <main
         class="relative space-y-6"
