@@ -145,6 +145,14 @@
 
     $: ($isHeaderHidden, updateSideNav());
 
+    $: isOfferPage = page.route.id?.includes('/offer-300') ?? false;
+
+    $: mobileButtonHref = isOfferPage ? 'https://apwr.dev/DCMWDSw' : getAppwriteDashboardUrl();
+    $: mobileButtonEvent = isOfferPage
+        ? 'mobile-claim_300_credits_btn-click'
+        : 'main-start_building_btn-click';
+    $: mobileButtonText = isOfferPage ? 'Claim 300$ credits' : 'Start building';
+
     const handleNav = () => {
         $isMobileNavOpen = !$isMobileNavOpen;
         document.body.style.overflow = $isMobileNavOpen ? 'hidden' : '';
@@ -186,8 +194,8 @@
         </div>
         <div class="web-mobile-header-end">
             {#if !$isMobileNavOpen}
-                <Button href={getAppwriteDashboardUrl()} event="main-start_building_btn-click">
-                    <span class="text">Start building</span>
+                <Button href={mobileButtonHref} event={mobileButtonEvent}>
+                    <span class="text">{mobileButtonText}</span>
                 </Button>
             {/if}
             <Button variant="text" aria-label="open navigation" onclick={handleNav}>
@@ -224,28 +232,29 @@
                         width="130"
                     />
                 </a>
-                {#if !hideNavigation}
+                {#if !hideNavigation && !isOfferPage}
                     <MainNav initialized={$initialized} links={navLinks} />
                 {/if}
             </div>
             <div class="web-main-header-end">
                 <Button
                     variant="text"
-                    href={SOCIAL_STATS.GITHUB.LINK}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    href={isOfferPage ? undefined : SOCIAL_STATS.GITHUB.LINK}
+                    target={isOfferPage ? undefined : '_blank'}
+                    rel={isOfferPage ? undefined : 'noopener noreferrer'}
                     class="web-u-inline-width-100-percent-mobile"
+                    style={isOfferPage ? 'pointer-events: none;' : ''}
                 >
                     <Icon name="star" aria-hidden="true" />
                     <span class="text">Star on GitHub</span>
                     <InlineTag>{SOCIAL_STATS.GITHUB.STAT}</InlineTag>
                 </Button>
-                <IsLoggedIn />
+                <IsLoggedIn offerButton={isOfferPage} />
             </div>
         </div>
     </header>
     {#if !hideNavigation}
-        <MobileNav bind:open={$isMobileNavOpen} links={navLinks} />
+        <MobileNav bind:open={$isMobileNavOpen} links={navLinks} offerButton={isOfferPage} />
     {/if}
 
     <main
