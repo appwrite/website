@@ -1,6 +1,7 @@
 <script lang="ts">
     import { Button, type Variant } from '$lib/components/ui';
     import { getAppwriteDashboardUrl } from '$lib/utils/dashboard';
+    import { SHOW_SCALE_PLAN } from '$lib/constants/feature-flags';
 
     const plans: Array<{
         name: string;
@@ -35,16 +36,28 @@
             eventName: 'footer-plans-pro-click'
         },
         {
+            name: 'Scale',
+            price: '$599',
+            variable: true,
+            description:
+                'For teams that handle more complex and large projects and need more control and support.',
+            buttonText: 'Start building',
+            buttonLink: getAppwriteDashboardUrl('/console?type=create&plan=tier-2'),
+            buttonVariant: 'secondary',
+            eventName: 'footer-plans-scale-click'
+        },
+        {
             name: 'Enterprise',
             price: 'Custom',
-            description:
-                'For enterprises that need more power, premium support, and advanced security features.',
+            description: 'For enterprises that need more power and premium support.',
             buttonText: 'Contact us',
             buttonLink: '/contact-us/enterprise',
             buttonVariant: 'secondary',
             eventName: 'footer-plans-enterprise-click'
         }
     ];
+
+    const visiblePlans = plans.filter((plan) => plan.name !== 'Scale' || SHOW_SCALE_PLAN);
 </script>
 
 <img
@@ -79,7 +92,7 @@
         </header>
 
         <ul class="web-strip-plans -mt-8">
-            {#each plans as plan}
+            {#each visiblePlans as plan}
                 <li class="web-strip-plans-item web-strip-plans-container-query">
                     <div class="place-item-end grid grid-cols-1 gap-6 md:grid-cols-3">
                         <div class="flex flex-col">

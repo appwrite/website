@@ -3,6 +3,7 @@
     import { Button } from '$lib/components/ui';
     import { cn } from '$lib/utils/cn';
     import { getAppwriteDashboardUrl } from '$lib/utils/dashboard';
+    import { SHOW_SCALE_PLAN } from '$lib/constants/feature-flags';
 
     const plans: Array<{
         name: string;
@@ -28,10 +29,17 @@
             event: 'home-pricing-cards-pro-click'
         },
         {
+            name: 'Scale',
+            price: '$599',
+            description:
+                'For teams that handle more complex and large projects and need more control and support.',
+            subtitle: '/month',
+            event: 'home-pricing-cards-scale-click'
+        },
+        {
             name: 'Enterprise',
             price: 'Custom',
-            description:
-                'For enterprises that need more power, premium support, and advanced security features.',
+            description: 'For enterprises that need more power and premium support.',
             event: 'home-pricing-cards-enterprise-click'
         }
     ];
@@ -41,6 +49,10 @@
     };
 
     const { class: className }: PricingProps = $props();
+
+    const visiblePlans = plans.filter((plan) => plan.name !== 'Scale' || SHOW_SCALE_PLAN);
+
+    const gridCols = visiblePlans.length === 3 ? 'lg:grid-cols-3' : 'lg:grid-cols-4';
 </script>
 
 <div
@@ -85,9 +97,9 @@
         </div>
 
         <div
-            class="border-smooth divide-smooth grid min-h-75 w-full grid-cols-1 divide-y divide-dashed rounded-3xl border bg-white/2 backdrop-blur-lg md:grid-cols-2 md:gap-y-12 md:divide-y-0 md:px-4 md:py-8 lg:grid-cols-3 lg:divide-x"
+            class="border-smooth divide-smooth grid min-h-75 w-full grid-cols-1 divide-y divide-dashed rounded-3xl border bg-white/2 backdrop-blur-lg md:grid-cols-2 md:gap-y-12 md:divide-y-0 md:px-4 md:py-8 {gridCols} lg:divide-x"
         >
-            {#each plans as { name, price, tag: label, subtitle, description, event }}
+            {#each visiblePlans as { name, price, tag: label, subtitle, description, event }}
                 {@const isEnterprise = name === 'Enterprise'}
                 <div class="flex h-full w-full grow flex-col gap-1 px-5 py-5 md:py-0">
                     <div class="flex items-center gap-2.5">

@@ -13,7 +13,8 @@ const teams = new Teams(client);
 
 const BillingPlan = {
     STARTER: 'tier-0',
-    PRO: 'tier-1'
+    PRO: 'tier-1',
+    SCALE: 'tier-2'
 } as const;
 
 const ASCII_ART = `

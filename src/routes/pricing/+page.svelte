@@ -9,6 +9,7 @@
     import BG from './bg.png?enhanced';
     import { getAppwriteDashboardUrl } from '$lib/utils/dashboard';
     import { Button, BadgeTransparent, Icon } from '$lib/components/ui';
+    import { SHOW_SCALE_PLAN } from '$lib/constants/feature-flags';
 
     const title = 'Pricing' + TITLE_SUFFIX;
     const description = 'Explore our straightforward pricing plans that scale with your project.';
@@ -69,7 +70,7 @@
             </div>
             <div class="web-big-padding-section-level-2">
                 <section class="container">
-                    <div class="web-pricing-cards">
+                    <div class="web-pricing-cards" class:show-scale-plan={SHOW_SCALE_PLAN}>
                         <ul class="web-pricing-cards-list">
                             <li>
                                 <article
@@ -203,6 +204,70 @@
                                     </article>
                                 </div>
                             </li>
+                            {#if SHOW_SCALE_PLAN}
+                                <li>
+                                    <article
+                                        class="web-card is-transparent has-border-gradient h-full"
+                                        style="background: linear-gradient(180deg, rgba(255, 255, 255, 0.04) 63.19%, rgba(255, 255, 255, 0.00) 100%);"
+                                    >
+                                        <div class="web-pricing-cards-item">
+                                            <header class="web-pricing-cards-header">
+                                                <h2
+                                                    id="scale"
+                                                    class="text-label text-primary font-aeonik-pro"
+                                                >
+                                                    Scale
+                                                </h2>
+
+                                                <div class="mt-4 flex flex-col gap-2">
+                                                    <span class="-mb-4">From</span>
+                                                    <div class="flex items-end gap-2">
+                                                        <div
+                                                            class="text-title font-aeonik-pro text-primary mt-3"
+                                                        >
+                                                            $599
+                                                        </div>
+                                                        <div class="mt-1">/month</div>
+                                                    </div>
+                                                </div>
+
+                                                <p class="text-main-body mt-4 h-[5rem] font-medium">
+                                                    For teams that handle more complex and large
+                                                    projects and need more control and support.
+                                                </p>
+                                                <Button
+                                                    variant="secondary"
+                                                    href={getAppwriteDashboardUrl(
+                                                        '/console?type=create&plan=tier-2'
+                                                    )}
+                                                    event="pricing-cards-scale-click"
+                                                    class="is-full-width mt-10"
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                >
+                                                    <span class="text-sub-body font-medium"
+                                                        >Start building</span
+                                                    >
+                                                </Button>
+                                            </header>
+                                            <div class="web-pricing-cards-content">
+                                                <p>Everything in Pro, plus:</p>
+                                                <ul class="web-checked-list-circle">
+                                                    <li><span>Unlimited seats</span></li>
+                                                    <li><span>SOC-2</span></li>
+                                                    <li><span>BAA</span></li>
+                                                    <li><span>Network logs</span></li>
+                                                    <li><span>28-day log retention</span></li>
+                                                    <li><span>Custom organization roles</span></li>
+                                                    <li><span>SSO</span></li>
+                                                    <li><span>Activity logs</span></li>
+                                                    <li><span>Custom backup policies</span></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </article>
+                                </li>
+                            {/if}
                             <li>
                                 <article
                                     class="web-card is-transparent has-border-gradient u-height-100-percent"
@@ -238,7 +303,10 @@
                                             </Button>
                                         </header>
                                         <div class="web-pricing-cards-content">
-                                            <p>Everything in Pro, plus:</p>
+                                            <p>
+                                                Everything in {SHOW_SCALE_PLAN ? 'Scale' : 'Pro'},
+                                                plus:
+                                            </p>
                                             <ul class="web-checked-list-circle">
                                                 <li><span>Uptime SLAs</span></li>
                                                 <li><span>Designated Success Manager</span></li>
@@ -293,7 +361,9 @@
                                 Open Source
                             </h6>
                             <p class="text-main-body text-secondary font-medium">
-                                We support open-source teams with free access to Pro plans.
+                                We support open-source teams with free access to {SHOW_SCALE_PLAN
+                                    ? 'Pro and Scale'
+                                    : 'Pro'} plans.
                             </p>
                             <Button
                                 variant="secondary"
@@ -347,6 +417,10 @@
     .web-pricing-cards-list {
         gap: 1rem;
         grid-template-columns: repeat(3, 1fr);
+    }
+
+    :global(.show-scale-plan) .web-pricing-cards-list {
+        grid-template-columns: repeat(4, 1fr);
     }
 
     .cta-card {
