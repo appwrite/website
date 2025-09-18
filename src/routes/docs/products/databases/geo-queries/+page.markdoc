@@ -31,7 +31,9 @@ Appwrite provides first-class geo types that can be stored as table columns:
 
 - **Point**: Represents a single geographic coordinate as `[longitude, latitude]`
 - **Line**: Represents a series of connected geographic coordinates forming a path or route
-- **Polygon**: Represents a closed area defined by a series of coordinates forming a boundary and optional hole punches within that boundary
+- **Polygon**: Represents a closed area defined by a series of coordinates forming a boundary and optional hole punches within that boundary. Polygons must be **closed** (first and last points are the same), and holes must lie completely inside the boundary, with no overlaps.
+
+> Spatial columns that are **required** can not be added to tables with existing data. Spatials columns that **not required** can not be indexed.
 
 # Spatial index {% #spatial-index %}
 
