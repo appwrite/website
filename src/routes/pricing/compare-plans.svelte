@@ -562,21 +562,7 @@
                     enterprise: true
                 },
                 {
-                    title: 'SOC-2',
-                    free: '-',
-                    pro: '-',
-                    scale: true,
-                    enterprise: true
-                },
-                {
-                    title: 'HIPAA',
-                    free: '-',
-                    pro: '-',
-                    scale: true,
-                    enterprise: true
-                },
-                {
-                    title: 'BAA',
+                    title: 'SOC-2, HIPAA, and BAA',
                     free: '-',
                     pro: '-',
                     scale: true,
@@ -665,16 +651,16 @@
             <article use:melt={$root}>
                 <div class="container">
                     <header
-                        class="text-center"
+                        class="text-center lg:ml-64"
                         use:visible
                         on:visible={(e) => {
                             shouldShowTable = !e.detail;
                         }}
                     >
-                                <h3 class="text-title font-aeonik-pro text-primary">Compare plans</h3>
-                                <p class="text-main-body mt-4 font-medium">
-                            Discover our plans and find the one that fits your project’s needs.
-                                </p>
+                        <h3 class="text-title font-aeonik-pro text-primary">Compare plans</h3>
+                        <p class="text-main-body mt-4 font-medium">
+                            Discover our plans and find the one that fits your project's needs.
+                        </p>
                     </header>
 
                     <div
