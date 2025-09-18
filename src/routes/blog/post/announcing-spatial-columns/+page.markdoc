@@ -24,7 +24,7 @@ Here’s what you get:
 **New attribute types**
 - `point`:  Perfect for things like bus stops, delivery drop-offs, or user check-ins.
 - `line`: Ideal for routes, bike paths, or utility lines.
-- `polygon`: → Great for delivery zones, property boundaries, or compliance regions.
+- `polygon`: Great for delivery zones, property boundaries, or compliance regions.
 
 **New index type**
 - `spatial`: Built to keep geo queries lightning fast, even when your dataset grows into the millions.
