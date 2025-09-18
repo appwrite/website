@@ -52,6 +52,11 @@
                     href: '/docs/products/databases/relationships'
                 },
                 {
+                    label: 'Geo queries',
+                    href: '/docs/products/databases/geo-queries',
+                    new: isNewUntil('30 Sep 2025')
+                },
+                {
                     label: 'Backups',
                     href: '/docs/products/databases/backups'
                 }
