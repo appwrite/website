@@ -48,7 +48,7 @@ This modal will accept a store name, and you can select a location on the map wh
 
 However, there's something important to know here — it's the way we're storing the location information in the database. We're not just storing this information as a string, we're using the special **Point** column we made in Appwrite console earlier. When you click on **Add store**, we're making an API call, which then adds to database using the following call:
 
-```jsx
+```js
 const store = await tablesdb.createRow({
   databaseId: "ecommerce",
   tableId: "stores",
@@ -67,7 +67,7 @@ After you add a store, if you choose a location very close to the store on the m
 
 To make this work, we are not using some highly logical geometrical calculations, we are simply running a query on our Appwrite database mentioning the distance limit we want to limit our store search to.
 
-```jsx
+```js
 const serviceableStores = await tablesdb.listRows({
   databaseId: "ecommerce",
   tableId: "stores",
