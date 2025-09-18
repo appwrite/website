@@ -495,6 +495,224 @@ mutation {
 ```
 {% /multicode %}
 
+# Type safety with models {% #type-safety %}
+
+Mobile and native SDKs provide type safety when working with rows through the `nestedType` parameter. This allows you to specify custom model types for complete auto-completion and type safety.
+
+## Define your model
+
+Create a data class or struct that matches your table structure:
+
+{% tabs %}
+{% tabsitem #kotlin title="Kotlin/Java" %}
+```kotlin
+data class Book(
+    val title: String,
+    val author: String,
+    val publishedYear: Int? = null,
+    val genre: List<String>? = null,
+    val isAvailable: Boolean = true
+)
+```
+{% /tabsitem %}
+
+{% tabsitem #swift title="Swift" %}
+```swift
+struct Book: Codable {
+    let title: String
+    let author: String
+    let publishedYear: Int?
+    let genre: [String]?
+    let isAvailable: Bool
+}
+```
+{% /tabsitem %}
+
+{% tabsitem #web title="Web/Node" %}
+```typescript
+interface Book {
+    title: string;
+    author: string;
+    publishedYear?: number;
+    genre?: string[];
+    isAvailable: boolean;
+}
+```
+{% /tabsitem %}
+{% /tabs %}
+
+## Using type-safe operations
+
+Use the `nestedType` parameter for full type safety in native SDKs, or generics in web SDKs:
+
+{% multicode %}
+```client-android-kotlin
+val tablesDB = TablesDB(client)
+
+try {
+    // Create with type safety
+    val newBook = tablesDB.createRow(
+        databaseId = "<DATABASE_ID>",
+        tableId = "<TABLE_ID>",
+        rowId = ID.unique(),
+        data = mapOf(
+            "title" to "The Great Gatsby",
+            "author" to "F. Scott Fitzgerald",
+            "isAvailable" to true
+        ),
+        nestedType = Book::class.java
+    )
+
+    // List with type safety
+    val books = tablesDB.listRows(
+        databaseId = "<DATABASE_ID>",
+        tableId = "<TABLE_ID>",
+        nestedType = Book::class.java
+    )
+
+    // Now you have full type safety
+    for (book in books.rows) {
+        Log.d("Appwrite", "Book: ${book.title} by ${book.author}")
+        if (book.isAvailable) {
+            Log.d("Appwrite", "Available for checkout")
+        }
+    }
+} catch (e: AppwriteException) {
+    Log.e("Appwrite", "Error: ${e.message}")
+}
+```
+```client-apple
+let tablesDB = TablesDB(client)
+
+do {
+    // Create with type safety
+    let newBook = try await tablesDB.createRow(
+        databaseId: "<DATABASE_ID>",
+        tableId: "<TABLE_ID>",
+        rowId: ID.unique(),
+        data: [
+            "title": "The Great Gatsby",
+            "author": "F. Scott Fitzgerald",
+            "isAvailable": true
+        ],
+        nestedType: Book.self
+    )
+
+    // List with type safety
+    let books = try await tablesDB.listRows(
+        databaseId: "<DATABASE_ID>",
+        tableId: "<TABLE_ID>",
+        nestedType: Book.self
+    )
+
+    // Now you have full type safety
+    for book in books.rows {
+        print("Book: \(book.title) by \(book.author)")
+        if book.isAvailable {
+            print("Available for checkout")
+        }
+    }
+} catch {
+    print(error.localizedDescription)
+}
+```
+```client-web
+const tablesDB = new TablesDB(client);
+
+try {
+    // Create with generics
+    const newBook = await tablesDB.createRow<Book>({
+        databaseId: '<DATABASE_ID>',
+        tableId: '<TABLE_ID>',
+        rowId: ID.unique(),
+        data: {
+            title: "The Great Gatsby",
+            author: "F. Scott Fitzgerald",
+            isAvailable: true
+        }
+    });
+
+    // List with generics
+    const books = await tablesDB.listRows<Book>({
+        databaseId: '<DATABASE_ID>',
+        tableId: '<TABLE_ID>'
+    });
+
+    // TypeScript provides full type safety
+    books.rows.forEach(book => {
+        console.log(`Book: ${book.title} by ${book.author}`);
+        if (book.isAvailable) {
+            console.log("Available for checkout");
+        }
+    });
+} catch (error) {
+    console.log(error);
+}
+```
+{% /multicode %}
+
+## Model methods
+
+Models returned by native SDKs include helpful utility methods:
+
+{% tabs %}
+{% tabsitem #kotlin-methods title="Kotlin/Java" %}
+```kotlin
+val book = books.rows.first()
+
+// Convert model to Map for debugging or manual manipulation
+val bookMap = book.toMap()
+Log.d("Appwrite", "Book data: ${bookMap}")
+
+// Create model instance from Map data
+val bookData = mapOf(
+    "title" to "1984",
+    "author" to "George Orwell",
+    "isAvailable" to false
+)
+val newBook = Book.from(bookData, Book::class.java)
+
+// JSON serialization using Gson (used internally by SDK)
+import com.google.gson.Gson
+val gson = Gson()
+val jsonString = gson.toJson(book)
+val bookFromJson = gson.fromJson(jsonString, Book::class.java)
+```
+{% /tabsitem %}
+
+{% tabsitem #swift-methods title="Swift" %}
+```swift
+let book = books.rows.first!
+
+// Convert model to dictionary for debugging
+let bookMap = book.toMap()
+print("Book data: \(bookMap)")
+
+// Create model instance from dictionary
+let bookData: [String: Any] = [
+    "title": "1984",
+    "author": "George Orwell",
+    "isAvailable": false
+]
+let newBook = Book.from(map: bookData)
+
+// JSON encoding using Swift's Codable
+let jsonData = try JSONEncoder().encode(book)
+let jsonString = String(data: jsonData, encoding: .utf8)
+
+// JSON decoding
+if let jsonString = jsonString,
+   let data = jsonString.data(using: .utf8) {
+    let bookFromJson = try JSONDecoder().decode(Book.self, from: data)
+}
+```
+{% /tabsitem %}
+{% /tabs %}
+
+{% info title="Generate types automatically" %}
+You can automatically generate model definitions for your tables using the [Appwrite CLI](/docs/products/databases/type-generation). Run `appwrite types collection` to generate types based on your database schema.
+{% /info %}
+
 # Permissions {% #permissions %}
 In Appwrite, permissions can be granted at the table level and the row level.
 Before a user can create a row, you need to grant create permissions to the user.
