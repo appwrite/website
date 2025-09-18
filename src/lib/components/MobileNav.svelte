@@ -10,6 +10,7 @@
 
     export let open = false;
     export let links: NavLink[];
+    export let offerButton = false;
 
     afterNavigate(() => {
         open = false;
@@ -25,15 +26,19 @@
 >
     <div class="web-side-nav-wrapper ps-4 pe-4">
         <div class="flex items-center gap-2 px-4">
-            <Button
-                href={getAppwriteDashboardUrl('/register')}
-                variant="secondary"
-                class="flex-1"
-                event="mobile_nav-sign_up-click"
-            >
-                Sign up
-            </Button>
-            <IsLoggedIn class="flex-1" />
+            {#if offerButton}
+                <IsLoggedIn class="flex-1" offerButton />
+            {:else}
+                <Button
+                    href={getAppwriteDashboardUrl('/register')}
+                    variant="secondary"
+                    class="flex-1"
+                    event="mobile_nav-sign_up-click"
+                >
+                    Sign up
+                </Button>
+                <IsLoggedIn class="flex-1" offerButton={false} />
+            {/if}
         </div>
         <div class="web-side-nav-scroll max-w-screen! pr-0!">
             <section>
