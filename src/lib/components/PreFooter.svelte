@@ -57,7 +57,7 @@
         }
     ];
 
-    const visiblePlans = plans.filter((plan) => plan.name !== 'Scale' || SHOW_SCALE_PLAN);
+    const visiblePlans = SHOW_SCALE_PLAN ? plans : plans.filter((plan) => plan.name !== 'Scale');
 </script>
 
 <img

@@ -29,12 +29,9 @@
     };
 
     const allCols = ['free', 'pro', 'scale', 'enterprise'] as const;
-    const cols = allCols.filter((col) => col !== 'scale' || SHOW_SCALE_PLAN) as (
-        | 'free'
-        | 'pro'
-        | 'scale'
-        | 'enterprise'
-    )[];
+    const cols = SHOW_SCALE_PLAN
+        ? allCols
+        : (allCols.filter((col) => col !== 'scale') as ('free' | 'pro' | 'scale' | 'enterprise')[]);
 
     const tables: Array<Table> = [
         {
@@ -700,7 +697,9 @@
 
                     <div
                         class="web-is-not-mobile web-u-grid-auto-column-1fr is-with-footer-border web-u-padding-inline-8 web-u-margin-inline-8-negative web-u-filter-blur-8 web-u-container-query-inline sticky top-[70px] z-10 gap-8 [padding-block:20px]!"
-                        class:hide-scale-plan={!SHOW_SCALE_PLAN}
+                        style:--columns-template={SHOW_SCALE_PLAN
+                            ? 'repeat(4, 2fr)'
+                            : 'repeat(3, 2fr)'}
                         style:transition="inset-block-start 0.3s ease"
                     >
                         <div
@@ -889,11 +888,7 @@
 <style>
     .web-u-grid-auto-column-1fr {
         grid-auto-columns: max-content;
-        grid-template-columns: repeat(4, 2fr);
-    }
-
-    :global(.hide-scale-plan) .web-u-grid-auto-column-1fr {
-        grid-template-columns: repeat(3, 2fr);
+        grid-template-columns: var(--columns-template);
     }
 
     .web-mini-card {

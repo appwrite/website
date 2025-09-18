@@ -70,7 +70,12 @@
             </div>
             <div class="web-big-padding-section-level-2">
                 <section class="container">
-                    <div class="web-pricing-cards" class:show-scale-plan={SHOW_SCALE_PLAN}>
+                    <div
+                        class="web-pricing-cards"
+                        style:--columns-template={SHOW_SCALE_PLAN
+                            ? 'repeat(4, 1fr)'
+                            : 'repeat(3, 1fr)'}
+                    >
                         <ul class="web-pricing-cards-list">
                             <li>
                                 <article
@@ -416,11 +421,7 @@
 
     .web-pricing-cards-list {
         gap: 1rem;
-        grid-template-columns: repeat(3, 1fr);
-    }
-
-    :global(.show-scale-plan) .web-pricing-cards-list {
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: var(--columns-template);
     }
 
     .cta-card {

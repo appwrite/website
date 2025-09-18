@@ -1,1 +1,1 @@
-export const SHOW_SCALE_PLAN = 0;
+export const SHOW_SCALE_PLAN = false;

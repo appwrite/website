@@ -50,9 +50,9 @@
 
     const { class: className }: PricingProps = $props();
 
-    const visiblePlans = plans.filter((plan) => plan.name !== 'Scale' || SHOW_SCALE_PLAN);
+    const visiblePlans = SHOW_SCALE_PLAN ? plans : plans.filter((plan) => plan.name !== 'Scale');
 
-    const gridCols = visiblePlans.length === 3 ? 'lg:grid-cols-3' : 'lg:grid-cols-4';
+    const gridCols = `lg:grid-cols-${visiblePlans.length}`;
 </script>
 
 <div
