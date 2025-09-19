@@ -38,7 +38,6 @@ const config = {
         version: {
             pollInterval: 60 * 1000
         },
-
         alias: {
             $routes: './src/routes',
             $scss: './src/scss',
@@ -46,7 +45,6 @@ const config = {
             $appwrite: './node_modules/@appwrite.io/repo',
             $markdoc: './src/markdoc'
         },
-
         prerender: {
             concurrency: 32,
             /**
@@ -60,7 +58,6 @@ const config = {
                 throw new Error(message);
             }
         },
-
         experimental: {
             tracing: {
                 server: true
