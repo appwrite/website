@@ -39,6 +39,6 @@ export default defineConfig({
         reportCompressedSize: false
     },
     test: {
-        include: ['src/**/*.{test,spec}.{js,ts}']
+        include: ['tests/unit/**/*.{test,spec}.{js,ts}']
     }
 });
