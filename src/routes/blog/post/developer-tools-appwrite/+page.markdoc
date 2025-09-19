@@ -63,7 +63,7 @@ Take a look at their [NuGet package](https://www.nuget.org/packages/PinguApps.Ap
 
 ## fetch-appwrite-types
 
-fetch-appwrite-types is a tool designed to generate TypeScript types from Appwrite database collections. This utility simplifies the integration of Appwrite with TypeScript projects by creating type definitions that reflect the database schema. It enhances type safety and developer experience by providing accurate type information for database operations, reducing runtime errors, and improving code quality.
+fetch-appwrite-types is a tool designed to generate TypeScript types from Appwrite database tables. This utility simplifies the integration of Appwrite with TypeScript projects by creating type definitions that reflect the database schema. It enhances type safety and developer experience by providing accurate type information for database operations, reducing runtime errors, and improving code quality.
 
 Take a look at their [NPM package](https://www.npmjs.com/package/fetch-appwrite-types) and [GitHub repo](https://github.com/YsarocK/fetch-appwrite-types).
 
