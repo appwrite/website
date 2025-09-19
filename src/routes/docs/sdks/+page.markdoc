@@ -20,7 +20,7 @@ Client libraries for integrating with Appwrite to build client-based application
 ---
 * {% only_dark %}{% icon_image src="/images/platforms/dark/javascript.svg" alt="Javascript logo" size="m" /%}{% /only_dark %}
 {% only_light %}{% icon_image src="/images/platforms/javascript.svg" alt="Javascript logo" size="m" /%}{% /only_light %}
-* Web SDK `18.0.0`
+* Web SDK `20.0.0`
 * [appwrite/sdk-for-web](https://github.com/appwrite/sdk-for-web)
 * 
 ---
@@ -61,7 +61,7 @@ Server libraries for integrating with Appwrite to build server side integrations
 ---
 * {% only_dark %}{% icon_image src="/images/platforms/dark/nodejs.svg" alt="Node.js logo" size="m" /%}{% /only_dark %}
 {% only_light %}{% icon_image src="/images/platforms/nodejs.svg" alt="Node.js logo" size="m" /%}{% /only_light %}
-* Node.js SDK `17.0.0`
+* Node.js SDK `19.0.0`
 * [appwrite/sdk-for-node](https://github.com/appwrite/sdk-for-node)
 * 
 ---
