@@ -2,7 +2,7 @@
 layout: post
 title: "Secure Authentication without lock-In: Why developers choose Appwrite over Auth0 and Firebase"
 description: This guide breaks down why secure authentication matters more than ever, and compares top auth providers. 
-cover: /images/blog/understand-oauth2/cover.png
+cover: /images/blog/why-developers-choose-appwrite-auth/cover.png
 timeToRead: 06
 author: veeresh-mulge
 callToAction: true
