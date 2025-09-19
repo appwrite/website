@@ -324,10 +324,8 @@
                                                 <li><span>90-day log retention</span></li>
                                                 <li><span>Advanced observability</span></li>
                                                 <li><span>Bring your own Cloud</span></li>
-                                                <li><span>SOC-2 compliance</span></li>
-                                                <li><span>HIPAA compliance</span></li>
                                                 <li>
-                                                    <span>Business Associate Agreement (BAA)</span>
+                                                    <span>SOC-2, HIPAA, and BAA</span>
                                                 </li>
                                                 <li><span>Custom organization roles</span></li>
                                                 <li><span>Single Sign-On (SSO)</span></li>

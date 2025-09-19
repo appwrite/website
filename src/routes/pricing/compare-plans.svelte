@@ -562,21 +562,7 @@
                     enterprise: true
                 },
                 {
-                    title: 'SOC-2',
-                    free: '-',
-                    pro: '-',
-                    scale: true,
-                    enterprise: true
-                },
-                {
-                    title: 'HIPAA',
-                    free: '-',
-                    pro: '-',
-                    scale: true,
-                    enterprise: true
-                },
-                {
-                    title: 'BAA',
+                    title: 'SOC-2, HIPAA, and BAA',
                     free: '-',
                     pro: '-',
                     scale: true,
@@ -665,7 +651,7 @@
             <article use:melt={$root}>
                 <div class="container">
                     <header
-                        class="text-center"
+                        class="text-center lg:ml-64"
                         use:visible
                         on:visible={(e) => {
                             shouldShowTable = !e.detail;
@@ -673,7 +659,7 @@
                     >
                         <h3 class="text-title font-aeonik-pro text-primary">Compare plans</h3>
                         <p class="text-main-body mt-4 font-medium">
-                            Discover our plans and find the one that fits your project’s needs.
+                            Discover our plans and find the one that fits your project's needs.
                         </p>
                     </header>
 
@@ -698,8 +684,8 @@
                     <div
                         class="web-is-not-mobile web-u-grid-auto-column-1fr is-with-footer-border web-u-padding-inline-8 web-u-margin-inline-8-negative web-u-filter-blur-8 web-u-container-query-inline sticky top-[70px] z-10 gap-8 [padding-block:20px]!"
                         style:--columns-template={SHOW_SCALE_PLAN
-                            ? 'repeat(4, 2fr)'
-                            : 'repeat(3, 2fr)'}
+                            ? 'repeat(4, 1fr)'
+                            : 'repeat(3, 1fr)'}
                         style:transition="inset-block-start 0.3s ease"
                     >
                         <div
@@ -887,7 +873,6 @@
 
 <style>
     .web-u-grid-auto-column-1fr {
-        grid-auto-columns: max-content;
         grid-template-columns: var(--columns-template);
     }
 
