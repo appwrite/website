@@ -211,7 +211,7 @@ function* processAdditionalMethods(
             method: httpMethod,
             value: {
                 ...method,
-                summary: additionalMethod.desc.length > 0 ? additionalMethod.desc : method.summary,
+                summary: additionalMethod.desc?.length > 0 ? additionalMethod.desc : method.summary,
                 description: additionalMethod.description,
                 requestBody: filterRequestBodyProperties(
                     method.requestBody,
