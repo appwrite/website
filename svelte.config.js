@@ -34,9 +34,11 @@ const config = {
     extensions: ['.markdoc', '.svelte', '.md'],
     kit: {
         adapter: nodeAdapter(),
+
         version: {
             pollInterval: 60 * 1000
         },
+
         alias: {
             $routes: './src/routes',
             $scss: './src/scss',
@@ -44,6 +46,7 @@ const config = {
             $appwrite: './node_modules/@appwrite.io/repo',
             $markdoc: './src/markdoc'
         },
+
         prerender: {
             concurrency: 32,
             /**
@@ -55,6 +58,16 @@ const config = {
                     return;
                 }
                 throw new Error(message);
+            }
+        },
+
+        experimental: {
+            tracing: {
+                server: true
+            },
+
+            instrumentation: {
+                server: true
             }
         }
     }
