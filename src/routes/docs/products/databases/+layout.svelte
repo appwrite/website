@@ -100,6 +100,10 @@
                     label: 'CSV imports',
                     href: '/docs/products/databases/csv-imports',
                     new: isNewUntil('31 Jul 2025')
+                },
+                {
+                    label: 'Timestamp overrides',
+                    href: '/docs/products/databases/timestamp-overrides'
                 }
             ]
         },
