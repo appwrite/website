@@ -1333,7 +1333,7 @@ If you need to pass constants or secrets to Appwrite Functions, you can use envi
 | `APPWRITE_FUNCTION_RUNTIME_VERSION` |  The runtime version of the running function.  | Both                                              |
 
 {% arrow_link href="/docs/products/functions/functions#environment-variables" %}
-Learn to add variables to you function
+Learn to add variables to your function
 {% /arrow_link %}
 
 You can access the environment variables through the systems library of each language.
