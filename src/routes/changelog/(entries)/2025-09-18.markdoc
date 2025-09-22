@@ -19,7 +19,7 @@ Benefits:
 - Scales with your data: Spatial indexes keep queries fast even with a large volume of records.
 - Simpler development: Reduce app-side complexity by keeping geo operations inside the database.
 
-This update is now available on Appwrite Cloud and will arrive self-hosted in the next release.
+This update is live on Appwrite Cloud.
 
 {% arrow_link href="/blog/post/announcing-spatial-columns" %}
 Read the announcement to learn more
