@@ -8,6 +8,7 @@ date: 2025-09-23
 author: veeresh-mulge
 callToAction: true
 unlisted: true
+category: tutorial
 ---
 Ever clicked on a website and been surprised at how quickly—or painfully slowly—it loads? That speed isn't just about **how** powerful the server is; it's about **where** the server is. If your app lives in New York but your users are in Tokyo, every request has to cross an ocean before they see anything. Not ideal.
 
