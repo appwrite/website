@@ -8,7 +8,7 @@ Working with geo data usually means storing raw coordinates and writing custom l
 
 But now, you can build scalable geo workflows right out of the box.
 
-What's new:
+## What's new:
 - New column types: `Point`, `Line` and `Polygon`
 - New index type: `Spatial`
 - 12 new geo query operators: `crosses`, `notCrosses`, `distanceEqual`, `distanceNotEqual` and more.
