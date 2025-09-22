@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Choosing the right BaaS tool in 2025"
-description: This guide breaks down why secure authentication matters more than ever, and compares top auth providers. 
+description: A 2025 guide to BaaS platforms. Comparing Appwrite, Firebase, and Supabase to help developers pick the right backend for speed and scale.
 cover: /images/blog/choosing-the-right-baas-in-2025/cover.png
 timeToRead: 06
 author: veeresh-mulge
