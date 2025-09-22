@@ -14,7 +14,7 @@ Appwrite edges are strategically distributed locations designed to process reque
 {% /only_light %}
 
 {% info title="We're expanding!" %}
-Currently, Appwrite's edge network includes 3 locations. We are actively working to expand the number of edge locations globally. New locations will be strategically prioritized to ensure the best possible global coverage and performance for all users.
+Currently, Appwrite's edge network includes 4 locations. We are actively working to expand the number of edge locations globally. New locations will be strategically prioritized to ensure the best possible global coverage and performance for all users.
 {% /info %}
 
 # List {% #list %}
@@ -26,8 +26,8 @@ Appwrite edges are globally distributed, ensuring low-latency interactions for u
 | Frankfurt           | FRA    | Available       |
 | New York            | NYC    | Available       |
 | Sydney              | SYD    | Available       |
+| San Francisco       | SFO    | Available       |
 | Singapore           | SGP    | 2025            |
-| San Francisco       | SFO    | 2025            |
 | Bangalore           | BLR    | 2025            |
 | Amsterdam           | AMS    | 2025            |
 | London              | LON    | 2025            |

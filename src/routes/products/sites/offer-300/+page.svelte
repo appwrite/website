@@ -15,11 +15,14 @@
     import Steps from '../(components)/steps.svelte';
     import Network from '../(components)/network.svelte';
     import Scale from '$routes/(marketing)/(components)/scale.svelte';
+    import { page } from '$app/state';
 
     const title = 'Sites' + TITLE_SUFFIX;
     const description =
         'Appwrite Sites, the open-source Vercel alternative. Develop, deploy, and scale your web applications directly from Appwrite, alongside your backend.';
     const ogImage = DEFAULT_HOST + '/images/open-graph/website.png';
+
+    const isShortFormat = $derived(page.url.searchParams.get('format') === 'short');
 </script>
 
 <svelte:head>
@@ -41,34 +44,37 @@
 
 <Main>
     <Hero />
-    <div class="px-4 md:px-16">
-        <Steps>
-            <Create />
-            <Deploy />
-            <Integrate />
-        </Steps>
-        <Features />
-    </div>
-    <div class="light -mb-4 bg-[#EDEDF0] pb-8">
-        <Network />
-        <OpenSourceAlternative platforms={['Vercel', 'Netlify', 'Sevalla']} />
-        <Testimonials class="mb-20" />
-        <Scale
-            testimonial={{
-                name: 'Ryan O’Connor',
-                title: 'Founder',
-                company: 'K-Collect',
-                image: '/images/testimonials/ryan-oconner-testimonial.png'
-            }}
-            theme="light"
-        >
-            The switch to using Appwrite brought
-            <span class="text-primary">infinite value that I'm still discovering today.</span>
-        </Scale>
-    </div>
 
-    <Faq />
-    <ProductCards />
+    {#if !isShortFormat}
+        <div class="px-4 md:px-16">
+            <Steps>
+                <Create />
+                <Deploy />
+                <Integrate />
+            </Steps>
+            <Features />
+        </div>
+        <div class="light -mb-4 bg-[#EDEDF0] pb-8">
+            <Network />
+            <OpenSourceAlternative platforms={['Vercel', 'Netlify', 'Sevalla']} />
+            <Testimonials class="mb-20" />
+            <Scale
+                testimonial={{
+                    name: "Ryan O'Connor",
+                    title: 'Founder',
+                    company: 'K-Collect',
+                    image: '/images/testimonials/ryan-oconner-testimonial.png'
+                }}
+                theme="light"
+            >
+                The switch to using Appwrite brought
+                <span class="text-primary">infinite value that I'm still discovering today.</span>
+            </Scale>
+        </div>
+
+        <Faq />
+        <ProductCards />
+    {/if}
 
     <div class="relative -mt-6 max-w-screen overflow-hidden pt-20">
         <div class="container">
