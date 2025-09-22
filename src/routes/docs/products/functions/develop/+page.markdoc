@@ -783,6 +783,8 @@ These are provided alongside any custom headers sent to the function.
 | `x-appwrite-country-code`   |  Displays the country code of the configured locale.                                                                                                 |
 | `x-appwrite-continent-code` |  Displays the continent code of the configured locale.                                                                                               |
 | `x-appwrite-continent-eu`   |  Describes if the configured local is within the EU.                                                                                                 |
+| `x-appwrite-client-i`       |  Displays the IP of the client creating the execution.                                                                                                |
+| `x-appwrite-execution-id`   |  Displays the ID of the current execution.                                                                                                            |
 
 ## Response {% #response %}
 Use the response object to send a response to the function caller. This could be a user, client app, or an integration.
