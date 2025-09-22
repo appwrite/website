@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Secure Authentication without lock-In: Why developers choose Appwrite over Auth0 and Firebase"
+title: "Why developers choose Appwrite over Auth0 and Firebase"
 description: This guide breaks down why secure authentication matters more than ever, and compares top auth providers. 
 cover: /images/blog/why-developers-choose-appwrite-auth/cover.png
 timeToRead: 06
@@ -34,13 +34,13 @@ Appwrite Authentication is an **open-source alternative to Firebase and Auth0** 
 
 # FAQ
 
-## 1. What is an authentication service?
+# 1. What is an authentication service?
 
 At its core, an authentication service is what makes sure the person (or system) trying to access your app really is who they claim to be. It handles the basics like **signups, logins, and password resets**, but also the more advanced pieces like **session management, tokens, and role-based access**.
 
 Think of it as the **front door to your application**. Without it, anyone could walk in. With the right authentication service, only the right users get through, whether that’s your customers, your team, or even other services in a microservices setup.
 
-## 2. Why choose an open-source authentication service?
+# 2. Why choose an open-source authentication service?
 
 Because with open-source, you’re not locked into someone else’s rules. A closed service like Auth0 might be quick to start, but over time you’re tied to their pricing, their roadmap, and their limitations. 
 
@@ -50,18 +50,18 @@ With an open-source authentication service, you get:
 - **Flexibility** (run it in the cloud, or self-host if you need to)
 - **Control** (your data stays where you want it).
 
-## 3. How does Appwrite Authentication compare to Auth0?
+# 3. How does Appwrite Authentication compare to Auth0?
 
 - **Auth0** offers enterprise-grade features, but can become super expensive as you scale.
 - **Appwrite** delivers comparable features (OAuth, MFA, RBAC, SSO) but is **open-source** and **self-hostable**, making it attractive for teams of all sizes.
 
 We have an in-depth Appwrite vs Auth0 pricing comparison, you can read it [here](/post/appwrite-vs-auth0).
 
-## 4. Does Appwrite support multi-factor authentication (MFA)?
+# 4. Does Appwrite support multi-factor authentication (MFA)?
 
 Yes. Appwrite Authentication supports MFA, giving developers and security teams an additional layers of protection. 
 
-## 5. What are the different types of Authentication methods Appwrite supports?
+# 5. What are the different types of Authentication methods Appwrite supports?
 
 Appwrite supports a variety of authentication methods to fit every app and every niche. 
 
@@ -78,11 +78,11 @@ Here are some Appwrite's authentication flows:
 - Custom token
 - Multi-factor authentication
 
-## 5. Can I migrate from Auth0 or Firebase Auth to Appwrite?
+# 5. Can I migrate from Auth0 or Firebase Auth to Appwrite?
 
 Yes. Appwrite provides APIs and migration guides to automatically move accounts, database rows, and storage files from Auth0, Firebase, or other providers, ensuring smooth transitions without user disruption.
 
-## 6. What programming languages and frameworks does Appwrite support?
+# 6. What programming languages and frameworks does Appwrite support?
 
 Appwrite offers SDKs for almost all the popular frameworks and languages. [Visit this page](/docs/sdks) to get an extensive list of all the supported SDKs.
 
@@ -107,7 +107,7 @@ Appwrite offers SDKs for almost all the popular frameworks and languages. [Visit
 - Swift SDK
 - Kotlin SDK
 
-## 7. Is Appwrite Authentication secure and compliant (GDPR, HIPAA)?
+# 7. Is Appwrite Authentication secure and compliant (GDPR, HIPAA)?
 
 Yes. Appwrite takes compliance seriously and is built to safeguard sensitive data across both Appwrite Cloud and self-hosted deployments.
 
@@ -119,11 +119,11 @@ Here are the key compliance standards that Appwrite supports:
 - **HIPAA:** U.S. standards for securing personal health information in healthcare applications.
 - **PCI:** Payment Card Industry standards, met through Stripe, for securely handling payment data.
 
-## 8. Can I self-host Appwrite Authentication?
+# 8. Can I self-host Appwrite Authentication?
 
 Yes. Appwrite can be deployed on your own servers with **Docker**, but most teams choose **Appwrite Cloud** because it’s fully managed, automatically updated, and ready to scale without the overhead of running infrastructure yourself. Self-hosting is available if you prefer, but Cloud is the fastest and simplest way to get started.
 
-## 9. How does Appwrite pricing compare to Auth0?
+# 9. How does Appwrite pricing compare to Auth0?
 
 Auth0’s pricing is tied tightly to monthly active users (MAUs) and scales up quickly, often pushing teams into costly enterprise tiers as they grow. 
 
@@ -134,7 +134,7 @@ For a detailed breakdown, see our comparison blogs:
 - [Appwrite vs Auth0: Which is better for a B2C app?](/blog/post/appwrite-vs-auth0-b2c)
 - [Appwrite Auth vs Auth0: a comparison of authentication services](/blog/post/appwrite-vs-auth0)
 
-## 10. Who should use Appwrite Authentication?
+# 10. Who should use Appwrite Authentication?
 
 Appwrite Authentication is designed to support developers and organizations at every stage. 
 
@@ -143,7 +143,7 @@ Appwrite Authentication is designed to support developers and organizations at e
 - **Software development agencies:** As your client base expands, Appwrite Cloud ensures managed scalability and developer-first APIs that let you deliver faster. Agencies benefit from flexible project setups and [**Appwrite’s Partners program**](/partners), which provides collaboration opportunities, co-marketing, and deeper technical support to help agencies serve clients better.
 - **Students & hobbyists:** Open-source and free to self-host, Appwrite is perfect for learning and experimenting. Students can build real-world projects using the same tech trusted in production apps, while engaging with an active open-source community for help and collaboration. We also offer a dedicated **[Education program](/education)** that provides resources, guidance, and credits to help students explore modern dev tool in a hands-on way.
 
-## 11. Can I self-host Appwrite as a Firebase alternative?
+# 11. Can I self-host Appwrite as a Firebase alternative?
 
 Yes. Unlike Firebase (which is fully tied to Google Cloud), Appwrite gives you the option to self-host. It runs on **Docker**, so you can deploy it on your own servers, private cloud, or even locally for testing.
 
