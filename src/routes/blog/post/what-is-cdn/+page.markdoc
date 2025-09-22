@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "A developer’s guide to Content Delivery Networks(CDNs)"
-description: A practical guide to CDNs for developers: how they work, their benefits, and how Appwrite’s global network helps deliver apps worldwide.
+description: "A practical guide to CDNs for developers: how they work, their benefits, and how Appwrite’s global network helps deliver apps worldwide."
 cover: /images/blog/what-is-cdn/cover.png
 timeToRead: 5
 date: 2025-09-23
