@@ -153,7 +153,7 @@ Why this matters:
 - **Compliance** → For industries with strict requirements, self-hosting makes it easier to meet regulations like GDPR or HIPAA.
 - **Portability** → You’re not locked into one cloud provider — you can start with Appwrite Cloud and move to self-hosting later, or vice versa, without rewriting your app.
 
-# 12. Why Appwrite auth is better than Supabase?
+# 12. Is Appwrite better than Supabase for authentication?
 
 Both Appwrite and Supabase offer the basics you’d expect: user registration, login, passwordless options, and social logins, along with role-based access control (RBAC). 
 
