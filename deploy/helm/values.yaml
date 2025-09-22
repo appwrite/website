@@ -1,0 +1,15 @@
+image:
+    repository: ghcr.io/appwrite/website
+    tag: 'latest'
+    pullPolicy: IfNotPresent
+
+domain: 'stage.k8s.appwrite.io'
+
+env:
+    PUBLIC_APPWRITE_PROJECT_INIT_ID: ''
+    PUBLIC_APPWRITE_PROJECT_ID: ''
+    PUBLIC_APPWRITE_DB_MAIN_ID: ''
+    PUBLIC_APPWRITE_COL_THREADS_ID: ''
+    PUBLIC_APPWRITE_COL_MESSAGES_ID: ''
+    PUBLIC_APPWRITE_FN_TLDR_ID: ''
+    PUBLIC_POSTHOG_API_KEY: ''

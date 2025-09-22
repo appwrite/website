@@ -1,0 +1,20 @@
+region: fra1
+
+domain: app.fra1.example.com
+
+replicaCount: 2
+
+env:
+    PUBLIC_APPWRITE_PROJECT_INIT_ID: fra1_init_project_id
+    PUBLIC_APPWRITE_PROJECT_ID: fra1_project_id
+    PUBLIC_APPWRITE_DB_MAIN_ID: fra1_db_main_id
+    PUBLIC_APPWRITE_COL_THREADS_ID: fra1_col_threads_id
+    PUBLIC_APPWRITE_COL_MESSAGES_ID: fra1_col_messages_id
+    PUBLIC_APPWRITE_FN_TLDR_ID: fra1_function_tldr_id
+    PUBLIC_APPWRITE_ENDPOINT: https://fra1.appwrite.example.com/v1
+    PUBLIC_APPWRITE_DASHBOARD: https://fra1.appwrite.example.com/dashboard
+    PUBLIC_GROWTH_ENDPOINT: https://fra1-growth.example.com
+    PUBLIC_POSTHOG_API_KEY: fra1_posthog_key
+
+image:
+    tag: fra1-specific-tag-if-needed
