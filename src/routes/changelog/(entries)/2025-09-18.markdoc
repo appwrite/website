@@ -13,7 +13,7 @@ But now, you can build scalable geo workflows right out of the box.
 - New index type: `Spatial`
 - 12 new geo query operators: `crosses`, `notCrosses`, `distanceEqual`, `distanceNotEqual` and more.
 
-Benefits: 
+## Benefits: 
 
 - Native support for geo logic: Handle geofencing, routing, and compliance zones without custom hacks.
 - Scales with your data: Spatial indexes keep queries fast even with a large volume of records.
