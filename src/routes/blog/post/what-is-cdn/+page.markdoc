@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "A developer's guide to Content Delivery Networks(CDNs)"
-description: "A practical guide to CDNs for developers: how they work, their benefits, and how Appwrite’s global network helps deliver apps worldwide."
+description: "A practical guide to CDNs for developers: how they work, their benefits, and how Appwrite's global network helps deliver apps worldwide."
 cover: /images/blog/what-is-cdn/cover.png
 timeToRead: 5
 date: 2025-09-23
@@ -9,21 +9,21 @@ author: veeresh-mulge
 callToAction: true
 unlisted: true
 ---
-Ever clicked on a website and been surprised at how quickly—or painfully slowly—it loads? That speed isn’t just about **how** powerful the server is; it’s about **where** the server is. If your app lives in New York but your users are in Tokyo, every request has to cross an ocean before they see anything. Not ideal.
+Ever clicked on a website and been surprised at how quickly—or painfully slowly—it loads? That speed isn't just about **how** powerful the server is; it's about **where** the server is. If your app lives in New York but your users are in Tokyo, every request has to cross an ocean before they see anything. Not ideal.
 
-That’s where a **Content Delivery Network (CDN)** comes in. Think of it as a network of pit stops scattered around the globe, ready to serve your content from the closest possible location. Images, scripts, videos, or even entire pages, CDNs make sure they get to your users faster, with fewer delays and less strain on your main server.
+That's where a **Content Delivery Network (CDN)** comes in. Think of it as a network of pit stops scattered around the globe, ready to serve your content from the closest possible location. Images, scripts, videos, or even entire pages, CDNs make sure they get to your users faster, with fewer delays and less strain on your main server.
 
-In this blog, we’ll break down the CDN basics, the benefits, and how Appwrite developers get the most out of the Appwrite Network and CDN.
+In this blog, we'll break down the CDN basics, the benefits, and how Appwrite developers get the most out of the Appwrite Network and CDN.
 
 # How Does a CDN Work?
 
-At its core, a **CDN (Content Delivery Network)** is a team of servers spread out across the globe, working together to get content to your users as quickly as possible. Instead of everyone knocking on the door of your origin server, they’re routed to the closest “edge” server.
+At its core, a **CDN (Content Delivery Network)** is a team of servers spread out across the globe, working together to get content to your users as quickly as possible. Instead of everyone knocking on the door of your origin server, they're routed to the closest “edge” server.
 
-**Here’s how CDN works**:
+**Here's how CDN works**:
 
 1. A user makes a request (say, loading an image or a script).
 2. The CDN checks its nearest edge server.
-    - If the content is already cached there, then it’s delivered instantly.
+    - If the content is already cached there, then it's delivered instantly.
     - If not, the CDN grabs it from your origin server, stores a copy locally, and serves it up.
 3. The next user nearby gets it instantly, no waiting around.
 
@@ -31,15 +31,15 @@ This system, called [**edge caching**](/docs/products/network/caching#edge-level
 
 # Benefits of Using a CDN
 
-So why go through the trouble of adding a CDN in front of your app? Here’s what you actually get out of it:
+So why go through the trouble of adding a CDN in front of your app? Here's what you actually get out of it:
 
 - **Speed that feels instant** – Content gets served from the closest edge server, not the other side of the planet. Less travel time = faster load times.
 - **More reliable apps** – If one server goes down, the CDN automatically reroutes requests to the next available one. No single point of failure.
 - **Lower costs** – By caching static assets, CDNs take the load off your origin server and help cut bandwidth bills.
 - **Built-in security** – Many CDNs offer DDoS protection and SSL/TLS encryption out of the box, keeping your app safer at scale.
-- **Handles traffic spikes with ease** – Sudden surge in users? A CDN spreads the load across its network so performance doesn’t tank.
+- **Handles traffic spikes with ease** – Sudden surge in users? A CDN spreads the load across its network so performance doesn't tank.
 
-In short, CDNs don’t just make your app faster; they make it sturdier, safer, and more cost-efficient to operate.
+In short, CDNs don't just make your app faster; they make it sturdier, safer, and more cost-efficient to operate.
 
 # Example: Without vs. With a CDN
 
@@ -48,10 +48,10 @@ In short, CDNs don’t just make your app faster; they make it sturdier, safer, 
 
 # Using a CDN with Appwrite
 
-If you’re building on Appwrite, you’ve already got a head start:
+If you're building on Appwrite, you've already got a head start:
 
 - **Appwrite Sites** – Every site you deploy comes with a built-in CDN, so your static assets are automatically cached and served closer to your users with no extra setup.
-- **The Appwrite CDN** – With 120+ points of presence (PoPs) worldwide, Appwrite’s CDN ensures your content reaches users quickly and reliably, no matter their location. It handles both static and dynamic content, integrates directly with Appwrite’s regions and edges, and uses advanced compression and smart caching to keep delivery fast and efficient. Plus, everything runs over **TLS**, so security is baked in by default.
+- **The Appwrite CDN** – With 120+ points of presence (PoPs) worldwide, Appwrite's CDN ensures your content reaches users quickly and reliably, no matter their location. It handles both static and dynamic content, integrates directly with Appwrite's regions and edges, and uses advanced compression and smart caching to keep delivery fast and efficient. Plus, everything runs over **TLS**, so security is baked in by default.
     
 For APIs, storage, or self-hosted projects, you can still put a CDN in front of your Appwrite deployment to amplify performance even further. Check out the [Appwrite Network docs](https://appwrite.io/docs/products/network) for more details.
 
@@ -59,7 +59,7 @@ For APIs, storage, or self-hosted projects, you can still put a CDN in front of 
 
 Modern CDNs go far beyond caching static files. With edge computing, smart routing, and compression, they also accelerate **dynamic content, APIs, and real-time workloads**. For developers, this means lower latency, higher availability, and stronger security baked into the delivery layer.
 
-And if you’re working with Appwrite, you already have these capabilities at your fingertips through [**Appwrite Sites**](https://appwrite.io/docs/products/sites) and the **Appwrite CDN.** Together, they help you build apps that scale seamlessly while delivering the kind of instant, always-on experience users now expect.
+And if you're working with Appwrite, you already have these capabilities at your fingertips through [**Appwrite Sites**](https://appwrite.io/docs/products/sites) and the **Appwrite CDN.** Together, they help you build apps that scale seamlessly while delivering the kind of instant, always-on experience users now expect.
 
 # More resources
 
