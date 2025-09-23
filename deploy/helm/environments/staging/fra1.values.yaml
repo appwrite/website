@@ -23,5 +23,4 @@ env:
     APPWRITE_API_KEY_INIT: ''
     SENTRY_AUTH_TOKEN: ''
 
-image:
-    tag: fra1-specific-tag-if-needed
+image: ghcr.io/appwrite/website:{{ .Values.version }}

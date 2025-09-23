@@ -1,9 +1,10 @@
 nodeSelector:
     workload: assets
 
+version: latest
+
 image:
-    repository: ghcr.io/appwrite/website
-    tag: 'latest'
+    full: ghcr.io/appwrite/website:{{ .Values.version }}
     pullPolicy: IfNotPresent
 
 domain: 'stage.k8s.appwrite.io'
