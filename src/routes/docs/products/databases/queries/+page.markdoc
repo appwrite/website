@@ -1507,6 +1507,40 @@ query.OrderAsc("attribute")
 ```
 {% /multicode %}
 
+### Order random {% #order-random %}
+
+Orders results in random order.
+
+{% multicode %}
+```client-web
+Query.orderRandom()
+```
+```client-flutter
+Query.orderRandom()
+```
+```server-python
+Query.order_random()
+```
+```server-ruby
+Query.order_random()
+```
+```server-nodejs
+Query.orderRandom()
+```
+```server-php
+Query::orderRandom()
+```
+```client-apple
+Query.orderRandom()
+```
+```server-go
+query.OrderRandom()
+```
+```http
+{"method":"orderRandom"}
+```
+{% /multicode %}
+
 ## Pagination {% #pagination %}
 
 ### Limit {% #limit %}
