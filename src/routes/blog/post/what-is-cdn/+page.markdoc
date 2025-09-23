@@ -12,13 +12,13 @@ category: tutorial
 ---
 Ever clicked on a website and been surprised at how quickly, or painfully slowly, it loads? That speed isn't just about how powerful the server is; it's about where the server is. If your app lives in New York but your users are in Tokyo, every request must cross an ocean before seeing anything. Not ideal.
 
-That's where a **Content Delivery Network (CDN)** comes in. Think of it as a network of pit stops scattered around the globe, ready to serve your content from the closest possible location. Images, scripts, videos, or even entire pages, CDNs make sure they get to your users faster, with fewer delays and less strain on your main server.
+That's where a **content delivery network (CDN)** comes in. Think of it as a network of pit stops scattered around the globe, ready to serve your content from the closest possible location. Images, scripts, videos, or even entire pages, CDNs make sure they get to your users faster, with fewer delays and less strain on your main server.
 
 In this blog, we'll break down the basics of CDNs, their benefits, and how Appwrite developers can leverage them.
 
 # How Does a CDN Work?
 
-At its core, a **CDN (Content Delivery Network)** is a team of servers spread out across the globe, working together to get content to your users as quickly as possible. Instead of everyone knocking on the door of your origin server, they're routed to the closest “edge” server.
+At its core, a **content delivery network (CDN)** is a team of servers spread out across the globe, working together to get content to your users as quickly as possible. Instead of everyone knocking on the door of your origin server, they're routed to the closest “edge” server.
 
 **Here's how CDN works**:
 
