@@ -86,7 +86,7 @@ jobs:
             matrix:
                 region: [{ full: fra1, short: fra }]
         needs: build
-        runs-on: cloud-fra1-jumpbox
+        runs-on: ubuntu-latest
         steps:
             - name: Checkout the repo
               uses: actions/checkout@v4
