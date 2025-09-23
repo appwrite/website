@@ -65,7 +65,7 @@ spec:
   parentRefs:
     - name: traefik
       # If traefik gateway is in a different namespace, specify namespace here:
-      # namespace: traefik
+      namespace: traefik
   hostnames:
     - {{ .Values.domain }}
   rules:
