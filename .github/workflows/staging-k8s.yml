@@ -68,7 +68,6 @@ jobs:
         strategy:
             matrix:
                 region: [{ full: fra1, short: fra }]
-        environment: ${{ matrix.region.full == 'fra1' && 'staging' || 'staging-' }}${{ matrix.region.full != 'fra1' && matrix.region.full || '' }}
         needs: build
         runs-on: cloud-fra1-jumpbox
         steps:
