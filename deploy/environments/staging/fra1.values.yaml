@@ -24,4 +24,5 @@ env:
     APPWRITE_API_KEY_INIT: ''
     SENTRY_AUTH_TOKEN: ''
 
-image: ghcr.io/appwrite/website:{{ .Values.version }}
+image:
+    full: ghcr.io/appwrite/website:{{ .Values.version }}

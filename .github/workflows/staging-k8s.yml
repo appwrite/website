@@ -102,8 +102,8 @@ jobs:
 
             - name: Deploy
               run: |
-                  helm upgrade --install --wait --namespace website website deploy/helm \
-                    --values deploy/helm/environments/staging/${{ matrix.region.full }}.values.yaml \
+                  helm upgrade --install --wait --namespace website website deploy/ \
+                    --values deploy/environments/staging/${{ matrix.region.full }}.values.yaml \
                     --set imagePullSecret='ghcr' \
                     --set version=${{ env.TAG }} \
                     --set region=${{ matrix.region.full }} \

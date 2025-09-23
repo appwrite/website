@@ -57,7 +57,7 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
     name: '{{ include "website.fullname" . }}-ingress'
-    namespace: { { .Release.Namespace } }
+    namespace: {{ .Release.Namespace }}
     annotations:
         kubernetes.io/ingress.class: traefik
         traefik.ingress.kubernetes.io/router.entrypoints: web,websecure
@@ -65,7 +65,7 @@ metadata:
         traefik.ingress.kubernetes.io/router.tls.certresolver: myresolver
 spec:
     rules:
-        - host: { { .Values.domain } }
+        - host: {{ .Values.domain }}
           http:
               paths:
                   - path: /
