@@ -66,7 +66,7 @@ const topic = messaging.createTopic(
 
 ```
 ```deno
-import * as sdk from "https://deno.land/x/appwrite/mod.ts";
+import * as sdk from "npm:node-appwrite";
 
 // Init SDK
 let client = new sdk.Client();
@@ -337,7 +337,7 @@ const subscriber = await messaging.createSubscriber(
 );
 ```
 ```deno
-import * as sdk from "https://deno.land/x/appwrite/mod.ts";
+import * as sdk from "npm:node-appwrite";
 
 const client = new sdk.Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')    // Your API Endpoint
