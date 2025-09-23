@@ -22,6 +22,9 @@ spec:
         - name: server
           image: "{{ .Values.image.full }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
+          envFrom:
+            - configMapRef:
+                name: config
           env:
           {{- range $key, $val := .Values.env }}
             - name: {{ $key }}
