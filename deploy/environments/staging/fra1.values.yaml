@@ -5,7 +5,8 @@ region: fra1
 
 domain: stage.k8s.appwrite.io
 
-replicaCount: 2
+minReplicas: 1
+maxReplicas: 2
 
 env:
     PUBLIC_APPWRITE_PROJECT_INIT_ID: ''
