@@ -56,28 +56,26 @@ spec:
 
 ---
 
-apiVersion: networking.k8s.io/v1
-kind: Ingress
+apiVersion: gateway.networking.k8s.io/v1beta1
+kind: HTTPRoute
 metadata:
-    name: 'website'
-    namespace: {{ .Release.Namespace }}
-    annotations:
-        kubernetes.io/ingress.class: traefik
-        traefik.ingress.kubernetes.io/router.entrypoints: web,websecure
-        traefik.ingress.kubernetes.io/router.tls: 'true'
-        traefik.ingress.kubernetes.io/router.tls.certresolver: myresolver
+  name: website
+  namespace: website
 spec:
-    rules:
-        - host: {{ .Values.domain }}
-          http:
-              paths:
-                  - path: /
-                    pathType: Prefix
-                    backend:
-                        service:
-                            name: 'website'
-                            port:
-                                number: 80
+  parentRefs:
+    - name: traefik
+      # If traefik gateway is in a different namespace, specify namespace here:
+      # namespace: traefik
+  hostnames:
+    - {{ .Values.domain }}
+  rules:
+    - matches:
+        - path:
+            type: Prefix
+            value: /
+      backendRefs:
+        - name: website
+          port: 80
 
 
 ---
