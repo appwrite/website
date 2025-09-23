@@ -11,6 +11,8 @@
     export let subtitle =
         'Appwrite is an open-source, all-in-one development platform. Use built-in backend infrastructure and web hosting, all from a single place.';
     export let showDashboard = true;
+    export let ctaLabel: string = 'Start building for free';
+    export let ctaHref: string = PUBLIC_APPWRITE_DASHBOARD;
 </script>
 
 <div class="relative flex max-w-screen items-center overflow-hidden py-12 md:py-0 lg:min-h-[700px]">
@@ -40,11 +42,11 @@
 
             <div class="mt-4 flex flex-col gap-2 lg:flex-row">
                 <Button
-                    href={PUBLIC_APPWRITE_DASHBOARD}
+                    href={ctaHref}
                     class="w-full! lg:w-fit!"
                     onclick={() => {
                         trackEvent(`main-get_started_btn_hero-click`);
-                    }}>Start building for free</Button
+                    }}>{ctaLabel}</Button
                 >
             </div>
         </div>
