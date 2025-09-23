@@ -54,13 +54,13 @@ If you're building on Appwrite, you've already got a head start:
 - **Appwrite Sites** – Every site you deploy has a built-in CDN, so your static assets are automatically cached and served closer to your users with no extra setup.
 - **The Appwrite CDN** – With 120+ points of presence (PoPs) worldwide, Appwrite's CDN ensures your content reaches users quickly and reliably, regardless of location. It handles static and dynamic content, integrates directly with Appwrite's regions and edges, and uses advanced compression and smart caching to keep delivery fast and efficient. Plus, everything runs over **TLS**, so security is baked in by default.
     
-For APIs, storage, or self-hosted projects, you can still put a CDN in front of your Appwrite deployment to amplify performance even further. Check out the [Appwrite Network docs](https://appwrite.io/docs/products/network) for more details.
+For APIs, storage, or self-hosted projects, you can still put a CDN in front of your Appwrite deployment to amplify performance even further. Check out the [Appwrite Network docs](/docs/products/network) for more details.
 
 # Conclusion
 
 Modern CDNs go far beyond caching static files. With edge computing, intelligent routing, and compression, they also accelerate **dynamic content, APIs, and real-time workloads**. For developers, this means lower latency, higher availability, and stronger security baked into the delivery layer.
 
-And if you're working with Appwrite, you already have these capabilities through [Appwrite Sites](https://appwrite.io/docs/products/sites) and the [Appwrite CDN](/docs/products/network/cdn). Together, they help you build apps that scale seamlessly while delivering the instant, always-on experience users now expect.
+And if you're working with Appwrite, you already have these capabilities through [Appwrite Sites](/docs/products/sites) and the [Appwrite CDN](/docs/products/network/cdn). Together, they help you build apps that scale seamlessly while delivering the instant, always-on experience users now expect.
 
 # More resources
 
