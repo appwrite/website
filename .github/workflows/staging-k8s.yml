@@ -86,7 +86,7 @@ jobs:
 
             - name: Create docker pull secret
               run: |
-                  kubectl -n website create secret docker-registry ghcr \
+                  kubectl -n website-staging create secret docker-registry ghcr \
                     --docker-server=ghcr.io \
                     --docker-username=${{ github.actor }} \
                     --docker-password=${{ secrets.GITHUB_TOKEN }} \
@@ -102,7 +102,7 @@ jobs:
 
             - name: Deploy
               run: |
-                  helm upgrade --install --wait --namespace website website deploy/helm \
+                  helm upgrade --install --wait --namespace website-staging website deploy/helm \
                     --values deploy/helm/environments/staging/${{ matrix.region.full }}.values.yaml \
                     --set imagePullSecret='ghcr' \
                     --set image.tag=${{ env.TAG }} \
