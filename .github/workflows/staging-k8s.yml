@@ -93,12 +93,12 @@ jobs:
                     --docker-email=ci@appwrite.io \
                     --dry-run=client -o yaml | kubectl apply -f -
 
-            - name: Create telemetry
-              run: |
-                  echo "TODO(mustaq): To be added!!!"
+            # - name: Create telemetry
+            #   run: |
+            #       echo "TODO(mustaq): To be added!!!"
 
-            - name: Deploy telemetry
-              run: helm upgrade --install --namespace telemetry --repo https://grafana.github.io/helm-charts alloy alloy --values deploy/telemetry/values.yaml --set-file alloy.configMap.content=deploy/telemetry/config.alloy
+            # - name: Deploy telemetry
+            #   run: helm upgrade --install --namespace telemetry --repo https://grafana.github.io/helm-charts alloy alloy --values deploy/telemetry/values.yaml --set-file alloy.configMap.content=deploy/telemetry/config.alloy
 
             - name: Deploy
               run: |
