@@ -1,3 +1,6 @@
+nodeSelector:
+    workload: assets
+
 region: fra1
 
 domain: stage.k8s.appwrite.io

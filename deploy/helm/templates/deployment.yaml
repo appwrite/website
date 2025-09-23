@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "website.fullname" . }}-server
+  name: '{{ include "website.fullname" . }}-server'
 spec:
   replicas: 2
   selector:
@@ -12,6 +12,8 @@ spec:
       labels:
         app: server
     spec:
+      nodeSelector:
+        workload: assets
       containers:
         - name: server
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"

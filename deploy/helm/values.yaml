@@ -1,3 +1,6 @@
+nodeSelector:
+    workload: assets
+
 image:
     repository: ghcr.io/appwrite/website
     tag: 'latest'
