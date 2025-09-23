@@ -46,7 +46,7 @@ npx nuxi@latest init my-app && cd my app
 Install the JavaScript Appwrite SDK.
 
 ```sh
-npm install appwrite@18.1.1
+npm install appwrite
 ```
 {% /section %}
 {% section #step-4 step=4 title="Import Appwrite" %}
@@ -106,7 +106,7 @@ const register = async () => {
 };
 
 const logout = async () => {
-  await account.deleteSession('current');
+  await account.deleteSession({ sessionId: 'current' });
   loggedInUser.value = null;
 };
 </script>

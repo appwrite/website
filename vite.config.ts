@@ -1,3 +1,4 @@
+import { sentrySvelteKit } from '@sentry/sveltekit';
 import { enhancedImages } from '@sveltejs/enhanced-img';
 import { sveltekit } from '@sveltejs/kit/vite';
 import dynamicImport from 'vite-plugin-dynamic-import';
@@ -7,6 +8,12 @@ import { defineConfig } from 'vitest/config';
 
 export default defineConfig({
     plugins: [
+        sentrySvelteKit({
+            sourceMapsUploadOptions: {
+                org: 'appwrite',
+                project: 'website'
+            }
+        }),
         enhancedImages(),
         sveltekit(),
         dynamicImport({

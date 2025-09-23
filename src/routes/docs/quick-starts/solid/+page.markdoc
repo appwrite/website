@@ -47,7 +47,7 @@ npm create vite@latest my-app -- --template solid && cd my-app
 Install the JavaScript Appwrite SDK.
 
 ```sh
-npm install appwrite@18.1.1
+npm install appwrite
 ```
 {% /section %}
 
@@ -110,7 +110,7 @@ const App = () => {
     }
 
     async function logout() {
-        await account.deleteSession('current');
+        await account.deleteSession({ sessionId: 'current' });
         setLoggedInUser(null);
     }
 

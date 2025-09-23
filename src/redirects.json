@@ -767,5 +767,9 @@
     {
         "link": "/docs/advanced/self-hosting/environment-variables",
         "redirect": "/docs/advanced/self-hosting/configuration/environment-variables"
+    },
+    {
+        "link": "/products/sites/offer-300-s",
+        "redirect": "/products/sites/offer-300?format=short"
     }
 ]

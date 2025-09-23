@@ -250,11 +250,11 @@ export default class AppwriteService {
         queries.push(Query.cursorAfter(cursor));
       }
 
-      const { rows } = await this.tablesDB.listRows(
+      const { rows } = await this.tablesDB.listRows({
         databaseId,
         tableId,
         queries
-      );
+      });
 
       if (rows.length === 0) {
         break;
