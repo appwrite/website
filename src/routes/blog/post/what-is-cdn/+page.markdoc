@@ -30,7 +30,7 @@ At its core, a **content delivery network (CDN)** is a team of servers spread ou
 
 This system, called [**edge caching**](/docs/products/network/caching#edge-level), keeps things fast, light, and reliable. Since the CDN handles repeat requests, your origin server can breathe a little easier, too.
 
-# Benefits of Using a CDN
+# Benefits of using a CDN
 
 So why go through the trouble of adding a CDN in front of your app? Here's what you actually get out of it:
 
@@ -42,7 +42,7 @@ So why go through the trouble of adding a CDN in front of your app? Here's what 
 
 In short, CDNs make your app faster, sturdier, safer, and more cost-efficient to operate.
 
-# Example: Without vs. With a CDN
+# Example: Without vs. with a CDN
 
 - **Without a CDN**, a user in Tokyo accessing an app hosted in New York may face noticeable latency because every request travels across the globe.
 - **With a CDN**, that same request is routed to the nearest CDN edge server in Tokyo, making the app feel instantly responsive.
