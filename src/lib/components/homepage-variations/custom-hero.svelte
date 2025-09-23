@@ -6,13 +6,19 @@
     import { cn } from '$lib/utils/cn';
     import Dashboard from '$routes/(marketing)/(components)/dashboard.svelte';
 
-    // Configurable props
-    export let title = 'Build like a team of hundreds';
-    export let subtitle =
-        'Appwrite is an open-source, all-in-one development platform. Use built-in backend infrastructure and web hosting, all from a single place.';
-    export let showDashboard = true;
-    export let ctaLabel: string = 'Start building for free';
-    export let ctaHref: string = PUBLIC_APPWRITE_DASHBOARD;
+    const {
+        title = 'Build like a team of hundreds',
+        subtitle = 'Appwrite is an open-source, all-in-one development platform. Use built-in backend infrastructure and web hosting, all from a single place.',
+        showDashboard = true,
+        ctaLabel = 'Start building for free',
+        ctaHref = PUBLIC_APPWRITE_DASHBOARD
+    } = $props<{
+        title?: string;
+        subtitle?: string;
+        showDashboard?: boolean;
+        ctaLabel?: string;
+        ctaHref?: string;
+    }>();
 </script>
 
 <div class="relative flex max-w-screen items-center overflow-hidden py-12 md:py-0 lg:min-h-[700px]">

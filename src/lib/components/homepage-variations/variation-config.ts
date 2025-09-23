@@ -17,6 +17,19 @@ export interface HomepageVariationConfig {
     showPricing?: boolean;
 }
 
+const baseConfig: Partial<HomepageVariationConfig> = {
+    showDashboard: true,
+    showPlatforms: true,
+    showLogoList: true,
+    showBento: true,
+    showPullquote: true,
+    showCaseStudies: true,
+    showFeatures: true,
+    showMap: true,
+    showScale: true,
+    showPricing: true
+};
+
 // Predefined configurations for common variations
 export const variationConfigs: Record<string, HomepageVariationConfig> = {
     'all-in-one-cloud': {
@@ -25,16 +38,7 @@ export const variationConfigs: Record<string, HomepageVariationConfig> = {
             'Appwrite Cloud provides everything you need to build, deploy, and scale your applications. From backend infrastructure to web hosting, all in one powerful platform.',
         pageTitle: 'Appwrite - All-in-One Cloud Platform',
         slug: '/all-in-one-cloud',
-        showDashboard: true,
-        showPlatforms: true,
-        showLogoList: true,
-        showBento: true,
-        showPullquote: true,
-        showCaseStudies: true,
-        showFeatures: true,
-        showMap: true,
-        showScale: true,
-        showPricing: true
+        ...baseConfig
     },
     'supabase-alternative': {
         title: 'Open-source Supabase Alternative',
@@ -42,16 +46,7 @@ export const variationConfigs: Record<string, HomepageVariationConfig> = {
             'Appwrite is a truly open-source, all-in-one development platform that offers backend infrastructure and web hosting from a single place.',
         pageTitle: 'Appwrite - Open-source Supabase Alternative',
         slug: '/supabase-alternative',
-        showDashboard: true,
-        showPlatforms: true,
-        showLogoList: true,
-        showBento: true,
-        showPullquote: true,
-        showCaseStudies: true,
-        showFeatures: true,
-        showMap: true,
-        showScale: true,
-        showPricing: true
+        ...baseConfig
     },
     'firebase-alternative': {
         title: 'Open-source Firebase Alternative',
@@ -59,16 +54,7 @@ export const variationConfigs: Record<string, HomepageVariationConfig> = {
             'Appwrite is a truly open-source, all-in-one development platform that offers backend infrastructure and web hosting from a single place.',
         pageTitle: 'Appwrite - Open-source Firebase Alternative',
         slug: '/firebase-alternative',
-        showDashboard: true,
-        showPlatforms: true,
-        showLogoList: true,
-        showBento: true,
-        showPullquote: true,
-        showCaseStudies: true,
-        showFeatures: true,
-        showMap: true,
-        showScale: true,
-        showPricing: true
+        ...baseConfig
     },
     'all-in-one-development': {
         title: 'All-in-one Development Platform',
@@ -76,16 +62,7 @@ export const variationConfigs: Record<string, HomepageVariationConfig> = {
             'Appwrite is an all-in-one development platform that offers backend infrastructure and web hosting from a single place. Open-source and no vendor lock-in.',
         pageTitle: 'Appwrite - All-in-one Development Platform',
         slug: '/all-in-one-development',
-        showDashboard: true,
-        showPlatforms: true,
-        showLogoList: true,
-        showBento: true,
-        showPullquote: true,
-        showCaseStudies: true,
-        showFeatures: true,
-        showMap: true,
-        showScale: true,
-        showPricing: true
+        ...baseConfig
     },
     'all-in-one-cloud-offer': {
         title: 'All-in-one Cloud Platform',
@@ -95,16 +72,7 @@ export const variationConfigs: Record<string, HomepageVariationConfig> = {
         slug: '/all-in-one-cloud-offer',
         ctaLabel: 'Claim your $300 Credits',
         ctaHref: 'https://cloud.appwrite.io/console/login?code=sites300',
-        showDashboard: true,
-        showPlatforms: true,
-        showLogoList: true,
-        showBento: true,
-        showPullquote: true,
-        showCaseStudies: true,
-        showFeatures: true,
-        showMap: true,
-        showScale: true,
-        showPricing: true
+        ...baseConfig
     }
 };
 
