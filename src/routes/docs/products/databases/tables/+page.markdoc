@@ -36,7 +36,11 @@ client
     .setKey('919c2d18fb5d4...a2ae413da83346ad2') // Your secret API key
 ;
 
-const promise = tablesDB.createTable('<DATABASE_ID>', '<TABLE_ID>', '<NAME>');
+const promise = tablesDB.createTable({
+    databaseId: '<DATABASE_ID>',
+    tableId: '<TABLE_ID>',
+    name: '<NAME>'
+});
 
 promise.then(function (response) {
     console.log(response);
@@ -45,7 +49,7 @@ promise.then(function (response) {
 });
 ```
 ```deno
-import * as sdk from "https://deno.land/x/appwrite/mod.ts";
+import * as sdk from "npm:node-appwrite";
 
 // Init SDK
 let client = new sdk.Client();

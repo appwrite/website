@@ -43,7 +43,7 @@ npx sv create
 Install the JavaScript Appwrite SDK.
 
 ```sh
-npm install appwrite@18.1.1
+npm install appwrite
 ```
 {% /section %}
 {% section #step-4 step=4 title="Import Appwrite" %}
@@ -109,7 +109,7 @@ Replace the contents of `src/routes/+page.svelte` with the following code.
     }
 
     async function logout() {
-        await account.deleteSession('current');
+        await account.deleteSession({ sessionId: 'current' });
         loggedInUser = null;
     }
 </script>

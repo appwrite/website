@@ -1,3 +1,4 @@
+import * as Sentry from '@sentry/sveltekit';
 import type { Handle } from '@sveltejs/kit';
 import redirects from './redirects.json';
 import { sequence } from '@sveltejs/kit/hooks';
@@ -52,17 +53,7 @@ const securityheaders: Handle = async ({ event, resolve }) => {
             'https://js.zi-scripts.com',
             'https://ws.zoominfo.com',
             'https://*.cookieyes.com',
-            'https://cdn-cookieyes.com',
-
-            // too many scripts from gtm!
-            'https://www.googletagmanager.com',
-            'https://js.hs-scripts.com',
-            'https://js.hs-banner.com',
-            'https://js.hsadspixel.net',
-            'https://js.hs-analytics.net',
-            'https://js.hscollectedforms.net',
-            'https://api.hubapi.com',
-            'https://googleads.g.doubleclick.net'
+            'https://cdn-cookieyes.com'
         ]),
         'style-src': "'self' 'unsafe-inline'",
         'img-src': "'self' data: https:",
@@ -87,12 +78,7 @@ const securityheaders: Handle = async ({ event, resolve }) => {
             'https://hemsync.clickagy.com',
             'https://ws.zoominfo.com ',
             'https://*.cookieyes.com',
-            'https://cdn-cookieyes.com',
-
-            // gtm
-            'https://api.hubapi.com',
-            'https://www.google.com',
-            'https://forms.hscollectedforms.net'
+            'https://cdn-cookieyes.com'
         ]),
         'frame-src': join([
             "'self'",
@@ -101,10 +87,7 @@ const securityheaders: Handle = async ({ event, resolve }) => {
             'https://www.youtube-nocookie.com',
             'https://player.vimeo.com',
             'https://hemsync.clickagy.com',
-            'https://cdn-cookieyes.com',
-
-            // gtm
-            'https://www.googletagmanager.com'
+            'https://cdn-cookieyes.com'
         ])
     };
 
@@ -203,4 +186,5 @@ const initSession: Handle = async ({ event, resolve }) => {
     return resolve(event);
 };
 
-export const handle = sequence(redirecter, securityheaders, initSession);
+export const handle = sequence(Sentry.sentryHandle(), redirecter, securityheaders, initSession);
+export const handleError = Sentry.handleErrorWithSentry();
