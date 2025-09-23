@@ -195,7 +195,7 @@ promise.then(function (response) {
 });
 ```
 ```deno
-import * as sdk from "https://deno.land/x/appwrite/mod.ts";
+import * as sdk from "npm:node-appwrite";
 
 // Init SDK
 let client = new sdk.Client();
@@ -711,7 +711,7 @@ promise.then(function (response) {
 });
 ```
 ```deno
-import * as sdk from "https://deno.land/x/appwrite/mod.ts";
+import * as sdk from "npm:node-appwrite";
 
 // Init SDK
 let client = new sdk.Client();

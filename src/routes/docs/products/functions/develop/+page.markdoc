@@ -172,7 +172,7 @@ def main(context)
 end
 ```
 ```deno
-import { Client } from "https://deno.land/x/appwrite@7.0.0/mod.ts";
+import { Client } from "npm:node-appwrite";
 
 // This is your Appwrite function
 // It's executed each time we get a request
@@ -1685,7 +1685,7 @@ def main(context)
 end
 ```
 ```deno
-import { Client, TablesDB, ID } from "https://deno.land/x/appwrite/mod.ts";
+import { Client, TablesDB, ID } from "npm:node-appwrite";
 
 export default function ({req, res, error}: any){
     // Set project and set API key
@@ -2043,7 +2043,7 @@ def main(context)
 end
 ```
 ```deno
-import { Client, TablesDB, ID } from "https://deno.land/x/appwrite/mod.ts";
+import { Client, TablesDB, ID } from "npm:node-appwrite";
 
 export default function ({req, res, error}: any){
     const client = new Client()
