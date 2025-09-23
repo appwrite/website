@@ -70,7 +70,7 @@ jobs:
         runs-on: cloud-fra1-jumpbox
         steps:
             - name: Checkout the repo
-              uses: actions/checkout@v2
+              uses: actions/checkout@v4
             - name: Install Kubectl
               uses: azure/setup-kubectl@v4
             - name: Install Helm
@@ -83,7 +83,13 @@ jobs:
               run: doctl kubernetes cluster kubeconfig save --expiry-seconds 600 do-${{ matrix.region.full }}-assets-${{ matrix.region.full }}-stg
 
             - name: Create docker pull secret
-              run: kubectl -n website create secret docker-registry dockerhub --docker-server=https://index.docker.io/v1/ --docker-username=${{ vars.DOCKER_HUB_USERNAME }} --docker-password=${{ secrets.DOCKER_HUB_TOKEN }} --docker-email=appwrite --dry-run=client -o json | kubectl apply -f -
+              run: |
+                  kubectl -n website create secret docker-registry ghcr \
+                    --docker-server=ghcr.io \
+                    --docker-username=${{ github.actor }} \
+                    --docker-password=${{ secrets.GITHUB_TOKEN }} \
+                    --docker-email=ci@appwrite.io \
+                    --dry-run=client -o yaml | kubectl apply -f -
 
             - name: Create telemetry
               run: |
@@ -96,7 +102,7 @@ jobs:
               run: |
                   helm upgrade --install --wait --namespace website website deploy/helm \
                     --values deploy/helm/environments/staging/${{ matrix.region.full }}.values.yaml \
-                    --set imagePullSecret='dockerhub' \
+                    --set imagePullSecret='ghcr' \
                     --set image.tag=${{ env.TAG }} \
                     --set region=${{ matrix.region.full }} \
                     --set env.PUBLIC_APPWRITE_PROJECT_INIT_ID='${{ env.PUBLIC_APPWRITE_PROJECT_INIT_ID }}' \
