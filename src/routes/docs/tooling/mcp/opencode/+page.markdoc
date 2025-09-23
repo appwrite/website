@@ -35,7 +35,11 @@ Use the following configuration in your `opencode.json` file to use the Appwrite
   "mcp": {
     "appwrite": {
       "type": "local",
-      "command": ["uvx", "mcp-server-appwrite", "--sites"],
+      "command": [
+        "uvx",
+        "mcp-server-appwrite",
+        "--sites"
+      ],
       "enabled": true,
       "environment": {
         "APPWRITE_PROJECT_ID": "your-project-id",
