@@ -99,7 +99,7 @@ jobs:
               with:
                   token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
             - name: Save DigitalOcean kubeconfig with short-lived credentials
-              run: doctl kubernetes cluster kubeconfig save --expiry-seconds 600 do-${{ matrix.region.full }}-assets-${{ matrix.region.full }}-stg
+              run: doctl kubernetes cluster kubeconfig save --expiry-seconds 600 assets-${{ matrix.region.full }}-stg
 
             - name: Create docker pull secret
               run: |
