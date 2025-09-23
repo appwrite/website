@@ -4,7 +4,6 @@ nodeSelector:
 version: latest
 
 image:
-    full: ghcr.io/appwrite/website:latest
     pullPolicy: IfNotPresent
 
 domain: 'stage.k8s.appwrite.io'
