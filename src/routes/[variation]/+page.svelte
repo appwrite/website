@@ -12,10 +12,10 @@
     import { FooterNav, MainFooter } from '$lib/components';
     import LogoList from '$routes/(marketing)/(components)/logo-list.svelte';
     import CustomHero from '$lib/components/homepage-variations/custom-hero.svelte';
-    import { getVariationConfig } from '$lib/components/homepage-variations/variation-config';
+    import type { PageData } from './$types';
 
-    // configuration for the page
-    const config = getVariationConfig('all-in-one-cloud');
+    export let data: PageData;
+    const { config } = data;
 </script>
 
 <Head title={config.pageTitle} />
@@ -25,6 +25,8 @@
         title={config.title}
         subtitle={config.subtitle}
         showDashboard={config.showDashboard}
+        ctaLabel={config.ctaLabel}
+        ctaHref={config.ctaHref}
     />
 
     {#if config.showPlatforms}
