@@ -101,6 +101,10 @@ jobs:
             - name: Save DigitalOcean kubeconfig with short-lived credentials
               run: doctl kubernetes cluster kubeconfig save --expiry-seconds 600 assets-${{ matrix.region.full }}-stg
 
+            - name: Ensure namespaces exist
+              run: |
+                  kubectl create namespace website --dry-run=client -o yaml | kubectl apply -f -
+
             - name: Create docker pull secret
               run: |
                   kubectl -n website create secret docker-registry ghcr \
@@ -109,28 +113,6 @@ jobs:
                     --docker-password=${{ secrets.GITHUB_TOKEN }} \
                     --docker-email=ci@appwrite.io \
                     --dry-run=client -o yaml | kubectl apply -f -
-
-            - name: Create cloud config and docker registry secret
-              run: |
-                  # Copy region-specific env file to a temp config file
-                  echo "" >> .env
-                  echo "PUBLIC_APPWRITE_PROJECT_INIT_ID=${{ env.PUBLIC_APPWRITE_PROJECT_INIT_ID }}" >> .env
-                  echo "PUBLIC_APPWRITE_PROJECT_ID=${{ env.PUBLIC_APPWRITE_PROJECT_ID }}" >> .env
-                  echo "PUBLIC_APPWRITE_DB_MAIN_ID=${{ env.PUBLIC_APPWRITE_DB_MAIN_ID }}" >> .env
-                  echo "PUBLIC_APPWRITE_COL_THREADS_ID=${{ env.PUBLIC_APPWRITE_COL_THREADS_ID }}" >> .env
-                  echo "PUBLIC_APPWRITE_COL_MESSAGES_ID=${{ env.PUBLIC_APPWRITE_COL_MESSAGES_ID }}" >> .env
-                  echo "PUBLIC_APPWRITE_FN_TLDR_ID=${{ env.PUBLIC_APPWRITE_FN_TLDR_ID }}" >> .env
-                  echo "PUBLIC_APPWRITE_ENDPOINT=${{ env.PUBLIC_APPWRITE_ENDPOINT }}" >> .env
-                  echo "PUBLIC_APPWRITE_DASHBOARD=${{ env.PUBLIC_APPWRITE_DASHBOARD }}" >> .env
-                  echo "PUBLIC_GROWTH_ENDPOINT=${{ env.PUBLIC_GROWTH_ENDPOINT }}" >> .env
-                  echo "PUBLIC_POSTHOG_API_KEY=${{ env.PUBLIC_POSTHOG_API_KEY }}" >> .env
-                  echo "APPWRITE_DB_INIT_ID=${{ env.APPWRITE_DB_INIT_ID }}" >> .env
-                  echo "APPWRITE_COL_INIT_ID=${{ env.APPWRITE_COL_INIT_ID }}" >> .env
-                  echo "APPWRITE_API_KEY_INIT=${{ env.APPWRITE_API_KEY_INIT }}" >> .env
-                  echo "SENTRY_AUTH_TOKEN=${{ env.SENTRY_AUTH_TOKEN }}" >> .env
-
-                  # Create/update Kubernetes ConfigMap from env file in namespace 'website'
-                  kubectl -n website create configmap config --from-env-file=.env --dry-run=client -o json | kubectl apply -f -
 
             - name: Deploy
               run: |

@@ -3,26 +3,9 @@ nodeSelector:
 
 version: latest
 
-image:
-    pullPolicy: IfNotPresent
+imagePullPolicy: IfNotPresent
 
 domain: 'stage.k8s.appwrite.io'
 
 minReplicas: 1
 maxReplicas: 2
-
-env:
-    PUBLIC_APPWRITE_PROJECT_INIT_ID: ''
-    PUBLIC_APPWRITE_PROJECT_ID: ''
-    PUBLIC_APPWRITE_DB_MAIN_ID: ''
-    PUBLIC_APPWRITE_COL_THREADS_ID: ''
-    PUBLIC_APPWRITE_COL_MESSAGES_ID: ''
-    PUBLIC_APPWRITE_FN_TLDR_ID: ''
-    PUBLIC_APPWRITE_ENDPOINT: ''
-    PUBLIC_APPWRITE_DASHBOARD: ''
-    PUBLIC_GROWTH_ENDPOINT: ''
-    PUBLIC_POSTHOG_API_KEY: ''
-    APPWRITE_DB_INIT_ID: ''
-    APPWRITE_COL_INIT_ID: ''
-    APPWRITE_API_KEY_INIT: ''
-    SENTRY_AUTH_TOKEN: ''
