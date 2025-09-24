@@ -36,7 +36,10 @@
             </p>
 
             <div class="flex flex-col items-center gap-2 md:flex-row">
-                <a href="https://apwr.dev/HflyA0N" class="web-button !w-full md:!w-fit">
+                <a
+                    href="https://cloud.appwrite.io/console/apply-credit?code=sites300"
+                    class="web-button !w-full md:!w-fit"
+                >
                     Get started with $300 credits
                 </a>
             </div>
