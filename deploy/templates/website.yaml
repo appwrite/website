@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: 'website'
+  name: website
 spec:
   replicas: 2
   selector:
@@ -14,24 +14,34 @@ spec:
     spec:
       nodeSelector:
         workload: assets
-      {{- with .Values.imagePullSecret }}
+{{- with .Values.imagePullSecret }}
       imagePullSecrets:
         - name: {{ . }}
-      {{- end }}
+{{- end }}
       containers:
         - name: server
           image: "ghcr.io/appwrite/website:{{ .Values.version }}"
           imagePullPolicy: {{ .Values.imagePullPolicy }}
+          resources:
+            requests:
+              cpu: 800m
+              memory: 800Mi
+            limits:
+              cpu: 1000m
+              memory: 1024Mi
           envFrom:
             - configMapRef:
                 name: config
+{{- if .Values.env }}
           env:
-          {{- range $key, $val := .Values.env }}
+{{- range $key, $val := .Values.env }}
             - name: {{ $key }}
               value: "{{ $val }}"
-          {{- end }}
+{{- end }}
+{{- end }}
           ports:
             - containerPort: 3000
+
 
 ---
 

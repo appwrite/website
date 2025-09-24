@@ -116,7 +116,7 @@ jobs:
 
             - name: Deploy
               run: |
-                  helm upgrade --install --wait --namespace website website deploy/ \
+                  helm upgrade --install --wait --atomic --timeout 10m --history-max 5 --namespace website website deploy/ \
                     --values deploy/environments/staging/${{ matrix.region.full }}.values.yaml \
                     --set imagePullSecret='ghcr' \
                     --set version=${{ env.TAG }}
