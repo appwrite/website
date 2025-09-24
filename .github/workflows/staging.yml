@@ -80,3 +80,43 @@ jobs:
                       echo ${{ secrets.GH_REGISTRY_TOKEN }} | docker login ghcr.io --username ${{ env.REGISTRY_USERNAME }} --password-stdin
                       docker-compose -f ${{ env.STACK_FILE }} config
                       env $(cat .env | xargs) docker stack deploy --prune --resolve-image always --with-registry-auth -c ${{ env.STACK_FILE }} ${{ env.REPOSITORY }}
+
+    deploy_kubernetes:
+        strategy:
+            matrix:
+                region: [{ full: fra1, short: fra }]
+        needs: build
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout the repo
+              uses: actions/checkout@v4
+            - name: Install Kubectl
+              uses: azure/setup-kubectl@v4
+            - name: Install Helm
+              uses: azure/setup-helm@v4
+            - name: Install doctl
+              uses: digitalocean/action-doctl@v2
+              with:
+                  token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
+            - name: Save DigitalOcean kubeconfig with short-lived credentials
+              run: doctl kubernetes cluster kubeconfig save --expiry-seconds 600 assets-${{ matrix.region.full }}-stg
+
+            - name: Ensure namespaces exist
+              run: |
+                  kubectl create namespace website --dry-run=client -o yaml | kubectl apply -f -
+
+            - name: Create docker pull secret
+              run: |
+                  kubectl -n website create secret docker-registry ghcr \
+                    --docker-server=ghcr.io \
+                    --docker-username=${{ github.actor }} \
+                    --docker-password=${{ secrets.GITHUB_TOKEN }} \
+                    --docker-email=ci@appwrite.io \
+                    --dry-run=client -o yaml | kubectl apply -f -
+
+            - name: Deploy
+              run: |
+                  helm upgrade --install --wait --atomic --timeout 10m --history-max 5 --namespace website website deploy/ \
+                    --values deploy/environments/staging/${{ matrix.region.full }}.values.yaml \
+                    --set imagePullSecret='ghcr' \
+                    --set version=${{ env.TAG }}

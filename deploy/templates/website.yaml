@@ -1,0 +1,103 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: website
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: server
+  template:
+    metadata:
+      labels:
+        app: server
+    spec:
+      nodeSelector:
+        workload: assets
+{{- with .Values.imagePullSecret }}
+      imagePullSecrets:
+        - name: {{ . }}
+{{- end }}
+      containers:
+        - name: server
+          image: "ghcr.io/appwrite/website:{{ .Values.version }}"
+          imagePullPolicy: {{ .Values.imagePullPolicy }}
+          resources:
+            requests:
+              cpu: 800m
+              memory: 800Mi
+            limits:
+              cpu: 1000m
+              memory: 1024Mi
+          envFrom:
+            - configMapRef:
+                name: config
+{{- if .Values.env }}
+          env:
+{{- range $key, $val := .Values.env }}
+            - name: {{ $key }}
+              value: "{{ $val }}"
+{{- end }}
+{{- end }}
+          ports:
+            - containerPort: 3000
+
+
+---
+
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: 'website'
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: 'website'
+  minReplicas: {{ .Values.minReplicas }}
+  maxReplicas: {{ .Values.maxReplicas }}
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 70
+
+---
+
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: website
+  namespace: website
+spec:
+  parentRefs:
+    - name: traefik
+      # If traefik gateway is in a different namespace, specify namespace here:
+      namespace: traefik
+  hostnames:
+    - {{ .Values.domain }}
+  rules:
+    - matches:
+        - path:
+            type: PathPrefix
+            value: /
+      backendRefs:
+        - name: website
+          port: 80
+
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: 'website'
+spec:
+  selector:
+    app: server
+  ports:
+    - name: http
+      port: 80
+      targetPort: 3000
