@@ -11,6 +11,42 @@ Appwrite Functions can be executed in several ways.
 Executions can be invoked through the Appwrite SDK and visiting its REST endpoint. Functions can also be triggered by events and scheduled executions.
 Here are all the different ways to consume your Appwrite Functions.
 
+# Execution modes {% #execution-modes %}
+
+Appwrite Functions support two execution modes: **synchronous** and **asynchronous**. Understanding the difference between these modes is important for building efficient applications.
+
+## Synchronous executions {% #synchronous-executions %}
+
+Synchronous executions are those where Appwrite makes the request to the function runtime synchronously and waits for the response. The client making the request will wait until the function completes and receives the response directly.
+
+Synchronous executions are created via:
+- The [Create execution](/docs/references/cloud/client-web/functions#createExecution) endpoint where the `async` parameter is `false`
+- Requests to custom or auto-generated [domains](/docs/products/functions/execute#domains)
+
+Synchronous executions:
+- Return response bodies and headers directly to the client
+- Have a **30-second timeout limit** to prevent long-running requests from blocking Appwrite workers
+- Are ideal for real-time operations where you need immediate response data
+- Work best for lightweight operations that complete quickly
+
+## Asynchronous executions {% #asynchronous-executions %}
+
+Asynchronous executions are added to a queue and processed by the function worker as background jobs.
+
+Asynchronous executions are created via:
+- The [Create execution](/docs/references/cloud/client-web/functions#createExecution) endpoint where the `async` parameter is `true`
+- Event triggers (when functions are triggered by [platform events](/docs/advanced/platform/events))
+- Scheduled executions (cron jobs or delayed executions)
+
+Asynchronous executions:
+- Have no timeout limitations beyond your function's configured timeout
+- Do **not store** response bodies and headers and cannot be retrieved later
+- Are ideal for long-running tasks, background processing, and event-driven workflows
+
+{% info title="Response body storage" %}
+Response bodies and headers are not stored anywhere, so they are only ever returned via synchronous executions.
+{% /info %}
+
 # Domains {% #domains %}
 You can execute a function through HTTP requests, using a browser or by sending an HTTP request.
 1. In the Appwrite Console's sidebar, click **Functions**.
