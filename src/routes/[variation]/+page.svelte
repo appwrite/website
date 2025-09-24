@@ -20,7 +20,7 @@
 
 <Head title={config.pageTitle} />
 
-<Main hideNavigation={true}>
+<Main>
     <CustomHero
         title={config.title}
         subtitle={config.subtitle}
