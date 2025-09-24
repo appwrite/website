@@ -5,7 +5,7 @@ description: Harness the power of events in Appwrite. Explore event-driven archi
 ---
 
 Appwrite provides a variety of events that allows your application to react to changes as they happen.
-A event will fire when a change occurs in your Appwrite project, like when a new user registers or a new file is uploaded to Appwrite.
+An event will fire when a change occurs in your Appwrite project, like when a new user registers or a new file is uploaded to Appwrite.
 You can subscribe to these events with Appwrite [Functions](/docs/products/functions), [Realtime](/docs/apis/realtime), or [Webhooks](/docs/advanced/platform/webhooks).
 
 You can subscribe to events for specific resources using their ID or subscribe to changes of all resources of the same type by using a wildcard character * instead of an ID.
