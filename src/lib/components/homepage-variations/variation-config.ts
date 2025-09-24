@@ -17,6 +17,13 @@ export interface HomepageVariationConfig {
     showPricing?: boolean;
 }
 
+export type VariationKey =
+    | 'all-in-one-cloud'
+    | 'supabase-alternative'
+    | 'firebase-alternative'
+    | 'all-in-one-development'
+    | 'all-in-one-cloud-offer';
+
 const baseConfig: Partial<HomepageVariationConfig> = {
     showDashboard: true,
     showPlatforms: true,
@@ -31,7 +38,7 @@ const baseConfig: Partial<HomepageVariationConfig> = {
 };
 
 // Predefined configurations for common variations
-export const variationConfigs: Record<string, HomepageVariationConfig> = {
+export const variationConfigs: Record<VariationKey, HomepageVariationConfig> = {
     'all-in-one-cloud': {
         title: 'All-in-One Cloud Platform',
         subtitle:
@@ -76,6 +83,6 @@ export const variationConfigs: Record<string, HomepageVariationConfig> = {
     }
 };
 
-export function getVariationConfig(name: string): HomepageVariationConfig {
+export function getVariationConfig(name: VariationKey): HomepageVariationConfig {
     return variationConfigs[name];
 }
