@@ -110,8 +110,8 @@ jobs:
               run: |
                   kubectl -n website create secret docker-registry ghcr \
                     --docker-server=ghcr.io \
-                    --docker-username=${{ github.actor }} \
-                    --docker-password=${{ secrets.GITHUB_TOKEN }} \
+                    --docker-username=${{ secrets.GHCR_USERNAME }} \
+                    --docker-password=${{ secrets.GHCR_TOKEN }} \
                     --docker-email=ci@appwrite.io \
                     --dry-run=client -o yaml | kubectl apply -f -
 
