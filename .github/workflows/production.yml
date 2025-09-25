@@ -3,6 +3,7 @@ name: Production deployment
 on:
     release:
         types: [published]
+    workflow_dispatch:
 
 env:
     TAG: ${{ github.event.release.tag_name }}
@@ -51,6 +52,7 @@ jobs:
     deploy:
         needs: build
         runs-on: ubuntu-latest
+        if: ${{ github.event_name != 'workflow_dispatch' }}
         steps:
             - name: Execute SSH commands
               uses: appleboy/ssh-action@master
