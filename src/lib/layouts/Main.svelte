@@ -232,7 +232,7 @@
                         width="130"
                     />
                 </a>
-                {#if !hideNavigation && !isOfferPage}
+                {#if !hideNavigation}
                     <MainNav initialized={$initialized} links={navLinks} />
                 {/if}
             </div>
