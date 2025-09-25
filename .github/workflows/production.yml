@@ -6,7 +6,7 @@ on:
     workflow_dispatch:
 
 env:
-    TAG: ${{ github.event.release.tag_name }}
+    TAG: ${{ github.event.release.tag_name || github.sha }}
     STACK_FILE: docker/production.yml
     REPOSITORY: website
     REGISTRY_USERNAME: christyjacob4
@@ -120,4 +120,4 @@ jobs:
                   helm upgrade --install --wait --atomic --timeout 10m --history-max 5 --namespace website website deploy/ \
                     --values deploy/environments/production/${{ matrix.region.full }}.values.yaml \
                     --set imagePullSecret='ghcr' \
-                    --set version=${{ github.sha }}
+                    --set version=${{ env.TAG }}
