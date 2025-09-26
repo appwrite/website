@@ -41,7 +41,7 @@ Static hosting has become the default for modern web projects. Instead of managi
 
 | Name | Free plan | Deployments | Custom domains | Open source | Best feature |
 | --- | --- | --- | --- | --- | --- |
-| **Appwrite Sites** | Yes – generous free tier + option to self-host | Git-based + CLI | Yes (free with SSL) | Yes | **All-in-one platform** with hosting + backend tool |
+| **Appwrite Sites** | Yes – generous free tier + option to self-host | Git-based + CLI | Yes (free with SSL) | Yes | **All-in-one platform** with hosting + backend tools |
 | **Vercel** | Yes – hobby plan | Git push, instant edge deploys | Yes (free with SSL) | No | Seamless **Next.js integration** + global edge network |
 | **Netlify** | Yes – starter plan | Git-based, auto CI/CD | Yes (free with SSL) | No | JAMstack pioneer with broad framework support (**Netlify static site**) |
 | **Azure Static Web Apps** | Yes – limited free tier | GitHub Actions + Azure DevOps | Yes (included) | No | Deep **Microsoft Azure integration** |
