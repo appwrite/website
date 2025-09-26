@@ -25,6 +25,8 @@ And since not all BaaS platforms are created equal, let’s compare a few of the
 | Open-source | Yes | No | Yes |
 | Self-hosting | Yes | No | Yes |
 | Authentication | Yes | Yes | Yes |
+| Messaging | Yes | Yes | No |
+| Hosting | Yes | Yes | No |
 | Database Support | SQL + NoSQL APIs | Firestore (NoSQL) | Postgres (SQL) |
 | Real-time APIs | Yes | Yes | Yes |
 | Pricing | Free self-host + Cloud tiers | Free + Paid (usage-based) | Free + Paid |
