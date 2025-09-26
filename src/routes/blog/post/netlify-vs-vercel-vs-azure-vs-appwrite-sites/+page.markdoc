@@ -48,6 +48,8 @@ Static hosting has become the default for modern web projects. Instead of managi
 
 # Appwrite Sites
 
+![Appwrite Sites](/images/blog/netlify-vs-vercel-vs-azure-vs-appwrite-sites/sites.png)
+
 [Appwrite Sites](/products/sites) is an **open source alternative to Vercel and Netlify** that goes beyond static hosting. Instead of just pushing your frontend live, it bundles in backend essentials like [authentication](/products/auth), [databases](/docs/products/databases), messaging, and serverless functions. That makes it a good choice for developers who want to move fast without juggling multiple providers.
 
 ## Key features of Appwrite Sites
@@ -75,6 +77,8 @@ Static hosting has become the default for modern web projects. Instead of managi
 
 # Vercel
 
+![Vercel](/images/blog/netlify-vs-vercel-vs-azure-vs-appwrite-sites/vercel.png)
+
 [Vercel](https://vercel.com/home) has become the go-to choice for teams building with **Next.js**. It offers a polished developer experience with instant Git-based deployments and a global edge network that makes both static and server-rendered apps incredibly fast. While it shines for frontend developers, costs can rise quickly as your app scales.
 
 ## Key features of Vercel
@@ -99,6 +103,8 @@ Static hosting has become the default for modern web projects. Instead of managi
 | Sleek developer UX | Less appealing if not using React/Next.js |
 
 # Netlify
+
+![Netlify](/images/blog/netlify-vs-vercel-vs-azure-vs-appwrite-sites/netlify.png)
 
 [Netlify](https://www.netlify.com/) pioneered the **JAMstack** approach, making it easy to launch static sites with CI/CD built in. It supports a wide range of frameworks beyond React and has a rich plugin ecosystem. It remains one of the easiest ways to ship a **Netlify static site**, though teams often look for **Netlify alternatives** as projects scale due to pricing
 
@@ -125,6 +131,8 @@ Static hosting has become the default for modern web projects. Instead of managi
 
 # Azure Static Web Apps
 
+![Azure](/images/blog/netlify-vs-vercel-vs-azure-vs-appwrite-sites/azure.png)
+
 [Azure Static Web Apps](https://azure.microsoft.com/en-us/products/app-service/static) is Microsoft’s take on static hosting, tightly integrated with GitHub Actions and Azure DevOps. It’s built with enterprises in mind, offering compliance, scalability, and seamless access to the rest of the Azure ecosystem. For smaller teams, though, it may feel complex compared to Netlify, Vercel or Appwrite Sites.
 
 ## Key features of Azure Static Web Apps
@@ -140,7 +148,7 @@ Static hosting has become the default for modern web projects. Instead of managi
 - Paid plans scale based on storage, bandwidth, and usage
 - Developers often search for **Azure static web app pricing** or **Azure static web app costs** due to the complexity
 
-## Pros & Cons of Azure Static Web Apps
+## Pros and cons of Azure Static Web Apps
 
 | Pros | Cons |
 | --- | --- |
