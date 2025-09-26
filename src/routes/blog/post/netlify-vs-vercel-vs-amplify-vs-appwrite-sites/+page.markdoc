@@ -33,7 +33,7 @@ So the real question isn’t just *“where do I host my app?”,* it’s *“wh
 
 ## Pricing of Vercel
 
-- **Free: Hobby projects, personal sites (limited bandwidth & function executions).
+- **Free**: Hobby projects, personal sites (limited bandwidth & function executions).
 - **Pro**: ~$20/user/month, adds better bandwidth, analytics, and team features.
 - **Enterprise**: Custom pricing, advanced security, scaling, and SLAs.
 
