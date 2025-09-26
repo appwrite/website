@@ -31,6 +31,8 @@ So the real question isn’t just *“where do I host my app?”,* it’s *“wh
 
 # Vercel
 
+![Vercel](/images/blog/netlify-vs-vercel-vs-azure-vs-appwrite-sites/vercel.png)
+
 ## Pricing of Vercel
 
 - **Free**: Hobby projects, personal sites (limited bandwidth & function executions).
@@ -55,20 +57,22 @@ So the real question isn’t just *“where do I host my app?”,* it’s *“wh
 
 # Netlify
 
+![Netlify](/images/blog/netlify-vs-vercel-vs-azure-vs-appwrite-sites/netlify.png)
+
 ## Pricing of Netlify
 
 - **Free**: Personal projects with basic builds and bandwidth.
 - **Pro**: ~$19/user/month, includes more team features and higher limits.
 - **Business/Enterprise**: Custom pricing with SLAs and advanced integrations.
 
-### Key features of Netlify
+## Key features of Netlify
 
 - Git-based deployments with automatic builds.
 - Strong Jamstack focus (static site generation).
 - Netlify Functions for serverless logic.
 - Plugin marketplace for integrations.
 
-### Pros and cons of Netlify
+## Pros and cons of Netlify
 
 | Pros | Cons |
 | --- | --- |
@@ -101,6 +105,8 @@ So the real question isn’t just *“where do I host my app?”,* it’s *“wh
 | Good fit for AWS-heavy teams | Strong AWS lock-in |
 
 # Appwrite Sites
+
+![Appwrite Sites](/images/blog/netlify-vs-vercel-vs-azure-vs-appwrite-sites/sites.png)
 
 ## Pricing of Appwrite Sites
 
