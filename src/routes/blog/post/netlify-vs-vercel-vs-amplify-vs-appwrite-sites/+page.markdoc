@@ -20,9 +20,9 @@ So the real question isn’t just *“where do I host my app?”,* it’s *“wh
 - **Vercel**: Think of Vercel as the **framework-native host**. It’s tightly coupled with Next.js, and its entire model revolves around serving modern frontend frameworks at the edge with minimal friction. Backend logic exists, but always as small serverless functions or external APIs.    
 - **Netlify**: The **Jamstack generalist**. Netlify built its reputation on static-first workflows: push code, build, deploy, done. It doesn’t lean into any one framework, instead, it’s about a consistent, git-driven pipeline that works for React, Vue, Svelte, or plain HTML.
 - **AWS Amplify**: Amplify is built to connect your frontend with AWS services. It gives you hosting, but the main focus is making it easy to add things like authentication (Cognito), databases (DynamoDB), file storage (S3), and serverless functions (Lambda). Hosting is just one part; the bigger goal is tying your app into AWS’s cloud tools. 
-- **Appwrite Sites**: The **open-source all-in-one development platform**. Instead of separating hosting from backend, [Appwrite Sites](/products/sites) is an extension of Appwrite’s backend platform: you host the frontend and connect directly to the built-in [auth](/docs/products/auth), [Databases](/docs/products/databases), and [Functions](/docs/products/functions). It’s less about glueing services together and more about having a **cohesive stack under one roof**.
-    
-| Platform | Best fit for | Approach | Lock-In | Open source |
+- **Appwrite Sites**: The hosting platform built on top of Appwrite. It’s designed for deploying static sites and frontends that connect directly to Appwrite’s backend services like [Auth](/docs/products/auth), [Databases](/docs/products/databases), and [Functions](/docs/products/functions). Unlike Vercel or Netlify, which are hosting-first providers, Appwrite Sites is an extension of the broader Appwrite open-source backend platform, giving developers hosting plus a backend in one cohesive stack.
+
+| Platform | Best fit for | Approach | Lock-in | Open source |
 | --- | --- | --- | --- | --- |
 | **Vercel** | Next.js and modern frontend apps | Framework-optimized, frontend-first | Medium (proprietary infra) | No |
 | **Netlify** | Static sites & Jamstack projects | Git-based deploys, static-first | Medium (plugins, infra) | No |
@@ -50,7 +50,7 @@ So the real question isn’t just *“where do I host my app?”,* it’s *“wh
 
 | Pros | Cons |
 | --- | --- |
-| Best-in-class support for Next.js | Expensive as usage scales |
+| Best-in-class support for Next.js | Pricing grows quickly because it’s per-user and per-resource based |
 | Great developer experience | Limited backend, mostly serverless only |
 | Strong ecosystem and integrations | Proprietary platform, no self-host option |
 
@@ -76,7 +76,7 @@ So the real question isn’t just *“where do I host my app?”,* it’s *“wh
 
 | Pros | Cons |
 | --- | --- |
-| Very easy to use and set up | Not as optimized for modern frameworks like Next.js |
+| Very easy to use and set up | Advanced workflows often depend on community plugins, which can be hit-or-miss in quality and long-term maintenance |
 | Great for static and Jamstack apps | Limited backend services |
 | Plugin ecosystem adds flexibility | Vendor lock-in, no open-source option |
 
@@ -102,7 +102,7 @@ So the real question isn’t just *“where do I host my app?”,* it’s *“wh
 | Pros | Cons |
 | --- | --- |
 | Tight integration with AWS stack | Steeper learning curve than others |
-| Scales seamlessly with AWS infra | Can get expensive quickly |
+| Scales seamlessly with AWS infra | Can get expensive quickly as costs scale across multiple AWS services (hosting, storage, functions, APIs). |
 | Supports GraphQL and REST APIs | Heavier setup, less beginner-friendly |
 | Good fit for AWS-heavy teams | Strong AWS lock-in |
 
