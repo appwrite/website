@@ -7,6 +7,16 @@
     import { cn } from '$lib/utils/cn';
     import Dashboard from './dashboard.svelte';
     import HeroBanner from './hero-banner.svelte';
+
+    type Props = {
+        title?: string;
+        subtitle?: string;
+    };
+
+    const {
+        title = 'Build like a team of hundreds',
+        subtitle = 'Appwrite is an open-source, all-in-one development platform. Use built-in backend infrastructure and web hosting, all from a single place.'
+    }: Props = $props();
 </script>
 
 <div class="relative flex max-w-screen items-center overflow-hidden py-12 md:py-0 lg:min-h-[700px]">
@@ -28,13 +38,12 @@
 
             <GradientText class="animate-fade-in">
                 <h1 class="font-aeonik-pro text-headline text-pretty">
-                    Build like a team of hundreds<span class="text-accent">_</span>
+                    {title}<span class="text-accent">_</span>
                 </h1>
             </GradientText>
 
             <p class="text-description text-secondary font-medium">
-                Appwrite is an open-source, all-in-one development platform. Use built-in backend
-                infrastructure and web hosting, all from a single place.
+                {subtitle}
             </p>
 
             <div class="mt-4 flex flex-col gap-2 lg:flex-row">
