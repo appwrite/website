@@ -16,6 +16,7 @@ export default ts.config(
     ...svelte.configs.recommended,
     prettier,
     ...svelte.configs.prettier,
+    { ignores: ['/deploy/**'] },
     {
         languageOptions: {
             globals: { ...globals.browser, ...globals.node }
@@ -37,7 +38,7 @@ export default ts.config(
     },
     {
         files: ['**/*.svelte', '**/*.svelte.ts', '**/*.svelte.js'],
-        ignores: ['eslint.config.js', 'svelte.config.js'],
+        ignores: ['eslint.config.js', 'svelte.config.js', '/deploy/**'],
         languageOptions: {
             parserOptions: {
                 // Only uncomment this if you want it to take 3 minutes https://github.com/sveltejs/eslint-plugin-svelte/issues/1084

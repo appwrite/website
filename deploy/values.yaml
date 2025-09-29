@@ -1,0 +1,11 @@
+nodeSelector:
+    workload: assets
+
+version: latest
+
+imagePullPolicy: IfNotPresent
+
+domain: 'stage.k8s.appwrite.io'
+
+minReplicas: 1
+maxReplicas: 2
