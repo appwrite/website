@@ -120,4 +120,4 @@ spec:
   maxUnavailable: {{ .Values.maxUnavailable }}
   selector:
     matchLabels:
-      app: website
+      app: server
