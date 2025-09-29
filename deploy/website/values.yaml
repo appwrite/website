@@ -9,3 +9,4 @@ domain: 'stage.k8s.appwrite.io'
 
 minReplicas: 1
 maxReplicas: 2
+maxUnavailable: 0
