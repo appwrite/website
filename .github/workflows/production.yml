@@ -117,7 +117,7 @@ jobs:
 
             - name: Deploy
               run: |
-                  helm upgrade --install --wait --atomic --timeout 10m --history-max 5 --namespace website website deploy/ \
-                    --values deploy/environments/production/${{ matrix.region.full }}.values.yaml \
+                  helm upgrade --install --wait --atomic --timeout 10m --history-max 5 --namespace website website deploy/website/ \
+                    --values deploy/website/environments/production/${{ matrix.region.full }}.values.yaml \
                     --set imagePullSecret='ghcr' \
                     --set version=${{ env.TAG }}
