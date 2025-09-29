@@ -16,4 +16,4 @@ livenessProbe:
   initialDelaySeconds: 30
 
 readinessProbe:
-  initialDelaySeconds: 30
+  initialDelaySeconds: 10
