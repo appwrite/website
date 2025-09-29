@@ -9,3 +9,11 @@ domain: 'stage.k8s.appwrite.io'
 
 minReplicas: 1
 maxReplicas: 2
+maxUnavailable: 1
+
+
+livenessProbe:
+  initialDelaySeconds: 30
+
+readinessProbe:
+  initialDelaySeconds: 30
