@@ -1,6 +1,3 @@
-nodeSelector:
-    workload: assets
-
 domain: k8s.appwrite.io
 
 minReplicas: 2

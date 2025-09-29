@@ -1,19 +1,8 @@
 nodeSelector:
     workload: assets
 
-version: latest
-
 imagePullPolicy: IfNotPresent
 
-domain: 'stage.k8s.appwrite.io'
-
-minReplicas: 1
-maxReplicas: 2
+minReplicas: 2
+maxReplicas: 3
 maxUnavailable: 1
-
-
-livenessProbe:
-  initialDelaySeconds: 30
-
-readinessProbe:
-  initialDelaySeconds: 10

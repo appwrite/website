@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: website
 spec:
-  replicas: 2
+  replicas: {{ .Values.minReplicas | int }}
   strategy:
       type: RollingUpdate
       rollingUpdate:
@@ -11,36 +11,37 @@ spec:
         maxUnavailable: 1
   selector:
     matchLabels:
-      app: server
+      app: website
   template:
     metadata:
       labels:
-        app: server
+        app: website
     spec:
+      {{- with .Values.nodeSelector }}
       nodeSelector:
-        workload: assets
-{{- with .Values.imagePullSecret }}
+        {{ toYaml . }}
+      {{- end }}
+      {{- with .Values.imagePullSecret }}
       imagePullSecrets:
         - name: {{ . }}
-{{- end }}
+      {{- end }}
       containers:
-        - name: server
+        - name: website
           image: "ghcr.io/appwrite/website:{{ .Values.version }}"
           imagePullPolicy: {{ .Values.imagePullPolicy }}
           resources:
             requests:
-              cpu: 800m
-              memory: 800Mi
+              cpu: 200m
+              memory: 512Mi
             limits:
-              cpu: 1000m
-              memory: 1024Mi
-{{- if .Values.env }}
+              memory: 512Mi
+        {{- if .Values.env }}
           env:
-{{- range $key, $val := .Values.env }}
+            {{- range $key, $val := .Values.env }}
             - name: {{ $key }}
               value: "{{ $val }}"
-{{- end }}
-{{- end }}
+            {{- end }}
+        {{- end }}
           ports:
             - containerPort: 3000
           livenessProbe:
@@ -52,7 +53,6 @@ spec:
             timeoutSeconds: 3
             failureThreshold: 5
             successThreshold: 1
-            initialDelaySeconds: {{ .Values.livenessProbe.initialDelaySeconds | default 10 }}
           readinessProbe:
             httpGet:
               path: /
@@ -62,7 +62,6 @@ spec:
             timeoutSeconds: 3
             failureThreshold: 5
             successThreshold: 5
-            initialDelaySeconds: {{ .Values.readinessProbe.initialDelaySeconds | default 10 }}
 
 ---
 
@@ -80,34 +79,20 @@ spec:
   metrics:
   - type: Resource
     resource:
-      name: memory
+      name: cpu
       target:
         type: Utilization
-        averageUtilization: 70
-
----
-
-apiVersion: gateway.networking.k8s.io/v1
-kind: HTTPRoute
-metadata:
-  name: website
-spec:
-  parentRefs:
-    - name: website
-  rules:
-    - backendRefs:
-        - name: website
-          port: 80
+        averageUtilization: 80
 
 ---
 
 apiVersion: v1
 kind: Service
 metadata:
-  name: 'website'
+  name: website
 spec:
   selector:
-    app: server
+    app: website
   ports:
     - name: http
       port: 80
@@ -119,7 +104,7 @@ kind: PodDisruptionBudget
 metadata:
   name: website
 spec:
-  maxUnavailable: {{ .Values.maxUnavailable }}
+  maxUnavailable: {{ .Values.maxUnavailable | int }}
   selector:
     matchLabels:
-      app: server
+      app: website
