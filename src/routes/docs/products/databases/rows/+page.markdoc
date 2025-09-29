@@ -721,3 +721,38 @@ Read, update, and delete permissions can be granted at both the table and row le
 Users only need to be granted access at either the table or row level to access rows.
 
 [Learn about configuring permissions](/docs/products/databases/permissions).
+
+# Use transactions {% #use-transactions %}
+
+All row operations support `transactionId`. When provided, operations are staged to an internal log and not applied until the transaction is committed. Learn more in the [Transactions guide](/docs/products/databases/transactions).
+
+{% multicode %}
+```client-web
+// Create row inside a transaction
+await tablesDB.createRow({
+    databaseId: '<DATABASE_ID>',
+    tableId: '<TABLE_ID>',
+    rowId: '<ROW_ID>',
+    data: { title: 'Draft' },
+    transactionId: '<TRANSACTION_ID>'
+});
+
+// Update row inside a transaction
+await tablesDB.updateRow({
+    databaseId: '<DATABASE_ID>',
+    tableId: '<TABLE_ID>',
+    rowId: '<ROW_ID>',
+    data: { title: 'Published' },
+    transactionId: '<TRANSACTION_ID>'
+});
+```
+```server-nodejs
+// Delete row inside a transaction
+await tablesDB.deleteRow({
+    databaseId: '<DATABASE_ID>',
+    tableId: '<TABLE_ID>',
+    rowId: '<ROW_ID>',
+    transactionId: '<TRANSACTION_ID>'
+});
+```
+{% /multicode %}

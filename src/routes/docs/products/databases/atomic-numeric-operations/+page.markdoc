@@ -572,6 +572,33 @@ update_result = tablesDB.update_row(
 ```
 {% /multicode %}
 
+# Use transactions {% #use-transactions %}
+
+Atomic numeric operations accept `transactionId`. When provided, increments/decrements are staged and applied on commit.
+
+{% multicode %}
+```client-web
+await tablesDB.incrementRowColumn({
+  databaseId: '<DATABASE_ID>',
+  tableId: '<TABLE_ID>',
+  rowId: '<ROW_ID>',
+  column: 'likes',
+  value: 1,
+  transactionId: '<TRANSACTION_ID>'
+});
+```
+```server-nodejs
+await tablesDB.decrementRowColumn({
+  databaseId: '<DATABASE_ID>',
+  tableId: '<TABLE_ID>',
+  rowId: '<ROW_ID>',
+  column: 'credits',
+  value: 5,
+  transactionId: '<TRANSACTION_ID>'
+});
+```
+{% /multicode %}
+
 ## Explore related features
 
 - [Bulk operations](/docs/products/databases/bulk-operations) - Update multiple rows at once

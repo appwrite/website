@@ -1,0 +1,19 @@
+---
+layout: changelog
+title: "Announcing Transactions for Databases: Stage, commit, roll back"
+date: 2025-09-29
+cover: /images/changelog/2025-09-29.png
+---
+
+We’ve introduced transactions for Appwrite Databases. You can now stage multiple operations across databases and tables, then commit them atomically or roll them back, with ordering guarantees and conflict detection.
+
+## What's new
+
+- Create a transaction with `createTransaction`, then pass `transactionId` to row operations (create, update, upsert, delete), bulk operations, and atomic numeric operations.
+- Use `createOperations` to stage many actions across multiple databases/tables in a single request.
+- Finalize with `updateTransaction` using `commit = true` or `rollback = true`.
+- On commit, Appwrite replays staged logs in order inside a real DB transaction. Conflicts are detected if any affected rows changed outside the transaction.
+
+{% arrow_link href="/docs/products/databases/transactions" %}
+Read the Transactions guide
+{% /arrow_link %}

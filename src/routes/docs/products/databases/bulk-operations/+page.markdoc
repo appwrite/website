@@ -263,3 +263,25 @@ If no queries are provided, all rows in the table will be deleted.
 [Learn more about queries](/docs/products/databases/queries).
 
 {% /info %}
+
+# Use transactions {% #use-transactions %}
+
+All bulk operations accept `transactionId`. When provided, Appwrite stages the bulk request and applies it on commit. See [Transactions](/docs/products/databases/transactions).
+
+{% multicode %}
+```server-nodejs
+await tablesDB.createRows('<DATABASE_ID>', '<TABLE_ID>', [
+  { $id: sdk.ID.unique(), data: { name: 'One' } },
+  { $id: sdk.ID.unique(), data: { name: 'Two' } }
+], { transactionId: '<TRANSACTION_ID>' });
+```
+```server-python
+tablesDB.update_rows(
+  database_id = '<DATABASE_ID>',
+  table_id = '<TABLE_ID>',
+  data = { 'status': 'published' },
+  queries = [ Query.equal('status', 'draft') ],
+  transaction_id = '<TRANSACTION_ID>'
+)
+```
+{% /multicode %}

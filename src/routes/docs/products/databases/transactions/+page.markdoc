@@ -1,0 +1,304 @@
+---
+layout: article
+title: Transactions
+description: Stage multiple database operations and commit them atomically. Group changes across databases and tables with ordering, isolation, and conflict detection.
+---
+
+Transactions let you stage multiple database operations and apply them together, atomically. Use transactions to keep related changes consistent, even when they span multiple databases and tables.
+
+# How transactions work {% #how-transactions-work %}
+
+1. Create a transaction with `createTransaction`.
+2. Stage operations by passing `transactionId` to supported row, bulk, or atomic numeric methods. To stage many at once, use `createOperations`.
+3. Finish with `updateTransaction` to commit or roll back.
+
+On commit, Appwrite replays all staged logs in order inside a real database transaction. Staged operations see earlier staged changes (read your own writes). If any affected row changed outside your transaction, the commit fails with a conflict.
+
+{% info title="Scope and limitations" %}
+You can stage operations across any database and table within the same transaction. Schema operations (for example, adding or removing columns) are not included in transactions.
+{% /info %}
+
+# Create a transaction {% #create-a-transaction %}
+
+Use `createTransaction` to begin. The response includes `transaction.$id` which you’ll pass to subsequent operations.
+
+{% multicode %}
+```client-web
+import { Client, TablesDB } from 'appwrite';
+
+const client = new Client()
+  .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+  .setProject('<PROJECT_ID>');
+
+const tablesDB = new TablesDB(client);
+
+const tx = await tablesDB.createTransaction();
+// tx.$id is your transactionId
+```
+```client-flutter
+import 'package:appwrite/appwrite.dart';
+
+final client = Client()
+  .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+  .setProject('<PROJECT_ID>');
+
+final tablesDB = TablesDB(client);
+
+final tx = await tablesDB.createTransaction();
+// tx.$id is your transactionId
+```
+```client-apple
+import Appwrite
+
+let client = Client()
+  .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+  .setProject("<PROJECT_ID>")
+
+let tablesDB = TablesDB(client)
+
+let tx = try await tablesDB.createTransaction()
+// tx.$id is your transactionId
+```
+```client-android-kotlin
+import io.appwrite.Client
+import io.appwrite.services.TablesDB
+
+val client = Client(applicationContext)
+  .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+  .setProject("<PROJECT_ID>")
+
+val tablesDB = TablesDB(client)
+
+val tx = tablesDB.createTransaction()
+// tx.$id is your transactionId
+```
+```server-nodejs
+const sdk = require('node-appwrite');
+
+const client = new sdk.Client()
+  .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+  .setProject('<PROJECT_ID>')
+  .setKey('<API_KEY>');
+
+const tablesDB = new sdk.TablesDB(client);
+
+const tx = await tablesDB.createTransaction();
+// tx.$id is your transactionId
+```
+```server-python
+from appwrite.client import Client
+from appwrite.services.tablesDB import TablesDB
+
+client = Client()
+client.set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
+client.set_project('<PROJECT_ID>')
+client.set_key('<API_KEY>')
+
+tablesDB = TablesDB(client)
+
+tx = tablesDB.create_transaction()
+# tx.$id is your transactionId
+```
+{% /multicode %}
+
+# Stage operations {% #stage-operations %}
+
+Add `transactionId` to supported methods to stage them instead of immediately persisting.
+
+## Stage single operations {% #stage-single-operations %}
+
+Create, update, upsert, delete, and atomic numeric operations accept `transactionId`.
+
+{% multicode %}
+```client-web
+// Create inside a transaction
+await tablesDB.createRow({
+  databaseId: '<DATABASE_ID>',
+  tableId: '<TABLE_ID>',
+  rowId: '<ROW_ID>',
+  data: { name: 'Walter' },
+  transactionId: tx.$id
+});
+
+// Increment inside a transaction
+await tablesDB.incrementRowColumn({
+  databaseId: '<DATABASE_ID>',
+  tableId: '<TABLE_ID>',
+  rowId: '<ROW_ID>',
+  column: 'credits',
+  value: 1,
+  transactionId: tx.$id
+});
+```
+```server-nodejs
+// Update inside a transaction
+await tablesDB.updateRow({
+  databaseId: '<DATABASE_ID>',
+  tableId: '<TABLE_ID>',
+  rowId: '<ROW_ID>',
+  data: { plan: 'pro' },
+  transactionId: tx.$id
+});
+
+// Delete inside a transaction
+await tablesDB.deleteRow({
+  databaseId: '<DATABASE_ID>',
+  tableId: '<TABLE_ID>',
+  rowId: '<ROW_ID>',
+  transactionId: tx.$id
+});
+```
+```server-python
+# Upsert inside a transaction
+tablesDB.upsert_row(
+  database_id = '<DATABASE_ID>',
+  table_id = '<TABLE_ID>',
+  row_id = '<ROW_ID>',
+  data = { 'name': 'Walter' },
+  transaction_id = tx['$id']
+)
+
+# Decrement inside a transaction
+tablesDB.decrement_row_column(
+  database_id = '<DATABASE_ID>',
+  table_id = '<TABLE_ID>',
+  row_id = '<ROW_ID>',
+  column = 'credits',
+  value = 1,
+  transaction_id = tx['$id']
+)
+```
+{% /multicode %}
+
+## Stage many with createOperations {% #create-operations %}
+
+Use `createOperations` to stage multiple operations across multiple databases and tables in a single request. Provide an array of operation objects:
+
+```json
+[
+  {
+    "action": "create|update|upsert|increment|decrement|delete|bulkCreate|bulkUpdate|bulkUpsert|bulkDelete",
+    "databaseId": "<DATABASE_ID>",
+    "tableId|collectionId": "<TABLE_ID|COLLECTION_ID>",
+    "rowId|documentId": "<ROW_ID|DOCUMENT_ID>",
+    "data": {}
+  }
+]
+```
+
+### Provide data for each action {% #provide-data-for-each-action %}
+
+### Create, update, and upsert {% #create-update-upsert %}
+Pass a raw data object.
+```json
+{ "name": "Walter" }
+```
+
+### Increment and decrement {% #increment-decrement %}
+Pass a value and optionally `min`/`max` bounds.
+```json
+{ "value": 1, "min": 0, "max": 1000 }
+```
+
+### Bulk create and bulk upsert {% #bulk-create-upsert %}
+Pass an array of raw data objects.
+```json
+[{ "$id": "123", "name": "Walter" }]
+```
+
+### Bulk update {% #bulk-update %}
+Pass queries and the data to apply.
+```json
+{ "queries": ["equal(\"status\", [\"draft\"])"], "data": { "status": "published" } }
+```
+
+### Bulk delete {% #bulk-delete %}
+Pass queries to select rows to delete.
+```json
+{ "queries": ["equal(\"archived\", [true])"] }
+```
+
+{% multicode %}
+```server-nodejs
+// Stage multiple operations at once
+await tablesDB.createOperations({
+  transactionId: tx.$id,
+  operations: [
+    {
+      action: 'create',
+      databaseId: '<DB_A>',
+      tableId: '<TABLE_1>',
+      rowId: 'u1',
+      data: { name: 'Walter' }
+    },
+    {
+      action: 'increment',
+      databaseId: '<DB_B>',
+      tableId: '<TABLE_2>',
+      rowId: 'u2',
+      data: { value: 1, min: 0 }
+    }
+  ]
+});
+```
+```server-python
+tablesDB.create_operations(
+  transaction_id = tx['$id'],
+  operations = [
+    {
+      'action': 'upsert',
+      'databaseId': '<DB_A>',
+      'tableId': '<TABLE_1>',
+      'rowId': 'u3',
+      'data': { 'name': 'Skyler' }
+    },
+    {
+      'action': 'bulkDelete',
+      'databaseId': '<DB_B>',
+      'tableId': '<TABLE_2>',
+      'data': { 'queries': ["equal(\"status\", [\"archived\"])" ] }
+    }
+  ]
+)
+```
+{% /multicode %}
+
+# Commit or roll back {% #commit-or-rollback %}
+
+When you’re done staging operations, finalize the transaction.
+
+{% multicode %}
+```client-web
+// Commit
+await tablesDB.updateTransaction({ transactionId: tx.$id, commit: true });
+
+// Or roll back
+await tablesDB.updateTransaction({ transactionId: tx.$id, rollback: true });
+```
+```server-nodejs
+// Commit
+await tablesDB.updateTransaction({ transactionId: tx.$id, commit: true });
+
+// Roll back
+await tablesDB.updateTransaction({ transactionId: tx.$id, rollback: true });
+```
+```server-python
+# Commit
+tablesDB.update_transaction(transaction_id = tx['$id'], commit = True)
+
+# Roll back
+tablesDB.update_transaction(transaction_id = tx['$id'], rollback = True)
+```
+{% /multicode %}
+
+# Handle conflicts {% #handle-conflicts %}
+
+On commit, Appwrite verifies that rows affected by your transaction haven’t changed externally since they were staged. If a conflicting change is detected, the commit fails with a conflict error. Resolve the conflict (for example, refetch and re-stage) and try again.
+
+{% info title="Best practices" %}
+Keep transactions short-lived to reduce the likelihood of conflicts. Stage related updates in the order they must be applied. Prefer `createOperations` when you need to stage many changes across multiple tables.
+{% /info %}
+
+{% arrow_link href="/docs/references" %}
+Explore the API references
+{% /arrow_link %}
