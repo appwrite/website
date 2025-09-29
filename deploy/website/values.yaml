@@ -9,7 +9,7 @@ domain: 'stage.k8s.appwrite.io'
 
 minReplicas: 1
 maxReplicas: 2
-maxUnavailable: 0
+maxUnavailable: 1
 
 
 livenessProbe:
