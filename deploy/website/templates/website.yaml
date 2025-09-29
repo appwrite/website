@@ -45,7 +45,7 @@ spec:
             - containerPort: 3000
           livenessProbe:
             httpGet:
-              path: /ping
+              path: /
               port: 3000
               scheme: HTTP
             periodSeconds: 3
@@ -55,7 +55,7 @@ spec:
             initialDelaySeconds: {{ .Values.livenessProbe.initialDelaySeconds | default 10 }}
           readinessProbe:
             httpGet:
-              path: /ping
+              path: /
               port: 3000
               scheme: HTTP
             periodSeconds: 3
