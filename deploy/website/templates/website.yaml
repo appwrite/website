@@ -43,6 +43,24 @@ spec:
 {{- end }}
           ports:
             - containerPort: 3000
+          livenessProbe:
+            httpGet:
+              path: /ping
+              port: 3000
+              scheme: HTTP
+            periodSeconds: 3
+            timeoutSeconds: 3
+            failureThreshold: 5
+            successThreshold: 1
+          readinessProbe:
+            httpGet:
+              path: /ping
+              port: 3000
+              scheme: HTTP
+            periodSeconds: 3
+            timeoutSeconds: 3
+            failureThreshold: 5
+            successThreshold: 5
 
 ---
 
