@@ -9,3 +9,47 @@ author: darshan-pandya
 category: announcement
 featured: false
 ---
+In many development workflows, setting up a database schema is one of the first and often one of the slowest steps. Starting with a blank schema, juggling naming conventions, remembering which fields need indexes, or ensuring every collection follows best practices can quickly become a chore.
+
+Whether spinning up a new project, designing an operational table for a feature, or standardizing schemas across multiple services, the setup should be fast, consistent, and reliable.
+
+That’s why we’re introducing **Database AI suggestions.** A simple but powerful way to generate sensible columns and indexes the moment you create a new table. By analyzing the table name, sibling tables, and any extra context you provide, Appwrite suggests a complete schema that you can tweak and apply in seconds. No more blank slates, no more forgotten indexes, and no more inconsistent naming.
+
+# Design schemas in seconds, not hours
+
+When creating a new table in the Appwrite Console, you can **choose to generate AI-powered suggestions** for columns and indexes tailored to your use case. For example, if you name your table `Orders`, Appwrite will suggest fields like `orderId`, `userId`, `totalAmount`, `status`, and `createdAt`, complete with sensible types and recommended indexes.
+
+These suggestions are generated using a mix of:
+
+- The table’s **name** (e.g., “Orders”, “UserSessions”)
+- **Sibling tables and columns** in your database to align naming and structure
+- Any **additional context** you provide in free text
+
+You’re always in control. Suggestions don’t apply automatically. You can review them, adjust inline, or skip them entirely. Once ready, applying the schema is just one click, including an optional CTA to add suggested indexes for even better performance.
+
+Alongside Database AI Suggestions, we have also added an **AI-powered index suggestions UI.** A new desktop modal and mobile side-sheet offer guided flows with toggles and an easy “apply” step for indexes.
+
+These UI updates complement Database AI Suggestions by making the schema design and feedback process more guided, interactive, and flexible across both desktop and mobile.
+
+# Immediate benefits
+
+**Database AI Suggestions** isn’t just about saving a few clicks. It removes friction from a critical early step in your workflow and sets you up for success. For example, when setting up schemas daily, managing operational data, and standardizing schemas across microservices, this new feature gives you a smart starting point, helping teams of all sizes move faster while maintaining quality and consistency.
+
+Resulting in benefits such as:
+
+- **Faster setup:** Go from table name to sensible schema in seconds.
+- **Consistency:** Keep field names and types aligned across collections.
+- **Best practices baked in:** Get timestamps, soft-delete fields, enums, and indexes without having to remember them.
+- **Fewer errors:** Avoid schema issues that cause analytics problems or require migrations later.
+
+# Get started
+
+We created a quick video overview to show you how the new feature works.
+
+# More resources
+
+- [Appwrite MCP server](/docs/tooling/mcp)
+- [Make the best use of Appwrite’s MCP server](/blog/post/make-best-use-appwrite-mcp)
+- [Announcing an improved Appwrite Databases experience. A completely new look and feel](/blog/post/announcing-appwrite-databases-new-ui)
+
+
