@@ -1,4 +1,4 @@
-domain: k8s.appwrite.io
+domain: appwrite.io
 
 minReplicas: 2
 maxReplicas: 50
