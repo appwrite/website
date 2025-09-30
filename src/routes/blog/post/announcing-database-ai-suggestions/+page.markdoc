@@ -46,6 +46,8 @@ Resulting in benefits such as:
 
 We created a quick video overview to show you how the new feature works.
 
+{% youtube src="https://www.youtube-nocookie.com/embed/5IZJVsE6pIQ" thumbnail="/images/blog/announcing-database-ai-suggestions/cover.png" /%}
+
 # More resources
 
 - [Appwrite MCP server](/docs/tooling/mcp)
