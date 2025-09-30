@@ -35,6 +35,18 @@ const tablesDB = new TablesDB(client);
 const tx = await tablesDB.createTransaction();
 // tx.$id is your transactionId
 ```
+```client-react-native
+import { Client, TablesDB } from 'react-native-appwrite';
+
+const client = new Client()
+  .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+  .setProject('<PROJECT_ID>');
+
+const tablesDB = new TablesDB(client);
+
+const tx = await tablesDB.createTransaction();
+// tx.$id is your transactionId
+```
 ```client-flutter
 import 'package:appwrite/appwrite.dart';
 
@@ -72,8 +84,40 @@ val tablesDB = TablesDB(client)
 val tx = tablesDB.createTransaction()
 // tx.$id is your transactionId
 ```
+```client-android-java
+import io.appwrite.Client;
+import io.appwrite.services.TablesDB;
+
+Client client = new Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>");
+
+TablesDB tablesDB = new TablesDB(client);
+
+// Create a transaction (asynchronous)
+tablesDB.createTransaction(new CoroutineCallback<>((tx, error) -> {
+  if (error != null) {
+    error.printStackTrace();
+    return;
+  }
+  System.out.println(tx);
+}));
+```
 ```server-nodejs
 const sdk = require('node-appwrite');
+
+const client = new sdk.Client()
+  .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+  .setProject('<PROJECT_ID>')
+  .setKey('<API_KEY>');
+
+const tablesDB = new sdk.TablesDB(client);
+
+const tx = await tablesDB.createTransaction();
+// tx.$id is your transactionId
+```
+```server-deno
+import * as sdk from 'npm:node-appwrite';
 
 const client = new sdk.Client()
   .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
@@ -99,6 +143,139 @@ tablesDB = TablesDB(client)
 tx = tablesDB.create_transaction()
 # tx.$id is your transactionId
 ```
+```server-php
+<?php
+
+use Appwrite\Client;
+use Appwrite\Services\TablesDB;
+
+$client = new Client();
+
+$client
+  ->setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+  ->setProject('<PROJECT_ID>')
+  ->setKey('<API_KEY>')
+;
+
+$tablesDB = new TablesDB($client);
+
+$tx = $tablesDB->createTransaction();
+// $tx->\$id is your transactionId
+```
+```server-ruby
+require 'appwrite'
+
+include Appwrite
+
+client = Client.new
+  .set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
+  .set_project('<PROJECT_ID>')
+  .set_key('<API_KEY>')
+
+tablesDB = TablesDB.new(client)
+
+tx = tablesDB.create_transaction
+# tx['$id'] is your transactionId
+```
+```server-dotnet
+using Appwrite;
+using Appwrite.Services;
+
+var client = new Client()
+  .SetEndPoint("https://<REGION>.cloud.appwrite.io/v1")
+  .SetProject("<PROJECT_ID>")
+  .SetKey("<API_KEY>");
+
+var tablesDB = new TablesDB(client);
+
+var tx = await tablesDB.CreateTransaction();
+// tx.$id is your transactionId
+```
+```server-dart
+import 'package:dart_appwrite/dart_appwrite.dart';
+
+void main() async {
+  Client client = Client();
+  TablesDB tablesDB = TablesDB(client);
+
+  client
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>')
+    .setKey('<API_KEY>');
+
+  final tx = await tablesDB.createTransaction();
+  // tx contains the transaction ID
+}
+```
+```server-go
+package main
+
+import (
+  "log"
+  "github.com/appwrite/sdk-for-go/appwrite"
+)
+
+func main() {
+  client := appwrite.NewClient(
+    appwrite.WithEndpoint("https://<REGION>.cloud.appwrite.io/v1"),
+    appwrite.WithProject("<PROJECT_ID>"),
+    appwrite.WithKey("<API_KEY>"),
+  )
+
+  tablesDB := appwrite.NewTablesDB(client)
+
+  tx, err := tablesDB.CreateTransaction()
+  if err != nil { log.Fatal(err) }
+  _ = tx
+}
+```
+```server-swift
+import Appwrite
+
+let client = Client()
+  .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+  .setProject("<PROJECT_ID>")
+  .setKey("<API_KEY>")
+
+let tablesDB = TablesDB(client)
+
+let tx = try await tablesDB.createTransaction()
+// tx.$id is your transactionId
+```
+```server-kotlin
+import io.appwrite.Client
+import io.appwrite.services.TablesDB
+
+val client = Client()
+  .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+  .setProject("<PROJECT_ID>")
+  .setKey("<API_KEY>")
+
+val tablesDB = TablesDB(client)
+
+val tx = tablesDB.createTransaction()
+// tx.$id is your transactionId
+```
+```server-java
+import io.appwrite.Client;
+import io.appwrite.coroutines.CoroutineCallback;
+import io.appwrite.services.TablesDB;
+
+Client client = new Client()
+  .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+  .setProject("<PROJECT_ID>")
+  .setKey("<API_KEY>");
+
+TablesDB tablesDB = new TablesDB(client);
+
+tablesDB.createTransaction(new CoroutineCallback<>((result, error) -> {
+  if (error != null) {
+    error.printStackTrace();
+    return;
+  }
+  System.out.println(result);
+}));
+```
 {% /multicode %}
 
 # Stage operations {% #stage-operations %}
@@ -111,6 +288,86 @@ Create, update, upsert, delete, and atomic numeric operations accept `transactio
 
 {% multicode %}
 ```client-web
+// Create inside a transaction
+await tablesDB.createRow({
+  databaseId: '<DATABASE_ID>',
+  tableId: '<TABLE_ID>',
+  rowId: '<ROW_ID>',
+  data: { name: 'Walter' },
+  transactionId: tx.$id
+});
+
+// Increment inside a transaction
+await tablesDB.incrementRowColumn({
+  databaseId: '<DATABASE_ID>',
+  tableId: '<TABLE_ID>',
+  rowId: '<ROW_ID>',
+  column: 'credits',
+  value: 1,
+  transactionId: tx.$id
+});
+```
+```client-flutter
+// Create inside a transaction
+await tablesDB.createRow(
+  databaseId: '<DATABASE_ID>',
+  tableId: '<TABLE_ID>',
+  rowId: '<ROW_ID>',
+  data: { 'name': 'Walter' },
+  transactionId: tx.$id
+);
+
+// Increment inside a transaction
+await tablesDB.incrementRowColumn(
+  databaseId: '<DATABASE_ID>',
+  tableId: '<TABLE_ID>',
+  rowId: '<ROW_ID>',
+  column: 'credits',
+  value: 1,
+  transactionId: tx.$id
+);
+```
+```client-apple
+// Create inside a transaction
+let _ = try await tablesDB.createRow(
+  databaseId: "<DATABASE_ID>",
+  tableId: "<TABLE_ID>",
+  rowId: "<ROW_ID>",
+  data: ["name": "Walter"],
+  transactionId: tx.$id
+)
+
+// Increment inside a transaction
+let _ = try await tablesDB.incrementRowColumn(
+  databaseId: "<DATABASE_ID>",
+  tableId: "<TABLE_ID>",
+  rowId: "<ROW_ID>",
+  column: "credits",
+  value: 1,
+  transactionId: tx.$id
+)
+```
+```client-android-kotlin
+// Create inside a transaction
+val _ = tablesDB.createRow(
+  databaseId = "<DATABASE_ID>",
+  tableId = "<TABLE_ID>",
+  rowId = "<ROW_ID>",
+  data = mapOf("name" to "Walter"),
+  transactionId = tx.$id
+)
+
+// Increment inside a transaction
+val _2 = tablesDB.incrementRowColumn(
+  databaseId = "<DATABASE_ID>",
+  tableId = "<TABLE_ID>",
+  rowId = "<ROW_ID>",
+  column = "credits",
+  value = 1,
+  transactionId = tx.$id
+)
+```
+```client-react-native
 // Create inside a transaction
 await tablesDB.createRow({
   databaseId: '<DATABASE_ID>',
@@ -273,6 +530,52 @@ When you’re done staging operations, finalize the transaction.
 await tablesDB.updateTransaction({ transactionId: tx.$id, commit: true });
 
 // Or roll back
+await tablesDB.updateTransaction({ transactionId: tx.$id, rollback: true });
+```
+```client-flutter
+// Commit
+await tablesDB.updateTransaction(
+  transactionId: tx.$id,
+  commit: true
+);
+
+// Roll back
+await tablesDB.updateTransaction(
+  transactionId: tx.$id,
+  rollback: true
+);
+```
+```client-apple
+// Commit
+let _ = try await tablesDB.updateTransaction(
+  transactionId: tx.$id,
+  commit: true
+)
+
+// Roll back
+let _ = try await tablesDB.updateTransaction(
+  transactionId: tx.$id,
+  rollback: true
+)
+```
+```client-android-kotlin
+// Commit
+val _ = tablesDB.updateTransaction(
+  transactionId = tx.$id,
+  commit = true
+)
+
+// Roll back
+val _2 = tablesDB.updateTransaction(
+  transactionId = tx.$id,
+  rollback = true
+)
+```
+```client-react-native
+// Commit
+await tablesDB.updateTransaction({ transactionId: tx.$id, commit: true });
+
+// Roll back
 await tablesDB.updateTransaction({ transactionId: tx.$id, rollback: true });
 ```
 ```server-nodejs
