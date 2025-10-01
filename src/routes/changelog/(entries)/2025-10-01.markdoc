@@ -4,9 +4,9 @@ title: "Performance improvements for Functions and static sites"
 date: 2025-10-01
 ---
 
-We've shipped major performance improvements across Functions and static sites.
+We've shipped major performance improvements across functions and static sites.
 
-**Function cold starts are now 58% faster** in the FRA region with more consistent start times across executions.
+**Function cold starts are now 58% faster** in the Frankfurt (FRA) region with more consistent start times across executions.
 
 **Static sites are now served directly through our edge proxies**, eliminating the need for dedicated runtimes. This means:
 
