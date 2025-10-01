@@ -349,7 +349,7 @@ let _ = try await tablesDB.incrementRowColumn(
   transactionId: tx.$id
 )
 ```
-```client-android-kotlin
+```server-kotlin
 // Create inside a transaction
 val _ = tablesDB.createRow(
   databaseId = "<DATABASE_ID>",
@@ -368,6 +368,45 @@ val _2 = tablesDB.incrementRowColumn(
   value = 1,
   transactionId = tx.$id
 )
+```
+```server-java
+// Create inside a transaction (asynchronous)
+Map<String, Object> data = new HashMap<>();
+data.put("name", "Walter");
+
+tablesDB.createRow(
+  "<DATABASE_ID>",
+  "<TABLE_ID>",
+  "<ROW_ID>",
+  data,
+  "<TRANSACTION_ID>",
+  new CoroutineCallback<>((row, error) -> {
+    if (error != null) {
+      error.printStackTrace();
+      return null;
+    }
+    System.out.println(row);
+    return null;
+  })
+);
+
+// Increment inside a transaction (asynchronous)
+tablesDB.incrementRowColumn(
+  "<DATABASE_ID>",
+  "<TABLE_ID>",
+  "<ROW_ID>",
+  "credits",
+  1,
+  "<TRANSACTION_ID>",
+  new CoroutineCallback<>((row, error) -> {
+    if (error != null) {
+      error.printStackTrace();
+      return null;
+    }
+    System.out.println(row);
+    return null;
+  })
+);
 ```
 ```client-react-native
 // Create inside a transaction
@@ -545,26 +584,6 @@ let _2 = try await tablesDB.incrementRowColumn(
   transactionId: tx.$id
 )
 ```
-```server-kotlin
-// Create inside a transaction
-val _ = tablesDB.createRow(
-  databaseId = "<DATABASE_ID>",
-  tableId = "<TABLE_ID>",
-  rowId = "<ROW_ID>",
-  data = mapOf("name" to "Walter"),
-  transactionId = tx.$id
-)
-
-// Increment inside a transaction
-val _2 = tablesDB.incrementRowColumn(
-  databaseId = "<DATABASE_ID>",
-  tableId = "<TABLE_ID>",
-  rowId = "<ROW_ID>",
-  column = "credits",
-  value = 1,
-  transactionId = tx.$id
-)
-```
 {% /multicode %}
 
 ## Stage many with createOperations {% #create-operations %}
@@ -709,7 +728,7 @@ let _ = try await tablesDB.createOperations(
   ]
 )
 ```
-```client-android-kotlin
+```server-kotlin
 val _ = tablesDB.createOperations(
   transactionId = tx.$id,
   operations = listOf(
@@ -729,6 +748,37 @@ val _ = tablesDB.createOperations(
     )
   )
 )
+```
+```server-java
+// Stage multiple operations at once (asynchronous)
+Map<String, Object> op1 = new HashMap<>();
+op1.put("action", "create");
+op1.put("databaseId", "<DB_A>");
+op1.put("tableId", "<TABLE_1>");
+op1.put("rowId", "u1");
+op1.put("data", new HashMap<String, Object>() {{ put("name", "Walter"); }});
+
+Map<String, Object> op2 = new HashMap<>();
+op2.put("action", "increment");
+op2.put("databaseId", "<DB_B>");
+op2.put("tableId", "<TABLE_2>");
+op2.put("rowId", "u2");
+op2.put("data", new HashMap<String, Object>() {{ put("value", 1); put("min", 0); }});
+
+List<Map<String, Object>> operations = Arrays.asList(op1, op2);
+
+tablesDB.createOperations(
+  "<TRANSACTION_ID>",
+  operations,
+  new CoroutineCallback<>((result, error) -> {
+    if (error != null) {
+      error.printStackTrace();
+      return null;
+    }
+    System.out.println(result);
+    return null;
+  })
+);
 ```
 ```client-react-native
 await tablesDB.createOperations({
@@ -844,27 +894,6 @@ let _ = try await tablesDB.createOperations(
   ]
 )
 ```
-```server-kotlin
-val _ = tablesDB.createOperations(
-  transactionId = tx.$id,
-  operations = listOf(
-    mapOf(
-      "action" to "create",
-      "databaseId" to "<DB_A>",
-      "tableId" to "<TABLE_1>",
-      "rowId" to "u1",
-      "data" to mapOf("name" to "Walter")
-    ),
-    mapOf(
-      "action" to "increment",
-      "databaseId" to "<DB_B>",
-      "tableId" to "<TABLE_2>",
-      "rowId" to "u2",
-      "data" to mapOf("value" to 1, "min" to 0)
-    )
-  )
-)
-```
 {% /multicode %}
 
 # Commit or roll back {% #commit-or-rollback %}
@@ -905,7 +934,7 @@ let _ = try await tablesDB.updateTransaction(
   rollback: true
 )
 ```
-```client-android-kotlin
+```server-kotlin
 // Commit
 val _ = tablesDB.updateTransaction(
   transactionId = tx.$id,
@@ -917,6 +946,37 @@ val _2 = tablesDB.updateTransaction(
   transactionId = tx.$id,
   rollback = true
 )
+```
+```server-java
+// Commit (asynchronous)
+tablesDB.updateTransaction(
+  "<TRANSACTION_ID>",
+  true,
+  false,
+  new CoroutineCallback<>((result, error) -> {
+    if (error != null) {
+      error.printStackTrace();
+      return null;
+    }
+    System.out.println(result);
+    return null;
+  })
+);
+
+// Roll back (asynchronous)
+tablesDB.updateTransaction(
+  "<TRANSACTION_ID>",
+  false,
+  true,
+  new CoroutineCallback<>((result, error) -> {
+    if (error != null) {
+      error.printStackTrace();
+      return null;
+    }
+    System.out.println(result);
+    return null;
+  })
+);
 ```
 ```client-react-native
 // Commit
