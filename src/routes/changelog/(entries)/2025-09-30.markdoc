@@ -12,7 +12,7 @@ This release introduces AI-assisted schema generation to simplify that process.
 
 - Added **Database AI suggestions** in the Console
 - Automatic column and index suggestions based on table name and context
-- Example: Creating a table called `Orders` suggests columns `orderId`, `userId`, `totalAmount`, `status`, `createdAt`.
+- Example: Creating a table called `Orders` suggests columns `orderId`, `userId`, `totalAmount`, and `status`.
 
 ## Benefits:
 
