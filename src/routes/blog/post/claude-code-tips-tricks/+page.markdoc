@@ -11,9 +11,9 @@ category: tutorial
 
 Anthropic's Claude models have always been regarded as the models that are decent at coding. A lot of developers like to use Claude as their “intern” or “junior developer” when writing code. However, Claude models are expensive, especially Claude Opus 4. Anthropic hasn't changed their pricing of their models for a long time and this has resulted in competitor models that are just as good (or some may claim even better) than Claude.
 
-However, if you're someone like me who still likes to use Claude over any other models, Claude Code is the solution. You can run Claude Code using either Anthropic API (which prices based on tokens consumed) or Claude Max plans. These plans offer a lot more usage in a fix amount. 
+However, if you're someone like me who still likes to use Claude over any other models, Claude Code is the solution. You can run Claude Code using either Anthropic API (which prices based on tokens consumed) or Claude Max plans. These plans offer a lot more usage in a fixed amount. 
 
-Anthropic just released Claude Code v2 along with Claude 4.5 Sonnet, a 1M context window model recently, so we thought it'd be best to write an article about Claude Code.
+Anthropic just released Claude Code v2 along with Claude 4.5 Sonnet, a model which provides upto a 1M context window, so we thought it'd be best to write an article about Claude Code.
 
 In this article, we will look at the best tips and tricks for using Claude Code. Most of them would be prompting the model correctly.
 
@@ -29,7 +29,7 @@ A problem with Claude (and some more) models is that it usually keeps wasting to
 Be concise with your answers. Do not acknowledge my messages causing duplication unless explicitly asked to do so. Do not provide summaries of the changes you made unless explicitly asked to do so.
 ```
 
-What I have experienced is Claude keeps forgetting these instructions as you progress towards into your goals as you fill up your context window. It's always helpful to remind Claude every now and then to not deviate from the given set of rules.
+What I have experienced is Claude keeps forgetting these instructions as you progress towards your goals as you fill up your context window. It's always helpful to remind Claude every now and then to not deviate from the given set of rules.
 
 ## Prevent Claude from wandering on its own
 
@@ -72,11 +72,11 @@ Add the following configuration in your `~/.claude/settings.json` file:
 }
 ```
 
-Replace the path to your own notification sound of choice. This way, whenever Claude Code stops generating (ends the message), you will receive a beep. You can also add a similar for `Notification` so that you're notified when Claude Code stops to ask for permissions.
+Replace the path to your own notification sound of choice. This way, whenever Claude Code stops generating (ends the message), you will receive a beep. You can also add a similar hook for `Notification` so that you're notified when Claude Code stops to ask for permissions.
 
 # Subagents in Claude Code
 
-Claude Code recently introduced sub-gents. These agents are invoked by the main agent and are capable of performing different tasks on your codebase. 
+Claude Code recently introduced sub-agents. These agents are invoked by the main agent and are capable of performing different tasks on your codebase. 
 
 - All sub-agents have their own context window, just like having a clean chat, which means that your main agent will not be cluttered with context filled with information across your codebase.
 - You can assign different agents for **frontend**, **backend**, **security**, **review**, etc.
