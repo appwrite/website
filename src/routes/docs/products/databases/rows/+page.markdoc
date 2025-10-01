@@ -746,6 +746,123 @@ await tablesDB.updateRow({
     transactionId: '<TRANSACTION_ID>'
 });
 ```
+```client-flutter
+// Create row inside a transaction
+await tablesDB.createRow(
+    databaseId: '<DATABASE_ID>',
+    tableId: '<TABLE_ID>',
+    rowId: '<ROW_ID>',
+    data: { 'title': 'Draft' },
+    transactionId: '<TRANSACTION_ID>'
+);
+
+// Update row inside a transaction
+await tablesDB.updateRow(
+    databaseId: '<DATABASE_ID>',
+    tableId: '<TABLE_ID>',
+    rowId: '<ROW_ID>',
+    data: { 'title': 'Published' },
+    transactionId: '<TRANSACTION_ID>'
+);
+```
+```client-apple
+// Create row inside a transaction
+let _ = try await tablesDB.createRow(
+    databaseId: "<DATABASE_ID>",
+    tableId: "<TABLE_ID>",
+    rowId: "<ROW_ID>",
+    data: ["title": "Draft"],
+    transactionId: "<TRANSACTION_ID>"
+)
+
+// Update row inside a transaction
+let _2 = try await tablesDB.updateRow(
+    databaseId: "<DATABASE_ID>",
+    tableId: "<TABLE_ID>",
+    rowId: "<ROW_ID>",
+    data: ["title": "Published"],
+    transactionId: "<TRANSACTION_ID>"
+)
+```
+```client-android-kotlin
+// Create row inside a transaction
+val _ = tablesDB.createRow(
+    databaseId = "<DATABASE_ID>",
+    tableId = "<TABLE_ID>",
+    rowId = "<ROW_ID>",
+    data = mapOf("title" to "Draft"),
+    transactionId = "<TRANSACTION_ID>"
+)
+
+// Update row inside a transaction
+val _2 = tablesDB.updateRow(
+    databaseId = "<DATABASE_ID>",
+    tableId = "<TABLE_ID>",
+    rowId = "<ROW_ID>",
+    data = mapOf("title" to "Published"),
+    transactionId = "<TRANSACTION_ID>"
+)
+```
+```client-android-java
+// Create row inside a transaction (asynchronous)
+Map<String, Object> data = new HashMap<>();
+data.put("title", "Draft");
+
+tablesDB.createRow(
+    "<DATABASE_ID>",
+    "<TABLE_ID>",
+    "<ROW_ID>",
+    data,
+    "<TRANSACTION_ID>",
+    new CoroutineCallback<>((result, error) -> {
+        if (error != null) {
+            error.printStackTrace();
+            return null;
+        }
+        System.out.println(result);
+        return null;
+    })
+);
+
+// Update row inside a transaction (asynchronous)
+Map<String, Object> update = new HashMap<>();
+update.put("title", "Published");
+
+tablesDB.updateRow(
+    "<DATABASE_ID>",
+    "<TABLE_ID>",
+    "<ROW_ID>",
+    update,
+    "<TRANSACTION_ID>",
+    new CoroutineCallback<>((result, error) -> {
+        if (error != null) {
+            error.printStackTrace();
+            return null;
+        }
+        System.out.println(result);
+        return null;
+    })
+);
+```
+```client-react-native
+// Create row inside a transaction
+await tablesDB.createRow({
+    databaseId: '<DATABASE_ID>',
+    tableId: '<TABLE_ID>',
+    rowId: '<ROW_ID>',
+    data: { title: 'Draft' },
+    transactionId: '<TRANSACTION_ID>'
+});
+
+// Update row inside a transaction
+await tablesDB.updateRow({
+    databaseId: '<DATABASE_ID>',
+    tableId: '<TABLE_ID>',
+    rowId: '<ROW_ID>',
+    data: { title: 'Published' },
+    transactionId: '<TRANSACTION_ID>'
+});
+```
 ```server-nodejs
 // Delete row inside a transaction
 await tablesDB.deleteRow({
@@ -754,5 +871,94 @@ await tablesDB.deleteRow({
     rowId: '<ROW_ID>',
     transactionId: '<TRANSACTION_ID>'
 });
+```
+```server-deno
+// Delete row inside a transaction
+await tablesDB.deleteRow({
+    databaseId: '<DATABASE_ID>',
+    tableId: '<TABLE_ID>',
+    rowId: '<ROW_ID>',
+    transactionId: '<TRANSACTION_ID>'
+});
+```
+```server-python
+# Delete row inside a transaction
+tablesDB.delete_row(
+    database_id = '<DATABASE_ID>',
+    table_id = '<TABLE_ID>',
+    row_id = '<ROW_ID>',
+    transaction_id = '<TRANSACTION_ID>'
+)
+```
+```server-php
+// Delete row inside a transaction
+$tablesDB->deleteRow(
+    databaseId: '<DATABASE_ID>',
+    tableId: '<TABLE_ID>',
+    rowId: '<ROW_ID>',
+    transactionId: '<TRANSACTION_ID>'
+);
+```
+```server-ruby
+# Delete row inside a transaction
+tablesDB.delete_row(
+    database_id: '<DATABASE_ID>',
+    table_id: '<TABLE_ID>',
+    row_id: '<ROW_ID>',
+    transaction_id: '<TRANSACTION_ID>'
+)
+```
+```server-dotnet
+// Delete row inside a transaction
+await tablesDB.DeleteRow(
+    databaseId: "<DATABASE_ID>",
+    tableId: "<TABLE_ID>",
+    rowId: "<ROW_ID>",
+    transactionId: "<TRANSACTION_ID>"
+);
+```
+```server-dart
+// Delete row inside a transaction
+await tablesDB.deleteRow(
+    databaseId: '<DATABASE_ID>',
+    tableId: '<TABLE_ID>',
+    rowId: '<ROW_ID>',
+    transactionId: '<TRANSACTION_ID>'
+);
+```
+```server-swift
+// Delete row inside a transaction
+let _ = try await tablesDB.deleteRow(
+    databaseId: "<DATABASE_ID>",
+    tableId: "<TABLE_ID>",
+    rowId: "<ROW_ID>",
+    transactionId: "<TRANSACTION_ID>"
+)
+```
+```server-kotlin
+// Delete row inside a transaction
+val _ = tablesDB.deleteRow(
+    databaseId = "<DATABASE_ID>",
+    tableId = "<TABLE_ID>",
+    rowId = "<ROW_ID>",
+    transactionId = "<TRANSACTION_ID>"
+)
+```
+```server-java
+// Delete row inside a transaction (asynchronous)
+tablesDB.deleteRow(
+    "<DATABASE_ID>",
+    "<TABLE_ID>",
+    "<ROW_ID>",
+    "<TRANSACTION_ID>",
+    new CoroutineCallback<>((result, error) -> {
+        if (error != null) {
+            error.printStackTrace();
+            return null;
+        }
+        System.out.println(result);
+        return null;
+    })
+);
 ```
 {% /multicode %}
