@@ -427,6 +427,144 @@ tablesDB.decrement_row_column(
   transaction_id = tx['$id']
 )
 ```
+```server-php
+// Create inside a transaction
+$tablesDB->createRow(
+  databaseId: '<DATABASE_ID>',
+  tableId: '<TABLE_ID>',
+  rowId: '<ROW_ID>',
+  data: ['name' => 'Walter'],
+  transactionId: $tx['$id']
+);
+
+// Increment inside a transaction
+$tablesDB->incrementRowColumn(
+  databaseId: '<DATABASE_ID>',
+  tableId: '<TABLE_ID>',
+  rowId: '<ROW_ID>',
+  column: 'credits',
+  value: 1,
+  transactionId: $tx['$id']
+);
+```
+```server-ruby
+# Create inside a transaction
+tablesDB.create_row(
+  database_id: '<DATABASE_ID>',
+  table_id: '<TABLE_ID>',
+  row_id: '<ROW_ID>',
+  data: { 'name' => 'Walter' },
+  transaction_id: tx['$id']
+)
+
+# Increment inside a transaction
+tablesDB.increment_row_column(
+  database_id: '<DATABASE_ID>',
+  table_id: '<TABLE_ID>',
+  row_id: '<ROW_ID>',
+  column: 'credits',
+  value: 1,
+  transaction_id: tx['$id']
+)
+```
+```server-dotnet
+// Update inside a transaction
+await tablesDB.UpdateRow(
+  databaseId: "<DATABASE_ID>",
+  tableId: "<TABLE_ID>",
+  rowId: "<ROW_ID>",
+  data: new Dictionary<string, object> { ["plan"] = "pro" },
+  transactionId: tx.Id
+);
+
+// Delete inside a transaction
+await tablesDB.DeleteRow(
+  databaseId: "<DATABASE_ID>",
+  tableId: "<TABLE_ID>",
+  rowId: "<ROW_ID>",
+  transactionId: tx.Id
+);
+```
+```server-dart
+// Upsert inside a transaction
+await tablesDB.upsertRow(
+  databaseId: '<DATABASE_ID>',
+  tableId: '<TABLE_ID>',
+  rowId: '<ROW_ID>',
+  data: { 'name': 'Walter' },
+  transactionId: tx.Id
+);
+
+// Decrement inside a transaction
+await tablesDB.decrementRowColumn(
+  databaseId: '<DATABASE_ID>',
+  tableId: '<TABLE_ID>',
+  rowId: '<ROW_ID>',
+  column: 'credits',
+  value: 1,
+  transactionId: tx.Id
+);
+```
+```server-deno
+// Create inside a transaction
+await tablesDB.createRow({
+  databaseId: '<DATABASE_ID>',
+  tableId: '<TABLE_ID>',
+  rowId: '<ROW_ID>',
+  data: { name: 'Walter' },
+  transactionId: tx.$id
+});
+
+// Increment inside a transaction
+await tablesDB.incrementRowColumn({
+  databaseId: '<DATABASE_ID>',
+  tableId: '<TABLE_ID>',
+  rowId: '<ROW_ID>',
+  column: 'credits',
+  value: 1,
+  transactionId: tx.$id
+});
+```
+```server-swift
+// Create inside a transaction
+let _ = try await tablesDB.createRow(
+  databaseId: "<DATABASE_ID>",
+  tableId: "<TABLE_ID>",
+  rowId: "<ROW_ID>",
+  data: ["name": "Walter"],
+  transactionId: tx.$id
+)
+
+// Increment inside a transaction
+let _2 = try await tablesDB.incrementRowColumn(
+  databaseId: "<DATABASE_ID>",
+  tableId: "<TABLE_ID>",
+  rowId: "<ROW_ID>",
+  column: "credits",
+  value: 1,
+  transactionId: tx.$id
+)
+```
+```server-kotlin
+// Create inside a transaction
+val _ = tablesDB.createRow(
+  databaseId = "<DATABASE_ID>",
+  tableId = "<TABLE_ID>",
+  rowId = "<ROW_ID>",
+  data = mapOf("name" to "Walter"),
+  transactionId = tx.$id
+)
+
+// Increment inside a transaction
+val _2 = tablesDB.incrementRowColumn(
+  databaseId = "<DATABASE_ID>",
+  tableId = "<TABLE_ID>",
+  rowId = "<ROW_ID>",
+  column = "credits",
+  value = 1,
+  transactionId = tx.$id
+)
+```
 {% /multicode %}
 
 ## Stage many with createOperations {% #create-operations %}
@@ -518,6 +656,213 @@ tablesDB.create_operations(
       'data': { 'queries': ["equal(\"status\", [\"archived\"])" ] }
     }
   ]
+)
+```
+```client-web
+await tablesDB.createOperations({
+  transactionId: tx.$id,
+  operations: [
+    { action: 'create', databaseId: '<DB_A>', tableId: '<TABLE_1>', rowId: 'u1', data: { name: 'Walter' } },
+    { action: 'increment', databaseId: '<DB_B>', tableId: '<TABLE_2>', rowId: 'u2', data: { value: 1, min: 0 } }
+  ]
+});
+```
+```client-flutter
+await tablesDB.createOperations(
+  transactionId: tx.$id,
+  operations: [
+    {
+      'action': 'create',
+      'databaseId': '<DB_A>',
+      'tableId': '<TABLE_1>',
+      'rowId': 'u1',
+      'data': { 'name': 'Walter' }
+    },
+    {
+      'action': 'increment',
+      'databaseId': '<DB_B>',
+      'tableId': '<TABLE_2>',
+      'rowId': 'u2',
+      'data': { 'value': 1, 'min': 0 }
+    }
+  ],
+);
+```
+```client-apple
+let _ = try await tablesDB.createOperations(
+  transactionId: tx.$id,
+  operations: [
+    [
+      "action": "create",
+      "databaseId": "<DB_A>",
+      "tableId": "<TABLE_1>",
+      "rowId": "u1",
+      "data": ["name": "Walter"]
+    ],
+    [
+      "action": "increment",
+      "databaseId": "<DB_B>",
+      "tableId": "<TABLE_2>",
+      "rowId": "u2",
+      "data": ["value": 1, "min": 0]
+    ]
+  ]
+)
+```
+```client-android-kotlin
+val _ = tablesDB.createOperations(
+  transactionId = tx.$id,
+  operations = listOf(
+    mapOf(
+      "action" to "create",
+      "databaseId" to "<DB_A>",
+      "tableId" to "<TABLE_1>",
+      "rowId" to "u1",
+      "data" to mapOf("name" to "Walter")
+    ),
+    mapOf(
+      "action" to "increment",
+      "databaseId" to "<DB_B>",
+      "tableId" to "<TABLE_2>",
+      "rowId" to "u2",
+      "data" to mapOf("value" to 1, "min" to 0)
+    )
+  )
+)
+```
+```client-react-native
+await tablesDB.createOperations({
+  transactionId: tx.$id,
+  operations: [
+    { action: 'create', databaseId: '<DB_A>', tableId: '<TABLE_1>', rowId: 'u1', data: { name: 'Walter' } },
+    { action: 'increment', databaseId: '<DB_B>', tableId: '<TABLE_2>', rowId: 'u2', data: { value: 1, min: 0 } }
+  ]
+});
+```
+```server-deno
+await tablesDB.createOperations({
+  transactionId: tx.$id,
+  operations: [
+    { action: 'create', databaseId: '<DB_A>', tableId: '<TABLE_1>', rowId: 'u1', data: { name: 'Walter' } },
+    { action: 'increment', databaseId: '<DB_B>', tableId: '<TABLE_2>', rowId: 'u2', data: { value: 1, min: 0 } }
+  ]
+});
+```
+```server-php
+$tablesDB->createOperations(
+  transactionId: $tx['$id'],
+  operations: [
+    [
+      'action' => 'create',
+      'databaseId' => '<DB_A>',
+      'tableId' => '<TABLE_1>',
+      'rowId' => 'u1',
+      'data' => [ 'name' => 'Walter' ]
+    ],
+    [
+      'action' => 'increment',
+      'databaseId' => '<DB_B>',
+      'tableId' => '<TABLE_2>',
+      'rowId' => 'u2',
+      'data' => [ 'value' => 1, 'min' => 0 ]
+    ]
+  ]
+);
+```
+```server-ruby
+tablesDB.create_operations(
+  transaction_id: tx['$id'],
+  operations: [
+    { 'action' => 'create', 'databaseId' => '<DB_A>', 'tableId' => '<TABLE_1>', 'rowId' => 'u1', 'data' => { 'name' => 'Walter' } },
+    { 'action' => 'increment', 'databaseId' => '<DB_B>', 'tableId' => '<TABLE_2>', 'rowId' => 'u2', 'data' => { 'value' => 1, 'min' => 0 } }
+  ]
+)
+```
+```server-dotnet
+await tablesDB.CreateOperations(
+  transactionId: tx.Id,
+  operations: new List<Dictionary<string, object>>
+  {
+    new Dictionary<string, object>
+    {
+      ["action"] = "create",
+      ["databaseId"] = "<DB_A>",
+      ["tableId"] = "<TABLE_1>",
+      ["rowId"] = "u1",
+      ["data"] = new Dictionary<string, object> { ["name"] = "Walter" }
+    },
+    new Dictionary<string, object>
+    {
+      ["action"] = "increment",
+      ["databaseId"] = "<DB_B>",
+      ["tableId"] = "<TABLE_2>",
+      ["rowId"] = "u2",
+      ["data"] = new Dictionary<string, object> { ["value"] = 1, ["min"] = 0 }
+    }
+  }
+);
+```
+```server-dart
+await tablesDB.createOperations(
+  transactionId: tx.Id,
+  operations: [
+    {
+      'action': 'create',
+      'databaseId': '<DB_A>',
+      'tableId': '<TABLE_1>',
+      'rowId': 'u1',
+      'data': { 'name': 'Walter' }
+    },
+    {
+      'action': 'increment',
+      'databaseId': '<DB_B>',
+      'tableId': '<TABLE_2>',
+      'rowId': 'u2',
+      'data': { 'value': 1, 'min': 0 }
+    }
+  ]
+);
+```
+```server-swift
+let _ = try await tablesDB.createOperations(
+  transactionId: tx.$id,
+  operations: [
+    [
+      "action": "create",
+      "databaseId": "<DB_A>",
+      "tableId": "<TABLE_1>",
+      "rowId": "u1",
+      "data": ["name": "Walter"]
+    ],
+    [
+      "action": "increment",
+      "databaseId": "<DB_B>",
+      "tableId": "<TABLE_2>",
+      "rowId": "u2",
+      "data": ["value": 1, "min": 0]
+    ]
+  ]
+)
+```
+```server-kotlin
+val _ = tablesDB.createOperations(
+  transactionId = tx.$id,
+  operations = listOf(
+    mapOf(
+      "action" to "create",
+      "databaseId" to "<DB_A>",
+      "tableId" to "<TABLE_1>",
+      "rowId" to "u1",
+      "data" to mapOf("name" to "Walter")
+    ),
+    mapOf(
+      "action" to "increment",
+      "databaseId" to "<DB_B>",
+      "tableId" to "<TABLE_2>",
+      "rowId" to "u2",
+      "data" to mapOf("value" to 1, "min" to 0)
+    )
+  )
 )
 ```
 {% /multicode %}
