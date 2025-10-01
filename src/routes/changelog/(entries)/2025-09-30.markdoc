@@ -1,7 +1,7 @@
 ---
 layout: changelog
 title: "Announcing Database AI suggestions: From table name to schema in one click"
-date: 2025-09-30
+date: 2025-10-01
 cover: /images/blog/announcing-database-ai-suggestions/cover.png
 ---
 Designing schemas typically requires starting from a blank table, defining every column manually, agreeing on naming conventions, and remembering to add indexes and common fields.
