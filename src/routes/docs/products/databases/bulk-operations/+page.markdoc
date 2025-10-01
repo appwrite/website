@@ -284,4 +284,109 @@ tablesDB.update_rows(
   transaction_id = '<TRANSACTION_ID>'
 )
 ```
+```server-deno
+await tablesDB.createRows('<DATABASE_ID>', '<TABLE_ID>', [
+  { $id: sdk.ID.unique(), data: { name: 'One' } },
+  { $id: sdk.ID.unique(), data: { name: 'Two' } }
+], { transactionId: '<TRANSACTION_ID>' });
+```
+```server-php
+$tablesDB->createRows(
+  databaseId: '<DATABASE_ID>',
+  tableId: '<TABLE_ID>',
+  rows: [
+    [ '$id' => ID::unique(), 'data' => [ 'name' => 'One' ] ],
+    [ '$id' => ID::unique(), 'data' => [ 'name' => 'Two' ] ]
+  ],
+  transactionId: '<TRANSACTION_ID>'
+);
+```
+```server-ruby
+tablesDB.create_rows(
+  database_id: '<DATABASE_ID>',
+  table_id: '<TABLE_ID>',
+  rows: [
+    { '$id' => ID.unique(), 'data' => { 'name' => 'One' } },
+    { '$id' => ID.unique(), 'data' => { 'name' => 'Two' } }
+  ],
+  transaction_id: '<TRANSACTION_ID>'
+)
+```
+```server-dotnet
+await tablesDB.CreateRows(
+  databaseId: "<DATABASE_ID>",
+  tableId: "<TABLE_ID>",
+  rows: new List<Dictionary<string, object>>
+  {
+    new Dictionary<string, object>
+    {
+      ["$id"] = ID.Unique(),
+      ["data"] = new Dictionary<string, object> { ["name"] = "One" }
+    },
+    new Dictionary<string, object>
+    {
+      ["$id"] = ID.Unique(),
+      ["data"] = new Dictionary<string, object> { ["name"] = "Two" }
+    }
+  },
+  transactionId: "<TRANSACTION_ID>"
+);
+```
+```server-dart
+await tablesDB.createRows(
+  databaseId: '<DATABASE_ID>',
+  tableId: '<TABLE_ID>',
+  rows: [
+    { '\$id': ID.unique(), 'data': { 'name': 'One' } },
+    { '\$id': ID.unique(), 'data': { 'name': 'Two' } }
+  ],
+  transactionId: '<TRANSACTION_ID>'
+);
+```
+```server-swift
+let _ = try await tablesDB.createRows(
+  databaseId: "<DATABASE_ID>",
+  tableId: "<TABLE_ID>",
+  rows: [
+    ["$id": ID.unique(), "data": ["name": "One"]],
+    ["$id": ID.unique(), "data": ["name": "Two"]]
+  ],
+  transactionId: "<TRANSACTION_ID>"
+)
+```
+```server-kotlin
+val _ = tablesDB.createRows(
+  databaseId = "<DATABASE_ID>",
+  tableId = "<TABLE_ID>",
+  rows = listOf(
+    mapOf("\$id" to ID.unique(), "data" to mapOf("name" to "One")),
+    mapOf("\$id" to ID.unique(), "data" to mapOf("name" to "Two"))
+  ),
+  transactionId = "<TRANSACTION_ID>"
+)
+```
+```server-java
+Map<String, Object> row1 = new HashMap<>();
+row1.put("$id", ID.unique());
+row1.put("data", new HashMap<String, Object>() {{ put("name", "One"); }});
+
+Map<String, Object> row2 = new HashMap<>();
+row2.put("$id", ID.unique());
+row2.put("data", new HashMap<String, Object>() {{ put("name", "Two"); }});
+
+tablesDB.createRows(
+  "<DATABASE_ID>",
+  "<TABLE_ID>",
+  Arrays.asList(row1, row2),
+  "<TRANSACTION_ID>",
+  new CoroutineCallback<>((result, error) -> {
+    if (error != null) {
+      error.printStackTrace();
+      return null;
+    }
+    System.out.println(result);
+    return null;
+  })
+);
+```
 {% /multicode %}
