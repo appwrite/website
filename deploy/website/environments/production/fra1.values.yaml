@@ -1,4 +1,4 @@
 domain: appwrite.io
 
 minReplicas: 2
-maxReplicas: 50
+maxReplicas: 20
