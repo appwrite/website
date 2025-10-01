@@ -23,7 +23,7 @@ These suggestions are generated using a mix of:
 
 - The table’s **name** (e.g., “Orders”, “UserSessions”)
 - **Sibling tables and their respective columns** in your database to align naming and structure
-- Any **additional context** you provide in free text
+- Any **additional context** you provide in your prompt
 
 You’re always in control. Suggestions don’t apply automatically. You can review them, adjust inline, or skip them entirely. Once ready, applying the schema is just one click, including an optional CTA to add suggested indexes for even better performance.
 
