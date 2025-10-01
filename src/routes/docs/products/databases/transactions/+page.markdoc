@@ -131,7 +131,7 @@ const tx = await tablesDB.createTransaction();
 ```
 ```server-python
 from appwrite.client import Client
-from appwrite.services.tablesDB import TablesDB
+from appwrite.services.tables_db import TablesDB
 
 client = Client()
 client.set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
