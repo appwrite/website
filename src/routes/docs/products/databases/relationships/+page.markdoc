@@ -13,7 +13,7 @@ These types of association between entities can be modeled in Appwrite using rel
 Appwrite Relationships is an experimental feature. The API and behavior are subject to change in future versions.
 {% /info %}
 
-# Relationship Columns {% #relationship-columns %}
+# Relationship columns {% #relationship-columns %}
 
 Relationships are represented in a table using **relationship columns**.
 The relationship column contains the ID of related rows, which it references during read, update, and delete operations.
@@ -27,11 +27,11 @@ Relationships help reduce redundant information. For example, a user can create 
 
 Duplicated records waste storage, but more importantly, makes the database much harder to maintain. If the user changes their user name, you will have to update dozens or hundreds of records, a problem commonly known as an update anomaly in tablesDB. You can avoid duplicate information by storing users and posts in separate tables and relating a user and their posts through a relationship.
 
-# Tradeoff {% #trade-offs %}
+# Tradeoffs {% #trade-offs %}
 
 Consider using relationships when the same information is found in multiple places to avoid duplicates. However, relationships come with the tradeoff of slowing down queries. For applications where the best read and write performance is important, it may be acceptable to tolerate duplicate data.
 
-# Opt-in Loading {% #performance-loading %}
+# Opt-in loading {% #performance-loading %}
 
 By default, Appwrite returns only a row's own fields when you retrieve rows. Related rows are **not automatically loaded** unless you explicitly request them using query selection. This eliminates unintentional payload bloat and gives you precise control over performance.
 
@@ -516,7 +516,7 @@ tablesDB.createRow(
 # Queries {% #queries %}
 Queries are currently not available in the experimental version of Appwrite Relationships but will be added in a later version.
 
-# Update Relationships {% #update %}
+# Update relationships {% #update %}
 Relationships can be updated by updating the relationship column.
 
 {% multicode %}
