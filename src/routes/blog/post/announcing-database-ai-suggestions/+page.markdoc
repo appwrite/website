@@ -17,7 +17,7 @@ That’s why we’re introducing **Database AI suggestions.** A simple but power
 
 # Design schemas in seconds, not hours
 
-When creating a new table in the Appwrite Console, you can **choose to generate AI-powered suggestions** for columns and indexes tailored to your use case. For example, if you name your table `Orders`, Appwrite will suggest fields like `orderId`, `userId`, `totalAmount`, `status`, and `createdAt`, complete with sensible types and recommended indexes.
+When creating a new table in the Appwrite Console, you can **choose to generate AI-powered suggestions** for columns and indexes tailored to your use case. For example, if you name your table `Orders`, Appwrite will suggest fields like `orderId`, `userId`, `totalAmount`, and `status`, complete with sensible types and recommended indexes.
 
 These suggestions are generated using a mix of:
 
