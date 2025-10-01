@@ -9,7 +9,7 @@ const config: PlaywrightTestConfig = {
         }
     },
     fullyParallel: true,
-    testDir: 'tests',
+    testDir: 'tests/redirects',
     testMatch: /(.+\.)?(test|spec)\.[jt]s/,
     projects: [
         {
