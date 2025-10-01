@@ -1,8 +1,14 @@
 <script lang="ts">
+    import type { Snippet } from 'svelte';
     import type { HTMLTdAttributes } from 'svelte/elements';
 
-    export let align: HTMLTdAttributes['align'] = undefined;
-    export let width: HTMLTdAttributes['width'] = undefined;
+    interface ThProps {
+        align?: HTMLTdAttributes['align'];
+        width?: HTMLTdAttributes['width'];
+        children: Snippet;
+    }
+
+    const { align = 'left', width, children }: ThProps = $props();
 </script>
 
 <td
@@ -12,7 +18,7 @@
     class="min-w-44 px-3 py-[0.5625rem]"
     {align}
 >
-    <span class="text-sm leading-[1.375rem] text-[hsl(var(--web-color-primary))]">
-        <slot />
+    <span class="text-primary font-aeonik-fono text-eyebrow uppercase">
+        {@render children()}
     </span>
 </td>
