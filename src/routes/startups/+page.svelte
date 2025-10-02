@@ -230,8 +230,10 @@
                 class="web-big-padding-section-level-2 e-u-padding-block-start-48-mobile e-u-padding-block-start-80-desktop e-u-margin-block-end-80-mobile"
             >
                 <section class="container">
-                    <ul class="web-u-flex-vertical-mobile e-u-gap-64-mobile flex gap-20">
-                        <li class="mx-auto flex max-w-[350px] flex-1 flex-col items-center gap-4">
+                    <ul
+                        class="web-u-flex-vertical-mobile e-u-gap-64-mobile grid grid-cols-1 gap-20 md:grid-cols-2 lg:grid-cols-4"
+                    >
+                        <li class="mx-auto flex flex-col items-center gap-4">
                             <img
                                 src="/images/icons/gradients/backend.svg"
                                 width="48"
@@ -239,14 +241,14 @@
                                 alt=""
                             />
                             <div class="flex flex-col gap-2 text-center">
-                                <h2 class="text-label text-primary">Complete platform</h2>
+                                <h2 class="text-label text-primary">Up to 80% discounts</h2>
                                 <p class="text-body font-medium">
-                                    Get discounted access to Appwrite’s paid plans and develop,
-                                    host, and scale your entire application with Appwrite.
+                                    Get discounts on Appwrite’s paid plans. We offer up to 80% on
+                                    both Pro and Scale.
                                 </p>
                             </div>
                         </li>
-                        <li class="mx-auto flex max-w-[350px] flex-1 flex-col items-center gap-4">
+                        <li class="mx-auto flex flex-col items-center gap-4">
                             <img
                                 src="/images/icons/gradients/cloud-credit.svg"
                                 width="48"
@@ -261,7 +263,7 @@
                                 </p>
                             </div>
                         </li>
-                        <li class="mx-auto flex max-w-[350px] flex-1 flex-col items-center gap-4">
+                        <li class="mx-auto flex flex-col items-center gap-4">
                             <img
                                 src="/images/icons/gradients/support.svg"
                                 width="48"
@@ -276,12 +278,131 @@
                                 </p>
                             </div>
                         </li>
+                        <li class="mx-auto flex flex-col items-center gap-4">
+                            <img
+                                src="/images/icons/gradients/swag.svg"
+                                width="48"
+                                height="48"
+                                alt=""
+                            />
+                            <div class="flex flex-col gap-2 text-center">
+                                <h2 class="text-label text-primary">Founder swag</h2>
+                                <p class="text-body font-medium">
+                                    Get community support and dedicated email support from the
+                                    Appwrite team.
+                                </p>
+                            </div>
+                        </li>
                     </ul>
                 </section>
             </div>
         </div>
 
-        <div class="web-white-section light relative py-10">
+        <div class="web-white-section light relative pb-[120px]">
+            <!-- developer toolkit subsection -->
+            <div class="web-big-padding-section-level-2 h-[256px]">
+                <section class="container">
+                    <div class="mx-auto max-w-[720px] text-center">
+                        <h3 class="text-title font-aeonik-pro text-primary">
+                            Your startups<br />developer toolkit
+                        </h3>
+                        <p class="text-body mt-2 font-medium">
+                            Appwrite offers an all-in-one hosting platform for you to build <br />
+                            and deploy your product from a single place.
+                        </p>
+                    </div>
+
+                    <div class="mt-6 flex flex-wrap items-center justify-center gap-0">
+                        <!-- Build group -->
+                        <div
+                            class="inline-flex items-center gap-2 rounded-[24px] border border-dashed border-black/8 bg-white px-4 py-2"
+                        >
+                            <span class="text-sm font-medium text-gray-700 uppercase">Build</span>
+                            <span
+                                class="bg-smooth text-caption text-primary flex h-10 items-center gap-2 rounded-[20px] px-3"
+                            >
+                                <img
+                                    src="/images/icons/illustrated/dark/auth.png"
+                                    alt="Auth"
+                                    class="h-6 w-6 shrink-0"
+                                />
+                                Auth
+                            </span>
+                            <span
+                                class="bg-smooth text-caption text-primary flex h-10 items-center gap-2 rounded-[20px] px-3"
+                            >
+                                <img
+                                    src="/images/icons/illustrated/dark/databases.png"
+                                    alt="Databases"
+                                    class="h-6 w-6 shrink-0"
+                                />
+                                Databases
+                            </span>
+                            <span
+                                class="bg-smooth text-caption text-primary flex h-10 items-center gap-2 rounded-[20px] px-3"
+                            >
+                                <img
+                                    src="/images/icons/illustrated/dark/storage.png"
+                                    alt="Storage"
+                                    class="h-6 w-6 shrink-0"
+                                />
+                                Storage
+                            </span>
+                            <span
+                                class="bg-smooth text-caption text-primary flex h-10 items-center gap-2 rounded-[20px] px-3"
+                            >
+                                <img
+                                    src="/images/icons/illustrated/dark/functions.png"
+                                    alt="Functions"
+                                    class="h-6 w-6 shrink-0"
+                                />
+                                Functions
+                            </span>
+                            <span
+                                class="bg-smooth text-caption text-primary flex h-10 items-center gap-2 rounded-[20px] px-3"
+                            >
+                                <img
+                                    src="/images/icons/illustrated/dark/messaging.png"
+                                    alt="Messaging"
+                                    class="h-6 w-6 shrink-0"
+                                />
+                                Messaging
+                            </span>
+                            <span
+                                class="bg-smooth text-caption text-primary flex h-10 items-center gap-2 rounded-[20px] px-3"
+                            >
+                                <img
+                                    src="/images/icons/illustrated/dark/realtime.png"
+                                    alt="Realtime"
+                                    class="h-6 w-6 shrink-0"
+                                />
+                                Realtime
+                            </span>
+                        </div>
+                        <!-- dashed gap between groups (horizontal) -->
+                        <div
+                            aria-hidden="true"
+                            class="mx-0 h-px w-6 self-center border-t border-dashed border-black/8"
+                        ></div>
+                        <!-- Deploy group -->
+                        <div
+                            class="inline-flex items-center gap-2 rounded-[24px] border border-dashed border-black/8 bg-white px-4 py-2"
+                        >
+                            <span class="text-sm font-medium text-gray-700 uppercase">DEPLOY</span>
+                            <span
+                                class="bg-smooth text-caption text-primary flex h-10 items-center gap-2 rounded-[20px] px-3"
+                            >
+                                <img
+                                    src="/images/icons/illustrated/dark/sites.png"
+                                    alt="Sites"
+                                    class="h-6 w-6 shrink-0"
+                                />
+                                Sites
+                            </span>
+                        </div>
+                    </div>
+                </section>
+            </div>
             <div class="web-big-padding-section-level-2 e-mt-20-mobile">
                 <div class="container">
                     <div class="web-timeline-content">
