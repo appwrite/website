@@ -487,7 +487,7 @@ export const pins = {
             lat: 1.35,
             lng: 103.82,
             city: 'Singapore',
-            code: 'SIN',
+            code: 'SGP',
             available: true
         },
         {
@@ -580,8 +580,8 @@ export const pins = {
             lat: 1.35,
             lng: 103.82,
             city: 'Singapore',
-            code: 'SIN',
-            date: 'Q4 2025'
+            code: 'SGP',
+            available: true
         },
         {
             lat: 37.77,
@@ -645,8 +645,8 @@ export const pins = {
             lat: 1.35,
             lng: 103.82,
             city: 'Singapore',
-            code: 'SIN',
-            date: 'Q4 2025'
+            code: 'SGP',
+            available: true
         },
         {
             lat: 37.77,

@@ -92,9 +92,9 @@
         {
             lat: 1.3521,
             lng: 103.8198,
-            city: 'Signapore',
+            city: 'Singapore',
             code: 'SGP',
-            available: false
+            available: true
         }
     ]);
 

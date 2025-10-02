@@ -23,7 +23,7 @@ Appwrite is currently available in the following list of regions:
 | New York            | NYC    | `https://nyc.cloud.appwrite.io/v1`      | Available       |
 | Sydney              | SYD    | `https://syd.cloud.appwrite.io/v1`      | Available       |
 | San Francisco       | SFO    | `https://sfo.cloud.appwrite.io/v1`      | Available       |
-| Singapore           | SGP    | `coming soon`                           | Q4 2025         |
+| Singapore           | SGP    | `https://sgp.cloud.appwrite.io/v1`      | Available       |
 | Bangalore           | BLR    | `coming soon`                           | TBD         |
 | Amsterdam           | AMS    | `coming soon`                           | TBD         |
 | London              | LON    | `coming soon`                           | TBD         |
