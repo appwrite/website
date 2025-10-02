@@ -1,9 +1,7 @@
-import { getAllChangelogEntries } from './changelog/utils';
+import { changelogCount } from './changelog/utils';
 
 export const trailingSlash = 'never';
 
-export const load = async () => {
-    return {
-        changelogEntries: (await getAllChangelogEntries()).length
-    };
-};
+export const load = () => ({
+    changelogCount
+});

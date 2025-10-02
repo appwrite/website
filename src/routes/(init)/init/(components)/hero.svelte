@@ -11,7 +11,7 @@
     import { type PageData } from '../$types';
     import { enhance } from '$app/forms';
 
-    type Props = {} & Omit<PageData, 'changelogEntries'>;
+    type Props = {} & Omit<PageData, 'changelogCount'>;
 
     let { claimed, ticketId }: Props = $props();
     let claiming: boolean = $state(false);
