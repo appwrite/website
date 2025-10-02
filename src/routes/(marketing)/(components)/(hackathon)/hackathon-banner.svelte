@@ -3,10 +3,10 @@
     import Badge from './badge.svelte';
     import { format } from 'date-fns';
 
-    const startDate = new Date('2025-10-02');
-    const endDate = new Date('2025-11-01');
+    // const startDate = new Date('2025-10-02');
+    // const endDate = new Date('2025-11-01');
 
-    const hackathonDates = `${format(startDate, 'MMM d')} - ${format(endDate, 'MMM d')}`;
+    const hackathonDates = `OCT 1 - OCT 31`;
 </script>
 
 <a href="https://apwr.dev/hf2025-hackathon" target="_blank" rel="noopener noreferrer">
