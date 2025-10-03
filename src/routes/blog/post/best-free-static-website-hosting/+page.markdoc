@@ -51,7 +51,7 @@ Here’s a quick table to give you the overview before we dive into each service
 
 # Vercel
 
-[Vercel](https://vercel.com/) is a favorite among frontend developers because it makes it simple to host a static website connected to your Git workflow. Every push triggers an instant deploy, and every pull request gets its own preview URL.
+[Vercel](https://vercel.com/) is a favourite among frontend developers because it makes it simple to host a static website connected to your Git workflow. Every push triggers an instant deploy, and every pull request gets its own preview URL.
 
 **Key features of Vercel**
 
@@ -126,19 +126,19 @@ Here’s a quick table to give you the overview before we dive into each service
 
 If all you need is **free static webpage hosting**, [GitHub Pages](https://docs.github.com/en/pages) is the simplest choice. You push your site to a repository and it’s live. It’s great for documentation, blogs, and personal projects.
 
-**Key features of Github Pages**
+**Key features of GitHub Pages**
 
 - Free hosting directly from GitHub repos
 - Built-in Jekyll support for static site builds
 - Free HTTPS and custom domains
 - Simple workflow tied to commits
 
-**Pricing of Github Pages**
+**Pricing of GitHub Pages**
 
 - **Free** for public repositories
-- Requires paid GitHub plan for private repos
+- Requires a paid GitHub plan for private repos
 
-**Pros and cons of Github Pages**
+**Pros and cons of GitHub Pages**
 
 | Pros | Cons |
 | --- | --- |
@@ -148,7 +148,7 @@ If all you need is **free static webpage hosting**, [GitHub Pages](https://docs.
 
 # Cloudflare Pages
 
-[Cloudflare Pages](https://pages.cloudflare.com/) is a relatively newer option but has grown fast thanks to Cloudflare’s global infrastructure. It provides free, globally distributed static hosting with Git integration and the ability to run dynamic code through **Cloudflare Workers**.
+[Cloudflare Pages](https://pages.cloudflare.com/) is a relatively newer option, but has grown fast thanks to Cloudflare’s global infrastructure. It provides free, globally distributed static hosting with Git integration and the ability to run dynamic code through **Cloudflare Workers**.
 
 **Key features of Cloudflare Pages**
 
@@ -192,7 +192,7 @@ While Firebase and Netlify focus either on backend services or frontend hosting,
 
 **5. Can I deploy a React app with backend services in Appwrite?**
 
-Absolutely. You can deploy your [React frontend](/docs/products/sites/quick-start/react) with Appwrite Sites and connect it directly to Appwrite’s backend services such as database, authentication, and storage. This gives you a full-stack setup without relying on multiple providers.
+Absolutely. You can deploy your [React frontend](/docs/products/sites/quick-start/react) with Appwrite Sites and connect it directly to Appwrite’s backend services, such as database, authentication, and storage. This gives you a full-stack setup without relying on multiple providers.
 
 **6. How does Appwrite compare to Render, Netlify, and Vercel?**
 
