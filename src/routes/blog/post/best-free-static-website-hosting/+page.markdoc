@@ -194,14 +194,14 @@ While Firebase and Netlify focus either on backend services or frontend hosting,
 
 Absolutely. You can deploy your [React frontend](/docs/products/sites/quick-start/react) with Appwrite Sites and connect it directly to Appwrite’s backend services such as database, authentication, and storage. This gives you a full-stack setup without relying on multiple providers.
 
-**7. How does Appwrite compare to Render, Netlify, and Vercel?**
+**6. How does Appwrite compare to Render, Netlify, and Vercel?**
 
 Render and Netlify provide solid **free static site hosting**, while Vercel is optimized for frontend frameworks like Next.js. Appwrite Sites goes further by combining hosting with backend services, making it more versatile for teams building full-stack applications.
 
-**8. Can I use GitHub Actions to deploy to Appwrite Sites?**
+**7. Can I use GitHub Actions to deploy to Appwrite Sites?**
 
 Not directly. While Appwrite integrates with GitHub repositories for [automatic deployments](/docs/products/sites), GitHub Actions do not work with Sites out of the box today. Instead, you can connect your GitHub repo directly in the Appwrite console, and every push will trigger a deployment automatically. This gives you the benefits of continuous deployment without having to manually configure GitHub Actions.
 
-**9. Does Appwrite Sites support preview deployments like Vercel and Netlify?**
+**8. Does Appwrite Sites support preview deployments like Vercel and Netlify?**
 
 Yes. Appwrite Sites offers [preview deployments](/docs/products/sites/previews) for every pull request or branch. This means that whenever you push a new feature or bug fix, Appwrite automatically creates a live preview URL. Your team can test the changes in a production-like environment before merging, making collaboration faster and safer.
