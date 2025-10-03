@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "6 best free static website hosting services compared"
-description: See how Vercel, Render, Netlify, GitHub Pages, Cloudfare Pages and Appwrite Sites compare on features, pricing, and ease of use.
+description: See how Vercel, Render, Netlify, GitHub Pages, Clouflare Pages and Appwrite Sites compare on features, pricing, and ease of use.
 cover: /images/blog/best-free-static-website-hosting/cover.png
 date: 2025-10-03
 timeToRead: 10
@@ -22,7 +22,7 @@ Here’s a quick table to give you the overview before we dive into each service
 | **Render** | Free static sites | Git-based  | Static only | Yes | No (external required) | Simple, reliable global CDN |
 | **Netlify** | Starter (free forever) | Git deploys, preview builds | Static (SSR via edge functions) | Yes | No (external required) | Built-in serverless functions + extras |
 | **GitHub Pages** | Free for public repos | Push to repo, auto-build with Jekyll | Static only | Yes | No (external required) | Zero-cost hosting tied to GitHub |
-| **Cloudfare Pages** | Yes | Git-based auto-deploys, CLI | Static + SSR | Yes | No (external required) | Deep integration with Cloudflare’s global edge network |
+| **Clouflare Pages** | Yes | Git-based auto-deploys, CLI | Static + SSR | Yes | No (external required) | Deep integration with Cloudflare’s global edge network |
 | **Appwrite Sites** | Free  | Git-based auto-deploys, CLI, manual upload | Static + SSR | Yes | Yes | All-in-one: hosting + backend services |
 
 # Appwrite Sites
