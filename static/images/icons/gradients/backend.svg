@@ -1,14 +1,26 @@
-<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M40.7992 36.2001V11.8C40.7992 9.59091 39.0084 7.80005 36.7992 7.80005H11.1992C8.99008 7.80005 7.19922 9.59091 7.19922 11.8V36.2001C7.19922 38.4092 8.99008 40.2001 11.1992 40.2001H36.7992C39.0084 40.2001 40.7992 38.4092 40.7992 36.2001Z" fill="url(#paint0_linear_516_3287)" stroke="#FD366E" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
-<ellipse cx="13.2" cy="34.8" rx="1.2" ry="1.2" fill="#E4E4E7"/>
-<ellipse cx="13.2" cy="24" rx="1.2" ry="1.2" fill="#E4E4E7"/>
-<circle cx="13.2" cy="13.2" r="1.2" fill="#E4E4E7"/>
-<path d="M40.5 18.3H7" stroke="#FD366E" stroke-width="1.2"/>
-<path d="M40.5 29.5H7" stroke="#FD366E" stroke-width="1.2"/>
-<defs>
-<linearGradient id="paint0_linear_516_3287" x1="24.0014" y1="7.43187" x2="24.0014" y2="40.5682" gradientUnits="userSpaceOnUse">
-<stop stop-color="#FD366E" stop-opacity="0"/>
-<stop offset="1" stop-color="#FD366E" stop-opacity="0.4"/>
-</linearGradient>
-</defs>
+<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M34 29.5V10.5C34 8.29086 32.2091 6.5 30 6.5H10C7.79086 6.5 6 8.29086 6 10.5V29.5C6 31.7091 7.79086 33.5 10 33.5H30C32.2091 33.5 34 31.7091 34 29.5Z" fill="url(#paint0_linear)"/>
+  
+  <!-- bottom segment -->
+  <path d="M10 33.5C7.79086 33.5 6 31.7091 6 29.5V24.5H34V29.5C34 31.7091 32.2091 33.5 30 33.5H10Z" 
+        stroke="#FD366E" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+  
+  <!-- middle segment -->
+  <path d="M6 24.5V15.5H34V24.5H6Z" 
+        stroke="#FD366E" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+  
+  <!-- top segment -->
+  <path d="M6 15.5V10.5C6 8.29086 7.79086 6.5 10 6.5H30C32.2091 6.5 34 8.29086 34 10.5V15.5H6Z" 
+        stroke="#FD366E" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+  
+  <circle cx="11" cy="29" r="1" fill="#FD366E"/>
+  <circle cx="11" cy="20" r="1" fill="#FD366E"/>
+  <circle cx="11" cy="11" r="1" fill="#FD366E"/>
+  
+  <defs>
+    <linearGradient id="paint0_linear" x1="20" y1="6.2" x2="20" y2="33.8" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FD366E" stop-opacity="0"/>
+      <stop offset="1" stop-color="#FD366E" stop-opacity="0.4"/>
+    </linearGradient>
+  </defs>
 </svg>
