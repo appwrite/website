@@ -29,19 +29,19 @@ Here’s a quick table to give you the overview before we dive into each service
 
 [Appwrite Sites](/products/sites) is designed to go beyond traditional free static site hosting. Alongside static and server-side rendering, it integrates backend services such as databases, authentication, storage, and serverless functions. This makes it more than just an HTML hosting service, it’s an all-in-one developer platform that allows you to build, deploy, and scale full-stack applications without juggling multiple providers.
 
-**Key features of Appwrite Sites**
+## Key features of Appwrite Sites
 
 - Supports [static](https://appwrite.io/docs/products/sites/rendering/static) and [server-side](https://appwrite.io/docs/products/sites/rendering/ssr) rendering (Next.js, Nuxt, Astro, Remix, etc.)
 - [Git-based deployments](https://appwrite.io/docs/products/sites/deployments#create-deployment) with previews
 - [Global CDN](https://appwrite.io/docs/products/network/cdn) with SSL and DDoS protection
 - Built-in backend services: auth, database, functions, storage
 
-**Pricing of Appwrite Sites**
+## Pricing of Appwrite Sites
 
 - Open source and self-hostable
 - **Cloud option**: Free tier available, with paid Pro plan starting at $25/month.
 
-**Pros and cons of Appwrite Sites**
+## Pros and cons of Appwrite Sites
 
 | Pros | Cons |
 | --- | --- |
@@ -53,7 +53,7 @@ Here’s a quick table to give you the overview before we dive into each service
 
 [Vercel](https://vercel.com/) is a favourite among frontend developers because it makes it simple to host a static website connected to your Git workflow. Every push triggers an instant deploy, and every pull request gets its own preview URL.
 
-**Key features of Vercel**
+## Key features of Vercel
 
 - Git integration with auto-deploys and preview URLs
 - Global CDN and edge network
@@ -61,12 +61,12 @@ Here’s a quick table to give you the overview before we dive into each service
 - Edge and Node runtime support
 - Framework-optimized especially for Next.js.
 
-**Pricing of Vercel**
+## Pricing of Vercel
 
 - **Hobby (Free)**: 1M requests/month, 100 GB bandwidth, limited serverless usage
 - **Pro**: starts at $20 per user/month with higher limits
 
-**Pros and cons of Vercel**
+## Pros and cons of Vercel
 
 | Pros | Cons |
 | --- | --- |
@@ -78,19 +78,19 @@ Here’s a quick table to give you the overview before we dive into each service
 
 [Render](https://render.com/) is often overlooked, but it’s a clean option for static site hosting, free of complexity. You connect your repo, and every commit deploys automatically to a global CDN.
 
-**Key features of Render**
+## Key features of Render
 
 - Git-based deployments with auto-builds
 - Global CDN with caching and HTTPS
 - Custom domains with automatic SSL
 - Preview builds for pull requests
 
-**Pricing of Render**
+## Pricing of Render
 
 - **Free static sites**: 100 GB/month bandwidth, 750 build minutes/month
 - Paid plans scale with bandwidth and build usage
 
-**Pros and cons of Render**
+## Pros and cons of Render
 
 | Pros | Cons |
 | --- | --- |
@@ -102,19 +102,19 @@ Here’s a quick table to give you the overview before we dive into each service
 
 [Netlify](https://www.netlify.com/) set the standard for modern free hosting static website platforms. It goes beyond simple HTML hosting with useful extras like form handling, functions, and identity.
 
-**Key features of Netlify**
+## Key features of Netlify
 
 - Git-based continuous deployment
 - Serverless functions and edge functions
 - Previews, rollbacks, and global CDN
 - Built-in extras: form handling, identity, analytics
 
-**Pricing of Netlify**
+## Pricing of Netlify
 
 - **Starter (Free forever)**: 100 GB bandwidth, 300 build minutes, 125k serverless function calls
 - **Pro**: $19 per user/month with larger limits and team features
 
-**Pros and cons of Netlify**
+## Pros and cons of Netlify
 
 | Pros | Cons |
 | --- | --- |
@@ -126,19 +126,19 @@ Here’s a quick table to give you the overview before we dive into each service
 
 If all you need is **free static webpage hosting**, [GitHub Pages](https://docs.github.com/en/pages) is the simplest choice. You push your site to a repository and it’s live. It’s great for documentation, blogs, and personal projects.
 
-**Key features of GitHub Pages**
+## Key features of GitHub Pages
 
 - Free hosting directly from GitHub repos
 - Built-in Jekyll support for static site builds
 - Free HTTPS and custom domains
 - Simple workflow tied to commits
 
-**Pricing of GitHub Pages**
+## Pricing of GitHub Pages
 
 - **Free** for public repositories
 - Requires a paid GitHub plan for private repos
 
-**Pros and cons of GitHub Pages**
+## Pros and cons of GitHub Pages
 
 | Pros | Cons |
 | --- | --- |
@@ -150,7 +150,7 @@ If all you need is **free static webpage hosting**, [GitHub Pages](https://docs.
 
 [Cloudflare Pages](https://pages.cloudflare.com/) is a relatively newer option, but has grown fast thanks to Cloudflare’s global infrastructure. It provides free, globally distributed static hosting with Git integration and the ability to run dynamic code through **Cloudflare Workers**.
 
-**Key features of Cloudflare Pages**
+## Key features of Cloudflare Pages
 
 - Git-based deployments with preview builds
 - Global CDN with Cloudflare’s edge network
@@ -158,12 +158,12 @@ If all you need is **free static webpage hosting**, [GitHub Pages](https://docs.
 - Integration with Cloudflare Workers for SSR and dynamic functionality
 - Edge Functions for APIs and personalization
 
-**Pricing of Cloudflare Pages**
+## Pricing of Cloudflare Pages
 
 - **Free**: 500 builds/month, unlimited requests, 100 custom domains
 - **Paid Pro plan**: $20/month for 5k builds/month, higher concurrency, and Workers KV/Durable Objects access
 
-**Pros and cons of Cloudflare Pages**
+## Pros and cons of Cloudflare Pages
 
 | Pros | Cons |
 | --- | --- |
