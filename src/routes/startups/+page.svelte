@@ -23,7 +23,9 @@
     import CommunitySupportChat from '$lib/components/CommunitySupportChat.svelte';
     import { trackEvent } from '$lib/actions/analytics';
     import { Button } from '$lib/components/ui';
-    import CaseStudies from '$routes/(marketing)/(components)/case-studies.svelte';
+    import CaseStudiesLight from './case-studies-light.svelte';
+    import Features from '$routes/(marketing)/(components)/features.svelte';
+    import Benefits from '$routes/(marketing)/(components)/benefits.svelte';
 
     const title = 'Startups' + TITLE_SUFFIX;
     const description =
@@ -300,7 +302,7 @@
         </div>
 
         <!-- Developer toolkit section -->
-        <div class="web-white-section light relative pt-10">
+        <div class="web-white-section light relative border-b border-dashed border-black/8 pt-10">
             <div class="web-big-padding-section-level-2 h-[256px]">
                 <section class="container">
                     <div class="mx-auto max-w-[720px] text-center">
@@ -407,193 +409,10 @@
         </div>
 
         <!-- Benefits section -->
-        <div class="web-white-section light relative border-t border-dashed border-black/8">
-            <div class="web-big-padding-section-level-2">
-                <section class="container">
-                    <!-- Header -->
-                    <div class="grid grid-cols-1 gap-16 px-4 lg:grid-cols-2 lg:gap-20">
-                        <div class="flex flex-col gap-6">
-                            <h3 class="text-title font-aeonik-pro text-primary whitespace-nowrap">
-                                Benefits of Appwrite<br />for
-                                <span class="relative"
-                                    >startups<span
-                                        class="absolute bottom-0 left-0 h-1 w-full bg-pink-200"
-                                    ></span></span
-                                >
-                            </h3>
-                        </div>
-
-                        <div class="flex flex-col justify-center">
-                            <p class="text-description text-secondary font-medium">
-                                You don't need to have a team of engineers to develop, host, and
-                                scale applications. Appwrite gives you everything you need,
-                                including built-in security, AI, and open source.
-                            </p>
-                        </div>
-                    </div>
-
-                    <!-- Benefits grid -->
-                    <div class="mt-20">
-                        <div class="w-full border-t border-dashed border-black/8"></div>
-
-                        <!-- Cards grid -->
-                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
-                            <div
-                                class="flex flex-col items-start border-dashed border-black/8 p-4 text-left md:border-r md:border-b"
-                            >
-                                <img
-                                    src="/images/icons/gradients/globe.svg"
-                                    alt="All-in-one platform"
-                                    class="mb-4 h-8 w-8"
-                                />
-                                <div class="flex flex-col gap-1">
-                                    <h4
-                                        class="text-caption text-primary font-medium whitespace-nowrap"
-                                    >
-                                        All-in-one platform
-                                    </h4>
-                                    <p class="text-caption text-secondary font-medium">
-                                        Use one platform for backend development and web hosting and
-                                        reduce vendors.
-                                    </p>
-                                </div>
-                            </div>
-
-                            <div
-                                class="flex flex-col items-start border-dashed border-black/8 p-4 text-left md:border-r md:border-b"
-                            >
-                                <img
-                                    src="/images/icons/gradients/stars.svg"
-                                    alt="AI-powered development"
-                                    class="mb-4 h-8 w-8"
-                                />
-                                <div class="flex flex-col gap-1">
-                                    <h4
-                                        class="text-caption text-primary font-medium whitespace-nowrap"
-                                    >
-                                        AI-powered development
-                                    </h4>
-                                    <p class="text-caption text-secondary font-medium">
-                                        Connect your favorite AI productivity tools with Appwrite's
-                                        MCP.
-                                    </p>
-                                </div>
-                            </div>
-
-                            <div
-                                class="flex flex-col items-start border-dashed border-black/8 p-4 text-left md:border-r md:border-b"
-                            >
-                                <img
-                                    src="/images/icons/gradients/rocket.svg"
-                                    alt="Scale effortlessly"
-                                    class="mb-4 h-8 w-8"
-                                />
-                                <div class="flex flex-col gap-1">
-                                    <h4
-                                        class="text-caption text-primary font-medium whitespace-nowrap"
-                                    >
-                                        Scale effortlessly
-                                    </h4>
-                                    <p class="text-caption text-secondary font-medium">
-                                        From MVP to enterprise, our app scales automatically,
-                                        letting you focus on your business goals.
-                                    </p>
-                                </div>
-                            </div>
-
-                            <div
-                                class="flex flex-col items-start border-dashed border-black/8 p-4 text-left md:border-b"
-                            >
-                                <img
-                                    src="/images/icons/gradients/backend.svg"
-                                    alt="Zero configuration development"
-                                    class="mb-4 h-8 w-8"
-                                />
-                                <div class="flex flex-col gap-1">
-                                    <h4
-                                        class="text-caption text-primary font-medium whitespace-nowrap"
-                                    >
-                                        Zero configuration development
-                                    </h4>
-                                    <p class="text-caption text-secondary font-medium">
-                                        Spin up your backend in minutes, deploy in seconds. Fast and
-                                        simple.
-                                    </p>
-                                </div>
-                            </div>
-
-                            <div
-                                class="flex flex-col items-start border-dashed border-black/8 p-4 text-left md:border-r"
-                            >
-                                <img
-                                    src="/images/icons/gradients/shield.svg"
-                                    alt="Built-in security"
-                                    class="mb-4 h-8 w-8"
-                                />
-                                <div class="flex flex-col gap-1">
-                                    <h4
-                                        class="text-caption text-primary font-medium whitespace-nowrap"
-                                    >
-                                        Built-in security
-                                    </h4>
-                                    <p class="text-caption text-secondary font-medium">
-                                        Your users' data is safe from day one with Appwrite's built
-                                        in security.
-                                    </p>
-                                </div>
-                            </div>
-
-                            <div
-                                class="flex flex-col items-start border-dashed border-black/8 p-4 text-left md:border-r"
-                            >
-                                <img
-                                    src="/images/icons/gradients/eu.svg"
-                                    alt="Compliance"
-                                    class="mb-4 h-8 w-8"
-                                />
-                                <div class="flex flex-col gap-1">
-                                    <h4
-                                        class="text-caption text-primary font-medium whitespace-nowrap"
-                                    >
-                                        Compliance
-                                    </h4>
-                                    <p class="text-caption text-secondary font-medium">
-                                        We adhere to all needed compliance: GDPR, HIPAA, CCPA,
-                                        SOC-2.
-                                    </p>
-                                </div>
-                            </div>
-
-                            <div
-                                class="flex flex-col items-start border-dashed border-black/8 p-4 text-left md:border-r"
-                            >
-                                <img
-                                    src="/images/icons/gradients/database.svg"
-                                    alt="Open-source"
-                                    class="mb-4 h-8 w-8"
-                                />
-                                <div class="flex flex-col gap-1">
-                                    <h4
-                                        class="text-caption text-primary font-medium whitespace-nowrap"
-                                    >
-                                        Open-source
-                                    </h4>
-                                    <p class="text-caption text-secondary font-medium">
-                                        Your data is always yours. Want to migrate away? You can do
-                                        so at any time.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Full-width bottom border -->
-                        <div class="w-full border-b border-dashed border-black/8"></div>
-                    </div>
-                </section>
-            </div>
-        </div>
+        <Benefits />
 
         <!-- Case Studies Section -->
-        <CaseStudies />
+        <CaseStudiesLight />
 
         <div id="form" class="overflow-hidden">
             <div class=" relative pt-20 pb-8 md:pt-40 md:pb-30">
