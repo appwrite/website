@@ -23,6 +23,7 @@
     import CommunitySupportChat from '$lib/components/CommunitySupportChat.svelte';
     import { trackEvent } from '$lib/actions/analytics';
     import { Button } from '$lib/components/ui';
+    import CaseStudies from '$routes/(marketing)/(components)/case-studies.svelte';
 
     const title = 'Startups' + TITLE_SUFFIX;
     const description =
@@ -298,8 +299,8 @@
             </div>
         </div>
 
-        <div class="web-white-section light relative pb-[120px]">
-            <!-- developer toolkit subsection -->
+        <!-- Developer toolkit section -->
+        <div class="web-white-section light relative pt-10">
             <div class="web-big-padding-section-level-2 h-[256px]">
                 <section class="container">
                     <div class="mx-auto max-w-[720px] text-center">
@@ -403,385 +404,196 @@
                     </div>
                 </section>
             </div>
+        </div>
 
-            <!-- Benefits section -->
-            <div class="web-big-padding-section-level-2" style="padding-top: 120px;">
+        <!-- Benefits section -->
+        <div class="web-white-section light relative border-t border-dashed border-black/8">
+            <div class="web-big-padding-section-level-2">
                 <section class="container">
                     <!-- Header -->
-                    <div class="grid grid-cols-1 gap-16 lg:grid-cols-2 lg:gap-20 px-4">
+                    <div class="grid grid-cols-1 gap-16 px-4 lg:grid-cols-2 lg:gap-20">
                         <div class="flex flex-col gap-6">
                             <h3 class="text-title font-aeonik-pro text-primary whitespace-nowrap">
-                                Benefits of Appwrite<br />for <span class="relative">startups<span class="absolute bottom-0 left-0 h-1 w-full bg-pink-200"></span></span>
+                                Benefits of Appwrite<br />for
+                                <span class="relative"
+                                    >startups<span
+                                        class="absolute bottom-0 left-0 h-1 w-full bg-pink-200"
+                                    ></span></span
+                                >
                             </h3>
                         </div>
-                        
+
                         <div class="flex flex-col justify-center">
                             <p class="text-description text-secondary font-medium">
-                                You don't need to have a team of engineers to develop, host, and scale applications. Appwrite gives you everything you need, including built-in security, AI, and open source.
+                                You don't need to have a team of engineers to develop, host, and
+                                scale applications. Appwrite gives you everything you need,
+                                including built-in security, AI, and open source.
                             </p>
                         </div>
                     </div>
 
                     <!-- Benefits grid -->
-                    <div class="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
-                            <!-- All-in-one platform -->
-                            <div class="flex flex-col items-start text-left  border-t border-b border-r border-dashed border-black/8 p-4">
-                                <img src="/images/icons/gradients/globe.svg" alt="All-in-one platform" class="h-8 w-8 mb-4" />
+                    <div class="mt-20">
+                        <div class="w-full border-t border-dashed border-black/8"></div>
+
+                        <!-- Cards grid -->
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
+                            <div
+                                class="flex flex-col items-start border-dashed border-black/8 p-4 text-left md:border-r md:border-b"
+                            >
+                                <img
+                                    src="/images/icons/gradients/globe.svg"
+                                    alt="All-in-one platform"
+                                    class="mb-4 h-8 w-8"
+                                />
                                 <div class="flex flex-col gap-1">
-                                    <h4 class="text-caption text-primary font-medium whitespace-nowrap">All-in-one platform</h4>
-                                    <p class="text-caption font-medium text-secondary">Use one platform for backend development and web hosting and reduce vendors.</p>
+                                    <h4
+                                        class="text-caption text-primary font-medium whitespace-nowrap"
+                                    >
+                                        All-in-one platform
+                                    </h4>
+                                    <p class="text-caption text-secondary font-medium">
+                                        Use one platform for backend development and web hosting and
+                                        reduce vendors.
+                                    </p>
                                 </div>
                             </div>
 
-                            <!-- AI-powered development -->
-                            <div class="flex flex-col items-start text-left  border-t border-b border-r border-dashed border-black/8 p-4">
-                                <img src="/images/icons/gradients/stars.svg" alt="AI-powered development" class="h-8 w-8 mb-4" />
+                            <div
+                                class="flex flex-col items-start border-dashed border-black/8 p-4 text-left md:border-r md:border-b"
+                            >
+                                <img
+                                    src="/images/icons/gradients/stars.svg"
+                                    alt="AI-powered development"
+                                    class="mb-4 h-8 w-8"
+                                />
                                 <div class="flex flex-col gap-1">
-                                    <h4 class="text-caption text-primary font-medium whitespace-nowrap">AI-powered development</h4>
-                                    <p class="text-caption font-medium text-secondary">Connect your favorite AI productivity tools with Appwrite's MCP.</p>
+                                    <h4
+                                        class="text-caption text-primary font-medium whitespace-nowrap"
+                                    >
+                                        AI-powered development
+                                    </h4>
+                                    <p class="text-caption text-secondary font-medium">
+                                        Connect your favorite AI productivity tools with Appwrite's
+                                        MCP.
+                                    </p>
                                 </div>
                             </div>
 
-                            <!-- Scale effortlessly -->
-                            <div class="flex flex-col items-start text-left  border-t border-b border-r border-dashed border-black/8 p-4">
-                                <img src="/images/icons/gradients/rocket.svg" alt="Scale effortlessly" class="h-8 w-8 mb-4" />
+                            <div
+                                class="flex flex-col items-start border-dashed border-black/8 p-4 text-left md:border-r md:border-b"
+                            >
+                                <img
+                                    src="/images/icons/gradients/rocket.svg"
+                                    alt="Scale effortlessly"
+                                    class="mb-4 h-8 w-8"
+                                />
                                 <div class="flex flex-col gap-1">
-                                    <h4 class="text-caption text-primary font-medium whitespace-nowrap">Scale effortlessly</h4>
-                                    <p class="text-caption font-medium text-secondary">From MVP to enterprise, our app scales automatically, letting you focus on your business goals.</p>
+                                    <h4
+                                        class="text-caption text-primary font-medium whitespace-nowrap"
+                                    >
+                                        Scale effortlessly
+                                    </h4>
+                                    <p class="text-caption text-secondary font-medium">
+                                        From MVP to enterprise, our app scales automatically,
+                                        letting you focus on your business goals.
+                                    </p>
                                 </div>
                             </div>
 
-                            <!-- Zero configuration development -->
-                            <div class="flex flex-col items-start text-left border-t border-b border-l border-dashed border-black/8 p-4">
-                                <img src="/images/icons/gradients/backend.svg" alt="Zero configuration development" class="h-8 w-8 mb-4" />
+                            <div
+                                class="flex flex-col items-start border-dashed border-black/8 p-4 text-left md:border-b"
+                            >
+                                <img
+                                    src="/images/icons/gradients/backend.svg"
+                                    alt="Zero configuration development"
+                                    class="mb-4 h-8 w-8"
+                                />
                                 <div class="flex flex-col gap-1">
-                                    <h4 class="text-caption text-primary font-medium whitespace-nowrap">Zero configuration development</h4>
-                                    <p class="text-caption font-medium text-secondary">Spin up your backend in minutes, deploy in seconds. Fast and simple.</p>
+                                    <h4
+                                        class="text-caption text-primary font-medium whitespace-nowrap"
+                                    >
+                                        Zero configuration development
+                                    </h4>
+                                    <p class="text-caption text-secondary font-medium">
+                                        Spin up your backend in minutes, deploy in seconds. Fast and
+                                        simple.
+                                    </p>
                                 </div>
                             </div>
 
-                            <!-- Built-in security -->
-                            <div class="flex flex-col items-start text-left border-t border-b border-r border-dashed border-black/8 p-4">
-                                <img src="/images/icons/gradients/shield.svg" alt="Built-in security" class="h-8 w-8 mb-4" />
+                            <div
+                                class="flex flex-col items-start border-dashed border-black/8 p-4 text-left md:border-r"
+                            >
+                                <img
+                                    src="/images/icons/gradients/shield.svg"
+                                    alt="Built-in security"
+                                    class="mb-4 h-8 w-8"
+                                />
                                 <div class="flex flex-col gap-1">
-                                    <h4 class="text-caption text-primary font-medium whitespace-nowrap">Built-in security</h4>
-                                    <p class="text-caption font-medium text-secondary">Your users' data is safe from day one with Appwrite's built in security.</p>
+                                    <h4
+                                        class="text-caption text-primary font-medium whitespace-nowrap"
+                                    >
+                                        Built-in security
+                                    </h4>
+                                    <p class="text-caption text-secondary font-medium">
+                                        Your users' data is safe from day one with Appwrite's built
+                                        in security.
+                                    </p>
                                 </div>
                             </div>
 
-                            <!-- Compliance -->
-                            <div class="flex flex-col items-start text-left  border-t border-b border-l border-dashed border-black/8 p-4">
-                                <img src="/images/icons/gradients/eu.svg" alt="Compliance" class="h-8 w-8 mb-4" />
+                            <div
+                                class="flex flex-col items-start border-dashed border-black/8 p-4 text-left md:border-r"
+                            >
+                                <img
+                                    src="/images/icons/gradients/eu.svg"
+                                    alt="Compliance"
+                                    class="mb-4 h-8 w-8"
+                                />
                                 <div class="flex flex-col gap-1">
-                                    <h4 class="text-caption text-primary font-medium whitespace-nowrap">Compliance</h4>
-                                    <p class="text-caption font-medium text-secondary">We adhere to all needed compliance: GDPR, HIPAA, CCPA, SOC-2.</p>
+                                    <h4
+                                        class="text-caption text-primary font-medium whitespace-nowrap"
+                                    >
+                                        Compliance
+                                    </h4>
+                                    <p class="text-caption text-secondary font-medium">
+                                        We adhere to all needed compliance: GDPR, HIPAA, CCPA,
+                                        SOC-2.
+                                    </p>
                                 </div>
                             </div>
 
-                            <!-- Open-source -->
-                            <div class="flex flex-col items-start text-left  border-t border-b border-l border-r border-dashed border-black/8 p-4">
-                                <img src="/images/icons/gradients/database.svg" alt="Open-source" class="h-8 w-8 mb-4" />
+                            <div
+                                class="flex flex-col items-start border-dashed border-black/8 p-4 text-left md:border-r"
+                            >
+                                <img
+                                    src="/images/icons/gradients/database.svg"
+                                    alt="Open-source"
+                                    class="mb-4 h-8 w-8"
+                                />
                                 <div class="flex flex-col gap-1">
-                                    <h4 class="text-caption text-primary font-medium whitespace-nowrap">Open-source</h4>
-                                    <p class="text-caption font-medium text-secondary">Your data is always yours. Want to migrate away? You can do so at any time.</p>
+                                    <h4
+                                        class="text-caption text-primary font-medium whitespace-nowrap"
+                                    >
+                                        Open-source
+                                    </h4>
+                                    <p class="text-caption text-secondary font-medium">
+                                        Your data is always yours. Want to migrate away? You can do
+                                        so at any time.
+                                    </p>
                                 </div>
                             </div>
+                        </div>
+                        <!-- Full-width bottom border -->
+                        <div class="w-full border-b border-dashed border-black/8"></div>
                     </div>
                 </section>
             </div>
-
-            <div class="web-big-padding-section-level-2 e-mt-20-mobile">
-                <div class="container">
-                    <div class="web-timeline-content">
-                        <ol class="web-timeline-content-list">
-                            <li>
-                                <div
-                                    class="web-timeline-content-item-top web-grid-1-1"
-                                    style="--grid-1-1-gap:2.5rem; --grid-1-1-gap-desktop:15rem;"
-                                >
-                                    <div class="flex flex-col gap-4">
-                                        <h3 class="text-title font-aeonik-pro text-primary">
-                                            Ship faster
-                                        </h3>
-                                        <p class="text-body font-medium">
-                                            Utilizing Appwrite as your all-in-one platform, you
-                                            significantly cut down the time and resources spent on
-                                            building a backend infrastructure from scratch and you
-                                            deploy directly from Appwrite with Sites. This means you
-                                            can get to quicker iterations and faster time-to-market,
-                                            directly addressing the challenge of finding
-                                            product-market fit sooner.
-                                        </p>
-                                    </div>
-                                    <div>
-                                        <a
-                                            href="/blog/post/customer-stories-myshoefitter"
-                                            class="web-card is-white group flex flex-col gap-5"
-                                        >
-                                            <div class="border-card">
-                                                <div class="glow"></div>
-                                            </div>
-                                            <p class="aw-sub-body-500">
-                                                The integrated user authentication and the ease of
-                                                creating data structures have undoubtedly saved us
-                                                several weeks' worth of time.
-                                            </p>
-                                            <div class="web-user-box">
-                                                <img
-                                                    class="web-user-box-image"
-                                                    src="/images/testimonials/marius-bolik2.png"
-                                                    alt="Avatar of Kap.ts"
-                                                    width="48"
-                                                    height="48"
-                                                />
-                                                <div
-                                                    class="web-user-box-name text-sub-body font-medium"
-                                                >
-                                                    Marius Bolik
-                                                </div>
-                                                <div class="web-user-box-username text-sub-body">
-                                                    CTO // mySHOEFITTER
-                                                </div>
-                                            </div>
-                                            <span
-                                                class="text-sub-body text-primary flex items-center gap-1"
-                                                >Read customer story <span
-                                                    class="web-icon-arrow-right transition-transform group-hover:translate-x-1"
-                                                ></span></span
-                                            >
-                                        </a>
-                                    </div>
-                                </div>
-
-                                <div
-                                    class="border-smooth mt-20 -mr-[85vw] overflow-hidden rounded-lg border shadow-[-28.0524px_51.0044px_22.952px_rgba(0,0,0,0.01),_-16.1514px_28.9025px_19.5517px_rgba(0,_0,_0,_0.02),_-6.80058px_12.7511px_14.4512px_rgba(0,_0,_0,_0.03),_-1.70015px_3.40029px_7.65065px_rgba(0,_0,_0,_0.04),_0px_0px_0px_rgba(0,_0,_0,_0.04)] md:mr-0 md:rounded-2xl"
-                                >
-                                    <img alt="" src={ProjectTimeline} width={1250} />
-                                </div>
-                            </li>
-                            <li class="web-timeline-content-item">
-                                <div
-                                    class="web-grid-1-1"
-                                    style="--grid-1-1-gap:2.5rem; --grid-1-1-gap-desktop:6.5rem;"
-                                >
-                                    <div class="web-is-not-mobile">
-                                        <img alt="" src={UsageGraphs} />
-                                    </div>
-                                    <div class="web-u-flex-basis-380 flex flex-col gap-4">
-                                        <h3 class="text-title font-aeonik-pro text-primary">
-                                            Scalable architecture
-                                        </h3>
-                                        <p class="text-body font-medium">
-                                            Appwrite's scalable architecture ensures you can build
-                                            your product with growth in mind. Whether you're just
-                                            testing the waters or ready to scale up rapidly, our
-                                            infrastructure seamlessly adjusts to your needs, easing
-                                            the transition through different stages of your business
-                                            growth.
-                                        </p>
-                                        <a
-                                            href="/blog/post/case-study-kcollect"
-                                            class="web-card group is-white web-u-margin-block-start-64 e-mt-4-mobile gap-5"
-                                        >
-                                            <div class="border-card">
-                                                <div class="glow"></div>
-                                            </div>
-                                            <p class="aw-sub-body-500">{ryanOconner.text}</p>
-                                            <div class="web-user-box">
-                                                <img
-                                                    class="web-user-box-image"
-                                                    src={ryanOconner.image}
-                                                    alt={`Avatar of ${ryanOconner.name}`}
-                                                    width="48"
-                                                    height="48"
-                                                />
-                                                <div
-                                                    class="web-user-box-name text-sub-body font-medium"
-                                                >
-                                                    {ryanOconner.name}
-                                                </div>
-                                                <div class="web-user-box-username text-sub-body">
-                                                    {ryanOconner.handle}
-                                                </div>
-                                            </div>
-                                            <span
-                                                class="text-sub-body text-primary flex items-center gap-1"
-                                                >Read customer story <span
-                                                    class="web-icon-arrow-right transition-transform group-hover:translate-x-1"
-                                                ></span></span
-                                            >
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="web-is-only-mobile">
-                                    <img
-                                        class="mx-auto block max-w-[450px]"
-                                        alt=""
-                                        src={UsageGraphs}
-                                    />
-                                </div>
-                            </li>
-                            <li class="web-timeline-content-item">
-                                <div
-                                    class="web-timeline-content-item-top web-grid-1-1"
-                                    style="--grid-1-1-gap: 2.5rem; --grid-1-1-gap-desktop: 6.5rem;"
-                                >
-                                    <div class="flex flex-col gap-4">
-                                        <h3 class="text-title font-aeonik-pro text-primary">
-                                            Built-in security and compliance
-                                        </h3>
-                                        <p class="text-body font-medium">
-                                            Appwrite comes with built-in security features like
-                                            authentication, database security, DDoS protections, and
-                                            more, reducing the time and effort you need to spend on
-                                            securing your application.
-                                        </p>
-                                        <div
-                                            class="web-card is-white web-u-margin-block-start-64 e-mt-4-mobile flex flex-col gap-5"
-                                        >
-                                            <p class="aw-sub-body-500">{souvikSarkar.text}</p>
-                                            <div class="web-user-box">
-                                                <img
-                                                    class="web-user-box-image"
-                                                    src={souvikSarkar.image}
-                                                    alt={`Avatar of ${souvikSarkar.name}`}
-                                                    width="48"
-                                                    height="48"
-                                                />
-                                                <div
-                                                    class="web-user-box-name text-sub-body font-medium"
-                                                >
-                                                    {souvikSarkar.name}
-                                                </div>
-                                                <div class="web-user-box-username text-sub-body">
-                                                    {souvikSarkar.handle}
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="web-is-not-desktop relative">
-                                        <img
-                                            class="blockmx-auto max-w-[450px]"
-                                            src={SecurityOptions}
-                                            alt=""
-                                            style="height:auto;"
-                                        />
-                                    </div>
-
-                                    <div class="web-is-only-desktop relative overflow-hidden">
-                                        <div class="flex">
-                                            <img
-                                                src={SecurityOptions}
-                                                alt=""
-                                                class="ml-auto"
-                                                style="width:500px; height:auto;"
-                                            />
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="web-timeline-content-item">
-                                <div
-                                    class="web-timeline-content-item-top web-grid-1-1"
-                                    style="--grid-1-1-gap: 2.5rem; --grid-1-1-gap-desktop: 6.5rem;"
-                                >
-                                    <div
-                                        class="e-u-order-1-mobile e-mx-auto-mobile web-u-max-width-580 w-full"
-                                    >
-                                        <div
-                                            class="web-chat web-u-max-width-580 web-u-margin-block-start-40-mobile"
-                                        >
-                                            <CommunitySupportChat />
-                                        </div>
-                                    </div>
-                                    <div class="web-mx-auto-mobile ml-auto flex flex-col gap-4">
-                                        <h3 class="text-title font-aeonik-pro text-primary">
-                                            Power of open source community
-                                        </h3>
-                                        <p class="text-body font-medium">
-                                            Join a growing community of developers and founders who
-                                            use Appwrite to build their products. Gain access to a
-                                            wealth of knowledge, support, and shared experiences to
-                                            help navigate the challenges of startup growth.
-                                        </p>
-                                        <a
-                                            href="/blog/post/case-study-myshoefitter"
-                                            class="web-card group is-white web-u-margin-block-start-64 e-mt-4-mobile gap-5"
-                                        >
-                                            <div class="border-card">
-                                                <div class="glow"></div>
-                                            </div>
-                                            <p class="aw-sub-body-500">{mariusBolik.text}</p>
-                                            <div class="web-user-box">
-                                                <img
-                                                    class="web-user-box-image"
-                                                    src={mariusBolik.image}
-                                                    alt={`avatar of ${mariusBolik.name}`}
-                                                    width="48"
-                                                    height="48"
-                                                />
-                                                <div
-                                                    class="web-user-box-name text-sub-body font-medium"
-                                                >
-                                                    {mariusBolik.name}
-                                                </div>
-                                                <div class="web-user-box-username text-sub-body">
-                                                    {mariusBolik.handle}
-                                                </div>
-                                            </div>
-                                            <span
-                                                class="text-sub-body text-primary flex items-center gap-1"
-                                                >Read customer story <span
-                                                    class="web-icon-arrow-right transition-transform group-hover:translate-x-1"
-                                                ></span></span
-                                            >
-                                        </a>
-                                    </div>
-                                </div>
-                            </li>
-                        </ol>
-                    </div>
-                </div>
-            </div>
-
-            <div class="web-u-overflow-hidden e-mt-50-desktop e-mt-38-mobile pb-8 md:pb-30">
-                <h4
-                    class="text-title font-aeonik-pro text-primary mx-auto max-w-[350px] text-center"
-                >
-                    Focus on building your product
-                </h4>
-                <div class="scroll-carousel">
-                    <ul class="inner gap-8">
-                        {#each testimonials as t}
-                            <li>
-                                <div
-                                    class="web-card is-white web-u-margin-block-start-64 e-mt-12-mobile gap-5"
-                                    style="inline-size:23.625rem"
-                                >
-                                    <p class="aw-sub-body-500">{t.text}</p>
-                                    <div class="web-user-box">
-                                        <img
-                                            class="web-user-box-image"
-                                            src={t.image}
-                                            alt="Avatar of Kap.ts"
-                                            width="48"
-                                            height="48"
-                                        />
-                                        <div class="web-user-box-name text-sub-body font-medium">
-                                            {t.name}
-                                        </div>
-                                        <div class="web-user-box-username text-sub-body">
-                                            {t.handle}
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                        {/each}
-                    </ul>
-                </div>
-            </div>
         </div>
+
+        <!-- Case Studies Section -->
+        <CaseStudies />
 
         <div id="form" class="overflow-hidden">
             <div class=" relative pt-20 pb-8 md:pt-40 md:pb-30">
