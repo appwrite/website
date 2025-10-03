@@ -84,7 +84,7 @@ Yes. Enterprises often need more than just sending messages. They care about **s
 
 With Appwrite, you can self-host to keep everything in your own infrastructure, or use [Appwrite Cloud](https://cloud.appwrite.io/console/) for a fully managed setup. 
 
-Either way, you get support for APNs and FCM, user targeting, and the flexibility to integrate notifications with authentication, databases, hosting and other backend services. That means less vendor sprawl and more confidence in meeting enterprise requirements.
+Either way, you get support for APNs and FCM, user targeting, and the flexibility to integrate notifications with authentication, databases, hosting, and other backend services. That means less vendor sprawl and more confidence in meeting enterprise requirements.
 
 8. **How do I send push notifications with Appwrite?**
 
