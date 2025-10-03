@@ -322,7 +322,7 @@
                                 class="bg-smooth text-caption text-primary flex h-10 items-center gap-2 rounded-[20px] px-3"
                             >
                                 <img
-                                    src="/images/icons/illustrated/dark/auth.png"
+                                    src="/images/icons/illustrated/light/auth.png"
                                     alt="Auth"
                                     class="h-6 w-6 shrink-0"
                                 />
@@ -332,7 +332,7 @@
                                 class="bg-smooth text-caption text-primary flex h-10 items-center gap-2 rounded-[20px] px-3"
                             >
                                 <img
-                                    src="/images/icons/illustrated/dark/databases.png"
+                                    src="/images/icons/illustrated/light/databases.png"
                                     alt="Databases"
                                     class="h-6 w-6 shrink-0"
                                 />
@@ -342,7 +342,7 @@
                                 class="bg-smooth text-caption text-primary flex h-10 items-center gap-2 rounded-[20px] px-3"
                             >
                                 <img
-                                    src="/images/icons/illustrated/dark/storage.png"
+                                    src="/images/icons/illustrated/light/storage.png"
                                     alt="Storage"
                                     class="h-6 w-6 shrink-0"
                                 />
@@ -352,7 +352,7 @@
                                 class="bg-smooth text-caption text-primary flex h-10 items-center gap-2 rounded-[20px] px-3"
                             >
                                 <img
-                                    src="/images/icons/illustrated/dark/functions.png"
+                                    src="/images/icons/illustrated/light/functions.png"
                                     alt="Functions"
                                     class="h-6 w-6 shrink-0"
                                 />
@@ -362,7 +362,7 @@
                                 class="bg-smooth text-caption text-primary flex h-10 items-center gap-2 rounded-[20px] px-3"
                             >
                                 <img
-                                    src="/images/icons/illustrated/dark/messaging.png"
+                                    src="/images/icons/illustrated/light/messaging.png"
                                     alt="Messaging"
                                     class="h-6 w-6 shrink-0"
                                 />
@@ -372,7 +372,7 @@
                                 class="bg-smooth text-caption text-primary flex h-10 items-center gap-2 rounded-[20px] px-3"
                             >
                                 <img
-                                    src="/images/icons/illustrated/dark/realtime.png"
+                                    src="/images/icons/illustrated/light/realtime.png"
                                     alt="Realtime"
                                     class="h-6 w-6 shrink-0"
                                 />
@@ -393,7 +393,7 @@
                                 class="bg-smooth text-caption text-primary flex h-10 items-center gap-2 rounded-[20px] px-3"
                             >
                                 <img
-                                    src="/images/icons/illustrated/dark/sites.png"
+                                    src="/images/icons/illustrated/light/sites.png"
                                     alt="Sites"
                                     class="h-6 w-6 shrink-0"
                                 />
