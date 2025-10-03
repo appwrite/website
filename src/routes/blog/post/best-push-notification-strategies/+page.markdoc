@@ -49,7 +49,7 @@ Not every user wants the same message. Segment by region, preferences, or contex
 
 Push notifications are short messages sent from your app to a user’s device, even when the app isn’t open. They show up on the lock screen or browser, giving you a direct way to grab attention. At their best, they’re quick nudges that remind users of something useful, like a delivery update or a new feature worth trying.
 
-2. Does Appwrite support push notifications to different platforms
+2. **Does Appwrite support push notifications to different platforms?**
 
 Yes. With Appwrite, you can send both **mobile push notifications** (iOS and Android) and **web push notifications**. You can also target by **topics** (groups of users) or individual **user IDs**, giving you flexibility to broadcast updates or send highly personalized messages.
 
