@@ -105,7 +105,7 @@ X-Appwrite-JWT: [TOKEN]
 
 Appwrite implements resumable, chunked uploads for files larger than 5MB. Chunked uploads send files in chunks of 5MB to reduce memory footprint and increase resilience when handling large files. [Appwrite SDKs](/docs/sdks) will automatically handle chunked uploads, but it is possible to implement this with the REST API directly.
 
-Upload endpoints in Appwrite, such as [Create File](https://appwrite.io/docs/references/cloud/client-web/storage#createFile) and [Create Deployment](https://appwrite.io/docs/references/cloud/server-nodejs/functions#createDeployment), are different from other endpoints. These endpoints take multipart form data instead of JSON data. To implement chunked uploads, you will need to implement the following headers. If you wish, this logic is already available in any of the [Appwrite SDKs](/docs/sdks).
+Upload endpoints in Appwrite, such as [Create File](/docs/references/cloud/client-web/storage#createFile) and [Create Deployment](/docs/references/cloud/server-nodejs/functions#createDeployment), are different from other endpoints. These endpoints take multipart form data instead of JSON data. To implement chunked uploads, you will need to implement the following headers. If you wish, this logic is already available in any of the [Appwrite SDKs](/docs/sdks).
 
 {% table %}
 - Header
