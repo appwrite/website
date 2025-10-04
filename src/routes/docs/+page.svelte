@@ -458,7 +458,7 @@
                         >
                             <h4 class="text-sub-body text-primary font-medium">REST API</h4>
                             <p class="text-sub-body mt-1">
-                                Integrate with HTTP requests without the needing an SDK.
+                                Integrate with HTTP requests without needing an SDK.
                             </p>
                         </a>
                     </li>

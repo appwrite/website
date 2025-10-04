@@ -4,7 +4,7 @@ title: REST
 description: Discover the Appwrite REST API for building robust and scalable applications. Access detailed documentation on REST endpoints, authentication, and data management.
 ---
 
-Appwrite supports multiple protocols for accessing the server, including [REST](/docs/apis/rest), [GraphQL](/docs/apis/graphql), and [Realtime](/docs/apis/realtime). The REST API allows you to access your Appwrite server through HTTP requests without the needing an SDK. Each endpoint in the API represents a specific operation on a specific resource.
+Appwrite supports multiple protocols for accessing the server, including [REST](/docs/apis/rest), [GraphQL](/docs/apis/graphql), and [Realtime](/docs/apis/realtime). The REST API allows you to access your Appwrite server through HTTP requests without needing an SDK. Each endpoint in the API represents a specific operation on a specific resource.
 
 # Headers {% #headers %}
 
@@ -21,7 +21,7 @@ Appwrite's REST APIs expect certain headers to be included with each request:
 ---
 - Content-Type: application/json
 - required
-- Content type of the HTTP request. Would usually be `application/json`.
+- Content type of the HTTP request. Typically set to `application/json`.
 ---
 - X-Appwrite-Key: [API-KEY]
 - optional
@@ -103,9 +103,9 @@ X-Appwrite-JWT: [TOKEN]
 
 # Files {% #files %}
 
-Appwrite implements resumable, chunked uploads for files larger than 5MB. Chunked uploads send files in chunks of 5MB to reduce memory footprint and increase resilience when handling large files. Appwrite SDKs will automatically handle chunked uploads, but it is possible to implement this with the REST API directly.
+Appwrite implements resumable, chunked uploads for files larger than 5MB. Chunked uploads send files in chunks of 5MB to reduce memory footprint and increase resilience when handling large files. [Appwrite SDKs](/docs/sdks) will automatically handle chunked uploads, but it is possible to implement this with the REST API directly.
 
-Upload endpoints in Appwrite, such as [Create File] (/docs/references/cloud/client-web/storage#createFile) and [Create Deployment] (/docs/references/cloud/server-nodejs/functions#createDeployment), are different from other endpoints. These endpoints take multipart form data instead of JSON data. To implement chunked uploads, you will need to implement the following headers. If you wish, this logic is already available in any of the [Appwrite SDKs](/docs/sdks).
+Upload endpoints in Appwrite, such as [Create File](https://appwrite.io/docs/references/cloud/client-web/storage#createFile) and [Create Deployment](https://appwrite.io/docs/references/cloud/server-nodejs/functions#createDeployment), are different from other endpoints. These endpoints take multipart form data instead of JSON data. To implement chunked uploads, you will need to implement the following headers. If you wish, this logic is already available in any of the [Appwrite SDKs](/docs/sdks).
 
 {% table %}
 - Header
