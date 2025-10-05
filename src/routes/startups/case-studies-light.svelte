@@ -1,7 +1,7 @@
 <script lang="ts" module>
     import DevKind from '$routes/(marketing)/(assets)/logos/devkind-light.svg';
-    import LangX from '$routes/(marketing)/(assets)/logos/langx.svg';
-    import KCollect from '$routes/(marketing)/(assets)/logos/k-collect.svg';
+    import LangX from '$routes/(marketing)/(assets)/logos/langx-light.svg';
+    import KCollect from '$routes/(marketing)/(assets)/logos/k-collect-light.svg';
     import CaseStudyCardLight from './case-study-card-light.svelte';
 
     const studies = [
@@ -54,11 +54,8 @@
 </script>
 
 <div
-    class={cn(
-        'relative mb-0 flex items-center justify-center overflow-hidden border-t border-dashed border-black/8 bg-white py-20 md:pt-30 md:pb-40',
-        'from-0% before:absolute before:inset-0 before:top-0 before:left-0 before:-z-10 before:block before:h-full before:bg-radial-[circle_at_120%_-50%] before:from-purple-500/10 before:to-transparent before:to-40% before:blur-2xl',
-        'after:from-accent/10 after:absolute after:inset-0 after:top-0 after:right-0 after:-z-10 after:mt-auto after:mb-0 after:block after:h-full after:bg-radial-[circle_at_-15%_125%] after:from-0% after:to-transparent after:to-40% after:blur-2xl'
-    )}
+    class="relative mb-0 flex items-center justify-center overflow-hidden border-t border-dashed border-black/8 py-20 md:pt-30 md:pb-40"
+    style="background: linear-gradient(0deg, rgba(0, 0, 0, 0.01) 0%, rgba(0, 0, 0, 0.01) 100%), var(--background, #EDEDF0);"
 >
     <ToggleGroup.Root
         bind:value={getValue, setValue}

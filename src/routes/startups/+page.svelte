@@ -14,6 +14,7 @@
     import { Main } from '$lib/layouts';
     import MainFooter from '$lib/components/MainFooter.svelte';
     import FooterNav from '$lib/components/FooterNav.svelte';
+    import DevelopersToolkit from '../(marketing)/(components)/developers-toolkit.svelte';
     import { TITLE_SUFFIX } from '$routes/titles';
     import { DEFAULT_HOST } from '$lib/utils/metadata';
 
@@ -304,107 +305,7 @@
         <!-- Developer toolkit section -->
         <div class="web-white-section light relative border-b border-dashed border-black/8 pt-10">
             <div class="web-big-padding-section-level-2 h-[256px]">
-                <section class="container">
-                    <div class="mx-auto max-w-[720px] text-center">
-                        <h3 class="text-title font-aeonik-pro text-primary">
-                            Your startups<br />developer toolkit
-                        </h3>
-                        <p class="text-body mt-2 font-medium">
-                            Appwrite offers an all-in-one hosting platform for you to build <br />
-                            and deploy your product from a single place.
-                        </p>
-                    </div>
-
-                    <div class="mt-6 flex flex-wrap items-center justify-center gap-0">
-                        <!-- Build group -->
-                        <div
-                            class="inline-flex items-center gap-2 rounded-[24px] border border-dashed border-black/8 bg-white px-4 py-2"
-                        >
-                            <span class="text-sm font-medium text-gray-700 uppercase">Build</span>
-                            <span
-                                class="bg-smooth text-caption text-primary flex h-10 items-center gap-2 rounded-[20px] px-3"
-                            >
-                                <img
-                                    src="/images/icons/illustrated/light/auth.png"
-                                    alt="Auth"
-                                    class="h-6 w-6 shrink-0"
-                                />
-                                Auth
-                            </span>
-                            <span
-                                class="bg-smooth text-caption text-primary flex h-10 items-center gap-2 rounded-[20px] px-3"
-                            >
-                                <img
-                                    src="/images/icons/illustrated/light/databases.png"
-                                    alt="Databases"
-                                    class="h-6 w-6 shrink-0"
-                                />
-                                Databases
-                            </span>
-                            <span
-                                class="bg-smooth text-caption text-primary flex h-10 items-center gap-2 rounded-[20px] px-3"
-                            >
-                                <img
-                                    src="/images/icons/illustrated/light/storage.png"
-                                    alt="Storage"
-                                    class="h-6 w-6 shrink-0"
-                                />
-                                Storage
-                            </span>
-                            <span
-                                class="bg-smooth text-caption text-primary flex h-10 items-center gap-2 rounded-[20px] px-3"
-                            >
-                                <img
-                                    src="/images/icons/illustrated/light/functions.png"
-                                    alt="Functions"
-                                    class="h-6 w-6 shrink-0"
-                                />
-                                Functions
-                            </span>
-                            <span
-                                class="bg-smooth text-caption text-primary flex h-10 items-center gap-2 rounded-[20px] px-3"
-                            >
-                                <img
-                                    src="/images/icons/illustrated/light/messaging.png"
-                                    alt="Messaging"
-                                    class="h-6 w-6 shrink-0"
-                                />
-                                Messaging
-                            </span>
-                            <span
-                                class="bg-smooth text-caption text-primary flex h-10 items-center gap-2 rounded-[20px] px-3"
-                            >
-                                <img
-                                    src="/images/icons/illustrated/light/realtime.png"
-                                    alt="Realtime"
-                                    class="h-6 w-6 shrink-0"
-                                />
-                                Realtime
-                            </span>
-                        </div>
-                        <!-- dashed gap between groups (horizontal) -->
-                        <div
-                            aria-hidden="true"
-                            class="mx-0 h-px w-6 self-center border-t border-dashed border-black/8"
-                        ></div>
-                        <!-- Deploy group -->
-                        <div
-                            class="inline-flex items-center gap-2 rounded-[24px] border border-dashed border-black/8 bg-white px-4 py-2"
-                        >
-                            <span class="text-sm font-medium text-gray-700 uppercase">DEPLOY</span>
-                            <span
-                                class="bg-smooth text-caption text-primary flex h-10 items-center gap-2 rounded-[20px] px-3"
-                            >
-                                <img
-                                    src="/images/icons/illustrated/light/sites.png"
-                                    alt="Sites"
-                                    class="h-6 w-6 shrink-0"
-                                />
-                                Sites
-                            </span>
-                        </div>
-                    </div>
-                </section>
+                <DevelopersToolkit />
             </div>
         </div>
 

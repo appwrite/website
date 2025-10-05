@@ -19,7 +19,7 @@
         'relative grid w-full cursor-pointer overflow-hidden rounded-2xl border transition-all ease-in-out [grid-template-areas:"stack"] md:max-h-[467px]',
         'group/card hover:bg-white/80',
         'outline-0 duration-250 hover:shadow-[0px_0px_0px_4px_rgba(0,0,0,0.08)] focus:shadow-[0px_0px_0px_4px_rgba(0,0,0,0.08)]!',
-        'data-[state="off"]:basis-[15%] data-[state="off"]:border-black/8 data-[state="off"]:bg-white/40 data-[state="off"]:p-8',
+        'data-[state="off"]:basis-[15%] data-[state="off"]:border-black/8 data-[state="off"]:bg-white data-[state="off"]:p-8',
         'data-[state="on"]:basis-[70%] data-[state="on"]:border-black/12 data-[state="on"]:bg-white data-[state="on"]:p-8 data-[state="on"]:shadow-[0px_0px_0px_4px_rgba(0,0,0,0.08)]! md:data-[state="on"]:p-12'
     )}
 >
