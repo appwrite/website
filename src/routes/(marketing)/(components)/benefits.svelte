@@ -77,19 +77,17 @@
             </p>
         </section>
     </div>
-    <div class="mt-20 border-y border-dashed border-black/8">
+    <div class="mt-12 border-y border-dashed border-black/8 md:mt-20">
         <div
             class="mx-auto grid grid-cols-2 overflow-hidden lg:grid-cols-4"
             style="max-width: 1200px; margin-inline: auto;"
         >
             {#each benefits as box}
                 <div
-                    class="text-sub-body group relative border-dashed border-black/8 px-2.5 py-8 pr-8 font-medium last-of-type:border-0 nth-of-type-[4]:border-r-0 nth-of-type-[7]:border-b-0 max-lg:even:border-r-0 md:border-r md:border-b md:p-8 md:pr-8 lg:nth-of-type-[5]:border-b-0 lg:nth-of-type-[6]:border-b-0 lg:nth-of-type-[8]:border-b-0"
+                    class="text-sub-body group relative border-dashed border-black/8 px-4 py-6 font-medium last-of-type:border-0 sm:px-2.5 sm:py-8 sm:pr-8 sm:max-lg:even:border-r-0 md:border-r md:border-b md:p-8 md:pr-8 lg:nth-of-type-[5]:border-b-0 lg:nth-of-type-[6]:border-b-0 lg:nth-of-type-[8]:border-b-0"
                 >
                     <img loading="lazy" src={box.icon} width="40" height="40" alt="" />
-                    <h3
-                        class="text-primary mt-4 flex flex-wrap items-center gap-0.5 whitespace-nowrap"
-                    >
+                    <h3 class="text-primary mt-4 flex flex-wrap items-center gap-0.5">
                         {box.label}
                     </h3>
                     <p class="text-secondary mt-1">

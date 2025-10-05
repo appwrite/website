@@ -27,6 +27,7 @@
     import CaseStudiesLight from './case-studies-light.svelte';
     import Features from '$routes/(marketing)/(components)/features.svelte';
     import Benefits from '$routes/(marketing)/(components)/benefits.svelte';
+    import StartupPartnerCTA from './(components)/StartupPartnerCTA.svelte';
 
     const title = 'Startups' + TITLE_SUFFIX;
     const description =
@@ -315,35 +316,10 @@
         <!-- Case Studies Section -->
         <CaseStudiesLight />
 
-        <div id="form" class="overflow-hidden">
+        <div id="form" class="web-white-section light overflow-hidden">
             <div class=" relative pt-20 pb-8 md:pt-40 md:pb-30">
                 <div class="relative">
                     <div class="relative container">
-                        <img
-                            class="web-is-only-desktop absolute"
-                            style="inset-inline-end:-650px; inset-block-start:-200px; max-width:none; max-height:none;"
-                            src={BlobGreen}
-                            alt=""
-                        />
-                        <img
-                            class="web-is-only-desktop absolute"
-                            style="inset-inline-start:-1000px; inset-block-start:-800px; max-width:none; max-height:none;"
-                            src={BlobPink}
-                            alt=""
-                        />
-                        <img
-                            class="web-is-only-mobile absolute"
-                            style="inset-inline-end:-450px; inset-block-start:400px; max-width:none; max-height:none;"
-                            src={BlobGreenMobile}
-                            alt=""
-                        />
-                        <img
-                            class="web-is-only-mobile absolute"
-                            style="inset-inline-start:-700px; inset-block-start:-400px; max-width:none; max-height:none;"
-                            src={BlobPinkMobile}
-                            alt=""
-                        />
-
                         <!-- before submit -->
                         <div class="web-grid-1-1-opt-2 e-u-row-gap-0 relative z-[1] gap-8">
                             <div>
@@ -355,21 +331,40 @@
                                         <h4 class="text-title font-aeonik-pro text-primary">
                                             Join the Appwrite Startups program
                                         </h4>
-                                        <p class="text-description">
-                                            We support your startup with:
+                                        <p class="text-description" style="font-size: 18px;">
+                                            We support VC backed tech startups that have been
+                                            established within the last decade with:
                                         </p>
 
                                         <div class="flex flex-col gap-3">
                                             <div class="flex gap-4">
-                                                <div class="web-check-bullet mt-1"></div>
-                                                <p class="text-description">
-                                                    Cloud credits and discounts on a paid plan
+                                                <img
+                                                    class="mt-1 self-start"
+                                                    src="/images/icons/gradients/v-icon.svg"
+                                                    alt="yes"
+                                                    width="18"
+                                                    height="18"
+                                                />
+                                                <p
+                                                    class="text-description"
+                                                    style="font-size: 18px;"
+                                                >
+                                                    Appwrite Cloud Pro for 12 months
                                                 </p>
                                             </div>
                                             <div class="flex gap-4">
-                                                <div class="web-check-bullet mt-1"></div>
-                                                <p class="text-description">
-                                                    Priority email support
+                                                <img
+                                                    class="mt-1 self-start"
+                                                    src="/images/icons/gradients/v-icon.svg"
+                                                    alt="yes"
+                                                    width="18"
+                                                    height="18"
+                                                />
+                                                <p
+                                                    class="text-description"
+                                                    style="font-size: 18px;"
+                                                >
+                                                    Premium email support as part of Pro
                                                 </p>
                                             </div>
                                         </div>
@@ -466,41 +461,49 @@
                                     <div
                                         class="web-u-flex-vertical-reverse-mobile flex justify-between gap-4"
                                     >
-                                        <p class="text-caption web-u-max-width-380">
+                                        <div class="flex flex-col gap-2">
+                                            <p class="text-caption text-secondary">
+                                                This form is protected by reCAPTCHA, and the Google <br
+                                                />
+                                                <a
+                                                    href="https://policies.google.com/privacy"
+                                                    class="text-accent">Privacy Policy</a
+                                                >
+                                                and
+                                                <a
+                                                    href="https://policies.google.com/terms"
+                                                    class="text-accent">Terms of Service</a
+                                                >
+                                                apply.
+                                            </p>
                                             {#if error}
-                                                {error}
+                                                <p class="text-caption web-u-max-width-380">
+                                                    {error}
+                                                </p>
                                             {/if}
-                                        </p>
+                                        </div>
                                         <Button
                                             type="submit"
                                             disabled={submitting}
                                             class="web-u-inline-width-100-percent-mobile-break1 self-center"
                                         >
-                                            Apply
+                                            Get Started
                                         </Button>
                                     </div>
                                 </form>
                             {/if}
                         </div>
                     </div>
-
-                    <div class="web-big-padding-section-level-2 relative">
-                        <div class="relative container" style:z-index="10">
-                            <section class="web-grid-4-6">
-                                <header>
-                                    <div class="text-display font-aeonik-pro text-primary">FAQ</div>
-                                </header>
-                                <Faq />
-                            </section>
-                        </div>
-                    </div>
                 </div>
             </div>
+        </div>
 
-            <div class="container">
-                <FooterNav />
-                <MainFooter />
-            </div>
+        <!-- Become a startup partner section -->
+        <StartupPartnerCTA />
+
+        <div class="container">
+            <FooterNav />
+            <MainFooter />
         </div>
     </div>
 </Main>

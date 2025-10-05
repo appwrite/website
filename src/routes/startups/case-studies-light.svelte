@@ -54,13 +54,13 @@
 </script>
 
 <div
-    class="relative mb-0 flex items-center justify-center overflow-hidden border-t border-dashed border-black/8 py-20 md:pt-30 md:pb-40"
-    style="background: linear-gradient(0deg, rgba(0, 0, 0, 0.01) 0%, rgba(0, 0, 0, 0.01) 100%), var(--background, #EDEDF0);"
+    class="relative mb-0 flex items-center justify-center overflow-hidden border-t border-dashed border-black/8 px-4 py-12 sm:px-6 sm:py-16 md:py-20 md:pt-30 md:pb-40"
+    style="background: radial-gradient(circle at 0% 100%, rgba(239, 68, 68, 0.12) 0%, transparent 40%), radial-gradient(circle at 100% 0%, rgba(59, 130, 246, 0.12) 0%, transparent 40%), var(--background, #EDEDF0);"
 >
     <ToggleGroup.Root
         bind:value={getValue, setValue}
         type="single"
-        class="container flex h-full flex-col items-stretch gap-4 lg:flex-row"
+        class="container flex h-full w-full flex-col items-stretch gap-3 sm:gap-4 lg:flex-row"
     >
         {#each studies as study, index}
             <CaseStudyCardLight
