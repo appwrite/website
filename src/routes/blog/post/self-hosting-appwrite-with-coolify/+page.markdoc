@@ -9,6 +9,8 @@ author: chirag-aggarwal
 category: tutorial
 ---
 
+Updated on October 6, 2025
+
 Appwrite was built with self-hosting in mind, making running on your own hardware as easy as possible with minimal hassle. Self-hosting allows users to have complete control over their stored data and provides extensive customization capabilities, enabling users to modify and tailor the source code to perfectly align with their needs.
 
 This blog will discuss how to self-host Appwrite on your servers from scratch and some troubleshooting tips you might need.
@@ -141,7 +143,9 @@ Currently, Coolify will mark all the Appwrite containers as unhealthy due to a l
 
 # Appwrite Cloud vs Self-hosting with Coolify
 
-Appwrite also offers Cloud as a subscription-based Backend-As-A-Service (BaaS), eliminating the complexities of managing infrastructure so developers can focus purely on building their apps. With Appwrite Cloud, you get instant access to Appwrite's powerful features — databases, authentication, storage, and functions — without the need to self-host or worry about server maintenance.
+Appwrite also offers Cloud, a subscription-based all-in-one cloud platform that eliminates the complexities of managing infrastructure and hosting. With Appwrite Cloud, you can build, deploy, and host your entire application, frontend and backend, from a single platform.
+
+It provides instant access to Appwrite’s complete suite of services, including authentication, databases, functions, storage, messaging, and hosting, all tightly integrated and managed for you. This means no manual server setup, no configuration headaches, and no maintenance, just a seamless integrated environment where you can go from idea to live app in minutes.
 
 Choosing between Appwrite Cloud and self-hosting with Coolify depends on your project's needs. Here’s a side-by-side comparison to help you decide:
 
@@ -158,9 +162,29 @@ Choosing between Appwrite Cloud and self-hosting with Coolify depends on your pr
 
 # Conclusion
 
-Self-hosting Appwrite with Coolify combines the strength of an end-to-end backend-as-a-service with the flexibility and autonomy of self-hosting. It enables developers to create powerful applications while retaining data sovereignty and possibly incurring lower operational expenses.
+Self-hosting Appwrite with Coolify combines the strength of an all-in-one dev platform with the flexibility and autonomy of self-hosting. It enables developers to create powerful applications while retaining data sovereignty and possibly incurring lower operational expenses.
 
 By following this guide, you've successfully deployed a production-capable Appwrite instance that you completely own. As your application grows, the union of Appwrite's robust features and Coolify's efficient management will continue to provide a solid foundation for your development requirements.
+
+# Frequently asked questions(FAQs)
+
+**1. Can I self-host Appwrite on my own server?**
+
+Yes, absolutely! Appwrite was built with self-hosting in mind. You can run it on your own hardware, a VPS, or cloud providers like DigitalOcean, AWS, or Azure.
+
+Self-hosting gives you control over your data, security, and setup. You can even modify the source code to fit your exact needs. Tools like **Coolify** make it even easier by handling the deployment for you, so you don’t have to manage containers or complex configurations manually.
+
+**2. When should I choose Appwrite Cloud over self-hosting?**
+
+If you want to move fast: launch prototypes, MVPs, or production apps without managing servers, Appwrite Cloud is ideal. It’s fully managed, so you can deploy and host your entire stack (frontend + backend).
+
+It’s also great for teams that want predictable costs and built-in scalability. The platform automatically handles updates, scaling, and backups, letting you focus on building, not maintaining infrastructure.
+
+**3. Can I start with Appwrite Cloud and move to self-hosting later?**
+
+Yes, absolutely. That’s one of the biggest advantages of Appwrite being open-source and cloud-compatible. You can start on Appwrite Cloud to build and test your product quickly, and later migrate to a self-hosted setup with Coolify if you want to.
+
+The APIs and developer experience stay consistent between both environments, so switching later in the future should not be a huge deal.
 
 # More resources
 
@@ -169,5 +193,3 @@ To learn more about self-hosting Appwrite on Coolify, you can check out the foll
 - [Self Hosting Docs - Appwrite](https://appwrite.io/docs/advanced/self-hosting)
 - [Coolify Docs for Appwrite](https://coolify.io/docs/services/appwrite)
 - [Self Host Appwrite on Coolify by Self-Host Everything](https://www.youtube.com/watch?v=9plbBKZNuvY)
-
-
