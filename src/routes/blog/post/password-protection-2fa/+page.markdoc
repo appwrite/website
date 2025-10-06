@@ -74,7 +74,7 @@ With the release of Appwrite 1.5, we have introduced the ability to implement [2
 - **Emails:** A verified email can be used for authentication, providing a 6-digit code to the user.
 - **SMS:** A verified phone number can be used for authentication, providing a 6-digit code to the user.
 
-# Frequently asked questions(FAQs)
+# Frequently asked questions (FAQs)
 
 **1. What is Two-Factor Authentication (2FA) and why is it important?**
 
