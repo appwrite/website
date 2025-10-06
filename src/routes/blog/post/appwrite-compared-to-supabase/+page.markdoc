@@ -10,6 +10,7 @@ category: product
 unlisted: true
 callToAction: true
 ---
+Updated: 06th October 2025
 
 If you are looking to build a mobile app, website, tool, or any other application that needs a backend, then you also know the daunting tasks that await. This is probably what brought you to this blog in the first place: looking for a solution to take care of your backend. One of these solutions is a Backend-as-a-Service (BaaS). It provides pre-built backend infrastructure and services to simplify app development, handling server-side tasks like data storage, user management, APIs, server maintenance, security, database management, and more. Two of these solutions are Appwrite and Supabase, and although both are solid options for your BaaS, they’re somewhat different.
 
@@ -162,7 +163,13 @@ Any developer-first product, regardless of how good and simple it may be, will n
 
 # Conclusion
 
-While Appwrite and Supabase are great Backend-as-a-Service (BaaS) offerings that support numerous SDKs, they differ in engineering approaches. The choice between Appwrite and Supabase hinges on your needs and preferences.
+Both Appwrite and Supabase are strong Backend-as-a-Service platforms that make it easier for developers to focus on building instead of managing complex backend systems. They share many similarities but differ in how they approach development.
+
+Supabase offers a familiar experience for developers who prefer working closely with SQL and PostgreSQL. It’s a great choice if you want more direct control over your database and are comfortable managing configurations at a lower level.
+
+Appwrite, meanwhile, takes an all-in-one approach. It brings together authentication, databases, storage, functions, real-time features, messaging, and even hosting into a single platform. Whether you use Appwrite Cloud or self-host, you get a consistent and flexible experience that allows you to manage your entire stack in one place.
+
+If you’re looking for a complete, integrated platform to handle everything from your backend to hosting, Appwrite offers a simple and unified solution. But if you prefer the flexibility of direct database control and a more traditional SQL setup, Supabase is a good choice.
 
 Here’s a table that compares both Appwrite and Supabase:
 
@@ -176,13 +183,14 @@ Here’s a table that compares both Appwrite and Supabase:
 | Functions marketplace | Has a marketplace featuring a variety of function templates and integrations such as Discord bots, payments with Stripe, ChatGPT API, etc. | No functions marketplace |
 | Permissions | A simple-to-use permissions system that is consistent across all Appwrite products | Complex permissions system that needs knowledge of SQL to get started |
 | Messaging providers | 10 providers covering SMSes, emails, and push notifications | Zero |
+| Integrated Hosting | Yes | No | 
 
 Here's a price comparison between Appwrite and Supabase to help you choose the one that best suits your needs:
 
 | Feature | Appwrite | Supabase |
 | --- | --- | --- |
 | Pricing Model | Tiered pricing | Tiered pricing |
-| Paid Plan | Starts at $15 per month | Starts at $25 per month |
+| Paid Plan | Starts at $25 per month | Starts at $25 per month |
 
 # Resources
 
