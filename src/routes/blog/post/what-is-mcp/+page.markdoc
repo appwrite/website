@@ -11,6 +11,8 @@ featured: false
 callToAction: true
 ---
 
+Updated on: 3rd October 2025
+
 If you've ever tried using an AI assistant for something practical, like pulling real data from your work files, checking a database, or sending a message, then you've probably hit a frustrating wall.
 
 These AI models are brilliant, but they're also **disconnected** from the tools we actually use.
@@ -142,7 +144,11 @@ MCP lets AI assistants **fetch real information** without you needing to switch 
 
 Appwrite has introduced the **Appwrite MCP server** to allow AI assistants to interact with Appwrite projects directly. With this, you can now **query databases, fetch user lists, and trigger actions** on your Appwrite project using AI assistants.
 
-# More about Appwrite MCP server
+# More about Appwrite MCP servers
+
+Appwrite now supports two MCP servers that make it easier for AI assistants and developer tools to interact directly with your Appwrite projects and documentation.
+
+# MCP server for Appwrite API
 
 Appwrite MCP is an **MCP server** that connects AI assistants to your **Appwrite project**.
 
@@ -200,11 +206,36 @@ If you get an error that the Appwrite MCP server failed to start, it might be th
 "command": "/Users/username/.local/bin/uvx",
 ```
 
-With the MCP server successfully started on Claude Desktop, you should now be able to ask Claude to retrieve data or perform action on your Appwrite project.
+With the MCP server successfully started on Claude Desktop, you should now be able to ask Claude to retrieve data or perform an action on your Appwrite project.
 
 ![Claude Desktop MCP chat](/images/blog/what-is-mcp/claude-mcp-chat.png)
 
 You can also set up the Appwrite MCP server with other AI tools like Cursor and WindSurf. For more examples and specific setup instructions, check out the [MCP documentation](https://appwrite.io/docs/tooling/mcp?doFollow=true).
+
+# MCP server for Appwrite docs
+
+The Appwrite MCP server for documentation allows AI assistants and code-generation tools to access Appwrite’s complete documentation, making it easier to build, debug, and learn directly through natural language commands.
+
+This means your AI tools can now:
+
+- Access full documentation – AI assistants get direct access to all Appwrite docs.
+- Stay up to date – Responses are based on the latest published documentation.
+- Search intelligently – Use semantic search across documentation for faster, more relevant results.
+- Generate code – Fetch implementation examples and code snippets from the docs.
+- Learn best practices – Get recommendations from Appwrite’s official guidelines.
+
+# Installation
+
+You can integrate the documentation MCP server with multiple tools and editors:
+
+- Claude Desktop
+- Claude Code
+- Cursor
+- Windsurf Editor
+- VS Code
+- OpenCode
+
+For setup instructions and examples, check out the [Appwrite Docs MCP server documentation](/docs/tooling/mcp/docs).
 
 # **Final thoughts**
 
@@ -216,5 +247,6 @@ And because MCP is an **open standard**, it doesn't lock anyone into a single pl
 
 # Further reading
 - [Appwrite MCP documentation](/docs/tooling/mcp?doFollow=true)
+- [Appwrite Docs MCP server](/docs/tooling/mcp/docs)
 - [Anthropic MCP documentation](https://docs.anthropic.com/en/docs/agents-and-tools/mcp)
 - [Building a chat app with Appwrite and Google Gemini](/blog/post/build-a-chat-app-with-appwrite-and-gemini?doFollow=true)
