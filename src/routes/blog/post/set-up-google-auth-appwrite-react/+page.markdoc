@@ -280,7 +280,7 @@ Think of OAuth2 as a way to let users log in with accounts they already trust, l
 
 It makes signing up easier for users and keeps you, the developer, out of the business of storing sensitive credentials. It’s basically convenience + security in one.
 
-**2.How does Appwrite make OAuth2 easier?**
+**2. How does Appwrite make OAuth2 easier?**
 
 Implementing OAuth2 manually can get complicated. You need to manage redirects, handle access tokens, and ensure secure communication with the provider. Appwrite takes care of all of this for you.
 
