@@ -165,7 +165,7 @@ Any developer-first product, regardless of how good and simple it may be, will n
 
 Both Appwrite and Supabase are strong Backend-as-a-Service platforms that make it easier for developers to focus on building instead of managing complex backend systems. They share many similarities but differ in how they approach development.
 
-Supabase offers a familiar experience for developers who prefer working closely with SQL and PostgreSQL. It’s a great choice if you want more direct control over your database and are comfortable managing configurations at a lower level.
+Supabase offers a familiar experience for developers who prefer working closely with SQL and PostgreSQL. It’s a good choice if you want more control over your database structure, queries, and configurations at the database level.
 
 Appwrite, meanwhile, takes an all-in-one approach. It brings together authentication, databases, storage, functions, real-time features, messaging, and even hosting into a single platform. Whether you use Appwrite Cloud or self-host, you get a consistent and flexible experience that allows you to manage your entire stack in one place.
 
