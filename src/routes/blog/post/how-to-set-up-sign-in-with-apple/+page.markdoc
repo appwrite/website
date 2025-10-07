@@ -10,6 +10,8 @@ category: tutorial
 featured: false
 ---
 
+Updated on October 7, 2025.
+
 Authentication is a critical aspect of building secure applications. It protects user data and ensures that only authorized users can access your services. One of the most privacy-conscious authentication methods available today is **Sign in with Apple**. With its built-in security features and minimal data-sharing approach, it has become a popular choice for developers looking to integrate seamless authentication.
 
 In this guide, we'll walk through the full process of implementing **Sign in with Apple** using **Appwrite**, a backend server for building secure, scalable applications. We'll cover everything from configuring Appwrite for OAuth2 authentication to setting up your Apple Developer account, followed by examples for various platforms like web, Android, iOS, and Flutter.
@@ -18,11 +20,11 @@ By the end of this guide, you'll have a complete understanding of how to integra
 
 # Understanding OAuth2 and how Appwrite handles authentication
 
-Before jumping into the implementation, it's important to understand the basics of OAuth2. **OAuth2** is an open standard for authorization that allows third-party services to grant limited access to user accounts without exposing passwords. This makes it ideal for integrating with platforms like Apple, Google, and Facebook.
+Before jumping into the implementation, it's important to understand the basics of [OAuth2](/docs/products/auth/oauth2). **OAuth2** is an open standard for authorization that allows third-party services to grant limited access to user accounts without exposing passwords. This makes it ideal for integrating with platforms like Apple, Google, and Facebook.
 
 In an OAuth2 flow, users are redirected to the authentication provider (in this case, Apple), where they authorize your application. The provider then returns a token that your backend can use to authenticate the user. Appwrite simplifies this process by managing the entire OAuth2 flow, including token handling and session management, so you can focus on the user experience.
 
-Appwrite's built-in support for OAuth2 allows you to enable various third-party login providers quickly, including **Sign in with Apple**. With a few configuration steps, you can leverage OAuth2 for secure, privacy-first authentication.
+Appwrite's built-in support for OAuth2 allows you to enable various third-party login providers quickly, including **Sign in with Apple**. With a few configuration steps, you can leverage OAuth2 for secure, privacy-first [authentication](/docs/products/auth).
 
 # Step 1: Set up your Appwrite project
 
@@ -437,9 +439,27 @@ During testing, simulate various scenarios to ensure everything works as expecte
 
 Integrating **Sign in with Apple** using Appwrite allows you to provide a secure and user-friendly authentication experience. With minimal configuration, you can utilize Appwrite's OAuth2 support to integrate third-party login systems across platforms. In this guide, we walked through the full setup process, including configuring Apple Developer credentials, setting up OAuth2 in Appwrite, and testing your integration across different platforms.
 
-For more information on this, check out the [Appwrite OAuth2 documentation](https://appwrite.io/docs/products/auth) and Apple's [Sign in with Apple documentation](https://developer.apple.com/sign-in-with-apple/).
+For more information on this, check out the [Appwrite OAuth2 documentation](/docs/products/auth) and Apple's [Sign in with Apple documentation](https://developer.apple.com/sign-in-with-apple/).
 
-More resources:
+# Frequently asked questions (FAQs)
+
+**1. What is Sign in with Apple, and why should I use it?**
+
+Sign in with Apple lets users log in using their Apple ID instead of creating new accounts. It improves privacy by sharing minimal personal data and enhances security through features like built-in two-factor authentication. It’s a great option if your users are mostly on iOS or macOS.
+
+**2. How does Sign in with Apple work with OAuth2?**
+
+It uses the standard OAuth2 authorization flow. The user signs in with their Apple ID, Apple verifies the identity, and then returns a secure token to your app. Appwrite manages this token exchange automatically, so you don’t have to handle credentials or session logic manually.
+
+**3. Do I need an Apple Developer account to set this up?**
+
+Yes. You’ll need an active Apple Developer account to generate your Team ID, Service ID, and authentication key (.p8 file). These credentials allow Appwrite to securely connect with Apple’s authentication servers.
+
+**4. Does Appwrite support Sign in with Apple?**
+
+Yes. Appwrite natively supports Sign in with Apple through its built-in OAuth2 authentication system. You can enable it directly from the Appwrite Console under Auth → Settings → OAuth2 Providers, then add your Apple Developer credentials. Once configured, it works seamlessly across web, Android, iOS, and Flutter apps, just like other OAuth providers such as Google or GitHub.
+
+# More resources:
 
 - [Set up Google authentication in React with Appwrite](https://appwrite.io/blog/post/set-up-google-auth-appwrite-react)
 - [Appwrite authentication docs](https://appwrite.io/docs/products/auth)
