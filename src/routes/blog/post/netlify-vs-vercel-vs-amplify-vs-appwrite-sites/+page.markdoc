@@ -134,22 +134,29 @@ So the real question isn’t just *“where do I host my app?”,* it’s *“wh
 # Frequently Asked Questions
 
 **1. What is the best open-source alternative to Vercel?**
+
 Appwrite Sites is one of the good open-source options to consider. It lets you host static sites and connect directly to built-in backend services like authentication, databases, and functions. Unlike Vercel or Netlify, you can self-host Appwrite if you want full control.
 
 **2. How does Appwrite compare to Vercel and Netlify?**
+
 Vercel is optimized for Next.js, Netlify is great for Jamstack projects, while Appwrite Sites goes beyond hosting by including backend services out of the box. If you want hosting plus authentication, database, and storage in one place, Appwrite Sites is worth considering.
 
 **3. Can I host a React app with a backend on one platform?**
+
 Yes. With Appwrite Sites, you can deploy a React frontend and connect it to Appwrite’s backend services (database, storage, authentication, and functions) without needing separate providers.
 
 **4. Are there cheaper alternatives to AWS Amplify for static hosting?**
+
 Vercel and Netlify both have generous free tiers, but scale costs differ. Appwrite Sites provides a free self-host option (since it’s open-source), making it a cost-effective alternative to Amplify if you don’t want to commit to AWS pricing.
 
 **5. Is Appwrite a good option for Git-based deployments like Netlify?**
+
 Yes. Appwrite Sites supports GitHub Actions and CI/CD pipelines, so you can deploy your frontend directly from your repo, similar to the workflows developers are used to with Netlify or Vercel.
 
 **6. What’s the most secure way to host with a custom domain?**
+
 All four platforms: Vercel, Netlify, AWS Amplify, and Appwrite Sites, support custom domains with SSL. The difference is in control: with Appwrite, you can self-host and manage certificates yourself if you prefer more security and ownership.
 
 **7. Does Appwrite Sites have enterprise support?**
+
 Appwrite offers enterprise support plans along with the open-source and cloud offerings, making it viable for both indie developers and larger organizations that need SLAs and dedicated support.

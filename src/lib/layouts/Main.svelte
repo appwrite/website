@@ -22,6 +22,7 @@
     import { getAppwriteDashboardUrl } from '$lib/utils/dashboard';
     import { Button, Icon, InlineTag } from '$lib/components/ui';
     import AnnouncementBanner from '$routes/(init)/init/(components)/announcement-banner.svelte';
+    import HackathonBanner from '$routes/(marketing)/(components)/(hackathon)/hackathon-banner.svelte';
 
     export let omitMainId = false;
     export let hideNavigation = false;
@@ -160,7 +161,6 @@
 </script>
 
 <div class="relative contents h-full">
-    <!--
     {#if !page.url.pathname.includes('/init')}
         <div class="border-smooth relative z-10 border-b bg-[#19191C]">
             <div class="is-special-padding mx-auto">
@@ -168,7 +168,6 @@
             </div>
         </div>
     {/if}
-    -->
 
     <section
         class="web-mobile-header flex! lg:hidden! {resolvedTheme}"
