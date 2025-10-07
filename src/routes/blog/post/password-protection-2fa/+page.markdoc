@@ -90,7 +90,7 @@ While SMS-based 2FA improves security over password-only logins, it’s not the 
 
 **4. How can I add 2FA to my app with Appwrite?**
 
-With Appwrite 1.5 or later, you can enable 2FA directly through Appwrite Authentication. It supports TOTP apps, email, and SMS verification. You can easily configure these options via the Appwrite Console or API.
+With Appwrite, you can enable 2FA directly through Appwrite Authentication. It supports TOTP apps, email, and SMS verification. You can easily configure these options via the Appwrite Console or API.
 
 **5. What should users do if they lose access to their 2FA method?**
 
