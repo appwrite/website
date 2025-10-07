@@ -185,11 +185,6 @@ Here’s a table that compares both Appwrite and Supabase:
 | Permissions | A simple-to-use permissions system that is consistent across all Appwrite products | Complex permissions system that needs knowledge of SQL to get started |
 | Messaging providers | 10 providers covering SMSes, emails, and push notifications | Zero |
 | Integrated Hosting | Yes | No | 
-
-Here's a price comparison between Appwrite and Supabase to help you choose the one that best suits your needs:
-
-| Feature | Appwrite | Supabase |
-| --- | --- | --- |
 | Pricing Model | Tiered pricing | Tiered pricing |
 | Paid Plan | Starts at $25 per month | Starts at $25 per month |
 
