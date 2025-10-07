@@ -491,7 +491,7 @@ Yes. Appwrite Realtime enforces the same permissions and roles as other Appwrite
 
 **5. Can I use Appwrite Realtime with other frameworks or just Flutter?**
 
-Realtime works across all SDKs that Appwrite supports, including Web, Android, iOS, and Dart. Flutter is just one example. The same logic applies universally: subscribe to channels and react to incoming data.
+Realtime works across all SDKs that Appwrite supports, including Web, Android, and iOS. Flutter is just one example. The same logic applies universally: subscribe to channels and react to incoming data.
 
 # Learn more
 
