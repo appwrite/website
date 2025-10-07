@@ -106,6 +106,28 @@ export const submitContactForm = async (formData: FormData) => {
 
 You can now commit these changes and push them to GitHub, automatically deploying the updated site to Appwrite.
 
+# Frequently asked questions (FAQs)
+
+**1. What’s the easiest way to host my developer portfolio for free?**
+
+Appwrite Sites is one of the simplest and developer-friendly ways to host a portfolio for free. It gives you instant static site hosting, GitHub integration for automatic deployment, and built-in SSL, all without needing to manage servers or set up custom CI/CD.
+
+**2. Can I connect my custom domain to Appwrite Sites?**
+
+Yes. Once your portfolio is deployed, you can go to your Site’s Settings → Domains in Appwrite and add your custom domain (like yourname.dev). Appwrite automatically provisions SSL certificates, so your site stays secure and uses HTTPS by default.
+
+**3. Can I update my portfolio automatically whenever I push to GitHub?**
+
+Yes. Once your GitHub repo is linked, every git push to your production branch triggers an automatic rebuild and deployment on Appwrite. It’s similar to Vercel or Netlify, but fully integrated into the Appwrite ecosystem.
+
+**4. What’s a good alternative to Vercel or Netlify for hosting personal projects?**
+
+If you’re looking for an open-source, privacy-friendly alternative, Appwrite Sites is a solid choice. It offers the same ease of use, Git-based deployments, custom domains, and build logs, while also giving you access to Appwrite’s full backend stack, including authentication, databases, storage, and serverless functions. Perfect if you plan to grow your personal project into something bigger later.
+
+**5. How do I add analytics to my portfolio site?**
+
+You can integrate analytics tools directly into your portfolio’s code. Since Appwrite Sites supports frameworks like Next.js or React, simply paste your tracking snippet (from tools like Plausible, Umami, or Google Analytics) inside your app’s layout or <head> component. Once deployed, Appwrite will serve your site with those scripts included, allowing you to track visits and engagement automatically.
+
 # Next steps
 
 And with that, the personal portfolio template is deployed to Appwrite Sites. You can explore other templates or deploy any other websites you'd like. 
