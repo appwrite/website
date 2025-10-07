@@ -236,7 +236,7 @@ Appwrite Sites, on the other hand, combines hosting, backend, and APIs in one pl
 
 **3. Does Appwrite Sites support Git deployments and custom domains?**
 
-Yes. Appwrite Sites fully supports Git-based deployments—you can connect your GitHub repo, select a branch, and automatically deploy on every commit or pull request.
+Yes. Appwrite Sites fully supports Git-based deployments: you can connect your GitHub repo, select a branch, and automatically deploy on every commit or pull request.
 
 It also supports custom domains, with automatic HTTPS and SSL certificates included. You can connect domains via CNAME or nameserver (NS) configuration, and even create branch-specific preview URLs for testing before production.
 
