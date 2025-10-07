@@ -271,6 +271,6 @@ Set usage alerts and budget controls in the Appwrite Cloud Console. You can defi
 
 # Further reading and resources:
 
-- [Serverless functions 101: Best practices](http://appwrite.io/blog/post/serverless-functions-best-practices)
+- [Serverless functions 101: Best practices](https://appwrite.io/blog/post/serverless-functions-best-practices)
 - [Appwrite Queries documentation](https://appwrite.io/docs/products/databases/queries)
 - [Appwrite Buckets documentation](https://appwrite.io/docs/products/storage/buckets)
