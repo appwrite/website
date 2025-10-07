@@ -237,7 +237,7 @@ You can integrate the documentation MCP server with multiple tools and editors:
 
 For setup instructions and examples, check out the [Appwrite Docs MCP server documentation](/docs/tooling/mcp/docs).
 
-# **Final thoughts**
+# Final thoughts
 
 MCP changes how AI assistants work. Instead of being limited to general knowledge, they can now access **real data from real systems** in a structured way.
 
