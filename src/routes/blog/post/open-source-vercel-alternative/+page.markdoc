@@ -11,6 +11,8 @@ featured: false
 callToAction: true
 ---
 
+Updated on October 6, 2025
+
 Deploying modern web applications should be fast, flexible, and reliable. As developers, we've come to expect instant previews, custom domain support, seamless environment configuration, automatic HTTPS, and the ability to deploy everything from static pages to full server-rendered apps.
 
 Vercel has been a default choice for frontend teams building with Next.js. But with the launch of **Appwrite Sites**, you now have a new, integrated way to deploy web apps, especially when you want your front end to live alongside your backend, database, authentication, and storage.
@@ -216,8 +218,30 @@ You can get started today by heading to your Appwrite Console and creating a new
 
 If you have any questions, reach out to the Appwrite community on [Discord](https://appwrite.io/discord) or use the [contact form](https://appwrite.io/contact-us) on the website.
 
+# Frequently asked questions (FAQs)
+
+**1. Is there an open-source alternative to Vercel?**
+
+Yes. Appwrite Sites is a modern, open-source alternative to Vercel. It lets you deploy static and server-side rendered apps while managing your backend, database, auth, and storage, all in one place.
+
+The key difference is control: Vercel is fully managed and frontend-focused, while Appwrite Sites gives you the same smooth deployment experience with the flexibility to self-host or use the cloud. If you want an all-in-one, open, and developer-friendly setup, Appwrite Sites is worth considering.
+
+**2. Are there platforms that host both frontend and backend together?**
+
+Yes. Tools like Appwrite combine hosting with backend services (auth, DB, functions). This helps you avoid managing CORS, API gateways, and secrets across multiple providers.
+
+**3. What’s the difference between Appwrite Sites and Vercel?**
+
+Vercel focuses on frontend hosting, especially Next.js, while Appwrite Sites hosts your entire stack (frontend + backend) in one environment. You get built-in auth, databases, and APIs, so your frontend and backend live together without extra setup.
+
+**4. Does Appwrite Sites support Git deployments and custom domains?**
+
+Yes. Appwrite Sites fully supports Git-based deployments: you can connect your GitHub repo, select a branch, and automatically deploy on every commit or pull request.
+
+It also supports custom domains, with automatic HTTPS and SSL certificates included. You can connect domains via CNAME or nameserver (NS) configuration, and even create branch-specific preview URLs for testing before production.
+
 # More resources
-- [Appwrite Sites docs](/doc/products/sites)
+- [Appwrite Sites docs](/docs/products/sites)
 - [Announcing Appwrite Sites: the open-source Vercel alternative](announcing-appwrite-sites)
 - [Building with Sites templates](/blog/post/building-with-sites-templates)
 - [Appwrite Sites product tour](https://youtu.be/VtDe6hDw91k)
