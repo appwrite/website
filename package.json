@@ -22,7 +22,9 @@
         "test:integration": "playwright test",
         "test:unit": "vitest",
         "optimize": "node ./scripts/optimize-assets.js",
-        "optimize:all": "node ./scripts/optimize-all.js"
+        "optimize:all": "node ./scripts/optimize-all.js",
+        "create-blog": "node ./scripts/blog/create-blog.js",
+        "create-author": "node ./scripts/blog/create-author.js"
     },
     "packageManager": "pnpm@10.15.1",
     "dependencies": {
