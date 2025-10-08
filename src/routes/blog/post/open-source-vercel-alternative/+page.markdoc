@@ -226,15 +226,15 @@ Yes. Appwrite Sites is a modern, open-source alternative to Vercel. It lets you 
 
 The key difference is control: Vercel is fully managed and frontend-focused, while Appwrite Sites gives you the same smooth deployment experience with the flexibility to self-host or use the cloud. If you want an all-in-one, open, and developer-friendly setup, Appwrite Sites is worth considering.
 
-**2. Does Vercel support backend services?**
+**2. Are there platforms that host both frontend and backend together?**
 
-Not directly. Vercel is built mainly for frontend hosting and serverless rendering. You can create API routes or edge functions, but they’re limited to lightweight serverless use cases, not full backend systems.
+Yes. Tools like Appwrite combine hosting with backend services (auth, DB, functions). This helps you avoid managing CORS, API gateways, and secrets across multiple providers.
 
-If you need databases, authentication, file storage, or custom server logic, you’ll have to connect Vercel to external services.
+**3. What’s the difference between Appwrite Sites and Vercel?**
 
-Appwrite Sites, on the other hand, combines hosting, backend, and APIs in one platform, so your front end and backend live together, reducing setup time and integration issues.
+Vercel focuses on frontend hosting, especially Next.js, while Appwrite Sites hosts your entire stack (frontend + backend) in one environment. You get built-in auth, databases, and APIs, so your frontend and backend live together without extra setup.
 
-**3. Does Appwrite Sites support Git deployments and custom domains?**
+**4. Does Appwrite Sites support Git deployments and custom domains?**
 
 Yes. Appwrite Sites fully supports Git-based deployments: you can connect your GitHub repo, select a branch, and automatically deploy on every commit or pull request.
 
