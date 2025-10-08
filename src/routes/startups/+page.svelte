@@ -172,13 +172,12 @@
             'Thanks to Appwrite and advances in technology, we were able to get an MVP out in 2-3 months with 1 developer.',
             'jonas-janssen'
         ),
-        testimonial(
-            'Zach Handley',
-            'CTO // Socialaize',
-            "We have somewhere between 200,000 to 600,000 function executions per day. It's especially nice that you guys have to deal with the scaling now and not me.",
-            'zach-handley'
-        ),
-        mariusBolik
+        {
+            name: 'Zach Handley',
+            handle: 'CTO // Socialaize',
+            text: "We have somewhere between 200,000 to 600,000 function executions per day. It's especially nice that you guys have to deal with the scaling now and not me.",
+            image: '/images/testimonials/zach-handley.jpg'
+        }
     ];
 </script>
 
@@ -545,6 +544,31 @@
                 </h4>
                 <div class="scroll-carousel">
                     <ul class="inner gap-8">
+                        {#each testimonials as t}
+                            <li>
+                                <div
+                                    class="web-card is-white web-u-margin-block-start-64 e-mt-12-mobile gap-5"
+                                    style="inline-size:23.625rem"
+                                >
+                                    <p class="aw-sub-body-500">{t.text}</p>
+                                    <div class="web-user-box">
+                                        <img
+                                            class="web-user-box-image"
+                                            src={t.image}
+                                            alt="Avatar of Kap.ts"
+                                            width="48"
+                                            height="48"
+                                        />
+                                        <div class="web-user-box-name text-sub-body font-medium">
+                                            {t.name}
+                                        </div>
+                                        <div class="web-user-box-username text-sub-body">
+                                            {t.handle}
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        {/each}
                         {#each testimonials as t}
                             <li>
                                 <div
