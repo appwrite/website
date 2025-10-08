@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest';
 
-import { toScale } from './toScale';
-import type { TestCases } from './test';
+import { toScale } from '$lib/utils/toScale';
+import type { TestCases } from '$lib/utils/test';
 
 const testCases: TestCases<typeof toScale> = [
     {

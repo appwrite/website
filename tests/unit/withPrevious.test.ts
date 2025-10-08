@@ -1,6 +1,7 @@
 import { describe, expect, test } from 'vitest';
-import { withPrevious } from './withPrevious';
+
 import { get } from 'svelte/store';
+import { withPrevious } from '$lib/utils/withPrevious';
 
 describe('withPrevious', () => {
     test('Should retain previous value (number)', () => {
