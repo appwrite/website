@@ -598,7 +598,7 @@ await tablesDB.incrementRowColumn(
 );
 ```
 ```client-apple
-let _ = try await tablesDB.incrementRowColumn(
+try await tablesDB.incrementRowColumn(
   databaseId: "<DATABASE_ID>",
   tableId: "<TABLE_ID>",
   rowId: "<ROW_ID>",
@@ -608,7 +608,7 @@ let _ = try await tablesDB.incrementRowColumn(
 )
 ```
 ```client-android-kotlin
-val _ = tablesDB.incrementRowColumn(
+tablesDB.incrementRowColumn(
   databaseId = "<DATABASE_ID>",
   tableId = "<TABLE_ID>",
   rowId = "<ROW_ID>",
@@ -716,7 +716,7 @@ await tablesDB.incrementRowColumn(
 );
 ```
 ```server-swift
-let _ = try await tablesDB.incrementRowColumn(
+try await tablesDB.incrementRowColumn(
   databaseId: "<DATABASE_ID>",
   tableId: "<TABLE_ID>",
   rowId: "<ROW_ID>",
@@ -726,7 +726,7 @@ let _ = try await tablesDB.incrementRowColumn(
 )
 ```
 ```server-kotlin
-val _ = tablesDB.incrementRowColumn(
+tablesDB.incrementRowColumn(
   databaseId = "<DATABASE_ID>",
   tableId = "<TABLE_ID>",
   rowId = "<ROW_ID>",

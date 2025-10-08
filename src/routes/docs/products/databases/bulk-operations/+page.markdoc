@@ -46,11 +46,11 @@ const result = await tablesDB.createRows(
     [
         {
             $id: sdk.ID.unique(),
-            data: { name: 'Row 1' }
+            name: 'Row 1'
         },
         {
             $id: sdk.ID.unique(),
-            data: { name: 'Row 2' }
+            name: 'Row 2'
         }
     ]
 );
@@ -73,11 +73,11 @@ result = tablesDB.create_rows(
     rows = [
         {
             '$id': appwrite.ID.unique(),
-            'data': { 'name': 'Row 1' }
+            'name': 'Row 1'
         },
         {
             '$id': appwrite.ID.unique(),
-            'data': { 'name': 'Row 2' }
+            'name': 'Row 2'
         }
     ]
 )
@@ -270,33 +270,45 @@ All bulk operations accept `transactionId`. When provided, Appwrite stages the b
 
 {% multicode %}
 ```server-nodejs
-await tablesDB.createRows('<DATABASE_ID>', '<TABLE_ID>', [
-  { $id: sdk.ID.unique(), data: { name: 'One' } },
-  { $id: sdk.ID.unique(), data: { name: 'Two' } }
-], { transactionId: '<TRANSACTION_ID>' });
+await tablesDB.createRows({
+  databaseId: '<DATABASE_ID>',
+  tableId: '<TABLE_ID>',
+  rows: [
+    { $id: sdk.ID.unique(), name: 'One' },
+    { $id: sdk.ID.unique(), name: 'Two' }
+  ],
+  transactionId: '<TRANSACTION_ID>'
+});
 ```
 ```server-python
-tablesDB.update_rows(
+tablesDB.create_rows(
   database_id = '<DATABASE_ID>',
   table_id = '<TABLE_ID>',
-  data = { 'status': 'published' },
-  queries = [ Query.equal('status', 'draft') ],
+  rows = [
+    { '$id': appwrite.ID.unique(), 'name': 'One' },
+    { '$id': appwrite.ID.unique(), 'name': 'Two' }
+  ],
   transaction_id = '<TRANSACTION_ID>'
 )
 ```
 ```server-deno
-await tablesDB.createRows('<DATABASE_ID>', '<TABLE_ID>', [
-  { $id: sdk.ID.unique(), data: { name: 'One' } },
-  { $id: sdk.ID.unique(), data: { name: 'Two' } }
-], { transactionId: '<TRANSACTION_ID>' });
+await tablesDB.createRows({
+  databaseId: '<DATABASE_ID>',
+  tableId: '<TABLE_ID>',
+  rows: [
+    { $id: sdk.ID.unique(), name: 'One' },
+    { $id: sdk.ID.unique(), name: 'Two' }
+  ],
+  transactionId: '<TRANSACTION_ID>'
+});
 ```
 ```server-php
 $tablesDB->createRows(
   databaseId: '<DATABASE_ID>',
   tableId: '<TABLE_ID>',
   rows: [
-    [ '$id' => ID::unique(), 'data' => [ 'name' => 'One' ] ],
-    [ '$id' => ID::unique(), 'data' => [ 'name' => 'Two' ] ]
+    [ '$id' => ID::unique(), 'name' => 'One' ],
+    [ '$id' => ID::unique(), 'name' => 'Two' ]
   ],
   transactionId: '<TRANSACTION_ID>'
 );
@@ -306,8 +318,8 @@ tablesDB.create_rows(
   database_id: '<DATABASE_ID>',
   table_id: '<TABLE_ID>',
   rows: [
-    { '$id' => ID.unique(), 'data' => { 'name' => 'One' } },
-    { '$id' => ID.unique(), 'data' => { 'name' => 'Two' } }
+    { '$id' => ID.unique(), 'name' => 'One' },
+    { '$id' => ID.unique(), 'name' => 'Two' }
   ],
   transaction_id: '<TRANSACTION_ID>'
 )
@@ -321,12 +333,12 @@ await tablesDB.CreateRows(
     new Dictionary<string, object>
     {
       ["$id"] = ID.Unique(),
-      ["data"] = new Dictionary<string, object> { ["name"] = "One" }
+      ["name"] = "One"
     },
     new Dictionary<string, object>
     {
       ["$id"] = ID.Unique(),
-      ["data"] = new Dictionary<string, object> { ["name"] = "Two" }
+      ["name"] = "Two"
     }
   },
   transactionId: "<TRANSACTION_ID>"
@@ -337,47 +349,48 @@ await tablesDB.createRows(
   databaseId: '<DATABASE_ID>',
   tableId: '<TABLE_ID>',
   rows: [
-    { '\$id': ID.unique(), 'data': { 'name': 'One' } },
-    { '\$id': ID.unique(), 'data': { 'name': 'Two' } }
+    { '\$id': ID.unique(), 'name': 'One' },
+    { '\$id': ID.unique(), 'name': 'Two' }
   ],
   transactionId: '<TRANSACTION_ID>'
 );
 ```
 ```server-swift
-let _ = try await tablesDB.createRows(
+try await tablesDB.createRows(
   databaseId: "<DATABASE_ID>",
   tableId: "<TABLE_ID>",
   rows: [
-    ["$id": ID.unique(), "data": ["name": "One"]],
-    ["$id": ID.unique(), "data": ["name": "Two"]]
+    ["$id": ID.unique(), "name": "One"],
+    ["$id": ID.unique(), "name": "Two"]
   ],
   transactionId: "<TRANSACTION_ID>"
 )
 ```
 ```server-kotlin
-val _ = tablesDB.createRows(
+tablesDB.createRows(
   databaseId = "<DATABASE_ID>",
   tableId = "<TABLE_ID>",
   rows = listOf(
-    mapOf("\$id" to ID.unique(), "data" to mapOf("name" to "One")),
-    mapOf("\$id" to ID.unique(), "data" to mapOf("name" to "Two"))
+    mapOf("\$id" to ID.unique(), "name" to "One"),
+    mapOf("\$id" to ID.unique(), "name" to "Two")
   ),
   transactionId = "<TRANSACTION_ID>"
 )
 ```
 ```server-java
-Map<String, Object> row1 = new HashMap<>();
-row1.put("$id", ID.unique());
-row1.put("data", new HashMap<String, Object>() {{ put("name", "One"); }});
-
-Map<String, Object> row2 = new HashMap<>();
-row2.put("$id", ID.unique());
-row2.put("data", new HashMap<String, Object>() {{ put("name", "Two"); }});
-
 tablesDB.createRows(
   "<DATABASE_ID>",
   "<TABLE_ID>",
-  Arrays.asList(row1, row2),
+  Arrays.asList(
+    Map.of(
+      "$id", ID.unique(),
+      "name", "One"
+    ),
+    Map.of(
+      "$id", ID.unique(),
+      "name", "Two"
+    )
+  ),
   "<TRANSACTION_ID>",
   new CoroutineCallback<>((result, error) -> {
     if (error != null) {
