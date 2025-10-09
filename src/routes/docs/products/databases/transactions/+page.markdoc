@@ -661,16 +661,17 @@ tablesDB.create_operations(
   transaction_id = tx['$id'],
   operations = [
     {
-      'action': 'upsert',
+      'action': 'create',
       'databaseId': '<DB_A>',
       'tableId': '<TABLE_1>',
       'rowId': 'u1',
       'data': { 'name': 'Walter' }
     },
     {
-      'action': 'bulkDelete',
+      'action': 'increment',
       'databaseId': '<DB_B>',
       'tableId': '<TABLE_2>',
+      'rowId': 'u2',
       'data': { 'value': 1, 'min': 0, 'column': 'credits' }
     }
   ]
