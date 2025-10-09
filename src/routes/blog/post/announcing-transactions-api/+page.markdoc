@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Announcing Transactions API: Reliable multi-record writes across tables"
-description: Ensure data consistency across tables with atomic, all-or-nothing commits
+description: Appwrite introduces a new Databases feature called Transactions API. This new feature allows developers to group multiple operations across tables and commit them in a single atomic action, ensuring data consistency and eliminating partial writes.
 date: 2025-10-09
 cover: /images/blog/announcing-transactions-api/cover.png
 timeToRead: 5
