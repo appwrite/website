@@ -296,7 +296,7 @@ When you pass `transactionId`, Appwrite writes the operation to an internal stag
 
 ## Stage single operations {% #stage-single-operations %}
 
-Create, update, upsert, delete, and atomic numeric operations accept `transactionId`.
+Create, update, upsert, delete, and atomic numeric operations accept `transactionId`, as well as their bulk versions (createRows, updateRows, upsertRows, deleteRows).
 
 {% multicode %}
 ```client-web
