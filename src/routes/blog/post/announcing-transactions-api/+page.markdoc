@@ -57,7 +57,7 @@ This flow isolates your changes until you're confident they’re valid, giving y
 
 # Get started
 
-The Transactions API is now available on Appwrite Cloud and will soon be available for self-hosted.
+The Transactions API is now available on Appwrite Cloud.
 
 You can start by wrapping your multi-step logic, like order processing, user provisioning, or data sync workflows, inside a single transaction for consistent and predictable results. Every operation stays isolated until you commit, ensuring that your data only changes when everything succeeds.
 
