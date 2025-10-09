@@ -25,21 +25,21 @@ With the Transactions API, those issues disappear. All operations are staged and
 
 The Transactions API introduces a structured flow for handling multi-step record operations with atomic guarantees. Here’s how it works under the hood:
 
-- Create a transaction
+## Create a transaction
 
 Start by creating a transaction. The server responds with a **transaction object** including the `$id`, which is used to link all subsequent operations.
     
-- Stage operations (incremental or batch)
+## Stage operations (incremental or batch)
     
 Use this `transactionId` in your standard `create`, `update`, or `delete` calls. These operations are **staged,** queued on the server, but not executed until you commit. You can stage operations one at a time or use the bulk staging endpoint to queue multiple in a single request.
     
 Each transaction has a time-to-live (ttl) value that defines how long it remains active. Once it expires, the transaction is automatically cleaned up and can no longer be used for staging or committing operations.
     
-- Commit
+## Commit
     
 When ready, commit the transaction. Appwrite validates all staged operations (permissions, schema, revision checks) and applies them in one atomic write. If **any** operation fails, **none** are applied. Everything is rolled back.
     
-- Abort (optional or automatic)
+## Abort (optional or automatic)
     
 You can explicitly abort a transaction or let it expire. Idle transactions are automatically cleaned up after a configurable timeout, anywhere between 1 minute and 1 hour, with a default of 5 minutes, to avoid resource leaks or incomplete workflows.
 
@@ -49,7 +49,9 @@ This flow isolates your changes until you're confident they’re valid, giving y
 
 Here’s an example showing how to stage multiple operations across different tables within a single transaction:
 
-```
+```server-nodejs
+const tx = await tablesDB.createTransaction();
+
 await tablesDB.createOperations({
   transactionId: tx.$id,
   operations: [
