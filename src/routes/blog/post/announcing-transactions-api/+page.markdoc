@@ -33,7 +33,7 @@ Start by creating a transaction. The server responds with a **transaction object
     
 Use this `transactionId` in your standard `create`, `update`, or `delete` calls. These operations are **staged,** queued on the server, but not executed until you commit. You can stage operations one at a time or use the bulk staging endpoint to queue multiple in a single request.
     
-Transactions remain active until committed or aborted, after which they’re automatically cleaned up if left idle.
+Each transaction has a time-to-live (ttl) value that defines how long it remains active. Once it expires, the transaction is automatically cleaned up and can no longer be used for staging or committing operations.
     
 - Commit
     
@@ -47,7 +47,6 @@ This flow isolates your changes until you're confident they’re valid, giving y
 
 # Key benefits
 
-- **ACID transactions:** Ensures atomicity, consistency, isolation, and durability across all staged operations.
 - **Atomic writes:** All-or-nothing execution across multiple operations and tables.
 - **No manual rollbacks:** Appwrite handles failure cleanup automatically.
 - **Safe retries:** No partial state means simpler retry logic.
