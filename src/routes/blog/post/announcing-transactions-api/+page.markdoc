@@ -9,9 +9,9 @@ author: jake-barnby
 category: announcement
 featured: false
 ---
-When you're dealing with multi-step workflows, like order processing or data syncs, it's not enough for some of your writes to succeed. You need every operation in the sequence to succeed together, or not happen at all. Anything less leads to incomplete states, corrupted records, and systems that are harder to reason about. 
+When dealing with multi-step workflows, like order processing or data syncs, it's not enough for some of your writes to succeed. You need every operation in the sequence to succeed together, or not happen at all. Anything less leads to incomplete states, corrupted records, and systems that are harder to reason about. 
 
-That’s exactly why we’re announcing the **Transactions API**.
+To solve this, we're introducing a new Databases feature, **Transactions API**.
 
 With this feature, you can stage multiple operations across one or more tables, and commit them only when you’re ready. If every operation checks out, Appwrite commits them in one atomic action. If anything fails, whether due to permissions, conflicts, validations, or other reasons, Appwrite automatically rolls everything back.
 
