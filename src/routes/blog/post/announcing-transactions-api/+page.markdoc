@@ -45,6 +45,34 @@ You can explicitly abort a transaction or let it expire. Idle transactions are a
 
 This flow isolates your changes until you're confident they’re valid, giving you a safe way to manage complex, interdependent writes, especially useful in scenarios like user provisioning, multi-collection updates, or third-party sync operations.
 
+# Example
+
+Here’s an example showing how to stage multiple operations across different tables within a single transaction:
+
+```
+await tablesDB.createOperations({
+  transactionId: tx.$id,
+  operations: [
+    {
+      action: 'create',
+      databaseId: '<DB_A>',
+      tableId: '<TABLE_1>',
+      rowId: 'u1',
+      data: { name: 'Walter' }
+    },
+    {
+      action: 'increment',
+      databaseId: '<DB_B>',
+      tableId: '<TABLE_2>',
+      rowId: 'u2',
+      data: { value: 1, min: 0, column: 'credits' }
+    }
+  ]
+});
+```
+
+For more examples and API details, check out the [Transactions API documentation](/docs/products/databases/transactions).
+
 # Key benefits
 
 - **Atomic writes:** All-or-nothing execution across multiple operations and tables.
