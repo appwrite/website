@@ -18,6 +18,16 @@ On commit, Appwrite replays all staged logs in order inside a real database tran
 You can stage operations across any database and table within the same transaction. Schema operations (for example, adding or removing columns) are not included in transactions.
 {% /info %}
 
+# Limits {% #limits %}
+
+The maximum number of operations you can stage per transaction depends on your plan:
+
+| Plan | Max operations per transaction |
+|------|-------------------------------|
+| Free | 100 |
+| Pro | 1,000 |
+| Scale | 2,500 |
+
 # Create a transaction {% #create-a-transaction %}
 
 Call the `createTransaction` method to begin. It returns a transaction model that includes `$id`. Pass this ID as `transactionId` to subsequent operations.
@@ -681,19 +691,19 @@ tablesDB.create_operations(
 await tablesDB.createOperations({
   transactionId: tx.$id,
   operations: [
-    { 
-      action: 'create', 
-      databaseId: '<DB_A>', 
-      tableId: '<TABLE_1>', 
-      rowId: 'u1', 
-      data: { name: 'Walter' } 
+    {
+      action: 'create',
+      databaseId: '<DB_A>',
+      tableId: '<TABLE_1>',
+      rowId: 'u1',
+      data: { name: 'Walter' }
     },
-    { 
-      action: 'increment', 
-      databaseId: '<DB_B>', 
-      tableId: '<TABLE_2>', 
-      rowId: 'u2', 
-      data: { value: 1, min: 0, column: 'credits' } 
+    {
+      action: 'increment',
+      databaseId: '<DB_B>',
+      tableId: '<TABLE_2>',
+      rowId: 'u2',
+      data: { value: 1, min: 0, column: 'credits' }
     }
   ]
 });
@@ -797,19 +807,19 @@ tablesDB.createOperations(
 await tablesDB.createOperations({
   transactionId: tx.$id,
   operations: [
-    { 
-      action: 'create', 
-      databaseId: '<DB_A>', 
-      tableId: '<TABLE_1>', 
-      rowId: 'u1', 
-      data: { name: 'Walter' } 
+    {
+      action: 'create',
+      databaseId: '<DB_A>',
+      tableId: '<TABLE_1>',
+      rowId: 'u1',
+      data: { name: 'Walter' }
     },
-    { 
-      action: 'increment', 
-      databaseId: '<DB_B>', 
-      tableId: '<TABLE_2>', 
-      rowId: 'u2', 
-      data: { value: 1, min: 0, column: 'credits' } 
+    {
+      action: 'increment',
+      databaseId: '<DB_B>',
+      tableId: '<TABLE_2>',
+      rowId: 'u2',
+      data: { value: 1, min: 0, column: 'credits' }
     }
   ]
 });
@@ -818,19 +828,19 @@ await tablesDB.createOperations({
 await tablesDB.createOperations({
   transactionId: tx.$id,
   operations: [
-    { 
-      action: 'create', 
-      databaseId: '<DB_A>', 
-      tableId: '<TABLE_1>', 
-      rowId: 'u1', 
-      data: { name: 'Walter' } 
+    {
+      action: 'create',
+      databaseId: '<DB_A>',
+      tableId: '<TABLE_1>',
+      rowId: 'u1',
+      data: { name: 'Walter' }
     },
-    { 
-      action: 'increment', 
-      databaseId: '<DB_B>', 
-      tableId: '<TABLE_2>', 
-      rowId: 'u2', 
-      data: { value: 1, min: 0, column: 'credits' } 
+    {
+      action: 'increment',
+      databaseId: '<DB_B>',
+      tableId: '<TABLE_2>',
+      rowId: 'u2',
+      data: { value: 1, min: 0, column: 'credits' }
     }
   ]
 });
@@ -860,19 +870,19 @@ $tablesDB->createOperations(
 tablesDB.create_operations(
   transaction_id: tx['$id'],
   operations: [
-    { 
-      'action' => 'create', 
-      'databaseId' => '<DB_A>', 
-      'tableId' => '<TABLE_1>', 
-      'rowId' => 'u1', 
-      'data' => { 'name' => 'Walter' } 
+    {
+      'action' => 'create',
+      'databaseId' => '<DB_A>',
+      'tableId' => '<TABLE_1>',
+      'rowId' => 'u1',
+      'data' => { 'name' => 'Walter' }
     },
-    { 
-      'action' => 'increment', 
-      'databaseId' => '<DB_B>', 
-      'tableId' => '<TABLE_2>', 
-      'rowId' => 'u2', 
-      'data' => { 'value' => 1, 'min' => 0, 'column' => 'credits' } 
+    {
+      'action' => 'increment',
+      'databaseId' => '<DB_B>',
+      'tableId' => '<TABLE_2>',
+      'rowId' => 'u2',
+      'data' => { 'value' => 1, 'min' => 0, 'column' => 'credits' }
     }
   ]
 )
@@ -1035,66 +1045,66 @@ tablesDB.updateTransaction(
 ```
 ```client-react-native
 // Commit
-await tablesDB.updateTransaction({ 
+await tablesDB.updateTransaction({
   transactionId: tx.$id,
-  commit: true 
+  commit: true
 });
 
 // Roll back
-await tablesDB.updateTransaction({ 
-  transactionId: tx.$id, 
-  rollback: true 
+await tablesDB.updateTransaction({
+  transactionId: tx.$id,
+  rollback: true
 });
 ```
 ```server-nodejs
 // Commit
-await tablesDB.updateTransaction({ 
-  transactionId: tx.$id, 
-  commit: true 
+await tablesDB.updateTransaction({
+  transactionId: tx.$id,
+  commit: true
 });
 
 // Roll back
-await tablesDB.updateTransaction({ 
-  transactionId: tx.$id, 
-  rollback: true 
+await tablesDB.updateTransaction({
+  transactionId: tx.$id,
+  rollback: true
 });
 ```
 ```server-python
 # Commit
 tablesDB.update_transaction(
-  transaction_id = tx['$id'], 
+  transaction_id = tx['$id'],
   commit = True
 )
 
 # Roll back
 tablesDB.update_transaction(
-  transaction_id = tx['$id'], 
+  transaction_id = tx['$id'],
   rollback = True
 )
 ```
 ```server-php
 // Commit
 $tablesDB->updateTransaction(
-  transactionId: $tx['$id'], 
+  transactionId: $tx['$id'],
   commit: true
 );
 
 // Roll back
 $tablesDB->updateTransaction(
-  transactionId: $tx['$id'], 
+  transactionId: $tx['$id'],
   rollback: true
 );
 ```
 ```server-ruby
 # Commit
 tablesDB.update_transaction(
-  transaction_id: tx['$id'], 
+  transaction_id: tx['$id'],
   commit: true
 )
 
 # Roll back
 tablesDB.update_transaction(
-  transaction_id: tx['$id'], 
+  transaction_id: tx['$id'],
   rollback: true
 )
 ```
