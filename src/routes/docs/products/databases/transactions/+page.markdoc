@@ -612,7 +612,7 @@ Pass a raw data object.
 ### Increment and decrement {% #increment-decrement %}
 Pass a value and optionally `min`/`max` bounds.
 ```json
-{ "value": 1, "min": 0, "max": 1000 }
+{ "value": 1, "min": 0, "max": 1000, "column": "<COLUMN_NAME>" }
 ```
 
 ### Bulk create and bulk upsert {% #bulk-create-upsert %}
