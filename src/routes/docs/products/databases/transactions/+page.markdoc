@@ -360,7 +360,7 @@ tablesDB.createRow(
 )
 
 // Increment inside a transaction
-val _2 = tablesDB.incrementRowColumn(
+tablesDB.incrementRowColumn(
   databaseId = "<DATABASE_ID>",
   tableId = "<TABLE_ID>",
   rowId = "<ROW_ID>",
@@ -651,7 +651,7 @@ await tablesDB.createOperations({
       databaseId: '<DB_B>',
       tableId: '<TABLE_2>',
       rowId: 'u2',
-      data: { value: 1, min: 0 }
+      data: { value: 1, min: 0, column: 'credits' }
     }
   ]
 });
@@ -664,14 +664,14 @@ tablesDB.create_operations(
       'action': 'upsert',
       'databaseId': '<DB_A>',
       'tableId': '<TABLE_1>',
-      'rowId': 'u3',
-      'data': { 'name': 'Skyler' }
+      'rowId': 'u1',
+      'data': { 'name': 'Walter' }
     },
     {
       'action': 'bulkDelete',
       'databaseId': '<DB_B>',
       'tableId': '<TABLE_2>',
-      'data': { 'queries': ["equal(\"status\", [\"archived\"])" ] }
+      'data': { 'value': 1, 'min': 0, 'column': 'credits' }
     }
   ]
 )
@@ -680,8 +680,20 @@ tablesDB.create_operations(
 await tablesDB.createOperations({
   transactionId: tx.$id,
   operations: [
-    { action: 'create', databaseId: '<DB_A>', tableId: '<TABLE_1>', rowId: 'u1', data: { name: 'Walter' } },
-    { action: 'increment', databaseId: '<DB_B>', tableId: '<TABLE_2>', rowId: 'u2', data: { value: 1, min: 0 } }
+    { 
+      action: 'create', 
+      databaseId: '<DB_A>', 
+      tableId: '<TABLE_1>', 
+      rowId: 'u1', 
+      data: { name: 'Walter' } 
+    },
+    { 
+      action: 'increment', 
+      databaseId: '<DB_B>', 
+      tableId: '<TABLE_2>', 
+      rowId: 'u2', 
+      data: { value: 1, min: 0, column: 'credits' } 
+    }
   ]
 });
 ```
@@ -701,7 +713,7 @@ await tablesDB.createOperations(
       'databaseId': '<DB_B>',
       'tableId': '<TABLE_2>',
       'rowId': 'u2',
-      'data': { 'value': 1, 'min': 0 }
+      'data': { 'value': 1, 'min': 0, 'column': 'credits' }
     }
   ],
 );
@@ -722,7 +734,7 @@ try await tablesDB.createOperations(
       "databaseId": "<DB_B>",
       "tableId": "<TABLE_2>",
       "rowId": "u2",
-      "data": ["value": 1, "min": 0]
+      "data": ["value": 1, "min": 0, "column": "credits"]
     ]
   ]
 )
@@ -743,7 +755,7 @@ tablesDB.createOperations(
       "databaseId" to "<DB_B>",
       "tableId" to "<TABLE_2>",
       "rowId" to "u2",
-      "data" to mapOf("value" to 1, "min" to 0)
+      "data" to mapOf("value" to 1, "min" to 0, "column" to "credits")
     )
   )
 )
@@ -763,7 +775,7 @@ List<Map<String, Object>> operations = Arrays.asList(
     "databaseId", "<DB_B>",
     "tableId", "<TABLE_2>",
     "rowId", "u2",
-    "data", Map.of("value", 1, "min", 0)
+    "data", Map.of("value", 1, "min", 0, "column", "credits")
   )
 );
 
@@ -784,8 +796,20 @@ tablesDB.createOperations(
 await tablesDB.createOperations({
   transactionId: tx.$id,
   operations: [
-    { action: 'create', databaseId: '<DB_A>', tableId: '<TABLE_1>', rowId: 'u1', data: { name: 'Walter' } },
-    { action: 'increment', databaseId: '<DB_B>', tableId: '<TABLE_2>', rowId: 'u2', data: { value: 1, min: 0 } }
+    { 
+      action: 'create', 
+      databaseId: '<DB_A>', 
+      tableId: '<TABLE_1>', 
+      rowId: 'u1', 
+      data: { name: 'Walter' } 
+    },
+    { 
+      action: 'increment', 
+      databaseId: '<DB_B>', 
+      tableId: '<TABLE_2>', 
+      rowId: 'u2', 
+      data: { value: 1, min: 0, column: 'credits' } 
+    }
   ]
 });
 ```
@@ -793,8 +817,20 @@ await tablesDB.createOperations({
 await tablesDB.createOperations({
   transactionId: tx.$id,
   operations: [
-    { action: 'create', databaseId: '<DB_A>', tableId: '<TABLE_1>', rowId: 'u1', data: { name: 'Walter' } },
-    { action: 'increment', databaseId: '<DB_B>', tableId: '<TABLE_2>', rowId: 'u2', data: { value: 1, min: 0 } }
+    { 
+      action: 'create', 
+      databaseId: '<DB_A>', 
+      tableId: '<TABLE_1>', 
+      rowId: 'u1', 
+      data: { name: 'Walter' } 
+    },
+    { 
+      action: 'increment', 
+      databaseId: '<DB_B>', 
+      tableId: '<TABLE_2>', 
+      rowId: 'u2', 
+      data: { value: 1, min: 0, column: 'credits' } 
+    }
   ]
 });
 ```
@@ -814,7 +850,7 @@ $tablesDB->createOperations(
       'databaseId' => '<DB_B>',
       'tableId' => '<TABLE_2>',
       'rowId' => 'u2',
-      'data' => [ 'value' => 1, 'min' => 0 ]
+      'data' => [ 'value' => 1, 'min' => 0, 'column' => 'credits' ]
     ]
   ]
 );
@@ -823,8 +859,20 @@ $tablesDB->createOperations(
 tablesDB.create_operations(
   transaction_id: tx['$id'],
   operations: [
-    { 'action' => 'create', 'databaseId' => '<DB_A>', 'tableId' => '<TABLE_1>', 'rowId' => 'u1', 'data' => { 'name' => 'Walter' } },
-    { 'action' => 'increment', 'databaseId' => '<DB_B>', 'tableId' => '<TABLE_2>', 'rowId' => 'u2', 'data' => { 'value' => 1, 'min' => 0 } }
+    { 
+      'action' => 'create', 
+      'databaseId' => '<DB_A>', 
+      'tableId' => '<TABLE_1>', 
+      'rowId' => 'u1', 
+      'data' => { 'name' => 'Walter' } 
+    },
+    { 
+      'action' => 'increment', 
+      'databaseId' => '<DB_B>', 
+      'tableId' => '<TABLE_2>', 
+      'rowId' => 'u2', 
+      'data' => { 'value' => 1, 'min' => 0, 'column' => 'credits' } 
+    }
   ]
 )
 ```
@@ -847,7 +895,7 @@ await tablesDB.CreateOperations(
       ["databaseId"] = "<DB_B>",
       ["tableId"] = "<TABLE_2>",
       ["rowId"] = "u2",
-      ["data"] = new Dictionary<string, object> { ["value"] = 1, ["min"] = 0 }
+      ["data"] = new Dictionary<string, object> { ["value"] = 1, ["min"] = 0, ["column"] = "credits" }
     }
   }
 );
@@ -868,7 +916,7 @@ await tablesDB.createOperations(
       'databaseId': '<DB_B>',
       'tableId': '<TABLE_2>',
       'rowId': 'u2',
-      'data': { 'value': 1, 'min': 0 }
+      'data': { 'value': 1, 'min': 0, 'column': 'credits' }
     }
   ]
 );
@@ -889,7 +937,7 @@ try await tablesDB.createOperations(
       "databaseId": "<DB_B>",
       "tableId": "<TABLE_2>",
       "rowId": "u2",
-      "data": ["value": 1, "min": 0]
+      "data": ["value": 1, "min": 0, "column": "credits"]
     ]
   ]
 )
@@ -986,38 +1034,68 @@ tablesDB.updateTransaction(
 ```
 ```client-react-native
 // Commit
-await tablesDB.updateTransaction({ transactionId: tx.$id, commit: true });
+await tablesDB.updateTransaction({ 
+  transactionId: tx.$id,
+  commit: true 
+});
 
 // Roll back
-await tablesDB.updateTransaction({ transactionId: tx.$id, rollback: true });
+await tablesDB.updateTransaction({ 
+  transactionId: tx.$id, 
+  rollback: true 
+});
 ```
 ```server-nodejs
 // Commit
-await tablesDB.updateTransaction({ transactionId: tx.$id, commit: true });
+await tablesDB.updateTransaction({ 
+  transactionId: tx.$id, 
+  commit: true 
+});
 
 // Roll back
-await tablesDB.updateTransaction({ transactionId: tx.$id, rollback: true });
+await tablesDB.updateTransaction({ 
+  transactionId: tx.$id, 
+  rollback: true 
+});
 ```
 ```server-python
 # Commit
-tablesDB.update_transaction(transaction_id = tx['$id'], commit = True)
+tablesDB.update_transaction(
+  transaction_id = tx['$id'], 
+  commit = True
+)
 
 # Roll back
-tablesDB.update_transaction(transaction_id = tx['$id'], rollback = True)
+tablesDB.update_transaction(
+  transaction_id = tx['$id'], 
+  rollback = True
+)
 ```
 ```server-php
 // Commit
-$tablesDB->updateTransaction(transactionId: $tx['$id'], commit: true);
+$tablesDB->updateTransaction(
+  transactionId: $tx['$id'], 
+  commit: true
+);
 
 // Roll back
-$tablesDB->updateTransaction(transactionId: $tx['$id'], rollback: true);
+$tablesDB->updateTransaction(
+  transactionId: $tx['$id'], 
+  rollback: true
+);
 ```
 ```server-ruby
 # Commit
-tablesDB.update_transaction(transaction_id: tx['$id'], commit: true)
+tablesDB.update_transaction(
+  transaction_id: tx['$id'], 
+  commit: true
+)
 
 # Roll back
-tablesDB.update_transaction(transaction_id: tx['$id'], rollback: true)
+tablesDB.update_transaction(
+  transaction_id: tx['$id'], 
+  rollback: true
+)
 ```
 ```server-dotnet
 // Commit
