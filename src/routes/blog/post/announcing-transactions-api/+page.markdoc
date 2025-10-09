@@ -75,7 +75,7 @@ For more examples and API details, check out the [Transactions API documentation
 
 # Key benefits
 
-- **Atomic writes:** All-or-nothing execution across multiple operations and tables.
+- **ACID transactions:** Ensures atomicity, consistency, isolation, and durability across all staged operations.
 - **No manual rollbacks:** Appwrite handles failure cleanup automatically.
 - **Safe retries:** No partial state means simpler retry logic.
 - **Reduced race conditions:** Ops are validated and committed together.
