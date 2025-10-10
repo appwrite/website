@@ -8,6 +8,9 @@ timeToRead: 6
 author: aditya-oberai
 category: security
 ---
+
+Updated on October 7, 2025.
+
 User authentication is a fundamental process that ensures only authorized individuals can access specific systems, applications, or data. Every time you log in to your email, bank account, or social media, you're going through this process.
 
 As a developer, setting up user authentication properly is crucial to maintaining security and trust in your application. But authentication is more than just checking passwords — it’s about balancing security, usability, and scalability.
@@ -16,7 +19,7 @@ So, what should you know when implementing user authentication? Let’s break it
 
 # The basics of user authentication
 
-At its core, **authentication** verifies a user’s identity by comparing the credentials they provide (such as a username and password) with a trusted data source. The goal is simple: ensure the user is who they say they are. But how you go about implementing this can range from basic to highly sophisticated.
+At its core, [authentication](/docs/products/auth) verifies a user’s identity by comparing the credentials they provide (such as a username and password) with a trusted data source. The goal is simple: ensure the user is who they say they are. But how you go about implementing this can range from basic to highly sophisticated.
 
 The foundation of any authentication system relies on **secure handling of credentials** and ensuring that the process is both reliable and user-friendly. Without a strong authentication system, your app becomes an easy target for attacks.
 
@@ -117,7 +120,31 @@ User authentication is the first line of defense in safeguarding digital identit
 
 However, keeping up with evolving threats takes time, and building a secure authentication system from scratch might not be feasible, especially if you're also responsible for the rest of your backend.
 
-That’s why it's often better to trust established security experts rather than reinvent the wheel. Appwrite’s Auth service can help you set up multiple secure authentication methods — including OAuth, email/password, magic links, and OTP — in just a few lines of code. This way, you ensure that your users are protected by industry standards without having to maintain the entire system yourself. More resources:
+That’s why it's often better to trust established security experts rather than reinvent the wheel. Appwrite’s Auth service can help you set up multiple secure authentication methods — including OAuth, email/password, magic links, and OTP — in just a few lines of code. This way, you ensure that your users are protected by industry standards without having to maintain the entire system yourself. 
+
+# Frequently asked questions (FAQs)
+
+**1. What’s the difference between authentication and authorization?**
+
+Authentication verifies who you are, for example, logging in with an email and password. Authorization determines what you can do after logging in, such as accessing admin pages or specific APIs. Think of authentication as the key to enter a building, and authorization as the permission to enter certain rooms.
+
+**2. What’s the most secure way to handle passwords?**
+
+Never store plain-text passwords. Always hash them with strong algorithms like bcrypt or Argon2, and add a unique salt to each hash. This ensures that even if your database leaks, passwords can’t easily be reversed. Also, enforce password length and complexity without making them too frustrating to remember.
+
+**3. Is passwordless authentication more secure than passwords?**
+
+In most cases, yes. Passwordless methods like magic links, WebAuthn, or biometric login remove the need for users to remember passwords, which eliminates risks from password reuse or brute-force attacks. But you still need to secure token expiration, link validity, and fallback recovery options.
+
+**4. How can developers add authentication without building it from scratch?**
+
+Use a backend service like Appwrite, Supabase, or Auth0. They handle user creation, token management, and secure password resets for you. With Appwrite, for example, you can implement email/password, OAuth, OTP, or magic link login in just a few API calls, while still keeping full control over your data.
+
+**5. Should I still use OTP over SMS in 2025?**
+
+SMS OTPs are convenient but increasingly risky due to SIM swapping and phishing attacks. They’re fine for low-risk apps, but for better security, use authenticator apps, email OTPs, or WebAuthn-based passkeys that are tied to a device instead of a phone number.
+
+# More resources:
 
 - [Auth docs](https://appwrite.io/docs/products/auth)
 - [How to set up Sign in with Apple](https://appwrite.io/blog/post/how-to-set-up-sign-in-with-apple)

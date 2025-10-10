@@ -9,6 +9,9 @@ author: ebenezer-don
 category: product
 featured: false
 ---
+
+Updated on October 7, 2025.
+
 Serverless functions have become a popular choice for modern application development due to their scalability, cost-effectiveness, and ease of use. Appwrite offers an integrated serverless platform that allows you to build and deploy functions seamlessly. However, to make the most of serverless functions, it's essential to follow best practices that ensure efficiency, security, and maintainability.
 
 In this guide, we'll explore some dos and don'ts of serverless functions and provide tips for optimizing your functions.
@@ -195,6 +198,28 @@ Another tip is to use event triggers to invoke functions only when necessary. Th
 # Avoid long-running functions
 
 Serverless platforms have execution time limits. Avoid long-running tasks to prevent timeouts and increased costs. When a function runs for an extended period, it consumes resources and can impact the performance of other executions. So, design your functions to be short-lived and efficient. And when you notice that a function is taking too long to execute, consider breaking it down into smaller tasks.
+
+# Frequently asked questions (FAQs)
+
+**1. What are serverless functions?**
+
+Serverless functions let you run small pieces of code in the cloud without managing servers. You just define a function, deploy it, and the platform (like Appwrite, AWS Lambda, or Vercel) automatically scales it up or down based on usage. You only pay for the time your code runs, no idle costs, no manual infrastructure setup.
+
+**2. How do I decide what logic should go into a serverless function?**
+
+Keep functions small, focused, and event-driven. A good rule of thumb: one function should do one thing well, like sending an email, processing an image, or verifying a payment. Avoid cramming multiple workflows into a single function; it makes testing, scaling, and debugging much easier.
+
+**3. How can I reduce the cost of running serverless functions?**
+
+Design your architecture to be event-driven and avoid functions running longer than needed. Split heavy or continuous tasks (like file processing or large data syncs) into smaller chunks or move them to specialized services. Also, clean up unused triggers and logs, they can silently add to costs over time.
+
+**4. How do I secure my serverless functions?**
+
+Enforce authentication and authorization at the function level. Use minimal API scopes and regularly rotate keys. Never rely solely on client-side validation. Always validate tokens or permissions in the function itself. In Appwrite, you can configure execute permissions to restrict who can run each function.
+
+**5. How do I manage versions of serverless functions?**
+
+Versioning helps you roll back safely if something breaks. Assign version numbers when making breaking changes and maintain backward-compatible routes for existing clients. Appwrite lets you manage multiple function versions directly from the console.
 
 # Conclusion
 
