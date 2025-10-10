@@ -62,17 +62,19 @@
     })}
     {...restProps}
 >
-    <div class="container mx-auto">
-        <section class="flex flex-col items-start gap-x-30 md:flex-row">
+    <div class="container mx-auto px-4 md:px-6">
+        <section class="flex flex-col items-start gap-6 md:gap-x-30 lg:flex-row">
             <h2
-                class="text-title font-aeonik-pro text-primary max-w-[700px] leading-12 text-pretty"
+                class="text-title font-aeonik-pro text-primary max-w-[700px] text-3xl leading-12 text-pretty md:text-4xl lg:text-5xl"
             >
                 Benefits of Appwrite<br />for
                 <span class="relative"
                     >startups<span class="absolute bottom-0 left-0 h-1 w-full"></span></span
                 ><span class="text-accent">_</span>
             </h2>
-            <p class="text-secondary text-description mt-4 max-w-xl font-medium">
+            <p
+                class="text-secondary text-description mt-4 max-w-xl text-base font-medium md:text-lg"
+            >
                 {description}
             </p>
         </section>
