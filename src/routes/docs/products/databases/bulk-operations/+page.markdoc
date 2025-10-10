@@ -46,11 +46,11 @@ const result = await tablesDB.createRows(
     [
         {
             $id: sdk.ID.unique(),
-            data: { name: 'Row 1' }
+            name: 'Row 1'
         },
         {
             $id: sdk.ID.unique(),
-            data: { name: 'Row 2' }
+            name: 'Row 2'
         }
     ]
 );
@@ -73,11 +73,11 @@ result = tablesDB.create_rows(
     rows = [
         {
             '$id': appwrite.ID.unique(),
-            'data': { 'name': 'Row 1' }
+            'name': 'Row 1'
         },
         {
             '$id': appwrite.ID.unique(),
-            'data': { 'name': 'Row 2' }
+            'name': 'Row 2'
         }
     ]
 )
@@ -263,3 +263,143 @@ If no queries are provided, all rows in the table will be deleted.
 [Learn more about queries](/docs/products/databases/queries).
 
 {% /info %}
+
+# Use transactions {% #use-transactions %}
+
+All bulk operations accept `transactionId`. When provided, Appwrite stages the bulk request and applies it on commit. See [Transactions](/docs/products/databases/transactions).
+
+{% multicode %}
+```server-nodejs
+await tablesDB.createRows({
+  databaseId: '<DATABASE_ID>',
+  tableId: '<TABLE_ID>',
+  rows: [
+    { $id: sdk.ID.unique(), name: 'One' },
+    { $id: sdk.ID.unique(), name: 'Two' }
+  ],
+  transactionId: '<TRANSACTION_ID>'
+});
+```
+```server-python
+tablesDB.create_rows(
+  database_id = '<DATABASE_ID>',
+  table_id = '<TABLE_ID>',
+  rows = [
+    { '$id': appwrite.ID.unique(), 'name': 'One' },
+    { '$id': appwrite.ID.unique(), 'name': 'Two' }
+  ],
+  transaction_id = '<TRANSACTION_ID>'
+)
+```
+```server-deno
+await tablesDB.createRows({
+  databaseId: '<DATABASE_ID>',
+  tableId: '<TABLE_ID>',
+  rows: [
+    { $id: sdk.ID.unique(), name: 'One' },
+    { $id: sdk.ID.unique(), name: 'Two' }
+  ],
+  transactionId: '<TRANSACTION_ID>'
+});
+```
+```server-php
+$tablesDB->createRows(
+  databaseId: '<DATABASE_ID>',
+  tableId: '<TABLE_ID>',
+  rows: [
+    [ '$id' => ID::unique(), 'name' => 'One' ],
+    [ '$id' => ID::unique(), 'name' => 'Two' ]
+  ],
+  transactionId: '<TRANSACTION_ID>'
+);
+```
+```server-ruby
+tablesDB.create_rows(
+  database_id: '<DATABASE_ID>',
+  table_id: '<TABLE_ID>',
+  rows: [
+    { '$id' => ID.unique(), 'name' => 'One' },
+    { '$id' => ID.unique(), 'name' => 'Two' }
+  ],
+  transaction_id: '<TRANSACTION_ID>'
+)
+```
+```server-dotnet
+await tablesDB.CreateRows(
+  databaseId: "<DATABASE_ID>",
+  tableId: "<TABLE_ID>",
+  rows: new List<Dictionary<string, object>>
+  {
+    new Dictionary<string, object>
+    {
+      ["$id"] = ID.Unique(),
+      ["name"] = "One"
+    },
+    new Dictionary<string, object>
+    {
+      ["$id"] = ID.Unique(),
+      ["name"] = "Two"
+    }
+  },
+  transactionId: "<TRANSACTION_ID>"
+);
+```
+```server-dart
+await tablesDB.createRows(
+  databaseId: '<DATABASE_ID>',
+  tableId: '<TABLE_ID>',
+  rows: [
+    { '\$id': ID.unique(), 'name': 'One' },
+    { '\$id': ID.unique(), 'name': 'Two' }
+  ],
+  transactionId: '<TRANSACTION_ID>'
+);
+```
+```server-swift
+try await tablesDB.createRows(
+  databaseId: "<DATABASE_ID>",
+  tableId: "<TABLE_ID>",
+  rows: [
+    ["$id": ID.unique(), "name": "One"],
+    ["$id": ID.unique(), "name": "Two"]
+  ],
+  transactionId: "<TRANSACTION_ID>"
+)
+```
+```server-kotlin
+tablesDB.createRows(
+  databaseId = "<DATABASE_ID>",
+  tableId = "<TABLE_ID>",
+  rows = listOf(
+    mapOf("\$id" to ID.unique(), "name" to "One"),
+    mapOf("\$id" to ID.unique(), "name" to "Two")
+  ),
+  transactionId = "<TRANSACTION_ID>"
+)
+```
+```server-java
+tablesDB.createRows(
+  "<DATABASE_ID>",
+  "<TABLE_ID>",
+  Arrays.asList(
+    Map.of(
+      "$id", ID.unique(),
+      "name", "One"
+    ),
+    Map.of(
+      "$id", ID.unique(),
+      "name", "Two"
+    )
+  ),
+  "<TRANSACTION_ID>",
+  new CoroutineCallback<>((result, error) -> {
+    if (error != null) {
+      error.printStackTrace();
+      return null;
+    }
+    System.out.println(result);
+    return null;
+  })
+);
+```
+{% /multicode %}
