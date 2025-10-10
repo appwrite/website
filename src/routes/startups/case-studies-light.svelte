@@ -42,15 +42,6 @@
     import { ToggleGroup } from 'bits-ui';
 
     let value = $state<string>('0');
-
-    const getValue = () => {
-        return value;
-    };
-
-    const setValue = (newValue: string) => {
-        if (!newValue.length) return;
-        value = newValue;
-    };
 </script>
 
 <div
@@ -58,7 +49,7 @@
     style="background: radial-gradient(circle at 0% 100%, rgba(239, 68, 68, 0.12) 0%, transparent 40%), radial-gradient(circle at 100% 0%, rgba(59, 130, 246, 0.12) 0%, transparent 40%), var(--background, #EDEDF0);"
 >
     <ToggleGroup.Root
-        bind:value={getValue, setValue}
+        bind:value
         type="single"
         class="container flex h-full w-full flex-col items-stretch gap-3 sm:gap-4 lg:flex-row"
     >

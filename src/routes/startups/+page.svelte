@@ -25,8 +25,7 @@
     import { trackEvent } from '$lib/actions/analytics';
     import { Button } from '$lib/components/ui';
     import CaseStudiesLight from './case-studies-light.svelte';
-    import Features from '$routes/(marketing)/(components)/features.svelte';
-    import Benefits from '$routes/(marketing)/(components)/benefits.svelte';
+    import { Benefits } from '$routes/(marketing)/(components)';
     import StartupPartnerCTA from './(components)/StartupPartnerCTA.svelte';
 
     const title = 'Startups' + TITLE_SUFFIX;
