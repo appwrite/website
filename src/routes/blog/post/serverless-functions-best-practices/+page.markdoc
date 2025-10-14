@@ -8,9 +8,8 @@ timeToRead: 5
 author: ebenezer-don
 category: product
 featured: false
+lastUpdated: 2025-10-14
 ---
-
-Updated on October 7, 2025.
 
 Serverless functions have become a popular choice for modern application development due to their scalability, cost-effectiveness, and ease of use. Appwrite offers an integrated serverless platform that allows you to build and deploy functions seamlessly. However, to make the most of serverless functions, it's essential to follow best practices that ensure efficiency, security, and maintainability.
 
