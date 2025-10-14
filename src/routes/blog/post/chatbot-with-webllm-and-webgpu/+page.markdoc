@@ -8,9 +8,8 @@ timeToRead: 13
 author: ebenezer-don
 category: tutorial
 featured: false
+lastUpdated: 2025-10-14
 ---
-
-Updated on October 7, 2025.
 
 When you hear "LLM," you probably think of APIs, tokens, and cloud infrastructure. But what if we could remove the server completely? That your browser could download a model, run it on your device, and answer questions in real time, all using just JavaScript and GPU acceleration?
 
