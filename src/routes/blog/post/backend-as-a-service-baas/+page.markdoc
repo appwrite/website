@@ -7,9 +7,8 @@ timeToRead: 7
 date: 2024-10-09
 author: aditya-oberai
 category: product
+lastUpdated: 2025-10-14
 ---
-
-Updated on October 7, 2025.
 
 When you set out to build a web or mobile app, what’s the first thing you focus on? Probably not the fun animations or the core functionality. No—before you get to the exciting parts, you need to set up the essentials: designing an efficient database schema, setting up user authentication, and make sure your app can handle traffic. In other words, the tedious but crucial groundwork.
 
