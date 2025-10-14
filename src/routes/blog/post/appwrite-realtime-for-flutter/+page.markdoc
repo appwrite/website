@@ -7,9 +7,8 @@ timeToRead: 6
 date: 2024-09-02
 author: damodar-lohani
 category: tutorial
+lastUpdated: 2025-10-14
 ---
-
-Updated on October 7, 2025.
 
 Realtime service is one of Appwrite’s most popular features. It allows you to subscribe and react to any Appwrite event using the Realtime API.
 
