@@ -7,9 +7,8 @@ cover: /images/blog/user-authentication-guide/cover.png
 timeToRead: 6
 author: aditya-oberai
 category: security
+lastUpdated: 2025-10-14
 ---
-
-Updated on October 7, 2025.
 
 User authentication is a fundamental process that ensures only authorized individuals can access specific systems, applications, or data. Every time you log in to your email, bank account, or social media, you're going through this process.
 
