@@ -7,9 +7,8 @@ cover: /images/blog/building-custom-auth-flows/cover.png
 timeToRead: 11
 author: ebenezer-don
 category: tutorial
+lastUpdated: 2025-10-14
 ---
-
-Updated on October 7, 2025.
 
 While Appwrite provides built-in authentication methods like email/password, OAuth, and Magic URL, there are scenarios where you need more flexibility.
 You might have an existing user database, a legacy authentication system that needs to be maintained, or specific security requirements that demand custom implementation.
