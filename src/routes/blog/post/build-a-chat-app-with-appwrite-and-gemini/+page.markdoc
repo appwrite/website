@@ -8,9 +8,8 @@ timeToRead: 15
 author: ebenezer-don
 category: tutorial
 featured: false
+lastUpdated: 2025-10-14
 ---
-
-Updated on October 7, 2025.
 
 If you're looking to build a chat app that doesn't just handle basic messages but actually understands and responds intelligently, you found the right tutorial! In this guide, we'll learn how to create a chat application using Appwrite's local function development and the Google Gemini API to generate AI responses.
 
