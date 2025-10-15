@@ -1,0 +1,285 @@
+<script lang="ts">
+    import { createCopy } from '$lib/utils/copy';
+    import { getPrompt, hasPrompt } from '$lib/utils/prompts';
+    import { fly } from 'svelte/transition';
+    import { Button, Icon } from '$lib/components/ui';
+    import { createDropdownMenu, melt } from '@melt-ui/svelte';
+    import { onMount } from 'svelte';
+
+    export let promptName: string;
+
+    const prompt = getPrompt(promptName) ?? '';
+    const exists = hasPrompt(promptName);
+    const { copied, copy } = createCopy(prompt);
+    onMount(() => {
+        copied.set(false);
+    });
+
+    type Ide = 'copy' | 'cursor' | 'chatgpt' | 'claude';
+
+    // options rendered directly in dropdown
+
+    let selected: Ide = 'copy';
+
+    // Local dropdown configured to open to the left (bottom-end)
+    const {
+        elements: { trigger, menu },
+        states: { open }
+    } = createDropdownMenu({
+        forceVisible: true,
+        positioning: {
+            placement: 'bottom-end'
+        }
+    });
+
+    function openIde(value: Ide) {
+        if (value === 'copy') {
+            copy();
+            return;
+        }
+
+        const text = encodeURIComponent(prompt);
+
+        // NOTE: Deep links are best-effort; fall back to copy if blocked
+        if (value === 'cursor') {
+            const url = `cursor://anysphere.cursor-deeplink/prompt?text=${text}`;
+            console.log(text);
+            try {
+                window.location.href = url;
+            } catch {
+                copy();
+            }
+            return;
+        }
+
+        if (value === 'chatgpt') {
+            const url = `https://chatgpt.com/?prompt=${text}`;
+            window.open(url, '_blank');
+            return;
+        }
+
+        if (value === 'claude') {
+            const url = `https://claude.ai/new?q=${text}`;
+            window.open(url, '_blank');
+            return;
+        }
+    }
+    function handleMainClick() {
+        copy();
+    }
+</script>
+
+{#if exists}
+    <div class="ai-banner">
+        <div class="ai-banner__content">
+            <div class="ai-banner__title">
+                <Icon name="sparkle" class="text-primary" aria-hidden="true" />
+                <span>Use your AI agent</span>
+            </div>
+            <div class="ai-banner__actions">
+                <div class="flex">
+                    <Button
+                        variant="secondary"
+                        onclick={handleMainClick}
+                        aria-label={$copied ? 'Copied' : 'Copy prompt'}
+                        class="no-right-radius"
+                    >
+                        <Icon name={$copied ? 'check' : 'copy'} aria-hidden="true" />
+                        <span>{$copied ? 'Copied' : 'Copy prompt'}</span>
+                    </Button>
+
+                    <button
+                        class="no-left-radius web-button is-secondary"
+                        use:melt={$trigger}
+                        aria-label="Open options"
+                    >
+                        <span class="web-icon-chevron-down" aria-hidden="true"></span>
+                    </button>
+
+                    {#if $open}
+                        <div
+                            class="menu-wrapper web-select-menu is-normal menu z-1"
+                            use:melt={$menu}
+                            transition:fly={{ y: 8, duration: 250 }}
+                        >
+                            <ul class="text-sub-body">
+                                <li>
+                                    <button
+                                        type="button"
+                                        class="menu-btn"
+                                        onclick={() => {
+                                            selected = 'cursor';
+                                            openIde('cursor');
+                                        }}
+                                    >
+                                        <img
+                                            src="/images/docs/mcp/logos/dark/cursor-ai.svg"
+                                            alt=""
+                                            class="web-u-only-dark"
+                                            width="16"
+                                            height="16"
+                                        />
+                                        <img
+                                            src="/images/docs/mcp/logos/cursor-ai.svg"
+                                            alt=""
+                                            class="web-u-only-light"
+                                            width="16"
+                                            height="16"
+                                        />
+                                        <span>Open in Cursor</span>
+                                    </button>
+                                </li>
+                                <li>
+                                    <button
+                                        type="button"
+                                        class="menu-btn"
+                                        onclick={() => {
+                                            selected = 'chatgpt';
+                                            openIde('chatgpt');
+                                        }}
+                                    >
+                                        <img
+                                            src="/images/docs/mcp/logos/dark/openai.svg"
+                                            alt=""
+                                            class="web-u-only-dark"
+                                            width="16"
+                                            height="16"
+                                        />
+                                        <img
+                                            src="/images/docs/mcp/logos/openai.svg"
+                                            alt=""
+                                            class="web-u-only-light"
+                                            width="16"
+                                            height="16"
+                                        />
+                                        <span>Ask ChatGPT</span>
+                                    </button>
+                                </li>
+                                <li>
+                                    <button
+                                        type="button"
+                                        class="menu-btn"
+                                        onclick={() => {
+                                            selected = 'claude';
+                                            openIde('claude');
+                                        }}
+                                    >
+                                        <img
+                                            src="/images/docs/mcp/logos/dark/claude.svg"
+                                            alt=""
+                                            class="web-u-only-dark"
+                                            width="16"
+                                            height="16"
+                                        />
+                                        <img
+                                            src="/images/docs/mcp/logos/claude.svg"
+                                            alt=""
+                                            class="web-u-only-light"
+                                            width="16"
+                                            height="16"
+                                        />
+                                        <span>Ask Claude</span>
+                                    </button>
+                                </li>
+                            </ul>
+                        </div>
+                    {/if}
+                </div>
+            </div>
+        </div>
+    </div>
+{/if}
+
+<style lang="scss">
+    .ai-banner {
+        padding: 12px 16px;
+        border: 1px solid hsl(var(--web-color-border));
+        border-radius: 12px;
+        background: hsl(var(--web-color-surface));
+        margin-block: 12px 16px;
+
+        &__content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        &__title {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+        }
+
+        &__actions {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+    }
+    /* dropdown styles */
+    .menu-wrapper {
+        --p-card-border-radius: 0.5rem;
+        padding: 4px;
+        backdrop-filter: blur(2px);
+        --webkit-backdrop-filter: blur(2px);
+        z-index: 100;
+    }
+
+    ul {
+        min-width: 14.375rem;
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+    }
+
+    .menu-btn {
+        height: 32px;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        border-radius: 0.5rem;
+        padding: 5px 10px;
+        width: 100%;
+        text-align: left;
+    }
+
+    .menu-btn:hover {
+        cursor: pointer;
+        background-color: hsl(var(--web-color-offset));
+    }
+
+    /* Force caret icon to be white inside secondary button */
+    .ai-banner [class*='icon'] {
+        color: hsl(var(--web-color-white));
+    }
+
+    :global(.ai-banner .web-button.no-left-radius [class*='icon']) {
+        color: hsl(var(--web-color-white));
+    }
+
+    /* Style child component output: adjust both element and its gradient pseudo-elements */
+    .ai-banner :global(.web-button.no-left-radius),
+    .ai-banner :global(.web-button.no-left-radius)::before,
+    .ai-banner :global(.web-button.no-left-radius)::after {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+        border-left: 0;
+    }
+
+    .ai-banner :global(.web-button.no-right-radius),
+    .ai-banner :global(.web-button.no-right-radius)::before,
+    .ai-banner :global(.web-button.no-right-radius)::after {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+
+    .ai-banner :global(.web-button),
+    .ai-banner :global(.web-button)::before,
+    .ai-banner :global(.web-button)::after {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+</style>
