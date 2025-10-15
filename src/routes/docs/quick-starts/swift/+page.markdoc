@@ -5,6 +5,7 @@ description: Learn to get started with server integrations with Appwrite Swift S
 difficulty: beginner
 readtime: 5
 back: /docs/quick-starts
+prompt: quickstarts/swift.md
 ---
 Learn how to setup your first Swift project powered by Appwrite.
 

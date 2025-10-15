@@ -5,6 +5,7 @@ description: Dive into our step-by-step guide on integrating Appwrite with your 
 difficulty: beginner
 readtime: 5
 back: /docs/quick-starts
+prompt: quickstarts/node.md
 ---
 Learn how to setup your first Node.js project powered by Appwrite.
 {% section #step-1 step=1 title="Create project" %}

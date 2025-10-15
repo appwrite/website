@@ -5,6 +5,7 @@ description: Build Vue.js apps with Appwrite and learn how to use our powerful b
 difficulty: beginner
 readtime: 3
 back: /docs/quick-starts
+prompt: quickstarts/vue.md
 ---
 
 Learn how to setup your first Vue project powered by Appwrite.

@@ -5,6 +5,7 @@ description: Build React apps with Appwrite and learn how to use our powerful ba
 difficulty: beginner
 readtime: 3
 back: /docs/quick-starts
+prompt: quickstarts/react.md
 ---
 
 Learn how to setup your first React project powered by Appwrite.

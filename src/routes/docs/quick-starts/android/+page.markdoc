@@ -5,6 +5,7 @@ description: Get started with Appwrite on Android and learn how to build secure 
 difficulty: beginner
 readtime: 3
 back: /docs/quick-starts
+prompt: quickstarts/android.md
 ---
 
 Learn how to setup your first Android project powered by Appwrite and the [Appwrite Android SDK](https://github.com/appwrite/sdk-for-android).

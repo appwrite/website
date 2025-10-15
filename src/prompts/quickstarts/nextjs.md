@@ -21,22 +21,17 @@ Respect user's package manager at all time. Don't use NPM if the user uses somet
       NEXT_PUBLIC_APPWRITE_ENDPOINT=https://<REGION>.cloud.appwrite.io/v1
       NEXT_PUBLIC_APPWRITE_PROJECT_ID=<PROJECT_ID>
       Note: Do not commit `.env.local`. Next.js ignores it by default.
-    - Create file: app/appwrite.js (or app/appwrite.ts if TS) with:
-      import { Client, Account } from 'appwrite';
-
+    - Create file: app/appwrite.js (or app/appwrite.ts if TS) with key snippet:
+        ```js
+        import { Client, Account } from 'appwrite';
         const endpoint = process.env.NEXT_PUBLIC_APPWRITE_ENDPOINT;
         const projectId = process.env.NEXT_PUBLIC_APPWRITE_PROJECT_ID;
-
-        if (!endpoint || !projectId) {
-        throw new Error('Missing NEXT_PUBLIC_APPWRITE_ENDPOINT or NEXT_PUBLIC_APPWRITE_PROJECT_ID. Please add them to .env.local');
-        }
-
-        export const client = new Client()
-        .setEndpoint(endpoint)
-        .setProject(projectId);
-
+        if (!endpoint || !projectId)
+            throw new Error('Missing NEXT_PUBLIC_APPWRITE_* in .env.local');
+        export const client = new Client().setEndpoint(endpoint).setProject(projectId);
         export const account = new Account(client);
         export { ID } from 'appwrite';
+        ```
 
 4. Build the login page (client component)
     - Create/replace app/page.js with this component using "use client".

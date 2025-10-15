@@ -5,6 +5,7 @@ description: Build Solid apps with Appwrite and learn how to use our powerful ba
 difficulty: beginner
 readtime: 3
 back: /docs/quick-starts
+prompt: quickstarts/solid.md
 ---
 
 Learn how to setup your first Solid project powered by Appwrite.

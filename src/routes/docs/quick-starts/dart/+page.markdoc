@@ -2,6 +2,7 @@
 layout: article
 title: Start with Dart
 description: Build Flutter apps with Appwrite and learn how to use our powerful backend to add authentication, user management, file storage, and more.
+prompt: quickstarts/dart.md
 ---
 Learn how to setup your first Dart project powered by Appwrite.
 {% section #step-1 step=1 title="Create project" %}

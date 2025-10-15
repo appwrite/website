@@ -5,6 +5,7 @@ description: Dive into our step-by-step guide on integrating Appwrite with your 
 difficulty: beginner
 readtime: 5
 back: /docs/quick-starts
+prompt: quickstarts/deno.md
 ---
 
 {% info title="Deno SDK Deprecation" %}

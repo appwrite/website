@@ -19,8 +19,6 @@
 
     // options rendered directly in dropdown
 
-    let selected: Ide = 'copy';
-
     // Local dropdown configured to open to the left (bottom-end)
     const {
         elements: { trigger, menu },
@@ -43,7 +41,6 @@
         // NOTE: Deep links are best-effort; fall back to copy if blocked
         if (value === 'cursor') {
             const url = `cursor://anysphere.cursor-deeplink/prompt?text=${text}`;
-            console.log(text);
             try {
                 window.location.href = url;
             } catch {
@@ -54,13 +51,13 @@
 
         if (value === 'chatgpt') {
             const url = `https://chatgpt.com/?prompt=${text}`;
-            window.open(url, '_blank');
+            window.open(url, '_blank', 'noopener,noreferrer');
             return;
         }
 
         if (value === 'claude') {
             const url = `https://claude.ai/new?q=${text}`;
-            window.open(url, '_blank');
+            window.open(url, '_blank', 'noopener,noreferrer');
             return;
         }
     }
@@ -108,7 +105,6 @@
                                         type="button"
                                         class="menu-btn"
                                         onclick={() => {
-                                            selected = 'cursor';
                                             openIde('cursor');
                                         }}
                                     >
@@ -134,7 +130,6 @@
                                         type="button"
                                         class="menu-btn"
                                         onclick={() => {
-                                            selected = 'chatgpt';
                                             openIde('chatgpt');
                                         }}
                                     >
@@ -160,7 +155,6 @@
                                         type="button"
                                         class="menu-btn"
                                         onclick={() => {
-                                            selected = 'claude';
                                             openIde('claude');
                                         }}
                                     >
