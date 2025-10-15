@@ -54,6 +54,10 @@
                 {
                     label: 'VS Code',
                     href: '/docs/tooling/mcp/vscode'
+                },
+                {
+                    label: 'OpenCode',
+                    href: '/docs/tooling/mcp/opencode'
                 }
             ]
         }

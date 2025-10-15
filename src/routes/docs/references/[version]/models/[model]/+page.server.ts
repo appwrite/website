@@ -32,7 +32,7 @@ export const load: PageServerLoad = async ({ params }) => {
             switch (property.type) {
                 case 'array': {
                     let arrayTypes;
-                    if (property.items.hasOwnProperty('$ref')) {
+                    if (property.items?.['$ref']) {
                         arrayTypes = [(property.items.$ref as string).split('/').pop()];
                     }
 

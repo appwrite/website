@@ -1,7 +1,7 @@
 # Website 🖥️
 
 [![Discord](https://img.shields.io/discord/564160730845151244?label=discord&style=flat-square)](https://appwrite.io/discord)
-[![Twitter Account](https://img.shields.io/twitter/follow/appwrite?color=00acee&label=twitter&style=flat-square)](https://twitter.com/appwrite)
+[![Twitter Account](<https://img.shields.io/badge/X%20(Formerly%20Twitter)-appwrite-00acee?style=flat-square>)](https://twitter.com/appwrite)
 [![appwrite.io](https://img.shields.io/badge/appwrite-.io-f02e65?style=flat-square)](https://appwrite.io)
 
 ![Cover banner](/../../../.github/blob/main/profile/images/banner.png)

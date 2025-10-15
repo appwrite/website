@@ -155,7 +155,7 @@ ResourceToken result = await tokens.CreateFileToken(
 ```
 
 ```server-deno
-import { Client, Tokens } from "https://deno.land/x/appwrite/mod.ts";
+import { Client, Tokens } from "npm:node-appwrite";
 
 const client = new Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
@@ -435,7 +435,7 @@ ResourceTokenList result = await tokens.List(
 ```
 
 ```server-deno
-import { Client, Tokens } from "https://deno.land/x/appwrite/mod.ts";
+import { Client, Tokens } from "npm:node-appwrite";
 
 const client = new Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
@@ -777,7 +777,7 @@ ResourceToken result = await tokens.Update(
 ```
 
 ```server-deno
-import { Client, Tokens } from "https://deno.land/x/appwrite/mod.ts";
+import { Client, Tokens } from "npm:node-appwrite";
 
 const client = new Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
@@ -1038,7 +1038,7 @@ await tokens.Delete(
 ```
 
 ```server-deno
-import { Client, Tokens } from "https://deno.land/x/appwrite/mod.ts";
+import { Client, Tokens } from "npm:node-appwrite";
 
 const client = new Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint

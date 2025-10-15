@@ -411,6 +411,20 @@
                             <h4 class="text-sub-body text-primary font-medium">VS Code</h4>
                         </a>
                     </li>
+                    <li>
+                        <a
+                            href="/docs/tooling/mcp/opencode"
+                            class="web-card is-normal flex flex-row! items-center gap-2!"
+                            onclick={() => trackEvent(`docs-mcp-click`)}
+                        >
+                            <img
+                                src="/images/docs/mcp/logos/dark/opencode.svg"
+                                alt="OpenCode"
+                                class="w-6"
+                            />
+                            <h4 class="text-sub-body text-primary font-medium">OpenCode</h4>
+                        </a>
+                    </li>
                 </ul>
             </div>
         </section>
@@ -444,7 +458,7 @@
                         >
                             <h4 class="text-sub-body text-primary font-medium">REST API</h4>
                             <p class="text-sub-body mt-1">
-                                Integrate with HTTP requests without the needing an SDK.
+                                Integrate with HTTP requests without needing an SDK.
                             </p>
                         </a>
                     </li>

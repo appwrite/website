@@ -1,3 +1,4 @@
+import * as Sentry from '@sentry/sveltekit';
 import type { Handle } from '@sveltejs/kit';
 import redirects from './redirects.json';
 import { sequence } from '@sveltejs/kit/hooks';
@@ -185,4 +186,5 @@ const initSession: Handle = async ({ event, resolve }) => {
     return resolve(event);
 };
 
-export const handle = sequence(redirecter, securityheaders, initSession);
+export const handle = sequence(Sentry.sentryHandle(), redirecter, securityheaders, initSession);
+export const handleError = Sentry.handleErrorWithSentry();
