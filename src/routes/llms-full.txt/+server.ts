@@ -1,4 +1,5 @@
 import type { RequestHandler } from '@sveltejs/kit';
+import { SPECIAL_PAGES } from '../llms-config';
 
 export const prerender = true;
 
@@ -22,10 +23,10 @@ function pathToRoute(path: string): string {
     }
 
     route = stripRouteGroups(route.replace(/\\/g, '/'));
-    
+
     // Also handle extension-less page/+page keys
     route = route.replace(/\/\+?page$/, '');
-    
+
     return route || '/';
 }
 
@@ -89,23 +90,23 @@ export const GET: RequestHandler = ({ request }) => {
         const base = 'https://appwrite.io';
         type Item = { href: string; title: string; block: string };
         const items: Item[] = [];
-        
-        // Manually add the integrations landing page (it's a Svelte component, not markdown)
-        // We'll add a special property to weight it first
-        items.push({
-            href: 'https://appwrite.io/integrations',
-            title: 'Integrations',
-            block: `## Integrations
-https://appwrite.io/integrations
 
-Discover infinite possibilities and find your favourite apps to integrate with your projects in Appwrite's marketplace.
+        // Add special non-markdown pages from config
+        SPECIAL_PAGES.forEach((page) => {
+            const url = new URL(page.href, base).toString();
+            items.push({
+                href: url,
+                title: page.title,
+                block: `## ${page.title}
+${url}
 
-Browse integrations by category including AI, Deployments, Messaging, Auth, Payments, Logging, MCP, Databases, Search, Sites, and Storage.
+${page.fullContent}
 
 ---`,
-            isMarketplace: true // Special flag to weight this first
-        } as any);
-        
+                isMarketplace: true // Special flag to weight this first
+            } as any);
+        });
+
         for (const path of Object.keys(markdocAndMarkdownFiles)) {
             const raw = markdocAndMarkdownFiles[path] as string;
 
@@ -113,7 +114,7 @@ Browse integrations by category including AI, Deployments, Messaging, Auth, Paym
             if (route.includes('[')) continue;
 
             const href = route.startsWith('/') ? route : `/${route}`;
-            
+
             // Only include docs, blog, and integrations
             if (
                 !href.startsWith('/docs') &&
@@ -122,7 +123,7 @@ Browse integrations by category including AI, Deployments, Messaging, Auth, Paym
             ) {
                 continue;
             }
-            
+
             // Skip stub pages with no useful content
             if (href === '/docs/advanced/integration' || href === '/blog/category/integrations') {
                 continue;
@@ -138,14 +139,14 @@ Browse integrations by category including AI, Deployments, Messaging, Auth, Paym
             body = body.replace(/^\s*#\s+.+\n+/, '');
             // Demote all headings by one level
             body = demoteHeadings(body, 1);
-            
+
             items.push({ href: url, title, block: `## ${title}\n${url}\n\n${body}\n\n---` });
         }
         items.sort((a, b) => {
             // Integrations marketplace always comes first
             if ((a as any).isMarketplace) return -1;
             if ((b as any).isMarketplace) return 1;
-            
+
             const wa = sectionWeight(a.href);
             const wb = sectionWeight(b.href);
             if (wa !== wb) return wa - wb;

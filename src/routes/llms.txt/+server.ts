@@ -1,4 +1,5 @@
 import type { RequestHandler } from '@sveltejs/kit';
+import { SPECIAL_PAGES } from '../llms-config';
 
 export const prerender = true;
 
@@ -113,16 +114,17 @@ export const GET: RequestHandler = ({ request }) => {
         const base = 'https://appwrite.io';
         type Item = { href: string; title: string; description: string };
         const items: Item[] = [];
-        
-        // Manually add the integrations landing page (it's a Svelte component, not markdown)
-        // We'll add a special property to weight it first
-        items.push({
-            href: 'https://appwrite.io/integrations',
-            title: 'Integrations',
-            description: 'Discover infinite possibilities and find your favourite apps to integrate with your projects in Appwrite\'s marketplace.',
-            isMarketplace: true // Special flag to weight this first
-        } as any);
-        
+
+        // Add special non-markdown pages from config
+        SPECIAL_PAGES.forEach((page) => {
+            items.push({
+                href: new URL(page.href, base).toString(),
+                title: page.title,
+                description: page.description,
+                isMarketplace: true // Special flag to weight this first
+            } as any);
+        });
+
         for (const path of Object.keys(markdocAndMarkdownFiles)) {
             const raw = markdocAndMarkdownFiles[path] as string;
 
@@ -131,7 +133,7 @@ export const GET: RequestHandler = ({ request }) => {
             if (route.includes('[')) continue;
 
             const href = route.startsWith('/') ? route : `/${route}`;
-            
+
             // Only include docs, blog, and integrations
             if (
                 !href.startsWith('/docs') &&
@@ -140,7 +142,7 @@ export const GET: RequestHandler = ({ request }) => {
             ) {
                 continue;
             }
-            
+
             // Skip stub pages with no useful content
             if (href === '/docs/advanced/integration' || href === '/blog/category/integrations') {
                 continue;
@@ -157,7 +159,7 @@ export const GET: RequestHandler = ({ request }) => {
             // Integrations marketplace always comes first
             if ((a as any).isMarketplace) return -1;
             if ((b as any).isMarketplace) return 1;
-            
+
             const wa = sectionWeight(a.href);
             const wb = sectionWeight(b.href);
             if (wa !== wb) return wa - wb;
