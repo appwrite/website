@@ -22,8 +22,8 @@ function pathToRoute(path: string): string {
     //  /src/routes/docs/references/xyz/page.md => /docs/references/xyz/page
     let route = path.replace(/^\/src\/routes/, '');
 
-    if (/\/+page\.(markdoc|md)$/.test(route)) {
-        route = route.replace(/\/+page\.(markdoc|md)$/, '');
+    if (/\/\+?page\.(markdoc|md)$/.test(route)) {
+        route = route.replace(/\/\+?page\.(markdoc|md)$/, '');
     } else {
         route = route.replace(/\.(markdoc|md)$/, '');
     }
@@ -31,8 +31,8 @@ function pathToRoute(path: string): string {
     // Remove route groups
     route = stripRouteGroups(route.replace(/\\/g, '/'));
 
-    // Also handle extension-less +page keys just in case
-    route = route.replace(/\/+page$/, '');
+    // Also handle extension-less page/+page keys
+    route = route.replace(/\/\+?page$/, '');
 
     return route || '/';
 }
@@ -95,23 +95,34 @@ function sectionWeight(href: string): number {
     try {
         const u = new URL(href);
         const path = u.pathname;
-        if (path.startsWith('/docs')) return 0;
-        if (path.startsWith('/blog')) return 1;
-        if (path.startsWith('/integrations')) return 2;
+        if (path.startsWith('/integrations')) return 0;
+        if (path.startsWith('/docs')) return 1;
+        if (path.startsWith('/blog')) return 2;
         return 3;
     } catch {
         // Fallback for relative inputs (shouldn't happen as we use absolute URLs)
-        if (href.startsWith('/docs')) return 0;
-        if (href.startsWith('/blog')) return 1;
-        if (href.startsWith('/integrations')) return 2;
+        if (href.startsWith('/integrations')) return 0;
+        if (href.startsWith('/docs')) return 1;
+        if (href.startsWith('/blog')) return 2;
         return 3;
     }
 }
 
 export const GET: RequestHandler = ({ request }) => {
     try {
+        const base = 'https://appwrite.io';
         type Item = { href: string; title: string; description: string };
         const items: Item[] = [];
+        
+        // Manually add the integrations landing page (it's a Svelte component, not markdown)
+        // We'll add a special property to weight it first
+        items.push({
+            href: 'https://appwrite.io/integrations',
+            title: 'Integrations',
+            description: 'Discover infinite possibilities and find your favourite apps to integrate with your projects in Appwrite\'s marketplace.',
+            isMarketplace: true // Special flag to weight this first
+        } as any);
+        
         for (const path of Object.keys(markdocAndMarkdownFiles)) {
             const raw = markdocAndMarkdownFiles[path] as string;
 
@@ -120,7 +131,22 @@ export const GET: RequestHandler = ({ request }) => {
             if (route.includes('[')) continue;
 
             const href = route.startsWith('/') ? route : `/${route}`;
-            const url = new URL(href, request.url).toString();
+            
+            // Only include docs, blog, and integrations
+            if (
+                !href.startsWith('/docs') &&
+                !href.startsWith('/blog') &&
+                !href.startsWith('/integrations')
+            ) {
+                continue;
+            }
+            
+            // Skip stub pages with no useful content
+            if (href === '/docs/advanced/integration' || href === '/blog/category/integrations') {
+                continue;
+            }
+
+            const url = new URL(href, base).toString();
 
             const title = extractTitle(raw) ?? href.split('/').pop()!.replace(/[-_]/g, ' ');
             // Markdown bullet list of links with concise description
@@ -128,6 +154,10 @@ export const GET: RequestHandler = ({ request }) => {
             items.push({ href: url, title, description });
         }
         items.sort((a, b) => {
+            // Integrations marketplace always comes first
+            if ((a as any).isMarketplace) return -1;
+            if ((b as any).isMarketplace) return 1;
+            
             const wa = sectionWeight(a.href);
             const wb = sectionWeight(b.href);
             if (wa !== wb) return wa - wb;
@@ -138,8 +168,7 @@ export const GET: RequestHandler = ({ request }) => {
             (i) =>
                 `- [${i.title.replace(/\\/g, '\\\\').replace(/\[/g, '\\[').replace(/\]/g, '\\]')}](${i.href}): ${i.description}`
         );
-        const origin = new URL(request.url).origin;
-        const header = `# ${origin} llms.txt`;
+        const header = `# Appwrite`;
         const content = `${header}\n\n${lines.join('\n')}\n`;
 
         return new Response(content, {

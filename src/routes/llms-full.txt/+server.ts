@@ -15,13 +15,17 @@ function stripRouteGroups(routePath: string): string {
 function pathToRoute(path: string): string {
     let route = path.replace(/^\/src\/routes/, '');
 
-    if (/\/+page\.(markdoc|md)$/.test(route)) {
-        route = route.replace(/\/+page\.(markdoc|md)$/, '');
+    if (/\/\+?page\.(markdoc|md)$/.test(route)) {
+        route = route.replace(/\/\+?page\.(markdoc|md)$/, '');
     } else {
         route = route.replace(/\.(markdoc|md)$/, '');
     }
 
     route = stripRouteGroups(route.replace(/\\/g, '/'));
+    
+    // Also handle extension-less page/+page keys
+    route = route.replace(/\/\+?page$/, '');
+    
     return route || '/';
 }
 
@@ -29,26 +33,79 @@ function stripFrontmatter(text: string): string {
     return text.replace(/^\s*---\s*\n[\s\S]*?\n---\s*/m, '');
 }
 
+function extractTitle(text: string): string | null {
+    // Try frontmatter title first
+    const fmMatch = text.match(/^\s*---\s*\n([\s\S]*?)\n---\s*/m);
+    if (fmMatch) {
+        const lines = fmMatch[1].split(/\r?\n/);
+        const findKey = (key: string) => lines.find((l) => new RegExp(`^${key}\\s*:`, 'i').test(l));
+
+        const fromKey = (key: string) => {
+            const line = findKey(key);
+            if (!line) return null;
+            const val = line.replace(new RegExp(`^${key}\\s*:\\s*`, 'i'), '').trim();
+            const unquoted = val.replace(/^['"]|['"]$/g, '');
+            return unquoted || null;
+        };
+
+        // Prefer title; fallback to name (e.g., authors, categories)
+        const byTitle = fromKey('title');
+        if (byTitle) return byTitle;
+        const byName = fromKey('name');
+        if (byName) return byName;
+    }
+    // Fall back to first H1
+    const h1 = text.match(/^#\s+(.+)$/m);
+    if (h1) return h1[1].trim();
+    return null;
+}
+
+function demoteHeadings(md: string, levels = 1): string {
+    // Demote ATX headings by `levels` up to 6 ('######')
+    return md.replace(/^(\s{0,3}#{1,6})(\s+)/gm, (m, hashes, sp) => {
+        const newHashes = '#'.repeat(Math.min(hashes.trim().length + levels, 6));
+        return `${newHashes}${sp}`;
+    });
+}
+
 function sectionWeight(href: string): number {
     try {
         const u = new URL(href);
         const path = u.pathname;
-        if (path.startsWith('/docs')) return 0;
-        if (path.startsWith('/blog')) return 1;
-        if (path.startsWith('/integrations')) return 2;
+        if (path.startsWith('/integrations')) return 0;
+        if (path.startsWith('/docs')) return 1;
+        if (path.startsWith('/blog')) return 2;
         return 3;
     } catch {
-        if (href.startsWith('/docs')) return 0;
-        if (href.startsWith('/blog')) return 1;
-        if (href.startsWith('/integrations')) return 2;
+        if (href.startsWith('/integrations')) return 0;
+        if (href.startsWith('/docs')) return 1;
+        if (href.startsWith('/blog')) return 2;
         return 3;
     }
 }
 
 export const GET: RequestHandler = ({ request }) => {
     try {
+        const base = 'https://appwrite.io';
         type Item = { href: string; title: string; block: string };
         const items: Item[] = [];
+        
+        // Manually add the integrations landing page (it's a Svelte component, not markdown)
+        // We'll add a special property to weight it first
+        items.push({
+            href: 'https://appwrite.io/integrations',
+            title: 'Integrations',
+            block: `## Integrations
+https://appwrite.io/integrations
+
+Discover infinite possibilities and find your favourite apps to integrate with your projects in Appwrite's marketplace.
+
+Browse integrations by category including AI, Deployments, Messaging, Auth, Payments, Logging, MCP, Databases, Search, Sites, and Storage.
+
+---`,
+            isMarketplace: true // Special flag to weight this first
+        } as any);
+        
         for (const path of Object.keys(markdocAndMarkdownFiles)) {
             const raw = markdocAndMarkdownFiles[path] as string;
 
@@ -56,25 +113,46 @@ export const GET: RequestHandler = ({ request }) => {
             if (route.includes('[')) continue;
 
             const href = route.startsWith('/') ? route : `/${route}`;
-            const url = new URL(href, request.url).toString();
+            
+            // Only include docs, blog, and integrations
+            if (
+                !href.startsWith('/docs') &&
+                !href.startsWith('/blog') &&
+                !href.startsWith('/integrations')
+            ) {
+                continue;
+            }
+            
+            // Skip stub pages with no useful content
+            if (href === '/docs/advanced/integration' || href === '/blog/category/integrations') {
+                continue;
+            }
 
-            const titleMatch = raw.match(/^#\s+(.+)$/m);
-            const title = titleMatch
-                ? titleMatch[1].trim()
-                : href.split('/').pop()!.replace(/[-_]/g, ' ');
+            const url = new URL(href, base).toString();
 
-            const body = stripFrontmatter(raw).trim();
+            const fmOrH1 = extractTitle(raw);
+            const title = fmOrH1 ?? href.split('/').pop()!.replace(/[-_]/g, ' ');
+
+            let body = stripFrontmatter(raw).trim();
+            // Remove the first H1 if present
+            body = body.replace(/^\s*#\s+.+\n+/, '');
+            // Demote all headings by one level
+            body = demoteHeadings(body, 1);
+            
             items.push({ href: url, title, block: `## ${title}\n${url}\n\n${body}\n\n---` });
         }
         items.sort((a, b) => {
+            // Integrations marketplace always comes first
+            if ((a as any).isMarketplace) return -1;
+            if ((b as any).isMarketplace) return 1;
+            
             const wa = sectionWeight(a.href);
             const wb = sectionWeight(b.href);
             if (wa !== wb) return wa - wb;
             return a.href.localeCompare(b.href);
         });
         const blocks = items.map((i) => i.block);
-        const origin = new URL(request.url).origin;
-        const header = `# ${origin} llms-full.txt`;
+        const header = `# Appwrite`;
         const content = `${header}\n\n${blocks.join('\n\n')}\n`;
 
         return new Response(content, {
