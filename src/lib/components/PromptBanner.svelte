@@ -64,12 +64,12 @@
 
 {#if exists}
     <div class="ai-banner">
-        <div class="ai-banner__content">
-            <div class="ai-banner__title">
+        <div class="ai-banner_content">
+            <div class="ai-banner_title">
                 <Icon name="sparkle" class="text-primary" aria-hidden="true" />
                 <span>Use AI agent</span>
             </div>
-            <div class="ai-banner__actions">
+            <div class="ai-banner_actions">
                 <div class="flex">
                     <Tooltip disabled={!$copied}>
                         <Button
@@ -197,7 +197,7 @@
         background: hsl(var(--web-color-surface));
         margin-block: 12px 16px;
 
-        &__content {
+        &_content {
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -205,14 +205,14 @@
             flex-wrap: wrap;
         }
 
-        &__title {
+        &_title {
             display: flex;
             align-items: center;
             gap: 8px;
             font-weight: 600;
         }
 
-        &__actions {
+        &_actions {
             display: flex;
             align-items: center;
             gap: 8px;
