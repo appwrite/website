@@ -3,6 +3,7 @@
     import { getPrompt, hasPrompt } from '$lib/utils/prompts';
     import { fly } from 'svelte/transition';
     import { Button, Icon } from '$lib/components/ui';
+    import { Tooltip } from '$lib/components';
     import { createDropdownMenu, melt } from '@melt-ui/svelte';
     import { onMount } from 'svelte';
 
@@ -16,8 +17,6 @@
     });
 
     type Ide = 'copy' | 'cursor' | 'chatgpt' | 'claude';
-
-    // options rendered directly in dropdown
 
     // Local dropdown configured to open to the left (bottom-end)
     const {
@@ -36,16 +35,13 @@
             return;
         }
 
+        open.set(false);
+
         const text = encodeURIComponent(prompt);
 
-        // NOTE: Deep links are best-effort; fall back to copy if blocked
         if (value === 'cursor') {
-            const url = `cursor://anysphere.cursor-deeplink/prompt?text=${text}`;
-            try {
-                window.location.href = url;
-            } catch {
-                copy();
-            }
+            const url = `https://cursor.com/link/prompt?text=${text}`;
+            window.open(url, '_blank', 'noopener,noreferrer');
             return;
         }
 
@@ -71,26 +67,35 @@
         <div class="ai-banner__content">
             <div class="ai-banner__title">
                 <Icon name="sparkle" class="text-primary" aria-hidden="true" />
-                <span>Use your AI agent</span>
+                <span>Use AI agent</span>
             </div>
             <div class="ai-banner__actions">
                 <div class="flex">
-                    <Button
-                        variant="secondary"
-                        onclick={handleMainClick}
-                        aria-label={$copied ? 'Copied' : 'Copy prompt'}
-                        class="no-right-radius"
-                    >
-                        <Icon name={$copied ? 'check' : 'copy'} aria-hidden="true" />
-                        <span>{$copied ? 'Copied' : 'Copy prompt'}</span>
-                    </Button>
+                    <Tooltip disabled={!$copied}>
+                        <Button
+                            variant="secondary"
+                            onclick={handleMainClick}
+                            aria-label="Copy prompt"
+                            class="no-right-radius"
+                        >
+                            <Icon name="copy" aria-hidden="true" />
+                            <span>Copy prompt</span>
+                        </Button>
+                        {#snippet tooltip()}
+                            Copied
+                        {/snippet}
+                    </Tooltip>
 
                     <button
                         class="no-left-radius web-button is-secondary"
                         use:melt={$trigger}
                         aria-label="Open options"
                     >
-                        <span class="web-icon-chevron-down" aria-hidden="true"></span>
+                        {#if $open}
+                            <span class="web-icon-chevron-up" aria-hidden="true"></span>
+                        {:else}
+                            <span class="web-icon-chevron-down" aria-hidden="true"></span>
+                        {/if}
                     </button>
 
                     {#if $open}
