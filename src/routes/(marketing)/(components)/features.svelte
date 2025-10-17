@@ -75,7 +75,7 @@
                 class="text-title font-aeonik-pro text-primary max-w-[700px] leading-12 text-pretty"
             >
                 Safely scale with built-in
-                <span class="whitespace-nowrap">security and compliance</span><span
+                <span class="sm:whitespace-nowrap">security and compliance</span><span
                     class="text-accent">_</span
                 >
             </h2>
