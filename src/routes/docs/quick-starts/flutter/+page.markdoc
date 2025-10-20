@@ -5,7 +5,6 @@ description: Build Flutter apps with Appwrite and learn how to use our powerful 
 difficulty: beginner
 readtime: 10
 back: /docs/quick-starts
-prompt: quickstarts/flutter.md
 ---
 
 Learn how to setup your first Flutter project powered by Appwrite.

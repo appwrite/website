@@ -5,7 +5,6 @@ description: Build JavaScript or Typescript web apps with Appwrite. Add authenti
 difficulty: beginner
 readtime: 3
 back: /docs/quick-starts
-prompt: quickstarts/web.md
 ---
 
 Learn how to add Appwrite to your web apps.

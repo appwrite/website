@@ -1,16 +1,16 @@
 <script lang="ts">
     import { createCopy } from '$lib/utils/copy';
-    import { getPrompt, hasPrompt } from '$lib/utils/prompts';
+    import { getRoutePrompt, hasRoutePrompt } from '$lib/utils/routePrompts';
     import { fly } from 'svelte/transition';
     import { Button, Icon } from '$lib/components/ui';
     import { Tooltip } from '$lib/components';
     import { createDropdownMenu, melt } from '@melt-ui/svelte';
     import { onMount } from 'svelte';
 
-    export let promptName: string;
-
-    const prompt = getPrompt(promptName) ?? '';
-    const exists = hasPrompt(promptName);
+    // Only support co-located prompt.md
+    const routeExists = hasRoutePrompt();
+    const prompt = routeExists ? (getRoutePrompt() ?? '') : '';
+    const exists = routeExists;
     const { copied, copy } = createCopy(prompt);
     onMount(() => {
         copied.set(false);

@@ -15,7 +15,7 @@ Respect user's package manager at all time. Don't use NPM if the user uses somet
 3. Create Appwrite client module (ask user for details; never assume)
     - Ask the user for:
         - Appwrite Cloud Region (e.g. fra, nyc)
-        - Project ID (from Console → Settings)
+        - Project ID (from Console -> Settings)
           If the user doesn’t know, guide them to Appwrite Console to copy these. Do not attempt to infer or access their project.
     - Create `.env.local` in the project root with:
       NEXT_PUBLIC_APPWRITE_ENDPOINT=https://<REGION>.cloud.appwrite.io/v1

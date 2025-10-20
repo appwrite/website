@@ -5,7 +5,6 @@ description: Integrating Appwrite with your Go backend application is a quick an
 difficulty: beginner
 readtime: 5
 back: /docs/quick-starts
-prompt: quickstarts/go.md
 ---
 Learn how to set up your first Go project powered by Appwrite.
 {% section #step-1 step=1 title="Create project" %}

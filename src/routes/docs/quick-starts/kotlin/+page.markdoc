@@ -5,7 +5,6 @@ description: Learn to get started with server integrations with Appwrite Kotlin 
 difficulty: beginner
 readtime: 5
 back: /docs/quick-starts
-prompt: quickstarts/kotlin.md
 ---
 Learn how to setup your first Kotlin project powered by Appwrite.
 {% section #step-1 step=1 title="Create project" %}

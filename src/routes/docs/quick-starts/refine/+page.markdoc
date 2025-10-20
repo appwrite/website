@@ -5,7 +5,6 @@ description: Build Refine apps with Appwrite and learn how to use our powerful b
 difficulty: beginner
 readtime: 3
 back: /docs/quick-starts
-prompt: quickstarts/refine.md
 ---
 
 Learn how to setup your first Refine project powered by Appwrite.

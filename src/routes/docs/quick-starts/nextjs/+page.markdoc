@@ -5,7 +5,6 @@ description: Learn how to use Appwrite to add authentication, user management, f
 difficulty: beginner
 readtime: 3
 back: /docs/quick-starts
-prompt: quickstarts/nextjs.md
 ---
 Learn how to setup your first Next.js project powered by Appwrite.
 {% section #step-1 step=1 title="Create project" %}

@@ -5,7 +5,6 @@ description: Get started with Appwrite on Android using Java and learn how to bu
 difficulty: beginner
 readtime: 3
 back: /docs/quick-starts
-prompt: quickstarts/android-java.md
 ---
 
 Learn how to setup your first Android project powered by Appwrite and the [Appwrite Android SDK](https://github.com/appwrite/sdk-for-android) using Java.

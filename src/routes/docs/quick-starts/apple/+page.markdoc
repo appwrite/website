@@ -5,7 +5,6 @@ description: Build iOS apps with Appwrite and learn how to use our powerful back
 difficulty: beginner
 readtime: 10
 back: /docs/quick-starts
-prompt: quickstarts/apple.md
 ---
 
 Learn how to setup your first Apple project powered by Appwrite and the [Appwrite Apple SDK](https://github.com/appwrite/sdk-for-apple).

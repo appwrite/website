@@ -5,7 +5,6 @@ description: Build Nuxt.js apps with Appwrite and learn how to use our powerful 
 difficulty: beginner
 readtime: 3
 back: /docs/quick-starts
-prompt: quickstarts/nuxt.md
 ---
 
 Learn how to setup your first Nuxt project powered by Appwrite.
