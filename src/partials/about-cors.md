@@ -1,5 +1,5 @@
-{% info title="About adding a platform" %}
-Adding `localhost` as a platform allows requests to be sent from your local development server to Appwrite. If you're deploying your application to production or a different domain, you should add that domain as a platform. Doing this prevents CORS errors when sending requests from your production environment to Appwrite.
+{% info title="Cross-Origin Resource Sharing (CORS)" %}
+Adding `localhost` as a platform lets your local app talk to Appwrite. For production, add your live domain to avoid CORS errors.
 
-To learn more about CORS errors and ways to debug them, check out our [guide on CORS errors](/blog/post/cors-error).
+Learn more in our [CORS error guide](/blog/post/cors-error).
 {% /info %}
