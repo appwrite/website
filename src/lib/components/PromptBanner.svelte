@@ -6,6 +6,7 @@
     import { Tooltip } from '$lib/components';
     import { createDropdownMenu, melt } from '@melt-ui/svelte';
     import { onMount } from 'svelte';
+    import { trackEvent } from '$lib/actions/analytics';
 
     // Only support co-located prompt.md
     const routeExists = hasRoutePrompt();
@@ -31,6 +32,7 @@
 
     function openIde(value: Ide) {
         if (value === 'copy') {
+            trackEvent('prompt_banner_copy_clicked');
             copy();
             return;
         }
@@ -40,18 +42,21 @@
         const text = encodeURIComponent(prompt);
 
         if (value === 'cursor') {
+            trackEvent('prompt_banner_cursor_clicked');
             const url = `https://cursor.com/link/prompt?text=${text}`;
             window.open(url, '_blank', 'noopener,noreferrer');
             return;
         }
 
         if (value === 'chatgpt') {
+            trackEvent('prompt_banner_chatgpt_clicked');
             const url = `https://chatgpt.com/?prompt=${text}`;
             window.open(url, '_blank', 'noopener,noreferrer');
             return;
         }
 
         if (value === 'claude') {
+            trackEvent('prompt_banner_claude_clicked');
             const url = `https://claude.ai/new?q=${text}`;
             window.open(url, '_blank', 'noopener,noreferrer');
             return;
