@@ -21,6 +21,8 @@ If this is your first time using Appwrite, create an account and create your fir
 
 Then, under **Add a platform**, add a **Web app**. The **Hostname** should be `localhost`.
 
+{% partial file="note-on-cors.md" /%}
+
 {% only_dark %}
 ![Add a platform](/images/docs/quick-starts/dark/add-platform.png)
 {% /only_dark %}
