@@ -73,13 +73,13 @@ function sectionWeight(href: string): number {
     try {
         const u = new URL(href);
         const path = u.pathname;
-        if (path.startsWith('/integrations')) return 0;
-        if (path.startsWith('/docs')) return 1;
+        if (path.startsWith('/docs')) return 0;
+        if (path.startsWith('/integrations')) return 1;
         if (path.startsWith('/blog')) return 2;
         return 3;
     } catch {
-        if (href.startsWith('/integrations')) return 0;
-        if (href.startsWith('/docs')) return 1;
+        if (href.startsWith('/docs')) return 0;
+        if (href.startsWith('/integrations')) return 1;
         if (href.startsWith('/blog')) return 2;
         return 3;
     }
@@ -102,9 +102,8 @@ ${url}
 
 ${page.fullContent}
 
----`,
-                isMarketplace: true // Special flag to weight this first
-            } as any);
+---`
+            });
         });
 
         for (const path of Object.keys(markdocAndMarkdownFiles)) {
@@ -115,10 +114,10 @@ ${page.fullContent}
 
             const href = route.startsWith('/') ? route : `/${route}`;
 
-            // Only include docs, blog, and integrations
+            // Only include docs, blog posts, and integrations
             if (
                 !href.startsWith('/docs') &&
-                !href.startsWith('/blog') &&
+                !href.startsWith('/blog/post') &&
                 !href.startsWith('/integrations')
             ) {
                 continue;
@@ -137,16 +136,12 @@ ${page.fullContent}
             let body = stripFrontmatter(raw).trim();
             // Remove the first H1 if present
             body = body.replace(/^\s*#\s+.+\n+/, '');
-            // Demote all headings by one level
-            body = demoteHeadings(body, 1);
+            // Demote all headings by two levels
+            body = demoteHeadings(body, 2);
 
             items.push({ href: url, title, block: `## ${title}\n${url}\n\n${body}\n\n---` });
         }
         items.sort((a, b) => {
-            // Integrations marketplace always comes first
-            if ((a as any).isMarketplace) return -1;
-            if ((b as any).isMarketplace) return 1;
-
             const wa = sectionWeight(a.href);
             const wb = sectionWeight(b.href);
             if (wa !== wb) return wa - wb;
