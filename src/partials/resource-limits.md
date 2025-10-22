@@ -47,7 +47,7 @@ Reaching your organization's resource limits will have the following effects unt
 
 ## Switching to Free plan and reaching limits {% #switching-to-free-plan-reaching-resource-limits %}
 
-When an orgnization switches from Pro or Scale plan to Free plan, the organization's projects will be able to take advantage of the existing limits until the end of the current billing period.
+When an orgnization switches from a paid plan to the Free plan, the organization's projects will be able to take advantage of the existing limits until the end of the current billing period.
 After the billing period ends, the Free plan limits and consequences will apply.
 
 If an organisation has multiple members after the billing period ends, all admins besides the original creator of the organization will be removed.

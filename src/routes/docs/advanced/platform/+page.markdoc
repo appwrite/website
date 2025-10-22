@@ -72,9 +72,7 @@ Learn about Appwrite Free plan. Free plan for hobby projects and learners.
 Learn about Appwrite Pro, for growing organizations that need to scale.
 {% /cards_item %}
 
-{% cards_item href="/docs/advanced/platform/scale" title="Scale" %}
-Coming soon.
-{% /cards_item %}
+
 
 {% cards_item href="/docs/advanced/platform/enterprise" title="Enterprise" %}
 Learn about Appwrite Enterprise, for large organizations with advanced needs.

@@ -26,4 +26,4 @@ Analysts are limited to read-only access across all resources. This role is suit
 Billing users are restricted to billing-related actions, with access to `billing.read` and `billing.write` scopes only. They can view and manage billing details but cannot interact with other parts of the system.
 
 ## Custom roles {% #custom-roles %}
-Custom roles will soon be available on the Appwrite Console. Custom roles will be a Scale and Enterprise plans feature.
+Custom roles will soon be available on the Appwrite Console for Enterprise customers.

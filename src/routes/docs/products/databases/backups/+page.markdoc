@@ -8,14 +8,14 @@ Appwrite Backups enable seamless, **encrypted** database backups on Cloud.
 All backups are **hot** backups, ensuring zero downtime and fast recovery.
 Learn how to efficiently back up your databases to ensure data security and smooth recovery.
 
-{% info title="Backups are available on Appwrite Cloud for all Pro, Scale, and Enterprise customers." %}
+{% info title="Backups are available on Appwrite Cloud for all Pro and Enterprise customers." %}
 {% /info %}
 
 Appwrite Backups allow you to automate database backups using backup policies, supporting pre-defined, custom retention & other options. You can also create manual backups whenever necessary.
 
 # Backup policies {% #backup-policies %}
 
-Backup policies allow you to automate your backup process. The Scale and Enterprise plans allow for more customization and offer options like how often backups should occur, how long they should be retained, and when they should run.
+Backup policies allow you to automate your backup process. The Enterprise plan allows for more customization and offers options like how often backups should occur, how long they should be retained, and when they should run.
 
 ## Creating a backup policy {% #creating-backup-policy %}
 
@@ -40,21 +40,21 @@ To automate your database backups, you need to create backup policies that run a
     ![Pro plan policy](/images/docs/databases/pro-policy.png)
     {% /only_light %}
 
-    * On **Scale** and **Enterprise** plans, you get access to more & custom policies\
+    * On the **Enterprise** plan, you get access to more & custom policies\
     &nbsp;
         * Select a pre-defined policy
             {% only_dark %}
-            ![Scale plan policies](/images/docs/databases/dark/scale-policies.png)
+            ![Enterprise plan policies](/images/docs/databases/dark/scale-policies.png)
             {% /only_dark %}
             {% only_light %}
-            ![Scale plan policies](/images/docs/databases/scale-policies.png)
+            ![Enterprise plan policies](/images/docs/databases/scale-policies.png)
             {% /only_light %}
         * Or create a custom policy and adjust the settings as you like
             {% only_dark %}
-            ![Custom policies for Scale plan](/images/docs/databases/dark/scale-custom-policies.png)
+            ![Custom policies for Enterprise plan](/images/docs/databases/dark/scale-custom-policies.png)
             {% /only_dark %}
             {% only_light %}
-            ![Custom policies for Scale plan](/images/docs/databases/scale-custom-policies.png)
+            ![Custom policies for Enterprise plan](/images/docs/databases/scale-custom-policies.png)
             {% /only_light %}
 
 4. Click on **Create**

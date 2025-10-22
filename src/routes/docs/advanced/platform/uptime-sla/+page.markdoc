@@ -14,7 +14,6 @@ We commit to maintaining the following monthly uptime percentages based on your 
 | --- | --- |
 | **Free** | N/A |
 | **Pro** | 99.5% |
-| **Scale** | 99.9% |
 | **Enterprise** | 99.95% |
 
 # Allowed downtime {% #allowed-downtime %}
@@ -25,7 +24,6 @@ Based on the above uptime commitments, permissible downtime durations are:
 | --- | --- | --- |
 | **Free** | N/A | N/A |
 | **Pro** | ~1.83 days | ~3.6 hours |
-| **Scale** | ~8.76 hours | ~43.2 minutes |
 | **Enterprise** | ~4.38 hours | ~21.6 minutes |
 
 # Service credit terms {% #service-credit-terms %}
@@ -35,7 +33,6 @@ If we fail to meet our uptime commitment, affected users may be eligible for ser
 | Plan | Uptime < Commitment but ≥ 99% | Uptime < 99% but ≥ 95% | Uptime < 95% |
 | --- | --- | --- | --- |
 | **Pro** | 10% of monthly fee | 25% of monthly fee | 50% of monthly fee |
-| **Scale** | 10% of monthly fee | 25% of monthly fee | 50% of monthly fee |
 | **Enterprise** | 10% of monthly fee | 25% of monthly fee | 50% of monthly fee |
 
 # Credit request procedure {% #credit-request-procedure %}
