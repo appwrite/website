@@ -38,14 +38,14 @@
             title: 'Resources',
             rows: [
                 {
-                    title: 'API bandwidth',
+                    title: 'Bandwidth',
                     free: '5GB / month',
                     pro: '2TB / month',
                     scale: '2TB / month',
                     enterprise: 'Custom'
                 },
                 {
-                    title: 'Additional API bandwidth',
+                    title: 'Additional bandwidth',
                     free: '-',
                     pro: '$15 per 100GB / month',
                     scale: '$15 per 100GB / month',
@@ -324,7 +324,7 @@
                 },
                 {
                     title: 'Sites',
-                    free: '1 per project',
+                    free: 'Unlimited',
                     pro: 'Unlimited',
                     scale: 'Unlimited',
                     enterprise: 'Unlimited'
