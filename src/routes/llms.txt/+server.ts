@@ -96,14 +96,14 @@ function sectionWeight(href: string): number {
     try {
         const u = new URL(href);
         const path = u.pathname;
-        if (path.startsWith('/integrations')) return 0;
-        if (path.startsWith('/docs')) return 1;
+        if (path.startsWith('/docs')) return 0;
+        if (path.startsWith('/integrations')) return 1;
         if (path.startsWith('/blog')) return 2;
         return 3;
     } catch {
         // Fallback for relative inputs (shouldn't happen as we use absolute URLs)
-        if (href.startsWith('/integrations')) return 0;
-        if (href.startsWith('/docs')) return 1;
+        if (href.startsWith('/docs')) return 0;
+        if (href.startsWith('/integrations')) return 1;
         if (href.startsWith('/blog')) return 2;
         return 3;
     }
@@ -134,10 +134,10 @@ export const GET: RequestHandler = ({ request }) => {
 
             const href = route.startsWith('/') ? route : `/${route}`;
 
-            // Only include docs, blog, and integrations
+            // Only include docs, blog posts, and integrations
             if (
                 !href.startsWith('/docs') &&
-                !href.startsWith('/blog') &&
+                !href.startsWith('/blog/post') &&
                 !href.startsWith('/integrations')
             ) {
                 continue;
