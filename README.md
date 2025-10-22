@@ -13,7 +13,7 @@ The Appwrite Website has been built with the following frameworks:
 - [Svelte](https://svelte.dev/)
 - [SvelteKit](https://kit.svelte.dev/)
 
-## Development
+## Development 
 
 _If this is your first time setting up the repository, please run `pnpm install` inside the repo's directory and create a `.env` file based on `.env.example`._
 
