@@ -324,7 +324,7 @@
                 },
                 {
                     title: 'Sites',
-                    free: '1 per project',
+                    free: 'Unlimited',
                     pro: 'Unlimited',
                     scale: 'Unlimited',
                     enterprise: 'Unlimited'
