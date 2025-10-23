@@ -35,7 +35,6 @@ Once it generates something, it stops there.
 You’ve already used dozens of generative AI examples without realizing it:
 
 - **ChatGPT** — Generates text, explanations, and code based on natural language input.
-- **GitHub Copilot** — Autocompletes and generates code snippets from prompts.
 - **Midjourney / Stable Diffusion** — Create images from textual descriptions.
 - **Suno / Udio** — Produce songs from a few descriptive sentences.
 - **Runway / Pika** — Generate short videos and visual effects.
@@ -125,7 +124,7 @@ Here’s a quick side-by-side comparison to crystallize it:
 | **Reasoning** | Pattern prediction | Reflective, iterative reasoning |
 | **Learning loop** | None. One-shot generation | Feedback loop through reflection and adjustment |
 | **Actionability** | Static. Outputs results | Dynamic. Executes actions via tools or APIs |
-| **Examples** | ChatGPT, Midjourney, Copilot | AutoGPT, Devin, LangGraph |
+| **Examples** | ChatGPT, Midjourney | Claude Code, Devin, Cursor |
 | **Applications** | Content creation, summarization | Workflow automation, autonomous development |
 | **Goal orientation** | Responds to input | Pursues objectives independently |
 
