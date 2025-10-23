@@ -1,18 +1,31 @@
 name: Large file warning
 
 on:
-    pull_request:
-        branches: ['**']
+  pull_request:
+    branches: ['**']
+    paths:
+    - '**.jpg'
+    - '**.jpeg'
+    - '**.png'
+    - '**.webp'
+    - '**.avif'
 
 jobs:
-    format:
-        runs-on: ubuntu-latest
-        steps:
-          - uses: actions/checkout@v4
-            with:
-                ref: ${{ github.event.pull_request.head.sha }}
-          - uses: ppremk/lfs-warning@v3.2
-            with:
-              filesizelimit: 2MB
-              # exclusionPatterns: |
-              #  **/*.png
+  lfs-warning:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        ref: ${{ github.event.pull_request.head.sha }}
+    - name: Compress Images
+      uses: calibreapp/image-actions@main
+      with:
+        # GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        jpegQuality: '85'
+        jpegProgressive: false
+        pngQuality: '80'
+        webpQuality: '85'
+        avifQuality: '75'
+        ignorePaths: 'node_modules/**,build'
+        minPctChange: '10'
+        compressOnly: false
