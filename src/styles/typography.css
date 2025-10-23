@@ -3,7 +3,6 @@
     font-size: var(--font-size-small);
     line-height: var(--leading-sm);
     letter-spacing: var(--tracking-tight);
-    margin-block-end: calc(var(--spacing) * 30);
 
     :is(h2, h3, h4, h5, h6):where(:not(.not-prose, .not-prose *)) {
         scroll-margin-top: calc(var(--spacing) * 32);
