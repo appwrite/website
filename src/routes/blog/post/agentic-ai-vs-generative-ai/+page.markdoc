@@ -120,7 +120,7 @@ Here’s a quick side-by-side comparison to crystallize it:
 | **Feature** | **Generative AI** | **Agentic AI** |
 | --- | --- | --- |
 | **Core function** | Generates new content | Acts and decides based on goals |
-| **Autonomy** | Requires explicit user prompts | Operates semi- or fully-autonomously |
+| **Autonomy** | Requires explicit user prompts | Operates semi or fully-autonomously |
 | **Memory** | Limited (context window only) | Persistent, structured memory |
 | **Reasoning** | Pattern prediction | Reflective, iterative reasoning |
 | **Learning loop** | None. One-shot generation | Feedback loop through reflection and adjustment |
