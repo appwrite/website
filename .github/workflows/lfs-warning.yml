@@ -8,6 +8,9 @@ jobs:
     format:
         runs-on: ubuntu-latest
         steps:
+          - uses: actions/checkout@v4
+            with:
+                ref: ${{ github.event.pull_request.head.sha }}
           - uses: ppremk/lfs-warning@v3.2
             with:
               token: ${{ secrets.GITHUB_TOKEN }} # Optional
