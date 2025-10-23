@@ -10,23 +10,38 @@ This feature is available in both Appwrite Cloud and the self-hosted version.
 
 # Prepare your table {% #prepare-table %}
 
-To get started, create a table in your database and define its columns. Your CSV file must match the structure of this table.
+To get started, create a table in your database and define its columns. Your CSV file must match the structure of this table. All required columns must be present in the CSV. Each row is validated before being imported.
 
 Each column in the CSV should map to an column key in your table, and each row should represent a new row.
 
 {% info title="Good to know" %}
 You can optionally include the `$id` column to define custom row IDs. If not provided, Appwrite will generate unique IDs for each row automatically.
+
+If a provided ID already exists in the table, the import will fail.
 {% /info %}
 
-You can also optionally include `$createdAt` and `$updatedAt` columns to set custom timestamps for imported documents. If omitted, Appwrite sets these automatically during import.
-For example, if your table has the following required attributes:
-
+An example of a valid CSV file for a table with the following columns:
 - `title` (string)
 - `author` (string)
 - `year` (integer)
 - `available` (boolean)
 
-A valid CSV file might look like:
+```text
+$id,title,author,year,available
+f3k91x8b2q,Harry Potter and the Sorcerer's Stone,J.K. Rowling,1997,true
+mz7lq3dp5c,The Fellowship of the Ring,J.R.R. Tolkien,1954,true
+x0v4p8ncq2,To Kill a Mockingbird,Harper Lee,1960,false
+```
+
+{% info title="About null values" %}
+To add null values to a column, use the `null` value without quotes. This also applies to any string columns.
+{% /info %}
+
+# Create and update timestamps {% #created-at-and-updated-at %}
+
+You can also optionally include `$createdAt` and `$updatedAt` columns to set custom timestamps for imported documents. If omitted, Appwrite sets these automatically during import.
+
+An example of a valid CSV file with `$createdAt` and `$updatedAt` timestamps:
 
 ```text
 $id,$createdAt,$updatedAt,title,author,year,available
@@ -35,14 +50,56 @@ mz7lq3dp5c,2025-08-11T09:15:00.000Z,2025-08-11T10:00:00.000Z,The Fellowship of t
 x0v4p8ncq2,2025-08-12T08:00:00.000Z,2025-08-12T08:30:00.000Z,To Kill a Mockingbird,Harper Lee,1960,false
 ```
 
-{% info title="Note" %}
-All required columns must be present in the CSV. Each row is validated before being imported.
-{% /info %}
-
 {% info title="Timestamps format" %}
 `$createdAt` and `$updatedAt` must be valid ISO 8601 date-time strings, for example: `2025-08-10T12:34:56.000Z`.
 {% /info %}
 
+# Adding arrays {% #adding-arrays %}
+
+You can also include data for array columns in your CSV file. For any column configured as an array, you can include a comma-separated list of values within double quotes (`"one,two"`).
+
+An example of a valid CSV file with an array column:
+
+```text
+$id,title,author,year,available,categories
+f3k91x8b2q,Harry Potter and the Sorcerer's Stone,J.K. Rowling,1997,true,"fiction, fantasy"
+mz7lq3dp5c,The Fellowship of the Ring,J.R.R. Tolkien,1954,true,"fiction, fantasy"
+x0v4p8ncq2,To Kill a Mockingbird,Harper Lee,1960,false,"fiction, nonfiction"
+```
+
+# Relationships between tables {% #relationships-between-tables %}
+
+If you want to create relationships between rows in different tables, can provide the `$id` of the related row in the foreign table.
+
+An example of a valid CSV file with relationships between tables where `related_id` is the `$id` of the related row in the foreign table:
+
+```text
+$id,title,author,year,related_id
+f3k91x8b2q,Harry Potter and the Sorcerer's Stone,J.K. Rowling,1997,id_1
+mz7lq3dp5c,The Fellowship of the Ring,J.R.R. Tolkien,1954,id_2
+x0v4p8ncq2,To Kill a Mockingbird,Harper Lee,1960,id_3
+```
+
+# Setting row permissions {% #setting-row-permissions %}
+
+You can set permissions for rows in your CSV file by adding data for the `$permissions` column. Make sure row-level security is enabled for your table.
+
+An example of a valid permissions string:
+
+```text
+"read(""role:all""),update(""role:member""),delete(""role:admin"")"
+```
+
+The valid roles are `guests`, `member`, and `admin`.
+
+A full example of a valid CSV file with row permissions:
+
+```text
+name,$id,$permissions
+blog-post-1,post-1,"read(""role:all""),update(""role:member""),delete(""role:admin"")"
+blog-post-2,post-2,"read(""role:guests""),update(""role:member"")"
+blog-post-3,post-3,"read(""role:member""),update(""role:member""),delete(""role:admin"")"
+```
 
 # Import rows from the Console {% #import-console %}
 
