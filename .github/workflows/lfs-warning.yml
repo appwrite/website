@@ -13,7 +13,6 @@ jobs:
                 ref: ${{ github.event.pull_request.head.sha }}
           - uses: ppremk/lfs-warning@v3.2
             with:
-              token: ${{ secrets.GITHUB_TOKEN }} # Optional
-              filesizelimit: 10MB
+              filesizelimit: 2MB
               # exclusionPatterns: |
               #  **/*.png
