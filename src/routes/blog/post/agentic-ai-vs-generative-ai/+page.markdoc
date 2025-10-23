@@ -85,7 +85,7 @@ Let’s look at real *agentic AI examples* in the wild:
 - **AutoGPT** — One of the first frameworks to chain multiple GPT calls with goals, planning, and execution.
 - **Devin (by Cognition Labs)** — Who doesn’t remember Devin? The first "AI software engineer" capable of autonomously writing, debugging, and shipping code.
 - **ChatGPT with Browse + Code Interpreter** — Not just responding, but searching the web, running code, and retrieving data.
-- **CrewAI / LangGraph agents** — Multi-agent orchestration where specialized agents collaborate to achieve a shared outcome.
+- **Cursor** — An AI-powered code editor that acts as an autonomous development partner, capable of understanding projects, writing code, fixing bugs, and iterating in real time through contextual awareness.
 - **ReAct / LangChain / OpenDevin frameworks** — Agentic architectures that integrate reasoning, reflection, and memory loops.
 
 Notice the difference? These systems don’t stop at output. They can plan, execute, evaluate results, and adjust strategy based on the outcomes.
