@@ -90,7 +90,7 @@ An example of a valid permissions string:
 "read(""role:all""),update(""role:member""),delete(""role:admin"")"
 ```
 
-The valid roles are `guests`, `member`, and `admin`.
+The valid roles are `all`, `guests`, `member`, and `admin`.
 
 A full example of a valid CSV file with row permissions:
 
