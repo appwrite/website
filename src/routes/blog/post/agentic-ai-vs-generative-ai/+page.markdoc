@@ -10,43 +10,43 @@ callToAction: true
 unlisted: true
 category: tutorial
 ---
-Let’s be honest, the term AI has become overloaded. These days, no keynote or launch event goes by without someone mentioning it.
+Let's be honest, the term AI has become overloaded. These days, no keynote or launch event goes by without someone mentioning it.
 
-We’ve gone from "AI-generated art" to "AI coding assistants" to "AI agents" in what feels like a few months. Every week, there’s a new demo promising to replace another part of our workflow.
+We've gone from "AI-generated art" to "AI coding assistants" to "AI agents" in what feels like a few months. Every week, there's a new demo promising to replace another part of our workflow.
 
 But underneath the hype, something real is happening: A technical shift from generative to agentic systems.
 
 Generative AI was about creation. Agentic AI is about action. One predicts. The other decides.
 
-If you’ve been wondering what agentic AI vs generative AI really means, this blog post breaks it down for you. We’ll go through what each actually does, their architectures, their real-world use cases, and why this shift matters for developers and builders.
+If you've been wondering what agentic AI vs generative AI really means, this blog post breaks it down for you. We'll go through what each actually does, their architectures, their real-world use cases, and why this shift matters for developers and builders.
 
 # What is Generative AI?
 
-Generative AI (or Gen AI, as it’s often shortened) refers to models that can generate new data from patterns they’ve learned: text, images, code, music, you name it.
+Generative AI (or Gen AI, as it's often shortened) refers to models that can generate new data from patterns they've learned: text, images, code, music, you name it.
 
-At its core, generative AI doesn’t "think" or "reason." It predicts. It takes all the data it’s been trained on and tries to produce the next most likely token or pixel sequence based on probability distributions. That’s why a large language model (LLM) like GPT-4 or Claude feels conversational but doesn’t truly understand context. It’s incredibly good at simulating understanding through statistical patterns.
+At its core, generative AI doesn't "think" or "reason." It predicts. It takes all the data it's been trained on and tries to produce the next most likely token or pixel sequence based on probability distributions. That's why a large language model (LLM) like GPT-4 or Claude feels conversational but doesn't truly understand context. It's incredibly good at simulating understanding through statistical patterns.
 
-You can think of it like a world-class autocomplete system: Feed it enough examples, and it’ll generate something coherent, creative, and often brilliant. But it doesn’t have awareness, goals, or persistence.
+You can think of it like a world-class autocomplete system: Feed it enough examples, and it'll generate something coherent, creative, and often brilliant. But it doesn't have awareness, goals, or persistence.
 
 Once it generates something, it stops there.
 
 # Generative AI examples
 
-You’ve already used dozens of generative AI examples without realizing it:
+You've already used dozens of generative AI examples without realizing it:
 
 - **ChatGPT** — Generates text, explanations, and code based on natural language input.
 - **Midjourney / Stable Diffusion** — Create images from textual descriptions.
 - **Suno / Udio** — Produce songs from a few descriptive sentences.
 - **Runway / Pika** — Generate short videos and visual effects.
 
-They generate, but they don’t decide what to do next. That’s still up to you.
+They generate, but they don't decide what to do next. That's still up to you.
 
 # Generative AI characteristics
 
-So what defines generative AI beyond just "it creates things"? Let’s look at some key traits.
+So what defines generative AI beyond just "it creates things"? Let's look at some key traits.
 
 - **Predictive, not proactive:** Models like GPT or Stable Diffusion are reactive. They only output when prompted.
-- **No goal awareness:** They don’t plan steps or evaluate results.
+- **No goal awareness:** They don't plan steps or evaluate results.
 - **Stateless:** Unless you give them context windows or external memory, each prompt is independent.
 - **Representation learning:** They compress and abstract data patterns into meaningful latent spaces, allowing creativity without explicit rules.
 
@@ -59,11 +59,11 @@ Here are some real-world generative AI applications
 - **Code assistance:** From auto-completion to documentation generation.
 - **Prototyping & ideation:** Quickly exploring variations of an idea (e.g., UX copy, design drafts).
 
-In short, Generative AI is good at creating things we can evaluate and use, but it doesn’t evaluate or act on its own.
+In short, Generative AI is good at creating things we can evaluate and use, but it doesn't evaluate or act on its own.
 
 # What is Agentic AI?
 
-Now let’s talk about Agentic AI. If *Generative AI* is about creation, *Agentic AI* is about autonomy.
+Now let's talk about Agentic AI. If *Generative AI* is about creation, *Agentic AI* is about autonomy.
 
 Agentic AI systems combine language models with reasoning, memory, and the ability to take actions. Instead of just producing text, they can **plan**, **decide**, **execute**, and **adapt,** often without step-by-step human guidance.
 
@@ -76,19 +76,19 @@ Technically, *Agentic AI* builds on top of *Generative AI*. It uses the same LLM
 
 Recent advancements like the [Model Context Protocol (MCP)](https://modelcontextprotocol.io/docs/getting-started/intro) have helped agentic systems bridge the gap between reasoning and real-world action. MCP provides a standardized way for AI models to connect with tools, APIs, and data sources, enabling them to move beyond static outputs and perform dynamic, goal-driven operations.
 
-For example, with [Appwrite’s MCP Server](/docs/tooling/mcp), developers can expose Appwrite’s backend capabilities, from authentication and databases to storage and functions, directly to AI agents. This allows them to not only reason and generate, but also execute real operations within live applications.
+For example, with [Appwrite's MCP Server](/docs/tooling/mcp), developers can expose Appwrite's backend capabilities, from authentication and databases to storage and functions, directly to AI agents. This allows them to not only reason and generate, but also execute real operations within live applications.
 
 # Agentic AI examples
 
-Let’s look at real *agentic AI examples* in the wild:
+Let's look at real *agentic AI examples* in the wild:
 
 - **AutoGPT** — One of the first frameworks to chain multiple GPT calls with goals, planning, and execution.
-- **Devin (by Cognition Labs)** — Who doesn’t remember Devin? The first "AI software engineer" capable of autonomously writing, debugging, and shipping code.
+- **Devin (by Cognition Labs)** — Who doesn't remember Devin? The first "AI software engineer" capable of autonomously writing, debugging, and shipping code.
 - **ChatGPT with Browse + Code Interpreter** — Not just responding, but searching the web, running code, and retrieving data.
 - **Cursor** — An AI-powered code editor that acts as an autonomous development partner, capable of understanding projects, writing code, fixing bugs, and iterating in real time through contextual awareness.
 - **ReAct / LangChain / OpenDevin frameworks** — Agentic architectures that integrate reasoning, reflection, and memory loops.
 
-Notice the difference? These systems don’t stop at output. They can plan, execute, evaluate results, and adjust strategy based on the outcomes.
+Notice the difference? These systems don't stop at output. They can plan, execute, evaluate results, and adjust strategy based on the outcomes.
 
 # Agentic AI characteristics
 
@@ -110,11 +110,11 @@ Here are some real-world applications of agentic AI systems:
 - **Research assistants:** Reading papers, comparing results, summarizing trends, and proposing hypotheses.
 - **Data operations:** Agents cleaning, labeling, and transforming data across systems.
 
-In other words, Agentic AI takes Generative AI’s creative intelligence and gives it purpose, memory, and direction.
+In other words, Agentic AI takes Generative AI's creative intelligence and gives it purpose, memory, and direction.
 
 # Agentic AI vs Generative AI: Key differences
 
-Here’s a quick side-by-side comparison to crystallize it:
+Here's a quick side-by-side comparison to crystallize it:
 
 | **Feature** | **Generative AI** | **Agentic AI** |
 | --- | --- | --- |
@@ -128,17 +128,17 @@ Here’s a quick side-by-side comparison to crystallize it:
 | **Applications** | Content creation, summarization | Workflow automation, autonomous development |
 | **Goal orientation** | Responds to input | Pursues objectives independently |
 
-It isn’t about which is better. It’s about which is more capable for a given context. If you need creativity, text generation, or ideation, then generative wins. If you need automation, decision-making, or adaptability, then agentic takes over.
+It isn't about which is better. It's about which is more capable for a given context. If you need creativity, text generation, or ideation, then generative wins. If you need automation, decision-making, or adaptability, then agentic takes over.
 
 # How to build an AI Agent
 
-If you’re curious about how to build an AI agent, the building blocks are surprisingly approachable today.
+If you're curious about how to build an AI agent, the building blocks are surprisingly approachable today.
 
-You don’t need to train your own foundation model. Most developers start with an existing LLM and layer these components:
+You don't need to train your own foundation model. Most developers start with an existing LLM and layer these components:
 
 1. **Goal definition:** What is the agent trying to achieve? 
 2. **Planner:** Breaks the goal into tasks. 
-3. **Memory:** Stores short- and long-term context (via vector databases or structured memory graphs).
+3. **Memory:** Stores short and long-term context (via vector databases or structured memory graphs).
 4. **Tool use:** Integrates external APIs, databases, browsers, or code interpreters.
 5. **Reflection:** Evaluates results, adjusts approach, and iterates.
 
@@ -151,7 +151,7 @@ Generative AI and Agentic AI are part of the same evolutionary path.
 - Generative AI focuses on generating information.
 - Agentic AI focuses on using that information to achieve defined outcomes.
 
-As AI systems evolve, the real differentiation will come from how effectively we combine both, using generative intelligence to create and an agentic intelligence to execute. That’s where the next generation of AI applications will emerge.
+As AI systems evolve, the real differentiation will come from how effectively we combine both, using generative intelligence to create and an agentic intelligence to execute. That's where the next generation of AI applications will emerge.
 
 # More resources
 - [Build AI powered applications with Appwrite](/docs/products/ai)
