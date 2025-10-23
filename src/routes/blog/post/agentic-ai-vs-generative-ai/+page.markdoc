@@ -12,7 +12,7 @@ category: tutorial
 ---
 Let’s be honest, the term AI has become overloaded. These days, no keynote or launch event goes by without someone mentioning it.
 
-We’ve gone from “AI-generated art” to “AI coding assistants” to “AI agents” in what feels like a few months. Every week, there’s a new demo promising to replace another part of our workflow.
+We’ve gone from "AI-generated art" to "AI coding assistants" to "AI agents" in what feels like a few months. Every week, there’s a new demo promising to replace another part of our workflow.
 
 But underneath the hype, something real is happening: A technical shift from generative to agentic systems.
 
@@ -24,7 +24,7 @@ If you’ve been wondering what agentic AI vs generative AI really means, this b
 
 Generative AI (or Gen AI, as it’s often shortened) refers to models that can generate new data from patterns they’ve learned: text, images, code, music, you name it.
 
-At its core, generative AI doesn’t “think” or “reason.” It predicts. It takes all the data it’s been trained on and tries to produce the next most likely token or pixel sequence based on probability distributions. That’s why a large language model (LLM) like GPT-4 or Claude feels conversational but doesn’t truly understand context. It’s incredibly good at simulating understanding through statistical patterns.
+At its core, generative AI doesn’t "think" or "reason." It predicts. It takes all the data it’s been trained on and tries to produce the next most likely token or pixel sequence based on probability distributions. That’s why a large language model (LLM) like GPT-4 or Claude feels conversational but doesn’t truly understand context. It’s incredibly good at simulating understanding through statistical patterns.
 
 You can think of it like a world-class autocomplete system: Feed it enough examples, and it’ll generate something coherent, creative, and often brilliant. But it doesn’t have awareness, goals, or persistence.
 
@@ -43,7 +43,7 @@ They generate, but they don’t decide what to do next. That’s still up to you
 
 # Generative AI characteristics
 
-So what defines generative AI beyond just “it creates things”? Let’s look at some key traits.
+So what defines generative AI beyond just "it creates things"? Let’s look at some key traits.
 
 - **Predictive, not proactive:** Models like GPT or Stable Diffusion are reactive. They only output when prompted.
 - **No goal awareness:** They don’t plan steps or evaluate results.
@@ -83,7 +83,7 @@ For example, with [Appwrite’s MCP Server](/docs/tooling/mcp), developers can e
 Let’s look at real *agentic AI examples* in the wild:
 
 - **AutoGPT** — One of the first frameworks to chain multiple GPT calls with goals, planning, and execution.
-- **Devin (by Cognition Labs)** — Who doesn’t remember Devin? The first “AI software engineer” capable of autonomously writing, debugging, and shipping code.
+- **Devin (by Cognition Labs)** — Who doesn’t remember Devin? The first "AI software engineer" capable of autonomously writing, debugging, and shipping code.
 - **ChatGPT with Browse + Code Interpreter** — Not just responding, but searching the web, running code, and retrieving data.
 - **CrewAI / LangGraph agents** — Multi-agent orchestration where specialized agents collaborate to achieve a shared outcome.
 - **ReAct / LangChain / OpenDevin frameworks** — Agentic architectures that integrate reasoning, reflection, and memory loops.
