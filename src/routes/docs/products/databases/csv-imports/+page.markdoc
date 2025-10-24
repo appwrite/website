@@ -59,7 +59,7 @@ x0v4p8ncq2,2025-08-12T08:00:00.000Z,2025-08-12T08:30:00.000Z,To Kill a Mockingbi
 `$createdAt` and `$updatedAt` must be valid ISO 8601 date-time strings, for example: `2025-08-10T12:34:56.000Z`.
 {% /info %}
 
-# Add arrays {% #adding-arrays %}
+# Add arrays {% #add-arrays %}
 
 You can also include data for array columns in your CSV file. For any column configured as an array, you can include a comma-separated list of values within double quotes (`"one,two"`).
 
@@ -85,7 +85,7 @@ mz7lq3dp5c,The Fellowship of the Ring,J.R.R. Tolkien,1954,id_2
 x0v4p8ncq2,To Kill a Mockingbird,Harper Lee,1960,id_3
 ```
 
-# Set row permissions {% #setting-row-permissions %}
+# Set row permissions {% #set-row-permissions %}
 
 You can set permissions for rows in your CSV file by adding data for the `$permissions` column. Make sure row-level security is enabled for your table.
 
