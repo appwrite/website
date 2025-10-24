@@ -12,7 +12,7 @@ This feature is available in both Appwrite Cloud and the self-hosted version.
 
 To get started, create a table in your database and define its columns. Your CSV file must match the structure of this table. All required columns must be present in the CSV. Each row is validated before being imported.
 
-Each column in the CSV should map to an column key in your table, and each row should represent a new row.
+Each column in the CSV should map to a column key in your table, and each row should represent a new row.
 
 {% info title="Good to know" %}
 You can optionally include the `$id` column to define custom row IDs. If not provided, Appwrite will generate unique IDs for each row automatically.
