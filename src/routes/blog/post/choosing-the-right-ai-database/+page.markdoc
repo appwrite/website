@@ -136,4 +136,9 @@ Choosing the right database is one of the most important decisions you’ll make
 
 **SQL databases** still make sense for workloads where structure, consistency, and transactional guarantees come first. But as AI systems move toward handling unstructured, evolving, and semantic data, **document-based databases like MongoDB** align more naturally with that reality.
 
-In the end, the best database for AI isn’t the most powerful, it’s the one that grows with your data, adapts to your workflow, and helps your models make sense of the world faster.
+In the end, the best database for AI isn’t the most powerful. It’s the one that grows with your data, adapts to your workflow, and helps your models make sense of the world faster.
+
+# More resources
+- [Build AI applications with Appwrite](/docs/products/ai)
+- [Explore Appwrite AI integrations](/integrations#ai)
+- [Learn about Appwrite Databases](/docs/products/databases)
