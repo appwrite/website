@@ -74,7 +74,7 @@ x0v4p8ncq2,To Kill a Mockingbird,Harper Lee,1960,false,"fiction,nonfiction"
 
 # Relationships between tables {% #relationships-between-tables %}
 
-If you want to create relationships between rows in different tables, can provide the `$id` of the related row in the foreign table.
+If you want to create relationships between rows in different tables, you can provide the `$id` of the related row in the foreign table.
 
 An example of a valid CSV file with relationships between tables where `related_id` is the `$id` of the related row in the foreign table:
 
