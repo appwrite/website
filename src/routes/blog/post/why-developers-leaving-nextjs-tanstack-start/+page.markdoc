@@ -15,7 +15,7 @@ The React world is full of opinions, and every few years a new framework changes
 
 They're not leaving because Next.js is broken. They're leaving because **TanStack feels lighter, clearer, and closer to plain React,** and it gives them back control over how things actually work.
 
-## The growing frustration with Next.js
+# The growing frustration with Next.js
 
 Many developers used to love Next.js for its simplicity. But as it grew, so did its complexity. The shift to the App Router, the introduction of React Server Components, and constant new patterns have made the framework harder to follow.
 
@@ -23,7 +23,7 @@ In community discussions, one developer summed it up: *"Next.js lost me with the
 
 Another recurring concern is that **Next.js feels tied to Vercel**. Many devs appreciate Vercel as a company, but they feel the framework has become more about the platform than the developer. As one user said, *"It's tough to separate Next.js from Vercel. Most advantages people list are actually Vercel features."*
 
-## TanStack's foundation of trust
+# TanStack's foundation of trust
 
 TanStack didn't appear out of nowhere. It grew from the success of **TanStack Query** (formerly React Query), a library that completely changed how developers handled state and server data. It replaced complex Redux setups with something that "just made sense."
 
@@ -44,7 +44,7 @@ Key features developers like:
 
 It's not trying to reinvent React. It's giving React a modern backbone that's easy to understand.
 
-## Why developers prefer it
+# Why developers prefer it
 
 Developers in the community consistently mention a few themes:
 
@@ -64,7 +64,7 @@ Developers in the community consistently mention a few themes:
     
     Using Vite and Nitro means you can build and deploy anywhere. You're not locked into one company's stack or runtime.
 
-## Real-world use cases
+# Real-world use cases
 
 The developers experimenting with TanStack Start aren't just building toy projects. They're using it for **production apps**, internal dashboards, and even company websites.
 
@@ -76,7 +76,7 @@ A few examples mentioned in community threads:
 
 Many devs say TanStack Start lets them **scale from side projects to production** without losing control or adding complexity.
 
-## Why this shift matters
+# Why this shift matters
 
 This shift isn't just about replacing one framework with another. It reflects a broader change in what developers value.
 
@@ -84,7 +84,7 @@ For years, frameworks have chased automation and abstractions and trying to do m
 
 As one developer wrote, *"TanStack brings back sanity. It's a framework that 99% of devs actually want to use."*
 
-## The takeaway
+# The takeaway
 
 TanStack Start is still young, but it's already making an impact. Its community is growing quickly, its documentation is improving fast, and it's backed by a team with a proven record of building tools developers trust.
 
