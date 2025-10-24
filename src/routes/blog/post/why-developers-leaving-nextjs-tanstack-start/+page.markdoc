@@ -31,7 +31,7 @@ That same idea of **simplicity without shortcuts** is what's driving interest in
 
 As one developer put it, *"They did for routing and server logic what they already did for state management — made it simple, predictable, and type-safe."*
 
-## What TanStack Start actually is
+# What TanStack Start actually is
 
 TanStack Start is a **full-stack React framework** that builds on TanStack Router, powered by **Vite** for fast builds and **Nitro** for universal deployment. It combines client-side interactivity with server-side rendering, all while keeping things explicit and type-safe.
 
