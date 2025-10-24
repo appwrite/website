@@ -112,7 +112,7 @@ If your CSV file contains characters like double quotes (`"`) or commas (`,`), y
 
 ## Comma
 
-There are different ways to escape commans based on different scenarios.
+There are different ways to escape commas based on different scenarios.
 
 - If your column type is a **string**, you can enclose the value in double quotes (`"comma,used,here"`).
 - If your column type is a **string array**, you need to escape double quotes within the array to use a comma (`"one,two,""comma,allowed,here"""`).
