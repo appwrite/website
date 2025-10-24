@@ -216,16 +216,16 @@
                 },
                 {
                     title: 'Reads',
-                    free: '500K',
-                    pro: '1750K',
-                    scale: '1750K',
+                    free: '500K / month',
+                    pro: '1750K / month',
+                    scale: '1750K / month',
                     enterprise: 'Custom'
                 },
                 {
                     title: 'Writes',
-                    free: '250K',
-                    pro: '750K',
-                    scale: '750K',
+                    free: '250K / month',
+                    pro: '750K / month',
+                    scale: '750K / month',
                     enterprise: 'Custom'
                 },
                 {
