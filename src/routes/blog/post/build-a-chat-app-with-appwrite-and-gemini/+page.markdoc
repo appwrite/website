@@ -8,6 +8,7 @@ timeToRead: 15
 author: ebenezer-don
 category: tutorial
 featured: false
+lastUpdated: 2025-10-14
 ---
 
 If you're looking to build a chat app that doesn't just handle basic messages but actually understands and responds intelligently, you found the right tutorial! In this guide, we'll learn how to create a chat application using Appwrite's local function development and the Google Gemini API to generate AI responses.
@@ -536,7 +537,7 @@ With the function deployed, you now have a live chat application built with Appw
 
  # Conclusion
 
-In this tutorial, you've learned how to build a chat application using Appwrite local function development and Google Gemini API. We covered everything from setting up the environment to writing the serverless function, creating a frontend, and testing the app locally before deploying it to the cloud.
+In this tutorial, you've learned how to build a chat application using [Appwrite local function development](/docs/products/functions/develop-locally) and Google Gemini API. We covered everything from setting up the environment to writing the serverless function, creating a frontend, and testing the app locally before deploying it to the cloud.
 
 Appwrite's local function development is a powerful tool for building and testing serverless applications efficiently. Now that your chat app is up and running, you can expand its functionality, refine the frontend, or scale it to handle more complex interactions.
 
@@ -544,7 +545,33 @@ If you have any questions or feedback, feel free to reach out to the Appwrite co
 
 You can view the complete codebase for our Gemini + Appwrite chat app on [GitHub](https://github.com/appwrite-community/chat-gemini-appwrite).
 
-Further reading:
+# Frequently asked questions (FAQs)
+
+**1. Can I use Appwrite with other AI models besides Gemini?**
+
+Yes. The same setup works with any AI model that exposes an HTTP API, like OpenAI, Claude, or Mistral. Just swap the Gemini endpoint in your function. Appwrite handles the function runtime, environment variables, and authentication exactly the same way.
+
+**2. How do I make sure my AI app doesn’t expose the API key?**
+
+Never call the AI model directly from the frontend. Keep your key in Appwrite Functions or environment variables so only your serverless function communicates with the model. Your frontend should only talk to Appwrite, just like in this Gemini chat example.
+
+**3. Can I store chat messages securely in Appwrite?**
+
+Absolutely. You can use Appwrite Databases to store chat logs with proper permissions. For instance, only the logged-in user can read their messages, while the backend can write AI responses. It’s ideal for personal chat history or analytics.
+
+**4. How do I scale AI chat apps built on Appwrite?**
+
+Appwrite Functions scale automatically in Appwrite Cloud, so you can handle higher traffic without infrastructure work. You can also self-host Appwrite and scale Docker containers horizontally.
+
+**5. Is it possible to run Appwrite Functions without an internet connection?**
+
+Yes. When developing locally. You can run functions offline to test your app logic using mock data or cached responses. Just note that external APIs like Gemini won’t respond without an internet connection.
+
+**6. How do I add authentication to my AI chat app?**
+
+You can use Appwrite Authentication (email/password, OAuth, or anonymous sessions). This ensures only registered users can access the chat and lets you link chat data to user IDs for secure, personalized experiences.
+
+# Further reading:
 
 - [Appwrite Functions Documentation](https://appwrite.io/docs/products/functions)
 - [Local serverless function development with the new Appwrite CLI](https://appwrite.io/blog/post/functions-local-development-guide)
