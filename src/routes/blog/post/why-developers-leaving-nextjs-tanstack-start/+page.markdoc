@@ -33,7 +33,7 @@ As one developer put it, *"They did for routing and server logic what they alrea
 
 # What TanStack Start actually is
 
-TanStack Start is a **full-stack React framework** that builds on TanStack Router, powered by **Vite** for fast builds and **Nitro** for universal deployment. It combines client-side interactivity with server-side rendering, all while keeping things explicit and type-safe.
+TanStack Start is a **full-stack React framework** that builds on TanStack Router, powered by **Vite** for fast builds and **Vite Env APIs**, which supports Nitro among other deployment plugins. It combines client-side interactivity with server-side rendering, all while keeping things explicit and type-safe.
 
 Key features developers like:
 
