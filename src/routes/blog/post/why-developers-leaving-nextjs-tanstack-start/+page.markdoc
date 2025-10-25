@@ -3,7 +3,7 @@ layout: post
 title: Why developers are leaving Next.js for TanStack Start, and loving it
 description: The React world is full of opinions, and every few years a new framework changes how we think about building apps. Next.js has been the default choice for a long time, but recently, more developers have been moving toward TanStack Start.
 date: 2025-10-24
-cover: /images/blog/tanstack_cover2.png
+cover: /images/blog/why-developers-leaving-nextjs-tanstack-start/cover.png
 timeToRead: 8
 author: tessa
 category: tutorial
