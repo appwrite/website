@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "How to vibe code? 7 real-world workflow tips for faster builds"
-description: Learn how to vibe code the right way. This guide shares 7 real-world tips and best practices for building faster with AI tools like Replit, Bolt, and Lovable.
+title: "How to vibe code? 8 real-world workflow tips for faster builds"
+description: Learn how to vibe code the right way. This guide shares 8 real-world tips and best practices for building faster with AI tools like Replit, Bolt, and Lovable.
 cover: /images/blog/best-vibe-coding-tips/cover.png
 timeToRead: 10
 date: 2025-10-27
@@ -16,7 +16,7 @@ But the problem is that most people treat vibe coding like a shortcut instead of
 
 So, in this guide, we’ll talk about some real practical tips that you can apply while vibe coding to get the best out of your time and efforts.
 
-# 7 tips to get the most out of vibe coding
+# 8 tips to get the most out of vibe coding
 
 ## Tip 1: Be absolutely clear about your requirements
 
@@ -68,7 +68,7 @@ Most platforms have some form of built-in versioning, but don’t rely on that a
 
 Think of it as your safety net. When AI goes rogue or generates something unexpected(which happens most of the time), you can roll back instantly instead of starting over.
 
-## Tip 7: Be explicit to prevent unwanted changes
+## Tip 8: Be explicit to prevent unwanted changes
 
 Sometimes AI tools get a little too excited and start making changes you didn’t ask for, adding new files, rewriting logic, or deleting parts that were perfectly fine. It happens more often than you’d expect.
 
