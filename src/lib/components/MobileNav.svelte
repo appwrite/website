@@ -30,12 +30,15 @@
 
     onMount(() => {
         updateBannerHeight();
-        window.addEventListener('resize', updateBannerHeight);
-        return () => window.removeEventListener('resize', updateBannerHeight);
     });
 </script>
 
-<svelte:window on:resize={() => open && (open = false)} />
+<svelte:window
+    on:resize={() => {
+        open && (open = false);
+        updateBannerHeight();
+    }}
+/>
 
 <nav
     class="web-side-nav sticky block max-h-screen overflow-hidden lg:hidden"
