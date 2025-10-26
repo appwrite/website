@@ -53,7 +53,7 @@ Prompt engineering and context engineering often get mentioned together, but the
 | **Outcome** | A decent single reply | Consistent, context-aware behavior over time |
 | **Analogy** | Saying “Make me a sandwich” | Giving the recipe, ingredients, and how you like it made |
 
-# Context Engineering in Practice
+# Context engineering in Practice
 
 Let’s say you ask an AI to build a login system.
 
@@ -120,7 +120,7 @@ Context engineering is the process of designing everything around an AI model: r
 Prompt engineering focuses on crafting good instructions, getting one accurate or creative response from a model.
 
 Context engineering goes a level deeper: it’s about building the entire setup that the model works within. You decide what inputs it sees, what rules it follows, what tools it can use, and how information flows between steps. Prompt engineering is the message; context engineering is the system.
- 
+
 **3. Why does context matter so much for coding with AI?**
 
 Because AI tools can’t infer your full setup unless you tell them, in coding workflows, context refers to providing the model with access to your project files, API documentation, frameworks, or design choices. Without that, it can’t produce code that actually fits your stack. It’ll just generate something generic.
