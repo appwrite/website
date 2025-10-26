@@ -162,7 +162,7 @@
 
 <div class="relative contents h-full">
     {#if !page.url.pathname.includes('/init')}
-        <div class="border-smooth relative z-10 border-b bg-[#19191C]">
+        <div class="border-smooth relative z-10 border-b bg-[#19191C]" id="hackathon-banner">
             <div class="is-special-padding mx-auto">
                 <HackathonBanner />
             </div>

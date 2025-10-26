@@ -7,22 +7,40 @@
     import { Button, InlineTag, Icon } from '$lib/components/ui';
     import { GithubStats } from '$lib/components/shared';
     import { trackEvent } from '$lib/actions/analytics';
+    import { browser } from '$app/environment';
+    import { onMount } from 'svelte';
 
     export let open = false;
     export let links: NavLink[];
     export let offerButton = false;
 
+    let bannerHeight = 0;
+
     afterNavigate(() => {
         open = false;
         document.body.style.overflow = '';
+    });
+
+    function updateBannerHeight() {
+        if (browser) {
+            const banner = document.getElementById('hackathon-banner');
+            bannerHeight = banner ? banner.getBoundingClientRect().height : 0;
+        }
+    }
+
+    onMount(() => {
+        updateBannerHeight();
+        window.addEventListener('resize', updateBannerHeight);
+        return () => window.removeEventListener('resize', updateBannerHeight);
     });
 </script>
 
 <svelte:window on:resize={() => open && (open = false)} />
 
 <nav
-    class="web-side-nav sticky top-[73px] block max-h-screen overflow-hidden lg:hidden"
+    class="web-side-nav sticky block max-h-screen overflow-hidden lg:hidden"
     class:hidden={!open}
+    style="top: calc(73px + {bannerHeight}px);"
 >
     <div class="web-side-nav-wrapper ps-4 pe-4">
         <div class="flex items-center gap-2 px-4">
