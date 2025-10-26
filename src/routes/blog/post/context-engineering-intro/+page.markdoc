@@ -136,7 +136,6 @@ Prompt engineering works well for simple, one-off tasks: asking questions, draft
 Good results come from giving AI more than instructions. It needs clarity, data, and structure. The better you set things up, the better the model performs.
 
 # More resources
-- [Comparing the best vibe coding tools](https://appwrite.io/blog/post/comparing-vibe-coding-tools)
+- [Comparing the best vibe coding tools](/blog/post/comparing-vibe-coding-tools)
 - [20 vibe coding security best practices](/blog/post/vibe-coding-security-best-practices)
 - [Choosing the right AI database for your application in 2025](/blog/post/choosing-the-right-ai-database)
-
