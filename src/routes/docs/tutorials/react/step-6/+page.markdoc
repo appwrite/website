@@ -67,12 +67,12 @@ export function IdeasProvider(props) {
 
   async function add(idea) {
     try {
-      const response = await tablesDB.createRow(
-        IDEAS_DATABASE_ID,
-        IDEAS_TABLE_ID,
-        ID.unique(),
-        idea
-      );
+      const response = await tablesDB.createRow({
+        databaseId: IDEAS_DATABASE_ID,
+        tableId: IDEAS_TABLE_ID,
+        rowId: ID.unique(),
+        data: idea
+      });
       setIdeas((ideas) => [response, ...ideas].slice(0, 10));
     } catch (err) {
       console.log(err) // handle error or show user a message
@@ -81,7 +81,11 @@ export function IdeasProvider(props) {
 
   async function remove(id) {
     try {
-      await tablesDB.deleteRow(IDEAS_DATABASE_ID, IDEAS_TABLE_ID, id);
+      await tablesDB.deleteRow({
+        databaseId: IDEAS_DATABASE_ID,
+        tableId: IDEAS_TABLE_ID,
+        rowId: id
+      });
       setIdeas((ideas) => ideas.filter((idea) => idea.$id !== id));
       await init();
     } catch (err) {
@@ -91,11 +95,11 @@ export function IdeasProvider(props) {
 
   async function init() {
     try {
-      const response = await tablesDB.listRows(
-        IDEAS_DATABASE_ID,
-        IDEAS_TABLE_ID,
-        [Query.orderDesc("$createdAt"), Query.limit(10)]
-      );
+      const response = await tablesDB.listRows({
+        databaseId: IDEAS_DATABASE_ID,
+        tableId: IDEAS_TABLE_ID,
+        queries: [Query.orderDesc("$createdAt"), Query.limit(10)]
+      });
       setIdeas(response.rows);
     } catch (err) {
       console.log(err)

@@ -46,13 +46,13 @@ const client = new Client()
 
 const tablesDB = new TablesDB(client);
 
-const result = await tablesDB.incrementRowColumn(
-    '<DATABASE_ID>',
-    '<TABLE_ID>',
-    '<ROW_ID>',
-    'likes', // column
-    1 // value
-);
+const result = await tablesDB.incrementRowColumn({
+    databaseId: '<DATABASE_ID>',
+    tableId: '<TABLE_ID>',
+    rowId: '<ROW_ID>',
+    column: 'likes', // column
+    value: 1 // value
+});
 ```
 ```client-flutter
 import 'package:appwrite/appwrite.dart';
@@ -117,13 +117,13 @@ const client = new sdk.Client()
 
 const tablesDB = new sdk.TablesDB(client);
 
-const result = await tablesDB.incrementRowColumn(
-    '<DATABASE_ID>',
-    '<TABLE_ID>',
-    '<ROW_ID>',
-    'likes', // column
-    1 // value
-);
+const result = await tablesDB.incrementRowColumn({
+    databaseId: '<DATABASE_ID>',
+    tableId: '<TABLE_ID>',
+    rowId: '<ROW_ID>',
+    column: 'likes', // column
+    value: 1 // value
+});
 ```
 ```server-python
 from appwrite.client import Client
@@ -179,13 +179,13 @@ const client = new Client()
 
 const tablesDB = new TablesDB(client);
 
-const result = await tablesDB.decrementRowColumn(
-    '<DATABASE_ID>',
-    '<TABLE_ID>',
-    '<ROW_ID>',
-    'credits', // column
-    5 // value
-);
+const result = await tablesDB.decrementRowColumn({
+    databaseId: '<DATABASE_ID>',
+    tableId: '<TABLE_ID>',
+    rowId: '<ROW_ID>',
+    column: 'credits', // column
+    value: 5 // value
+});
 ```
 ```client-flutter
 import 'package:appwrite/appwrite.dart';
@@ -250,13 +250,13 @@ const client = new sdk.Client()
 
 const tablesDB = new sdk.TablesDB(client);
 
-const result = await tablesDB.decrementRowColumn(
-    '<DATABASE_ID>',
-    '<TABLE_ID>',
-    '<ROW_ID>',
-    'credits', // column
-    5 // value
-);
+const result = await tablesDB.decrementRowColumn({
+    databaseId: '<DATABASE_ID>',
+    tableId: '<TABLE_ID>',
+    rowId: '<ROW_ID>',
+    column: 'credits', // column
+    value: 5 // value
+});
 ```
 ```server-python
 from appwrite.client import Client
@@ -307,24 +307,24 @@ You can set minimum and maximum bounds for individual operations to prevent inva
 {% multicode %}
 ```client-web
 // Increment with maximum constraint
-const result = await tablesDB.incrementRowColumn(
-    '<DATABASE_ID>',
-    '<TABLE_ID>',
-    '<ROW_ID>',
-    'credits', // column
-    100, // value
-    1000 // max (optional)
-);
+const result = await tablesDB.incrementRowColumn({
+    databaseId: '<DATABASE_ID>',
+    tableId: '<TABLE_ID>',
+    rowId: '<ROW_ID>',
+    column: 'credits', // column
+    value: 100, // value
+    max: 1000 // max (optional)
+});
 
 // Decrement with minimum constraint
-const result2 = await tablesDB.decrementRowColumn(
-    '<DATABASE_ID>',
-    '<TABLE_ID>',
-    '<ROW_ID>',
-    'credits', // column
-    50, // value
-    0 // min (optional)
-);
+const result2 = await tablesDB.decrementRowColumn({
+    databaseId: '<DATABASE_ID>',
+    tableId: '<TABLE_ID>',
+    rowId: '<ROW_ID>',
+    column: 'credits', // column
+    value: 50, // value
+    min: 0 // min (optional)
+});
 ```
 ```client-flutter
 // Increment with maximum constraint
@@ -391,24 +391,24 @@ val row2 = tablesDB.decrementRowColumn(
 ```
 ```server-nodejs
 // Increment with maximum constraint
-const result = await tablesDB.incrementRowColumn(
-    '<DATABASE_ID>',
-    '<TABLE_ID>',
-    '<ROW_ID>',
-    'credits', // column
-    100, // value
-    1000 // max (optional)
-);
+const result = await tablesDB.incrementRowColumn({
+    databaseId: '<DATABASE_ID>',
+    tableId: '<TABLE_ID>',
+    rowId: '<ROW_ID>',
+    column: 'credits', // column
+    value: 100, // value
+    max: 1000 // max (optional)
+});
 
 // Decrement with minimum constraint
-const result2 = await tablesDB.decrementRowColumn(
-    '<DATABASE_ID>',
-    '<TABLE_ID>',
-    '<ROW_ID>',
-    'credits', // column
-    50, // value
-    0 // min (optional)
-);
+const result2 = await tablesDB.decrementRowColumn({
+    databaseId: '<DATABASE_ID>',
+    tableId: '<TABLE_ID>',
+    rowId: '<ROW_ID>',
+    column: 'credits', // column
+    value: 50, // value
+    min: 0 // min (optional)
+});
 ```
 ```server-python
 # Increment with maximum constraint
@@ -569,6 +569,189 @@ update_result = tablesDB.update_row(
         'lastLikedAt': datetime.now().isoformat()
     }
 )
+```
+{% /multicode %}
+
+# Use transactions {% #use-transactions %}
+
+Atomic numeric operations accept `transactionId`. When provided, increments/decrements are staged and applied on commit.
+
+{% multicode %}
+```client-web
+await tablesDB.incrementRowColumn({
+  databaseId: '<DATABASE_ID>',
+  tableId: '<TABLE_ID>',
+  rowId: '<ROW_ID>',
+  column: 'likes',
+  value: 1,
+  transactionId: '<TRANSACTION_ID>'
+});
+```
+```client-flutter
+await tablesDB.incrementRowColumn(
+  databaseId: '<DATABASE_ID>',
+  tableId: '<TABLE_ID>',
+  rowId: '<ROW_ID>',
+  column: 'likes',
+  value: 1,
+  transactionId: '<TRANSACTION_ID>'
+);
+```
+```client-apple
+try await tablesDB.incrementRowColumn(
+  databaseId: "<DATABASE_ID>",
+  tableId: "<TABLE_ID>",
+  rowId: "<ROW_ID>",
+  column: "likes",
+  value: 1,
+  transactionId: "<TRANSACTION_ID>"
+)
+```
+```client-android-kotlin
+tablesDB.incrementRowColumn(
+  databaseId = "<DATABASE_ID>",
+  tableId = "<TABLE_ID>",
+  rowId = "<ROW_ID>",
+  column = "likes",
+  value = 1,
+  transactionId = "<TRANSACTION_ID>"
+)
+```
+```client-android-java
+tablesDB.incrementRowColumn(
+  "<DATABASE_ID>",
+  "<TABLE_ID>",
+  "<ROW_ID>",
+  "likes",
+  1,
+  "<TRANSACTION_ID>",
+  new CoroutineCallback<>((result, error) -> {
+    if (error != null) {
+      error.printStackTrace();
+      return null;
+    }
+    System.out.println(result);
+    return null;
+  })
+);
+```
+```client-react-native
+await tablesDB.incrementRowColumn({
+  databaseId: '<DATABASE_ID>',
+  tableId: '<TABLE_ID>',
+  rowId: '<ROW_ID>',
+  column: 'likes',
+  value: 1,
+  transactionId: '<TRANSACTION_ID>'
+});
+```
+```server-nodejs
+await tablesDB.incrementRowColumn({
+  databaseId: '<DATABASE_ID>',
+  tableId: '<TABLE_ID>',
+  rowId: '<ROW_ID>',
+  column: 'likes',
+  value: 1,
+  transactionId: '<TRANSACTION_ID>'
+});
+```
+```server-deno
+await tablesDB.incrementRowColumn({
+  databaseId: '<DATABASE_ID>',
+  tableId: '<TABLE_ID>',
+  rowId: '<ROW_ID>',
+  column: 'likes',
+  value: 1,
+  transactionId: '<TRANSACTION_ID>'
+});
+```
+```server-python
+tablesDB.increment_row_column(
+  database_id = '<DATABASE_ID>',
+  table_id = '<TABLE_ID>',
+  row_id = '<ROW_ID>',
+  column = 'likes',
+  value = 1,
+  transaction_id = '<TRANSACTION_ID>'
+)
+```
+```server-php
+$tablesDB->incrementRowColumn(
+  databaseId: '<DATABASE_ID>',
+  tableId: '<TABLE_ID>',
+  rowId: '<ROW_ID>',
+  column: 'likes',
+  value: 1,
+  transactionId: '<TRANSACTION_ID>'
+);
+```
+```server-ruby
+tablesDB.increment_row_column(
+  database_id: '<DATABASE_ID>',
+  table_id: '<TABLE_ID>',
+  row_id: '<ROW_ID>',
+  column: 'likes',
+  value: 1,
+  transaction_id: '<TRANSACTION_ID>'
+)
+```
+```server-dotnet
+await tablesDB.IncrementRowColumn(
+  databaseId: "<DATABASE_ID>",
+  tableId: "<TABLE_ID>",
+  rowId: "<ROW_ID>",
+  column: "likes",
+  value: 1,
+  transactionId: "<TRANSACTION_ID>"
+);
+```
+```server-dart
+await tablesDB.incrementRowColumn(
+  databaseId: '<DATABASE_ID>',
+  tableId: '<TABLE_ID>',
+  rowId: '<ROW_ID>',
+  column: 'likes',
+  value: 1,
+  transactionId: '<TRANSACTION_ID>'
+);
+```
+```server-swift
+try await tablesDB.incrementRowColumn(
+  databaseId: "<DATABASE_ID>",
+  tableId: "<TABLE_ID>",
+  rowId: "<ROW_ID>",
+  column: "likes",
+  value: 1,
+  transactionId: "<TRANSACTION_ID>"
+)
+```
+```server-kotlin
+tablesDB.incrementRowColumn(
+  databaseId = "<DATABASE_ID>",
+  tableId = "<TABLE_ID>",
+  rowId = "<ROW_ID>",
+  column = "likes",
+  value = 1,
+  transactionId = "<TRANSACTION_ID>"
+)
+```
+```server-java
+tablesDB.incrementRowColumn(
+  "<DATABASE_ID>",
+  "<TABLE_ID>",
+  "<ROW_ID>",
+  "likes",
+  1,
+  "<TRANSACTION_ID>",
+  new CoroutineCallback<>((result, error) -> {
+    if (error != null) {
+      error.printStackTrace();
+      return null;
+    }
+    System.out.println(result);
+    return null;
+  })
+);
 ```
 {% /multicode %}
 

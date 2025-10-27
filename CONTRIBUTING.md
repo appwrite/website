@@ -39,13 +39,13 @@ pnpm i
 Then, run the following command to start a development server.
 
 ```sh
-pnpm run dev
+bun run dev
 ```
 
 Before committing your code changes, make sure the website repo builds by running:
 
 ```sh
-pnpm run build
+bun run build
 ```
 
 ## Submit a pull request 🚀

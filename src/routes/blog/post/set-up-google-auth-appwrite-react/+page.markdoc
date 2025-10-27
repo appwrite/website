@@ -11,7 +11,13 @@ featured: false
 callToAction: true
 ---
 
-In this article, we'll explore how to set up Google authentication in a React application using Appwrite. Appwrite is an open-source backend solution that provides a wide array of integrated tools and services, covering everything from server-side logic to user management and data storage. While this tutorial focuses on Google OAuth2, Appwrite supports many authentication methods, including [passwordless authentication](https://www.appwrite.io/blog/post/improve-ux-passwordless-auth), magic URL, email OTP, phone number OTP, email/password and various OAuth2 providers.
+Updated on October 6, 2025
+
+In this article, we'll explore how to set up Google authentication in a React application using Appwrite.
+
+Appwrite is an open-source, all-in-one cloud development platform. Use built-in backend infrastructure and web hosting, all from a single place. You can build your entire backend within minutes and deploy effortlessly, adding Authentication, Databases, Functions, Storage, Messaging, and more to your projects using the frameworks and languages of your choice.
+
+While this tutorial focuses on Google OAuth2, Appwrite supports many [authentication methods](/docs/products/auth), including [passwordless authentication](/blog/post/improve-ux-passwordless-auth), magic URL, email OTP, phone number OTP, email/password and various OAuth2 providers.
 
 By the end of this tutorial, you'll have a React app that allows users to log in with their Google account seamlessly. Let's get started!
 
@@ -119,7 +125,9 @@ import { account, OAuthProvider } from './appwrite'
 
 export const loginWithGoogle = async () => {
   try {
-    await account.createOAuth2Session(OAuthProvider.Google)
+    await account.createOAuth2Session({
+        provider: OAuthProvider.Google
+    })
   } catch (error) {
     console.error(error)
   }
@@ -260,6 +268,43 @@ Every request made through the Appwrite SDK after the user is logged in will inc
 
 You've successfully integrated Google OAuth2 authentication into your React application using Appwrite. With this setup, users can log in with their Google accounts, and you can securely manage their authentication state and data access within your application.
 
-Appwrite supports many OAuth2 providers, including GitHub, Microsoft, Apple, Facebook, and more. This flexibility allows you to easily integrate various authentication options based on your application's needs. Additionally, Appwrite offers a variety of other authentication flows, such as Magic URL, phone authentication, anonymous sessions, team invites, and more. You can explore these options and learn how to implement them in your applications by checking out the [Appwrite Auth Documentation](/docs/products/auth).
+Appwrite supports many [OAuth2](/docs/products/auth/oauth2) providers, including GitHub, Microsoft, Apple, Facebook, and more. This flexibility allows you to easily integrate various authentication options based on your application's needs. Additionally, Appwrite offers a variety of other authentication flows, such as Magic URL, phone authentication, anonymous sessions, team invites, and more. You can explore these options and learn how to implement them in your applications by checking out the [Appwrite Auth Documentation](/docs/products/auth).
 
 Feel free to explore further and build on this foundation to create even more sophisticated and secure applications. If you need any help, don't hesitate to reach out to the Appwrite community on [Discord](https://discord.com/invite/appwrite) for support and guidance.
+
+# Frequently asked questions (FAQs)
+
+**1. What exactly is OAuth2, and why do developers use it?**
+
+Think of OAuth2 as a way to let users log in with accounts they already trust, like Google or GitHub, without you ever handling their passwords. Instead of creating a new account, they just say, “Hey Google, tell this app who I am.”
+
+It makes signing up easier for users and keeps you, the developer, out of the business of storing sensitive credentials. It’s basically convenience + security in one.
+
+**2. How does Appwrite make OAuth2 easier?**
+
+Implementing OAuth2 manually can get complicated. You need to manage redirects, handle access tokens, and ensure secure communication with the provider. Appwrite takes care of all of this for you.
+
+When a user clicks “Login with Google,” Appwrite handles the entire OAuth2 flow: it connects with Google, verifies the user, and returns a valid session to your app. You don’t need to handle tokens or complex authentication steps yourself. This lets you focus on building your application while Appwrite manages the security and authentication behind the scenes.
+
+**3. Why should I use OAuth2 instead of the classic email and password login?**
+
+With email and password, you’re on the hook for storing, encrypting, and securing passwords. That’s extra work and responsibility.
+
+OAuth2 takes all that off your plate. The user logs in through Google (or another provider), and you just get a verified identity. It’s faster for users and way less risky for you. Plus, people are more likely to trust “Sign in with Google” than creating yet another password.
+
+**4. Is OAuth2 safe to use in production apps?**
+
+Absolutely. In fact, OAuth2 is one of the most widely used and tested authentication standards out there. Companies like Google, Apple, and Microsoft all rely on it.
+
+As long as you use secure redirect URIs and handle tokens through a trusted service like Appwrite, you’re in great shape. The heavy lifting—like token security and validation—is handled by Appwrite and the provider.
+
+**5. Can I mix OAuth2 with other login methods in my app?**
+
+Definitely! That’s one of the best parts of using Appwrite. You can let users choose—some might prefer logging in with Google, others might want the traditional email/password route or even phone OTPs.
+
+Appwrite supports all of that out of the box. You just toggle on the methods you want, and users can pick whatever works best for them.
+
+# More resources
+- [OAuth 2 login documentation](/docs/products/auth/oauth2)
+- [Appwrite Auth documentation](/docs/products/auth)
+- [Building custom authentication flows with Appwrite](/blog/post/building-custom-auth-flows)

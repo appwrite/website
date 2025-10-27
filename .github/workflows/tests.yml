@@ -1,10 +1,8 @@
 name: Tests
 
 on:
-    pull_request_target:
+    pull_request:
         branches: ['**']
-
-permissions: read-all
 
 jobs:
     format:
@@ -61,8 +59,6 @@ jobs:
                       ${{ runner.os }}-pnpm-store-
             - name: Install dependencies
               run: pnpm install --frozen-lockfile
-            - name: Install playwright dependencies
-              run: pnpm exec playwright install --with-deps chromium
             - name: Run tests
               env:
                   PUBLIC_APPWRITE_ENDPOINT: ${{ vars.PUBLIC_APPWRITE_ENDPOINT }}
@@ -125,4 +121,4 @@ jobs:
                   APPWRITE_COL_INIT_ID: ${{ secrets.APPWRITE_COL_INIT_ID }}
                   APPWRITE_API_KEY_INIT: ${{ secrets.APPWRITE_API_KEY_INIT }}
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-              run: pnpm run build
+              run: bun run build

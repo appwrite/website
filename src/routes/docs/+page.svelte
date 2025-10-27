@@ -25,6 +25,12 @@
             description: 'Learn Appwrite Auth, Databases, and more with React.'
         },
         {
+            href: '/docs/tutorials/nextjs',
+            cover: '/images/tutorials/nextjs.png',
+            title: 'Next.js tutorial',
+            description: 'Learn Appwrite Auth, Databases, and more with Next.js.'
+        },
+        {
             href: '/docs/tutorials/sveltekit',
             cover: '/images/tutorials/svelte.png',
             title: 'SvelteKit tutorial',
@@ -337,16 +343,30 @@
                 <ul class="grid grid-cols-1 gap-8 md:grid-cols-2">
                     <li>
                         <a
-                            href="/docs/tooling/mcp/claude"
+                            href="/docs/tooling/mcp/claude-desktop"
                             class="web-card is-normal flex flex-row! items-center gap-2!"
                             onclick={() => trackEvent(`docs-mcp-click`)}
                         >
                             <img
                                 src="/images/docs/mcp/logos/dark/claude.svg"
-                                alt="Cursor"
+                                alt="Claude"
                                 class="w-6"
                             />
                             <h4 class="text-sub-body text-primary font-medium">Claude Desktop</h4>
+                        </a>
+                    </li>
+                    <li>
+                        <a
+                            href="/docs/tooling/mcp/claude-code"
+                            class="web-card is-normal flex flex-row! items-center gap-2!"
+                            onclick={() => trackEvent(`docs-mcp-click`)}
+                        >
+                            <img
+                                src="/images/docs/mcp/logos/dark/claude.svg"
+                                alt="Claude"
+                                class="w-6"
+                            />
+                            <h4 class="text-sub-body text-primary font-medium">Claude Code</h4>
                         </a>
                     </li>
                     <li>
@@ -371,7 +391,7 @@
                         >
                             <img
                                 src="/images/docs/mcp/logos/dark/windsurf.svg"
-                                alt="Cursor"
+                                alt="Windsurf"
                                 class="w-6"
                             />
                             <h4 class="text-sub-body text-primary font-medium">Windsurf Editor</h4>
@@ -385,10 +405,24 @@
                         >
                             <img
                                 src="/images/docs/mcp/logos/dark/vscode.svg"
-                                alt="Cursor"
+                                alt="VS Code"
                                 class="w-6"
                             />
                             <h4 class="text-sub-body text-primary font-medium">VS Code</h4>
+                        </a>
+                    </li>
+                    <li>
+                        <a
+                            href="/docs/tooling/mcp/opencode"
+                            class="web-card is-normal flex flex-row! items-center gap-2!"
+                            onclick={() => trackEvent(`docs-mcp-click`)}
+                        >
+                            <img
+                                src="/images/docs/mcp/logos/dark/opencode.svg"
+                                alt="OpenCode"
+                                class="w-6"
+                            />
+                            <h4 class="text-sub-body text-primary font-medium">OpenCode</h4>
                         </a>
                     </li>
                 </ul>
@@ -424,7 +458,7 @@
                         >
                             <h4 class="text-sub-body text-primary font-medium">REST API</h4>
                             <p class="text-sub-body mt-1">
-                                Integrate with HTTP requests without the needing an SDK.
+                                Integrate with HTTP requests without needing an SDK.
                             </p>
                         </a>
                     </li>

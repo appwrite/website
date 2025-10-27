@@ -61,6 +61,12 @@
                     href: 'https://github.com/appwrite',
                     target: '_blank',
                     rel: 'noopener noreferrer'
+                },
+                {
+                    label: 'Tech news',
+                    href: 'https://refetch.io',
+                    target: '_blank',
+                    rel: 'noopener noreferrer'
                 }
                 // {
                 //     label: 'Status',

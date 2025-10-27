@@ -6,64 +6,54 @@ description: Set up your self-hosted Appwrite instance easily. Read the installa
 
 Appwrite was designed from the ground up with self-hosting in mind. You can install and run Appwrite on any operating system that can run a [Docker CLI](https://www.docker.com/products/docker-desktop). Self-hosted Appwrite instances can be configured flexibly with access to the same features found on Appwrite Cloud.
 
-# System requirements {% #system-requirements %}
-
-Appwrite is designed to run well on both small and large deployments. The minimum requirements to run Appwrite are as little as **2 CPU cores** and **4GB of RAM**, with **2GB of swap memory**, and an operating system that supports Docker.
-
-Appwrite requires [Docker Compose Version 2](https://docs.docker.com/compose/install/). To install Appwrite, make sure your Docker installation is updated to support Composer V2.
-
-{% info title="Upgrading From Older Versions" %}
-If you are migrating from an older version of Appwrite, you need to follow the [migration instructions](/docs/advanced/self-hosting/update)
+{% info title="Upgrading from older versions" %}
+If you are migrating from an older version of Appwrite, you need to follow the [migration instructions](/docs/advanced/self-hosting/production/updates)
 {% /info %}
 
-# Install with Docker {% #install-with-docker %}
+# Cloud vs Self-hosting {% #cloud-vs-self-hosting %}
 
-The easiest way to start running your Appwrite server is by running our Docker installer tool from your terminal. Before running the installation command, make sure you have [Docker CLI](https://www.docker.com/products/docker-desktop) installed on your host machine.
+Choose the deployment method that fits your needs.
 
-You will be prompted to configure the following during the setup command:
+| Feature | Appwrite Cloud | Self-hosting |
+|---------|---------------|--------------|
+| Setup | Zero setup | Manual setup required |
+| Maintenance | Fully managed | You manage updates and scaling |
+| Data control | Managed infrastructure | Full control over data location |
+| Compliance | Built-in compliance | Configure for your requirements |
+| Scaling | Automatic | Manual configuration |
 
-1. Your Appwrite instance's HTTP and HTTPS ports.
-2. Your Appwrite instance's secret key used to encrypt sensitive data.
-3. Your Appwrite instance's main hostname. Appwrite will generate a certificate using this hostname.
-4. Your Appwrite instance's DNS A record hostname. Typically set to the same value as your Appwrite instance's hostname.
+# When to self-host {% #when-to-self-host %}
 
-{% tabs %}
-{% tabsitem #unix title="macOS and Linux" %}
-## Bash
-```sh
-docker run -it --rm \
-    --volume /var/run/docker.sock:/var/run/docker.sock \
-    --volume "$(pwd)"/appwrite:/usr/src/code/appwrite:rw \
-    --entrypoint="install" \
-    appwrite/appwrite:1.7.4
-```
-{% /tabsitem %}
+Self-hosting is ideal when you need data control or have specific compliance requirements.
 
-{% tabsitem #windows title="Windows" %}
-## CMD
-```cmd
-docker run -it --rm ^
-    --volume //var/run/docker.sock:/var/run/docker.sock ^
-    --volume "%cd%"/appwrite:/usr/src/code/appwrite:rw ^
-    --entrypoint="install" ^
-    appwrite/appwrite:1.7.4
-```
-## Powershell
-```powershell
-docker run -it --rm `
-    --volume /var/run/docker.sock:/var/run/docker.sock `
-    --volume ${pwd}/appwrite:/usr/src/code/appwrite:rw `
-    --entrypoint="install" `
-    appwrite/appwrite:1.7.4
-```
-{% /tabsitem %}
-{% /tabs %}
+**Consider self-hosting if:**
+- You want to manage your own infrastructure
+- You're a hobbyist or want to experiment with Appwrite in a playground environment
+- You need to develop against a local instance of Appwrite
 
-# One-click setups {% #one-click-setups %}
+**Appwrite Cloud is recommended if:**
+- You want to focus on building features, not managing infrastructure
+- Your team lacks extensive DevOps experience
+- You expect self-hosting to save costs (it often costs more when factoring in time and expertise)
+{% info title="Enterprise self-hosting" %}
+For compliance features and dedicated support, explore [enterprise self-hosting solutions](/contact-us/enterprise).
+{% /info %}
 
-In addition to running Appwrite locally, you can also launch Appwrite using a pre-configured setup. This allows you to get up and running with Appwrite quickly without installing Docker on your local machine.
+# Quick start {% #quick-start %}
 
-Choose from one of the providers below:
+The fastest way to get started with Appwrite self-hosting:
+
+1. **Use a one-click deployment** - Choose from [marketplace installations](#one-click-deployments) for instant setup
+2. **Or follow the manual installation** - Use our [Docker installation guide](/docs/advanced/self-hosting/installation) for custom setups
+3. **Configure services** - Set up [email](/docs/advanced/self-hosting/configuration/email), [storage](/docs/advanced/self-hosting/configuration/storage), and other services
+
+# Deployment options {% #deployment-options %}
+
+Choose the deployment method that best fits your needs:
+
+## One-click deployments {% #one-click-deployments %}
+
+**Recommended:** Use these pre-configured marketplace apps for instant setup:
 
 {% table %}
 * &nbsp; {% width=48 %}
@@ -91,46 +81,93 @@ Choose from one of the providers below:
 * [Click to install](https://aws.amazon.com/marketplace/pp/prodview-2hiaeo2px4md6)
 {% /table %}
 
+## Cloud platforms {% #cloud-platforms %}
 
-# Next steps {% #next-steps %}
+For custom deployments on major cloud providers:
 
-Self-hosting Appwrite gives you more configurable options.
-Make these configurations to unlock the full power of Appwrite.
+{% cards %}
+{% cards_item href="/docs/advanced/self-hosting/platforms/aws" title="Amazon Web Services" %}
+One-click AWS Marketplace deployment with custom configuration options.
+{% /cards_item %}
 
-[Configure Appwrite Functions](/docs/advanced/self-hosting/functions)
+{% cards_item href="/docs/advanced/self-hosting/platforms/digitalocean" title="DigitalOcean" %}
+Marketplace installation with simple Droplet configuration.
+{% /cards_item %}
 
-[Configure Appwrite Sites](/docs/advanced/self-hosting/sites)
+{% cards_item href="/docs/advanced/self-hosting/platforms/google-cloud" title="Google Cloud" %}
+Deploy using Cloud Run, Compute Engine, or other Google Cloud services.
+{% /cards_item %}
 
-[Configure email delivery](/docs/advanced/self-hosting/email)
+{% cards_item href="/docs/advanced/self-hosting/platforms/azure" title="Microsoft Azure" %}
+Deploy using Container Apps, Virtual Machines, or other Azure services.
+{% /cards_item %}
+{% /cards %}
 
-[Configure SMS delivery](/docs/advanced/self-hosting/sms)
+## Platform-as-a-Service (PaaS) {% #paas-platforms %}
 
-[Configure Appwrite Storage](/docs/advanced/self-hosting/storage)
+Deploy Appwrite on modern PaaS platforms for simplified management:
 
-[Configure TLS Certificates](/docs/advanced/self-hosting/tls-certificates)
+{% cards %}
+{% cards_item href="/docs/advanced/self-hosting/platforms/coolify" title="Coolify" %}
+Open-source platform for easy self-hosting with one-click deployments.
+{% /cards_item %}
+{% /cards %}
 
-# Manual (Docker Compose) {% #manual %}
+# Configuration {% #configuration %}
 
-For advanced Docker users, the manual installation might seem more familiar. To set up Appwrite manually, download the Appwrite base [`docker-compose.yml`](/install/compose) and [`.env`](/install/env) files, then move them inside a directory named `appwrite`. After the download completes, update the different environment variables as you wish in the `.env` file and start the Appwrite stack using the following Docker command:
+After deployment, configure Appwrite to enable additional features:
 
-```bash
-docker compose up -d --remove-orphans
-```
+{% cards %}
+{% cards_item href="/docs/advanced/self-hosting/configuration/email" title="Email delivery" %}
+Set up SMTP providers for user verification, password recovery, and notifications.
+{% /cards_item %}
 
-Once the Docker installation completes, go to your machine's hostname or IP address on your browser to access the Appwrite Console. Please note that on hosts that are not Linux-native, the server might take a few minutes to start after installation completes.
+{% cards_item href="/docs/advanced/self-hosting/configuration/sms" title="SMS Delivery" %}
+Configure SMS providers for phone authentication and two-factor authentication.
+{% /cards_item %}
 
-# Stop {% #stop %}
+{% cards_item href="/docs/advanced/self-hosting/configuration/storage" title="Storage Backends" %}
+Connect external storage providers like AWS S3, Backblaze, or Wasabi.
+{% /cards_item %}
 
-You can stop your Appwrite containers by using the following command executed from the same directory as your `docker-compose.yml` file.
+{% cards_item href="/docs/advanced/self-hosting/configuration/functions" title="Functions Runtime" %}
+Enable serverless functions with custom runtimes and execution environments.
+{% /cards_item %}
+{% /cards %}
 
-```bash
-docker compose stop
-```
+# Production readiness {% #production-readiness %}
 
-# Uninstall {% #uninstall %}
+Ensure your Appwrite deployment is production-ready:
 
-To stop and remove your Appwrite containers, you can use the following command executed from the same directory as your `docker-compose.yml` file.
+## Security considerations {% #security %}
 
-```bash
-docker compose down -v
-```
+- **Environment Variables** - Secure sensitive configuration using environment variables
+- **TLS Certificates** - Enable HTTPS with automated certificate management
+- **Network Security** - Configure firewalls and security groups appropriately
+- **Access Control** - Implement proper authentication and authorization
+
+## Performance optimization {% #performance %}
+
+- **Resource Scaling** - Monitor and scale CPU, memory, and storage resources
+- **Database Performance** - Optimize database connections and queries
+- **CDN Integration** - Use content delivery networks for static assets
+- **Load Balancing** - Distribute traffic across multiple instances
+
+## Monitoring and maintenance {% #monitoring %}
+
+- **Health Checks** - Set up monitoring for service availability and performance
+- **Log Management** - Centralize and analyze application logs
+- **Backup Strategy** - Implement regular database and file backups
+- **Update Management** - Keep Appwrite updated with the latest releases
+
+# Get started {% #get-started %}
+
+Ready to self-host Appwrite? Choose your preferred path:
+
+**One-Click Deploy** - Use a [marketplace installation](#one-click-deployments) for instant setup (recommended)
+
+**Manual Installation** - Follow our [Docker installation guide](/docs/advanced/self-hosting/installation) for custom setups
+
+**Cloud Platform** - [Choose a cloud platform](#cloud-platforms) for production hosting with custom configuration
+
+**Platform-as-a-Service** - Deploy on [Coolify](/docs/advanced/self-hosting/platforms/coolify) or similar platforms for simplified management

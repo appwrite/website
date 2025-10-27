@@ -1,0 +1,38 @@
+---
+layout: partner
+title: COOKEY LLC
+description: A technology company focused on building innovative, AI-driven solutions that make everyday life easier. 
+date: 2025-10-07
+featured: false
+partnerLevel: Silver
+isNew: true
+cover: /images/partners/covers/cookey.png
+category: agency
+website: https://cookeyllc.com
+email: mailto:ryan@cookey.ai
+product: 
+    avatar: '/images/partners/avatars/cookey.png'
+    vendor: COOKEY LLC
+    description: A technology company focused on building innovative, AI-driven solutions that make everyday life easier. 
+technologies: 
+    - React Native
+services:
+    - Software development
+    - AI Strategy and consulting
+    - Custom AI applications
+    - AI integrations and Systems
+    - Full-Stack development
+    - Specialized solutions
+regions:
+    - Global
+languages: 
+    - English
+---
+
+# Overview
+
+COOKEY LLC is a technology company focused on building innovative, AI-driven solutions that make everyday life easier. Founded with the vision of applying artificial intelligence to real-world challenges, COOKEY LLC creates applications that merge convenience, automation, and smart design across different industries.
+
+# Services
+
+COOKEY LLC provides a wide range of services, including custom software development, AI Strategy, AI integrations and systems. Their mission is to help businesses harness the power of artificial intelligence and turn complex challenges into competitive advantages.

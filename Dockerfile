@@ -1,4 +1,4 @@
-FROM node:22-bullseye AS base
+FROM oven/bun:1 AS base
 
 ARG PUBLIC_APPWRITE_ENDPOINT
 ENV PUBLIC_APPWRITE_ENDPOINT ${PUBLIC_APPWRITE_ENDPOINT}
@@ -57,26 +57,24 @@ ENV PATH="$PNPM_HOME:$PATH"
 WORKDIR /app
 COPY package.json package.json
 COPY pnpm-lock.yaml pnpm-lock.yaml
-RUN npm i -g corepack@latest
-RUN corepack enable
 
 FROM base AS build
 
 COPY . .
-RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile
-RUN NODE_OPTIONS=--max_old_space_size=16384 pnpm run build
+RUN bun install --frozen-lockfile
+RUN bun run build
 
 FROM base AS final
 
 # Install fontconfig
 COPY ./local-fonts /usr/share/fonts
 RUN apt-get update && \
-    apt-get install -y fontconfig && \
-    apt-get autoremove --purge && \
-    rm -rf /var/lib/apt/lists/*
+	apt-get install -y fontconfig && \
+	apt-get autoremove --purge && \
+	rm -rf /var/lib/apt/lists/*
 RUN fc-cache -f -v
 COPY --from=build /app/build/ build
 COPY --from=build /app/server/ server
-RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile --prod
+RUN bun install --frozen-lockfile --prod
 
 CMD [ "node", "server/main.js"]

@@ -34,6 +34,7 @@ const config = {
     extensions: ['.markdoc', '.svelte', '.md'],
     kit: {
         adapter: nodeAdapter(),
+
         version: {
             pollInterval: 60 * 1000
         },
@@ -54,6 +55,15 @@ const config = {
                     return;
                 }
                 throw new Error(message);
+            }
+        },
+        experimental: {
+            tracing: {
+                server: true
+            },
+
+            instrumentation: {
+                server: true
             }
         }
     }

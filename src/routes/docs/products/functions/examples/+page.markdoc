@@ -19,8 +19,8 @@ Run the following bash command to create a `package.json` file. This file is use
 ```bash
 npm init -y
 ```
-Install the `undici` library. This library includes a `fetch` function that you can use to make HTTP requests. 
-    
+Install the `undici` library. This library includes a `fetch` function that you can use to make HTTP requests.
+
 ```bash
 npm install undici
 ```
@@ -258,7 +258,7 @@ Create a Votes table with the following columns:
 ## Code
 {% multicode %}
 ```server-nodejs
-import { Client, TablesDB, Query } from 'node-appwrite';
+import { Client, TablesDB, Query, ID } from 'node-appwrite';
 
 export default async function ({ req, res }) {
   const vote = {
@@ -278,20 +278,29 @@ export default async function ({ req, res }) {
     .setKey(req.headers['x-appwrite-key']);
 
   const tablesDB = new TablesDB(client);
-  
-  const existingVotes = await tablesDB.listRows('<VOTES_TABLE_ID>', [
-    Query.equals('userId', vote.userId),
-    Query.equals('topicId', vote.topicId)
-  ]);
+
+  const existingVotes = await tablesDB.listRows({
+    databaseId: '<DATABASE_ID>',
+    tableId: '<VOTES_TABLE_ID>',
+    queries: [
+      Query.equals('userId', vote.userId),
+      Query.equals('topicId', vote.topicId)
+    ]
+  });
 
   if (existingVotes.total > 0) {
     return res.json({ ok: false, message: 'You have already voted on this topic.' }, 400);
   }
 
-  const voteDocument = await database.createRow('<VOTES_TABLE_ID>', {
-    userId,
-    topicId,
-    vote,
+  const voteDocument = await tablesDB.createRow({
+    databaseId: '<DATABASE_ID>',
+    tableId: '<VOTES_TABLE_ID>',
+    rowId: ID.unique(),
+    data: {
+      userId: vote.userId,
+      topicId: vote.topicId,
+      vote: vote.vote,
+    }
   });
 
   return res.json({ ok: true, message: 'Vote cast.', vote: voteDocument });
@@ -321,7 +330,7 @@ def main(context):
     )
 
     tablesDB = TablesDB(client)
-    
+
     existing_votes = tablesDB.list_rows('<VOTES_TABLE_ID>', [
         Query.equals('userId', vote['userId']),
         Query.equals('topicId', vote['topicId'])
@@ -329,7 +338,7 @@ def main(context):
 
     if existing_votes['total'] > 0:
         return context.res.json({
-          'ok': False, 
+          'ok': False,
           'message': 'You have already voted on this topic.'
         }, 400)
 
@@ -377,7 +386,7 @@ return function ($context) {
 
     if ($existingVotes['total'] > 0) {
         return $context->res->json([
-          'ok' => false, 
+          'ok' => false,
           'message' => 'You have already voted on this topic.'
         ], 400);
     }
@@ -389,8 +398,8 @@ return function ($context) {
     ]);
 
     return $context->res->json([
-      'ok' => true, 
-      'message' => 'Vote cast.', 
+      'ok' => true,
+      'message' => 'Vote cast.',
       'vote' => $voteDocument
     ]);
 };
@@ -425,7 +434,7 @@ Future main(final context) async {
 
     if (existingVotes['total'] > 0) {
         return context.res.json({
-          'ok': false, 
+          'ok': false,
           'message': 'You have already voted on this topic.'
         }, 400);
     }
@@ -437,8 +446,8 @@ Future main(final context) async {
     });
 
     return context.res.json({
-      'ok': true, 
-      'message': 'Vote cast.', 
+      'ok': true,
+      'message': 'Vote cast.',
       'vote': voteDocument
     });
 }
@@ -464,15 +473,15 @@ def main(context)
         .set_key(context.req.headers['x-appwrite-key'])
 
     tablesDB = Appwrite::TablesDB.new(client)
-    
-    existing_votes = tablesDB.list_rows('<VOTES_TABLE_ID>', [
-        Appwrite::Query.new('userId', '=', vote['userId']),
-        Appwrite::Query.new('topicId', '=', vote['topicId'])
+
+    existing_votes = tablesDB.list_rows('<DATABASE_ID>', '<VOTES_TABLE_ID>', [
+        Appwrite::Query.equal('userId', vote['userId']),
+        Appwrite::Query.equal('topicId', vote['topicId'])
     ])
 
     if existing_votes['total'] > 0
         return context.res.json({
-          'ok': false, 
+          'ok': false,
           'message': 'You have already voted on this topic.'
         }, 400)
     end
@@ -484,20 +493,20 @@ def main(context)
     })
 
     return context.res.json({
-      'ok': true, 
-      'message': 'Vote cast.', 
+      'ok': true,
+      'message': 'Vote cast.',
       'vote': vote_row
     })
 end
 ```
 {% /multicode %}
-Use the function by navigating to the function URL in the browser. 
-The URL should contain the required parameters. 
+Use the function by navigating to the function URL in the browser.
+The URL should contain the required parameters.
 For example, `<YOUR_FUNCTION_URL>/?userId=<USER_ID>&topicId=<TOPIC_ID>&vote=yes` to cast a vote.
 {% /section %}
 
 {% section #form-submission step=3 title="HTML contact form" %}
-Here's a simple form page that handles form submissions, and can be used to store a user's message in a table. 
+Here's a simple form page that handles form submissions, and can be used to store a user's message in a table.
 The form is submitted to the function using the `POST` method and the form data is sent as a URL-encoded string in the request body.
 
 ## Prerequisites
@@ -509,7 +518,7 @@ Create a Messages table with the following columns:
 | `email`    | string | The email of the message author  |
 | `content`  | string | The content of the message       |
 
-## Code 
+## Code
 
 {% multicode %}
 
@@ -553,7 +562,12 @@ export default async function ({ req, res }) {
       .setKey(req.headers['x-appwrite-key']);
 
     const tablesDB = new TablesDB(client);
-    const row = await tablesDB.createRow('<DATABASE_ID>', '<MESSAGES_TABLE_ID>', ID.unique(), message);
+    const row = await tablesDB.createRow({
+        databaseId: '<DATABASE_ID>',
+        tableId: '<MESSAGES_TABLE_ID>',
+        rowId: ID.unique(),
+        data: message
+    });
 
     return res.text("Message sent");
   }
@@ -648,7 +662,7 @@ return function ($context) {
 
   if ($context->req->method === 'POST' && $context->req->headers['content-type'] === 'application/x-www-form-urlencoded') {
     \parse_str($context->req->body, $formData);
-    
+
     $message = [
       'name' => $formData['name'],
       'email' => $formData['email'],
