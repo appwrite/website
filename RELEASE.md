@@ -55,8 +55,8 @@ rm -rf appwrite
 cd -
 
 # Bump appwrite repo so latest main commit is used
-pnpm update @appwrite.io/repo
-git add pnpm-lock.yaml
+bun update @appwrite.io/repo
+git add bun.lock
 
 git commit -m "Bump Appwrite version to $VERSION"
 

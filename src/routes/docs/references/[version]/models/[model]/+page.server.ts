@@ -5,7 +5,7 @@ import {
     getExample,
     type Property,
     ModelType
-} from '$lib/utils/specs';
+} from '../../[platform]/[service]/specs.ts';
 import type { OpenAPIV3 } from 'openapi-types';
 import type { PageServerLoad } from './$types';
 

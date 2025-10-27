@@ -6,6 +6,10 @@ description: Learn how to setup and deploy Next.js apps on Appwrite Sites.
 
 {% section #step-1 step=1 title="Create Next.js app" %}
 
+{% info title="Full Next.js support available" %}
+Appwrite Sites fully supports Next.js out of the box. Unlike other non-Vercel hosting services, the Appwrite Edge runs in a container-based environment for Node.js (and soon Bun as well), managed by a control plane that automatically scales your app as needed. This means all Next.js features work without any extra configuration or the OpenNext adapter.
+{% /info %}
+
 First, you must either create a Next.js app or setup the [Next.js starter template](https://github.com/appwrite/templates-for-sites).
 
 Open your terminal, and run the following command.
