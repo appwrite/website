@@ -12,7 +12,7 @@
         "@appwrite.io/console": "^0.6.4",
         "@appwrite.io/pink": "~0.26.0",
         "@appwrite.io/pink-icons": "~0.26.0",
-        "@appwrite.io/repo": "github:appwrite/appwrite#15b12551a0bf45c56ef000d749dc84c263aabd4d",
+        "@appwrite.io/repo": "github:appwrite/appwrite#1.8.x",
         "@eslint/compat": "^1.4.0",
         "@eslint/js": "^9.36.0",
         "@fingerprintjs/fingerprintjs": "^4.6.2",
@@ -125,7 +125,7 @@
 
     "@appwrite.io/pink-icons": ["@appwrite.io/pink-icons@0.26.0", "", {}, "sha512-abLQdT0zlDkEEwvgU1ymFq0ztxuRerwx7t1oeUGFgXlm9gXrxt6nce2f5GRqg9Rb7hM3F3nyc1ds8zRRWHQOyw=="],
 
-    "@appwrite.io/repo": ["@appwrite.io/repo@github:appwrite/appwrite#15b1255", {}, "appwrite-appwrite-15b1255"],
+    "@appwrite.io/repo": ["@appwrite.io/repo@github:appwrite/appwrite#7047ffe", {}, "appwrite-appwrite-7047ffe"],
 
     "@babel/code-frame": ["@babel/code-frame@7.27.1", "", { "dependencies": { "@babel/helper-validator-identifier": "7.27.1", "js-tokens": "4.0.0", "picocolors": "1.1.1" } }, "sha512-cjQ7ZlQ0Mv3b47hABuTevyTuYN4i+loJKGeV9flcCgIK37cCXRh+L1bd3iBHlynerhQ7BhCkn2BPbQUL+rGqFg=="],
 
