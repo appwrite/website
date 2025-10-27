@@ -36,9 +36,7 @@
         }
     }
 
-    onMount(() => {
-        updateBannerHeight();
-    });
+    onMount(updateBannerHeight);
 </script>
 
 <svelte:window
