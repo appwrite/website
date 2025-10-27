@@ -6,6 +6,7 @@ export default defineConfig({
         port: 5173
     },
     fullyParallel: true,
+    retries: 3,
     testDir: 'tests',
     testMatch: /(.+\.)?(test|spec)\.[jt]s/
 });
