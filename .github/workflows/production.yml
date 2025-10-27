@@ -7,7 +7,7 @@ on:
 
 env:
     TAG: ${{ github.event.release.tag_name || github.sha }}
-    STACK_FILE: docker/production.yml
+    STACK_FILE: deploy/docker/production.yml
     REPOSITORY: website
     REGISTRY_USERNAME: christyjacob4
 
