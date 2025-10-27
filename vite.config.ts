@@ -8,12 +8,12 @@ import { defineConfig } from 'vitest/config';
 
 export default defineConfig({
     plugins: [
-        sentrySvelteKit({
-            sourceMapsUploadOptions: {
+        // skip Sentry during Playwright tests
+        !process.env.PLAYWRIGHT_TESTS &&
+            sentrySvelteKit({
                 org: 'appwrite',
                 project: 'website'
-            }
-        }),
+            }),
         enhancedImages(),
         sveltekit(),
         dynamicImport({
@@ -32,7 +32,7 @@ export default defineConfig({
         manifestSRI({
             algorithms: ['sha384']
         })
-    ],
+    ].filter(Boolean),
     css: {
         preprocessorOptions: {
             scss: {
