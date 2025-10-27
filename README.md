@@ -23,7 +23,7 @@ To get the repo up and running in your local environment, use the following comm
 bun run dev
 ```
 
-> If you don't have `pnpm` available on your system, you can install it from the [official pnpm Installation website](https://pnpm.io/installation)
+> If you don't have `bun` available on your system, you can install it from the [official Bun Installation website](https://bun.com/docs/installation)
 
 ## Contributing
 

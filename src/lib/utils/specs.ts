@@ -503,10 +503,10 @@ export async function getService(
         );
 
         const path = isAndroid
-            ? `/node_modules/@appwrite.io/repo/docs/examples/${version}/${
+            ? `../../../node_modules/@appwrite.io/repo/docs/examples/${version}/${
                   isAndroidServer ? 'server-kotlin' : 'client-android'
               }/${isAndroidJava ? 'java' : 'kotlin'}/${operation['x-appwrite']?.demo}`
-            : `/node_modules/@appwrite.io/repo/docs/examples/${version}/${platform}/examples/${operation['x-appwrite']?.demo}`;
+            : `../../../node_modules/@appwrite.io/repo/docs/examples/${version}/${platform}/examples/${operation['x-appwrite']?.demo}`;
 
         if (!(path in examples)) {
             continue;

@@ -26,7 +26,7 @@ Alternatively, you can develop the website repo in your browser using [Code Spac
 
 ## Development
 
-The Appwrite website uses [PNPM](https://pnpm.io). Start by following their [installation](https://pnpm.io/installation) documentation.
+The Appwrite website uses [Bun](https://bun.com). Start by following their [installation](https://bun.com/docs/installation) documentation.
 
 Once you've cloned the Appwrite website repo, running the following command to install dependencies:
 

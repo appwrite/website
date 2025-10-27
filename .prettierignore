@@ -8,8 +8,9 @@ node_modules
 !.env.example
 deploy
 
-# Ignore files for PNPM, NPM and YARN
+# Ignore files for Bun
 bun.lock
+
 *.scss
 
 # Assets
