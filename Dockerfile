@@ -56,7 +56,7 @@ ENV PATH="$PNPM_HOME:$PATH"
 
 WORKDIR /app
 COPY package.json package.json
-COPY pnpm-lock.yaml pnpm-lock.yaml
+COPY bun.lock bun.lock
 
 FROM base AS build
 
@@ -77,4 +77,4 @@ COPY --from=build /app/build/ build
 COPY --from=build /app/server/ server
 RUN bun install --frozen-lockfile --prod
 
-CMD [ "node", "server/main.js"]
+CMD [ "bun", "server/main.js"]
