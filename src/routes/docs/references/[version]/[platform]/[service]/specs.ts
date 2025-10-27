@@ -367,7 +367,6 @@ export function getSchema(id: string, api: OpenAPIV3.Document): OpenAPIV3.Schema
 }
 
 const specs = import.meta.glob('/node_modules/@appwrite.io/repo/app/config/specs/open-api3*.json', {
-    eager: true,
     exhaustive: true
 });
 
@@ -378,13 +377,12 @@ export async function getApi(version: string, platform: string): Promise<OpenAPI
         isServer ? 'server' : isClient ? 'client' : 'console'
     }.json`;
 
-    return specs[target] as OpenAPIV3.Document;
+    return specs[target]() as OpenAPIV3.Document;
 }
 
 const descriptions = import.meta.glob('./descriptions/*.md', {
     query: '?raw',
-    import: 'default',
-    eager: true
+    import: 'default'
 });
 
 export async function getDescription(service: string) {
@@ -394,7 +392,7 @@ export async function getDescription(service: string) {
         throw new Error('Missing service description');
     }
 
-    return descriptions[target] as string;
+    return descriptions[target]() as string;
 }
 
 export async function getService(
