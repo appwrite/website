@@ -1,4 +1,4 @@
-import { defineConfig } from '@playwright/test';
+import { devices, defineConfig } from '@playwright/test';
 
 export default defineConfig({
     webServer: {
@@ -8,5 +8,13 @@ export default defineConfig({
     fullyParallel: true,
     retries: 3,
     testDir: 'tests',
-    testMatch: /(.+\.)?(test|spec)\.[jt]s/
+    testMatch: /(.+\.)?(test|spec)\.[jt]s/,
+    projects: [
+        {
+            name: 'chromium',
+            use: {
+                ...devices['Desktop Chrome']
+            }
+        }
+    ]
 });
