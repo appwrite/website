@@ -9,12 +9,12 @@ import { defineConfig } from 'vitest/config';
 
 export default defineConfig({
     plugins: [
-        sentrySvelteKit({
-            sourceMapsUploadOptions: {
-                org: 'appwrite',
-                project: 'website'
-            }
-        }),
+        // sentrySvelteKit({
+        //     sourceMapsUploadOptions: {
+        //         org: 'appwrite',
+        //         project: 'website',
+        //     }
+        // }),
         enhancedImages(),
         sveltekit(),
         withFilter(
