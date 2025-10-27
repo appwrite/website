@@ -7,22 +7,49 @@
     import { Button, InlineTag, Icon } from '$lib/components/ui';
     import { GithubStats } from '$lib/components/shared';
     import { trackEvent } from '$lib/actions/analytics';
+    import { browser } from '$app/environment';
+    import { onMount } from 'svelte';
 
     export let open = false;
     export let links: NavLink[];
     export let offerButton = false;
 
+    let bannerHeight = 0;
+    let banner: HTMLElement | null = null;
+
     afterNavigate(() => {
         open = false;
         document.body.style.overflow = '';
     });
+
+    function getBannerElement() {
+        if (banner !== null) return banner;
+
+        banner = document.getElementById('top-banner');
+        return banner;
+    }
+
+    function updateBannerHeight() {
+        if (browser) {
+            const bannerElement = getBannerElement();
+            bannerHeight = bannerElement ? bannerElement.getBoundingClientRect().height : 0;
+        }
+    }
+
+    onMount(updateBannerHeight);
 </script>
 
-<svelte:window on:resize={() => open && (open = false)} />
+<svelte:window
+    on:resize={() => {
+        open && (open = false);
+        updateBannerHeight();
+    }}
+/>
 
 <nav
-    class="web-side-nav sticky top-[73px] block max-h-screen overflow-hidden lg:hidden"
+    class="web-side-nav sticky block max-h-screen overflow-hidden lg:hidden"
     class:hidden={!open}
+    style:top="calc(73px + {bannerHeight}px)"
 >
     <div class="web-side-nav-wrapper ps-4 pe-4">
         <div class="flex items-center gap-2 px-4">

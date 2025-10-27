@@ -32,7 +32,7 @@ After [initializing](/docs/tooling/command-line/installation#initialization) you
 {
     "projectId": "<PROJECT_ID>",
     "endpoint": "https://<REGION>.cloud.appwrite.io/v1",
-    "databases": [
+    "tablesDB": [
         {
             "$id": "<DATABASE_ID>",
             "name": "songs",
