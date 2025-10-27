@@ -208,8 +208,6 @@ function* processAdditionalMethods(
     const additionalMethods = appwriteMethod['x-appwrite'].methods!;
 
     for (const additionalMethod of additionalMethods) {
-        if (additionalMethod.deprecated) continue;
-
         yield {
             method: httpMethod,
             value: {
