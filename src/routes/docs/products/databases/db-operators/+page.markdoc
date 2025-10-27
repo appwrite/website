@@ -1,0 +1,151 @@
+---
+layout: article
+title: Database operators
+description: Update multiple fields atomically without fetching the full row. Perform numeric, array, string, and date updates in a single, consistent workflow.
+---
+
+Database operators let you update fields directly on the server without fetching the full row. Instead of sending new values, you describe the action you want: increment, append, replace, or adjust. This eliminates race conditions and reduces bandwidth usage when updating any values that need to be modified atomically. The operation is applied atomically at the storage layer for safe, concurrent updates.
+
+- Atomic by field: Each operation is applied safely at the storage layer to prevent lost updates under concurrency.
+- Multi-field updates: Apply multiple operations across different fields in a single request or transaction.
+- Type-safe: Operators are exposed through typed SDK methods for clarity and safety.
+- Transaction-ready: Operators can be staged and committed alongside other database actions for consistent writes.
+
+# How database operators work {% #how-database-operators-work %}
+
+Instead of the traditional **read-modify-write** pattern, database operators use dedicated methods to modify values directly on the server. The server applies the change atomically under concurrency control and returns the new value.
+
+Let's take an example of appending a value to an array field.
+
+**Traditional approach:**
+1. Fetch row → `{ letters: ['a', 'b' ] }`
+2. Update client-side → `letters: ['a', 'b', 'c']`
+3. Write back → `{ letters: ['a', 'b', 'c'] }`
+
+**Atomic approach:**
+1. Call `createOperations()` with the column name and the value to append
+2. Server applies atomically → `letters: ['a', 'b', 'c']`
+
+Here's how you can do so programmatically:
+
+{% multicode %}
+```js
+import { Client, Databases } from "appwrite";
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<YOUR_PROJECT_ID>');
+
+const databases = new Databases(client);
+
+const result = await databases.createOperations({
+    transactionId: '<TRANSACTION_ID>',
+    operations: [
+	    {
+	        "action": "arrayAppend",
+	        "databaseId": "<DATABASE_ID>",
+	        "tableId": "<TABLE_ID>",
+	        "rowId": "<ROW_ID>",
+	        "data": {
+	            "letters": ['a', 'b', 'c']
+	        } // This field is optional, depending on the operator
+	    }
+	]
+});
+```
+
+```dart
+import 'package:dart_appwrite/dart_appwrite.dart';
+
+Client client = Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<YOUR_PROJECT_ID>');
+
+Databases databases = Databases(client);
+
+Transaction result = await databases.createOperations(
+    transactionId: '<TRANSACTION_ID>',
+    operations: [
+	    {
+	        "action": "arrayAppend",
+	        "databaseId": "<DATABASE_ID>",
+	        "tableId": "<TABLE_ID>",
+	        "rowId": "<ROW_ID>",
+	        "data": {
+	            "letters": ['a', 'b', 'c']
+	        } // This field is optional, depending on the operator
+	    }
+	],
+);
+```
+{% /multicode %}
+
+{% info title="Why add a transaction ID?" %}
+
+Including a transaction ID allows you to group multiple operations into a single atomic transaction. This means either all operations succeed, or none are applied, ensuring data consistency.
+
+{% /info %}
+
+# When to use database operators {% #when-to-use %}
+
+Use operators when you need to:
+
+- Update fields frequently under concurrency (likes, scores, credits, inventory)
+- Edit lists/tags without rewriting whole arrays
+- Make small text changes in-place
+- Adjust dates for lifecycle events or scheduling
+
+This keeps payloads small, avoids race conditions, and reduces round-trips.
+
+# Operator categories {% #operators %}
+
+The following operator types are available in v1. Choose the operator that matches your field type and intent.
+
+## Numeric operators {% #numeric %}
+
+Perform arithmetic on numeric fields without reading the row first.
+
+| Name | Purpose |
+|------|---------|
+| `increment` | Increases a numeric field by a specified value |
+| `decrement` | Decreases a numeric field by a specified value |
+| `multiply` | Multiplies a numeric field by a specified value |
+| `divide` | Divides a numeric field by a specified value |
+| `modulo` | Returns the remainder of a numeric field divided by a specified value |
+
+
+## Array operators {% #array %}
+
+Edit lists in place: append, remove, or modify array items atomically.
+
+| Name | Purpose |
+|------|---------|
+| `arrayAppend` | Adds one or more elements to the end of an array |
+| `arrayPrepend` | Adds one or more elements to the beginning of an array |
+| `arrayInsert` | Inserts one or more elements at a specific position in an array |
+| `arrayRemove` | Removes specified elements from an array |
+| `arrayUnique` | Removes duplicate elements from an array |
+| `arrayIntersect` | Returns only elements that exist in both arrays |
+| `arrayDiff` | Returns elements that exist in the first array but not in the second |
+| `arrayFilter` | Filters array elements based on specified criteria |
+
+
+## String operators {% #string %}
+
+Make lightweight text changes without rewriting the whole row.
+
+| Name | Purpose |
+|------|---------|
+| `stringConcat` | Appends a string to the end of an existing string field |
+| `stringReplace` | Replaces occurrences of a substring with a new string |
+
+
+## Date operators {% #date %}
+
+Adjust time-based fields for lifecycle and scheduling logic.
+
+| Name | Purpose |
+|------|---------|
+| `dateAddDays` | Adds a specified number of days to a date field |
+| `dateSubDays` | Subtracts a specified number of days from a date field |
+| `dateSetNo` | Sets a date field to a specific value |
