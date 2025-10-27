@@ -377,7 +377,7 @@ export async function getApi(version: string, platform: string): Promise<OpenAPI
         isServer ? 'server' : isClient ? 'client' : 'console'
     }.json`;
 
-    return specs[target]() as OpenAPIV3.Document;
+    return specs[target]() as unknown as OpenAPIV3.Document;
 }
 
 const descriptions = import.meta.glob('./descriptions/*.md', {
@@ -392,7 +392,7 @@ export async function getDescription(service: string) {
         throw new Error('Missing service description');
     }
 
-    return descriptions[target]() as string;
+    return descriptions[target]() as unknown as string;
 }
 
 export async function getService(
