@@ -26,7 +26,7 @@
     "dependencies": {
         "@sentry/sveltekit": "^10.22.0",
         "h3": "^1.15.4",
-        "sharp": "^0.33.5"
+        "sharp": "^0.34.4"
     },
     "devDependencies": {
         "@appwrite.io/console": "^0.6.4",
@@ -34,7 +34,7 @@
         "@appwrite.io/pink-icons": "~0.26.0",
         "@appwrite.io/repo": "github:appwrite/appwrite#15b12551a0bf45c56ef000d749dc84c263aabd4d",
         "@eslint/compat": "^1.4.0",
-        "@eslint/js": "^9.38.0",
+        "@eslint/js": "^9.36.0",
         "@fingerprintjs/fingerprintjs": "^4.6.2",
         "@internationalized/date": "3.5.0",
         "@melt-ui/pp": "^0.3.2",
@@ -65,11 +65,11 @@
         "embla-carousel-auto-scroll": "^8.6.0",
         "embla-carousel-svelte": "^8.6.0",
         "embla-carousel-wheel-gestures": "^8.1.0",
-        "eslint": "^9.38.0",
-        "eslint-config-prettier": "^9.1.2",
-        "eslint-plugin-svelte": "^2.46.1",
+        "eslint": "^9.36.0",
+        "eslint-config-prettier": "^10.1.8",
+        "eslint-plugin-svelte": "^3.12.4",
         "fuse.js": "^7.1.0",
-        "globals": "^15.15.0",
+        "globals": "^16.4.0",
         "highlight.js": "^11.11.1",
         "linkedom": "^0.18.12",
         "markdown-it": "^14.1.0",
@@ -88,7 +88,7 @@
         "posthog-node": "^4.18.0",
         "prettier": "^3.6.2",
         "prettier-plugin-svelte": "^3.4.0",
-        "prettier-plugin-tailwindcss": "^0.6.14",
+        "prettier-plugin-tailwindcss": "^0.7.1",
         "proj4": "^2.19.10",
         "remeda": "^2.32.0",
         "reodotdev": "^1.0.0",
@@ -107,7 +107,7 @@
         "vaul-svelte": "1.0.0-next.7",
         "vite": "^7.1.19",
         "vite-plugin-dynamic-import": "^1.6.0",
-        "vite-plugin-image-optimizer": "^1.1.9",
+        "vite-plugin-image-optimizer": "^2.0.2",
         "vite-plugin-manifest-sri": "^0.2.0",
         "vitest": "^3.2.4",
         "zod": "^3.25.76"
