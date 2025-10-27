@@ -7,7 +7,7 @@
         "build": "node ./scripts/build.js",
         "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
         "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
-        "clean": "rm -rf node_modules && rm -rf .svelte_kit && pnpm i",
+        "clean": "rm -rf node_modules && rm -rf .svelte_kit && bun install",
         "dev": "vite dev",
         "format": "prettier --write .",
         "format:check": "prettier --check .",

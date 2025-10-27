@@ -2,7 +2,7 @@ import type { PlaywrightTestConfig } from '@playwright/test';
 
 const config: PlaywrightTestConfig = {
     webServer: {
-        command: 'pnpm dev',
+        command: 'bun run dev',
         port: 5173,
         env: {
             PLAYWRIGHT_TESTS: '1'
