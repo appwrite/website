@@ -448,10 +448,6 @@
         "redirect": "/docs/advanced/platform/permissions"
     },
     {
-        "link": "/docs/",
-        "redirect": "/docs/"
-    },
-    {
         "link": "/docs/models/bucket",
         "redirect": "/docs/references/cloud/models/bucket"
     },

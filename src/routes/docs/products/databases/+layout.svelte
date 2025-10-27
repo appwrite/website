@@ -78,6 +78,11 @@
                     href: '/docs/products/databases/pagination'
                 },
                 {
+                    label: 'Transactions',
+                    href: '/docs/products/databases/transactions',
+                    new: isNewUntil('31 Oct 2025')
+                },
+                {
                     label: 'Type generation',
                     href: '/docs/products/databases/type-generation',
                     new: isNewUntil('31 Jul 2025')
