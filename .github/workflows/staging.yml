@@ -8,7 +8,7 @@ on:
 
 env:
     TAG: ${{ github.sha }}
-    STACK_FILE: docker/stage.yml
+    STACK_FILE: deploy/docker/stage.yml
     REPOSITORY: website
     REGISTRY_USERNAME: christyjacob4
 
