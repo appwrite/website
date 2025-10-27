@@ -15,15 +15,15 @@ The Appwrite Website has been built with the following frameworks:
 
 ## Development
 
-_If this is your first time setting up the repository, please run `pnpm install` inside the repo's directory and create a `.env` file based on `.env.example`._
+_If this is your first time setting up the repository, please run `bun install` inside the repo's directory and create a `.env` file based on `.env.example`._
 
 To get the repo up and running in your local environment, use the following command:
 
 ```bash
-pnpm run dev
+bun run dev
 ```
 
-> If you don't have `pnpm` available on your system, you can install it from the [official pnpm Installation website](https://pnpm.io/installation)
+> If you don't have `bun` available on your system, you can install it from the [official Bun Installation website](https://bun.com/docs/installation)
 
 ## Contributing
 
