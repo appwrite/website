@@ -14,7 +14,7 @@ Appwrite edges are strategically distributed locations designed to process reque
 {% /only_light %}
 
 {% info title="We're expanding!" %}
-Currently, Appwrite's edge network includes 5 locations. We are actively working to expand the number of edge locations globally. New locations will be strategically prioritized to ensure the best possible global coverage and performance for all users.
+Currently, Appwrite's edge network includes 6 locations. We are actively working to expand the number of edge locations globally. New locations will be strategically prioritized to ensure the best possible global coverage and performance for all users.
 {% /info %}
 
 # List {% #list %}
