@@ -164,9 +164,9 @@ Your site's dependencies should be managed by the package manager of each langua
 
 ---
 
-- {% only_dark %}{% icon_image src="/images/platforms/dark/tanstack.svg" alt="Tanstack Start logo" size="m" /%}{% /only_dark %}
-{% only_light %}{% icon_image src="/images/platforms/light/tanstack.svg" alt="Tanstack Start logo" size="m" /%}{% /only_light %}
-- **Tanstack Start**
+- {% only_dark %}{% icon_image src="/images/platforms/dark/tanstack.svg" alt="TanStack Start logo" size="m" /%}{% /only_dark %}
+{% only_light %}{% icon_image src="/images/platforms/light/tanstack.svg" alt="TanStack Start logo" size="m" /%}{% /only_light %}
+- **TanStack Start**
 - `npm`
 - `npm install`
 - `npm run build`
