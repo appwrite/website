@@ -148,4 +148,4 @@ Adjust time-based fields for lifecycle and scheduling logic.
 |------|---------|
 | `dateAddDays` | Adds a specified number of days to a date field |
 | `dateSubDays` | Subtracts a specified number of days from a date field |
-| `dateSetNo` | Sets a date field to a specific value |
+| `dateSetNow` | Sets a date field to a specific value |
