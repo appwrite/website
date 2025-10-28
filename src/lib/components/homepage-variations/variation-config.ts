@@ -43,7 +43,7 @@ export const variationConfigs: Record<VariationKey, HomepageVariationConfig> = {
         title: "The Developers' Cloud",
         subtitle:
             'Appwrite is an open-source, cloud platform tailored for developers who like to get stuff done. Use built-in backend infrastructure and web hosting, all from a single place.',
-        pageTitle: 'Appwrite - The Developers' Cloud',
+        pageTitle: "Appwrite - The Developers' Cloud",
         slug: '/all-in-one-cloud',
         ...baseConfig
     },
