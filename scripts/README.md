@@ -57,9 +57,12 @@ node scripts/analyze-content-guidelines.js
 SEVERITY_LEVEL=INFO npm run analyze:content
 SEVERITY_LEVEL=INFO node scripts/analyze-content-guidelines.js
 
-# Analyze specific files
-npm run analyze:content src/routes/docs/example/+page.markdoc
+# Analyze specific files (must use node directly)
 node scripts/analyze-content-guidelines.js src/routes/docs/example/+page.markdoc
+
+# Or use npm/bun with -- to pass arguments
+npm run analyze:content -- src/routes/docs/example/+page.markdoc
+bun run analyze:content -- src/routes/docs/example/+page.markdoc
 ```
 
 ### Run in CI/CD
