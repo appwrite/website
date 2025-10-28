@@ -39,7 +39,8 @@ This update means TanStack Start developers can finally go all-in on Appwrite Si
 Here’s what this unlocks:
 
 - **Full SSR support:** TanStack Start apps, now running natively on Appwrite Cloud.
-- **First SSR framework for Solid:** Since TanStack Start also supports Solid, Appwrite now extends SSR hosting beyond JavaScript.
+- **First SSR framework for Solid:** Since TanStack Start also supports Solid, Appwrite now extends SSR hosting to additional JavaScript ecosystems like Solid.
+or is that redundant
 - **All-in-one setup:** Host your frontend, backend, and database in one place, without third-party dependencies.
 - **Open-source foundation:** TanStack Start is built on open, familiar web technologies. Nothing proprietary or platform-specific. Next.js works best on Vercel, where all its features are deeply integrated, but running it elsewhere often adds complexity. TanStack Start takes a different approach. Its open architecture means your apps work the same everywhere
 
