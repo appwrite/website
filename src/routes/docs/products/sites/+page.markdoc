@@ -38,7 +38,7 @@ Try out one of our most popular framework quick-starts:
 {% cards_item href="/docs/products/sites/quick-start/vue" title="Vue" icon="web-icon-vue" %}
 {% /cards_item %}
 
-{% cards_item href="/docs/products/sites/quick-start/vue" title="TanStackStart" icon="web-icon-tanstack" %}
+{% cards_item href="/docs/products/sites/quick-start/tanstack-start" title="TanStackStart" icon="web-icon-tanstack" %}
 {% /cards_item %}
 
 {% /cards %}
