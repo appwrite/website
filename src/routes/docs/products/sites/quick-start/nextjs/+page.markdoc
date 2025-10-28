@@ -18,7 +18,7 @@ Open your terminal, and run the following command.
 npx create-next-app@latest
 ```
 
-Push this project to a [GitHub repo](https://github.com/new).
+Push this project to a [GitHub repository](https://github.com/new).
 {% /section %}
 
 {% section #step-2 step=2 title="Create Appwrite project" %}
@@ -45,7 +45,7 @@ Connect your GitHub account and select the repository you intend to deploy.
     - **Install command:** `npm install`
     - **Build command:** `npm run build`
     - **Output directory:** `./.next`
-4. Add any **environment variables** required by the site.
+4. Add any **environment variables** required by the site. This is not necessary if you're deploying the starter app.
 
 Click on the **Deploy** button.
 {% /section %}
