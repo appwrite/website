@@ -14,7 +14,7 @@ And now, Appwrite Sites brings full **Server-Side Rendering (SSR)** support for 
 - **SSR framework for Solid** — Since TanStack Start supports Solid, Appwrite Sites now enables SSR for Solid applications too.
 - **Native Cloud support** — Everything works out of the box on Appwrite Cloud, no additional setup required.
 
-It’s now available on the Appwrite Cloud.
+It’s now available on Appwrite Cloud.
 
 {% arrow_link href="/blog/post/tanstack-start-support-in-appwrite-sites" %}
 Read the announcement to learn more
