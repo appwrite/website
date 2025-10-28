@@ -1,24 +1,20 @@
-import type { PlaywrightTestConfig } from '@playwright/test';
+import { devices, defineConfig } from '@playwright/test';
 
-const config: PlaywrightTestConfig = {
+export default defineConfig({
     webServer: {
-        command: 'pnpm dev',
-        port: 5173,
-        env: {
-            PLAYWRIGHT_TESTS: '1'
-        }
+        command: 'bun run dev',
+        port: 5173
     },
     fullyParallel: true,
+    retries: 3,
     testDir: 'tests',
     testMatch: /(.+\.)?(test|spec)\.[jt]s/,
     projects: [
         {
-            name: 'Chrome',
+            name: 'chromium',
             use: {
-                channel: 'chrome'
+                ...devices['Desktop Chrome']
             }
         }
     ]
-};
-
-export default config;
+});
