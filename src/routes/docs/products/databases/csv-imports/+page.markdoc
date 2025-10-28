@@ -44,7 +44,7 @@ Different column types handle empty values differently:
 
 # Create and update timestamps {% #created-at-and-updated-at %}
 
-You can also optionally include `$createdAt` and `$updatedAt` columns to set custom timestamps for imported documents. If omitted, Appwrite sets these automatically during import.
+You can also optionally include `$createdAt` and `$updatedAt` columns to set custom timestamps for imported rows. If omitted, Appwrite sets these automatically during import.
 
 An example of a valid CSV file with `$createdAt` and `$updatedAt` timestamps:
 
