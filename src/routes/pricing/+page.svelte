@@ -190,7 +190,7 @@
                                         <div class="web-pricing-cards-content">
                                             <p>Dedicated resources per project:</p>
                                             <ul class="web-checked-list-circle">
-                                                <li><span>2TB API bandwidth</span></li>
+                                                <li><span>2TB bandwidth</span></li>
                                                 <li><span>150GB storage</span></li>
                                                 <li><span>3.5M executions</span></li>
                                                 <li><span>200K monthly active users</span></li>
