@@ -24,6 +24,9 @@ const ISSUES = {
 const SEVERITY_LEVEL = process.env.SEVERITY_LEVEL || 'WARNING';
 const SHOW_INFO = SEVERITY_LEVEL === 'INFO';
 
+// Check if specific files are provided as arguments
+const specificFiles = process.argv.slice(2).filter(arg => arg.endsWith('.markdoc'));
+
 class ContentAnalyzer {
     constructor() {
         this.violations = [];
@@ -316,14 +319,28 @@ class ContentAnalyzer {
 
         const rootDir = path.resolve(__dirname, '..');
         
-        for (const relativePath of PATHS_TO_ANALYZE) {
-            const fullPath = path.join(rootDir, relativePath);
-            const files = this.findMarkdocFiles(fullPath);
-            
-            console.log(`📁 Analyzing ${relativePath} (${files.length} files)...`);
-            
-            for (const file of files) {
-                this.analyzeFile(file);
+        // If specific files are provided, analyze only those
+        if (specificFiles.length > 0) {
+            console.log(`📄 Analyzing ${specificFiles.length} specific file(s)...\n`);
+            for (const file of specificFiles) {
+                const fullPath = path.isAbsolute(file) ? file : path.join(process.cwd(), file);
+                if (fs.existsSync(fullPath)) {
+                    this.analyzeFile(fullPath);
+                } else {
+                    console.warn(`⚠️  File not found: ${file}`);
+                }
+            }
+        } else {
+            // Analyze all configured paths
+            for (const relativePath of PATHS_TO_ANALYZE) {
+                const fullPath = path.join(rootDir, relativePath);
+                const files = this.findMarkdocFiles(fullPath);
+                
+                console.log(`📁 Analyzing ${relativePath} (${files.length} files)...`);
+                
+                for (const file of files) {
+                    this.analyzeFile(file);
+                }
             }
         }
 
@@ -408,6 +425,45 @@ class ContentAnalyzer {
             process.exit(0);
         }
     }
+}
+
+// Show help message
+function showHelp() {
+    console.log(`
+Content Guidelines Analyzer
+===========================
+
+Analyzes markdoc files against STYLE.md and CONTENT.md guidelines.
+
+Usage:
+  node scripts/analyze-content-guidelines.js [options] [files...]
+
+Options:
+  --help              Show this help message
+  
+Environment Variables:
+  SEVERITY_LEVEL      Set to INFO to show all suggestions (default: WARNING)
+
+Examples:
+  # Analyze all files
+  node scripts/analyze-content-guidelines.js
+  
+  # Analyze specific files
+  node scripts/analyze-content-guidelines.js src/routes/docs/example/+page.markdoc
+  
+  # Show all suggestions
+  SEVERITY_LEVEL=INFO node scripts/analyze-content-guidelines.js
+
+Exit Codes:
+  0 - Success (no errors found)
+  1 - Errors found (violations detected)
+    `);
+    process.exit(0);
+}
+
+// Check for help flag
+if (process.argv.includes('--help') || process.argv.includes('-h')) {
+    showHelp();
 }
 
 // Run the analyzer
