@@ -27,7 +27,7 @@ Appwrite is currently available in the following list of regions:
 | Bangalore           | BLR    | `coming soon`                           | TBD         |
 | Amsterdam           | AMS    | `coming soon`                           | TBD         |
 | London              | LON    | `coming soon`                           | TBD         |
-| Toronto             | TOR    | `coming soon`                           | TBD         |
+| Toronto             | TOR    | `https://tor.cloud.appwrite.io/v1`      | Available       |
 
 Regions are designed to be entirely independent unless explicitly connected, which provides control over data replication and compliance. We're constantly working to add new regions to our network to provide developers with more options for deploying their applications.
 

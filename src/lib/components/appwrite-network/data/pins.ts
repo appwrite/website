@@ -681,7 +681,7 @@ export const pins = {
             lng: -79.38,
             city: 'Toronto',
             code: 'TOR',
-            date: 'Planned'
+            available: true
         }
     ]
 };

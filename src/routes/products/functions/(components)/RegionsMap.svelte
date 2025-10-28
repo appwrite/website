@@ -95,6 +95,13 @@
             city: 'Singapore',
             code: 'SGP',
             available: true
+        },
+        {
+            lat: 43.6532,
+            lng: -79.3832,
+            city: 'Toronto',
+            code: 'TOR',
+            available: true
         }
     ]);
 

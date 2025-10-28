@@ -31,7 +31,7 @@ The Appwrite Cloud beta journey began with a single region in Frankfurt, which a
 | Bangalore (`BLR`)     | In plans              | Yes    | Yes  | TBD           |
 | Amsterdam (`AMS`)     | In plans              | Yes    | Yes  | TBD           |
 | London (`LON`)        | In plans              | Yes    | Yes  | TBD           |
-| Toronto (`TOR`)       | In plans              | Yes    | Yes  | TBD           |
+| Toronto (`TOR`)       | Ready and operational | Yes    | Yes  | Available Now |
 
 
 # Addressing the latency problem
