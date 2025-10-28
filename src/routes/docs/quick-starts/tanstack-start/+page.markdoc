@@ -76,7 +76,7 @@ export type { Models };
 {% section #step-5 step=5 title="Create a login page" %}
 Create or update `src/routes/index.tsx` with the following code.
 
-```html
+```tsx
 import { useState } from 'react';
 import { createFileRoute } from '@tanstack/react-router';
 import { account, ID, type Models } from '../utils/appwrite';
