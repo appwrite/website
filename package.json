@@ -4,6 +4,7 @@
     "private": true,
     "type": "module",
     "scripts": {
+        "analyze:content": "node ./scripts/analyze-content-guidelines.js",
         "build": "bun ./scripts/build.js",
         "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
         "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",

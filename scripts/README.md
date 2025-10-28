@@ -45,11 +45,21 @@ The analyzer validates the following aspects of content:
 ### Run locally
 
 ```bash
-# Run with default severity (WARNING level - shows errors and warnings)
+# Using npm/bun script (recommended)
+npm run analyze:content
+# or
+bun run analyze:content
+
+# Run directly with node
 node scripts/analyze-content-guidelines.js
 
 # Run with INFO level (shows all suggestions)
+SEVERITY_LEVEL=INFO npm run analyze:content
 SEVERITY_LEVEL=INFO node scripts/analyze-content-guidelines.js
+
+# Analyze specific files
+npm run analyze:content src/routes/docs/example/+page.markdoc
+node scripts/analyze-content-guidelines.js src/routes/docs/example/+page.markdoc
 ```
 
 ### Run in CI/CD
