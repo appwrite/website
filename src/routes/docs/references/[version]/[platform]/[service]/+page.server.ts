@@ -1,5 +1,5 @@
 import { Platform, Service, type ServiceValue, versions } from '$lib/utils/references';
-import { getService } from '$lib/utils/specs';
+import { getService } from './specs';
 import { error } from '@sveltejs/kit';
 import type { EntryGenerator, PageServerLoad } from './$types';
 

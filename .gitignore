@@ -22,7 +22,6 @@ terraform/**/.env
 terraform/**/**/*.tfstate*
 /.cache
 /test-results
-.pnpm/
 
 # Sentry Config File
 .env.sentry-build-plugin
