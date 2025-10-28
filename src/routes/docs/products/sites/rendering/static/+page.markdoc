@@ -58,6 +58,10 @@ Ensure you don't set `adapter` in the `astro.config.mjs` file.
 Set `ssr: false` in `remix` plugin in the `vite.config.ts` file.
 {% /tabsitem %}
 
+{% tabsitem #tanstack-start title="Tanstack Start" %}
+Add [`prerender` option](https://tanstack.com/start/latest/docs/framework/react/guide/static-prerendering#prerendering) to the `tanstackStart` configuration in the `vite.config.ts` file.
+{% /tabsitem %}
+
 {% /tabs %}
 
 # Running SPAs on Appwrite Sites

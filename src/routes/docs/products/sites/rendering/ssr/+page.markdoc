@@ -60,6 +60,10 @@ Use `@astrojs/node` adapter in the `astro.config.mjs` file.
 Ensure the `entry.server.tsx` file uses `@remix-run/node` package.
 {% /tabsitem %}
 
+{% tabsitem #tanstack-start title="Tanstack Start" %}
+No additional configuration is needed as SSR is enabled by default.
+{% /tabsitem %}
+
 {% /tabs %}
 
 # Appwrite-specific environment variables
