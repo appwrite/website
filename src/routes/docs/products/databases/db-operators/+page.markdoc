@@ -80,11 +80,6 @@ Transaction result = await databases.createOperations(
 ```
 {% /multicode %}
 
-{% info title="Why add a transaction ID?" %}
-
-Including a transaction ID allows you to group multiple operations into a single atomic transaction. This means either all operations succeed, or none are applied, ensuring data consistency.
-
-{% /info %}
 
 # When to use database operators {% #when-to-use %}
 
