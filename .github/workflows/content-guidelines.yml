@@ -1,0 +1,43 @@
+name: Content Guidelines Analysis
+
+on:
+    pull_request:
+        branches: ['**']
+        paths:
+            - 'src/routes/docs/**/*.markdoc'
+            - 'src/routes/integrations/**/*.markdoc'
+            - 'src/routes/changelog/**/*.markdoc'
+            - 'STYLE.md'
+            - 'CONTENT.md'
+            - 'scripts/analyze-content-guidelines.js'
+            - '.github/workflows/content-guidelines.yml'
+
+jobs:
+    analyze-content:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v4
+              with:
+                  ref: ${{ github.event.pull_request.head.sha }}
+
+            - name: Setup Bun
+              uses: oven-sh/setup-bun@v2
+              with:
+                  bun-version: 1.3
+
+            - name: Run content guidelines analysis
+              run: node scripts/analyze-content-guidelines.js
+
+            - name: Comment on PR (if violations found)
+              if: failure()
+              uses: actions/github-script@v7
+              with:
+                  github-token: ${{ secrets.GITHUB_TOKEN }}
+                  script: |
+                      github.rest.issues.createComment({
+                        issue_number: context.issue.number,
+                        owner: context.repo.owner,
+                        repo: context.repo.repo,
+                        body: '## ⚠️ Content Guidelines Violations Detected\n\nThe content analysis found violations of the [STYLE.md](https://github.com/appwrite/website/blob/main/STYLE.md) and [CONTENT.md](https://github.com/appwrite/website/blob/main/CONTENT.md) guidelines.\n\nPlease review the workflow logs for details and fix the issues.'
+                      })
