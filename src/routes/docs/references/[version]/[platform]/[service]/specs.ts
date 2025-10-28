@@ -1,6 +1,6 @@
 import { error } from '@sveltejs/kit';
 import { OpenAPIV3 } from 'openapi-types';
-import { Platform, type ServiceValue } from './references';
+import { Platform, type ServiceValue } from '$lib/utils/references';
 
 export type SDKMethod = {
     'rate-limit': number;
@@ -91,52 +91,55 @@ type ModelTypeValue = (typeof ModelType)[ModelTypeType];
 function getExamples(version: string) {
     switch (version) {
         case '0.15.x':
-            return import.meta.glob('$appwrite/docs/examples/0.15.x/**/*.md', {
-                query: '?raw',
-                import: 'default'
-            });
+            return import.meta.glob(
+                '/node_modules/@appwrite.io/repo/docs/examples/0.15.x/**/*.md',
+                {
+                    query: '?raw',
+                    import: 'default'
+                }
+            );
         case '1.0.x':
-            return import.meta.glob('$appwrite/docs/examples/1.0.x/**/*.md', {
+            return import.meta.glob('/node_modules/@appwrite.io/repo/docs/examples/1.0.x/**/*.md', {
                 query: '?raw',
                 import: 'default'
             });
         case '1.1.x':
-            return import.meta.glob('$appwrite/docs/examples/1.1.x/**/*.md', {
+            return import.meta.glob('/node_modules/@appwrite.io/repo/docs/examples/1.1.x/**/*.md', {
                 query: '?raw',
                 import: 'default'
             });
         case '1.2.x':
-            return import.meta.glob('$appwrite/docs/examples/1.2.x/**/*.md', {
+            return import.meta.glob('/node_modules/@appwrite.io/repo/docs/examples/1.2.x/**/*.md', {
                 query: '?raw',
                 import: 'default'
             });
         case '1.3.x':
-            return import.meta.glob('$appwrite/docs/examples/1.3.x/**/*.md', {
+            return import.meta.glob('/node_modules/@appwrite.io/repo/docs/examples/1.3.x/**/*.md', {
                 query: '?raw',
                 import: 'default'
             });
         case '1.4.x':
-            return import.meta.glob('$appwrite/docs/examples/1.4.x/**/*.md', {
+            return import.meta.glob('/node_modules/@appwrite.io/repo/docs/examples/1.4.x/**/*.md', {
                 query: '?raw',
                 import: 'default'
             });
         case '1.5.x':
-            return import.meta.glob('$appwrite/docs/examples/1.5.x/**/*.md', {
+            return import.meta.glob('/node_modules/@appwrite.io/repo/docs/examples/1.5.x/**/*.md', {
                 query: '?raw',
                 import: 'default'
             });
         case '1.6.x':
-            return import.meta.glob('$appwrite/docs/examples/1.6.x/**/*.md', {
+            return import.meta.glob('/node_modules/@appwrite.io/repo/docs/examples/1.6.x/**/*.md', {
                 query: '?raw',
                 import: 'default'
             });
         case '1.7.x':
-            return import.meta.glob('$appwrite/docs/examples/1.7.x/**/*.md', {
+            return import.meta.glob('/node_modules/@appwrite.io/repo/docs/examples/1.7.x/**/*.md', {
                 query: '?raw',
                 import: 'default'
             });
         case '1.8.x':
-            return import.meta.glob('$appwrite/docs/examples/1.8.x/**/*.md', {
+            return import.meta.glob('/node_modules/@appwrite.io/repo/docs/examples/1.8.x/**/*.md', {
                 query: '?raw',
                 import: 'default'
             });
@@ -205,8 +208,6 @@ function* processAdditionalMethods(
     const additionalMethods = appwriteMethod['x-appwrite'].methods!;
 
     for (const additionalMethod of additionalMethods) {
-        if (additionalMethod.deprecated) continue;
-
         yield {
             method: httpMethod,
             value: {
@@ -363,9 +364,9 @@ export function getSchema(id: string, api: OpenAPIV3.Document): OpenAPIV3.Schema
     error(404, { message: `Not found` });
 }
 
-const specs = import.meta.glob(
-    '$appwrite/app/config/specs/open-api3*-(client|server|console).json'
-);
+const specs = import.meta.glob('/node_modules/@appwrite.io/repo/app/config/specs/open-api3*.json', {
+    exhaustive: true
+});
 
 export async function getApi(version: string, platform: string): Promise<OpenAPIV3.Document> {
     const isClient = platform.startsWith('client-');
@@ -377,16 +378,13 @@ export async function getApi(version: string, platform: string): Promise<OpenAPI
     return specs[target]() as unknown as OpenAPIV3.Document;
 }
 
-const descriptions = import.meta.glob(
-    '/src/routes/docs/references/[version]/[platform]/[service]/descriptions/*.md',
-    {
-        query: '?raw',
-        import: 'default'
-    }
-);
+const descriptions = import.meta.glob('./descriptions/*.md', {
+    query: '?raw',
+    import: 'default'
+});
 
 export async function getDescription(service: string) {
-    const target = `/src/routes/docs/references/[version]/[platform]/[service]/descriptions/${service}.md`;
+    const target = `./descriptions/${service}.md`;
 
     if (!(target in descriptions)) {
         throw new Error('Missing service description');
@@ -553,13 +551,13 @@ export const getExample = (
     return {};
 };
 
-function transformForGraphQL(obj: any): any {
+function transformForGraphQL(obj: object): object {
     if (Array.isArray(obj)) {
         return obj.map(transformForGraphQL);
     }
 
     if (obj !== null && typeof obj === 'object') {
-        const transformed: any = {};
+        const transformed: object = {};
         for (const [key, value] of Object.entries(obj)) {
             const newKey = key.replace('$', '_');
             transformed[newKey] = transformForGraphQL(value);
