@@ -74,4 +74,4 @@ COPY --from=build /app/build/ build
 COPY --from=build /app/server/ server
 RUN bun install --frozen-lockfile --prod
 
-CMD [ "bun", "server/main.js"]
+CMD ["bun", "server/main.js"]
