@@ -35,7 +35,7 @@ For example, if you fetch a table of 50 rows with a single API call, this counts
 - **Included**: 500,000 read operations and 250,000 write operations per month.
 - **Overage**: Not available (operations are throttled when limits are reached).
 
-### Pro and Scale Plans
+### Pro Plan
 - **Included**: 1,750,000 read operations and 750,000 write operations per month.
 - **Overage**: $0.060 per 100,000 additional read operations and $0.10 per 100,000 additional write operations.
 
