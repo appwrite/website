@@ -6,7 +6,6 @@ import { type GithubUser } from '$routes/(init)/init/(utils)/auth';
 import { createInitSessionClient } from '$routes/(init)/init/(utils)/appwrite';
 import type { AppwriteUser } from '$lib/utils/console';
 
-const PLAYWRIGHT_TESTS = process.env.PLAYWRIGHT_TESTS ?? undefined;
 const redirectMap = new Map(redirects.map(({ link, redirect }) => [link, redirect]));
 
 const redirecter: Handle = async ({ event, resolve }) => {
@@ -16,6 +15,21 @@ const redirecter: Handle = async ({ event, resolve }) => {
             status: 308,
             headers: {
                 location: redirectMap.get(currentPath) ?? ''
+            }
+        });
+    }
+
+    return resolve(event);
+};
+
+const wwwRedirecter: Handle = async ({ event, resolve }) => {
+    if (event.url.host.startsWith('www.')) {
+        const location = new URL(event.url);
+        location.host = location.host.replace(/^www\./, '');
+        return new Response(null, {
+            status: 308,
+            headers: {
+                location: location.href
             }
         });
     }
@@ -125,8 +139,6 @@ const securityheaders: Handle = async ({ event, resolve }) => {
 };
 
 const initSession: Handle = async ({ event, resolve }) => {
-    if (PLAYWRIGHT_TESTS) return resolve(event);
-
     const session = await createInitSessionClient(event.cookies);
 
     const getGithubUser = async () => {
@@ -170,7 +182,7 @@ const initSession: Handle = async ({ event, resolve }) => {
         const appwriteUser = await session?.account
             .get()
             .then((res) => res)
-            .catch((e) => null);
+            .catch(() => null);
 
         return appwriteUser || null;
     };
@@ -186,5 +198,11 @@ const initSession: Handle = async ({ event, resolve }) => {
     return resolve(event);
 };
 
-export const handle = sequence(Sentry.sentryHandle(), redirecter, securityheaders, initSession);
+export const handle = sequence(
+    Sentry.sentryHandle(),
+    redirecter,
+    wwwRedirecter,
+    securityheaders,
+    initSession
+);
 export const handleError = Sentry.handleErrorWithSentry();

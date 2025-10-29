@@ -8,6 +8,7 @@ date: 2025-08-08
 author: eldad-fux
 callToAction: true
 category: announcement
+lastUpdated: 2025-10-29
 ---
 
 We are updating Appwrite’s pricing as part of Appwrite Cloud’s move from beta to General Availability. For an extended period, Appwrite Cloud beta remained free for all users. As of January 2024, we introduced pricing for beta. Today, we are introducing a new base price and an updated pricing model that aligns with developer needs and industry standards. This will include pricing for Appwrite Sites and Messaging.
@@ -97,7 +98,9 @@ Below you will find an overview of what is included for Appwrite Sites in the ba
 
 | **Item** | **Free** | **Pro** | **Scale** |
 | --- | --- | --- | --- |
-| **Sites** | 1 per project | Unlimited | Unlimited |
+| **Sites** | Unlimited* | Unlimited | Unlimited |
+
+* Per the 29th of October 2025. [See announcement Appwrite Sites Free plan.](/blog/post/unlimited-appwrite-sites-free-plan)
 
 Learn more about Appwrite’s resources on the [pricing page](/pricing).
 
