@@ -8,8 +8,8 @@ date: 2025-08-08
 author: eldad-fux
 callToAction: true
 category: announcement
+lastUpdated: 2025-10-29
 ---
-Updated: 2025-10-29
 
 We are updating Appwrite’s pricing as part of Appwrite Cloud’s move from beta to General Availability. For an extended period, Appwrite Cloud beta remained free for all users. As of January 2024, we introduced pricing for beta. Today, we are introducing a new base price and an updated pricing model that aligns with developer needs and industry standards. This will include pricing for Appwrite Sites and Messaging.
 
