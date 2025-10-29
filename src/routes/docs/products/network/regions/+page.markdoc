@@ -33,7 +33,7 @@ Regions are designed to be entirely independent unless explicitly connected, whi
 
 # Choosing a region {% #choosing-a-region %}
 
-Selecting a region impacts both your application’s performance and its compliance with local regulations. Regions are isolated from each other, so your data and services remain contained within the selected location. When choosing a region, consider proximity to your primary user base to reduce latency and improve response times. Additionally, ensure the region aligns with legal requirements for data residency and sovereignty specific to your application's domain.
+Selecting a region impacts both your application’s performance and its compliance with local regulations. Regions are isolated, so your data and services remain contained within the selected location. When choosing a region, consider proximity to your primary user base to reduce latency and improve response times. Additionally, ensure the region aligns with legal requirements for data residency and sovereignty specific to your application's domain.
 
 {% info title="Region vs Edge" %}
 Use a region when compute needs to happen close to your data, such as frequent access to your Appwrite database or storage. Use an edge when compute needs to happen closer to your users, like serving static content, performing local computations, or handling data processing at the edge.
