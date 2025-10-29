@@ -13,7 +13,7 @@ When we launched Appwrite Sites in early access, our goal was clear: make deploy
 
 But before opening things up, we needed to ensure that the platform was stable, fast, and reliable for everyone. That’s why, during the initial rollout, we limited Sites to one per project. This gave us the room to validate performance, harden our infrastructure, and refine the developer experience.
 
-Now that Appwrite Sites has matured, it’s time to lift that constraint.  On the free plan, you can deploy unlimited sites per project.
+Now that Appwrite Sites has matured, it's time to lift that constraint. On the free plan, you can deploy unlimited sites per project.
 
 # Build, test, and deploy without limits
 
