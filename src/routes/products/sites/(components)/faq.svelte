@@ -20,7 +20,7 @@
         },
         {
             question: 'What does Appwrite Sites cost?',
-            answer: 'You can use Appwrite Sites for free on the Free plan, which will include unlimited sites per project. If you need more resources, you can upgrade to a Pro plan. This pricing starts at $25 a month and includes unlimited sites. Learn more about Appwrite\'s pricing plans on the <a href="/pricing" class="underline">pricing page</a>.'
+            answer: 'You can use Appwrite Sites for free on the Free plan, which includes unlimited sites per project. If you need more resources, you can upgrade to a Pro plan. This pricing starts at $25 a month and includes unlimited sites. Learn more about Appwrite\'s pricing plans on the <a href="/pricing" class="underline">pricing page</a>.'
         },
         {
             question: 'Does Appwrite have an Enterprise plan for Appwrite Sites?',
