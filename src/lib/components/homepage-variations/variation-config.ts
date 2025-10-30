@@ -40,10 +40,10 @@ const baseConfig: Partial<HomepageVariationConfig> = {
 // Predefined configurations for common variations
 export const variationConfigs: Record<VariationKey, HomepageVariationConfig> = {
     'all-in-one-cloud': {
-        title: 'The Developer Cloud',
+        title: "The Developers' Cloud",
         subtitle:
             'Appwrite is an open-source, cloud platform tailored for developers who like to get stuff done. Use built-in backend infrastructure and web hosting, all from a single place.',
-        pageTitle: 'Appwrite - The Developer Cloud',
+        pageTitle: "Appwrite - The Developers' Cloud",
         slug: '/all-in-one-cloud',
         ...baseConfig
     },

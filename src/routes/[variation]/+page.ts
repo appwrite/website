@@ -11,7 +11,7 @@ export const load: PageLoad = ({ params }) => {
     const config = getVariationConfig(key);
 
     if (!config) {
-        throw error(404, 'Page not found');
+        throw error(404, 'Not Found');
     }
 
     return { config };

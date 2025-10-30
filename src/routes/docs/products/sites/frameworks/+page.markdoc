@@ -62,6 +62,12 @@ This means you can focus on building your application while Appwrite handles the
 
 ---
 
+- {% only_dark %}{% icon_image src="/images/platforms/dark/tanstack.svg" alt="TanStack Start logo" size="m" /%}{% /only_dark %}
+{% only_light %}{% icon_image src="/images/platforms/light/tanstack.svg" alt="TanStack Start logo" size="m" /%}{% /only_light %}
+- [**TanStack Start**](/docs/products/sites/quick-start/tanstack-start)
+- `SSR` `Static`
+
+---
 - {% icon icon="flutter" size="m" /%}
 - [**Flutter Web**](/docs/products/sites/quick-start/flutter)
 - `Static`

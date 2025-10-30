@@ -22,6 +22,21 @@ const redirecter: Handle = async ({ event, resolve }) => {
     return resolve(event);
 };
 
+const wwwRedirecter: Handle = async ({ event, resolve }) => {
+    if (event.url.host.startsWith('www.')) {
+        const location = new URL(event.url);
+        location.host = location.host.replace(/^www\./, '');
+        return new Response(null, {
+            status: 308,
+            headers: {
+                location: location.href
+            }
+        });
+    }
+
+    return resolve(event);
+};
+
 const securityheaders: Handle = async ({ event, resolve }) => {
     const nonce = Buffer.from(crypto.randomUUID()).toString('base64');
     event.locals.nonce = nonce;
@@ -167,7 +182,7 @@ const initSession: Handle = async ({ event, resolve }) => {
         const appwriteUser = await session?.account
             .get()
             .then((res) => res)
-            .catch((e) => null);
+            .catch(() => null);
 
         return appwriteUser || null;
     };
@@ -183,5 +198,11 @@ const initSession: Handle = async ({ event, resolve }) => {
     return resolve(event);
 };
 
-export const handle = sequence(Sentry.sentryHandle(), redirecter, securityheaders, initSession);
+export const handle = sequence(
+    Sentry.sentryHandle(),
+    redirecter,
+    wwwRedirecter,
+    securityheaders,
+    initSession
+);
 export const handleError = Sentry.handleErrorWithSentry();
