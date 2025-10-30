@@ -94,7 +94,7 @@ This keeps payloads small, avoids race conditions, and reduces round-trips.
 
 # Operator categories {% #operators %}
 
-The following operator types are available in v1. Choose the operator that matches your field type and intent.
+The following operators are currently available to use, based on field type and intent.
 
 ## Numeric operators {% #numeric %}
 
