@@ -15,7 +15,7 @@ Postman has been a staple in modern API development for years. For many teams, i
 
 But as Postman has grown, so has its weight, not just in megabytes, but in friction. Forced account creation, slow performance, telemetry, and cloud lock-in have pushed many developers to ask a simple question:
 
-> “Do we still need Postman for this?” > 
+> “Do we still need Postman for this?” 
 
 The answer, increasingly, is no.
 
@@ -47,7 +47,7 @@ The key to HTTPie’s appeal is that it doesn’t force you to choose between sp
 
 This makes HTTPie ideal for developers who don’t want another full-blown Electron app, just a simple way to send requests and move on.
 
-# Hoppscotch -APIs in the browser
+# Hoppscotch - APIs in the browser
 
 [Hoppscotch](https://hoppscotch.io/), formerly Postwoman (at least until Postman didn't like that), takes a different approach. Instead of installing a desktop client at all, it runs entirely in the browser. That alone makes it perfect for quick API exploration or lightweight testing sessions, especially if you’re jumping between projects or onboarding new contributors.
 
@@ -134,7 +134,7 @@ For example:
 | HTTPie | Yes | Yes | No | No |
 | Hoppscotch | Yes | Yes | No | Yes |
 | `.http` files | Yes | Yes | Yes | Yes |
-| Hurl | Yes | No | No | No |
+| Hurl | Yes | Yes | No | No |
 | Thunder Client | Yes | Yes | Yes | Yes |
 | Insomnia | Yes | Yes | Yes | Yes |
 | Postman | Yes | Yes | Yes | Yes |
