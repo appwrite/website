@@ -49,6 +49,35 @@ Update time-based fields for lifecycle events or scheduling logic.
 
 `dateAddDays`, `dateSubDays`, `dateSetNow`
 
+# Example
+
+Here's an example of how you can append a value to an array field.
+
+```js
+import { Client, Databases } from "appwrite";
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<YOUR_PROJECT_ID>');
+
+const databases = new Databases(client);
+
+const result = await databases.createOperations({
+    transactionId: '<TRANSACTION_ID>',
+    operations: [
+	    {
+	        "action": "arrayAppend",
+	        "databaseId": "<DATABASE_ID>",
+	        "tableId": "<TABLE_ID>",
+	        "rowId": "<ROW_ID>",
+	        "data": {
+	            "letters": ['a', 'b', 'c']
+	        } // This field is optional, depending on the operator
+	    }
+	]
+});
+```
+
 # Key things to know
 
 Here are some important elements you need to know before you go ahead and start using the DB operators
