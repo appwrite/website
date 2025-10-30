@@ -74,7 +74,7 @@ You don’t have to sprinkle `useMemo` or `useCallback` everywhere. The compiler
 
 Routing has seen a major under-the-hood upgrade.
 
-Prefetching is now more efficient thanks to layout deduplication, shared layouts download once, even if you prefetch dozens of links. And incremental prefetching ensures that only what’s missing gets fetched instead of entire pages.
+Prefetching is now more efficient thanks to layout deduplication. Shared layouts download once, even if you prefetch dozens of links. And incremental prefetching ensures that only what's missing gets fetched instead of entire pages.
 
 It even cancels prefetch requests when links leave the viewport. You won’t have to change your code to benefit. Everything just feels snappier.
 
