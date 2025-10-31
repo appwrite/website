@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Deploy a TanStack Start app to Appwrite Sites
-description: Learn how to deploy a Next.js app to Appwrite Sites.
+description: Learn how to deploy a TanStack Start app to Appwrite Sites.
 date: 2025-10-31
 cover: /images/blog/deploy-tanstack-start-app-to-appwrite-sites/cover.png
 timeToRead: 5
