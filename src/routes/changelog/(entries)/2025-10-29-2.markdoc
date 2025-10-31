@@ -11,6 +11,6 @@ But before opening things up, we needed to ensure that the platform was stable, 
 
 Now that Appwrite Sites has matured, it’s time to lift that constraint.  On the free plan, you can deploy unlimited sites per project.
 
-{% arrow_link href="/blog/post/unlimited-appwrite-sites" %}
+{% arrow_link href="/blog/post/unlimited-appwrite-sites-free-plan" %}
 Read the announcement
 {% /arrow_link %}
