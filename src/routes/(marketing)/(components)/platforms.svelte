@@ -23,6 +23,8 @@
     import Vue from '../(assets)/icons/vue.svg';
     import Angular from '../(assets)/icons/angular.svg';
     import ReactNative from '../(assets)/icons/react-native.svg';
+    import TanStack from '../(assets)/icons/tanstack.svg';
+    import TanStackLight from '../(assets)/icons/light/tanstack.svg';
     import GradientText from '$lib/components/fancy/gradient-text.svelte';
     import Noise from '$lib/components/fancy/noise.svelte';
     import { Tooltip } from 'bits-ui';
@@ -36,6 +38,13 @@
         { name: 'Vue', dark: Vue, href: '/docs/quick-starts/vue', primary: '#4FC08D' },
         { name: 'Angular', dark: Angular, href: '/docs/quick-starts/angular', primary: '#DD0031' },
         { name: 'Svelte', dark: Svelte, href: '/docs/quick-starts/sveltekit', primary: '#FF3E00' },
+        {
+            name: 'TanStack Start',
+            dark: TanStack,
+            light: TanStackLight,
+            href: '/docs/quick-starts/tanstack-start',
+            primary: '#fff'
+        },
 
         // Mobile Frameworks
         {
