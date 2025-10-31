@@ -3,6 +3,7 @@ layout: post
 title: "Appwrite 1.8.0: The most powerful self-hosted release yet"
 description: Appwrite 1.8.0 brings powerful database features, new runtimes, and key performance updates to make your self-hosted setup faster, safer, and more scalable.
 cover: /images/blog/appwrite-1-8-0-self-hosted-release/cover.png
+date: 2025-10-31
 timeToRead: 5
 author: steven
 category: announcement
@@ -11,25 +12,25 @@ After weeks of testing and multiple release candidates, **Appwrite 1.8.0** for s
 
 This release brings major improvements across runtime support, performance, and data capabilities, making Appwrite even more powerful for teams running their own infrastructure.
 
-Appwrite has always been built for developers who want complete control. With this release, we’re expanding what’s possible in your environment.
+Appwrite has always been built for developers who want complete control. With this release, we're expanding what's possible in your environment.
 
-Here’s everything we’ve released in **Appwrite 1.8.0**, our most powerful self-hosted version yet.
+Here's everything we've released in **Appwrite 1.8.0**, our most powerful self-hosted version yet.
 
 # Powerful Database features
 
-Over the past two months, we’ve been rolling out a series of major database upgrades, all focused on giving you more power, flexibility, and reliability when managing data at scale.
+Over the past two months, we've been rolling out a series of major database upgrades, all focused on giving you more power, flexibility, and reliability when managing data at scale.
 
 ## Introducing TablesDB
 
 Meet **TablesDB.** A major step forward in how Appwrite handles structured data. It introduces familiar **relational concepts** like tables, columns, and rows, along with a new **TablesDB API** that aligns with standard CRUD patterns such as `createTable`, `createRow`, and `createColumn`.
 
-Built for developers who prefer a more structured model, TablesDB offers the clarity of relational databases while remaining fully compatible with Appwrite’s existing collections and documents. It’s ideal for analytics, structured datasets, and complex relationships, giving you more control and flexibility when modelling data at scale.
+Built for developers who prefer a more structured model, TablesDB offers the clarity of relational databases while remaining fully compatible with Appwrite's existing collections and documents. It's ideal for analytics, structured datasets, and complex relationships, giving you more control and flexibility when modelling data at scale.
 
 [Learn more about TablesDB](/blog/post/announcing-appwrite-databases-new-ui)
 
 ## Transactions API
 
-Appwrite now supports Database Transactions. With this feature, you can stage multiple operations across one or more tables, and commit them only when you’re ready. 
+Appwrite now supports Database Transactions. With this feature, you can stage multiple operations across one or more tables, and commit them only when you're ready. 
 
 - If every operation checks out, Appwrite commits them in one atomic action.
 - If anything fails, whether due to permissions, conflicts, validations, or other reasons, Appwrite automatically rolls everything back.
@@ -38,7 +39,7 @@ Appwrite now supports Database Transactions. With this feature, you can stage mu
 
 ## API for spatial columns
 
-If you’re building maps, logistics, travel, mobility, real estate, or safety and compliance features, this unlocks the geo foundation you’ve been waiting for. 
+If you're building maps, logistics, travel, mobility, real estate, or safety and compliance features, this unlocks the geo foundation you've been waiting for. 
 
 With this new API, you can store points, lines, and polygons directly in Appwrite Database, index them efficiently, and query how they interact with each other with first-class geo primitives and queries.
 
@@ -71,7 +72,7 @@ You no longer need to write separate logic to check for existence or handle 404 
 
 Previously, maintaining consistent insertion order and generating numeric identifiers required either manual increments, complex logic, or dependence on timestamps, which weren't always accurate or reliable. 
 
-Appwrite’s new Auto-increment support feature solves these issues seamlessly, providing a built-in numeric identifier that increases predictably with every new row added.
+Appwrite's new Auto-increment support feature solves these issues seamlessly, providing a built-in numeric identifier that increases predictably with every new row added.
 
 [Learn more about Auto increment support](/blog/post/announcing-auto-increment-support)
 
@@ -85,7 +86,7 @@ With Opt-in relationship loading, rows now only return their immediate fields by
 
 ## New set of queries
 
-Appwrite Databases now have smarter queries. We’ve added two sets of new queries that let you handle time-based filtering and exclusions directly in your queries.
+Appwrite Databases now have smarter queries. We've added two sets of new queries that let you handle time-based filtering and exclusions directly in your queries.
 
 [Time Helper Queries](/docs/products/databases/queries#time-helpers)
 
@@ -107,7 +108,7 @@ With **Atomic numeric operations,** you simply send a delta (like `+1` or `
 
 ## Real-time support for Bulk API
 
-The **Bulk API** now supports **real-time events**, ensuring all connected clients stay in sync during multi-record operations. It’s perfect for collaborative dashboards, analytics tools, and live data systems.
+The **Bulk API** now supports **real-time events**, ensuring all connected clients stay in sync during multi-record operations. It's perfect for collaborative dashboards, analytics tools, and live data systems.
 
 # Runtimes & SDK updates
 
@@ -127,7 +128,7 @@ SDKs across platforms have been updated for greater parity and more predictable 
 
 ## Native Sign in with Apple
 
-Add **“Sign in with Apple”** to your apps in minutes using the new built-in function template. It integrates seamlessly with Appwrite’s Auth and session management to simplify native Apple authentication across platforms.
+Add **“Sign in with Apple”** to your apps in minutes using the new built-in function template. It integrates seamlessly with Appwrite's Auth and session management to simplify native Apple authentication across platforms.
 
 ## React Native scheme handling
 
@@ -141,7 +142,7 @@ Appwrite 1.8.0 also introduces **support for web extensions**, allowing them to 
 
 ## Improved email delivery
 
-Appwrite’s SMTP system now uses **BCC-only emails**, improving privacy and deliverability — especially for large user bases or bulk notifications.
+Appwrite's SMTP system now uses **BCC-only emails**, improving privacy and deliverability — especially for large user bases or bulk notifications.
 
 ## Core optimizations
 
