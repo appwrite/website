@@ -185,27 +185,30 @@
 .web-icon-system:before {
     content: '\ea37';
 }
-.web-icon-textmagic:before {
+.web-icon-tanstack:before {
     content: '\ea38';
 }
-.web-icon-ticket:before {
+.web-icon-textmagic:before {
     content: '\ea39';
 }
-.web-icon-tiktok:before {
+.web-icon-ticket:before {
     content: '\ea3a';
 }
-.web-icon-twitter:before {
+.web-icon-tiktok:before {
     content: '\ea3b';
 }
-.web-icon-vue:before {
+.web-icon-twitter:before {
     content: '\ea3c';
 }
-.web-icon-x:before {
+.web-icon-vue:before {
     content: '\ea3d';
 }
-.web-icon-ycombinator:before {
+.web-icon-x:before {
     content: '\ea3e';
 }
-.web-icon-youtube:before {
+.web-icon-ycombinator:before {
     content: '\ea3f';
+}
+.web-icon-youtube:before {
+    content: '\ea40';
 }

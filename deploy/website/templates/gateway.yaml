@@ -5,21 +5,19 @@ metadata:
 spec:
     gatewayClassName: traefik
     listeners:
-        - name: http
+        {{- $domains := required "domain must be set" .Values.domain }}
+        {{- range $idx, $hostname := $domains }}
+        - name: {{ printf "http-%d" $idx }}
           port: 8000
           protocol: HTTP
-          {{- with .Values.domain }}
-          hostname: {{ . | quote }}
-          {{- end }}
+          hostname: {{ $hostname | quote }}
           allowedRoutes:
               namespaces:
                   from: Same
-        - name: https
+        - name: {{ printf "https-%d" $idx }}
           port: 8443
           protocol: HTTPS
-          {{- with .Values.domain }}
-          hostname: {{ . | quote }}
-          {{- end }}
+          hostname: {{ $hostname | quote }}
           allowedRoutes:
               namespaces:
                   from: Same
@@ -28,6 +26,7 @@ spec:
               certificateRefs:
                   - name: gateway
                     namespace: traefik
+        {{- end }}
 
 ---
 
@@ -36,10 +35,11 @@ kind: HTTPRoute
 metadata:
   name: website
 spec:
-  {{- with .Values.domain }}
+  {{- $domains := required "domain must be set" .Values.domain }}
   hostnames:
+    {{- range $domains }}
     - {{ . | quote }}
-  {{- end }}
+    {{- end }}
   parentRefs:
     - name: website
   rules:

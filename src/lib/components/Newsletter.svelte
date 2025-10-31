@@ -1,7 +1,6 @@
 <script context="module" lang="ts">
     import { PUBLIC_GROWTH_ENDPOINT } from '$env/static/public';
     import { Button } from '$lib/components/ui';
-    import { trackEvent } from '$lib/actions/analytics';
 
     export async function newsletter(name: string, email: string) {
         const response = await fetch(`${PUBLIC_GROWTH_ENDPOINT}/newsletter/subscribe`, {
@@ -141,16 +140,3 @@
         </div>
     </div>
 </div>
-
-<style lang="scss">
-    .pre-footer-bg {
-        position: absolute;
-        top: clamp(300px, 50vw, 50%);
-        left: clamp(300px, 50vw, 50%);
-        transform: translate(-50%, -70%);
-        width: clamp(1200px, 100vw, 3000px);
-        height: auto;
-        max-inline-size: unset;
-        max-block-size: unset;
-    }
-</style>
