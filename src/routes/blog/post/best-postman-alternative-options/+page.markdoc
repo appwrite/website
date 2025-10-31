@@ -89,17 +89,17 @@ Instead, here's a more readable block-style comparison grouped by the traits tha
 
 ## Openness and control
 
-| Tool | Open Source | Works offline | Self-hostable |
-| --- | --- | --- | --- |
-| Bruno | Yes | Yes | No |
-| Yaak | Yes | Yes | No |
-| HTTPie | Yes | Yes | No |
-| Hoppscotch | Yes | Yes | Yes |
-| `.http` files | Yes | Yes | No |
-| Hurl | Yes | Yes | No |
-| Thunder Client | No | Yes | No |
-| Insomnia | Yes | Yes | No |
-| Postman | No | Limited | No |
+| Tool | Open source | Works offline |
+| --- | --- | --- |
+| Bruno | Yes | Yes |
+| Yaak | Yes | Yes |
+| HTTPie | Yes | Yes |
+| Hoppscotch | Yes | Yes |
+| `.http` files | Yes | Yes |
+| Hurl | Yes | Yes |
+| Thunder Client | No | Yes |
+| Insomnia | Yes | Yes |
+| Postman | No | Limited |
 
 *Postman's offline support depends on plan and feature availability.*
 
