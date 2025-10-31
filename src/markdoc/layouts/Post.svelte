@@ -90,8 +90,8 @@
     <meta name="twitter:description" content={description} />
     <!-- Image -->
     <meta property="og:image" content={DEFAULT_HOST + cover} />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
+    <meta property="og:image:width" content="1463" />
+    <meta property="og:image:height" content="822" />
     <meta name="twitter:image" content={DEFAULT_HOST + cover} />
     <meta name="twitter:card" content="summary_large_image" />
 
