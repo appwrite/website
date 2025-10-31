@@ -4,9 +4,6 @@ title: "Next.js 16 Support (Server-Side Rendering)"
 date: 2025-10-30
 cover: /images/blog/everything-new-in-nextjs16/cover.png
 ---
-
-Next.js 16 Support (Server-Side Rendering)
-
 Appwrite Sites now fully supports Next.js 16, including Server-Side Rendering (SSR) and the latest framework improvements such as Cache Components, Turbopack, and refined caching APIs.
 
 You can deploy applications built with Next.js 16 directly on Appwrite Sites with zero configuration changes.
