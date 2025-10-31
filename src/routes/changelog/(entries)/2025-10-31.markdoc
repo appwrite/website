@@ -1,1 +1,20 @@
+---
+layout: changelog
+title: "Appwrite 1.8.0 self-hosted support"
+date: 2025-10-31
+cover: /images/blog/appwrite-1-8-0-self-hosted-release/cover.png
+---
 
+Appwrite 1.8.0 is now live for self-hosted environments.
+
+# What's new:
+
+- Powerful Database features
+- Smarter Auth and runtime updates
+- Improved performance and developer experience
+
+This release brings significant upgrades across data handling, authentication, and infrastructure, making Appwrite 1.8.0 the most complete self-hosted version to date.
+
+{% arrow_link href="/blog/post/appwrite-1-8-0-self-hosted-release" %}
+Read the announcement to learn more
+{% /arrow_link %}
