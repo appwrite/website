@@ -73,7 +73,7 @@ await account.updateMFAChallenge({
 
 Two new database operators for more control and flexibility when writing queries.
 
-- `contains` - partial text matches on string attributes, array element matching on array attributes
+- `contains` - partial text matches on string columns, array element matching on array columns
 - `or` - write logical OR queries
 
 ```ts
