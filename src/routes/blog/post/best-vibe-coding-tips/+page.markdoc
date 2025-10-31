@@ -68,7 +68,7 @@ Most platforms have some form of built-in versioning, but don't rely on that alo
 
 Think of it as your safety net. When AI goes rogue or generates something unexpected (which happens most of the time), you can roll back instantly instead of starting over.
 
-## Tip 8: Be explicit to prevent unwanted changes
+## Tip 7: Be explicit to prevent unwanted changes
 
 Sometimes AI tools get a little too excited and start making changes you didn't ask for, adding new files, rewriting logic, or deleting parts that were perfectly fine. It happens more often than you'd expect.
 
