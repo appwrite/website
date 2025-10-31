@@ -10,7 +10,7 @@ callToAction: true
 unlisted: true
 category: tutorial
 ---
-Everyone seems to be talking about vibe coding lately. It’s all over Twitter, YouTube tutorials, and weekend project threads. But beyond the hype, we were curious: what does it actually look like in practice?
+Everyone seems to be talking about vibe coding lately. It's all over Twitter, YouTube tutorials, and weekend project threads. But beyond the hype, we were curious: what does it actually look like in practice?
 
 So we did some digging. We wanted to find real examples, projects people actually built in a few focused sessions that ended up being fully functional and worth sharing.
 
@@ -20,7 +20,7 @@ Here are a few vibe coding examples that stood out. These are real-world project
 
 Vibe coding tools used: Cursor, Appwrite
 
-This one’s interesting. [Refetch](https://refetch.io/) is an open-source alternative to Hacker News controlled by YC. Using Refetch, you can explore the latest tech discussions and news. It’s 100% vibe-coded and built on top of [Appwrite Cloud](https://appwrite.io/).
+This one's interesting. [Refetch](https://refetch.io/) is an open-source alternative to Hacker News controlled by YC. Using Refetch, you can explore the latest tech discussions and news. It's 100% vibe-coded and built on top of [Appwrite Cloud](https://appwrite.io/).
 
 It took [Eldad](https://x.com/eldadfux), builder of the platform, a net total of 15 hours to go from idea to fully functional application, all while watching Netflix and vibe coding alongside.
 
@@ -38,11 +38,11 @@ You can snap a photo of your groceries or even your receipt, and it instantly id
 
 Vibe coding tools used: Bolt
 
-Bored? “Found My Focus” takes that feeling and turns it into something useful. It’s a psychology-based app designed to help people get unstuck, focus better, and be kinder to themselves while working.
+Bored? “Found My Focus” takes that feeling and turns it into something useful. It's a psychology-based app designed to help people get unstuck, focus better, and be kinder to themselves while working.
 
-The app uses short, interactive experiments rooted in neuroscience and therapy practices to help users understand what’s really behind their procrastination. 
+The app uses short, interactive experiments rooted in neuroscience and therapy practices to help users understand what's really behind their procrastination. 
 
-Built by [Su](https://x.com/su_dreams), a coach exploring how compassion meets productivity, [Found My Focus](https://www.flowbound.app/) stands out for its thoughtful design and human touch. It’s a great example of how vibe coding tools can help solo creators turn deeply personal ideas into working, beautifully crafted products.
+Built by [Su](https://x.com/su_dreams), a coach exploring how compassion meets productivity, [Found My Focus](https://www.flowbound.app/) stands out for its thoughtful design and human touch. It's a great example of how vibe coding tools can help solo creators turn deeply personal ideas into working, beautifully crafted products.
 
 # 4. Storypot
 
@@ -50,7 +50,7 @@ Vibe coding tools used: Replit
 
 [Storypot](https://app.thestorypot.com/) is as wholesome as it sounds. You drag a few emojis into a pot, and it magically turns them into a short story. Built by [Akshan Ish](https://x.com/akshanish) on Replit for his kid, it started as a small weekend project and ended up being a family favourite.
 
-It’s simple, creative, and a great reminder that sometimes the best projects come from just building for the people around you.
+It's simple, creative, and a great reminder that sometimes the best projects come from just building for the people around you.
 
 # 5. Timeless memories
 
@@ -64,7 +64,7 @@ It has a simple interface with no complex editing, no tech skills needed. Just a
 
 Vibe coding tool used: v0 and Claude Code
 
-Getting kids to actually finish their chores, and then checking if they really did, can feel like a full-time job. That’s the everyday problem [Ben Ogren](https://x.com/benogren) is trying to fix with [ChoresAI](https://www.chores-ai.com/).
+Getting kids to actually finish their chores, and then checking if they really did, can feel like a full-time job. That's the everyday problem [Ben Ogren](https://x.com/benogren) is trying to fix with [ChoresAI](https://www.chores-ai.com/).
 
 You snap a quick photo of the completed task, and the AI verifies it on its own. It even assigns age-appropriate chores, tracks rewards, and manages payments automatically. Parents stay in control, kids stay motivated, and the whole process feels a lot less like nagging and more like teamwork
 
@@ -74,15 +74,15 @@ Vibe coding tool used: Cursor
 
 [Mixcard](https://mixcard.me/) turns your Spotify playlists into physical postcards, like modern-day mixtapes you can actually hold. You drop in a playlist link, add a message, and it prints a vintage-style postcard complete with a QR code to listen instantly.
 
-Built by [Alfred Megally](https://alfredmegally.com/), it’s a small but charming project that bridges the gap between digital and physical. Film and music enthusiasts will love the nostalgic touch, a tangible way to share what you love with someone far away.
+Built by [Alfred Megally](https://alfredmegally.com/), it's a small but charming project that bridges the gap between digital and physical. Film and music enthusiasts will love the nostalgic touch, a tangible way to share what you love with someone far away.
 
 # 8. Stories of Life
 
 Vibe coding tool used: Bolt
 
-[Stories of Life](https://stories-of-life.vercel.app/) helps parents create personalized bedtime stories that grow with their child. Each story adapts to the child’s age, interests, and emotions, turning bedtime into a moment of connection and calm.
+[Stories of Life](https://stories-of-life.vercel.app/) helps parents create personalized bedtime stories that grow with their child. Each story adapts to the child's age, interests, and emotions, turning bedtime into a moment of connection and calm.
 
-Built by [Harshitha P.](https://www.linkedin.com/in/harshitha-p-991776149/), it’s a heartfelt use of AI that focuses on emotional growth and family bonding. The app even tracks how stories influence a child’s mood over time, making it feel part storybook, part gentle parenting tool.
+Built by [Harshitha P.](https://www.linkedin.com/in/harshitha-p-991776149/), it's a heartfelt use of AI that focuses on emotional growth and family bonding. The app even tracks how stories influence a child's mood over time, making it feel part storybook, part gentle parenting tool.
 
 # 9. Nora AI
 
@@ -90,7 +90,7 @@ Vibe coding tool used: Bolt
 
 [Nora AI](https://noratutor.xyz/) makes studying feel more natural by letting you learn through simple video conversations. You can talk to an AI tutor, ask questions, and get real-time transcriptions and summaries from each session.
 
-It also helps you stay organized by creating study plans and reminders based on what you’ve discussed. Built using Bolt, it’s a straightforward example of how AI tools can make learning a bit more personal and easy to manage.
+It also helps you stay organized by creating study plans and reminders based on what you've discussed. Built using Bolt, it's a straightforward example of how AI tools can make learning a bit more personal and easy to manage.
 
 # 10. CareerCloud
 
@@ -98,9 +98,9 @@ Vibe coding tool used: Replit
 
 [CareerCloud](https://careercloud.io/) helps job seekers create and refine resumes using AI. You can upload your resume or start fresh, and the platform automatically optimizes it for ATS systems, matches it to job descriptions, and gives clear feedback on how to improve.
 
-It also offers templates for different roles, from technical to creative, and tracks your application performance so you know what’s working.
+It also offers templates for different roles, from technical to creative, and tracks your application performance so you know what's working.
 
-## Frequently asked questions (FAQs)
+# Frequently asked questions (FAQs)
 
 **1. What are some real examples of vibe coding projects?**
 
@@ -108,7 +108,7 @@ There are tons, but some standouts include [**Refetch**](https://refetch.io/), a
 
 **2. How long does it usually take to build something with vibe coding?**
 
-It depends on your skill level and project scope, but most examples we’ve seen, from side apps to working prototypes, come together in **a few focused sessions or a weekend**. The key is that you’re not writing every line from scratch; you’re guiding the AI with intent, feedback, and structure, which speeds up iteration dramatically.
+It depends on your skill level and project scope, but most examples we've seen, from side apps to working prototypes, come together in **a few focused sessions or a weekend**. The key is that you're not writing every line from scratch; you're guiding the AI with intent, feedback, and structure, which speeds up iteration dramatically.
 
 **3. What makes a good vibe coding project idea?**
 
@@ -116,7 +116,7 @@ The best projects start simple: a clear goal, a limited scope, and a problem you
 
 **4. Can non-developers build real apps with vibe coding tools?**
 
-Absolutely. Many of the examples above were built by non-engineers or solo creators using AI-driven builders. The key isn’t knowing every syntax detail. It’s knowing how to communicate your intent clearly and refine the results. Vibe coding lowers the barrier between *idea* and *execution*, letting anyone with curiosity and persistence build something real.
+Absolutely. Many of the examples above were built by non-engineers or solo creators using AI-driven builders. The key isn't knowing every syntax detail. It's knowing how to communicate your intent clearly and refine the results. Vibe coding lowers the barrier between *idea* and *execution*, letting anyone with curiosity and persistence build something real.
 
 # Wrapping up
 
