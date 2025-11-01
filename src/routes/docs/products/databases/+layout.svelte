@@ -105,6 +105,11 @@
                     label: 'CSV imports',
                     href: '/docs/products/databases/csv-imports',
                     new: isNewUntil('31 Jul 2025')
+                },
+                {
+                    label: 'Database operators',
+                    href: '/docs/products/databases/db-operators',
+                    new: isNewUntil('31 Dec 2025')
                 }
             ]
         },
