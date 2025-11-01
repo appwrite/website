@@ -146,8 +146,8 @@ try await messaging.createPush(
 )`
         },
         {
-            language: 'php',
-            platform: 'PHP',
+            language: 'dart',
+            platform: 'Dart',
             content: `import 'package:appwrite/appwrite.dart';
 
 final messaging = Messaging(client);
@@ -159,8 +159,8 @@ await messaging.createPush(
 );`
         },
         {
-            language: 'dart',
-            platform: 'Dart',
+            language: 'php',
+            platform: 'PHP',
             content: `<?php
 
 use Appwrite\Services\Messaging;
