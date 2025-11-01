@@ -18,6 +18,7 @@
     import { MainFooter } from '$lib/components';
     import SeoOgImage from '$lib/components/SeoOgImage.svelte';
     import { DocsArticle } from '$lib/layouts';
+    import PromptBanner from '$lib/components/PromptBanner.svelte';
     import type { TocItem } from '$lib/layouts/DocsArticle.svelte';
     import { DOCS_TITLE_SUFFIX, OVERVIEW_TITLE_SUFFIX } from '$routes/titles';
     import { getContext, setContext } from 'svelte';
@@ -29,6 +30,10 @@
     export let difficulty: string | undefined = undefined;
     export let readtime: string | undefined = undefined;
     export let date: string | undefined = undefined;
+    // Accept legacy `prompt` in frontmatter but ignore internally to keep compatibility
+    export let prompt: string | undefined = undefined;
+    // Reference to avoid "unused export property" warning while keeping compatibility
+    $: void prompt;
 
     setContext<LayoutContext>('headings', writable({}));
 
@@ -87,6 +92,7 @@
             <li>{readtime} min</li>
         {/if}
     </svelte:fragment>
+    <PromptBanner />
     <slot />
 </DocsArticle>
 <MainFooter variant="docs" />
