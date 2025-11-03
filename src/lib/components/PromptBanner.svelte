@@ -71,8 +71,8 @@
     <div class="ai-banner">
         <div class="ai-banner_content">
             <div class="ai-banner_title">
-                <Icon name="sparkle" class="text-primary" aria-hidden="true" />
-                <span>Use AI agent</span>
+                <Icon name="ai-prompt" class="text-primary" aria-hidden="true" />
+                <span>Use this pre-built prompt to get started faster</span>
             </div>
             <div class="ai-banner_actions">
                 <div class="flex">
