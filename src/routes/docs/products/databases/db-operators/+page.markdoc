@@ -22,7 +22,7 @@ Let's take an example of appending a value to an array field.
 2. Update client-side → `letters: ['a', 'b', 'c']`
 3. Write back → `{ letters: ['a', 'b', 'c'] }`
 
-**Atomic approach:**
+**Operator approach:**
 1. Update/upsert the row with the appropriate value to append
 2. Server applies atomically → `letters: ['a', 'b', 'c']`
 
@@ -30,7 +30,7 @@ Here's how you can do so programmatically:
 
 {% multicode %}
 ```js
-import { Client, TablesDB } from "appwrite";
+import { Client, TablesDB, Operator } from "appwrite";
 
 const client = new Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
@@ -51,25 +51,19 @@ const result = await tablesDB.updateRow({
 ```dart
 import 'package:dart_appwrite/dart_appwrite.dart';
 
-Client client = Client()
+final client = Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
     .setProject('<YOUR_PROJECT_ID>');
 
-Databases databases = Databases(client);
+final tablesDB = TablesDB(client);
 
-Transaction result = await databases.createOperations(
-    transactionId: '<TRANSACTION_ID>',
-    operations: [
-	    {
-	        "action": "arrayAppend",
-	        "databaseId": "<DATABASE_ID>",
-	        "tableId": "<TABLE_ID>",
-	        "rowId": "<ROW_ID>",
-	        "data": {
-	            "letters": ['a', 'b', 'c']
-	        } // This field is optional, depending on the operator
-	    }
-	],
+final result = await tablesDB.updateRow(
+  databaseId: '<DATABASE_ID>',
+  tableId: '<TABLE_ID>',
+  rowId: '<ROW_ID>',
+  data: {
+    'letters': Operator.arrayAppend(['c']),
+  },
 );
 ```
 {% /multicode %}
@@ -88,53 +82,284 @@ This keeps payloads small, avoids race conditions, and reduces round-trips.
 
 # Operator categories {% #operators %}
 
-The following operators are currently available to use, based on field type and intent.
+The following operators are available, grouped by field type. Each operator updates the given column atomically on the server.
 
 ## Numeric operators {% #numeric %}
 
 Perform arithmetic on numeric fields without reading the row first.
 
-| Name | Purpose |
-|------|---------|
-| `increment` | Increases a numeric field by a specified value |
-| `decrement` | Decreases a numeric field by a specified value |
-| `multiply` | Multiplies a numeric field by a specified value |
-| `divide` | Divides a numeric field by a specified value |
-| `modulo` | Returns the remainder of a numeric field divided by a specified value |
+### increment {% #increment %}
 
+Increase a numeric field by a specified value. Optionally cap the result at a maximum value.
+
+{% multicode %}
+```js
+Operator.increment(1)
+```
+```dart
+Operator.increment(1)
+```
+{% /multicode %}
+
+### decrement {% #decrement %}
+
+Decrease a numeric field by a specified value. Optionally cap the result at a minimum value.
+
+{% multicode %}
+```js
+Operator.decrement(1)
+```
+```dart
+Operator.decrement(1)
+```
+{% /multicode %}
+
+### multiply {% #multiply %}
+
+Multiply a numeric field by a specified factor. Optionally cap the result at a maximum value.
+
+{% multicode %}
+```js
+Operator.multiply(2)
+```
+```dart
+Operator.multiply(2)
+```
+{% /multicode %}
+
+### divide {% #divide %}
+
+Divide a numeric field by a specified divisor. Optionally cap the result at a minimum value. Divisor cannot be zero.
+
+{% multicode %}
+```js
+Operator.divide(5)
+```
+```dart
+Operator.divide(5)
+```
+{% /multicode %}
+
+### modulo {% #modulo %}
+
+Set a numeric field to the remainder of itself divided by a specified value.
+
+{% multicode %}
+```js
+Operator.modulo(3)
+```
+```dart
+Operator.modulo(3)
+```
+{% /multicode %}
+
+### power {% #power %}
+
+Raise a numeric field to a specified exponent. Optionally cap the result at a maximum value.
+
+{% multicode %}
+```js
+Operator.power(2)
+```
+```dart
+Operator.power(2)
+```
+{% /multicode %}
 
 ## Array operators {% #array %}
 
 Edit lists in place: append, remove, or modify array items atomically.
 
-| Name | Purpose |
-|------|---------|
-| `arrayAppend` | Adds one or more elements to the end of an array |
-| `arrayPrepend` | Adds one or more elements to the beginning of an array |
-| `arrayInsert` | Inserts one or more elements at a specific position in an array |
-| `arrayRemove` | Removes specified elements from an array |
-| `arrayUnique` | Removes duplicate elements from an array |
-| `arrayIntersect` | Returns only elements that exist in both arrays |
-| `arrayDiff` | Returns elements that exist in the first array but not in the second |
-| `arrayFilter` | Filters array elements based on specified criteria |
+### arrayAppend {% #array-append %}
 
+Add one or more elements to the end of an array.
+
+{% multicode %}
+```js
+Operator.arrayAppend(['c'])
+```
+```dart
+Operator.arrayAppend(['c'])
+```
+{% /multicode %}
+
+### arrayPrepend {% #array-prepend %}
+
+Add one or more elements to the beginning of an array.
+
+{% multicode %}
+```js
+Operator.arrayPrepend(['z'])
+```
+```dart
+Operator.arrayPrepend(['z'])
+```
+{% /multicode %}
+
+### arrayInsert {% #array-insert %}
+
+Insert an element at a specific index in an array.
+
+{% multicode %}
+```js
+Operator.arrayInsert(1, 'x')
+```
+```dart
+Operator.arrayInsert(1, 'x')
+```
+{% /multicode %}
+
+### arrayRemove {% #array-remove %}
+
+Remove a specified element from an array.
+
+{% multicode %}
+```js
+Operator.arrayRemove('b')
+```
+```dart
+Operator.arrayRemove('b')
+```
+{% /multicode %}
+
+### arrayUnique {% #array-unique %}
+
+Remove duplicate elements from an array.
+
+{% multicode %}
+```js
+Operator.arrayUnique()
+```
+```dart
+Operator.arrayUnique()
+```
+{% /multicode %}
+
+### arrayIntersect {% #array-intersect %}
+
+Keep only elements that exist in both arrays.
+
+{% multicode %}
+```js
+Operator.arrayIntersect(['news', 'tech'])
+```
+```dart
+Operator.arrayIntersect(['news', 'tech'])
+```
+{% /multicode %}
+
+### arrayDiff {% #array-diff %}
+
+Return elements that exist in the current array but not in the provided array.
+
+{% multicode %}
+```js
+Operator.arrayDiff(['old'])
+```
+```dart
+Operator.arrayDiff(['old'])
+```
+{% /multicode %}
+
+### arrayFilter {% #array-filter %}
+
+Filter array elements based on a condition.
+
+{% multicode %}
+```js
+Operator.arrayFilter(Condition.GreaterThan, 10)
+```
+```dart
+Operator.arrayFilter(Condition.GreaterThan, 10)
+```
+{% /multicode %}
 
 ## String operators {% #string %}
 
 Make lightweight text changes without rewriting the whole row.
 
-| Name | Purpose |
-|------|---------|
-| `stringConcat` | Appends a string to the end of an existing string field |
-| `stringReplace` | Replaces occurrences of a substring with a new string |
+### stringConcat {% #string-concat %}
 
+Concatenate a value to a string or array field.
+
+{% multicode %}
+```js
+Operator.stringConcat('!')
+```
+```dart
+Operator.stringConcat('!')
+```
+{% /multicode %}
+
+### stringReplace {% #string-replace %}
+
+Replace occurrences of a substring with a new string.
+
+{% multicode %}
+```js
+Operator.stringReplace('old', 'new')
+```
+```dart
+Operator.stringReplace('old', 'new')
+```
+{% /multicode %}
 
 ## Date operators {% #date %}
 
 Adjust time-based fields for lifecycle and scheduling logic.
 
-| Name | Purpose |
-|------|---------|
-| `dateAddDays` | Adds a specified number of days to a date field |
-| `dateSubDays` | Subtracts a specified number of days from a date field |
-| `dateSetNow` | Sets a date field to a specific value |
+### dateAddDays {% #date-add-days %}
+
+Add a specified number of days to a date field.
+
+{% multicode %}
+```js
+Operator.dateAddDays(7)
+```
+```dart
+Operator.dateAddDays(7)
+```
+{% /multicode %}
+
+### dateSubDays {% #date-sub-days %}
+
+Subtract a specified number of days from a date field.
+
+{% multicode %}
+```js
+Operator.dateSubDays(3)
+```
+```dart
+Operator.dateSubDays(3)
+```
+{% /multicode %}
+
+### dateSetNow {% #date-set-now %}
+
+Set a date field to the current time on the server.
+
+{% multicode %}
+```js
+Operator.dateSetNow()
+```
+```dart
+Operator.dateSetNow()
+```
+{% /multicode %}
+
+## Boolean operators {% #boolean %}
+
+Toggle boolean values in place.
+
+### toggle {% #toggle %}
+
+Toggle a boolean field between true and false.
+
+{% multicode %}
+```js
+Operator.toggle()
+```
+```dart
+Operator.toggle()
+```
+{% /multicode %}
