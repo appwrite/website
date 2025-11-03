@@ -7,7 +7,7 @@
     import { createDropdownMenu, melt } from '@melt-ui/svelte';
     import { onMount } from 'svelte';
     import { trackEvent } from '$lib/actions/analytics';
-
+    import AiPromptIcon from '$lib/components/ui/aiPromptIcon.svelte';
     // Only support co-located prompt.md
     const routeExists = hasRoutePrompt();
     const prompt = routeExists ? (getRoutePrompt() ?? '') : '';
@@ -71,8 +71,11 @@
     <div class="ai-banner">
         <div class="ai-banner_content">
             <div class="ai-banner_title">
-                <Icon name="ai-prompt" class="text-primary" aria-hidden="true" />
-                <span>Use this pre-built prompt to get started faster</span>
+                <!-- <Icon name="ai-prompt" class="text-primary" aria-hidden="true" /> -->
+                <AiPromptIcon class="text-primary" aria-hidden="true" />
+                <span class="text-primary text-sub-body"
+                    >Use this pre-built prompt to get started faster</span
+                >
             </div>
             <div class="ai-banner_actions">
                 <div class="flex">
@@ -214,7 +217,6 @@
             display: flex;
             align-items: center;
             gap: 8px;
-            font-weight: 600;
         }
 
         &_actions {
