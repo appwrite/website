@@ -83,3 +83,36 @@ Users subscribed to the Appwrite Pro plan or above receive certain special benef
 - [Express builds](/changelog/entry/2024-08-10) for quicker deployments, resulting in reduced wait times and smoother workflows
 - Customizable [runtime specifications](/blog/post/introducing-new-compute-capabilities-appwrite-functions), allowing for tailored performance and resource allocation
 {% /info %}
+
+# Deployment environments
+
+Appwrite Sites supports flexible deployment environment strategies, allowing you to manage production, staging, development, and feature-specific environments efficiently.
+
+## Multiple sites for environments
+
+You can create multiple sites within a single Appwrite project to represent different deployment environments. This approach allows you to connect each site to the same Git repository, on the specific branch that corresponds to your desired environment.
+
+For example, you might configure:
+- **Production site**: Connected to the `main` branch
+- **Staging site**: Connected to the `staging` branch
+- **Development site**: Connected to the `dev` branch
+
+Each site will have its own settings and environment variables, so you can tweak configurations for each environment without any conflicts.
+
+## Environment variables per site
+
+Each site maintains its own set of environment variables, allowing you to customize configuration for different environments. This ensures that your production, staging, and development sites can have different API keys, feature flags, or other environment-specific settings.
+
+For environment variables that need to be shared across all sites in a project, you can use the **Global variables** option in your project settings. Global variables are accessible to all sites within the project.
+
+## Branch deployments
+
+Every branch in a site has a dedicated deployment. Once your pull request is up, you can treat each branch as a dedicated deployment environment, making it easy to test and review changes before merging.
+
+You can access branch deployments in two ways:
+
+1. **Deployments tab**: Navigate to the **Deployments** tab of your site to view all deployments, including those from different branches.
+
+2. **Pull request comments**: When you create a pull request, Appwrite automatically creates a comment on the PR with a link to the preview deployment, allowing you and your team to quickly access and test the changes.
+
+This approach provides flexibility in how you structure your deployment pipeline, whether you prefer multiple sites for long-lived environments or branch-based deployments for short-lived feature testing.
