@@ -90,24 +90,24 @@ Appwrite Sites supports flexible deployment environment strategies, allowing you
 
 ## Multiple sites for environments
 
-You can create multiple sites within a single Appwrite project to represent different deployment environments. This approach allows you to connect each site to the same Git repository, on the specific branch that corresponds to your desired environment.
+You can create multiple sites within a single Appwrite project to represent different deployment environments. Connect each site to the same Git repository and select the branch that matches the environment using [Deploy from Git](/docs/products/sites/deploy-from-git).
 
 For example, you might configure:
 - **Production site**: Connected to the `main` branch
 - **Staging site**: Connected to the `staging` branch
 - **Development site**: Connected to the `dev` branch
 
-Each site will have its own settings and environment variables, so you can tweak configurations for each environment without any conflicts.
+Each site will have its own **Settings** and **Environment variables**, so you can tweak configurations for each environment without any conflicts. Learn more in [Develop](/docs/products/sites/develop).
 
 ## Environment variables per site
 
 Each site maintains its own set of environment variables, allowing you to customize configuration for different environments. This ensures that your production, staging, and development sites can have different API keys, feature flags, or other environment-specific settings.
 
-For environment variables that need to be shared across all sites in a project, you can use the **Global variables** option in your project settings. Global variables are accessible to all sites within the project.
+For environment variables that need to be shared across all sites in a project, you can use global variables in your project's **Settings**. Global variables are accessible to all sites within the project.
 
 ## Branch deployments
 
-Every branch in a site has a dedicated deployment. Once your pull request is up, you can treat each branch as a dedicated deployment environment, making it easy to test and review changes before merging.
+Every branch in a site has a dedicated deployment. Once your pull request is up, Appwrite creates a preview deployment so you can test and review changes before merging. Learn more in [Previews](/docs/products/sites/previews).
 
 You can access branch deployments in two ways:
 
