@@ -1,5 +1,7 @@
 <script lang="ts">
     import type { SVGAttributes } from 'svelte/elements';
+    import { onMount } from 'svelte';
+    import { browser } from '$app/environment';
 
     type Props = SVGAttributes<SVGElement> & {
         width?: number | string;
@@ -14,6 +16,51 @@
     const gradient0 = `paint0_linear_${uniqueId}`;
     const gradient1 = `paint1_linear_${uniqueId}`;
     const gradient2 = `paint2_linear_${uniqueId}`;
+    const gradient1Light = `paint1_linear_light_${uniqueId}`;
+    const gradient2Light = `paint2_linear_light_${uniqueId}`;
+
+    let star1: SVGPathElement;
+    let star2: SVGPathElement;
+
+    function updateGradients() {
+        if (!browser) return;
+        const isLight = document.body.classList.contains('light');
+
+        if (star1) {
+            const gradientId = isLight
+                ? star1.getAttribute('data-gradient-light')
+                : star1.getAttribute('data-gradient-dark');
+            if (gradientId) {
+                star1.setAttribute('fill', `url(#${gradientId})`);
+            }
+        }
+
+        if (star2) {
+            const gradientId = isLight
+                ? star2.getAttribute('data-gradient-light')
+                : star2.getAttribute('data-gradient-dark');
+            if (gradientId) {
+                star2.setAttribute('fill', `url(#${gradientId})`);
+            }
+        }
+    }
+
+    onMount(() => {
+        if (!browser) return;
+
+        updateGradients();
+
+        const observer = new MutationObserver(() => {
+            updateGradients();
+        });
+
+        observer.observe(document.body, {
+            attributes: true,
+            attributeFilter: ['class']
+        });
+
+        return () => observer.disconnect();
+    });
 </script>
 
 <svg
@@ -43,17 +90,23 @@
         stroke-width="0.9"
     />
     <path
+        bind:this={star1}
         d="M25.3828 22.6611C25.552 22.2042 26.198 22.2042 26.3672 22.6611L26.8994 24.0977C27.0286 24.4466 27.3034 24.7214 27.6523 24.8506L29.0889 25.3828C29.5458 25.552 29.5458 26.198 29.0889 26.3672L27.6523 26.8994C27.3034 27.0286 27.0286 27.3034 26.8994 27.6523L26.3672 29.0889C26.198 29.5458 25.552 29.5458 25.3828 29.0889L24.8506 27.6523C24.7214 27.3034 24.4466 27.0286 24.0977 26.8994L22.6611 26.3672C22.2042 26.198 22.2042 25.552 22.6611 25.3828L24.0977 24.8506C24.4466 24.7214 24.7214 24.4466 24.8506 24.0977L25.3828 22.6611Z"
         fill={`url(#${gradient1})`}
-        stroke="white"
+        class="small-star star-1"
+        data-gradient-dark={gradient1}
+        data-gradient-light={gradient1Light}
         stroke-width="0.75"
         stroke-linecap="round"
         stroke-linejoin="round"
     />
     <path
+        bind:this={star2}
         d="M25.3828 6.91113C25.552 6.45421 26.198 6.45421 26.3672 6.91113L26.8994 8.34766C27.0286 8.6966 27.3034 8.97145 27.6523 9.10059L29.0889 9.63281C29.5458 9.802 29.5458 10.448 29.0889 10.6172L27.6523 11.1494C27.3034 11.2786 27.0286 11.5534 26.8994 11.9023L26.3672 13.3389C26.198 13.7958 25.552 13.7958 25.3828 13.3389L24.8506 11.9023C24.7214 11.5534 24.4466 11.2786 24.0977 11.1494L22.6611 10.6172C22.2042 10.448 22.2042 9.802 22.6611 9.63281L24.0977 9.10059C24.4466 8.97145 24.7214 8.6966 24.8506 8.34766L25.3828 6.91113Z"
         fill={`url(#${gradient2})`}
-        stroke="white"
+        class="small-star star-2"
+        data-gradient-dark={gradient2}
+        data-gradient-light={gradient2Light}
         stroke-width="0.75"
         stroke-linecap="round"
         stroke-linejoin="round"
@@ -92,5 +145,38 @@
             <stop stop-color="white" stop-opacity="0.4" />
             <stop offset="1" stop-color="white" stop-opacity="0" />
         </linearGradient>
+        <!-- Light mode gradients for small stars -->
+        <linearGradient
+            id={gradient1Light}
+            x1="25.875"
+            y1="20.25"
+            x2="25.875"
+            y2="31.5"
+            gradientUnits="userSpaceOnUse"
+        >
+            <stop stop-color="#FD366E" stop-opacity="0" />
+            <stop offset="1" stop-color="#FD366E" stop-opacity="0.4" />
+        </linearGradient>
+        <linearGradient
+            id={gradient2Light}
+            x1="25.875"
+            y1="4.5"
+            x2="25.875"
+            y2="15.75"
+            gradientUnits="userSpaceOnUse"
+        >
+            <stop stop-color="#FD366E" stop-opacity="0" />
+            <stop offset="1" stop-color="#FD366E" stop-opacity="0.4" />
+        </linearGradient>
     </defs>
 </svg>
+
+<style>
+    :global(.small-star) {
+        stroke: white;
+    }
+
+    :global(body.light .small-star) {
+        stroke: #fd366e;
+    }
+</style>
