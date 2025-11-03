@@ -40,22 +40,51 @@ Rules
         import { View, Text, TextInput, TouchableOpacity } from 'react-native';
         import { account, ID } from '../lib/appwrite';
 
-        const [user, setUser] = useState(null);
-        const [email, setEmail] = useState('');
-        const [password, setPassword] = useState('');
-        const [name, setName] = useState('');
+        export default function AuthScreen() {
+            const [user, setUser] = useState(null);
+            const [email, setEmail] = useState('');
+            const [password, setPassword] = useState('');
+            const [name, setName] = useState('');
 
-        async function login(e: string, p: string) {
-            await account.createEmailPasswordSession({ email: e, password: p });
-            setUser(await account.get());
-        }
-        async function register() {
-            await account.create({ userId: ID.unique(), email, password, name });
-            await login(email, password);
-        }
-        async function logout() {
-            await account.deleteSession({ sessionId: 'current' });
-            setUser(null);
+            async function login(e: string, p: string) {
+                await account.createEmailPasswordSession({ email: e, password: p });
+                setUser(await account.get());
+            }
+
+            async function register() {
+                await account.create({ userId: ID.unique(), email, password, name });
+                await login(email, password);
+            }
+
+            async function logout() {
+                await account.deleteSession({ sessionId: 'current' });
+                setUser(null);
+            }
+
+            return (
+                <View>
+                    {user ? <Text>Logged in as {user.name}</Text> : null}
+                    <TextInput value={email} onChangeText={setEmail} placeholder="Email" />
+                    <TextInput
+                        value={password}
+                        onChangeText={setPassword}
+                        placeholder="Password"
+                        secureTextEntry
+                    />
+                    <TextInput value={name} onChangeText={setName} placeholder="Name" />
+                    <TouchableOpacity onPress={() => login(email, password)}>
+                        <Text>Login</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={register}>
+                        <Text>Register</Text>
+                    </TouchableOpacity>
+                    {user && (
+                        <TouchableOpacity onPress={logout}>
+                            <Text>Logout</Text>
+                        </TouchableOpacity>
+                    )}
+                </View>
+            );
         }
         ```
 

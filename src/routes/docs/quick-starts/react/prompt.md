@@ -15,20 +15,19 @@ Important rules
 
 3. Configure environment (ask user first)
     - Ask for: Appwrite Cloud Region (e.g. fra, nyc) and Project ID.
-    - Create .env.local with:
-      VITE_APPWRITE_ENDPOINT=https://<REGION>.cloud.appwrite.io/v1
-      VITE_APPWRITE_PROJECT_ID=<PROJECT_ID>
+    - Hardcode in next steps.
 
 4. Create Appwrite client module
     - Create file: src/lib/appwrite.js
+    - Hardcode the endpoint and project ID in the file: src/lib/appwrite.js
     - Contents:
       import { Client, Account } from 'appwrite';
 
-        const endpoint = import.meta.env.VITE_APPWRITE_ENDPOINT;
-        const projectId = import.meta.env.VITE_APPWRITE_PROJECT_ID;
+        const endpoint = '';
+        const projectId = '';
 
         if (!endpoint || !projectId) {
-        throw new Error('Missing VITE_APPWRITE_ENDPOINT or VITE_APPWRITE_PROJECT_ID in .env.local');
+        throw new Error('Missing Appwrite endpoint and project ID');
         }
 
         export const client = new Client()
