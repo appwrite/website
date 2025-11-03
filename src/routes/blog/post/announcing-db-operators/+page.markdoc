@@ -60,7 +60,7 @@ const client = new Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
     .setProject('<YOUR_PROJECT_ID>');
 
-const databases = new Databases(client);
+const tablesDB = new TablesDB(client);
 
 const result = await tablesDB.updateRow({
     databaseId: "<DATABASE_ID>",
