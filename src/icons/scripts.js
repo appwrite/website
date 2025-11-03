@@ -1,5 +1,6 @@
 // @ts-expect-error missing types
 import SVGFixer from 'oslllo-svg-fixer';
+import { optimize } from 'svgo';
 import svgtofont from 'svgtofont';
 import { basename, extname, resolve } from 'path';
 import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from 'fs';
@@ -71,6 +72,52 @@ const generateIconType = () => {
     }
 };
 
+const postProcessWithSVGO = () => {
+    const files = readdirSync(optimized);
+
+    files.forEach((file) => {
+        if (!file.endsWith('.svg')) return;
+
+        const filePath = resolve(optimized, file);
+        const svgContent = readFileSync(filePath, 'utf8');
+
+        // Check if file has gradient references but no defs (broken by SVGFixer)
+        const hasGradientRefs = /url\(#/.test(svgContent);
+        const hasDefs = /<defs/.test(svgContent);
+
+        if (hasGradientRefs && !hasDefs) {
+            console.log(`Re-optimizing ${file} with SVGO (detected missing gradients)...`);
+
+            // Read original file from src
+            const originalPath = resolve(src, file);
+            if (!existsSync(originalPath)) {
+                console.warn(`Original file not found for ${file}, skipping...`);
+                return;
+            }
+
+            const originalContent = readFileSync(originalPath, 'utf8');
+
+            // optimize with SVGO preserving important elements
+            const result = optimize(originalContent, {
+                plugins: [
+                    {
+                        name: 'preset-default',
+                        params: {
+                            overrides: {
+                                cleanupIds: false,
+                                removeUselessDefs: false,
+                            }
+                        }
+                    }
+                ]
+            });
+
+            writeFileSync(filePath, result.data);
+            console.log(`Successfully re-optimized ${file}`);
+        }
+    });
+};
+
 export const optimizeSVG = async () => {
     const fixer = new SVGFixer(src, optimized, {
         showProgressBar: true
@@ -78,6 +125,7 @@ export const optimizeSVG = async () => {
 
     await fixer
         .fix()
+        .then(() => postProcessWithSVGO())
         .then(() => generateIconSprite())
         .then(() => generateIconType());
 };
