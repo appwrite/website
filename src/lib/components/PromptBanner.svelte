@@ -83,7 +83,7 @@
                         <Button
                             variant="secondary"
                             onclick={handleMainClick}
-                            aria-label="Copy prompt"
+                            aria-label={$copied ? 'Copied' : 'Copy prompt'}
                             class="no-right-radius text-sm"
                         >
                             <Icon name="copy" aria-hidden="true" />
