@@ -8,9 +8,6 @@ import manifestSRI from 'vite-plugin-manifest-sri';
 import { defineConfig } from 'vitest/config';
 
 export default defineConfig({
-    server: {
-        allowedHosts: ['loud-phones-invite.loca.lt']
-    },
     plugins: [
         // sentrySvelteKit({
         //     sourceMapsUploadOptions: {
