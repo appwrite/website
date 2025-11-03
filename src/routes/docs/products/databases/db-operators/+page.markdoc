@@ -23,7 +23,7 @@ Let's take an example of appending a value to an array field.
 3. Write back → `{ letters: ['a', 'b', 'c'] }`
 
 **Atomic approach:**
-1. Call `createOperations()` with the column name and the value to append
+1. Update/upsert the row with the appropriate value to append
 2. Server applies atomically → `letters: ['a', 'b', 'c']`
 
 Here's how you can do so programmatically:
