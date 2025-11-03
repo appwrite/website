@@ -29,41 +29,258 @@ Let's take an example of appending a value to an array field.
 Here's how you can do so programmatically:
 
 {% multicode %}
-```js
+```client-web
 import { Client, TablesDB, Operator } from "appwrite";
 
 const client = new Client()
-    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
-    .setProject('<YOUR_PROJECT_ID>');
+  .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+  .setProject('<YOUR_PROJECT_ID>');
 
 const tablesDB = new TablesDB(client);
 
-const result = await tablesDB.updateRow({
-    databaseId: "<DATABASE_ID>",
-    tableId: "<TABLE_ID>",
-    rowId: "<ROW_ID>",
-    data: {
-	    letters: Operator.arrayAppend(['c'])
-    }
+await tablesDB.updateRow({
+  databaseId: "<DATABASE_ID>",
+  tableId: "<TABLE_ID>",
+  rowId: "<ROW_ID>",
+  data: {
+    letters: Operator.arrayAppend(['c'])
+  }
 });
 ```
+```server-nodejs
+const sdk = require('node-appwrite');
 
-```dart
-import 'package:dart_appwrite/dart_appwrite.dart';
+const client = new sdk.Client();
+client
+  .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+  .setProject('<YOUR_PROJECT_ID>')
+  .setKey('<YOUR_API_KEY>');
 
-final client = Client()
-    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
-    .setProject('<YOUR_PROJECT_ID>');
+const tablesDB = new sdk.TablesDB(client);
 
-final tablesDB = TablesDB(client);
-
-final result = await tablesDB.updateRow(
+const result = await tablesDB.updateRow({
   databaseId: '<DATABASE_ID>',
   tableId: '<TABLE_ID>',
   rowId: '<ROW_ID>',
   data: {
-    'letters': Operator.arrayAppend(['c']),
-  },
+    letters: sdk.Operator.arrayAppend(['c'])
+  }
+});
+```
+```client-flutter
+import 'package:appwrite/appwrite.dart';
+
+void main() async {
+  final client = Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<YOUR_PROJECT_ID>');
+
+  final tablesDB = TablesDB(client);
+
+  try {
+    await tablesDB.updateRow(
+        '<DATABASE_ID>',
+        '<TABLE_ID>',
+        '<ROW_ID>',
+        {
+            'letters': Operator.arrayAppend(['c'])
+        },
+    );
+  } on AppwriteException catch (e) {
+    print(e);
+  }
+}
+```
+```client-apple
+import Appwrite
+import AppwriteModels
+
+func main() async throws {
+  let client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<YOUR_PROJECT_ID>")
+
+  let tablesDB = TablesDB(client)
+
+  do {
+    _ = try await tablesDB.updateRow(
+      databaseId: "<DATABASE_ID>",
+      tableId: "<TABLE_ID>",
+      rowId: "<ROW_ID>",
+      data: [
+        "letters": Operator.arrayAppend(["c"]) 
+      ]
+    )
+  } catch {
+    print(error.localizedDescription)
+  }
+}
+```
+```client-android-kotlin
+import io.appwrite.Client
+import io.appwrite.services.TablesDB
+import io.appwrite.Operator
+
+suspend fun main() {
+  val client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<YOUR_PROJECT_ID>")
+
+  val tablesDB = TablesDB(client)
+
+  tablesDB.updateRow(
+    databaseId = "<DATABASE_ID>",
+    tableId = "<TABLE_ID>",
+    rowId = "<ROW_ID>",
+    data = mapOf(
+      "letters" to Operator.arrayAppend(listOf("c"))
+    )
+  )
+}
+```
+```server-go
+package main
+
+import (
+  "log"
+  "github.com/appwrite/sdk-for-go/appwrite"
+  operator "github.com/appwrite/sdk-for-go/operator"
+)
+
+func main() {
+  client := appwrite.NewClient(
+    appwrite.WithEndpoint("https://<REGION>.cloud.appwrite.io/v1"),
+    appwrite.WithProject("<YOUR_PROJECT_ID>"),
+    appwrite.WithKey("<YOUR_API_KEY>"),
+  )
+
+  tablesDB := appwrite.NewTablesDB(client)
+
+  _, err := tablesDB.UpdateRow(
+    "<DATABASE_ID>",
+    "<TABLE_ID>",
+    "<ROW_ID>",
+    tablesDB.WithUpdateRowData(map[string]any{
+      "letters": operator.ArrayAppend([]string{"c"}),
+    }),
+  )
+  if err != nil {
+    log.Fatal(err)
+  }
+}
+```
+```server-php
+<?php
+
+use Appwrite\Client;
+use Appwrite\Services\TablesDB;
+use Appwrite\Operator;
+
+$client = (new Client())
+  ->setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+  ->setProject('<YOUR_PROJECT_ID>')
+  ->setKey('<YOUR_API_KEY>');
+
+$tablesDB = new TablesDB($client);
+
+$result = $tablesDB->updateRow(
+  '<DATABASE_ID>',
+  '<TABLE_ID>',
+  '<ROW_ID>',
+  [ 'letters' => Operator::arrayAppend(['c']) ]
+);
+```
+```server-python
+from appwrite.client import Client
+from appwrite.services.tablesDB import TablesDB
+from appwrite.operator import Operator
+
+client = Client()
+(client
+  .set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
+  .set_project('<YOUR_PROJECT_ID>')
+  .set_key('<YOUR_API_KEY>'))
+
+tablesDB = TablesDB(client)
+
+result = tablesDB.update_row(
+  '<DATABASE_ID>',
+  '<TABLE_ID>',
+  '<ROW_ID>',
+  { 'letters': Operator.arrayAppend(['c']) }
+)
+```
+```server-dotnet
+using Appwrite;
+using Appwrite.Services;
+
+var client = new Client()
+  .SetEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+  .SetProject("<YOUR_PROJECT_ID>")
+  .SetKey("<YOUR_API_KEY>");
+
+var tablesDB = new TablesDB(client);
+
+await tablesDB.UpdateRow(
+  databaseId: "<DATABASE_ID>",
+  tableId: "<TABLE_ID>",
+  rowId: "<ROW_ID>",
+  data: new Dictionary<string, object>
+  {
+    { "letters", Operator.ArrayAppend(new[] { "c" }) }
+  }
+);
+```
+```server-ruby
+require 'appwrite'
+
+include Appwrite
+
+client = Client.new()
+
+client
+  .set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
+  .set_project('<YOUR_PROJECT_ID>')
+  .set_key('<YOUR_API_KEY>')
+
+tablesDB = TablesDB.new(client)
+
+result = tablesDB.update_row(
+  '<DATABASE_ID>',
+  '<TABLE_ID>',
+  '<ROW_ID>',
+  { 'letters' => Operator.arrayAppend(['c']) }
+)
+```
+```server-java
+import io.appwrite.Client;
+import io.appwrite.coroutines.CoroutineCallback;
+import io.appwrite.services.TablesDB;
+import io.appwrite.Operator;
+import java.util.*;
+
+Client client = new Client()
+  .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+  .setProject("<YOUR_PROJECT_ID>")
+  .setKey("<YOUR_API_KEY>");
+
+TablesDB tablesDB = new TablesDB(client);
+
+Map<String, Object> data = new HashMap<>();
+data.put("letters", Operator.arrayAppend(new String[] {"c"}));
+
+tablesDB.updateRow(
+  "<DATABASE_ID>",
+  "<TABLE_ID>",
+  "<ROW_ID>",
+  data,
+  new CoroutineCallback<>((result, error) -> {
+    if (error != null) {
+      error.printStackTrace();
+      return;
+    }
+    System.out.println(result);
+  })
 );
 ```
 {% /multicode %}
@@ -93,10 +310,34 @@ Perform arithmetic on numeric fields without reading the row first.
 Increase a numeric field by a specified value. Optionally cap the result at a maximum value.
 
 {% multicode %}
-```js
+```client-web
 Operator.increment(1)
 ```
-```dart
+```server-python
+Operator.increment(1)
+```
+```server-php
+Operator::increment(1)
+```
+```client-apple
+Operator.increment(1)
+```
+```client-android-kotlin
+Operator.increment(1)
+```
+```server-go
+operator.Increment(1)
+```
+```client-flutter
+Operator.increment(1)
+```
+```server-dotnet
+Operator.Increment(1)
+```
+```server-ruby
+Operator.increment(1)
+```
+```server-java
 Operator.increment(1)
 ```
 {% /multicode %}
@@ -106,10 +347,34 @@ Operator.increment(1)
 Decrease a numeric field by a specified value. Optionally cap the result at a minimum value.
 
 {% multicode %}
-```js
+```client-web
 Operator.decrement(1)
 ```
-```dart
+```server-python
+Operator.decrement(1)
+```
+```server-php
+Operator::decrement(1)
+```
+```client-apple
+Operator.decrement(1)
+```
+```client-android-kotlin
+Operator.decrement(1)
+```
+```server-go
+operator.Decrement(1)
+```
+```client-flutter
+Operator.decrement(1)
+```
+```server-dotnet
+Operator.Decrement(1)
+```
+```server-ruby
+Operator.decrement(1)
+```
+```server-java
 Operator.decrement(1)
 ```
 {% /multicode %}
@@ -119,10 +384,34 @@ Operator.decrement(1)
 Multiply a numeric field by a specified factor. Optionally cap the result at a maximum value.
 
 {% multicode %}
-```js
+```client-web
 Operator.multiply(2)
 ```
-```dart
+```server-python
+Operator.multiply(2)
+```
+```server-php
+Operator::multiply(2)
+```
+```client-apple
+Operator.multiply(2)
+```
+```client-android-kotlin
+Operator.multiply(2)
+```
+```server-go
+operator.Multiply(2)
+```
+```client-flutter
+Operator.multiply(2)
+```
+```server-dotnet
+Operator.Multiply(2)
+```
+```server-ruby
+Operator.multiply(2)
+```
+```server-java
 Operator.multiply(2)
 ```
 {% /multicode %}
@@ -132,10 +421,34 @@ Operator.multiply(2)
 Divide a numeric field by a specified divisor. Optionally cap the result at a minimum value. Divisor cannot be zero.
 
 {% multicode %}
-```js
+```client-web
 Operator.divide(5)
 ```
-```dart
+```server-python
+Operator.divide(5)
+```
+```server-php
+Operator::divide(5)
+```
+```client-apple
+Operator.divide(5)
+```
+```client-android-kotlin
+Operator.divide(5)
+```
+```server-go
+operator.Divide(5)
+```
+```client-flutter
+Operator.divide(5)
+```
+```server-dotnet
+Operator.Divide(5)
+```
+```server-ruby
+Operator.divide(5)
+```
+```server-java
 Operator.divide(5)
 ```
 {% /multicode %}
@@ -145,10 +458,34 @@ Operator.divide(5)
 Set a numeric field to the remainder of itself divided by a specified value.
 
 {% multicode %}
-```js
+```client-web
 Operator.modulo(3)
 ```
-```dart
+```server-python
+Operator.modulo(3)
+```
+```server-php
+Operator::modulo(3)
+```
+```client-apple
+Operator.modulo(3)
+```
+```client-android-kotlin
+Operator.modulo(3)
+```
+```server-go
+operator.Modulo(3)
+```
+```client-flutter
+Operator.modulo(3)
+```
+```server-dotnet
+Operator.Modulo(3)
+```
+```server-ruby
+Operator.modulo(3)
+```
+```server-java
 Operator.modulo(3)
 ```
 {% /multicode %}
@@ -158,10 +495,34 @@ Operator.modulo(3)
 Raise a numeric field to a specified exponent. Optionally cap the result at a maximum value.
 
 {% multicode %}
-```js
+```client-web
 Operator.power(2)
 ```
-```dart
+```server-python
+Operator.power(2)
+```
+```server-php
+Operator::power(2)
+```
+```client-apple
+Operator.power(2)
+```
+```client-android-kotlin
+Operator.power(2)
+```
+```server-go
+operator.Power(2)
+```
+```client-flutter
+Operator.power(2)
+```
+```server-dotnet
+Operator.Power(2)
+```
+```server-ruby
+Operator.power(2)
+```
+```server-java
 Operator.power(2)
 ```
 {% /multicode %}
@@ -175,11 +536,35 @@ Edit lists in place: append, remove, or modify array items atomically.
 Add one or more elements to the end of an array.
 
 {% multicode %}
-```js
+```client-web
 Operator.arrayAppend(['c'])
 ```
-```dart
+```server-python
 Operator.arrayAppend(['c'])
+```
+```server-php
+Operator::arrayAppend(['c'])
+```
+```client-apple
+Operator.arrayAppend(["c"])
+```
+```client-android-kotlin
+Operator.arrayAppend(listOf("c"))
+```
+```server-go
+operator.ArrayAppend([]string{"c"})
+```
+```client-flutter
+Operator.arrayAppend(['c'])
+```
+```server-dotnet
+Operator.ArrayAppend(new[] { "c" })
+```
+```server-ruby
+Operator.arrayAppend(['c'])
+```
+```server-java
+Operator.arrayAppend(new String[] {"c"})
 ```
 {% /multicode %}
 
@@ -188,11 +573,35 @@ Operator.arrayAppend(['c'])
 Add one or more elements to the beginning of an array.
 
 {% multicode %}
-```js
+```client-web
 Operator.arrayPrepend(['z'])
 ```
-```dart
+```server-python
 Operator.arrayPrepend(['z'])
+```
+```server-php
+Operator::arrayPrepend(['z'])
+```
+```client-apple
+Operator.arrayPrepend(["z"])
+```
+```client-android-kotlin
+Operator.arrayPrepend(listOf("z"))
+```
+```server-go
+operator.ArrayPrepend([]string{"z"})
+```
+```client-flutter
+Operator.arrayPrepend(['z'])
+```
+```server-dotnet
+Operator.ArrayPrepend(new[] { "z" })
+```
+```server-ruby
+Operator.arrayPrepend(['z'])
+```
+```server-java
+Operator.arrayPrepend(new String[] {"z"})
 ```
 {% /multicode %}
 
@@ -201,11 +610,35 @@ Operator.arrayPrepend(['z'])
 Insert an element at a specific index in an array.
 
 {% multicode %}
-```js
+```client-web
 Operator.arrayInsert(1, 'x')
 ```
-```dart
+```server-python
 Operator.arrayInsert(1, 'x')
+```
+```server-php
+Operator::arrayInsert(1, 'x')
+```
+```client-apple
+Operator.arrayInsert(1, "x")
+```
+```client-android-kotlin
+Operator.arrayInsert(1, "x")
+```
+```server-go
+operator.ArrayInsert(1, "x")
+```
+```client-flutter
+Operator.arrayInsert(1, 'x')
+```
+```server-dotnet
+Operator.ArrayInsert(1, "x")
+```
+```server-ruby
+Operator.arrayInsert(1, 'x')
+```
+```server-java
+Operator.arrayInsert(1, "x")
 ```
 {% /multicode %}
 
@@ -214,11 +647,35 @@ Operator.arrayInsert(1, 'x')
 Remove a specified element from an array.
 
 {% multicode %}
-```js
+```client-web
 Operator.arrayRemove('b')
 ```
-```dart
+```server-python
 Operator.arrayRemove('b')
+```
+```server-php
+Operator::arrayRemove('b')
+```
+```client-apple
+Operator.arrayRemove("b")
+```
+```client-android-kotlin
+Operator.arrayRemove("b")
+```
+```server-go
+operator.ArrayRemove("b")
+```
+```client-flutter
+Operator.arrayRemove('b')
+```
+```server-dotnet
+Operator.ArrayRemove("b")
+```
+```server-ruby
+Operator.arrayRemove('b')
+```
+```server-java
+Operator.arrayRemove("b")
 ```
 {% /multicode %}
 
@@ -227,10 +684,34 @@ Operator.arrayRemove('b')
 Remove duplicate elements from an array.
 
 {% multicode %}
-```js
+```client-web
 Operator.arrayUnique()
 ```
-```dart
+```server-python
+Operator.arrayUnique()
+```
+```server-php
+Operator::arrayUnique()
+```
+```client-apple
+Operator.arrayUnique()
+```
+```client-android-kotlin
+Operator.arrayUnique()
+```
+```server-go
+operator.ArrayUnique()
+```
+```client-flutter
+Operator.arrayUnique()
+```
+```server-dotnet
+Operator.ArrayUnique()
+```
+```server-ruby
+Operator.arrayUnique()
+```
+```server-java
 Operator.arrayUnique()
 ```
 {% /multicode %}
@@ -240,11 +721,35 @@ Operator.arrayUnique()
 Keep only elements that exist in both arrays.
 
 {% multicode %}
-```js
+```client-web
 Operator.arrayIntersect(['news', 'tech'])
 ```
-```dart
+```server-python
 Operator.arrayIntersect(['news', 'tech'])
+```
+```server-php
+Operator::arrayIntersect(['news', 'tech'])
+```
+```client-apple
+Operator.arrayIntersect(["news", "tech"])
+```
+```client-android-kotlin
+Operator.arrayIntersect(listOf("news", "tech"))
+```
+```server-go
+operator.ArrayIntersect([]string{"news", "tech"})
+```
+```client-flutter
+Operator.arrayIntersect(['news', 'tech'])
+```
+```server-dotnet
+Operator.ArrayIntersect(new[] { "news", "tech" })
+```
+```server-ruby
+Operator.arrayIntersect(['news', 'tech'])
+```
+```server-java
+Operator.arrayIntersect(new String[] {"news", "tech"})
 ```
 {% /multicode %}
 
@@ -253,11 +758,35 @@ Operator.arrayIntersect(['news', 'tech'])
 Return elements that exist in the current array but not in the provided array.
 
 {% multicode %}
-```js
+```client-web
 Operator.arrayDiff(['old'])
 ```
-```dart
+```server-python
 Operator.arrayDiff(['old'])
+```
+```server-php
+Operator::arrayDiff(['old'])
+```
+```client-apple
+Operator.arrayDiff(["old"])
+```
+```client-android-kotlin
+Operator.arrayDiff(listOf("old"))
+```
+```server-go
+operator.ArrayDiff([]string{"old"})
+```
+```client-flutter
+Operator.arrayDiff(['old'])
+```
+```server-dotnet
+Operator.ArrayDiff(new[] { "old" })
+```
+```server-ruby
+Operator.arrayDiff(['old'])
+```
+```server-java
+Operator.arrayDiff(new String[] {"old"})
 ```
 {% /multicode %}
 
@@ -266,10 +795,34 @@ Operator.arrayDiff(['old'])
 Filter array elements based on a condition.
 
 {% multicode %}
-```js
+```client-web
 Operator.arrayFilter(Condition.GreaterThan, 10)
 ```
-```dart
+```server-python
+Operator.arrayFilter(Condition.GreaterThan, 10)
+```
+```server-php
+Operator::arrayFilter(Condition::GreaterThan, 10)
+```
+```client-apple
+Operator.arrayFilter(Condition.GreaterThan, 10)
+```
+```client-android-kotlin
+Operator.arrayFilter(Condition.GreaterThan, 10)
+```
+```server-go
+operator.ArrayFilter(ConditionGreaterThan, 10)
+```
+```client-flutter
+Operator.arrayFilter(Condition.GreaterThan, 10)
+```
+```server-dotnet
+Operator.ArrayFilter(Condition.GreaterThan, 10)
+```
+```server-ruby
+Operator.arrayFilter(Condition.GreaterThan, 10)
+```
+```server-java
 Operator.arrayFilter(Condition.GreaterThan, 10)
 ```
 {% /multicode %}
@@ -283,11 +836,35 @@ Make lightweight text changes without rewriting the whole row.
 Concatenate a value to a string or array field.
 
 {% multicode %}
-```js
+```client-web
 Operator.stringConcat('!')
 ```
-```dart
+```server-python
 Operator.stringConcat('!')
+```
+```server-php
+Operator::stringConcat('!')
+```
+```client-apple
+Operator.stringConcat("!")
+```
+```client-android-kotlin
+Operator.stringConcat("!")
+```
+```server-go
+operator.StringConcat("!")
+```
+```client-flutter
+Operator.stringConcat('!')
+```
+```server-dotnet
+Operator.StringConcat("!")
+```
+```server-ruby
+Operator.stringConcat('!')
+```
+```server-java
+Operator.stringConcat("!")
 ```
 {% /multicode %}
 
@@ -296,11 +873,35 @@ Operator.stringConcat('!')
 Replace occurrences of a substring with a new string.
 
 {% multicode %}
-```js
+```client-web
 Operator.stringReplace('old', 'new')
 ```
-```dart
+```server-python
 Operator.stringReplace('old', 'new')
+```
+```server-php
+Operator::stringReplace('old', 'new')
+```
+```client-apple
+Operator.stringReplace("old", "new")
+```
+```client-android-kotlin
+Operator.stringReplace("old", "new")
+```
+```server-go
+operator.StringReplace("old", "new")
+```
+```client-flutter
+Operator.stringReplace('old', 'new')
+```
+```server-dotnet
+Operator.StringReplace("old", "new")
+```
+```server-ruby
+Operator.stringReplace('old', 'new')
+```
+```server-java
+Operator.stringReplace("old", "new")
 ```
 {% /multicode %}
 
@@ -313,10 +914,34 @@ Adjust time-based fields for lifecycle and scheduling logic.
 Add a specified number of days to a date field.
 
 {% multicode %}
-```js
+```client-web
 Operator.dateAddDays(7)
 ```
-```dart
+```server-python
+Operator.dateAddDays(7)
+```
+```server-php
+Operator::dateAddDays(7)
+```
+```client-apple
+Operator.dateAddDays(7)
+```
+```client-android-kotlin
+Operator.dateAddDays(7)
+```
+```server-go
+operator.DateAddDays(7)
+```
+```client-flutter
+Operator.dateAddDays(7)
+```
+```server-dotnet
+Operator.DateAddDays(7)
+```
+```server-ruby
+Operator.dateAddDays(7)
+```
+```server-java
 Operator.dateAddDays(7)
 ```
 {% /multicode %}
@@ -326,10 +951,34 @@ Operator.dateAddDays(7)
 Subtract a specified number of days from a date field.
 
 {% multicode %}
-```js
+```client-web
 Operator.dateSubDays(3)
 ```
-```dart
+```server-python
+Operator.dateSubDays(3)
+```
+```server-php
+Operator::dateSubDays(3)
+```
+```client-apple
+Operator.dateSubDays(3)
+```
+```client-android-kotlin
+Operator.dateSubDays(3)
+```
+```server-go
+operator.DateSubDays(3)
+```
+```client-flutter
+Operator.dateSubDays(3)
+```
+```server-dotnet
+Operator.DateSubDays(3)
+```
+```server-ruby
+Operator.dateSubDays(3)
+```
+```server-java
 Operator.dateSubDays(3)
 ```
 {% /multicode %}
@@ -339,10 +988,34 @@ Operator.dateSubDays(3)
 Set a date field to the current time on the server.
 
 {% multicode %}
-```js
+```client-web
 Operator.dateSetNow()
 ```
-```dart
+```server-python
+Operator.dateSetNow()
+```
+```server-php
+Operator::dateSetNow()
+```
+```client-apple
+Operator.dateSetNow()
+```
+```client-android-kotlin
+Operator.dateSetNow()
+```
+```server-go
+operator.DateSetNow()
+```
+```client-flutter
+Operator.dateSetNow()
+```
+```server-dotnet
+Operator.DateSetNow()
+```
+```server-ruby
+Operator.dateSetNow()
+```
+```server-java
 Operator.dateSetNow()
 ```
 {% /multicode %}
@@ -356,10 +1029,34 @@ Toggle boolean values in place.
 Toggle a boolean field between true and false.
 
 {% multicode %}
-```js
+```client-web
 Operator.toggle()
 ```
-```dart
+```server-python
+Operator.toggle()
+```
+```server-php
+Operator::toggle()
+```
+```client-apple
+Operator.toggle()
+```
+```client-android-kotlin
+Operator.toggle()
+```
+```server-go
+operator.Toggle()
+```
+```client-flutter
+Operator.toggle()
+```
+```server-dotnet
+Operator.Toggle()
+```
+```server-ruby
+Operator.toggle()
+```
+```server-java
 Operator.toggle()
 ```
 {% /multicode %}
