@@ -8,6 +8,7 @@
     import { onMount } from 'svelte';
     import { trackEvent } from '$lib/actions/analytics';
     import AiPromptIcon from '$lib/components/ui/aiPromptIcon.svelte';
+
     // Only support co-located prompt.md
     const routeExists = hasRoutePrompt();
     const prompt = routeExists ? (getRoutePrompt() ?? '') : '';

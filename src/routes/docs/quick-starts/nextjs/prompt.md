@@ -17,17 +17,13 @@ Respect user's package manager at all time. Don't use NPM if the user uses somet
         - Appwrite Cloud Region (e.g. fra, nyc)
         - Project ID (from Console -> Settings)
           If the user doesn’t know, guide them to Appwrite Console to copy these. Do not attempt to infer or access their project.
-    - Create `.env.local` in the project root with:
-      NEXT_PUBLIC_APPWRITE_ENDPOINT=https://<REGION>.cloud.appwrite.io/v1
-      NEXT_PUBLIC_APPWRITE_PROJECT_ID=<PROJECT_ID>
-      Note: Do not commit `.env.local`. Next.js ignores it by default.
+    - Hardcode the endpoint and project ID in the file: app/appwrite.js (or app/appwrite.ts if TS) if provided, else leave placeholder and ask the user to provide them.
     - Create file: app/appwrite.js (or app/appwrite.ts if TS) with key snippet:
         ```js
         import { Client, Account } from 'appwrite';
-        const endpoint = process.env.NEXT_PUBLIC_APPWRITE_ENDPOINT;
-        const projectId = process.env.NEXT_PUBLIC_APPWRITE_PROJECT_ID;
-        if (!endpoint || !projectId)
-            throw new Error('Missing NEXT_PUBLIC_APPWRITE_* in .env.local');
+        const endpoint = '';
+        const projectId = '';
+        if (!endpoint || !projectId) throw new Error('Missing Appwrite endpoint and project ID');
         export const client = new Client().setEndpoint(endpoint).setProject(projectId);
         export const account = new Account(client);
         export { ID } from 'appwrite';
@@ -46,7 +42,7 @@ Respect user's package manager at all time. Don't use NPM if the user uses somet
         - logout(): account.deleteSession({ sessionId: 'current' }) then clear user state
 
 5. Verify environment (ask user to confirm)
-    - Confirm with the user that `.env.local` contains the correct endpoint and project ID.
+    - Confirm with the user that the endpoint and project ID are hardcoded in the file: app/appwrite.js (or app/appwrite.ts if TS).
     - Ensure the Web app platform exists in Appwrite Console with Hostname = `localhost`. If missing, guide the user to add it.
 
 6. Run and test
