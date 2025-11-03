@@ -54,7 +54,7 @@ Update time-based fields for lifecycle events or scheduling logic.
 Here's an example of how you can append a value to an array field.
 
 ```js
-import { Client, Databases } from "appwrite";
+import { Client, TablesDB } from "appwrite";
 
 const client = new Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
