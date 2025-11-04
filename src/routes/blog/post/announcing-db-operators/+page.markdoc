@@ -23,7 +23,7 @@ This approach removes bulky payloads, avoids race conditions caused by read–mo
 
 # Currently supported operators
 
-With this release, Appwrite introduces **DB operators v1,** a set of operations that let you perform atomic updates across different field types. These are the **currently supported operator types**, built to cover the most common update scenarios developers handle every day.
+The following operators are available, grouped by field type. Each operator updates the given column atomically on the server.
 
 - **Numeric operators**
 
