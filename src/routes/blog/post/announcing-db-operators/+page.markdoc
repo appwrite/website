@@ -35,7 +35,7 @@ Perform arithmetic operations directly on numeric fields without reading the row
 
 Edit lists or tags in place: append, remove, or modify array items atomically.
 
-`arrayAppend`, `arrayPrepend`,`arrayInsert`, `arrayRemove`, `arrayUnique`, `arrayIntersect`, `arrayDiff`, `arrayFilter`
+`arrayAppend`, `arrayPrepend`, `arrayInsert`, `arrayRemove`, `arrayUnique`, `arrayIntersect`, `arrayDiff`, `arrayFilter`
 
 - **String operators**
 
