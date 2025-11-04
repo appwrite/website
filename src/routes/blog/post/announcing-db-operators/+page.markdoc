@@ -29,13 +29,13 @@ With this release, Appwrite introduces **DB operators v1,** a set of operations 
 
 Perform arithmetic operations directly on numeric fields without reading the row first.
 
-`increment`, `decrement`, `multiply`, `divide`, `modulo`
+`increment`, `decrement`, `multiply`, `divide`, `modulo`, `power`
 
 - **Array operators**
 
 Edit lists or tags in place: append, remove, or modify array items atomically.
 
-`arrayAppend`, `arrayPrepend`,`arrayInsert`,`arrayRemove`,`arrayUnique`, `arrayIntersect`, `arrayDiff`, `arrayFilter`
+`arrayAppend`, `arrayPrepend`,`arrayInsert`, `arrayRemove`, `arrayUnique`, `arrayIntersect`, `arrayDiff`, `arrayFilter`
 
 - **String operators**
 
@@ -48,6 +48,12 @@ Make lightweight text changes without rewriting the whole row.
 Update time-based fields for lifecycle events or scheduling logic.
 
 `dateAddDays`, `dateSubDays`, `dateSetNow`
+
+- **Boolean operators**
+
+Toggle boolean values directly without reading or rewriting the entire record.
+
+`toggle`
 
 # Example
 
