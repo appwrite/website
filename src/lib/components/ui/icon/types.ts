@@ -54,6 +54,7 @@ export type IconType =
     | 'sparkle'
     | 'star'
     | 'system'
+    | 'tanstack'
     | 'textmagic'
     | 'ticket'
     | 'tiktok'
