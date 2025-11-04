@@ -17,7 +17,7 @@ Each column in the CSV should map to a column key in your table, and each row sh
 {% info title="Good to know" %}
 You can optionally include the `$id` column to define custom row IDs. If not provided, Appwrite will generate unique IDs for each row automatically.
 
-Appwrite imports rows in a batch of 100 rows at a time. If a provided ID already exists in the table, the specific batch import will fail, but the remaining rows will be imported successfully.
+Appwrite imports rows in batches of 100 rows at a time. If a provided ID already exists in the table, the entire batch containing that row will fail, but rows in other batches will continue to be imported successfully.
 {% /info %}
 
 An example of a valid CSV file for a table with the following columns:
