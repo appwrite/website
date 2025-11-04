@@ -17,7 +17,7 @@
 <Head title="Appwrite - Build like a team of hundreds" />
 
 <Main>
-    <Hero title="All-in-one cloud platform" />
+    <Hero title="The developers' cloud" />
     <Platforms headline="Designed for the tools you work with" />
     <LogoList
         class="border-smooth border-b"
