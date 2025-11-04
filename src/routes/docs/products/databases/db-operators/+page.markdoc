@@ -266,14 +266,11 @@ Client client = new Client()
 
 TablesDB tablesDB = new TablesDB(client);
 
-Map<String, Object> data = new HashMap<>();
-data.put("letters", Operator.arrayAppend(new String[] {"c"}));
-
 tablesDB.updateRow(
   "<DATABASE_ID>",
   "<TABLE_ID>",
   "<ROW_ID>",
-  data,
+  Map.of("letters", Operator.arrayAppend(List.of("c"))),
   new CoroutineCallback<>((result, error) -> {
     if (error != null) {
       error.printStackTrace();
