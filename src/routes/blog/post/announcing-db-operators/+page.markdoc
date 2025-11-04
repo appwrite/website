@@ -107,4 +107,4 @@ The feature is available now on Appwrite Cloud and will be coming soon to self-h
 
 - [Read the documentation to get started](/docs/products/databases/db-operators)
 - [Announcing Transactions API: Reliable multi-record writes across tables](/blog/post/announcing-transactions-api)
-- [Announcing Atomic numeric operations](https://appwrite.io/blog/post/announcing-atomic-numeric-operations)
+- [Announcing Atomic numeric operations](/blog/post/announcing-atomic-numeric-operations)
