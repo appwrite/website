@@ -14,7 +14,7 @@
     import LogoList from './(components)/logo-list.svelte';
 </script>
 
-<Head title="Appwrite - Build like a team of hundreds" />
+<Head title="Appwrite - The developers' cloud" />
 
 <Main>
     <Hero title="The developers' cloud" />
