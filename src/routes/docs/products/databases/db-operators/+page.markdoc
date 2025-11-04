@@ -598,7 +598,7 @@ Operator.ArrayPrepend(new[] { "z" })
 Operator.arrayPrepend(['z'])
 ```
 ```server-java
-Operator.arrayPrepend(new String[] {"z"})
+Operator.arrayPrepend(List.of("c"))
 ```
 {% /multicode %}
 
