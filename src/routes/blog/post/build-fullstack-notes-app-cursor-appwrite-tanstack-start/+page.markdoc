@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Build a Fullstack Notes App with Cursor, Appwrite, and TanStack Start
+title: Build a fullstack Nnotes app with Cursor, Appwrite, and TanStack Start
 description: Learn how to build a modern fullstack notes application using Cursor AI, Appwrite for backend, and TanStack Start for the frontend.
 date: 2025-11-05
 cover: /images/blog/build-fullstack-notes-app-cursor-appwrite-tanstack-start/cover.png
