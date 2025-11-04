@@ -23,7 +23,6 @@ In this tutorial, you’ll:
 - Connect Cursor to Appwrite using **MCP**
 - Build a **TanStack Start** app with authentication and CRUD
 - Run it locally
-- Deploy it anywhere later (Appwrite Sites, Netlify, Vercel, etc)
 
 ---
 
@@ -79,7 +78,7 @@ Click **Install**, then verify it appears in your MCP list.
 
 # Building the Notes App
 
-> No external API keys needed — fully local CRUD app with Appwrite.
+> Fully local CRUD app with Appwrite.
 
 ![TanStack Notes App](/images/blog/build-fullstack-notes-app-cursor-appwrite-tanstack-start/tanstacknotesapp.PNG)
 
@@ -292,6 +291,8 @@ Add accessible focus styles (focus-visible:outline-none focus-visible:ring focus
 
 ---
 
+Note: You can just add the first part "Add Tailwind CSS v4 and basic styling. I added the 2nd line in the prompt as I had issues with Tailwind utility errors I wasn't familiar with, so this prevents that issue from occurring.
+
 # Run Locally
 
 **Prompt (Cursor):**
@@ -382,15 +383,5 @@ Verify all routes and auth logic.
 
 ---
 
-# Let AI Build, You Create
-
-Cursor brings the AI.  
-Appwrite brings the backend.  
-**TanStack Start** keeps it modern and fast.  
-
-No API keys. No boilerplate. No friction.  
-Run locally or deploy anywhere you choose, when you're ready. It's too easy!
-
-👉 [Add Appwrite MCP to Cursor](https://appwrite.io/docs/tooling/mcp/cursor)
 
 > *If AI can handle the setup, what will you build next?*
