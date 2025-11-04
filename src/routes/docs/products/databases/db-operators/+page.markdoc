@@ -561,7 +561,7 @@ Operator.ArrayAppend(new[] { "c" })
 Operator.arrayAppend(['c'])
 ```
 ```server-java
-Operator.arrayAppend(new String[] {"c"})
+Operator.arrayAppend(List.of("c"))
 ```
 {% /multicode %}
 
