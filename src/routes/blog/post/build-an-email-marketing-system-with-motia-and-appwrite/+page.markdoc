@@ -1,0 +1,655 @@
+---
+layout: post
+title: Build an Email Marketing System with Motia and Appwrite
+description: Learn how to create automated email campaigns with API endpoints, event-driven workflows, AI personalization, and scheduled delivery in this hands-on tutorial using Motia's backend framework and Appwrite.
+date: 2025-11-5
+cover: /images/blog/build-an-email-marketing-system-with-motia-and-appwrite/emailmarketing_cover.png
+timeToRead: 16
+author: tessa
+category: tutorial
+featured: false
+callToAction: true
+---
+
+Build an email marketing system that automatically segments subscribers, generates personalized content, and sends campaigns on schedule using event-driven workflows.
+
+# What You'll Build
+
+By the end of this tutorial, you'll have a complete email marketing system with:
+
+- **Campaign Management API** - Create and schedule email campaigns via REST endpoints
+- **Smart User Segmentation** - Target audiences based on behavior and preferences  
+- **AI-Powered Personalization** - Generate unique content for each subscriber using OpenAI
+- **Automated Delivery** - Send emails in batches with rate limiting and retry logic
+- **Scheduled Campaigns** - Queue campaigns for future delivery with cron-based processing
+- **Real-Time Analytics** - Track opens, clicks, and engagement metrics
+-  **User Preferences** - One-click unsubscribe and user preference management
+
+![Visual Flow of all the Steps](/images/blog/build-an-email-marketing-system-with-motia-and-appwrite/image1-headline.png)
+
+# Prerequisites
+
+Before starting, you'll need:
+
+- **Appwrite account** (free tier works) - [Sign up here](https://appwrite.io)
+- **OpenAI API key** for content personalization - [Get key](https://platform.openai.com)
+
+
+# Getting Started
+
+Clone the complete working example at:
+
+```bash
+git clone https://github.com/MotiaDev/motia-examples.git
+cd examples/email-marketing-automation
+```
+
+Once you've cloned the project and navigated to the `email-marketing-automation` folder, install the dependencies:
+
+```bash
+npm install
+```
+This installs Motia, Appwrite SDK, OpenAI client, and other packages needed for the email automation system.
+
+### Configure Your Environment
+
+Create a `.env` file in the project root and add the following environment variables:
+
+```bash
+APPWRITE_ENDPOINT=https://cloud.appwrite.io/v1
+APPWRITE_PROJECT_ID=your_project_id
+APPWRITE_API_KEY=your_api_key
+OPENAI_API_KEY=your_openai_key
+```
+
+#### Where to find these:
+
+**Appwrite Project ID & API Key**: Create a new project in your Appwrite Console. 
+
+![image](/images/blog/build-an-email-marketing-system-with-motia-and-appwrite/createproject.png)
+
+In the project overview, you will see a section called `Integrations`
+
+![image](/images/blog/build-an-email-marketing-system-with-motia-and-appwrite/integrations-section.png)
+
+Click on the API Keys tab, to see if you have an API Key already, if not, click `Create API Key` button to create one and grant it all the scopes as shown on the UI:
+
+![image](/images/blog/build-an-email-marketing-system-with-motia-and-appwrite/api-keys-tab.png)
+
+**OpenAI API Key**: Get it from your [OpenAI dashboard](https://platform.openai.com/api-keys)
+
+### Set Up Your Database
+You have two options to set up your Appwrite database:
+
+#### Option 1: Automatic Setup
+Run the setup script to automatically create your database and tables:
+
+```bash
+npm run setup-appwrite
+```
+
+**What this script does:**
+
+- Creates a database called email-marketing-db
+- Creates a users table with columns for email, name, preferences, and metadata
+- Creates a campaigns table for managing email campaigns and tracking metrics
+- Sets proper permissions for reading and writing data
+
+You'll see success messages confirming each step:
+![image](/images/blog/build-an-email-marketing-system-with-motia-and-appwrite/setup-success.png)
+
+
+The script will output your database ID at the end. Add it to your .env file:
+
+```bash
+APPWRITE_DATABASE_ID=email-marketing-db
+```
+![image](/images/blog/build-an-email-marketing-system-with-motia-and-appwrite/database-id-output.png)
+
+![image](/images/blog/build-an-email-marketing-system-with-motia-and-appwrite/appwrite-users.png)
+
+#### Option 2: Manual Setup via Appwrite Console
+If you prefer to set up manually in the Appwrite dashboard:
+
+1. **Create a Database**
+
+- Go to your Appwrite Console
+- Navigate to Databases → Create Database
+- Name it `email-marketing-db`
+- Copy the Database ID to your `.env` file
+
+2. **Create the Users Table**
+- Click "Add a Table" → Name it users
+- Add these columns:
+```json
+    1. email (String, 255, required)
+    2. firstName (String, 100, required)
+    3. lastName (String, 100, required)
+    4. status (String, 50, required)
+    5. preferences (String, 2048, required)
+    6. metadata (String, 2048, required)
+```
+3. **Create the Campaigns Table**
+
+- Click "Create a Table" → Name it campaigns
+- Add these columns:
+```json
+   1. name (String, 255, required)
+   2. subject (String, 255, required)
+   3. template (String, 255, required)
+   4. targetAudience (String, 100, required)
+   5. status (String, 200, required)
+   6. metrics (String, 1000, required)
+   7. personalizeContent (Boolean, required)
+   8. scheduledFor (Datetime, optional)
+```
+
+4. **Set Permissions**
+
+- For both tables, add these permissions:
+
+```json
+   1. Read: Any
+   2. Create: Any
+   3. Update: Any
+   4. Delete: Any
+```
+
+### Start the Development Server
+
+```bash
+npm run dev
+```
+This command starts the server at http://localhost:3000, you can open this in your browser to see all 10 workflow steps and how they are connected.
+
+![workbench-email-automation](/images/blog/build-an-email-marketing-system-with-motia-and-appwrite/media.mov)
+
+### Using the Interactive Tutorial
+
+Before we go into exploring the project, notice the **Tutorial** button in the top-right of the Workbench. Click it to launch an interactive walkthrough.
+
+The tutorial includes:
+- Step-by-step explanations of each workflow component
+- Code annotations showing what each section does
+- Visual guides through the Workbench interface
+
+You can follow along with the interactive tutorial while reading this guide, or reference it anytime you want deeper context on a specific step.
+
+# [Media 1] -- Please add mp4 file which is shared to you on discord, interactive tutorial mp4----
+
+
+# Exploring the Project
+
+The starter project (that was cloned) includes a complete email marketing system built with Motia's event-driven architecture. Instead of building from scratch, we'll explore how each component works and connects together.
+
+**What's inside:**
+
+The `/steps` folder contains your workflow:
+- API endpoints that trigger campaigns
+- Event handlers that process data when events fire
+- Cron jobs that run on schedules (like checking for scheduled campaigns)
+- A Python step for AI-powered personalization
+
+The `/services` folder handles Appwrite integration:
+- Database operations for users and campaigns
+- Email delivery through Appwrite Messaging
+
+**Environment Configuration**
+- `.env` - Your API keys and credentials
+- `script/setup-appwrite.ts` - Database setup automation
+
+Each step is a self-contained file with two parts: **configuration** and **handler logic**. Motia automatically discovers these files and connects them based on the events they emit and subscribe to.
+
+Let's start by understanding how campaigns are created.
+
+# Step 1: Campaign Creation API
+
+The entry point to our system is a REST API endpoint. When you POST campaign data, it stores the campaign in Appwrite and emits an event to trigger the workflow.
+
+Open `steps/01-create-campaign.step.ts` in your editor.
+
+### Configuration
+```typescript
+export const config: ApiRouteConfig = {
+  type: 'api',
+  name: 'CreateCampaign',
+  method: 'POST',
+  path: '/campaigns',
+  emits: ['campaign-created'],
+  // ... validation schemas
+};
+```
+The config defines:
+- `type: 'api'` - This is an HTTP endpoint
+- `path: '/campaigns'` - Accessible at POST /campaigns
+- `emits: ['campaign-created']` - Triggers other steps that subscribe to this event.
+
+![image](/images/blog/build-an-email-marketing-system-with-motia-and-appwrite/api-endpoint-config.png)
+
+### Handler Logic
+The handler does three key things:
+
+```typescript
+// 1. Extract campaign data
+const { name, subject, template, targetAudience } = req.body;
+
+// 2. Store in Appwrite
+const createdCampaign = await appwriteService.createCampaign({...});
+
+// 3. Emit event to trigger next step
+await emit({
+  topic: 'campaign-created',
+  data: { campaignId: createdCampaign.$id, ... }
+});
+```
+
+What the `emit()` does: Any step that subscribes to **campaign-created** will automatically execute when this event fires. This is how Motia connects your workflow steps.
+
+![image](/images/blog/build-an-email-marketing-system-with-motia-and-appwrite/workflow-trigger.png)
+
+**Tutorial Reference**: See **Workflow Trigger** in the interactive tutorial for how events connect steps.
+
+**What's next:** This event triggers the user segmentation step. Let's see how that works.
+
+# Step 2: User Segmentation
+
+Now that a campaign is created, we need to find the right users to send it to. The user segmentation step listens for the campaign-created event and filters users based on the target audience.
+
+Open `steps/02-user-segmentation.step.ts.`
+
+### Configuration
+
+```typescript
+export const config: EventConfig = {
+  type: 'event',
+  name: 'UserSegmentation',
+  subscribes: ['campaign-created'],
+  emits: ['users-segmented']
+};
+```
+
+**Notice:**
+
+`type: 'event'` - This is an event handler, not an API endpoint
+`subscribes: ['campaign-created']` - Automatically runs when Step 1 emits this event
+`emits: ['users-segmented']` - Passes segmented users to the next step
+
+![image](/images/blog/build-an-email-marketing-system-with-motia-and-appwrite/event-step-config.png)
+
+
+#### Key concepts:
+
+**Audience Targeting:** The `getUsersBySegment()` function filters users based on criteria:
+
+* `new_users` - Signed up in the last 7 days
+* `active_users` - Active in the last 30 days
+* `vip_users` - High purchase count or VIP status
+* `all` - All users with email marketing enabled
+
+![image](/images/blog/build-an-email-marketing-system-with-motia-and-appwrite/user-segmentation-logic.png)
+
+
+**Motia State:** `state.set()` stores data that other steps can access. This keeps recipients available for analytics and monitoring.
+
+![image](/images/blog/build-an-email-marketing-system-with-motia-and-appwrite/campaign-state-storage.png)
+
+
+**What's next:** The segmented users are ready for personalization. Step 3 uses AI to customize content for each recipient.
+
+# Step 3: AI-Powered Content Personalization
+
+With our users segmented, it's time to personalize the email content. This step uses OpenAI to generate unique, context-aware content for each subscriber.
+Open `steps/03-content-personalization_step.py` 
+> (NOTE: this is a Python step!).
+
+```python
+config = {
+    "type": "event",
+    "name": "ContentPersonalization",
+    "subscribes": ["users-segmented"],
+    "emits": ["content-personalized"],
+    "flows": ["email-automation"]
+}
+```
+Motia supports **multi-language workflows**. This Python step integrates seamlessly with the TypeScript steps we've been working with.
+
+### Personalization Handler
+
+![image](/images/blog/build-an-email-marketing-system-with-motia-and-appwrite/content-personalization-logic.png)
+
+**What's happening:**
+1. **Template Fetching:** Retrieves email templates from Appwrite Storage
+2. **AI Personalization:** For each user, OpenAI generates:
+    - Custom subject lines based on user profile
+    - Personalized content sections based on engagement level, VIP status, and preferences
+3. **Fallback Handling:** If AI is unavailable, uses rule-based personalization
+4. **Email Queue:** Creates personalized email objects ready for delivery
+
+**Personalization Examples:**
+**For a VIP user:**
+    - Subject: VIP: Exclusive Early Access for Sarah
+    - Content includes VIP-specific offers and benefits
+
+**For a new user:**
+    - Subject: Welcome Sarah! Get Started in 5 Minutes
+    - Content focuses on onboarding and getting started tips
+    
+# Step 4: Email Delivery
+Now that we have personalized content for each user, it's time to send the emails. This step handles batch processing, rate limiting, and delivery through Appwrite Messaging.
+
+Open `steps/04-email-delivery.step.ts.`
+
+### Configuration
+```typescript
+export const config: EventConfig = {
+  type: 'event',
+  name: 'EmailDelivery',
+  subscribes: ['content-personalized'],
+  emits: ['email-sent', 'email-failed', 'campaign-completed']
+};
+```
+![image](/images/blog/build-an-email-marketing-system-with-motia-and-appwrite/email-step-config.png)
+
+**This step:**
+* Subscribes to personalized content from Step 3
+* Emits multiple events for success, failure, and completion tracking
+
+### Delivery Handler
+
+![image](/images/blog/build-an-email-marketing-system-with-motia-and-appwrite/campaign-scheduling-logic.png)
+
+**Key Features:**
+
+**Scheduled Delivery:** If `scheduledFor` is in the future, the emails are stored for later processing by the cron job (Step 5).
+**Batch Processing:** Sends 10 emails at a time to avoid overwhelming the email service and respect rate limits.
+**Error Handling:** Uses `Promise.allSettled()` to continue processing even if individual emails fail.
+**Rate Limiting:** 1-second delay between batches prevents hitting API rate limits.
+
+**Appwrite Integration:** The **AppwriteMessagingProvider** handles:
+
+* Creating Appwrite users if they don't exist
+* Setting up email targets
+* Sending emails through Appwrite's messaging service
+
+### Single Email Delivery
+![image](/images/blog/build-an-email-marketing-system-with-motia-and-appwrite/individual-email-sending.png)
+
+
+What's next: For scheduled campaigns, Step 5 checks periodically and triggers delivery at the right time.
+
+
+# Step 5: Email Scheduler
+Not all campaigns send immediately. The email scheduler is a cron job that checks every 5 minutes for campaigns scheduled to send.
+
+Open `steps/05-email-scheduler.step.ts.`
+
+### Configuration
+
+```typescript
+export const config: CronConfig = {
+  type: 'cron',
+  cron: '*/5 * * * *', // Every 5 minutes
+  name: 'EmailScheduler',
+  emits: ['content-personalized']
+};
+```
+
+**Cron Jobs in Motia:** This step runs automatically on a schedule. The cron expression `*/5 * * * *` means "every 5 minutes."
+![image](/images/blog/build-an-email-marketing-system-with-motia-and-appwrite/cron-step-config.png)
+
+
+**Scheduler Handler**
+![image](/images/blog/build-an-email-marketing-system-with-motia-and-appwrite/scheduled-campaign-processing.png)
+
+
+**How It Works:**
+
+* Check Every 5 Minutes: The cron job runs automatically
+* Query State: Retrieves all scheduled campaigns
+* Time Comparison: Checks if current time >= scheduled time
+* Trigger Delivery: Emits the content-personalized event (same as Step 3)
+* Cleanup: Old triggered campaigns are cleaned up after 24 hours
+
+**What's next:** Once emails are sent, we need to track engagement. Steps 6-7 handle analytics and monitoring.
+
+# Step 6: Email Analytics Tracker
+
+After emails are sent, tracking engagement is crucial. This step listens for email events (opens, clicks, bounces) and updates analytics in real-time.
+
+Open `steps/06-email-analytics-tracker.step.ts.`
+
+### Configuration
+```typescript
+export const config: EventConfig = {
+  type: 'event',
+  name: 'EmailAnalyticsTracker',
+  subscribes: [
+    'email-sent',
+    'email-delivered',
+    'email-opened',
+    'email-clicked',
+    'email-bounced',
+    'email-unsubscribed'
+  ],
+  emits: ['analytics-updated', 'engagement-milestone']
+};
+```
+
+![image](/images/blog/build-an-email-marketing-system-with-motia-and-appwrite/event-step-config.png)
+
+This step subscribes to multiple events, allowing it to track all types of email interactions.
+
+### Analytics Handler
+
+### Campaign-Level Analytics
+
+**Metrics Tracked:**
+
+* Delivery Rate: % of emails successfully delivered
+* Open Rate: % of delivered emails that were opened
+* Click Rate: % of opened emails where links were clicked
+* Bounce Rate: % of emails that bounced
+* Unsubscribe Rate: % of recipients who unsubscribed
+
+#### View Analytics
+In the Workbench, click on the State tab and select `campaign_analytics`. You'll see real-time metrics for each campaign:
+
+**What's next:** Step 7 monitors overall campaign health and generates alerts for issues.
+
+# Step 7: Campaign Status Monitor
+The final step in our core workflow is a health monitoring system. This cron job runs every 10 minutes to check campaign performance and generate alerts for issues.
+Open `steps/07-campaign-status-monitor.step.ts.`
+
+### Configuration
+```typescript
+export const config: CronConfig = {
+  type: 'cron',
+  cron: '*/10 * * * *', // Every 10 minutes
+  name: 'CampaignStatusMonitor',
+  emits: ['campaign-alert', 'campaign-health-report']
+};
+```
+![image](/images/blog/build-an-email-marketing-system-with-motia-and-appwrite/cron-step-config.png)
+
+
+### Monitoring Handler
+
+```typescript
+export const handler = async ({ logger, state, emit }) => {
+  const campaigns = await state.getGroup('campaigns');
+  const activeCampaigns = campaigns.filter(c => 
+    ['processing', 'sending', 'sent'].includes(c.status)
+  );
+
+  for (const campaign of activeCampaigns) {
+    // Calculate health score
+    const healthCheck = await monitorCampaignHealth(campaign, state, logger);
+    
+    // Generate alerts if needed
+    if (healthCheck.alerts.length > 0) {
+      await emit({
+        topic: 'campaign-alert',
+        data: {
+          campaignId: campaign.id,
+          alerts: healthCheck.alerts
+        }
+      });
+    }
+
+    // Generate health report
+    await generateHealthReport(campaign, healthCheck, state, emit, logger);
+
+    // Check for stuck campaigns
+    await checkStuckCampaigns(campaign, state, logger);
+  }
+};
+```
+
+### Health Monitoring
+
+![image](/images/blog/build-an-email-marketing-system-with-motia-and-appwrite/health-monitoring.png)
+**What Gets Monitored:**
+
+* Delivery rates below 85% (critical if below 70%)
+* Bounce rates above 10% (critical if above 20%)
+* Open rates below 5% after 100 deliveries
+* Stuck campaigns processing for more than 4 hours
+* Campaign health score (0-100 based on metrics)
+
+# Beyond the Core Workflow
+The system includes three additional steps that handle 3 differenct scenarios. Steps 1-7 form the main campaign workflow, these 3 steps run independently to manage user preferences, onboarding sequences, and behavioral responses.
+
+### Step 8: Unsubscribe Handler
+When users click `unsubscribe` in an email, this API endpoint processes the request and updates their preferences. It generates unique tokens for each unsubscribe link, logs the action for compliance, and automatically stops any active email sequences for that user. You can test it by checking the /unsubscribe endpoint in the Workbench, it handles the entire opt-out flow including confirmation pages.
+
+### Step 9: Welcome Email Series
+New users automatically enter a 4-email welcome sequence when they sign up. The first email sends immediately with account setup tips. The second comes 2 days later with getting started guides. After a week, they receive success stories from other users. Finally, after a month, they get advanced tips and pro features. The timing adapts based on engagement, if someone opens and clicks emails quickly, the next one arrives sooner.
+
+### Step 10: Behavioral Trigger Engine
+This step watches for specific user actions and responds with targeted campaigns. If someone abandons their cart, it triggers a 3-email recovery sequence. When users go inactive for 30 days, it sends a re-engagement email. High-engagement users get thank you messages and special offers. The engine checks conditions like purchase history and engagement scores before sending, so users only receive relevant messages.
+
+These three steps work alongside your main campaigns, handling the ongoing relationship with subscribers after the initial campaign sends.
+
+# Testing the Complete System
+Let's test the entire workflow end-to-end.
+
+### Create a Campaign
+In the Workbench Endpoints tab, test the `/campaigns` endpoint with the payload below:
+
+```typescript
+{
+  "name": "VIP Exclusive Offer",
+  "subject": "Exclusive early access for our VIP members",
+  "template": "vip",
+  "targetAudience": "vip_users",
+  "personalizeContent": true
+}
+```
+![image](/images/blog/build-an-email-marketing-system-with-motia-and-appwrite/create-campaign-payload.png)
+
+Click the `Play` icon by the right to make the request.
+
+### Watch the Workflow Execute
+After making the request, switch to the Tracing tab. You'll see the complete execution flow:
+
+What you'll see:
+
+* CreateCampaign creates the campaign
+* UserSegmentation filters VIP users
+* ContentPersonalization generates AI content
+* EmailDelivery sends emails in batches
+* EmailAnalyticsTracker logs send events
+
+![image](/images/blog/build-an-email-marketing-system-with-motia-and-appwrite/tracing-execution.png)
+
+### Check the Results
+
+**Check Appwrite:**
+In your Appwrite Console, go to Messaging → Messages to see the actual emails sent through Appwrite.
+
+![image](/images/blog/build-an-email-marketing-system-with-motia-and-appwrite/appwrite-messages.png)
+
+**Check Logs** - In the Logs tab, you will see the logs progression of each steps and how events are emitted from one step to the next.
+![image](/images/blog/build-an-email-marketing-system-with-motia-and-appwrite/logs-progression.png)
+
+
+### Test Scheduled Campaigns
+Create a campaign with a scheduledFor time 10 minutes in the future:
+
+```json
+{
+  "name": "Morning Newsletter",
+  "subject": "Your daily tech update",
+  "template": "newsletter",
+  "targetAudience": "active_users",
+  "scheduledFor": "2025-10-08T09:00:00Z",
+  "personalizeContent": true
+}
+```
+
+![image](/images/blog/build-an-email-marketing-system-with-motia-and-appwrite/scheduled-campaign-payload.png)
+
+Once you click the `Play` icon you can see the workflow progression in the `Tracing` tabs:
+![image](/images/blog/build-an-email-marketing-system-with-motia-and-appwrite/scheduled-workflow-progression.png)
+
+Then in the logs tab, you will see the email campaign to be delivered is queued:
+
+![image](/images/blog/build-an-email-marketing-system-with-motia-and-appwrite/queued-campaign-logs.png)
+
+
+# Understanding the Event Flow
+The power of Motia's event-driven architecture is how steps automatically connect through events. Here's the complete flow:
+
+```bash
+POST /campaigns
+    ↓
+CreateCampaign (Step 1)
+    └─ emits: campaign-created
+           ↓
+UserSegmentation (Step 2)
+    └─ emits: users-segmented
+           ↓
+ContentPersonalization (Step 3)
+    └─ emits: content-personalized
+           ↓
+EmailDelivery (Step 4)
+    ├─ emits: email-sent → EmailAnalyticsTracker (Step 6)
+    └─ emits: campaign-completed
+
+Every 5 min:
+EmailScheduler (Step 5)
+    └─ checks scheduled_campaigns
+    └─ emits: content-personalized (when time arrives)
+
+Every 10 min:
+CampaignStatusMonitor (Step 7)
+    └─ checks campaign health
+    └─ emits: campaign-alert (if issues found)
+```
+### Key Concepts:
+**Event-Driven:** Steps don't call each other directly. They emit events that trigger subscribers.
+**Decoupled:** Each step is independent. You can add, remove, or modify steps without breaking others.
+**Scalable:** Motia handles the orchestration, state management, and execution automatically.
+**Observable:** Built-in tracing, logging, and state inspection at every step.
+
+
+# Conclusion
+You've learned how to build a complete email marketing system using Motia's event-driven architecture. The key takeaways:
+
+**Event-Driven Design:** Steps communicate through events, creating loosely coupled, scalable workflows.
+
+**Multi-Language Support:** Mix TypeScript and Python in the same workflow based on what each task needs.
+
+**Built-In Observability:** Tracing, logging, and state management come out of the box.
+
+**Production-Ready Patterns:** Batch processing, rate limiting, error handling, and monitoring are baked in.
+
+Motia unified what would normally require multiple frameworks (API server, job queue, cron scheduler, state management) into one cohesive system. You focused on business logic while Motia handled the infrastructure.
+
+Ready to build your own workflows? Start with the [Motia Quick Start](https://www.motia.dev/docs/getting-started/quick-start) or explore more [examples](https://github.com/MotiaDev/motia-examples).
+
+Found this helpful? Star the [Motia](https://github.com/MotiaDev/motia) repository and share your experience building with Motia!
+
+# Acknowledgments
+
+Special thanks to Rohit Ghumare for his work and contributions to the content and implementation in this tutorial.
