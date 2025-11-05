@@ -17,7 +17,7 @@
 <Head title="Appwrite - The developers/' cloud" />
 
 <Main>
-    <Hero title="The developers/' cloud" />
+    <Hero title="The developers\' cloud" />
     <Platforms headline="Designed for the tools you work with" />
     <LogoList
         class="border-smooth border-b"
