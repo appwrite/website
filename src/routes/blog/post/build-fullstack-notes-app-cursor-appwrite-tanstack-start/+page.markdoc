@@ -39,10 +39,14 @@ The **Appwrite MCP server** gives Cursor access to your Appwrite project so it c
 
 ## 1. Create an API Key in Appwrite Cloud
 * Log in to [Appwrite Cloud](https://cloud.appwrite.io).
-* Create a **new API key** with **all scopes** (for setup) or select specified scopes.
+* Create a **new API key** with the following scopes:
+  - `databases.read` and `databases.write` (or `tables.read` and `tables.write`)
+  - `users.read` and `users.write`
 * Copy the key.
 
 You can find it at Overview -> Integrations -> API keys
+
+> **Note:** If you encounter permission errors, you can temporarily use "all scopes" for troubleshooting, but we recommend using specific scopes for better security.
 
 ## 2. Copy your Project ID
 Go to **Project → Overview**, hover over **Project ID**, and copy it.
