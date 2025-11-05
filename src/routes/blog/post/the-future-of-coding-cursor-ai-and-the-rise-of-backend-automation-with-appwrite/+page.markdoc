@@ -18,7 +18,7 @@ In this new ecosystem, Model Context Protocol (MCP) servers act as the missing b
 
 Cursor is often described as “the best way to code with AI.” ([cursor.com](https://cursor.com)) It combines the familiarity of a code editor with the intelligence of an AI pair programmer. As Datacamp explains:
 
-> "Cursor takes this a step further by directly integrating with the code editor, eliminating the need to switch between the editor and a chat interface."  
+> Cursor takes this a step further by directly integrating with the code editor, eliminating the need to switch between the editor and a chat interface. 
 > — [Datacamp](https://www.datacamp.com/tutorial/cursor-ai-code-editor)
 
 With Cursor, developers can describe what they want instead of typing every line manually. Prompts like *“Create a REST API for user authentication”* or *“Add a search feature with pagination”* can generate entire code scaffolds.
