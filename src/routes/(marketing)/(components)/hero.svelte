@@ -14,7 +14,7 @@
     };
 
     const {
-        title = 'The developers/' cloud',
+        title = 'The developers\' cloud',
         subtitle = 'Appwrite is an open-source, cloud development platform for developers who like to get things done. Use built-in backend infrastructure and web hosting, all from a single place.'
     }: Props = $props();
 </script>
