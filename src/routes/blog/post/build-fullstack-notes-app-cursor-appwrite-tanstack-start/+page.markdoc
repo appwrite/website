@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Build a fullstack Nnotes app with Cursor, Appwrite, and TanStack Start
+title: Build a fullstack Notes app with Cursor, Appwrite, and TanStack Start
 description: Learn how to build a modern fullstack notes application using Cursor AI, Appwrite for backend, and TanStack Start for the frontend.
 date: 2025-11-05
 cover: /images/blog/build-fullstack-notes-app-cursor-appwrite-tanstack-start/cover.png
@@ -29,7 +29,7 @@ In this tutorial, you’ll:
 # What Is MCP and Why It Matters
 
 **MCP (Model Context Protocol)** lets AI tools like Cursor securely connect to APIs and databases.  
-The **Appwrite MCP server** gives Cursor access to your Appwrite project so it can create collections, write code, and query real data.
+The **Appwrite MCP server** gives Cursor access to your Appwrite project so it can create tables, write code, and query real data.
 
 👉 [**Add Appwrite MCP to Cursor**](https://appwrite.io/docs/tooling/mcp/cursor)
 
@@ -50,7 +50,7 @@ In Cursor → **Tools → Installed MCP Servers → Add Custom MCP**:
 
 ![Cursor MCP Settings](/images/blog/build-fullstack-notes-app-cursor-appwrite-tanstack-start/cursor-mcp-settings.PNG)
 
-You can specify specific routes instead of choosing --all, such as --databases, --users, --functions since having too many may degrade performance in Cursor.
+You can specify specific routes instead of choosing --all, such as --tables, --users, --functions since having too many may degrade performance in Cursor.
 
 | Field | Example |
 |---|---|
@@ -163,24 +163,24 @@ npm i appwrite
 **Helper:**
 ```ts
 // src/lib/appwrite.ts
-import { Client, Account, Databases, ID } from 'appwrite';
+import { Client, Account, TablesDB, ID } from 'appwrite';
 
 const client = new Client()
   .setEndpoint(import.meta.env.VITE_APPWRITE_ENDPOINT!)
   .setProject(import.meta.env.VITE_APPWRITE_PROJECT_ID!);
 
 export const account = new Account(client);
-export const databases = new Databases(client);
+export const tablesDB = new TablesDB(client);
 export { ID };
 ```
 
 ---
 
-# Create Database & Collection via MCP
+# Create Database & Table via MCP
 
 **Prompt (Cursor):**
 ```text
-Using the Appwrite MCP server, create a database "main" and a collection "notes" with fields:
+Using the Appwrite MCP server, create a database "main" and a table "notes" with columns:
 title, content, userId, createdAt, updatedAt.
 Grant authenticated user read/write and save IDs to src/lib/config.ts.
 ```
@@ -274,7 +274,7 @@ export async function logout() {
 
 **Prompt (Cursor):**
 ```text
-Create a /notes route that lists, creates, updates, and deletes notes using Appwrite Databases API.
+Create a /notes route that lists, creates, updates, and deletes notes using Appwrite TablesDB API.
 Include loading, error, and empty states.
 ```
 
@@ -323,7 +323,7 @@ npm run preview
 | `/` shows TanStack docs page | Delete demo/docs routes and create `/`, `/login`, `/signup`, `/notes` manually. |
 | `focus-visible-ring` or `ring-opacity-*` errors | Tailwind v4 removed those utilities — use color/alpha rings instead. |
 | Missing `.env` file | Create `.env.local` using values from Appwrite MCP. |
-| 401/403 errors | Verify API key scopes + collection permissions. |
+| 401/403 errors | Verify API key scopes + table permissions. |
 | "Creation of a session is prohibited when a session is active." | Use session-safe login flow. Delete all sessions first, retry once if needed, and remove auto-login logic from `/login`. |
 
 ---
@@ -354,9 +354,9 @@ Install appwrite SDK. Create client helper using VITE_APPWRITE_* envs.
 Create a .env.local file and populate VITE_APPWRITE_ENDPOINT and VITE_APPWRITE_PROJECT_ID using values from Appwrite MCP.
 ```
 
-5️⃣ **Database + Collection**
+5️⃣ **Database + Table**
 ```text
-Create database "main" and collection "notes" via MCP with appropriate fields and permissions.
+Create database "main" and table "notes" via MCP with appropriate columns and permissions.
 ```
 
 6️⃣ **Authentication**
@@ -367,7 +367,7 @@ Ensure session-safe login logic to prevent duplicate sessions.
 
 7️⃣ **CRUD**
 ```text
-Create /notes route with list, create, update, delete using Appwrite Databases API.
+Create /notes route with list, create, update, delete using Appwrite TablesDB API.
 ```
 
 8️⃣ **Polish**
