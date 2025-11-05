@@ -42,6 +42,8 @@ The **Appwrite MCP server** gives Cursor access to your Appwrite project so it c
 * Create a **new API key** with **all scopes** (for setup) or select specified scopes.
 * Copy the key.
 
+You can find it at Overview -> Integrations -> API keys
+
 ## 2. Copy your Project ID
 Go to **Project → Overview**, hover over **Project ID**, and copy it.
 
@@ -80,6 +82,8 @@ Click **Install**, then verify it appears in your MCP list.
 
 > Fully local CRUD app with Appwrite.
 
+> **Preview:** Here's what we'll build by the end of this tutorial.
+
 ![TanStack Notes App](/images/blog/build-fullstack-notes-app-cursor-appwrite-tanstack-start/tanstacknotesapp.PNG)
 
 ---
@@ -89,22 +93,6 @@ Click **Install**, then verify it appears in your MCP list.
 ```bash
 mkdir ai-notes && cd ai-notes
 cursor .
-```
-
----
-
-# Remove Scaffolded Docs + Create Routes
-
-> **Note:** TanStack Start scaffolds a demo/docs route. You'll replace it with real app routes.
-
-**Prompt (Cursor):**
-```text
-Remove any TanStack Start demo/docs routes. Replace them with:
-- / → Landing page (redirects to /notes if logged in, else /login)
-- /login → Login page
-- /signup → Signup page
-- /notes → Notes app (protected, requires login)
-Ensure "/" never shows the TanStack Start docs page.
 ```
 
 ---
@@ -124,7 +112,23 @@ Choose: Start (SSR), TypeScript
 npm i
 ```
 
-> 💡 Cursor may prompt: `npm install --save-dev tsx` — that’s expected for SSR dev mode.
+> 💡 Cursor may prompt: `npm install --save-dev tsx` — that's expected for SSR dev mode.
+
+---
+
+# Remove scaffolded docs + create routes
+
+> **Note:** TanStack Start scaffolds a demo/docs route. You'll replace it with real app routes.
+
+**Prompt (Cursor):**
+```text
+Remove any TanStack Start demo/docs routes. Replace them with:
+- / → Landing page (redirects to /notes if logged in, else /login)
+- /login → Login page
+- /signup → Signup page
+- /notes → Notes app (protected, requires login)
+Ensure "/" never shows the TanStack Start docs page.
+```
 
 ---
 
@@ -180,7 +184,7 @@ export { ID };
 
 **Prompt (Cursor):**
 ```text
-Using the Appwrite MCP server, create a database "main" and a table "notes" with columns:
+Using the Appwrite MCP server, create a database with ID "notes-db" (name it "Notes Database") and a table with ID "notes" (name it "Notes") with columns:
 title, content, userId, createdAt, updatedAt.
 Grant authenticated user read/write and save IDs to src/lib/config.ts.
 ```
@@ -191,7 +195,7 @@ Grant authenticated user read/write and save IDs to src/lib/config.ts.
 
 **Prompt (Cursor):**
 ```text
-Create an auth helper with session-safe login/logout:
+Create an auth helper with session-safe login/logout. Import the account instance from ./lib/appwrite.ts (not creating a new one).
 
 Requirements:
 - login(email, password):
@@ -216,13 +220,8 @@ Update route guards:
 
 **Helper (`src/lib/auth.ts`):**
 ```ts
-import { Account, Client, ID } from 'appwrite';
-
-const client = new Client()
-  .setEndpoint(import.meta.env.VITE_APPWRITE_ENDPOINT!)
-  .setProject(import.meta.env.VITE_APPWRITE_PROJECT_ID!);
-
-const account = new Account(client);
+import { ID } from 'appwrite';
+import { account } from './appwrite';
 
 export async function getCurrentUser() {
   try {
@@ -356,7 +355,7 @@ Create a .env.local file and populate VITE_APPWRITE_ENDPOINT and VITE_APPWRITE_P
 
 5️⃣ **Database + Table**
 ```text
-Create database "main" and table "notes" via MCP with appropriate columns and permissions.
+Create database with ID "notes-db" (name it "Notes Database") and table with ID "notes" (name it "Notes") via MCP with appropriate columns and permissions.
 ```
 
 6️⃣ **Authentication**
