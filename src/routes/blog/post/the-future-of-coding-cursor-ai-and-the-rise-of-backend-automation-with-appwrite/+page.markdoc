@@ -29,10 +29,7 @@ But while Cursor accelerates frontend and logic creation, developers still need 
 
 [Appwrite](https://appwrite.io) is an open-source platform that simplifies backend setup by providing authentication, databases, storage, functions, and hosting all in one place.
 
-Appwrite’s philosophy aligns perfectly with the automation movement. It allows developers to focus on building their ideas instead of wiring infrastructure. As the official docs state:
-
-> “Appwrite allows you to build powerful AI-powered applications with ease. Leverage Appwrite’s powerful functions architecture and start building the future.”  
-> — [Appwrite AI Docs](https://appwrite.io/docs/products/ai)
+Appwrite’s philosophy aligns perfectly with the automation movement. It allows developers to focus on building their ideas instead of wiring infrastructure.
 
 # MCP: The Bridge Between AI Editors and Backends
 
