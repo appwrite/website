@@ -294,7 +294,7 @@ The trend of frameworks adding image manipulation features is a response to real
 
 But service-based transformations still have a strong place in modern web development. They excel at multi-platform delivery, reduce infrastructure complexity, and provide predictable scaling and costs.
 
-The question isn't which approach is better—it's which approach fits your specific needs. For many applications, using both in a hybrid setup makes the most sense. Let Appwrite Storage handle user-generated content and cross-platform image delivery, while using SSR functions for dynamic, custom-generated images.
+The question is not which approach is better, it's which approach fits your specific needs. For many applications, using both in a hybrid setup makes the most sense. Let Appwrite Storage handle user-generated content and cross-platform image delivery, while using SSR functions for dynamic, custom-generated images.
 
 Start with understanding your requirements: platform coverage, transformation needs, infrastructure preferences, and scaling strategy. Then choose the tool that matches those needs.
 
