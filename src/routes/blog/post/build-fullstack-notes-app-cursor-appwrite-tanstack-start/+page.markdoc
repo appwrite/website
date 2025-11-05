@@ -245,7 +245,7 @@ export async function login(email: string, password: string) {
   try {
     await account.createEmailPasswordSession(email, password);
   } catch (err: any) {
-    const msg = err?.message?.toLowerCase?.() ?? '';
+    const msg = err?.message?.toLowerCase() ?? '';
     if (msg.includes('session') && msg.includes('active')) {
       await deleteAllSessions();
       await account.createEmailPasswordSession(email, password);
