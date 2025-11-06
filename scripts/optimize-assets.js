@@ -76,18 +76,30 @@ async function main() {
         const image = sharp(file, {
             animated: is_animated
         });
-        const size_before = (await image.toBuffer()).length;
         const meta = await image.metadata();
         const buffer = await image[meta.format](config[meta.format])
             .resize(resize_config)
             .toBuffer();
-        const size_after = buffer.length;
 
-        if (size_after >= size_before) continue;
+        await sharp(buffer).toFile(file + '.optimized');
 
-        console.log(relative_path);
+        const size_before = Bun.file(file).size;
+        const size_after = Bun.file(file + '.optimized').size;
 
-        await sharp(buffer).toFile(file);
+        const size_diff = size_before - size_after;
+        const size_diff_percent = size_diff / size_before;
+
+        if (size_diff <= 0 || size_diff_percent < 0.2) {
+            await Bun.file(file + '.optimized').delete();
+            continue;
+        }
+
+        await Bun.file(file).delete();
+        await Bun.write(file, Bun.file(file + '.optimized'));
+        await Bun.file(file + '.optimized').delete();
+
+        const diff_verbose = Math.round(size_diff_percent * 100);
+        console.log(`✅ ${relative_path} has been optimized (-${diff_verbose}%)`);
     }
 }
 
