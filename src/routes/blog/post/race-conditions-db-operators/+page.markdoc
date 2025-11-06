@@ -41,7 +41,7 @@ await tablesdb.updateRow({
 
 In the above code block, if multiple requests are sent simultaneously, there is a chance that the `counter` remains the same across multiple requests, missing an update or updating completely incorrectly. I have created a script to demonstrate this. If you want to check it out, I have published it on my [GitHub Repository](https://github.com/atharvadeosthale/db-operators-appwrite).
 
-Running the script on a database with a row ID `table` and default `value` being 0, I got the following output.
+Running the script on a database with a row ID `first` and default `value` being 0, I got the following output.
 
 ```
 ======================================================================
