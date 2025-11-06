@@ -1,7 +1,6 @@
 import { sentrySvelteKit } from '@sentry/sveltekit';
 import { enhancedImages } from '@sveltejs/enhanced-img';
 import { sveltekit } from '@sveltejs/kit/vite';
-import { withFilter } from 'vite';
 import dynamicImport from 'vite-plugin-dynamic-import';
 import { ViteImageOptimizer } from 'vite-plugin-image-optimizer';
 import manifestSRI from 'vite-plugin-manifest-sri';
@@ -17,16 +16,13 @@ export default defineConfig({
         // }),
         enhancedImages(),
         sveltekit(),
-        withFilter(
-            dynamicImport({
-                filter(id) {
-                    if (id.includes('/node_modules/@appwrite.io/repo/docs')) {
-                        return true;
-                    }
+        dynamicImport({
+            filter(id) {
+                if (id.includes('/node_modules/@appwrite.io/repo/docs')) {
+                    return true;
                 }
-            }),
-            { load: { id: 'src/lib/utils/specs.ts' } }
-        ),
+            }
+        }),
         ViteImageOptimizer({
             include: ['**/*.png', '**/*.jpg', '**/*.jpeg', '**/*.gif', '**/*.svg'],
             exclude: ['**/*.avif', '**/*.webp'],
