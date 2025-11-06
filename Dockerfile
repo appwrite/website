@@ -1,4 +1,4 @@
-FROM oven/bun:1 AS base
+FROM oven/bun:1.3.1 AS base
 
 ARG PUBLIC_APPWRITE_ENDPOINT
 ENV PUBLIC_APPWRITE_ENDPOINT ${PUBLIC_APPWRITE_ENDPOINT}
@@ -57,11 +57,16 @@ COPY bun.lock bun.lock
 
 FROM base AS build
 
-COPY . .
 RUN bun install --frozen-lockfile
+COPY . .
+RUN bun run sync
 RUN bun run build
 
-FROM base AS final
+FROM base AS prod-deps
+
+RUN bun install --frozen-lockfile --production
+
+FROM node:22-bullseye AS final
 
 # Install fontconfig
 COPY ./local-fonts /usr/share/fonts
@@ -70,8 +75,9 @@ RUN apt-get update && \
 	apt-get autoremove --purge && \
 	rm -rf /var/lib/apt/lists/*
 RUN fc-cache -f -v
+
 COPY --from=build /app/build/ build
 COPY --from=build /app/server/ server
-RUN bun install --frozen-lockfile --prod
+COPY --from=prod-deps /app/node_modules/ node_modules
 
-CMD [ "bun", "server/main.js"]
+CMD ["node", "server/main.js"]
