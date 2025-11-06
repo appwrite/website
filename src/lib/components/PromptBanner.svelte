@@ -8,14 +8,24 @@
     import { onMount } from 'svelte';
     import { trackEvent } from '$lib/actions/analytics';
     import AiPromptIcon from '$lib/components/ui/aiPromptIcon.svelte';
+    import { browser } from '$app/environment';
 
     // Only support co-located prompt.md
     const routeExists = hasRoutePrompt();
     const prompt = routeExists ? (getRoutePrompt() ?? '') : '';
     const exists = routeExists;
     const { copied, copy } = createCopy(prompt);
+    let isLight = false;
     onMount(() => {
         copied.set(false);
+        if (!browser) return;
+        const update = () => {
+            isLight = document.body.classList.contains('light');
+        };
+        update();
+        const observer = new MutationObserver(update);
+        observer.observe(document.body, { attributes: true, attributeFilter: ['class'] });
+        return () => observer.disconnect();
     });
 
     type Ide = 'copy' | 'cursor' | 'chatgpt' | 'claude';
@@ -31,6 +41,11 @@
         }
     });
 
+    function openExternal(url: string) {
+        if (!browser) return;
+        window.open(url, '_blank', 'noopener,noreferrer');
+    }
+
     function openIde(value: Ide) {
         if (value === 'copy') {
             trackEvent('prompt_banner_copy_clicked');
@@ -45,21 +60,21 @@
         if (value === 'cursor') {
             trackEvent('prompt_banner_cursor_clicked');
             const url = `https://cursor.com/link/prompt?text=${text}`;
-            window.open(url, '_blank', 'noopener,noreferrer');
+            openExternal(url);
             return;
         }
 
         if (value === 'chatgpt') {
             trackEvent('prompt_banner_chatgpt_clicked');
             const url = `https://chatgpt.com/?prompt=${text}`;
-            window.open(url, '_blank', 'noopener,noreferrer');
+            openExternal(url);
             return;
         }
 
         if (value === 'claude') {
             trackEvent('prompt_banner_claude_clicked');
             const url = `https://claude.ai/new?q=${text}`;
-            window.open(url, '_blank', 'noopener,noreferrer');
+            openExternal(url);
             return;
         }
     }
@@ -69,7 +84,7 @@
 </script>
 
 {#if exists}
-    <div class="ai-banner">
+    <div class="ai-banner" class:light={isLight}>
         <div class="ai-banner_content">
             <div class="ai-banner_title">
                 <AiPromptIcon class="text-primary" aria-hidden="true" />
@@ -205,8 +220,7 @@
         background: hsl(var(--web-color-card));
         margin-block: 12px 16px;
 
-        /* Light mode border */
-        :global(body.light) & {
+        &.light {
             border-color: hsl(var(--web-color-greyscale-50));
         }
 
@@ -267,14 +281,14 @@
         color: hsl(var(--web-color-white));
     }
 
-    :global(.ai-banner .web-button.no-left-radius [class*='icon']) {
+    .ai-banner :global(.web-button.no-left-radius [class*='icon']) {
         color: hsl(var(--web-color-white));
     }
 
-    /* Make chevron icons pink in light mode */
-    :global(body.light .ai-banner .web-button.no-left-radius .web-icon-chevron-down),
-    :global(body.light .ai-banner .web-button.no-left-radius .web-icon-chevron-up) {
-        color: hsl(var(--web-color-pink-500));
+    /* Chevron color in light mode via local class */
+    .ai-banner.light :global(.web-button.no-left-radius .web-icon-chevron-down),
+    .ai-banner.light :global(.web-button.no-left-radius .web-icon-chevron-up) {
+        color: hsl(var(--web-color-accent));
     }
 
     /* Style child component output: adjust both element and its gradient pseudo-elements */
