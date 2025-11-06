@@ -23,7 +23,7 @@ Let’s dive in.
 
 ![Unlimited sites](/images/blog/product-update-october-2025/sites.png)
 
-# Unlimited Sites on the free plan
+# Unlimited Sites on the Free plan
 
 Appwrite Sites began in early access with a single goal: to make deploying modern web projects as seamless as building them. To ensure performance and reliability, we initially limited deployments to one site per project while we refined the experience.
 
@@ -54,11 +54,11 @@ Appwrite has always been built with openness and flexibility in mind. Every rele
 
 Version 1.8 continues that commitment, giving self-hosted users access to:
 
-- New Database experience
-- Powerful Database features
-- Features to make migrations less messy
+- New Databases experience
+- Powerful Databases features
+- Features to simplify and streamline migrations
 
-[Read the announcement](https://appwrite.io/blog/post/appwrite-1-8-0-self-hosted-release)
+[Read the announcement](/blog/post/appwrite-1-8-0-self-hosted-release)
 
 ![TanStack Start](/images/blog/product-update-october-2025/tanstack.png)
 
@@ -74,12 +74,12 @@ You can now run TanStack Start with full Server-Side Rendering (SSR) directly on
 
 # New Cloud regions
 
-We’ve added two new regions to Appwrite Cloud. The Singapore(SGP) and Toronto(TOR) Cloud regions are now live and ready for your projects.
+We’ve added two new regions to Appwrite Cloud. The Singapore (SGP) and Toronto (TOR) Cloud regions are now live and ready for your projects.
 
 This means you can:
 
-* Create new projects directly.
-* Or migrate your existing projects to take advantage of the new locations.
+- Create new projects directly.
+- Or migrate your existing projects to take advantage of the new locations.
 
 [Learn more](/docs/products/network/regions)
 
@@ -115,7 +115,6 @@ Read
 - [Best Postman alternative options developers actually enjoy using](/blog/post/best-postman-alternative-options)
 - [Appwrite 1.8.0: The most powerful self-hosted release yet](/blog/post/appwrite-1-8-0-self-hosted-release)
 - [From student to developer - How open source can launch your career](/blog/post/from-student-to-developer-how-open-source-can-launch-your-career)
-- [Build a full-stack Notes app with Cursor, Appwrite, and TanStack Start](/blog/post/build-fullstack-notes-app-cursor-appwrite-tanstack-start)
 - [The future of coding: Cursor, AI, and the rise of backend automation with Appwrite](/blog/post/the-future-of-coding-cursor-ai-and-the-rise-of-backend-automation-with-appwrite)
 
 Watch
