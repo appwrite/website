@@ -31,7 +31,7 @@
         ? getContext<BlogMidCtaContext>('blog-mid-cta')
         : undefined;
     const MidCtaComponent = midCta?.component;
-    let renderMidCta = false;
+    let renderMidCta = $state(false);
 
     if (midCta && MidCtaComponent && level === midCta.level) {
         const alreadyInserted = get(midCta.inserted);
@@ -84,7 +84,7 @@
 </script>
 
 {#if renderMidCta && MidCtaComponent && midCta}
-    <svelte:component this={MidCtaComponent} {...midCta.props} />
+    <MidCtaComponent {...midCta.props} />
 {/if}
 
 <svelte:element this={tag} {id} bind:this={element}>

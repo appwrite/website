@@ -32,7 +32,7 @@
 
 <div
     class={cn(
-        'border-smooth relative mb-8 mt-10 flex flex-col justify-center gap-8 overflow-hidden rounded-xl border p-5 outline-3 [outline-offset:-3px] outline-white/5 md:p-12',
+        'border-smooth relative mt-10 mb-8 flex flex-col justify-center gap-8 overflow-hidden rounded-xl border p-5 outline-3 [outline-offset:-3px] outline-white/5 md:p-12',
         'before:absolute before:inset-0 before:h-[170%] before:scale-x-125 before:bg-[radial-gradient(ellipse_at_center,_rgba(253,_54,_110,_0.2),_transparent_65%)] before:blur-lg'
     )}
 >

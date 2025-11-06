@@ -19,10 +19,7 @@
         getInlinedScriptTag
     } from '$lib/utils/metadata';
     import { isAnnouncement, parseCategories } from '$lib/utils/blog-cta';
-    import {
-        prepareBlogCtaState,
-        type BlogCallToActionInput
-    } from '$lib/utils/blog-mid-cta';
+    import { prepareBlogCtaState, type BlogCallToActionInput } from '$lib/utils/blog-mid-cta';
     import type { AuthorData, PostsData } from '$routes/blog/content';
     import { TITLE_SUFFIX } from '$routes/titles';
     import { getContext, setContext } from 'svelte';
