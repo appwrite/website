@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Handle race conditions when running operations in Appwrite DB
-description: Learn how race conditions can occur while running operations on your Appwrite database and how operators can hellp avoid them.
+description: Learn how race conditions can occur while running operations on your Appwrite database and how operators can help avoid them.
 date: 2025-11-06
 cover: /images/blog/race-conditions-db-operators/cover.png
 timeToRead: 5
