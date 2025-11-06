@@ -89,7 +89,7 @@ jobs:
             - name: Install dependencies
               run: bun install --frozen-lockfile
             - name: Optimize assets
-              run: bun run optimize
+              run: CI=true bun run optimize
             - name: Check for uncommitted changes
               run: |
                 if ! git diff --exit-code; then

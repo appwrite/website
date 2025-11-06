@@ -93,13 +93,16 @@ async function main() {
             await Bun.file(file + '.optimized').delete();
             continue;
         }
-
         await Bun.file(file).delete();
         await Bun.write(file, Bun.file(file + '.optimized'));
         await Bun.file(file + '.optimized').delete();
 
         const diff_verbose = Math.round(size_diff_percent * 100);
         console.log(`✅ ${relative_path} has been optimized (-${diff_verbose}%)`);
+        
+        if(Bun.env.CI) {
+          console.log(`Stopping optimization in CI/CD env, as one diff is enough to make test fail`);
+        }
     }
 }
 
