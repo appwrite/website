@@ -92,13 +92,12 @@ jobs:
               run: CI=true bun run optimize
             - name: Check for uncommitted changes
               run: |
-                if ! git diff --exit-code; then
-                  echo "Assets are not optimized! The following changes were detected:"
-                  echo ""
-                  git diff
-                  echo ""
-                  echo "Please run 'bun run optimize' locally and commit the changes."
-                  exit 1
-                fi
-                echo "✅ All assets are properly optimized."
-    
+                  if ! git diff --exit-code; then
+                    echo "Assets are not optimized! The following changes were detected:"
+                    echo ""
+                    git diff
+                    echo ""
+                    echo "Please run 'bun run optimize' locally and commit the changes."
+                    exit 1
+                  fi
+                  echo "✅ All assets are properly optimized."
