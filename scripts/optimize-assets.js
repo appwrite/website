@@ -128,10 +128,6 @@ async function main() {
             throw new Error(`Failed to replace ${relative_path}: ${error.message}`);
         }
 
-        await Bun.file(file).delete();
-        await Bun.write(file, Bun.file(file + '.optimized'));
-        await Bun.file(file + '.optimized').delete();
-
         const diff_verbose = Math.round(size_diff_percent * 100);
         console.log(`✅ ${relative_path} has been optimized (-${diff_verbose}%)`);
 
