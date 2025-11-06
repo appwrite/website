@@ -112,7 +112,7 @@ This cadence makes DX visible and creates a habit loop that compounds.
 # What programs actually reduce cognitive load
 
 **Docs and examples**  
-Replace demp apps with production-shaped examples that include environment variables, secrets management, and copy-paste commands. Add one architecture diagram per starter to teach the mental model, not just the API surface. Developers want to try real world examples.
+Replace demo apps with production-shaped examples that include environment variables, secrets management, and copy-paste commands. Add one architecture diagram per starter to teach the mental model, not just the API surface. Developers want to try real world examples.
 
 **Community support**  
 You can set a response-time goal for your support channels, or whenever your community lives, then route repeated questions into docs within the week. Updating and adding new docs based on developer feedback helps improve the onboarding experience as well. If one person is stuck, the chances are, others are too. Faster response time can lead to happier developers.
