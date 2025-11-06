@@ -26,7 +26,7 @@ In this tutorial, you’ll:
 
 ---
 
-# What Is MCP and Why It Matters
+# What is MCP and why it matters
 
 **MCP (Model Context Protocol)** lets AI tools like Cursor securely connect to APIs and databases.  
 The **Appwrite MCP server** gives Cursor access to your Appwrite project so it can create tables, write code, and query real data.
@@ -82,7 +82,7 @@ Click **Install**, then verify it appears in your MCP list.
 
 ---
 
-# Building the Notes App
+# Building the notes app
 
 > Fully local CRUD app with Appwrite.
 
@@ -92,7 +92,7 @@ Click **Install**, then verify it appears in your MCP list.
 
 ---
 
-# Create a Project Folder
+# Create a project folder
 
 ```bash
 mkdir ai-notes && cd ai-notes
@@ -273,7 +273,7 @@ export async function logout() {
 
 ---
 
-# Add CRUD for Notes
+# Add CRUD for notes
 
 **Prompt (Cursor):**
 ```text
@@ -283,7 +283,7 @@ Include loading, error, and empty states.
 
 ---
 
-# Style and Quality Pass (Tailwind v4, Accessibility)
+# Style and quality pass (Tailwind v4, accessibility)
 
 **Prompt (Cursor):**
 ```text
@@ -296,7 +296,7 @@ Add accessible focus styles (focus-visible:outline-none focus-visible:ring focus
 
 Note: You can just add the first part "Add Tailwind CSS v4 and basic styling. I added the 2nd line in the prompt as I had issues with Tailwind utility errors I wasn't familiar with, so this prevents that issue from occurring.
 
-# Run Locally
+# Run locally
 
 **Prompt (Cursor):**
 ```text
@@ -335,7 +335,7 @@ npm run preview
 
 Everyone has a different experience going through a tutorial. Luckily, with using Cursor, you can enter any errors or problems you are having, and it should fix it and adjust your code as needed.
 
-# Master Prompt List
+# Master prompt list
 
 1️⃣ **Scaffold app**
 ```text
