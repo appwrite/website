@@ -1,1 +1,23 @@
+---
+layout: post
+title: "March product update: Product Hunt launch, Appwrite MCP server, and faster backups."
+description: Get a full recap of products, features and programs we released in the month of March.
+date: 2025-04-11
+cover: /images/blog/product-update-march-2025/cover-image.png
+timeToRead: 10
+author: dennis-ivy
+category: product
+featured: false
+callToAction: true
+---
+Welcome back to the October product update. This month, we released the most requested Database feature, along with Appwrite 1.8x support for Self-hosted. Best of all, you can now spin up unlimited Sites on the free plan.
+
+So, here’s what to expect:
+
+- Transactions API
+- New cloud regions
+- TanStack Start support
+- Next.js 16 support
+
+Let’s dive in.
 
