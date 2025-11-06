@@ -11,9 +11,7 @@ const exceptions = ['assets/'];
  * @type {{
  *     jpeg: sharp.JpegOptions,
  *     webp: sharp.WebpOptions,
- *     png: sharp.PngOptions,
- *     gif: sharp.GifOptions,
- *     avif: sharp.AvifOptions
+ *     png: sharp.PngOptions
  * }}
  */
 const config = {
@@ -25,14 +23,6 @@ const config = {
     },
     png: {
         quality: 100
-    },
-    /*
-    gif: {
-        quality: 100
-    },
-     */
-    avif: {
-        lossless: true
     }
 };
 
@@ -71,20 +61,16 @@ function get_relative_path(file) {
 async function main() {
     for (const file of walk_directory(join(__dirname, '../static'))) {
         const relative_path = get_relative_path(file);
-        const is_animated = file.endsWith('.gif');
         if (!is_image(file)) continue;
         if (exceptions.some((exception) => relative_path.startsWith(exception))) continue;
-
+        
         // Skip optimization check for small files
         if (Bun.env.CI && Bun.file(file).size <= 100000) {
             continue;
         }
-
-        const image = sharp(file, {
-            animated: is_animated,
-            limitInputPixels: 1920 * 1920
-        });
-
+        
+        const image = sharp(file); // limitInputPixels
+        
         let meta;
         try {
             meta = await image.metadata();
