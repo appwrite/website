@@ -15,17 +15,9 @@
     const prompt = routeExists ? (getRoutePrompt() ?? '') : '';
     const exists = routeExists;
     const { copied, copy } = createCopy(prompt);
-    let isLight = false;
+
     onMount(() => {
         copied.set(false);
-        if (!browser) return;
-        const update = () => {
-            isLight = document.body.classList.contains('light');
-        };
-        update();
-        const observer = new MutationObserver(update);
-        observer.observe(document.body, { attributes: true, attributeFilter: ['class'] });
-        return () => observer.disconnect();
     });
 
     type Ide = 'copy' | 'cursor' | 'chatgpt' | 'claude';
@@ -84,7 +76,7 @@
 </script>
 
 {#if exists}
-    <div class="ai-banner" class:light={isLight}>
+    <div class="ai-banner">
         <div class="ai-banner_content">
             <div class="ai-banner_title">
                 <AiPromptIcon class="text-primary" aria-hidden="true" />
@@ -215,14 +207,10 @@
 <style lang="scss">
     .ai-banner {
         padding: 12px 16px;
-        border: 1px solid hsl(var(--web-color-greyscale-800));
+        border: 1px solid hsl(var(--web-color-offset));
         border-radius: 12px;
         background: hsl(var(--web-color-card));
         margin-block: 12px 16px;
-
-        &.light {
-            border-color: hsl(var(--web-color-greyscale-50));
-        }
 
         &_content {
             display: flex;
@@ -285,9 +273,9 @@
         color: hsl(var(--web-color-white));
     }
 
-    /* Chevron color in light mode via local class */
-    .ai-banner.light :global(.web-button.no-left-radius .web-icon-chevron-down),
-    .ai-banner.light :global(.web-button.no-left-radius .web-icon-chevron-up) {
+    /* Chevron color via theme-resolved variable (no theme selector) */
+    .ai-banner :global(.web-button.no-left-radius .web-icon-chevron-down),
+    .ai-banner :global(.web-button.no-left-radius .web-icon-chevron-up) {
         color: hsl(var(--web-color-accent));
     }
 
