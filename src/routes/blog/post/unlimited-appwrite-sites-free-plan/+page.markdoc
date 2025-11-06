@@ -1,0 +1,42 @@
+---
+layout: post
+title: Appwrite Sites now offers unlimited sites on the free plan
+description: Appwrite Sites now supports unlimited sites per project on the Free plan. We initially limited it to one site for stability, and it’s now ready to scale. You can deploy as many sites as you need for testing, staging, or production.
+date: 2025-10-28
+cover: /images/blog/sites-free-plan.png
+timeToRead: 4
+author: laura-du-ry
+category: announcement
+---
+
+When we launched Appwrite Sites in early access, our goal was clear: make deploying modern web projects as easy and integrated as building them. From the start, we intended for developers to have full flexibility, to deploy, test, and scale without limits.
+
+But before opening things up, we needed to ensure that the platform was stable, fast, and reliable for everyone. That’s why, during the initial rollout, we limited Sites to one per project. This gave us the room to validate performance, harden our infrastructure, and refine the developer experience.
+
+Now that Appwrite Sites has matured, it's time to lift that constraint. On the free plan, you can deploy unlimited sites per project.
+
+# Build, test, and deploy without limits
+
+With this update, you can create as many sites as needed under a single Appwrite project. Whether you’re:
+
+- Spinning up **test environments** for new features,
+- Running **staging sites** for QA and review, or
+- Deploying **production-ready apps** to the world
+
+You can do it all without worrying about limits or separate configurations.
+
+Appwrite Sites automatically handles builds, SSL, DDoS, and CDN distribution, so you can move quickly from commit to deployment across as many environments as you need.
+
+# Designed for scale, ready for anything
+
+This update aligns with the broader Appwrite vision: give developers the tools to build and ship software without barriers.
+
+Unlimited sites mean you can manage everything from micro frontends and documentation pages to landing pages and experimental prototypes within a single, unified Appwrite project.
+
+Whether you’re an individual developer or part of a growing team, your Sites setup can scale naturally with your workflow, and no plan upgrades are required.
+
+Learn more about Appwrite sites:
+
+- [Sites docs](/docs/products/sites)
+- [Product page](/products/sites)
+- [Appwrite Sites templates](/docs/products/sites/templates)
