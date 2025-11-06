@@ -27,8 +27,8 @@ The implication is simple. If you shorten feedback loops, lower cognitive load, 
 
 # What respected DevRel voices say about trust and value
 
-> The goal is not hello world. The goal is to take the next step.  
-Source: Adam DuVander — [What Comes After Hello World?](https://everydeveloper.com/after-hello-world/) (and yes that's a can opener on his blog post, I had to triple blink my eyes on this) and [interview on developer marketing related to DX](https://devmarketing.c4media.com/p/developer-marketing-does-not-exist-b30). 
+> Share practical demos with real-world applicability; go beyond Hello World to provide value by showing developers how to build things that are practical and useful.
+Source: Kim Maida — [What Comes After Hello World?](https://maida.kim/how-to-drive-developer-growth-and-engagement/). 
 
 > I propose this metric: DevRel Qualified Leads, as one accepted metric by which to prove the value of our Developer Relations and Community teams. 
 Source: Mary Thengvall — [“DevRel Qualified Leads”](https://www.marythengvall.com/blog/2019/12/14/devrel-qualified-leads-repurposing-a-common-business-metrics-to-prove-value). See also OpenView’s summary (https://openviewpartners.com/blog/the-truth-about-devrel-how-to-make-it-work/).
@@ -69,7 +69,7 @@ Use one **north star** that represents recurring value, then track four **leadin
 
 **Definition:** percent of accounts that complete at least one “power action” in days 22–28, for example adding a custom domain, inviting a teammate, scheduling a backup, or enabling role-based permissions.  
 **Why it matters:** power actions correlate with real usage and retention.  
-**Evidence:** the DX dimensions help identify which “next steps” reduce mental overhead and signal value. "The key to measuring DevEx is to focus on developers and their lived experiences in delivering software". Source: ACM (https://queue.acm.org/detail.cfm?id=3595878).
+**Evidence:** the DX dimensions help identify which “next steps” reduce mental overhead and signal value. "The key to measuring DevEx is to focus on developers and their lived experiences in delivering software". Source: [ACM](https://queue.acm.org/detail.cfm?id=3595878).
 
 **DevRel touchpoints:** one clear next-step nudge, templates for production setups, case studies that teach the step itself rather than only outcomes. Case studies, or better yet, "Customer Stories", have been a huge benefit for sharing real-world stories on how developers are using our product in production.
 
@@ -133,7 +133,7 @@ Adopt DRQL so DevRel is evaluated on enablement and introductions rather than qu
 
 # Real-world context: the market is getting bigger and faster
 
-GitHub’s 2025 Octoverse highlights that more than 180 million developers build on the platform and that, on average, one developer joined GitHub every second last year. Your first-run experience is not a local issue, it is a market-level acquisition and retention factor. Sources: [Octoverse 2025 overview and news post](https://octoverse.github.com/, https://github.blog/news-insights/octoverse/octoverse-a-new-developer-joins-github-every-second-as-ai-leads-typescript-to-1/).
+GitHub’s 2025 Octoverse highlights that more than 180 million developers build on the platform and that, on average, one developer joined GitHub every second last year. Your first-run experience is not a local issue, it is a market-level acquisition and retention factor. Sources: [Octoverse 2025 overview and news post](https://github.blog/news-insights/octoverse/octoverse-a-new-developer-joins-github-every-second-as-ai-leads-typescript-to-1/).
 
 
 # Closing thought
