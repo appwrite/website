@@ -1,7 +1,10 @@
 <script lang="ts">
     import { slugify } from '$lib/utils/slugify';
     import { getContext, hasContext, onMount, type Snippet } from 'svelte';
+    import type { InlineCtaProps } from '$lib/utils/blog-mid-cta';
     import type { LayoutContext } from '../layouts/Article.svelte';
+    import type CallToAction from '../tags/Call_To_Action.svelte';
+    import { get, type Writable } from 'svelte/store';
 
     interface HeadingProps {
         level: number;
@@ -14,6 +17,32 @@
 
     const tag = `h${level + 1}`;
     const ctx = hasContext('headings') ? getContext<LayoutContext>('headings') : undefined;
+
+    interface BlogMidCtaContext {
+        level: number;
+        targetIndex: number;
+        count: number;
+        inserted: Writable<boolean>;
+        component: typeof CallToAction | undefined;
+        props: InlineCtaProps;
+    }
+
+    const midCta = hasContext('blog-mid-cta')
+        ? getContext<BlogMidCtaContext>('blog-mid-cta')
+        : undefined;
+    const MidCtaComponent = midCta?.component;
+    let renderMidCta = false;
+
+    if (midCta && MidCtaComponent && level === midCta.level) {
+        const alreadyInserted = get(midCta.inserted);
+        if (!alreadyInserted) {
+            midCta.count += 1;
+            if (midCta.count === midCta.targetIndex) {
+                renderMidCta = true;
+                midCta.inserted.set(true);
+            }
+        }
+    }
 
     let element: HTMLElement | undefined = $state();
 
@@ -53,6 +82,10 @@
 
     let id = $derived(elementId ?? slugify(element?.innerText ?? ''));
 </script>
+
+{#if renderMidCta && MidCtaComponent && midCta}
+    <svelte:component this={MidCtaComponent} {...midCta.props} />
+{/if}
 
 <svelte:element this={tag} {id} bind:this={element}>
     <a href={`#${id ?? slugify(element?.innerText ?? '')}`}>{@render children()}</a>

@@ -4,16 +4,20 @@
 
     export let heading: string = 'Start building with Appwrite today';
     export let label: string = 'Get started';
+    export let description: string | undefined = undefined;
+    export let href: string = getAppwriteDashboardUrl();
+    export let event: string = 'blog-cta-get_started_btn-click';
 </script>
 
 <div
-    class="bg relative mt-12 -mb-6 flex min-h-[12rem] items-center justify-center overflow-hidden border-t border-[hsl(var(--web-color-subtle))] py-12"
+    class="bg relative mt-12 -mb-6 flex min-h-48 items-center justify-center overflow-hidden border-t border-[hsl(var(--web-color-subtle))] py-12"
 >
     <div class="flex max-w-3xs flex-col items-center justify-center gap-5 text-center">
         <h2 class="text-label text-primary font-aeonik-pro">{heading}</h2>
-        <Button href={getAppwriteDashboardUrl()} event="blog-cta-get_started_btn-click"
-            >{label}</Button
-        >
+        {#if description}
+            <p class="text-main-body text-muted-foreground">{description}</p>
+        {/if}
+        <Button {href} {event}>{label}</Button>
     </div>
 </div>
 
