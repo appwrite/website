@@ -23,7 +23,7 @@
     import type { AuthorData, PostsData } from '$routes/blog/content';
     import { TITLE_SUFFIX } from '$routes/titles';
     import { getContext, setContext } from 'svelte';
-    import { writable, type Writable } from 'svelte/store';
+    import { writable } from 'svelte/store';
     import type { LayoutContext } from './Article.svelte';
 
     export let title: string;
