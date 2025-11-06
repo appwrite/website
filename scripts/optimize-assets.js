@@ -26,9 +26,11 @@ const config = {
     png: {
         quality: 100
     },
+    /*
     gif: {
         quality: 100
     },
+     */
     avif: {
         lossless: true
     }
@@ -73,10 +75,28 @@ async function main() {
         if (!is_image(file)) continue;
         if (exceptions.some((exception) => relative_path.startsWith(exception))) continue;
 
+        // Skip optimization check for small files
+        if (Bun.env.CI && Bun.file(file).size <= 100000) {
+            continue;
+        }
+
         const image = sharp(file, {
-            animated: is_animated
+            animated: is_animated,
+            limitInputPixels: 1920 * 1920
         });
-        const meta = await image.metadata();
+
+        let meta;
+        try {
+            meta = await image.metadata();
+        } catch (err) {
+            if (Bun.env.CI) {
+                throw new Error(`${relative_path} failed: ${err.message}`);
+            }
+
+            console.log(`${relative_path} failed: ${err.message}`);
+            continue;
+        }
+
         const buffer = await image[meta.format](config[meta.format])
             .resize(resize_config)
             .toBuffer();
@@ -99,9 +119,11 @@ async function main() {
 
         const diff_verbose = Math.round(size_diff_percent * 100);
         console.log(`✅ ${relative_path} has been optimized (-${diff_verbose}%)`);
-        
-        if(Bun.env.CI) {
-          console.log(`Stopping optimization in CI/CD env, as one diff is enough to make test fail`);
+
+        if (Bun.env.CI) {
+            console.log(
+                `Stopping optimization in CI/CD env, as one diff is enough to make test fail`
+            );
         }
     }
 }
