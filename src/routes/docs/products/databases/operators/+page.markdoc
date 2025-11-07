@@ -1,6 +1,6 @@
 ---
 layout: article
-title: Database operators
+title: Operators
 description: Update multiple fields atomically without fetching the full row. Perform numeric, array, string, and date updates in a single, consistent workflow.
 ---
 
@@ -294,11 +294,11 @@ Use operators when you need to:
 
 This keeps payloads small, avoids race conditions, and reduces round-trips.
 
-# Operator categories {% #operators %}
+# Operator {% #operators %}
 
 The following operators are available, grouped by field type. Each operator updates the given column atomically on the server.
 
-## Numeric operators {% #numeric %}
+## Numeric {% #numeric %}
 
 Perform arithmetic on numeric fields without reading the row first.
 
@@ -524,7 +524,7 @@ Operator.power(2)
 ```
 {% /multicode %}
 
-## Array operators {% #array %}
+## Array {% #array %}
 
 Edit lists in place: append, remove, or modify array items atomically.
 
@@ -824,7 +824,7 @@ Operator.arrayFilter(Condition.GreaterThan, 10)
 ```
 {% /multicode %}
 
-## String operators {% #string %}
+## String {% #string %}
 
 Make lightweight text changes without rewriting the whole row.
 
@@ -902,7 +902,7 @@ Operator.stringReplace("old", "new")
 ```
 {% /multicode %}
 
-## Date operators {% #date %}
+## Date {% #date %}
 
 Adjust time-based fields for lifecycle and scheduling logic.
 
@@ -1017,7 +1017,7 @@ Operator.dateSetNow()
 ```
 {% /multicode %}
 
-## Boolean operators {% #boolean %}
+## Boolean {% #boolean %}
 
 Toggle boolean values in place.
 
