@@ -83,7 +83,7 @@ async function main() {
             continue;
         }
 
-        if ((Bun.env.CI && meta.width > 1980) || meta.height > 1980) {
+        if (Bun.env.CI && (meta.width > 1980 || meta.height > 1980)) {
             const msg = `${relative_path} is too large: ${meta.width}x${meta.height}`;
             throw new Error(msg);
         }
