@@ -3,6 +3,18 @@
 .#{$p}-content-footer {
   padding-block-start: pxToRem(32);
   border-block-start: solid pxToRem(1) hsl(var(--web-color-border));
+  &-header-end {
+    @media #{$break1} { 
+      ul.#{$p}-metadata {
+        padding-inline-start: 0 !important;
+      }
+      li {
+        padding-inline-start: 0 !important;
+        margin-inline-start: 0 !important;
+      }
+    }
+  }
+  
   &-header {
     display:flex; justify-content:space-between;
     &-start { display:flex; gap:pxToRem(16); }
