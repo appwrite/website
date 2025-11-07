@@ -71,7 +71,7 @@
     );
 </script>
 
-<section class={cn('dark web-code-snippet mx-auto', className)} aria-label="code-snippet panel">
+<section class={cn('web-code-snippet mx-auto', className)} aria-label="code-snippet panel">
     <header class="web-code-snippet-header">
         <div class="web-code-snippet-header-start">
             <div class="flex gap-4">

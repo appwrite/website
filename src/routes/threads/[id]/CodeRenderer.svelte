@@ -67,7 +67,7 @@
         {@html result}
     {/if}
 {:else}
-    <section class="dark web-code-snippet" aria-label="code-snippet panel">
+    <section class="web-code-snippet" aria-label="code-snippet panel">
         <header class="web-code-snippet-header">
             <div class="web-code-snippet-header-start">
                 {#if platformMap[language]}

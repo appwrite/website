@@ -4,6 +4,12 @@
   --p-code-snippet-bg-color: var(--web-color-greyscale-850);
   --p-code-snippet-header-bg-color: var(--web-color-greyscale-800);
 
+  #{$theme-light} & {
+    --p-code-snippet-border-color: var(--web-color-greyscale-200);
+    --p-code-snippet-bg-color: var(--web-color-white);
+    --p-code-snippet-header-bg-color: var(--web-color-greyscale-100);
+  }
+
   &-header {
     display:flex; justify-content:space-between; align-items: center; gap:pxToRem(16); padding:pxToRem(8);
     background-color:hsl(var(--p-code-snippet-header-bg-color));
@@ -19,5 +25,13 @@
     code { white-space:pre; }
   }
 
-  .buttons-list-item:nth-child(n+2)::before { background-color:hsl(var(--web-color-greyscale-750)); }
+  .buttons-list-item:nth-child(n+2)::before { 
+    background-color:hsl(var(--web-color-greyscale-750)); 
+  }
+
+  #{$theme-light} & {
+    .buttons-list-item:nth-child(n+2)::before { 
+      background-color:hsl(var(--web-color-greyscale-250)); 
+    }
+  }
 }

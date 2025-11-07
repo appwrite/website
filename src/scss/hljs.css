@@ -6,15 +6,27 @@
   Based on the Tomorrow Night Eighties theme: https://github.com/isagalaev/highlight.js/blob/master/src/styles/tomorrow-night-eighties.css
 */
 
+/* Dark mode styles (default) */
 .hljs {
     background: #2b2b2b;
     color: #f8f8f2;
+}
+
+/* Light mode styles */
+.light .hljs {
+    background: #f8f8f8;
+    color: #383a42;
 }
 
 /* Comment */
 .hljs-comment,
 .hljs-quote {
     color: #d4d0ab;
+}
+
+.light .hljs-comment,
+.light .hljs-quote {
+    color: #a0a1a7;
 }
 
 /* Red */
@@ -29,6 +41,17 @@
     color: #ffa07a;
 }
 
+.light .hljs-variable,
+.light .hljs-template-variable,
+.light .hljs-tag,
+.light .hljs-name,
+.light .hljs-selector-id,
+.light .hljs-selector-class,
+.light .hljs-regexp,
+.light .hljs-deletion {
+    color: #e45649;
+}
+
 /* Orange */
 .hljs-number,
 .hljs-built_in,
@@ -40,9 +63,23 @@
     color: #f5ab35;
 }
 
+.light .hljs-number,
+.light .hljs-built_in,
+.light .hljs-literal,
+.light .hljs-type,
+.light .hljs-params,
+.light .hljs-meta,
+.light .hljs-link {
+    color: #986801;
+}
+
 /* Yellow */
 .hljs-attribute {
     color: #ffd700;
+}
+
+.light .hljs-attribute {
+    color: #c18401;
 }
 
 /* Green */
@@ -53,16 +90,33 @@
     color: #abe338;
 }
 
+.light .hljs-string,
+.light .hljs-symbol,
+.light .hljs-bullet,
+.light .hljs-addition {
+    color: #50a14f;
+}
+
 /* Blue */
 .hljs-title,
 .hljs-section {
     color: #00e0e0;
 }
 
+.light .hljs-title,
+.light .hljs-section {
+    color: #0184bc;
+}
+
 /* Purple */
 .hljs-keyword,
 .hljs-selector-tag {
     color: #dcc6e0;
+}
+
+.light .hljs-keyword,
+.light .hljs-selector-tag {
+    color: #a626a4;
 }
 
 .hljs-emphasis {
@@ -102,6 +156,10 @@ pre {
     color: #e4e4e7;
 }
 
+.light pre {
+    color: #383a42;
+}
+
 code.line-numbers .line {
     counter-increment: line;
 }
@@ -115,6 +173,10 @@ code.line-numbers .line:before {
     width: 2.5rem;
 }
 
+.light code.line-numbers .line:before {
+    color: #a0a1a7;
+}
+
 .hljs-doctag,
 .hljs-keyword,
 .hljs-meta .hljs-keyword,
@@ -125,12 +187,30 @@ code.line-numbers .line:before {
     color: #fe86a8;
 }
 
+.light .hljs-doctag,
+.light .hljs-keyword,
+.light .hljs-meta .hljs-keyword,
+.light .hljs-template-tag,
+.light .hljs-template-variable,
+.light .hljs-type,
+.light .hljs-variable.language_ {
+    color: #a626a4;
+}
+
 .hljs-title,
 .hljs-title.class_,
 .hljs-title.class_.inherited__,
 .hljs-title.function_,
 .hljs-symbol {
     color: #68a3fe;
+}
+
+.light .hljs-title,
+.light .hljs-title.class_,
+.light .hljs-title.class_.inherited__,
+.light .hljs-title.function_,
+.light .hljs-symbol {
+    color: #4078f2;
 }
 
 .hljs-attr,
@@ -147,16 +227,42 @@ code.line-numbers .line:before {
     color: #fe9567;
 }
 
+.light .hljs-attr,
+.light .hljs-attribute,
+.light .hljs-literal,
+.light .hljs-meta,
+.light .hljs-number,
+.light .hljs-operator,
+.light .hljs-built_in,
+.light .hljs-variable,
+.light .hljs-selector-attr,
+.light .hljs-selector-class,
+.light .hljs-selector-id {
+    color: #986801;
+}
+
 .hljs-regexp,
 .hljs-string,
 .hljs-meta .hljs-string {
     color: #85dbd8;
 }
 
+.light .hljs-regexp,
+.light .hljs-string,
+.light .hljs-meta .hljs-string {
+    color: #50a14f;
+}
+
 .hljs-comment,
 .hljs-code,
 .hljs-formula {
     color: #adadb0;
+}
+
+.light .hljs-comment,
+.light .hljs-code,
+.light .hljs-formula {
+    color: #a0a1a7;
 }
 
 .hljs-emphasis {
