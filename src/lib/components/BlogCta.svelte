@@ -8,6 +8,12 @@
         description = undefined,
         href = getAppwriteDashboardUrl(),
         event = 'blog-cta-get_started_btn-click'
+    }: {
+        heading?: string;
+        label?: string;
+        description?: string;
+        href?: string;
+        event?: string;
     } = $props();
 </script>
 
