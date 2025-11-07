@@ -2,11 +2,13 @@
     import { getAppwriteDashboardUrl } from '$lib/utils/dashboard';
     import { Button } from '$lib/components/ui';
 
-    export let heading: string = 'Start building with Appwrite today';
-    export let label: string = 'Get started';
-    export let description: string | undefined = undefined;
-    export let href: string = getAppwriteDashboardUrl();
-    export let event: string = 'blog-cta-get_started_btn-click';
+    let {
+        heading = 'Start building with Appwrite today',
+        label = 'Get started',
+        description = undefined,
+        href = getAppwriteDashboardUrl(),
+        event = 'blog-cta-get_started_btn-click'
+    } = $props();
 </script>
 
 <div
