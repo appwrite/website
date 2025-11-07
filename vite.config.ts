@@ -11,7 +11,7 @@ export default defineConfig({
         sentrySvelteKit({
             sourceMapsUploadOptions: {
                 org: 'appwrite',
-                project: 'website',
+                project: 'website'
             }
         }),
         enhancedImages(),
