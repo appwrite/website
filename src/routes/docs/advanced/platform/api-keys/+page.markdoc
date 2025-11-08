@@ -36,14 +36,14 @@ If you need to replace your API Key, create a new key, update your app credentia
 | `teams.write`    | Access to create, update, and delete your project's teams              |
 | `databases.read` | Access to read your project's databases                               |
 | `databases.write`| Access to create, update, and delete your project's databases         |
-| `collections.read`| Access to read your project's database collections                   |
-| `collections.write`| Access to create, update, and delete your project's database collections|
-| `attributes.read`| Access to read your project's database collection's attributes        |
-| `attributes.write`| Access to create, update, and delete your project's database collection's attributes|
-| `indexes.read`   | Access to read your project's database collection's indexes            |
-| `indexes.write`  | Access to create, update, and delete your project's database collection's indexes|
-| `documents.read` | Access to read your project's database documents                       |
-| `documents.write`| Access to create, update, and delete your project's database documents |
+| `tables.read`| Access to read your project's database tables                   |
+| `tables.write`| Access to create, update, and delete your project's database tables|
+| `columns.read`| Access to read your project's database table's columns        |
+| `columns.write`| Access to create, update, and delete your project's database table's columns|
+| `indexes.read`   | Access to read your project's database table's indexes            |
+| `indexes.write`  | Access to create, update, and delete your project's database table's indexes|
+| `rows.read` | Access to read your project's database rows                       |
+| `rows.write`| Access to create, update, and delete your project's database rows |
 | `files.read`     | Access to read your project's storage files and preview images         |
 | `files.write`    | Access to create, update, and delete your project's storage files      |
 | `buckets.read`   | Access to read your project's storage buckets                          |

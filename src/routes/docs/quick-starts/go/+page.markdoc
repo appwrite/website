@@ -31,10 +31,10 @@ Then, under **Integrate with your server**, add an **API Key** with the followin
 | Category  {% width=120 %} | Required scopes       | Purpose |
 |-----------|-----------------------|---------|
 | Database  | `databases.write`     | Allows API key to create, update, and delete [databases](/docs/products/databases/databases). |
-|           | `collections.write`   | Allows API key to create, update, and delete [collections](/docs/products/databases/collections). |
-|           | `attributes.write`    | Allows API key to create, update, and delete [attributes](/docs/products/databases/collections#attributes). |
-|           | `documents.read`      | Allows API key to read [documents](/docs/products/databases/documents). |
-|           | `documents.write`     | Allows API key to create, update, and delete [documents](/docs/products/databases/documents). |
+|           | `tables.write`   | Allows API key to create, update, and delete [tables](/docs/products/databases/tables). |
+|           | `columns.write`    | Allows API key to create, update, and delete [columns](/docs/products/databases/tables#columns). |
+|           | `rows.read`      | Allows API key to read [rows](/docs/products/databases/rows). |
+|           | `rows.write`     | Allows API key to create, update, and delete [rows](/docs/products/databases/rows). |
 
 Other scopes are optional.
 
@@ -79,15 +79,16 @@ package main
 import (
 	"github.com/appwrite/sdk-for-go/appwrite"
 	"github.com/appwrite/sdk-for-go/client"
-	"github.com/appwrite/sdk-for-go/databases"
+	"github.com/appwrite/sdk-for-go/tablesDB"
 	"github.com/appwrite/sdk-for-go/models"
+	"github.com/appwrite/sdk-for-go/query"
 )
 
 var (
 	appwriteClient    client.Client
 	todoDatabase      *models.Database
-	todoCollection    *models.Collection
-	appwriteDatabases *databases.Databases
+	todoTable    *models.Table
+	appwriteDatabases *tablesDB.TablesDB
 )
 
 func main() {
@@ -101,42 +102,42 @@ func main() {
 {% /section %}
 {% section #step-5 step=5 title="Initialize database" %}
 
-Once the Appwrite Client is initialized, create a function to configure a todo collection. Import the id Appwrite dependency by adding `"github.com/appwrite/sdk-for-go/id"` to the imported dependencies list.
+Once the Appwrite Client is initialized, create a function to configure a todo table. Import the id Appwrite dependency by adding `"github.com/appwrite/sdk-for-go/id"` to the imported dependencies list.
 
 ```go
 func prepareDatabase() {
-	appwriteDatabases = appwrite.NewDatabases(appwriteClient)
+	tablesDB = appwrite.NewTablesDB(appwriteClient)
 
-	todoDatabase, _ = appwriteDatabases.Create(
+	todoDatabase, _ = tablesDB.Create(
 		id.Unique(),
 		"TodosDB",
 	)
 
-	todoCollection, _ = appwriteDatabases.CreateCollection(
+	todoTable, _ = tablesDB.CreateTable(
 		todoDatabase.Id,
 		id.Unique(),
 		"Todos",
 	)
 
-	appwriteDatabases.CreateStringAttribute(
+	tablesDB.CreateStringColumn(
 		todoDatabase.Id,
-		todoCollection.Id,
+		todoTable.Id,
 		"title",
 		255,
 		true,
 	)
 
-	appwriteDatabases.CreateStringAttribute(
+	tablesDB.CreateStringColumn(
 		todoDatabase.Id,
-		todoCollection.Id,
+		todoTable.Id,
 		"description",
 		255,
 		false,
 	)
 
-	appwriteDatabases.CreateBooleanAttribute(
+	tablesDB.CreateBooleanColumn(
 		todoDatabase.Id,
-		todoCollection.Id,
+		todoTable.Id,
 		"isComplete",
 		true,
 	)
@@ -144,8 +145,8 @@ func prepareDatabase() {
 ```
 
 {% /section %}
-{% section #step-6 step=6 title="Add documents" %}
-Create a function to add some mock data to your new collection.
+{% section #step-6 step=6 title="Add rows" %}
+Create a function to add some mock data to your new table.
 
 ```go
 func seedDatabase() {
@@ -166,23 +167,23 @@ func seedDatabase() {
 		"isComplete":  false,
 	}
 
-	appwriteDatabases.CreateDocument(
+	tablesDB.createRow(
 		todoDatabase.Id,
-		todoCollection.Id,
+		todoTable.Id,
 		id.Unique(),
 		testTodo1,
 	)
 
-	appwriteDatabases.CreateDocument(
+	tablesDB.createRow(
 		todoDatabase.Id,
-		todoCollection.Id,
+		todoTable.Id,
 		id.Unique(),
 		testTodo2,
 	)
 
-	appwriteDatabases.CreateDocument(
+	tablesDB.createRow(
 		todoDatabase.Id,
-		todoCollection.Id,
+		todoTable.Id,
 		id.Unique(),
 		testTodo3,
 	)
@@ -190,7 +191,7 @@ func seedDatabase() {
 ```
 
 {% /section %}
-{% section #step-7 step=7 title="Retrieve documents" %}
+{% section #step-7 step=7 title="Retrieve rows" %}
 
 Create a function to retrieve the mock todo data.
 
@@ -203,18 +204,61 @@ type Todo struct {
 
 type TodoList struct {
 	*models.DocumentList
-	Documents []Todo `json:"documents"`
+	Documents []Todo `json:"rows"`
 }
 
 func getTodos() {
-	todoResponse, _ := appwriteDatabases.ListDocuments(
+	// Retrieve rows (default limit is 25)
+	todoResponse, _ := tablesDB.ListRows(
 		todoDatabase.Id,
-		todoCollection.Id,
+		todoTable.Id,
 	)
 
 	var todos TodoList
 	todoResponse.Decode(&todos)
 
+	fmt.Println("Todos:")
+	for _, todo := range todos.Documents {
+		fmt.Printf("Title: %s\nDescription: %s\nIs Todo Complete: %t\n\n", todo.Title, todo.Description, todo.IsComplete)
+	}
+}
+
+func getCompletedTodos() {
+	// Use queries to filter completed todos with pagination
+	todoResponse, _ := tablesDB.ListRows(
+		todoDatabase.Id,
+		todoTable.Id,
+		tablesDB.WithListRowsQueries([]string{
+			query.Equal("isComplete", true),
+			query.OrderDesc("$createdAt"),
+			query.Limit(5),
+		}),
+	)
+
+	var todos TodoList
+	todoResponse.Decode(&todos)
+
+	fmt.Println("Completed todos (limited to 5):")
+	for _, todo := range todos.Documents {
+		fmt.Printf("Title: %s\nDescription: %s\nIs Todo Complete: %t\n\n", todo.Title, todo.Description, todo.IsComplete)
+	}
+}
+
+func getIncompleteTodos() {
+	// Query for incomplete todos
+	todoResponse, _ := tablesDB.ListRows(
+		todoDatabase.Id,
+		todoTable.Id,
+		tablesDB.WithListRowsQueries([]string{
+			query.Equal("isComplete", false),
+			query.OrderAsc("title"),
+		}),
+	)
+
+	var todos TodoList
+	todoResponse.Decode(&todos)
+
+	fmt.Println("Incomplete todos (ordered by title):")
 	for _, todo := range todos.Documents {
 		fmt.Printf("Title: %s\nDescription: %s\nIs Todo Complete: %t\n\n", todo.Title, todo.Description, todo.IsComplete)
 	}
@@ -231,16 +275,17 @@ import (
 
 	"github.com/appwrite/sdk-for-go/appwrite"
 	"github.com/appwrite/sdk-for-go/client"
-	"github.com/appwrite/sdk-for-go/databases"
+	"github.com/appwrite/sdk-for-go/tablesDB"
 	"github.com/appwrite/sdk-for-go/id"
 	"github.com/appwrite/sdk-for-go/models"
+	"github.com/appwrite/sdk-for-go/query"
 )
 
 var (
 	appwriteClient    client.Client
 	todoDatabase      *models.Database
-	todoCollection    *models.Collection
-	appwriteDatabases *databases.Databases
+	todoTable    *models.Table
+	tablesDB *tablesDB.TablesDB
 )
 
 func main() {
@@ -252,6 +297,8 @@ func main() {
 	prepareDatabase()
 	seedDatabase()
 	getTodos()
+	getCompletedTodos()
+	getIncompleteTodos()
 }
 ```
 

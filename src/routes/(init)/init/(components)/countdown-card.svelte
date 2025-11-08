@@ -20,7 +20,7 @@
 </script>
 
 <a href="#day-{index}">
-    <div class="text-caption text-primary mb-2 flex gap-2 font-mono uppercase">
+    <div class="text-caption text-primary font-fira-code mb-2 flex gap-2 uppercase">
         Day {index}
         {#if hasReleased}
             <span class="text-accent">/</span><span>{title}</span>{/if}

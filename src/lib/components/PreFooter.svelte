@@ -1,6 +1,7 @@
 <script lang="ts">
     import { Button, type Variant } from '$lib/components/ui';
     import { getAppwriteDashboardUrl } from '$lib/utils/dashboard';
+    import { SHOW_SCALE_PLAN } from '$lib/constants/feature-flags';
 
     const plans: Array<{
         name: string;
@@ -24,7 +25,7 @@
         },
         {
             name: 'Pro',
-            price: '$15',
+            price: '$25',
             variable: true,
             tag: 'Most Popular',
             description:
@@ -55,6 +56,8 @@
             eventName: 'footer-plans-enterprise-click'
         }
     ];
+
+    const visiblePlans = SHOW_SCALE_PLAN ? plans : plans.filter((plan) => plan.name !== 'Scale');
 </script>
 
 <img
@@ -89,7 +92,7 @@
         </header>
 
         <ul class="web-strip-plans -mt-8">
-            {#each plans as plan}
+            {#each visiblePlans as plan}
                 <li class="web-strip-plans-item web-strip-plans-container-query">
                     <div class="place-item-end grid grid-cols-1 gap-6 md:grid-cols-3">
                         <div class="flex flex-col">

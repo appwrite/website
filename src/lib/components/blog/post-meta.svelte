@@ -3,13 +3,25 @@
     import { handleCopy } from '$lib/utils/copy';
     import { formatDate } from '$lib/utils/date';
     import type { AuthorData } from '$routes/blog/content';
+    import { page } from '$app/state';
 
-    export let date: string = new Date().toISOString();
-    export let timeToRead: string = '0';
-    export let title: string = '';
-    export let description: string = '';
-    export let authorData: Partial<AuthorData> = {};
-    export let currentURL: string = '';
+    interface Props {
+        date?: string;
+        timeToRead?: string;
+        title?: string;
+        description?: string;
+        authorData?: Partial<AuthorData>;
+        currentURL?: string;
+    }
+
+    const {
+        date = new Date().toISOString(),
+        timeToRead = '0',
+        title = '',
+        description = '',
+        authorData = {},
+        currentURL = ''
+    }: Props = $props();
 
     const getShareLink = (shareOption: SocialShareOption) => {
         const blogPostUrl = encodeURI(currentURL);
@@ -30,7 +42,7 @@
             {title}
         </h1>
         {#if description}
-            <p class="text-description text-secondary mt-2">
+            <p class="text-description text-secondary font-medium">
                 {description}
             </p>
         {/if}
@@ -59,7 +71,7 @@
         {/if}
 
         <div class="mt-4 flex items-center gap-4">
-            <span class="text-micro text-secondary uppercase">SHARE</span>
+            <span class="text-eyebrow text-secondary uppercase">SHARE</span>
 
             <ul class="flex gap-2">
                 {#each socialSharingOptions as sharingOption}
@@ -78,7 +90,7 @@
                         {:else}
                             <button
                                 aria-label={sharingOption.label}
-                                on:click={() => handleCopy(currentURL)}
+                                onclick={() => handleCopy(currentURL)}
                             >
                                 <span class={sharingOption.icon} aria-hidden="true"></span>
                             </button>

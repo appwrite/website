@@ -14,7 +14,7 @@ Open your terminal, and run the following command.
 npm create nuxt my-app
 ```
 
-Push this project to a [GitHub repo](https://github.com/new).
+Push this project to a [GitHub repository](https://github.com/new).
 {% /section %}
 
 {% section #step-2 step=2 title="Create Appwrite project" %}
@@ -33,7 +33,7 @@ If this is your first time using Appwrite, create an account and create your fir
 {% section #step-3 step=3 title="Create site" %}
 Head to the **Sites** page in your Appwrite project, click on the **Create site** button, and select **Connect a repository**.
 
-Connect your GitHub account and select the repository you intend to deploy.
+Connect your GitHub account and select the repository you intend to deploy (or allow all repositories, for future ease).
 
 1. Select the **production branch** and **root directory** from your repo.
 2. Verify that the **correct framework** is selected. In case an incorrect framework is visible, pick **Nuxt** from the drop-down list. 
@@ -41,7 +41,7 @@ Connect your GitHub account and select the repository you intend to deploy.
     - **Install command:** `npm install`
     - **Build command:** `npm run build`
     - **Output directory:** `./.output`
-4. Add any **environment variables** required by the site.
+4. Add any **environment variables** required by the site. This is not necessary if you're deploying the starter app.
 
 Click on the **Deploy** button.
 {% /section %}

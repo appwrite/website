@@ -7,6 +7,7 @@ cover: /images/blog/building-custom-auth-flows/cover.png
 timeToRead: 11
 author: ebenezer-don
 category: tutorial
+lastUpdated: 2025-10-14
 ---
 
 While Appwrite provides built-in authentication methods like email/password, OAuth, and Magic URL, there are scenarios where you need more flexibility.
@@ -186,7 +187,17 @@ app.post('/auth/external/login', async (req, res) => {
     }
 
     // Create Appwrite token and return it to the client
-    const token = await users.createToken(user.id)
+    await users.get({ userId: user.id })
+    await users.create({
+      userId: user.id,
+      email,
+      phone: undefined,
+      password: undefined, // can remain undefined for custom auth
+      name: user.name,
+    })
+    const token = await users.createToken({
+      userId: user.id
+    })
     res.json({
       userId: user.id,
       secret: token.secret,
@@ -385,7 +396,11 @@ async function handleExternalAuth(email, password) {
     if (!response.ok) throw new Error(data.message)
 
     // Then create Appwrite session using the custom token
-    const session = await account.createSession(data.userId, data.secret)
+    const session = await account.createSession({
+      userId: data.userId,
+      secret: data.secret
+    })
+    await account.deleteSession({ sessionId: 'current' })
 
     // Show logged in state
     loginForm.classList.add('hidden')
@@ -519,6 +534,28 @@ Remember that authentication is an important security component.
 Before deploying to production, ensure you've implemented proper security measures, error handling, and user management features.
 
 The complete source code for this tutorial is available in our [GitHub repository](https://github.com/appwrite-community/appwrite-custom-auth).
+
+# Frequently asked questions (FAQs)
+
+**1. What exactly are custom authentication flows?**
+
+They’re login systems you build yourself instead of relying on standard providers like Google or Firebase. You decide how users are verified, how tokens or sessions are issued, and how identity data is stored. It’s useful when your app needs unique logic or you already manage users elsewhere.
+
+**2. When does it make sense to build a custom auth flow?**
+
+Mostly when existing solutions don’t fit, for example, you have a legacy user database, need to integrate with an enterprise SSO, or want to control every step of the login process. If your app’s auth logic is straightforward, built-in options are faster; if it’s not, custom flows give you freedom.
+
+**3. What’s the most common mistake when building custom auth?**
+
+Mixing frontend and backend responsibilities. Token creation and validation should always happen on the server. Another one is skipping input validation or leaving long-lived tokens active. Small security gaps in auth often turn into big problems later.
+
+**4. Can I combine custom auth with other login methods like OAuth or magic links?**
+
+Yes. It’s actually common to offer multiple login options, say, Google or GitHub for convenience and your own system for internal or enterprise users. You can unify them under the same session layer once they’re verified.
+
+**5. Can I create custom authentication flows on Appwrite?**
+
+Yes. Appwrite lets you build your own auth flow using custom tokens. That means your backend can verify users however you want, through an existing database, SSO, or a third-party system, and then generate a token that Appwrite uses to create a secure session. You get full control over user validation while Appwrite handles session management, permissions, and APIs.
 
 # More resources
 

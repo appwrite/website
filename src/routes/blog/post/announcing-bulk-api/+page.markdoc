@@ -1,0 +1,83 @@
+---
+layout: post
+title: "Announcing Bulk API: Handle heavy data workloads with ease"
+description: Perform multiple database operations in a single API call. Enjoy faster writes and better performance for heavy server-side workloads.
+date: 2025-07-03
+cover: /images/blog/announcing-bulk-api/cover.png
+timeToRead: 5
+author: jake-barnby
+category: announcement
+featured: false
+---
+
+We're excited to introduce another Appwrite Databases feature, **Bulk API**. Explicitly designed to handle heavy write workloads, Bulk API dramatically improves performance by allowing multiple database operations in a single API call.
+
+# Faster development with bulk actions
+
+Previously, writing or modifying large amounts of data in Appwrite Databases required sending one request per document. This method was inefficient, slow, and resource-intensive, especially when dealing with thousands of records.
+
+With the new Bulk API, you can create, update, or delete multiple documents in one go, vastly speeding up your workflows and reducing network overhead.
+
+# Optimized for server-side workloads
+
+Bulk API is crafted for server-side applications, particularly those with significant data demands. Whether you’re importing large datasets, performing batch updates, or cleaning out old records, Bulk API streamlines your workload, drastically cutting down the number of requests and enhancing your application's performance.
+
+This will have immediate and impactful benefits such as:
+
+- **Speed improvements**: Rapidly handle thousands of operations simultaneously.
+- **Lower network overhead**: Significantly fewer API requests needed, making your application faster and more efficient.
+- **Seamless integration**: Works effortlessly using Appwrite Cloud or hosting yourself.
+
+{% info title="Please Note" %}
+Bulk operations can only be performed via the server-side SDKs. The client-side SDKs do not support bulk operations.
+{% /info %}
+
+# How it works
+
+Utilizing the Bulk API is straightforward. You can use it to:
+
+- Create multiple documents in a single request using the `createDocuments` method
+- Update multiple documents in a single request using the `updateDocuments` method
+- Delete multiple documents in a single request using the `deleteDocuments` method
+- Upsert multiple documents in a single request using the `upsertDocuments` method
+
+Here is a code example for creating multiple documents in a single request:
+
+
+```server-nodejs
+const sdk = require('node-appwrite');
+
+const client = new sdk.Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>')
+    .setKey('<API_KEY>');
+
+const databases = new sdk.Databases(client);
+
+const result = await databases.createDocuments(
+    '<DATABASE_ID>',
+    '<COLLECTION_ID>',
+    [
+        {
+            $id: sdk.ID.unique(),
+            name: 'Document 1',
+        },
+        {
+            $id: sdk.ID.unique(),
+            name: 'Document 2',
+        }
+    ]
+);
+```
+
+
+# Built for intensive data tasks
+
+Bulk API was designed to move large volumes of data in and out of Appwrite. By simplifying and speeding up these tasks, Bulk API unlocks previously challenging use-cases, expanding what's possible with Appwrite.
+
+With Bulk API, your high-performance data operations are faster, simpler, and more efficient.
+
+# More resources
+- [Read the documentation to get started](/docs/products/databases/bulk-operations)
+- [Introducing Database Backups](/blog/post/introducing-database-backups)
+- [More Database blogs](https://appwrite.io/blog?search=database)

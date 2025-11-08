@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { classNames } from '$lib/utils/classnames';
+    import { cn } from '$lib/utils/cn';
     import type { HTMLTextareaAttributes } from 'svelte/elements';
 
     type $$Props = {
@@ -20,7 +20,7 @@
     on:focus
     on:blur
     bind:value
-    class={classNames(
+    class={cn(
         'focus:border-greyscale-100 bg-greyscale-800 border-greyscale-700 flex items-center gap-1 rounded-lg border px-3 py-2 text-sm font-light transition-colors focus-within:border-white active:shadow-sm active:shadow-black/30',
         classes
     )}

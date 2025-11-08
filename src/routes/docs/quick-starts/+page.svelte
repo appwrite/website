@@ -68,6 +68,12 @@
                     href: 'solid'
                 },
                 {
+                    title: 'TanStack Start',
+                    icon: 'web-icon-tanstack',
+                    image: '/images/blog/placeholder.png',
+                    href: 'tanstack-start'
+                },
+                {
                     title: 'Web',
                     icon: 'icon-js',
                     image: '/images/blog/placeholder.png',
@@ -207,7 +213,7 @@
         <div class="web-article-content web-u-gap-80">
             {#each quickStarts as category}
                 <section class="flex flex-col gap-6">
-                    <h2 class="text-micro uppercase">{category.title}</h2>
+                    <h2 class="text-eyebrow font-aeonik-fono uppercase">{category.title}</h2>
                     <ul class="web-grid-row-4 web-grid-row-4-mobile-2">
                         {#each category.quickStarts as quickStart}
                             <li class="is-mobile-col-span-2">

@@ -95,13 +95,15 @@ It will be initialized with the session, usually stored within a cookie.
 
 You should create a new client for each request and **never** share the client between requests.
 
+Use `a_session_<PROJECT_ID>` as the [cookie name](/docs/apis/rest#client-integration) and a [custom domain](/docs/advanced/platform/custom-domains) for your Appwrite endpoint if you want the session to work client-side as well.
+
 {% multicode %}
 ```server-nodejs
 const sessionClient = new Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
     .setProject('<PROJECT_ID>');            // Your project ID
 
-const session = req.cookies.session; // Get the session cookie from the request
+const session = req.cookies['a_session_<PROJECT_ID>']; // Get the session cookie from the request
 if (session) {
     sessionClient.setSession(session);
 }
@@ -111,7 +113,7 @@ $sessionClient = (new Client())
     ->setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
     ->setProject('<PROJECT_ID>');            // Your project ID
 
-$session = $_COOKIE['session']; // Get the session cookie from the request
+$session = $_COOKIE['a_session_<PROJECT_ID>']; // Get the session cookie from the request
 if ($session) {
     $sessionClient->setSession($session);
 }
@@ -127,7 +129,7 @@ session_client = (Client()
                 )
 
 # Get the session cookie from the request
-session = request.cookies.get('session')
+session = request.cookies.get('a_session_<PROJECT_ID>')
 if session:
     session_client.set_session(session)
 
@@ -158,10 +160,13 @@ app.post('/login', async (req, res) => {
 
     try {
         // Create the session using the Appwrite client
-        const session = await account.createEmailPasswordSession(email, password);
+        const session = await account.createEmailPasswordSession({
+            email,
+            password
+        });
 
         // Set the session cookie
-        res.cookie('session', session.secret, { // use the session secret as the cookie value
+        res.cookie('a_session_<PROJECT_ID>', session.secret, { // use the session secret as the cookie value
             httpOnly: true,
             secure: true,
             sameSite: 'strict',
@@ -192,7 +197,7 @@ try {
     $session = $account->createEmailPasswordSession($email, $password);
 
     // Set the session cookie
-    setcookie('session', $session['secret'], [
+    setcookie('a_session_<PROJECT_ID>', $session['secret'], [
         'httpOnly' => true,
         'secure' => true,
         'sameSite' => 'strict',
@@ -220,18 +225,18 @@ def login():
 
     try:
         account = Account(admin_client)
-        
+
         # Create the session using the Appwrite client
         session = account.create_email_password_session(email, password)
         resp = make_response(jsonify({'success': True}))
 
         # Set the session cookie
-        resp.set_cookie('session', 
-                        session['secret'], 
-                        httponly=True, 
-                        secure=True, 
-                        samesite='Strict', 
-                        expires=session['expire'], 
+        resp.set_cookie('a_session_<PROJECT_ID>',
+                        session['secret'],
+                        httponly=True,
+                        secure=True,
+                        samesite='Strict',
+                        expires=session['expire'],
                         path='/'
                     )
         return resp
@@ -257,7 +262,7 @@ When the browser makes a request to your domain's endpoints, it will automatical
 
 app.get('/user', async (req, res) => {
     // First, read the session cookie from the request
-    const session = req.cookies.session;
+    const session = req.cookies['a_session_<PROJECT_ID>'];
 
     // If the session cookie is not present, return an error
     if (!session) {
@@ -283,7 +288,7 @@ app.get('/user', async (req, res) => {
 // Initialize the session client here
 
 // First, read the session cookie from the request
-$session = $_COOKIE['session'];
+$session = $_COOKIE['a_session_<PROJECT_ID>'];
 
 // If the session cookie is not present, return an error
 if (!$session) {
@@ -309,12 +314,12 @@ try {
 @app.get('/user')
 def get_user():
     #  First, read the session cookie from the request
-    session = request.cookies.get('session')
+    session = request.cookies.get('a_session_<PROJECT_ID>')
 
     # If the session cookie is not present, return an error
     if not session:
         return jsonify({'success': False, 'error': 'Unauthorized'}), 401
-    
+
     # pass the session cookie to the Appwrite client
     session_client.set_session(session)
     account = Account(session_client)
@@ -453,11 +458,11 @@ const adminClient = new Client()
 app.get('/oauth', async (req, res) => {
     const account = new Account(adminClient);
 
-    const redirectUrl = await account.createOAuth2Token(
-        OAuthProvider.Github,                // Provider
-        'https://example.com/oauth/success', // Success URL
-        'https://example.com/oauth/failure', // Failure URL
-    );
+    const redirectUrl = await account.createOAuth2Token({
+        provider: OAuthProvider.Github,                // Provider
+        success: 'https://example.com/oauth/success', // Success URL
+        failure: 'https://example.com/oauth/failure', // Failure URL
+    });
 
     res.redirect(redirectUrl);
 });
@@ -520,10 +525,13 @@ app.get('/oauth/success', async (req, res) => {
 
     try {
         // Create the session using the Appwrite client
-        const session = await account.createSession(userId, secret);
+        const session = await account.createSession({
+            userId,
+            secret
+        });
 
         // Set the session cookie
-        res.cookie('session', session.secret, { // Use the session secret as the cookie value
+        res.cookie('a_session_<PROJECT_ID>', session.secret, { // Use the session secret as the cookie value
             httpOnly: true,
             secure: true,
             sameSite: 'strict',
@@ -558,7 +566,7 @@ try {
     $session = $account->createSession($userId, $secret);
 
     // Set the session cookie
-    setcookie('session', $session['secret'], [
+    setcookie('a_session_<PROJECT_ID>', $session['secret'], [
         'httpOnly' => true,
         'secure' => true,
         'sameSite' => 'strict',
@@ -583,13 +591,13 @@ def oauth_success():
     try:
         # Create the session using the Appwrite client
         session = account.create_session(user_id, secret)
-        
+
         # Set the session cookie
         res = make_response(jsonify({'success': True}))
-        
+
         #  Set session cookie
         res.set_cookie(
-            'session',
+            'a_session_<PROJECT_ID>',
             session['secret'],
             httponly=True,
             secure=True,

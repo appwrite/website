@@ -36,11 +36,12 @@ Imagine a malicious third party making a website `myfr0nt3nd.com` that key logs 
 # Why you are getting a CORS error
 
 Now let's try to figure this all out in the context of Appwrite and why you may be getting this error.
-I have listed three main reasons. If more arise, I will update the article to include them.
+I have listed four main reasons. If more arise, I will update the article to include them.
 
 1. Origin not set in Console
 2. Origin is set incorrectly
 3. Bad ID on request
+4. Endpoint mismatch
 
 ## 1 - Origin not set in Console
 
@@ -67,12 +68,23 @@ if the project ID is set incorrectly when the client is initialized, you will re
 Without diving into the details about how CORS works, the problem occurs when the browser tries to check if the origin is allowed.
 The request returns a `40X` response, so the entire CORS check fails.
 
+## 4 - Endpoint mismatch
+
+A common issue that can cause CORS errors is using the wrong endpoint for your project's region. This happens when your project is hosted in one region (like NYC or SYD) but you're trying to connect to an endpoint from a different region (like FRA).
+
+For example, if your project is in the NYC region but you're using `fra.cloud.appwrite.io` or `cloud.appwrite.io`, the server will respond with "Project is not accessible in this region." However, you won't see this error message because CORS blocks the communication before you can read the response.
+
+**To fix this:**
+- Check your project's region in the Appwrite Console
+- Use the correct regional endpoint (e.g., `nyc.cloud.appwrite.io` for NYC projects)
+- Update your client configuration to use the right endpoint
+
 ## Other things to consider
 
 In most cases, the issues people face have to do with one of the above reasons listed and can be solved with the given suggestions.
-However, if you are still running into issues, I’ll keep an ongoing list of other possibilities and things to check for.
+However, if you are still running into issues, I'll keep an ongoing list of other possibilities and things to check for.
 
-- Disabled CORS in browser.  (I’ve seen people have this issue with browser extensions)
+- Disabled CORS in browser.  (I've seen people have this issue with browser extensions)
 
 ## Additional resources
 Visit our documentation, Discord server, YouTube channel, or Threads page to find more resources on this topic.

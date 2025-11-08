@@ -26,7 +26,7 @@
         </div>
     </div>
     <div class="flex w-full flex-col gap-8 md:pl-8">
-        <span class="text-primary text-micro font-aeonik-fono uppercase max-sm:ml-2"
+        <span class="text-primary text-eyebrow font-aeonik-fono uppercase max-sm:ml-2"
             >{eyebrow}<span class="text-accent">_</span></span
         >
 
@@ -36,7 +36,7 @@
             <img
                 src={Dashboard}
                 alt="Create a site dashboard"
-                class="h-full w-full rounded-t-2xl"
+                class="h-full w-full rounded-t-2xl object-cover object-[center_top]"
             />
         </div>
 

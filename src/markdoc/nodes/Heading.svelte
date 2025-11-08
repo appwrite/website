@@ -1,35 +1,48 @@
 <script lang="ts">
     import { slugify } from '$lib/utils/slugify';
-    import { isInPolicy } from '$markdoc/layouts/Policy.svelte';
     import { getContext, hasContext, onMount, type Snippet } from 'svelte';
+    import type { InlineCtaProps } from '$lib/utils/blog-mid-cta';
     import type { LayoutContext } from '../layouts/Article.svelte';
+    import type CallToAction from '../tags/Call_To_Action.svelte';
+    import { get, type Writable } from 'svelte/store';
 
-    interface Props {
+    interface HeadingProps {
         level: number;
         id?: string | undefined;
         step?: number | undefined;
-        inReferences?: boolean;
         children: Snippet;
     }
 
-    const {
-        level,
-        id = undefined,
-        step = undefined,
-        inReferences = false,
-        children
-    }: Props = $props();
+    const { level, id: elementId = undefined, step = undefined, children }: HeadingProps = $props();
 
-    let href: string = $state('');
     const tag = `h${level + 1}`;
     const ctx = hasContext('headings') ? getContext<LayoutContext>('headings') : undefined;
 
-    const classList: Record<typeof level, string> = {
-        1: 'text-description mb-4',
-        2: 'text-description text-primary mb-4',
-        3: 'text-body font-medium mb-4',
-        4: 'text-sub-body font-medium'
-    };
+    interface BlogMidCtaContext {
+        level: number;
+        targetIndex: number;
+        count: number;
+        inserted: Writable<boolean>;
+        component: typeof CallToAction | undefined;
+        props: InlineCtaProps;
+    }
+
+    const midCta = hasContext('blog-mid-cta')
+        ? getContext<BlogMidCtaContext>('blog-mid-cta')
+        : undefined;
+    const MidCtaComponent = midCta?.component;
+    let renderMidCta = $state(false);
+
+    if (midCta && MidCtaComponent && level === midCta.level) {
+        const alreadyInserted = get(midCta.inserted);
+        if (!alreadyInserted) {
+            midCta.count += 1;
+            if (midCta.count === midCta.targetIndex) {
+                renderMidCta = true;
+                midCta.inserted.set(true);
+            }
+        }
+    }
 
     let element: HTMLElement | undefined = $state();
 
@@ -39,7 +52,6 @@
         }
 
         const slug = id ?? slugify(element.innerText);
-        href = slug;
 
         $ctx = {
             ...$ctx,
@@ -61,25 +73,20 @@
 
         const observer = new IntersectionObserver(callback, {
             root: null,
-            threshold: 1
+            threshold: 0,
+            rootMargin: '-100px 0px -80% 0px'
         });
 
         observer.observe(element);
     });
 
-    const inPolicy = isInPolicy();
-    let headingClass = $derived(
-        inPolicy && level === 1 ? 'text-title font-aeonik-pro mb-4 mt-8' : classList[level]
-    );
+    let id = $derived(elementId ?? slugify(element?.innerText ?? ''));
 </script>
 
-<svelte:element
-    this={tag}
-    id={id ?? slugify(element?.innerText ?? '')}
-    bind:this={element}
-    class:web-snap-location={id && !inReferences}
-    class:web-snap-location-references={id && inReferences}
-    class="{headingClass} text-primary scroll-m-32 font-medium"
->
-    <a href={`#${id ?? slugify(element?.innerText ?? '')}`} class="">{@render children()}</a>
+{#if renderMidCta && MidCtaComponent && midCta}
+    <MidCtaComponent {...midCta.props} />
+{/if}
+
+<svelte:element this={tag} {id} bind:this={element}>
+    <a href={`#${id ?? slugify(element?.innerText ?? '')}`}>{@render children()}</a>
 </svelte:element>

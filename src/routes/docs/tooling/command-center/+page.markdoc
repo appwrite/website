@@ -25,7 +25,7 @@ The Command Center includes a variety of navigation commands that are also usefu
 
 # Resource creation {% #resource-creation %}
 
-The Command Center offers context-sensitive commands for creating entities like buckets, functions, database attributes, etc. Specific commands trigger the opening of new panels, facilitating deeper interaction and task completion directly from the Command Center.
+The Command Center offers context-sensitive commands for creating entities like buckets, functions, database columns, etc. Specific commands trigger the opening of new panels, facilitating deeper interaction and task completion directly from the Command Center.
 
 # AI Assistant {% #ai-assistant %}
 

@@ -30,7 +30,7 @@ export const actions = {
     const { account } = createSessionClient(event);
 
     // Delete the session on Appwrite, and delete the session cookie.
-    await account.deleteSession("current");
+    await account.deleteSession({ sessionId: "current" });
     event.cookies.delete(SESSION_COOKIE, { path: "/" });
 
     // Redirect to the sign up page.

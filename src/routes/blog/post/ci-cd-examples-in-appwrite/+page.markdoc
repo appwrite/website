@@ -146,7 +146,7 @@ To ensure the best results when using the Appwrite CLI in your CI/CD pipelines, 
 1. **Secure credentials management:** Use environment variables or secret management features in your CI/CD platform to store sensitive information like API keys, emails, and passwords securely.
 2. **Backup data:** Always back up your current database before starting a migration process. This ensures you can restore your data if something goes wrong.
 3. **Test in a staging environment:** Implement your changes in a staging environment first to identify any potential issues without affecting your production data.
-4. **Synchronize project settings:** Use the `appwrite pull all` command to synchronize your `appwrite.json` file with all settings and schemas from your project. This ensures that your local configuration matches the server configuration.
+4. **Synchronize project settings:** Use the `appwrite pull all` command to synchronize your `appwrite.config.json` file with all settings and schemas from your project. This ensures that your local configuration matches the server configuration.
 5. **Version control:** Use version control (e.g., Git) to track changes to your schema and configuration files. This allows you to roll back changes if needed.
 6. **Monitor performance:** Monitor the performance of your CI/CD pipelines to identify bottlenecks or issues that may impact deployment speed.
 

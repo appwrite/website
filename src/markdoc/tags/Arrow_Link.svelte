@@ -1,40 +1,28 @@
 <script lang="ts">
-    import { isInDocs } from '$lib/layouts/Docs.svelte';
-    import { isInChangelog } from '$markdoc/layouts/Changelog.svelte';
-    import type { Snippet } from 'svelte';
-    interface Props {
+    import { Icon } from '$lib/components/ui';
+    import { setContext, type Snippet } from 'svelte';
+
+    interface ArrowLinkProps {
         href: string;
         children: Snippet;
     }
 
-    const { href, children }: Props = $props();
+    const { href, children }: ArrowLinkProps = $props();
 
-    const isExternal = ['http://', 'https://'].some((prefix) => href.startsWith(prefix));
-    const target = isExternal ? '_blank' : undefined;
+    const isExternal = /https?:\/\//.test(href);
+    const target = isExternal ? '_blank' : '_self';
     const rel = isExternal ? 'noopener nofollow' : undefined;
-
-    const inChangelog = isInChangelog();
-    const inDocs = isInDocs();
-
-    let classes = $derived(
-        (() => {
-            if (inDocs) return 'web-link text-paragraph-md';
-            if (inChangelog) return 'web-link text-paragraph-lg';
-            return '';
-        })()
-    );
 </script>
 
-<a class={classes} data-in-changelog={inChangelog ? '' : undefined} {href} {target} {rel}
-    >{@render children()}<span class="icon-cheveron-right" style:font-size="16px"></span></a
+<a
+    class="not-prose text-paragraph-lg text-primary group mt-8 flex items-center gap-1 first:mt-0"
+    {href}
+    {target}
+    {rel}
 >
-
-<style>
-    a {
-        display: flex;
-    }
-
-    [data-in-changelog]:last-child {
-        padding-block-start: 1rem;
-    }
-</style>
+    {@render children()}
+    <Icon
+        name="chevron-right"
+        class="transition-transform duration-100 group-hover:translate-x-0.5"
+    />
+</a>
