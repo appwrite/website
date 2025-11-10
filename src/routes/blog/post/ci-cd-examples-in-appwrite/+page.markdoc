@@ -82,7 +82,7 @@ appwrite push collection --collection-id="collection_id"
 Previously, the Appwrite CLI supported non-interactive login using API keys for authorization. This was done using the following command:
 
 ```bash
-appwrite client --projectId PROJECT_ID --endpoint ENDPOINT_URL --key API_KEY
+appwrite client --endpoint "https://<YOUR-ENDPOINT>/v1" --project-id "<YOUR-PROJECT-ID>" --key "<YOUR-API-KEY>"
 
 ```
 
