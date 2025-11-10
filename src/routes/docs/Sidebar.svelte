@@ -74,10 +74,11 @@
                     new: isNewUntil('19 Jul 2025')
                 },
                 {
-                    label: 'Network',
-                    href: '/docs/products/network',
-                    icon: 'icon-share',
-                    isParent: true
+                    label: 'Avatars',
+                    href: '/docs/products/avatars',
+                    icon: 'icon-user-circle',
+                    isParent: true,
+                    new: isNewUntil('1 Jan 2026')
                 },
                 {
                     label: 'AI',
@@ -145,6 +146,12 @@
                     label: 'Platform',
                     href: '/docs/advanced/platform',
                     icon: 'web-icon-platform',
+                    isParent: true
+                },
+                {
+                    label: 'Network',
+                    href: '/docs/products/network',
+                    icon: 'icon-share',
                     isParent: true
                 },
                 {
