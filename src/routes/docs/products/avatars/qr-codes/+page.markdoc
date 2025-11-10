@@ -257,6 +257,7 @@ val standardQR = avatars.getQR(
 QR codes are commonly used for:
 
 - **Two-factor authentication**: Generate QR codes for TOTP authenticator setup
+- **Team invitations**: Create QR codes for team invite links to enable quick member onboarding
 - **Link sharing**: Create QR codes for URLs to enable quick access
 - **Event tickets**: Generate QR codes for event registration and check-in
 - **Wi-Fi credentials**: Encode Wi-Fi network information for easy connection

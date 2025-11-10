@@ -70,4 +70,3 @@
     <Sidebar {navigation} {parent} />
     <slot />
 </Docs>
-

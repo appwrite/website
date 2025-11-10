@@ -263,6 +263,7 @@ val opera = avatars.getBrowser(
 
 Browser icons are commonly used for:
 
+- **Session information**: Display user session details visually alongside browser icons. Browser codes from session data match perfectly with the browser codes used in this endpoint, allowing you to create cohesive visual session displays
 - **Analytics dashboards**: Display browser usage statistics and user agent information
 - **Session management**: Show active sessions with browser information
 - **Compatibility indicators**: Display supported browsers for features or content

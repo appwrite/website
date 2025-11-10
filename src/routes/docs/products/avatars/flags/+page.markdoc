@@ -207,6 +207,7 @@ val frFlag = avatars.getFlag(
 
 Country flags are commonly used for:
 
+- **Session information**: Display user session location visually alongside flag icons. Country codes from session data match perfectly with flags codes, allowing you to create cohesive visual session displays
 - **User profiles**: Display user country or location in profile pages
 - **Regional settings**: Show available regions or languages by country
 - **Analytics dashboards**: Visualize geographic data and user distribution
