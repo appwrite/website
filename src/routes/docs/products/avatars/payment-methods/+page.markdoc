@@ -12,7 +12,7 @@ Retrieve a payment method or credit card logo by code.
 
 {% multicode %}
 ```client-web
-import { Client, Avatars } from "appwrite";
+import { Client, Avatars, CreditCard } from "appwrite";
 
 const client = new Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
@@ -21,7 +21,7 @@ const client = new Client()
 const avatars = new Avatars(client);
 
 const result = avatars.getCreditCard({
-    code: 'visa',
+    code: CreditCard.Visa,
     width: 100,
     height: 100
 });
@@ -38,7 +38,7 @@ final client = Client()
 final avatars = Avatars(client);
 
 Future result = avatars.getCreditCard(
-    code: 'visa',
+    code: CreditCard.visa,
     width: 100,
     height: 100
 ).then((bytes) {
@@ -58,7 +58,7 @@ let client = Client()
 let avatars = Avatars(client)
 
 let byteBuffer = try await avatars.getCreditCard(
-    code: "visa",
+    code: CreditCard.visa,
     width: 100,
     height: 100
 )
@@ -66,6 +66,7 @@ let byteBuffer = try await avatars.getCreditCard(
 ```client-android-kotlin
 import io.appwrite.Client
 import io.appwrite.services.Avatars
+import io.appwrite.enums.CreditCard
 
 val client = Client()
     .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
@@ -74,7 +75,7 @@ val client = Client()
 val avatars = Avatars(client)
 
 val result = avatars.getCreditCard(
-    code = "visa",
+    code = CreditCard.VISA,
     width = 100,
     height = 100
 )
@@ -114,145 +115,125 @@ Common payment method codes include:
 
 {% multicode %}
 ```client-web
+import { CreditCard } from "appwrite";
+
 // Visa
 const visa = avatars.getCreditCard({
-    code: 'visa',
+    code: CreditCard.Visa,
     width: 100,
     height: 100
 });
 
 // Mastercard
 const mastercard = avatars.getCreditCard({
-    code: 'mastercard',
+    code: CreditCard.Mastercard,
     width: 100,
     height: 100
 });
 
 // American Express
 const amex = avatars.getCreditCard({
-    code: 'amex',
+    code: CreditCard.AmericanExpress,
     width: 100,
     height: 100
 });
 
 // Discover
 const discover = avatars.getCreditCard({
-    code: 'discover',
-    width: 100,
-    height: 100
-});
-
-// PayPal
-const paypal = avatars.getCreditCard({
-    code: 'paypal',
+    code: CreditCard.Discover,
     width: 100,
     height: 100
 });
 ```
 ```client-flutter
+import 'package:appwrite/appwrite.dart';
+
 // Visa
 Future visa = avatars.getCreditCard(
-    code: 'visa',
+    code: CreditCard.visa,
     width: 100,
     height: 100
 );
 
 // Mastercard
 Future mastercard = avatars.getCreditCard(
-    code: 'mastercard',
+    code: CreditCard.mastercard,
     width: 100,
     height: 100
 );
 
 // American Express
 Future amex = avatars.getCreditCard(
-    code: 'amex',
+    code: CreditCard.americanExpress,
     width: 100,
     height: 100
 );
 
 // Discover
 Future discover = avatars.getCreditCard(
-    code: 'discover',
-    width: 100,
-    height: 100
-);
-
-// PayPal
-Future paypal = avatars.getCreditCard(
-    code: 'paypal',
+    code: CreditCard.discover,
     width: 100,
     height: 100
 );
 ```
 ```client-apple
+import Appwrite
+
 // Visa
 let visa = try await avatars.getCreditCard(
-    code: "visa",
+    code: CreditCard.visa,
     width: 100,
     height: 100
 )
 
 // Mastercard
 let mastercard = try await avatars.getCreditCard(
-    code: "mastercard",
+    code: CreditCard.mastercard,
     width: 100,
     height: 100
 )
 
 // American Express
 let amex = try await avatars.getCreditCard(
-    code: "amex",
+    code: CreditCard.americanExpress,
     width: 100,
     height: 100
 )
 
 // Discover
 let discover = try await avatars.getCreditCard(
-    code: "discover",
-    width: 100,
-    height: 100
-)
-
-// PayPal
-let paypal = try await avatars.getCreditCard(
-    code: "paypal",
+    code: CreditCard.discover,
     width: 100,
     height: 100
 )
 ```
 ```client-android-kotlin
+import io.appwrite.enums.CreditCard
+
 // Visa
 val visa = avatars.getCreditCard(
-    code = "visa",
+    code = CreditCard.VISA,
     width = 100,
     height = 100
 )
 
 // Mastercard
 val mastercard = avatars.getCreditCard(
-    code = "mastercard",
+    code = CreditCard.MASTERCARD,
     width = 100,
     height = 100
 )
 
 // American Express
 val amex = avatars.getCreditCard(
-    code = "amex",
+    code = CreditCard.AMERICAN_EXPRESS,
     width = 100,
     height = 100
 )
 
 // Discover
 val discover = avatars.getCreditCard(
-    code = "discover",
-    width = 100,
-    height = 100
-)
-
-// PayPal
-val paypal = avatars.getCreditCard(
-    code = "paypal",
+    code = CreditCard.DISCOVER,
     width = 100,
     height = 100
 )

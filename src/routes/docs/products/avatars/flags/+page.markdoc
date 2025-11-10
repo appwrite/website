@@ -8,11 +8,11 @@ The country flag endpoint provides access to flag icons for all countries. This 
 
 # Get country flag {% #get-flag %}
 
-Retrieve a country flag icon by its ISO 3166-1 alpha-2 country code.
+Retrieve a country flag icon by its [ISO 3166-1](https://en.wikipedia.org/wiki/ISO_3166-1) country code.
 
 {% multicode %}
 ```client-web
-import { Client, Avatars } from "appwrite";
+import { Client, Avatars, Flag } from "appwrite";
 
 const client = new Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
@@ -21,7 +21,7 @@ const client = new Client()
 const avatars = new Avatars(client);
 
 const result = avatars.getFlag({
-    code: 'US',
+    code: Flag.UnitedStates,
     width: 100,
     height: 100
 });
@@ -38,7 +38,7 @@ final client = Client()
 final avatars = Avatars(client);
 
 Future result = avatars.getFlag(
-    code: 'US',
+    code: Flag.unitedStates,
     width: 100,
     height: 100
 ).then((bytes) {
@@ -58,7 +58,7 @@ let client = Client()
 let avatars = Avatars(client)
 
 let byteBuffer = try await avatars.getFlag(
-    code: "US",
+    code: Flag.unitedStates,
     width: 100,
     height: 100
 )
@@ -66,6 +66,7 @@ let byteBuffer = try await avatars.getFlag(
 ```client-android-kotlin
 import io.appwrite.Client
 import io.appwrite.services.Avatars
+import io.appwrite.enums.Flag
 
 val client = Client()
     .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
@@ -74,7 +75,7 @@ val client = Client()
 val avatars = Avatars(client)
 
 val result = avatars.getFlag(
-    code = "US",
+    code = Flag.UNITED_STATES,
     width = 100,
     height = 100
 )
@@ -104,7 +105,7 @@ The `getFlag` method accepts the following parameters:
 
 | Parameter | Type | Description |
 | --------- | ---- | ----------- |
-| code | string | The ISO 3166-1 alpha-2 country code (e.g., `US`, `GB`, `FR`). |
+| code | string | The ISO [ISO 3166-1](https://en.wikipedia.org/wiki/ISO_3166-1) country code (e.g., `US`, `GB`, `FR`). |
 | width | integer | The width of the output image in pixels. Accepts values between `0-2000`. |
 | height | integer | The height of the output image in pixels. Accepts values between `0-2000`. |
 
@@ -114,89 +115,97 @@ Use ISO 3166-1 alpha-2 country codes to specify the country. These are two-lette
 
 {% multicode %}
 ```client-web
+import { Flag } from "appwrite";
+
 // United States
 const usFlag = avatars.getFlag({
-    code: 'US',
+    code: Flag.UnitedStates,
     width: 100,
     height: 100
 });
 
 // United Kingdom
 const ukFlag = avatars.getFlag({
-    code: 'GB',
+    code: Flag.UnitedKingdom,
     width: 100,
     height: 100
 });
 
 // France
 const frFlag = avatars.getFlag({
-    code: 'FR',
+    code: Flag.France,
     width: 100,
     height: 100
 });
 ```
 ```client-flutter
+import 'package:appwrite/appwrite.dart';
+
 // United States
 Future usFlag = avatars.getFlag(
-    code: 'US',
+    code: Flag.unitedStates,
     width: 100,
     height: 100
 );
 
 // United Kingdom
 Future ukFlag = avatars.getFlag(
-    code: 'GB',
+    code: Flag.unitedKingdom,
     width: 100,
     height: 100
 );
 
 // France
 Future frFlag = avatars.getFlag(
-    code: 'FR',
+    code: Flag.france,
     width: 100,
     height: 100
 );
 ```
 ```client-apple
+import Appwrite
+
 // United States
 let usFlag = try await avatars.getFlag(
-    code: "US",
+    code: Flag.unitedStates,
     width: 100,
     height: 100
 )
 
 // United Kingdom
 let ukFlag = try await avatars.getFlag(
-    code: "GB",
+    code: Flag.unitedKingdom,
     width: 100,
     height: 100
 )
 
 // France
 let frFlag = try await avatars.getFlag(
-    code: "FR",
+    code: Flag.france,
     width: 100,
     height: 100
 )
 ```
 ```client-android-kotlin
+import io.appwrite.enums.Flag
+
 // United States
 val usFlag = avatars.getFlag(
-    code = "US",
+    code = Flag.UNITED_STATES,
     width = 100,
     height = 100
 )
 
 // United Kingdom
 val ukFlag = avatars.getFlag(
-    code = "GB",
+    code = Flag.UNITED_KINGDOM,
     width = 100,
     height = 100
 )
 
 // France
 val frFlag = avatars.getFlag(
-    code = "FR",
+    code = Flag.FRANCE,
     width = 100,
     height = 100
 )

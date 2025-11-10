@@ -12,7 +12,7 @@ Retrieve a browser icon by browser code.
 
 {% multicode %}
 ```client-web
-import { Client, Avatars } from "appwrite";
+import { Client, Avatars, Browser } from "appwrite";
 
 const client = new Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
@@ -21,7 +21,7 @@ const client = new Client()
 const avatars = new Avatars(client);
 
 const result = avatars.getBrowser({
-    code: 'chrome',
+    code: Browser.GoogleChrome,
     width: 100,
     height: 100
 });
@@ -38,7 +38,7 @@ final client = Client()
 final avatars = Avatars(client);
 
 Future result = avatars.getBrowser(
-    code: 'chrome',
+    code: Browser.googleChrome,
     width: 100,
     height: 100
 ).then((bytes) {
@@ -58,7 +58,7 @@ let client = Client()
 let avatars = Avatars(client)
 
 let byteBuffer = try await avatars.getBrowser(
-    code: "chrome",
+    code: Browser.googleChrome,
     width: 100,
     height: 100
 )
@@ -66,6 +66,7 @@ let byteBuffer = try await avatars.getBrowser(
 ```client-android-kotlin
 import io.appwrite.Client
 import io.appwrite.services.Avatars
+import io.appwrite.enums.Browser
 
 val client = Client()
     .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
@@ -74,7 +75,7 @@ val client = Client()
 val avatars = Avatars(client)
 
 val result = avatars.getBrowser(
-    code = "chrome",
+    code = Browser.GOOGLE_CHROME,
     width = 100,
     height = 100
 )
@@ -114,145 +115,153 @@ Common browser codes include:
 
 {% multicode %}
 ```client-web
+import { Browser } from "appwrite";
+
 // Chrome
 const chrome = avatars.getBrowser({
-    code: 'chrome',
+    code: Browser.GoogleChrome,
     width: 100,
     height: 100
 });
 
 // Firefox
 const firefox = avatars.getBrowser({
-    code: 'firefox',
+    code: Browser.MozillaFirefox,
     width: 100,
     height: 100
 });
 
 // Safari
 const safari = avatars.getBrowser({
-    code: 'safari',
+    code: Browser.Safari,
     width: 100,
     height: 100
 });
 
 // Edge
 const edge = avatars.getBrowser({
-    code: 'edge',
+    code: Browser.MicrosoftEdge,
     width: 100,
     height: 100
 });
 
 // Opera
 const opera = avatars.getBrowser({
-    code: 'opera',
+    code: Browser.Opera,
     width: 100,
     height: 100
 });
 ```
 ```client-flutter
+import 'package:appwrite/appwrite.dart';
+
 // Chrome
 Future chrome = avatars.getBrowser(
-    code: 'chrome',
+    code: Browser.googleChrome,
     width: 100,
     height: 100
 );
 
 // Firefox
 Future firefox = avatars.getBrowser(
-    code: 'firefox',
+    code: Browser.mozillaFirefox,
     width: 100,
     height: 100
 );
 
 // Safari
 Future safari = avatars.getBrowser(
-    code: 'safari',
+    code: Browser.safari,
     width: 100,
     height: 100
 );
 
 // Edge
 Future edge = avatars.getBrowser(
-    code: 'edge',
+    code: Browser.microsoftEdge,
     width: 100,
     height: 100
 );
 
 // Opera
 Future opera = avatars.getBrowser(
-    code: 'opera',
+    code: Browser.opera,
     width: 100,
     height: 100
 );
 ```
 ```client-apple
+import Appwrite
+
 // Chrome
 let chrome = try await avatars.getBrowser(
-    code: "chrome",
+    code: Browser.googleChrome,
     width: 100,
     height: 100
 )
 
 // Firefox
 let firefox = try await avatars.getBrowser(
-    code: "firefox",
+    code: Browser.mozillaFirefox,
     width: 100,
     height: 100
 )
 
 // Safari
 let safari = try await avatars.getBrowser(
-    code: "safari",
+    code: Browser.safari,
     width: 100,
     height: 100
 )
 
 // Edge
 let edge = try await avatars.getBrowser(
-    code: "edge",
+    code: Browser.microsoftEdge,
     width: 100,
     height: 100
 )
 
 // Opera
 let opera = try await avatars.getBrowser(
-    code: "opera",
+    code: Browser.opera,
     width: 100,
     height: 100
 )
 ```
 ```client-android-kotlin
+import io.appwrite.enums.Browser
+
 // Chrome
 val chrome = avatars.getBrowser(
-    code = "chrome",
+    code = Browser.GOOGLE_CHROME,
     width = 100,
     height = 100
 )
 
 // Firefox
 val firefox = avatars.getBrowser(
-    code = "firefox",
+    code = Browser.MOZILLA_FIREFOX,
     width = 100,
     height = 100
 )
 
 // Safari
 val safari = avatars.getBrowser(
-    code = "safari",
+    code = Browser.SAFARI,
     width = 100,
     height = 100
 )
 
 // Edge
 val edge = avatars.getBrowser(
-    code = "edge",
+    code = Browser.MICROSOFT_EDGE,
     width = 100,
     height = 100
 )
 
 // Opera
 val opera = avatars.getBrowser(
-    code = "opera",
+    code = Browser.OPERA,
     width = 100,
     height = 100
 )

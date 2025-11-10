@@ -179,8 +179,10 @@ Retrieve a country flag icon by country code. This is useful for displaying user
 
 {% multicode %}
 ```client-web
+import { Flag } from "appwrite";
+
 const result = avatars.getFlag({
-    code: 'US',
+    code: Flag.UnitedStates,
     width: 100,
     height: 100
 });
@@ -189,7 +191,7 @@ console.log(result); // Resource URL
 ```
 ```client-flutter
 Future result = avatars.getFlag(
-    code: 'US',
+    code: Flag.unitedStates,
     width: 100,
     height: 100
 ).then((bytes) {
@@ -201,14 +203,16 @@ Future result = avatars.getFlag(
 ```
 ```client-apple
 let byteBuffer = try await avatars.getFlag(
-    code: "US",
+    code: Flag.unitedStates,
     width: 100,
     height: 100
 )
 ```
 ```client-android-kotlin
+import io.appwrite.enums.Flag
+
 val result = avatars.getFlag(
-    code = "US",
+    code = Flag.UNITED_STATES,
     width = 100,
     height = 100
 )
