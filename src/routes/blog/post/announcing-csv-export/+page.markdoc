@@ -9,9 +9,9 @@ author: jake-barnby
 category: announcement
 featured: false
 ---
-Data is at the centre of every product decision, report, and integration.
+Data flows through every system you build, for reporting, analysis, or integrations. But getting it out cleanly and consistently should be just as simple as storing it.
 
-With the new **CSV Export** feature in Appwrite Console, you can now easily generate structured, shareable datasets, ready for analysis, reporting, or archiving.
+Introducing the new **CSV Export** feature in Appwrite Console lets you generate ready-to-use CSV files directly from your collections. No SDKs, no manual formatting. Just fast, reliable data exports that fit right into your workflow.
 
 # Export your data, your way. 
 
