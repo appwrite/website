@@ -107,6 +107,11 @@
                     new: isNewUntil('31 Jul 2025')
                 },
                 {
+                    label: 'CSV exports',
+                    href: '/docs/products/databases/csv-exports',
+                    new: isNewUntil('31 Dec 2025')
+                },
+                {
                     label: 'Database operators',
                     href: '/docs/products/databases/db-operators',
                     new: isNewUntil('31 Dec 2025')
@@ -136,7 +141,7 @@
             .replace('tables', 'collections')
     );
 
-    const hideSubtitleRoutes = ['offline', 'backups', 'csv-imports'];
+    const hideSubtitleRoutes = ['offline', 'backups', 'csv-imports', 'csv-exports'];
 
     const shouldShowSubtitle = $derived(
         !hideSubtitleRoutes.some((segment) => page.route.id?.includes(segment)) &&
