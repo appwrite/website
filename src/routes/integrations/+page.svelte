@@ -150,7 +150,7 @@
                                     Platform
                                 </h2>
                                 <ul class="flex flex-wrap gap-2" class:disabled={hasQuery}>
-                                    {#each platforms as platform}
+                                    {#each platforms as platform (platform)}
                                         <li>
                                             <button
                                                 class={cn(
@@ -183,7 +183,7 @@
                                         onchange={(e) =>
                                             goto(`#${e.currentTarget.value.toLowerCase()}`)}
                                     >
-                                        {#each data.categories as category}
+                                        {#each data.categories as category (category.slug)}
                                             {@const integrations = data.integrations.find(
                                                 (i) => i.category === category.slug
                                             )}
@@ -202,7 +202,7 @@
                                 </div>
 
                                 <ul class="hidden flex-col gap-4 sm:flex" class:disabled={hasQuery}>
-                                    {#each data.categories as category}
+                                    {#each data.categories as category (category.slug)}
                                         {@const integrations = data.integrations.find(
                                             (i) => i.category === category.slug
                                         )}
@@ -236,7 +236,7 @@
                                     </header>
                                     <div class="l-max-size-list-cards flex flex-col gap-8">
                                         <ul class="l-grid-1">
-                                            {#each result.map((d) => d.item) as item}
+                                            {#each result.map((d) => d.item) as item, i (i)}
                                                 <li>
                                                     <a
                                                         href={item.href}
@@ -281,7 +281,7 @@
 
                                     <div>
                                         <ul class="web-feature-grid grid gap-4 sm:grid-cols-2">
-                                            {#each data.featured as item}
+                                            {#each data.featured as item, i (i)}
                                                 <li
                                                     class="web-feature-grid-item is-two-columns-desktop-only relative"
                                                 >
@@ -325,7 +325,7 @@
                                     </div>
                                 </section>
 
-                                {#each data.integrations as { category, heading, description, integrations }}
+                                {#each data.integrations as { category, heading, description, integrations }, i (i)}
                                     {#if integrations?.length > 0 && (activePlatform === 'All' || integrations.some( (i) => i.platform.includes(activePlatform) ))}
                                         <section
                                             class="l-max-size-list-cards-section flex flex-col gap-8"
@@ -527,7 +527,7 @@
         scroll-margin-top: f.pxToRem(120);
     }
     .l-max-size-list-cards {
-        &:where(:global(:has(> ul > li:nth-child(10)))) {
+        &:where(:has(> ul > li:nth-child(10))) {
             position: relative;
 
             &::before {
@@ -546,17 +546,10 @@
                 );
                 transition: var(--transition);
             }
-            .l-float-button {
-                position: absolute;
-                inset-inline: 0;
-                inset-block-end: f.pxToRem(20);
-                margin-inline: auto;
-                display: flex;
-            }
         }
     }
 
-    :where(:global(:target)) {
+    :where(:target) {
         .l-max-size-list-cards {
             overflow: visible;
             max-block-size: none;
@@ -564,9 +557,6 @@
             &::before {
                 opacity: 0;
                 pointer-events: none;
-            }
-            .l-float-button {
-                display: none;
             }
         }
     }
