@@ -1,19 +1,29 @@
 <script lang="ts">
-    import { getContext } from 'svelte';
-    import { handleCopy } from '$lib/utils/copy';
+    import { page } from '$app/stores';
+    import { getPageMarkdown } from '$lib/remote/markdown.remote';
+    import { copyToClipboard } from '$lib/utils/copy';
     import { cn } from '$lib/utils/cn';
-    import { rawContent } from '$routes/docs/+layout.svelte';
+    import { writable } from 'svelte/store';
 
     interface CopyAsMarkdownProps {
         class?: string;
     }
 
-    const { copy, copied } = handleCopy($rawContent ?? '', 2000);
-
     const { class: classNames }: CopyAsMarkdownProps = $props();
+
+    const markdown = getPageMarkdown($page.route.id);
+    const copied = writable(false);
+    let timeout: ReturnType<typeof setTimeout> | undefined = undefined;
+
+    const copy = () => {
+        if (timeout) clearTimeout(timeout);
+        copyToClipboard(markdown.current ?? '');
+        copied.set(true);
+        timeout = setTimeout(() => copied.set(false), 2000);
+    };
 </script>
 
-{#if $rawContent}
+{#if !markdown.loading && markdown.current}
     <button
         class={cn(
             'text-caption hover:text-accent text-secondary ml-4 flex cursor-pointer items-center gap-2.5 rounded-md p-1.5 transition-colors',
