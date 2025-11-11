@@ -26,6 +26,18 @@
                     icon: 'icon-cog'
                 },
                 {
+                    label: 'Changelog',
+                    href: '/changelog',
+                    icon: 'icon-clock',
+                    openInNewTab: true
+                },
+                {
+                    label: 'Integrations',
+                    href: '/integrations',
+                    icon: 'icon-puzzle',
+                    openInNewTab: true
+                },
+                {
                     label: 'API references',
                     href: '/docs/references',
                     icon: 'icon-document',
@@ -79,12 +91,6 @@
                     icon: 'icon-user-circle',
                     isParent: true,
                     new: isNewUntil('1 Jan 2026')
-                },
-                {
-                    label: 'AI',
-                    href: '/docs/products/ai',
-                    icon: 'icon-chip',
-                    isParent: true
                 }
             ]
         },
@@ -153,13 +159,6 @@
                     href: '/docs/products/network',
                     icon: 'icon-share',
                     isParent: true
-                },
-                {
-                    label: 'Integrations',
-                    href: '/integrations',
-                    icon: 'icon-puzzle',
-                    isParent: true,
-                    openInNewTab: true
                 },
                 {
                     label: 'Migrations',
