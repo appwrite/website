@@ -50,11 +50,22 @@
 </script>
 
 {#if href}
-    <a use:action {href} class={buttonClasses} onclick={() => event && trackEvent(event)} {...rest}>
+    <a
+        use:action
+        {href}
+        class={buttonClasses}
+        onclick={() => event && trackEvent(event)}
+        {...rest as HTMLAnchorAttributes}
+    >
         {@render children()}
     </a>
 {:else}
-    <button use:action class={buttonClasses} onclick={() => event && trackEvent(event)} {...rest}>
+    <button
+        use:action
+        class={buttonClasses}
+        onclick={() => event && trackEvent(event)}
+        {...rest as HTMLButtonAttributes}
+    >
         {@render children()}
     </button>
 {/if}

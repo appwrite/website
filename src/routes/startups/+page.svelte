@@ -304,7 +304,7 @@
 
         <!-- Developer toolkit section -->
         <div class="web-white-section light relative border-b border-dashed border-black/8 pt-10">
-            <div class="web-big-padding-section-level-2 h-[256px]">
+            <div class="web-big-padding-section-level-2 h-64">
                 <DevelopersToolkit />
             </div>
         </div>
@@ -320,7 +320,7 @@
                 <div class="relative">
                     <div class="relative container">
                         <!-- before submit -->
-                        <div class="web-grid-1-1-opt-2 e-u-row-gap-0 relative z-[1] gap-8">
+                        <div class="web-grid-1-1-opt-2 e-u-row-gap-0 relative z-1 gap-8">
                             <div>
                                 <div
                                     class="web-u-max-inline-size-none-mobile"
@@ -375,7 +375,7 @@
                             </div>
                             {#if submitted}
                                 <div
-                                    class="web-u-max-width-380 web-u-max-inline-size-none-mobile relative z-[1] mx-auto flex flex-col gap-2 text-center"
+                                    class="web-u-max-width-380 web-u-max-inline-size-none-mobile relative z-1 mx-auto flex flex-col gap-2 text-center"
                                 >
                                     <h6 class="text-label flex items-center justify-center gap-2">
                                         <img
@@ -511,96 +511,7 @@
     @use '$scss/abstract/mixins/border-gradient' as gradients;
     @use '$scss/abstract/variables/devices' as devices;
 
-    @keyframes scroll {
-        to {
-            transform: translate(calc(-50% - 1rem));
-        }
-    }
-    .scroll-carousel {
-        display: flex;
-        width: 100%;
-        overflow: auto;
-
-        .inner {
-            padding-inline: 4rem;
-
-            display: flex;
-            gap: 2rem;
-            flex-shrink: 0;
-
-            > * {
-                flex-shrink: 0;
-                scroll-snap-align: start;
-            } /* items */
-        }
-    }
-
-    .border-card {
-        position: absolute;
-        inset: 0;
-        border: 1px solid transparent;
-        mask-clip: padding-box, border-box;
-        mask-composite: intersect;
-        border-radius: inherit;
-        mask-image: linear-gradient(transparent, transparent), linear-gradient(#000, #000);
-
-        &:hover {
-            .glow {
-                opacity: 1;
-            }
-        }
-
-        .glow {
-            opacity: 0;
-            transition: opacity 0.25s ease-out;
-            position: absolute;
-            inset: 0;
-            width: 60px;
-            aspect-ratio: 1/1;
-            offset-path: rect(0 auto auto 0 round 60px);
-            offset-distance: 0;
-            offset-rotate: auto;
-            animation: glow 6s infinite linear forwards;
-            background-color: var(--color-pink-200);
-            box-shadow:
-                var(--color-pink-200) 0px 0px 60px 30px,
-                var(--color-pink-200) 0px 0px 100px 60px,
-                var(--color-pink-200) 0px 0px 140px 90px;
-        }
-
-        @keyframes glow {
-            0% {
-                offset-distance: 0;
-            }
-            100% {
-                offset-distance: 100%;
-            }
-        }
-    }
-
-    @media (prefers-reduced-motion: no-preference) {
-        .scroll-carousel {
-            overflow: hidden;
-
-            &:hover {
-                .inner {
-                    animation-play-state: paused;
-                }
-            }
-
-            .inner {
-                padding-inline: 0;
-                animation: scroll 40s linear infinite;
-            }
-        }
-    }
-
     @media #{devices.$break1} {
-        .web-grid-1-1 {
-            display: flex;
-            flex-direction: column;
-            gap: 32px;
-        }
         .web-hero .text-description {
             margin-block-start: 0;
         }
@@ -613,26 +524,8 @@
         .e-u-margin-block-end-80-mobile {
             margin-block-end: 5rem;
         }
-        .e-mt-20-mobile {
-            margin-block-start: 5rem;
-        }
-        .e-mt-4-mobile {
-            margin-block-start: 1rem;
-        }
-        .e-mt-12-mobile {
-            margin-block-start: 3rem;
-        }
         .e-u-row-gap-0 {
             row-gap: 0;
-        }
-        .e-u-order-1-mobile {
-            order: 1;
-        }
-        .e-mx-auto-mobile {
-            margin-inline: auto;
-        }
-        .e-mt-38-mobile {
-            margin-block-start: 8rem;
         }
         .e-bg-left-mobile {
             width: 300px;
@@ -650,13 +543,6 @@
         }
     }
 
-    @media #{devices.$break2open} {
-        .web-grid-1-1 {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-        }
-    }
-
     /* from 1280px and bugger */
     @media #{devices.$break3open} {
         .e-u-padding-block-start-80-desktop {
@@ -667,9 +553,6 @@
         }
         .e-u-padding-inline-32-desktop {
             padding-inline: 2rem;
-        }
-        .e-mt-50-desktop {
-            margin-block-start: 12.5rem;
         }
     }
 </style>
