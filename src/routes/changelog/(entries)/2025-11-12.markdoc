@@ -12,7 +12,7 @@ CSV Export introduces a new option in the Appwrite Console for generating downlo
 
 That means, you can:
 
-- Select the target storage bucket and define a custom filename.
+- Export to a target storage bucket and define a custom filename.
 - Apply filters or queries before export.
 - Choose specific attributes (columns) to include.
 - Set a custom delimiter and optional header row.
