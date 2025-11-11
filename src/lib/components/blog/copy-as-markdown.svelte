@@ -4,6 +4,9 @@
     import { copyToClipboard } from '$lib/utils/copy';
     import { cn } from '$lib/utils/cn';
     import { writable } from 'svelte/store';
+    import { Button, Icon } from '$lib/components/ui';
+    import { Tooltip } from '$lib/components';
+    import { createDropdownMenu, melt } from '@melt-ui/svelte';
 
     interface CopyAsMarkdownProps {
         class?: string;
@@ -21,35 +24,155 @@
         copied.set(true);
         timeout = setTimeout(() => copied.set(false), 2000);
     };
+
+    const {
+        elements: { trigger, menu },
+        states: { open }
+    } = createDropdownMenu({
+        forceVisible: true,
+        positioning: { placement: 'bottom-end' }
+    });
+
+    const viewInNewTab = () => {
+        const content = markdown.current ?? '';
+        const blob = new Blob([content], { type: 'text/markdown;charset=utf-8' });
+        const url = URL.createObjectURL(blob);
+        window.open(url, '_blank', 'noopener,noreferrer');
+        setTimeout(() => URL.revokeObjectURL(url), 10_000);
+    };
 </script>
 
 {#if !markdown.loading && markdown.current}
-    <button
-        class={cn(
-            'text-caption hover:text-accent text-secondary ml-4 flex cursor-pointer items-center gap-2.5 rounded-md p-1.5 transition-colors',
-            classNames
-        )}
-        onclick={copy}
-    >
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-6" viewBox="0 0 208 128"
-            ><rect
-                width="198"
-                height="118"
-                x="5"
-                y="5"
-                ry="10"
-                stroke="currentColor"
-                stroke-width="10"
-                fill="none"
-            /><path
-                d="M30 98V30h20l20 25 20-25h20v68H90V59L70 84 50 59v39zm125 0l-30-33h20V30h20v35h20z"
-                fill="currentColor"
-            />
-        </svg>
-        {#if $copied}
-            Copied
-        {:else}
-            Copy page as markdown
+    <div class={cn('copy-ctl inline-flex items-center', classNames)}>
+        <Tooltip disabled={!$copied}>
+            <Button
+                variant="secondary"
+                onclick={copy}
+                aria-label="Copy page as Markdown"
+                class="no-right-radius text-sm"
+            >
+                <Icon name="copy" aria-hidden="true" class="text-sm" />
+                <span>Copy page</span>
+            </Button>
+            {#snippet tooltip()}
+                Copied
+            {/snippet}
+        </Tooltip>
+
+        <button
+            class="no-left-radius web-button is-secondary text-sm"
+            use:melt={$trigger}
+            aria-label="Open options"
+        >
+            {#if $open}
+                <span class="web-icon-chevron-up" aria-hidden="true"></span>
+            {:else}
+                <span class="web-icon-chevron-down" aria-hidden="true"></span>
+            {/if}
+        </button>
+
+        {#if $open}
+            <div class="menu-wrapper web-select-menu is-normal menu z-1" use:melt={$menu}>
+                <ul class="text-sub-body">
+                    <li>
+                        <button type="button" class="menu-btn text-sm" onclick={copy}>
+                            <Icon name="copy" aria-hidden="true" class="text-sm" />
+                            <span>Copy as Markdown</span>
+                        </button>
+                    </li>
+                    <li>
+                        <button type="button" class="menu-btn text-sm" onclick={viewInNewTab}>
+                            <Icon name="external-icon" aria-hidden="true" class="text-sm" />
+                            <span>View as Markdown</span>
+                        </button>
+                    </li>
+                </ul>
+            </div>
         {/if}
-    </button>
+    </div>
 {/if}
+
+<style>
+    .copy-ctl {
+        align-items: center;
+    }
+    .copy-ctl :global(.web-button),
+    .copy-ctl :global(.web-button)::before,
+    .copy-ctl :global(.web-button)::after {
+        min-block-size: 32px;
+        height: 32px;
+    }
+
+    .copy-ctl :global(.web-button.no-right-radius),
+    .copy-ctl :global(.web-button.no-right-radius)::before,
+    .copy-ctl :global(.web-button.no-right-radius)::after {
+        padding-top: 5px;
+        padding-bottom: 5px;
+        padding-right: 10px;
+        padding-left: 8px;
+    }
+    .copy-ctl :global(.web-button.no-right-radius) {
+        flex-shrink: 0;
+    }
+    /* Chevron button — compact square with even padding */
+    .copy-ctl :global(.web-button.no-left-radius),
+    .copy-ctl :global(.web-button.no-left-radius)::before,
+    .copy-ctl :global(.web-button.no-left-radius)::after {
+        padding-top: 5px;
+        padding-bottom: 5px;
+        padding-right: 8px;
+        padding-left: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 32px;
+        width: 32px;
+    }
+    .copy-ctl :global(.web-button .text) {
+        font-size: 14px;
+    }
+    .copy-ctl :global([class*='icon']) {
+        font-size: 14px;
+    }
+    .copy-ctl :global(.web-button.no-left-radius .web-icon-chevron-down),
+    .copy-ctl :global(.web-button.no-left-radius .web-icon-chevron-up) {
+        font-size: 20px;
+        line-height: 1;
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        flex-shrink: 0;
+    }
+    .menu-wrapper {
+        padding: 4px;
+        z-index: 100;
+    }
+    .menu-btn {
+        height: 32px;
+        min-height: 32px;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        border-radius: 0.5rem;
+        padding: 6px 8px;
+        width: 100%;
+        text-align: left;
+    }
+    .menu-btn:hover {
+        cursor: pointer;
+        background-color: hsl(var(--web-color-offset));
+    }
+    .copy-ctl :global(.web-button.no-left-radius),
+    .copy-ctl :global(.web-button.no-left-radius)::before,
+    .copy-ctl :global(.web-button.no-left-radius)::after {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+        border-left: 0;
+    }
+    .copy-ctl :global(.web-button.no-right-radius),
+    .copy-ctl :global(.web-button.no-right-radius)::before,
+    .copy-ctl :global(.web-button.no-right-radius)::after {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+</style>
