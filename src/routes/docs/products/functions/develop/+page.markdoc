@@ -1628,7 +1628,7 @@ return function ($context) {
 ```
 ```python
 from appwrite.client import Client
-from appwrite.services.tablesDB import TablesDB
+from appwrite.services.tables_db import TablesDB
 from appwrite.id import ID
 
 import os
@@ -1984,7 +1984,7 @@ return function ($context) {
 ```
 ```python
 from appwrite.client import Client
-from appwrite.services.tablesDB import TablesDB
+from appwrite.services.tables_db import TablesDB
 from appwrite.id import ID
 
 import os
