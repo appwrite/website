@@ -74,6 +74,8 @@ Finally, create a file `my_app.py`.
 
 Install the Python Appwrite SDK.
 
+> **Note:** To use the new **TablesDB** APIs, make sure you're using **Appwrite Python SDK v13.6.1 or above**.
+
 ```sh
 pip install appwrite==11.0.0
 ```
