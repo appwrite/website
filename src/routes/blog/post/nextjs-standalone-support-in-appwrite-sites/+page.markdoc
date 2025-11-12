@@ -9,7 +9,7 @@ author: ebenezer-don
 category: announcement
 ---
 
-You can now deploy Next.js apps built in [standalone mode](https://nextjs.org/docs/pages/api-reference/config/next-config-js/output) on Appwrite Sites, with full support for Next.js 16. In standalone mode, the build process creates a smaller package that includes only the files your app needs to run in production, leaving out development tools and unused parts of the framework.
+You can now deploy Next.js apps built in [standalone mode](https://nextjs.org/docs/app/api-reference/config/next-config-js/output) on Appwrite Sites, with full support for Next.js 16. In standalone mode, the build process creates a smaller package that includes only the files your app needs to run in production, leaving out development tools and unused parts of the framework.
 
 # Why standalone mode?
 
