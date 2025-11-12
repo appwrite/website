@@ -84,7 +84,14 @@
                     icon: 'icon-globe-alt',
                     isParent: true,
                     new: isNewUntil('19 Jul 2025')
-                },
+                }
+            ]
+        },
+        {
+            label: 'Utilities',
+            collapsible: true,
+            initiallyCollapsed: true,
+            items: [
                 {
                     label: 'Avatars',
                     href: '/docs/products/avatars',
