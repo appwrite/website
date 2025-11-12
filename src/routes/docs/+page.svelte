@@ -331,7 +331,7 @@
                 </ul>
             </div>
         </section>
-        <section class="web-hero is-align-start is-no-max-width border-smooth border-t pt-12!">
+        <section class="web-hero is-align-start is-no-max-width mt-12!">
             <h2 class="text-title font-aeonik-pro text-primary max-w-[600px]">
                 Build faster with AI
             </h2>
