@@ -28,7 +28,7 @@ ElevenLabs’ Text to Speech API converts written text into spoken audio with ve
 
 # How does the integration work?
 
-You can utilize a pre-built Appwrite Site template with text-to-speech capabilities implemented using ElevenLabs to your app. This allows you to convert any piece of text to a human-like voice and download the generated audio.
+You can utilize a pre-built Appwrite Site template with text-to-speech capabilities implemented using ElevenLabs. This allows you to convert any piece of text to a human-like voice and download the generated audio.
 
 # How to implement
 
