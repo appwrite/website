@@ -308,7 +308,7 @@ export default async function ({ req, res }) {
 ```
 ```python
 from appwrite.client import Client
-from appwrite.services.tablesDB import TablesDB
+from appwrite.services.tables_db import TablesDB
 from appwrite.query import Query
 import os
 
@@ -578,7 +578,7 @@ export default async function ({ req, res }) {
 
 ```python
 from appwrite.client import Client
-from appwrite.services.tablesDB import TablesDB
+from appwrite.services.tables_db import TablesDB
 from appwrite.query import Query
 from urllib.parse import parse_qs
 import os
