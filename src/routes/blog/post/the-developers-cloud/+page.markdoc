@@ -1,8 +1,8 @@
 ---
 layout: post
-title: "Introducing the developers\’ cloud"
+title: "Introducing the developers' cloud"
 description: This is an open letter to the Appwrite community about the future ahead. Appwrite is no longer just a backend platform; we are building towards the most complete cloud development platform to date. 
-date: 2025-13-11
+date: 2025-11-14
 cover: /images/blog/the-developers-cloud/dev-cloud-cover.png
 timeToRead: 7
 author: eldad-fux
@@ -29,10 +29,14 @@ With the launch of Appwrite Sites, you can now deploy and host your applications
 
 We think about this journey as a continuous chain:
 
-**Imagine** - explore what you want to build
+**Imagine** explore what you want to build
+
 **Build** - create it using Auth, Databases, Functions, Messaging, Storage
+
 **Deploy** - take it live, deliver it to users, and scale
+
 **Observe** - monitor and understand how it behaves in the real world
+
 **Protect** - operate with confidence, keep your data and users safe
 
 ![The cloud journey](/images/blog/the-developers-cloud/graph1.png)
@@ -55,9 +59,9 @@ Modern product development is cyclical. Teams build, deploy, observe, refine, an
 
 By evolving Appwrite into a complete end-to-end platform, we’re creating an environment where developers can build, deploy, and grow without switching tools or losing context. It shortens feedback loops, encourages iteration, and keeps the entire product lifecycle close to the developer.
 
-This evolution still follows the same principles that shaped Appwrite from the beginning - flexibility, openness, and developer-centric design - now extended across the entire lifecycle.
+This evolution still follows the same principles that shaped Appwrite from the beginning, flexibility, openness, and developer-centric design - now extended across the entire lifecycle.
 
-As this vision expands, we’re also thinking about how to make the earliest steps of building more accessible. There’s a lot of opportunity to help more people transform ideas into working products faster, while still keeping developers at the center of the platform. Some of that work is already underway.
+As this vision expands, we’re also thinking about how to make the earliest steps of building to be more accessible. There’s a lot of opportunity to help more people transform ideas into working products faster, while still keeping developers at the center of the platform. Some of that work is already underway.
 
 ## Integrating AI thoughtfully
 
@@ -85,9 +89,9 @@ Every stage of the developer journey requires specialization. We take that serio
 
 ## What comes next
 
-Appwrite will continue delivering the backend building blocks and deployment tools you rely on. At the same time, Sites and the upcoming stages of Imagine, Observe, and Protect will expand how developers interact with their projects in production - giving you more visibility, control, and confidence as they scale.
+Appwrite will continue delivering the backend building blocks and deployment tools you rely on. At the same time, Sites and the upcoming stages of Imagine, Observe, and Protect will expand how developers interact with their projects in production, giving you more visibility, control, and confidence as they scale.
 
-You’ll also see us continue to explore new layers of flexibility, especially in how developers connect and manage their data. We’re not ready to share details yet, but our vision extends far beyond where we are today.
+You’ll also see us continue to explore new layers of flexibility, especially in how developers connect and manage their data. We have something **huge** to share soon, where our vision extends far beyond where we are today.
 
 This isn’t a single release. It’s a long-term evolution guided by the same mission that has always defined Appwrite: empowering developers to create, innovate, and succeed at scale with a platform that grows as they do.
 
