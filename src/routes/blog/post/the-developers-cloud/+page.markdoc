@@ -28,11 +28,14 @@ Appwrite is becoming a more complete experience for developers, extending our ca
 With the launch of Appwrite Sites, you can now deploy and host your applications directly through Appwrite. It’s the first major milestone in supporting the journey beyond build. You can take your project live, scale it, and operate it with the same thoughtful developer experience and flexibility that have always guided Appwrite.
 
 We think about this journey as a continuous chain:
+
 **Imagine** - explore what you want to build
 **Build** - create it using Auth, Databases, Functions, Messaging, Storage
 **Deploy** - take it live, deliver it to users, and scale
 **Observe** - monitor and understand how it behaves in the real world
 **Protect** - operate with confidence, keep your data and users safe
+
+![The cloud journey](/images/blog/the-developers-cloud/graph1.png)
 
 Our goal is to bring these stages together into one seamless flow. The result is a platform that reduces cognitive overhead, minimizes integration work, and lets developers focus on shipping.
 
@@ -87,6 +90,8 @@ Appwrite will continue delivering the backend building blocks and deployment too
 You’ll also see us continue to explore new layers of flexibility, especially in how developers connect and manage their data. We’re not ready to share details yet, but our vision extends far beyond where we are today.
 
 This isn’t a single release. It’s a long-term evolution guided by the same mission that has always defined Appwrite: empowering developers to create, innovate, and succeed at scale with a platform that grows as they do.
+
+![The cloud journey](/images/blog/the-developers-cloud/graph2.png)
 
 As these pieces come together, Appwrite becomes not just where you build, but where your product lives and scales. One platform. Consistent experience. Full lifecycle.
 
