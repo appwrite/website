@@ -88,7 +88,7 @@ $result = $tablesDB->create('<DATABASE_ID>', '<NAME>');
 ```
 ```python
 from appwrite.client import Client
-from appwrite.services.tablesDB import TablesDB
+from appwrite.services.tables_db import TablesDB
 
 client = Client()
 
