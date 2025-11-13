@@ -21,7 +21,7 @@ This is where overhead creeps in. It's where developers find themselves stitchin
 
 And today, Appwrite has evolved to solve more of that journey. We're no longer just a backend.
 
-## Evolving the platform
+# Evolving the platform
 
 Appwrite is becoming a more complete experience for developers, extending our capabilities across the full lifecycle of product development. This is not a change in mission. It's the natural next step in fulfilling it - giving developers everything they need to create and innovate without limits, all in one place.
 
@@ -53,7 +53,7 @@ The developers' cloud fills that gap. It brings together the capabilities develo
 
 As we look ahead, we're quietly working on expanding the edges of that lifecycle, especially around how developers begin new ideas and how they understand and operate their products as they grow.
 
-## Why this matters
+# Why this matters
 
 Modern product development is cyclical. Teams build, deploy, observe, refine, and repeat. Each stage informs the next. The best platforms support that entire loop consistently and transparently.
 
@@ -63,7 +63,7 @@ This evolution still follows the same principles that shaped Appwrite from the b
 
 As this vision expands, we're also thinking about how to make the earliest steps of building to be more accessible. There's a lot of opportunity to help more people transform ideas into working products faster, while still keeping developers at the center of the platform. Some of that work is already underway.
 
-## Integrating AI thoughtfully
+# Integrating AI thoughtfully
 
 It's impossible to talk about the future of software without acknowledging AI. At the same time, we're aware there is real fatigue in the industry. Terms are overused. Promises are exaggerated. And too often, AI becomes a layer of hype rather than a layer of value.
 
@@ -75,7 +75,7 @@ We're also working to make it even easier to build persistent, agent-driven appl
 
 All of this work follows the principles that define Appwrite: predictable performance, strong defaults, and a developer experience that remains coherent as the platform grows. AI should enhance the way you build and operate your applications, not introduce new friction. That's the bar we're building for.
 
-## How we build
+# How we build
 
 As our scope grows, so does our responsibility to build with depth and intention. To support this evolution, we operate through cross-functional product teams. Each team owns a vertical end-to-end, combining engineering, product, design, and operations to focus deeply on quality and developer experience.
 
@@ -87,7 +87,7 @@ This structure lets us move with urgency while protecting the details that matte
 
 Every stage of the developer journey requires specialization. We take that seriously.
 
-## What comes next
+# What comes next
 
 Appwrite will continue delivering the backend building blocks and deployment tools you rely on. At the same time, Sites and the upcoming stages of Imagine, Observe, and Protect will expand how developers interact with their projects in production, giving you more visibility, control, and confidence as you scale.
 
