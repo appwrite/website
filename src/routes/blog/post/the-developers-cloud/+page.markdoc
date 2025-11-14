@@ -7,6 +7,7 @@ cover: /images/blog/the-developers-cloud/dev-cloud-cover.png
 timeToRead: 7
 author: eldad-fux
 category: announcement
+featured: true
 ---
 
 Technology continues to reshape the world, and developers remain at the center of that transformation. Their creativity and problem-solving are what turn ideas into products that matter. From the beginning, Appwrite was built to serve that creativity. Our mission has always been clear: to make software development accessible, developer-centric, and flexible by building with and for the open-source community.
