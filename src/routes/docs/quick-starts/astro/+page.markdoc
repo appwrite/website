@@ -58,7 +58,7 @@ Find your project's ID in the **Settings** page.
 ![Project settings screen](/images/docs/quick-starts/project-id.png)
 {% /only_light %}
 
-Add environment variables schema to your projects `astro.config.mjs` file and declare them in your `.env` file.
+Add environment variables schema to your projects `astro.config.mjs` file.
 
 ```js
 import { defineConfig, envField } from "astro/config";
@@ -82,7 +82,13 @@ export default defineConfig({
     }
   }
 });
+```
 
+Declare the variables in your `.env` file.
+
+```env
+APPWRITE_ENDPOINT=# https://<REGION>.cloud.appwrite.io/v1
+APPWRITE_PROJECT_ID=# Find your project's ID in the Settings page
 ```
 
 Install the Appwrite JavaScript SDK.
