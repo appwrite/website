@@ -116,7 +116,7 @@ This is similar to vanilla js considering Astro is not a frontend framework
 
  ```ts
  ---
-import Layout from "~/layouts/Layout.astro";
+import Layout from "../layouts/Layout.astro";
 ---
 <Layout>
   <h1>Welcome to Appwrite with Astro!</h1>
@@ -194,7 +194,7 @@ import Layout from "~/layouts/Layout.astro";
 </style>
 
 <script>
-  import { account, ID, type Models } from "~/lib/appwrite";
+  import { account, ID, type Models } from "../lib/appwrite";
 
   const loginForm = document.getElementById("loginForm") as HTMLFormElement;
   const loggedInView = document.getElementById("loggedIn") as HTMLDivElement;
