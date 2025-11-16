@@ -5,12 +5,274 @@ description: Learn how to use Appwrite to add authentication, user management, f
 difficulty: beginner
 readtime: 3
 ---
+Learn how to setup your first Astro project powered by Appwrite.
+{% section #step-1 step=1 title="Create Appwrite project" %}
+Head to the [Appwrite Console](https://cloud.appwrite.io/console).
 
-Improve the docs, add this guide.
+{% only_dark %}
+![Create project screen](/images/docs/quick-starts/dark/create-project.png)
+{% /only_dark %}
+{% only_light %}
+![Create project screen](/images/docs/quick-starts/create-project.png)
+{% /only_light %}
 
-We still don't have this guide in place, but we do have some great news. 
-The Appwrite docs, just like Appwrite, is completely open sourced.
-This means, anyone can help improve them and add new guides and tutorials. 
+If this is your first time using Appwrite, create an account and create your first project.
 
-If you see this page, **we're actively looking for contributions to this page**.
-Follow our contribution guidelines, open a PR to [our Website repo](https://github.com/appwrite/website), and collaborate with our core team to improve this page.
+Then, under **Add a platform**, add a **Web app**. The **Hostname** should be `localhost`.
+
+{% partial file="note-on-cors.md" /%}
+
+{% only_dark %}
+![Add a platform](/images/docs/quick-starts/dark/add-platform.png)
+{% /only_dark %}
+{% only_light %}
+![Add a platform](/images/docs/quick-starts/add-platform.png)
+{% /only_light %}
+
+You can skip optional steps.
+
+{% /section %}
+{% section #step-2 step=2 title="Create Astro project" %}
+Create Astro project by running the following command:
+
+```sh
+npm create astro@latest appwrite-astro
+```
+
+When prompted, configure your project with these recommended settings: 
+- **How would you like to start your new project?** → basic
+- **Install dependencies?** → Yes 
+- **Initialize a new git repository?** → Yes 
+
+These settings will create a basic Astro project in `./appwrite-astro` directory ready to get started with Appwrite.
+
+{% /section %}
+
+{% section #step-3 step=3 title="Setup Appwrite" %}
+Find your project's ID in the **Settings** page.
+
+{% only_dark %}
+![Project settings screen](/images/docs/quick-starts/dark/project-id.png)
+{% /only_dark %}
+{% only_light %}
+![Project settings screen](/images/docs/quick-starts/project-id.png)
+{% /only_light %}
+
+Add environment variables schema to your projects `astro.config.mjs` file and declare them in your `.env` file.
+
+```js
+import { defineConfig, envField } from "astro/config";
+
+// https://astro.build/config
+export default defineConfig({
+  env: {
+    validateSecrets: true,
+    schema: {
+      APPWRITE_ENDPOINT: envField.string({
+        access: "public",
+        context: "client",
+        url: true,
+        min: 1,
+      }),
+      APPWRITE_PROJECT_ID: envField.string({
+        access: "public",
+        context: "client",
+        min: 1,
+      })
+    }
+  }
+});
+
+```
+
+Install the Appwrite JavaScript SDK.
+
+```sh
+npm install appwrite
+```
+
+Create a new file `src/lib/appwrite.ts` with the following code.
+
+```ts
+import { Client, Account } from "appwrite";
+import { APPWRITE_ENDPOINT, APPWRITE_PROJECT_ID } from "astro:env/client";
+
+export { type Models, ID } from "appwrite";
+
+export const client = new Client()
+  .setEndpoint(APPWRITE_ENDPOINT)
+  .setProject(APPWRITE_PROJECT_ID);
+
+export const account = new Account(client);
+
+```
+{% /section %}
+{% section #step-4 step=4 title="Create a login page" %}
+Create or update `src/pages/index.astro` with the following code.
+
+{% info title="" %}
+This is similar to vanilla js considering Astro is not a frontend framework
+{% /info %}
+
+ ```ts
+ ---
+import Layout from "~/layouts/Layout.astro";
+---
+<Layout>
+  <h1>Welcome to Appwrite with Astro!</h1>
+
+  <div id="loggedIn">
+    <p>Welcome</p>
+    <button id="btn-logout" type="button">Logout</button>
+  </div>
+
+  <form id="loginForm">
+    <h2>Login / Register</h2>
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required />
+    <br />
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" required />
+    <br />
+    <button type="submit" data-type="login">Login</button>
+    <button type="submit" data-type="register">Register</button>
+  </form>
+</Layout>
+ 
+<style>
+  h1 {
+    text-align: center;
+    font-weight: bold;
+    font-size: 2rem;
+  }
+
+  h2 {
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+
+  #loggedIn,
+  form {
+    display: none;
+    max-width: 800px;
+    margin: 1rem auto;
+  }
+
+  form {
+    display: none;
+    flex-direction: column;
+  }
+
+  label {
+    margin-top: 1rem;
+    font-weight: bold;
+  }
+  input {
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    margin-top: 0.3rem;
+  }
+
+  button {
+    margin-top: 1.5rem;
+    padding: 0.75rem;
+    font-size: 1rem;
+    background: #0070f3;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+  }
+
+  button[data-type="register"] {
+    background: #002146;
+  }
+
+  #btn-logout {
+    background: #e00;
+  }
+</style>
+
+<script>
+  import { account, ID, type Models } from "~/lib/appwrite";
+
+  const loginForm = document.getElementById("loginForm") as HTMLFormElement;
+  const loggedInView = document.getElementById("loggedIn") as HTMLDivElement;
+  const logoutBtn = document.getElementById("btn-logout") as HTMLButtonElement;
+  const welcomeText = loggedInView.querySelector("p") as HTMLParagraphElement;
+
+  let currentUser: Models.User | null = null;
+
+  function showLogin() {
+    loginForm.style.display = "flex";
+    loggedInView.style.display = "none";
+  }
+
+  function showLoggedIn(user: Models.User) {
+    welcomeText.textContent = `Welcome, ${user.name || user.email} (ID: ${user.$id})`;
+    loginForm.style.display = "none";
+    loggedInView.style.display = "block";
+  }
+
+  async function login(email: string, password: string) {
+    await account.createEmailPasswordSession({ email, password });
+    currentUser = await account.get();
+  }
+
+  async function register(email: string, password: string) {
+    await account.create({
+      userId: ID.unique(),
+      name: email.split("@")[0],
+      email,
+      password,
+    });
+
+    await login(email, password);
+  }
+
+  async function logout() {
+    await account.deleteSession({ sessionId: "current" });
+    currentUser = null;
+    showLogin();
+  }
+
+  async function checkSession() {
+    try {
+      currentUser = await account.get();
+      showLoggedIn(currentUser);
+    } catch {
+      showLogin();
+    }
+  }
+
+  loginForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const type = e.submitter!.dataset.type;
+    const formData = new FormData(loginForm);
+    const email = formData.get("email") as string;
+    const password = formData.get("password") as string;
+
+    try {
+      if (type === "register") {
+        await register(email, password);
+      } else {
+        await login(email, password);
+      }
+      showLoggedIn(currentUser!);
+    } catch (err) {
+      console.error("Auth error:", err);
+      alert("Authentication failed. Check console for details.");
+    }
+  });
+
+  logoutBtn.addEventListener("click", logout);
+
+  await checkSession();
+</script>
+ ```
+{% /section %}
+
+{% section #step-5 step=5 title="All set" %}
+Run your project with `npm run dev` and open [localhost on port 4321](http://localhost:4321) in your browser.
+{% /section %}
