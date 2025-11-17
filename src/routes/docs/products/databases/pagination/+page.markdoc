@@ -320,8 +320,7 @@ const page = await tablesDB.listRows({
   databaseId: '<DATABASE_ID>',
   tableId: '<TABLE_ID>',
   queries: [
-    Query.limit(25),
-    // Optional: Query.cursorAfter(lastId)
+    Query.limit(25)
   ],
   total: false // Skip computing total count
 });
@@ -340,11 +339,193 @@ const page = await tablesDB.listRows({
   databaseId: '<DATABASE_ID>',
   tableId: '<TABLE_ID>',
   queries: [
-    sdk.Query.limit(25),
-    // Optional: sdk.Query.cursorAfter(lastId)
+    sdk.Query.limit(25)
   ],
-  total: false
+  total: false // Skip computing total count
 });
+```
+```server-python
+from appwrite.client import Client
+from appwrite.services.tables_db import TablesDB
+from appwrite.query import Query
+
+client = Client()
+client.set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
+client.set_project('<PROJECT_ID>')
+client.set_key('<YOUR_API_KEY>')
+
+tables_db = TablesDB(client)
+
+page = tables_db.list_rows(
+    database_id='<DATABASE_ID>',
+    table_id='<TABLE_ID>',
+    queries=[
+        Query.limit(25)
+    ],
+    total=False  # Skip computing total count
+)
+```
+```server-ruby
+require 'appwrite'
+
+client = Appwrite::Client.new
+    .set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .set_project('<PROJECT_ID>')
+    .set_key('<YOUR_API_KEY>')
+
+tables_db = Appwrite::TablesDB.new(client)
+
+page = tables_db.list_rows(
+    database_id: '<DATABASE_ID>',
+    table_id: '<TABLE_ID>',
+    queries: [
+        Appwrite::Query.limit(25)
+    ],
+    total: false  # Skip computing total count
+)
+```
+```server-deno
+import { Client, Query, TablesDB } from "https://deno.land/x/appwrite/mod.ts";
+
+const client = new Client()
+  .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+  .setProject('<PROJECT_ID>')
+  .setKey('<YOUR_API_KEY>');
+
+const tablesDB = new TablesDB(client);
+
+const page = await tablesDB.listRows({
+  databaseId: '<DATABASE_ID>',
+  tableId: '<TABLE_ID>',
+  queries: [
+    Query.limit(25)
+  ],
+  total: false // Skip computing total count
+});
+```
+```server-php
+<?php
+
+use Appwrite\Client;
+use Appwrite\Query;
+use Appwrite\Services\TablesDB;
+
+$client = (new Client())
+    ->setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    ->setProject('<PROJECT_ID>')
+    ->setKey('<YOUR_API_KEY>');
+
+$tablesDB = new TablesDB($client);
+
+$page = $tablesDB->listRows(
+    databaseId: '<DATABASE_ID>',
+    tableId: '<TABLE_ID>',
+    queries: [
+        Query::limit(25)
+    ],
+    total: false // Skip computing total count
+);
+```
+```server-go
+package main
+
+import (
+    "fmt"
+    "github.com/appwrite/sdk-for-go/appwrite"
+    "github.com/appwrite/sdk-for-go/query"
+)
+
+func main() {
+    client := appwrite.NewClient()
+    client.SetEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    client.SetProject("<PROJECT_ID>")
+    client.SetKey("<YOUR_API_KEY>")
+
+    tablesDB := appwrite.NewTablesDB(client)
+
+    page, err := tablesDB.ListRows(
+        "<DATABASE_ID>",
+        "<TABLE_ID>",
+        appwrite.WithListRowsQueries([]string{
+            query.Limit(25)
+        }),
+        appwrite.WithListRowsTotal(false), // Skip computing total count
+    )
+
+    if err != nil {
+        fmt.Println(err)
+    }
+}
+```
+```server-swift
+import Appwrite
+import AppwriteModels
+
+func main() async throws {
+    let client = Client()
+        .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+        .setProject("<PROJECT_ID>")
+        .setKey("<YOUR_API_KEY>")
+
+    let tablesDB = TablesDB(client)
+
+    let page = try await tablesDB.listRows(
+        databaseId: "<DATABASE_ID>",
+        tableId: "<TABLE_ID>",
+        queries: [
+            Query.limit(25)
+        ],
+        total: false // Skip computing total count
+    )
+}
+```
+```server-kotlin
+import io.appwrite.Client
+import io.appwrite.Query
+import io.appwrite.services.TablesDB
+
+suspend fun main() {
+    val client = Client(applicationContext)
+        .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+        .setProject("<PROJECT_ID>")
+        .setKey("<YOUR_API_KEY>")
+
+    val tablesDB = TablesDB(client)
+
+    val page = tablesDB.listRows(
+        databaseId = "<DATABASE_ID>",
+        tableId = "<TABLE_ID>",
+        queries = listOf(
+            Query.limit(25)
+        ),
+        total = false // Skip computing total count
+    )
+}
+```
+```server-java
+import io.appwrite.Client;
+import io.appwrite.Query;
+import io.appwrite.services.TablesDB;
+
+public class Main {
+    public static void main(String[] args) throws Exception {
+        Client client = new Client()
+            .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+            .setProject("<PROJECT_ID>")
+            .setKey("<YOUR_API_KEY>");
+
+        TablesDB tablesDB = new TablesDB(client);
+
+        RowList page = tablesDB.listRows(
+            "<DATABASE_ID>",
+            "<TABLE_ID>",
+            Arrays.asList(
+                Query.limit(25)
+            ),
+            false // Skip computing total count
+        );
+    }
+}
 ```
 ```client-flutter
 import 'package:appwrite/appwrite.dart';
@@ -360,10 +541,9 @@ void main() async {
     databaseId: '<DATABASE_ID>',
     tableId: '<TABLE_ID>',
     queries: [
-      Query.limit(25),
-      // Query.cursorAfter(lastId)
+      Query.limit(25)
     ],
-    total: false,
+    total: false, // Skip computing total count
   );
 }
 ```
@@ -382,10 +562,9 @@ func main() async throws {
     databaseId: "<DATABASE_ID>",
     tableId: "<TABLE_ID>",
     queries: [
-      Query.limit(25),
-      // Query.cursorAfter(lastId)
+      Query.limit(25)
     ],
-    total: false
+    total: false // Skip computing total count
   )
 }
 ```
@@ -406,10 +585,25 @@ suspend fun main() {
         tableId = "<TABLE_ID>",
         queries = listOf(
             Query.limit(25)
-            // , Query.cursorAfter(lastId)
         ),
-        total = false
+        total = false // Skip computing total count
     )
+}
+```
+```graphql
+query {
+    tablesListRows(
+        databaseId: "<DATABASE_ID>",
+        tableId: "<TABLE_ID>",
+        queries: ["limit(25)"],
+        total: false
+    ) {
+        total
+        rows {
+            _id
+            data
+        }
+    }
 }
 ```
 ```http
