@@ -151,6 +151,7 @@ databases.create_document(
         # ...your attributes
     }
 )
+```
 ```server-dotnet
 using Appwrite;
 using Appwrite.Models;
