@@ -26,6 +26,18 @@
                     icon: 'icon-cog'
                 },
                 {
+                    label: 'Changelog',
+                    href: '/changelog',
+                    icon: 'icon-clock',
+                    openInNewTab: true
+                },
+                {
+                    label: 'Integrations',
+                    href: '/integrations',
+                    icon: 'icon-puzzle',
+                    openInNewTab: true
+                },
+                {
                     label: 'API references',
                     href: '/docs/references',
                     icon: 'icon-document',
@@ -72,18 +84,20 @@
                     icon: 'icon-globe-alt',
                     isParent: true,
                     new: isNewUntil('19 Jul 2025')
-                },
+                }
+            ]
+        },
+        {
+            label: 'Utilities',
+            collapsible: true,
+            initiallyCollapsed: true,
+            items: [
                 {
-                    label: 'Network',
-                    href: '/docs/products/network',
-                    icon: 'icon-share',
-                    isParent: true
-                },
-                {
-                    label: 'AI',
-                    href: '/docs/products/ai',
-                    icon: 'icon-chip',
-                    isParent: true
+                    label: 'Avatars',
+                    href: '/docs/products/avatars',
+                    icon: 'icon-user-circle',
+                    isParent: true,
+                    new: isNewUntil('1 Jan 2026')
                 }
             ]
         },
@@ -148,11 +162,10 @@
                     isParent: true
                 },
                 {
-                    label: 'Integrations',
-                    href: '/integrations',
-                    icon: 'icon-puzzle',
-                    isParent: true,
-                    openInNewTab: true
+                    label: 'Network',
+                    href: '/docs/products/network',
+                    icon: 'icon-share',
+                    isParent: true
                 },
                 {
                     label: 'Migrations',
