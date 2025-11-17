@@ -54,7 +54,7 @@ npm init
 Install the Node.js Appwrite SDK.
 
 ```sh
-npm install node-appwrite@17.0.0
+npm install node-appwrite
 ```
 {% /section %}
 {% section #step-4 step=4 title="Import Appwrite" %}
@@ -104,34 +104,29 @@ async function prepareDatabase() {
         name: 'Todos'
     });
 
-    await tablesDB.createStringAttribute({
+    await tablesDB.createStringColumn({
         databaseId: todoDatabase.$id,
-        collectionId: todoCollection.$id,
+        tableId: todoTable.$id,
         key: 'title',
         size: 255,
         required: true
     });
-    await tablesDB.createStringColumn(
-        todoDatabase.$id,
-        todoTable.$id,
-        'title',
-        255,
-        true
-    );
 
-    await tablesDB.createStringColumn(
-        todoDatabase.$id,
-        todoTable.$id,
-        'description',
-        255, false,
-        'This is a test description'
-    );
-    await tablesDB.createBooleanColumn(
-        todoDatabase.$id,
-        todoTable.$id,
-        'isComplete',
-        true
-    );
+    await tablesDB.createStringColumn({
+        databaseId: todoDatabase.$id,
+        tableId: todoTable.$id,
+        key: 'description',
+        size: 255,
+        required: false,
+        default: 'This is a test description'
+    });
+
+    await tablesDB.createBooleanColumn({
+        databaseId: todoDatabase.$id,
+        tableId: todoTable.$id,
+        key: 'isComplete',
+        required: true
+    });
 }
 ```
 
@@ -247,8 +242,45 @@ runAllTasks();
 ```
 
 {% /section %}
+{% section #step-8 step=8 title="Type safety with TypeScript" %}
 
-{% section #step-8 step=8 title="All set" %}
+For better type safety in TypeScript Node.js projects, define interfaces and use generics:
+
+```typescript
+interface Todo {
+    title: string;
+    description: string;
+    isComplete: boolean;
+}
+
+import { Client, TablesDB } from 'node-appwrite';
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>');
+
+const tablesDB = new TablesDB(client);
+
+// Type-safe database operations
+async function getTodos() {
+    const todos = await tablesDB.listRows<Todo>({
+        databaseId: '<DATABASE_ID>',
+        tableId: '<TABLE_ID>'
+    });
+
+    todos.rows.forEach(todo => {
+        console.log(`Title: ${todo.title} - Complete: ${todo.isComplete}`);
+    });
+}
+```
+
+{% info title="Generate types automatically" %}
+Use the [Appwrite CLI](/docs/products/databases/type-generation) to generate TypeScript interfaces automatically: `appwrite types ./types`
+{% /info %}
+
+{% /section %}
+
+{% section #step-9 step=9 title="All set" %}
 
 Run your project with `node app.js` and view the response in your console.
 

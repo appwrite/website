@@ -26,7 +26,7 @@
     import Request from './(components)/Request.svelte';
     import Response from './(components)/Response.svelte';
     import RateLimits from './(components)/RateLimits.svelte';
-    import type { SDKMethod } from '$lib/utils/specs';
+    import type { SDKMethod } from './specs';
 
     let { data } = $props();
 

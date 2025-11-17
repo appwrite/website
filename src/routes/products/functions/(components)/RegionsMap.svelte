@@ -92,9 +92,16 @@
         {
             lat: 1.3521,
             lng: 103.8198,
-            city: 'Signapore',
+            city: 'Singapore',
             code: 'SGP',
-            available: false
+            available: true
+        },
+        {
+            lat: 43.6532,
+            lng: -79.3832,
+            city: 'Toronto',
+            code: 'TOR',
+            available: true
         }
     ]);
 

@@ -1,0 +1,8 @@
+nodeSelector:
+    workload: assets
+
+imagePullPolicy: IfNotPresent
+
+minReplicas: 2
+maxReplicas: 3
+maxUnavailable: 1

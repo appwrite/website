@@ -1,13 +1,13 @@
 <script lang="ts">
     import { parse } from '$lib/utils/markdown';
-    import type { SDKMethod } from '$lib/utils/specs';
+    import type { SDKMethod } from '../specs';
 
     export let method: SDKMethod;
 </script>
 
 <div class="web-card is-transparent p-4">
     <ul class="flex flex-col">
-        {#each method.parameters as parameter, i}
+        {#each method.parameters as parameter, i (i)}
             {@const first = i === 0}
             <li class:pt-4={!first}>
                 <article>

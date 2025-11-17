@@ -34,6 +34,7 @@ const config = {
     extensions: ['.markdoc', '.svelte', '.md'],
     kit: {
         adapter: nodeAdapter(),
+
         version: {
             pollInterval: 60 * 1000
         },
@@ -41,7 +42,6 @@ const config = {
             $routes: './src/routes',
             $scss: './src/scss',
             $icons: './src/icons',
-            $appwrite: './node_modules/@appwrite.io/repo',
             $markdoc: './src/markdoc'
         },
         prerender: {
@@ -55,6 +55,15 @@ const config = {
                     return;
                 }
                 throw new Error(message);
+            }
+        },
+        experimental: {
+            tracing: {
+                server: true
+            },
+
+            instrumentation: {
+                server: true
             }
         }
     }

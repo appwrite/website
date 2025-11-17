@@ -46,23 +46,41 @@ When using SendGrid, the SMTP username should be set to the literal string "apik
 
 # Debugging {% #debugging %}
 
-If you are unable to send emails, there is most likely an issue with your integration. The first place to look for possible errors is the **Appwrite Emails Worker**. You can access the logs of this container using:
+If you are unable to send emails, there are several common issues to check. Follow these troubleshooting steps:
+
+## Check email worker logs {% #check-logs %}
+
+The first place to look for errors is the **Appwrite Emails Worker** logs:
 
 ```sh
 docker compose logs -f appwrite-worker-mails
 ```
 
-The next possible source of error is the configuration in your .env file. Make sure that the keys and values are correct and test the credentials by sending a test email using your SMTP provider's SDK or cURL requests.
+Look for error messages that might indicate authentication failures, network issues, or configuration problems.
 
-Moving on to the next source of error. Some SMTP providers have a concept of [authorized recipients](https://help.mailgun.com/hc/en-us/articles/217531258-Authorized-Recipients) in their sandbox (or dev) environments and you can only send emails to recipients in this list. Make sure that the recipient of the email that you're trying to send is a part of this list.
+## Verify SMTP configuration {% #verify-config %}
 
-Another source of error could be that the environment variables have not been set in the appwrite container. You can check this using:
+Check your `.env` file configuration:
+
+1. Ensure all SMTP environment variables are correctly set
+2. Verify credentials are valid
+3. Test your SMTP credentials independently using your provider's SDK or cURL requests
+
+## Check authorized recipients {% #authorized-recipients %}
+
+Some SMTP providers have [authorized recipients](https://help.mailgun.com/hc/en-us/articles/217531258-Authorized-Recipients) restrictions in sandbox/development environments.
+
+Make sure the email recipient is added to your provider's authorized recipients list if you're using a sandbox account.
+
+## Verify environment variables are loaded {% #verify-env %}
+
+Check if environment variables are properly set in the container:
 
 ```sh
 docker compose exec appwrite-worker-mails vars
 ```
 
-If this is the case, you can try rebuilding your appwrite stack using:
+If environment variables aren't loaded, rebuild your Appwrite stack:
 
 ```sh
 docker compose up -d --build --force-recreate

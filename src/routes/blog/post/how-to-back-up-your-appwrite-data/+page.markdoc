@@ -9,6 +9,8 @@ author: bradley-schofield
 category: product
 ---
 
+Updated on October 6, 2025
+
 Backing up and restoring data is an extremely important part of running servers. It's a virtual safety net against most bad things that can happen. Made a bad config change? Restore a backup. Messed up an update? Restore a backup. Corrupted Drives? Restore a backup.
 
 Not only that, backups can also come in handy when migrating data to other systems, like migrating a development server into a production environment or vice versa.
@@ -127,6 +129,37 @@ This process makes migrating an Appwrite installation simple. Just copy the back
 We hope you enjoyed this article! We love contributions and encourage you to take a look at our [open issues](https://github.com/appwrite/appwrite/issues) and [ongoing RFCs](https://github.com/appwrite/rfc/pulls).
 
 If you get stuck anywhere, feel free to reach out to us on our [friendly support channels](https://appwrite.io/discord) run by humans.
+
+# Frequently asked questions (FAQs)
+
+**1. Why should I back up my Appwrite instance regularly?**
+
+Backups protect your data from accidental deletions, failed updates, or hardware issues. They also make it easy to migrate between servers or environments. Regular backups ensure you can restore your setup quickly without losing user data or configurations.
+
+**2. What parts of Appwrite do I need to back up?**
+
+You only need to back up two main things:
+
+- The MariaDB database (stores all project data)
+- The Docker volumes for functions, uploads, and builds.
+
+Everything else is stateless and can be regenerated automatically by Appwrite.
+
+**3. Can I back up Appwrite while it’s running?**
+
+It’s possible, but not recommended. To avoid incomplete or inconsistent backups, it’s best to shut down your Appwrite instance before running backup commands. This ensures all data is captured correctly.
+
+**4. How do I restore an Appwrite backup to a new server?**
+
+Move your backup files to the new server, place them next to the `docker-compose.yml`, and run the restore commands for the database and volumes. Don’t forget to copy your `_APP_OPENSSL_KEY_V1` environment variable, it’s required to decrypt your data.
+
+**5. Where should I store my Appwrite backups?**
+
+Keep backups in multiple safe locations, ideally a mix of local storage and cloud storage. This protects you from local disk failures and makes recovery easier if your primary environment goes down.
+
+**6. How often should I back up my Appwrite database?**
+
+It depends on how frequently your data changes. For active projects, schedule daily or hourly backups of the MariaDB database to prevent data loss. You can automate this using cron jobs or CI pipelines. For smaller or less active projects, weekly backups are usually enough. Just make sure to store them securely and test restores occasionally.
 
 Here are some handy links for more information:
 

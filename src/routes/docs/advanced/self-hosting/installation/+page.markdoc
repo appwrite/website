@@ -42,7 +42,7 @@ docker run -it --rm \
     --volume /var/run/docker.sock:/var/run/docker.sock \
     --volume "$(pwd)"/appwrite:/usr/src/code/appwrite:rw \
     --entrypoint="install" \
-    appwrite/appwrite:1.7.4
+    appwrite/appwrite:1.8.0
 ```
 {% /tabsitem %}
 
@@ -53,7 +53,7 @@ docker run -it --rm ^
     --volume //var/run/docker.sock:/var/run/docker.sock ^
     --volume "%cd%"/appwrite:/usr/src/code/appwrite:rw ^
     --entrypoint="install" ^
-    appwrite/appwrite:1.7.4
+    appwrite/appwrite:1.8.0
 ```
 
 ## PowerShell
@@ -62,7 +62,7 @@ docker run -it --rm `
     --volume /var/run/docker.sock:/var/run/docker.sock `
     --volume ${pwd}/appwrite:/usr/src/code/appwrite:rw `
     --entrypoint="install" `
-    appwrite/appwrite:1.7.4
+    appwrite/appwrite:1.8.0
 ```
 {% /tabsitem %}
 {% /tabs %}
@@ -147,4 +147,4 @@ After successfully installing Appwrite, you can:
 
 [Production setup](/docs/advanced/self-hosting/production) - Prepare your installation for production use
 
-[Update Appwrite](/docs/advanced/self-hosting/update) - Keep your installation up to date
+[Update Appwrite](/docs/advanced/self-hosting/production/updates) - Keep your installation up to date

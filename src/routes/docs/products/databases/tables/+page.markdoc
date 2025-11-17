@@ -36,7 +36,11 @@ client
     .setKey('919c2d18fb5d4...a2ae413da83346ad2') // Your secret API key
 ;
 
-const promise = tablesDB.createTable('<DATABASE_ID>', '<TABLE_ID>', '<NAME>');
+const promise = tablesDB.createTable({
+    databaseId: '<DATABASE_ID>',
+    tableId: '<TABLE_ID>',
+    name: '<NAME>'
+});
 
 promise.then(function (response) {
     console.log(response);
@@ -45,7 +49,7 @@ promise.then(function (response) {
 });
 ```
 ```deno
-import * as sdk from "https://deno.land/x/appwrite/mod.ts";
+import * as sdk from "npm:node-appwrite";
 
 // Init SDK
 let client = new sdk.Client();
@@ -87,7 +91,7 @@ $result = $tablesDB->createTable('<DATABASE_ID>', '<TABLE_ID>', '<NAME>');
 ```
 ```python
 from appwrite.client import Client
-from appwrite.services.tablesDB import TablesDB
+from appwrite.services.tables_db import TablesDB
 
 client = Client()
 
@@ -279,6 +283,9 @@ You can choose between the following types.
 | `ip`         | IP address column for IPv4 and IPv6.                          |
 | `email`      | Email address column.                                         |
 | `url`        | URL column.                                                   |
+| `point`      | Geographic point specified as `[longitude, latitude]`.       |
+| `line`       | Geographic line represented by an ordered list of coordinates. |
+| `polygon`    | Geographic polygon representing a closed area; supports interior holes. |
 | `relationship` | Relationship column relates one table to another. [Learn more about relationships.](/docs/products/databases/relationships) |
 
 If an column must be populated in all rows, set it as `required`.

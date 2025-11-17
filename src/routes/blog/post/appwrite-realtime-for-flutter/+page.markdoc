@@ -7,7 +7,9 @@ timeToRead: 6
 date: 2024-09-02
 author: damodar-lohani
 category: tutorial
+lastUpdated: 2025-10-14
 ---
+
 Realtime service is one of Appwrite’s most popular features. It allows you to subscribe and react to any Appwrite event using the Realtime API.
 
 In this tutorial, we will get into the details and learn how to develop a Flutter app that leverages Appwrite's real-time capabilities.
@@ -467,6 +469,28 @@ I hope you enjoyed learning and building Flutter applications with Appwrite Real
 If you have any questions, feel free to ask on our [Discord server](https://appwrite.io/discord). You can also share your apps built Flutter and Appwrite Realtime on [Built with Appwrite](https://builtwith.appwrite.io/), and we'll feature it on our socials!
 
 Happy coding!
+
+# Frequently asked questions (FAQs)
+
+**1. What is Appwrite Realtime, and how does it work?**
+
+Appwrite Realtime lets your app respond instantly to changes, like new database entries or deleted documents, without needing manual refreshes. You simply subscribe to events (e.g., document creation, updates, or deletions), and Appwrite automatically pushes updates to your app via a WebSocket connection.
+
+**2. How does Realtime improve Flutter app performance?**
+
+Realtime keeps your app’s state instantly in sync with the backend. Instead of constantly polling APIs for updates, your app reacts to live events, reducing unnecessary requests and improving responsiveness. It’s perfect for features like chats, dashboards, or collaborative tools.
+
+3. Can I use Appwrite Realtime without a database?
+
+Yes. While databases are a common use case, Realtime can also subscribe to other Appwrite services, like authentication sessions, storage changes, or function executions. You can listen to almost any event happening inside your Appwrite project.
+
+**4. Is Realtime secure?**
+
+Yes. Appwrite Realtime enforces the same permissions and roles as other Appwrite services. Users only receive updates for documents or data they are allowed to access, ensuring security and privacy even in live data streams.
+
+**5. Can I use Appwrite Realtime with other frameworks or just Flutter?**
+
+Realtime works across all SDKs that Appwrite supports, including Web, Android, and iOS. Flutter is just one example. The same logic applies universally: subscribe to channels and react to incoming data.
 
 # Learn more
 

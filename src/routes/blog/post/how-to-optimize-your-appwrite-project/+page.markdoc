@@ -10,6 +10,8 @@ category: product
 featured: false
 ---
 
+Updated on October 6, 2025
+
 As your Appwrite project scales, performance and resource management become critical, not just to keep your app running smoothly, but also to avoid unexpected usage spikes. While Appwrite is designed to scale effortlessly, it's important to proactively optimize your usage so you don't reach resource limits prematurely. Effective optimization helps reduce costs, improves performance, and enhances user experience without compromising on functionality.
 
 This guide provides a detailed overview of techniques to optimize your Appwrite project, covering API request management, caching strategies, file compression, image optimization, and other methods to ensure your app performs well while staying within your desired resource limits.
@@ -244,8 +246,30 @@ Optimizing your Appwrite project ensures you not only provide a better experienc
 
 These optimizations aren't just about cost savings—they are about making your app more scalable, efficient, and reliable as it grows. Rather than waiting until you hit plan limits, taking a proactive approach builds trust and ensures your users always experience the best possible performance, even as your app scales.
 
-Further reading and resources:
+# Frequently asked questions (FAQs)
 
-- [Serverless functions 101: Best practices](http:appwrite.io/blog/post/serverless-functions-best-practices)
+**1. How can I reduce API request usage in Appwrite?**
+
+Use smart querying with `listDocuments()` and filters instead of multiple requests. Combine queries, enable pagination, and use the Realtime API for live updates instead of polling. This reduces server load and speeds up responses.
+
+**2. What’s the best way to cache data in an Appwrite app?**
+
+Cache frequently accessed or static data using localStorage or IndexedDB on the client, and use Redis for server-side caching. Set expiry rules to prevent stale data and limit unnecessary API calls.
+
+**3. How do I optimize file storage and image performance?**
+
+Enable bucket compression (gzip or zstd) and serve images using the Preview API for resizing or converting to formats like WebP. For global apps, add a CDN to deliver files faster and reduce server strain.
+
+**4. Can Appwrite automatically scale my project?**
+
+Yes. Appwrite Cloud handles automatic scaling for traffic spikes and workload increases. For self-hosted setups, you can scale manually using Docker containers to distribute services across multiple servers.
+
+**5. How can I prevent hitting resource or budget limits?**
+
+Set usage alerts and budget controls in the Appwrite Cloud Console. You can define spending caps and get notified before reaching limits, helping you manage resources proactively and avoid unexpected overages.
+
+# Further reading and resources:
+
+- [Serverless functions 101: Best practices](https://appwrite.io/blog/post/serverless-functions-best-practices)
 - [Appwrite Queries documentation](https://appwrite.io/docs/products/databases/queries)
 - [Appwrite Buckets documentation](https://appwrite.io/docs/products/storage/buckets)

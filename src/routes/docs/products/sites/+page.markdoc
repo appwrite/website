@@ -35,6 +35,12 @@ Try out one of our most popular framework quick-starts:
 {% cards_item href="/docs/products/sites/quick-start/astro" title="Astro" icon="icon-astro" %}
 {% /cards_item %}
 
+{% cards_item href="/docs/products/sites/quick-start/vue" title="Vue" icon="web-icon-vue" %}
+{% /cards_item %}
+
+{% cards_item href="/docs/products/sites/quick-start/tanstack-start" title="TanStack Start" icon="web-icon-tanstack" %}
+{% /cards_item %}
+
 {% /cards %}
 
 Or, [setup your first site using your favorite framework >](/docs/products/sites/quick-start)

@@ -61,7 +61,7 @@ Next up, we'll create our test app. This will require us to create two files in 
     <button type="button">Add rows</button>
 
     <!-- Appwrite Web SDK -->
-    <script src="https://cdn.jsdelivr.net/npm/appwrite@18.1.1"></script>
+    <script src="https://cdn.jsdelivr.net/npm/appwrite"></script>
 
     <!-- Our app's script -->
     <script src="app.js"></script>

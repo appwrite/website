@@ -2,13 +2,15 @@ import MarkdownIt from 'markdown-it';
 
 const md = new MarkdownIt('commonmark');
 export function parse(content: string): string {
-    const tokens = md.parse(content, null);
+    const env = {};
+
+    const tokens = md.parse(content, env);
     return md.renderer.render(
         transform_tokens(tokens),
         {
             highlight: null
         },
-        null
+        env
     );
 }
 
