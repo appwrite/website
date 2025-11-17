@@ -15,7 +15,7 @@ But in May 2025, the team announced Remix 3, an unexpected rebuild from the grou
 
 It's a big step. The framework now runs directly on the Fetch API, not Node's request/response system. It can run on any JavaScript runtime; Node, Deno, Bun, or Cloudflare Workers, without adapters. It still supports the same development patterns developers liked in Remix 2, but without depending on React's lifecycle or its virtual DOM. The team calls this a move toward being "closer to the web itself."
 
-### Why the Remix team chose to rebuild in v3
+### Why the Remix team chose to rebuild in version 3
 
 When Remix started, React was the natural foundation. Its component model, rendering flow, and community gave Remix an instant head start. But over time, that foundation began to limit what the team could do.
 
