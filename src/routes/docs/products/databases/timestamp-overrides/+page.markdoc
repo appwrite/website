@@ -687,6 +687,7 @@ databases.upsert_documents(
     }
   ]
 )
+```
 ```server-dotnet
 using Appwrite;
 using Appwrite.Models;
