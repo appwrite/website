@@ -11,9 +11,9 @@ category: news
 
 For a while, it seemed like Remix had reached a natural end. By late 2024, almost everything that made Remix unique, its loaders, actions, and nested routing, had been merged into React Router 7. The framework's creators, Ryan Florence and Michael Jackson, even joked that Remix 2 had become "React Router, the Framework." Many developers assumed Remix would fade away.
 
-But in May 2025, the team announced Remix 3, an unexpected rebuild from the ground up, meant to rethink how web apps are built. They showed early previews at Remix Jam 2025, and while the final release is planned for 2026, the goals are already clear. Remix 3 breaks away from React entirely and rebuilds around web standards.
+But in May 2025, the team [announced Remix 3](https://remix.run/blog/wake-up-remix), an unexpected rebuild from the ground up, meant to rethink how web apps are built. They showed early previews at [Remix Jam 2025](https://remix.run/blog/remix-jam-2025-recap), and while the final release is planned for 2026, the goals are already clear. Remix 3 breaks away from React entirely and rebuilds around web standards.
 
-It's a big step. The framework now runs directly on the Fetch API, not Node's request/response system. It can run on any JavaScript runtime; Node, Deno, Bun, or Cloudflare Workers, without adapters. It still supports the same development patterns developers liked in Remix 2, but without depending on React's lifecycle or its virtual DOM. The team calls this a move toward being "closer to the web itself."
+It's a big step. The framework now runs directly on the Fetch API (using standard `Request` and `Response` objects), instead of Node's proprietary `req` and `res` system. This means it can run on any JavaScript runtime; Node, Deno, or Bun, without adapters. It still supports the same patterns developers liked in Remix 2, but without depending on React's lifecycle or its virtual DOM. The team calls this a move toward being "closer to the web itself."
 
 ### Why the Remix team chose to rebuild in version 3
 
@@ -30,11 +30,11 @@ This rebuild also reflects a return to the web's own strengths. Browsers already
 The team described six principles that define Remix 3's direction:
 
 1. Model-first development. Write code that's easy for both people and tools to understand. Each route's intent should be clear about what data it loads, what actions it performs, and how it fits into the overall app. This makes it easier to maintain and to reason about, whether by a developer or an AI tool assisting with code.
-2. Build on web APIs. Use standards like Fetch, Request, Response, and FormData directly. This means a Remix 3 app written for Node can also run on Cloudflare Workers or Deno without code changes.
-3. Religious about runtime. Avoid compile-time "magic." Features should work at runtime, without a custom compiler or code generator. You can still use TypeScript or JSX, but what you write is close to what actually runs.
+2. Build on web APIs. Use standards like Fetch, Request, Response, and FormData directly. This means a Remix 3 app written for Node can also run on Deno or other JavaScript runtimes without code changes.
+3. Religious about runtime. Avoid build-time "magic." Features should work at runtime, without a custom bundler or code generator. You can still use TypeScript or JSX, but what you write is close to what actually runs.
 4. Avoid heavy dependencies. Remix 3 aims to depend on as little third-party code as possible. Instead of relying on frameworks like React or Express, it implements small, focused modules that the team can control and evolve.
 5. Demand composition. Every piece of Remix 3 is built to work on its own. The router, server utilities, and data parsers can each be used separately or as part of the full framework.
-6. Distribute cohesively. Even though it's modular inside, Remix 3 will ship as one coherent package. Developers won't need to assemble ten different pieces; the framework will present a single, unified API.
+6. Distribute as one. Even though it's modular inside, Remix 3 will ship as a single package. Developers won't need to assemble ten different pieces; the framework will present a unified API.
 
 Together, these principles explain why Remix 3 looks so different. The team wants a system that's modular and flexible internally, but simple and predictable on the surface.
 
