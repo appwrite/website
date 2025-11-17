@@ -123,7 +123,7 @@ import { router } from "./router";
 export default createRequestListener({ router });
 ```
 
-That pattern works in Node, Vercel, Netlify, Fly.io, or on edge workers. Because the framework doesn't rely on Node-specific APIs, there's nothing to rewrite when switching platforms.
+That pattern works in Node, [Appwrite Sites](https://appwrite.io/sites), Netlify, Vercel or on edge workers. Because the framework doesn't rely on Node-specific APIs, there's nothing to rewrite when switching platforms.
 
 This also makes Remix 3 easier to scale. You can deploy it as serverless functions, edge workers, or a long-running Node process depending on your needs. The framework doesn't force a specific host or vendor. That independence is deliberate; the team wants Remix 3 apps to run anywhere, without lock-in.
 
