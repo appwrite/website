@@ -11,6 +11,7 @@
     import { writable } from 'svelte/store';
     import { fly } from 'svelte/transition';
     import { trackEvent } from '$lib/actions/analytics';
+    import { SHOW_SCALE_PLAN } from '$lib/constants/feature-flags';
 
     type LinkRow = { text: string; url: string; event: string };
     type Row = string | true | LinkRow;
@@ -27,7 +28,10 @@
         }[];
     };
 
-    const cols = ['free', 'pro', 'scale', 'enterprise'] as const;
+    const allCols = ['free', 'pro', 'scale', 'enterprise'] as const;
+    const cols = SHOW_SCALE_PLAN
+        ? allCols
+        : (allCols.filter((col) => col !== 'scale') as ('free' | 'pro' | 'scale' | 'enterprise')[]);
 
     const tables: Array<Table> = [
         {
@@ -212,16 +216,16 @@
                 },
                 {
                     title: 'Reads',
-                    free: '500K',
-                    pro: '1750K',
-                    scale: '1750K',
+                    free: '500K / month',
+                    pro: '1750K / month',
+                    scale: '1750K / month',
                     enterprise: 'Custom'
                 },
                 {
                     title: 'Writes',
-                    free: '250K',
-                    pro: '750K',
-                    scale: '750K',
+                    free: '250K / month',
+                    pro: '750K / month',
+                    scale: '750K / month',
                     enterprise: 'Custom'
                 },
                 {
@@ -320,7 +324,7 @@
                 },
                 {
                     title: 'Sites',
-                    free: '1 per project',
+                    free: 'Unlimited',
                     pro: 'Unlimited',
                     scale: 'Unlimited',
                     enterprise: 'Unlimited'
@@ -558,21 +562,7 @@
                     enterprise: true
                 },
                 {
-                    title: 'SOC-2',
-                    free: '-',
-                    pro: '-',
-                    scale: true,
-                    enterprise: true
-                },
-                {
-                    title: 'HIPAA',
-                    free: '-',
-                    pro: '-',
-                    scale: true,
-                    enterprise: true
-                },
-                {
-                    title: 'BAA',
+                    title: 'SOC-2, HIPAA, and BAA',
                     free: '-',
                     pro: '-',
                     scale: true,
@@ -661,7 +651,7 @@
             <article use:melt={$root}>
                 <div class="container">
                     <header
-                        class="text-center"
+                        class="text-center lg:ml-64"
                         use:visible
                         on:visible={(e) => {
                             shouldShowTable = !e.detail;
@@ -669,7 +659,7 @@
                     >
                         <h3 class="text-title font-aeonik-pro text-primary">Compare plans</h3>
                         <p class="text-main-body mt-4 font-medium">
-                            Discover our plans and find the one that fits your project’s needs.
+                            Discover our plans and find the one that fits your project's needs.
                         </p>
                     </header>
 
@@ -693,6 +683,9 @@
 
                     <div
                         class="web-is-not-mobile web-u-grid-auto-column-1fr is-with-footer-border web-u-padding-inline-8 web-u-margin-inline-8-negative web-u-filter-blur-8 web-u-container-query-inline sticky top-[70px] z-10 gap-8 [padding-block:20px]!"
+                        style:--columns-template={SHOW_SCALE_PLAN
+                            ? 'repeat(4, 1fr)'
+                            : 'repeat(3, 1fr)'}
                         style:transition="inset-block-start 0.3s ease"
                     >
                         <div
@@ -749,23 +742,26 @@
                                 </Button>
                             </div>
                         </div>
-                        <div class="web-mini-card">
-                            <div class="flex flex-col items-center justify-between gap-2">
-                                <h4 class="text-sub-body text-primary font-medium">Scale</h4>
-                                <Button
-                                    variant="secondary"
-                                    class="!w-full"
-                                    href={getAppwriteDashboardUrl(
-                                        '/console?type=create&plan=tier-2'
-                                    )}
-                                    event="pricing-compare-scale-click"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                >
-                                    <span class="text-sub-body font-medium">Start building</span>
-                                </Button>
+                        {#if SHOW_SCALE_PLAN}
+                            <div class="web-mini-card">
+                                <div class="flex flex-col items-center justify-between gap-2">
+                                    <h4 class="text-sub-body text-primary font-medium">Scale</h4>
+                                    <Button
+                                        variant="secondary"
+                                        class="!w-full"
+                                        href={getAppwriteDashboardUrl(
+                                            '/console?type=create&plan=tier-2'
+                                        )}
+                                        event="pricing-compare-scale-click"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                    >
+                                        <span class="text-sub-body font-medium">Start building</span
+                                        >
+                                    </Button>
+                                </div>
                             </div>
-                        </div>
+                        {/if}
                         <div class="web-mini-card">
                             <div class="flex flex-col items-center justify-between gap-2">
                                 <h4 class="text-sub-body text-primary font-medium">Enterprise</h4>
@@ -877,8 +873,7 @@
 
 <style>
     .web-u-grid-auto-column-1fr {
-        grid-auto-columns: max-content;
-        grid-template-columns: repeat(5, 2fr);
+        grid-template-columns: var(--columns-template);
     }
 
     .web-mini-card {

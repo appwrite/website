@@ -79,7 +79,7 @@ secret = token['secret']
 ```
 
 ```deno
-import { Client, Users } from "https://deno.land/x/appwrite/mod.ts";
+import { Client, Users } from "npm:node-appwrite";
 
 const client = new Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')    // Your API Endpoint
@@ -175,10 +175,10 @@ const client = new Client()
 
 const account = new Account(client);
 
-const session = await account.createSession(
-    '<USER_ID>',
-    '<SECRET>'
-);
+const session = await account.createSession({
+    userId: '<USER_ID>',
+    secret: '<SECRET>'
+});
 ```
 
 ```client-flutter

@@ -35,6 +35,10 @@ export interface PostsData {
         heading?: string;
         label?: string;
         url?: string;
+        href?: string;
+        description?: string;
+        event?: string;
+        points?: string[];
     };
 }
 

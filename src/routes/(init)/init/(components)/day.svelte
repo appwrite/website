@@ -1,6 +1,6 @@
 <script lang="ts" module>
     export type DayProps = {
-        illustration: string | object;
+        illustration: string;
         release: Date;
         title: string;
         description: string;
@@ -116,7 +116,7 @@
                             'after:border-offset after:-mt-px after:block after:h-0.5 after:w-full after:border-t-2 after:border-dashed'
                         )}
                     >
-                        {#each content as { type, title: contentTitle, url, label }}
+                        {#each content as { type, title: contentTitle, url, label }, i (i)}
                             <a href={url} class="group block cursor-pointer">
                                 <div
                                     class={cn(
@@ -147,7 +147,7 @@
 
                 {#if links?.length}
                     <div class="flex min-h-48 flex-col items-center gap-8 px-8 pb-10 md:flex-row">
-                        {#each links as link}
+                        {#each links as link, i (i)}
                             <MediaCard {...link} />
                         {/each}
                     </div>

@@ -1,7 +1,6 @@
-import { APPWRITE_COL_INIT_ID, APPWRITE_DB_INIT_ID } from '$env/static/private';
 import sharp from 'sharp';
 import { getTicketSvg } from '../../../(utils)/get-ticket-svg.js';
-import { getTicketDocByUsername, type TicketData } from '$routes/(init)/init/(utils)/tickets.js';
+import { getTicketDocByUsername } from '$routes/(init)/init/(utils)/tickets.js';
 
 export const GET = async ({ params }) => {
     const ticket = await getTicketDocByUsername(params.username);
@@ -17,7 +16,7 @@ export const GET = async ({ params }) => {
         .toFormat('png')
         .toBuffer();
 
-    return new Response(pngBuffer, {
+    return new Response(Buffer.from(pngBuffer), {
         headers: {
             'Content-Type': 'image/png',
             'Cache-Control': 'public, max-age=31536000, immutable',

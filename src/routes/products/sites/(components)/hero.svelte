@@ -40,7 +40,6 @@
                 <a href={PUBLIC_APPWRITE_DASHBOARD} class="web-button !w-full md:!w-fit">
                     Start for free
                 </a>
-
                 <a href="/docs/products/sites" class="web-button is-secondary !w-full md:!w-fit">
                     Read the docs
                 </a>

@@ -24,7 +24,7 @@
     }
 
     onMount(() => {
-        localStorage.setItem(CHANGELOG_KEY, page.data.changelogEntries.toString());
+        localStorage.setItem(CHANGELOG_KEY, page.data.changelogCount.toString());
     });
 </script>
 

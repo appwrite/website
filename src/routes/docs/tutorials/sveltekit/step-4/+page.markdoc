@@ -57,7 +57,9 @@ const createUser = () => {
 	}
 
 	async function logout() {
-		await account.deleteSession('current');
+		await account.deleteSession({
+			sessionId: 'current'
+		});
 		store.set(null);
 	}
 

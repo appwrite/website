@@ -10,6 +10,9 @@ category: product
 featured: false
 callToAction: true
 ---
+
+Updated on October 6, 2025
+
 Serverless functions are a powerful tool for developers designed to provide flexibility and simplify backend tasks. With serverless functions, you can focus more on writing code and less on managing infrastructure, making your work faster and more efficient.
 
 In this comparison, we'll take a look at the serverless functions offered by three popular backend-as-a-service platforms: Firebase, Supabase, and Appwrite.
@@ -108,6 +111,26 @@ Firebase stands out with its mature ecosystem and seamless integration with Goog
 Appwrite's flexibility in language support and modularity makes it a great choice for developers seeking a highly customizable backend solution.
 
 By understanding the strengths and limitations of each platform, you can select the one that best aligns with your project goals and development workflow.
+
+# Frequently asked questions (FAQs)
+
+**1. What are serverless functions and how do they work?**
+
+Serverless functions are small pieces of backend code that run only when needed, without you managing any servers. Instead of keeping a server running 24/7, the platform automatically spins one up when your function is triggered, runs your code, and then shuts it down. It’s cost-efficient, scalable, and perfect for handling tasks like API calls, webhooks, or background jobs.
+
+**2. Why do developers use serverless functions?**
+
+Because they save time and reduce complexity, you can focus on writing logic instead of configuring servers, scaling infrastructure, or handling deployments. Serverless functions are great for apps that need to grow quickly or handle unpredictable workloads.
+
+**3. Which platform offers the most flexible serverless functions?**
+
+Appwrite stands out for flexibility. It supports multiple languages: JavaScript, Python, PHP, Dart, Ruby, and Go, and works across different frameworks. You can trigger functions with HTTP calls, events, or schedules, and even deploy directly from GitHub. It’s open source too, so you can self-host or use the managed cloud.
+
+**4. Do serverless functions have performance issues?**
+
+Sometimes. The first run after inactivity can be slightly slower, called a cold start. Platforms like Supabase reduce this with edge functions, while Appwrite lets you optimize using async or delayed executions. Once active, performance is generally smooth and reliable.
+
+# More resources
 
 - [Appwrite Function docs](https://appwrite.io/docs/products/functions)
 - [Firebase Cloud Functions docs](https://firebase.google.com/docs/functions)

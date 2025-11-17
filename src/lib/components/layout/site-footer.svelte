@@ -107,7 +107,7 @@
             width="130"
         />
         <ul class="web-footer-nav-main-list" use:melt={$root}>
-            {#each Object.entries(links) as [title, items]}
+            {#each Object.entries(links) as [title, items], i (i)}
                 <li class="web-footer-nav-main-item web-is-not-mobile">
                     <h2
                         class="web-footer-nav-main-title web-is-not-mobile text-caption font-medium uppercase"
@@ -115,7 +115,7 @@
                         {title}
                     </h2>
                     <ul class="web-footer-nav-secondary-list text-sub-body">
-                        {#each items as { href, label, target, rel }}
+                        {#each items as { href, label, target, rel }, j (j)}
                             <li>
                                 <a class="web-link" {href} {target} {rel}>{label}</a>
                             </li>
@@ -136,7 +136,7 @@
                                 class="web-icon-chevron-down web-u-transition"
                                 class:web-u-rotate-180={$isSelected(title)}
                                 style:font-size="1rem"
-                            />
+                            ></span>
                         </button>
                     </h5>
                     {#if $isSelected(title)}
@@ -145,7 +145,7 @@
                             use:melt={$content({ value: title })}
                             transition:slide={{ duration: 250 }}
                         >
-                            {#each items as { href, label, target, rel }}
+                            {#each items as { href, label, target, rel }, i (i)}
                                 <li>
                                     <a class="web-link" {href} {target} {rel}>{label}</a>
                                 </li>

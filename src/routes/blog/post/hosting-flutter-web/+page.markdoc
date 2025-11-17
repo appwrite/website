@@ -56,7 +56,7 @@ In case you have an existing Flutter app and want to add web support to it, you 
 flutter create . --platforms web
 ```
 
-Push this project to a [GitHub repo](https://github.com/new).
+Push this project to a [GitHub repository](https://github.com/new).
 
 ## Step 2: Create Appwrite project
 
@@ -68,7 +68,7 @@ If this is your first time using Appwrite, create an account and create your fir
 
 Head to the **Sites** page in your Appwrite project, click on the **Create site** button, and select **Connect a repository**.
 
-Connect your GitHub account and select the repository you intend to deploy.
+Connect your GitHub account and select the repository you intend to deploy (or allow all repositories, for future ease).
 
 1. Select the **production branch** and **root directory** from your repo.
 2. Verify that the **correct framework** is selected. In case an incorrect framework is visible, pick **Flutter Web** from the drop-down list.
@@ -76,7 +76,7 @@ Connect your GitHub account and select the repository you intend to deploy.
     - **Install command:** `N/A` (leave empty)
     - **Build command:** `flutter build web`
     - **Output directory:** `./build/web`
-4. Add any **environment variables** required by the site.
+4. Add any **environment variables** required by the site. This is not necessary if you're deploying the starter app.
 
 Click on the **Deploy** button.
 

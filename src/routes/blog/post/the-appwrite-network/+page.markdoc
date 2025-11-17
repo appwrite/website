@@ -26,12 +26,12 @@ The Appwrite Cloud beta journey began with a single region in Frankfurt, which a
 | Frankfurt (`FRA`)     | Ready and operational | Yes    | Yes  | Available Now |
 | Sydney (`SYD`)        | Ready and operational | Yes    | Yes  | Available Now |
 | New York City (`NYC`) | Ready and operational | Yes    | Yes  | Available Now |
-| Singapore (`SGP`)     | In work               | Yes    | Yes  | Q4 2025       |
+| Singapore (`SGP`)     | Ready and operational | Yes    | Yes  | Available Now |
+| Toronto (`TOR`)       | Ready and operational | Yes    | Yes  | Available Now |
 | San Francisco (`SFO`) | In work               | Yes    | Yes  | Q4 2025       |
 | Bangalore (`BLR`)     | In plans              | Yes    | Yes  | TBD           |
 | Amsterdam (`AMS`)     | In plans              | Yes    | Yes  | TBD           |
 | London (`LON`)        | In plans              | Yes    | Yes  | TBD           |
-| Toronto (`TOR`)       | In plans              | Yes    | Yes  | TBD           |
 
 
 # Addressing the latency problem
