@@ -72,7 +72,7 @@
     <div class="container mx-auto">
         <section class="flex flex-col items-start gap-x-20 md:flex-row">
             <h2
-                class="text-title font-aeonik-pro text-primary max-w-[700px] leading-12 text-pretty"
+                class="text-title font-aeonik-pro text-primary max-w-[700px] text-3xl leading-12 text-pretty sm:text-4xl md:text-5xl"
             >
                 Safely scale with built-in
                 <span class="whitespace-nowrap">security and compliance</span><span
