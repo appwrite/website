@@ -730,16 +730,4 @@
         left: -200px;
         bottom: -300px;
     }
-
-    .web-multi-columns-1 {
-        .web-card {
-            border: 1px solid hsl(var(--web-color-offset));
-        }
-        @media (max-width: 1235px) {
-            --p-col-gap: 2rem !important;
-            .web-card {
-                rotate: none !important;
-            }
-        }
-    }
 </style>

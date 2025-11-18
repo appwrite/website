@@ -34,11 +34,6 @@ export default defineConfig({
         })
     ],
     css: {
-        preprocessorOptions: {
-            scss: {
-                api: 'modern'
-            }
-        },
         devSourcemap: process.env.NODE_ENV !== 'production'
     },
     build: {

@@ -58,7 +58,7 @@ const result = await tablesDB.createRows(
 
 ```server-python
 from appwrite.client import Client
-from appwrite.services.tablesDB import TablesDB
+from appwrite.services.tables_db import TablesDB
 
 client = Client()
 client.set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
@@ -118,7 +118,7 @@ const result = await tablesDB.updateRows(
 
 ```server-python
 from appwrite.client import Client
-from appwrite.services.tablesDB import TablesDB
+from appwrite.services.tables_db import TablesDB
 
 client = Client()
 client.set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
@@ -178,7 +178,7 @@ const result = await tablesDB.upsertRows(
 
 ```server-python
 from appwrite.client import Client
-from appwrite.services.tablesDB import TablesDB
+from appwrite.services.tables_db import TablesDB
 from appwrite.id import ID
 
 client = Client()
@@ -236,7 +236,7 @@ const result = await tablesDB.deleteRows(
 
 ```server-python
 from appwrite.client import Client
-from appwrite.services.tablesDB import TablesDB
+from appwrite.services.tables_db import TablesDB
 from appwrite.query import Query
 
 client = Client()

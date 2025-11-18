@@ -6,22 +6,22 @@
 
     let { children } = $props();
 
-    const newUrl = $derived(
-        page.url.pathname
+    function replaceLegacyUrl(pathname: string): string {
+        return pathname
             .replace('legacy/', '')
             .replace('documents', 'rows')
-            .replace('collections', 'tables')
-    );
+            .replace('collections', 'tables');
+    }
 
     const headerSectionInfoAlert = writable<HeaderSectionInfoAlert>({
         title: 'Deprecated API',
-        description: `This API uses outdated terminology and is no longer maintained. Refer to the <a class="web-link underline" href="${newUrl}">updated documentation</a> for improved compatibility and migration guidance.`
+        description: `This API uses outdated terminology and is no longer maintained. Refer to the <a class="web-link underline" href="${replaceLegacyUrl(page.url.pathname)}">updated documentation</a> for improved compatibility and migration guidance.`
     });
 
     $effect(() => {
         headerSectionInfoAlert.set({
             title: 'Deprecated API',
-            description: `This API uses outdated terminology and is no longer maintained. Refer to the <a class="web-link underline" href="${newUrl}">updated documentation</a> for improved compatibility and migration guidance.`
+            description: `This API uses outdated terminology and is no longer maintained. Refer to the <a class="web-link underline" href="${replaceLegacyUrl(page.url.pathname)}">updated documentation</a> for improved compatibility and migration guidance.`
         });
     });
 

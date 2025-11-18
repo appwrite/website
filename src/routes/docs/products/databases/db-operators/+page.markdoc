@@ -192,7 +192,7 @@ $result = $tablesDB->updateRow(
 ```
 ```server-python
 from appwrite.client import Client
-from appwrite.services.tablesDB import TablesDB
+from appwrite.services.tables_db import TablesDB
 from appwrite.operator import Operator
 
 client = Client()
