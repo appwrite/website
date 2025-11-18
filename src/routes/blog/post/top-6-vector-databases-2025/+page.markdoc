@@ -15,7 +15,7 @@ Search has changed. Traditional databases work great when you’re querying exac
 
 They’re the backbone of modern AI applications, from retrieval-augmented generation (RAG) systems to recommendation engines. Instead of looking for exact values, they help you find “similar meaning” across high-dimensional vectors. And in 2025, we’ve reached a point where the space is both mature and rapidly evolving, with new players optimizing for speed, scale, and integrations with large language models.
 
-In this blog post, we’ll look at 7 popular vector databases that you can use for AI applications.
+In this blog post, we’ll look at 6 popular vector databases that you can use for AI applications.
 
 # What is a Vector Database?
 
@@ -81,7 +81,7 @@ Pinecone abstracts away the operational side completely. You don’t manage inde
 - **Security and reliability:** Enterprise-grade availability, SOC 2 Type II compliance, and automatic redundancy.
 - **Easy onboarding:** Simple REST and Python APIs with SDKs for quick integration into AI and search pipelines.
 
-## 4. Weaviate**
+## 4. Weaviate
 
 [Weaviate](https://weaviate.io/) is an open-source, AI-native vector database built for modern applications that combine structured and unstructured data. It supports both **vector** and **keyword (BM25)** search, allowing developers to perform **hybrid queries** that balance semantic relevance with exact matching.
 
