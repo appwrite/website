@@ -1,0 +1,202 @@
+---
+layout: article
+title: Countries
+description: Retrieve comprehensive country data including names, codes, and EU membership status for building location-aware applications.
+---
+
+The countries endpoint provides access to comprehensive country information for all countries worldwide. This is useful for building country selectors, location-based features, and internationalization functionality.
+
+# List countries {% #list-countries %}
+
+Retrieve a list of all countries with their names and codes. Country codes follow the [ISO 3166-1](https://en.wikipedia.org/wiki/ISO_3166-1) alpha-2 standard.
+
+{% multicode %}
+```client-web
+import { Client, Locale } from "appwrite";
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>');
+
+const locale = new Locale(client);
+
+const countries = await locale.listCountries();
+
+console.log(countries);
+// {
+//   total: 195,
+//   countries: [
+//     { name: 'United States', code: 'US' },
+//     { name: 'United Kingdom', code: 'GB' },
+//     ...
+//   ]
+// }
+```
+```client-flutter
+import 'package:appwrite/appwrite.dart';
+
+final client = Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>');
+
+final locale = Locale(client);
+
+Future result = locale.listCountries().then((response) {
+    print(response.total);
+    response.countries.forEach((country) {
+        print('${country.name} (${country.code})');
+    });
+    return response;
+}).catchError((error) {
+    print(error.response);
+});
+```
+```client-apple
+import Appwrite
+
+let client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+
+let locale = Locale(client)
+
+let countries = try await locale.listCountries()
+
+print(countries.total)
+for country in countries.countries {
+    print("\(country.name) (\(country.code))")
+}
+```
+```client-android-kotlin
+import io.appwrite.Client
+import io.appwrite.services.Locale
+
+val client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+
+val locale = Locale(client)
+
+val countries = locale.listCountries()
+
+println(countries.total)
+countries.countries.forEach { country ->
+    println("${country.name} (${country.code})")
+}
+```
+```client-react-native
+import { Client, Locale } from 'react-native-appwrite';
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>');
+
+const locale = new Locale(client);
+
+const countries = await locale.listCountries();
+
+console.log(countries);
+```
+{% /multicode %}
+
+# Response structure {% #response-structure %}
+
+The `listCountries` method returns a countries list with the following structure:
+
+| Property | Type | Description |
+| -------- | ---- | ----------- |
+| total | integer | Total number of countries |
+| countries | array | Array of country objects, each containing `name` and `code` |
+
+# Country codes {% #country-codes %}
+
+Country codes follow the ISO 3166-1 alpha-2 standard, which uses two-letter codes to uniquely identify countries. These codes are widely used in international standards and are compatible with other Appwrite services.
+
+# Use cases {% #use-cases %}
+
+Country lists are commonly used for:
+
+- **Country selectors**: Build dropdown menus or searchable lists for user registration and profile forms
+- **Address forms**: Pre-populate country fields in shipping and billing address forms
+- **Regional features**: Enable or disable features based on available countries
+- **Analytics**: Track user distribution and engagement by country
+- **Compliance**: Apply country-specific regulations, tax rules, or content restrictions
+
+# List EU countries {% #list-eu-countries %}
+
+You can also retrieve a list of countries that are currently members of the European Union:
+
+{% multicode %}
+```client-web
+const euCountries = await locale.listCountriesEU();
+
+console.log(euCountries);
+// {
+//   total: 27,
+//   countries: [
+//     { name: 'Germany', code: 'DE' },
+//     { name: 'France', code: 'FR' },
+//     ...
+//   ]
+// }
+```
+```client-flutter
+Future result = locale.listCountriesEU().then((response) {
+    print(response.total);
+    return response;
+}).catchError((error) {
+    print(error.response);
+});
+```
+```client-apple
+let euCountries = try await locale.listCountriesEU()
+
+print(euCountries.total)
+```
+```client-android-kotlin
+val euCountries = locale.listCountriesEU()
+
+println(euCountries.total)
+```
+```client-react-native
+const euCountries = await locale.listCountriesEU();
+
+console.log(euCountries);
+```
+{% /multicode %}
+
+# Multi-locale support {% #multi-locale %}
+
+Country names can be retrieved in different languages by setting the locale:
+
+{% multicode %}
+```client-web
+// Set locale to French
+client.setLocale('fr');
+
+const countries = await locale.listCountries();
+// Country names will be in French
+```
+```client-flutter
+client.setLocale('fr');
+
+final countries = await locale.listCountries();
+```
+```client-apple
+client.setLocale("fr")
+
+let countries = try await locale.listCountries()
+```
+```client-android-kotlin
+client.setLocale("fr")
+
+val countries = locale.listCountries()
+```
+```client-react-native
+client.setLocale('fr');
+
+const countries = await locale.listCountries();
+```
+{% /multicode %}
+
+

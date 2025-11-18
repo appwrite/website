@@ -1,0 +1,49 @@
+---
+layout: article
+title: Locale
+description: Customize your app based on user location. Get user location, countries, continents, currencies, phone codes, and more with Appwrite Locale.
+back: /docs
+---
+
+Appwrite **Locale** provides comprehensive location and localization data to help you customize your application based on your users' location. The Locale service allows you to get user location information, IP addresses, country and continent names, phone codes, currencies, and language data.
+
+All Locale endpoints support multiple locales, allowing you to fetch information in your app's language. Country codes follow the [ISO 3166-1](https://en.wikipedia.org/wiki/ISO_3166-1) standard, ensuring consistency and compatibility with international standards.
+
+{% arrow_link href="/docs/products/locale/quick-start" %}
+Get started with Locale in minutes
+{% /arrow_link %}
+
+# Capabilities {% #capabilities %}
+
+Appwrite Locale supports multiple features to help you build location-aware and localized applications.
+
+{% cards %}
+{% cards_item href="/docs/products/locale/user-locale" title="User locale" %}
+Get the current user's location based on IP address, including country, continent, and currency information.
+{% /cards_item %}
+{% cards_item href="/docs/products/locale/countries" title="Countries" %}
+Retrieve comprehensive country data including names, codes, and EU membership status.
+{% /cards_item %}
+{% cards_item href="/docs/products/locale/continents" title="Continents" %}
+Access continent information with names and codes for geographic organization.
+{% /cards_item %}
+{% cards_item href="/docs/products/locale/currencies" title="Currencies" %}
+Get currency data including symbols, names, plural forms, and decimal precision.
+{% /cards_item %}
+{% cards_item href="/docs/products/locale/phone-codes" title="Phone codes" %}
+Retrieve international phone codes for all countries to build phone number inputs.
+{% /cards_item %}
+{% cards_item href="/docs/products/locale/languages" title="Languages" %}
+Access language data classified by ISO 639-1 with codes and native names.
+{% /cards_item %}
+{% /cards %}
+
+# Multi-locale support {% #multi-locale %}
+
+The Locale service supports multiple locales, allowing you to fetch country and continent information in your app's language. To switch locales, pass the `X-Appwrite-Locale` header or use the `setLocale` method in any of our available SDKs. [View the list of available locales](https://github.com/appwrite/appwrite/blob/master/app/config/locale/codes.php).
+
+# No authentication required {% #no-authentication %}
+
+The Locale service is publicly accessible and does not require user authentication or API keys. All endpoints can be called directly from client applications, making it easy to integrate location and localization data into any part of your application.
+
+

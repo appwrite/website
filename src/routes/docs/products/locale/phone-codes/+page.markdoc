@@ -1,0 +1,256 @@
+---
+layout: article
+title: Phone codes
+description: Retrieve international phone codes for all countries to build phone number inputs and validation.
+---
+
+The phone codes endpoint provides access to international dialing codes for all countries. This is essential for building phone number input fields, validation, and formatting features.
+
+# List phone codes {% #list-phone-codes %}
+
+Retrieve a list of all countries with their international phone codes.
+
+{% multicode %}
+```client-web
+import { Client, Locale } from "appwrite";
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>');
+
+const locale = new Locale(client);
+
+const phones = await locale.listCountriesPhones();
+
+console.log(phones);
+// {
+//   total: 195,
+//   phones: [
+//     { code: '+1', countryCode: 'US', countryName: 'United States' },
+//     { code: '+44', countryCode: 'GB', countryName: 'United Kingdom' },
+//     ...
+//   ]
+// }
+```
+```client-flutter
+import 'package:appwrite/appwrite.dart';
+
+final client = Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>');
+
+final locale = Locale(client);
+
+Future result = locale.listCountriesPhones().then((response) {
+    print(response.total);
+    response.phones.forEach((phone) {
+        print('${phone.countryName} (${phone.countryCode}): ${phone.code}');
+    });
+    return response;
+}).catchError((error) {
+    print(error.response);
+});
+```
+```client-apple
+import Appwrite
+
+let client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+
+let locale = Locale(client)
+
+let phones = try await locale.listCountriesPhones()
+
+print(phones.total)
+for phone in phones.phones {
+    print("\(phone.countryName) (\(phone.countryCode)): \(phone.code)")
+}
+```
+```client-android-kotlin
+import io.appwrite.Client
+import io.appwrite.services.Locale
+
+val client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+
+val locale = Locale(client)
+
+val phones = locale.listCountriesPhones()
+
+println(phones.total)
+phones.phones.forEach { phone ->
+    println("${phone.countryName} (${phone.countryCode}): ${phone.code}")
+}
+```
+```client-react-native
+import { Client, Locale } from 'react-native-appwrite';
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>');
+
+const locale = new Locale(client);
+
+const phones = await locale.listCountriesPhones();
+
+console.log(phones);
+```
+{% /multicode %}
+
+# Response structure {% #response-structure %}
+
+The `listCountriesPhones` method returns a phones list with the following structure:
+
+| Property | Type | Description |
+| -------- | ---- | ----------- |
+| total | integer | Total number of countries with phone codes |
+| phones | array | Array of phone code objects |
+
+Each phone code object contains:
+
+| Property | Type | Description |
+| -------- | ---- | ----------- |
+| code | string | International dialing code (e.g., `+1`, `+44`) |
+| countryCode | string | Two-letter country code (ISO 3166-1 alpha-2) |
+| countryName | string | Country name |
+
+# Use cases {% #use-cases %}
+
+Phone codes are commonly used for:
+
+- **Phone number inputs**: Build country code selectors for phone number input fields
+- **Phone validation**: Validate phone numbers based on country code format
+- **Phone formatting**: Format phone numbers with proper country codes
+- **User registration**: Collect phone numbers with country code selection
+- **SMS verification**: Send SMS messages to users with proper country codes
+
+# Building phone inputs {% #building-phone-inputs %}
+
+Use phone codes to build phone number input components:
+
+{% multicode %}
+```client-web
+const phones = await locale.listCountriesPhones();
+
+// Build country code selector
+const countrySelect = phones.phones.map(phone => ({
+    label: `${phone.countryName} ${phone.code}`,
+    value: phone.code,
+    countryCode: phone.countryCode
+}));
+
+// Format phone number with country code
+function formatPhoneNumber(countryCode, number) {
+    const phone = phones.phones.find(p => p.countryCode === countryCode);
+    return `${phone.code} ${number}`;
+}
+```
+```client-flutter
+final phones = await locale.listCountriesPhones();
+
+// Build country code selector
+final countryOptions = phones.phones.map((phone) => {
+    return {
+        'label': '${phone.countryName} ${phone.code}',
+        'value': phone.code,
+        'countryCode': phone.countryCode
+    };
+}).toList();
+
+// Format phone number with country code
+String formatPhoneNumber(String countryCode, String number) {
+    final phone = phones.phones.firstWhere((p) => p.countryCode == countryCode);
+    return '${phone.code} $number';
+}
+```
+```client-apple
+let phones = try await locale.listCountriesPhones()
+
+// Build country code selector
+let countryOptions = phones.phones.map { phone in
+    [
+        "label": "\(phone.countryName) \(phone.code)",
+        "value": phone.code,
+        "countryCode": phone.countryCode
+    ]
+}
+
+// Format phone number with country code
+func formatPhoneNumber(countryCode: String, number: String) -> String {
+    let phone = phones.phones.first { $0.countryCode == countryCode }!
+    return "\(phone.code) \(number)"
+}
+```
+```client-android-kotlin
+val phones = locale.listCountriesPhones()
+
+// Build country code selector
+val countryOptions = phones.phones.map { phone ->
+    mapOf(
+        "label" to "${phone.countryName} ${phone.code}",
+        "value" to phone.code,
+        "countryCode" to phone.countryCode
+    )
+}
+
+// Format phone number with country code
+fun formatPhoneNumber(countryCode: String, number: String): String {
+    val phone = phones.phones.find { it.countryCode == countryCode }!!
+    return "${phone.code} $number"
+}
+```
+```client-react-native
+const phones = await locale.listCountriesPhones();
+
+// Build country code selector
+const countryOptions = phones.phones.map(phone => ({
+    label: `${phone.countryName} ${phone.code}`,
+    value: phone.code,
+    countryCode: phone.countryCode
+}));
+
+// Format phone number with country code
+function formatPhoneNumber(countryCode, number) {
+    const phone = phones.phones.find(p => p.countryCode === countryCode);
+    return `${phone.code} ${number}`;
+}
+```
+{% /multicode %}
+
+# Multi-locale support {% #multi-locale %}
+
+Country names can be retrieved in different languages by setting the locale:
+
+{% multicode %}
+```client-web
+// Set locale to French
+client.setLocale('fr');
+
+const phones = await locale.listCountriesPhones();
+// Country names will be in French
+```
+```client-flutter
+client.setLocale('fr');
+
+final phones = await locale.listCountriesPhones();
+```
+```client-apple
+client.setLocale("fr")
+
+let phones = try await locale.listCountriesPhones()
+```
+```client-android-kotlin
+client.setLocale("fr")
+
+val phones = locale.listCountriesPhones()
+```
+```client-react-native
+client.setLocale('fr');
+
+const phones = await locale.listCountriesPhones();
+```
+{% /multicode %}
+
+
