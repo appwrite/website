@@ -28,37 +28,49 @@ If you need to replace your API Key, create a new key, update your app credentia
 
 # Scopes {% #scopes %}
 
-| Name             | Description                                                           |
-|------------------|-----------------------------------------------------------------------|
-| `users.read`     | Access to read your project's users                                   |
-| `users.write`    | Access to create, update, and delete your project's users              |
-| `teams.read`     | Access to read your project's teams                                    |
-| `teams.write`    | Access to create, update, and delete your project's teams              |
-| `databases.read` | Access to read your project's databases                               |
-| `databases.write`| Access to create, update, and delete your project's databases         |
-| `tables.read`| Access to read your project's database tables                   |
-| `tables.write`| Access to create, update, and delete your project's database tables|
-| `columns.read`| Access to read your project's database table's columns        |
-| `columns.write`| Access to create, update, and delete your project's database table's columns|
-| `indexes.read`   | Access to read your project's database table's indexes            |
-| `indexes.write`  | Access to create, update, and delete your project's database table's indexes|
-| `rows.read` | Access to read your project's database rows                       |
-| `rows.write`| Access to create, update, and delete your project's database rows |
-| `files.read`     | Access to read your project's storage files and preview images         |
-| `files.write`    | Access to create, update, and delete your project's storage files      |
-| `buckets.read`   | Access to read your project's storage buckets                          |
-| `buckets.write`  | Access to create, update, and delete your project's storage buckets    |
-| `functions.read` | Access to read your project's functions and code deployments           |
-| `functions.write`| Access to create, update, and delete your project's functions and code deployments|
-| `execution.read` | Access to read your project's execution logs                           |
-| `execution.write`| Access to execute your project's functions                             |
-| `locale.read`    | Access to access your project's Locale service                         |
-| `avatars.read`   | Access to access your project's Avatars service                        |
-| `health.read`    | Access to read your project's health status                            |
-| `rules.read`     | Access to read your project's proxy rules                              |
-| `rules.write`    | Access to create, update, and delete your project's proxy rules        |
-| `migrations.read`| Access to read your project's migrations                               |
-| `migrations.write`| Access to create, update, and delete your project's migrations        |
-| `vcs.read`       | Access to read your project's VCS repositories                         |
-| `vcs.write`      | Access to create, update, and delete your project's VCS repositories   |
-| `assistant.read` | Access to read the Assistant service                                   |
+| Name                  | Description                                                                     |
+|-----------------------|---------------------------------------------------------------------------------|
+| `sessions.write`      | Access to create, update and delete your project's sessions                     |
+| `users.read`          | Access to read your project's users                                             |
+| `users.write`         | Access to create, update, and delete your project's users                       |
+| `teams.read`          | Access to read your project's teams                                             |
+| `teams.write`         | Access to create, update, and delete your project's teams                       |
+| `databases.read`      | Access to read your project's databases                                         |
+| `databases.write`     | Access to create, update, and delete your project's databases                   |
+| `tables.read`         | Access to read your project's database tables                                   |
+| `tables.write`        | Access to create, update, and delete your project's database tables             |
+| `columns.read`        | Access to read your project's database table's columns                          |
+| `columns.write`       | Access to create, update, and delete your project's database table's columns    |
+| `indexes.read`        | Access to read your project's database collection's indexes                     |
+| `indexes.write`       | Access to create, update, and delete your project's database collection's indexes|
+| `rows.read`           | Access to read your project's database rows                                     |
+| `rows.write`          | Access to create, update, and delete your project's database rows               |
+| `files.read`          | Access to read your project's storage files and preview images                  |
+| `files.write`         | Access to create, update, and delete your project's storage files               |
+| `buckets.read`        | Access to read your project's storage buckets                                   |
+| `buckets.write`       | Access to create, update, and delete your project's storage buckets             |
+| `functions.read`      | Access to read your project's functions and code deployments                    |
+| `functions.write`     | Access to create, update, and delete your project's functions and code deployments|
+| `execution.read`      | Access to read your project's execution logs                                    |
+| `execution.write`     | Access to execute your project's functions                                      |
+| `targets.read`        | Access to read your project's messaging targets                                 |
+| `targets.write`       | Access to create, update, and delete your project's messaging targets           |
+| `providers.read`      | Access to read your project's messaging providers                               |
+| `providers.write`     | Access to create, update, and delete your project's messaging providers         |
+| `messages.read`       | Access to read your project's messages                                          |
+| `messages.write`      | Access to create, update, and delete your project's messages                    |
+| `topics.read`         | Access to read your project's messaging topics                                  |
+| `topics.write`        | Access to create, update, and delete your project's messaging topics            |
+| `subscribers.read`    | Access to read your project's messaging topic subscribers                       |
+| `subscribers.write`   | Access to create, update, and delete your project's messaging topic subscribers |
+| `locale.read`         | Access to access your project's Locale service                                  |
+| `avatars.read`        | Access to access your project's Avatars service                                 |
+| `health.read`         | Access to read your project's health status                                     |
+| `migrations.read`     | Access to read your project's migration status                                  |
+| `migrations.write`    | Access to create migrations                                                     |
+| `tokens.read`         | Access to read your project's file tokens                                       |
+| `tokens.write`        | Access to create file tokens                                                    |
+| `sites.read`          | Access to read your project's sites and deployments                             |
+| `sites.write`         | Access to create, update, and delete your project's sites and deployments       |
+| `log.read`            | Access to read your sites's logs                                                |
+| `log.write`           | Access to delete your site's logs                                               |
