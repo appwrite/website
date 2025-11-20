@@ -27,7 +27,6 @@ Synchronous executions:
 - Return response bodies and headers directly to the client
 - Have a **30-second timeout limit** to discourage slow API calls from apps causing poor user experience
 - Are ideal for real-time operations where you need immediate response data
-- Work best for lightweight operations that complete quickly
 
 ## Asynchronous executions {% #asynchronous-executions %}
 
@@ -41,7 +40,7 @@ Asynchronous executions are created via:
 Asynchronous executions:
 - Have no timeout limitations beyond your function's configured timeout
 - Do **not store** response bodies and headers and cannot be retrieved later
-- Are ideal for long-running tasks, background processing, and event-driven workflows
+- Are ideal for background processing and event-driven workflows
 
 {% info title="Response body storage" %}
 Response bodies and headers are not stored anywhere, so they are only ever returned via synchronous executions.
