@@ -156,13 +156,23 @@ This is particularly valuable for:
 
 Node.js compiles JavaScript code to bytecode before executing it. This compilation step takes time, especially for large applications. To speed up subsequent runs, Node.js caches the compiled bytecode.
 
-Node.js v25 introduces the **`NODE_COMPILE_CACHE_RELATIVE_PATH`** environment variable, which makes compile caches **portable**.
+Node.js v25 introduces **portable compile cache**, which allows caches to be reused even when you move your project directory. Previously, compile caches used absolute file paths, meaning if you moved your project or deployed it to a different environment, the cache couldn't be reused.
 
-Previously, compile caches used absolute file paths, meaning if you moved your project or deployed it to a different environment, the cache couldn't be reused. With relative paths, the cache is now portable across different systems.
+You can enable portable caching in two ways:
 
 ```bash
-# Enable portable compile cache
-NODE_COMPILE_CACHE_RELATIVE_PATH=1 node app.js
+# Enable portable compile cache via environment variable
+NODE_COMPILE_CACHE_PORTABLE=1 node app.js
+```
+
+Or programmatically:
+
+```javascript
+// Enable portable compile cache via API
+module.enableCompileCache({
+  directory: '/path/to/cache/dir',
+  portable: true
+});
 ```
 
 ## Impact on serverless and containers
