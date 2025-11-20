@@ -160,7 +160,7 @@ appwrite functions [COMMAND] [OPTIONS]
 * Get a list of all the current user function execution logs. You can use the query params to filter your results.
 ---
 * `create-execution [options]`
-* Trigger a function execution. The returned object will return you the current execution status. You can ping the 'Get Execution' endpoint to get updates on the current execution status.
+* Trigger a function execution.
 ---
 * `get-execution [options]`
 * Get a function execution log by its unique ID.
