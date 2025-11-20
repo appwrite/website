@@ -3,9 +3,10 @@ name: Production deployment
 on:
     release:
         types: [published]
+    workflow_dispatch:
 
 env:
-    TAG: ${{ github.event.release.tag_name }}
+    TAG: ${{ github.event.release.tag_name || github.sha }}
     STACK_FILE: docker/production.yml
     REPOSITORY: website
     REGISTRY_USERNAME: christyjacob4
@@ -48,34 +49,42 @@ jobs:
                       "SENTRY_AUTH_TOKEN=${{ secrets.SENTRY_AUTH_TOKEN }}"
                       "SENTRY_RELEASE=${{ github.event.release.tag_name }}"
 
-    deploy:
+    deploy_kubernetes:
+        strategy:
+            matrix:
+                region: [{ full: fra1, short: fra }]
         needs: build
         runs-on: ubuntu-latest
         steps:
-            - name: Execute SSH commands
-              uses: appleboy/ssh-action@master
+            - name: Checkout the repo
+              uses: actions/checkout@v4
+            - name: Install Kubectl
+              uses: azure/setup-kubectl@v4
+            - name: Install Helm
+              uses: azure/setup-helm@v4
+            - name: Install doctl
+              uses: digitalocean/action-doctl@v2
               with:
-                  host: ${{ secrets.PRD_SSH_HOST }}
-                  username: ${{ secrets.PRD_SSH_USERNAME }}
-                  key: ${{ secrets.PRD_SSH_KEY }}
-                  script: |
-                      url="https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/appwrite/${{ env.REPOSITORY }}.git"
-                      if ! git clone "${url}" "${{ env.REPOSITORY }}" 2>/dev/null && [ -d "${{ env.REPOSITORY }}" ] ; then
-                          echo "Clone failed because the folder ${{ env.REPOSITORY }} exists"
-                      fi
+                  token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
+            - name: Save DigitalOcean kubeconfig with short-lived credentials
+              run: doctl kubernetes cluster kubeconfig save --expiry-seconds 600 assets-${{ matrix.region.full }}-prod
 
-                      cd ${{ env.REPOSITORY }}
-                      git reset --hard HEAD
-                      git remote set-url origin $url
-                      git fetch origin
-                      git checkout ${{ env.TAG }}
+            - name: Ensure namespaces exist
+              run: |
+                  kubectl create namespace website --dry-run=client -o yaml | kubectl apply -f -
 
-                      rm -f .env
-                      echo "_APP_VERSION=${{ env.TAG }}" >> .env
-                      echo "_APP_DOMAIN=${{ secrets.PRD_APP_DOMAIN }}" >> .env
-                      echo "_APP_SYSTEM_SECURITY_EMAIL_ADDRESS=${{ secrets.APP_SYSTEM_SECURITY_EMAIL_ADDRESS }}" >> .env
-                      echo "_APP_BETTER_STACK_INCIDENT_URL=${{ secrets.BETTER_STACK_INCIDENT_URL }}" >> .env
+            - name: Create docker pull secret
+              run: |
+                  kubectl -n website create secret docker-registry ghcr \
+                    --docker-server=ghcr.io \
+                    --docker-username=${{ secrets.GHCR_USERNAME }} \
+                    --docker-password=${{ secrets.GHCR_TOKEN }} \
+                    --docker-email=ci@appwrite.io \
+                    --dry-run=client -o yaml | kubectl apply -f -
 
-                      echo ${{ secrets.GH_REGISTRY_TOKEN }} | docker login ghcr.io --username ${{ env.REGISTRY_USERNAME }} --password-stdin
-                      docker-compose -f ${{ env.STACK_FILE }} config
-                      env $(cat .env | xargs) docker stack deploy --prune --resolve-image always --with-registry-auth -c ${{ env.STACK_FILE }} ${{ env.REPOSITORY }}
+            - name: Deploy
+              run: |
+                  helm upgrade --install --namespace website website deploy/website/ \
+                    --values deploy/website/environments/production/${{ matrix.region.full }}.values.yaml \
+                    --set imagePullSecret='ghcr' \
+                    --set version=${{ env.TAG }}

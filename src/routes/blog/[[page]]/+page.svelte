@@ -24,6 +24,7 @@
     let isEnd = $state(false);
     let isStart = $state(true);
     let categoriesElement: HTMLElement;
+    let isHovering = $state(false);
 
     let articlesHeader: HTMLElement;
 
@@ -105,6 +106,25 @@
         isEnd = Math.ceil(scrollLeft + offsetWidth) >= scrollWidth;
     }
 
+    function scrollCategories(direction: 'left' | 'right') {
+        if (!categoriesElement) return;
+
+        const scrollAmount = 200;
+        const currentScroll = categoriesElement.scrollLeft;
+        const targetScroll =
+            direction === 'left'
+                ? Math.max(0, currentScroll - scrollAmount)
+                : Math.min(
+                      categoriesElement.scrollWidth - categoriesElement.offsetWidth,
+                      currentScroll + scrollAmount
+                  );
+
+        categoriesElement.scrollTo({
+            left: targetScroll,
+            behavior: 'smooth'
+        });
+    }
+
     const title = 'Blog' + TITLE_SUFFIX;
     const description =
         'Stay updated with the latest product news, insights, and tutorials from the Appwrite team. Our blog covers everything for hassle-free backend development.';
@@ -129,8 +149,8 @@
 </svelte:head>
 
 <Main>
-    <div class="web-big-padding-section" style:overflow-x="hidden">
-        <div class="relative py-10">
+    <div class="web-big-padding-section overflow-x-hidden">
+        <div class="border-smooth relative border-b py-10">
             <div
                 class="absolute"
                 style="pointer-events:none;inset-inline-start:0; inset-block-end:0;"
@@ -196,21 +216,26 @@
                             (author) => author.slug === featured.author
                         )}
                         <article class="web-feature-article mt-12">
-                            <a href={featured.href} class="web-feature-article-image">
+                            <a
+                                href={featured.href}
+                                class="web-feature-article-image h-fit overflow-hidden rounded-lg"
+                            >
                                 <img
                                     src={featured.cover}
-                                    class="web-image-ratio-4/3"
+                                    class="aspect-video transition-transform duration-250 hover:scale-102"
                                     loading="lazy"
                                     alt="cover"
                                 />
                             </a>
-                            <div class="web-feature-article-content">
+                            <div class="web-feature-article-content w-full">
                                 <header class="web-feature-article-header">
                                     <ul class="web-metadata text-caption web-is-only-mobile">
                                         <li>{featured.timeToRead} min</li>
                                     </ul>
                                     <a href={featured.href}>
-                                        <h2 class="text-title font-aeonik-pro text-primary">
+                                        <h2
+                                            class="text-title font-aeonik-pro text-primary text-balanced"
+                                        >
                                             {featured.title}
                                         </h2>
                                     </a>
@@ -239,7 +264,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <Button variant="secondary" href={featured.href} class="mt-auto">
+                                <Button variant="secondary" href={featured.href} class="mt-8">
                                     <span>Read article</span>
                                 </Button>
                             </div>
@@ -249,7 +274,7 @@
             </div>
         </div>
 
-        <div class="pt-20">
+        <div class="pt-30">
             <div class="web-container">
                 <h2
                     id="title"
@@ -264,7 +289,19 @@
                         <div
                             class="categories-wrapper"
                             data-state={isStart ? 'start' : isEnd ? 'end' : 'middle'}
+                            onmouseenter={() => (isHovering = true)}
+                            onmouseleave={() => (isHovering = false)}
+                            role="navigation"
                         >
+                            <button
+                                class="category-nav-arrow left"
+                                class:visible={isHovering && !isStart}
+                                onclick={() => scrollCategories('left')}
+                                aria-label="Scroll categories left"
+                            >
+                                <span class="web-icon-chevron-left"></span>
+                            </button>
+
                             <ul
                                 class="categories flex gap-2 overflow-x-auto"
                                 onscroll={handleScroll}
@@ -298,6 +335,15 @@
                                     </li>
                                 {/each}
                             </ul>
+
+                            <button
+                                class="category-nav-arrow right"
+                                class:visible={isHovering && !isEnd}
+                                onclick={() => scrollCategories('right')}
+                                aria-label="Scroll categories right"
+                            >
+                                <span class="web-icon-chevron-right"></span>
+                            </button>
                         </div>
 
                         <div
@@ -500,7 +546,7 @@
             width: 60px;
             height: 100%;
             transition: ease 250ms;
-            z-index: 100;
+            z-index: 10;
             pointer-events: none;
         }
 
@@ -584,6 +630,47 @@
         max-height: 40px;
     }
 
+    .category-nav-arrow {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 32px;
+        height: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: transparent;
+        border: none;
+        border-radius: var(--border-radius-S, 8px);
+        cursor: pointer;
+        opacity: 0;
+        transition:
+            opacity 250ms ease,
+            background-color 250ms ease;
+        z-index: 200;
+    }
+
+    .category-nav-arrow:hover {
+        background: hsl(var(--web-color-background-tertiary) / 0.8);
+    }
+
+    .category-nav-arrow.visible {
+        opacity: 1;
+    }
+
+    .category-nav-arrow.left {
+        left: -12px;
+    }
+
+    .category-nav-arrow.right {
+        right: -12px;
+    }
+
+    .category-nav-arrow span {
+        font-size: 16px;
+        color: hsl(var(--web-color-primary));
+    }
+
     @media (max-width: 768px) {
         .search-and-categories {
             display: flex;
@@ -607,6 +694,10 @@
 
         .search-and-categories > .web-input-text-search-wrapper {
             min-inline-size: unset;
+        }
+
+        .category-nav-arrow {
+            display: none;
         }
     }
 </style>

@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { classNames } from '$lib/utils/classnames';
+    import { cn } from '$lib/utils/cn';
     import { onMount } from 'svelte';
 
     let animate: boolean = false;
@@ -11,7 +11,7 @@
 
 <div class="w-full overflow-hidden">
     <svg fill="none" class="h-full w-full" viewBox="0 0 460 525" xmlns="http://www.w3.org/2000/svg">
-        <g class={classNames('gridLines', animate && 'active')}>
+        <g class={cn('gridLines', animate && 'active')}>
             <path
                 d="m286.44 85.681-160.21 92.5"
                 stroke="#fff"
@@ -69,8 +69,8 @@
                 style:--offset-to="500"
             />
         </g>
-        <g class={classNames('leftPiece', animate && 'active')}>
-            <g class={classNames('logo', animate && 'active')}>
+        <g class={cn('leftPiece', animate && 'active')}>
+            <g class={cn('logo', animate && 'active')}>
                 <path
                     d="m114.04 273.65-1.42 22.021-47.768 27.579c-13.917 8.035-25.497 6.194-31.149-3.218-0.822-1.368-1.519-2.898-2.079-4.582-1.098-3.297-1.672-7.185-1.637-11.608l0.384-5.953c0.122-1.052 0.276-2.114 0.457-3.18 0.37-2.187 0.858-4.401 1.455-6.623 5.655-21.062 21.038-42.984 38.25-52.922 17.212-9.937 30.846-4.768 34.117 11.142l-20.425 11.792c-2.965-4.09-8.512-4.723-15.112-0.912-6.6 3.81-12.661 11.145-16.403 19.107-1.14 2.422-2.063 4.9-2.722 7.354-0.585 2.176-0.961 4.332-1.095 6.414-0.407 6.312 1.492 10.693 4.867 12.609 3.126 1.782 7.519 1.442 12.512-1.441l47.768-27.579z"
                     fill="var(--color-left-fill)"
@@ -216,7 +216,7 @@
                 stroke-width=".82664"
             />
         </g>
-        <g class={classNames('rightPiece', animate && 'active')}>
+        <g class={cn('rightPiece', animate && 'active')}>
             <path
                 d="m459.62 273.41 2e-3 -258.94-24.918-14.392 2e-3 258.94 24.914 14.385z"
                 fill="var(--color-right-fill)"
@@ -267,7 +267,7 @@
                 stroke="var(--color-right-stroke)"
                 stroke-width=".82664"
             />
-            <g id="circles" class={classNames('circles', animate && 'active')}>
+            <g id="circles" class={cn('circles', animate && 'active')}>
                 <path
                     d="m338.9 291.95c24.536-14.166 45.904-48.569 47.728-76.842 1.823-28.273-16.589-39.709-41.125-25.543-24.536 14.165-45.904 48.569-47.727 76.842-1.824 28.272 16.588 39.708 41.124 25.543z"
                     fill="#fff"

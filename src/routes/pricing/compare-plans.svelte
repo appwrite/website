@@ -4,15 +4,17 @@
     import { visible } from '$lib/actions/visible';
     import { Tooltip } from '$lib/components';
     import { Button } from '$lib/components/ui';
-    import { classNames } from '$lib/utils/classnames';
+    import { cn } from '$lib/utils/cn';
     import { getAppwriteDashboardUrl } from '$lib/utils/dashboard';
     import { getScrollDir } from '$lib/utils/getScrollDir';
     import { createAccordion, melt } from '@melt-ui/svelte';
     import { writable } from 'svelte/store';
     import { fly } from 'svelte/transition';
     import { trackEvent } from '$lib/actions/analytics';
+    import { SHOW_SCALE_PLAN } from '$lib/constants/feature-flags';
 
-    type Row = string | true | { text: string; url: string; event: string };
+    type LinkRow = { text: string; url: string; event: string };
+    type Row = string | true | LinkRow;
 
     type Table = {
         title: string;
@@ -26,7 +28,10 @@
         }[];
     };
 
-    const cols = ['free', 'pro', 'scale', 'enterprise'] as const;
+    const allCols = ['free', 'pro', 'scale', 'enterprise'] as const;
+    const cols = SHOW_SCALE_PLAN
+        ? allCols
+        : (allCols.filter((col) => col !== 'scale') as ('free' | 'pro' | 'scale' | 'enterprise')[]);
 
     const tables: Array<Table> = [
         {
@@ -35,15 +40,15 @@
                 {
                     title: 'API bandwidth',
                     free: '5GB / month',
-                    pro: '300GB / month',
-                    scale: '300GB / month',
+                    pro: '2TB / month',
+                    scale: '2TB / month',
                     enterprise: 'Custom'
                 },
                 {
                     title: 'Additional API bandwidth',
                     free: '-',
-                    pro: '$40 per 100GB / month',
-                    scale: '$40 per 100GB / month',
+                    pro: '$15 per 100GB / month',
+                    scale: '$15 per 100GB / month',
                     enterprise: 'Custom'
                 },
                 {
@@ -56,8 +61,8 @@
                 {
                     title: 'Additional storage',
                     free: '-',
-                    pro: '$3 per 100GB ',
-                    scale: '$3 per 100GB',
+                    pro: '$2.8 per 100GB ',
+                    scale: '$2.8 per 100GB',
                     enterprise: 'Custom'
                 },
                 {
@@ -74,10 +79,17 @@
             rows: [
                 {
                     title: 'Number of projects',
-                    free: 'Unlimited',
-                    pro: 'Unlimited',
-                    scale: 'Unlimited',
-                    enterprise: 'Unlimited'
+                    free: '2 (Shared resources)',
+                    pro: '1 (Dedicated resources)',
+                    scale: '1 (Dedicated resources)',
+                    enterprise: 'Custom'
+                },
+                {
+                    title: 'Additional projects',
+                    free: '-',
+                    pro: '$15',
+                    scale: '$15',
+                    enterprise: 'Custom'
                 },
                 {
                     title: 'Projects pausing',
@@ -89,16 +101,9 @@
                 {
                     title: 'Organization members',
                     free: '1',
-                    pro: '1',
+                    pro: 'Unlimited',
                     scale: 'Unlimited',
                     enterprise: 'Unlimited'
-                },
-                {
-                    title: 'Additional members',
-                    free: '-',
-                    pro: '$15 per member',
-                    scale: '$0',
-                    enterprise: '$0'
                 },
                 {
                     title: 'Connected websites and apps',
@@ -211,16 +216,16 @@
                 },
                 {
                     title: 'Reads',
-                    free: '500K',
-                    pro: '1750K',
-                    scale: '1750K',
+                    free: '500K / month',
+                    pro: '1750K / month',
+                    scale: '1750K / month',
                     enterprise: 'Custom'
                 },
                 {
                     title: 'Writes',
-                    free: '250K',
-                    pro: '750K',
-                    scale: '750K',
+                    free: '250K / month',
+                    pro: '750K / month',
+                    scale: '750K / month',
                     enterprise: 'Custom'
                 },
                 {
@@ -248,6 +253,20 @@
                     title: 'Backups retention',
                     free: '-',
                     pro: '7 days retention',
+                    scale: 'Custom',
+                    enterprise: 'Custom'
+                },
+                {
+                    title: 'Encrypted attributes support',
+                    free: '-',
+                    pro: 'True',
+                    scale: 'True',
+                    enterprise: 'True'
+                },
+                {
+                    title: 'Bulk API documents',
+                    free: '100',
+                    pro: '1000',
                     scale: 'Custom',
                     enterprise: 'Custom'
                 },
@@ -294,11 +313,18 @@
             ]
         },
         {
-            title: 'Functions',
+            title: 'Compute',
             rows: [
                 {
                     title: 'Functions',
                     free: '5 per project',
+                    pro: 'Unlimited',
+                    scale: 'Unlimited',
+                    enterprise: 'Unlimited'
+                },
+                {
+                    title: 'Sites',
+                    free: 'Unlimited',
                     pro: 'Unlimited',
                     scale: 'Unlimited',
                     enterprise: 'Unlimited'
@@ -320,8 +346,8 @@
                 {
                     title: 'Additional GB-hours',
                     free: '-',
-                    pro: '$0.09 per GB-hour',
-                    scale: '$0.09 per GB-hour',
+                    pro: '$0.06 per GB-hour',
+                    scale: '$0.06 per GB-hour',
                     enterprise: 'Custom'
                 },
                 {
@@ -375,6 +401,95 @@
             ]
         },
         {
+            title: 'Messaging',
+            rows: [
+                {
+                    title: 'Messages',
+                    free: '1000 per month',
+                    pro: 'Unlimited',
+                    scale: 'Unlimited',
+                    enterprise: 'Unlimited'
+                },
+                {
+                    title: 'Topics',
+                    free: '1',
+                    pro: 'Unlimited',
+                    scale: 'Unlimited',
+                    enterprise: 'Unlimited'
+                },
+                {
+                    title: 'Targets',
+                    free: true,
+                    pro: true,
+                    scale: true,
+                    enterprise: true
+                },
+                {
+                    title: 'In app notifications',
+                    free: true,
+                    pro: true,
+                    scale: true,
+                    enterprise: true
+                },
+                {
+                    title: 'Chat',
+                    free: true,
+                    pro: true,
+                    scale: true,
+                    enterprise: true
+                },
+                {
+                    title: 'Push notifications',
+                    free: true,
+                    pro: true,
+                    scale: true,
+                    enterprise: true
+                },
+                {
+                    title: 'Email',
+                    free: true,
+                    pro: true,
+                    scale: true,
+                    enterprise: true
+                },
+                {
+                    title: 'SMS',
+                    free: true,
+                    pro: true,
+                    scale: true,
+                    enterprise: true
+                },
+                {
+                    title: 'Discord',
+                    free: true,
+                    pro: true,
+                    scale: true,
+                    enterprise: true
+                },
+                {
+                    title: 'WhatsApp',
+                    free: '-',
+                    pro: true,
+                    scale: true,
+                    enterprise: true
+                },
+                {
+                    title: 'Slack',
+                    free: '-',
+                    pro: true,
+                    scale: true,
+                    enterprise: true
+                },
+                {
+                    title: 'Analytics',
+                    free: '-',
+                    pro: 'Coming soon',
+                    scale: 'Coming soon',
+                    enterprise: 'Coming soon'
+                }
+            ]
+        },
+        {
             title: 'Network',
             rows: [
                 {
@@ -400,7 +515,7 @@
                 },
                 {
                     title: 'Content compression',
-                    info: 'Support for brotli, zstd and gzip for text compression and webp for image compression',
+                    info: 'Support for brotli, zstd, and gzip for text compression and webp for image compression',
                     free: true,
                     pro: true,
                     scale: true,
@@ -447,21 +562,7 @@
                     enterprise: true
                 },
                 {
-                    title: 'SOC-2',
-                    free: '-',
-                    pro: '-',
-                    scale: true,
-                    enterprise: true
-                },
-                {
-                    title: 'HIPAA',
-                    free: '-',
-                    pro: '-',
-                    scale: true,
-                    enterprise: true
-                },
-                {
-                    title: 'BAA',
+                    title: 'SOC-2, HIPAA, and BAA',
                     free: '-',
                     pro: '-',
                     scale: true,
@@ -501,25 +602,18 @@
                     enterprise: true
                 },
                 {
-                    title: 'Priority',
-                    free: '-',
-                    pro: '-',
-                    scale: true,
-                    enterprise: true
-                },
-                {
                     title: 'SLA',
                     free: '-',
                     pro: '-',
-                    scale: true,
-                    enterprise: true
+                    scale: 'Custom',
+                    enterprise: 'Custom'
                 },
                 {
                     title: 'Private Slack channel',
                     free: '-',
                     pro: '-',
-                    scale: true,
-                    enterprise: true
+                    scale: 'Custom',
+                    enterprise: 'Custom'
                 }
             ]
         }
@@ -544,8 +638,8 @@
     let scrollDir = 'down';
     let shouldShowTable = false;
 
-    function getItemAsRow(item: any): Row {
-        return item as Row;
+    function getItemAsLinkRow(item: Row): LinkRow {
+        return item as LinkRow;
     }
 </script>
 
@@ -557,15 +651,15 @@
             <article use:melt={$root}>
                 <div class="container">
                     <header
-                        class="text-center"
+                        class="text-center lg:ml-64"
                         use:visible
                         on:visible={(e) => {
                             shouldShowTable = !e.detail;
                         }}
                     >
                         <h3 class="text-title font-aeonik-pro text-primary">Compare plans</h3>
-                        <p class="text-body mt-4 font-medium">
-                            Discover our plans and find the one that fits your project’s needs.
+                        <p class="text-main-body mt-4 font-medium">
+                            Discover our plans and find the one that fits your project's needs.
                         </p>
                     </header>
 
@@ -582,13 +676,16 @@
 								--p-secondary-tabs-bg-color-selected: var(--web-color-accent) / 0.08;"
                                 let:tab
                             >
-                                <span class="text-body font-medium capitalize">{tab}</span>
+                                <span class="text-main-body font-medium capitalize">{tab}</span>
                             </TabsList>
                         </Tabs>
                     </div>
 
                     <div
                         class="web-is-not-mobile web-u-grid-auto-column-1fr is-with-footer-border web-u-padding-inline-8 web-u-margin-inline-8-negative web-u-filter-blur-8 web-u-container-query-inline sticky top-[70px] z-10 gap-8 [padding-block:20px]!"
+                        style:--columns-template={SHOW_SCALE_PLAN
+                            ? 'repeat(4, 1fr)'
+                            : 'repeat(3, 1fr)'}
                         style:transition="inset-block-start 0.3s ease"
                     >
                         <div
@@ -645,23 +742,26 @@
                                 </Button>
                             </div>
                         </div>
-                        <div class="web-mini-card">
-                            <div class="flex flex-col items-center justify-between gap-2">
-                                <h4 class="text-sub-body text-primary font-medium">Scale</h4>
-                                <Button
-                                    variant="secondary"
-                                    class="!w-full"
-                                    href={getAppwriteDashboardUrl(
-                                        '/console?type=create&plan=tier-2'
-                                    )}
-                                    event="pricing-compare-scale-click"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                >
-                                    <span class="text-sub-body font-medium">Start building</span>
-                                </Button>
+                        {#if SHOW_SCALE_PLAN}
+                            <div class="web-mini-card">
+                                <div class="flex flex-col items-center justify-between gap-2">
+                                    <h4 class="text-sub-body text-primary font-medium">Scale</h4>
+                                    <Button
+                                        variant="secondary"
+                                        class="!w-full"
+                                        href={getAppwriteDashboardUrl(
+                                            '/console?type=create&plan=tier-2'
+                                        )}
+                                        event="pricing-compare-scale-click"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                    >
+                                        <span class="text-sub-body font-medium">Start building</span
+                                        >
+                                    </Button>
+                                </div>
                             </div>
-                        </div>
+                        {/if}
                         <div class="web-mini-card">
                             <div class="flex flex-col items-center justify-between gap-2">
                                 <h4 class="text-sub-body text-primary font-medium">Enterprise</h4>
@@ -697,7 +797,7 @@
                             }}
                         >
                             <caption
-                                class="web-compare-table-caption text-body text-primary text-left font-medium"
+                                class="web-compare-table-caption text-main-body text-primary text-left font-medium"
                                 use:melt={$heading({ level: 3 })}
                                 style:position={browser ? 'unset' : undefined}
                             >
@@ -732,7 +832,7 @@
                                         </th>
                                         {#each cols as col, index}
                                             <td
-                                                class={classNames(
+                                                class={cn(
                                                     `text-caption flex justify-center font-normal level-${index}`,
                                                     {
                                                         'md:bg-greyscale-100': col === 'pro'
@@ -743,7 +843,7 @@
                                                 {#if typeof row[col] === 'string'}
                                                     {@html row[col]}
                                                 {:else if typeof row[col] === 'object'}
-                                                    {@const rowItem = getItemAsRow(row[col])}
+                                                    {@const rowItem = getItemAsLinkRow(row[col])}
                                                     <a
                                                         href={rowItem.url}
                                                         class="underline"
@@ -773,8 +873,7 @@
 
 <style>
     .web-u-grid-auto-column-1fr {
-        grid-auto-columns: max-content;
-        grid-template-columns: repeat(5, 2fr);
+        grid-template-columns: var(--columns-template);
     }
 
     .web-mini-card {

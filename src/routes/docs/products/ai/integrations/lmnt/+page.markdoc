@@ -209,7 +209,8 @@ Next, you'll add the methods necessary to integrate with the LMNT API.
 Import the `Speech` class from `lmnt-node`, and the required features from the Appwrite Node.js SDK at the top of the `main.js` file.
 
 ```js
-import { Client, Storage, ID, InputFile, Permission, Role } from "node-appwrite";
+import { Client, Storage, ID, Permission, Role } from "node-appwrite";
+import { InputFile } from "node-appwrite/file";
 import Speech from 'lmnt-node';
 ```
 
@@ -245,12 +246,12 @@ Store the audio file in Appwrite Storage for easy retrieval later:
 ```js
 const storage = new Storage(client);
 
-const file = await storage.createFile(
-  process.env.APPWRITE_BUCKET_ID,
-  ID.unique(),
-  InputFile.fromBuffer(new Blob([response.audio]), "audio.mp3"),
-  [Permission.read(Role.any())],
-);
+const file = await storage.createFile({
+  bucketId: process.env.APPWRITE_BUCKET_ID,
+  fileId: ID.unique(),
+  file: InputFile.fromBuffer(new Blob([response.audio]), "audio.mp3"),
+  permissions: [Permission.read(Role.any())],
+});
 ```
 
 To show it to the user, parse the download URL from Appwrite and return it in the response:

@@ -1,5 +1,5 @@
 import { Platform, Service, type ServiceValue, versions } from '$lib/utils/references';
-import { getService } from '$lib/utils/specs';
+import { getService } from './specs';
 import { error } from '@sveltejs/kit';
 import type { EntryGenerator, PageServerLoad } from './$types';
 
@@ -18,7 +18,7 @@ export const entries: EntryGenerator = () => {
 
 export const load: PageServerLoad = async ({ params }) => {
     const { platform, service } = params;
-    const version = params.version === 'cloud' ? '1.7.x' : params.version;
+    const version = params.version === 'cloud' ? '1.8.x' : params.version;
 
     if (!versions.includes(version)) error(404, 'Invalid version');
     if (!platforms.includes(platform as Platform)) error(404, 'Invalid platform');

@@ -19,10 +19,9 @@
 </script>
 
 <script lang="ts">
-    import { type VariantProps } from 'cva';
     import type { Snippet } from 'svelte';
     import type { Action } from 'svelte/action';
-    import { classNames } from '$lib/utils/classnames';
+    import { cn } from '$lib/utils/cn';
     import { trackEvent, type TrackEventArgs } from '$lib/actions/analytics';
     import type { HTMLAnchorAttributes, HTMLButtonAttributes } from 'svelte/elements';
 
@@ -47,15 +46,26 @@
         ...rest
     }: Props = $props();
 
-    const buttonClasses = classNames(button({ variant }), classes);
+    const buttonClasses = cn(button({ variant }), classes);
 </script>
 
 {#if href}
-    <a use:action {href} class={buttonClasses} onclick={() => event && trackEvent(event)} {...rest}>
+    <a
+        use:action
+        {href}
+        class={buttonClasses}
+        onclick={() => event && trackEvent(event)}
+        {...rest as HTMLAnchorAttributes}
+    >
         {@render children()}
     </a>
 {:else}
-    <button use:action class={buttonClasses} onclick={() => event && trackEvent(event)} {...rest}>
+    <button
+        use:action
+        class={buttonClasses}
+        onclick={() => event && trackEvent(event)}
+        {...rest as HTMLButtonAttributes}
+    >
         {@render children()}
     </button>
 {/if}

@@ -9,7 +9,7 @@
         <div class="cards">
             <div class="cardy">
                 <h3 class="text-label text-primary">Join our Discord</h3>
-                <p class="text-body text-primary mt-4">
+                <p class="text-main-body text-primary mt-4">
                     Get community support by joining our Discord server.
                 </p>
                 <Button class="mt-6" href="https://appwrite.io/discord">
@@ -19,7 +19,7 @@
             </div>
             <div class="cardy">
                 <h3 class="text-label text-primary">Get premium support</h3>
-                <p class="text-body text-primary mt-4">
+                <p class="text-main-body text-primary mt-4">
                     Join Appwrite Pro and get email support from our team.
                 </p>
                 <Button

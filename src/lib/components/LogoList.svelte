@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { classNames } from '$lib/utils/classnames';
+    import { cn } from '$lib/utils/cn';
 
     type Props = {
         title?: string;
@@ -87,7 +87,7 @@
     ];
 </script>
 
-<div class={classNames('py-32', className)}>
+<div class={cn('py-32', className)}>
     <div class="container">
         <h2 class="font-aeonik-pro text-greyscale-100 text-label mx-auto max-w-md text-center">
             {title}

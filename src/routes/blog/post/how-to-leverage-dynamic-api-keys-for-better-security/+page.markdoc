@@ -47,7 +47,7 @@ Dynamic API keys offer several advantages:
 1. **Enhanced security:** The short-lived nature of dynamic API keys minimizes the risk of key exposure and misuse. Each key is unique to a specific function execution, reducing the attack surface.
 2. **Simplified management:** Since these keys are automatically generated and do not require manual rotation or embedding in environment variables, the administrative overhead is significantly reduced.
 3. **Granular control:** Each ephemeral key can be assigned specific scopes tailored to the function's overall needs. This ensures that functions only have the permissions they require, adhering to the principle of least privilege.
-4. **Consistency in development and production:** In Appwrite, dynamic keys respect the scopes set in `appwrite.json`, ensuring that the behavior is consistent across both local development and production environments.
+4. **Consistency in development and production:** In Appwrite, dynamic keys respect the scopes set in `appwrite.config.json`, ensuring that the behavior is consistent across both local development and production environments.
 
 # Setting up and using dynamic API keys
 
@@ -85,7 +85,7 @@ In the above example, the environment variable `APPWRITE_FUNCTION_API_ENDPOINT`
 
 ## Using dynamic API keys in local functions
 
-Dynamic API keys also work when running functions locally and respect the scopes set in `appwrite.json`. Here's our guide on [running functions locally](https://www.appwrite.io/docs/products/functions/develop-locally).
+Dynamic API keys also work when running functions locally and respect the scopes set in `appwrite.config.json`. Here's our guide on [running functions locally](https://www.appwrite.io/docs/products/functions/develop-locally).
 
 If you’ve made changes to your project in the Appwrite console, you can easily synchronize your local functions by running `appwrite pull functions` on your command line. This ensures that the same scopes are applied when running the function locally. If you want to deploy your function afterwards, you can run the command `appwrite push functions`.
 

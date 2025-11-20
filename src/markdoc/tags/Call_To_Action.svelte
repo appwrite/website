@@ -1,7 +1,7 @@
 <script lang="ts">
     import { PUBLIC_APPWRITE_DASHBOARD } from '$env/static/public';
     import { Button } from '$lib/components/ui';
-    import { classNames } from '$lib/utils/classnames';
+    import { cn } from '$lib/utils/cn';
 
     interface Props {
         title?: string;
@@ -12,6 +12,7 @@
         point4?: string;
         cta?: string;
         url?: string;
+        event?: string;
     }
 
     const {
@@ -22,21 +23,22 @@
         point3 = 'No vendor lock in',
         point4 = 'Highly customizable backend',
         cta = 'Get started',
-        url = PUBLIC_APPWRITE_DASHBOARD
+        url = PUBLIC_APPWRITE_DASHBOARD,
+        event = undefined
     }: Props = $props();
 
     let benefits: Array<string> = [point1, point2, point3, point4];
 </script>
 
 <div
-    class={classNames(
-        'border-smooth relative mb-8 flex flex-col justify-center gap-8 overflow-hidden rounded-xl border p-5 outline-3 [outline-offset:-3px] outline-white/5 md:p-12',
+    class={cn(
+        'border-smooth relative mt-10 mb-8 flex flex-col justify-center gap-8 overflow-hidden rounded-xl border p-5 outline-3 [outline-offset:-3px] outline-white/5 md:p-12',
         'before:absolute before:inset-0 before:h-[170%] before:scale-x-125 before:bg-[radial-gradient(ellipse_at_center,_rgba(253,_54,_110,_0.2),_transparent_65%)] before:blur-lg'
     )}
 >
     <div class="flex flex-col gap-2">
         <h2 class="text-label text-primary font-aeonik-pro text-pretty">{title}</h2>
-        <p class="text-body text-secondary text-pretty">{description}</p>
+        <p class="text-main-body text-secondary text-pretty">{description}</p>
     </div>
 
     <ul class="grid grid-cols-1 gap-3 md:grid-cols-2">
@@ -53,6 +55,6 @@
         {/each}
     </ul>
     <div class="z-[1] flex flex-col gap-2 md:flex-row">
-        <Button href={url} class="max-sm:w-full!">{cta}</Button>
+        <Button href={url} {event} class="max-sm:w-full!">{cta}</Button>
     </div>
 </div>

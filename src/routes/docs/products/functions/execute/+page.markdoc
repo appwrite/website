@@ -92,14 +92,14 @@ client
     .setProject('<PROJECT_ID>') // Your project ID
 ;
 
-const promise = functions.createExecution(
-        '<FUNCTION_ID>',  // functionId
-        '<BODY>',  // body (optional)
-        false,  // async (optional)
-        '<PATH>',  // path (optional)
-        'GET',  // method (optional)
-        {} // headers (optional)
-    );
+const promise = functions.createExecution({
+    functionId: '<FUNCTION_ID>',
+    body: '<BODY>',  // optional
+    async: false,  // optional
+    xpath: '<PATH>',  // optional
+    method: 'GET',  // optional
+    headers: {} // optional
+});
 
 promise.then(function (response) {
     console.log(response); // Success
@@ -214,14 +214,14 @@ client
     .setProject('<PROJECT_ID>') // Your project ID
 ;
 
-const promise = functions.createExecution(
-        '<FUNCTION_ID>',  // functionId
-        '<BODY>',  // body (optional)
-        false,  // async (optional)
-        '<PATH>',  // path (optional)
-        'GET',  // method (optional)
-        {} // headers (optional)
-    );
+const promise = functions.createExecution({
+    functionId: '<FUNCTION_ID>',
+    body: '<BODY>',  // optional
+    async: false,  // optional
+    path: '<PATH>',  // optional
+    method: 'GET',  // optional
+    headers: {} // optional
+});
 
 promise.then(function (response) {
     console.log(response); // Success
@@ -230,7 +230,7 @@ promise.then(function (response) {
 });
 ```
 ```deno
-import * as sdk from "https://deno.land/x/appwrite/mod.ts";
+import * as sdk from "npm:node-appwrite";
 
 // Init SDK
 let client = new sdk.Client();
@@ -241,14 +241,14 @@ client
     .setProject('<PROJECT_ID>') // Your project ID
 ;
 
-const promise = functions.createExecution(
-        '<FUNCTION_ID>',  // functionId
-        '<BODY>',  // body (optional)
-        false,  // async (optional)
-        '<PATH>',  // path (optional)
-        'GET',  // method (optional)
-        {} // headers (optional)
-    );
+const promise = functions.createExecution({
+    functionId: '<FUNCTION_ID>',
+    body: '<BODY>',  // optional
+    async: false,  // optional
+    xpath: '<PATH>',  // optional
+    method: 'GET',  // optional
+    headers: {} // optional
+});
 
 promise.then(function (response) {
     console.log(response); // Success
@@ -561,15 +561,15 @@ const client = new Client()
 
 const functions = new Functions(client);
 
-const result = await functions.createExecution(
-    '<FUNCTION_ID>', // functionId
-    '<BODY>', // body (optional)
-    true, // Scheduled executions need to be async
-    '<PATH>', // path (optional)
-    ExecutionMethod.GET, // method (optional)
-    {}, // headers (optional)
-    '2020-10-15T06:38:00.000+00:00' // Schedule execution (optional)
-);
+const result = await functions.createExecution({
+    functionId: '<FUNCTION_ID>',
+    body: '<BODY>', // optional
+    async: true, // Scheduled executions need to be async
+    xpath: '<PATH>', // optional
+    method: ExecutionMethod.GET, // optional
+    headers: {}, // optional
+    scheduledAt: '2020-10-15T06:38:00.000+00:00' // Schedule execution (optional)
+});
 
 console.log(result);
 ```
@@ -601,15 +601,15 @@ const client = new Client()
 
 const functions = new Functions(client);
 
-const result = await functions.createExecution(
-    '<FUNCTION_ID>', // functionId
-    '<BODY>', // body (optional)
-    true, // Scheduled executions need to be async
-    '<PATH>', // path (optional)
-    ExecutionMethod.GET, // method (optional)
-    {}, // headers (optional)
-    '2020-10-15T06:38:00.000+00:00' // Schedule execution (optional)
-);
+const result = await functions.createExecution({
+    functionId: '<FUNCTION_ID>',
+    body: '<BODY>', // optional
+    async: true, // Scheduled executions need to be async
+    xpath: '<PATH>', // optional
+    method: ExecutionMethod.GET, // optional
+    headers: {}, // optional
+    scheduledAt: '2020-10-15T06:38:00.000+00:00' // Schedule execution (optional)
+});
 
 console.log(result);
 ```
@@ -746,7 +746,7 @@ promise.then(function (response) {
 });
 ```
 ```deno
-import * as sdk from "https://deno.land/x/appwrite/mod.ts";
+import * as sdk from "npm:node-appwrite";
 
 // Init SDK
 let client = new sdk.Client();

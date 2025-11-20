@@ -1,0 +1,969 @@
+---
+layout: article
+title: Rows
+description: Master row management with Appwrite Databases. Learn how to create, update, upsert, and query rows within your tables for dynamic data storage.
+---
+Each piece of data or information in Appwrite Databases is a row.
+Rows have a structure defined by the parent table.
+
+# Create rows {% #create-rows %}
+{% info title="Permissions required" %}
+You must grant _create_ permissions to users at the _table level_ before users can create rows.
+[Learn more about permissions](#permissions)
+{% /info %}
+
+In most use cases, you will create rows programmatically.
+
+{% multicode %}
+```client-web
+import { Client, ID, TablesDB } from "appwrite";
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>');
+
+const tablesDB = new TablesDB(client);
+
+const promise = tablesDB.createRow({
+    databaseId: '<DATABASE_ID>',
+    tableId: '<TABLE_ID>',
+    rowId: ID.unique(),
+    data: {}
+});
+
+promise.then(function (response) {
+    console.log(response);
+}, function (error) {
+    console.log(error);
+});
+```
+```client-flutter
+import 'package:appwrite/appwrite.dart';
+
+void main() async {
+    final client = Client()
+        .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+        .setProject('<PROJECT_ID>');
+
+    final tablesDB = TablesDB(client);
+
+    try {
+        final row = tablesDB.createRow(
+            databaseId: '<DATABASE_ID>',
+            tableId: '<TABLE_ID>',
+            rowId: ID.unique(),
+            data: {}
+        );
+    } on AppwriteException catch(e) {
+        print(e);
+    }
+}
+```
+```client-apple
+import Appwrite
+import AppwriteModels
+
+func main() async throws {
+    let client = Client()
+        .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+        .setProject("<PROJECT_ID>")
+
+    let tablesDB = TablesDB(client)
+
+    do {
+        let row = try await tablesDB.createRow(
+            databaseId: "<DATABASE_ID>",
+            tableId: "<TABLE_ID>",
+            rowId: ID.unique(),
+            data: [:]
+        )
+    } catch {
+        print(error.localizedDescription)
+    }
+}
+```
+```client-android-kotlin
+import io.appwrite.Client
+import io.appwrite.services.TablesDB
+
+suspend fun main() {
+    val client = Client(applicationContext)
+        .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+        .setProject("<PROJECT_ID>")
+
+    val tablesDB = TablesDB(client)
+
+    try {
+        val row = tablesDB.createRow(
+            databaseId = "<DATABASE_ID>",
+            tableId = "<TABLE_ID>",
+            rowId = ID.unique(),
+            data = mapOf("a" to "b"),
+        )
+    } catch (e: AppwriteException) {
+        Log.e("Appwrite", "Error: " + e.message)
+    }
+}
+```
+```graphql
+mutation {
+    tablesCreateRow(
+        databaseId: "<DATABASE_ID>",
+        tableId: "<TABLE_ID>",
+        rowId: "<ROW_ID>",
+        data: "{}"
+    ) {
+        _id
+        _tableId
+        _databaseId
+        _createdAt
+        _updatedAt
+        _permissions
+        data
+    }
+}
+```
+{% /multicode %}
+
+During testing, you might prefer to create rows in the Appwrite Console.
+To do so, navigate to the **Rows** tab of your table and click the **Add row** button.
+
+# List rows {% #list-rows %}
+
+{% info title="Permissions required" %}
+You must grant _read_ permissions to users at the _table level_ before users can read rows.
+[Learn more about permissions](#permissions)
+{% /info %}
+
+Rows can be retrieved using the [List rows](/docs/references/cloud/client-web/tables#listRows) endpoint.
+
+Results can be filtered, sorted, and paginated using Appwrite's shared set of query methods.
+You can find a full guide on querying in the [Queries Guide](/docs/products/databases/queries).
+
+By default, results are limited to the _first 25 items_.
+You can change this through [pagination](/docs/products/databases/pagination).
+
+{% info title="Speed up lists by skipping totals" %}
+If your UI doesn't need an exact total, set the `total` flag to `false` on list calls. The response keeps the same shape and sets `total` to `0`.
+This reduces latency for large tables and filtered queries. Learn more in [Pagination: Skip totals](/docs/products/databases/pagination#skip-totals).
+{% /info %}
+
+{% multicode %}
+```client-web
+import { Client, Query, TablesDB } from "appwrite";
+
+const client = new Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+
+const tablesDB = new TablesDB(client);
+
+let promise = tablesDB.listRows({
+    databaseId: "<DATABASE_ID>",
+    tableId: "<TABLE_ID>",
+    queries: [
+        Query.equal('title', 'Avatar')
+    ]
+});
+
+promise.then(function (response) {
+    console.log(response);
+}, function (error) {
+    console.log(error);
+});
+```
+```client-flutter
+import 'package:appwrite/appwrite.dart';
+
+void main() async {
+    final client = Client()
+        .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+        .setProject("<PROJECT_ID>")
+
+    final tablesDB = TablesDB(client);
+
+    try {
+        final rows = await tablesDB.listRows(
+            databaseId: '<DATABASE_ID>',
+            tableId: '<TABLE_ID>',
+            queries: [
+                Query.equal('title', 'Avatar')
+            ]
+        );
+    } on AppwriteException catch(e) {
+        print(e);
+    }
+}
+```
+```client-apple
+import Appwrite
+import AppwriteModels
+
+func main() async throws {
+    let client = Client()
+        .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+        .setProject("<PROJECT_ID>")
+
+    let tablesDB = TablesDB(client)
+
+    do {
+        let rows = try await tablesDB.listRows(
+            databaseId: "<DATABASE_ID>",
+            tableId: "<TABLE_ID>",
+            queries: [
+                Query.equal("title", value: "Avatar")
+            ]
+        )
+    } catch {
+        print(error.localizedDescription)
+    }
+}
+```
+```client-android-kotlin
+import io.appwrite.Client
+import io.appwrite.Query
+import io.appwrite.services.TablesDB
+
+suspend fun main() {
+    val client = Client(applicationContext)
+        .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+        .setProject("<PROJECT_ID>")
+
+    val tablesDB = TablesDB(client)
+
+    try {
+        val rows = tablesDB.listRows(
+            databaseId = "<DATABASE_ID>",
+            tableId = "<TABLE_ID>",
+            queries = listOf(
+                Query.equal("title", "Avatar")
+            )
+        )
+    } catch (e: AppwriteException) {
+        Log.e("Appwrite", "Error: " + e.message)
+    }
+}
+```
+```graphql
+query {
+    tablesListRows(
+        databaseId: "<DATABASE_ID>",
+        tableId: "<TABLE_ID>",
+        queries: ["equal(\"title\", [\"Avatar\"])"]
+    ) {
+        total
+        rows {
+            _id
+            data
+        }
+    }
+}
+```
+{% /multicode %}
+
+# Update row {% #update-row %}
+{% info title="Permissions required" %}
+You must grant _update_ permissions to users at the _table level_ or _row level_ before users can update rows.
+[Learn more about permissions](#permissions)
+{% /info %}
+
+In most use cases, you will update rows programmatically.
+
+{% multicode %}
+```client-web
+import { Client, TablesDB } from "appwrite";
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>');
+
+const tablesDB = new TablesDB(client);
+
+const promise = tablesDB.updateRow(
+    '<DATABASE_ID>',
+    '<TABLE_ID>',
+    '<ROW_ID>',
+    { title: 'Updated Title' }
+);
+
+promise.then(function (response) {
+    console.log(response);
+}, function (error) {
+    console.log(error);
+});
+```
+```client-flutter
+import 'package:appwrite/appwrite.dart';
+
+void main() async {
+    final client = Client()
+        .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+        .setProject('<PROJECT_ID>');
+
+    final tablesDB = TablesDB(client);
+
+    try {
+        final row = await tablesDB.updateRow(
+            databaseId: '<DATABASE_ID>',
+            tableId: '<TABLE_ID>',
+            rowId: '<ROW_ID>',
+            data: { 'title': 'Updated Title' }
+        );
+    } on AppwriteException catch(e) {
+        print(e);
+    }
+}
+```
+```client-apple
+import Appwrite
+import AppwriteModels
+
+func main() async throws {
+    let client = Client()
+        .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+        .setProject("<PROJECT_ID>")
+
+    let tablesDB = TablesDB(client)
+
+    do {
+        let row = try await tablesDB.updateRow(
+            databaseId: "<DATABASE_ID>",
+            tableId: "<TABLE_ID>",
+            rowId: "<ROW_ID>",
+            data: ["title": "Updated Title"]
+        )
+    } catch {
+        print(error.localizedDescription)
+    }
+}
+```
+```client-android-kotlin
+import io.appwrite.Client
+import io.appwrite.services.TablesDB
+
+suspend fun main() {
+    val client = Client(applicationContext)
+        .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+        .setProject("<PROJECT_ID>")
+
+    val tablesDB = TablesDB(client)
+
+    try {
+        val row = tablesDB.updateRow(
+            databaseId = "<DATABASE_ID>",
+            tableId = "<TABLE_ID>",
+            rowId = "<ROW_ID>",
+            data = mapOf("title" to "Updated Title"),
+        )
+    } catch (e: AppwriteException) {
+        Log.e("Appwrite", "Error: " + e.message)
+    }
+}
+```graphql
+mutation {
+    tablesDBUpdateRow(
+        databaseId: "<DATABASE_ID>",
+        tableId: "<TABLE_ID>",
+        rowId: "<ROW_ID>",
+        data: "{\"title\": \"Updated Title\"}"
+    ) {
+        _id
+        _tableId
+        _databaseId
+        _createdAt
+        _updatedAt
+        _permissions
+        data
+    }
+}
+```
+{% /multicode %}
+
+# Upsert rows {% #upsert-rows %}
+
+Upsert is a combination of "update" and "insert" operations. It creates a new row if one doesn't exist with the given ID, or updates an existing row if it does exist.
+
+In most use cases, you will upsert rows programmatically.
+
+{% info title="Permissions required" %}
+You must grant _create_ permissions to users at the _table level_, and _update_ permissions to users at the _table_ or _row_ level before users can upsert rows.
+[Learn more about permissions](#permissions)
+{% /info %}
+{% multicode %}
+```client-web
+import { Client, ID, TablesDB } from "appwrite";
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>');
+
+const tablesDB = new TablesDB(client);
+
+const promise = tablesDB.upsertRow(
+    '<DATABASE_ID>',
+    '<TABLE_ID>',
+    ID.unique(),
+    {}
+);
+
+promise.then(function (response) {
+    console.log(response);
+}, function (error) {
+    console.log(error);
+});
+```
+```client-flutter
+import 'package:appwrite/appwrite.dart';
+
+void main() async {
+    final client = Client()
+        .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+        .setProject('<PROJECT_ID>');
+
+    final tablesDB = TablesDB(client);
+
+    try {
+        final row = tablesDB.upsertRow(
+            databaseId: '<DATABASE_ID>',
+            tableId: '<TABLE_ID>',
+            rowId: ID.unique(),
+            data: {}
+        );
+    } on AppwriteException catch(e) {
+        print(e);
+    }
+}
+```
+```client-apple
+import Appwrite
+import AppwriteModels
+
+func main() async throws {
+    let client = Client()
+        .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+        .setProject("<PROJECT_ID>")
+
+    let tablesDB = TablesDB(client)
+
+    do {
+        let row = try await tablesDB.upsertRow(
+            databaseId: "<DATABASE_ID>",
+            tableId: "<TABLE_ID>",
+            rowId: ID.unique(),
+            data: [:]
+        )
+    } catch {
+        print(error.localizedDescription)
+    }
+}
+```
+```client-android-kotlin
+import io.appwrite.Client
+import io.appwrite.services.TablesDB
+
+suspend fun main() {
+    val client = Client(applicationContext)
+        .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+        .setProject("<PROJECT_ID>")
+
+    val tablesDB = TablesDB(client)
+
+    try {
+        val row = tablesDB.upsertRow(
+            databaseId = "<DATABASE_ID>",
+            tableId = "<TABLE_ID>",
+            rowId = ID.unique(),
+            data = mapOf("a" to "b"),
+        )
+    } catch (e: AppwriteException) {
+        Log.e("Appwrite", "Error: " + e.message)
+    }
+}
+```
+```graphql
+mutation {
+    tablesUpsertRow(
+        databaseId: "<DATABASE_ID>",
+        tableId: "<TABLE_ID>",
+        rowId: "<ROW_ID>",
+        data: "{}"
+    ) {
+        _id
+        _tableId
+        _databaseId
+        _createdAt
+        _updatedAt
+        _permissions
+        data
+    }
+}
+```
+{% /multicode %}
+
+# Type safety with models {% #type-safety %}
+
+Mobile and native SDKs provide type safety when working with rows through the `nestedType` parameter. This allows you to specify custom model types for complete auto-completion and type safety.
+
+## Define your model
+
+Create a data class or struct that matches your table structure:
+
+{% tabs %}
+{% tabsitem #kotlin title="Kotlin/Java" %}
+```kotlin
+data class Book(
+    val title: String,
+    val author: String,
+    val publishedYear: Int? = null,
+    val genre: List<String>? = null,
+    val isAvailable: Boolean = true
+)
+```
+{% /tabsitem %}
+
+{% tabsitem #swift title="Swift" %}
+```swift
+struct Book: Codable {
+    let title: String
+    let author: String
+    let publishedYear: Int?
+    let genre: [String]?
+    let isAvailable: Bool
+}
+```
+{% /tabsitem %}
+
+{% tabsitem #web title="Web/Node" %}
+```typescript
+interface Book {
+    title: string;
+    author: string;
+    publishedYear?: number;
+    genre?: string[];
+    isAvailable: boolean;
+}
+```
+{% /tabsitem %}
+{% /tabs %}
+
+## Using type-safe operations
+
+Use the `nestedType` parameter for full type safety in native SDKs, or generics in web SDKs:
+
+{% multicode %}
+```client-android-kotlin
+val tablesDB = TablesDB(client)
+
+try {
+    // Create with type safety
+    val newBook = tablesDB.createRow(
+        databaseId = "<DATABASE_ID>",
+        tableId = "<TABLE_ID>",
+        rowId = ID.unique(),
+        data = mapOf(
+            "title" to "The Great Gatsby",
+            "author" to "F. Scott Fitzgerald",
+            "isAvailable" to true
+        ),
+        nestedType = Book::class.java
+    )
+
+    // List with type safety
+    val books = tablesDB.listRows(
+        databaseId = "<DATABASE_ID>",
+        tableId = "<TABLE_ID>",
+        nestedType = Book::class.java
+    )
+
+    // Now you have full type safety
+    for (book in books.rows) {
+        Log.d("Appwrite", "Book: ${book.title} by ${book.author}")
+        if (book.isAvailable) {
+            Log.d("Appwrite", "Available for checkout")
+        }
+    }
+} catch (e: AppwriteException) {
+    Log.e("Appwrite", "Error: ${e.message}")
+}
+```
+```client-apple
+let tablesDB = TablesDB(client)
+
+do {
+    // Create with type safety
+    let newBook = try await tablesDB.createRow(
+        databaseId: "<DATABASE_ID>",
+        tableId: "<TABLE_ID>",
+        rowId: ID.unique(),
+        data: [
+            "title": "The Great Gatsby",
+            "author": "F. Scott Fitzgerald",
+            "isAvailable": true
+        ],
+        nestedType: Book.self
+    )
+
+    // List with type safety
+    let books = try await tablesDB.listRows(
+        databaseId: "<DATABASE_ID>",
+        tableId: "<TABLE_ID>",
+        nestedType: Book.self
+    )
+
+    // Now you have full type safety
+    for book in books.rows {
+        print("Book: \(book.title) by \(book.author)")
+        if book.isAvailable {
+            print("Available for checkout")
+        }
+    }
+} catch {
+    print(error.localizedDescription)
+}
+```
+```client-web
+const tablesDB = new TablesDB(client);
+
+try {
+    // Create with generics
+    const newBook = await tablesDB.createRow<Book>({
+        databaseId: '<DATABASE_ID>',
+        tableId: '<TABLE_ID>',
+        rowId: ID.unique(),
+        data: {
+            title: "The Great Gatsby",
+            author: "F. Scott Fitzgerald",
+            isAvailable: true
+        }
+    });
+
+    // List with generics
+    const books = await tablesDB.listRows<Book>({
+        databaseId: '<DATABASE_ID>',
+        tableId: '<TABLE_ID>'
+    });
+
+    // TypeScript provides full type safety
+    books.rows.forEach(book => {
+        console.log(`Book: ${book.title} by ${book.author}`);
+        if (book.isAvailable) {
+            console.log("Available for checkout");
+        }
+    });
+} catch (error) {
+    console.log(error);
+}
+```
+{% /multicode %}
+
+## Model methods
+
+Models returned by native SDKs include helpful utility methods:
+
+{% tabs %}
+{% tabsitem #kotlin-methods title="Kotlin/Java" %}
+```kotlin
+val book = books.rows.first()
+
+// Convert model to Map for debugging or manual manipulation
+val bookMap = book.toMap()
+Log.d("Appwrite", "Book data: ${bookMap}")
+
+// Create model instance from Map data
+val bookData = mapOf(
+    "title" to "1984",
+    "author" to "George Orwell",
+    "isAvailable" to false
+)
+val newBook = Book.from(bookData, Book::class.java)
+
+// JSON serialization using Gson (used internally by SDK)
+import com.google.gson.Gson
+val gson = Gson()
+val jsonString = gson.toJson(book)
+val bookFromJson = gson.fromJson(jsonString, Book::class.java)
+```
+{% /tabsitem %}
+
+{% tabsitem #swift-methods title="Swift" %}
+```swift
+let book = books.rows.first!
+
+// Convert model to dictionary for debugging
+let bookMap = book.toMap()
+print("Book data: \(bookMap)")
+
+// Create model instance from dictionary
+let bookData: [String: Any] = [
+    "title": "1984",
+    "author": "George Orwell",
+    "isAvailable": false
+]
+let newBook = Book.from(map: bookData)
+
+// JSON encoding using Swift's Codable
+let jsonData = try JSONEncoder().encode(book)
+let jsonString = String(data: jsonData, encoding: .utf8)
+
+// JSON decoding
+if let jsonString = jsonString,
+   let data = jsonString.data(using: .utf8) {
+    let bookFromJson = try JSONDecoder().decode(Book.self, from: data)
+}
+```
+{% /tabsitem %}
+{% /tabs %}
+
+{% info title="Generate types automatically" %}
+You can automatically generate model definitions for your tables using the [Appwrite CLI](/docs/products/databases/type-generation). Run `appwrite types collection` to generate types based on your database schema.
+{% /info %}
+
+# Permissions {% #permissions %}
+In Appwrite, permissions can be granted at the table level and the row level.
+Before a user can create a row, you need to grant create permissions to the user.
+
+Read, update, and delete permissions can be granted at both the table and row level.
+Users only need to be granted access at either the table or row level to access rows.
+
+[Learn about configuring permissions](/docs/products/databases/permissions).
+
+# Use transactions {% #use-transactions %}
+
+All row operations support `transactionId`. When provided, operations are staged to an internal log and not applied until the transaction is committed. Learn more in the [Transactions guide](/docs/products/databases/transactions).
+
+{% multicode %}
+```client-web
+// Create row inside a transaction
+await tablesDB.createRow({
+    databaseId: '<DATABASE_ID>',
+    tableId: '<TABLE_ID>',
+    rowId: '<ROW_ID>',
+    data: { title: 'Draft' },
+    transactionId: '<TRANSACTION_ID>'
+});
+
+// Update row inside a transaction
+await tablesDB.updateRow({
+    databaseId: '<DATABASE_ID>',
+    tableId: '<TABLE_ID>',
+    rowId: '<ROW_ID>',
+    data: { title: 'Published' },
+    transactionId: '<TRANSACTION_ID>'
+});
+```
+```client-flutter
+// Create row inside a transaction
+await tablesDB.createRow(
+    databaseId: '<DATABASE_ID>',
+    tableId: '<TABLE_ID>',
+    rowId: '<ROW_ID>',
+    data: { 'title': 'Draft' },
+    transactionId: '<TRANSACTION_ID>'
+);
+
+// Update row inside a transaction
+await tablesDB.updateRow(
+    databaseId: '<DATABASE_ID>',
+    tableId: '<TABLE_ID>',
+    rowId: '<ROW_ID>',
+    data: { 'title': 'Published' },
+    transactionId: '<TRANSACTION_ID>'
+);
+```
+```client-apple
+// Create row inside a transaction
+let _ = try await tablesDB.createRow(
+    databaseId: "<DATABASE_ID>",
+    tableId: "<TABLE_ID>",
+    rowId: "<ROW_ID>",
+    data: ["title": "Draft"],
+    transactionId: "<TRANSACTION_ID>"
+)
+
+// Update row inside a transaction
+let _2 = try await tablesDB.updateRow(
+    databaseId: "<DATABASE_ID>",
+    tableId: "<TABLE_ID>",
+    rowId: "<ROW_ID>",
+    data: ["title": "Published"],
+    transactionId: "<TRANSACTION_ID>"
+)
+```
+```client-android-kotlin
+// Create row inside a transaction
+val _ = tablesDB.createRow(
+    databaseId = "<DATABASE_ID>",
+    tableId = "<TABLE_ID>",
+    rowId = "<ROW_ID>",
+    data = mapOf("title" to "Draft"),
+    transactionId = "<TRANSACTION_ID>"
+)
+
+// Update row inside a transaction
+val _2 = tablesDB.updateRow(
+    databaseId = "<DATABASE_ID>",
+    tableId = "<TABLE_ID>",
+    rowId = "<ROW_ID>",
+    data = mapOf("title" to "Published"),
+    transactionId = "<TRANSACTION_ID>"
+)
+```
+```client-android-java
+// Create row inside a transaction (asynchronous)
+Map<String, Object> data = new HashMap<>();
+data.put("title", "Draft");
+
+tablesDB.createRow(
+    "<DATABASE_ID>",
+    "<TABLE_ID>",
+    "<ROW_ID>",
+    data,
+    "<TRANSACTION_ID>",
+    new CoroutineCallback<>((result, error) -> {
+        if (error != null) {
+            error.printStackTrace();
+            return null;
+        }
+        System.out.println(result);
+        return null;
+    })
+);
+
+// Update row inside a transaction (asynchronous)
+Map<String, Object> update = new HashMap<>();
+update.put("title", "Published");
+
+tablesDB.updateRow(
+    "<DATABASE_ID>",
+    "<TABLE_ID>",
+    "<ROW_ID>",
+    update,
+    "<TRANSACTION_ID>",
+    new CoroutineCallback<>((result, error) -> {
+        if (error != null) {
+            error.printStackTrace();
+            return null;
+        }
+        System.out.println(result);
+        return null;
+    })
+);
+```
+```client-react-native
+// Create row inside a transaction
+await tablesDB.createRow({
+    databaseId: '<DATABASE_ID>',
+    tableId: '<TABLE_ID>',
+    rowId: '<ROW_ID>',
+    data: { title: 'Draft' },
+    transactionId: '<TRANSACTION_ID>'
+});
+
+// Update row inside a transaction
+await tablesDB.updateRow({
+    databaseId: '<DATABASE_ID>',
+    tableId: '<TABLE_ID>',
+    rowId: '<ROW_ID>',
+    data: { title: 'Published' },
+    transactionId: '<TRANSACTION_ID>'
+});
+```
+```server-nodejs
+// Delete row inside a transaction
+await tablesDB.deleteRow({
+    databaseId: '<DATABASE_ID>',
+    tableId: '<TABLE_ID>',
+    rowId: '<ROW_ID>',
+    transactionId: '<TRANSACTION_ID>'
+});
+```
+```server-deno
+// Delete row inside a transaction
+await tablesDB.deleteRow({
+    databaseId: '<DATABASE_ID>',
+    tableId: '<TABLE_ID>',
+    rowId: '<ROW_ID>',
+    transactionId: '<TRANSACTION_ID>'
+});
+```
+```server-python
+# Delete row inside a transaction
+tablesDB.delete_row(
+    database_id = '<DATABASE_ID>',
+    table_id = '<TABLE_ID>',
+    row_id = '<ROW_ID>',
+    transaction_id = '<TRANSACTION_ID>'
+)
+```
+```server-php
+// Delete row inside a transaction
+$tablesDB->deleteRow(
+    databaseId: '<DATABASE_ID>',
+    tableId: '<TABLE_ID>',
+    rowId: '<ROW_ID>',
+    transactionId: '<TRANSACTION_ID>'
+);
+```
+```server-ruby
+# Delete row inside a transaction
+tablesDB.delete_row(
+    database_id: '<DATABASE_ID>',
+    table_id: '<TABLE_ID>',
+    row_id: '<ROW_ID>',
+    transaction_id: '<TRANSACTION_ID>'
+)
+```
+```server-dotnet
+// Delete row inside a transaction
+await tablesDB.DeleteRow(
+    databaseId: "<DATABASE_ID>",
+    tableId: "<TABLE_ID>",
+    rowId: "<ROW_ID>",
+    transactionId: "<TRANSACTION_ID>"
+);
+```
+```server-dart
+// Delete row inside a transaction
+await tablesDB.deleteRow(
+    databaseId: '<DATABASE_ID>',
+    tableId: '<TABLE_ID>',
+    rowId: '<ROW_ID>',
+    transactionId: '<TRANSACTION_ID>'
+);
+```
+```server-swift
+// Delete row inside a transaction
+let _ = try await tablesDB.deleteRow(
+    databaseId: "<DATABASE_ID>",
+    tableId: "<TABLE_ID>",
+    rowId: "<ROW_ID>",
+    transactionId: "<TRANSACTION_ID>"
+)
+```
+```server-kotlin
+// Delete row inside a transaction
+val _ = tablesDB.deleteRow(
+    databaseId = "<DATABASE_ID>",
+    tableId = "<TABLE_ID>",
+    rowId = "<ROW_ID>",
+    transactionId = "<TRANSACTION_ID>"
+)
+```
+```server-java
+// Delete row inside a transaction (asynchronous)
+tablesDB.deleteRow(
+    "<DATABASE_ID>",
+    "<TABLE_ID>",
+    "<ROW_ID>",
+    "<TRANSACTION_ID>",
+    new CoroutineCallback<>((result, error) -> {
+        if (error != null) {
+            error.printStackTrace();
+            return null;
+        }
+        System.out.println(result);
+        return null;
+    })
+);
+```
+{% /multicode %}

@@ -22,7 +22,7 @@ Both allow passwordless login flows with different advantages.
 
 Email OTP authentication is done using a two-step authentication process. The authentication request is initiated from the client application and an email message is sent to the user's email inbox. The email will contain a 6-digit number the user can use to log in.
 
-Send an an email to initiate the authentication process. A **new account** will be created for this email if it has never been used before.
+Send an email to initiate the authentication process. If the email address has never been used, a **new account is created** using the provided `userId`. Otherwise, if the email address is already attached to an account, the **user ID is ignored**. Then, the user will receive an email with the one-time password.
 
 {% multicode %}
 
@@ -35,10 +35,10 @@ const client = new Client()
 
 const account = new Account(client);
 
-const sessionToken = await account.createEmailToken(
-    ID.unique(),
-    'email@example.com'
-);
+const sessionToken = await account.createEmailToken({
+    userId: ID.unique(),
+    email: 'email@example.com'
+});
 
 const userId = sessionToken.userId;
 ```
@@ -122,10 +122,10 @@ const client = new Client()
 
 const account = new Account(client);
 
-const session = await account.createSession(
-    userId,
-    '[SECRET]'
-);
+const session = await account.createSession({
+    userId: userId,
+    secret: '<SECRET>'
+});
 ```
 
 ```client-flutter
@@ -139,7 +139,7 @@ final account = Account(client);
 
 final session = await account.createSession(
     userId: userId,
-    secret: '[SECRET]'
+    secret: '<SECRET>'
 );
 ```
 ```client-apple
@@ -153,7 +153,7 @@ let account = Account(client);
 
 let session = try await account.createSession(
     userId: userId,
-    secret: "[SECRET]"
+    secret: "<SECRET>"
 );
 ```
 ```client-android-kotlin
@@ -169,13 +169,13 @@ val account = Account(client);
 
 val session = account.createSession(
     userId = userId,
-    secret = "[SECRET]"
+    secret = "<SECRET>"
 );
 ```
 
 ```graphql
 mutation {
-    accountcreateSession(userId: "<USER_ID>", secret: "[SECRET]") {
+    accountcreateSession(userId: "<USER_ID>", secret: "<SECRET>") {
         _id
         userId
         provider
@@ -204,11 +204,11 @@ const client = new Client()
 
 const account = new Account(client);
 
-const promise = account.createEmailToken(
-        ID.unique(),
-        'email@example.com',
-        true
-    );
+const promise = account.createEmailToken({
+        userId: ID.unique(),
+        email: 'email@example.com',
+        phrase: true
+    });
 
 promise.then(function (response) {
     console.log(response); // Success

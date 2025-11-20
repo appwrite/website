@@ -2,17 +2,17 @@
     import { Button } from '$lib/components/ui';
     import { Platform } from '$lib/utils/references';
     import MultiCodeContextless from '$routes/products/messaging/(components)/MultiCodeContextless.svelte';
-    import SnippetNodejs from './(snippets)/nodejs.txt';
-    import SnippetPhp from './(snippets)/php.txt';
-    import SnippetPython from './(snippets)/python.txt';
-    import SnippetRuby from './(snippets)/ruby.txt';
-    import SnippetDeno from './(snippets)/deno.txt';
-    import SnippetGo from './(snippets)/go.txt';
-    import SnippetDart from './(snippets)/dart.txt';
-    import SnippetKotlin from './(snippets)/kotlin.txt';
-    import SnippetJava from './(snippets)/java.txt';
-    import SnippetSwift from './(snippets)/swift.txt';
-    import SnippetCsharp from './(snippets)/csharp.txt';
+    import SnippetNodejs from './(snippets)/nodejs.txt?raw';
+    import SnippetPhp from './(snippets)/php.txt?raw';
+    import SnippetPython from './(snippets)/python.txt?raw';
+    import SnippetRuby from './(snippets)/ruby.txt?raw';
+    import SnippetDeno from './(snippets)/deno.txt?raw';
+    import SnippetGo from './(snippets)/go.txt?raw';
+    import SnippetDart from './(snippets)/dart.txt?raw';
+    import SnippetKotlin from './(snippets)/kotlin.txt?raw';
+    import SnippetJava from './(snippets)/java.txt?raw';
+    import SnippetSwift from './(snippets)/swift.txt?raw';
+    import SnippetCsharp from './(snippets)/csharp.txt?raw';
 
     const codeTopic = [
         {
@@ -66,12 +66,12 @@
 </script>
 
 <section class="pt-12 pb-40 md:pt-32">
-    <div class="container flex flex-col items-center justify-between md:flex-row md:gap-6">
-        <div class="mb-10 flex w-full flex-col md:max-w-lg">
+    <div class="container grid grid-cols-1 items-center md:grid-cols-2 md:gap-6">
+        <div class="mb-10 flex w-full flex-col md:max-w-sm">
             <h2 class="text-title text-primary font-aeonik-pro my-4">
-                Run in your preferred<br /> languages
+                Run in your preferred languages
             </h2>
-            <p class="text-body text-secondary font-medium">
+            <p class="text-main-body text-secondary font-medium">
                 Appwrite Functions support a variety of<br /> languages, ensuring flexibility and<br
                 /> compatibility in your projects.
             </p>
@@ -84,7 +84,7 @@
         </div>
 
         <div>
-            <MultiCodeContextless data={codeTopic} selected={Platform.ServerNodeJs} height={450} />
+            <MultiCodeContextless data={codeTopic} selected={Platform.ServerNodeJs} height={375} />
         </div>
     </div>
 </section>

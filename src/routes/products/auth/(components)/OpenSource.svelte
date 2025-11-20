@@ -59,7 +59,7 @@
                     ></div>
                 </div>
             </h2>
-            <p class="md:text-description text-body text-secondary font-medium">
+            <p class="md:text-description text-main-body text-secondary font-medium">
                 Appwrite is a 100% open source project, giving you the flexibility and support you
                 need to get your project started.
             </p>

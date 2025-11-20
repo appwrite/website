@@ -487,7 +487,7 @@ export const pins = {
             lat: 1.35,
             lng: 103.82,
             city: 'Singapore',
-            code: 'SIN',
+            code: 'SGP',
             available: true
         },
         {
@@ -580,15 +580,15 @@ export const pins = {
             lat: 1.35,
             lng: 103.82,
             city: 'Singapore',
-            code: 'SIN',
-            date: 'Q4 2025'
+            code: 'SGP',
+            available: true
         },
         {
             lat: 37.77,
             lng: -122.42,
             city: 'San Francisco',
             code: 'SFO',
-            date: 'Q4 2025'
+            available: true
         },
         {
             lat: 12.97,
@@ -616,7 +616,7 @@ export const pins = {
             lng: -79.38,
             city: 'Toronto',
             code: 'TOR',
-            date: 'Planned'
+            available: true
         }
     ],
     regions: [
@@ -645,15 +645,15 @@ export const pins = {
             lat: 1.35,
             lng: 103.82,
             city: 'Singapore',
-            code: 'SIN',
-            date: 'Q4 2025'
+            code: 'SGP',
+            available: true
         },
         {
             lat: 37.77,
             lng: -122.42,
             city: 'San Francisco',
             code: 'SFO',
-            date: 'Q4 2025'
+            available: true
         },
         {
             lat: 12.97,
@@ -681,7 +681,7 @@ export const pins = {
             lng: -79.38,
             city: 'Toronto',
             code: 'TOR',
-            date: 'Planned'
+            available: true
         }
     ]
 };

@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { classNames } from '$lib/utils/classnames';
+    import { cn } from '$lib/utils/cn';
     import { animate } from 'motion';
     import { type Snippet } from 'svelte';
 
@@ -41,7 +41,7 @@
     style:transform="translateY(10px)"
     style:opacity="0"
     style:filter="blur(5px)"
-    class={classNames('transition-opacity will-change-transform', className)}
+    class={cn('transition-opacity will-change-transform', className)}
 >
     {@render children()}
 </div>

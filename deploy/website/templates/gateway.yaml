@@ -1,0 +1,48 @@
+apiVersion: gateway.networking.k8s.io/v1beta1
+kind: Gateway
+metadata:
+    name: website
+spec:
+    gatewayClassName: traefik
+    listeners:
+        {{- $domains := required "domain must be set" .Values.domain }}
+        {{- range $idx, $hostname := $domains }}
+        - name: {{ printf "http-%d" $idx }}
+          port: 8000
+          protocol: HTTP
+          hostname: {{ $hostname | quote }}
+          allowedRoutes:
+              namespaces:
+                  from: Same
+        - name: {{ printf "https-%d" $idx }}
+          port: 8443
+          protocol: HTTPS
+          hostname: {{ $hostname | quote }}
+          allowedRoutes:
+              namespaces:
+                  from: Same
+          tls:
+              mode: Terminate
+              certificateRefs:
+                  - name: gateway
+                    namespace: traefik
+        {{- end }}
+
+---
+
+apiVersion: gateway.networking.k8s.io/v1beta1
+kind: HTTPRoute
+metadata:
+  name: website
+spec:
+  {{- $domains := required "domain must be set" .Values.domain }}
+  hostnames:
+    {{- range $domains }}
+    - {{ . | quote }}
+    {{- end }}
+  parentRefs:
+    - name: website
+  rules:
+    - backendRefs:
+        - name: website
+          port: 80

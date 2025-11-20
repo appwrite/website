@@ -1,13 +1,9 @@
-import type { Handle, RequestEvent } from '@sveltejs/kit';
+import * as Sentry from '@sentry/sveltekit';
+import type { Handle } from '@sveltejs/kit';
 import redirects from './redirects.json';
 import { sequence } from '@sveltejs/kit/hooks';
-import { BANNER_KEY } from '$lib/constants';
-import { dev } from '$app/environment';
 import { type GithubUser } from '$routes/(init)/init/(utils)/auth';
-import {
-    createInitServerClient,
-    createInitSessionClient
-} from '$routes/(init)/init/(utils)/appwrite';
+import { createInitSessionClient } from '$routes/(init)/init/(utils)/appwrite';
 import type { AppwriteUser } from '$lib/utils/console';
 
 const redirectMap = new Map(redirects.map(({ link, redirect }) => [link, redirect]));
@@ -23,7 +19,22 @@ const redirecter: Handle = async ({ event, resolve }) => {
         });
     }
 
-    return await resolve(event);
+    return resolve(event);
+};
+
+const wwwRedirecter: Handle = async ({ event, resolve }) => {
+    if (event.url.host.startsWith('www.')) {
+        const location = new URL(event.url);
+        location.host = location.host.replace(/^www\./, '');
+        return new Response(null, {
+            status: 308,
+            headers: {
+                location: location.href
+            }
+        });
+    }
+
+    return resolve(event);
 };
 
 const securityheaders: Handle = async ({ event, resolve }) => {
@@ -171,7 +182,7 @@ const initSession: Handle = async ({ event, resolve }) => {
         const appwriteUser = await session?.account
             .get()
             .then((res) => res)
-            .catch((e) => null);
+            .catch(() => null);
 
         return appwriteUser || null;
     };
@@ -184,9 +195,14 @@ const initSession: Handle = async ({ event, resolve }) => {
 
     event.locals.initUser = await getInitUser();
 
-    const response = await resolve(event);
-
-    return response;
+    return resolve(event);
 };
 
-export const handle = sequence(redirecter, securityheaders, initSession);
+export const handle = sequence(
+    Sentry.sentryHandle(),
+    redirecter,
+    wwwRedirecter,
+    securityheaders,
+    initSession
+);
+export const handleError = Sentry.handleErrorWithSentry();

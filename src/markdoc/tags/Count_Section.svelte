@@ -8,7 +8,7 @@
     const { children }: Props = $props();
 </script>
 
-<section class="count-secondary-title">
+<section class="count-secondary-title my-8">
     {@render children()}
 </section>
 

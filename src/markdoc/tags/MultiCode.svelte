@@ -103,7 +103,7 @@
     }
 </script>
 
-<section class="dark web-code-snippet" aria-label="code-snippet panel">
+<section class="dark web-code-snippet not-prose my-8!" aria-label="code-snippet panel">
     <header class="web-code-snippet-header">
         <div class="web-code-snippet-header-start">
             <div class="flex gap-4">

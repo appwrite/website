@@ -19,8 +19,8 @@ Run the following bash command to create a `package.json` file. This file is use
 ```bash
 npm init -y
 ```
-Install the `undici` library. This library includes a `fetch` function that you can use to make HTTP requests. 
-    
+Install the `undici` library. This library includes a `fetch` function that you can use to make HTTP requests.
+
 ```bash
 npm install undici
 ```
@@ -239,14 +239,14 @@ Here's a simple voting system that allows users to vote on various topics. Appwr
 
 ## Prerequisites
 
-Create a Topics collection with the following attributes:
+Create a Topics table with the following columns:
 
 | Name          | Type   | Description                      |
 |---------------|--------|----------------------------------|
 | `title`       | string | The name of the topic            |
 | `description` | string | Long form description of the topic|
 
-Create a Votes collection with the following attributes:
+Create a Votes table with the following columns:
 
 | Name          | Type   | Description                              |
 |---------------|--------|------------------------------------------|
@@ -258,7 +258,7 @@ Create a Votes collection with the following attributes:
 ## Code
 {% multicode %}
 ```server-nodejs
-import { Client, Databases, Query } from 'node-appwrite';
+import { Client, TablesDB, Query, ID } from 'node-appwrite';
 
 export default async function ({ req, res }) {
   const vote = {
@@ -277,21 +277,30 @@ export default async function ({ req, res }) {
     .setProject(process.env.APPWRITE_FUNCTION_PROJECT_ID)
     .setKey(req.headers['x-appwrite-key']);
 
-  const database = new Database(client);
-  
-  const existingVotes = await database.listDocuments('[VOTES_COLLECTION_ID]', [
-    Query.equals('userId', vote.userId),
-    Query.equals('topicId', vote.topicId)
-  ]);
+  const tablesDB = new TablesDB(client);
+
+  const existingVotes = await tablesDB.listRows({
+    databaseId: '<DATABASE_ID>',
+    tableId: '<VOTES_TABLE_ID>',
+    queries: [
+      Query.equals('userId', vote.userId),
+      Query.equals('topicId', vote.topicId)
+    ]
+  });
 
   if (existingVotes.total > 0) {
     return res.json({ ok: false, message: 'You have already voted on this topic.' }, 400);
   }
 
-  const voteDocument = await database.createDocument('[VOTES_COLLECTION_ID]', {
-    userId,
-    topicId,
-    vote,
+  const voteDocument = await tablesDB.createRow({
+    databaseId: '<DATABASE_ID>',
+    tableId: '<VOTES_TABLE_ID>',
+    rowId: ID.unique(),
+    data: {
+      userId: vote.userId,
+      topicId: vote.topicId,
+      vote: vote.vote,
+    }
   });
 
   return res.json({ ok: true, message: 'Vote cast.', vote: voteDocument });
@@ -299,7 +308,7 @@ export default async function ({ req, res }) {
 ```
 ```python
 from appwrite.client import Client
-from appwrite.services.databases import Databases
+from appwrite.services.tables_db import TablesDB
 from appwrite.query import Query
 import os
 
@@ -320,26 +329,26 @@ def main(context):
         .set_key(context.req.headers['x-appwrite-key'])
     )
 
-    database = Databases(client)
-    
-    existing_votes = database.list_documents('[VOTES_COLLECTION_ID]', [
+    tablesDB = TablesDB(client)
+
+    existing_votes = tablesDB.list_rows('<VOTES_TABLE_ID>', [
         Query.equals('userId', vote['userId']),
         Query.equals('topicId', vote['topicId'])
     ])
 
     if existing_votes['total'] > 0:
         return context.res.json({
-          'ok': False, 
+          'ok': False,
           'message': 'You have already voted on this topic.'
         }, 400)
 
-    vote_document = database.create_document('[VOTES_COLLECTION_ID]', {
+    vote_row = database.create_row('<VOTES_TABLE_ID>', {
         'userId': vote['userId'],
         'topicId': vote['topicId'],
         'vote': vote['vote'],
     })
 
-    return context.res.json({'ok': True, 'message': 'Vote cast.', 'vote': vote_document})
+    return context.res.json({'ok': True, 'message': 'Vote cast.', 'vote': vote_row})
 ```
 ```php
 <?php
@@ -368,29 +377,29 @@ return function ($context) {
         ->setProject(getenv('APPWRITE_FUNCTION_PROJECT_ID'))
         ->setKey($context->req->headers['x-appwrite-key']);
 
-    $database = new Database($client);
+    $tablesDB = new TablesDB($client);
 
-    $existingVotes = $database->listDocuments('[VOTES_COLLECTION_ID]', [
+    $existingVotes = $database->listRows('<VOTES_TABLE_ID>', [
         Query->equal('userId', $vote['userId']),
         Query->equal('topicId', $vote['topicId'])
     ]);
 
     if ($existingVotes['total'] > 0) {
         return $context->res->json([
-          'ok' => false, 
+          'ok' => false,
           'message' => 'You have already voted on this topic.'
         ], 400);
     }
 
-    $voteDocument = $database->createDocument('[VOTES_COLLECTION_ID]', [
+    $voteDocument = $database->createRow('<VOTES_TABLE_ID>', [
         'userId' => $vote['userId'],
         'topicId' => $vote['topicId'],
         'vote' => $vote['vote'],
     ]);
 
     return $context->res->json([
-      'ok' => true, 
-      'message' => 'Vote cast.', 
+      'ok' => true,
+      'message' => 'Vote cast.',
       'vote' => $voteDocument
     ]);
 };
@@ -416,29 +425,29 @@ Future main(final context) async {
         .setProject(Platform.environment['APPWRITE_FUNCTION_PROJECT_ID'])
         .setKey(context.req.headers['x-appwrite-key']);
 
-    final database = Database(client);
+    final tablesDB = TablesDB(client);
 
-    final existingVotes = await database.listDocuments('[VOTES_COLLECTION_ID]', [
+    final existingVotes = await tablesDB.listRows('<VOTES_TABLE_ID>', [
         Query.equals('userId', vote['userId']),
         Query.equals('topicId', vote['topicId'])
     ]);
 
     if (existingVotes['total'] > 0) {
         return context.res.json({
-          'ok': false, 
+          'ok': false,
           'message': 'You have already voted on this topic.'
         }, 400);
     }
 
-    final voteDocument = await database.createDocument('[VOTES_COLLECTION_ID]', {
+    final voteDocument = await database.createRow('<VOTES_TABLE_ID>', {
         'userId': vote['userId'],
         'topicId': vote['topicId'],
         'vote': vote['vote'],
     });
 
     return context.res.json({
-      'ok': true, 
-      'message': 'Vote cast.', 
+      'ok': true,
+      'message': 'Vote cast.',
       'vote': voteDocument
     });
 }
@@ -463,45 +472,45 @@ def main(context)
         .set_project(ENV['APPWRITE_FUNCTION_PROJECT_ID'])
         .set_key(context.req.headers['x-appwrite-key'])
 
-    database = Appwrite::Database.new(client)
-    
-    existing_votes = database.list_documents('[VOTES_COLLECTION_ID]', [
-        Appwrite::Query.new('userId', '=', vote['userId']),
-        Appwrite::Query.new('topicId', '=', vote['topicId'])
+    tablesDB = Appwrite::TablesDB.new(client)
+
+    existing_votes = tablesDB.list_rows('<DATABASE_ID>', '<VOTES_TABLE_ID>', [
+        Appwrite::Query.equal('userId', vote['userId']),
+        Appwrite::Query.equal('topicId', vote['topicId'])
     ])
 
     if existing_votes['total'] > 0
         return context.res.json({
-          'ok': false, 
+          'ok': false,
           'message': 'You have already voted on this topic.'
         }, 400)
     end
 
-    vote_document = database.create_document('[VOTES_COLLECTION_ID]', {
+    vote_row = database.create_row('<VOTES_TABLE_ID>', {
         'userId': vote['userId'],
         'topicId': vote['topicId'],
         'vote': vote['vote'],
     })
 
     return context.res.json({
-      'ok': true, 
-      'message': 'Vote cast.', 
-      'vote': vote_document
+      'ok': true,
+      'message': 'Vote cast.',
+      'vote': vote_row
     })
 end
 ```
 {% /multicode %}
-Use the function by navigating to the function URL in the browser. 
-The URL should contain the required parameters. 
+Use the function by navigating to the function URL in the browser.
+The URL should contain the required parameters.
 For example, `<YOUR_FUNCTION_URL>/?userId=<USER_ID>&topicId=<TOPIC_ID>&vote=yes` to cast a vote.
 {% /section %}
 
 {% section #form-submission step=3 title="HTML contact form" %}
-Here's a simple form page that handles form submissions, and can be used to store a user's message in a collection. 
+Here's a simple form page that handles form submissions, and can be used to store a user's message in a table.
 The form is submitted to the function using the `POST` method and the form data is sent as a URL-encoded string in the request body.
 
 ## Prerequisites
-Create a Messages collection with the following attributes:
+Create a Messages table with the following columns:
 
 | Name       | Type   | Description                      |
 |------------|--------|----------------------------------|
@@ -509,12 +518,12 @@ Create a Messages collection with the following attributes:
 | `email`    | string | The email of the message author  |
 | `content`  | string | The content of the message       |
 
-## Code 
+## Code
 
 {% multicode %}
 
 ```server-nodejs
-import { Client, Databases, Query, ID } from 'node-appwrite';
+import { Client, TablesDB, Query, ID } from 'node-appwrite';
 import querystring from 'node:querystring';
 
 const html = `<!doctype html>
@@ -552,8 +561,13 @@ export default async function ({ req, res }) {
       .setProject(process.env.APPWRITE_FUNCTION_PROJECT_ID)
       .setKey(req.headers['x-appwrite-key']);
 
-    const databases = new Databases(client);
-    const document = await databases.createDocument('<DATABASE_ID>', '[MESSAGES_COLLECTION_ID]', ID.unique(), message);
+    const tablesDB = new TablesDB(client);
+    const row = await tablesDB.createRow({
+        databaseId: '<DATABASE_ID>',
+        tableId: '<MESSAGES_TABLE_ID>',
+        rowId: ID.unique(),
+        data: message
+    });
 
     return res.text("Message sent");
   }
@@ -564,7 +578,7 @@ export default async function ({ req, res }) {
 
 ```python
 from appwrite.client import Client
-from appwrite.services.databases import Databases
+from appwrite.services.tables_db import TablesDB
 from appwrite.query import Query
 from urllib.parse import parse_qs
 import os
@@ -606,8 +620,8 @@ def main(context):
             .set_key(context.req.headers["x-appwrite-key"])
         )
 
-        databases = Databases(client)
-        document = databases.create_document('<DATABASE_ID>', '[MESSAGES_COLLECTION_ID]', ID.unique(), message)
+        tablesDB = TablesDB(client)
+        row = tablesDB.create_row('<DATABASE_ID>', '<MESSAGES_TABLE_ID>', ID.unique(), message)
 
         return context.res.text("Message sent")
 
@@ -621,7 +635,7 @@ require(__DIR__ . '/../vendor/autoload.php');
 
 use Appwrite\Client;
 use Appwrite\Exception;
-use Appwrite\Services\Databases;
+use Appwrite\Services\TablesDB;
 
 $html = '<!doctype html>
 <html lang="en">
@@ -648,7 +662,7 @@ return function ($context) {
 
   if ($context->req->method === 'POST' && $context->req->headers['content-type'] === 'application/x-www-form-urlencoded') {
     \parse_str($context->req->body, $formData);
-    
+
     $message = [
       'name' => $formData['name'],
       'email' => $formData['email'],
@@ -660,8 +674,8 @@ return function ($context) {
          ->setProject(getenv('APPWRITE_FUNCTION_PROJECT_ID'))
          ->setKey($context->req->headers['x-appwrite-key']);
 
-    $databases = new Databases($client);
-    $document = $databases->createDocument('<DATABASE_ID>', '[MESSAGES_COLLECTION_ID]', ID::unique(), $message);
+    $tablesDB = new TablesDB($client);
+    $row = $tablesDB->createRow('<DATABASE_ID>', '<MESSAGES_TABLE_ID>', ID::unique(), $message);
 
     return $context->res->text("Message sent");
   }
@@ -709,8 +723,8 @@ def main(context)
             .set_project(ENV['APPWRITE_FUNCTION_PROJECT_ID'])
             .set_key(context.req.headers['x-appwrite-key'])
 
-        databases = Appwrite::Database.new(client)
-        document = databases.create_document('<DATABASE_ID>', '[MESSAGES_COLLECTION_ID]', ID.unique(), message)
+        tablesDB = Appwrite::TablesDB.new(client)
+        row = tablesDB.create_row('<DATABASE_ID>', '<MESSAGES_TABLE_ID>', ID.unique(), message)
 
         return context.res.text("Message sent")
     end
@@ -759,8 +773,8 @@ Future main(final context) async {
           .setProject(Platform.environment['APPWRITE_FUNCTION_PROJECT_ID'])
           .setKey(context.req.headers['x-appwrite-key']);
 
-        final databases = Database(client);
-        final document = await databases.createDocument('<DATABASE_ID>', '[MESSAGES_COLLECTION_ID]', ID.unique(), message);
+        final tablesDB = TablesDB(client);
+        final row = await tablesDB.createRow('<DATABASE_ID>', '<MESSAGES_TABLE_ID>', ID.unique(), message);
 
         return context.res.text("Message sent");
     }
@@ -771,5 +785,5 @@ Future main(final context) async {
 
 {% /multicode %}
 
-Use the function by navigating to the function URL in the browser. Submit the form to store the message in the collection.
+Use the function by navigating to the function URL in the browser. Submit the form to store the message in the table.
 {% /section %}

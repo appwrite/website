@@ -11,6 +11,7 @@
     import Scale from '$routes/(marketing)/(components)/scale.svelte';
     import { Button } from '$lib/components/ui';
     import { trackEvent } from '$lib/actions/analytics';
+    import Features from '$routes/(marketing)/(components)/features.svelte';
 
     let email = '';
     let firstName = '';
@@ -117,10 +118,10 @@
                                         </h1>
                                         <p class="text-description">
                                             Enterprise businesses partner with Appwrite to empower
-                                            their developers with an all-in-one backend platform, so
-                                            they can focus on innovation, not reinventing the wheel.
-                                            Reduce complexity, accelerate development, and launch
-                                            faster.
+                                            their developers with an all-in-one development
+                                            platform, so they can focus on innovation, not
+                                            reinventing the wheel. Reduce complexity, accelerate
+                                            development, and launch faster.
                                             <br />
                                             <br />
                                             Ready to talk? Fill out the form, and one of our experts
@@ -220,12 +221,15 @@
                                                 >
                                                 <input
                                                     required
-                                                    pattern="^(https:\/\/www\.|https:\/\/)?([a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)+)[a-zA-Z0-9\-\._~:\/\?#[\]@!\$&'\(\)\*\+,;=.]*$"
+                                                    pattern="^(https?:\/\/)?[\w\-]+(\.[\w\-]+)+(\/.*)?$"
                                                     class="web-input-text w-full"
                                                     type="text"
-                                                    placeholder="https://appwrite.io"
+                                                    placeholder="appwrite.io or https://appwrite.io"
                                                     id="companyWebsite"
                                                     bind:value={companyWebsite}
+                                                    title="Enter a valid URL like example.com, example.org, or https://site.co.uk"
+                                                    minlength="4"
+                                                    maxlength="200"
                                                 />
                                             </li>
                                             <li
@@ -269,12 +273,20 @@
                     </div>
                 </div>
             </div>
-            <Scale theme="dark">
-                Appwrite has supported our recent growth in every step of the way, <span
-                    class="text-primary">without any failures or outages</span
-                >.
+            <Scale
+                testimonial={{
+                    name: 'Ryan O’Connor',
+                    title: 'Founder',
+                    company: 'K-Collect',
+                    image: '/images/testimonials/ryan-oconner-testimonial.png'
+                }}
+                theme="dark"
+            >
+                The switch to using Appwrite brought
+                <span class="text-primary">infinite value that I'm still discovering today.</span>
             </Scale>
             <LogoList />
+            <Features theme="dark" class="-mt-24" />
             <div class="container">
                 <FooterNav />
                 <MainFooter />

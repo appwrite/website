@@ -34,7 +34,7 @@ To begin migrating to self-hosted, make sure to read the [migration overview](/d
 
 1. Once redirected to your self-hosted project, you'll be prompted to select an organization and a project. You can migrate to an existing project or create a new one.
 
-1. Select the data you wish to migrate. You can choose among accounts, databases, documents, files, and functions.
+1. Select the data you wish to migrate. You can choose among accounts, databases, rows, files, and functions.
 
 1. Click **Start Migration** to start the migration process. You do not need to keep the Appwrite Console open through the process.
 

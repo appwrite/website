@@ -92,9 +92,16 @@
         {
             lat: 1.3521,
             lng: 103.8198,
-            city: 'Signapore',
+            city: 'Singapore',
             code: 'SGP',
-            available: false
+            available: true
+        },
+        {
+            lat: 43.6532,
+            lng: -79.3832,
+            city: 'Toronto',
+            code: 'TOR',
+            available: true
         }
     ]);
 
@@ -162,13 +169,13 @@
                     <div
                         class="text-caption flex h-5 items-center justify-center place-self-start rounded-[6px] bg-[#10B981]/16 p-1 text-center text-[#0A714F]"
                     >
-                        <span class="text-micro -tracking-tight">Available now</span>
+                        <span class="text-eyebrow -tracking-tight">Available now</span>
                     </div>
                 {:else}
                     <div
                         class="text-caption flex h-5 items-center justify-center place-self-start rounded-[6px] bg-black/6 p-1 text-center text-[#56565C]"
                     >
-                        <span class="text-micro -tracking-tight">Planned</span>
+                        <span class="text-eyebrow -tracking-tight">Planned</span>
                     </div>
                 {/if}
             </div>
@@ -186,13 +193,13 @@
                         <div
                             class="text-caption flex h-5 items-center justify-center place-self-start rounded-[6px] bg-[#10B981]/16 p-1 text-center text-[#0A714F]"
                         >
-                            <span class="text-micro -tracking-tight">Available now</span>
+                            <span class="text-eyebrow -tracking-tight">Available now</span>
                         </div>
                     {:else}
                         <div
                             class="text-caption flex h-5 items-center justify-center place-self-start rounded-[6px] bg-black/6 p-1 text-center text-[#56565C]"
                         >
-                            <span class="text-micro -tracking-tight">{pin.release}</span>
+                            <span class="text-eyebrow -tracking-tight">{pin.release}</span>
                         </div>
                     {/if}
                 </div>
