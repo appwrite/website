@@ -42,7 +42,7 @@ const jsonString = JSON.stringify(largeObject);
 
 ## WebAssembly and JIT pipeline optimizations
 
-V8 14.1 also brings ongoing improvements to WebAssembly support and the Just-In-Time (JIT) compilation pipeline. These changes might not be immediately visible in your day-to-day code, but they contribute to better overall runtime performance, particularly for compute-intensive operations.
+V8 14.1 also brings ongoing improvements to WebAssembly support and the Just-In-Time (JIT) compilation pipeline. These changes might not be immediately visible in your day-to-day code, but they contribute to better overall runtime performance.
 
 # Native Web Storage API support {% #native-web-storage-api-support %}
 
@@ -127,7 +127,7 @@ console.log(hex); // Output: 48656c6c6f
 
 ## Practical use cases
 
-This is particularly useful when working with:
+This is useful when working with:
 
 - **File uploads:** Encoding binary data for transmission
 - **Cryptographic operations:** Converting hash outputs to readable formats
@@ -146,7 +146,7 @@ JSPI allows synchronous WebAssembly code to interact with asynchronous JavaScrip
 
 Before JSPI, if you wanted to call an async JavaScript function from WebAssembly, you had to use complex workarounds involving callbacks or state machines. JSPI simplifies this by letting WebAssembly suspend and resume execution while waiting for async operations.
 
-This is particularly valuable for:
+This is valuable for:
 
 - **High-performance computing:** Running CPU-intensive operations in WebAssembly while interacting with async I/O
 - **Game engines:** Integrating WebAssembly-based game logic with async network calls
