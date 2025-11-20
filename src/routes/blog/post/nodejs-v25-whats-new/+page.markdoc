@@ -295,11 +295,7 @@ The next LTS release is expected in October 2026 with Node.js v26, which will in
 
 Node.js v25.2.1 represents a meaningful step forward for the runtime, though it also demonstrates the value of iterative development. The combination of performance improvements, security features, and web standards alignment shows that Node.js continues to evolve in response to developer needs.
 
-The localStorage revert in v25.2.1 is a good example of how the Node.js project balances innovation with ecosystem stability. When a change proves too disruptive, even if it's technically correct, the team is willing to pull back and give developers more time to adapt.
-
 While v25 isn't an LTS release, it gives us a preview of what's coming and an opportunity to provide feedback before these features stabilize. Whether you're working with high-performance JSON operations, building cross-platform applications that benefit from Web Storage, or experimenting with WebAssembly, there's something here worth exploring.
-
-Just remember: if you're using Node.js v25 in production, be prepared for changes. The next LTS release, Node.js v26 (expected October 2026), will bring many of these features with long-term stability guarantees.
 
 If you're interested in learning more about modern JavaScript runtimes, you might enjoy reading about [Deno vs Bun](https://appwrite.io/blog/post/deno-vs-bun-javascript-runtime) or exploring [how Deno 2.0 works with Appwrite Functions](https://appwrite.io/blog/post/deno-2-appwrite-functions).
 
