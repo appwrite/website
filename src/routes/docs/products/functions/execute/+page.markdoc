@@ -13,7 +13,7 @@ Here are all the different ways to consume your Appwrite Functions.
 
 # Execution modes {% #execution-modes %}
 
-Appwrite Functions support two execution modes: **synchronous** and **asynchronous**. Understanding the difference between these modes is important for building efficient applications.
+Appwrite Functions support two execution modes: **synchronous** and **asynchronous**.
 
 ## Synchronous executions {% #synchronous-executions %}
 
