@@ -248,7 +248,7 @@ The `SlowBuffer` object has been completely removed due to security vulnerabilit
 
 ```javascript
 // Old (removed in v25)
-// const buf = new SlowBuffer(10);
+const buf = new SlowBuffer(10);
 
 // New
 const buf = Buffer.allocUnsafeSlow(10);
@@ -264,7 +264,7 @@ Filesystem permission constants (`fs.F_OK`, `fs.R_OK`, `fs.W_OK`, `fs.X_OK`) hav
 
 ```javascript
 // Old (removed in v25)
-// fs.access(path, fs.R_OK, callback);
+fs.access(path, fs.R_OK, callback);
 
 // New
 fs.access(path, fs.constants.R_OK, callback);
