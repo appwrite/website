@@ -70,7 +70,7 @@ curl -X POST https://64d4d22db370ae41a32e.appwrite.global \
 Notice how a `x-appwrite-user-jwt` header is passed in the request, you will use this to authenticate users.
 [Learn more about JWTs](/docs/products/auth/jwt).
 
-This unlocks ability for you to develop custom HTTP endpoints with Appwrite Functions.
+This unlocks the ability for you to develop custom HTTP endpoints with Appwrite Functions.
 It also allows accepting incoming webhooks for handling online payments, hosting social platform bots, and much more.
 
 # SDK {% #sdk %}
