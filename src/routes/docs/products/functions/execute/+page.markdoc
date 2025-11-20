@@ -475,7 +475,7 @@ let execution = try await functions.createExecution(
 
 # Console {% #console %}
 Another easy way to test a function is directly in the Appwrite Console.
-You test a function by hitting the **Execute now** button, which will display with modal below.
+You test a function by hitting the **Execute now** button, which will display a modal below.
 
 You'll be able to mock executions by configuring the path, method, headers, and body.
 
