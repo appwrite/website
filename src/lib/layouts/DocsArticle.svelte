@@ -26,6 +26,7 @@
     import TableOfContents from '$lib/components/blog/table-of-contents.svelte';
     import { Button, Icon } from '$lib/components/ui';
     import Info from '$markdoc/tags/Info.svelte';
+    import CopyAsMarkdown from '$lib/components/blog/copy-as-markdown.svelte';
 
     export let title: string;
     export let toc: Array<TocItem>;
@@ -40,7 +41,7 @@
 
 <main class="contents" id="main">
     <article class="web-article contents">
-        <header class="web-article-header flex flex-col">
+        <header class="web-article-header flex items-start justify-between">
             <div class="web-article-header-start web-u-cross-start flex flex-col">
                 {#if back}
                     <a
@@ -72,6 +73,9 @@
 
                     <h1 class="text-title font-aeonik-pro text-primary">{title}</h1>
                 </div>
+            </div>
+            <div class="web-article-header-end self-start md:self-auto">
+                <CopyAsMarkdown class="ml-0" />
             </div>
         </header>
         <div class="web-article-content prose" class:web-reduced-article-size={$reducedArticleSize}>
