@@ -25,7 +25,7 @@ Synchronous executions are created via:
 
 Synchronous executions:
 - Return response bodies and headers directly to the client
-- Have a **30-second timeout limit** to prevent long-running requests from blocking Appwrite workers
+- Have a **30-second timeout limit** to discourage slow API calls from apps causing poor user experience
 - Are ideal for real-time operations where you need immediate response data
 - Work best for lightweight operations that complete quickly
 
