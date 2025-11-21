@@ -110,6 +110,10 @@
                     label: 'Database operators',
                     href: '/docs/products/databases/db-operators',
                     new: isNewUntil('31 Dec 2025')
+                },
+                {
+                    label: 'Timestamp overrides',
+                    href: '/docs/products/databases/timestamp-overrides'
                 }
             ]
         },

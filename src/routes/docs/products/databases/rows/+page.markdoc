@@ -967,3 +967,26 @@ tablesDB.deleteRow(
 );
 ```
 {% /multicode %}
+
+# Next steps {% #next-steps %}
+
+Continue learning with these related guides:
+
+{% cards %}
+{% cards_item href="/docs/products/databases/queries" title="Queries" %}
+Learn how to filter, sort, and search your rows with various query operators.
+{% /cards_item %}
+
+{% cards_item href="/docs/products/databases/pagination" title="Pagination" %}
+Handle large datasets by implementing pagination in your row queries.
+{% /cards_item %}
+
+{% cards_item href="/docs/products/databases/bulk-operations" title="Bulk operations" %}
+Perform create, update, and delete operations on multiple rows simultaneously.
+{% /cards_item %}
+
+{% cards_item href="/docs/products/databases/timestamp-overrides" title="Timestamp overrides" %}
+Set custom creation and update timestamps when migrating data or backdating records.
+{% /cards_item %}
+{% /cards %}
+
