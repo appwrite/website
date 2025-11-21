@@ -1,7 +1,7 @@
 <script lang="ts">
     import { Button, type Variant } from '$lib/components/ui';
     import { getAppwriteDashboardUrl } from '$lib/utils/dashboard';
-    import { SHOW_SCALE_PLAN } from '$lib/constants/feature-flags';
+    import { SHOW_SCALE_PLAN, SHOW_STARTER_PLAN } from '$lib/constants/feature-flags';
 
     const plans: Array<{
         name: string;
@@ -24,10 +24,21 @@
             eventName: 'footer-plans-free-click'
         },
         {
+            name: 'Starter',
+            price: '$10',
+            variable: true,
+            description:
+                'Perfect for growing projects that need more resources than the free tier.',
+            buttonText: 'Start building',
+            buttonLink: getAppwriteDashboardUrl('/console?type=create&plan=starter'),
+            buttonVariant: 'secondary',
+            eventName: 'footer-plans-starter-click'
+        },
+        {
             name: 'Pro',
             price: '$25',
             variable: true,
-            tag: 'Most Popular',
+            tag: 'Best value',
             description:
                 'For production applications that need powerful functionality and resources to scale.',
             buttonText: 'Start building',
@@ -57,7 +68,11 @@
         }
     ];
 
-    const visiblePlans = SHOW_SCALE_PLAN ? plans : plans.filter((plan) => plan.name !== 'Scale');
+    const visiblePlans = plans.filter((plan) => {
+        if (plan.name === 'Scale' && !SHOW_SCALE_PLAN) return false;
+        if (plan.name === 'Starter' && !SHOW_STARTER_PLAN) return false;
+        return true;
+    });
 </script>
 
 <img
@@ -99,7 +114,7 @@
                             <div class="flex gap-3">
                                 <h4 class="title text-description">{plan.name}</h4>
                                 {#if plan.tag}<div class="web-inline-tag is-pink text-sub-body">
-                                        Most popular
+                                        Best value
                                     </div>{/if}
                             </div>
 

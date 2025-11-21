@@ -5,11 +5,12 @@
     import { Main } from '$lib/layouts';
     import { TITLE_SUFFIX } from '$routes/titles';
     import ComparePlans from './compare-plans.svelte';
+    import PricingCalculator from './pricing-calculator.svelte';
     import Faq from './faq.svelte';
     import BG from './bg.png?enhanced';
     import { getAppwriteDashboardUrl } from '$lib/utils/dashboard';
     import { Button, BadgeTransparent, Icon } from '$lib/components/ui';
-    import { SHOW_SCALE_PLAN } from '$lib/constants/feature-flags';
+    import { SHOW_SCALE_PLAN, SHOW_STARTER_PLAN } from '$lib/constants/feature-flags';
 
     const title = 'Pricing' + TITLE_SUFFIX;
     const description = 'Explore our straightforward pricing plans that scale with your project.';
@@ -47,8 +48,8 @@
 
 <Main>
     <div class="web-big-padding-section mt-2">
-        <div class="dark pt-8">
-            <div class="web-big-padding-section-level-2">
+        <div class="dark pt-16 pb-12">
+            <div class="web-big-padding-section-level-2" style="margin-block-start: 3rem; margin-block-end: 1rem;">
                 <section class="container">
                     <div class="web-hero">
                         <h1
@@ -56,25 +57,36 @@
                             style="background: linear-gradient(90deg, #F47298 0%, #E4E1E5 61.98%, #E4E4E7 100%);
                                 -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; padding-block-end:2px;"
                         >
-                            Pricing
+                            Pick a plan, start building
                         </h1>
                         <p
                             class="text-description max-w-sm self-center text-center opacity-90"
                             style="background: linear-gradient(90deg, #F47298 0%, #E4E1E5 61.98%, #E4E4E7 100%);
                                 -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; padding-block-end:2px;"
                         >
-                            Appwrite offers simple and transparent pricing plans with no surprises.
+                            Build with confidence. Scale without limits. Pay only for what you need.
                         </p>
+                        <div class="mt-4 flex justify-center">
+                            <div
+                                class="web-inline-tag tracking-none text-caption text-greyscale-900 dark:text-greyscale-100 rounded-[.25rem] bg-black/8 px-2 py-1 dark:bg-white/[0.12]"
+                            >
+                                Full refund available within 45 days, no questions asked.
+                            </div>
+                        </div>
                     </div>
                 </section>
             </div>
-            <div class="web-big-padding-section-level-2">
+            <div class="web-big-padding-section-level-2" style="margin-block-start: 4rem;">
                 <section class="container">
                     <div
                         class="web-pricing-cards"
-                        style:--columns-template={SHOW_SCALE_PLAN
-                            ? 'repeat(4, 1fr)'
-                            : 'repeat(3, 1fr)'}
+                        style:--columns-template={(() => {
+                            let count = 2; // Free + Enterprise
+                            if (SHOW_STARTER_PLAN) count++;
+                            if (SHOW_SCALE_PLAN) count++;
+                            count++; // Pro is always shown
+                            return `repeat(${count}, 1fr)`;
+                        })()}
                     >
                         <ul class="web-pricing-cards-list">
                             <li>
@@ -137,6 +149,70 @@
                                     </div>
                                 </article>
                             </li>
+                            {#if SHOW_STARTER_PLAN}
+                                <li>
+                                    <article
+                                        class="web-card is-transparent has-border-gradient h-full"
+                                        style="background: linear-gradient(180deg, rgba(255, 255, 255, 0.04) 63.19%, rgba(255, 255, 255, 0.00) 100%);"
+                                    >
+                                        <div class="web-pricing-cards-item">
+                                            <header class="web-pricing-cards-header">
+                                                <h2
+                                                    id="starter-plus"
+                                                    class="text-label text-primary font-aeonik-pro"
+                                                >
+                                                    Starter
+                                                </h2>
+                                                <div class="mt-4 flex flex-col gap-2">
+                                                    <span class="-mb-4">From</span>
+                                                    <div class="flex items-end gap-2">
+                                                        <div
+                                                            class="text-title font-aeonik-pro text-primary mt-3"
+                                                        >
+                                                            $10
+                                                        </div>
+                                                        <div class="mt-1">/month</div>
+                                                    </div>
+                                                </div>
+                                                <p class="text-main-body mt-4 h-[5rem] font-medium">
+                                                    Perfect for growing projects that need more resources
+                                                    than the free tier.
+                                                </p>
+                                                <Button
+                                                    variant="secondary"
+                                                    href={getAppwriteDashboardUrl(
+                                                        '/console?type=create&plan=starter'
+                                                    )}
+                                                    class="is-full-width mt-10"
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    event="pricing-cards-starter-click"
+                                                >
+                                                    <span class="text-sub-body font-medium"
+                                                        >Start building</span
+                                                    >
+                                                </Button>
+                                            </header>
+                                            <div class="web-pricing-cards-content">
+                                                <p>Dedicated resources per project:</p>
+                                                <ul class="web-checked-list-circle">
+                                                    <li><span>100GB bandwidth</span></li>
+                                                    <li><span>20GB storage</span></li>
+                                                    <li><span>1.5M executions</span></li>
+                                                    <li><span>100K monthly active users</span></li>
+                                                    <li><span>Organization roles</span></li>
+                                                    <li><span>Email support</span></li>
+                                                    <li>
+                                                        <span
+                                                            >Unlimited Databases, Buckets, and Functions</span
+                                                        >
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </article>
+                                </li>
+                            {/if}
                             <li>
                                 <div
                                     class="web-card is-transparent has-border-gradient is-transparent-pink -m-1 h-full p-1! backdrop-blur-none!"
@@ -155,7 +231,7 @@
                                                     Pro
                                                 </h2>
                                                 <div class="web-inline-tag is-pink">
-                                                    Most popular
+                                                    Best value
                                                 </div>
                                             </header>
                                             <div class="mt-4 flex flex-col gap-2">
@@ -382,6 +458,10 @@
         </div>
 
         <ComparePlans />
+
+        <div class="web-u-stretch-sep-full-screen"></div>
+
+        <PricingCalculator />
 
         <div class="dark relative overflow-hidden pt-10">
             <div class="web-big-padding-section-level-2 relative">

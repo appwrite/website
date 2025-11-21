@@ -3,7 +3,7 @@
     import { Button } from '$lib/components/ui';
     import { cn } from '$lib/utils/cn';
     import { getAppwriteDashboardUrl } from '$lib/utils/dashboard';
-    import { SHOW_SCALE_PLAN } from '$lib/constants/feature-flags';
+    import { SHOW_SCALE_PLAN, SHOW_STARTER_PLAN } from '$lib/constants/feature-flags';
 
     const plans: Array<{
         name: string;
@@ -18,6 +18,14 @@
             price: '$0',
             description: 'A great fit for passion projects and small applications.',
             event: 'home-pricing-cards-free-click'
+        },
+        {
+            name: 'Starter',
+            price: '$10',
+            description:
+                'Perfect for growing projects that need more resources than the free tier.',
+            subtitle: '/month',
+            event: 'home-pricing-cards-starter-click'
         },
         {
             name: 'Pro',
@@ -50,7 +58,11 @@
 
     const { class: className }: PricingProps = $props();
 
-    const visiblePlans = SHOW_SCALE_PLAN ? plans : plans.filter((plan) => plan.name !== 'Scale');
+    const visiblePlans = plans.filter((plan) => {
+        if (plan.name === 'Scale' && !SHOW_SCALE_PLAN) return false;
+        if (plan.name === 'Starter' && !SHOW_STARTER_PLAN) return false;
+        return true;
+    });
 
     const gridCols = `lg:grid-cols-${visiblePlans.length}`;
 </script>
