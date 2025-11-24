@@ -118,7 +118,7 @@
                 },
                 {
                     label: 'Database operators',
-                    href: '/docs/products/databases/db-operators',
+                    href: '/docs/products/databases/operators',
                     new: isNewUntil('31 Dec 2025')
                 }
             ]
