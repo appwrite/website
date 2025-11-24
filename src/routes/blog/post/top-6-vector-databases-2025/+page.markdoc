@@ -116,7 +116,7 @@ Weaviate stands out for its modular architecture and strong integration with mac
 
 Written in Rust, Qdrant is optimized for speed and reliability. It offers flexible deployment options. You can run it locally using Docker, deploy it in your own infrastructure, or use **Qdrant Cloud**, a fully managed, enterprise-grade service with zero-downtime scaling.
 
-## Key features of Quadrant
+## Key features of Qdrant
 
 - **High performance:** Rust-based engine optimized for low-latency similarity search, capable of handling billions of vectors.
 - **Cloud-native scalability:** Horizontal and vertical scaling with high availability and rolling upgrades.
