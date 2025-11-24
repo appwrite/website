@@ -1,7 +1,0 @@
-onlyBuiltDependencies:
-  - '@parcel/watcher'
-  - '@sentry/cli'
-  - core-js
-  - esbuild
-  - sharp
-  - ttf2woff2
