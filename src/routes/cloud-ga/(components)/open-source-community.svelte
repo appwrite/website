@@ -15,7 +15,7 @@
     };
 
     const numbers = [
-        { label: '52k+', description: 'GitHub stars' },
+        { label: '53k+', description: 'GitHub stars' },
         { label: '250k+', description: 'Followers across socials' },
         { label: '46k+', description: 'Contributions to GitHub' },
         { label: '610k+', description: 'Discord messages' }

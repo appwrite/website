@@ -3,7 +3,7 @@ layout: integration
 title: OAuth with Google
 description: Authenticate users with an existing Google account
 date: 2024-07-30
-featured: true
+featured: false
 isPartner: true
 isNew: false
 cover: /images/integrations/oauth-google/cover.png

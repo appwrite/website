@@ -557,7 +557,7 @@ function transformForGraphQL(obj: object): object {
     }
 
     if (obj !== null && typeof obj === 'object') {
-        const transformed: object = {};
+        const transformed: Record<string, object> = {};
         for (const [key, value] of Object.entries(obj)) {
             const newKey = key.replace('$', '_');
             transformed[newKey] = transformForGraphQL(value);
