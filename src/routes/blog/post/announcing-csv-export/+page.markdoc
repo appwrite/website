@@ -2,7 +2,7 @@
 layout: post
 title: "Announcing CSV: Effortless data extraction, right from your Console"
 description: Export your data to CSV directly from the Appwrite Console. Filter, customize, and download your data in just a few clicks.
-date: 2025-11-12
+date: 2025-11-25
 cover: /images/blog/announcing-csv-export/cover.png
 timeToRead: 5
 author: jake-barnby
