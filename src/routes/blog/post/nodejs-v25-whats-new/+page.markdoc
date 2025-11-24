@@ -24,7 +24,7 @@ Node.js v25 ships with **V8 14.1**, Google's JavaScript and WebAssembly engine t
 
 One of the most significant improvements in V8 14.1 is the optimization of `JSON.stringify`. If you've ever worked with large objects or arrays that need to be serialized to JSON, you'll appreciate this.
 
-The new implementation is noticeably faster, especially for deeply nested structures and large datasets. This matters when you're building APIs that return JSON responses, handling data transformations in serverless functions, or working with any system that relies heavily on JSON serialization.
+According to V8's benchmarks, `JSON.stringify` is now **more than 2x faster** on the JetStream2 benchmark. This matters when you're building APIs that return JSON responses, handling data transformations in serverless functions, or working with any system that relies heavily on JSON serialization.
 
 ```javascript
 const largeObject = {
@@ -95,11 +95,11 @@ Node.js v25 expands the **permission model** with a new `--allow-net` flag, givi
 The `--allow-net` flag allows you to explicitly grant network permissions to your application. This is similar to Deno's security model, which requires explicit permissions for different operations.
 
 ```bash
-# Allow network access to specific hosts
-node --allow-net=api.example.com,cdn.example.com server.js
+# Allow network access to specific hosts (requires --permission flag)
+node --permission --allow-net=api.example.com,cdn.example.com server.js
 
-# Allow all network access
-node --allow-net server.js
+# Allow all network access (requires --permission flag)
+node --permission --allow-net server.js
 ```
 
 This approach encourages **secure-by-default** applications. By requiring explicit permission for network operations, you reduce the risk of unintended behavior or vulnerabilities in dependencies that might make unauthorized network requests.
@@ -148,9 +148,10 @@ Before JSPI, if you wanted to call an async JavaScript function from WebAssembly
 
 This is valuable for:
 
-- **High-performance computing:** Running CPU-intensive operations in WebAssembly while interacting with async I/O
-- **Game engines:** Integrating WebAssembly-based game logic with async network calls
-- **Data processing:** Combining WebAssembly's speed with JavaScript's async ecosystem
+- **High-performance computing:** Running CPU-intensive operations (like scientific simulations or video encoding) in WebAssembly while interacting with async I/O
+- **Game engines:** Integrating WebAssembly-based game logic with async network calls for multiplayer features or asset loading
+- **Image and video processing:** Using WebAssembly for fast image manipulation (filters, compression, format conversion) while reading/writing files asynchronously
+- **Data processing:** Combining WebAssembly's speed for parsing large datasets with JavaScript's async file system or database operations
 
 # Portable compile cache {% #portable-compile-cache %}
 
