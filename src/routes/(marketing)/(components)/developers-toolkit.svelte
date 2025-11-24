@@ -62,7 +62,7 @@
                 {#each build as product}
                     <a
                         href={product.href}
-                        class="bg-smooth hover:bg-smooth/50 flex h-full w-fit items-center justify-center gap-2 rounded-full px-3 backdrop-blur-lg transition-opacity"
+                        class="bg-smooth hover:bg-smooth/50 flex h-full w-fit items-center justify-center gap-2 rounded-full px-0.5 backdrop-blur-lg transition-opacity sm:px-1 md:px-2 lg:px-3"
                     >
                         <span
                             class="text-primary text-caption flex items-center justify-center gap-1 font-medium"
@@ -73,13 +73,12 @@
                                 alt={product.label}
                                 class="size-6"
                             />
-                            {product.label}
+                            <span class="hidden lg:inline">{product.label}</span>
                         </span>
                     </a>
                 {/each}
             </div>
         </div>
-        <!-- dashed gap between groups (horizontal) -->
         <div
             aria-hidden="true"
             class="mx-0 h-px w-6 self-center border-t border-dashed border-black/8"
@@ -93,7 +92,7 @@
                 {#each deploy as product}
                     <a
                         href={product.href}
-                        class="bg-smooth hover:bg-smooth/50 flex h-full w-fit items-center justify-center gap-2 rounded-full px-3 backdrop-blur-lg transition-opacity"
+                        class="bg-smooth hover:bg-smooth/50 flex h-full w-fit items-center justify-center gap-2 rounded-full px-0.5 backdrop-blur-lg transition-opacity sm:px-1 md:px-2 lg:px-3"
                     >
                         <span
                             class="text-primary text-caption flex items-center justify-center gap-1 font-medium"
@@ -104,7 +103,7 @@
                                 alt={product.label}
                                 class="size-6"
                             />
-                            {product.label}
+                            <span class="hidden lg:inline">{product.label}</span>
                         </span>
                     </a>
                 {/each}
