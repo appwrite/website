@@ -70,16 +70,16 @@
     {...restProps}
 >
     <div class="container mx-auto">
-        <section class="flex flex-col items-start gap-x-20 md:flex-row">
+        <section class="flex flex-col gap-4 lg:flex-row lg:items-baseline lg:gap-x-20">
             <h2
-                class="text-title font-aeonik-pro text-primary max-w-[700px] leading-12 text-pretty"
+                class="text-title font-aeonik-pro text-primary max-w-[700px] text-3xl leading-12 text-pretty sm:text-4xl md:text-5xl"
             >
                 Safely scale with built-in
                 <span class="whitespace-nowrap">security and compliance</span><span
                     class="text-accent">_</span
                 >
             </h2>
-            <p class="text-secondary text-description mt-4 max-w-xl font-medium">
+            <p class="text-secondary text-description mt-4 max-w-full font-medium lg:max-w-xl">
                 With a security-first approach, we ensure your products and users are safe by
                 default, making it easy for you to adhere to strict safety policies.
             </p>

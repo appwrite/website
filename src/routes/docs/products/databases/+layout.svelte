@@ -52,6 +52,11 @@
                     href: '/docs/products/databases/relationships'
                 },
                 {
+                    label: 'Operators',
+                    href: '/docs/products/databases/operators',
+                    new: isNewUntil('31 Dec 2025')
+                },
+                {
                     label: 'Geo queries',
                     href: '/docs/products/databases/geo-queries',
                     new: isNewUntil('30 Sep 2025')
