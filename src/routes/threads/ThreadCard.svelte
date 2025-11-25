@@ -13,7 +13,7 @@
     <a href="/threads/{thread.discord_id}" class="web-card is-normal has-border-gradient thread">
         <div class="flex min-w-0 gap-2">
             <h3
-                class="text-main-body text-primary min-w-0 flex-1 font-medium wrap-break-word"
+                class="text-main-body text-primary min-w-0 flex-1 font-medium"
                 use:highlight={highlightTerms}
             >
                 {thread.title}
