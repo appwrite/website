@@ -2,7 +2,7 @@
 layout: post
 title: "What's new in Node.js v25.2: Web Storage, V8 14.1, permissions and more"
 description: Node.js v25.2.1 brings V8 14.1, experimental Web Storage, network permissions with --allow-net, and performance optimizations. Learn about the key features and what they mean for your applications.
-date: 2025-11-23
+date: 2025-11-25
 cover: /images/blog/nodejs-v25-whats-new/cover.png
 timeToRead: 9
 author: ebenezer-don
