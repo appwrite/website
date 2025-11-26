@@ -27,7 +27,7 @@ These suggestions are generated using a mix of:
 
 You’re always in control. Suggestions don’t apply automatically. You can review them, adjust inline, or skip them entirely. Once ready, applying the schema is just one click, including an optional CTA to add suggested indexes for even better performance.
 
-Alongside Database AI Suggestions, we have also added an **AI-powered index suggestions UI.** A new desktop modal and mobile side-sheet offer guided flows with toggles and an easy “apply” step for indexes.
+Alongside Database AI Suggestions, we have also added an **AI-powered index suggestions UI.** 
 
 These UI updates complement Database AI Suggestions by making the schema design and feedback process more guided, interactive, and flexible across both desktop and mobile.
 
