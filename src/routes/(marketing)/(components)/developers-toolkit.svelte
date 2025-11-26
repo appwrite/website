@@ -52,10 +52,12 @@
         </p>
     </div>
 
-    <div class="mt-6 flex flex-wrap items-center justify-center gap-0">
+    <div
+        class="mt-6 flex flex-col items-center justify-center gap-2 lg:flex-row lg:flex-wrap lg:gap-0"
+    >
         <!-- Build group -->
         <div
-            class="text-primary flex h-10 items-center gap-4 rounded-full border border-dashed border-black/8 bg-white p-1 text-sm"
+            class="text-primary flex h-10 w-full items-center gap-4 rounded-full border border-dashed border-black/8 bg-white p-1 text-sm lg:w-auto"
         >
             <span class="text-eyebrow text-secondary font-aeonik-fono ml-3 uppercase">Build</span>
             <div class="flex h-full w-full justify-between gap-2">
@@ -81,7 +83,7 @@
         </div>
         <div
             aria-hidden="true"
-            class="mx-0 h-px w-6 self-center border-t border-dashed border-black/8"
+            class="mx-0 hidden h-px w-6 self-center border-t border-dashed border-black/8 lg:block"
         ></div>
         <!-- Deploy group -->
         <div
