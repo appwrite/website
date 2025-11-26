@@ -24,7 +24,7 @@
         "optimize:all": "bun ./scripts/optimize-all.js"
     },
     "dependencies": {
-        "@sentry/sveltekit": "^10.22.0",
+        "@sentry/sveltekit": "^10.27.0",
         "h3": "^1.15.4",
         "sharp": "^0.34.4"
     },
