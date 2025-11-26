@@ -1,0 +1,276 @@
+---
+layout: article
+title: Languages
+description: Access language data classified by ISO 639-1 with codes and native names for building multilingual applications.
+---
+
+The languages endpoint provides access to language information classified by ISO 639-1 standard. This is useful for building language selectors, implementing multilingual features, and displaying language options to users.
+
+# List languages {% #list-languages %}
+
+Retrieve a list of all languages with their codes, English names, and native names.
+
+{% multicode %}
+```client-web
+import { Client, Locale } from "appwrite";
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>');
+
+const locale = new Locale(client);
+
+const languages = await locale.listLanguages();
+
+console.log(languages);
+// {
+//   total: 100+,
+//   languages: [
+//     {
+//       name: 'English',
+//       code: 'en',
+//       nativeName: 'English'
+//     },
+//     {
+//       name: 'Spanish',
+//       code: 'es',
+//       nativeName: 'Español'
+//     },
+//     ...
+//   ]
+// }
+```
+```client-flutter
+import 'package:appwrite/appwrite.dart';
+
+final client = Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>');
+
+final locale = Locale(client);
+
+Future result = locale.listLanguages().then((response) {
+    print(response.total);
+    response.languages.forEach((language) {
+        print('${language.name} (${language.code}) - ${language.nativeName}');
+    });
+    return response;
+}).catchError((error) {
+    print(error.response);
+});
+```
+```client-apple
+import Appwrite
+
+let client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+
+let locale = Locale(client)
+
+let languages = try await locale.listLanguages()
+
+print(languages.total)
+for language in languages.languages {
+    print("\(language.name) (\(language.code)) - \(language.nativeName)")
+}
+```
+```client-android-kotlin
+import io.appwrite.Client
+import io.appwrite.services.Locale
+
+val client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+
+val locale = Locale(client)
+
+val languages = locale.listLanguages()
+
+println(languages.total)
+languages.languages.forEach { language ->
+    println("${language.name} (${language.code}) - ${language.nativeName}")
+}
+```
+```client-react-native
+import { Client, Locale } from 'react-native-appwrite';
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>');
+
+const locale = new Locale(client);
+
+const languages = await locale.listLanguages();
+
+console.log(languages);
+```
+{% /multicode %}
+
+# Response structure {% #response-structure %}
+
+The `listLanguages` method returns a languages list with the following structure:
+
+| Property | Type | Description |
+| -------- | ---- | ----------- |
+| total | integer | Total number of languages |
+| languages | array | Array of language objects |
+
+Each language object contains:
+
+| Property | Type | Description |
+| -------- | ---- | ----------- |
+| name | string | Language name in English |
+| code | string | Two-letter language code (ISO 639-1) |
+| nativeName | string | Language name in its native script |
+
+# Language codes {% #language-codes %}
+
+Language codes follow the ISO 639-1 standard, which uses two-letter codes to uniquely identify languages. These codes are widely used in internationalization and localization systems.
+
+# Use cases {% #use-cases %}
+
+Language lists are commonly used for:
+
+- **Language selectors**: Build dropdown menus or lists for users to choose their preferred language
+- **Multilingual apps**: Implement language switching and localization features
+- **Content localization**: Display content in user's preferred language
+- **User preferences**: Store and apply user language preferences across the application
+- **Internationalization**: Support multiple languages in your application interface
+
+# Building language selectors {% #building-language-selectors %}
+
+Use language data to build language selection components:
+
+{% multicode %}
+```client-web
+const languages = await locale.listLanguages();
+
+// Build language selector
+const languageOptions = languages.languages.map(lang => ({
+    label: `${lang.nativeName} (${lang.name})`,
+    value: lang.code,
+    code: lang.code
+}));
+
+// Set app language
+function setAppLanguage(code) {
+    client.setLocale(code);
+    // Reload or update app content
+}
+```
+```client-flutter
+final languages = await locale.listLanguages();
+
+// Build language selector
+final languageOptions = languages.languages.map((lang) {
+    return {
+        'label': '${lang.nativeName} (${lang.name})',
+        'value': lang.code,
+        'code': lang.code
+    };
+}).toList();
+
+// Set app language
+void setAppLanguage(String code) {
+    client.setLocale(code);
+    // Reload or update app content
+}
+```
+```client-apple
+let languages = try await locale.listLanguages()
+
+// Build language selector
+let languageOptions = languages.languages.map { lang in
+    [
+        "label": "\(lang.nativeName) (\(lang.name))",
+        "value": lang.code,
+        "code": lang.code
+    ]
+}
+
+// Set app language
+func setAppLanguage(code: String) {
+    client.setLocale(code)
+    // Reload or update app content
+}
+```
+```client-android-kotlin
+val languages = locale.listLanguages()
+
+// Build language selector
+val languageOptions = languages.languages.map { lang ->
+    mapOf(
+        "label" to "${lang.nativeName} (${lang.name})",
+        "value" to lang.code,
+        "code" to lang.code
+    )
+}
+
+// Set app language
+fun setAppLanguage(code: String) {
+    client.setLocale(code)
+    // Reload or update app content
+}
+```
+```client-react-native
+const languages = await locale.listLanguages();
+
+// Build language selector
+const languageOptions = languages.languages.map(lang => ({
+    label: `${lang.nativeName} (${lang.name})`,
+    value: lang.code,
+    code: lang.code
+}));
+
+// Set app language
+function setAppLanguage(code) {
+    client.setLocale(code);
+    // Reload or update app content
+}
+```
+{% /multicode %}
+
+# List locale codes {% #list-locale-codes %}
+
+You can also retrieve a list of all available locale codes:
+
+{% multicode %}
+```client-web
+const localeCodes = await locale.listCodes();
+
+console.log(localeCodes);
+// {
+//   total: 100+,
+//   codes: ['en', 'es', 'fr', 'de', ...]
+// }
+```
+```client-flutter
+Future result = locale.listCodes().then((response) {
+    print(response.total);
+    print(response.codes);
+    return response;
+}).catchError((error) {
+    print(error.response);
+});
+```
+```client-apple
+let localeCodes = try await locale.listCodes()
+
+print(localeCodes.total)
+print(localeCodes.codes)
+```
+```client-android-kotlin
+val localeCodes = locale.listCodes()
+
+println(localeCodes.total)
+println(localeCodes.codes)
+```
+```client-react-native
+const localeCodes = await locale.listCodes();
+
+console.log(localeCodes);
+```
+{% /multicode %}
+
+
