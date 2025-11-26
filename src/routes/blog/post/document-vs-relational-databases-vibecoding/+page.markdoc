@@ -77,7 +77,7 @@ The right database depends entirely on your specific requirements.
 *   Choose **SQL** if your data is highly relational, your structure is stable, and data integrity is your top priority.
 *   Choose **Document** if you value flexibility, are building with AI agents, or need to scale rapidly with evolving requirements.
 
-If you're looking for a solution that combines the flexibility of the document model with the ease of a backend-as-a-service, check out **Appwrite Databases**. It's designed to support fast, iterative development for modern applications.
+If you're looking for a solution that combines the flexibility of the document model with the ease of a backend-as-a-service, check out [Appwrite Databases](/docs/databases). It's designed to support fast, iterative development for modern applications.
 
 # More resources
 
