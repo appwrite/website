@@ -15,6 +15,13 @@ Enter a descriptive table name. AI suggestions will use this name to generate re
 {% section #enable-suggestions step=2 title="Enable AI suggestions" %}
 In the table creation dialog, enable **AI suggestions**.
 
+{% only_dark %}
+![Enable AI suggestions](/images/docs/databases/dark/ai-suggestions-enable.png)
+{% /only_dark %}
+{% only_light %}
+![Enable AI suggestions](/images/docs/databases/ai-suggestions-enable.png)
+{% /only_light %}
+
 Optionally, provide additional context about your use case to refine the suggestions. For example, if creating an `Orders` table, you might add context like "e-commerce orders with payment tracking."
 
 Click **Generate suggestions** to analyze your table name and database structure.
@@ -22,6 +29,13 @@ Click **Generate suggestions** to analyze your table name and database structure
 
 {% section #review-suggestions step=3 title="Review suggestions" %}
 AI suggestions will generate recommended columns and indexes for your table.
+
+{% only_dark %}
+![Review AI suggestions](/images/docs/databases/dark/ai-suggestions-review.png)
+{% /only_dark %}
+{% only_light %}
+![Review AI suggestions](/images/docs/databases/ai-suggestions-review.png)
+{% /only_light %}
 
 Review each suggested column:
 - Column name and type
