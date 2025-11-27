@@ -42,14 +42,19 @@ Resulting in benefits such as:
 - **Best practices baked in:** Get timestamps, soft-delete fields, enums, and indexes without having to remember them.
 - **Fewer errors:** Avoid schema issues that cause analytics problems or require migrations later.
 
+# Generate sample data for faster validation
+
+We’ve also added an option to quickly generate sample data when creating a new table. This button appears during table setup and populates the table with example records that match the generated (or manually defined) schema.
+
+The sample entries follow the field types and naming conventions you’ve chosen, making it easier to validate assumptions early, test queries, and confirm that indexes and relationships behave as expected. This is especially useful when prototyping or verifying a schema before integrating it into your application.
+
 # Get started
 
-We created a quick video overview to show you how the new feature works.
-
-{% youtube src="https://www.youtube-nocookie.com/embed/5IZJVsE6pIQ" thumbnail="/images/blog/announcing-database-ai-suggestions/cover.png" /%}
+Database AI Suggestions is now live on Appwrite Cloud. Create a new table and enable “Generate AI suggestions” to view proposed columns, indexes, and optional sample data.
 
 # More resources
 
+- [Read the documentation](/docs/products/databases/ai-suggestions)
 - [Appwrite MCP server](/docs/tooling/mcp)
 - [Make the best use of Appwrite’s MCP server](/blog/post/make-best-use-appwrite-mcp)
 - [Announcing an improved Appwrite Databases experience. A completely new look and feel](/blog/post/announcing-appwrite-databases-new-ui)
