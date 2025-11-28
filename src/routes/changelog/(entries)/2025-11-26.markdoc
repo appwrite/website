@@ -1,7 +1,7 @@
 ---
 layout: changelog
 title: "Database AI suggestions"
-date: 2025-11-26
+date: 2025-11-28
 cover: /images/blog/announcing-database-ai-suggestions/cover.png
 ---
 This release introduces AI-assisted schema generation to simplify that process.
@@ -11,7 +11,7 @@ This release introduces AI-assisted schema generation to simplify that process.
 - Added **Database AI Suggestions** in the Console
 - Automatic column and index suggestions based on table name and context
 - Added sample data generation when creating a new table, allowing you to quickly populate example records that match the schema
-- Example: Creating a table called `Orders` suggests columns `orderId`, `userId`, `totalAmount`, `status`
+- Example: Creating a table called `Orders` suggests columns `orderId`, `userId`, `totalAmount`, and `status`
 
 **Benefits:**
 
