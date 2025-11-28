@@ -1,13 +1,13 @@
 <script lang="ts">
     import { page } from '$app/state';
-    import type { SDKMethod } from '$lib/utils/specs';
+    import type { SDKMethod } from '../specs';
 
     export let method: SDKMethod;
 </script>
 
 <div class="web-card is-transparent p-4">
     <ul>
-        {#each method.responses as response}
+        {#each method.responses as response, i (i)}
             {#if response.models}
                 <li>
                     <article>
@@ -19,7 +19,7 @@
                         </header>
                         {#if response.models.length > 0}
                             <ul class="text-sub-body mt-4">
-                                {#each response.models as model}
+                                {#each response.models as model (model.id)}
                                     <li>
                                         <a
                                             class="web-link"
