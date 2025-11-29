@@ -29,7 +29,7 @@ Appwrite Functions can be executed by various types of events, which allows you 
 
 ## Global environment variables
 
-Aside from environment variables at the function level, Appwrite also allows you to environment variables at the project level so that they can be shared across multiple functions in a single project.
+Aside from environment variables at the function level, Appwrite also allows you to define environment variables at the project level so that they can be shared across multiple functions in a single project.
 
 ## Permissions system
 

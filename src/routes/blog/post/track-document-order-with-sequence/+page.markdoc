@@ -242,9 +242,14 @@ form.addEventListener('submit', async (e) => {
   if (!title || !body) return
 
   try {
-    await tablesDB.createRow(databaseId, tableId, 'unique()', {
-      title,
-      body,
+    await tablesDB.createRow({
+      databaseId,
+      tableId,
+      rowId: Appwrite.ID.unique(),
+      data: {
+        title,
+        body,
+      }
     })
 
     form.reset()
@@ -267,9 +272,13 @@ Now add a function that retrieves tickets and shows them in order, newest first:
 ```javascript
 async function loadTickets() {
   try {
-    const response = await tablesDB.listRows(databaseId, tableId, [
-      Appwrite.Query.orderDesc('$sequence'),
-    ])
+    const response = await tablesDB.listRows({
+      databaseId,
+      tableId,
+      queries: [
+        Appwrite.Query.orderDesc('$sequence'),
+      ]
+    })
     const ticketList = document.getElementById('ticket-list')
     const ticketCount = document.getElementById('ticket-count')
     const emptyState = document.getElementById('empty-state')

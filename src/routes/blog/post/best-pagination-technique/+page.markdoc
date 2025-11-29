@@ -87,35 +87,35 @@ Appwrite's pagination supports both offset and cursor pagination. Let's imagine 
 
 ```jsx
 // Setup
-import { Appwrite, TablesDB, Query } from "appwrite";
+import { Client, TablesDB, Query } from "appwrite";
 
-const client = new Appwrite();
+const client = new Client();
 client
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
     .setProject('articles-demo'); // Your project ID
 const tablesDB = new TablesDB(client);
 
 // Offset pagination
-tablesDB.listRows(
-		'main', // Database ID
-    'articles', // Table ID
-    [
-	    Query.limit(10), // Limit, total rows in the response
-	    Query.offset(500), // Offset, amount of rows to skip
+tablesDB.listRows({
+    databaseId: 'main', // Database ID
+    tableId: 'articles', // Table ID
+    queries: [
+        Query.limit(10), // Limit, total rows in the response
+        Query.offset(500) // Offset, amount of rows to skip
     ]
-).then((response) => {
+}).then((response) => {
     console.log(response);
 });
 
 // Cursor pagination
-tablesDB.listRows(
-		'main', // Database ID
-    'articles', // Table ID
-    [
-	    Query.limit(10), // Limit, total rows in the response
-	    Query.cursorAfter('61d6eb2281fce3650c2c', // ID of row I want to paginate after
+tablesDB.listRows({
+    databaseId: 'main', // Database ID
+    tableId: 'articles', // Table ID
+    queries: [
+        Query.limit(10), // Limit, total rows in the response
+        Query.cursorAfter('61d6eb2281fce3650c2c') // ID of row I want to paginate after
     ]
-).then((response) => {
+}).then((response) => {
     console.log(response);
 });
 
