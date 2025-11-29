@@ -52,11 +52,13 @@ jobs:
         uses: actions/checkout@v2
       - name: Install Appwrite CLI
         run: npm install -g appwrite-cli
+      - name: Configure Appwrite client
+        run: |
+          appwrite client --projectId "${{ secrets.APPWRITE_PROJECT_ID }}" \
+                          --endpoint "${{ secrets.APPWRITE_ENDPOINT }}" \
+                          --key "${{ secrets.APPWRITE_API_KEY }}"
       - name: Pull Tables
         run: appwrite pull tables --all --force
-        env:
-          PROJECT_ID: ${{ secrets.APPWRITE_PROJECT_ID }}
-          API_KEY: ${{ secrets.APPWRITE_API_KEY }}
 
 ```
 
