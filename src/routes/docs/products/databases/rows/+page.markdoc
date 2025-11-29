@@ -135,13 +135,18 @@ You must grant _read_ permissions to users at the _table level_ before users can
 [Learn more about permissions](#permissions)
 {% /info %}
 
-Rows can be retrieved using the [List Row](/docs/references/cloud/client-web/tables#listRows) endpoint.
+Rows can be retrieved using the [List rows](/docs/references/cloud/client-web/tables#listRows) endpoint.
 
 Results can be filtered, sorted, and paginated using Appwrite's shared set of query methods.
 You can find a full guide on querying in the [Queries Guide](/docs/products/databases/queries).
 
 By default, results are limited to the _first 25 items_.
 You can change this through [pagination](/docs/products/databases/pagination).
+
+{% info title="Speed up lists by skipping totals" %}
+If your UI doesn't need an exact total, set the `total` flag to `false` on list calls. The response keeps the same shape and sets `total` to `0`.
+This reduces latency for large tables and filtered queries. Learn more in [Pagination: Skip totals](/docs/products/databases/pagination#skip-totals).
+{% /info %}
 
 {% multicode %}
 ```client-web
