@@ -36,6 +36,9 @@ Get payment method logos for checkout flows and transaction displays.
 {% cards_item href="/docs/products/avatars/favicons" title="Favicons" %}
 Fetch favicons from remote websites for link previews and bookmark displays.
 {% /cards_item %}
+{% cards_item href="/docs/products/avatars/screenshots" title="Screenshots" %}
+Capture screenshots of any website URL with customizable browser settings and viewport configuration.
+{% /cards_item %}
 {% cards_item href="/docs/products/avatars/image-manipulation" title="Image proxy" %}
 Transform remote images with resizing, cropping, and quality adjustments.
 {% /cards_item %}

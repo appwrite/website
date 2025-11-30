@@ -49,6 +49,10 @@
                     href: '/docs/products/avatars/favicons'
                 },
                 {
+                    label: 'Screenshots',
+                    href: '/docs/products/avatars/screenshots'
+                },
+                {
                     label: 'Image proxy',
                     href: '/docs/products/avatars/image-manipulation'
                 }
