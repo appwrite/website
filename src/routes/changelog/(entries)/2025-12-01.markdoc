@@ -13,9 +13,9 @@ We've fixed two issues with non-expiring file tokens:
 
 With this fix:
 
-- Non-expiring file tokens now generate consistent URLs across all requests
-- URLs remain valid indefinitely as intended
-- Improved reliability for long-term file sharing and caching strategies
+- Non-expiring file tokens now generate consistent URLs across all requests.
+- URLs remain valid indefinitely as intended.
+- Improved reliability for long-term file sharing and caching strategies.
 
 This update is now live on Appwrite Cloud.
 
