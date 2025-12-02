@@ -12,7 +12,7 @@ Capture a screenshot of a website URL with customizable browser settings and vie
 
 {% multicode %}
 ```client-web
-import { Client, Avatars } from "appwrite";
+import { Client, Avatars, Theme } from "appwrite";
 
 const client = new Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
@@ -24,7 +24,7 @@ const result = avatars.getScreenshot({
     url: 'https://example.com',
     viewportWidth: 1280,
     viewportHeight: 720,
-    theme: 'light',
+    theme: Theme.Light,
     fullpage: false
 });
 
@@ -32,6 +32,7 @@ console.log(result); // Resource URL
 ```
 ```client-flutter
 import 'package:appwrite/appwrite.dart';
+import 'package:appwrite/enums.dart';
 
 final client = Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
@@ -43,7 +44,7 @@ Future result = avatars.getScreenshot(
     url: 'https://example.com',
     viewportWidth: 1280,
     viewportHeight: 720,
-    theme: 'light',
+    theme: Theme.light,
     fullpage: false
 ).then((bytes) {
     // Use the screenshot image bytes
@@ -54,6 +55,7 @@ Future result = avatars.getScreenshot(
 ```
 ```client-apple
 import Appwrite
+import AppwriteEnums
 
 let client = Client()
     .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
@@ -65,13 +67,14 @@ let byteBuffer = try await avatars.getScreenshot(
     url: "https://example.com",
     viewportWidth: 1280,
     viewportHeight: 720,
-    theme: "light",
+    theme: .light,
     fullpage: false
 )
 ```
 ```client-android-kotlin
 import io.appwrite.Client
 import io.appwrite.services.Avatars
+import io.appwrite.enums.Theme
 
 val client = Client()
     .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
@@ -83,7 +86,7 @@ val result = avatars.getScreenshot(
     url = "https://example.com",
     viewportWidth = 1280,
     viewportHeight = 720,
-    theme = "light",
+    theme = Theme.LIGHT,
     fullpage = false
 )
 ```
@@ -119,11 +122,11 @@ The `getScreenshot` method accepts the following parameters:
 | viewportWidth | integer | Browser viewport width in pixels. Accepts values between `1-1920`. Defaults to `1280`. |
 | viewportHeight | integer | Browser viewport height in pixels. Accepts values between `1-1080`. Defaults to `720`. |
 | scale | number | Browser scale factor. Accepts values between `0.1-3`. Defaults to `1`. |
-| theme | string | Browser theme. Accepts `"light"` or `"dark"`. Defaults to `"light"`. |
+| theme | string | Browser theme. Accepts `"light"` or `"dark"`. Use `Theme` enum in Web SDK. Defaults to `"light"`. |
 | userAgent | string | Custom user agent string. Defaults to browser default. |
 | fullpage | boolean | Capture full page scroll. Pass `true` for full page, `false` for viewport only. Defaults to `false`. |
 | locale | string | Browser locale (e.g., `"en-US"`, `"fr-FR"`). Defaults to browser default. |
-| timezone | string | IANA timezone identifier (e.g., `"America/New_York"`, `"Europe/London"`). Defaults to browser default. |
+| timezone | string | IANA timezone identifier (e.g., `"America/New_York"`, `"Europe/London"`). Use `Timezone` enum in Web SDK. Defaults to browser default. |
 | latitude | number | Geolocation latitude. Accepts values between `-90` to `90`. Defaults to `0`. |
 | longitude | number | Geolocation longitude. Accepts values between `-180` to `180`. Defaults to `0`. |
 | accuracy | number | Geolocation accuracy in meters. Accepts values between `0` to `100000`. Defaults to `0`. |
@@ -133,7 +136,7 @@ The `getScreenshot` method accepts the following parameters:
 | width | integer | Output image width in pixels. Pass `0` to use original width, or an integer between `1` to `2000`. Defaults to `0` (original width). |
 | height | integer | Output image height in pixels. Pass `0` to use original height, or an integer between `1` to `2000`. Defaults to `0` (original height). |
 | quality | integer | Screenshot quality. Accepts values between `0` to `100`. Defaults to keep existing image quality. |
-| output | string | Output format type. Accepts `"jpeg"`, `"jpg"`, `"png"`, `"gif"`, or `"webp"`. |
+| output | string | Output format type. Accepts `"jpeg"`, `"jpg"`, `"png"`, `"gif"`, or `"webp"`. Use `Output` enum in Web SDK. |
 
 # Viewport configuration {% #viewport-configuration %}
 
@@ -295,55 +298,63 @@ Capture screenshots in light or dark theme to match your application's design or
 
 {% multicode %}
 ```client-web
+import { Theme } from "appwrite";
+
 // Light theme (default)
 const light = avatars.getScreenshot({
     url: 'https://example.com',
-    theme: 'light'
+    theme: Theme.Light
 });
 
 // Dark theme
 const dark = avatars.getScreenshot({
     url: 'https://example.com',
-    theme: 'dark'
+    theme: Theme.Dark
 });
 ```
 ```client-flutter
+import 'package:appwrite/enums.dart';
+
 // Light theme (default)
 Future light = avatars.getScreenshot(
     url: 'https://example.com',
-    theme: 'light'
+    theme: Theme.light
 );
 
 // Dark theme
 Future dark = avatars.getScreenshot(
     url: 'https://example.com',
-    theme: 'dark'
+    theme: Theme.dark
 );
 ```
 ```client-apple
+import AppwriteEnums
+
 // Light theme (default)
 let light = try await avatars.getScreenshot(
     url: "https://example.com",
-    theme: "light"
+    theme: .light
 )
 
 // Dark theme
 let dark = try await avatars.getScreenshot(
     url: "https://example.com",
-    theme: "dark"
+    theme: .dark
 )
 ```
 ```client-android-kotlin
+import io.appwrite.enums.Theme
+
 // Light theme (default)
 val light = avatars.getScreenshot(
     url = "https://example.com",
-    theme = "light"
+    theme = Theme.LIGHT
 )
 
 // Dark theme
 val dark = avatars.getScreenshot(
     url = "https://example.com",
-    theme = "dark"
+    theme = Theme.DARK
 )
 ```
 {% /multicode %}
@@ -354,6 +365,8 @@ Configure geolocation and locale settings to capture location-specific content o
 
 {% multicode %}
 ```client-web
+import { Timezone } from "appwrite";
+
 // With geolocation
 const withLocation = avatars.getScreenshot({
     url: 'https://example.com',
@@ -367,10 +380,12 @@ const withLocation = avatars.getScreenshot({
 const localized = avatars.getScreenshot({
     url: 'https://example.com',
     locale: 'fr-FR',
-    timezone: 'Europe/Paris'
+    timezone: Timezone.EuropeParis
 });
 ```
 ```client-flutter
+import 'package:appwrite/enums.dart';
+
 // With geolocation
 Future withLocation = avatars.getScreenshot(
     url: 'https://example.com',
@@ -384,10 +399,12 @@ Future withLocation = avatars.getScreenshot(
 Future localized = avatars.getScreenshot(
     url: 'https://example.com',
     locale: 'fr-FR',
-    timezone: 'Europe/Paris'
+    timezone: Timezone.europeParis
 );
 ```
 ```client-apple
+import AppwriteEnums
+
 // With geolocation
 let withLocation = try await avatars.getScreenshot(
     url: "https://example.com",
@@ -401,10 +418,12 @@ let withLocation = try await avatars.getScreenshot(
 let localized = try await avatars.getScreenshot(
     url: "https://example.com",
     locale: "fr-FR",
-    timezone: "Europe/Paris"
+    timezone: .europeParis
 )
 ```
 ```client-android-kotlin
+import io.appwrite.enums.Timezone
+
 // With geolocation
 val withLocation = avatars.getScreenshot(
     url = "https://example.com",
@@ -418,7 +437,7 @@ val withLocation = avatars.getScreenshot(
 val localized = avatars.getScreenshot(
     url = "https://example.com",
     locale = "fr-FR",
-    timezone = "Europe/Paris"
+    timezone = Timezone.EUROPE_PARIS
 )
 ```
 {% /multicode %}
@@ -429,6 +448,8 @@ Control the output image size, quality, and format to optimize file size and per
 
 {% multicode %}
 ```client-web
+import { Output } from "appwrite";
+
 // Resize output image
 const resized = avatars.getScreenshot({
     url: 'https://example.com',
@@ -442,17 +463,19 @@ const resized = avatars.getScreenshot({
 const highQuality = avatars.getScreenshot({
     url: 'https://example.com',
     quality: 100,
-    output: 'png'
+    output: Output.Png
 });
 
 // Optimized WebP
 const webp = avatars.getScreenshot({
     url: 'https://example.com',
     quality: 85,
-    output: 'webp'
+    output: Output.Webp
 });
 ```
 ```client-flutter
+import 'package:appwrite/enums.dart';
+
 // Resize output image
 Future resized = avatars.getScreenshot(
     url: 'https://example.com',
@@ -466,17 +489,19 @@ Future resized = avatars.getScreenshot(
 Future highQuality = avatars.getScreenshot(
     url: 'https://example.com',
     quality: 100,
-    output: 'png'
+    output: Output.png
 );
 
 // Optimized WebP
 Future webp = avatars.getScreenshot(
     url: 'https://example.com',
     quality: 85,
-    output: 'webp'
+    output: Output.webp
 );
 ```
 ```client-apple
+import AppwriteEnums
+
 // Resize output image
 let resized = try await avatars.getScreenshot(
     url: "https://example.com",
@@ -490,17 +515,19 @@ let resized = try await avatars.getScreenshot(
 let highQuality = try await avatars.getScreenshot(
     url: "https://example.com",
     quality: 100,
-    output: "png"
+    output: .png
 )
 
 // Optimized WebP
 let webp = try await avatars.getScreenshot(
     url: "https://example.com",
     quality: 85,
-    output: "webp"
+    output: .webp
 )
 ```
 ```client-android-kotlin
+import io.appwrite.enums.Output
+
 // Resize output image
 val resized = avatars.getScreenshot(
     url = "https://example.com",
@@ -514,14 +541,14 @@ val resized = avatars.getScreenshot(
 val highQuality = avatars.getScreenshot(
     url = "https://example.com",
     quality = 100,
-    output = "png"
+    output = Output.PNG
 )
 
 // Optimized WebP
 val webp = avatars.getScreenshot(
     url = "https://example.com",
     quality = 85,
-    output = "webp"
+    output = Output.WEBP
 )
 ```
 {% /multicode %}
