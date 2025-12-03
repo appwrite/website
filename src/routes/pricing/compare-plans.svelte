@@ -645,7 +645,7 @@
 
 <svelte:window on:scroll={() => (scrollDir = getScrollDir())} />
 
-<div class="web-white-section light overflow-x-hidden py-10">
+<div class="web-white-section light py-10">
     <div class="web-big-padding-section-level-2">
         <div class="relative">
             <article use:melt={$root}>
@@ -874,6 +874,7 @@
 <style>
     .web-u-grid-auto-column-1fr {
         grid-template-columns: var(--columns-template);
+        overflow: hidden;
     }
 
     .web-mini-card {
