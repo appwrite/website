@@ -175,9 +175,23 @@
         });
     }
 
+    /**
+     * Groups methods by `group` and de-duplicates titles per group.
+     */
     function groupMethodsByGroup(methods: SDKMethod[]) {
+        const seen = new Set<string>();
+
         return methods.reduce<Record<string, SDKMethod[]>>((acc, method) => {
             const groupKey = method.group || '';
+            const dedupeKey = `${groupKey}::${method.title}`;
+
+            // skip duplicate titles within the same group
+            if (seen.has(dedupeKey)) {
+                return acc;
+            }
+
+            seen.add(dedupeKey);
+
             if (!acc[groupKey]) {
                 acc[groupKey] = [];
             }
