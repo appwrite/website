@@ -874,7 +874,6 @@
 <style>
     .web-u-grid-auto-column-1fr {
         grid-template-columns: var(--columns-template);
-        overflow: hidden;
     }
 
     .web-mini-card {
