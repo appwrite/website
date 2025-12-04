@@ -34,11 +34,9 @@
     });
 
     const viewInNewTab = () => {
-        const content = markdown.current ?? '';
-        const blob = new Blob([content], { type: 'text/markdown;charset=utf-8' });
-        const url = URL.createObjectURL(blob);
+        const { pathname } = window.location;
+        const url = pathname.endsWith('.md') ? pathname : `${pathname}.md`;
         window.open(url, '_blank', 'noopener,noreferrer');
-        setTimeout(() => URL.revokeObjectURL(url), 10_000);
     };
 </script>
 
