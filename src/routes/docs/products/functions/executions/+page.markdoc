@@ -82,6 +82,10 @@ This ensures that developers do not see user data by default and no sensitive da
 If you need to log debug data or audit logs, you can use [function logging features](/docs/products/functions/develop#logging)
 to explicitly log the information you need.
 
+{% info title="Access control" %}
+Only the user who created an execution can retrieve it using the [Get execution](/docs/references/cloud/client-web/functions#getExecution) endpoint.
+{% /info %}
+
 # Log retention {% #log-retention %}
 
 Logs are not retained forever in order to be compliant with GDPR and other data privacy standards.
