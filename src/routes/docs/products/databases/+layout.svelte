@@ -110,6 +110,15 @@
                     label: 'CSV imports',
                     href: '/docs/products/databases/csv-imports',
                     new: isNewUntil('31 Jul 2025')
+                },
+                {
+                    label: 'AI suggestions',
+                    href: '/docs/products/databases/ai-suggestions',
+                    new: isNewUntil('31 Dec 2025')
+                },
+                {
+                    label: 'Timestamp overrides',
+                    href: '/docs/products/databases/timestamp-overrides'
                 }
             ]
         },

@@ -255,6 +255,10 @@ Learn more about the CLI tables commands
 
 {% /tabs %}
 
+{% info title="AI suggestions" %}
+Enable **AI suggestions** to generate columns and indexes based on your table name and existing database structure. [Learn more about AI suggestions](/docs/products/databases/ai-suggestions).
+{% /info %}
+
 # Permissions {% #permissions %}
 Appwrite uses permissions to control data access.
 For security, only users that are granted permissions can access a resource.
