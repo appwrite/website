@@ -48,7 +48,8 @@
                     variant="secondary"
                     onclick={copy}
                     aria-label="Copy page as Markdown"
-                    class="no-right-radius text-sm"
+                    splitPosition="first"
+                    class="text-sm"
                 >
                     <Icon name="copy" aria-hidden="true" class="text-sm" />
                     <span>Copy page</span>
@@ -59,7 +60,7 @@
             </Tooltip>
 
             <button
-                class="no-left-radius web-button is-secondary text-sm"
+                class="web-button is-secondary is-split is-split-last text-sm"
                 use:melt={$trigger}
                 aria-label="Open options"
             >
