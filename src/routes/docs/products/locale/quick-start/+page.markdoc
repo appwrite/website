@@ -1,0 +1,182 @@
+---
+layout: article
+title: Start with Locale
+description: Get started quickly with Appwrite Locale. Learn how to get user location, countries, currencies, and more in minutes.
+difficulty: beginner
+readtime: 5
+---
+
+You can start using Appwrite Locale immediately. The service is publicly accessible and does not require authentication or API keys.
+
+# Initialize the client {% #initialize-client %}
+
+First, initialize the Appwrite client with your project endpoint and project ID.
+
+{% multicode %}
+```client-web
+import { Client, Locale } from "appwrite";
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>');
+
+const locale = new Locale(client);
+```
+```client-flutter
+import 'package:appwrite/appwrite.dart';
+
+final client = Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>');
+
+final locale = Locale(client);
+```
+```client-apple
+import Appwrite
+
+let client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+
+let locale = Locale(client)
+```
+```client-android-kotlin
+import io.appwrite.Client
+import io.appwrite.services.Locale
+
+val client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+
+val locale = Locale(client)
+```
+```client-react-native
+import { Client, Locale } from 'react-native-appwrite';
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>');
+
+const locale = new Locale(client);
+```
+{% /multicode %}
+
+# Get user locale {% #get-user-locale %}
+
+Get the current user's location based on their IP address. This returns country code, country name, continent information, IP address, and suggested currency.
+
+{% multicode %}
+```client-web
+const userLocale = await locale.get();
+
+console.log(userLocale); // { country: 'US', countryCode: 'US', continent: 'NA', ... }
+```
+```client-flutter
+Future result = locale.get().then((response) {
+    // Use the locale data
+    print(response.country);
+    print(response.countryCode);
+    return response;
+}).catchError((error) {
+    print(error.response);
+});
+```
+```client-apple
+let userLocale = try await locale.get()
+
+print(userLocale.country)
+print(userLocale.countryCode)
+```
+```client-android-kotlin
+val userLocale = locale.get()
+
+println(userLocale.country)
+println(userLocale.countryCode)
+```
+```client-react-native
+const userLocale = await locale.get();
+
+console.log(userLocale); // { country: 'US', countryCode: 'US', continent: 'NA', ... }
+```
+{% /multicode %}
+
+# List countries {% #list-countries %}
+
+Retrieve a list of all countries with their names and codes. This is useful for building country selectors and location-based features.
+
+{% multicode %}
+```client-web
+const countries = await locale.listCountries();
+
+console.log(countries); // { total: 195, countries: [...] }
+```
+```client-flutter
+Future result = locale.listCountries().then((response) {
+    // Use the countries list
+    print(response.total);
+    return response;
+}).catchError((error) {
+    print(error.response);
+});
+```
+```client-apple
+let countries = try await locale.listCountries()
+
+print(countries.total)
+```
+```client-android-kotlin
+val countries = locale.listCountries()
+
+println(countries.total)
+```
+```client-react-native
+const countries = await locale.listCountries();
+
+console.log(countries); // { total: 195, countries: [...] }
+```
+{% /multicode %}
+
+# List currencies {% #list-currencies %}
+
+Get a list of all currencies including symbols, names, plural forms, and decimal precision. This is essential for building payment and pricing features.
+
+{% multicode %}
+```client-web
+const currencies = await locale.listCurrencies();
+
+console.log(currencies); // { total: 150+, currencies: [...] }
+```
+```client-flutter
+Future result = locale.listCurrencies().then((response) {
+    // Use the currencies list
+    print(response.total);
+    return response;
+}).catchError((error) {
+    print(error.response);
+});
+```
+```client-apple
+let currencies = try await locale.listCurrencies()
+
+print(currencies.total)
+```
+```client-android-kotlin
+val currencies = locale.listCurrencies()
+
+println(currencies.total)
+```
+```client-react-native
+const currencies = await locale.listCurrencies();
+
+console.log(currencies); // { total: 150+, currencies: [...] }
+```
+{% /multicode %}
+
+# Next steps {% #next-steps %}
+
+Now that you've started using Locale, explore more features:
+
+- Learn about [user locale](/docs/products/locale/user-locale) details
+- Discover [countries](/docs/products/locale/countries) and [continents](/docs/products/locale/continents) data
+- Explore [currencies](/docs/products/locale/currencies) and [phone codes](/docs/products/locale/phone-codes) for international features
+
