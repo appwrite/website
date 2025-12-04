@@ -4,7 +4,7 @@
     import { copyToClipboard } from '$lib/utils/copy';
     import { cn } from '$lib/utils/cn';
     import { writable } from 'svelte/store';
-    import { Button, Icon } from '$lib/components/ui';
+    import { Button, Icon, SplitButton } from '$lib/components/ui';
     import { Tooltip } from '$lib/components';
     import { createDropdownMenu, melt } from '@melt-ui/svelte';
 
@@ -44,32 +44,34 @@
 
 {#if !markdown.loading && markdown.current}
     <div class={cn('copy-ctl inline-flex items-center', classNames)}>
-        <Tooltip disabled={!$copied}>
-            <Button
-                variant="secondary"
-                onclick={copy}
-                aria-label="Copy page as Markdown"
-                class="no-right-radius text-sm"
-            >
-                <Icon name="copy" aria-hidden="true" class="text-sm" />
-                <span>Copy page</span>
-            </Button>
-            {#snippet tooltip()}
-                Copied
-            {/snippet}
-        </Tooltip>
+        <SplitButton>
+            <Tooltip disabled={!$copied}>
+                <Button
+                    variant="secondary"
+                    onclick={copy}
+                    aria-label="Copy page as Markdown"
+                    class="no-right-radius text-sm"
+                >
+                    <Icon name="copy" aria-hidden="true" class="text-sm" />
+                    <span>Copy page</span>
+                </Button>
+                {#snippet tooltip()}
+                    Copied
+                {/snippet}
+            </Tooltip>
 
-        <button
-            class="no-left-radius web-button is-secondary text-sm"
-            use:melt={$trigger}
-            aria-label="Open options"
-        >
-            {#if $open}
-                <span class="web-icon-chevron-up" aria-hidden="true"></span>
-            {:else}
-                <span class="web-icon-chevron-down" aria-hidden="true"></span>
-            {/if}
-        </button>
+            <button
+                class="no-left-radius web-button is-secondary text-sm"
+                use:melt={$trigger}
+                aria-label="Open options"
+            >
+                {#if $open}
+                    <span class="web-icon-chevron-up" aria-hidden="true"></span>
+                {:else}
+                    <span class="web-icon-chevron-down" aria-hidden="true"></span>
+                {/if}
+            </button>
+        </SplitButton>
 
         {#if $open}
             <div class="menu-wrapper web-select-menu is-normal menu z-1" use:melt={$menu}>
@@ -96,53 +98,6 @@
     .copy-ctl {
         align-items: center;
     }
-    .copy-ctl :global(.web-button),
-    .copy-ctl :global(.web-button)::before,
-    .copy-ctl :global(.web-button)::after {
-        min-block-size: 32px;
-        height: 32px;
-    }
-
-    .copy-ctl :global(.web-button.no-right-radius),
-    .copy-ctl :global(.web-button.no-right-radius)::before,
-    .copy-ctl :global(.web-button.no-right-radius)::after {
-        padding-top: 5px;
-        padding-bottom: 5px;
-        padding-right: 10px;
-        padding-left: 8px;
-    }
-    .copy-ctl :global(.web-button.no-right-radius) {
-        flex-shrink: 0;
-    }
-    /* Chevron button — compact square with even padding */
-    .copy-ctl :global(.web-button.no-left-radius),
-    .copy-ctl :global(.web-button.no-left-radius)::before,
-    .copy-ctl :global(.web-button.no-left-radius)::after {
-        padding-top: 5px;
-        padding-bottom: 5px;
-        padding-right: 8px;
-        padding-left: 8px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        min-width: 32px;
-        width: 32px;
-    }
-    .copy-ctl :global(.web-button .text) {
-        font-size: 14px;
-    }
-    .copy-ctl :global([class*='icon']) {
-        font-size: 14px;
-    }
-    .copy-ctl :global(.web-button.no-left-radius .web-icon-chevron-down),
-    .copy-ctl :global(.web-button.no-left-radius .web-icon-chevron-up) {
-        font-size: 20px;
-        line-height: 1;
-        display: inline-block;
-        width: 20px;
-        height: 20px;
-        flex-shrink: 0;
-    }
     .menu-wrapper {
         padding: 4px;
         z-index: 100;
@@ -161,18 +116,5 @@
     .menu-btn:hover {
         cursor: pointer;
         background-color: hsl(var(--web-color-offset));
-    }
-    .copy-ctl :global(.web-button.no-left-radius),
-    .copy-ctl :global(.web-button.no-left-radius)::before,
-    .copy-ctl :global(.web-button.no-left-radius)::after {
-        border-top-left-radius: 0;
-        border-bottom-left-radius: 0;
-        border-left: 0;
-    }
-    .copy-ctl :global(.web-button.no-right-radius),
-    .copy-ctl :global(.web-button.no-right-radius)::before,
-    .copy-ctl :global(.web-button.no-right-radius)::after {
-        border-top-right-radius: 0;
-        border-bottom-right-radius: 0;
     }
 </style>
