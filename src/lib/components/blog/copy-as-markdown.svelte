@@ -25,6 +25,16 @@
         timeout = setTimeout(() => copied.set(false), 2000);
     };
 
+    const resetCopied = () => {
+        if (timeout) clearTimeout(timeout);
+        copied.set(false);
+    };
+
+    const copyAndClose = () => {
+        copy();
+        open.set(false);
+    };
+
     const {
         elements: { trigger, menu },
         states: { open }
@@ -47,6 +57,7 @@
                 <Button
                     variant="secondary"
                     onclick={copy}
+                    onmouseleave={resetCopied}
                     aria-label="Copy page as Markdown"
                     splitPosition="first"
                     class="text-sm"
@@ -76,13 +87,20 @@
             <div class="menu-wrapper web-select-menu is-normal menu z-1" use:melt={$menu}>
                 <ul class="text-sub-body">
                     <li>
-                        <button type="button" class="menu-btn text-sm" onclick={copy}>
+                        <button type="button" class="menu-btn text-sm" onclick={copyAndClose}>
                             <Icon name="copy" aria-hidden="true" class="text-sm" />
                             <span>Copy as Markdown</span>
                         </button>
                     </li>
                     <li>
-                        <button type="button" class="menu-btn text-sm" onclick={viewInNewTab}>
+                        <button
+                            type="button"
+                            class="menu-btn text-sm"
+                            onclick={() => {
+                                viewInNewTab();
+                                open.set(false);
+                            }}
+                        >
                             <Icon name="external-icon" aria-hidden="true" class="text-sm" />
                             <span>View as Markdown</span>
                         </button>
