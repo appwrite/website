@@ -1,45 +1,119 @@
 <script lang="ts">
-    import { getContext } from 'svelte';
-    import { handleCopy } from '$lib/utils/copy';
+    import { page } from '$app/stores';
+    import { getPageMarkdown } from '$lib/remote/markdown.remote';
+    import { copyToClipboard } from '$lib/utils/copy';
     import { cn } from '$lib/utils/cn';
-    import { rawContent } from '$routes/docs/+layout.svelte';
+    import { writable } from 'svelte/store';
+    import { Button, Icon, SplitButton } from '$lib/components/ui';
+    import { Tooltip } from '$lib/components';
+    import { createDropdownMenu, melt } from '@melt-ui/svelte';
 
     interface CopyAsMarkdownProps {
         class?: string;
     }
 
-    const { copy, copied } = handleCopy($rawContent ?? '', 2000);
-
     const { class: classNames }: CopyAsMarkdownProps = $props();
+
+    const markdown = getPageMarkdown($page.route.id);
+    const copied = writable(false);
+    let timeout: ReturnType<typeof setTimeout> | undefined = undefined;
+
+    const copy = () => {
+        if (timeout) clearTimeout(timeout);
+        copyToClipboard(markdown.current ?? '');
+        copied.set(true);
+        timeout = setTimeout(() => copied.set(false), 2000);
+    };
+
+    const {
+        elements: { trigger, menu },
+        states: { open }
+    } = createDropdownMenu({
+        forceVisible: true,
+        positioning: { placement: 'bottom-end' }
+    });
+
+    const viewInNewTab = () => {
+        const { pathname } = window.location;
+        const url = pathname.endsWith('.md') ? pathname : `${pathname}.md`;
+        window.open(url, '_blank', 'noopener,noreferrer');
+    };
 </script>
 
-{#if $rawContent}
-    <button
-        class={cn(
-            'text-caption hover:text-accent text-secondary ml-4 flex cursor-pointer items-center gap-2.5 rounded-md p-1.5 transition-colors',
-            classNames
-        )}
-        onclick={copy}
-    >
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-6" viewBox="0 0 208 128"
-            ><rect
-                width="198"
-                height="118"
-                x="5"
-                y="5"
-                ry="10"
-                stroke="currentColor"
-                stroke-width="10"
-                fill="none"
-            /><path
-                d="M30 98V30h20l20 25 20-25h20v68H90V59L70 84 50 59v39zm125 0l-30-33h20V30h20v35h20z"
-                fill="currentColor"
-            />
-        </svg>
-        {#if $copied}
-            Copied
-        {:else}
-            Copy page as markdown
+{#if !markdown.loading && markdown.current}
+    <div class={cn('copy-ctl inline-flex items-center', classNames)}>
+        <SplitButton>
+            <Tooltip disabled={!$copied}>
+                <Button
+                    variant="secondary"
+                    onclick={copy}
+                    aria-label="Copy page as Markdown"
+                    splitPosition="first"
+                    class="text-sm"
+                >
+                    <Icon name="copy" aria-hidden="true" class="text-sm" />
+                    <span>Copy page</span>
+                </Button>
+                {#snippet tooltip()}
+                    Copied
+                {/snippet}
+            </Tooltip>
+
+            <button
+                class="web-button is-secondary is-split is-split-last text-sm"
+                use:melt={$trigger}
+                aria-label="Open options"
+            >
+                {#if $open}
+                    <span class="web-icon-chevron-up" aria-hidden="true"></span>
+                {:else}
+                    <span class="web-icon-chevron-down" aria-hidden="true"></span>
+                {/if}
+            </button>
+        </SplitButton>
+
+        {#if $open}
+            <div class="menu-wrapper web-select-menu is-normal menu z-1" use:melt={$menu}>
+                <ul class="text-sub-body">
+                    <li>
+                        <button type="button" class="menu-btn text-sm" onclick={copy}>
+                            <Icon name="copy" aria-hidden="true" class="text-sm" />
+                            <span>Copy as Markdown</span>
+                        </button>
+                    </li>
+                    <li>
+                        <button type="button" class="menu-btn text-sm" onclick={viewInNewTab}>
+                            <Icon name="external-icon" aria-hidden="true" class="text-sm" />
+                            <span>View as Markdown</span>
+                        </button>
+                    </li>
+                </ul>
+            </div>
         {/if}
-    </button>
+    </div>
 {/if}
+
+<style>
+    .copy-ctl {
+        align-items: center;
+    }
+    .menu-wrapper {
+        padding: 4px;
+        z-index: 100;
+    }
+    .menu-btn {
+        height: 32px;
+        min-height: 32px;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        border-radius: 0.5rem;
+        padding: 6px 8px;
+        width: 100%;
+        text-align: left;
+    }
+    .menu-btn:hover {
+        cursor: pointer;
+        background-color: hsl(var(--web-color-offset));
+    }
+</style>
