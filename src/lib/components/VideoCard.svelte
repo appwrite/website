@@ -5,35 +5,11 @@
     interface Props {
         href: string;
         title: string;
-        duration?: number | string; // Duration in seconds (number) or time format like "1:20" or "1:05:30" (string)
+        duration?: string; // Duration in time format like "1:20" or "1:05:30"
         class?: string;
     }
 
     const { href, title, duration, class: className = '' }: Props = $props();
-
-    function parseDuration(duration: number | string | undefined): string {
-        if (!duration) return '';
-
-        if (typeof duration === 'string' && duration.includes(':')) {
-            return duration;
-        }
-
-        // If it's a number (seconds), format it
-        if (typeof duration === 'number') {
-            const mins = Math.floor(duration / 60);
-            const secs = Math.floor(duration % 60);
-            return `${mins}:${secs.toString().padStart(2, '0')}`;
-        }
-
-        // If it's a string number, parse and format it
-        const seconds = parseInt(duration, 10);
-        if (isNaN(seconds)) return '';
-        const mins = Math.floor(seconds / 60);
-        const secs = Math.floor(seconds % 60);
-        return `${mins}:${secs.toString().padStart(2, '0')}`;
-    }
-
-    const durationFormatted = parseDuration(duration);
 </script>
 
 <a
@@ -64,9 +40,9 @@
         <!-- Main title -->
         <span class="video-card-title text-greyscale-900 dark:text-greyscale-100 flex-1">
             {title}
-            {#if durationFormatted}
+            {#if duration}
                 <span class="video-card-duration-separator"> · </span>
-                <span class="video-card-duration">{durationFormatted}</span>
+                <span class="video-card-duration">{duration}</span>
             {/if}
         </span>
 
@@ -105,9 +81,9 @@
 
         <span class="video-card-title text-greyscale-900 dark:text-greyscale-100 flex-1">
             {title}
-            {#if durationFormatted}
+            {#if duration}
                 <span class="video-card-duration-separator"> · </span>
-                <span class="video-card-duration">{durationFormatted}</span>
+                <span class="video-card-duration">{duration}</span>
             {/if}
         </span>
     </div>
