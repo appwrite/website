@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { onMount } from 'svelte';
     import { cn } from '$lib/utils/cn';
     import Icon from './ui/icon/icon.svelte';
 
@@ -9,6 +10,61 @@
     }
 
     const { href, title, class: className = '' }: Props = $props();
+
+    let duration = $state(0);
+    let durationFormatted = $state('');
+
+    function getYoutubeId(url: string): string | null {
+        // Handle various YouTube URL formats
+        const patterns = [
+            /(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([^&?/]+)/,
+            /youtube\.com\/.*[?&]v=([^&]+)/
+        ];
+
+        for (const pattern of patterns) {
+            const match = url.match(pattern);
+            if (match && match[1]) {
+                return match[1];
+            }
+        }
+        return null;
+    }
+
+    function formatDuration(seconds: number): string {
+        if (!seconds) return '';
+        const mins = Math.floor(seconds / 60);
+        const secs = Math.floor(seconds % 60);
+        return `${mins}:${secs.toString().padStart(2, '0')}`;
+    }
+
+    onMount(() => {
+        const youtubeId = getYoutubeId(href);
+        if (!youtubeId) {
+            return;
+        }
+        const fetchDuration = async () => {
+            try {
+                const response = await fetch(
+                    `/api/youtube-duration?id=${encodeURIComponent(youtubeId)}`
+                );
+
+                if (!response.ok) {
+                    throw new Error(`Failed to fetch duration: ${response.status}`);
+                }
+
+                const data = await response.json();
+
+                if (data.duration && data.duration > 0) {
+                    duration = data.duration;
+                    durationFormatted = formatDuration(data.duration);
+                }
+            } catch (err) {
+                // do nothing
+            }
+        };
+
+        fetchDuration();
+    });
 </script>
 
 <a
@@ -39,6 +95,10 @@
         <!-- Main title -->
         <span class="video-card-title text-greyscale-900 dark:text-greyscale-100 flex-1">
             {title}
+            {#if durationFormatted}
+                <span class="video-card-duration-separator"> · </span>
+                <span class="video-card-duration">{durationFormatted}</span>
+            {/if}
         </span>
 
         <Icon
@@ -76,6 +136,10 @@
 
         <span class="video-card-title text-greyscale-900 dark:text-greyscale-100 flex-1">
             {title}
+            {#if durationFormatted}
+                <span class="video-card-duration-separator"> · </span>
+                <span class="video-card-duration">{durationFormatted}</span>
+            {/if}
         </span>
     </div>
 </a>
@@ -174,13 +238,23 @@
         letter-spacing: -0.072px;
     }
 
-    .video-tutorial-label span {
-        text-align: center;
+    .video-tutorial-label span,
+    .video-card-duration-separator,
+    .video-card-duration {
         font-family: var(--font-family-sansSerif, Inter);
         font-size: var(--font-size-tiny, 14px);
         font-style: normal;
         font-weight: 400;
         line-height: var(--line-height-xs, 22px);
         letter-spacing: -0.063px;
+    }
+
+    .video-tutorial-label span {
+        text-align: center;
+    }
+
+    .video-card-duration-separator,
+    .video-card-duration {
+        color: var(--secondary, var(--color-secondary));
     }
 </style>
