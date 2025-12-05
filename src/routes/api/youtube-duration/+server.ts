@@ -24,28 +24,23 @@ export const GET: RequestHandler = async ({ url }) => {
         }
 
         const html = await response.text();
-        const patterns = [
-            /"lengthSeconds":"(\d+)"/,
-            /"approxDurationMs":"(\d+)"/,
-            /"videoDetails":\s*\{[^}]*"lengthSeconds":\s*"(\d+)"/,
-            /"lengthSeconds":\s*"(\d+)"/,
-            /"duration":\s*"PT(\d+)S"/,
-            /itemprop="duration"\s+content="PT(\d+)S"/
-        ];
-
         let durationSeconds = 0;
 
-        for (const pattern of patterns) {
-            const match = html.match(pattern);
+        const schemaMatch = html.match(/itemprop="duration" content="([^"]+)"/);
+        if (schemaMatch) {
+            const duration = schemaMatch[1];
+            const match = duration.match(/PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?/);
             if (match) {
-                if (pattern.source.includes('DurationMs')) {
-                    durationSeconds = Math.floor(parseInt(match[1]) / 1000);
-                } else {
-                    durationSeconds = parseInt(match[1]);
-                }
-                if (durationSeconds > 0) {
-                    break;
-                }
+                const hours = parseInt(match[1] || '0');
+                const minutes = parseInt(match[2] || '0');
+                const seconds = parseInt(match[3] || '0');
+                durationSeconds = hours * 3600 + minutes * 60 + seconds;
+            }
+        }
+        if (durationSeconds === 0) {
+            const lengthMatch = html.match(/"lengthSeconds":"(\d+)"/);
+            if (lengthMatch) {
+                durationSeconds = parseInt(lengthMatch[1]);
             }
         }
 
