@@ -124,8 +124,8 @@
                                             development, and launch faster.
                                             <br />
                                             <br />
-                                            Ready to talk? Fill out the form, and one of our experts
-                                            will be in touch.
+                                            Ready to talk? Fill out the form, and one of our experts will
+                                            be in touch.
                                         </p>
                                     </section>
                                 {/if}
