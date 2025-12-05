@@ -1,70 +1,39 @@
 <script lang="ts">
-    import { onMount } from 'svelte';
     import { cn } from '$lib/utils/cn';
     import Icon from './ui/icon/icon.svelte';
 
     interface Props {
         href: string;
         title: string;
+        duration?: number | string; // Duration in seconds (number) or time format like "1:20" or "1:05:30" (string)
         class?: string;
     }
 
-    const { href, title, class: className = '' }: Props = $props();
+    const { href, title, duration, class: className = '' }: Props = $props();
 
-    let duration = $state(0);
-    let durationFormatted = $state('');
+    function parseDuration(duration: number | string | undefined): string {
+        if (!duration) return '';
 
-    function getYoutubeId(url: string): string | null {
-        // Handle various YouTube URL formats
-        const patterns = [
-            /(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([^&?/]+)/,
-            /youtube\.com\/.*[?&]v=([^&]+)/
-        ];
-
-        for (const pattern of patterns) {
-            const match = url.match(pattern);
-            if (match && match[1]) {
-                return match[1];
-            }
+        if (typeof duration === 'string' && duration.includes(':')) {
+            return duration;
         }
-        return null;
-    }
 
-    function formatDuration(seconds: number): string {
-        if (!seconds) return '';
+        // If it's a number (seconds), format it
+        if (typeof duration === 'number') {
+            const mins = Math.floor(duration / 60);
+            const secs = Math.floor(duration % 60);
+            return `${mins}:${secs.toString().padStart(2, '0')}`;
+        }
+
+        // If it's a string number, parse and format it
+        const seconds = parseInt(duration, 10);
+        if (isNaN(seconds)) return '';
         const mins = Math.floor(seconds / 60);
         const secs = Math.floor(seconds % 60);
         return `${mins}:${secs.toString().padStart(2, '0')}`;
     }
 
-    onMount(() => {
-        const youtubeId = getYoutubeId(href);
-        if (!youtubeId) {
-            return;
-        }
-        const fetchDuration = async () => {
-            try {
-                const response = await fetch(
-                    `/api/youtube-duration?id=${encodeURIComponent(youtubeId)}`
-                );
-
-                if (!response.ok) {
-                    return;
-                }
-
-                const data = await response.json();
-
-                if (data.duration && data.duration > 0) {
-                    duration = data.duration;
-                    durationFormatted = formatDuration(data.duration);
-                }
-            } catch (err) {
-                // do nothing
-            }
-        };
-
-        fetchDuration();
-    });
+    const durationFormatted = parseDuration(duration);
 </script>
 
 <a
