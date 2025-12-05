@@ -93,7 +93,14 @@
                         </button>
                     </li>
                     <li>
-                        <button type="button" class="menu-btn text-sm" onclick={() => { viewInNewTab(); open.set(false); }}>
+                        <button
+                            type="button"
+                            class="menu-btn text-sm"
+                            onclick={() => {
+                                viewInNewTab();
+                                open.set(false);
+                            }}
+                        >
                             <Icon name="external-icon" aria-hidden="true" class="text-sm" />
                             <span>View as Markdown</span>
                         </button>
