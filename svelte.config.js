@@ -64,7 +64,9 @@ const config = {
 
             instrumentation: {
                 server: true
-            }
+            },
+
+            remoteFunctions: true
         }
     }
 };
