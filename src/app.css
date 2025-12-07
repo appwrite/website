@@ -3,9 +3,6 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-    /* Breakpoints */
-    --breakpoint-xs: 23.125rem; /* 370px */
-
     /* Colors */
     --color-*: initial;
 

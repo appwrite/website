@@ -72,10 +72,10 @@
     <div class="container mx-auto">
         <section class="flex flex-col gap-4 lg:flex-row lg:items-baseline lg:gap-x-20">
             <h2
-                class="text-title font-aeonik-pro text-primary max-w-[700px] text-2xl leading-10 text-pretty xs:text-3xl xs:leading-12 sm:text-4xl md:text-5xl"
+                class="text-title font-aeonik-pro text-primary max-w-[700px] text-2xl leading-10 text-pretty min-[370px]:text-3xl min-[370px]:leading-12 sm:text-4xl md:text-5xl"
             >
                 Safely scale with built-in
-                <span class="xs:whitespace-nowrap">security and compliance</span><span
+                <span class="min-[370px]:whitespace-nowrap">security and compliance</span><span
                     class="text-accent">_</span
                 >
             </h2>
