@@ -130,7 +130,7 @@
         >
             <!-- front of the ticket -->
             <div class="absolute inset-1 flex flex-1 flex-col gap-1 backface-hidden">
-                <TicketUrl username={props.gh_user} />
+                <TicketUrl username={props.gh_user ?? ''} />
                 <div class="relative z-10 flex flex-1 flex-col rounded-xl bg-[#19191C] p-2">
                     <img
                         src="/images/logos/appwrite.svg"
@@ -185,7 +185,7 @@
             </div>
             <!-- back of the ticket -->
             <div class="absolute inset-1 z-10 flex rotate-y-180 flex-col gap-1 backface-hidden">
-                <TicketUrl username={props.gh_user} />
+                <TicketUrl username={props.gh_user ?? ''} />
                 <div class="relative z-10 flex flex-1 flex-col gap-1 rounded-xl bg-[#19191C] p-2">
                     <div class="relative aspect-square">
                         {#if sticker !== null && typeof sticker !== 'undefined' && stickerPack && sticker in stickerPack}
@@ -224,8 +224,8 @@
                                     <div
                                         class="mt-2 grid h-10 w-full grid-cols-52 grid-rows-7 gap-0.5"
                                     >
-                                        {#each c as l, i}
-                                            {#each l as level}
+                                        {#each c as l, i (i)}
+                                            {#each l as level (level)}
                                                 <div class="flex gap-1">
                                                     <div
                                                         class={cn(

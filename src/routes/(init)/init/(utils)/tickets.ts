@@ -1,8 +1,9 @@
-import { APPWRITE_DB_INIT_ID, APPWRITE_COL_INIT_ID, NODE_ENV } from '$env/static/private';
+import { APPWRITE_DB_INIT_ID, APPWRITE_COL_INIT_ID } from '$env/static/private';
 import { Query, ID, type Models } from 'appwrite';
 import type { User } from './auth';
 import { createInitServerClient } from './appwrite';
 import { redirect } from '@sveltejs/kit';
+import { dev } from '$app/environment';
 
 type SendToUserListArgs = {
     name: string;
@@ -66,7 +67,7 @@ export const createNewTicket = async (user: User) => {
 
     if (!githubTicket?.total) {
         // Send request details to user list for growth in production if a ticket doens't exist
-        if (NODE_ENV === 'production' && githubEmail && appwriteId) {
+        if (!dev && githubEmail && appwriteId) {
             await sendToUserList({
                 name: appwriteName ?? githubName ?? githubEmail,
                 email: appwriteEmail ?? githubEmail,
@@ -101,7 +102,7 @@ export const getTicketDocByUsername = async (username: string) => {
 export type TicketData = Pick<Models.Document, '$id'> & {
     name: string;
     title?: string;
-    gh_user: string;
+    gh_user?: string;
     aw_email?: string;
     avatar_url?: string;
     id: number;

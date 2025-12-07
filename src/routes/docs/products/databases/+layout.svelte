@@ -52,6 +52,16 @@
                     href: '/docs/products/databases/relationships'
                 },
                 {
+                    label: 'Operators',
+                    href: '/docs/products/databases/operators',
+                    new: isNewUntil('31 Dec 2025')
+                },
+                {
+                    label: 'Geo queries',
+                    href: '/docs/products/databases/geo-queries',
+                    new: isNewUntil('30 Sep 2025')
+                },
+                {
                     label: 'Backups',
                     href: '/docs/products/databases/backups'
                 }
@@ -71,6 +81,11 @@
                 {
                     label: 'Pagination',
                     href: '/docs/products/databases/pagination'
+                },
+                {
+                    label: 'Transactions',
+                    href: '/docs/products/databases/transactions',
+                    new: isNewUntil('31 Oct 2025')
                 },
                 {
                     label: 'Type generation',
@@ -95,6 +110,15 @@
                     label: 'CSV imports',
                     href: '/docs/products/databases/csv-imports',
                     new: isNewUntil('31 Jul 2025')
+                },
+                {
+                    label: 'AI suggestions',
+                    href: '/docs/products/databases/ai-suggestions',
+                    new: isNewUntil('31 Dec 2025')
+                },
+                {
+                    label: 'Timestamp overrides',
+                    href: '/docs/products/databases/timestamp-overrides'
                 }
             ]
         },

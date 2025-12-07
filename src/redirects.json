@@ -448,10 +448,6 @@
         "redirect": "/docs/advanced/platform/permissions"
     },
     {
-        "link": "/docs/",
-        "redirect": "/docs/"
-    },
-    {
         "link": "/docs/models/bucket",
         "redirect": "/docs/references/cloud/models/bucket"
     },
@@ -723,5 +719,57 @@
     {
         "link": "/docs/tooling/mcp/mcp-for-docs",
         "redirect": "/docs/tooling/mcp/docs"
+    },
+    {
+        "link": "/docs/tooling/mcp/claude",
+        "redirect": "/docs/tooling/mcp/claude-desktop"
+    },
+    {
+        "link": "/docs/advanced/self-hosting/debug",
+        "redirect": "/docs/advanced/self-hosting/production/debugging"
+    },
+    {
+        "link": "/docs/advanced/self-hosting/update",
+        "redirect": "/docs/advanced/self-hosting/production/updates"
+    },
+    {
+        "link": "/docs/advanced/self-hosting/functions",
+        "redirect": "/docs/advanced/self-hosting/configuration/functions"
+    },
+    {
+        "link": "/docs/advanced/self-hosting/tls-certificates",
+        "redirect": "/docs/advanced/self-hosting/configuration/tls-certificates"
+    },
+    {
+        "link": "/docs/advanced/self-hosting/storage",
+        "redirect": "/docs/advanced/self-hosting/configuration/storage"
+    },
+    {
+        "link": "/docs/advanced/self-hosting/sites",
+        "redirect": "/docs/advanced/self-hosting/configuration/sites"
+    },
+    {
+        "link": "/docs/advanced/self-hosting/sms",
+        "redirect": "/docs/advanced/self-hosting/configuration/sms"
+    },
+    {
+        "link": "/docs/advanced/self-hosting/email",
+        "redirect": "/docs/advanced/self-hosting/configuration/email"
+    },
+    {
+        "link": "/docs/advanced/self-hosting/coolify",
+        "redirect": "/docs/advanced/self-hosting/platforms/coolify"
+    },
+    {
+        "link": "/docs/advanced/self-hosting/environment-variables",
+        "redirect": "/docs/advanced/self-hosting/configuration/environment-variables"
+    },
+    {
+        "link": "/products/sites/offer-300-s",
+        "redirect": "/products/sites/offer-300?format=short"
+    },
+    {
+        "link": "/docs/products/auth/preferences-storage",
+        "redirect": "/docs/products/auth/preferences"
     }
 ]

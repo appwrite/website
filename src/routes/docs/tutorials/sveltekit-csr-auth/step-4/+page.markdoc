@@ -44,7 +44,7 @@ We can get the returned data in the root page by using the `data` prop:
 	$: loggedIn = !!data.account;
 
 	async function logout() {
-		await appwrite.account.deleteSession('current');
+		await appwrite.account.deleteSession({ sessionId: 'current' });
 		// invalidateAll will execute all `load` functions again.
 		// In our case, this means we'll fetch the account data again.
 		await invalidateAll();

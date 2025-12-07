@@ -1,0 +1,42 @@
+---
+layout: partner
+title: Aligned Services Inc
+description: Delivering high-tech solutions across semiconductors, aerospace, and healthcare with expertise in hardware and AI.
+date: 2025-09-09
+featured: false
+partnerLevel: Silver
+isNew: true
+cover: /images/partners/covers/aligned.png
+category: agency
+website: https://www.aligned.com/
+email: mailto:jkryzak@mac.com
+product: 
+    avatar: '/images/partners/avatars/aligned.png'
+    vendor: Jan Luther
+    description: Delivering high-tech solutions across semiconductors, aerospace, and healthcare with expertise in hardware and AI.
+technologies: 
+    - Python
+    - Verilog
+    - VHDL
+    - Ruby
+    - C++
+services:
+    - FPGA design for high-speed interfaces
+    - Chip integration
+    - DO-254 Aerospace SOI requirements
+    - AI solutions for semiconductors, aerospace, and healthcare
+regions:
+    - India
+    - Singapore
+    - Canada
+    - Ireland
+languages: 
+    - English
+---
+# Overview
+
+Aligned Services Inc, led by Joseph Kryzak, specializes in semiconductor, aerospace, and healthcare AI solutions. With deep expertise in FPGA design, chip integration, and cloud applications, the company brings advanced engineering and innovative AI to highly technical industries. By combining hardware expertise with Appwrite-powered backends, Aligned Services Inc builds scalable and secure solutions for mission-critical domains.
+
+# Services
+
+The company offers FPGA design of high-speed interfaces, chip integration for cutting-edge hardware, and AI-driven solutions across semiconductors, aerospace, and healthcare.

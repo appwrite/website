@@ -13,7 +13,7 @@ These types of association between entities can be modeled in Appwrite using rel
 Appwrite Relationships is an experimental feature. The API and behavior are subject to change in future versions.
 {% /info %}
 
-# Relationship Columns {% #relationship-columns %}
+# Relationship columns {% #relationship-columns %}
 
 Relationships are represented in a table using **relationship columns**.
 The relationship column contains the ID of related rows, which it references during read, update, and delete operations.
@@ -27,11 +27,11 @@ Relationships help reduce redundant information. For example, a user can create 
 
 Duplicated records waste storage, but more importantly, makes the database much harder to maintain. If the user changes their user name, you will have to update dozens or hundreds of records, a problem commonly known as an update anomaly in tablesDB. You can avoid duplicate information by storing users and posts in separate tables and relating a user and their posts through a relationship.
 
-# Tradeoff {% #trade-offs %}
+# Tradeoffs {% #trade-offs %}
 
 Consider using relationships when the same information is found in multiple places to avoid duplicates. However, relationships come with the tradeoff of slowing down queries. For applications where the best read and write performance is important, it may be acceptable to tolerate duplicate data.
 
-# Opt-in Loading {% #performance-loading %}
+# Opt-in loading {% #performance-loading %}
 
 By default, Appwrite returns only a row's own fields when you retrieve rows. Related rows are **not automatically loaded** unless you explicitly request them using query selection. This eliminates unintentional payload bloat and gives you precise control over performance.
 
@@ -138,7 +138,7 @@ $tables->createRelationshipColumn(
 
 ```python
 from appwrite.client import Client
-from appwrite.services.tablesDB import TablesDB
+from appwrite.services.tables_db import TablesDB
 
 client = (Client()
     .set_endpoint('https://<REGION>.cloud.appwrite.io/v1')     # Your API Endpoint
@@ -184,7 +184,7 @@ tablesDB.create_relationship_column(
 
 
 ```deno
-import { Client, TablesDB } from "https://deno.land/x/appwrite/mod.ts";
+import { Client, TablesDB } from "npm:node-appwrite";
 
 const client = new Client()
     .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
@@ -267,9 +267,7 @@ tablesDB.createRelationshipColumn(
     twoWay: true,                   // Is two-way
     key: "reviews",                 // Column key
     twoWayKey: "movie",             // Two-way column key
-    onDelete
-
-: "cascade"             // On delete action         
+    onDelete: "cascade"             // On delete action
 )
 ```
 
@@ -316,11 +314,11 @@ const client = new Client()
 
 const tablesDB = new TablesDB(client);
 
-await tablesDB.createRow(
-    'marvel',
-    'movies',
-    ID.unique(),
-    {
+await tablesDB.createRow({
+    databaseId: 'marvel',
+    tableId: 'movies',
+    rowId: ID.unique(),
+    data: {
         title: 'Spiderman',
         year: 2002,
         reviews: [
@@ -328,7 +326,7 @@ await tablesDB.createRow(
             { author: 'Alice', text: 'Loved it!' }
         ]
     }
-)
+});
 ```
 
 ```dart
@@ -423,19 +421,17 @@ const client = new Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
     .setProject('<PROJECT_ID>');               // Your project ID
 
-const tablesDB = new TablesDB(client);
-
-await tablesDB.createRow(
-    'marvel',
-    'movies',
-    ID.unique(),
-    {
+await tablesDB.createRow({
+    databaseId: 'marvel',
+    tableId: 'movies',
+    rowId: ID.unique(),
+    data: {
         title: 'Spiderman',
         year: 2002,
         reviews: [
             '<REVIEW_ID_1>',
             '<REVIEW_ID_2>'
-        ]
+});
     }
 )
 ```
@@ -520,7 +516,7 @@ tablesDB.createRow(
 # Queries {% #queries %}
 Queries are currently not available in the experimental version of Appwrite Relationships but will be added in a later version.
 
-# Update Relationships {% #update %}
+# Update relationships {% #update %}
 Relationships can be updated by updating the relationship column.
 
 {% multicode %}
@@ -707,7 +703,6 @@ tablesDB.deleteRow(
     rowId = "spiderman"
 )
 ```
-
 {% /multicode %}
 
 # Permissions {% #permissions %}
@@ -736,8 +731,8 @@ await tablesDB.createRow(
         title: 'Spiderman',
         year: 2002,
         reviews: [
-            { 
-                author: 'Bob', 
+            {
+                author: 'Bob',
                 text: 'Great movie!',
                 $permissions: [
                     Permission.read(Role.any())
@@ -764,8 +759,8 @@ await tablesDB.createRow(
     'title': 'Spiderman',
     'year': 2002,
     'reviews': [
-      { 
-         'author': 'Bob', 
+      {
+         'author': 'Bob',
          'text': 'Great movie!',
          '\$permissions': [
            Permission.read(Role.any())
@@ -792,7 +787,7 @@ tablesDB.createRow(
         "title": "Spiderman",
         "year": 2002,
         "reviews": [
-            [ 
+            [
                 "author": "Bob",
                 "text": "Great movie!",
                 "$permissions": [
@@ -820,7 +815,7 @@ tablesDB.createRow(
         "title": "Spiderman",
         "year": 2002,
         "reviews": [
-            [ 
+            [
                 "author": "Bob",
                 "text": "Great movie!",
                 "$permissions": [

@@ -7,7 +7,7 @@
     class="border-smooth text-secondary relative container mt-12 flex items-center justify-between gap-4 border-t py-6"
 >
     <ul class="flex items-center gap-2">
-        {#each socials as social}
+        {#each socials as social, i (i)}
             <li>
                 <a
                     href={social.link}
@@ -16,7 +16,7 @@
                     target="_blank"
                     rel="noopener noreferrer"
                 >
-                    <span class={social.icon} aria-hidden="true" />
+                    <span class={social.icon} aria-hidden="true"></span>
                 </a>
             </li>
         {/each}
@@ -32,7 +32,7 @@
             frameborder="0"
             scrolling="no"
             style:color-scheme="none"
-        />
+        ></iframe>
 
         <ul class="flex gap-4">
             <li><a class="web-link" href="/terms">Terms</a></li>

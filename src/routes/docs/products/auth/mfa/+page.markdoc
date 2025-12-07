@@ -481,12 +481,12 @@ You can generate a QR code for the user to scan by calling `avatars.getQR()`.
 
 {% multicode %}
 ```client-web
-const result = await avatars.getQR(
-    authenticatorUrl,  // text
-    800,  // size (optional)
-    0,  // margin (optional)
-    false // download (optional)
-);
+const result = await avatars.getQR({
+    text: uri,
+    size: 800,  // optional
+    margin: 0,  // optional
+    download: false // optional
+});
 
 console.log(result); // Resource URL
 ```
@@ -655,10 +655,10 @@ Begin your login flow with the default authentication method used by your app, f
 
 {% multicode %}
 ```client-web
-const session = await account.createEmailPasswordSession(
-    'email@example.com', // email
-    'password' // password
-);
+const session = await account.createEmailPasswordSession({
+    email: 'email@example.com',
+    password: 'password'
+});
 ```
 
 ```client-flutter
@@ -824,9 +824,9 @@ Note that this is only valid as a second factor if the user did not initialize t
 
 {% multicode %}
 ```client-web
-const challenge = await account.createMfaChallenge(
-    'email'  // factor
-);
+const challenge = await account.createMfaChallenge({
+    factor: 'email'
+});
 
 // Save the challenge ID to complete the challenge later
 const challengeId = challenge.$id;
@@ -870,9 +870,9 @@ You cannot use this method if the user initialized their login with phone OTP.
 
 {% multicode %}
 ```client-web
-const challenge = await account.createMfaChallenge(
-    'phone' // factor
-);
+const challenge = await account.createMfaChallenge({
+    factor: 'phone'
+});
 
 // Save the challenge ID to complete the challenge later
 const challengeId = challenge.$id;
@@ -916,9 +916,9 @@ Initiate a challenge for users to complete using an authenticator app.
 
 {% multicode %}
 ```client-web
-const challenge = await account.createMfaChallenge(
-    'totp' // factor
-);
+const challenge = await account.createMfaChallenge({
+    factor: AuthenticationFactor.Totp
+});
 
 // Save the challenge ID to complete the challenge later
 const challengeId = challenge.$id;
@@ -963,10 +963,10 @@ Once the user receives the challenge code, you can pass the code back to Appwrit
 
 {% multicode %}
 ```client-web
-const response = await account.updateMfaChallenge(
-    '<CHALLENGE_ID>', // challengeId
-    '<OTP>' // otp
-);
+const response = await account.updateMfaChallenge({
+    challengeId: '<CHALLENGE_ID>',
+    otp: '<OTP>'
+});
 ```
 
 ```client-flutter
@@ -1007,9 +1007,9 @@ recovery code factor. Initialize the challenge by calling `account.createMfaChal
 
 {% multicode %}
 ```client-web
-const challenge = await account.createMfaChallenge(
-    'recoverycode' // factor
-);
+const challenge = await account.createMfaChallenge({
+    factor: AuthenticationFactor.Recoverycode
+});
 
 // Save the challenge ID to complete the challenge later
 const challengeId = challenge.$id;
@@ -1050,10 +1050,10 @@ Then complete the challenge by calling `account.updateMfaChallenge()` with the c
 
 {% multicode %}
 ```client-web
-const response = await account.updateMfaChallenge(
-    '<CHALLENGE_ID>', // challengeId
-    '<RECOVERY_CODE>' // otp
-);
+const response = await account.updateMfaChallenge({
+    challengeId: '<CHALLENGE_ID>',
+    otp: '<RECOVERY_CODE>'
+});
 ```
 
 ```client-flutter
