@@ -1,102 +1,102 @@
 <script lang="ts">
-	/// <reference types="three" />
-	import { T, useTask, useThrelte } from '@threlte/core';
-	import { Uniform, MeshBasicMaterial, Vector2, type Material } from 'three';
-	import type { WebGLProgramParametersWithUniforms } from 'three';
-	import noiseShader from './shaders/noise.glsl?raw';
-	const noise = noiseShader;
-	import { onMount } from 'svelte';
-	import { interactivity } from '@threlte/extras';
-	import { useViewport } from '@threlte/extras';
+    /// <reference types="three" />
+    import { T, useTask, useThrelte } from '@threlte/core';
+    import { Uniform, MeshBasicMaterial, Vector2, type Material } from 'three';
+    import type { WebGLProgramParametersWithUniforms } from 'three';
+    import noiseShader from './shaders/noise.glsl?raw';
+    const noise = noiseShader;
+    import { onMount } from 'svelte';
+    import { interactivity } from '@threlte/extras';
+    import { useViewport } from '@threlte/extras';
 
-	const { invalidate } = useThrelte();
-	const viewport = useViewport();
+    const { invalidate } = useThrelte();
+    const viewport = useViewport();
 
-	interactivity();
+    interactivity();
 
-	let uAspect: Uniform;
-	let uOpacity: Uniform;
-	let uTime: Uniform;
-	let uMouse: Uniform;
-	let uViewportSize: Uniform;
-	let uTrailIntensity: Uniform;
-	let uTrailPositions: Uniform;
-	let uTrailCount: Uniform;
+    let uAspect: Uniform;
+    let uOpacity: Uniform;
+    let uTime: Uniform;
+    let uMouse: Uniform;
+    let uViewportSize: Uniform;
+    let uTrailIntensity: Uniform;
+    let uTrailPositions: Uniform;
+    let uTrailCount: Uniform;
 
-	let mouseX = $state(0);
-	let mouseY = $state(0);
-	let targetMouseX = $state(0);
-	let targetMouseY = $state(0);
-	let prevMouseX = $state(0);
-	let prevMouseY = $state(0);
-	let trailIntensity = $state(0);
+    let mouseX = $state(0);
+    let mouseY = $state(0);
+    let targetMouseX = $state(0);
+    let targetMouseY = $state(0);
+    let prevMouseX = $state(0);
+    let prevMouseY = $state(0);
+    let trailIntensity = $state(0);
 
-	const TRAIL_LENGTH = 20;
-	let trailPositions: Array<{ x: number; y: number; intensity: number }> = $state([]);
-	const trailData = new Float32Array(TRAIL_LENGTH * 3);
-	let frameCount = $state(0);
+    const TRAIL_LENGTH = 20;
+    let trailPositions: Array<{ x: number; y: number; intensity: number }> = $state([]);
+    const trailData = new Float32Array(TRAIL_LENGTH * 3);
+    let frameCount = $state(0);
 
-	$effect(() => {
-		const width = $viewport.width;
-		const height = $viewport.height;
-		if (uAspect) {
-			uAspect.value = width / height;
-			invalidate();
-		}
-		if (uViewportSize) {
-			uViewportSize.value.x = width;
-			uViewportSize.value.y = height;
-			invalidate();
-		}
-	});
+    $effect(() => {
+        const width = $viewport.width;
+        const height = $viewport.height;
+        if (uAspect) {
+            uAspect.value = width / height;
+            invalidate();
+        }
+        if (uViewportSize) {
+            uViewportSize.value.x = width;
+            uViewportSize.value.y = height;
+            invalidate();
+        }
+    });
 
-	$effect(() => {
-		const x = mouseX;
-		const y = mouseY;
-		if (uMouse) {
-			uMouse.value.x = x;
-			uMouse.value.y = y;
-			invalidate();
-		}
-	});
+    $effect(() => {
+        const x = mouseX;
+        const y = mouseY;
+        if (uMouse) {
+            uMouse.value.x = x;
+            uMouse.value.y = y;
+            invalidate();
+        }
+    });
 
-	$effect(() => {
-		const intensity = trailIntensity;
-		if (uTrailIntensity) {
-			uTrailIntensity.value = intensity;
-			invalidate();
-		}
-	});
+    $effect(() => {
+        const intensity = trailIntensity;
+        if (uTrailIntensity) {
+            uTrailIntensity.value = intensity;
+            invalidate();
+        }
+    });
 
-	let material = $state(new MeshBasicMaterial());
+    let material = $state(new MeshBasicMaterial());
 
-	onMount(() => {
-		uAspect = new Uniform($viewport.width / $viewport.height);
-		uOpacity = new Uniform(0);
-		uTime = new Uniform(0);
-		uMouse = new Uniform(new Vector2(0, 0));
-		uViewportSize = new Uniform(new Vector2($viewport.width, $viewport.height));
-		uTrailIntensity = new Uniform(0);
-		uTrailPositions = new Uniform(new Float32Array(TRAIL_LENGTH * 3));
-		uTrailCount = new Uniform(0);
+    onMount(() => {
+        uAspect = new Uniform($viewport.width / $viewport.height);
+        uOpacity = new Uniform(0);
+        uTime = new Uniform(0);
+        uMouse = new Uniform(new Vector2(0, 0));
+        uViewportSize = new Uniform(new Vector2($viewport.width, $viewport.height));
+        uTrailIntensity = new Uniform(0);
+        uTrailPositions = new Uniform(new Float32Array(TRAIL_LENGTH * 3));
+        uTrailCount = new Uniform(0);
 
-		const handleMouseMove = (event: MouseEvent) => {
-			targetMouseX = (event.clientX / window.innerWidth) * 2 - 1;
-			targetMouseY = -(event.clientY / window.innerHeight) * 2 + 1;
-		};
+        const handleMouseMove = (event: MouseEvent) => {
+            targetMouseX = (event.clientX / window.innerWidth) * 2 - 1;
+            targetMouseY = -(event.clientY / window.innerHeight) * 2 + 1;
+        };
 
-		window.addEventListener('mousemove', handleMouseMove);
+        window.addEventListener('mousemove', handleMouseMove);
 
-		material.onBeforeCompile = (shader: WebGLProgramParametersWithUniforms) => {
-			shader.uniforms.uTime = uTime;
-			shader.uniforms.uAspect = uAspect;
-			shader.uniforms.uOpacity = uOpacity;
-			shader.uniforms.uMouse = uMouse;
-			shader.uniforms.uViewportSize = uViewportSize;
-			shader.uniforms.uTrailIntensity = uTrailIntensity;
-			shader.uniforms.uTrailPositions = uTrailPositions;
-			shader.uniforms.uTrailCount = uTrailCount;
-			shader.fragmentShader = `
+        material.onBeforeCompile = (shader: WebGLProgramParametersWithUniforms) => {
+            shader.uniforms.uTime = uTime;
+            shader.uniforms.uAspect = uAspect;
+            shader.uniforms.uOpacity = uOpacity;
+            shader.uniforms.uMouse = uMouse;
+            shader.uniforms.uViewportSize = uViewportSize;
+            shader.uniforms.uTrailIntensity = uTrailIntensity;
+            shader.uniforms.uTrailPositions = uTrailPositions;
+            shader.uniforms.uTrailCount = uTrailCount;
+            shader.fragmentShader = `
 			uniform float uTime;
 			uniform float uAspect;
 			uniform float uOpacity;
@@ -136,8 +136,8 @@
 				return fCircle;
 			}
 			${shader.fragmentShader}`.replace(
-				`vec4 diffuseColor = vec4( diffuse, opacity );`,
-				`
+                `vec4 diffuseColor = vec4( diffuse, opacity );`,
+                `
 				vec3 col = diffuse;
 
 				// Responsive scale factor - reduced density for less populated dots
@@ -188,106 +188,113 @@
 				float alpha = max(max(col.r, col.g), col.b) * uOpacity * 0.4;
 				vec4 diffuseColor = vec4(col, alpha);
 			`
-			);
-		};
+            );
+        };
 
-		material.defines = { USE_UV: '' };
-		material.transparent = true;
+        material.defines = { USE_UV: '' };
+        material.transparent = true;
 
-		uOpacity.value = 1;
-		uTime.value = 0;
-		invalidate();
+        uOpacity.value = 1;
+        uTime.value = 0;
+        invalidate();
 
-		return () => {
-			window.removeEventListener('mousemove', handleMouseMove);
-		};
-	});
+        return () => {
+            window.removeEventListener('mousemove', handleMouseMove);
+        };
+    });
 
-	let lastUpdate = 0;
-	const targetFPS = 30;
-	const frameTime = 1 / targetFPS;
+    let lastUpdate = 0;
+    const targetFPS = 30;
+    const frameTime = 1 / targetFPS;
 
-	useTask((delta: number) => {
-		lastUpdate += delta;
-		
-		if (lastUpdate < frameTime) return;
-		
-		const actualDelta = lastUpdate;
-		lastUpdate = 0;
-		
-		// Slower, smoother animation to match the visual
-		const multiplier = 0.6;
-		uTime.value += actualDelta * multiplier;
-		
-		frameCount++;
-		const shouldUpdateTrail = frameCount % 2 === 0;
+    useTask((delta: number) => {
+        lastUpdate += delta;
 
-		const velocityX = targetMouseX - prevMouseX;
-		const velocityY = targetMouseY - prevMouseY;
-		const velocity = Math.sqrt(velocityX * velocityX + velocityY * velocityY);
-		
-		prevMouseX = targetMouseX;
-		prevMouseY = targetMouseY;
+        if (lastUpdate < frameTime) return;
 
-		if (shouldUpdateTrail) {
-			const velocityThreshold = 0.001;
-			const buildUpSpeed = 8.0;
-			const decaySpeed = 1.0;
-			
-			if (velocity > velocityThreshold) {
-				trailIntensity = Math.min(1, trailIntensity + actualDelta * buildUpSpeed);
-				
-				const distanceFromLast = trailPositions.length > 0 
-					? Math.sqrt(
-						Math.pow(targetMouseX - trailPositions[trailPositions.length - 1].x, 2) +
-						Math.pow(targetMouseY - trailPositions[trailPositions.length - 1].y, 2)
-					) : 1;
-				
-				if (distanceFromLast > 0.008) {
-					trailPositions.push({
-						x: targetMouseX,
-						y: targetMouseY,
-						intensity: trailIntensity
-					});
-					
-					if (trailPositions.length > TRAIL_LENGTH) {
-						trailPositions.shift();
-					}
-				}
-			} else {
-				trailIntensity = Math.max(0, trailIntensity - actualDelta * decaySpeed);
-				
-				trailPositions = trailPositions
-					.map(pos => ({
-						...pos,
-						intensity: Math.max(0, pos.intensity - actualDelta * decaySpeed)
-					}))
-					.filter(pos => pos.intensity > 0.01);
-			}
-		
-			if (uTrailPositions && uTrailCount) {
-				trailData.fill(0);
-				
-				trailPositions.forEach((pos, i) => {
-					if (i < TRAIL_LENGTH) {
-						trailData[i * 3] = pos.x;
-						trailData[i * 3 + 1] = pos.y;
-						trailData[i * 3 + 2] = pos.intensity;
-					}
-				});
-				uTrailPositions.value = trailData;
-				uTrailCount.value = Math.min(trailPositions.length, TRAIL_LENGTH);
-			}
-		}
+        const actualDelta = lastUpdate;
+        lastUpdate = 0;
 
-		const lerpFactor = 1 - Math.pow(0.0003, actualDelta);
-		mouseX += (targetMouseX - mouseX) * lerpFactor;
-		mouseY += (targetMouseY - mouseY) * lerpFactor;
-	});
+        // Slower, smoother animation to match the visual
+        const multiplier = 0.6;
+        uTime.value += actualDelta * multiplier;
+
+        frameCount++;
+        const shouldUpdateTrail = frameCount % 2 === 0;
+
+        const velocityX = targetMouseX - prevMouseX;
+        const velocityY = targetMouseY - prevMouseY;
+        const velocity = Math.sqrt(velocityX * velocityX + velocityY * velocityY);
+
+        prevMouseX = targetMouseX;
+        prevMouseY = targetMouseY;
+
+        if (shouldUpdateTrail) {
+            const velocityThreshold = 0.001;
+            const buildUpSpeed = 8.0;
+            const decaySpeed = 1.0;
+
+            if (velocity > velocityThreshold) {
+                trailIntensity = Math.min(1, trailIntensity + actualDelta * buildUpSpeed);
+
+                const distanceFromLast =
+                    trailPositions.length > 0
+                        ? Math.sqrt(
+                              Math.pow(
+                                  targetMouseX - trailPositions[trailPositions.length - 1].x,
+                                  2
+                              ) +
+                                  Math.pow(
+                                      targetMouseY - trailPositions[trailPositions.length - 1].y,
+                                      2
+                                  )
+                          )
+                        : 1;
+
+                if (distanceFromLast > 0.008) {
+                    trailPositions.push({
+                        x: targetMouseX,
+                        y: targetMouseY,
+                        intensity: trailIntensity
+                    });
+
+                    if (trailPositions.length > TRAIL_LENGTH) {
+                        trailPositions.shift();
+                    }
+                }
+            } else {
+                trailIntensity = Math.max(0, trailIntensity - actualDelta * decaySpeed);
+
+                trailPositions = trailPositions
+                    .map((pos) => ({
+                        ...pos,
+                        intensity: Math.max(0, pos.intensity - actualDelta * decaySpeed)
+                    }))
+                    .filter((pos) => pos.intensity > 0.01);
+            }
+
+            if (uTrailPositions && uTrailCount) {
+                trailData.fill(0);
+
+                trailPositions.forEach((pos, i) => {
+                    if (i < TRAIL_LENGTH) {
+                        trailData[i * 3] = pos.x;
+                        trailData[i * 3 + 1] = pos.y;
+                        trailData[i * 3 + 2] = pos.intensity;
+                    }
+                });
+                uTrailPositions.value = trailData;
+                uTrailCount.value = Math.min(trailPositions.length, TRAIL_LENGTH);
+            }
+        }
+
+        const lerpFactor = 1 - Math.pow(0.0003, actualDelta);
+        mouseX += (targetMouseX - mouseX) * lerpFactor;
+        mouseY += (targetMouseY - mouseY) * lerpFactor;
+    });
 </script>
 
 <T.OrthographicCamera position={[0, 0, 10]} fov={10} near={0.1} far={1000} makeDefault />
 <T.Mesh scale={[$viewport.width, $viewport.height, 1]} material={material as any}>
-	<T.PlaneGeometry args={[1, 1]} />
+    <T.PlaneGeometry args={[1, 1]} />
 </T.Mesh>
-

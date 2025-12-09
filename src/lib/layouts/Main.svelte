@@ -165,7 +165,7 @@
     {#if !page.url.pathname.includes('/init')}
         <div class="border-smooth relative z-10 border-b bg-black" id="top-banner">
             <div class="is-special-padding mx-auto">
-                <TeaserBanner 
+                <TeaserBanner
                     showLabel={true}
                     leftText="Introducing"
                     logoText="Imagine"
