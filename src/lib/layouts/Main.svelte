@@ -23,6 +23,7 @@
     import { Button, Icon, InlineTag } from '$lib/components/ui';
     import AnnouncementBanner from '$routes/(init)/init/(components)/announcement-banner.svelte';
     import HackathonBanner from '$routes/(marketing)/(components)/(hackathon)/hackathon-banner.svelte';
+    import TeaserBanner from '$routes/(marketing)/(components)/teaser/teaser-banner.svelte';
 
     export let omitMainId = false;
     export let hideNavigation = false;
@@ -161,15 +162,18 @@
 </script>
 
 <div class="relative contents h-full">
-    <!--
     {#if !page.url.pathname.includes('/init')}
-        <div class="border-smooth relative z-10 border-b bg-[#19191C]" id="top-banner">
+        <div class="border-smooth relative z-10 border-b bg-black" id="top-banner">
             <div class="is-special-padding mx-auto">
-                <HackathonBanner />
+                <TeaserBanner 
+                    showLabel={true}
+                    leftText="Introducing"
+                    logoText="Imagine"
+                    rightText="Build something real"
+                />
             </div>
         </div>
     {/if}
-    -->
 
     <section
         class="web-mobile-header flex! lg:hidden! {resolvedTheme}"
