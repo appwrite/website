@@ -43,13 +43,9 @@
     <article class="web-article contents">
         <header class="web-article-header flex items-start justify-between">
             <div class="web-article-header-start web-u-cross-start flex flex-col">
-                <div class="mobile-header-row flex items-center w-full md:hidden mb-2">
+                <div class="mobile-header-row mb-2 flex w-full items-center md:hidden">
                     {#if back}
-                        <a
-                            href={back}
-                            class="web-icon-button"
-                            aria-label="previous page"
-                        >
+                        <a href={back} class="web-icon-button" aria-label="previous page">
                             <span class="icon-cheveron-left" aria-hidden="true"></span>
                         </a>
                     {/if}
