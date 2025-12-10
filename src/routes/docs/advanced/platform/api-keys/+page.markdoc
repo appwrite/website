@@ -12,6 +12,14 @@ It is a best practice to grant only the scopes you need to meet your project's g
 API keys should be treated as a secret. Never share the API key and keep API keys out of client applications.
 {% /info %}
 
+# API keys vs Dev keys {% #api-keys-vs-dev-keys %}
+
+API keys and [Dev keys](/docs/advanced/platform/dev-keys) are not the same and cannot be used interchangeably.
+
+API keys permit access to Appwrite services in production environments, with access controlled through scopes to ensure secure and controlled server-side operations. Dev keys, conversely, are specifically designed to help you avoid abuse limits and CORS errors in test and development environments.
+
+API keys are for server SDKs and the CLI in production environments, while Dev keys are for client SDKs in development environments.
+
 # Create API key {% #create-api-key %}
 
 {% only_dark %}
@@ -23,42 +31,167 @@ API keys should be treated as a secret. Never share the API key and keep API key
 
 To create a new API key, navigate to **Overview** > **Integration** > **API keys** and click **Create API key**.
 
+You can then use the API key to initialize the Appwrite client in your server-side apps.
+
+{% multicode %}
+```server-nodejs
+const sdk = require('node-appwrite');
+
+const client = new sdk.Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<YOUR_PROJECT_ID>')
+    .setKey('<YOUR_API_KEY>'); // Your API key
+```
+
+```server-python
+from appwrite.client import Client
+
+client = Client()
+client.set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
+client.set_project('<YOUR_PROJECT_ID>')
+client.set_key('<YOUR_API_KEY>')  # Your API key
+```
+
+```server-php
+use Appwrite\Client;
+
+$client = new Client();
+$client
+    ->setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    ->setProject('<YOUR_PROJECT_ID>')
+    ->setKey('<YOUR_API_KEY>'); // Your API key
+```
+
+```server-go
+package main
+
+import "github.com/appwrite/sdk-for-go/client"
+
+func main() {
+    c := client.NewClient()
+    c.SetEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    c.SetProject("<YOUR_PROJECT_ID>")
+    c.SetKey("<YOUR_API_KEY>") // Your API key
+}
+```
+
+```server-ruby
+require 'appwrite'
+
+client = Appwrite::Client.new
+client.set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
+client.set_project('<YOUR_PROJECT_ID>')
+client.set_key('<YOUR_API_KEY>') # Your API key
+```
+
+```server-deno
+import { Client } from 'npm:appwrite';
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<YOUR_PROJECT_ID>')
+    .setKey('<YOUR_API_KEY>'); // Your API key
+```
+
+```server-dart
+import 'package:dart_appwrite/dart_appwrite.dart';
+
+Client client = Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<YOUR_PROJECT_ID>')
+    .setKey('<YOUR_API_KEY>'); // Your API key
+```
+
+```server-kotlin
+import io.appwrite.Client
+
+val client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<YOUR_PROJECT_ID>")
+    .setKey("<YOUR_API_KEY>") // Your API key
+```
+
+```server-dotnet
+using Appwrite;
+
+var client = new Client()
+    .SetEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .SetProject("<YOUR_PROJECT_ID>")
+    .SetKey("<YOUR_API_KEY>"); // Your API key
+```
+
+```server-swift
+import Appwrite
+
+let client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<YOUR_PROJECT_ID>")
+    .setKey("<YOUR_API_KEY>") // Your API key
+```
+
+```server-java
+import io.appwrite.Client;
+
+Client client = new Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<YOUR_PROJECT_ID>")
+    .setKey("<YOUR_API_KEY>"); // Your API key
+```
+{% /multicode %}
+
 When adding a new API Key, you can choose which [scopes](#scopes) to grant your application. 
 If you need to replace your API Key, create a new key, update your app credentials and, once ready, delete your old key.
 
 # Scopes {% #scopes %}
 
-| Name             | Description                                                           |
-|------------------|-----------------------------------------------------------------------|
-| `users.read`     | Access to read your project's users                                   |
-| `users.write`    | Access to create, update, and delete your project's users              |
-| `teams.read`     | Access to read your project's teams                                    |
-| `teams.write`    | Access to create, update, and delete your project's teams              |
-| `databases.read` | Access to read your project's databases                               |
-| `databases.write`| Access to create, update, and delete your project's databases         |
-| `tables.read`| Access to read your project's database tables                   |
-| `tables.write`| Access to create, update, and delete your project's database tables|
-| `columns.read`| Access to read your project's database table's columns        |
-| `columns.write`| Access to create, update, and delete your project's database table's columns|
-| `indexes.read`   | Access to read your project's database table's indexes            |
-| `indexes.write`  | Access to create, update, and delete your project's database table's indexes|
-| `rows.read` | Access to read your project's database rows                       |
-| `rows.write`| Access to create, update, and delete your project's database rows |
-| `files.read`     | Access to read your project's storage files and preview images         |
-| `files.write`    | Access to create, update, and delete your project's storage files      |
-| `buckets.read`   | Access to read your project's storage buckets                          |
-| `buckets.write`  | Access to create, update, and delete your project's storage buckets    |
-| `functions.read` | Access to read your project's functions and code deployments           |
-| `functions.write`| Access to create, update, and delete your project's functions and code deployments|
-| `execution.read` | Access to read your project's execution logs                           |
-| `execution.write`| Access to execute your project's functions                             |
-| `locale.read`    | Access to access your project's Locale service                         |
-| `avatars.read`   | Access to access your project's Avatars service                        |
-| `health.read`    | Access to read your project's health status                            |
-| `rules.read`     | Access to read your project's proxy rules                              |
-| `rules.write`    | Access to create, update, and delete your project's proxy rules        |
-| `migrations.read`| Access to read your project's migrations                               |
-| `migrations.write`| Access to create, update, and delete your project's migrations        |
-| `vcs.read`       | Access to read your project's VCS repositories                         |
-| `vcs.write`      | Access to create, update, and delete your project's VCS repositories   |
-| `assistant.read` | Access to read the Assistant service                                   |
+| Name                  | Description                                                                     |
+|-----------------------|---------------------------------------------------------------------------------|
+| `sessions.write`      | Access to create, update, and delete user sessions                              |
+| `users.read`          | Access to read your project's users                                             |
+| `users.write`         | Access to create, update, and delete your project's users                       |
+| `teams.read`          | Access to read your project's teams                                             |
+| `teams.write`         | Access to create, update, and delete your project's teams                       |
+| `databases.read`      | Access to read your project's databases                                         |
+| `databases.write`     | Access to create, update, and delete your project's databases                   |
+| `tables.read`         | Access to read your project's database tables                                   |
+| `tables.write`        | Access to create, update, and delete your project's database tables             |
+| `columns.read`        | Access to read your project's database table's columns                          |
+| `columns.write`       | Access to create, update, and delete your project's database table's columns    |
+| `indexes.read`        | Access to read your project's database table's indexes                          |
+| `indexes.write`       | Access to create, update, and delete your project's database table's indexes    |
+| `rows.read`           | Access to read your project's database rows                                     |
+| `rows.write`          | Access to create, update, and delete your project's database rows               |
+| `files.read`          | Access to read your project's storage files and preview images                  |
+| `files.write`         | Access to create, update, and delete your project's storage files               |
+| `buckets.read`        | Access to read your project's storage buckets                                   |
+| `buckets.write`       | Access to create, update, and delete your project's storage buckets             |
+| `functions.read`      | Access to read your project's functions and code deployments                    |
+| `functions.write`     | Access to create, update, and delete your project's functions and code deployments|
+| `sites.read`          | Access to read your project's sites and deployments                             |
+| `sites.write`         | Access to create, update, and delete your project's sites and deployments       |
+| `log.read`            | Access to read your site's logs                                                 |
+| `log.write`           | Access to update, and delete your site's logs                                   |
+| `execution.read`      | Access to read your project's execution logs                                    |
+| `execution.write`     | Access to execute your project's functions                                      |
+| `locale.read`         | Access to access your project's Locale service                                  |
+| `avatars.read`        | Access to access your project's Avatars service                                 |
+| `health.read`         | Access to read your project's health status                                     |
+| `providers.read`      | Access to read your project's providers                                         |
+| `providers.write`     | Access to create, update, and delete your project's providers                   |
+| `messages.read`       | Access to read your project's messages                                          |
+| `messages.write`      | Access to create, update, and delete your project's messages                    |
+| `topics.read`         | Access to read your project's topics                                            |
+| `topics.write`        | Access to create, update, and delete your project's topics                      |
+| `subscribers.read`    | Access to read your project's subscribers                                       |
+| `subscribers.write`   | Access to create, update, and delete your project's subscribers                 |
+| `targets.read`        | Access to read your project's targets                                           |
+| `targets.write`       | Access to create, update, and delete your project's targets                     |
+| `rules.read`          | Access to read your project's proxy rules                                       |
+| `rules.write`         | Access to create, update, and delete your project's proxy rules                 |
+| `migrations.read`     | Access to read your project's migrations                                        |
+| `migrations.write`    | Access to create, update, and delete your project's migrations.                 |
+| `vcs.read`            | Access to read your project's VCS repositories                                  |
+| `vcs.write`           | Access to create, update, and delete your project's VCS repositories            |
+| `assistant.read`      | Access to read the Assistant service                                            |
+| `tokens.read`         | Access to read your project's tokens                                            |
+| `tokens.write`        | Access to create, update, and delete your project's tokens                      |

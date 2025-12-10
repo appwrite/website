@@ -135,13 +135,18 @@ You must grant _read_ permissions to users at the _table level_ before users can
 [Learn more about permissions](#permissions)
 {% /info %}
 
-Rows can be retrieved using the [List Row](/docs/references/cloud/client-web/tables#listRows) endpoint.
+Rows can be retrieved using the [List rows](/docs/references/cloud/client-web/tables#listRows) endpoint.
 
 Results can be filtered, sorted, and paginated using Appwrite's shared set of query methods.
 You can find a full guide on querying in the [Queries Guide](/docs/products/databases/queries).
 
 By default, results are limited to the _first 25 items_.
 You can change this through [pagination](/docs/products/databases/pagination).
+
+{% info title="Speed up lists by skipping totals" %}
+If your UI doesn't need an exact total, set the `total` flag to `false` on list calls. The response keeps the same shape and sets `total` to `0`.
+This reduces latency for large tables and filtered queries. Learn more in [Pagination: Skip totals](/docs/products/databases/pagination#skip-totals).
+{% /info %}
 
 {% multicode %}
 ```client-web
@@ -962,3 +967,26 @@ tablesDB.deleteRow(
 );
 ```
 {% /multicode %}
+
+# Next steps {% #next-steps %}
+
+Continue learning with these related guides:
+
+{% cards %}
+{% cards_item href="/docs/products/databases/queries" title="Queries" %}
+Learn how to filter, sort, and search your rows with various query operators.
+{% /cards_item %}
+
+{% cards_item href="/docs/products/databases/pagination" title="Pagination" %}
+Handle large datasets by implementing pagination in your row queries.
+{% /cards_item %}
+
+{% cards_item href="/docs/products/databases/bulk-operations" title="Bulk operations" %}
+Perform create, update, and delete operations on multiple rows simultaneously.
+{% /cards_item %}
+
+{% cards_item href="/docs/products/databases/timestamp-overrides" title="Timestamp overrides" %}
+Set custom creation and update timestamps when migrating data or backdating records.
+{% /cards_item %}
+{% /cards %}
+

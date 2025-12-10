@@ -6,8 +6,7 @@
   font-size:var(--web-font-size-tiny); color:hsl(var(--web-color-secondary));
 
   &-links {
-    display:flex; gap:pxToRem(16);
-    @media #{$break1}, #{$break2} { flex-direction:column; }
+    display:flex; flex-direction:row; gap:pxToRem(16);
     @media #{$break3open} {  }
   }
 
@@ -17,14 +16,25 @@
     flex-direction: column;
     &-grid-1 {
       display: grid;
-      grid-template-columns: 1fr auto;
+      grid-template-columns: 1fr;
       gap: pxToRem(24);
-      grid-template-areas: "col-3 col-2"
-                          "col-1 col-1"
-                          "col-4 col-4";
+      grid-template-areas: "col-3-2"
+                          "col-1"
+                          "col-4";
       &-column-1 { grid-area:col-1; }
-      &-column-2 { grid-area:col-2; }
-      &-column-3 { grid-area:col-3; }
+      &-column-2 { 
+        grid-area:col-3-2; 
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+      }
+      &-column-3 { 
+        grid-area:col-3-2; 
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        margin-inline-end: auto;
+      }
       &-column-4 { grid-area:col-4; }
     }
   }

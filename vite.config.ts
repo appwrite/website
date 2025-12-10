@@ -34,11 +34,6 @@ export default defineConfig({
         })
     ],
     css: {
-        preprocessorOptions: {
-            scss: {
-                api: 'modern'
-            }
-        },
         devSourcemap: process.env.NODE_ENV !== 'production'
     },
     build: {
@@ -47,5 +42,8 @@ export default defineConfig({
     },
     test: {
         include: ['src/**/*.{test,spec}.{js,ts}']
+    },
+    experimental: {
+        enableNativePlugin: true
     }
 });

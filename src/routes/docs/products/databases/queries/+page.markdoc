@@ -209,7 +209,7 @@ $result = $tables->listRows(
 ```server-python
 from appwrite.client import Client
 from appwrite.query import Query
-from appwrite.services.tablesDB import TablesDB
+from appwrite.services.tables_db import TablesDB
 
 client = Client()
 
@@ -2771,5 +2771,4 @@ if err != nil {
 
 This example demonstrates how to combine `OR` and `AND` operations. The query uses `Query.or()` to match either condition: books under $20 OR magazines under $10.
 Each condition within the OR is composed of two AND conditions - one for the category and one for the price threshold. The database will return rows that match either of these combined conditions.
-
 

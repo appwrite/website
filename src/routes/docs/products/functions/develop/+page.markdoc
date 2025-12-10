@@ -783,7 +783,7 @@ These are provided alongside any custom headers sent to the function.
 | `x-appwrite-country-code`   |  Displays the country code of the configured locale.                                                                                                 |
 | `x-appwrite-continent-code` |  Displays the continent code of the configured locale.                                                                                               |
 | `x-appwrite-continent-eu`   |  Describes if the configured local is within the EU.                                                                                                 |
-| `x-appwrite-client-i`       |  Displays the IP of the client creating the execution.                                                                                                |
+| `x-appwrite-client-ip`       |  Displays the IP of the client creating the execution.                                                                                                |
 | `x-appwrite-execution-id`   |  Displays the ID of the current execution.                                                                                                            |
 
 ## Response {% #response %}
@@ -1628,7 +1628,7 @@ return function ($context) {
 ```
 ```python
 from appwrite.client import Client
-from appwrite.services.tablesDB import TablesDB
+from appwrite.services.tables_db import TablesDB
 from appwrite.id import ID
 
 import os
@@ -1984,7 +1984,7 @@ return function ($context) {
 ```
 ```python
 from appwrite.client import Client
-from appwrite.services.tablesDB import TablesDB
+from appwrite.services.tables_db import TablesDB
 from appwrite.id import ID
 
 import os

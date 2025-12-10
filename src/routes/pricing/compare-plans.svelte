@@ -324,7 +324,7 @@
                 },
                 {
                     title: 'Sites',
-                    free: '1 per project',
+                    free: 'Unlimited',
                     pro: 'Unlimited',
                     scale: 'Unlimited',
                     enterprise: 'Unlimited'
@@ -874,6 +874,7 @@
 <style>
     .web-u-grid-auto-column-1fr {
         grid-template-columns: var(--columns-template);
+        overflow: hidden;
     }
 
     .web-mini-card {

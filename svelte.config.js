@@ -42,7 +42,6 @@ const config = {
             $routes: './src/routes',
             $scss: './src/scss',
             $icons: './src/icons',
-            $appwrite: './node_modules/@appwrite.io/repo',
             $markdoc: './src/markdoc'
         },
         prerender: {
@@ -65,7 +64,9 @@ const config = {
 
             instrumentation: {
                 server: true
-            }
+            },
+
+            remoteFunctions: true
         }
     }
 };
