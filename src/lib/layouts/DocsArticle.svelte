@@ -43,10 +43,10 @@
     <article class="web-article contents">
         <header class="web-article-header flex items-start justify-between">
             <div class="web-article-header-start web-u-cross-start flex flex-col">
-                <div class="mobile-header-row mb-2 flex w-full items-center md:hidden">
+                <div class="mobile-header-row mb-2 flex w-full items-center lg:hidden">
                     {#if back}
                         <a href={back} class="web-icon-button" aria-label="previous page">
-                            <span class="icon-cheveron-left" aria-hidden="true"></span>
+                            <span class="web-icon-chevron-left" aria-hidden="true"></span>
                         </a>
                     {/if}
                     <div class="copy-button-wrapper-mobile ml-auto">
@@ -75,7 +75,7 @@
                     <h1 class="text-title font-aeonik-pro text-primary">{title}</h1>
                 </div>
             </div>
-            <div class="web-article-header-end copy-button-wrapper hidden md:block">
+            <div class="web-article-header-end copy-button-wrapper hidden lg:block">
                 <CopyAsMarkdown class="ml-0" />
             </div>
         </header>
