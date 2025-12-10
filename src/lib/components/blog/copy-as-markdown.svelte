@@ -1,39 +1,40 @@
 <script lang="ts">
-    import { page } from '$app/stores';
+    import { page } from '$app/state';
     import { getPageMarkdown } from '$lib/remote/markdown.remote';
     import { copyToClipboard } from '$lib/utils/copy';
-    import { cn } from '$lib/utils/cn';
-    import { writable } from 'svelte/store';
     import { Button, Icon, SplitButton } from '$lib/components/ui';
     import { Tooltip } from '$lib/components';
     import { createDropdownMenu, melt } from '@melt-ui/svelte';
 
-    interface CopyAsMarkdownProps {
+    interface Props {
         class?: string;
     }
 
-    const { class: classNames }: CopyAsMarkdownProps = $props();
+    const { class: classNames }: Props = $props();
 
-    const markdown = getPageMarkdown($page.route.id);
-    const copied = writable(false);
+    let copied = $state(false);
+    let copying = $state(false);
     let timeout: ReturnType<typeof setTimeout> | undefined = undefined;
 
-    const copy = () => {
+    async function copy() {
+        copying = true;
         if (timeout) clearTimeout(timeout);
-        copyToClipboard(markdown.current ?? '');
-        copied.set(true);
-        timeout = setTimeout(() => copied.set(false), 2000);
-    };
+        const markdown = await getPageMarkdown(page.route.id);
+        copyToClipboard(markdown ?? '');
+        timeout = setTimeout(() => (copied = false), 2000);
+        copied = true;
+        copying = false;
+    }
 
-    const resetCopied = () => {
+    function resetCopied() {
         if (timeout) clearTimeout(timeout);
-        copied.set(false);
-    };
+        copied = false;
+    }
 
-    const copyAndClose = () => {
+    function copyAndClose() {
         copy();
         open.set(false);
-    };
+    }
 
     const {
         elements: { trigger, menu },
@@ -50,66 +51,65 @@
     };
 </script>
 
-{#if !markdown.loading && markdown.current}
-    <div class={cn('copy-ctl inline-flex items-center', classNames)}>
-        <SplitButton>
-            <Tooltip disabled={!$copied}>
-                <Button
-                    variant="secondary"
-                    onclick={copy}
-                    onmouseleave={resetCopied}
-                    aria-label="Copy page as Markdown"
-                    splitPosition="first"
-                    class="text-sm"
-                >
-                    <Icon name="copy" aria-hidden="true" class="text-sm" />
-                    <span>Copy page</span>
-                </Button>
-                {#snippet tooltip()}
-                    Copied
-                {/snippet}
-            </Tooltip>
-
-            <button
-                class="web-button is-secondary is-split is-split-last text-sm"
-                use:melt={$trigger}
-                aria-label="Open options"
+<div class={['copy-ctl inline-flex items-center', classNames]}>
+    <SplitButton>
+        <Tooltip disabled={!copied}>
+            <Button
+                variant="secondary"
+                disabled={copying}
+                onclick={copy}
+                onmouseleave={resetCopied}
+                aria-label="Copy page as Markdown"
+                splitPosition="first"
+                class="text-sm"
             >
-                {#if $open}
-                    <span class="web-icon-chevron-up" aria-hidden="true"></span>
-                {:else}
-                    <span class="web-icon-chevron-down" aria-hidden="true"></span>
-                {/if}
-            </button>
-        </SplitButton>
+                <Icon name="copy" aria-hidden="true" class="text-sm" />
+                <span>Copy page</span>
+            </Button>
+            {#snippet tooltip()}
+                Copied
+            {/snippet}
+        </Tooltip>
 
-        {#if $open}
-            <div class="menu-wrapper web-select-menu is-normal menu z-1" use:melt={$menu}>
-                <ul class="text-sub-body">
-                    <li>
-                        <button type="button" class="menu-btn text-sm" onclick={copyAndClose}>
-                            <Icon name="copy" aria-hidden="true" class="text-sm" />
-                            <span>Copy as Markdown</span>
-                        </button>
-                    </li>
-                    <li>
-                        <button
-                            type="button"
-                            class="menu-btn text-sm"
-                            onclick={() => {
-                                viewInNewTab();
-                                open.set(false);
-                            }}
-                        >
-                            <Icon name="external-icon" aria-hidden="true" class="text-sm" />
-                            <span>View as Markdown</span>
-                        </button>
-                    </li>
-                </ul>
-            </div>
-        {/if}
-    </div>
-{/if}
+        <button
+            class="web-button is-secondary is-split is-split-last text-sm"
+            use:melt={$trigger}
+            aria-label="Open options"
+        >
+            {#if $open}
+                <span class="web-icon-chevron-up" aria-hidden="true"></span>
+            {:else}
+                <span class="web-icon-chevron-down" aria-hidden="true"></span>
+            {/if}
+        </button>
+    </SplitButton>
+
+    {#if $open}
+        <div class="menu-wrapper web-select-menu is-normal menu z-1" use:melt={$menu}>
+            <ul class="text-sub-body">
+                <li>
+                    <button type="button" class="menu-btn text-sm" onclick={copyAndClose}>
+                        <Icon name="copy" aria-hidden="true" class="text-sm" />
+                        <span>Copy as Markdown</span>
+                    </button>
+                </li>
+                <li>
+                    <button
+                        type="button"
+                        class="menu-btn text-sm"
+                        onclick={() => {
+                            viewInNewTab();
+                            open.set(false);
+                        }}
+                    >
+                        <Icon name="external-icon" aria-hidden="true" class="text-sm" />
+                        <span>View as Markdown</span>
+                    </button>
+                </li>
+            </ul>
+        </div>
+    {/if}
+</div>
 
 <style>
     .copy-ctl {
