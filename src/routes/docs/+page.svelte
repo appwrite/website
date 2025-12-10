@@ -433,7 +433,7 @@
                         >
                             <img
                                 src="/images/docs/mcp/logos/dark/google-antigravity.svg"
-                                alt="OpenCode"
+                                alt="Antigravity"
                                 class="w-6"
                             />
                             <h4 class="text-sub-body text-primary font-medium">Antigravity</h4>

@@ -75,7 +75,7 @@ Update the `mcp_config.json` file to include the docs server:
 {% /tabsitem %}
 {% /tabs %}
 
-Head back to the Managed MCP Servers page and click refresh.
+Head back to the Managed MCP Server page and click refresh.
 
 {% /section %}
 
