@@ -49,7 +49,7 @@ Even with all the benefits, there's a very good reason for this mode not being t
 
 # Our observations
 
-I created a [benchmark](https://github.com/atharvadeosthale/nextjs-outputs-bench/tree/main) to check the sizes of the builds. I had four Next.js apps and ran `next build` on them:
+I created a [benchmark](https://github.com/appwrite-community/nextjs-outputs-bench) to check the sizes of the builds. I had four Next.js apps and ran `next build` on them:
 
 1. Default mode, no dependencies
 2. Standalone mode, no dependencies
