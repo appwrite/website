@@ -67,7 +67,7 @@ As you can see, when 25 requests were fired simultaneously, only one request suc
 
 # The solution
 
-To combat this problem, we recently announced [a set of DB operators](/docs/products/databases/db-operators) that you can use, which would atomically operate on the server side, ensuring that operations in all requests are captured successfully.
+To combat this problem, we recently announced [a set of DB operators](/docs/products/databases/operators) that you can use, which would atomically operate on the server side, ensuring that operations in all requests are captured successfully.
 
 Let's take a look at an example code snippet that shows an accurate representation of how you can increment the counter successfully at each request using DB operators.
 
@@ -117,4 +117,4 @@ While learning to code, developers often find handling increments or any such op
 
 - [Announcing DB operators: Update multiple fields without fetching the entire row](/blog/post/announcing-db-operators)
 - [Announcing Atomic numeric operations: Safe, server-side increments and decrements](/blog/post/announcing-atomic-numeric-operations)
-- [DB operators documentation](/docs/products/databases/db-operators)
+- [DB operators documentation](/docs/products/databases/operators)

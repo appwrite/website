@@ -4,6 +4,7 @@ title: Start with Databases
 description: Get started with Appwrite Databases. Follow a step-by-step guide to create your first database, define tables, and perform basic data operations.
 ---
 
+
 {% section #create-database step=1 title="Create database" %}
 Head to your [Appwrite Console](https://cloud.appwrite.io/console/) and create a database and name it `Oscar`.
 Optionally, add a custom database ID.
