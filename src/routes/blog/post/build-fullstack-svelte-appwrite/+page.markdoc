@@ -533,9 +533,8 @@ We'll start with our imports and state management:
 ```svelte
 <script lang="ts">
 	import { onMount } from 'svelte'
-	import { databases, account } from '$lib/appwrite'
-	import { DATABASE_ID, EXPENSES_TABLE_ID } from '$lib/appwrite'
-	import { Query, Permission, Role } from 'appwrite'
+	import { tablesDB, account, DATABASE_ID, EXPENSES_TABLE_ID } from '$lib/appwrite'
+	import { ID, Query, Permission, Role } from 'appwrite'
 	import { formatDistanceToNow } from 'date-fns'
 
 	let expenses = []

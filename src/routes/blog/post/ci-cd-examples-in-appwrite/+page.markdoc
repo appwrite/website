@@ -54,7 +54,7 @@ jobs:
         run: npm install -g appwrite-cli
       - name: Configure Appwrite client
         run: |
-          appwrite client --projectId "${{ secrets.APPWRITE_PROJECT_ID }}" \
+          appwrite client --project-id "${{ secrets.APPWRITE_PROJECT_ID }}" \
                           --endpoint "${{ secrets.APPWRITE_ENDPOINT }}" \
                           --key "${{ secrets.APPWRITE_API_KEY }}"
       - name: Pull Tables
