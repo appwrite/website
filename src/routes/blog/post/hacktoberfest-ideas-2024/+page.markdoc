@@ -72,7 +72,7 @@ Managing multiple personal and work calendars can be overwhelming, especially wi
 ## Appwrite features used
 
 - [GitHub OAuth](https://appwrite.io/docs/products/auth/oauth2) in Appwrite Authentication
-- [Appwrite Database](https://appwrite.io/docs/products/databases) and Tables
+- [Appwrite Databases](https://appwrite.io/docs/products/databases) and Tables
 - [Mailgun provider](https://appwrite.io/docs/references/cloud/server-nodejs/messaging) on Messaging
 - [New Go runtime and SDK](https://appwrite.io/blog/post/announcing-go-support) for Functions
 - [New Functions ecosystem](https://appwrite.io/blog/post/introducing-functions-ecosystem) to sync calendars and schedule emails
