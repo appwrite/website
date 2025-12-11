@@ -212,9 +212,15 @@
                 <div class="container">
                     <h1 class="text-display font-aeonik-pro text-primary">Blog</h1>
                     {#if featured}
-                        {@const author = data.authors.find(
-                            (author) => author.slug === featured.author
-                        )}
+                        {@const featuredAuthorSlugs = Array.isArray(featured.author)
+                            ? featured.author
+                            : [featured.author]}
+                        {@const featuredPrimarySlug = featuredAuthorSlugs[0]}
+                        {@const author =
+                            data.authors.find((author) => author.slug === featuredPrimarySlug) ||
+                            data.authors.find((author) =>
+                                featuredAuthorSlugs.includes(author.slug)
+                            )}
                         <article class="web-feature-article mt-12">
                             <a
                                 href={featured.href}
@@ -371,10 +377,23 @@
                 <div class="mt-12">
                     <ul class:web-grid-articles={data.posts.length > 0}>
                         {#each data.posts as post (post.slug)}
-                            {@const author = data.authors.find(
-                                (author) => author.slug === post.author
-                            )}
+                            {@const postAuthorSlugs = Array.isArray(post.author)
+                                ? post.author
+                                : [post.author]}
+                            {@const primarySlug = postAuthorSlugs[0]}
+                            {@const author =
+                                data.authors.find((author) => author.slug === primarySlug) ||
+                                data.authors.find((author) =>
+                                    postAuthorSlugs.includes(author.slug)
+                                )}
                             {#if author && !post.draft}
+                                {@const authorNames = postAuthorSlugs
+                                    .map((slug) => data.authors.find((a) => a.slug === slug)?.name)
+                                    .filter(Boolean)}
+                                {@const authorLabel =
+                                    authorNames.length > 1
+                                        ? `${authorNames[0]} +${authorNames.length - 1}`
+                                        : authorNames[0] || author.name}
                                 <Article
                                     title={post.title}
                                     href={post.href}
@@ -382,7 +401,7 @@
                                     date={post.date}
                                     timeToRead={post.timeToRead}
                                     avatar={author.avatar}
-                                    author={author.name}
+                                    author={authorLabel}
                                 />
                             {/if}
                         {:else}

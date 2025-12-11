@@ -169,15 +169,24 @@
 
                 <div class="mt-12">
                     <ul class="web-grid-articles">
-                        {#each posts.filter((p) => p.author === author?.slug) as post}
+                        {#each posts.filter( (p) => (Array.isArray(p.author) ? p.author.includes(author?.slug ?? '') : p.author === author?.slug) ) as post}
+                            {@const postAuthorSlugs = Array.isArray(post.author)
+                                ? post.author
+                                : [post.author]}
+                            {@const primaryAuthor =
+                                authors.find((a) => postAuthorSlugs.includes(a.slug)) ?? author}
+                            {@const authorNames = postAuthorSlugs
+                                .map((slug) => authors.find((a) => a.slug === slug)?.name)
+                                .filter(Boolean)
+                                .join(', ')}
                             <Article
                                 title={post.title}
                                 href={post.href}
                                 cover={post.cover}
                                 date={post.date}
                                 timeToRead={post.timeToRead}
-                                {avatar}
-                                author={name}
+                                avatar={primaryAuthor?.avatar ?? avatar}
+                                author={authorNames || primaryAuthor?.name || name}
                             />
                         {/each}
                     </ul>
