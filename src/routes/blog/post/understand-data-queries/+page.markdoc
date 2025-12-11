@@ -83,29 +83,33 @@ const client = new Client()
 const tablesDB = new TablesDB(client);
 
 // OR operator example
-const movieData1 = tablesDB.listRows(
-    '[DATABASE_ID]',
-    '[TABLE_ID]',
-    Query.or([
-        Query.equal('title', ['Back To The Future', 'Top Gun']),
-        Query.greaterThan('year', 2017)
-	])
-);
+const movieData1 = tablesDB.listRows({
+    databaseId: '<DATABASE_ID>',
+    tableId: '<TABLE_ID>',
+    queries: [
+        Query.or([
+            Query.equal('title', ['Back To The Future', 'Top Gun']),
+            Query.greaterThan('year', 2017)
+        ])
+    ]
+});
 
 // AND operator example
-const movieData2 = tablesDB.listRows(
-    '[DATABASE_ID]',
-    '[TABLE_ID]',
-    Query.and([
-        Query.startsWith("title", "Once"),
-        Query.greaterThan('year', 1995)
-	])
-);
+const movieData2 = tablesDB.listRows({
+    databaseId: '<DATABASE_ID>',
+    tableId: '<TABLE_ID>',
+    queries: [
+        Query.and([
+            Query.startsWith("title", "Once"),
+            Query.greaterThan('year', 1995)
+        ])
+    ]
+});
 
 // CONTAINS operator example
 const movieData3 = tablesDB.listRows({
-  databaseId: '[DATABASE_ID]',
-  tableId: '[TABLE_ID]',
+  databaseId: '<DATABASE_ID>',
+  tableId: '<TABLE_ID>',
   queries: [Query.contains('director', ['Christopher Nolan'])],
 });
 

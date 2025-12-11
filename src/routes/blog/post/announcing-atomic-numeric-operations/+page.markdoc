@@ -40,7 +40,7 @@ Use it for:
 
 # Performing an atomic operation
 
-Use the `incrementDocumentAttribute` and `decrementDocumentAttribute` methods to perform atomic numeric operations. The server will apply these changes atomically under concurrency control.
+Use the `incrementRowColumn` and `decrementRowColumn` methods to perform atomic numeric operations. The server will apply these changes atomically under concurrency control.
 
 ## Increment a field {% #increment-field %}
 
@@ -53,11 +53,11 @@ const client = new Client()
 
 const tablesDB = new TablesDB(client);
 
-const result = await tablesDB.incrementDocumentAttribute(
+const result = await tablesDB.incrementRowColumn(
     '<DATABASE_ID>',
     '<TABLE_ID>',
-    '<DOCUMENT_ID>',
-    'likes', // attribute
+    '<ROW_ID>',
+    'likes', // column
     1 // value
 );
 ```
@@ -73,11 +73,11 @@ const client = new Client()
 
 const tablesDB = new TablesDB(client);
 
-const result = await tablesDB.decrementDocumentAttribute(
+const result = await tablesDB.decrementRowColumn(
     '<DATABASE_ID>',
     '<TABLE_ID>',
-    '<DOCUMENT_ID>',
-    'credits', // attribute
+    '<ROW_ID>',
+    'credits', // column
     5 // value
 );
 ```

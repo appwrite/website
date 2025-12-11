@@ -40,7 +40,7 @@ I have listed four main reasons. If more arise, I will update the article to inc
 
 1. Origin not set in Console
 2. Origin is set incorrectly
-3. Bad ID on request
+3. Incorrect ID on request
 4. Endpoint mismatch
 
 ## 1 - Origin not set in Console

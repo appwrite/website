@@ -218,15 +218,15 @@ db.listRows(
 To use the OR operator pass Query.or([...]) to the queries array and provide at least two queries within the nested array.
 
 ```js
-db.listRows(
-	 '<DATABASE_ID>',
-	 '<TABLE_ID>',
-        [
-        Query.or([
-            Query.contains('name','ivy'),
-            Query.greaterThan('age',30)
-        ])
-    ]
+tablesDB.listRows({
+  databaseId: '<DATABASE_ID>',
+  tableId: '<TABLE_ID>',
+  queries: [
+    Query.or([
+      Query.contains('name', ['ivy']),
+      Query.greaterThan('age', 30),
+    ]),
+  ],
 });
 ```
 

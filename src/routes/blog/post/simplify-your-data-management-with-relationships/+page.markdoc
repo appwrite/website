@@ -85,7 +85,7 @@ The review response, notably with no review column:
 {
      "$id": "642b9d627d866e646602",
      "$databaseId": "marvel",
-     "$tableId": "reviews"
+     "$tableId": "reviews",
      "$createdAt": "2023-04-04T03:45:38.514+00:00",
      "$updatedAt": "2023-04-04T03:45:38.514+00:00",
      "$permissions": [],

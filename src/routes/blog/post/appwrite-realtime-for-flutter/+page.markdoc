@@ -182,7 +182,9 @@ In the **initState** function of the HomePage, we will create and initialize o
   @override
   initState() {
     super.initState();
-    client = Client().setProject('<PROJECT_ID>'); // your project id
+    client = Client()
+      .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // your API endpoint
+      .setProject('<PROJECT_ID>'); // your project ID
   }
 ```
 
@@ -191,6 +193,7 @@ And in **dispose** method, close the subscription.
 ```dart
 dispose(){
     subscription?.close();
+    _nameController.dispose();
     super.dispose();
 }
 ```
@@ -207,7 +210,9 @@ First, initialize our database ID and items table ID and set up a function to lo
   @override
   initState() {
     super.initState();
-    client = Client().setProject('delete'); // your project id
+    client = Client()
+      .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+      .setProject('<PROJECT_ID>');
     tablesDB = TablesDB(client);
     loadItems();
     subscribe();
@@ -337,7 +342,9 @@ class _HomePageState extends State<HomePage> {
   @override
   initState() {
     super.initState();
-    client = Client().setProject('delete'); // your project id
+    client = Client()
+      .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+      .setProject('<PROJECT_ID>');
     tablesDB = TablesDB(client);
     loadItems();
     subscribe();
@@ -386,6 +393,7 @@ class _HomePageState extends State<HomePage> {
   @override
   dispose() {
     subscription?.close();
+    _nameController.dispose();
     super.dispose();
   }
 

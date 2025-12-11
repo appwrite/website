@@ -41,8 +41,8 @@ In a CI/CD pipeline, this could be part of a deployment process:
 name: Sync Tables
 
 on:
-	release:
-		types: [ published ]
+  release:
+    types: [published]
 
 jobs:
   sync:

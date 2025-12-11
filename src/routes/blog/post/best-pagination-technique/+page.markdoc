@@ -266,7 +266,7 @@ export default function () {
 		const cursor = Query.cursorAfter(__ENV.CURSOR);
 		const limit = 10;
 
-    http.get(`${config.endpoint}/databases/main/tables/posts/rows?queries[]=${offset}&queries[]=${limit}`, {
+    http.get(`${config.endpoint}/databases/main/tables/posts/rows?queries[]=${cursor}&queries[]=${limit}`, {
             headers: {
             'content-type': 'application/json',
             'X-Appwrite-Project': config.projectId

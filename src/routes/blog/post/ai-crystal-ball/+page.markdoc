@@ -281,30 +281,26 @@ const githubDataTableId = env.PUBLIC_APPWRITE_TABLE_ID_GITHUBDATA;
 export const db = {
     getUserData: async(rowId) => {
         try{
-            return await tablesDB.getRow(
+            return await tablesDB.getRow({
                 databaseId,
-                githubDataTableId,
+                tableId: githubDataTableId,
                 rowId
-            );
+            });
         } catch(err){
             return false;
         }
     },
 
     addUserData: async(userId, username, followers, following, languages) => {
-        return await tablesDB.createRow(
+        return await tablesDB.createRow({
             databaseId,
-            githubDataTableId,
-            userId,
-            {
-                username,
-                followers,
-                following,
-                languages
-            },
+            tableId: githubDataTableId,
+            rowId: userId,
+            data: { username, followers, following, languages },
             permissions: [
-                Permission.write(Role.user(userId)), Permission.read(Role.user(userId))
-            ]
+                Permission.write(Role.user(userId)),
+                Permission.read(Role.user(userId)),
+            ],
         })
     }
 };
@@ -511,11 +507,11 @@ export const db = {**
 .
 .
 		addDestiny: async(username, destiny) => {
-		    return await tablesDB.createRow(
+		    return await tablesDB.createRow({
 		        databaseId,
-		        destinyTableId,
-		        ID.unique(),
-		        {
+		        tableId: destinyTableId,
+		        rowId: ID.unique(),
+		        data: {
 		            username,
 		            destiny
 		        }
@@ -524,11 +520,11 @@ export const db = {**
 
 		getDestiny: async(rowId) => {
 		    try{
-		        return await tablesDB.getRow(
+		        return await tablesDB.getRow({
 		            databaseId,
-		            destinyTableId,
+		            tableId: destinyTableId,
 		            rowId
-		        );
+		        });
 		    } catch(err){
 		        return {
 		            username: 'Not found',

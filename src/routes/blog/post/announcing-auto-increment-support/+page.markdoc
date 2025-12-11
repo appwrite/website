@@ -49,10 +49,10 @@ const client = new Client()
 
 const tablesDB = new TablesDB(client);
 
-tablesDB.listRows(
-    '<DATABASE_ID>',
-    '<TABLE_ID>',
-    [
+tablesDB.listRows({
+    databaseId: '<DATABASE_ID>',
+    tableId: '<TABLE_ID>',
+    queries: [
         Query.orderAsc('$sequence'),
     ]
 });

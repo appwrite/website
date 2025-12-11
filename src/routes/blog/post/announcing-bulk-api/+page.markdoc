@@ -54,20 +54,14 @@ const client = new sdk.Client()
 
 const tablesDB = new sdk.TablesDB(client);
 
-const result = await tablesDB.createRows(
-    '<DATABASE_ID>',
-    '<TABLE_ID>',
-    [
-        {
-            $id: sdk.ID.unique(),
-            name: 'Row 1',
-        },
-        {
-            $id: sdk.ID.unique(),
-            name: 'Row 2',
-        }
-    ]
-);
+const result = await tablesDB.createRows({
+  databaseId: '<DATABASE_ID>',
+  tableId: '<TABLE_ID>',
+  rows: [
+    { $id: sdk.ID.unique(), name: 'Row 1' },
+    { $id: sdk.ID.unique(), name: 'Row 2' },
+  ],
+});
 ```
 
 

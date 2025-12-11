@@ -192,6 +192,7 @@ Our Svelte application needs to track the current user's authentication state. F
 ```js
 import { writable } from 'svelte/store'
 import { account } from '$lib/appwrite'
+import { ID } from 'appwrite'
 
 export const user = writable(null)
 
@@ -257,7 +258,7 @@ Finally, we'll add a `logout` function to the `auth.js` file to handle user logo
 ```js
 export async function logout() {
 	try {
-		await account.deleteSession('current')
+		await account.deleteSession({ sessionId: 'current' })
 		user.set(null)
 	} catch (error) {
 		console.error('Logout error:', error)
@@ -653,16 +654,16 @@ async function handleSubmit() {
         data: { ...expenseData, updatedAt: now },
       })
     } else {
-      await tablesDB.createRow(
-        DATABASE_ID,
-        EXPENSES_TABLE_ID,
-        'unique()',
-        expenseData,
-        [
+      await tablesDB.createRow({
+        databaseId: DATABASE_ID,
+        tableId: EXPENSES_TABLE_ID,
+        rowId: ID.unique(),
+        data: expenseData,
+        permissions: [
           Permission.read(Role.user(user.$id)),
           Permission.update(Role.user(user.$id)),
-          Permission.delete(Role.user(user.$id))
-        ]
+          Permission.delete(Role.user(user.$id)),
+        ],
       })
     }
 

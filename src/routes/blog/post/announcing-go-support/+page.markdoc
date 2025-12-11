@@ -252,7 +252,7 @@ func Main(Context openruntimes.Context) openruntimes.Response {
 	response, err := tablesDB.ListRows("main", "profiles")
 	if err != nil {
 		Context.Error(err)
-		return Context.Res.Text("Internal error" Context.Res.WithStatusCode(500))
+		return Context.Res.Text("Internal error", Context.Res.WithStatusCode(500))
 	}
 
 	var profiles ProfileList

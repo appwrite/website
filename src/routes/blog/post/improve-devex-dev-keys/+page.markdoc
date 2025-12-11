@@ -41,7 +41,7 @@ Then, head to the **Settings** tab of the table, scroll down to the **Permission
 
 |  | Create | Read | Update | Delete |
 | --- | --- | --- | --- | --- |
-| Any | False | False | False | False |
+| Any | True | False | False | False |
 
 Lastly, return to the project overview page, head to the **Settings** page from the left sidebar, and copy your **API endpoint** and **project ID** for future usage.
 
