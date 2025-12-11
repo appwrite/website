@@ -767,5 +767,9 @@
     {
         "link": "/products/sites/offer-300-s",
         "redirect": "/products/sites/offer-300?format=short"
+    },
+    {
+        "link": "/docs/products/auth/preferences-storage",
+        "redirect": "/docs/products/auth/preferences"
     }
 ]
