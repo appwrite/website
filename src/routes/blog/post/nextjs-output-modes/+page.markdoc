@@ -1,8 +1,8 @@
 ---
 layout: post
-title: Next.js output modes — Standalone vs Normal build
+title: Next.js output modes — Standalone vs Default build
 description: Learn about different output modes in Next.js and find out which of them would be the best for you.
-date: 2025-11-19
+date: 2025-12-11
 cover: /images/blog/nextjs-output-modes/cover.png
 timeToRead: 5
 author: atharva
@@ -10,9 +10,9 @@ category: tutorial
 featured: false
 ---
 
-Next.js is a very popular React framework. People choose it because it blends in with the server very well, using both client-side and server-side capabilities to provide a better user experience. Next.js is packed with cutting-edge React features like RSC. However, such complexity also brings complexity in deploying your app.
+Next.js is a very popular React framework. People choose it because it blends in with the server very well, using both client-side and server-side capabilities to provide a better user experience. Next.js is packed with cutting-edge React features like RSC. However, such features also brings complexity in deploying your app.
 
-Appwrite Sites enables you to deploy your Next.js app seamlessly without any hassle of configuration. Appwrite handles all the complexity involved in deploying such complex apps, so that you can focus on the core logic of your app.
+Appwrite Sites enables you to deploy your Next.js app seamlessly without any hassle of configuration. Appwrite handles all the complexity involved in deploying such apps, so that you can focus on the core logic of your app.
 
 However, we also allow you to fiddle with the behaviour of how deployments work with Appwrite Sites. Output modes allow you to decide how your Next.js app is bundled. Each mode has its own pros and cons.
 
@@ -24,23 +24,36 @@ The default mode relies on your dependencies stored in your `node_modules` and t
 
 It's important to note that if you remove `node_modules`, which usually is the biggest chunk of your app, your app won't run anymore, as your builds also rely on `node_modules` to work properly. So, when counting the size of your app, you should also count in `node_modules` folder as well.
 
+The default mode applies a "magic box" approach. The command `next start` does some *magic* to serve your app. This removes a lot of *configurability* from your app, like custom middlewares or global error handling. The other modes allow some more configurability.
+
 You might already think, shipping `node_modules` is a very big size hit, and it's true, but not always a bad thing. We will look at why later.
+
+# The "export" mode
+
+Even though we won't be comparing this mode in our benchmarks later in the article, we will still talk about it.
+
+The "export" mode is a mode that allows you to export your app as a static site. This mode is useful if you want to deploy your app as a static site. 
+
+To use this mode, you need to run `next export`. This will create a `out` folder with your static site. You can then serve this folder using any static site hosting provider.
+
 
 # Standalone mode
 
 When building your app in standalone mode, Next.js traces all the files that are required by your app from your `node_modules`. This means that only the functionality your app uses will be bundled into your Next.js build. In this case, you can exclude `node_modules` when calculating sizes, as the build doesn't rely on `node_modules` as it already bundles all necessary code.
 
-This results in bigger `.next` folder, but we also have to factor in the fact that `node_modules` are essential for the default mode, and not the standalone mode.
+This results in bigger `.next/standalone` folder, but we also have to factor in the fact that `node_modules` are essential for the default mode, and not the standalone mode.
 
-However, there's a very good reason for this mode not being the default yet.
+The `.next/standalone` folder does not contain any static assets, and Next.js recommends serving them through a CDN. For a minimal setup, you can run a few commands to copy static assets into the standalone directory.
+
+Even with all the benefits, there's a very good reason for this mode not being the default yet.
 
 # Our observations
 
 I created a [benchmark](https://github.com/atharvadeosthale/nextjs-outputs-bench/tree/main) to check the sizes of the builds. I had four Next.js apps and ran `next build` on them:
 
-1. Normal mode, no dependencies
+1. Default mode, no dependencies
 2. Standalone mode, no dependencies
-3. Normal mode, very heavy dependencies
+3. Default mode, very heavy dependencies
 4. Standalone mode, very heavy dependencies
 
 Then I compared the sizes of these builds:
@@ -65,7 +78,7 @@ Then I compared the sizes of these builds:
      Standalone mode: +0 KB (0.0% increase)
 ```
 
-The result is clear: standalone mode wins as it's consistently shown lower build sizes. Funnily same build size because even though we install heavy dependencies, we aren't actually importing/using them at all in the apps, so these dependencies aren't even getting traced and bundled, which is ideal! Lower build sizes mean faster cold starts on your app.
+The result is clear: standalone mode wins as it's consistently shown lower build sizes. Interestingly, same build size because even though we install heavy dependencies, we aren't actually importing/using them at all in the apps, so these dependencies aren't even getting traced and bundled, which is ideal! Lower build sizes mean faster cold starts on your app.
 
 # Which is the best for me?
 
@@ -75,7 +88,7 @@ Standalone mode seems to be the clear winner based on the results. That would ma
 - If you dynamically import packages in your app, standalone mode cannot help you here, as only the code that is used and can be traced is bundled.
 - There could be many weird edge cases here and there.
 
-**So what's the best for you?** Try out standalone. If something goes wrong, you can switch back to normal mode. If you're building a very basic Next.js app, you will not go wrong with standalone mode.
+**So what's the best for you?** Try out standalone. If something goes wrong, you can switch back to default mode. If you're building a very basic Next.js app, you will not go wrong with standalone mode.
 
 # Wrapping up
 
