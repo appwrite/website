@@ -53,13 +53,13 @@ const client = new Client()
 
 const tablesDB = new TablesDB(client);
 
-const result = await tablesDB.incrementRowColumn(
-    '<DATABASE_ID>',
-    '<TABLE_ID>',
-    '<ROW_ID>',
-    'likes', // column
-    1 // value
-);
+const result = await tablesDB.incrementRowColumn({
+    databaseId: '<DATABASE_ID>',
+    tableId: '<TABLE_ID>',
+    rowId: '<ROW_ID>',
+    column: 'likes',
+    value: 1
+});
 ```
 
 ## Decrement a field {% #decrement-field %}
@@ -73,13 +73,13 @@ const client = new Client()
 
 const tablesDB = new TablesDB(client);
 
-const result = await tablesDB.decrementRowColumn(
-    '<DATABASE_ID>',
-    '<TABLE_ID>',
-    '<ROW_ID>',
-    'credits', // column
-    5 // value
-);
+const result = await tablesDB.decrementRowColumn({
+    databaseId: '<DATABASE_ID>',
+    tableId: '<TABLE_ID>',
+    rowId: '<ROW_ID>',
+    column: 'credits',
+    value: 5
+});
 ```
 
 # Immediate benefits

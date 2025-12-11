@@ -76,7 +76,7 @@ appwrite push function --function-id="function_id"
 Push a table:
 
 ```bash
-appwrite push table --table-id="table_id"
+appwrite push tables --id "table_id"
 ```
 
 ## Headless login
