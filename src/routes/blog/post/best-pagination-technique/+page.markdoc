@@ -45,7 +45,7 @@ To get the second page, we keep the limit at 10 (this doesn't change since we wa
 
 In the SQL world, such a query would be written as `SELECT * FROM posts OFFSET 10 LIMIT 10`.
 
-Some websites implementing offset pagination also show the page number of the last page. How do they do it? Alongside results for each page, they also tend to return a `sum`column telling you how many rows there are in total. Using `limit`, `sum`, and a bit of math, you can calculate last page number using `lastPage = ceil(sum / limit)`
+Some websites implementing offset pagination also show the page number of the last page. How do they do it? Alongside results for each page, they also tend to return a `sum` column telling you how many rows there are in total. Using `limit`, `sum`, and a bit of math, you can calculate last page number using `lastPage = ceil(sum / limit)`
 
 As convenient as this feature is for the user, developers struggle to scale this type of pagination. Looking at `sum`column, we can already see that it can take quite some time to count all rows in a database to the exact number. **Alongside that, the `offset` in databases is implemented in a way that loops through rows to know how many should be skipped.** That means that the higher our offset is, the longer our database query will take.
 
