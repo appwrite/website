@@ -73,7 +73,7 @@ In summary, roles map users to the permissions they need, thus streamlining the 
 
 **Mandatory Access Control (MAC)** uses a centralized authority to decide access, often based on classifications. It's strict and primarily used in environments requiring high security, such as government systems.
 
-**Column-Based Access Control (CBAC)** relies on dynamic policies using columns, such as user roles and environmental conditions. This model excels in environments needing fine-grained controls.
+**Attribute-Based Access Control (ABAC)** relies on dynamic policies using attributes, such as user roles and environmental conditions. This model excels in environments needing fine-grained controls.
 
 **Access Control Lists (ACL)** specify individual permissions per resource. While straightforward, they can become complex and unwieldy when scaled.
 

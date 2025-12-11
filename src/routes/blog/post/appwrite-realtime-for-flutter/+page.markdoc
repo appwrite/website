@@ -188,7 +188,7 @@ In the **initState** function of the HomePage, we will create and initialize o
   }
 ```
 
-And in **dispose** method, close the subscription.
+And in **dispose** method, close the subscription and dispose the controller to avoid leaks.
 
 ```dart
 dispose(){

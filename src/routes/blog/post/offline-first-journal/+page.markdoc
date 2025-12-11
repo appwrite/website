@@ -121,7 +121,8 @@ export const appwriteConfig = {
 	endpoint: PUBLIC_APPWRITE_ENDPOINT,
 	projectId: PUBLIC_APPWRITE_PROJECT_ID,
 	databaseId: PUBLIC_APPWRITE_DATABASE_ID,
-	tableId: PUBLIC_APPWRITE_TABLE_ID
+	tableId: PUBLIC_APPWRITE_TABLE_ID,
+	collectionId: PUBLIC_APPWRITE_TABLE_ID
 };
 
 export const client = new Client()
@@ -233,18 +234,18 @@ To setup replication in the Appwrite database, add the following code to the `da
 const setupReplication = async (db) => {
 	try {
 		// Start replication
-		replicationState = replicateAppwrite({
-			replicationIdentifier: 'journals-replication',
-			client,
-			databaseId: appwriteConfig.databaseId,
-			tableId: appwriteConfig.tableId,
-			deletedField: 'deleted',
-			table: db.entries,
-			pull: {
-				batchSize: 25 // Can be updated
-			},
-			push: {
-				batchSize: 25 // Can be updated
+			replicationState = replicateAppwrite({
+				replicationIdentifier: 'journals-replication',
+				client,
+				databaseId: appwriteConfig.databaseId,
+				collectionId: appwriteConfig.collectionId,
+				deletedField: 'deleted',
+				collection: db.entries,
+				pull: {
+					batchSize: 25 // Can be updated
+				},
+				push: {
+					batchSize: 25 // Can be updated
 			}
 		});
 

@@ -206,13 +206,11 @@ New Database operators `contains` and `or`, providing greater control and flexib
 The contains operator is a great addition to the existing text search operators such as startsWith & endsWith, and can be used in combination with these two.
 
 ```js
-db.listRows(
-    '<DATABASE_ID>',
-    '<TABLE_ID>',
-	  [
-	    Query.contains('content', ['happy', 'love']),
-	  ]
-   )
+tablesDB.listRows({
+  databaseId: '<DATABASE_ID>',
+  tableId: '<TABLE_ID>',
+  queries: [Query.contains('content', ['happy', 'love'])],
+});
 ```
 
 To use the OR operator pass Query.or([...]) to the queries array and provide at least two queries within the nested array.

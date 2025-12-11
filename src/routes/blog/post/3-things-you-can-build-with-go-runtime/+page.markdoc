@@ -199,23 +199,23 @@ func DoesDatabaseExist(dbs tablesdb.TablesDB, dbId string) bool {
 	return true
 }
 
-func DoesTableExist(dbs tablesdb.TablesDB, dbId string, collId string) bool {
-	_, err := dbs.GetTable(dbId, collId)
+func DoesTableExist(dbs tablesdb.TablesDB, dbId string, tableId string) bool {
+	_, err := dbs.GetTable(dbId, tableId)
 	if err != nil {
 		return false
 	}
 	return true
 }
 
-func DoesColumnExist(dbs tablesdb.TablesDB, dbId string, collId string, attribId string) bool {
-	_, err := dbs.GetColumn(dbId, collId, attribId)
+func DoesColumnExist(dbs tablesdb.TablesDB, dbId string, tableId string, attribId string) bool {
+	_, err := dbs.GetColumn(dbId, tableId, attribId)
 	if err != nil {
 		return false
 	}
 	return true
 }
 
-func InitialiseDatabase(Context openruntimes.Context, dbs tablesdb.TablesDB, dbId string, collId string) {
+func InitialiseDatabase(Context openruntimes.Context, dbs tablesdb.TablesDB, dbId string, tableId string) {
 	doesDbExist := DoesDatabaseExist(dbs, dbId)
 	if !doesDbExist {
 		dbs.Create(
@@ -224,21 +224,21 @@ func InitialiseDatabase(Context openruntimes.Context, dbs tablesdb.TablesDB, dbI
 		)
 	}
 
-	doesCollExist := DoesTableExist(dbs, dbId, collId)
-	if !doesCollExist {
+	doesTableExist := DoesTableExist(dbs, dbId, tableId)
+	if !doesTableExist {
 		dbs.CreateTable(
 			dbId,
-			collId,
+			tableId,
 			"URLs",
 			dbs.WithCreateTablePermissions([]string{permission.Read("any")}),
 		)
 	}
 
-	doesAttribExist := DoesColumnExist(dbs, dbId, collId, "longUrl")
+	doesAttribExist := DoesColumnExist(dbs, dbId, tableId, "longUrl")
 	if !doesAttribExist {
 		dbs.CreateUrlColumn(
 			dbId,
-			collId,
+			tableId,
 			"longUrl",
 			true,
 			dbs.WithCreateUrlColumnArray(false),
@@ -279,9 +279,9 @@ func Main(Context openruntimes.Context) openruntimes.Response {
 	tablesDB := appwrite.NewTablesDB(client)
 
 	dbId := "urlDatabase"
-	collId := "urlTable"
+	tableId := "urlTable"
 
-	services.InitialiseDatabase(Context, *tablesDB, dbId, collId)
+	services.InitialiseDatabase(Context, *tablesDB, dbId, tableId)
 
 	if Context.Req.Method == "POST" {
 		var requestBody RequestBody
@@ -296,7 +296,7 @@ func Main(Context openruntimes.Context) openruntimes.Response {
 
 		_, err = tablesDB.CreateRow(
 			dbId,
-			collId,
+			tableId,
 			requestBody.ShortId,
 			map[string]interface{}{
 				"longUrl": requestBody.LongUrl,
@@ -326,7 +326,7 @@ func Main(Context openruntimes.Context) openruntimes.Response {
 
 		shortId := path[1:]
 
-		row, err := tablesDB.GetRow(dbId, collId, shortId)
+		row, err := tablesDB.GetRow(dbId, tableId, shortId)
 
 		if err != nil {
 			Context.Error(err)
