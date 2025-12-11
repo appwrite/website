@@ -58,8 +58,21 @@
                 <div class="mt-12">
                     <ul class="web-grid-articles">
                         {#each posts as post}
-                            {@const author = authors.find((a) => a.slug.includes(post.author))}
+                            {@const postAuthorSlugs = Array.isArray(post.author)
+                                ? post.author
+                                : [post.author]}
+                            {@const primarySlug = postAuthorSlugs[0]}
+                            {@const author =
+                                authors.find((a) => a.slug === primarySlug) ||
+                                authors.find((a) => postAuthorSlugs.includes(a.slug))}
                             {#if author}
+                                {@const authorNames = postAuthorSlugs
+                                    .map((slug) => authors.find((a) => a.slug === slug)?.name)
+                                    .filter(Boolean)}
+                                {@const authorLabel =
+                                    authorNames.length > 1
+                                        ? `${authorNames[0]} +${authorNames.length - 1}`
+                                        : authorNames[0] || author.name}
                                 <Article
                                     title={post.title}
                                     href={post.href}
@@ -67,7 +80,7 @@
                                     date={post.date}
                                     timeToRead={post.timeToRead}
                                     avatar={author.avatar}
-                                    author={author.name}
+                                    author={authorLabel}
                                 />
                             {/if}
                         {/each}
