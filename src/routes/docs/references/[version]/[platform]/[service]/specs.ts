@@ -52,6 +52,7 @@ type AppwriteOperationObject = OpenAPIV3.OperationObject & {
         scope: string;
         platforms: string[];
         packaging: boolean;
+        public: boolean;
         methods?: AppwriteAdditionalMethod[];
     };
 };
@@ -65,6 +66,7 @@ type AppwriteAdditionalMethod = {
     responses: { code: number; model: string }[];
     description: string;
     demo: string;
+    public: boolean;
     deprecated?: AppwriteDeprecated;
 };
 
@@ -208,6 +210,11 @@ function* processAdditionalMethods(
     const additionalMethods = appwriteMethod['x-appwrite'].methods!;
 
     for (const additionalMethod of additionalMethods) {
+        // Skip methods where public is false
+        if (additionalMethod.public === false) {
+            continue;
+        }
+
         yield {
             method: httpMethod,
             value: {
@@ -221,7 +228,8 @@ function* processAdditionalMethods(
                 'x-appwrite': {
                     ...appwriteMethod['x-appwrite'],
                     method: additionalMethod.name,
-                    demo: additionalMethod.demo
+                    demo: additionalMethod.demo,
+                    public: additionalMethod.public
                 },
                 responses: {
                     ...appwriteMethod.responses,
@@ -257,28 +265,43 @@ function* iterateAllMethods(
 
         // Handle non-additional methods
         if (methods?.get?.tags?.includes(service) && !hasAdditionalMethods(methods.get, service)) {
-            yield { method: OpenAPIV3.HttpMethods.GET, value: methods.get, url };
+            const operation = methods.get as AppwriteOperationObject;
+            if (operation['x-appwrite']?.public !== false) {
+                yield { method: OpenAPIV3.HttpMethods.GET, value: methods.get, url };
+            }
         }
         if (
             methods?.post?.tags?.includes(service) &&
             !hasAdditionalMethods(methods.post, service)
         ) {
-            yield { method: OpenAPIV3.HttpMethods.POST, value: methods.post, url };
+            const operation = methods.post as AppwriteOperationObject;
+            if (operation['x-appwrite']?.public !== false) {
+                yield { method: OpenAPIV3.HttpMethods.POST, value: methods.post, url };
+            }
         }
         if (methods?.put?.tags?.includes(service) && !hasAdditionalMethods(methods.put, service)) {
-            yield { method: OpenAPIV3.HttpMethods.PUT, value: methods.put, url };
+            const operation = methods.put as AppwriteOperationObject;
+            if (operation['x-appwrite']?.public !== false) {
+                yield { method: OpenAPIV3.HttpMethods.PUT, value: methods.put, url };
+            }
         }
         if (
             methods?.patch?.tags?.includes(service) &&
             !hasAdditionalMethods(methods.patch, service)
         ) {
-            yield { method: OpenAPIV3.HttpMethods.PATCH, value: methods.patch, url };
+            const operation = methods.patch as AppwriteOperationObject;
+            if (operation['x-appwrite']?.public !== false) {
+                yield { method: OpenAPIV3.HttpMethods.PATCH, value: methods.patch, url };
+            }
         }
         if (
             methods?.delete?.tags?.includes(service) &&
             !hasAdditionalMethods(methods.delete, service)
         ) {
-            yield { method: OpenAPIV3.HttpMethods.DELETE, value: methods.delete, url };
+            const operation = methods.delete as AppwriteOperationObject;
+            if (operation['x-appwrite']?.public !== false) {
+                yield { method: OpenAPIV3.HttpMethods.DELETE, value: methods.delete, url };
+            }
         }
 
         // Process additional methods
