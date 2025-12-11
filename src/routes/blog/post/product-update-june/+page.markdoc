@@ -68,7 +68,7 @@ Big shoutout to [Manjunath0408](https://github.com/Manjunath0408) and [Darshan](
 - Improved Console loading bar
 - [Throw an error if invalid domain is added to a function](https://github.com/appwrite/console/pull/1115) by [Manjunath0408](https://github.com/Manjunath0408)
 - [Fix for inconsistent build logs](https://github.com/appwrite/appwrite/issues/6237) by [Darshan](https://github.com/ItzNotABug)
-- [Fix for migration of collections, columns and indexes of Databases](https://github.com/appwrite/appwrite/issues/8044)
+- [Fix for migration of tables, columns and indexes of Databases](https://github.com/appwrite/appwrite/issues/8044)
 
 # Open source community recognitions
 
