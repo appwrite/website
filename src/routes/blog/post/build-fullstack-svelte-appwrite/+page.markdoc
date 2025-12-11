@@ -153,7 +153,7 @@ For the base `src/app.html` file, we'll use the default Sveltekit template, but 
 
 ```
 
-This template provides the basic structure for our application. The `data-sveltekit-preload-data="hover"` column enables SvelteKit's built-in preloading feature to make navigation faster.
+This template provides the basic structure for our application. The `data-sveltekit-preload-data="hover"` attribute enables SvelteKit's built-in preloading feature to make navigation faster.
 
 ## Setting up the Appwrite client
 
