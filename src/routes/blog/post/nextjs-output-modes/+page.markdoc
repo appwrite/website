@@ -78,7 +78,7 @@ Then, we compared the sizes of these builds and observed the following:
      Standalone mode: +0 KB (0.0% increase)
 ```
 
-The result is clear: standalone mode wins as it's consistently shown lower build sizes. Interestingly, same build size because even though we install heavy dependencies, we aren't actually importing/using them at all in the apps, so these dependencies aren't even getting traced and bundled, which is ideal! Lower build sizes mean faster cold starts on your app.
+The result was clear: standalone mode consistently showed lower build sizes. Interestingly, even when we installed heavy dependencies in the app, we observed that the build size for the apps with standalone mode remained unchanged. Because those dependencies were not being imported and used in the app, they were not bundled, which is ideal. Lower build sizes also result in faster cold starts for your app, which creates a better user experience.
 
 # Which is the best for me?
 
