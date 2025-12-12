@@ -21,6 +21,9 @@ You can add the MCP server to various AI tools and code editors:
 {% cards_item href="/docs/tooling/mcp/opencode" title="OpenCode" image="/images/docs/mcp/logos/opencode.svg" %}
 {% /cards_item %}
 
+{% cards_item href="/docs/tooling/mcp/antigravity" title="Antigravity" image="/images/docs/mcp/logos/google-antigravity.svg" %}
+{% /cards_item %}
+
 {% /cards %}
 {% /only_light %}
 
@@ -43,6 +46,9 @@ You can add the MCP server to various AI tools and code editors:
 {% /cards_item %}
 
 {% cards_item href="/docs/tooling/mcp/opencode" title="OpenCode" image="/images/docs/mcp/logos/dark/opencode.svg" %}
+{% /cards_item %}
+
+{% cards_item href="/docs/tooling/mcp/antigravity" title="Antigravity" image="/images/docs/mcp/logos/dark/google-antigravity.svg" %}
 {% /cards_item %}
 
 {% /cards %}

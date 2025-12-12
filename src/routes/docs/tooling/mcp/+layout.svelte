@@ -58,6 +58,10 @@
                 {
                     label: 'OpenCode',
                     href: '/docs/tooling/mcp/opencode'
+                },
+                {
+                    label: 'Antigravity',
+                    href: '/docs/tooling/mcp/antigravity'
                 }
             ]
         }
