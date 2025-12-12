@@ -60,7 +60,7 @@
                     href: '/docs/tooling/mcp/opencode'
                 },
                 {
-                    label: 'Antigravity',
+                    label: 'Google Antigravity',
                     href: '/docs/tooling/mcp/antigravity'
                 }
             ]
