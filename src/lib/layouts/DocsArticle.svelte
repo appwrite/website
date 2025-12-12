@@ -43,15 +43,16 @@
     <article class="web-article contents">
         <header class="web-article-header flex items-start justify-between">
             <div class="web-article-header-start web-u-cross-start flex flex-col">
-                {#if back}
-                    <a
-                        href={back}
-                        class="web-icon-button web-is-only-mobile"
-                        aria-label="previous page"
-                    >
-                        <span class="icon-cheveron-left" aria-hidden="true"></span>
-                    </a>
-                {/if}
+                <div class="mobile-header-row mb-2 flex w-full items-center lg:hidden">
+                    {#if back}
+                        <a href={back} class="web-icon-button" aria-label="previous page">
+                            <span class="web-icon-chevron-left" aria-hidden="true"></span>
+                        </a>
+                    {/if}
+                    <div class="copy-button-wrapper-mobile ml-auto">
+                        <CopyAsMarkdown class="ml-0" />
+                    </div>
+                </div>
                 <ul class="web-metadata text-caption">
                     <slot name="metadata" />
                 </ul>
@@ -74,7 +75,7 @@
                     <h1 class="text-title font-aeonik-pro text-primary">{title}</h1>
                 </div>
             </div>
-            <div class="web-article-header-end self-start md:self-auto">
+            <div class="web-article-header-end copy-button-wrapper hidden lg:block">
                 <CopyAsMarkdown class="ml-0" />
             </div>
         </header>
@@ -98,6 +99,34 @@
         .web-reduced-article-size {
             /* original/default is 41.5rem */
             max-inline-size: 40.5rem;
+        }
+    }
+
+    /* Mobile header row with back button and copy button */
+    @media (max-width: 1023.9px) {
+        .mobile-header-row {
+            align-items: center;
+            width: 100vw;
+            position: relative;
+            margin-left: calc(-1 * var(--p-grid-huge-navs-padding-inline, 1.25rem));
+            margin-right: calc(-1 * var(--p-grid-huge-navs-padding-inline, 1.25rem));
+            padding-left: var(--p-grid-huge-navs-padding-inline, 1.25rem);
+            padding-right: var(--p-grid-huge-navs-padding-inline, 1.25rem);
+        }
+
+        .copy-button-wrapper-mobile {
+            display: flex;
+            align-items: center;
+            margin-left: auto;
+            margin-right: 0;
+        }
+    }
+
+    /* Desktop copy button wrapper */
+    @media (min-width: 1024px) {
+        .copy-button-wrapper {
+            align-self: center;
+            width: auto;
         }
     }
 </style>
