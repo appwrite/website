@@ -2,7 +2,7 @@
 layout: post
 title: Next.js output modes — Standalone vs Default build
 description: Learn about different output modes in Next.js and find out which of them would be the best for you.
-date: 2025-12-11
+date: 2025-12-12
 cover: /images/blog/nextjs-output-modes/cover.png
 timeToRead: 5
 author: atharva
@@ -26,7 +26,7 @@ It's important to note that if you remove `node_modules`, which usually is the b
 
 The default mode is typically deployed by running `next start`. This is convenient, but gives you less control over the underlying server process than approaches where you own the server entrypoint (e.g., injecting custom server logic/handlers as part of your runtime).
 
-You might already think, shipping `node_modules` is a very big size hit, and it's true, but not always a bad thing. We will look at why later.
+You might already think that shipping `node_modules` takes a big hit on storage, and while it's true, but not always a bad thing. We will later look at why.
 
 # The "export" mode
 
@@ -48,14 +48,14 @@ Even with all the benefits, there's a very good reason for this mode not being t
 
 # Our observations
 
-I created a [benchmark](https://github.com/appwrite-community/nextjs-outputs-bench) to check the sizes of the builds. I had four Next.js apps and ran `next build` on them:
+We prepared a [benchmark](https://github.com/appwrite-community/nextjs-outputs-bench) where we ran the `next build` command for four Next.js apps to check how large their build sizes were:
 
 1. Default mode, no dependencies
 2. Standalone mode, no dependencies
 3. Default mode, very heavy dependencies
 4. Standalone mode, very heavy dependencies
 
-Then I compared the sizes of these builds:
+Then, we compared the sizes of these builds and observed the following:
 
 ```
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -77,7 +77,7 @@ Then I compared the sizes of these builds:
      Standalone mode: +0 KB (0.0% increase)
 ```
 
-The result is clear: standalone mode wins as it's consistently shown lower build sizes. Interestingly, same build size because even though we install heavy dependencies, we aren't actually importing/using them at all in the apps, so these dependencies aren't even getting traced and bundled, which is ideal! Lower build sizes mean faster cold starts on your app.
+The result was clear: standalone mode consistently showed lower build sizes. Interestingly, even when we installed heavy dependencies in the app, we observed that the build size for the apps with standalone mode remained unchanged. Because those dependencies were not being imported and used in the app, they were not bundled, which is ideal. Lower build sizes also result in faster cold starts for your app, which creates a better user experience.
 
 # Which is the best for me?
 
