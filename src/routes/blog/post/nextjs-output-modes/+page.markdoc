@@ -10,7 +10,7 @@ category: tutorial
 featured: false
 ---
 
-Next.js is a very popular React framework. People choose it because it blends in with the server very well, using both client-side and server-side capabilities to provide a better user experience. Next.js is packed with cutting-edge React features like RSC. However, such features also brings complexity in deploying your app.
+Next.js is a very popular React framework. People choose it because it blends in with the server very well, using both client-side and server-side capabilities to provide a better user experience. Next.js is packed with cutting-edge React features like RSC. However, such features also bring complexity when deploying your app.
 
 Appwrite Sites enables you to deploy your Next.js app seamlessly without any hassle of configuration. Appwrite handles all the complexity involved in deploying such apps, so that you can focus on the core logic of your app.
 
@@ -24,7 +24,7 @@ The default mode relies on your dependencies stored in your `node_modules` and t
 
 It's important to note that if you remove `node_modules`, which usually is the biggest chunk of your app, your app won't run anymore, as your builds also rely on `node_modules` to work properly. So, when counting the size of your app, you should also count in `node_modules` folder as well.
 
-The default mode applies a "magic box" approach. The command `next start` does some *magic* to serve your app. This removes a lot of *configurability* from your app, like custom middlewares or global error handling. The other modes allow some more configurability.
+The default mode is typically deployed by running `next start`. This is convenient, but gives you less control over the underlying server process than approaches where you own the server entrypoint (e.g., injecting custom server logic/handlers as part of your runtime).
 
 You might already think, shipping `node_modules` is a very big size hit, and it's true, but not always a bad thing. We will look at why later.
 
@@ -34,8 +34,7 @@ Even though we won't be comparing this mode in our benchmarks later in the artic
 
 The "export" mode is a mode that allows you to export your app as a static site. This mode is useful if you want to deploy your app as a static site. 
 
-To use this mode, you need to run `next export`. This will create a `out` folder with your static site. You can then serve this folder using any static site hosting provider.
-
+To use this mode, configure `output: 'export'` in `next.config.js` and run `next build`. This will create an `out` folder that you can serve with any static hosting provider.
 
 # Standalone mode
 
