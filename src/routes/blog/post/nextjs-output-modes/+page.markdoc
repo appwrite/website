@@ -26,7 +26,7 @@ It's important to note that if you remove `node_modules`, which usually is the b
 
 The default mode applies a "magic box" approach. The command `next start` does some *magic* to serve your app. This removes a lot of *configurability* from your app, like custom middlewares or global error handling. The other modes allow some more configurability.
 
-You might already think, shipping `node_modules` is a very big size hit, and it's true, but not always a bad thing. We will look at why later.
+You might already think that shipping `node_modules` takes a big hit on storage, and while it's true, but not always a bad thing. We will later look at why.
 
 # The "export" mode
 
