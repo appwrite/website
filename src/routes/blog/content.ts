@@ -25,7 +25,7 @@ export interface PostsData {
     lastUpdated: Date;
     cover: string;
     timeToRead: number;
-    author: string;
+    author: string | string[];
     category: string;
     href: string;
     slug: string;
