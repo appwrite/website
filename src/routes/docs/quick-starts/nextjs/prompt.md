@@ -4,8 +4,9 @@ Do exactly these steps in order. Confirm each step succeeds before continuing. I
 
 Respect user's package manager at all time. Don't use NPM if the user uses something else.
 
-1. Create Next.js app
-    - Run: npx create-next-app@latest my-app --use-npm --no-tailwind --eslint
+1. Create or use existing Next.js app
+    - If you already have a Next.js project open, stay in it and use it (App Router required).
+    - Otherwise, run: npx create-next-app@latest my-app --use-npm --no-tailwind --eslint
     - Change dir: cd my-app
     - When prompted: TypeScript = No, ESLint = Yes, Tailwind = No, src dir = your choice, App Router = Yes, Import alias = No.
 
@@ -30,7 +31,8 @@ Respect user's package manager at all time. Don't use NPM if the user uses somet
         ```
 
 4. Build the login page (client component)
-    - Create/replace app/page.js with this component using "use client".
+    - If this is a fresh project you just created above, you may replace `app/page.js` with this component using "use client".
+    - If you are working in an existing project, create a new route `app/auth/page.js` (or .tsx) instead of overriding the default route.
     - It must render:
         - Email/password inputs
         - Name input for registration

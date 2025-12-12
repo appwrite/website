@@ -6,8 +6,9 @@ Rules
 - Use explicit config (no hardcoding in code except reading constants/env the user sets).
 - Respect the user’s package manager and Expo workflow.
 
-1. Scaffold Expo app
-    - Run: npx create-expo-app my-app && cd my-app
+1. Scaffold or use existing Expo app
+    - If you already have an Expo project open, stay in it and use it.
+    - Otherwise, run: npx create-expo-app my-app && cd my-app
 
 2. Install SDK and polyfills
     - Run: npx expo install react-native-appwrite react-native-url-polyfill
@@ -33,7 +34,9 @@ Rules
         ```
 
 5. UI wiring (idea + key snippets)
-    - Screen file (e.g., `app/(tabs)/index.tsx`):
+    - If this is a fresh project, you can reuse the default entry screen (e.g., `app/(tabs)/index.tsx`).
+    - If you are adding to an existing project, create a new screen/route (e.g., `app/auth.tsx` or a new tab/stack screen) instead of overriding the current default route.
+    - Screen file example:
 
         ```tsx
         import React, { useState } from 'react';
