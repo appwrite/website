@@ -19,6 +19,8 @@ If you need to manually update these settings, here are the steps to do so:
 3. Confirm that the appropriate install command, build command, and output directory are set
 4. Click on the **Update** button and redeploy your site
 
+{% partial file="next-standalone-note.md" /%}
+
 {% only_dark %}
 ![Rendering strategy](/images/docs/sites/dark/build-settings-rendering-ssr.png)
 {% /only_dark %}
