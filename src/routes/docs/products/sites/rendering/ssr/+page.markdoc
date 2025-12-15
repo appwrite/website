@@ -43,7 +43,7 @@ Ensure the `src/server.ts` file uses `@angular/ssr/node` package.
 {% /tabsitem %}
 
 {% tabsitem #nextjs title="Next.js" %}
-Ensure you don't set `output` in the `next.config.js`.
+Ensure you don't set `output` to `export` in the `next.config.js`.
 {% /tabsitem %}
 
 {% tabsitem #nuxt title="Nuxt" %}
