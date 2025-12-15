@@ -433,10 +433,12 @@
                         >
                             <img
                                 src="/images/docs/mcp/logos/dark/google-antigravity.svg"
-                                alt="Antigravity"
+                                alt="Google Antigravity"
                                 class="w-6"
                             />
-                            <h4 class="text-sub-body text-primary font-medium">Antigravity</h4>
+                            <h4 class="text-sub-body text-primary font-medium">
+                                Google Antigravity
+                            </h4>
                         </a>
                     </li>
                 </ul>

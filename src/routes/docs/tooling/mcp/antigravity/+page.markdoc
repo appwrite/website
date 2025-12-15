@@ -1,10 +1,10 @@
 ---
 layout: article
-title: Appwrite MCP and Antigravity
-description: Learn how to add the Appwrite MCP servers to Agent Manager in Antigravity to interact with both the Appwrite API and documentation.
+title: Appwrite MCP and Google Antigravity
+description: Learn how to add the Appwrite MCP servers to Agent Manager in Google Antigravity to interact with both the Appwrite API and documentation.
 ---
 
-Learn how you can add the Appwrite MCP servers to Agent Manager in Antigravity to interact with both the Appwrite API and documentation.
+Learn how you can add the Appwrite MCP servers to Agent Manager in Google Antigravity to interact with both the Appwrite API and documentation.
 
 Before you begin, ensure you have the following **pre-requisites** installed on your system:
 
