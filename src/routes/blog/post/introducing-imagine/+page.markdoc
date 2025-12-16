@@ -20,7 +20,7 @@ Today, we are taking the next step in addressing that gap.
 
 We are introducing [Imagine](https://imagine.dev), a platform that uses AI to translate ideas into real, production-ready applications, backed by Appwrite Cloud. Imagine does not generate isolated code snippets or disposable demos. It produces applications that are wired to real services - authentication, databases, storage, and functions - and designed to evolve beyond the first prompt. The goal is not to abstract infrastructure away entirely, but to remove it as a constant obstacle in the earliest and most fragile stages of building.
 
-{% youtube src="https://www.youtube-nocookie.com/embed/xXYCVfA8joM" thumbnail="/images/blog/introducing-imagine/video.png" /%}
+{% youtube src="https://www.youtube-nocookie.com/embed/xXYCVfA8joM" thumbnail="/images/blog/introducing-imagine/imagine-1.png" /%}
 
 Imagine is built on a simple observation: most ideas never fail because they were engineered poorly. They fail because they never make it far enough to be tested, shared, or used. The gap is not between "AI-generated" and "expert-built" software. The gap is between something that exists and something that never gets created at all.
 
@@ -35,6 +35,8 @@ Imagine is an agentic application-building platform designed and operated by the
 Every part of what Imagine produces - frontend structure, backend services, infrastructure configuration, and deployment - is generated with a first-party understanding of Appwrite’s data models, permission system, and execution constraints. Imagine is trained on Appwrite’s patterns and best practices, and it generates applications that align with how Appwrite Cloud is actually meant to be used in production.
 
 Because of this, there is no glue code, no schema translation layer, and no brittle dependency chain between systems. When Imagine creates an application, it provisions real Appwrite Cloud resources: databases and tables, columns and indexes, functions, authentication settings, storage buckets, permissions, and deployment targets. The result is a real Appwrite project, not an abstraction that has to be reconciled later.
+
+![Imagine](/images/blog/introducing-imagine/imagine-2.png)
 
 All generated code is transparent and approachable. You can inspect it, extend it, and incrementally take more control as your application evolves. As Imagine matures, we are working toward making this transition even smoother, but from day one the system is designed to grow alongside real development workflows rather than block them.
 
@@ -124,6 +126,8 @@ Every Imagine account also includes a generous allocation of cloud resources by 
 For teams running production workloads, the Pro plan allows applications to grow beyond included limits using a pay-per-usage model, similar to how Appwrite Cloud operates at scale. This ensures that applications can expand smoothly as usage increases, without forcing premature upgrades or hard caps.
 
 For organizations with more advanced requirements, higher scale, or specific commercial or security needs, our team works directly with customers to provide tailored plans and configurations. If you need custom adjustments or are planning to operate at significant scale, we encourage you to [contact our team to discuss the most appropriate setup](https://imagine.dev/enterprise).
+
+![Imagine](/images/blog/introducing-imagine/imagine-3.png)
 
 # **Get started**
 
