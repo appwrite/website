@@ -221,6 +221,16 @@
                             data.authors.find((author) =>
                                 featuredAuthorSlugs.includes(author.slug)
                             )}
+                        {@const featuredAuthors = featuredAuthorSlugs
+                            .map((slug) => data.authors.find((a) => a.slug === slug))
+                            .filter((a): a is NonNullable<typeof a> => Boolean(a))}
+                        {@const featuredAuthorNames = featuredAuthors.map((a) => a.name)}
+                        {@const featuredAuthorLabel =
+                            featuredAuthorNames.length > 2
+                                ? `${featuredAuthorNames[0]} +${featuredAuthorNames.length - 1}`
+                                : featuredAuthorNames.length === 2
+                                    ? featuredAuthorNames.join(', ')
+                                    : featuredAuthorNames[0] || author?.name}
                         <article class="web-feature-article mt-12">
                             <a
                                 href={featured.href}
@@ -251,17 +261,23 @@
                                 </p>
                                 <div class="web-author">
                                     <div class="flex items-center gap-2">
-                                        <img
-                                            class="web-author-image"
-                                            src={author?.avatar}
-                                            alt={author?.name}
-                                            loading="lazy"
-                                            width="24"
-                                            height="24"
-                                        />
+                                        <div class="flex items-center" style="margin-inline-end: -8px;">
+                                            {#each featuredAuthors.slice(0, 3) as featuredAuthor, index}
+                                                <img
+                                                    class="web-author-image"
+                                                    class:stacked-avatar={index > 0}
+                                                    src={featuredAuthor.avatar}
+                                                    alt={featuredAuthor.name}
+                                                    loading="lazy"
+                                                    width="24"
+                                                    height="24"
+                                                    style="margin-inline-start: {index > 0 ? '-8px' : '0'}; z-index: {featuredAuthors.length - index};"
+                                                />
+                                            {/each}
+                                        </div>
                                         <div class="web-author-info">
                                             <a href={author?.href} class="text-sub-body web-link"
-                                                >{author?.name}</a
+                                                >{featuredAuthorLabel}</a
                                             >
                                             <p class="text-caption hidden">{author?.bio}</p>
                                             <ul class="web-metadata text-caption web-is-not-mobile">
@@ -391,9 +407,11 @@
                                     .map((slug) => data.authors.find((a) => a.slug === slug)?.name)
                                     .filter(Boolean)}
                                 {@const authorLabel =
-                                    authorNames.length > 1
+                                    authorNames.length > 2
                                         ? `${authorNames[0]} +${authorNames.length - 1}`
-                                        : authorNames[0] || author.name}
+                                        : authorNames.length === 2
+                                            ? authorNames.join(', ')
+                                            : authorNames[0] || author.name}
                                 <Article
                                     title={post.title}
                                     href={post.href}
@@ -688,6 +706,11 @@
     .category-nav-arrow span {
         font-size: 16px;
         color: hsl(var(--web-color-primary));
+    }
+
+    .stacked-avatar {
+        border: 2px solid hsl(var(--web-color-background-docs));
+        position: relative;
     }
 
     @media (max-width: 768px) {
