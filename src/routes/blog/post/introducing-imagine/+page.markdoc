@@ -20,7 +20,7 @@ Today, we are taking the next step in addressing that gap.
 
 We are introducing [Imagine](https://imagine.dev), a platform that uses AI to translate ideas into real, production-ready applications, backed by Appwrite Cloud. Imagine does not generate isolated code snippets or disposable demos. It produces applications that are wired to real services - authentication, databases, storage, and functions - and designed to evolve beyond the first prompt. The goal is not to abstract infrastructure away entirely, but to remove it as a constant obstacle in the earliest and most fragile stages of building.
 
-{% youtube src="https://www.youtube-nocookie.com/embed/YSUmzHH_OMg?si=EWm7gnPUASMKygrr" thumbnail="/images/blog/setting-up-route-protection-in-react-native/thumbnail-1.png" /%}
+{% youtube src="https://www.youtube-nocookie.com/embed/xXYCVfA8joM" thumbnail="/images/blog/introducing-imagine/video.png" /%}
 
 Imagine is built on a simple observation: most ideas never fail because they were engineered poorly. They fail because they never make it far enough to be tested, shared, or used. The gap is not between "AI-generated" and "expert-built" software. The gap is between something that exists and something that never gets created at all.
 
@@ -71,7 +71,7 @@ You get access to:
 - Authentication, including OAuth, email and password, anonymous users, JWT, and more
 - Databases with built-in permission models
 - File storage with previews and transformations
-- Serverless Functions with logs and debugging tools
+- Serverless Functions with logs and debugging tools (coming soon)
 - Site hosting backed by a global CDN
 - Messaging and notifications (coming soon)
 - Realtime subscriptions for database and system events
@@ -131,6 +131,6 @@ The results blew us away in early tests, and we can’t wait for you to test it.
 
 This is the start of a new chapter for Appwrite.
 
-We urge you not to take our word for it. Sign up and be one of the first to try out Imagine and see what it can do, and as always, help us spread the word.
+We urge you not to take our word for it. [Sign up](https://imagine.dev/) and be one of the first to try out Imagine and see what it can do, and as always, help us spread the word.
 
-**Try it. Break it. Build something real with it.**
+[**Try it. Break it. Build something real with it.**](https://imagine.dev/)
