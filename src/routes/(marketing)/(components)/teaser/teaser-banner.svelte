@@ -51,7 +51,7 @@
         href="https://imagine.dev"
         target="_blank"
         rel="noopener noreferrer"
-        class="group relative mx-auto flex w-full cursor-pointer items-center bg-black py-4 md:h-[76px]"
+        class="banner-container group relative mx-auto flex cursor-pointer items-center bg-black px-4 py-3 sm:px-6 sm:py-4 md:h-[76px] md:px-0"
     >
         <!-- Animated Halftone Background with Left/Right Fade -->
         <div
@@ -64,23 +64,27 @@
         </div>
 
         <!-- Content -->
-        <div class="relative z-10 mx-auto flex w-full gap-[1rem] [max-inline-size:108rem]">
-            <!-- Left Side: Introducing + Logo + Imagine -->
-            <div class="flex items-center gap-4 md:basis-1/2">
+        <div
+            class="relative z-10 mx-auto flex w-full flex-col items-center justify-center gap-1 [max-inline-size:108rem] sm:flex-row sm:items-center sm:justify-between sm:gap-4 md:gap-[1rem]"
+        >
+            <!-- Top Line: Introducing + Logo + Imagine -->
+            <div
+                class="flex flex-shrink-0 items-center justify-center gap-2 sm:justify-start sm:gap-3 md:basis-1/2 md:gap-4"
+            >
                 <span class="banner-text banner-text-introducing">{leftText}</span>
                 <!-- Imagine Logo -->
-                <div
-                    style="display: flex; width: 143.384px; height: 35.785px; padding: 1.348px 0.634px 1.348px 0; justify-content: center; align-items: flex-end; gap: 10.75px; flex-shrink: 0;"
-                >
+                <div class="logo-container">
                     <img src="/images/logos/Imagine.png" alt="Imagine" class="h-auto w-auto" />
                 </div>
             </div>
 
-            <!-- Right Side: Build something real + Arrow -->
-            <div class="mr-0 ml-auto flex items-center gap-2 text-right">
+            <!-- Bottom Line: Build something real + Arrow -->
+            <div
+                class="flex items-center justify-center gap-1.5 sm:mr-0 sm:ml-auto sm:gap-2 sm:text-right"
+            >
                 <span class="banner-text banner-text-right">{rightText}</span>
                 <svg
-                    class="h-5 w-5 transition group-hover:-translate-x-0.5"
+                    class="h-4 w-4 flex-shrink-0 transition group-hover:-translate-x-0.5 sm:h-5 sm:w-5"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -98,13 +102,27 @@
 </div>
 
 <style>
+    .banner-container {
+        width: 360px;
+        height: 110px;
+    }
+
+    @media (min-width: 640px) {
+        .banner-container {
+            width: 100%;
+            height: auto;
+        }
+    }
+
     .banner-text {
         font-family: 'Neue Haas Grotesk Display Pro', Inter, sans-serif;
         letter-spacing: -0.1px;
     }
 
     .banner-text-introducing {
+        font-family: 'Neue Haas Grotesk Display Pro', Inter, sans-serif;
         font-size: 20px;
+        font-style: normal;
         font-weight: 450;
         line-height: 106%;
         letter-spacing: -0.2px;
@@ -112,6 +130,19 @@
         background-clip: text;
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
+        white-space: nowrap;
+    }
+
+    @media (min-width: 640px) {
+        .banner-text-introducing {
+            font-size: 18px;
+        }
+    }
+
+    @media (min-width: 768px) {
+        .banner-text-introducing {
+            font-size: 20px;
+        }
     }
 
     .banner-text-right {
@@ -121,5 +152,45 @@
         font-weight: 400;
         line-height: 22px;
         letter-spacing: -0.072px;
+        white-space: nowrap;
+    }
+
+    @media (min-width: 640px) {
+        .banner-text-right {
+            font-size: 15px;
+            line-height: 20px;
+        }
+    }
+
+    @media (min-width: 768px) {
+        .banner-text-right {
+            font-size: 16px;
+            line-height: 22px;
+        }
+    }
+
+    .logo-container {
+        display: flex;
+        width: 143.384px;
+        height: 35.785px;
+        padding: 1.348px 0.634px 1.348px 0;
+        justify-content: center;
+        align-items: flex-end;
+        gap: 10.75px;
+        flex-shrink: 0;
+    }
+
+    @media (min-width: 640px) {
+        .logo-container {
+            width: 120px;
+            height: 30px;
+        }
+    }
+
+    @media (min-width: 768px) {
+        .logo-container {
+            width: 143.384px;
+            height: 35.785px;
+        }
     }
 </style>
