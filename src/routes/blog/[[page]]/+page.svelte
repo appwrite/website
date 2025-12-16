@@ -223,14 +223,14 @@
                             )}
                         {@const featuredAuthors = featuredAuthorSlugs
                             .map((slug) => data.authors.find((a) => a.slug === slug))
-                            .filter((a): a is NonNullable<typeof a> => Boolean(a))}
+                            .filter((a): a is NonNullable => Boolean(a))}
                         {@const featuredAuthorNames = featuredAuthors.map((a) => a.name)}
                         {@const featuredAuthorLabel =
                             featuredAuthorNames.length > 2
                                 ? `${featuredAuthorNames[0]} +${featuredAuthorNames.length - 1}`
                                 : featuredAuthorNames.length === 2
-                                    ? featuredAuthorNames.join(', ')
-                                    : featuredAuthorNames[0] || author?.name}
+                                  ? featuredAuthorNames.join(', ')
+                                  : featuredAuthorNames[0] || author?.name}
                         <article class="web-feature-article mt-12">
                             <a
                                 href={featured.href}
@@ -261,7 +261,10 @@
                                 </p>
                                 <div class="web-author">
                                     <div class="flex items-center gap-2">
-                                        <div class="flex items-center" style="margin-inline-end: -8px;">
+                                        <div
+                                            class="flex items-center"
+                                            style="margin-inline-end: -8px;"
+                                        >
                                             {#each featuredAuthors.slice(0, 3) as featuredAuthor, index}
                                                 <img
                                                     class="web-author-image"
@@ -271,7 +274,10 @@
                                                     loading="lazy"
                                                     width="24"
                                                     height="24"
-                                                    style="margin-inline-start: {index > 0 ? '-8px' : '0'}; z-index: {featuredAuthors.length - index};"
+                                                    style="margin-inline-start: {index > 0
+                                                        ? '-8px'
+                                                        : '0'}; z-index: {featuredAuthors.length -
+                                                        index};"
                                                 />
                                             {/each}
                                         </div>
@@ -410,8 +416,8 @@
                                     authorNames.length > 2
                                         ? `${authorNames[0]} +${authorNames.length - 1}`
                                         : authorNames.length === 2
-                                            ? authorNames.join(', ')
-                                            : authorNames[0] || author.name}
+                                          ? authorNames.join(', ')
+                                          : authorNames[0] || author.name}
                                 <Article
                                     title={post.title}
                                     href={post.href}
