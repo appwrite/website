@@ -223,7 +223,7 @@
                             )}
                         {@const featuredAuthors = featuredAuthorSlugs
                             .map((slug) => data.authors.find((a) => a.slug === slug))
-                            .filter((a): a is NonNullable => Boolean(a))}
+                            .filter((a) => a !== undefined)}
                         {@const featuredAuthorNames = featuredAuthors.map((a) => a.name)}
                         {@const featuredAuthorLabel =
                             featuredAuthorNames.length > 2
@@ -265,7 +265,7 @@
                                             class="flex items-center"
                                             style="margin-inline-end: -8px;"
                                         >
-                                            {#each featuredAuthors.slice(0, 3) as featuredAuthor, index}
+                                            {#each featuredAuthors.slice(0, 3) as featuredAuthor, index (index)}
                                                 <img
                                                     class="web-author-image"
                                                     class:stacked-avatar={index > 0}
@@ -348,7 +348,7 @@
                                     </button>
                                 </li>
 
-                                {#each categories as category}
+                                {#each categories as category (category.name)}
                                     <li class="flex items-center">
                                         <button
                                             class="web-interactive-tag web-caption-400 cursor-pointer"
@@ -470,7 +470,7 @@
                                 </span>
                             {/if}
 
-                            {#each currentPageRange as page}
+                            {#each currentPageRange as page (page)}
                                 {#if page === -1}
                                     <span class="pagination-ellipsis">...</span>
                                 {:else}
