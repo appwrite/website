@@ -74,7 +74,7 @@
                 <span class="banner-text banner-text-introducing">{leftText}</span>
                 <!-- Imagine Logo -->
                 <div class="logo-container">
-                    <img src="/images/logos/Imagine.png" alt="Imagine" class="h-auto w-auto" />
+                    <img src="/images/logos/imagine.svg" alt="Imagine" class="h-auto w-auto" />
                 </div>
             </div>
 
