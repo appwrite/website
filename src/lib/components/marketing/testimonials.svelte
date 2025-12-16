@@ -60,7 +60,7 @@
             >
                 {#each testimonials as testimonial}
                     <div
-                        class="flex h-fit w-[90vw] flex-col justify-center rounded-2xl bg-white p-6 transition-all md:w-lg"
+                        class="flex min-h-52 w-[90vw] flex-col justify-between rounded-2xl bg-white p-6 transition-all md:w-lg"
                         aria-hidden={i < testimonials.length - 1}
                     >
                         <p class="text-sub-body text-secondary flex-1 font-medium">
