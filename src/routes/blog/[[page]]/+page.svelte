@@ -6,6 +6,7 @@
     import { Main } from '$lib/layouts';
     import { createDebounce } from '$lib/utils/debounce';
     import { DEFAULT_HOST } from '$lib/utils/metadata';
+    import { getPostAuthors } from '$lib/utils/blog-authors';
     import { TITLE_SUFFIX } from '$routes/titles';
     import { tick } from 'svelte';
 
@@ -212,25 +213,11 @@
                 <div class="container">
                     <h1 class="text-display font-aeonik-pro text-primary">Blog</h1>
                     {#if featured}
-                        {@const featuredAuthorSlugs = Array.isArray(featured.author)
-                            ? featured.author
-                            : [featured.author]}
-                        {@const featuredPrimarySlug = featuredAuthorSlugs[0]}
-                        {@const author =
-                            data.authors.find((author) => author.slug === featuredPrimarySlug) ||
-                            data.authors.find((author) =>
-                                featuredAuthorSlugs.includes(author.slug)
-                            )}
-                        {@const featuredAuthors = featuredAuthorSlugs
-                            .map((slug) => data.authors.find((a) => a.slug === slug))
-                            .filter((a) => a !== undefined)}
-                        {@const featuredAuthorNames = featuredAuthors.map((a) => a.name)}
-                        {@const featuredAuthorLabel =
-                            featuredAuthorNames.length > 2
-                                ? `${featuredAuthorNames[0]} +${featuredAuthorNames.length - 1}`
-                                : featuredAuthorNames.length === 2
-                                  ? featuredAuthorNames.join(', ')
-                                  : featuredAuthorNames[0] || author?.name}
+                        {@const {
+                            postAuthors: featuredAuthors,
+                            authorAvatars: featuredAvatars,
+                            primaryAuthor: author
+                        } = getPostAuthors(featured.author, data.authors)}
                         <article class="web-feature-article mt-12">
                             <a
                                 href={featured.href}
@@ -265,27 +252,30 @@
                                             class="flex items-center"
                                             style="margin-inline-end: -8px;"
                                         >
-                                            {#each featuredAuthors.slice(0, 3) as featuredAuthor, index (index)}
+                                            {#each featuredAvatars.slice(0, 3) as avatar, index (index)}
                                                 <img
                                                     class="web-author-image"
                                                     class:stacked-avatar={index > 0}
-                                                    src={featuredAuthor.avatar}
-                                                    alt={featuredAuthor.name}
+                                                    src={avatar}
+                                                    alt={featuredAuthors[index]?.name || ''}
                                                     loading="lazy"
                                                     width="24"
                                                     height="24"
                                                     style="margin-inline-start: {index > 0
                                                         ? '-8px'
-                                                        : '0'}; z-index: {featuredAuthors.length -
+                                                        : '0'}; z-index: {featuredAvatars.length -
                                                         index};"
                                                 />
                                             {/each}
                                         </div>
                                         <div class="web-author-info">
-                                            <a href={author?.href} class="text-sub-body web-link"
-                                                >{featuredAuthorLabel}</a
-                                            >
-                                            <p class="text-caption hidden">{author?.bio}</p>
+                                            <span class="text-sub-body">
+                                                {#each featuredAuthors as featuredAuthor, i}
+                                                    <a href={featuredAuthor.href} class="web-link"
+                                                        >{featuredAuthor.name}</a
+                                                    >{#if i < featuredAuthors.length - 1},{' '}{/if}
+                                                {/each}
+                                            </span>
                                             <ul class="web-metadata text-caption web-is-not-mobile">
                                                 <li>{featured.timeToRead} min</li>
                                             </ul>
@@ -399,33 +389,19 @@
                 <div class="mt-12">
                     <ul class:web-grid-articles={data.posts.length > 0}>
                         {#each data.posts as post (post.slug)}
-                            {@const postAuthorSlugs = Array.isArray(post.author)
-                                ? post.author
-                                : [post.author]}
-                            {@const primarySlug = postAuthorSlugs[0]}
-                            {@const author =
-                                data.authors.find((author) => author.slug === primarySlug) ||
-                                data.authors.find((author) =>
-                                    postAuthorSlugs.includes(author.slug)
-                                )}
-                            {#if author && !post.draft}
-                                {@const authorNames = postAuthorSlugs
-                                    .map((slug) => data.authors.find((a) => a.slug === slug)?.name)
-                                    .filter(Boolean)}
-                                {@const authorLabel =
-                                    authorNames.length > 2
-                                        ? `${authorNames[0]} +${authorNames.length - 1}`
-                                        : authorNames.length === 2
-                                          ? authorNames.join(', ')
-                                          : authorNames[0] || author.name}
+                            {@const { postAuthors, authorAvatars, primaryAuthor } = getPostAuthors(
+                                post.author,
+                                data.authors
+                            )}
+                            {#if primaryAuthor && !post.draft}
                                 <Article
                                     title={post.title}
                                     href={post.href}
                                     cover={post.cover}
                                     date={post.date}
                                     timeToRead={post.timeToRead}
-                                    avatar={author.avatar}
-                                    author={authorLabel}
+                                    avatars={authorAvatars}
+                                    authors={postAuthors}
                                 />
                             {/if}
                         {:else}

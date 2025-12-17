@@ -2,50 +2,63 @@
     import Media from '$lib/UI/Media.svelte';
     import { formatDate } from '$lib/utils/date';
 
+    interface AuthorInfo {
+        name: string;
+        href: string;
+    }
+
     interface ArticleProps {
         title: string;
         cover: string;
         href: string;
         date: Date;
         timeToRead: number;
-        author: string;
-        avatar: string;
+        authors: AuthorInfo[];
+        avatars: string[];
     }
 
-    const { title, cover, href, date, timeToRead, author, avatar }: ArticleProps = $props();
+    const { title, cover, href, date, timeToRead, authors, avatars }: ArticleProps = $props();
 </script>
 
 <li>
-    <a class="bg-transparent" {href}>
-        <div class="overflow-hidden rounded-lg">
-            <Media
-                src={cover}
-                class="aspect-video transition-transform duration-250 hover:scale-105"
-                alt={title}
-                autoplay
-                controls={false}
-            />
-        </div>
-        <div class="flex flex-col gap-3 pt-6 pb-3">
-            <h4 class="text-label font-aeonik-pro text-primary line-clamp-2">
+    <a class="block overflow-hidden rounded-lg bg-transparent" {href}>
+        <Media
+            src={cover}
+            class="aspect-video transition-transform duration-250 hover:scale-105"
+            alt={title}
+            autoplay
+            controls={false}
+        />
+    </a>
+    <div class="flex flex-col gap-3 pt-6 pb-3">
+        <a {href} class="bg-transparent">
+            <h4 class="text-label font-aeonik-pro text-primary line-clamp-2 hover:underline">
                 {title}
             </h4>
-            <div class="flex w-full">
-                <div
-                    class="text-paragraph-md flex w-full flex-col items-center xl:flex-row xl:gap-2"
-                >
-                    <div class="flex items-center justify-center gap-2">
-                        <img class="size-5 rounded-full" loading="lazy" src={avatar} alt={author} />
-                        <h4 class="text-primary">{author}</h4>
-                    </div>
-                    <div class="text-secondary ml-7 flex xl:ml-0">
-                        <span>
-                            {formatDate(date)}
-                        </span>
-                        <span class="before:mx-1 xl:before:content-['-']">{timeToRead} min</span>
-                    </div>
-                </div>
+        </a>
+        <div class="text-paragraph-md flex flex-wrap items-center gap-2">
+            <div class="flex items-center">
+                {#each avatars as avatar, i}
+                    <img
+                        class="size-5 rounded-full ring-2 ring-[#19191c]"
+                        style="margin-inline-start: {i > 0
+                            ? '-4px'
+                            : '0'}; z-index: {avatars.length - i}"
+                        loading="lazy"
+                        src={avatar}
+                        alt={authors[i]?.name ?? ''}
+                    />
+                {/each}
             </div>
+            <span class="text-primary">
+                {#each authors as author, i}
+                    <a href={author.href} class="hover:underline">{author.name}</a
+                    >{#if i < authors.length - 1},{' '}{/if}
+                {/each}
+            </span>
+            <span class="text-secondary">
+                {formatDate(date)} - {timeToRead} min
+            </span>
         </div>
-    </a>
+    </div>
 </li>
