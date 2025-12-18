@@ -17,20 +17,35 @@ export function getPostAuthors(
     primaryAuthor: AuthorData | undefined;
 } {
     const postAuthorSlugs = Array.isArray(postAuthor) ? postAuthor : [postAuthor];
-    const primarySlug = postAuthorSlugs[0];
+    if (postAuthorSlugs.length === 0) {
+        return {
+            postAuthors: [],
+            authorAvatars: [],
+            primaryAuthor: undefined
+        };
+    }
 
-    const primaryAuthor =
-        allAuthors.find((a) => a.slug === primarySlug) ||
-        allAuthors.find((a) => postAuthorSlugs.includes(a.slug));
+    const authorsBySlug = new Map<string, AuthorData>();
+    for (const author of allAuthors) {
+        authorsBySlug.set(author.slug, author);
+    }
 
-    const postAuthors = postAuthorSlugs
-        .map((slug) => allAuthors.find((a) => a.slug === slug))
-        .filter((a): a is AuthorData => !!a)
-        .map((a) => ({ name: a.name, href: a.href }));
+    const postAuthors: AuthorInfo[] = [];
+    const authorAvatars: string[] = [];
+    let primaryAuthor: AuthorData | undefined;
 
-    const authorAvatars = postAuthorSlugs
-        .map((slug) => allAuthors.find((a) => a.slug === slug)?.avatar)
-        .filter((a): a is string => !!a);
+    for (const slug of postAuthorSlugs) {
+        const author = authorsBySlug.get(slug);
+        if (author) {
+            postAuthors.push({ name: author.name, href: author.href });
+            if (author.avatar) {
+                authorAvatars.push(author.avatar);
+            }
+            if (!primaryAuthor) {
+                primaryAuthor = author;
+            }
+        }
+    }
 
     return {
         postAuthors,
