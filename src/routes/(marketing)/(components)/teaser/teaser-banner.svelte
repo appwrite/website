@@ -103,8 +103,9 @@
 
 <style>
     .banner-container {
-        width: 360px;
-        height: 110px;
+        width: 100%;
+        min-height: auto;
+        max-width: 100%;
     }
 
     @media (min-width: 640px) {
@@ -121,7 +122,7 @@
 
     .banner-text-introducing {
         font-family: 'Neue Haas Grotesk Display Pro', Inter, sans-serif;
-        font-size: 20px;
+        font-size: 18px;
         font-style: normal;
         font-weight: 450;
         line-height: 106%;
@@ -131,6 +132,12 @@
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         white-space: nowrap;
+    }
+
+    @media (min-width: 375px) {
+        .banner-text-introducing {
+            font-size: 20px;
+        }
     }
 
     @media (min-width: 640px) {
@@ -148,11 +155,18 @@
     .banner-text-right {
         color: var(--primary, #e4e4e7);
         font-family: Inter, sans-serif;
-        font-size: 16px;
+        font-size: 14px;
         font-weight: 400;
-        line-height: 22px;
+        line-height: 20px;
         letter-spacing: -0.072px;
         white-space: nowrap;
+    }
+
+    @media (min-width: 375px) {
+        .banner-text-right {
+            font-size: 16px;
+            line-height: 22px;
+        }
     }
 
     @media (min-width: 640px) {
@@ -171,13 +185,20 @@
 
     .logo-container {
         display: flex;
-        width: 143.384px;
-        height: 35.785px;
+        width: 120px;
+        height: 30px;
         padding: 1.348px 0.634px 1.348px 0;
         justify-content: center;
         align-items: flex-end;
         gap: 10.75px;
         flex-shrink: 0;
+    }
+
+    @media (min-width: 375px) {
+        .logo-container {
+            width: 143.384px;
+            height: 35.785px;
+        }
     }
 
     @media (min-width: 640px) {
