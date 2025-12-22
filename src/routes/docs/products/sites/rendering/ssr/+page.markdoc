@@ -19,8 +19,6 @@ If you need to manually update these settings, here are the steps to do so:
 3. Confirm that the appropriate install command, build command, and output directory are set
 4. Click on the **Update** button and redeploy your site
 
-{% partial file="next-standalone-note.md" /%}
-
 {% only_dark %}
 ![Rendering strategy](/images/docs/sites/dark/build-settings-rendering-ssr.png)
 {% /only_dark %}
@@ -43,7 +41,16 @@ Ensure the `src/server.ts` file uses `@angular/ssr/node` package.
 {% /tabsitem %}
 
 {% tabsitem #nextjs title="Next.js" %}
-Ensure you don't set `output` to `export` in the `next.config.js`.
+Ensure you don't set `output` to `export` in the `next.config.js`. 
+
+You may use the standalone output mode to get smaller build sizes, lesser build times and cold start times. To use standalone mode, use the following configuration for your `next.config.js` file:
+
+```js
+/** @type {import('next').NextConfig} */
+module.exports = {
+  output: 'standalone',
+};
+```
 {% /tabsitem %}
 
 {% tabsitem #nuxt title="Nuxt" %}
