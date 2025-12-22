@@ -41,16 +41,10 @@ Ensure the `src/server.ts` file uses `@angular/ssr/node` package.
 {% /tabsitem %}
 
 {% tabsitem #nextjs title="Next.js" %}
-Ensure you don't set `output` to `export` in the `next.config.js`. 
+Ensure you don't set `output` to `export` in the `next.config.js`. The following output modes are supported:
 
-You may use the standalone output mode to get smaller build sizes, lesser build times and cold start times. To use standalone mode, use the following configuration for your `next.config.js` file:
-
-```js
-/** @type {import('next').NextConfig} */
-module.exports = {
-  output: 'standalone',
-};
-```
+- **Default mode**: No `output` configuration needed in `next.config.js`.
+- **Standalone mode**: Set `output` to `standalone` in `next.config.js` for smaller build sizes, lesser build times and cold start times.
 {% /tabsitem %}
 
 {% tabsitem #nuxt title="Nuxt" %}
