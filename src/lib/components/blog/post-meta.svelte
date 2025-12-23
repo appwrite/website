@@ -3,7 +3,9 @@
     import { handleCopy } from '$lib/utils/copy';
     import { formatDate } from '$lib/utils/date';
     import type { AuthorData } from '$routes/blog/content';
-    import { page } from '$app/state';
+
+    import {Tooltip} from '$lib/components';
+    import { melt } from '@melt-ui/svelte';
 
     interface Props {
         date?: string;
@@ -31,6 +33,8 @@
         const blogPostUrl = encodeURI(currentURL);
         return shareOption.link.replace('{TITLE}', title + '.').replace('{URL}', blogPostUrl);
     };
+    const { copied, copy } = handleCopy(currentURL, 2000);
+
 </script>
 
 <header>
@@ -100,12 +104,19 @@
                                 <span class={sharingOption.icon} aria-hidden="true"></span>
                             </a>
                         {:else}
-                            <button
-                                aria-label={sharingOption.label}
-                                onclick={() => handleCopy(currentURL)}
-                            >
-                                <span class={sharingOption.icon} aria-hidden="true"></span>
-                            </button>
+                        <Tooltip>
+                            {#snippet asChild({ trigger })}
+
+                                <button onclick={copy}
+                                    use:melt={trigger}
+                                    aria-label={sharingOption.label}>
+                                    <span class={sharingOption.icon} aria-hidden="true"></span>
+                                </button>
+                            {/snippet}
+                            {#snippet tooltip()}
+                                {$copied ? 'Copied!' :  'Copy'}
+                            {/snippet}
+                        </Tooltip>
                         {/if}
                     </li>
                 {/each}
