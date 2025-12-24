@@ -93,4 +93,4 @@ async function signUpWithEmail(formData) {
 // the SignUpPage component ...
 ```
 
-The `signUpWithEmail` function is an async function that takes the form data as an argument. It uses the `createAdminClient` function to create an admin Appwrite client and then calls the `createEmailPasswordSession` method on the `account` object. This method takes the email and password as arguments and returns a session object. We then set the session secret in a cookie and redirect the user to the account page.
+The `signUpWithEmail` function is an async function that takes the form data as an argument. It uses the `createAdminClient` function to create an admin Appwrite client and then calls the `createEmailPasswordSession` method on the `account` object. This method takes the email and password as arguments and returns a session object. We then await the `cookies()` function (required in Next.js 15) to set the session secret in a secure cookie and redirect the user to the account page.
