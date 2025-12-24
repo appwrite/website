@@ -5,7 +5,7 @@ import {
     getExample,
     type Property,
     ModelType
-} from '../../[platform]/[service]/specs.ts';
+} from '../../[platform]/[service]/specs';
 import type { OpenAPIV3 } from 'openapi-types';
 import type { PageServerLoad } from './$types';
 
@@ -15,7 +15,7 @@ type Model = {
         name: string;
         type: string;
         description: string;
-        items?: Array<any>;
+        items?: Array<unknown>;
         relatedModels?: string;
     }>;
 };
@@ -58,7 +58,7 @@ export const load: PageServerLoad = async ({ params }) => {
                 }
                 case 'object': {
                     let arrayTypes;
-                    if (property.items?.hasOwnProperty('$ref')) {
+                    if (property.items && '$ref' in property.items) {
                         arrayTypes = [(property.items?.$ref as string).split('/').pop()];
                     }
 

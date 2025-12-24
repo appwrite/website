@@ -28,7 +28,7 @@
 
     export let title: string;
     export let description: string;
-    export let author: string;
+    export let author: string | string[];
     export let date: string;
     export let timeToRead: string;
     export let cover: string;
@@ -40,7 +40,10 @@
         (post) => !(post.unlisted ?? false) && !(post.draft ?? false)
     );
     const authors = getContext<AuthorData[]>('authors');
-    const authorData = authors.find((a) => a.slug === author);
+    const authorSlugs = Array.isArray(author) ? author : [author];
+    const authorData = authorSlugs
+        .map((slug) => authors.find((a) => a.slug === slug))
+        .filter((a): a is AuthorData => a !== undefined);
 
     setContext<LayoutContext>('headings', writable({}));
 
@@ -135,7 +138,11 @@
                 date: date,
                 lastUpdated: lastUpdated
             },
-            authorData
+            authorData.length > 0
+                ? authorData.length === 1
+                    ? authorData[0]
+                    : authorData
+                : undefined
         )
     )}
 </svelte:head>
@@ -184,16 +191,29 @@
                 <section class="mt-8">
                     <div class="grid grid-cols-1 gap-12 md:grid-cols-3">
                         {#each posts.filter((p) => p.title !== title).slice(0, 3) as post}
-                            {@const author = authors.find((a) => a.slug === post.author)}
-                            {#if author}
+                            {@const postAuthorSlugs = Array.isArray(post.author)
+                                ? post.author
+                                : [post.author]}
+                            {@const primarySlug = postAuthorSlugs[0]}
+                            {@const postAuthor =
+                                authors.find((a) => a.slug === primarySlug) ||
+                                authors.find((a) => postAuthorSlugs.includes(a.slug))}
+                            {#if postAuthor}
+                                {@const authorNames = postAuthorSlugs
+                                    .map((slug) => authors.find((a) => a.slug === slug)?.name)
+                                    .filter(Boolean)}
+                                {@const authorLabel =
+                                    authorNames.length > 1
+                                        ? `${authorNames[0]} +${authorNames.length - 1}`
+                                        : authorNames[0] || postAuthor.name}
                                 <Article
                                     title={post.title}
                                     href={post.href}
                                     cover={post.cover}
                                     date={post.date}
                                     timeToRead={post.timeToRead}
-                                    avatar={author.avatar}
-                                    author={author.name}
+                                    avatar={postAuthor.avatar}
+                                    author={authorLabel}
                                 />
                             {/if}
                         {/each}

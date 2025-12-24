@@ -91,7 +91,7 @@ $result = $tablesDB->createTable('<DATABASE_ID>', '<TABLE_ID>', '<NAME>');
 ```
 ```python
 from appwrite.client import Client
-from appwrite.services.tablesDB import TablesDB
+from appwrite.services.tables_db import TablesDB
 
 client = Client()
 
@@ -254,6 +254,10 @@ Learn more about the CLI tables commands
 {% /tabsitem %}
 
 {% /tabs %}
+
+{% info title="AI suggestions" %}
+Enable **AI suggestions** to generate columns and indexes based on your table name and existing database structure. [Learn more about AI suggestions](/docs/products/databases/ai-suggestions).
+{% /info %}
 
 # Permissions {% #permissions %}
 Appwrite uses permissions to control data access.

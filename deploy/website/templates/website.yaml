@@ -35,33 +35,37 @@ spec:
               memory: 512Mi
             limits:
               memory: 512Mi
-        {{- if .Values.env }}
           env:
-            {{- range $key, $val := .Values.env }}
-            - name: {{ $key }}
-              value: "{{ $val }}"
-            {{- end }}
-        {{- end }}
+            - name: NODE_OPTIONS
+              value: "--max-old-space-size=400"
           ports:
             - containerPort: 3000
-          livenessProbe:
+          startupProbe:
             httpGet:
-              path: /
+              path: /healthz
               port: 3000
               scheme: HTTP
-            periodSeconds: 3
+            periodSeconds: 5
             timeoutSeconds: 3
-            failureThreshold: 5
+            failureThreshold: 12
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: 3000
+              scheme: HTTP
+            periodSeconds: 10
+            timeoutSeconds: 3
+            failureThreshold: 3
             successThreshold: 1
           readinessProbe:
             httpGet:
-              path: /
+              path: /healthz
               port: 3000
               scheme: HTTP
-            periodSeconds: 3
+            periodSeconds: 5
             timeoutSeconds: 3
-            failureThreshold: 5
-            successThreshold: 5
+            failureThreshold: 3
+            successThreshold: 1
 
 ---
 

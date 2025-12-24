@@ -1,8 +1,8 @@
-import { getMarkdownContent } from '$lib/utils/get-markdown-content';
+import { getPageMarkdown } from '$lib/remote/markdown.remote';
 import type { LayoutRouteId } from './$types';
 
 export const load = async ({ route }) => {
     return {
-        rawContent: await getMarkdownContent<LayoutRouteId>(route.id)
+        rawContent: await getPageMarkdown(route.id as LayoutRouteId)
     };
 };

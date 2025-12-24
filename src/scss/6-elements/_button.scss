@@ -203,4 +203,89 @@
 
   &.is-full-width { inline-size:100%; }
   &.is-full-width-mobile { @media #{$break1} { inline-size:100%;} }
+
+  // Split button styles - automatically applied when button is inside SplitButton
+  &.is-split {
+    min-block-size: pxToRem(32);
+    height: pxToRem(32);
+    padding-block: pxToRem(5);
+    padding-inline: pxToRem(10);
+
+    &::before, &::after {
+      min-block-size: pxToRem(32);
+      height: pxToRem(32);
+    }
+
+    // Auto-detect position via CSS (works when buttons are direct children)
+    &:not(:first-child):not(.is-split-first):not(.is-split-only) {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+      border-left-width: 0;
+
+      &::before, &::after {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+      }
+    }
+
+    &:not(:last-child):not(.is-split-last):not(.is-split-only) {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+
+      &::before, &::after {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+      }
+    }
+
+    // Explicit position classes (use when buttons are wrapped, e.g., in Tooltip)
+    &.is-split-first {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+
+      &::before, &::after {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+      }
+    }
+
+    &.is-split-middle {
+      border-radius: 0;
+      border-left-width: 0;
+
+      &::before, &::after {
+        border-radius: 0;
+      }
+    }
+
+    &.is-split-last {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+      border-left-width: 0;
+
+      &::before, &::after {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+      }
+
+      // Icon in the split trigger: primary in light, invert-primary in dark.
+      [class*="icon"] {
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        inline-size:pxToRem(20);
+        block-size:pxToRem(20);
+        line-height:1;
+        flex-shrink:0;
+
+        #{$theme-light} & {
+          color:hsl(var(--web-color-pink-500));
+        }
+
+        #{$theme-dark} & {
+          color:hsl(var(--web-color-neutral-invert-primary));
+        }
+      }
+    }
+  }
 }

@@ -212,9 +212,25 @@
                 <div class="container">
                     <h1 class="text-display font-aeonik-pro text-primary">Blog</h1>
                     {#if featured}
-                        {@const author = data.authors.find(
-                            (author) => author.slug === featured.author
-                        )}
+                        {@const featuredAuthorSlugs = Array.isArray(featured.author)
+                            ? featured.author
+                            : [featured.author]}
+                        {@const featuredPrimarySlug = featuredAuthorSlugs[0]}
+                        {@const author =
+                            data.authors.find((author) => author.slug === featuredPrimarySlug) ||
+                            data.authors.find((author) =>
+                                featuredAuthorSlugs.includes(author.slug)
+                            )}
+                        {@const featuredAuthors = featuredAuthorSlugs
+                            .map((slug) => data.authors.find((a) => a.slug === slug))
+                            .filter((a) => a !== undefined)}
+                        {@const featuredAuthorNames = featuredAuthors.map((a) => a.name)}
+                        {@const featuredAuthorLabel =
+                            featuredAuthorNames.length > 2
+                                ? `${featuredAuthorNames[0]} +${featuredAuthorNames.length - 1}`
+                                : featuredAuthorNames.length === 2
+                                  ? featuredAuthorNames.join(', ')
+                                  : featuredAuthorNames[0] || author?.name}
                         <article class="web-feature-article mt-12">
                             <a
                                 href={featured.href}
@@ -245,17 +261,29 @@
                                 </p>
                                 <div class="web-author">
                                     <div class="flex items-center gap-2">
-                                        <img
-                                            class="web-author-image"
-                                            src={author?.avatar}
-                                            alt={author?.name}
-                                            loading="lazy"
-                                            width="24"
-                                            height="24"
-                                        />
+                                        <div
+                                            class="flex items-center"
+                                            style="margin-inline-end: -8px;"
+                                        >
+                                            {#each featuredAuthors.slice(0, 3) as featuredAuthor, index (index)}
+                                                <img
+                                                    class="web-author-image"
+                                                    class:stacked-avatar={index > 0}
+                                                    src={featuredAuthor.avatar}
+                                                    alt={featuredAuthor.name}
+                                                    loading="lazy"
+                                                    width="24"
+                                                    height="24"
+                                                    style="margin-inline-start: {index > 0
+                                                        ? '-8px'
+                                                        : '0'}; z-index: {featuredAuthors.length -
+                                                        index};"
+                                                />
+                                            {/each}
+                                        </div>
                                         <div class="web-author-info">
                                             <a href={author?.href} class="text-sub-body web-link"
-                                                >{author?.name}</a
+                                                >{featuredAuthorLabel}</a
                                             >
                                             <p class="text-caption hidden">{author?.bio}</p>
                                             <ul class="web-metadata text-caption web-is-not-mobile">
@@ -320,7 +348,7 @@
                                     </button>
                                 </li>
 
-                                {#each categories as category}
+                                {#each categories as category (category.name)}
                                     <li class="flex items-center">
                                         <button
                                             class="web-interactive-tag web-caption-400 cursor-pointer"
@@ -371,10 +399,25 @@
                 <div class="mt-12">
                     <ul class:web-grid-articles={data.posts.length > 0}>
                         {#each data.posts as post (post.slug)}
-                            {@const author = data.authors.find(
-                                (author) => author.slug === post.author
-                            )}
+                            {@const postAuthorSlugs = Array.isArray(post.author)
+                                ? post.author
+                                : [post.author]}
+                            {@const primarySlug = postAuthorSlugs[0]}
+                            {@const author =
+                                data.authors.find((author) => author.slug === primarySlug) ||
+                                data.authors.find((author) =>
+                                    postAuthorSlugs.includes(author.slug)
+                                )}
                             {#if author && !post.draft}
+                                {@const authorNames = postAuthorSlugs
+                                    .map((slug) => data.authors.find((a) => a.slug === slug)?.name)
+                                    .filter(Boolean)}
+                                {@const authorLabel =
+                                    authorNames.length > 2
+                                        ? `${authorNames[0]} +${authorNames.length - 1}`
+                                        : authorNames.length === 2
+                                          ? authorNames.join(', ')
+                                          : authorNames[0] || author.name}
                                 <Article
                                     title={post.title}
                                     href={post.href}
@@ -382,7 +425,7 @@
                                     date={post.date}
                                     timeToRead={post.timeToRead}
                                     avatar={author.avatar}
-                                    author={author.name}
+                                    author={authorLabel}
                                 />
                             {/if}
                         {:else}
@@ -427,7 +470,7 @@
                                 </span>
                             {/if}
 
-                            {#each currentPageRange as page}
+                            {#each currentPageRange as page (page)}
                                 {#if page === -1}
                                     <span class="pagination-ellipsis">...</span>
                                 {:else}
@@ -669,6 +712,11 @@
     .category-nav-arrow span {
         font-size: 16px;
         color: hsl(var(--web-color-primary));
+    }
+
+    .stacked-avatar {
+        border: 2px solid hsl(var(--web-color-background-docs));
+        position: relative;
     }
 
     @media (max-width: 768px) {
