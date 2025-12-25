@@ -33,7 +33,7 @@ Update the `mcp_config.json` file to include the API server:
 
 ```json
 {
-  "servers": {
+  "mcpServers": {
     "appwrite-api": {
       "command": "uvx",
       "args": [
@@ -63,11 +63,14 @@ Update the `mcp_config.json` file to include the docs server:
 
 ```json
 {
-  "servers": {
-    "appwrite-docs": {
-      "url": "https://mcp-for-docs.appwrite.io",
-      "type": "http"
-    }
+  "mcpServers": {
+      "appwrite-docs": {
+          "command": "npx",
+          "args": [
+              "mcp-remote",
+              "https://mcp-for-docs.appwrite.io"
+          ]
+      }
   }
 }
 ```
