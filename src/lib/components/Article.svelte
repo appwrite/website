@@ -2,10 +2,7 @@
     import Media from '$lib/UI/Media.svelte';
     import { formatDate } from '$lib/utils/date';
 
-    interface AuthorInfo {
-        name: string;
-        href: string;
-    }
+import type { AuthorInfo } from '$lib/utils/blog-authors';
 
     interface ArticleProps {
         title: string;
