@@ -31,6 +31,9 @@
         />
     </a>
     <div class="flex flex-col gap-3 pt-6 pb-3">
+        <div class="text-caption text-secondary">
+            {formatDate(date)} - {timeToRead} min
+        </div>
         <a {href} class="bg-transparent">
             <h4 class="text-label font-aeonik-pro text-primary line-clamp-2 hover:underline">
                 {title}
@@ -55,9 +58,6 @@
                     <a href={author.href} class="hover:underline">{author.name}</a
                     >{#if i < authors.length - 1},{' '}{/if}
                 {/each}
-            </span>
-            <span class="text-secondary">
-                {formatDate(date)} - {timeToRead} min
             </span>
         </div>
     </div>

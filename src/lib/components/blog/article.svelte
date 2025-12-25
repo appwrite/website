@@ -29,6 +29,9 @@
         />
     </a>
     <div class="flex flex-col gap-5">
+        <div class="text-caption text-secondary">
+            {formatDate(date)} - {timeToRead} min
+        </div>
         <a {href} class="bg-transparent">
             <h4 class="text-label text-primary line-clamp-2 hover:underline">
                 {title}
@@ -58,12 +61,6 @@
                         >{#if i < authors.length - 1},{' '}{/if}
                     {/each}
                 </h4>
-                <ul class="text-caption flex items-center gap-2">
-                    <li>
-                        {formatDate(date)}
-                    </li>
-                    <li>{timeToRead} min</li>
-                </ul>
             </div>
         </div>
     </div>
