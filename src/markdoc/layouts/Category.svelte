@@ -3,6 +3,7 @@
     import { Article, FooterNav, MainFooter } from '$lib/components';
     import { Main } from '$lib/layouts';
     import { DEFAULT_HOST } from '$lib/utils/metadata';
+    import { getPostAuthors } from '$lib/utils/blog-authors';
     import type { AuthorData, PostsData } from '$routes/blog/content';
     import { TITLE_SUFFIX } from '$routes/titles';
     import { getContext } from 'svelte';
@@ -58,29 +59,19 @@
                 <div class="mt-12">
                     <ul class="web-grid-articles">
                         {#each posts as post}
-                            {@const postAuthorSlugs = Array.isArray(post.author)
-                                ? post.author
-                                : [post.author]}
-                            {@const primarySlug = postAuthorSlugs[0]}
-                            {@const author =
-                                authors.find((a) => a.slug === primarySlug) ||
-                                authors.find((a) => postAuthorSlugs.includes(a.slug))}
-                            {#if author}
-                                {@const authorNames = postAuthorSlugs
-                                    .map((slug) => authors.find((a) => a.slug === slug)?.name)
-                                    .filter(Boolean)}
-                                {@const authorLabel =
-                                    authorNames.length > 1
-                                        ? `${authorNames[0]} +${authorNames.length - 1}`
-                                        : authorNames[0] || author.name}
+                            {@const { postAuthors, authorAvatars, primaryAuthor } = getPostAuthors(
+                                post.author,
+                                authors
+                            )}
+                            {#if primaryAuthor}
                                 <Article
                                     title={post.title}
                                     href={post.href}
                                     cover={post.cover}
                                     date={post.date}
                                     timeToRead={post.timeToRead}
-                                    avatar={author.avatar}
-                                    author={authorLabel}
+                                    avatars={authorAvatars}
+                                    authors={postAuthors}
                                 />
                             {/if}
                         {/each}
