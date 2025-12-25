@@ -2,7 +2,7 @@
     import Media from '$lib/UI/Media.svelte';
     import { formatDate } from '$lib/utils/date';
 
-import type { AuthorInfo } from '$lib/utils/blog-authors';
+    import type { AuthorInfo } from '$lib/utils/blog-authors';
 
     interface ArticleProps {
         title: string;
@@ -15,6 +15,10 @@ import type { AuthorInfo } from '$lib/utils/blog-authors';
     }
 
     const { title, cover, href, date, timeToRead, authors, avatars }: ArticleProps = $props();
+
+    const authorAvatarPairs = $derived(
+        avatars.map((avatar, i) => ({ avatar, author: authors[i] })).filter(({ avatar }) => avatar)
+    );
 </script>
 
 <li>
@@ -38,15 +42,15 @@ import type { AuthorInfo } from '$lib/utils/blog-authors';
         </a>
         <div class="text-paragraph-md flex flex-wrap items-center gap-2">
             <div class="flex items-center">
-                {#each avatars as avatar, i}
+                {#each authorAvatarPairs as { avatar, author }, i}
                     <img
                         class="size-5 rounded-full ring-2 ring-[#19191c]"
                         style="margin-inline-start: {i > 0
                             ? '-4px'
-                            : '0'}; z-index: {avatars.length - i}"
+                            : '0'}; z-index: {authorAvatarPairs.length - i}"
                         loading="lazy"
                         src={avatar}
-                        alt={authors[i]?.name ?? ''}
+                        alt={author?.name ?? ''}
                     />
                 {/each}
             </div>

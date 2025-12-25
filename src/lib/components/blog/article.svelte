@@ -1,11 +1,7 @@
 <script lang="ts">
     import Media from '$lib/UI/Media.svelte';
     import { formatDate } from '$lib/utils/date';
-
-    interface AuthorInfo {
-        name: string;
-        href: string;
-    }
+    import type { AuthorInfo } from '$lib/utils/blog-authors';
 
     interface Props {
         title: string;
@@ -18,6 +14,10 @@
     }
 
     const { title, cover, href, date, timeToRead, authors, avatars }: Props = $props();
+
+    const authorAvatarPairs = $derived(
+        avatars.map((avatar, i) => ({ avatar, author: authors[i] })).filter(({ avatar }) => avatar)
+    );
 </script>
 
 <div class="group flex w-full flex-col gap-8 pb-3 transition">
@@ -40,17 +40,17 @@
 
         <div class="flex items-center gap-2">
             <div class="flex items-center">
-                {#each avatars as avatar, i}
+                {#each authorAvatarPairs as { avatar, author }, i}
                     <img
                         class="size-6 rounded-full ring-2 ring-[#19191c]"
                         style="margin-inline-start: {i > 0
                             ? '-8px'
-                            : '0'}; z-index: {avatars.length - i}"
+                            : '0'}; z-index: {authorAvatarPairs.length - i}"
                         loading="lazy"
                         src={avatar}
                         width="24"
                         height="24"
-                        alt={authors[i]?.name ?? ''}
+                        alt={author?.name ?? ''}
                     />
                 {/each}
             </div>

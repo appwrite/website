@@ -38,9 +38,7 @@ export function getPostAuthors(
         const author = authorsBySlug.get(slug);
         if (author) {
             postAuthors.push({ name: author.name, href: author.href });
-            if (author.avatar) {
-                authorAvatars.push(author.avatar);
-            }
+            authorAvatars.push(author.avatar || '');
             if (!primaryAuthor) {
                 primaryAuthor = author;
             }
