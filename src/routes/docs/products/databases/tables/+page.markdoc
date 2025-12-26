@@ -39,7 +39,27 @@ client
 const promise = tablesDB.createTable({
     databaseId: '<DATABASE_ID>',
     tableId: '<TABLE_ID>',
-    name: '<NAME>'
+    name: '<NAME>',
+    columns: [
+        {
+            key: 'email',
+            type: 'email',
+            required: true
+        },
+        {
+            key: 'name',
+            type: 'string',
+            size: 255,
+            required: true
+        }
+    ],
+    indexes: [
+        {
+            key: 'idx_email',
+            type: 'unique',
+            attributes: ['email']
+        }
+    ]
 });
 
 promise.then(function (response) {
@@ -63,7 +83,31 @@ client
 ;
 
 
-let promise = tablesDB.createTable('<DATABASE_ID>', '<TABLE_ID>', '<NAME>');
+let promise = tablesDB.createTable({
+    databaseId: '<DATABASE_ID>',
+    tableId: '<TABLE_ID>',
+    name: '<NAME>',
+    columns: [
+        {
+            key: 'email',
+            type: 'email',
+            required: true
+        },
+        {
+            key: 'name',
+            type: 'string',
+            size: 255,
+            required: true
+        }
+    ],
+    indexes: [
+        {
+            key: 'idx_email',
+            type: 'unique',
+            attributes: ['email']
+        }
+    ]
+});
 
 promise.then(function (response) {
     console.log(response);
@@ -87,7 +131,31 @@ $client
 
 $tablesDB = new TablesDB($client);
 
-$result = $tablesDB->createTable('<DATABASE_ID>', '<TABLE_ID>', '<NAME>');
+$result = $tablesDB->createTable(
+    databaseId: '<DATABASE_ID>',
+    tableId: '<TABLE_ID>',
+    name: '<NAME>',
+    columns: [
+        [
+            'key' => 'email',
+            'type' => 'email',
+            'required' => true
+        ],
+        [
+            'key' => 'name',
+            'type' => 'string',
+            'size' => 255,
+            'required' => true
+        ]
+    ],
+    indexes: [
+        [
+            'key' => 'idx_email',
+            'type' => 'unique',
+            'attributes' => ['email']
+        ]
+    ]
+);
 ```
 ```python
 from appwrite.client import Client
@@ -103,7 +171,31 @@ client = Client()
 
 tablesDB = TablesDB(client)
 
-result = tablesDB.create_table('<DATABASE_ID>', '<TABLE_ID>', '<NAME>')
+result = tablesDB.create_table(
+    database_id='<DATABASE_ID>',
+    table_id='<TABLE_ID>',
+    name='<NAME>',
+    columns=[
+        {
+            'key': 'email',
+            'type': 'email',
+            'required': True
+        },
+        {
+            'key': 'name',
+            'type': 'string',
+            'size': 255,
+            'required': True
+        }
+    ],
+    indexes=[
+        {
+            'key': 'idx_email',
+            'type': 'unique',
+            'attributes': ['email']
+        }
+    ]
+)
 ```
 ```ruby
 require 'Appwrite'
@@ -117,7 +209,31 @@ client = Client.new
 
 tablesDB = TablesDB.new(client)
 
-response = tablesDB.create_table(database_id: '<DATABASE_ID>', table_id: '<TABLE_ID>', name: '<NAME>')
+response = tablesDB.create_table(
+    database_id: '<DATABASE_ID>',
+    table_id: '<TABLE_ID>',
+    name: '<NAME>',
+    columns: [
+        {
+            key: 'email',
+            type: 'email',
+            required: true
+        },
+        {
+            key: 'name',
+            type: 'string',
+            size: 255,
+            required: true
+        }
+    ],
+    indexes: [
+        {
+            key: 'idx_email',
+            type: 'unique',
+            attributes: ['email']
+        }
+    ]
+)
 
 puts response.inspect
 ```
@@ -136,7 +252,32 @@ var tablesDB = new TablesDB(client);
 Table result = await tablesDB.CreateTable(
     databaseId: "<DATABASE_ID>",
     tableId: "<TABLE_ID>",
-    name: "<NAME>");
+    name: "<NAME>",
+    columns: new List<Dictionary<string, object>>
+    {
+        new Dictionary<string, object>
+        {
+            { "key", "email" },
+            { "type", "email" },
+            { "required", true }
+        },
+        new Dictionary<string, object>
+        {
+            { "key", "name" },
+            { "type", "string" },
+            { "size", 255 },
+            { "required", true }
+        }
+    },
+    indexes: new List<Dictionary<string, object>>
+    {
+        new Dictionary<string, object>
+        {
+            { "key", "idx_email" },
+            { "type", "unique" },
+            { "attributes", new List<string> { "email" } }
+        }
+    });
 ```
 ```dart
 import 'package:dart_appwrite/dart_appwrite.dart';
@@ -155,6 +296,26 @@ void main() { // Init SDK
     databaseId: '<DATABASE_ID>',
     tableId: '<TABLE_ID>',
     name: '<NAME>',
+    columns: [
+      {
+        'key': 'email',
+        'type': 'email',
+        'required': true
+      },
+      {
+        'key': 'name',
+        'type': 'string',
+        'size': 255,
+        'required': true
+      }
+    ],
+    indexes: [
+      {
+        'key': 'idx_email',
+        'type': 'unique',
+        'attributes': ['email']
+      }
+    ],
   );
 
   result
@@ -180,12 +341,33 @@ val response = tablesDB.createTable(
     databaseId = "<DATABASE_ID>",
     tableId = "<TABLE_ID>",
     name = "<NAME>",
+    columns = listOf(
+        mapOf(
+            "key" to "email",
+            "type" to "email",
+            "required" to true
+        ),
+        mapOf(
+            "key" to "name",
+            "type" to "string",
+            "size" to 255,
+            "required" to true
+        )
+    ),
+    indexes = listOf(
+        mapOf(
+            "key" to "idx_email",
+            "type" to "unique",
+            "attributes" to listOf("email")
+        )
+    )
 )
 ```
 ```java
 import io.appwrite.Client;
 import io.appwrite.coroutines.CoroutineCallback;
 import io.appwrite.services.TablesDB;
+import java.util.*;
 
 Client client = new Client()
     .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
@@ -194,10 +376,34 @@ Client client = new Client()
 
 Databases tablesDB = new TablesDB(client);
 
+List<Map<String, Object>> columns = Arrays.asList(
+    new HashMap<String, Object>() {{
+        put("key", "email");
+        put("type", "email");
+        put("required", true);
+    }},
+    new HashMap<String, Object>() {{
+        put("key", "name");
+        put("type", "string");
+        put("size", 255);
+        put("required", true);
+    }}
+);
+
+List<Map<String, Object>> indexes = Arrays.asList(
+    new HashMap<String, Object>() {{
+        put("key", "idx_email");
+        put("type", "unique");
+        put("attributes", Arrays.asList("email"));
+    }}
+);
+
 tablesDB.createTable(
     "<DATABASE_ID>",
     "<TABLE_ID>",
     "<NAME>",
+    columns,
+    indexes,
     new CoroutineCallback<>((result, error) -> {
         if (error != null) {
             error.printStackTrace();
@@ -221,12 +427,32 @@ let tablesDB = TablesDB(client)
 let table = try await tablesDB.createTable(
     databaseId: "<DATABASE_ID>",
     tableId: "<TABLE_ID>",
-    name: "<NAME>"
+    name: "<NAME>",
+    columns: [
+        [
+            "key": "email",
+            "type": "email",
+            "required": true
+        ],
+        [
+            "key": "name",
+            "type": "string",
+            "size": 255,
+            "required": true
+        ]
+    ],
+    indexes: [
+        [
+            "key": "idx_email",
+            "type": "unique",
+            "attributes": ["email"]
+        ]
+    ]
 )
 ```
 {% /multicode %}
 
-You can also configure **permissions** in the `createTable` method, learn more about the `createTable` in the [API references](/docs/references).
+You can also configure **permissions** in the `createTable` method. Learn more about the `createTable` method in the [API references](/docs/references).
 {% /tabsitem %}
 
 {% tabsitem #cli title="CLI" %}
