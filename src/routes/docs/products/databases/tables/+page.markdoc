@@ -51,6 +51,67 @@ const promise = tablesDB.createTable({
             type: 'string',
             size: 255,
             required: true
+        },
+        {
+            key: 'age',
+            type: 'integer',
+            required: false
+        },
+        {
+            key: 'score',
+            type: 'float',
+            required: false
+        },
+        {
+            key: 'is_active',
+            type: 'boolean',
+            required: true
+        },
+        {
+            key: 'created_at',
+            type: 'datetime',
+            required: false
+        },
+        {
+            key: 'status',
+            type: 'enum',
+            elements: ['draft', 'published', 'archived'],
+            required: true
+        },
+        {
+            key: 'ip_address',
+            type: 'ip',
+            required: false
+        },
+        {
+            key: 'website',
+            type: 'url',
+            required: false
+        },
+        {
+            key: 'location',
+            type: 'point',
+            required: false
+        },
+        {
+            key: 'path',
+            type: 'line',
+            required: false
+        },
+        {
+            key: 'area',
+            type: 'polygon',
+            required: false
+        },
+        {
+            key: 'related_items',
+            type: 'relationship',
+            relatedTableId: '<RELATED_TABLE_ID>',
+            relationType: 'manyToMany',
+            twoWay: true,
+            twoWayKey: 'items',
+            onDelete: 'cascade',
+            required: false
         }
     ],
     indexes: [
@@ -58,6 +119,16 @@ const promise = tablesDB.createTable({
             key: 'idx_email',
             type: 'unique',
             attributes: ['email']
+        },
+        {
+            key: 'idx_name',
+            type: 'key',
+            attributes: ['name']
+        },
+        {
+            key: 'idx_name_fulltext',
+            type: 'fulltext',
+            attributes: ['name']
         }
     ]
 });
@@ -98,6 +169,67 @@ let promise = tablesDB.createTable({
             type: 'string',
             size: 255,
             required: true
+        },
+        {
+            key: 'age',
+            type: 'integer',
+            required: false
+        },
+        {
+            key: 'score',
+            type: 'float',
+            required: false
+        },
+        {
+            key: 'is_active',
+            type: 'boolean',
+            required: true
+        },
+        {
+            key: 'created_at',
+            type: 'datetime',
+            required: false
+        },
+        {
+            key: 'status',
+            type: 'enum',
+            elements: ['draft', 'published', 'archived'],
+            required: true
+        },
+        {
+            key: 'ip_address',
+            type: 'ip',
+            required: false
+        },
+        {
+            key: 'website',
+            type: 'url',
+            required: false
+        },
+        {
+            key: 'location',
+            type: 'point',
+            required: false
+        },
+        {
+            key: 'path',
+            type: 'line',
+            required: false
+        },
+        {
+            key: 'area',
+            type: 'polygon',
+            required: false
+        },
+        {
+            key: 'related_items',
+            type: 'relationship',
+            relatedTableId: '<RELATED_TABLE_ID>',
+            relationType: 'manyToMany',
+            twoWay: true,
+            twoWayKey: 'items',
+            onDelete: 'cascade',
+            required: false
         }
     ],
     indexes: [
@@ -105,6 +237,16 @@ let promise = tablesDB.createTable({
             key: 'idx_email',
             type: 'unique',
             attributes: ['email']
+        },
+        {
+            key: 'idx_name',
+            type: 'key',
+            attributes: ['name']
+        },
+         {
+            key: 'idx_name_fulltext',
+            type: 'fulltext',
+            attributes: ['name']
         }
     ]
 });
@@ -146,6 +288,67 @@ $result = $tablesDB->createTable(
             'type' => 'string',
             'size' => 255,
             'required' => true
+        ],
+        [
+            'key' => 'age',
+            'type' => 'integer',
+            'required' => false
+        ],
+        [
+            'key' => 'score',
+            'type' => 'float',
+            'required' => false
+        ],
+        [
+            'key' => 'is_active',
+            'type' => 'boolean',
+            'required' => true
+        ],
+        [
+            'key' => 'created_at',
+            'type' => 'datetime',
+            'required' => false
+        ],
+        [
+            'key' => 'status',
+            'type' => 'enum',
+            'elements' => ['draft', 'published', 'archived'],
+            'required' => true
+        ],
+        [
+            'key' => 'ip_address',
+            'type' => 'ip',
+            'required' => false
+        ],
+        [
+            'key' => 'website',
+            'type' => 'url',
+            'required' => false
+        ],
+        [
+            'key' => 'location',
+            'type' => 'point',
+            'required' => false
+        ],
+        [
+            'key' => 'path',
+            'type' => 'line',
+            'required' => false
+        ],
+        [
+            'key' => 'area',
+            'type' => 'polygon',
+            'required' => false
+        ],
+        [
+            'key' => 'related_items',
+            'type' => 'relationship',
+            'relatedTableId' => '<RELATED_TABLE_ID>',
+            'relationType' => 'manyToMany',
+            'twoWay' => true,
+            'twoWayKey' => 'items',
+            'onDelete' => 'cascade',
+            'required' => false
         ]
     ],
     indexes: [
@@ -153,6 +356,16 @@ $result = $tablesDB->createTable(
             'key' => 'idx_email',
             'type' => 'unique',
             'attributes' => ['email']
+        ],
+        [
+            'key' => 'idx_name',
+            'type' => 'key',
+            'attributes' => ['name']
+        ],
+        [
+            'key' => 'idx_name_fulltext',
+            'type' => 'fulltext',
+            'attributes' => ['name']
         ]
     ]
 );
@@ -186,6 +399,67 @@ result = tablesDB.create_table(
             'type': 'string',
             'size': 255,
             'required': True
+        },
+        {
+            'key': 'age',
+            'type': 'integer',
+            'required': False
+        },
+        {
+            'key': 'score',
+            'type': 'float',
+            'required': False
+        },
+        {
+            'key': 'is_active',
+            'type': 'boolean',
+            'required': True
+        },
+        {
+            'key': 'created_at',
+            'type': 'datetime',
+            'required': False
+        },
+        {
+            'key': 'status',
+            'type': 'enum',
+            'elements': ['draft', 'published', 'archived'],
+            'required': True
+        },
+        {
+            'key': 'ip_address',
+            'type': 'ip',
+            'required': False
+        },
+        {
+            'key': 'website',
+            'type': 'url',
+            'required': False
+        },
+        {
+            'key': 'location',
+            'type': 'point',
+            'required': False
+        },
+        {
+            'key': 'path',
+            'type': 'line',
+            'required': False
+        },
+        {
+            'key': 'area',
+            'type': 'polygon',
+            'required': False
+        },
+        {
+            'key': 'related_items',
+            'type': 'relationship',
+            'relatedTableId': '<RELATED_TABLE_ID>',
+            'relationType': 'manyToMany',
+            'twoWay': True,
+            'twoWayKey': 'items',
+            'onDelete': 'cascade',
+            'required': False
         }
     ],
     indexes=[
@@ -193,6 +467,16 @@ result = tablesDB.create_table(
             'key': 'idx_email',
             'type': 'unique',
             'attributes': ['email']
+        },
+        {
+            'key': 'idx_name',
+            'type': 'key',
+            'attributes': ['name']
+        },
+        {
+            'key': 'idx_name_fulltext',
+            'type': 'fulltext',
+            'attributes': ['name']
         }
     ]
 )
@@ -224,6 +508,67 @@ response = tablesDB.create_table(
             type: 'string',
             size: 255,
             required: true
+        },
+        {
+            key: 'age',
+            type: 'integer',
+            required: false
+        },
+        {
+            key: 'score',
+            type: 'float',
+            required: false
+        },
+        {
+            key: 'is_active',
+            type: 'boolean',
+            required: true
+        },
+        {
+            key: 'created_at',
+            type: 'datetime',
+            required: false
+        },
+        {
+            key: 'status',
+            type: 'enum',
+            elements: ['draft', 'published', 'archived'],
+            required: true
+        },
+        {
+            key: 'ip_address',
+            type: 'ip',
+            required: false
+        },
+        {
+            key: 'website',
+            type: 'url',
+            required: false
+        },
+        {
+            key: 'location',
+            type: 'point',
+            required: false
+        },
+        {
+            key: 'path',
+            type: 'line',
+            required: false
+        },
+        {
+            key: 'area',
+            type: 'polygon',
+            required: false
+        },
+        {
+            key: 'related_items',
+            type: 'relationship',
+            relatedTableId: '<RELATED_TABLE_ID>',
+            relationType: 'manyToMany',
+            twoWay: true,
+            twoWayKey: 'items',
+            onDelete: 'cascade',
+            required: false
         }
     ],
     indexes: [
@@ -231,6 +576,16 @@ response = tablesDB.create_table(
             key: 'idx_email',
             type: 'unique',
             attributes: ['email']
+        },
+        {
+            key: 'idx_name',
+            type: 'key',
+            attributes: ['name']
+        },
+        {
+            key: 'idx_name_fulltext',
+            type: 'fulltext',
+            attributes: ['name']
         }
     ]
 )
@@ -267,6 +622,78 @@ Table result = await tablesDB.CreateTable(
             { "type", "string" },
             { "size", 255 },
             { "required", true }
+        },
+        new Dictionary<string, object>
+        {
+            { "key", "age" },
+            { "type", "integer" },
+            { "required", false }
+        },
+        new Dictionary<string, object>
+        {
+            { "key", "score" },
+            { "type", "float" },
+            { "required", false }
+        },
+        new Dictionary<string, object>
+        {
+            { "key", "is_active" },
+            { "type", "boolean" },
+            { "required", true }
+        },
+        new Dictionary<string, object>
+        {
+            { "key", "created_at" },
+            { "type", "datetime" },
+            { "required", false }
+        },
+        new Dictionary<string, object>
+        {
+            { "key", "status" },
+            { "type", "enum" },
+            { "elements", new List<string> { "draft", "published", "archived" } },
+            { "required", true }
+        },
+        new Dictionary<string, object>
+        {
+            { "key", "ip_address" },
+            { "type", "ip" },
+            { "required", false }
+        },
+        new Dictionary<string, object>
+        {
+            { "key", "website" },
+            { "type", "url" },
+            { "required", false }
+        },
+        new Dictionary<string, object>
+        {
+            { "key", "location" },
+            { "type", "point" },
+            { "required", false }
+        },
+        new Dictionary<string, object>
+        {
+            { "key", "path" },
+            { "type", "line" },
+            { "required", false }
+        },
+        new Dictionary<string, object>
+        {
+            { "key", "area" },
+            { "type", "polygon" },
+            { "required", false }
+        },
+        new Dictionary<string, object>
+        {
+            { "key", "related_items" },
+            { "type", "relationship" },
+            { "relatedTableId", "<RELATED_TABLE_ID>" },
+            { "relationType", "manyToMany" },
+            { "twoWay", true },
+            { "twoWayKey", "items" },
+            { "onDelete", "cascade" },
+            { "required", false }
         }
     },
     indexes: new List<Dictionary<string, object>>
@@ -276,6 +703,18 @@ Table result = await tablesDB.CreateTable(
             { "key", "idx_email" },
             { "type", "unique" },
             { "attributes", new List<string> { "email" } }
+        },
+        new Dictionary<string, object>
+        {
+            { "key", "idx_name" },
+            { "type", "key" },
+            { "attributes", new List<string> { "name" } }
+        },
+        new Dictionary<string, object>
+        {
+            { "key", "idx_name_fulltext" },
+            { "type", "fulltext" },
+            { "attributes", new List<string> { "name" } }
         }
     });
 ```
@@ -307,6 +746,67 @@ void main() { // Init SDK
         'type': 'string',
         'size': 255,
         'required': true
+      },
+      {
+        'key': 'age',
+        'type': 'integer',
+        'required': false
+      },
+      {
+        'key': 'score',
+        'type': 'float',
+        'required': false
+      },
+      {
+        'key': 'is_active',
+        'type': 'boolean',
+        'required': true
+      },
+      {
+        'key': 'created_at',
+        'type': 'datetime',
+        'required': false
+      },
+      {
+        'key': 'status',
+        'type': 'enum',
+        'elements': ['draft', 'published', 'archived'],
+        'required': true
+      },
+      {
+        'key': 'ip_address',
+        'type': 'ip',
+        'required': false
+      },
+      {
+        'key': 'website',
+        'type': 'url',
+        'required': false
+      },
+      {
+        'key': 'location',
+        'type': 'point',
+        'required': false
+            },
+            {
+                'key': 'path',
+                'type': 'line',
+                'required': false
+            },
+            {
+                'key': 'area',
+                'type': 'polygon',
+                'required': false
+            },
+            {
+                'key': 'related_items',
+                'type': 'relationship',
+                'relatedTableId': '<RELATED_TABLE_ID>',
+                'relationType': 'manyToMany',
+                'twoWay': true,
+                'twoWayKey': 'items',
+                'onDelete': 'cascade',
+                'required': false
       }
     ],
     indexes: [
@@ -314,6 +814,16 @@ void main() { // Init SDK
         'key': 'idx_email',
         'type': 'unique',
         'attributes': ['email']
+      },
+      {
+        'key': 'idx_name',
+        'type': 'key',
+        'attributes': ['name']
+      },
+      {
+        'key': 'idx_name_fulltext',
+        'type': 'fulltext',
+        'attributes': ['name']
       }
     ],
   );
@@ -352,6 +862,67 @@ val response = tablesDB.createTable(
             "type" to "string",
             "size" to 255,
             "required" to true
+        ),
+        mapOf(
+            "key" to "age",
+            "type" to "integer",
+            "required" to false
+        ),
+        mapOf(
+            "key" to "score",
+            "type" to "float",
+            "required" to false
+        ),
+        mapOf(
+            "key" to "is_active",
+            "type" to "boolean",
+            "required" to true
+        ),
+        mapOf(
+            "key" to "created_at",
+            "type" to "datetime",
+            "required" to false
+        ),
+        mapOf(
+            "key" to "status",
+            "type" to "enum",
+            "elements" to listOf("draft", "published", "archived"),
+            "required" to true
+        ),
+        mapOf(
+            "key" to "ip_address",
+            "type" to "ip",
+            "required" to false
+        ),
+        mapOf(
+            "key" to "website",
+            "type" to "url",
+            "required" to false
+        ),
+        mapOf(
+            "key" to "location",
+            "type" to "point",
+            "required" to false
+        ),
+        mapOf(
+            "key" to "path",
+            "type" to "line",
+            "required" to false
+        ),
+        mapOf(
+            "key" to "area",
+            "type" to "polygon",
+            "required" to false
+        ),
+        mapOf(
+            "key" to "related_items",
+            "type" to "relationship",
+            "relatedTableId" to "<RELATED_TABLE_ID>",
+            "relationType" to "manyToMany",
+            "twoWay" to true,
+            "twoWayKey" to "items",
+            "onDelete" to "cascade",
+            "required" to false
         )
     ),
     indexes = listOf(
@@ -359,6 +930,16 @@ val response = tablesDB.createTable(
             "key" to "idx_email",
             "type" to "unique",
             "attributes" to listOf("email")
+        ),
+        mapOf(
+            "key" to "idx_name",
+            "type" to "key",
+            "attributes" to listOf("name")
+        ),
+        mapOf(
+            "key" to "idx_name_fulltext",
+            "type" to "fulltext",
+            "attributes" to listOf("name")
         )
     )
 )
@@ -387,6 +968,67 @@ List<Map<String, Object>> columns = Arrays.asList(
         put("type", "string");
         put("size", 255);
         put("required", true);
+    }},
+    new HashMap<String, Object>() {{
+        put("key", "age");
+        put("type", "integer");
+        put("required", false);
+    }},
+    new HashMap<String, Object>() {{
+        put("key", "score");
+        put("type", "float");
+        put("required", false);
+    }},
+    new HashMap<String, Object>() {{
+        put("key", "is_active");
+        put("type", "boolean");
+        put("required", true);
+    }},
+    new HashMap<String, Object>() {{
+        put("key", "created_at");
+        put("type", "datetime");
+        put("required", false);
+    }},
+    new HashMap<String, Object>() {{
+        put("key", "status");
+        put("type", "enum");
+        put("elements", Arrays.asList("draft", "published", "archived"));
+        put("required", true);
+    }},
+    new HashMap<String, Object>() {{
+        put("key", "ip_address");
+        put("type", "ip");
+        put("required", false);
+    }},
+    new HashMap<String, Object>() {{
+        put("key", "website");
+        put("type", "url");
+        put("required", false);
+    }},
+    new HashMap<String, Object>() {{
+        put("key", "location");
+        put("type", "point");
+        put("required", false);
+    }},
+    new HashMap<String, Object>() {{
+        put("key", "path");
+        put("type", "line");
+        put("required", false);
+    }},
+    new HashMap<String, Object>() {{
+        put("key", "area");
+        put("type", "polygon");
+        put("required", false);
+    }},
+    new HashMap<String, Object>() {{
+        put("key", "related_items");
+        put("type", "relationship");
+        put("relatedTableId", "<RELATED_TABLE_ID>");
+        put("relationType", "manyToMany");
+        put("twoWay", true);
+        put("twoWayKey", "items");
+        put("onDelete", "cascade");
+        put("required", false);
     }}
 );
 
@@ -395,6 +1037,16 @@ List<Map<String, Object>> indexes = Arrays.asList(
         put("key", "idx_email");
         put("type", "unique");
         put("attributes", Arrays.asList("email"));
+    }},
+    new HashMap<String, Object>() {{
+        put("key", "idx_name");
+        put("type", "key");
+        put("attributes", Arrays.asList("name"));
+    }},
+    new HashMap<String, Object>() {{
+        put("key", "idx_name_fulltext");
+        put("type", "fulltext");
+        put("attributes", Arrays.asList("name"));
     }}
 );
 
@@ -439,6 +1091,67 @@ let table = try await tablesDB.createTable(
             "type": "string",
             "size": 255,
             "required": true
+        ],
+        [
+            "key": "age",
+            "type": "integer",
+            "required": false
+        ],
+        [
+            "key": "score",
+            "type": "float",
+            "required": false
+        ],
+        [
+            "key": "is_active",
+            "type": "boolean",
+            "required": true
+        ],
+        [
+            "key": "created_at",
+            "type": "datetime",
+            "required": false
+        ],
+        [
+            "key": "status",
+            "type": "enum",
+            "elements": ["draft", "published", "archived"],
+            "required": true
+        ],
+        [
+            "key": "ip_address",
+            "type": "ip",
+            "required": false
+        ],
+        [
+            "key": "website",
+            "type": "url",
+            "required": false
+        ],
+        [
+            "key": "location",
+            "type": "point",
+            "required": false
+        ],
+        [
+            "key": "path",
+            "type": "line",
+            "required": false
+        ],
+        [
+            "key": "area",
+            "type": "polygon",
+            "required": false
+        ],
+        [
+            "key": "related_items",
+            "type": "relationship",
+            "relatedTableId": "<RELATED_TABLE_ID>",
+            "relationType": "manyToMany",
+            "twoWay": true,
+            "twoWayKey": "items",
+            "onDelete": "cascade",
+            "required": false
         ]
     ],
     indexes: [
@@ -446,6 +1159,16 @@ let table = try await tablesDB.createTable(
             "key": "idx_email",
             "type": "unique",
             "attributes": ["email"]
+        ],
+        [
+            "key": "idx_name",
+            "type": "key",
+            "attributes": ["name"]
+        ],
+        [
+            "key": "idx_name_fulltext",
+            "type": "fulltext",
+            "attributes": ["name"]
         ]
     ]
 )
