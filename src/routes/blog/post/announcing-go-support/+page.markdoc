@@ -18,7 +18,7 @@ Let’s look at the benefits of Go runtime and SDK, and how they can help you bu
 
 # What makes Go special?
 
-Go (or Golang) is a statically typed compiled programming language that balances the ease of use like Python and JavaScript and the performance of compiled languages like Rust. 
+Go (or Golang) is a statically typed compiled programming language that balances the ease of use like Python and JavaScript and the performance of compiled languages like Rust.
 
 It was developed by Google in 2012, and has since grown a large developer community online, with companies like Netflix, Paypal, Riot Games and more moving to Go due to its speed and developer accessibility. There are a few reasons why Go is popular with devs and enterprise companies alike:
 
@@ -188,7 +188,7 @@ package handler
 
 import (
 	"os"
-	
+
 	"github.com/open-runtimes/types-for-go/v4/openruntimes"
 	"github.com/appwrite/sdk-for-go/appwrite"
 )
@@ -211,12 +211,12 @@ func Main(Context openruntimes.Context) openruntimes.Response {
 	for _, bucket := range response.Buckets {
 		Context.Log("Bucket Name:", bucket.Name)
 	}
-	
+
 	return Context.Res.Json(response.Buckets)
 }
 ```
 
-Some of our API endpoints such as the ones that return preferences from the Accounts and Teams APIs as well as the ones the return documents from the Appwrite Database are loosely typed because they can be customised by user. For these, the structs offer a `Decode()` method, as seen in the following example.
+Some of our API endpoints such as the ones that return preferences from the Accounts and Teams APIs as well as the ones the return rows from the Appwrite Database are loosely typed because they can be customised by user. For these, the structs offer a `Decode()` method, as seen in the following example.
 
 ```go
 package handler
@@ -230,14 +230,14 @@ import (
 )
 
 type Profile struct {
-	*models.Document
+	*models.Row
 	Name      string `json:"name"`
 	Verified  bool   `json:"verified"`
 }
 
 type ProfileList struct {
-	*models.DocumentList
-	Documents []Profile `json:"documents"`
+	*models.RowList
+	Rows []Profile `json:"rows"`
 }
 
 func Main(Context openruntimes.Context) openruntimes.Response {
@@ -247,12 +247,12 @@ func Main(Context openruntimes.Context) openruntimes.Response {
 		appwrite.WithKey(Context.Req.Headers["x-appwrite-key"]),
 	)
 
-	databases := appwrite.NewDatabases(client)
+	tablesDB := appwrite.NewTablesDB(client)
 
-	response, err := databases.ListDocuments("main", "profiles")
+	response, err := tablesDB.ListRows("main", "profiles")
 	if err != nil {
 		Context.Error(err)
-		return Context.Res.Text("Internal error" Context.Res.WithStatusCode(500))
+		return Context.Res.Text("Internal error", Context.Res.WithStatusCode(500))
 	}
 
 	var profiles ProfileList
@@ -262,11 +262,11 @@ func Main(Context openruntimes.Context) openruntimes.Response {
 		return Context.Res.Text("Internal error", Context.Res.WithStatusCode(500))
 	}
 
-	for _, profile := range profiles.Documents {
+	for _, profile := range profiles.Rows {
 		Context.Log(profile.Id, profile.Name, profile.Verified)
 	}
-	
-	return Context.Res.Json(profiles.Documents)
+
+	return Context.Res.Json(profiles.Rows)
 }
 ```
 
@@ -285,4 +285,4 @@ Hopefully, by this point, you’re excited to start building with Go. Here are a
 Ready to get your hands on the new Go runtime and Go SDK? We’ve created a few resources to help you get your first Go project off the ground and leverage Golang’s speed and performance in your apps. Check them out:
 
 - [Join the Appwrite Community on Discord](https://appwrite.io/discord)
-- [More about Init](https://file+.vscode-resource.vscode-cdn.net/Users/ebenezerdon/Documents/ed-repos/ed-technical-articles/appwrite/link_to_init)
+- [More about Init](https://appwrite.io/init)
