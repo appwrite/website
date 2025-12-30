@@ -1,8 +1,8 @@
 ---
 layout: post
-title: Announcing Full Schema Creation: Provision complete tables in one atomic call
+title: "Announcing Full Schema Creation: Provision complete tables in one atomic call"
 description: Create a table, all its columns, and indexes synchronously, ready to use instantly, with no background jobs.
-date: 2024-12-12
+date: 2025-12-30
 cover: /images/blog/full-schema.png
 timeToRead: 5
 author: aditya-oberai
@@ -17,7 +17,7 @@ That’s exactly why we’re announcing **Full Schema Creation** for Appwrite Da
 
 With Full Schema Creation, you can define an entire table, its attributes and indexes, in a **single, synchronous request**. When the call returns, the table is immediately ready for reads and writes. If anything fails along the way, nothing is created. No partial schemas. No waiting. No brittle setup scripts.
 
-## One request. One outcome. Fully usable.
+# One request. One outcome. Fully usable.
 
 Previously, schema provisioning looked something like this:
 
@@ -32,7 +32,7 @@ This step-wise flow introduced delays, race conditions in automation scripts, an
 
 With Full Schema Create, all of that collapses into a single operation. You define everything upfront, Appwrite validates it all together, and either the entire schema is created successfully, or nothing is.
 
-## How it works
+# How it works
 
 Full Schema Create introduces an atomic, synchronous way to provision database schemas. Here’s what happens under the hood:
 
@@ -54,7 +54,7 @@ Full Schema Create introduces an atomic, synchronous way to provision database s
 
 This makes schema creation deterministic, predictable, and safe, making it ideal for automation-heavy workflows and rapid iteration.
 
-## What this unlocks for you
+# What this unlocks for you
 
 - **One-shot setup:** Define a complete table in a single, atomic call.
 - **No async waiting:** The table is usable as soon as the API responds.
@@ -62,7 +62,7 @@ This makes schema creation deterministic, predictable, and safe, making it ideal
 - **Deterministic CI/CD:** Reliable schema bootstrapping for tests, previews, and pipelines.
 - **Instant readiness:** Seed data and run integration tests immediately after creation.
 
-## Built for teams that move fast
+# Built for teams that move fast
 
 Full Schema Create was designed with:
 
@@ -77,7 +77,7 @@ If your workflow depends on fast and repeatable schema provisioning, this featur
 
 From our side, Full Schema Create significantly reduces time-to-first-write, helping users activate faster and ship sooner. It also eliminates a common source of schema-related support issues by making database setup simpler, safer, and more predictable.
 
-## Familiar, but better
+# Familiar, but better
 
 If this sounds familiar, that’s because similar ideas exist elsewhere:
 
@@ -87,7 +87,7 @@ If this sounds familiar, that’s because similar ideas exist elsewhere:
 
 What’s different is bringing this experience directly into a BaaS environment—where schema creation has historically been UI-driven or step-wise and async.
 
-## Get started
+# Get started
 
 Full Schema Create is available on **Appwrite Cloud** today and supported on **self-hosted deployments.**
 
@@ -95,8 +95,8 @@ You can now provision complete, production-ready tables in one call, whether you
 
 No more waiting. No more partial schemas. Just clean, atomic, ready-to-use tables from the moment you create them.
 
-## More resources
+# More resources
 
-- [Announcing API for spatial columns: Build scalable location-aware apps with ease](https://appwrite.io/blog/post/announcing-spatial-columns)
-- [Announcing an improved Appwrite Databases experience. A completely new look and feel](https://appwrite.io/blog/post/announcing-appwrite-databases-new-ui)
-- [Announcing Atomic numeric operations: Safe, server-side increments and decrements](https://appwrite.io/blog/post/announcing-atomic-numeric-operations)
+- [Announcing API for spatial columns: Build scalable location-aware apps with ease](/blog/post/announcing-spatial-columns)
+- [Announcing an improved Appwrite Databases experience. A completely new look and feel](/blog/post/announcing-appwrite-databases-new-ui)
+- [Announcing Atomic numeric operations: Safe, server-side increments and decrements](/blog/post/announcing-atomic-numeric-operations)
