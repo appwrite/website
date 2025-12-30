@@ -27,8 +27,8 @@ importers:
                 specifier: ~0.26.0
                 version: 0.26.0
             '@appwrite.io/repo':
-                specifier: github:appwrite/appwrite#aa98fbb2dc0e08def0a7cca7fe0515de643154ca
-                version: https://codeload.github.com/appwrite/appwrite/tar.gz/aa98fbb2dc0e08def0a7cca7fe0515de643154ca
+                specifier: github:appwrite/appwrite#aa12ef65693ea5fbbd954c0641f76422b440eb7a
+                version: https://codeload.github.com/appwrite/appwrite/tar.gz/aa12ef65693ea5fbbd954c0641f76422b440eb7a
             '@eslint/compat':
                 specifier: ^1.4.1
                 version: 1.4.1(eslint@9.39.1(jiti@2.6.1))
@@ -356,10 +356,10 @@ packages:
                 integrity: sha512-iPeGE56pauzxuIXt15ZswjKCErwp3QdF3XOlJZfyYY7J2nirra85JNTL+3lWuFIf8yYWL7NbvCjhf8ig79TgwA==
             }
 
-    '@appwrite.io/repo@https://codeload.github.com/appwrite/appwrite/tar.gz/aa98fbb2dc0e08def0a7cca7fe0515de643154ca':
+    '@appwrite.io/repo@https://codeload.github.com/appwrite/appwrite/tar.gz/aa12ef65693ea5fbbd954c0641f76422b440eb7a':
         resolution:
             {
-                tarball: https://codeload.github.com/appwrite/appwrite/tar.gz/aa98fbb2dc0e08def0a7cca7fe0515de643154ca
+                tarball: https://codeload.github.com/appwrite/appwrite/tar.gz/aa12ef65693ea5fbbd954c0641f76422b440eb7a
             }
         version: 0.0.0
 
@@ -4041,10 +4041,10 @@ packages:
                 integrity: sha512-iKuQcq+NdHqlAcwUY0o/HL69XQrUaQdMjmStJ8JFmUaiiQErlhrmuigkg/CU4E2J0IyUKUrMAgl36TvN67MqTw==
             }
 
-    csstype@3.1.3:
+    csstype@3.2.3:
         resolution:
             {
-                integrity: sha512-M1uQkMl8rQK/szD0LNhtqxIPLpimGm8sOBwU7lLnCpSbTyY3yeU1Vc7l4KT5zT4s/yOxHH5O7tIuuLOCnLADRw==
+                integrity: sha512-z1HGKcYy2xA8AGQfwrn0PAy+PB7X/GSj3UVJW9qKyn43xWa+gl5nXmU4qqLMRzWVLFC8KusUX8T/0kCiOYpAIQ==
             }
 
     cubic2quad@1.2.1:
@@ -8105,7 +8105,7 @@ snapshots:
             normalize.css: 8.0.1
             the-new-css-reset: 1.11.3
 
-    '@appwrite.io/repo@https://codeload.github.com/appwrite/appwrite/tar.gz/aa98fbb2dc0e08def0a7cca7fe0515de643154ca':
+    '@appwrite.io/repo@https://codeload.github.com/appwrite/appwrite/tar.gz/aa12ef65693ea5fbbd954c0641f76422b440eb7a':
         {}
 
     '@babel/code-frame@7.27.1':
@@ -9912,7 +9912,7 @@ snapshots:
 
     '@types/react@19.2.2':
         dependencies:
-            csstype: 3.1.3
+            csstype: 3.2.3
         optional: true
 
     '@types/resolve@1.20.2': {}
@@ -10491,7 +10491,7 @@ snapshots:
 
     cssom@0.5.0: {}
 
-    csstype@3.1.3:
+    csstype@3.2.3:
         optional: true
 
     cubic2quad@1.2.1: {}
