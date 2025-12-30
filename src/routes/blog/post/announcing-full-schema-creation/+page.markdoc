@@ -26,15 +26,15 @@ Previously, schema provisioning looked something like this:
 3. Wait for async column jobs to complete
 4. Create indexes
 5. Wait again
-6. Finally… the table might be usable
+6. Finally, the table might be usable
 
 This step-wise flow introduced delays, race conditions in automation scripts, and fragile deploys, especially in CI/CD, preview environments, and migrations.
 
-With Full Schema Create, all of that collapses into a single operation. You define everything upfront, Appwrite validates it all together, and either the entire schema is created successfully, or nothing is.
+With Full Schema Creation, all of that collapses into a single operation. You define everything upfront, Appwrite validates it all together, and either the entire schema is created successfully, or nothing is.
 
 # How it works
 
-Full Schema Create introduces an atomic, synchronous way to provision database schemas. Here’s what happens under the hood:
+Full Schema Creation introduces an atomic, synchronous way to provision database schemas. Here’s what happens under the hood:
 
 - **Define the full schema in one call**
     
@@ -43,6 +43,7 @@ Full Schema Create introduces an atomic, synchronous way to provision database s
     - The table
     - All columns (type, length, nullability, defaults, enums, relationships)
     - All indexes
+    
 - **Synchronous apply**
     
     Appwrite applies the schema immediately. The request only returns once the table is fully created and ready to read and write, without any background jobs, polling, or delays.
@@ -64,7 +65,7 @@ This makes schema creation deterministic, predictable, and safe, making it ideal
 
 # Built for teams that move fast
 
-Full Schema Create was designed with:
+Full Schema Creation was designed with:
 
 - Backend and platform engineers
 - CI/CD pipelines and test environments
@@ -75,7 +76,7 @@ If your workflow depends on fast and repeatable schema provisioning, this featur
 
 ## Why this matters for Appwrite
 
-From our side, Full Schema Create significantly reduces time-to-first-write, helping users activate faster and ship sooner. It also eliminates a common source of schema-related support issues by making database setup simpler, safer, and more predictable.
+From our side, Full Schema Creation significantly reduces time-to-first-write, helping users activate faster and ship sooner. It also eliminates a common source of schema-related support issues by making database setup simpler, safer, and more predictable.
 
 # Familiar, but better
 
