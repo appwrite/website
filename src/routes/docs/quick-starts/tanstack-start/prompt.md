@@ -5,9 +5,10 @@ Do exactly these steps in order. Confirm each step succeeds before continuing. I
 Respect the user's package manager at all times. Don't use NPM if the user uses something else.
 
 1. Create or use existing TanStack Start app
-    - If you already have a TanStack Start project open, stay in it and use it.
-    - Otherwise, run: npm create @tanstack/start@latest my-app
-    - Change dir: cd my-app
+    - First, check what files exist in the current working directory.
+    - If the directory contains files that appear unrelated to a development workspace (e.g., personal documents, downloads, photos, random files that don't belong in a code project), ask the user: "The current directory contains files that don't appear to be part of a development project. Would you like to proceed here anyway, or create a subdirectory with a specific folder name?"
+    - If the directory is empty OR contains an existing project (package.json, config files, src folder, etc.), proceed with integration without asking - just work with what's there.
+    - To scaffold a new TanStack Start project, run: npm create @tanstack/start@latest . (use "." to create in the current directory - do NOT use cd to switch directories)
 
 2. Install Appwrite SDK
     - Run: npm install appwrite

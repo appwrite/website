@@ -4,10 +4,12 @@ Do exactly these steps in order. Confirm each step succeeds before continuing. I
 
 Respect user's package manager at all time. Don't use NPM if the user uses something else.
 
-1. Create or use existing React app
-    - If you already have a React (Vite) project open, stay in it and use it.
-    - Otherwise, run: npm create vite@latest my-app -- --template react
-    - Change dir: cd my-app
+1. Check current directory and set up React app
+    - First, check if the current working directory contains files that appear unrelated to a development workspace (e.g., personal files, downloads, random documents, media files).
+    - If unrelated files are detected, ask the user: 'The current directory appears to contain personal or non-project files. Would you like to: (1) proceed here anyway, or (2) create the project in a subdirectory with a specific folder name?' and proceed based on their choice.
+    - If the directory is empty OR contains an existing project (package.json, source files, config files, etc.), proceed without asking - integrate Appwrite into whatever is there.
+    - For a new project, run: npm create vite@latest . -- --template react
+    - Create the project in the current directory (.). Do NOT use cd to switch directories.
 
 2. Install Appwrite SDK
     - Run: npm install appwrite
