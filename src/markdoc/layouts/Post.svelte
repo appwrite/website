@@ -20,6 +20,7 @@
     } from '$lib/utils/metadata';
     import { isAnnouncement, parseCategories } from '$lib/utils/blog-cta';
     import { prepareBlogCtaState, type BlogCallToActionInput } from '$lib/utils/blog-mid-cta';
+    import { getPostAuthors } from '$lib/utils/blog-authors';
     import type { AuthorData, PostsData } from '$routes/blog/content';
     import { TITLE_SUFFIX } from '$routes/titles';
     import { getContext, setContext } from 'svelte';
@@ -191,29 +192,19 @@
                 <section class="mt-8">
                     <div class="grid grid-cols-1 gap-12 md:grid-cols-3">
                         {#each posts.filter((p) => p.title !== title).slice(0, 3) as post}
-                            {@const postAuthorSlugs = Array.isArray(post.author)
-                                ? post.author
-                                : [post.author]}
-                            {@const primarySlug = postAuthorSlugs[0]}
-                            {@const postAuthor =
-                                authors.find((a) => a.slug === primarySlug) ||
-                                authors.find((a) => postAuthorSlugs.includes(a.slug))}
-                            {#if postAuthor}
-                                {@const authorNames = postAuthorSlugs
-                                    .map((slug) => authors.find((a) => a.slug === slug)?.name)
-                                    .filter(Boolean)}
-                                {@const authorLabel =
-                                    authorNames.length > 1
-                                        ? `${authorNames[0]} +${authorNames.length - 1}`
-                                        : authorNames[0] || postAuthor.name}
+                            {@const { postAuthors, authorAvatars, primaryAuthor } = getPostAuthors(
+                                post.author,
+                                authors
+                            )}
+                            {#if primaryAuthor}
                                 <Article
                                     title={post.title}
                                     href={post.href}
                                     cover={post.cover}
                                     date={post.date}
                                     timeToRead={post.timeToRead}
-                                    avatar={postAuthor.avatar}
-                                    author={authorLabel}
+                                    avatars={authorAvatars}
+                                    authors={postAuthors}
                                 />
                             {/if}
                         {/each}
