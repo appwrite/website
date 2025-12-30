@@ -32,6 +32,39 @@ This step-wise flow introduced delays, race conditions in automation scripts, an
 
 With Full Schema Creation, all of that collapses into a single operation. You define everything upfront, Appwrite validates it all together, and either the entire schema is created successfully, or nothing is.
 
+```js
+const table = await tablesDB.createTable({
+    databaseId: 'contacts_db',
+    tableId: 'contacts',
+    name: 'Contacts',
+    columns: [
+        {
+            key: 'email',
+            type: 'email',
+            required: true
+        },
+        {
+            key: 'name',
+            type: 'string',
+            size: 255,
+            required: true
+        },
+        {
+            key: 'is_active',
+            type: 'boolean',
+            required: true
+        },
+    ],
+    indexes: [
+        {
+            key: 'idx_email',
+            type: 'unique',
+            attributes: ['email']
+        }
+    ]
+});
+```
+
 # How it works
 
 Full Schema Creation introduces an atomic, synchronous way to provision database schemas. Here’s what happens under the hood:
@@ -51,7 +84,6 @@ Full Schema Creation introduces an atomic, synchronous way to provision database
 - **Atomic guarantees**
     
     If any part of the schema fails validation, an invalid column, a conflicting index, or a broken relationship reference, the entire operation is rolled back. You’ll never end up with a half-created table.
-    
 
 This makes schema creation deterministic, predictable, and safe, making it ideal for automation-heavy workflows and rapid iteration.
 
@@ -83,7 +115,7 @@ From our side, Full Schema Creation significantly reduces time-to-first-write, h
 If this sounds familiar, that’s because similar ideas exist elsewhere:
 
 - SQL databases with `CREATE TABLE` + `CREATE INDEX` in one statement
-- Prisma or drizzle migrations
+- Prisma or Drizzle migrations
 - Hasura metadata applies
 
 What’s different is bringing this experience directly into a BaaS environment—where schema creation has historically been UI-driven or step-wise and async.
