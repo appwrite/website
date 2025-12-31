@@ -77,7 +77,7 @@ This provides teams with more flexibility in selecting email providers that best
 
 ## Database operators support
 
-Appwrite 1.8.1 introduces database operators to self-hosted users. Database operators allow developers perform inline, atomic updates to existing data without needing to go through the usual read–modify–write cycle. Instead of sending new values, you describe the action: increment, append, replace, or adjust. Appwrite applies that instruction directly in the database, performing the change in a single atomic step and keeping your data consistent without extra logic in your application code.
+Appwrite 1.8.1 introduces database operators to self-hosted users. Database operators allow developers to perform inline, atomic updates to existing data without needing to go through the usual read–modify–write cycle. Instead of sending new values, you describe the action: increment, append, replace, or adjust. Appwrite applies that instruction directly in the database, performing the change in a single atomic step and keeping your data consistent without extra logic in your application code.
 
 {% arrow_link href="/blog/post/announcing-db-operators" %}
 Learn more about database operators
