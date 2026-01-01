@@ -40,7 +40,9 @@ Connect your GitHub account and select the repository you intend to deploy (or a
 3. Confirm the **install command**, **build command**, and **output directory** in the build settings. The default build settings for TanStack Start are:
     - **Install command:** `npm install`
     - **Build command:** `npm run build`
-    - **Output directory:** `./.output`
+    - **Output directory:** 
+      - `./.output` (if using the Nitro deployment adapter)
+      - `./dist` (if not using a deployment adapter) 
 4. Add any **environment variables** required by the site. This is not necessary if you're deploying the starter app.
 
 Click on the **Deploy** button.
