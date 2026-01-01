@@ -106,7 +106,6 @@ Appwrite 1.8.1 focuses on reliability, observability, and compatibility improvem
 
 As with all Appwrite upgrades:
 
-- Back up your data before upgrading (if you would prefer doing so)
 - Install Appwrite 1.8.1 using the following [Docker command](/docs/advanced/self-hosting/production/updates#install-next-version)
     
     ```bash
