@@ -317,7 +317,7 @@
             rows: [
                 {
                     title: 'Functions',
-                    free: '5 per project',
+                    free: '2 per project',
                     pro: 'Unlimited',
                     scale: 'Unlimited',
                     enterprise: 'Unlimited'
