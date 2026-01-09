@@ -9,8 +9,7 @@
     let { data } = $props();
 </script>
 
-<svelte:head>
-</svelte:head>
+<svelte:head></svelte:head>
 
 <Article title={data.model.title} description="">
     <article>

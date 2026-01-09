@@ -38,7 +38,7 @@ export function getCanonicalUrl(url: URL): string {
     if (origin === 'http://sveltekit-prerender' || origin === 'https://sveltekit-prerender') {
         origin = DEFAULT_HOST;
     } else {
-        origin = origin.replace(/^https?:\/\/www\./, 'https://');
+        origin = origin.replace(/^http:/, 'https:').replace(/^https:\/\/www\./, 'https://');
     }
 
     let pathname = url.pathname;
@@ -52,5 +52,3 @@ export function getCanonicalUrl(url: URL): string {
     // This matches the original implementation which used: `${origin}${pathname}`
     return `${origin}${pathname}`;
 }
-
-
