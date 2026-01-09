@@ -9,7 +9,6 @@
     let { data } = $props();
 </script>
 
-
 <Article title={data.model.title} description="">
     <article>
         <Heading id="properties" level={2}>Properties</Heading>
