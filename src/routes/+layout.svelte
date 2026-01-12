@@ -59,6 +59,7 @@
     import { saveReferrerAndUtmSource } from '$lib/utils/utm';
     import { Sprite } from '$lib/components/ui/icon/sprite';
     import { displayHiringMessage } from '$lib/utils/console';
+    import { getCanonicalUrl } from '$lib/utils/canonical';
 
     function applyTheme(theme: Theme) {
         if (!browser) return;
@@ -113,9 +114,7 @@
         }
     });
 
-    let canonicalUrl = $derived<string>(
-        `${page.url.origin.replace(/^https?:\/\/www\./, 'https://')}${page.url.pathname}`
-    );
+    let canonicalUrl = $derived<string>(getCanonicalUrl(page.url));
 
     function handleScroll() {
         const scrollY = window.scrollY;
