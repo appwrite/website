@@ -91,13 +91,6 @@
                     scale: '$15',
                     enterprise: 'Custom'
                 },
-                // {
-                //     title: 'Projects pausing',
-                //     free: 'Never',
-                //     pro: 'Never',
-                //     scale: 'Never',
-                //     enterprise: 'Never'
-                // },
                 {
                     title: 'Organization members',
                     free: '1',
