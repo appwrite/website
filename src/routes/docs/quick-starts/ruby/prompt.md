@@ -27,6 +27,7 @@ Do exactly these steps in order. Confirm each step succeeds before continuing. I
 
 4. Create Appwrite client file
     - Create file: `app.rb` with the following code (replace placeholders with user-provided values):
+
         ```ruby
         # Initialize the Appwrite client
         require 'appwrite'
@@ -43,6 +44,7 @@ Do exactly these steps in order. Confirm each step succeeds before continuing. I
 
 5. Initialize database
     - Add a function to configure a todo table:
+
         ```ruby
         tablesDB = TablesDB.new(client)
 
@@ -90,6 +92,7 @@ Do exactly these steps in order. Confirm each step succeeds before continuing. I
 
 6. Add rows
     - Add a function to seed mock data into the table:
+
         ```ruby
         def seed_database(databases, todo_database, todo_table)
             test_todo1 = {
@@ -134,6 +137,7 @@ Do exactly these steps in order. Confirm each step succeeds before continuing. I
 
 7. Retrieve rows
     - Add functions to retrieve the mock todo data and execute all tasks:
+
         ```ruby
         def get_todos(databases, todo_database, todo_table)
             todos = tablesDB.list_rows(

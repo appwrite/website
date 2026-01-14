@@ -8,13 +8,13 @@ Respect user's package manager at all time. Don't use NPM if the user uses somet
     - Guide the user to the [Appwrite Console](https://cloud.appwrite.io/console).
     - If this is their first time using Appwrite, they need to create an account and create their first project.
     - Under **Integrate with your server**, add an **API Key** with the following scopes:
-        | Category  | Required scopes       | Purpose |
-        |-----------|-----------------------|---------|
-        | Database  | `databases.write`     | Allows API key to create, update, and delete databases. |
-        |           | `tables.write`        | Allows API key to create, update, and delete tables. |
-        |           | `columns.write`       | Allows API key to create, update, and delete columns. |
-        |           | `rows.read`           | Allows API key to read rows. |
-        |           | `rows.write`          | Allows API key to create, update, and delete rows. |
+      | Category | Required scopes | Purpose |
+      |-----------|-----------------------|---------|
+      | Database | `databases.write` | Allows API key to create, update, and delete databases. |
+      | | `tables.write` | Allows API key to create, update, and delete tables. |
+      | | `columns.write` | Allows API key to create, update, and delete columns. |
+      | | `rows.read` | Allows API key to read rows. |
+      | | `rows.write` | Allows API key to create, update, and delete rows. |
     - Other scopes are optional.
 
 2. Create Node.js project
@@ -34,19 +34,21 @@ Respect user's package manager at all time. Don't use NPM if the user uses somet
         - Project ID (from Console -> Settings)
         - API Key (from Console -> View API Keys)
     - Create file: app.js with the client initialization:
+
         ```js
-        const sdk = require("node-appwrite");
+        const sdk = require('node-appwrite');
 
         const client = new sdk.Client();
 
         client
-            .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
-            .setProject("<PROJECT_ID>")
-            .setKey("<YOUR_API_KEY>");
+            .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+            .setProject('<PROJECT_ID>')
+            .setKey('<YOUR_API_KEY>');
         ```
 
 5. Initialize database
     - Add a function to configure a todo table:
+
         ```js
         const tablesDB = new sdk.TablesDB(client);
 
@@ -93,6 +95,7 @@ Respect user's package manager at all time. Don't use NPM if the user uses somet
 
 6. Add rows (seed database)
     - Add a function to add mock data into the table:
+
         ```js
         async function seedDatabase() {
             var testTodo1 = {
@@ -108,7 +111,7 @@ Respect user's package manager at all time. Don't use NPM if the user uses somet
 
             var testTodo3 = {
                 title: 'Cut the apples',
-                description: 'Don\'t forget to pack them in a box',
+                description: "Don't forget to pack them in a box",
                 isComplete: false
             };
 
@@ -135,6 +138,7 @@ Respect user's package manager at all time. Don't use NPM if the user uses somet
 
 7. Retrieve rows
     - Add functions to retrieve the mock todo data with queries:
+
         ```js
         const { Query } = require('node-appwrite');
 
@@ -144,9 +148,11 @@ Respect user's package manager at all time. Don't use NPM if the user uses somet
                 tableId: todoTable.$id
             });
 
-            console.log("Todos:");
-            todos.rows.forEach(todo => {
-                console.log(`Title: ${todo.title}\nDescription: ${todo.description}\nIs Todo Complete: ${todo.isComplete}\n\n`);
+            console.log('Todos:');
+            todos.rows.forEach((todo) => {
+                console.log(
+                    `Title: ${todo.title}\nDescription: ${todo.description}\nIs Todo Complete: ${todo.isComplete}\n\n`
+                );
             });
         }
 
@@ -155,15 +161,17 @@ Respect user's package manager at all time. Don't use NPM if the user uses somet
                 databaseId: todoDatabase.$id,
                 tableId: todoTable.$id,
                 queries: [
-                    Query.equal("isComplete", true),
-                    Query.orderDesc("$createdAt"),
+                    Query.equal('isComplete', true),
+                    Query.orderDesc('$createdAt'),
                     Query.limit(5)
                 ]
             });
 
-            console.log("Completed todos (limited to 5):");
-            todos.rows.forEach(todo => {
-                console.log(`Title: ${todo.title}\nDescription: ${todo.description}\nIs Todo Complete: ${todo.isComplete}\n\n`);
+            console.log('Completed todos (limited to 5):');
+            todos.rows.forEach((todo) => {
+                console.log(
+                    `Title: ${todo.title}\nDescription: ${todo.description}\nIs Todo Complete: ${todo.isComplete}\n\n`
+                );
             });
         }
 
@@ -171,15 +179,14 @@ Respect user's package manager at all time. Don't use NPM if the user uses somet
             var todos = await tablesDB.listRows({
                 databaseId: todoDatabase.$id,
                 tableId: todoTable.$id,
-                queries: [
-                    Query.equal("isComplete", false),
-                    Query.orderAsc("title")
-                ]
+                queries: [Query.equal('isComplete', false), Query.orderAsc('title')]
             });
 
-            console.log("Incomplete todos (ordered by title):");
-            todos.rows.forEach(todo => {
-                console.log(`Title: ${todo.title}\nDescription: ${todo.description}\nIs Todo Complete: ${todo.isComplete}\n\n`);
+            console.log('Incomplete todos (ordered by title):');
+            todos.rows.forEach((todo) => {
+                console.log(
+                    `Title: ${todo.title}\nDescription: ${todo.description}\nIs Todo Complete: ${todo.isComplete}\n\n`
+                );
             });
         }
 
@@ -195,6 +202,7 @@ Respect user's package manager at all time. Don't use NPM if the user uses somet
 
 8. Optional: Type safety with TypeScript
     - For better type safety in TypeScript projects, define interfaces and use generics:
+
         ```typescript
         interface Todo {
             title: string;
@@ -216,11 +224,12 @@ Respect user's package manager at all time. Don't use NPM if the user uses somet
                 tableId: '<TABLE_ID>'
             });
 
-            todos.rows.forEach(todo => {
+            todos.rows.forEach((todo) => {
                 console.log(`Title: ${todo.title} - Complete: ${todo.isComplete}`);
             });
         }
         ```
+
     - Optionally use the Appwrite CLI to generate TypeScript interfaces automatically: `appwrite types ./types`
 
 9. Run and test

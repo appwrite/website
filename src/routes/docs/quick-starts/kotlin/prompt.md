@@ -8,13 +8,13 @@ Note: This is for the Kotlin Server SDK, meant for server and backend applicatio
     - Guide the user to the Appwrite Console (https://cloud.appwrite.io/console)
     - If this is their first time, help them create an account and their first project
     - Under "Integrate with your server", add an API Key with the following scopes:
-        | Category  | Required scopes     | Purpose |
-        |-----------|---------------------|---------|
-        | Database  | databases.write     | Allows API key to create, update, and delete databases |
-        |           | tables.write        | Allows API key to create, update, and delete tables |
-        |           | columns.write       | Allows API key to create, update, and delete columns |
-        |           | rows.read           | Allows API key to read rows |
-        |           | rows.write          | Allows API key to create, update, and delete rows |
+      | Category | Required scopes | Purpose |
+      |-----------|---------------------|---------|
+      | Database | databases.write | Allows API key to create, update, and delete databases |
+      | | tables.write | Allows API key to create, update, and delete tables |
+      | | columns.write | Allows API key to create, update, and delete columns |
+      | | rows.read | Allows API key to read rows |
+      | | rows.write | Allows API key to create, update, and delete rows |
     - Other scopes are optional
 
 2. Create Kotlin project
@@ -37,6 +37,7 @@ Note: This is for the Kotlin Server SDK, meant for server and backend applicatio
         - Project ID (from Console -> Settings)
         - API Key (from Console -> View API Keys)
     - Open `Main.kt` and initialize the Appwrite Client:
+
         ```kotlin
         import io.appwrite.Client
         import io.appwrite.ID
@@ -50,10 +51,12 @@ Note: This is for the Kotlin Server SDK, meant for server and backend applicatio
             .setProject("<PROJECT_ID>")
             .setKey("<YOUR_API_KEY>");
         ```
+
     - Replace placeholders with actual values if provided, otherwise ask user to provide them
 
 5. Initialize database
     - Create a function to configure a todo table:
+
         ```kotlin
         val tablesDB = TablesDB(client)
 
@@ -92,6 +95,7 @@ Note: This is for the Kotlin Server SDK, meant for server and backend applicatio
 
 6. Add rows (seed the database)
     - Create a function to add mock data:
+
         ```kotlin
         suspend fun seedDatabase() {
             val testTodo1 = mapOf(
@@ -136,6 +140,7 @@ Note: This is for the Kotlin Server SDK, meant for server and backend applicatio
 
 7. Retrieve rows
     - Create a function to retrieve and display the todo data:
+
         ```kotlin
         suspend fun getTodos() {
             val todos = tablesDB.listRows(todoDatabase?.id!!, todoTable?.id!!)

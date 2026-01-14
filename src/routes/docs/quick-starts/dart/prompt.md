@@ -23,6 +23,7 @@ Do exactly these steps in order. Confirm each step succeeds before continuing. I
     - Open `bin/my_app.dart` and initialize the Appwrite Client.
     - Replace `<REGION>`, `<PROJECT_ID>`, and `<YOUR_API_KEY>` with the user's values if provided, else leave placeholders and ask the user to provide them.
     - Create/update file: bin/my_app.dart with key snippet:
+
         ```dart
         import 'package:dart_appwrite/dart_appwrite.dart';
 
@@ -38,6 +39,7 @@ Do exactly these steps in order. Confirm each step succeeds before continuing. I
 
 5. Initialize database
     - Add a function to configure a todo table with columns:
+
         ```dart
         var databases;
         var todoDatabase;
@@ -85,6 +87,7 @@ Do exactly these steps in order. Confirm each step succeeds before continuing. I
 
 6. Add rows
     - Create a function to add mock todo data:
+
         ```dart
         Future<void> seedDatabase() async {
           var testTodo1 = {
@@ -129,6 +132,7 @@ Do exactly these steps in order. Confirm each step succeeds before continuing. I
 
 7. Retrieve rows
     - Create a function to retrieve and display the todo data:
+
         ```dart
         Future<void> getTodos() async {
           var todos = await tablesDB.listRows(
@@ -144,6 +148,7 @@ Do exactly these steps in order. Confirm each step succeeds before continuing. I
 
 8. Update main function
     - Update the `main()` function to call all the functions:
+
         ```dart
         Future<void> main() async {
           client

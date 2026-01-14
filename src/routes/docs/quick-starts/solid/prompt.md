@@ -24,14 +24,13 @@ Respect user's package manager at all time. Don't use NPM if the user uses somet
         - Project ID (from Console -> Settings)
     - Hardcode the endpoint and project ID in the file: src/lib/appwrite.js if provided, else leave placeholder and ask the user to provide them.
     - Create file: src/lib/appwrite.js with key snippet:
+
         ```js
         import { Client, Account } from 'appwrite';
 
         export const client = new Client();
 
-        client
-            .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
-            .setProject('<PROJECT_ID>'); // Replace with your project ID
+        client.setEndpoint('https://<REGION>.cloud.appwrite.io/v1').setProject('<PROJECT_ID>'); // Replace with your project ID
 
         export const account = new Account(client);
         export { ID } from 'appwrite';
@@ -50,8 +49,9 @@ Respect user's package manager at all time. Don't use NPM if the user uses somet
         - register(email, password, name): account.create({ userId: ID.unique(), email, password, name }) then call login
         - logout(): account.deleteSession({ sessionId: 'current' }) then clear user state
     - Key snippet for src/App.jsx:
+
         ```jsx
-        import { createSignal } from 'solid-js'
+        import { createSignal } from 'solid-js';
         import { account, ID } from './lib/appwrite';
 
         const App = () => {
@@ -96,9 +96,24 @@ Respect user's package manager at all time. Don't use NPM if the user uses somet
                 <div>
                     <p>Not logged in</p>
                     <form>
-                        <input type="email" placeholder="Email" value={email()} onChange={e => setEmail(e.target.value)} />
-                        <input type="password" placeholder="Password" value={password()} onChange={e => setPassword(e.target.value)} />
-                        <input type="text" placeholder="Name" value={name()} onChange={e => setName(e.target.value)} />
+                        <input
+                            type="email"
+                            placeholder="Email"
+                            value={email()}
+                            onChange={(e) => setEmail(e.target.value)}
+                        />
+                        <input
+                            type="password"
+                            placeholder="Password"
+                            value={password()}
+                            onChange={(e) => setPassword(e.target.value)}
+                        />
+                        <input
+                            type="text"
+                            placeholder="Name"
+                            value={name()}
+                            onChange={(e) => setName(e.target.value)}
+                        />
                         <button type="button" onClick={() => login(email(), password())}>
                             Login
                         </button>

@@ -8,13 +8,13 @@ Note: This is for the Swift Server SDK, meant for server and backend application
     - Head to the Appwrite Console (https://cloud.appwrite.io/console).
     - If this is the user's first time using Appwrite, guide them to create an account and create their first project.
     - Under "Integrate with your server", add an API Key with the following scopes:
-        | Category  | Required scopes       | Purpose |
-        |-----------|-----------------------|---------|
-        | Database  | `databases.write`     | Allows API key to create, update, and delete databases. |
-        |           | `tables.write`        | Allows API key to create, update, and delete tables. |
-        |           | `columns.write`       | Allows API key to create, update, and delete columns. |
-        |           | `rows.read`           | Allows API key to read rows. |
-        |           | `rows.write`          | Allows API key to create, update, and delete rows. |
+      | Category | Required scopes | Purpose |
+      |-----------|-----------------------|---------|
+      | Database | `databases.write` | Allows API key to create, update, and delete databases. |
+      | | `tables.write` | Allows API key to create, update, and delete tables. |
+      | | `columns.write` | Allows API key to create, update, and delete columns. |
+      | | `rows.read` | Allows API key to read rows. |
+      | | `rows.write` | Allows API key to create, update, and delete rows. |
     - Other scopes are optional.
 
 2. Create Swift project
@@ -31,6 +31,7 @@ Note: This is for the Swift Server SDK, meant for server and backend application
         - Project ID (from Console -> Settings)
         - API Key (from Console -> View API Keys)
     - Open the file `main.swift` and initialize the Appwrite Client. Replace placeholders with user-provided values:
+
         ```swift
         import Foundation
         import Appwrite
@@ -44,6 +45,7 @@ Note: This is for the Swift Server SDK, meant for server and backend application
 
 5. Initialize database
     - Create a function to configure a todo database and table:
+
         ```swift
         let tablesDB = TablesDB(client)
 
@@ -85,6 +87,7 @@ Note: This is for the Swift Server SDK, meant for server and backend application
 
 6. Add rows
     - Create a function to add mock data into the table:
+
         ```swift
         func seedDatabase(todoDatabase: Database?, todoTable: Table?) async {
             let testTodo1: [String: Any] = [
@@ -127,6 +130,7 @@ Note: This is for the Swift Server SDK, meant for server and backend application
 
 7. Retrieve rows
     - Create a function to retrieve and display the todo data:
+
         ```swift
         func getTodos(todoDatabase: Database?, todoTable: Table?) async {
             let todos = try? await tablesDB.listRows(

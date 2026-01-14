@@ -6,13 +6,13 @@ Do exactly these steps in order. Confirm each step succeeds before continuing. I
     - Head to the Appwrite Console (https://cloud.appwrite.io/console).
     - If this is the user's first time using Appwrite, guide them to create an account and create their first project.
     - Under "Integrate with your server", add an API Key with the following scopes:
-        | Category  | Required scopes       | Purpose |
-        |-----------|-----------------------|---------|
-        | Database  | `databases.write`     | Allows API key to create, update, and delete databases. |
-        |           | `tables.write`        | Allows API key to create, update, and delete tables. |
-        |           | `columns.write`       | Allows API key to create, update, and delete columns. |
-        |           | `rows.read`           | Allows API key to read rows. |
-        |           | `rows.write`          | Allows API key to create, update, and delete rows. |
+      | Category | Required scopes | Purpose |
+      |-----------|-----------------------|---------|
+      | Database | `databases.write` | Allows API key to create, update, and delete databases. |
+      | | `tables.write` | Allows API key to create, update, and delete tables. |
+      | | `columns.write` | Allows API key to create, update, and delete columns. |
+      | | `rows.read` | Allows API key to read rows. |
+      | | `rows.write` | Allows API key to create, update, and delete rows. |
     - Other scopes are optional.
 
 2. Create Go project
@@ -32,6 +32,7 @@ Do exactly these steps in order. Confirm each step succeeds before continuing. I
         - Project ID (from Console -> Settings)
         - API Key (from Console -> View API Keys)
     - Create file: app.go with the following code. Replace `<PROJECT_KEY>` with their project ID and `<API_KEY>` with their API key:
+
         ```go
         package main
 
@@ -61,6 +62,7 @@ Do exactly these steps in order. Confirm each step succeeds before continuing. I
 5. Initialize database
     - Add import for id: `"github.com/appwrite/sdk-for-go/id"`
     - Add the prepareDatabase function to create a todo database and table with columns:
+
         ```go
         func prepareDatabase() {
             tablesDB = appwrite.NewTablesDB(appwriteClient)
@@ -103,6 +105,7 @@ Do exactly these steps in order. Confirm each step succeeds before continuing. I
 
 6. Add rows (seed database)
     - Add the seedDatabase function to insert mock todo data:
+
         ```go
         func seedDatabase() {
             testTodo1 := map[string]interface{}{
@@ -147,6 +150,7 @@ Do exactly these steps in order. Confirm each step succeeds before continuing. I
 
 7. Retrieve rows
     - Add Todo and TodoList structs:
+
         ```go
         type Todo struct {
             Title       string `json:"title"`
@@ -159,7 +163,9 @@ Do exactly these steps in order. Confirm each step succeeds before continuing. I
             Documents []Todo `json:"rows"`
         }
         ```
+
     - Add getTodos function to retrieve all todos:
+
         ```go
         func getTodos() {
             todoResponse, _ := tablesDB.ListRows(
@@ -176,7 +182,9 @@ Do exactly these steps in order. Confirm each step succeeds before continuing. I
             }
         }
         ```
+
     - Add getCompletedTodos function with query filtering:
+
         ```go
         func getCompletedTodos() {
             todoResponse, _ := tablesDB.ListRows(
@@ -198,7 +206,9 @@ Do exactly these steps in order. Confirm each step succeeds before continuing. I
             }
         }
         ```
+
     - Add getIncompleteTodos function:
+
         ```go
         func getIncompleteTodos() {
             todoResponse, _ := tablesDB.ListRows(
@@ -222,6 +232,7 @@ Do exactly these steps in order. Confirm each step succeeds before continuing. I
 
 8. Update main function and run
     - Update main() to call all functions:
+
         ```go
         func main() {
             appwriteClient = appwrite.NewClient(
@@ -236,6 +247,7 @@ Do exactly these steps in order. Confirm each step succeeds before continuing. I
             getIncompleteTodos()
         }
         ```
+
     - Add "fmt" to the imports
     - Run: go run .
     - View the response in the console

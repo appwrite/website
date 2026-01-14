@@ -5,13 +5,13 @@ Do exactly these steps in order. Confirm each step succeeds before continuing. I
 1. Create project in Appwrite Console
     - If this is the user's first time using Appwrite, guide them to create an account and project at https://cloud.appwrite.io/console
     - Under **Integrate with your server**, add an **API Key** with the following scopes:
-        | Category | Required scopes | Purpose |
-        |----------|-----------------|---------|
-        | Database | `databases.write` | Allows API key to create, update, and delete databases |
-        |          | `tables.write` | Allows API key to create, update, and delete tables |
-        |          | `columns.write` | Allows API key to create, update, and delete columns |
-        |          | `rows.read` | Allows API key to read rows |
-        |          | `rows.write` | Allows API key to create, update, and delete rows |
+      | Category | Required scopes | Purpose |
+      |----------|-----------------|---------|
+      | Database | `databases.write` | Allows API key to create, update, and delete databases |
+      | | `tables.write` | Allows API key to create, update, and delete tables |
+      | | `columns.write` | Allows API key to create, update, and delete columns |
+      | | `rows.read` | Allows API key to read rows |
+      | | `rows.write` | Allows API key to create, update, and delete rows |
     - Other scopes are optional.
 
 2. Create Python project
@@ -21,6 +21,7 @@ Do exactly these steps in order. Confirm each step succeeds before continuing. I
         cd my_app
         ```
     - Create a virtual environment and activate it:
+
         ```sh
         # Create a venv
         python -m venv .venv
@@ -31,6 +32,7 @@ Do exactly these steps in order. Confirm each step succeeds before continuing. I
         # Or in Powershell
         .venv/Scripts/Activate.ps1
         ```
+
     - Create a file named `my_app.py`
 
 3. Install Appwrite SDK
@@ -42,6 +44,7 @@ Do exactly these steps in order. Confirm each step succeeds before continuing. I
         - Project ID (from Console -> Settings)
         - API Key (from Console -> View API Keys)
     - Open `my_app.py` and initialize the Appwrite Client:
+
         ```py
         from appwrite.client import Client
         from appwrite.services.tables_db import TablesDB
@@ -55,6 +58,7 @@ Do exactly these steps in order. Confirm each step succeeds before continuing. I
 
 5. Initialize database
     - Create a function to configure a todo table:
+
         ```py
         tablesDB = TablesDB(client)
 
@@ -103,6 +107,7 @@ Do exactly these steps in order. Confirm each step succeeds before continuing. I
 
 6. Add rows
     - Create a function to add mock data into the table:
+
         ```py
         def seed_database():
           testTodo1 = {
@@ -146,6 +151,7 @@ Do exactly these steps in order. Confirm each step succeeds before continuing. I
 
 7. Retrieve rows
     - Create functions to retrieve the mock todo data and execute them in `__main__`:
+
         ```py
         from appwrite.query import Query
 

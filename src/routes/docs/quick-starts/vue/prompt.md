@@ -25,14 +25,13 @@ Respect user's package manager at all time. Don't use NPM if the user uses somet
         - Project ID (found in Console -> Settings page)
     - Hardcode the endpoint and project ID in the file: src/lib/appwrite.js if provided, else leave placeholder and ask the user to provide them.
     - Create file: src/lib/appwrite.js with key snippet:
+
         ```js
-        import { Client, Account} from 'appwrite';
+        import { Client, Account } from 'appwrite';
 
         export const client = new Client();
 
-        client
-            .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
-            .setProject('<PROJECT_ID>'); // Replace with your project ID
+        client.setEndpoint('https://<REGION>.cloud.appwrite.io/v1').setProject('<PROJECT_ID>'); // Replace with your project ID
 
         export const account = new Account(client);
         export { ID } from 'appwrite';
@@ -51,61 +50,56 @@ Respect user's package manager at all time. Don't use NPM if the user uses somet
         - register(): account.create({ userId: ID.unique(), email: email.value, password: password.value, name: name.value }) then call login
         - logout(): account.deleteSession({ sessionId: 'current' }) then clear user state
     - Key snippet for src/App.vue:
+
         ```html
         <template>
-          <div>
-            <p>
-              {{ loggedInUser ? `Logged in as ${loggedInUser.name}` : 'Not logged in' }}
-            </p>
+            <div>
+                <p>{{ loggedInUser ? `Logged in as ${loggedInUser.name}` : 'Not logged in' }}</p>
 
-            <form>
-              <input type="email" placeholder="Email" v-model="email" />
-              <input type="password" placeholder="Password" v-model="password" />
-              <input type="text" placeholder="Name" v-model="name" />
-              <button type="button" @click="login(email, password)">Login</button>
-              <button type="button" @click="register">
-                Register
-              </button>
-              <button type="button" @click="logout">
-                Logout
-              </button>
-            </form>
-          </div>
+                <form>
+                    <input type="email" placeholder="Email" v-model="email" />
+                    <input type="password" placeholder="Password" v-model="password" />
+                    <input type="text" placeholder="Name" v-model="name" />
+                    <button type="button" @click="login(email, password)">Login</button>
+                    <button type="button" @click="register">Register</button>
+                    <button type="button" @click="logout">Logout</button>
+                </form>
+            </div>
         </template>
 
         <script setup>
-        import { ref } from 'vue';
-        import { account, ID } from './lib/appwrite.js';
+            import { ref } from 'vue';
+            import { account, ID } from './lib/appwrite.js';
 
-        const loggedInUser = ref(null);
-        const email = ref('');
-        const password = ref('');
-        const name = ref('');
+            const loggedInUser = ref(null);
+            const email = ref('');
+            const password = ref('');
+            const name = ref('');
 
-        const login = async (email, password) => {
-          await account.createEmailPasswordSession({
-            email,
-            password
-          });
-          loggedInUser.value = await account.get();
-        };
+            const login = async (email, password) => {
+                await account.createEmailPasswordSession({
+                    email,
+                    password
+                });
+                loggedInUser.value = await account.get();
+            };
 
-        const register = async () => {
-          await account.create({
-            userId: ID.unique(),
-            email: email.value,
-            password: password.value,
-            name: name.value
-          });
-          login(email.value, password.value);
-        };
+            const register = async () => {
+                await account.create({
+                    userId: ID.unique(),
+                    email: email.value,
+                    password: password.value,
+                    name: name.value
+                });
+                login(email.value, password.value);
+            };
 
-        const logout = async () => {
-          await account.deleteSession({
-            sessionId: 'current'
-          });
-          loggedInUser.value = null;
-        };
+            const logout = async () => {
+                await account.deleteSession({
+                    sessionId: 'current'
+                });
+                loggedInUser.value = null;
+            };
         </script>
         ```
 

@@ -22,14 +22,13 @@ Respect user's package manager at all time. Don't use NPM if the user uses somet
         - Project ID (from Console -> Settings)
     - Hardcode the endpoint and project ID in the file: src/lib/appwrite.ts if provided, else leave placeholder and ask the user to provide them.
     - Create file: src/lib/appwrite.ts with key snippet:
+
         ```ts
-        import { Client, Account} from 'appwrite';
+        import { Client, Account } from 'appwrite';
 
         export const client = new Client();
 
-        client
-            .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
-            .setProject('<PROJECT_ID>'); // Replace with your project ID
+        client.setEndpoint('https://<REGION>.cloud.appwrite.io/v1').setProject('<PROJECT_ID>'); // Replace with your project ID
 
         export const account = new Account(client);
         export { ID } from 'appwrite';
@@ -54,70 +53,65 @@ Respect user's package manager at all time. Don't use NPM if the user uses somet
         export class AppModule { }
         ```
     - Replace the contents of src/app/app.component.html:
+
         ```html
         <div>
-          <p>
-            {{ loggedInUser ? 'Logged in as ' + loggedInUser.name : 'Not logged in' }}
-          </p>
+            <p>{{ loggedInUser ? 'Logged in as ' + loggedInUser.name : 'Not logged in' }}</p>
 
-          <div>
-            <input type="email" placeholder="Email" [(ngModel)]="email" />
-            <input type="password" placeholder="Password" [(ngModel)]="password" />
-            <input type="text" placeholder="Name" [(ngModel)]="name" />
+            <div>
+                <input type="email" placeholder="Email" [(ngModel)]="email" />
+                <input type="password" placeholder="Password" [(ngModel)]="password" />
+                <input type="text" placeholder="Name" [(ngModel)]="name" />
 
-            <button (click)="login(email, password)">
-              Login
-            </button>
+                <button (click)="login(email, password)">Login</button>
 
-            <button (click)="register(email, password, name)">
-              Register
-            </button>
+                <button (click)="register(email, password, name)">Register</button>
 
-            <button (click)="logout()">
-              Logout
-            </button>
-          </div>
+                <button (click)="logout()">Logout</button>
+            </div>
         </div>
         ```
+
     - Update src/app/app.component.ts:
+
         ```ts
         import { Component } from '@angular/core';
         import { account, ID } from '../lib/appwrite';
         @Component({
-          selector: 'app-root',
-          templateUrl: './app.component.html',
-          styleUrls: ['./app.component.css']
+            selector: 'app-root',
+            templateUrl: './app.component.html',
+            styleUrls: ['./app.component.css']
         })
         export class AppComponent {
-          loggedInUser: any = null;
-          email: string = '';
-          password: string = '';
-          name: string = '';
+            loggedInUser: any = null;
+            email: string = '';
+            password: string = '';
+            name: string = '';
 
-          async login(email: string, password: string) {
-            await account.createEmailPasswordSession({
-              email,
-              password
-            });
-            this.loggedInUser = await account.get();
-          }
+            async login(email: string, password: string) {
+                await account.createEmailPasswordSession({
+                    email,
+                    password
+                });
+                this.loggedInUser = await account.get();
+            }
 
-          async register(email: string, password: string, name: string) {
-            await account.create({
-              userId: ID.unique(),
-              email,
-              password,
-              name
-            });
-            this.login(email, password);
-          }
+            async register(email: string, password: string, name: string) {
+                await account.create({
+                    userId: ID.unique(),
+                    email,
+                    password,
+                    name
+                });
+                this.login(email, password);
+            }
 
-          async logout() {
-            await account.deleteSession({
-              sessionId: 'current'
-            });
-            this.loggedInUser = null;
-          }
+            async logout() {
+                await account.deleteSession({
+                    sessionId: 'current'
+                });
+                this.loggedInUser = null;
+            }
         }
         ```
 

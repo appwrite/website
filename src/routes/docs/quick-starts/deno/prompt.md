@@ -26,6 +26,7 @@ Note: The dedicated Deno SDK has been deprecated. Use the Node.js SDK directly t
 
 3. Install Appwrite SDK
     - Use npm specifiers at the top of your file to import the SDK:
+
         ```ts
         // import all as sdk
         import * as sdk from "npm:node-appwrite";
@@ -37,19 +38,21 @@ Note: The dedicated Deno SDK has been deprecated. Use the Node.js SDK directly t
 4. Initialize Appwrite Client
     - Open `mod.ts` and initialize the Appwrite Client with the user's credentials.
     - Replace placeholders with the actual values provided by the user:
+
         ```ts
-        import { Client, ID, TablesDB, Models } from "npm:node-appwrite";
+        import { Client, ID, TablesDB, Models } from 'npm:node-appwrite';
 
         const client: Client = new Client();
 
         client
-            .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
-            .setProject("<PROJECT_ID>")
-            .setKey("<YOUR_API_KEY>");
+            .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+            .setProject('<PROJECT_ID>')
+            .setKey('<YOUR_API_KEY>');
         ```
 
 5. Initialize database
     - Create a function to configure a todo table:
+
         ```ts
         const tablesDB: TablesDB = new TablesDB(client);
 
@@ -102,6 +105,7 @@ Note: The dedicated Deno SDK has been deprecated. Use the Node.js SDK directly t
 
 6. Add rows
     - Create a function to add mock data into the new table:
+
         ```ts
         async function seedDatabase(): Promise<void> {
             const testTodo1: Todo = {
@@ -117,7 +121,7 @@ Note: The dedicated Deno SDK has been deprecated. Use the Node.js SDK directly t
 
             const testTodo3: Todo = {
                 title: 'Cut the apples',
-                description: 'Don\'t forget to pack them in a box',
+                description: "Don't forget to pack them in a box",
                 isComplete: false
             };
 
@@ -144,6 +148,7 @@ Note: The dedicated Deno SDK has been deprecated. Use the Node.js SDK directly t
 
 7. Retrieve rows
     - Create a function to retrieve the mock todo data and a function to execute the requests in order:
+
         ```ts
         async function getTodos(): Promise<void> {
             const todos = await tablesDB.listRows({
@@ -152,7 +157,9 @@ Note: The dedicated Deno SDK has been deprecated. Use the Node.js SDK directly t
             });
 
             todos.rows.forEach((todo: Todo) => {
-                console.log(`Title: ${todo.title}\nDescription: ${todo.description}\nIs Todo Complete: ${todo.isComplete}\n\n`);
+                console.log(
+                    `Title: ${todo.title}\nDescription: ${todo.description}\nIs Todo Complete: ${todo.isComplete}\n\n`
+                );
             });
         }
 

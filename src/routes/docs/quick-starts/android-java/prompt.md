@@ -46,6 +46,7 @@ Rules
         - Cloud Region (e.g., fra, nyc)
         - Project ID (from Console -> Settings)
     - Create file: `AppwriteHelper.java` with the following code (replace `<YOUR_ROOT_PACKAGE_HERE>`, `<REGION>`, and `<PROJECT_ID>`):
+
         ```java
         package <YOUR_ROOT_PACKAGE_HERE>;
 
@@ -127,6 +128,7 @@ Rules
 
 5. Create login UI in XML
     - Update `activity_main.xml` layout file:
+
         ```xml
         <?xml version="1.0" encoding="utf-8"?>
         <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -198,6 +200,7 @@ Rules
 
 6. Create MainActivity
     - Update `MainActivity.java` with the following code (replace `<YOUR_ROOT_PACKAGE_HERE>`):
+
         ```java
         package <YOUR_ROOT_PACKAGE_HERE>;
 

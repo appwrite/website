@@ -27,11 +27,12 @@ Respect user's package manager at all time. Don't use NPM if the user uses somet
         - Appwrite API Endpoint (e.g. https://cloud.appwrite.io/v1)
         - Project ID (from Console -> Settings)
     - Navigate to `src/utility/appwriteClient.ts` and add API credentials:
+
         ```ts
-        import { Account, Appwrite, Storage } from "@refinedev/appwrite";
+        import { Account, Appwrite, Storage } from '@refinedev/appwrite';
 
         const APPWRITE_URL = '<YOUR_API_ENDPOINT>'; // Replace with your Appwrite API Endpoint
-        const APPWRITE_PROJECT = "<PROJECT_ID>"; // Replace with your project ID
+        const APPWRITE_PROJECT = '<PROJECT_ID>'; // Replace with your project ID
 
         const appwriteClient = new Appwrite();
 
@@ -44,6 +45,7 @@ Respect user's package manager at all time. Don't use NPM if the user uses somet
 
 5. Create a login page
     - Replace the code in `src/App.tsx` with the following:
+
         ```tsx
         import { Authenticated, Refine } from '@refinedev/core';
         import { dataProvider, liveProvider } from '@refinedev/appwrite';
@@ -52,11 +54,11 @@ Respect user's package manager at all time. Don't use NPM if the user uses somet
             ErrorComponent,
             RefineThemes,
             ThemedLayoutV2,
-            useNotificationProvider,
+            useNotificationProvider
         } from '@refinedev/antd';
         import routerProvider, {
             CatchAllNavigate,
-            NavigateToResource,
+            NavigateToResource
         } from '@refinedev/react-router-v6';
         import '@refinedev/antd/dist/reset.css';
 
@@ -73,10 +75,10 @@ Respect user's package manager at all time. Don't use NPM if the user uses somet
                         <AntdApp>
                             <Refine
                                 dataProvider={dataProvider(appwriteClient, {
-                                    databaseId: '<APPWRITE_DATABASE_ID>',
+                                    databaseId: '<APPWRITE_DATABASE_ID>'
                                 })}
                                 liveProvider={liveProvider(appwriteClient, {
-                                    databaseId: '<APPWRITE_DATABASE_ID>',
+                                    databaseId: '<APPWRITE_DATABASE_ID>'
                                 })}
                                 authProvider={authProvider}
                                 routerProvider={routerProvider}
@@ -86,9 +88,7 @@ Respect user's package manager at all time. Don't use NPM if the user uses somet
                                     <Route
                                         element={
                                             <Authenticated
-                                                fallback={
-                                                    <CatchAllNavigate to="/login" />
-                                                }
+                                                fallback={<CatchAllNavigate to="/login" />}
                                             >
                                                 <ThemedLayoutV2>
                                                     <Outlet />
@@ -132,6 +132,7 @@ Respect user's package manager at all time. Don't use NPM if the user uses somet
 
         export default App;
         ```
+
     - Ask the user for their Appwrite Database ID and Table ID to replace `<APPWRITE_DATABASE_ID>` and `<APPWRITE_TABLE_ID>` placeholders.
 
 6. Run and test

@@ -6,13 +6,13 @@ Do exactly these steps in order. Confirm each step succeeds before continuing. I
     - Head to the Appwrite Console (https://cloud.appwrite.io/console).
     - If this is the user's first time, guide them to create an account and create their first project.
     - Under **Integrate with your server**, add an **API Key** with the following scopes:
-        | Category  | Required scopes       | Purpose |
-        |-----------|-----------------------|---------|
-        | Database  | `databases.write`     | Allows API key to create, update, and delete databases. |
-        |           | `tables.write`        | Allows API key to create, update, and delete tables. |
-        |           | `columns.write`       | Allows API key to create, update, and delete columns. |
-        |           | `rows.read`           | Allows API key to read rows. |
-        |           | `rows.write`          | Allows API key to create, update, and delete rows. |
+      | Category | Required scopes | Purpose |
+      |-----------|-----------------------|---------|
+      | Database | `databases.write` | Allows API key to create, update, and delete databases. |
+      | | `tables.write` | Allows API key to create, update, and delete tables. |
+      | | `columns.write` | Allows API key to create, update, and delete columns. |
+      | | `rows.read` | Allows API key to read rows. |
+      | | `rows.write` | Allows API key to create, update, and delete rows. |
     - Other scopes are optional.
 
 2. Create .NET project
@@ -29,6 +29,7 @@ Do exactly these steps in order. Confirm each step succeeds before continuing. I
         - API Key (from Console -> View API Keys)
     - Open `Program.cs` and initialize the Appwrite Client.
     - Create/update file: Program.cs with key snippet:
+
         ```csharp
         using Appwrite;
         using Appwrite.Models;
@@ -44,6 +45,7 @@ Do exactly these steps in order. Confirm each step succeeds before continuing. I
 
 5. Initialize database
     - Add code to create a todo database and table with columns:
+
         ```csharp
         var tablesDB = new TablesDB(client);
 
@@ -88,6 +90,7 @@ Do exactly these steps in order. Confirm each step succeeds before continuing. I
 
 6. Add rows
     - Add code to insert mock todo data:
+
         ```csharp
         var testTodo1 = new Dictionary<string, object>()
         {
@@ -133,6 +136,7 @@ Do exactly these steps in order. Confirm each step succeeds before continuing. I
 
 7. Retrieve rows
     - Add code to retrieve and display the todo data:
+
         ```csharp
         var todos = await tablesDB.listRows(
             databaseId: todoDatabase.Id,

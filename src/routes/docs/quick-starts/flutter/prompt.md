@@ -20,12 +20,18 @@ Rules
             ```html
             <!DOCTYPE html>
             <title>Authentication complete</title>
-            <p>Authentication is complete. If this does not happen automatically, please close the window.</p>
+            <p>
+                Authentication is complete. If this does not happen automatically, please close the
+                window.
+            </p>
             <script>
-              window.opener.postMessage({
-                'flutter-web-auth-2': window.location.href
-              }, window.location.origin);
-              window.close();
+                window.opener.postMessage(
+                    {
+                        'flutter-web-auth-2': window.location.href
+                    },
+                    window.location.origin
+                );
+                window.close();
             </script>
             ```
         - **iOS**: Add app name and Bundle ID. Set iOS Deployment Target to iOS >= 11 in XCode.
@@ -64,6 +70,7 @@ Rules
 4. Import and initialize Appwrite (key snippet)
     - File: `lib/main.dart`
     - Replace `<REGION>` and `<PROJECT_ID>` with user-provided values:
+
         ```dart
         import 'package:flutter/material.dart';
         import 'package:appwrite/appwrite.dart';
@@ -95,6 +102,7 @@ Rules
 
 5. Create login page
     - Append to `lib/main.dart` the following widget with login/register/logout functionality:
+
         ```dart
         class MyAppState extends State<MyApp> {
           models.User? loggedInUser;
@@ -190,6 +198,7 @@ Rules
           }
         }
         ```
+
     - The page displays:
         - "Logged in as <name>" when a session exists, otherwise "Not logged in"
         - Email, Password, and Name text fields

@@ -21,14 +21,13 @@ Respect user's package manager at all time. Don't use NPM if the user uses somet
         - Project ID (from Console -> Settings)
     - Hardcode the endpoint and project ID in the file: src/lib/appwrite.js (or .ts) if provided, else leave placeholder and ask the user to provide them.
     - Create file: src/lib/appwrite.js (or .ts) with key snippet:
+
         ```js
         import { Client, Account } from 'appwrite';
 
         export const client = new Client();
 
-        client
-            .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
-            .setProject('<PROJECT_ID>'); // Replace with your project ID
+        client.setEndpoint('https://<REGION>.cloud.appwrite.io/v1').setProject('<PROJECT_ID>'); // Replace with your project ID
 
         export const account = new Account(client);
         export { ID } from 'appwrite';
@@ -46,6 +45,7 @@ Respect user's package manager at all time. Don't use NPM if the user uses somet
         - register(email, password): account.create({ userId: ID.unique(), email, password }) then call login
         - logout(): account.deleteSession({ sessionId: 'current' }) then set loggedInUser to null
     - Key snippet for src/routes/+page.svelte:
+
         ```html
         <script>
             import { account, ID } from '$lib/appwrite';
@@ -74,9 +74,9 @@ Respect user's package manager at all time. Don't use NPM if the user uses somet
                 const formData = new FormData(e.target);
                 const type = e.submitter.dataset.type;
 
-                if (type === "login") {
+                if (type === 'login') {
                     login(formData.get('email'), formData.get('password'));
-                } else if (type === "register") {
+                } else if (type === 'register') {
                     register(formData.get('email'), formData.get('password'));
                 }
             }
@@ -87,11 +87,9 @@ Respect user's package manager at all time. Don't use NPM if the user uses somet
             }
         </script>
 
-        <p>
-            {loggedInUser ? `Logged in as ${loggedInUser.name}` : 'Not logged in'}
-        </p>
+        <p>{loggedInUser ? `Logged in as ${loggedInUser.name}` : 'Not logged in'}</p>
 
-        <form on:submit={submit}>
+        <form on:submit="{submit}">
             <input type="email" placeholder="Email" name="email" required />
             <input type="password" placeholder="Password" name="password" required />
 
@@ -99,7 +97,7 @@ Respect user's package manager at all time. Don't use NPM if the user uses somet
             <button type="submit" data-type="register">Register</button>
         </form>
 
-        <button on:click={logout}>Logout</button>
+        <button on:click="{logout}">Logout</button>
         ```
 
 5. Verify environment (ask user to confirm)

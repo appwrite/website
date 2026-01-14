@@ -6,13 +6,13 @@ Do exactly these steps in order. Confirm each step succeeds before continuing. I
     - Guide the user to the Appwrite Console (https://cloud.appwrite.io/console).
     - If this is their first time, have them create an account and project.
     - Under "Integrate with your server", add an API Key with the following scopes:
-        | Category | Required scopes | Purpose |
-        |----------|-----------------|---------|
-        | Database | `databases.write` | Allows API key to create, update, and delete databases. |
-        |          | `tables.write` | Allows API key to create, update, and delete tables. |
-        |          | `columns.write` | Allows API key to create, update, and delete columns. |
-        |          | `rows.read` | Allows API key to read rows. |
-        |          | `rows.write` | Allows API key to create, update, and delete rows. |
+      | Category | Required scopes | Purpose |
+      |----------|-----------------|---------|
+      | Database | `databases.write` | Allows API key to create, update, and delete databases. |
+      | | `tables.write` | Allows API key to create, update, and delete tables. |
+      | | `columns.write` | Allows API key to create, update, and delete columns. |
+      | | `rows.read` | Allows API key to read rows. |
+      | | `rows.write` | Allows API key to create, update, and delete rows. |
 
 2. Create PHP project
     - Create a PHP CLI application:
@@ -31,6 +31,7 @@ Do exactly these steps in order. Confirm each step succeeds before continuing. I
         - Project ID (from Console -> Settings)
         - API Key (from View API Keys button in Settings)
     - Create file: index.php with key snippet:
+
         ```php
         <?php
         require_once 'vendor/autoload.php';
@@ -49,6 +50,7 @@ Do exactly these steps in order. Confirm each step succeeds before continuing. I
 
 5. Initialize database
     - Add a function to configure a todo table:
+
         ```php
         $tablesDB = new TablesDB($client);
 
@@ -93,6 +95,7 @@ Do exactly these steps in order. Confirm each step succeeds before continuing. I
 
 6. Add rows
     - Add a function to insert mock todo data:
+
         ```php
         function seedDatabase($tablesDB, $todoDatabase, $todoTable) {
             $testTodo1 = [
@@ -137,6 +140,7 @@ Do exactly these steps in order. Confirm each step succeeds before continuing. I
 
 7. Retrieve rows
     - Add functions to retrieve and display todos with queries:
+
         ```php
         use Appwrite\Query;
 

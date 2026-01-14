@@ -27,52 +27,50 @@ All files must be created in the current working directory (.). Never create a s
         - Project ID (from Console -> Settings)
     - Create files in the current working directory (.) - do NOT use cd to switch directories.
     - If using npm, create an appwrite.js (or appwrite.ts) file with:
+
         ```js
         import { Client, Account } from 'appwrite';
 
         export const client = new Client();
 
-        client
-            .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
-            .setProject('<PROJECT_ID>'); // Replace with your project ID
+        client.setEndpoint('https://<REGION>.cloud.appwrite.io/v1').setProject('<PROJECT_ID>'); // Replace with your project ID
 
         export const account = new Account(client);
         export { ID } from 'appwrite';
         ```
+
     - If using CDN, use the global Appwrite object:
+
         ```js
-        const client = new Appwrite.Client()
+        const client = new Appwrite.Client();
 
-        client
-            .setEndpoint('https://cloud.appwrite.io/v1')
-            .setProject('<PROJECT_ID>') // Replace with your project ID
+        client.setEndpoint('https://cloud.appwrite.io/v1').setProject('<PROJECT_ID>'); // Replace with your project ID
 
-        const account = new Appwrite.Account(client)
-        const tablesDB = new Appwrite.TablesDB(client)
+        const account = new Appwrite.Account(client);
+        const tablesDB = new Appwrite.TablesDB(client);
         ```
 
 4. TypeScript setup (optional, if user prefers TypeScript)
     - Import TypeScript models from the Appwrite SDK:
+
         ```ts
         // appwrite.ts
 
-        import { Client, TablesDB, Account } from "appwrite";
+        import { Client, TablesDB, Account } from 'appwrite';
         // Import type models for Appwrite
         import { type Models } from 'appwrite';
 
         const client: Client = new Client();
 
-        client
-            .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
-            .setProject('<PROJECT_ID>'); // Replace with your project ID
+        client.setEndpoint('https://<REGION>.cloud.appwrite.io/v1').setProject('<PROJECT_ID>'); // Replace with your project ID
 
         export const account: Account = new Account(client);
         export const tablesDB: TablesDB = new TablesDB(client);
 
         // You then use the imported type definitions like this
         const authUser: Models.Session = await account.createEmailPasswordSession({
-          email,
-          password
+            email,
+            password
         });
         ```
 
@@ -90,13 +88,14 @@ All files must be created in the current working directory (.). Never create a s
         const response = await tablesDB.listRows({
             databaseId: ideasDatabaseId,
             tableId: ideasTableId,
-            queries: [Query.orderDesc("$createdAt"), Query.limit(queryLimit)]
+            queries: [Query.orderDesc('$createdAt'), Query.limit(queryLimit)]
         });
         const ideas = response.rows as Idea[];
         ```
 
 6. Type-safe database operations (optional)
     - For better type safety, define interfaces and use generics:
+
         ```typescript
         interface User {
             name: string;
@@ -104,7 +103,7 @@ All files must be created in the current working directory (.). Never create a s
             isVerified: boolean;
         }
 
-        import { Client, TablesDB } from "appwrite";
+        import { Client, TablesDB } from 'appwrite';
 
         const client = new Client()
             .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
@@ -119,13 +118,14 @@ All files must be created in the current working directory (.). Never create a s
                 tableId: '[TABLE_ID]'
             });
 
-            users.rows.forEach(user => {
+            users.rows.forEach((user) => {
                 console.log(`User: ${user.name} (${user.email})`);
             });
         } catch (error) {
             console.log(error);
         }
         ```
+
     - Tip: Use the Appwrite CLI to generate TypeScript interfaces automatically: `appwrite types ./types`
 
 7. Next steps
