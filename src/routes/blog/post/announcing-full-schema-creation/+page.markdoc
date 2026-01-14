@@ -122,7 +122,7 @@ What’s different is bringing this experience directly into a BaaS environment�
 
 # Get started
 
-Full Schema Create is available on **Appwrite Cloud** today and supported on **self-hosted deployments.**
+Full Schema Creation is available on **Appwrite Cloud** today and will be supported on **self-hosted deployments** soon.
 
 You can now provision complete, production-ready tables in one call, whether you’re bootstrapping a new feature, running CI pipelines, or spinning up preview environments.
 

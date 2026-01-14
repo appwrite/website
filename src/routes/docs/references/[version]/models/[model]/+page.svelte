@@ -9,15 +9,6 @@
     let { data } = $props();
 </script>
 
-<svelte:head>
-    {#if page.params.version !== 'cloud'}
-        <link
-            rel="canonical"
-            href={`https://appwrite.io/docs/references/cloud/models/${page.params.model}`}
-        />
-    {/if}
-</svelte:head>
-
 <Article title={data.model.title} description="">
     <article>
         <Heading id="properties" level={2}>Properties</Heading>
