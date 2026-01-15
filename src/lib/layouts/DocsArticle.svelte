@@ -27,6 +27,7 @@
     import { Button, Icon } from '$lib/components/ui';
     import Info from '$markdoc/tags/Info.svelte';
     import CopyAsMarkdown from '$lib/components/blog/copy-as-markdown.svelte';
+    import { hasRoutePrompt } from '$lib/utils/routePrompts';
 
     export let title: string;
     export let toc: Array<TocItem>;
@@ -37,6 +38,8 @@
     const headerSectionInfoAlert = hasContext('headerSectionInfoAlert')
         ? getContext<Readable<HeaderSectionInfoAlert | null>>('headerSectionInfoAlert')
         : readable(null);
+
+    const showCopyPage = !hasRoutePrompt();
 </script>
 
 <main class="contents" id="main">
@@ -49,9 +52,11 @@
                             <span class="web-icon-chevron-left" aria-hidden="true"></span>
                         </a>
                     {/if}
-                    <div class="copy-button-wrapper-mobile ml-auto">
-                        <CopyAsMarkdown class="ml-0" />
-                    </div>
+                    {#if showCopyPage}
+                        <div class="copy-button-wrapper-mobile ml-auto">
+                            <CopyAsMarkdown class="ml-0" />
+                        </div>
+                    {/if}
                 </div>
                 <ul class="web-metadata text-caption">
                     <slot name="metadata" />
@@ -75,9 +80,11 @@
                     <h1 class="text-title font-aeonik-pro text-primary">{title}</h1>
                 </div>
             </div>
-            <div class="web-article-header-end copy-button-wrapper hidden lg:block">
-                <CopyAsMarkdown class="ml-0" />
-            </div>
+            {#if showCopyPage}
+                <div class="web-article-header-end copy-button-wrapper hidden lg:block">
+                    <CopyAsMarkdown class="ml-0" />
+                </div>
+            {/if}
         </header>
         <div class="web-article-content prose" class:web-reduced-article-size={$reducedArticleSize}>
             <slot />
