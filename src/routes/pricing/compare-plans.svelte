@@ -74,8 +74,8 @@
                 },
                 {
                     title: 'Execution logs',
-                    free: '100 / month',
-                    pro: '1000 / month',
+                    free: '100',
+                    pro: '1000',
                     scale: 'Unlimited',
                     enterprise: 'Custom',
                     info: 'Number of execution logs retained per function/site'
