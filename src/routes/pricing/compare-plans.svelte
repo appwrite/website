@@ -71,6 +71,14 @@
                     pro: '3.5M / month',
                     scale: '3.5M / month',
                     enterprise: 'Custom'
+                },
+                {
+                    title: 'Execution logs',
+                    free: '100 / month',
+                    pro: '1000 / month',
+                    scale: 'Unlimited',
+                    enterprise: 'Custom',
+                    info: 'Number of execution logs retained per function/site'
                 }
             ]
         },

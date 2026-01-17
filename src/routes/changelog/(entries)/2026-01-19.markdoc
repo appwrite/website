@@ -1,0 +1,22 @@
+---
+layout: changelog
+title: "Execution logs retention limits per plan"
+date: 2026-01-19
+---
+
+We've introduced execution logs retention limits to maintain platform sustainability and performance.
+
+Starting today, execution logs for functions and sites will be retained based on your plan:
+
+- **Free plan**: 100 execution logs per function/site
+- **Pro plan**: 1,000 execution logs per function/site
+- **Scale plan**: Unlimited execution logs
+- **Enterprise plan**: Custom
+
+These limits apply on a rolling basis - as new logs are created, older logs beyond the limit will be automatically removed. The Free plan remains tailored for projects in the development stage or hobby projects, which typically need the most recent logs for debugging and monitoring.
+
+If you have any questions, please contact us at pricing@appwrite.io.
+
+{% arrow_link href="/docs/products/functions" %}
+Learn more about Appwrite Functions
+{% /arrow_link %}
