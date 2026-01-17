@@ -161,10 +161,12 @@ export const serviceMap: Record<ServiceValue, string> = {
 };
 
 export const preferredVersion = writable<Version | null>(
-    globalThis?.localStorage?.getItem('preferredVersion') as Version
+    browser ? (globalThis?.localStorage?.getItem('preferredVersion') as Version) : null
 );
 
 function getInitialPlatform(): Platform {
+    if (!browser) return Platform.ClientWeb;
+
     const stored = globalThis?.localStorage?.getItem('preferredPlatform') ?? Platform.ClientWeb;
     // return if this platform is valid
     if (VALID_PLATFORMS.has(stored as Platform)) {
