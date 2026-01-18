@@ -3,6 +3,7 @@
     import { Article, FooterNav, MainFooter } from '$lib/components';
     import { Main } from '$lib/layouts';
     import { DEFAULT_HOST } from '$lib/utils/metadata';
+    import { getPostAuthors } from '$lib/utils/blog-authors';
     import type { AuthorData, PostsData } from '$routes/blog/content';
     import { TITLE_SUFFIX } from '$routes/titles';
     import { getContext } from 'svelte';
@@ -58,16 +59,19 @@
                 <div class="mt-12">
                     <ul class="web-grid-articles">
                         {#each posts as post}
-                            {@const author = authors.find((a) => a.slug.includes(post.author))}
-                            {#if author}
+                            {@const { postAuthors, authorAvatars, primaryAuthor } = getPostAuthors(
+                                post.author,
+                                authors
+                            )}
+                            {#if primaryAuthor}
                                 <Article
                                     title={post.title}
                                     href={post.href}
                                     cover={post.cover}
                                     date={post.date}
                                     timeToRead={post.timeToRead}
-                                    avatar={author.avatar}
-                                    author={author.name}
+                                    avatars={authorAvatars}
+                                    authors={postAuthors}
                                 />
                             {/if}
                         {/each}

@@ -92,13 +92,6 @@
                     enterprise: 'Custom'
                 },
                 {
-                    title: 'Projects pausing',
-                    free: 'Never',
-                    pro: 'Never',
-                    scale: 'Never',
-                    enterprise: 'Never'
-                },
-                {
                     title: 'Organization members',
                     free: '1',
                     pro: 'Unlimited',
@@ -317,7 +310,7 @@
             rows: [
                 {
                     title: 'Functions',
-                    free: '5 per project',
+                    free: '2 per project',
                     pro: 'Unlimited',
                     scale: 'Unlimited',
                     enterprise: 'Unlimited'
@@ -874,6 +867,7 @@
 <style>
     .web-u-grid-auto-column-1fr {
         grid-template-columns: var(--columns-template);
+        overflow: hidden;
     }
 
     .web-mini-card {

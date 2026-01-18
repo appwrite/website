@@ -73,15 +73,6 @@
             href: 'https://builtwith.appwrite.io/projects/6467cedd4502d0e29205/'
         },
         {
-            title: 'Glitch',
-            description: 'Appwrite-powered collaboration Tool for streamlined team communication.',
-            image: {
-                src: '/images/community/projects/glitch.png',
-                alt: 'A screenshot of the Glitch dashboard. There\'s a sidebar, and a headline that reads: "Welcome to Glitch, powered by Appwrite"'
-            },
-            href: 'https://builtwith.appwrite.io/projects/648bfe0c1d8d70602b0b/'
-        },
-        {
             title: 'uCanEarn',
             description:
                 'Appwrite-powered platform where you can sell your digital products online.',

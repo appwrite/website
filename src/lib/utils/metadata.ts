@@ -70,8 +70,10 @@ export function softwareAppSchema() {
  */
 export function createPostSchema(
     post: { title: string; cover: string; date: string; lastUpdated?: string },
-    author?: AuthorData
+    authors?: AuthorData | AuthorData[]
 ) {
+    const authorsArray = Array.isArray(authors) ? authors : authors ? [authors] : [];
+
     return JSON.stringify({
         '@context': 'https://schema.org',
         '@type': 'BlogPosting',
@@ -79,14 +81,12 @@ export function createPostSchema(
         image: [post.cover],
         datePublished: post.date,
         ...(post.lastUpdated && { dateModified: post.lastUpdated }),
-        ...(author && {
-            author: [
-                {
-                    '@type': 'Person',
-                    url: author.href,
-                    name: author.name
-                }
-            ]
+        ...(authorsArray.length > 0 && {
+            author: authorsArray.map((author) => ({
+                '@type': 'Person',
+                url: author.href,
+                name: author.name
+            }))
         })
     });
 }
