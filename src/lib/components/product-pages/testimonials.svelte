@@ -34,15 +34,22 @@
             image: '/images/testimonials/majik.png',
             title: 'Developer',
             company: 'Majik Kids'
+        },
+        {
+            name: 'Zach Handley',
+            copy: `We have somewhere between 200,000 to 600,000 function executions per day. It's especially nice that you guys have to deal with the scaling now and not me.`,
+            image: '/images/testimonials/zach-handley.jpg',
+            title: 'CTO',
+            company: 'Socialaize'
         }
     ];
 </script>
 
 <div class="relative w-full max-w-[100vw] overflow-hidden">
-    <div class="group light flex w-fit gap-4">
+    <div class="group light flex w-fit gap-8">
         {#each Array.from({ length: 4 }) as _, i}
             <div
-                class="animate-scroll-deprecategroup-hover:[animation-play-state:paused;] flex items-center gap-8"
+                class="animate-scroll-deprecate group-hover:[animation-play-state:paused;] flex items-center gap-8"
                 aria-hidden={i !== 0}
             >
                 {#each testimonials as testimonial}

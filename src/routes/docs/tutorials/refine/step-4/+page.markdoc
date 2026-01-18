@@ -5,7 +5,7 @@ description: Add authentication to your Refine application.
 step: 4
 ---
 
-# Authentication provider {% #authentication-provider %}
+## Authentication provider {% #authentication-provider %}
 
 
 Upon [creating a new project](https://refine.dev/docs/getting-started/quickstart/) with Appwrite preset, the CLI automatically creates [Auth Provider](https://refine.dev/docs/tutorial/understanding-authprovider/index/#what-is-auth-provider) file.
@@ -29,7 +29,7 @@ import { authProvider } from './authProvider';
 Now, we can configure the routing and auth components to manage logins and sign ups.
 
 
-#  Routing  {% #routing %} 
+##  Routing  {% #routing %} 
 
 Refine offers router bindings and utilities for [React Router v6](https://reactrouter.com/en/main) and improves the user interface with the [routerProvider](https://refine.dev/docs/api-reference/core/components/refine-config/#routerprovider) prop. 
 This allows the framework to identify resources from routes and efficiently handle query parameters and navigation tasks.
@@ -51,7 +51,7 @@ import { authProvider } from './authProvider';
 </BrowserRouter>
 ```
 
-# Login page {% #login-page %}
+## Login page {% #login-page %}
 
 
 
@@ -114,7 +114,7 @@ const App: React.FC = () => (
               element={
                 <Authenticated fallback={<Outlet />}>
                   <NavigateToResource 
-                    resource="<APPWRITE_COLLECTION_ID>" 
+                    resource="<APPWRITE_TABLE_ID>" 
                   />
                 </Authenticated>
               }

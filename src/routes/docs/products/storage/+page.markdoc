@@ -5,7 +5,7 @@ description: Unlock the power of cloud storage with Appwrite Storage. Learn how 
 ---
 
 Appwrite Storage allows you to manage files in your project. 
-You can use it to store images, videos, documents, and other files for your projects. 
+You can use it to store images, videos, rows, and other files for your projects. 
 It provides APIs to upload, download, delete, and list files, with many added utilities.
 
 {% info title="Looking for a database?" %}

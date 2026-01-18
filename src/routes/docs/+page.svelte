@@ -9,6 +9,8 @@
     import CodeCard, { type CodeCardProps } from './CodeCard.svelte';
     import Sidebar from './Sidebar.svelte';
     import { trackEvent } from '$lib/actions/analytics';
+    import Platforms from '$routes/(marketing)/(components)/platforms.svelte';
+    import HeroBanner from '$routes/(marketing)/(components)/hero-banner.svelte';
 
     const title = 'Docs' + TITLE_SUFFIX;
     const description =
@@ -21,6 +23,12 @@
             cover: '/images/tutorials/react.png',
             title: 'React tutorial',
             description: 'Learn Appwrite Auth, Databases, and more with React.'
+        },
+        {
+            href: '/docs/tutorials/nextjs',
+            cover: '/images/tutorials/nextjs.png',
+            title: 'Next.js tutorial',
+            description: 'Learn Appwrite Auth, Databases, and more with Next.js.'
         },
         {
             href: '/docs/tutorials/sveltekit',
@@ -79,49 +87,21 @@
         </div>
 
         <section class="web-hero is-align-start e-hero-docs relative">
+            <HeroBanner title="MCP Server" href="/docs/tooling/mcp" />
             <h1 class="text-display font-aeonik-pro text-primary max-w-[600px]">
-                Learn how to build like a team of hundreds<span class="web-u-color-text-accent"
-                    >_
-                </span>
+                Docs<span class="web-u-color-text-accent">_ </span>
             </h1>
             <p class="text-description max-w-[600px]">
                 Appwrite helps you build secure and scalable apps, faster. Leverage Appwrite's
                 powerful APIs to stop fighting technologies and start delivering value.
             </p>
+
+            <Button variant="secondary" href="/docs/quick-starts" class="mt-8"
+                >Quickstart guides</Button
+            >
         </section>
-        <section class="web-hero is-align-start tech-hero">
-            <h2 class="text-title font-aeonik-pro text-primary max-w-[600px]">
-                Get started with your technologies
-            </h2>
-            <p class="text-description max-w-[600px]">
-                Start building with your preferred web, mobile, and native frameworks by following a
-                quick start guide.
-            </p>
-            <Technologies />
-            <Button href="/docs/sdks" class="self-start" variant="secondary">
-                <span class="text-sub-body font-medium">Explore all technologies</span>
-            </Button>
-            <div class="web-is-not-mobile spline-wrapper absolute">
-                <img
-                    class="web-u-only-dark"
-                    src="/images/animations/tech-dark-transparent.png"
-                    width="660"
-                    height="660"
-                    alt=""
-                    style="position: absolute;"
-                />
-                <img
-                    class="web-u-only-light"
-                    src="/images/animations/tech-light-transparent.png"
-                    width="660"
-                    height="660"
-                    alt=""
-                    style="position: absolute;"
-                />
-            </div>
-            <div class="bg-overlay"></div>
-        </section>
-        <section>
+        <Platforms padded={false} class="mt-12! p-0! max-md:p-0!" />
+        <section class="mt-12!">
             <h2 class="text-title font-aeonik-pro text-primary max-w-[600px]">Show me some code</h2>
             <p class="text-description mt-4 max-w-[600px]">
                 If you learn best from code examples, follow one of our tutorials.
@@ -134,7 +114,7 @@
                 {/each}
             </Carousel>
         </section>
-        <section class="web-hero is-align-start is-no-max-width">
+        <section class="web-hero is-align-start is-no-max-width mt-12!">
             <h2 class="text-title font-aeonik-pro text-primary max-w-[600px]">
                 Explore capabilities
             </h2>
@@ -300,6 +280,32 @@
                     </li>
                     <li>
                         <a
+                            href="/docs/products/avatars"
+                            class="web-card is-normal"
+                            onclick={() => trackEvent(`docs-products_avatars-click`)}
+                        >
+                            <img
+                                src="/images/icons/illustrated/dark/avatars.png"
+                                alt=""
+                                class="web-u-only-dark"
+                                width="40"
+                                height="40"
+                            />
+                            <img
+                                src="/images/icons/illustrated/light/avatars.png"
+                                alt=""
+                                class="web-u-only-light"
+                                width="40"
+                                height="40"
+                            />
+                            <h4 class="text-sub-body text-primary mt-2 font-medium">Avatars</h4>
+                            <p class="text-sub-body mt-1">
+                                Generate icons, screenshots, and QR codes for your apps.
+                            </p>
+                        </a>
+                    </li>
+                    <li>
+                        <a
                             href="/docs/apis/realtime"
                             class="web-card is-normal"
                             onclick={() => trackEvent(`docs-products_realtime-click`)}
@@ -322,36 +328,123 @@
                             <p class="text-sub-body mt-1">Respond to server events in realtime.</p>
                         </a>
                     </li>
+                </ul>
+            </div>
+        </section>
+        <section class="web-hero is-align-start is-no-max-width mt-12!">
+            <h2 class="text-title font-aeonik-pro text-primary max-w-[600px]">
+                Build faster with AI
+            </h2>
+            <p class="text-description max-w-[600px]">
+                Appwrite’s Model Context Protocol (MCP) server lets LLMs interact directly with your
+                Appwrite API.
+            </p>
+            <div class="mt-6">
+                <ul class="grid grid-cols-1 gap-8 md:grid-cols-2">
                     <li>
                         <a
-                            href="/docs/products/network"
-                            class="web-card is-normal"
-                            onclick={() => trackEvent(`docs-products_network-click`)}
+                            href="/docs/tooling/mcp/claude-desktop"
+                            class="web-card is-normal flex flex-row! items-center gap-2!"
+                            onclick={() => trackEvent(`docs-mcp-click`)}
                         >
                             <img
-                                src="/images/icons/illustrated/dark/network.png"
-                                alt=""
-                                class="web-u-only-dark"
-                                width="40"
-                                height="40"
+                                src="/images/docs/mcp/logos/dark/claude.svg"
+                                alt="Claude"
+                                class="w-6"
                             />
+                            <h4 class="text-sub-body text-primary font-medium">Claude Desktop</h4>
+                        </a>
+                    </li>
+                    <li>
+                        <a
+                            href="/docs/tooling/mcp/claude-code"
+                            class="web-card is-normal flex flex-row! items-center gap-2!"
+                            onclick={() => trackEvent(`docs-mcp-click`)}
+                        >
                             <img
-                                src="/images/icons/illustrated/light/network.png"
-                                alt=""
-                                class="web-u-only-light"
-                                width="40"
-                                height="40"
+                                src="/images/docs/mcp/logos/dark/claude.svg"
+                                alt="Claude"
+                                class="w-6"
                             />
-                            <h4 class="text-sub-body text-primary mt-2 font-medium">Network</h4>
-                            <p class="text-sub-body mt-1">
-                                Global infrastructure for serverless compute.
-                            </p>
+                            <h4 class="text-sub-body text-primary font-medium">Claude Code</h4>
+                        </a>
+                    </li>
+                    <li>
+                        <a
+                            href="/docs/tooling/mcp/cursor"
+                            class="web-card is-normal flex flex-row! items-center gap-2!"
+                            onclick={() => trackEvent(`docs-mcp-click`)}
+                        >
+                            <img
+                                src="/images/docs/mcp/logos/dark/cursor-ai.svg"
+                                alt="Cursor"
+                                class="w-6"
+                            />
+                            <h4 class="text-sub-body text-primary font-medium">Cursor</h4>
+                        </a>
+                    </li>
+                    <li>
+                        <a
+                            href="/docs/tooling/mcp/windsurf"
+                            class="web-card is-normal flex flex-row! items-center gap-2!"
+                            onclick={() => trackEvent(`docs-mcp-click`)}
+                        >
+                            <img
+                                src="/images/docs/mcp/logos/dark/windsurf.svg"
+                                alt="Windsurf"
+                                class="w-6"
+                            />
+                            <h4 class="text-sub-body text-primary font-medium">Windsurf Editor</h4>
+                        </a>
+                    </li>
+                    <li>
+                        <a
+                            href="/docs/tooling/mcp/vscode"
+                            class="web-card is-normal flex flex-row! items-center gap-2!"
+                            onclick={() => trackEvent(`docs-mcp-click`)}
+                        >
+                            <img
+                                src="/images/docs/mcp/logos/dark/vscode.svg"
+                                alt="VS Code"
+                                class="w-6"
+                            />
+                            <h4 class="text-sub-body text-primary font-medium">VS Code</h4>
+                        </a>
+                    </li>
+                    <li>
+                        <a
+                            href="/docs/tooling/mcp/opencode"
+                            class="web-card is-normal flex flex-row! items-center gap-2!"
+                            onclick={() => trackEvent(`docs-mcp-click`)}
+                        >
+                            <img
+                                src="/images/docs/mcp/logos/dark/opencode.svg"
+                                alt="OpenCode"
+                                class="w-6"
+                            />
+                            <h4 class="text-sub-body text-primary font-medium">OpenCode</h4>
+                        </a>
+                    </li>
+                    <li>
+                        <a
+                            href="/docs/tooling/mcp/antigravity"
+                            class="web-card is-normal flex flex-row! items-center gap-2!"
+                            onclick={() => trackEvent(`docs-mcp-click`)}
+                        >
+                            <img
+                                src="/images/docs/mcp/logos/dark/google-antigravity.svg"
+                                alt="Google Antigravity"
+                                class="w-6"
+                            />
+                            <h4 class="text-sub-body text-primary font-medium">
+                                Google Antigravity
+                            </h4>
                         </a>
                     </li>
                 </ul>
             </div>
         </section>
-        <section class="web-hero is-align-start is-no-max-width">
+        <section class="web-hero is-align-start is-no-max-width mt-12!">
             <h2 class="text-title font-aeonik-pro text-primary max-w-[600px]">
                 Explore ways to integrate
             </h2>
@@ -367,7 +460,7 @@
                             class="web-card is-normal"
                             onclick={() => trackEvent(`docs-explore_sdks-click`)}
                         >
-                            <h4 class="text-sub-body text-primary mt-2 font-medium">SDKs</h4>
+                            <h4 class="text-sub-body text-primary font-medium">SDKs</h4>
                             <p class="text-sub-body mt-1">
                                 Light-weight SDKs for your favorite platforms.
                             </p>
@@ -379,9 +472,9 @@
                             class="web-card is-normal"
                             onclick={() => trackEvent(`docs-explore_rest_apis-click`)}
                         >
-                            <h4 class="text-sub-body text-primary mt-2 font-medium">REST API</h4>
+                            <h4 class="text-sub-body text-primary font-medium">REST API</h4>
                             <p class="text-sub-body mt-1">
-                                Integrate with HTTP requests without the needing an SDK.
+                                Integrate with HTTP requests without needing an SDK.
                             </p>
                         </a>
                     </li>
@@ -391,7 +484,7 @@
                             class="web-card is-normal"
                             onclick={() => trackEvent(`docs-explore_graphql_apis-click`)}
                         >
-                            <h4 class="text-sub-body text-primary mt-2 font-medium">GraphQL</h4>
+                            <h4 class="text-sub-body text-primary font-medium">GraphQL</h4>
                             <p class="text-sub-body mt-1">
                                 Leverage GraphQL through our SDKs or integrate directly with REST
                                 endpoints.
@@ -404,7 +497,7 @@
                             class="web-card is-normal"
                             onclick={() => trackEvent(`docs-explore_realtime_apis-click`)}
                         >
-                            <h4 class="text-sub-body text-primary mt-2 font-medium">Realtime</h4>
+                            <h4 class="text-sub-body text-primary font-medium">Realtime</h4>
                             <p class="text-sub-body mt-1">
                                 Respond to auth, databases, storage, and function events in
                                 realtime.
@@ -414,7 +507,7 @@
                 </ul>
             </div>
         </section>
-        <section class="web-hero is-align-start is-no-max-width">
+        <section class="web-hero is-align-start is-no-max-width mt-12!">
             <h2 class="text-title font-aeonik-pro text-primary max-w-[600px]">
                 Migrate to Appwrite
             </h2>
@@ -429,7 +522,7 @@
                             class="web-card is-normal"
                             onclick={() => trackEvent(`docs-migrations_self_hosted-click`)}
                         >
-                            <h4 class="text-sub-body text-primary mt-2 font-medium">Self-hosted</h4>
+                            <h4 class="text-sub-body text-primary font-medium">Self-hosted</h4>
                             <p class="text-sub-body mt-1">
                                 Move data from self-hosted to Appwrite Cloud.
                             </p>
@@ -441,7 +534,7 @@
                             class="web-card is-normal"
                             onclick={() => trackEvent(`docs-migrations_firebase-click`)}
                         >
-                            <h4 class="text-sub-body text-primary mt-2 font-medium">Firebase</h4>
+                            <h4 class="text-sub-body text-primary font-medium">Firebase</h4>
                             <p class="text-sub-body mt-1">
                                 Migrate users and data from Firebase to Appwrite.
                             </p>
@@ -453,7 +546,7 @@
                             class="web-card is-normal"
                             onclick={() => trackEvent(`docs-migrations_supabase-click`)}
                         >
-                            <h4 class="text-sub-body text-primary mt-2 font-medium">Supabase</h4>
+                            <h4 class="text-sub-body text-primary font-medium">Supabase</h4>
                             <p class="text-sub-body mt-1">
                                 Migrate users and data from Supabase to Appwrite.
                             </p>
@@ -465,7 +558,7 @@
                             class="web-card is-normal"
                             onclick={() => trackEvent(`docs-migrations_nhost-click`)}
                         >
-                            <h4 class="text-sub-body text-primary mt-2 font-medium">Nhost</h4>
+                            <h4 class="text-sub-body text-primary font-medium">Nhost</h4>
                             <p class="text-sub-body mt-1">
                                 Migrate users and data from NHost to Appwrite.
                             </p>
@@ -493,45 +586,5 @@
         @media (min-width: 1280px) {
             padding-inline-start: 3rem; // 48px
         }
-    }
-
-    .tech-hero {
-        @include gradients.border-block-gradient;
-
-        --m-border-size: 1px;
-        --m-border-gradient-before: linear-gradient(
-            to right,
-            hsl(var(--web-color-smooth)) 0%,
-            hsl(var(--web-color-smooth)) 90%,
-            transparent
-        );
-
-        max-inline-size: unset;
-        margin-block-start: 2rem;
-        margin-inline-start: -3rem;
-        padding-block: 5rem;
-        padding-inline-start: 3rem;
-
-        position: relative;
-        z-index: 10;
-
-        .spline-wrapper {
-            --p-size: 700px;
-            inline-size: var(--p-size);
-            block-size: var(--p-size);
-            inset-block-start: -3rem;
-            z-index: -1;
-            left: calc(50% - 384px + 400px);
-        }
-    }
-
-    :global(.dark) .tech-hero {
-        background: linear-gradient(to right, #19191c80, #19191c00);
-        backdrop-filter: blur(1rem);
-        -webkit-backdrop-filter: blur(1rem);
-    }
-
-    :global(.dark) .bg-overlay {
-        background: linear-gradient(to right, #19191c00 0%, #19191c 400px, #19191c);
     }
 </style>

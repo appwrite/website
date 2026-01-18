@@ -31,10 +31,10 @@ Then, under **Integrate with your server**, add an **API Key** with the followin
 | Category  {% width=120 %} | Required scopes       | Purpose |
 |-----------|-----------------------|---------|
 | Database  | `databases.write`     | Allows API key to create, update, and delete [databases](/docs/products/databases/databases). |
-|           | `collections.write`   | Allows API key to create, update, and delete [collections](/docs/products/databases/collections). |
-|           | `attributes.write`    | Allows API key to create, update, and delete [attributes](/docs/products/databases/collections#attributes). |
-|           | `documents.read`      | Allows API key to read [documents](/docs/products/databases/documents). |
-|           | `documents.write`     | Allows API key to create, update, and delete [documents](/docs/products/databases/documents). |
+|           | `tables.write`   | Allows API key to create, update, and delete [tables](/docs/products/databases/tables). |
+|           | `columns.write`    | Allows API key to create, update, and delete [columns](/docs/products/databases/tables#columns). |
+|           | `rows.read`      | Allows API key to read [rows](/docs/products/databases/rows). |
+|           | `rows.write`     | Allows API key to create, update, and delete [rows](/docs/products/databases/rows). |
 
 Other scopes are optional.
 
@@ -54,7 +54,7 @@ npm init
 Install the Node.js Appwrite SDK.
 
 ```sh
-npm install node-appwrite@17.0.0
+npm install node-appwrite
 ```
 {% /section %}
 {% section #step-4 step=4 title="Import Appwrite" %}
@@ -84,53 +84,55 @@ client
 {% /section %}
 {% section #step-5 step=5 title="Initialize database" %}
 
-Once the Appwrite Client is initialized, create a function to configure a todo collection.
+Once the Appwrite Client is initialized, create a function to configure a todo table.
 
 ```js
-const databases = new sdk.Databases(client);
+const tablesDB = new sdk.TablesDB(client);
 
 var todoDatabase;
-var todoCollection;
+var todoTable;
 
 async function prepareDatabase() {
-    todoDatabase = await databases.create(
-        sdk.ID.unique(),
-        'TodosDB'
-    );
+    todoDatabase = await tablesDB.create({
+        databaseId: sdk.ID.unique(),
+        name: 'TodosDB'
+    });
 
-    todoCollection = await databases.createCollection(
-        todoDatabase.$id,
-        sdk.ID.unique(),
-        'Todos'
-    );
+    todoTable = await tablesDB.createTable({
+        databaseId: todoDatabase.$id,
+        tableId: sdk.ID.unique(),
+        name: 'Todos'
+    });
 
-    await databases.createStringAttribute(
-        todoDatabase.$id,
-        todoCollection.$id,
-        'title',
-        255,
-        true
-    );
+    await tablesDB.createStringColumn({
+        databaseId: todoDatabase.$id,
+        tableId: todoTable.$id,
+        key: 'title',
+        size: 255,
+        required: true
+    });
 
-    await databases.createStringAttribute(
-        todoDatabase.$id,
-        todoCollection.$id,
-        'description',
-        255, false,
-        'This is a test description'
-    );
-    await databases.createBooleanAttribute(
-        todoDatabase.$id,
-        todoCollection.$id,
-        'isComplete',
-        true
-    );
+    await tablesDB.createStringColumn({
+        databaseId: todoDatabase.$id,
+        tableId: todoTable.$id,
+        key: 'description',
+        size: 255,
+        required: false,
+        default: 'This is a test description'
+    });
+
+    await tablesDB.createBooleanColumn({
+        databaseId: todoDatabase.$id,
+        tableId: todoTable.$id,
+        key: 'isComplete',
+        required: true
+    });
 }
 ```
 
 {% /section %}
-{% section #step-6 step=6 title="Add documents" %}
-Create a function to add some mock data into your new collection.
+{% section #step-6 step=6 title="Add rows" %}
+Create a function to add some mock data into your new table.
 
 ```js
 async function seedDatabase() {
@@ -151,41 +153,80 @@ async function seedDatabase() {
         isComplete: false
     };
 
-    await databases.createDocument(
-        todoDatabase.$id,
-        todoCollection.$id,
-        sdk.ID.unique(),
-        testTodo1
-    );
-    await databases.createDocument(
-        todoDatabase.$id,
-        todoCollection.$id,
-        sdk.ID.unique(),
-        testTodo2
-    );
-    await databases.createDocument(
-        todoDatabase.$id,
-        todoCollection.$id,
-        sdk.ID.unique(),
-        testTodo3
-    );
+    await tablesDB.createRow({
+        databaseId: todoDatabase.$id,
+        tableId: todoTable.$id,
+        rowId: sdk.ID.unique(),
+        data: testTodo1
+    });
+    await tablesDB.createRow({
+        databaseId: todoDatabase.$id,
+        tableId: todoTable.$id,
+        rowId: sdk.ID.unique(),
+        data: testTodo2
+    });
+    await tablesDB.createRow({
+        databaseId: todoDatabase.$id,
+        tableId: todoTable.$id,
+        rowId: sdk.ID.unique(),
+        data: testTodo3
+    });
 }
 ```
 
 {% /section %}
-{% section #step-7 step=7 title="Retrieve documents" %}
+{% section #step-7 step=7 title="Retrieve rows" %}
 
 Create a function to retrieve the mock todo data and a function to execute the requests in order.
 Run the functions to by calling `runAllTasks();`.
 
 ```js
-async function getTodos() {
-    var todos = await databases.listDocuments(
-        todoDatabase.$id,
-        todoCollection.$id
-    );
+const { Query } = require('node-appwrite');
 
-    todos.documents.forEach(todo => {
+async function getTodos() {
+    // Retrieve rows (default limit is 25)
+    var todos = await tablesDB.listRows({
+        databaseId: todoDatabase.$id,
+        tableId: todoTable.$id
+    });
+
+    console.log("Todos:");
+    todos.rows.forEach(todo => {
+        console.log(`Title: ${todo.title}\nDescription: ${todo.description}\nIs Todo Complete: ${todo.isComplete}\n\n`);
+    });
+}
+
+async function getCompletedTodos() {
+    // Use queries to filter completed todos with pagination
+    var todos = await tablesDB.listRows({
+        databaseId: todoDatabase.$id,
+        tableId: todoTable.$id,
+        queries: [
+            Query.equal("isComplete", true),
+            Query.orderDesc("$createdAt"),
+            Query.limit(5)
+        ]
+    });
+
+    console.log("Completed todos (limited to 5):");
+    todos.rows.forEach(todo => {
+        console.log(`Title: ${todo.title}\nDescription: ${todo.description}\nIs Todo Complete: ${todo.isComplete}\n\n`);
+    });
+}
+
+async function getIncompleteTodos() {
+    // Query for incomplete todos
+    var todos = await tablesDB.listRows({
+        databaseId: todoDatabase.$id,
+        tableId: todoTable.$id,
+        queries: [
+            Query.equal("isComplete", false),
+            Query.orderAsc("title")
+        ]
+    });
+
+    console.log("Incomplete todos (ordered by title):");
+    todos.rows.forEach(todo => {
         console.log(`Title: ${todo.title}\nDescription: ${todo.description}\nIs Todo Complete: ${todo.isComplete}\n\n`);
     });
 }
@@ -194,13 +235,52 @@ async function runAllTasks() {
     await prepareDatabase();
     await seedDatabase();
     await getTodos();
+    await getCompletedTodos();
+    await getIncompleteTodos();
 }
 runAllTasks();
 ```
 
 {% /section %}
+{% section #step-8 step=8 title="Type safety with TypeScript" %}
 
-{% section #step-8 step=8 title="All set" %}
+For better type safety in TypeScript Node.js projects, define interfaces and use generics:
+
+```typescript
+interface Todo {
+    title: string;
+    description: string;
+    isComplete: boolean;
+}
+
+import { Client, TablesDB } from 'node-appwrite';
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>');
+
+const tablesDB = new TablesDB(client);
+
+// Type-safe database operations
+async function getTodos() {
+    const todos = await tablesDB.listRows<Todo>({
+        databaseId: '<DATABASE_ID>',
+        tableId: '<TABLE_ID>'
+    });
+
+    todos.rows.forEach(todo => {
+        console.log(`Title: ${todo.title} - Complete: ${todo.isComplete}`);
+    });
+}
+```
+
+{% info title="Generate types automatically" %}
+Use the [Appwrite CLI](/docs/products/databases/type-generation) to generate TypeScript interfaces automatically: `appwrite types ./types`
+{% /info %}
+
+{% /section %}
+
+{% section #step-9 step=9 title="All set" %}
 
 Run your project with `node app.js` and view the response in your console.
 

@@ -34,12 +34,12 @@ What personal data we collect, why we collect it, and how it is used
 {% table %}
 ---
 * Specific personal data we collect
-* Address
-* Full name
-* Email address
-* IP address
-* Country
-* Payment details
+* - Address
+  - Full name
+  - Email address
+  - IP address
+  - Country
+  - Payment details
 ---
 * The purpose of data collection
 * For payment processing purposes
@@ -49,8 +49,8 @@ What personal data we collect, why we collect it, and how it is used
   - Legitimate interest
 ---
 * Third parties with whom we share your personal data
-* Stripe
-* DigitalOcean
+* - Stripe
+  - DigitalOcean
 {% /table %}
 
 
@@ -68,8 +68,10 @@ What personal data we collect, why we collect it, and how it is used
   - IP address
   - Country
   - User-agent (info about the browser)
-* - Phone number
-* - Usage details
+  - Phone number
+  - Usage details
+* - Full name
+  - Email address
 ---
 * The purpose of data collection
 * - To be able to create an account
@@ -77,23 +79,21 @@ What personal data we collect, why we collect it, and how it is used
   - To be able to enjoy features available to registered users
   - To collect Informative reason for the administrator
   - To identify reported problems during project development
-* - To be able to log in, using two factor authentication via text message
-* - To be able to monitor errors
+  - To be able to log in, using two factor authentication via text message
+  - To be able to monitor errors
 * - To send you marketing communications and product updates
 ---
 * Legal basis (GDPR only, if applicable)
 * - Processing is necessary for the performance of a contract to which the data subject is party or in order to take steps at the request of the data subject prior to entering into a contract
   - Legitimate interest (e.g. to allow you to create an account and log-in)
-* Consent
-* Legitimate interest
-* Consent
+* - Consent
 ---
 * Third parties with whom we share your personal data
-  - Userlist
-* - MSG91 
+* - Userlist
+  - MSG91 
   - Activetrail (Israel only)
   - SMS.to
-* - Sentry.io
+  - Sentry.io
 * - Userlist
 ---
 * Consequences of not providing the Personal Data
@@ -101,9 +101,10 @@ What personal data we collect, why we collect it, and how it is used
   - Cannot log in 
   - Cannot enjoy features available to registered users
   - Cannot identify reported problem during your project development process 
-* - Cannot log in using two factor authentication based on phone number
-* - Cannot monitor and solve errors
-* - Cannot sign up using our website forms
+  - Cannot log in using two factor authentication based on phone number
+  - Cannot monitor and solve errors
+  - Cannot sign up using our website forms
+* 
 {% /table %}
 
 #### When you purchase products in our Swag Store

@@ -16,13 +16,15 @@
     });
 
     export type Variant = VariantProps<typeof button>['variant'];
+    export type SplitPosition = 'first' | 'middle' | 'last' | 'only';
+    export const BUTTON_SPLIT_CONTEXT = Symbol('button-split-context');
 </script>
 
 <script lang="ts">
-    import { type VariantProps } from 'cva';
     import type { Snippet } from 'svelte';
     import type { Action } from 'svelte/action';
-    import { classNames } from '$lib/utils/classnames';
+    import { getContext } from 'svelte';
+    import { cn } from '$lib/utils/cn';
     import { trackEvent, type TrackEventArgs } from '$lib/actions/analytics';
     import type { HTMLAnchorAttributes, HTMLButtonAttributes } from 'svelte/elements';
 
@@ -34,6 +36,7 @@
         action?: Action;
         children: Snippet;
         event?: string | TrackEventArgs;
+        splitPosition?: SplitPosition;
     } & VariantProps<typeof button> &
         ButtonOrAnchorProps;
 
@@ -44,18 +47,36 @@
         children,
         class: classes,
         event,
+        splitPosition,
         ...rest
     }: Props = $props();
 
-    const buttonClasses = classNames(button({ variant }), classes);
+    const isSplit = getContext<boolean>(BUTTON_SPLIT_CONTEXT);
+    const splitClasses = isSplit
+        ? splitPosition
+            ? `is-split is-split-${splitPosition}`
+            : 'is-split'
+        : '';
+    const buttonClasses = cn(button({ variant }), splitClasses, classes);
 </script>
 
 {#if href}
-    <a use:action {href} class={buttonClasses} onclick={() => event && trackEvent(event)} {...rest}>
+    <a
+        use:action
+        {href}
+        class={buttonClasses}
+        onclick={() => event && trackEvent(event)}
+        {...rest as HTMLAnchorAttributes}
+    >
         {@render children()}
     </a>
 {:else}
-    <button use:action class={buttonClasses} onclick={() => event && trackEvent(event)} {...rest}>
+    <button
+        use:action
+        class={buttonClasses}
+        onclick={() => event && trackEvent(event)}
+        {...rest as HTMLButtonAttributes}
+    >
         {@render children()}
     </button>
 {/if}

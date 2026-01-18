@@ -5,12 +5,6 @@ import type { Account } from 'node-appwrite';
 // for information about these interfaces
 declare global {
     namespace App {
-        // interface Error {}
-        // interface Locals {}
-        interface PageData {
-            changelogEntries: number;
-        }
-        // interface Platform {}
         interface Locals {
             initUser: {
                 github: {

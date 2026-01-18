@@ -172,7 +172,7 @@ def main(context)
 end
 ```
 ```deno
-import { Client } from "https://deno.land/x/appwrite@7.0.0/mod.ts";
+import { Client } from "npm:node-appwrite";
 
 // This is your Appwrite function
 // It's executed each time we get a request
@@ -425,13 +425,13 @@ public class Handler {
 
     // This is your Appwrite function
     // It"s executed each time we get a request
-    public async Task Main(RuntimeContext Context) 
+    public async Task Main(RuntimeContext Context)
     {
         // Why not try the Appwrite SDK?
         //
         // Set project and set API key
         // var client = new Client()
-        //     .SetProject(Environment.GetEnvironmentVariable("APPWRITE_FUNCTION_PROJECT_ID")) 
+        //     .SetProject(Environment.GetEnvironmentVariable("APPWRITE_FUNCTION_PROJECT_ID"))
         //     .SetKey(Context.Req.Headers["x-appwrite-key"]);
 
         // You can log messages to the console
@@ -463,7 +463,7 @@ public class Handler {
 If you prefer to learn through more examples like this, explore the [examples page](/docs/products/functions/examples).
 
 # Context object {% #context-object %}
-Context is an object passed into every function to handle communication to both the end users, and logging to the Appwrite Console. 
+Context is an object passed into every function to handle communication to both the end users, and logging to the Appwrite Console.
 All input, output, and logging **must be handled through the context object** passed in.
 
 You'll find these properties in the context object.
@@ -480,8 +480,8 @@ Use `req.bodyText` instead of `req.bodyRaw`. Use `res.text` instead of `res.send
 {% /info %}
 
 ### Destructuring assignment {% #destructuring %}
-Some languages, namely JavaScript, support destructuring. 
-You'll see us use destructuring in examples, which has the following syntax. 
+Some languages, namely JavaScript, support destructuring.
+You'll see us use destructuring in examples, which has the following syntax.
 
 [Learn more about destructuring assignment](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment).
 {% multicode %}
@@ -504,7 +504,7 @@ export default async function (context: any) {
     context.log("This is a log!");
     return context.res.text("This is a response!");
 }
-   
+
 // after destructuring
 export default async function ({ req, res, log, error }: any) {
     log("This is a log!");
@@ -515,8 +515,8 @@ export default async function ({ req, res, log, error }: any) {
 
 ## Request {% #request %}
 
-If you pass data into an Appwrite Function, it'll be found in the request object. 
-This includes all invocation inputs from Appwrite SDKs, HTTP calls, Appwrite events, or browsers visiting the configured domain. 
+If you pass data into an Appwrite Function, it'll be found in the request object.
+This includes all invocation inputs from Appwrite SDKs, HTTP calls, Appwrite events, or browsers visiting the configured domain.
 Explore the request object with the following function, which logs all request params to the Appwrite Console.
 
 ### Request types {% #request-types %}
@@ -591,7 +591,7 @@ def main(context):
 ```
 ```ruby
 require 'json'
-                
+
 def main(context)
     context.log(context.req.body_text)                #  Raw request body, contains request data
     context.log(JSON.generate(context.req.body_json)) # Object from parsed JSON request body, otherwise string
@@ -680,7 +680,7 @@ func main(context: RuntimeContext) async throws -> RuntimeOutput {
     context.log(NSJSONSerialization.jsonObject(with: context.req.headers, options: [])!)   // String key-value pairs of all request headers, keys are lowercase
     context.log(context.req.scheme)                                                        // Value of the x-forwarded-proto header, usually http or https
     context.log(context.req.method)                                                        // Request method, such as GET, POST, PUT, DELETE, PATCH, etc.
-    context.log(context.req.url)                                                           // Full URL, for example: http://awesome.appwrite.io:8000/v1/hooks?limit=12&offset=50 
+    context.log(context.req.url)                                                           // Full URL, for example: http://awesome.appwrite.io:8000/v1/hooks?limit=12&offset=50
     context.log(context.req.host)                                                          // Hostname from the host header, such as awesome.appwrite.io
     context.log(context.req.port)                                                          // Port from the host header, for example 8000
     context.log(context.req.path)                                                          // Path part of URL, for example /v1/hooks
@@ -696,7 +696,7 @@ namespace DotNetRuntime;
 using System.Text.Json;
 
 public class Handler {
-    public async Task<RuntimeOutput> Main(RuntimeContext Context) 
+    public async Task<RuntimeOutput> Main(RuntimeContext Context)
     {
         Context.Log(JsonSerializer.Serialize<object>(Context.Req.BodyJson));             // Object from parsed JSON request body, otherwise string
         Context.Log(JsonSerializer.Serialize<object>(Context.Req.Headers));              // String key-value pairs of all request headers, keys are lowercase
@@ -770,7 +770,7 @@ public class Main {
 
 ### Headers {% #headers %}
 
-Appwrite Functions will always receive a set of headers that provide meta data about the function execution. 
+Appwrite Functions will always receive a set of headers that provide meta data about the function execution.
 These are provided alongside any custom headers sent to the function.
 
 | Variable                  | Description                                                                                                                                          |
@@ -783,10 +783,12 @@ These are provided alongside any custom headers sent to the function.
 | `x-appwrite-country-code`   |  Displays the country code of the configured locale.                                                                                                 |
 | `x-appwrite-continent-code` |  Displays the continent code of the configured locale.                                                                                               |
 | `x-appwrite-continent-eu`   |  Describes if the configured local is within the EU.                                                                                                 |
+| `x-appwrite-client-ip`       |  Displays the IP of the client creating the execution.                                                                                                |
+| `x-appwrite-execution-id`   |  Displays the ID of the current execution.                                                                                                            |
 
 ## Response {% #response %}
 Use the response object to send a response to the function caller. This could be a user, client app, or an integration.
-The response information **will not be logged** to the Appwrite Console. 
+The response information **will not be logged** to the Appwrite Console.
 There are several possible ways to send a response, explore them in the following Appwrite Function.
 
 ### Response types {% #response-types %}
@@ -818,7 +820,7 @@ const fs = require('fs');
 export default async ({ req, res, log }) => {
 
     switch (req.query.type) {
-        case 'empty': 
+        case 'empty':
             return res.empty();
         case 'json':
             return res.json({"type": "This is a JSON response"});
@@ -884,7 +886,7 @@ def main(context):
 ```
 ```ruby
 def main(context)
-    case context.req.query['type'] 
+    case context.req.query['type']
         when 'empty'
             return context.res.empty()
         when 'json'
@@ -1006,7 +1008,7 @@ func main(context: RuntimeContext) async throws -> RuntimeOutput {
 ```
 ```csharp
 public class Handler {
-    public async Task<RuntimeOutput> Main(RuntimeContext Context) 
+    public async Task<RuntimeOutput> Main(RuntimeContext Context)
     {
         switch (Context.Request.Query["type"])
         {
@@ -1020,7 +1022,7 @@ public class Handler {
                 return Context.Res.Redirect("https://appwrite.io", 301);
             case "html":
                 return Context.Res.Text("<h1>This is an HTML response</h1>", 200, new Dictionary<string, string>() {
-                    { "content-type", "text/html" } 
+                    { "content-type", "text/html" }
                 });
             default:
                 return Context.Res.Text("This is a text response");
@@ -1123,7 +1125,7 @@ To get the different response types, set one of the following query parameters i
 | `empty`    | `/`               | `https://64d4d22db370ae41a32e.appwrite.global/`               |
 
 ## Logging {% #logging %}
-To protect user privacy, the request and response objects are not logged to the Appwrite Console by default. 
+To protect user privacy, the request and response objects are not logged to the Appwrite Console by default.
 
 We support the spread operator across most of the languages, meaning you can write code that is more concise and flexible.
 
@@ -1238,7 +1240,7 @@ func main(context: RuntimeContext) async throws -> RuntimeOutput {
 namespace DotNetRuntime;
 
 public class Handler {
-    public async Task<RuntimeOutput> Main(RuntimeContext Context) 
+    public async Task<RuntimeOutput> Main(RuntimeContext Context)
     {
         string message = "This is a log, use for logging information to console";
         Context.Log("Message: ", message);
@@ -1316,8 +1318,8 @@ You can access these logs through the following steps.
 3. Under the Executions tab, click on an execution.
 4. In the Response section, you'll be able to view logs under the Logs and Errors tabs.
 
-# Accessing environment variables {% #environment-variables %} 
-If you need to pass constants or secrets to Appwrite Functions, you can use environment variables. 
+# Accessing environment variables {% #environment-variables %}
+If you need to pass constants or secrets to Appwrite Functions, you can use environment variables.
 
 | Variable                          | Description                                    |	Available at Build and/or Run Time                 |
 |-----------------------------------|------------------------------------------------|-----------------------------------------------------|
@@ -1397,7 +1399,7 @@ func main(context: RuntimeContext) async throws -> RuntimeOutput {
 namespace DotNetRuntime;
 
 public class Handler {
-    public async Task<RuntimeOutput> Main(RuntimeContext Context) 
+    public async Task<RuntimeOutput> Main(RuntimeContext Context)
     {
         return Context.Res.Text(Environment.GetEnvironmentVariable("MY_VAR"));
     }
@@ -1444,8 +1446,8 @@ namespace runtime {
 ```
 {% /multicode %}
 
-# Dependencies {% #dependencies %} 
-To install your dependencies before your function is built, 
+# Dependencies {% #dependencies %}
+To install your dependencies before your function is built,
 you should add the relevant install command to the top your function's **Build setting** > **Commands**.
 You can find this setting under **Functions** > your function > **Settings** > **Configuration** > **Build settings**.
 
@@ -1453,7 +1455,7 @@ Make sure to include dependency files like `package.json`, `composer.json`, `req
 Do not include the dependency folders like `node_modules`, `vendor`, etc. in your function's root directory.
 The dependencies installed for your local OS may not work in the executor environments
 
-Your function's dependencies should be managed by the package manager of each language. 
+Your function's dependencies should be managed by the package manager of each language.
 By default, we include the following package managers in each runtime.
 
 {% table %}
@@ -1541,9 +1543,9 @@ By default, we include the following package managers in each runtime.
 * N/A
 {% /table %}
 
-# Using Appwrite in a function {% #using-appwrite %} 
+# Using Appwrite in a function {% #using-appwrite %}
 Appwrite can be used in your functions by adding the relevant SDK to your function's dependencies.
-Authenticating with Appwrite is done via a dynamic API key or a JWT token. 
+Authenticating with Appwrite is done via a dynamic API key or a JWT token.
 
 ## Dynamic API key {% #dynamic-api-key %}
 Dynamic API keys are the same as [API keys](/docs/advanced/platform/api-keys) but are automatically generated.
@@ -1566,7 +1568,7 @@ Update the function settings to configure the scopes of the function.
 
 {% multicode %}
 ```server-nodejs
-import { Client, Databases, ID } from 'node-appwrite';
+import { Client, TablesDB, ID } from 'node-appwrite';
 
 export default async ({ req, res, log, error }) => {
     // Set project and set API key
@@ -1574,21 +1576,21 @@ export default async ({ req, res, log, error }) => {
        .setProject(process.env.APPWRITE_FUNCTION_PROJECT_ID)
        .setKey(req.headers['x-appwrite-key']);
 
-    const databases = new Databases(client);
+    const tablesDB = new TablesDB(client);
 
     try {
-        await databases.createDocument(
-            '<DATABASE_ID>',
-            '<COLLECTION_ID>',
-            ID.unique(),
-            {}
-        )
+        await tablesDB.createRow({
+            databaseId: '<DATABASE_ID>',
+            tableId: '<TABLE_ID>',
+            rowId: ID.unique(),
+            data: {}
+        })
     } catch (e) {
-        error("Failed to create document: " + e.message)
-        return res.text("Failed to create document")
+        error("Failed to create row: " + e.message)
+        return res.text("Failed to create row")
     }
 
-    return res.text("Document created")
+    return res.text("Row created")
 }
 ```
 ```php
@@ -1598,7 +1600,7 @@ require(__DIR__ . '/../vendor/autoload.php');
 
 use Appwrite\Client;
 use Appwrite\Exception;
-use Appwrite\Services\Databases;
+use Appwrite\Services\TablesDB;
 use Appwrite\ID;
 
 return function ($context) {
@@ -1606,27 +1608,27 @@ return function ($context) {
     $client = (new Client())
         ->setProject(getenv('APPWRITE_FUNCTION_PROJECT_ID'))
         ->setKey($context->req->headers['x-appwrite-key']);
-   
-    $databases = new Databases($client);
+
+    $tablesDB = new TablesDB($client);
 
     try {
-        $databases->createDocument(
+        $tablesDB->createRow(
             databaseId: '<DATABASE_ID>',
-            collectionId: '<COLLECTION_ID>',
-            documentId: ID::unique(),
+            tableId: '<TABLE_ID>',
+            rowId: ID::unique(),
             data: []
         );
     } catch (Exception $e) {
-        $context->error("Failed to create document: " . $e->getMessage());
-        return $context->res->text("Failed to create document");
+        $context->error("Failed to create row: " . $e->getMessage());
+        return $context->res->text("Failed to create row");
     }
 
-    return $context->res->text("Document created");
+    return $context->res->text("Row created");
 };
 ```
 ```python
 from appwrite.client import Client
-from appwrite.services.databases import Databases
+from appwrite.services.tables_db import TablesDB
 from appwrite.id import ID
 
 import os
@@ -1639,20 +1641,20 @@ def main(context):
             .set_key(context.req.headers["x-appwrite-key"])
     )
 
-    databases = Databases(client)
+    tablesDB = TablesDB(client)
 
     try:
-        databases.create_document(
+        tablesDB.create_row(
             database_id="<DATABASE_ID>",
-            collection_id="<COLLECTION_ID>",
-            document_id=ID.unique(),
+            table_id="<TABLE_ID>",
+            row_id=ID.unique(),
             data={}
         )
     except Exception as e:
-        context.error("Failed to create document: " + e.message)
-        return context.response.text("Failed to create document")
+        context.error("Failed to create row: " + e.message)
+        return context.response.text("Failed to create row")
 
-    return context.response.text("Document created")
+    return context.response.text("Row created")
 ```
 ```ruby
 require "appwrite"
@@ -1665,47 +1667,47 @@ def main(context)
       .set_project(ENV['APPWRITE_FUNCTION_PROJECT_ID'])
       .set_key(context.req.headers['x-appwrite-key'])
 
-    databases = Appwrite::Databases.new(client)
+    tablesDB = Appwrite::TablesDB.new(client)
 
     begin
-        databases.create_document(
+        tablesDB.create_row(
             databaseId: '<DATABASE_ID>',
-            collectionId: '<COLLECTION_ID>',
-            documentId: ID.unique(),
+            tableId: '<TABLE_ID>',
+            rowId: ID.unique(),
             data: {}
         )
     rescue Exception => e
-        context.error("Failed to create document: " + e.message)
-        return context.response.text("Failed to create document")
+        context.error("Failed to create row: " + e.message)
+        return context.response.text("Failed to create row")
     end
 
-    return context.response.text("Document created")
+    return context.response.text("Row created")
 end
 ```
 ```deno
-import { Client, Databases, ID } from "https://deno.land/x/appwrite/mod.ts";
-                
+import { Client, TablesDB, ID } from "npm:node-appwrite";
+
 export default function ({req, res, error}: any){
     // Set project and set API key
     const client = new Client()
        .setProject(Deno.env.get("APPWRITE_FUNCTION_PROJECT_ID"))
        .setKey(req.headers["x-appwrite-key"] || "");
 
-    const databases = new Databases(client);
-    
+    const tablesDB = new TablesDB(client);
+
     try {
-        databases.createDocument(
+        tablesDB.createRow(
             "<DATABASE_ID>",
-            "<COLLECTION_ID>",
+            "<TABLE_ID>",
             ID.unique(),
             {}
         );
     } catch (e) {
-        error("Failed to create document: " + e.message);
-        return res.text("Failed to create document");
+        error("Failed to create row: " + e.message);
+        return res.text("Failed to create row");
     }
-    
-    return res.text("Document created");
+
+    return res.text("Row created");
 }
 ```
 ```go
@@ -1727,21 +1729,21 @@ func Main(Context openruntimes.Context) openruntimes.Response {
 		appwrite.WithKey(Context.Req.Headers["x-appwrite-key"]),
 	)
 
-	databases := appwrite.NewDatabases(client)
+	databases := appwrite.NewTablesDB(client)
 
-	_, err := databases.CreateDocument(
+	_, err := databases.createRow(
 		"<DATABASE_ID>",
-		"<COLLECTION_ID>",
+		"<TABLE_ID>",
 		id.Unique(),
 		map[string]interface{}{},
 	)
 
 	if err != nil {
-		Context.Log(fmt.Sprintf("Failed to create document: %v", err))
-		return Context.Res.Text("Failed to create document")
+		Context.Log(fmt.Sprintf("Failed to create row: %v", err))
+		return Context.Res.Text("Failed to create row")
 	}
 
-	return Context.Res.Text("Document created")
+	return Context.Res.Text("Row created")
 }
 ```
 ```dart
@@ -1755,21 +1757,21 @@ Future<dynamic> main(final context) async {
        .setProject(Platform.environment['APPWRITE_FUNCTION_PROJECT_ID'])
        .setKey(context.req.headers['x-appwrite-key']);
 
-    final databases = Databases(client);
-    
+    final tablesDB = TablesDB(client);
+
     try {
-        await databases.createDocument(
+        await tablesDB.createRow(
             databaseId: '<DATABASE_ID>',
-            collectionId: '<COLLECTION_ID>',
-            documentId: ID.unique(),
+            tableId: '<TABLE_ID>',
+            rowId: ID.unique(),
             data: {}
         );
     } catch (e) {
-        context.error("Failed to create document: " + e.message);
-        return context.res.text("Failed to create document");
+        context.error("Failed to create row: " + e.message);
+        return context.res.text("Failed to create row");
     }
 
-    return context.res.text("Document created");
+    return context.res.text("Row created");
 }
 ```
 ```swift
@@ -1783,53 +1785,53 @@ func main(context: RuntimeContext) async throws -> RuntimeOutput {
        .setProject(ProcessInfo.processInfo.environment["APPWRITE_FUNCTION_PROJECT_ID"])
        .setKey(context.req.headers["x-appwrite-key"] ?? "")
 
-    let databases = Databases(client: client)
+    let tablesDB = TablesDB(client: client)
 
     do {
-        try await databases.createDocument(
-            databaseId: "<DATABASE_ID>", 
-            collectionId: "<COLLECTION_ID>",
-            documentId: ID.unique(),
+        try await tablesDB.createRow(
+            databaseId: "<DATABASE_ID>",
+            tableId: "<TABLE_ID>",
+            rowId: ID.unique(),
             data: [:]
         )
     } catch {
-        context.error("Failed to create document: \(error.localizedDescription)")
-        return context.res.text("Failed to create document")
+        context.error("Failed to create row: \(error.localizedDescription)")
+        return context.res.text("Failed to create row")
     }
 
-    return context.res.text("Document created")
+    return context.res.text("Row created")
 }
 ```
 ```csharp
 using Appwrite;
 using Appwrite.Services;
-using Appwrite.Models;                        
-                        
+using Appwrite.Models;
+
 namespace DotNetRuntime
 {
-    public class Handler 
+    public class Handler
     {
-        public async Task Main(RuntimeContext Context) 
+        public async Task Main(RuntimeContext Context)
         {
-            // Set API 
+            // Set API
             var client = new Client()
-                .SetProject(Environment.GetEnvironmentVariable("APPWRITE_FUNCTION_PROJECT_ID")) 
+                .SetProject(Environment.GetEnvironmentVariable("APPWRITE_FUNCTION_PROJECT_ID"))
                 .SetKey(Context.Req.Headers["x-appwrite-key"]);
 
-            var databases = new Databases(client);
-    
+            var tablesDB = new TablesDB(client);
+
             try {
-                await databases.CreateDocument(
+                await databases.createRow(
                     databaseId: "<DATABASE_ID>",
-                    collectionId: "<COLLECTION_ID>",
-                    documentId: ID.Unique(),
+                    tableId: "<TABLE_ID>",
+                    rowId: ID.Unique(),
                     data: new Dictionary<string, object>());
             } catch (Exception e) {
-                Context.Error("Failed to create document: " + e.Message);
-                return Context.Response.Text("Failed to create document");
+                Context.Error("Failed to create row: " + e.Message);
+                return Context.Response.Text("Failed to create row");
             }
-    
-            return Context.Response.Text("Document created");
+
+            return Context.Response.Text("Row created");
         }
     }
 }
@@ -1840,7 +1842,7 @@ package io.openruntimes.kotlin.src
 import io.openruntimes.kotlin.RuntimeContext
 import io.openruntimes.kotlin.RuntimeOutput
 import io.appwrite.Client
-import io.appwrite.services.Databases
+import io.appwrite.services.TablesDB
 import io.appwrite.ID
 import java.util.HashMap
 
@@ -1851,21 +1853,21 @@ class Main {
            .setProject(System.getenv("APPWRITE_FUNCTION_PROJECT_ID"))
            .setKey(context.req.headers["x-appwrite-key"])
 
-        val databases = Databases(client)
+        val tablesDB = TablesDB(client)
 
         try {
-            databases.createDocument(
+            tablesDB.createRow(
                 databaseId = "<DATABASE_ID>",
-                collectionId = "<COLLECTION_ID>",
-                documentId = ID.unique()
+                tableId = "<TABLE_ID>",
+                rowId = ID.unique()
                 data = mapOf()
             )
         } catch (e: Exception) {
-            context.error("Failed to create document: " + e.message)
-            return context.res.text("Failed to create document")
+            context.error("Failed to create row: " + e.message)
+            return context.res.text("Failed to create row")
         }
 
-        return context.res.text("Document created")
+        return context.res.text("Row created")
     }
 }
 ```
@@ -1884,29 +1886,29 @@ public class Main {
              .setProject(System.getenv("APPWRITE_FUNCTION_PROJECT_ID"))
              .setKey(context.getReq().getHeaders().get("x-appwrite-key"));
 
-        Databases databases = new Databases(client);
+        Databases tablesDB = new TablesDB(client);
 
         try {
-            databases.createDocument(
+            tablesDB.createRow(
                 "<DATABASE_ID>",
-                "<COLLECTION_ID>",
+                "<TABLE_ID>",
                 ID.unique(),
                 new HashMap<>()
             );
         } catch (Exception e) {
-            context.error("Failed to create document: " + e.getMessage());
-            return context.res.text("Failed to create document");
+            context.error("Failed to create row: " + e.getMessage());
+            return context.res.text("Failed to create row");
         }
 
-        return context.res.text("Document created");
+        return context.res.text("Row created");
     }
 }
 ```
 {% /multicode %}
 
-## Using with JWT {% #using-jwt %} 
-JWTs allow you to act on behalf of an user in your Appwrite Function. 
-When using JWTs, you will be able to access and change **only** the resources with the same permissions as the user account that signed the JWT. 
+## Using with JWT {% #using-jwt %}
+JWTs allow you to act on behalf of an user in your Appwrite Function.
+When using JWTs, you will be able to access and change **only** the resources with the same permissions as the user account that signed the JWT.
 This preserves the permissions you configured on each resource.
 
 If the Appwrite Function is invoked by an authenticated user, the `x-appwrite-user-jwt` header is automatically passed in.
@@ -1914,7 +1916,7 @@ If the Appwrite Function is invoked by an authenticated user, the `x-appwrite-us
 {% multicode %}
 
 ```server-nodejs
-import { Client, Databases, ID } from 'node-appwrite';
+import { Client, TablesDB, ID } from 'node-appwrite';
 
 export default async ({ req, res, log }) => {
     const client = new Client()
@@ -1926,21 +1928,21 @@ export default async ({ req, res, log }) => {
         return res.text("Access denied: This function requires authentication. Please sign in to continue.");
     }
 
-    const databases = new Databases(client);
+    const tablesDB = new TablesDB(client);
 
     try {
-        await databases.createDocument(
-            '<DATABASE_ID>',
-            '<COLLECTION_ID>',
-            ID.unique(),
-            {}
-        )
+        await tablesDB.createRow({
+            databaseId: '<DATABASE_ID>',
+            tableId: '<TABLE_ID>',
+            rowId: ID.unique(),
+            data: {}
+        })
     } catch (e) {
-        log("Failed to create document: " + e.message)
-        return res.text("Failed to create document")
+        log("Failed to create row: " + e.message)
+        return res.text("Failed to create row")
     }
 
-    return res.text("Document created")
+    return res.text("Row created")
 }
 ```
 ```php
@@ -1950,39 +1952,39 @@ require(__DIR__ . '/../vendor/autoload.php');
 
 use Appwrite\Client;
 use Appwrite\Exception;
-use Appwrite\Services\Databases;
+use Appwrite\Services\TablesDB;
 use Appwrite\ID;
 
 return function ($context) {
     $client = new (Client())
         ->setProject(getenv('APPWRITE_FUNCTION_PROJECT_ID'))
-    
+
     if (isset($context->req->headers['x-appwrite-user-jwt'])) {
         $client->setJWT($context->req->headers['x-appwrite-user-jwt']);
     } else {
         return $context->res->text("Access denied: This function requires authentication. Please sign in to continue.");
     }
-    
-    $databases = new Databases($client);
+
+    $tablesDB = new TablesDB($client);
 
     try {
-        $databases->createDocument(
+        $tablesDB->createRow(
             databaseId: '<DATABASE_ID>',
-            collectionId: '<COLLECTION_ID>',
-            documentId: ID::unique(),
+            tableId: '<TABLE_ID>',
+            rowId: ID::unique(),
             data: []
         );
     } catch (Exception $e) {
-        $context->error("Failed to create document: " . $e->getMessage());
-        return $context->res->text("Failed to create document");
+        $context->error("Failed to create row: " . $e->getMessage());
+        return $context->res->text("Failed to create row");
     }
 
-    return $context->res->text("Document created");
+    return $context->res->text("Row created");
 };
 ```
 ```python
 from appwrite.client import Client
-from appwrite.services.databases import Databases
+from appwrite.services.tables_db import TablesDB
 from appwrite.id import ID
 
 import os
@@ -1998,20 +2000,20 @@ def main(context):
     else:
         return context.res.text("Access denied: This function requires authentication. Please sign in to continue.")
 
-    databases = Databases(client)
+    tablesDB = TablesDB(client)
 
     try:
-        databases.create_document(
+        tablesDB.create_row(
             database_id="<DATABASE_ID>",
-            collection_id="<COLLECTION_ID>",
-            document_id=ID.unique(),
+            table_id="<TABLE_ID>",
+            row_id=ID.unique(),
             data={}
         )
     except Exception as e:
-        context.error("Failed to create document: " + e.message)
-        return context.response.text("Failed to create document")
+        context.error("Failed to create row: " + e.message)
+        return context.response.text("Failed to create row")
 
-    return context.response.text("Document created")
+    return context.response.text("Row created")
 ```
 ```ruby
 require "appwrite"
@@ -2028,46 +2030,46 @@ def main(context)
         return context.response.text("Access denied: This function requires authentication. Please sign in to continue.")
     end
 
-    databases = Appwrite::Databases.new(client)
+    tablesDB = Appwrite::TablesDB.new(client)
 
     begin
-        databases.create_document('<DATABASE_ID>', '<COLLECTION_ID>', Appwrite::ID.unique(), {})
+        tablesDB.create_row('<DATABASE_ID>', '<TABLE_ID>', Appwrite::ID.unique(), {})
     rescue Appwrite::Exception => e
-        context.error("Failed to create document: " + e.message)
-        return context.response.text("Failed to create document")
+        context.error("Failed to create row: " + e.message)
+        return context.response.text("Failed to create row")
     end
 
-    return context.response.text("Document created")
+    return context.response.text("Row created")
 end
 ```
 ```deno
-import { Client, Databases, ID } from "https://deno.land/x/appwrite/mod.ts";
-                
+import { Client, TablesDB, ID } from "npm:node-appwrite";
+
 export default function ({req, res, error}: any){
     const client = new Client()
         .setProject(Deno.env.get("APPWRITE_FUNCTION_PROJECT_ID") || "")
-    
+
     if (req.headers["x-appwrite-user-jwt"]) {
         client.setJWT(req.headers["x-appwrite-user-jwt"]);
     } else {
         return res.text("Access denied: This function requires authentication. Please sign in to continue.");
     }
-    
-    const databases = new Databases(client);
-    
+
+    const tablesDB = new TablesDB(client);
+
     try {
-        databases.createDocument(
+        tablesDB.createRow(
             "<DATABASE_ID>",
-            "<COLLECTION_ID>",
+            "<TABLE_ID>",
             ID.unique(),
             {}
         );
     } catch (e) {
-        error("Failed to create document: " + e.message)
-        return res.text("Failed to create document");
+        error("Failed to create row: " + e.message)
+        return res.text("Failed to create row");
     }
-    
-    return res.text("Document created");
+
+    return res.text("Row created");
 }
 ```
 ```go
@@ -2094,21 +2096,21 @@ func Main(Context openruntimes.Context) openruntimes.Response {
 		return Context.Res.Text("Access denied: This function requires authentication. Please sign in to continue.")
 	}
 
-	databases := appwrite.NewDatabases(client)
+	databases := appwrite.NewTablesDB(client)
 
-	_, err := databases.CreateDocument(
+	_, err := databases.createRow(
 		"<DATABASE_ID>",
-		"<COLLECTION_ID>",
+		"<TABLE_ID>",
 		id.Unique(),
 		map[string]interface{}{},
 	)
 
 	if err != nil {
-        Context.Log(fmt.Sprintf("Failed to create document: %v", err))
+        Context.Log(fmt.Sprintf("Failed to create row: %v", err))
 		return Context.Res.Text(str)
 	}
 
-	return Context.Res.Text("Document created")
+	return Context.Res.Text("Row created")
 }
 ```
 ```dart
@@ -2119,28 +2121,28 @@ import 'package:dart_appwrite/dart_appwrite.dart';
 Future<dynamic> main(final context) async {
     final client = Client()
         .setProject(Platform.environment['APPWRITE_FUNCTION_PROJECT_ID'])
-    
+
     if (context.req.headers['x-appwrite-user-jwt'] != null) {
         client.setJWT(context.req.headers['x-appwrite-user-jwt']);
     } else {
         return context.res.text("Access denied: This function requires authentication. Please sign in to continue.");
     }
-    
-    final databases = Databases(client);
-    
+
+    final tablesDB = TablesDB(client);
+
     try {
-        await databases.createDocument(
+        await tablesDB.createRow(
             databaseId: '<DATABASE_ID>',
-            collectionId: '<COLLECTION_ID>',
-            documentId: ID.unique(),
+            tableId: '<TABLE_ID>',
+            rowId: ID.unique(),
             data: {}
         );
     } catch (e) {
-        context.error("Failed to create document: " + e.message);
-        return context.res.text("Failed to create document");
+        context.error("Failed to create row: " + e.message);
+        return context.res.text("Failed to create row");
     }
 
-    return context.res.text("Document created");
+    return context.res.text("Row created");
 }
 ```
 ```swift
@@ -2151,28 +2153,28 @@ import Foundation
 func main(context: RuntimeContext) async throws -> RuntimeOutput {
     let client = Client()
        .setProject(ProcessInfo.processInfo.environment["APPWRITE_FUNCTION_PROJECT_ID"])
-    
+
     if let jwt = context.req.headers["x-appwrite-user-jwt"] {
         client.setJWT(jwt)
     } else {
         return context.res.text("Access denied: This function requires authentication. Please sign in to continue.")
     }
 
-    let databases = Databases(client: client)
+    let tablesDB = TablesDB(client: client)
 
     do {
-        try await databases.createDocument(
+        try await tablesDB.createRow(
             databaseId: "<DATABASE_ID>",
-            collectionId: "<COLLECTION_ID>",
-            documentId: ID.unique()
+            tableId: "<TABLE_ID>",
+            rowId: ID.unique()
             data: [:]
         )
     } catch {
-        context.error("Failed to create document: \(error.localizedDescription)")
-        return context.res.text("Failed to create document")
+        context.error("Failed to create row: \(error.localizedDescription)")
+        return context.res.text("Failed to create row")
     }
 
-    return context.res.text("Document created")
+    return context.res.text("Row created")
 }
 ```
 ```csharp
@@ -2195,20 +2197,20 @@ namespace DotNetRuntime
                 return Context.Res.Text("Access denied: This function requires authentication. Please sign in to continue");
             }
 
-            var databases = new Databases(client);
+            var tablesDB = new TablesDB(client);
 
             try {
-                await databases.CreateDocument(
+                await databases.createRow(
                     databaseId: "<DATABASE_ID>",
-                    collectionId: "<COLLECTION_ID>",
-                    documentId: ID.Unique(),
+                    tableId: "<TABLE_ID>",
+                    rowId: ID.Unique(),
                     data: new Dictionary<string, object>());
             } catch (Exception e) {
-                Context.Error("Failed to create document: " + e.Message);
-                return Context.Res.Text("Failed to create document");
+                Context.Error("Failed to create row: " + e.Message);
+                return Context.Res.Text("Failed to create row");
             }
 
-            return Context.Res.Text("Document created");
+            return Context.Res.Text("Row created");
         }
     }
 }
@@ -2219,7 +2221,7 @@ package io.openruntimes.kotlin.src
 import io.openruntimes.kotlin.RuntimeContext
 import io.openruntimes.kotlin.RuntimeOutput
 import io.appwrite.Client
-import io.appwrite.services.Databases
+import io.appwrite.services.TablesDB
 import io.appwrite.ID
 import java.util.HashMap
 
@@ -2234,21 +2236,21 @@ class Main {
             return context.res.text("Access denied: This function requires authentication. Please sign in to continue.")
         }
 
-        val databases = Databases(client)
+        val tablesDB = TablesDB(client)
 
         try {
-            databases.createDocument(
+            tablesDB.createRow(
                 databaseId = "<DATABASE_ID>",
-                collectionId = "<COLLECTION_ID>",
-                documentId = ID.unique(),
+                tableId = "<TABLE_ID>",
+                rowId = ID.unique(),
                 data = mapOf()
             )
         } catch (e: Exception) {
-            context.error("Failed to create document: " + e.message)
-            return context.res.text("Failed to create document")
+            context.error("Failed to create row: " + e.message)
+            return context.res.text("Failed to create row")
         }
 
-        return context.res.text("Document created")
+        return context.res.text("Row created")
     }
 }
 ```
@@ -2264,28 +2266,28 @@ public class Main {
     public RuntimeOutput main(RuntimeContext context) throws Exception {
         Client client = new Client()
             .setProject(System.getenv("APPWRITE_FUNCTION_PROJECT_ID"))
-                
+
         if (context.req.headers.containsKey("x-appwrite-user-jwt")) {
             client.setJWT(context.req.headers.get("x-appwrite-user-jwt"));
         } else {
             return context.res.text("Access denied: This function requires authentication. Please sign in to continue.");
         }
 
-        Databases databases = new Databases(client);
+        Databases tablesDB = new TablesDB(client);
 
         try {
-            databases.createDocument(
+            tablesDB.createRow(
                 "<DATABASE_ID>",
-                "<COLLECTION_ID>",
+                "<TABLE_ID>",
                 ID.unique(),
                 new HashMap<>()
             );
         } catch (Exception e) {
-            context.error("Failed to create document: " + e.getMessage());
-            return context.res.text("Failed to create document");
+            context.error("Failed to create row: " + e.getMessage());
+            return context.res.text("Failed to create row");
         }
 
-        return context.res.text("Document created");
+        return context.res.text("Row created");
 
     }
 }

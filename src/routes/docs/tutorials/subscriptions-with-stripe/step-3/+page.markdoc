@@ -7,7 +7,7 @@ step: 3
 
 Head to the [Appwrite Console](https://cloud.appwrite.io/console) and create a new project if you haven't already. If this is your first time using Appwrite, you will be asked to sign up first.
 
-## Create a new function {% #create-function %}
+### Create a new function {% #create-function %}
 Once inside your project overview, switch to the **Functions** page from the left sidebar. Under the **Templates** section, use the search bar and look for `subscriptions`. You will find the **Subscriptions with Stripe** template, which you can use by clicking the **Create function** button.
 
 
@@ -18,11 +18,11 @@ Once inside your project overview, switch to the **Functions** page from the lef
 ![Project settings screen](/images/docs/tutorials/subscriptions-with-stripe/templates-stripe-subscription.png)
 {% /only_light %}
 
-# Create a new function {% #create-function %}
+## Create a new function {% #create-function %}
 
 You will be asked to configure Function's **Name**, **Runtime**, and **Function ID**. Feel free to customise those or leave them as is. Click the **Next** button to continue to the environment variables definition.
 
-# Configure variables {% #configure-variables %}
+## Configure variables {% #configure-variables %}
 
 Toggle **Generate API key on completion** in the `APPWRITE_API_KEY` variable, so you don't need to go and generate it manually. 
 
@@ -34,7 +34,7 @@ If you are self-hosting Appwrite, you will need to change `APPWRITE_ENDPOINT` a
 
 When done, click the **Next** button.
 
-# Connect repository {% #connect-repository %}
+## Connect repository {% #connect-repository %}
 
 In this section, you can decide whether to host your Function's source code in an existing repository or create a new one. 
 
@@ -44,6 +44,6 @@ Click the **Next** button to continue.
 
 You will be asked to connect your project to Git provider. Click the one you want to use, and follow the authorization process. Once done, you will be redirected back to the Appwrite Console. Here, you can configure **Repository name** and toggle if you want to **Keep repository private**. Once done, click the **Next** button to continue to the final step.
 
-# Select branch {% #select-branch %}
+## Select branch {% #select-branch %}
 
 Finally, you can configure repository-related settings such as **Production branch**, **Root directory**, or **Silent mode**. Let's stick to the default values provided by the template and click the **Create** button to create the function.

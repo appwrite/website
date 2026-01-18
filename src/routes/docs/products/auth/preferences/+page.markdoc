@@ -167,7 +167,7 @@ query {
 
 Team preferences let you store settings that apply to an entire team of users. They are well-suited for collaborative features like team-wide themes, notification preferences, or feature toggles.
 
-Team preferences are stored as a JSON object in the team document and are limited to 64kB of data. All team members can access these shared preferences.
+Team preferences are stored as a JSON object in the team row and are limited to 64kB of data. All team members can access these shared preferences.
 
 {% arrow_link href="/docs/products/auth/teams" %}
 Learn more about Appwrite Teams
@@ -323,6 +323,23 @@ val prefs = teams.getPrefs(
 ```
 {% /multicode %}
 
-{% arrow_link href="/docs/products/auth/storing-user-preferences" %}
-Learn more about storing user preferences
-{% /arrow_link %}
+# Browser localStorage {% #localstorage %}
+
+For device-specific preferences that don't need to sync across devices, the browser's localStorage API is a simple option.
+
+- Device-specific: Settings are only available on the current device
+- No server-side processing required
+- Data persists even after browser sessions end
+- Limited to ~5MB per origin
+
+```js
+// Store a preference
+localStorage.setItem('darkMode', 'true');
+
+// Retrieve a preference
+const darkMode = localStorage.getItem('darkMode');
+```
+
+{% info title="Storing larger data" %}
+For complex preference structures or when storing larger amounts of data, Appwrite Databases offer a flexible solution. [Learn more about Appwrite Databases](/docs/products/databases).
+{% /info %}

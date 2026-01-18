@@ -3,6 +3,7 @@
     import { Media } from '$lib/UI';
     import { FooterNav, MainFooter } from '$lib/components';
     import CTA from '$lib/components/BlogCta.svelte';
+    import CallToAction from '../tags/Call_To_Action.svelte';
     import Article from '$lib/components/blog/article.svelte';
     import Breadcrumbs from '$lib/components/blog/breadcrumbs.svelte';
     import Newsletter from '$lib/components/blog/newsletter.svelte';
@@ -17,6 +18,9 @@
         DEFAULT_HOST,
         getInlinedScriptTag
     } from '$lib/utils/metadata';
+    import { isAnnouncement, parseCategories } from '$lib/utils/blog-cta';
+    import { prepareBlogCtaState, type BlogCallToActionInput } from '$lib/utils/blog-mid-cta';
+    import { getPostAuthors } from '$lib/utils/blog-authors';
     import type { AuthorData, PostsData } from '$routes/blog/content';
     import { TITLE_SUFFIX } from '$routes/titles';
     import { getContext, setContext } from 'svelte';
@@ -25,25 +29,22 @@
 
     export let title: string;
     export let description: string;
-    export let author: string;
+    export let author: string | string[];
     export let date: string;
     export let timeToRead: string;
     export let cover: string;
     export let category: string;
-    export let callToAction:
-        | {
-              label: string;
-              url: string;
-              heading: string;
-          }
-        | boolean;
+    export let callToAction: BlogCallToActionInput;
     export let lastUpdated: string;
 
     const posts = getContext<PostsData[]>('posts')?.filter(
         (post) => !(post.unlisted ?? false) && !(post.draft ?? false)
     );
     const authors = getContext<AuthorData[]>('authors');
-    const authorData = authors.find((a) => a.slug === author);
+    const authorSlugs = Array.isArray(author) ? author : [author];
+    const authorData = authorSlugs
+        .map((slug) => authors.find((a) => a.slug === slug))
+        .filter((a): a is AuthorData => a !== undefined);
 
     setContext<LayoutContext>('headings', writable({}));
 
@@ -74,7 +75,30 @@
         return carry;
     }, []);
 
-    callToAction ??= true;
+    const rawContent = getContext<string | null>('rawContent');
+    const slug = page.url.pathname.split('/').filter(Boolean).at(-1) ?? '';
+    const parsedCategories = parseCategories(category);
+    const announcement = isAnnouncement(slug, parsedCategories);
+
+    const midCtaInserted = writable(false);
+    const { midCta, footerCtaProps } = prepareBlogCtaState({
+        callToAction,
+        announcement,
+        category,
+        slug,
+        rawContent
+    });
+
+    if (midCta) {
+        setContext('blog-mid-cta', {
+            level: 1,
+            targetIndex: midCta.targetIndex,
+            count: 0,
+            inserted: midCtaInserted,
+            component: CallToAction,
+            props: midCta.props
+        });
+    }
 
     const currentURL = `https://appwrite.io${page.url.pathname}`;
 </script>
@@ -90,8 +114,8 @@
     <meta name="twitter:description" content={description} />
     <!-- Image -->
     <meta property="og:image" content={DEFAULT_HOST + cover} />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
+    <meta property="og:image:width" content="1463" />
+    <meta property="og:image:height" content="822" />
     <meta name="twitter:image" content={DEFAULT_HOST + cover} />
     <meta name="twitter:card" content="summary_large_image" />
 
@@ -115,7 +139,11 @@
                 date: date,
                 lastUpdated: lastUpdated
             },
-            authorData
+            authorData.length > 0
+                ? authorData.length === 1
+                    ? authorData[0]
+                    : authorData
+                : undefined
         )
     )}
 </svelte:head>
@@ -128,14 +156,14 @@
                 <div class="border-smooth md:border-r md:pr-12 lg:col-span-9">
                     <PostMeta {authorData} {title} {timeToRead} {currentURL} {date} {description} />
                     {#if cover}
-                        <div class="web-media aspect-video">
+                        <div class="web-media my-8! aspect-video">
                             <Media class="block aspect-video object-cover" src={cover} />
                         </div>
                     {/if}
 
-                    <div class="web-article-content text-secondary mt-8 flex flex-col gap-8">
+                    <div class="web-article-content prose prose-large mt-8 flex flex-col gap-8">
                         {#if lastUpdated}
-                            <span class="text-body last-updated-text font-medium">
+                            <span class="text-main-body last-updated-text font-medium">
                                 Updated:
                                 <time dateTime={lastUpdated}>
                                     {formatDate(lastUpdated)}
@@ -150,10 +178,10 @@
                 <TableOfContents {toc} />
             </article>
         </div>
-        {#if typeof callToAction === 'boolean'}
+        {#if footerCtaProps}
+            <CTA {...footerCtaProps} />
+        {:else}
             <CTA />
-        {:else if typeof callToAction === 'object'}
-            <CTA {...callToAction} />
         {/if}
     </div>
 
@@ -164,16 +192,19 @@
                 <section class="mt-8">
                     <div class="grid grid-cols-1 gap-12 md:grid-cols-3">
                         {#each posts.filter((p) => p.title !== title).slice(0, 3) as post}
-                            {@const author = authors.find((a) => a.slug === post.author)}
-                            {#if author}
+                            {@const { postAuthors, authorAvatars, primaryAuthor } = getPostAuthors(
+                                post.author,
+                                authors
+                            )}
+                            {#if primaryAuthor}
                                 <Article
                                     title={post.title}
                                     href={post.href}
                                     cover={post.cover}
                                     date={post.date}
                                     timeToRead={post.timeToRead}
-                                    avatar={author.avatar}
-                                    author={author.name}
+                                    avatars={authorAvatars}
+                                    authors={postAuthors}
                                 />
                             {/if}
                         {/each}
@@ -181,7 +212,7 @@
                 </section>
             </div>
         </div>
-        <div class="relative overflow-hidden pt-[7.5rem]">
+        <div class="relative overflow-hidden">
             <div class="container">
                 <Newsletter />
                 <FooterNav />

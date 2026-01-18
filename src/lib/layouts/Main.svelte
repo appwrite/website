@@ -22,8 +22,11 @@
     import { getAppwriteDashboardUrl } from '$lib/utils/dashboard';
     import { Button, Icon, InlineTag } from '$lib/components/ui';
     import AnnouncementBanner from '$routes/(init)/init/(components)/announcement-banner.svelte';
+    import HackathonBanner from '$routes/(marketing)/(components)/(hackathon)/hackathon-banner.svelte';
+    import TeaserBanner from '$routes/(marketing)/(components)/teaser/teaser-banner.svelte';
 
     export let omitMainId = false;
+    export let hideNavigation = false;
     let theme: 'light' | 'dark' | null = 'dark';
 
     function setupThemeObserver() {
@@ -142,20 +145,38 @@
         }
     }
 
-    $: $isHeaderHidden, updateSideNav();
+    $: ($isHeaderHidden, updateSideNav());
+
+    $: isOfferPage = page.route.id?.includes('/offer-300') ?? false;
+
+    $: mobileButtonHref = isOfferPage ? 'https://apwr.dev/DCMWDSw' : getAppwriteDashboardUrl();
+    $: mobileButtonEvent = isOfferPage
+        ? 'mobile-claim_300_credits_btn-click'
+        : 'main-start_building_btn-click';
+    $: mobileButtonText = isOfferPage ? 'Claim 300$ credits' : 'Start building';
+
+    const handleNav = () => {
+        $isMobileNavOpen = !$isMobileNavOpen;
+        document.body.style.overflow = $isMobileNavOpen ? 'hidden' : '';
+    };
 </script>
 
-<div class="relative">
-    <!--{#if !page.url.pathname.includes('/init')}-->
-    <!--    <div class="border-smooth relative z-10 border-b bg-[#19191C]">-->
-    <!--        <div class="is-special-padding mx-auto">-->
-    <!--            <AnnouncementBanner />-->
-    <!--        </div>-->
-    <!--    </div>-->
-    <!--{/if}-->
+<div class="relative contents h-full">
+    {#if !page.url.pathname.includes('/init')}
+        <div class="border-smooth relative z-10 border-b bg-black" id="top-banner">
+            <div class="is-special-padding mx-auto">
+                <TeaserBanner
+                    showLabel={true}
+                    leftText="Introducing"
+                    logoText="Imagine"
+                    rightText="Build something real"
+                />
+            </div>
+        </div>
+    {/if}
 
     <section
-        class="web-mobile-header {resolvedTheme}"
+        class="web-mobile-header flex! lg:hidden! {resolvedTheme}"
         class:is-transparent={browser && !$isMobileNavOpen}
     >
         <div class="web-mobile-header-start">
@@ -178,15 +199,11 @@
         </div>
         <div class="web-mobile-header-end">
             {#if !$isMobileNavOpen}
-                <Button href={getAppwriteDashboardUrl()} event="main-start_building_btn-click">
-                    <span class="text">Start building</span>
+                <Button href={mobileButtonHref} event={mobileButtonEvent}>
+                    <span class="text">{mobileButtonText}</span>
                 </Button>
             {/if}
-            <Button
-                variant="text"
-                aria-label="open navigation"
-                onclick={() => ($isMobileNavOpen = !$isMobileNavOpen)}
-            >
+            <Button variant="text" aria-label="open navigation" onclick={handleNav}>
                 {#if $isMobileNavOpen}
                     <Icon aria-hidden="true" name="close" />
                 {:else}
@@ -197,7 +214,7 @@
     </section>
 
     <header
-        class="web-main-header is-special-padding hidden lg:block {resolvedTheme} is-transparent"
+        class="web-main-header is-special-padding hidden lg:block! {resolvedTheme} is-transparent"
     >
         <div
             class="web-main-header-wrapper"
@@ -220,29 +237,34 @@
                         width="130"
                     />
                 </a>
-                <MainNav initialized={$initialized} links={navLinks} />
+                {#if !hideNavigation}
+                    <MainNav initialized={$initialized} links={navLinks} />
+                {/if}
             </div>
             <div class="web-main-header-end">
                 <Button
                     variant="text"
-                    href={SOCIAL_STATS.GITHUB.LINK}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    href={isOfferPage ? undefined : SOCIAL_STATS.GITHUB.LINK}
+                    target={isOfferPage ? undefined : '_blank'}
+                    rel={isOfferPage ? undefined : 'noopener noreferrer'}
                     class="web-u-inline-width-100-percent-mobile"
+                    style={isOfferPage ? 'pointer-events: none;' : ''}
                 >
                     <Icon name="star" aria-hidden="true" />
                     <span class="text">Star on GitHub</span>
                     <InlineTag>{SOCIAL_STATS.GITHUB.STAT}</InlineTag>
                 </Button>
-                <IsLoggedIn />
+                <IsLoggedIn offerButton={isOfferPage} />
             </div>
         </div>
     </header>
-    <MobileNav bind:open={$isMobileNavOpen} links={navLinks} />
+    {#if !hideNavigation}
+        <MobileNav bind:open={$isMobileNavOpen} links={navLinks} offerButton={isOfferPage} />
+    {/if}
 
     <main
         class="relative space-y-6"
-        class:web-u-hide-mobile={$isMobileNavOpen}
+        class:invisible={$isMobileNavOpen}
         id={omitMainId ? undefined : 'main'}
     >
         <slot />

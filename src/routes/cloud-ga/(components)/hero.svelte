@@ -1,0 +1,79 @@
+<script>
+    import Numbers from './numbers.svelte';
+    import Cell from './grid-system/cell.svelte';
+    import Grid from './grid-system/grid.svelte';
+    import { cn } from '$lib/utils/cn';
+
+    const title = 'Appwrite Cloud is Generally Available'.split(' ');
+
+    const numbers = [
+        { label: 'Top 300', description: 'GitHub repos' },
+        { label: '300k+', description: 'Developers' },
+        { label: '300+', description: 'PoP locations' },
+        { label: '20B+', description: 'Monthly DB operations' }
+    ];
+</script>
+
+<div
+    class="from-accent/8 relative -top-24 -mb-24 flex justify-center overflow-y-hidden bg-gradient-to-b to-transparent to-60% px-4 pt-24"
+>
+    <div class="flex w-full max-w-6xl flex-col justify-center">
+        <Grid rows={2}>
+            <Cell column={3} horizontalCenter verticalCenter class="relative z-10 pt-12 md:pt-40">
+                <div class="max-w-4xl space-y-8 px-4">
+                    <h1
+                        class="text-headline font-aeonik-pro text-primary max-w-4xl gap-4 text-balance"
+                    >
+                        Appwrite Cloud is Generally Available<span class="text-accent">_</span>
+                    </h1>
+                    <div class="text-description text-secondary max-w-3xl space-y-8 font-medium">
+                        <p class="animate-text" style:animation-delay="600ms">
+                            Appwrite Cloud was designed to make it easier to build with Appwrite
+                            because we know self-hosting is not for everyone.
+                        </p>
+                        <p class="animate-text" style:animation-delay="700ms">
+                            Today, Appwrite Cloud is powering over 300,000 projects, and we are both
+                            proud and excited to announce its transition to general availability.
+                        </p>
+                    </div>
+                </div>
+            </Cell>
+            {#each Array.from({ length: 5 }) as _, i}
+                {@const columnStart = i + 1}
+                {@const lineArray = 6}
+                {@const lines = Array.from({ length: lineArray }).map((_, i) => {
+                    let isPink;
+                    if (i === 0) isPink = true;
+                    else if (i === 1) isPink = false;
+                    else isPink = Math.random() > 0.5;
+
+                    return {
+                        height: isPink ? 143 : 16,
+                        color: isPink ? 'bg-accent' : 'bg-[#85DBD8]'
+                    };
+                })}
+                {#if i !== 1 && i !== 2}
+                    <Cell {columnStart} class="absolute hidden md:block">
+                        <div
+                            class={cn('animate-drop absolute flex flex-col gap-4', {
+                                'left-0 -ml-px': i !== 4,
+                                'right-0 -mr-px': i === 4,
+                                '[animation-direction:reverse]': i === 3
+                            })}
+                        >
+                            {#each lines as line}
+                                <div
+                                    class={cn('relative h-(--height) w-px', line.color)}
+                                    style:--height="{line.height}px"
+                                ></div>
+                            {/each}
+                        </div>
+                    </Cell>
+                {/if}
+            {/each}
+            <Cell column={4} class="px-4 pt-8 pb-12 md:pb-40">
+                <Numbers {numbers} />
+            </Cell>
+        </Grid>
+    </div>
+</div>

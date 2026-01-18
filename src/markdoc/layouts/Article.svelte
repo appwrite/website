@@ -8,7 +8,7 @@
                 title: string;
                 step?: number;
                 visible: boolean;
-                level?: number;
+                level: number;
             }
         >
     >;
@@ -18,6 +18,7 @@
     import { MainFooter } from '$lib/components';
     import SeoOgImage from '$lib/components/SeoOgImage.svelte';
     import { DocsArticle } from '$lib/layouts';
+    import PromptBanner from '$lib/components/PromptBanner.svelte';
     import type { TocItem } from '$lib/layouts/DocsArticle.svelte';
     import { DOCS_TITLE_SUFFIX, OVERVIEW_TITLE_SUFFIX } from '$routes/titles';
     import { getContext, setContext } from 'svelte';
@@ -87,6 +88,7 @@
             <li>{readtime} min</li>
         {/if}
     </svelte:fragment>
+    <PromptBanner />
     <slot />
 </DocsArticle>
 <MainFooter variant="docs" />

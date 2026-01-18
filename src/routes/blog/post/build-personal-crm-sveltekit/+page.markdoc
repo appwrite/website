@@ -7,6 +7,7 @@ cover: /images/blog/build-personal-crm-sveltekit/cover.png
 timeToRead: 10
 author: aditya-oberai
 category: tutorial
+lastUpdated: 2025-10-14
 ---
 
 Keeping track of people is hard. Between networking events, Twitter threads, LinkedIn DMs, and emails, it's easy to lose context on who someone is and why they matter to you.
@@ -114,7 +115,11 @@ async function upsertDocuments(contacts) {
 // Delete a single contact
 async function deleteDocument(id) {
 	try {
-		return await databases.deleteDocument(databaseId, collectionId, id);
+		return await databases.deleteDocument({
+			databaseId,
+			collectionId,
+			documentId: id
+		});
 	} catch (error) {
 		console.error('Error deleting document:', error);
 		throw new Error('Failed to delete document');
@@ -124,7 +129,10 @@ async function deleteDocument(id) {
 // Delete all contacts
 async function deleteDocuments() {
 	try {
-		return await databases.deleteDocuments(databaseId, collectionId, []);
+		return await databases.deleteDocuments({
+			databaseId,
+			collectionId,
+		});
 	} catch (error) {
 		console.error('Error deleting documents:', error);
 		throw new Error('Failed to delete documents');
@@ -134,7 +142,10 @@ async function deleteDocuments() {
 // List contacts
 async function listDocuments() {
 	try {
-		return await databases.listDocuments(databaseId, collectionId);
+		return await databases.listDocuments({
+			databaseId,
+			collectionId
+		});
 	} catch (error) {
 		console.error('Error fetching documents:', error);
 		throw new Error('Failed to fetch documents');
@@ -554,6 +565,28 @@ npm run dev
 You can then visit `https://localhost:5173` in your browser and try out the app.
 
 ![Personal CRM demo](/images/blog/build-personal-crm-sveltekit/personal-crm-demo.png)
+
+# Frequently asked questions (FAQs)
+
+**1. What’s the best tech stack for building a simple CRM or contact manager?**
+
+If you’re aiming for speed and control, a lightweight frontend like SvelteKit paired with a platform such as Appwrite is best. You get ready-to-use APIs for data, auth, and storage — no need to manage servers — and can still customize everything when needed.
+
+**2. How can I build a CRUD app quickly without setting up a full backend?**
+
+Use a service that gives you REST or SDK-based APIs for data operations. Appwrite, Firebase, or PocketBase let you perform create, read, update, and delete actions straight from your frontend. You just define your data schema once and use their SDKs instead of writing backend routes manually.
+
+**3. What’s the easiest way to sync frontend state with backend data?**
+
+If you’re using frameworks like SvelteKit or React, pair them with APIs that support real-time updates or bulk operations. Appwrite’s Realtime and Bulk APIs make syncing large data changes smooth, so the UI always reflects the latest backend state without page reloads.
+
+**4. How can I handle bulk data updates efficiently in web apps?**
+
+Instead of looping over every record, use batch APIs (like Appwrite’s upsertDocuments()). It minimizes network requests, prevents throttling, and speeds up updates in spreadsheet-style apps.
+
+**5. What’s the simplest way to deploy a full-stack web app?**
+
+If you’re using Appwrite, you can deploy both the backend and frontend in one place with Appwrite Sites. Otherwise, host your frontend on Vercel or Netlify, and connect it to an API from Appwrite, Firebase, or your own Node.js backend.
 
 # Next steps
 

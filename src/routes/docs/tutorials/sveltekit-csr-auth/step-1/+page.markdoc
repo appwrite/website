@@ -13,7 +13,7 @@ category: Auth
 Appwrite takes away your stress of building and maintaining a backend. Appwrite helps you implement authentication, databases, file storage, and respond to real-time events with **secure** APIs out of the box. 
 If you're a Svelte developer, examples in this guide shows you how Appwrite can help you add authentication to Svelte apps faster.
 
-# Before you start {% #before-you-start %}
+## Before you start {% #before-you-start %}
 
 Even if you've never tried Appwrite, you will get an idea of what it'll feel like to build with Svelte and Appwrite.
 

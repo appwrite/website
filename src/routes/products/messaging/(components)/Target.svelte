@@ -235,7 +235,10 @@
                 />
 
                 <foreignObject x={textPos[0]} y={textPos[1]} width="360" height="64">
-                    <span class="text-micro text-primary uppercase" data-active={$selected[i]}>
+                    <span
+                        class="text-eyebrow font-aeonik-fono text-primary uppercase"
+                        data-active={$selected[i]}
+                    >
                         {device.value}
                     </span>
                 </foreignObject>

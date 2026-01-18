@@ -1,4 +1,5 @@
-<script context="module">
+<script module>
+    export { default as Blockquote } from './blockquote.svelte';
     export { default as Section } from './Section.svelte';
     export { default as MultiCode } from './MultiCode.svelte';
     export { default as Info } from './Info.svelte';
@@ -20,5 +21,6 @@
     export { default as Youtube } from './Youtube.svelte';
     export { default as Call_To_Action } from './Call_To_Action.svelte';
     export { default as Storage_Image } from './Storage_Image.svelte';
+    export { default as Video_Card } from './Video_Card.svelte';
     export { default as Appwrite_Network_Map } from '../../lib/components/appwrite-network/map.svelte';
 </script>

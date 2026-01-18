@@ -14,10 +14,10 @@ While we recommend you create deployments through [automatic Git deployments](/
 
 ## Configure CLI deployments {% #configure-cli-deployments %}
 If you need to target a different project, API endpoint, change the path or entry point of your site, or update any of the other configuration options, 
-you can do so by editing the `appwrite.json` file.
+you can do so by editing the `appwrite.config.json` file.
 
 {% arrow_link href="/docs/tooling/command-line/sites#appwritejson" %}
-Learn more about appwrite.json
+Learn more about appwrite.config.json
 {% /arrow_link %}
 
 # Debugging

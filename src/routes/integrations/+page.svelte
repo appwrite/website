@@ -8,7 +8,7 @@
     import Input from '$lib/components/ui/input.svelte';
     import { type ResultType, Fuse } from '$lib/integrations';
     import { Main } from '$lib/layouts';
-    import { classNames } from '$lib/utils/classnames';
+    import { cn } from '$lib/utils/cn';
     import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
     import { TITLE_SUFFIX } from '$routes/titles';
     import { onDestroy, onMount } from 'svelte';
@@ -104,7 +104,7 @@
                 <div
                     class="l-integrations-hero web-u-max-width-680 flex flex-col justify-center gap-5"
                 >
-                    <div class="text-micro text-primary uppercase">
+                    <div class="text-eyebrow text-primary uppercase">
                         INTEGRATIONS<span class="web-u-color-text-accent">_</span>
                     </div>
                     <h1 class="text-headline font-aeonik-pro text-primary">
@@ -145,15 +145,15 @@
                         <section class="flex flex-col">
                             <section class="flex flex-col gap-4">
                                 <h2
-                                    class="web-side-nav-header text-micro whitespace-nowrap uppercase"
+                                    class="web-side-nav-header text-eyebrow whitespace-nowrap uppercase"
                                 >
                                     Platform
                                 </h2>
                                 <ul class="flex flex-wrap gap-2" class:disabled={hasQuery}>
-                                    {#each platforms as platform}
+                                    {#each platforms as platform (platform)}
                                         <li>
                                             <button
-                                                class={classNames(
+                                                class={cn(
                                                     'tag bg-greyscale-800 border-greyscale-700 h-8 cursor-pointer rounded-full border px-3 text-sm font-light',
                                                     {
                                                         'bg-white text-black':
@@ -171,7 +171,7 @@
                             <div class="web-u-sep-block-start my-6"></div>
                             <section class="flex flex-col gap-4">
                                 <h2
-                                    class="web-side-nav-header text-micro whitespace-nowrap uppercase"
+                                    class="web-side-nav-header text-eyebrow whitespace-nowrap uppercase"
                                 >
                                     Categories
                                 </h2>
@@ -183,7 +183,7 @@
                                         onchange={(e) =>
                                             goto(`#${e.currentTarget.value.toLowerCase()}`)}
                                     >
-                                        {#each data.categories as category}
+                                        {#each data.categories as category (category.slug)}
                                             {@const integrations = data.integrations.find(
                                                 (i) => i.category === category.slug
                                             )}
@@ -202,7 +202,7 @@
                                 </div>
 
                                 <ul class="hidden flex-col gap-4 sm:flex" class:disabled={hasQuery}>
-                                    {#each data.categories as category}
+                                    {#each data.categories as category (category.slug)}
                                         {@const integrations = data.integrations.find(
                                             (i) => i.category === category.slug
                                         )}
@@ -230,13 +230,13 @@
                                     <header class="flex flex-col gap-1">
                                         <h2 class="text-label text-primary">Search results</h2>
                                         <p class="text-description">
-                                            {result.length > 0 ? result.length : 'No'} results found
-                                            for "{query}"
+                                            {result.length > 0 ? result.length : 'No'} results found for
+                                            "{query}"
                                         </p>
                                     </header>
                                     <div class="l-max-size-list-cards flex flex-col gap-8">
                                         <ul class="l-grid-1">
-                                            {#each result.map((d) => d.item) as item}
+                                            {#each result.map((d) => d.item) as item, i (i)}
                                                 <li>
                                                     <a
                                                         href={item.href}
@@ -281,7 +281,7 @@
 
                                     <div>
                                         <ul class="web-feature-grid grid gap-4 sm:grid-cols-2">
-                                            {#each data.featured as item}
+                                            {#each data.featured as item, i (i)}
                                                 <li
                                                     class="web-feature-grid-item is-two-columns-desktop-only relative"
                                                 >
@@ -306,7 +306,7 @@
                                                                 height="40"
                                                             />
                                                             <div
-                                                                class="text-body gap-2 font-medium"
+                                                                class="text-main-body gap-2 font-medium"
                                                             >
                                                                 <span class="text-primary mt-3">
                                                                     {item.integration.title}
@@ -325,7 +325,7 @@
                                     </div>
                                 </section>
 
-                                {#each data.integrations as { category, heading, description, integrations }}
+                                {#each data.integrations as { category, heading, description, integrations }, i (i)}
                                     {#if integrations?.length > 0 && (activePlatform === 'All' || integrations.some( (i) => i.platform.includes(activePlatform) ))}
                                         <section
                                             class="l-max-size-list-cards-section flex flex-col gap-8"
@@ -427,7 +427,7 @@
                         >
                             Become a Technology Partner
                         </h2>
-                        <p class="text-body font-medium">
+                        <p class="text-main-body font-medium">
                             Join our Technology Partners program to integrate your solutions with
                             Appwrite’s API, enhancing functionality and expanding your reach.
                         </p>
@@ -527,7 +527,7 @@
         scroll-margin-top: f.pxToRem(120);
     }
     .l-max-size-list-cards {
-        &:where(:global(:has(> ul > li:nth-child(10)))) {
+        &:where(:has(> ul > li:nth-child(10))) {
             position: relative;
 
             &::before {
@@ -546,17 +546,10 @@
                 );
                 transition: var(--transition);
             }
-            .l-float-button {
-                position: absolute;
-                inset-inline: 0;
-                inset-block-end: f.pxToRem(20);
-                margin-inline: auto;
-                display: flex;
-            }
         }
     }
 
-    :where(:global(:target)) {
+    :where(:target) {
         .l-max-size-list-cards {
             overflow: visible;
             max-block-size: none;
@@ -564,9 +557,6 @@
             &::before {
                 opacity: 0;
                 pointer-events: none;
-            }
-            .l-float-button {
-                display: none;
             }
         }
     }

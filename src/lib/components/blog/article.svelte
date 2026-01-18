@@ -1,47 +1,67 @@
 <script lang="ts">
     import Media from '$lib/UI/Media.svelte';
     import { formatDate } from '$lib/utils/date';
+    import type { AuthorInfo } from '$lib/utils/blog-authors';
 
-    export let title: string;
-    export let cover: string;
-    export let href: string;
-    export let date: Date;
-    export let timeToRead: number;
-    export let author: string;
-    export let avatar: string;
+    interface Props {
+        title: string;
+        cover: string;
+        href: string;
+        date: Date;
+        timeToRead: number;
+        authors: AuthorInfo[];
+        avatars: string[];
+    }
+
+    const { title, cover, href, date, timeToRead, authors, avatars }: Props = $props();
+
+    const authorAvatarPairs = $derived(
+        avatars.map((avatar, i) => ({ avatar, author: authors[i] })).filter(({ avatar }) => avatar)
+    );
 </script>
 
-<a class="group flex w-full flex-col gap-8 bg-transparent pb-3 transition" {href}>
-    <div class="overflow-hidden rounded-lg">
+<div class="group flex w-full flex-col gap-8 pb-3 transition">
+    <a class="block overflow-hidden rounded-lg bg-transparent" {href}>
         <Media
             src={cover}
             class="aspect-video transition duration-250 ease-in-out group-hover:scale-105"
             alt={title}
         />
-    </div>
+    </a>
     <div class="flex flex-col gap-5">
-        <h4 class="text-label text-primary line-clamp-2">
-            {title}
-        </h4>
+        <div class="text-caption text-secondary">
+            {formatDate(date)} - {timeToRead} min
+        </div>
+        <a {href} class="bg-transparent">
+            <h4 class="text-label text-primary line-clamp-2 hover:underline">
+                {title}
+            </h4>
+        </a>
 
         <div class="flex items-center gap-2">
-            <img
-                class="size-6 rounded-full"
-                loading="lazy"
-                src={avatar}
-                width="24"
-                height="24"
-                alt={author}
-            />
+            <div class="flex items-center">
+                {#each authorAvatarPairs as { avatar, author }, i}
+                    <img
+                        class="size-6 rounded-full ring-2 ring-[#19191c]"
+                        style="margin-inline-start: {i > 0
+                            ? '-8px'
+                            : '0'}; z-index: {authorAvatarPairs.length - i}"
+                        loading="lazy"
+                        src={avatar}
+                        width="24"
+                        height="24"
+                        alt={author?.name ?? ''}
+                    />
+                {/each}
+            </div>
             <div class="flex items-baseline gap-3">
-                <h4 class="text-sub-body text-primary">{author}</h4>
-                <ul class="text-caption flex items-center gap-2">
-                    <li>
-                        {formatDate(date)}
-                    </li>
-                    <li>{timeToRead} min</li>
-                </ul>
+                <h4 class="text-sub-body text-primary">
+                    {#each authors as author, i}
+                        <a href={author.href} class="web-link">{author.name}</a
+                        >{#if i < authors.length - 1},{' '}{/if}
+                    {/each}
+                </h4>
             </div>
         </div>
     </div>
-</a>
+</div>

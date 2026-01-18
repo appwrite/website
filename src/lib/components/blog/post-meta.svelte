@@ -3,13 +3,29 @@
     import { handleCopy } from '$lib/utils/copy';
     import { formatDate } from '$lib/utils/date';
     import type { AuthorData } from '$routes/blog/content';
+    import { page } from '$app/state';
 
-    export let date: string = new Date().toISOString();
-    export let timeToRead: string = '0';
-    export let title: string = '';
-    export let description: string = '';
-    export let authorData: Partial<AuthorData> = {};
-    export let currentURL: string = '';
+    interface Props {
+        date?: string;
+        timeToRead?: string;
+        title?: string;
+        description?: string;
+        authorData?: Partial<AuthorData> | Partial<AuthorData>[];
+        currentURL?: string;
+    }
+
+    const {
+        date = new Date().toISOString(),
+        timeToRead = '0',
+        title = '',
+        description = '',
+        authorData = {},
+        currentURL = ''
+    }: Props = $props();
+
+    const authorsArray = $derived(
+        Array.isArray(authorData) ? authorData : authorData ? [authorData] : []
+    );
 
     const getShareLink = (shareOption: SocialShareOption) => {
         const blogPostUrl = encodeURI(currentURL);
@@ -30,36 +46,44 @@
             {title}
         </h1>
         {#if description}
-            <p class="text-description text-secondary mt-2">
+            <p class="text-description text-secondary font-medium">
                 {description}
             </p>
         {/if}
     </div>
 
     <div class="border-smooth mb-8 flex flex-col justify-between border-b py-8 md:flex-row">
-        {#if authorData}
-            <a href={authorData.href} class="flex items-center gap-2">
-                {#if authorData.avatar}
-                    <img
-                        class="size-11 rounded-full"
-                        src={authorData.avatar}
-                        alt={authorData.name}
-                        loading="lazy"
-                        width="44"
-                        height="44"
-                    />
-                {/if}
-                <div class="flex flex-col">
-                    <h4 class="text-sub-body text-primary">
-                        {authorData.name}
-                    </h4>
-                    <p class="text-caption">{authorData.role}</p>
-                </div>
-            </a>
+        {#if authorsArray.length > 0}
+            <div class="flex flex-wrap items-center gap-4">
+                {#each authorsArray as author}
+                    {#if author}
+                        <a href={author.href} class="flex items-center gap-2">
+                            {#if author.avatar}
+                                <img
+                                    class="size-11 rounded-full"
+                                    src={author.avatar}
+                                    alt={author.name || ''}
+                                    loading="lazy"
+                                    width="44"
+                                    height="44"
+                                />
+                            {/if}
+                            <div class="flex flex-col">
+                                <h4 class="text-sub-body text-primary">
+                                    {author.name}
+                                </h4>
+                                {#if author.role}
+                                    <p class="text-caption">{author.role}</p>
+                                {/if}
+                            </div>
+                        </a>
+                    {/if}
+                {/each}
+            </div>
         {/if}
 
         <div class="mt-4 flex items-center gap-4">
-            <span class="text-micro text-secondary uppercase">SHARE</span>
+            <span class="text-eyebrow text-secondary uppercase">SHARE</span>
 
             <ul class="flex gap-2">
                 {#each socialSharingOptions as sharingOption}
@@ -78,7 +102,7 @@
                         {:else}
                             <button
                                 aria-label={sharingOption.label}
-                                on:click={() => handleCopy(currentURL)}
+                                onclick={() => handleCopy(currentURL)}
                             >
                                 <span class={sharingOption.icon} aria-hidden="true"></span>
                             </button>

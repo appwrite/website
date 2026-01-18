@@ -144,7 +144,7 @@
                                     id="message"
                                     placeholder="Your message"
                                     bind:value={message}
-                                />
+                                ></textarea>
                             </li>
                         </ul>
                     </div>

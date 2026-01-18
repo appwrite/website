@@ -50,7 +50,9 @@
             >
         </a>
     {/if}
-    <h3 class="text-x-micro font-aeonik-fono text-primary tracking-loose mt-4 block uppercase">
+    <h3
+        class="leading-micro tracking-tigher font-aeonik-fono text-primary tracking-loose mt-4 block text-[0.625rem] uppercase"
+    >
         {title}
     </h3>
 </div>

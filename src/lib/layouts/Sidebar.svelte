@@ -11,6 +11,8 @@
     export type NavGroup = {
         label?: string;
         items: Array<NavLink>;
+        collapsible?: boolean;
+        initiallyCollapsed?: boolean;
     };
 
     export type NavParent = {
@@ -40,6 +42,27 @@
 
     function isNavLink(item: NavLink | NavGroup): item is NavLink {
         return 'href' in item;
+    }
+
+    let collapsedGroups = $state<Record<number, boolean>>({});
+
+    $effect(() => {
+        // Initialize collapsed state for collapsible groups
+        navigation.forEach((navGroup, index) => {
+            if (!isNavLink(navGroup) && navGroup.collapsible) {
+                if (!(index in collapsedGroups)) {
+                    collapsedGroups[index] = navGroup.initiallyCollapsed ?? true;
+                }
+            }
+        });
+    });
+
+    function isCollapsed(index: number): boolean {
+        return collapsedGroups[index] ?? true;
+    }
+
+    function toggleGroup(index: number) {
+        collapsedGroups[index] = !isCollapsed(index);
     }
 </script>
 
@@ -74,12 +97,12 @@
                     >
                         <span class="icon-cheveron-left" aria-hidden="true"></span>
                     </a>
-                    <span class="web-side-nav-wrapper-parent-title text-micro uppercase"
+                    <span class="web-side-nav-wrapper-parent-title text-eyebrow uppercase"
                         >{parent.label}</span
                     >
                 </section>
             {/if}
-            {#each navigation as navGroup}
+            {#each navigation as navGroup, index}
                 <section>
                     {#if isNavLink(navGroup)}
                         {#if expandable && !$layoutState.showSidenav}
@@ -94,26 +117,53 @@
                         {/if}
                     {:else}
                         {#if navGroup.label}
-                            <h2 class="web-side-nav-header text-micro whitespace-nowrap uppercase">
-                                {navGroup.label}
-                            </h2>
+                            {#if navGroup.collapsible}
+                                <button
+                                    class="web-side-nav-header-collapsible text-eyebrow web-side-nav-header mb-2 flex w-full cursor-pointer items-center pr-3 uppercase"
+                                    onclick={(e) => {
+                                        e.preventDefault();
+                                        e.stopPropagation();
+                                        toggleGroup(index);
+                                    }}
+                                    aria-expanded={!isCollapsed(index)}
+                                    type="button"
+                                >
+                                    <span>{navGroup.label}</span>
+                                    <span
+                                        class="icon-cheveron-down ml-auto"
+                                        aria-hidden="true"
+                                        style:transform={isCollapsed(index)
+                                            ? 'rotate(0deg)'
+                                            : 'rotate(180deg)'}
+                                        style:transition="transform 0.2s ease-in-out"
+                                    ></span>
+                                </button>
+                            {:else}
+                                <h2
+                                    class="text-eyebrow web-side-nav-header mb-2 whitespace-nowrap uppercase"
+                                >
+                                    {navGroup.label}
+                                </h2>
+                            {/if}
                         {/if}
-                        <ul>
-                            {#each navGroup.items as groupItem}
-                                <li>
-                                    {#if expandable && !$layoutState.showSidenav}
-                                        <Tooltip placement="right">
+                        {#if !navGroup.collapsible || !isCollapsed(index)}
+                            <ul>
+                                {#each navGroup.items as groupItem}
+                                    <li>
+                                        {#if expandable && !$layoutState.showSidenav}
+                                            <Tooltip placement="right">
+                                                <SidebarNavButton {groupItem} />
+                                                {#snippet tooltip()}
+                                                    <span>{groupItem.label}</span>
+                                                {/snippet}
+                                            </Tooltip>
+                                        {:else}
                                             <SidebarNavButton {groupItem} />
-                                            {#snippet tooltip()}
-                                                <span>{groupItem.label}</span>
-                                            {/snippet}
-                                        </Tooltip>
-                                    {:else}
-                                        <SidebarNavButton {groupItem} />
-                                    {/if}
-                                </li>
-                            {/each}
-                        </ul>
+                                        {/if}
+                                    </li>
+                                {/each}
+                            </ul>
+                        {/if}
                     {/if}
                 </section>
             {/each}

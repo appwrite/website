@@ -46,17 +46,17 @@ Currently, Transformers are leading benchmarks on most image classification data
 
 Finding data to train these architectures used to be the most challenging part of developing state-of-the-art image classification models. Now, however, there is standardized high-quality labeled data that is offered entirely free for any researchers who require it. Next, we'll cover some of the most popular datasets.
 
-### [ImageNet](https://www.image-net.org/)
+### ImageNet
 
-The most well-known dataset, and perhaps the oldest one still in use, ImageNet is a collection of over 14 million labeled images built up over ten years, with over a million of those images also containing bounding box data on top of that. ImageNet is most famous for its competition, the ImageNet Large Scale Visual Recognition Challenge (ILSVRC for short), held annually from 2010 until 2017. It made waves across the industry when in 2012, AlexNet beat all other algorithms by over 10.8% using a convolutional neural network, sparking a boom in computer vision research.
+The most well-known dataset, and perhaps the oldest one still in use, [ImageNet](https://www.image-net.org/) is a collection of over 14 million labeled images built up over ten years, with over a million of those images also containing bounding box data on top of that. ImageNet is most famous for its competition, the ImageNet Large Scale Visual Recognition Challenge (ILSVRC for short), held annually from 2010 until 2017. It made waves across the industry when in 2012, AlexNet beat all other algorithms by over 10.8% using a convolutional neural network, sparking a boom in computer vision research.
 
-### [CIFAR-10/100](https://www.cs.toronto.edu/~kriz/cifar.html)
-Released in 2009 by the Canadian Institute for Advanced Research, CIFAR-10 is now another widely used benchmark for image classification models. It is a collection of 60,000 32x32 color images, each labeled with one of 10 classes. It is a subset of the 80 Million Tiny Images subset, which was also released in 2009.
+### CIFAR-10/100
+Released in 2009 by the Canadian Institute for Advanced Research, [CIFAR-10/100](https://www.cs.toronto.edu/~kriz/cifar.html) is now another widely used benchmark for image classification models. It is a collection of 60,000 32x32 color images, each labeled with one of 10 classes. It is a subset of the 80 Million Tiny Images subset, which was also released in 2009.
 
 CIFAR-100 is another CIFAR dataset with 100 classes, each containing 600 images. It is also heavily used in benchmarking and training models.
 
-### [MNIST](https://yann.lecun.com/exdb/mnist/)
-Released by Yann LeCun and Corinna Cortes, MNIST is an extensive database of over 60,000 images of handwritten digits commonly used to train image classification models that power OCR technology. Each image is 28x28 pixels. MNIST's training data was taken from American Census Bureau employees, while the testing data was from American high school students.
+### MNIST
+Released by Yann LeCun and Corinna Cortes, [MNIST](https://yann.lecun.com/exdb/mnist/) is an extensive database of over 60,000 images of handwritten digits commonly used to train image classification models that power OCR technology. Each image is 28x28 pixels. MNIST's training data was taken from American Census Bureau employees, while the testing data was from American high school students.
 
 MNIST used to be the hello-world dataset for Tensorflow's image classification tutorial; however, it has since been replaced with 3,700 pictures of flowers to demonstrate better how to use Tensorflow with color images.
 
@@ -152,7 +152,7 @@ This code will download a bunch of sample images of flowers, create two groups o
 Next, initialize a new function using the Appwrite CLI by using:
 
 ```bash
-appwrite init project # Use if you don't already have an appwrite.json
+appwrite init project # Use if you don't already have an appwrite.config.json
 appwrite init function
 ```
 
@@ -242,7 +242,7 @@ Pillow
 
 ### Step 4: Deploy your function
 
-Move the `model.tflite` file that was created into the same directory as the `main.py` file and then change directories to that containing the `appwrite.json`. This `model.tflite` is quite a small file, so store it in the function. If using larger models, upload them to Appwrite Storage and then use `getFileDownload` to download them to the function. 
+Move the `model.tflite` file that was created into the same directory as the `main.py` file and then change directories to that containing the `appwrite.config.json`. This `model.tflite` is quite a small file, so store it in the function. If using larger models, upload them to Appwrite Storage and then use `getFileDownload` to download them to the function. 
 
 With the file now copied, run appwrite deploy function and select the function to deploy it to Appwrite.
 

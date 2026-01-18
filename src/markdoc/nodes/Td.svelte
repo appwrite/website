@@ -12,7 +12,7 @@
 </script>
 
 <td class="px-3 py-[0.5625rem] text-sm leading-[1.375rem]" {align} {colspan} {rowspan}>
-    <div class:center-align={isCodeInsideTd}>
+    <div class:center-align={isCodeInsideTd} class="td-wrapper">
         <slot />
     </div>
 </td>

@@ -6,6 +6,7 @@
     import { Main } from '$lib/layouts';
     import { createDebounce } from '$lib/utils/debounce';
     import { DEFAULT_HOST } from '$lib/utils/metadata';
+    import { getPostAuthors } from '$lib/utils/blog-authors';
     import { TITLE_SUFFIX } from '$routes/titles';
     import { tick } from 'svelte';
 
@@ -24,6 +25,7 @@
     let isEnd = $state(false);
     let isStart = $state(true);
     let categoriesElement: HTMLElement;
+    let isHovering = $state(false);
 
     let articlesHeader: HTMLElement;
 
@@ -105,6 +107,25 @@
         isEnd = Math.ceil(scrollLeft + offsetWidth) >= scrollWidth;
     }
 
+    function scrollCategories(direction: 'left' | 'right') {
+        if (!categoriesElement) return;
+
+        const scrollAmount = 200;
+        const currentScroll = categoriesElement.scrollLeft;
+        const targetScroll =
+            direction === 'left'
+                ? Math.max(0, currentScroll - scrollAmount)
+                : Math.min(
+                      categoriesElement.scrollWidth - categoriesElement.offsetWidth,
+                      currentScroll + scrollAmount
+                  );
+
+        categoriesElement.scrollTo({
+            left: targetScroll,
+            behavior: 'smooth'
+        });
+    }
+
     const title = 'Blog' + TITLE_SUFFIX;
     const description =
         'Stay updated with the latest product news, insights, and tutorials from the Appwrite team. Our blog covers everything for hassle-free backend development.';
@@ -129,8 +150,8 @@
 </svelte:head>
 
 <Main>
-    <div class="web-big-padding-section" style:overflow-x="hidden">
-        <div class="relative py-10">
+    <div class="web-big-padding-section overflow-x-hidden">
+        <div class="border-smooth relative border-b py-10">
             <div
                 class="absolute"
                 style="pointer-events:none;inset-inline-start:0; inset-block-end:0;"
@@ -192,25 +213,32 @@
                 <div class="container">
                     <h1 class="text-display font-aeonik-pro text-primary">Blog</h1>
                     {#if featured}
-                        {@const author = data.authors.find(
-                            (author) => author.slug === featured.author
-                        )}
+                        {@const {
+                            postAuthors: featuredAuthors,
+                            authorAvatars: featuredAvatars,
+                            primaryAuthor: author
+                        } = getPostAuthors(featured.author, data.authors)}
                         <article class="web-feature-article mt-12">
-                            <a href={featured.href} class="web-feature-article-image">
+                            <a
+                                href={featured.href}
+                                class="web-feature-article-image h-fit overflow-hidden rounded-lg"
+                            >
                                 <img
                                     src={featured.cover}
-                                    class="web-image-ratio-4/3"
+                                    class="aspect-video transition-transform duration-250 hover:scale-102"
                                     loading="lazy"
                                     alt="cover"
                                 />
                             </a>
-                            <div class="web-feature-article-content">
+                            <div class="web-feature-article-content w-full">
                                 <header class="web-feature-article-header">
                                     <ul class="web-metadata text-caption web-is-only-mobile">
                                         <li>{featured.timeToRead} min</li>
                                     </ul>
                                     <a href={featured.href}>
-                                        <h2 class="text-title font-aeonik-pro text-primary">
+                                        <h2
+                                            class="text-title font-aeonik-pro text-primary text-balanced"
+                                        >
                                             {featured.title}
                                         </h2>
                                     </a>
@@ -220,26 +248,41 @@
                                 </p>
                                 <div class="web-author">
                                     <div class="flex items-center gap-2">
-                                        <img
-                                            class="web-author-image"
-                                            src={author?.avatar}
-                                            alt={author?.name}
-                                            loading="lazy"
-                                            width="24"
-                                            height="24"
-                                        />
+                                        <div
+                                            class="flex items-center"
+                                            style="margin-inline-end: -8px;"
+                                        >
+                                            {#each featuredAvatars.slice(0, 3) as avatar, index (index)}
+                                                <img
+                                                    class="web-author-image"
+                                                    class:stacked-avatar={index > 0}
+                                                    src={avatar}
+                                                    alt={featuredAuthors[index]?.name || ''}
+                                                    loading="lazy"
+                                                    width="24"
+                                                    height="24"
+                                                    style="margin-inline-start: {index > 0
+                                                        ? '-8px'
+                                                        : '0'}; z-index: {featuredAvatars.length -
+                                                        index};"
+                                                />
+                                            {/each}
+                                        </div>
                                         <div class="web-author-info">
-                                            <a href={author?.href} class="text-sub-body web-link"
-                                                >{author?.name}</a
-                                            >
-                                            <p class="text-caption hidden">{author?.bio}</p>
+                                            <span class="text-sub-body">
+                                                {#each featuredAuthors as featuredAuthor, i}
+                                                    <a href={featuredAuthor.href} class="web-link"
+                                                        >{featuredAuthor.name}</a
+                                                    >{#if i < featuredAuthors.length - 1},{' '}{/if}
+                                                {/each}
+                                            </span>
                                             <ul class="web-metadata text-caption web-is-not-mobile">
                                                 <li>{featured.timeToRead} min</li>
                                             </ul>
                                         </div>
                                     </div>
                                 </div>
-                                <Button variant="secondary" href={featured.href} class="mt-auto">
+                                <Button variant="secondary" href={featured.href} class="mt-8">
                                     <span>Read article</span>
                                 </Button>
                             </div>
@@ -249,7 +292,7 @@
             </div>
         </div>
 
-        <div class="pt-20">
+        <div class="pt-30">
             <div class="web-container">
                 <h2
                     id="title"
@@ -264,7 +307,19 @@
                         <div
                             class="categories-wrapper"
                             data-state={isStart ? 'start' : isEnd ? 'end' : 'middle'}
+                            onmouseenter={() => (isHovering = true)}
+                            onmouseleave={() => (isHovering = false)}
+                            role="navigation"
                         >
+                            <button
+                                class="category-nav-arrow left"
+                                class:visible={isHovering && !isStart}
+                                onclick={() => scrollCategories('left')}
+                                aria-label="Scroll categories left"
+                            >
+                                <span class="web-icon-chevron-left"></span>
+                            </button>
+
                             <ul
                                 class="categories flex gap-2 overflow-x-auto"
                                 onscroll={handleScroll}
@@ -283,7 +338,7 @@
                                     </button>
                                 </li>
 
-                                {#each categories as category}
+                                {#each categories as category (category.name)}
                                     <li class="flex items-center">
                                         <button
                                             class="web-interactive-tag web-caption-400 cursor-pointer"
@@ -298,6 +353,15 @@
                                     </li>
                                 {/each}
                             </ul>
+
+                            <button
+                                class="category-nav-arrow right"
+                                class:visible={isHovering && !isEnd}
+                                onclick={() => scrollCategories('right')}
+                                aria-label="Scroll categories right"
+                            >
+                                <span class="web-icon-chevron-right"></span>
+                            </button>
                         </div>
 
                         <div
@@ -325,18 +389,19 @@
                 <div class="mt-12">
                     <ul class:web-grid-articles={data.posts.length > 0}>
                         {#each data.posts as post (post.slug)}
-                            {@const author = data.authors.find(
-                                (author) => author.slug === post.author
+                            {@const { postAuthors, authorAvatars, primaryAuthor } = getPostAuthors(
+                                post.author,
+                                data.authors
                             )}
-                            {#if author && !post.draft}
+                            {#if primaryAuthor && !post.draft}
                                 <Article
                                     title={post.title}
                                     href={post.href}
                                     cover={post.cover}
                                     date={post.date}
                                     timeToRead={post.timeToRead}
-                                    avatar={author.avatar}
-                                    author={author.name}
+                                    avatars={authorAvatars}
+                                    authors={postAuthors}
                                 />
                             {/if}
                         {:else}
@@ -381,7 +446,7 @@
                                 </span>
                             {/if}
 
-                            {#each currentPageRange as page}
+                            {#each currentPageRange as page (page)}
                                 {#if page === -1}
                                     <span class="pagination-ellipsis">...</span>
                                 {:else}
@@ -500,7 +565,7 @@
             width: 60px;
             height: 100%;
             transition: ease 250ms;
-            z-index: 100;
+            z-index: 10;
             pointer-events: none;
         }
 
@@ -584,6 +649,52 @@
         max-height: 40px;
     }
 
+    .category-nav-arrow {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 32px;
+        height: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: transparent;
+        border: none;
+        border-radius: var(--border-radius-S, 8px);
+        cursor: pointer;
+        opacity: 0;
+        transition:
+            opacity 250ms ease,
+            background-color 250ms ease;
+        z-index: 200;
+    }
+
+    .category-nav-arrow:hover {
+        background: hsl(var(--web-color-background-tertiary) / 0.8);
+    }
+
+    .category-nav-arrow.visible {
+        opacity: 1;
+    }
+
+    .category-nav-arrow.left {
+        left: -12px;
+    }
+
+    .category-nav-arrow.right {
+        right: -12px;
+    }
+
+    .category-nav-arrow span {
+        font-size: 16px;
+        color: hsl(var(--web-color-primary));
+    }
+
+    .stacked-avatar {
+        border: 2px solid hsl(var(--web-color-background-docs));
+        position: relative;
+    }
+
     @media (max-width: 768px) {
         .search-and-categories {
             display: flex;
@@ -607,6 +718,10 @@
 
         .search-and-categories > .web-input-text-search-wrapper {
             min-inline-size: unset;
+        }
+
+        .category-nav-arrow {
+            display: none;
         }
     }
 </style>

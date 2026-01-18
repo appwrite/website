@@ -1,3 +1,4 @@
+assets/**/*.optimized
 .DS_Store
 node_modules
 /build
@@ -22,3 +23,6 @@ terraform/**/.env
 terraform/**/**/*.tfstate*
 /.cache
 /test-results
+
+# Sentry Config File
+.env.sentry-build-plugin

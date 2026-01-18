@@ -34,13 +34,20 @@
             image: '/images/testimonials/majik.png',
             title: 'Developer',
             company: 'Majik Kids'
+        },
+        {
+            name: 'Zach Handley',
+            copy: `We have somewhere between 200,000 to 600,000 function executions per day. It's especially nice that you guys have to deal with the scaling now and not me.`,
+            image: '/images/testimonials/zach-handley.jpg',
+            title: 'CTO',
+            company: 'Socialaize'
         }
     ];
 </script>
 
-<div class="group relative my-8 w-full overflow-clip">
+<div class="group relative my-20 w-full overflow-clip">
     <div
-        class="animate-scroll-x light flex w-max gap-4 pl-4 group-hover:[animation-play-state:paused]"
+        class="animate-scroll-x light flex w-max gap-4 pl-4 [animation-duration:80s] group-hover:[animation-play-state:paused]"
     >
         {#each testimonials as testimonial}
             <div
