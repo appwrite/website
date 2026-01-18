@@ -78,6 +78,7 @@ RUN fc-cache -f -v
 
 COPY --from=build /app/build/ build
 COPY --from=build /app/server/ server
+COPY --from=build /app/src/routes/ src/routes
 COPY --from=prod-deps /app/node_modules/ node_modules
 
 CMD ["node", "server/main.js"]

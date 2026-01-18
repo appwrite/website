@@ -52,6 +52,14 @@
                     href: '/docs/products/databases/relationships'
                 },
                 {
+                    label: 'Queries',
+                    href: '/docs/products/databases/queries'
+                },
+                {
+                    label: 'Order',
+                    href: '/docs/products/databases/order'
+                },
+                {
                     label: 'Operators',
                     href: '/docs/products/databases/operators',
                     new: isNewUntil('31 Dec 2025')
@@ -70,14 +78,6 @@
         {
             label: 'Journeys',
             items: [
-                {
-                    label: 'Queries',
-                    href: '/docs/products/databases/queries'
-                },
-                {
-                    label: 'Order',
-                    href: '/docs/products/databases/order'
-                },
                 {
                     label: 'Pagination',
                     href: '/docs/products/databases/pagination'
