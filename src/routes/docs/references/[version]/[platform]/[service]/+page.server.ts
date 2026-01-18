@@ -18,11 +18,13 @@ export const entries: EntryGenerator = () => {
 
 export const load: PageServerLoad = async ({ params }) => {
     const { platform, service } = params;
-    const version = params.version === 'cloud' ? '1.7.x' : params.version;
-
-    if (!versions.includes(version)) error(404, 'Invalid version');
+    
+    // Validate original params.version
+    if (params.version !== 'cloud' && !versions.includes(params.version)) error(404, 'Invalid version');
     if (!platforms.includes(platform as Platform)) error(404, 'Invalid platform');
     if (!services.includes(service as ServiceValue)) error(404, 'Invalid service');
 
+    // Convert cloud to latest after validation
+    const version = params.version === 'cloud' ? 'latest' : params.version;
     return getService(version, platform, service);
 };
