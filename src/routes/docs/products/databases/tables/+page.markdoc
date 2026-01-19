@@ -1226,7 +1226,10 @@ You can choose between the following types.
 
 | Column    | Description                                                      |
 |--------------|------------------------------------------------------------------|
-| `string`     | String column.                                                |
+| `varchar`    | String column. Maximum 16,383 characters.                     |
+| `text`       | Text column. Maximum 16,383 characters.                       |
+| `mediumtext` | Text column. Maximum 4,194,303 characters.                    |
+| `longtext`   | Text column. Maximum 1,073,741,823 characters.                |
 | `integer`    | Integer column.                                               |
 | `float`      | Float column.                                                 |
 | `boolean`    | Boolean column.                                               |
@@ -1239,6 +1242,11 @@ You can choose between the following types.
 | `line`       | Geographic line represented by an ordered list of coordinates. |
 | `polygon`    | Geographic polygon representing a closed area; supports interior holes. |
 | `relationship` | Relationship column relates one table to another. [Learn more about relationships.](/docs/products/databases/relationships) |
+| `string`     | **Deprecated.** Use `varchar`, `text`, `mediumtext`, or `longtext` instead. |
+
+{% info title="Migrating from string columns" %}
+The `string` type is deprecated. Internally, `string` columns dynamically switch between `varchar`, `text`, `mediumtext`, and `longtext` based on the size you specify. Existing `string` columns will change to the appropriate text type based on the size of the existing data.
+{% /info %}
 
 If an column must be populated in all rows, set it as `required`.
 If not, you may optionally set a default value.
