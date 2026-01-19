@@ -1245,7 +1245,7 @@ You can choose between the following types.
 | `string`     | **Deprecated.** Use `varchar`, `text`, `mediumtext`, or `longtext` instead. |
 
 {% info title="Migrating from string columns" %}
-The `string` type is deprecated. Internally, `string` columns dynamically switch between `varchar`, `text`, `mediumtext`, and `longtext` based on the size you specify. Existing `string` columns will change to the appropriate text type based on the size of the existing data.
+The `string` type is deprecated. Internally, `string` columns dynamically switch between `varchar`, `text`, `mediumtext`, and `longtext` based on the size you specify. Existing `string` columns will change to the appropriate text type based on the size of the existing column.
 {% /info %}
 
 If an column must be populated in all rows, set it as `required`.
