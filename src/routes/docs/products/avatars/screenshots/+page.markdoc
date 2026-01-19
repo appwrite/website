@@ -354,6 +354,7 @@ Simulate different geographic locations to see how web pages render with locatio
 // New York location
 const nyScreenshot = avatars.getScreenshot({
     url: 'https://example.com',
+    permissions: ["geolocation"],
     latitude: 40.7128,
     longitude: -74.0060,
     accuracy: 100
@@ -362,6 +363,7 @@ const nyScreenshot = avatars.getScreenshot({
 // London location
 const londonScreenshot = avatars.getScreenshot({
     url: 'https://example.com',
+    permissions: ["geolocation"],
     latitude: 51.5074,
     longitude: -0.1278,
     accuracy: 100
@@ -370,6 +372,7 @@ const londonScreenshot = avatars.getScreenshot({
 // Tokyo location
 const tokyoScreenshot = avatars.getScreenshot({
     url: 'https://example.com',
+    permissions: ["geolocation"],
     latitude: 35.6762,
     longitude: 139.6503,
     accuracy: 100
@@ -379,6 +382,7 @@ const tokyoScreenshot = avatars.getScreenshot({
 // New York location
 Future nyScreenshot = avatars.getScreenshot(
     url: 'https://example.com',
+    permissions: ["geolocation"],
     latitude: 40.7128,
     longitude: -74.0060,
     accuracy: 100
@@ -387,6 +391,7 @@ Future nyScreenshot = avatars.getScreenshot(
 // London location
 Future londonScreenshot = avatars.getScreenshot(
     url: 'https://example.com',
+    permissions: ["geolocation"],
     latitude: 51.5074,
     longitude: -0.1278,
     accuracy: 100
@@ -395,6 +400,7 @@ Future londonScreenshot = avatars.getScreenshot(
 // Tokyo location
 Future tokyoScreenshot = avatars.getScreenshot(
     url: 'https://example.com',
+    permissions: ["geolocation"],
     latitude: 35.6762,
     longitude: 139.6503,
     accuracy: 100
@@ -404,6 +410,7 @@ Future tokyoScreenshot = avatars.getScreenshot(
 // New York location
 let nyScreenshot = try await avatars.getScreenshot(
     url: "https://example.com",
+    permissions: ["geolocation"],
     latitude: 40.7128,
     longitude: -74.0060,
     accuracy: 100
@@ -412,6 +419,7 @@ let nyScreenshot = try await avatars.getScreenshot(
 // London location
 let londonScreenshot = try await avatars.getScreenshot(
     url: "https://example.com",
+    permissions: ["geolocation"],
     latitude: 51.5074,
     longitude: -0.1278,
     accuracy: 100
@@ -420,6 +428,7 @@ let londonScreenshot = try await avatars.getScreenshot(
 // Tokyo location
 let tokyoScreenshot = try await avatars.getScreenshot(
     url: "https://example.com",
+    permissions: ["geolocation"],
     latitude: 35.6762,
     longitude: 139.6503,
     accuracy: 100
@@ -429,6 +438,7 @@ let tokyoScreenshot = try await avatars.getScreenshot(
 // New York location
 val nyScreenshot = avatars.getScreenshot(
     url = "https://example.com",
+    permissions = listOf("geolocation"),
     latitude = 40.7128,
     longitude = -74.0060,
     accuracy = 100
@@ -437,6 +447,7 @@ val nyScreenshot = avatars.getScreenshot(
 // London location
 val londonScreenshot = avatars.getScreenshot(
     url = "https://example.com",
+    permissions = listOf("geolocation"),
     latitude = 51.5074,
     longitude = -0.1278,
     accuracy = 100
@@ -445,9 +456,213 @@ val londonScreenshot = avatars.getScreenshot(
 // Tokyo location
 val tokyoScreenshot = avatars.getScreenshot(
     url = "https://example.com",
+    permissions = listOf("geolocation"),
     latitude = 35.6762,
     longitude = 139.6503,
     accuracy = 100
+)
+```
+{% /multicode %}
+
+# Wait time before capture {% #wait-time %}
+
+Use the `sleep` parameter to wait for a specified duration before capturing the screenshot. This is useful when pages need time to fully load dynamic content, animations, or async resources.
+
+{% multicode %}
+```client-web
+// Wait for page to load fully
+const delayedScreenshot = avatars.getScreenshot({
+    url: 'https://example.com',
+    sleep: 5 // Wait 5 seconds before capture
+});
+
+// Immediate capture
+const instantScreenshot = avatars.getScreenshot({
+    url: 'https://example.com',
+    sleep: 0 // No wait time
+});
+```
+```client-flutter
+// Wait for page to load fully
+Future delayedScreenshot = avatars.getScreenshot(
+    url: 'https://example.com',
+    sleep: 5 // Wait 5 seconds before capture
+);
+
+// Immediate capture
+Future instantScreenshot = avatars.getScreenshot(
+    url: 'https://example.com',
+    sleep: 0 // No wait time
+);
+```
+```client-apple
+// Wait for page to load fully
+let delayedScreenshot = try await avatars.getScreenshot(
+    url: "https://example.com",
+    sleep: 5 // Wait 5 seconds before capture
+)
+
+// Immediate capture
+let instantScreenshot = try await avatars.getScreenshot(
+    url: "https://example.com",
+    sleep: 0 // No wait time
+)
+```
+```client-android-kotlin
+// Wait for page to load fully
+val delayedScreenshot = avatars.getScreenshot(
+    url = "https://example.com",
+    sleep = 5 // Wait 5 seconds before capture
+)
+
+// Immediate capture
+val instantScreenshot = avatars.getScreenshot(
+    url = "https://example.com",
+    sleep = 0 // No wait time
+)
+```
+{% /multicode %}
+
+# Browser permissions {% #browser-permissions %}
+
+Grant specific browser permissions to allow web pages to access features like geolocation, camera, microphone, and other APIs during screenshot capture. When you visit a web page that requires certain browser capabilities, it typically prompts users to grant permissions. With the `permissions` parameter, you can pre-grant these permissions to the browser session, allowing you to capture screenshots of pages that depend on these features without manual intervention.
+
+## Available permissions
+
+The following permissions can be granted to the browser session:
+
+| Permission | Description |
+| ---------- | ----------- |
+| `geolocation` | Access device location coordinates |
+| `camera` | Access camera for video/photo capture |
+| `microphone` | Access microphone for audio recording |
+| `notifications` | Send browser notifications |
+| `midi` | Access MIDI devices for music applications |
+| `push` | Receive push notifications |
+| `clipboard-read` | Read from clipboard |
+| `clipboard-write` | Write to clipboard |
+| `payment-handler` | Handle payment requests |
+| `usb` | Access USB devices |
+| `bluetooth` | Access Bluetooth devices |
+| `accelerometer` | Access device accelerometer sensor |
+| `gyroscope` | Access device gyroscope sensor |
+| `magnetometer` | Access device magnetometer sensor |
+| `ambient-light-sensor` | Access ambient light sensor |
+| `background-sync` | Sync data in the background |
+| `persistent-storage` | Use persistent storage |
+| `screen-wake-lock` | Prevent screen from sleeping |
+| `web-share` | Use Web Share API |
+| `xr-spatial-tracking` | Track spatial positioning for XR/VR |
+
+By pre-granting permissions, you can capture screenshots of fully functional pages in their active state, rather than showing permission prompts or degraded experiences.
+
+{% multicode %}
+```client-web
+// Grant geolocation permission
+const geoScreenshot = avatars.getScreenshot({
+    url: 'https://example.com/map',
+    permissions: ["geolocation"],
+    latitude: 40.7128,
+    longitude: -74.0060
+});
+
+// Grant multiple permissions
+const multiPermScreenshot = avatars.getScreenshot({
+    url: 'https://example.com/video-call',
+    permissions: ["camera", "microphone", "notifications"]
+});
+
+// Grant storage and sync permissions
+const storageScreenshot = avatars.getScreenshot({
+    url: 'https://example.com/offline-app',
+    permissions: ["persistent-storage", "background-sync"]
+});
+
+// No special permissions
+const defaultScreenshot = avatars.getScreenshot({
+    url: 'https://example.com',
+    permissions: []
+});
+```
+```client-flutter
+// Grant geolocation permission
+Future geoScreenshot = avatars.getScreenshot(
+    url: 'https://example.com/map',
+    permissions: ["geolocation"],
+    latitude: 40.7128,
+    longitude: -74.0060
+);
+
+// Grant multiple permissions
+Future multiPermScreenshot = avatars.getScreenshot(
+    url: 'https://example.com/video-call',
+    permissions: ["camera", "microphone", "notifications"]
+);
+
+// Grant storage and sync permissions
+Future storageScreenshot = avatars.getScreenshot(
+    url: 'https://example.com/offline-app',
+    permissions: ["persistent-storage", "background-sync"]
+);
+
+// No special permissions
+Future defaultScreenshot = avatars.getScreenshot(
+    url: 'https://example.com',
+    permissions: []
+);
+```
+```client-apple
+// Grant geolocation permission
+let geoScreenshot = try await avatars.getScreenshot(
+    url: "https://example.com/map",
+    permissions: ["geolocation"],
+    latitude: 40.7128,
+    longitude: -74.0060
+)
+
+// Grant multiple permissions
+let multiPermScreenshot = try await avatars.getScreenshot(
+    url: "https://example.com/video-call",
+    permissions: ["camera", "microphone", "notifications"]
+)
+
+// Grant storage and sync permissions
+let storageScreenshot = try await avatars.getScreenshot(
+    url: "https://example.com/offline-app",
+    permissions: ["persistent-storage", "background-sync"]
+)
+
+// No special permissions
+let defaultScreenshot = try await avatars.getScreenshot(
+    url: "https://example.com",
+    permissions: []
+)
+```
+```client-android-kotlin
+// Grant geolocation permission
+val geoScreenshot = avatars.getScreenshot(
+    url = "https://example.com/map",
+    permissions = listOf("geolocation"),
+    latitude = 40.7128,
+    longitude = -74.0060
+)
+
+// Grant multiple permissions
+val multiPermScreenshot = avatars.getScreenshot(
+    url = "https://example.com/video-call",
+    permissions = listOf("camera", "microphone", "notifications")
+)
+
+// Grant storage and sync permissions
+val storageScreenshot = avatars.getScreenshot(
+    url = "https://example.com/offline-app",
+    permissions = listOf("persistent-storage", "background-sync")
+)
+
+// No special permissions
+val defaultScreenshot = avatars.getScreenshot(
+    url = "https://example.com",
+    permissions = emptyList()
 )
 ```
 {% /multicode %}
