@@ -488,9 +488,16 @@
                 {
                     title: 'Screenshots',
                     free: '50 per month',
-                    pro: 'Unlimited',
-                    scale: 'Unlimited',
-                    enterprise: 'Unlimited'
+                    pro: '5,000 per month',
+                    scale: '5,000 per month',
+                    enterprise: '5,000 per month'
+                },
+                {
+                    title: 'Additional screenshots',
+                    free: '-',
+                    pro: '$0.004 per screenshot',
+                    scale: '$0.004 per screenshot',
+                    enterprise: 'Custom'
                 },
                 
             ]
