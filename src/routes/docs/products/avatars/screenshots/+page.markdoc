@@ -1,0 +1,468 @@
+---
+layout: article
+title: Screenshots
+description: Capture webpage screenshots with customizable viewport, theme, browser settings, and geolocation options for comprehensive web page documentation.
+---
+
+The screenshots endpoint allows you to capture full webpage screenshots with extensive customization options. You can control the browser viewport size, theme, user agent, geolocation, permissions, and other browser settings to capture web pages exactly as they would appear in different scenarios.
+
+# Get webpage screenshot {% #get-screenshot %}
+
+Capture a screenshot of a remote webpage with customizable browser settings and viewport options.
+
+{% multicode %}
+```client-web
+import { Client, Avatars } from "appwrite";
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>');
+
+const avatars = new Avatars(client);
+
+const result = avatars.getScreenshot({
+    url: 'https://example.com'
+});
+
+console.log(result); // Resource URL
+```
+```client-flutter
+import 'package:appwrite/appwrite.dart';
+
+final client = Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>');
+
+final avatars = Avatars(client);
+
+Future result = avatars.getScreenshot(
+    url: 'https://example.com'
+).then((bytes) {
+    // Use the screenshot image bytes
+    return bytes;
+}).catchError((error) {
+    print(error.response);
+});
+```
+```client-apple
+import Appwrite
+
+let client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+
+let avatars = Avatars(client)
+
+let byteBuffer = try await avatars.getScreenshot(
+    url: "https://example.com"
+)
+```
+```client-android-kotlin
+import io.appwrite.Client
+import io.appwrite.services.Avatars
+
+val client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+
+val avatars = Avatars(client)
+
+val result = avatars.getScreenshot(
+    url = "https://example.com"
+)
+```
+```client-react-native
+import { Client, Avatars } from 'react-native-appwrite';
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>');
+
+const avatars = new Avatars(client);
+
+const result = avatars.getScreenshot({
+    url: 'https://example.com'
+});
+
+console.log(result); // Resource URL
+```
+{% /multicode %}
+
+# Parameters {% #parameters %}
+
+The `getScreenshot` method accepts the following parameters:
+
+| Parameter | Type | Description |
+| --------- | ---- | ----------- |
+| url | string | The URL of the website to capture. Must be a valid HTTP or HTTPS URL. |
+| headers | object | HTTP headers to send with the browser request. Pass a key-value object with custom headers. Defaults to `{}` if not provided. |
+| viewportWidth | integer | The width of the browser viewport in pixels. Accepts values between `1-1920`. Defaults to `1280` if not provided. |
+| viewportHeight | integer | The height of the browser viewport in pixels. Accepts values between `1-1080`. Defaults to `720` if not provided. |
+| scale | float | The device pixel ratio for the screenshot. Accepts values between `0.1-3` for different DPI settings. Defaults to `1` if not provided. |
+| theme | string | The browser color scheme theme. Accepts: `light` or `dark`. Defaults to `light` if not provided. |
+| userAgent | string | A custom user agent string for the browser request. Defaults to browser default if not provided. |
+| fullpage | boolean | Capture the full scrollable page (`1`) or only the viewport (`0`). Defaults to `false` if not provided. |
+| locale | string | The browser locale code (e.g., `en-US`, `fr-FR`). Defaults to browser default if not provided. |
+| timezone | string | IANA timezone identifier (e.g., `America/New_York`, `Europe/London`). Defaults to browser default if not provided. |
+| latitude | float | Geolocation latitude for the screenshot. Accepts values between `-90` to `90`. Defaults to `0` if not provided. |
+| longitude | float | Geolocation longitude for the screenshot. Accepts values between `-180` to `180`. Defaults to `0` if not provided. |
+| accuracy | float | Geolocation accuracy in meters. Accepts values between `0-100000`. Defaults to `0` if not provided. |
+| touch | boolean | Enable touch device support (`1`) or disable it (`0`). Defaults to `false` if not provided. |
+| permissions | array | Array of browser permissions to grant. Accepts: `geolocation`, `camera`, `microphone`, `notifications`, `midi`, `push`, `clipboard-read`, `clipboard-write`, `payment-handler`, `usb`, `bluetooth`, `accelerometer`, `gyroscope`, `magnetometer`, `ambient-light-sensor`, `background-sync`, `persistent-storage`, `screen-wake-lock`, `web-share`, `xr-spatial-tracking`. Defaults to `[]` if not provided. |
+| sleep | integer | Wait time in seconds before taking the screenshot. Accepts values between `0-10`. Defaults to `0` if not provided. |
+| width | integer | The output image width in pixels. Pass `0` to use original width, or `1-2000` for custom width. Defaults to `0` (original width) if not provided. |
+| height | integer | The output image height in pixels. Pass `0` to use original height, or `1-2000` for custom height. Defaults to `0` (original height) if not provided. |
+| quality | integer | Screenshot quality. Accepts values between `0-100`. `-1` preserves original image quality. Defaults to `-1` if not provided. |
+| output | string | Output image format. Supported formats: `jpg`, `jpeg`, `png`, `gif`, `webp`. Defaults to `png` if not provided. |
+
+# Viewport customization {% #viewport-customization %}
+
+Control the browser viewport to capture web pages as they would appear on different devices and screen sizes.
+
+{% multicode %}
+```client-web
+// Desktop viewport
+const desktopScreenshot = avatars.getScreenshot({
+    url: 'https://example.com',
+    viewportWidth: 1920,
+    viewportHeight: 1080
+});
+
+// Tablet viewport
+const tabletScreenshot = avatars.getScreenshot({
+    url: 'https://example.com',
+    viewportWidth: 768,
+    viewportHeight: 1024
+});
+
+// Mobile viewport
+const mobileScreenshot = avatars.getScreenshot({
+    url: 'https://example.com',
+    viewportWidth: 375,
+    viewportHeight: 667
+});
+
+// Full page capture
+const fullpageScreenshot = avatars.getScreenshot({
+    url: 'https://example.com',
+    fullpage: true
+});
+```
+```client-flutter
+// Desktop viewport
+Future desktopScreenshot = avatars.getScreenshot(
+    url: 'https://example.com',
+    viewportWidth: 1920,
+    viewportHeight: 1080
+);
+
+// Tablet viewport
+Future tabletScreenshot = avatars.getScreenshot(
+    url: 'https://example.com',
+    viewportWidth: 768,
+    viewportHeight: 1024
+);
+
+// Mobile viewport
+Future mobileScreenshot = avatars.getScreenshot(
+    url: 'https://example.com',
+    viewportWidth: 375,
+    viewportHeight: 667
+);
+
+// Full page capture
+Future fullpageScreenshot = avatars.getScreenshot(
+    url: 'https://example.com',
+    fullpage: true
+);
+```
+```client-apple
+// Desktop viewport
+let desktopScreenshot = try await avatars.getScreenshot(
+    url: "https://example.com",
+    viewportWidth: 1920,
+    viewportHeight: 1080
+)
+
+// Tablet viewport
+let tabletScreenshot = try await avatars.getScreenshot(
+    url: "https://example.com",
+    viewportWidth: 768,
+    viewportHeight: 1024
+)
+
+// Mobile viewport
+let mobileScreenshot = try await avatars.getScreenshot(
+    url: "https://example.com",
+    viewportWidth: 375,
+    viewportHeight: 667
+)
+
+// Full page capture
+let fullpageScreenshot = try await avatars.getScreenshot(
+    url: "https://example.com",
+    fullpage: true
+)
+```
+```client-android-kotlin
+// Desktop viewport
+val desktopScreenshot = avatars.getScreenshot(
+    url = "https://example.com",
+    viewportWidth = 1920,
+    viewportHeight = 1080
+)
+
+// Tablet viewport
+val tabletScreenshot = avatars.getScreenshot(
+    url = "https://example.com",
+    viewportWidth = 768,
+    viewportHeight = 1024
+)
+
+// Mobile viewport
+val mobileScreenshot = avatars.getScreenshot(
+    url = "https://example.com",
+    viewportWidth = 375,
+    viewportHeight = 667
+)
+
+// Full page capture
+val fullpageScreenshot = avatars.getScreenshot(
+    url = "https://example.com",
+    fullpage = true
+)
+```
+{% /multicode %}
+
+# Browser customization {% #browser-customization %}
+
+Customize browser settings like theme, user agent, locale, and timezone to simulate different browser environments.
+
+{% multicode %}
+```client-web
+// Dark theme screenshot
+const darkThemeScreenshot = avatars.getScreenshot({
+    url: 'https://example.com',
+    theme: 'dark'
+});
+
+// Custom locale and timezone
+const localizedScreenshot = avatars.getScreenshot({
+    url: 'https://example.com',
+    locale: 'fr-FR',
+    timezone: 'Europe/Paris'
+});
+
+// Custom user agent
+const chromeScreenshot = avatars.getScreenshot({
+    url: 'https://example.com',
+    userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
+});
+
+// Touch device
+const touchScreenshot = avatars.getScreenshot({
+    url: 'https://example.com',
+    touch: true
+});
+```
+```client-flutter
+// Dark theme screenshot
+Future darkThemeScreenshot = avatars.getScreenshot(
+    url: 'https://example.com',
+    theme: 'dark'
+);
+
+// Custom locale and timezone
+Future localizedScreenshot = avatars.getScreenshot(
+    url: 'https://example.com',
+    locale: 'fr-FR',
+    timezone: 'Europe/Paris'
+);
+
+// Custom user agent
+Future chromeScreenshot = avatars.getScreenshot(
+    url: 'https://example.com',
+    userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
+);
+
+// Touch device
+Future touchScreenshot = avatars.getScreenshot(
+    url: 'https://example.com',
+    touch: true
+);
+```
+```client-apple
+// Dark theme screenshot
+let darkThemeScreenshot = try await avatars.getScreenshot(
+    url: "https://example.com",
+    theme: "dark"
+)
+
+// Custom locale and timezone
+let localizedScreenshot = try await avatars.getScreenshot(
+    url: "https://example.com",
+    locale: "fr-FR",
+    timezone: "Europe/Paris"
+)
+
+// Custom user agent
+let chromeScreenshot = try await avatars.getScreenshot(
+    url: "https://example.com",
+    userAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+)
+
+// Touch device
+let touchScreenshot = try await avatars.getScreenshot(
+    url: "https://example.com",
+    touch: true
+)
+```
+```client-android-kotlin
+// Dark theme screenshot
+val darkThemeScreenshot = avatars.getScreenshot(
+    url = "https://example.com",
+    theme = "dark"
+)
+
+// Custom locale and timezone
+val localizedScreenshot = avatars.getScreenshot(
+    url = "https://example.com",
+    locale = "fr-FR",
+    timezone = "Europe/Paris"
+)
+
+// Custom user agent
+val chromeScreenshot = avatars.getScreenshot(
+    url = "https://example.com",
+    userAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+)
+
+// Touch device
+val touchScreenshot = avatars.getScreenshot(
+    url = "https://example.com",
+    touch = true
+)
+```
+{% /multicode %}
+
+# Geolocation simulation {% #geolocation-simulation %}
+
+Simulate different geographic locations to see how web pages render with location-based content and features.
+
+{% multicode %}
+```client-web
+// New York location
+const nyScreenshot = avatars.getScreenshot({
+    url: 'https://example.com',
+    latitude: 40.7128,
+    longitude: -74.0060,
+    accuracy: 100
+});
+
+// London location
+const londonScreenshot = avatars.getScreenshot({
+    url: 'https://example.com',
+    latitude: 51.5074,
+    longitude: -0.1278,
+    accuracy: 100
+});
+
+// Tokyo location
+const tokyoScreenshot = avatars.getScreenshot({
+    url: 'https://example.com',
+    latitude: 35.6762,
+    longitude: 139.6503,
+    accuracy: 100
+});
+```
+```client-flutter
+// New York location
+Future nyScreenshot = avatars.getScreenshot(
+    url: 'https://example.com',
+    latitude: 40.7128,
+    longitude: -74.0060,
+    accuracy: 100
+);
+
+// London location
+Future londonScreenshot = avatars.getScreenshot(
+    url: 'https://example.com',
+    latitude: 51.5074,
+    longitude: -0.1278,
+    accuracy: 100
+);
+
+// Tokyo location
+Future tokyoScreenshot = avatars.getScreenshot(
+    url: 'https://example.com',
+    latitude: 35.6762,
+    longitude: 139.6503,
+    accuracy: 100
+);
+```
+```client-apple
+// New York location
+let nyScreenshot = try await avatars.getScreenshot(
+    url: "https://example.com",
+    latitude: 40.7128,
+    longitude: -74.0060,
+    accuracy: 100
+)
+
+// London location
+let londonScreenshot = try await avatars.getScreenshot(
+    url: "https://example.com",
+    latitude: 51.5074,
+    longitude: -0.1278,
+    accuracy: 100
+)
+
+// Tokyo location
+let tokyoScreenshot = try await avatars.getScreenshot(
+    url: "https://example.com",
+    latitude: 35.6762,
+    longitude: 139.6503,
+    accuracy: 100
+)
+```
+```client-android-kotlin
+// New York location
+val nyScreenshot = avatars.getScreenshot(
+    url = "https://example.com",
+    latitude = 40.7128,
+    longitude = -74.0060,
+    accuracy = 100
+)
+
+// London location
+val londonScreenshot = avatars.getScreenshot(
+    url = "https://example.com",
+    latitude = 51.5074,
+    longitude = -0.1278,
+    accuracy = 100
+)
+
+// Tokyo location
+val tokyoScreenshot = avatars.getScreenshot(
+    url = "https://example.com",
+    latitude = 35.6762,
+    longitude = 139.6503,
+    accuracy = 100
+)
+```
+{% /multicode %}
+
+# Use cases {% #use-cases %}
+
+Screenshots are commonly used for:
+
+- **Web documentation**: Automatically generate visual documentation of web applications and websites
+- **Link previews**: Display website previews in link cards and social sharing interfaces
+- **Performance testing**: Capture pages in different browser environments to verify responsive design
+- **Accessibility testing**: Generate screenshots with different viewport sizes and accessibility settings
+- **Localization testing**: Verify how pages render in different locales and timezones
+- **Browser compatibility**: Test how pages appear with different user agents and browser settings
+- **Content archival**: Create visual snapshots of web pages for archival and reference
+- **A/B testing**: Compare visual renderings of different page variants
+- **Automated reporting**: Generate visual reports and dashboards with live web page screenshots
+- **QA automation**: Verify visual consistency across different browser and device configurations
