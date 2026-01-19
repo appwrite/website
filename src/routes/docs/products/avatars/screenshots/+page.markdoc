@@ -6,6 +6,8 @@ description: Capture webpage screenshots with customizable viewport, theme, brow
 
 The screenshots endpoint allows you to capture full webpage screenshots with extensive customization options. You can control the browser viewport size, theme, user agent, geolocation, permissions, and other browser settings to capture web pages exactly as they would appear in different scenarios.
 
+This is valuable for various [use cases](#use-cases), including generating visual documentation, creating link previews, automating QA testing across different devices and browsers, or archiving web pages for compliance and record-keeping. Instead of manually taking screenshots or setting up complex headless browser infrastructure, you can generate high-quality screenshots on-demand through a simple API call, ensuring consistency and saving development time.
+
 # Get webpage screenshot {% #get-screenshot %}
 
 Capture a screenshot of a remote webpage with customizable browser settings and viewport options.
