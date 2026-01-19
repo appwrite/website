@@ -48,7 +48,7 @@ const promise = tablesDB.createTable({
         },
         {
             key: 'name',
-            type: 'string',
+            type: 'varchar',
             size: 255,
             required: true
         },
@@ -165,7 +165,7 @@ let promise = tablesDB.createTable({
         },
         {
             key: 'name',
-            type: 'string',
+            type: 'varchar',
             size: 255,
             required: true
         },
@@ -284,7 +284,7 @@ $result = $tablesDB->createTable(
         ],
         [
             'key' => 'name',
-            'type' => 'string',
+            'type' => 'varchar',
             'size' => 255,
             'required' => true
         ],
@@ -395,7 +395,7 @@ result = tablesDB.create_table(
         },
         {
             'key': 'name',
-            'type': 'string',
+            'type': 'varchar',
             'size': 255,
             'required': True
         },
@@ -504,7 +504,7 @@ response = tablesDB.create_table(
         },
         {
             key: 'name',
-            type: 'string',
+            type: 'varchar',
             size: 255,
             required: true
         },
@@ -618,7 +618,7 @@ Table result = await tablesDB.CreateTable(
         new Dictionary<string, object>
         {
             { "key", "name" },
-            { "type", "string" },
+            { "type", "varchar" },
             { "size", 255 },
             { "required", true }
         },
@@ -742,7 +742,7 @@ void main() { // Init SDK
         },
         {
             'key': 'name',
-            'type': 'string',
+            'type': 'varchar',
             'size': 255,
             'required': true
         },
@@ -858,7 +858,7 @@ val response = tablesDB.createTable(
         ),
         mapOf(
             "key" to "name",
-            "type" to "string",
+            "type" to "varchar",
             "size" to 255,
             "required" to true
         ),
@@ -964,7 +964,7 @@ List<Map<String, Object>> columns = Arrays.asList(
     }},
     new HashMap<String, Object>() {{
         put("key", "name");
-        put("type", "string");
+        put("type", "varchar");
         put("size", 255);
         put("required", true);
     }},
@@ -1087,7 +1087,7 @@ let table = try await tablesDB.createTable(
         ],
         [
             "key": "name",
-            "type": "string",
+            "type": "varchar",
             "size": 255,
             "required": true
         ],
@@ -1226,10 +1226,10 @@ You can choose between the following types.
 
 | Column    | Description                                                      |
 |--------------|------------------------------------------------------------------|
-| `varchar`    | String column. Maximum 16,383 characters.                     |
-| `text`       | Text column. Maximum 16,383 characters.                       |
-| `mediumtext` | Text column. Maximum 4,194,303 characters.                    |
-| `longtext`   | Text column. Maximum 1,073,741,823 characters.                |
+| `varchar`    | String column. Fully indexable if size < 768. Maximum 16,383 characters. |
+| `text`       | Text column. Prefix indexing only. Maximum 16,383 characters. |
+| `mediumtext` | Text column. Prefix indexing only. Maximum 4,194,303 characters. |
+| `longtext`   | Text column. Prefix indexing only. Maximum 1,073,741,823 characters. |
 | `integer`    | Integer column.                                               |
 | `float`      | Float column.                                                 |
 | `boolean`    | Boolean column.                                               |
