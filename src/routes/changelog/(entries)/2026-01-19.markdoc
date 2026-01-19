@@ -10,7 +10,6 @@ Starting today, execution logs for functions and sites will be retained based on
 
 - **Free plan**: 100 execution logs per function/site
 - **Pro plan**: 1,000 execution logs per function/site
-- **Scale plan**: Unlimited execution logs
 - **Enterprise plan**: Custom
 
 These limits apply on a rolling basis - as new logs are created, older logs beyond the limit will be automatically removed.
