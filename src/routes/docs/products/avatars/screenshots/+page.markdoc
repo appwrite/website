@@ -254,7 +254,7 @@ const darkThemeScreenshot = avatars.getScreenshot({
 const localizedScreenshot = avatars.getScreenshot({
     url: 'https://example.com',
     locale: 'fr-FR',
-    timezone: Timezone.EuropeParisAppwrite
+    timezone: Timezone.EuropeParis
 });
 
 // Custom user agent
