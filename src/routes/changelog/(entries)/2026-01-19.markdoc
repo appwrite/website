@@ -14,7 +14,7 @@ Starting today, execution logs for functions and sites will be retained based on
 
 These limits apply on a rolling basis - as new logs are created, older logs beyond the limit will be automatically removed.
 
-If you have any questions, please contact us at pricing@appwrite.io.
+If you have any questions, please contact us at billing@appwrite.io.
 
 {% arrow_link href="/docs/products/functions" %}
 Learn more about Appwrite Functions
