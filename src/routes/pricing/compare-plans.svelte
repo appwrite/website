@@ -483,6 +483,19 @@
             ]
         },
         {
+            title: 'Others',
+            rows: [
+                {
+                    title: 'Screenshots',
+                    free: '50 per month',
+                    pro: 'Unlimited',
+                    scale: 'Unlimited',
+                    enterprise: 'Unlimited'
+                },
+                
+            ]
+        },
+        {
             title: 'Network',
             rows: [
                 {
