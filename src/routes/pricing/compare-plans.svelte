@@ -398,7 +398,7 @@
             rows: [
                 {
                     title: 'Messages',
-                    free: '1000 per month',
+                    free: '1000 / month',
                     pro: 'Unlimited',
                     scale: 'Unlimited',
                     enterprise: 'Unlimited'
@@ -487,10 +487,10 @@
             rows: [
                 {
                     title: 'Screenshots',
-                    free: '50 per month',
-                    pro: '5,000 per month',
-                    scale: '5,000 per month',
-                    enterprise: '5,000 per month'
+                    free: '50 / month',
+                    pro: '5,000 / month',
+                    scale: '5,000 / month',
+                    enterprise: 'Custom'
                 },
                 {
                     title: 'Additional screenshots',
