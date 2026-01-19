@@ -498,8 +498,7 @@
                     pro: '$0.004 per screenshot',
                     scale: '$0.004 per screenshot',
                     enterprise: 'Custom'
-                },
-                
+                }
             ]
         },
         {
