@@ -242,17 +242,19 @@ Customize browser settings like theme, user agent, locale, and timezone to simul
 
 {% multicode %}
 ```client-web
+import { Client, Avatars, Theme, Timezone } from "appwrite";
+
 // Dark theme screenshot
 const darkThemeScreenshot = avatars.getScreenshot({
     url: 'https://example.com',
-    theme: 'dark'
+    theme: Theme.Dark
 });
 
 // Custom locale and timezone
 const localizedScreenshot = avatars.getScreenshot({
     url: 'https://example.com',
     locale: 'fr-FR',
-    timezone: 'Europe/Paris'
+    timezone: Timezone.EuropeParisAppwrite
 });
 
 // Custom user agent
@@ -268,23 +270,25 @@ const touchScreenshot = avatars.getScreenshot({
 });
 ```
 ```client-flutter
+import 'package:appwrite/appwrite.dart';
+
 // Dark theme screenshot
 Future darkThemeScreenshot = avatars.getScreenshot(
     url: 'https://example.com',
-    theme: 'dark'
+    theme: Theme.dark
 );
 
 // Custom locale and timezone
 Future localizedScreenshot = avatars.getScreenshot(
     url: 'https://example.com',
     locale: 'fr-FR',
-    timezone: 'Europe/Paris'
+    timezone: Timezone.europeParis
 );
 
 // Custom user agent
 Future chromeScreenshot = avatars.getScreenshot(
     url: 'https://example.com',
-    userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
+    userAgent: 'Mozilla/5.0 (iPhone; CPU iPhone OS 14_0 like Mac OS X) AppleWebKit/605.1.15'
 );
 
 // Touch device
@@ -294,23 +298,25 @@ Future touchScreenshot = avatars.getScreenshot(
 );
 ```
 ```client-apple
+import Appwrite
+
 // Dark theme screenshot
 let darkThemeScreenshot = try await avatars.getScreenshot(
     url: "https://example.com",
-    theme: "dark"
+    theme: Theme.dark
 )
 
 // Custom locale and timezone
 let localizedScreenshot = try await avatars.getScreenshot(
     url: "https://example.com",
     locale: "fr-FR",
-    timezone: "Europe/Paris"
+    timezone: Timezone.europeParis
 )
 
 // Custom user agent
 let chromeScreenshot = try await avatars.getScreenshot(
     url: "https://example.com",
-    userAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+    userAgent: "Mozilla/5.0 (iPhone; CPU iPhone OS 14_0 like Mac OS X) AppleWebKit/605.1.15"
 )
 
 // Touch device
@@ -320,23 +326,28 @@ let touchScreenshot = try await avatars.getScreenshot(
 )
 ```
 ```client-android-kotlin
+import io.appwrite.Client
+import io.appwrite.services.Avatars
+import io.appwrite.enums.Theme
+import io.appwrite.enums.Timezone
+
 // Dark theme screenshot
 val darkThemeScreenshot = avatars.getScreenshot(
     url = "https://example.com",
-    theme = "dark"
+    theme = Theme.DARK
 )
 
 // Custom locale and timezone
 val localizedScreenshot = avatars.getScreenshot(
     url = "https://example.com",
     locale = "fr-FR",
-    timezone = "Europe/Paris"
+    timezone = Timezone.EUROPE_PARIS
 )
 
 // Custom user agent
 val chromeScreenshot = avatars.getScreenshot(
     url = "https://example.com",
-    userAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+    userAgent = "Mozilla/5.0 (Linux; Android 10) AppleWebKit/537.36"
 )
 
 // Touch device
@@ -353,13 +364,16 @@ Simulate different geographic locations to see how web pages render with locatio
 
 {% multicode %}
 ```client-web
+import { Client, Avatars, Timezone } from "appwrite";
+
 // New York location
 const nyScreenshot = avatars.getScreenshot({
     url: 'https://example.com',
     permissions: ["geolocation"],
     latitude: 40.7128,
     longitude: -74.0060,
-    accuracy: 100
+    accuracy: 100,
+    timezone: Timezone.AmericaNewYork
 });
 
 // London location
@@ -368,7 +382,8 @@ const londonScreenshot = avatars.getScreenshot({
     permissions: ["geolocation"],
     latitude: 51.5074,
     longitude: -0.1278,
-    accuracy: 100
+    accuracy: 100,
+    timezone: Timezone.EuropeLondon
 });
 
 // Tokyo location
@@ -377,17 +392,21 @@ const tokyoScreenshot = avatars.getScreenshot({
     permissions: ["geolocation"],
     latitude: 35.6762,
     longitude: 139.6503,
-    accuracy: 100
+    accuracy: 100,
+    timezone: Timezone.AsiaTokyo
 });
 ```
 ```client-flutter
+import 'package:appwrite/appwrite.dart';
+
 // New York location
 Future nyScreenshot = avatars.getScreenshot(
     url: 'https://example.com',
     permissions: ["geolocation"],
     latitude: 40.7128,
     longitude: -74.0060,
-    accuracy: 100
+    accuracy: 100,
+    timezone: Timezone.americaNewYork
 );
 
 // London location
@@ -396,7 +415,8 @@ Future londonScreenshot = avatars.getScreenshot(
     permissions: ["geolocation"],
     latitude: 51.5074,
     longitude: -0.1278,
-    accuracy: 100
+    accuracy: 100,
+    timezone: Timezone.europeLondon
 );
 
 // Tokyo location
@@ -405,17 +425,21 @@ Future tokyoScreenshot = avatars.getScreenshot(
     permissions: ["geolocation"],
     latitude: 35.6762,
     longitude: 139.6503,
-    accuracy: 100
+    accuracy: 100,
+    timezone: Timezone.asiaTokyo
 );
 ```
 ```client-apple
+import Appwrite
+
 // New York location
 let nyScreenshot = try await avatars.getScreenshot(
     url: "https://example.com",
     permissions: ["geolocation"],
     latitude: 40.7128,
     longitude: -74.0060,
-    accuracy: 100
+    accuracy: 100,
+    timezone: Timezone.americaNewYork
 )
 
 // London location
@@ -424,7 +448,8 @@ let londonScreenshot = try await avatars.getScreenshot(
     permissions: ["geolocation"],
     latitude: 51.5074,
     longitude: -0.1278,
-    accuracy: 100
+    accuracy: 100,
+    timezone: Timezone.europeLondon
 )
 
 // Tokyo location
@@ -433,17 +458,22 @@ let tokyoScreenshot = try await avatars.getScreenshot(
     permissions: ["geolocation"],
     latitude: 35.6762,
     longitude: 139.6503,
-    accuracy: 100
+    accuracy: 100,
+    timezone: Timezone.asiaTokyo
 )
 ```
 ```client-android-kotlin
+import io.appwrite.services.Avatars
+import io.appwrite.enums.Timezone
+
 // New York location
 val nyScreenshot = avatars.getScreenshot(
     url = "https://example.com",
     permissions = listOf("geolocation"),
     latitude = 40.7128,
     longitude = -74.0060,
-    accuracy = 100
+    accuracy = 100,
+    timezone = Timezone.AMERICA_NEW_YORK
 )
 
 // London location
@@ -452,7 +482,8 @@ val londonScreenshot = avatars.getScreenshot(
     permissions = listOf("geolocation"),
     latitude = 51.5074,
     longitude = -0.1278,
-    accuracy = 100
+    accuracy = 100,
+    timezone = Timezone.EUROPE_LONDON
 )
 
 // Tokyo location
@@ -461,7 +492,8 @@ val tokyoScreenshot = avatars.getScreenshot(
     permissions = listOf("geolocation"),
     latitude = 35.6762,
     longitude = 139.6503,
-    accuracy = 100
+    accuracy = 100,
+    timezone = Timezone.ASIA_TOKYO
 )
 ```
 {% /multicode %}
@@ -560,24 +592,29 @@ By pre-granting permissions, you can capture screenshots of fully functional pag
 
 {% multicode %}
 ```client-web
+import { Client, Avatars, Output } from "appwrite";
+
 // Grant geolocation permission
 const geoScreenshot = avatars.getScreenshot({
     url: 'https://example.com/map',
     permissions: ["geolocation"],
     latitude: 40.7128,
-    longitude: -74.0060
+    longitude: -74.0060,
+    output: Output.Png
 });
 
 // Grant multiple permissions
 const multiPermScreenshot = avatars.getScreenshot({
     url: 'https://example.com/video-call',
-    permissions: ["camera", "microphone", "notifications"]
+    permissions: ["camera", "microphone", "notifications"],
+    output: Output.Webp
 });
 
 // Grant storage and sync permissions
 const storageScreenshot = avatars.getScreenshot({
     url: 'https://example.com/offline-app',
-    permissions: ["persistent-storage", "background-sync"]
+    permissions: ["persistent-storage", "background-sync"],
+    output: Output.Jpg
 });
 
 // No special permissions
@@ -587,24 +624,29 @@ const defaultScreenshot = avatars.getScreenshot({
 });
 ```
 ```client-flutter
+import 'package:appwrite/appwrite.dart';
+
 // Grant geolocation permission
 Future geoScreenshot = avatars.getScreenshot(
     url: 'https://example.com/map',
     permissions: ["geolocation"],
     latitude: 40.7128,
-    longitude: -74.0060
+    longitude: -74.0060,
+    output: Output.png
 );
 
 // Grant multiple permissions
 Future multiPermScreenshot = avatars.getScreenshot(
     url: 'https://example.com/video-call',
-    permissions: ["camera", "microphone", "notifications"]
+    permissions: ["camera", "microphone", "notifications"],
+    output: Output.webp
 );
 
 // Grant storage and sync permissions
 Future storageScreenshot = avatars.getScreenshot(
     url: 'https://example.com/offline-app',
-    permissions: ["persistent-storage", "background-sync"]
+    permissions: ["persistent-storage", "background-sync"],
+    output: Output.jpg
 );
 
 // No special permissions
@@ -614,24 +656,29 @@ Future defaultScreenshot = avatars.getScreenshot(
 );
 ```
 ```client-apple
+import Appwrite
+
 // Grant geolocation permission
 let geoScreenshot = try await avatars.getScreenshot(
     url: "https://example.com/map",
     permissions: ["geolocation"],
     latitude: 40.7128,
-    longitude: -74.0060
+    longitude: -74.0060,
+    output: Output.png
 )
 
 // Grant multiple permissions
 let multiPermScreenshot = try await avatars.getScreenshot(
     url: "https://example.com/video-call",
-    permissions: ["camera", "microphone", "notifications"]
+    permissions: ["camera", "microphone", "notifications"],
+    output: Output.webp
 )
 
 // Grant storage and sync permissions
 let storageScreenshot = try await avatars.getScreenshot(
     url: "https://example.com/offline-app",
-    permissions: ["persistent-storage", "background-sync"]
+    permissions: ["persistent-storage", "background-sync"],
+    output: Output.jpg
 )
 
 // No special permissions
@@ -641,24 +688,30 @@ let defaultScreenshot = try await avatars.getScreenshot(
 )
 ```
 ```client-android-kotlin
+import io.appwrite.services.Avatars
+import io.appwrite.enums.Output
+
 // Grant geolocation permission
 val geoScreenshot = avatars.getScreenshot(
     url = "https://example.com/map",
     permissions = listOf("geolocation"),
     latitude = 40.7128,
-    longitude = -74.0060
+    longitude = -74.0060,
+    output = Output.PNG
 )
 
 // Grant multiple permissions
 val multiPermScreenshot = avatars.getScreenshot(
     url = "https://example.com/video-call",
-    permissions = listOf("camera", "microphone", "notifications")
+    permissions = listOf("camera", "microphone", "notifications"),
+    output = Output.WEBP
 )
 
 // Grant storage and sync permissions
 val storageScreenshot = avatars.getScreenshot(
     url = "https://example.com/offline-app",
-    permissions = listOf("persistent-storage", "background-sync")
+    permissions = listOf("persistent-storage", "background-sync"),
+    output = Output.JPG
 )
 
 // No special permissions
