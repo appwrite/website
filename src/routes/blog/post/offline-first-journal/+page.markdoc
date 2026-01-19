@@ -94,7 +94,7 @@ npm install
 Now, that the SvelteKit app is created, install the Appwrite Web SDK by running the following command:
 
 ```sh
-npm install appwrite@17.0.1
+npm install appwrite
 ```
 
 In the root directory of your app, create a `.env` file and add the information you saved from your Appwrite project:
