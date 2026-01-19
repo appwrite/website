@@ -398,7 +398,7 @@
             rows: [
                 {
                     title: 'Messages',
-                    free: '1000 per month',
+                    free: '1000 / month',
                     pro: 'Unlimited',
                     scale: 'Unlimited',
                     enterprise: 'Unlimited'
@@ -479,6 +479,25 @@
                     pro: 'Coming soon',
                     scale: 'Coming soon',
                     enterprise: 'Coming soon'
+                }
+            ]
+        },
+        {
+            title: 'Others',
+            rows: [
+                {
+                    title: 'Screenshots',
+                    free: '50 / month',
+                    pro: '5,000 / month',
+                    scale: '5,000 / month',
+                    enterprise: 'Custom'
+                },
+                {
+                    title: 'Additional screenshots',
+                    free: '-',
+                    pro: '$0.004 per screenshot',
+                    scale: '$0.004 per screenshot',
+                    enterprise: 'Custom'
                 }
             ]
         },
