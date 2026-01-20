@@ -103,7 +103,7 @@ The `getScreenshot` method accepts the following parameters:
 | scale | float | The device pixel ratio for the screenshot. Accepts values between `0.1-3` for different DPI settings. Defaults to `1` if not provided. |
 | theme | string | The browser color scheme theme. Accepts: `light` or `dark`. Defaults to `light` if not provided. |
 | userAgent | string | A custom user agent string for the browser request. Defaults to browser default if not provided. |
-| fullpage | boolean | Capture the full scrollable page (`1`) or only the viewport (`0`). Defaults to `false` if not provided. |
+| fullpage | boolean | Capture the full scrollable page (`true`) or only the viewport (`false`). Defaults to `false` if not provided. |
 | locale | string | The browser locale code (e.g., `en-US`, `fr-FR`). Defaults to browser default if not provided. |
 | timezone | string | IANA timezone identifier (e.g., `America/New_York`, `Europe/London`). Defaults to browser default if not provided. |
 | latitude | float | Geolocation latitude for the screenshot. Accepts values between `-90` to `90`. Defaults to `0` if not provided. |
