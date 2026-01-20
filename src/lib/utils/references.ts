@@ -166,6 +166,7 @@ export const preferredVersion = writable<Version | null>(
 
 function getInitialPlatform(): Platform {
     if (!browser) return Platform.ClientWeb;
+
     const stored = globalThis?.localStorage?.getItem('preferredPlatform') ?? Platform.ClientWeb;
     // return if this platform is valid
     if (VALID_PLATFORMS.has(stored as Platform)) {
