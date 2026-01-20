@@ -1,9 +1,10 @@
 import { DEFAULT_HOST } from './metadata';
 
 /**
- * Canonical version for API references - should always point to this version
+ * Canonical version for API references - should always point to this version.
+ * Update this when a new reference version becomes the default.
  */
-const CANONICAL_VERSION = 'cloud';
+export const CANONICAL_DOCS_VERSION = '1.8.x';
 
 /**
  * Normalizes the version in a docs reference path to the canonical version
@@ -15,10 +16,8 @@ function normalizeDocsVersion(pathname: string): string {
 
     if (match) {
         const currentVersion = match[1];
-        // Always point to cloud version for canonical URLs
-        // 'cloud' maps to 1.8.x server-side, and is the preferred canonical version
-        if (currentVersion !== CANONICAL_VERSION) {
-            return pathname.replace(versionPattern, `/docs/references/${CANONICAL_VERSION}/`);
+        if (currentVersion !== CANONICAL_DOCS_VERSION) {
+            return pathname.replace(versionPattern, `/docs/references/${CANONICAL_DOCS_VERSION}/`);
         }
     }
 
@@ -28,7 +27,7 @@ function normalizeDocsVersion(pathname: string): string {
 /**
  * Builds a canonical URL from a page URL, applying smart normalization:
  * - Fixes prerender origin issue (uses DEFAULT_HOST during prerendering)
- * - For docs references: always points to cloud version
+ * - For docs references: always points to the chosen canonical version
  * - Query strings are already stripped by using pathname (original behavior preserved)
  */
 export function getCanonicalUrl(url: URL): string {
