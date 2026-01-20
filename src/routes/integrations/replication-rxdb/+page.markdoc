@@ -85,7 +85,6 @@ To create an Appwrite client, add the following code:
 ```js
 export const client = new Client()
 	.setEndpoint(process.env.APPWRITE_ENDPOINT)
-	.setEndpointRealtime(process.env.APPWRITE_ENDPOINT)
 	.setProject(process.env.APPWRITE_PROJECT_ID);
 ```
 
