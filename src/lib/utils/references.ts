@@ -161,7 +161,7 @@ export const serviceMap: Record<ServiceValue, string> = {
 };
 
 export const preferredVersion = writable<Version | null>(
-    browser ? globalThis?.localStorage?.getItem('preferredVersion') as Version : null
+    browser ? (globalThis?.localStorage?.getItem('preferredVersion') as Version) : null
 );
 
 function getInitialPlatform(): Platform {
