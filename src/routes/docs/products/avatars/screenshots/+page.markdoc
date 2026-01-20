@@ -109,7 +109,7 @@ The `getScreenshot` method accepts the following parameters:
 | latitude | float | Geolocation latitude for the screenshot. Accepts values between `-90` to `90`. Defaults to `0` if not provided. |
 | longitude | float | Geolocation longitude for the screenshot. Accepts values between `-180` to `180`. Defaults to `0` if not provided. |
 | accuracy | float | Geolocation accuracy in meters. Accepts values between `0-100000`. Defaults to `0` if not provided. |
-| touch | boolean | Enable touch device support (`1`) or disable it (`0`). Defaults to `false` if not provided. |
+| touch | boolean | Enable touch device support (`true`) or disable it (`false`). Defaults to `false` if not provided. |
 | permissions | array | Array of browser permissions to grant. Accepts: `geolocation`, `camera`, `microphone`, `notifications`, `midi`, `push`, `clipboard-read`, `clipboard-write`, `payment-handler`, `usb`, `bluetooth`, `accelerometer`, `gyroscope`, `magnetometer`, `ambient-light-sensor`, `background-sync`, `persistent-storage`, `screen-wake-lock`, `web-share`, `xr-spatial-tracking`. Defaults to `[]` if not provided. |
 | sleep | integer | Wait time in seconds before taking the screenshot. Accepts values between `0-10`. Defaults to `0` if not provided. |
 | width | integer | The output image width in pixels. Pass `0` to use original width, or `1-2000` for custom width. Defaults to `0` (original width) if not provided. |
