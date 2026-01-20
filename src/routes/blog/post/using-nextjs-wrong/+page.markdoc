@@ -2,7 +2,7 @@
 layout: post
 title: "You're probably using Next.js wrong"
 description: Next.js isn't just React with extra steps. Learn when server-side rendering actually matters and how to use it properly with Appwrite.
-date: 2026-01-15
+date: 2026-01-20
 cover: /images/blog/using-nextjs-wrong/cover.png
 timeToRead: 8
 author: atharva
@@ -50,17 +50,17 @@ Here's a typical client-side pattern:
 "use client";
 
 import { useState, useEffect } from "react";
-import { databases } from "@/lib/appwrite";
+import { tablesDB } from "@/lib/appwrite";
 
 export default function Products() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    databases
+    tablesDB
       .listRows({
         databaseId: DATABASE_ID,
-        collectionId: COLLECTION_ID,
+        tableId: TABLE_ID,
         queries: [Query.equal("status", "active")],
       })
       .then((res) => setProducts(res.rows))
@@ -78,10 +78,10 @@ Here's the server component equivalent (without `'use client'`):
 import { createAdminClient } from "@/lib/appwrite/server";
 
 export default async function Products() {
-  const { databases } = await createAdminClient();
-  const { rows } = await databases.listRows({
+  const { tablesDB } = await createAdminClient();
+  const { rows } = await tablesDB.listRows({
     databaseId: DATABASE_ID,
-    collectionId: COLLECTION_ID,
+    tableId: TABLE_ID,
     queries: [Query.equal("status", "active")],
   });
 
@@ -137,7 +137,7 @@ export async function createSessionClient() {
 }
 ```
 
-The difference matters. Admin client queries return all documents matching your query. Session client queries return only documents the user has permission to access.
+The difference matters. Admin client queries return all rows matching your query. Session client queries return only rows the user has permission to access.
 
 # Handling authentication
 
