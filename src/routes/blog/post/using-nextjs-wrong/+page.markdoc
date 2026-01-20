@@ -102,7 +102,6 @@ Create two client factories. The admin client uses an API key for public data:
 ```ts
 // lib/appwrite/server.ts
 import { Client, TablesDB, Account } from "node-appwrite";
-import { cookies } from "next/headers";
 
 export async function createAdminClient() {
   const client = new Client()
@@ -120,6 +119,9 @@ export async function createAdminClient() {
 The session client uses the logged-in user's session for protected data:
 
 ```ts
+import { Client, TablesDB, Account } from "node-appwrite";
+import { cookies } from "next/headers";
+
 export async function createSessionClient() {
   const client = new Client()
     .setEndpoint(process.env.APPWRITE_ENDPOINT)
