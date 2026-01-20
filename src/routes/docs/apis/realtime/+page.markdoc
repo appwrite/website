@@ -383,7 +383,7 @@ The response will look like this:
   "channels": [
     "rows",
     "databases.default.tables.sample.rows",
-    "databases.default.tables.sample.rows.63c98b9baea0938e1206",
+    "databases.default.tables.sample.rows.63c98b9baea0938e1206"
   ],
   "timestamp": "2023-01-19 18:30:04.051",
   "payload": {
