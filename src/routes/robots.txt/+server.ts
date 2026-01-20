@@ -23,16 +23,14 @@ Disallow: /console/login
 Disallow: /console/register
 Disallow: /v1/
 
-# Block old docs versions (canonical is 1.8.x)
-Disallow: /docs/references/1.7.x/
-Disallow: /docs/references/1.6.x/
-Disallow: /docs/references/1.5.x/
-Disallow: /docs/references/1.4.x/
-Disallow: /docs/references/1.3.x/
-Disallow: /docs/references/1.2.x/
-Disallow: /docs/references/1.1.x/
-Disallow: /docs/references/1.0.x/
-Disallow: /docs/references/0.15.x/`;
+# Block all versioned docs references; only \"cloud\" should be indexable
+Disallow: /docs/references/0
+Disallow: /docs/references/1
+Disallow: /docs/references/2
+Disallow: /docs/references/3
+
+# Allow canonical cloud docs
+Allow: /docs/references/cloud/`;
 
 const nofollow = `# robotstxt.org/
 User-agent: * 

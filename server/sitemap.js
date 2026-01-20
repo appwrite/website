@@ -28,19 +28,6 @@ export async function sitemaps() {
     const { manifest } = await import('../build/server/manifest.js');
     const threads = collectThreads().map((id) => `/threads/${id}`);
 
-    // Old docs versions to exclude (canonical is 1.8.x)
-    const OLD_DOCS_VERSIONS = [
-        '/docs/references/1.7.x/',
-        '/docs/references/1.6.x/',
-        '/docs/references/1.5.x/',
-        '/docs/references/1.4.x/',
-        '/docs/references/1.3.x/',
-        '/docs/references/1.2.x/',
-        '/docs/references/1.1.x/',
-        '/docs/references/1.0.x/',
-        '/docs/references/0.15.x/'
-    ];
-
     // Internal/auth paths to exclude
     const INTERNAL_PATHS = ['/console/login', '/console/register', '/v1/'];
 
@@ -53,8 +40,8 @@ export async function sitemaps() {
                 return false;
             }
 
-            // Exclude old docs versions
-            if (OLD_DOCS_VERSIONS.some((version) => id.startsWith(version))) {
+            // Exclude any docs references that are not the canonical \"cloud\" version
+            if (id.startsWith('/docs/references/') && !id.startsWith('/docs/references/cloud/')) {
                 return false;
             }
 

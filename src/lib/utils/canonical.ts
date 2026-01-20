@@ -1,23 +1,20 @@
 import { DEFAULT_HOST } from './metadata';
 
 /**
- * Canonical version for API references - should always point to this version.
- * Update this when a new reference version becomes the default.
- */
-export const CANONICAL_DOCS_VERSION = '1.8.x';
-
-/**
  * Normalizes the version in a docs reference path to the canonical version
  */
 function normalizeDocsVersion(pathname: string): string {
-    // Match patterns like /docs/references/1.7.x/... or /docs/references/0.15.x/... or /docs/references/1.8.x/...
+    // Match patterns like /docs/references/1.7.x/... or /docs/references/0.15.x/... or /docs/references/cloud/...
     const versionPattern = /^\/docs\/references\/([^/]+)\//;
     const match = pathname.match(versionPattern);
 
     if (match) {
         const currentVersion = match[1];
-        if (currentVersion !== CANONICAL_DOCS_VERSION) {
-            return pathname.replace(versionPattern, `/docs/references/${CANONICAL_DOCS_VERSION}/`);
+        // Use "cloud" as the single canonical docs version so we don't have to
+        // maintain a list of explicit versions. Anything that isn't "cloud"
+        // will point canonically to the /cloud/ variant.
+        if (currentVersion !== 'cloud') {
+            return pathname.replace(versionPattern, `/docs/references/cloud/`);
         }
     }
 
