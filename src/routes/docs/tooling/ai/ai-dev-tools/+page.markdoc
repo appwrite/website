@@ -77,3 +77,16 @@ Generate your own `AGENTS.md` file depending on the Appwrite services you use in
 # Vibe coding {% #vibe-coding %}
 
 Vibe coding platforms let you build applications through natural language conversations. Instead of writing code manually, you describe what you want to build and the AI generates the application for you. These platforms can scaffold entire projects, create UI components, and integrate with backend services like Appwrite.
+
+{% cards %}
+
+{% cards_item href="/docs/tooling/ai/ai-dev-tools/imagine" title="Imagine" %}
+{% /cards_item %}
+
+{% cards_item href="/docs/tooling/ai/ai-dev-tools/lovable" title="Lovable" %}
+{% /cards_item %}
+
+{% cards_item href="/docs/tooling/ai/ai-dev-tools/emergent" title="Emergent" %}
+{% /cards_item %}
+
+{% /cards %}
