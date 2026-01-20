@@ -113,7 +113,7 @@ jobs:
                   ref: ${{ github.event.pull_request.head.sha }}
             - uses: oven-sh/setup-bun@v2
               with:
-                  bun-version: 1.3
+                  bun-version: latest
             - name: Install dependencies
               run: bun install --frozen-lockfile
             - name: Optimize assets
