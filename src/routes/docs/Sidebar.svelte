@@ -136,6 +136,12 @@
                     icon: 'web-icon-command'
                 },
                 {
+                    label: 'AI',
+                    href: '/docs/tooling/ai',
+                    icon: 'icon-sparkles',
+                    isParent: true
+                },
+                {
                     label: 'Assistant',
                     href: '/docs/tooling/assistant',
                     icon: 'icon-sparkles'
