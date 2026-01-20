@@ -412,7 +412,7 @@ The response will look like this:
 
 # Channels {% #channels %}
 
-A list of channels you can subscribe to. Replace `<ID>` with your resource ID. IDs cannot be wildcards.
+A list of channels you can subscribe to. Replace `<ID>` with your resource ID or use `*` for wildcards.
 
 ## Account {% #account %}
 
