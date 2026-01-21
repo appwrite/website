@@ -13,8 +13,6 @@ No more headless browser infrastructure to maintain. No more environment-specifi
 
 - Capture any public webpage as an image
 - Simulate an authenticated experience via custom request headers
-- Simulate an authenticated experience via custom request headers
--Simulate an authenticated experience via custom request headers
 - Control browser viewport size and device scale
 - Render in light or dark theme
 - Simulate different locales, timezones, and geolocation
