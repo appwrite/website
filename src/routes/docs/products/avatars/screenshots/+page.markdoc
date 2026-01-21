@@ -1,0 +1,696 @@
+---
+layout: article
+title: Screenshots
+description: Capture screenshots of any website URL with customizable browser settings, viewport size, theme, and geolocation.
+---
+
+The screenshot endpoint captures screenshots of any website URL using a headless browser. You can configure the browser viewport size, theme, user agent, geolocation, permissions, and more. Capture either just the viewport or the full page scroll.
+
+# Capture screenshot {% #get-screenshot %}
+
+Capture a screenshot of a website URL with customizable browser settings and viewport configuration.
+
+{% multicode %}
+```client-web
+import { Client, Avatars, Theme } from "appwrite";
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>');
+
+const avatars = new Avatars(client);
+
+const result = avatars.getScreenshot({
+    url: 'https://example.com',
+    viewportWidth: 1280,
+    viewportHeight: 720,
+    theme: Theme.Light,
+    fullpage: false
+});
+
+console.log(result); // Resource URL
+```
+```client-flutter
+import 'package:appwrite/appwrite.dart';
+import 'package:appwrite/enums.dart';
+
+final client = Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>');
+
+final avatars = Avatars(client);
+
+Future result = avatars.getScreenshot(
+    url: 'https://example.com',
+    viewportWidth: 1280,
+    viewportHeight: 720,
+    theme: Theme.light,
+    fullpage: false
+).then((bytes) {
+    // Use the screenshot image bytes
+    return bytes;
+}).catchError((error) {
+    print(error.response);
+});
+```
+```client-apple
+import Appwrite
+import AppwriteEnums
+
+let client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+
+let avatars = Avatars(client)
+
+let byteBuffer = try await avatars.getScreenshot(
+    url: "https://example.com",
+    viewportWidth: 1280,
+    viewportHeight: 720,
+    theme: .light,
+    fullpage: false
+)
+```
+```client-android-kotlin
+import io.appwrite.Client
+import io.appwrite.services.Avatars
+import io.appwrite.enums.Theme
+
+val client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+
+val avatars = Avatars(client)
+
+val result = avatars.getScreenshot(
+    url = "https://example.com",
+    viewportWidth = 1280,
+    viewportHeight = 720,
+    theme = Theme.LIGHT,
+    fullpage = false
+)
+```
+```client-react-native
+import { Client, Avatars } from 'react-native-appwrite';
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>');
+
+const avatars = new Avatars(client);
+
+const result = avatars.getScreenshot({
+    url: 'https://example.com',
+    viewportWidth: 1280,
+    viewportHeight: 720,
+    theme: 'light',
+    fullpage: false
+});
+
+console.log(result); // Resource URL
+```
+{% /multicode %}
+
+# Parameters {% #parameters %}
+
+The `getScreenshot` method accepts the following parameters:
+
+| Parameter | Type | Description |
+| --------- | ---- | ----------- |
+| url | string | The website URL to capture. Must be a valid HTTP or HTTPS URL. |
+| headers | object | HTTP headers to send with the browser request. Defaults to empty. |
+| viewportWidth | integer | Browser viewport width in pixels. Accepts values between `1-1920`. Defaults to `1280`. |
+| viewportHeight | integer | Browser viewport height in pixels. Accepts values between `1-1080`. Defaults to `720`. |
+| scale | number | Browser scale factor. Accepts values between `0.1-3`. Defaults to `1`. |
+| theme | string | Browser theme. Accepts `"light"` or `"dark"`. Use `Theme` enum in Web SDK. Defaults to `"light"`. |
+| userAgent | string | Custom user agent string. Defaults to browser default. |
+| fullpage | boolean | Capture full page scroll. Pass `true` for full page, `false` for viewport only. Defaults to `false`. |
+| locale | string | Browser locale (e.g., `"en-US"`, `"fr-FR"`). Defaults to browser default. |
+| timezone | string | IANA timezone identifier (e.g., `"America/New_York"`, `"Europe/London"`). Use `Timezone` enum in Web SDK. Defaults to browser default. |
+| latitude | number | Geolocation latitude. Accepts values between `-90` to `90`. Defaults to `0`. |
+| longitude | number | Geolocation longitude. Accepts values between `-180` to `180`. Defaults to `0`. |
+| accuracy | number | Geolocation accuracy in meters. Accepts values between `0` to `100000`. Defaults to `0`. |
+| touch | boolean | Enable touch support. Pass `true` for touch enabled, `false` for no touch. Defaults to `false`. |
+| permissions | array | Browser permissions to grant. Pass an array of permission names like `["geolocation", "camera", "microphone"]`. Defaults to empty. |
+| sleep | integer | Wait time in seconds before taking the screenshot. Accepts values between `0` to `10`. Defaults to `0`. |
+| width | integer | Output image width in pixels. Pass `0` to use original width, or an integer between `1` to `2000`. Defaults to `0` (original width). |
+| height | integer | Output image height in pixels. Pass `0` to use original height, or an integer between `1` to `2000`. Defaults to `0` (original height). |
+| quality | integer | Screenshot quality. Accepts values between `0` to `100`. Defaults to keep existing image quality. |
+| output | string | Output format type. Accepts `"jpeg"`, `"jpg"`, `"png"`, `"gif"`, or `"webp"`. Use `Output` enum in Web SDK. |
+
+# Viewport configuration {% #viewport-configuration %}
+
+Configure the browser viewport size to capture screenshots at different resolutions. This is useful for testing responsive designs and capturing mobile or desktop views.
+
+{% multicode %}
+```client-web
+// Desktop viewport
+const desktop = avatars.getScreenshot({
+    url: 'https://example.com',
+    viewportWidth: 1920,
+    viewportHeight: 1080
+});
+
+// Tablet viewport
+const tablet = avatars.getScreenshot({
+    url: 'https://example.com',
+    viewportWidth: 768,
+    viewportHeight: 1024
+});
+
+// Mobile viewport
+const mobile = avatars.getScreenshot({
+    url: 'https://example.com',
+    viewportWidth: 375,
+    viewportHeight: 667
+});
+```
+```client-flutter
+// Desktop viewport
+Future desktop = avatars.getScreenshot(
+    url: 'https://example.com',
+    viewportWidth: 1920,
+    viewportHeight: 1080
+);
+
+// Tablet viewport
+Future tablet = avatars.getScreenshot(
+    url: 'https://example.com',
+    viewportWidth: 768,
+    viewportHeight: 1024
+);
+
+// Mobile viewport
+Future mobile = avatars.getScreenshot(
+    url: 'https://example.com',
+    viewportWidth: 375,
+    viewportHeight: 667
+);
+```
+```client-apple
+// Desktop viewport
+let desktop = try await avatars.getScreenshot(
+    url: "https://example.com",
+    viewportWidth: 1920,
+    viewportHeight: 1080
+)
+
+// Tablet viewport
+let tablet = try await avatars.getScreenshot(
+    url: "https://example.com",
+    viewportWidth: 768,
+    viewportHeight: 1024
+)
+
+// Mobile viewport
+let mobile = try await avatars.getScreenshot(
+    url: "https://example.com",
+    viewportWidth: 375,
+    viewportHeight: 667
+)
+```
+```client-android-kotlin
+// Desktop viewport
+val desktop = avatars.getScreenshot(
+    url = "https://example.com",
+    viewportWidth = 1920,
+    viewportHeight = 1080
+)
+
+// Tablet viewport
+val tablet = avatars.getScreenshot(
+    url = "https://example.com",
+    viewportWidth = 768,
+    viewportHeight = 1024
+)
+
+// Mobile viewport
+val mobile = avatars.getScreenshot(
+    url = "https://example.com",
+    viewportWidth = 375,
+    viewportHeight = 667
+)
+```
+{% /multicode %}
+
+# Full page capture {% #full-page-capture %}
+
+Capture the entire page scroll, not just the viewport. This is useful for capturing long pages or documentation sites.
+
+{% multicode %}
+```client-web
+// Viewport only (default)
+const viewport = avatars.getScreenshot({
+    url: 'https://example.com',
+    fullpage: false
+});
+
+// Full page scroll
+const fullPage = avatars.getScreenshot({
+    url: 'https://example.com',
+    fullpage: true
+});
+```
+```client-flutter
+// Viewport only (default)
+Future viewport = avatars.getScreenshot(
+    url: 'https://example.com',
+    fullpage: false
+);
+
+// Full page scroll
+Future fullPage = avatars.getScreenshot(
+    url: 'https://example.com',
+    fullpage: true
+);
+```
+```client-apple
+// Viewport only (default)
+let viewport = try await avatars.getScreenshot(
+    url: "https://example.com",
+    fullpage: false
+)
+
+// Full page scroll
+let fullPage = try await avatars.getScreenshot(
+    url: "https://example.com",
+    fullpage: true
+)
+```
+```client-android-kotlin
+// Viewport only (default)
+val viewport = avatars.getScreenshot(
+    url = "https://example.com",
+    fullpage = false
+)
+
+// Full page scroll
+val fullPage = avatars.getScreenshot(
+    url = "https://example.com",
+    fullpage = true
+)
+```
+{% /multicode %}
+
+# Theme and appearance {% #theme-appearance %}
+
+Capture screenshots in light or dark theme to match your application's design or test theme-specific features.
+
+{% multicode %}
+```client-web
+import { Theme } from "appwrite";
+
+// Light theme (default)
+const light = avatars.getScreenshot({
+    url: 'https://example.com',
+    theme: Theme.Light
+});
+
+// Dark theme
+const dark = avatars.getScreenshot({
+    url: 'https://example.com',
+    theme: Theme.Dark
+});
+```
+```client-flutter
+import 'package:appwrite/enums.dart';
+
+// Light theme (default)
+Future light = avatars.getScreenshot(
+    url: 'https://example.com',
+    theme: Theme.light
+);
+
+// Dark theme
+Future dark = avatars.getScreenshot(
+    url: 'https://example.com',
+    theme: Theme.dark
+);
+```
+```client-apple
+import AppwriteEnums
+
+// Light theme (default)
+let light = try await avatars.getScreenshot(
+    url: "https://example.com",
+    theme: .light
+)
+
+// Dark theme
+let dark = try await avatars.getScreenshot(
+    url: "https://example.com",
+    theme: .dark
+)
+```
+```client-android-kotlin
+import io.appwrite.enums.Theme
+
+// Light theme (default)
+val light = avatars.getScreenshot(
+    url = "https://example.com",
+    theme = Theme.LIGHT
+)
+
+// Dark theme
+val dark = avatars.getScreenshot(
+    url = "https://example.com",
+    theme = Theme.DARK
+)
+```
+{% /multicode %}
+
+# Geolocation and locale {% #geolocation-locale %}
+
+Configure geolocation and locale settings to capture location-specific content or test internationalization features.
+
+{% multicode %}
+```client-web
+import { Timezone } from "appwrite";
+
+// With geolocation
+const withLocation = avatars.getScreenshot({
+    url: 'https://example.com',
+    latitude: 40.7128,
+    longitude: -74.0060,
+    accuracy: 100,
+    permissions: ['geolocation']
+});
+
+// With locale and timezone
+const localized = avatars.getScreenshot({
+    url: 'https://example.com',
+    locale: 'fr-FR',
+    timezone: Timezone.EuropeParis
+});
+```
+```client-flutter
+import 'package:appwrite/enums.dart';
+
+// With geolocation
+Future withLocation = avatars.getScreenshot(
+    url: 'https://example.com',
+    latitude: 40.7128,
+    longitude: -74.0060,
+    accuracy: 100,
+    permissions: ['geolocation']
+);
+
+// With locale and timezone
+Future localized = avatars.getScreenshot(
+    url: 'https://example.com',
+    locale: 'fr-FR',
+    timezone: Timezone.europeParis
+);
+```
+```client-apple
+import AppwriteEnums
+
+// With geolocation
+let withLocation = try await avatars.getScreenshot(
+    url: "https://example.com",
+    latitude: 40.7128,
+    longitude: -74.0060,
+    accuracy: 100,
+    permissions: ["geolocation"]
+)
+
+// With locale and timezone
+let localized = try await avatars.getScreenshot(
+    url: "https://example.com",
+    locale: "fr-FR",
+    timezone: .europeParis
+)
+```
+```client-android-kotlin
+import io.appwrite.enums.Timezone
+
+// With geolocation
+val withLocation = avatars.getScreenshot(
+    url = "https://example.com",
+    latitude = 40.7128,
+    longitude = -74.0060,
+    accuracy = 100.0,
+    permissions = listOf("geolocation")
+)
+
+// With locale and timezone
+val localized = avatars.getScreenshot(
+    url = "https://example.com",
+    locale = "fr-FR",
+    timezone = Timezone.EUROPE_PARIS
+)
+```
+{% /multicode %}
+
+# Output configuration {% #output-configuration %}
+
+Control the output image size, quality, and format to optimize file size and performance.
+
+{% multicode %}
+```client-web
+import { Output } from "appwrite";
+
+// Resize output image
+const resized = avatars.getScreenshot({
+    url: 'https://example.com',
+    viewportWidth: 1920,
+    viewportHeight: 1080,
+    width: 800,
+    height: 600
+});
+
+// High quality PNG
+const highQuality = avatars.getScreenshot({
+    url: 'https://example.com',
+    quality: 100,
+    output: Output.Png
+});
+
+// Optimized WebP
+const webp = avatars.getScreenshot({
+    url: 'https://example.com',
+    quality: 85,
+    output: Output.Webp
+});
+```
+```client-flutter
+import 'package:appwrite/enums.dart';
+
+// Resize output image
+Future resized = avatars.getScreenshot(
+    url: 'https://example.com',
+    viewportWidth: 1920,
+    viewportHeight: 1080,
+    width: 800,
+    height: 600
+);
+
+// High quality PNG
+Future highQuality = avatars.getScreenshot(
+    url: 'https://example.com',
+    quality: 100,
+    output: Output.png
+);
+
+// Optimized WebP
+Future webp = avatars.getScreenshot(
+    url: 'https://example.com',
+    quality: 85,
+    output: Output.webp
+);
+```
+```client-apple
+import AppwriteEnums
+
+// Resize output image
+let resized = try await avatars.getScreenshot(
+    url: "https://example.com",
+    viewportWidth: 1920,
+    viewportHeight: 1080,
+    width: 800,
+    height: 600
+)
+
+// High quality PNG
+let highQuality = try await avatars.getScreenshot(
+    url: "https://example.com",
+    quality: 100,
+    output: .png
+)
+
+// Optimized WebP
+let webp = try await avatars.getScreenshot(
+    url: "https://example.com",
+    quality: 85,
+    output: .webp
+)
+```
+```client-android-kotlin
+import io.appwrite.enums.Output
+
+// Resize output image
+val resized = avatars.getScreenshot(
+    url = "https://example.com",
+    viewportWidth = 1920,
+    viewportHeight = 1080,
+    width = 800,
+    height = 600
+)
+
+// High quality PNG
+val highQuality = avatars.getScreenshot(
+    url = "https://example.com",
+    quality = 100,
+    output = Output.PNG
+)
+
+// Optimized WebP
+val webp = avatars.getScreenshot(
+    url = "https://example.com",
+    quality = 85,
+    output = Output.WEBP
+)
+```
+{% /multicode %}
+
+# Advanced configuration {% #advanced-configuration %}
+
+Use advanced browser configuration options for more control over the screenshot capture process.
+
+{% multicode %}
+```client-web
+// Wait for page to load
+const withWait = avatars.getScreenshot({
+    url: 'https://example.com',
+    sleep: 3
+});
+
+// Custom user agent
+const customUA = avatars.getScreenshot({
+    url: 'https://example.com',
+    userAgent: 'Mozilla/5.0 (iPhone; CPU iPhone OS 14_0 like Mac OS X)'
+});
+
+// Touch-enabled device
+const touchDevice = avatars.getScreenshot({
+    url: 'https://example.com',
+    touch: true
+});
+
+// Custom headers
+const withHeaders = avatars.getScreenshot({
+    url: 'https://example.com',
+    headers: {
+        'Authorization': 'Bearer token',
+        'X-Custom-Header': 'value'
+    }
+});
+```
+```client-flutter
+// Wait for page to load
+Future withWait = avatars.getScreenshot(
+    url: 'https://example.com',
+    sleep: 3
+);
+
+// Custom user agent
+Future customUA = avatars.getScreenshot(
+    url: 'https://example.com',
+    userAgent: 'Mozilla/5.0 (iPhone; CPU iPhone OS 14_0 like Mac OS X)'
+);
+
+// Touch-enabled device
+Future touchDevice = avatars.getScreenshot(
+    url: 'https://example.com',
+    touch: true
+);
+
+// Custom headers
+Future withHeaders = avatars.getScreenshot(
+    url: 'https://example.com',
+    headers: {
+        'Authorization': 'Bearer token',
+        'X-Custom-Header': 'value'
+    }
+);
+```
+```client-apple
+// Wait for page to load
+let withWait = try await avatars.getScreenshot(
+    url: "https://example.com",
+    sleep: 3
+)
+
+// Custom user agent
+let customUA = try await avatars.getScreenshot(
+    url: "https://example.com",
+    userAgent: "Mozilla/5.0 (iPhone; CPU iPhone OS 14_0 like Mac OS X)"
+)
+
+// Touch-enabled device
+let touchDevice = try await avatars.getScreenshot(
+    url: "https://example.com",
+    touch: true
+)
+
+// Custom headers
+let withHeaders = try await avatars.getScreenshot(
+    url: "https://example.com",
+    headers: [
+        "Authorization": "Bearer token",
+        "X-Custom-Header": "value"
+    ]
+)
+```
+```client-android-kotlin
+// Wait for page to load
+val withWait = avatars.getScreenshot(
+    url = "https://example.com",
+    sleep = 3
+)
+
+// Custom user agent
+val customUA = avatars.getScreenshot(
+    url = "https://example.com",
+    userAgent = "Mozilla/5.0 (iPhone; CPU iPhone OS 14_0 like Mac OS X)"
+)
+
+// Touch-enabled device
+val touchDevice = avatars.getScreenshot(
+    url = "https://example.com",
+    touch = true
+)
+
+// Custom headers
+val withHeaders = avatars.getScreenshot(
+    url = "https://example.com",
+    headers = mapOf(
+        "Authorization" to "Bearer token",
+        "X-Custom-Header" to "value"
+    )
+)
+```
+{% /multicode %}
+
+# Rate limits {% #rate-limits %}
+
+The screenshot endpoint has rate limits to prevent abuse. When using Server SDKs with API keys, these limits do not apply. If you are using SSR with `setSession`, these rate limits will still apply.
+
+| Time frame | Attempts | Key |
+| ---------- | -------- | --- |
+| 60 minutes | 60 requests | URL + IP |
+
+The limit is applied for each unique limit key (URL + IP combination).
+
+# Use cases {% #use-cases %}
+
+Screenshots are commonly used for:
+
+- **Link previews**: Generate preview images for URLs in social media, messaging apps, and content aggregators
+- **Documentation**: Capture screenshots of web applications for documentation and tutorials
+- **Testing**: Visual regression testing and responsive design validation across different viewport sizes
+- **Analytics**: Generate thumbnails for website analytics and monitoring dashboards
+- **Content aggregation**: Create visual previews for RSS feeds, news aggregators, and content discovery platforms
+- **Social sharing**: Generate Open Graph images and social media preview cards
+- **Quality assurance**: Capture screenshots of web pages for QA reviews and client approvals
+
