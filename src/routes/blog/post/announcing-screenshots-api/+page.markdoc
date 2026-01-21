@@ -2,7 +2,7 @@
 layout: post
 title: "Announcing Screenshots API: Generate pixel-perfect webpage screenshots on demand"
 description: Appwrite's new Screenshots API lets you generate screenshots of any public webpage with a single API call. Control browser environment, device settings, locale, and more without needing to configure your own headless browser infrastructure.
-date: 2026-01-20
+date: 2026-01-21
 cover: /images/blog/announcing-screenshots-api/cover.png
 timeToRead: 5
 author: aditya-oberai
