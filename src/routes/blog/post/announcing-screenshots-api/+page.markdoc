@@ -28,7 +28,7 @@ With one request, you can customize:
 - Browser viewport size and device scale
 - Light or dark theme rendering
 - Full-page or viewport-only screenshots
-- Custom user agents and locales
+- Custom headers, user agents and locales
 - Timezone and geolocation simulation
 - Touch support and browser permissions
 - Output format, dimensions, and quality
