@@ -2,7 +2,7 @@
 layout: post
 title: "You're probably using Next.js wrong"
 description: Next.js isn't just React with extra steps. Learn when server-side rendering actually matters and how to use it properly with Appwrite.
-date: 2026-01-20
+date: 2026-01-22
 cover: /images/blog/using-nextjs-wrong/cover.png
 timeToRead: 8
 author: atharva
