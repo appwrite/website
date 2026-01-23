@@ -561,7 +561,7 @@ A list of all channels available you can subscribe to. IDs cannot be wildcards.
 ---
 * `teams`
 * `Channel.team()`
-* Any create/update/delete events to a any team
+* Any create/update/delete events to any team
 ---
 * `teams.[ID]`
 * `Channel.team(ID)`
@@ -569,7 +569,7 @@ A list of all channels available you can subscribe to. IDs cannot be wildcards.
 ---
 * `memberships`
 * `Channel.membership()`
-* Any create/update/delete events to a any membership
+* Any create/update/delete events to any membership
 ---
 * `memberships.[ID]`
 * `Channel.membership(ID)`
