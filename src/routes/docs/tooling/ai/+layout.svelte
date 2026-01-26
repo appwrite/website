@@ -20,6 +20,14 @@
                     href: '/docs/tooling/ai/docs-as-markdown'
                 },
                 {
+                    label: 'Quickstart Prompts',
+                    href: '/docs/tooling/ai/quickstart-prompts'
+                },
+                {
+                    label: 'AI Dev Tools',
+                    href: '/docs/tooling/ai/ai-dev-tools'
+                },
+                {
                     label: 'Responsible AI',
                     href: '/docs/tooling/ai/responsible-ai'
                 }
@@ -27,11 +35,9 @@
         },
         {
             label: 'Quickstart Prompts',
+            collapsible: true,
+            initiallyCollapsed: true,
             items: [
-                {
-                    label: 'Overview',
-                    href: '/docs/tooling/ai/quickstart-prompts'
-                },
                 {
                     label: 'Next.js',
                     href: '/docs/tooling/ai/quickstart-prompts/nextjs'
@@ -124,11 +130,9 @@
         },
         {
             label: 'AI Dev Tools',
+            collapsible: true,
+            initiallyCollapsed: true,
             items: [
-                {
-                    label: 'Overview',
-                    href: '/docs/tooling/ai/ai-dev-tools'
-                },
                 {
                     label: 'VS Code',
                     href: '/docs/tooling/ai/ai-dev-tools/vscode'
