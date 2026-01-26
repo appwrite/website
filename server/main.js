@@ -1,4 +1,5 @@
 import { sitemaps } from './sitemap.js';
+import sirv from 'sirv';
 import { createServer } from 'node:http';
 import { handler } from '../build/handler.js';
 import { createApp, defineEventHandler, fromNodeMiddleware, toNodeListener } from 'h3';
@@ -21,6 +22,18 @@ async function main() {
     );
 
     app.use(['/sitemap.xml', '/sitemaps'], await sitemaps());
+
+    app.use(
+        '/',
+        fromNodeMiddleware(
+            sirv('build/client', {
+                gzip: true,
+                etag: true,
+                maxAge: 31536000,
+                immutable: true
+            })
+        )
+    );
 
     app.use(fromNodeMiddleware(handler));
 
