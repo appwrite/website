@@ -10,15 +10,13 @@ Changes will take effect on February 10th, 2025. Check out this [blog post](http
 
 Appwrite supports SMS-based OTP (One-Time Password) authentication to provide secure and reliable user verification. This feature enhances your app's security by adding an extra layer of authentication.
 
-# Free messages {% #free-messages %}
+# Free testing {% #free-testing %}
 
-All paid Appwrite plans include **10 free SMS messages** per month, which allows you to test and implement OTP functionality without immediate costs.
+You can use the [Mock phone numbers](/docs/products/auth/security#mock-phone-numbers) feature to test your integrations without incurring any costs.
 
-In addition you can also use the [Mock phone numbers](/docs/products/auth/security#mock-phone-numbers) feature to continue testing your integrations without incurring additional costs.
+# SMS messages {% #sms-messages %}
 
-# Additional messages {% #additional-messages %}
-
-After the first 10 free SMS messages, you'll be charged per SMS.
+You'll be charged per SMS sent.
 
 The cost for additional messages is calculated based on two factors:
 1. The number of messages sent
