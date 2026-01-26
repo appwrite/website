@@ -59,7 +59,7 @@ let realtime = Realtime(client)
 
 // Subscribe to files channel
 let subscription = realtime.subscribe(channels: ["files"]) { response in
-    if (message.events!.contains("buckets.*.files.*.create")) {
+    if (response.events!.contains("buckets.*.files.*.create")) {
         // Log when a new file is uploaded
         print(String(describing: response))
     }
@@ -77,7 +77,7 @@ val client = Client(context)
 val realtime = Realtime(client)
 
 // Subscribe to files channel
-let subscription = realtime.subscribe("files") {
+val subscription = realtime.subscribe("files") {
     if(it.events.contains("buckets.*.files.*.create")) {
         // Log when a new file is uploaded
         print(it.payload.toString());
@@ -153,10 +153,10 @@ let client = Client()
 
 let realtime = Realtime(client)
 
-let subscription = realtime.subscribe(channel: "account", callback: { response in
+let subscription = realtime.subscribe(channel: "account") { response in
     // Callback will be executed on all account events.
     print(String(describing: response))
-})
+}
 ```
 
 ```client-android-kotlin
@@ -181,7 +181,7 @@ val subscription = realtime.subscribe("account") {
 
 You can also listen to multiple channels at once by passing an array of channels. This will trigger the callback for any events for all channels passed.
 
-In this example we are listening to the row A and all files by subscribing to the `databases.A.tables.A.rows.A` and `files` channels.
+In this example we are listening to a specific row and all files by subscribing to the `databases.<DATABASE_ID>.tables.<TABLE_ID>.rows.<ROW_ID>` and `files` channels.
 
 {% multicode %}
 ```client-web
@@ -191,8 +191,8 @@ const client = new Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
     .setProject('<PROJECT_ID>');
 
-client.subscribe(['tables.A.rows.A', 'files'], response => {
-    // Callback will be executed on changes for rows A and all files.
+client.subscribe(['databases.<DATABASE_ID>.tables.<TABLE_ID>.rows.<ROW_ID>', 'files'], response => {
+    // Callback will be executed on changes for the specific row and all files.
     console.log(response);
 });
 ```
@@ -206,10 +206,10 @@ final client = Client()
 
 final realtime = Realtime(client);
 
-final subscription = realtime.subscribe(['databases.A.tables.A.rows.A', 'files']);
+final subscription = realtime.subscribe(['databases.<DATABASE_ID>.tables.<TABLE_ID>.rows.<ROW_ID>', 'files']);
 
 subscription.stream.listen((response) {
-    // Callback will be executed on changes for rows A and all files.
+    // Callback will be executed on changes for the specific row and all files.
     print(response);
 })
 ```
@@ -224,8 +224,8 @@ let client = Client()
 
 let realtime = Realtime(client)
 
-realtime.subscribe(channels: ["databases.A.tables.A.rows.A", "files"]) { response in
-    // Callback will be executed on changes for rows A and all files.
+realtime.subscribe(channels: ["databases.<DATABASE_ID>.tables.<TABLE_ID>.rows.<ROW_ID>", "files"]) { response in
+    // Callback will be executed on changes for the specific row and all files.
     print(String(describing: response))
 }
 ```
@@ -239,8 +239,8 @@ val client = Client(context)
     .setProject("<PROJECT_ID>")
 val realtime = Realtime(client)
 
-realtime.subscribe("databases.A.tables.A.rows.A", "files") {
-    // Callback will be executed on changes for rows A and all files.
+realtime.subscribe(listOf("databases.<DATABASE_ID>.tables.<TABLE_ID>.rows.<ROW_ID>", "files")) {
+    // Callback will be executed on changes for the specific row and all files.
     print(it.toString())
 }
 ```
@@ -412,7 +412,9 @@ The response will look like this:
 
 # Channels {% #channels %}
 
-A list of all channels available you can subscribe to. IDs cannot be wildcards.
+A list of channels you can subscribe to. Replace `<ID>` with your resource ID or use `*` for wildcards.
+
+## Account {% #account %}
 
 {% table %}
 * Channel
@@ -420,45 +422,76 @@ A list of all channels available you can subscribe to. IDs cannot be wildcards.
 ---
 * `account`
 * All account related events (session create, name update...)
----
-* `databases.<ID>.tables.<ID>.rows`
-* Any create/update/delete events to any row in a table
+
+{% /table %}
+
+## Databases {% #databases %}
+
+{% table %}
+* Channel
+* Description
 ---
 * `rows`
 * Any create/update/delete events to any row
 ---
+* `databases.<ID>.tables.<ID>.rows`
+* Any create/update/delete events to any row in a table
+---
 * `databases.<ID>.tables.<ID>.rows.<ID>`
-* Any update/delete events to a given row
+* Any create/update/delete events to a given row
+{% /table %}
+
+## Storage {% #storage %}
+
+{% table %}
+* Channel
+* Description
 ---
 * `files`
 * Any create/update/delete events to any file
 ---
-* `buckets.<ID>.files.<ID>`
-* Any update/delete events to a given file of the given bucket
----
 * `buckets.<ID>.files`
-* Any update/delete events to any file of the given bucket
+* Any create/update/delete events to any file of the given bucket
 ---
-* `teams`
-* Any create/update/delete events to a any team
----
-* `teams.<ID>`
-* Any update/delete events to a given team
----
-* `memberships`
-* Any create/update/delete events to a any membership
----
-* `memberships.<ID>`
-* Any update/delete events to a given membership
+* `buckets.<ID>.files.<ID>`
+* Any create/update/delete events to a given file of the given bucket
+
+{% /table %}
+
+## Functions {% #functions %}
+
+{% table %}
+* Channel
+* Description
 ---
 * `executions`
-* Any update to executions
+* Any execution event
 ---
 * `executions.<ID>`
-* Any update to a given execution
+* Any execution event to a given execution
 ---
 * `functions.<ID>`
 * Any execution event to a given function
+
+{% /table %}
+
+## Teams & Memberships {% #teams %}
+
+{% table %}
+* Channel
+* Description
+---
+* `teams`
+* Any create/update/delete events to any team
+---
+* `teams.<ID>`
+* Any create/update/delete events to a given team
+---
+* `memberships`
+* Any create/update/delete events to any membership
+---
+* `memberships.<ID>`
+* Any create/update/delete events to a given membership
 
 {% /table %}
 

@@ -52,17 +52,19 @@
         </p>
     </div>
 
-    <div class="mt-6 flex flex-wrap items-center justify-center gap-0">
+    <div
+        class="mt-6 flex flex-col items-center justify-center gap-2 lg:flex-row lg:flex-wrap lg:gap-0"
+    >
         <!-- Build group -->
         <div
-            class="text-primary flex h-10 items-center gap-4 rounded-full border border-dashed border-black/8 bg-white p-1 text-sm"
+            class="text-primary flex h-10 w-full items-center gap-4 rounded-full border border-dashed border-black/8 bg-white p-1 text-sm lg:w-auto"
         >
             <span class="text-eyebrow text-secondary font-aeonik-fono ml-3 uppercase">Build</span>
             <div class="flex h-full w-full justify-between gap-2">
                 {#each build as product}
                     <a
                         href={product.href}
-                        class="bg-smooth hover:bg-smooth/50 flex h-full w-fit items-center justify-center gap-2 rounded-full px-3 backdrop-blur-lg transition-opacity"
+                        class="bg-smooth hover:bg-smooth/50 flex h-full w-fit items-center justify-center gap-2 rounded-full px-0.5 backdrop-blur-lg transition-opacity sm:px-1 md:px-2 lg:px-3"
                     >
                         <span
                             class="text-primary text-caption flex items-center justify-center gap-1 font-medium"
@@ -73,16 +75,15 @@
                                 alt={product.label}
                                 class="size-6"
                             />
-                            {product.label}
+                            <span class="hidden lg:inline">{product.label}</span>
                         </span>
                     </a>
                 {/each}
             </div>
         </div>
-        <!-- dashed gap between groups (horizontal) -->
         <div
             aria-hidden="true"
-            class="mx-0 h-px w-6 self-center border-t border-dashed border-black/8"
+            class="mx-0 hidden h-px w-6 self-center border-t border-dashed border-black/8 lg:block"
         ></div>
         <!-- Deploy group -->
         <div
@@ -93,7 +94,7 @@
                 {#each deploy as product}
                     <a
                         href={product.href}
-                        class="bg-smooth hover:bg-smooth/50 flex h-full w-fit items-center justify-center gap-2 rounded-full px-3 backdrop-blur-lg transition-opacity"
+                        class="bg-smooth hover:bg-smooth/50 flex h-full w-fit items-center justify-center gap-2 rounded-full px-0.5 backdrop-blur-lg transition-opacity sm:px-1 md:px-2 lg:px-3"
                     >
                         <span
                             class="text-primary text-caption flex items-center justify-center gap-1 font-medium"
@@ -104,7 +105,7 @@
                                 alt={product.label}
                                 class="size-6"
                             />
-                            {product.label}
+                            <span class="hidden lg:inline">{product.label}</span>
                         </span>
                     </a>
                 {/each}
