@@ -26,13 +26,14 @@ The fix is simple: **store screenshots in persistent storage and serve them from
 Here is how this looks with Appwrite. First, generate the screenshot:
 
 ```js
-import { Client, Avatars } from "appwrite";
+import { Client, Avatars, Storage } from "appwrite";
 
 const client = new Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
     .setProject('<PROJECT_ID>');
 
 const avatars = new Avatars(client);
+const storage = new Storage(client);
 
 const screenshotUrl = avatars.getScreenshot({
     url: 'https://example.com',
@@ -76,6 +77,7 @@ const client = new Client()
 const storage = new Storage(client);
 const tablesDB = new TablesDB(client);
 const avatars = new Avatars(client);
+
 async function getOrCreateScreenshot(url) {
     // Check if we already have this screenshot
     const existing = await tablesDB.listRows({
