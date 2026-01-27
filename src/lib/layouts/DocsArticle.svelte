@@ -33,13 +33,15 @@
     export let toc: Array<TocItem>;
     export let back: string | undefined = undefined;
     export let date: string | undefined = undefined;
+    export let promptPath: string | undefined = undefined;
 
     const reducedArticleSize = setContext('articleHasNumericBadge', writable(false));
     const headerSectionInfoAlert = hasContext('headerSectionInfoAlert')
         ? getContext<Readable<HeaderSectionInfoAlert | null>>('headerSectionInfoAlert')
         : readable(null);
 
-    const showCopyPage = !hasRoutePrompt();
+    // Hide "Copy Page" button if a prompt exists (either co-located or via promptPath)
+    const showCopyPage = !hasRoutePrompt(promptPath);
 </script>
 
 <main class="contents" id="main">

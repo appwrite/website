@@ -4,6 +4,7 @@ import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 import { dirname, join } from 'path';
 import { markdoc } from 'svelte-markdoc-preprocess';
 import { fileURLToPath } from 'url';
+import { promptAsContentPreprocessor } from './src/lib/preprocessors/promptAsContent.js';
 
 /** @type {import('@sveltejs/kit').Config}*/
 const config = {
@@ -11,6 +12,7 @@ const config = {
     // for more information about preprocessors
     preprocess: sequence([
         vitePreprocess(),
+        promptAsContentPreprocessor(),
         markdoc({
             generateSchema: true,
             nodes: absolute('./src/markdoc/nodes/_Module.svelte'),

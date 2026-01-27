@@ -30,6 +30,7 @@
     export let difficulty: string | undefined = undefined;
     export let readtime: string | undefined = undefined;
     export let date: string | undefined = undefined;
+    export let prompt: string | undefined = undefined;
 
     setContext<LayoutContext>('headings', writable({}));
 
@@ -79,7 +80,7 @@
     <SeoOgImage {title} {description} />
 </svelte:head>
 
-<DocsArticle {title} {back} {toc} {date}>
+<DocsArticle {title} {back} {toc} {date} promptPath={prompt}>
     <svelte:fragment slot="metadata">
         {#if difficulty}
             <li>{difficulty}</li>
@@ -88,7 +89,7 @@
             <li>{readtime} min</li>
         {/if}
     </svelte:fragment>
-    <PromptBanner />
+    <PromptBanner promptPath={prompt} />
     <slot />
 </DocsArticle>
 <MainFooter variant="docs" />

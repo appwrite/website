@@ -10,9 +10,16 @@
     import AiPromptIcon from '$lib/components/ui/aiPromptIcon.svelte';
     import { browser } from '$app/environment';
 
-    // Only support co-located prompt.md
-    const routeExists = hasRoutePrompt();
-    const prompt = routeExists ? (getRoutePrompt() ?? '') : '';
+    // Optional path to a prompt located elsewhere (e.g., "/docs/quick-starts/nextjs")
+    // If not provided, falls back to co-located prompt.md for current page
+    interface Props {
+        promptPath?: string;
+    }
+    let { promptPath }: Props = $props();
+
+    // Support co-located prompt.md or prompt from a different route via promptPath
+    const routeExists = hasRoutePrompt(promptPath);
+    const prompt = routeExists ? (getRoutePrompt(promptPath) ?? '') : '';
     const exists = routeExists;
     const { copied, copy } = createCopy(prompt);
 
