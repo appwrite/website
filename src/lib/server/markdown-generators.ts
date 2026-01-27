@@ -16,7 +16,7 @@ const markdownGenerators = new Map<RegExp, MarkdownGenerator>();
  * Pattern: /docs/references/{version}/models/{model}
  * Example: /docs/references/cloud/models/session
  */
-markdownGenerators.set(/^\/docs\/references\/([^\/]+)\/models\/([^\/]+)$/, async (match) => {
+markdownGenerators.set(/^\/docs\/references\/([^/]+)\/models\/([^/]+)$/, async (match) => {
     const [, versionParam, modelName] = match;
     return generateModelMarkdown(versionParam, modelName);
 });
@@ -26,7 +26,7 @@ markdownGenerators.set(/^\/docs\/references\/([^\/]+)\/models\/([^\/]+)$/, async
  * Pattern: /docs/references/{version}/{platform}/{service}
  * Example: /docs/references/cloud/client-web/account
  */
-markdownGenerators.set(/^\/docs\/references\/([^\/]+)\/([^\/]+)\/([^\/]+)$/, async (match) => {
+markdownGenerators.set(/^\/docs\/references\/([^/]+)\/([^/]+)\/([^/]+)$/, async (match) => {
     const [, versionParam, platform, serviceName] = match;
     return generateServiceMarkdown(versionParam, platform, serviceName);
 });

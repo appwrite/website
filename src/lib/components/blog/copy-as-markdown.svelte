@@ -19,7 +19,7 @@
     async function copy() {
         copying = true;
         if (timeout) clearTimeout(timeout);
-        const routeId = page.url.pathname || page.route.id;
+        const routeId = page.url.pathname;
         const markdown = await getPageMarkdown(routeId);
         copyToClipboard(markdown ?? '');
         timeout = setTimeout(() => (copied = false), 2000);
