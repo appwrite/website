@@ -71,10 +71,11 @@ Now you have a permanent reference to the screenshot. Subsequent requests fetch 
 When storing screenshots, you need a way to look them up later. Use a table to map URLs to their stored file IDs:
 
 ```js
-import { Client, Storage, TablesDB, ID, Query } from "appwrite";
+import { Client, Storage, TablesDB, Avatars, ID, Query } from "appwrite";
 
 const storage = new Storage(client);
 const tablesDB = new TablesDB(client);
+const avatars = new Avatars(client);
 
 async function getOrCreateScreenshot(url) {
     // Check if we already have this screenshot
