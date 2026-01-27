@@ -4,30 +4,22 @@ const follow = `# robotstxt.org/
 User-agent: *
 
 # Block tracking parameters to avoid duplicate indexing
-Disallow: /*?utm_source=
-Disallow: /*?utm_medium=
-Disallow: /*?utm_campaign=
-Disallow: /*?utm_term=
-Disallow: /*?utm_content=
 Disallow: /*?utm_
-Disallow: /*?ref=
-Disallow: /*?adobe_mc=
-Disallow: /*?trk=
 Disallow: /*&utm_
+Disallow: /*?ref=
 Disallow: /*&ref=
-Disallow: /*&adobe_mc=
+Disallow: /*?trk=
 Disallow: /*&trk=
+Disallow: /*?adobe_mc=
+Disallow: /*&adobe_mc=
 
 # Block internal/auth pages
 Disallow: /console/login
 Disallow: /console/register
 Disallow: /v1/
 
-# Block all versioned docs references; only \"cloud\" should be indexable
-Disallow: /docs/references/0
-Disallow: /docs/references/1
-Disallow: /docs/references/2
-Disallow: /docs/references/3
+# Block all versioned docs references
+Disallow: /docs/references/*/
 
 # Allow canonical cloud docs
 Allow: /docs/references/cloud/`;

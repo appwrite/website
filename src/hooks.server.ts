@@ -232,7 +232,8 @@ const NOINDEX_PATHS = [
     /^\/v1\//
 ];
 
-const NOINDEX_HOSTS = [/^stage\./i, /^fra\./i, /^internal\./i];
+// Block any staging/preview subdomains (e.g., *.cloud.appwrite.io, stage.*, etc.)
+const NOINDEX_HOSTS = [/\.cloud\.appwrite\.io$/i, /^stage\./i, /^fra\./i];
 
 const seoOptimization: Handle = async ({ event, resolve }) => {
     const { url } = event;
