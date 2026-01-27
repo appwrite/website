@@ -24,9 +24,8 @@
 
 <div class={cn('relative w-full', classNames)} {...restProps}>
     {#if showLabel}
-        <!-- Label: Teaser Banner -->
         <div class="absolute -top-8 left-0 z-20 flex items-center gap-2">
-            <span class="text-sm font-medium text-blue-400">Teaser Banner</span>
+            <span class="text-sm font-medium text-blue-400">Imagine Product Hunt Banner</span>
         </div>
         <!-- Code Icon -->
         <div class="absolute -top-8 right-0 z-20">
