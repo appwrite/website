@@ -83,14 +83,20 @@
                 class="flex items-center justify-center gap-1.5 sm:mr-0 sm:ml-auto sm:gap-2 sm:text-right"
             >
                 <!-- Product Hunt Text (mobile only) -->
-                <span class="banner-text banner-text-right sm:hidden">Launching on Product Hunt</span>
+                <span class="banner-text banner-text-right sm:hidden"
+                    >Launching on Product Hunt</span
+                >
 
                 <!-- Product Hunt Text (desktop only) -->
                 <span class="banner-text banner-text-right hidden sm:flex">Launching on</span>
 
                 <!-- Product Hunt Logo (desktop only) -->
-                <div class="!hidden sm:!flex logo-container">
-                    <img src="/images/logos/product-hunt.svg" alt="Product Hunt" class="h-auto w-auto" />
+                <div class="logo-container !hidden sm:!flex">
+                    <img
+                        src="/images/logos/product-hunt.svg"
+                        alt="Product Hunt"
+                        class="h-auto w-auto"
+                    />
                 </div>
 
                 <svg
