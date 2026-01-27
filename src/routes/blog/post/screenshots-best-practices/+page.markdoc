@@ -85,7 +85,7 @@ async function getOrCreateScreenshot(url) {
     });
 
     if (existing.total > 0) {
-        return storage.getFileView('screenshots', existing.rows[0].fileId);
+        return storage.getFileView({ bucketId: 'screenshots', fileId: existing.rows[0].fileId });
     }
 
     // Generate and store new screenshot
@@ -107,7 +107,7 @@ async function getOrCreateScreenshot(url) {
         data: { url: url, fileId: file.$id }
     });
 
-    return storage.getFileView('screenshots', file.$id);
+    return storage.getFileView({ bucketId: 'screenshots', fileId: file.$id });
 }
 ```
 
@@ -133,7 +133,7 @@ async function getScreenshot(url, maxAgeHours = 24) {
         const maxAge = maxAgeHours * 60 * 60 * 1000;
 
         if (age < maxAge) {
-            return storage.getFileView('screenshots', row.fileId);
+            return storage.getFileView({ bucketId: 'screenshots', fileId: row.fileId });
         }
 
         // Screenshot expired, regenerate and update the row
@@ -144,7 +144,7 @@ async function getScreenshot(url, maxAgeHours = 24) {
             rowId: row.$id,
             data: { fileId: newFileId }
         });
-        return storage.getFileView('screenshots', newFileId);
+        return storage.getFileView({ bucketId: 'screenshots', fileId: newFileId });
     }
 
     // No existing screenshot, create new one
