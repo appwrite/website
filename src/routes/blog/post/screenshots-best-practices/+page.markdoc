@@ -23,10 +23,10 @@ The most common mistake is treating screenshot generation as a real-time operati
 
 The fix is simple: **store screenshots in persistent storage and serve them from there**.
 
-Here is how this looks with Appwrite. First, generate the screenshot:
+Here is how this looks with Appwrite. Wrap the capture and store logic in a reusable function:
 
 ```js
-import { Client, Avatars, Storage } from "appwrite";
+import { Client, Avatars, Storage, ID } from "appwrite";
 
 const client = new Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
@@ -35,33 +35,29 @@ const client = new Client()
 const avatars = new Avatars(client);
 const storage = new Storage(client);
 
-const screenshotUrl = avatars.getScreenshot({
-    url: 'https://example.com',
-    viewportWidth: 1200,
-    viewportHeight: 630,
-    output: 'webp',
-    quality: 85
-});
+async function captureAndStore(url) {
+    const screenshotUrl = avatars.getScreenshot({
+        url,
+        viewportWidth: 1200,
+        viewportHeight: 630,
+        output: 'webp',
+        quality: 85
+    });
+
+    const response = await fetch(screenshotUrl);
+    const blob = await response.blob();
+
+    const file = await storage.createFile({
+        bucketId: 'screenshots',
+        fileId: ID.unique(),
+        file: new File([blob], 'screenshot.webp', { type: 'image/webp' })
+    });
+
+    return file.$id;
+}
 ```
 
-Then, fetch it and store it in a bucket:
-
-```js
-// Fetch the screenshot as a blob
-const response = await fetch(screenshotUrl);
-const blob = await response.blob();
-
-// Store in your screenshots bucket
-const file = await storage.createFile({
-    bucketId: 'screenshots',
-    fileId: ID.unique(),
-    file: new File([blob], 'example-com.webp', { type: 'image/webp' })
-});
-
-console.log(file.$id); // Save this ID for later retrieval
-```
-
-Now you have a permanent reference to the screenshot. Subsequent requests fetch from storage instead of regenerating.
+Now you have a reusable function that captures a screenshot and stores it. Subsequent requests can fetch from storage instead of regenerating.
 
 # Track screenshots in a table
 
@@ -78,8 +74,22 @@ const storage = new Storage(client);
 const tablesDB = new TablesDB(client);
 const avatars = new Avatars(client);
 
+// captureAndStore from above
+
+async function createScreenshot(url) {
+    const fileId = await captureAndStore(url);
+
+    await tablesDB.createRow({
+        databaseId: 'main',
+        tableId: 'screenshots',
+        rowId: ID.unique(),
+        data: { url, fileId }
+    });
+
+    return fileId;
+}
+
 async function getOrCreateScreenshot(url) {
-    // Check if we already have this screenshot
     const existing = await tablesDB.listRows({
         databaseId: 'main',
         tableId: 'screenshots',
@@ -87,29 +97,10 @@ async function getOrCreateScreenshot(url) {
     });
 
     if (existing.total > 0) {
-        return storage.getFileView({ bucketId: 'screenshots', fileId: existing.rows[0].fileId });
+        return existing.rows[0].fileId;
     }
 
-    // Generate and store new screenshot
-    const screenshotUrl = avatars.getScreenshot({ url });
-    const response = await fetch(screenshotUrl);
-    const blob = await response.blob();
-
-    const file = await storage.createFile({
-        bucketId: 'screenshots',
-        fileId: ID.unique(),
-        file: new File([blob], 'screenshot.webp', { type: 'image/webp' })
-    });
-
-    // Save the mapping
-    await tablesDB.createRow({
-        databaseId: 'main',
-        tableId: 'screenshots',
-        rowId: ID.unique(),
-        data: { url: url, fileId: file.$id }
-    });
-
-    return storage.getFileView({ bucketId: 'screenshots', fileId: file.$id });
+    return createScreenshot(url);
 }
 ```
 
@@ -135,7 +126,7 @@ async function getScreenshot(url, maxAgeHours = 24) {
         const maxAge = maxAgeHours * 60 * 60 * 1000;
 
         if (age < maxAge) {
-            return storage.getFileView({ bucketId: 'screenshots', fileId: row.fileId });
+            return row.fileId;
         }
 
         // Screenshot expired, regenerate and update the row
@@ -146,11 +137,10 @@ async function getScreenshot(url, maxAgeHours = 24) {
             rowId: row.$id,
             data: { fileId: newFileId }
         });
-        return storage.getFileView({ bucketId: 'screenshots', fileId: newFileId });
+        return newFileId;
     }
 
-    // No existing screenshot, create new one
-    return await createScreenshot(url);
+    return createScreenshot(url);
 }
 ```
 
