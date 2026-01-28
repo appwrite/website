@@ -27,12 +27,31 @@ export async function sitemaps() {
     console.info('Preparing Sitemap...');
     const { manifest } = await import('../build/server/manifest.js');
     const threads = collectThreads().map((id) => `/threads/${id}`);
+
+    // Internal/auth paths to exclude
+    const INTERNAL_PATHS = ['/console/login', '/console/register', '/v1/'];
+
     const otherRoutes = manifest._.routes
         .filter((r) => r.params.length === 0)
         .map((r) => r.id)
-        .filter(
-            (id) => !id.startsWith('/threads/') && !id.endsWith('.json') && !id.endsWith('.xml')
-        );
+        .filter((id) => {
+            // Exclude threads (handled separately), JSON/XML endpoints
+            if (id.startsWith('/threads/') || id.endsWith('.json') || id.endsWith('.xml')) {
+                return false;
+            }
+
+            // Exclude any docs references that are not the canonical \"cloud\" version
+            if (id.startsWith('/docs/references/') && !id.startsWith('/docs/references/cloud/')) {
+                return false;
+            }
+
+            // Exclude internal/auth paths
+            if (INTERNAL_PATHS.some((path) => id.startsWith(path))) {
+                return false;
+            }
+
+            return true;
+        });
 
     mkdirSync(SITEMAP_DIR, { recursive: true });
     mkdirSync(THREADS_DIR, { recursive: true });
