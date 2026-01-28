@@ -47,7 +47,7 @@
 
     <!-- Main Banner Container -->
     <a
-        href="https://www.producthunt.com/products/imagine-2?launch=imagine-00018118-5267-43ba-b456-efeeb7cbfbc9"
+        href="https://apwr.dev/imagine-ph-appwrite-website"
         target="_blank"
         rel="noopener noreferrer"
         class="banner-container group relative mx-auto flex cursor-pointer items-center bg-black px-4 py-3 sm:px-6 sm:py-4 md:h-[76px] md:px-0"
