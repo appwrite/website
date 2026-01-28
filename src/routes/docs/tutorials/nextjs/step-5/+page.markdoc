@@ -18,7 +18,7 @@ Create a new file `src/components/Navbar.tsx` and add the code below.
 'use client';
 
 import Link from 'next/link';
-import { useAuth } from '../hooks/useAuth';
+import { useAuth } from '@/hooks/useAuth';
 
 export default function Navbar() {
     const { current, logout } = useAuth();
@@ -28,7 +28,7 @@ export default function Navbar() {
             <h3 className="u-stretch eyebrow-heading-1">Idea Tracker</h3>
             {current ? (
                 <div className="main-header-end u-margin-inline-end-16">
-                    <p>{current.providerUid}</p>
+                    <p>{current.name || current.email}</p>
                     <button 
                         className="button" 
                         type="button" 
