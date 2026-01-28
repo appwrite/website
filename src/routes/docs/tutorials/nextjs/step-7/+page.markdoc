@@ -20,28 +20,44 @@ Create a new file `src/components/IdeasForm.tsx` and add the following code.
 // src/components/IdeasForm.tsx
 'use client';
 
-import { useIdeas } from '../hooks/useIdeas';
-import { useAuth } from '../hooks/useAuth';
+import { useAuth } from '@/hooks/useAuth';
+import type {Models} from "appwrite";
 
-export default function IdeasForm() {
-    const { add } = useIdeas();
+interface Idea extends Models.Row {
+    title: string;
+    description: string;
+    userId: string;
+}
+
+interface IdeasFormProps {
+    onAdd: (idea: Omit<Idea, keyof Models.Row>) => Promise<void>;
+}
+
+export default function IdeasForm({ onAdd }: IdeasFormProps) {
     const { current: user } = useAuth();
 
     const handleAddIdea = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        const form = event.target as HTMLFormElement;
-        const formData = new FormData(form);
 
         if (!user) return;
 
+        const form = event.target as HTMLFormElement;
+        const formData = new FormData(form);
+
+
+
         const postIdeaData = {
-            userId: user.userId,
+            userId: user.$id,
             title: formData.get('title') as string,
             description: formData.get('description') as string,
         };
 
-        await add(postIdeaData);
-        form.reset();
+        try {
+            await onAdd(postIdeaData);
+            form.reset();
+        } catch (error) {
+            console.error("Failed to add idea:", error);
+        }
     };
 
     if (!user) {
@@ -98,11 +114,22 @@ Now we need to display the ideas from the database. Create a new file `src/compo
 // src/components/IdeasList.tsx
 'use client';
 
-import { useIdeas } from '../hooks/useIdeas';
-import { useAuth } from '../hooks/useAuth';
+import {useAuth} from '@/hooks/useAuth';
+import {Models} from "appwrite";
 
-export default function IdeasList() {
-    const { current: ideas, loading, remove } = useIdeas();
+interface Idea extends Models.Row {
+    title: string;
+    description: string;
+    userId: string;
+}
+
+interface IdeasListProps {
+    ideas: Idea[];
+    loading: boolean;
+    onRemove: (id: string) => Promise<void>;
+}
+
+export default function IdeasList({ ideas, loading, onRemove }: IdeasListProps) {
     const { current: user } = useAuth();
 
     if (loading) {
@@ -132,9 +159,9 @@ export default function IdeasList() {
                                     </p>
                                 )}
                             </div>
-                            {user && user.userId === idea.userId && (
+                            {user && user.$id === idea.userId && (
                                 <button
-                                    onClick={() => remove(idea.$id)}
+                                    onClick={() => onRemove(idea.$id)}
                                     className="button is-text u-padding-inline-8"
                                     aria-label="Delete idea"
                                 >
@@ -155,11 +182,14 @@ export default function IdeasList() {
 Now let's update the home page to use our new components. Update `src/app/page.tsx`:
 
 ```tsx
+'use client';
 // src/app/page.tsx
 import IdeasForm from '../components/IdeasForm';
 import IdeasList from '../components/IdeasList';
+import {useIdeas} from "@/hooks/useIdeas";
 
 export default function Home() {
+    const { current: ideas, loading, add, remove } = useIdeas();
     return (
         <main className="u-padding-16">
             <div className="container">
@@ -168,8 +198,8 @@ export default function Home() {
                     Track all your side project ideas in one place.
                 </p>
             </div>
-            <IdeasForm />
-            <IdeasList />
+            <IdeasForm onAdd={add} />
+            <IdeasList ideas={ideas} loading={loading} onRemove={remove} />
         </main>
     );
 }
