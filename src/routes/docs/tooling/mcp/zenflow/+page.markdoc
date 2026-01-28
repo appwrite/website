@@ -6,8 +6,7 @@ description: Learn how to add the Appwrite MCP servers to agents in Zenflow to i
 
 Learn how you can add the Appwrite MCP servers to agents in Zenflow to interact with both the Appwrite API and documentation.
 
-Before you begin, ensure you have the following **pre-requisites** installed on your system:
-
+Before you begin, ensure you have the following **prerequisites** installed on your system:
 {% tabs %}
 {% tabsitem #api-server-prerequisites title="API server" %}
 
