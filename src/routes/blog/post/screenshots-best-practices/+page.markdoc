@@ -220,7 +220,7 @@ const thumbnail = storage.getFilePreview({
 
 Modern web pages are full of dynamic content: animations, lazy-loaded images, JavaScript-rendered components. A screenshot taken too early captures a half-loaded page.
 
-Use the `sleep` parameter to wait for content to settle:
+Use the `sleep` parameter to wait for the page to fully load before capturing:
 
 ```js
 // Wait 3 seconds for animations and lazy loading
@@ -230,7 +230,7 @@ const screenshot = avatars.getScreenshot({
 });
 ```
 
-For pages with heavy JavaScript, 2-3 seconds is usually sufficient. For simple static pages, you can skip the delay entirely.
+For pages with significant client-side rendering, 2-3 seconds is usually sufficient. For simple static pages, you can skip the delay entirely.
 
 Some pages require specific browser permissions to render correctly. A mapping application needs geolocation permission, or it shows a permission prompt instead of the map:
 
