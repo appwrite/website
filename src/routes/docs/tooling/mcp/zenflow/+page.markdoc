@@ -23,7 +23,7 @@ Before you begin, ensure you have the following **prerequisites** installed on y
 
 {% section #step-1 step=1 title="Add MCP servers" %}
 
-To add the Appwrite MCP server, open Zenflow and go to the **Settings** > **MCP servers** . From there, select your agent you want to configure MCP for, and then add your custom MCP server.
+To add the Appwrite MCP server, open Zenflow and go to the **Settings** > **MCP servers**. From there, select your agent you want to configure MCP for, and then add your custom MCP server.
 
 {% tabs %}
 {% tabsitem #api-only title="API server" %}
