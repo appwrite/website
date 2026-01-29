@@ -9,6 +9,9 @@ You can add the MCP server to various AI tools and code editors:
 {% cards_item href="/docs/tooling/mcp/claude-code" title="Claude Code" image="/images/docs/mcp/logos/claude.svg" %}
 {% /cards_item %}
 
+{% cards_item href="/docs/tooling/mcp/zenflow" title="Zenflow" image="/images/docs/mcp/logos/zenflow.svg" %}
+{% /cards_item %}
+
 {% cards_item href="/docs/tooling/mcp/cursor" title="Cursor" image="/images/docs/mcp/logos/cursor-ai.svg" %}
 {% /cards_item %}
 
@@ -34,6 +37,9 @@ You can add the MCP server to various AI tools and code editors:
 {% /cards_item %}
 
 {% cards_item href="/docs/tooling/mcp/claude-code" title="Claude Code" image="/images/docs/mcp/logos/dark/claude.svg" %}
+{% /cards_item %}
+
+{% cards_item href="/docs/tooling/mcp/zenflow" title="Zenflow" image="/images/docs/mcp/logos/dark/zenflow.svg" %}
 {% /cards_item %}
 
 {% cards_item href="/docs/tooling/mcp/cursor" title="Cursor" image="/images/docs/mcp/logos/dark/cursor-ai.svg" %}
