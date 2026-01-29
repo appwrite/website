@@ -535,7 +535,7 @@ A list of all channels available you can subscribe to. When using `Channel` help
 * `Channel.account()`
 * All account related events (session create, name update...)
 ---
-* `databases.<ID>.collections.<ID>.documents`
+* `tablesdb.<ID>.tables.<ID>.rows`
 * `Channel.tablesdb('<DATABASE_ID>').table('<TABLE_ID>').row()`
 * Any create/update/delete events to any row in a table
 ---
@@ -543,7 +543,7 @@ A list of all channels available you can subscribe to. When using `Channel` help
 * `Channel.rows()`
 * Any create/update/delete events to any row
 ---
-* `databases.<ID>.collections.<ID>.documents.<ID>`
+* `tablesdb.<ID>.tables.<ID>.rows.<ID>`
 * `Channel.tablesdb('<DATABASE_ID>').table('<TABLE_ID>').row('<ROW_ID>')`
 * Any update/delete events to a given row
 ---
