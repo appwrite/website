@@ -560,7 +560,7 @@ A list of all channels available you can subscribe to. When using `Channel` help
 * Any update/delete events to any file of the given bucket
 ---
 * `teams.*`
-* `Channel.teams()()`
+* `Channel.teams()`
 * Any create/update/delete events to any team
 ---
 * `teams.<ID>`
