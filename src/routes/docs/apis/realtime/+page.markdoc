@@ -90,7 +90,7 @@ val subscription = realtime.subscribe(Channel.files) {
 
 To subscribe to updates from different Appwrite resources, you need to specify one or more [channels](/docs/apis/realtime#channels). The channels offer a wide and powerful selection that will allow you to listen to all possible resources. This allows you to receive updates not only from the database, but from _all_ the services that Appwrite offers.
 
-If you subscribe to a channel, you will receive callbacks for a variety of events related to the channel. The events attribute in the callback can be used to filter and respond to specific events in a channel.
+If you subscribe to a channel, you will receive callbacks for a variety of events related to the channel. The events column in the callback can be used to filter and respond to specific events in a channel.
 
 [View a list of all available events](/docs/advanced/platform/events).
 
@@ -279,7 +279,7 @@ val subscription = realtime.subscribe(Channel.account()) {
 
 You can also listen to multiple channels at once by passing an array of channels. This will trigger the callback for any events for all channels passed.
 
-In this example we are listening to a specific row and all files by subscribing to multiple channels.
+In this example we are listening to a specific row and all files by subscribing to `Channel.tablesdb("<DATABASE_ID>").table("<TABLE_ID>").row("<ROW_ID>")` and `Channel.files` channels.
 
 {% multicode %}
 ```client-web
@@ -469,33 +469,33 @@ The response will look like this:
 ```json
 {
   "events": [
-    "databases.default.collections.sample.documents.63c98b9baea0938e1206.update",
-    "databases.*.collections.*.documents.*.update",
-    "databases.default.collections.*.documents.63c98b9baea0938e1206.update",
-    "databases.*.collections.*.documents.63c98b9baea0938e1206.update",
-    "databases.*.collections.sample.documents.63c98b9baea0938e1206.update",
-    "databases.default.collections.sample.documents.*.update",
-    "databases.*.collections.sample.documents.*.update",
-    "databases.default.collections.*.documents.*.update",
-    "databases.default.collections.sample.documents.63c98b9baea0938e1206",
-    "databases.*.collections.*.documents.*",
-    "databases.default.collections.*.documents.63c98b9baea0938e1206",
-    "databases.*.collections.*.documents.63c98b9baea0938e1206",
-    "databases.*.collections.sample.documents.63c98b9baea0938e1206",
-    "databases.default.collections.sample.documents.*",
-    "databases.*.collections.sample.documents.*",
-    "databases.default.collections.*.documents.*",
-    "databases.default.collections.sample",
-    "databases.*.collections.*",
-    "databases.default.collections.*",
-    "databases.*.collections.sample",
+    "databases.default.tables.sample.rows.63c98b9baea0938e1206.update",
+    "databases.*.tables.*.rows.*.update",
+    "databases.default.tables.*.rows.63c98b9baea0938e1206.update",
+    "databases.*.tables.*.rows.63c98b9baea0938e1206.update",
+    "databases.*.tables.sample.rows.63c98b9baea0938e1206.update",
+    "databases.default.tables.sample.rows.*.update",
+    "databases.*.tables.sample.rows.*.update",
+    "databases.default.tables.*.rows.*.update",
+    "databases.default.tables.sample.rows.63c98b9baea0938e1206",
+    "databases.*.tables.*.rows.*",
+    "databases.default.tables.*.rows.63c98b9baea0938e1206",
+    "databases.*.tables.*.rows.63c98b9baea0938e1206",
+    "databases.*.tables.sample.rows.63c98b9baea0938e1206",
+    "databases.default.tables.sample.rows.*",
+    "databases.*.tables.sample.rows.*",
+    "databases.default.tables.*.rows.*",
+    "databases.default.tables.sample",
+    "databases.*.tables.*",
+    "databases.default.tables.*",
+    "databases.*.tables.sample",
     "databases.default",
     "databases.*"
   ],
   "channels": [
-    "documents",
-    "databases.default.collections.sample.documents",
-    "databases.default.collections.sample.documents.63c98b9baea0938e1206"
+    "rows",
+    "databases.default.tables.sample.rows",
+    "databases.default.tables.sample.rows.63c98b9baea0938e1206"
   ],
   "timestamp": "2023-01-19 18:30:04.051",
   "payload": {
@@ -516,7 +516,7 @@ The response will look like this:
     "$createdAt": "2023-01-19T18:27:39.715+00:00",
     "$updatedAt": "2023-01-19T18:30:04.040+00:00",
     "$permissions": [],
-    "$collectionId": "sample",
+    "$tableId": "sample",
     "$databaseId": "default"
   }
 }
@@ -535,7 +535,7 @@ A list of all channels available you can subscribe to. When using `Channel` help
 * `Channel.account()`
 * All account related events (session create, name update...)
 ---
-* `databases.[ID].collections.[ID].documents`
+* `databases.<ID>.collections.<ID>.documents`
 * `Channel.tablesdb('<DATABASE_ID>').table('<TABLE_ID>').row()`
 * Any create/update/delete events to any row in a table
 ---
@@ -543,7 +543,7 @@ A list of all channels available you can subscribe to. When using `Channel` help
 * `Channel.rows`
 * Any create/update/delete events to any row
 ---
-* `databases.[ID].collections.[ID].documents.[ID]`
+* `databases.<ID>.collections.<ID>.documents.<ID>`
 * `Channel.tablesdb('<DATABASE_ID>').table('<TABLE_ID>').row('<ROW_ID>')`
 * Any update/delete events to a given row
 ---
@@ -551,11 +551,11 @@ A list of all channels available you can subscribe to. When using `Channel` help
 * `Channel.files`
 * Any create/update/delete events to any file
 ---
-* `buckets.[ID].files.[ID]`
+* `buckets.<ID>.files.<ID>`
 * `Channel.bucket('<BUCKET_ID>').file('<FILE_ID>')`
 * Any update/delete events to a given file of the given bucket
 ---
-* `buckets.[ID].files`
+* `buckets.<ID>.files`
 * `Channel.bucket('<BUCKET_ID>').file()`
 * Any update/delete events to any file of the given bucket
 ---
@@ -563,7 +563,7 @@ A list of all channels available you can subscribe to. When using `Channel` help
 * `Channel.team()`
 * Any create/update/delete events to any team
 ---
-* `teams.[ID]`
+* `teams.<ID>`
 * `Channel.team('<TEAM_ID>')`
 * Any update/delete events to a given team
 ---
@@ -571,7 +571,7 @@ A list of all channels available you can subscribe to. When using `Channel` help
 * `Channel.membership()`
 * Any create/update/delete events to any membership
 ---
-* `memberships.[ID]`
+* `memberships.<ID>`
 * `Channel.membership('<MEMBERSHIP_ID>')`
 * Any update/delete events to a given membership
 ---
@@ -579,11 +579,11 @@ A list of all channels available you can subscribe to. When using `Channel` help
 * `Channel.executions`
 * Any update to executions
 ---
-* `executions.[ID]`
+* `executions.<ID>`
 * `Channel.function().execution('<EXECUTION_ID>')`
 * Any update to a given execution
 ---
-* `functions.[ID]`
+* `functions.<ID>`
 * `Channel.function('<FUNCTION_ID>')`
 * Any execution event to a given function
 
