@@ -2,7 +2,7 @@
 layout: post
 title: Best practices for handling screenshots in your app
 description: Learn how to efficiently capture, store, and serve webpage screenshots without wasting resources or slowing down your app.
-date: 2026-01-28
+date: 2026-01-29
 cover: /images/blog/screenshots-best-practices/cover.png
 timeToRead: 5
 author: atharva
