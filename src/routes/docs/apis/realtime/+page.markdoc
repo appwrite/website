@@ -19,7 +19,7 @@ const client = new Client()
     .setProject('<PROJECT_ID>');
 
 // Subscribe to files channel
-client.subscribe(Channel.bucket().file(), response => {
+client.subscribe(Channel.files, response => {
     if(response.events.includes('buckets.*.files.*.create')) {
         // Log when a new file is uploaded
         console.log(response.payload);
@@ -37,7 +37,7 @@ final client = Client()
 final realtime = Realtime(client);
 
 // Subscribe to files channel
-final subscription = realtime.subscribe([Channel.bucket().file()]);
+final subscription = realtime.subscribe([Channel.files]);
 
 subscription.stream.listen((response) {
     if(response.events.contains('buckets.*.files.*.create')) {
@@ -58,7 +58,7 @@ let client = Client()
 let realtime = Realtime(client)
 
 // Subscribe to files channel
-let subscription = realtime.subscribe(channels: [Channel.bucket().file()]) { response in
+let subscription = realtime.subscribe(channels: [Channel.files]) { response in
     if (message.events!.contains("buckets.*.files.*.create")) {
         // Log when a new file is uploaded
         print(String(describing: response))
@@ -78,7 +78,7 @@ val client = Client(context)
 val realtime = Realtime(client)
 
 // Subscribe to files channel
-val subscription = realtime.subscribe(Channel.bucket().file()) {
+val subscription = realtime.subscribe(Channel.files) {
     if(it.events.contains("buckets.*.files.*.create")) {
         // Log when a new file is uploaded
         print(it.payload.toString());
@@ -113,7 +113,7 @@ client.subscribe(Channel.account(), response => {
 
 // Subscribe to a specific row
 client.subscribe(
-    Channel.tablesdb('db1').table('table1').row('row1'),
+    Channel.tablesdb('<DATABASE_ID>').table('<TABLE_ID>').row('<ROW_ID>'),
     response => {
         console.log(response);
     }
@@ -134,7 +134,7 @@ final subscription = realtime.subscribe([Channel.account()]);
 
 // Subscribe to a specific row
 final docSubscription = realtime.subscribe([
-    Channel.tablesdb('db1').table('table1').row('row1')
+    Channel.tablesdb('<DATABASE_ID>').table('<TABLE_ID>').row('<ROW_ID>')
 ]);
 ```
 
@@ -154,7 +154,7 @@ let subscription = realtime.subscribe(channels: [Channel.account()]) { response 
 
 // Subscribe to a specific row
 let docSubscription = realtime.subscribe(
-    channels: [Channel.tablesdb("db1").table("table1").row("row1")]
+    channels: [Channel.tablesdb("<DATABASE_ID>").table("<TABLE_ID>").row("<ROW_ID>")]
 ) { response in
     print(String(describing: response))
 }
@@ -178,7 +178,7 @@ val subscription = realtime.subscribe(Channel.account()) {
 
 // Subscribe to a specific row
 val docSubscription = realtime.subscribe(
-    Channel.tablesdb("db1").table("table1").row("row1")
+    Channel.tablesdb("<DATABASE_ID>").table("<TABLE_ID>").row("<ROW_ID>")
 ) {
     print(it.toString())
 }
@@ -290,8 +290,8 @@ const client = new Client()
     .setProject('<PROJECT_ID>');
 
 client.subscribe([
-    Channel.tablesdb('db1').table('table1').row('row1'),
-    Channel.bucket().file()
+    Channel.tablesdb('<DATABASE_ID>').table('<TABLE_ID>').row('<ROW_ID>'),
+    Channel.files
 ], response => {
     // Callback will be executed on changes for the row and all files.
     console.log(response);
@@ -308,8 +308,8 @@ final client = Client()
 final realtime = Realtime(client);
 
 final subscription = realtime.subscribe([
-    Channel.tablesdb('db1').table('table1').row('row1'),
-    Channel.bucket().file()
+    Channel.tablesdb('<DATABASE_ID>').table('<TABLE_ID>').row('<ROW_ID>'),
+    Channel.files
 ]);
 
 subscription.stream.listen((response) {
@@ -329,8 +329,8 @@ let client = Client()
 let realtime = Realtime(client)
 
 realtime.subscribe(channels: [
-    Channel.tablesdb("db1").table("table1").row("row1"),
-    Channel.bucket().file()
+    Channel.tablesdb("<DATABASE_ID>").table("<TABLE_ID>").row("<ROW_ID>"),
+    Channel.files
 ]) { response in
     // Callback will be executed on changes for the row and all files.
     print(String(describing: response))
@@ -348,8 +348,8 @@ val client = Client(context)
 val realtime = Realtime(client)
 
 realtime.subscribe(
-    Channel.tablesdb("db1").table("table1").row("row1"),
-    Channel.bucket().file()
+    Channel.tablesdb("<DATABASE_ID>").table("<TABLE_ID>").row("<ROW_ID>"),
+    Channel.files
 ) {
     // Callback will be executed on changes for the row and all files.
     print(it.toString())
@@ -370,7 +370,7 @@ const client = new Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
     .setProject('<PROJECT_ID>');
 
-const unsubscribe = client.subscribe(Channel.bucket().file(), response => {
+const unsubscribe = client.subscribe(Channel.files, response => {
     // Callback will be executed on changes for all files.
     console.log(response);
 });
@@ -388,7 +388,7 @@ final client = Client()
 
 final realtime = Realtime(client);
 
-final subscription = realtime.subscribe([Channel.bucket().file()]);
+final subscription = realtime.subscribe([Channel.files]);
 
 subscription.stream.listen((response) {
     // Callback will be executed on changes for all files.
@@ -405,7 +405,7 @@ import Appwrite
 let client = Client()
 let realtime = Realtime(client)
 
-let subscription = realtime.subscribe(channels: [Channel.bucket().file()]) { response in
+let subscription = realtime.subscribe(channels: [Channel.files]) { response in
     // Callback will be executed on changes for all files.
     print(response.toString())
 }
@@ -425,7 +425,7 @@ val client = Client(context)
 
 val realtime = Realtime(client)
 
-val subscription = realtime.subscribe(Channel.bucket().file()) {
+val subscription = realtime.subscribe(Channel.files) {
     // Callback will be executed on changes for all files.
     print(it.toString())
 }
@@ -462,7 +462,7 @@ The payload from the subscription will contain following properties:
 * Payload contains the data equal to the response model.
 {% /table %}
 
-If you subscribe to the `documents` channel and a document the user is allowed to read is updated, you will receive an object containing information about the event and the updated document.
+If you subscribe to the `rows` channel and a row the user is allowed to read is updated, you will receive an object containing information about the event and the updated row.
 
 The response will look like this:
 
@@ -524,7 +524,7 @@ The response will look like this:
 
 # Channels {% #channels %}
 
-A list of all channels available you can subscribe to. IDs cannot be wildcards.
+A list of all channels available you can subscribe to. When using `Channel` helpers, leaving an ID blank will subscribe using `*`.
 
 {% table %}
 * Channel
@@ -536,55 +536,55 @@ A list of all channels available you can subscribe to. IDs cannot be wildcards.
 * All account related events (session create, name update...)
 ---
 * `databases.[ID].collections.[ID].documents`
-* `Channel.tablesdb(ID).table(ID).row()`
+* `Channel.tablesdb('<DATABASE_ID>').table('<TABLE_ID>').row()`
 * Any create/update/delete events to any row in a table
 ---
-* `documents`
-* `Channel.tablesdb().table().row()`
+* `rows`
+* `Channel.rows`
 * Any create/update/delete events to any row
 ---
 * `databases.[ID].collections.[ID].documents.[ID]`
-* `Channel.tablesdb(ID).table(ID).row(ID)`
+* `Channel.tablesdb('<DATABASE_ID>').table('<TABLE_ID>').row('<ROW_ID>')`
 * Any update/delete events to a given row
 ---
 * `files`
-* `Channel.bucket().file()`
+* `Channel.files`
 * Any create/update/delete events to any file
 ---
 * `buckets.[ID].files.[ID]`
-* `Channel.bucket(ID).file(ID)`
+* `Channel.bucket('<BUCKET_ID>').file('<FILE_ID>')`
 * Any update/delete events to a given file of the given bucket
 ---
 * `buckets.[ID].files`
-* `Channel.bucket(ID).file()`
+* `Channel.bucket('<BUCKET_ID>').file()`
 * Any update/delete events to any file of the given bucket
 ---
-* `teams`
+* `teams.*`
 * `Channel.team()`
 * Any create/update/delete events to any team
 ---
 * `teams.[ID]`
-* `Channel.team(ID)`
+* `Channel.team('<TEAM_ID>')`
 * Any update/delete events to a given team
 ---
-* `memberships`
+* `memberships.*`
 * `Channel.membership()`
 * Any create/update/delete events to any membership
 ---
 * `memberships.[ID]`
-* `Channel.membership(ID)`
+* `Channel.membership('<MEMBERSHIP_ID>')`
 * Any update/delete events to a given membership
 ---
 * `executions`
-* `Channel.function().execution()`
+* `Channel.executions`
 * Any update to executions
 ---
 * `executions.[ID]`
-* `Channel.function().execution(ID)`
+* `Channel.function().execution('<EXECUTION_ID>')`
 * Any update to a given execution
 ---
 * `functions.[ID]`
-* `Channel.function(ID)`
+* `Channel.function('<FUNCTION_ID>')`
 * Any execution event to a given function
 
 {% /table %}
@@ -594,7 +594,7 @@ You can also filter events by appending event methods to the channel helpers:
 - `.update()` - Listen only to update events  
 - `.delete()` - Listen only to delete events
 
-For example, `Channel.tablesdb('db1').table('table1').row('row1').update().toString()` will only trigger on row updates.
+For example, `Channel.tablesdb('<DATABASE_ID>').table('<TABLE_ID>').row('<ROW_ID>').update()` will only trigger on row updates.
 
 # Custom endpoint {% #custom-endpoint %}
 
