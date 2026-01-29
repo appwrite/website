@@ -59,7 +59,7 @@ let realtime = Realtime(client)
 
 // Subscribe to files channel
 let subscription = realtime.subscribe(channels: [Channel.files()]) { response in
-    if (message.events!.contains("buckets.*.files.*.create")) {
+    if (response.events!.contains("buckets.*.files.*.create")) {
         // Log when a new file is uploaded
         print(String(describing: response))
     }
