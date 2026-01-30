@@ -74,7 +74,7 @@ const storage = new Storage(client);
 const tablesDB = new TablesDB(client);
 const avatars = new Avatars(client);
 
-// captureAndStore from above
+// captureAndStore from the previous example
 
 async function createScreenshot(url) {
     const fileId = await captureAndStore(url);
