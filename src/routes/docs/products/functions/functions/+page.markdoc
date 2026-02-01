@@ -165,7 +165,7 @@ You can access environment variables inside functions using your [runtime langua
 ## Timeout {% #timeout %}
 You can limit the execution time of your function by navigating to your function > **Settings** > **Timeout**.
 There is a system-wide maximum timeout of 900 seconds (15 minutes) for asynchronous functions.
-For synchronous functions, there is a hard limit of 30s.
+For synchronous functions, there is a hard limit of 30 seconds.
 
 ## Scopes {% #scopes %}
 
