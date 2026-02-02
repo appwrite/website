@@ -17,7 +17,8 @@ function load_cache() {
 }
 
 function save_cache(cache) {
-    writeFileSync(cache_path, JSON.stringify(cache, null, 2) + '\n');
+    const sorted = Object.fromEntries(Object.entries(cache).sort(([a], [b]) => a.localeCompare(b)));
+    writeFileSync(cache_path, JSON.stringify(sorted, null, 2) + '\n');
 }
 
 function hash_file(file) {
