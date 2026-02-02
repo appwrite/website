@@ -122,13 +122,19 @@ export async function getThreadMessages(threadId: string) {
 }
 
 export async function* iterateAllThreads(total: number | undefined = undefined) {
-    let offset = 0;
     const limit = 100;
+    let cursor: string | undefined = undefined;
+    let count = 0;
     while (true) {
+        const queries = [Query.limit(limit)];
+        if (cursor) {
+            queries.push(Query.cursorAfter(cursor));
+        }
+
         const data = await databases.listDocuments<DiscordThread>(
             PUBLIC_APPWRITE_DB_MAIN_ID,
             PUBLIC_APPWRITE_COL_THREADS_ID,
-            [Query.offset(offset), Query.limit(limit)]
+            queries
         );
 
         if (data.documents.length === 0) {
@@ -137,12 +143,12 @@ export async function* iterateAllThreads(total: number | undefined = undefined) 
 
         for (const thread of data.documents) {
             yield thread;
+            count++;
+            if (total !== undefined && count >= total) {
+                return;
+            }
         }
 
-        offset += limit;
-
-        if (total !== undefined && offset >= total) {
-            break;
-        }
+        cursor = data.documents[data.documents.length - 1].$id;
     }
 }

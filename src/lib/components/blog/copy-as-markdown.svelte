@@ -19,7 +19,8 @@
     async function copy() {
         copying = true;
         if (timeout) clearTimeout(timeout);
-        const markdown = await getPageMarkdown(page.route.id);
+        const routeId = page.url.pathname;
+        const markdown = await getPageMarkdown(routeId);
         copyToClipboard(markdown ?? '');
         timeout = setTimeout(() => (copied = false), 2000);
         copied = true;
@@ -64,7 +65,7 @@
                 class="text-sm"
             >
                 <Icon name="copy" aria-hidden="true" class="text-sm" />
-                <span>Copy page</span>
+                <span data-ignore="true" data-noindex="true">Copy page</span>
             </Button>
             {#snippet tooltip()}
                 Copied

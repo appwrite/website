@@ -18,8 +18,8 @@ jobs:
               run: bun install --frozen-lockfile
             - name: Check diagnostics
               env:
-                  PUBLIC_APPWRITE_ENDPOINT: ${{ vars.PUBLIC_APPWRITE_ENDPOINT }}
-                  PUBLIC_APPWRITE_DASHBOARD: ${{ vars.PUBLIC_APPWRITE_DASHBOARD }}
+                  PUBLIC_APPWRITE_ENDPOINT: ${{ vars.PUBLIC_APPWRITE_ENDPOINT || 'http://appwrite.test/v1' }}
+                  PUBLIC_APPWRITE_DASHBOARD: ${{ vars.PUBLIC_APPWRITE_DASHBOARD || 'http://appwrite.test' }}
                   PUBLIC_APPWRITE_PROJECT_ID: ${{ vars.PUBLIC_APPWRITE_PROJECT_ID }}
                   PUBLIC_APPWRITE_DB_MAIN_ID: ${{ vars.PUBLIC_APPWRITE_DB_MAIN_ID }}
                   PUBLIC_APPWRITE_COL_THREADS_ID: ${{ vars.PUBLIC_APPWRITE_COL_THREADS_ID }}
@@ -61,8 +61,8 @@ jobs:
               run: bunx playwright install --with-deps chromium
             - name: Run tests
               env:
-                  PUBLIC_APPWRITE_ENDPOINT: ${{ vars.PUBLIC_APPWRITE_ENDPOINT }}
-                  PUBLIC_APPWRITE_DASHBOARD: ${{ vars.PUBLIC_APPWRITE_DASHBOARD }}
+                  PUBLIC_APPWRITE_ENDPOINT: ${{ vars.PUBLIC_APPWRITE_ENDPOINT || 'http://appwrite.test/v1' }}
+                  PUBLIC_APPWRITE_DASHBOARD: ${{ vars.PUBLIC_APPWRITE_DASHBOARD || 'http://appwrite.test' }}
                   PUBLIC_APPWRITE_PROJECT_ID: ${{ vars.PUBLIC_APPWRITE_PROJECT_ID }}
                   PUBLIC_APPWRITE_DB_MAIN_ID: ${{ vars.PUBLIC_APPWRITE_DB_MAIN_ID }}
                   PUBLIC_APPWRITE_COL_THREADS_ID: ${{ vars.PUBLIC_APPWRITE_COL_THREADS_ID }}
@@ -90,8 +90,8 @@ jobs:
             - name: Build Website
               env:
                   NODE_OPTIONS: '--max_old_space_size=16384'
-                  PUBLIC_APPWRITE_ENDPOINT: ${{ vars.PUBLIC_APPWRITE_ENDPOINT }}
-                  PUBLIC_APPWRITE_DASHBOARD: ${{ vars.PUBLIC_APPWRITE_DASHBOARD }}
+                  PUBLIC_APPWRITE_ENDPOINT: ${{ vars.PUBLIC_APPWRITE_ENDPOINT || 'http://appwrite.test/v1' }}
+                  PUBLIC_APPWRITE_DASHBOARD: ${{ vars.PUBLIC_APPWRITE_DASHBOARD || 'http://appwrite.test' }}
                   PUBLIC_APPWRITE_PROJECT_ID: ${{ vars.PUBLIC_APPWRITE_PROJECT_ID }}
                   PUBLIC_APPWRITE_DB_MAIN_ID: ${{ vars.PUBLIC_APPWRITE_DB_MAIN_ID }}
                   PUBLIC_APPWRITE_COL_THREADS_ID: ${{ vars.PUBLIC_APPWRITE_COL_THREADS_ID }}
@@ -113,7 +113,7 @@ jobs:
                   ref: ${{ github.event.pull_request.head.sha }}
             - uses: oven-sh/setup-bun@v2
               with:
-                  bun-version: 1.3
+                  bun-version: 1.3.6
             - name: Install dependencies
               run: bun install --frozen-lockfile
             - name: Optimize assets

@@ -51,8 +51,7 @@
 
             return next;
         },
-        portal: null,
-        scrollAlignment: 'center'
+        portal: typeof document !== 'undefined' ? document.body : null
     });
 
     $: selectedOption = options.find((o) => o.value === value);
