@@ -87,7 +87,7 @@ async function main() {
     for (const file of walk_directory(join(__dirname, '../static'))) {
         const relative_path = get_relative_path(file);
         if (!is_image(file)) continue;
-		if (exceptions.some((exception) => relative_path.startsWith(exception))) continue;
+        if (exceptions.some((exception) => relative_path.startsWith(exception))) continue;
 
         console.log(relative_path);
 
