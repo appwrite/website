@@ -24,5 +24,7 @@ terraform/**/**/*.tfstate*
 /.cache
 /test-results
 
+.optimize-cache.json
+
 # Sentry Config File
 .env.sentry-build-plugin
