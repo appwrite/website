@@ -1,4 +1,4 @@
-import { readdirSync, statSync } from 'fs';
+import { readdirSync, statSync, readFileSync, writeFileSync, unlinkSync } from 'fs';
 import { join, relative } from 'path';
 import sharp from 'sharp';
 import { fileURLToPath } from 'url';
@@ -75,7 +75,7 @@ async function main() {
             meta = await image.metadata();
         } catch (err) {
             const msg = `${relative_path} failed: ${err.message}`;
-            if (Bun.env.CI) {
+            if (process.env.CI) {
                 throw new Error(msg);
             }
 
@@ -83,7 +83,7 @@ async function main() {
             continue;
         }
 
-        if (Bun.env.CI && (meta.width > 1980 || meta.height > 1980)) {
+        if (process.env.CI && (meta.width > 1980 || meta.height > 1980)) {
             const msg = `${relative_path} is too large: ${meta.width}x${meta.height}`;
             throw new Error(msg);
         }
@@ -94,33 +94,29 @@ async function main() {
 
         await sharp(buffer).toFile(file + '.optimized');
 
-        const file_before = Bun.file(file);
-        await file_before.arrayBuffer();
-        const size_before = file_before.size;
-
-        const file_after = Bun.file(file + '.optimized');
-        const file_after_contents = await file_after.arrayBuffer();
-        const size_after = file_after.size;
+        const size_before = statSync(file).size;
+        const size_after = statSync(file + '.optimized').size;
 
         const size_diff = size_before - size_after;
         if (size_diff <= 0) {
-            await Bun.file(file + '.optimized').delete();
+            unlinkSync(file + '.optimized');
             continue;
         }
 
         const size_diff_percent = size_diff / size_before;
         if (size_diff_percent < 0.2) {
-            await Bun.file(file + '.optimized').delete();
+            unlinkSync(file + '.optimized');
             continue;
         }
 
         // Atomic rewrite
         try {
-            await Bun.write(file, file_after_contents);
-            await Bun.file(file + '.optimized').delete();
+            const file_after_contents = readFileSync(file + '.optimized');
+            writeFileSync(file, file_after_contents);
+            unlinkSync(file + '.optimized');
         } catch (error) {
             try {
-                await Bun.file(file + '.optimized').delete();
+                unlinkSync(file + '.optimized');
             } catch {
                 // Silenced
             }
@@ -131,7 +127,7 @@ async function main() {
         const diff_verbose = Math.round(size_diff_percent * 100);
         console.log(`✅ ${relative_path} has been optimized (-${diff_verbose}%)`);
 
-        if (Bun.env.CI) {
+        if (process.env.CI) {
             console.log(
                 `Stopping optimization in CI/CD env, as one diff is enough to make test fail`
             );
