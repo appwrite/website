@@ -78,10 +78,6 @@ function get_relative_path(file) {
 }
 
 async function main() {
-    console.log(
-        'This script runs for ~5 mins. It runs silently if all files are already optimized.'
-    );
-
     const cache = load_cache();
     const new_cache = {};
 
