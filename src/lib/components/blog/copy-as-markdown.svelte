@@ -65,7 +65,7 @@
                 class="text-sm"
             >
                 <Icon name="copy" aria-hidden="true" class="text-sm" />
-                <span>Copy page</span>
+                <span data-ignore="true" data-noindex="true">Copy page</span>
             </Button>
             {#snippet tooltip()}
                 Copied
