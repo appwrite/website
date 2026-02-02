@@ -5,14 +5,14 @@ import { fileURLToPath } from 'url';
 
 const __dirname = fileURLToPath(new URL('.', import.meta.url));
 const root_dir = join(__dirname, '../static');
-const cache_path = join(__dirname, '../.optimize-cache.json');
+const cache_path = join(__dirname, '../.optimize-lock.json');
 const exceptions = ['assets/'];
 
-/** @returns {Record<string, string>} */
-function load_cache() {
+/** @returns {Promise<Record<string, string>>} */
+async function load_cache() {
     if (!existsSync(cache_path)) return {};
     try {
-        return JSON.parse(Bun.file(cache_path).textSync());
+        return JSON.parse(await Bun.file(cache_path).text());
     } catch {
         return {};
     }
@@ -87,7 +87,8 @@ async function main() {
         'This script runs for ~5 mins. It runs silently if all files are already optimized.'
     );
 
-    const cache = load_cache();
+    const cache = await load_cache();
+    const seen = new Set();
     let cache_updated = false;
 
     for (const file of walk_directory(join(__dirname, '../static'))) {
@@ -96,6 +97,7 @@ async function main() {
         if (exceptions.some((exception) => relative_path.startsWith(exception))) continue;
 
         const hash = await get_hash(file);
+        seen.add(relative_path);
         if (cache[relative_path] === hash) continue;
 
         const image = sharp(file);
@@ -174,6 +176,14 @@ async function main() {
                 `Stopping optimization in CI/CD env, as one diff is enough to make test fail`
             );
             break;
+        }
+    }
+
+    // Remove deleted files from cache
+    for (const key of Object.keys(cache)) {
+        if (!seen.has(key)) {
+            delete cache[key];
+            cache_updated = true;
         }
     }
 
