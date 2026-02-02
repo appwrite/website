@@ -1,11 +1,35 @@
-import { readdirSync, statSync } from 'fs';
+import { readdirSync, statSync, existsSync } from 'fs';
 import { join, relative } from 'path';
 import sharp from 'sharp';
 import { fileURLToPath } from 'url';
 
 const __dirname = fileURLToPath(new URL('.', import.meta.url));
 const root_dir = join(__dirname, '../static');
+const cache_path = join(__dirname, '../.optimize-cache.json');
 const exceptions = ['assets/'];
+
+/** @returns {Record<string, string>} */
+function load_cache() {
+    if (!existsSync(cache_path)) return {};
+    try {
+        return JSON.parse(Bun.file(cache_path).textSync());
+    } catch {
+        return {};
+    }
+}
+
+/** @param {Record<string, string>} cache */
+async function save_cache(cache) {
+    const sorted = Object.fromEntries(Object.entries(cache).sort(([a], [b]) => a.localeCompare(b)));
+    await Bun.write(cache_path, JSON.stringify(sorted, null, 4) + '\n');
+}
+
+/** @param {string} file_path */
+async function get_hash(file_path) {
+    const hasher = new Bun.CryptoHasher('sha256');
+    hasher.update(await Bun.file(file_path).arrayBuffer());
+    return hasher.digest('hex').slice(0, 16);
+}
 
 /**
  * @type {{
@@ -63,10 +87,16 @@ async function main() {
         'This script runs for ~5 mins. It runs silently if all files are already optimized.'
     );
 
+    const cache = load_cache();
+    let cache_updated = false;
+
     for (const file of walk_directory(join(__dirname, '../static'))) {
         const relative_path = get_relative_path(file);
         if (!is_image(file)) continue;
         if (exceptions.some((exception) => relative_path.startsWith(exception))) continue;
+
+        const hash = await get_hash(file);
+        if (cache[relative_path] === hash) continue;
 
         const image = sharp(file);
 
@@ -105,12 +135,16 @@ async function main() {
         const size_diff = size_before - size_after;
         if (size_diff <= 0) {
             await Bun.file(file + '.optimized').delete();
+            cache[relative_path] = hash;
+            cache_updated = true;
             continue;
         }
 
         const size_diff_percent = size_diff / size_before;
         if (size_diff_percent < 0.2) {
             await Bun.file(file + '.optimized').delete();
+            cache[relative_path] = hash;
+            cache_updated = true;
             continue;
         }
 
@@ -131,12 +165,20 @@ async function main() {
         const diff_verbose = Math.round(size_diff_percent * 100);
         console.log(`✅ ${relative_path} has been optimized (-${diff_verbose}%)`);
 
+        // Update cache with new hash after optimization
+        cache[relative_path] = await get_hash(file);
+        cache_updated = true;
+
         if (Bun.env.CI) {
             console.log(
                 `Stopping optimization in CI/CD env, as one diff is enough to make test fail`
             );
             break;
         }
+    }
+
+    if (cache_updated) {
+        await save_cache(cache);
     }
 }
 
