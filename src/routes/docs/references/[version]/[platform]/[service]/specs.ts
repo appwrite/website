@@ -148,6 +148,15 @@ function getExamples(version: string) {
     }
 }
 
+function stripMarkdownCodeFence(content: string): string {
+    const trimmed = content.trim();
+    const fenced = trimmed.match(/^```[^\n]*\n([\s\S]*?)\n```[ \t]*$/);
+    if (fenced) {
+        return fenced[1];
+    }
+    return content;
+}
+
 function filterRequestBodyProperties(
     requestBody: OpenAPIV3.ReferenceObject | OpenAPIV3.RequestBodyObject | undefined,
     allowedParameters: string[]
@@ -508,7 +517,7 @@ export async function getService(
         data.methods.push({
             id: operation['x-appwrite'].method,
             group: operation['x-appwrite'].group,
-            demo: typeof demo === 'string' ? demo : '',
+            demo: typeof demo === 'string' ? stripMarkdownCodeFence(demo) : '',
             title: operation.summary ?? '',
             description: operation.description ?? '',
             parameters: parameters ?? [],
