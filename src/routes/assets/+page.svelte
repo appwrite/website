@@ -360,7 +360,7 @@
                                     Use these product visuals to enhance your articles,
                                     presentations, and content related to Appwrite.
                                 </p>
-                                <div class="mt-5 grid grid-cols-2 gap-8">
+                                <div class="mt-5 grid grid-cols-1 gap-8 sm:grid-cols-2">
                                     <div class="media-wrapper">
                                         <img
                                             class="web-u-border-radius-8 web-u-media-ratio-16-9 w-full"
@@ -542,8 +542,10 @@
                 </main>
             </div>
 
-            <FooterNav />
-            <MainFooter />
+            <div class="footer-wrapper">
+                <FooterNav />
+                <MainFooter />
+            </div>
         </div>
     </TocRoot>
 </Main>
@@ -580,7 +582,8 @@
         }
 
         header,
-        main {
+        main,
+        .footer-wrapper {
             padding-left: var(--spacing-5, 1.25rem);
             padding-right: var(--spacing-5, 1.25rem);
         }
