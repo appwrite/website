@@ -28,6 +28,7 @@
     class={cn('pointer-events-none absolute inset-0', className)}
     style:opacity
     style:filter={invert ? 'invert(1)' : 'none'}
+    aria-hidden="true"
     {...rest}
 >
     <filter id="noise">
