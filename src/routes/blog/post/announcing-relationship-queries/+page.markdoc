@@ -1,0 +1,72 @@
+---
+layout: post
+title: "Announcing relationship queries: Filter across related data with ease"
+description: You can now use filter queries directly on relationship columns, plus enjoy up to 18x faster relationship performance across the board.
+date: 2026-02-06
+cover: /images/blog/announcing-screenshots-api/cover.png
+timeToRead: 5
+author: jake-barnby
+category: announcement
+featured: false
+---
+
+If you've worked with relationships in Appwrite, you've likely run into two pain points: they were slow, and you couldn't query across them. If you wanted to find all posts by a specific author or all orders containing a certain product, you had to fetch everything and filter in your application layer.
+
+Both of those problems are now solved.
+
+As of today, Appwrite Databases supports **filter queries on relationship columns** and delivers a **12-18x performance improvement** for relationship operations. Relationships are no longer just a way to connect data, they're now a fast, queryable foundation you can build on with confidence.
+
+# Query across relationships with dot notation
+
+You can now use filter queries directly against relationship columns using dot notation. Reference fields on related rows with the format `relationshipKey.field`, and Appwrite handles the rest.
+
+```js
+const { Client, TablesDB, Query } = require('node-appwrite');
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>');
+
+const tablesDB = new TablesDB(client);
+
+// Get all posts where the author's name is 'Jake'
+await tablesDB.listRows({
+    databaseId: 'blog',
+    tableId: 'posts',
+    queries: [
+        Query.equal('author.name', ['Jake'])
+    ],
+});
+```
+
+All [comparison operators](/docs/products/databases/queries#comparison) are supported, including `equal`, `notEqual`, `greaterThan`, `lessThan`, `between`, `contains`, and the full set of spatial queries.
+
+# 12-18x faster relationship performance
+
+Alongside query support, we've overhauled the internals of how relationships are resolved, delivering a consistent **12-18x speed improvement** for relationship operations.
+
+Whether you're loading a user's posts, an order's line items, or a project's team members, the response comes back faster across the board.
+
+These performance gains apply automatically. There's nothing to configure or opt into. If you're already using relationships, they just got faster.
+
+# What this unlocks
+
+With queryable, high-performance relationships, you can now build patterns that were previously impractical:
+
+- **Filtered views across tables:** Show all articles by authors in a specific country, or all products in a category with stock above zero.
+- **Search with context:** Find users whose organization matches a criteria, without fetching and filtering client-side.
+- **Dashboards and reports:** Aggregate and filter data across related tables directly in your queries.
+- **Faster applications:** Reduced response times mean snappier UIs, especially for pages that load multiple levels of related data.
+
+# Availability
+
+Relationship queries and performance improvements are available now on **Appwrite Cloud** and will arrive on self-hosted deployments in the next release.
+
+If you've been working around the limitations of relationships, now is a great time to revisit your data model. Queries across relationships and dramatically faster performance make them a first-class tool for building connected, real-world data structures.
+
+# More resources
+
+- [Read the relationships documentation](/docs/products/databases/relationships)
+- [Learn about queries in Appwrite Databases](/docs/products/databases/queries)
+- [Announcing opt-in relationship loading](/blog/post/announcing-opt-in-relationship-loading)
+- [Announcing API for spatial columns: Build scalable location-aware apps with ease](/blog/post/announcing-spatial-columns)
