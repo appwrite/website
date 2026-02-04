@@ -117,11 +117,6 @@
                     new: isNewUntil('28 Feb 2026')
                 },
                 {
-                    label: 'Database operators',
-                    href: '/docs/products/databases/operators',
-                    new: isNewUntil('31 Dec 2025')
-                },
-                {
                     label: 'AI suggestions',
                     href: '/docs/products/databases/ai-suggestions',
                     new: isNewUntil('31 Dec 2025')
