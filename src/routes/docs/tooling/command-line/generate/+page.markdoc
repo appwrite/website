@@ -6,11 +6,7 @@ description: Generate a type-safe SDK for your Appwrite project using the Comman
 
 {% partial file="cli-disclaimer.md" /%}
 
-{% info title="CLI Version" %}
-The `generate` command requires CLI version 13.2.1 or later. Run `appwrite update` to get the latest version.
-{% /info %}
-
-The `generate` command creates a type-safe SDK tailored to your Appwrite project. It reads your database schema and generates typed helpers, so you can interact with your tables using auto-completed methods instead of raw API calls.
+The `generate` command creates a type-safe SDK tailored to your Appwrite project. It reads your database schema and generates typed helpers, so you can interact with your tables using auto-completed methods, resulting in a better developer experience.
 
 # Generate SDK {% #generate-sdk %}
 
@@ -21,16 +17,6 @@ appwrite generate
 ```
 
 The CLI automatically detects your project's language and generates the SDK to a `generated/appwrite/` directory.
-
-```
-ℹ Info: Detected language: typescript (Found package.json)
-ℹ Info: Generating type-safe typescript SDK to ./generated/appwrite...
-✓ Success: Generated files:
-  - generated/appwrite/types.ts
-  - generated/appwrite/databases.ts
-  - generated/appwrite/index.ts
-  - generated/appwrite/constants.ts
-```
 
 # Generated files {% #generated-files %}
 
