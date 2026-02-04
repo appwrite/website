@@ -8,7 +8,7 @@ Appwrite now supports exporting data to CSV directly from the Console. This feat
 
 **What's new**
 
-CSV exports introduces a new option in the Appwrite Console for downloading CSV files from your database tables.
+CSV export introduces a new option in the Appwrite Console for downloading CSV files from your database tables.
 
 That means, you can:
 
