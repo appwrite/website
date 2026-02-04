@@ -2,7 +2,7 @@
 layout: post
 title: "Announcing CSV: Effortless data extraction, right from your Console"
 description: Export your data to CSV directly from the Appwrite Console. Filter, customize, and download your data in just a few clicks.
-date: 2025-11-25
+date: 2026-02-04
 cover: /images/blog/announcing-csv-export/cover.png
 timeToRead: 5
 author: jake-barnby
@@ -39,7 +39,6 @@ CSV Export is built to adapt to your workflow, with a rich set of customization 
 
 You can:
 
-- Choose the destination: Select a **bucket** to export to and define your preferred filename.
 - Apply specific queries: Export only the data that matches your current filters or search parameters.
 - Pick your columns: Choose which columns to include. Keeping your CSV lean and focused.
 - Set a custom delimiter: Format your data the way your tools expect it.
@@ -52,13 +51,13 @@ This flexibility makes CSV Export powerful enough for developers and simple enou
 
 # Available now
 
-CSV Export is now live for **Appwrite Cloud.**
+CSV Export is now live for **Appwrite Cloud and Self-hosted**.
 
 Whether you’re preparing a compliance report, handing data off to another team, or running analytics outside Appwrite, CSV Export gives you a simple, reliable way to get your data out of the database as easily as you put it in.
 
 # More resources
 
-- Read the documentation to get started
-- [Announcing Transactions API](https://appwrite.io/blog/post/announcing-transactions-api)
-- [Announcing API for spatial columns](https://appwrite.io/blog/post/announcing-spatial-columns)
-- [Announcing CSV Import: Bring in large datasets to Appwrite with ease](https://appwrite.io/blog/post/announcing-csv-imports)
+- [Read the documentation to get started](/docs/products/databases/csv-exports)
+- [Announcing Transactions API](/blog/post/announcing-transactions-api)
+- [Announcing API for spatial columns](/blog/post/announcing-spatial-columns)
+- [Announcing CSV Import: Bring in large datasets to Appwrite with ease](/blog/post/announcing-csv-imports)
