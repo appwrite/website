@@ -12,27 +12,16 @@ This feature is available in both Appwrite Cloud and the self-hosted version.
 
 Before exporting, you can configure several options to control the output format and contents. These settings ensure you get exactly the data you need in the format your tools expect.
 
-## Choose export location {% #export-location %}
+## Apply filters {% #apply-filters %}
 
-You can select which [Storage bucket](/docs/products/storage/buckets) to export to and specify a custom filename for your CSV file. This gives you control over where your data is stored and makes it easier to organize multiple exports.
-
-## Apply queries {% #apply-queries %}
-
-You can filter which rows to export using Appwrite's standard [query syntax](/docs/products/databases/queries). Only rows matching your query will be included in the export. This lets you create targeted exports for specific use cases without exporting unnecessary data.
-
-For example, to export only active users who signed up in 2025:
-```text
-status equals "active" AND $createdAt greaterThan "2025-01-01"
-```
-
-Learn more about [query operators](/docs/products/databases/queries#query-operators).
+You can apply filters to your table from the table view and use those to export only the rows you need. This is especially useful when you want to export a subset of your data for a specific use case.
 
 ## Select columns {% #select-columns %}
 
 You can choose which columns to include in your export. By default, all columns are exported, but selecting specific columns creates cleaner, more focused datasets that are easier to work with in spreadsheets and analytics tools.
 
 {% info title="Good to know" %}
-System columns like `$id`, `$createdAt`, and `$updatedAt` can also be included or excluded based on your needs.
+System columns like `$id`, `$createdAt`, and `$updatedAt` are automatically included in the export.
 {% /info %}
 
 ## Custom delimiter {% #custom-delimiter %}
@@ -43,6 +32,7 @@ Common delimiters:
 - **Comma (`,`)**: Standard format, compatible with most tools
 - **Tab**: Useful when your data contains many commas
 - **Semicolon (`;`)**: Common in European Excel versions
+- **Pipe (`|`)**: Useful when your data contains many semicolons
 
 ## Header row {% #header-row %}
 
@@ -93,8 +83,6 @@ To export rows using the Appwrite Console:
 2. Select your target database and navigate to your target table
 3. Click on the **Export CSV** button in the action area
 4. Configure your export options:
-   - Select the Storage bucket and enter a filename
-   - Apply queries to filter rows (optional)
    - Choose which columns to include (optional)
    - Set your preferred delimiter
    - Choose whether to include headers
@@ -124,17 +112,14 @@ CSV exports are useful for many common workflows:
 
 To get the most out of CSV exports:
 
-1. **Use queries to filter data**: Export only the rows you need to reduce file size and processing time
+1. **Use filters to filter data**: Export only the rows you need to reduce file size and processing time
 2. **Select specific columns**: Choose relevant columns to create cleaner, more focused datasets
-3. **Include system columns when needed**: Add `$id`, `$createdAt`, and `$updatedAt` for complete record tracking
 4. **Choose appropriate delimiters**: Use tabs or semicolons if your data contains many commas
 5. **Consider header requirements**: Include headers for human readability, exclude them for automated imports
 
 # Additional resources {% #additional-resources %}
 
 - [CSV Imports](/docs/products/databases/csv-imports) - Import data from CSV files
-- [Queries](/docs/products/databases/queries) - Full query syntax reference
 - [Relationships](/docs/products/databases/relationships) - Define connections between tables
 - [Database Permissions](/docs/products/databases/permissions) - Configure row-level security
 - [Database Backups](/docs/products/databases/backups) - Automated backup policies
-- [Storage Buckets](/docs/products/storage/buckets) - Organize exported files
