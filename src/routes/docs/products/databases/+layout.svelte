@@ -112,6 +112,11 @@
                     new: isNewUntil('31 Jul 2025')
                 },
                 {
+                    label: 'CSV exports',
+                    href: '/docs/products/databases/csv-exports',
+                    new: isNewUntil('28 Feb 2026')
+                },
+                {
                     label: 'AI suggestions',
                     href: '/docs/products/databases/ai-suggestions',
                     new: isNewUntil('31 Dec 2025')
@@ -145,7 +150,7 @@
             .replace('tables', 'collections')
     );
 
-    const hideSubtitleRoutes = ['offline', 'backups', 'csv-imports'];
+    const hideSubtitleRoutes = ['offline', 'backups', 'csv-imports', 'csv-exports'];
 
     const shouldShowSubtitle = $derived(
         !hideSubtitleRoutes.some((segment) => page.route.id?.includes(segment)) &&
