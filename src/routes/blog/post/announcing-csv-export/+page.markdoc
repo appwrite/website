@@ -9,7 +9,7 @@ author: jake-barnby
 category: announcement
 featured: false
 ---
-Data flows through every system you build, for reporting, analysis, or integrations. But getting it out cleanly and consistently should be just as simple as storing it.
+Data flows through every system you build, for reporting, analysis, or integrations. Getting it out cleanly and consistently should be just as simple as storing it.
 
 The new **CSV exports** feature in Appwrite Console lets you generate CSV files directly from your tables. No SDKs, no manual formatting. Just fast, reliable data exports that fit right into your workflow.
 
