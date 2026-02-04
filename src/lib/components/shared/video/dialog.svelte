@@ -65,7 +65,8 @@
         position: fixed;
         left: 50%;
         top: 50%;
-        translate: -50% -50%;
+
+        transform: translate(-50%, -50%) scale(0.975);
 
         display: block;
         object-fit: contain;
@@ -77,13 +78,12 @@
         z-index: 1000;
 
         opacity: 0;
-        transform: scale(0.975);
         pointer-events: none;
         transition: 200ms ease;
 
         &[data-state='open'] {
             opacity: 1;
-            transform: scale(1);
+            transform: translate(-50%, -50%) scale(1);
             pointer-events: all;
         }
 
