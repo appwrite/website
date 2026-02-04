@@ -114,12 +114,12 @@
                 {
                     label: 'CSV exports',
                     href: '/docs/products/databases/csv-exports',
-                    new: isNewUntil('31 Dec 2025')
+                    new: isNewUntil('28 Feb 2026')
                 },
                 {
                     label: 'Database operators',
                     href: '/docs/products/databases/operators',
-                    new: isNewUntil('28 Feb 2026')
+                    new: isNewUntil('31 Dec 2025')
                 }
             ]
         },
