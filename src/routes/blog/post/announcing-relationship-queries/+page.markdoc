@@ -60,7 +60,7 @@ With queryable, high-performance relationships, you can now build patterns that 
 
 # Availability
 
-Relationship queries and performance improvements are available now on **Appwrite Cloud** and will arrive on self-hosted deployments in the next release.
+Relationship queries and performance improvements are available now on both **Appwrite Cloud** and **Self-Hosted**.
 
 If you've been working around the limitations of relationships, now is a great time to revisit your data model. Queries across relationships and dramatically faster performance make them a first-class tool for building connected, real-world data structures.
 
