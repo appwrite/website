@@ -24,3 +24,5 @@ bun.lock
 *.wav
 *.mp4
 *.mpv
+
+.optimize-cache.json

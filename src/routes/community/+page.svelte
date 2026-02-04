@@ -64,6 +64,15 @@
 
     const projects: ProjectCardProps[] = [
         {
+            title: 'Refetch.io',
+            description: 'Open-source alternative to Hacker News.',
+            image: {
+                src: 'https://cloud.appwrite.io/v1/storage/buckets/thumbnails/files/68b984b5000e9ce4e9e6/preview?width=1280&output=webp&project=builtWithAppwrite',
+                alt: 'Refetch: Open-source alternative to Hacker News'
+            },
+            href: 'https://builtwith.appwrite.io/projects/68b69752de6ca9dd5313/'
+        },
+        {
             title: 'Auth UI',
             description: 'Appwrite-powered authentication screens generator for any application.',
             image: {
@@ -71,15 +80,6 @@
                 alt: 'Auth UI: Fully customizable login flow for your applications'
             },
             href: 'https://builtwith.appwrite.io/projects/6467cedd4502d0e29205/'
-        },
-        {
-            title: 'Glitch',
-            description: 'Appwrite-powered collaboration Tool for streamlined team communication.',
-            image: {
-                src: '/images/community/projects/glitch.png',
-                alt: 'A screenshot of the Glitch dashboard. There\'s a sidebar, and a headline that reads: "Welcome to Glitch, powered by Appwrite"'
-            },
-            href: 'https://builtwith.appwrite.io/projects/648bfe0c1d8d70602b0b/'
         },
         {
             title: 'uCanEarn',
