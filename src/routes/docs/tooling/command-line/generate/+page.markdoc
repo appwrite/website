@@ -1,0 +1,74 @@
+---
+layout: article
+title: Generate SDK
+description: Generate a type-safe SDK for your Appwrite project using the Command-Line Tool (CLI). Automatically create typed helpers based on your database schema.
+---
+
+{% partial file="cli-disclaimer.md" /%}
+
+{% info title="CLI Version" %}
+The `generate` command requires CLI version 13.2.1 or later. Run `appwrite update` to get the latest version.
+{% /info %}
+
+The `generate` command creates a type-safe SDK tailored to your Appwrite project. It reads your database schema and generates typed helpers, so you can interact with your tables using auto-completed methods instead of raw API calls.
+
+# Generate SDK {% #generate-sdk %}
+
+Run the following command in your project directory:
+
+```sh
+appwrite generate
+```
+
+The CLI automatically detects your project's language and generates the SDK to a `generated/appwrite/` directory.
+
+```
+ℹ Info: Detected language: typescript (Found package.json)
+ℹ Info: Generating type-safe typescript SDK to ./generated/appwrite...
+✓ Success: Generated files:
+  - generated/appwrite/types.ts
+  - generated/appwrite/databases.ts
+  - generated/appwrite/index.ts
+  - generated/appwrite/constants.ts
+```
+
+# Generated files {% #generated-files %}
+
+The generated SDK includes the following files:
+
+{% table %}
+* File
+* Description
+---
+* `types.ts`
+* Type definitions based on your database schema.
+---
+* `databases.ts`
+* Typed database helpers for querying and mutating rows.
+---
+* `index.ts`
+* Entry point that exports all generated helpers.
+---
+* `constants.ts`
+* Configuration constants such as your project endpoint and project ID. Update these values before using the SDK.
+---
+{% /table %}
+
+# Usage {% #usage %}
+
+After generating the SDK, import it into your project:
+
+```js
+import { databases } from "./generated/appwrite/index.js";
+```
+
+Configure your SDK constants by setting the values in `./generated/appwrite/constants.ts`.
+
+Use the generated helpers to interact with your tables:
+
+```js
+const mydb = databases.use("test-db");
+await mydb.use("users").create({ ... });
+```
+
+The generated helpers provide auto-completion and type checking based on your database schema, reducing errors and improving developer experience.
