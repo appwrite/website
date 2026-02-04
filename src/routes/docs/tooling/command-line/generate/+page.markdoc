@@ -18,6 +18,26 @@ appwrite generate
 
 The CLI automatically detects your project's language and generates the SDK to a `generated/appwrite/` directory.
 
+# Options {% #options %}
+
+{% table %}
+* Option
+* Description
+---
+* `-o, --output <directory>`
+* Output directory for generated files (default: `"generated"`)
+---
+* `-l, --language <language>`
+* Target language for SDK generation (supported: `typescript`)
+---
+* `--server <mode>`
+* Override server-side generation (`auto`|`true`|`false`) (default: `"auto"`)
+---
+* `-h, --help`
+* Display help for command
+---
+{% /table %}
+
 # Generated files {% #generated-files %}
 
 The generated SDK includes the following files:
