@@ -10,7 +10,6 @@
 
 <script lang="ts">
     import { cn } from '$lib/utils/cn';
-    import { onMount, tick } from 'svelte';
     import CopyAsMarkdown from './copy-as-markdown.svelte';
     interface TableOfContentProps {
         toc?: Array<TocItem>;
@@ -21,6 +20,14 @@
 
     let height = $state<number>(0);
     let position = $state<number>(0);
+    let listEl = $state<HTMLUListElement | null>(null);
+    let showBottomFade = $state(false);
+
+    const checkOverflow = () => {
+        if (!listEl) return;
+        const hasMoreBelow = listEl.scrollHeight - listEl.scrollTop - listEl.clientHeight > 1;
+        showBottomFade = hasMoreBelow;
+    };
 
     const onScroll = () => {
         for (let i = 0; i < toc.length; i++) {
@@ -31,6 +38,10 @@
             }
         }
     };
+
+    $effect(() => {
+        if (listEl) checkOverflow();
+    });
 </script>
 
 <svelte:window onscroll={onScroll} on:hashchange={onScroll} />
@@ -41,6 +52,8 @@
         <ul
             class="text-caption flex max-h-[600px] flex-col gap-4 overflow-scroll [scrollbar-width:none]"
             bind:clientHeight={height}
+            bind:this={listEl}
+            onscroll={checkOverflow}
         >
             {#each toc as parent (parent.href)}
                 <li
@@ -76,6 +89,11 @@
                 </li>
             {/each}
         </ul>
+        {#if showBottomFade}
+            <div
+                class="pointer-events-none absolute right-0 bottom-0 left-0 h-16 bg-gradient-to-t from-[hsl(var(--p-body-bg-color))] to-transparent"
+            ></div>
+        {/if}
         <div
             class="bg-primary absolute top-0 -left-px h-6 w-px transition-transform ease-linear"
             style:transform={`translateY(${position}px)`}
