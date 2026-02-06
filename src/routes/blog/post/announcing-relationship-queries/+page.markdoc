@@ -3,7 +3,7 @@ layout: post
 title: "Announcing relationship queries: Filter across related data with ease"
 description: You can now use filter queries directly on relationship columns, plus enjoy up to 18x faster relationship performance across the board.
 date: 2026-02-06
-cover: /images/blog/announcing-screenshots-api/cover.png
+cover: /images/blog/announcing-relationship-queries/cover.png
 timeToRead: 5
 author: jake-barnby
 category: announcement
