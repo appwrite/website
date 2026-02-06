@@ -53,6 +53,21 @@ const promise = tablesDB.createTable({
             required: true
         },
         {
+            key: 'bio',
+            type: 'text',
+            required: false
+        },
+        {
+            key: 'content',
+            type: 'mediumtext',
+            required: false
+        },
+        {
+            key: 'data',
+            type: 'longtext',
+            required: false
+        },
+        {
             key: 'age',
             type: 'integer',
             required: false
@@ -168,6 +183,21 @@ let promise = tablesDB.createTable({
             type: 'varchar',
             size: 255,
             required: true
+        },
+        {
+            key: 'bio',
+            type: 'text',
+            required: false
+        },
+        {
+            key: 'content',
+            type: 'mediumtext',
+            required: false
+        },
+        {
+            key: 'data',
+            type: 'longtext',
+            required: false
         },
         {
             key: 'age',
@@ -289,6 +319,21 @@ $result = $tablesDB->createTable(
             'required' => true
         ],
         [
+            'key' => 'bio',
+            'type' => 'text',
+            'required' => false
+        ],
+        [
+            'key' => 'content',
+            'type' => 'mediumtext',
+            'required' => false
+        ],
+        [
+            'key' => 'data',
+            'type' => 'longtext',
+            'required' => false
+        ],
+        [
             'key' => 'age',
             'type' => 'integer',
             'required' => false
@@ -400,6 +445,21 @@ result = tablesDB.create_table(
             'required': True
         },
         {
+            'key': 'bio',
+            'type': 'text',
+            'required': False
+        },
+        {
+            'key': 'content',
+            'type': 'mediumtext',
+            'required': False
+        },
+        {
+            'key': 'data',
+            'type': 'longtext',
+            'required': False
+        },
+        {
             'key': 'age',
             'type': 'integer',
             'required': False
@@ -507,6 +567,21 @@ response = tablesDB.create_table(
             type: 'varchar',
             size: 255,
             required: true
+        },
+        {
+            key: 'bio',
+            type: 'text',
+            required: false
+        },
+        {
+            key: 'content',
+            type: 'mediumtext',
+            required: false
+        },
+        {
+            key: 'data',
+            type: 'longtext',
+            required: false
         },
         {
             key: 'age',
@@ -621,6 +696,24 @@ Table result = await tablesDB.CreateTable(
             { "type", "varchar" },
             { "size", 255 },
             { "required", true }
+        },
+        new Dictionary<string, object>
+        {
+            { "key", "bio" },
+            { "type", "text" },
+            { "required", false }
+        },
+        new Dictionary<string, object>
+        {
+            { "key", "content" },
+            { "type", "mediumtext" },
+            { "required", false }
+        },
+        new Dictionary<string, object>
+        {
+            { "key", "data" },
+            { "type", "longtext" },
+            { "required", false }
         },
         new Dictionary<string, object>
         {
@@ -747,6 +840,21 @@ void main() { // Init SDK
             'required': true
         },
         {
+            'key': 'bio',
+            'type': 'text',
+            'required': false
+        },
+        {
+            'key': 'content',
+            'type': 'mediumtext',
+            'required': false
+        },
+        {
+            'key': 'data',
+            'type': 'longtext',
+            'required': false
+        },
+        {
             'key': 'age',
             'type': 'integer',
             'required': false
@@ -863,6 +971,21 @@ val response = tablesDB.createTable(
             "required" to true
         ),
         mapOf(
+            "key" to "bio",
+            "type" to "text",
+            "required" to false
+        ),
+        mapOf(
+            "key" to "content",
+            "type" to "mediumtext",
+            "required" to false
+        ),
+        mapOf(
+            "key" to "data",
+            "type" to "longtext",
+            "required" to false
+        ),
+        mapOf(
             "key" to "age",
             "type" to "integer",
             "required" to false
@@ -967,6 +1090,21 @@ List<Map<String, Object>> columns = Arrays.asList(
         put("type", "varchar");
         put("size", 255);
         put("required", true);
+    }},
+    new HashMap<String, Object>() {{
+        put("key", "bio");
+        put("type", "text");
+        put("required", false);
+    }},
+    new HashMap<String, Object>() {{
+        put("key", "content");
+        put("type", "mediumtext");
+        put("required", false);
+    }},
+    new HashMap<String, Object>() {{
+        put("key", "data");
+        put("type", "longtext");
+        put("required", false);
     }},
     new HashMap<String, Object>() {{
         put("key", "age");
@@ -1090,6 +1228,21 @@ let table = try await tablesDB.createTable(
             "type": "varchar",
             "size": 255,
             "required": true
+        ],
+        [
+            "key": "bio",
+            "type": "text",
+            "required": false
+        ],
+        [
+            "key": "content",
+            "type": "mediumtext",
+            "required": false
+        ],
+        [
+            "key": "data",
+            "type": "longtext",
+            "required": false
         ],
         [
             "key": "age",
