@@ -73,8 +73,92 @@ Configure your SDK constants by setting the values in `./generated/appwrite/cons
 Use the generated helpers to interact with your tables:
 
 ```js
-const mydb = databases.use("test-db");
-await mydb.use("users").create({ ... });
+const customers = databases.use("main").use("customers");
+
+const customer = await customers.create({
+    name: "Walter O' Brian",
+    email: "walter@example.com"
+});
 ```
 
 The generated helpers provide auto-completion and type checking based on your database schema, reducing errors and improving developer experience.
+
+# Examples {% #examples %}
+
+The generated SDK supports all common database operations. Below are examples across different use cases.
+
+## Get a row {% #get-row %}
+
+```js
+const customer = await customers.get("customer-id-123");
+```
+
+## List rows with queries {% #list-rows %}
+
+The `list` method accepts a typed query builder that provides auto-completion for your table's columns.
+
+```js
+const results = await customers.list({
+    queries: (q) => [
+        q.equal("name", "Walter O' Brian"),
+        q.orderDesc("$createdAt"),
+        q.limit(10)
+    ]
+});
+```
+
+## Update a row {% #update-row %}
+
+```js
+await customers.update("customer-id-123", {
+    email: "walter@scorpion.com"
+});
+```
+
+## Delete a row {% #delete-row %}
+
+```js
+await customers.delete("customer-id-123");
+```
+
+## Bulk operations {% #bulk-operations %}
+
+Create, update, or delete multiple rows at once.
+
+```js
+await customers.createMany([
+    { name: "Walter O' Brian", email: "walter@example.com" },
+    { name: "Paige Dineen", email: "paige@example.com" }
+]);
+```
+
+```js
+await customers.updateMany(
+    { email: "updated@example.com" },
+    {
+        queries: (q) => [q.equal("name", "Walter O' Brian")]
+    }
+);
+```
+
+```js
+await customers.deleteMany({
+    queries: (q) => [q.equal("name", "Paige Dineen")]
+});
+```
+
+## Permissions {% #permissions %}
+
+Set row-level permissions when creating or updating rows.
+
+```js
+await customers.create(
+    { name: "Walter O' Brian", email: "walter@example.com" },
+    {
+        permissions: (permission, role) => [
+            permission.read(role.any()),
+            permission.write(role.user("user-id-123"))
+        ]
+    }
+);
+```
