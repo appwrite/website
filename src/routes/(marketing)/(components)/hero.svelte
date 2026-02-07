@@ -14,7 +14,7 @@
     };
 
     const {
-        title = "All-in-one infra for solo devs & SMBs",
+        title = 'All-in-one infra for solo devs & SMBs',
         subtitle = 'Appwrite is an open-source, developer infrastructure platform with Auth, Database, Storage, Functions, Realtime, SMS, Email, Push, and Hosting.'
     }: Props = $props();
 </script>
