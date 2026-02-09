@@ -2,7 +2,7 @@
 layout: post
 title: "Introducing generate command in the Appwrite CLI: Create a type-safe SDK from your schema"
 description: Generate a type-safe SDK for your Appwrite project with the new generate command in the Appwrite CLI. It reads your database schema and creates typed helpers for querying and mutating rows with autocomplete.
-date: 2026-02-06
+date: 2026-02-09
 cover: /images/blog/appwrite-generate/cover.png
 timeToRead: 5
 author: chirag-aggarwal
