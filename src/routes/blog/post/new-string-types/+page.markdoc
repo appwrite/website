@@ -10,7 +10,7 @@ category: announcement
 featured: false
 ---
 
-Until now, Appwrite offered a single `string` column type that internally switched between four different storage types based on the size you specified. This meant you had no visibility into how your data was actually stored, how it could be indexed, or why certain size limits existed.
+Until now, Appwrite offered a single `string` column type that abstracted away four different storage types, switching between them based on the size you specified. This meant you had no visibility into how your data was actually stored, how it could be indexed, or why certain size limits existed.
 
 Today, we're introducing four explicit string column types: `varchar`, `text`, `mediumtext`, and `longtext`.
 
@@ -39,17 +39,15 @@ For larger content, `mediumtext` supports up to ~4 million characters and `longt
 
 # Why we made this change
 
-We regularly dogfood Appwrite in our own projects to find areas we can improve. While building [Imagine](https://imagine.dev), our AI-powered builder for web apps, which uses Appwrite under the hood for out-of-the-box server functionality, we quickly noticed how hard it is for AI models to reason about the `string` column type. Here's what we found.
+The root issue with the legacy `string` type was a lack of visibility. It abstracted away important storage details, which meant developers had no way to make informed decisions about their data structures. This led to problems for both human engineers and AI agents alike.
 
-The legacy `string` type was a catch-all. It would internally switch between four different storage types based on the size you specified. While this was convenient for developers, it created a real problem for AI agents:
+- **Hidden storage behavior.** The `string` type required you to specify a size, but gave no indication of how that size mapped to actual storage. There was no way to know that `size: 10000` would produce a `VARCHAR(10000)` stored inline, while `size: 20000` would quietly switch to a `TEXT` column stored off-page. Developers were making sizing decisions without seeing the consequences.
+- **Invisible row width limits.** Appwrite uses MariaDB under the hood, which has a fixed 64KB maximum row width. Varchar columns are stored inline and count towards that limit. A developer creating a `string` column with `size: 10000` (a Varchar internally) for something like blog content would unknowingly consume a large chunk of the row budget, limiting how many other columns the table could have. We've been seeing this issue come up regularly in the community.
+- **Difficult for AI agents to reason about.** When AI agents provision database schemas, they need clear type semantics to make good decisions. The `string` type gave them nothing to work with, no signal about storage trade-offs, no way to differentiate between a short identifier and a long-form text field.
 
-- **Opaque sizing decisions.** The `string` type required you to specify a size, but gave no indication of how that size mapped to actual storage. A model had no way to know that `size: 10000` would produce a `VARCHAR(10000)` stored inline, while `size: 20000` would switch to a `TEXT` column stored off-page.
-- **Easy to hit row width limits.** Appwrite uses MariaDB under the hood, which has a fixed 64KB maximum row width. Varchar columns are stored inline and count towards that limit. If an AI agent created a `string` column with `size: 10000` for something like blog content, that single column would consume a large chunk of the row budget, limiting how many other columns the table could have.
-- **Not just an AI problem.** We've been observing this same issue in the community. Developers run into row width limits without understanding why, because the storage behavior of `string` was invisible.
+We saw both sides of this problem firsthand while building [Imagine](https://imagine.dev), our AI-powered builder for web apps, which uses Appwrite under the hood for out-of-the-box server functionality. Imagine runs an Appwrite Cloud agent that provisions database resources on your behalf using the Appwrite CLI and `appwrite.json` as the schema. The agent is trained to build sophisticated architectures, and it would easily create just enough string columns to hit the row width limit. 
 
-We saw this firsthand with Imagine. Imagine runs an Appwrite Cloud agent that provisions database resources on your behalf using the Appwrite CLI and `appwrite.json` as the schema. The agent is trained to build sophisticated architectures, and it would easily create just enough string columns to hit the row width limit.
-
-We could have solved this with better prompting, but that would only fix Imagine. We wanted to improve the experience for everyone, whether you're using AI tooling, the Console, or the SDKs directly. With explicit types, an AI model now naturally picks `longtext` for something like blog content, which is stored off-page and doesn't consume row space.
+We could have fixed this with better prompting for Imagine, but that would only solve it for one tool. Instead, we made the types themselves more explicit, so the right choice is obvious whether you're writing code by hand, using the Console, or letting an AI agent provision your schema. With the new types, both developers and agents can now see exactly what they're working with and make better decisions around their data structures.
 
 # Using the new types
 
@@ -97,7 +95,7 @@ await tablesDB.createTable({
 
 # Deprecation of the string type
 
-The `string` column type is now deprecated. It will continue to work for existing columns, but we recommend using the explicit types for all new columns going forward.
+The `string` column type is now deprecated, but we will continue to maintain full backward support for it. Existing `string` columns will keep working as they do today, and we recommend using the explicit types for all new columns going forward.
 
 Previously, `string` would internally pick between `varchar`, `text`, `mediumtext`, and `longtext` based on the size you specified, without giving you any indication of which one was being used. The new types remove that ambiguity entirely.
 
