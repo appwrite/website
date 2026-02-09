@@ -43,15 +43,15 @@ The `appwrite generate` command is designed to keep your codebase and your schem
 
 After generating the SDK, import it into your project and configure constants:
 
-```js
-import { databases } from "./generated/appwrite/index.js";
+```ts
+import { databases } from "./generated/appwrite";
 ```
 
 Configure your SDK constants by setting the values in `./generated/appwrite/constants.ts`.
 
 Then use the generated helpers to interact with your tables:
 
-```js
+```ts
 const mydb = databases.use("test-db");
 const customers = mydb.use("customers");
 

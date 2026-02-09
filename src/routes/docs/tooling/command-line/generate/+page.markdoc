@@ -64,15 +64,15 @@ The generated SDK includes the following files:
 
 After generating the SDK, import it into your project:
 
-```js
-import { databases } from "./generated/appwrite/index.js";
+```ts
+import { databases } from "./generated/appwrite";
 ```
 
 Configure your SDK constants by setting the values in `./generated/appwrite/constants.ts`.
 
 Use the generated helpers to interact with your tables:
 
-```js
+```ts
 const customers = databases.use("main").use("customers");
 
 const customer = await customers.create({
@@ -89,7 +89,7 @@ The generated SDK supports all common database operations. Below are examples ac
 
 ## Get a row {% #get-row %}
 
-```js
+```ts
 const customer = await customers.get("customer-id-123");
 ```
 
@@ -97,7 +97,7 @@ const customer = await customers.get("customer-id-123");
 
 The `list` method accepts a typed query builder that provides auto-completion for your table's columns.
 
-```js
+```ts
 const results = await customers.list({
     queries: (q) => [
         q.equal("name", "Walter O' Brian"),
@@ -109,7 +109,7 @@ const results = await customers.list({
 
 ## Update a row {% #update-row %}
 
-```js
+```ts
 await customers.update("customer-id-123", {
     email: "walter@scorpion.com"
 });
@@ -117,7 +117,7 @@ await customers.update("customer-id-123", {
 
 ## Delete a row {% #delete-row %}
 
-```js
+```ts
 await customers.delete("customer-id-123");
 ```
 
@@ -125,14 +125,14 @@ await customers.delete("customer-id-123");
 
 Create, update, or delete multiple rows at once.
 
-```js
+```ts
 await customers.createMany([
     { name: "Walter O' Brian", email: "walter@example.com" },
     { name: "Paige Dineen", email: "paige@example.com" }
 ]);
 ```
 
-```js
+```ts
 await customers.updateMany(
     { email: "updated@example.com" },
     {
@@ -141,7 +141,7 @@ await customers.updateMany(
 );
 ```
 
-```js
+```ts
 await customers.deleteMany({
     queries: (q) => [q.equal("name", "Paige Dineen")]
 });
@@ -151,7 +151,7 @@ await customers.deleteMany({
 
 Set row-level permissions when creating or updating rows.
 
-```js
+```ts
 await customers.create(
     { name: "Walter O' Brian", email: "walter@example.com" },
     {
