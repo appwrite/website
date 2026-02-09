@@ -10,7 +10,7 @@ category: announcement
 featured: false
 ---
 
-Until now, Appwrite offered a single `string` column type that abstracted away four different storage types, switching between them based on the size you specified. This meant you had no visibility into how your data was actually stored, how it could be indexed, or why certain size limits existed.
+Until now, Appwrite offered a single `string` column type that abstracted away four different storage types, based on the size you specified. This meant you had no visibility into how your data was actually stored, how it could be indexed, or why certain size limits existed.
 
 Today, we're introducing four explicit string column types: `varchar`, `text`, `mediumtext`, and `longtext`.
 
@@ -42,7 +42,7 @@ For larger content, `mediumtext` supports up to ~4 million characters and `longt
 The root issue with the legacy `string` type was a lack of visibility. It abstracted away important storage details, which meant developers had no way to make informed decisions about their data structures. This led to problems for both human engineers and AI agents alike.
 
 - **Hidden storage behavior.** The `string` type required you to specify a size, but gave no indication of how that size mapped to actual storage. There was no way to know that `size: 10000` would produce a `VARCHAR(10000)` stored inline, while `size: 20000` would quietly switch to a `TEXT` column stored off-page. Developers were making sizing decisions without seeing the consequences.
-- **Invisible row width limits.** Appwrite uses MariaDB under the hood, which has a fixed 64KB maximum row width. Varchar columns are stored inline and count towards that limit. A developer creating a `string` column with `size: 10000` (a Varchar internally) for something like blog content would unknowingly consume a large chunk of the row budget, limiting how many other columns the table could have. We've been seeing this issue come up regularly in the community.
+- **Invisible row width limits.** Appwrite uses MariaDB under the hood, which has a fixed 64KB maximum row width. Varchar columns are stored inline and count towards that limit. A developer creating a `string` column with `size: 10000` (a Varchar internally) for something like blog content would unknowingly consume a large chunk of the row budget, limiting how many other columns the table could have. 
 - **Difficult for AI agents to reason about.** When AI agents provision database schemas, they need clear type semantics to make good decisions. The `string` type gave them nothing to work with, no signal about storage trade-offs, no way to differentiate between a short identifier and a long-form text field.
 
 We saw both sides of this problem firsthand while building [Imagine](https://imagine.dev), our AI-powered builder for web apps, which uses Appwrite under the hood for out-of-the-box server functionality. Imagine runs an Appwrite Cloud agent that provisions database resources on your behalf using the Appwrite CLI and `appwrite.json` as the schema. The agent is trained to build sophisticated architectures, and it would easily create just enough string columns to hit the row width limit. 
