@@ -2,10 +2,10 @@
 layout: post
 title: "Introducing new string column types for Appwrite Databases"
 description: Appwrite Databases now supports varchar, text, mediumtext, and longtext column types, giving you explicit control over how string data is stored and indexed. The legacy string type is now deprecated.
-date: 2026-02-10
+date: 2026-02-11
 cover: /images/blog/announcing-screenshots-api/cover.png
 timeToRead: 5
-author: atharva
+author: eldad-fux
 category: announcement
 featured: false
 ---
@@ -39,7 +39,9 @@ For larger content, `mediumtext` supports up to ~4 million characters and `longt
 
 # Why we made this change
 
-The root issue with the legacy `string` type was a lack of visibility. It abstracted away important storage details, which meant developers had no way to make informed decisions about their data structures. This led to problems for both human engineers and AI agents alike.
+When we originally designed the `string` type, the intent was to simplify things. One type, one API, and Appwrite would handle the storage details for you. But over time, through community feedback and our own experience, we realized that this abstraction compromised on important details like visibility and control. Finding the right balance between simplicity and transparency is a difficult task, and we believe responding to user feedback and experience is what makes a product better.
+
+The issue was that the `string` type hid storage behavior that developers needed to see in order to make informed decisions about their data structures. This led to problems for both human engineers and AI agents alike.
 
 - **Hidden storage behavior.** The `string` type required you to specify a size, but gave no indication of how that size mapped to actual storage. There was no way to know that `size: 10000` would produce a `VARCHAR(10000)` stored inline, while `size: 20000` would quietly switch to a `TEXT` column stored off-page. Developers were making sizing decisions without seeing the consequences.
 - **Invisible row width limits.** Appwrite uses MariaDB under the hood, which has a fixed 64KB maximum row width. Varchar columns are stored inline and count towards that limit. A developer creating a `string` column with `size: 10000` (a Varchar internally) for something like blog content would unknowingly consume a large chunk of the row budget, limiting how many other columns the table could have. 
