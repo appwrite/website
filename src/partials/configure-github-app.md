@@ -8,7 +8,7 @@ For automatic Git deployment to work, Appwrite needs to receive communication fr
 
 We have built a simple form that utilizes [GitHub app manifest](https://docs.github.com/en/apps/sharing-github-apps/registering-a-github-app-from-a-manifest) to automatically pre-configure your GitHub app. Use below interface to create your app quickly.
 
-TODO: Component
+{% github_app_form /%}
 
 ## Manual GitHub app setup {% #manual-github-app-setup %}
 
