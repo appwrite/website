@@ -104,7 +104,7 @@ async function prepareDatabase() {
         name: 'Todos'
     });
 
-    await tablesDB.createStringColumn({
+    await tablesDB.createVarcharColumn({
         databaseId: todoDatabase.$id,
         tableId: todoTable.$id,
         key: 'title',
@@ -112,11 +112,10 @@ async function prepareDatabase() {
         required: true
     });
 
-    await tablesDB.createStringColumn({
+    await tablesDB.createTextColumn({
         databaseId: todoDatabase.$id,
         tableId: todoTable.$id,
         key: 'description',
-        size: 255,
         required: false,
         default: 'This is a test description'
     });

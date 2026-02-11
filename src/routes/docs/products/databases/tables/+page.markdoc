@@ -1401,9 +1401,9 @@ If an column must be populated in all rows, set it as `required`.
 If not, you may optionally set a default value.
 Additionally, decide if the column should be a single value or an array of values.
 
-If needed, you can change an column's key, default value, size (for strings), and whether it is required or not after creation.
+If needed, you can change an column's key, default value, size (for text columns), and whether it is required or not after creation.
 
-You can increase a string column's size without any restrictions. When decreasing size, you must ensure that your existing data is less than or equal to the new size, or the operation will fail.
+You can increase a varchar column's size without any restrictions. When decreasing size, you must ensure that your existing data is less than or equal to the new size, or the operation will fail.
 
 # Indexes {% #indexes %}
 
@@ -1417,6 +1417,6 @@ The following indexes are currently supported:
 |------------|--------------------------------------------------------------------------------------------------------------|
 | `key`      | Plain Index to allow queries.                                                                                 |
 | `unique`   | Unique Index to disallow duplicates.                                                                          |
-| `fulltext` | For searching within string columns. Required for the [search query method](/docs/products/databases/queries#query-class).     |
+| `fulltext` | For searching within text columns. Required for the [search query method](/docs/products/databases/queries#query-class).     |
 
 You can create an index by navigating to your table's **Indexes** tab or by using your favorite [Server SDK](/docs/sdks#server).
