@@ -116,7 +116,8 @@ const securityheaders: Handle = async ({ event, resolve }) => {
             'https://hemsync.clickagy.com',
             'https://ws.zoominfo.com ',
             'https://*.cookieyes.com',
-            'https://cdn-cookieyes.com'
+            'https://cdn-cookieyes.com',
+            'https://api.github.com'
         ]),
         'frame-src': join([
             "'self'",
