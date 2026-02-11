@@ -65,7 +65,7 @@ To verify that your GitHub App is correctly configured:
 3. Try creating a new Function or Site using GitHub as the source.
 4. You should be prompted to install your GitHub App on your repositories.
 
-## Troubleshooting {% #troubleshooting %}
+## Update existing GitHub apps {% #existing-apps %}
 
 There are additional steps if you're updating permissions in existing GitHub apps.
 Every time you update your GitHub app's permissions, GitHub will prompt you to review the changes.

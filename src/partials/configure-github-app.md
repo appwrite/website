@@ -12,7 +12,7 @@ We have built a simple form that utilizes [GitHub app manifest](https://docs.git
 
 ## Manual GitHub app setup {% #manual-github-app-setup %}
 
-You can create your GitHub app manially by filling [GitHub app creation form](https://github.com/settings/apps/new) with the following configurations.
+You can create your GitHub app manually by filling [GitHub app creation form](https://github.com/settings/apps/new) with the following configurations.
 
 ### GitHub App name {% #github-app-name %}
 

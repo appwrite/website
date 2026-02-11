@@ -1,6 +1,7 @@
 <script lang="ts">
     import { page } from '$app/state';
     import { goto } from '$app/navigation';
+    import { browser } from '$app/environment';
     import Button from '$lib/components/ui/button.svelte';
     import Switch from '$lib/components/ui/switch.svelte';
     import Fence from '$markdoc/nodes/Fence.svelte';
@@ -21,6 +22,7 @@
     } | null = $state(null);
     let error: string | null = $state(null);
     let loading = $state(false);
+    let submitting = $state(false);
 
     function setIsOrganization(value: boolean) {
         isOrganization = value;
@@ -56,6 +58,7 @@
     }
 
     function submit() {
+        submitting = true;
         const state = generateState();
         sessionStorage.setItem(STATE_KEY, state);
 
@@ -182,6 +185,7 @@ _APP_VCS_GITHUB_WEBHOOK_SECRET="${config.webhook_secret}"`;
 
     // Check for code parameter on mount
     $effect(() => {
+        if (!browser) return;
         const code = page.url.searchParams.get('code');
         const state = page.url.searchParams.get('state');
         if (code && state && !appConfig && !loading) {
@@ -267,11 +271,13 @@ _APP_VCS_GITHUB_WEBHOOK_SECRET="${config.webhook_secret}"`;
             {/if}
 
             <Button
-                disabled={!hostname ||
+                disabled={submitting ||
+                    !hostname ||
                     !isValidHostname(hostname) ||
                     (isOrganization && !organizationHandle)}
                 type="submit"
-                variant="secondary">Create GitHub app</Button
+                variant="secondary"
+                >{submitting ? 'Redirecting to GitHub...' : 'Create GitHub app'}</Button
             >
         </form>
     {/if}
