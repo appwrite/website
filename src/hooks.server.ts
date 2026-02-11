@@ -98,7 +98,7 @@ const securityheaders: Handle = async ({ event, resolve }) => {
         'font-src': "'self'",
         'object-src': "'none'",
         'base-uri': "'self'",
-        'form-action': "'self'",
+        'form-action': "'self' https://github.com",
         'frame-ancestors': join(["'self'", 'https://www.youtube.com', 'https://*.vimeo.com']),
         'block-all-mixed-content': '',
         'upgrade-insecure-requests': '',

@@ -34,7 +34,6 @@
     }
 
     function submit() {
-      alert("OK");
         const name = generateAppName();
         const manifest = JSON.stringify({
             name,
@@ -42,7 +41,7 @@
             hook_attributes: {
                 url: `https://${hostname}/v1/vcs/github/events`
             },
-            redirect_url: `https://${hostname}/v1/vcs/github/callback`,
+            redirect_url: `https://appwrite.io/docs/advanced/self-hosting/configuration/version-control`,
             callback_urls: [
                 `https://${hostname}/v1/vcs/github/callback`,
                 `https://${hostname}/v1/account/sessions/oauth2/callback/github/console`
