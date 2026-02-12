@@ -231,8 +231,7 @@
 </div>
 
 <style>
-    :global(.products-dropdown-bg) {
-        background-color: #000000;
+    .products-dropdown-bg {
         background-color: #232325;
         opacity: 1;
     }
