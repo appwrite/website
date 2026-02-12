@@ -36,7 +36,7 @@ const client = new Client()
 const realtime = new Realtime(client);
 
 // Subscribe to a specific row with type-safe helpers
-realtime.subscribe(
+const subscription = await realtime.subscribe(
     Channel.tablesdb('<DATABASE_ID>').table('<TABLE_ID>').row('<ROW_ID>'),
     response => {
         console.log(response);
@@ -56,12 +56,12 @@ Channel helpers support the full range of Appwrite's realtime capabilities. You 
 
 ```javascript
 // Subscribe to all account events
-realtime.subscribe(Channel.account(), response => {
+const subscription = await realtime.subscribe(Channel.account(), response => {
     console.log(response);
 });
 
 // Subscribe to all row updates in a specific table
-realtime.subscribe(
+const rowSubscription = await realtime.subscribe(
     Channel.tablesdb('<DATABASE_ID>').table('<TABLE_ID>').row().update(),
     response => {
         console.log('Row updated:', response.payload);
@@ -69,7 +69,7 @@ realtime.subscribe(
 );
 
 // Subscribe to multiple channels at once
-realtime.subscribe([
+const multiSubscription = await realtime.subscribe([
     Channel.tablesdb('<DATABASE_ID>').table('<TABLE_ID>').row('<ROW_ID>'),
     Channel.files()
 ], response => {
