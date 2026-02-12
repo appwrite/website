@@ -579,8 +579,8 @@ A list of all channels available you can subscribe to. When using `Channel` help
 * `Channel.executions()`
 * Any update to executions
 ---
-* `executions.<ID>`
-* `Channel.function().execution('<EXECUTION_ID>')`
+* `executions.[ID]`
+* `Channel.execution(ID)`
 * Any update to a given execution
 ---
 * `functions.<ID>`
