@@ -71,9 +71,9 @@
 
 ---
 
-- `databases.*.tables.*.row.*.upsert`
+- `databases.*.tables.*.rows.*.upsert`
 - This event triggers when a row is upserted.
-  Returns [Document Object](/docs/references/cloud/models/document)
+  Returns [Row Object](/docs/references/cloud/models/row)
 
 ---
 

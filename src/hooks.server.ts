@@ -2,11 +2,35 @@ import * as Sentry from '@sentry/sveltekit';
 import type { Handle } from '@sveltejs/kit';
 import redirects from './redirects.json';
 import { sequence } from '@sveltejs/kit/hooks';
+import { getMarkdownContent } from '$lib/server/markdown';
 import { type GithubUser } from '$routes/(init)/init/(utils)/auth';
 import { createInitSessionClient } from '$routes/(init)/init/(utils)/appwrite';
 import type { AppwriteUser } from '$lib/utils/console';
 
 const redirectMap = new Map(redirects.map(({ link, redirect }) => [link, redirect]));
+
+const markdownHandler: Handle = async ({ event, resolve }) => {
+    const pathname = event.url.pathname;
+    if (!pathname.endsWith('.md')) {
+        return resolve(event);
+    }
+
+    // strip trailing ".md" from the pathname to get the underlying route id
+    const withoutExt = pathname.replace(/\.md$/, '');
+    const routeId = withoutExt;
+
+    const content = await getMarkdownContent(routeId);
+    if (content == null) {
+        return new Response('Not found', { status: 404 });
+    }
+
+    return new Response(content, {
+        status: 200,
+        headers: {
+            'Content-Type': 'text/markdown; charset=utf-8'
+        }
+    });
+};
 
 const redirecter: Handle = async ({ event, resolve }) => {
     const currentPath = event.url.pathname;
@@ -200,6 +224,7 @@ const initSession: Handle = async ({ event, resolve }) => {
 
 export const handle = sequence(
     Sentry.sentryHandle(),
+    markdownHandler,
     redirecter,
     wwwRedirecter,
     securityheaders,
