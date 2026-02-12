@@ -2,8 +2,8 @@
 layout: post
 title: "Introducing new string column types for Appwrite Databases"
 description: Appwrite Databases now supports varchar, text, mediumtext, and longtext column types, giving you explicit control over how string data is stored and indexed. The legacy string type is now deprecated.
-date: 2026-02-11
-cover: /images/blog/announcing-screenshots-api/cover.png
+date: 2026-02-12
+cover: /images/blog/new-string-types/cover.png
 timeToRead: 5
 author: eldad-fux
 category: announcement
