@@ -57,7 +57,7 @@ After [initializing](/docs/tooling/command-line/installation#initialization) you
             "columns": [
                 {
                     "key": "userID",
-                    "type": "string",
+                    "type": "varchar",
                     "status": "available",
                     "error": "",
                     "required": false,
@@ -67,7 +67,7 @@ After [initializing](/docs/tooling/command-line/installation#initialization) you
                 },
                 {
                     "key": "name",
-                    "type": "string",
+                    "type": "varchar",
                     "status": "available",
                     "error": "",
                     "required": false,
@@ -77,7 +77,7 @@ After [initializing](/docs/tooling/command-line/installation#initialization) you
                 },
                 {
                     "key": "cloudinaryId",
-                    "type": "string",
+                    "type": "varchar",
                     "status": "available",
                     "error": "",
                     "required": false,
@@ -87,7 +87,7 @@ After [initializing](/docs/tooling/command-line/installation#initialization) you
                 },
                 {
                     "key": "user",
-                    "type": "string",
+                    "type": "varchar",
                     "status": "available",
                     "error": "",
                     "required": false,
@@ -97,7 +97,7 @@ After [initializing](/docs/tooling/command-line/installation#initialization) you
                 },
                 {
                     "key": "audio",
-                    "type": "string",
+                    "type": "varchar",
                     "status": "available",
                     "error": "",
                     "required": false,
@@ -107,7 +107,7 @@ After [initializing](/docs/tooling/command-line/installation#initialization) you
                 },
                 {
                     "key": "genre",
-                    "type": "string",
+                    "type": "varchar",
                     "status": "available",
                     "error": "",
                     "required": false,
@@ -117,7 +117,7 @@ After [initializing](/docs/tooling/command-line/installation#initialization) you
                 },
                 {
                     "key": "artist",
-                    "type": "string",
+                    "type": "varchar",
                     "status": "available",
                     "error": "",
                     "required": false,
