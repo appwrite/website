@@ -4,7 +4,7 @@ title: Realtime
 description: Want to build dynamic and interactive applications with real-time data updates? Appwrite Realtime API makes it possible, get started with our intro guide.
 ---
 
-Appwrite supports multiple protocols for accessing the server, including [REST](/docs/apis/rest), [GraphQL](/docs/apis/graphql), and [Realtime](/docs/apis/realtime). The Appwrite Realtime allows you to listen to any Appwrite events in realtime using the `subscribe` method.
+Appwrite supports multiple protocols for accessing the server, including [REST](/docs/apis/rest), [GraphQL](/docs/apis/graphql), and [Realtime](/docs/apis/realtime). The Appwrite Realtime allows you to listen to any Appwrite events in realtime using the `Realtime` service.
 
 Instead of requesting new data via HTTP, the subscription will receive new data every time it changes, any connected client receives that update within milliseconds via a WebSocket connection.
 
@@ -12,14 +12,16 @@ This lets you build an interactive and responsive user experience by providing i
 
 {% multicode %}
 ```client-web
-import { Client, Channel } from "appwrite";
+import { Client, Realtime, Channel } from "appwrite";
 
 const client = new Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
     .setProject('<PROJECT_ID>');
 
+const realtime = new Realtime(client);
+
 // Subscribe to files channel
-client.subscribe(Channel.files(), response => {
+realtime.subscribe(Channel.files(), response => {
     if(response.events.includes('buckets.*.files.*.create')) {
         // Log when a new file is uploaded
         console.log(response.payload);
@@ -100,19 +102,21 @@ Instead of manually writing channel strings, you can use the `Channel` helper cl
 
 {% multicode %}
 ```client-web
-import { Client, Channel } from "appwrite";
+import { Client, Realtime, Channel } from "appwrite";
 
 const client = new Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
     .setProject('<PROJECT_ID>');
 
+const realtime = new Realtime(client);
+
 // Subscribe to account channel
-client.subscribe(Channel.account(), response => {
+realtime.subscribe(Channel.account(), response => {
     console.log(response);
 });
 
 // Subscribe to a specific row
-client.subscribe(
+realtime.subscribe(
     Channel.tablesdb('<DATABASE_ID>').table('<TABLE_ID>').row('<ROW_ID>'),
     response => {
         console.log(response);
@@ -211,13 +215,15 @@ In this example we are subscribing to all updates related to our account by usin
 
 {% multicode %}
 ```client-web
-import { Client, Channel } from "appwrite";
+import { Client, Realtime, Channel } from "appwrite";
 
 const client = new Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
     .setProject('<PROJECT_ID>');
 
-client.subscribe(Channel.account(), response => {
+const realtime = new Realtime(client);
+
+realtime.subscribe(Channel.account(), response => {
     // Callback will be executed on all account events.
     console.log(response);
 });
@@ -283,13 +289,15 @@ In this example we are listening to a specific row and all files by subscribing 
 
 {% multicode %}
 ```client-web
-import { Client, Channel } from "appwrite";
+import { Client, Realtime, Channel } from "appwrite";
 
 const client = new Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
     .setProject('<PROJECT_ID>');
 
-client.subscribe([
+const realtime = new Realtime(client);
+
+realtime.subscribe([
     Channel.tablesdb('<DATABASE_ID>').table('<TABLE_ID>').row('<ROW_ID>'),
     Channel.files()
 ], response => {
@@ -364,19 +372,21 @@ If you no longer want to receive updates from a subscription, you can unsubscrib
 
 {% multicode %}
 ```client-web
-import { Client, Channel } from "appwrite";
+import { Client, Realtime, Channel } from "appwrite";
 
 const client = new Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
     .setProject('<PROJECT_ID>');
 
-const unsubscribe = client.subscribe(Channel.files(), response => {
+const realtime = new Realtime(client);
+
+const subscription = await realtime.subscribe(Channel.files(), response => {
     // Callback will be executed on changes for all files.
     console.log(response);
 });
 
 // Closes the subscription.
-unsubscribe();
+await subscription.close();
 ```
 
 ```client-flutter
@@ -564,7 +574,7 @@ A list of all channels available you can subscribe to. When using `Channel` help
 * Any create/update/delete events to any team
 ---
 * `teams.<ID>`
-* `Channel.teams()('<TEAM_ID>')`
+* `Channel.team('<TEAM_ID>')`
 * Any update/delete events to a given team
 ---
 * `memberships.*`
