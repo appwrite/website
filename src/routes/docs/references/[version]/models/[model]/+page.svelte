@@ -16,13 +16,19 @@
             <Thead>
                 <Tr>
                     <Th>
-                        <span class="text-eyebrow uppercase">NAME</span>
+                        <span class="text-eyebrow uppercase" data-ignore="true" data-noindex="true"
+                            >NAME</span
+                        >
                     </Th>
                     <Th>
-                        <span class="text-eyebrow uppercase">TYPE</span>
+                        <span class="text-eyebrow uppercase" data-ignore="true" data-noindex="true"
+                            >TYPE</span
+                        >
                     </Th>
                     <Th>
-                        <span class="text-eyebrow uppercase">DESCRIPTION</span>
+                        <span class="text-eyebrow uppercase" data-ignore="true" data-noindex="true"
+                            >DESCRIPTION</span
+                        >
                     </Th>
                 </Tr>
             </Thead>

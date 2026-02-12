@@ -85,10 +85,6 @@
                     href: '/docs/advanced/platform/pro'
                 },
                 {
-                    label: 'Scale',
-                    href: '/docs/advanced/platform/scale'
-                },
-                {
                     label: 'Enterprise',
                     href: '/docs/advanced/platform/enterprise'
                 },
