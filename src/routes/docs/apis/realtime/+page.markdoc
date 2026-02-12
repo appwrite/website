@@ -21,7 +21,7 @@ const client = new Client()
 const realtime = new Realtime(client);
 
 // Subscribe to files channel
-realtime.subscribe(Channel.files(), response => {
+const subscription = await realtime.subscribe(Channel.files(), response => {
     if(response.events.includes('buckets.*.files.*.create')) {
         // Log when a new file is uploaded
         console.log(response.payload);
@@ -111,12 +111,12 @@ const client = new Client()
 const realtime = new Realtime(client);
 
 // Subscribe to account channel
-realtime.subscribe(Channel.account(), response => {
+const subscription = await realtime.subscribe(Channel.account(), response => {
     console.log(response);
 });
 
 // Subscribe to a specific row
-realtime.subscribe(
+const rowSubscription = await realtime.subscribe(
     Channel.tablesdb('<DATABASE_ID>').table('<TABLE_ID>').row('<ROW_ID>'),
     response => {
         console.log(response);
@@ -223,7 +223,7 @@ const client = new Client()
 
 const realtime = new Realtime(client);
 
-realtime.subscribe(Channel.account(), response => {
+const subscription = await realtime.subscribe(Channel.account(), response => {
     // Callback will be executed on all account events.
     console.log(response);
 });
@@ -297,7 +297,7 @@ const client = new Client()
 
 const realtime = new Realtime(client);
 
-realtime.subscribe([
+const subscription = await realtime.subscribe([
     Channel.tablesdb('<DATABASE_ID>').table('<TABLE_ID>').row('<ROW_ID>'),
     Channel.files()
 ], response => {
@@ -589,7 +589,7 @@ A list of all channels available you can subscribe to. When using `Channel` help
 * `Channel.executions()`
 * Any update to executions
 ---
-* `executions.[ID]`
+* `executions.<ID>`
 * `Channel.execution(ID)`
 * Any update to a given execution
 ---
