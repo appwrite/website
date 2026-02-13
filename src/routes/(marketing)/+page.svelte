@@ -22,10 +22,7 @@
         subtitle="All-in-one, open-source infrastructure. Build in minutes, bring any framework, and scale affordably. Auth, Database, Storage, Functions, Realtime, Messaging & Hosting included."
     />
     <Platforms headline="Designed for the tools you work with" />
-    <LogoList
-        class="border-smooth border-b"
-        title="Loved by startups and world leaders"
-    />
+    <LogoList class="border-smooth border-b" title="Loved by startups and world leaders" />
     <Bento />
     <Pullquote
         name="Phil McCluskey"

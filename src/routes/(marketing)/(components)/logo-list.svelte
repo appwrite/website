@@ -7,10 +7,7 @@
         class?: string;
     };
 
-    const {
-        title = 'Loved by startups and world leaders',
-        class: className
-    }: Props = $props();
+    const { title = 'Loved by startups and world leaders', class: className }: Props = $props();
 
     const logos = [
         {
@@ -98,7 +95,14 @@
         <div class="relative grid grid-cols-3 gap-6 py-10 md:grid-cols-6 md:gap-8">
             {#each logos as { src, alt, width, height } (src)}
                 <div class="flex items-center justify-center">
-                    <img loading="lazy" {src} {alt} {width} {height} class="max-w-[80px] md:max-w-none" />
+                    <img
+                        loading="lazy"
+                        {src}
+                        {alt}
+                        {width}
+                        {height}
+                        class="max-w-[80px] md:max-w-none"
+                    />
                 </div>
             {/each}
         </div>
