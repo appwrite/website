@@ -222,12 +222,43 @@ const initSession: Handle = async ({ event, resolve }) => {
     return resolve(event);
 };
 
+/**
+ * SEO optimization: noindex internal/auth pages and staging subdomains
+ */
+const NOINDEX_PATHS = [
+    /^\/console\/login\/?$/,
+    /^\/console\/register\/?$/,
+    /^\/v1\/storage\//,
+    /^\/v1\//
+];
+
+// Block any staging/preview subdomains (e.g., *.cloud.appwrite.io, stage.*, etc.)
+const NOINDEX_HOSTS = [/\.cloud\.appwrite\.io$/i, /^stage\./i, /^fra\./i];
+
+const seoOptimization: Handle = async ({ event, resolve }) => {
+    const { url } = event;
+
+    // Check if this is a path or host that should not be indexed
+    const shouldNoindex =
+        NOINDEX_PATHS.some((re) => re.test(url.pathname)) ||
+        NOINDEX_HOSTS.some((re) => re.test(url.hostname));
+
+    const response = await resolve(event);
+
+    if (shouldNoindex) {
+        response.headers.set('x-robots-tag', 'noindex, nofollow');
+    }
+
+    return response;
+};
+
 export const handle = sequence(
     Sentry.sentryHandle(),
     markdownHandler,
     redirecter,
     wwwRedirecter,
     securityheaders,
-    initSession
+    initSession,
+    seoOptimization
 );
 export const handleError = Sentry.handleErrorWithSentry();
