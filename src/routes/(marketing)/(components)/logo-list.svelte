@@ -1,7 +1,6 @@
 <script lang="ts">
     import { browser } from '$app/environment';
     import { cn } from '$lib/utils/cn';
-    import AnimatedLogo from './animated-logo.svelte';
 
     type Props = {
         title?: string;
@@ -87,43 +86,29 @@
             height: 32
         }
     ];
-
-    let baseDelay = 2.9;
-
-    const logoGroups = logos.reduce(
-        (groups, logo, index) => {
-            const groupIndex = Math.floor(index / 3);
-            if (!groups[groupIndex]) {
-                groups[groupIndex] = [];
-            }
-            groups[groupIndex].push(logo);
-            return groups;
-        },
-        [] as Array<typeof logos>
-    );
 </script>
 
 <div class={cn('py-12', className)}>
-    <div class="mx-auto max-w-4xl">
+    <div class="mx-auto max-w-6xl">
         <h2
             class="font-aeonik-pro text-greyscale-100 text-description mx-auto max-w-[312px] text-center text-pretty"
         >
             {title}
         </h2>
-        <div class="relative grid grid-cols-2 gap-8 py-10 md:grid-cols-4 md:gap-4">
-            {#each logoGroups as group, i}
-                <div class="relative flex aspect-[8/2] flex-col items-center justify-center">
-                    {#each group as { src, alt, width, height }, index}
-                        <AnimatedLogo
-                            repeatDelay={baseDelay * 2}
-                            delay={index * baseDelay + i * 0.1}
-                            class="absolute"
-                        >
-                            <img loading="lazy" {src} {alt} {width} {height} />
-                        </AnimatedLogo>
-                    {/each}
+        <div class="relative grid grid-cols-3 gap-8 py-10 md:grid-cols-6 md:gap-8">
+            {#each logos as { src, alt, width, height }}
+                <div class="flex items-center justify-center">
+                    <img loading="lazy" {src} {alt} {width} {height} />
                 </div>
             {/each}
+        </div>
+        <div class="text-center">
+            <a
+                href="https://appwrite.io/blog/category/customer-stories"
+                class="text-primary text-sm font-medium hover:underline"
+            >
+                Read our case studies →
+            </a>
         </div>
     </div>
 </div>

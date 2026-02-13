@@ -14,10 +14,13 @@
     import LogoList from './(components)/logo-list.svelte';
 </script>
 
-<Head title="Appwrite - All-in-one infra for solo devs & SMBs" />
+<Head title="Appwrite - Built for the first solocorn" />
 
 <Main>
-    <Hero title="All-in-one infra for solo devs & SMBs" />
+    <Hero
+        title="Built for the first solocorn"
+        subtitle="All-in-one, open-source infrastructure. Build in minutes, bring any framework, and scale cost effectively. Auth, Database, Storage, Functions, Realtime, Messaging & Hosting included."
+    />
     <Platforms headline="Designed for the tools you work with" />
     <LogoList
         class="border-smooth border-b"
