@@ -96,7 +96,7 @@
             {title}
         </h2>
         <div class="relative grid grid-cols-3 gap-8 py-10 md:grid-cols-6 md:gap-8">
-            {#each logos as { src, alt, width, height }}
+            {#each logos as { src, alt, width, height } (src)}
                 <div class="flex items-center justify-center">
                     <img loading="lazy" {src} {alt} {width} {height} />
                 </div>
@@ -104,7 +104,7 @@
         </div>
         <div class="text-center">
             <a
-                href="https://appwrite.io/blog/category/customer-stories"
+                href="/blog/category/customer-stories"
                 class="text-primary text-sm font-medium hover:underline"
             >
                 Read our case studies →
