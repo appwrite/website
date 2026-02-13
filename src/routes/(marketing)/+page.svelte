@@ -19,7 +19,7 @@
 <Main>
     <Hero
         title="Built for the first solocorn"
-        subtitle="All-in-one, open-source infrastructure. Build in minutes, bring any framework, and scale cost effectively. Auth, Database, Storage, Functions, Realtime, Messaging & Hosting included."
+        subtitle="All-in-one, open-source infrastructure. Build in minutes, bring any framework, and scale affordably. Auth, Database, Storage, Functions, Realtime, Messaging & Hosting included."
     />
     <Platforms headline="Designed for the tools you work with" />
     <LogoList

@@ -89,16 +89,16 @@
 </script>
 
 <div class={cn('py-12', className)}>
-    <div class="mx-auto max-w-6xl">
+    <div class="mx-auto max-w-6xl px-4 md:px-8">
         <h2
             class="font-aeonik-pro text-greyscale-100 text-description mx-auto max-w-[312px] text-center text-pretty"
         >
             {title}
         </h2>
-        <div class="relative grid grid-cols-3 gap-8 py-10 md:grid-cols-6 md:gap-8">
+        <div class="relative grid grid-cols-3 gap-6 py-10 md:grid-cols-6 md:gap-8">
             {#each logos as { src, alt, width, height } (src)}
                 <div class="flex items-center justify-center">
-                    <img loading="lazy" {src} {alt} {width} {height} />
+                    <img loading="lazy" {src} {alt} {width} {height} class="max-w-[80px] md:max-w-none" />
                 </div>
             {/each}
         </div>
