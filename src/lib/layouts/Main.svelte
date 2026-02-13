@@ -115,7 +115,7 @@
         },
         {
             label: 'Customers',
-            href: 'https://appwrite.io/blog/category/customer-stories'
+            href: '/blog/category/customer-stories'
         },
         {
             label: 'Enterprise',
