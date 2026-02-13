@@ -8,7 +8,7 @@
     };
 
     const {
-        title = "Trusted by developers from the world's leading organizations",
+        title = 'Loved by startups and world leaders',
         class: className
     }: Props = $props();
 

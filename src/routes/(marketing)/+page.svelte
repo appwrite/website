@@ -24,7 +24,7 @@
     <Platforms headline="Designed for the tools you work with" />
     <LogoList
         class="border-smooth border-b"
-        title="Loved by developers from the world's leading organizations"
+        title="Loved by startups and world leaders"
     />
     <Bento />
     <Pullquote
