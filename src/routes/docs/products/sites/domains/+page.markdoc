@@ -80,7 +80,7 @@ When you change your domain's NS records, you're delegating DNS management to Ap
 Learn more about Appwrite DNS server
 {% /arrow_link %}
 
-## Add an apex domain with CNAME flattening
+## Add an apex domain without changing nameservers
 
 Some DNS providers support CNAME-like behavior at the apex level through a feature called CNAME flattening. This allows you to use a CNAME record for your apex domain without needing to delegate nameservers to Appwrite.
 
