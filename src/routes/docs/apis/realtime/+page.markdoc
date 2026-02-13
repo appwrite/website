@@ -573,12 +573,12 @@ A list of all channels available you can subscribe to. When using `Channel` help
 * `Channel.teams()`
 * Any create/update/delete events to any team
 ---
-* `teams.<ID>`
+* `team.<ID>`
 * `Channel.team('<TEAM_ID>')`
 * Any update/delete events to a given team
 ---
 * `memberships.*`
-* `Channel.membership()`
+* `Channel.memberships()`
 * Any create/update/delete events to any membership
 ---
 * `memberships.<ID>`
