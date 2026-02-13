@@ -2,7 +2,7 @@
 layout: post
 title: "Announcing Realtime Channel helpers: Type-safe subscriptions made simple"
 description: Build realtime subscriptions faster with a fluent, chainable API that reduces errors and improves code clarity.
-date: 2026-02-12
+date: 2026-02-13
 cover: /images/blog/announcing-realtime-channel-helpers/cover.png
 timeToRead: 5
 author: jake-barnby
@@ -77,6 +77,15 @@ const multiSubscription = await realtime.subscribe([
 });
 ```
 
+# Key benefits
+
+- **Type-safe subscriptions**: Catch errors at compile time instead of runtime
+- **IDE autocomplete**: Build channels faster with intelligent suggestions
+- **Self-documenting code**: Channel structure is clear and readable
+- **Reduced errors**: Eliminate typos and formatting mistakes
+- **Consistent API**: Same helper syntax across all client SDKs
+- **Backwards compatible**: Existing string-based subscriptions continue to work
+
 # Available across all platforms
 
 Channel helpers are available in all Appwrite client SDKs: Web, Flutter, Apple, and Android. Each SDK provides the same fluent API, making it easy to build consistent realtime features across platforms.
@@ -88,20 +97,7 @@ The helpers support all available channels, including:
 - Team and membership updates
 - Function executions
 
-# Key benefits
-
-- **Type-safe subscriptions**: Catch errors at compile time instead of runtime
-- **IDE autocomplete**: Build channels faster with intelligent suggestions
-- **Self-documenting code**: Channel structure is clear and readable
-- **Reduced errors**: Eliminate typos and formatting mistakes
-- **Consistent API**: Same helper syntax across all client SDKs
-- **Backwards compatible**: Existing string-based subscriptions continue to work
-
-# Simplified developer experience
-
-Channel helpers remove cognitive overhead from realtime development. You no longer need to remember channel string formats, consult documentation for syntax, or debug silent failures from malformed strings.
-
-The feature is available now on all Appwrite client SDKs. Existing subscriptions using string channels continue to work, ensuring a smooth transition for current projects.
+Existing subscriptions using string channels continue to work, ensuring a smooth transition for current projects.
 
 # More resources
 
