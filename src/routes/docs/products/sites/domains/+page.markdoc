@@ -82,11 +82,7 @@ Learn more about Appwrite DNS server
 
 ## Add an apex domain without changing nameservers
 
-Some DNS providers support CNAME-like behavior at the apex level through a feature called CNAME flattening. This allows you to use a CNAME record for your apex domain without needing to delegate nameservers to Appwrite.
-
-Depending on your DNS provider, this feature may be provided through **CNAME records**, **ALIAS records**, or **ANAME records**. Check your provider's documentation for the specific DNS record they support.
-
-To add an apex domain via CNAME flattening:
+To add an apex domain without changing your NS records via [CNAME flattening](/docs/products/network/dns#using-cname-flattening):
 
 1. Navigate to your site in the Appwrite Console.
 2. Head to the **Domains** tab and click on **Add domain**.
