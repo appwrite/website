@@ -92,8 +92,8 @@ To add an apex domain via CNAME flattening:
 2. Head to the **Domains** tab and click on **Add domain**.
 3. Enter your apex domain (e.g., `example.com`).
 4. Select the appropriate domain rule type (Active deployment, Git branch, or Redirect) and configure its settings. See the [Domain rule types](#domain-rule-types) section for details.
-5. Copy the **CNAME** record provided by Appwrite (`appwrite.network`).
-6. Copy the **CAA** record provided by Appwrite (`0 issue "certainly.com"`).
+5. Copy the **CNAME** record provided by Appwrite.
+6. Copy the **CAA** record provided by Appwrite.
 7. In your DNS provider's settings, create an ALIAS, ANAME, or CNAME record at the apex (depending on what your provider supports).
 8. Point the record to the Appwrite hostname provided in the console.
 9. Add the CAA record to your DNS provider's settings, also pointed at the apex.
