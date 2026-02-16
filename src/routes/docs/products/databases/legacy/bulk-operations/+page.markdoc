@@ -10,8 +10,12 @@ Bulk operations can only be performed via the server-side SDKs. The client-side 
 
 For client applications that need bulk-like functionality, consider using [Appwrite Functions](/docs/products/functions) with proper rate limiting and validation.
 
-# Atomic behavior {% #atomic-behavior %}
+{% info title="Important notes" %}
+- Bulk operations do not trigger Functions, Webhooks, or Realtime events.
+- Collections that contain relationship attributes are not supported via bulk operations. Use individual document operations for collections with relationships.
+{% /info %}
 
+# Atomic behavior {% #atomic-behavior %}
 Bulk operations in Appwrite are **atomic**, meaning they follow an all-or-nothing approach. Either all documents in your bulk request succeed, or all documents fail.
 
 This atomicity ensures:
@@ -21,9 +25,24 @@ This atomicity ensures:
 
 For example, if you attempt to create 100 documents and one fails due to a validation error, none of the 100 documents will be created.
 
+# Plan limits {% #plan-limits %}
+
+Bulk operations have different limits based on your Appwrite plan:
+
+| Plan | Columns per request |
+|------|----------------------|
+| Free | 100 |
+| Pro  | 1,000 |
+
+These limits apply to all bulk operations including create, update, upsert, and delete operations. If you need higher limits than what the Pro plan offers, you can [inquire](/contact-us/enterprise) about a custom plan.
+
 # Create documents {% #create-documents %}
 
 You can create multiple documents in a single request using the `createDocuments` method.
+
+{% info title="Custom timestamps" %}
+When creating, updating or upserting in bulk, you can set `$createdAt` and `$updatedAt` for each document in the payload. Values must be ISO 8601 date-time strings. If omitted, Appwrite sets them automatically.
+{% /info %}
 
 {% multicode %}
 ```server-nodejs
