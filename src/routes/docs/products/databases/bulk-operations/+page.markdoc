@@ -11,7 +11,7 @@ Bulk operations can only be performed via the server-side SDKs. The client-side 
 For client applications that need bulk-like functionality, consider using [Appwrite Functions](/docs/products/functions) with proper rate limiting and validation.
 
 {% info title="Important notes" %}
-- Bulk operations do not trigger Functions, Webhooks, or Realtime events.
+- Bulk operations trigger Functions, Webhooks, or Realtime events for each row manipulated. Rather than a single event for the entire bulk operation, each row generates a separate event on the existing realtime channels for its operation type.
 - Tables that contain relationship columns are not supported via bulk operations. Use individual row operations for tables with relationships.
 {% /info %}
 
