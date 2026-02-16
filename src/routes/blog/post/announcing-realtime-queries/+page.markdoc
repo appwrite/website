@@ -3,7 +3,7 @@ layout: post
 title: "Introducing Realtime queries: Server-side event filtering for subscriptions"
 description: Pass SDK queries when subscribing to realtime channels to automatically filter events server-side, so your callbacks only receive the updates you care about.
 date: 2026-02-16
-cover: /images/blog/announcing-realtime-channel-helpers/cover.png
+cover: /images/blog/announcing-realtime-queries/cover.png
 timeToRead: 4
 author: jake-barnby
 category: announcement
