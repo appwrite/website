@@ -96,7 +96,7 @@ If you subscribe to a channel, you will receive callbacks for a variety of event
 
 [View a list of all available events](/docs/advanced/platform/events).
 
-## Channel helpers {% #channel-helpers %}
+# Channel helpers {% #channel-helpers %}
 
 Instead of manually writing channel strings, you can use the `Channel` helper class to build type-safe channel subscriptions. The helper provides a fluent API that makes it easier to construct channel strings and reduces errors.
 

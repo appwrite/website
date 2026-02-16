@@ -119,7 +119,7 @@ func prepareDatabase() {
 		"Todos",
 	)
 
-	tablesDB.CreateStringColumn(
+	tablesDB.CreateVarcharColumn(
 		todoDatabase.Id,
 		todoTable.Id,
 		"title",
@@ -127,11 +127,10 @@ func prepareDatabase() {
 		true,
 	)
 
-	tablesDB.CreateStringColumn(
+	tablesDB.CreateTextColumn(
 		todoDatabase.Id,
 		todoTable.Id,
 		"description",
-		255,
 		false,
 	)
 
