@@ -88,12 +88,12 @@
             {:else}
                 <form method="post" class="contents" onsubmit={preventDefault(handleSubmit)}>
                     <div
-                        class="border-primary/12 focus-within:border-primary/48 flex w-full max-w-sm justify-between gap-1 rounded-xl border bg-white/4 py-1 pr-1 pl-4 backdrop-blur-2xl transition-colors"
+                        class="border-primary/12 focus-within:border-primary/48 flex w-full max-w-sm items-center justify-between gap-1 rounded-xl border bg-white/4 py-1 pr-1 pl-2 backdrop-blur-2xl transition-colors sm:pl-4"
                     >
                         <input
                             type="email"
                             placeholder="Enter your email"
-                            class="text-primary flex-1 appearance-none border-none outline-none"
+                            class="text-primary min-w-0 flex-1 appearance-none border-none bg-transparent outline-none"
                             required
                             id="email"
                             name="email"
@@ -102,6 +102,7 @@
                         <Button
                             type="submit"
                             disabled={submitting}
+                            class="flex-shrink-0"
                             event="newsletter-subscribe-submit">Sign up</Button
                         >
                     </div>

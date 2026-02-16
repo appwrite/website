@@ -1,5 +1,58 @@
 ---
 layout: article
-title: Overview
-description: Overview of the Appwrite AI tooling. 
+title: AI
+description: Discover Appwrite's AI tooling ecosystem. Build with AI-powered development tools, integrate AI capabilities into your apps, and leverage documentation designed for AI consumption.
 ---
+
+Appwrite provides a comprehensive set of tools and resources to help you build with AI. Whether you're using AI-powered development tools to accelerate your workflow, building AI-powered applications, or integrating AI capabilities into your backend, Appwrite has you covered.
+
+# Getting started {% #getting-started %}
+
+The fastest way to start building with Appwrite using AI is to connect your favorite AI-powered development tool with Appwrite's MCP servers. This gives AI assistants direct access to your Appwrite project and up-to-date documentation.
+
+{% arrow_link href="/docs/tooling/ai/ai-dev-tools" %}
+Set up AI dev tools with Appwrite
+{% /arrow_link %}
+
+# AI-powered development tools {% #ai-dev-tools %}
+
+AI-powered development tools can dramatically accelerate how you build applications with Appwrite. From intelligent code completion in your IDE to full application generation through vibe coding platforms, these tools help you write better code faster.
+
+{% cards %}
+{% cards_item href="/docs/tooling/ai/ai-dev-tools" title="AI dev tools" %}
+Connect AI-powered IDEs and code editors like VS Code, Cursor, Windsurf, and Claude Code with Appwrite.
+{% /cards_item %}
+{% cards_item href="/docs/tooling/ai/quickstart-prompts" title="Quickstart prompts" %}
+Pre-built instructions to help AI assistants integrate Appwrite into your project quickly.
+{% /cards_item %}
+{% cards_item href="/docs/tooling/ai/docs-as-markdown" title="Docs as Markdown" %}
+Access Appwrite documentation as markdown for AI consumption and better context.
+{% /cards_item %}
+{% /cards %}
+
+# Building AI applications {% #building-ai-apps %}
+
+Appwrite provides the infrastructure you need to build AI-powered applications. Use Appwrite Functions to run AI workloads, store and query vector embeddings, implement RAG pipelines, and create persistent AI agents.
+
+{% cards %}
+{% cards_item href="/docs/tooling/ai/ai-in-functions" title="AI in Functions" %}
+Run AI models and integrate with AI providers using Appwrite Functions.
+{% /cards_item %}
+{% cards_item href="/docs/tooling/ai/vector-db-and-embeddings" title="Vector DB and embeddings" %}
+Store and query vector embeddings for semantic search and AI applications.
+{% /cards_item %}
+{% cards_item href="/docs/tooling/ai/rag" title="RAG" %}
+Implement Retrieval-Augmented Generation to build AI apps with your own data.
+{% /cards_item %}
+{% cards_item href="/docs/tooling/ai/persistent-agents-with-realtime" title="Persistent agents" %}
+Build stateful AI agents using Appwrite Realtime for continuous conversations.
+{% /cards_item %}
+{% /cards %}
+
+# Responsible AI {% #responsible-ai %}
+
+Building AI applications comes with responsibility. Learn best practices for responsible AI usage, including data privacy, bias mitigation, and transparent AI interactions.
+
+{% arrow_link href="/docs/tooling/ai/responsible-ai" %}
+Learn about responsible AI practices
+{% /arrow_link %}
