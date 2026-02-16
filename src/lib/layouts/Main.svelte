@@ -114,6 +114,10 @@
             href: '/pricing'
         },
         {
+            label: 'Customers',
+            href: '/blog/category/customer-stories'
+        },
+        {
             label: 'Enterprise',
             href: '/contact-us/enterprise'
         }
@@ -169,7 +173,7 @@
                     showLabel={true}
                     leftText="Introducing"
                     logoText="Imagine"
-                    rightText="Build something real"
+                    rightText="AI Builder on Appwrite Cloud"
                 />
             </div>
         </div>

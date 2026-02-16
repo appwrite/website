@@ -110,7 +110,7 @@ todoTable = await tablesDB.CreateTable(
     name: "Todos"
 );
 
-await tablesDB.CreateStringColumn(
+await tablesDB.CreateVarcharColumn(
     databaseId: todoDatabase.Id,
     tableId: todoTable.Id,
     key: "title",
@@ -118,11 +118,10 @@ await tablesDB.CreateStringColumn(
     required: true
 );
 
-await tablesDB.CreateStringColumn(
+await tablesDB.CreateTextColumn(
     databaseId: todoDatabase.Id,
     tableId: todoTable.Id,
     key: "description",
-    size: 255,
     required: false,
     xdefault: "This is a test description"
 );

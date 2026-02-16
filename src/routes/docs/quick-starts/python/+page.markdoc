@@ -128,7 +128,7 @@ def prepare_database():
     name='Todos'
   )
 
-  tablesDB.create_string_column(
+  tablesDB.create_varchar_column(
     database_id=todoDatabase['$id'],
     table_id=todoTable['$id'],
     key='title',
@@ -136,11 +136,10 @@ def prepare_database():
     required=True
   )
 
-  tablesDB.create_string_column(
+  tablesDB.create_text_column(
     database_id=todoDatabase['$id'],
     table_id=todoTable['$id'],
     key='description',
-    size=255,
     required=False,
     default='This is a test description.'
   )
