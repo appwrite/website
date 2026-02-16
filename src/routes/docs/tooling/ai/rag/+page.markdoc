@@ -2,7 +2,6 @@
 layout: article
 title: Retrieval-augmented generation (RAG)
 description: Learn how to build RAG pipelines with Appwrite using LangChain and Pinecone.
-readtime: 15
 ---
 
 Retrieval-augmented generation (RAG) combines a retrieval system with a language model. Instead of relying solely on the model's training data, RAG retrieves relevant documents from your own data and includes them in the prompt. This results in more accurate, contextual responses grounded in your actual content.

@@ -1,6 +1,7 @@
 ---
 layout: article
 title: Imagine
-description: Learn how to use Appwrite services with Imagine.
+description: Learn how to use Appwrite services with Imagine, Appwrite's first-class AI development platform.
 ---
 
+[Imagine](https://imagine.dev) is Appwrite's first-class AI development platform. Unlike other AI dev tools that require MCP server configuration, Imagine has Appwrite integrated at a deeper level out of the box. There is no setup needed. Appwrite services are available natively, making Imagine the best experience for building applications with Appwrite and AI.
