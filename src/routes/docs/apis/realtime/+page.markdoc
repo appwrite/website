@@ -96,7 +96,7 @@ If you subscribe to a channel, you will receive callbacks for a variety of event
 
 [View a list of all available events](/docs/advanced/platform/events).
 
-## Channel helpers {% #channel-helpers %}
+# Channel helpers {% #channel-helpers %}
 
 Instead of manually writing channel strings, you can use the `Channel` helper class to build type-safe channel subscriptions. The helper provides a fluent API that makes it easier to construct channel strings and reduces errors.
 
@@ -751,8 +751,8 @@ A list of all channels available you can subscribe to. When using `Channel` help
 * `Channel.team('<TEAM_ID>')`
 * Any update/delete events to a given team
 ---
-* `memberships.*`
-* `Channel.membership()`
+* `memberships`
+* `Channel.memberships()`
 * Any create/update/delete events to any membership
 ---
 * `memberships.<ID>`
