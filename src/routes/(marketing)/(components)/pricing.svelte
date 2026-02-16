@@ -3,6 +3,7 @@
     import { Button } from '$lib/components/ui';
     import { cn } from '$lib/utils/cn';
     import { getAppwriteDashboardUrl } from '$lib/utils/dashboard';
+    import { SHOW_SCALE_PLAN } from '$lib/constants/feature-flags';
 
     const plans: Array<{
         name: string;
@@ -48,6 +49,10 @@
     };
 
     const { class: className }: PricingProps = $props();
+
+    const visiblePlans = SHOW_SCALE_PLAN ? plans : plans.filter((plan) => plan.name !== 'Scale');
+
+    const gridCols = `lg:grid-cols-${visiblePlans.length}`;
 </script>
 
 <div
@@ -92,9 +97,9 @@
         </div>
 
         <div
-            class="border-smooth divide-smooth grid min-h-75 w-full grid-cols-1 divide-y divide-dashed rounded-3xl border bg-white/2 backdrop-blur-lg md:grid-cols-2 md:gap-y-12 md:divide-y-0 md:px-4 md:py-8 lg:grid-cols-4 lg:divide-x"
+            class="border-smooth divide-smooth grid min-h-75 w-full grid-cols-1 divide-y divide-dashed rounded-3xl border bg-white/2 backdrop-blur-lg md:grid-cols-2 md:gap-y-12 md:divide-y-0 md:px-4 md:py-8 {gridCols} lg:divide-x"
         >
-            {#each plans as { name, price, tag: label, subtitle, description, event }}
+            {#each visiblePlans as { name, price, tag: label, subtitle, description, event }, index (`${name},${label},${index}`)}
                 {@const isEnterprise = name === 'Enterprise'}
                 <div class="flex h-full w-full grow flex-col gap-1 px-5 py-5 md:py-0">
                     <div class="flex items-center gap-2.5">

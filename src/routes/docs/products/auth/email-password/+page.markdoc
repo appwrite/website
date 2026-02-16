@@ -15,20 +15,21 @@ import { Client, Account, ID } from "appwrite";
 
 const client = new Client()
     .setProject('<PROJECT_ID>'); // Your project ID
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1');
 
 const account = new Account(client);
 
-const promise = account.create({
-    userId: '[USER_ID]',
-    email: 'email@example.com',
-    password: ''
-});
+try {
+    const user = await account.create({
+        userId: '[USER_ID]',
+        email: 'email@example.com',
+        password: '<Password>'
+    });
+    console.log(user)
+} catch (e){
+    console.error(e)
+}
 
-promise.then(function (response) {
-    console.log(response); // Success
-}, function (error) {
-    console.log(error); // Failure
-});
 ```
 
 Passwords are hashed with [Argon2](https://github.com/P-H-C/phc-winner-argon2), a resilient and secure password hashing algorithm.
@@ -41,20 +42,18 @@ After an account is created, users can be logged in using the Create Email Sessi
 import { Client, Account } from "appwrite";
 
 const client = new Client()
-    .setProject('<PROJECT_ID>'); // Your project ID
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('<YOUR_PROJECT_ID>'); // Your project ID
 
 const account = new Account(client);
 
-const promise = account.createEmailPasswordSession({
+const result = await account.createEmailPasswordSession({
     email: 'email@example.com',
     password: 'password'
 });
 
-promise.then(function (response) {
-    console.log(response); // Success
-}, function (error) {
-    console.log(error); // Failure
-});
+console.log(result);
+
 ```
 
 # Verification {% #verification %}

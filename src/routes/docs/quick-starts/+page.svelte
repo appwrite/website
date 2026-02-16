@@ -68,6 +68,12 @@
                     href: 'solid'
                 },
                 {
+                    title: 'TanStack Start',
+                    icon: 'web-icon-tanstack',
+                    image: '/images/blog/placeholder.png',
+                    href: 'tanstack-start'
+                },
+                {
                     title: 'Web',
                     icon: 'icon-js',
                     image: '/images/blog/placeholder.png',

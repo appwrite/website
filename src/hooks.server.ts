@@ -1,12 +1,36 @@
+import * as Sentry from '@sentry/sveltekit';
 import type { Handle } from '@sveltejs/kit';
 import redirects from './redirects.json';
 import { sequence } from '@sveltejs/kit/hooks';
+import { getMarkdownContent } from '$lib/server/markdown';
 import { type GithubUser } from '$routes/(init)/init/(utils)/auth';
 import { createInitSessionClient } from '$routes/(init)/init/(utils)/appwrite';
 import type { AppwriteUser } from '$lib/utils/console';
 
-const PLAYWRIGHT_TESTS = process.env.PLAYWRIGHT_TESTS ?? undefined;
 const redirectMap = new Map(redirects.map(({ link, redirect }) => [link, redirect]));
+
+const markdownHandler: Handle = async ({ event, resolve }) => {
+    const pathname = event.url.pathname;
+    if (!pathname.endsWith('.md')) {
+        return resolve(event);
+    }
+
+    // strip trailing ".md" from the pathname to get the underlying route id
+    const withoutExt = pathname.replace(/\.md$/, '');
+    const routeId = withoutExt;
+
+    const content = await getMarkdownContent(routeId);
+    if (content == null) {
+        return new Response('Not found', { status: 404 });
+    }
+
+    return new Response(content, {
+        status: 200,
+        headers: {
+            'Content-Type': 'text/markdown; charset=utf-8'
+        }
+    });
+};
 
 const redirecter: Handle = async ({ event, resolve }) => {
     const currentPath = event.url.pathname;
@@ -15,6 +39,21 @@ const redirecter: Handle = async ({ event, resolve }) => {
             status: 308,
             headers: {
                 location: redirectMap.get(currentPath) ?? ''
+            }
+        });
+    }
+
+    return resolve(event);
+};
+
+const wwwRedirecter: Handle = async ({ event, resolve }) => {
+    if (event.url.host.startsWith('www.')) {
+        const location = new URL(event.url);
+        location.host = location.host.replace(/^www\./, '');
+        return new Response(null, {
+            status: 308,
+            headers: {
+                location: location.href
             }
         });
     }
@@ -52,17 +91,7 @@ const securityheaders: Handle = async ({ event, resolve }) => {
             'https://js.zi-scripts.com',
             'https://ws.zoominfo.com',
             'https://*.cookieyes.com',
-            'https://cdn-cookieyes.com',
-
-            // too many scripts from gtm!
-            'https://www.googletagmanager.com',
-            'https://js.hs-scripts.com',
-            'https://js.hs-banner.com',
-            'https://js.hsadspixel.net',
-            'https://js.hs-analytics.net',
-            'https://js.hscollectedforms.net',
-            'https://api.hubapi.com',
-            'https://googleads.g.doubleclick.net'
+            'https://cdn-cookieyes.com'
         ]),
         'style-src': "'self' 'unsafe-inline'",
         'img-src': "'self' data: https:",
@@ -87,12 +116,7 @@ const securityheaders: Handle = async ({ event, resolve }) => {
             'https://hemsync.clickagy.com',
             'https://ws.zoominfo.com ',
             'https://*.cookieyes.com',
-            'https://cdn-cookieyes.com',
-
-            // gtm
-            'https://api.hubapi.com',
-            'https://www.google.com',
-            'https://forms.hscollectedforms.net'
+            'https://cdn-cookieyes.com'
         ]),
         'frame-src': join([
             "'self'",
@@ -101,10 +125,7 @@ const securityheaders: Handle = async ({ event, resolve }) => {
             'https://www.youtube-nocookie.com',
             'https://player.vimeo.com',
             'https://hemsync.clickagy.com',
-            'https://cdn-cookieyes.com',
-
-            // gtm
-            'https://www.googletagmanager.com'
+            'https://cdn-cookieyes.com'
         ])
     };
 
@@ -142,8 +163,6 @@ const securityheaders: Handle = async ({ event, resolve }) => {
 };
 
 const initSession: Handle = async ({ event, resolve }) => {
-    if (PLAYWRIGHT_TESTS) return resolve(event);
-
     const session = await createInitSessionClient(event.cookies);
 
     const getGithubUser = async () => {
@@ -187,7 +206,7 @@ const initSession: Handle = async ({ event, resolve }) => {
         const appwriteUser = await session?.account
             .get()
             .then((res) => res)
-            .catch((e) => null);
+            .catch(() => null);
 
         return appwriteUser || null;
     };
@@ -203,4 +222,43 @@ const initSession: Handle = async ({ event, resolve }) => {
     return resolve(event);
 };
 
-export const handle = sequence(redirecter, securityheaders, initSession);
+/**
+ * SEO optimization: noindex internal/auth pages and staging subdomains
+ */
+const NOINDEX_PATHS = [
+    /^\/console\/login\/?$/,
+    /^\/console\/register\/?$/,
+    /^\/v1\/storage\//,
+    /^\/v1\//
+];
+
+// Block any staging/preview subdomains (e.g., *.cloud.appwrite.io, stage.*, etc.)
+const NOINDEX_HOSTS = [/\.cloud\.appwrite\.io$/i, /^stage\./i, /^fra\./i];
+
+const seoOptimization: Handle = async ({ event, resolve }) => {
+    const { url } = event;
+
+    // Check if this is a path or host that should not be indexed
+    const shouldNoindex =
+        NOINDEX_PATHS.some((re) => re.test(url.pathname)) ||
+        NOINDEX_HOSTS.some((re) => re.test(url.hostname));
+
+    const response = await resolve(event);
+
+    if (shouldNoindex) {
+        response.headers.set('x-robots-tag', 'noindex, nofollow');
+    }
+
+    return response;
+};
+
+export const handle = sequence(
+    Sentry.sentryHandle(),
+    markdownHandler,
+    redirecter,
+    wwwRedirecter,
+    securityheaders,
+    initSession,
+    seoOptimization
+);
+export const handleError = Sentry.handleErrorWithSentry();

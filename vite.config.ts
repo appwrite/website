@@ -4,9 +4,16 @@ import dynamicImport from 'vite-plugin-dynamic-import';
 import { ViteImageOptimizer } from 'vite-plugin-image-optimizer';
 import manifestSRI from 'vite-plugin-manifest-sri';
 import { defineConfig } from 'vitest/config';
+// import { sentrySvelteKit } from '@sentry/sveltekit';
 
 export default defineConfig({
     plugins: [
+        // sentrySvelteKit({
+        //     sourceMapsUploadOptions: {
+        //         org: 'appwrite',
+        //         project: 'website'
+        //     }
+        // }),
         enhancedImages(),
         sveltekit(),
         dynamicImport({
@@ -27,11 +34,6 @@ export default defineConfig({
         })
     ],
     css: {
-        preprocessorOptions: {
-            scss: {
-                api: 'modern'
-            }
-        },
         devSourcemap: process.env.NODE_ENV !== 'production'
     },
     build: {
@@ -40,5 +42,8 @@ export default defineConfig({
     },
     test: {
         include: ['src/**/*.{test,spec}.{js,ts}']
+    },
+    experimental: {
+        enableNativePlugin: true
     }
 });

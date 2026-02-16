@@ -18,9 +18,9 @@ Create a new database and table in the [Appwrite Console](https://cloud.appwrite
 Create a new table with the following columns:
 | Field       | Type   | Required | Size     |
 |-------------|--------|----------|----------|
-| userId      | String | Yes      | 200      |
-| title       | String | Yes      | 200      |
-| description | String | No       | 500      |
+| userId      | Varchar | Yes      | 200      |
+| title       | Varchar | Yes      | 200      |
+| description | Text    | No       | -        |
 
 Change the table's permissions in the settings to give access.
 
@@ -56,7 +56,7 @@ Create a new file in the composables directory, `useIdeas.js` and add the follow
 // composables/useIdeas.ts
 
 import { ID, Query, Models} from "appwrite";
-import { database } from "~/appwrite";
+import { tablesDB } from "~/appwrite";
 import { ref } from "vue";
 
 const ideasDatabaseId: string = import.meta.env.VITE_DATABASE_ID;
@@ -76,28 +76,32 @@ export const useIdeas = () => {
     // Fetch the 10 most recent ideas from the database
     // Add the list to the current reference object
     const fetch = async (): Promise<void> => {
-        const response = await tablesDB.listRows(
-            ideasDatabaseId,
-            ideasTableId,
-            [Query.orderDesc("$createdAt"), Query.limit(queryLimit)]
-        );
+        const response = await tablesDB.listRows({
+            databaseId: ideasDatabaseId,
+            tableId: ideasTableId,
+            queries: [Query.orderDesc("$createdAt"), Query.limit(queryLimit)]
+        });
         current.value = response.rows as Idea[];
     };
 
     // Add new idea to the database,
     // Change the value of the current object
     const add = async (idea: Idea): Promise<void> => {
-        const response = await database.createRow(
-            ideasDatabaseId,
-            ideasTableId,
-            ID.unique(),
-            idea
-        );
-        current.value = [response, ...current.value as Idea[]].slice(0, 10) as Idea[];
+        const response = await tablesDB.createRow({
+            databaseId: ideasDatabaseId,
+            tableId: ideasTableId,
+            rowId: ID.unique(),
+            data: idea
+        });
+        current.value = [response, ...(current.value as Idea[])].slice(0, 10) as Idea[];
     };
 
     const remove = async (id: string): Promise<void> => {
-        await database.deleteRow(ideasDatabaseId, ideasTableId, id);
+        await tablesDB.deleteRow({
+            databaseId: ideasDatabaseId,
+            tableId: ideasTableId,
+            rowId: id
+        });
         await fetch(); // Refetch ideas to ensure we have 10 items
     };
 

@@ -1,4 +1,4 @@
-FROM node:20-bullseye AS base
+FROM oven/bun:1.3.1 AS base
 
 ARG PUBLIC_APPWRITE_ENDPOINT
 ENV PUBLIC_APPWRITE_ENDPOINT ${PUBLIC_APPWRITE_ENDPOINT}
@@ -51,32 +51,34 @@ ENV SENTRY_RELEASE ${SENTRY_RELEASE}
 ARG PUBLIC_POSTHOG_API_KEY
 ENV PUBLIC_POSTHOG_API_KEY ${PUBLIC_POSTHOG_API_KEY}
 
-ENV PNPM_HOME="/pnpm"
-ENV PATH="$PNPM_HOME:$PATH"
-
 WORKDIR /app
 COPY package.json package.json
-COPY pnpm-lock.yaml pnpm-lock.yaml
-RUN npm i -g corepack@latest
-RUN corepack enable
+COPY bun.lock bun.lock
 
 FROM base AS build
 
+RUN bun install --frozen-lockfile
 COPY . .
-RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile
-RUN NODE_OPTIONS=--max_old_space_size=16384 pnpm run build
+RUN bun run sync
+RUN bun run build
 
-FROM base AS final
+FROM base AS prod-deps
+
+RUN bun install --frozen-lockfile --production
+
+FROM node:22-bullseye AS final
 
 # Install fontconfig
 COPY ./local-fonts /usr/share/fonts
 RUN apt-get update && \
-    apt-get install -y fontconfig && \
-    apt-get autoremove --purge && \
-    rm -rf /var/lib/apt/lists/*
+	apt-get install -y fontconfig && \
+	apt-get autoremove --purge && \
+	rm -rf /var/lib/apt/lists/*
 RUN fc-cache -f -v
+
 COPY --from=build /app/build/ build
 COPY --from=build /app/server/ server
-RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile --prod
+COPY --from=build /app/src/routes/ src/routes
+COPY --from=prod-deps /app/node_modules/ node_modules
 
-CMD [ "node", "server/main.js"]
+CMD ["node", "server/main.js"]

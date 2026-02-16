@@ -26,7 +26,7 @@
     import Request from './(components)/Request.svelte';
     import Response from './(components)/Response.svelte';
     import RateLimits from './(components)/RateLimits.svelte';
-    import type { SDKMethod } from '$lib/utils/specs';
+    import type { SDKMethod } from './specs';
 
     let { data } = $props();
 
@@ -210,13 +210,6 @@
     <meta property="og:image:height" content="630" />
     <meta name="twitter:image" content={ogImage} />
     <meta name="twitter:card" content="summary_large_image" />
-
-    {#if page.params.version !== 'cloud'}
-        <link
-            rel="canonical"
-            href={`https://appwrite.io/docs/references/cloud/${page.params.platform}/${page.params.service}`}
-        />
-    {/if}
 </svelte:head>
 
 <main class="contents" id="main">

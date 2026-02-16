@@ -25,6 +25,12 @@
             description: 'Learn Appwrite Auth, Databases, and more with React.'
         },
         {
+            href: '/docs/tutorials/nextjs',
+            cover: '/images/tutorials/nextjs.png',
+            title: 'Next.js tutorial',
+            description: 'Learn Appwrite Auth, Databases, and more with Next.js.'
+        },
+        {
             href: '/docs/tutorials/sveltekit',
             cover: '/images/tutorials/svelte.png',
             title: 'SvelteKit tutorial',
@@ -274,6 +280,32 @@
                     </li>
                     <li>
                         <a
+                            href="/docs/products/avatars"
+                            class="web-card is-normal"
+                            onclick={() => trackEvent(`docs-products_avatars-click`)}
+                        >
+                            <img
+                                src="/images/icons/illustrated/dark/avatars.png"
+                                alt=""
+                                class="web-u-only-dark"
+                                width="40"
+                                height="40"
+                            />
+                            <img
+                                src="/images/icons/illustrated/light/avatars.png"
+                                alt=""
+                                class="web-u-only-light"
+                                width="40"
+                                height="40"
+                            />
+                            <h4 class="text-sub-body text-primary mt-2 font-medium">Avatars</h4>
+                            <p class="text-sub-body mt-1">
+                                Generate icons, screenshots, and QR codes for your apps.
+                            </p>
+                        </a>
+                    </li>
+                    <li>
+                        <a
                             href="/docs/apis/realtime"
                             class="web-card is-normal"
                             onclick={() => trackEvent(`docs-products_realtime-click`)}
@@ -296,36 +328,10 @@
                             <p class="text-sub-body mt-1">Respond to server events in realtime.</p>
                         </a>
                     </li>
-                    <li>
-                        <a
-                            href="/docs/products/network"
-                            class="web-card is-normal"
-                            onclick={() => trackEvent(`docs-products_network-click`)}
-                        >
-                            <img
-                                src="/images/icons/illustrated/dark/network.png"
-                                alt=""
-                                class="web-u-only-dark"
-                                width="40"
-                                height="40"
-                            />
-                            <img
-                                src="/images/icons/illustrated/light/network.png"
-                                alt=""
-                                class="web-u-only-light"
-                                width="40"
-                                height="40"
-                            />
-                            <h4 class="text-sub-body text-primary mt-2 font-medium">Network</h4>
-                            <p class="text-sub-body mt-1">
-                                Global infrastructure for serverless compute.
-                            </p>
-                        </a>
-                    </li>
                 </ul>
             </div>
         </section>
-        <section class="web-hero is-align-start is-no-max-width border-smooth border-t pt-12!">
+        <section class="web-hero is-align-start is-no-max-width mt-12!">
             <h2 class="text-title font-aeonik-pro text-primary max-w-[600px]">
                 Build faster with AI
             </h2>
@@ -405,6 +411,36 @@
                             <h4 class="text-sub-body text-primary font-medium">VS Code</h4>
                         </a>
                     </li>
+                    <li>
+                        <a
+                            href="/docs/tooling/mcp/opencode"
+                            class="web-card is-normal flex flex-row! items-center gap-2!"
+                            onclick={() => trackEvent(`docs-mcp-click`)}
+                        >
+                            <img
+                                src="/images/docs/mcp/logos/dark/opencode.svg"
+                                alt="OpenCode"
+                                class="w-6"
+                            />
+                            <h4 class="text-sub-body text-primary font-medium">OpenCode</h4>
+                        </a>
+                    </li>
+                    <li>
+                        <a
+                            href="/docs/tooling/mcp/antigravity"
+                            class="web-card is-normal flex flex-row! items-center gap-2!"
+                            onclick={() => trackEvent(`docs-mcp-click`)}
+                        >
+                            <img
+                                src="/images/docs/mcp/logos/dark/google-antigravity.svg"
+                                alt="Google Antigravity"
+                                class="w-6"
+                            />
+                            <h4 class="text-sub-body text-primary font-medium">
+                                Google Antigravity
+                            </h4>
+                        </a>
+                    </li>
                 </ul>
             </div>
         </section>
@@ -438,7 +474,7 @@
                         >
                             <h4 class="text-sub-body text-primary font-medium">REST API</h4>
                             <p class="text-sub-body mt-1">
-                                Integrate with HTTP requests without the needing an SDK.
+                                Integrate with HTTP requests without needing an SDK.
                             </p>
                         </a>
                     </li>

@@ -88,7 +88,7 @@ response = users.update_labels(
 ```
 
 ```deno
-import * as sdk from "https://deno.land/x/appwrite/mod.ts";
+import * as sdk from "npm:node-appwrite";
 
 let client = new sdk.Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint

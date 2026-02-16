@@ -52,6 +52,24 @@
                     href: '/docs/products/databases/relationships'
                 },
                 {
+                    label: 'Queries',
+                    href: '/docs/products/databases/queries'
+                },
+                {
+                    label: 'Order',
+                    href: '/docs/products/databases/order'
+                },
+                {
+                    label: 'Operators',
+                    href: '/docs/products/databases/operators',
+                    new: isNewUntil('31 Dec 2025')
+                },
+                {
+                    label: 'Geo queries',
+                    href: '/docs/products/databases/geo-queries',
+                    new: isNewUntil('30 Sep 2025')
+                },
+                {
                     label: 'Backups',
                     href: '/docs/products/databases/backups'
                 }
@@ -61,16 +79,13 @@
             label: 'Journeys',
             items: [
                 {
-                    label: 'Queries',
-                    href: '/docs/products/databases/queries'
-                },
-                {
-                    label: 'Order',
-                    href: '/docs/products/databases/order'
-                },
-                {
                     label: 'Pagination',
                     href: '/docs/products/databases/pagination'
+                },
+                {
+                    label: 'Transactions',
+                    href: '/docs/products/databases/transactions',
+                    new: isNewUntil('31 Oct 2025')
                 },
                 {
                     label: 'Type generation',
@@ -95,6 +110,20 @@
                     label: 'CSV imports',
                     href: '/docs/products/databases/csv-imports',
                     new: isNewUntil('31 Jul 2025')
+                },
+                {
+                    label: 'CSV exports',
+                    href: '/docs/products/databases/csv-exports',
+                    new: isNewUntil('28 Feb 2026')
+                },
+                {
+                    label: 'AI suggestions',
+                    href: '/docs/products/databases/ai-suggestions',
+                    new: isNewUntil('31 Dec 2025')
+                },
+                {
+                    label: 'Timestamp overrides',
+                    href: '/docs/products/databases/timestamp-overrides'
                 }
             ]
         },
@@ -121,7 +150,7 @@
             .replace('tables', 'collections')
     );
 
-    const hideSubtitleRoutes = ['offline', 'backups', 'csv-imports'];
+    const hideSubtitleRoutes = ['offline', 'backups', 'csv-imports', 'csv-exports'];
 
     const shouldShowSubtitle = $derived(
         !hideSubtitleRoutes.some((segment) => page.route.id?.includes(segment)) &&

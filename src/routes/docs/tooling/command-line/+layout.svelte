@@ -22,6 +22,10 @@
                 {
                     label: 'Non interactive',
                     href: '/docs/tooling/command-line/non-interactive'
+                },
+                {
+                    label: 'Generate SDK',
+                    href: '/docs/tooling/command-line/generate'
                 }
             ]
         },
@@ -29,8 +33,8 @@
             label: 'Deployments',
             items: [
                 {
-                    label: 'Collections',
-                    href: '/docs/tooling/command-line/collections'
+                    label: 'Tables',
+                    href: '/docs/tooling/command-line/tables'
                 },
                 {
                     label: 'Functions',

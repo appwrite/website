@@ -6,6 +6,11 @@ difficulty: beginner
 readtime: 5
 back: /docs/quick-starts
 ---
+
+{% info title="Deno SDK Deprecation" %}
+The dedicated Deno SDK has been deprecated in favor of using the Node.js SDK directly through npm specifiers, thanks to Deno's excellent Node.js compatibility. This change simplifies maintenance and ensures you always have access to the latest features.
+{% /info %}
+
 Learn how to setup your first Deno project powered by Appwrite.
 {% section #step-1 step=1 title="Create project" %}
 Head to the [Appwrite Console](https://cloud.appwrite.io/console).
@@ -51,14 +56,14 @@ echo "console.log('Hello, Deno!');" > mod.ts
 {% /section %}
 {% section #step-3 step=3 title="Install Appwrite" %}
 
-Install the Deno Appwrite SDK by importing it `deno.land/x` at the top of your file.
+Install the Appwrite SDK using npm specifiers at the top of your file.
 
 ```
 // import all as sdk
-import * as sdk from "https://deno.land/x/appwrite@15.0.0/mod.ts";
+import * as sdk from "npm:node-appwrite";
 
 // import only what you need
-import { Client, ... other imports } from "https://deno.land/x/appwrite/mod.ts";
+import { Client, ... other imports } from "npm:node-appwrite";
 ```
 
 {% /section %}
@@ -76,7 +81,7 @@ Find your project ID in the **Settings** page. Also, click on the **View API Key
 Open `mod.ts` in your IDE and initialize the Appwrite Client. Replace `<PROJECT_ID>` with your project ID and `<YOUR_API_KEY>` with your API key.
 
 ```ts
-import { Client, ID, TablesDB, Models } from "https://deno.land/x/appwrite/mod.ts";
+import { Client, ID, TablesDB, Models } from "npm:node-appwrite";
 
 const client: Client = new Client();
 
@@ -115,7 +120,7 @@ async function prepareDatabase(): Promise<void> {
         name: 'Todos'
     });
 
-    await tablesDB.createStringColumn({
+    await tablesDB.createVarcharColumn({
         databaseId: todoDatabase.$id,
         tableId: todoTable.$id,
         key: 'title',
@@ -123,11 +128,10 @@ async function prepareDatabase(): Promise<void> {
         required: true
     });
 
-    await tablesDB.createStringColumn({
+    await tablesDB.createTextColumn({
         databaseId: todoDatabase.$id,
         tableId: todoTable.$id,
         key: 'description',
-        size: 255,
         required: false,
         xdefault: 'This is a test description'
     });

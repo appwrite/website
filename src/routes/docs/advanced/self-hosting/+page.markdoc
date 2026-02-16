@@ -164,10 +164,10 @@ Ensure your Appwrite deployment is production-ready:
 
 Ready to self-host Appwrite? Choose your preferred path:
 
-**🚀 One-Click Deploy** - Use a [marketplace installation](#one-click-deployments) for instant setup (recommended)
+**One-Click Deploy** - Use a [marketplace installation](#one-click-deployments) for instant setup (recommended)
 
-**🐳 Manual Installation** - Follow our [Docker installation guide](/docs/advanced/self-hosting/installation) for custom setups
+**Manual Installation** - Follow our [Docker installation guide](/docs/advanced/self-hosting/installation) for custom setups
 
-**☁️ Cloud Platform** - [Choose a cloud platform](#cloud-platforms) for production hosting with custom configuration
+**Cloud Platform** - [Choose a cloud platform](#cloud-platforms) for production hosting with custom configuration
 
-**🛠️ Platform-as-a-Service** - Deploy on [Coolify](/docs/advanced/self-hosting/platforms/coolify) or similar platforms for simplified management
+**Platform-as-a-Service** - Deploy on [Coolify](/docs/advanced/self-hosting/platforms/coolify) or similar platforms for simplified management

@@ -33,14 +33,14 @@ const client = new Client()
 
 const tablesDB = new TablesDB(client);
 
-tablesDB.listRows(
-    '<DATABASE_ID>',
-    '<TABLE_ID>',
-    [
+tablesDB.listRows({
+    databaseId: '<DATABASE_ID>',
+    tableId: '<TABLE_ID>',
+    queries: [
         Query.equal('title', ['Avatar', 'Lord of the Rings']),
         Query.greaterThan('year', 1999)
     ]
-);
+});
 ```
 ```server-nodejs
 const sdk = require('node-appwrite');
@@ -55,14 +55,14 @@ client
     .setKey('<YOUR_API_KEY>')
 ;
 
-const promise = tablesDB.listRows(
-    '<DATABASE_ID>',
-    '<TABLE_ID>',
-    [
+const promise = tablesDB.listRows({
+    databaseId: '<DATABASE_ID>',
+    tableId: '<TABLE_ID>',
+    queries: [
         sdk.Query.equal('title', ['Avatar', 'Lord of the Rings']),
         sdk.Query.greaterThan('year', 1999)
     ]
-);
+});
 
 promise.then(function (response) {
     console.log(response);
@@ -145,7 +145,7 @@ suspend fun main() {
     }
 }
 ```
-```go
+```server-go
 package main
 
 import (
@@ -180,7 +180,7 @@ func main() {
     fmt.Printf("Rows: %+v\n", rows)
 }
 ```
-```php
+```server-php
 <?php
 
 use Appwrite\Client;
@@ -206,10 +206,10 @@ $result = $tables->listRows(
     ]
 );
 ```
-```python
+```server-python
 from appwrite.client import Client
 from appwrite.query import Query
-from appwrite.services.tablesDB import TablesDB
+from appwrite.services.tables_db import TablesDB
 
 client = Client()
 
@@ -268,22 +268,22 @@ Query.select(["name", "title"])
 ```client-flutter
 Query.select(["name", "title"])
 ```
-```python
+```server-python
 Query.select(["name", "title"])
 ```
-```ruby
+```server-ruby
 Query.select(["name", "title"])
 ```
-```deno
+```server-deno
 Query.select(["name", "title"])
 ```
-```php
+```server-php
 Query::select(["name", "title"])
 ```
-```swift
+```client-apple
 Query.select(["name", "title"])
 ```
-```go
+```server-go
 query.Select([]string{"name", "title"})
 ```
 ```http
@@ -300,10 +300,12 @@ By default, rows return only their own fields:
 
 {% multicode %}
 ```client-web
-const doc = await tablesDB.getRow(
-    '<DATABASE_ID>', '<TABLE_ID>', '<ROW_ID>',
-    [Query.select(['name', 'age'])]
-);
+const doc = await tablesDB.getRow({
+    databaseId: '<DATABASE_ID>',
+    tableId: '<TABLE_ID>',
+    rowId: '<ROW_ID>',
+    queries: [Query.select(['name', 'age'])]
+});
 ```
 ```client-flutter
 final doc = await tablesDB.getRow(
@@ -313,31 +315,33 @@ final doc = await tablesDB.getRow(
     queries: [Query.select(["name", "age"])]
 );
 ```
-```python
+```server-python
 doc = tablesDB.get_row(
     '<DATABASE_ID>', '<TABLE_ID>', '<ROW_ID>',
     [Query.select(["name", "age"])]
 )
 ```
-```ruby
+```server-ruby
 doc = tablesDB.get_row(
     '<DATABASE_ID>', '<TABLE_ID>', '<ROW_ID>',
     [Query.select(["name", "age"])]
 )
 ```
 ```server-nodejs
-const doc = await tablesDB.getRow(
-    '<DATABASE_ID>', '<TABLE_ID>', '<ROW_ID>',
-    [Query.select(['name', 'age'])]
-);
+const doc = await tablesDB.getRow({
+    databaseId: '<DATABASE_ID>',
+    tableId: '<TABLE_ID>',
+    rowId: '<ROW_ID>',
+    queries: [Query.select(['name', 'age'])]
+});
 ```
-```php
+```server-php
 $doc = $tablesDB->getRow(
     '<DATABASE_ID>', '<TABLE_ID>', '<ROW_ID>',
     [Query::select(["name", "age"])]
 );
 ```
-```swift
+```client-apple
 let doc = try await tablesDB.getRow(
     databaseId: "<DATABASE_ID>",
     tableId: "<TABLE_ID>",
@@ -357,10 +361,12 @@ Use the `*` wildcard to load all fields from related rows:
 
 {% multicode %}
 ```client-web
-const doc = await tablesDB.getRow(
-    '<DATABASE_ID>', '<TABLE_ID>', '<ROW_ID>',
-    [Query.select(['*', 'reviews.*'])]
-);
+const doc = await tablesDB.getRow({
+    databaseId: '<DATABASE_ID>',
+    tableId: '<TABLE_ID>',
+    rowId: '<ROW_ID>',
+    queries: [Query.select(['*', 'reviews.*'])]
+});
 ```
 ```client-flutter
 final doc = await tablesDB.getRow(
@@ -370,31 +376,33 @@ final doc = await tablesDB.getRow(
     queries: [Query.select(["*", "reviews.*"])]
 );
 ```
-```python
+```server-python
 doc = tablesDB.get_row(
     '<DATABASE_ID>', '<TABLE_ID>', '<ROW_ID>',
     [Query.select(["*", "reviews.*"])]
 )
 ```
-```ruby
+```server-ruby
 doc = tablesDB.get_row(
     '<DATABASE_ID>', '<TABLE_ID>', '<ROW_ID>',
     [Query.select(["*", "reviews.*"])]
 )
 ```
 ```server-nodejs
-const doc = await tablesDB.getRow(
-    '<DATABASE_ID>', '<TABLE_ID>', '<ROW_ID>',
-    [Query.select(["*", "reviews.*"])]
-);
+const doc = await tablesDB.getRow({
+    databaseId: '<DATABASE_ID>',
+    tableId: '<TABLE_ID>',
+    rowId: '<ROW_ID>',
+    queries: [Query.select(["*", "reviews.*"])]
+});
 ```
-```php
+```server-php
 $doc = $tablesDB->getRow(
     '<DATABASE_ID>', '<TABLE_ID>', '<ROW_ID>',
     [Query::select(["*", "reviews.*"])]
 );
 ```
-```swift
+```client-apple
 let doc = try await tablesDB.getRow(
     databaseId: "<DATABASE_ID>",
     tableId: "<TABLE_ID>",
@@ -415,10 +423,12 @@ For precise control, select only specific fields from related rows:
 
 {% multicode %}
 ```client-web
-const doc = await tablesDB.getRow(
-    '<DATABASE_ID>', '<TABLE_ID>', '<ROW_ID>',
-    [Query.select(['name', 'age', 'reviews.author', 'reviews.rating'])]
-);
+const doc = await tablesDB.getRow({
+    databaseId: '<DATABASE_ID>',
+    tableId: '<TABLE_ID>',
+    rowId: '<ROW_ID>',
+    queries: [Query.select(['name', 'age', 'reviews.author', 'reviews.rating'])]
+});
 ```
 ```client-flutter
 final doc = await tablesDB.getRow(
@@ -428,32 +438,34 @@ final doc = await tablesDB.getRow(
     queries: [Query.select(["name", "age", "reviews.author", "reviews.rating"])]
 );
 ```
-```python
+```server-python
 doc = tablesDB.get_row(
     '<DATABASE_ID>', '<TABLE_ID>', '<ROW_ID>',
     [Query.select(["name", "age", "reviews.author", "reviews.rating"])]
 )
 ```
-```ruby
+```server-ruby
 doc = tablesDB.get_row(
     '<DATABASE_ID>', '<TABLE_ID>', '<ROW_ID>',
     [Query.select(["name", "age", "reviews.author", "reviews.rating"])]
 )
 ```
 ```server-nodejs
-const doc = await tablesDB.getRow(
-    '<DATABASE_ID>', '<TABLE_ID>', '<ROW_ID>',
-    [Query.select(["name", "age", "reviews.author", "reviews.rating"])]
-);
+const doc = await tablesDB.getRow({
+    databaseId: '<DATABASE_ID>',
+    tableId: '<TABLE_ID>',
+    rowId: '<ROW_ID>',
+    queries: [Query.select(["name", "age", "reviews.author", "reviews.rating"])]
+});
 // Result: { name: "John", age: 30, reviews: [{ author: "...", rating: 5 }] }
 ```
-```php
+```server-php
 $doc = $tablesDB->getRow(
     '<DATABASE_ID>', '<TABLE_ID>', '<ROW_ID>',
     [Query::select(["name", "age", "reviews.author", "reviews.rating"])]
 );
 ```
-```swift
+```client-apple
 let doc = try await tablesDB.getRow(
     databaseId: "<DATABASE_ID>",
     tableId: "<TABLE_ID>",
@@ -477,19 +489,19 @@ Query.select(["*", "reviews.*", "reviews.author.*"])
 ```client-flutter
 Query.select(["*", "reviews.*", "reviews.author.*"])
 ```
-```python
+```server-python
 Query.select(["*", "reviews.*", "reviews.author.*"])
 ```
-```ruby
+```server-ruby
 Query.select(["*", "reviews.*", "reviews.author.*"])
 ```
 ```server-nodejs
 Query.select(["*", "reviews.*", "reviews.author.*"])
 ```
-```php
+```server-php
 Query::select(["*", "reviews.*", "reviews.author.*"])
 ```
-```swift
+```client-apple
 Query.select(["*", "reviews.*", "reviews.author.*"])
 ```
 ```http
@@ -526,7 +538,7 @@ Learn more about [relationship performance optimization](/docs/products/database
 
 ### Equal {% #equal %}
 
-Returns row if column is equal to any value in the provided array.
+Returns row if column is equal to any value in the provided array. Also supported for spatial types.
 
 {% multicode %}
 ```client-web
@@ -535,22 +547,22 @@ Query.equal("title", ["Iron Man"])
 ```client-flutter
 Query.equal("title", ["Iron Man"])
 ```
-```python
+```server-python
 Query.equal("title", ["Iron Man"])
 ```
-```ruby
+```server-ruby
 Query.equal("title", ["Iron Man"])
 ```
-```deno
+```server-deno
 Query.equal("title", ["Iron Man"])
 ```
-```php
+```server-php
 Query::equal("title", ["Iron Man"])
 ```
-```swift
+```client-apple
 Query.equal("title", value: ["Iron Man"])
 ```
-```go
+```server-go
 query.Equal("title", []string{"Iron Man"})
 ```
 ```http
@@ -560,7 +572,7 @@ query.Equal("title", []string{"Iron Man"})
 
 ### Not equal {% #not-equal %}
 
-Returns row if column is not equal to any value in the provided array.
+Returns row if column is not equal to any value in the provided array. Also supported for spatial types.
 
 {% multicode %}
 ```client-web
@@ -569,22 +581,22 @@ Query.notEqual("title", "Iron Man")
 ```client-flutter
 Query.notEqual("title", "Iron Man")
 ```
-```python
+```server-python
 Query.not_equal("title", "Iron Man")
 ```
-```ruby
+```server-ruby
 Query.not_equal("title", "Iron Man")
 ```
-```deno
+```server-deno
 Query.notEqual("title", "Iron Man")
 ```
-```php
+```server-php
 Query::notEqual("title", "Iron Man")
 ```
-```swift
+```client-apple
 Query.notEqual("title", value: "Iron Man")
 ```
-```go
+```server-go
 query.NotEqual("title", "Iron Man")
 ```
 ```http
@@ -603,22 +615,22 @@ Query.lessThan("score", 10)
 ```client-flutter
 Query.lessThan("score", 10)
 ```
-```python
+```server-python
 Query.less_than("score", 10)
 ```
-```ruby
+```server-ruby
 Query.less_than("score", 10)
 ```
-```deno
+```server-deno
 Query.lessThan("score", 10)
 ```
-```php
+```server-php
 Query::lessThan("score", 10)
 ```
-```swift
+```client-apple
 Query.lessThan("score", value: 10)
 ```
-```go
+```server-go
 query.LessThan("score", 10)
 ```
 ```http
@@ -637,22 +649,22 @@ Query.lessThanEqual("score", 10)
 ```client-flutter
 Query.lessThanEqual("score", 10)
 ```
-```python
+```server-python
 Query.less_than_equal("score", 10)
 ```
-```ruby
+```server-ruby
 Query.less_than_equal("score", 10)
 ```
-```deno
+```server-deno
 Query.lessThanEqual("score", 10)
 ```
-```php
+```server-php
 Query::lessThanEqual("score", 10)
 ```
-```swift
+```client-apple
 Query.lessThanEqual("score", value: 10)
 ```
-```go
+```server-go
 query.LessThanEqual("score", 10)
 ```
 ```http
@@ -671,22 +683,22 @@ Query.greaterThan("score", 10)
 ```client-flutter
 Query.greaterThan("score", 10)
 ```
-```python
+```server-python
 Query.greater_than("score", 10)
 ```
-```ruby
+```server-ruby
 Query.greater_than("score", 10)
 ```
-```deno
+```server-deno
 Query.greaterThan("score", 10)
 ```
-```php
+```server-php
 Query::greaterThan("score", 10)
 ```
-```swift
+```client-apple
 Query.greaterThan("score", value: 10)
 ```
-```go
+```server-go
 query.GreaterThan("score", 10)
 ```
 ```http
@@ -705,22 +717,22 @@ Query.greaterThanEqual("score", 10)
 ```client-flutter
 Query.greaterThanEqual("score", 10)
 ```
-```python
+```server-python
 Query.greater_than_equal("score", 10)
 ```
-```ruby
+```server-ruby
 Query.greater_than_equal("score", 10)
 ```
-```deno
+```server-deno
 Query.greaterThanEqual("score", 10)
 ```
-```php
+```server-php
 Query::greaterThanEqual("score", 10)
 ```
-```swift
+```client-apple
 Query.greaterThanEqual("score", value: 10)
 ```
-```go
+```server-go
 query.GreaterThanEqual("score", 10)
 ```
 ```http
@@ -739,22 +751,22 @@ Query.between("price", 5, 10)
 ```client-flutter
 Query.between("price", 5, 10)
 ```
-```python
+```server-python
 Query.between("price", 5, 10)
 ```
-```ruby
+```server-ruby
 Query.between("price", 5, 10)
 ```
-```deno
+```server-deno
 Query.between("price", 5, 10)
 ```
-```php
+```server-php
 Query::between("price", 5, 10)
 ```
-```swift
+```client-apple
 Query.between("price", start: 5, end: 10)
 ```
-```go
+```server-go
 query.Between("price", 5, 10)
 ```
 ```http
@@ -819,22 +831,22 @@ Query.isNull("name")
 ```client-flutter
 Query.isNull("name")
 ```
-```python
+```server-python
 Query.is_null("name")
 ```
-```ruby
+```server-ruby
 Query.is_null("name")
 ```
-```deno
+```server-deno
 Query.isNull("name")
 ```
-```php
+```server-php
 Query::isNull("name")
 ```
-```swift
+```client-apple
 Query.isNull("name")
 ```
-```go
+```server-go
 query.IsNull("name")
 ```
 ```http
@@ -853,22 +865,22 @@ Query.isNotNull("name")
 ```client-flutter
 Query.isNotNull("name")
 ```
-```python
+```server-python
 Query.is_not_null("name")
 ```
-```ruby
+```server-ruby
 Query.is_not_null("name")
 ```
-```deno
+```server-deno
 Query.isNotNull("name")
 ```
-```php
+```server-php
 Query::isNotNull("name")
 ```
-```swift
+```client-apple
 Query.isNotNull("name")
 ```
-```go
+```server-go
 query.IsNotNull("name")
 ```
 ```http
@@ -889,22 +901,22 @@ Query.startsWith("name", "Once upon a time")
 ```client-flutter
 Query.startsWith("name", "Once upon a time")
 ```
-```python
+```server-python
 Query.starts_with("name", "Once upon a time")
 ```
-```ruby
+```server-ruby
 Query.starts_with("name", "Once upon a time")
 ```
-```deno
+```server-deno
 Query.startsWith("name", "Once upon a time")
 ```
-```php
+```server-php
 Query::startsWith("name", "Once upon a time")
 ```
-```swift
+```client-apple
 Query.startsWith("name", value: "Once upon a time")
 ```
-```go
+```server-go
 query.StartsWith("name", "Once upon a time")
 ```
 ```http
@@ -966,22 +978,22 @@ Query.endsWith("name", "happily ever after.")
 ```client-flutter
 Query.endsWith("name", "happily ever after.")
 ```
-```python
+```server-python
 Query.ends_with("name", "happily ever after.")
 ```
-```ruby
+```server-ruby
 Query.ends_with("name", "happily ever after.")
 ```
-```deno
+```server-deno
 Query.endsWith("name", "happily ever after.")
 ```
-```php
+```server-php
 Query::endsWith("name", "happily ever after.")
 ```
-```swift
+```client-apple
 Query.endsWith("name", value: "happily ever after.")
 ```
-```go
+```server-go
 query.EndsWith("name", "happily ever after.")
 ```
 ```http
@@ -1034,7 +1046,7 @@ Query.notEndsWith("name", value: "happily ever after.")
 
 ### Contains {% #contains %}
 
-Returns rows if the array column contains the specified elements or if a string column contains the specified substring.
+Returns rows if the array column contains the specified elements or if a string column contains the specified substring. Also supported for spatial types.
 
 {% multicode %}
 ```client-web
@@ -1051,42 +1063,41 @@ Query.contains("ingredients", ['apple', 'banana'])
 // For strings
 Query.contains("name", "Tom")
 ```
-```python
+```server-python
 # For arrays
 Query.contains("ingredients", ['apple', 'banana'])
 
 # For strings
 Query.contains("name", "Tom")
 ```
-```ruby
+```server-ruby
 # For arrays
 Query.contains("ingredients", ['apple', 'banana'])
 
 # For strings
 Query.contains("name", "Tom")
 ```
-```deno
+```server-deno
 // For arrays
 Query.contains("ingredients", ['apple', 'banana'])
 
 // For strings
 Query.contains("name", "Tom")
 ```
-```php
+```server-php
 // For arrays
 Query::contains("ingredients", ['apple', 'banana'])
 
 // For strings
 Query::contains("name", "Tom")
 ```
-```swift
+```client-apple
 // For arrays
-Query.contains("ingredients", value: ['apple', 'banana'])
+Query.contains("ingredients", value: ["apple", "banana"])
 
 // For strings
 Query.contains("name", value: "Tom")
-```
-```go
+```server-go
 // For arrays
 query.Contains("ingredients", []string{"apple", "banana"})
 
@@ -1106,7 +1117,7 @@ query.Contains("name", "Tom")
 
 Returns rows if the array column does not contain the specified
 elements, or if a string column does not contain the specified
-substring.
+substring. Also supported for spatial types.
 
 {% multicode %}
 ```client-web
@@ -1117,6 +1128,13 @@ Query.notContains("ingredients", ['apple', 'banana'])
 Query.notContains("name", "Tom")
 ```
 ```client-flutter
+// For arrays
+Query.notContains("ingredients", ['apple', 'banana'])
+
+// For strings
+Query.notContains("name", "Tom")
+```
+```client-react-native
 // For arrays
 Query.notContains("ingredients", ['apple', 'banana'])
 
@@ -1179,12 +1197,39 @@ Query::notContains("ingredients", ['apple', 'banana'])
 // For strings
 Query::notContains("name", "Tom")
 ```
+```server-dotnet
+// For arrays
+Query.NotContains("ingredients", new List<string> { "apple", "banana" })
+
+// For strings
+Query.NotContains("name", "Tom")
+```
+```server-go
+// For arrays
+query.NotContains("ingredients", []string{"apple", "banana"})
+
+// For strings
+query.NotContains("name", "Tom")
+```server-dart
+// For arrays
+Query.notContains("ingredients", ['apple', 'banana'])
+
+// For strings
+Query.notContains("name", "Tom")
+```
 ```server-swift
 // For arrays
 Query.notContains("ingredients", value: ['apple', 'banana'])
 
 // For strings
 Query.notContains("name", value: "Tom")
+```
+```server-kotlin
+// For arrays
+Query.notContains("ingredients", listOf("apple", "banana"))
+
+// For strings
+Query.notContains("name", "Tom")
 ```
 ```http
 # For arrays
@@ -1206,22 +1251,22 @@ Query.search("text", "key words")
 ```client-flutter
 Query.search("text", "key words")
 ```
-```python
+```server-python
 Query.search("text", "key words")
 ```
-```ruby
+```server-ruby
 Query.search("text", "key words")
 ```
-```deno
+```server-deno
 Query.search("text", "key words")
 ```
-```php
+```server-php
 Query::search("text", "key words")
 ```
-```swift
+```client-apple
 Query.search("text", value: "key words")
 ```
-```go
+```server-go
 query.Search("text", "key words")
 ```
 ```http
@@ -1293,37 +1338,37 @@ Query.and([
     Query.greaterThan("size", 5)
 ])
 ```
-```python
+```server-python
 Query.and_queries([
     Query.less_than("size", 10),
     Query.greater_than("size", 5)
 ])
 ```
-```ruby
+```server-ruby
 Query.and([
     Query.less_than("size", 10),
     Query.greater_than("size", 5)
 ])
 ```
-```deno
+```server-deno
 Query.and([
     Query.lessThan("size", 10),
     Query.greaterThan("size", 5)
 ])
 ```
-```php
+```server-php
 Query::and([
     Query::lessThan("size", 10),
     Query::greaterThan("size", 5)
 ])
 ```
-```swift
+```client-apple
 Query.and([
     Query.lessThan("size", value: 10),
     Query.greaterThan("size", value: 5)
 ])
 ```
-```go
+```server-go
 query.And([]string{
     query.LessThan("size", 10),
     query.GreaterThan("size", 5),
@@ -1351,37 +1396,37 @@ Query.or([
     Query.greaterThan("size", 10)
 ])
 ```
-```python
+```server-python
 Query.or_queries([
     Query.less_than("size", 5),
     Query.greater_than("size", 10)
 ])
 ```
-```ruby
+```server-ruby
 Query.or([
     Query.less_than("size", 5),
     Query.greater_than("size", 10)
 ])
 ```
-```deno
+```server-deno
 Query.or([
     Query.lessThan("size", 5),
     Query.greaterThan("size", 10)
 ])
 ```
-```php
+```server-php
 Query::or([
     Query::lessThan("size", 5),
     Query::greaterThan("size", 10)
 ])
 ```
-```swift
+```client-apple
 Query.or([
     Query.lessThan("size", value: 5),
     Query.greaterThan("size", value: 10)
 ])
 ```
-```go
+```server-go
 query.Or([]string{
     query.LessThan("size", 5),
     query.GreaterThan("size", 10),
@@ -1405,22 +1450,22 @@ Query.orderDesc("column")
 ```client-flutter
 Query.orderDesc("column")
 ```
-```python
+```server-python
 Query.order_desc("column")
 ```
-```ruby
+```server-ruby
 Query.order_desc("column")
 ```
 ```server-nodejs
 Query.orderDesc("column")
 ```
-```php
+```server-php
 Query::orderDesc("column")
 ```
-```swift
+```client-apple
 Query.orderDesc("column")
 ```
-```go
+```server-go
 query.OrderDesc("attribute")
 ```
 ```http
@@ -1439,26 +1484,60 @@ Query.orderAsc("column")
 ```client-flutter
 Query.orderAsc("column")
 ```
-```python
+```server-python
 Query.order_asc("column")
 ```
-```ruby
+```server-ruby
 Query.order_asc("column")
 ```
 ```server-nodejs
 Query.orderAsc("column")
 ```
-```php
+```server-php
 Query::orderAsc("column")
 ```
-```swift
+```client-apple
 Query.orderAsc("column")
 ```
-```go
+```server-go
 query.OrderAsc("attribute")
 ```
 ```http
 {"method":"orderAsc","column":"column"}
+```
+{% /multicode %}
+
+### Order random {% #order-random %}
+
+Orders results in random order.
+
+{% multicode %}
+```client-web
+Query.orderRandom()
+```
+```client-flutter
+Query.orderRandom()
+```
+```server-python
+Query.order_random()
+```
+```server-ruby
+Query.order_random()
+```
+```server-nodejs
+Query.orderRandom()
+```
+```server-php
+Query::orderRandom()
+```
+```client-apple
+Query.orderRandom()
+```
+```server-go
+query.OrderRandom()
+```
+```http
+{"method":"orderRandom"}
 ```
 {% /multicode %}
 
@@ -1475,22 +1554,22 @@ Query.limit(25)
 ```client-flutter
 Query.limit(25)
 ```
-```python
+```server-python
 Query.limit(25)
 ```
-```ruby
+```server-ruby
 Query.limit(25)
 ```
-```deno
+```server-deno
 Query.limit(25)
 ```
-```php
+```server-php
 Query::limit(25)
 ```
-```swift
+```client-apple
 Query.limit(25)
 ```
-```go
+```server-go
 query.Limit(25)
 ```
 ```http
@@ -1509,22 +1588,22 @@ Query.offset(0)
 ```client-flutter
 Query.offset(0)
 ```
-```python
+```server-python
 Query.offset(0)
 ```
-```ruby
+```server-ruby
 Query.offset(0)
 ```
-```deno
+```server-deno
 Query.offset(0)
 ```
-```php
+```server-php
 Query::offset(0)
 ```
-```swift
+```client-apple
 Query.offset(0)
 ```
-```go
+```server-go
 query.Offset(0)
 ```
 ```http
@@ -1543,22 +1622,22 @@ Query.cursorAfter("62a7...f620")
 ```client-flutter
 Query.cursorAfter("62a7...f620")
 ```
-```python
+```server-python
 Query.cursor_after("62a7...f620")
 ```
-```ruby
+```server-ruby
 Query.cursor_after("62a7...f620")
 ```
-```deno
+```server-deno
 Query.cursorAfter("62a7...f620")
 ```
-```php
+```server-php
 Query::cursorAfter("62a7...f620")
 ```
-```swift
+```client-apple
 Query.cursorAfter("62a7...f620")
 ```
-```go
+```server-go
 query.CursorAfter("62a7...f620")
 ```
 ```http
@@ -1577,22 +1656,22 @@ Query.cursorBefore("62a7...a600")
 ```client-flutter
 Query.cursorBefore("62a7...a600")
 ```
-```python
+```server-python
 Query.cursor_before("62a7...a600")
 ```
-```ruby
+```server-ruby
 Query.cursor_before("62a7...a600")
 ```
-```deno
+```server-deno
 Query.cursorBefore("62a7...a600")
 ```
-```php
+```server-php
 Query::cursorBefore("62a7...a600")
 ```
-```swift
+```client-apple
 Query.cursorBefore("62a7...a600")
 ```
-```go
+```server-go
 query.CursorBefore("62a7...a600")
 ```
 ```http
@@ -1776,16 +1855,845 @@ Query.updatedAfter("2025-01-01T00:00:00Z")
 {"method":"updatedAfter","values":["2025-01-01T00:00:00Z"]}
 ```
 {% /multicode %}
+# Geo queries and spatial operations {% #geo-queries %}
+
+Geo queries enable geographic operations on [spatial columns](/docs/products/databases/spatial). Coordinates are specified as `[longitude, latitude]` arrays. Distance measurements can be specified in meters or degrees.
+
+For conceptual information about spatial data types, spatial columns and indexing, see [Geo queries](/docs/products/databases/geo-queries).
+
+{% info title="Additional supported queries" %}
+In addition to the spatial-specific operations below, the query helpers `equal`, `notEqual`, `contains`, and `notContains` are also supported on spatial columns. This lets you match or exclude exact spatial values, check whether a geometry collection contains a geometry or not.
+{% /info %}
+
+## Distance equal {% #distance-equal %}
+
+Returns rows where the spatial column is exactly the specified distance from a point.
+
+{% multicode %}
+```client-web
+// Coordinates: [longitude, latitude]
+Query.distanceEqual("location", [-73.9851, 40.7589], 200)
+```
+```client-flutter
+Query.distanceEqual("location", [-73.9851, 40.7589], 200)
+```
+```client-react-native
+Query.distanceEqual("location", [-73.9851, 40.7589], 200)
+```
+```client-apple
+// Query.distanceEqual(column, coordinates, distance)
+Query.distanceEqual("location", values: [-73.9851, 40.7589], distance: 200)
+```
+```client-android-kotlin
+Query.distanceEqual("location", listOf(-73.9851, 40.7589), 200)
+```
+```client-android-java
+Query.distanceEqual("location", Arrays.asList(-73.9851, 40.7589), 200)
+```
+```server-nodejs
+const sdk = require('node-appwrite');
+sdk.Query.distanceEqual("location", [-73.9851, 40.7589], 200)
+```
+```server-python
+Query.distance_equal("location", [-73.9851, 40.7589], 200)
+```
+```server-ruby
+Query.distance_equal("location", [-73.9851, 40.7589], 200)
+```
+```server-deno
+Query.distanceEqual("location", [-73.9851, 40.7589], 200)
+```
+```server-php
+Query::distanceEqual("location", [-73.9851, 40.7589], 200)
+```
+```server-dotnet
+Query.DistanceEqual("location", new List<double> { -73.9851, 40.7589 }, 200)
+```
+```server-go
+// query.DistanceEqual(column, coordinates, distance)
+query.DistanceEqual("location", []float64{-73.9851, 40.7589}, 200)
+```
+```server-dart
+Query.distanceEqual("location", [-73.9851, 40.7589], 200)
+```
+```server-swift
+Query.distanceEqual("location", [-73.9851, 40.7589], 200)
+```
+```server-kotlin
+Query.distanceEqual("location", listOf(-73.9851, 40.7589), 200)
+```
+```server-java
+Query.distanceEqual("location", Arrays.asList(-73.9851, 40.7589), 200)
+```
+```http
+{"method":"distanceEqual","column":"location","values":[[-73.9851, 40.7589], 200]}
+```
+{% /multicode %}
+
+## Distance not equal {% #distance-not-equal %}
+
+Returns rows where the spatial column is not exactly the specified distance from a point.
+
+{% multicode %}
+```client-web
+Query.distanceNotEqual("location", [-73.9851, 40.7589], 200)
+```
+```client-flutter
+Query.distanceNotEqual("location", [-73.9851, 40.7589], 200)
+```
+```client-react-native
+Query.distanceNotEqual("location", [-73.9851, 40.7589], 200)
+```
+```client-apple
+// Query.distanceNotEqual(column, coordinates, distance)
+Query.distanceNotEqual("location", values: [-73.9851, 40.7589], distance: 200)
+```
+```client-android-kotlin
+Query.distanceNotEqual("location", listOf(-73.9851, 40.7589), 200)
+```
+```client-android-java
+Query.distanceNotEqual("location", Arrays.asList(-73.9851, 40.7589), 200)
+```
+```server-nodejs
+const sdk = require('node-appwrite');
+sdk.Query.distanceNotEqual("location", [-73.9851, 40.7589], 200)
+```
+```server-python
+Query.distance_not_equal("location", [-73.9851, 40.7589], 200)
+```
+```server-ruby
+Query.distance_not_equal("location", [-73.9851, 40.7589], 200)
+```
+```server-deno
+Query.distanceNotEqual("location", [-73.9851, 40.7589], 200)
+```
+```server-php
+Query::distanceNotEqual("location", [-73.9851, 40.7589], 200)
+```
+```server-dotnet
+Query.DistanceNotEqual("location", new List<double> { -73.9851, 40.7589 }, 200)
+```
+```server-go
+// query.DistanceNotEqual(column, coordinates, distance)
+query.DistanceNotEqual("location", []float64{-73.9851, 40.7589}, 200)
+```
+```server-dart
+Query.distanceNotEqual("location", [-73.9851, 40.7589], 200)
+```
+```server-swift
+Query.distanceNotEqual("location", [-73.9851, 40.7589], 200)
+```
+```server-kotlin
+Query.distanceNotEqual("location", listOf(-73.9851, 40.7589), 200)
+```
+```server-java
+Query.distanceNotEqual("location", Arrays.asList(-73.9851, 40.7589), 200)
+```
+```http
+{"method":"distanceNotEqual","column":"location","values":[[-73.9851, 40.7589], 200]}
+```
+{% /multicode %}
+
+## Distance greater than {% #distance-greater-than %}
+
+Returns rows where the spatial column is more than the specified distance from a point.
+
+{% multicode %}
+```client-web
+Query.distanceGreaterThan("location", [-73.9851, 40.7589], 200)
+```
+```client-flutter
+Query.distanceGreaterThan("location", [-73.9851, 40.7589], 200)
+```
+```client-react-native
+Query.distanceGreaterThan("location", [-73.9851, 40.7589], 200)
+```
+```client-apple
+// Query.distanceGreaterThan(column, coordinates, distance)
+Query.distanceGreaterThan("location", values: [-73.9851, 40.7589], distance: 200)
+```
+```client-android-kotlin
+Query.distanceGreaterThan("location", listOf(-73.9851, 40.7589), 200)
+```
+```client-android-java
+Query.distanceGreaterThan("location", Arrays.asList(-73.9851, 40.7589), 200)
+```
+```server-nodejs
+const sdk = require('node-appwrite');
+sdk.Query.distanceGreaterThan("location", [-73.9851, 40.7589], 200)
+```
+```server-python
+Query.distance_greater_than("location", [-73.9851, 40.7589], 200)
+```
+```server-ruby
+Query.distance_greater_than("location", [-73.9851, 40.7589], 200)
+```
+```server-deno
+Query.distanceGreaterThan("location", [-73.9851, 40.7589], 200)
+```
+```server-php
+Query::distanceGreaterThan("location", [-73.9851, 40.7589], 200)
+```
+```server-dotnet
+Query.DistanceGreaterThan("location", new List<double> { -73.9851, 40.7589 }, 200)
+```
+```server-go
+// query.DistanceGreaterThan(column, coordinates, distance)
+query.DistanceGreaterThan("location", []float64{-73.9851, 40.7589}, 200)
+```
+```server-dart
+Query.distanceGreaterThan("location", [-73.9851, 40.7589], 200)
+```
+```server-swift
+Query.distanceGreaterThan("location", [-73.9851, 40.7589], 200)
+```
+```server-kotlin
+Query.distanceGreaterThan("location", listOf(-73.9851, 40.7589), 200)
+```
+```http
+{"method":"distanceGreaterThan","column":"location","values":[[-73.9851, 40.7589], 200]}
+```
+{% /multicode %}
+
+## Distance less than {% #distance-less-than %}
+
+Returns rows where the spatial column is less than the specified distance from a point.
+
+{% multicode %}
+```client-web
+Query.distanceLessThan("location", [-73.9851, 40.7589], 200)
+```
+```client-flutter
+Query.distanceLessThan("location", [-73.9851, 40.7589], 200)
+```
+```client-react-native
+Query.distanceLessThan("location", [-73.9851, 40.7589], 200)
+```
+```client-apple
+// Query.distanceLessThan(column, coordinates, distance)
+Query.distanceLessThan("location", values: [-73.9851, 40.7589], distance: 200)
+```
+```client-android-kotlin
+Query.distanceLessThan("location", listOf(-73.9851, 40.7589), 200)
+```
+```client-android-java
+Query.distanceLessThan("location", Arrays.asList(-73.9851, 40.7589), 200)
+```
+```server-nodejs
+const sdk = require('node-appwrite');
+sdk.Query.distanceLessThan("location", [-73.9851, 40.7589], 200)
+```
+```server-python
+Query.distance_less_than("location", [-73.9851, 40.7589], 200)
+```
+```server-ruby
+Query.distance_less_than("location", [-73.9851, 40.7589], 200)
+```
+```server-deno
+Query.distanceLessThan("location", [-73.9851, 40.7589], 200)
+```
+```server-php
+Query::distanceLessThan("location", [-73.9851, 40.7589], 200)
+```
+```server-dotnet
+Query.DistanceLessThan("location", new List<double> { -73.9851, 40.7589 }, 200)
+```
+```server-go
+// query.DistanceLessThan(column, coordinates, distance)
+query.DistanceLessThan("location", []float64{-73.9851, 40.7589}, 200)
+```
+```server-dart
+Query.distanceLessThan("location", [-73.9851, 40.7589], 200)
+```
+```server-swift
+Query.distanceLessThan("location", [-73.9851, 40.7589], 200)
+```
+```server-kotlin
+Query.distanceLessThan("location", listOf(-73.9851, 40.7589), 200)
+```
+```http
+{"method":"distanceLessThan","column":"location","values":[[-73.9851, 40.7589], 200]}
+```
+{% /multicode %}
+
+## Intersects {% #intersects %}
+
+Returns rows where the spatial column intersects with the provided geometry.
+
+{% multicode %}
+```client-web
+Query.intersects("area", [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]])
+```
+```client-flutter
+Query.intersects("area", [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]])
+```
+```client-react-native
+Query.intersects("area", [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]])
+```
+```client-apple
+// Query.intersects(column, geometry)
+Query.intersects("area", value: [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]])
+```
+```client-android-kotlin
+Query.intersects("area", listOf(listOf(-73.9851, 40.7589), listOf(-73.9776, 40.7614), listOf(-73.9733, 40.7505), listOf(-73.9851, 40.7589)))
+```
+```client-android-java
+Query.intersects("area", Arrays.asList(
+    Arrays.asList(-73.9851, 40.7589),
+    Arrays.asList(-73.9776, 40.7614),
+    Arrays.asList(-73.9733, 40.7505),
+    Arrays.asList(-73.9851, 40.7589)
+))
+```
+```server-nodejs
+const sdk = require('node-appwrite');
+sdk.Query.intersects("area", [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]])
+```
+```server-python
+Query.intersects("area", [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]])
+```
+```server-ruby
+Query.intersects("area", [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]])
+```
+```server-deno
+Query.intersects("area", [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]])
+```
+```server-php
+Query::intersects("area", [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]])
+```
+```server-dotnet
+Query.Intersects("area", new List<List<double>>
+{
+    new List<double> { -73.9851, 40.7589 },
+    new List<double> { -73.9776, 40.7614 },
+    new List<double> { -73.9733, 40.7505 },
+    new List<double> { -73.9851, 40.7589 }
+})
+```
+```server-go
+// query.Intersects(column, geometry)
+query.Intersects("area", [][]float64{{-73.9851, 40.7589}, {-73.9776, 40.7614}, {-73.9733, 40.7505}, {-73.9851, 40.7589}})
+```
+```server-dart
+Query.intersects("area", [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]])
+```
+```server-swift
+Query.intersects("area", [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]])
+```
+```server-kotlin
+Query.intersects("area", listOf(listOf(-73.9851, 40.7589), listOf(-73.9776, 40.7614), listOf(-73.9733, 40.7505), listOf(-73.9851, 40.7589)))
+```
+```http
+{"method":"intersects","column":"area","values":[[[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]]]}
+```
+{% /multicode %}
+
+## Not intersects {% #not-intersects %}
+
+Returns rows where the spatial column does not intersect with the provided geometry.
+
+{% multicode %}
+```client-web
+Query.notIntersects("area", [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]])
+```
+```client-flutter
+Query.notIntersects("area", [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]])
+```
+```client-react-native
+Query.notIntersects("area", [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]])
+```
+```client-apple
+// Query.notIntersects(column, geometry)
+Query.notIntersects("area", value: [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]])
+```
+```client-android-kotlin
+Query.notIntersects("area", listOf(listOf(-73.9851, 40.7589), listOf(-73.9776, 40.7614), listOf(-73.9733, 40.7505), listOf(-73.9851, 40.7589)))
+```
+```client-android-java
+Query.notIntersects("area", Arrays.asList(
+    Arrays.asList(-73.9851, 40.7589),
+    Arrays.asList(-73.9776, 40.7614),
+    Arrays.asList(-73.9733, 40.7505),
+    Arrays.asList(-73.9851, 40.7589)
+))
+```
+```server-nodejs
+const sdk = require('node-appwrite');
+sdk.Query.notIntersects("area", [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]])
+```
+```server-python
+Query.not_intersects("area", [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]])
+```
+```server-ruby
+Query.not_intersects("area", [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]])
+```
+```server-deno
+Query.notIntersects("area", [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]])
+```
+```server-php
+Query::notIntersects("area", [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]])
+```
+```server-dotnet
+Query.NotIntersects("area", new List<List<double>>
+{
+    new List<double> { -73.9851, 40.7589 },
+    new List<double> { -73.9776, 40.7614 },
+    new List<double> { -73.9733, 40.7505 },
+    new List<double> { -73.9851, 40.7589 }
+})
+```
+```server-go
+// query.NotIntersects(column, geometry)
+query.NotIntersects("area", [][]float64{{-73.9851, 40.7589}, {-73.9776, 40.7614}, {-73.9733, 40.7505}, {-73.9851, 40.7589}})
+```
+```server-dart
+Query.notIntersects("area", [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]])
+```
+```server-swift
+Query.notIntersects("area", [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]])
+```
+```server-kotlin
+Query.notIntersects("area", listOf(listOf(-73.9851, 40.7589), listOf(-73.9776, 40.7614), listOf(-73.9733, 40.7505), listOf(-73.9851, 40.7589)))
+```
+```http
+{"method":"notIntersects","column":"area","values":[[[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]]]}
+```
+{% /multicode %}
+
+## Overlaps {% #overlaps %}
+
+Returns rows where the spatial column overlaps with the provided geometry.
+
+{% multicode %}
+```client-web
+Query.overlaps("zone", [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]])
+```
+```client-flutter
+Query.overlaps("zone", [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]])
+```
+```client-react-native
+Query.overlaps("zone", [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]])
+```
+```client-apple
+// Query.overlaps(column, geometry)
+Query.overlaps("zone", value: [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]])
+```
+```client-android-kotlin
+Query.overlaps("zone", listOf(listOf(-73.9851, 40.7589), listOf(-73.9776, 40.7614), listOf(-73.9733, 40.7505), listOf(-73.9851, 40.7589)))
+```
+```client-android-java
+Query.overlaps("zone", Arrays.asList(
+    Arrays.asList(-73.9851, 40.7589),
+    Arrays.asList(-73.9776, 40.7614),
+    Arrays.asList(-73.9733, 40.7505),
+    Arrays.asList(-73.9851, 40.7589)
+))
+```
+```server-nodejs
+const sdk = require('node-appwrite');
+sdk.Query.overlaps("zone", [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]])
+```
+```server-python
+Query.overlaps("zone", [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]])
+```
+```server-ruby
+Query.overlaps("zone", [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]])
+```
+```server-deno
+Query.overlaps("zone", [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]])
+```
+```server-php
+Query::overlaps("zone", [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]])
+```
+```server-dotnet
+Query.Overlaps("zone", new List<List<double>>
+{
+    new List<double> { -73.9851, 40.7589 },
+    new List<double> { -73.9776, 40.7614 },
+    new List<double> { -73.9733, 40.7505 },
+    new List<double> { -73.9851, 40.7589 }
+})
+```
+```server-go
+// query.Overlaps(column, geometry)
+query.Overlaps("zone", [][]float64{{-73.9851, 40.7589}, {-73.9776, 40.7614}, {-73.9733, 40.7505}, {-73.9851, 40.7589}})
+```
+```server-dart
+Query.overlaps("zone", [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]])
+```
+```server-swift
+Query.overlaps("zone", [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]])
+```
+```server-kotlin
+Query.overlaps("zone", listOf(listOf(-73.9851, 40.7589), listOf(-73.9776, 40.7614), listOf(-73.9733, 40.7505), listOf(-73.9851, 40.7589)))
+```
+```http
+{"method":"overlaps","column":"zone","values":[[[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]]]}
+```
+{% /multicode %}
+
+## Not overlaps {% #not-overlaps %}
+
+Returns rows where the spatial column does not overlap with the provided geometry.
+
+{% multicode %}
+```client-web
+Query.notOverlaps("zone", [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]])
+```
+```client-flutter
+Query.notOverlaps("zone", [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]])
+```
+```client-react-native
+Query.notOverlaps("zone", [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]])
+```
+```client-apple
+// Query.notOverlaps(column, geometry)
+Query.notOverlaps("zone", value: [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]])
+```
+```client-android-kotlin
+Query.notOverlaps("zone", listOf(listOf(-73.9851, 40.7589), listOf(-73.9776, 40.7614), listOf(-73.9733, 40.7505), listOf(-73.9851, 40.7589)))
+```
+```client-android-java
+Query.notOverlaps("zone", Arrays.asList(
+    Arrays.asList(-73.9851, 40.7589),
+    Arrays.asList(-73.9776, 40.7614),
+    Arrays.asList(-73.9733, 40.7505),
+    Arrays.asList(-73.9851, 40.7589)
+))
+```
+```server-nodejs
+const sdk = require('node-appwrite');
+sdk.Query.notOverlaps("zone", [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]])
+```
+```server-python
+Query.not_overlaps("zone", [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]])
+```
+```server-ruby
+Query.not_overlaps("zone", [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]])
+```
+```server-deno
+Query.notOverlaps("zone", [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]])
+```
+```server-php
+Query::notOverlaps("zone", [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]])
+```
+```server-dotnet
+Query.NotOverlaps("zone", new List<List<double>>
+{
+    new List<double> { -73.9851, 40.7589 },
+    new List<double> { -73.9776, 40.7614 },
+    new List<double> { -73.9733, 40.7505 },
+    new List<double> { -73.9851, 40.7589 }
+})
+```
+```server-go
+// query.NotOverlaps(column, geometry)
+query.NotOverlaps("zone", [][]float64{{-73.9851, 40.7589}, {-73.9776, 40.7614}, {-73.9733, 40.7505}, {-73.9851, 40.7589}})
+```
+```server-dart
+Query.notOverlaps("zone", [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]])
+```
+```server-swift
+Query.notOverlaps("zone", [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]])
+```
+```server-kotlin
+Query.notOverlaps("zone", listOf(listOf(-73.9851, 40.7589), listOf(-73.9776, 40.7614), listOf(-73.9733, 40.7505), listOf(-73.9851, 40.7589)))
+```
+```http
+{"method":"notOverlaps","column":"zone","values":[[[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]]]}
+```
+{% /multicode %}
+
+## Touches {% #touches %}
+
+Returns rows where the spatial column touches the provided geometry.
+
+{% multicode %}
+```client-web
+Query.touches("boundary", [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]])
+```
+```client-flutter
+Query.touches("boundary", [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]])
+```
+```client-react-native
+Query.touches("boundary", [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]])
+```
+```client-apple
+// Query.touches(column, geometry)
+Query.touches("boundary", value: [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]])
+```
+```client-android-kotlin
+Query.touches("boundary", listOf(listOf(-73.9851, 40.7589), listOf(-73.9776, 40.7614), listOf(-73.9733, 40.7505), listOf(-73.9851, 40.7589)))
+```
+```client-android-java
+Query.touches("boundary", Arrays.asList(
+    Arrays.asList(-73.9851, 40.7589),
+    Arrays.asList(-73.9776, 40.7614),
+    Arrays.asList(-73.9733, 40.7505),
+    Arrays.asList(-73.9851, 40.7589)
+))
+```
+```server-nodejs
+const sdk = require('node-appwrite');
+sdk.Query.touches("boundary", [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]])
+```
+```server-python
+Query.touches("boundary", [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]])
+```
+```server-ruby
+Query.touches("boundary", [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]])
+```
+```server-deno
+Query.touches("boundary", [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]])
+```
+```server-php
+Query::touches("boundary", [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]])
+```
+```server-dotnet
+Query.Touches("boundary", new List<List<double>>
+{
+    new List<double> { -73.9851, 40.7589 },
+    new List<double> { -73.9776, 40.7614 },
+    new List<double> { -73.9733, 40.7505 },
+    new List<double> { -73.9851, 40.7589 }
+})
+```
+```server-go
+// query.Touches(column, geometry)
+query.Touches("boundary", [][]float64{{-73.9851, 40.7589}, {-73.9776, 40.7614}, {-73.9733, 40.7505}, {-73.9851, 40.7589}})
+```
+```server-dart
+Query.touches("boundary", [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]])
+```
+```server-swift
+Query.touches("boundary", [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]])
+```
+```server-kotlin
+Query.touches("boundary", listOf(listOf(-73.9851, 40.7589), listOf(-73.9776, 40.7614), listOf(-73.9733, 40.7505), listOf(-73.9851, 40.7589)))
+```
+```http
+{"method":"touches","column":"boundary","values":[[[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]]]}
+```
+{% /multicode %}
+
+## Not touches {% #not-touches %}
+
+Returns rows where the spatial column does not touch the provided geometry.
+
+{% multicode %}
+```client-web
+Query.notTouches("boundary", [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]])
+```
+```client-flutter
+Query.notTouches("boundary", [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]])
+```
+```client-react-native
+Query.notTouches("boundary", [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]])
+```
+```client-apple
+// Query.notTouches(column, geometry)
+Query.notTouches("boundary", value: [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]])
+```
+```client-android-kotlin
+Query.notTouches("boundary", listOf(listOf(-73.9851, 40.7589), listOf(-73.9776, 40.7614), listOf(-73.9733, 40.7505), listOf(-73.9851, 40.7589)))
+```
+```client-android-java
+Query.notTouches("boundary", Arrays.asList(
+    Arrays.asList(-73.9851, 40.7589),
+    Arrays.asList(-73.9776, 40.7614),
+    Arrays.asList(-73.9733, 40.7505),
+    Arrays.asList(-73.9851, 40.7589)
+))
+```
+```server-nodejs
+const sdk = require('node-appwrite');
+sdk.Query.notTouches("boundary", [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]])
+```
+```server-python
+Query.not_touches("boundary", [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]])
+```
+```server-ruby
+Query.not_touches("boundary", [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]])
+```
+```server-deno
+Query.notTouches("boundary", [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]])
+```
+```server-php
+Query::notTouches("boundary", [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]])
+```
+```server-dotnet
+Query.NotTouches("boundary", new List<List<double>>
+{
+    new List<double> { -73.9851, 40.7589 },
+    new List<double> { -73.9776, 40.7614 },
+    new List<double> { -73.9733, 40.7505 },
+    new List<double> { -73.9851, 40.7589 }
+})
+```
+```server-go
+// query.NotTouches(column, geometry)
+query.NotTouches("boundary", [][]float64{{-73.9851, 40.7589}, {-73.9776, 40.7614}, {-73.9733, 40.7505}, {-73.9851, 40.7589}})
+```
+```server-dart
+Query.notTouches("boundary", [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]])
+```
+```server-swift
+Query.notTouches("boundary", [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]])
+```
+```server-kotlin
+Query.notTouches("boundary", listOf(listOf(-73.9851, 40.7589), listOf(-73.9776, 40.7614), listOf(-73.9733, 40.7505), listOf(-73.9851, 40.7589)))
+```
+```http
+{"method":"notTouches","column":"boundary","values":[[[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]]]}
+```
+{% /multicode %}
+
+## Crosses {% #crosses %}
+
+Returns rows where the spatial column crosses the provided geometry.
+
+{% multicode %}
+```client-web
+Query.crosses("route", [[-73.9851, 40.7589], [-73.9776, 40.7614]])
+```
+```client-flutter
+Query.crosses("route", [[-73.9851, 40.7589], [-73.9776, 40.7614]])
+```
+```client-react-native
+Query.crosses("route", [[-73.9851, 40.7589], [-73.9776, 40.7614]])
+```
+```client-apple
+// Query.crosses(column, geometry)
+Query.crosses("route", value: [[-73.9851, 40.7589], [-73.9776, 40.7614]])
+```
+```client-android-kotlin
+Query.crosses("route", listOf(listOf(-73.9851, 40.7589), listOf(-73.9776, 40.7614)))
+```
+```client-android-java
+Query.crosses("route", Arrays.asList(
+    Arrays.asList(-73.9851, 40.7589),
+    Arrays.asList(-73.9776, 40.7614)
+))
+```
+```server-nodejs
+const sdk = require('node-appwrite');
+sdk.Query.crosses("route", [[-73.9851, 40.7589], [-73.9776, 40.7614]])
+```
+```server-python
+Query.crosses("route", [[-73.9851, 40.7589], [-73.9776, 40.7614]])
+```
+```server-ruby
+Query.crosses("route", [[-73.9851, 40.7589], [-73.9776, 40.7614]])
+```
+```server-deno
+Query.crosses("route", [[-73.9851, 40.7589], [-73.9776, 40.7614]])
+```
+```server-php
+Query::crosses("route", [[-73.9851, 40.7589], [-73.9776, 40.7614]])
+```
+```server-dotnet
+Query.Crosses("route", new List<List<double>>
+{
+    new List<double> { -73.9851, 40.7589 },
+    new List<double> { -73.9776, 40.7614 }
+})
+```
+```server-go
+// query.Crosses(column, geometry)
+query.Crosses("route", [][]float64{{-73.9851, 40.7589}, {-73.9776, 40.7614}})
+```
+```server-dart
+Query.crosses("route", [[-73.9851, 40.7589], [-73.9776, 40.7614]])
+```
+```server-swift
+Query.crosses("route", [[-73.9851, 40.7589], [-73.9776, 40.7614]])
+```
+```server-kotlin
+Query.crosses("route", listOf(listOf(-73.9851, 40.7589), listOf(-73.9776, 40.7614)))
+```
+```http
+{"method":"crosses","column":"route","values":[[[-73.9851, 40.7589], [-73.9776, 40.7614]]]}
+```
+{% /multicode %}
+
+## Not crosses {% #not-crosses %}
+
+Returns rows where the spatial column does not cross the provided geometry.
+
+{% multicode %}
+```client-web
+Query.notCrosses("route", [[-73.9851, 40.7589], [-73.9776, 40.7614]])
+```
+```client-flutter
+Query.notCrosses("route", [[-73.9851, 40.7589], [-73.9776, 40.7614]])
+```
+```client-react-native
+Query.notCrosses("route", [[-73.9851, 40.7589], [-73.9776, 40.7614]])
+```
+```client-apple
+// Query.notCrosses(column, geometry)
+Query.notCrosses("route", value: [[-73.9851, 40.7589], [-73.9776, 40.7614]])
+```
+```client-android-kotlin
+Query.notCrosses("route", listOf(listOf(-73.9851, 40.7589), listOf(-73.9776, 40.7614)))
+```
+```client-android-java
+Query.notCrosses("route", Arrays.asList(
+    Arrays.asList(-73.9851, 40.7589),
+    Arrays.asList(-73.9776, 40.7614)
+))
+```
+```server-nodejs
+const sdk = require('node-appwrite');
+sdk.Query.notCrosses("route", [[-73.9851, 40.7589], [-73.9776, 40.7614]])
+```
+```server-python
+Query.not_crosses("route", [[-73.9851, 40.7589], [-73.9776, 40.7614]])
+```
+```server-ruby
+Query.not_crosses("route", [[-73.9851, 40.7589], [-73.9776, 40.7614]])
+```
+```server-deno
+Query.notCrosses("route", [[-73.9851, 40.7589], [-73.9776, 40.7614]])
+```
+```server-php
+Query::notCrosses("route", [[-73.9851, 40.7589], [-73.9776, 40.7614]])
+```
+```server-dotnet
+Query.NotCrosses("route", new List<List<double>>
+{
+    new List<double> { -73.9851, 40.7589 },
+    new List<double> { -73.9776, 40.7614 }
+})
+```
+```server-go
+// query.NotCrosses(column, geometry)
+query.NotCrosses("route", [][]float64{{-73.9851, 40.7589}, {-73.9776, 40.7614}})
+```
+```server-dart
+Query.notCrosses("route", [[-73.9851, 40.7589], [-73.9776, 40.7614]])
+```
+```server-swift
+Query.notCrosses("route", [[-73.9851, 40.7589], [-73.9776, 40.7614]])
+```
+```server-kotlin
+Query.notCrosses("route", listOf(listOf(-73.9851, 40.7589), listOf(-73.9776, 40.7614)))
+```
+```http
+{"method":"notCrosses","column":"route","values":[[[-73.9851, 40.7589], [-73.9776, 40.7614]]]}
+```
+{% /multicode %}
+
 # Complex queries {% #complex-queries %}
 
 You can create complex queries by combining AND and OR operations. For example, to find items that are either books under $20 or magazines under $10:
 
 {% multicode %}
 ```client-web
-const results = await tablesDB.listRows(
-    '<DATABASE_ID>',
-    '<TABLE_ID>',
-    [
+const results = await tablesDB.listRows({
+    databaseId: '<DATABASE_ID>',
+    tableId: '<TABLE_ID>',
+    queries: [
         Query.or([
             Query.and([
                 Query.equal('category', ['books']),
@@ -1797,7 +2705,7 @@ const results = await tablesDB.listRows(
             ])
         ])
     ]
-);
+});
 ```
 ```client-flutter
 final results = await tablesDB.listRows(
@@ -1817,7 +2725,7 @@ final results = await tablesDB.listRows(
     ]
 );
 ```
-```python
+```server-python
 results = tablesDB.list_rows(
     database_id='<DATABASE_ID>',
     table_id='<TABLE_ID>',
@@ -1835,6 +2743,7 @@ results = tablesDB.list_rows(
     ]
 )
 ```
+```server-go
 rows, err := tablesDB.ListRows(
     "<DATABASE_ID>",
     "<TABLE_ID>",

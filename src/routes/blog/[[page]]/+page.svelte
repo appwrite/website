@@ -6,6 +6,7 @@
     import { Main } from '$lib/layouts';
     import { createDebounce } from '$lib/utils/debounce';
     import { DEFAULT_HOST } from '$lib/utils/metadata';
+    import { getPostAuthors } from '$lib/utils/blog-authors';
     import { TITLE_SUFFIX } from '$routes/titles';
     import { tick } from 'svelte';
 
@@ -212,9 +213,11 @@
                 <div class="container">
                     <h1 class="text-display font-aeonik-pro text-primary">Blog</h1>
                     {#if featured}
-                        {@const author = data.authors.find(
-                            (author) => author.slug === featured.author
-                        )}
+                        {@const {
+                            postAuthors: featuredAuthors,
+                            authorAvatars: featuredAvatars,
+                            primaryAuthor: author
+                        } = getPostAuthors(featured.author, data.authors)}
                         <article class="web-feature-article mt-12">
                             <a
                                 href={featured.href}
@@ -245,19 +248,34 @@
                                 </p>
                                 <div class="web-author">
                                     <div class="flex items-center gap-2">
-                                        <img
-                                            class="web-author-image"
-                                            src={author?.avatar}
-                                            alt={author?.name}
-                                            loading="lazy"
-                                            width="24"
-                                            height="24"
-                                        />
+                                        <div
+                                            class="flex items-center"
+                                            style="margin-inline-end: -8px;"
+                                        >
+                                            {#each featuredAvatars.slice(0, 3) as avatar, index (index)}
+                                                <img
+                                                    class="web-author-image"
+                                                    class:stacked-avatar={index > 0}
+                                                    src={avatar}
+                                                    alt={featuredAuthors[index]?.name || ''}
+                                                    loading="lazy"
+                                                    width="24"
+                                                    height="24"
+                                                    style="margin-inline-start: {index > 0
+                                                        ? '-8px'
+                                                        : '0'}; z-index: {featuredAvatars.length -
+                                                        index};"
+                                                />
+                                            {/each}
+                                        </div>
                                         <div class="web-author-info">
-                                            <a href={author?.href} class="text-sub-body web-link"
-                                                >{author?.name}</a
-                                            >
-                                            <p class="text-caption hidden">{author?.bio}</p>
+                                            <span class="text-sub-body">
+                                                {#each featuredAuthors as featuredAuthor, i}
+                                                    <a href={featuredAuthor.href} class="web-link"
+                                                        >{featuredAuthor.name}</a
+                                                    >{#if i < featuredAuthors.length - 1},{' '}{/if}
+                                                {/each}
+                                            </span>
                                             <ul class="web-metadata text-caption web-is-not-mobile">
                                                 <li>{featured.timeToRead} min</li>
                                             </ul>
@@ -320,7 +338,7 @@
                                     </button>
                                 </li>
 
-                                {#each categories as category}
+                                {#each categories as category (category.name)}
                                     <li class="flex items-center">
                                         <button
                                             class="web-interactive-tag web-caption-400 cursor-pointer"
@@ -371,18 +389,19 @@
                 <div class="mt-12">
                     <ul class:web-grid-articles={data.posts.length > 0}>
                         {#each data.posts as post (post.slug)}
-                            {@const author = data.authors.find(
-                                (author) => author.slug === post.author
+                            {@const { postAuthors, authorAvatars, primaryAuthor } = getPostAuthors(
+                                post.author,
+                                data.authors
                             )}
-                            {#if author && !post.draft}
+                            {#if primaryAuthor && !post.draft}
                                 <Article
                                     title={post.title}
                                     href={post.href}
                                     cover={post.cover}
                                     date={post.date}
                                     timeToRead={post.timeToRead}
-                                    avatar={author.avatar}
-                                    author={author.name}
+                                    avatars={authorAvatars}
+                                    authors={postAuthors}
                                 />
                             {/if}
                         {:else}
@@ -427,7 +446,7 @@
                                 </span>
                             {/if}
 
-                            {#each currentPageRange as page}
+                            {#each currentPageRange as page (page)}
                                 {#if page === -1}
                                     <span class="pagination-ellipsis">...</span>
                                 {:else}
@@ -669,6 +688,11 @@
     .category-nav-arrow span {
         font-size: 16px;
         color: hsl(var(--web-color-primary));
+    }
+
+    .stacked-avatar {
+        border: 2px solid hsl(var(--web-color-background-docs));
+        position: relative;
     }
 
     @media (max-width: 768px) {

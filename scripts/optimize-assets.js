@@ -1,19 +1,36 @@
-import { readdirSync, statSync } from 'fs';
+import { readdirSync, statSync, existsSync, readFileSync, writeFileSync } from 'fs';
 import { join, relative } from 'path';
 import sharp from 'sharp';
 import { fileURLToPath } from 'url';
+import { createHash } from 'crypto';
 
 const __dirname = fileURLToPath(new URL('.', import.meta.url));
 const root_dir = join(__dirname, '../static');
+const cache_path = join(__dirname, '../.optimize-cache.json');
 const exceptions = ['assets/'];
+
+function load_cache() {
+    if (existsSync(cache_path)) {
+        return JSON.parse(readFileSync(cache_path, 'utf-8'));
+    }
+    return {};
+}
+
+function save_cache(cache) {
+    const sorted = Object.fromEntries(Object.entries(cache).sort(([a], [b]) => a.localeCompare(b)));
+    writeFileSync(cache_path, JSON.stringify(sorted, null, 2) + '\n');
+}
+
+function hash_file(file) {
+    const content = readFileSync(file);
+    return createHash('sha256').update(content).digest('hex');
+}
 
 /**
  * @type {{
  *     jpeg: sharp.JpegOptions,
  *     webp: sharp.WebpOptions,
- *     png: sharp.PngOptions,
- *     gif: sharp.GifOptions,
- *     avif: sharp.AvifOptions
+ *     png: sharp.PngOptions
  * }}
  */
 const config = {
@@ -25,12 +42,6 @@ const config = {
     },
     png: {
         quality: 100
-    },
-    gif: {
-        quality: 100
-    },
-    avif: {
-        lossless: true
     }
 };
 
@@ -67,28 +78,99 @@ function get_relative_path(file) {
 }
 
 async function main() {
+    const cache = load_cache();
+    const new_cache = {};
+
     for (const file of walk_directory(join(__dirname, '../static'))) {
         const relative_path = get_relative_path(file);
-        const is_animated = file.endsWith('.gif');
         if (!is_image(file)) continue;
         if (exceptions.some((exception) => relative_path.startsWith(exception))) continue;
 
-        const image = sharp(file, {
-            animated: is_animated
-        });
-        const size_before = (await image.toBuffer()).length;
-        const meta = await image.metadata();
+        console.log(relative_path);
+
+        const file_hash = hash_file(file);
+        if (cache[relative_path] === file_hash) {
+            new_cache[relative_path] = file_hash;
+            continue;
+        }
+
+        const image = sharp(file);
+
+        let meta;
+        try {
+            meta = await image.metadata();
+        } catch (err) {
+            const msg = `${relative_path} failed: ${err.message}`;
+            if (Bun.env.CI) {
+                throw new Error(msg);
+            }
+
+            console.log(msg);
+            continue;
+        }
+
+        if (Bun.env.CI && (meta.width > 1980 || meta.height > 1980)) {
+            save_cache(new_cache);
+            const msg = `${relative_path} is too large: ${meta.width}x${meta.height}`;
+            throw new Error(msg);
+        }
+
         const buffer = await image[meta.format](config[meta.format])
             .resize(resize_config)
             .toBuffer();
-        const size_after = buffer.length;
 
-        if (size_after >= size_before) continue;
+        await sharp(buffer).toFile(file + '.optimized');
 
-        console.log(relative_path);
+        const file_before = Bun.file(file);
+        await file_before.arrayBuffer();
+        const size_before = file_before.size;
 
-        await sharp(buffer).toFile(file);
+        const file_after = Bun.file(file + '.optimized');
+        const file_after_contents = await file_after.arrayBuffer();
+        const size_after = file_after.size;
+
+        const size_diff = size_before - size_after;
+        if (size_diff <= 0) {
+            await Bun.file(file + '.optimized').delete();
+            new_cache[relative_path] = file_hash;
+            continue;
+        }
+
+        const size_diff_percent = size_diff / size_before;
+        if (size_diff_percent < 0.2) {
+            await Bun.file(file + '.optimized').delete();
+            new_cache[relative_path] = file_hash;
+            continue;
+        }
+
+        // Atomic rewrite
+        try {
+            await Bun.write(file, file_after_contents);
+            await Bun.file(file + '.optimized').delete();
+        } catch (error) {
+            try {
+                await Bun.file(file + '.optimized').delete();
+            } catch {
+                // Silenced
+            }
+
+            throw new Error(`Failed to replace ${relative_path}: ${error.message}`);
+        }
+
+        const diff_verbose = Math.round(size_diff_percent * 100);
+        console.log(`✅ ${relative_path} has been optimized (-${diff_verbose}%)`);
+
+        new_cache[relative_path] = hash_file(file);
+
+        if (Bun.env.CI) {
+            console.log(
+                `Stopping optimization in CI/CD env, as one diff is enough to make test fail`
+            );
+            break;
+        }
     }
+
+    save_cache(new_cache);
 }
 
 await main();

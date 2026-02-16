@@ -17,9 +17,9 @@ In Appwrite, data is stored as a table of rows. Create a table in the [Appwrite 
 Create a new table with the following columns:
 | Field       | Type   | Required |
 |-------------|--------|----------|
-| userId      | String | Yes      |
-| title       | String | Yes      |
-| description | String | No       |
+| userId      | Varchar | Yes      |
+| title       | Varchar | Yes      |
+| description | Text    | No       |
 
 ## Ideas context {% #ideas-context %}
 
@@ -37,20 +37,20 @@ export const IDEAS_TABLE_ID = "<YOUR_TABLE_ID>"; // Replace with your table ID
 export const ideas = reactive({
   current: [],
   async init() {
-    const response = await tablesDB.listRows(
-      IDEAS_DATABASE_ID,
-      IDEAS_TABLE_ID,
-      [Query.orderDesc("$createdAt"), Query.limit(10)]
-    );
+    const response = await tablesDB.listRows({
+      databaseId: IDEAS_DATABASE_ID,
+      tableId: IDEAS_TABLE_ID,
+      queries: [Query.orderDesc("$createdAt"), Query.limit(10)]
+    });
     this.current = response.rows;
   },
   async add(idea) {
-    const response = await tablesDB.createRow(
-      IDEAS_DATABASE_ID,
-      IDEAS_TABLE_ID,
-      ID.unique(),
-      idea
-    );
+    const response = await tablesDB.createRow({
+      databaseId: IDEAS_DATABASE_ID,
+      tableId: IDEAS_TABLE_ID,
+      rowId: ID.unique(),
+      data: idea
+    });
     this.current = [response, ...this.current].slice(0, 10);
   },
   async remove(id) {

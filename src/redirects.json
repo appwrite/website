@@ -448,10 +448,6 @@
         "redirect": "/docs/advanced/platform/permissions"
     },
     {
-        "link": "/docs/",
-        "redirect": "/docs/"
-    },
-    {
         "link": "/docs/models/bucket",
         "redirect": "/docs/references/cloud/models/bucket"
     },
@@ -767,5 +763,13 @@
     {
         "link": "/docs/advanced/self-hosting/environment-variables",
         "redirect": "/docs/advanced/self-hosting/configuration/environment-variables"
+    },
+    {
+        "link": "/products/sites/offer-300-s",
+        "redirect": "/products/sites/offer-300?format=short"
+    },
+    {
+        "link": "/docs/products/auth/preferences-storage",
+        "redirect": "/docs/products/auth/preferences"
     }
 ]

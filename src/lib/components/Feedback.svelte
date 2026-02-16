@@ -29,7 +29,7 @@
             body: JSON.stringify({
                 email,
                 type: feedbackType,
-                route: page.route.id,
+                route: page.url.pathname,
                 comment,
                 metaFields: {
                     userId

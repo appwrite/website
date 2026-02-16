@@ -27,9 +27,9 @@ In Appwrite, data is stored as a table of rows. Create a table in the [Appwrite 
 Create a new table with the following columns:
 | Field       | Type   | Required | Size   |
 |-------------|--------|----------|--------|
-| userId      | String | Yes      |  50    |
-| title       | String | Yes      |  25    |
-| description | String | No       |  100   |
+| userId      | Varchar | Yes      |  50    |
+| title       | Varchar | Yes      |  25    |
+| description | Text    | No       |  -     |
 
 ## Configure permissions {% #configure-permissions %}
 {% only_dark %}
@@ -67,12 +67,12 @@ export function IdeasProvider(props) {
 
   async function add(idea) {
     try {
-      const response = await tablesDB.createRow(
-        IDEAS_DATABASE_ID,
-        IDEAS_TABLE_ID,
-        ID.unique(),
-        idea
-      );
+      const response = await tablesDB.createRow({
+        databaseId: IDEAS_DATABASE_ID,
+        tableId: IDEAS_TABLE_ID,
+        rowId: ID.unique(),
+        data: idea
+      });
       setIdeas((ideas) => [response, ...ideas].slice(0, 10));
     } catch (err) {
       console.log(err) // handle error or show user a message
@@ -95,11 +95,11 @@ export function IdeasProvider(props) {
 
   async function init() {
     try {
-      const response = await tablesDB.listRows(
-        IDEAS_DATABASE_ID,
-        IDEAS_TABLE_ID,
-        [Query.orderDesc("$createdAt"), Query.limit(10)]
-      );
+      const response = await tablesDB.listRows({
+        databaseId: IDEAS_DATABASE_ID,
+        tableId: IDEAS_TABLE_ID,
+        queries: [Query.orderDesc("$createdAt"), Query.limit(10)]
+      });
       setIdeas(response.rows);
     } catch (err) {
       console.log(err)

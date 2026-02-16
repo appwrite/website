@@ -1,0 +1,6 @@
+domain:
+  - appwrite.io
+  - www.appwrite.io
+
+minReplicas: 2
+maxReplicas: 20

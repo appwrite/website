@@ -7,6 +7,16 @@
     import { cn } from '$lib/utils/cn';
     import Dashboard from './dashboard.svelte';
     import HeroBanner from './hero-banner.svelte';
+
+    type Props = {
+        title?: string;
+        subtitle?: string;
+    };
+
+    const {
+        title = 'All-in-one infra for solo devs & SMBs',
+        subtitle = 'Appwrite is an open-source, developer infrastructure platform with Auth, Database, Storage, Functions, Realtime, SMS, Email, Push, and Hosting.'
+    }: Props = $props();
 </script>
 
 <div class="relative flex max-w-screen items-center overflow-hidden py-12 md:py-0 lg:min-h-[700px]">
@@ -24,17 +34,16 @@
         <div
             class="animate-blur-in flex flex-col gap-4 [animation-delay:150ms] [animation-duration:1000ms] md:ml-12 lg:ml-0"
         >
-            <HeroBanner title="Appwrite Cloud is now GA" href="/cloud-ga" />
+            <HeroBanner title="Introducing Imagine" href="/blog/post/introducing-imagine" />
 
             <GradientText class="animate-fade-in">
                 <h1 class="font-aeonik-pro text-headline text-pretty">
-                    Build like a team of hundreds<span class="text-accent">_</span>
+                    {title}<span class="text-accent">_</span>
                 </h1>
             </GradientText>
 
             <p class="text-description text-secondary font-medium">
-                Appwrite is an open-source, all-in-one development platform. Use built-in backend
-                infrastructure and web hosting, all from a single place.
+                {subtitle}
             </p>
 
             <div class="mt-4 flex flex-col gap-2 lg:flex-row">

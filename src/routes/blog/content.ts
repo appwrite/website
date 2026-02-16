@@ -25,7 +25,7 @@ export interface PostsData {
     lastUpdated: Date;
     cover: string;
     timeToRead: number;
-    author: string;
+    author: string | string[];
     category: string;
     href: string;
     slug: string;
@@ -35,6 +35,10 @@ export interface PostsData {
         heading?: string;
         label?: string;
         url?: string;
+        href?: string;
+        description?: string;
+        event?: string;
+        points?: string[];
     };
 }
 

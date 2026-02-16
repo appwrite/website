@@ -43,7 +43,7 @@ promise.then(function (response) {
 });
 ```
 ```deno
-import * as sdk from "https://deno.land/x/appwrite/mod.ts";
+import * as sdk from "npm:node-appwrite";
 
 // Init SDK
 let client = new sdk.Client();
@@ -88,7 +88,7 @@ $result = $tablesDB->create('<DATABASE_ID>', '<NAME>');
 ```
 ```python
 from appwrite.client import Client
-from appwrite.services.tablesDB import TablesDB
+from appwrite.services.tables_db import TablesDB
 
 client = Client()
 

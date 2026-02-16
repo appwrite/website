@@ -1,5 +1,5 @@
 <script lang="ts">
-    import type { SDKMethod } from '$lib/utils/specs';
+    import type { SDKMethod } from '../specs';
     import { trackEvent } from '$lib/actions/analytics';
 
     export let method: SDKMethod;
