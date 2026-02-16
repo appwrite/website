@@ -65,32 +65,30 @@ await tablesDB.createRow({
 
 ## Subscribe to messages with Realtime
 
-On the client side, subscribe to the messages table to receive updates in real time:
+On the client side, subscribe to the messages table to receive updates in real time. Use the `Channel` helper to build type-safe channel subscriptions and realtime queries to filter messages by conversation server-side.
 
 ```js
-import { Client } from 'appwrite';
+import { Client, Realtime, Channel, Query } from 'appwrite';
 
 const client = new Client()
   .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
   .setProject('<PROJECT_ID>');
 
-// Subscribe to messages table
-client.subscribe(
-  `databases.<DATABASE_ID>.tables.<MESSAGES_TABLE_ID>.rows`,
-  (response) => {
-    if (response.events.includes('databases.*.tables.*.rows.*.create')) {
-      const message = response.payload;
+const realtime = new Realtime(client);
 
-      // Filter by conversation
-      if (message.conversationId === currentConversationId) {
-        displayMessage(message);
-      }
-    }
-  }
+// Subscribe to new messages for the current conversation
+const subscription = await realtime.subscribe(
+  Channel.tablesdb('<DATABASE_ID>').table('<MESSAGES_TABLE_ID>').row().create(),
+  (response) => {
+    displayMessage(response.payload);
+  },
+  [Query.equal('conversationId', [currentConversationId])]
 );
 ```
 
-When a new message is created (either from the user or the LLM), all subscribed clients receive it immediately.
+The `Channel` helper provides a fluent API for building channel strings, replacing manual string concatenation. The `.create()` event filter ensures the callback only fires for new messages, not updates or deletes.
+
+By passing a `Query.equal()` filter, messages are filtered server-side so the callback only receives messages for the current conversation. This removes the need for manual filtering in your callback and reduces unnecessary processing on the client.
 
 ## Load conversation history for context
 
