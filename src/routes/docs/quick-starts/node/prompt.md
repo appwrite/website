@@ -110,7 +110,7 @@ Respect user's package manager at all time. Don't use NPM if the user uses somet
 
             var testTodo3 = {
                 title: 'Cut the apples',
-                description: 'Don\'t forget to pack them in a box',
+                description: "Don't forget to pack them in a box",
                 isComplete: false
             };
 
