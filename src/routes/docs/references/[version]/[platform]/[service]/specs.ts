@@ -425,6 +425,21 @@ export async function getDescription(service: string) {
     return descriptions[target]() as unknown as string;
 }
 
+function getContentTypeDescription(content: Record<string, any>): string {
+    const contentType = Object.keys(content)[0];
+    
+    if (contentType === '*/*') {
+        const mediaTypeObject = content[contentType];
+        const schema = mediaTypeObject?.schema as OpenAPIV3.SchemaObject;
+        
+        if (schema?.type === 'string' && schema?.format === 'binary') {
+            return 'application/gzip';
+        }
+    }
+    
+    return contentType;
+}
+
 export async function getService(
     version: string,
     platform: string,
@@ -496,18 +511,18 @@ export async function getService(
 
                 return {
                     code: Number(code),
-                    contentType: response?.content ? Object.keys(response.content)[0] : undefined,
+                    contentType: response?.content ? getContentTypeDescription(response.content) : undefined,
                     models
                 };
             }
         );
 
+        const exampleVersion = version === 'latest' ? '1.7.x' : version;
         const path = isAndroid
-            ? `/node_modules/@appwrite.io/repo/docs/examples/${version}/${
+            ? `/node_modules/@appwrite.io/repo/docs/examples/${exampleVersion}/${
                   isAndroidServer ? 'server-kotlin' : 'client-android'
-              }/${isAndroidJava ? 'java' : 'kotlin'}/${operation['x-appwrite']?.demo}`
-            : `/node_modules/@appwrite.io/repo/docs/examples/${version}/${platform}/examples/${operation['x-appwrite']?.demo}`;
-
+              }/${isAndroidJava ? 'java' : 'kotlin'}/${operation['x-appwrite'].demo}`
+            : `/node_modules/@appwrite.io/repo/docs/examples/${exampleVersion}/${platform}/examples/${operation['x-appwrite'].demo}`;
         if (!(path in examples)) {
             continue;
         }
