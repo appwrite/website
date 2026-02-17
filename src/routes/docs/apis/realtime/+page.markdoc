@@ -4,7 +4,7 @@ title: Realtime
 description: Want to build dynamic and interactive applications with real-time data updates? Appwrite Realtime API makes it possible, get started with our intro guide.
 ---
 
-Appwrite supports multiple protocols for accessing the server, including [REST](/docs/apis/rest), [GraphQL](/docs/apis/graphql), and [Realtime](/docs/apis/realtime). The Appwrite Realtime allows you to listen to any Appwrite events in realtime using the `subscribe` method.
+Appwrite supports multiple protocols for accessing the server, including [REST](/docs/apis/rest), [GraphQL](/docs/apis/graphql), and [Realtime](/docs/apis/realtime). The Appwrite Realtime allows you to listen to any Appwrite events in realtime using the `Realtime` service.
 
 Instead of requesting new data via HTTP, the subscription will receive new data every time it changes, any connected client receives that update within milliseconds via a WebSocket connection.
 
@@ -12,14 +12,16 @@ This lets you build an interactive and responsive user experience by providing i
 
 {% multicode %}
 ```client-web
-import { Client } from "appwrite";
+import { Client, Realtime, Channel } from "appwrite";
 
 const client = new Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
     .setProject('<PROJECT_ID>');
 
+const realtime = new Realtime(client);
+
 // Subscribe to files channel
-client.subscribe('files', response => {
+const subscription = await realtime.subscribe(Channel.files(), response => {
     if(response.events.includes('buckets.*.files.*.create')) {
         // Log when a new file is uploaded
         console.log(response.payload);
@@ -37,7 +39,7 @@ final client = Client()
 final realtime = Realtime(client);
 
 // Subscribe to files channel
-final subscription = realtime.subscribe(['files']);
+final subscription = realtime.subscribe([Channel.files()]);
 
 subscription.stream.listen((response) {
     if(response.events.contains('buckets.*.files.*.create')) {
@@ -58,8 +60,8 @@ let client = Client()
 let realtime = Realtime(client)
 
 // Subscribe to files channel
-let subscription = realtime.subscribe(channels: ["files"]) { response in
-    if (message.events!.contains("buckets.*.files.*.create")) {
+let subscription = realtime.subscribe(channels: [Channel.files()]) { response in
+    if (response.events!.contains("buckets.*.files.*.create")) {
         // Log when a new file is uploaded
         print(String(describing: response))
     }
@@ -69,6 +71,7 @@ let subscription = realtime.subscribe(channels: ["files"]) { response in
 ```client-android-kotlin
 import io.appwrite.Client
 import io.appwrite.services.Realtime
+import io.appwrite.extensions.Channel
 
 val client = Client(context)
     .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
@@ -77,7 +80,7 @@ val client = Client(context)
 val realtime = Realtime(client)
 
 // Subscribe to files channel
-let subscription = realtime.subscribe("files") {
+val subscription = realtime.subscribe(Channel.files()) {
     if(it.events.contains("buckets.*.files.*.create")) {
         // Log when a new file is uploaded
         print(it.payload.toString());
@@ -93,6 +96,104 @@ If you subscribe to a channel, you will receive callbacks for a variety of event
 
 [View a list of all available events](/docs/advanced/platform/events).
 
+# Channel helpers {% #channel-helpers %}
+
+Instead of manually writing channel strings, you can use the `Channel` helper class to build type-safe channel subscriptions. The helper provides a fluent API that makes it easier to construct channel strings and reduces errors.
+
+{% multicode %}
+```client-web
+import { Client, Realtime, Channel } from "appwrite";
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>');
+
+const realtime = new Realtime(client);
+
+// Subscribe to account channel
+const subscription = await realtime.subscribe(Channel.account(), response => {
+    console.log(response);
+});
+
+// Subscribe to a specific row
+const rowSubscription = await realtime.subscribe(
+    Channel.tablesdb('<DATABASE_ID>').table('<TABLE_ID>').row('<ROW_ID>'),
+    response => {
+        console.log(response);
+    }
+);
+```
+
+```client-flutter
+import 'package:appwrite/appwrite.dart';
+
+final client = Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>');
+
+final realtime = Realtime(client);
+
+// Subscribe to account channel
+final subscription = realtime.subscribe([Channel.account()]);
+
+// Subscribe to a specific row
+final docSubscription = realtime.subscribe([
+    Channel.tablesdb('<DATABASE_ID>').table('<TABLE_ID>').row('<ROW_ID>')
+]);
+```
+
+```client-apple
+import Appwrite
+
+let client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+
+let realtime = Realtime(client)
+
+// Subscribe to account channel
+let subscription = realtime.subscribe(channels: [Channel.account()]) { response in
+    print(String(describing: response))
+}
+
+// Subscribe to a specific row
+let docSubscription = realtime.subscribe(
+    channels: [Channel.tablesdb("<DATABASE_ID>").table("<TABLE_ID>").row("<ROW_ID>")]
+) { response in
+    print(String(describing: response))
+}
+```
+
+```client-android-kotlin
+import io.appwrite.Client
+import io.appwrite.services.Realtime
+import io.appwrite.extensions.Channel
+
+val client = Client(context)
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+
+val realtime = Realtime(client)
+
+// Subscribe to account channel
+val subscription = realtime.subscribe(Channel.account()) {
+    print(it.toString())
+}
+
+// Subscribe to a specific row
+val docSubscription = realtime.subscribe(
+    Channel.tablesdb("<DATABASE_ID>").table("<TABLE_ID>").row("<ROW_ID>")
+) {
+    print(it.toString())
+}
+```
+
+{% /multicode %}
+
+The `Channel` helper supports all available channels and allows you to:
+- Build channels with a fluent, chainable API
+- Optionally specify resource IDs (omit IDs to subscribe to all resources)
+- Add event filters like `.create()`, `.update()`, or `.delete()`
 
 {% info title="Permissions" %}
 All subscriptions are secured by the [permissions system](/docs/advanced/platform/permissions) offered by Appwrite, meaning a user will only receive updates to resources they have permission to access.
@@ -114,13 +215,15 @@ In this example we are subscribing to all updates related to our account by usin
 
 {% multicode %}
 ```client-web
-import { Client } from "appwrite";
+import { Client, Realtime, Channel } from "appwrite";
 
 const client = new Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
     .setProject('<PROJECT_ID>');
 
-client.subscribe('account', response => {
+const realtime = new Realtime(client);
+
+const subscription = await realtime.subscribe(Channel.account(), response => {
     // Callback will be executed on all account events.
     console.log(response);
 });
@@ -135,7 +238,7 @@ final client = Client()
 
 final realtime = Realtime(client);
 
-final subscription = realtime.subscribe(['account']);
+final subscription = realtime.subscribe([Channel.account()]);
 
 subscription.stream.listen((response) {
     // Callback will be executed on all account events.
@@ -153,15 +256,16 @@ let client = Client()
 
 let realtime = Realtime(client)
 
-let subscription = realtime.subscribe(channel: "account", callback: { response in
+let subscription = realtime.subscribe(channels: [Channel.account()]) { response in
     // Callback will be executed on all account events.
     print(String(describing: response))
-})
+}
 ```
 
 ```client-android-kotlin
 import io.appwrite.Client
 import io.appwrite.services.Realtime
+import io.appwrite.extensions.Channel
 
 val client = Client(context)
     .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
@@ -169,7 +273,7 @@ val client = Client(context)
 
 val realtime = Realtime(client)
 
-val subscription = realtime.subscribe("account") {
+val subscription = realtime.subscribe(Channel.account()) {
     // Callback will be executed on all account events.
     print(it.payload.toString())
 }
@@ -181,18 +285,23 @@ val subscription = realtime.subscribe("account") {
 
 You can also listen to multiple channels at once by passing an array of channels. This will trigger the callback for any events for all channels passed.
 
-In this example we are listening to the row A and all files by subscribing to the `databases.A.tables.A.rows.A` and `files` channels.
+In this example we are listening to a specific row and all files by subscribing to `Channel.tablesdb("<DATABASE_ID>").table("<TABLE_ID>").row("<ROW_ID>")` and `Channel.files()` channels.
 
 {% multicode %}
 ```client-web
-import { Client } from "appwrite";
+import { Client, Realtime, Channel } from "appwrite";
 
 const client = new Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
     .setProject('<PROJECT_ID>');
 
-client.subscribe(['tables.A.rows.A', 'files'], response => {
-    // Callback will be executed on changes for rows A and all files.
+const realtime = new Realtime(client);
+
+const subscription = await realtime.subscribe([
+    Channel.tablesdb('<DATABASE_ID>').table('<TABLE_ID>').row('<ROW_ID>'),
+    Channel.files()
+], response => {
+    // Callback will be executed on changes for the row and all files.
     console.log(response);
 });
 ```
@@ -206,10 +315,13 @@ final client = Client()
 
 final realtime = Realtime(client);
 
-final subscription = realtime.subscribe(['databases.A.tables.A.rows.A', 'files']);
+final subscription = realtime.subscribe([
+    Channel.tablesdb('<DATABASE_ID>').table('<TABLE_ID>').row('<ROW_ID>'),
+    Channel.files()
+]);
 
 subscription.stream.listen((response) {
-    // Callback will be executed on changes for rows A and all files.
+    // Callback will be executed on changes for the row and all files.
     print(response);
 })
 ```
@@ -224,8 +336,11 @@ let client = Client()
 
 let realtime = Realtime(client)
 
-realtime.subscribe(channels: ["databases.A.tables.A.rows.A", "files"]) { response in
-    // Callback will be executed on changes for rows A and all files.
+realtime.subscribe(channels: [
+    Channel.tablesdb("<DATABASE_ID>").table("<TABLE_ID>").row("<ROW_ID>"),
+    Channel.files()
+]) { response in
+    // Callback will be executed on changes for the row and all files.
     print(String(describing: response))
 }
 ```
@@ -233,14 +348,18 @@ realtime.subscribe(channels: ["databases.A.tables.A.rows.A", "files"]) { respons
 ```client-android-kotlin
 import io.appwrite.Client
 import io.appwrite.services.Realtime
+import io.appwrite.extensions.Channel
 
 val client = Client(context)
     .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
     .setProject("<PROJECT_ID>")
 val realtime = Realtime(client)
 
-realtime.subscribe("databases.A.tables.A.rows.A", "files") {
-    // Callback will be executed on changes for rows A and all files.
+realtime.subscribe(
+    Channel.tablesdb("<DATABASE_ID>").table("<TABLE_ID>").row("<ROW_ID>"),
+    Channel.files()
+) {
+    // Callback will be executed on changes for the row and all files.
     print(it.toString())
 }
 ```
@@ -253,19 +372,21 @@ If you no longer want to receive updates from a subscription, you can unsubscrib
 
 {% multicode %}
 ```client-web
-import { Client } from "appwrite";
+import { Client, Realtime, Channel } from "appwrite";
 
 const client = new Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
     .setProject('<PROJECT_ID>');
 
-const unsubscribe = client.subscribe('files', response => {
+const realtime = new Realtime(client);
+
+const subscription = await realtime.subscribe(Channel.files(), response => {
     // Callback will be executed on changes for all files.
     console.log(response);
 });
 
 // Closes the subscription.
-unsubscribe();
+await subscription.close();
 ```
 
 ```client-flutter
@@ -277,7 +398,7 @@ final client = Client()
 
 final realtime = Realtime(client);
 
-final subscription = realtime.subscribe(['files']);
+final subscription = realtime.subscribe([Channel.files()]);
 
 subscription.stream.listen((response) {
     // Callback will be executed on changes for all files.
@@ -294,7 +415,7 @@ import Appwrite
 let client = Client()
 let realtime = Realtime(client)
 
-let subscription = realtime.subscribe(channel: "files") { response in
+let subscription = realtime.subscribe(channels: [Channel.files()]) { response in
     // Callback will be executed on changes for all files.
     print(response.toString())
 }
@@ -306,6 +427,7 @@ subscription.close()
 ```client-android-kotlin
 import io.appwrite.Client
 import io.appwrite.services.Realtime
+import io.appwrite.extensions.Channel
 
 val client = Client(context)
     .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
@@ -313,7 +435,7 @@ val client = Client(context)
 
 val realtime = Realtime(client)
 
-val subscription = realtime.subscribe("files") {
+val subscription = realtime.subscribe(Channel.files()) {
     // Callback will be executed on changes for all files.
     print(it.toString())
 }
@@ -323,6 +445,180 @@ subscription.close()
 ```
 
 {% /multicode %}
+
+# Queries {% #queries %}
+
+You can filter realtime events by passing queries as a third parameter when subscribing. Events are filtered server-side based on your queries, so your callback only receives updates that match your conditions. This allows you to use familiar SDK queries like `Query.equal` to automatically filter events instead of filtering manually in your callback.
+
+{% multicode %}
+```client-web
+import { Client, Realtime, Channel, Query } from "appwrite";
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>');
+
+const realtime = new Realtime(client);
+
+// Subscribe to all updates
+const allVotes = await realtime.subscribe(
+    Channel.tablesdb('<DATABASE_ID>').table('<TABLE_ID>').row(),
+    response => {
+        console.log(response.payload);
+    }
+);
+
+// Subscribe to updates where person equals 'person1'
+const person1Votes = await realtime.subscribe(
+    Channel.tablesdb('<DATABASE_ID>').table('<TABLE_ID>').row(),
+    response => {
+        console.log(response.payload);
+    },
+    [Query.equal('person', ['person1'])]
+);
+
+// Subscribe to updates where person is not 'person1'
+const otherVotes = await realtime.subscribe(
+    Channel.tablesdb('<DATABASE_ID>').table('<TABLE_ID>').row(),
+    response => {
+        console.log(response.payload);
+    },
+    [Query.notEqual('person', 'person1')]
+);
+```
+
+```client-flutter
+import 'package:appwrite/appwrite.dart';
+
+final client = Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>');
+
+final realtime = Realtime(client);
+
+// Subscribe to all updates
+final allVotes = realtime.subscribe(
+    [Channel.tablesdb('<DATABASE_ID>').table('<TABLE_ID>').row()]
+);
+
+allVotes.stream.listen((response) {
+    print(response.payload);
+});
+
+// Subscribe to updates where person equals 'person1'
+final person1Votes = realtime.subscribe(
+    [Channel.tablesdb('<DATABASE_ID>').table('<TABLE_ID>').row()],
+    queries: [Query.equal('person', ['person1'])]
+);
+
+person1Votes.stream.listen((response) {
+    print(response.payload);
+});
+
+// Subscribe to updates where person is not 'person1'
+final otherVotes = realtime.subscribe(
+    [Channel.tablesdb('<DATABASE_ID>').table('<TABLE_ID>').row()],
+    queries: [Query.notEqual('person', 'person1')]
+);
+
+otherVotes.stream.listen((response) {
+    print(response.payload);
+});
+```
+
+```client-apple
+import Appwrite
+import AppwriteModels
+
+let client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+
+let realtime = Realtime(client)
+
+// Subscribe to all updates
+let allVotes = realtime.subscribe(
+    channels: [Channel.tablesdb("<DATABASE_ID>").table("<TABLE_ID>").row()]
+) { response in
+    print(String(describing: response.payload))
+}
+
+// Subscribe to updates where person equals 'person1'
+let person1Votes = realtime.subscribe(
+    channels: [Channel.tablesdb("<DATABASE_ID>").table("<TABLE_ID>").row()],
+    callback: { response in
+        print(String(describing: response.payload))
+    },
+    queries: [Query.equal("person", value: ["person1"])]
+)
+
+// Subscribe to updates where person is not 'person1'
+let otherVotes = realtime.subscribe(
+    channels: [Channel.tablesdb("<DATABASE_ID>").table("<TABLE_ID>").row()],
+    callback: { response in
+        print(String(describing: response.payload))
+    },
+    queries: [Query.notEqual("person", value: "person1")]
+)
+```
+
+```client-android-kotlin
+import io.appwrite.Client
+import io.appwrite.Query
+import io.appwrite.services.Realtime
+import io.appwrite.extensions.Channel
+
+val client = Client(context)
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+
+val realtime = Realtime(client)
+
+// Subscribe to all updates
+val allVotes = realtime.subscribe(
+    Channel.tablesdb("<DATABASE_ID>").table("<TABLE_ID>").row()
+) {
+    print(it.payload.toString())
+}
+
+// Subscribe to updates where person equals 'person1'
+val person1Votes = realtime.subscribe(
+    Channel.tablesdb("<DATABASE_ID>").table("<TABLE_ID>").row(),
+    payloadType = Any::class.java,
+    queries = setOf(Query.equal("person", listOf("person1")))
+) {
+    print(it.payload.toString())
+}
+
+// Subscribe to updates where person is not 'person1'
+val otherVotes = realtime.subscribe(
+    Channel.tablesdb("<DATABASE_ID>").table("<TABLE_ID>").row(),
+    payloadType = Any::class.java,
+    queries = setOf(Query.notEqual("person", "person1"))
+) {
+    print(it.payload.toString())
+}
+```
+
+{% /multicode %}
+
+## Supported queries {% #supported-queries %}
+
+The following query methods are supported for realtime filtering:
+
+{% table %}
+* Category
+* Queries
+---
+* Comparison
+* `Query.equal()`, `Query.notEqual()`, `Query.greaterThan()`, `Query.greaterThanEqual()`, `Query.lessThan()`, `Query.lessThanEqual()`
+---
+* Null checks
+* `Query.isNull()`, `Query.isNotNull()`
+---
+* Logical
+* `Query.and()`, `Query.or()`
+{% /table %}
 
 # Payload {% #payload %}
 
@@ -412,55 +708,77 @@ The response will look like this:
 
 # Channels {% #channels %}
 
-A list of all channels available you can subscribe to. IDs cannot be wildcards.
+A list of all channels available you can subscribe to. When using `Channel` helpers, leaving an ID blank will subscribe using `*`.
 
 {% table %}
 * Channel
+* Channel Helper
 * Description
 ---
 * `account`
+* `Channel.account()`
 * All account related events (session create, name update...)
 ---
-* `databases.<ID>.tables.<ID>.rows`
+* `tablesdb.<ID>.tables.<ID>.rows`
+* `Channel.tablesdb('<DATABASE_ID>').table('<TABLE_ID>').row()`
 * Any create/update/delete events to any row in a table
 ---
 * `rows`
+* `Channel.rows()`
 * Any create/update/delete events to any row
 ---
-* `databases.<ID>.tables.<ID>.rows.<ID>`
+* `tablesdb.<ID>.tables.<ID>.rows.<ID>`
+* `Channel.tablesdb('<DATABASE_ID>').table('<TABLE_ID>').row('<ROW_ID>')`
 * Any update/delete events to a given row
 ---
 * `files`
+* `Channel.files()`
 * Any create/update/delete events to any file
 ---
 * `buckets.<ID>.files.<ID>`
+* `Channel.bucket('<BUCKET_ID>').file('<FILE_ID>')`
 * Any update/delete events to a given file of the given bucket
 ---
 * `buckets.<ID>.files`
+* `Channel.bucket('<BUCKET_ID>').file()`
 * Any update/delete events to any file of the given bucket
 ---
-* `teams`
-* Any create/update/delete events to a any team
+* `teams.*`
+* `Channel.teams()`
+* Any create/update/delete events to any team
 ---
 * `teams.<ID>`
+* `Channel.team('<TEAM_ID>')`
 * Any update/delete events to a given team
 ---
 * `memberships`
-* Any create/update/delete events to a any membership
+* `Channel.memberships()`
+* Any create/update/delete events to any membership
 ---
 * `memberships.<ID>`
+* `Channel.membership('<MEMBERSHIP_ID>')`
 * Any update/delete events to a given membership
 ---
 * `executions`
+* `Channel.executions()`
 * Any update to executions
 ---
 * `executions.<ID>`
+* `Channel.execution(ID)`
 * Any update to a given execution
 ---
 * `functions.<ID>`
+* `Channel.function('<FUNCTION_ID>')`
 * Any execution event to a given function
 
 {% /table %}
+
+You can also filter events by appending event methods to the channel helpers:
+- `.create()` - Listen only to create events
+- `.update()` - Listen only to update events  
+- `.delete()` - Listen only to delete events
+
+For example, `Channel.tablesdb('<DATABASE_ID>').table('<TABLE_ID>').row('<ROW_ID>').update()` will only trigger on row updates.
 
 # Custom endpoint {% #custom-endpoint %}
 

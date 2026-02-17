@@ -39,6 +39,9 @@ Below is a list of the available commands in the Appwrite CLI. You can get more 
 * `types [options] <output-directory>`
 * The types command generates type definitions based on your Appwrite database schema. Learn more about [type generation](/docs/products/databases/type-generation).
 ---
+* `generate`
+* The generate command creates a type-safe SDK tailored to your project. It detects your project's language and generates typed helpers based on your database schema. Learn more about [SDK generation](/docs/tooling/command-line/generate).
+---
 {% /table %}
 
 ## Account commands {% #account-commands %}
