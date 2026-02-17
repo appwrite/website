@@ -80,7 +80,7 @@ Do exactly these steps in order. Confirm each step succeeds before continuing. I
             name='Todos'
           )
 
-          tablesDB.create_string_column(
+          tablesDB.create_varchar_column(
             database_id=todoDatabase['$id'],
             table_id=todoTable['$id'],
             key='title',
@@ -88,11 +88,10 @@ Do exactly these steps in order. Confirm each step succeeds before continuing. I
             required=True
           )
 
-          tablesDB.create_string_column(
+          tablesDB.create_text_column(
             database_id=todoDatabase['$id'],
             table_id=todoTable['$id'],
             key='description',
-            size=255,
             required=False,
             default='This is a test description.'
           )

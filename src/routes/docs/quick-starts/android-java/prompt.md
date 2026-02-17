@@ -90,13 +90,14 @@ Rules
                 account.createEmailPasswordSession(
                     email,
                     password,
-                    new CoroutineCallback<>(result -> {
-                    callback.onSuccess(result);
-                    return null;
-                }, error -> {
-                    callback.onError(error);
-                    return null;
-                }));
+                    new CoroutineCallback<>((result, error) -> {
+                        if (error != null) {
+                            callback.onError(new Exception(error));
+                            return;
+                        }
+                        callback.onSuccess(result);
+                    })
+                );
             }
 
             public void register(String email, String password, final AuthCallback<User<Map<String, Object>>> callback) {
@@ -104,24 +105,27 @@ Rules
                     ID.unique(),
                     email,
                     password,
-                        new CoroutineCallback<>(result -> {
-                            callback.onSuccess(result);
-                            return null;
-                        }, error -> {
-                            callback.onError(error);
-                            return null;
-                        })
+                    new CoroutineCallback<>((result, error) -> {
+                        if (error != null) {
+                            callback.onError(new Exception(error));
+                            return;
+                        }
+                        callback.onSuccess(result);
+                    })
                 );
             }
 
             public void logout(final AuthCallback<Object> callback) {
-                account.deleteSession("current", new CoroutineCallback<>(result -> {
-                    callback.onSuccess(result);
-                    return null;
-                }, error -> {
-                    callback.onError(error);
-                    return null;
-                }));
+                account.deleteSession(
+                    "current",
+                    new CoroutineCallback<>((result, error) -> {
+                        if (error != null) {
+                            callback.onError(new Exception(error));
+                            return;
+                        }
+                        callback.onSuccess(result);
+                    })
+                );
             }
         }
         ```

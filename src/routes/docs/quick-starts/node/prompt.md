@@ -67,7 +67,7 @@ Respect user's package manager at all time. Don't use NPM if the user uses somet
                 name: 'Todos'
             });
 
-            await tablesDB.createStringColumn({
+            await tablesDB.createVarcharColumn({
                 databaseId: todoDatabase.$id,
                 tableId: todoTable.$id,
                 key: 'title',
@@ -75,13 +75,12 @@ Respect user's package manager at all time. Don't use NPM if the user uses somet
                 required: true
             });
 
-            await tablesDB.createStringColumn({
+            await tablesDB.createTextColumn({
                 databaseId: todoDatabase.$id,
                 tableId: todoTable.$id,
                 key: 'description',
-                size: 255,
                 required: false,
-                default: 'This is a test description'
+                xdefault: 'This is a test description'
             });
 
             await tablesDB.createBooleanColumn({
@@ -111,7 +110,7 @@ Respect user's package manager at all time. Don't use NPM if the user uses somet
 
             var testTodo3 = {
                 title: 'Cut the apples',
-                description: "Don't forget to pack them in a box",
+                description: 'Don\'t forget to pack them in a box',
                 isComplete: false
             };
 
@@ -143,6 +142,7 @@ Respect user's package manager at all time. Don't use NPM if the user uses somet
         const { Query } = require('node-appwrite');
 
         async function getTodos() {
+            // Retrieve rows (default limit is 25)
             var todos = await tablesDB.listRows({
                 databaseId: todoDatabase.$id,
                 tableId: todoTable.$id
@@ -157,6 +157,7 @@ Respect user's package manager at all time. Don't use NPM if the user uses somet
         }
 
         async function getCompletedTodos() {
+            // Use queries to filter completed todos with pagination
             var todos = await tablesDB.listRows({
                 databaseId: todoDatabase.$id,
                 tableId: todoTable.$id,
@@ -176,6 +177,7 @@ Respect user's package manager at all time. Don't use NPM if the user uses somet
         }
 
         async function getIncompleteTodos() {
+            // Query for incomplete todos
             var todos = await tablesDB.listRows({
                 databaseId: todoDatabase.$id,
                 tableId: todoTable.$id,
@@ -218,6 +220,7 @@ Respect user's package manager at all time. Don't use NPM if the user uses somet
 
         const tablesDB = new TablesDB(client);
 
+        // Type-safe database operations
         async function getTodos() {
             const todos = await tablesDB.listRows<Todo>({
                 databaseId: '<DATABASE_ID>',

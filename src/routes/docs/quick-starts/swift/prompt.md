@@ -59,26 +59,25 @@ Note: This is for the Swift Server SDK, meant for server and backend application
                 tableId: ID.unique(),
                 name: "Todos"
             )
-            try? await tablesDB.createStringColumn(
+            try? await tablesDB.createVarcharColumn(
                 databaseId: todoDatabase!.id,
                 tableId: todoTable!.id,
                 key: "title",
                 size: 255,
-                xrequired: true
+                required: true
             )
-            try? await tablesDB.createStringColumn(
+            try? await tablesDB.createTextColumn(
                 databaseId: todoDatabase!.id as! String,
                 tableId: todoTable!.id as! String,
                 key: "description",
-                size: 255,
-                xrequired: false,
-                xdefault: "This is a test description."
+                required: false,
+                default: "This is a test description."
             )
             try? await tablesDB.createBooleanColumn(
                 databaseId: todoDatabase!.id as! String,
                 tableId: todoTable!.id as! String,
                 key: "isComplete",
-                xrequired: true
+                required: true
             )
 
             return (todoDatabase, todoTable)

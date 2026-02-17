@@ -41,7 +41,7 @@ Do exactly these steps in order. Confirm each step succeeds before continuing. I
     - Add a function to configure a todo table with columns:
 
         ```dart
-        var databases;
+        var tablesDB;
         var todoDatabase;
         var todoTable;
 
@@ -59,7 +59,7 @@ Do exactly these steps in order. Confirm each step succeeds before continuing. I
             name: 'Todos'
           );
 
-          await tablesDB.createStringColumn(
+          await tablesDB.createVarcharColumn(
             databaseId: todoDatabase.$id,
             tableId: todoTable.$id,
             key: 'title',
@@ -67,11 +67,10 @@ Do exactly these steps in order. Confirm each step succeeds before continuing. I
             xrequired: true
           );
 
-          await tablesDB.createStringColumn(
+          await tablesDB.createTextColumn(
             databaseId: todoDatabase.$id,
             tableId: todoTable.$id,
             key: 'description',
-            size: 255,
             xrequired: false,
             xdefault: 'This is a test description'
           );

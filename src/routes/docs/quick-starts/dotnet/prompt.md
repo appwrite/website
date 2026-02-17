@@ -63,7 +63,7 @@ Do exactly these steps in order. Confirm each step succeeds before continuing. I
             name: "Todos"
         );
 
-        await tablesDB.CreateStringColumn(
+        await tablesDB.CreateVarcharColumn(
             databaseId: todoDatabase.Id,
             tableId: todoTable.Id,
             key: "title",
@@ -71,11 +71,10 @@ Do exactly these steps in order. Confirm each step succeeds before continuing. I
             required: true
         );
 
-        await tablesDB.CreateStringColumn(
+        await tablesDB.CreateTextColumn(
             databaseId: todoDatabase.Id,
             tableId: todoTable.Id,
             key: "description",
-            size: 255,
             required: false,
             xdefault: "This is a test description"
         );
@@ -112,21 +111,21 @@ Do exactly these steps in order. Confirm each step succeeds before continuing. I
             {"isComplete", false}
         };
 
-        await tablesDB.createRow(
+        await tablesDB.CreateRow(
             databaseId: todoDatabase.Id,
             tableId: todoTable.Id,
             rowId: ID.Unique(),
             data: testTodo1
         );
 
-        await tablesDB.createRow(
+        await tablesDB.CreateRow(
             databaseId: todoDatabase.Id,
             tableId: todoTable.Id,
             rowId: ID.Unique(),
             data: testTodo2
         );
 
-        await tablesDB.createRow(
+        await tablesDB.CreateRow(
             databaseId: todoDatabase.Id,
             tableId: todoTable.Id,
             rowId: ID.Unique(),
@@ -138,12 +137,12 @@ Do exactly these steps in order. Confirm each step succeeds before continuing. I
     - Add code to retrieve and display the todo data:
 
         ```csharp
-        var todos = await tablesDB.listRows(
+        var todos = await tablesDB.ListRows(
             databaseId: todoDatabase.Id,
             tableId: todoTable.Id
         );
 
-        foreach (var todo in todos.Documents)
+        foreach (var todo in todos.Rows)
         {
             Console.WriteLine($"Title: {todo.Data["title"]}\nDescription: {todo.Data["description"]}\nIs Todo Complete: {todo.Data["isComplete"]}\n\n");
         }

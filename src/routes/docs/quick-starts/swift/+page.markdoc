@@ -113,20 +113,20 @@ func prepareDatabase() async -> (Database?, Table?) {
         tableId: todoTable!.id,
         key: "title",
         size: 255,
-        xrequired: true
+        required: true
     )
     try? await tablesDB.createTextColumn(
         databaseId: todoDatabase!.id as! String,
         tableId: todoTable!.id as! String,
         key: "description",
-        xrequired: false,
-        xdefault: "This is a test description."
+        required: false,
+        default: "This is a test description."
     )
     try? await tablesDB.createBooleanColumn(
         databaseId: todoDatabase!.id as! String,
         tableId: todoTable!.id as! String,
         key: "isComplete",
-        xrequired: true
+        required: true
     )
     
     return (todoDatabase, todoTable)

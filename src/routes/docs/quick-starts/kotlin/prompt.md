@@ -67,7 +67,7 @@ Note: This is for the Kotlin Server SDK, meant for server and backend applicatio
             todoDatabase = tablesDB.create(ID.unique(), "TodosDB")
             todoTable = tablesDB.createTable(todoDatabase?.id!!, ID.unique(), "Todos")
 
-            tablesDB.createStringColumn(
+            tablesDB.createVarcharColumn(
                 databaseId = todoDatabase?.id!!,
                 tableId = todoTable?.id!!,
                 key = "title",
@@ -75,11 +75,10 @@ Note: This is for the Kotlin Server SDK, meant for server and backend applicatio
                 required = true
             )
 
-            tablesDB.createStringColumn(
+            tablesDB.createTextColumn(
                 databaseId = todoDatabase?.id!!,
                 tableId = todoTable?.id!!,
                 key = "description",
-                size = 255,
                 required = false,
                 default = "This is a test description."
             )

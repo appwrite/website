@@ -40,14 +40,14 @@ Note: The dedicated Deno SDK has been deprecated. Use the Node.js SDK directly t
     - Replace placeholders with the actual values provided by the user:
 
         ```ts
-        import { Client, ID, TablesDB, Models } from 'npm:node-appwrite';
+        import { Client, ID, TablesDB, Models } from "npm:node-appwrite";
 
         const client: Client = new Client();
 
         client
-            .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
-            .setProject('<PROJECT_ID>')
-            .setKey('<YOUR_API_KEY>');
+            .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+            .setProject("<PROJECT_ID>")
+            .setKey("<YOUR_API_KEY>");
         ```
 
 5. Initialize database
@@ -77,7 +77,7 @@ Note: The dedicated Deno SDK has been deprecated. Use the Node.js SDK directly t
                 name: 'Todos'
             });
 
-            await tablesDB.createStringColumn({
+            await tablesDB.createVarcharColumn({
                 databaseId: todoDatabase.$id,
                 tableId: todoTable.$id,
                 key: 'title',
@@ -85,11 +85,10 @@ Note: The dedicated Deno SDK has been deprecated. Use the Node.js SDK directly t
                 required: true
             });
 
-            await tablesDB.createStringColumn({
+            await tablesDB.createTextColumn({
                 databaseId: todoDatabase.$id,
                 tableId: todoTable.$id,
                 key: 'description',
-                size: 255,
                 required: false,
                 xdefault: 'This is a test description'
             });
@@ -121,7 +120,7 @@ Note: The dedicated Deno SDK has been deprecated. Use the Node.js SDK directly t
 
             const testTodo3: Todo = {
                 title: 'Cut the apples',
-                description: "Don't forget to pack them in a box",
+                description: 'Don\'t forget to pack them in a box',
                 isComplete: false
             };
 
@@ -157,9 +156,7 @@ Note: The dedicated Deno SDK has been deprecated. Use the Node.js SDK directly t
             });
 
             todos.rows.forEach((todo: Todo) => {
-                console.log(
-                    `Title: ${todo.title}\nDescription: ${todo.description}\nIs Todo Complete: ${todo.isComplete}\n\n`
-                );
+                console.log(`Title: ${todo.title}\nDescription: ${todo.description}\nIs Todo Complete: ${todo.isComplete}\n\n`);
             });
         }
 

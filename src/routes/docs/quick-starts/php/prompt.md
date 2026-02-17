@@ -66,7 +66,7 @@ Do exactly these steps in order. Confirm each step succeeds before continuing. I
                 name: 'Todos'
             );
 
-            $tablesDB->createStringColumn(
+            $tablesDB->createVarcharColumn(
                 databaseId: $todoDatabase['$id'],
                 tableId: $todoTable['$id'],
                 key: 'title',
@@ -74,11 +74,10 @@ Do exactly these steps in order. Confirm each step succeeds before continuing. I
                 required: true
             );
 
-            $tablesDB->createStringColumn(
+            $tablesDB->createTextColumn(
                 databaseId: $todoDatabase['$id'],
                 tableId: $todoTable['$id'],
                 key: 'description',
-                size: 255,
                 required: false,
             );
 
@@ -145,6 +144,7 @@ Do exactly these steps in order. Confirm each step succeeds before continuing. I
         use Appwrite\Query;
 
         function getTodos($tablesDB, $todoDatabase, $todoTable) {
+            // Retrieve rows (default limit is 25)
             $todos = $tablesDB->listRows(
                 $todoDatabase['$id'],
                 $todoTable['$id']
@@ -159,6 +159,7 @@ Do exactly these steps in order. Confirm each step succeeds before continuing. I
         }
 
         function getCompletedTodos($tablesDB, $todoDatabase, $todoTable) {
+            // Use queries to filter completed todos with pagination
             $todos = $tablesDB->listRows(
                 $todoDatabase['$id'],
                 $todoTable['$id'],
@@ -178,6 +179,7 @@ Do exactly these steps in order. Confirm each step succeeds before continuing. I
         }
 
         function getIncompleteTodos($tablesDB, $todoDatabase, $todoTable) {
+            // Query for incomplete todos
             $todos = $tablesDB->listRows(
                 $todoDatabase['$id'],
                 $todoTable['$id'],

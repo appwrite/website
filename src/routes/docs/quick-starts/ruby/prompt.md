@@ -63,7 +63,7 @@ Do exactly these steps in order. Confirm each step succeeds before continuing. I
                 name: 'Todos'
             )
 
-            tablesDB.create_string_column(
+            tablesDB.create_varchar_column(
                 database_id: todo_database.id,
                 table_id: todo_table.id,
                 key: 'title',
@@ -71,11 +71,10 @@ Do exactly these steps in order. Confirm each step succeeds before continuing. I
                 required: true
             )
 
-            tablesDB.create_string_column(
+            tablesDB.create_text_column(
                 database_id: todo_database.id,
                 table_id: todo_table.id,
                 key: 'description',
-                size: 255,
                 required: false
             )
 

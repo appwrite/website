@@ -158,21 +158,21 @@ var testTodo3 = new Dictionary<string, object>()
     {"isComplete", false}
 };
 
-await tablesDB.createRow(
+await tablesDB.CreateRow(
     databaseId: todoDatabase.Id,
     tableId: todoTable.Id,
     rowId: ID.Unique(),
     data: testTodo1
 );
 
-await tablesDB.createRow(
+await tablesDB.CreateRow(
     databaseId: todoDatabase.Id,
     tableId: todoTable.Id,
     rowId: ID.Unique(),
     data: testTodo2
 );
 
-await tablesDB.createRow(
+await tablesDB.CreateRow(
     databaseId: todoDatabase.Id,
     tableId: todoTable.Id,
     rowId: ID.Unique(),
@@ -186,12 +186,12 @@ await tablesDB.createRow(
 Create a function to retrieve the mock todo data.
 
 ```csharp
-var todos = await tablesDB.listRows(
+var todos = await tablesDB.ListRows(
     databaseId: todoDatabase.Id,
     tableId: todoTable.Id
 );
 
-foreach (var todo in todos.Documents)
+foreach (var todo in todos.Rows)
 {
     Console.WriteLine($"Title: {todo.Data["title"]}\nDescription: {todo.Data["description"]}\nIs Todo Complete: {todo.Data["isComplete"]}\n\n");
 }

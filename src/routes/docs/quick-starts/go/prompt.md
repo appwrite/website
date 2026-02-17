@@ -39,7 +39,7 @@ Do exactly these steps in order. Confirm each step succeeds before continuing. I
         import (
             "github.com/appwrite/sdk-for-go/appwrite"
             "github.com/appwrite/sdk-for-go/client"
-            "github.com/appwrite/sdk-for-go/tablesDB"
+            "github.com/appwrite/sdk-for-go/tablesdb"
             "github.com/appwrite/sdk-for-go/models"
             "github.com/appwrite/sdk-for-go/query"
         )
@@ -48,7 +48,7 @@ Do exactly these steps in order. Confirm each step succeeds before continuing. I
             appwriteClient    client.Client
             todoDatabase      *models.Database
             todoTable    *models.Table
-            appwriteDatabases *tablesDB.TablesDB
+            tablesDB *tablesdb.TablesDB
         )
 
         func main() {
@@ -78,7 +78,7 @@ Do exactly these steps in order. Confirm each step succeeds before continuing. I
                 "Todos",
             )
 
-            tablesDB.CreateStringColumn(
+            tablesDB.CreateVarcharColumn(
                 todoDatabase.Id,
                 todoTable.Id,
                 "title",
@@ -86,11 +86,10 @@ Do exactly these steps in order. Confirm each step succeeds before continuing. I
                 true,
             )
 
-            tablesDB.CreateStringColumn(
+            tablesDB.CreateTextColumn(
                 todoDatabase.Id,
                 todoTable.Id,
                 "description",
-                255,
                 false,
             )
 
@@ -125,21 +124,21 @@ Do exactly these steps in order. Confirm each step succeeds before continuing. I
                 "isComplete":  false,
             }
 
-            tablesDB.createRow(
+            tablesDB.CreateRow(
                 todoDatabase.Id,
                 todoTable.Id,
                 id.Unique(),
                 testTodo1,
             )
 
-            tablesDB.createRow(
+            tablesDB.CreateRow(
                 todoDatabase.Id,
                 todoTable.Id,
                 id.Unique(),
                 testTodo2,
             )
 
-            tablesDB.createRow(
+            tablesDB.CreateRow(
                 todoDatabase.Id,
                 todoTable.Id,
                 id.Unique(),

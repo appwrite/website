@@ -111,10 +111,10 @@ Rules
           final TextEditingController nameController = TextEditingController();
 
           Future<void> login(String email, String password) async {
-            await widget.account.createEmailPasswordSession({
+            await widget.account.createEmailPasswordSession(
               email: email,
-              password: password
-            });
+              password: password,
+            );
             final user = await widget.account.get();
             setState(() {
               loggedInUser = user;
@@ -122,12 +122,12 @@ Rules
           }
 
           Future<void> register(String email, String password, String name) async {
-            await widget.account.create({
+            await widget.account.create(
                 userId: ID.unique(),
                 email: email,
                 password: password,
-                name: name
-            });
+                name: name,
+            );
             await login(email, password);
           }
 
