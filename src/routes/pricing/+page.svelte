@@ -127,7 +127,7 @@
                                             </ul>
                                             <p class="text-caption text-secondary mt-4">
                                                 Free projects are paused after 1 week of inactivity.
-                                                Limit of 2 active projects.
+                                                Limit of 2 projects.
                                             </p>
                                         </div>
                                     </div>
