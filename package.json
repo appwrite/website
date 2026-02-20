@@ -32,7 +32,7 @@
         "@appwrite.io/console": "^0.6.4",
         "@appwrite.io/pink": "~0.26.0",
         "@appwrite.io/pink-icons": "~0.26.0",
-        "@appwrite.io/repo": "github:appwrite/appwrite#31b5a1cb360b1350dd1b887e01179bce171c34bc",
+        "@appwrite.io/specs": "github:appwrite/specs#63057a4df2f206c29e98c6de7263264b9d0d6b1c",
         "@eslint/compat": "^1.4.1",
         "@eslint/js": "^9.39.1",
         "@fingerprintjs/fingerprintjs": "^4.6.2",
