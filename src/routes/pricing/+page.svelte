@@ -113,7 +113,6 @@
                                         </header>
                                         <div class="web-pricing-cards-content">
                                             <ul class="web-checked-list-circle">
-                                                <li><span>Unlimited sites</span></li>
                                                 <li><span>5GB bandwidth</span></li>
                                                 <li><span>2GB storage</span></li>
                                                 <li><span>750K executions</span></li>
@@ -126,6 +125,10 @@
                                                     >
                                                 </li>
                                             </ul>
+                                            <p class="text-caption text-secondary mt-4">
+                                                Free projects are paused after 1 week of inactivity.
+                                                Limit of 2 projects.
+                                            </p>
                                         </div>
                                     </div>
                                 </article>
