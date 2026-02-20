@@ -93,55 +93,52 @@ type ModelTypeValue = (typeof ModelType)[ModelTypeType];
 function getExamples(version: string) {
     switch (version) {
         case '0.15.x':
-            return import.meta.glob(
-                '/node_modules/@appwrite.io/repo/docs/examples/0.15.x/**/*.md',
-                {
-                    query: '?raw',
-                    import: 'default'
-                }
-            );
+            return import.meta.glob('/node_modules/@appwrite.io/specs/examples/0.15.x/**/*.md', {
+                query: '?raw',
+                import: 'default'
+            });
         case '1.0.x':
-            return import.meta.glob('/node_modules/@appwrite.io/repo/docs/examples/1.0.x/**/*.md', {
+            return import.meta.glob('/node_modules/@appwrite.io/specs/examples/1.0.x/**/*.md', {
                 query: '?raw',
                 import: 'default'
             });
         case '1.1.x':
-            return import.meta.glob('/node_modules/@appwrite.io/repo/docs/examples/1.1.x/**/*.md', {
+            return import.meta.glob('/node_modules/@appwrite.io/specs/examples/1.1.x/**/*.md', {
                 query: '?raw',
                 import: 'default'
             });
         case '1.2.x':
-            return import.meta.glob('/node_modules/@appwrite.io/repo/docs/examples/1.2.x/**/*.md', {
+            return import.meta.glob('/node_modules/@appwrite.io/specs/examples/1.2.x/**/*.md', {
                 query: '?raw',
                 import: 'default'
             });
         case '1.3.x':
-            return import.meta.glob('/node_modules/@appwrite.io/repo/docs/examples/1.3.x/**/*.md', {
+            return import.meta.glob('/node_modules/@appwrite.io/specs/examples/1.3.x/**/*.md', {
                 query: '?raw',
                 import: 'default'
             });
         case '1.4.x':
-            return import.meta.glob('/node_modules/@appwrite.io/repo/docs/examples/1.4.x/**/*.md', {
+            return import.meta.glob('/node_modules/@appwrite.io/specs/examples/1.4.x/**/*.md', {
                 query: '?raw',
                 import: 'default'
             });
         case '1.5.x':
-            return import.meta.glob('/node_modules/@appwrite.io/repo/docs/examples/1.5.x/**/*.md', {
+            return import.meta.glob('/node_modules/@appwrite.io/specs/examples/1.5.x/**/*.md', {
                 query: '?raw',
                 import: 'default'
             });
         case '1.6.x':
-            return import.meta.glob('/node_modules/@appwrite.io/repo/docs/examples/1.6.x/**/*.md', {
+            return import.meta.glob('/node_modules/@appwrite.io/specs/examples/1.6.x/**/*.md', {
                 query: '?raw',
                 import: 'default'
             });
         case '1.7.x':
-            return import.meta.glob('/node_modules/@appwrite.io/repo/docs/examples/1.7.x/**/*.md', {
+            return import.meta.glob('/node_modules/@appwrite.io/specs/examples/1.7.x/**/*.md', {
                 query: '?raw',
                 import: 'default'
             });
         case '1.8.x':
-            return import.meta.glob('/node_modules/@appwrite.io/repo/docs/examples/1.8.x/**/*.md', {
+            return import.meta.glob('/node_modules/@appwrite.io/specs/examples/1.8.x/**/*.md', {
                 query: '?raw',
                 import: 'default'
             });
@@ -396,14 +393,14 @@ export function getSchema(id: string, api: OpenAPIV3.Document): OpenAPIV3.Schema
     error(404, { message: `Not found` });
 }
 
-const specs = import.meta.glob('/node_modules/@appwrite.io/repo/app/config/specs/open-api3*.json', {
+const specs = import.meta.glob('/node_modules/@appwrite.io/specs/specs/*/open-api3*.json', {
     exhaustive: true
 });
 
 export async function getApi(version: string, platform: string): Promise<OpenAPIV3.Document> {
     const isClient = platform.startsWith('client-');
     const isServer = platform.startsWith('server-');
-    const target = `/node_modules/@appwrite.io/repo/app/config/specs/open-api3-${version}-${
+    const target = `/node_modules/@appwrite.io/specs/specs/${version}/open-api3-${version}-${
         isServer ? 'server' : isClient ? 'client' : 'console'
     }.json`;
 
@@ -503,10 +500,10 @@ export async function getService(
         );
 
         const path = isAndroid
-            ? `/node_modules/@appwrite.io/repo/docs/examples/${version}/${
+            ? `/node_modules/@appwrite.io/specs/examples/${version}/${
                   isAndroidServer ? 'server-kotlin' : 'client-android'
               }/${isAndroidJava ? 'java' : 'kotlin'}/${operation['x-appwrite']?.demo}`
-            : `/node_modules/@appwrite.io/repo/docs/examples/${version}/${platform}/examples/${operation['x-appwrite']?.demo}`;
+            : `/node_modules/@appwrite.io/specs/examples/${version}/${platform}/examples/${operation['x-appwrite']?.demo}`;
 
         if (!(path in examples)) {
             continue;
