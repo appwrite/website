@@ -25,10 +25,14 @@ export function write(
             }
         }, step);
 
-        signal?.addEventListener('abort', () => {
-            clearInterval(interval);
-            reject(new Error('Aborted'));
-        });
+        signal?.addEventListener(
+            'abort',
+            () => {
+                clearInterval(interval);
+                reject(new Error('Aborted'));
+            },
+            { once: true }
+        );
     });
 }
 
@@ -59,10 +63,14 @@ export function unwrite(
             }
         }, step);
 
-        signal?.addEventListener('abort', () => {
-            clearInterval(interval);
-            reject(new Error('Aborted'));
-        });
+        signal?.addEventListener(
+            'abort',
+            () => {
+                clearInterval(interval);
+                reject(new Error('Aborted'));
+            },
+            { once: true }
+        );
     });
 }
 

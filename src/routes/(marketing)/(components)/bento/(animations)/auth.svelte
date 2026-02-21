@@ -70,6 +70,10 @@
                 }).catch(() => {});
             };
         });
+
+        return () => {
+            controller?.abort();
+        };
     });
 </script>
 
