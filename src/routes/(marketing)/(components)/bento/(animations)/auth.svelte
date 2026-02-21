@@ -32,7 +32,9 @@
                     .then(() => {
                         animate(button, { scale: [1, 0.95, 1] }, { duration: 0.25 });
                     })
-                    .catch(() => {});
+                    .catch((err: unknown) => {
+                        if (err instanceof Error && err.message !== 'Aborted') console.error(err);
+                    });
 
                 return () => {
                     controller?.abort();
@@ -40,7 +42,9 @@
                     unwrite('•••••••••••••', (v) => (password = v), 500, {
                         signal: controller.signal,
                         startIndex: password.length
-                    }).catch(() => {});
+                    }).catch((err: unknown) => {
+                        if (err instanceof Error && err.message !== 'Aborted') console.error(err);
+                    });
                 };
             },
             { amount: 'all' }
@@ -59,7 +63,9 @@
                 .then(() => {
                     animate(button, { scale: [1, 0.95, 1] }, { duration: 0.25 });
                 })
-                .catch(() => {});
+                .catch((err: unknown) => {
+                    if (err instanceof Error && err.message !== 'Aborted') console.error(err);
+                });
 
             return () => {
                 controller?.abort();
@@ -67,7 +73,9 @@
                 unwrite('•••••••••••••', (v) => (password = v), 500, {
                     signal: controller.signal,
                     startIndex: password.length
-                }).catch(() => {});
+                }).catch((err: unknown) => {
+                    if (err instanceof Error && err.message !== 'Aborted') console.error(err);
+                });
             };
         });
 
