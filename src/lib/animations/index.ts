@@ -8,6 +8,10 @@ export function write(
         cb('');
         return Promise.resolve();
     }
+    if (startIndex >= text.length) {
+        cb(text);
+        return Promise.resolve();
+    }
     const step = duration / text.length;
     let i = startIndex;
 
@@ -48,6 +52,11 @@ export function unwrite(
     }
     const step = duration / text.length;
     let i = startIndex ?? text.length;
+    
+    if (i <= 0) {
+        cb('');
+        return Promise.resolve();
+    }
 
     return new Promise<void>((resolve, reject) => {
         const interval = setInterval(() => {
