@@ -14,17 +14,37 @@
     let password = $state('');
     let button: HTMLButtonElement;
 
+    let controller: AbortController | null = null;
+
     $effect(() => {
         inView(
             container,
             () => {
                 if (!isMobile()) return;
 
-                write('•••••••••••••', (v) => (password = v), 1000).then(() => {
-                    animate(button, { scale: [1, 0.95, 1] }, { duration: 0.25 });
-                });
+                controller?.abort();
+                controller = new AbortController();
+
+                write('•••••••••••••', (v) => (password = v), 1000, {
+                    signal: controller.signal,
+                    startIndex: password.length
+                })
+                    .then(() => {
+                        animate(button, { scale: [1, 0.95, 1] }, { duration: 0.25 });
+                    })
+                    .catch((err: unknown) => {
+                        if (err instanceof Error && err.message !== 'Aborted') console.error(err);
+                    });
+
                 return () => {
-                    unwrite('•••••••••••••', (v) => (password = v));
+                    controller?.abort();
+                    controller = new AbortController();
+                    unwrite('•••••••••••••', (v) => (password = v), 500, {
+                        signal: controller.signal,
+                        startIndex: password.length
+                    }).catch((err: unknown) => {
+                        if (err instanceof Error && err.message !== 'Aborted') console.error(err);
+                    });
                 };
             },
             { amount: 'all' }
@@ -33,13 +53,35 @@
         hover(container, () => {
             if (isMobile()) return;
 
-            write('•••••••••••••', (v) => (password = v), 1000).then(() => {
-                animate(button, { scale: [1, 0.95, 1] }, { duration: 0.25 });
-            });
+            controller?.abort();
+            controller = new AbortController();
+
+            write('•••••••••••••', (v) => (password = v), 1000, {
+                signal: controller.signal,
+                startIndex: password.length
+            })
+                .then(() => {
+                    animate(button, { scale: [1, 0.95, 1] }, { duration: 0.25 });
+                })
+                .catch((err: unknown) => {
+                    if (err instanceof Error && err.message !== 'Aborted') console.error(err);
+                });
+
             return () => {
-                unwrite('•••••••••••••', (v) => (password = v));
+                controller?.abort();
+                controller = new AbortController();
+                unwrite('•••••••••••••', (v) => (password = v), 500, {
+                    signal: controller.signal,
+                    startIndex: password.length
+                }).catch((err: unknown) => {
+                    if (err instanceof Error && err.message !== 'Aborted') console.error(err);
+                });
             };
         });
+
+        return () => {
+            controller?.abort();
+        };
     });
 </script>
 
