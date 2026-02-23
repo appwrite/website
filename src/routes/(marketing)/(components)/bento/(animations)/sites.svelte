@@ -5,12 +5,13 @@
     import Site from '../../../(assets)/images/site.png';
     import { cn } from '$lib/utils/cn';
     import Spinner from '../../spinner.svelte';
-    import { unwrite, write } from '$lib/animations';
+    import { unwrite, write, type WriteAnimation } from '$lib/animations';
     import { trackEvent } from '$lib/actions/analytics';
 
     let container: HTMLElement;
     let seconds = $state<number>(32);
     let lastLine = $state<string>('');
+    let currentAnimation: WriteAnimation | null = null;
 
     const text = [
         {
@@ -57,7 +58,13 @@
                 duration: 44
             });
 
-            write('Installing dependencies...', (v) => (lastLine = v), 500);
+            currentAnimation?.cancel();
+            currentAnimation = write(
+                'Installing dependencies...',
+                (v) => (lastLine = v),
+                500,
+                lastLine.length
+            );
 
             return () => {
                 shouldAnimate = false;
@@ -66,7 +73,12 @@
                     onUpdate: (latest) => (seconds = +latest.toFixed()),
                     duration: 0.25
                 });
-                unwrite('Installing dependencies...', (v) => (lastLine = v), 500);
+                currentAnimation?.cancel();
+                currentAnimation = unwrite(
+                    lastLine,
+                    (v) => (lastLine = v),
+                    (lastLine.length / 27) * 500
+                );
             };
         });
 
@@ -81,7 +93,13 @@
                     duration: 44
                 });
 
-                write('Installing dependencies...', (v) => (lastLine = v), 500);
+                currentAnimation?.cancel();
+                currentAnimation = write(
+                    'Installing dependencies...',
+                    (v) => (lastLine = v),
+                    500,
+                    lastLine.length
+                );
 
                 return () => {
                     shouldAnimate = false;
@@ -90,7 +108,12 @@
                         onUpdate: (latest) => (seconds = +latest.toFixed()),
                         duration: 0.25
                     });
-                    unwrite('Installing dependencies...', (v) => (lastLine = v), 500);
+                    currentAnimation?.cancel();
+                    currentAnimation = unwrite(
+                        lastLine,
+                        (v) => (lastLine = v),
+                        (lastLine.length / 27) * 500
+                    );
                 };
             },
             { amount: 'all' }

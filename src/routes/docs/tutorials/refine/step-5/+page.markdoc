@@ -17,8 +17,8 @@ In Appwrite, data is stored as a table of rows. Create a table in the [Appwrite 
 Create a new table with the following columns:
 | Field       | Type   | Required |
 |-------------|--------|----------|
-| title       | String | Yes      |
-| content     | String | Yes      |
+| title       | Varchar | Yes      |
+| content     | Text    | Yes      |
 
 ## Connect database to the Refine app {% #blog-context %}
 
