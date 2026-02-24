@@ -43,7 +43,7 @@
             </GradientText>
 
             <p class="text-description text-secondary font-medium">
-                {subtitle}
+                Test {subtitle}
             </p>
 
             <div class="mt-4 flex flex-col gap-2 lg:flex-row">
