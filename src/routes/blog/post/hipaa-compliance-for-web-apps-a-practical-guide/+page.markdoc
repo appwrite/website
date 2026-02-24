@@ -2,7 +2,7 @@
 layout: post
 title: "HIPAA compliance for web apps: A practical guide"
 description: This guide breaks down what HIPAA compliance actually requires for modern web architectures, and how to design secure, PHI-safe systems from the backend up.
-date: 2026-02-24
+date: 2026-02-25
 cover: /images/blog/hipaa-compliance-for-web-apps-a-practical-guide/cover.png
 timeToRead: 5
 author: aishwari
