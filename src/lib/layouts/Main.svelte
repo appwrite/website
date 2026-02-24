@@ -24,7 +24,6 @@
     import AnnouncementBanner from '$routes/(init)/init/(components)/announcement-banner.svelte';
     import HackathonBanner from '$routes/(marketing)/(components)/(hackathon)/hackathon-banner.svelte';
     import TeaserBanner from '$routes/(marketing)/(components)/teaser/teaser-banner.svelte';
-    import ImagineProductHuntBanner from '$routes/(marketing)/(components)/teaser/imagine-ph-banner.svelte';
 
     export let omitMainId = false;
     export let hideNavigation = false;
@@ -115,6 +114,10 @@
             href: '/pricing'
         },
         {
+            label: 'Customers',
+            href: '/blog/category/customer-stories'
+        },
+        {
             label: 'Enterprise',
             href: '/contact-us/enterprise'
         }
@@ -166,7 +169,12 @@
     {#if !page.url.pathname.includes('/init')}
         <div class="border-smooth relative z-10 border-b bg-black" id="top-banner">
             <div class="is-special-padding mx-auto">
-                <ImagineProductHuntBanner />
+                <TeaserBanner
+                    showLabel={true}
+                    leftText="Introducing"
+                    logoText="Imagine"
+                    rightText="AI Builder on Appwrite Cloud"
+                />
             </div>
         </div>
     {/if}

@@ -66,7 +66,7 @@ Database tools are enabled by default. In addition you can pass arguments to `uv
 
 | Argument | Description |
 | --- | --- |
-| `--tables-db` | Enables the TablesDB API |
+| `--tablesdb` | Enables the TablesDB API |
 | `--users` | Enables the Users API |
 | `--teams` | Enables the Teams API |
 | `--storage` | Enables the Storage API |
