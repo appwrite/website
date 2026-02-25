@@ -1,0 +1,16 @@
+name: Validate MCP server.json
+
+on:
+    pull_request:
+        branches: ['**']
+    push:
+        branches: ['main']
+
+jobs:
+    validate:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+            - name: Validate server.json against schema
+              run: npx --yes ajv-cli@5 validate -s https://static.modelcontextprotocol.io/schemas/2025-09-16/server.schema.json -d server.json
+
