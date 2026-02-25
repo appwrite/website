@@ -72,6 +72,10 @@
                 {
                     label: 'Execute',
                     href: '/docs/products/functions/execute'
+                },
+                {
+                    label: 'One-Click Deployment',
+                    href: '/docs/products/functions/one-click-deployment'
                 }
             ]
         },
