@@ -53,6 +53,8 @@ When a PR is made to the branch, a new deployment is built, but not activated.
 A comment is made to your PR about the build, unless you enable **Silent mode**.
 
 # Available templates {% #available-templates %}
+You can explore these templates, along with many more, in Appwrite’s [Functions Templates](https://github.com/appwrite/templates) repository on GitHub as well.
+
 {% table %}
 * Template {% width=100 %}
 * Description
