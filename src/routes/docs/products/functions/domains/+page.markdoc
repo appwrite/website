@@ -23,16 +23,10 @@ Each function automatically receives a region-specific domain that's ready to us
 1. In the Appwrite Console's sidebar, click **Functions**.
 1. Under the **Domains** tab, you'll find the generated domain from Appwrite.
 
-The generated domain uses the `appwrite.run` format, which executes your function directly in the region where it is deployed.
+The generated domain ends with `.appwrite.run`, which executes your function directly in the region where it is deployed. For example:
 
 ```text
-https://<ID>.<REGION>.appwrite.run
-```
-
-For example, a function deployed in the Frankfurt region would have a domain like:
-
-```text
-https://67abc12def3456.fra.appwrite.run
+https://64d4d22db370ae41a32e.fra.appwrite.run
 ```
 
 # Edge network domain {% #edge-network-domain %}
@@ -45,10 +39,10 @@ To add an edge network domain:
 2. Navigate to the **Domains** tab.
 3. Click on **Create domain** and add the `appwrite.network` domain to your function.
 
-The edge network domain uses the following format:
+The edge network domain ends with `.appwrite.network`. For example:
 
 ```text
-https://<ID>.appwrite.network
+https://64d4d22db370ae41a32e.appwrite.network
 ```
 
 {% arrow_link href="/docs/products/network/edges" %}
