@@ -55,16 +55,6 @@ https://<ID>.appwrite.network
 Learn more about edge network
 {% /arrow_link %}
 
-## Region vs edge {% #region-vs-edge %}
-
-| Domain | Routing | Best for |
-|---|---|---|
-| `<ID>.<REGION>.appwrite.run` | Executes directly in the deployed region | Compute-intensive tasks, data-heavy operations, consistent regional performance |
-| `<ID>.appwrite.network` | Routes to the nearest region via edge network | Latency-sensitive operations, globally distributed users |
-
-{% arrow_link href="/docs/products/network/endpoints" %}
-Learn more about Appwrite endpoints
-{% /arrow_link %}
 
 # Add a custom domain {% #add-a-custom-domain %}
 
