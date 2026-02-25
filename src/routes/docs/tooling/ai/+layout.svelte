@@ -28,6 +28,10 @@
                     href: '/docs/tooling/ai/ai-dev-tools'
                 },
                 {
+                    label: 'Skills',
+                    href: '/docs/tooling/ai/skills'
+                },
+                {
                     label: 'Responsible AI',
                     href: '/docs/tooling/ai/responsible-ai'
                 }
@@ -172,6 +176,21 @@
                 {
                     label: 'Emergent',
                     href: '/docs/tooling/ai/ai-dev-tools/emergent'
+                }
+            ]
+        },
+        {
+            label: 'MCP Servers',
+            collapsible: true,
+            initiallyCollapsed: true,
+            items: [
+                {
+                    label: 'API server',
+                    href: '/docs/tooling/ai/mcp-servers/api'
+                },
+                {
+                    label: 'Docs server',
+                    href: '/docs/tooling/ai/mcp-servers/docs'
                 }
             ]
         },

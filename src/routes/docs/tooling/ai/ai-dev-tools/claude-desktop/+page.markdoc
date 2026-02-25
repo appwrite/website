@@ -102,7 +102,7 @@ Unlike other IDEs, Claude Desktop only supports local (stdio) MCP servers and no
 
 {% info title="Enable other API MCP tools" %}
 
-To enable additional API tools, learn more about [command-line arguments](/docs/tooling/mcp/api#command-line-arguments).
+To enable additional API tools, learn more about [command-line arguments](/docs/tooling/ai/mcp-servers/api#command-line-arguments).
 
 {% /info %}
 

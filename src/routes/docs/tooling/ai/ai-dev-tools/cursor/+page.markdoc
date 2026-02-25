@@ -124,7 +124,7 @@ Once you save the details, Cursor will connect with the MCP server(s) and load a
 
 {% info title="Enable other API MCP tools" %}
 
-To enable additional API tools, learn more about [command-line arguments](https://www.notion.so/docs/tooling/mcp/api#command-line-arguments).
+To enable additional API tools, learn more about [command-line arguments](/docs/tooling/ai/mcp-servers/api#command-line-arguments).
 
 {% /info %}
 

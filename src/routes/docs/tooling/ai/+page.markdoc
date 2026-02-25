@@ -28,6 +28,9 @@ Pre-built instructions to help AI assistants integrate Appwrite into your projec
 {% cards_item href="/docs/tooling/ai/docs-as-markdown" title="Docs as Markdown" %}
 Access Appwrite documentation as markdown for AI consumption and better context.
 {% /cards_item %}
+{% cards_item href="/docs/tooling/ai/mcp-servers/api" title="MCP servers" %}
+Connect AI tools to your Appwrite project and documentation through MCP servers.
+{% /cards_item %}
 {% /cards %}
 
 # Building AI applications {% #building-ai-apps %}
