@@ -1,0 +1,240 @@
+---
+layout: article
+title: Currencies
+description: Get currency data including symbols, names, plural forms, and decimal precision for building payment and pricing features.
+---
+
+The currencies endpoint provides comprehensive currency information for all major and minor currencies worldwide. This is essential for building payment systems, pricing displays, and financial applications.
+
+# List currencies {% #list-currencies %}
+
+Retrieve a list of all currencies with their symbols, names, plural forms, and decimal precision.
+
+{% multicode %}
+```client-web
+import { Client, Locale } from "appwrite";
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>');
+
+const locale = new Locale(client);
+
+const currencies = await locale.listCurrencies();
+
+console.log(currencies);
+// {
+//   total: 150+,
+//   currencies: [
+//     {
+//       symbol: '$',
+//       name: 'US Dollar',
+//       symbolNative: '$',
+//       decimalDigits: 2,
+//       rounding: 0,
+//       code: 'USD',
+//       namePlural: 'US dollars'
+//     },
+//     ...
+//   ]
+// }
+```
+```client-flutter
+import 'package:appwrite/appwrite.dart';
+
+final client = Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>');
+
+final locale = Locale(client);
+
+Future result = locale.listCurrencies().then((response) {
+    print(response.total);
+    response.currencies.forEach((currency) {
+        print('${currency.name} (${currency.code}) - ${currency.symbol}');
+    });
+    return response;
+}).catchError((error) {
+    print(error.response);
+});
+```
+```client-apple
+import Appwrite
+
+let client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+
+let locale = Locale(client)
+
+let currencies = try await locale.listCurrencies()
+
+print(currencies.total)
+for currency in currencies.currencies {
+    print("\(currency.name) (\(currency.code)) - \(currency.symbol)")
+}
+```
+```client-android-kotlin
+import io.appwrite.Client
+import io.appwrite.services.Locale
+
+val client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+
+val locale = Locale(client)
+
+val currencies = locale.listCurrencies()
+
+println(currencies.total)
+currencies.currencies.forEach { currency ->
+    println("${currency.name} (${currency.code}) - ${currency.symbol}")
+}
+```
+```client-react-native
+import { Client, Locale } from 'react-native-appwrite';
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>');
+
+const locale = new Locale(client);
+
+const currencies = await locale.listCurrencies();
+
+console.log(currencies);
+```
+{% /multicode %}
+
+# Response structure {% #response-structure %}
+
+The `listCurrencies` method returns a currencies list with the following structure:
+
+| Property | Type | Description |
+| -------- | ---- | ----------- |
+| total | integer | Total number of currencies |
+| currencies | array | Array of currency objects |
+
+Each currency object contains:
+
+| Property | Type | Description |
+| -------- | ---- | ----------- |
+| symbol | string | Currency symbol (e.g., `$`, `€`) |
+| name | string | Currency name (e.g., "US Dollar") |
+| symbolNative | string | Native currency symbol |
+| decimalDigits | integer | Number of decimal digits (typically 0 or 2) |
+| rounding | number | Rounding factor |
+| code | string | ISO 4217 currency code (e.g., `USD`, `EUR`) |
+| namePlural | string | Plural form of currency name |
+
+# Currency codes {% #currency-codes %}
+
+Currency codes follow the ISO 4217 standard, which uses three-letter codes to uniquely identify currencies. These codes are widely used in financial systems and payment processing.
+
+# Use cases {% #use-cases %}
+
+Currency lists are commonly used for:
+
+- **Payment processing**: Display and process payments in multiple currencies
+- **Pricing displays**: Show prices in user's local currency with proper formatting
+- **Currency conversion**: Build currency conversion features and calculators
+- **E-commerce**: Support multi-currency product catalogs and checkout flows
+- **Financial applications**: Build budgeting, accounting, and financial tracking apps
+
+# Formatting currencies {% #formatting-currencies %}
+
+Use the currency data to format prices correctly:
+
+{% multicode %}
+```client-web
+const currencies = await locale.listCurrencies();
+const usd = currencies.currencies.find(c => c.code === 'USD');
+
+function formatPrice(amount, currency) {
+    return `${currency.symbol}${amount.toFixed(currency.decimalDigits)}`;
+}
+
+const price = formatPrice(99.99, usd);
+console.log(price); // "$99.99"
+```
+```client-flutter
+final currencies = await locale.listCurrencies();
+final usd = currencies.currencies.firstWhere((c) => c.code == 'USD');
+
+String formatPrice(double amount, currency) {
+    return '${currency.symbol}${amount.toStringAsFixed(currency.decimalDigits)}';
+}
+
+final price = formatPrice(99.99, usd);
+print(price); // "$99.99"
+```
+```client-apple
+let currencies = try await locale.listCurrencies()
+let usd = currencies.currencies.first { $0.code == "USD" }
+
+func formatPrice(amount: Double, currency: Currency) -> String {
+    return "\(currency.symbol)\(String(format: "%.\(currency.decimalDigits)f", amount))"
+}
+
+let price = formatPrice(amount: 99.99, currency: usd!)
+print(price) // "$99.99"
+```
+```client-android-kotlin
+val currencies = locale.listCurrencies()
+val usd = currencies.currencies.find { it.code == "USD" }
+
+fun formatPrice(amount: Double, currency: Currency): String {
+    return "${currency.symbol}${String.format("%.${currency.decimalDigits}f", amount)}"
+}
+
+val price = formatPrice(99.99, usd!!)
+println(price) // "$99.99"
+```
+```client-react-native
+const currencies = await locale.listCurrencies();
+const usd = currencies.currencies.find(c => c.code === 'USD');
+
+function formatPrice(amount, currency) {
+    return `${currency.symbol}${amount.toFixed(currency.decimalDigits)}`;
+}
+
+const price = formatPrice(99.99, usd);
+console.log(price); // "$99.99"
+```
+{% /multicode %}
+
+# Multi-locale support {% #multi-locale %}
+
+Currency names can be retrieved in different languages by setting the locale:
+
+{% multicode %}
+```client-web
+// Set locale to French
+client.setLocale('fr');
+
+const currencies = await locale.listCurrencies();
+// Currency names will be in French
+```
+```client-flutter
+client.setLocale('fr');
+
+final currencies = await locale.listCurrencies();
+```
+```client-apple
+client.setLocale("fr")
+
+let currencies = try await locale.listCurrencies()
+```
+```client-android-kotlin
+client.setLocale("fr")
+
+val currencies = locale.listCurrencies()
+```
+```client-react-native
+client.setLocale('fr');
+
+const currencies = await locale.listCurrencies();
+```
+{% /multicode %}
+
+

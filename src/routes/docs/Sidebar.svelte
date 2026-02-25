@@ -26,6 +26,12 @@
                     icon: 'icon-cog'
                 },
                 {
+                    label: 'Blog',
+                    href: '/blog',
+                    icon: 'icon-document-text',
+                    openInNewTab: true
+                },
+                {
                     label: 'Changelog',
                     href: '/changelog',
                     icon: 'icon-clock',
@@ -96,6 +102,13 @@
                     label: 'Avatars',
                     href: '/docs/products/avatars',
                     icon: 'icon-user-circle',
+                    isParent: true,
+                    new: isNewUntil('1 Jan 2026')
+                },
+                {
+                    label: 'Locale',
+                    href: '/docs/products/locale',
+                    icon: 'icon-location-marker',
                     isParent: true,
                     new: isNewUntil('1 Jan 2026')
                 }

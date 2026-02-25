@@ -1,0 +1,170 @@
+---
+layout: article
+title: Continents
+description: Access continent information with names and codes for geographic organization and regional features.
+---
+
+The continents endpoint provides access to continent information for geographic organization. This is useful for grouping countries by region, building regional features, and organizing location-based data.
+
+# List continents {% #list-continents %}
+
+Retrieve a list of all continents with their names and codes.
+
+{% multicode %}
+```client-web
+import { Client, Locale } from "appwrite";
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>');
+
+const locale = new Locale(client);
+
+const continents = await locale.listContinents();
+
+console.log(continents);
+// {
+//   total: 7,
+//   continents: [
+//     { name: 'Africa', code: 'AF' },
+//     { name: 'Antarctica', code: 'AN' },
+//     { name: 'Asia', code: 'AS' },
+//     { name: 'Europe', code: 'EU' },
+//     { name: 'North America', code: 'NA' },
+//     { name: 'Oceania', code: 'OC' },
+//     { name: 'South America', code: 'SA' }
+//   ]
+// }
+```
+```client-flutter
+import 'package:appwrite/appwrite.dart';
+
+final client = Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>');
+
+final locale = Locale(client);
+
+Future result = locale.listContinents().then((response) {
+    print(response.total);
+    response.continents.forEach((continent) {
+        print('${continent.name} (${continent.code})');
+    });
+    return response;
+}).catchError((error) {
+    print(error.response);
+});
+```
+```client-apple
+import Appwrite
+
+let client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+
+let locale = Locale(client)
+
+let continents = try await locale.listContinents()
+
+print(continents.total)
+for continent in continents.continents {
+    print("\(continent.name) (\(continent.code))")
+}
+```
+```client-android-kotlin
+import io.appwrite.Client
+import io.appwrite.services.Locale
+
+val client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+
+val locale = Locale(client)
+
+val continents = locale.listContinents()
+
+println(continents.total)
+continents.continents.forEach { continent ->
+    println("${continent.name} (${continent.code})")
+}
+```
+```client-react-native
+import { Client, Locale } from 'react-native-appwrite';
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>');
+
+const locale = new Locale(client);
+
+const continents = await locale.listContinents();
+
+console.log(continents);
+```
+{% /multicode %}
+
+# Response structure {% #response-structure %}
+
+The `listContinents` method returns a continents list with the following structure:
+
+| Property | Type | Description |
+| -------- | ---- | ----------- |
+| total | integer | Total number of continents (typically 7) |
+| continents | array | Array of continent objects, each containing `name` and `code` |
+
+# Continent codes {% #continent-codes %}
+
+Continent codes use standard two-letter abbreviations:
+- `AF` - Africa
+- `AN` - Antarctica
+- `AS` - Asia
+- `EU` - Europe
+- `NA` - North America
+- `OC` - Oceania
+- `SA` - South America
+
+# Use cases {% #use-cases %}
+
+Continent lists are commonly used for:
+
+- **Regional organization**: Group countries by continent for navigation and filtering
+- **Geographic analytics**: Analyze user distribution and engagement by continent
+- **Regional features**: Enable continent-specific features or content
+- **Data visualization**: Create maps and charts organized by continent
+- **Content delivery**: Optimize content delivery based on regional preferences
+
+# Multi-locale support {% #multi-locale %}
+
+Continent names can be retrieved in different languages by setting the locale:
+
+{% multicode %}
+```client-web
+// Set locale to French
+client.setLocale('fr');
+
+const continents = await locale.listContinents();
+// Continent names will be in French
+```
+```client-flutter
+client.setLocale('fr');
+
+final continents = await locale.listContinents();
+```
+```client-apple
+client.setLocale("fr")
+
+let continents = try await locale.listContinents()
+```
+```client-android-kotlin
+client.setLocale("fr")
+
+val continents = locale.listContinents()
+```
+```client-react-native
+client.setLocale('fr');
+
+const continents = await locale.listContinents();
+```
+{% /multicode %}
+
+

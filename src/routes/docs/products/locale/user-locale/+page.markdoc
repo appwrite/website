@@ -1,0 +1,161 @@
+---
+layout: article
+title: User locale
+description: Get the current user's location based on IP address, including country, continent, currency, and IP information.
+---
+
+The user locale endpoint provides location information based on the user's IP address. This is useful for automatically detecting user location, customizing content by region, and suggesting appropriate currency or language settings.
+
+# Get user locale {% #get-user-locale %}
+
+Retrieve the current user's location information based on their IP address. The response includes country code, country name, continent code, continent name, IP address, and suggested currency.
+
+{% multicode %}
+```client-web
+import { Client, Locale } from "appwrite";
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>');
+
+const locale = new Locale(client);
+
+const userLocale = await locale.get();
+
+console.log(userLocale);
+// {
+//   ip: '192.168.1.1',
+//   countryCode: 'US',
+//   country: 'United States',
+//   continentCode: 'NA',
+//   continent: 'North America',
+//   currency: 'USD'
+// }
+```
+```client-flutter
+import 'package:appwrite/appwrite.dart';
+
+final client = Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>');
+
+final locale = Locale(client);
+
+Future result = locale.get().then((response) {
+    print(response.country);
+    print(response.currency);
+    return response;
+}).catchError((error) {
+    print(error.response);
+});
+```
+```client-apple
+import Appwrite
+
+let client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+
+let locale = Locale(client)
+
+let userLocale = try await locale.get()
+
+print(userLocale.country)
+print(userLocale.currency)
+```
+```client-android-kotlin
+import io.appwrite.Client
+import io.appwrite.services.Locale
+
+val client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+
+val locale = Locale(client)
+
+val userLocale = locale.get()
+
+println(userLocale.country)
+println(userLocale.currency)
+```
+```client-react-native
+import { Client, Locale } from 'react-native-appwrite';
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>');
+
+const locale = new Locale(client);
+
+const userLocale = await locale.get();
+
+console.log(userLocale);
+```
+{% /multicode %}
+
+# Response structure {% #response-structure %}
+
+The `get` method returns a locale object with the following properties:
+
+| Property | Type | Description |
+| -------- | ---- | ----------- |
+| ip | string | The user's IP address |
+| countryCode | string | Two-letter country code (ISO 3166-1 alpha-2) |
+| country | string | Country name |
+| continentCode | string | Two-letter continent code |
+| continent | string | Continent name |
+| currency | string | Suggested currency code |
+
+# Use cases {% #use-cases %}
+
+User locale detection is commonly used for:
+
+- **Automatic currency selection**: Detect user location and suggest appropriate currency for pricing and payments
+- **Content localization**: Customize app content, language, and features based on user location
+- **Regional compliance**: Apply region-specific rules, regulations, or content restrictions
+- **Analytics and insights**: Track user distribution across countries and continents
+- **Default settings**: Pre-fill forms with country, currency, or language based on detected location
+
+# IP geolocation {% #ip-geolocation %}
+
+The user locale endpoint uses IP geolocation to determine location. The service is powered by [DB-IP](https://db-ip.com/) and provides accurate location data based on the user's IP address. Note that IP-based geolocation may not always be precise, especially for users behind VPNs or proxies.
+
+# Multi-locale support {% #multi-locale %}
+
+You can customize the language of the response by setting the locale. Use the `X-Appwrite-Locale` header or the `setLocale` method in your SDK:
+
+{% multicode %}
+```client-web
+// Set locale to French
+client.setLocale('fr');
+
+const userLocale = await locale.get();
+// Country and continent names will be in French
+```
+```client-flutter
+// Set locale to French
+client.setLocale('fr');
+
+final userLocale = await locale.get();
+```
+```client-apple
+// Set locale to French
+client.setLocale("fr")
+
+let userLocale = try await locale.get()
+```
+```client-android-kotlin
+// Set locale to French
+client.setLocale("fr")
+
+val userLocale = locale.get()
+```
+```client-react-native
+// Set locale to French
+client.setLocale('fr');
+
+const userLocale = await locale.get();
+```
+{% /multicode %}
+
+
