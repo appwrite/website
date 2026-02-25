@@ -23,21 +23,25 @@ Dev keys should never be used in production environments, as they can make your 
 
 # Try out dev keys in an app
 
-To test dev keys, I created a simple demo web app that sends 200 requests to create a new document in an Appwrite database. To set this app up, you must complete the following steps:
+To test dev keys, I created a simple demo web app that sends 200 requests to create a new row in an Appwrite database. To set this app up, you must complete the following steps:
 
 ## Step 1: Setup Appwrite project
 
-First, create an [Appwrite Cloud](https://cloud.appwrite.io) account or [self-host Appwrite 1.7](/docs/advanced/self-hosting). Create a project (which will lead you to the project overview page) and head to the **Databases** page from the left sidebar. Create a new database with the ID `testDb` and a new collection with the ID `testCollection`. Store both of these IDs for future usage. In this collection, add the following attribute:
+First, create an [Appwrite Cloud](https://cloud.appwrite.io) account or [self-host Appwrite 1.8+](/docs/advanced/self-hosting).
+
+Create a project (which will lead you to the project overview page). From the project Overview → Settings, add a Web platform with your app's origin (e.g., `http://localhost:3000` or the file path where you'll open your HTML) so Step 2 can execute without CORS errors.
+
+Then, head to the **Databases** page from the left sidebar. Create a new database with the ID `testDb` and a new table with the ID `testTable`. Store both of these IDs for future usage. In this table, add the following column:
 
 | Name | Type | Required |
 | --- | --- | --- |
 | `number` | Integer | True |
 
-Then, head to the **Settings** tab of the collection, scroll down to the **Permissions** section, and add the following permissions:
+Then, head to the **Settings** tab of the table, scroll down to the **Permissions** section, and add the following permissions:
 
 |  | Create | Read | Update | Delete |
 | --- | --- | --- | --- | --- |
-| Any | False | False | False | False |
+| Any | True | False | False | False |
 
 Lastly, return to the project overview page, head to the **Settings** page from the left sidebar, and copy your **API endpoint** and **project ID** for future usage.
 
@@ -57,8 +61,8 @@ Next up, we'll create our test app. This will require us to create two files in 
 </head>
 <body>
     <h1>Dev keys demo</h1>
-    <p>Click on this button to add 200 documents to the database in less than 1 minute.</p>
-    <button type="button">Add documents</button>
+    <p>Click on this button to add 200 rows to the database in less than 1 minute.</p>
+    <button type="button">Add rows</button>
 
     <!-- Appwrite Web SDK -->
     <script src="https://cdn.jsdelivr.net/npm/appwrite"></script>
@@ -76,16 +80,16 @@ const client = new Appwrite.Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
     .setProject('<YOUR_PROJECT_ID>'); // Your project ID
 
-const database = new Appwrite.Databases(client);
+const tablesDB = new Appwrite.TablesDB(client);
 
 document.querySelector('button').addEventListener('click', async () => {
     const promises = [];
     for (let i = 0; i < 200; i++) {
-        const promise = database.createDocument({
-            databaseId: 'testDb', // Your database ID
-            collectionId: 'testCollection', // Your collection ID
-            documentId: Appwrite.ID.unique(),
-            data: { number: i + i }
+        const promise = tablesDB.createRow({
+          databaseId: 'testDb',
+          tableId: 'testTable',
+          rowId: Appwrite.ID.unique(),
+          data: { number: i + i },
         });
         promises.push(promise);
         console.log('Request initiated:', i+1);
@@ -95,7 +99,7 @@ document.querySelector('button').addEventListener('click', async () => {
 });
 ```
 
-If you open the HTML page in your browser and click on the `Add documents` button, you will notice numerous errors in the console with the HTTP code `429`, as Appwrite's rate limits allow one client to create 120 requests per minute for this API endpoint.
+Open the HTML page and click `Add rows`. If your app's origin is added as a Web platform, you'll see multiple HTTP 429 errors because Client SDKs are limited to ~120 create requests per minute for this endpoint. If your origin isn't added yet, you'll see CORS errors instead—these will be suppressed after adding the dev key in the next step.
 
 ## Step 3: Create dev key
 
@@ -114,7 +118,7 @@ const client = new Appwrite.Client()
 
 ## Step 4: Test the app
 
-Reopen the HTML page in your browser. Clicking the `Add documents` button will allow all 200 requests to execute successfully.
+Reopen the HTML page in your browser. Clicking the `Add rows` button will allow all 200 requests to execute successfully.
 
 # Next steps
 

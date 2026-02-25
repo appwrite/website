@@ -11,7 +11,7 @@ featured: false
 callToAction: true
 ---
 
-2024 has come to an end, and we want to thank all of you for making it an amazing year for Appwrite! We have seen hundreds of thousands of you join the platform, and even more projects are being ignited every day. In this product update, we take a moment to look back at everything we’ve released to make building with Appwrite accessible and enjoyable for all of you. 
+2024 has come to an end, and we want to thank all of you for making it an amazing year for Appwrite! We have seen hundreds of thousands of you join the platform, and even more projects are being ignited every day. In this product update, we take a moment to look back at everything we’ve released to make building with Appwrite accessible and enjoyable for all of you.
 
 From launching the highly requested features to launching new programs, here is Appwrite in numbers:
 
@@ -32,13 +32,13 @@ In 2024, we added many products and features that many of you needed for your pr
 
 Adding Messaging to Appwrite was a big game changer in 2024. Not only does it make us the only open-source BaaS with this product, but it also was a product that many of you directly asked for. Just connect an integrator such as Sendgrid or Twilio to Appwrite, and you can start sending messages within minutes. In 2025, we plan to add push notifications that will give you more flexibility.
 
-## MFA - Extra layer of security 
+## MFA - Extra layer of security
 
 Who doesn’t love a security-tight application? With MFA, we introduced TOTP, emails, and SMS methods to add an extra security step for your users. To lead by example, we also added it to the Appwrite Console. Be sure to turn it on!
 
 ## Appwrite AI - Build AI-powered applications
 
-In May, we announced multiple AI Integrations to help developers build AI apps. With pre-built functions and an enhanced knowledge base, you can easily add features like natural language processing (NLP), image analysis, and audio processing to your projects. 
+In May, we announced multiple AI Integrations to help developers build AI apps. With pre-built functions and an enhanced knowledge base, you can easily add features like natural language processing (NLP), image analysis, and audio processing to your projects.
 
 Integrate with popular AI tools like Pinecone, OpenAI and Perplexity, among others to supercharge your projects with advanced AI features. Check out all the cool AI projects built with Appwrite [here](https://builtwith.appwrite.io/search/?useCase=ai)
 
@@ -46,7 +46,7 @@ Integrate with popular AI tools like Pinecone, OpenAI and Perplexity, among othe
 
 A CLI can be your best friend if done right. The [new version](https://appwrite.io/blog/post/introducing-new-appwrite-cli) was a more than welcome addition and has made developing applications with Appwrite a lot more enjoyable.
 
-No more overwriting or deleting existing collection data during deployments. With the new Appwrite CLI, you can test functions locally and push or pull data between Appwrite and your CLI seamlessly without affecting existing data.
+No more overwriting or deleting existing table data during deployments. With the new Appwrite CLI, you can test functions locally and push or pull data between Appwrite and your CLI seamlessly without affecting existing data.
 
 ## Improved SSR support - Implement SSR authentication with ease
 
@@ -58,7 +58,7 @@ Data is your most valuable asset, and safeguarding it is incredibly important. T
 
 ## Roles - Improve your team collaboration and security
 
-In September, we launched the much-requested [Roles](https://appwrite.io/blog/post/announcing-roles-for-enhanced-collaboration-and-security) feature, making it easy for larger teams to manage access. Alongside the "Owner" role, new options include Developer, Editor, Analyst, and Billing. 
+In September, we launched the much-requested [Roles](https://appwrite.io/blog/post/announcing-roles-for-enhanced-collaboration-and-security) feature, making it easy for larger teams to manage access. Alongside the "Owner" role, new options include Developer, Editor, Analyst, and Billing.
 
 Custom roles are on the way, giving you even more control. Stay tuned.
 

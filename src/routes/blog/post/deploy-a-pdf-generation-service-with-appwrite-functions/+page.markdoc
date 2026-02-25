@@ -16,7 +16,7 @@ Generating PDFs is a requirement of many applications. For example: creating inv
 
 The template generates an invoice using fake order data - it includes details such as an order ID, date, customer's name, list of purchased items, and the total cost. It should get you up and running, but you will need to add real data to build a useful invoice.
 
-If you want to see the source code, you can find it on our [templates GitHub repository](https://github.com/appwrite/templates/tree/main/node/generate-pdf). 
+If you want to see the source code, you can find it on our [templates GitHub repository](https://github.com/appwrite/templates/tree/main/node/generate-pdf).
 
 Now, let’s navigate to our functions page on **[Appwrite Cloud](https://cloud.appwrite.io)**. Head over to your Appwrite project and visit the **Functions** page. From there, we will select the **Templates** tab, search for and select the **Generate PDF** function template.
 
@@ -28,7 +28,7 @@ The function doesn’t have any required environment variables, so you can proce
 
 # Using the Function
 
-Visit the **Domains** tab on the function page and copy the domain URL to test the function. 
+Visit the **Domains** tab on the function page and copy the domain URL to test the function.
 
 ![generate pdf](/images/blog/pdf-generation/generate-pdf.png)
 
@@ -51,9 +51,9 @@ On Flutter you can use the [download](https://pub.dev/packages/download), or [op
 The next step is extend the template to show real invoice data. Here’s a high-level overview of what’s required:
 
 1. Change the function to take the order ID as a query parameter in the function.
-2. Get the order document from your Appwrite database, or external data source. Unsure about this? View code recipes on the **[Appwrite Function Docs](https://appwrite.io/docs/functions).**
-3. If necessary, use the order document to ensure the user has permission to see the order. For example, compare the `x-appwrite-user-id` header with the document user ID.
-4. Change the function to populate the PDF template with the real order document.
+2. Get the order row from your Appwrite database, or external data source. Unsure about this? View code recipes on the **[Appwrite Function Docs](https://appwrite.io/docs/functions).**
+3. If necessary, use the order row to ensure the user has permission to see the order. For example, compare the `x-appwrite-user-id` header with the row user ID.
+4. Change the function to populate the PDF template with the real order row.
 
 # Next steps
 

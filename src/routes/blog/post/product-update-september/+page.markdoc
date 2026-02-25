@@ -25,7 +25,7 @@ Alongside the existing owner role, you can now assign these new roles to your te
 
 To celebrate the new feature, you can invite members with the new roles to your Pro teams for free until the end of the year.
 
-[Read the annoucement.](https://appwrite.io/blog/post/announcing-roles-for-enhanced-collaboration-and-security)
+[Read the announcement.](https://appwrite.io/blog/post/announcing-roles-for-enhanced-collaboration-and-security)
 
 
 ![Hacktoberfest Hackathon](/images/blog/product-update-september/4.png)
@@ -62,11 +62,11 @@ Everything we launched during Init is now ready for your self-hosted instance, i
 ![CCPA announcement](/images/blog/product-update-september/2.png)
 # CCPA
 
-Appwrite is now fully CCPA-compliant, bringing you even more security and peace of mind when building your apps. 
+Appwrite is now fully CCPA-compliant, bringing you even more security and peace of mind when building your apps.
 
-The [California Consumer Privacy Act (CCPA)](https://oag.ca.gov/privacy/ccpa) is a landmark data privacy law that enhances consumer rights for residents of California. 
+The [California Consumer Privacy Act (CCPA)](https://oag.ca.gov/privacy/ccpa) is a landmark data privacy law that enhances consumer rights for residents of California.
 
-[Read the announcement.](https://appwrite.io/blog/post/announcing-appwrite-is-ccpa-compliant) 
+[Read the announcement.](https://appwrite.io/blog/post/announcing-appwrite-is-ccpa-compliant)
 ---
 
 # Product updates
@@ -82,11 +82,11 @@ If you are using a self-hosted Appwrite instance, we strongly recommend upgradin
 [Check out the changelog for more details.](https://appwrite.io/changelog/entry/2024-09-17)
 
 
-## Updating collection attribute names and sizes
+## Updating table column names and sizes
 
-You can now update attribute names and sizes directly from your Cloud Console.
+You can now update column names and sizes directly from your Cloud Console.
 
-This update provides better flexibility in managing your data models, allowing you to adjust attributes without needing to recreate them or handle complicated migrations.
+This update provides better flexibility in managing your data models, allowing you to adjust columns without needing to recreate them or handle complicated migrations.
 
 This is just one in a series of updates we plan to release for Appwrite databases over the next few weeks.
 
@@ -120,7 +120,7 @@ If you'd like to participate in next month's Community Recognitions, [join our D
 
 # What’s to come
 
-October will be jam-packed with announcements and new features, so stay tuned! 
+October will be jam-packed with announcements and new features, so stay tuned!
 
 - New Cloud and Database features are to be revealed soon!
 - A certain Backups teaser made waves on our [Discord channel](https://appwrite.io/discord)…
