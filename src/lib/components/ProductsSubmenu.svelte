@@ -112,10 +112,12 @@
 <div
     use:melt={$menu}
     class={cn(
-        'data-[state=closed]:animate-fade-out data-[state=open]:animate-fade-in relative !left-1/2 z-10 mx-auto mt-6 hidden w-full -translate-x-1/2 flex-col items-center p-0 outline-none [max-inline-size:86.875rem] md:flex'
+        'data-[state=closed]:animate-fade-out data-[state=open]:animate-fade-in relative !left-1/2 z-[9999] mx-auto mt-6 hidden w-full -translate-x-1/2 flex-col items-center p-0 outline-none [max-inline-size:86.875rem] md:flex'
     )}
 >
-    <div class="is-special-padding w-full rounded-2xl border border-white/8 bg-[#232325] p-6">
+    <div
+        class="is-special-padding products-dropdown-bg w-full rounded-2xl border border-white/8 p-6"
+    >
         <div class="grid w-full grid-cols-1 place-content-between gap-16 lg:grid-cols-12">
             <div class="col-span-8 -mr-12 pr-12">
                 <span
@@ -227,3 +229,10 @@
         class="data-[state=closed]:animate-fade-out fixed inset-0 bg-black/60"
     ></div>
 </div>
+
+<style>
+    .products-dropdown-bg {
+        background-color: #232325;
+        opacity: 1;
+    }
+</style>
