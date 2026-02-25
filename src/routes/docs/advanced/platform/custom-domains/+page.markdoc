@@ -89,7 +89,7 @@ Below, you'll find a list of registrars and links to their DNS setting documenta
 | Vercel          | [Settings](https://vercel.com/docs/custom-domains) |
 | Wix             | [Settings](https://support.wix.com/en/article/connecting-a-wix-domain-to-an-external-site) |
 | Yahoo Small Business | [A Record](https://help.turbify.com/s/article/how-do-i-add-edit-and-delete-an-a-record) / [CNAME Record](https://help.turbify.com/s/article/how-do-i-add-edit-and-delete-a-cname-record) |
-
+| Internetbs | [CNAME Record](https://faq.internetbs.net/hc/en-gb/articles/4509182052637-How-do-I-add-a-CNAME-record) |
 DNS changes might take up to 48 hours to propagate worldwide. This means that it might take up to two days for your new domain to become accessible using Appwrite. For debugging, you can try using [this online tool](https://dnschecker.org/) to check your DNS propagation status.
 
 In addition to the DNS setup, you might also want to update the "Allowed Domains" section in your Appwrite project settings. By default, Appwrite only allows API calls from localhost, appwrite.io, and your project's default custom domains. You can add your custom domain to this list to ensure that API requests from your domain are accepted.
