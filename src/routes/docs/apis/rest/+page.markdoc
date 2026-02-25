@@ -279,7 +279,7 @@ You can attach multiple query strings by including the array parameter multiple 
 
 For example, the unescaped query string might look like this.
 ```text
-?queries[0]={"method":"equal","column":"name","values":["John"]}&queries[1]={"method":"limit","values":[6]}
+?queries[0]={"method":"equal","attribute":"name","values":["John"]}&queries[1]={"method":"limit","values":[6]}
 ```
 
 The JSON has a general format like this.
@@ -287,7 +287,7 @@ The JSON has a general format like this.
 ```json
 {
   "method": "<QUERY_METHOD>",
-  "column": "<ATTRIBUTE>",
+  "attribute": "<ATTRIBUTE>",
   "values": [
     <VALUE1>,
     <VALUE2>,
@@ -306,7 +306,7 @@ For example, to query for all rows with the name "John" or "Jane", the query str
 ```json
 {
   "method": "equal",
-  "column": "name",
+  "attribute": "name",
   "values": [
     "John",
     "Jane"
@@ -320,7 +320,7 @@ When in doubt, you can use the Appwrite SDKs to generate the query strings for y
 ```json
 {
   "method": "isNull",
-  "column": "name"
+  "attribute": "name"
 }
 {
   "method": "select",
@@ -328,7 +328,7 @@ When in doubt, you can use the Appwrite SDKs to generate the query strings for y
 }
 {
   "method": "between",
-  "column": "age",
+  "attribute": "age",
   "values": [18, 30]
 }
 {
@@ -349,12 +349,12 @@ In these cases, `column` is empty and `values` is an array of queries.
   "values": [
     {
       "method": "equal",
-      "column": "name",
+      "attribute": "name",
       "values": ["John"]
     },
     {
       "method": "between",
-      "column": "age",
+      "attribute": "age",
       "values": [20, 30]
     }
   ]
