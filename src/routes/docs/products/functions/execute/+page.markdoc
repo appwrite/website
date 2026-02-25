@@ -29,7 +29,7 @@ curl -X POST https://64d4d22db370ae41a32e.appwrite.global \
 -H "X-Custom-Header: 123" \
 -H "x-appwrite-user-jwt: <YOUR_JWT_KEY>" \
 -H "Content-Type: application/json" \
--d '{"data":"this is json data"}'
+-d '{"body":"this is json data"}'
 ```
 
 Notice how a `x-appwrite-user-jwt` header is passed in the request, you will use this to authenticate users.
