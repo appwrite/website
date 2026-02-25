@@ -93,9 +93,9 @@
 
 <button
     class={cn(
-        'text-primary focus:text-accent hover:text-accent inline-flex cursor-pointer items-center justify-between outline-none',
+        'text-primary hover:text-accent focus:text-accent inline-flex cursor-pointer items-center justify-between outline-none transition-colors',
         {
-            'text-accent': $open
+            '!text-accent': $open
         }
     )}
     use:melt={$trigger}
