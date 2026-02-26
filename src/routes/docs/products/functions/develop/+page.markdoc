@@ -1118,11 +1118,11 @@ To get the different response types, set one of the following query parameters i
 
 | Type     | Query Param     | Example                                                     |
 |----------|-----------------|-------------------------------------------------------------|
-| `text`     | `/?type=text`     | `https://64d4d22db370ae41a32e.appwrite.global/?type=text`     |
-| `json`     | `/?type=json`     | `https://64d4d22db370ae41a32e.appwrite.global/?type=json`     |
-| `redirect` | `/?type=redirect` | `https://64d4d22db370ae41a32e.appwrite.global/?type=redirect` |
-| `html`     | `/?type=html`     | `https://64d4d22db370ae41a32e.appwrite.global/?type=html`     |
-| `empty`    | `/`               | `https://64d4d22db370ae41a32e.appwrite.global/`               |
+| `text`     | `/?type=text`     | `https://64d4d22db370ae41a32e.fra.appwrite.run/?type=text`     |
+| `json`     | `/?type=json`     | `https://64d4d22db370ae41a32e.fra.appwrite.run/?type=json`     |
+| `redirect` | `/?type=redirect` | `https://64d4d22db370ae41a32e.fra.appwrite.run/?type=redirect` |
+| `html`     | `/?type=html`     | `https://64d4d22db370ae41a32e.fra.appwrite.run/?type=html`     |
+| `empty`    | `/`               | `https://64d4d22db370ae41a32e.fra.appwrite.run/`               |
 
 ## Logging {% #logging %}
 To protect user privacy, the request and response objects are not logged to the Appwrite Console by default.
